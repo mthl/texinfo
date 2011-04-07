@@ -155,10 +155,10 @@ my %defaults = (
   'ENABLE_ENCODING'      => 1,
   'SHOW_MENU'            => 1,
   'footnotestyle'        => 'end',
-#  'perl_encoding'        => 'ascii',
-#  'encoding_name'      => 'us-ascii',
-  'encoding_name'        => undef,
-  'perl_encoding'        => undef,
+  'perl_encoding'        => 'utf8',
+  'encoding_name'        => 'utf-8',
+  #'encoding_name'        => undef,
+  #'perl_encoding'        => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
@@ -190,8 +190,15 @@ my %defaults = (
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
+  'SHOW_TITLE'           => 1,
+  'SHOW_MENU'            => 1,
+# This is the default, mainly for tests; the caller should set them.  These
+# values are in fact what should be set -- for now when TEST is true.
+  'PROGRAM_AND_VERSION'  => 'texi2html',
+  'PROGRAM_HOMEPAGE'     => 'http://www.gnu.org/software/texinfo/',
+  'PROGRAM'              => 'texi2html',
   
-
+  
   'DEBUG'                => 0,
   'TEST'                 => 0,
 );
@@ -832,6 +839,10 @@ sub _prepare_css($)
 }
 
 # FIXME also convert to html, to use name in cross-refs or do it on demand?
+# This set 2 unrelated things.  
+#  * The targets and id of sectioning elements
+#  * the target, id and normalized filename of 'labels', ie everything that 
+#    may be the target of a ref, like @node, @float, @anchor...
 sub _set_root_commands_targets_node_files($$)
 {
   my $self = shift;
@@ -871,7 +882,7 @@ sub _set_root_commands_targets_node_files($$)
                                                                $target, $id);
           }
           $self->{'targets'}->{$root_command} = {'target' => $target, 
-                                                'id' => $id};
+                                                 'id' => $id};
         }
       }
     }
@@ -925,35 +936,47 @@ sub _get_page($$)
 {
   my $self = shift;
   my $current = shift;
+  my ($element, $root_command);
   while (1) {
-    if ($current->{'type'} and $current->{'type'} eq 'page') {
-      return $current;
+    if ($current->{'type'}) {
+      if ($current->{'type'} eq 'page') {
+        return ($current, $element, $root_command);
+      } elsif ($current->{'type'} eq 'element') {
+        $element = $current;
+      }
     }
     if ($current->{'cmdname'}) {
-      if ($region_commands{$current->{'cmdname'}}) {
+      if ($root_commands{$current->{'cmdname'}}) {
+        $root_command = $current;
+      } elsif ($region_commands{$current->{'cmdname'}}) {
         if ($current->{'cmdname'} eq 'copying' 
             and $self->{'extra'} and $self->{'extra'}->{'insertcopying'}) {
           foreach my $insertcopying(@{$self->{'extra'}->{'insertcopying'}}) {
-            my $page = $self->_get_page($insertcopying);
-            return $page if (defined($page));
-          } 
+            my ($page, $element, $root_command) 
+              = $self->_get_page($insertcopying);
+            return ($page, $element, $root_command)
+              if (defined($page) or defined($root_command));
+          }
         } elsif ($current->{'cmdname'} eq 'titlepage'
                  and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')
                  and $self->get_conf('SHOW_TITLE')
                  and $self->{'pages'}->[0]) {
-          return $self->{'pages'}->[0];
+        # FIXME element and root_command?
+          return ($self->{'pages'}->[0]);
         }
-        return undef;
-      }
-      if ($current->{'cmdname'} eq 'footnote' 
+        die "Problem $element, $root_command" if (defined($element) 
+                                                  or defined($root_command));
+        return (undef, undef, undef);
+      } elsif ($current->{'cmdname'} eq 'footnote' 
            and $self->get_conf('footnotestyle') eq 'separate') {
-        return $self->{'special_pages'}->{'footnotes'};
+        # FIXME element and root_command?
+        return ($self->{'special_pages'}->{'footnotes'});
       }
     }
     if ($current->{'parent'}) {
       $current = $current->{'parent'};
     } else {
-      return undef;
+      return (undef, $element, $root_command);
     }
   }
 }
@@ -973,7 +996,7 @@ sub _set_page_files($$)
   # first determine the top node file name.
   if ($self->get_conf('NODE_FILENAMES') and $node_top) {
     if (defined($self->get_conf('TOP_NODE_FILE'))) {
-      my $node_top_page = $self->_get_page($node_top);
+      my ($node_top_page) = $self->_get_page($node_top);
       die "BUG: No page for top node" if (!defined($node_top));
       my $filename = $self->get_conf('TOP_NODE_FILE');
       $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
@@ -1055,6 +1078,84 @@ sub _prepare_elements($$)
   return $elements;
 }
 
+my %valid_types = (
+  'href' => 1,
+  'string' => 1,
+  'text' => 1,
+);
+
+# FIXME global targets
+sub _element_direction($$$$;$)
+{
+  my $self = shift;
+  my $element = shift;
+  my $direction = shift;
+  my $type = shift;
+  my $filename = shift;
+
+  my $command;
+  my $target;
+ 
+  if (!$valid_types{$type}) {
+    print STDERR "Incorrect type $type in _element_direction call\n";
+    return undef;
+  }
+
+  if ($element->{'extra'} and $element->{'extra'}->{'directions'}
+      and $element->{'extra'}->{'directions'}->{$direction}
+      and $self->{'targets'}->{$element->{'extra'}->{'directions'}->{$direction}})
+  {
+    $command
+     = $element->{'extra'}->{'directions'}->{$direction}->{'element_command'};
+    $target = 
+      $self->{'targets'}->{$element->{'extra'}->{'directions'}->{$direction}};
+  } else {
+    return undef;
+  }
+
+  if ($type eq 'href') {
+    my $href = '';
+    if (defined($target->{'filename'}) and 
+        (!defined($filename) 
+         or $filename ne $target->{'filename'})) {
+      $href .= $target->{'filename'};
+    }
+    $href .= '#' . $target->{'target'} 
+      if (defined($target->{'target'}));
+  } elsif (exists($target->{$type})) {
+    return $target->{$type};
+  } elsif ($command) {
+    
+    my $tree;
+    if (!$target->{'tree'}) {
+      if ($command->{'cmdname'} eq 'node') {
+        $tree = {'contents' => $command->{'extra'}->{'node_content'}};
+      } else {
+        # FIXME number
+        $tree = {'contents' =>  $command->{'extra'}->{'misc_content'}};
+      }
+      $target->{'tree'} = $tree;
+    } else {
+      $tree = $target->{'tree'};
+    }
+
+    return $target->{'tree'} if ($type eq 'tree');
+    push @{$self->{'context'}}, 
+            {'cmdname' => $command->{'cmdname'}};
+    if ($type eq 'string') {
+      $self->{'context'}->[-1]->{'string'} = 1;
+    }
+    my $content;
+    if ($command->{'cmdname'} eq 'node') {
+      $self->{'context'}->[-1]->{'code'} = 1;
+    }
+    $target->{$type} = 
+      $self->_convert($tree);
+    pop @{$self->{'context'}}, 
+    return $target->{$type};
+  }
+}
+
 # FIXME object oriented API for elements?
 sub begin_file($$$)
 {
@@ -1066,19 +1167,21 @@ sub begin_file($$$)
   
   
   my $title;
-  # FIXME
-  # if ($page and $page->{'contents'}->[0]) {
-  #   my $element
-  #     = Texinfo::Convert::HTML::Element::new($self, $page->{'contents'}->[0]);
-  #   my $element_string = $selement->string();
-  #   if ($element_string ne $self->{'title_string'}) {
-  #     my $title_tree = $self->gdt('{title}: {element_text}', 
-  #                                $self->{'title_tree'}, $selement->tree());
-  #     $self->{'context'}->[-1]->{'string'} = 1;
-  #     $title = $self->_convert($title_tree);
-  #     delete $self->{'context'}->[-1]->{'string'};
-  #   }
-  # }
+  # FIXME this does not work
+  if ($page and $page->{'extra'} and $page->{'extra'}->{'element'}) {
+   my $element_string = $self->_element_direction($page->{'extra'}->{'element'},
+                              'This', 'string');
+    if (defined($element_string) 
+        and $element_string ne $self->{'title_string'}) {
+      my $title_tree = $self->gdt('{title}: {element_text}', 
+                                 $self->{'title_tree'}, 
+              $self->_element_direction($page->{'extra'}->{'element'},
+                                        'This', 'tree'));
+      $self->{'context'}->[-1]->{'string'} = 1;
+      $title = $self->_convert($title_tree);
+      delete $self->{'context'}->[-1]->{'string'};
+    }
+  }
   $title = $self->{'title_string'} if (!defined($title));
 
   my $description;
@@ -1136,9 +1239,9 @@ sub begin_file($$$)
   my $extra_head = '';
   $extra_head = $self->get_conf('EXTRA_HEAD')
     if (defined($self->get_conf('EXTRA_HEAD')));
-  my $program_and_version = ''; # $Texi2HTML::THISDOC{'program_and_version'}
-  my $program_homepage = ''; # $Texi2HTML::THISDOC{'program_homepage'}
-  my $program = ''; # $Texi2HTML::THISDOC{'program'}
+  my $program_and_version = $self->get_conf('PROGRAM_AND_VERSION');
+  my $program_homepage = $self->get_conf('PROGRAM_HOMEPAGE');
+  my $program = $self->get_conf('PROGRAM');
 
   my $result = "$doctype
 <html>
@@ -1239,8 +1342,10 @@ sub output($$)
   # determine file names associated with the different pages.
   $self->_set_page_files($pages);
 
-  # Before that, set multiple commands
+  # Add element directions
+  Texinfo::Structuring::element_directions($self, $elements);
 
+  # FIXME Before that, set multiple commands
   $self->set_conf('BODYTEXT',  'lang="' . $self->get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 
 

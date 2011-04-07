@@ -264,6 +264,7 @@ sub sectioning_structure($$)
             }
           }
           if ($new_upper_element) {
+            # In that case the root has to be updated because the first 'part' just appeared
             $content->{'section_up'} = $sec_root;
             $sec_root->{'level'} = $level - 1;
             push @{$sec_root->{'section_childs'}}, $content;
@@ -552,6 +553,7 @@ sub split_by_node($)
         $elements->[-1]->{'element_next'} = $current;
         push @$elements, $current;
       }
+      $elements->[-1]->{'extra'}->{'element_command'} = $content;
     }
     push @{$current->{'contents'}}, $content;
     $content->{'parent'} = $current;
@@ -585,13 +587,18 @@ sub split_by_section($)
         $elements->[-1]->{'element_next'} = $current;
         push @$elements, $current;
       }
+      $elements->[-1]->{'extra'}->{'element_command'} 
+        = $content->{'extra'}->{'associated_section'};
+    # FIXME Handle part differently? (associate with prev sectioning command?)
     } elsif ($content->{'cmdname'} and $content->{'cmdname'} ne 'node' 
                                    and $content->{'cmdname'} ne 'bye') {
       if ($current->{'extra'}->{'no_section'}) {
         delete $current->{'extra'}->{'no_section'};
         $current->{'extra'}->{'section'} = $content;
+        $current->{'extra'}->{'element_command'} = $content;
       } elsif ($current->{'extra'}->{'section'} ne $content) {
-        $current = { 'type' => 'element', 'extra' => {'section' => $content}};
+        $current = { 'type' => 'element', 'extra' => {'section' => $content,
+                                              'element_command' => $content}};
         $current->{'element_prev'} = $elements->[-1];
         $elements->[-1]->{'element_next'} = $current;
         push @$elements, $current;
@@ -630,12 +637,113 @@ sub split_pages ($$)
     }
     if ($split eq 'node' or (defined($level) and $split_level <= $level)
         or !@pages) {
-      push @pages, {'type' => 'page'};
+      push @pages, {'type' => 'page',
+                    'extra' => {'element' => $element}};
+      if (scalar(@pages) > 1) { 
+        $pages[-1]->{'page_prev'} = $pages[-2];
+        $pages[-2]->{'page_next'} = $pages[-1];
+      }
     }
     push @{$pages[-1]->{'contents'}}, $element;
     $element->{'parent'} = $pages[-1];
   }
   return \@pages;
+}
+
+sub element_directions($$)
+{
+  my $self = shift;
+  my $elements = shift;
+  return if (!$elements or !@$elements);
+
+  my $node_top = $self->{'labels'}->{'Top'};
+  foreach my $element (@$elements) {
+    my $directions;
+    $directions->{'This'} = $element;
+    $directions->{'Forward'} = $element->{'extra'}->{'element_next'}
+      if ($element->{'extra'}->{'element_next'});
+    $directions->{'Back'} = $element->{'extra'}->{'element_prev'}
+      if ($element->{'extra'}->{'element_prev'});
+    if ($element->{'node'}) {
+      my $node = $element->{'node'};
+      foreach my $direction(['NodeUp', 'node_up'], ['NodeNext', 'node_next'],
+                            ['NodePrev', 'node_prev']) {
+        $directions->{$direction->[0]} = $node->{$direction->[1]}->{'parent'}
+          if ($node->{$direction->[1]});
+      }
+      my $automatic_directions = 
+        (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
+      if ($node->{'menu_child'}) {
+        $directions->{'NodeForward'} = $node->{'menu_child'}->{'parent'};
+      } elsif ($automatic_directions and $node->{'associated_section'}
+               and $node->{'associated_section'}->{'section_childs'}
+               and $node->{'associated_section'}->{'section_childs'}->[0]) {
+        $directions->{'NodeForward'} 
+          = $node->{'associated_section'}->{'section_childs'}->[0]->{'parent'};
+      } elsif ($node->{'node_next'}) {
+        $directions->{'NodeForward'} = $node->{'node_next'}->{'parent'};
+      } else {
+        my $up = $node->{'node_up'};
+        my @up_list = ($node);
+        # the condition with the up_list avoids infinite loops
+        # the last condition stops when the Top node is reached.
+        while (defined($up) 
+               and not (grep {$up eq $_} @up_list  
+                        or ($node_top and $up eq $node_top))) {
+          if (defined($up->{'node_next'})) {
+            $directions->{'NodeForward'} = $up->{'node_next'}->{'parent'};
+            last;
+          }
+          push @up_list, $up;
+          $up = $up->{'node_up'};
+        }
+      }
+      
+      $directions->{'NodeForward'}->{'extra'}->{'directions'}->{'NodeBack'} = $element
+        if ($directions->{'NodeForward'} 
+            and !$directions->{'NodeForward'}->{'extra'}->{'directions'}->{'NodeBack'});
+    }
+    if ($element->{'section'}) {
+      my $section = $element->{'section'};
+      foreach my $direction(['Up', 'section_up'], ['Next', 'section_next'],
+                            ['Prev', 'section_prev']) {
+        $directions->{$direction->[0]} = $section->{$direction->[1]}->{'parent'}
+          if ($section->{$direction->[1]});
+      }
+
+      my $up = $section;
+      while ($up->{'level'} > 1 and $up->{'section_up'}) {
+        $up = $up->{'section_up'};
+      }
+      # fastforward is the next element on same level than the upper parent
+      # element.
+      # FIXME only for top and not for parts?
+      if ($up->{'level'} < 1) {
+        if ($up->{'section_childs'} and @{$up->{'section_childs'}}) {
+          $directions->{'FastForward'} = $up->{'section_childs'}->[0]->{'parent'};
+        }
+      } else {
+        $directions->{'FastForward'} = $up->{'section_next'}->{'parent'}
+          if ($up->{'section_next'});
+      }
+      # if the element isn't at the highest level, fastback is the 
+      # highest parent element
+      if ($up and $up ne $section) {
+        $directions->{'FastBack'} = $up->{'parent'};
+      } elsif ($section->{'level'} <= 1) {
+        # the element is a top level element, we adjust the next
+        # toplevel element fastback
+        $directions->{'FastForward'}->{'extra'}->{'directions'}->{'FastBack'}  
+          = $section if ($directions->{'FastForward'});
+      }
+      if ($element->{'extra'}->{'directions'}) {
+        %{$element->{'extra'}->{'directions'}} = (%{$element->{'extra'}->{'directions'}}, 
+                                                  %$directions)
+      } else {
+        $element->{'extra'}->{'directions'} = $directions;
+      }
+    }
+  }
 }
 
 # this is used in the test suite, but not likely to be useful in real life.
