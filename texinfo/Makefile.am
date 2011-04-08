@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.28 2010-06-25 13:17:37 karl Exp $
+# $Id: Makefile.am,v 1.29 2011-04-08 10:40:50 gray Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -47,6 +47,9 @@ distclean-local:
 dist-local:
 	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
 	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
+
+dist-hook:
+	tar -C $(srcdir) -c -f - --exclude CVS tp | tar -C $(distdir) -x -f -
 
 # Don't install native tools for cross compile.
 if TOOLS_ONLY
