@@ -1,3 +1,8 @@
+2011-04-08  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh: split_html_db_dir used before definition.
+	Report from Bruce Korb, bug-gnulib 08 Apr 2011 14:15:08.
+
 2011-04-08  Sergey Poznyakoff  <gray@gnu.org>
 
 	Fix make distcheck
