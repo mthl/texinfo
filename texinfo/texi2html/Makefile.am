@@ -294,4 +294,8 @@ CLEANFILES = texi2html texi2html.temp texi2any makeinfo \
 DISTCLEANFILES = po_messages/Makevars \
 	po_messages/POTFILES.in \
 	po_document/Makevars \
-	po_document/POTFILES.in
+	po_document/POTFILES.in\
+        translations.pl\
+        translations.pl.old
+
+
