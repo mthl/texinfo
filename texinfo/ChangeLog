@@ -1,3 +1,11 @@
+2011-04-08  Sergey Poznyakoff  <gray@gnu.org>
+
+	Fix make distcheck
+	
+	* Makefile.am (dist-hook): New rule to distribute tp.
+	* texi2html/Makefile.am (DISTCLEANFILES): Add translations.pl and
+	translations.pl.old
+	
 2011-04-06  Sergey Poznyakoff  <gray@gnu.org>
 
 	Use C99 stdarg.
