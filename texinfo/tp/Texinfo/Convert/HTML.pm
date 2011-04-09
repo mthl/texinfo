@@ -796,7 +796,12 @@ sub _convert_element($$)
 
   my $result = '';
 
-  print STDERR "NEW ELEMENT\n" if ($self->get_conf('DEBUG'));
+  die "BUG: no 'element_command' for $element\n" 
+    if (!$element->{'extra'}->{'element_command'});
+  die "BUG: no target for $element\n" 
+    if (!$self->{'targets'}->{$element->{'extra'}->{'element_command'}});
+  print STDERR "NEW ELEMENT $self->{'targets'}->{$element->{'extra'}->{'element_command'}}->{'id'}\n"
+    if ($self->get_conf('DEBUG'));
 
   $result .= $self->_convert($element);
 
@@ -887,6 +892,9 @@ sub _set_root_commands_targets_node_files($$)
 
   if ($elements) {
     foreach my $element (@$elements) {
+      if (!defined($element->{'extra'}->{'element_command'})) {
+        print STDERR "BUG: no element_command for $element\n";
+      }
       foreach my $root_command(@{$element->{'contents'}}) {
         # FIXME this happens before the first element, for type 'text_root'.
         # What should be done in that case?
@@ -1136,26 +1144,25 @@ sub _element_direction($$$$;$)
     my $tree;
     if (!$target->{'tree'}) {
       if ($command->{'cmdname'} eq 'node') {
-        $tree = {'contents' => $command->{'extra'}->{'node_content'}};
+        $tree = {'type' => '_code',
+                 'contents' => $command->{'extra'}->{'node_content'}};
       } else {
         # FIXME number
         $tree = {'contents' => $command->{'extra'}->{'misc_content'}};
       }
       $target->{'tree'} = $tree;
-    } else {
       return $target->{'tree'} if ($type eq 'tree');
+    } else {
       $tree = $target->{'tree'};
     }
 
     push @{$self->{'context'}}, 
             {'cmdname' => $command->{'cmdname'}};
     if ($type eq 'string') {
-      $self->{'context'}->[-1]->{'string'} = 1;
+      $tree = {'type' => '_string',
+               'contents' => [$tree]};
     }
-    my $content;
-    if ($command->{'cmdname'} eq 'node') {
-      $self->{'context'}->[-1]->{'code'} = 1;
-    }
+    print STDERR "DO $target->{'id'}($type)\n" if ($self->get_conf('DEBUG'));
     $target->{$type} = $self->_convert($tree);
     pop @{$self->{'context'}}, 
     return $target->{$type};
@@ -1169,25 +1176,23 @@ sub begin_file($$$)
   my $filename = shift;
   my $page = shift;
 
-  # TODO
-  
   
   my $title;
   # FIXME this does not work
   if ($page and $page->{'extra'} and $page->{'extra'}->{'element'}) {
     my $element_string = $self->_element_direction($page->{'extra'}->{'element'},
                               'This', 'string');
-    # FIXME does not work and besides there is the issue of node node being
-    # formatted in code.
     if (defined($element_string) 
         and $element_string ne $self->{'title_string'}) {
+      print STDERR "DO <title>\n"
+        if ($self->get_conf('DEBUG'));
       my $title_tree = $self->gdt('{title}: {element_text}', 
-                                 $self->{'title_tree'}, 
-              $self->_element_direction($page->{'extra'}->{'element'},
-                                        'This', 'tree'));
-      $self->{'context'}->[-1]->{'string'} = 1;
-      $title = $self->_convert($title_tree);
-      delete $self->{'context'}->[-1]->{'string'};
+                                 { 'title' => $self->{'title_tree'}, 
+                   'element_text' => 
+                     $self->_element_direction($page->{'extra'}->{'element'},
+                                              'This', 'tree')});
+      $title = $self->_convert({'type' => '_string',
+                                'contents' => [$title_tree]});
     }
   }
   $title = $self->{'title_string'} if (!defined($title));
@@ -1364,9 +1369,14 @@ sub output($$)
      'shorttitlepage', 'top') {
     if ($self->{'extra'}->{$fulltitle_command}) {
       my $command = $self->{'extra'}->{$fulltitle_command};
-      next if ($command->{'extra'} 
-               and $command->{'extra'}->{'missing_argument'});
-      $fulltitle = {'contents' => $command->{'contents'}};
+      next if (!$command->{'extra'}
+               or (!$command->{'extra'}->{'misc_contents'}
+                   or $command->{'extra'}->{'missing_argument'}));
+      # FIXME remove the virtual type?
+      print STDERR "Using $fulltitle_command as title\n"
+        if ($self->get_conf('DEBUG'));
+      $fulltitle = {'contents' => $command->{'extra'}->{'misc_contents'},
+                    'type' => '_fulltitle'};
       last;
     }
   }
@@ -1387,21 +1397,23 @@ sub output($$)
     }
   }
 
-  $self->{'context'}->[-1]->{'string'} = 1;
   my $html_title_string;
   if ($fulltitle) {
     $self->{'title_tree'} = $fulltitle;
-    $html_title_string = $self->_convert($self->{'title_tree'});
+    print STDERR "DO fulltitle_string\n" if ($self->get_conf('DEBUG'));
+    $html_title_string = $self->_convert({'type' => '_string',
+                                         'contents' => [$self->{'title_tree'}]});
   }
   if (!defined($html_title_string) or $html_title_string !~ /\S/) {
     my $default_title = $self->gdt('Untitled Document');
     $self->{'title_tree'} = $default_title;
-    $self->{'title_string'} = $self->_convert($self->{'title_tree'});
-    $self->document_warn($self->__("Must specify a title with a title command or \@top"));
+    $self->{'title_string'} = $self->_convert({'type' => '_string',
+                                         'contents' => [$self->{'title_tree'}]});
+    $self->document_warn($self->__(
+                         "Must specify a title with a title command or \@top"));
   } else {
     $self->{'title_string'} = $html_title_string;
   }
-  delete $self->{'context'}->[-1]->{'string'};
 
   # copying comment
   if ($self->{'extra'}->{'copying'}) {
@@ -1410,6 +1422,7 @@ sub output($$)
         and $self->{'encoding_name'}) {
       $options->{'enabled_encoding'} = $self->{'encoding_name'};
     }
+    print STDERR "DO copying_comment\n" if ($self->get_conf('DEBUG'));
     my $copying_comment = Texinfo::Convert::Text::convert(
      {'contents' => $self->{'extra'}->{'copying'}->{'contents'}}, $options);
     if ($copying_comment ne '') {
@@ -1419,10 +1432,10 @@ sub output($$)
 
   # documentdescription
   if ($self->{'extra'}->{'documentdescription'}) {
-    $self->{'context'}->[-1]->{'string'} = 1;
+    print STDERR "DO documentdescription\n" if ($self->get_conf('DEBUG'));
     $self->{'documentdescription_string'} = $self->_convert(
-      {'contents' => $self->{'extra'}->{'documentdescription'}->{'contents'}});
-    delete $self->{'context'}->[-1]->{'string'};
+      {'type' => '_string',
+       'contents' => $self->{'extra'}->{'documentdescription'}->{'contents'}});
   }
 
   # Now do the output
@@ -1740,10 +1753,12 @@ sub _convert($$)
 
   # process text
   if (defined($root->{'text'})) {
-    return &{$self->{'types_conversion'}->{'text'}} ($self, 
+    my $result = &{$self->{'types_conversion'}->{'text'}} ($self, 
                                                       $root->{'type'},
                                                       $root,
                                                       $root->{'text'});
+    print STDERR "DO TEXT => `$result'\n" if ($self->get_conf('DEBUG'));
+    return $result;
   }
 
   if ($root->{'extra'}) {
@@ -1872,6 +1887,10 @@ sub _convert($$)
   } elsif ($root->{'type'}) {
     if ($root->{'type'} eq 'paragraph') {
       $self->{'context'}->[-1]->{'paragraph_number'}++;
+    } elsif ($root->{'type'} eq '_code') {
+      $self->{'context'}->[-1]->{'code'}++;
+    } elsif ($root->{'type'} eq '_string') {
+      $self->{'context'}->[-1]->{'string'}++;
     }
     my $content_formatted;
     if ($root->{'contents'}) {
@@ -1881,20 +1900,39 @@ sub _convert($$)
         $content_formatted .= $self->_convert($content);
       }
     }
+    my $result;
     if (exists($self->{'types_conversion'}->{$root->{'type'}})) {
-      return &{$self->{'types_conversion'}->{$root->{'type'}}} ($self,
+      $result = &{$self->{'types_conversion'}->{$root->{'type'}}} ($self,
                                                  $root->{'type'},
                                                  $root,
                                                  $content_formatted);
     } elsif (defined($content_formatted)) {
-      return $content_formatted;
+      $result = $content_formatted;
     }
+    if ($root->{'type'} eq '_code') {
+      $self->{'context'}->[-1]->{'code'}--;
+    } elsif ($root->{'type'} eq '_string') {
+      $self->{'context'}->[-1]->{'string'}--;
+    }
+    print STDERR "DO type ($root->{'type'}) => `$result'\n";
+    return $result;
+    # no type, no cmdname, but contents.
   } elsif ($root->{'contents'}) {
+    # FIXME what does this corresponds to?
     my $content_formatted = '';
     foreach my $content (@{$root->{'contents'}}) {
       $content_formatted .= $self->_convert($content);
     }
+    print STDERR "UNNAMED HOLDER => `$content_formatted'\n"
+      if ($self->get_conf('DEBUG'));
     return $content_formatted;
+  } else {
+    print STDERR "UNNAMED empty\n" if ($self->get_conf('DEBUG'));
+    if ($self->{'types_conversion'}->{''}) {
+      return &{$self->{'types_conversion'}->{''}} ($self, $root);
+    } else {
+      return '';
+    }
   }
     #} elsif ($command eq 'value') {
     #  my $expansion = $self->gdt('@{No value for `{value}\'@}', 
@@ -1947,7 +1985,7 @@ sub _convert($$)
  #                   {'author' => $author->{'extra'}->{'misc_content'}}));
  #     }
  #   }
-  print STDERR "DEBUG: HERE!\n";
+  print STDERR "DEBUG: HERE!($root)\n";
   #return $result;
 }
 
