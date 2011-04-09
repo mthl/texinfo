@@ -736,12 +736,12 @@ sub element_directions($$)
         $directions->{'FastForward'}->{'extra'}->{'directions'}->{'FastBack'}  
           = $section if ($directions->{'FastForward'});
       }
-      if ($element->{'extra'}->{'directions'}) {
-        %{$element->{'extra'}->{'directions'}} = (%{$element->{'extra'}->{'directions'}}, 
-                                                  %$directions)
-      } else {
-        $element->{'extra'}->{'directions'} = $directions;
-      }
+    }
+    if ($element->{'extra'}->{'directions'}) {
+      %{$element->{'extra'}->{'directions'}} = (%{$element->{'extra'}->{'directions'}}, 
+                                                %$directions)
+    } else {
+      $element->{'extra'}->{'directions'} = $directions;
     }
   }
 }

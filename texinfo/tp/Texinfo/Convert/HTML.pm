@@ -852,42 +852,6 @@ sub _set_root_commands_targets_node_files($$)
   $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE')) 
                         and !$self->get_conf('USE_UNIDECODE'));
 
-  if ($elements) {
-    foreach my $element (@$elements) {
-      foreach my $root_command(@{$element->{'contents'}}) {
-        # FIXME this happens before the first element, for type 'text_root'.
-        # What should be done in that case?
-        next if (!defined($root_command->{'cmdname'}));
-        if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
-          my $target_base = _normalized_to_id(
-             Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
-                {'contents' => $root_command->{'extra'}->{'misc_content'}},
-                $no_unidecode));
-          my $nr=0;
-          my $target = $target_base;
-          while ($self->{'labels'}->{$target}) {
-            $target = $target_base.'-'.$nr;
-            $nr++;
-            # Avoid integer overflow
-            die if ($nr == 0);
-          }
-          my $id = $target;
-          if ($root_command->{'associated_node'} and $self->get_conf('USE_NODE_TARGET')) {
-            $id = $self->{'targets'}->{$root_command->{'associated_node'}}->{'id'};
-          }
-          if (defined($Texinfo::Config::sectioning_command_target_name)) {
-            ($target, $id) = &$Texinfo::Config::sectioning_command_target_name(
-                                                               $self,
-                                                               $root_command,
-                                                               $target, $id);
-          }
-          $self->{'targets'}->{$root_command} = {'target' => $target, 
-                                                 'id' => $id};
-        }
-      }
-    }
-  }
-
   if ($self->{'labels'}) {
     foreach my $root_command (values(%{$self->{'labels'}})) {
       my $target = _normalized_to_id($root_command->{'extra'}->{'normalized'});
@@ -895,7 +859,7 @@ sub _set_root_commands_targets_node_files($$)
       # FIXME something special for Top node ?
       if (defined($Texinfo::Config::node_target_name)) {
         ($target, $id) = &$Texinfo::Config::node_target_name($root_command,
-                                                           $target, $id);
+                                                             $target, $id);
       }
       my $filename;
       if ($self->get_conf('TRANSLITERATE_FILE_NAMES')) {
@@ -912,9 +876,53 @@ sub _set_root_commands_targets_node_files($$)
         $filename = &$Texinfo::Config::node_file_name($self, $root_command,
                                                      $filename);
       }
+      if ($self->get_conf('DEBUG')) {
+        print STDERR "Register label $target, $filename\n";
+      }
       $self->{'targets'}->{$root_command} = {'target' => $target, 
                                              'id' => $id,
                                              'filename' => $filename};
+    }
+  }
+
+  if ($elements) {
+    foreach my $element (@$elements) {
+      foreach my $root_command(@{$element->{'contents'}}) {
+        # FIXME this happens before the first element, for type 'text_root'.
+        # What should be done in that case?
+        next if (!defined($root_command->{'cmdname'}) 
+                 or $self->{'targets'}->{$root_command});
+        if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
+          my $target_base = _normalized_to_id(
+             Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
+                {'contents' => $root_command->{'extra'}->{'misc_content'}},
+                $no_unidecode));
+          my $nr=0;
+          my $target = $target_base;
+          while ($self->{'labels'}->{$target}) {
+            $target = $target_base.'-'.$nr;
+            $nr++;
+            # Avoid integer overflow
+            die if ($nr == 0);
+          }
+          my $id = $target;
+          if ($root_command->{'associated_node'} 
+              and $self->get_conf('USE_NODE_TARGET')) {
+            $id = $self->{'targets'}->{$root_command->{'associated_node'}}->{'id'};
+          }
+          if (defined($Texinfo::Config::sectioning_command_target_name)) {
+            ($target, $id) = &$Texinfo::Config::sectioning_command_target_name(
+                                                               $self,
+                                                               $root_command,
+                                                               $target, $id);
+          }
+          if ($self->get_conf('DEBUG')) {
+            print STDERR "Register $root_command->{'cmdname'} $target, $id\n";
+          }
+          $self->{'targets'}->{$root_command} = {'target' => $target, 
+                                                 'id' => $id};
+        }
+      }
     }
   }
 }
@@ -1082,6 +1090,7 @@ my %valid_types = (
   'href' => 1,
   'string' => 1,
   'text' => 1,
+  'tree' => 1,
 );
 
 # FIXME global targets
@@ -1093,6 +1102,7 @@ sub _element_direction($$$$;$)
   my $type = shift;
   my $filename = shift;
 
+  my $element_target;
   my $command;
   my $target;
  
@@ -1102,13 +1112,11 @@ sub _element_direction($$$$;$)
   }
 
   if ($element->{'extra'} and $element->{'extra'}->{'directions'}
-      and $element->{'extra'}->{'directions'}->{$direction}
-      and $self->{'targets'}->{$element->{'extra'}->{'directions'}->{$direction}})
-  {
-    $command
-     = $element->{'extra'}->{'directions'}->{$direction}->{'element_command'};
-    $target = 
-      $self->{'targets'}->{$element->{'extra'}->{'directions'}->{$direction}};
+      and $element->{'extra'}->{'directions'}->{$direction}) {
+    $element_target 
+     = $element->{'extra'}->{'directions'}->{$direction};
+    $command = $element_target->{'extra'}->{'element_command'};
+    $target = $self->{'targets'}->{$command};
   } else {
     return undef;
   }
@@ -1125,21 +1133,20 @@ sub _element_direction($$$$;$)
   } elsif (exists($target->{$type})) {
     return $target->{$type};
   } elsif ($command) {
-    
     my $tree;
     if (!$target->{'tree'}) {
       if ($command->{'cmdname'} eq 'node') {
         $tree = {'contents' => $command->{'extra'}->{'node_content'}};
       } else {
         # FIXME number
-        $tree = {'contents' =>  $command->{'extra'}->{'misc_content'}};
+        $tree = {'contents' => $command->{'extra'}->{'misc_content'}};
       }
       $target->{'tree'} = $tree;
     } else {
+      return $target->{'tree'} if ($type eq 'tree');
       $tree = $target->{'tree'};
     }
 
-    return $target->{'tree'} if ($type eq 'tree');
     push @{$self->{'context'}}, 
             {'cmdname' => $command->{'cmdname'}};
     if ($type eq 'string') {
@@ -1149,8 +1156,7 @@ sub _element_direction($$$$;$)
     if ($command->{'cmdname'} eq 'node') {
       $self->{'context'}->[-1]->{'code'} = 1;
     }
-    $target->{$type} = 
-      $self->_convert($tree);
+    $target->{$type} = $self->_convert($tree);
     pop @{$self->{'context'}}, 
     return $target->{$type};
   }
@@ -1169,8 +1175,10 @@ sub begin_file($$$)
   my $title;
   # FIXME this does not work
   if ($page and $page->{'extra'} and $page->{'extra'}->{'element'}) {
-   my $element_string = $self->_element_direction($page->{'extra'}->{'element'},
+    my $element_string = $self->_element_direction($page->{'extra'}->{'element'},
                               'This', 'string');
+    # FIXME does not work and besides there is the issue of node node being
+    # formatted in code.
     if (defined($element_string) 
         and $element_string ne $self->{'title_string'}) {
       my $title_tree = $self->gdt('{title}: {element_text}', 
@@ -1322,6 +1330,12 @@ sub output($$)
     $self->set_conf('NODE_FILENAMES', 1);
   }
                                                    
+  $self->_prepare_css();
+
+  # this sets OUTFILE, to be used if not split, but also
+  # 'destination_directory' and 'output_filename' that are useful when split.
+  $self->_set_outfile();
+
   # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
 
@@ -1333,23 +1347,17 @@ sub output($$)
   # TODO handle special elements, footnotes element, contents and shortcontents
   # elements, titlepage association
 
-  # this sets OUTFILE, to be used if not split, but also
-  # 'destination_directory' and 'output_filename' that are useful when split.
-  $self->_set_outfile();
-
-  $self->_prepare_css();
-
   # determine file names associated with the different pages.
   $self->_set_page_files($pages);
 
-  # Add element directions
+  # Add element directions.  FIXME do it here or before?  Here it means that
+  # PrevFil eand NextFile can be set.
   Texinfo::Structuring::element_directions($self, $elements);
 
   # FIXME Before that, set multiple commands
+  # FIXME set language and documentencoding/encoding_name
   $self->set_conf('BODYTEXT',  'lang="' . $self->get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 
-
-  # FIXME set language and documentencoding/encoding_name
   # prepare title
   my $fulltitle;
   foreach my $fulltitle_command('settitle', 'title', 
