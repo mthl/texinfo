@@ -71,7 +71,7 @@ my $quoted_path_separator = quotemeta($path_separator);
 # NOTE FOR DEBUGGING THIS SCRIPT:
 # You can run 'perl -x texi2html.pl' directly, provided you have the script
 # in the same directory with, or the environment variable T2H_HOME set to
-# the directory containing, the texi2html.init, T2h_i18n.pm, translations.pl,
+# the directory containing, the texi2html.pm, T2h_i18n.pm, translations.pl,
 # l2h.init, & T2h_l2h.pm files.  Ditto makeinfo.pl, if you make it a
 # symlink to texi2html.pl.
 #
@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.434 2011-03-22 00:36:56 pertusus Exp $
+# $Id: texi2html.pl,v 1.435 2011-04-09 00:10:43 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -303,8 +303,8 @@ sub set_config_init_dirs_output($)
 #                                                                             #
 # Initialization                                                              #
 # Some declarations, some functions that are GPL and therefore cannot be in   #
-# texi2html.init, some functions that are not to be customized.               #
-# Pasted content of File $(srcdir)/texi2html.init: Default initializations    #
+# texi2html.pm, some functions that are not to be customized.                 #
+# Pasted content of File $(srcdir)/texi2html.pm: Default initializations      #
 #                                                                             #
 #---###########################################################################
 {
@@ -661,7 +661,7 @@ sub load($)
     # workaround for having the function redefined, though.
     foreach my $output_format (keys(%output_format_names))
     {
-      if ($file =~ /\/$output_format\.init$/)
+      if ($file =~ /\/$output_format\.pm$/)
       {
          t2h_default_load_format($output_format, 1);
          return 1;
@@ -835,7 +835,7 @@ sub N__($)
 
 #
 # Function refs covered by the GPL as part of the texi2html.pl original
-# code. As such they cannot appear in texi2html.init which is public 
+# code. As such they cannot appear in texi2html.pm which is public 
 # domain (at least the things coded by me, and, if I'm not wrong also the 
 # things coded by Olaf -- Pat).
 #
@@ -1574,43 +1574,43 @@ require "$T2H_HOME/documentlanguages.pl"
 
 # leave this within comments, and keep the require statement
 # This way, you can directly run texi2html.pl, if 
-# $T2H_HOME/texi2html.init exists.
+# $T2H_HOME/texi2html.pm exists.
 
 # @INIT@
 
-require "$T2H_HOME/texi2html.init" 
+require "$T2H_HOME/texi2html.pm" 
     if ($0 =~ /\.pl$/ &&
-        -e "$T2H_HOME/texi2html.init" && -r "$T2H_HOME/texi2html.init");
+        -e "$T2H_HOME/texi2html.pm" && -r "$T2H_HOME/texi2html.pm");
 
 # @INIT_HTML@
 
-require "$T2H_HOME/formats/html.init" 
+require "$T2H_HOME/formats/html.pm" 
     if ($0 =~ /\.pl$/ &&
-        -e "$T2H_HOME/formats/html.init" && -r "$T2H_HOME/formats/html.init");
+        -e "$T2H_HOME/formats/html.pm" && -r "$T2H_HOME/formats/html.pm");
 
 # @INIT_INFO@
 
-require "$T2H_HOME/formats/info.init" 
+require "$T2H_HOME/formats/info.pm" 
     if ($0 =~ /\.pl$/ &&
-        -e "$T2H_HOME/formats/info.init" && -r "$T2H_HOME/formats/info.init");
+        -e "$T2H_HOME/formats/info.pm" && -r "$T2H_HOME/formats/info.pm");
 
 # @INIT_DOCBOOK@
 
-require "$T2H_HOME/formats/docbook.init"
+require "$T2H_HOME/formats/docbook.pm"
     if ($0 =~ /\.pl$/ &&
-        -e "$T2H_HOME/formats/docbook.init" && -r "$T2H_HOME/formats/docbook.init");
+        -e "$T2H_HOME/formats/docbook.pm" && -r "$T2H_HOME/formats/docbook.pm");
 
 # @INIT_XML@
 
-require "$T2H_HOME/formats/xml.init"
+require "$T2H_HOME/formats/xml.pm"
     if ($0 =~ /\.pl$/ &&
-        -e "$T2H_HOME/formats/xml.init" && -r "$T2H_HOME/formats/xml.init");
+        -e "$T2H_HOME/formats/xml.pm" && -r "$T2H_HOME/formats/xml.pm");
 
 # @INIT_PLAINTEXT@
 
-require "$T2H_HOME/formats/plaintext.init"
+require "$T2H_HOME/formats/plaintext.pm"
     if ($0 =~ /\.pl$/ &&
-        -e "$T2H_HOME/formats/plaintext.init" && -r "$T2H_HOME/formats/plaintext.init");
+        -e "$T2H_HOME/formats/plaintext.pm" && -r "$T2H_HOME/formats/plaintext.pm");
 
 my $translation_file = 'translations.pl'; # file containing all the translations
 my $T2H_OBSOLETE_STRINGS;
@@ -1798,7 +1798,7 @@ use vars qw(
 
 # Some global variables are set in the script, and used in the subroutines
 # they are in the Texi2HTML namespace, thus prefixed with Texi2HTML::.
-# see texi2html.init for details.
+# see texi2html.pm for details.
 
 #+++############################################################################
 #                                                                              #
@@ -4409,7 +4409,7 @@ if (get_conf('L2H') and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $Texi2HTM
    push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
    # do it here once to have something ready for special regions
    push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::init_from_html;
-   # do it here once more in case the file was modified (see mediawiki.init)
+   # do it here once more in case the file was modified (see mediawiki.pm)
    push @Texi2HTML::Config::command_handler_output, \&Texi2HTML::LaTeX2HTML::init_from_html;
    push @Texi2HTML::Config::command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
    $Texi2HTML::Config::command_handler{'math'} = 
@@ -7143,7 +7143,7 @@ sub rearrange_elements()
             push @{$section->{'sectionup'}->{'section_childs'}}, $section;
         }
         $previous_sections[$section->{'level'}] = $section;
-        # This is what is used in the .init file. 
+        # This is what is used in the init file. 
         $section->{'up'} = $section->{'sectionup'};
         # Not used but documented. 
         $section->{'next'} = $section->{'sectionnext'};
@@ -7514,7 +7514,7 @@ sub rearrange_elements()
                   if (defined($section->{$direction}));
             }
         }
-        # 'up' is used in .init files. It is almost sectionup, but not
+        # 'up' is used in init files. It is almost sectionup, but not
         # exactly, it allows to have something relevant whether elements
         # are nodes or sections -- just like Back and Forward. So it
         # should certainly be kept.
@@ -8149,7 +8149,7 @@ sub rearrange_elements()
         }
     }
     # convert directions in direction with first letter in all caps, to be
-    # consistent with the convention used in the .init file.
+    # consistent with the convention used in the init file.
     foreach my $element (@elements_list)
     {
         foreach my $direction (@element_directions)
@@ -11250,7 +11250,7 @@ sub begin_format($$$$$$)
     elsif ((exists ($Texi2HTML::Config::complex_format_map->{$macro})
          or exists ($Texi2HTML::Config::complex_format_map{$macro}))
       and ($format_type{$macro} ne 'menu' or get_conf('SIMPLE_MENU')))
-    { # handle menu if SIMPLE_MENU. see texi2html.init
+    { # handle menu if SIMPLE_MENU. see texi2html.pm
         my $complex_format;
         if (exists ($Texi2HTML::Config::complex_format_map->{$macro}))
         {
@@ -14648,7 +14648,7 @@ sub scan_line($$$$;$)
                 } 
                 # currently if remove_texi and anchor/ref/footnote
                 # the text within the command is ignored
-                # see t2h_remove_command in texi2html.init
+                # see t2h_remove_command in texi2html.pm
                 my $new_command_ref = { 'style' => $macro, 'text' => '', 'arg_nr' => 0, 'line_nr' => $line_nr };
                 push (@$stack, $new_command_ref);
                 if ($no_paragraph_macro{$macro})
@@ -17053,7 +17053,7 @@ while(@input_files)
    @{$Texi2HTML::THIS_SECTION} = ();
 
    # the reference to these hashes may be used before this point (for example
-   # see makeinfo.init), so they should be kept as is and the values undef
+   # see makeinfo.pm), so they should be kept as is and the values undef
    # but the key should not be deleted because the ref is on the key.
    foreach my $hash (\%Texi2HTML::HREF, \%Texi2HTML::NAME, \%Texi2HTML::NODE,
         \%Texi2HTML::NO_TEXI, \%Texi2HTML::SIMPLE_TEXT)

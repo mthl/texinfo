@@ -63,7 +63,7 @@ side:
 @item Some options, although obsoleted are still available.
 @item The defaults for the HTML formatting may be slightly different. 
 Have a look at the function @code{t2h_default_set_variables_texi2html} 
-in @file{texi2html.init}.
+in @file{texi2html.pm}.
 @end itemize
 
 @node Texi2HTML changes

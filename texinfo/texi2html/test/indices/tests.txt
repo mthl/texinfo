@@ -3,16 +3,16 @@ index_table index_table.texi
 index_table_chapter index_table.texi --split chapter --init index_test.init
 split_chapter_index split_chapter_index.texi --split chapter --init index_test.init
 index_split index_split.texi --split chapter --init index_test.init
-makeinfo_index_split index_split.texi --init makeinfo.init --init index_test.init
+makeinfo_index_split index_split.texi --init makeinfo.pm --init index_test.init
 index_no_node index_no_node.texi --split chapter --init index_test.init
-makeinfo_nodes_before_top nodes_before_top.texi --init makeinfo.init --init index_test.init --split node --no-node-files
+makeinfo_nodes_before_top nodes_before_top.texi --init makeinfo.pm --init index_test.init --split node --no-node-files
 nodes_before_top nodes_before_top.texi --set-init-var 'USE_NODES 1' --init index_test.init --split chapter
 # there is no sectioning command in nodes_before_top.texi, so when called as
 # texi2html there is nothing split, including indices. 
 nodes_before_top_no_nodes nodes_before_top.texi --init index_test.init --split chapter
 nodes_before_top_and_sections nodes_before_top_and_sections.texi --init index_test.init --split chapter
 nodes_before_top_and_sections_monolithic nodes_before_top_and_sections.texi
-makeinfo_nodes_before_top_and_sections nodes_before_top_and_sections.texi --init makeinfo.init --init index_test.init
+makeinfo_nodes_before_top_and_sections nodes_before_top_and_sections.texi --init makeinfo.pm --init index_test.init
 nodes_before_top_and_sections_html_chapter nodes_before_top_and_sections.texi --html --split chapter
 nodes_before_top_and_sections_html_chapter_nodes nodes_before_top_and_sections.texi --html --set-init-var 'USE_NODES 1' --node-files --split chapter
 index_special_region index_special_region.texi --split chapter --set-init-var 'USE_TITLEPAGE_FOR_TITLE 0'
@@ -22,7 +22,7 @@ index_special_region_html index_special_region.texi --html --split chapter
 index_special_region_no_region_html index_special_region_no_region.texi --html --split chapter
 index_special_region_no_insertcopying_html index_special_region_no_insertcopying.texi --html --split chapter
 index_nodes index_nodes.texi
-makeinfo_index_nodes index_nodes.texi --init makeinfo.init --init index_test.init  --split node
+makeinfo_index_nodes index_nodes.texi --init makeinfo.pm --init index_test.init  --split node
 printindex_between_node_section printindex_between_node_section.texi --init index_test.init --node-files
 printindex_between_part_chapter printindex_between_part_chapter.texi --init index_test.init
 index_and_node_same_name index_and_node_same_name.texi

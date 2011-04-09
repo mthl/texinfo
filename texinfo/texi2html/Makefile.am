@@ -39,24 +39,24 @@ bin_SCRIPTS = texi2any
 texi2html_additional_scripts = \
 	MySimple.pm \
 	T2h_i18n.pm \
-	texi2html.init \
+	texi2html.pm \
 	translations.pl \
 	examples/l2h.init \
 	T2h_l2h.pm \
 	documentlanguages.pl
 
 texi2html_formats = \
-	formats/html.init \
-	formats/info.init \
-	formats/docbook.init \
-	formats/xml.init \
-	formats/plaintext.init
+	formats/html.pm \
+	formats/info.pm \
+	formats/docbook.pm \
+	formats/xml.pm \
+	formats/plaintext.pm
 
-dist_init_DATA = maintained_extra/book.init \
-	maintained_extra/chm.init \
-	maintained_extra/tex4ht.init \
-	maintained_extra/html32.init \
-	maintained_extra/mediawiki.init
+dist_init_DATA = maintained_extra/book.pm \
+	maintained_extra/chm.pm \
+	maintained_extra/tex4ht.pm \
+	maintained_extra/html32.pm \
+	maintained_extra/mediawiki.pm
 
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
@@ -79,13 +79,12 @@ EXTRA_DIST = \
 	regenerate_documentlanguages.pl \
 	$(texi2html_additional_scripts) \
 	$(texi2html_formats) \
-	examples/l2h.init \
-	examples/makeinfo.init \
-	examples/xhtml.init \
-	examples/noheaders.init \
-	examples/utf8.init \
-	examples/enable_encoding.init \
-	examples/roff.init \
+	examples/makeinfo.pm \
+	examples/xhtml.pm \
+	examples/noheaders.pm \
+	examples/utf8.pm \
+	examples/enable_encoding.pm \
+	examples/roff.pm \
 	examples/my-bib-macros.texi \
 	examples/bib-example.texi \
 	examples/glossary.texi \

@@ -2,7 +2,7 @@
 #
 #+##############################################################################
 #
-# info.init: convert to info
+# info.pm: convert to info
 #
 #    Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 #

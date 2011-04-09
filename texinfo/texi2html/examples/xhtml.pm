@@ -1,7 +1,7 @@
 # -*-perl-*-
 #+##############################################################################
 #
-# xhtml.init: convert to well-formed xhtml transitional
+# xhtml.pm: convert to well-formed xhtml transitional
 # !!!!!!! This is very out of date!!!!
 #
 #    Copyright (C) 2003 Free Software Foundation, Inc.
@@ -54,7 +54,7 @@ $print_page_foot	      = \&T2H_XHTML_print_page_foot;
 $print_frame              = \&T2H_XHTML_print_frame;
 $button_icon_img	      = \&T2H_XHTML_button_icon_img;
 
-#FIXME update once it is more stabilized in texi2html.init
+#FIXME update once it is more stabilized in texi2html.pm
 sub T2H_XHTML_print_page_head
 {
     my $fh = shift;

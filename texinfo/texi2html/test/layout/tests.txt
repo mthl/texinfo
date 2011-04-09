@@ -6,7 +6,7 @@ no_monolithic no_monolithic.texi --set-init-var 'MONOLITHIC 0'
 no_monolithic_only_toc_out no_monolithic.texi --set-init-var 'MONOLITHIC 0' --init only_toc_out.init
 navigation navigation.texi
 navigation_no_header navigation.texi --no-header
-navigation_noheaders_init navigation.texi --init noheaders.init
+navigation_noheaders_init navigation.texi --init noheaders.pm
 navigation_vertical navigation.texi --set-init-var 'VERTICAL_HEAD_NAVIGATION 1'
 navigation_no_header_vertical navigation.texi --set-init-var 'VERTICAL_HEAD_NAVIGATION 1' --set-init-var HEADERS=0
 navigation_chapter navigation.texi --split chapter
@@ -15,9 +15,9 @@ navigation_node navigation.texi --split node
 navigation_chapter_no_header navigation.texi --split chapter --no-header
 navigation_section_no_header navigation.texi --split section --no-header
 navigation_node_no_header navigation.texi --split node --no-header
-navigation_chapter_noheaders_init navigation.texi --split chapter --init noheaders.init
-navigation_section_noheaders_init navigation.texi --split section --init noheaders.init
-navigation_node_noheaders_init navigation.texi --split node  --init noheaders.init
+navigation_chapter_noheaders_init navigation.texi --split chapter --init noheaders.pm
+navigation_section_noheaders_init navigation.texi --split section --init noheaders.pm
+navigation_node_noheaders_init navigation.texi --split node  --init noheaders.pm
 navigation_chapter_vertical navigation.texi --set-init-var 'VERTICAL_HEAD_NAVIGATION 1' --split chapter
 navigation_section_vertical navigation.texi --set-init-var 'VERTICAL_HEAD_NAVIGATION 1' --split section
 navigation_node_vertical navigation.texi --set-init-var 'VERTICAL_HEAD_NAVIGATION 1' --split node
@@ -27,8 +27,8 @@ navigation_node_no_header_vertical navigation.texi --set-init-var 'VERTICAL_HEAD
 navigation_test_misc_file_collision navigation.texi --split node --init misc_file_collision.init
 formatting_regions formatting_regions.texi
 formatting_exotic ../coverage/formatting.texi --split section --no-header --no-number-sections --set-init-var 'TOC_LINKS 1' --set-init-var 'DEF_TABLE 1' --set-init-var 'SHORT_REF 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null --set-init-var 'USE_TITLEPAGE_FOR_TITLE 0'
-formatting_makeinfo ../coverage/formatting.texi --init makeinfo.init --no-warn
-formatting_chm ../coverage/formatting.texi --init chm.init
+formatting_makeinfo ../coverage/formatting.texi --init makeinfo.pm --no-warn
+formatting_chm ../coverage/formatting.texi --init chm.pm
 formatting_program_texi2any ../coverage/formatting.texi --program texi2any
 formatting_program_foo ../coverage/formatting.texi --program foo
 float_program_texi2any ../coverage/float.texi --program texi2any

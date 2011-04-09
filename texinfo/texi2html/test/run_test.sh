@@ -169,7 +169,7 @@ do
       fi
       use_latex2html=yes
       l2h_tmp_dir="--set-init-var 'L2H_TMP $tmp_dir'"
-    elif echo "$remaining" | grep -qs -- '-init tex4ht.init'; then
+    elif echo "$remaining" | grep -qs -- '-init tex4ht.pm'; then
       if [ "$no_tex4ht" = 'yes' ]; then
         echo "S: (no tex4ht) $dir"
         continue

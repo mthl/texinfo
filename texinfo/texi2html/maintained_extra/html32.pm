@@ -1,7 +1,7 @@
 # -*-perl-*-
 #+##############################################################################
 #
-# html32.init: output HTML 3.2
+# html32.pm: output HTML 3.2
 #
 #    Copyright (C) 2003, 2004, 2007, 2009 Free Software Foundation, Inc.
 #

@@ -221,7 +221,7 @@ do
         fi
         use_latex2html=yes
         l2h_tmp_dir="--set-init-var 'L2H_TMP $tmp_dir'"
-      elif echo "$remaining" | grep -qs -- '-init tex4ht.init'; then
+      elif echo "$remaining" | grep -qs -- '-init tex4ht.pm'; then
         if [ "$no_tex4ht" = 'yes' ]; then
           echo "S: (no tex4ht) $current"
           continue 2
@@ -229,7 +229,7 @@ do
         use_tex4ht=yes
       fi
       if [ $use_tex4ht = 'yes' -o $use_latex2html = 'yes' ]; then
-        if echo "$remaining" | grep -qs -- '-init mediawiki.init'; then
+        if echo "$remaining" | grep -qs -- '-init mediawiki.pm'; then
          if [ "$no_html2wiki" = 'yes' ]; then
            echo "S: (no html2wiki) $current"
            continue 2

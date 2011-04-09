@@ -1,7 +1,7 @@
 # -*-perl-*-
 #+##############################################################################
 #
-# noheaders.init: output html without headers. Obsoleted by --no-header
+# noheaders.pm: output html without headers. Obsoleted by --no-header
 #
 #    Copyright (C) 2004, 2007 Free Software Foundation, Inc.
 #

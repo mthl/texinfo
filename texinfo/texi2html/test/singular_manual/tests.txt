@@ -2,4 +2,4 @@ texi singular.texi
 singular_plain singular.texi --split chapter
 # Use the obsolete command-line switch to test that they function
 singular singular.texi --init-file t2h_singular.init --l2h --short-ext --prefix=sing --top-file=index.htm --noVerbose
-singular_httex singular.texi --init-file t2h_singular.init --init tex4ht.init --set-init-var 'SHORTEXTN 1' --set-init-var 'PREFIX sing' --set-init-var 'TOP_FILE index.htm' --no-verbose
+singular_httex singular.texi --init-file t2h_singular.init --init tex4ht.pm --set-init-var 'SHORTEXTN 1' --set-init-var 'PREFIX sing' --set-init-var 'TOP_FILE index.htm' --no-verbose

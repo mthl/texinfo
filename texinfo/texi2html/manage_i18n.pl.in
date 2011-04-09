@@ -61,8 +61,8 @@ my @searched_dirs = (); # dir searched for sources and language files
 
 #my $template = 'template';
 my $template_lang = 'en';
-my @sources = ('texi2html.pl', 'texi2html.init', 'T2h_i18n.pm', 
- 'examples/roff.init', 'examples/noheaders.init');
+my @sources = ('texi2html.pl', 'texi2html.pm', 'T2h_i18n.pm', 
+ 'examples/roff.pm', 'examples/noheaders.pm');
 my $lang;
 my $charset;
 

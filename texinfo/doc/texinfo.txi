@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.378 2011-03-18 23:20:37 karl Exp $
+@c $Id: texinfo.txi,v 1.379 2011-04-09 00:10:38 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16350,7 +16350,8 @@ indirect subfiles is determined by @code{@@setfilename}
 @item --init-file=@var{file}
 @opindex --init-file=@var{file}
 Load @var{file} as code to modify the behavior and output of the
-generated manual.  It is customary to use the @code{.init} extension
+generated manual.  It is customary to use the @code{.pm} or 
+the @code{.init} extensions
 for these customization files, but that is not enforced by anything;
 the @var{file} name is taken literally.  @option{--conf-dir} (see
 above) may be used to add to the list of directories in which these
@@ -18048,7 +18049,7 @@ support; 2)@tie{}The HTML@tie{}4 @samp{lang} attribute on the
 @samp{<html>} attribute is used; 3)@tie{} Entities that are not in the
 HTML@tie{}3.2 standard are also used.
 
-Using @samp{--init-file=html32.init} produces strict HTML@tie{}3.2
+Using @samp{--init-file=html32.pm} produces strict HTML@tie{}3.2
 output (@pxref{Invoking texi2any}).
 
 Please report output from an error-free run of @code{makeinfo} which
@@ -18903,13 +18904,13 @@ Additional directories may be prepended to the list with the
 @cindex Perl, language for init files
 
 Init files are written in Perl, and by convention have extension
-@file{.init}.  Several init files are included in the Texinfo
+@file{.init} or @file{.pm}.  Several init files are included in the Texinfo
 distribution (some are crucial components of the program), and can
 serve as a good model for writing your own.  In particular, the
-@file{texi2html.init} file is used to set all the defaults for
+@file{texi2html.pm} file is used to set all the defaults for
 Texinfo.  Although it is large, it contains many useful examples of
-settings.  Smaller examples include @file{utf8.init},
-@file{html32.init}, and plenty more.
+settings.  Smaller examples include @file{utf8.pm},
+@file{html32.pm}, and plenty more.
 
 @menu
 * Init File Variables::  Configuration & other variables, function references.
@@ -23170,7 +23171,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.378 2011-03-18 23:20:37 karl Exp $
+$Id: texinfo.txi,v 1.379 2011-04-09 00:10:38 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23249,7 +23250,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.378 2011-03-18 23:20:37 karl Exp $
+@comment $Id: texinfo.txi,v 1.379 2011-04-09 00:10:38 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

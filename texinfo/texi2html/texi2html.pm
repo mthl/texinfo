@@ -1,7 +1,7 @@
 # -*-perl-*-
 # vim: set filetype=perl:
 ######################################################################
-# File: texi2html.init
+# File: texi2html.pm
 #
 # Default values for command-line arguments and for various customizable
 # procedures are set in this file.
@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.292 2010-10-28 21:38:27 pertusus Exp $
+# $Id: texi2html.pm,v 1.1 2011-04-09 00:10:44 pertusus Exp $
 
 
 ##################################################################
@@ -1337,7 +1337,7 @@ sub t2h_encoding_is_entity($)
   return 1 if ($text =~ /^&/ and $text =~ /;$/);
 }
 
-# this is for info.init
+# this is for info.pm
 use vars qw(%t2h_enable_encoding_default_accent);
 my @t2h_enable_encoding_accents_stack;
 my %t2h_enable_encoding_default_commands;
@@ -3233,7 +3233,7 @@ foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1',
   $canonical_texinfo_encodings{$canonical_encoding} = 1;
 }
 
-# not used currently for html, but used in chm.init
+# not used currently for html, but used in chm.pm
 %numeric_entity_map = ();
 
 foreach my $symbol (keys(%unicode_map))
@@ -5652,7 +5652,7 @@ sub t2h_default_normal_text($$$$$$$;$)
    my $style_stack = shift;
    my $state = shift;
 
-  # like utf8.init
+  # like utf8.pm
    if (get_conf('ENABLE_ENCODING') and !get_conf('ENABLE_ENCODING_USE_ENTITY') and defined(get_conf('ENCODING_NAME')) and get_conf('ENCODING_NAME') eq 'utf-8' and get_conf('USE_UNICODE'))
    {
       return &t2h_utf8_normal_text(@initial_args);

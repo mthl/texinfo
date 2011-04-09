@@ -72,10 +72,10 @@ macro_in_menu macro_in_menu.texi
 ref_in_anchor ref_in_anchor.texi
 tex tex.texi --set-init-var 'L2H 1' --iftex
 tex_notex tex.texi
-tex_httex tex.texi --init tex4ht.init --iftex
-tex_mediawiki tex.texi --init mediawiki.init --iftex
-tex_httex_mediawiki tex.texi --html --init tex4ht.init --init mediawiki.init --iftex
-tex_l2h_mediawiki tex.texi --html --set-init-var 'L2H 1' --iftex --init mediawiki.init
+tex_httex tex.texi --init tex4ht.pm --iftex
+tex_mediawiki tex.texi --init mediawiki.pm --iftex
+tex_httex_mediawiki tex.texi --html --init tex4ht.pm --init mediawiki.pm --iftex
+tex_l2h_mediawiki tex.texi --html --set-init-var 'L2H 1' --iftex --init mediawiki.pm
 block_EOL block_EOL.texi
 block_EOL_tex block_EOL.texi --set-init-var 'L2H 1' --iftex
 detailmenus detailmenus.texi
@@ -102,8 +102,8 @@ symbol_after_block symbol_after_block.texi
 symbol_after_command symbol_after_command.texi
 formatting_weird_quotes ../coverage/formatting.texi --set-init-var 'OPEN_QUOTE_SYMBOL @' --set-init-var "CLOSE_QUOTE_SYMBOL '&lsquo;"
 comments_redefine_need ../coverage/comments.texi --init redefine_need.init
-simplest_httex simplest.texi --init tex4ht.init --iftex
-html-extrali html-extrali.texi --init makeinfo.init
+simplest_httex simplest.texi --init tex4ht.pm --iftex
+html-extrali html-extrali.texi --init makeinfo.pm
 html-para html-para.texi
 html-title html-title.texi
 images images.texi
@@ -143,7 +143,7 @@ no_colon_in_menu no_colon_in_menu.texi
 warn_characters_in_var warn_characters_in_var.texi
 itemize_w itemize_w.texi
 
-#lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.init
+#lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.pm
 quotation_docbook quotation.texi --docbook
 at_command_glued_info at_command_glued.texi --info
 test_sp_info test_sp.texi --info
@@ -154,7 +154,7 @@ formatting_html ../coverage/formatting.texi --html --no-split
 formatting_html_nodes ../coverage/formatting.texi --html --split node --node-files --set-init-var 'TOP_FILE index.html'
 formatting_info ../coverage/formatting.texi --info -U texi2html
 formatting_plaintext ../coverage/formatting.texi --plaintext -U texi2html
-#formatting_mediawiki ../coverage/formatting.texi --init mediawiki.init
+#formatting_mediawiki ../coverage/formatting.texi --init mediawiki.pm
 direntry_dircategory_info direntry_dircategory.texi --info
 direntry_dircategory_info_split direntry_dircategory.texi --info --split-size 1
 direntry_dircategory_xml direntry_dircategory.texi --xml

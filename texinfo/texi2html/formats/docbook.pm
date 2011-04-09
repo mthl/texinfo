@@ -1,6 +1,6 @@
 #+##############################################################################
 #
-# docbook.init: convert to docbook
+# docbook.pm: convert to docbook
 #
 #    Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 #

@@ -33,9 +33,9 @@ no_content_inline no_content.texi --set-init-var 'INLINE_CONTENTS 1'
 no_content_do_contents_inline no_content.texi --set-init-var 'INLINE_CONTENTS 1' --set-init-var 'contents 1'
 no_content_setcatpage_inline no_content_setcatpage.texi --set-init-var 'INLINE_CONTENTS 1'
 no_content_setcatpage_do_contents_inline no_content_setcatpage.texi --set-init-var 'INLINE_CONTENTS 1' --set-init-var 'contents 1'
-double_contents_book double_contents.texi --init book.init
-double_contents_setcontentsaftertitlepage_book double_contents_setcontentsaftertitlepage.texi --init book.init
-double_contents_setcontentsaftertitlepage_book_chapter double_contents_setcontentsaftertitlepage.texi --init book.init --split chapter
+double_contents_book double_contents.texi --init book.pm
+double_contents_setcontentsaftertitlepage_book double_contents_setcontentsaftertitlepage.texi --init book.pm
+double_contents_setcontentsaftertitlepage_book_chapter double_contents_setcontentsaftertitlepage.texi --init book.pm --split chapter
 contents_and_parts contents_and_parts.texi
 
 contents_at_begin_info contents_at_begin.texi --info

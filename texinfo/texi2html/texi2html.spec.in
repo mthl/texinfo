@@ -66,7 +66,7 @@ fi
 
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING ChangeLog NEWS README TODO %{name}.init
+%doc AUTHORS COPYING ChangeLog NEWS README TODO %{name}.pm
 %doc __dist_examples/examples/
 %{_bindir}/%{name}
 %{_bindir}/texi2any
@@ -74,7 +74,7 @@ fi
 %{_infodir}/%{name}.info*
 %dir %{_datadir}/texinfo/
 %dir %{_datadir}/texinfo/init
-%{_datadir}/texinfo/init/*.init
+%{_datadir}/texinfo/init/*.pm
 %{_datadir}/texinfo/html/%{name}.html
 %dir %{_datadir}/%{name}/i18n/
 %{_datadir}/%{name}/i18n/*

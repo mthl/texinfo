@@ -191,7 +191,7 @@ table menu
 
 * test stuff on 'line_command' relevant in pass 1, like @macro, @ignore...
 
-* in chm.init (Jose Fonseca)
+* in chm.pm (Jose Fonseca)
 
 [WINDOWS]
  
@@ -344,9 +344,9 @@ in nested table line
   Maybe it is because they are in footnotes. Or maybe because they are
   in a caption.
 
-* in examples/chm.init use main::open_out to open files.
+* in examples/chm.pm use main::open_out to open files.
 
-* examples/mediawiki.init: end of lines within lists leads to empty lines
+* examples/mediawiki.pm: end of lines within lists leads to empty lines
   that may not be what the user wanted. Maybe this could be ameliorated.
 
 * mediawiki: external links, in node directions, in menus, in @refs 
@@ -429,14 +429,14 @@ macro isn't defined.
   open paragraphs in tex rendering while the whole is already in a 
   paragraph.
 
-* utf8.init doesn't work with info.init (see encodings/nodetest_to_utf8_latin1)
+* utf8.pm doesn't work with info.pm (see encodings/nodetest_to_utf8_latin1)
 
 * menu_description is menucomment in xml. 
   menuentry is the menunode+menutitle+menucomment
   menu_comment in makeinfo --xml treated as normal text.
   the documentation, however uses the same words than in texi2html.
 
-* enable_encoding.init is certainly dependent on USE_UNICODE through
+* enable_encoding.pm is certainly dependent on USE_UNICODE through
 the use of non 8 bit representation of characters.
 
 * code_style is used for code_style style @-commands in remove_texi.
@@ -479,4 +479,4 @@ tex + txicodequote*:
 
 So things are right as is, but in formats that always set the quotes to 
 a special font should honor  txicodequote* like tex. There is an example
-of such code commented out in texi2html.init in normal_text.
+of such code commented out in texi2html.pm in normal_text.

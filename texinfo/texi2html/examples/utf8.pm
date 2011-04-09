@@ -1,7 +1,7 @@
 # -*-perl-*-
 #+##############################################################################
 #
-# utf8.init: convert accented letters to utf8
+# utf8.pm: convert accented letters to utf8
 #
 # This style doesn't work when outputting info.
 #

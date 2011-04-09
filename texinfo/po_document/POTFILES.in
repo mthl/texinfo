@@ -1,20 +1,20 @@
 # List of source files which contain translatable strings.
 
 texi2html/texi2html.pl
-texi2html/texi2html.init
+texi2html/texi2html.pm
 texi2html/T2h_l2h.pm
 texi2html/T2h_i18n.pm
-texi2html/formats/docbook.init
-texi2html/formats/html.init
-texi2html/formats/info.init
-texi2html/formats/plaintext.init
-texi2html/formats/xml.init
-texi2html/maintained_extra/book.init
-texi2html/maintained_extra/chm.init
-texi2html/maintained_extra/html32.init
-texi2html/maintained_extra/tex4ht.init
-texi2html/maintained_extra/mediawiki.init
-texi2html/examples/roff.init
+texi2html/formats/docbook.pm
+texi2html/formats/html.pm
+texi2html/formats/info.pm
+texi2html/formats/plaintext.pm
+texi2html/formats/xml.pm
+texi2html/maintained_extra/book.pm
+texi2html/maintained_extra/chm.pm
+texi2html/maintained_extra/html32.pm
+texi2html/maintained_extra/tex4ht.pm
+texi2html/maintained_extra/mediawiki.pm
+texi2html/examples/roff.pm
 tp/Texinfo/Parser.pm
 tp/Texinfo/Convert/Info.pm
 tp/Texinfo/Convert/Plaintext.pm

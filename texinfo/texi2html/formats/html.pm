@@ -1,7 +1,7 @@
 # -*-perl-*-
 # vim: set filetype=perl:
 ######################################################################
-# File: html.init
+# File: html.pm
 # html output formatting
 #
 # A copy of this file is pasted into the beginning of texi2html by
@@ -10,15 +10,15 @@
 # This file is in the public domain. Thus it may easily be used as an 
 # example for further customizations.
 #
-# Taken from texi2html.init in 2009.
+# Taken from texi2html.pm in 2009.
 # Originally written by Olaf Bachmann.
 #
-# $Id: html.init,v 1.60 2010-09-12 20:06:13 pertusus Exp $
+# $Id: html.pm,v 1.1 2011-04-09 00:10:45 pertusus Exp $
 
 use strict;
 
 use vars qw(@html_default_multitable_stack);
-# used in mediawiki.init
+# used in mediawiki.pm
 #my  @html_default_multitable_stack;
 # tracks menu entry index
 my $html_menu_entry_index;
@@ -1676,7 +1676,7 @@ sub html_default_normal_text($$$$$$$;$)
    my $style_stack = shift;
    my $state = shift;
 
-  # like utf8.init
+  # like utf8.pm
    if (get_conf('ENABLE_ENCODING') and !get_conf('ENABLE_ENCODING_USE_ENTITY') and defined(get_conf('ENCODING_NAME')) and get_conf('ENCODING_NAME') eq 'utf-8')
    {
       my $result = &t2h_utf8_normal_text(@initial_args);

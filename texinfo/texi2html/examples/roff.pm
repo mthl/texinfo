@@ -1,7 +1,7 @@
 # -*-perl-*-
 #+##############################################################################
 #
-# roff.init: convert to roff
+# roff.pm: convert to roff
 #
 # So much out of date that it may be considered unuseful.
 #
@@ -25,7 +25,7 @@
 #-##############################################################################
 
 # FIXME obsolete
-main::load_init_file('', 'noheaders.init');
+main::load_init_file('', 'noheaders.pm');
 
 set_default('SPLIT', 0);
 @EXPAND = ('info');

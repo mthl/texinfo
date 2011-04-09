@@ -1,11 +1,11 @@
 # -*-perl-*-
 ######################################################################
-# File: mediawiki.init
+# File: mediawiki.pm
 #
 # Override values for various customizable procedures are set in this file
 # in such a way as to create text suitable for pasting into a MediaWiki.
 #
-# Load the file with command-line option: --init-file mediawiki.init
+# Load the file with command-line option: --init-file mediawiki.pm
 #
 # This file is in the public domain. Thus it may easily be used as an 
 # example for further customizations.
@@ -13,7 +13,7 @@
 # Originally written by Derek Price in 2005.
 # Modified in 2008 and 2009.
 #
-# $Id: mediawiki.init,v 1.9 2010-07-15 12:27:00 pertusus Exp $
+# $Id: mediawiki.pm,v 1.1 2011-04-09 00:10:45 pertusus Exp $
 
 use strict;
 
@@ -229,7 +229,7 @@ push @command_handler_init, \&mediawiki_default_init_html_to_wiki;
 sub mediawiki_default_init_html_to_wiki
 {
   # This must be done here, because the latex2html handler is added 
-  # after command line scanning, so after the mediawiki.init parsing
+  # after command line scanning, so after the mediawiki.pm parsing
   push @command_handler_process, \&mediawiki_default_html_to_wiki;
 
   $command_handler{'math'}->{'init'} = undef;
@@ -253,7 +253,7 @@ sub mediawiki_default_init_html_to_wiki
   }
 }
 
-# could be in texi2html.init...
+# could be in texi2html.pm...
 sub mediawiki_default_readd_end_of_lines($$$$;$)
 {
    my $from_file = shift;

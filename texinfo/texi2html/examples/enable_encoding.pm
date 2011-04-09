@@ -1,7 +1,7 @@
 # -*-perl-*-
 #+##############################################################################
 #
-# enable_encoding.init: mimics --enable-encoding
+# enable_encoding.pm: mimics --enable-encoding
 # This is now directly handled in the main program. It is, however different
 # from the main program implementation snce this init file is much more
 # intrusive (for example it wouldn't work with info, but it would work 
@@ -31,13 +31,13 @@ use strict;
 my $enable_encoding_default_init_out = $init_out;
 $init_out = \&enable_encoding_init_out;
 
-# badly interact with --enable-encoding support in info.init
+# badly interact with --enable-encoding support in info.pm
 set_from_init_file('ENABLE_ENCODING', 0);
 
 sub enable_encoding_init_out()
 {
   &$enable_encoding_default_init_out();
-  # like utf8.init
+  # like utf8.pm
   if (get_conf('ENCODING_NAME') eq 'utf-8')
   {
     $normal_text       = \&t2h_utf8_normal_text unless (get_conf('ENABLE_ENCODING_USE_ENTITY'));

@@ -2,7 +2,7 @@
 
 #+##############################################################################
 #
-# chm.init: convert to chm intermediate formats hhp, hhc, hhk and html files
+# chm.pm: convert to chm intermediate formats hhp, hhc, hhk and html files
 #
 #    Copyright (C) 2004, 2006, 2009 Free Software Foundation, Inc.
 #
@@ -186,7 +186,7 @@ my %hhc_global_property = (
 
 ######################################### not used
 #
-# if needed texi to unicode, maybe this could be in utf8.init, but currently
+# if needed texi to unicode, maybe this could be in utf8.pm, but currently
 # no unicode
 my %chm_texi_map = %texi_map;
 my %chm_simple_map_texi = %simple_map_texi;

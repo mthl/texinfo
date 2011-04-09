@@ -1,3 +1,14 @@
+2011-04-09  Patrice Dumas  <pertusus@free.fr>
+
+	* */*: rename major .init files as .pm files, especially 
+	those that are processed by xgettext.  Report from Sergey 
+	Poznyakoff.
+
+2011-04-07  Patrice Dumas  <pertusus@free.fr>
+
+	* po/POTFILES.in: re-add perl files that have error messages.
+	* po_document/POTFILES.in: add tp/Convert/HTML.pm.
+
 2011-04-08  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs.sh: split_html_db_dir used before definition.

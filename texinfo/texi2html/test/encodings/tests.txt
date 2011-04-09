@@ -23,7 +23,7 @@ nodetest_utf8 nodetest_utf8.texi
 nodetest_utf8_no_unicode nodetest_utf8.texi --set-init-var 'USE_UNICODE 0'
 nodetest_utf8_use_nodes nodetest_utf8.texi --node-files --set-init-var 'USE_NODES 1' --split node
 nodetest_utf8_use_nodes_no_unidecode nodetest_utf8.texi --set-init-var 'USE_UNIDECODE 0' --node-files --set-init-var 'USE_NODES 1' --split node
-nodetest_to_utf8_latin1 nodetest_latin1.texi --init utf8.init
+nodetest_to_utf8_latin1 nodetest_latin1.texi --init utf8.pm
 nodetest_latin1 nodetest_latin1.texi
 nodetest_latin1_no_unicode nodetest_latin1.texi --set-init-var 'USE_UNICODE 0'
 nodetest_latin1_use_nodes_no_unicode nodetest_latin1.texi --set-init-var 'USE_UNICODE 0' --node-files --split node
@@ -42,14 +42,14 @@ unknown_language unknown_language.texi
 umlaut umlaut.texi
 formatting_fr ../coverage/formatting.texi --document-language fr
 formatting_fr_icons ../coverage/formatting.texi --document-language fr --init icons.init
-formatting_converted_to_utf8 ../coverage/formatting.texi --init utf8.init
+formatting_converted_to_utf8 ../coverage/formatting.texi --init utf8.pm
 accentenc accentenc.texi
-#accentenc_encoding accentenc.texi --init enable_encoding.init
+#accentenc_encoding accentenc.texi --init enable_encoding.pm
 accentenc_encoding accentenc.texi --enable-encoding --set-init-var 'ENABLE_ENCODING_USE_ENTITY 0' --set-init-var 'USE_ISO 0'
 accentenc_encoding_use_entity accentenc.texi --enable-encoding
 accent accent.texi
 weird_accents weird_accents.texi
-weird_accents_encoding weird_accents.texi --init enable_encoding.init
+weird_accents_encoding weird_accents.texi --init enable_encoding.pm
 ogolat2 ogolat2.texi
 ogoutf ogoutf.texi
 nodetest_info nodetest.texi --info
@@ -61,11 +61,11 @@ documentlanguage_set_option documentlanguage_set.texi --document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
 # iconv < encoding_index-utf8.texi -t latin1 |sed 's/utf8/latin1/' > encoding_index-latin1.texi
 encoding_index encoding_index.texi
-encoding_index_toutf8 encoding_index.texi --init utf8.init
+encoding_index_toutf8 encoding_index.texi --init utf8.pm
 encoding_index-utf8 encoding_index-utf8.texi
-encoding_index-utf8_toutf8 encoding_index-utf8.texi --init utf8.init
+encoding_index-utf8_toutf8 encoding_index-utf8.texi --init utf8.pm
 encoding_index-latin1 encoding_index-latin1.texi
-encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.init
+encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.pm
 accentenc_info accentenc.texi --info
 sample_utf8 sample_utf8.texi
 formatting_utf8_enable_encoding formatting_utf8.texi --enable-encoding

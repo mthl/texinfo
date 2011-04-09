@@ -1,7 +1,7 @@
 # -*-perl-*-
 #+##############################################################################
 #
-# makeinfo.init: output html in the makeinfo style.
+# makeinfo.pm: output html in the makeinfo style.
 #
 # This is obsoleted and irrelevant now, in 2010 (though still used in some 
 # tests) since a makeinfo-like default is used when called as makeinfo or 

@@ -55,10 +55,10 @@ macro-at macro-at.texi
 value_in_pass0_macros_plain value_in_pass0_macros.texi --macro-expand=@OUT_DIR@/value_in_pass0_macros-expanded.texi
 macros_in_pass0_macros_plain macros_in_pass0_macros.texi --macro-expand=@OUT_DIR@/macros_in_pass0_macros-expanded.texi
 macro-at_info macro-at.texi --info
-value_in_pass0_macros value_in_pass0_macros.texi --init makeinfo.init
-macros_in_pass0_macros macros_in_pass0_macros.texi --init makeinfo.init
+value_in_pass0_macros value_in_pass0_macros.texi --init makeinfo.pm
+macros_in_pass0_macros macros_in_pass0_macros.texi --init makeinfo.pm
 node-expand_plain node-expand.texi
-node-expand node-expand.texi --init makeinfo.init
+node-expand node-expand.texi --init makeinfo.pm
 node-expand_xml node-expand.texi --xml
 node-expand_info node-expand.texi --info
 include-value include-value.texi

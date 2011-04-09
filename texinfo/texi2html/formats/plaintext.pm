@@ -1,6 +1,6 @@
 #+##############################################################################
 #
-# plaintext.init: convert to plaintext
+# plaintext.pm: convert to plaintext
 #
 #    Copyright (C) 2009 Free Software Foundation, Inc.
 #

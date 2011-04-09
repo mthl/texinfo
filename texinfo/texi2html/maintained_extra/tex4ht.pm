@@ -2,7 +2,7 @@
 
 #+##############################################################################
 #
-# tex4ht.init: use tex4ht to convert tex to html
+# tex4ht.pm: use tex4ht to convert tex to html
 #
 #    Copyright (C) 2005, 2007, 2009 Free Software Foundation, Inc.
 #
@@ -39,7 +39,7 @@ push @command_handler_init, \&Texi2HTML::TeX4HT::tex4ht_init;
 push @command_handler_process, \&Texi2HTML::TeX4HT::tex4ht_process;
 # do it once here to have something ready for special regions formatting
 push @command_handler_process, \&Texi2HTML::TeX4HT::tex4ht_output;
-# do it once more if the file was modified (for example see mediawiki.init)
+# do it once more if the file was modified (for example see mediawiki.pm)
 push @command_handler_output, \&Texi2HTML::TeX4HT::tex4ht_output;
 push @command_handler_finish, \&Texi2HTML::TeX4HT::tex4ht_finish;
 
