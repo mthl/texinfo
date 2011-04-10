@@ -149,6 +149,32 @@ sub align($)
   return $self->{'context'}->[-1]->{'align'}->[-1];
 }
 
+# see http://www.w3.org/TR/REC-html40/types.html#type-links
+my %BUTTONS_REL =
+(
+ 'Top',         'start',
+ 'Contents',    'contents',
+ 'Overview',    '',
+ 'Index',       'index',
+ 'This',        '',
+ 'Back',        'previous',
+ 'FastBack',    '',
+ 'Prev',        'previous',
+ 'Up',          'up',
+ 'Next',        'next',
+ 'NodeUp',      'up',
+ 'NodeNext',    'next',
+ 'NodePrev',    'previous',
+ 'NodeForward', '',
+ 'NodeBack',    '',
+ 'Forward',     'next',
+ 'FastForward', '',
+ 'About' ,      'help',
+ 'First',       '',
+ 'Last',        '',
+ 'NextFile',    'next',
+ 'PrevFile',    'previous',
+);
 
 
 my %defaults = (
@@ -182,11 +208,13 @@ my %defaults = (
   'TOP_NODE_FILE'        => 'index',
   'NODE_FILE_EXTENSION'  => 'html',
   'EXTENSION'            => 'html',
+  'TOP_NODE_FILE_TARGET' => 'index',
   'TRANSLITERATE_FILE_NAMES' => 1,
   'USE_LINKS'            => 1,
   'DATE_IN_HEADER'       => 0,
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'Up', 'NextFile', 'PrevFile'],
+  'BUTTONS_REL'          => \%BUTTONS_REL,
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
@@ -843,6 +871,36 @@ sub _prepare_css($)
   # T2H_DEFAULT_css_lines in texi2html.init
 }
 
+sub _node_id_file($$)
+{
+  my $self = shift;
+  my $root_command = shift;
+
+  my $no_unidecode;
+  $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE'))
+                        and !$self->get_conf('USE_UNIDECODE'));
+
+  my $target = _normalized_to_id($root_command->{'extra'}->{'normalized'});
+  my $id;
+  if (!$root_command->{'extra'}->{'manual_content'}) {
+    $id = $target;
+  }
+  # FIXME something special for Top node ?
+  if (defined($Texinfo::Config::node_target_name)) {
+    ($target, $id) = &$Texinfo::Config::node_target_name($root_command,
+                                                         $target, $id);
+  }
+  my $filename;
+  if ($self->get_conf('TRANSLITERATE_FILE_NAMES')) {
+    $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
+     {'contents' => $root_command->{'extra'}->{'node_content'}},
+          $no_unidecode);
+  } else {
+    $filename = $root_command->{'extra'}->{'normalized'};
+  }
+  return ($filename, $target, $id);
+}
+
 # FIXME also convert to html, to use name in cross-refs or do it on demand?
 # This set 2 unrelated things.  
 #  * The targets and id of sectioning elements
@@ -859,21 +917,7 @@ sub _set_root_commands_targets_node_files($$)
 
   if ($self->{'labels'}) {
     foreach my $root_command (values(%{$self->{'labels'}})) {
-      my $target = _normalized_to_id($root_command->{'extra'}->{'normalized'});
-      my $id = $target;
-      # FIXME something special for Top node ?
-      if (defined($Texinfo::Config::node_target_name)) {
-        ($target, $id) = &$Texinfo::Config::node_target_name($root_command,
-                                                             $target, $id);
-      }
-      my $filename;
-      if ($self->get_conf('TRANSLITERATE_FILE_NAMES')) {
-        $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
-          {'contents' => $root_command->{'extra'}->{'node_content'}},
-              $no_unidecode);
-      } else {
-        $filename = $root_command->{'extra'}->{'normalized'};
-      }
+      my ($filename, $target, $id) = $self->_node_id_file($root_command);
       $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
         if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
             and $self->get_conf('NODE_FILE_EXTENSION') ne '');
@@ -1094,12 +1138,143 @@ sub _prepare_elements($$)
   return $elements;
 }
 
+sub htmlxref($$)
+{
+  my $self = shift;
+  my $file = shift;
+
+  return undef;
+}
+
+my %htmlxref_entries = (
+ 'node' => [ 'node', 'section', 'chapter', 'mono' ],
+ 'section' => [ 'section', 'chapter','node', 'mono' ],
+ 'chapter' => [ 'chapter', 'section', 'node', 'mono' ],
+ 'mono' => [ 'mono', 'chapter', 'section', 'node' ],
+);
+
+sub default_external_href($$$)
+{
+  my $self = shift;
+  my $external_node = shift;
+  my $target = shift;
+  my $target_filebase = shift;
+
+  my $xml_target = _normalized_to_id($target);
+
+  my $default_target_split = $self->get_conf('EXTERNAL_CROSSREF_SPLIT');
+
+  my $extension = '';
+  $extension = "." . $self->get_conf('NODE_FILE_EXTENSION')
+          if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
+              and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+
+  my $target_split;
+  my $file;
+  if ($external_node->{'extra'}->{'manual_content'}) {
+    my $manual_name = Texinfo::Convert::Text::convert(
+       {'contents' => $external_node->{'extra'}->{'manual_content'}});
+    my $manual_base = $manual_name;
+    $manual_base =~ s/\.[^\.]*$//;
+    $manual_base =~ s/^.*\///;
+    my $document_split = $self->get_conf('SPLIT');
+    $document_split = 'mono' if (!$document_split);
+    my $split_found;
+    my $href;
+    my $htmlxref_info = $self->htmlxref($manual_base);
+    if ($htmlxref_info) {
+      foreach my $split_ordered (@{$htmlxref_entries{$document_split}}) {
+        if (defined($htmlxref_info->{$split_ordered})) {
+          $split_found = $split_ordered;
+          $href = $htmlxref_info->{$split_ordered};
+          last;
+        }
+      }
+    }
+    if (defined($split_found)) {
+      $target_split = 1 unless ($split_found eq 'mono');
+    } else { # nothing specified for that manual, use default
+      $target_split = $default_target_split;
+    }
+
+    if ($target_split) {
+      if (defined($href)) {
+        $file = $href;
+      } elsif (defined($self->get_conf('EXTERNAL_DIR'))) {
+        $file = $self->get_conf('EXTERNAL_DIR')."/$manual_base";
+      } elsif ($self->get_conf('SPLIT')) {
+        $file = "../$manual_base";
+      }
+      $file .= "/";
+    } else {# target not split
+      if (defined($href)) {
+        $file = $href;
+      } else {
+        if (defined($self->get_conf('EXTERNAL_DIR'))) {
+          $file = $self->get_conf('EXTERNAL_DIR')."/$manual_base";
+        } elsif ($self->get_conf('SPLIT')) {
+          $file = "../$manual_base";
+        } else {
+          $file = $manual_base;
+        }
+        $file .= $extension;
+      }
+    }
+  } else {
+    $target_split = $default_target_split;
+  }
+
+  # FIXME use $external_node->{'extra'}->{'node_content'}?
+  if ($target eq '') {
+    if ($target_split) {
+      if (defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
+        return $file . $self->get_conf('TOP_NODE_FILE_TARGET') 
+           . $extension . '#Top';
+      } else {
+        return $file . '#Top';
+      }
+    } else {
+      return $file . '#Top';
+    }
+  }
+
+  if (! $target_split) {
+    return $file . '#' . $xml_target;
+  } else {
+    my $file_basename;
+    if ($target eq 'Top' and defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
+      $file_basename = $self->get_conf('TOP_NODE_FILE_TARGET');
+    } else {
+      $file_basename = $target_filebase;
+    }
+    return $file . $file_basename . $extension . '#' . $xml_target;
+  }
+}
+
 my %valid_types = (
   'href' => 1,
   'string' => 1,
   'text' => 1,
   'tree' => 1,
 );
+
+sub _external_node_reference($$$;$)
+{
+  my $self = shift;
+  my $external_node = shift;
+  my $type = shift;
+  my $filename = shift;
+
+  my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
+  
+  if ($type eq 'href') {
+    return &{$self->{'external_node_target'}}($self, $external_node, 
+                                              $target, $target_filebase);
+  } else {
+    return 'TEXT TODO';
+  }
+}
+
 
 # FIXME global targets
 sub _element_direction($$$$;$)
@@ -1122,9 +1297,13 @@ sub _element_direction($$$$;$)
   if ($element->{'extra'} and $element->{'extra'}->{'directions'}
       and $element->{'extra'}->{'directions'}->{$direction}) {
     $element_target 
-     = $element->{'extra'}->{'directions'}->{$direction};
-    $command = $element_target->{'extra'}->{'element_command'};
-    $target = $self->{'targets'}->{$command};
+      = $element->{'extra'}->{'directions'}->{$direction};
+    if ($element_target->{'type'} eq 'external_node') {
+      return $self->_external_node_reference($element_target, $type, $filename);
+    } else {
+      $command = $element_target->{'extra'}->{'element_command'};
+      $target = $self->{'targets'}->{$command};
+    }
   } else {
     return undef;
   }
@@ -1138,6 +1317,7 @@ sub _element_direction($$$$;$)
     }
     $href .= '#' . $target->{'target'} 
       if (defined($target->{'target'}));
+    return $href;
   } elsif (exists($target->{$type})) {
     return $target->{$type};
   } elsif ($command) {
@@ -1164,7 +1344,7 @@ sub _element_direction($$$$;$)
     }
     print STDERR "DO $target->{'id'}($type)\n" if ($self->get_conf('DEBUG'));
     $target->{$type} = $self->_convert($tree);
-    pop @{$self->{'context'}}, 
+    pop @{$self->{'context'}};
     return $target->{$type};
   }
 }
@@ -1224,15 +1404,19 @@ sub begin_file($$$)
   if ($self->get_conf('USE_LINKS')) {
     my $link_buttons = $self->get_conf('LINKS_BUTTONS');
     foreach my $link (@$link_buttons) {
-      # TODO
-#            if (defined($Texi2HTML::HREF{$link}) and $Texi2HTML::HREF{$link} ne '')
-#            {
-#                my $title = '';
-#                $title = " title=\"$Texi2HTML::SIMPLE_TEXT{$link}\"" if (defined($Texi2HTML::SIMPLE_TEXT{$link}));
-#                my $rel = '';
-#                $rel = " rel=\"$BUTTONS_REL{$link}\"" if (defined($BUTTONS_REL{$link}));
-#                $links .= "<link href=\"$Texi2HTML::HREF{$link}\"${rel}${title}>\n";
-#            }
+      my $link_href = $self->_element_direction($page->{'extra'}->{'element'},
+                                          $link, 'href', $page->{'filename'});
+      #print STDERR "$title: $link -> $link_href \n";
+      if ($link_href and $link_href ne '') {
+        my $link_string = $self->_element_direction($page->{'extra'}->{'element'},
+                                          $link, 'string');
+        my $title = '';
+        $title = " title=\"$link_string\"" if (defined($link_string));
+        my $rel = '';
+        $rel = " rel=\"$self->{'BUTTONS_REL'}->{$link}\"" 
+           if (defined($self->{'BUTTONS_REL'}->{$link}));
+        $links .= "<link href=\"$link_href\"${rel}${title}>\n";
+      }
     }
   }
   my $css_lines;
@@ -1334,6 +1518,7 @@ sub output($$)
   if ($self->get_conf('NODE_FILES') or $self->get_conf('SPLIT') eq 'node') {
     $self->set_conf('NODE_FILENAMES', 1);
   }
+  $self->set_conf('EXTERNAL_CROSSREF_SPLIT', $self->get_conf('SPLIT'));
                                                    
   $self->_prepare_css();
 
@@ -1356,7 +1541,7 @@ sub output($$)
   $self->_set_page_files($pages);
 
   # Add element directions.  FIXME do it here or before?  Here it means that
-  # PrevFil eand NextFile can be set.
+  # PrevFile and NextFile can be set.
   Texinfo::Structuring::element_directions($self, $elements);
 
   # FIXME Before that, set multiple commands
@@ -1372,7 +1557,7 @@ sub output($$)
       next if (!$command->{'extra'}
                or (!$command->{'extra'}->{'misc_contents'}
                    or $command->{'extra'}->{'missing_argument'}));
-      # FIXME remove the virtual type?
+      # FIXME remove the virtual type?
       print STDERR "Using $fulltitle_command as title\n"
         if ($self->get_conf('DEBUG'));
       $fulltitle = {'contents' => $command->{'extra'}->{'misc_contents'},
@@ -1914,11 +2099,12 @@ sub _convert($$)
     } elsif ($root->{'type'} eq '_string') {
       $self->{'context'}->[-1]->{'string'}--;
     }
-    print STDERR "DO type ($root->{'type'}) => `$result'\n";
+    print STDERR "DO type ($root->{'type'}) => `$result'\n"
+      if ($self->get_conf('DEBUG'));
     return $result;
-    # no type, no cmdname, but contents.
+    # no type, no cmdname, but contents.
   } elsif ($root->{'contents'}) {
-    # FIXME what does this corresponds to?
+    # FIXME document situations where that happens? Use virtual types?
     my $content_formatted = '';
     foreach my $content (@{$root->{'contents'}}) {
       $content_formatted .= $self->_convert($content);

@@ -650,6 +650,37 @@ sub split_pages ($$)
   return \@pages;
 }
 
+sub _new_external_node($;$$)
+{
+  my $node_content = shift;
+  my $manual_content = shift;
+
+  my $external_node = { 'type' => 'external_node',
+                'extra' => {'manual_content' => $manual_content}};
+  
+  if ($node_content) {
+    $external_node->{'extra'}->{'node_content'} = $node_content;
+    $external_node->{'extra'}->{'normalized'} = 
+       Texinfo::Convert::NodeNameNormalization::normalize_node(
+          {'contents' => $node_content}); 
+  }
+  return $external_node;
+}
+
+# FIXME node not existing
+sub _node_element($)
+{
+  my $node = shift;
+  if ($node->{'extra'} and $node->{'extra'}->{'manual_content'}) {
+    return _new_external_node($node->{'extra'}->{'node_content'},
+                              $node->{'extra'}->{'manual_content'});
+  } else {
+    return $node->{'parent'};
+  }
+}
+
+# Do element directions (like in texi2html) and store them 
+# in 'extra'->'directions'.
 sub element_directions($$)
 {
   my $self = shift;
@@ -660,28 +691,29 @@ sub element_directions($$)
   foreach my $element (@$elements) {
     my $directions;
     $directions->{'This'} = $element;
-    $directions->{'Forward'} = $element->{'extra'}->{'element_next'}
-      if ($element->{'extra'}->{'element_next'});
-    $directions->{'Back'} = $element->{'extra'}->{'element_prev'}
-      if ($element->{'extra'}->{'element_prev'});
-    if ($element->{'node'}) {
-      my $node = $element->{'node'};
+    $directions->{'Forward'} = $element->{'element_next'}
+      if ($element->{'element_next'});
+    $directions->{'Back'} = $element->{'element_prev'}
+      if ($element->{'element_prev'});
+    if ($element->{'extra'}->{'node'}) {
+      my $node = $element->{'extra'}->{'node'};
       foreach my $direction(['NodeUp', 'node_up'], ['NodeNext', 'node_next'],
                             ['NodePrev', 'node_prev']) {
-        $directions->{$direction->[0]} = $node->{$direction->[1]}->{'parent'}
-          if ($node->{$direction->[1]});
+        $directions->{$direction->[0]} = _node_element($node->{$direction->[1]})
+            if ($node->{$direction->[1]});
       }
+      # Now do NodeForward which is something like the following node.
       my $automatic_directions = 
         (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
       if ($node->{'menu_child'}) {
-        $directions->{'NodeForward'} = $node->{'menu_child'}->{'parent'};
+        $directions->{'NodeForward'} = _node_element($node->{'menu_child'});
       } elsif ($automatic_directions and $node->{'associated_section'}
                and $node->{'associated_section'}->{'section_childs'}
                and $node->{'associated_section'}->{'section_childs'}->[0]) {
         $directions->{'NodeForward'} 
           = $node->{'associated_section'}->{'section_childs'}->[0]->{'parent'};
       } elsif ($node->{'node_next'}) {
-        $directions->{'NodeForward'} = $node->{'node_next'}->{'parent'};
+        $directions->{'NodeForward'} = _node_element($node->{'node_next'});
       } else {
         my $up = $node->{'node_up'};
         my @up_list = ($node);
@@ -691,7 +723,7 @@ sub element_directions($$)
                and not (grep {$up eq $_} @up_list  
                         or ($node_top and $up eq $node_top))) {
           if (defined($up->{'node_next'})) {
-            $directions->{'NodeForward'} = $up->{'node_next'}->{'parent'};
+            $directions->{'NodeForward'} = _node_element($up->{'node_next'});
             last;
           }
           push @up_list, $up;
@@ -700,11 +732,12 @@ sub element_directions($$)
       }
       
       $directions->{'NodeForward'}->{'extra'}->{'directions'}->{'NodeBack'} = $element
-        if ($directions->{'NodeForward'} 
+        if ($directions->{'NodeForward'}
+            and $directions->{'NodeForward'}->{'type'} eq 'element'
             and !$directions->{'NodeForward'}->{'extra'}->{'directions'}->{'NodeBack'});
     }
-    if ($element->{'section'}) {
-      my $section = $element->{'section'};
+    if ($element->{'extra'}->{'section'}) {
+      my $section = $element->{'extra'}->{'section'};
       foreach my $direction(['Up', 'section_up'], ['Next', 'section_next'],
                             ['Prev', 'section_prev']) {
         $directions->{$direction->[0]} = $section->{$direction->[1]}->{'parent'}
@@ -737,6 +770,13 @@ sub element_directions($$)
           = $section if ($directions->{'FastForward'});
       }
     }
+    # Use node up if there is no section up.
+    # FIXME is it really right?
+    if (!$directions->{'Up'} and $element->{'extra'}->{'node'}
+        and $element->{'extra'}->{'node'}->{'node_up'} 
+        and (!$node_top or ($element->{'extra'}->{'node'} ne $node_top))) {
+      $directions->{'Up'} = _node_element($element->{'extra'}->{'node'}->{'node_up'});
+    }
     if ($element->{'extra'}->{'directions'}) {
       %{$element->{'extra'}->{'directions'}} = (%{$element->{'extra'}->{'directions'}}, 
                                                 %$directions)
@@ -744,6 +784,56 @@ sub element_directions($$)
       $element->{'extra'}->{'directions'} = $directions;
     }
   }
+  if ($self->get_conf('DEBUG')) {
+    foreach my $element (@$elements) {
+      print STDERR "Directions($element): ".Texinfo::Structuring::_print_directions($element)."\n";
+    }
+  }
+}
+
+sub _print_element_command_texi($)
+{
+  my $element = shift;
+  if ($element->{'type'} eq 'external_node') {
+    my $command = {'contents' => [{'text' => '('}, 
+                        @{$element->{'extra'}->{'manual_content'}},
+                               {'text' => ')'}]};
+    if ($element->{'extra'}->{'node_content'}) {
+      unshift @{$command->{'contents'}}, @{$element->{'extra'}->{'node_content'}};
+    }
+    return Texinfo::Convert::Texinfo::convert ($command);
+  }
+  
+  my $command = $element->{'extra'}->{'element_command'};
+  if (!defined($command)) {
+    my $result = "BUG: no associated command ";
+    $result .= "(type $element->{'type'})" if (defined($element->{'type'}));
+    return $result;
+  }
+  my $tree;
+  if ($command->{'cmdname'} eq 'node') {
+    $tree = $command->{'extra'}->{'node_content'};
+  } else {
+    $tree = $command->{'extra'}->{'misc_content'};
+  }
+  return '@'.$command->{'cmdname'}. ' '
+       .Texinfo::Convert::Texinfo::convert ({'contents' => $tree});
+}
+
+sub _print_directions($)
+{
+  my $element = shift;
+  my $result = _print_element_command_texi($element)."\n";
+
+  if ($element->{'extra'} and $element->{'extra'}->{'directions'}) {
+    foreach my $direction (keys(%{$element->{'extra'}->{'directions'}})) {
+      $result .= "  $direction: ".
+       _print_element_command_texi($element->{'extra'}->{'directions'}->{$direction})."\n";
+    }
+  } else {
+    $result .= "  NO DIRECTION";
+  }
+  return $result;
 }
 
 # this is used in the test suite, but not likely to be useful in real life.

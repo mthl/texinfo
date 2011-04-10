@@ -897,7 +897,7 @@ sub _print_current($)
   return "$cmd$type : $args $text $contents\n$parent_string";
 }
 
-# For debugging
+# For debugging
 my @kept_keys = ('contents', 'cmdname', 'type', 'text', 'args');
 my %kept_keys;
 foreach my $key (@kept_keys) {
