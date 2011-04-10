@@ -193,6 +193,7 @@ my %defaults = (
   'include_directories'  => undef,
   'NUMBER_SECTIONS'      => 1,
   'USE_NODES'            => 1,
+  'INLINE_CONTENTS'      => 1,
   'SPLIT'                => 'node',
 # if set style is added in attribute.
   'INLINE_CSS_STYLE'     => 0,
@@ -1275,7 +1276,6 @@ sub _external_node_reference($$$;$)
   }
 }
 
-
 # FIXME global targets
 sub _element_direction($$$$;$)
 {
@@ -1534,18 +1534,24 @@ sub output($$)
                                                 $self->get_conf('SPLIT'));
   $self->{'pages'} = $pages;
   
-  # TODO handle special elements, footnotes element, contents and shortcontents
-  # elements, titlepage association
-
   # determine file names associated with the different pages.
   $self->_set_page_files($pages);
 
-  # Add element directions.  FIXME do it here or before?  Here it means that
+  # do element directions.  FIXME do it here or before?  Here it means that
   # PrevFile and NextFile can be set.
   Texinfo::Structuring::element_directions($self, $elements);
 
   # FIXME Before that, set multiple commands
   # FIXME set language and documentencoding/encoding_name
+
+  # TODO handle special elements, footnotes element, contents and shortcontents
+  # elements, titlepage association
+
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
+      and !$self->get_conf('INLINE_CONTENTS')) {
+    #if ($self->get_conf('contents') and 
+  }
+
   $self->set_conf('BODYTEXT',  'lang="' . $self->get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 
   # prepare title

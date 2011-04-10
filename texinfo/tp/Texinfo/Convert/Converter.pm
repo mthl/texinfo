@@ -64,7 +64,7 @@ sub _global_commands($)
   return ();
 }
 
-sub _initialize_global_command($$)
+sub _initialize_global_command($$$)
 {
 }
 
@@ -112,18 +112,6 @@ sub converter(;$)
 
       $converter->{'floats'} = $floats if ($floats);
       $converter->{'labels'} = $labels if ($labels);
-      $converter->set_conf('setcontentsaftertitlepage', 1)
-         if ($converter->{'extra'}->{'contents'} 
-               and $converter->{'extra'}->{'setcontentsaftertitlepage'}
-               and $converter->{'structuring'}
-               and $converter->{'structuring'}->{'sectioning_root'});
-      $converter->set_conf('setshortcontentsaftertitlepage', 1)
-         if (($converter->{'extra'}->{'shortcontents'} 
-              or $converter->{'extra'}->{'summarycontents'})
-               and $converter->{'extra'}->{'setshortcontentsaftertitlepage'}
-               and $converter->{'structuring'}
-               and $converter->{'structuring'}->{'sectioning_root'});
-      $converter->{'gettext'} = $converter->{'parser'}->{'gettext'};
       foreach my $global_command ($converter->_global_commands()) {
         if (defined($converter->{'extra'}->{$global_command})) {
           my $root = $converter->{'extra'}->{$global_command};
@@ -132,10 +120,21 @@ sub converter(;$)
           #}
           #if (ref($root) ne 'ARRAY') {
           #$converter->_informative_command($root);
-          $converter->_initialize_global_command($root);
+          $converter->_initialize_global_command($global_command, $root);
           #}
         }
       }
+      $converter->set_conf('setcontentsaftertitlepage', 1)
+         if ($converter->get_conf('contents')
+               and $converter->{'extra'}->{'setcontentsaftertitlepage'}
+               and $converter->{'structuring'}
+               and $converter->{'structuring'}->{'sectioning_root'});
+      $converter->set_conf('setshortcontentsaftertitlepage', 1)
+         if ($converter->get_conf('shortcontents') 
+               and $converter->{'extra'}->{'setshortcontentsaftertitlepage'}
+               and $converter->{'structuring'}
+               and $converter->{'structuring'}->{'sectioning_root'});
+      $converter->{'gettext'} = $converter->{'parser'}->{'gettext'};
       delete $conf->{'parser'};
     }
     foreach my $key (keys(%$conf)) {

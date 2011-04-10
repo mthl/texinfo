@@ -62,7 +62,8 @@ my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands
 my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
 my @informative_global_commands = ('paragraphindent', 'firstparagraphindent',
-'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage');
+'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage',
+'contents', 'shortcontents', 'summarycontents');
 
 my %informative_commands;
 foreach my $informative_command (@informative_global_commands) {
@@ -91,8 +92,7 @@ my %default_index_commands = %Texinfo::Common::default_index_commands;
 foreach my $kept_command(keys (%informative_commands),
   keys (%default_index_commands),
   'verbatiminclude', 'insertcopying', 
-  'listoffloats', 'printindex',
-  'contents', 'shortcontents', 'summarycontents') {
+  'listoffloats', 'printindex', ) {
   $formatting_misc_commands{$kept_command} = 1;
 }
 
@@ -278,12 +278,22 @@ sub push_top_formatter($$)
   $self->{'formatters'}->[-1]->{'_top_formatter'} = 1;
 }
 
+
+my %contents_commands = (
+ 'contents' => 1,
+ 'shortcontents' => 1,
+ 'summarycontents' => 1,
+);
+
 sub _initialize_global_command($$)
 {
   my $self = shift;
+  my $command = shift;
   my $root = shift;
   if (ref($root) ne 'ARRAY') {
     $self->_informative_command($root);
+  } elsif ($contents_commands{$command}) {
+    $self->_informative_command($root->[0]);
   }
 }
 
@@ -291,11 +301,17 @@ sub _informative_command($$)
 {
   my $self = shift;
   my $root = shift;
-  return if ($self->{'set'}->{$root->{'cmdname'}});
 
-  if (exists($root->{'extra'}->{'text_arg'})) {
-    $self->set_conf($root->{'cmdname'}, $root->{'extra'}->{'text_arg'});
-    if ($root->{'cmdname'} eq 'documentencoding'
+  my $cmdname = $root->{'cmdname'};
+  $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
+
+  return if ($self->{'set'}->{$cmdname});
+
+  if ($misc_commands{$cmdname} eq 'skipline') {
+    $self->set_conf($cmdname, 1);
+  } elsif (exists($root->{'extra'}->{'text_arg'})) {
+    $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
+    if ($cmdname eq 'documentencoding'
         and defined($root->{'extra'})
         and defined($root->{'extra'}->{'perl_encoding'})
         and !$self->{'perl_encoding'}) {
@@ -314,16 +330,14 @@ sub _informative_command($$)
       #  binmode($filehandle, ":encoding($encoding)");
       #}
     }
-  } elsif ($misc_commands{$root->{'cmdname'}} eq 'skipline') {
-    $self->set_conf($root->{'cmdname'}, 1);
   } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
            and exists($root->{'extra'}->{'misc_args'}->[0])) {
-    $self->set_conf($root->{'cmdname'}, $root->{'extra'}->{'misc_args'}->[0]);
-    if ($root->{'cmdname'} eq 'paragraphindent') {
+    $self->set_conf($cmdname, $root->{'extra'}->{'misc_args'}->[0]);
+    if ($cmdname eq 'paragraphindent') {
       if ($root->{'extra'}->{'misc_args'}->[0] eq 'asis') {
         delete $self->{'ignored_types'}->{'empty_spaces_before_paragraph'};
       } else {
-        $self->set_conf($root->{'cmdname'}, 0)
+        $self->set_conf($cmdname, 0)
           if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
         $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
       }

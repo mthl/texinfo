@@ -406,7 +406,7 @@ foreach my $global_multiple_command ('author', 'documentlanguage',
   'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
   'frenchspacing', 'footnotestyle', 'hyphenation', 'urefbreakstyle',
   'xrefautomaticsectiontitle', 'codequoteundirected',
-  'codequotebacktick', 'titlefont') {
+  'codequotebacktick', 'titlefont', 'footnote') {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
 
