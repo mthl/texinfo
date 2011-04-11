@@ -216,6 +216,18 @@ my %defaults = (
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'Up', 'NextFile', 'PrevFile'],
   'BUTTONS_REL'          => \%BUTTONS_REL,
+  'misc_elements_targets'   => {
+                             'Overview' => 'SEC_Overview',
+                             'Contents' => 'SEC_Contents',
+                             'Footnotes' => 'SEC_Foot',
+                             'About' => 'SEC_About'
+                            },
+  'misc_pages_file_string' => {
+                              'Contents' => 'toc',
+                              'Overview' => 'ovr',
+                              'Footnotes' => 'fot',
+                              'About' => 'abt'
+                              },
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
@@ -1031,7 +1043,7 @@ sub _get_page($$)
       } elsif ($current->{'cmdname'} eq 'footnote' 
            and $self->get_conf('footnotestyle') eq 'separate') {
         # FIXME element and root_command?
-        return ($self->{'special_pages'}->{'footnotes'});
+        return ($self->{'special_pages'}->{'Footnotes'});
       }
     }
     if ($current->{'parent'}) {
@@ -1112,11 +1124,13 @@ sub _set_page_files($$)
       $file_nr++;
     }
   }
+  # FIXME there add the special element pages
   if (defined($Texinfo::Config::page_file_name)) {
     foreach my $page (@$pages) {
       # FIXME pass the information that it is associated with @top or @node Top?
       my $filename = &$Texinfo::Config::page_file_name($self, $page, 
                                                        $page->{'filename'});
+      $self->_set_page_file($page, $filename) if (defined($filename));
     }
   }
   foreach my $page (@$pages) {
@@ -1349,7 +1363,6 @@ sub _element_direction($$$$;$)
   }
 }
 
-# FIXME object oriented API for elements?
 sub begin_file($$$)
 {
   my $self = shift;
@@ -1358,7 +1371,6 @@ sub begin_file($$$)
 
   
   my $title;
-  # FIXME this does not work
   if ($page and $page->{'extra'} and $page->{'extra'}->{'element'}) {
     my $element_string = $self->_element_direction($page->{'extra'}->{'element'},
                               'This', 'string');
@@ -1546,12 +1558,51 @@ sub output($$)
 
   # TODO handle special elements, footnotes element, contents and shortcontents
   # elements, titlepage association
-
+  # TODO Overview, Footnotes, About.  But also Top, Index, First, Last.
+  
+  my %do_special;
+  # FIXME do that here or let it to the user?
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
       and !$self->get_conf('INLINE_CONTENTS')) {
-    #if ($self->get_conf('contents') and 
+    if ($self->get_conf('contents') 
+        and (!$self->get_conf('setcontentsaftertitlepage')
+             or !$self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
+      $do_special{'Contents'} = 1;
+    }
   }
 
+  my $extension = '';
+  $extension = $self->get_conf('EXTENSION') 
+    if (defined($self->get_conf('EXTENSION')));
+
+  foreach my $type (keys (%{$self->{'misc_elements_targets'}})) {
+    next unless ($do_special{$type});
+    my $page = {'type' => 'page'};
+    my $element = {'type' => 'element',
+                   'parent' => $page,
+                   'extra' => {'special_element' => $type}};
+    push @{$page->{'contents'}}, $element;
+    $page->{'extra'}->{'element'} = $element;
+    $self->{'special_pages'}->{$type} = $page;
+    $self->{'special_elements'}->{$type} = $element;
+    my $id = $self->{'misc_elements_targets'}->{$type};
+    my $target = $id;
+    if (defined($Texinfo::Config::sectioning_command_target_name)) {
+      ($target, $id) = &$Texinfo::Config::special_element_target_name(
+                                                            $self,
+                                                            $element,
+                                                            $target, $id);
+    }
+    $self->{'targets'}->{$element} = {'id' => $id,
+                                      'target' => $target,
+                                     };
+    if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')) {
+      my $filename = $self->{'document_name'}. 
+                    $self->{'misc_pages_file_string'}.$extension;
+      $self->_set_page_file($page, $filename);
+      # FIXME allow to change filename + set counter
+    }
+  }
   $self->set_conf('BODYTEXT',  'lang="' . $self->get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 
   # prepare title
