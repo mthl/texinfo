@@ -300,6 +300,8 @@ sub _set_outfile($$$)
         $outfile .= '.'.$self->get_conf('EXTENSION') 
           if (defined($self->get_conf('EXTENSION')) 
               and $self->get_conf('EXTENSION') ne '');
+      } else {
+        $document_name = $outfile;
       }
     } elsif ($input_basename ne '') {
       $outfile = $input_basename;

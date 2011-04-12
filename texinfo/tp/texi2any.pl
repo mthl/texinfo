@@ -369,6 +369,39 @@ sub handle_errors($$) {
   return $error_count;
 }
 
+sub _set_variables_texi2html()
+{
+  set_from_cmdline('USE_SETFILENAME', 0);
+  set_from_cmdline('USE_SETFILENAME_EXTENSION', 0);
+  set_from_cmdline('footnotestyle', 'separate');
+  set_from_cmdline('INLINE_CONTENTS', 0);
+  set_from_cmdline('FORCE', 1);
+  set_from_cmdline('AVOID_MENU_REDUNDANCY', 1);
+  set_from_cmdline('TOP_HEADING_AT_BEGINNING', 1);
+  set_from_cmdline('TOP_FILE', '');
+  set_from_cmdline('USE_ACCESSKEY', 0);
+  set_from_cmdline('NODE_NAME_IN_MENU', 0);
+  set_from_cmdline('OVERVIEW_LINK_TO_TOC', 0);
+  set_from_cmdline('USE_UP_FOR_ADJACENT_NODES', 1);
+  set_from_cmdline('USE_REL_REV', 0);
+  set_from_cmdline('USE_LINKS', 0);
+  set_from_cmdline('USE_NODES', undef);
+  set_from_cmdline('USE_SECTIONS', 1);
+  set_from_cmdline('NODE_FILENAMES', 0);
+  set_from_cmdline('USE_NUMERIC_ENTITY', 1);
+  set_from_cmdline('SPLIT', '');
+  set_from_cmdline('SPLIT_INDEX', 100);
+  set_from_cmdline('PROGRAM_NAME_IN_FOOTER', 1);
+  set_from_cmdline('HEADER_IN_TABLE', 1);
+  set_from_cmdline('SHORT_REF', 0);
+  set_from_cmdline('USE_TITLEPAGE_FOR_TITLE', 1);
+  # FIXME
+#  $MENU_ENTRY_COLON = '';
+#  $INDEX_ENTRY_COLON = '';
+
+  set_from_cmdline('ENABLE_ENCODING_USE_ENTITY', 1);
+}
+
 my $result_options = Getopt::Long::GetOptions (
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
                              set_from_cmdline('MACRO_EXPAND', $_[1]); },
@@ -445,6 +478,9 @@ my $result_options = Getopt::Long::GetOptions (
      # special case, this is a pseudo format for debug
      if ($var eq 'DEBUGCOUNT') {
        $format = 'debugcount';
+     } elsif ($var eq 'TEXI2HTML') {
+       $format = 'html';
+       _set_variables_texi2html();
      } else {
      # this is very wrong, but a way to avoid a spurious warning.
        no warnings 'once';

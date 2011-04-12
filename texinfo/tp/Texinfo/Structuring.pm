@@ -616,7 +616,7 @@ sub split_pages ($$)
   my $elements = shift;
   my $split = shift;
 
-  return undef if (!$elements);
+  return undef if (!$elements or !@$elements);
 
   my $split_level;
   if ($split eq 'chapter') {
@@ -813,7 +813,8 @@ sub _print_element_command_texi($)
   
   my $command = $element->{'extra'}->{'element_command'};
   if (!defined($command)) {
-    my $result = "BUG: no associated command ";
+    # happens when there are only nodes and sections are used as elements
+    my $result = "No associated command ";
     $result .= "(type $element->{'type'})" if (defined($element->{'type'}));
     return $result;
   }

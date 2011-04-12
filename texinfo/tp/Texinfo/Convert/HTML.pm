@@ -839,10 +839,12 @@ sub _convert_element($$)
 
   my $result = '';
 
-  die "BUG: no 'element_command' for $element\n" 
-    if (!$element->{'extra'}->{'element_command'});
-  die "BUG: no target for $element\n" 
-    if (!$self->{'targets'}->{$element->{'extra'}->{'element_command'}});
+  # This may happen if there are only nodes and sections are used as elements
+  #die "BUG: no 'element_command' for $element" 
+  #  if (!$element->{'extra'}->{'element_command'});
+  die "BUG: no target for $element" 
+    if ($element->{'extra'}->{'element_command'} and
+        !$self->{'targets'}->{$element->{'extra'}->{'element_command'}});
   print STDERR "NEW ELEMENT $self->{'targets'}->{$element->{'extra'}->{'element_command'}}->{'id'}\n"
     if ($self->get_conf('DEBUG'));
 
@@ -951,12 +953,9 @@ sub _set_root_commands_targets_node_files($$)
 
   if ($elements) {
     foreach my $element (@$elements) {
-      if (!defined($element->{'extra'}->{'element_command'})) {
-        print STDERR "BUG: no element_command for $element\n";
-      }
       foreach my $root_command(@{$element->{'contents'}}) {
-        # FIXME this happens before the first element, for type 'text_root'.
-        # What should be done in that case?
+        # FIXME this happens for type 'text_root' which precedes the 
+        # root commands.  The target may also already be set for top node.
         next if (!defined($root_command->{'cmdname'}) 
                  or $self->{'targets'}->{$root_command});
         if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
@@ -1071,7 +1070,7 @@ sub _set_page_files($$)
                 and $self->get_conf('EXTENSION') ne '');
 
   if (!$self->get_conf('SPLIT')) {
-    my $page = shift @$pages;
+    my $page = $pages->[0];
     $page->{'filename'} = $self->{'document_name'}.$extension;
     $page->{'out_filename'} = $self->get_conf('OUTFILE');
   } else {
@@ -1147,6 +1146,8 @@ sub _set_page_files($$)
       $self->_set_page_file($page, $filename) if (defined($filename));
     }
     $self->{'file_counters'}->{$page->{'filename'}}++;
+    print STDERR "Page $page: $page->{'filename'}($self->{'file_counters'}->{$page->{'filename'}})\n"
+      if ($self->get_conf('DEBUG'));
   }
   if ($special_pages) {
     my $previous_page = $pages->[-1];
@@ -1155,6 +1156,8 @@ sub _set_page_files($$)
       $page->{'prev_page'} = $previous_page;
       $previous_page->{'next_page'} = $page;
       $previous_page = $page;
+      print STDERR "Special page $page: $page->{'filename'}($self->{'file_counters'}->{$page->{'filename'}})\n"
+        if ($self->get_conf('DEBUG'));
     }
   }
 }
@@ -1420,7 +1423,7 @@ sub _element_direction($$$$;$)
       return $self->_external_node_reference($element_target, $type, $filename);
     } else {
       $command = $element_target->{'extra'}->{'element_command'};
-      $target = $self->{'targets'}->{$command};
+      $target = $self->{'targets'}->{$command} if ($command);
     }
   } else {
     return undef;
