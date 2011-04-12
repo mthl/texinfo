@@ -228,11 +228,13 @@ my %defaults = (
                               'Footnotes' => 'fot',
                               'About' => 'abt'
                               },
+  'misc_elements_order'  => ['Footnotes', 'Contents', 'Overview', 'About'],
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
   'SHOW_TITLE'           => 1,
   'SHOW_MENU'            => 1,
+  'MONOLITHIC'           => 1,
 # This is the default, mainly for tests; the caller should set them.  These
 # values are in fact what should be set -- for now when TEST is true.
   'PROGRAM_AND_VERSION'  => 'texi2html',
@@ -855,7 +857,7 @@ sub _convert_element($$)
   return $result;
 }
 
-# the entry point
+# the entry point for _convert
 sub convert_tree($$)
 {
   my $self = shift;
@@ -943,7 +945,7 @@ sub _set_root_commands_targets_node_files($$)
       }
       $self->{'targets'}->{$root_command} = {'target' => $target, 
                                              'id' => $id,
-                                             'filename' => $filename};
+                                             'node_filename' => $filename};
     }
   }
 
@@ -1058,83 +1060,102 @@ sub _set_page_files($$)
 {
   my $self = shift;
   my $pages = shift;
-  # Ensure that the document is split
+  my $special_pages = shift;
+
+  # Ensure that the document has pages
   return undef if (!defined($pages) or !@$pages);
 
-  my $node_top;
-  #my $section_top;
-  $node_top = $self->{'labels'}->{'Top'} if ($self->{'labels'});
-  #$section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
+  my $extension = '';
+  $extension = '.'.$self->get_conf('EXTENSION') 
+            if (defined($self->get_conf('EXTENSION')) 
+                and $self->get_conf('EXTENSION') ne '');
+
+  if (!$self->get_conf('SPLIT')) {
+    my $page = shift @$pages;
+    $page->{'filename'} = $self->{'document_name'}.$extension;
+    $page->{'out_filename'} = $self->get_conf('OUTFILE');
+  } else {
+    my $node_top;
+    #my $section_top;
+    $node_top = $self->{'labels'}->{'Top'} if ($self->{'labels'});
+    #$section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
   
-  # first determine the top node file name.
-  if ($self->get_conf('NODE_FILENAMES') and $node_top) {
-    if (defined($self->get_conf('TOP_NODE_FILE'))) {
-      my ($node_top_page) = $self->_get_page($node_top);
-      die "BUG: No page for top node" if (!defined($node_top));
-      my $filename = $self->get_conf('TOP_NODE_FILE');
-      $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
-        if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-            and $self->get_conf('NODE_FILE_EXTENSION') ne '');
-      $self->_set_page_file($node_top_page, $filename);
-    }
-  }
-  # FIXME add a number for each page?
-  my $file_nr = 0;
-  my $previous_page;
-  if ($self->get_conf('NODE_FILENAMES')) {
-   PAGE:
-    foreach my $page(@$pages) {
-      if (defined($previous_page)) {
-        $page->{'page_prev'} = $previous_page;
-        $previous_page->{'page_next'} = $page;
+    # first determine the top node file name.
+    if ($self->get_conf('NODE_FILENAMES') and $node_top) {
+      if (defined($self->get_conf('TOP_NODE_FILE'))) {
+        my ($node_top_page) = $self->_get_page($node_top);
+        die "BUG: No page for top node" if (!defined($node_top));
+        my $filename = $self->get_conf('TOP_NODE_FILE');
+        $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
+          if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
+              and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+        $self->_set_page_file($node_top_page, $filename);
       }
-      $previous_page = $page;
-      # For Top node.
-      next if (defined($page->{'filename'}));
-      foreach my $element (@{$page->{'contents'}}) {
-        foreach my $root_comand (@{$element->{'contents'}}) {
-          if ($root_comand->{'cmdname'} 
-              and $root_comand->{'cmdname'} eq 'node') {
-            $self->_set_page_file($page, 
-                      $self->{'targets'}->{$root_comand}->{'filename'});
-            next PAGE;
+    }
+    # FIXME add a number for each page?
+    my $file_nr = 0;
+    my $previous_page;
+    if ($self->get_conf('NODE_FILENAMES')) {
+     PAGE:
+      foreach my $page(@$pages) {
+        if (defined($previous_page)) {
+          $page->{'page_prev'} = $previous_page;
+          $previous_page->{'page_next'} = $page;
+        }
+        $previous_page = $page;
+        # For Top node.
+        next if (defined($page->{'filename'}));
+        foreach my $element (@{$page->{'contents'}}) {
+          foreach my $root_comand (@{$element->{'contents'}}) {
+            if ($root_comand->{'cmdname'} 
+                and $root_comand->{'cmdname'} eq 'node') {
+              $self->_set_page_file($page, 
+                        $self->{'targets'}->{$root_comand}->{'node_filename'});
+              next PAGE;
+            }
           }
         }
+        my $filename = $self->{'document_name'} . "_$file_nr";
+        $filename .= $extension;
+        $self->_set_page_file($page, $filename);
+        $file_nr++;
       }
-      my $filename = $self->{'document_name'} . "_$file_nr";
-      $filename .= '.'.$self->get_conf('EXTENSION') 
-          if (defined($self->get_conf('EXTENSION')) 
-              and $self->get_conf('EXTENSION') ne '');
-      $self->_set_page_file($page, $filename);
-      $file_nr++;
-    }
-  } else {
-    my $previous_page;
-    foreach my $page(@$pages) {
-      if (defined($previous_page)) {
-        $page->{'page_prev'} = $previous_page;
-        $previous_page->{'page_next'} = $page;
+    } else {
+      my $previous_page;
+      foreach my $page(@$pages) {
+        if (defined($previous_page)) {
+          $page->{'page_prev'} = $previous_page;
+          $previous_page->{'page_next'} = $page;
+        }
+        $previous_page = $page;
+        my $filename = $self->{'document_name'} . "_$file_nr";
+        $filename .= '.'.$self->get_conf('EXTENSION') 
+            if (defined($self->get_conf('EXTENSION')) 
+                and $self->get_conf('EXTENSION') ne '');
+        $self->_set_page_file($page, $filename);
+        $file_nr++;
       }
-      $previous_page = $page;
-      my $filename = $self->{'document_name'} . "_$file_nr";
-      $filename .= '.'.$self->get_conf('EXTENSION') 
-          if (defined($self->get_conf('EXTENSION')) 
-              and $self->get_conf('EXTENSION') ne '');
-      $self->_set_page_file($page, $filename);
-      $file_nr++;
     }
   }
   # FIXME there add the special element pages
-  if (defined($Texinfo::Config::page_file_name)) {
-    foreach my $page (@$pages) {
+  # also set next_page/prev_page for the special element pages
+  foreach my $page (@$pages) {
+    if (defined($Texinfo::Config::page_file_name)) {
       # FIXME pass the information that it is associated with @top or @node Top?
       my $filename = &$Texinfo::Config::page_file_name($self, $page, 
                                                        $page->{'filename'});
       $self->_set_page_file($page, $filename) if (defined($filename));
     }
-  }
-  foreach my $page (@$pages) {
     $self->{'file_counters'}->{$page->{'filename'}}++;
+  }
+  if ($special_pages) {
+    my $previous_page = $pages->[-1];
+    foreach my $page (@$special_pages) {
+      $self->{'file_counters'}->{$page->{'filename'}}++;
+      $page->{'prev_page'} = $previous_page;
+      $previous_page->{'next_page'} = $page;
+      $previous_page = $page;
+    }
   }
 }
 
@@ -1151,6 +1172,89 @@ sub _prepare_elements($$)
   }
   $self->_set_root_commands_targets_node_files($elements);
   return $elements;
+}
+
+sub _prepare_special_elements($)
+{
+  my $self = shift;
+  my $elements;
+  my $pages;
+
+  my %do_special;
+  # FIXME do that here or let it to the user?
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
+      and !$self->get_conf('INLINE_CONTENTS')) {
+    if ($self->get_conf('contents') 
+        and (!$self->get_conf('setcontentsaftertitlepage')
+             or !$self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
+      $do_special{'Contents'} = 1;
+    }
+    if ($self->get_conf('shortcontents')
+        and (!$self->get_conf('setshortcontentsaftertitlepage')
+             or !$self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
+      $do_special{'Overview'} = 1;
+    }
+  }
+  if ($self->{'extra'}->{'footnote'} 
+      and $self->get_conf('footnotestyle') eq 'separate') {
+    $do_special{'Footnotes'} = 1;
+  }
+  if ((!defined($self->get_conf('DO_ABOUT')) 
+       and $elements and @$elements > 1 
+           and ($self->get_conf('SPLIT') or $self->get_conf('HEADERS')))
+       or ($self->get_conf('DO_ABOUT'))) {
+    $do_special{'About'} = 1;
+  }
+
+  my $extension = '';
+  $extension = $self->get_conf('EXTENSION') 
+    if (defined($self->get_conf('EXTENSION')));
+
+  foreach my $type (@{$self->{'misc_elements_order'}}) {
+    next unless ($do_special{$type});
+
+    my $element = {'type' => 'element',
+                   'extra' => {'special_element' => $type}};
+    $self->{'special_elements'}->{$type} = $element;
+    push @$elements, $element;
+
+    my $id = $self->{'misc_elements_targets'}->{$type};
+    my $target = $id;
+    my $default_filename;
+    if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')) {
+      $default_filename = $self->{'document_name'}.
+        $self->{'misc_pages_file_string'}.$extension;
+    } else {
+      $default_filename = $self->{'OUTFILE'};
+    }
+
+    my $filename;
+    if (defined($Texinfo::Config::special_element_target_file_name)) {
+      ($target, $id, $filename) 
+                 = &$Texinfo::Config::special_element_target_file_name(
+                                                            $self,
+                                                            $element,
+                                                            $target, $id,
+                                                            $default_filename);
+    }
+    $filename = $default_filename if (!defined($filename));
+
+    if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')
+        or $filename ne $default_filename) {
+      my $page = {'type' => 'page'};
+      push @{$page->{'contents'}}, $element;
+      $page->{'extra'}->{'element'} = $element;
+      $self->{'special_pages'}->{$type} = $page;
+      $element->{'parent'} = $page;
+      $self->_set_page_file($page, $filename);
+      push @$pages, $page;
+    }
+    $self->{'targets'}->{$element} = {'id' => $id,
+                                      'target' => $target,
+                                      'filename' => $filename,
+                                     };
+  }
+  return ($elements, $pages);
 }
 
 sub htmlxref($$)
@@ -1523,6 +1627,7 @@ sub output($$)
            or $self->get_conf('OUTFILE') eq '-'
            or $self->get_conf('OUTFILE') eq '')) {
     $self->force_conf('SPLIT', 0);
+    $self->force_conf('MONOLITHIC', 1);
   }
   if ($self->{'SPLIT'}) {
     $self->set_conf('NODE_FILES', 1);
@@ -1541,69 +1646,46 @@ sub output($$)
   # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
 
-  # undef if no elements or not split
-  my $pages = Texinfo::Structuring::split_pages($elements, 
+  # undef if no elements
+  my $pages;
+  if ($self->get_conf('OUTFILE') ne '') {
+    $pages = Texinfo::Structuring::split_pages($elements, 
                                                 $self->get_conf('SPLIT'));
+  }
+
   $self->{'pages'} = $pages;
   
-  # determine file names associated with the different pages.
-  $self->_set_page_files($pages);
+  my ($special_elements, $special_pages) = $self->_prepare_special_elements();
+
+  # determine file names associated with the different pages, and setup
+  # the counters for special element pages.
+  $self->_set_page_files($pages, $special_pages);
 
   # do element directions.  FIXME do it here or before?  Here it means that
   # PrevFile and NextFile can be set.
   Texinfo::Structuring::element_directions($self, $elements);
 
+  # associate the special elements that have no page to the main page.
+  # This may only happen if not split.
+  if ($special_elements) {
+    foreach my $special_element (@$special_elements) {
+      my $previous_element = $pages->[0]->{'contents'}->[-1];
+      if (!defined($special_element->{'parent'})) {
+        $special_element->{'parent'} = $pages->[0];
+        $special_element->{'element_prev'} = $pages->[0]->{'contents'}->[-1];
+        $pages->[0]->{'contents'}->[-1]->{'element_next'} = $special_element;
+        push @{$pages->[0]->{'contents'}}, $special_element;
+      }
+    }
+  }
+
   # FIXME Before that, set multiple commands
   # FIXME set language and documentencoding/encoding_name
 
-  # TODO handle special elements, footnotes element, contents and shortcontents
-  # elements, titlepage association
-  # TODO Overview, Footnotes, About.  But also Top, Index, First, Last.
-  
-  my %do_special;
-  # FIXME do that here or let it to the user?
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
-      and !$self->get_conf('INLINE_CONTENTS')) {
-    if ($self->get_conf('contents') 
-        and (!$self->get_conf('setcontentsaftertitlepage')
-             or !$self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
-      $do_special{'Contents'} = 1;
-    }
-  }
+  # TODO Top, Index, First, Last.
 
-  my $extension = '';
-  $extension = $self->get_conf('EXTENSION') 
-    if (defined($self->get_conf('EXTENSION')));
-
-  foreach my $type (keys (%{$self->{'misc_elements_targets'}})) {
-    next unless ($do_special{$type});
-    my $page = {'type' => 'page'};
-    my $element = {'type' => 'element',
-                   'parent' => $page,
-                   'extra' => {'special_element' => $type}};
-    push @{$page->{'contents'}}, $element;
-    $page->{'extra'}->{'element'} = $element;
-    $self->{'special_pages'}->{$type} = $page;
-    $self->{'special_elements'}->{$type} = $element;
-    my $id = $self->{'misc_elements_targets'}->{$type};
-    my $target = $id;
-    if (defined($Texinfo::Config::sectioning_command_target_name)) {
-      ($target, $id) = &$Texinfo::Config::special_element_target_name(
-                                                            $self,
-                                                            $element,
-                                                            $target, $id);
-    }
-    $self->{'targets'}->{$element} = {'id' => $id,
-                                      'target' => $target,
-                                     };
-    if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')) {
-      my $filename = $self->{'document_name'}. 
-                    $self->{'misc_pages_file_string'}.$extension;
-      $self->_set_page_file($page, $filename);
-      # FIXME allow to change filename + set counter
-    }
-  }
-  $self->set_conf('BODYTEXT',  'lang="' . $self->get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
+  $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage') 
+   . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 
   # prepare title
   my $fulltitle;
@@ -1684,7 +1766,7 @@ sub output($$)
   my $fh;
   my $output = '';
   if (!$pages) {
-    # not split output
+    # no page
     if ($self->get_conf('OUTFILE') ne '') {
       $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'),
                                             $self->{'perl_encoding'});
@@ -1704,9 +1786,9 @@ sub output($$)
       }
     } else {
       $output .= _output_text($self->_convert($root), $fh);
-    } 
+    }
   } else {
-    # split output
+    # output with pages
     my %files;
     # TODO set page file names $page->{'filename'} (relative) and 
     # $page->{'out_filename'} (absolute)

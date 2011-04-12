@@ -127,7 +127,7 @@ my @variable_settables = (
   'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
   'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING',
   'PROGRAM_AND_VERSION', 'PROGRAM_HOMEPAGE', 'PROGRAM',
-  'AFTER_BODY_OPEN', 'EXTRA_HEAD', 'LINKS_BUTTONS');
+  'AFTER_BODY_OPEN', 'EXTRA_HEAD', 'LINKS_BUTTONS', 'DO_ABOUT');
 
 my %valid_options;
 foreach my $var (@document_settable_at_commands, @document_global_at_commands,

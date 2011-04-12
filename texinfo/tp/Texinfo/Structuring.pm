@@ -616,13 +616,20 @@ sub split_pages ($$)
   my $elements = shift;
   my $split = shift;
 
-  return undef if (!$elements or !$split);
+  return undef if (!$elements);
 
   my $split_level;
   if ($split eq 'chapter') {
     $split_level = 1;
   } elsif ($split eq 'section') {
     $split_level = 2;
+  } elsif (!$split) {
+    my $page = {'type' => 'page'};
+    foreach my $element (@$elements) {
+      push @{$page->{'contents'}}, $element;
+      $element->{'parent'} = $page;
+    }
+    return [$page];
   }
 
   my @pages = ();
