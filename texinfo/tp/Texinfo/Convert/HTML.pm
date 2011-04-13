@@ -149,6 +149,55 @@ sub align($)
   return $self->{'context'}->[-1]->{'align'}->[-1];
 }
 
+sub command_id($$)
+{
+  my $self = shift;
+  my $command = shift;
+  if ($self->{'targets'}->{$command}) {
+    return $self->{'targets'}->{$command}->{'id'};
+  } else {
+    return undef;
+  }
+}
+
+sub command_target($$)
+{
+  my $self = shift;
+  my $command = shift;
+  if ($self->{'targets'}->{$command}) {
+    return $self->{'targets'}->{$command}->{'target'};
+  } else {
+    return undef;
+  }
+}
+
+sub command_filename($$)
+{
+  my $self = shift;
+  my $command = shift;
+
+  if ($self->{'targets'}->{$command}) {
+    my $target = $self->{'targets'}->{$command};
+    if (defined($target->{'filename'})) {
+      return $target->{'filename'};
+    }
+    my ($page, $element, $root_command) = $self->_get_page($command);
+    if (defined($element)) {
+      $target->{'element'} = $element;
+    }
+    if (defined($root_command)) {
+      $target->{'root_command'} = $root_command;
+    }
+    if (defined($page)) {
+      $target->{'page'} = $page;
+      $target->{'filename'} = $page->{'filename'};
+      return $target->{'filename'};
+    }
+  }
+  return undef;
+}
+
+# see http://www.w3.org/TR/REC-html40/types.html#type-links
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 my %BUTTONS_REL =
 (
@@ -286,7 +335,9 @@ foreach my $indented_format ('example', 'display', 'lisp')
 
 # default specification of arguments formatting
 my %default_commands_args = (
-  'email' => [['code'], ['normal']]);
+  'email' => [['code'], ['normal']],
+  'anchor' => [['string']],
+);
 
 # Default for the function references used for the formatting
 # of commands.
@@ -629,8 +680,10 @@ sub expand_heading_commands($$$$$)
   #if ($self->{'TOC_LINKS'} and defined($element->{'tocid'})) {
   #  $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
   #}
-  my $heading = $args->[0]->{'normal'};
   my $result = '';
+  my $element_id = $self->command_id($command);
+  $result .= "<a name=\"$element_id\"></a>\n" if ($element_id ne '');
+  my $heading = $args->[0]->{'normal'};
   if ($heading ne '' and $do_heading) {
     if ($self->in_preformatted()) {
       $result .= '<strong>'.$heading.'</strong>'."\n";
@@ -1535,6 +1588,7 @@ my %valid_types = (
   'string' => 1,
   'text' => 1,
   'tree' => 1,
+  'target' => 1,
 );
 
 sub _external_node_reference($$$;$)
@@ -1566,6 +1620,8 @@ sub _element_direction($$$$;$)
   my $element_target;
   my $command;
   my $target;
+
+  $filename = $self->{'current_file'} if (!defined($filename));
  
   if (!$valid_types{$type}) {
     print STDERR "Incorrect type $type in _element_direction call\n";
@@ -1598,6 +1654,9 @@ sub _element_direction($$$$;$)
     return $href;
   } elsif (exists($target->{$type})) {
     return $target->{$type};
+  } elsif ($type eq 'id' or $type eq 'target') {
+    # FIXME
+    return undef;
   } elsif ($command) {
     my $tree;
     if (!$target->{'tree'}) {
@@ -1937,6 +1996,7 @@ sub output($$)
       }
       #$self->{'fh'} = $fh;
     }
+    $self->{'current_filename'} = $self->{'output_filename'};
     my $header = begin_file($self, $self->{'output_filename'}, undef);
     $output .= _output_text($header, $fh);
     if ($elements and @$elements) {
@@ -1964,6 +2024,7 @@ sub output($$)
           # FIXME close/remove files already created
           return undef;
         }
+        $self->{'current_filename'} = $page->{'filename'};
         print $file_fh "".begin_file($self, $page->{'filename'}, $page);
         $files{$page->{'filename'}}->{'fh'} = $file_fh;
       } else {
