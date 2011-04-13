@@ -77,7 +77,7 @@ sub line_warn($$$)
   return if (!defined($line_number));
   my $file = $line_number->{'file_name'};
   # otherwise out of source build fail since the file names are different
-  $file =~ s/^.*\/// if ($self->{'TEST'});
+  $file =~ s/^.*\/// if ($self->get_conf('TEST'));
   my $warn_line;
   if ($line_number->{'macro'} ne '') {
     $warn_line = sprintf($self->__(
@@ -87,7 +87,7 @@ sub line_warn($$$)
     $warn_line = sprintf($self->__("%s:%d: warning: %s\n"),
                          $file, $line_number->{'line_nr'}, $text);
   }
-  warn $warn_line if ($self->{'DEBUG'});
+  warn $warn_line if ($self->get_conf('DEBUG'));
   push @{$self->{'errors_warnings'}},
        { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line,
          %{$line_number} };
@@ -103,12 +103,12 @@ sub line_error($$$;$)
   my $continuation = shift;
   if (defined($line_number)) {
     my $file = $line_number->{'file_name'};
-    $file =~ s/^.*\/// if ($self->{'TEST'});
+    $file =~ s/^.*\/// if ($self->get_conf('TEST'));
     my $macro_text = '';
     $macro_text = " (possibly involving \@$line_number->{'macro'})"
        if ($line_number->{'macro'} ne '');
     my $error_text = "$file:$line_number->{'line_nr'}: $text$macro_text\n";
-    warn "$error_text" if ($self->{'DEBUG'});
+    warn "$error_text" if ($self->get_conf('DEBUG'));
     my $type = 'error';
     $type = 'error continuation' if ($continuation);
     push @{$self->{'errors_warnings'}},
