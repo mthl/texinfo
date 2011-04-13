@@ -205,11 +205,13 @@ package Texinfo::Config;
 
 # passed from main program
 my $cmdline_options;
+my $default_options;
 # used in main program
 our $options = {};
 
-sub _load_config ($) {
-  $cmdline_options = $_[0];
+sub _load_config ($$) {
+  $default_options = shift;
+  $cmdline_options = shift;
 }
 
 sub _load_init_file($) {
@@ -230,6 +232,7 @@ sub set_from_init_file ($$) {
     return 0;
   }
   return 0 if (defined($cmdline_options->{$var}));
+  delete $default_options->{$var};
   $options->{$var} = $value;
   return 1;
 }
@@ -238,6 +241,7 @@ sub set_from_cmdline ($$) {
   my $var = shift;
   my $value = shift;
   delete $options->{$var};
+  delete $default_options->{$var};
   if (!Texinfo::Common::valid_option($var)) {
     warn (sprintf(main::__("Unknown variable %s\n"), $var));
     return 0;
@@ -253,6 +257,8 @@ sub get_conf($) {
     return $cmdline_options->{$var};
   } elsif (exists($options->{$var})) {
     return $options->{$var};
+  } elsif (exists($default_options->{$var})) {
+    return $default_options->{$var};
   } else {
     return undef;
   }
@@ -324,13 +330,15 @@ my @css_refs = ();
 # Others are set in the converters.
 # Other relevant options (undef) are NO_WARN FORCE OUTFILE
 
-my $converter_default_options = {'ERROR_LIMIT' => 100};
+my $converter_default_options = { 'ERROR_LIMIT' => 100 };
+my $cmdline_options = { 'CSS_FILES' => \@css_files,
+                        'CSS_REFS' => \@css_refs };
 
 # options for all the files
 my $parser_default_options = {'expanded_formats' => [], 'values' => {},
                               'gettext' => \&__};
 
-Texinfo::Config::_load_config($converter_default_options);
+Texinfo::Config::_load_config($converter_default_options, $cmdline_options);
 
 sub set_expansion($$) {
   my $region = shift;
@@ -680,6 +688,7 @@ while(@input_files)
   $error_count = handle_errors($parser, $error_count);
 
   my $converter_options = { %$converter_default_options, 
+                            %$cmdline_options,
                             %$Texinfo::Config::options };
   if (defined(get_conf('OUTFILE')) and $file_number == 0) {
     $converter_options->{'OUTFILE'} = get_conf('OUTFILE');
