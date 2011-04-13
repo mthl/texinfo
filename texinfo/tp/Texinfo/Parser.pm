@@ -1912,24 +1912,6 @@ sub _remove_empty_content_arguments($)
   }
 }
 
-sub _locate_include_file($$)
-{
-  my $self = shift;
-  my $text = shift;
-  my $file;
-
-  #print STDERR "$self $text @{$self->{'include_directories'}}\n";
-  if ($text =~ m,^(/|\./|\.\./),) {
-    $file = $text if (-e $text and -r $text);
-  } else {
-    foreach my $dir (@{$self->{'include_directories'}}) {
-      $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
-      last if (defined($file));
-    }
-  }
-  return $file;
-}
-     
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
 sub _end_line($$$)
@@ -2349,7 +2331,7 @@ sub _end_line($$$)
             $self->line_error (sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
           }
         } elsif ($command eq 'include') {
-          my $file = $self->_locate_include_file($text) ;
+          my $file = Texinfo::Common::locate_include_file($self, $text) ;
           if (defined($file)) {
             my $filehandle = do { local *FH };
             if (open ($filehandle, $file)) {
@@ -4408,7 +4390,7 @@ sub _parse_line_command_args($$$)
   return $args;
 }
 
-# left here because it uses _locate_include_file
+# FIXME put this in a more suited file
 sub expand_verbatiminclude($$)
 {
   my $self = shift;
@@ -4416,7 +4398,7 @@ sub expand_verbatiminclude($$)
 
   return unless ($current->{'extra'} and defined($current->{'extra'}->{'text_arg'}));
   my $text = $current->{'extra'}->{'text_arg'};
-  my $file = _locate_include_file($self, $text);
+  my $file = Texinfo::Common::locate_include_file($self, $text);
 
   my $verbatiminclude;
 

@@ -817,6 +817,7 @@ sub _initialize($)
   foreach my $formatting_references (
      ['heading_text', \&default_heading_text, $Texinfo::Config::heading_text],
      ['comment', \&default_comment, $Texinfo::Config::comment],
+     ['css_lines', \&default_css_lines, $Texinfo::Config::css_lines],
   ) {
     if (defined($formatting_references->[2])) {
       $self->{$formatting_references->[0]} = $formatting_references->[2];
@@ -875,17 +876,173 @@ sub _normalized_to_id($)
   return $id;
 }
 
+sub default_css_lines ($)
+{
+  my $self = shift;
+
+  my $css_refs = $self->get_conf('CSS_REFS');
+
+  return if (!@{$self->{'css_import_lines'}} and !@{$self->{'css_rule_lines'}}
+             and !keys(%{$self->{'css_map'}}) and !@$css_refs);
+
+  my $css_text = "<style type=\"text/css\">\n<!--\n";
+  $css_text .= join('',@{$self->{'css_import_lines'}}) . "\n" 
+    if (@{$self->{'css_import_lines'}});
+  foreach my $css_rule (sort(keys(%{$self->{'css_map'}}))) {
+    next unless ($self->{'css_map'}->{$css_rule});
+    $css_text .= "$css_rule {$self->{'css_map'}->{$css_rule}}\n";
+  }
+  $css_text .= join('',@{$self->{'css_rule_lines'}}) . "\n" 
+    if (@{$self->{'css_rule_lines'}});
+  $css_text .= "-->\n</style>\n";
+  foreach my $ref (@$css_refs) {
+    $css_text .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$ref\">\n";
+  }
+  $self->set_conf('CSS_LINES', $css_text);
+}
+
+sub _process_css_file ($$$)
+{
+  my $self = shift;
+  my $fh =shift;
+  my $file = shift;
+  my $in_rules = 0;
+  my $in_comment = 0;
+  my $in_import = 0;
+  my $in_string = 0;
+  my $rules = [];
+  my $imports = [];
+  my $line_nr = 0;
+  while (my $line = <$fh>) {
+    $line_nr++;
+    #print STDERR "Line: $line";
+    if ($in_rules) {
+      push @$rules, $line;
+      next;
+    }
+    my $text = '';
+    while (1) {
+      #sleep 1;
+      #print STDERR "${text}!in_comment $in_comment in_rules $in_rules in_import $in_import in_string $in_string: $line";
+      if ($in_comment) {
+        if ($line =~ s/^(.*?\*\/)//) {
+          $text .= $1;
+          $in_comment = 0;
+        } else {
+          push @$imports, $text . $line;
+          last;
+        }
+      } elsif (!$in_string and $line =~ s/^\///) { # what do '\' do here ?
+        if ($line =~ s/^\*//) {
+          $text .= '/*';
+          $in_comment = 1;
+        } else {
+          push (@$imports, $text. "\n") if ($text ne '');
+          push (@$rules, '/' . $line);
+          $in_rules = 1;
+          last;
+        }
+      } elsif (!$in_string and $in_import and $line =~ s/^([\"\'])//) { 
+        # strings outside of import start rules
+        $text .= "$1";
+        $in_string = quotemeta("$1");
+      } elsif ($in_string and $line =~ s/^(\\$in_string)//) {
+        $text .= $1;
+      } elsif ($in_string and $line =~ s/^($in_string)//) {
+        $text .= $1;
+        $in_string = 0;
+      } elsif ((! $in_string and !$in_import) 
+              and ($line =~ s/^([\\]?\@import)$// 
+                   or $line =~ s/^([\\]?\@import\s+)//)) {
+        $text .= $1;
+        $in_import = 1;
+      } elsif (!$in_string and $in_import and $line =~ s/^\;//) {
+        $text .= ';';
+        $in_import = 0;
+      } elsif (($in_import or $in_string) and $line =~ s/^(.)//) {
+        $text .= $1;
+      } elsif (!$in_import and $line =~ s/^([^\s])//) {
+        push (@$imports, $text. "\n") if ($text ne '');
+        push (@$rules, $1 . $line);
+        $in_rules = 1;
+        last;
+      } elsif ($line =~ s/^(\s)//) {
+        $text .= $1;
+      } elsif ($line eq '') {
+        push (@$imports, $text);
+        last;
+      }
+    }
+  }
+  #file_line_warn (__("string not closed in css file"), $file) if ($in_string);
+  #file_line_warn (__("--css-file ended in comment"), $file) if ($in_comment);
+  #file_line_warn (__("\@import not finished in css file"), $file)  if ($in_import and !$in_comment and !$in_string);
+  warn (sprintf($self->__("%s:%d: string not closed in css file"), 
+                $file, $line_nr)) if ($in_string);
+  warn (sprintf($self->__("%s:%d: --css-file ended in comment"), 
+                $file, $line_nr)) if ($in_comment);
+  warn (sprintf($self->__("%s:%d \@import not finished in css file"), 
+        $file, $line_nr)) 
+    if ($in_import and !$in_comment and !$in_string);
+  return ($imports, $rules);
+}
+
 sub _prepare_css($)
 {
   my $self = shift;
   
   return if ($self->get_conf('NO_CSS'));
-  # TODO collect_all_css_files in texi2html.pl
-  #  ($Texi2HTML::THISDOC{'css_import_lines'}, $Texi2HTML::THISDOC{'css_rule_lines'})
-  #    = collect_all_css_files();
-  # &$Texi2HTML::Config::css_lines($Texi2HTML::THISDOC{'css_import_lines'},
-  #     $Texi2HTML::THISDOC{'css_rule_lines'});
-  # T2H_DEFAULT_css_lines in texi2html.init
+
+  my @css_import_lines;
+  my @css_rule_lines;
+
+  my $css_files = $self->get_conf('CSS_FILES');
+  foreach my $file (@$css_files) {
+    my $css_file_fh;
+    my $css_file;
+    if ($file eq '-') {
+      $css_file_fh = \*STDIN;
+      $css_file = '-';
+    } else {
+      $css_file = locate_include_file ($file);
+      unless (defined($css_file)) {
+        $self->document_warn (sprintf(
+               $self->__("css file %s not found"), $file));
+        next;
+      }
+      unless (open (CSSFILE, "$css_file")) {
+        $self->document_warn (sprintf($self->__(
+             "could not open --css-file %s: %s"), 
+              $css_file, $!));
+        next;
+      }
+      $css_file_fh = \*CSSFILE;
+    }
+    my ($import_lines, $rules_lines);
+    ($import_lines, $rules_lines) 
+      = $self->_process_css_file ($css_file_fh, $css_file);
+    push @css_import_lines, @$import_lines;
+    push @css_rule_lines, @$rules_lines;
+
+  }
+  if ($self->get_conf('DEBUG')) {
+    if (@css_import_lines) {
+      print STDERR "# css import lines\n";
+      foreach my $line (@css_import_lines) {
+        print STDERR "$line";
+      }
+    }
+    if (@css_rule_lines) {
+      print STDERR "# css rule lines\n";
+      foreach my $line (@css_rule_lines) {
+        print STDERR "$line";
+      }
+    }
+  }
+  $self->{'css_import_lines'} = \@css_import_lines;
+  $self->{'css_rule_lines'} = \@css_rule_lines;
+
+  &{$self->{'css_lines'}}($self);
 }
 
 sub _node_id_file($$)

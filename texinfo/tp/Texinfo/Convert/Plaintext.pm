@@ -968,7 +968,7 @@ sub _image_text($$$)
   my $root = shift;
   my $basefile = shift;
 
-  my $txt_file = $self->Texinfo::Parser::_locate_include_file ($basefile.'.txt');
+  my $txt_file = $self->Texinfo::Common::locate_include_file ($basefile.'.txt');
   if (!defined($txt_file)) {
     return undef;
   } else {

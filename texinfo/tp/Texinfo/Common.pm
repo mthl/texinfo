@@ -127,7 +127,8 @@ my @variable_settables = (
   'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
   'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING',
   'PROGRAM_AND_VERSION', 'PROGRAM_HOMEPAGE', 'PROGRAM',
-  'AFTER_BODY_OPEN', 'EXTRA_HEAD', 'LINKS_BUTTONS', 'DO_ABOUT');
+  'AFTER_BODY_OPEN', 'EXTRA_HEAD', 'LINKS_BUTTONS', 'DO_ABOUT',
+  'CSS_FILES', 'CSS_REFS');
 
 my %valid_options;
 foreach my $var (@document_settable_at_commands, @document_global_at_commands,
@@ -660,6 +661,24 @@ our %eight_bit_encoding_aliases = (
 foreach my $encoding (keys(%eight_bit_encoding_aliases)) {
   $encoding_aliases{$encoding} = $encoding;
   $encoding_aliases{$eight_bit_encoding_aliases{$encoding}} = $encoding;
+}
+
+sub locate_include_file($$)
+{
+  my $self = shift;
+  my $text = shift;
+  my $file;
+
+  #print STDERR "$self $text @{$self->{'include_directories'}}\n";
+  if ($text =~ m,^(/|\./|\.\./),) {
+    $file = $text if (-e $text and -r $text);
+  } else {
+    foreach my $dir (@{$self->{'include_directories'}}) {
+      $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
+      last if (defined($file));
+    }
+  }
+  return $file;
 }
 
 sub open_out ($$;$)

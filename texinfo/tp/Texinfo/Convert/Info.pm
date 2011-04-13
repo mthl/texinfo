@@ -540,7 +540,7 @@ sub _image($$)
     }
     my $image_file;
     foreach my $extension (@extensions) {
-      if ($self->Texinfo::Parser::_locate_include_file ($basefile.$extension)) {
+      if ($self->Texinfo::Common::locate_include_file ($basefile.$extension)) {
         # use the basename and not the file found.  It is agreed that it is
         # better, since in any case the files are moved.
         $image_file = $basefile.$extension;
