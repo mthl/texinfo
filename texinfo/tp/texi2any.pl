@@ -690,6 +690,7 @@ while(@input_files)
   my $converter_options = { %$converter_default_options, 
                             %$cmdline_options,
                             %$Texinfo::Config::options };
+
   if (defined(get_conf('OUTFILE')) and $file_number == 0) {
     $converter_options->{'OUTFILE'} = get_conf('OUTFILE');
   }

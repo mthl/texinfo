@@ -293,6 +293,7 @@ my %defaults = (
   
   'DEBUG'                => 0,
   'TEST'                 => 0,
+  'output_format'        => 'html',
 );
 
 sub _defaults($)
@@ -871,6 +872,9 @@ sub _initialize($)
      ['heading_text', \&default_heading_text, $Texinfo::Config::heading_text],
      ['comment', \&default_comment, $Texinfo::Config::comment],
      ['css_lines', \&default_css_lines, $Texinfo::Config::css_lines],
+     ['begin_file', \&default_begin_file, $Texinfo::Config::begin_file],
+     ['end_file', \&default_end_file, $Texinfo::Config::end_file],
+     ['program_string', \&default_program_string, $Texinfo::Config::program_string],
   ) {
     if (defined($formatting_references->[2])) {
       $self->{$formatting_references->[0]} = $formatting_references->[2];
@@ -1686,7 +1690,38 @@ sub _element_direction($$$$;$)
   }
 }
 
-sub begin_file($$$)
+sub default_program_string($)
+{
+  my $self = shift;
+  return $self->convert_tree(
+    $self->gdt('This document was generated on @emph{@today{}} using @uref{{program_homepage}, @emph{{program}}}.',
+         { 'program_homepage' => $self->get_conf('PROGRAM_HOMEPAGE'),
+           'program' => $self->get_conf('PROGRAM') }));
+}
+
+sub default_end_file($)
+{
+  my $self = shift;
+  my $program_text = '';
+  if ($self->get_conf('PROGRAM_NAME_IN_FOOTER')) {
+    my $program_string = &{$self->{'program_string'}}($self);
+    $program_text = " <font size=\"-1\">
+  $program_string
+ </font>
+ <br>";
+  }
+  my $pre_body_close = $self->get_conf('PRE_BODY_CLOSE');
+  $pre_body_close = '' if (!defined($pre_body_close));
+  return "<p>
+$program_text
+$pre_body_close
+</p>
+</body>
+</html>
+";
+}
+
+sub default_begin_file($$$)
 {
   my $self = shift;
   my $filename = shift;
@@ -1997,7 +2032,7 @@ sub output($$)
       #$self->{'fh'} = $fh;
     }
     $self->{'current_filename'} = $self->{'output_filename'};
-    my $header = begin_file($self, $self->{'output_filename'}, undef);
+    my $header = &{$self->{'begin_file'}}($self, $self->{'output_filename'}, undef);
     $output .= _output_text($header, $fh);
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
@@ -2007,6 +2042,7 @@ sub output($$)
     } else {
       $output .= _output_text($self->_convert($root), $fh);
     }
+    $output .= _output_text(&{$self->{'end_file'}}($self), $fh);
   } else {
     # output with pages
     my %files;
@@ -2025,7 +2061,7 @@ sub output($$)
           return undef;
         }
         $self->{'current_filename'} = $page->{'filename'};
-        print $file_fh "".begin_file($self, $page->{'filename'}, $page);
+        print $file_fh "".&{$self->{'begin_file'}}($self, $page->{'filename'}, $page);
         $files{$page->{'filename'}}->{'fh'} = $file_fh;
       } else {
         $file_fh = $files{$page->{'filename'}}->{'fh'};
@@ -2037,6 +2073,7 @@ sub output($$)
       $self->{'file_counters'}->{$page->{'filename'}}--;
       if ($self->{'file_counters'}->{$page->{'filename'}} == 0) {
         # end file
+        print $file_fh "". &{$self->{'end_file'}}($self);
       }
     }
   }
