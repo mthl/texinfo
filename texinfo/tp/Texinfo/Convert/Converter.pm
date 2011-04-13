@@ -45,6 +45,7 @@ my %defaults = (
   'expanded_formats'     => undef,
   'include_directories'  => undef,
   'NUMBER_SECTIONS'      => 1,
+  'output_format'        => undef,
 
   'DEBUG'                => 0,
   'TEST'                 => 0,
@@ -138,17 +139,14 @@ sub converter(;$)
       delete $conf->{'parser'};
     }
     foreach my $key (keys(%$conf)) {
-      if (!exists($defaults{$key})) {
-        # many things may be passed down
-        #warn "$key not a possible configuration in $name\n";
+      if (Texinfo::Common::valid_option($key)) {
+        $converter->{'conf'}->{$key} = $conf->{$key};
+      } elsif (!exists($defaults{$key})) {
+        warn "$key not a possible configuration in $name\n";
       } else {
-        if (Texinfo::Common::valid_option($key)) {
-          $converter->{'conf'}->{$key} = $conf->{$key};
-        } else {
-          $converter->{$key} = $conf->{$key};
-        }
-        $converter->{'set'}->{$key} = 1;
+        $converter->{$key} = $conf->{$key};
       }
+      $converter->{'set'}->{$key} = 1;
     }
   }
   if (!defined($converter->{'expanded_formats'})) {
