@@ -338,6 +338,8 @@ foreach my $indented_format ('example', 'display', 'lisp')
 my %default_commands_args = (
   'email' => [['code'], ['normal']],
   'anchor' => [['string']],
+  'uref' => [['codestring'], ['normal'], ['normal']],
+  'url' => [['codestring'], ['normal'], ['normal']],
 );
 
 # Default for the function references used for the formatting
@@ -526,8 +528,6 @@ delete $style_commands_formatting{'preformatted'}->{'sc'}->{'attribute'};
 delete $style_commands_formatting{'preformatted'}->{'sc'};
 
 #      'key',        {'begin' => '&lt;', 'end' => '&gt;'},
-#      'uref',       {'function' => \&html_default_uref},
-#      'url',        {'function' => \&html_default_uref},
 #      'indicateurl', {'begin' => '&lt;<code>', 'end' => '</code>&gt;'},
 
 sub _parse_attribute($)
@@ -601,6 +601,30 @@ sub expand_email($$$$)
 }
 
 $default_commands_conversion{'email'} = \&expand_email;
+
+sub expand_uref($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $url_arg = shift @$args;
+  my $text_arg = shift @$args;
+  my $replacement_arg = shift @$args;
+
+  my $url = $url_arg->{'codestring'} if defined($url_arg);
+  my $text = $text_arg->{'normal'} if defined($text_arg);
+  my $replacement = $replacement_arg->{'normal'} if defined($replacement_arg);
+
+  $text = $replacement if (defined($replacement) and $replacement ne '');
+  $text = $url if (!defined($text) or $text eq '');
+  return $text if (!defined($url) or $url eq '');
+  return "<a href=\"$url\">$text</a>";
+}
+
+$default_commands_conversion{'uref'} = \&expand_uref;
+$default_commands_conversion{'url'} = \&expand_url;
 
 #sub expand_math($$$$)
 #{
@@ -2427,7 +2451,17 @@ sub _convert($$)
                 $arg_formatted->{'normal'} = $self->_convert($arg);
               } elsif ($arg_type eq 'code') {
                 $self->{'context'}->[-1]->{'code'}++;
-                $arg_formatted->{'code'} = $self->_convert($arg);
+                $arg_formatted->{$arg_type} = $self->_convert($arg);
+                $self->{'context'}->[-1]->{'code'}--;
+              } elsif ($arg_type eq 'string') {
+                $self->{'context'}->[-1]->{$arg_type}++;
+                $arg_formatted->{$arg_type} = $self->_convert($arg);
+                $self->{'context'}->[-1]->{$arg_type}--;
+              } elsif ($arg_type eq 'codestring') {
+                $self->{'context'}->[-1]->{'code'}++;
+                $self->{'context'}->[-1]->{'string'}++;
+                $arg_formatted->{$arg_type} = $self->_convert($arg);
+                $self->{'context'}->[-1]->{'string'}--;
                 $self->{'context'}->[-1]->{'code'}--;
               }
             }
