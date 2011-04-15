@@ -373,6 +373,39 @@ if (0) {
   );
 }
 
+sub expand_verbatiminclude($$)
+{
+  my $self = shift;
+  my $current = shift;
+
+  return unless ($current->{'extra'} and defined($current->{'extra'}->{'text_arg'}));
+  my $text = $current->{'extra'}->{'text_arg'};
+  my $file = Texinfo::Common::locate_include_file($self, $text);
+
+  my $verbatiminclude;
+
+  if (defined($file)) {
+    # FIXME encoding?
+    if (!open(VERBINCLUDE, $file)) {
+      $self->line_error (sprintf($self->__("Cannot read %s: %s"), $file, $!), 
+                          $current->{'line_nr'});
+    } else {
+      $verbatiminclude = { 'cmdname' => 'verbatim',
+                           'parent' => $current->{'parent'},
+                           'extra' => 
+                        {'text_arg' => $current->{'extra'}->{'text_arg'}} };
+      while (<VERBINCLUDE>) {
+        push @{$verbatiminclude->{'contents'}}, 
+                  {'type' => 'raw', 'text' => $_ };
+      }
+    }
+  } else {
+    $self->line_error (sprintf($self->__("\@%s: Cannot find %s"), 
+                    $current->{'cmdname'}, $text), $current->{'line_nr'});
+  }
+  return $verbatiminclude;
+}
+
 sub expand_today($)
 {
   my $self = shift;

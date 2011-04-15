@@ -279,6 +279,7 @@ my %defaults = (
                               },
   'misc_elements_order'  => ['Footnotes', 'Contents', 'Overview', 'About'],
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
+  'DEFAULT_RULE'         => '<hr>',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
   'SHOW_TITLE'           => 1,
@@ -424,7 +425,7 @@ $default_commands_formatting{'normal'}->{'enddots'}
 $default_commands_formatting{'normal'}->{'*'} = '<br>';
 
 
-sub no_arg_commands($$$)
+sub _convert_no_arg_command($$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -447,10 +448,10 @@ sub no_arg_commands($$$)
 }
 
 foreach my $command(keys(%{$default_commands_formatting{'normal'}})) {
-  $default_commands_conversion{$command} = \&no_arg_commands;
+  $default_commands_conversion{$command} = \&_convert_no_arg_command;
 }
 
-sub convert_today($$$)
+sub _convert_today_command($$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -460,7 +461,7 @@ sub convert_today($$$)
   return $self->convert_tree($tree);
 }
 
-$default_commands_conversion{'today'} = \&convert_today;
+$default_commands_conversion{'today'} = \&_convert_today_command;
 
 # style commands
 
@@ -521,7 +522,7 @@ foreach my $command(@all_style_commands) {
       $style_commands_formatting{$context}->{$command}->{'quote'} = 1;
     }
   }
-  $default_commands_conversion{$command} = \&style_commands;
+  $default_commands_conversion{$command} = \&_convert_style_command;
 }
 
 delete $style_commands_formatting{'preformatted'}->{'sc'}->{'attribute'};
@@ -546,7 +547,7 @@ sub _parse_attribute($)
   return ($element, $class, $attributes);
 }
 
-sub style_commands($$$$)
+sub _convert_style_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -576,7 +577,7 @@ sub style_commands($$$$)
   return $text;
 }
 
-sub expand_email($$$$)
+sub _convert_email_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -600,9 +601,9 @@ sub expand_email($$$$)
   return "<a href=\"mailto:$mail\">$text</a>";
 }
 
-$default_commands_conversion{'email'} = \&expand_email;
+$default_commands_conversion{'email'} = \&_convert_email_command;
 
-sub expand_uref($$$$)
+sub _convert_uref_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -623,10 +624,10 @@ sub expand_uref($$$$)
   return "<a href=\"$url\">$text</a>";
 }
 
-$default_commands_conversion{'uref'} = \&expand_uref;
-$default_commands_conversion{'url'} = \&expand_url;
+$default_commands_conversion{'uref'} = \&_convert_uref_command;
+$default_commands_conversion{'url'} = \&_convert_uref_command;
 
-#sub expand_math($$$$)
+#sub _convert_math_command($$$$)
 #{
 #  my $self = shift;
 #  my $cmdname = shift;
@@ -636,9 +637,9 @@ $default_commands_conversion{'url'} = \&expand_url;
 #  return $args->[0]->{'normal'};
 #}
 
-#$default_commands_conversion{'math'} = \&expand_math;
+#$default_commands_conversion{'math'} = \&_convert_math_command;
 
-sub accent_commands($$$$)
+sub _convert_accent_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -649,7 +650,7 @@ sub accent_commands($$$$)
 }
 
 foreach my $command (keys(%accent_commands)) {
-  $default_commands_conversion{$command} = \&accent_commands;
+  $default_commands_conversion{$command} = \&_convert_accent_command;
 }
 
 sub default_comment($$) {
@@ -686,7 +687,7 @@ sub default_heading_text($$$$$)
   return $result;
 }
 
-sub expand_heading_commands($$$$$)
+sub _convert_heading_command($$$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -722,8 +723,55 @@ sub expand_heading_commands($$$$$)
 }
 
 foreach my $command (keys(%sectioning_commands), 'node') {
-  $default_commands_conversion{$command} = \&expand_heading_commands;
+  $default_commands_conversion{$command} = \&_convert_heading_command;
 }
+
+sub _convert_raw_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  if ($cmdname eq $self->{'output_format'}) {
+    chomp ($contents);
+    return $contents;
+  }
+  $self->line_warn(sprintf(__("Raw format %s is not converted"), $cmdname),
+                   $command->{'line_nr'});
+  return $self->xml_protect_text($contents);
+}
+
+foreach my $command (@out_formats) {
+  $default_commands_conversion{$command} = \&_convert_raw_command;
+}
+
+sub _convert_verbatim_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  return $self->attribute_class('pre', $cmdname).'>' 
+          .$self->xml_protect_text($contents) . '</pre>';
+}
+
+$default_commands_conversion{'verbatim'} = \&_convert_verbatim_command;
+
+sub _convert_verbatiminclude_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $verbatim_include_verbatim = $self->expand_verbatiminclude($command);
+  return $self->convert_text($verbatim_include_verbatim);
+}
+
+$default_commands_conversion{'verbatiminclude'} 
+  = \&_convert_verbatiminclude_command;
 
 my %default_types_conversion;
 
@@ -742,7 +790,7 @@ my %paragraph_style = (
       'flushright' => 'right',
       );
 
-sub paragraph_type($$$$)
+sub _convert_paragraph_type($$$$)
 {
   my $self = shift;
   my $type = shift;
@@ -765,9 +813,9 @@ sub paragraph_type($$$$)
   }
 }
 
-$default_types_conversion{'paragraph'} = \&paragraph_type;
+$default_types_conversion{'paragraph'} = \&_convert_paragraph_type;
 
-sub empty_line($$$) {
+sub _convert_empty_line_type($$$) {
   my $self = shift;
   my $type = shift;
   my $command = shift;
@@ -775,10 +823,10 @@ sub empty_line($$$) {
   return "\n";
 }
 
-$default_types_conversion{'empty_line'} = \&empty_line;
-$default_types_conversion{'after_description_line'} = \&empty_line;
+$default_types_conversion{'empty_line'} = \&_convert_empty_line_type;
+$default_types_conversion{'after_description_line'} = \&_convert_empty_line_type;
 
-sub bracketed($$$$) {
+sub _convert_bracketed_type($$$$) {
   my $self = shift;
   my $type = shift;
   my $command = shift;
@@ -788,10 +836,9 @@ sub bracketed($$$$) {
   return '{'.$content.'}';
 }
 
-$default_types_conversion{'bracketed'} = \&bracketed;
+$default_types_conversion{'bracketed'} = \&_convert_bracketed_type;
 
-
-sub process_text($$$)
+sub _convert_text($$$)
 {
   my $self = shift;
   my $type = shift;
@@ -827,7 +874,56 @@ sub process_text($$$)
   return $text;
 }
 
-$default_types_conversion{'text'} = \&process_text;
+$default_types_conversion{'text'} = \&_convert_text;
+
+sub _convert_element_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+
+  #print STDERR "GGGGGGGG $command->{'parent'} $command->{'parent'}->{'type'}\n";
+  my $result = '';
+  $result .= $content;
+  # FIXME titlepage
+  if (!$command->{'element_prev'}) {
+    if (!$command->{'element_next'}) {
+      return $result.$self->get_conf('DEFAULT_RULE')."\n";
+    }
+  }
+  return $content;
+}
+
+$default_types_conversion{'element'} = \&_convert_element_type;
+
+# FIXME associate with element type (replace by _convert_element_type)?
+sub _convert_element($$)
+{
+  my $self = shift;
+  my $element = shift;
+
+  my $result = '';
+
+  # This may happen if there are only nodes and sections are used as elements
+  #die "BUG: no 'element_command' for $element" 
+  #  if (!$element->{'extra'}->{'element_command'});
+  die "BUG: no target for $element" 
+    if ($element->{'extra'}->{'element_command'} and
+        !$self->{'targets'}->{$element->{'extra'}->{'element_command'}});
+  print STDERR "NEW ELEMENT $self->{'targets'}->{$element->{'extra'}->{'element_command'}}->{'id'}\n"
+    if ($self->get_conf('DEBUG'));
+
+  $result .= $self->_convert($element);
+
+  print STDERR "END ELEMENT\n" if ($self->get_conf('DEBUG'));
+
+  #$result .= $self->_footnotes($element);
+
+  #print STDERR "AFTER FOOTNOTES\n" if ($self->{'DEBUG'});
+
+  return $result;
+}
 
 sub _initialize($)
 {
@@ -838,6 +934,11 @@ sub _initialize($)
   }
 
   %{$self->{'css_map'}} = %css_map;
+
+  foreach my $format (@out_formats) {
+    $default_commands_conversion{$format} = undef
+       unless ($self->{'expanded_formats_hash'}->{$format});
+  }
 
   foreach my $context (keys(%default_commands_formatting)) {
     foreach my $command (keys(%{$default_commands_formatting{$context}})) {
@@ -911,36 +1012,9 @@ sub _initialize($)
                          'align' => ['raggedright']}];
   $self->{'formats'} = [];
 
+
   return $self;
 }
-
-sub _convert_element($$)
-{
-  my $self = shift;
-  my $element = shift;
-
-  my $result = '';
-
-  # This may happen if there are only nodes and sections are used as elements
-  #die "BUG: no 'element_command' for $element" 
-  #  if (!$element->{'extra'}->{'element_command'});
-  die "BUG: no target for $element" 
-    if ($element->{'extra'}->{'element_command'} and
-        !$self->{'targets'}->{$element->{'extra'}->{'element_command'}});
-  print STDERR "NEW ELEMENT $self->{'targets'}->{$element->{'extra'}->{'element_command'}}->{'id'}\n"
-    if ($self->get_conf('DEBUG'));
-
-  $result .= $self->_convert($element);
-
-  print STDERR "END ELEMENT\n" if ($self->get_conf('DEBUG'));
-
-  #$result .= $self->_footnotes($element);
-
-  #print STDERR "AFTER FOOTNOTES\n" if ($self->{'DEBUG'});
-
-  return $result;
-}
-
 # the entry point for _convert
 sub convert_tree($$)
 {

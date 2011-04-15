@@ -355,6 +355,13 @@ sub set_expansion($$) {
   }
 }
 
+sub set_format($)
+{
+  my $format = shift;
+  $default_expanded_format = [$format];
+  return $format;
+}
+
 sub document_warn ($) {
   return if (get_conf('NO_WARN'));
   my $text = shift;
@@ -487,8 +494,9 @@ my $result_options = Getopt::Long::GetOptions (
      if ($var eq 'DEBUGCOUNT') {
        $format = 'debugcount';
      } elsif ($var eq 'TEXI2HTML') {
-       $format = 'html';
+       $format = set_format('html');
        _set_variables_texi2html();
+       $parser_default_options->{'values'}->{'texi2html'} = 1;
      } else {
      # this is very wrong, but a way to avoid a spurious warning.
        no warnings 'once';
@@ -533,10 +541,10 @@ my $result_options = Getopt::Long::GetOptions (
  'plaintext' => sub {$format = $_[0]; 
                      set_from_cmdline('SHOW_MENU', 0);
  },
- 'html' => sub {$format = $_[0];},
- 'info' => sub {$format = $_[0];},
- 'docbook' => sub {$format = $_[0];},
- 'xml' => sub {$format = $_[0];},
+ 'html' => sub {$format = set_format($_[0]);},
+ 'info' => sub {$format = set_format($_[0]);},
+ 'docbook' => sub {$format = set_format($_[0]);},
+ 'xml' => sub {$format = set_format($_[0]);},
  'dvi' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
  'ps' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
  'pdf' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
