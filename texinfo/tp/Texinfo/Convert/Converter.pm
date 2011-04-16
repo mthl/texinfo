@@ -420,6 +420,53 @@ sub expand_today($)
             'day' => $mday, 'year' => $year });
 }
 
+sub definition_category($$$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $arg_category = shift;
+  my $arg_class = shift;
+  return $arg_category
+    if (!defined($arg_class));
+  
+  my $style = 
+    $Texinfo::Common::command_index_prefix{$current->{'extra'}->{'def_command'}};
+  #my $category = Texinfo::Convert::Texinfo::convert($arg_category->[0]);
+  #my $class = Texinfo::Convert::Texinfo::convert($arg_class->[0]);
+  #print STDERR "DEFINITION CATEGORY($style): $category $class\n"
+  #  if ($self->get_conf('DEBUG'));
+  if ($style eq 'f') {
+    #return Texinfo::Parser::parse_texi_line (undef, "$category on $class");
+    return $self->gdt('{category} on {class}', { 'category' => $arg_category, 
+                                          'class' => $arg_class });
+  } elsif ($style eq 'v') {
+    #return Texinfo::Parser::parse_texi_line (undef, "$category of $class");
+    return $self->gdt('{category} of {class}', { 'category' => $arg_category, 
+                                          'class' => $arg_class });
+  }
+  return $arg_category;
+}
+
+sub definition_arguments_content($$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $result;
+
+  my @args = @{$root->{'extra'}->{'def_args'}};
+  while (@args) {
+    last if ($args[0]->[0] ne 'spaces'
+             and !$root->{'extra'}->{'def_parsed_hash'}->{$args[0]->[0]});
+    shift @args;
+  }
+  if (@args) {
+    foreach my $arg (@args) {
+      push @$result, $arg->[1];
+    }
+  }
+  return $result;
+}
+
 sub xml_protect_text($$)
 {
   my $self = shift;

@@ -19,6 +19,9 @@ This module requires these other modules and libraries:
 
   blah blah blah
 
+On ubuntu/debian 
+libdata-compare-perl libtest-deep-perl libclone-perl
+
 COPYRIGHT AND LICENCE
 
 Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 

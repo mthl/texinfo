@@ -736,8 +736,12 @@ sub _convert_raw_command($$$$)
   if ($cmdname eq $self->{'output_format'}) {
     chomp ($contents);
     return $contents;
+  # FIXME compatibility with texi2html
+  } elsif ($cmdname eq 'tex') {
+    return $self->attribute_class('pre', $cmdname).'>' 
+          .$self->xml_protect_text($contents) . '</pre>';
   }
-  $self->line_warn(sprintf(__("Raw format %s is not converted"), $cmdname),
+  $self->line_warn(sprintf($self->__("Raw format %s is not converted"), $cmdname),
                    $command->{'line_nr'});
   return $self->xml_protect_text($contents);
 }
@@ -876,6 +880,63 @@ sub _convert_text($$$)
 
 $default_types_conversion{'text'} = \&_convert_text;
 
+sub _convert_def_line_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  # FIXME content?
+  my $content = shift;
+
+  if ($command->{'extra'} and $command->{'extra'}->{'def_args'}
+      and @{$command->{'extra'}->{'def_args'}}) {
+    my $parsed_definition_category = $self->definition_category ($command, 
+            $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+            $command->{'extra'}->{'def_parsed_hash'}->{'class'});
+  }
+  my $arguments_content = $self->definition_arguments_content($command);
+  my $arguments = '';
+  if ($arguments_content) {
+    $arguments = $self->convert_text({'type' => '_code',
+                   'contents' => $arguments_content});
+    $arguments = '<em>' . $arguments . '</em>' if ($arguments =~ /\S/);
+  }
+  my $index_label = '';
+  my $index_id = $self->command_id ($command);
+  if (defined($index_id)) {
+    $index_label = "<a href=\"$index_id\"></a>";
+  }
+  my $category_prepared = '';
+  my $type_name = '';
+  if (!$self->get_conf('DEF_TABLE')) {
+    return '<dt>'.$index_label.$category_prepared . ':' . $type_name . "</dt>\n";
+  } else {
+    return "<tr><td align=\"left\">" . $type_name .
+       "</td><td align=\"right\">" . $category_prepared . 
+       $index_label . "</td></tr>\n";
+  }
+}
+
+$default_types_conversion{'def_line'} = \&_convert_def_line_type;
+
+sub _convert_def_command($$$$) {
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+  my $contents = shift;
+
+  if (!$self->get_conf('DEF_TABLE')) {
+    return "<dl>\n". $contents ."</dl>\n";
+  } else {
+    return "<table width=\"100%\">\n" . $contents . "</table>\n";
+  }
+}
+
+foreach my $command (keys(%def_commands)) {
+  $default_commands_conversion{$command} = \&_convert_def_command;
+}
+
 sub _convert_element_type($$$$)
 {
   my $self = shift;
@@ -886,7 +947,7 @@ sub _convert_element_type($$$$)
   #print STDERR "GGGGGGGG $command->{'parent'} $command->{'parent'}->{'type'}\n";
   my $result = '';
   $result .= $content;
-  # FIXME titlepage
+  # FIXME titlepage
   if (!$command->{'element_prev'}) {
     if (!$command->{'element_next'}) {
       return $result.$self->get_conf('DEFAULT_RULE')."\n";
@@ -905,7 +966,7 @@ sub _convert_element($$)
 
   my $result = '';
 
-  # This may happen if there are only nodes and sections are used as elements
+  # This may happen if there are only nodes and sections are used as elements
   #die "BUG: no 'element_command' for $element" 
   #  if (!$element->{'extra'}->{'element_command'});
   die "BUG: no target for $element" 
@@ -1260,6 +1321,7 @@ sub _set_root_commands_targets_node_files($$)
       $self->{'targets'}->{$root_command} = {'target' => $target, 
                                              'id' => $id,
                                              'node_filename' => $filename};
+      $self->{'ids'}->{$id} = $root_command;
     }
   }
 
@@ -1267,7 +1329,7 @@ sub _set_root_commands_targets_node_files($$)
     foreach my $element (@$elements) {
       foreach my $root_command(@{$element->{'contents'}}) {
         # FIXME this happens for type 'text_root' which precedes the 
-        # root commands.  The target may also already be set for top node.
+        # root commands.  The target may also already be set for top node.
         next if (!defined($root_command->{'cmdname'}) 
                  or $self->{'targets'}->{$root_command});
         if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
@@ -1277,7 +1339,7 @@ sub _set_root_commands_targets_node_files($$)
                 $no_unidecode));
           my $nr=0;
           my $target = $target_base;
-          while ($self->{'labels'}->{$target}) {
+          while ($self->{'ids'}->{$target}) {
             $target = $target_base.'-'.$nr;
             $nr++;
             # Avoid integer overflow
@@ -1299,6 +1361,7 @@ sub _set_root_commands_targets_node_files($$)
           }
           $self->{'targets'}->{$root_command} = {'target' => $target, 
                                                  'id' => $id};
+          $self->{'ids'}->{$id} = $root_command;
         }
       }
     }
@@ -1564,12 +1627,59 @@ sub _prepare_special_elements($)
       $self->_set_page_file($page, $filename);
       push @$pages, $page;
     }
+    # FIXME add element, page... (see command_filename)?
     $self->{'targets'}->{$element} = {'id' => $id,
                                       'target' => $target,
                                       'filename' => $filename,
                                      };
+    $self->{'ids'}->{$id} = $element;
   }
   return ($elements, $pages);
+}
+
+sub _prepare_index_entries($)
+{
+  my $self = shift;
+
+
+  if ($self->{'parser'}) {
+    my $no_unidecode;
+    $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE'))
+                          and !$self->get_conf('USE_UNIDECODE'));
+
+    my ($index_names, $merged_indices, $index_entries)
+       = $self->{'parser'}->indices_information();
+    $self->{'index_entries_by_letter'}
+      = $self->Texinfo::Structuring::sort_indices_by_letter(
+          Texinfo::Structuring::merge_indices($index_names, $merged_indices,
+                                              $index_entries));
+
+    foreach my $index_entry (@$index_entries) {
+      my ($page, $element, $root_command) 
+        = $self->_get_page($index_entry->{'command'});
+      my $region = '';
+      $region = "$index_entry->{'region'}-" 
+        if (defined($index_entry->{'region'}) and $index_entry->{'region'} ne '');
+      my $normalized_index = _normalized_to_id(
+          Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
+            {'contents' => $index_entry->{'content'}},
+                  $no_unidecode));
+      my $target_base = "index-" . $region .$normalized_index;
+      my $nr=1;
+      my $target = $target_base;
+      while ($self->{'ids'}->{$target}) {
+        $target = $target_base.'-'.$nr;
+        $nr++;
+        # Avoid integer overflow
+        die if ($nr == 0);
+      }
+      my $id = $target;
+      $self->{'ids'}->{$target} = $index_entry->{'command'};
+      $self->{'targets'}->{$index_entry->{'command'}} = { 'id' => $id,
+                                                          'target' => $target,
+                                                        };
+    }
+  }
 }
 
 sub htmlxref($$)
@@ -1939,6 +2049,7 @@ sub convert($$)
 
   # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
+  $self->_prepare_index_entries();
 
   if (!defined($elements)) {
     $result = $self->_convert($root);
@@ -1995,6 +2106,10 @@ sub output($$)
   # 'destination_directory' and 'output_filename' that are useful when split.
   $self->_set_outfile();
 
+  # Do that before the other elements, to be sure that special page ids
+  # are registered before elements id are.
+  my ($special_elements, $special_pages) = $self->_prepare_special_elements();
+
   # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
 
@@ -2007,17 +2122,15 @@ sub output($$)
 
   $self->{'pages'} = $pages;
   
-  my ($special_elements, $special_pages) = $self->_prepare_special_elements();
-
   # determine file names associated with the different pages, and setup
-  # the counters for special element pages.
+  # the counters for special element pages.
   $self->_set_page_files($pages, $special_pages);
 
   # do element directions.  FIXME do it here or before?  Here it means that
   # PrevFile and NextFile can be set.
   Texinfo::Structuring::element_directions($self, $elements);
 
-  # associate the special elements that have no page to the main page.
+  # associate the special elements that have no page to the main page.
   # This may only happen if not split.
   if ($special_elements) {
     foreach my $special_element (@$special_elements) {
@@ -2033,6 +2146,11 @@ sub output($$)
 
   # FIXME Before that, set multiple commands
   # FIXME set language and documentencoding/encoding_name
+
+  # FIXME determine index entries id/targets and set them as 'ids' and 
+  # 'targets'. texi2html.pl l. 7807
+  $self->_prepare_index_entries();
+
 
   # TODO Top, Index, First, Last.
 

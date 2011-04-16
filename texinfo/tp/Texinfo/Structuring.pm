@@ -47,6 +47,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   number_floats
   merge_indices
   sort_indices
+  sort_indices_by_letter
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -813,7 +814,7 @@ sub _print_element_command_texi($)
   
   my $command = $element->{'extra'}->{'element_command'};
   if (!defined($command)) {
-    # happens when there are only nodes and sections are used as elements
+    # happens when there are only nodes and sections are used as elements
     my $result = "No associated command ";
     $result .= "(type $element->{'type'})" if (defined($element->{'type'}));
     return $result;
@@ -910,16 +911,36 @@ sub number_floats($)
   }
 }
 
+sub _sort_string($$)
+{
+  my $a = shift;
+  my $b = shift;
+  return (($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/)
+              or ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/))
+              ? ($a cmp $b)
+                : (($a =~ /^[[:alpha:]]/ && 1) || -1);
+}
+
 sub _sort_subroutine($$)
 {
   my $key1 = shift;
   my $key2 = shift;
   my $a = uc($key1->{'key'});
   my $b = uc($key2->{'key'});
-  my $res = (($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/)
-              or ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/))
-              ? ($a cmp $b)
-                : (($a =~ /^[[:alpha:]]/ && 1) || -1);
+  my $res = _sort_string($a, $b);
+  if ($res == 0) {
+    $res = ($key1->{'number'} <=> $key2->{'number'});
+  }
+  return $res;
+}
+
+sub _sort_entries_in_letter($$)
+{
+  my $key1 = shift;
+  my $key2 = shift;
+  my $a = uc($key1->{'key'});
+  my $b = uc($key2->{'key'});
+  my $res = ($a cmp $b);
   if ($res == 0) {
     $res = ($key1->{'number'} <=> $key2->{'number'});
   }
@@ -943,7 +964,7 @@ sub _do_index_keys($$)
   }
 }
 
-sub sort_indices ($$)
+sub sort_indices($$)
 {
   my $self = shift;
   my $index_entries = shift;
@@ -954,6 +975,28 @@ sub sort_indices ($$)
         sort _sort_subroutine @{$index_entries->{$index_name}};
   }
   return $sorted_index_entries;
+}
+
+sub sort_indices_by_letter($$)
+{
+  my $self = shift;
+  my $index_entries = shift;
+  my $indices_sorted_by_letters;
+  _do_index_keys($self, $index_entries);
+  foreach my $index_name (keys(%$index_entries)) {
+    my $index_letter_hash;
+    foreach my $index_entry (@{$index_entries->{$index_name}}) {
+      my $letter = uc(substr($index_entry->{'key'}, 0, 1));
+      push @{$index_letter_hash->{$letter}}, $index_entry;
+    }
+    foreach my $letter (sort _sort_string (keys %$index_letter_hash)) {
+      my @sorted_letter_entries 
+         = sort _sort_entries_in_letter @{$index_letter_hash->{$letter}};
+      push @{$indices_sorted_by_letters->{$index_name}},
+        { 'letter' => $letter, 'entries' => \@sorted_letter_entries }; 
+    }
+  }
+  return $indices_sorted_by_letters;
 }
 
 sub merge_indices($$$)
