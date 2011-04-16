@@ -164,102 +164,108 @@ $result_trees{'not_closed'} = {
           'type' => 'def_line'
         },
         {
-          'cmdname' => 'defvar',
           'contents' => [
             {
-              'args' => [
+              'cmdname' => 'defvar',
+              'contents' => [
                 {
-                  'contents' => [
+                  'args' => [
                     {
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => 'type1 var bidule
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => ' ',
+                          'type' => 'empty_spaces_after_command'
+                        },
+                        {
+                          'parent' => {},
+                          'text' => 'type1 var bidule
 '
+                        }
+                      ],
+                      'parent' => {},
+                      'type' => 'block_line_arg'
                     }
                   ],
+                  'extra' => {
+                    'def_args' => [
+                      [
+                        'category',
+                        {
+                          'text' => 'Variable'
+                        }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        }
+                      ],
+                      [
+                        'name',
+                        {
+                          'text' => 'type1'
+                        }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        }
+                      ],
+                      [
+                        'arg',
+                        {
+                          'text' => 'var'
+                        }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        }
+                      ],
+                      [
+                        'arg',
+                        {
+                          'text' => 'bidule'
+                        }
+                      ]
+                    ],
+                    'def_command' => 'defvar',
+                    'def_parsed_hash' => {
+                      'category' => {},
+                      'name' => {}
+                    },
+                    'index_entry' => {
+                      'command' => {},
+                      'content' => [
+                        {}
+                      ],
+                      'index_at_command' => 'defvar',
+                      'index_name' => 'vr',
+                      'index_prefix' => 'v',
+                      'number' => 1
+                    },
+                    'original_def_cmdname' => 'defvar'
+                  },
                   'parent' => {},
-                  'type' => 'block_line_arg'
+                  'type' => 'def_line'
                 }
               ],
-              'extra' => {
-                'def_args' => [
-                  [
-                    'category',
-                    {
-                      'text' => 'Variable'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'name',
-                    {
-                      'text' => 'type1'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'arg',
-                    {
-                      'text' => 'var'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'arg',
-                    {
-                      'text' => 'bidule'
-                    }
-                  ]
-                ],
-                'def_command' => 'defvar',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'command' => {},
-                  'content' => [
-                    {}
-                  ],
-                  'index_at_command' => 'defvar',
-                  'index_name' => 'vr',
-                  'index_prefix' => 'v',
-                  'number' => 1
-                },
-                'original_def_cmdname' => 'defvar'
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
               },
-              'parent' => {},
-              'type' => 'def_line'
+              'parent' => {}
             }
           ],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'def_item'
         }
       ],
       'line_nr' => {
@@ -288,13 +294,14 @@ $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_parsed_h
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[2][1];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed'}{'contents'}[0];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'not_closed'}{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'parent'} = $result_trees{'not_closed'};

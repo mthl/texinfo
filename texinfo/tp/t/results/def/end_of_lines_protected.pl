@@ -221,13 +221,19 @@ $result_trees{'end_of_lines_protected'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'deffn
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'deffn
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'def_item'
         },
         {
           'args' => [
@@ -304,6 +310,7 @@ $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'extra'}{'
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
+$result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0];

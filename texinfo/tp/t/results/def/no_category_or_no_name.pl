@@ -34,13 +34,19 @@ $result_trees{'no_category_or_no_name'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'no category no name
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'no category no name
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'def_item'
         },
         {
           'args' => [
@@ -151,13 +157,19 @@ $result_trees{'no_category_or_no_name'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'no name
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'no name
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'def_item'
         },
         {
           'args' => [
@@ -377,13 +389,19 @@ $result_trees{'no_category_or_no_name'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'with deffnx missing category or name
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'with deffnx missing category or name
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'def_item'
         },
         {
           'args' => [
@@ -439,6 +457,7 @@ $result_trees{'no_category_or_no_name'} = {
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0];
+$result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[1];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'args'}[0];
@@ -459,6 +478,7 @@ $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[0]{'extra'}{'
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[2];
+$result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[1];
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[2];
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[2]{'args'}[0];
@@ -486,6 +506,7 @@ $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[1]{'parent'} 
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4];
+$result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3]{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[4]{'args'}[0];

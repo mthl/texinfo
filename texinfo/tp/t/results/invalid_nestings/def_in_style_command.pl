@@ -116,13 +116,19 @@ $result_trees{'def_in_style_command'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'text
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'text
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'def_item'
         },
         {
           'args' => [
@@ -188,6 +194,7 @@ $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'de
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1];
+$result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0];

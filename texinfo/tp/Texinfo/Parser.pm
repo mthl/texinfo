@@ -1143,6 +1143,40 @@ sub _close_command_cleanup($$$) {
   } elsif ($item_container_commands{$current->{'cmdname'}}) {
     delete $current->{'items_count'};
   }
+
+  # put everything after the last @def*x command in a def_item type container.
+  if ($def_commands{$current->{'cmdname'}}) {
+    # At this point the end command hasn't been added to the command contents.
+    #my $end;
+    #if ($current->{'extra'}->{'end_command'}) {
+    #  $end = pop @{$current->{'contents'}};
+    #  die "BUG $current->{'cmdname'}: end don't match end_command "._print_current($current) ."end: "._print_current($end) ."end_command "._print_current($current->{'extra'}->{'end_command'})
+    #    if ($end ne $current->{'extra'}->{'end_command'});
+    #}
+    my $def_item = {'type' => 'def_item',
+                    'parent' => $current,
+                    'contents' => []};
+    # remove everything that is not a def_line to put it in the def_item,
+    # starting from the end.
+    my $contents_count = scalar(@{$current->{'contents'}});
+    for (my $i = 0; $i < $contents_count; $i++) {
+      if ($current->{'contents'}->[-1]->{'type'} 
+          and $current->{'contents'}->[-1]->{'type'} eq 'def_line'
+          and !$current->{'contents'}->[-1]->{'extra'}->{'not_after_command'}) {
+        last;
+      } else {
+        my $item_content = pop @{$current->{'contents'}};
+        $item_content->{'parent'} = $def_item;
+        unshift @{$def_item->{'contents'}}, $item_content;
+      }
+    }
+    if (scalar(@{$def_item->{'contents'}})) {
+      push @{$current->{'contents'}}, $def_item;
+    }
+  }
+  # put end out of before_item, and replace it at the end of the parent.
+  # remove empty before_item.
+  # warn if not empty before_item, but format is empty
   if ($block_item_commands{$current->{'cmdname'}}) {
     if (@{$current->{'contents'}}) {
       my $leading_spaces = 0;
@@ -1175,6 +1209,7 @@ sub _close_command_cleanup($$$) {
             shift @{$current->{'contents'}};
           }
         } else {
+          # warn if not empty before_item, but format is empty
           my $empty_before_item = 1;
           foreach my $before_item_content (@{$before_item->{'contents'}}) {
             if (!$before_item_content->{'cmdname'} or 
@@ -3482,16 +3517,17 @@ sub _parse_texi($;$)
                     last if ($after_paragraph);
                   }
                 }
-                if (!$current->{'cmdname'} 
-                     or $current->{'cmdname'} ne $base_command
-                     or $after_paragraph) {
-                  $self->line_error(sprintf($self->__("Must be after `\@%s' to use `\@%s'"), $base_command, $command), $line_nr);
-                }
                 push @{$self->{'context_stack'}}, 'def';
                 $current->{'contents'}->[-1]->{'type'} = 'def_line';
                 $current->{'contents'}->[-1]->{'extra'} = 
                    {'def_command' => $base_command,
                     'original_def_cmdname' => $command};
+                if (!$current->{'cmdname'} 
+                     or $current->{'cmdname'} ne $base_command
+                     or $after_paragraph) {
+                  $self->line_error(sprintf($self->__("Must be after `\@%s' to use `\@%s'"), $base_command, $command), $line_nr);
+                  $current->{'contents'}->[-1]->{'extra'}->{'not_after_command'} = 1;
+                }
               }
             }
             # a container for what is on the @-command line, considered to
