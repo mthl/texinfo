@@ -140,11 +140,6 @@ HEADERS is not used to determine if node headers are output or not, this is
 determined by the module used (Plaintext.pm or info.pm).  No idea whether
 it is right or wrong.
 
-With something like
-@deffn { category}
-the space is stripped everywhere but in sorting. Should be stripped in 
-sorting too.
-
 tests/indices/index_entry_in_footnote_separated_info the node of index
 entry is Top, it should be the node created especially for the footnote
 and the lines count should also be adjusted.

@@ -92,6 +92,9 @@ deffn
 @deffnx empty deffnx
 @end deffn
 '],
+['leading_space_in_def_arg',
+'@deffn category { name} arg
+'],
 ['defx_after_comment',
 '@deffn fset @var{i} a g
 @c comment

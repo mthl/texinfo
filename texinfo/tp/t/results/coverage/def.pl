@@ -744,8 +744,12 @@ $result_trees{'def'} = {
                 {
                   'contents' => [
                     {
+                      'text' => ' ',
+                      'type' => 'empty_spaces_before_argument'
+                    },
+                    {
                       'parent' => {},
-                      'text' => ' log trap1'
+                      'text' => 'log trap1'
                     }
                   ],
                   'parent' => {},
@@ -1930,7 +1934,7 @@ $result_trees{'def'}{'contents'}[5]{'contents'}[2]{'extra'}{'index_entry'}{'cont
 $result_trees{'def'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'def'}{'contents'}[5];
 $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0];
 $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0];
-$result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[2];
+$result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[2];
 $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0];
 $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0];
 $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'def'}{'contents'}[5]{'contents'}[3]{'args'}[0];
@@ -2124,7 +2128,7 @@ def--fn
 fset i a g
 cmde truc 
 Command log trap 
-Command  log trap1   
+Command log trap1   
 Command log trap2  
 cmde id ule truc
 cmde2 id i ule truc

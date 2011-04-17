@@ -154,8 +154,12 @@ $result_trees{'inter_item_commands_in_def'} = {
                 {
                   'contents' => [
                     {
+                      'text' => ' ',
+                      'type' => 'empty_spaces_before_argument'
+                    },
+                    {
                       'parent' => {},
-                      'text' => ' log trap1'
+                      'text' => 'log trap1'
                     }
                   ],
                   'parent' => {},
@@ -545,7 +549,7 @@ $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[1]{'paren
 $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'inter_item_commands_in_def'}{'contents'}[0];
 $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2];
+$result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2];
 $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'inter_item_commands_in_def'}{'contents'}[0]{'contents'}[3]{'args'}[0];
@@ -624,7 +628,7 @@ In deff item.
 
 $result_texts{'inter_item_commands_in_def'} = 'fset i a g
 
-Command  log trap1   
+Command log trap1   
 cmde2 id i ule truc
 
 In deff item.

@@ -58,8 +58,12 @@ $result_trees{'space_in_def_for_index'} = {
                     {
                       'contents' => [
                         {
+                          'text' => ' ',
+                          'type' => 'empty_spaces_before_argument'
+                        },
+                        {
                           'parent' => {},
-                          'text' => ' Category '
+                          'text' => 'Category '
                         }
                       ],
                       'parent' => {},
@@ -72,8 +76,12 @@ $result_trees{'space_in_def_for_index'} = {
                     {
                       'contents' => [
                         {
+                          'text' => ' ',
+                          'type' => 'empty_spaces_before_argument'
+                        },
+                        {
                           'parent' => {},
-                          'text' => ' name '
+                          'text' => 'name '
                         }
                       ],
                       'parent' => {},
@@ -86,8 +94,12 @@ $result_trees{'space_in_def_for_index'} = {
                     {
                       'contents' => [
                         {
+                          'text' => ' ',
+                          'type' => 'empty_spaces_before_argument'
+                        },
+                        {
                           'parent' => {},
-                          'text' => ' argument '
+                          'text' => 'argument '
                         }
                       ],
                       'parent' => {},
@@ -170,7 +182,7 @@ $result_trees{'space_in_def_for_index'} = {
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
-                  'key' => ' name ',
+                  'key' => 'name ',
                   'node' => {},
                   'number' => 1
                 },
@@ -410,13 +422,13 @@ $result_trees{'space_in_def_for_index'}{'contents'}[1]{'args'}[0]{'contents'}[2]
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[5];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'space_in_def_for_index'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
@@ -479,7 +491,7 @@ $result_texis{'space_in_def_for_index'} = '@node Top
 
 
 $result_texts{'space_in_def_for_index'} = '
- Category   name   argument  argument2...
+Category  name  argument  argument2...
 AAA1 AAA2 arg3
 
 ';
@@ -518,14 +530,14 @@ $result_converted{'info'}->{'space_in_def_for_index'} = 'This is , produced by m
 
 File: ,  Node: Top,  Up: (dir)
 
- --  Category : name argument argument2...
+ -- Category : name argument argument2...
  -- AAA1: AAA2 arg3
 
  [index ]
 * Menu:
 
-* name :                                 Top.                   (line 3)
 * AAA2:                                  Top.                   (line 4)
+* name :                                 Top.                   (line 3)
 
 
 

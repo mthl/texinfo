@@ -67,8 +67,8 @@ $result_trees{'empty_index_entry'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => ' '
+                          'text' => ' ',
+                          'type' => 'empty_spaces_before_argument'
                         }
                       ],
                       'parent' => {},
@@ -123,7 +123,7 @@ $result_trees{'empty_index_entry'} = {
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
-                  'key' => ' ',
+                  'key' => '',
                   'node' => {},
                   'number' => 1
                 },
@@ -255,7 +255,6 @@ $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[0]{'parent'} = $re
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
@@ -297,7 +296,7 @@ $result_texis{'empty_index_entry'} = '@node Top
 
 
 $result_texts{'empty_index_entry'} = '
-  
+ 
 
 ';
 

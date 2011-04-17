@@ -1890,8 +1890,8 @@ sub _register_label($$$$)
 # $current is the command element.
 # $content holds the actual content.
 # for index entries and v|ftable items, it is the index entry content, 
-# for def, it is the parsed arguments.  The actual content should be 
-# constructed based on the definition line arguments.
+# for def, it is the parsed arguments, based on the definition line 
+# arguments.
 sub _enter_index_entry($$$$$)
 {
   my $self = shift;
@@ -1920,6 +1920,7 @@ sub _enter_index_entry($$$$$)
     $self->line_error (sprintf($self->__("Entry for index `%s' outside of any node"), 
                                $index_name), $line_nr);
   }
+  #print STDERR "INDEX ENTRY \@$command->{'cmdname'} $index_name($number)\n";
   push @{$self->{'index_entries'}->{$index_name}}, $index_entry;
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
@@ -3870,17 +3871,26 @@ sub _parse_texi($;$)
               .(defined($current->{'parent'}->{'remaining_args'}) ? "remaining: $current->{'parent'}->{'remaining_args'}, " : '')
               .($current->{'type'} ? "type: $current->{'type'}" : '')."\n"
                if ($self->{'DEBUG'});
-          } elsif (($current->{'parent'} 
+          } elsif ($current->{'parent'}
                     and (($current->{'parent'}->{'cmdname'}
                           and $current->{'parent'}->{'cmdname'} eq 'multitable')
                          or ($current->{'parent'}->{'type'} 
-                             and $current->{'parent'}->{'type'} eq 'def_line')))
-                   or $self->{'context_stack'}->[-1] eq 'math') {
+                             and $current->{'parent'}->{'type'} eq 'def_line'))) {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current };
             $current = $current->{'contents'}->[-1];
-            print STDERR "BRACKETED\n" if ($self->{'DEBUG'});
+            push @{$current->{'contents'}}, 
+                {'type' => 'empty_spaces_before_argument',
+                 'text' => '' };
+            print STDERR "BRACKETED in def/multitable\n" if ($self->{'DEBUG'});
+
+          } elsif ($self->{'context_stack'}->[-1] eq 'math') {
+            push @{$current->{'contents'}},
+                 { 'type' => 'bracketed', 'contents' => [],
+                   'parent' => $current };
+            $current = $current->{'contents'}->[-1];
+            print STDERR "BRACKETED in math\n" if ($self->{'DEBUG'});
           } else {
             $self->line_error (sprintf($self->__("Misplaced %c"),
                                              ord('{')), $line_nr);
