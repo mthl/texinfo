@@ -771,7 +771,7 @@ sub _convert_verbatiminclude_command($$$$)
   my $args = shift;
 
   my $verbatim_include_verbatim = $self->expand_verbatiminclude($command);
-  return $self->convert_text($verbatim_include_verbatim);
+  return $self->convert_tree($verbatim_include_verbatim);
 }
 
 $default_commands_conversion{'verbatiminclude'} 
@@ -880,34 +880,53 @@ sub _convert_text($$$)
 
 $default_types_conversion{'text'} = \&_convert_text;
 
+# FIXME not sure that there is contents.  Not sure that it matters either.
 sub _convert_def_line_type($$$$)
 {
   my $self = shift;
   my $type = shift;
   my $command = shift;
-  # FIXME content?
   my $content = shift;
 
+  my $category_prepared = '';
   if ($command->{'extra'} and $command->{'extra'}->{'def_args'}
       and @{$command->{'extra'}->{'def_args'}}) {
     my $parsed_definition_category = $self->definition_category ($command, 
             $command->{'extra'}->{'def_parsed_hash'}->{'category'},
             $command->{'extra'}->{'def_parsed_hash'}->{'class'});
+    if ($parsed_definition_category) {
+      $category_prepared = $self->convert_tree({'type' => '_code',
+                   'contents' => [$parsed_definition_category]});
+    }
   }
+  
   my $arguments_content = $self->definition_arguments_content($command);
   my $arguments = '';
   if ($arguments_content) {
-    $arguments = $self->convert_text({'type' => '_code',
+    $arguments = $self->convert_tree({'type' => '_code',
                    'contents' => $arguments_content});
-    $arguments = '<em>' . $arguments . '</em>' if ($arguments =~ /\S/);
+    $arguments = '<em> ' . $arguments . '</em>' if ($arguments =~ /\S/);
   }
+
+  my $def_type = '';
+  my $type_name = '';
+  if ($command->{'extra'}->{'def_parsed_hash'}->{'type'}) {
+    $def_type = $self->convert_tree({'type' => '_code',
+        'contents' => [$command->{'extra'}->{'def_parsed_hash'}->{'type'}]});
+  }
+  $type_name = " <em>$def_type</em>" if ($def_type ne '');
+  my $name = '';
+  if ($command->{'extra'}->{'def_parsed_hash'}->{'name'}) {
+    $name = $self->convert_tree({'type' => '_code',
+        'contents' => [$command->{'extra'}->{'def_parsed_hash'}->{'name'}]});
+  }
+  $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
+
   my $index_label = '';
   my $index_id = $self->command_id ($command);
   if (defined($index_id)) {
     $index_label = "<a href=\"$index_id\"></a>";
   }
-  my $category_prepared = '';
-  my $type_name = '';
   if (!$self->get_conf('DEF_TABLE')) {
     return '<dt>'.$index_label.$category_prepared . ':' . $type_name . "</dt>\n";
   } else {
@@ -919,23 +938,64 @@ sub _convert_def_line_type($$$$)
 
 $default_types_conversion{'def_line'} = \&_convert_def_line_type;
 
+sub _convert_def_item_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+
+  if ($content =~ /\S/) {
+    if (! $self->get_conf('DEF_TABLE')) {
+      return '<dd>' . $content . '</dd>';
+    } else {
+      return '<tr><td colspan="2">' . $content . '</td></tr>';
+    }
+  }
+}
+
+$default_types_conversion{'def_item'} = \&_convert_def_item_type;
+
 sub _convert_def_command($$$$) {
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $args = shift;
-  my $contents = shift;
+  my $content = shift;
 
+  #print STDERR "IIII $self $cmdname command $command args $args content $content\n";
   if (!$self->get_conf('DEF_TABLE')) {
-    return "<dl>\n". $contents ."</dl>\n";
+    return "<dl>\n". $content ."</dl>\n";
   } else {
-    return "<table width=\"100%\">\n" . $contents . "</table>\n";
+    return "<table width=\"100%\">\n" . $content . "</table>\n";
   }
 }
 
 foreach my $command (keys(%def_commands)) {
   $default_commands_conversion{$command} = \&_convert_def_command;
 }
+
+# This type is the only one present if there are no elements.  It is 
+# therefore used to do the formatting of the element in case there are no 
+# element.
+sub _convert_root_text_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+
+  my $result = $content;
+  # if there is no element, the parent should not be an element
+  if (defined($self->get_conf('DEFAULT_RULE'))
+      and (!$command->{'parent'}->{'type'}
+           or $command->{'parent'}->{'type'} ne 'element')) {
+    $result .= $self->get_conf('DEFAULT_RULE') ."\n",
+      if $self->get_conf('PROGRAM_NAME_IN_FOOTER');
+  }
+  return $result;
+}
+
+$default_types_conversion{'text_root'} = \&_convert_root_text_type;
 
 sub _convert_element_type($$$$)
 {
@@ -1649,35 +1709,37 @@ sub _prepare_index_entries($)
 
     my ($index_names, $merged_indices, $index_entries)
        = $self->{'parser'}->indices_information();
+    #print STDERR "IIII ($index_names, $merged_indices, $index_entries)\n";
     $self->{'index_entries_by_letter'}
       = $self->Texinfo::Structuring::sort_indices_by_letter(
           Texinfo::Structuring::merge_indices($index_names, $merged_indices,
                                               $index_entries));
 
-    foreach my $index_entry (@$index_entries) {
-      my ($page, $element, $root_command) 
-        = $self->_get_page($index_entry->{'command'});
-      my $region = '';
-      $region = "$index_entry->{'region'}-" 
-        if (defined($index_entry->{'region'}) and $index_entry->{'region'} ne '');
-      my $normalized_index = _normalized_to_id(
+    foreach my $index_name (keys(%$index_entries)) {
+      foreach my $index_entry (@{$index_entries->{$index_name}}) {
+        my $region = '';
+        $region = "$index_entry->{'region'}-" 
+          if (defined($index_entry->{'region'}) and $index_entry->{'region'} ne '');
+        my $normalized_index = _normalized_to_id(
           Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
             {'contents' => $index_entry->{'content'}},
                   $no_unidecode));
-      my $target_base = "index-" . $region .$normalized_index;
-      my $nr=1;
-      my $target = $target_base;
-      while ($self->{'ids'}->{$target}) {
-        $target = $target_base.'-'.$nr;
-        $nr++;
-        # Avoid integer overflow
-        die if ($nr == 0);
-      }
-      my $id = $target;
-      $self->{'ids'}->{$target} = $index_entry->{'command'};
-      $self->{'targets'}->{$index_entry->{'command'}} = { 'id' => $id,
+        my $target_base = "index-" . $region .$normalized_index;
+        my $nr=1;
+        my $target = $target_base;
+        while ($self->{'ids'}->{$target}) {
+          $target = $target_base.'-'.$nr;
+          $nr++;
+          # Avoid integer overflow
+          die if ($nr == 0);
+        }
+        my $id = $target;
+        $self->{'ids'}->{$target} = $index_entry->{'command'};
+        $self->{'targets'}->{$index_entry->{'command'}} = { 'id' => $id,
                                                           'target' => $target,
                                                         };
+        #print STDERR "Enter $index_entry $index_entry->{'command'}: $id\n";
+      }
     }
   }
 }
@@ -2587,7 +2649,11 @@ sub _convert($$)
   # TODO special: center, footnote, menu?
   my $cell;
   my $preformatted;
-  if ($root->{'cmdname'}) {
+  # commands like @deffnx have both a cmdname and a def_line type.  It is
+  # better to consider them as a def_line type, as the whole point of the
+  # def_line type is to handle the same the def*x and def* line formatting. 
+  if ($root->{'cmdname'} 
+      and !($root->{'type'} and $root->{'type'} eq 'def_line')) {
     # FIXME definfoenclose_command 
     # ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command'))
     if (exists($self->{'commands_conversion'}->{$root->{'cmdname'}})) {
