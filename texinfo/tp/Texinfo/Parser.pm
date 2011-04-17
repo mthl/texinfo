@@ -896,6 +896,22 @@ sub _print_current($)
   return "$cmd$type : $args $text $contents\n$parent_string";
 }
 
+sub _print_current_keys($)
+{
+  my $current = shift;
+  my $string = _print_current($current);
+  foreach my $key (keys (%$current)) {
+    $string .= "   $key: $current->{$key}\n";
+  }
+  if ($current->{'extra'}) {
+    $string .= "    EXTRA\n";
+    foreach my $key (keys (%{$current->{'extra'}})) {
+      $string .= "    $key: $current->{'extra'}->{$key}\n";
+    }
+  }
+  return $string;
+}
+
 # For debugging
 my @kept_keys = ('contents', 'cmdname', 'type', 'text', 'args');
 my %kept_keys;

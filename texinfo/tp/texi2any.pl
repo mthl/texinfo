@@ -389,6 +389,8 @@ sub handle_errors($$) {
 
 sub _set_variables_texi2html()
 {
+  # FIXME all that are set to 0 could be negated, in order to have the default
+  # (undef) right.
   set_from_cmdline('NO_USE_SETFILENAME', 1);
   set_from_cmdline('USE_SETFILENAME_EXTENSION', 0);
   set_from_cmdline('footnotestyle', 'separate');

@@ -283,6 +283,7 @@ my %defaults = (
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
   'SHOW_TITLE'           => 1,
+  'USE_TITLEPAGE_FOR_TITLE' => 0,
   'SHOW_MENU'            => 1,
   'MONOLITHIC'           => 1,
 # This is the default, mainly for tests; the caller should set them.  These
@@ -819,6 +820,7 @@ sub _convert_paragraph_type($$$$)
 
 $default_types_conversion{'paragraph'} = \&_convert_paragraph_type;
 
+# FIXME this should be very rare since this is caught by _convert_text.
 sub _convert_empty_line_type($$$) {
   my $self = shift;
   my $type = shift;
@@ -828,6 +830,7 @@ sub _convert_empty_line_type($$$) {
 }
 
 $default_types_conversion{'empty_line'} = \&_convert_empty_line_type;
+# in menu
 $default_types_conversion{'after_description_line'} = \&_convert_empty_line_type;
 
 sub _convert_bracketed_type($$$$) {
@@ -997,6 +1000,39 @@ sub _convert_root_text_type($$$$)
 
 $default_types_conversion{'text_root'} = \&_convert_root_text_type;
 
+# Convert titlepage.  Fall back to simpletitle.
+sub default_titlepage($)
+{
+  my $self = shift;
+
+  my $titlepage_text;
+  if ($self->{'extra'}->{'titlepage'}) {
+    $titlepage_text = $self->convert_tree({'contents' 
+               => $self->{'extra'}->{'titlepage'}->{'contents'}});
+  } elsif ($self->{'simpletitle_tree'}) {
+    my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
+    $titlepage_text = &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
+                                            0, {'cmdname' => 'settitle',
+                     'contents' => $self->{'simpletitle_tree'}->{'contents'}});
+  }
+  my $result = '';
+  $result .= $titlepage_text.$self->get_conf('DEFAULT_RULE')."\n"
+    if (defined($titlepage_text));
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
+    if ($self->get_conf('setcontentsaftertitlepage')) {
+      # FIXME put formatted contents
+      # @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}
+      $result .= $self->get_conf('DEFAULT_RULE')."\n";
+    }
+    if ($self->get_conf('setshortcontentsaftertitlepage')) {
+      # FIXME put formatted shortcontents
+      # @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}
+      $result .= $self->get_conf('DEFAULT_RULE')."\n";
+    }
+  }
+  return $result;
+}
+
 sub _convert_element_type($$$$)
 {
   my $self = shift;
@@ -1006,14 +1042,23 @@ sub _convert_element_type($$$$)
 
   #print STDERR "GGGGGGGG $command->{'parent'} $command->{'parent'}->{'type'}\n";
   my $result = '';
-  $result .= $content;
-  # FIXME titlepage
   if (!$command->{'element_prev'}) {
+    if ($self->get_conf('SHOW_TITLE')) {
+      if ($self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
+        $result .= &{$self->{'titlepage'}}($self);
+      } elsif ($self->{'simpletitle_tree'}) {
+        my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
+        $result .= &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
+                                            0, {'cmdname' => 'settitle',
+                     'contents' => $self->{'simpletitle_tree'}->{'contents'}});
+      }
+    }
     if (!$command->{'element_next'}) {
-      return $result.$self->get_conf('DEFAULT_RULE')."\n";
+      return $result.$content.$self->get_conf('DEFAULT_RULE')."\n";
     }
   }
-  return $content;
+  $result .= $content;
+  return $result;
 }
 
 $default_types_conversion{'element'} = \&_convert_element_type;
@@ -1121,6 +1166,7 @@ sub _initialize($)
      ['begin_file', \&default_begin_file, $Texinfo::Config::begin_file],
      ['end_file', \&default_end_file, $Texinfo::Config::end_file],
      ['program_string', \&default_program_string, $Texinfo::Config::program_string],
+     ['titlepage', \&default_titlepage, $Texinfo::Config::titlepage],
   ) {
     if (defined($formatting_references->[2])) {
       $self->{$formatting_references->[0]} = $formatting_references->[2];
@@ -1481,6 +1527,12 @@ sub _get_page($$)
         # FIXME element and root_command?
         return ($self->{'special_pages'}->{'Footnotes'});
       }
+      # } elsif (($current->{'cmdname'} eq 'contents' 
+      #           or $current->{'cmdname'} eq 'shortcontents'
+      #           or $current->{'cmdname'} eq 'summarycontents')
+      #          and !$self->get_conf('INLINE_CONTENTS')) {
+      #   setcontentsaftertitlepage
+      # }
     }
     if ($current->{'parent'}) {
       $current = $current->{'parent'};
@@ -2080,6 +2132,10 @@ sub default_begin_file($$$)
   my $program_homepage = $self->get_conf('PROGRAM_HOMEPAGE');
   my $program = $self->get_conf('PROGRAM');
 
+  # FIXME there is one empty line less than in texi2html.  Seems that in 
+  # texi2html the following empty lines are stripped.  Not exactly sure
+  # how, but it seems that some blank lines are removed before first element.
+  # Maybe misc commands are also stripped before.
   my $result = "$doctype
 <html>
 $copying_comment<!-- Created by $program_and_version, $program_homepage -->
@@ -2248,7 +2304,8 @@ sub output($$)
       my $command = $self->{'extra'}->{$simpletitle_command};
       next if ($command->{'extra'} 
                and $command->{'extra'}->{'missing_argument'});
-      $self->{'simpletitle_tree'} = {'contents' => $command->{'misc_content'}};
+      $self->{'simpletitle_tree'} = 
+         {'contents' => $command->{'extra'}->{'misc_content'}};
       last;
     }
   }
