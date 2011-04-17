@@ -2226,12 +2226,12 @@ sub output($$)
     if ($self->{'extra'}->{$fulltitle_command}) {
       my $command = $self->{'extra'}->{$fulltitle_command};
       next if (!$command->{'extra'}
-               or (!$command->{'extra'}->{'misc_contents'}
+               or (!$command->{'extra'}->{'misc_content'}
                    or $command->{'extra'}->{'missing_argument'}));
-      # FIXME remove the virtual type?
       print STDERR "Using $fulltitle_command as title\n"
         if ($self->get_conf('DEBUG'));
-      $fulltitle = {'contents' => $command->{'extra'}->{'misc_contents'},
+      # FIXME remove the virtual _fulltitle type?
+      $fulltitle = {'contents' => $command->{'extra'}->{'misc_content'},
                     'type' => '_fulltitle'};
       last;
     }
@@ -2248,7 +2248,7 @@ sub output($$)
       my $command = $self->{'extra'}->{$simpletitle_command};
       next if ($command->{'extra'} 
                and $command->{'extra'}->{'missing_argument'});
-      $self->{'simpletitle_tree'} = {'contents' => $command->{'contents'}};
+      $self->{'simpletitle_tree'} = {'contents' => $command->{'misc_content'}};
       last;
     }
   }
