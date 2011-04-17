@@ -293,4 +293,10 @@ $result_errors{'setfilename_on_top_and_after_node'} = [
 ];
 
 
+
+$result_converted{'plaintext'}->{'setfilename_on_top_and_after_node'} = 'In top
+******
+
+';
+
 1;

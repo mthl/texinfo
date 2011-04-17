@@ -326,11 +326,14 @@ my @prepend_dirs = ();
 my @css_files = ();
 my @css_refs = ();
 
-# defaults for options relevant in the main program, and not undef. 
-# Others are set in the converters.
+# defaults for options relevant in the main program, not undef, and also
+# defaults for all the converters.
 # Other relevant options (undef) are NO_WARN FORCE OUTFILE
-
+# Others are set in the converters.
 my $converter_default_options = { 'ERROR_LIMIT' => 100 };
+
+# this associates the command line options to the arrays set during
+# command line parsing.
 my $cmdline_options = { 'CSS_FILES' => \@css_files,
                         'CSS_REFS' => \@css_refs };
 
@@ -386,7 +389,7 @@ sub handle_errors($$) {
 
 sub _set_variables_texi2html()
 {
-  set_from_cmdline('USE_SETFILENAME', 0);
+  set_from_cmdline('NO_USE_SETFILENAME', 1);
   set_from_cmdline('USE_SETFILENAME_EXTENSION', 0);
   set_from_cmdline('footnotestyle', 'separate');
   set_from_cmdline('INLINE_CONTENTS', 0);

@@ -266,6 +266,12 @@ A.
 
 @contents
 '],
+['setfilename_on_top_and_after_node',
+'@node Top
+@top In top @setfilename very badly placed setfilename
+
+@setfilename a bit too late
+'],
 ['section_in_unnumbered_plaintext',
 $section_in_unnumbered_text
 ],
@@ -1075,12 +1081,6 @@ First top.
 @top Second top
 
 Second top.
-'],
-['setfilename_on_top_and_after_node',
-'@node Top
-@top In top @setfilename very badly placed setfilename
-
-@setfilename a bit too late
 '],
 ['unnumbered_before_top',
 '@unnumbered before top

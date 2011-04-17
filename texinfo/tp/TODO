@@ -51,6 +51,9 @@ in Texinfo::Config.
 Add an API for everything used in conf, for example in page_head, use 
 $self->title_string() and so on and so forth.  
 
+html tests which should be right:
+sectioning setfilename_on_top_and_after_node
+
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd
@@ -64,6 +67,8 @@ do something for?
 
 In Info A ref like @ref{node,,,manual} should lead to
 *note (manual)node::.
+
+Document that NO_USE_SETFILENAME replaced USE_SETFILENAME
 
 Test @w{'} for the substitution of '.
 

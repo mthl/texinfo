@@ -290,7 +290,7 @@ sub _set_outfile($$$)
   # determine output file and output file name
   my $outfile;
   if (!defined($self->get_conf('OUTFILE'))) {
-    if (defined($setfilename)) {
+    if (defined($setfilename) and !$self->get_conf('NO_USE_SETFILENAME')) {
       $outfile = $setfilename;
       if (!$self->get_conf('USE_SETFILENAME_EXTENSION')) {
         $outfile =~ s/\.[^\.]*$//;
@@ -327,7 +327,8 @@ sub _set_outfile($$$)
   my $output_basename = $self->get_conf('OUTFILE');
   # this is a case that should happen rarely: one wants to get 
   # the result in a string and there is a setfilename.
-  if ($self->get_conf('OUTFILE') eq '' and defined($setfilename)) {
+  if ($self->get_conf('OUTFILE') eq '' and defined($setfilename)
+      and !$self->get_conf('NO_USE_SETFILENAME')) {
     $output_basename = $setfilename;
     $document_name = $setfilename;
     if (!$self->get_conf('USE_SETFILENAME_EXTENSION')) {
