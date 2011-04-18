@@ -1660,6 +1660,11 @@ sub _prepare_elements($$)
   } else {
     $elements = Texinfo::Structuring::split_by_section($root);
   }
+  #if ($elements) {
+  #  foreach my $element(@{$elements}) {
+  #    print STDERR "ELEMENT $element->{'type'}: $element\n";
+  #  }
+  #}
   $self->_set_root_commands_targets_node_files($elements);
   return $elements;
 }
@@ -1747,6 +1752,48 @@ sub _prepare_special_elements($)
     $self->{'ids'}->{$id} = $element;
   }
   return ($elements, $pages);
+}
+
+# Associate elements with the global targets, First, Last, Top, Index.
+sub _prepare_global_targets($$)
+{
+  my $self = shift;
+  my $elements = shift;
+
+  $self->{'global_target_elements'}->{'First'} = $elements->[0];
+  $self->{'global_target_elements'}->{'Last'} = $elements->[-1];
+  if ($self->{'extra'} and $self->{'extra'}->{'printindex'}) {
+    my ($page, $element, $root_command) 
+     = $self->_get_page($self->{'extra'}->{'printindex'}->[0]);
+    $self->{'global_target_elements'}->{'Index'} = $element
+      if (defined($element));
+  }
+
+  my $node_top;
+  $node_top = $self->{'labels'}->{'Top'} if ($self->{'labels'});
+  my $section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
+  if ($section_top) {
+    $self->{'global_target_elements'}->{'Top'} = $section_top->{'parent'};
+  } elsif ($node_top) {
+    my $element_top = $node_top->{'parent'};
+    if (!$element_top) {
+      die "No parent for node_top: ".Texinfo::Parser::_print_current($node_top);
+    }
+    $self->{'global_target_elements'}->{'Top'} = $element_top;
+  } else {
+    $self->{'global_target_elements'}->{'Top'} = $elements->[0];
+  }
+  
+  if ($self->get_conf('DEBUG')) {
+    print STDERR "GLOBAL DIRECTIONS:\n";
+    foreach my $global_direction ('First', 'Last', 'Index', 'Top') {
+      if (defined($self->{'global_target_elements'}->{$global_direction})) {
+        print STDERR "$global_direction($self->{'global_target_elements'}->{$global_direction}): ".
+          Texinfo::Structuring::_print_element_command_texi(
+             $self->{'global_target_elements'}->{$global_direction})."\n";
+      }
+    }
+  }
 }
 
 sub _prepare_index_entries($)
@@ -2231,6 +2278,8 @@ sub output($$)
   # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
 
+  $self->_prepare_global_targets($elements);
+
   # undef if no elements
   my $pages;
   if ($self->get_conf('OUTFILE') ne '') {
@@ -2658,6 +2707,7 @@ sub _convert($$)
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
   }
 
+
   if (($root->{'type'}
         and exists ($self->{'types_conversion'}->{$root->{'type'}})
         and !defined($self->{'types_conversion'}->{$root->{'type'}}))
@@ -2713,6 +2763,9 @@ sub _convert($$)
       and !($root->{'type'} and $root->{'type'} eq 'def_line')) {
     # FIXME definfoenclose_command 
     # ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command'))
+    if ($root_commands{$root->{'cmdname'}}) {
+      $self->{'current_root_command'} = $root;
+    }
     if (exists($self->{'commands_conversion'}->{$root->{'cmdname'}})) {
       my $result;
       my $content_formatted;
@@ -2815,6 +2868,9 @@ sub _convert($$)
     } else {
       print STDERR "BUG: unknown command `$root->{'cmdname'}'\n";
     }
+    if ($root_commands{$root->{'cmdname'}}) {
+      delete $self->{'current_root_command'};
+    }
   } elsif ($root->{'type'}) {
     if ($root->{'type'} eq 'paragraph') {
       $self->{'context'}->[-1]->{'paragraph_number'}++;
@@ -2822,6 +2878,11 @@ sub _convert($$)
       $self->{'context'}->[-1]->{'code'}++;
     } elsif ($root->{'type'} eq '_string') {
       $self->{'context'}->[-1]->{'string'}++;
+    } elsif ($root->{'type'} eq 'page') {
+      $self->{'current_page'} = $root;
+      $self->{'current_filename'} = $root->{'filename'};
+    } elsif ($root->{'type'} eq 'element') { 
+      $self->{'current_element'} = $root;
     }
     my $content_formatted;
     if ($root->{'contents'}) {
@@ -2844,6 +2905,11 @@ sub _convert($$)
       $self->{'context'}->[-1]->{'code'}--;
     } elsif ($root->{'type'} eq '_string') {
       $self->{'context'}->[-1]->{'string'}--;
+    } elsif ($root->{'type'} eq 'page') {
+      delete $self->{'current_page'};
+      delete $self->{'current_filename'};
+    } elsif ($root->{'type'} eq 'element') { 
+      delete $self->{'current_element'};
     }
     print STDERR "DO type ($root->{'type'}) => `$result'\n"
       if ($self->get_conf('DEBUG'));
