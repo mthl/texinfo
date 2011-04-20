@@ -225,6 +225,173 @@ my %BUTTONS_REL =
  'PrevFile',    'previous',
 );
 
+my %BUTTONS_ACCESSKEY =
+(
+ 'Top',         '',
+ 'Contents',    '',
+ 'Overview',    '',
+ 'Index',       '',
+ 'This',        '',
+ 'Back',        'p',
+ 'FastBack',    '',
+ 'Prev',        'p',
+ 'Up',          'u',
+ 'Next',        'n',
+ 'NodeUp',      'u',
+ 'NodeNext',    'n',
+ 'NodePrev',    'p',
+ 'NodeForward', '',
+ 'NodeBack',    '',
+ 'Forward',     'n',
+ 'FastForward', '',
+ 'About' ,      '',
+ 'First',       '',
+ 'Last',        '',
+ 'NextFile',    '',
+ 'PrevFile',    '',
+);
+
+my (%NAVIGATION_TEXT, %BUTTONS_GOTO, %BUTTONS_NAME);
+
+sub _translate_names($)
+{
+  my $self = shift;
+
+
+  %NAVIGATION_TEXT = (
+     'Top',         $self->gdt('Top'),
+     'Contents',    $self->gdt('Contents'),
+     'Overview',    $self->gdt('Overview'),
+     'Index',       $self->gdt('Index'),
+     ' ',           ' &nbsp; ',
+     'This',        $self->gdt('current'),
+     'Back',        ' &lt; ',
+     'FastBack',    ' &lt;&lt; ',
+     'Prev',        $self->gdt('Prev'),
+     'Up',          $self->gdt(' Up '),
+     'Next',        $self->gdt('Next'),
+     'NodeUp',      $self->gdt('Node up'),
+     'NodeNext',    $self->gdt('Next node'),
+     'NodePrev',    $self->gdt('Previous node'),
+     'NodeForward', $self->gdt('Forward node'),
+     'NodeBack',    $self->gdt('Back node'),
+     'Forward',     ' &gt; ',
+     'FastForward', ' &gt;&gt; ',
+     'About',       ' ? ',
+     'First',       ' |&lt; ',
+     'Last',        ' &gt;| ',
+     'NextFile',    $self->gdt('Next file'),
+     'PrevFile',    $self->gdt('Previous file'),
+  );
+
+  #%BUTTONS_TEXT = %NAVIGATION_TEXT;
+
+  %BUTTONS_GOTO = (
+     'Top',         $self->gdt('Cover (top) of document'),
+     'Contents',    $self->gdt('Table of contents'),
+     'Overview',    $self->gdt('Short table of contents'),
+     'Index',       $self->gdt('Index'),
+     'This',        $self->gdt('Current section'),
+     'Back',        $self->gdt('Previous section in reading order'),
+     'FastBack',    $self->gdt('Beginning of this chapter or previous chapter'),
+     'Prev',        $self->gdt('Previous section on same level'),
+     'Up',          $self->gdt('Up section'),
+     'Next',        $self->gdt('Next section on same level'),
+     'NodeUp',      $self->gdt('Up node'),
+     'NodeNext',    $self->gdt('Next node'),
+     'NodePrev',    $self->gdt('Previous node'),
+     'NodeForward', $self->gdt('Next node in node reading order'),
+     'NodeBack',    $self->gdt('Previous node in node reading order'),
+     'Forward',     $self->gdt('Next section in reading order'),
+     'FastForward', $self->gdt('Next chapter'),
+     'About' ,      $self->gdt('About (help)'),
+     'First',       $self->gdt('First section in reading order'),
+     'Last',        $self->gdt('Last section in reading order'),
+     'NextFile',    $self->gdt('Forward section in next file'),
+     'PrevFile',    $self->gdt('Back section in previous file'),
+  );
+
+  %BUTTONS_NAME = (
+     'Top',         $self->gdt('Top'),
+     'Contents',    $self->gdt('Contents'),
+     'Overview',    $self->gdt('Overview'),
+     'Index',       $self->gdt('Index'),
+     ' ',           ' ',
+     'This',        $self->gdt('This'),
+     'Back',        $self->gdt('Back'),
+     'FastBack',    $self->gdt('FastBack'),
+     'Prev',        $self->gdt('Prev'),
+     'Up',          $self->gdt('Up'),
+     'Next',        $self->gdt('Next'),
+     'NodeUp',      $self->gdt('NodeUp'),
+     'NodeNext',    $self->gdt('NodeNext'),
+     'NodePrev',    $self->gdt('NodePrev'),
+     'NodeForward', $self->gdt('NodeForward'),
+     'NodeBack',    $self->gdt('NodeBack'),
+     'Forward',     $self->gdt('Forward'),
+     'FastForward', $self->gdt('FastForward'),
+     'About',       $self->gdt('About'),
+     'First',       $self->gdt('First'),
+     'Last',        $self->gdt('Last'),
+     'NextFile',    $self->gdt('NextFile'),
+     'PrevFile',    $self->gdt('PrevFile'),
+  );
+}
+
+# insert here name of icon images for buttons
+# Icons are used, if ICONS and resp. value are set
+my %ACTIVE_ICONS = (
+     'Top',         '',
+     'Contents',    '',
+     'Overview',    '',
+     'Index',       '',
+     'This',        '',
+     'Back',        '',
+     'FastBack',    '',
+     'Prev',        '',
+     'Up',          '',
+     'Next',        '',
+     'NodeUp',      '',
+     'NodeNext',    '',
+     'NodePrev',    '',
+     'NodeForward', '',
+     'NodeBack',    '',
+     'Forward',     '',
+     'FastForward', '',
+     'About' ,      '',
+     'First',       '',
+     'Last',        '',
+     'NextFile',    '',
+     'PrevFile',    '',
+     ' ',           '',
+);
+
+# insert here name of icon images for these, if button is inactive
+my %PASSIVE_ICONS = (
+     'Top',         '',
+     'Contents',    '',
+     'Overview',    '',
+     'Index',       '',
+     'This',        '',
+     'Back',        '',
+     'FastBack',    '',
+     'Prev',        '',
+     'Up',          '',
+     'Next',        '',
+     'NodeUp',      '',
+     'NodeNext',    '',
+     'NodePrev',    '',
+     'NodeForward', '',
+     'NodeBack',    '',
+     'Forward',     '',
+     'FastForward', '',
+     'About',       '',
+     'First',       '',
+     'Last',        '',
+     'NextFile',    '',
+     'PrevFile',    '',
+);
+
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
@@ -264,7 +431,6 @@ my %defaults = (
   'DATE_IN_HEADER'       => 0,
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'Up', 'NextFile', 'PrevFile'],
-  'BUTTONS_REL'          => \%BUTTONS_REL,
   'misc_elements_targets'   => {
                              'Overview' => 'SEC_Overview',
                              'Contents' => 'SEC_Contents',
@@ -292,6 +458,13 @@ my %defaults = (
   'PROGRAM_HOMEPAGE'     => 'http://www.gnu.org/software/texinfo/',
   'PROGRAM'              => 'texi2html',
   
+  'BUTTONS_REL'          => \%BUTTONS_REL,
+  'BUTTONS_ACCESSKEY'    => \%BUTTONS_ACCESSKEY,
+  'BUTTONS_GOTO'         => \%BUTTONS_GOTO,
+  'BUTTONS_NAME'         => \%BUTTONS_NAME,
+  'NAVIGATION_TEXT'      => \%NAVIGATION_TEXT,
+  'ACTIVE_ICONS'         => \%ACTIVE_ICONS,
+  'PASSIVE_ICONS'        => \%PASSIVE_ICONS,
   
   'DEBUG'                => 0,
   'TEST'                 => 0,
@@ -654,15 +827,13 @@ foreach my $command (keys(%accent_commands)) {
   $default_commands_conversion{$command} = \&_convert_accent_command;
 }
 
-sub default_comment($$) {
+sub _default_comment($$) {
   my $self = shift;
   my $text = shift;
   return $self->xml_default_comment($text);
 }
 
-my $DEFAULT_RULE = '<hr>';
-
-sub default_heading_text($$$$$)
+sub _default_heading_text($$$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -684,7 +855,247 @@ sub default_heading_text($$$$$)
   # FIXME titlefont appears inline in text, so no end of line is
   # added. The end of line should be added by the user if needed.
   $result .= "\n" unless ($cmdname eq 'titlefont');
-  $result .= $DEFAULT_RULE . "\n" if ($cmdname eq 'part' and defined($DEFAULT_RULE) and $DEFAULT_RULE ne '');
+  $result .= $self->get_conf('DEFAULT_RULE') . "\n" 
+     if ($cmdname eq 'part' 
+         and defined($self->get_conf('DEFAULT_RULE')) 
+         and $self->get_conf('DEFAULT_RULE') ne '');
+  return $result;
+}
+
+# how to create IMG tag
+# this is only used in html, and only if ICONS is set and the button
+# is active.
+sub _default_button_icon_img($$$;$)
+{
+  my $self = shift;
+  my $button = shift;
+  my $icon = shift;
+  my $name = shift;
+  return '' if (!defined($icon));
+  $button = "" if (!defined ($button));
+  $name = '' if (!defined($name));
+  my $alt = '';
+  if ($name ne '') {
+    if ($button ne '') {
+      $alt = "$button: $name";
+    } else {
+      $alt = $name;
+    }
+  } else {
+    $alt = $button;
+  }
+  return qq{<img src="$icon" border="0" alt="$alt" align="middle">};
+}
+
+sub _default_button_formatting($$)
+{
+  my $self = shift;
+  my $button = shift;
+
+  my ($active, $passive);
+  if (ref($button) eq 'CODE') {
+    $active = &$button($self);
+  } elsif (ref($button) eq 'SCALAR') {
+    $active = "$$button" if defined($$button);
+  } elsif (ref($button) eq 'ARRAY') {
+    my $text = $button->[1];
+    my $button_href = $button->[0];
+    # verify that $button_href is simple text and text is a reference
+    if (defined($button_href) and !ref($button_href)
+        and defined($text) and (ref($text) eq 'SCALAR') and defined($$text)) {
+      # use given text
+      # TODO continue here
+      my $href = $self->_element_direction($self->{'current_element'}, 
+                                           $button_href, 'href');
+      if ($href) {
+        my $anchor_attributes = '';
+        if ($self->get_conf('USE_ACCESSKEY') 
+            and $self->get_conf('BUTTONS_ACCESSKEY')) {
+          my $accesskey = $self->get_conf('BUTTONS_ACCESSKEY')->{$button_href};
+          if (defined($accesskey) and ($accesskey ne '')) {
+            $anchor_attributes = " accesskey=\"$accesskey\"";
+          }
+        }
+        if ($self->get_conf('USE_REL_REV') and $self->get_conf('BUTTONS_REL')) {
+          my $button_rel = $self->get_conf('BUTTONS_REL')->{$button_href};
+          if (defined($button_rel) and ($button_rel ne '')) {
+            $anchor_attributes .= " rel=\"$button_rel\"";
+          }
+        }
+        $active =  "" . "<a href=\"$href\"${anchor_attributes}>$$text</a>";
+      } else {
+        $passive = $$text;
+      }
+    } elsif (defined($button_href) and !ref($button_href)
+             and defined($text) and (ref($text) eq 'CODE')) {
+      $active = &$text($button_href);
+    }
+  } elsif ($button eq ' ') {
+    # handle space button
+    if ($self->get_conf('ICONS') and $self->get_conf('ACTIVE_ICONS')
+        and defined($self->get_conf('ACTIVE_ICONS')->{' '})) {
+      $active = &{$self->{'button_icon_img'}}($self, $button, 
+                                       $self->get_conf('ACTIVE_ICONS')->{' '});
+    } else {
+      $active = $self->get_conf('NAVIGATION_TEXT')->{' '};
+    }
+  } else {
+    my $href = $self->_element_direction($self->{'current_element'}, 
+                                         $button, 'href');
+    if ($href) {
+      # button is active
+      my $btitle = '';
+      if ($self->get_conf('BUTTONS_GOTO') 
+          and defined($self->get_conf('BUTTONS_GOTO')->{$button})) {
+        $btitle = ' title="' . $self->get_conf('BUTTONS_GOTO')->{$button} . '"';
+      }
+      if ($self->get_conf('USE_ACCESSKEY') and $self->get_conf('BUTTONS_ACCESSKEY')) {
+        my $accesskey = $self->get_conf('BUTTONS_ACCESSKEY')->{$button};
+        if (defined($accesskey) and $accesskey ne '') {
+          $btitle .= " accesskey=\"$accesskey\"";
+        }
+      }
+      if ($self->get_conf('USE_REL_REV') and ($self->get_conf('BUTTONS_REL'))) {
+        my $button_rel = $self->get_conf('BUTTONS_REL')->{$button};
+        if (defined($button_rel) and $button_rel ne '') {
+          $btitle .= " rel=\"$button_rel\"";
+        }
+      }
+      my $use_icon;
+      if ($self->get_conf('ICONS') and $self->get_conf('ACTIVE_ICONS')
+          and $self->get_conf('BUTTONS_NAME')) {
+        my $active_icon = $self->get_conf('ACTIVE_ICONS')->{$button};
+        my $button_name = $self->get_conf('BUTTONS_NAME')->{$button};
+        if (defined($active_icon) and $active_icon ne '' 
+            and defined($button_name)) {
+          # use icon
+          $active = "<a href=\"$href\"${btitle}>".
+             &{$self->{'button_icon_img'}}($self, $button_name, $active_icon,
+                      $self->_element_direction($self->{'current_element'},
+                                       $button, 'string')) ."</a>";
+          $use_icon = 1;
+        }
+      }
+      if (!$use_icon) {
+        # use text
+        $active = '[' . "<a href=\"$href\"${btitle}>".
+          $self->get_conf('NAVIGATION_TEXT')->{$button}."</a>" . ']';
+      }
+    } else {
+      # button is passive
+      my $use_icon;
+      if ($self->get_conf('ICONS') and $self->get_conf('PASSIVE_ICONS')
+          and $self->get_conf('BUTTONS_NAME')) {
+        my $passive_icon = $self->get_conf('PASSIVE_ICONS')->{$button};
+        my $button_name = $self->get_conf('BUTTONS_NAME')->{$button};
+        if ($passive_icon and $passive_icon ne '') {
+          $passive = &{$self->{'button_icon_img'}}($self, $button_name, 
+                                                   $passive_icon,
+                      $self->_element_direction($self->{'current_element'},
+                                       $button, 'string'));
+          $use_icon = 1;
+        }
+      }
+      if (!$use_icon) {
+        $passive =  '[' . $self->get_conf('NAVIGATION_TEXT')->{$button} . ']';
+      }
+    }
+  }
+  return ($active, $passive);
+}
+
+my %html_default_node_directions;
+foreach my $node_directions ('NodeNext', 'NodePrev', 'NodeUp') {
+  $html_default_node_directions{$node_directions} = 1;
+}
+
+sub _default_navigation_header_panel($$$$)
+{
+  my $self = shift;
+  my $buttons = shift;
+  my $cmdname = shift;
+  my $command = shift;
+
+  # if VERTICAL_HEAD_NAVIGATION, the buttons are in a vertical table which
+  # is itself in the first column of a table opend in header_navigation
+  my $vertical = $self->get_conf('VERTICAL_HEAD_NAVIGATION');
+
+  my $first_button = 1;
+  my $result = '';
+  if ($self->get_conf('HEADER_IN_TABLE')) {
+    $result .= $self->attribute_class('table', 'header')
+        .' cellpadding="1" cellspacing="1" border="0">'."\n";
+    $result .= "<tr>" unless $vertical;
+  } else {
+    $result .= $self->attribute_class('div', 'header').">\n<p>\n";
+  }
+  foreach my $button (@$buttons) {
+    if ($self->get_conf('HEADER_IN_TABLE')) {
+      $result .= qq{<tr valign="top" align="left">\n} if $vertical;
+      $result .=  qq{<td valign="middle" align="left">};
+    }
+    my $direction;
+    if (ref($button) eq 'ARRAY' 
+        and defined($button->[0]) and !ref($button->[0])) {
+      $direction = $button->[0];
+    } elsif (defined($button) and !ref($button)) {
+      $direction = $button;
+    }
+
+    my ($active, $passive) = &{$self->{'button_formatting'}}($self, $button);
+    if ($self->get_conf('HEADER_IN_TABLE')) {
+      if (defined($active)) {
+        $first_button = 0 if ($first_button);
+        $result .= $active;
+      } elsif (defined($passive)) {
+        $first_button = 0 if ($first_button);
+        $result .= $passive;
+      }
+      $result .= "</td>\n";
+      $result .= "</tr>\n" if $vertical;
+    }
+    elsif (defined($active)) { 
+      # only active buttons are print out when not in table
+      if (defined($direction) 
+          and $html_default_node_directions{$direction} and !$first_button) {
+        $active = ', ' .$active;
+      }
+      $result .= $active;
+      $first_button = 0 if ($first_button);
+    }
+  }
+  if ($self->get_conf('HEADER_IN_TABLE')) {
+    $result .= "</tr>" unless $vertical;
+    $result .= "</table>\n";
+  } else {
+     $result .= "</p>\n</div>\n";
+  }
+  return $result;
+}
+
+sub _default_navigation_header($$$$)
+{
+  my $self = shift;
+  my $buttons = shift;
+  my $cmdname = shift;
+  my $command = shift;
+
+  my $result = '';
+  if ($self->get_conf('VERTICAL_HEAD_NAVIGATION')) {
+    $result .= '<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+';
+  }
+  $result .= &{$self->{'navigation_header_panel'}}($self, $buttons,
+                                                   $cmdname, $command);
+  if ($self->get_conf('VERTICAL_HEAD_NAVIGATION')) {
+    $result .= '</td>
+<td align="left">
+';
+  } elsif ($self->get_conf('SPLIT') eq 'node') {
+    $result .= $self->get_conf('DEFAULT_RULE')."\n";
+  }
   return $result;
 }
 
@@ -709,7 +1120,55 @@ sub _convert_heading_command($$$$$)
   #}
   my $result = '';
   my $element_id = $self->command_id($command);
-  $result .= "<a name=\"$element_id\"></a>\n" if ($element_id ne '');
+  $result .= "<a name=\"$element_id\"></a>\n" if (defined($element_id));
+
+  my $element;
+  if ($root_commands{$command->{'cmdname'}} and $command->{'parent'}
+      and $command->{'parent'}->{'type'} 
+      and $command->{'parent'}->{'type'} eq 'element') {
+    $element = $command->{'parent'};
+    # First command in the element
+    if ($element->{'contents'}->[0] eq $command 
+        # and thre is more than one element
+        and ($element->{'element_next'} or $element->{'element_prev'})) {
+      my ($previous_is_top, $is_top);
+      my $first_in_page = ($element->{'parent'} 
+               and $element->{'parent'}->{'contents'}->[0] eq $element);
+      if ($element->{'global_target_elements'}->{'Top'}) {
+        # it is considered 'top' only if element corresponds to @top or 
+        # element is a node
+        $is_top = ($element->{'global_target_elements'}->{'Top'} eq $element
+            and $element->{'extra'}
+            and (($element->{'extra'}->{'section'} 
+                  and $element->{'extra'}->{'section'}->{'cmdname'} eq 'top')
+                 or ($element->{'extra'}->{'element_command'}
+                     and $element->{'extra'}->{'element_command'}->{'cmdname'} eq 'node')));
+       $previous_is_top = ($element->{'element_prev'} 
+          and $element->{'global_target_elements'}->{'Top'} eq $element->{'element_prev'});
+      }
+      if ($is_top) {
+        # FIXME clarify this
+        # this is here because we want to always print the head navigation for top
+        # and use TOP_BUTTONS
+        $result .= &{$self->{'navigation_header'}}($self, 
+                 $self->get_conf('TOP_BUTTONS'), $cmdname, $command)
+         if ($self->get_conf('SPLIT') or $self->get_conf('HEADERS'));
+      } else {
+        if (($first_in_page or $previous_is_top) 
+             and $self->get_conf('HEADERS')) {
+          $result .= &{$self->{'navigation_header'}}($self, 
+                  $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
+        } else {  
+          # got to do this here, as it isn't done otherwise since 
+          # header_navigation is not called
+          $result .= &{$self->{'navigation_header_panel'}}($self,
+                  $self->get_conf('SECTION_BUTTONS'), $cmdname, $command)
+            if ($self->get_conf('HEADERS') or $self->get_conf('SPLIT') eq 'node');
+        }
+      }
+    }
+  }
+
   my $heading = $args->[0]->{'normal'};
   if ($heading ne '' and $do_heading) {
     if ($self->in_preformatted()) {
@@ -1000,8 +1459,8 @@ sub _convert_root_text_type($$$$)
 
 $default_types_conversion{'text_root'} = \&_convert_root_text_type;
 
-# Convert titlepage.  Fall back to simpletitle.
-sub default_titlepage($)
+# Convert @titlepage.  Falls back to simpletitle.
+sub _default_titlepage($)
 {
   my $self = shift;
 
@@ -1160,13 +1619,18 @@ sub _initialize($)
   }
 
   foreach my $formatting_references (
-     ['heading_text', \&default_heading_text, $Texinfo::Config::heading_text],
-     ['comment', \&default_comment, $Texinfo::Config::comment],
-     ['css_lines', \&default_css_lines, $Texinfo::Config::css_lines],
-     ['begin_file', \&default_begin_file, $Texinfo::Config::begin_file],
-     ['end_file', \&default_end_file, $Texinfo::Config::end_file],
-     ['program_string', \&default_program_string, $Texinfo::Config::program_string],
-     ['titlepage', \&default_titlepage, $Texinfo::Config::titlepage],
+     ['heading_text', \&_default_heading_text, $Texinfo::Config::heading_text],
+     ['comment', \&_default_comment, $Texinfo::Config::comment],
+     ['css_lines', \&_default_css_lines, $Texinfo::Config::css_lines],
+     ['begin_file', \&_default_begin_file, $Texinfo::Config::begin_file],
+     ['end_file', \&_default_end_file, $Texinfo::Config::end_file],
+     ['program_string', \&_default_program_string, $Texinfo::Config::program_string],
+     ['titlepage', \&_default_titlepage, $Texinfo::Config::titlepage],
+     ['navigation_header', \&_default_navigation_header, $Texinfo::Config::navigation_header],
+     ['navigation_header_panel', \&_default_navigation_header_panel, 
+      $Texinfo::Config::navigation_header_panel],
+     ['button_formatting', \&_default_button_formatting, $Texinfo::Config::button_formatting],
+     ['button_icon_img', \&_default_button_icon_img, $Texinfo::Config::button_icon_img],
   ) {
     if (defined($formatting_references->[2])) {
       $self->{$formatting_references->[0]} = $formatting_references->[2];
@@ -1179,9 +1643,11 @@ sub _initialize($)
                          'align' => ['raggedright']}];
   $self->{'formats'} = [];
 
+  $self->_translate_names();
 
   return $self;
 }
+
 # the entry point for _convert
 sub convert_tree($$)
 {
@@ -1198,7 +1664,7 @@ sub _normalized_to_id($)
   return $id;
 }
 
-sub default_css_lines ($)
+sub _default_css_lines ($)
 {
   my $self = shift;
 
@@ -2008,6 +2474,7 @@ sub _element_direction($$$$;$)
     if ($element_target->{'type'} eq 'external_node') {
       return $self->_external_node_reference($element_target, $type, $filename);
     } else {
+      # FIXME be able to chose node over sectioning or the other way around?
       $command = $element_target->{'extra'}->{'element_command'};
       $target = $self->{'targets'}->{$command} if ($command);
     }
@@ -2059,7 +2526,7 @@ sub _element_direction($$$$;$)
   }
 }
 
-sub default_program_string($)
+sub _default_program_string($)
 {
   my $self = shift;
   return $self->convert_tree(
@@ -2068,7 +2535,7 @@ sub default_program_string($)
            'program' => $self->get_conf('PROGRAM') }));
 }
 
-sub default_end_file($)
+sub _default_end_file($)
 {
   my $self = shift;
   my $program_text = '';
@@ -2090,7 +2557,7 @@ $pre_body_close
 ";
 }
 
-sub default_begin_file($$$)
+sub _default_begin_file($$$)
 {
   my $self = shift;
   my $filename = shift;
@@ -2295,7 +2762,10 @@ sub output($$)
 
   # do element directions.  FIXME do it here or before?  Here it means that
   # PrevFile and NextFile can be set.
-  Texinfo::Structuring::element_directions($self, $elements);
+  Texinfo::Structuring::elements_directions($self, $elements);
+
+  # do element directions related to files.
+  Texinfo::Structuring::elements_file_directions($self, $elements);
 
   # associate the special elements that have no page to the main page.
   # This may only happen if not split.

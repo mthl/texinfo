@@ -45,6 +45,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   nodes_tree
   associate_internal_references
   number_floats
+  elements_directions
+  elements_file_directions
   merge_indices
   sort_indices
   sort_indices_by_letter
@@ -689,7 +691,7 @@ sub _node_element($)
 
 # Do element directions (like in texi2html) and store them 
 # in 'extra'->'directions'.
-sub element_directions($$)
+sub elements_directions($$)
 {
   my $self = shift;
   my $elements = shift;
@@ -795,6 +797,47 @@ sub element_directions($$)
   if ($self->get_conf('DEBUG')) {
     foreach my $element (@$elements) {
       print STDERR "Directions($element): ".Texinfo::Structuring::_print_directions($element)."\n";
+    }
+  }
+}
+
+sub elements_file_directions($$)
+{
+  my $self = shift;
+  my $elements = shift;
+  return if (!$elements or !@$elements);
+
+  foreach my $element (@$elements) {
+    my $directions;
+    my $filename;
+    if ($element->{'parent'} and defined($element->{'parent'}->{'filename'})) {
+      $filename = $element->{'parent'}->{'filename'};
+      my $current_element = $element;
+      while ($current_element->{'element_prev'}) {
+        $current_element = $current_element->{'element_prev'};
+        if ($current_element->{'parent'} 
+            and defined($current_element->{'parent'}->{'filename'})) {
+          if ($current_element->{'parent'}->{'filename'} ne $filename) {
+            $element->{'extra'}->{'directions'}->{'PrevFile'} = $current_element;
+            last;
+          }
+        } else {
+          last;
+        }
+      }
+      $current_element = $element;
+      while ($current_element->{'element_next'}) {
+        $current_element = $current_element->{'element_next'};
+        if ($current_element->{'parent'} 
+            and defined($current_element->{'parent'}->{'filename'})) {
+          if ($current_element->{'parent'}->{'filename'} ne $filename) {
+            $element->{'extra'}->{'directions'}->{'NextFile'} = $current_element;
+            last;
+          }
+        } else {
+          last;
+        }
+      }
     }
   }
 }
