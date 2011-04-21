@@ -336,6 +336,14 @@ sub _translate_names($)
      'NextFile',    $self->gdt('NextFile'),
      'PrevFile',    $self->gdt('PrevFile'),
   );
+  foreach my $hash (\%NAVIGATION_TEXT, \%BUTTONS_GOTO, \%BUTTONS_NAME) {
+    foreach my $button (keys (%$hash)) {
+      if (ref($hash->{$button})) {
+        # FIXME put it out of document context
+        $hash->{$button} = $self->convert_tree($hash->{$button});
+      }
+    }
+  }
 }
 
 # insert here name of icon images for buttons
@@ -429,8 +437,14 @@ my %defaults = (
   'TRANSLITERATE_FILE_NAMES' => 1,
   'USE_LINKS'            => 1,
   'DATE_IN_HEADER'       => 0,
+  'HEADERS'              => 1,
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'Up', 'NextFile', 'PrevFile'],
+  'TOP_BUTTONS'          => ['Back', 'Forward', ' ',
+                             'Contents', 'Index', 'About'],
+  'SECTION_BUTTONS'      => ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
+                             ' ', ' ', ' ', ' ',
+                             'Top', 'Contents', 'Index', 'About' ],
   'misc_elements_targets'   => {
                              'Overview' => 'SEC_Overview',
                              'Contents' => 'SEC_Contents',
@@ -1122,30 +1136,44 @@ sub _convert_heading_command($$$$$)
   my $element_id = $self->command_id($command);
   $result .= "<a name=\"$element_id\"></a>\n" if (defined($element_id));
 
+  print STDERR "Process $command "
+        .Texinfo::Structuring::_print_root_command_texi($command)."\n"
+          if ($self->get_conf('DEBUG'));
   my $element;
   if ($root_commands{$command->{'cmdname'}} and $command->{'parent'}
       and $command->{'parent'}->{'type'} 
       and $command->{'parent'}->{'type'} eq 'element') {
     $element = $command->{'parent'};
+    print STDERR "Element $element (@{$element->{'contents'}}) ".
+       Texinfo::Structuring::_print_element_command_texi($element) ."\n"
+          if ($self->get_conf('DEBUG'));
+    #print STDERR "First in element: "
+    #    .Texinfo::Parser::_print_current($element->{'contents'}->[0])
+    #      if ($self->get_conf('DEBUG'));
     # First command in the element
-    if ($element->{'contents'}->[0] eq $command 
-        # and thre is more than one element
+    if (($element->{'contents'}->[0] eq $command
+         or (!$element->{'contents'}->[0]->{'cmdname'} 
+              and $element->{'contents'}->[1] eq $command))
+        # and there is more than one element
         and ($element->{'element_next'} or $element->{'element_prev'})) {
-      my ($previous_is_top, $is_top);
+      my ($previous_is_top, $is_top) = (0, 0);
       my $first_in_page = ($element->{'parent'} 
                and $element->{'parent'}->{'contents'}->[0] eq $element);
-      if ($element->{'global_target_elements'}->{'Top'}) {
+      if ($self->{'global_target_elements'}->{'Top'}) {
         # it is considered 'top' only if element corresponds to @top or 
         # element is a node
-        $is_top = ($element->{'global_target_elements'}->{'Top'} eq $element
+        $is_top = ($self->{'global_target_elements'}->{'Top'} eq $element
             and $element->{'extra'}
             and (($element->{'extra'}->{'section'} 
                   and $element->{'extra'}->{'section'}->{'cmdname'} eq 'top')
                  or ($element->{'extra'}->{'element_command'}
                      and $element->{'extra'}->{'element_command'}->{'cmdname'} eq 'node')));
-       $previous_is_top = ($element->{'element_prev'} 
-          and $element->{'global_target_elements'}->{'Top'} eq $element->{'element_prev'});
+       $previous_is_top = (defined($element->{'element_prev'}) 
+          and $self->{'global_target_elements'}->{'Top'} eq $element->{'element_prev'});
       }
+      print STDERR "Header ($previous_is_top, $is_top, $first_in_page): "
+        .Texinfo::Structuring::_print_root_command_texi($command)."\n"
+          if ($self->get_conf('DEBUG'));
       if ($is_top) {
         # FIXME clarify this
         # this is here because we want to always print the head navigation for top

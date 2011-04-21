@@ -842,6 +842,25 @@ sub elements_file_directions($$)
   }
 }
 
+my %sectioning_commands = %Texinfo::Common::sectioning_commands;
+# for debugging
+sub _print_root_command_texi($)
+{
+  my $command = shift;
+  my $tree;
+  if ($command->{'cmdname'}) {
+    if ($command->{'cmdname'} eq 'node') {
+      $tree = $command->{'extra'}->{'node_content'};
+    } elsif ($sectioning_commands{$command->{'cmdname'}}) {
+      $tree = $command->{'extra'}->{'misc_content'};
+    }
+  }
+  return '@'.$command->{'cmdname'}. ' '
+       .Texinfo::Convert::Texinfo::convert ({'contents' => $tree})
+          if ($tree);
+  return undef;
+}
+
 sub _print_element_command_texi($)
 {
   my $element = shift;
@@ -862,14 +881,7 @@ sub _print_element_command_texi($)
     $result .= "(type $element->{'type'})" if (defined($element->{'type'}));
     return $result;
   }
-  my $tree;
-  if ($command->{'cmdname'} eq 'node') {
-    $tree = $command->{'extra'}->{'node_content'};
-  } else {
-    $tree = $command->{'extra'}->{'misc_content'};
-  }
-  return '@'.$command->{'cmdname'}. ' '
-       .Texinfo::Convert::Texinfo::convert ({'contents' => $tree});
+  return _print_root_command_texi($command);
 }
 
 sub _print_directions($)
