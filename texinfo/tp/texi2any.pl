@@ -415,8 +415,8 @@ sub _set_variables_texi2html()
   set_from_cmdline('HEADER_IN_TABLE', 1);
   set_from_cmdline('SHORT_REF', 0);
   set_from_cmdline('USE_TITLEPAGE_FOR_TITLE', 1);
+  set_from_cmdline('MENU_ENTRY_COLON', '');
   # FIXME
-#  $MENU_ENTRY_COLON = '';
 #  $INDEX_ENTRY_COLON = '';
 
   set_from_cmdline('ENABLE_ENCODING_USE_ENTITY', 1);

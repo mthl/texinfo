@@ -197,6 +197,69 @@ sub command_filename($$)
   return undef;
 }
 
+sub command_href($$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $filename = shift;
+
+  my $target = $self->command_target($command);
+  return '' if (!defined($target));
+  my $href = '';
+  
+  my $target_filename = $self->command_filename($command);
+  if (defined($target_filename) and 
+      (!defined($filename) 
+       or $filename ne $target_filename)) {
+    $href .= $target_filename;
+  }
+  $href .= '#' . $target if ($target ne '');
+  return $href;
+}
+
+sub command_text($$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $type = shift;
+
+  if ($self->{'targets'}->{$command}) {
+    my $target = $self->{'targets'}->{$command};
+    if (defined($target->{$type})) {
+      return $target->{$type};
+    }
+    my $tree;
+    if (!$target->{'tree'}) {
+      if ($command->{'cmdname'} eq 'node') {
+        $tree = {'type' => '_code',
+                 'contents' => $command->{'extra'}->{'node_content'}};
+      } else {
+        # FIXME number
+        $tree = {'contents' => $command->{'extra'}->{'misc_content'}};
+        if ($command->{'number'}) {
+          unshift @{$tree->{'contents'}}, {'text' => "$command->{'number'} "};
+        }
+      }
+      $target->{'tree'} = $tree;
+    } else {
+      $tree = $target->{'tree'};
+    }
+    return $tree if ($type eq 'tree');
+
+    push @{$self->{'context'}}, 
+            {'cmdname' => $command->{'cmdname'}};
+    if ($type eq 'string') {
+      $tree = {'type' => '_string',
+               'contents' => [$tree]};
+    }
+    print STDERR "DO $target->{'id'}($type)\n" if ($self->get_conf('DEBUG'));
+    $target->{$type} = $self->_convert($tree);
+    pop @{$self->{'context'}};
+    return $target->{$type};
+  }
+  return undef;
+}
+
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 my %BUTTONS_REL =
@@ -437,6 +500,7 @@ my %defaults = (
   'TRANSLITERATE_FILE_NAMES' => 1,
   'USE_LINKS'            => 1,
   'DATE_IN_HEADER'       => 0,
+  'AVOID_MENU_REDUNDANCY' => 0,
   'HEADERS'              => 1,
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'Up', 'NextFile', 'PrevFile'],
@@ -461,6 +525,8 @@ my %defaults = (
   'misc_elements_order'  => ['Footnotes', 'Contents', 'Overview', 'About'],
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
   'DEFAULT_RULE'         => '<hr>',
+  'MENU_SYMBOL'          => '&bull;',
+  'MENU_ENTRY_COLON'     => ':',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
   'SHOW_TITLE'           => 1,
@@ -1196,7 +1262,7 @@ sub _convert_heading_command($$$$$)
     }
   }
 
-  my $heading = $args->[0]->{'normal'};
+  my $heading = $self->command_text($command, 'text');
   if ($heading ne '' and $do_heading) {
     if ($self->in_preformatted()) {
       $result .= '<strong>'.$heading.'</strong>'."\n";
@@ -1397,13 +1463,99 @@ sub _convert_text($$$)
 
 $default_types_conversion{'text'} = \&_convert_text;
 
+sub _simplify_text_for_comparison($)
+{
+  my $text = shift;
+  $text =~ s/[^\w]//g;
+  return $text;
+}
+
 sub _convert_menu_entry($$$)
 {
   my $self = shift;
   my $type = shift;
   my $command = shift;
   
+  my $href;
+  my $node = $command->{'extra'}->{'menu_entry_node'};
+  if ($node->{'manual_content'}) {
+    $href = $self->_external_node_href('href', $node, 
+                                       $self->{'current_filename'});
+  } else {
+    $href = $self->_internal_node_element_href($node->{'normalized'}, 
+                                          $self->{'current_filename'});
+  }
+
+  $html_menu_entry_index++;
+  my $accesskey = '';
+  $accesskey = " accesskey=\"$html_menu_entry_index\"" 
+    if ($self->get_conf('USE_ACCESSKEY') and ($html_menu_entry_index < 10));
+
+  my $MENU_SYMBOL = $self->get_conf('MENU_SYMBOL');
+  my $MENU_ENTRY_COLON = $self->get_conf('MENU_ENTRY_COLON');
+
+  if ($self->in_preformatted()) {
+    my $result = '';
+    foreach my $arg (@{$command->{'args'}}) {
+      if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_node') {
+        my $name = $self->convert_tree(
+           {'type' => '_code', 'contents' => $arg->{'contents'}});
+        if ($href ne '') {
+          $result .= "<a href=\"$href\"$accesskey>".$name."</a>";
+        } else {
+          $result .= $name;
+        }
+      } elsif ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_leading_text') {
+        my $text = $arg->{'text'};
+         
+        $text =~ s/\*/$MENU_SYMBOL/;
+        $result .= $text;
+      } else {
+        $result .= $self->convert_tree($arg);
+      }
+    }
+    return $result;
+  }
+  my $name;
+  my $name_no_number;
+  if (!$self->get_conf('NODE_NAME_IN_MENU') and !$node->{'manual_content'}) {
+    my $section = $self->_internal_node_section($node->{'normalized'});
+    $name = $self->command_text($section, 'text');
+    $name_no_number = $self->convert_tree
+       ({'contents' => $section->{'extra'}->{'misc_content'}});
+  }
+  if (!defined($name) or $name eq '') {
+    if ($command->{'extra'}->{'menu_entry_name'}) {
+      $name = $self->convert_tree($command->{'extra'}->{'menu_entry_name'});
+    }
+    if (!defined($name) or $name eq '') {
+      foreach my $arg (@{$command->{'args'}}) {
+        if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_node') {
+          $name = $self->convert_tree(
+            {'type' => '_code', 'contents' => $command->{'extra'}->{'menu_entry_node'}});
+        }
+      }
+    }
+    $name =~ s/^\s*//;
+    $name_no_number = $name;
+    $name = "$MENU_SYMBOL ".$name;
+  }
+  if ($href ne '') {
+    $name = "<a href=\"$href\"$accesskey>".$name."</a>";
+  }
+  my $description = '';
+  if ($command->{'extra'}->{'menu_entry_description'}) {
+    $description = $self->convert_tree ($command->{'extra'}->{'menu_entry_description'});
+    if ($self->get_conf('AVOID_MENU_REDUNDANCY')) {
+      $description = '' if (_simplify_text_for_comparison($name_no_number) 
+                           eq _simplify_text_for_comparison($description));
+    }
+  }
+  # FIXME the space before description should be taken from the
+  # preceding menu_entry_separator?
+  return "<tr><td align=\"left\" valign=\"top\">$name$MENU_ENTRY_COLON</td><td>&nbsp;&nbsp;</td><td align=\"left\" valign=\"top\"> $description</td></tr>\n";
 }
+
 $default_types_conversion{'menu_entry'} = \&_convert_menu_entry;
 
 # FIXME not sure that there is contents.  Not sure that it matters either.
@@ -1700,6 +1852,7 @@ sub _initialize($)
       $Texinfo::Config::navigation_header_panel],
      ['button_formatting', \&_default_button_formatting, $Texinfo::Config::button_formatting],
      ['button_icon_img', \&_default_button_icon_img, $Texinfo::Config::button_icon_img],
+     ['external_href', \&_default_external_href, $Texinfo::Config::external_href],
   ) {
     if (defined($formatting_references->[2])) {
       $self->{$formatting_references->[0]} = $formatting_references->[2];
@@ -2414,12 +2567,12 @@ my %htmlxref_entries = (
  'mono' => [ 'mono', 'chapter', 'section', 'node' ],
 );
 
-sub default_external_href($$$)
+sub _external_node_href($$$)
 {
   my $self = shift;
   my $external_node = shift;
-  my $target = shift;
-  my $target_filebase = shift;
+  
+  my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
 
   my $xml_target = _normalized_to_id($target);
 
@@ -2432,9 +2585,9 @@ sub default_external_href($$$)
 
   my $target_split;
   my $file;
-  if ($external_node->{'extra'}->{'manual_content'}) {
+  if ($external_node->{'manual_content'}) {
     my $manual_name = Texinfo::Convert::Text::convert(
-       {'contents' => $external_node->{'extra'}->{'manual_content'}});
+       {'contents' => $external_node->{'manual_content'}});
     my $manual_base = $manual_name;
     $manual_base =~ s/\.[^\.]*$//;
     $manual_base =~ s/^.*\///;
@@ -2512,6 +2665,16 @@ sub default_external_href($$$)
   }
 }
 
+sub _external_node_text ($$)
+{
+  my $self = shift;
+  my $external_node = shift;
+
+  return $self->_convert({'type' => '_code',
+        'contents' => [{'text' => '('}, $external_node->{'manual_content'},
+                       {'text' => ')'}, $external_node->{'node_content'}]});
+}
+
 my %valid_types = (
   'href' => 1,
   'string' => 1,
@@ -2527,13 +2690,78 @@ sub _external_node_reference($$$;$)
   my $type = shift;
   my $filename = shift;
 
-  my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
   
   if ($type eq 'href') {
-    return &{$self->{'external_node_target'}}($self, $external_node, 
-                                              $target, $target_filebase);
+    return $self->_external_node_href($external_node);
+  } elsif ($type eq 'text') {
+    return $self->_external_node_text($external_node);
+  }
+}
+
+sub _internal_node_href($$$)
+{
+  my $self = shift;
+  my $normalized_node_name = shift;
+  my $filename = shift;
+
+  my $command = $self->{'labels'}->{$normalized_node_name};
+  if ($command) {
+    return $self->command_href($command, $filename);
   } else {
-    return 'TEXT TODO';
+    return '';
+  }
+}
+
+# FIXME or use $node->{'extra'}->{'associated_section'}?  It is likely that 
+# what is below is before, for example for texinfo like
+# @node node1
+# @node node2
+# @chapter chapter
+sub _internal_node_section($$$)
+{
+  my $self = shift;
+  my $normalized_node_name = shift;
+  my $filename = shift;
+
+  my $command = $self->{'labels'}->{$normalized_node_name};
+  if ($command) {
+    my $element = $command->{'parent'};
+    if ($element and $element->{'extra'}->{'section'}) {
+      return $element->{'extra'}->{'section'};
+    }
+  }
+  return undef;
+}
+
+sub _internal_element_href($$$)
+{
+  my $self = shift;
+  my $element = shift;
+  my $filename = shift;
+
+  my $command = $element->{'extra'}->{'element_command'};
+  if (defined($command)) {
+    return $self->command_href($command, $filename);
+  } else {
+    return '';
+  }
+}
+
+sub _internal_node_element_href($$$)
+{
+  my $self = shift;
+  my $normalized_node_name = shift;
+  my $filename = shift;
+
+  my $command = $self->{'labels'}->{$normalized_node_name};
+  if ($command) {
+    if ($command->{'parent'}) {
+      return $self->_internal_element_href($command->{'parent'}, $filename);
+    } else {
+      return $self->command_href($command, $filename);
+    }
+  } else {
+    return '';
   }
 }
 
@@ -2550,7 +2778,7 @@ sub _element_direction($$$$;$)
   my $command;
   my $target;
 
-  $filename = $self->{'current_file'} if (!defined($filename));
+  $filename = $self->{'current_filename'} if (!defined($filename));
  
   if (!$valid_types{$type}) {
     print STDERR "Incorrect type $type in _element_direction call\n";
@@ -2567,8 +2795,12 @@ sub _element_direction($$$$;$)
         . "directions :". Texinfo::Structuring::_print_directions($element);
     }
     if ($element_target->{'type'} eq 'external_node') {
-      return $self->_external_node_reference($element_target, $type, $filename);
+      return $self->_external_node_reference($element_target->{'extra'}, 
+                                              $type, $filename);
     } else {
+      if ($type eq 'href') {
+        return $self->_internal_element_href($element_target, $filename);
+      }
       # FIXME be able to chose node over sectioning or the other way around?
       $command = $element_target->{'extra'}->{'element_command'};
       $target = $self->{'targets'}->{$command} if ($command);
@@ -2580,47 +2812,13 @@ sub _element_direction($$$$;$)
     return undef;
   }
 
-  if ($type eq 'href') {
-    my $href = '';
-    if (defined($target->{'filename'}) and 
-        (!defined($filename) 
-         or $filename ne $target->{'filename'})) {
-      $href .= $target->{'filename'};
-    }
-    $href .= '#' . $target->{'target'} 
-      if (defined($target->{'target'}));
-    return $href;
-  } elsif (exists($target->{$type})) {
+  if (exists($target->{$type})) {
     return $target->{$type};
   } elsif ($type eq 'id' or $type eq 'target') {
     # FIXME
     return undef;
   } elsif ($command) {
-    my $tree;
-    if (!$target->{'tree'}) {
-      if ($command->{'cmdname'} eq 'node') {
-        $tree = {'type' => '_code',
-                 'contents' => $command->{'extra'}->{'node_content'}};
-      } else {
-        # FIXME number
-        $tree = {'contents' => $command->{'extra'}->{'misc_content'}};
-      }
-      $target->{'tree'} = $tree;
-      return $target->{'tree'} if ($type eq 'tree');
-    } else {
-      $tree = $target->{'tree'};
-    }
-
-    push @{$self->{'context'}}, 
-            {'cmdname' => $command->{'cmdname'}};
-    if ($type eq 'string') {
-      $tree = {'type' => '_string',
-               'contents' => [$tree]};
-    }
-    print STDERR "DO $target->{'id'}($type)\n" if ($self->get_conf('DEBUG'));
-    $target->{$type} = $self->_convert($tree);
-    pop @{$self->{'context'}};
-    return $target->{$type};
+    return $self->command_text($command, $type);
   }
 }
 
@@ -2861,7 +3059,7 @@ sub output($$)
   Texinfo::Structuring::elements_directions($self, $elements);
 
   # do element directions related to files.
-  # FIXME do it here or before?  Here it means that
+  # FIXME do it here or before?  Here it means that
   # PrevFile and NextFile can be set.
   Texinfo::Structuring::elements_file_directions($self, $elements);
 
