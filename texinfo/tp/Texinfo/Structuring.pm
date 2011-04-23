@@ -777,7 +777,7 @@ sub elements_directions($$)
         # the element is a top level element, we adjust the next
         # toplevel element fastback
         $directions->{'FastForward'}->{'extra'}->{'directions'}->{'FastBack'}  
-          = $section if ($directions->{'FastForward'});
+          = $element if ($directions->{'FastForward'});
       }
     }
     # Use node up if there is no section up.
@@ -861,9 +861,18 @@ sub _print_root_command_texi($)
   return undef;
 }
 
+# for debugging
 sub _print_element_command_texi($)
 {
   my $element = shift;
+  if (!$element) {
+    return "UNDEF ELEMENT";
+  }
+  if (!$element->{'type'}) {
+    return "element $element without type: ".
+       Texinfo::Parser::_print_current_keys($element);
+  }
+
   if ($element->{'type'} eq 'external_node') {
     my $command = {'contents' => [{'text' => '('}, 
                         @{$element->{'extra'}->{'manual_content'}},
@@ -884,13 +893,14 @@ sub _print_element_command_texi($)
   return _print_root_command_texi($command);
 }
 
+# for debugging
 sub _print_directions($)
 {
   my $element = shift;
-  my $result = _print_element_command_texi($element)."\n";
+  my $result = 'element: '._print_element_command_texi($element)."\n";
 
   if ($element->{'extra'} and $element->{'extra'}->{'directions'}) {
-    foreach my $direction (keys(%{$element->{'extra'}->{'directions'}})) {
+    foreach my $direction (sort(keys(%{$element->{'extra'}->{'directions'}}))) {
       $result .= "  $direction: ".
        _print_element_command_texi($element->{'extra'}->{'directions'}->{$direction})."\n";
     }
@@ -914,6 +924,7 @@ sub _unsplit($)
   return $root;
 }
 
+# associate internal reference commands like @*ref to labels
 sub associate_internal_references($;$$)
 {
   my $self = shift;

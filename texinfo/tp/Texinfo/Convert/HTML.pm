@@ -449,7 +449,8 @@ my %defaults = (
                              'Overview' => 'SEC_Overview',
                              'Contents' => 'SEC_Contents',
                              'Footnotes' => 'SEC_Foot',
-                             'About' => 'SEC_About'
+                             'About' => 'SEC_About',
+                             'Top' => 'SEC_Top',
                             },
   'misc_pages_file_string' => {
                               'Contents' => 'toc',
@@ -918,7 +919,6 @@ sub _default_button_formatting($$)
     if (defined($button_href) and !ref($button_href)
         and defined($text) and (ref($text) eq 'SCALAR') and defined($$text)) {
       # use given text
-      # TODO continue here
       my $href = $self->_element_direction($self->{'current_element'}, 
                                            $button_href, 'href');
       if ($href) {
@@ -1916,7 +1916,7 @@ sub _set_root_commands_targets_node_files($$)
                                                      $filename);
       }
       if ($self->get_conf('DEBUG')) {
-        print STDERR "Register label $target, $filename\n";
+        print STDERR "Register label($root_command) $target, $filename\n";
       }
       $self->{'targets'}->{$root_command} = {'target' => $target, 
                                              'id' => $id,
@@ -1933,10 +1933,17 @@ sub _set_root_commands_targets_node_files($$)
         next if (!defined($root_command->{'cmdname'}) 
                  or $self->{'targets'}->{$root_command});
         if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
-          my $target_base = _normalized_to_id(
+          my $target_base;
+          # FIXME this is a bit ad-hoc.  Keep it like that or not?
+          if ($root_command->{'cmdname'} eq 'top' 
+              and defined($self->{'misc_elements_targets'}->{'Top'})) {
+            $target_base = $self->{'misc_elements_targets'}->{'Top'};
+          } else {
+           $target_base = _normalized_to_id(
              Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
                 {'contents' => $root_command->{'extra'}->{'misc_content'}},
                 $no_unidecode));
+          }
           my $nr=0;
           my $target = $target_base;
           while ($self->{'ids'}->{$target}) {
@@ -1946,9 +1953,10 @@ sub _set_root_commands_targets_node_files($$)
             die if ($nr == 0);
           }
           my $id = $target;
-          if ($root_command->{'associated_node'} 
+          if ($root_command->{'extra'}->{'associated_node'} 
               and $self->get_conf('USE_NODE_TARGET')) {
-            $id = $self->{'targets'}->{$root_command->{'associated_node'}}->{'id'};
+            $target 
+             = $self->{'targets'}->{$root_command->{'extra'}->{'associated_node'}}->{'id'};
           }
           if (defined($Texinfo::Config::sectioning_command_target_name)) {
             ($target, $id) = &$Texinfo::Config::sectioning_command_target_name(
@@ -2133,6 +2141,9 @@ sub _set_page_files($$)
   if ($special_pages) {
     my $previous_page = $pages->[-1];
     foreach my $page (@$special_pages) {
+      my $filename 
+       = $self->{'targets'}->{$page->{'extra'}->{'element'}}->{'misc_filename'};
+      $self->_set_page_file($page, $filename) if (defined($filename));
       $self->{'file_counters'}->{$page->{'filename'}}++;
       $page->{'prev_page'} = $previous_page;
       $previous_page->{'next_page'} = $page;
@@ -2154,19 +2165,25 @@ sub _prepare_elements($$)
   } else {
     $elements = Texinfo::Structuring::split_by_section($root);
   }
+
+  # Do that before the other elements, to be sure that special page ids
+  # are registered before elements id are.
+  my ($special_elements, $special_pages) 
+    = $self->_prepare_special_elements($elements);
+
   #if ($elements) {
   #  foreach my $element(@{$elements}) {
   #    print STDERR "ELEMENT $element->{'type'}: $element\n";
   #  }
   #}
   $self->_set_root_commands_targets_node_files($elements);
-  return $elements;
+  return ($elements, $special_elements, $special_pages);
 }
 
-sub _prepare_special_elements($)
+sub _prepare_special_elements($$)
 {
   my $self = shift;
-  my $elements;
+  my $elements = shift;
   my $pages;
 
   my %do_special;
@@ -2188,8 +2205,9 @@ sub _prepare_special_elements($)
       and $self->get_conf('footnotestyle') eq 'separate') {
     $do_special{'Footnotes'} = 1;
   }
+
   if ((!defined($self->get_conf('DO_ABOUT')) 
-       and $elements and @$elements > 1 
+       and $elements and scalar(@$elements) > 1 
            and ($self->get_conf('SPLIT') or $self->get_conf('HEADERS')))
        or ($self->get_conf('DO_ABOUT'))) {
     $do_special{'About'} = 1;
@@ -2214,7 +2232,7 @@ sub _prepare_special_elements($)
       $default_filename = $self->{'document_name'}.
         $self->{'misc_pages_file_string'}.$extension;
     } else {
-      $default_filename = $self->{'OUTFILE'};
+      $default_filename = $self->{'document_name'}.$extension;
     }
 
     my $filename;
@@ -2228,6 +2246,8 @@ sub _prepare_special_elements($)
     }
     $filename = $default_filename if (!defined($filename));
 
+    print STDERR "Add special element $type: target $target, id $id,".
+      "    filename $filename\n" if ($self->get_conf('DEBUG'));
     if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')
         or $filename ne $default_filename) {
       my $page = {'type' => 'page'};
@@ -2236,12 +2256,13 @@ sub _prepare_special_elements($)
       $self->{'special_pages'}->{$type} = $page;
       $element->{'parent'} = $page;
       $self->_set_page_file($page, $filename);
+      print STDERR "NEW page for $type\n" if ($self->get_conf('DEBUG'));
       push @$pages, $page;
     }
     # FIXME add element, page... (see command_filename)?
     $self->{'targets'}->{$element} = {'id' => $id,
                                       'target' => $target,
-                                      'filename' => $filename,
+                                      'misc_filename' => $filename,
                                      };
     $self->{'ids'}->{$id} = $element;
   }
@@ -2499,6 +2520,11 @@ sub _element_direction($$$$;$)
       and $element->{'extra'}->{'directions'}->{$direction}) {
     $element_target 
       = $element->{'extra'}->{'directions'}->{$direction};
+    if (!$element_target->{'type'}) {
+      die "No type for element_target $direction $element_target: "
+        . Texinfo::Parser::_print_current_keys($element_target)
+        . "directions :". Texinfo::Structuring::_print_directions($element);
+    }
     if ($element_target->{'type'} eq 'external_node') {
       return $self->_external_node_reference($element_target, $type, $filename);
     } else {
@@ -2506,6 +2532,9 @@ sub _element_direction($$$$;$)
       $command = $element_target->{'extra'}->{'element_command'};
       $target = $self->{'targets'}->{$command} if ($command);
     }
+  } elsif ($self->{'special_elements'}->{$direction}) {
+    $element_target = $self->{'special_elements'}->{$direction};
+    $target = $self->{'targets'}->{$element_target};
   } else {
     return undef;
   }
@@ -2708,7 +2737,8 @@ sub convert($$)
   my $result = '';
 
   # This should return undef if called on a tree without node or sections.
-  my $elements = $self->_prepare_elements($root);
+  my ($elements, $special_elements, $special_pages) 
+    = $self->_prepare_elements($root);
   $self->_prepare_index_entries();
 
   if (!defined($elements)) {
@@ -2766,12 +2796,9 @@ sub output($$)
   # 'destination_directory' and 'output_filename' that are useful when split.
   $self->_set_outfile();
 
-  # Do that before the other elements, to be sure that special page ids
-  # are registered before elements id are.
-  my ($special_elements, $special_pages) = $self->_prepare_special_elements();
-
   # This should return undef if called on a tree without node or sections.
-  my $elements = $self->_prepare_elements($root);
+  my ($elements, $special_elements, $special_pages) 
+    = $self->_prepare_elements($root);
 
   $self->_prepare_global_targets($elements);
 
@@ -2788,11 +2815,12 @@ sub output($$)
   # the counters for special element pages.
   $self->_set_page_files($pages, $special_pages);
 
-  # do element directions.  FIXME do it here or before?  Here it means that
-  # PrevFile and NextFile can be set.
+  # do element directions. 
   Texinfo::Structuring::elements_directions($self, $elements);
 
   # do element directions related to files.
+  # FIXME do it here or before?  Here it means that
+  # PrevFile and NextFile can be set.
   Texinfo::Structuring::elements_file_directions($self, $elements);
 
   # associate the special elements that have no page to the main page.
