@@ -465,7 +465,6 @@ my %defaults = (
   'documentlanguage'     => 'en',
   'SHOW_TITLE'           => 1,
   'USE_TITLEPAGE_FOR_TITLE' => 0,
-  'SHOW_MENU'            => 1,
   'MONOLITHIC'           => 1,
 # This is the default, mainly for tests; the caller should set them.  These
 # values are in fact what should be set -- for now when TEST is true.
@@ -1265,6 +1264,34 @@ sub _convert_verbatiminclude_command($$$$)
 $default_commands_conversion{'verbatiminclude'} 
   = \&_convert_verbatiminclude_command;
 
+my $html_menu_entry_index;
+sub _convert_menu($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  return $contents if ($cmdname eq 'detailmenu');
+
+  $html_menu_entry_index = 0;
+  if ($contents !~ /\S/) {
+    return '';
+  }
+  my $begin_row = '';
+  my $end_row = '';
+  if ($self->in_preformatted()) {
+    $begin_row = '<tr><td>';
+    $end_row = '</td></tr>';
+  }
+  return $self->attribute_class('table', 'menu')
+    ." border=\"0\" cellspacing=\"0\">${begin_row}\n"
+      . $contents . "${end_row}</table>\n";
+}
+$default_commands_conversion{'menu'} = \&_convert_menu;
+$default_commands_conversion{'detailmenu'} = \&_convert_menu;
+
+
 my %default_types_conversion;
 
 #my %ignored_types;
@@ -1369,6 +1396,15 @@ sub _convert_text($$$)
 }
 
 $default_types_conversion{'text'} = \&_convert_text;
+
+sub _convert_menu_entry($$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  
+}
+$default_types_conversion{'menu_entry'} = \&_convert_menu_entry;
 
 # FIXME not sure that there is contents.  Not sure that it matters either.
 sub _convert_def_line_type($$$$)
@@ -1623,8 +1659,13 @@ sub _initialize($)
       $self->{'commands_conversion'}->{$command} 
           = $Texinfo::Config::commands_conversion{$command};
     } else {
-      $self->{'commands_conversion'}->{$command}
-         = $default_commands_conversion{$command};
+      if (!$self->get_conf('SHOW_MENU') 
+           and $command eq 'menu' or $command eq 'detailmenu') {
+        $self->{'commands_conversion'}->{$command} = undef;
+      } else {
+        $self->{'commands_conversion'}->{$command}
+           = $default_commands_conversion{$command};
+      }
     }
   }
 
@@ -2657,6 +2698,7 @@ sub _default_begin_file($$$)
 
   my $date = '';
   if ($self->get_conf('DATE_IN_HEADER')) {
+    # FIXME new context?
     $self->{'context'}->[-1]->{'string'} = 1;
     my $today = $self->convert_tree({'cmdname' => 'today'});
     delete $self->{'context'}->[-1]->{'string'};
@@ -3303,7 +3345,8 @@ sub _convert($$)
         push @{$self->{'formats'}}, $root->{'cmdname'};
       }
       if ($preformatted_commands{$root->{'cmdname'}}) {
-        $self->{'context'}->[-1]->{'preformatted'}++;
+        push @{$self->{'context'}}, {'cmdname' => $root->{'cmdname'},
+                                     'preformatted' => 1};
       }
       if ($code_style_commands{$root->{'cmdname'}} or 
           $preformatted_code_commands{$root->{'cmdname'}}) {
@@ -3320,8 +3363,16 @@ sub _convert($$)
       if ($root->{'contents'}) {
         $content_formatted = '';
         # TODO different types of contents
+        my $content_idx = 0;
         foreach my $content (@{$root->{'contents'}}) {
-          $content_formatted .= $self->_convert($content);
+          my $new_content = $self->_convert($content);
+          if (!defined($new_content)) {
+            print STDERR "content $content_idx not defined for ".Texinfo::Parser::_print_current ($root);
+            print STDERR "content is: ".Texinfo::Parser::_print_current ($content);
+          } else {
+            $content_formatted .= $new_content;
+          }
+          $content_idx++;
         }
       }
       my $args_formatted;
@@ -3370,7 +3421,7 @@ sub _convert($$)
                 $root->{'cmdname'}, $root, $content_formatted);
       }
       if ($preformatted_commands{$root->{'cmdname'}}) {
-        $self->{'context'}->[-1]->{'preformatted'}--;
+        pop @{$self->{'context'}};
       }
       if ($code_style_commands{$root->{'cmdname'}} or 
           $preformatted_code_commands{$root->{'cmdname'}}) {
@@ -3418,12 +3469,13 @@ sub _convert($$)
         $content_formatted .= $self->_convert($content);
       }
     }
-    my $result;
+    my $result = '';
     if (exists($self->{'types_conversion'}->{$root->{'type'}})) {
       $result = &{$self->{'types_conversion'}->{$root->{'type'}}} ($self,
                                                  $root->{'type'},
                                                  $root,
                                                  $content_formatted);
+      #print STDERR "Converting type $root->{'type'} -> $result\n";
     } elsif (defined($content_formatted)) {
       $result = $content_formatted;
     }

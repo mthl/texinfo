@@ -2702,7 +2702,9 @@ sub _enter_menu_entry_node($$$)
   my $current = shift;
   my $line_nr = shift;
   foreach my $arg (@{$current->{'args'}}) {
-    if ($arg->{'type'} eq 'menu_entry_node') {
+    if ($arg->{'type'} eq 'menu_entry_name') {
+      $current->{'extra'}->{'menu_entry_name'} = $arg;
+    } elsif ($arg->{'type'} eq 'menu_entry_node') {
       $self->_isolate_last_space($arg, 'space_at_end_menu_node');
       my $parsed_entry_node = _parse_node_manual($arg);
       if (! defined($parsed_entry_node) and $self->{'SHOW_MENU'}) {
@@ -2710,6 +2712,8 @@ sub _enter_menu_entry_node($$$)
       } else {
         $current->{'extra'}->{'menu_entry_node'} = $parsed_entry_node;
       }
+    } elsif ($arg->{'type'} eq 'menu_entry_description') {
+      $current->{'extra'}->{'menu_entry_description'} = $arg;
     }
   } 
   $current->{'line_nr'} = $line_nr;

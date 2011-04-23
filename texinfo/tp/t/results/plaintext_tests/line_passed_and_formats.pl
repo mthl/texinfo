@@ -2383,6 +2383,7 @@ $result_trees{'line_passed_and_formats'} = {
                 }
               ],
               'extra' => {
+                'menu_entry_description' => {},
                 'menu_entry_node' => {
                   'manual_content' => [
                     {
@@ -2878,6 +2879,7 @@ $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'content
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1];
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'args'}[3];
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1];
+$result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'args'}[3];
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'extra'}{'menu_entry_node'}{'manual_content'}[0]{'parent'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'args'}[1];
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0]{'parent'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'args'}[1];
 $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50]{'contents'}[1]{'parent'} = $result_trees{'line_passed_and_formats'}{'contents'}[1]{'contents'}[50];

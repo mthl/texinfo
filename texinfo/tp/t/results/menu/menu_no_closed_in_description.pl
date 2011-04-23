@@ -49,6 +49,7 @@ $result_trees{'menu_no_closed_in_description'} = {
             }
           ],
           'extra' => {
+            'menu_entry_description' => {},
             'menu_entry_node' => {
               'manual_content' => [
                 {
@@ -84,6 +85,7 @@ $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'ar
 $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1];
 $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'args'}[3];
 $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1];
+$result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'args'}[3];
 $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_node'}{'manual_content'}[0]{'parent'} = $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_no_closed_in_description'}{'contents'}[0];
 $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_in_description'};
