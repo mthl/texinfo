@@ -314,7 +314,34 @@ my %BUTTONS_ACCESSKEY =
  'PrevFile',    '',
 );
 
-my (%NAVIGATION_TEXT, %BUTTONS_GOTO, %BUTTONS_NAME);
+my %BUTTONS_EXAMPLE =
+    (
+     'Top',         ' &nbsp; ',
+     'Contents',    ' &nbsp; ',
+     'Overview',    ' &nbsp; ',
+     'Index',       ' &nbsp; ',
+     'This',        '1.2.3',
+     'Back',        '1.2.2',
+     'FastBack',    '1',
+     'Prev',        '1.2.2',
+     'Up',          '1.2',
+     'Next',        '1.2.4',
+     'NodeUp',      '1.2',
+     'NodeNext',    '1.2.4',
+     'NodePrev',    '1.2.2',
+     'NodeForward', '1.2.4',
+     'NodeBack',    '1.2.2',
+     'Forward',     '1.2.4',
+     'FastForward', '2',
+     'About',       ' &nbsp; ',
+     'First',       '1.',
+     'Last',        '1.2.4',
+     'NextFile',    ' &nbsp; ',
+     'PrevFile',    ' &nbsp; ',
+    );
+
+
+my (%NAVIGATION_TEXT, %BUTTONS_GOTO, %BUTTONS_NAME, %SPECIAL_ELEMENTS_NAME);
 
 sub _translate_names($)
 {
@@ -399,7 +426,16 @@ sub _translate_names($)
      'NextFile',    $self->gdt('NextFile'),
      'PrevFile',    $self->gdt('PrevFile'),
   );
-  foreach my $hash (\%NAVIGATION_TEXT, \%BUTTONS_GOTO, \%BUTTONS_NAME) {
+
+  %SPECIAL_ELEMENTS_NAME = (
+    'About'       => $self->gdt('About This Document'),
+    'Contents'    => $self->gdt('Table of Contents'),
+    'Overview'    => $self->gdt('Short Table of Contents'),
+    'Footnotes'   => $self->gdt('Footnotes'),
+  );
+  
+  foreach my $hash (\%NAVIGATION_TEXT, \%BUTTONS_GOTO, \%BUTTONS_NAME, 
+                    \%SPECIAL_ELEMENTS_NAME) {
     foreach my $button (keys (%$hash)) {
       if (ref($hash->{$button})) {
         # FIXME put it out of document context
@@ -547,11 +583,13 @@ my %defaults = (
   
   'BUTTONS_REL'          => \%BUTTONS_REL,
   'BUTTONS_ACCESSKEY'    => \%BUTTONS_ACCESSKEY,
+  'BUTTONS_EXAMPLE'      => \%BUTTONS_EXAMPLE,
   'BUTTONS_GOTO'         => \%BUTTONS_GOTO,
   'BUTTONS_NAME'         => \%BUTTONS_NAME,
   'NAVIGATION_TEXT'      => \%NAVIGATION_TEXT,
   'ACTIVE_ICONS'         => \%ACTIVE_ICONS,
   'PASSIVE_ICONS'        => \%PASSIVE_ICONS,
+  'SPECIAL_ELEMENTS_NAME' => \%SPECIAL_ELEMENTS_NAME,
   
   'DEBUG'                => 0,
   'TEST'                 => 0,
@@ -931,7 +969,7 @@ sub _default_heading_text($$$$$)
   return '' if ($text !~ /\S/);
   # FIXME use a class=*contents?
   my $class = '';
-  if ($cmdname !~ /contents$/) {
+  if ($cmdname and $cmdname !~ /contents$/) {
     $class = $cmdname;
     $class = 'node-heading' if ($cmdname eq 'node');
   }   
@@ -1776,9 +1814,30 @@ sub _convert_element_type($$$$)
   my $element = shift;
   my $content = shift;
 
-  #print STDERR "GGGGGGGG $command->{'parent'} $command->{'parent'}->{'type'}\n";
+  #print STDERR "GGGGGGGG $element $element->{'parent'} $element->{'parent'}->{'type'}\n";
+  #print STDERR "$element->{'extra'}->{'special_element'}\n"
+  #   if ($element->{'extra'}->{'special_element'});
+
   my $result = '';
-  if (!$element->{'element_prev'}) {
+  my $special_element;
+
+  if ($element->{'extra'}->{'special_element'}) {
+    $special_element = $element->{'extra'}->{'special_element'};
+    my $id = $self->command_id($element);
+    $result .= "<a name=\"$id\"></a>\n";
+    if ($self->get_conf('HEADERS') 
+        # first in page
+        or $element->{'parent'}->{'contents'}->[0] eq $element) {
+      $result .= &{$self->{'navigation_header'}}($self, 
+                 $self->get_conf('MISC_BUTTONS'), undef, $element);
+      
+    }
+    $result .= &{$self->{'heading_text'}}($self, '', 
+                    $self->{'SPECIAL_ELEMENTS_NAME'}->{$special_element}, 0);
+
+    $result .= &{$self->{'special_element_body'}}($self, 
+                                                 $special_element, $element);
+  } elsif (!$element->{'element_prev'}) {
     if ($self->get_conf('SHOW_TITLE')) {
       if ($self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
         $result .= &{$self->{'titlepage'}}($self);
@@ -1790,11 +1849,11 @@ sub _convert_element_type($$$$)
       }
     }
     if (!$element->{'element_next'}) {
+      # only one element
       return $result.$content.$self->get_conf('DEFAULT_RULE')."\n";
     }
   }
   $result .= $content;
-
 
   my $is_top = $self->_element_is_top($element);
   my $next_is_top = ($self->{'global_target_elements'}->{'Top'}
@@ -1971,6 +2030,7 @@ sub _initialize($)
      ['css_lines', \&_default_css_lines, $Texinfo::Config::css_lines],
      ['begin_file', \&_default_begin_file, $Texinfo::Config::begin_file],
      ['end_file', \&_default_end_file, $Texinfo::Config::end_file],
+     ['special_element_body', \&_default_special_element_body, $Texinfo::Config::special_element_body],
      ['program_string', \&_default_program_string, $Texinfo::Config::program_string],
      ['titlepage', \&_default_titlepage, $Texinfo::Config::titlepage],
      ['navigation_header', \&_default_navigation_header, $Texinfo::Config::navigation_header],
@@ -3105,6 +3165,105 @@ $after_body_open";
   return $result;
 }
 
+sub convert_translation($$$)
+{
+  my $self = shift;
+  my $text = shift;
+  return $self->convert_tree($self->gdt($text));
+}
+
+sub _default_special_element_body($$$)
+{
+  my $self = shift;
+  my $special_type = shift;
+  my $element = shift;
+
+  if ($special_type eq 'About') {
+    my $about = "<p>\n";
+    $about .= <<EOT;
+</p>
+<p>
+EOT
+    $about .= $self->convert_tree($self->gdt('  The buttons in the navigation panels have the following meaning:')) . "\n";
+    $about .= <<EOT;
+</p>
+<table border="1">
+  <tr>
+EOT
+    $about .= '    <th> ' . $self->convert_tree($self->gdt('Button')) . " </th>\n" .
+     '    <th> ' . $self->convert_tree($self->gdt('Name')) . " </th>\n" .
+     '    <th> ' . $self->convert_tree($self->gdt('Go to')) . " </th>\n" .
+     '    <th> ' . $self->convert_tree($self->gdt('From 1.2.3 go to')) . "</th>\n" . "  </tr>\n";
+
+    foreach my $button (@{$self->get_conf('SECTION_BUTTONS')}) {
+      next if ($button eq ' ' or ref($button) eq 'CODE' or ref($button) eq 'SCALAR' 
+                or ref($button) eq 'ARRAY');
+      $about .= "  <tr>\n    <td align=\"center\">";
+      $about .=
+            ($self->get_conf('ICONS') && $self->get_conf('ACTIVE_ICONS')->{$button} ?
+             &{$self->{'button_icon_img'}}($self, $button, 
+                                       $self->get_conf('ACTIVE_ICONS')->{$button}) :
+             ' [' . $self->get_conf('NAVIGATION_TEXT')->{$button} . '] ');
+      $about .= "</td>\n";
+      $about .= 
+"    <td align=\"center\">".$self->get_conf('BUTTONS_NAME')->{$button}."</td>
+    <td>".$self->get_conf('BUTTONS_GOTO')->{$button}."</td>
+    <td>".$self->get_conf('BUTTONS_EXAMPLE')->{$button}."</td>
+  </tr>
+";
+    }
+
+    $about .= <<EOT;
+</table>
+
+<p>
+EOT
+    $about .= $self->convert_tree($self->gdt('  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:')) . "\n";
+
+#  where the <strong> Example </strong> assumes that the current position
+#  is at <strong> Subsubsection One-Two-Three </strong> of a document of
+#  the following structure:
+    $about .= <<EOT;
+</p>
+
+<ul>
+EOT
+    $about .= '  <li> 1. ' . $self->convert_tree($self->gdt('Section One')) . "\n" .
+"    <ul>\n" .
+'      <li>1.1 ' . $self->convert_tree($self->gdt('Subsection One-One')) . "\n";
+    $about .= <<EOT;
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+EOT
+    $about .= '      <li>1.2 ' . $self->convert_tree($self->gdt('Subsection One-Two')) . "\n" .
+"        <ul>\n" .
+'          <li>1.2.1 ' . $self->convert_tree($self->gdt('Subsubsection One-Two-One')) . "</li>\n" .
+'          <li>1.2.2 ' . $self->convert_tree($self->gdt('Subsubsection One-Two-Two')) . "</li>\n" .
+'          <li>1.2.3 ' . $self->convert_tree($self->gdt('Subsubsection One-Two-Three')) . " &nbsp; &nbsp;\n"
+.
+'            <strong>&lt;== ' . $self->convert_tree($self->gdt('Current Position')) . " </strong></li>\n" .
+'          <li>1.2.4 ' . $self->convert_tree($self->gdt('Subsubsection One-Two-Four')) . "</li>\n" .
+"        </ul>\n" .
+"      </li>\n" .
+'      <li>1.3 ' . $self->convert_tree($self->gdt('Subsection One-Three')) . "\n";
+    $about .= <<EOT;
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+EOT
+    $about .= '      <li>1.4 ' . $self->convert_tree($self->gdt('Subsection One-Four')) . "</li>\n";
+    $about .= <<EOT;
+    </ul>
+  </li>
+</ul>
+EOT
+    return $about;
+  }
+}
+
 sub convert($$)
 {
   my $self = shift;
@@ -3335,7 +3494,8 @@ sub output($$)
     # TODO set page file names $page->{'filename'} (relative) and 
     # $page->{'out_filename'} (absolute)
     
-    foreach my $page (@$pages) {
+    $special_pages = [] if (!defined($special_pages));
+    foreach my $page (@$pages, @$special_pages) {
       my $file_fh;
       if (!$files{$page->{'filename'}}->{'fh'}) {
         $file_fh = $self->Texinfo::Common::open_out ($page->{'out_filename'},
