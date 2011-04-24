@@ -104,7 +104,7 @@ sub in_math($)
 sub in_preformatted($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'preformatted'};
+  return $self->{'preformatted_context'}->[-1];
 }
 
 sub in_upper_case($)
@@ -509,6 +509,12 @@ my %defaults = (
   'SECTION_BUTTONS'      => ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
                              ' ', ' ', ' ', ' ',
                              'Top', 'Contents', 'Index', 'About' ],
+  'MISC_BUTTONS'         => [ 'Top', 'Contents', 'Index', 'About' ],
+  'CHAPTER_BUTTONS'      => [ 'FastBack', 'FastForward', ' ',
+                              ' ', ' ', ' ', ' ',
+                              'Top', 'Contents', 'Index', 'About', ],
+  'SECTION_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
+  'NODE_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
   'misc_elements_targets'   => {
                              'Overview' => 'SEC_Overview',
                              'Contents' => 'SEC_Contents',
@@ -525,6 +531,7 @@ my %defaults = (
   'misc_elements_order'  => ['Footnotes', 'Contents', 'Overview', 'About'],
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
   'DEFAULT_RULE'         => '<hr>',
+  'BIG_RULE'             => '<hr size="6">',
   'MENU_SYMBOL'          => '&bull;',
   'MENU_ENTRY_COLON'     => ':',
   'BODYTEXT'             => undef,
@@ -1178,6 +1185,21 @@ sub _default_navigation_header($$$$)
   return $result;
 }
 
+# it is considered 'top' only if element corresponds to @top or 
+# element is a node
+sub _element_is_top($$)
+{
+  my $self = shift;
+  my $element = shift;
+  return ($self->{'global_target_elements'}->{'Top'}
+    and $self->{'global_target_elements'}->{'Top'} eq $element
+    and $element->{'extra'}
+    and (($element->{'extra'}->{'section'} 
+         and $element->{'extra'}->{'section'}->{'cmdname'} eq 'top')
+         or ($element->{'extra'}->{'element_command'}
+             and $element->{'extra'}->{'element_command'}->{'cmdname'} eq 'node')));
+}
+
 sub _convert_heading_command($$$$$)
 {
   my $self = shift;
@@ -1221,18 +1243,11 @@ sub _convert_heading_command($$$$$)
               and $element->{'contents'}->[1] eq $command))
         # and there is more than one element
         and ($element->{'element_next'} or $element->{'element_prev'})) {
-      my ($previous_is_top, $is_top) = (0, 0);
+      my $is_top = $self->_element_is_top($element);
       my $first_in_page = ($element->{'parent'} 
                and $element->{'parent'}->{'contents'}->[0] eq $element);
+      my $previous_is_top = 0;
       if ($self->{'global_target_elements'}->{'Top'}) {
-        # it is considered 'top' only if element corresponds to @top or 
-        # element is a node
-        $is_top = ($self->{'global_target_elements'}->{'Top'} eq $element
-            and $element->{'extra'}
-            and (($element->{'extra'}->{'section'} 
-                  and $element->{'extra'}->{'section'}->{'cmdname'} eq 'top')
-                 or ($element->{'extra'}->{'element_command'}
-                     and $element->{'extra'}->{'element_command'}->{'cmdname'} eq 'node')));
        $previous_is_top = (defined($element->{'element_prev'}) 
           and $self->{'global_target_elements'}->{'Top'} eq $element->{'element_prev'});
       }
@@ -1252,6 +1267,7 @@ sub _convert_heading_command($$$$$)
           $result .= &{$self->{'navigation_header'}}($self, 
                   $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
         } else {  
+        # FIXME what about chapter?
           # got to do this here, as it isn't done otherwise since 
           # header_navigation is not called
           $result .= &{$self->{'navigation_header_panel'}}($self,
@@ -1712,12 +1728,12 @@ sub _convert_element_type($$$$)
 {
   my $self = shift;
   my $type = shift;
-  my $command = shift;
+  my $element = shift;
   my $content = shift;
 
   #print STDERR "GGGGGGGG $command->{'parent'} $command->{'parent'}->{'type'}\n";
   my $result = '';
-  if (!$command->{'element_prev'}) {
+  if (!$element->{'element_prev'}) {
     if ($self->get_conf('SHOW_TITLE')) {
       if ($self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
         $result .= &{$self->{'titlepage'}}($self);
@@ -1728,11 +1744,76 @@ sub _convert_element_type($$$$)
                      'contents' => $self->{'simpletitle_tree'}->{'contents'}});
       }
     }
-    if (!$command->{'element_next'}) {
+    if (!$element->{'element_next'}) {
       return $result.$content.$self->get_conf('DEFAULT_RULE')."\n";
     }
   }
   $result .= $content;
+
+
+  my $is_top = $self->_element_is_top($element);
+  my $next_is_top = ($self->{'global_target_elements'}->{'Top'}
+    and defined($element->{'element_next'})
+    and $self->{'global_target_elements'}->{'Top'} eq $element->{'element_next'});
+  my $next_is_special = (defined($element->{'element_next'})
+    and $element->{'element_next'}->{'extra'}->{'special_element'});
+  my $end_page = (!$element->{'element_next'} 
+       or $element->{'parent'} ne $element->{'element_next'}->{'parent'});
+
+  if (($end_page or $next_is_top or $next_is_special)
+       and $self->get_conf('VERTICAL_HEAD_NAVIGATION')) {
+   $result .= "</td>
+</tr>
+</table>"."\n";
+  }
+
+  my $rule = '';
+  my $buttons;
+  my $maybe_in_page;
+  if (($is_top or $element->{'extra'}->{'special_element'})
+      and ($end_page 
+         and ($self->get_conf('HEADERS') 
+              or ($self->get_conf('SPLIT') and $self->get_conf('SPLIT') ne 'node')))) {
+    if ($is_top) {
+      $buttons = $self->get_conf('TOP_BUTTONS');
+    } else {
+      $buttons = $self->get_conf('MISC_BUTTONS');
+    }
+    $rule = $self->get_conf('DEFAULT_RULE');
+  } elsif ($end_page and $self->get_conf('SPLIT') eq 'section') {
+    $buttons = $self->get_conf('SECTION_FOOTER_BUTTONS');
+    $rule = $self->get_conf('DEFAULT_RULE');
+  } elsif ($end_page and $self->get_conf('SPLIT') eq 'chapter') {
+    $buttons = $self->get_conf('CHAPTER_BUTTONS');
+    $rule = $self->get_conf('DEFAULT_RULE');
+  } elsif ($self->get_conf('SPLIT') eq 'node' and $self->get_conf('HEADERS')) {
+    $rule = $self->get_conf('DEFAULT_RULE');
+    my $no_footer_word_count;
+    if ($self->get_conf('WORDS_IN_PAGE')) {
+      my @cnt = split(/\W*\s+\W*/, $content);
+      if (scalar(@cnt) < $self->get_conf('WORDS_IN_PAGE')) {
+        $no_footer_word_count = 1;
+      }
+    }
+    $buttons = $self->get_conf('NODE_FOOTER_BUTTONS')
+       unless ($no_footer_word_count);
+  } else {
+    $maybe_in_page = 1;
+  }
+
+  if (!$end_page and ($is_top or $next_is_top or $next_is_special)) {
+    $rule = $self->get_conf('BIG_RULE');
+  }
+  if (!$self->get_conf('PROGRAM_NAME_IN_FOOTER') 
+      and !$buttons and !$maybe_in_page) {
+  } else {
+    $result .= "$rule\n" if ($rule);
+  }
+  if ($buttons) {
+    $result .= &{$self->{'navigation_header_panel'}}($self, $buttons,
+                                                     undef, $element);
+  }
+  
   return $result;
 }
 
@@ -1863,6 +1944,7 @@ sub _initialize($)
 
   $self->{'context'} = [{'cmdname' => '_toplevel_context', 
                          'align' => ['raggedright']}];
+  $self->{'preformatted_context'} = [0];
   $self->{'formats'} = [];
 
   $self->_translate_names();
@@ -2784,16 +2866,22 @@ sub _element_direction($$$$;$)
     print STDERR "Incorrect type $type in _element_direction call\n";
     return undef;
   }
-
-  if ($element->{'extra'} and $element->{'extra'}->{'directions'}
+  if ($self->{'global_target_elements'}->{$direction}) {
+    $element_target = $self->{'global_target_elements'}->{$direction};
+  } elsif ($element->{'extra'} and $element->{'extra'}->{'directions'}
       and $element->{'extra'}->{'directions'}->{$direction}) {
-    $element_target 
+    $element_target
       = $element->{'extra'}->{'directions'}->{$direction};
+  }
+
+  if ($element_target) {
+    ######## debug
     if (!$element_target->{'type'}) {
       die "No type for element_target $direction $element_target: "
         . Texinfo::Parser::_print_current_keys($element_target)
         . "directions :". Texinfo::Structuring::_print_directions($element);
     }
+    ########
     if ($element_target->{'type'} eq 'external_node') {
       return $self->_external_node_reference($element_target->{'extra'}, 
                                               $type, $filename);
@@ -2807,6 +2895,9 @@ sub _element_direction($$$$;$)
     }
   } elsif ($self->{'special_elements'}->{$direction}) {
     $element_target = $self->{'special_elements'}->{$direction};
+    if ($type eq 'href') {
+      return $self->command_href($element_target, $filename);
+    }
     $target = $self->{'targets'}->{$element_target};
   } else {
     return undef;
@@ -3543,8 +3634,7 @@ sub _convert($$)
         push @{$self->{'formats'}}, $root->{'cmdname'};
       }
       if ($preformatted_commands{$root->{'cmdname'}}) {
-        push @{$self->{'context'}}, {'cmdname' => $root->{'cmdname'},
-                                     'preformatted' => 1};
+        push @{$self->{'preformatted_context'}}, $root->{'cmdname'};
       }
       if ($code_style_commands{$root->{'cmdname'}} or 
           $preformatted_code_commands{$root->{'cmdname'}}) {
@@ -3619,7 +3709,7 @@ sub _convert($$)
                 $root->{'cmdname'}, $root, $content_formatted);
       }
       if ($preformatted_commands{$root->{'cmdname'}}) {
-        pop @{$self->{'context'}};
+        pop @{$self->{'preformatted_context'}};
       }
       if ($code_style_commands{$root->{'cmdname'}} or 
           $preformatted_code_commands{$root->{'cmdname'}}) {
