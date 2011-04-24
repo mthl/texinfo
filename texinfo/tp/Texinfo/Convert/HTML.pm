@@ -1373,6 +1373,51 @@ sub _convert_menu($$$$)
 $default_commands_conversion{'menu'} = \&_convert_menu;
 $default_commands_conversion{'detailmenu'} = \&_convert_menu;
 
+sub _convert_itemize($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  if ($command->{'extra'}->{'command_as_argument'} 
+     and $command->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
+    return "<ul>\n" . $contents. "</ul>\n";
+  } else {
+    return attribute_class('ul',$NO_BULLET_LIST_CLASS).">\n" 
+            . $contents . "</ul>\n";
+  }
+}
+
+$default_commands_conversion{'itemize'} = \&_convert_itemize;
+
+sub _convert_item($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  if ($command->{'parent'} 
+      and $command->{'parent'}->{'cmdname'} eq 'itemize') {
+    my $prepend ;
+    my $itemize = $command->{'parent'};
+    if ($itemize->{'extra'}->{'command_as_argument'} 
+       and $itemize->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
+      $prepend = '';
+    } else {
+      $prepend = $self->convert_tree(
+         {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}});
+    }
+    if ($contents =~ /\S/) {
+      return '<li>' . $prepend . $contents . '</li>';
+    } else {
+      return '';
+    }
+  }
+  return 'TODO';
+}
+$default_commands_conversion{'item'} = \&_convert_item;
 
 my %default_types_conversion;
 
@@ -3449,55 +3494,6 @@ sub _contents($$$)
     }
   }
   return $result;
-}
-
-sub _menu($$)
-{
-  my $self = shift;
-  my $menu_command = shift;
-
-  if ($menu_command->{'cmdname'} eq 'menu') {
-    my $result = "* Menu:\n\n";
-    $self->_add_text_count($result);
-    $self->_add_lines_count(2);
-    return $result;
-  } else {
-    return '';
-  }
-}
-
-sub _printindex($$)
-{
-  my $self = shift;
-  my $printindex = shift;
-  return ('');
-}
-
-sub _node($$)
-{
-  my $self = shift;
-  my $node = shift;
-
-  return '';
-}
-
-# no error in plaintext
-sub _error_outside_of_any_node($$)
-{
-  my $self = shift;
-  my $root = shift;
-}
-
-sub _anchor($$)
-{
-  my $self = shift;
-  my $anchor = shift;
-
-  if (!($self->{'multiple_pass'} or $self->{'in_copying_header'})) {
-    $self->_add_location($anchor); 
-    $self->_error_outside_of_any_node($anchor);
-  }
-  return '';
 }
 
 sub _image($$)
