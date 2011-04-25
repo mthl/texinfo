@@ -223,6 +223,10 @@ sub command_text($$$)
   my $command = shift;
   my $type = shift;
 
+  if (!defined($command)) {
+    cluck "in command_text($type) command not defined";
+  }
+
   if ($self->{'targets'}->{$command}) {
     my $target = $self->{'targets'}->{$command};
     if (defined($target->{$type})) {
@@ -230,11 +234,14 @@ sub command_text($$$)
     }
     my $tree;
     if (!$target->{'tree'}) {
-      if ($command->{'cmdname'} eq 'node') {
+      if ($command->{'extra'}
+               and $command->{'extra'}->{'special_element'}) {
+        my $special_element = $command->{'extra'}->{'special_element'};
+        $tree = $self->get_conf('SPECIAL_ELEMENTS_NAME')->{$special_element};
+      } elsif ($command->{'cmdname'} eq 'node') {
         $tree = {'type' => '_code',
                  'contents' => $command->{'extra'}->{'node_content'}};
       } else {
-        # FIXME number
         $tree = {'contents' => $command->{'extra'}->{'misc_content'}};
         if ($command->{'number'}) {
           unshift @{$tree->{'contents'}}, {'text' => "$command->{'number'} "};
@@ -341,14 +348,14 @@ my %BUTTONS_EXAMPLE =
     );
 
 
-my (%NAVIGATION_TEXT, %BUTTONS_GOTO, %BUTTONS_NAME, %SPECIAL_ELEMENTS_NAME);
+my (%BUTTONS_TEXT, %BUTTONS_GOTO, %BUTTONS_NAME, %SPECIAL_ELEMENTS_NAME);
 
 sub _translate_names($)
 {
   my $self = shift;
 
 
-  %NAVIGATION_TEXT = (
+  %BUTTONS_TEXT = (
      'Top',         $self->gdt('Top'),
      'Contents',    $self->gdt('Contents'),
      'Overview',    $self->gdt('Overview'),
@@ -360,9 +367,12 @@ sub _translate_names($)
      'Prev',        $self->gdt('Prev'),
      'Up',          $self->gdt(' Up '),
      'Next',        $self->gdt('Next'),
-     'NodeUp',      $self->gdt('Node up'),
-     'NodeNext',    $self->gdt('Next node'),
-     'NodePrev',    $self->gdt('Previous node'),
+     #'NodeUp',      $self->gdt('Node up'),
+     'NodeUp',      $self->gdt('Up'),
+     #'NodeNext',    $self->gdt('Next node'),
+     'NodeNext',    $self->gdt('Next'),
+     #'NodePrev',    $self->gdt('Previous node'),
+     'NodePrev',    $self->gdt('Previous'),
      'NodeForward', $self->gdt('Forward node'),
      'NodeBack',    $self->gdt('Back node'),
      'Forward',     ' &gt; ',
@@ -433,9 +443,20 @@ sub _translate_names($)
     'Overview'    => $self->gdt('Short Table of Contents'),
     'Footnotes'   => $self->gdt('Footnotes'),
   );
+
+  # delete the tree and formatted results such that they are redone
+  # with the new tree when needed.
+  foreach my $special_element (keys (%SPECIAL_ELEMENTS_NAME)) {
+    if ($self->{'special_elements'}->{$special_element} and
+        $self->{'targets'}->{$self->{'special_elements'}->{$special_element}}) {
+      my $target = $self->{'targets'}->{$self->{'special_elements'}->{$special_element}};
+      foreach my $key ('text', 'string', 'tree') {
+        delete $target->{$key};
+      }
+    }
+  }
   
-  foreach my $hash (\%NAVIGATION_TEXT, \%BUTTONS_GOTO, \%BUTTONS_NAME, 
-                    \%SPECIAL_ELEMENTS_NAME) {
+  foreach my $hash (\%BUTTONS_TEXT, \%BUTTONS_GOTO, \%BUTTONS_NAME) {
     foreach my $button (keys (%$hash)) {
       if (ref($hash->{$button})) {
         # FIXME put it out of document context
@@ -538,19 +559,24 @@ my %defaults = (
   'DATE_IN_HEADER'       => 0,
   'AVOID_MENU_REDUNDANCY' => 0,
   'HEADERS'              => 1,
+  'DO_ABOUT'             => 0,
+  'USE_ACCESSKEY'        => 1,
+  'USE_REL_REV'          => 1,
+  'SECTION_BUTTONS'      => [[ 'NodeNext', \&_default_node_direction ],
+                             [ 'NodePrev', \&_default_node_direction ],
+                             [ 'NodeUp', \&_default_node_direction ], ' ',
+                             'Contents', 'Index'],
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'Up', 'NextFile', 'PrevFile'],
-  'TOP_BUTTONS'          => ['Back', 'Forward', ' ',
-                             'Contents', 'Index', 'About'],
-  'SECTION_BUTTONS'      => ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
-                             ' ', ' ', ' ', ' ',
-                             'Top', 'Contents', 'Index', 'About' ],
-  'MISC_BUTTONS'         => [ 'Top', 'Contents', 'Index', 'About' ],
-  'CHAPTER_BUTTONS'      => [ 'FastBack', 'FastForward', ' ',
-                              ' ', ' ', ' ', ' ',
-                              'Top', 'Contents', 'Index', 'About', ],
-  'SECTION_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
-  'NODE_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
+#  'TOP_BUTTONS'          => ['Back', 'Forward', ' ',
+#                             'Contents', 'Index', 'About'],
+#
+#  'MISC_BUTTONS'         => [ 'Top', 'Contents', 'Index', 'About' ],
+#  'CHAPTER_BUTTONS'      => [ 'FastBack', 'FastForward', ' ',
+#                              ' ', ' ', ' ', ' ',
+#                              'Top', 'Contents', 'Index', 'About', ],
+#  'SECTION_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
+#  'NODE_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
   'misc_elements_targets'   => {
                              'Overview' => 'SEC_Overview',
                              'Contents' => 'SEC_Contents',
@@ -559,15 +585,15 @@ my %defaults = (
                              'Top' => 'SEC_Top',
                             },
   'misc_pages_file_string' => {
-                              'Contents' => 'toc',
-                              'Overview' => 'ovr',
-                              'Footnotes' => 'fot',
-                              'About' => 'abt'
+                              'Contents' => '_toc',
+                              'Overview' => '_ovr',
+                              'Footnotes' => '_fot',
+                              'About' => '_abt'
                               },
   'misc_elements_order'  => ['Footnotes', 'Contents', 'Overview', 'About'],
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
   'DEFAULT_RULE'         => '<hr>',
-  'BIG_RULE'             => '<hr size="6">',
+  'BIG_RULE'             => '<hr>',
   'MENU_SYMBOL'          => '&bull;',
   'MENU_ENTRY_COLON'     => ':',
   'BODYTEXT'             => undef,
@@ -586,7 +612,7 @@ my %defaults = (
   'BUTTONS_EXAMPLE'      => \%BUTTONS_EXAMPLE,
   'BUTTONS_GOTO'         => \%BUTTONS_GOTO,
   'BUTTONS_NAME'         => \%BUTTONS_NAME,
-  'NAVIGATION_TEXT'      => \%NAVIGATION_TEXT,
+  'BUTTONS_TEXT'         => \%BUTTONS_TEXT,
   'ACTIVE_ICONS'         => \%ACTIVE_ICONS,
   'PASSIVE_ICONS'        => \%PASSIVE_ICONS,
   'SPECIAL_ELEMENTS_NAME' => \%SPECIAL_ELEMENTS_NAME,
@@ -595,6 +621,11 @@ my %defaults = (
   'TEST'                 => 0,
   'output_format'        => 'html',
 );
+
+foreach my $buttons ('CHAPTER_BUTTONS', 'SECTION_FOOTER_BUTTONS', 'NODE_FOOTER_BUTTONS',
+  'MISC_BUTTONS', 'TOP_BUTTONS') {
+  $defaults{$buttons} = [@{$defaults{'SECTION_BUTTONS'}}];
+}
 
 sub _defaults($)
 {
@@ -987,6 +1018,25 @@ sub _default_heading_text($$$$$)
   return $result;
 }
 
+sub _default_node_direction($$)
+{
+  my $self = shift;
+  my $direction = shift;
+  
+  my $result = undef;
+  my $href = $self->_element_direction($self->{'current_element'},
+                                           $direction, 'href');
+  my $node = $self->_element_direction($self->{'current_element'},
+                                           $direction, 'node');
+  if ($href and $node) {
+    my $anchor_attributes = $self->_direction_href_attributes($direction);
+    my $anchor = "<a href=\"$href\"${anchor_attributes}>$node</a>";
+    # i18n
+    $result = $self->get_conf('BUTTONS_TEXT')->{$direction}.": $anchor";
+  }
+  return $result;  
+}
+
 # how to create IMG tag
 # this is only used in html, and only if ICONS is set and the button
 # is active.
@@ -1012,6 +1062,28 @@ sub _default_button_icon_img($$$;$)
   return qq{<img src="$icon" border="0" alt="$alt" align="middle">};
 }
 
+sub _direction_href_attributes($$)
+{
+  my $self = shift;
+  my $direction = shift;
+
+  my $href_attributes = '';
+  if ($self->get_conf('USE_ACCESSKEY') 
+      and $self->get_conf('BUTTONS_ACCESSKEY')) {
+    my $accesskey = $self->get_conf('BUTTONS_ACCESSKEY')->{$direction};
+    if (defined($accesskey) and ($accesskey ne '')) {
+      $href_attributes = " accesskey=\"$accesskey\"";
+    }
+  }
+  if ($self->get_conf('USE_REL_REV') and $self->get_conf('BUTTONS_REL')) {
+    my $button_rel = $self->get_conf('BUTTONS_REL')->{$direction};
+    if (defined($button_rel) and ($button_rel ne '')) {
+      $href_attributes .= " rel=\"$button_rel\"";
+    }
+  }
+  return $href_attributes;
+}
+
 sub _default_button_formatting($$)
 {
   my $self = shift;
@@ -1032,27 +1104,14 @@ sub _default_button_formatting($$)
       my $href = $self->_element_direction($self->{'current_element'}, 
                                            $button_href, 'href');
       if ($href) {
-        my $anchor_attributes = '';
-        if ($self->get_conf('USE_ACCESSKEY') 
-            and $self->get_conf('BUTTONS_ACCESSKEY')) {
-          my $accesskey = $self->get_conf('BUTTONS_ACCESSKEY')->{$button_href};
-          if (defined($accesskey) and ($accesskey ne '')) {
-            $anchor_attributes = " accesskey=\"$accesskey\"";
-          }
-        }
-        if ($self->get_conf('USE_REL_REV') and $self->get_conf('BUTTONS_REL')) {
-          my $button_rel = $self->get_conf('BUTTONS_REL')->{$button_href};
-          if (defined($button_rel) and ($button_rel ne '')) {
-            $anchor_attributes .= " rel=\"$button_rel\"";
-          }
-        }
+        my $anchor_attributes = $self->_direction_href_attributes($button_href);
         $active =  "" . "<a href=\"$href\"${anchor_attributes}>$$text</a>";
       } else {
         $passive = $$text;
       }
     } elsif (defined($button_href) and !ref($button_href)
              and defined($text) and (ref($text) eq 'CODE')) {
-      $active = &$text($button_href);
+      $active = &$text($self, $button_href);
     }
   } elsif ($button eq ' ') {
     # handle space button
@@ -1061,7 +1120,7 @@ sub _default_button_formatting($$)
       $active = &{$self->{'button_icon_img'}}($self, $button, 
                                        $self->get_conf('ACTIVE_ICONS')->{' '});
     } else {
-      $active = $self->get_conf('NAVIGATION_TEXT')->{' '};
+      $active = $self->get_conf('BUTTONS_TEXT')->{' '};
     }
   } else {
     my $href = $self->_element_direction($self->{'current_element'}, 
@@ -1103,7 +1162,7 @@ sub _default_button_formatting($$)
       if (!$use_icon) {
         # use text
         $active = '[' . "<a href=\"$href\"${btitle}>".
-          $self->get_conf('NAVIGATION_TEXT')->{$button}."</a>" . ']';
+          $self->get_conf('BUTTONS_TEXT')->{$button}."</a>" . ']';
       }
     } else {
       # button is passive
@@ -1121,7 +1180,7 @@ sub _default_button_formatting($$)
         }
       }
       if (!$use_icon) {
-        $passive =  '[' . $self->get_conf('NAVIGATION_TEXT')->{$button} . ']';
+        $passive =  '[' . $self->get_conf('BUTTONS_TEXT')->{$button} . ']';
       }
     }
   }
@@ -1619,9 +1678,11 @@ sub _convert_menu_entry($$$)
   my $name_no_number;
   if (!$self->get_conf('NODE_NAME_IN_MENU') and !$node->{'manual_content'}) {
     my $section = $self->_internal_node_section($node->{'normalized'});
-    $name = $self->command_text($section, 'text');
-    $name_no_number = $self->convert_tree
-       ({'contents' => $section->{'extra'}->{'misc_content'}});
+    if (defined($section)) {
+      $name = $self->command_text($section, 'text');
+      $name_no_number = $self->convert_tree
+        ({'contents' => $section->{'extra'}->{'misc_content'}});
+    }
   }
   if (!defined($name) or $name eq '') {
     if ($command->{'extra'}->{'menu_entry_name'}) {
@@ -1631,7 +1692,8 @@ sub _convert_menu_entry($$$)
       foreach my $arg (@{$command->{'args'}}) {
         if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_node') {
           $name = $self->convert_tree(
-            {'type' => '_code', 'contents' => $command->{'extra'}->{'menu_entry_node'}});
+            {'type' => '_code', 
+             'contents' => $command->{'extra'}->{'menu_entry_node'}->{'node_content'}});
         }
       }
     }
@@ -1832,9 +1894,8 @@ sub _convert_element_type($$$$)
                  $self->get_conf('MISC_BUTTONS'), undef, $element);
       
     }
-    $result .= &{$self->{'heading_text'}}($self, '', 
-                  $self->{'SPECIAL_ELEMENTS_NAME'}->{$special_element}, 0)."\n";
-    
+    my $heading = $self->command_text($element, 'text');
+    $result .= &{$self->{'heading_text'}}($self, '', $heading, 0)."\n";
 
     $result .= &{$self->{'special_element_body'}}($self, 
                                                  $special_element, $element);
@@ -2622,7 +2683,7 @@ sub _prepare_special_elements($$)
     my $default_filename;
     if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')) {
       $default_filename = $self->{'document_name'}.
-        $self->{'misc_pages_file_string'};
+        $self->{'misc_pages_file_string'}->{$type};
     } else {
       $default_filename = $self->{'document_name'};
     }
@@ -2880,6 +2941,7 @@ my %valid_types = (
   'text' => 1,
   'tree' => 1,
   'target' => 1,
+  'node' => 1,
 );
 
 sub _external_node_reference($$$;$)
@@ -3002,6 +3064,10 @@ sub _element_direction($$$$;$)
     if ($element_target->{'type'} eq 'external_node') {
       return $self->_external_node_reference($element_target->{'extra'}, 
                                               $type, $filename);
+    } elsif ($type eq 'node') {
+      $command = $element_target->{'extra'}->{'node'};
+      $target = $self->{'targets'}->{$command} if ($command);
+      $type = 'text';
     } else {
       if ($type eq 'href') {
         return $self->_internal_element_href($element_target, $filename);
@@ -3012,6 +3078,7 @@ sub _element_direction($$$$;$)
     }
   } elsif ($self->{'special_elements'}->{$direction}) {
     $element_target = $self->{'special_elements'}->{$direction};
+    $command = $element_target;
     if ($type eq 'href') {
       return $self->command_href($element_target, $filename);
     }
@@ -3124,8 +3191,8 @@ sub _default_begin_file($$$)
         my $title = '';
         $title = " title=\"$link_string\"" if (defined($link_string));
         my $rel = '';
-        $rel = " rel=\"$self->{'BUTTONS_REL'}->{$link}\"" 
-           if (defined($self->{'BUTTONS_REL'}->{$link}));
+        $rel = " rel=\"".$self->get_conf('BUTTONS_REL')->{$link}.'"' 
+           if (defined($self->get_conf('BUTTONS_REL')->{$link}));
         $links .= "<link href=\"$link_href\"${rel}${title}>\n";
       }
     }
@@ -3216,7 +3283,7 @@ EOT
             ($self->get_conf('ICONS') && $self->get_conf('ACTIVE_ICONS')->{$button} ?
              &{$self->{'button_icon_img'}}($self, $button, 
                                        $self->get_conf('ACTIVE_ICONS')->{$button}) :
-             ' [' . $self->get_conf('NAVIGATION_TEXT')->{$button} . '] ');
+             ' [' . $self->get_conf('BUTTONS_TEXT')->{$button} . '] ');
       $about .= "</td>\n";
       $about .= 
 "    <td align=\"center\">".$self->get_conf('BUTTONS_NAME')->{$button}."</td>
@@ -3295,7 +3362,7 @@ sub convert($$)
     #$result .= $footnotes;
   } else {
     foreach my $element (@$elements) {
-      my $element_text = $self->_convert_element($element);
+      my $element_text = $self->_convert($element);
       $result .= $element_text;
     }
   }
@@ -3490,7 +3557,7 @@ sub output($$)
     $output .= _output_text($header, $fh);
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
-        my $element_text = $self->_convert_element($element);
+        my $element_text = $self->_element($element);
         $output .= _output_text($element_text, $fh);
       }
     } else {
@@ -3522,7 +3589,7 @@ sub output($$)
         $file_fh = $files{$page->{'filename'}}->{'fh'};
       }
       foreach my $element (@{$page->{'contents'}}) {
-        my $element_text = $self->_convert_element($element);
+        my $element_text = $self->_convert($element);
         print $file_fh $element_text;
       }
       $self->{'file_counters'}->{$page->{'filename'}}--;
@@ -3918,6 +3985,10 @@ sub _convert($$)
     if ($root->{'contents'}) {
       $content_formatted = '';
       # TODO different types of contents
+      if (ref($root->{'contents'}) ne 'ARRAY') {
+        cluck "for $root contents not an array: $root->{'contents'}";
+        print STDERR Texinfo::Structuring::_print_current($root);
+      }
       foreach my $content (@{$root->{'contents'}}) {
         $content_formatted .= $self->_convert($content);
       }

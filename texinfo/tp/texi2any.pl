@@ -420,6 +420,23 @@ sub _set_variables_texi2html()
 #  $INDEX_ENTRY_COLON = '';
 
   set_from_cmdline('ENABLE_ENCODING_USE_ENTITY', 1);
+  set_from_cmdline('DO_ABOUT', 1);
+  set_from_cmdline('BIG_RULE', '<hr size="6">');
+  set_from_cmdline('SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
+                             ' ', ' ', ' ', ' ',
+                             'Top', 'Contents', 'Index', 'About' ]);
+  set_from_cmdline('TOP_BUTTONS', ['Back', 'Forward', ' ',
+                             'Contents', 'Index', 'About']);
+
+  set_from_cmdline('MISC_BUTTONS', [ 'Top', 'Contents', 'Index', 'About' ]);
+  set_from_cmdline('CHAPTER_BUTTONS', [ 'FastBack', 'FastForward', ' ',
+                              ' ', ' ', ' ', ' ',
+                              'Top', 'Contents', 'Index', 'About', ]);
+  set_from_cmdline('SECTION_FOOTER_BUTTONS', [ 'FastBack', 'Back', 'Up', 
+                                               'Forward', 'FastForward' ]);
+  set_from_cmdline('NODE_FOOTER_BUTTONS', [ 'FastBack', 'Back', 
+                                            'Up', 'Forward', 'FastForward' ]);
+
 }
 
 my $result_options = Getopt::Long::GetOptions (
