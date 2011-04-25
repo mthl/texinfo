@@ -501,7 +501,7 @@ my %PASSIVE_ICONS = (
 
 
 my %defaults = (
-  'ENABLE_ENCODING'      => 1,
+  'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 1,
   'footnotestyle'        => 'end',
   'perl_encoding'        => 'utf8',
@@ -1448,7 +1448,7 @@ sub _convert_item($$$$)
          {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}});
     }
     if ($contents =~ /\S/) {
-      return '<li>' . $prepend . $contents . '</li>';
+      return '<li>' . $prepend .' '. $contents . '</li>';
     } else {
       return '';
     }
@@ -1833,7 +1833,8 @@ sub _convert_element_type($$$$)
       
     }
     $result .= &{$self->{'heading_text'}}($self, '', 
-                    $self->{'SPECIAL_ELEMENTS_NAME'}->{$special_element}, 0);
+                  $self->{'SPECIAL_ELEMENTS_NAME'}->{$special_element}, 0)."\n";
+    
 
     $result .= &{$self->{'special_element_body'}}($self, 
                                                  $special_element, $element);
@@ -1853,7 +1854,7 @@ sub _convert_element_type($$$$)
       return $result.$content.$self->get_conf('DEFAULT_RULE')."\n";
     }
   }
-  $result .= $content;
+  $result .= $content unless ($special_element);
 
   my $is_top = $self->_element_is_top($element);
   my $next_is_top = ($self->{'global_target_elements'}->{'Top'}
@@ -1875,6 +1876,7 @@ sub _convert_element_type($$$$)
   my $buttons;
   my $maybe_in_page;
   if (($is_top or $element->{'extra'}->{'special_element'})
+      and $self->get_conf('SPLIT')
       and ($end_page 
          and ($self->get_conf('HEADERS') 
               or ($self->get_conf('SPLIT') and $self->get_conf('SPLIT') ne 'node')))) {
@@ -1883,15 +1885,15 @@ sub _convert_element_type($$$$)
     } else {
       $buttons = $self->get_conf('MISC_BUTTONS');
     }
-    $rule = $self->get_conf('DEFAULT_RULE');
+    #$rule = $self->get_conf('DEFAULT_RULE');
   } elsif ($end_page and $self->get_conf('SPLIT') eq 'section') {
     $buttons = $self->get_conf('SECTION_FOOTER_BUTTONS');
-    $rule = $self->get_conf('DEFAULT_RULE');
+    #$rule = $self->get_conf('DEFAULT_RULE');
   } elsif ($end_page and $self->get_conf('SPLIT') eq 'chapter') {
     $buttons = $self->get_conf('CHAPTER_BUTTONS');
-    $rule = $self->get_conf('DEFAULT_RULE');
+    #$rule = $self->get_conf('DEFAULT_RULE');
   } elsif ($self->get_conf('SPLIT') eq 'node' and $self->get_conf('HEADERS')) {
-    $rule = $self->get_conf('DEFAULT_RULE');
+    #$rule = $self->get_conf('DEFAULT_RULE');
     my $no_footer_word_count;
     if ($self->get_conf('WORDS_IN_PAGE')) {
       my @cnt = split(/\W*\s+\W*/, $content);
@@ -1905,11 +1907,19 @@ sub _convert_element_type($$$$)
     $maybe_in_page = 1;
   }
 
+  if ($is_top or $element->{'extra'}->{'special_element'}
+     or $end_page and ($self->get_conf('SPLIT') eq 'chapter'
+                       or $self->get_conf('SPLIT') eq 'section')
+     or $self->get_conf('SPLIT') eq 'node' and $self->get_conf('HEADERS')) {
+    $rule = $self->get_conf('DEFAULT_RULE');
+  }
+      
   if (!$end_page and ($is_top or $next_is_top or $next_is_special)) {
     $rule = $self->get_conf('BIG_RULE');
   }
   if (!$self->get_conf('PROGRAM_NAME_IN_FOOTER') 
       and !$buttons and !$maybe_in_page) {
+    # no rule in that case
   } else {
     $result .= "$rule\n" if ($rule);
   }
@@ -2598,23 +2608,25 @@ sub _prepare_special_elements($$)
   $extension = $self->get_conf('EXTENSION') 
     if (defined($self->get_conf('EXTENSION')));
 
+  my $special_elements = [];
   foreach my $type (@{$self->{'misc_elements_order'}}) {
     next unless ($do_special{$type});
 
     my $element = {'type' => 'element',
                    'extra' => {'special_element' => $type}};
     $self->{'special_elements'}->{$type} = $element;
-    push @$elements, $element;
+    push @$special_elements, $element;
 
     my $id = $self->{'misc_elements_targets'}->{$type};
     my $target = $id;
     my $default_filename;
     if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')) {
       $default_filename = $self->{'document_name'}.
-        $self->{'misc_pages_file_string'}.$extension;
+        $self->{'misc_pages_file_string'};
     } else {
-      $default_filename = $self->{'document_name'}.$extension;
+      $default_filename = $self->{'document_name'};
     }
+    $default_filename .= '.'.$extension if (defined($extension));
 
     my $filename;
     if (defined($Texinfo::Config::special_element_target_file_name)) {
@@ -2627,7 +2639,7 @@ sub _prepare_special_elements($$)
     }
     $filename = $default_filename if (!defined($filename));
 
-    print STDERR "Add special element $type: target $target, id $id,".
+    print STDERR "Add special $element $type: target $target, id $id,\n".
       "    filename $filename\n" if ($self->get_conf('DEBUG'));
     if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')
         or $filename ne $default_filename) {
@@ -2647,7 +2659,7 @@ sub _prepare_special_elements($$)
                                      };
     $self->{'ids'}->{$id} = $element;
   }
-  return ($elements, $pages);
+  return ($special_elements, $pages);
 }
 
 # Associate elements with the global targets, First, Last, Top, Index.
@@ -3180,6 +3192,7 @@ sub _default_special_element_body($$$)
 
   if ($special_type eq 'About') {
     my $about = "<p>\n";
+    $about .= '  '.&{$self->{'program_string'}}($self) ."\n";
     $about .= <<EOT;
 </p>
 <p>
@@ -3362,7 +3375,6 @@ sub output($$)
   # This may only happen if not split.
   if ($special_elements) {
     foreach my $special_element (@$special_elements) {
-      my $previous_element = $pages->[0]->{'contents'}->[-1];
       if (!defined($special_element->{'parent'})) {
         $special_element->{'parent'} = $pages->[0];
         $special_element->{'element_prev'} = $pages->[0]->{'contents'}->[-1];
@@ -3378,9 +3390,6 @@ sub output($$)
   # FIXME determine index entries id/targets and set them as 'ids' and 
   # 'targets'. texi2html.pl l. 7807
   $self->_prepare_index_entries();
-
-
-  # TODO Top, Index, First, Last.
 
   $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage') 
    . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
