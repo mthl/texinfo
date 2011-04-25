@@ -1,3 +1,7 @@
+2011-04-25  Sergey Poznyakoff  <gray@gnu.org>
+
+	* info/man.c (manpage_node_of_file_buffer): Initialize body_start.
+
 2011-04-09  Patrice Dumas  <pertusus@free.fr>
 
 	* */*: rename major .init files as .pm files, especially 
