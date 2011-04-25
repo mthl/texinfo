@@ -1,5 +1,5 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.16 2010-12-03 23:49:20 karl Exp $
+    $Id: man.c,v 1.17 2011-04-25 20:18:58 gray Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
    2007, 2008, 2009 Free Software Foundation, Inc.
@@ -402,6 +402,7 @@ manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
       node->parent   = NULL;
       node->flags = (N_HasTagsTable | N_IsManPage);
       node->contents += skip_node_separator (node->contents);
+      node->body_start = strcspn(node->contents, "\n");
     }
 
   return node;
