@@ -160,6 +160,31 @@ sub command_id($$)
   }
 }
 
+sub command_contents_id($$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $contents_or_shortcontents = shift;
+  
+  if ($self->{'targets'}->{$command}) {
+    return $self->{'targets'}->{$command}->{$contents_or_shortcontents .'_id'};
+  } else {
+    return undef;
+  }
+}
+
+sub command_contents_target($$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $contents_or_shortcontents = shift;
+  if ($self->{'targets'}->{$command}) {
+    return $self->{'targets'}->{$command}->{$contents_or_shortcontents .'_target'};
+  } else {
+    return undef;
+  }
+}
+
 sub command_target($$)
 {
   my $self = shift;
@@ -206,10 +231,43 @@ sub command_href($$$)
   my $target = $self->command_target($command);
   return '' if (!defined($target));
   my $href = '';
-  
+
   my $target_filename = $self->command_filename($command);
   if (defined($target_filename) and 
       (!defined($filename) 
+       or $filename ne $target_filename)) {
+    $href .= $target_filename;
+  }
+  $href .= '#' . $target if ($target ne '');
+  return $href;
+}
+
+sub command_contents_href($$$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $contents_or_shortcontents = shift;
+  my $filename = shift;
+
+  my $href;
+  my $name;
+  if ($contents_or_shortcontents eq 'contents') {
+    $name = 'Contents';
+  } else {
+    $name = 'Overview';
+  }
+  
+  my $target;
+  if ($name eq 'Contents') {
+    $target = $self->command_contents_target($command);
+  } else {
+    $target = $self->command_shortcontents_target($command);
+  }
+
+  my $target_element = $self->{'special_elements'}->{$name};
+  my $target_filename = $self->command_filename($target_element);
+  if (defined($target_filename) and
+      (!defined($filename)
        or $filename ne $target_filename)) {
     $href .= $target_filename;
   }
@@ -223,6 +281,9 @@ sub command_text($$$)
   my $command = shift;
   my $type = shift;
 
+  if (!defined($type)) {
+    $type = 'text';
+  }
   if (!defined($command)) {
     cluck "in command_text($type) command not defined";
   }
@@ -266,6 +327,7 @@ sub command_text($$$)
   }
   return undef;
 }
+
 
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
@@ -562,6 +624,8 @@ my %defaults = (
   'DO_ABOUT'             => 0,
   'USE_ACCESSKEY'        => 1,
   'USE_REL_REV'          => 1,
+  'NODE_NAME_IN_MENU'    => 1,
+  'WORDS_IN_PAGE'        => 300,
   'SECTION_BUTTONS'      => [[ 'NodeNext', \&_default_node_direction ],
                              [ 'NodePrev', \&_default_node_direction ],
                              [ 'NodeUp', \&_default_node_direction ], ' ',
@@ -680,22 +744,26 @@ my %default_commands_conversion;
 # Ignored commands
 
 my %kept_misc_commands;
-foreach my $command ('footnotestyle', 'documentlanguage', 
-      'allowcodebreaks') {
-  $kept_misc_commands{$command} = 1;
-}
 
+my @informative_global_commands = ('contents', 'shortcontents',
+  'summarycontents', 'allowcodebreaks', 'documentlanguage',
+  'footnotestyle');
 # taken from global
 # 'xrefautomaticsectiontitle' (or in Parser?)
 # 'documentencoding'
 # 'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage'
 # 'novalidate'
-foreach my $misc_command('verbatiminclude', 'contents', 'shortcontents',
-        'summarycontents', 'insertcopying', 'printindex', 'listoffloats',
+foreach my $misc_command(@informative_global_commands,
+        'verbatiminclude', 'insertcopying', 'printindex', 'listoffloats',
 # not sure for settitle
         'shorttitle', 'shorttitlepage', 'settitle', 'author', 'subtitle',
         'title', keys(%default_index_commands)) {
   $kept_misc_commands{$misc_command} = 1;
+}
+
+sub _global_commands($)
+{
+  return @informative_global_commands;
 }
 
 #my %ignored_misc_commands;
@@ -1444,7 +1512,7 @@ $default_commands_conversion{'verbatiminclude'}
   = \&_convert_verbatiminclude_command;
 
 my $html_menu_entry_index;
-sub _convert_menu($$$$)
+sub _convert_menu_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -1467,10 +1535,10 @@ sub _convert_menu($$$$)
     ." border=\"0\" cellspacing=\"0\">${begin_row}\n"
       . $contents . "${end_row}</table>\n";
 }
-$default_commands_conversion{'menu'} = \&_convert_menu;
-$default_commands_conversion{'detailmenu'} = \&_convert_menu;
+$default_commands_conversion{'menu'} = \&_convert_menu_command;
+$default_commands_conversion{'detailmenu'} = \&_convert_menu_command;
 
-sub _convert_itemize($$$$)
+sub _convert_itemize_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -1486,9 +1554,9 @@ sub _convert_itemize($$$$)
   }
 }
 
-$default_commands_conversion{'itemize'} = \&_convert_itemize;
+$default_commands_conversion{'itemize'} = \&_convert_itemize_command;
 
-sub _convert_item($$$$)
+sub _convert_item_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -1514,7 +1582,58 @@ sub _convert_item($$$$)
   }
   return 'TODO';
 }
-$default_commands_conversion{'item'} = \&_convert_item;
+$default_commands_conversion{'item'} = \&_convert_item_command;
+
+sub _convert_informative_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+
+  $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
+
+  $self->_informative_command($command);
+  if ($self->get_conf('INLINE_CONTENTS')) {
+    if ($cmdname eq 'contents' or $cmdname eq 'shortcontents') {
+      my $result = '';
+      #my $result = "<a name=\"".$self->command_id
+      $result .= $self->{'contents'}($self, $cmdname, $command);
+      return $result;
+    }
+  }
+  return '';
+}
+
+sub _informative_command($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $cmdname = $root->{'cmdname'};
+  $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
+
+  return if ($self->{'set'}->{$cmdname});
+    if ($misc_commands{$cmdname} eq 'skipline') {
+    $self->set_conf($cmdname, 1);
+  } elsif (exists($root->{'extra'}->{'text_arg'})) {
+    $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
+    if ($cmdname eq 'documentencoding'
+        and defined($root->{'extra'})
+        and defined($root->{'extra'}->{'perl_encoding'})
+        and !$self->{'perl_encoding'}) {
+      $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
+      $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
+    }
+  } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
+           and exists($root->{'extra'}->{'misc_args'}->[0])) {
+    $self->set_conf($cmdname, $root->{'extra'}->{'misc_args'}->[0]);
+  }
+}
+
+foreach my $informative_command (@informative_global_commands) {
+  $default_commands_conversion{$informative_command} 
+    = \&_convert_informative_command;
+}
 
 my %default_types_conversion;
 
@@ -1637,7 +1756,7 @@ sub _convert_menu_entry($$$)
   my $href;
   my $node = $command->{'extra'}->{'menu_entry_node'};
   if ($node->{'manual_content'}) {
-    $href = $self->_external_node_href('href', $node, 
+    $href = $self->_external_node_href($node, 
                                        $self->{'current_filename'});
   } else {
     $href = $self->_internal_node_element_href($node->{'normalized'}, 
@@ -1674,6 +1793,7 @@ sub _convert_menu_entry($$$)
     }
     return $result;
   }
+
   my $name;
   my $name_no_number;
   if (!$self->get_conf('NODE_NAME_IN_MENU') and !$node->{'manual_content'}) {
@@ -1682,6 +1802,9 @@ sub _convert_menu_entry($$$)
       $name = $self->command_text($section, 'text');
       $name_no_number = $self->convert_tree
         ({'contents' => $section->{'extra'}->{'misc_content'}});
+    }
+    if ($href ne '') {
+      $name = "<a href=\"$href\"$accesskey>".$name."</a>";
     }
   }
   if (!defined($name) or $name eq '') {
@@ -1699,10 +1822,10 @@ sub _convert_menu_entry($$$)
     }
     $name =~ s/^\s*//;
     $name_no_number = $name;
+    if ($href ne '') {
+      $name = "<a href=\"$href\"$accesskey>".$name."</a>";
+    }
     $name = "$MENU_SYMBOL ".$name;
-  }
-  if ($href ne '') {
-    $name = "<a href=\"$href\"$accesskey>".$name."</a>";
   }
   my $description = '';
   if ($command->{'extra'}->{'menu_entry_description'}) {
@@ -1916,6 +2039,7 @@ sub _convert_element_type($$$$)
     }
   }
   $result .= $content unless ($special_element);
+  # FIXME footnotes
 
   my $is_top = $self->_element_is_top($element);
   my $next_is_top = ($self->{'global_target_elements'}->{'Top'}
@@ -2110,6 +2234,7 @@ sub _initialize($)
      ['button_formatting', \&_default_button_formatting, $Texinfo::Config::button_formatting],
      ['button_icon_img', \&_default_button_icon_img, $Texinfo::Config::button_icon_img],
      ['external_href', \&_default_external_href, $Texinfo::Config::external_href],
+     ['contents', \&_default_contents, $Texinfo::Config::contents],
   ) {
     if (defined($formatting_references->[2])) {
       $self->{$formatting_references->[0]} = $formatting_references->[2];
@@ -2140,6 +2265,10 @@ sub convert_tree($$)
 sub _normalized_to_id($)
 {
   my $id = shift;
+  if (!defined($id)) {
+    cluck "_normalized_to_id id not defined";
+    return '';
+  }
   $id =~ s/^([0-9_])/g_t$1/;
   return $id;
 }
@@ -2316,29 +2445,38 @@ sub _prepare_css($)
 sub _node_id_file($$)
 {
   my $self = shift;
-  my $root_command = shift;
+  my $node_info = shift;
 
   my $no_unidecode;
   $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE'))
                         and !$self->get_conf('USE_UNIDECODE'));
 
-  my $target = _normalized_to_id($root_command->{'extra'}->{'normalized'});
-  my $id;
-  if (!$root_command->{'extra'}->{'manual_content'}) {
+  my ($target, $id);
+  if (defined($node_info->{'normalized'})) {
+    $target = _normalized_to_id($node_info->{'normalized'});
+  } else {
+    # FIXME Top or configuration variable?
+    $target = '';
+  }
+  if (!$node_info->{'manual_content'}) {
     $id = $target;
   }
   # FIXME something special for Top node ?
   if (defined($Texinfo::Config::node_target_name)) {
-    ($target, $id) = &$Texinfo::Config::node_target_name($root_command,
+    ($target, $id) = &$Texinfo::Config::node_target_name($node_info,
                                                          $target, $id);
   }
   my $filename;
-  if ($self->get_conf('TRANSLITERATE_FILE_NAMES')) {
-    $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
-     {'contents' => $root_command->{'extra'}->{'node_content'}},
-          $no_unidecode);
+  if (defined($node_info->{'normalized'})) { 
+    if ($self->get_conf('TRANSLITERATE_FILE_NAMES')) {
+      $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
+       {'contents' => $node_info->{'node_content'}},
+            $no_unidecode);
+    } else {
+      $filename = $node_info->{'normalized'};
+    }
   } else {
-    $filename = $root_command->{'extra'}->{'normalized'};
+    $filename = '';
   }
   return ($filename, $target, $id);
 }
@@ -2359,7 +2497,7 @@ sub _set_root_commands_targets_node_files($$)
 
   if ($self->{'labels'}) {
     foreach my $root_command (values(%{$self->{'labels'}})) {
-      my ($filename, $target, $id) = $self->_node_id_file($root_command);
+      my ($filename, $target, $id) = $self->_node_id_file($root_command->{'extra'});
       $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
         if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
             and $self->get_conf('NODE_FILE_EXTENSION') ne '');
@@ -2410,18 +2548,50 @@ sub _set_root_commands_targets_node_files($$)
             $target 
              = $self->{'targets'}->{$root_command->{'extra'}->{'associated_node'}}->{'id'};
           }
+          my $target_contents = 'toc-'.$target;
+          my $toc_nr = $nr -1;
+          while ($self->{'ids'}->{$target_contents}) {
+            $target_contents = 'toc-'.$target_base.'-'.$toc_nr;
+            $toc_nr++;
+            # Avoid integer overflow
+            die if ($toc_nr == 0);
+          }
+          my $id_contents = $target_contents;
+
+          my $target_shortcontents = 'stoc-'.$target;
+          my $stoc_nr = $nr -1;
+          while ($self->{'ids'}->{$target_shortcontents}) {
+            $target_shortcontents = 'stoc-'.$target_base.'-'.$stoc_nr;
+            $stoc_nr++;
+            # Avoid integer overflow
+            die if ($stoc_nr == 0);
+          }
+          my $id_shortcontents = $target_shortcontents;
+
           if (defined($Texinfo::Config::sectioning_command_target_name)) {
-            ($target, $id) = &$Texinfo::Config::sectioning_command_target_name(
-                                                               $self,
-                                                               $root_command,
-                                                               $target, $id);
+            ($target, $id, $target_contents, $id_contents,
+             $target_shortcontents, $id_shortcontents) 
+                = &$Texinfo::Config::sectioning_command_target_name($self, 
+                                             $root_command, $target, $id,
+                                             $target_contents, $id_contents,
+                                             $target_shortcontents, $id_shortcontents);
           }
           if ($self->get_conf('DEBUG')) {
             print STDERR "Register $root_command->{'cmdname'} $target, $id\n";
           }
-          $self->{'targets'}->{$root_command} = {'target' => $target, 
-                                                 'id' => $id};
+          $self->{'targets'}->{$root_command} = {
+                                   'target' => $target, 
+                                   'id' => $id,
+                                   'contents_target' => $target_contents,
+                                   'contents_id' => $id_contents,
+                                   'shortcontents_target' => $target_shortcontents,
+                                   'shortcontents_id' => $id_shortcontents,
+                                  };
+          # FIXME this should really be use carefilly, since the mapping
+          # is not what one expects
           $self->{'ids'}->{$id} = $root_command;
+          $self->{'ids'}->{$id_contents} = $root_command;
+          $self->{'ids'}->{$id_shortcontents} = $root_command;
         }
       }
     }
@@ -2612,6 +2782,10 @@ sub _prepare_elements($$)
   my $root = shift;
 
   my $elements;
+
+  # do that now to have it available for formatting
+  $self->_set_global_multiple_commands(-1);
+
   if ($self->get_conf('USE_NODES')) {
     $elements = Texinfo::Structuring::split_by_node($root);
   } else {
@@ -2640,17 +2814,22 @@ sub _prepare_special_elements($$)
 
   my %do_special;
   # FIXME do that here or let it to the user?
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
-      and !$self->get_conf('INLINE_CONTENTS')) {
-    if ($self->get_conf('contents') 
-        and (!$self->get_conf('setcontentsaftertitlepage')
-             or !$self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
-      $do_special{'Contents'} = 1;
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
+    if ($self->get_conf('contents')) {
+      if ($self->get_conf('INLINE_CONTENTS')) {
+      } elsif ($self->get_conf('setcontentsaftertitlepage')
+               and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
+      } else {
+        $do_special{'Contents'} = 1;
+      }
     }
-    if ($self->get_conf('shortcontents')
-        and (!$self->get_conf('setshortcontentsaftertitlepage')
-             or !$self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
-      $do_special{'Overview'} = 1;
+    if ($self->get_conf('shortcontents')) {
+      if ($self->get_conf('INLINE_CONTENTS')) {
+      } elsif ($self->get_conf('setshortcontentsaftertitlepage')
+               and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
+      } else {
+        $do_special{'Overview'} = 1;
+      }
     }
   }
   if ($self->{'extra'}->{'footnote'} 
@@ -2721,6 +2900,62 @@ sub _prepare_special_elements($$)
     $self->{'ids'}->{$id} = $element;
   }
   return ($special_elements, $pages);
+
+}
+
+sub _prepare_contents_elements($)
+{
+  my $self = shift;
+
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
+    foreach my $content_type(['contents', 'Contents'],
+                             ['shortcontents', 'Overview']) {
+      my $cmdname = $content_type->[0];
+      my $type = $content_type->[1];
+      if ($self->get_conf($cmdname)) {
+        my $default_filename;
+        if ($self->get_conf('INLINE_CONTENTS')) {
+          if ($self->{'extra'} and $self->{'extra'}->{$cmdname}) {
+            foreach my $command(@{$self->{'extra'}->{$cmdname}}) {
+              my ($page, $element, $root_command) 
+                = $self->_get_page($command);
+              if (defined($page)) {
+                $default_filename = $page->{'filename'};
+                last;
+              }
+            }
+          }
+        } elsif ($self->get_conf('set'.$cmdname.'aftertitlepage')
+                 and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
+          $default_filename = $self->{'pages'}->[0]->{'filename'};
+        }
+        if (defined($default_filename)) {
+          my $element = {'type' => 'element',
+                         'extra' => {'special_element' => $type}};
+          $self->{'special_elements'}->{$type} = $element;
+          my $id = $self->{'misc_elements_targets'}->{$type};
+          my $target = $id;
+          my $filename;
+          if (defined($Texinfo::Config::special_element_target_file_name)) {
+            ($target, $id, $filename)
+                 = &$Texinfo::Config::special_element_target_file_name(
+                                                            $self,
+                                                            $element,
+                                                            $target, $id,
+                                                            $default_filename);
+          }
+          $filename = $default_filename if (!defined($filename));
+          print STDERR "Add content $element $type: target $target, id $id,\n".
+             "    filename $filename\n";# if ($self->get_conf('DEBUG'));
+          $self->{'targets'}->{$element} = {'id' => $id,
+                                            'target' => $target,
+                                            'misc_filename' => $filename,
+                                            'filename' => $filename,
+                                            };
+        }
+      }
+    }
+  }
 }
 
 # Associate elements with the global targets, First, Last, Top, Index.
@@ -2827,11 +3062,13 @@ my %htmlxref_entries = (
  'mono' => [ 'mono', 'chapter', 'section', 'node' ],
 );
 
-sub _external_node_href($$$)
+sub _external_node_href($$;$)
 {
   my $self = shift;
   my $external_node = shift;
+  my $filename = shift;
   
+  #print STDERR "external_node: ".join('|', keys(%$external_node))."\n";
   my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
 
   my $xml_target = _normalized_to_id($target);
@@ -2953,7 +3190,7 @@ sub _external_node_reference($$$;$)
 
   
   if ($type eq 'href') {
-    return $self->_external_node_href($external_node);
+    return $self->_external_node_href($external_node, $filename);
   } elsif ($type eq 'text') {
     return $self->_external_node_text($external_node);
   }
@@ -3095,6 +3332,70 @@ sub _element_direction($$$$;$)
   } elsif ($command) {
     return $self->command_text($command, $type);
   }
+}
+
+sub _default_contents($$;$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $filename = shift;
+  $filename = $self->{'current_filename'} if (!defined($filename));
+
+  return '' 
+   if (!$self->{'structuring'} or !$self->{'structuring'}->{'sectioning_root'});
+
+  my $section_root = $self->{'structuring'}->{'sectioning_root'};
+  my $contents = 1 if ($cmdname eq 'contents');
+
+  my $root_level = $section_root->{'section_childs'}->[0]->{'level'};
+  foreach my $top_section(@{$section_root->{'section_childs'}}) {
+    $root_level = $top_section->{'level'}
+      if ($top_section->{'level'} < $root_level);
+  }
+  my $ul_class = '';
+  $ul_class = $NO_BULLET_LIST_CLASS if ($self->get_conf('NUMBER_SECTIONS'));
+
+  my $result = '';
+  $result .= "<div class=\"contents\">\n";
+  foreach my $top_section (@{$section_root->{'section_childs'}}) {
+    my $section = $top_section;
+ SECTION:
+    while ($section) {# and $section ne $section_root) {
+      my $text = $self->command_text($section);
+      # FIXME OVERVIEW_LINK_TO_TOC?
+      my $href = $self->command_href($section, $filename);
+      my $toc_id = $self->command_contents_id($section, $cmdname);
+      $result .= (' ' x (2*($section->{'level'} - $root_level))) 
+        . "<li><a name=\"$toc_id\" href=\"$href\">$text</a>"
+         if ($text ne '');
+      if ($section->{'section_childs'}
+          and ($contents or $section->{'level'} < $root_level+1)) {
+        $result .= "\n". ' ' x (2*($section->{'level'} - $root_level))
+          . $self->attribute_class('ul', $ul_class) .">\n";
+        $section = $section->{'section_childs'}->[0];
+      } elsif ($section->{'section_next'}) {
+        $result .= "</li>\n";
+        last if ($section eq $top_section);
+        $section = $section->{'section_next'};
+      } else {
+        last if ($section eq $top_section);
+        while ($section->{'section_up'}) {
+          $section = $section->{'section_up'};
+          $result .= "</li>\n". ' ' x (2*($section->{'level'} - $root_level))
+            . "</ul>";
+          last SECTION if ($section eq $top_section);
+          if ($section->{'section_next'}) {
+            $result .= "</li>\n";
+            $section = $section->{'section_next'};
+            last;
+          }
+        }
+      }
+    }
+    $result .= "\n</div>\n";
+  }
+  return $result;
 }
 
 sub _default_program_string($)
@@ -3430,6 +3731,8 @@ sub output($$)
   # the counters for special element pages.
   $self->_set_page_files($pages, $special_pages);
 
+  $self->_prepare_contents_elements();
+
   # do element directions. 
   Texinfo::Structuring::elements_directions($self, $elements);
 
@@ -3454,8 +3757,6 @@ sub output($$)
   # FIXME Before that, set multiple commands
   # FIXME set language and documentencoding/encoding_name
 
-  # FIXME determine index entries id/targets and set them as 'ids' and 
-  # 'targets'. texi2html.pl l. 7807
   $self->_prepare_index_entries();
 
   $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage') 
@@ -4063,20 +4364,9 @@ sub _convert($$)
 #      return $result;
 #    } elsif ($root->{'cmdname'} eq 'listoffloats') {
 #    } elsif ($root->{'cmdname'} eq 'sp') {
-#    } elsif ($root->{'cmdname'} eq 'contents') {
-#    } elsif ($root->{'cmdname'} eq 'shortcontents' 
-#               or $root->{'cmdname'} eq 'summarycontents') {
-#    } elsif ($informative_commands{$root->{'cmdname'}}) {
-#      $self->_informative_command($root);
-
 # TODO types
 #    } elsif ($root->{'type'} eq 'preformatted') {
-#    } elsif ($root->{'type'} eq 'def_line') {
-#    } elsif ($root->{'type'} eq 'menu_entry') {
-#    } elsif ($root->{'type'} eq 'code') {
  # TODO ?
- #   } elsif ($root->{'type'} eq 'bracketed') {
-
  #   } elsif ($root->{'cmdname'} eq 'quotation' and $root->{'extra'} 
  #            and $root->{'extra'}->{'authors'}) {
  #     foreach my $author (@{$root->{'extra'}->{'authors'}}) {
