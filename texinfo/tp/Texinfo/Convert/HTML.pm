@@ -702,26 +702,34 @@ my $NO_BULLET_LIST_ATTRIBUTE = ' class="'.$NO_BULLET_LIST_CLASS.'"';
 
 my $MENU_PRE_STYLE = 'font-family: serif';
 
-my %css_map =      (
-         "ul.$NO_BULLET_LIST_CLASS" => "$NO_BULLET_LIST_STYLE",
-         'pre.menu-comment'       => "$MENU_PRE_STYLE",
-         'pre.menu-preformatted'  => "$MENU_PRE_STYLE",
-         'a.summary-letter'       => 'text-decoration: none',
-         'blockquote.smallquotation' => 'font-size: smaller',
-#         'pre.display'            => 'font-family: inherit',
-#         'pre.smalldisplay'       => 'font-family: inherit; font-size: smaller',
-         'pre.display'            => 'font-family: serif',
-         'pre.smalldisplay'       => 'font-family: serif; font-size: smaller',
-         'pre.smallexample'       => 'font-size: smaller',
-         'span.sansserif'         => 'font-family:sans-serif; font-weight:normal',
-         'span.roman'         => 'font-family:serif; font-weight:normal',
-         'span.nocodebreak'   => 'white-space:pre',
-         'span.nolinebreak'   => 'white-space:pre'
-     );
+my %css_map = (
+     "ul.$NO_BULLET_LIST_CLASS" => "$NO_BULLET_LIST_STYLE",
+     'pre.menu-comment'       => "$MENU_PRE_STYLE",
+     'pre.menu-preformatted'  => "$MENU_PRE_STYLE",
+     'a.summary-letter'       => 'text-decoration: none',
+     'blockquote.smallquotation' => 'font-size: smaller',
+#     'pre.display'            => 'font-family: inherit',
+#     'pre.smalldisplay'       => 'font-family: inherit; font-size: smaller',
+     'pre.display'            => 'font-family: serif',
+     'pre.smalldisplay'       => 'font-family: serif; font-size: smaller',
+     'pre.smallexample'       => 'font-size: smaller',
+     'span.sansserif'         => 'font-family:sans-serif; font-weight:normal',
+     'span.roman'         => 'font-family:serif; font-weight:normal',
+     'span.nocodebreak'   => 'white-space:pre',
+     'span.nolinebreak'   => 'white-space:pre'
+);
 
 $css_map{'pre.format'} = $css_map{'pre.display'};
 $css_map{'pre.smallformat'} = $css_map{'pre.smalldisplay'};
 $css_map{'pre.smalllisp'} = $css_map{'pre.smallexample'};
+
+my %pre_class_commands;
+my %pre_class_types;
+foreach my $preformatted_command (keys(%preformatted_commands)) {
+  $pre_class_commands{$preformatted_command} = $preformatted_command;
+}
+$pre_class_commands{'menu'} = 'menu-preformatted';
+$pre_class_types{'menu_comment'} = 'menu-comment';
 
 foreach my $indented_format ('example', 'display', 'lisp')
 {
@@ -1676,6 +1684,31 @@ sub _convert_paragraph_type($$$$)
 }
 
 $default_types_conversion{'paragraph'} = \&_convert_paragraph_type;
+
+sub _convert_preformatted_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+
+  my $current = $command;
+  my $pre_class;
+  return '' if ($content eq '');
+  while ($current->{'parent'}) {
+    $current = $current->{'parent'};
+    if ($current->{'cmdname'} and $pre_class_commands{$current->{'cmdname'}}) {
+      $pre_class = $pre_class_commands{$current->{'cmdname'}};
+      last;
+    } elsif ($current->{'type'} and $pre_class_types{$current->{'type'}}) {
+      $pre_class = $pre_class_types{$current->{'type'}};
+      last;
+    }
+  }
+  return $self->attribute_class('pre', $pre_class).">".$content."</pre>";
+}
+
+$default_types_conversion{'preformatted'} = \&_convert_preformatted_type;
 
 # FIXME this should be very rare since this is caught by _convert_text.
 sub _convert_empty_line_type($$$) {
