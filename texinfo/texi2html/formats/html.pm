@@ -13,7 +13,7 @@
 # Taken from texi2html.pm in 2009.
 # Originally written by Olaf Bachmann.
 #
-# $Id: html.pm,v 1.1 2011-04-09 00:10:45 pertusus Exp $
+# $Id: html.pm,v 1.2 2011-04-30 15:52:37 pertusus Exp $
 
 use strict;
 
@@ -1260,7 +1260,7 @@ EOT
 
 sub HTML_DEFAULT_about_body
 {
-    return undef if (!get_conf('HEADER_IN_TABLE'));
+    #return undef if (!get_conf('HEADER_IN_TABLE'));
     my $about = "<p>\n";
     if (ref($PRE_ABOUT) eq 'CODE')
     {

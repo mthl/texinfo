@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.379 2011-04-09 00:10:38 pertusus Exp $
+@c $Id: texinfo.txi,v 1.380 2011-04-30 15:52:30 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16827,6 +16827,9 @@ For HTML.  If this is set a @code{<table>} construction for
 The default output file encoding.  Currently @samp{utf8} or
 @samp{ascii} for Info.
 
+@item DO_ABOUT
+If unset never do an About special element. @xref{Output Elements Defined}.
+
 @item DOCTYPE
 @vindex SystemLiteral
 For Docbook, HTML, XML.  Specifies the @code{SystemLiteral}, the
@@ -23171,7 +23174,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.379 2011-04-09 00:10:38 pertusus Exp $
+$Id: texinfo.txi,v 1.380 2011-04-30 15:52:30 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23250,7 +23253,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.379 2011-04-09 00:10:38 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.380 2011-04-30 15:52:30 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

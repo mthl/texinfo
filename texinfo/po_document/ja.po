@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-04-09 01:24+0200\n"
+"POT-Creation-Date: 2011-04-30 15:03+0200\n"
 "PO-Revision-Date: 2007-02-05\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -17,234 +17,251 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: texi2html/texi2html.pl:6267 texi2html/texi2html.pl:6271
-#: texi2html/texi2html.pl:6275
+#: texi2html/texi2html.pl:6275 tp/Texinfo/Convert/HTML.pm:503
 msgid "About This Document"
 msgstr "この文書について"
 
 #: texi2html/texi2html.pl:6268 texi2html/texi2html.pl:6272
 #: texi2html/texi2html.pl:6276 texi2html/examples/roff.pm:989
+#: tp/Texinfo/Convert/HTML.pm:504
 msgid "Table of Contents"
 msgstr "目次"
 
 #: texi2html/texi2html.pl:6269 texi2html/texi2html.pl:6273
-#: texi2html/texi2html.pl:6277
+#: texi2html/texi2html.pl:6277 tp/Texinfo/Convert/HTML.pm:505
 msgid "Short Table of Contents"
 msgstr "簡略化した目次"
 
 #: texi2html/texi2html.pl:6270 texi2html/texi2html.pl:6274
-#: texi2html/texi2html.pl:6278 texi2html/texi2html.pm:6745
-#: texi2html/formats/html.pm:2416
+#: texi2html/texi2html.pl:6278 texi2html/texi2html.pm:6749
+#: texi2html/formats/html.pm:2416 tp/Texinfo/Convert/HTML.pm:506
 msgid "Footnotes"
 msgstr "脚注"
 
-#: texi2html/texi2html.pl:13002 tp/Texinfo/Convert/Plaintext.pm:1569
+#: texi2html/texi2html.pl:13002 tp/Texinfo/Convert/Plaintext.pm:1556
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
 
-#: texi2html/texi2html.pm:1101 texi2html/texi2html.pm:1155
-#: texi2html/formats/html.pm:615
+#: texi2html/texi2html.pm:1105 texi2html/texi2html.pm:1159
+#: texi2html/formats/html.pm:615 tp/Texinfo/Convert/HTML.pm:421
+#: tp/Texinfo/Convert/HTML.pm:477
 msgid "Top"
 msgstr "冒頭"
 
-#: texi2html/texi2html.pm:1102 texi2html/texi2html.pm:1156
-#: texi2html/formats/html.pm:616
+#: texi2html/texi2html.pm:1106 texi2html/texi2html.pm:1160
+#: texi2html/formats/html.pm:616 tp/Texinfo/Convert/HTML.pm:422
+#: tp/Texinfo/Convert/HTML.pm:478
 msgid "Contents"
 msgstr "目次"
 
-#: texi2html/texi2html.pm:1103 texi2html/texi2html.pm:1157
-#: texi2html/formats/html.pm:617
+#: texi2html/texi2html.pm:1107 texi2html/texi2html.pm:1161
+#: texi2html/formats/html.pm:617 tp/Texinfo/Convert/HTML.pm:423
+#: tp/Texinfo/Convert/HTML.pm:479
 msgid "Overview"
 msgstr "概要"
 
-#: texi2html/texi2html.pm:1104 texi2html/texi2html.pm:1132
-#: texi2html/texi2html.pm:1158 texi2html/formats/html.pm:618
+#: texi2html/texi2html.pm:1108 texi2html/texi2html.pm:1136
+#: texi2html/texi2html.pm:1162 texi2html/formats/html.pm:618
+#: tp/Texinfo/Convert/HTML.pm:424 tp/Texinfo/Convert/HTML.pm:455
+#: tp/Texinfo/Convert/HTML.pm:480
 msgid "Index"
 msgstr "見出し"
 
-#: texi2html/texi2html.pm:1106
+#: texi2html/texi2html.pm:1110
 msgid "Current"
 msgstr ""
 
-#: texi2html/texi2html.pm:1109 texi2html/texi2html.pm:1114
+#: texi2html/texi2html.pm:1113 texi2html/texi2html.pm:1118
+#: tp/Texinfo/Convert/HTML.pm:437
 msgid "Previous"
 msgstr ""
 
-#: texi2html/texi2html.pm:1110 texi2html/texi2html.pm:1112
-#: texi2html/texi2html.pm:1164
+#: texi2html/texi2html.pm:1114 texi2html/texi2html.pm:1116
+#: texi2html/texi2html.pm:1168 tp/Texinfo/Convert/HTML.pm:433
+#: tp/Texinfo/Convert/HTML.pm:486
 msgid "Up"
 msgstr ""
 
-#: texi2html/texi2html.pm:1111 texi2html/texi2html.pm:1113
-#: texi2html/texi2html.pm:1165 texi2html/formats/html.pm:625
+#: texi2html/texi2html.pm:1115 texi2html/texi2html.pm:1117
+#: texi2html/texi2html.pm:1169 texi2html/formats/html.pm:625
+#: tp/Texinfo/Convert/HTML.pm:431 tp/Texinfo/Convert/HTML.pm:435
+#: tp/Texinfo/Convert/HTML.pm:487
 msgid "Next"
 msgstr "次"
 
-#: texi2html/texi2html.pm:1115 texi2html/formats/html.pm:629
+#: texi2html/texi2html.pm:1119 texi2html/formats/html.pm:629
+#: tp/Texinfo/Convert/HTML.pm:438
 msgid "Forward node"
 msgstr ""
 
-#: texi2html/texi2html.pm:1116 texi2html/formats/html.pm:630
+#: texi2html/texi2html.pm:1120 texi2html/formats/html.pm:630
+#: tp/Texinfo/Convert/HTML.pm:439
 msgid "Back node"
 msgstr ""
 
-#: texi2html/texi2html.pm:1122 texi2html/formats/html.pm:636
+#: texi2html/texi2html.pm:1126 texi2html/formats/html.pm:636
+#: tp/Texinfo/Convert/HTML.pm:445
 msgid "Next file"
 msgstr ""
 
-#: texi2html/texi2html.pm:1123 texi2html/formats/html.pm:637
+#: texi2html/texi2html.pm:1127 texi2html/formats/html.pm:637
+#: tp/Texinfo/Convert/HTML.pm:446
 msgid "Previous file"
 msgstr ""
 
-#: texi2html/texi2html.pm:1129
+#: texi2html/texi2html.pm:1133 tp/Texinfo/Convert/HTML.pm:452
 msgid "Cover (top) of document"
 msgstr ""
 
-#: texi2html/texi2html.pm:1130
+#: texi2html/texi2html.pm:1134 tp/Texinfo/Convert/HTML.pm:453
 msgid "Table of contents"
 msgstr ""
 
-#: texi2html/texi2html.pm:1131
+#: texi2html/texi2html.pm:1135 tp/Texinfo/Convert/HTML.pm:454
 msgid "Short table of contents"
 msgstr ""
 
-#: texi2html/texi2html.pm:1133
+#: texi2html/texi2html.pm:1137 tp/Texinfo/Convert/HTML.pm:456
 msgid "Current section"
 msgstr ""
 
-#: texi2html/texi2html.pm:1134
+#: texi2html/texi2html.pm:1138 tp/Texinfo/Convert/HTML.pm:457
 msgid "Previous section in reading order"
 msgstr ""
 
-#: texi2html/texi2html.pm:1135
+#: texi2html/texi2html.pm:1139 tp/Texinfo/Convert/HTML.pm:458
 msgid "Beginning of this chapter or previous chapter"
 msgstr ""
 
-#: texi2html/texi2html.pm:1136
+#: texi2html/texi2html.pm:1140 tp/Texinfo/Convert/HTML.pm:459
 msgid "Previous section on same level"
 msgstr ""
 
-#: texi2html/texi2html.pm:1137
+#: texi2html/texi2html.pm:1141 tp/Texinfo/Convert/HTML.pm:460
 msgid "Up section"
 msgstr ""
 
-#: texi2html/texi2html.pm:1138
+#: texi2html/texi2html.pm:1142 tp/Texinfo/Convert/HTML.pm:461
 msgid "Next section on same level"
 msgstr ""
 
-#: texi2html/texi2html.pm:1139
+#: texi2html/texi2html.pm:1143 tp/Texinfo/Convert/HTML.pm:462
 msgid "Up node"
 msgstr ""
 
-#: texi2html/texi2html.pm:1140 texi2html/formats/html.pm:627
+#: texi2html/texi2html.pm:1144 texi2html/formats/html.pm:627
+#: tp/Texinfo/Convert/HTML.pm:463
 msgid "Next node"
 msgstr ""
 
-#: texi2html/texi2html.pm:1141 texi2html/formats/html.pm:628
+#: texi2html/texi2html.pm:1145 texi2html/formats/html.pm:628
+#: tp/Texinfo/Convert/HTML.pm:464
 msgid "Previous node"
 msgstr ""
 
-#: texi2html/texi2html.pm:1142
+#: texi2html/texi2html.pm:1146 tp/Texinfo/Convert/HTML.pm:465
 msgid "Next node in node reading order"
 msgstr ""
 
-#: texi2html/texi2html.pm:1143
+#: texi2html/texi2html.pm:1147 tp/Texinfo/Convert/HTML.pm:466
 msgid "Previous node in node reading order"
 msgstr ""
 
-#: texi2html/texi2html.pm:1144
+#: texi2html/texi2html.pm:1148 tp/Texinfo/Convert/HTML.pm:467
 msgid "Next section in reading order"
 msgstr ""
 
-#: texi2html/texi2html.pm:1145
+#: texi2html/texi2html.pm:1149 tp/Texinfo/Convert/HTML.pm:468
 msgid "Next chapter"
 msgstr ""
 
-#: texi2html/texi2html.pm:1146
+#: texi2html/texi2html.pm:1150 tp/Texinfo/Convert/HTML.pm:469
 msgid "About (help)"
 msgstr ""
 
-#: texi2html/texi2html.pm:1147
+#: texi2html/texi2html.pm:1151 tp/Texinfo/Convert/HTML.pm:470
 msgid "First section in reading order"
 msgstr ""
 
-#: texi2html/texi2html.pm:1148
+#: texi2html/texi2html.pm:1152 tp/Texinfo/Convert/HTML.pm:471
 msgid "Last section in reading order"
 msgstr ""
 
-#: texi2html/texi2html.pm:1149
+#: texi2html/texi2html.pm:1153 tp/Texinfo/Convert/HTML.pm:472
 msgid "Forward section in next file"
 msgstr ""
 
-#: texi2html/texi2html.pm:1150
+#: texi2html/texi2html.pm:1154 tp/Texinfo/Convert/HTML.pm:473
 msgid "Back section in previous file"
 msgstr ""
 
-#: texi2html/texi2html.pm:1160
+#: texi2html/texi2html.pm:1164 tp/Texinfo/Convert/HTML.pm:482
 msgid "This"
 msgstr ""
 
-#: texi2html/texi2html.pm:1161
+#: texi2html/texi2html.pm:1165 tp/Texinfo/Convert/HTML.pm:483
 msgid "Back"
 msgstr ""
 
-#: texi2html/texi2html.pm:1162
+#: texi2html/texi2html.pm:1166 tp/Texinfo/Convert/HTML.pm:484
 msgid "FastBack"
 msgstr ""
 
-#: texi2html/texi2html.pm:1163 texi2html/formats/html.pm:623
+#: texi2html/texi2html.pm:1167 texi2html/formats/html.pm:623
+#: tp/Texinfo/Convert/HTML.pm:429 tp/Texinfo/Convert/HTML.pm:485
 msgid "Prev"
 msgstr "前"
 
-#: texi2html/texi2html.pm:1166
+#: texi2html/texi2html.pm:1170 tp/Texinfo/Convert/HTML.pm:488
 msgid "NodeUp"
 msgstr ""
 
-#: texi2html/texi2html.pm:1167
+#: texi2html/texi2html.pm:1171 tp/Texinfo/Convert/HTML.pm:489
 msgid "NodeNext"
 msgstr ""
 
-#: texi2html/texi2html.pm:1168
+#: texi2html/texi2html.pm:1172 tp/Texinfo/Convert/HTML.pm:490
 msgid "NodePrev"
 msgstr ""
 
-#: texi2html/texi2html.pm:1169
+#: texi2html/texi2html.pm:1173 tp/Texinfo/Convert/HTML.pm:491
 msgid "NodeForward"
 msgstr ""
 
-#: texi2html/texi2html.pm:1170
+#: texi2html/texi2html.pm:1174 tp/Texinfo/Convert/HTML.pm:492
 msgid "NodeBack"
 msgstr ""
 
-#: texi2html/texi2html.pm:1171
+#: texi2html/texi2html.pm:1175 tp/Texinfo/Convert/HTML.pm:493
 msgid "Forward"
 msgstr ""
 
-#: texi2html/texi2html.pm:1172
+#: texi2html/texi2html.pm:1176 tp/Texinfo/Convert/HTML.pm:494
 msgid "FastForward"
 msgstr ""
 
-#: texi2html/texi2html.pm:1173
+#: texi2html/texi2html.pm:1177 tp/Texinfo/Convert/HTML.pm:495
 msgid "About"
 msgstr ""
 
-#: texi2html/texi2html.pm:1174
+#: texi2html/texi2html.pm:1178 tp/Texinfo/Convert/HTML.pm:496
 msgid "First"
 msgstr ""
 
-#: texi2html/texi2html.pm:1175
+#: texi2html/texi2html.pm:1179 tp/Texinfo/Convert/HTML.pm:497
 msgid "Last"
 msgstr ""
 
-#: texi2html/texi2html.pm:1176
+#: texi2html/texi2html.pm:1180 tp/Texinfo/Convert/HTML.pm:498
 msgid "NextFile"
 msgstr ""
 
-#: texi2html/texi2html.pm:1177
+#: texi2html/texi2html.pm:1181 tp/Texinfo/Convert/HTML.pm:499
 msgid "PrevFile"
 msgstr ""
 
-#: texi2html/texi2html.pm:1773
+#: texi2html/texi2html.pm:1777
 #, fuzzy, perl-brace-format
 msgid ""
 "This document was generated on @emph{{date}} using @uref{{program_homepage}, "
@@ -253,7 +270,7 @@ msgstr ""
 "この文書は@emph{{date}}に@uref{{program_homepage}, @emph{{program}}}を用いて"
 "生成されました。"
 
-#: texi2html/texi2html.pm:1776
+#: texi2html/texi2html.pm:1780
 #, perl-brace-format
 msgid ""
 "This document was generated using @uref{{program_homepage}, @emph"
@@ -261,152 +278,152 @@ msgid ""
 msgstr ""
 "この文書は@uref{{program_homepage}, @emph{{program}}}を用いて生成されました。"
 
-#: texi2html/texi2html.pm:5389 texi2html/texi2html.pm:5512
+#: texi2html/texi2html.pm:5393 texi2html/texi2html.pm:5516
 #: texi2html/formats/html.pm:1478 texi2html/formats/html.pm:1576
 #, perl-brace-format
 msgid "{style} {number}"
 msgstr ""
 
-#: texi2html/texi2html.pm:5411 texi2html/formats/html.pm:1492
+#: texi2html/texi2html.pm:5415 texi2html/formats/html.pm:1492
 #, perl-brace-format
 msgid "{style}: {caption_first_line}"
 msgstr ""
 
-#: texi2html/texi2html.pm:5439 texi2html/formats/html.pm:1509
+#: texi2html/texi2html.pm:5443 texi2html/formats/html.pm:1509
 #, perl-brace-format
 msgid "{style}: {shortcaption_first_line}"
 msgstr ""
 
-#: texi2html/texi2html.pm:5744 texi2html/texi2html.pm:5765
-#: tp/Texinfo/Parser.pm:2082
+#: texi2html/texi2html.pm:5748 texi2html/texi2html.pm:5769
+#: tp/Texinfo/Parser.pm:2155
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr ""
 
-#: texi2html/texi2html.pm:5748 texi2html/texi2html.pm:5769
-#: tp/Texinfo/Parser.pm:2087
+#: texi2html/texi2html.pm:5752 texi2html/texi2html.pm:5773
+#: tp/Texinfo/Parser.pm:2160
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6090
+#: texi2html/texi2html.pm:6094
 #, fuzzy, perl-brace-format
 msgid "see {reference} in @cite{{book}}"
 msgstr "{node_file_href} @cite{{book}}参照"
 
-#: texi2html/texi2html.pm:6094
+#: texi2html/texi2html.pm:6098
 #, fuzzy, perl-brace-format
 msgid "see `{section}' in @cite{{book}}"
 msgstr "@cite{{book}}の `{section}' "
 
-#: texi2html/texi2html.pm:6098
+#: texi2html/texi2html.pm:6102
 #, perl-brace-format
 msgid "see @cite{{book}}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6102
+#: texi2html/texi2html.pm:6106
 #, fuzzy, perl-brace-format
 msgid "see {reference}"
 msgstr "{node_file_href}参照"
 
-#: texi2html/texi2html.pm:6106
+#: texi2html/texi2html.pm:6110
 #, perl-brace-format
 msgid "see `{section}'"
 msgstr ""
 
-#: texi2html/texi2html.pm:6113
+#: texi2html/texi2html.pm:6117
 #, fuzzy, perl-brace-format
 msgid "See {reference} in @cite{{book}}"
 msgstr "{node_file_href} @cite{{book}}参照"
 
-#: texi2html/texi2html.pm:6117
+#: texi2html/texi2html.pm:6121
 #, fuzzy, perl-brace-format
 msgid "See `{section}' in @cite{{book}}"
 msgstr "@cite{{book}}の `{section}' "
 
-#: texi2html/texi2html.pm:6121
+#: texi2html/texi2html.pm:6125
 #, perl-brace-format
 msgid "See @cite{{book}}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6125
+#: texi2html/texi2html.pm:6129
 #, perl-brace-format
 msgid "See {reference}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6129
+#: texi2html/texi2html.pm:6133
 #, fuzzy, perl-brace-format
 msgid "See `{section}'"
 msgstr "項"
 
-#: texi2html/texi2html.pm:6136
+#: texi2html/texi2html.pm:6140
 #, fuzzy, perl-brace-format
 msgid "{reference} in @cite{{book}}"
 msgstr "{node_file_href} @cite{{book}}参照"
 
-#: texi2html/texi2html.pm:6140
+#: texi2html/texi2html.pm:6144
 #, fuzzy, perl-brace-format
 msgid "`{section}' in @cite{{book}}"
 msgstr "@cite{{book}}の `{section}' "
 
-#: texi2html/texi2html.pm:6144
+#: texi2html/texi2html.pm:6148
 #, perl-brace-format
 msgid "@cite{{book}}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6148
+#: texi2html/texi2html.pm:6152
 #, perl-brace-format
 msgid "{reference}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6152
+#: texi2html/texi2html.pm:6156
 #, fuzzy, perl-brace-format
 msgid "`{section}'"
 msgstr "項"
 
-#: texi2html/texi2html.pm:6187
+#: texi2html/texi2html.pm:6191
 #, perl-brace-format
 msgid "see section {reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6188 texi2html/texi2html.pm:6205
+#: texi2html/texi2html.pm:6192 texi2html/texi2html.pm:6209
 #, perl-brace-format
 msgid "see {reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6192
+#: texi2html/texi2html.pm:6196
 #, perl-brace-format
 msgid "See section {reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6193 texi2html/texi2html.pm:6209
+#: texi2html/texi2html.pm:6197 texi2html/texi2html.pm:6213
 #, perl-brace-format
 msgid "See {reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6197 texi2html/texi2html.pm:6213
+#: texi2html/texi2html.pm:6201 texi2html/texi2html.pm:6217
 #, perl-brace-format
 msgid "{reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.pm:6833
+#: texi2html/texi2html.pm:6837
 #, perl-brace-format
 msgid "on @emph{{date}}"
 msgstr "@emph{{date}}"
 
-#: texi2html/texi2html.pm:7008 texi2html/formats/html.pm:2620
+#: texi2html/texi2html.pm:7012 texi2html/formats/html.pm:2620
 #: texi2html/maintained_extra/html32.pm:165
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr ""
 
-#: texi2html/texi2html.pm:7028 texi2html/formats/docbook.pm:1399
-#: tp/Texinfo/Convert/Plaintext.pm:1628
+#: texi2html/texi2html.pm:7032 texi2html/formats/docbook.pm:1399
+#: tp/Texinfo/Convert/Plaintext.pm:1615
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr ""
 
-#: texi2html/texi2html.pm:7155
+#: texi2html/texi2html.pm:7159
 msgid "(outside of any element)"
 msgstr ""
 
@@ -508,11 +525,11 @@ msgstr ""
 msgid "See {title_ref}"
 msgstr ""
 
-#: texi2html/formats/html.pm:620
+#: texi2html/formats/html.pm:620 tp/Texinfo/Convert/HTML.pm:426
 msgid "current"
 msgstr "現在位置"
 
-#: texi2html/formats/html.pm:624
+#: texi2html/formats/html.pm:624 tp/Texinfo/Convert/HTML.pm:430
 msgid " Up "
 msgstr "上"
 
@@ -520,31 +537,31 @@ msgstr "上"
 msgid "Node up"
 msgstr ""
 
-#: texi2html/formats/html.pm:647 tp/Texinfo/Convert/HTML.pm:1389
+#: texi2html/formats/html.pm:647 tp/Texinfo/Convert/HTML.pm:3830
 msgid "Untitled Document"
 msgstr "無題の文書"
 
-#: texi2html/formats/html.pm:1277
+#: texi2html/formats/html.pm:1277 tp/Texinfo/Convert/HTML.pm:3590
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr "ナビゲーションパネル中のボタンには以下の意味があります。"
 
-#: texi2html/formats/html.pm:1283
+#: texi2html/formats/html.pm:1283 tp/Texinfo/Convert/HTML.pm:3596
 msgid "Button"
 msgstr "ボタン"
 
-#: texi2html/formats/html.pm:1284
+#: texi2html/formats/html.pm:1284 tp/Texinfo/Convert/HTML.pm:3597
 msgid "Name"
 msgstr "名称"
 
-#: texi2html/formats/html.pm:1285
+#: texi2html/formats/html.pm:1285 tp/Texinfo/Convert/HTML.pm:3598
 msgid "Go to"
 msgstr "移動先"
 
-#: texi2html/formats/html.pm:1286
+#: texi2html/formats/html.pm:1286 tp/Texinfo/Convert/HTML.pm:3599
 msgid "From 1.2.3 go to"
 msgstr "1.2.3項からの移動先"
 
-#: texi2html/formats/html.pm:1310
+#: texi2html/formats/html.pm:1310 tp/Texinfo/Convert/HTML.pm:3624
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -553,43 +570,43 @@ msgstr ""
 "@strong{例}では、以下に示す構造を持つ文書の@strong{1.2.3項}を現在位置に仮定し"
 "ています。"
 
-#: texi2html/formats/html.pm:1320
+#: texi2html/formats/html.pm:1320 tp/Texinfo/Convert/HTML.pm:3634
 msgid "Section One"
 msgstr "第1項"
 
-#: texi2html/formats/html.pm:1322
+#: texi2html/formats/html.pm:1322 tp/Texinfo/Convert/HTML.pm:3636
 msgid "Subsection One-One"
 msgstr "第1.1項"
 
-#: texi2html/formats/html.pm:1329
+#: texi2html/formats/html.pm:1329 tp/Texinfo/Convert/HTML.pm:3643
 msgid "Subsection One-Two"
 msgstr "第1.2項"
 
-#: texi2html/formats/html.pm:1331
+#: texi2html/formats/html.pm:1331 tp/Texinfo/Convert/HTML.pm:3645
 msgid "Subsubsection One-Two-One"
 msgstr "第1.2.1項"
 
-#: texi2html/formats/html.pm:1332
+#: texi2html/formats/html.pm:1332 tp/Texinfo/Convert/HTML.pm:3646
 msgid "Subsubsection One-Two-Two"
 msgstr "第1.2.2項"
 
-#: texi2html/formats/html.pm:1333
+#: texi2html/formats/html.pm:1333 tp/Texinfo/Convert/HTML.pm:3647
 msgid "Subsubsection One-Two-Three"
 msgstr "第1.2.3項"
 
-#: texi2html/formats/html.pm:1335
+#: texi2html/formats/html.pm:1335 tp/Texinfo/Convert/HTML.pm:3649
 msgid "Current Position"
 msgstr "現在位置"
 
-#: texi2html/formats/html.pm:1336
+#: texi2html/formats/html.pm:1336 tp/Texinfo/Convert/HTML.pm:3650
 msgid "Subsubsection One-Two-Four"
 msgstr "第1.2.4項"
 
-#: texi2html/formats/html.pm:1339
+#: texi2html/formats/html.pm:1339 tp/Texinfo/Convert/HTML.pm:3653
 msgid "Subsection One-Three"
 msgstr "第1.3項"
 
-#: texi2html/formats/html.pm:1346
+#: texi2html/formats/html.pm:1346 tp/Texinfo/Convert/HTML.pm:3660
 msgid "Subsection One-Four"
 msgstr "第1.4項"
 
@@ -599,7 +616,7 @@ msgid "The node you are looking for is at {href}."
 msgstr ""
 
 #: texi2html/formats/html.pm:2644 texi2html/formats/info.pm:2808
-#: tp/Texinfo/Convert/Plaintext.pm:2442
+#: tp/Texinfo/Convert/Plaintext.pm:2421
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -632,107 +649,116 @@ msgstr ""
 msgid "Menu:"
 msgstr "メニュー"
 
-#: tp/Texinfo/Convert/Plaintext.pm:579 tp/Texinfo/Convert/HTML.pm:1545
-#, perl-brace-format
-msgid "{category} on {class}"
-msgstr ""
-
-#: tp/Texinfo/Convert/Plaintext.pm:583 tp/Texinfo/Convert/HTML.pm:1549
-#, perl-brace-format
-msgid "{category} of {class}"
-msgstr ""
-
-#: tp/Texinfo/Convert/Plaintext.pm:1328
+#: tp/Texinfo/Convert/Plaintext.pm:1315
 #, perl-brace-format
 msgid "{name} @indicateurl{{email}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1331
+#: tp/Texinfo/Convert/Plaintext.pm:1318
 #, perl-brace-format
 msgid "@indicateurl{{email}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1353
+#: tp/Texinfo/Convert/Plaintext.pm:1340
 #, perl-brace-format
 msgid "{text} ({url})"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1358
+#: tp/Texinfo/Convert/Plaintext.pm:1345
 #, perl-brace-format
 msgid "@code{{url}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1438
+#: tp/Texinfo/Convert/Plaintext.pm:1425
 #, perl-brace-format
 msgid "{float_type} {float_number}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1442
+#: tp/Texinfo/Convert/Plaintext.pm:1429
 #, perl-brace-format
 msgid "{float_type}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1446
+#: tp/Texinfo/Convert/Plaintext.pm:1433
 #, perl-brace-format
 msgid "{float_number}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1536
+#: tp/Texinfo/Convert/Plaintext.pm:1523
 #, perl-brace-format
 msgid "{abbr_or_acronym} ({explanation})"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1887
+#: tp/Texinfo/Convert/Plaintext.pm:1874
 #, perl-brace-format
 msgid "* {float_type} {float_number}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1892
+#: tp/Texinfo/Convert/Plaintext.pm:1879
 #, perl-brace-format
 msgid "* {float_type}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1900
+#: tp/Texinfo/Convert/Plaintext.pm:1887
 #, perl-brace-format
 msgid "*  {float_number}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1904
+#: tp/Texinfo/Convert/Plaintext.pm:1891
 #, perl-brace-format
 msgid "* : {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2390
+#: tp/Texinfo/Convert/Plaintext.pm:2369
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2394
+#: tp/Texinfo/Convert/Plaintext.pm:2373
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2399
+#: tp/Texinfo/Convert/Plaintext.pm:2378
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2403
+#: tp/Texinfo/Convert/Plaintext.pm:2382
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2409
+#: tp/Texinfo/Convert/Plaintext.pm:2388
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2412
+#: tp/Texinfo/Convert/Plaintext.pm:2391
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:1176
+#: tp/Texinfo/Convert/HTML.pm:3427
+#, fuzzy, perl-brace-format
+msgid ""
+"This document was generated on @emph{@today{}} using @uref"
+"{{program_homepage}, @emph{{program}}}."
+msgstr ""
+"この文書は@emph{{date}}に@uref{{program_homepage}, @emph{{program}}}を用いて"
+"生成されました。"
+
+#: tp/Texinfo/Convert/HTML.pm:3469
 #, perl-brace-format
 msgid "{title}: {element_text}"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:3993
+#, perl-brace-format
+msgid "{category} on {class}"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:3997
+#, perl-brace-format
+msgid "{category} of {class}"
 msgstr ""

@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.435 2011-04-09 00:10:43 pertusus Exp $
+# $Id: texi2html.pl,v 1.436 2011-04-30 15:52:37 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -227,7 +227,7 @@ my @variable_settables = (
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
   'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
   'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
-  'TEXI2DVI');
+  'TEXI2DVI', 'DO_ABOUT');
 
 foreach my $var (@document_settable_at_commands, @command_line_settables,
          @document_global_at_commands, @variable_settables)
@@ -8797,7 +8797,7 @@ sub pass_text($$)
         }
     }
 
-    $Texi2HTML::THISDOC{'do_about'} = 1 unless (defined($Texi2HTML::THISDOC{'do_about'}) or $one_section or (not get_conf('SPLIT') and not get_conf('HEADERS')));
+    $Texi2HTML::THISDOC{'do_about'} = 1 unless (!get_conf('DO_ABOUT') or $one_section or (not get_conf('SPLIT') and not get_conf('HEADERS')));
     
     $Texi2HTML::NAME{'First'} = $element_first->{'text'};
     $Texi2HTML::NAME{'Last'} = $element_last->{'text'};

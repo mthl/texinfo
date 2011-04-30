@@ -18,4 +18,6 @@ sub test_misc_file_name($$$)
   return undef;
 }
 
+set_from_init_file('DO_ABOUT', 1);
+
 1;

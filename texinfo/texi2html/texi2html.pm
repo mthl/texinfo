@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.pm,v 1.1 2011-04-09 00:10:44 pertusus Exp $
+# $Id: texi2html.pm,v 1.2 2011-04-30 15:52:37 pertusus Exp $
 
 
 ##################################################################
@@ -582,6 +582,9 @@ sub t2h_default_set_variables_default()
 # if set, do redirection files for renamed nodes
   set_default('RENAMED_NODES_REDIRECTIONS', undef);
 
+# if set, do about
+  set_default('DO_ABOUT', 0);
+
 # symbol put at the beginning of nodes entry in menu (and optionnaly of 
 # unnumbered in menus, see UNNUMBERED_SYMBOL_IN_MENU variable)
   $MENU_SYMBOL = '*';
@@ -963,6 +966,7 @@ sub t2h_default_set_variables_texi2html()
   set_default('HEADER_IN_TABLE', 1);
   set_default('SHORT_REF', 0);
   set_default('USE_TITLEPAGE_FOR_TITLE', 1);
+  set_default('DO_ABOUT', 1);
   $MENU_ENTRY_COLON = '';
   $INDEX_ENTRY_COLON = '';
 

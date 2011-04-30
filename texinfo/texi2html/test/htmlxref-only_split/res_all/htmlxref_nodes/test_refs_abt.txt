@@ -1,4 +1,0 @@
-About This Document
-*******************
-
-  This document was generated on a sunny day using texi2html <http://www.gnu.org/software/texinfo/>.
