@@ -2543,25 +2543,47 @@ sub _set_root_commands_targets_node_files($$)
             die if ($nr == 0);
           }
           my $id = $target;
+
           if ($root_command->{'extra'}->{'associated_node'} 
               and $self->get_conf('USE_NODE_TARGET')) {
             $target 
              = $self->{'targets'}->{$root_command->{'extra'}->{'associated_node'}}->{'id'};
           }
-          my $target_contents = 'toc-'.$target;
+          # FIXME choose one (in comments, use target, other use id)
+          #my $target_contents = 'toc-'.$target;
+          #my $target_base_contents;
+          #if ($root_command->{'extra'}->{'associated_node'} 
+          #    and $self->get_conf('USE_NODE_TARGET') {
+          #  $target_base_contents = $target;
+          #} else {
+          # $target_base_contents = $target_base;
+          #}
+          my $target_contents = 'toc-'.$id;
+          my $target_base_contents = $target_base;
           my $toc_nr = $nr -1;
           while ($self->{'ids'}->{$target_contents}) {
-            $target_contents = 'toc-'.$target_base.'-'.$toc_nr;
+            $target_contents = 'toc-'.$target_base_contents.'-'.$toc_nr;
             $toc_nr++;
             # Avoid integer overflow
             die if ($toc_nr == 0);
           }
           my $id_contents = $target_contents;
 
-          my $target_shortcontents = 'stoc-'.$target;
+          # FIXME choose one (in comments, use target, other use id)
+          #my $target_shortcontents = 'stoc-'.$target;
+          #my $target_base_shortcontents;
+          #if ($root_command->{'extra'}->{'associated_node'} 
+          #    and $self->get_conf('USE_NODE_TARGET') {
+          #  $target_base_shortcontents = $target;
+          #} else {
+          #  $target_base_shortcontents = $target_base;
+          #}
+          my $target_shortcontents = 'stoc-'.$id;
+          my $target_base_shortcontents = $target_base;
           my $stoc_nr = $nr -1;
           while ($self->{'ids'}->{$target_shortcontents}) {
-            $target_shortcontents = 'stoc-'.$target_base.'-'.$stoc_nr;
+            $target_shortcontents = 'stoc-'.$target_base_shortcontents
+                                       .'-'.$stoc_nr;
             $stoc_nr++;
             # Avoid integer overflow
             die if ($stoc_nr == 0);
@@ -2587,8 +2609,8 @@ sub _set_root_commands_targets_node_files($$)
                                    'shortcontents_target' => $target_shortcontents,
                                    'shortcontents_id' => $id_shortcontents,
                                   };
-          # FIXME this should really be use carefilly, since the mapping
-          # is not what one expects
+          # FIXME this should really be use carefully, since the mapping
+          # is not what one expects
           $self->{'ids'}->{$id} = $root_command;
           $self->{'ids'}->{$id_contents} = $root_command;
           $self->{'ids'}->{$id_shortcontents} = $root_command;
@@ -3291,7 +3313,7 @@ sub _element_direction($$$$;$)
   }
 
   if ($element_target) {
-    ######## debug
+    ######## debug
     if (!$element_target->{'type'}) {
       die "No type for element_target $direction $element_target: "
         . Texinfo::Parser::_print_current_keys($element_target)
