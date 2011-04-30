@@ -1991,13 +1991,13 @@ sub _end_line($$$)
       # first parent is menu_entry
       $current = $current->{'parent'}->{'parent'};
       
-      push @{$current->{'contents'}}, { 'type' => 'after_description_line', 
-                                        'text' => $empty_line->{'text'},
-                                        'parent' => $current };
       push @{$current->{'contents'}}, { 'type' => 'menu_comment',
                                         'parent' => $current,
                                         'contents' => [] };
       $current = $current->{'contents'}->[-1];
+      push @{$current->{'contents'}}, { 'type' => 'after_description_line', 
+                                        'text' => $empty_line->{'text'},
+                                        'parent' => $current };
       push @{$current->{'contents'}}, { 'type' => 'preformatted',
                                         'parent' => $current,
                                         'contents' => [] };
@@ -3158,9 +3158,12 @@ sub _parse_texi($;$)
             and $current->{'parent'}->{'type'} 
             and $current->{'parent'}->{'type'} eq 'menu_comment') {
           my $menu = $current->{'parent'}->{'parent'};
-          pop @{$menu->{'contents'}} 
-            if (!@{$current->{'contents'}} 
-                and scalar(@{$current->{'parent'}->{'contents'}}) == 1);
+          if (!@{$current->{'contents'}}) {
+            pop @{$current->{'parent'}->{'contents'}};
+            if (!scalar(@{$current->{'parent'}->{'contents'}})) {
+              pop @{$menu->{'contents'}}; 
+            }
+          }
           $current = $menu;
           #print STDERR "Close MENU_COMMENT because new menu entry\n";
           pop @{$self->{'context_stack'}};
@@ -3693,9 +3696,11 @@ sub _parse_texi($;$)
               if ($current->{'type'} eq 'preformatted') {
                 $menu = $current->{'parent'}->{'parent'};
                 # don't keep empty menu_comment
-                if (!@{$current->{'contents'}} and
-                     scalar(@{$current->{'parent'}->{'contents'}}) == 1) {
-                  pop @{$menu->{'contents'}};
+                if (!@{$current->{'contents'}}) {
+                  pop @{$current->{'parent'}->{'contents'}};
+                  if (!scalar(@{$current->{'parent'}->{'contents'}})) {
+                    pop @{$menu->{'contents'}};
+                  }
                 }
               } else {
                 $menu = $current->{'parent'};

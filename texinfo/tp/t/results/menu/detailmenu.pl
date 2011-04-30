@@ -73,10 +73,16 @@ $result_trees{'detailmenu'} = {
           'type' => 'menu_entry'
         },
         {
-          'parent' => {},
-          'text' => '
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => '
 ',
-          'type' => 'after_description_line'
+              'type' => 'after_description_line'
+            }
+          ],
+          'parent' => {},
+          'type' => 'menu_comment'
         },
         {
           'cmdname' => 'detailmenu',
@@ -248,6 +254,7 @@ $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[1]{'args'}[3]{'parent'} =
 $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[1]{'args'}[3];
 $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'detailmenu'}{'contents'}[1];
+$result_trees{'detailmenu'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[2];
 $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'detailmenu'}{'contents'}[1];
 $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[3];
 $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
