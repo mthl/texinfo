@@ -2107,6 +2107,7 @@ sub _convert_element_type($$$$)
     and $element->{'element_next'}->{'extra'}->{'special_element'});
   my $end_page = (!$element->{'element_next'} 
        or $element->{'parent'} ne $element->{'element_next'}->{'parent'});
+  my $is_special = $element->{'extra'}->{'special_element'};
 
   if (($end_page or $next_is_top or $next_is_special)
        and $self->get_conf('VERTICAL_HEAD_NAVIGATION')) {
@@ -2118,7 +2119,7 @@ sub _convert_element_type($$$$)
   my $rule = '';
   my $buttons;
   my $maybe_in_page;
-  if (($is_top or $element->{'extra'}->{'special_element'})
+  if (($is_top or $is_special)
       and $self->get_conf('SPLIT')
       and ($end_page 
          and ($self->get_conf('HEADERS') 
@@ -2150,14 +2151,15 @@ sub _convert_element_type($$$$)
     $maybe_in_page = 1;
   }
 
-  if ($is_top or $element->{'extra'}->{'special_element'}
-     or $end_page and ($self->get_conf('SPLIT') eq 'chapter'
-                       or $self->get_conf('SPLIT') eq 'section')
+  if ($maybe_in_page or $is_top or $is_special
+     or ($end_page and ($self->get_conf('SPLIT') eq 'chapter'
+                       or $self->get_conf('SPLIT') eq 'section'))
      or $self->get_conf('SPLIT') eq 'node' and $self->get_conf('HEADERS')) {
     $rule = $self->get_conf('DEFAULT_RULE');
   }
       
-  if (!$end_page and ($is_top or $next_is_top or $next_is_special)) {
+  if (!$end_page and ($is_top or $next_is_top or ($next_is_special 
+                                                 and !$is_special))) {
     $rule = $self->get_conf('BIG_RULE');
   }
   if (!$self->get_conf('PROGRAM_NAME_IN_FOOTER') 
