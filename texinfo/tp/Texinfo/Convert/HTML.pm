@@ -1747,7 +1747,7 @@ sub _simplify_text_for_comparison($)
   return $text;
 }
 
-sub _convert_menu_entry($$$)
+sub _convert_menu_entry_type($$$)
 {
   my $self = shift;
   my $type = shift;
@@ -1840,7 +1840,21 @@ sub _convert_menu_entry($$$)
   return "<tr><td align=\"left\" valign=\"top\">$name$MENU_ENTRY_COLON</td><td>&nbsp;&nbsp;</td><td align=\"left\" valign=\"top\"> $description</td></tr>\n";
 }
 
-$default_types_conversion{'menu_entry'} = \&_convert_menu_entry;
+$default_types_conversion{'menu_entry'} = \&_convert_menu_entry_type;
+
+sub _convert_menu_comment_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+
+  return "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">".$content
+       ."</th></tr>";
+}
+
+$default_types_conversion{'menu_comment'} = \&_convert_menu_comment_type;
+
 
 # FIXME not sure that there is contents.  Not sure that it matters either.
 sub _convert_def_line_type($$$$)
