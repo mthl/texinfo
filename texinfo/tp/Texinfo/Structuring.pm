@@ -557,6 +557,10 @@ sub split_by_node($)
         push @$elements, $current;
       }
       $elements->[-1]->{'extra'}->{'element_command'} = $content;
+      if ($content->{'extra'}->{'associated_section'}) {
+        $elements->[-1]->{'extra'}->{'section'} 
+          = $content->{'extra'}->{'associated_section'};
+      }
     }
     push @{$current->{'contents'}}, $content;
     $content->{'parent'} = $current;
@@ -785,6 +789,7 @@ sub elements_directions($$)
     if (!$directions->{'Up'} and $element->{'extra'}->{'node'}
         and $element->{'extra'}->{'node'}->{'node_up'} 
         and (!$node_top or ($element->{'extra'}->{'node'} ne $node_top))) {
+      #print STDERR "Using node for up "._print_element_command_texi($element)."\n";
       $directions->{'Up'} = _node_element($element->{'extra'}->{'node'}->{'node_up'});
     }
     if ($element->{'extra'}->{'directions'}) {
