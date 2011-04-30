@@ -3703,6 +3703,8 @@ EOT
 </ul>
 EOT
     return $about;
+  } elsif ($special_type eq 'Contents') {
+    return $self->{'contents'}($self, 'contents', undef);
   }
 }
 
