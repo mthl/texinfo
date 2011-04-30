@@ -304,13 +304,13 @@ $result_trees{'simple'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'after_description_line'
-            },
-            {
               'contents' => [
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'after_description_line'
+                },
                 {
                   'parent' => {},
                   'text' => 'new comment
@@ -503,9 +503,9 @@ $result_trees{'simple'}{'contents'}[3]{'contents'}[5]{'args'}[3]{'parent'} = $re
 $result_trees{'simple'}{'contents'}[3]{'contents'}[5]{'extra'}{'menu_entry_description'} = $result_trees{'simple'}{'contents'}[3]{'contents'}[5]{'args'}[3];
 $result_trees{'simple'}{'contents'}[3]{'contents'}[5]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[3]{'contents'}[5]{'args'}[1]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[3]{'contents'}[5]{'parent'} = $result_trees{'simple'}{'contents'}[3];
+$result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'contents'}[0];
+$result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[3]{'contents'}[6];
-$result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'contents'}[1];
-$result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[3]{'contents'}[6];
 $result_trees{'simple'}{'contents'}[3]{'contents'}[6]{'parent'} = $result_trees{'simple'}{'contents'}[3];
 $result_trees{'simple'}{'contents'}[3]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[3]{'contents'}[7];
 $result_trees{'simple'}{'contents'}[3]{'contents'}[7]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[3]{'contents'}[7]{'args'}[1];

@@ -1995,13 +1995,13 @@ sub _end_line($$$)
                                         'parent' => $current,
                                         'contents' => [] };
       $current = $current->{'contents'}->[-1];
-      push @{$current->{'contents'}}, { 'type' => 'after_description_line', 
-                                        'text' => $empty_line->{'text'},
-                                        'parent' => $current };
       push @{$current->{'contents'}}, { 'type' => 'preformatted',
                                         'parent' => $current,
                                         'contents' => [] };
       $current = $current->{'contents'}->[-1];
+      push @{$current->{'contents'}}, { 'type' => 'after_description_line', 
+                                        'text' => $empty_line->{'text'},
+                                        'parent' => $current };
       push @{$self->{'context_stack'}}, 'preformatted';
       print STDERR "MENU: END DESCRIPTION, OPEN COMMENT\n" if ($self->{'DEBUG'});
     } elsif (!$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {

@@ -728,10 +728,16 @@ $result_trees{'complex'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => '
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => '
 ',
-                  'type' => 'after_description_line'
+                      'type' => 'after_description_line'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'preformatted'
                 }
               ],
               'parent' => {},
@@ -2526,6 +2532,7 @@ $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[3]{'args'}[3]
 $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[3]{'extra'}{'menu_entry_description'} = $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[3]{'args'}[3];
 $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[3]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[3]{'args'}[1]{'contents'}[0];
 $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'complex'}{'contents'}[4]{'contents'}[2];
+$result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[4]{'contents'}[0];
 $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[4];
 $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'complex'}{'contents'}[4]{'contents'}[2];
 $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex'}{'contents'}[4]{'contents'}[2]{'contents'}[5]{'args'}[0];
