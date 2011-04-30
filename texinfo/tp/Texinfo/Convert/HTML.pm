@@ -328,6 +328,12 @@ sub command_text($$$)
   return undef;
 }
 
+sub label_command($$)
+{
+  my $self = shift;
+  my $label = shift;
+  return $self->{'labels'}->{$label};
+}
 
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
@@ -1787,13 +1793,21 @@ sub _convert_menu_entry_type($$$)
   my $command = shift;
   
   my $href;
-  my $node = $command->{'extra'}->{'menu_entry_node'};
-  if ($node->{'manual_content'}) {
-    $href = $self->_external_node_href($node, 
+  my $node;
+  my $section;
+  my $node_entry = $command->{'extra'}->{'menu_entry_node'};
+  if ($node_entry->{'manual_content'}) {
+    $href = $self->_external_node_href($node_entry, 
                                        $self->{'current_filename'});
   } else {
-    $href = $self->_internal_node_element_href($node->{'normalized'}, 
-                                          $self->{'current_filename'});
+    $node = $self->label_command($node_entry->{'normalized'});
+    if ($node->{'extra'}->{'associated_section'} 
+      and !$self->get_conf('NODE_NAME_IN_MENU')) {
+      $section = $node->{'extra'}->{'associated_section'};
+      $href = $self->command_href($section, $self->{'current_filename'});
+    } else {
+      $href = $self->command_href($node, $self->{'current_filename'});
+    }
   }
 
   $html_menu_entry_index++;
@@ -1829,13 +1843,10 @@ sub _convert_menu_entry_type($$$)
 
   my $name;
   my $name_no_number;
-  if (!$self->get_conf('NODE_NAME_IN_MENU') and !$node->{'manual_content'}) {
-    my $section = $self->_internal_node_section($node->{'normalized'});
-    if (defined($section)) {
-      $name = $self->command_text($section, 'text');
-      $name_no_number = $self->convert_tree
+  if ($section) {
+    $name = $self->command_text($section, 'text');
+    $name_no_number = $self->convert_tree
         ({'contents' => $section->{'extra'}->{'misc_content'}});
-    }
     if ($href ne '') {
       $name = "<a href=\"$href\"$accesskey>".$name."</a>";
     }
@@ -3277,27 +3288,6 @@ sub _internal_node_href($$$)
   } else {
     return '';
   }
-}
-
-# FIXME or use $node->{'extra'}->{'associated_section'}?  It is likely that 
-# what is below is before, for example for texinfo like
-# @node node1
-# @node node2
-# @chapter chapter
-sub _internal_node_section($$$)
-{
-  my $self = shift;
-  my $normalized_node_name = shift;
-  my $filename = shift;
-
-  my $command = $self->{'labels'}->{$normalized_node_name};
-  if ($command) {
-    my $element = $command->{'parent'};
-    if ($element and $element->{'extra'}->{'section'}) {
-      return $element->{'extra'}->{'section'};
-    }
-  }
-  return undef;
 }
 
 sub _internal_element_href($$$)
