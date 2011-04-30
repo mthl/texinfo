@@ -151,6 +151,17 @@ Chap 2
 * a5@b{b}: @c c
 @end menu
 '],
+['menu_entry_no_entry_location',
+'@menu
+* (manual):: begin description
+* not an entry ?
+* (manual):: an entry
+  in description
+* and here ?
+with text.
+* (last manual)::
+@end menu
+'],
 ['example_in_menu_comment',
 '@menu
 * entry::

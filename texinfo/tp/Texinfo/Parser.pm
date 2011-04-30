@@ -2045,10 +2045,32 @@ sub _end_line($$$)
           and $current->{'contents'}->[-1]->{'type'} eq 'preformatted') {
           $current = $current->{'contents'}->[-1];
         } else {
+          #push @{$self->{'context_stack'}}, 'preformatted';
           push @{$current->{'contents'}}, {'type' => 'preformatted',
                                     'parent' => $current,
                                     'contents' => [] };
           $current = $current->{'contents'}->[-1];
+        }
+        push @{$self->{'context_stack'}}, 'preformatted';
+      } elsif (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
+         and $menu->{'contents'}->[-1]->{'type'} eq 'menu_entry') {
+        my $entry = $menu->{'contents'}->[-1];
+        my $description;
+        foreach my $entry_element (reverse(@{$entry->{'args'}})) {
+          if ($entry_element->{'type'} eq 'menu_entry_description') {
+            $description = $entry_element;
+            last;
+          }
+        }
+        if ($description) {
+          $current = $description;
+        } else {
+          # Normally this cannot happen
+          warn "BUG: No description in menu_entry";
+          push @{$entry->{'args'}}, {'type' => 'menu_entry_description',
+                                     'parent' => $entry,
+                                     'contents' => [] };
+          $current = $entry->{'args'}->[-1];
         }
       } else {
         push @{$menu->{'contents'}}, {'type' => 'menu_comment',
@@ -2059,6 +2081,7 @@ sub _end_line($$$)
                                   'parent' => $current,
                                   'contents' => [] };
         $current = $current->{'contents'}->[-1];
+        push @{$self->{'context_stack'}}, 'preformatted';
         print STDERR "THEN MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
       }
       while (@{$menu_entry->{'args'}}) {
@@ -2080,7 +2103,7 @@ sub _end_line($$$)
         }
         $arg = undef;
       }
-      push @{$self->{'context_stack'}}, 'preformatted';
+      #push @{$self->{'context_stack'}}, 'preformatted';
       # MENU_COMMENT open
       $menu_entry = undef;
     } else {
