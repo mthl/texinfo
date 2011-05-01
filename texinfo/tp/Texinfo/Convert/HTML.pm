@@ -149,6 +149,7 @@ sub align($)
   return $self->{'context'}->[-1]->{'align'}->[-1];
 }
 
+# API for the elements formatting
 sub command_id($$)
 {
   my $self = shift;
@@ -185,6 +186,7 @@ sub command_contents_target($$$)
   }
 }
 
+# FIXME in the API?
 sub command_target($$)
 {
   my $self = shift;
@@ -242,6 +244,12 @@ sub command_href($$$)
   return $href;
 }
 
+my %contents_command_element_name = (
+  'contents' => 'Contents',
+  'shortcontents' => 'Overview',
+  'summarycontents' => 'Overview',
+);
+
 sub command_contents_href($$$$)
 {
   my $self = shift;
@@ -250,12 +258,7 @@ sub command_contents_href($$$$)
   my $filename = shift;
 
   my $href;
-  my $name;
-  if ($contents_or_shortcontents eq 'contents') {
-    $name = 'Contents';
-  } else {
-    $name = 'Overview';
-  }
+  my $name = $contents_command_element_name{$contents_or_shortcontents};
   
   my $target;
   if ($name eq 'Contents') {
@@ -264,7 +267,7 @@ sub command_contents_href($$$$)
     $target = $self->command_shortcontents_target($command);
   }
 
-  my $target_element = $self->{'special_elements'}->{$name};
+  my $target_element = $self->special_element($name);
   my $target_filename = $self->command_filename($target_element);
   if (defined($target_filename) and
       (!defined($filename)
@@ -333,6 +336,13 @@ sub label_command($$)
   my $self = shift;
   my $label = shift;
   return $self->{'labels'}->{$label};
+}
+
+sub special_element($$)
+{
+  my $self = shift;
+  my $type = shift;
+  return $self->{'special_elements'}->{$type};
 }
 
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
@@ -517,7 +527,8 @@ sub _translate_names($)
   foreach my $special_element (keys (%SPECIAL_ELEMENTS_NAME)) {
     if ($self->{'special_elements'}->{$special_element} and
         $self->{'targets'}->{$self->{'special_elements'}->{$special_element}}) {
-      my $target = $self->{'targets'}->{$self->{'special_elements'}->{$special_element}};
+      my $target 
+        = $self->{'targets'}->{$self->{'special_elements'}->{$special_element}};
       foreach my $key ('text', 'string', 'tree') {
         delete $target->{$key};
       }
@@ -1187,7 +1198,7 @@ sub _default_button_formatting($$)
                                            $button_href, 'href');
       if ($href) {
         my $anchor_attributes = $self->_direction_href_attributes($button_href);
-        $active =  "" . "<a href=\"$href\"${anchor_attributes}>$$text</a>";
+        $active = "<a href=\"$href\"${anchor_attributes}>$$text</a>";
       } else {
         $passive = $$text;
       }
@@ -1609,10 +1620,19 @@ sub _convert_informative_command($$$$)
   $self->_informative_command($command);
   if ($self->get_conf('INLINE_CONTENTS')) {
     if ($cmdname eq 'contents' or $cmdname eq 'shortcontents') {
-      my $result = '';
-      #my $result = "<a name=\"".$self->command_id
-      $result .= $self->{'contents'}($self, $cmdname, $command);
-      return $result;
+
+      my $content = $self->{'contents'}($self, $cmdname, $command);
+      if ($content) {
+        my $result = '';
+        my $special_element 
+          = $self->special_element($contents_command_element_name{$cmdname});
+        my $id = $self->command_id($special_element);
+        $result .= "<a name=\"$id\"></a>\n";
+        my $heading = $self->command_text($special_element, 'text');
+        $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
+        $result .= $content . "\n";
+        return $result;
+      }
     }
   }
   return '';
@@ -2866,6 +2886,7 @@ sub _prepare_elements($$)
   my $elements;
 
   # do that now to have it available for formatting
+  # FIXME set language and documentencoding/encoding_name? If not done already.
   $self->_set_global_multiple_commands(-1);
 
   if ($self->get_conf('USE_NODES')) {
@@ -2990,10 +3011,8 @@ sub _prepare_contents_elements($)
   my $self = shift;
 
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
-    foreach my $content_type(['contents', 'Contents'],
-                             ['shortcontents', 'Overview']) {
-      my $cmdname = $content_type->[0];
-      my $type = $content_type->[1];
+    foreach my $cmdname('contents', 'shortcontents') {
+      my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
         my $default_filename;
         if ($self->get_conf('INLINE_CONTENTS')) {
@@ -3028,7 +3047,7 @@ sub _prepare_contents_elements($)
           }
           $filename = $default_filename if (!defined($filename));
           print STDERR "Add content $element $type: target $target, id $id,\n".
-             "    filename $filename\n";# if ($self->get_conf('DEBUG'));
+             "    filename $filename\n" if ($self->get_conf('DEBUG'));
           $self->{'targets'}->{$element} = {'id' => $id,
                                             'target' => $target,
                                             'misc_filename' => $filename,
@@ -3249,9 +3268,12 @@ sub _external_node_text ($$)
   my $self = shift;
   my $external_node = shift;
 
+  my $node_content = [];
+  $node_content = $external_node->{'node_content'}
+    if (defined($external_node->{'node_content'}));
   return $self->_convert({'type' => '_code',
-        'contents' => [{'text' => '('}, $external_node->{'manual_content'},
-                       {'text' => ')'}, $external_node->{'node_content'}]});
+        'contents' => [{'text' => '('}, @{$external_node->{'manual_content'}},
+                       {'text' => ')'}, @$node_content]});
 }
 
 my %valid_types = (
@@ -3273,7 +3295,7 @@ sub _external_node_reference($$$;$)
   
   if ($type eq 'href') {
     return $self->_external_node_href($external_node, $filename);
-  } elsif ($type eq 'text') {
+  } elsif ($type eq 'text' or $type eq 'node') {
     return $self->_external_node_text($external_node);
   }
 }
@@ -3374,8 +3396,8 @@ sub _element_direction($$$$;$)
       $command = $element_target->{'extra'}->{'element_command'};
       $target = $self->{'targets'}->{$command} if ($command);
     }
-  } elsif ($self->{'special_elements'}->{$direction}) {
-    $element_target = $self->{'special_elements'}->{$direction};
+  } elsif ($self->special_element($direction)) {
+    $element_target = $self->special_element($direction);
     $command = $element_target;
     if ($type eq 'href') {
       return $self->command_href($element_target, $filename);
@@ -3601,7 +3623,8 @@ $extra_head
 </head>
 
 <body $bodytext>
-$after_body_open";
+$after_body_open
+";
 
   return $result;
 }
@@ -3621,7 +3644,16 @@ sub _default_special_element_body($$$)
 
   if ($special_type eq 'About') {
     my $about = "<p>\n";
-    $about .= '  '.&{$self->{'program_string'}}($self) ."\n";
+    my $PRE_ABOUT = $self->get_conf('PRE_ABOUT');
+    if (defined($PRE_ABOUT)) {
+      if (ref($PRE_ABOUT) eq 'CODE') {
+        $about .= &$PRE_ABOUT($self, $element);
+      } else {
+        $about .= $PRE_ABOUT;
+      }
+    } else {
+      $about .= '  '.&{$self->{'program_string'}}($self) ."\n";
+    }
     $about .= <<EOT;
 </p>
 <p>
@@ -3697,10 +3729,16 @@ EOT
       </li>
 EOT
     $about .= '      <li>1.4 ' . $self->convert_tree($self->gdt('Subsection One-Four')) . "</li>\n";
+
+    my $AFTER_ABOUT = '';
+    if (defined($self->get_conf('AFTER_ABOUT'))) {
+      $AFTER_ABOUT = $self->get_conf('AFTER_ABOUT');
+    }
     $about .= <<EOT;
     </ul>
   </li>
 </ul>
+$AFTER_ABOUT
 EOT
     return $about;
   } elsif ($special_type eq 'Contents') {
@@ -3816,9 +3854,6 @@ sub output($$)
       }
     }
   }
-
-  # FIXME Before that, set multiple commands
-  # FIXME set language and documentencoding/encoding_name
 
   $self->_prepare_index_entries();
 
@@ -4160,6 +4195,10 @@ sub _convert($$)
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
   }
 
+  if (ref($root) ne 'HASH') {
+    cluck "_convert: root not a HASH\n";
+    return '';
+  }
 
   if (($root->{'type'}
         and exists ($self->{'types_conversion'}->{$root->{'type'}})

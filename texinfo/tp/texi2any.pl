@@ -420,7 +420,7 @@ sub _set_variables_texi2html()
 #  $INDEX_ENTRY_COLON = '';
 
   set_from_cmdline('ENABLE_ENCODING_USE_ENTITY', 1);
-  set_from_cmdline('DO_ABOUT', 1);
+  set_from_cmdline('DO_ABOUT', undef);
   set_from_cmdline('BIG_RULE', '<hr size="6">');
   set_from_cmdline('SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
                              ' ', ' ', ' ', ' ',
