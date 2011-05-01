@@ -1898,10 +1898,25 @@ sub _convert_menu_entry_type($$$)
       $description = '' if (_simplify_text_for_comparison($name_no_number) 
                            eq _simplify_text_for_comparison($description));
     }
+    if ($description ne '') {
+      # FIXME remove that.  This is a compatibility with texi2html, space 
+      # from preceding menu_entry_separator is used for description, but
+      # it is not really useful since space is not taken into account anyway
+      # in formatting
+      my $previous_arg;
+      foreach my $arg (@{$command->{'args'}}) {
+        if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_description') {
+          if ($previous_arg->{'type'} eq 'menu_entry_separator'
+               and $previous_arg->{'text'} =~ /(\s+)$/) {
+            $description = $1 . $description;
+          }
+          last;
+        }
+        $previous_arg = $arg;
+      }
+    }
   }
-  # FIXME the space before description should be taken from the
-  # preceding menu_entry_separator?
-  return "<tr><td align=\"left\" valign=\"top\">$name$MENU_ENTRY_COLON</td><td>&nbsp;&nbsp;</td><td align=\"left\" valign=\"top\"> $description</td></tr>\n";
+  return "<tr><td align=\"left\" valign=\"top\">$name$MENU_ENTRY_COLON</td><td>&nbsp;&nbsp;</td><td align=\"left\" valign=\"top\">$description</td></tr>\n";
 }
 
 $default_types_conversion{'menu_entry'} = \&_convert_menu_entry_type;

@@ -2285,7 +2285,7 @@ sub _convert($$)
         $result .= $line;
         $self->{'empty_lines_count'} = 0;
         $max_lines++;
-      # there may be empty lines, in that case $line is undef, $max_lines == 0
+      # there may be empty lines, in that case $line is undef, $max_lines == 0
       } elsif ($max_lines) {
         if ($line eq "\n") {
           $self->{'empty_lines_count'} = 1;
