@@ -1468,10 +1468,11 @@ sub _convert_heading_command($$$$$)
 
   my $heading_level;
   # FIXME this is done as in texi2html: node is used as heading if there 
-  # is nothing else.  Is it right?
+  # is nothing else.  Is it right?
   if ($cmdname eq 'node') {
-    if (!$element->{'extra'}->{'section'}
-        and $element->{'extra'}->{'node'} eq $command) {
+    if (!$element or (!$element->{'extra'}->{'section'}
+                      and $element->{'extra'}->{'node'}
+                      and $element->{'extra'}->{'node'} eq $command)) {
       if ($command->{'extra'}->{'normalized'} eq 'Top') {
         $heading_level = 0;
       } else {
@@ -1544,7 +1545,11 @@ sub _convert_verbatiminclude_command($$$$)
   my $args = shift;
 
   my $verbatim_include_verbatim = $self->expand_verbatiminclude($command);
-  return $self->convert_tree($verbatim_include_verbatim);
+  if (defined($verbatim_include_verbatim)) {
+    return $self->convert_tree($verbatim_include_verbatim);
+  } else {
+    return '';
+  }
 }
 
 $default_commands_conversion{'verbatiminclude'} 
@@ -1689,7 +1694,7 @@ my %default_types_conversion;
 foreach my $type ('empty_line_after_command', 'preamble',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
-            'empty_spaces_after_close_brace') {
+            'empty_spaces_after_close_brace', 'preamble_before_setfilename') {
   #$ignored_types{$type} = 1;
   $default_types_conversion{$type} = undef;
 }
@@ -2054,6 +2059,7 @@ sub _convert_root_text_type($$$$)
   my $content = shift;
 
   my $result = $content;
+  #$result =~ s/^\s*//;
   # if there is no element, the parent should not be an element
   if (defined($self->get_conf('DEFAULT_RULE'))
       and (!$command->{'parent'}->{'type'}
@@ -4421,8 +4427,21 @@ sub _convert($$)
         cluck "for $root contents not an array: $root->{'contents'}";
         print STDERR Texinfo::Structuring::_print_current($root);
       }
+
+      # FIXME as texi2html, ignore space only contents at the beginning.
+      # Is it right?
+      my $only_spaces;
+      if ($root->{'type'} eq 'text_root') {
+        $only_spaces = 1;
+      }
       foreach my $content (@{$root->{'contents'}}) {
-        $content_formatted .= $self->_convert($content);
+        my $new_content = $self->_convert($content);
+        if ($only_spaces) {
+          if ($new_content =~ /\S/) {
+            $only_spaces = 0;
+          }
+        }
+        $content_formatted .= $new_content unless ($only_spaces);
       }
     }
     my $result = '';

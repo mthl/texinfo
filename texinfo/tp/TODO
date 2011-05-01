@@ -54,6 +54,9 @@ $self->title_string() and so on and so forth.
 html tests which should be right:
 sectioning setfilename_on_top_and_after_node
 
+Test tree leading to non empty preamble_before_setfilename.  Currently there
+are none in the test suite, maye require a real file as input.
+
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd

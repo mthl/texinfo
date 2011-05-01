@@ -221,6 +221,7 @@ our %default_configuration = (
   'expanded_formats' => [],
   'include_directories' => [ '.' ],
   'INLINE_INSERTCOPYING' => 0,
+  'IGNORE_BEFORE_SETFILENAME' => 1,
   # this is the initial context.  It is put at the bottom of the 
   # 'context_stack'
   'context' => '_root',
@@ -796,7 +797,36 @@ sub parse_texi_file ($$)
        'fh' => $filehandle
         }];
   $self->{'info'}->{'input_file_name'} = $file_name;
-  return $self->_parse_texi($root);
+  my $tree = $self->_parse_texi($root);
+
+  # if there are elements, 'text_root' is the first content, otherwise it
+  # is the root.
+  my $text_root;
+  if ($tree->{'type'} eq 'text_root') {
+    $text_root = $tree;
+  } elsif ($tree->{'contents'} and $tree->{'contents'}->[0]
+           and $tree->{'contents'}->[0]->{'type'} eq 'text_root') {
+    $text_root = $tree->{'contents'}->[0];
+  }
+
+  # Put everything before @setfilename in a special type.  This allows to
+  # ignore everything before @setfilename.
+  if ($self->{'IGNORE_BEFORE_SETFILENAME'} and $text_root and 
+      $self->{'extra'} and $self->{'extra'}->{'setfilename'}
+      and $self->{'extra'}->{'setfilename'}->{'parent'} eq $text_root) {
+    my $before_setfilename = {'type' => 'preamble_before_setfilename',
+                              'parent' => $text_root,
+                              'contents' => []};
+    while ($text_root->{'contents'}->[0] ne $self->{'extra'}->{'setfilename'}) {
+      my $content = shift @{$text_root->{'contents'}};
+      $content->{'parent'} = $before_setfilename;
+      push @{$before_setfilename->{'contents'}}, $content;
+    }
+    unshift (@{$text_root->{'contents'}}, $before_setfilename)
+      if (@{$before_setfilename->{'contents'}});
+  }
+
+  return $tree;
 }
 
 sub parse_texi_line($$;$)
