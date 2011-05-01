@@ -29,6 +29,12 @@ set_default('USE_TITLEPAGE_FOR_TITLE', 1);
 
 @NODE_FOOTER_BUTTONS = ('Back', 'Forward');
 
+@LINKS_BUTTONS =
+    (
+      'Top', 'Index', 'Contents', 'About', 'Up', 'NextFile', 'PrevFile'
+    );
+
+
 set_default('WORDS_IN_PAGE', undef);
 set_default('SHOW_MENU', 0);
 

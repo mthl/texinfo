@@ -1,3 +1,10 @@
+2011-05-01  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/formats/html.pm (@LINKS_BUTTONS,HEADER_IN_TABLE),
+	texi2html/maintained_extra/book.pm (@LINKS_BUTTONS):
+	use NodeUp or Up in @LINKS_BUTTONS to be consistent with the other
+	directions.
+
 2011-04-30  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/texi2html.pm, texi2html/texi2html.pl, 

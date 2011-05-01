@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.436 2011-04-30 15:52:37 pertusus Exp $
+# $Id: texi2html.pl,v 1.437 2011-05-01 09:42:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -7693,8 +7693,12 @@ sub rearrange_elements()
     if (defined($element_top))
     {
         $element_top->{'top'} = 1 if ($element_top->{'node'} or $element_top->{'tag'} eq 'top');
-        print STDERR "# element top: $element_top->{'texi'}\n" if ($element_top and
-           ($T2H_DEBUG & $DEBUG_ELEMENTS));
+        if ($T2H_DEBUG & $DEBUG_ELEMENTS)
+        {
+            my $element_top_is_node = 'not a node';
+            $element_top_is_node = 'node' if ($element_top->{'node'});
+            print STDERR "# element top($element_top_is_node): $element_top->{'texi'}\n";
+        }
     }
     
     print STDERR "# find fastback and fastforward\n" 
@@ -8775,6 +8779,8 @@ sub pass_text($$)
         if (defined($possible_top->[0]) and $possible_top->[0] =~ /\S/)
         {
            ($Texi2HTML::NAME{'Top'}, $Texi2HTML::NO_TEXI{'Top'}, $Texi2HTML::SIMPLE_TEXT{'Top'}) = @$possible_top;
+           print STDERR "RESULTING TOP: ".join('|', @$possible_top)."\n" 
+              if ($T2H_DEBUG & $DEBUG_ELEMENTS);
            last;
         }
     }

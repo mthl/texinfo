@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.pm,v 1.2 2011-04-30 15:52:37 pertusus Exp $
+# $Id: texi2html.pm,v 1.3 2011-05-01 09:42:22 pertusus Exp $
 
 
 ##################################################################
@@ -969,6 +969,10 @@ sub t2h_default_set_variables_texi2html()
   set_default('DO_ABOUT', 1);
   $MENU_ENTRY_COLON = '';
   $INDEX_ENTRY_COLON = '';
+  #@LINKS_BUTTONS =
+  #  (
+  #    'Top', 'Index', 'Contents', 'About', 'Up', 'NextFile', 'PrevFile'
+  #  );
 
   set_default('ENABLE_ENCODING_USE_ENTITY', 1);
 }

@@ -13,7 +13,7 @@
 # Taken from texi2html.pm in 2009.
 # Originally written by Olaf Bachmann.
 #
-# $Id: html.pm,v 1.2 2011-04-30 15:52:37 pertusus Exp $
+# $Id: html.pm,v 1.3 2011-05-01 09:42:23 pertusus Exp $
 
 use strict;
 
@@ -176,6 +176,10 @@ if (!get_conf('HEADER_IN_TABLE'))
          'Contents', 'Index');
    @CHAPTER_BUTTONS = @SECTION_FOOTER_BUTTONS = @NODE_FOOTER_BUTTONS =
     @MISC_BUTTONS = @TOP_BUTTONS = @SECTION_BUTTONS;
+   @LINKS_BUTTONS =
+    (
+      'Top', 'Index', 'Contents', 'About', 'NodeUp', 'NextFile', 'PrevFile'
+    );
    $BIG_RULE = $DEFAULT_RULE;
 }
 
