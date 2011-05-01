@@ -2285,10 +2285,13 @@ sub _convert($$)
         $result .= $line;
         $self->{'empty_lines_count'} = 0;
         $max_lines++;
-      } elsif ($line eq "\n") {
-        $self->{'empty_lines_count'} = 1;
-      } else {
-        $self->{'empty_lines_count'} = 0;
+      # there may be empty lines, in that case $line is undef, $max_lines == 0
+      } elsif ($max_lines) {
+        if ($line eq "\n") {
+          $self->{'empty_lines_count'} = 1;
+        } else {
+          $self->{'empty_lines_count'} = 0;
+        }
       }
       $self->_update_locations_counts(\@row_locations);
       push @{$self->{'count_context'}->[-1]->{'locations'}}, @row_locations;

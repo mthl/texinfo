@@ -55,6 +55,32 @@ bbbbbbbbbb}
 @item lone mu--ltitable item
 @end multitable
 '],
+['empty_item_tab',
+'@multitable @columnfractions 1.0
+@item
+
+@item
+@item text
+@item
+@end multitable
+
+@multitable @columnfractions 0.5 0.5
+@item
+
+@item
+@item only item
+
+@item item text @tab
+@item item new line
+@tab
+
+@item @tab
+@item
+@tab
+
+@item not empty @tab tab not empty
+@end multitable
+']
 );
 
 my @test_invalid = (

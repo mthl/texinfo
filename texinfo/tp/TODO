@@ -110,6 +110,9 @@ and not
 It is unclear whether it is right or wrong. It happens this way because
 the paragraph starts right after the footnote number.
 
+test node non automatic directions, especially in html and for external
+nodes.
+
 @var{@u{r}} leads to R( in @var?  Test in 
 plaintext_tests/characters_and_commands_in_var
 
