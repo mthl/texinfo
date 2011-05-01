@@ -957,6 +957,18 @@ in node following second
 @node Section non auto,, Chap1, Top
 @section Section
 '],
+['next_no_prev_to_node',
+'@node Top
+
+@menu
+* first node::
+* no return::
+@end menu
+
+@node first node, no return,, Top
+
+@node no return,,, Top 
+'],
 ['novalidate',
 '
 @novalidate
