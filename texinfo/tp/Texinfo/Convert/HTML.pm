@@ -1096,7 +1096,7 @@ sub _default_heading_text($$$$$)
   if ($cmdname and $cmdname !~ /contents$/) {
     $class = $cmdname;
     $class = 'node-heading' if ($cmdname eq 'node');
-  }   
+  }
   my $align = '';
   $align = ' align="center"' if ($cmdname eq 'centerchap' or $cmdname eq 'settitle');
   $level = 1 if ($level == 0);
@@ -1398,20 +1398,18 @@ sub _convert_heading_command($$$$$)
   my $args = shift;
   my $contents = shift;
 
-  # FIXME in texi2html, level is set to 0 if top node, 3 otherwise 
-  # and it is printed if $element->{'this'} and !$element->{'with_section'}
-
-  my $do_heading = 1;
-  if ($cmdname eq 'node') {
-    $do_heading = 0;
+  my $content_ref = '';
+  if ($self->get_conf('TOC_LINKS')) {
+    my $content_href = $self->command_contents_href($command, 'contents',
+                                      $self->{'current_filename'});
+    if ($content_href) {
+      $content_ref = " href=\"$content_href\"";
+    }
   }
-  # FIXME TODO
-  #if ($self->{'TOC_LINKS'} and defined($element->{'tocid'})) {
-  #  $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
-  #}
   my $result = '';
   my $element_id = $self->command_id($command);
-  $result .= "<a name=\"$element_id\"></a>\n" if (defined($element_id));
+  $result .= "<a name=\"$element_id\"${content_ref}></a>\n" 
+    if (defined($element_id));
 
   print STDERR "Process $command "
         .Texinfo::Structuring::_print_root_command_texi($command)."\n"
@@ -1468,13 +1466,29 @@ sub _convert_heading_command($$$$$)
     }
   }
 
+  my $heading_level;
+  # FIXME this is done as in texi2html: node is used as heading if there 
+  # is nothing else.  Is it right?
+  if ($cmdname eq 'node') {
+    if (!$element->{'extra'}->{'section'}
+        and $element->{'extra'}->{'node'} eq $command) {
+      if ($command->{'extra'}->{'normalized'} eq 'Top') {
+        $heading_level = 0;
+      } else {
+        $heading_level = 3;
+      }
+    }
+  } else {
+    $heading_level = $command->{'level'};
+  }
+
   my $heading = $self->command_text($command, 'text');
-  if ($heading ne '' and $do_heading) {
+  if ($heading ne '' and defined($heading_level)) {
     if ($self->in_preformatted()) {
       $result .= '<strong>'.$heading.'</strong>'."\n";
     } else {
       $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 
-                                            $command->{'level'}, $command);
+                                            $heading_level, $command);
     }
   }
   $result .= $contents if (defined($contents));
