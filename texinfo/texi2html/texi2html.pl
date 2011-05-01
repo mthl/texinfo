@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.437 2011-05-01 09:42:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.438 2011-05-01 12:15:58 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -8148,7 +8148,8 @@ sub rearrange_elements()
             $current_element = $current_element->{'forward'};
             if ($current_element->{'file'} ne $file)
             {
-                 $element->{'nextfile'} = $current_element;
+                $element->{'nextfile'} = $current_element;
+                last;
             }
         }
     }
