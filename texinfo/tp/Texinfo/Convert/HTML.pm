@@ -780,9 +780,9 @@ my @informative_global_commands = ('contents', 'shortcontents',
 # 'novalidate'
 foreach my $misc_command(@informative_global_commands,
         'verbatiminclude', 'insertcopying', 'printindex', 'listoffloats',
-# not sure for settitle
-        'shorttitle', 'shorttitlepage', 'settitle', 'author', 'subtitle',
-        'title', keys(%default_index_commands)) {
+        'shorttitle', 'shorttitlepage', 'author', 'subtitle',
+        'title', keys(%default_index_commands), 
+        keys(%formatting_misc_commands)) {
   $kept_misc_commands{$misc_command} = 1;
 }
 
@@ -795,7 +795,7 @@ sub _global_commands($)
 foreach my $misc_command (keys(%misc_commands)) {
 #  $ignored_misc_commands{$misc_command} = 1 
   $default_commands_conversion{$misc_command} = undef
-    unless ($formatting_misc_commands{$misc_command});
+    unless ($kept_misc_commands{$misc_command});
 }
 
 foreach my $ignored_brace_commands ('caption', 'shortcaption', 
@@ -1628,6 +1628,21 @@ sub _convert_item_command($$$$)
 }
 $default_commands_conversion{'item'} = \&_convert_item_command;
 
+sub _convert_index_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $index_id = $self->command_id ($command);
+  if (defined($index_id)) {
+    return "<a name=\"$index_id\"></a>\n";
+  }
+  return '';
+}
+$default_commands_conversion{'cindex'} = \&_convert_index_command;
+
 sub _convert_informative_command($$$$)
 {
   my $self = shift;
@@ -1999,7 +2014,7 @@ sub _convert_def_line_type($$$$)
   my $index_label = '';
   my $index_id = $self->command_id ($command);
   if (defined($index_id)) {
-    $index_label = "<a href=\"$index_id\"></a>";
+    $index_label = "<a name=\"$index_id\"></a>";
   }
   if (!$self->get_conf('DEF_TABLE')) {
     return '<dt>'.$index_label.$category_prepared . ':' . $type_name . "</dt>\n";
@@ -2309,7 +2324,7 @@ sub _initialize($)
       if (!$self->get_conf('SHOW_MENU') 
            and $command eq 'menu' or $command eq 'detailmenu') {
         $self->{'commands_conversion'}->{$command} = undef;
-      } else {
+      } elsif (exists($default_commands_conversion{$command})) {
         $self->{'commands_conversion'}->{$command}
            = $default_commands_conversion{$command};
       }
@@ -4238,7 +4253,12 @@ sub _convert($$)
        or ($root->{'cmdname'}
             and exists($self->{'commands_conversion'}->{$root->{'cmdname'}})
             and !defined($self->{'commands_conversion'}->{$root->{'cmdname'}}))) {
-    print STDERR "IGNORED\n" if ($self->get_conf('DEBUG'));
+    if ($self->get_conf('DEBUG')) {
+      my $string = 'IGNORED';
+      $string .= " \@$root->{'cmdname'}" if ($root->{'cmdname'});
+      $string .= " $root->{'type'}" if ($root->{'type'});
+      print STDERR "$string\n";
+    }
     return '';
   }
 
@@ -4263,8 +4283,6 @@ sub _convert($$)
     }
   }
 
-  # FIXME here process only real index entries
-  if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
       #and !$self->{'multiple_pass'} and !$self->{'in_copying_header'}) {
     # special case for index entry not associated with a node but seen. 
     # this will be an index entry in @copying, in @insertcopying.
@@ -4274,12 +4292,9 @@ sub _convert($$)
 #    $self->{'index_entries_line_location'}->{$root} = $location;
 #    print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
 #       if ($self->get_conf('DEBUG'));
-  }
 
+  # TODO special: center, footnote
 
-  # TODO special: center, footnote, menu?
-  my $cell;
-  my $preformatted;
   # commands like @deffnx have both a cmdname and a def_line type.  It is
   # better to consider them as a def_line type, as the whole point of the
   # def_line type is to handle the same the def*x and def* line formatting. 
@@ -4287,33 +4302,39 @@ sub _convert($$)
       and !($root->{'type'} and $root->{'type'} eq 'def_line')) {
     # FIXME definfoenclose_command 
     # ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command'))
-    if ($root_commands{$root->{'cmdname'}}) {
+    my $command_name = $root->{'cmdname'};
+    # use the same command name for all the index entry commands
+    if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}
+      and $root->{'cmdname'} and $root->{'cmdname'} =~ /index$/) {
+      $command_name = 'cindex';
+    }
+    if ($root_commands{$command_name}) {
       $self->{'current_root_command'} = $root;
     }
-    if (exists($self->{'commands_conversion'}->{$root->{'cmdname'}})) {
+    if (exists($self->{'commands_conversion'}->{$command_name})) {
       my $result;
       my $content_formatted;
-      if (exists($format_context_commands{$root->{'cmdname'}})) {
-        push @{$self->{'context'}}, {'cmdname' => $root->{'cmdname'},
+      if (exists($format_context_commands{$command_name})) {
+        push @{$self->{'context'}}, {'cmdname' => $command_name,
                                      'align' => ['raggedright']};
       }
-      if (exists($block_commands{$root->{'cmdname'}})) {
-        push @{$self->{'formats'}}, $root->{'cmdname'};
+      if (exists($block_commands{$command_name})) {
+        push @{$self->{'formats'}}, $command_name;
       }
-      if ($preformatted_commands{$root->{'cmdname'}}) {
-        push @{$self->{'preformatted_context'}}, $root->{'cmdname'};
+      if ($preformatted_commands{$command_name}) {
+        push @{$self->{'preformatted_context'}}, $command_name;
       }
-      if ($code_style_commands{$root->{'cmdname'}} or 
-          $preformatted_code_commands{$root->{'cmdname'}}) {
+      if ($code_style_commands{$command_name} or 
+          $preformatted_code_commands{$command_name}) {
         $self->{'context'}->[-1]->{'code'}++;
-      } elsif ($upper_case_commands{$root->{'cmdname'}}) {
+      } elsif ($upper_case_commands{$command_name}) {
         $self->{'context'}->[-1]->{'upper_case'}++;
-      } elsif ($root->{'cmdname'} eq 'math') {
+      } elsif ($command_name eq 'math') {
         $self->{'context'}->[-1]->{'math'}++;
-      } elsif ($root->{'cmdname'} eq 'w') {
+      } elsif ($command_name eq 'w') {
         $self->{'context'}->[-1]->{'space_protected'}++;
       } elsif ($align_commands{$root->{'cmdname'}}) {
-        push @{$self->{'context'}->[-1]->{'align'}}, $root->{'cmdname'};
+        push @{$self->{'context'}->[-1]->{'align'}}, $command_name;
       }
       if ($root->{'contents'}) {
         $content_formatted = '';
@@ -4331,17 +4352,17 @@ sub _convert($$)
         }
       }
       my $args_formatted;
-      if ($brace_commands{$root->{'cmdname'}} 
-          or ($misc_commands{$root->{'cmdname'}} 
-              and $misc_commands{$root->{'cmdname'}} eq 'line')
-          or ($root->{'cmdname'} eq 'quotation' 
-              or $root->{'cmdname'} eq 'smallquotation')
-              or ($root->{'cmdname'} eq 'float')) {
+      if ($brace_commands{$command_name} 
+          or ($misc_commands{$command_name} 
+              and $misc_commands{$command_name} eq 'line')
+          or ($command_name eq 'quotation' 
+              or $command_name eq 'smallquotation')
+              or ($command_name eq 'float')) {
         $args_formatted = [];
         if ($root->{'args'}) {
           my @args_specification;
-          @args_specification = @{$self->{'commands_args'}->{$root->{'cmdname'}}}
-            if (defined($self->{'commands_args'}->{$root->{'cmdname'}}));
+          @args_specification = @{$self->{'commands_args'}->{$command_name}}
+            if (defined($self->{'commands_args'}->{$command_name}));
           foreach my $arg (@{$root->{'args'}}) {
             my $arg_spec = shift @args_specification;
             $arg_spec = ['normal'] if (!defined($arg_spec));
@@ -4369,38 +4390,43 @@ sub _convert($$)
             push @$args_formatted, $arg_formatted;
           }
         }
-        $result = &{$self->{'commands_conversion'}->{$root->{'cmdname'}}}($self,
-                $root->{'cmdname'}, $root, $args_formatted, $content_formatted);
+        if (!defined($self->{'commands_conversion'}->{$command_name})) {
+          print STDERR "No command_conversion for $command_name\n";
+          return '';
+        }
+        $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
+                $command_name, $root, $args_formatted, $content_formatted);
       } else {
-        $result = &{$self->{'commands_conversion'}->{$root->{'cmdname'}}}($self,
-                $root->{'cmdname'}, $root, $content_formatted);
+        $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
+                $command_name, $root, $content_formatted);
       }
-      if ($preformatted_commands{$root->{'cmdname'}}) {
+      if ($preformatted_commands{$command_name}) {
         pop @{$self->{'preformatted_context'}};
       }
-      if ($code_style_commands{$root->{'cmdname'}} or 
-          $preformatted_code_commands{$root->{'cmdname'}}) {
+      if ($code_style_commands{$command_name} or 
+          $preformatted_code_commands{$command_name}) {
         $self->{'context'}->[-1]->{'code'}--;
-      } elsif ($upper_case_commands{$root->{'cmdname'}}) {
+      } elsif ($upper_case_commands{$command_name}) {
         $self->{'context'}->[-1]->{'upper_case'}--;
-      } elsif ($root->{'cmdname'} eq 'math') {
+      } elsif ($command_name eq 'math') {
         $self->{'context'}->[-1]->{'math'}--;
-      } elsif ($root->{'cmdname'} eq 'w') {
+      } elsif ($command_name eq 'w') {
         $self->{'context'}->[-1]->{'space_protected'}--;
-      } elsif ($align_commands{$root->{'cmdname'}}) {
+      } elsif ($align_commands{$command_name}) {
         pop @{$self->{'context'}->[-1]->{'align'}};
       }
-      if (exists($block_commands{$root->{'cmdname'}})) {
+      if (exists($block_commands{$command_name})) {
         pop @{$self->{'formats'}};
       }
-      if (exists($format_context_commands{$root->{'cmdname'}})) {
+      if (exists($format_context_commands{$command_name})) {
         pop @{$self->{'context'}};
       }
       return $result;
     } else {
-      print STDERR "BUG: unknown command `$root->{'cmdname'}'\n";
+      print STDERR "BUG: unknown command `$command_name'\n";
+      return '';
     }
-    if ($root_commands{$root->{'cmdname'}}) {
+    if ($root_commands{$command_name}) {
       delete $self->{'current_root_command'};
     }
   } elsif ($root->{'type'}) {
