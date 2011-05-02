@@ -186,7 +186,6 @@ sub command_contents_target($$$)
   }
 }
 
-# FIXME in the API?
 sub command_target($$)
 {
   my $self = shift;
@@ -224,11 +223,60 @@ sub command_filename($$)
   return undef;
 }
 
+sub command_element($$)
+{
+  my $self = shift;
+  my $command = shift;
+
+  if ($self->{'targets'}->{$command}) {
+    my $target = $self->{'targets'}->{$command};
+    $self->command_filename($command);
+    return $target->{'element'};
+  }
+  return undef;
+}
+
+sub command_element_command($$)
+{
+  my $self = shift;
+  my $command = shift;
+
+  my $element = $self->command_element($command);
+  if ($element and $element->{'extra'}) {
+    return $element->{'extra'}->{'element_command'};
+  }
+  return undef;
+}
+
+
+sub command_node($$)
+{
+  my $self = shift;
+  my $command = shift;
+
+  if ($self->{'targets'}->{$command}) {
+    my $target = $self->{'targets'}->{$command};
+    $self->command_filename($command);
+    my $root_command = $target->{'root_command'};
+    if (defined($root_command)) {
+      if ($root_command->{'cmdname'} and $root_command->{'cmdname'} eq 'node') {
+        return $root_command;
+      }
+      if ($root_command->{'extra'} and $root_command->{'extra'}->{'associated_node'}) {
+        return $root_command->{'extra'}->{'associated_node'};
+      }
+    }
+  }
+  return undef;
+}
+
 sub command_href($$$)
 {
   my $self = shift;
   my $command = shift;
   my $filename = shift;
+
+  $filename = $self->{'current_filename'} if (!defined($filename));
 
   my $target = $self->command_target($command);
   return '' if (!defined($target));
@@ -642,6 +690,7 @@ my %defaults = (
   'USE_ACCESSKEY'        => 1,
   'USE_REL_REV'          => 1,
   'NODE_NAME_IN_MENU'    => 1,
+  'NODE_NAME_IN_INDEX'   => 1,
   'WORDS_IN_PAGE'        => 300,
   'SECTION_BUTTONS'      => [[ 'NodeNext', \&_default_node_direction ],
                              [ 'NodePrev', \&_default_node_direction ],
@@ -677,6 +726,7 @@ my %defaults = (
   'BIG_RULE'             => '<hr>',
   'MENU_SYMBOL'          => '&bull;',
   'MENU_ENTRY_COLON'     => ':',
+  'INDEX_ENTRY_COLON'    => ':',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
   'SHOW_TITLE'           => 1,
@@ -760,6 +810,7 @@ my %default_commands_args = (
   'anchor' => [['string']],
   'uref' => [['codestring'], ['normal'], ['normal']],
   'url' => [['codestring'], ['normal'], ['normal']],
+  'printindex' => [[]],
 );
 
 # Default for the function references used for the formatting
@@ -1111,6 +1162,7 @@ sub _default_heading_text($$$$$)
   return $result;
 }
 
+# Associated to a button
 sub _default_node_direction($$)
 {
   my $self = shift;
@@ -1643,6 +1695,151 @@ sub _convert_index_command($$$$)
 }
 $default_commands_conversion{'cindex'} = \&_convert_index_command;
 
+# not needed to initialize it for a document, since it is reset 
+# in index_summary
+
+sub _convert_printindex_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $index_name;
+  if ($command->{'extra'} and $command->{'extra'}->{'misc_args'}
+      and defined($command->{'extra'}->{'misc_args'}->[0])) {
+    $index_name = $command->{'extra'}->{'misc_args'}->[0];
+  } else {
+    return '';
+  }
+  if (!$self->{'index_entries_by_letter'} 
+      or !$self->{'index_entries_by_letter'}->{$index_name}
+      or !@{$self->{'index_entries_by_letter'}->{$index_name}}) {
+    return '';
+  }
+
+  #foreach my $letter_entry (@{$self->{'index_entries_by_letter'}->{$index_name}}) {
+  #  print STDERR "IIIIIII $letter_entry->{'letter'}\n";
+  #  foreach my $index_entry (@{$letter_entry->{'entries'}}) {
+  #    print STDERR "   ".join('|', keys(%$index_entry))."||| $index_entry->{'key'}\n";
+  #  }
+  #}
+
+  my $result = '';
+
+  # First do the summary letters linking to the letters done below
+  my %letter_id;
+  my @non_alpha = ();
+  my @alpha = ();
+  # collect the links
+  foreach my $letter_entry (@{$self->{'index_entries_by_letter'}->{$index_name}}) {
+    my $symbol_idx = 0;
+    my $letter = $letter_entry->{'letter'};
+    # FIXME id or target?
+    my $index_element_id = $self->_element_direction($self->{'current_element'},
+                                                     'This', 'id');
+    # FIXME use [[:alpha:]]
+    my $is_symbol = $letter !~ /^[A-Za-z]/;
+    my $identifier;
+    if ($is_symbol) {
+      $symbol_idx++;
+      $identifier = $index_element_id . "_${index_name}_symbol-$symbol_idx";
+    } else {
+      $identifier = $index_element_id . "_${index_name}_letter-${letter}";
+    }
+    $letter_id{$letter} = $identifier;
+    
+    my $summary_letter_link = $self->attribute_class('a', 'summary-letter') 
+       ." href=\"#$identifier\"><b>".$self->xml_protect_text($letter).'</b></a>';
+    if ($is_symbol) {
+      push @non_alpha, $summary_letter_link;
+    } else {
+      push @alpha, $summary_letter_link;
+    }
+  }
+  # Format the summary letters
+  my $join = '';
+  my $non_alpha_text = '';
+  my $alpha_text = '';
+  $join = " &nbsp; \n<br>\n" if (@non_alpha and @alpha);
+  if (@non_alpha) {
+    $non_alpha_text = join("\n &nbsp; \n", @non_alpha) . "\n";
+  }
+  if (@alpha) {
+    $alpha_text = join("\n &nbsp; \n", @alpha) . "\n &nbsp; \n";
+  }
+  # format the summary
+  my $summary = "<table><tr><th valign=\"top\">" 
+    . $self->_convert($self->gdt('Jump to')) .": &nbsp; </th><td>" .
+    $non_alpha_text . $join . $alpha_text . "</td></tr></table>\n";
+
+  $result .= $summary;
+
+  # now format the index entries
+  $result .= $self->attribute_class('table', "index-$index_name")
+    ." border=\"0\">\n" . "<tr><td></td><th align=\"left\">"
+    . $self->convert_tree($self->gdt('Index Entry'))
+    . "</th><td>&nbsp;</td><th align=\"left\"> "
+    .  $self->convert_tree($self->gdt('Section'))
+    ."</th></tr>\n" . "<tr><td colspan=\"4\"> ".$self->get_conf('DEFAULT_RULE')
+    ."</td></tr>\n";
+  foreach my $letter_entry (@{$self->{'index_entries_by_letter'}->{$index_name}}) {
+    my $letter = $letter_entry->{'letter'};
+    my $entries_text = '';
+    foreach my $index_entry_ref (@{$letter_entry->{'entries'}}) {
+      my $in_code 
+       = $self->{'index_names'}->{$index_name}->{$index_entry_ref->{'index_name'}};
+      my $entry_tree = $self->command_text ($index_entry_ref->{'command'}, 
+                                            'tree');
+      my $entry;
+      if ($in_code) {
+        # FIXME clean state
+        $entry = $self->convert_tree({'type' => '_code',
+                                      'contents' => [$entry_tree]});
+      } else {
+        $entry = $self->convert_tree($entry_tree);
+      }
+      next if ($entry !~ /\S/);
+      $entry = '<code>' .$entry .'</code>' if ($in_code);
+      my $entry_href = $self->command_href ($index_entry_ref->{'command'});
+      my $associated_command;
+      if ($self->get_conf('NODE_NAME_IN_INDEX')) {
+        $associated_command = $index_entry_ref->{'node'};
+        if (!defined($associated_command)) {
+          $associated_command 
+            = $self->command_node($index_entry_ref->{'command'});
+        }
+      }
+      if (!$associated_command) {
+        $associated_command 
+          = $self->command_element_command($index_entry_ref->{'command'});
+      }
+      my ($associated_command_href, $associated_command_text);
+      if ($associated_command) {
+        $associated_command_href = $self->command_href($associated_command);
+        $associated_command_text = $self->command_text($associated_command);
+      }
+      
+      $entries_text .= '<tr><td></td><td valign="top">' 
+         . "<a href=\"$entry_href\">$entry</a>" . 
+          $self->get_conf('INDEX_ENTRY_COLON') .
+        '</td><td>&nbsp;</td><td valign="top">';
+      $entries_text .= "<a href=\"$associated_command_href\">$associated_command_text</a>" 
+         if ($associated_command_href);
+       $entries_text .= "</td></tr>\n";
+    }
+    # a letter and associated indes entries
+    $result .= '<tr><th>' . 
+    "<a name=\"$letter_id{$letter}\">".$self->xml_protect_text($letter).'</a>'
+        .  "</th><td></td><td></td></tr>\n" . $entries_text .
+       "<tr><td colspan=\"4\"> ".$self->get_conf('DEFAULT_RULE')."</td></tr>\n";
+
+  }
+  $result .= "</table>\n";
+  return $result .$summary;
+}
+$default_commands_conversion{'printindex'} = \&_convert_printindex_command;
+
 sub _convert_informative_command($$$$)
 {
   my $self = shift;
@@ -1858,9 +2055,9 @@ sub _convert_menu_entry_type($$$)
     if ($node->{'extra'}->{'associated_section'} 
       and !$self->get_conf('NODE_NAME_IN_MENU')) {
       $section = $node->{'extra'}->{'associated_section'};
-      $href = $self->command_href($section, $self->{'current_filename'});
+      $href = $self->command_href($section);
     } else {
-      $href = $self->command_href($node, $self->{'current_filename'});
+      $href = $self->command_href($node);
     }
   }
 
@@ -3152,7 +3349,6 @@ sub _prepare_index_entries($)
 {
   my $self = shift;
 
-
   if ($self->{'parser'}) {
     my $no_unidecode;
     $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE'))
@@ -3160,6 +3356,7 @@ sub _prepare_index_entries($)
 
     my ($index_names, $merged_indices, $index_entries)
        = $self->{'parser'}->indices_information();
+    $self->{'index_names'} = $index_names;
     #print STDERR "IIII ($index_names, $merged_indices, $index_entries)\n";
     $self->{'index_entries_by_letter'}
       = $self->Texinfo::Structuring::sort_indices_by_letter(
@@ -3329,6 +3526,7 @@ my %valid_types = (
   'text' => 1,
   'tree' => 1,
   'target' => 1,
+  'id' => 1,
   'node' => 1,
 );
 
@@ -4532,9 +4730,6 @@ sub _convert($$)
 #           {'contents' => $self->{'extra'}->{'copying'}->{'contents'}};
 #      }
 #      return '';
-#    } elsif ($root->{'cmdname'} eq 'printindex') {
-#      $result = $self->_printindex($root);
-#      return $result;
 #    } elsif ($root->{'cmdname'} eq 'listoffloats') {
 #    } elsif ($root->{'cmdname'} eq 'sp') {
 # TODO types

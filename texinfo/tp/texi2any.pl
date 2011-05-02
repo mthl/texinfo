@@ -416,11 +416,10 @@ sub _set_variables_texi2html()
   set_from_cmdline('SHORT_REF', 0);
   set_from_cmdline('USE_TITLEPAGE_FOR_TITLE', 1);
   set_from_cmdline('MENU_ENTRY_COLON', '');
-  # FIXME
-#  $INDEX_ENTRY_COLON = '';
-
+  set_from_cmdline('INDEX_ENTRY_COLON', '');
   set_from_cmdline('ENABLE_ENCODING_USE_ENTITY', 1);
   set_from_cmdline('DO_ABOUT', undef);
+  set_from_cmdline('NODE_NAME_IN_INDEX', 0);
   set_from_cmdline('BIG_RULE', '<hr size="6">');
   set_from_cmdline('SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
                              ' ', ' ', ' ', ' ',
