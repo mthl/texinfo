@@ -2638,16 +2638,13 @@ sub _set_root_commands_targets_node_files($$)
         next if (!defined($root_command->{'cmdname'}) 
                  or $self->{'targets'}->{$root_command});
         if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
-          my $target_base;
-          # FIXME this is a bit ad-hoc.  Keep it like that or not?
-          if ($root_command->{'cmdname'} eq 'top' 
-              and defined($self->{'misc_elements_targets'}->{'Top'})) {
-            $target_base = $self->{'misc_elements_targets'}->{'Top'};
-          } else {
-           $target_base = _normalized_to_id(
+          my $target_base = _normalized_to_id(
              Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
                 {'contents' => $root_command->{'extra'}->{'misc_content'}},
                 $no_unidecode));
+          if ($target_base !~ /\S/ and $root_command->{'cmdname'} eq 'top' 
+              and defined($self->{'misc_elements_targets'}->{'Top'})) {
+            $target_base = $self->{'misc_elements_targets'}->{'Top'};
           }
           my $nr=0;
           my $target = $target_base;
