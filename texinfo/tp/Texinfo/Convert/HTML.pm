@@ -278,6 +278,10 @@ sub command_href($$$)
 
   $filename = $self->{'current_filename'} if (!defined($filename));
 
+  if ($command->{'manual_content'}) {
+    return $self->_external_node_href($command, $filename);
+  }
+
   my $target = $self->command_target($command);
   return '' if (!defined($target));
   my $href = '';
@@ -337,6 +341,20 @@ sub command_text($$$)
   }
   if (!defined($command)) {
     cluck "in command_text($type) command not defined";
+  }
+
+  if ($command->{'manual_content'}) {
+    my $node_content = [];
+    $node_content = $command->{'node_content'}
+      if (defined($command->{'node_content'}));
+    my $tree = {'type' => '_code',
+          'contents' => [{'text' => '('}, @{$command->{'manual_content'}},
+                         {'text' => ')'}, @$node_content]};
+    if ($type eq 'tree') {
+      return $tree;
+    } else {
+      return $self->_convert($tree);
+    }
   }
 
   if ($self->{'targets'}->{$command}) {
@@ -1680,6 +1698,17 @@ sub _convert_item_command($$$$)
 }
 $default_commands_conversion{'item'} = \&_convert_item_command;
 
+sub _convert_ref_commands($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  
+}
+
+
 sub _convert_index_command($$$$)
 {
   my $self = shift;
@@ -2048,8 +2077,7 @@ sub _convert_menu_entry_type($$$)
   my $section;
   my $node_entry = $command->{'extra'}->{'menu_entry_node'};
   if ($node_entry->{'manual_content'}) {
-    $href = $self->_external_node_href($node_entry, 
-                                       $self->{'current_filename'});
+    $href = $self->command_href($node_entry); 
   } else {
     $node = $self->label_command($node_entry->{'normalized'});
     if ($node->{'extra'}->{'associated_section'} 
@@ -3507,19 +3535,6 @@ sub _external_node_href($$;$)
   }
 }
 
-sub _external_node_text ($$)
-{
-  my $self = shift;
-  my $external_node = shift;
-
-  my $node_content = [];
-  $node_content = $external_node->{'node_content'}
-    if (defined($external_node->{'node_content'}));
-  return $self->_convert({'type' => '_code',
-        'contents' => [{'text' => '('}, @{$external_node->{'manual_content'}},
-                       {'text' => ')'}, @$node_content]});
-}
-
 my %valid_types = (
   'href' => 1,
   'string' => 1,
@@ -3529,67 +3544,6 @@ my %valid_types = (
   'id' => 1,
   'node' => 1,
 );
-
-sub _external_node_reference($$$;$)
-{
-  my $self = shift;
-  my $external_node = shift;
-  my $type = shift;
-  my $filename = shift;
-
-  
-  if ($type eq 'href') {
-    return $self->_external_node_href($external_node, $filename);
-  } elsif ($type eq 'text' or $type eq 'node') {
-    return $self->_external_node_text($external_node);
-  }
-}
-
-sub _internal_node_href($$$)
-{
-  my $self = shift;
-  my $normalized_node_name = shift;
-  my $filename = shift;
-
-  my $command = $self->{'labels'}->{$normalized_node_name};
-  if ($command) {
-    return $self->command_href($command, $filename);
-  } else {
-    return '';
-  }
-}
-
-sub _internal_element_href($$$)
-{
-  my $self = shift;
-  my $element = shift;
-  my $filename = shift;
-
-  my $command = $element->{'extra'}->{'element_command'};
-  if (defined($command)) {
-    return $self->command_href($command, $filename);
-  } else {
-    return '';
-  }
-}
-
-sub _internal_node_element_href($$$)
-{
-  my $self = shift;
-  my $normalized_node_name = shift;
-  my $filename = shift;
-
-  my $command = $self->{'labels'}->{$normalized_node_name};
-  if ($command) {
-    if ($command->{'parent'}) {
-      return $self->_internal_element_href($command->{'parent'}, $filename);
-    } else {
-      return $self->command_href($command, $filename);
-    }
-  } else {
-    return '';
-  }
-}
 
 # FIXME global targets
 sub _element_direction($$$$;$)
@@ -3627,18 +3581,26 @@ sub _element_direction($$$$;$)
     }
     ########
     if ($element_target->{'type'} eq 'external_node') {
-      return $self->_external_node_reference($element_target->{'extra'}, 
-                                              $type, $filename);
+      my $external_node = $element_target->{'extra'};
+      if ($type eq 'href') {
+        return $self->command_href($external_node, $filename);
+      } elsif ($type eq 'text' or $type eq 'node') {
+        return $self->command_text($external_node);
+      }
     } elsif ($type eq 'node') {
       $command = $element_target->{'extra'}->{'node'};
       $target = $self->{'targets'}->{$command} if ($command);
       $type = 'text';
     } else {
-      if ($type eq 'href') {
-        return $self->_internal_element_href($element_target, $filename);
-      }
       # FIXME be able to chose node over sectioning or the other way around?
       $command = $element_target->{'extra'}->{'element_command'};
+      if ($type eq 'href') {
+        if (defined($command)) {
+          return $self->command_href($command, $filename);
+        } else {
+          return '';
+        }
+      }
       $target = $self->{'targets'}->{$command} if ($command);
     }
   } elsif ($self->special_element($direction)) {
@@ -4462,6 +4424,9 @@ sub _convert($$)
 
   # process text
   if (defined($root->{'text'})) {
+    if ($root->{'type'} and $root->{'type'} eq '_converted') {
+      return $root->{'text'};
+    }
     my $result = &{$self->{'types_conversion'}->{'text'}} ($self, 
                                                       $root->{'type'},
                                                       $root,
