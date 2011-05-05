@@ -2167,6 +2167,19 @@ sub _convert_bracketed_type($$$$) {
 
 $default_types_conversion{'bracketed'} = \&_convert_bracketed_type;
 
+sub _convert_definfoenclose_type($$$$) {
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+
+  return $command->{'extra'}->{'begin'} . $content
+         .$command->{'extra'}->{'end'};
+}
+
+$default_types_conversion{'definfoenclose_command'} 
+  = \&_convert_definfoenclose_type;
+
 sub _convert_text($$$)
 {
   my $self = shift;
@@ -4429,61 +4442,6 @@ sub _definition_category($$$$)
   return $arg_category;
 }
 
-sub _contents($$$)
-{
-  my $self = shift;
-  my $section_root = shift;
-  my $contents_or_shortcontents = shift;
-
-  my $contents = 1 if ($contents_or_shortcontents eq 'contents');
-
-  #my $section = $section_root->{'section_childs'}->[0];
-  my $root_level = $section_root->{'section_childs'}->[0]->{'level'};
-  foreach my $top_section(@{$section_root->{'section_childs'}}) {
-    $root_level = $top_section->{'level'} 
-      if ($top_section->{'level'} < $root_level);
-  }
-
-  my $result = '';
-  # This is done like that because the tree may not be well formed if
-  # there is a @part after a @chapter for example.
-  foreach my $top_section (@{$section_root->{'section_childs'}}) {
-    my $section = $top_section;
- SECTION:
-    while ($section) {
-      my $section_title = $self->_convert({'contents'
-                => $section->{'extra'}->{'misc_content'},
-               'type' => 'frenchspacing'});
-      
-      my $text = numbered_heading($section, 
-                       $section_title, $self->get_conf('NUMBER_SECTIONS'))."\n";
-      # FIXME get ref.
-      # FIXME do li
-      $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
-      if ($section->{'section_childs'} 
-          and ($contents or $section->{'level'} < $root_level+1)) {
-        # FIXME do ul
-        $section = $section->{'section_childs'}->[0];
-      } elsif ($section->{'section_next'}) {
-        last if ($section eq $top_section);
-        $section = $section->{'section_next'};
-      } else {
-        last if ($section eq $top_section);
-        while ($section->{'section_up'}) {
-          # FIXME close ul
-          $section = $section->{'section_up'};
-          last SECTION if ($section eq $top_section);
-          if ($section->{'section_next'}) {
-            $section = $section->{'section_next'};
-            last;
-          }
-        }
-      }
-    }
-  }
-  return $result;
-}
-
 sub _image($$)
 {
   my $self = shift;
@@ -4608,9 +4566,8 @@ sub _convert($$)
   # better to consider them as a def_line type, as the whole point of the
   # def_line type is to handle the same the def*x and def* line formatting. 
   if ($root->{'cmdname'} 
-      and !($root->{'type'} and $root->{'type'} eq 'def_line')) {
-    # FIXME definfoenclose_command 
-    # ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command'))
+      and !($root->{'type'} and $root->{'type'} eq 'def_line'
+            or $root->{'type'} and $root->{'type'} eq 'definfoenclose_command')) {
     my $command_name = $root->{'cmdname'};
     # use the same command name for all the index entry commands
     if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}
@@ -4755,7 +4712,11 @@ sub _convert($$)
       $self->{'current_element'} = $root;
     }
     my $content_formatted;
-    if ($root->{'contents'}) {
+    if ($root->{'type'} eq 'definfoenclose_command') {
+      if ($root->{'args'}) {
+        $content_formatted = $self->_convert($root->{'args'}->[0]);
+      }
+    } elsif ($root->{'contents'}) {
       $content_formatted = '';
       # TODO different types of contents
       if (ref($root->{'contents'}) ne 'ARRAY') {
@@ -4778,7 +4739,7 @@ sub _convert($$)
         }
         $content_formatted .= $new_content unless ($only_spaces);
       }
-    }
+    } 
     my $result = '';
     if (exists($self->{'types_conversion'}->{$root->{'type'}})) {
       $result = &{$self->{'types_conversion'}->{$root->{'type'}}} ($self,
