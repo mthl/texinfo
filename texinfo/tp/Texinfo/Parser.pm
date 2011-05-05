@@ -4042,7 +4042,7 @@ sub _parse_texi($;$)
                        $parsed_ref_node->{'normalized'};
                     push @{$self->{'internal_references'}}, $ref;
                   }
-                }  
+                }
               }
             } elsif ($current->{'parent'}->{'cmdname'} eq 'image') {
               my $image = $current->{'parent'};

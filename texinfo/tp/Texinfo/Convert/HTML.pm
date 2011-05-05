@@ -372,25 +372,37 @@ sub command_text($$$)
         $tree = {'type' => '_code',
                  'contents' => $command->{'extra'}->{'node_content'}};
       } else {
-        $tree = {'contents' => $command->{'extra'}->{'misc_content'}};
+        $tree = {'contents' => [@{$command->{'extra'}->{'misc_content'}}]};
         if ($command->{'number'}) {
           unshift @{$tree->{'contents'}}, {'text' => "$command->{'number'} "};
         }
+        $target->{'tree_nonumber'} 
+          = {'contents' => $command->{'extra'}->{'misc_content'}};
       }
       $target->{'tree'} = $tree;
     } else {
       $tree = $target->{'tree'};
     }
-    return $tree if ($type eq 'tree');
-
+    return $target->{'tree_nonumber'} if ($type eq 'tree_nonumber' 
+                                          and $target->{'tree_nonumber'});
+    return $tree if ($type eq 'tree' or $type eq 'tree_nonumber');
+    
     push @{$self->{'context'}}, 
             {'cmdname' => $command->{'cmdname'}};
     if ($type eq 'string') {
       $tree = {'type' => '_string',
                'contents' => [$tree]};
     }
+    
     print STDERR "DO $target->{'id'}($type)\n" if ($self->get_conf('DEBUG'));
-    $target->{$type} = $self->_convert($tree);
+    if ($type =~ /^(.*)_nonumber$/) {
+      $tree = $target->{'tree_nonumber'} 
+        if (defined($target->{'tree_nonumber'}));
+      $target->{$type} = $self->_convert($tree);
+    } else {
+      $target->{$type} = $self->_convert($tree);
+    }
+
     pop @{$self->{'context'}};
     return $target->{$type};
   }
@@ -709,6 +721,7 @@ my %defaults = (
   'USE_REL_REV'          => 1,
   'NODE_NAME_IN_MENU'    => 1,
   'NODE_NAME_IN_INDEX'   => 1,
+  'SHORT_REF'            => 1,
   'WORDS_IN_PAGE'        => 300,
   'SECTION_BUTTONS'      => [[ 'NodeNext', \&_default_node_direction ],
                              [ 'NodePrev', \&_default_node_direction ],
@@ -829,6 +842,10 @@ my %default_commands_args = (
   'uref' => [['codestring'], ['normal'], ['normal']],
   'url' => [['codestring'], ['normal'], ['normal']],
   'printindex' => [[]],
+  'inforef' => [['code'],['normal'],['text']],
+  'xref' => [['code'],['normal'],['normal'],['text'],['normal']],
+  'pxref' => [['code'],['normal'],['normal'],['text'],['normal']],
+  'ref' => [['code'],['normal'],['normal'],['text'],['normal']],
 );
 
 # Default for the function references used for the formatting
@@ -1698,16 +1715,145 @@ sub _convert_item_command($$$$)
 }
 $default_commands_conversion{'item'} = \&_convert_item_command;
 
-sub _convert_ref_commands($$$$)
+sub _convert_xref_commands($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
-  my $command = shift;
+  my $root = shift;
   my $args = shift;
 
-  
-}
+  my $tree;
+  my $name;
+  if (defined($args->[2]->{'normal'}) and $args->[2]->{'normal'} ne '') {
+    $name = $args->[2]->{'normal'};
+  } elsif (defined($args->[1]->{'normal'}) and $args->[1]->{'normal'} ne '') {
+    $name = $args->[1]->{'normal'}
+  }
 
+  if ($root->{'extra'}->{'node_argument'}
+      and $root->{'extra'}->{'node_argument'}->{'normalized'}
+      and !$root->{'extra'}->{'node_argument'}->{'manual_content'}
+      and $self->{'labels'}
+      and $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}) {
+    my $node 
+     = $self->label_command($root->{'extra'}->{'node_argument'}->{'normalized'}); 
+    my $command = $self->command_element_command($node);
+    $command = $node if (!$node->{'extra'}->{'associated_section'}
+                         or $node->{'extra'}->{'associated_section'} ne $command);
+    my $href = $self->command_href($command);
+
+    if (!defined($name)) {
+      if (!$self->get_conf('SHORT_REF')) {
+        $name = $self->command_text($command, 'text_nonumber');
+      } elsif (defined($args->[0]->{'code'})) {
+        $name = $args->[0]->{'code'};
+      } else {
+        $name = '';
+      }
+    }
+    my $reference = $name;
+    $reference = "<a href=\"$href\">$name</a>" if ($href ne '');
+
+    if ($cmdname eq 'pxref') {
+      if ($command->{'cmdname'} ne 'node') {
+        $tree = $self->gdt('see section {reference_name}', 
+         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
+      } else {
+        $tree = $self->gdt('see {reference_name}', 
+         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
+      }
+    } elsif ($cmdname eq 'xref' or $cmdname eq 'inforef') {
+      if ($command->{'cmdname'} ne 'node') {
+        $tree = $self->gdt('See section {reference_name}',
+         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
+      } else {
+        $tree = $self->gdt('See {reference_name}',
+         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
+      }
+    } elsif ($cmdname eq 'ref') {
+      $tree = $self->gdt('{reference_name}',
+         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
+    }
+  } else {
+    if ($cmdname eq 'inforef') {
+      $args->[4] = $args->[3];
+      $args->[3] = undef;
+    }
+    my $node_entry = {};
+    $node_entry->{'node_content'} = $root->{'extra'}->{'node_argument'}->{'node_content'}
+      if ($root->{'extra'}->{'node_argument'}->{'node_content'});
+
+    my $file_arg_tree;
+    my $file = '';
+    if (defined($args->[3]->{'text'}) and $args->[3]->{'text'} ne '') {
+      $file_arg_tree = $args->[3]->{'tree'};
+      $file = $args->[3]->{'text'};
+    }
+
+    # file argument takes precedence over the file in the node (file)node entry
+    if (defined($file_arg_tree)) {
+      $node_entry->{'manual_content'} = $file_arg_tree;
+    } elsif ($root->{'extra'}->{'node_argument'}->{'manual_content'}) {
+      $node_entry->{'manual_content'} 
+        = $root->{'extra'}->{'node_argument'}->{'manual_content'};
+    }
+    my $href = $self->command_href($node_entry);
+    my $book = $args->[4]->{'normal'} if (defined($args->[4]->{'normal'})
+                                        and $args->[4]->{'normal'} ne '');
+    $name = $args->[0]->{'code'} if (!defined($name));
+      
+    if (!defined($book) and $file ne '') {
+      $name = "($file)$name";
+    }
+    $name = '' if (!defined($name));
+    my $reference = $name;
+    $reference = "<a href=\"$href\">$name</a>" if ($href ne '');
+
+    if ($cmdname eq 'pxref') {
+      if (($book ne '') and ($href ne '')) {
+        $tree = $self->gdt('see {reference} in @cite{{book}}', 
+            { 'reference' => {'type' => '_converted', 'text' => $reference}, 
+              'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif (($book ne '') and ($reference ne '')) {
+        $tree = $self->gdt('see `{section}\' in @cite{{book}}', 
+            { 'section' => {'type' => '_converted', 'text' => $reference}, 
+              'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif ($book ne '') { # should seldom or even never happen
+        $tree = $self->gdt('see @cite{{book}}', 
+              {'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif ($href ne '') {
+        $tree = $self->gdt('see {reference}', 
+             { 'reference' => {'type' => '_converted', 'text' => $reference} });
+      } elsif ($reference ne '') {
+        $tree = $self->gdt('see `{section}\'', {
+              'section' => {'type' => '_converted', 'text' => $reference} });
+      }
+    } elsif ($cmdname eq 'xref' or $cmdname eq 'inforef') {
+      if (($book ne '') and ($href ne '')) {
+        $tree = $self->gdt('See {reference} in @cite{{book}}', 
+            { 'reference' => {'type' => '_converted', 'text' => $reference}, 
+              'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif (($book ne '') and ($reference ne '')) {
+        $tree = $self->gdt('See `{section}\' in @cite{{book}}', 
+            { 'section' => {'type' => '_converted', 'text' => $reference}, 
+              'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif ($book ne '') { # should seldom or even never happen
+        $tree = $self->gdt('See @cite{{book}}', 
+              {'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif ($href ne '') {
+        $tree = $self->gdt('See {reference}', 
+             { 'reference' => {'type' => '_converted', 'text' => $reference} });
+      } elsif ($reference ne '') {
+        $tree = $self->gdt('See `{section}\'', {
+              'section' => {'type' => '_converted', 'text' => $reference} });
+      }
+    }
+  }
+  return $self->convert_tree($tree);
+}
+foreach my $command(keys(%ref_commands)) {
+  $default_commands_conversion{$command} = \&_convert_xref_commands;
+}
 
 sub _convert_index_command($$$$)
 {
@@ -2473,7 +2619,7 @@ sub _convert_element_type($$$$)
 
 $default_types_conversion{'element'} = \&_convert_element_type;
 
-# FIXME associate with element type (replace by _convert_element_type)?
+# FIXME this is not used anymore.
 sub _convert_element($$)
 {
   my $self = shift;
@@ -4547,6 +4693,9 @@ sub _convert($$)
                 $arg_formatted->{$arg_type} = $self->_convert($arg);
                 $self->{'context'}->[-1]->{'string'}--;
                 $self->{'context'}->[-1]->{'code'}--;
+              } elsif ($arg_type eq 'text') {
+                $arg_formatted->{$arg_type} 
+                  = Texinfo::Convert::Text::convert($arg);
               }
             }
             
