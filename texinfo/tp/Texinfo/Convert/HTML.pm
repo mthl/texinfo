@@ -3912,13 +3912,15 @@ sub _default_contents($$;$$)
     my $section = $top_section;
  SECTION:
     while ($section) {# and $section ne $section_root) {
-      my $text = $self->command_text($section);
-      # FIXME OVERVIEW_LINK_TO_TOC?
-      my $href = $self->command_href($section, $filename);
-      my $toc_id = $self->command_contents_id($section, $cmdname);
-      $result .= (' ' x (2*($section->{'level'} - $root_level))) 
-        . "<li><a name=\"$toc_id\" href=\"$href\">$text</a>"
-         if ($text ne '');
+      if ($section->{'cmdname'} ne 'top') {
+        my $text = $self->command_text($section);
+        # FIXME OVERVIEW_LINK_TO_TOC?
+        my $href = $self->command_href($section, $filename);
+        my $toc_id = $self->command_contents_id($section, $cmdname);
+        $result .= (' ' x (2*($section->{'level'} - $root_level))) 
+          . "<li><a name=\"$toc_id\" href=\"$href\">$text</a>"
+           if ($text ne '');
+      }
       if ($section->{'section_childs'}
           and ($contents or $section->{'level'} < $root_level+1)) {
         $result .= "\n". ' ' x (2*($section->{'level'} - $root_level))
