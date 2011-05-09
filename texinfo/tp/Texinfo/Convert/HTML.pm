@@ -744,6 +744,7 @@ my %defaults = (
   'NODE_NAME_IN_MENU'    => 1,
   'NODE_NAME_IN_INDEX'   => 1,
   'SHORT_REF'            => 1,
+  'COMPLEX_FORMAT_IN_TABLE' => 0,
   'WORDS_IN_PAGE'        => 300,
   'SECTION_BUTTONS'      => [[ 'NodeNext', \&_default_node_direction ],
                              [ 'NodePrev', \&_default_node_direction ],
@@ -1631,6 +1632,35 @@ sub _convert_raw_command($$$$)
 
 foreach my $command (@out_formats) {
   $default_commands_conversion{$command} = \&_convert_raw_command;
+}
+
+my %indented_preformatted_commands;
+foreach my $indented_format ('example', 'display', 'lisp') {
+  $indented_preformatted_commands{$indented_format} = 1;
+  $indented_preformatted_commands{"small$indented_format"} = 1;
+}
+
+sub _convert_preformatted_commands($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $content = shift;
+
+  if ($self->get_conf('COMPLEX_FORMAT_IN_TABLE')) {
+    if ($indented_preformatted_commands{$cmdname}) {
+      return '<table><tr><td>&nbsp;</td><td>'.$content."</td></tr></table>\n";
+    } else {
+      return $content."\n";
+    }
+  } else {
+    return $self->attribute_class('div', $cmdname).">\n".$content.'</div>'."\n";
+  }
+}
+
+foreach my $preformatted_command (keys(%preformatted_commands)) {
+  $default_commands_conversion{$preformatted_command} 
+  = \&_convert_preformatted_commands;
 }
 
 sub _convert_verbatim_command($$$$)
