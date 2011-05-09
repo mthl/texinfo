@@ -149,13 +149,30 @@ sub align($)
   return $self->{'context'}->[-1]->{'align'}->[-1];
 }
 
+sub _get_target($$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $target;
+  if ($self->{'targets'}->{$command}) {
+    $target = $self->{'targets'}->{$command};
+  } elsif ($command->{'cmdname'}
+            and $sectioning_commands{$command->{'cmdname'}} 
+            and !$root_commands{$command->{'cmdname'}}) {
+    $target = $self->_new_sectioning_command_target($command);
+    
+  }
+  return $target;
+}
+
 # API for the elements formatting
 sub command_id($$)
 {
   my $self = shift;
   my $command = shift;
-  if ($self->{'targets'}->{$command}) {
-    return $self->{'targets'}->{$command}->{'id'};
+  my $target = $self->_get_target($command);
+  if ($target) {
+    return $target->{'id'};
   } else {
     return undef;
   }
@@ -167,8 +184,9 @@ sub command_contents_id($$$)
   my $command = shift;
   my $contents_or_shortcontents = shift;
   
-  if ($self->{'targets'}->{$command}) {
-    return $self->{'targets'}->{$command}->{$contents_or_shortcontents .'_id'};
+  my $target = $self->_get_target($command);
+  if ($target) {
+    return $target->{$contents_or_shortcontents .'_id'};
   } else {
     return undef;
   }
@@ -179,8 +197,10 @@ sub command_contents_target($$$)
   my $self = shift;
   my $command = shift;
   my $contents_or_shortcontents = shift;
-  if ($self->{'targets'}->{$command}) {
-    return $self->{'targets'}->{$command}->{$contents_or_shortcontents .'_target'};
+
+  my $target = $self->_get_target($command);
+  if ($target) {
+    return $target->{$contents_or_shortcontents .'_target'};
   } else {
     return undef;
   }
@@ -190,8 +210,10 @@ sub command_target($$)
 {
   my $self = shift;
   my $command = shift;
-  if ($self->{'targets'}->{$command}) {
-    return $self->{'targets'}->{$command}->{'target'};
+
+  my $target = $self->_get_target($command);
+  if ($target) {
+    return $target->{'target'};
   } else {
     return undef;
   }
@@ -202,8 +224,8 @@ sub command_filename($$)
   my $self = shift;
   my $command = shift;
 
-  if ($self->{'targets'}->{$command}) {
-    my $target = $self->{'targets'}->{$command};
+  my $target = $self->_get_target($command);
+  if ($target) {
     if (defined($target->{'filename'})) {
       return $target->{'filename'};
     }
@@ -228,8 +250,8 @@ sub command_element($$)
   my $self = shift;
   my $command = shift;
 
-  if ($self->{'targets'}->{$command}) {
-    my $target = $self->{'targets'}->{$command};
+  my $target = $self->_get_target($command);
+  if ($target) {
     $self->command_filename($command);
     return $target->{'element'};
   }
@@ -254,8 +276,8 @@ sub command_node($$)
   my $self = shift;
   my $command = shift;
 
-  if ($self->{'targets'}->{$command}) {
-    my $target = $self->{'targets'}->{$command};
+  my $target = $self->_get_target($command);
+  if ($target) {
     $self->command_filename($command);
     my $root_command = $target->{'root_command'};
     if (defined($root_command)) {
@@ -357,8 +379,8 @@ sub command_text($$$)
     }
   }
 
-  if ($self->{'targets'}->{$command}) {
-    my $target = $self->{'targets'}->{$command};
+  my $target = $self->_get_target($command);
+  if ($target) {
     if (defined($target->{$type})) {
       return $target->{$type};
     }
@@ -2492,12 +2514,12 @@ sub _default_titlepage($)
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
     if ($self->get_conf('setcontentsaftertitlepage')) {
       # FIXME put formatted contents
-      # @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}
+      # @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}}
       $result .= $self->get_conf('DEFAULT_RULE')."\n";
     }
     if ($self->get_conf('setshortcontentsaftertitlepage')) {
       # FIXME put formatted shortcontents
-      # @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}
+      # @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}}
       $result .= $self->get_conf('DEFAULT_RULE')."\n";
     }
   }
@@ -2995,6 +3017,122 @@ sub _node_id_file($$)
   return ($filename, $target, $id);
 }
 
+sub _new_sectioning_command_target($$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $no_unidecode;
+
+  $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE')) 
+                        and !$self->get_conf('USE_UNIDECODE'));
+
+  my $target_base = _normalized_to_id(
+     Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
+       {'contents' => $command->{'extra'}->{'misc_content'}},
+                $no_unidecode));
+  if ($target_base !~ /\S/ and $command->{'cmdname'} eq 'top' 
+      and defined($self->{'misc_elements_targets'}->{'Top'})) {
+    $target_base = $self->{'misc_elements_targets'}->{'Top'};
+  }
+  my $nr=0;
+  my $target = $target_base;
+  while ($self->{'ids'}->{$target}) {
+    $target = $target_base.'-'.$nr;
+    $nr++;
+    # Avoid integer overflow
+    die if ($nr == 0);
+  }
+  my $id = $target;
+
+  if ($command->{'extra'}->{'associated_node'} 
+      and $self->get_conf('USE_NODE_TARGET')) {
+    $target 
+     = $self->{'targets'}->{$command->{'extra'}->{'associated_node'}}->{'id'};
+  }
+    
+  my $target_contents;
+  my $id_contents;
+  my $target_shortcontents;
+  my $id_shortcontents;
+  if ($Texinfo::Common::root_commands{$command->{'cmdname'}}) {
+    # FIXME choose one (in comments, use target, other use id)
+    #my $target_contents = 'toc-'.$target;
+    #my $target_base_contents;
+    #if ($command->{'extra'}->{'associated_node'} 
+    #    and $self->get_conf('USE_NODE_TARGET') {
+    #  $target_base_contents = $target;
+    #} else {
+    # $target_base_contents = $target_base;
+    #}
+    $target_contents = 'toc-'.$id;
+    my $target_base_contents = $target_base;
+    my $toc_nr = $nr -1;
+    while ($self->{'ids'}->{$target_contents}) {
+      $target_contents = 'toc-'.$target_base_contents.'-'.$toc_nr;
+      $toc_nr++;
+      # Avoid integer overflow
+      die if ($toc_nr == 0);
+    }
+    $id_contents = $target_contents;
+
+    # FIXME choose one (in comments, use target, other use id)
+    #my $target_shortcontents = 'stoc-'.$target;
+    #my $target_base_shortcontents;
+    #if ($command->{'extra'}->{'associated_node'} 
+    #    and $self->get_conf('USE_NODE_TARGET') {
+    #  $target_base_shortcontents = $target;
+    #} else {
+    #  $target_base_shortcontents = $target_base;
+    #}
+    $target_shortcontents = 'stoc-'.$id;
+    my $target_base_shortcontents = $target_base;
+    my $stoc_nr = $nr -1;
+    while ($self->{'ids'}->{$target_shortcontents}) {
+      $target_shortcontents = 'stoc-'.$target_base_shortcontents
+                                 .'-'.$stoc_nr;
+      $stoc_nr++;
+      # Avoid integer overflow
+      die if ($stoc_nr == 0);
+    }
+    $id_shortcontents = $target_shortcontents;
+  }
+
+  if (defined($Texinfo::Config::sectioning_command_target_name)) {
+    ($target, $id, $target_contents, $id_contents,
+     $target_shortcontents, $id_shortcontents) 
+        = &$Texinfo::Config::sectioning_command_target_name($self, 
+                                     $command, $target, $id,
+                                     $target_contents, $id_contents,
+                                     $target_shortcontents, $id_shortcontents);
+  }
+  if ($self->get_conf('DEBUG')) {
+    print STDERR "Register $command->{'cmdname'} $target, $id\n";
+  }
+  $self->{'targets'}->{$command} = {
+                           'target' => $target, 
+                           'id' => $id,
+                          };
+  # FIXME this should really be use carefully, since the mapping
+  # is not what one expects
+  $self->{'ids'}->{$id} = $command;
+  if (defined($id_contents)) {
+    $self->{'targets'}->{$command}->{'contents_id'} = $id_contents;
+    $self->{'ids'}->{$id_contents} = $command;
+  }
+  if (defined($target_contents)) {
+    $self->{'targets'}->{$command}->{'contents_target'} = $target_contents;
+  }
+  if (defined($id_shortcontents)) {
+    $self->{'targets'}->{$command}->{'shortcontents_id'} = $id_shortcontents;
+    $self->{'ids'}->{$id_shortcontents} = $command;
+  }
+  if (defined($target_shortcontents)) {
+    $self->{'targets'}->{$command}->{'shortcontents_target'} 
+       = $target_shortcontents;
+  }
+  return $self->{'targets'}->{$command};
+}
+
 # FIXME also convert to html, to use name in cross-refs or do it on demand?
 # This set 2 unrelated things.  
 #  * The targets and id of sectioning elements
@@ -3037,94 +3175,7 @@ sub _set_root_commands_targets_node_files($$)
         next if (!defined($root_command->{'cmdname'}) 
                  or $self->{'targets'}->{$root_command});
         if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
-          my $target_base = _normalized_to_id(
-             Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
-                {'contents' => $root_command->{'extra'}->{'misc_content'}},
-                $no_unidecode));
-          if ($target_base !~ /\S/ and $root_command->{'cmdname'} eq 'top' 
-              and defined($self->{'misc_elements_targets'}->{'Top'})) {
-            $target_base = $self->{'misc_elements_targets'}->{'Top'};
-          }
-          my $nr=0;
-          my $target = $target_base;
-          while ($self->{'ids'}->{$target}) {
-            $target = $target_base.'-'.$nr;
-            $nr++;
-            # Avoid integer overflow
-            die if ($nr == 0);
-          }
-          my $id = $target;
-
-          if ($root_command->{'extra'}->{'associated_node'} 
-              and $self->get_conf('USE_NODE_TARGET')) {
-            $target 
-             = $self->{'targets'}->{$root_command->{'extra'}->{'associated_node'}}->{'id'};
-          }
-          # FIXME choose one (in comments, use target, other use id)
-          #my $target_contents = 'toc-'.$target;
-          #my $target_base_contents;
-          #if ($root_command->{'extra'}->{'associated_node'} 
-          #    and $self->get_conf('USE_NODE_TARGET') {
-          #  $target_base_contents = $target;
-          #} else {
-          # $target_base_contents = $target_base;
-          #}
-          my $target_contents = 'toc-'.$id;
-          my $target_base_contents = $target_base;
-          my $toc_nr = $nr -1;
-          while ($self->{'ids'}->{$target_contents}) {
-            $target_contents = 'toc-'.$target_base_contents.'-'.$toc_nr;
-            $toc_nr++;
-            # Avoid integer overflow
-            die if ($toc_nr == 0);
-          }
-          my $id_contents = $target_contents;
-
-          # FIXME choose one (in comments, use target, other use id)
-          #my $target_shortcontents = 'stoc-'.$target;
-          #my $target_base_shortcontents;
-          #if ($root_command->{'extra'}->{'associated_node'} 
-          #    and $self->get_conf('USE_NODE_TARGET') {
-          #  $target_base_shortcontents = $target;
-          #} else {
-          #  $target_base_shortcontents = $target_base;
-          #}
-          my $target_shortcontents = 'stoc-'.$id;
-          my $target_base_shortcontents = $target_base;
-          my $stoc_nr = $nr -1;
-          while ($self->{'ids'}->{$target_shortcontents}) {
-            $target_shortcontents = 'stoc-'.$target_base_shortcontents
-                                       .'-'.$stoc_nr;
-            $stoc_nr++;
-            # Avoid integer overflow
-            die if ($stoc_nr == 0);
-          }
-          my $id_shortcontents = $target_shortcontents;
-
-          if (defined($Texinfo::Config::sectioning_command_target_name)) {
-            ($target, $id, $target_contents, $id_contents,
-             $target_shortcontents, $id_shortcontents) 
-                = &$Texinfo::Config::sectioning_command_target_name($self, 
-                                             $root_command, $target, $id,
-                                             $target_contents, $id_contents,
-                                             $target_shortcontents, $id_shortcontents);
-          }
-          if ($self->get_conf('DEBUG')) {
-            print STDERR "Register $root_command->{'cmdname'} $target, $id\n";
-          }
-          $self->{'targets'}->{$root_command} = {
-                                   'target' => $target, 
-                                   'id' => $id,
-                                   'contents_target' => $target_contents,
-                                   'contents_id' => $id_contents,
-                                   'shortcontents_target' => $target_shortcontents,
-                                   'shortcontents_id' => $id_shortcontents,
-                                  };
-          # FIXME this should really be use carefully, since the mapping
-          # is not what one expects
-          $self->{'ids'}->{$id} = $root_command;
-          $self->{'ids'}->{$id_contents} = $root_command;
-          $self->{'ids'}->{$id_shortcontents} = $root_command;
+          $self->_new_sectioning_command_target($root_command);
         }
       }
     }
