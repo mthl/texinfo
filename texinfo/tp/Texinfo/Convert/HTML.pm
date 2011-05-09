@@ -865,6 +865,7 @@ my %default_commands_args = (
   'uref' => [['codestring'], ['normal'], ['normal']],
   'url' => [['codestring'], ['normal'], ['normal']],
   'printindex' => [[]],
+  'sp' => [[]],
   'inforef' => [['code'],['normal'],['text']],
   'xref' => [['code'],['normal'],['normal'],['text'],['normal']],
   'pxref' => [['code'],['normal'],['normal'],['text'],['normal']],
@@ -1693,6 +1694,25 @@ sub _convert_verbatiminclude_command($$$$)
 
 $default_commands_conversion{'verbatiminclude'} 
   = \&_convert_verbatiminclude_command;
+
+sub _convert_sp_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  if (defined($command->{'extra'}->{'misc_args'}->[0])) {
+    my $sp_nr = $command->{'extra'}->{'misc_args'}->[0];
+    if ($self->in_preformatted()) {
+      return "\n" x $sp_nr;
+    } else {
+      return "<br>\n" x $sp_nr;
+    }
+  }
+}
+
+$default_commands_conversion{'sp'} = \&_convert_sp_command;
 
 my $html_menu_entry_index;
 sub _convert_menu_command($$$$)
@@ -3064,7 +3084,7 @@ sub _new_sectioning_command_target($$)
       and defined($self->{'misc_elements_targets'}->{'Top'})) {
     $target_base = $self->{'misc_elements_targets'}->{'Top'};
   }
-  my $nr=0;
+  my $nr=1;
   my $target = $target_base;
   while ($self->{'ids'}->{$target}) {
     $target = $target_base.'-'.$nr;
