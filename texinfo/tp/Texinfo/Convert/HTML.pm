@@ -3907,7 +3907,8 @@ sub _default_contents($$;$$)
   $ul_class = $NO_BULLET_LIST_CLASS if ($self->get_conf('NUMBER_SECTIONS'));
 
   my $result = '';
-  $result .= "<div class=\"contents\">\n";
+  $result .= $self->attribute_class('div', $cmdname).">\n";
+
   foreach my $top_section (@{$section_root->{'section_childs'}}) {
     my $section = $top_section;
  SECTION:
@@ -3915,16 +3916,27 @@ sub _default_contents($$;$$)
       if ($section->{'cmdname'} ne 'top') {
         my $text = $self->command_text($section);
         # FIXME OVERVIEW_LINK_TO_TOC?
-        my $href = $self->command_href($section, $filename);
+        my $href;
+        if (!$contents and $self->get_conf('OVERVIEW_LINK_TO_TOC')) {
+          $href = $self->command_contents_href($section, 'contents', $filename);
+        } else {
+          $href = $self->command_href($section, $filename);
+        }
         my $toc_id = $self->command_contents_id($section, $cmdname);
-        $result .= (' ' x (2*($section->{'level'} - $root_level))) 
-          . "<li><a name=\"$toc_id\" href=\"$href\">$text</a>"
-           if ($text ne '');
+        if ($text ne '') {
+          # no indenting for shortcontents
+          $result .= (' ' x (2*($section->{'level'} - $root_level))) 
+            if ($contents);
+          $result .= "<li><a name=\"$toc_id\" href=\"$href\">$text</a>";
+        }
       }
+      # for shortcontents don't do child if child is not toplevel
       if ($section->{'section_childs'}
           and ($contents or $section->{'level'} < $root_level+1)) {
+        # no indenting for shortcontents
         $result .= "\n". ' ' x (2*($section->{'level'} - $root_level))
-          . $self->attribute_class('ul', $ul_class) .">\n";
+          if ($contents);
+        $result .= $self->attribute_class('ul', $ul_class) .">\n";
         $section = $section->{'section_childs'}->[0];
       } elsif ($section->{'section_next'}) {
         $result .= "</li>\n";
@@ -4212,6 +4224,8 @@ EOT
     return $about;
   } elsif ($special_type eq 'Contents') {
     return $self->{'contents'}($self, 'contents', undef);
+  } elsif ($special_type eq 'Overview') {
+    return $self->{'contents'}($self, 'shortcontents', undef);
   }
 }
 
