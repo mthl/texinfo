@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-03-25.18; # UTC
+htmlxrefversion=2011-05-15.15; # UTC
 
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -80,6 +80,12 @@ bpel2owfn	mono	http://www.gnu.org/software/bpel2owfn/manual/2.0.x/bpel2owfn.html
 
 cflow		mono	${GS}/cflow/manual/cflow
 cflow		node	${GS}/cflow/manual/html_node/
+
+chess		mono	${GS}/chess/manual/gnuchess.html
+chess		node	${GS}/chess/manual/html_node/
+
+complexity	mono	${GS}/complexity/manual/complexity.html
+complexity	node	${GS}/complexity/manual/html_node/
 
 coreutils	mono	${GS}/coreutils/manual/coreutils
 coreutils	node	${GS}/coreutils/manual/html_node/
