@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.85 2011-05-15 15:30:37 karl Exp $
+$Id: dir-example,v 1.86 2011-05-19 23:27:26 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -46,12 +46,10 @@ Text creation and manipulation
 * Diff: (diff).                 Comparing and merging files.
 * Diffutils: (diff).            Comparing and merging files.
 * Gawk: (gawk).                 A text scanning and processing language.
-* M4: (m4).                     A powerful macro processor.
-* Word differences: (wdiff).    GNU wdiff and diff related tools.
 * grep: (grep).                 Print lines matching a pattern.
+* M4: (m4).                     A powerful macro processor.
 * sed: (sed).                   Stream EDitor.  
 * Wdiff: (wdiff).               Word difference finder and related tools.
-* sed: (sed).                   Stream EDitor.  
 
 Texinfo documentation system
 * Info: (info).                 How to use the documentation browsing system.
@@ -68,6 +66,8 @@ Archiving
 * Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
 * Shar utilities: (sharutils).  Shell archiver, uuencode/uudecode.
 * Tar: (tar).                   Making tape (or disk) archives.
+* Xorriso: (xorriso).           Burns ISO 9660 on CD, DVD, BD.
+* Xorrisofs: (xorrisofs).       Emulates ISO 9660 program mkisofs
 
 Compression
 * Gzip: (gzip).                 General (de)compression of files (lzw).
