@@ -1,3 +1,15 @@
+2011-05-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: use single % consistently for comments.
+	(\need): remove old definition unused for many years.
+	
+	* doc/texinfo.tex (\deftypefnnl): new layout command.
+        (\ifdoingtypefn, \ifrettypeownline): new conditionals.
+        (\deftypefngeneral): set \doingtypefntrue.
+        (\defname): force vmode; implement layout option (requires
+ 	 third \parshape line).
+        Suggestion from Thien-Thi Nguyen, help-texinfo 03 Mar 2011 12:16:28.
+
 2011-05-11  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (^^a0): use \tie instead of ~ for the no-break space,
