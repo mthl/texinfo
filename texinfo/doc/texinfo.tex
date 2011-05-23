@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2011-05-21.16}
+\def\texinfoversion{2011-05-23.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -6769,11 +6769,11 @@ end
 \newif\ifdoingtypefn       % doing typed function?
 \newif\ifrettypeownline    % typeset return type on its own line?
 
-% @deftypefnnl on|off says whether the return type of typed functions
-% are printed on their own line.  This affects @deftypefn, @deftypeop,
-% and @deftypemethod.
+% @deftypefnnewline on|off says whether the return type of typed functions
+% are printed on their own line.  This affects @deftypefn, @deftypefun,
+% @deftypeop, and @deftypemethod.
 % 
-\parseargdef\deftypefnnl{%
+\parseargdef\deftypefnnewline{%
   \def\temp{#1}%
   \ifx\temp\onword
     \expandafter\let\csname SETtxideftypefnnl\endcsname

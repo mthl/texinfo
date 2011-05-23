@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.380 2011-04-30 15:52:30 pertusus Exp $
+@c $Id: texinfo.txi,v 1.381 2011-05-23 23:35:51 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -12738,9 +12738,12 @@ in the index of variables.
 @node Typed Functions
 @subsection Functions in Typed Languages
 
+@cindex Typed functions
+@cindex Functions, in typed languages
+
 The @code{@@deftypefn} command and its variations are for describing
-functions in languages in which you must declare types of variables and
-functions, such as C and C++.
+functions in languages in which you must declare types of variables
+and functions, such as C and C++.
 
 @table @code
 @findex deftypefn
@@ -12750,7 +12753,7 @@ functions and similar entities that may take arguments and that are
 typed.  The @code{@@deftypefn} command is written at the beginning of
 a line and is followed on the same line by the category of entity
 being described, the type of the returned value, the name of this
-particular entity, and its arguments, if any.@refill
+particular entity, and its arguments, if any.
 
 @need 800
 @noindent
@@ -12768,7 +12771,7 @@ For example,
 @need 1000
 @noindent
 (where the text before the ``@dots{}'', shown above as two lines, would
-actually be a single line in a real Texinfo file) produces the following
+normally be a single line in a real Texinfo file) produces the following
 in Info:
 
 @smallexample
@@ -12790,19 +12793,18 @@ In a printed manual, it produces:
 
 This means that @code{foobar} is a ``library function'' that returns an
 @code{int}, and its arguments are @var{foo} (an @code{int}) and
-@var{bar} (a @code{float}).@refill
+@var{bar} (a @code{float}).
 
 Since in typed languages, the actual names of the arguments are
 typically scattered among data type names and keywords, Texinfo cannot
-find them without help.  You can either (a)@tie{}write everything
-as straight text, and it will be printed in slanted type; (b)@tie{}use
-@code{@@var} for the variable names, which will uppercase the
-variable names in Info and use the slanted typewriter font in printed
-output; (c)@tie{}use @code{@@var} for the variable names and
-@code{@@code} for the type names and keywords, which will be dutifully
-obeyed.
+find them without help.  You can either (a)@tie{}write everything as
+straight text, and it will be printed in slanted type; (b)@tie{}use
+@code{@@var} for the variable names, which will uppercase the variable
+names in Info and use the slanted typewriter font in printed output;
+(c)@tie{}use @code{@@var} for the variable names and @code{@@code} for
+the type names and keywords, which will be dutifully obeyed.
 
-The template for @code{@@deftypefn} is:@refill
+The template for @code{@@deftypefn} is:
 
 @example
 @group
@@ -12814,7 +12816,7 @@ The template for @code{@@deftypefn} is:@refill
 
 @noindent
 Note that if the @var{category} or @var{data type} is more than one
-word then it must be enclosed in braces to make it a single argument.@refill
+word then it must be enclosed in braces to make it a single argument.
 
 If you are describing a procedure in a language that has packages,
 such as Ada, you might consider using @code{@@deftypefn} in a manner
@@ -12832,14 +12834,14 @@ paragraphs.  For example:
 @end example
 
 @noindent
-(The @code{@@deftypefn} arguments are shown using continuations
+(Here the @code{@@deftypefn} arguments are shown using continuations
 (@pxref{Def Cmd Continuation Lines}), but could be on a single line in
 a real Texinfo file.)
 
 In this instance, the procedure is classified as belonging to the
 package @code{stacks} rather than classified as a `procedure' and its
 data type is described as @code{private}.  (The name of the procedure
-is @code{push}, and its arguments are @var{s} and @var{n}.)@refill
+is @code{push}, and its arguments are @var{s} and @var{n}.)
 
 @code{@@deftypefn} creates an entry in the index of functions for
 @var{name}.
@@ -12863,15 +12865,33 @@ for functions in typed languages.  The command is equivalent to
 
 @end table
 
+@cindex Return type, own line for
+@findex deftypefnnewline
+Ordinarily, the return type is printed on the same line as the
+function name and arguments, as shown above.  In source code, GNU
+style is to put the return type on a line by itself.  So Texinfo
+provides an option to do that: @code{@@deftypefnnewline on}.
+
+This affects typed functions only---not untyped functions, not typed
+variables, etc..  Specifically, it affects the commands in this
+section, and the analogous commands for object-oriented languages,
+namely @code{@@deftypeop} and @code{@@deftypemethod}
+(@pxref{Object-Oriented Methods}).
+
+Specifying @code{@@deftypefnnewline off} reverts to the default.
+
 
 @node Typed Variables
 @subsection Variables in Typed Languages
+
+@cindex Typed variables
+@cindex Variables, in typed languages
 
 Variables in typed languages are handled in a manner similar to
 functions in typed languages.  @xref{Typed Functions}.  The general
 definition command @code{@@deftypevr} corresponds to
 @code{@@deftypefn} and the specialized definition command
-@code{@@deftypevar} corresponds to @code{@@deftypefun}.@refill
+@code{@@deftypevar} corresponds to @code{@@deftypefun}.
 
 @table @code
 @findex deftypevr
@@ -13227,6 +13247,9 @@ to the @code{@@defmethod} command with the addition of the
 @code{@@deftypemethod} creates an entry in the index of functions.
 
 @end table
+
+The typed commands are affected by the @code{@@deftypefnnewline}
+option (@pxref{Typed Functions,, Functions in Typed Languages}).
 
 
 @node Def Cmd Conventions
@@ -14644,13 +14667,15 @@ Future major revisions of Texinfo may ease some of these limitations
 @findex alias
 
 The @samp{@@alias} command defines a new command to be just like an
-existing one.  This is useful for defining additional markup names, thus
-preserving semantic information in the input even though the output
-result may be the same.
+existing one.  This is useful for defining additional markup names,
+thus preserving additional semantic information in the input even
+though the output result may be the same.
 
 Write the @samp{@@alias} command on a line by itself, followed by the
 new command name, an equals sign, and the existing command name.
-Whitespace around the equals sign is ignored.  Thus:
+Whitespace around the equals sign is optional and ignored if present.
+Thus:
+
 @example
 @@alias @var{new} = @var{existing}
 @end example
@@ -14667,17 +14692,19 @@ You'd do this as follows:
 
 Macros do not always have the same effect as aliases, due to vagaries
 of argument parsing.  Also, aliases are much simpler to define than
-macros.  So the command is not redundant.  (It was also heavily used
-in the Jargon File!)
+macros.  So the command is not redundant.
+
+Unfortunately, it's not possible to alias Texinfo environments; for
+example, @code{@@alias lang=example} is an error.
 
 Aliases must not be recursive, directly or indirectly.
 
 It is not advisable to redefine any @TeX{} primitive, plain @TeX{}, or
 Texinfo command name as an alias.  Unfortunately this is a very large
 set of names, and the possible resulting errors from @TeX{} are
-completely unpredictable.
+unpredictable.
 
-@command{makeinfo} will accept the same identifiers for alias as it
+@command{makeinfo} will accept the same identifiers for aliases as it
 does for macro names, that is, alphanumerics and (except as the first
 character) @samp{-}.
 
@@ -21622,6 +21649,11 @@ category of entity being described, the type, the name of the
 entity, and its arguments, if any.  @xref{Definition Commands}, and
 @ref{deffnx,, Def Cmds in Detail}.
 
+@item @@deftypefnnewline @var{on-off}
+Specifies whether return types for @code{@@deftypefn} and similar are
+printed on lines by themselves; default is off.  @xref{Typed
+Functions,, Functions in Typed Languages}.
+
 @item @@deftypefun @var{data-type} @var{function-name} @var{arguments}@dots{}
 @itemx @@deftypefunx @var{data-type} @var{function-name} @var{arguments}@dots{}
 Format a description for a function in a typed language.
@@ -23174,7 +23206,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.380 2011-04-30 15:52:30 pertusus Exp $
+$Id: texinfo.txi,v 1.381 2011-05-23 23:35:51 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23253,7 +23285,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.380 2011-04-30 15:52:30 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.381 2011-05-23 23:35:51 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

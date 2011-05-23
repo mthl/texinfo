@@ -1,4 +1,12 @@
-2011-05-22  Jonathan Nieder  <jrnieder@gmail.com>  (tiny change)
+2011-05-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\deftypefnnewline): rename layout option.
+	* NEWS,
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.txi (Typed Functions),
+	(Object-Oriented Methods): document @deftypefnnewline.	
+
+2011-05-23  Jonathan Nieder  <jrnieder@gmail.com>  (tiny change)
 
 	* util/texi2dvi (local): wrap the fallback definition using eval, to
 	hide it from shells, like dash after "[VAR] Do not poplocalvars

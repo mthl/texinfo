@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.201 2011-02-24 17:20:38 karl Exp $
+$Id: NEWS,v 1.202 2011-05-23 23:35:51 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -26,12 +26,13 @@ one of the relevant sections:
 * Language:
   . new command @part for a group of chapters.
   . new environments @raggedright and @smallquotation.
+  . new commands @codequoteundirected and @codequotebacktick, for a
+    better interface than the @set variables.
+  . new commands @deftypefnnewline to print return types on their own lines.
   . new command @headitemfont for the sake of template rows.
   . new command @urefbreakstyle to control breaking of @url/@uref in TeX.
   . new command @xrefautomaticsectiontitle to allow using section titles
     in cross references by default, instead of node names.
-  . new commands @codequoteundirected and @codequotebacktick, for a
-    better interface than the @set variables.
   . new diacritic command @ogonek.
   . new commands for Icelandic letters eth and thorn: @DH{} @dh{} @TH{} @th{}.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).

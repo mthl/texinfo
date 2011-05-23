@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.17 2011-02-24 17:20:38 karl Exp $
+% $Id: txirefcard.tex,v 1.18 2011-05-23 23:35:52 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -48,9 +48,9 @@
 % Much of the text is based on, and sometimes copied from, the @-Command
 % Summary node in texinfo.txi, written primarily by Bob Chassell.
 
-\def\versionyear{2008}          % year manual was updated
-\def\versionTexinfo{4.13}       % version of Texinfo this manual is for
-\def\year{2008}                 % copyright year
+\def\versionyear{2011}          % year manual was updated
+\def\versionTexinfo{4.13+}      % version of Texinfo this manual is for
+\def\year{2011}                 % copyright year
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
@@ -856,12 +856,11 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 
 \subsection{Paper sizes}
 
-\def\inch{$''$xx}
-The default paper size is \acro{US} letter-size, 8x11\inch.
+The default paper size is \acro{US} letter-size, 8x11in.
 
-\txicmd{@smallbook}{}{Format for a 7x9.25\inch\ trim size.}
+\txicmd{@smallbook}{}{Format for a 7x9.25in trim size.}
 \txicmd{@afourpaper, @afivepaper}{}{Format for A4 and A5 paper sizes.}
-\txicmd{@afourlatex}{}{A variant for A4 with more whitespace.}
+\txicmd{@afourlatex}{}{Variant for A4 with more whitespace.}
 \txicmd{@afourwide}{}{Format for A4 in landscape.}
 \txicmd{@pagesizes}{\rmbrack[{width{\small][}, height}]}{Format for the explicitly given page dimensions, \var{width} by \var{height}.}
 
@@ -887,14 +886,15 @@ It is usually best to omit any of these settings from the Texinfo
 document, thus allowing users to easily override the defaults when
 processing the document according to their desires.
 
-\txicmd{@codequoteundirected}{on|off}{Use undirected single quote for @code{'}; default off.}
-\txicmd{@codequotebacktick}{on|off}{Use backtick (standalone grave accent) for @code{`}; default off.}
+\txicmd{@codequoteundirected}{\code{on|off}}{Use undirected single quote for \code{'}; default off.}
+\txicmd{@codequotebacktick}{\code{on|off}}{Use backtick (standalone grave accent) for \code{`}; default off.}
+\txicmd{@deftypefnnewline}{\code{on|off}}{Put return type on a line by itself; default off.}
 \txicmd{@exampleindent}{indent}{Indent example-like environments by \var{indent} number of spaces (perhaps 0).}
 \txicmd{@firstparagraphindent}{\code{insert|none}}{Indent first paragraphs after section headings, or not.}
 \txicmd{@headings}{\code{on|off|single|double}}{Turn page headings on or off, specify single-sided or double-sided page headings for printing.}
 \txicmd{@kbdinputstyle}{\code{code|distinct|example}}{Specify font for \code{@kbd}: normal \code{@code} font, a distinct (slanted) typewriter font, or a distinct font only within \code{@example} and similar.}
 \txicmd{@paragraphindent}{indent}{Indent paragraphs by \var{indent} number of spaces (perhaps 0); preserve source file indentation if \var{indent} is the string \code{asis}.}
-\txicmd{@setchapternewpage}{\code{on|off|odd}}{Specify whether chapters start on new pages, and if so, whether on odd-numbered (right-hand) new pages; also set the page headings accordingly.}
+\txicmd{@setchapternewpage}{\code{on|off|odd}}{Specify whether chapters start on new pages, and if so, whether on odd-numbered (right-hand) new pages; also set page headings accordingly.}
 \txicmd{@urefbreakstyle}{\code{after|before|none}}{Specify how \code{@uref} should break at special characters; default \code{after}.}
 
 
