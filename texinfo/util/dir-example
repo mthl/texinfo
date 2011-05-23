@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.86 2011-05-19 23:27:26 karl Exp $
+$Id: dir-example,v 1.87 2011-05-23 23:36:54 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -145,6 +145,7 @@ Software development
 * gccinstall: (gccinstall).     Installing the GNU Compiler Collection.
 * gccint: (gccint).             Internals of the GNU Compiler Collection.
 * help2man: (help2man).         Automatic manual page generation from -help.
+* vc-dwim: (vc-dwim).           VCS-agnostic commit, diff, and change logs.
 
 Emacs
 * Ada mode: (ada-mode).         Emacs mode for editing and compiling Ada code.
@@ -542,6 +543,9 @@ Individual utilities
 * uucpd: (inetutils)uucpd invocation.           Unix to Unix Copy.
 * uudecode: (sharutils)uudecode invocation.     Restore file from 7-bits.
 * uuencode: (sharutils)uuencode invocation.     Force binary file to 7-bits.
+* vc-chlog: (vc-dwim)vc-chlog Invocation.       Changelog writing helper tool.
+* vc-dwim: (vc-dwim)vc-dwim Invocation.         Version-control-agnostic diff 
+                                                  and commit tool
 * vdir: (coreutils)vdir invocation.             List directories verbosely.
 * vftovp: (web2c)VFtoVP invocation.             Virtual font -> virtual pl.
 * view-pr: (gnats)Invoking view-pr.             Showing bug reports.
