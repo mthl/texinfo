@@ -3930,7 +3930,7 @@ sub _default_contents($$;$$)
           $result .= "<li><a name=\"$toc_id\" href=\"$href\">$text</a>";
         }
       }
-      # for shortcontents don't do child if child is not toplevel
+      # for shortcontents don't do child if child is not toplevel
       if ($section->{'section_childs'}
           and ($contents or $section->{'level'} < $root_level+1)) {
         # no indenting for shortcontents
