@@ -1,3 +1,12 @@
+2011-05-22  Jonathan Nieder  <jrnieder@gmail.com>  (tiny change)
+
+	* util/texi2dvi (local): wrap the fallback definition using eval, to
+	hide it from shells, like dash after "[VAR] Do not poplocalvars
+	prematurely on regular utilities", 2010-05-27, that implement "local"
+	and treat redefinition of the "local" builtin as a syntax error.
+	Report in http://savannah.gnu.org/bugs/?33374,
+	bug-texinfo 23 May 2011 02:58:35.
+
 2011-05-21  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex: use single % consistently for comments.
