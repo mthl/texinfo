@@ -1,3 +1,8 @@
+2011-05-28  Bruno Haible  <bruno@clisp.org>
+
+	* util/texi2dvi: Set LC_ALL to C for egrep of range expression.
+	bug-texinfo mail, 28 May 2011 16:29:20.
+
 2011-05-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\deftypefnnewline): rename layout option.

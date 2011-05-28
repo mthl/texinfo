@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.162 2011-05-23 21:53:11 karl Exp $
+# $Id: texi2dvi,v 1.163 2011-05-28 22:42:11 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.162 $'
+rcs_revision='$Revision: 1.163 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -1857,7 +1857,7 @@ input_file_name_decode ()
 
   # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
   # prepend `./' in order to avoid that the tools take it as an option.
-  echo "$command_line_filename" | $EGREP '^(/|[A-Za-z]:/)' >&6 \
+  echo "$command_line_filename" | LC_ALL=C $EGREP '^(/|[A-Za-z]:/)' >&6 \
   || command_line_filename="./$command_line_filename"
 
   # See if the file exists.  If it doesn't we're in trouble since, even
