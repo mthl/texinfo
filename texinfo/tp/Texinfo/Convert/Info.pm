@@ -68,15 +68,8 @@ sub output($)
                                      'locations' => []};
   my $header = $self->_info_header();
   pop @{$self->{'count_context'}};
-  if (defined($self->{'destination_directory'})
-      and ! -d $self->{'destination_directory'}) {
-    if (!mkdir($self->{'destination_directory'}, oct(755))) {
-      $self->document_error(sprintf($self->__(
-             "Can't create directories `%s': %s"), 
-             $self->{'destination_directory'}, $!));
-      return undef;
-    }
-  }
+  return undef unless $self->_create_destination_directory();
+
   my $header_bytes = $self->count_bytes($header);
   my $elements = Texinfo::Structuring::split_by_node($root);
 

@@ -468,6 +468,21 @@ sub definition_arguments_content($$)
   return $result;
 }
 
+sub _create_destination_directory($)
+{
+  my $self = shift;
+  if (defined($self->{'destination_directory'})
+      and ! -d $self->{'destination_directory'}) {
+    if (!mkdir($self->{'destination_directory'}, oct(755))) {
+      $self->document_error(sprintf($self->__(
+             "Can't create directories `%s': %s"), 
+             $self->{'destination_directory'}, $!));
+      return undef;
+    }
+  }
+  return 1;
+}
+
 sub xml_protect_text($$)
 {
   my $self = shift;

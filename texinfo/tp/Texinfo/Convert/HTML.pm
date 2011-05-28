@@ -1088,6 +1088,12 @@ sub _convert_style_command($$$$)
   my $args = shift;
 
   my $text = $args->[0]->{'normal'};
+  if (!defined($text)) {
+    # happens with bogus @-commands without argument, like @strong something
+    #cluck "text not defined in _convert_style_command";
+    #print STDERR Texinfo::Structuring::_print_current($command);
+    return '';
+  }
 
   my $attribute_hash = {};
   if ($self->in_preformatted()) {
@@ -1100,7 +1106,7 @@ sub _convert_style_command($$$$)
       my ($style, $class, $attribute_text)
         = _parse_attribute ($attribute_hash->{$cmdname}->{'attribute'});
       $text = $self->attribute_class($style, $class) . "$attribute_text>" 
-              . "$text" . "</$style>";
+              . $text . "</$style>";
     }
     if (defined($attribute_hash->{$cmdname}->{'quote'})) {
       $text = $self->get_conf('OPEN_QUOTE_SYMBOL') . $text
@@ -2245,8 +2251,8 @@ sub _convert_definfoenclose_type($$$$) {
   my $command = shift;
   my $content = shift;
 
-  return $command->{'extra'}->{'begin'} . $content
-         .$command->{'extra'}->{'end'};
+  return $self->xml_protect_text($command->{'extra'}->{'begin'}) . $content
+         .$self->xml_protect_text($command->{'extra'}->{'end'});
 }
 
 $default_types_conversion{'definfoenclose_command'} 
@@ -2533,7 +2539,8 @@ sub _convert_root_text_type($$$$)
   #$result =~ s/^\s*//;
   # if there is no element, the parent should not be an element
   if (defined($self->get_conf('DEFAULT_RULE'))
-      and (!$command->{'parent'}->{'type'}
+      and (!$command->{'parent'} 
+           or !$command->{'parent'}->{'type'}
            or $command->{'parent'}->{'type'} ne 'element')) {
     $result .= $self->get_conf('DEFAULT_RULE') ."\n",
       if $self->get_conf('PROGRAM_NAME_IN_FOOTER');
@@ -3238,8 +3245,13 @@ sub _set_page_file($$$)
   my $page = shift;
   my $filename = shift;
 
+# FIXME directory should be the file name!
   $page->{'filename'} = $filename;
-  $page->{'out_filename'} = $self->{'destination_directory'} . $filename;
+  if (defined($self->{'destination_directory'})) {
+    $page->{'out_filename'} = $self->{'destination_directory'} . $filename;
+  } else {
+    $page->{'out_filename'} = $filename;
+  }
 }
 
 sub _get_page($$);
@@ -4295,6 +4307,7 @@ sub output($$)
   # this sets OUTFILE, to be used if not split, but also
   # 'destination_directory' and 'output_filename' that are useful when split.
   $self->_set_outfile();
+  return undef unless $self->_create_destination_directory();
 
   # This should return undef if called on a tree without node or sections.
   my ($elements, $special_elements, $special_pages) 
@@ -4439,7 +4452,7 @@ sub output($$)
     $output .= _output_text($header, $fh);
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
-        my $element_text = $self->_element($element);
+        my $element_text = $self->_convert($element);
         $output .= _output_text($element_text, $fh);
       }
     } else {
@@ -4856,7 +4869,7 @@ sub _convert($$)
         }
         $content_formatted .= $new_content unless ($only_spaces);
       }
-    } 
+    }
     my $result = '';
     if (exists($self->{'types_conversion'}->{$root->{'type'}})) {
       $result = &{$self->{'types_conversion'}->{$root->{'type'}}} ($self,

@@ -440,6 +440,7 @@ my %info_tests = (
 
 foreach my $test (@converted_test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
+  #push @{$test->[2]->{'test_formats'}}, 'html';
   push @{$test->[2]->{'test_formats'}}, 'info' if ($info_tests{$test->[0]});
 }
 

@@ -195,7 +195,9 @@ in html
 );
 
 my @test_invalid = (
-['no_brace', '@TeX and @code code and @footnote footnote '],
+['no_brace', '@TeX and @code code and @footnote footnote ', 
+#,,{'test_formats' => ['html']}],
+],
 ['no_brace_space_end_line',
 '@code {c}.
 
