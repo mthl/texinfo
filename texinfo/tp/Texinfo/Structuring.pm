@@ -108,29 +108,6 @@ sub _next_content($)
   return $current;
 }
 
-# For debugging
-sub _print_current($)
-{
-  my $current = shift;
-  my $type = '';
-  my $cmd = '';
-  my $parent_string = '';
-  my $text = '';
-  $type = "($current->{'type'})" if (defined($current->{'type'}));
-  $cmd = "\@$current->{'cmdname'}" if (defined($current->{'cmdname'}));
-  $text = "[text: $current->{'text'}]" if (defined($current->{'text'}));
-  my $args = '';
-  my $contents = '';
-  $args = "args(".scalar(@{$current->{'args'}}).')' if $current->{'args'};
-  $contents = "contents(".scalar(@{$current->{'contents'}}).')'
-    if $current->{'contents'};
-  if ("$cmd$type" ne '') {
-    return "$cmd$type : $text $args $contents\n";
-  } else {
-    return "$text $args $contents\n";
-  }
-}
-
 # Not used for now
 # the tree is modified: 'next' pointers are added.
 sub _collect_structure($)
@@ -150,7 +127,7 @@ sub _collect_structure($)
         $current->{'args'}->[$i]->{'next'} = $current->{'args'}->[$i+1];
       }
     }
-    print STDERR ""._print_current($current);
+    print STDERR "".Texinfo::Parser::_print_current($current);
     $current = _next_content($current);
   }
 }
@@ -992,7 +969,7 @@ sub _sort_string($$)
                 : (($a =~ /^[[:alpha:]]/ && 1) || -1);
 }
 
-sub _sort_subroutine($$)
+sub _sort_index_entries($$)
 {
   my $key1 = shift;
   my $key2 = shift;
@@ -1005,7 +982,7 @@ sub _sort_subroutine($$)
   return $res;
 }
 
-sub _sort_entries_in_letter($$)
+sub _sort_index_entries_in_letter($$)
 {
   my $key1 = shift;
   my $key2 = shift;
@@ -1043,7 +1020,7 @@ sub sort_indices($$)
   _do_index_keys($self, $index_entries);
   foreach my $index_name (keys(%$index_entries)) {
     @{$sorted_index_entries->{$index_name}} = 
-        sort _sort_subroutine @{$index_entries->{$index_name}};
+        sort _sort_index_entries @{$index_entries->{$index_name}};
   }
   return $sorted_index_entries;
 }
@@ -1062,7 +1039,7 @@ sub sort_indices_by_letter($$)
     }
     foreach my $letter (sort _sort_string (keys %$index_letter_hash)) {
       my @sorted_letter_entries 
-         = sort _sort_entries_in_letter @{$index_letter_hash->{$letter}};
+         = sort _sort_index_entries_in_letter @{$index_letter_hash->{$letter}};
       push @{$indices_sorted_by_letters->{$index_name}},
         { 'letter' => $letter, 'entries' => \@sorted_letter_entries }; 
     }

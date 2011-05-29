@@ -1,10 +1,3 @@
-
-Test to add (warning when --html):
-
-@strong_macro{}{very strong}
-@strong blah.
-
-
 LINKS_BUTTONS as config, check and document.
 
 API HTML:
@@ -99,18 +92,10 @@ least, could make for a notable speedup.
 @ protecting end of lines in @def* is not kept in any way in the tree.
 Maybe it could be possible to have it as a 'type'?
 
-for i18n, one want to do something like
-{style} {number}: {caption}
-  -> new tree. 
-
-and 
-section {section} in @cite{{manual}} 
-  -> new tree
-
-and also maybe
-{acronym_like} ({explanation})
-  -> replace acronym_like with the already formatted text and 
-     explanation with convert(explanation).
+in HTML, the argument of a quotation is ignored if the quotation is empty,
+like in
+ @quotation thing
+ @end quotation
 
 def/end_of_lines_protected_in_footnote.pl the footnote is
    (1)  -- category: deffn_name arguments arg2 more args with end of line

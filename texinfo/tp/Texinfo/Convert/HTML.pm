@@ -399,10 +399,15 @@ sub command_text($$$)
                and $command->{'extra'}->{'special_element'}) {
         my $special_element = $command->{'extra'}->{'special_element'};
         $tree = $self->get_conf('SPECIAL_ELEMENTS_NAME')->{$special_element};
-      } elsif ($command->{'cmdname'} eq 'node') {
+      } elsif ($command->{'cmdname'} and ($command->{'cmdname'} eq 'node' 
+                                          or $command->{'cmdname'} eq 'anchor')) {
         $tree = {'type' => '_code',
                  'contents' => $command->{'extra'}->{'node_content'}};
       } else {
+        if (!$command->{'extra'}->{'misc_content'}) {
+          cluck "No misc_content: "
+            .Texinfo::Parser::_print_current($command);
+        }
         $tree = {'contents' => [@{$command->{'extra'}->{'misc_content'}}]};
         if ($command->{'number'}) {
           unshift @{$tree->{'contents'}}, {'text' => "$command->{'number'} "};
@@ -1992,7 +1997,7 @@ sub _convert_item_command($$$$)
       $prepend = '';
     } else {
       $prepend = $self->convert_tree(
-         {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}});
+         {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}->[0]});
     }
     if ($contents =~ /\S/) {
       return '<li>' . $prepend .' '. $contents . '</li>';
@@ -2253,15 +2258,13 @@ sub _convert_printindex_command($$$$)
     foreach my $index_entry_ref (@{$letter_entry->{'entries'}}) {
       my $in_code 
        = $self->{'index_names'}->{$index_name}->{$index_entry_ref->{'index_name'}};
-      my $entry_tree = $self->command_text ($index_entry_ref->{'command'}, 
-                                            'tree');
       my $entry;
       if ($in_code) {
         # FIXME clean state
         $entry = $self->convert_tree({'type' => '_code',
-                                      'contents' => [$entry_tree]});
+                                      'contents' => $index_entry_ref->{'content'}});
       } else {
-        $entry = $self->convert_tree($entry_tree);
+        $entry = $self->convert_tree({'contents' => $index_entry_ref->{'content'}});
       }
       next if ($entry !~ /\S/);
       $entry = '<code>' .$entry .'</code>' if ($in_code);
@@ -3886,10 +3889,10 @@ sub _prepare_index_entries($)
         my $region = '';
         $region = "$index_entry->{'region'}-" 
           if (defined($index_entry->{'region'}) and $index_entry->{'region'} ne '');
-        my $normalized_index = _normalized_to_id(
+        my $normalized_index =
           Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
             {'contents' => $index_entry->{'content'}},
-                  $no_unidecode));
+                  $no_unidecode);
         my $target_base = "index-" . $region .$normalized_index;
         my $nr=1;
         my $target = $target_base;
@@ -5089,7 +5092,7 @@ sub _convert($$)
       # TODO different types of contents
       if (ref($root->{'contents'}) ne 'ARRAY') {
         cluck "for $root contents not an array: $root->{'contents'}";
-        print STDERR Texinfo::Structuring::_print_current($root);
+        print STDERR Texinfo::Parser::_print_current($root);
       }
 
       # FIXME as texi2html, ignore space only contents at the beginning.

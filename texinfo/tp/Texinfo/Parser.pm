@@ -923,7 +923,11 @@ sub _print_current($)
   $args = "args(".scalar(@{$current->{'args'}}).')' if $current->{'args'};
   $contents = "contents(".scalar(@{$current->{'contents'}}).')'
     if $current->{'contents'};
-  return "$cmd$type : $args $text $contents\n$parent_string";
+  if ("$cmd$type" ne '') {
+    return "$cmd$type : $text $args $contents\n$parent_string";
+  } else {
+    return "$text $args $contents\n$parent_string";
+  }
 }
 
 sub _print_current_keys($)
