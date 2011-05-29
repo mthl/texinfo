@@ -1720,6 +1720,26 @@ sub _convert_sp_command($$$$)
 
 $default_commands_conversion{'sp'} = \&_convert_sp_command;
 
+sub _convert_exdent_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  # FIXME do something better with css and span?
+  my $preformatted = $self->in_preformatted();
+  
+  if ($preformatted) {
+    return $self->_convert_preformatted_type($cmdname, $command, $args->[0]->{'normal'} ."\n");
+  } else {
+    # ignore alignment information
+    return "<p>".$args->[0]->{'normal'} ."\n</p>";
+  }
+}
+
+$default_commands_conversion{'exdent'} = \&_convert_exdent_command;
+
 my $html_menu_entry_index;
 sub _convert_menu_command($$$$)
 {
