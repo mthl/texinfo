@@ -137,6 +137,12 @@ sub paragraph_number($)
   return $self->{'context'}->[-1]->{'paragraph_number'};
 }
 
+sub preformatted_number($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'preformatted_number'};
+}
+
 sub top_format($)
 {
   my $self = shift;
@@ -230,6 +236,9 @@ sub command_filename($$)
       return $target->{'filename'};
     }
     my ($page, $element, $root_command) = $self->_get_page($command);
+    #if (defined($command->{'cmdname'}) and $command->{'cmdname'} eq 'footnote') {
+    #  print STDERR "footnote $command: page $page\n";
+    #}
     if (defined($element)) {
       $target->{'element'} = $element;
     }
@@ -1161,6 +1170,62 @@ sub _convert_anchor_command($$$$)
 }
 
 $default_commands_conversion{'anchor'} = \&_convert_anchor_command;
+
+my $foot_num;
+my $foot_lines;
+my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
+
+sub _convert_footnote_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $number_in_doc;
+  $foot_num++;
+  if ($self->get_conf('NUMBER_FOOTNOTES')) {
+    $number_in_doc = $foot_num;
+  } else {
+    $number_in_doc = $NO_NUMBER_FOOTNOTE_SYMBOL;
+  }
+  
+  #print STDERR "FOOTNOTE $command\n";
+  my $docid  = $self->command_id($command);
+  my $footid = $self->command_target($command);
+  # happens for bogus footnotes
+  if (!defined($footid)) {
+    die "docid defined but not footid for footnote $foot_num\n"
+      if (defined($docid));
+    return '';
+  }
+
+  my $document_filename = $self->{'current_filename'};
+  my $footnote_filename = $self->command_filename($command);
+  $footnote_filename = '' if (!defined($footnote_filename));
+  $document_filename = '' if (!defined($document_filename));
+
+  if ($document_filename eq $footnote_filename) {
+    $document_filename = $footnote_filename = '';
+  }
+  my $footnote_text;
+  if ($args->[0]) {
+    $footnote_text = $args->[0]->{'normal'};
+  } else {
+    $footnote_text = '';
+  }
+  chomp ($footnote_text);
+  $footnote_text .= "\n";
+
+  $foot_lines .= '<h3>' .
+   "<a name=\"$footid\" href=\"$document_filename#$docid\">($number_in_doc)</a></h3>\n"
+   . $footnote_text;
+  
+
+  return "<a name=\"$docid\" href=\"$footnote_filename#$footid\">($number_in_doc)</a>";
+}
+$default_commands_conversion{'footnote'} = \&_convert_footnote_command;
+
 sub _convert_uref_command($$$$)
 {
   my $self = shift;
@@ -1809,6 +1874,37 @@ sub _convert_exdent_command($$$$)
 
 $default_commands_conversion{'exdent'} = \&_convert_exdent_command;
 
+sub _convert_center_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $preformatted = $self->in_preformatted();
+  
+  if ($preformatted) {
+    return $self->_convert_preformatted_type($cmdname, $command, $args->[0]->{'normal'} ."\n");
+  } else {
+    return "<p align=\"center\">".$args->[0]->{'normal'} ."\n</p>";
+  }
+}
+
+$default_commands_conversion{'center'} = \&_convert_center_command;
+
+sub _convert_author_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  return '' if (!$args->[0] or !$command->{'extra'}->{'titlepage'});
+  return "<strong>$args->[0]->{'normal'}</strong><br>\n";
+}
+
+$default_commands_conversion{'author'} = \&_convert_author_command;
+
 my $html_menu_entry_index;
 sub _convert_menu_command($$$$)
 {
@@ -1836,6 +1932,32 @@ sub _convert_menu_command($$$$)
 $default_commands_conversion{'menu'} = \&_convert_menu_command;
 $default_commands_conversion{'detailmenu'} = \&_convert_menu_command;
 
+sub _convert_quotation_command($$$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+  my $contents = shift;
+
+  my $class = '';
+  $class = $cmdname if ($cmdname ne 'quotation');
+
+  my $attribution = '';
+  if ($command->{'extra'} and $command->{'extra'}->{'authors'}) {
+    foreach my $author (@{$command->{'extra'}->{'authors'}}) {
+      my $centered_author = $self->gdt("\@center --- \@emph{{author}}\n",
+         {'author' => $author->{'extra'}->{'misc_content'}});
+      $centered_author->{'parent'} = $command;
+      $attribution .= $self->convert_tree($centered_author);
+    }
+  }
+  return $self->attribute_class('blockquote', $class).">\n" .$contents 
+    ."</blockquote>\n" . $attribution;
+}
+$default_commands_conversion{'quotation'} = \&_convert_quotation_command;
+$default_commands_conversion{'smallquotation'} = \&_convert_quotation_command;
+
 sub _convert_itemize_command($$$$)
 {
   my $self = shift;
@@ -1847,7 +1969,7 @@ sub _convert_itemize_command($$$$)
      and $command->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
     return "<ul>\n" . $contents. "</ul>\n";
   } else {
-    return attribute_class('ul',$NO_BULLET_LIST_CLASS).">\n" 
+    return $self->attribute_class('ul',$NO_BULLET_LIST_CLASS).">\n" 
             . $contents . "</ul>\n";
   }
 }
@@ -2259,6 +2381,23 @@ my %paragraph_style = (
       'flushright' => 'right',
       );
 
+sub _quotation_arg_to_prepend($$)
+{
+  my $self = shift;
+  my $command = shift;
+  if ($command->{'parent'} and $command->{'parent'}->{'cmdname'}
+      and ($command->{'parent'}->{'cmdname'} eq 'quotation'
+           or $command->{'parent'}->{'cmdname'} eq 'smallquotation')
+      and $command->{'parent'}->{'extra'}
+      and $command->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
+    return $self->convert_tree($self->gdt('@b{{quotation_arg}:} ',
+     {'quotation_arg' => 
+       $command->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]}));
+
+  }
+  return undef;
+}
+
 sub _convert_paragraph_type($$$$)
 {
   my $self = shift;
@@ -2269,11 +2408,18 @@ sub _convert_paragraph_type($$$$)
   if ($self->paragraph_number() == 1) {
     my $in_format = $self->top_format();
     # FIXME also verify that in @item/@tab/@headitem
-    return $content 
-      if ($in_format and ($in_format eq 'itemize' 
-                          or $in_format eq 'enumerate'
-                          or $in_format eq 'multitable'));
+    if ($in_format) {
+      if ($in_format eq 'itemize' 
+          or $in_format eq 'enumerate'
+          or $in_format eq 'multitable') {
+        return $content; 
+      } else {
+        my $prepended = $self->_quotation_arg_to_prepend($command);
+        $content = $prepended.$content if (defined($prepended));
+      }
+    }
   }
+
   my $align = $self->align();
   if ($paragraph_style{$align}) {
     return "<p align=\"$paragraph_style{$align}\">".$content."</p>";
@@ -2293,7 +2439,13 @@ sub _convert_preformatted_type($$$$)
 
   my $current = $command;
   my $pre_class;
+  if ($self->preformatted_number() == 1) {
+    my $prepended = $self->_quotation_arg_to_prepend($command);
+    $content = $prepended.$content if (defined($prepended));
+  }
+
   return '' if ($content eq '');
+
   while ($current->{'parent'}) {
     $current = $current->{'parent'};
     if ($current->{'cmdname'} and $pre_class_commands{$current->{'cmdname'}}) {
@@ -2800,34 +2952,6 @@ sub _convert_element_type($$$$)
 
 $default_types_conversion{'element'} = \&_convert_element_type;
 
-# FIXME this is not used anymore.
-sub _convert_element($$)
-{
-  my $self = shift;
-  my $element = shift;
-
-  my $result = '';
-
-  # This may happen if there are only nodes and sections are used as elements
-  #die "BUG: no 'element_command' for $element" 
-  #  if (!$element->{'extra'}->{'element_command'});
-  die "BUG: no target for $element" 
-    if ($element->{'extra'}->{'element_command'} and
-        !$self->{'targets'}->{$element->{'extra'}->{'element_command'}});
-  print STDERR "NEW ELEMENT $self->{'targets'}->{$element->{'extra'}->{'element_command'}}->{'id'}\n"
-    if ($self->get_conf('DEBUG'));
-
-  $result .= $self->_convert($element);
-
-  print STDERR "END ELEMENT\n" if ($self->get_conf('DEBUG'));
-
-  #$result .= $self->_footnotes($element);
-
-  #print STDERR "AFTER FOOTNOTES\n" if ($self->{'DEBUG'});
-
-  return $result;
-}
-
 sub _initialize($)
 {
   my $self = shift;
@@ -2835,6 +2959,8 @@ sub _initialize($)
   if ($self->get_conf('SHORTEXTN')) {
     $self->set_conf('EXTENSION', 'html');
   }
+  $foot_num = 0;
+  $foot_lines = '';
 
   %{$self->{'css_map'}} = %css_map;
 
@@ -3351,8 +3477,10 @@ sub _get_page($$)
   my $self = shift;
   my $current = shift;
   my ($element, $root_command);
+  #print STDERR " --> GGGGGGG _get_page\n";
   while (1) {
     if ($current->{'type'}) {
+      #print STDERR "GGGGGGG Now in $current->{'type'}\n";
       if ($current->{'type'} eq 'page') {
         return ($current, $element, $root_command);
       } elsif ($current->{'type'} eq 'element') {
@@ -3360,6 +3488,7 @@ sub _get_page($$)
       }
     }
     if ($current->{'cmdname'}) {
+      #print STDERR "GGGGGGG Now in $current->{'cmdname'}\n";
       if ($root_commands{$current->{'cmdname'}}) {
         $root_command = $current;
       } elsif ($region_commands{$current->{'cmdname'}}) {
@@ -3777,6 +3906,38 @@ sub _prepare_index_entries($)
                                                         };
         #print STDERR "Enter $index_entry $index_entry->{'command'}: $id\n";
       }
+    }
+  }
+}
+
+my $footid_base = 'FOOT';
+my $docid_base = 'DOCF';
+
+sub _prepare_footnotes($)
+{
+  my $self = shift;
+
+  if ($self->{'extra'}->{'footnote'}) {
+    my $nr = 0;
+    foreach my $footnote (@{$self->{'extra'}->{'footnote'}}) {
+      $nr++;
+      my $footid = $footid_base.$nr;
+      my $docid = $docid_base.$nr;
+      while ($self->{'ids'}->{$docid} or $self->{'ids'}->{$footid}) {
+        $nr++;
+        $footid = $footid_base.$nr;
+        $docid = $docid_base.$nr;
+        # Avoid integer overflow
+        die if ($nr == 0);
+      }
+      $self->{'ids'}->{$footid} = $footnote;
+      $self->{'ids'}->{$docid} = $footnote;
+      $self->{'targets'}->{$footnote} = { 'id' => $docid,
+                                          'target' => $footid,
+                                        };
+      print STDERR "Enter footnote $footnote: id $docid, target $footid\n"
+       .Texinfo::Convert::Texinfo::convert($footnote)."\n"
+        if ($self->get_conf('DEBUG'));
     }
   }
 }
@@ -4327,6 +4488,8 @@ EOT
     return $self->{'contents'}($self, 'contents', undef);
   } elsif ($special_type eq 'Overview') {
     return $self->{'contents'}($self, 'shortcontents', undef);
+  } elsif ($special_type eq 'Footnotes') {
+    return $foot_lines;
   }
 }
 
@@ -4341,6 +4504,7 @@ sub convert($$)
   my ($elements, $special_elements, $special_pages) 
     = $self->_prepare_elements($root);
   $self->_prepare_index_entries();
+  $self->_prepare_footnotes();
 
   if (!defined($elements)) {
     $result = $self->_convert($root);
@@ -4441,6 +4605,7 @@ sub output($$)
   }
 
   $self->_prepare_index_entries();
+  $self->_prepare_footnotes();
 
   $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage') 
    . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
@@ -4728,6 +4893,7 @@ sub _convert($$)
 
   # process text
   if (defined($root->{'text'})) {
+    # already converted to html, keep it as is
     if ($root->{'type'} and $root->{'type'} eq '_converted') {
       return $root->{'text'};
     }
@@ -4901,6 +5067,8 @@ sub _convert($$)
   } elsif ($root->{'type'}) {
     if ($root->{'type'} eq 'paragraph') {
       $self->{'context'}->[-1]->{'paragraph_number'}++;
+    } elsif ($root->{'type'} eq 'preformatted') {
+      $self->{'context'}->[-1]->{'preformatted_number'}++;
     } elsif ($root->{'type'} eq '_code') {
       $self->{'context'}->[-1]->{'code'}++;
     } elsif ($root->{'type'} eq '_string') {

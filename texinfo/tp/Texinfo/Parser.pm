@@ -3629,6 +3629,7 @@ sub _parse_texi($;$)
                   if ($parent->{'cmdname'}) {
                     if ($parent->{'cmdname'} eq 'titlepage') {
                       push @{$self->{'extra'}->{'author'}}, $current;
+                      $current->{'extra'}->{'titlepage'} = $parent;
                       $found = 1;
                     } elsif ($parent->{'cmdname'} eq 'quotation' or
                         $parent->{'cmdname'} eq 'smallquotation') {
@@ -4089,6 +4090,8 @@ sub _parse_texi($;$)
                 if ($context_command ne $current->{'parent'}->{'cmdname'});
               print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
               my $closed_command = $current->{'parent'}->{'cmdname'};
+              $self->_register_global_command($current->{'parent'}->{'cmdname'},
+                                              $current->{'parent'}, $line_nr);
               $current = $current->{'parent'}->{'parent'};
               $current = $self->_begin_preformatted ($current)
                  if ($close_preformatted_commands{$closed_command});
