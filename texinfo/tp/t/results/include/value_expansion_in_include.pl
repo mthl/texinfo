@@ -182,7 +182,7 @@ $result_trees{'value_expansion_in_include'} = {
             },
             {
               'parent' => {},
-              'text' => ' file (include-value2.txi).
+              'text' => ' file (include-value2.txi) <> ---. 
 '
             }
           ],
@@ -282,7 +282,7 @@ $result_trees{'value_expansion_in_include'} = {
             },
             {
               'parent' => {},
-              'text' => ' file (include-value2.txi).
+              'text' => ' file (include-value2.txi) <> ---. 
 '
             }
           ],
@@ -382,7 +382,7 @@ $result_trees{'value_expansion_in_include'} = {
             },
             {
               'parent' => {},
-              'text' => ' file (include-value2.txi).
+              'text' => ' file (include-value2.txi) <> ---. 
 '
             }
           ],
@@ -547,17 +547,17 @@ $result_texis{'value_expansion_in_include'} = '@set testvar incl-incl.txi
 
 @node Top
 
-testvar include: This is the @emph{included} file (include-value2.txi).
+testvar include: This is the @emph{included} file (include-value2.txi) <> ---. 
 
 testvar verbatiminclude: @verbatiminclude incl-incl.txi
 
 
-test-var include: This is the @emph{included} file (include-value2.txi).
+test-var include: This is the @emph{included} file (include-value2.txi) <> ---. 
 
 test-var verbatiminclude: @verbatiminclude incl-incl.txi
 
 
-test_var include: This is the @emph{included} file (include-value2.txi).
+test_var include: This is the @emph{included} file (include-value2.txi) <> ---. 
 
 test_var verbatiminclude: @verbatiminclude incl-incl.txi
 ';
@@ -568,15 +568,15 @@ $result_texts{'value_expansion_in_include'} = '
 
 
 
-testvar include: This is the included file (include-value2.txi).
+testvar include: This is the included file (include-value2.txi) <> ---. 
 
 testvar verbatiminclude: 
 
-test-var include: This is the included file (include-value2.txi).
+test-var include: This is the included file (include-value2.txi) <> ---. 
 
 test-var verbatiminclude: 
 
-test_var include: This is the included file (include-value2.txi).
+test_var include: This is the included file (include-value2.txi) <> ---. 
 
 test_var verbatiminclude: ';
 

@@ -23,7 +23,7 @@ $result_trees{'misc_raw'} = {
         },
         {
           'parent' => {},
-          'text' => 'in html ',
+          'text' => 'in html <br> ',
           'type' => 'raw'
         }
       ],
@@ -91,7 +91,7 @@ $result_trees{'misc_raw'} = {
         },
         {
           'parent' => {},
-          'text' => 'in  v---erbatim``
+          'text' => 'in  v---erbatim`` <>
 ',
           'type' => 'raw'
         },
@@ -137,13 +137,13 @@ $result_trees{'misc_raw'}{'contents'}[8]{'parent'} = $result_trees{'misc_raw'};
 
 $result_texis{'misc_raw'} = '
 @html 
-in html @end html
+in html <br> @end html
 
 @tex in tex
 @end tex
 
 @verbatim
-in  v---erbatim``
+in  v---erbatim`` <>
 in verbatim2
 @end verbatim
 ';
@@ -152,7 +152,7 @@ in verbatim2
 $result_texts{'misc_raw'} = '
 
 
-in  v---erbatim``
+in  v---erbatim`` <>
 in verbatim2
 ';
 
@@ -160,7 +160,7 @@ $result_errors{'misc_raw'} = [];
 
 
 
-$result_converted{'plaintext'}->{'misc_raw'} = 'in  v---erbatim``
+$result_converted{'plaintext'}->{'misc_raw'} = 'in  v---erbatim`` <>
 in verbatim2
 ';
 

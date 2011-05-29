@@ -844,9 +844,12 @@ $css_map{'pre.format'} = $css_map{'pre.display'};
 $css_map{'pre.smallformat'} = $css_map{'pre.smalldisplay'};
 $css_map{'pre.smalllisp'} = $css_map{'pre.smallexample'};
 
+my %preformatted_commands_context = %preformatted_commands;
+$preformatted_commands_context{'verbatim'} = 1;
+
 my %pre_class_commands;
 my %pre_class_types;
-foreach my $preformatted_command (keys(%preformatted_commands)) {
+foreach my $preformatted_command (keys(%preformatted_commands_context)) {
   $pre_class_commands{$preformatted_command} = $preformatted_command;
 }
 $pre_class_commands{'menu'} = 'menu-preformatted';
@@ -1678,7 +1681,7 @@ sub _convert_verbatim_command($$$$)
   my $contents = shift;
 
   return $self->attribute_class('pre', $cmdname).'>' 
-          .$self->xml_protect_text($contents) . '</pre>';
+          .$contents . '</pre>';
 }
 
 $default_commands_conversion{'verbatim'} = \&_convert_verbatim_command;
@@ -4737,7 +4740,7 @@ sub _convert($$)
       if (exists($block_commands{$command_name})) {
         push @{$self->{'formats'}}, $command_name;
       }
-      if ($preformatted_commands{$command_name}) {
+      if ($preformatted_commands_context{$command_name}) {
         push @{$self->{'preformatted_context'}}, $command_name;
       }
       if ($code_style_commands{$command_name} or 
@@ -4819,7 +4822,7 @@ sub _convert($$)
         $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
                 $command_name, $root, $content_formatted);
       }
-      if ($preformatted_commands{$command_name}) {
+      if ($preformatted_commands_context{$command_name}) {
         pop @{$self->{'preformatted_context'}};
       }
       if ($code_style_commands{$command_name} or 
@@ -4944,11 +4947,6 @@ sub _convert($$)
    #   return $result;
 #    } elsif ($root->{'cmdname'} eq 'center') {
 #      #my ($counts, $new_locations);
- #   } elsif ($root->{'cmdname'} eq 'verbatiminclude') {
- #     my $expansion = $self->Texinfo::Parser::expand_verbatiminclude($root);
- #     unshift @{$self->{'current_contents'}->[-1]}, $expansion
- #       if ($expansion);
- #     return '';
 #    } elsif ($root->{'cmdname'} eq 'insertcopying') {
 #      if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
 #        unshift @{$self->{'current_contents'}->[-1]}, 
@@ -4956,7 +4954,6 @@ sub _convert($$)
 #      }
 #      return '';
 #    } elsif ($root->{'cmdname'} eq 'listoffloats') {
-#    } elsif ($root->{'cmdname'} eq 'sp') {
 # TODO types
 #    } elsif ($root->{'type'} eq 'preformatted') {
  # TODO ?

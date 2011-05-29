@@ -14,13 +14,13 @@ other macro
 '],
 ['misc_raw','
 @html 
-in html @end html
+in html <br> @end html
 
 @tex in tex
 @end tex
 
 @verbatim
-in  v---erbatim``
+in  v---erbatim`` <>
 in verbatim2
 @end verbatim
 '],
