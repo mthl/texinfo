@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-05-15.15; # UTC
+htmlxrefversion=2011-05-29.22; # UTC
 
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -257,7 +257,7 @@ gnu-arch	node	${GS}/gnu-arch/tutorial/
 
 gnu-c-manual	mono	${GS}/gnu-c-manual/gnu-c-manual.html
 
-gnu-crypto	node	${GS}/gnu-crypto/manual/
+ngnu-crypto	node	${GS}/gnu-crypto/manual/
 
 gnubg		mono	${GS}/gnubg/manual/gnubg.html
 gnubg		node	${GS}/gnubg/manual/html_node/
@@ -352,6 +352,8 @@ gzip		node	${GS}/gzip/manual/html_node/
 
 hello		mono	${GS}/hello/manual/hello.html
 hello		node	${GS}/hello/manual/html_node/
+
+help2man	mono	${GS}/help2man/help2man.html
 
 idutils		mono	${GS}/idutils/manual/idutils.html
 idutils		node	${GS}/idutils/manual/html_node/
