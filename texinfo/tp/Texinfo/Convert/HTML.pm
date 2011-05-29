@@ -873,6 +873,7 @@ my %default_commands_args = (
   'xref' => [['code'],['normal'],['normal'],['text'],['normal']],
   'pxref' => [['code'],['normal'],['normal'],['text'],['normal']],
   'ref' => [['code'],['normal'],['normal'],['text'],['normal']],
+  'image' => [['text'],['text'],['text'],['string'],['text']],
 );
 
 # Default for the function references used for the formatting
@@ -1168,6 +1169,56 @@ sub _convert_uref_command($$$$)
 
 $default_commands_conversion{'uref'} = \&_convert_uref_command;
 $default_commands_conversion{'url'} = \&_convert_uref_command;
+
+my @image_files_extensions = ('.png', '.jpg');
+sub _convert_image_command($$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my @extensions = @image_files_extensions;
+
+  if (defined($args->[0]->{'text'})) {
+    my $basefile = $args->[0]->{'text'};
+    my $extension;
+    if (defined($args->[4]) and defined($args->[4]->{'text'})) {
+      $extension = $args->[4]->{'text'};
+      # FIXME determine with Karl if this is correct.
+      unshift @extensions, ".$extension";
+      unshift @extensions, "$extension";
+    }
+    my $image_file;
+    foreach my $extension (@extensions) {
+      if ($self->Texinfo::Common::locate_include_file ($basefile.$extension)) {
+        # use the basename and not the file found.  It is agreed that it is
+        # better, since in any case the files are moved.
+        $image_file = $basefile.$extension;
+        last;
+      }
+    }
+    if (!defined($image_file) or $image_file eq '') {
+      if (defined($extension) and $extension ne '') {
+        $image_file = "$basefile.$extension";
+      } else {
+        $image_file = "$basefile.jpg";
+      }
+      $self->line_warn(sprintf($self->__("\@image file `%s' (for HTML) not found, using `%s'"), $basefile, $image_file), $command->{'line_nr'});
+    }
+    my $alt;
+    if (defined($args->[3]) and defined($args->[3]->{'string'})) {
+      $alt = $args->[3]->{'string'};
+    }
+    $alt = $self->xml_protect_text($basefile) 
+       if (!defined($alt) or ($alt eq ''));
+    return "[ $alt ]" if ($self->in_preformatted());
+    return "<img src=\"".$self->xml_protect_text($image_file)."\" alt=\"$alt\">";
+  }
+  return '';
+}
+
+$default_commands_conversion{'image'} = \&_convert_image_command;
 
 #sub _convert_math_command($$$$)
 #{
@@ -4595,25 +4646,6 @@ sub _definition_category($$$$)
   return $arg_category;
 }
 
-sub _image($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
-    my $basefile = Texinfo::Convert::Text::convert(
-     {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]});
-    my $result = $self->_image_text($root, $basefile);
-    if (defined($result)) {
-      if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-        $result = '['.$result.']';
-      }
-      my $lines_count = ($result =~ tr/\n/\n/);
-      return ($result, $lines_count);
-    }
-  }
-  return ('', 0);
-}
 
 # on top, the converter object which holds some global information
 # 
