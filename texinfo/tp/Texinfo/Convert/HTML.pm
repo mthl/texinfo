@@ -864,7 +864,7 @@ foreach my $indented_format ('example', 'display', 'lisp')
 # default specification of arguments formatting
 my %default_commands_args = (
   'email' => [['code'], ['normal']],
-  'anchor' => [['string']],
+  'anchor' => [['codestring']],
   'uref' => [['codestring'], ['normal'], ['normal']],
   'url' => [['codestring'], ['normal'], ['normal']],
   'printindex' => [[]],
@@ -1146,6 +1146,21 @@ sub _convert_email_command($$$$)
 
 $default_commands_conversion{'email'} = \&_convert_email_command;
 
+sub _convert_anchor_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $id = $self->command_id ($command);
+  if (defined($id)) {
+    return "<a name=\"$id\"></a>";
+  }
+  return '';
+}
+
+$default_commands_conversion{'anchor'} = \&_convert_anchor_command;
 sub _convert_uref_command($$$$)
 {
   my $self = shift;
