@@ -13,7 +13,7 @@
 # Taken from texi2html.pm in 2009.
 # Originally written by Olaf Bachmann.
 #
-# $Id: html.pm,v 1.3 2011-05-01 09:42:23 pertusus Exp $
+# $Id: html.pm,v 1.4 2011-05-29 15:04:51 pertusus Exp $
 
 use strict;
 
@@ -558,7 +558,6 @@ $heading           = \&t2h_default_heading;
 $heading_text      = \&html_default_heading_text;
 $heading_text_preformatted      = \&html_default_heading_text_preformatted;
 $image             = \&html_default_image;
-$image_files       = \&html_default_image_files;
 $index_entry       = \&html_default_index_entry;
 $index_entry_command = \&html_default_index_entry_command;
 $index_entry_label = \&html_default_index_entry_label;
@@ -1944,6 +1943,7 @@ sub html_default_menu_description($$$$)
     {
         $text = '' if (html_simplify_text($element_text) eq html_simplify_text($text));
     }
+    #$text =~ s/^\s*//;
     return "<td align=\"left\" valign=\"top\">$text</td></tr>\n";
 }
 
@@ -2421,25 +2421,6 @@ sub html_default_foot_section($)
       );
     push (@$lines, "</div>\n"); 
     return $lines; 
-}
-
-sub html_default_image_files($$$$)
-{
-    my $base = shift;
-    my $extension = shift;
-    my $texi_base = shift;
-    my $texi_extension = shift;
-    my @files = ();
-    return @files if (!defined($base) or ($base eq ''));
-    if (defined($extension) and ($extension ne ''))
-    {
-       push @files,["$base.$extension", "$texi_base.$texi_extension"];
-    }
-    foreach my $ext (@IMAGE_EXTENSIONS)
-    {
-        push @files,["$base.$ext", "$texi_base.$ext"];
-    }
-    return @files;
 }
 
 # format an image
