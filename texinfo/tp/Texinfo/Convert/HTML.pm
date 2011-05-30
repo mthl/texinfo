@@ -80,6 +80,7 @@ my %default_index_commands = %Texinfo::Common::default_index_commands;
 my %style_commands = %Texinfo::Common::style_commands;
 my %align_commands = %Texinfo::Common::align_commands;
 my %region_commands = %Texinfo::Common::region_commands;
+my %context_brace_command = %Texinfo::Common::context_brace_command;
 
 foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -88,7 +89,7 @@ foreach my $def_command (keys(%def_commands)) {
 # FIXME remove raw commands?
 my %format_context_commands = (%block_commands, %root_commands);
 
-foreach my $misc_context_command('tab', 'item', 'itemx', 'headitem', 'math') {
+foreach my $misc_context_command('tab', 'item', 'itemx', 'headitem') {
   $format_context_commands{$misc_context_command} = 1;
 }
 
@@ -98,61 +99,67 @@ my %upper_case_commands = ( 'sc' => 1 );
 sub in_math($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'math'};
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'math'};
 }
 
 sub in_preformatted($)
 {
   my $self = shift;
-  return $self->{'preformatted_context'}->[-1];
+  return $self->{'document_context'}->[-1]->{'preformatted_context'}->[-1];
 }
 
 sub in_upper_case($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'upper_case'};
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'upper_case'};
 }
 
 sub in_space_protected($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'space_protected'};
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'space_protected'};
 }
 
 sub in_code($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'code'};
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'};
 }
 
 sub in_string($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'string'};
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'};
 }
 
 sub paragraph_number($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'paragraph_number'};
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'paragraph_number'};
 }
 
 sub preformatted_number($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'preformatted_number'};
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'preformatted_number'};
 }
 
 sub top_format($)
 {
   my $self = shift;
-  return $self->{'formats'}->[-1];
+  return $self->{'document_context'}->[-1]->{'formats'}->[-1];
+}
+
+sub commands_stack($)
+{
+  my $self = shift;
+  return @{$self->{'document_context'}->[-1]->{'commands'}};
 }
 
 sub align($)
 {  
   my $self = shift;
-  return $self->{'context'}->[-1]->{'align'}->[-1];
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'align'}->[-1];
 }
 
 sub _get_target($$)
@@ -423,7 +430,7 @@ sub command_text($$$)
                                           and $target->{'tree_nonumber'});
     return $tree if ($type eq 'tree' or $type eq 'tree_nonumber');
     
-    push @{$self->{'context'}}, 
+    push @{$self->{'document_context'}->[-1]->{'context'}}, 
             {'cmdname' => $command->{'cmdname'}};
     if ($type eq 'string') {
       $tree = {'type' => '_string',
@@ -439,7 +446,7 @@ sub command_text($$$)
       $target->{$type} = $self->_convert($tree);
     }
 
-    pop @{$self->{'context'}};
+    pop @{$self->{'document_context'}->[-1]->{'context'}};
     return $target->{$type};
   }
   return undef;
@@ -888,6 +895,8 @@ my %default_commands_args = (
   'pxref' => [['code'],['normal'],['normal'],['text'],['normal']],
   'ref' => [['code'],['normal'],['normal'],['text'],['normal']],
   'image' => [['text'],['text'],['text'],['string'],['text']],
+  'item' => [[]],
+  'itemx' => [[]],
 );
 
 # Default for the function references used for the formatting
@@ -1225,7 +1234,6 @@ sub _convert_footnote_command($$$$)
   $foot_lines .= '<h3>' .
    "<a name=\"$footid\" href=\"$document_filename#$docid\">($number_in_doc)</a></h3>\n"
    . $footnote_text;
-  
 
   return "<a name=\"$docid\" href=\"$footnote_filename#$footid\">($number_in_doc)</a>";
 }
@@ -1981,12 +1989,38 @@ sub _convert_itemize_command($$$$)
 
 $default_commands_conversion{'itemize'} = \&_convert_itemize_command;
 
-sub _convert_item_command($$$$)
+sub _convert_enumerate_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
   my $contents = shift;
+
+  return "<ol>\n" . $contents . "</ol>\n";
+}
+
+$default_commands_conversion{'enumerate'} = \&_convert_enumerate_command;
+
+sub _convert_xtable_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  return "<dl compact=\"compact\">\n" . $contents . "</dl>\n";
+}
+$default_commands_conversion{'table'} = \&_convert_xtable_command;
+$default_commands_conversion{'ftable'} = \&_convert_xtable_command;
+$default_commands_conversion{'vtable'} = \&_convert_xtable_command;
+
+sub _convert_item_command($$$$;$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+  my $last_arg = shift;
 
   if ($command->{'parent'} 
       and $command->{'parent'}->{'cmdname'} eq 'itemize') {
@@ -2004,10 +2038,58 @@ sub _convert_item_command($$$$)
     } else {
       return '';
     }
+  } elsif ($command->{'parent'}
+      and $command->{'parent'}->{'cmdname'} eq 'enumerate') {
+    if ($contents =~ /\S/) {
+      return '<li>' . ' ' . $contents . '</li>';
+    } else {
+      return '';
+    }
+  } elsif ($command->{'parent'}
+      and ($command->{'parent'}->{'cmdname'} eq 'table'
+           or $command->{'parent'}->{'cmdname'} eq 'ftable'
+           or $command->{'parent'}->{'cmdname'} eq 'vtable')) {
+    my $args = $contents;
+    if ($args->[0]) {
+      my $tree = $args->[0]->{'tree'};
+      if ($command->{'parent'}->{'extra'} and $command->{'parent'}->{'extra'}->{'command_as_argument'}) {
+        my $command_as_argument = $command->{'parent'}->{'extra'}->{'command_as_argument'};
+        if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
+          $tree = {'cmdname' => $command_as_argument->{'cmdname'},
+                   'args' => [{'type' => 'brace_command_arg',
+                              'contents' => [$tree]}]
+          };
+        } else {
+          $tree = {'cmdname' => $command_as_argument->{'cmdname'},
+                        'type' => $command_as_argument->{'type'},
+                        'extra' => $command_as_argument->{'extra'},
+                   'args' => [{'type' => 'brace_command_arg',
+                              'contents' => [$tree]}]
+          };
+        }
+      }
+      my $result = $self->convert_tree ($tree);
+      my $in_code_preformatted;
+      foreach my $command_name (reverse($self->commands_stack())) {
+        if ($preformatted_code_commands{$command_name}) {
+          $result = '<tt>' .$result. '</tt>';
+          last;
+        }
+      }
+      my $index_id = $self->command_id ($command);
+      if (defined($index_id)) {
+        $result .= "\n<a name=\"$index_id\"></a>\n";
+      }
+    
+      return '<dt>' .$result. '</dt>' . "\n";
+    } else {
+      return '';
+    }
   }
   return 'TODO';
 }
 $default_commands_conversion{'item'} = \&_convert_item_command;
+$default_commands_conversion{'itemx'} = \&_convert_item_command;
 
 sub _convert_xref_commands($$$$)
 {
@@ -2955,6 +3037,19 @@ sub _convert_element_type($$$$)
 
 $default_types_conversion{'element'} = \&_convert_element_type;
 
+sub _new_document_context($$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  push @{$self->{'document_context'}},
+          {'cmdname' => $cmdname,
+           'context' => [{'cmdname' => $cmdname, 
+                         'align' => ['raggedright']}],
+           'preformatted_context' => [0],
+           'formats' => [],
+          };
+}
+
 sub _initialize($)
 {
   my $self = shift;
@@ -3054,10 +3149,8 @@ sub _initialize($)
     }
   }
 
-  $self->{'context'} = [{'cmdname' => '_toplevel_context', 
-                         'align' => ['raggedright']}];
-  $self->{'preformatted_context'} = [0];
-  $self->{'formats'} = [];
+  $self->{'document_context'} = [],
+  $self->_new_document_context('_toplevel_context');
 
   $self->_translate_names();
 
@@ -4302,9 +4395,9 @@ sub _default_begin_file($$$)
   my $date = '';
   if ($self->get_conf('DATE_IN_HEADER')) {
     # FIXME new context?
-    $self->{'context'}->[-1]->{'string'} = 1;
+    $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'} = 1;
     my $today = $self->convert_tree({'cmdname' => 'today'});
-    delete $self->{'context'}->[-1]->{'string'};
+    delete $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'};
     $date = "\n<meta name=\"date\" content=\"$today\">";
   }
 
@@ -4860,7 +4953,7 @@ sub _convert($$)
   my $root = shift;
 
   if ($self->get_conf('DEBUG')) {
-    print STDERR "ROOT:$root (".join('|',@{$self->{'context'}})."), ->";
+    print STDERR "ROOT:$root (".join('|',@{$self->{'document_context'}->[-1]->{'context'}})."), ->";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     my $text = $root->{'text'}; 
@@ -4949,27 +5042,32 @@ sub _convert($$)
     if (exists($self->{'commands_conversion'}->{$command_name})) {
       my $result;
       my $content_formatted;
+      if (exists($context_brace_command{$command_name})) {
+        $self->_new_document_context($command_name);
+      }
+      push @{$self->{'document_context'}->[-1]->{'commands'}}, 
+        $root->{'cmdname'}; 
       if (exists($format_context_commands{$command_name})) {
-        push @{$self->{'context'}}, {'cmdname' => $command_name,
+        push @{$self->{'document_context'}->[-1]->{'context'}}, {'cmdname' => $command_name,
                                      'align' => ['raggedright']};
       }
       if (exists($block_commands{$command_name})) {
-        push @{$self->{'formats'}}, $command_name;
+        push @{$self->{'document_context'}->[-1]->{'formats'}}, $command_name;
       }
       if ($preformatted_commands_context{$command_name}) {
-        push @{$self->{'preformatted_context'}}, $command_name;
+        push @{$self->{'document_context'}->[-1]->{'preformatted_context'}}, $command_name;
       }
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
-        $self->{'context'}->[-1]->{'code'}++;
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
       } elsif ($upper_case_commands{$command_name}) {
-        $self->{'context'}->[-1]->{'upper_case'}++;
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'upper_case'}++;
       } elsif ($command_name eq 'math') {
-        $self->{'context'}->[-1]->{'math'}++;
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'math'}++;
       } elsif ($command_name eq 'w') {
-        $self->{'context'}->[-1]->{'space_protected'}++;
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'space_protected'}++;
       } elsif ($align_commands{$root->{'cmdname'}}) {
-        push @{$self->{'context'}->[-1]->{'align'}}, $command_name;
+        push @{$self->{'document_context'}->[-1]->{'context'}->[-1]->{'align'}}, $command_name;
       }
       if ($root->{'contents'}) {
         $content_formatted = '';
@@ -4990,6 +5088,11 @@ sub _convert($$)
       if ($brace_commands{$command_name} 
           or ($misc_commands{$command_name} 
               and $misc_commands{$command_name} eq 'line')
+          or ($command_name eq 'item' or $command_name eq 'itemx'
+               and $root->{'parent'}->{'cmdname'}
+               and ($root->{'parent'}->{'cmdname'} eq 'table'
+                    or $root->{'parent'}->{'cmdname'} eq 'ftable'
+                    or $root->{'parent'}->{'cmdname'} eq 'vtable'))
           or ($command_name eq 'quotation' 
               or $command_name eq 'smallquotation')
               or ($command_name eq 'float')) {
@@ -5006,19 +5109,19 @@ sub _convert($$)
               if ($arg_type eq 'normal') {
                 $arg_formatted->{'normal'} = $self->_convert($arg);
               } elsif ($arg_type eq 'code') {
-                $self->{'context'}->[-1]->{'code'}++;
+                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg);
-                $self->{'context'}->[-1]->{'code'}--;
+                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
               } elsif ($arg_type eq 'string') {
-                $self->{'context'}->[-1]->{$arg_type}++;
+                $self->{'document_context'}->[-1]->{'context'}->[-1]->{$arg_type}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg);
-                $self->{'context'}->[-1]->{$arg_type}--;
+                $self->{'document_context'}->[-1]->{'context'}->[-1]->{$arg_type}--;
               } elsif ($arg_type eq 'codestring') {
-                $self->{'context'}->[-1]->{'code'}++;
-                $self->{'context'}->[-1]->{'string'}++;
+                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
+                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg);
-                $self->{'context'}->[-1]->{'string'}--;
-                $self->{'context'}->[-1]->{'code'}--;
+                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}--;
+                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
               } elsif ($arg_type eq 'text') {
                 $arg_formatted->{$arg_type} 
                   = Texinfo::Convert::Text::convert($arg);
@@ -5039,25 +5142,29 @@ sub _convert($$)
                 $command_name, $root, $content_formatted);
       }
       if ($preformatted_commands_context{$command_name}) {
-        pop @{$self->{'preformatted_context'}};
+        pop @{$self->{'document_context'}->[-1]->{'preformatted_context'}};
       }
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
-        $self->{'context'}->[-1]->{'code'}--;
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
       } elsif ($upper_case_commands{$command_name}) {
-        $self->{'context'}->[-1]->{'upper_case'}--;
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'upper_case'}--;
       } elsif ($command_name eq 'math') {
-        $self->{'context'}->[-1]->{'math'}--;
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'math'}--;
       } elsif ($command_name eq 'w') {
-        $self->{'context'}->[-1]->{'space_protected'}--;
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'space_protected'}--;
       } elsif ($align_commands{$command_name}) {
-        pop @{$self->{'context'}->[-1]->{'align'}};
+        pop @{$self->{'document_context'}->[-1]->{'context'}->[-1]->{'align'}};
       }
       if (exists($block_commands{$command_name})) {
-        pop @{$self->{'formats'}};
+        pop @{$self->{'document_context'}->[-1]->{'formats'}};
       }
       if (exists($format_context_commands{$command_name})) {
-        pop @{$self->{'context'}};
+        pop @{$self->{'document_context'}->[-1]->{'context'}};
+      }
+      pop @{$self->{'document_context'}->[-1]->{'commands'}};
+      if (exists($context_brace_command{$command_name})) {
+        pop @{$self->{'document_context'}};
       }
       return $result;
     } else {
@@ -5068,14 +5175,17 @@ sub _convert($$)
       delete $self->{'current_root_command'};
     }
   } elsif ($root->{'type'}) {
+    push @{$self->{'document_context'}->[-1]->{'commands'}}, 
+      $root->{'cmdname'}
+        if ($root->{'cmdname'});
     if ($root->{'type'} eq 'paragraph') {
-      $self->{'context'}->[-1]->{'paragraph_number'}++;
+      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'paragraph_number'}++;
     } elsif ($root->{'type'} eq 'preformatted') {
-      $self->{'context'}->[-1]->{'preformatted_number'}++;
+      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'preformatted_number'}++;
     } elsif ($root->{'type'} eq '_code') {
-      $self->{'context'}->[-1]->{'code'}++;
+      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
     } elsif ($root->{'type'} eq '_string') {
-      $self->{'context'}->[-1]->{'string'}++;
+      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}++;
     } elsif ($root->{'type'} eq 'page') {
       $self->{'current_page'} = $root;
       $self->{'current_filename'} = $root->{'filename'};
@@ -5122,9 +5232,9 @@ sub _convert($$)
       $result = $content_formatted;
     }
     if ($root->{'type'} eq '_code') {
-      $self->{'context'}->[-1]->{'code'}--;
+      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
     } elsif ($root->{'type'} eq '_string') {
-      $self->{'context'}->[-1]->{'string'}--;
+      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}--;
     } elsif ($root->{'type'} eq 'page') {
       delete $self->{'current_page'};
       delete $self->{'current_filename'};
@@ -5133,6 +5243,8 @@ sub _convert($$)
     }
     print STDERR "DO type ($root->{'type'}) => `$result'\n"
       if ($self->get_conf('DEBUG'));
+    pop @{$self->{'document_context'}->[-1]->{'commands'}} 
+        if ($root->{'cmdname'});
     return $result;
     # no type, no cmdname, but contents.
   } elsif ($root->{'contents'}) {
