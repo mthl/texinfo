@@ -1888,7 +1888,7 @@ sub _convert_exdent_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  # FIXME do something better with css and span?
+  # FIXME do something better with css and span?
   my $preformatted = $self->in_preformatted();
   
   if ($preformatted) {
@@ -2143,8 +2143,12 @@ sub _convert_xref_commands($$$$)
     my $reference = $name;
     $reference = "<a href=\"$href\">$name</a>" if ($href ne '');
 
+    # maybe use {'extra'}->{'node_argument'}?
+    my $is_section = ($command->{'cmdname'} ne 'node' 
+                      and $command->{'cmdname'} ne 'anchor'
+                      and $command->{'cmdname'} ne 'float');
     if ($cmdname eq 'pxref') {
-      if ($command->{'cmdname'} ne 'node') {
+      if ($is_section) {
         $tree = $self->gdt('see section {reference_name}', 
          { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
       } else {
@@ -2152,7 +2156,7 @@ sub _convert_xref_commands($$$$)
          { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
       }
     } elsif ($cmdname eq 'xref' or $cmdname eq 'inforef') {
-      if ($command->{'cmdname'} ne 'node') {
+      if ($is_section) {
         $tree = $self->gdt('See section {reference_name}',
          { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
       } else {
@@ -2811,6 +2815,7 @@ sub _convert_def_line_type($$$$)
         'contents' => [$command->{'extra'}->{'def_parsed_hash'}->{'name'}]});
   }
   $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
+  $type_name .= $arguments;
 
   my $index_label = '';
   my $index_id = $self->command_id ($command);

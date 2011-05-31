@@ -1185,7 +1185,7 @@ sub _gather_previous_item($)
                     'parent' => $current,
                     'contents' => []};
   # remove everything that is not an @item/@items or before_item to 
-  # put it in the table_item, starting from the end.
+  # put it in the table_item, starting from the end.
   my $contents_count = scalar(@{$current->{'contents'}});
   for (my $i = 0; $i < $contents_count; $i++) {
     if (($current->{'contents'}->[-1]->{'type'} 
@@ -1256,7 +1256,7 @@ sub _close_command_cleanup($$$) {
   }
 
   if ($item_line_commands{$current->{'cmdname'}}) {
-    # no end at this point
+    # no end at this point
     #my $end;
     #if ($current->{'extra'}->{'end_command'}) {
     #  $end = pop @{$current->{'contents'}};
