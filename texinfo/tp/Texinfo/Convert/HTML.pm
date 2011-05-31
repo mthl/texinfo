@@ -2851,6 +2851,20 @@ foreach my $command (keys(%def_commands)) {
   $default_commands_conversion{$command} = \&_convert_def_command;
 }
 
+sub _convert_table_item_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+
+  if ($content =~ /\S/) {
+    return '<dd>' . $content . '</dd>'."\n";
+  }
+}
+
+$default_types_conversion{'table_item'} = \&_convert_table_item_type;
+
 # This type is the only one present if there are no elements.  It is 
 # therefore used to do the formatting of the element in case there are no 
 # element.
