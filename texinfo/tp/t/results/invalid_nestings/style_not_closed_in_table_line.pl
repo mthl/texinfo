@@ -68,39 +68,45 @@ $result_trees{'style_not_closed_in_table_line'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'line
-'
-            },
-            {
-              'parent' => {},
-              'text' => 'line '
-            },
-            {
-              'args' => [
+              'contents' => [
                 {
-                  'contents' => [
+                  'parent' => {},
+                  'text' => 'line
+'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'line '
+                },
+                {
+                  'args' => [
                     {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'in code '
+                        }
+                      ],
                       'parent' => {},
-                      'text' => 'in code '
+                      'type' => 'brace_command_arg'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
+                  'cmdname' => 'code',
+                  'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 4,
+                    'macro' => ''
+                  },
+                  'parent' => {}
                 }
               ],
-              'cmdname' => 'code',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
-              },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'table_item'
         },
         {
           'args' => [
@@ -202,11 +208,12 @@ $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[0]{'a
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0];
+$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2];
+$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[2]{'args'}[0];

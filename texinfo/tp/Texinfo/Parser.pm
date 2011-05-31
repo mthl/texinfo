@@ -1176,6 +1176,36 @@ sub _end_preformatted ($$$)
   return $current;
 }
 
+# put everything after the last @item/@itemx in an item_table type container.
+sub _gather_previous_item($)
+{
+  my $current = shift;
+
+  my $table_item = {'type' => 'table_item',
+                    'parent' => $current,
+                    'contents' => []};
+  # remove everything that is not an @item/@items or before_item to 
+  # put it in the table_item, starting from the end.
+  my $contents_count = scalar(@{$current->{'contents'}});
+  for (my $i = 0; $i < $contents_count; $i++) {
+    if (($current->{'contents'}->[-1]->{'type'} 
+         and $current->{'contents'}->[-1]->{'type'} eq 'before_item')
+        or ($current->{'contents'}->[-1]->{'cmdname'} 
+            and ($current->{'contents'}->[-1]->{'cmdname'} eq 'item' 
+                 or ($current->{'contents'}->[-1]->{'cmdname'} eq 'itemx')))) {
+      last;
+    } else {
+      my $item_content = pop @{$current->{'contents'}};
+      $item_content->{'parent'} = $table_item;
+      unshift @{$table_item->{'contents'}}, $item_content;
+    }
+  }
+  # FIXME keep table_item with only comments and/or empty lines?
+  if (scalar(@{$table_item->{'contents'}})) {
+    push @{$current->{'contents'}}, $table_item;
+  }
+}
+
 # close formats
 sub _close_command_cleanup($$$) {
   my $self = shift;
@@ -1224,6 +1254,21 @@ sub _close_command_cleanup($$$) {
       push @{$current->{'contents'}}, $def_item;
     }
   }
+
+  if ($item_line_commands{$current->{'cmdname'}}) {
+    # no end at this point
+    #my $end;
+    #if ($current->{'extra'}->{'end_command'}) {
+    #  $end = pop @{$current->{'contents'}};
+    #  die "Not end at end of format $current->{'cmdname'}" 
+    #    if (!$end->{'cmdname'} or $end->{'cmdname'} ne 'end');
+    #}
+    if (@{$current->{'contents'}}) {
+      _gather_previous_item($current);
+    }
+    #push @{$current->{'contents'}}, $end if ($end);
+  }
+  
   # put end out of before_item, and replace it at the end of the parent.
   # remove empty before_item.
   # warn if not empty before_item, but format is empty
@@ -1292,6 +1337,7 @@ sub _close_command_cleanup($$$) {
       }
     }
   }
+
 }
 
 # close the current command, with error messages and give the parent.
@@ -3508,6 +3554,7 @@ sub _parse_texi($;$)
                 if ($command eq 'item' or $command eq 'itemx') {
                   print STDERR "ITEM_LINE\n" if ($self->{'DEBUG'});
                   $current = $parent;
+                  _gather_previous_item($current) if ($command eq 'item');
                   $misc = { 'cmdname' => $command, 'parent' => $current };
                   push @{$current->{'contents'}}, $misc;
                   $line_arg = 1;

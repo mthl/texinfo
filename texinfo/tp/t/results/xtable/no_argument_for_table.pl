@@ -55,13 +55,19 @@ $result_trees{'no_argument_for_table'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'In item.
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'In item.
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'table_item'
         },
         {
           'args' => [
@@ -132,6 +138,7 @@ $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[2]{'args'}[0]{
 $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[2];
 $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_argument_for_table'}{'contents'}[0];
+$result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[3]{'contents'}[0];
 $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[3];
 $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'no_argument_for_table'}{'contents'}[0];
 $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_argument_for_table'}{'contents'}[0]{'contents'}[4]{'args'}[0];

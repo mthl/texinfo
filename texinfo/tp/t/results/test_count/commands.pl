@@ -340,21 +340,27 @@ $result_trees{'commands'} = {
           'parent' => {}
         },
         {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'text
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'text
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'table_item'
         },
         {
           'args' => [
@@ -463,17 +469,18 @@ $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'extra'}{'index_entry'}{
 $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'extra'}{'index_entry'}{'content'};
 $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[9];
 $result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[9];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[3]{'args'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[3]{'args'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[3];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[3]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[9];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[3]{'parent'} = $result_trees{'commands'}{'contents'}[9];
 $result_trees{'commands'}{'contents'}[9]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[9]{'extra'}{'command_as_argument'} = $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[1];
-$result_trees{'commands'}{'contents'}[9]{'extra'}{'end_command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[3];
+$result_trees{'commands'}{'contents'}[9]{'extra'}{'end_command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2];
 $result_trees{'commands'}{'contents'}[9]{'parent'} = $result_trees{'commands'};
 
 $result_texis{'commands'} = '@TeX{}. Ab. @@. @
@@ -584,14 +591,16 @@ $result_converted{'debugcount'}->{'commands'} = ' [1] (0,0) :text_root
      [28] (53,10)
     [27] (53,10)
    [26] (61,11)
-   [31] (61,11) :empty_line:text|\\n|
-   [31] (62,12)
-   [32] (62,12) :paragraph
-    [33] (62,12) :text|text\\n|
-    [33] (71,12)
-   [32] (72,13)
-   [34] (72,13) @end
-   [34] (72,13)
+   [31] (61,11) :table_item
+    [32] (61,11) :empty_line:text|\\n|
+    [32] (62,12)
+    [33] (62,12) :paragraph
+     [34] (62,12) :text|text\\n|
+     [34] (71,12)
+    [33] (72,13)
+   [31] (72,13)
+   [35] (72,13) @end
+   [35] (72,13)
   [25] (72,13)
  [1] (72,13)
 TeX. Ab.  @.  e~, i^

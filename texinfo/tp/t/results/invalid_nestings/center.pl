@@ -790,52 +790,58 @@ $result_trees{'center'} = {
           'parent' => {}
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'centered line with item '
-                },
-                {
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'second item on center line'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'centered line with item '
+                    },
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'second item on center line'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
 ',
-                  'type' => 'spaces_at_end'
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'misc_line_arg'
+              'cmdname' => 'center',
+              'extra' => {
+                'misc_content' => [
+                  {},
+                  {},
+                  {}
+                ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
-          'cmdname' => 'center',
-          'extra' => {
-            'misc_content' => [
-              {},
-              {},
-              {}
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => ''
-          },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'table_item'
         },
         {
           'args' => [
@@ -1695,15 +1701,16 @@ $result_trees{'center'}{'contents'}[22]{'contents'}[0]{'args'}[0]{'contents'}[2]
 $result_trees{'center'}{'contents'}[22]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[0];
 $result_trees{'center'}{'contents'}[22]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[22]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[22]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[22];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'extra'}{'misc_content'}[1] = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'extra'}{'misc_content'}[2] = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'extra'}{'misc_content'}[1] = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'extra'}{'misc_content'}[2] = $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'center'}{'contents'}[22]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[1];
 $result_trees{'center'}{'contents'}[22]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[22];
 $result_trees{'center'}{'contents'}[22]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[2]{'args'}[0];
 $result_trees{'center'}{'contents'}[22]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[22]{'contents'}[2]{'args'}[0];

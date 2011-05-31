@@ -102,13 +102,19 @@ $result_trees{'table_in_code'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'text
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'text
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'table_item'
         },
         {
           'args' => [
@@ -188,6 +194,7 @@ $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'content
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0];
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
+$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0];
