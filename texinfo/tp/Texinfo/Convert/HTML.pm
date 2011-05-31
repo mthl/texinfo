@@ -415,10 +415,24 @@ sub command_text($$$)
           cluck "No misc_content: "
             .Texinfo::Parser::_print_current($command);
         }
-        $tree = {'contents' => [@{$command->{'extra'}->{'misc_content'}}]};
-        if ($command->{'number'}) {
-          unshift @{$tree->{'contents'}}, {'text' => "$command->{'number'} "};
+        if (defined($command->{'number'})
+            and ($self->get_conf('NUMBER_SECTIONS')
+                 or !defined($self->get_conf('NUMBER_SECTIONS')))) {
+          if ($command->{'cmdname'} eq 'appendix' and $command->{'level'} == 1) {
+            $tree = $self->gdt('Appendix {number} {section_title}',
+                             {'number' => {'text' => $command->{'number'}},
+                              'section_title'
+                                => {'contents' => $command->{'extra'}->{'misc_content'}}});
+          } else {
+            $tree = $self->gdt('{number} {section_title}',
+                             {'number' => {'text' => $command->{'number'}},
+                              'section_title'
+                                => {'contents' => $command->{'extra'}->{'misc_content'}}});
+          }
+        } else {
+          $tree = {'contents' => [@{$command->{'extra'}->{'misc_content'}}]};
         }
+
         $target->{'tree_nonumber'} 
           = {'contents' => $command->{'extra'}->{'misc_content'}};
       }
@@ -2014,13 +2028,12 @@ $default_commands_conversion{'table'} = \&_convert_xtable_command;
 $default_commands_conversion{'ftable'} = \&_convert_xtable_command;
 $default_commands_conversion{'vtable'} = \&_convert_xtable_command;
 
-sub _convert_item_command($$$$;$)
+sub _convert_item_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
   my $contents = shift;
-  my $last_arg = shift;
 
   if ($command->{'parent'} 
       and $command->{'parent'}->{'cmdname'} eq 'itemize') {
@@ -2283,8 +2296,8 @@ sub _convert_printindex_command($$$$)
   my @non_alpha = ();
   my @alpha = ();
   # collect the links
+  my $symbol_idx = 0;
   foreach my $letter_entry (@{$self->{'index_entries_by_letter'}->{$index_name}}) {
-    my $symbol_idx = 0;
     my $letter = $letter_entry->{'letter'};
     # FIXME id or target?
     my $index_element_id = $self->_element_direction($self->{'current_element'},
@@ -5102,11 +5115,11 @@ sub _convert($$)
       if ($brace_commands{$command_name} 
           or ($misc_commands{$command_name} 
               and $misc_commands{$command_name} eq 'line')
-          or ($command_name eq 'item' or $command_name eq 'itemx'
-               and $root->{'parent'}->{'cmdname'}
-               and ($root->{'parent'}->{'cmdname'} eq 'table'
-                    or $root->{'parent'}->{'cmdname'} eq 'ftable'
-                    or $root->{'parent'}->{'cmdname'} eq 'vtable'))
+          or (($command_name eq 'item' or $command_name eq 'itemx')
+               and ($root->{'parent'}->{'cmdname'}
+                    and ($root->{'parent'}->{'cmdname'} eq 'table'
+                         or $root->{'parent'}->{'cmdname'} eq 'ftable'
+                         or $root->{'parent'}->{'cmdname'} eq 'vtable')))
           or ($command_name eq 'quotation' 
               or $command_name eq 'smallquotation')
               or ($command_name eq 'float')) {
