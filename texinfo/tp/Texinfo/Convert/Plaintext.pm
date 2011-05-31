@@ -838,12 +838,31 @@ sub _contents($$$)
  SECTION:
     while ($section) {# and $section ne $section_root) {
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-      my $section_title = $self->convert_line({'contents'
-                => $section->{'extra'}->{'misc_content'},
-               'type' => 'frenchspacing'});
+      my $section_title_tree;
+      if (defined($section->{'number'}) 
+          and ($self->get_conf('NUMBER_SECTIONS')
+               or !defined($self->get_conf('NUMBER_SECTIONS')))) {
+        if ($section->{'cmdname'} eq 'appendix' and $section->{'level'} == 1) {
+          $section_title_tree = $self->gdt('Appendix {number} {section_title}',
+                           {'number' => {'text' => $section->{'number'}},
+                            'section_title' 
+                              => {'contents' => $section->{'extra'}->{'misc_content'}}});
+        } else {
+          $section_title_tree = $self->gdt('{number} {section_title}',
+                           {'number' => {'text' => $section->{'number'}},
+                            'section_title' 
+                              => {'contents' => $section->{'extra'}->{'misc_content'}}});
+        }
+      } else {
+        $section_title_tree = {'contents' => $section->{'extra'}->{'misc_content'}};
+      }
+      my $section_title = $self->convert_line(
+            {'contents' => [$section_title_tree],
+             'type' => 'frenchspacing'});
       pop @{$self->{'count_context'}};
-      my $text = Texinfo::Convert::Text::numbered_heading($section, 
-                     $section_title, $self->get_conf('NUMBER_SECTIONS'))."\n";
+      my $text = $section_title;
+      chomp ($text);
+      $text .= "\n";
       $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
       $lines_count++;
       if ($section->{'section_childs'} 
