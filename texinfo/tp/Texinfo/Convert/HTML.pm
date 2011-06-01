@@ -770,6 +770,7 @@ my %defaults = (
   'TOP_NODE_FILE_TARGET' => 'index',
   'TRANSLITERATE_FILE_NAMES' => 1,
   'USE_LINKS'            => 1,
+  'USE_NUMERIC_ENTITY'   => 1,
   'DATE_IN_HEADER'       => 0,
   'AVOID_MENU_REDUNDANCY' => 0,
   'HEADERS'              => 1,

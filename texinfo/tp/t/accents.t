@@ -1,12 +1,14 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 23 };
+BEGIN { plan tests => 50 };
 
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use lib '../texi2html/lib/libintl-perl/lib/';
 use lib '../texi2html/lib/Text-Unidecode/lib/';
 use Texinfo::Convert::Text;
+use Texinfo::Convert::Converter;
+use Texinfo::Convert::HTML;
 use Texinfo::Parser;
 
 ok(1, "modules loading");
@@ -46,12 +48,22 @@ sub test_enable_encoding ($)
   my $test = shift;
   my $texi = $test->[0];
   my $name = $test->[1]; 
-  my $reference = $test->[2]; 
+  my $reference = $test->[2];
+  my $reference_xml = $test->[3];
+  my $reference_xml_entity = $test->[4];
   my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
-  my $tree = $parser->parse_texi_text($texi);
+  my $text_root = $parser->parse_texi_text($texi);
+  my $tree = $text_root->{'contents'}->[0];
   my $result = 
-       Texinfo::Convert::Text::eight_bit_accents($tree->{'contents'}->[0], 
+       Texinfo::Convert::Text::eight_bit_accents($tree, 
     'iso-8859-1', \&Texinfo::Convert::Text::ascii_accent);
+  my $html_converter = Texinfo::Convert::HTML->converter();
+  $html_converter->{'conf'}->{'USE_NUMERIC_ENTITY'} = 0;
+  my $result_xml = Texinfo::Convert::Converter::xml_accents($html_converter, 
+                                                            $tree);
+  $html_converter->{'conf'}->{'USE_NUMERIC_ENTITY'} = 1;
+  my $result_xml_entity 
+      = Texinfo::Convert::Converter::xml_accents($html_converter, $tree);
   if (defined($reference)) {
     #ok (Encode::decode('iso-8859-1', $reference) eq $result, $name);
     #ok ($reference eq Encode::encode('iso-8859-1', $result), $name);
@@ -65,23 +77,43 @@ sub test_enable_encoding ($)
     print STDERR "$name ($ord)--> utf8: ".Encode::encode('utf8', $result).
         " latin1: ".Encode::encode('iso-8859-1', $result)."\n";
   }
+  if (defined($reference_xml)) {
+    is ($result_xml, $reference_xml, "$name xml");
+  } else {
+    print STDERR "$name xml: $result_xml\n";
+    #print STDERR "<p>$texi $name xml: $result_xml\n</p>";
+  }
+  if (defined($reference_xml_entity)) {
+    is ($result_xml_entity, $reference_xml_entity, "$name xml");
+  } else {
+    print STDERR "$name xml entity: $result_xml_entity\n";
+    #print STDERR "<p>$texi $name xml entity: $result_xml_entity\n</p>";
+  }
 }
 
 # some come from encodings/weird_accents.texi
 foreach my $test (
-        ['@~e',                   'no 8bit encoding',    "e~"],
-        ['@~n',                   'simple encoding',     chr(241)],
-        ['@~{n}' ,                'brace encoding',      chr(241)],
-        ['@^{@dotless{i}}',       'dotless',             chr(238)],
-        ['@~{@dotless{i}}',       'no 8bit dotless',     'i~'],
-        ['@={@~{@dotless{i}}}',   'no 8 cplx dotless',   'i~='],
-        ['@={@^{@dotless{i}}}',   'complex dotless',     chr(238).'='],
-        ['@={@,{@~{n}}}',         'complex encoding',    chr(241).',='],
-        ['@udotaccent{r}',        'udotaccent',          '.r'],
-        ['@={@ubaraccent{a}}',    'complex ubaraccent',  'a_='],
-        ['@^{@udotaccent{@`r}}',  'complex udotaccent',  '.r`^' ],
-        ['@={@code{@\'{@`{r}}}}', 'command in accent',   '=']
-                 ) {
+  ['@~e',                   'no 8bit encoding',    "e~", 'e~', '&#7869;'],
+  ['@~n',                   'simple encoding',     chr(241), 
+                                                   '&ntilde;', '&ntilde;'],
+  ['@~{n}' ,                'brace encoding',      chr(241), 
+                                                   '&ntilde;', '&ntilde;'],
+  ['@^{@dotless{i}}',       'dotless',             chr(238), '&icirc;', 
+                                                             '&icirc;'],
+  ['@~{@dotless{i}}',       'no 8bit dotless',     'i~', 'i~', '&#297;'],
+  ['@={@~{@dotless{i}}}',   'no 8 cplx dotless',   'i~=', 'i~=', 
+                                                          '&#297;='],
+  ['@={@^{@dotless{i}}}',   'complex dotless',     chr(238).'=', 
+                                                   '&icirc;=', '&icirc;='],
+  ['@={@,{@~{n}}}',         'complex encoding',    chr(241).',=', '&ntilde;,=',
+                                                                  '&ntilde;,='],
+  ['@udotaccent{r}',        'udotaccent',          '.r', '.r', '&#7771;'],
+  ['@={@ubaraccent{a}}',    'complex ubaraccent',  'a_=', 'a_=', 'a_='],
+  ['@^{@udotaccent{@`r}}',  'complex udotaccent',  '.r`^', '.r`^', '.r`^'],
+  ['@v{@\'{r}}',            'utf8 possible inside', 'r\'<', 'r\'&lt;', 
+                                                    '&#341;&lt;'],
+  ['@={@code{@\'{@`{r}}}}', 'command in accent',   '=', '=', '=']
+            ) {
   test_enable_encoding($test);
 }
 

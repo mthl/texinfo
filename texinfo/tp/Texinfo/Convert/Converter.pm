@@ -608,10 +608,10 @@ sub xml_accent($$;$)
         and defined($xml_accent_text_with_entities{$accent}) 
         and ($text =~ /^[$xml_accent_text_with_entities{$accent}]$/));
   if ($use_numeric_entities
-      and exists($Texinfo::Convert::unicode_accented_letters{$accent}) 
-      and exists($Texinfo::Convert::unicode_accented_letters{$accent}->{$text})) {
+      and exists($Texinfo::Convert::Unicode::unicode_accented_letters{$accent}) 
+      and exists($Texinfo::Convert::Unicode::unicode_accented_letters{$accent}->{$text})) {
     return '&#' . 
-      hex($Texinfo::Convert::unicode_accented_letters{$accent}->{$text}). ';';
+      hex($Texinfo::Convert::Unicode::unicode_accented_letters{$accent}->{$text}). ';';
   }
   return $text . '&lt;' if ($accent eq 'v');
   return Texinfo::Convert::Text::ascii_accent($text, $command);
