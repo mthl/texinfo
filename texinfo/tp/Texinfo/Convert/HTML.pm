@@ -2542,7 +2542,9 @@ sub _convert_preformatted_type($$$$)
 
   my $current = $command;
   my $pre_class;
-  if ($self->preformatted_number() == 1) {
+  # !defined preformatted_number may happen if there is something before the
+  # first preformatted.  For example an @exdent.
+  if ($self->preformatted_number() and $self->preformatted_number() == 1) {
     my $prepended = $self->_quotation_arg_to_prepend($command);
     $content = $prepended.$content if (defined($prepended));
   }
@@ -2774,6 +2776,25 @@ sub _convert_menu_comment_type($$$$)
 
 $default_types_conversion{'menu_comment'} = \&_convert_menu_comment_type;
 
+sub _convert_before_item_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+
+  my $top_format = $self->top_format();
+  if ($top_format eq 'itemize' or $top_format eq 'enumerate') {
+    return '<li>'. $content .'</li>';
+  } elsif ($top_format eq 'table' or $top_format eq 'vtable' 
+           or $top_format eq 'ftable') {
+    return '<dd>'. $content .'</dd>'."\n";
+  }
+  # multitable
+  return $content;
+}
+
+$default_types_conversion{'before_item'} = \&_convert_before_item_type;
 
 # FIXME not sure that there is contents.  Not sure that it matters either.
 sub _convert_def_line_type($$$$)
