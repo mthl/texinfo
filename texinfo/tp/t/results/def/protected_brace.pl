@@ -152,7 +152,7 @@ $result_texis{'protected_brace'} = '@deffn c @{
 ';
 
 
-$result_texts{'protected_brace'} = 'c {
+$result_texts{'protected_brace'} = 'c: {
 ';
 
 $result_errors{'protected_brace'} = [

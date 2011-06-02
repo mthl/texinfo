@@ -316,7 +316,7 @@ $result_texis{'simple'} = '@documentlanguage fr
 
 $result_texts{'simple'} = '
 
-AAA BBB CCC
+Instance Variable of AAA: BBB CCC
 ';
 
 $result_sectioning{'simple'} = {};

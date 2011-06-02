@@ -962,16 +962,16 @@ Defmethod.
 ';
 
 
-$result_texts{'empty_deftype'} = ' f (const type& x)
+$result_texts{'empty_deftype'} = 'Function:  f (const type& x)
 Deftypefun.
 
-f (const type& x)
+Function: f (const type& x)
 Defun.
 
-c  f (const type& x)
+Method on c:  f (const type& x)
 Deftypemethod.
 
-c f (const type& x)
+Method on c: f (const type& x)
 Defmethod.
 ';
 

@@ -296,7 +296,7 @@ $result_texis{'empty_index_entry'} = '@node Top
 
 
 $result_texts{'empty_index_entry'} = '
- 
+: 
 
 ';
 

@@ -368,8 +368,8 @@ $result_texis{'defx_in_example'} = '@example
 ';
 
 
-$result_texts{'defx_in_example'} = 'fset i a g
-truc bidulr machin...
+$result_texts{'defx_in_example'} = 'fset: i a g
+truc: bidulr machin...
 ';
 
 $result_errors{'defx_in_example'} = [

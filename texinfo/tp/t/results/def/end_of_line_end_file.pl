@@ -55,7 +55,7 @@ $result_texis{'end_of_line_end_file'} = '@deffn category deffn_name arguments @e
 ';
 
 
-$result_texts{'end_of_line_end_file'} = 'category deffn_name arguments ';
+$result_texts{'end_of_line_end_file'} = '';
 
 $result_errors{'end_of_line_end_file'} = [
   {

@@ -322,10 +322,10 @@ Text in paragraph.
 @end deffn';
 
 
-$result_texts{'defx_after_paragraph_end'} = 'fset i a g
+$result_texts{'defx_after_paragraph_end'} = 'fset: i a g
 Text in paragraph.
 
-truc bidulr machin...
+truc: bidulr machin...
 ';
 
 $result_errors{'defx_after_paragraph_end'} = [

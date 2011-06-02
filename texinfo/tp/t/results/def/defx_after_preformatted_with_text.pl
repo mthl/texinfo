@@ -398,10 +398,10 @@ Text in preformatted.
 ';
 
 
-$result_texts{'defx_after_preformatted_with_text'} = 'fset i a g
+$result_texts{'defx_after_preformatted_with_text'} = 'fset: i a g
 Text in preformatted.
 
-truc bidulr machin...
+truc: bidulr machin...
 ';
 
 $result_errors{'defx_after_preformatted_with_text'} = [

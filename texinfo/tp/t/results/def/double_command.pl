@@ -709,10 +709,12 @@ bbb
 ';
 
 
-$result_texts{'double_command'} = 'func plot (a, b, c, ...) func plot2 (a, b, c, ..., d)
+$result_texts{'double_command'} = 'func: plot (a, b, c, ...) func: plot2 (a, b, c, ..., d)
+
 aaa
 
-func aaaa args  c--ategory d--efvr_name
+func: aaaa args  c--ategory: d--efvr_name
+
 bbb
 ';
 

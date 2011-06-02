@@ -421,10 +421,10 @@ $result_texis{'defx_after_empty_line_in_example'} = '@example
 ';
 
 
-$result_texts{'defx_after_empty_line_in_example'} = 'fset i a g
+$result_texts{'defx_after_empty_line_in_example'} = 'fset: i a g
 
 
-truc bidulr machin...
+truc: bidulr machin...
 ';
 
 $result_errors{'defx_after_empty_line_in_example'} = [

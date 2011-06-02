@@ -585,8 +585,10 @@ $result_texis{'on_def_line'} = '@deffn {@anchor{in anchor}} @titlefont{in titlef
 ';
 
 
-$result_texts{'on_def_line'} = ' in titlefont  exdent
- in titlefontx  exdentx
+$result_texts{'on_def_line'} = ': in titlefont  exdent
+
+: in titlefontx  exdentx
+
 ';
 
 $result_errors{'on_def_line'} = [

@@ -840,12 +840,12 @@ $result_texis{'multiple'} = '@documentlanguage fr
 $result_texts{'multiple'} = '
 
 
-fr BBB CCC
+Instance Variable of fr: BBB CCC
 
 
 
 
-pt BBB CCC
+Instance Variable of pt: BBB CCC
 
 
 ';

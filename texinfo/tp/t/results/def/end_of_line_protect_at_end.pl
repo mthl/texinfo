@@ -116,7 +116,8 @@ $result_texis{'end_of_line_protect_at_end'} = '
 
 
 $result_texts{'end_of_line_protect_at_end'} = '
-category2 deffn_name2 arguments2 ';
+category2: deffn_name2 arguments2
+';
 
 $result_errors{'end_of_line_protect_at_end'} = [
   {

@@ -2074,9 +2074,8 @@ sub _convert($$)
     } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
              and @{$root->{'extra'}->{'def_args'}}) {
-        my $parsed_definition_category = $self->definition_category ($root, 
-                $root->{'extra'}->{'def_parsed_hash'}->{'category'},
-                $root->{'extra'}->{'def_parsed_hash'}->{'class'});
+        my $parsed_definition_category 
+          = Texinfo::Common::definition_category ($self, $root);
         # FIXME need i18n here?
         my @contents = ($parsed_definition_category, {'text' => ': '});
         if ($root->{'extra'}->{'def_parsed_hash'}->{'type'}) {
@@ -2085,7 +2084,7 @@ sub _convert($$)
         }
         push @contents, $root->{'extra'}->{'def_parsed_hash'}->{'name'};
 
-        my $arguments = $self->definition_arguments_content($root);
+        my $arguments = Texinfo::Common::definition_arguments_content($root);
         if ($arguments) {
           push @contents, {'text' => ' '};
           push @contents, @$arguments;

@@ -428,10 +428,11 @@ deffn with @}
 ';
 
 
-$result_texts{'wrong_braces_with_end_of_lines'} = 'category name args more args
+$result_texts{'wrong_braces_with_end_of_lines'} = 'category: name args more args
+
 deffn with {
 
-category name args    more args
+category: name args    more args
 deffn with }
 ';
 

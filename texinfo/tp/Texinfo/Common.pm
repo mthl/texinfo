@@ -762,4 +762,56 @@ sub encoding_alias ($)
   return ($canonical_texinfo_encoding, $perl_encoding, $canonical_output_encoding);
 }
 
+sub definition_category($$)
+{
+  my $self = shift;
+  my $current = shift;
+
+  return undef if (!$current->{'extra'} or !$current->{'extra'}->{'def_args'});
+
+  my $arg_category = $current->{'extra'}->{'def_parsed_hash'}->{'category'};
+  my $arg_class = $current->{'extra'}->{'def_parsed_hash'}->{'class'};
+
+  return $arg_category
+    if (!defined($arg_class));
+  
+  my $style = 
+    $command_index_prefix{$current->{'extra'}->{'def_command'}};
+  if ($style eq 'f') {
+    if ($self) {
+      return $self->gdt('{category} on {class}', { 'category' => $arg_category,
+                                          'class' => $arg_class });
+    } else {
+      return {'contents' => [$arg_category, {'text' => ' on '}, $arg_class]};
+    }
+  } elsif ($style eq 'v') {
+    if ($self) {
+      return $self->gdt('{category} of {class}', { 'category' => $arg_category,
+                                          'class' => $arg_class });
+    } else {
+      return {'contents' => [$arg_category, {'text' => ' of '}, $arg_class]};
+    }
+  }
+}
+
+sub definition_arguments_content($)
+{
+  my $root = shift;
+  my $result;
+
+  my @args = @{$root->{'extra'}->{'def_args'}};
+  while (@args) {
+    last if ($args[0]->[0] ne 'spaces'
+             and !$root->{'extra'}->{'def_parsed_hash'}->{$args[0]->[0]});
+    shift @args;
+  }
+  if (@args) {
+    foreach my $arg (@args) {
+      push @$result, $arg->[1];
+    }
+  }
+  return $result;
+}
+
+
 1;

@@ -1498,17 +1498,21 @@ $result_texis{'wrong_braces_simple'} = '@deffn truc machin bidule chose and
 ';
 
 
-$result_texts{'wrong_braces_simple'} = 'truc machin bidule chose and 
+$result_texts{'wrong_braces_simple'} = 'truc: machin bidule chose and
 
-truc machin bidule chose and  after
+truc: machin bidule chose and  after
 
-truc machin bidule chose and 
-truc machin bidule chose and and after
+truc: machin bidule chose and 
 
-a b c d e
-truc machin bidule chose and 
-truc machin bidule chose and  after
-truc machin bidule chose and truc machin bidule chose and and after
+truc: machin bidule chose and and after
+
+
+a: b c d e
+truc: machin bidule chose and
+truc: machin bidule chose and  after
+truc: machin bidule chose and 
+truc: machin bidule chose and and after
+
 ';
 
 $result_errors{'wrong_braces_simple'} = [

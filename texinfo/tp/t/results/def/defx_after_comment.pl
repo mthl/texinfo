@@ -307,8 +307,8 @@ $result_texis{'defx_after_comment'} = '@deffn fset @var{i} a g
 @end deffn';
 
 
-$result_texts{'defx_after_comment'} = 'fset i a g
-truc bidulr machin...
+$result_texts{'defx_after_comment'} = 'fset: i a g
+truc: bidulr machin...
 ';
 
 $result_errors{'defx_after_comment'} = [

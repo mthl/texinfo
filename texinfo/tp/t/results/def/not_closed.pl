@@ -314,9 +314,9 @@ $result_texis{'not_closed'} = '@deffn truc bidule machin
 ';
 
 
-$result_texts{'not_closed'} = 'truc bidule machin
-truc chose args
-type1 var bidule
+$result_texts{'not_closed'} = 'truc: bidule machin
+truc: chose args
+Variable: type1 var bidule
 ';
 
 $result_errors{'not_closed'} = [

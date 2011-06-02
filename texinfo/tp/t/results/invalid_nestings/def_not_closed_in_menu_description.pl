@@ -257,7 +257,7 @@ deffn text
 ';
 
 
-$result_texts{'def_not_closed_in_menu_description'} = '* (info):: before deff bidule truc chose
+$result_texts{'def_not_closed_in_menu_description'} = '* (info):: before deff bidule: truc chose
 
 deffn text
 ';

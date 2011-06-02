@@ -279,7 +279,7 @@ $result_texis{'empty_deftypeop_name'} = '@deftypeop Command@code{com} {Window@co
 ';
 
 
-$result_texts{'empty_deftypeop_name'} = 'Commandcom Windowint exposeexp
+$result_texts{'empty_deftypeop_name'} = 'Command on com: Windowint expose exp
 ';
 
 $result_errors{'empty_deftypeop_name'} = [

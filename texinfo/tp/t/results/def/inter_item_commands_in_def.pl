@@ -626,10 +626,10 @@ In deff item.
 ';
 
 
-$result_texts{'inter_item_commands_in_def'} = 'fset i a g
+$result_texts{'inter_item_commands_in_def'} = 'fset: i a g
 
-Command log trap1   
-cmde2 id i ule truc
+Command: log trap1 
+cmde2: id i ule truc
 
 In deff item.
 ';

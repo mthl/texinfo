@@ -787,14 +787,14 @@ $result_texis{'empty_def_arguments'} = '@deffn fset @var{i} a g
 ';
 
 
-$result_texts{'empty_def_arguments'} = 'fset i a g
-id i ule    
-aaa
- 
-
-truc 
-truc
- 
+$result_texts{'empty_def_arguments'} = 'fset: i a g
+id i ule: 
+aaa: 
+: 
+: 
+truc: 
+truc: 
+: 
 ';
 
 $result_errors{'empty_def_arguments'} = [

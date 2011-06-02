@@ -491,8 +491,8 @@ $result_texis{'space_in_def_for_index'} = '@node Top
 
 
 $result_texts{'space_in_def_for_index'} = '
-Category  name  argument  argument2...
-AAA1 AAA2 arg3
+Category : name  argument  argument2...
+AAA1: AAA2 arg3
 
 ';
 

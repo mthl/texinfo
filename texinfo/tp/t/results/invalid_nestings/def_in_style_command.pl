@@ -214,7 +214,7 @@ text
 
 
 $result_texts{'def_in_style_command'} = '
-name args...
+Function: name args...
 text
 ';
 

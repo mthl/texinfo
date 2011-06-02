@@ -996,7 +996,26 @@ sub convert($;$)
   }
   if ($root->{'type'} and $root->{'type'} eq 'def_line') {
     #print STDERR "$root->{'extra'}->{'def_command'}\n";
-    $result = convert($root->{'args'}->[0], $options) if ($root->{'args'});
+    if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
+             and @{$root->{'extra'}->{'def_args'}}) {
+      my $parsed_definition_category
+        = Texinfo::Common::definition_category ($options->{'converter'}, $root);
+      my @contents = ($parsed_definition_category, {'text' => ': '});
+      if ($root->{'extra'}->{'def_parsed_hash'}->{'type'}) {
+        push @contents, ($root->{'extra'}->{'def_parsed_hash'}->{'type'},
+                         {'text' => ' '});
+      }
+      push @contents, $root->{'extra'}->{'def_parsed_hash'}->{'name'};
+
+      my $arguments = Texinfo::Common::definition_arguments_content($root);
+      if ($arguments) {
+        push @contents, {'text' => ' '};
+        push @contents, @$arguments;
+      }
+      push @contents, {'text' => "\n"};
+      $result = convert({'contents' => \@contents}, $options);
+    }
+    #$result = convert($root->{'args'}->[0], $options) if ($root->{'args'});
   } elsif ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
     foreach my $arg (@{$root->{'args'}}) {
       $result .= convert($arg, $options);

@@ -445,8 +445,8 @@ In defun.
 ';
 
 
-$result_texts{'def_defx_mismatch'} = 'my def args arg ...
-type name and now the args
+$result_texts{'def_defx_mismatch'} = 'Function: my def args arg ...
+type: name and now the args
 
 In defun.
 

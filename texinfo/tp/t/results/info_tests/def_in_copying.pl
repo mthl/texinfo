@@ -885,8 +885,8 @@ Test for definition commands
 
 
 In text
-aa bb cc
-aax bbx ccx
+aa: bb cc
+aax: bbx ccx
 deffnx lines
 
 ';

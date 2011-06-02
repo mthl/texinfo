@@ -15735,101 +15735,101 @@ $result_texis{'all_commands_delimiters_printindex'} = '@node Top
 ';
 
 
-$result_texts{'all_commands_delimiters_printindex'} = 'Command forward--char nchars argument2 argument3         (arg in brace, [something in v--ar, in, b , comma apref p]) last
+$result_texts{'all_commands_delimiters_printindex'} = 'Command: forward--char nchars argument2 argument3         (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
-Variable fill-column argument1 argument2         (arg in brace, [something in v--ar, in, b , comma apref p]) last
+Variable: fill-column argument1 argument2         (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
-Library Function int foobar (int foo, float bar)
+Library Function: int foobar (int foo, float bar)
 
-Library Function int foobar (int foo, float bar)         (arg in brace, [something in v--ar, in, b , comma apref p]) ct
+Library Function: int foobar (int foo, float bar)         (arg in brace, [something in v--ar, in, b , comma apref p]) ct
 
  last
 
-Library Function int foobug [something
+Library Function: int foobug [something
 
-stacks private push (s:in out stack;                  n:in integer) ; ;barg aarg; ; end
+stacks: private push (s:in out stack;                  n:in integer) ; ;barg aarg; ; end
 
-Global Flag int enable         (arg in brace, [something in v--ar, in, b , comma apref p]) last
+Global Flag: int enable (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
-Data type pair car cdr         (arg in brace, [something in v--ar, in, b , comma apref p]) last
+Data type: pair car cdr         (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
-Class Option Window border-pattern         (arg in brace, [something in v--ar, in, b , comma apref p]) last
+Class Option of Window: border-pattern (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
-Class Option2 Window int border-pattern         (arg in brace, [something in v--ar, in, b , comma apref p]) last
+Class Option2 of Window: int border-pattern (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
-Operation windows expose         (arg in brace, [something in v--ar, in, b , comma apref p]) last
+Operation on windows: expose (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
-Operation2 W,indow int expose         (arg in brace, [something in v--ar, in, b , comma apref p]) last
+Operation2 on W,indow: int expose (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
-Operation5 Window int expose type arg
+Operation5 on Window: int expose type arg
 
-Operation3 W,indow int e,xpose type arg
+Operation3 on W,indow: int e,xpose type arg
 
-Operation4 ,Window int ,expose type arg
+Operation4 on ,Window: int ,expose type arg
 
-Operation6 W,indow int e,xpose type arg
+Operation6 on W,indow: int e,xpose type arg
 
-Operation7 ,Window int ,expose type arg
+Operation7 on ,Window: int ,expose type arg
 
-Operation13 W)indow int e)xpose type arg
+Operation13 on W)indow: int e)xpose type arg
 
-Operation14 )Window int )expose type arg
+Operation14 on )Window: int )expose type arg
 
-Operation16 W)indow int e)xpose type arg
+Operation16 on W)indow: int e)xpose type arg
 
-Operation17 )Window int )expose type arg
+Operation17 on )Window: int )expose type arg
 
-Operation18 W;indow int e;xpose type arg
+Operation18 on W;indow: int e;xpose type arg
 
-Operation19 ;Window int ;expose type arg
+Operation19 on ;Window: int ;expose type arg
 
-Operation20 W;indow int e;xpose type arg
+Operation20 on W;indow: int e;xpose type arg
 
-Operation21 ;Window int ;expose type arg
+Operation21 on ;Window: int ;expose type arg
 
-Commandcom Windowint exposeexp name
+Command on com: Windowint expose exp name
 
-apply function &rest arguments
+Function: apply function &rest arguments
 
-A1 A2 A3 A4
+A1: A2 A3 A4
 
-A1 A2 A3 A4
+A1: A2 A3 A4
 
-A1 A2 A3 A4
+A1: A2 A3 A4
 
-A1 A2 A3 A4
+A1: A2 A3 A4
 
-A1 A2 A3 A4 A5
+A1: A2 A3 A4 A5
 
-A1 A2 A3 A4 A5
+A1: A2 A3 A4 A5
 
-A1 A2 A3 A4 A5
+A1: A2 A3 A4 A5
 
-A1 A2 A3 A4 A5
+A1: A2 A3 A4 A5
 
-A1 A2 A3 A4
+A1: A2 A3 A4
 
-A1 A2 A3 A4
+A1: A2 A3 A4
 
-A1 A2 A3 A4 A5
+A1 of A2: A3 A4 A5
 
-A1 A2 A3 A4 A5
+A1: A2 A3 A4 A5
 
-A1 A2 A3 A4 A5 A6
+A1 of A2: A3 A4 A5 A6
 
-A1 A2 A3 A4 A5 A6
+A1 of A2: A3 A4 A5 A6
 
-A1 A2 A3 A4 A5
+A1 on A2: A3 A4 A5
 
-A1 A2 A3 A4 A5
+A1 on A2: A3 A4 A5
 
-A1 A2 A3 A4 A5 A6
+A1 on A2: A3 A4 A5 A6
 
-A1 A2 A3 A4 A5 A6
+A1 on A2: A3 A4 A5 A6
 
-code then var ret_type fun_name A1 A2 A3 A4
+code then var: ret_type fun_name A1 A2 A3 A4
 
-var then code ret_type1 fun_name1 A1 A2 A3 A4
+var then code: ret_type1 fun_name1 A1 A2 A3 A4
 
 Functions
 =========

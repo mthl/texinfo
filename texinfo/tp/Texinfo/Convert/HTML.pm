@@ -286,6 +286,16 @@ sub command_element_command($$)
   return undef;
 }
 
+sub element_command($$)
+{
+  my $self = shift;
+  my $element = shift;
+
+  if ($element and $element->{'extra'}) {
+    return $element->{'extra'}->{'element_command'};
+  }
+  return undef;
+}
 
 sub command_node($$)
 {
@@ -478,6 +488,13 @@ sub special_element($$)
   my $self = shift;
   my $type = shift;
   return $self->{'special_elements'}->{$type};
+}
+
+sub global_element($$)
+{
+  my $self = shift;
+  my $type = shift;
+  return $self->{'global_target_elements'}->{$type};
 }
 
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
@@ -2441,6 +2458,11 @@ sub _convert_printindex_command($$$$)
       if (!$associated_command) {
         $associated_command 
           = $self->command_element_command($index_entry_ref->{'command'});
+        if (!$associated_command) {
+          # Use Top if not associated command found
+          $associated_command 
+            = $self->element_command($self->global_element('Top'));
+        }
       }
       my ($associated_command_href, $associated_command_text);
       if ($associated_command) {
@@ -2899,16 +2921,16 @@ sub _convert_def_line_type($$$$)
   my $category_prepared = '';
   if ($command->{'extra'} and $command->{'extra'}->{'def_args'}
       and @{$command->{'extra'}->{'def_args'}}) {
-    my $parsed_definition_category = $self->definition_category ($command, 
-            $command->{'extra'}->{'def_parsed_hash'}->{'category'},
-            $command->{'extra'}->{'def_parsed_hash'}->{'class'});
+    my $parsed_definition_category 
+       = Texinfo::Common::definition_category ($self, $command);
     if ($parsed_definition_category) {
       $category_prepared = $self->convert_tree({'type' => '_code',
                    'contents' => [$parsed_definition_category]});
     }
   }
   
-  my $arguments_content = $self->definition_arguments_content($command);
+  my $arguments_content 
+    = Texinfo::Common::definition_arguments_content($command);
   my $arguments = '';
   if ($arguments_content) {
     $arguments = $self->convert_tree({'type' => '_code',
@@ -4126,8 +4148,8 @@ sub _prepare_index_entries($)
     foreach my $index_name (keys(%$index_entries)) {
       foreach my $index_entry (@{$index_entries->{$index_name}}) {
         my $region = '';
-        $region = "$index_entry->{'region'}-" 
-          if (defined($index_entry->{'region'}) and $index_entry->{'region'} ne '');
+        $region = "$index_entry->{'region'}->{'cmdname'}-" 
+          if (defined($index_entry->{'region'}));
         my $normalized_index =
           Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
             {'contents' => $index_entry->{'content'}},
@@ -4221,7 +4243,8 @@ sub _external_node_href($$;$)
   my $file;
   if ($external_node->{'manual_content'}) {
     my $manual_name = Texinfo::Convert::Text::convert(
-       {'contents' => $external_node->{'manual_content'}});
+       {'contents' => $external_node->{'manual_content'}}, 
+       {'converter' => $self});
     my $manual_base = $manual_name;
     $manual_base =~ s/\.[^\.]*$//;
     $manual_base =~ s/^.*\///;
@@ -4907,7 +4930,7 @@ sub output($$)
 
   # copying comment
   if ($self->{'extra'}->{'copying'}) {
-    my $options;
+    my $options = {'converter' => $self};
     if ($self->get_conf('ENABLE_ENCODING') 
         and $self->{'encoding_name'}) {
       $options->{'enabled_encoding'} = $self->{'encoding_name'};
@@ -5158,6 +5181,8 @@ sub _convert($$)
     }
   }
 
+  #if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
+  #}
       #and !$self->{'multiple_pass'} and !$self->{'in_copying_header'}) {
     # special case for index entry not associated with a node but seen. 
     # this will be an index entry in @copying, in @insertcopying.
@@ -5168,7 +5193,7 @@ sub _convert($$)
 #    print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
 #       if ($self->get_conf('DEBUG'));
 
-  # TODO special: center, footnote
+  # TODO special: footnote
 
   # commands like @deffnx have both a cmdname and a def_line type.  It is
   # better to consider them as a def_line type, as the whole point of the
@@ -5270,7 +5295,8 @@ sub _convert($$)
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
               } elsif ($arg_type eq 'text') {
                 $arg_formatted->{$arg_type} 
-                  = Texinfo::Convert::Text::convert($arg);
+                  = Texinfo::Convert::Text::convert($arg, 
+                                                  {'converter' => $self});
               }
             }
             
@@ -5421,8 +5447,6 @@ sub _convert($$)
       #  unshift @{$self->{'current_contents'}->[-1]}, $expansion;
    #   #return '';
    #   return $result;
-#    } elsif ($root->{'cmdname'} eq 'center') {
-#      #my ($counts, $new_locations);
 #    } elsif ($root->{'cmdname'} eq 'insertcopying') {
 #      if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
 #        unshift @{$self->{'current_contents'}->[-1]}, 
@@ -5430,17 +5454,6 @@ sub _convert($$)
 #      }
 #      return '';
 #    } elsif ($root->{'cmdname'} eq 'listoffloats') {
-# TODO types
-#    } elsif ($root->{'type'} eq 'preformatted') {
- # TODO ?
- #   } elsif ($root->{'cmdname'} eq 'quotation' and $root->{'extra'} 
- #            and $root->{'extra'}->{'authors'}) {
- #     foreach my $author (@{$root->{'extra'}->{'authors'}}) {
- #       $result .= $self->_convert(
- #                $self->gdt("\@center --- \@emph{{author}}\n",
- #                   {'author' => $author->{'extra'}->{'misc_content'}}));
- #     }
- #   }
   print STDERR "DEBUG: HERE!($root)\n";
   #return $result;
 }

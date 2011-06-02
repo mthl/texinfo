@@ -245,7 +245,7 @@ in defun
 ';
 
 
-$result_texts{'def_in_example'} = 'name arg
+$result_texts{'def_in_example'} = 'Function: name arg
 in defun
 ';
 

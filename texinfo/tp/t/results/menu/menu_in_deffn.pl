@@ -365,7 +365,7 @@ $result_texis{'menu_in_deffn'} = '@node Top
 
 
 $result_texts{'menu_in_deffn'} = '
-a b c 
+a: b c
 * (mynode)::
 ';
 

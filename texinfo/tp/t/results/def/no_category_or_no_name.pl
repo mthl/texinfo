@@ -536,11 +536,11 @@ with deffnx missing category or name
 
 $result_texts{'no_category_or_no_name'} = 'no category no name
 
-only category
+only category: 
 no name
 
-a b c d 
-deffnx_category
+a: b c d
+deffnx_category: 
 with deffnx missing category or name
 ';
 
