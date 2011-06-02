@@ -1863,6 +1863,20 @@ sub _convert_verbatiminclude_command($$$$)
 $default_commands_conversion{'verbatiminclude'} 
   = \&_convert_verbatiminclude_command;
 
+sub _convert_flush_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  return $contents;
+}
+
+$default_commands_conversion{'flushleft'} = \&_convert_flush_command;
+$default_commands_conversion{'flushright'} = \&_convert_flush_command;
+
+
 sub _convert_sp_command($$$$)
 {
   my $self = shift;
@@ -2016,6 +2030,18 @@ sub _convert_enumerate_command($$$$)
 
 $default_commands_conversion{'enumerate'} = \&_convert_enumerate_command;
 
+sub _convert_multitable_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  return "<table>\n" . $contents . "</table>\n";
+}
+
+$default_commands_conversion{'multitable'} = \&_convert_multitable_command;
+
 sub _convert_xtable_command($$$$)
 {
   my $self = shift;
@@ -2036,7 +2062,7 @@ sub _convert_item_command($$$$)
   my $command = shift;
   my $contents = shift;
 
-  if ($command->{'parent'} 
+  if ($command->{'parent'}->{'cmdname'} 
       and $command->{'parent'}->{'cmdname'} eq 'itemize') {
     my $prepend ;
     my $itemize = $command->{'parent'};
@@ -2052,14 +2078,14 @@ sub _convert_item_command($$$$)
     } else {
       return '';
     }
-  } elsif ($command->{'parent'}
+  } elsif ($command->{'parent'}->{'cmdname'}
       and $command->{'parent'}->{'cmdname'} eq 'enumerate') {
     if ($contents =~ /\S/) {
       return '<li>' . ' ' . $contents . '</li>';
     } else {
       return '';
     }
-  } elsif ($command->{'parent'}
+  } elsif ($command->{'parent'}->{'cmdname'}
       and ($command->{'parent'}->{'cmdname'} eq 'table'
            or $command->{'parent'}->{'cmdname'} eq 'ftable'
            or $command->{'parent'}->{'cmdname'} eq 'vtable')) {
@@ -2099,11 +2125,46 @@ sub _convert_item_command($$$$)
     } else {
       return '';
     }
+  } elsif ($command->{'parent'}->{'type'} 
+           and $command->{'parent'}->{'type'} eq 'row') {
+    return $self->_convert_tab_command ($cmdname, $command, $contents);
   }
-  return 'TODO';
+  return '';
 }
 $default_commands_conversion{'item'} = \&_convert_item_command;
+$default_commands_conversion{'headitem'} = \&_convert_item_command;
 $default_commands_conversion{'itemx'} = \&_convert_item_command;
+
+sub _convert_tab_command ($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $contents = shift;
+  
+  my $cell_nr = $command->{'extra'}->{'cell_number'};
+  my $row = $command->{'parent'};
+  my $row_cmdname = $row->{'contents'}->[0]->{'cmdname'};
+  my $multitable = $row->{'parent'};
+
+  my $fractions = '';
+  if ($multitable->{'extra'}->{'columnfractions'} and 
+      exists($multitable->{'extra'}->{'columnfractions'}->[$cell_nr-1])) {
+    my $fraction = sprintf('%d', 100*$multitable->{'extra'}->{'columnfractions'}->[$cell_nr-1]);
+    $fractions = " width=\"$fraction%\"";
+  }
+
+  # FIXME is it right?
+  $contents =~ s/^\s*//;
+  $contents =~ s/\s*$//;
+
+  if ($row_cmdname eq 'headitem') {
+    return "<th${fractions}>" . $contents . '</th>';
+  } else {
+    return "<td${fractions}>" . $contents . '</td>';
+  }
+}
+$default_commands_conversion{'tab'} = \&_convert_tab_command;
 
 sub _convert_xref_commands($$$$)
 {
@@ -2561,7 +2622,14 @@ sub _convert_preformatted_type($$$$)
       last;
     }
   }
-  return $self->attribute_class('pre', $pre_class).">".$content."</pre>";
+  my $result = $self->attribute_class('pre', $pre_class).">".$content."</pre>";
+
+  # this may happen with epty lines between a def* and def*x.
+  if ($command->{'parent'}->{'cmdname'} 
+      and $command->{'parent'}->{'cmdname'} =~ /^def/) {
+    $result = '<dd>'.$result.'</dd>';
+  }
+  return $result;
 }
 
 $default_types_conversion{'preformatted'} = \&_convert_preformatted_type;
@@ -2648,6 +2716,25 @@ sub _simplify_text_for_comparison($)
   $text =~ s/[^\w]//g;
   return $text;
 }
+
+sub _convert_row_type($$$$) {
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $contents = shift;
+
+  if ($contents =~ /\S/) {
+    my $row_cmdname = $command->{'contents'}->[0]->{'cmdname'};
+    if ($row_cmdname eq 'headitem') {
+      return '<thead><tr>' . $contents . '</tr></thead>' . "\n";
+    } else {
+      return '<tr>' . $contents . '</tr>' . "\n";
+    }
+  } else {
+    return '';
+  }
+}
+$default_types_conversion{'row'} = \&_convert_row_type;
 
 sub _convert_menu_entry_type($$$)
 {
@@ -2783,15 +2870,20 @@ sub _convert_before_item_type($$$$)
   my $command = shift;
   my $content = shift;
 
+  return '' if ($content !~ /\S/);
   my $top_format = $self->top_format();
   if ($top_format eq 'itemize' or $top_format eq 'enumerate') {
     return '<li>'. $content .'</li>';
   } elsif ($top_format eq 'table' or $top_format eq 'vtable' 
            or $top_format eq 'ftable') {
     return '<dd>'. $content .'</dd>'."\n";
+  } elsif ($top_format eq 'multitable') {
+    # FIXME is it right?
+    $content =~ s/^\s*//;
+    $content =~ s/\s*$//;
+
+    return '<tr><td>'.$content.'</tr></td>'."\n";
   }
-  # multitable
-  return $content;
 }
 
 $default_types_conversion{'before_item'} = \&_convert_before_item_type;
