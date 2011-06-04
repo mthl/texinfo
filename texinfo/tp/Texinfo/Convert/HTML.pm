@@ -2453,8 +2453,24 @@ sub _convert_xref_commands($$$$)
     $name = $args->[1]->{'normal'}
   }
 
+  if ($cmdname eq 'inforef') {
+    $args->[4] = $args->[3];
+    $args->[3] = undef;
+  }
+
+  my $file_arg_tree;
+  my $file = '';
+  if (defined($args->[3]->{'text'}) and $args->[3]->{'text'} ne '') {
+    $file_arg_tree = $args->[3]->{'tree'};
+    $file = $args->[3]->{'text'};
+  }
+
+  my $book = '';
+  $book = $args->[4]->{'normal'} if (defined($args->[4]->{'normal'}));
+
   # internal reference
-  if ($root->{'extra'}->{'node_argument'}
+  if ($book eq '' and $file eq ''
+      and $root->{'extra'}->{'node_argument'}
       and $root->{'extra'}->{'node_argument'}->{'normalized'}
       and !$root->{'extra'}->{'node_argument'}->{'manual_content'}
       and $self->{'labels'}
@@ -2504,22 +2520,12 @@ sub _convert_xref_commands($$$$)
          { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
     }
   } else {
-    if ($cmdname eq 'inforef') {
-      $args->[4] = $args->[3];
-      $args->[3] = undef;
-    }
     my $node_entry = {};
     $node_entry->{'node_content'} = $root->{'extra'}->{'node_argument'}->{'node_content'}
       if ($root->{'extra'}->{'node_argument'}->{'node_content'});
     $node_entry->{'normalized'} = $root->{'extra'}->{'node_argument'}->{'normalized'} 
       if (exists($root->{'extra'}->{'node_argument'}->{'normalized'}));
 
-    my $file_arg_tree;
-    my $file = '';
-    if (defined($args->[3]->{'text'}) and $args->[3]->{'text'} ne '') {
-      $file_arg_tree = $args->[3]->{'tree'};
-      $file = $args->[3]->{'text'};
-    }
 
     # file argument takes precedence over the file in the node (file)node entry
     if (defined($file_arg_tree)) {
@@ -2529,12 +2535,9 @@ sub _convert_xref_commands($$$$)
         = $root->{'extra'}->{'node_argument'}->{'manual_content'};
     }
     my $href = $self->command_href($node_entry);
-    my $book = '';
-    $book = $args->[4]->{'normal'} if (defined($args->[4]->{'normal'})
-                                      and $args->[4]->{'normal'} ne '');
     $name = $args->[0]->{'code'} if (!defined($name));
       
-    if (!defined($book) and $file ne '') {
+    if ($book eq '' and $file ne '') {
       $name = "($file)$name";
     }
     $name = '' if (!defined($name));
