@@ -421,28 +421,7 @@ sub command_text($$$)
         $tree = {'type' => '_code',
                  'contents' => $command->{'extra'}->{'node_content'}};
       } elsif ($command->{'cmdname'} and ($command->{'cmdname'} eq 'float')) {
-        
-        my $type;
-        if ($command->{'extra'}->{'type'} 
-            and defined($command->{'extra'}->{'type'}->{'normalized'})
-            and $command->{'extra'}->{'type'}->{'normalized'} ne '') {
-          $type = {'contents' => $command->{'extra'}->{'type'}->{'content'}};
-        }
-        if ($type) {
-          if (defined($command->{'number'})) {
-            $tree = $self->gdt("{float_type} {float_number}",
-                  {'float_type' => $type,
-                    'float_number' => $command->{'number'}});
-          } else {
-            $tree = $self->gdt("{float_type}",
-                  {'float_type' => $type});
-          }
-        } elsif (defined($command->{'number'})) {
-          $tree = $self->gdt("{float_number}",
-             {'float_number' => $command->{'number'}});
-        } else {
-          die "float target ($command->{'normalized'}) without number nor type";
-        }
+        $tree = $self->float_type_number($command); 
       } else {
         if (!$command->{'extra'}->{'misc_content'}) {
           cluck "No misc_content: "
@@ -2474,6 +2453,7 @@ sub _convert_xref_commands($$$$)
     $name = $args->[1]->{'normal'}
   }
 
+  # internal reference
   if ($root->{'extra'}->{'node_argument'}
       and $root->{'extra'}->{'node_argument'}->{'normalized'}
       and !$root->{'extra'}->{'node_argument'}->{'manual_content'}
@@ -2531,6 +2511,8 @@ sub _convert_xref_commands($$$$)
     my $node_entry = {};
     $node_entry->{'node_content'} = $root->{'extra'}->{'node_argument'}->{'node_content'}
       if ($root->{'extra'}->{'node_argument'}->{'node_content'});
+    $node_entry->{'normalized'} = $root->{'extra'}->{'node_argument'}->{'normalized'} 
+      if (exists($root->{'extra'}->{'node_argument'}->{'normalized'}));
 
     my $file_arg_tree;
     my $file = '';
@@ -2610,7 +2592,7 @@ sub _convert_xref_commands($$$$)
         $tree = $self->gdt('@cite{{book}}', 
               {'book' => {'type' => '_converted', 'text' => $book }});
       } elsif ($href ne '') {
-        $tree = $self->gdt('See {reference}', 
+        $tree = $self->gdt('{reference}', 
              { 'reference' => {'type' => '_converted', 'text' => $reference} });
       } elsif ($reference ne '') {
         $tree = $self->gdt('`{section}\'', {
@@ -3849,8 +3831,9 @@ sub _node_id_file($$)
                         and !$self->get_conf('USE_UNIDECODE'));
 
   my ($target, $id);
-  if (defined($node_info->{'normalized'})) {
-    $target = _normalized_to_id($node_info->{'normalized'});
+  my $normalized = $node_info->{'normalized'};
+  if (defined($normalized)) {
+    $target = _normalized_to_id($normalized);
   } else {
     # FIXME Top or configuration variable?
     $target = '';
@@ -4554,6 +4537,8 @@ sub _external_node_href($$;$)
   
   #print STDERR "external_node: ".join('|', keys(%$external_node))."\n";
   my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
+  #print STDERR "HHHH ".Texinfo::Structuring::_node_extra_to_texi($external_node)."\n";
+  #print STDERR "EEEE $target_filebase, $target\n";
 
   my $xml_target = _normalized_to_id($target);
 

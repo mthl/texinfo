@@ -88,7 +88,8 @@ $result_trees{'ref_tests'} = {
                       'parent' => {},
                       'text' => 'in ref followed by comma'
                     }
-                  ]
+                  ],
+                  'normalized' => 'in-ref-followed-by-comma'
                 }
               },
               'line_nr' => {
@@ -136,7 +137,8 @@ $result_trees{'ref_tests'} = {
                       'parent' => {},
                       'text' => 'in ref not followed by comma'
                     }
-                  ]
+                  ],
+                  'normalized' => 'in-ref-not-followed-by-comma'
                 }
               },
               'line_nr' => {
@@ -188,7 +190,8 @@ $result_trees{'ref_tests'} = {
                               'parent' => {},
                               'text' => 'in ref followed by end command'
                             }
-                          ]
+                          ],
+                          'normalized' => 'in-ref-followed-by-end-command'
                         }
                       },
                       'line_nr' => {
@@ -281,7 +284,8 @@ $result_trees{'ref_tests'} = {
                       'parent' => {},
                       'text' => 'in ref followed by comma'
                     }
-                  ]
+                  ],
+                  'normalized' => 'in-ref-followed-by-comma'
                 }
               },
               'line_nr' => {
@@ -346,7 +350,8 @@ $result_trees{'ref_tests'} = {
                       'parent' => {},
                       'text' => 'in ref not followed by comma'
                     }
-                  ]
+                  ],
+                  'normalized' => 'in-ref-not-followed-by-comma'
                 }
               },
               'line_nr' => {
@@ -415,7 +420,8 @@ $result_trees{'ref_tests'} = {
                               'parent' => {},
                               'text' => 'in ref followed by end command'
                             }
-                          ]
+                          ],
+                          'normalized' => 'in-ref-followed-by-end-command'
                         }
                       },
                       'line_nr' => {
@@ -490,7 +496,8 @@ $result_trees{'ref_tests'} = {
                       'parent' => {},
                       'text' => 'in ref ending with a dot.'
                     }
-                  ]
+                  ],
+                  'normalized' => 'in-ref-ending-with-a-dot_002e'
                 }
               },
               'line_nr' => {

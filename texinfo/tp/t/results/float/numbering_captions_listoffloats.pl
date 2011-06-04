@@ -5872,7 +5872,8 @@ $result_trees{'numbering_captions_listoffloats'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ]
+                  ],
+                  'normalized' => 'text-with-a-lot-of-features'
                 }
               },
               'line_nr' => {
@@ -5985,7 +5986,8 @@ $result_trees{'numbering_captions_listoffloats'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ]
+                  ],
+                  'normalized' => 'text-with-a-lot-of-features'
                 }
               },
               'line_nr' => {

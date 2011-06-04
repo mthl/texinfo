@@ -446,6 +446,34 @@ sub _create_destination_directory($)
   return 1;
 }
 
+sub float_type_number($$)
+{
+  my $self = shift;
+  my $float = shift;
+
+  my $type;
+  if ($float->{'extra'}->{'type'}
+      and $float->{'extra'}->{'type'}->{'normalized'} ne '') { 
+    $type = {'contents' => $float->{'extra'}->{'type'}->{'content'}};
+  }
+
+  my $tree;
+  if ($type) {            
+    if (defined($float->{'number'})) {
+      $tree = $self->gdt("{float_type} {float_number}",
+          {'float_type' => $type,
+            'float_number' => $float->{'number'}});
+    } else {
+      $tree = $self->gdt("{float_type}",
+          {'float_type' => $type});
+    }
+  } elsif (defined($float->{'number'})) {
+    $tree = $self->gdt("{float_number}",
+       {'float_number' => $float->{'number'}});
+  }
+  return $tree;
+}
+
 sub xml_protect_text($$)
 {
   my $self = shift;

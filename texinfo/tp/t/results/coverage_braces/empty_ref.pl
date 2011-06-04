@@ -105,7 +105,8 @@ $result_trees{'empty_ref'} = {
             'node_argument' => {
               'node_content' => [
                 {}
-              ]
+              ],
+              'normalized' => '_00c2_00a0'
             }
           },
           'line_nr' => {},

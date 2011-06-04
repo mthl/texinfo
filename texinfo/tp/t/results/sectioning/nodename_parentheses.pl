@@ -633,7 +633,8 @@ $result_trees{'nodename_parentheses'} = {
                       'parent' => {},
                       'text' => 'node'
                     }
-                  ]
+                  ],
+                  'normalized' => 'node'
                 }
               },
               'line_nr' => {

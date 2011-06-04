@@ -325,7 +325,8 @@ $result_trees{'character_and_spaces_in_refs'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ]
+                  ],
+                  'normalized' => 'a-node'
                 }
               },
               'line_nr' => {
@@ -389,7 +390,8 @@ $result_trees{'character_and_spaces_in_refs'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ]
+                  ],
+                  'normalized' => '_003a'
                 }
               },
               'line_nr' => {
@@ -466,7 +468,8 @@ $result_trees{'character_and_spaces_in_refs'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ]
+                  ],
+                  'normalized' => 'Top'
                 }
               },
               'line_nr' => {
@@ -514,7 +517,8 @@ $result_trees{'character_and_spaces_in_refs'} = {
                       'parent' => {},
                       'text' => 'Cross References'
                     }
-                  ]
+                  ],
+                  'normalized' => 'Cross-References'
                 }
               },
               'line_nr' => {
@@ -582,7 +586,8 @@ $result_trees{'character_and_spaces_in_refs'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ]
+                  ],
+                  'normalized' => 'node'
                 }
               },
               'line_nr' => {

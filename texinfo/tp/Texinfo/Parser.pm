@@ -1831,13 +1831,13 @@ sub _parse_float_type($)
     my @type_contents = @{$current->{'args'}->[0]->{'contents'}};
     _trim_spaces_comment_from_content(\@type_contents);
     if (@type_contents) {
-      my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => \@type_contents});
+      my $normalized 
+        = Texinfo::Convert::NodeNameNormalization::normalize_node(
+                                               {'contents' => \@type_contents});
+      $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
       if ($normalized =~ /[^-]/) {
         $current->{'extra'}->{'type'}->{'normalized'} = $normalized;
-        $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
         return 1;
-      } else {
-        $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
       }
     }
   }
@@ -4099,15 +4099,10 @@ sub _parse_texi($;$)
                                         $closed_command), $line_nr);
                 } else {
                   my $parsed_ref_node = _parse_node_manual($ref->{'args'}->[0]);
-                  $ref->{'extra'}->{'node_argument'}->{'node_content'} = 
-                       $parsed_ref_node->{'node_content'};
-                  if ($parsed_ref_node->{'manual_content'}) {
-                    $ref->{'extra'}->{'node_argument'}->{'manual_content'} =
-                       $parsed_ref_node->{'manual_content'};
-                  } elsif ($closed_command ne 'inforef' 
-                           and !defined($args[3]) and !defined($args[4])) {
-                    $ref->{'extra'}->{'node_argument'}->{'normalized'} = 
-                       $parsed_ref_node->{'normalized'};
+                  $ref->{'extra'}->{'node_argument'} = $parsed_ref_node;
+                  if ($closed_command ne 'inforef' 
+                           and !defined($args[3]) and !defined($args[4])
+                           and !$parsed_ref_node->{'manual_content'}) {
                     push @{$self->{'internal_references'}}, $ref;
                   }
                 }

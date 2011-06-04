@@ -45,7 +45,8 @@ $result_trees{'ref_in_style_command'} = {
                           'parent' => {},
                           'text' => 'other node'
                         }
-                      ]
+                      ],
+                      'normalized' => 'other-node'
                     }
                   },
                   'line_nr' => {
