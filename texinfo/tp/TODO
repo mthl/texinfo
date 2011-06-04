@@ -232,6 +232,10 @@ node_footnote_end
 formatting/
 inter_item_commands.texi
 
+HTML command:
+sectioning/test_refs.texi with USE_NODES and split at nodes for testing 
+nodes without sectioning commands below a chapter.
+
 @verbatiminclude formatting/simplest.texi
 
 @@verbatiminclude dot.

@@ -754,7 +754,7 @@ my %PASSIVE_ICONS = (
 );
 
 
-my %defaults = (
+our %defaults = (
   'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 1,
   'footnotestyle'        => 'end',
@@ -5154,14 +5154,14 @@ sub output($$)
     $self->force_conf('SPLIT', 0);
     $self->force_conf('MONOLITHIC', 1);
   }
-  if ($self->{'SPLIT'}) {
+  if ($self->get_conf('SPLIT')) {
     $self->set_conf('NODE_FILES', 1);
   }
   if ($self->get_conf('NODE_FILES') or $self->get_conf('SPLIT') eq 'node') {
     $self->set_conf('NODE_FILENAMES', 1);
   }
   $self->set_conf('EXTERNAL_CROSSREF_SPLIT', $self->get_conf('SPLIT'));
-                                                   
+
   $self->_prepare_css();
 
   # this sets OUTFILE, to be used if not split, but also

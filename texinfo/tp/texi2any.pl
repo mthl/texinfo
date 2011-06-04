@@ -395,51 +395,63 @@ sub _set_variables_texi2html()
 {
   # FIXME all that are set to 0 could be negated, in order to have the default
   # (undef) right.
-  set_from_init_file('NO_USE_SETFILENAME', 1);
-  set_from_init_file('USE_SETFILENAME_EXTENSION', 0);
-  set_from_init_file('footnotestyle', 'separate');
-  set_from_init_file('INLINE_CONTENTS', 0);
-  set_from_init_file('FORCE', 1);
-  set_from_init_file('AVOID_MENU_REDUNDANCY', 1);
-  set_from_init_file('TOP_HEADING_AT_BEGINNING', 1);
-  set_from_init_file('TOP_FILE', '');
-  set_from_init_file('USE_ACCESSKEY', 0);
-  set_from_init_file('NODE_NAME_IN_MENU', 0);
-  set_from_init_file('OVERVIEW_LINK_TO_TOC', 0);
-  set_from_init_file('USE_UP_FOR_ADJACENT_NODES', 1);
-  set_from_init_file('USE_REL_REV', 0);
-  set_from_init_file('USE_LINKS', 0);
-  set_from_init_file('USE_NODES', undef);
-  set_from_init_file('USE_SECTIONS', 1);
-  set_from_init_file('NODE_FILENAMES', 0);
-  set_from_init_file('USE_NUMERIC_ENTITY', 1);
-  set_from_init_file('SPLIT', '');
-  set_from_init_file('SPLIT_INDEX', 100);
-  set_from_init_file('PROGRAM_NAME_IN_FOOTER', 1);
-  set_from_init_file('HEADER_IN_TABLE', 1);
-  set_from_init_file('SHORT_REF', 0);
-  set_from_init_file('USE_TITLEPAGE_FOR_TITLE', 1);
-  set_from_init_file('MENU_ENTRY_COLON', '');
-  set_from_init_file('INDEX_ENTRY_COLON', '');
-  set_from_init_file('ENABLE_ENCODING_USE_ENTITY', 1);
-  set_from_init_file('DO_ABOUT', undef);
-  set_from_init_file('NODE_NAME_IN_INDEX', 0);
-  set_from_init_file('BIG_RULE', '<hr size="6">');
-  set_from_init_file('SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
+  my @texi2html_options = (
+  ['NO_USE_SETFILENAME', 1],
+  ['USE_SETFILENAME_EXTENSION', 0],
+  ['footnotestyle', 'separate'],
+  ['INLINE_CONTENTS', 0],
+  ['FORCE', 1],
+  ['AVOID_MENU_REDUNDANCY', 1],
+  ['TOP_HEADING_AT_BEGINNING', 1],
+  ['TOP_FILE', ''],
+  ['USE_ACCESSKEY', 0],
+  ['NODE_NAME_IN_MENU', 0],
+  ['OVERVIEW_LINK_TO_TOC', 0],
+  ['USE_UP_FOR_ADJACENT_NODES', 1],
+  ['USE_REL_REV', 0],
+  ['USE_LINKS', 0],
+  ['USE_NODES', undef],
+  ['USE_SECTIONS', 1],
+  ['NODE_FILENAMES', 0],
+  ['USE_NUMERIC_ENTITY', 1],
+  ['SPLIT', ''],
+  ['SPLIT_INDEX', 100],
+  ['PROGRAM_NAME_IN_FOOTER', 1],
+  ['HEADER_IN_TABLE', 1],
+  ['SHORT_REF', 0],
+  ['USE_TITLEPAGE_FOR_TITLE', 1],
+  ['MENU_ENTRY_COLON', ''],
+  ['INDEX_ENTRY_COLON', ''],
+  ['ENABLE_ENCODING_USE_ENTITY', 1],
+  ['DO_ABOUT', undef],
+  ['NODE_NAME_IN_INDEX', 0],
+  ['BIG_RULE', '<hr size="6">'],
+  ['SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
                              ' ', ' ', ' ', ' ',
-                             'Top', 'Contents', 'Index', 'About' ]);
-  set_from_init_file('TOP_BUTTONS', ['Back', 'Forward', ' ',
-                             'Contents', 'Index', 'About']);
+                             'Top', 'Contents', 'Index', 'About' ]],
+  ['TOP_BUTTONS', ['Back', 'Forward', ' ',
+                             'Contents', 'Index', 'About']],
 
-  set_from_init_file('MISC_BUTTONS', [ 'Top', 'Contents', 'Index', 'About' ]);
-  set_from_init_file('CHAPTER_BUTTONS', [ 'FastBack', 'FastForward', ' ',
+  ['MISC_BUTTONS', [ 'Top', 'Contents', 'Index', 'About' ]],
+  ['CHAPTER_BUTTONS', [ 'FastBack', 'FastForward', ' ',
                               ' ', ' ', ' ', ' ',
-                              'Top', 'Contents', 'Index', 'About', ]);
-  set_from_init_file('SECTION_FOOTER_BUTTONS', [ 'FastBack', 'Back', 'Up', 
-                                               'Forward', 'FastForward' ]);
-  set_from_init_file('NODE_FOOTER_BUTTONS', [ 'FastBack', 'Back', 
-                                            'Up', 'Forward', 'FastForward' ]);
-
+                              'Top', 'Contents', 'Index', 'About', ]],
+  ['SECTION_FOOTER_BUTTONS', [ 'FastBack', 'Back', 'Up', 
+                                               'Forward', 'FastForward' ]],
+  ['NODE_FOOTER_BUTTONS', [ 'FastBack', 'Back', 
+                                            'Up', 'Forward', 'FastForward' ]],
+  );
+  foreach my $option (@texi2html_options) {
+    #set_from_init_file($option->[0], $option->[1]);
+    #$converter_default_options->{$option->[0]} = $option->[1];
+    #no warnings 'once';
+    if (exists($Texinfo::Convert::HTML::defaults{$option->[0]})) {
+      $Texinfo::Convert::HTML::defaults{$option->[0]} = $option->[1];
+    } else {# (exists($Texinfo::Convert::Converter::all_converters_defaults{$option->[0]})) {
+      no warnings 'once';
+      $Texinfo::Convert::Converter::all_converters_defaults{$option->[0]} = $option->[1];
+    }
+  }
 }
 
 my $result_options = Getopt::Long::GetOptions (
