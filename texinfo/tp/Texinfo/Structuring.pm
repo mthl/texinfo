@@ -727,7 +727,33 @@ sub elements_directions($$)
             and $directions->{'NodeForward'}->{'type'} eq 'element'
             and !$directions->{'NodeForward'}->{'extra'}->{'directions'}->{'NodeBack'});
     }
-    if ($element->{'extra'}->{'section'}) {
+
+    if (!$element->{'extra'}->{'section'}) {
+      # If there is no associated section, find the previous element section.
+      # Use the FastForward of this element.
+      # Use it as FastBack if the section is top level, or use the FastBack.
+      my $section_element;
+      my $current = $element;
+      while ($current->{'element_prev'}) {
+        $current = $current->{'element_prev'};
+        if ($current->{'extra'}->{'section'}) {
+          $section_element = $current;
+          last;
+        }
+      }
+      if ($section_element) {
+        if ($section_element->{'extra'}->{'directions'}->{'FastForward'}) {
+          $directions->{'FastForward'} 
+            = $section_element->{'extra'}->{'directions'}->{'FastForward'};
+        }
+        if ($section_element->{'extra'}->{'section'}->{'level'} <= 1) {
+          $directions->{'FastBack'} = $section_element;
+        } elsif ($section_element->{'extra'}->{'directions'}->{'Fastback'}) {
+          $directions->{'FastBack'} 
+            = $section_element->{'extra'}->{'directions'}->{'Fastback'};
+        }
+      }
+    } else {
       my $section = $element->{'extra'}->{'section'};
       foreach my $direction(['Up', 'section_up'], ['Next', 'section_next'],
                             ['Prev', 'section_prev']) {
@@ -761,7 +787,7 @@ sub elements_directions($$)
           = $element if ($directions->{'FastForward'});
       }
     }
-    # Use node up if there is no section up.
+    # Use node up for Up if there is no section up.
     # FIXME is it really right?
     if (!$directions->{'Up'} and $element->{'extra'}->{'node'}
         and $element->{'extra'}->{'node'}->{'node_up'} 
