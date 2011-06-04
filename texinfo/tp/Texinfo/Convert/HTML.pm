@@ -3546,6 +3546,12 @@ sub _initialize($)
        unless ($self->{'expanded_formats_hash'}->{$format});
   }
 
+  $self->{'htmlxref'} = {};
+  if ($self->{'htmlxref_files'}) {
+    $self->{'htmlxref'} = Texinfo::Common::parse_htmlxref_files($self, 
+                                                  $self->{'htmlxref_files'});
+  }
+
   foreach my $context (keys(%default_commands_formatting)) {
     foreach my $command (keys(%{$default_commands_formatting{$context}})) {
       if (exists ($Texinfo::Config::commands_formatting{$context}->{$command})) {
@@ -4535,15 +4541,10 @@ sub htmlxref($$)
   my $self = shift;
   my $file = shift;
 
-  return undef;
+  return $self->{'htmlxref'}->{$file};
 }
 
-my %htmlxref_entries = (
- 'node' => [ 'node', 'section', 'chapter', 'mono' ],
- 'section' => [ 'section', 'chapter','node', 'mono' ],
- 'chapter' => [ 'chapter', 'section', 'node', 'mono' ],
- 'mono' => [ 'mono', 'chapter', 'section', 'node' ],
-);
+my %htmlxref_entries = %Texinfo::Common::htmlxref_entries;
 
 sub _external_node_href($$;$)
 {
@@ -4969,6 +4970,7 @@ $after_body_open
   return $result;
 }
 
+# FIXME is it usefull/used?
 sub convert_translation($$$)
 {
   my $self = shift;
@@ -5416,34 +5418,6 @@ sub protect_space_codebreak($$)
 }
 
 
-sub _definition_category($$$$)
-{
-  my $self = shift;
-  my $current = shift;
-  my $arg_category = shift;
-  my $arg_class = shift;
-  return $arg_category
-    if (!defined($arg_class));
-  
-  my $style = 
-    $Texinfo::Common::command_index_prefix{$current->{'extra'}->{'def_command'}};
-  #my $category = Texinfo::Convert::Texinfo::convert($arg_category->[0]);
-  #my $class = Texinfo::Convert::Texinfo::convert($arg_class->[0]);
-  #print STDERR "DEFINITION CATEGORY($style): $category $class\n"
-  #  if ($self->get_conf('DEBUG'));
-  if ($style eq 'f') {
-    #return Texinfo::Parser::parse_texi_line (undef, "$category on $class");
-    return $self->gdt('{category} on {class}', { 'category' => $arg_category, 
-                                          'class' => $arg_class });
-  } elsif ($style eq 'v') {
-    #return Texinfo::Parser::parse_texi_line (undef, "$category of $class");
-    return $self->gdt('{category} of {class}', { 'category' => $arg_category, 
-                                          'class' => $arg_class });
-  }
-  return $arg_category;
-}
-
-
 # on top, the converter object which holds some global information
 # 
 # context (for footnotes, multitable cells):
@@ -5796,18 +5770,8 @@ sub _convert($$)
     #                  'contents' => [$expansion]};
     #  }
     #  $result .= $self->_convert($expansion);
-      #  unshift @{$self->{'current_contents'}->[-1]}, $expansion;
-   #   #return '';
-   #   return $result;
-#    } elsif ($root->{'cmdname'} eq 'insertcopying') {
-#      if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
-#        unshift @{$self->{'current_contents'}->[-1]}, 
-#           {'contents' => $self->{'extra'}->{'copying'}->{'contents'}};
-#      }
-#      return '';
-#    } elsif ($root->{'cmdname'} eq 'listoffloats') {
+    # }
   print STDERR "DEBUG: HERE!($root)\n";
-  #return $result;
 }
 
 1;

@@ -156,6 +156,13 @@ headitem In table text.
 @item item
 In item.
 @end table
+'],
+['text_between_item_itemx',
+'@table @strong
+@item in item
+text
+@itemx in itemx
+@end table
 ']
 );
 

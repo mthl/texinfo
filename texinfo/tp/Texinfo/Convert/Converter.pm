@@ -42,14 +42,20 @@ my %defaults = (
   'documentlanguage'     => undef,
   'NUMBER_FOOTNOTES'     => 1,
   'SPLIT_SIZE'           => 300000,
-  'expanded_formats'     => undef,
   'include_directories'  => undef,
   'NUMBER_SECTIONS'      => 1,
+);
+
+# defaults for all converters.  Maybe more could be added, especially what
+# can be set with --set and should be the same for all the formats.
+our %all_converters_defaults = (
+  'htmlxref_files'       => undef,
   'output_format'        => undef,
 
   'DEBUG'                => 0,
   'TEST'                 => 0,
 );
+   
 
 sub _defaults($)
 {
@@ -90,6 +96,10 @@ sub converter(;$)
     $name = ref($converter);
   }
   my %defaults = $converter->_defaults();
+  foreach my $key (keys(%all_converters_defaults)) {
+    $defaults{$key} = $all_converters_defaults{$key} 
+      if (!exists($defaults{$key}));
+  }
   foreach my $key (keys(%defaults)) {
     if (Texinfo::Common::valid_option($key)) {
       $converter->{'conf'}->{$key} = $defaults{$key};
@@ -170,9 +180,9 @@ sub converter(;$)
     $converter->{'expanded_formats_hash'}->{$expanded_format} = 1;
   }
 
-  $converter->_initialize();
-
   $converter->Texinfo::Report::new();
+
+  $converter->_initialize();
 
   return $converter;
 }

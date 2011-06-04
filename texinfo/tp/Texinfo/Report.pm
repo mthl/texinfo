@@ -49,6 +49,7 @@ use strict;
 sub errors ($)
 {
   my $self = shift;
+  #print STDERR "REPORT ERRORS $self $self->{'errors_warnings'}\n";
   return ($self->{'errors_warnings'}, $self->{'error_nrs'});
 }
 
@@ -58,10 +59,11 @@ sub __($$)
   return &{$self->{'gettext'}}(@_);
 }
 
-sub new 
+sub new($)
 {
   my $self = shift;
   $self->{'errors_warnings'} = [];
+  #print STDERR "REPORT NEW $self $self->{'errors_warnings'}\n";
   $self->{'errors_nrs'} = 0;
   $self->{'gettext'} = sub {return $_[0];} if (!defined($self->{'gettext'}));
   return $self;
@@ -138,5 +140,24 @@ sub document_error ($$)
     { 'type' => 'error', 'text' => $text, 'error_line' => $text };
   $self->{'error_nrs'}++;
 }
+
+sub file_line_warn($$$;$) {
+  my $self = shift;
+  my $text = shift;
+  chomp($text);
+  my $file = shift;
+  my $line_nr = shift;
+
+  my $warn_line;
+  if (!defined($line_nr)) {
+    $warn_line = "$file: $text\n";
+  } else {
+    $warn_line = "$file:$line_nr: $text\n";
+  }
+  #print STDERR "REPORT FILE_LINE_WARN $self $self->{'errors_warnings'}\n";
+  push @{$self->{'errors_warnings'}},
+    { 'type' => 'warning', 'text' => $warn_line, 'error_line' => $warn_line};
+}
+
 
 1;

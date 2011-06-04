@@ -1,3 +1,6 @@
+Thre should be an error message (report by Tom Tromey) in 
+t/results/xtable/text_between_item_itemx.pl
+
 Verify that there is a test with a node both internal and external 
 ref, like
 @xref{node1}.
@@ -7,9 +10,9 @@ sectioning/sectioning_directions
 Differences with texi2html: 
 * name-NodeNext (which is more like text-NodeNext
   in tp) is always the node name in texi2html, it is the command element
-  text in tp (so here it is the section name).
+  text in tp (so here it is the section name). --> keep it like it
 * In tp, for node-Next sectioning commands directions are taken into 
-  account even if there are no autpomatic directions. Thus
+  account even if there are no automatic directions. Thus
 @node First node,,Top,Top
 @chapter first node chapter
 
@@ -19,9 +22,10 @@ Differences with texi2html:
 @chapter second node chapter
 
   leads to Second node being node-Next for First node in tp (and not in 
-  texi2html).
+  texi2html).  ---> not sure about this one
 
-* not taken by texi2html but certainly right
+* not taken by texi2html but certainly right, node-Next for unnumbered sub
+  as numbered sub
 @menu
 * unnumbered sub:: un
 * numbered sub:: nu
@@ -33,8 +37,8 @@ Differences with texi2html:
 @node numbered sub
 @subsection numbered subsection
 
-  In texi2html 'unnumbered sub' node-NodePrev is 'unnumbered' which is certainly
-  wrong.
+  Also in texi2html 'unnumbered sub' node-NodePrev is 'unnumbered' which 
+  is certainly wrong.   ---> keep it like this
 
 
 Handle better @exdent in html?

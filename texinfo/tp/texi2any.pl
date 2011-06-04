@@ -303,7 +303,6 @@ foreach my $file (locate_init_file($conf_file_name,
   Texinfo::Config::_load_init_file($file);
 }
 
-
 sub set_from_cmdline ($$) {
   return &Texinfo::Config::set_from_cmdline(@_);
 }
@@ -524,12 +523,13 @@ my $result_options = Getopt::Long::GetOptions (
        _set_variables_texi2html();
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      } else {
+       set_from_cmdline ($var, $value);
      # this is very wrong, but a way to avoid a spurious warning.
-       no warnings 'once';
-       if (set_from_cmdline ($var, $value) 
-           and exists($Texinfo::Parser::default_configuration{$var})) {
-         $parser_default_options->{$var} = $value;
-       }
+      # no warnings 'once';
+      # if (set_from_cmdline ($var, $value) 
+      #     and exists($Texinfo::Parser::default_configuration{$var})) {
+      #   $parser_default_options->{$var} = $value;
+      # }
      }
    }
  },
@@ -618,9 +618,11 @@ foreach my $format (@{$default_expanded_format}) {
     unless (grep {$_ eq $format} @{$parser_default_options->{'expanded_formats'}});
 }
 
+# FIXME should this be set when the --set is set too?  The corresponding
+# code is ready above, but commented out.
 foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
                                     'INLINE_INSERTCOPYING', 'SHOW_MENU',
-                                    'IGNORE_BEFORE_SETFILENAME') {
+                                    'IGNORE_BEFORE_SETFILENAME', 'TEST') {
   $parser_default_options->{$parser_settable_option} = get_conf($parser_settable_option) 
     if (defined(get_conf($parser_settable_option)));
 }
@@ -658,6 +660,14 @@ while(@input_files)
 
   my $input_file_base = $input_file_name;
   $input_file_base =~ s/\.te?x(i|info)?$//;
+
+  my @htmlxref_dirs = @language_config_dirs;
+  if ($input_directory ne '.' and $input_directory ne '') {
+    unshift @htmlxref_dirs, $input_directory;
+  }
+  unshift @htmlxref_dirs, '.';
+  my @texinfo_htmlxref_files 
+      = locate_init_file ($texinfo_htmlxref, \@htmlxref_dirs, 1);
 
   my $parser_options = { %$parser_default_options };
 
@@ -732,6 +742,7 @@ while(@input_files)
   }
   $converter_options->{'parser'} = $parser;
   $converter_options->{'output_format'} = $format;
+  $converter_options->{'htmlxref_files'} = \@texinfo_htmlxref_files;
   my $converter = &{$formats_table{$format}->{'converter'}}($converter_options);
   $converter->output($tree);
   handle_errors($converter, $error_count);
