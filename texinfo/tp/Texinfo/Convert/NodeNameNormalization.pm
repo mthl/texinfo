@@ -78,10 +78,12 @@ foreach my $ignored_brace_command ('xref','ref','pxref','inforef','anchor',
 }
 
 my %ignored_types;
-foreach my $type ('empty_line_after_command', 
+foreach my $type ('empty_line_after_command', 'preamble',
             'empty_spaces_after_command', 'spaces_at_end',
-            'empty_spaces_before_argument', 'space_at_end_menu_node',
-            'space_at_end_block_command') {
+            'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
+            'space_at_end_menu_node',
+            'empty_spaces_after_close_brace', 
+            'empty_space_at_end_def_bracketed') {
   $ignored_types{$type} = 1;
 }
 

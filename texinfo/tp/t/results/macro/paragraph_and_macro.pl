@@ -29,6 +29,9 @@ $result_trees{'paragraph_and_macro'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -71,6 +74,9 @@ $result_trees{'paragraph_and_macro'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -113,6 +119,9 @@ $result_trees{'paragraph_and_macro'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -215,16 +224,19 @@ $result_trees{'paragraph_and_macro'} = {
 };
 $result_trees{'paragraph_and_macro'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[0];
 $result_trees{'paragraph_and_macro'}{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'};
+$result_trees{'paragraph_and_macro'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'paragraph_and_macro'}{'contents'}[0];
 $result_trees{'paragraph_and_macro'}{'contents'}[1]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[2]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[3];
 $result_trees{'paragraph_and_macro'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[3];
 $result_trees{'paragraph_and_macro'}{'contents'}[3]{'parent'} = $result_trees{'paragraph_and_macro'};
+$result_trees{'paragraph_and_macro'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'paragraph_and_macro'}{'contents'}[3];
 $result_trees{'paragraph_and_macro'}{'contents'}[4]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[5]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[6];
 $result_trees{'paragraph_and_macro'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[6];
 $result_trees{'paragraph_and_macro'}{'contents'}[6]{'parent'} = $result_trees{'paragraph_and_macro'};
+$result_trees{'paragraph_and_macro'}{'contents'}[7]{'extra'}{'command'} = $result_trees{'paragraph_and_macro'}{'contents'}[6];
 $result_trees{'paragraph_and_macro'}{'contents'}[7]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[8]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[9]{'parent'} = $result_trees{'paragraph_and_macro'};

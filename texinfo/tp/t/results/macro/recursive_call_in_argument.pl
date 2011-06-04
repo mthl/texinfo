@@ -45,6 +45,9 @@ $result_trees{'recursive_call_in_argument'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -74,6 +77,7 @@ $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'args'}[0]{'parent'} 
 $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'recursive_call_in_argument'}{'contents'}[0];
 $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_argument'}{'contents'}[0];
 $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_argument'};
+$result_trees{'recursive_call_in_argument'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'recursive_call_in_argument'}{'contents'}[0];
 $result_trees{'recursive_call_in_argument'}{'contents'}[1]{'parent'} = $result_trees{'recursive_call_in_argument'};
 $result_trees{'recursive_call_in_argument'}{'contents'}[2]{'parent'} = $result_trees{'recursive_call_in_argument'};
 $result_trees{'recursive_call_in_argument'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_argument'}{'contents'}[3];

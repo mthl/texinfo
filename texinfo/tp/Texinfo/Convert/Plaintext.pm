@@ -189,7 +189,9 @@ my %ignored_types;
 foreach my $type ('empty_line_after_command', 'preamble',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
-            'empty_spaces_after_close_brace') {
+            'empty_spaces_after_close_brace', 
+            'empty_space_at_end_def_bracketed') {
+  #$ignored_types{$type} = 1;
   $ignored_types{$type} = 1;
 }
 
@@ -1494,7 +1496,8 @@ sub _convert($$)
           # node name
           push @contents, ({'type' => 'code',
                             'contents' => $node_content});
-          push @contents, {'text' => '.'} if ($command eq 'pxref');
+          push @contents, ({'text' => '.'}, {'cmdname' => ':'}) 
+            if ($command eq 'pxref');
         } else {
           push @contents, ({'type' => 'code',
                             'contents' => [@{$node_content}, {'text' => '::'}]});
@@ -2365,54 +2368,8 @@ sub _convert($$)
                or $root->{'extra'}->{'caption'} or $root->{'extra'}->{'shortcaption'})) {
         
         $result .= $self->_add_newline_if_needed();
-        my $caption;
-        if ($root->{'extra'}->{'caption'}) {
-          $caption = $root->{'extra'}->{'caption'};
-        } elsif ($root->{'extra'}->{'shortcaption'}) {
-          $caption = $root->{'extra'}->{'shortcaption'};
-        }
-        #if ($self->get_conf('DEBUG')) {
-        #  my $caption_texi = 
-        #    Texinfo::Convert::Texinfo::convert({ 'contents' => $caption->{'contents'}});
-        #  print STDERR "  CAPTION: $caption_texi\n";
-        #}
-        my $type;
-        if ($root->{'extra'}->{'type'}->{'normalized'} ne '') {
-          $type = {'contents' => $root->{'extra'}->{'type'}->{'content'}};
-        }
-
-        my $prepended;
-        if ($type) {
-          #print STDERR "AAAAAAA $root->{'extra'}->{'type'} "
-          #   .Data::Dumper->Dump([$root->{'extra'}->{'type'}]);
-          if ($caption) {
-            if (defined($root->{'number'})) {
-              $prepended = $self->gdt('{float_type} {float_number}: ', 
-                  {'float_type' => $type,
-                    'float_number' => $root->{'number'}});
-            } else {
-              $prepended = $self->gdt('{float_type}: ',
-                  {'float_type' => $type});
-            }
-          } else {
-            if (defined($root->{'number'})) {
-              $prepended = $self->gdt("{float_type} {float_number}\n",
-                  {'float_type' => $type,
-                    'float_number' => $root->{'number'}});
-            } else {
-              $prepended = $self->gdt("{float_type}\n", 
-                  {'float_type' => $type});
-            }
-          }
-        } elsif (defined($root->{'number'})) {
-          if ($caption) {
-            $prepended = $self->gdt('{float_number}: ',
-                 {'float_number' => $root->{'number'}});
-          } else {
-            $prepended = $self->gdt("{float_number}\n",
-                 {'float_number' => $root->{'number'}});
-          }
-        }
+        my ($caption, $prepended) = Texinfo::Common::float_name_caption($self,
+                                                                        $root);
         if ($prepended) {
           #print STDERR "PREPENDED ".Data::Dumper->Dump([$prepended]);
           $prepended->{'type'} = 'frenchspacing';

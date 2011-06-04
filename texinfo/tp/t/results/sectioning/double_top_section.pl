@@ -16,6 +16,9 @@ $result_trees{'double_top_section'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -79,6 +82,9 @@ $result_trees{'double_top_section'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -135,6 +141,7 @@ $result_trees{'double_top_section'} = {
   'type' => 'document_root'
 };
 $result_trees{'double_top_section'}{'contents'}[0]{'parent'} = $result_trees{'double_top_section'};
+$result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'double_top_section'}{'contents'}[1];
 $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0];
 $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0];
 $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0];
@@ -145,6 +152,7 @@ $result_trees{'double_top_section'}{'contents'}[1]{'contents'}[1]{'parent'} = $r
 $result_trees{'double_top_section'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
 $result_trees{'double_top_section'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'double_top_section'}{'contents'}[1]{'parent'} = $result_trees{'double_top_section'};
+$result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'double_top_section'}{'contents'}[2];
 $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0];
 $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0];
 $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0];

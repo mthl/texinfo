@@ -37,6 +37,9 @@ $result_trees{'two_macros_on_a_line'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -101,6 +104,9 @@ after
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -322,6 +328,7 @@ after
 $result_trees{'two_macros_on_a_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[0];
 $result_trees{'two_macros_on_a_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[0];
 $result_trees{'two_macros_on_a_line'}{'contents'}[0]{'parent'} = $result_trees{'two_macros_on_a_line'};
+$result_trees{'two_macros_on_a_line'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'two_macros_on_a_line'}{'contents'}[0];
 $result_trees{'two_macros_on_a_line'}{'contents'}[1]{'parent'} = $result_trees{'two_macros_on_a_line'};
 $result_trees{'two_macros_on_a_line'}{'contents'}[2]{'parent'} = $result_trees{'two_macros_on_a_line'};
 $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
@@ -330,6 +337,7 @@ $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'contents'}[0]{'parent'} = 
 $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
 $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
 $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'parent'} = $result_trees{'two_macros_on_a_line'};
+$result_trees{'two_macros_on_a_line'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
 $result_trees{'two_macros_on_a_line'}{'contents'}[4]{'parent'} = $result_trees{'two_macros_on_a_line'};
 $result_trees{'two_macros_on_a_line'}{'contents'}[5]{'parent'} = $result_trees{'two_macros_on_a_line'};
 $result_trees{'two_macros_on_a_line'}{'contents'}[6]{'parent'} = $result_trees{'two_macros_on_a_line'};

@@ -29,6 +29,9 @@ $result_trees{'double_macro_definition'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -63,6 +66,9 @@ $result_trees{'double_macro_definition'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -73,10 +79,12 @@ $result_trees{'double_macro_definition'} = {
 };
 $result_trees{'double_macro_definition'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'double_macro_definition'}{'contents'}[0];
 $result_trees{'double_macro_definition'}{'contents'}[0]{'parent'} = $result_trees{'double_macro_definition'};
+$result_trees{'double_macro_definition'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'double_macro_definition'}{'contents'}[0];
 $result_trees{'double_macro_definition'}{'contents'}[1]{'parent'} = $result_trees{'double_macro_definition'};
 $result_trees{'double_macro_definition'}{'contents'}[2]{'parent'} = $result_trees{'double_macro_definition'};
 $result_trees{'double_macro_definition'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'double_macro_definition'}{'contents'}[3];
 $result_trees{'double_macro_definition'}{'contents'}[3]{'parent'} = $result_trees{'double_macro_definition'};
+$result_trees{'double_macro_definition'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'double_macro_definition'}{'contents'}[3];
 $result_trees{'double_macro_definition'}{'contents'}[4]{'parent'} = $result_trees{'double_macro_definition'};
 
 $result_texis{'double_macro_definition'} = '@macro foo

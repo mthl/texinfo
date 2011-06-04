@@ -29,6 +29,22 @@ my @test_cases = (
 @enumerate z @c comment
 @end enumerate
 '],
+['enumerate_argument_item',
+'@enumerate 1
+@item numeric first
+@item numeric second
+@end enumerate
+
+@enumerate A@c comment
+@item upper case first
+@item upper case second
+@end enumerate
+
+@enumerate z @c comment
+@item lower case first
+@item lower case second
+@end enumerate
+'],
 ['enumerate_letters',
 '@enumerate c
 @item aaa

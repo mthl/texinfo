@@ -71,6 +71,9 @@ $result_trees{'value_in_macro_body'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -130,6 +133,7 @@ $result_trees{'value_in_macro_body'}{'contents'}[2]{'args'}[0]{'parent'} = $resu
 $result_trees{'value_in_macro_body'}{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[2];
 $result_trees{'value_in_macro_body'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[2];
 $result_trees{'value_in_macro_body'}{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_body'};
+$result_trees{'value_in_macro_body'}{'contents'}[3]{'extra'}{'command'} = $result_trees{'value_in_macro_body'}{'contents'}[2];
 $result_trees{'value_in_macro_body'}{'contents'}[3]{'parent'} = $result_trees{'value_in_macro_body'};
 $result_trees{'value_in_macro_body'}{'contents'}[4]{'parent'} = $result_trees{'value_in_macro_body'};
 $result_trees{'value_in_macro_body'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[5];

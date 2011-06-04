@@ -11,6 +11,9 @@ $result_trees{'item_in_ref'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -38,6 +41,9 @@ $result_trees{'item_in_ref'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -150,6 +156,9 @@ $result_trees{'item_in_ref'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -183,6 +192,9 @@ $result_trees{'item_in_ref'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -235,10 +247,12 @@ $result_trees{'item_in_ref'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'item_in_ref'}{'contents'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0];
+$result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0];
@@ -257,12 +271,14 @@ $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'conte
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[1];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0];
+$result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0];
+$result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[3];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'item_in_ref'}{'contents'}[0]{'contents'}[3]{'args'}[0];

@@ -362,7 +362,7 @@ foreach my $style_command ('asis','b','cite','clicksequence',
 }
 
 foreach my $one_arg_command (
-  'ctrl','dmn', 'w', 
+  'ctrl','dmn', 'w', 'key',
   'titlefont','hyphenation','anchor') {
   $brace_commands{$one_arg_command} = 1;
 }
@@ -799,6 +799,8 @@ sub definition_arguments_content($)
   my $root = shift;
   my $result;
 
+  return undef if (!defined($root->{'extra'}) 
+                    or !defined($root->{'extra'}->{'def_args'}));
   my @args = @{$root->{'extra'}->{'def_args'}};
   while (@args) {
     last if ($args[0]->[0] ne 'spaces'
@@ -813,5 +815,82 @@ sub definition_arguments_content($)
   return $result;
 }
 
+sub trim_spaces_comment_from_content($)
+{
+  my $contents = shift;
+  shift @$contents 
+    if ($contents->[0] and $contents->[0]->{'type'}
+       and ($contents->[0]->{'type'} eq 'empty_line_after_command'
+            or $contents->[0]->{'type'} eq 'empty_spaces_after_command'
+            or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'
+            or $contents->[0]->{'type'} eq 'empty_space_at_end_def_bracketed'
+            or $contents->[0]->{'type'} eq 'empty_spaces_after_close_brace'));
+
+  while (@$contents 
+         and (($contents->[-1]->{'cmdname'}
+               and ($contents->[-1]->{'cmdname'} eq 'c' 
+                    or $contents->[-1]->{'cmdname'} eq 'comment'))
+              or ($contents->[-1]->{'type'}
+                  and ($contents->[-1]->{'type'} eq 'spaces_at_end'
+                       or $contents->[-1]->{'type'} eq 'space_at_end_block_command')))) {
+    pop @$contents;
+  }
+}
+
+sub float_name_caption($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $caption;
+  if ($root->{'extra'}->{'caption'}) {
+    $caption = $root->{'extra'}->{'caption'};
+  } elsif ($root->{'extra'}->{'shortcaption'}) {
+    $caption = $root->{'extra'}->{'shortcaption'};
+  }
+  #if ($self->get_conf('DEBUG')) {
+  #  my $caption_texi = 
+  #    Texinfo::Convert::Texinfo::convert({ 'contents' => $caption->{'contents'}});
+  #  print STDERR "  CAPTION: $caption_texi\n";
+  #}
+  my $type;
+  if ($root->{'extra'}->{'type'}->{'normalized'} ne '') {
+    $type = {'contents' => $root->{'extra'}->{'type'}->{'content'}};
+  }
+
+  my $prepended;
+  if ($type) {
+  #print STDERR "AAAAAAA $root->{'extra'}->{'type'} "
+  #   .Data::Dumper->Dump([$root->{'extra'}->{'type'}]);
+    if ($caption) {
+      if (defined($root->{'number'})) {
+        $prepended = $self->gdt('{float_type} {float_number}: ',
+            {'float_type' => $type,
+             'float_number' => $root->{'number'}});
+      } else {
+        $prepended = $self->gdt('{float_type}: ',
+          {'float_type' => $type});
+      }
+    } else {
+      if (defined($root->{'number'})) {
+        $prepended = $self->gdt("{float_type} {float_number}\n",
+            {'float_type' => $type,
+              'float_number' => $root->{'number'}});
+      } else {
+        $prepended = $self->gdt("{float_type}\n",
+            {'float_type' => $type});
+      }
+    }
+  } elsif (defined($root->{'number'})) {
+    if ($caption) {
+      $prepended = $self->gdt('{float_number}: ',
+          {'float_number' => $root->{'number'}});
+    } else {
+      $prepended = $self->gdt("{float_number}\n",
+           {'float_number' => $root->{'number'}});
+    }
+  }
+  return ($caption, $prepended);
+}
 
 1;

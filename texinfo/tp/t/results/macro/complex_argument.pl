@@ -45,6 +45,9 @@ $result_trees{'complex_argument'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -108,6 +111,9 @@ $result_trees{'complex_argument'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -171,6 +177,9 @@ $result_trees{'complex_argument'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -230,6 +239,9 @@ $result_trees{'complex_argument'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -282,6 +294,9 @@ $result_trees{'complex_argument'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -332,6 +347,9 @@ $result_trees{'complex_argument'} = {
       'cmdname' => 'verbatim',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -352,6 +370,9 @@ $result_trees{'complex_argument'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -361,6 +382,9 @@ $result_trees{'complex_argument'} = {
       'cmdname' => 'ignore',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -381,6 +405,9 @@ $result_trees{'complex_argument'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -425,6 +452,9 @@ $result_trees{'complex_argument'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -535,6 +565,7 @@ $result_trees{'complex_argument'}{'contents'}[0]{'args'}[0]{'parent'} = $result_
 $result_trees{'complex_argument'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[0];
 $result_trees{'complex_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[0];
 $result_trees{'complex_argument'}{'contents'}[0]{'parent'} = $result_trees{'complex_argument'};
+$result_trees{'complex_argument'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[0];
 $result_trees{'complex_argument'}{'contents'}[1]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[2]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[3];
@@ -543,6 +574,7 @@ $result_trees{'complex_argument'}{'contents'}[3]{'contents'}[1]{'parent'} = $res
 $result_trees{'complex_argument'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[3];
 $result_trees{'complex_argument'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'complex_argument'}{'contents'}[3];
 $result_trees{'complex_argument'}{'contents'}[3]{'parent'} = $result_trees{'complex_argument'};
+$result_trees{'complex_argument'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[3];
 $result_trees{'complex_argument'}{'contents'}[4]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[5]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[6];
@@ -551,6 +583,7 @@ $result_trees{'complex_argument'}{'contents'}[6]{'args'}[2]{'parent'} = $result_
 $result_trees{'complex_argument'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[6];
 $result_trees{'complex_argument'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[6];
 $result_trees{'complex_argument'}{'contents'}[6]{'parent'} = $result_trees{'complex_argument'};
+$result_trees{'complex_argument'}{'contents'}[7]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[6];
 $result_trees{'complex_argument'}{'contents'}[7]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[8]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[0]{'args'}[0];
@@ -559,6 +592,7 @@ $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[0]{'parent'} = $res
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[2];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
+$result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0];
@@ -568,6 +602,7 @@ $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'parent'} = $res
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[4]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[5]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[6]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
+$result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0];
@@ -577,18 +612,23 @@ $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[8]{'parent'} = $res
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[9]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[10]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'parent'} = $result_trees{'complex_argument'};
+$result_trees{'complex_argument'}{'contents'}[10]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[10];
 $result_trees{'complex_argument'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[10];
 $result_trees{'complex_argument'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[10];
 $result_trees{'complex_argument'}{'contents'}[10]{'parent'} = $result_trees{'complex_argument'};
+$result_trees{'complex_argument'}{'contents'}[11]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[10];
 $result_trees{'complex_argument'}{'contents'}[11]{'parent'} = $result_trees{'complex_argument'};
+$result_trees{'complex_argument'}{'contents'}[12]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[12];
 $result_trees{'complex_argument'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[12];
 $result_trees{'complex_argument'}{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[12];
 $result_trees{'complex_argument'}{'contents'}[12]{'parent'} = $result_trees{'complex_argument'};
+$result_trees{'complex_argument'}{'contents'}[13]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[12];
 $result_trees{'complex_argument'}{'contents'}[13]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[14];
 $result_trees{'complex_argument'}{'contents'}[14]{'args'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[14];
 $result_trees{'complex_argument'}{'contents'}[14]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[14];
 $result_trees{'complex_argument'}{'contents'}[14]{'parent'} = $result_trees{'complex_argument'};
+$result_trees{'complex_argument'}{'contents'}[15]{'extra'}{'command'} = $result_trees{'complex_argument'}{'contents'}[14];
 $result_trees{'complex_argument'}{'contents'}[15]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[16]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[16];
 $result_trees{'complex_argument'}{'contents'}[16]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[16];

@@ -29,6 +29,9 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -85,6 +88,9 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -112,6 +118,7 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
 };
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[0];
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[0]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};
+$result_trees{'empty_macro_in_text_no_arg'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[0];
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[1]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[2]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[3]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};
@@ -120,6 +127,7 @@ $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[4]{'parent'} = $result_t
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[5]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[6];
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[6]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};
+$result_trees{'empty_macro_in_text_no_arg'}{'contents'}[7]{'extra'}{'command'} = $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[6];
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[7]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[8]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[9];

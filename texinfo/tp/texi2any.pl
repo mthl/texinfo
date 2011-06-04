@@ -212,6 +212,7 @@ our $options = {};
 sub _load_config ($$) {
   $default_options = shift;
   $cmdline_options = shift;
+  #print STDERR "cmdline_options: ".join('|',keys(%$cmdline_options))."\n";
 }
 
 sub _load_init_file($) {
@@ -307,6 +308,10 @@ sub set_from_cmdline ($$) {
   return &Texinfo::Config::set_from_cmdline(@_);
 }
 
+sub set_from_init_file ($$) {
+  return &Texinfo::Config::set_from_init_file(@_);
+}
+
 sub get_conf ($) {
   return &Texinfo::Config::get_conf(@_);
 }
@@ -391,49 +396,49 @@ sub _set_variables_texi2html()
 {
   # FIXME all that are set to 0 could be negated, in order to have the default
   # (undef) right.
-  set_from_cmdline('NO_USE_SETFILENAME', 1);
-  set_from_cmdline('USE_SETFILENAME_EXTENSION', 0);
-  set_from_cmdline('footnotestyle', 'separate');
-  set_from_cmdline('INLINE_CONTENTS', 0);
-  set_from_cmdline('FORCE', 1);
-  set_from_cmdline('AVOID_MENU_REDUNDANCY', 1);
-  set_from_cmdline('TOP_HEADING_AT_BEGINNING', 1);
-  set_from_cmdline('TOP_FILE', '');
-  set_from_cmdline('USE_ACCESSKEY', 0);
-  set_from_cmdline('NODE_NAME_IN_MENU', 0);
-  set_from_cmdline('OVERVIEW_LINK_TO_TOC', 0);
-  set_from_cmdline('USE_UP_FOR_ADJACENT_NODES', 1);
-  set_from_cmdline('USE_REL_REV', 0);
-  set_from_cmdline('USE_LINKS', 0);
-  set_from_cmdline('USE_NODES', undef);
-  set_from_cmdline('USE_SECTIONS', 1);
-  set_from_cmdline('NODE_FILENAMES', 0);
-  set_from_cmdline('USE_NUMERIC_ENTITY', 1);
-  set_from_cmdline('SPLIT', '');
-  set_from_cmdline('SPLIT_INDEX', 100);
-  set_from_cmdline('PROGRAM_NAME_IN_FOOTER', 1);
-  set_from_cmdline('HEADER_IN_TABLE', 1);
-  set_from_cmdline('SHORT_REF', 0);
-  set_from_cmdline('USE_TITLEPAGE_FOR_TITLE', 1);
-  set_from_cmdline('MENU_ENTRY_COLON', '');
-  set_from_cmdline('INDEX_ENTRY_COLON', '');
-  set_from_cmdline('ENABLE_ENCODING_USE_ENTITY', 1);
-  set_from_cmdline('DO_ABOUT', undef);
-  set_from_cmdline('NODE_NAME_IN_INDEX', 0);
-  set_from_cmdline('BIG_RULE', '<hr size="6">');
-  set_from_cmdline('SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
+  set_from_init_file('NO_USE_SETFILENAME', 1);
+  set_from_init_file('USE_SETFILENAME_EXTENSION', 0);
+  set_from_init_file('footnotestyle', 'separate');
+  set_from_init_file('INLINE_CONTENTS', 0);
+  set_from_init_file('FORCE', 1);
+  set_from_init_file('AVOID_MENU_REDUNDANCY', 1);
+  set_from_init_file('TOP_HEADING_AT_BEGINNING', 1);
+  set_from_init_file('TOP_FILE', '');
+  set_from_init_file('USE_ACCESSKEY', 0);
+  set_from_init_file('NODE_NAME_IN_MENU', 0);
+  set_from_init_file('OVERVIEW_LINK_TO_TOC', 0);
+  set_from_init_file('USE_UP_FOR_ADJACENT_NODES', 1);
+  set_from_init_file('USE_REL_REV', 0);
+  set_from_init_file('USE_LINKS', 0);
+  set_from_init_file('USE_NODES', undef);
+  set_from_init_file('USE_SECTIONS', 1);
+  set_from_init_file('NODE_FILENAMES', 0);
+  set_from_init_file('USE_NUMERIC_ENTITY', 1);
+  set_from_init_file('SPLIT', '');
+  set_from_init_file('SPLIT_INDEX', 100);
+  set_from_init_file('PROGRAM_NAME_IN_FOOTER', 1);
+  set_from_init_file('HEADER_IN_TABLE', 1);
+  set_from_init_file('SHORT_REF', 0);
+  set_from_init_file('USE_TITLEPAGE_FOR_TITLE', 1);
+  set_from_init_file('MENU_ENTRY_COLON', '');
+  set_from_init_file('INDEX_ENTRY_COLON', '');
+  set_from_init_file('ENABLE_ENCODING_USE_ENTITY', 1);
+  set_from_init_file('DO_ABOUT', undef);
+  set_from_init_file('NODE_NAME_IN_INDEX', 0);
+  set_from_init_file('BIG_RULE', '<hr size="6">');
+  set_from_init_file('SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
                              ' ', ' ', ' ', ' ',
                              'Top', 'Contents', 'Index', 'About' ]);
-  set_from_cmdline('TOP_BUTTONS', ['Back', 'Forward', ' ',
+  set_from_init_file('TOP_BUTTONS', ['Back', 'Forward', ' ',
                              'Contents', 'Index', 'About']);
 
-  set_from_cmdline('MISC_BUTTONS', [ 'Top', 'Contents', 'Index', 'About' ]);
-  set_from_cmdline('CHAPTER_BUTTONS', [ 'FastBack', 'FastForward', ' ',
+  set_from_init_file('MISC_BUTTONS', [ 'Top', 'Contents', 'Index', 'About' ]);
+  set_from_init_file('CHAPTER_BUTTONS', [ 'FastBack', 'FastForward', ' ',
                               ' ', ' ', ' ', ' ',
                               'Top', 'Contents', 'Index', 'About', ]);
-  set_from_cmdline('SECTION_FOOTER_BUTTONS', [ 'FastBack', 'Back', 'Up', 
+  set_from_init_file('SECTION_FOOTER_BUTTONS', [ 'FastBack', 'Back', 'Up', 
                                                'Forward', 'FastForward' ]);
-  set_from_cmdline('NODE_FOOTER_BUTTONS', [ 'FastBack', 'Back', 
+  set_from_init_file('NODE_FOOTER_BUTTONS', [ 'FastBack', 'Back', 
                                             'Up', 'Forward', 'FastForward' ]);
 
 }
@@ -590,6 +595,7 @@ my %formats_table = (
   'html' => {
              'nodes_tree' => 1,
              'floats' => 1,
+             'split' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
   'debugcount' => {

@@ -1,51 +1,45 @@
+Verify that there is a test with a node both internal and external 
+ref, like
+@xref{node1}.
+@xref{node1,,manual}.
+
+sectioning/sectioning_directions
+Differences with texi2html: 
+* name-NodeNext (which is more like text-NodeNext
+  in tp) is always the node name in texi2html, it is the command element
+  text in tp (so here it is the section name).
+* In tp, for node-Next sectioning commands directions are taken into 
+  account even if there are no autpomatic directions. Thus
+@node First node,,Top,Top
+@chapter first node chapter
+
+...
+
+@node Second node,Third node unnumbered,,Top
+@chapter second node chapter
+
+  leads to Second node being node-Next for First node in tp (and not in 
+  texi2html).
+
+* not taken by texi2html but certainly right
+@menu
+* unnumbered sub:: un
+* numbered sub:: nu
+@end menu
+
+@node unnumbered sub
+@unnumberedsubsec unnumbered subsection
+
+@node numbered sub
+@subsection numbered subsection
+
+  In texi2html 'unnumbered sub' node-NodePrev is 'unnumbered' which is certainly
+  wrong.
+
+
 Handle better @exdent in html?
 
 LINKS_BUTTONS as config, check and document.
-
-API HTML:
-
-* user wanting to change how a command/type is formatted can pass a reference
-  on a function used to format the command.  For example:
-
-%commands_conversion{'quotation'} = \&my_quotation_convert_function;
-
-* the call of this function depends on the type of command.  For the most
-  complex commands, that have both arguments and contents, like quotations,
-  the call would be
-
-fun($converter, $cmd_or_type_name, $command_in_tree, $args_formatted,
-    $contents_formatted);
-
-  For a command with contents and no meaningful arg (like @example
-  or @table):
-
-fun($converter, $cmd_or_type_name, $command_in_tree, $contents_formatted)
-
-  For a command with args and no content (like @image, @code):
-
-fun($converter, $cmd_or_type_name, $command_in_tree, $args_formatted)
-
-  For a command that have no argument, like @TeX{} or @@:
-
-fun($converter, $cmd_or_type_name, $command_in_tree)
-
-  For text
-
-fun($converter, $cmd_or_type_name, $command_in_tree, $text)
-
-$converter is an opaque structure that may be queried for context information,
-like am I in string, in preformatted, in footnote, in code style command?
-
-* how the contents and the args are formatted may be determined by
-  2 hashes, one for the contents and the other for the args:
-
-$commands_contents{'copying'} = ['raw', 'text'];
-$commands_args{'image'} = [['raw'], ['raw'], ['raw'], ['raw, 'string', 'text'],
-                           ['raw']];
-# this means no formatting
-$commands_args{'^'} = [[[]];
-
-$commands_formatting{'normal' | 'string' | 'preformatted'}
 
 When the HTML.pm is finished, document the API, that is everything
 in Texinfo::Config.

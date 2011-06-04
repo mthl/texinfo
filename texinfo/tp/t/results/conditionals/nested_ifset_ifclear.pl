@@ -92,6 +92,9 @@ Somevar is set, anothervar is not.
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -297,6 +300,7 @@ $result_trees{'nested_ifset_ifclear'}{'contents'}[1]{'contents'}[5]{'parent'} = 
 $result_trees{'nested_ifset_ifclear'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'nested_ifset_ifclear'}{'contents'}[1];
 $result_trees{'nested_ifset_ifclear'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'nested_ifset_ifclear'}{'contents'}[1];
 $result_trees{'nested_ifset_ifclear'}{'contents'}[1]{'parent'} = $result_trees{'nested_ifset_ifclear'};
+$result_trees{'nested_ifset_ifclear'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'nested_ifset_ifclear'}{'contents'}[1];
 $result_trees{'nested_ifset_ifclear'}{'contents'}[2]{'parent'} = $result_trees{'nested_ifset_ifclear'};
 $result_trees{'nested_ifset_ifclear'}{'contents'}[3]{'parent'} = $result_trees{'nested_ifset_ifclear'};
 $result_trees{'nested_ifset_ifclear'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'nested_ifset_ifclear'}{'contents'}[4];

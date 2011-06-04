@@ -16,6 +16,9 @@ $result_trees{'ref_in_ref'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -131,6 +134,7 @@ $result_trees{'ref_in_ref'} = {
   'type' => 'document_root'
 };
 $result_trees{'ref_in_ref'}{'contents'}[0]{'parent'} = $result_trees{'ref_in_ref'};
+$result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_ref'}{'contents'}[1];
 $result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0];

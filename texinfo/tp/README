@@ -17,9 +17,19 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-  blah blah blah
+Standard modules:
+Encode, File::Spec, Config, Unicode::Normalize, Carp, Data::Dumper,
+File::Basename, Getopt::Long.
 
-On ubuntu/debian 
+It also uses 
+Locale::Messages, Unicode::EastAsianWidth, Text::Unidecode
+but internal versions are shipped and will be installed and used in the 
+default case.
+
+For the tests you would need:
+Data::Compare, Test::Deep, Clone.
+
+On ubuntu/debian the corresponding packages are:
 libdata-compare-perl libtest-deep-perl libclone-perl
 
 COPYRIGHT AND LICENCE

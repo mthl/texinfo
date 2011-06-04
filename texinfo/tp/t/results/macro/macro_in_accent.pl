@@ -37,6 +37,9 @@ $result_trees{'macro_in_accent'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -79,6 +82,9 @@ $result_trees{'macro_in_accent'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -210,11 +216,13 @@ $result_trees{'macro_in_accent'} = {
 $result_trees{'macro_in_accent'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_in_accent'}{'contents'}[0];
 $result_trees{'macro_in_accent'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_accent'}{'contents'}[0];
 $result_trees{'macro_in_accent'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_accent'};
+$result_trees{'macro_in_accent'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_in_accent'}{'contents'}[0];
 $result_trees{'macro_in_accent'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_accent'};
 $result_trees{'macro_in_accent'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_accent'};
 $result_trees{'macro_in_accent'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_in_accent'}{'contents'}[3];
 $result_trees{'macro_in_accent'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_accent'}{'contents'}[3];
 $result_trees{'macro_in_accent'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_accent'};
+$result_trees{'macro_in_accent'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'macro_in_accent'}{'contents'}[3];
 $result_trees{'macro_in_accent'}{'contents'}[4]{'parent'} = $result_trees{'macro_in_accent'};
 $result_trees{'macro_in_accent'}{'contents'}[5]{'parent'} = $result_trees{'macro_in_accent'};
 $result_trees{'macro_in_accent'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_in_accent'}{'contents'}[6]{'contents'}[0];

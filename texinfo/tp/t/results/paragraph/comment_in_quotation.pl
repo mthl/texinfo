@@ -16,6 +16,9 @@ $result_trees{'comment_in_quotation'} = {
       'cmdname' => 'quotation',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -48,6 +51,9 @@ $result_trees{'comment_in_quotation'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -101,6 +107,9 @@ $result_trees{'comment_in_quotation'} = {
       'cmdname' => 'quotation',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -133,6 +142,9 @@ $result_trees{'comment_in_quotation'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -180,11 +192,13 @@ $result_trees{'comment_in_quotation'} = {
   'type' => 'text_root'
 };
 $result_trees{'comment_in_quotation'}{'contents'}[0]{'parent'} = $result_trees{'comment_in_quotation'};
+$result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_in_quotation'}{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1];
+$result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0];
@@ -194,11 +208,13 @@ $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'parent'} = 
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'parent'} = $result_trees{'comment_in_quotation'};
 $result_trees{'comment_in_quotation'}{'contents'}[2]{'parent'} = $result_trees{'comment_in_quotation'};
+$result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_in_quotation'}{'contents'}[3];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[1]{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3];
+$result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0];

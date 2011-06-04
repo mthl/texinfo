@@ -51,6 +51,9 @@ $result_trees{'implicit_quoting_one_arg'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -103,6 +106,7 @@ $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'args'}[0]{'parent'} = 
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
+$result_trees{'implicit_quoting_one_arg'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[2]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[3]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[0]{'args'}[0];

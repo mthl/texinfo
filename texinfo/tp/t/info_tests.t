@@ -88,6 +88,11 @@ Para2@footnote{Footnote 2.}.
 @xref{(m)in ref ending with a dot., name} ! after xref and dot inside.
 @xref{(m)in ref followed by symbol}# g.
 '],
+['pxref_test',
+'@node Top
+
+Hey (@pxref{(m) in pxref}) and continue (@pxref{(m) in pxref, name}) and end.
+'],
 ['contents_setcontentsaftertitlepage_before_node',
 '
 @contents

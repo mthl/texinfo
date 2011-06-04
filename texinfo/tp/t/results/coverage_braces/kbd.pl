@@ -200,6 +200,9 @@ $result_trees{'kbd'} = {
       'cmdname' => 'example',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => ' 
 ',
@@ -248,6 +251,9 @@ $result_trees{'kbd'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -326,6 +332,9 @@ $result_trees{'kbd'} = {
       'cmdname' => 'format',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => ' 
 ',
@@ -374,6 +383,9 @@ $result_trees{'kbd'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -454,6 +466,7 @@ $result_trees{'kbd'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'kb
 $result_trees{'kbd'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[6];
 $result_trees{'kbd'}{'contents'}[6]{'parent'} = $result_trees{'kbd'};
 $result_trees{'kbd'}{'contents'}[7]{'parent'} = $result_trees{'kbd'};
+$result_trees{'kbd'}{'contents'}[8]{'contents'}[0]{'extra'}{'command'} = $result_trees{'kbd'}{'contents'}[8];
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8];
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1];
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'args'}[0];
@@ -461,6 +474,7 @@ $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'args'}[0]{'pa
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1];
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1];
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[8];
+$result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[2];
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0];
@@ -475,6 +489,7 @@ $result_trees{'kbd'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'k
 $result_trees{'kbd'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[10];
 $result_trees{'kbd'}{'contents'}[10]{'parent'} = $result_trees{'kbd'};
 $result_trees{'kbd'}{'contents'}[11]{'parent'} = $result_trees{'kbd'};
+$result_trees{'kbd'}{'contents'}[12]{'contents'}[0]{'extra'}{'command'} = $result_trees{'kbd'}{'contents'}[12];
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12];
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1];
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0];
@@ -482,6 +497,7 @@ $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0]{'p
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1];
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1];
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[12];
+$result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[2];
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0];
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0];
 $result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0];

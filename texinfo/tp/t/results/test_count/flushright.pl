@@ -16,6 +16,9 @@ $result_trees{'flushright'} = {
       'cmdname' => 'flushright',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -255,6 +258,9 @@ $result_trees{'flushright'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -302,6 +308,7 @@ $result_trees{'flushright'} = {
   'type' => 'text_root'
 };
 $result_trees{'flushright'}{'contents'}[0]{'parent'} = $result_trees{'flushright'};
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright'}{'contents'}[1];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[2];
@@ -340,6 +347,7 @@ $result_trees{'flushright'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_tr
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[9];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0];

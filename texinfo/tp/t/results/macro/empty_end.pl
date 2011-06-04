@@ -45,6 +45,9 @@ $result_trees{'empty_end'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '',
       'type' => 'empty_line_after_command'
@@ -56,6 +59,7 @@ $result_trees{'empty_end'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'
 $result_trees{'empty_end'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'empty_end'}{'contents'}[0];
 $result_trees{'empty_end'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_end'}{'contents'}[0];
 $result_trees{'empty_end'}{'contents'}[0]{'parent'} = $result_trees{'empty_end'};
+$result_trees{'empty_end'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'empty_end'}{'contents'}[0];
 $result_trees{'empty_end'}{'contents'}[1]{'parent'} = $result_trees{'empty_end'};
 
 $result_texis{'empty_end'} = '@macro foo {aaa, }

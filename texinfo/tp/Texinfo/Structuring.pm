@@ -1012,6 +1012,7 @@ sub _do_index_keys($$)
   }
 }
 
+# FIXME empty index entries are kept here, but not when sorting by letter.
 sub sort_indices($$)
 {
   my $self = shift;
@@ -1034,6 +1035,7 @@ sub sort_indices_by_letter($$)
   foreach my $index_name (keys(%$index_entries)) {
     my $index_letter_hash;
     foreach my $index_entry (@{$index_entries->{$index_name}}) {
+      next if ($index_entry->{'key'} !~ /\S/);
       my $letter = uc(substr($index_entry->{'key'}, 0, 1));
       push @{$index_letter_hash->{$letter}}, $index_entry;
     }

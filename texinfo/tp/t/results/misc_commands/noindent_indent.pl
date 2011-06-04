@@ -22,6 +22,9 @@ $result_trees{'noindent_indent'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -57,6 +60,9 @@ $result_trees{'noindent_indent'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -97,6 +103,9 @@ $result_trees{'noindent_indent'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => ' ',
       'type' => 'empty_spaces_after_command'
@@ -131,6 +140,9 @@ $result_trees{'noindent_indent'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => ' ',
       'type' => 'empty_spaces_after_command'
@@ -154,22 +166,26 @@ $result_trees{'noindent_indent'} = {
 };
 $result_trees{'noindent_indent'}{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[1]{'parent'} = $result_trees{'noindent_indent'};
+$result_trees{'noindent_indent'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'noindent_indent'}{'contents'}[1];
 $result_trees{'noindent_indent'}{'contents'}[2]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[3];
 $result_trees{'noindent_indent'}{'contents'}[3]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[4]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[5]{'parent'} = $result_trees{'noindent_indent'};
+$result_trees{'noindent_indent'}{'contents'}[6]{'extra'}{'command'} = $result_trees{'noindent_indent'}{'contents'}[5];
 $result_trees{'noindent_indent'}{'contents'}[6]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[7];
 $result_trees{'noindent_indent'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[7];
 $result_trees{'noindent_indent'}{'contents'}[7]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[8]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[9]{'parent'} = $result_trees{'noindent_indent'};
+$result_trees{'noindent_indent'}{'contents'}[10]{'extra'}{'command'} = $result_trees{'noindent_indent'}{'contents'}[9];
 $result_trees{'noindent_indent'}{'contents'}[10]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[11];
 $result_trees{'noindent_indent'}{'contents'}[11]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[12]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[13]{'parent'} = $result_trees{'noindent_indent'};
+$result_trees{'noindent_indent'}{'contents'}[14]{'extra'}{'command'} = $result_trees{'noindent_indent'}{'contents'}[13];
 $result_trees{'noindent_indent'}{'contents'}[14]{'parent'} = $result_trees{'noindent_indent'};
 $result_trees{'noindent_indent'}{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[15];
 $result_trees{'noindent_indent'}{'contents'}[15]{'parent'} = $result_trees{'noindent_indent'};

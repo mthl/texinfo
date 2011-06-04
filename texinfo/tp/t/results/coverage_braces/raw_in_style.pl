@@ -21,6 +21,9 @@ $result_trees{'raw_in_style'} = {
                   'cmdname' => 'html',
                   'contents' => [
                     {
+                      'extra' => {
+                        'command' => {}
+                      },
                       'parent' => {},
                       'text' => '
 ',
@@ -41,6 +44,9 @@ $result_trees{'raw_in_style'} = {
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => '
 ',
@@ -68,9 +74,11 @@ $result_trees{'raw_in_style'} = {
   'type' => 'text_root'
 };
 $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0];
 $result_trees{'raw_in_style'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_style'}{'contents'}[0];

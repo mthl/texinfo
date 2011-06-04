@@ -10,6 +10,9 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
       'cmdname' => 'enumerate',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -24,6 +27,9 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
           'cmdname' => 'item',
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -40,6 +46,9 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
               'type' => 'paragraph'
             },
             {
+              'extra' => {
+                'command' => undef
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -56,6 +65,9 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
               'type' => 'paragraph'
             },
             {
+              'extra' => {
+                'command' => undef
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -82,6 +94,9 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -129,8 +144,10 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
+$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2];
@@ -141,6 +158,7 @@ $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'cont
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'contents'}[5];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
+$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[3];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[3]{'args'}[0];

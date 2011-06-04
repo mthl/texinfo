@@ -1846,8 +1846,9 @@ sub _parse_float_type($)
 }
 
 # used for definition line parsing
-sub _next_bracketed_or_word($)
+sub _next_bracketed_or_word($$)
 {
+  my $self = shift;
   my $contents = shift;
   return undef if (!scalar(@{$contents}));
   my $spaces;
@@ -1863,6 +1864,7 @@ sub _next_bracketed_or_word($)
     my $bracketed = shift @{$contents};
     # FIXME don't modify type here?
     # return ($spaces, $bracketed);
+    $self->_isolate_last_space($bracketed, 'empty_space_at_end_def_bracketed');
     return ($spaces, { 'contents' => $bracketed->{'contents'},
                        'parent' => $bracketed->{'parent'},
                        'type' => 'bracketed_def_content', });
@@ -1881,8 +1883,9 @@ sub _next_bracketed_or_word($)
 }
 
 # definition line parsing
-sub _parse_def ($$)
+sub _parse_def ($$$)
 {
+  my $self = shift;
   my $command = shift;
   my $contents = shift;
   
@@ -1908,7 +1911,7 @@ sub _parse_def ($$)
     #print STDERR "$command $arg"._print_current($contents[0]);
     #foreach my $content (@contents) {print STDERR " "._print_current($content)};
     #print STDERR " contents ->".Texinfo::Convert::Texinfo::convert ({'contents' => \@contents});
-    my ($spaces, $next) = _next_bracketed_or_word(\@contents);
+    my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
     last if (!defined($next));
     #print STDERR "NEXT ".Texinfo::Convert::Texinfo::convert($next)."\n";
     push @result, ['spaces', $spaces] if (defined($spaces));
@@ -1917,7 +1920,7 @@ sub _parse_def ($$)
 
   my @args_results;
   while (@contents) {
-    my ($spaces, $next) = _next_bracketed_or_word(\@contents);
+    my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
     push @args_results, ['spaces', $spaces] if (defined($spaces));
     last if (!defined($next));
     if (defined($next->{'text'})) {
@@ -2206,8 +2209,8 @@ sub _end_line($$$)
     die "BUG: def_context $def_context "._print_current($current) 
       if ($def_context ne 'def');
     my $def_command = $current->{'parent'}->{'extra'}->{'def_command'};
-    my $arguments = _parse_def ($def_command, 
-                                $current->{'contents'});
+    my $arguments = $self->_parse_def ($def_command, 
+                                       $current->{'contents'});
     if (scalar(@$arguments)) {
       $current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
       my $def_parsed_hash;
@@ -2427,6 +2430,16 @@ sub _end_line($$$)
     }
     $current = $self->_begin_preformatted($current);
 
+  # if we are after a @end verbatim, we must restart a preformatted if needed,
+  # since there is no @end command explicitly associated to raw commands
+  # it won't be done elsewhere.
+  } elsif ($current->{'contents'}
+           and $current->{'contents'}->[-1]
+           and $current->{'contents'}->[-1]->{'type'}
+           and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
+           and $current->{'contents'}->[-1]->{'extra'}
+           and $current->{'contents'}->[-1]->{'extra'}->{'command'}->{'cmdname'} eq 'verbatim') {
+    $current = $self->_begin_preformatted($current);
   # misc command line arguments
   } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
@@ -2745,13 +2758,15 @@ sub _end_line($$$)
   return ($current, $included_file);
 }
 
-sub _start_empty_line_after_command($$) {
+sub _start_empty_line_after_command($$$) {
   my $line = shift;
   my $current = shift;
+  my $command = shift;
   $line =~ s/^([^\S\n]*)//;
   push @{$current->{'contents'}}, { 'type' => 'empty_line_after_command',
                                     'text' => $1,
-                                    'parent' => $current };
+                                    'parent' => $current,
+                                    'extra' => {'command' => $command} };
   return $line;
 }
 
@@ -2943,6 +2958,7 @@ sub _parse_texi($;$)
           last;
         } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
           my $end_command = $2;
+          my $raw_command = $current;
           $line =~ s/^(.*?)(\@end\s$current->{'cmdname'})//;
           push @{$current->{'contents'}}, 
             { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
@@ -2991,7 +3007,7 @@ sub _parse_texi($;$)
             last;
           } else {
             print STDERR "CLOSED raw $end_command\n" if ($self->{'DEBUG'});
-            $line = _start_empty_line_after_command($line, $current);
+            $line = _start_empty_line_after_command($line, $current, $raw_command);
           }
         } else {
           if (@{$current->{'contents'}} 
@@ -3705,7 +3721,7 @@ sub _parse_texi($;$)
               push @{$self->{'context_stack'}}, 'line' 
                 unless ($def_commands{$command});
             }
-            $line = _start_empty_line_after_command($line, $current);
+            $line = _start_empty_line_after_command($line, $current, $misc);
           }
           $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
 
@@ -3878,7 +3894,7 @@ sub _parse_texi($;$)
             $block->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
             $self->_register_global_command($command, $block, $line_nr);
 
-            $line = _start_empty_line_after_command($line, $current);
+            $line = _start_empty_line_after_command($line, $current, $block);
           }
         } elsif (defined($brace_commands{$command})
                or defined($self->{'definfoenclose'}->{$command})) {
@@ -4281,23 +4297,7 @@ sub _parse_special_misc_command($$$$)
 
 sub _trim_spaces_comment_from_content($)
 {
-  my $contents = shift;
-  shift @$contents 
-    if ($contents->[0] and $contents->[0]->{'type'}
-       and ($contents->[0]->{'type'} eq 'empty_line_after_command'
-            or $contents->[0]->{'type'} eq 'empty_spaces_after_command'
-            or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'
-            or $contents->[0]->{'type'} eq 'empty_spaces_after_close_brace'));
-
-  while (@$contents 
-         and (($contents->[-1]->{'cmdname'}
-               and ($contents->[-1]->{'cmdname'} eq 'c' 
-                    or $contents->[-1]->{'cmdname'} eq 'comment'))
-              or ($contents->[-1]->{'type'}
-                  and ($contents->[-1]->{'type'} eq 'spaces_at_end'
-                       or $contents->[-1]->{'type'} eq 'space_at_end_block_command')))) {
-    pop @$contents;
-  }
+  Texinfo::Common::trim_spaces_comment_from_content($_[0]);
 }
 
 # at the end of a @-command line with arguments, parse the resulting 

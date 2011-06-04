@@ -16,6 +16,9 @@ $result_trees{'quote_dash_in_display'} = {
       'cmdname' => 'display',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -43,6 +46,9 @@ $result_trees{'quote_dash_in_display'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -90,10 +96,12 @@ $result_trees{'quote_dash_in_display'} = {
   'type' => 'text_root'
 };
 $result_trees{'quote_dash_in_display'}{'contents'}[0]{'parent'} = $result_trees{'quote_dash_in_display'};
+$result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'quote_dash_in_display'}{'contents'}[1];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1];
+$result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'quote_dash_in_display'}{'contents'}[1]{'contents'}[2]{'args'}[0];

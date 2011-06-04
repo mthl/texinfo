@@ -28,6 +28,7 @@ use Texinfo::Convert::Unicode;
 # for debugging
 use Texinfo::Convert::Texinfo;
 use Data::Dumper;
+use Carp qw(cluck);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -541,7 +542,8 @@ my %ignored_types;
 foreach my $type ('empty_line_after_command', 'preamble',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
-            'empty_spaces_after_close_brace') {
+            'empty_spaces_after_close_brace', 
+            'empty_space_at_end_def_bracketed') {
   $ignored_types{$type} = 1;
 }
 
@@ -850,7 +852,7 @@ sub enumerate_item_representation($$)
   my $result = '';
   my $base_letter = ord('a');
   $base_letter = ord('A') if (ucfirst($specification) eq $specification);
-  my @letter_ords = _decompose_integer(ord($specification) - $base_letter + $number, 26);
+  my @letter_ords = _decompose_integer(ord($specification) - $base_letter + $number - 1, 26);
   foreach my $ord (@letter_ords) {
     # FIXME we go directly to 'ba' after 'z', and not 'aa'
     #because 'ba' is 1,0 and 'aa' is 0,0.
@@ -1022,6 +1024,9 @@ sub convert($;$)
     }
   }
   if ($root->{'contents'}) {
+    if (ref($root->{'contents'}) ne 'ARRAY') {
+      cluck "contents not an array($root->{'contents'}).";
+    }
     foreach my $content (@{$root->{'contents'}}) {
       $result .= convert($content, $options);
     }

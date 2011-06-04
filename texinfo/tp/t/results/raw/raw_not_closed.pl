@@ -10,6 +10,9 @@ $result_trees{'raw_not_closed'} = {
       'cmdname' => 'html',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -44,6 +47,7 @@ $result_trees{'raw_not_closed'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_not_closed'}{'contents'}[0];
 $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0];
 $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0];
 $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0];

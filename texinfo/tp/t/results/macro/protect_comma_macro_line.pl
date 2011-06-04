@@ -66,6 +66,9 @@ and a last in another paragraph
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -120,6 +123,7 @@ $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[1]{'parent'
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'};
+$result_trees{'protect_comma_macro_line'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'};
 $result_trees{'protect_comma_macro_line'}{'contents'}[2]{'parent'} = $result_trees{'protect_comma_macro_line'};
 $result_trees{'protect_comma_macro_line'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[3];

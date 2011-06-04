@@ -29,6 +29,9 @@ $result_trees{'empty_macro'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -63,6 +66,7 @@ $result_trees{'empty_macro'} = {
 };
 $result_trees{'empty_macro'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_macro'}{'contents'}[0];
 $result_trees{'empty_macro'}{'contents'}[0]{'parent'} = $result_trees{'empty_macro'};
+$result_trees{'empty_macro'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'empty_macro'}{'contents'}[0];
 $result_trees{'empty_macro'}{'contents'}[1]{'parent'} = $result_trees{'empty_macro'};
 $result_trees{'empty_macro'}{'contents'}[2]{'parent'} = $result_trees{'empty_macro'};
 $result_trees{'empty_macro'}{'contents'}[3]{'parent'} = $result_trees{'empty_macro'};

@@ -19,6 +19,9 @@ $result_trees{'index_entry_before_first_node'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -75,6 +78,9 @@ $result_trees{'index_entry_before_first_node'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -107,6 +113,9 @@ $result_trees{'index_entry_before_first_node'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -163,6 +172,7 @@ $result_trees{'index_entry_before_first_node'} = {
   'type' => 'document_root'
 };
 $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[0];
+$result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1];
 $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'args'}[0];
@@ -173,11 +183,13 @@ $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'ex
 $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[0]{'parent'} = $result_trees{'index_entry_before_first_node'};
+$result_trees{'index_entry_before_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1];
 $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1];
 $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1];
+$result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[1];
 $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'index_entry_before_first_node'}{'contents'}[1]{'contents'}[1]{'args'}[0];

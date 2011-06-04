@@ -43,6 +43,9 @@ $result_trees{'arg_body_expansion_order'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -92,6 +95,9 @@ $result_trees{'arg_body_expansion_order'} = {
           'parent' => {}
         },
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -125,6 +131,9 @@ different
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -182,6 +191,9 @@ different
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -205,6 +217,7 @@ $result_trees{'arg_body_expansion_order'}{'contents'}[0]{'parent'} = $result_tre
 $result_trees{'arg_body_expansion_order'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[1];
 $result_trees{'arg_body_expansion_order'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[1];
 $result_trees{'arg_body_expansion_order'}{'contents'}[1]{'parent'} = $result_trees{'arg_body_expansion_order'};
+$result_trees{'arg_body_expansion_order'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'arg_body_expansion_order'}{'contents'}[1];
 $result_trees{'arg_body_expansion_order'}{'contents'}[2]{'parent'} = $result_trees{'arg_body_expansion_order'};
 $result_trees{'arg_body_expansion_order'}{'contents'}[3]{'parent'} = $result_trees{'arg_body_expansion_order'};
 $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
@@ -212,9 +225,11 @@ $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'args'}[1]{'parent'} = 
 $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
 $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[1];
 $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
+$result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[2]{'extra'}{'command'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[1];
 $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
 $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
 $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'parent'} = $result_trees{'arg_body_expansion_order'};
+$result_trees{'arg_body_expansion_order'}{'contents'}[5]{'extra'}{'command'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
 $result_trees{'arg_body_expansion_order'}{'contents'}[5]{'parent'} = $result_trees{'arg_body_expansion_order'};
 $result_trees{'arg_body_expansion_order'}{'contents'}[6]{'parent'} = $result_trees{'arg_body_expansion_order'};
 $result_trees{'arg_body_expansion_order'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[7];
@@ -222,6 +237,7 @@ $result_trees{'arg_body_expansion_order'}{'contents'}[7]{'parent'} = $result_tre
 $result_trees{'arg_body_expansion_order'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[8];
 $result_trees{'arg_body_expansion_order'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[8];
 $result_trees{'arg_body_expansion_order'}{'contents'}[8]{'parent'} = $result_trees{'arg_body_expansion_order'};
+$result_trees{'arg_body_expansion_order'}{'contents'}[9]{'extra'}{'command'} = $result_trees{'arg_body_expansion_order'}{'contents'}[8];
 $result_trees{'arg_body_expansion_order'}{'contents'}[9]{'parent'} = $result_trees{'arg_body_expansion_order'};
 $result_trees{'arg_body_expansion_order'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[10];
 $result_trees{'arg_body_expansion_order'}{'contents'}[10]{'parent'} = $result_trees{'arg_body_expansion_order'};

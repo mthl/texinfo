@@ -16,6 +16,9 @@ $result_trees{'unnumbered_no_argument'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => '
 ',
@@ -43,6 +46,7 @@ $result_trees{'unnumbered_no_argument'} = {
   'type' => 'document_root'
 };
 $result_trees{'unnumbered_no_argument'}{'contents'}[0]{'parent'} = $result_trees{'unnumbered_no_argument'};
+$result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unnumbered_no_argument'}{'contents'}[1];
 $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0];
 $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unnumbered_no_argument'}{'contents'}[1];
 $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'parent'} = $result_trees{'unnumbered_no_argument'};

@@ -37,6 +37,9 @@ $result_trees{'space_macro_after_end'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '
 ',
@@ -52,6 +55,9 @@ $result_trees{'space_macro_after_end'} = {
       'cmdname' => 'html',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -72,6 +78,9 @@ $result_trees{'space_macro_after_end'} = {
       'parent' => {}
     },
     {
+      'extra' => {
+        'command' => {}
+      },
       'parent' => {},
       'text' => '   ',
       'type' => 'empty_line_after_command'
@@ -82,11 +91,14 @@ $result_trees{'space_macro_after_end'} = {
 $result_trees{'space_macro_after_end'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[0];
 $result_trees{'space_macro_after_end'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[0];
 $result_trees{'space_macro_after_end'}{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end'};
+$result_trees{'space_macro_after_end'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'space_macro_after_end'}{'contents'}[0];
 $result_trees{'space_macro_after_end'}{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end'};
 $result_trees{'space_macro_after_end'}{'contents'}[2]{'parent'} = $result_trees{'space_macro_after_end'};
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'parent'} = $result_trees{'space_macro_after_end'};
+$result_trees{'space_macro_after_end'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
 $result_trees{'space_macro_after_end'}{'contents'}[4]{'parent'} = $result_trees{'space_macro_after_end'};
 
 $result_texis{'space_macro_after_end'} = '@macro spaces

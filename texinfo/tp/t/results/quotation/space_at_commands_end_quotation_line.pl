@@ -17,6 +17,9 @@ $result_trees{'space_at_commands_end_quotation_line'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -73,6 +76,9 @@ $result_trees{'space_at_commands_end_quotation_line'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -134,6 +140,9 @@ $result_trees{'space_at_commands_end_quotation_line'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -203,6 +212,9 @@ $result_trees{'space_at_commands_end_quotation_line'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -258,6 +270,7 @@ $result_trees{'space_at_commands_end_quotation_line'} = {
   'type' => 'text_root'
 };
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[0]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'};
+$result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'args'}[0];
@@ -269,6 +282,7 @@ $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1];
+$result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1]{'args'}[0];
@@ -281,6 +295,7 @@ $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'extra'}{'b
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'contents'}[1];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[1]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'};
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[2]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'};
+$result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'args'}[0];
@@ -295,6 +310,7 @@ $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3];
+$result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[1];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_at_commands_end_quotation_line'}{'contents'}[3]{'contents'}[1]{'args'}[0];

@@ -11,6 +11,9 @@ $result_trees{'multitable_begin_with_tab'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -54,6 +57,9 @@ $result_trees{'multitable_begin_with_tab'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => undef
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -78,6 +84,9 @@ $result_trees{'multitable_begin_with_tab'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -145,6 +154,9 @@ $result_trees{'multitable_begin_with_tab'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -188,6 +200,9 @@ $result_trees{'multitable_begin_with_tab'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => undef
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -213,6 +228,9 @@ $result_trees{'multitable_begin_with_tab'} = {
               'cmdname' => 'item',
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -246,6 +264,9 @@ $result_trees{'multitable_begin_with_tab'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -305,6 +326,7 @@ $result_trees{'multitable_begin_with_tab'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'args'}[0];
@@ -317,6 +339,7 @@ $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[0]{'conten
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0];
+$result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'contents'}[1]{'args'}[0];
@@ -330,6 +353,7 @@ $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'extra'}{'prototypes'}
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'};
 $result_trees{'multitable_begin_with_tab'}{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'};
+$result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'args'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'args'}[0];
@@ -342,11 +366,13 @@ $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[0]{'conten
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2];
+$result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2];
+$result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[2];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_begin_with_tab'}{'contents'}[2]{'contents'}[2]{'args'}[0];

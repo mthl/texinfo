@@ -11,6 +11,9 @@ $result_trees{'empty_center'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' 
 ',
@@ -35,6 +38,7 @@ $result_trees{'empty_center'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'empty_center'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_center'}{'contents'}[0];
 $result_trees{'empty_center'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_center'}{'contents'}[0]{'args'}[0];
 $result_trees{'empty_center'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_center'}{'contents'}[0];
 $result_trees{'empty_center'}{'contents'}[0]{'parent'} = $result_trees{'empty_center'};

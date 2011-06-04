@@ -11,6 +11,9 @@ $result_trees{'asis_as_itemize_argument'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -37,6 +40,9 @@ $result_trees{'asis_as_itemize_argument'} = {
           'cmdname' => 'item',
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -63,6 +69,9 @@ $result_trees{'asis_as_itemize_argument'} = {
             {
               'contents' => [
                 {
+                  'extra' => {
+                    'command' => {}
+                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -115,14 +124,17 @@ $result_trees{'asis_as_itemize_argument'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0];
+$result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0];
+$result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'asis_as_itemize_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0];
