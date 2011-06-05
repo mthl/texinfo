@@ -616,13 +616,38 @@ our %command_structuring_level = (
               'appendixsubsubsec', 4,
          );
 
+our %level_to_structuring_command;
+
+{
+  my $sections = [ ];
+  my $appendices = [ ];
+  my $unnumbered = [ ];
+  my $headings = [ ];
+  foreach my $command (keys (%command_structuring_level)) {
+    if ($command =~ /^appendix/) {
+      $level_to_structuring_command{$command} = $appendices;
+    } elsif ($command =~ /^unnumbered/ or $command eq 'top') {
+      $level_to_structuring_command{$command} = $unnumbered;
+    } elsif ($command =~ /section$/ or $command eq 'chapter') {
+      $level_to_structuring_command{$command} = $sections;
+    } else {
+      $level_to_structuring_command{$command} = $headings;
+    }
+    $level_to_structuring_command{$command}->[$command_structuring_level{$command}] 
+      = $command;
+  }
+  $level_to_structuring_command{'appendixsection'} = $appendices;
+  $level_to_structuring_command{'majorheading'} = $headings;
+  $level_to_structuring_command{'centerchap'} = $unnumbered;
+}
+
+
 # out of the main hierarchy
 $command_structuring_level{'part'} = 0;
 # this are synonyms
 $command_structuring_level{'appendixsection'} = 2;
 # command_structuring_level{'majorheading'} is also 1 and not 0
 $command_structuring_level{'majorheading'} = 1;
-$command_structuring_level{'chapheading'} = 1;
 $command_structuring_level{'centerchap'} = 1;
 
 our %sectioning_commands;

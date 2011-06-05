@@ -480,23 +480,20 @@ sub nodes_tree ($)
         }
       }
     }
-    # A bit of explanation about !$node->{'node_up'}->{'extra'}->{'normalized'}:
-    # it may happen (rarely) that the node_up has only a manual entry
-    # and therefore !$node->{'node_up'}->{'extra'}->{'normalized'}
-    # In that case there is always a {'manual_content'} and the condition 
-    # !$node->{'node_up'}->{'extra'}->{'manual_content'} is never set.
+    # it may happen (rarely) that the node_up is a manual entry
+    # and therefore $node->{'node_up'}->{'extra'}->{'manual_content'}
     # The node_up should always be different from the menu_up, therefore
     # if in a menu, the second condition/error message applies.
-    if ($node->{'node_up'} and (!$node->{'menu_up_hash'}
-         or !$node->{'node_up'}->{'extra'}->{'normalized'}
+    if ($node->{'node_up'} and ($node->{'node_up'}->{'extra'}->{'manual_content'}
+         or !$node->{'menu_up_hash'}
          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
       if (!$node->{'node_up'}->{'extra'}->{'manual_content'}) {
-      # up node has no menu entry
-          $self->line_error(sprintf($self->
-              __("Node `%s' lacks menu item for `%s' despite being its Up target"), 
-             _node_extra_to_texi($node->{'node_up'}->{'extra'}), 
-             _node_extra_to_texi($node->{'extra'})),
-             $node->{'node_up'}->{'line_nr'});
+      # up node is a real node but has no menu entry
+        $self->line_error(sprintf($self->
+           __("Node `%s' lacks menu item for `%s' despite being its Up target"), 
+           _node_extra_to_texi($node->{'node_up'}->{'extra'}), 
+           _node_extra_to_texi($node->{'extra'})),
+           $node->{'node_up'}->{'line_nr'});
       # This leads to an error when there is an external nodes as up, and 
       # not in Top node.
       } elsif ($node->{'menu_up'}) {
@@ -626,7 +623,8 @@ sub split_pages ($$)
              and $element->{'extra'}->{'node'}->{'associated_section'}) {
       $level = $element->{'extra'}->{'node'}->{'associated_section'}->{'level'};
     }
-    if ($split eq 'node' or (defined($level) and $split_level <= $level)
+    #print STDERR "level($split_level) $level "._print_element_command_texi($element)."\n";
+    if ($split eq 'node' or (defined($level) and $split_level >= $level)
         or !@pages) {
       push @pages, {'type' => 'page',
                     'extra' => {'element' => $element}};

@@ -426,6 +426,12 @@ sub command_text($$$)
                  'contents' => $command->{'extra'}->{'node_content'}};
       } elsif ($command->{'cmdname'} and ($command->{'cmdname'} eq 'float')) {
         $tree = $self->float_type_number($command); 
+      } elsif ($command->{'extra'}->{'missing_argument'}) {
+        if ($type eq 'tree' or $type eq 'tree_nonumber') {
+          return {};
+        } else {
+          return '';
+        }
       } else {
         if (!$command->{'extra'}->{'misc_content'}) {
           cluck "No misc_content: "
@@ -1269,7 +1275,7 @@ sub _convert_anchor_command($$$$)
   my $args = shift;
 
   my $id = $self->command_id ($command);
-  if (defined($id)) {
+  if (defined($id) and $id ne '') {
     return "<a name=\"$id\"></a>";
   }
   return '';
@@ -1869,8 +1875,9 @@ sub _convert_heading_command($$$$$)
   }
   my $result = '';
   my $element_id = $self->command_id($command);
+  # FIXME a href here doesn't make sense, there is no text?
   $result .= "<a name=\"$element_id\"${content_ref}></a>\n" 
-    if (defined($element_id));
+    if (defined($element_id) and $element_id ne '');
 
   print STDERR "Process $command "
         .Texinfo::Structuring::_print_root_command_texi($command)."\n"
@@ -1949,6 +1956,11 @@ sub _convert_heading_command($$$$$)
     if ($self->in_preformatted()) {
       $result .= '<strong>'.$heading.'</strong>'."\n";
     } else {
+      # if the level was changed, set the command name right
+      if ($heading_level ne $Texinfo::Common::command_structuring_level{$cmdname}) {
+        $cmdname 
+          = $Texinfo::Common::level_to_structuring_command{$cmdname}->[$heading_level];
+      }
       $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 
                                             $heading_level, $command);
     }
@@ -2253,7 +2265,7 @@ sub _convert_float_command($$$$$)
 
   my $id = $self->command_id($command);
   my $label;
-  if ($id) {
+  if (defined($id) and $id ne '') {
     $label = "<a name=\"$id\"></a>";
   } else {
     $label = '';
@@ -2471,7 +2483,7 @@ sub _convert_item_command($$$$)
         }
       }
       my $index_id = $self->command_id ($command);
-      if (defined($index_id)) {
+      if (defined($index_id) and $index_id ne '') {
         $result .= "\n<a name=\"$index_id\"></a>\n";
       }
     
@@ -2702,7 +2714,7 @@ sub _convert_index_command($$$$)
   my $args = shift;
 
   my $index_id = $self->command_id ($command);
-  if (defined($index_id)) {
+  if (defined($index_id) and $index_id ne '') {
     return "<a name=\"$index_id\"></a>\n";
   }
   return '';
@@ -2875,7 +2887,9 @@ sub _convert_informative_command($$$$)
         my $special_element 
           = $self->special_element($contents_command_element_name{$cmdname});
         my $id = $self->command_id($special_element);
-        $result .= "<a name=\"$id\"></a>\n";
+        if ($id ne '') {
+          $result .= "<a name=\"$id\"></a>\n";
+        }
         my $heading = $self->command_text($special_element, 'text');
         $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
         $result .= $content . "\n";
@@ -3200,7 +3214,7 @@ sub _convert_menu_entry_type($$$)
     #my $section_name = $self->command_text($section);
     $name = $self->command_text($section);
     $name_no_number = $self->command_text($section, 'text_nonumber');
-    if ($href ne '') {
+    if ($href ne '' and $name ne '') {
       #$name = "<a href=\"$href\"$accesskey>".$section_name."</a>";
       $name = "<a href=\"$href\"$accesskey>".$name."</a>";
     }# else {
@@ -3340,7 +3354,7 @@ sub _convert_def_line_type($$$$)
 
   my $index_label = '';
   my $index_id = $self->command_id ($command);
-  if (defined($index_id)) {
+  if (defined($index_id) and $index_id ne '') {
     $index_label = "<a name=\"$index_id\"></a>";
   }
   if (!$self->get_conf('DEF_TABLE')) {
@@ -3479,7 +3493,9 @@ sub _convert_element_type($$$$)
   if ($element->{'extra'}->{'special_element'}) {
     $special_element = $element->{'extra'}->{'special_element'};
     my $id = $self->command_id($element);
-    $result .= "<a name=\"$id\"></a>\n";
+    if ($id ne '') {
+      $result .= "<a name=\"$id\"></a>\n";
+    }
     if ($self->get_conf('HEADERS') 
         # first in page
         or $element->{'parent'}->{'contents'}->[0] eq $element) {
@@ -3966,10 +3982,14 @@ sub _new_sectioning_command_target($$)
   $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE')) 
                         and !$self->get_conf('USE_UNIDECODE'));
 
-  my $target_base = _normalized_to_id(
-     Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
+  my $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
        {'contents' => $command->{'extra'}->{'misc_content'}},
-                $no_unidecode));
+                $no_unidecode);
+
+  my $target_base = _normalized_to_id($filename);
+  $filename .= '.'.$self->get_conf('EXTENSION') 
+    if (defined($self->get_conf('EXTENSION')) 
+      and $self->get_conf('EXTENSION') ne '');
   if ($target_base !~ /\S/ and $command->{'cmdname'} eq 'top' 
       and defined($self->{'misc_elements_targets'}->{'Top'})) {
     $target_base = $self->{'misc_elements_targets'}->{'Top'};
@@ -4039,7 +4059,7 @@ sub _new_sectioning_command_target($$)
 
   if (defined($Texinfo::Config::sectioning_command_target_name)) {
     ($target, $id, $target_contents, $id_contents,
-     $target_shortcontents, $id_shortcontents) 
+     $target_shortcontents, $id_shortcontents, $filename) 
         = &$Texinfo::Config::sectioning_command_target_name($self, 
                                      $command, $target, $id,
                                      $target_contents, $id_contents,
@@ -4049,8 +4069,9 @@ sub _new_sectioning_command_target($$)
     print STDERR "Register $command->{'cmdname'} $target, $id\n";
   }
   $self->{'targets'}->{$command} = {
-                           'target' => $target, 
+                           'target' => $target,
                            'id' => $id,
+                           'section_filename' => $filename,
                           };
   # FIXME this should really be use carefully, since the mapping
   # is not what one expects
@@ -4222,16 +4243,20 @@ sub _set_page_files($$)
     $node_top = $self->{'labels'}->{'Top'} if ($self->{'labels'});
     #$section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
   
+    my $top_node_filename;
+    if (defined($self->get_conf('TOP_NODE_FILE'))) {
+      $top_node_filename = $self->get_conf('TOP_NODE_FILE');
+      $top_node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
+          if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
+              and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+    }
     # first determine the top node file name.
-    if ($self->get_conf('NODE_FILENAMES') and $node_top) {
+    if ($self->get_conf('NODE_FILENAMES') and $node_top 
+        and defined($top_node_filename)) {
       my ($node_top_page) = $self->_get_page($node_top);
       die "BUG: No page for top node" if (!defined($node_top));
       if (defined($self->get_conf('TOP_NODE_FILE'))) {
-        my $filename = $self->get_conf('TOP_NODE_FILE');
-        $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
-          if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-              and $self->get_conf('NODE_FILE_EXTENSION') ne '');
-        $self->_set_page_file($node_top_page, $filename);
+        $self->_set_page_file($node_top_page, $top_node_filename);
       }
     }
     # FIXME add a number for each page?
@@ -4257,10 +4282,27 @@ sub _set_page_files($$)
             }
           }
         }
-        my $filename = $self->{'document_name'} . "_$file_nr";
-        $filename .= $extension;
-        $self->_set_page_file($page, $filename);
-        $file_nr++;
+        # use section to do the file name if there is no node
+        my $command;
+        foreach my $element (@{$page->{'contents'}}) {
+          $command = $self->element_command($element);
+          last if $command;
+        }
+        if ($command) {
+          if ($command->{'cmdname'} eq 'top' and !$node_top
+              and defined($top_node_filename)) {
+            $self->_set_page_file($page, $top_node_filename);
+          } else {
+            $self->_set_page_file($page,
+               $self->{'targets'}->{$command}->{'section_filename'});
+          }
+        } else {
+          # when everything else has failed
+          my $filename = $self->{'document_name'} . "_$file_nr";
+          $filename .= $extension;
+          $self->_set_page_file($page, $filename);
+          $file_nr++;
+        }
       }
     } else {
       my $previous_page;
@@ -4870,7 +4912,19 @@ sub _default_contents($$;$$)
           # no indenting for shortcontents
           $result .= (' ' x (2*($section->{'level'} - $root_level))) 
             if ($contents);
-          $result .= "<li><a name=\"$toc_id\" href=\"$href\">$text</a>";
+          if  ($toc_id ne '' or $href ne '') {
+            my $toc_name_attribute = '';
+            if ($toc_id ne '') {
+              $toc_name_attribute = "name=\"$toc_id\" ";
+            }
+            my $href_attribute = '';
+            if ($href ne '') {
+              $href_attribute = "href=\"$href\"";
+            }
+            $result .= "<li><a ${toc_name_attribute}${href_attribute}>$text</a>";
+          } else {
+            $result .= "<li>$text";
+          }
         }
       }
       # for shortcontents don't do child if child is not toplevel
