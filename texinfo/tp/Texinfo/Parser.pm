@@ -237,6 +237,12 @@ our %default_configuration = (
   'macros' => {},             # the key is the user-defined macro name.  The 
                               # value is the reference on a macro element 
                               # as obtained by parsing the @macro
+  'explained_commands' => {}, # the key is a command name, either acronym
+                              # or abbr, the value is a hash.  The key hash 
+                              # is a normalized first argument of the 
+                              # corresponding command, the value is the 
+                              # contents array of the previous command with
+                              # this first arg and a second arg.
   'clickstyle' => 'arrow',
   'kbdinputstyle' => 'distinct',
   'sections_level' => 0,      # modified by raise/lowersections
@@ -356,6 +362,7 @@ my %ref_commands              = %Texinfo::Common::ref_commands;
 my %region_commands           = %Texinfo::Common::region_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %in_heading_commands       = %Texinfo::Common::in_heading_commands;
+my %explained_commands        = %Texinfo::Common::explained_commands;
 
 my %keep_line_nr_brace_commands = %context_brace_commands;
 foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
@@ -664,6 +671,11 @@ sub parser(;$$)
   }
   foreach my $index (keys (%{$parser->{'index_names'}})) {
     $parser->_register_index_commands($index);
+  }
+  foreach my $explained_command(keys(%explained_commands)) {
+    if  (!defined($parser->{'explained_commands'}->{$explained_command})) {
+      $parser->{'explained_commands'}->{$explained_command} = {};
+    }
   }
   $parser->{'context_stack'} = [ $parser->{'context'} ];
   $parser->{'regions_stack'} = [];
@@ -1337,7 +1349,6 @@ sub _close_command_cleanup($$$) {
       }
     }
   }
-
 }
 
 # close the current command, with error messages and give the parent.
@@ -4125,6 +4136,30 @@ sub _parse_texi($;$)
                     __("%c%s expects `i' or `j' as argument, not `%s'"), 
                     ord('@'), $dotless->{'cmdname'}, 
                     Texinfo::Convert::Texinfo::convert($current)), $line_nr);
+                }
+              }
+            } elsif ($explained_commands{$current->{'parent'}->{'cmdname'}}) {
+              my $explained = $current->{'parent'};
+              if (!@{$explained->{'args'}} 
+                  or !@{$explained->{'extra'}->{'brace_command_contents'}}
+                  or !defined($explained->{'extra'}->{'brace_command_contents'}->[0])) {
+                $self->line_warning(
+                   sprintf($self->__("\@%s missing first argument"),
+                           $explained->{'cmdname'}), $line_nr);
+              } else {
+                my $normalized_type
+                  = Texinfo::Convert::NodeNameNormalization::normalize_node(
+                      {'contents' =>
+                       $explained->{'extra'}->{'brace_command_contents'}->[0]});
+                $explained->{'extra'}->{'normalized'} = $normalized_type;
+                if (!$explained->{'extra'}->{'brace_command_contents'}->[1]) {
+                  if ($self->{'explained_commands'}->{$explained->{'cmdname'}}->{$normalized_type}) {
+                    $explained->{'extra'}->{'explanation_contents'} 
+                      = $self->{'explained_commands'}->{$explained->{'cmdname'}}->{$normalized_type};
+                  }
+                } else {
+                  $self->{'explained_commands'}->{$explained->{'cmdname'}}->{$normalized_type} 
+                    = $explained->{'extra'}->{'brace_command_contents'}->[1];
                 }
               }
             }

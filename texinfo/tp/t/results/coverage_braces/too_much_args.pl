@@ -45,7 +45,8 @@ $result_trees{'too_much_args'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'normalized' => 'AZE'
           },
           'line_nr' => {
             'file_name' => '',

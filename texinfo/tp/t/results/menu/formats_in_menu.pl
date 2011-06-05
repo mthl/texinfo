@@ -505,7 +505,8 @@ $result_trees{'formats_in_menu'} = {
                             {},
                             {}
                           ]
-                        ]
+                        ],
+                        'normalized' => 'description-_002a-acronym_003a_003a'
                       },
                       'line_nr' => {
                         'file_name' => '',

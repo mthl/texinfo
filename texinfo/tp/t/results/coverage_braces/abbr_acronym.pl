@@ -41,7 +41,8 @@ $result_trees{'abbr_acronym'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'normalized' => '_002d_002da'
           },
           'line_nr' => {
             'file_name' => '',
@@ -75,7 +76,9 @@ $result_trees{'abbr_acronym'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'explanation_contents' => [],
+            'normalized' => '_002d_002da'
           },
           'line_nr' => {
             'file_name' => '',
@@ -153,7 +156,8 @@ $result_trees{'abbr_acronym'} = {
                 {},
                 {}
               ]
-            ]
+            ],
+            'normalized' => '_002d_002da'
           },
           'line_nr' => {
             'file_name' => '',
@@ -290,7 +294,8 @@ $result_trees{'abbr_acronym'} = {
                 {},
                 {}
               ]
-            ]
+            ],
+            'normalized' => '_00c9_002d_002da_002e-_002cA_002e'
           },
           'line_nr' => {},
           'parent' => {}
@@ -349,7 +354,9 @@ $result_trees{'abbr_acronym'} = {
                 {},
                 {}
               ]
-            ]
+            ],
+            'explanation_contents' => [],
+            'normalized' => '_00c9_002d_002da_002e-_002cA_002e'
           },
           'line_nr' => {
             'file_name' => '',
@@ -381,6 +388,7 @@ $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[2];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[2]{'extra'}{'explanation_contents'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[1];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[4]{'args'}[0];
@@ -440,6 +448,7 @@ $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'extra'}{'brace_comm
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[1];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'extra'}{'brace_command_contents'}[0][2] = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[2];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'extra'}{'brace_command_contents'}[0][3] = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[3];
+$result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'extra'}{'explanation_contents'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'extra'}{'brace_command_contents'}[1];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'parent'} = $result_trees{'abbr_acronym'};

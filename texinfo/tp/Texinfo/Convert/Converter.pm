@@ -409,6 +409,7 @@ sub expand_verbatiminclude($$)
         push @{$verbatiminclude->{'contents'}}, 
                   {'type' => 'raw', 'text' => $_ };
       }
+      close (VERBINCLUDE);
     }
   } else {
     $self->line_error (sprintf($self->__("\@%s: Cannot find %s"), 

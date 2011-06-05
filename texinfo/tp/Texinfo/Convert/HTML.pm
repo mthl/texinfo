@@ -937,6 +937,11 @@ my %default_commands_args = (
   'itemx' => [[]],
 );
 
+foreach my $explained_command (keys(%explained_commands)) {
+  $default_commands_args{$explained_command} 
+     = [['normal'], ['string', 'normal']];
+}
+
 # Default for the function references used for the formatting
 # of commands.
 my %default_commands_conversion;
@@ -1208,6 +1213,44 @@ sub _convert_email_command($$$$)
 
 $default_commands_conversion{'email'} = \&_convert_email_command;
 
+sub _convert_explained_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $with_explanation;
+  my $explanation_string;
+  if ($args->[1] and defined($args->[1]->{'string'}) 
+                 and $args->[1]->{'string'} =~ /\S/) {
+    $with_explanation = 1;
+    $explanation_string = $args->[1]->{'string'};
+  }
+  if ($command->{'extra'}->{'explanation_contents'}) {
+    $explanation_string = $self->convert_tree({'type' => '_string',
+          'contents' => $command->{'extra'}->{'explanation_contents'}});
+  }
+  my $opening;
+  if (defined($explanation_string)) {
+    $opening = "<$cmdname title=\"$explanation_string\">"; 
+  } else {
+    $opening = "<$cmdname>";
+  }
+  if ($with_explanation) {
+    return $self->convert_tree ($self->gdt('{explained_string} ({explanation})',
+          {'explained_string' => {'type' => '_converted',
+                   'text' => $opening.$args->[0]->{'normal'}."</$cmdname>"},
+           'explanation' => $args->[1]->{'tree'} }));
+  } else {
+    return $opening.$args->[0]->{'normal'}."</$cmdname>";
+  }
+}
+foreach my $explained_command (keys(%explained_commands)) {
+  $default_commands_conversion{$explained_command} 
+    = \&_convert_explained_command;
+}
+
 sub _convert_anchor_command($$$$)
 {
   my $self = shift;
@@ -1290,9 +1333,10 @@ sub _convert_uref_command($$$$)
   my $text_arg = shift @args;
   my $replacement_arg = shift @args;
 
-  my $url = $url_arg->{'codestring'} if defined($url_arg);
-  my $text = $text_arg->{'normal'} if defined($text_arg);
-  my $replacement = $replacement_arg->{'normal'} if defined($replacement_arg);
+  my ($url, $text, $replacement);
+  $url = $url_arg->{'codestring'} if defined($url_arg);
+  $text = $text_arg->{'normal'} if defined($text_arg);
+  $replacement = $replacement_arg->{'normal'} if defined($replacement_arg);
 
   $text = $replacement if (defined($replacement) and $replacement ne '');
   $text = $url if (!defined($text) or $text eq '');
@@ -4430,7 +4474,8 @@ sub _prepare_global_targets($$)
 
   my $node_top;
   $node_top = $self->{'labels'}->{'Top'} if ($self->{'labels'});
-  my $section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
+  my $section_top;
+  $section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
   if ($section_top) {
     $self->{'global_target_elements'}->{'Top'} = $section_top->{'parent'};
   } elsif ($node_top) {
@@ -4758,7 +4803,8 @@ sub _default_contents($$;$$)
    if (!$self->{'structuring'} or !$self->{'structuring'}->{'sectioning_root'});
 
   my $section_root = $self->{'structuring'}->{'sectioning_root'};
-  my $contents = 1 if ($cmdname eq 'contents');
+  my $contents;
+  $contents = 1 if ($cmdname eq 'contents');
 
   my $root_level = $section_root->{'section_childs'}->[0]->{'level'};
   foreach my $top_section(@{$section_root->{'section_childs'}}) {
@@ -5398,6 +5444,7 @@ sub output($$)
       $output .= _output_text($self->_convert($root), $fh);
     }
     $output .= _output_text(&{$self->{'end_file'}}($self), $fh);
+    return $output if ($self->get_conf('OUTFILE') eq '');
   } else {
     # output with pages
     my %files;
@@ -5504,7 +5551,8 @@ sub protect_space_codebreak($$)
 
   return $text if ($self->in_preformatted());
 
-  my $in_w = 1 if ($self->in_space_protected());
+  my $in_w;
+  $in_w = 1 if ($self->in_space_protected());
 
   if ($in_w or $self->in_code() 
       and $self->get_conf('allowcodebreaks') eq 'false') {
