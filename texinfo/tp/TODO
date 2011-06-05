@@ -1,4 +1,6 @@
-Thre should be an error message (report by Tom Tromey) in 
+remove _*directions('This' and replace with new API.
+
+There should be an error message (report by Tom Tromey) in 
 t/results/xtable/text_between_item_itemx.pl
 
 Verify that there is a test with a node both internal and external 

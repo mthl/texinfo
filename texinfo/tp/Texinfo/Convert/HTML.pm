@@ -292,7 +292,11 @@ sub element_command($$)
   my $element = shift;
 
   if ($element and $element->{'extra'}) {
-    return $element->{'extra'}->{'element_command'};
+    if ($element->{'extra'}->{'element_command'}) {
+      return $element->{'extra'}->{'element_command'};
+    } elsif ($element->{'extra'}->{'special_element'}) {
+      return $element;
+    }
   }
   return undef;
 }
@@ -3608,6 +3612,8 @@ sub _initialize($)
      ['comment', \&_default_comment, $Texinfo::Config::comment],
      ['css_lines', \&_default_css_lines, $Texinfo::Config::css_lines],
      ['begin_file', \&_default_begin_file, $Texinfo::Config::begin_file],
+     ['node_redirection_page', \&_default_node_redirection_page, 
+                               $Texinfo::Config::node_redirection_page],
      ['end_file', \&_default_end_file, $Texinfo::Config::end_file],
      ['special_element_body', \&_default_special_element_body, 
                               $Texinfo::Config::special_element_body],
@@ -4139,9 +4145,9 @@ sub _set_page_files($$)
   
     # first determine the top node file name.
     if ($self->get_conf('NODE_FILENAMES') and $node_top) {
+      my ($node_top_page) = $self->_get_page($node_top);
+      die "BUG: No page for top node" if (!defined($node_top));
       if (defined($self->get_conf('TOP_NODE_FILE'))) {
-        my ($node_top_page) = $self->_get_page($node_top);
-        die "BUG: No page for top node" if (!defined($node_top));
         my $filename = $self->get_conf('TOP_NODE_FILE');
         $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
           if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
@@ -4167,7 +4173,7 @@ sub _set_page_files($$)
             if ($root_comand->{'cmdname'} 
                 and $root_comand->{'cmdname'} eq 'node') {
               $self->_set_page_file($page, 
-                        $self->{'targets'}->{$root_comand}->{'node_filename'});
+                   $self->{'targets'}->{$root_comand}->{'node_filename'});
               next PAGE;
             }
           }
@@ -4849,26 +4855,23 @@ $pre_body_close
 ";
 }
 
-sub _default_begin_file($$$)
+# This is in order to avoid code duplication with other file headers
+sub _file_header_informations($$)
 {
   my $self = shift;
-  my $filename = shift;
-  my $page = shift;
-
+  my $command = shift;
   
   my $title;
-  if ($page and $page->{'extra'} and $page->{'extra'}->{'element'}) {
-    my $element_string = $self->_element_direction($page->{'extra'}->{'element'},
-                              'This', 'string');
-    if (defined($element_string) 
-        and $element_string ne $self->{'title_string'}) {
+  if ($command) {
+    my $command_string = 
+      $self->command_text($command, 'string');
+    if (defined($command_string) 
+        and $command_string ne $self->{'title_string'}) {
       print STDERR "DO <title>\n"
         if ($self->get_conf('DEBUG'));
       my $title_tree = $self->gdt('{title}: {element_text}', 
-                                 { 'title' => $self->{'title_tree'}, 
-                   'element_text' => 
-                     $self->_element_direction($page->{'extra'}->{'element'},
-                                              'This', 'tree')});
+                   { 'title' => $self->{'title_tree'}, 
+                   'element_text' => $self->command_text($command, 'tree')});
       $title = $self->_convert({'type' => '_string',
                                 'contents' => [$title_tree]});
     }
@@ -4899,25 +4902,6 @@ sub _default_begin_file($$$)
     $date = "\n<meta name=\"date\" content=\"$today\">";
   }
 
-  my $links = '';
-  if ($self->get_conf('USE_LINKS')) {
-    my $link_buttons = $self->get_conf('LINKS_BUTTONS');
-    foreach my $link (@$link_buttons) {
-      my $link_href = $self->_element_direction($page->{'extra'}->{'element'},
-                                          $link, 'href', $page->{'filename'});
-      #print STDERR "$title: $link -> $link_href \n";
-      if ($link_href and $link_href ne '') {
-        my $link_string = $self->_element_direction($page->{'extra'}->{'element'},
-                                          $link, 'string');
-        my $title = '';
-        $title = " title=\"$link_string\"" if (defined($link_string));
-        my $rel = '';
-        $rel = " rel=\"".$self->get_conf('BUTTONS_REL')->{$link}.'"' 
-           if (defined($self->get_conf('BUTTONS_REL')->{$link}));
-        $links .= "<link href=\"$link_href\"${rel}${title}>\n";
-      }
-    }
-  }
   my $css_lines;
   if (defined($self->get_conf('CSS_LINES'))) {
     $css_lines = $self->get_conf('CSS_LINES');
@@ -4938,6 +4922,49 @@ sub _default_begin_file($$$)
   my $program_and_version = $self->get_conf('PROGRAM_AND_VERSION');
   my $program_homepage = $self->get_conf('PROGRAM_HOMEPAGE');
   my $program = $self->get_conf('PROGRAM');
+
+  return ($title, $description, $encoding, $date, $css_lines, 
+          $doctype, $bodytext, $copying_comment, $after_body_open,
+          $extra_head, $program_and_version, $program_homepage,
+          $program);
+}
+
+sub _default_begin_file($$$)
+{
+  my $self = shift;
+  my $filename = shift;
+  my $element = shift;
+
+  
+  my $command;
+  if ($element) { 
+    $command = $self->element_command($element);
+  }
+
+  my ($title, $description, $encoding, $date, $css_lines, 
+          $doctype, $bodytext, $copying_comment, $after_body_open,
+          $extra_head, $program_and_version, $program_homepage,
+          $program) = $self->_file_header_informations($command);
+
+  my $links = '';
+  if ($self->get_conf('USE_LINKS')) {
+    my $link_buttons = $self->get_conf('LINKS_BUTTONS');
+    foreach my $link (@$link_buttons) {
+      my $link_href = $self->_element_direction($element,
+                                          $link, 'href', $filename);
+      #print STDERR "$title: $link -> $link_href \n";
+      if ($link_href and $link_href ne '') {
+        my $link_string = $self->_element_direction($element,
+                                          $link, 'string');
+        my $title = '';
+        $title = " title=\"$link_string\"" if (defined($link_string));
+        my $rel = '';
+        $rel = " rel=\"".$self->get_conf('BUTTONS_REL')->{$link}.'"' 
+           if (defined($self->get_conf('BUTTONS_REL')->{$link}));
+        $links .= "<link href=\"$link_href\"${rel}${title}>\n";
+      }
+    }
+  }
 
   # FIXME there is one empty line less than in texi2html.  Seems that in 
   # texi2html the following empty lines are stripped.  Not exactly sure
@@ -4972,6 +4999,49 @@ sub convert_translation($$$)
   my $self = shift;
   my $text = shift;
   return $self->convert_tree($self->gdt($text));
+}
+
+sub _default_node_redirection_page($$)
+{
+  my $self = shift;
+  my $command = shift;
+
+  my ($title, $description, $encoding, $date, $css_lines,
+          $doctype, $bodytext, $copying_comment, $after_body_open,
+          $extra_head, $program_and_version, $program_homepage,
+          $program) = $self->_file_header_informations($command);
+
+  my $name = $self->command_text($command);
+  my $href = $self->command_href($command);
+  my $direction = "<a href=\"$href\">$name</a>";
+  my $string = $self->convert_tree (
+    $self->gdt('The node you are looking for is at {href}.',
+      { 'href' => {'type' => '_converted', 'text' => $direction }}));
+  my $result = "$doctype
+<html>
+$copying_comment<!-- Created by $program_and_version, $program_homepage -->
+<!-- This file redirects to the location of a node or anchor -->
+<head>
+<title>$title</title>
+
+$description
+<meta name=\"keywords\" content=\"$title\">
+<meta name=\"resource-type\" content=\"document\">
+<meta name=\"distribution\" content=\"global\">
+<meta name=\"Generator\" content=\"$program\">$date
+$encoding
+$css_lines
+<meta http-equiv=\"Refresh\" content=\"2; url=$href\">
+$extra_head
+</head>
+
+<body $bodytext>
+$after_body_open
+<p>$string</p>
+</body>
+";
+
+  
 }
 
 sub _default_footnotes_text($)
@@ -5347,7 +5417,9 @@ sub output($$)
           return undef;
         }
         $self->{'current_filename'} = $page->{'filename'};
-        print $file_fh "".&{$self->{'begin_file'}}($self, $page->{'filename'}, $page);
+        print $file_fh "".&{$self->{'begin_file'}}($self, 
+                                           $page->{'filename'}, 
+                                           $page->{'extra'}->{'element'});
         $files{$page->{'filename'}}->{'fh'} = $file_fh;
       } else {
         $file_fh = $files{$page->{'filename'}}->{'fh'};
@@ -5360,6 +5432,48 @@ sub output($$)
       if ($self->{'file_counters'}->{$page->{'filename'}} == 0) {
         # end file
         print $file_fh "". &{$self->{'end_file'}}($self);
+      }
+    }
+  }
+
+  $self->{'current_filename'} = undef;
+  if ($self->get_conf('NODE_FILES') 
+      and $self->{'labels'} and $self->get_conf('OUTFILE') ne '') {
+    foreach my $label (keys (%{$self->{'labels'}})) {
+      my $node = $self->{'labels'}->{$label};
+      my $target = $self->_get_target($node);
+      my $filename = $self->command_filename($node);
+      my $node_filename;
+      if ($node->{'extra'}->{'normalized'} eq 'Top' 
+          and defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
+        my $extension = '';
+        $extension = "." . $self->get_conf('NODE_FILE_EXTENSION')
+            if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
+              and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+        $node_filename = $self->get_conf('TOP_NODE_FILE_TARGET')
+                     .$extension;
+      } else {
+        $node_filename = $target->{'node_filename'};
+      }
+      if ($node_filename ne $filename) {
+        my $redirection_page 
+          = &{$self->{'node_redirection_page'}}($self, $node);
+        my $out_filename;
+        if (defined($self->{'destination_directory'})) {
+          $out_filename = $self->{'destination_directory'} 
+               .$target->{'node_filename'};
+        } else {
+          $out_filename = $target->{'node_filename'};
+        }
+        my $file_fh = $self->Texinfo::Common::open_out ($out_filename,
+                                                 $self->{'perl_encoding'});
+        if (!$file_fh) {
+         $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                    $out_filename, $!));
+        } else {
+          print $file_fh $redirection_page;
+          close ($file_fh);
+        }
       }
     }
   }
