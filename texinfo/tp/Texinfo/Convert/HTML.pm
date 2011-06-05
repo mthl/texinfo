@@ -1957,7 +1957,8 @@ sub _convert_heading_command($$$$$)
       $result .= '<strong>'.$heading.'</strong>'."\n";
     } else {
       # if the level was changed, set the command name right
-      if ($heading_level ne $Texinfo::Common::command_structuring_level{$cmdname}) {
+      if ($cmdname ne 'node' 
+          and $heading_level ne $Texinfo::Common::command_structuring_level{$cmdname}) {
         $cmdname 
           = $Texinfo::Common::level_to_structuring_command{$cmdname}->[$heading_level];
       }
