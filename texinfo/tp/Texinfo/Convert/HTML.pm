@@ -1184,6 +1184,19 @@ sub _convert_style_command($$$$)
   return $text;
 }
 
+sub _convert_value_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  return $self->convert_tree ($self->gdt('@{No value for `{value}\'@}',
+                                        {'value' => $command->{'type'}}));
+}
+
+$default_commands_conversion{'value'} = \&_convert_value_command;
+
 sub _convert_email_command($$$$)
 {
   my $self = shift;
@@ -3638,8 +3651,9 @@ sub _initialize($)
     }
   }
 
+  # FIXME put value in a category in Texinfo::Common?
   foreach my $command (keys(%misc_commands), keys(%brace_commands),
-     keys (%block_commands), keys(%no_brace_commands)) {
+     keys (%block_commands), keys(%no_brace_commands), 'value') {
     if (exists($Texinfo::Config::commands_conversion{$command})) {
       $self->{'commands_conversion'}->{$command} 
           = $Texinfo::Config::commands_conversion{$command};
@@ -5698,8 +5712,6 @@ sub _convert($$)
 #    print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
 #       if ($self->get_conf('DEBUG'));
 
-  # TODO special: footnote
-
   # commands like @deffnx have both a cmdname and a def_line type.  It is
   # better to consider them as a def_line type, as the whole point of the
   # def_line type is to handle the same the def*x and def* line formatting. 
@@ -5941,15 +5953,6 @@ sub _convert($$)
       return '';
     }
   }
-    #} elsif ($command eq 'value') {
-    #  my $expansion = $self->gdt('@{No value for `{value}\'@}', 
-    #                                {'value' => $root->{'type'}});
-    #  if ($formatter->{'_top_formatter'}) {
-    #    $expansion = {'type' => 'paragraph',
-    #                  'contents' => [$expansion]};
-    #  }
-    #  $result .= $self->_convert($expansion);
-    # }
   print STDERR "DEBUG: HERE!($root)\n";
 }
 
