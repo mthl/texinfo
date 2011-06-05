@@ -3064,12 +3064,16 @@ sub _convert_menu_entry_type($$$)
   my $node;
   my $section;
   my $node_entry = $command->{'extra'}->{'menu_entry_node'};
+  # external node
   if ($node_entry->{'manual_content'}) {
     $href = $self->command_href($node_entry); 
   } else {
     $node = $self->label_command($node_entry->{'normalized'});
+    # if NODE_NAME_IN_MENU, we pick the associated section, except if 
+    # the node is the element command
     if ($node->{'extra'}->{'associated_section'} 
-      and !$self->get_conf('NODE_NAME_IN_MENU')) {
+      and !$self->get_conf('NODE_NAME_IN_MENU')
+      and !($self->command_element_command($node) eq $node)) {
       $section = $node->{'extra'}->{'associated_section'};
       $href = $self->command_href($section);
     } else {
@@ -3111,12 +3115,16 @@ sub _convert_menu_entry_type($$$)
   my $name;
   my $name_no_number;
   if ($section) {
-    $name = $self->command_text($section, 'text');
-    $name_no_number = $self->convert_tree
-        ({'contents' => $section->{'extra'}->{'misc_content'}});
+    #my $section_name = $self->command_text($section);
+    $name = $self->command_text($section);
+    $name_no_number = $self->command_text($section, 'text_nonumber');
     if ($href ne '') {
+      #$name = "<a href=\"$href\"$accesskey>".$section_name."</a>";
       $name = "<a href=\"$href\"$accesskey>".$name."</a>";
-    }
+    }# else {
+    #  $name = $section_name;
+    #}
+    #$name = "$MENU_SYMBOL ".$name if ($section_name eq $name_no_number);
   }
   if (!defined($name) or $name eq '') {
     if ($command->{'extra'}->{'menu_entry_name'}) {
