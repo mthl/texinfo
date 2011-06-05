@@ -1132,9 +1132,6 @@ foreach my $command(@all_style_commands) {
 delete $style_commands_formatting{'preformatted'}->{'sc'}->{'attribute'};
 delete $style_commands_formatting{'preformatted'}->{'sc'};
 
-#      'key',        {'begin' => '&lt;', 'end' => '&gt;'},
-#      'indicateurl', {'begin' => '&lt;<code>', 'end' => '</code>&gt;'},
-
 sub _parse_attribute($)
 {
   my $element = shift;
@@ -1423,6 +1420,7 @@ foreach my $command (keys(%accent_commands)) {
   $default_commands_conversion{$command} = \&_convert_accent_command;
 }
 
+# key is formatted as code since indicateurl is in code_style_commands
 sub _convert_key_command($$$$)
 {
   my $self = shift;
@@ -1441,6 +1439,29 @@ sub _convert_key_command($$$$)
 }
 
 $default_commands_conversion{'key'} = \&_convert_key_command;
+
+# argument is formatted as code since indicateurl is in code_style_commands
+sub _convert_indicateurl_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $text = $args->[0]->{'normal'};
+  if (!defined($text)) {
+    # happens with bogus @-commands without argument, like @strong something
+    #cluck "text not defined in _convert_style_command";
+    #print STDERR Texinfo::Structuring::_print_current($command);
+    return '';
+  }
+  return $self->xml_protect_text('<').'<code>' .$text 
+                    .'</code>'.$self->xml_protect_text('>');
+}
+
+$default_commands_conversion{'indicateurl'} = \&_convert_indicateurl_command;
+
+
 
 sub _convert_ctrl_command($$$$)
 {
