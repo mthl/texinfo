@@ -2910,14 +2910,15 @@ sub _informative_command($$)
   $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
 
   return if ($self->{'set'}->{$cmdname});
-    if ($misc_commands{$cmdname} eq 'skipline') {
+  if ($misc_commands{$cmdname} eq 'skipline') {
     $self->set_conf($cmdname, 1);
   } elsif (exists($root->{'extra'}->{'text_arg'})) {
     $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
     if ($cmdname eq 'documentencoding'
         and defined($root->{'extra'})
         and defined($root->{'extra'}->{'perl_encoding'})
-        and !$self->{'perl_encoding'}) {
+       ){
+        #and !$self->{'perl_encoding'}) {
       $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
       $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
     }
