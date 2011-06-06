@@ -3592,6 +3592,9 @@ sub _convert_element_type($$$$)
                                                  and !$is_special))) {
     $rule = $self->get_conf('BIG_RULE');
   }
+  if ($end_page and $self->get_conf('footnotestyle') eq 'end') {
+    $result .= &{$self->{'footnotes_text'}}($self);
+  }
   if (!$self->get_conf('PROGRAM_NAME_IN_FOOTER') 
       and !$buttons and !$maybe_in_page) {
     # no rule in that case
@@ -5544,6 +5547,7 @@ sub output($$)
     $special_pages = [] if (!defined($special_pages));
     foreach my $page (@$pages, @$special_pages) {
       my $file_fh;
+      $self->{'current_filename'} = $page->{'filename'};
       if (!$files{$page->{'filename'}}->{'fh'}) {
         $file_fh = $self->Texinfo::Common::open_out ($page->{'out_filename'},
                                                       $self->{'perl_encoding'});
@@ -5553,7 +5557,6 @@ sub output($$)
           # FIXME close/remove files already created
           return undef;
         }
-        $self->{'current_filename'} = $page->{'filename'};
         print $file_fh "".&{$self->{'begin_file'}}($self, 
                                            $page->{'filename'}, 
                                            $page->{'extra'}->{'element'});
