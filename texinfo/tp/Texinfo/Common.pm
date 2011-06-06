@@ -986,4 +986,47 @@ sub parse_htmlxref_files($$)
   return $htmlxref;
 }
 
+sub parse_renamed_nodes_file($$;$)
+{
+  my $self = shift;
+  my $renamed_nodes_file = shift;
+  my $renamed_nodes = shift;
+
+  if (open(RENAMEDFILE, "<$renamed_nodes_file")) {
+    if ($self->{'info'} and $self->{'info'}->{'perl_encoding'}) {
+      binmode(RENAMEDFILE, ":encoding($self->{'info'}->{'perl_encoding'})");
+    }
+    my $renamed_nodes_line_nr = 0;
+    my @old_names = ();
+    while (<RENAMEDFILE>) {
+      $renamed_nodes_line_nr++;
+      next unless (/\S/);
+      next if (/^\s*\@c\b/);
+      if (s/^\s*\@\@\{\}\s+(\S)/$1/) {
+        chomp;
+        if (scalar(@old_names)) {
+          foreach my $old_node_name (@old_names) {
+            $renamed_nodes->{$old_node_name} = $_;
+          }
+          @old_names = ();
+        } else {
+          warn (sprintf($self->__("%s:%d: no node to be renamed\n"), 
+                        $renamed_nodes_file, $renamed_nodes_line_nr));
+        }
+      } else {
+        chomp;
+        s/^\s*//;
+        push @old_names, $_;
+      }
+    }
+    if (scalar(@old_names)) {
+      warn (sprintf($self->__("%s:%d: nodes without a new name at the end of file\n"),
+             $renamed_nodes_file, $renamed_nodes_line_nr));
+    }
+    close(RENAMEDFILE);
+  } else {
+    warn (sprintf($self->__("Cannot read %s: %s"), $renamed_nodes_file, $!));
+  }
+}
+
 1;
