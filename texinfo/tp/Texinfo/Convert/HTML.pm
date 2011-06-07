@@ -405,12 +405,15 @@ sub command_text($$$)
     if ($type eq 'tree') {
       return $tree;
     } else {
-      return $self->_convert($tree);
+      return $self->_convert($tree, 'external manual');
     }
   }
 
   my $target = $self->_get_target($command);
   if ($target) {
+    my $explanation;
+    $explanation = "command_text \@$command->{'cmdname'}" 
+       if ($command->{'cmdname'});
     if (defined($target->{$type})) {
       return $target->{$type};
     }
@@ -420,6 +423,7 @@ sub command_text($$$)
                and $command->{'extra'}->{'special_element'}) {
         my $special_element = $command->{'extra'}->{'special_element'};
         $tree = $self->get_conf('SPECIAL_ELEMENTS_NAME')->{$special_element};
+        $explanation = "command_text $special_element";
       } elsif ($command->{'cmdname'} and ($command->{'cmdname'} eq 'node' 
                                           or $command->{'cmdname'} eq 'anchor')) {
         $tree = {'type' => '_code',
@@ -444,12 +448,14 @@ sub command_text($$$)
             $tree = $self->gdt('Appendix {number} {section_title}',
                              {'number' => {'text' => $command->{'number'}},
                               'section_title'
-                                => {'contents' => $command->{'extra'}->{'misc_content'}}});
+                                => {'contents' 
+                                    => $command->{'extra'}->{'misc_content'}}});
           } else {
             $tree = $self->gdt('{number} {section_title}',
                              {'number' => {'text' => $command->{'number'}},
                               'section_title'
-                                => {'contents' => $command->{'extra'}->{'misc_content'}}});
+                                => {'contents' 
+                                    => $command->{'extra'}->{'misc_content'}}});
           }
         } else {
           $tree = {'contents' => [@{$command->{'extra'}->{'misc_content'}}]};
@@ -474,13 +480,17 @@ sub command_text($$$)
     }
     
     print STDERR "DO $target->{'id'}($type)\n" if ($self->get_conf('DEBUG'));
+    #$self->{'ignore_notice'}++ if ($type ne 'text');
+    $self->{'ignore_notice'}++;
     if ($type =~ /^(.*)_nonumber$/) {
       $tree = $target->{'tree_nonumber'} 
         if (defined($target->{'tree_nonumber'}));
-      $target->{$type} = $self->_convert($tree);
+      $target->{$type} = $self->_convert($tree, $explanation);
     } else {
-      $target->{$type} = $self->_convert($tree);
+      $target->{$type} = $self->_convert($tree, $explanation);
     }
+    #$self->{'ignore_notice'}-- if ($type ne 'text');
+    $self->{'ignore_notice'}--;
 
     pop @{$self->{'document_context'}->[-1]->{'context'}};
     return $target->{$type};
@@ -945,7 +955,7 @@ my %default_commands_args = (
 
 foreach my $explained_command (keys(%explained_commands)) {
   $default_commands_args{$explained_command} 
-     = [['normal'], ['string', 'normal']];
+     = [['normal'], ['string']];
 }
 
 # Default for the function references used for the formatting
@@ -1244,8 +1254,10 @@ sub _convert_explained_command($$$$)
     $explanation_string = $args->[1]->{'string'};
   }
   if ($command->{'extra'}->{'explanation_contents'}) {
+    $self->{'ignore_notice'}++;
     $explanation_string = $self->convert_tree({'type' => '_string',
           'contents' => $command->{'extra'}->{'explanation_contents'}});
+    $self->{'ignore_notice'}--;
   }
   my $opening;
   if (defined($explanation_string)) {
@@ -1364,7 +1376,7 @@ $default_commands_conversion{'uref'} = \&_convert_uref_command;
 $default_commands_conversion{'url'} = \&_convert_uref_command;
 
 my @image_files_extensions = ('.png', '.jpg');
-sub _convert_image_command($$)
+sub _convert_image_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -1397,6 +1409,7 @@ sub _convert_image_command($$)
       } else {
         $image_file = "$basefile.jpg";
       }
+      #cluck "err ($self->{'ignore_notice'})";
       $self->line_warn(sprintf($self->__("\@image file `%s' (for HTML) not found, using `%s'"), $basefile, $image_file), $command->{'line_nr'});
     }
     my $alt;
@@ -1951,7 +1964,7 @@ sub _convert_heading_command($$$$$)
     $heading_level = $command->{'level'};
   }
 
-  my $heading = $self->command_text($command, 'text');
+  my $heading = $self->command_text($command);
   if ($heading ne '' and defined($heading_level)) {
     if ($self->in_preformatted()) {
       $result .= '<strong>'.$heading.'</strong>'."\n";
@@ -2216,7 +2229,9 @@ sub _convert_listoffloats_command($$$$)
 
      my $caption_text;
      if ($caption) {
+       $self->{'ignore_notice'}++;
        $caption_text = $self->convert_tree($caption->{'args'}->[0]);
+       $self->{'ignore_notice'}--;
      } else {
        $caption_text = '';
      }
@@ -2437,8 +2452,10 @@ sub _convert_item_command($$$$)
        and $itemize->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
       $prepend = '';
     } else {
+      $self->{'ignore_notice'}++;
       $prepend = $self->convert_tree(
          {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}->[0]});
+      $self->{'ignore_notice'}--;
     }
     if ($contents =~ /\S/) {
       return '<li>' . $prepend .' '. $contents . '</li>';
@@ -2459,8 +2476,10 @@ sub _convert_item_command($$$$)
     my $args = $contents;
     if ($args->[0]) {
       my $tree = $args->[0]->{'tree'};
-      if ($command->{'parent'}->{'extra'} and $command->{'parent'}->{'extra'}->{'command_as_argument'}) {
-        my $command_as_argument = $command->{'parent'}->{'extra'}->{'command_as_argument'};
+      if ($command->{'parent'}->{'extra'} 
+          and $command->{'parent'}->{'extra'}->{'command_as_argument'}) {
+        my $command_as_argument 
+          = $command->{'parent'}->{'extra'}->{'command_as_argument'};
         if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
           $tree = {'cmdname' => $command_as_argument->{'cmdname'},
                    'args' => [{'type' => 'brace_command_arg',
@@ -2722,8 +2741,7 @@ sub _convert_index_command($$$$)
 }
 $default_commands_conversion{'cindex'} = \&_convert_index_command;
 
-# not needed to initialize it for a document, since it is reset 
-# in index_summary
+my %formatted_index_entries;
 
 sub _convert_printindex_command($$$$)
 {
@@ -2816,6 +2834,15 @@ sub _convert_printindex_command($$$$)
     foreach my $index_entry_ref (@{$letter_entry->{'entries'}}) {
       my $in_code 
        = $self->{'index_names'}->{$index_name}->{$index_entry_ref->{'index_name'}};
+
+      my $already_formatted;
+      if (!$formatted_index_entries{$index_entry_ref}) {
+        $formatted_index_entries{$index_entry_ref} = 1;
+      } else {
+        $already_formatted = 1;
+        $self->{'ignore_notice'}++;
+      }
+
       my $entry;
       if ($in_code) {
         # FIXME clean state
@@ -2824,6 +2851,10 @@ sub _convert_printindex_command($$$$)
       } else {
         $entry = $self->convert_tree({'contents' => $index_entry_ref->{'content'}});
       }
+      if ($already_formatted) {
+        $self->{'ignore_notice'}--;
+      }
+
       next if ($entry !~ /\S/);
       $entry = '<code>' .$entry .'</code>' if ($in_code);
       my $entry_href = $self->command_href ($index_entry_ref->{'command'});
@@ -3163,8 +3194,10 @@ sub _convert_menu_entry_type($$$)
   my $section;
   my $node_entry = $command->{'extra'}->{'menu_entry_node'};
   # external node
+  my $external_node;
   if ($node_entry->{'manual_content'}) {
     $href = $self->command_href($node_entry); 
+    $external_node = 1;
   } else {
     $node = $self->label_command($node_entry->{'normalized'});
     # if NODE_NAME_IN_MENU, we pick the associated section, except if 
@@ -3182,13 +3215,14 @@ sub _convert_menu_entry_type($$$)
   $html_menu_entry_index++;
   my $accesskey = '';
   $accesskey = " accesskey=\"$html_menu_entry_index\"" 
-    if ($self->get_conf('USE_ACCESSKEY') and ($html_menu_entry_index < 10));
+    if ($self->get_conf('USE_ACCESSKEY') and $html_menu_entry_index < 10);
 
   my $MENU_SYMBOL = $self->get_conf('MENU_SYMBOL');
   my $MENU_ENTRY_COLON = $self->get_conf('MENU_ENTRY_COLON');
 
   if ($self->in_preformatted()) {
     my $result = '';
+    my $i = 0;
     foreach my $arg (@{$command->{'args'}}) {
       if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_node') {
         my $name = $self->convert_tree(
@@ -3204,10 +3238,12 @@ sub _convert_menu_entry_type($$$)
         $text =~ s/\*/$MENU_SYMBOL/;
         $result .= $text;
       } else {
-        $result .= $self->convert_tree($arg);
+        $result .= $self->convert_tree($arg, "menu_arg preformatted [$i]");
       }
+      $i++;
     }
-    return $result;
+    return &{$self->{'types_conversion'}->{'preformatted'}}($self,
+       {'type' => 'preformatted', 'parent' => $command->{'parent'}}, $result);
   }
 
   my $name;
@@ -3233,7 +3269,8 @@ sub _convert_menu_entry_type($$$)
         $name = $self->command_text($node_entry);
       } else {
         $name = $self->convert_tree({'type' => '_code',
-                          'contents' => $node_entry->{'node_content'}});
+                          'contents' => $node_entry->{'node_content'}},
+                          "menu_arg name");
       }
     }
     $name =~ s/^\s*//;
@@ -3245,7 +3282,8 @@ sub _convert_menu_entry_type($$$)
   }
   my $description = '';
   if ($command->{'extra'}->{'menu_entry_description'}) {
-    $description = $self->convert_tree ($command->{'extra'}->{'menu_entry_description'});
+    $description = $self->convert_tree ($command->{'extra'}->{'menu_entry_description'},
+                                        "menu_arg description");
     if ($self->get_conf('AVOID_MENU_REDUNDANCY')) {
       $description = '' if (_simplify_text_for_comparison($name_no_number) 
                            eq _simplify_text_for_comparison($description));
@@ -3280,8 +3318,12 @@ sub _convert_menu_comment_type($$$$)
   my $command = shift;
   my $content = shift;
 
-  return "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">".$content
+  if ($self->in_preformatted()) {
+    return $content;
+  } else {
+    return "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">".$content
        ."</th></tr>";
+  }
 }
 
 $default_types_conversion{'menu_comment'} = \&_convert_menu_comment_type;
@@ -3634,6 +3676,7 @@ sub _initialize($)
   }
   $foot_num = 0;
   $foot_lines = '';
+  %formatted_index_entries = ();
 
   %{$self->{'css_map'}} = %css_map;
 
@@ -3750,12 +3793,13 @@ sub _initialize($)
 }
 
 # the entry point for _convert
-sub convert_tree($$)
+sub convert_tree($$;$)
 {
   my $self = shift;
   my $element = shift;
+  my $explanation = shift;
 
-  return $self->_convert($element);
+  return $self->_convert($element, $explanation);
 }
 
 sub _normalized_to_id($)
@@ -5003,8 +5047,10 @@ sub _file_header_informations($$)
   
   my $title;
   if ($command) {
+    $self->{'ignore_notice'}++;
     my $command_string = 
       $self->command_text($command, 'string');
+    $self->{'ignore_notice'}--;
     if (defined($command_string) 
         and $command_string ne $self->{'title_string'}) {
       print STDERR "DO <title>\n"
@@ -5012,8 +5058,10 @@ sub _file_header_informations($$)
       my $title_tree = $self->gdt('{title}: {element_text}', 
                    { 'title' => $self->{'title_tree'}, 
                    'element_text' => $self->command_text($command, 'tree')});
+      $self->{'ignore_notice'}++;
       $title = $self->_convert({'type' => '_string',
                                 'contents' => [$title_tree]});
+      $self->{'ignore_notice'}--;
     }
   }
   $title = $self->{'title_string'} if (!defined($title));
@@ -5077,7 +5125,7 @@ sub _default_begin_file($$$)
 
   
   my $command;
-  if ($element) { 
+  if ($element) {
     $command = $self->element_command($element);
   }
 
@@ -5692,15 +5740,26 @@ sub protect_space_codebreak($$)
 
 # preformatted
 
-sub _convert($$);
+sub _convert($$;$);
 
-sub _convert($$)
+sub _convert($$;$)
 {
   my $self = shift;
   my $root = shift;
+  # only used for debug
+  my $explanation = shift;
+
+  # to help debug and trace
+  my $command_type = '';
+  if ($root->{'cmdname'}) {
+    $command_type = "\@$root->{'cmdname'} ";
+  }
+  if (defined($root->{'type'})) {
+    $command_type .= $root->{'type'};
+  }
 
   if ($self->get_conf('DEBUG')) {
-    print STDERR "ROOT:$root (".join('|',@{$self->{'document_context'}->[-1]->{'context'}})."), ->";
+    print STDERR "ROOT($explanation):$root (".join('|',@{$self->{'document_context'}->[-1]->{'context'}})."), ->";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     my $text = $root->{'text'}; 
@@ -5761,7 +5820,7 @@ sub _convert($$)
 
   #if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
   #}
-      #and !$self->{'multiple_pass'} and !$self->{'in_copying_header'}) {
+      #and !$self->{'mmultiple_pass'} and !$self->{'in_copying_header'}) {
     # special case for index entry not associated with a node but seen. 
     # this will be an index entry in @copying, in @insertcopying.
 #    if (!$root->{'extra'}->{'index_entry'}->{'node'} and $self->{'node'}) {
@@ -5801,7 +5860,8 @@ sub _convert($$)
       if (exists($block_commands{$command_name})) {
         push @{$self->{'document_context'}->[-1]->{'formats'}}, $command_name;
       }
-      if ($preformatted_commands_context{$command_name}) {
+      if ($preformatted_commands_context{$command_name}
+          or $command_name eq 'menu' and $self->get_conf('SIMPLE_MENU')) {
         push @{$self->{'document_context'}->[-1]->{'preformatted_context'}}, $command_name;
       }
       if ($code_style_commands{$command_name} or 
@@ -5821,7 +5881,8 @@ sub _convert($$)
         # TODO different types of contents
         my $content_idx = 0;
         foreach my $content (@{$root->{'contents'}}) {
-          my $new_content = $self->_convert($content);
+          my $new_content = $self->_convert($content, 
+                                            "$command_type [$content_idx]");
           if (!defined($new_content)) {
             print STDERR "content $content_idx not defined for ".Texinfo::Parser::_print_current ($root);
             print STDERR "content is: ".Texinfo::Parser::_print_current ($content);
@@ -5848,25 +5909,27 @@ sub _convert($$)
           my @args_specification;
           @args_specification = @{$self->{'commands_args'}->{$command_name}}
             if (defined($self->{'commands_args'}->{$command_name}));
+          my $arg_idx = 0;
           foreach my $arg (@{$root->{'args'}}) {
             my $arg_spec = shift @args_specification;
             $arg_spec = ['normal'] if (!defined($arg_spec));
             my $arg_formatted = {'tree' => $arg};
             foreach my $arg_type (@$arg_spec) {
+              my $explanation = "$command_type \[$arg_idx\]$arg_type";
               if ($arg_type eq 'normal') {
-                $arg_formatted->{'normal'} = $self->_convert($arg);
+                $arg_formatted->{'normal'} = $self->_convert($arg, $explanation);
               } elsif ($arg_type eq 'code') {
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
-                $arg_formatted->{$arg_type} = $self->_convert($arg);
+                $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
               } elsif ($arg_type eq 'string') {
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{$arg_type}++;
-                $arg_formatted->{$arg_type} = $self->_convert($arg);
+                $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{$arg_type}--;
               } elsif ($arg_type eq 'codestring') {
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}++;
-                $arg_formatted->{$arg_type} = $self->_convert($arg);
+                $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}--;
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
               } elsif ($arg_type eq 'text') {
@@ -5877,6 +5940,7 @@ sub _convert($$)
             }
             
             push @$args_formatted, $arg_formatted;
+            $arg_idx++;
           }
         }
         if (!defined($self->{'commands_conversion'}->{$command_name})) {
@@ -5889,7 +5953,8 @@ sub _convert($$)
         $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
                 $command_name, $root, $content_formatted);
       }
-      if ($preformatted_commands_context{$command_name}) {
+      if ($preformatted_commands_context{$command_name}
+          or $command_name eq 'menu' and $self->get_conf('SIMPLE_MENU')) {
         pop @{$self->{'document_context'}->[-1]->{'preformatted_context'}};
       }
       if ($code_style_commands{$command_name} or 
@@ -5959,14 +6024,16 @@ sub _convert($$)
       if ($root->{'type'} eq 'text_root') {
         $only_spaces = 1;
       }
+      my $i = 0;
       foreach my $content (@{$root->{'contents'}}) {
-        my $new_content = $self->_convert($content);
+        my $new_content = $self->_convert($content, "$command_type [$i]");
         if ($only_spaces) {
           if ($new_content =~ /\S/) {
             $only_spaces = 0;
           }
         }
         $content_formatted .= $new_content unless ($only_spaces);
+        $i++;
       }
     }
     my $result = '';
@@ -5998,8 +6065,10 @@ sub _convert($$)
   } elsif ($root->{'contents'}) {
     # FIXME document situations where that happens? Use virtual types?
     my $content_formatted = '';
+    my $i = 0;
     foreach my $content (@{$root->{'contents'}}) {
-      $content_formatted .= $self->_convert($content);
+      $content_formatted .= $self->_convert($content, "$command_type [$i]");
+      $i++;
     }
     print STDERR "UNNAMED HOLDER => `$content_formatted'\n"
       if ($self->get_conf('DEBUG'));

@@ -76,7 +76,7 @@ sub line_warn($$$)
   my $text = shift;
   chomp ($text);
   my $line_number = shift;
-  return if (!defined($line_number));
+  return if (!defined($line_number) or $self->{'ignore_notice'});
   my $file = $line_number->{'file_name'};
   # otherwise out of source build fail since the file names are different
   $file =~ s/^.*\/// if ($self->get_conf('TEST'));
@@ -103,6 +103,7 @@ sub line_error($$$;$)
   chomp ($text);
   my $line_number = shift;
   my $continuation = shift;
+  return if ($self->{'ignore_notice'});
   if (defined($line_number)) {
     my $file = $line_number->{'file_name'};
     $file =~ s/^.*\/// if ($self->get_conf('TEST'));
@@ -124,6 +125,7 @@ sub document_warn ($$)
 {
   my $self = shift;
   my $text = shift;
+  return if ($self->{'ignore_notice'});
   chomp ($text);
   my $warn_line = sprintf($self->__("warning: %s\n"), $text);
   push @{$self->{'errors_warnings'}},
@@ -134,6 +136,7 @@ sub document_error ($$)
 {
   my $self = shift;
   my $text = shift;
+  return if ($self->{'ignore_notice'});
   chomp ($text);
   $text .= "\n";
   push @{$self->{'errors_warnings'}},
@@ -144,6 +147,7 @@ sub document_error ($$)
 sub file_line_warn($$$;$) {
   my $self = shift;
   my $text = shift;
+  return if ($self->{'ignore_notice'});
   chomp($text);
   my $file = shift;
   my $line_nr = shift;

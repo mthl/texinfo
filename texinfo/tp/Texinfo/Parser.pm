@@ -1791,6 +1791,23 @@ sub _isolate_last_space($$;$)
   }
 }
 
+# used to put a node name in error messages.
+sub _node_extra_to_texi($)
+{
+  my $node = shift;
+  my $result = '';
+  if ($node->{'manual_content'}) {
+    $result = '('.Texinfo::Convert::Texinfo::convert({'contents'
+                                     => $node->{'manual_content'}}) .')';
+  }
+  if ($node->{'node_content'}) {
+    $result .= Texinfo::Convert::Texinfo::convert ({'contents'
+                                          => $node->{'node_content'}});
+  }
+  return $result;
+}
+
+
 # retrieve a leading manual name in parentheses, if there is one.
 sub _parse_node_manual($)
 {
@@ -2335,8 +2352,7 @@ sub _end_line($$$)
       if (@{$float->{'args'}}) {
         if ($float->{'args'}->[1]) {
           my $float_label = _parse_node_manual($float->{'args'}->[1]);
-          _check_internal_node($self, $float_label, $float->{'args'}->[1], 
-                               $line_nr);
+          _check_internal_node($self, $float_label, $line_nr);
           if (defined($float_label) and $float_label->{'node_content'}
              and $float_label->{'normalized'} =~ /[^-]/) {
             _register_label($self, $float, $float_label, $line_nr);
@@ -2573,7 +2589,7 @@ sub _end_line($$$)
         push @{$current->{'extra'}->{'nodes_manuals'}}, $node;
       }
       if (_check_node_label($self, $current->{'extra'}->{'nodes_manuals'}->[0],
-                        $current->{'args'}->[0], $command, $line_nr)) {
+                        $command, $line_nr)) {
         if (_register_label($self, $current, 
                     $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr)) {
           $self->{'current_node'} = $current;
@@ -2802,26 +2818,24 @@ sub _check_empty_node($$$$)
   }
 }
 
-sub _check_internal_node ($$$$)
+sub _check_internal_node ($$$)
 {
   my $self = shift;
   my $parsed_node = shift;
-  my $node = shift;
   my $line_nr = shift;
   if ($parsed_node and $parsed_node->{'manual_content'}) {
     $self->line_error (sprintf($self->__("Syntax for an external node used for `%s'"),
-          Texinfo::Convert::Texinfo::convert($node)), $line_nr)
+          _node_extra_to_texi($parsed_node)), $line_nr)
   }
 }
 
-sub _check_node_label($$$$$)
+sub _check_node_label($$$$)
 {
   my $self = shift;
   my $parsed_node = shift;
-  my $node = shift;
   my $command = shift;
   my $line_nr = shift;
-  _check_internal_node($self, $parsed_node, $node, $line_nr);
+  _check_internal_node($self, $parsed_node, $line_nr);
   return _check_empty_node($self, $parsed_node, $command, $line_nr);
 }
 
@@ -4093,7 +4107,7 @@ sub _parse_texi($;$)
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
               $current->{'parent'}->{'line_nr'} = $line_nr;
               my $parsed_anchor = _parse_node_manual($current);
-              if (_check_node_label($self, $parsed_anchor, $current,
+              if (_check_node_label($self, $parsed_anchor,
                                 $current->{'parent'}->{'cmdname'}, $line_nr)) {
                 _register_label($self, $current->{'parent'},
                   $parsed_anchor, $line_nr);

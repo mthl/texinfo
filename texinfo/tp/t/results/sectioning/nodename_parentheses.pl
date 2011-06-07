@@ -1255,14 +1255,12 @@ $result_menus{'nodename_parentheses'}{'menu_child'}{'menu_up'} = $result_menus{'
 
 $result_errors{'nodename_parentheses'} = [
   {
-    'error_line' => ':22: Syntax for an external node used for ` (manual)node
-\'
+    'error_line' => ':22: Syntax for an external node used for `(manual)node\'
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'Syntax for an external node used for ` (manual)node
-\'',
+    'text' => 'Syntax for an external node used for `(manual)node\'',
     'type' => 'error'
   },
   {
