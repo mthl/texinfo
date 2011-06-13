@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-05-29.22; # UTC
+htmlxrefversion=2011-06-13.23; # UTC
 
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -441,6 +441,9 @@ pies		mono	${PIES}/pies.html
 pies 		chapter	${PIES}/html_chapter/
 pies 		section	${PIES}/html_section/
 pies		node	${PIES}/html_node/
+
+plotutils	mono	${GS}/plotutils/manual/en/plotutils.html
+plotutils	node	${GS}/plotutils/manual/en/html_node/
 
 proxyknife	mono	${GS}/proxyknife/manual/proxyknife.html
 proxyknife	node	${GS}/proxyknife/manual/html_node/
