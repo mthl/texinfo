@@ -362,3 +362,47 @@ invalid/verbatim_not_closed.texi
 
 coverage/pass0_macro.texi     (not everything, but tests are redundant)
 
+
+
+state for sectioning
+D: diffs/equivalent_nodes_no_node.diff
+D: diffs/equivalent_nodes_test_renamed_nodes.diff
+D: diffs/menu-whitespace_plain.diff
+F: out_parser/menu-whitespace_xml/menu-whitespace.2
+F: out_parser_info/menu-whitespace_xml/menu-whitespace.2
+D: diffs/nodename_parentheses.diff
+F: out_parser/nodes_id_docbook/nodes_id.2
+F: out_parser_info/nodes_id_docbook/nodes_id.2
+D: diffs/two_footnotes_in_nodes_plain.diff
+D: diffs/section_in_unnumbered.diff
+D: diffs/no_element.diff
+D: diffs/one_element.diff
+D: diffs/placed_things_before_element.diff
+D: diffs/anchor_in_footnote.diff
+D: diffs/double_node_anchor_float.diff
+F: out_parser/empty_nodes/empty_nodes.2
+D: diffs/section_before_part.diff
+D: diffs/part_before_section.diff
+D: diffs/chapter_before_part.diff
+D: diffs/part_before_chapter.diff
+D: diffs/hole_in_sectioning.diff
+D: diffs/section_before_top.diff
+D: diffs/section_before_top_no_node.diff
+D: diffs/part_chapter_after_top.diff
+D: diffs/part_node_chapter_after_top.diff
+D: diffs/node_part_chapter_after_top.diff
+D: diffs/node_part_chapter_after_chapter.diff
+D: diffs/part_node_before_top.diff
+D: diffs/part_node_after_top.diff
+D: diffs/section_chapter_before_top.diff
+D: diffs/section_chapter_before_top_nodes.diff
+D: diffs/part_node_appendix.diff
+D: diffs/part_appendix.diff
+D: diffs/part_node_part_appendix.diff
+D: diffs/part_node_part_node_appendix.diff
+D: diffs/part_node_node_part_appendix.diff
+D: diffs/empty_top_node_up.diff
+D: diffs/text_before_line_command.diff
+D: diffs/loop_nodes.diff
+F: out_parser/test_refs_docbook/test_refs.2
+F: out_parser_info/test_refs_docbook/test_refs.2

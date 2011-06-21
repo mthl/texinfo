@@ -191,6 +191,7 @@ sub gdt($$;$$)
   }
   my $parser = parser($parser_conf);
 
+  # FIXME it doesn't seems to be used anywhere.
   if ($conf->{'paragraph'}) {
     $result = $parser->parse_texi_text($result);
   } else {
@@ -742,11 +743,17 @@ sub _complete_line_nr($$;$$$)
 }
 
 # entry point for text fragments
-sub parse_texi_text($$;$)
+# it does not seems to be used anywhere, so not sure it is usefull.
+# Note that it has not asociated root type a oppoed to pare_texi_line
+# and parse_texi_file.
+sub parse_texi_text($$;$$$$)
 {
   my $self = shift;
   my $text = shift;
   my $lines_nr = shift;
+  my $file = shift;
+  my $macro = shift;
+  my $fixed_line_number = shift;
 
   return undef if (!defined($text));
 
@@ -756,7 +763,8 @@ sub parse_texi_text($$;$)
   }
   $lines_nr = [] if (!defined($lines_nr));
   if (!ref($lines_nr)) {
-    $lines_array = _complete_line_nr($text, $lines_nr);
+    $lines_array = _complete_line_nr($text, $lines_nr, $file, 
+                                     $macro, $fixed_line_number);
   } else {
     while (@$text) {
       my $line_nr = shift @$lines_nr;
@@ -841,18 +849,22 @@ sub parse_texi_file ($$)
   return $tree;
 }
 
-sub parse_texi_line($$;$)
+sub parse_texi_line($$;$$$$)
 {
   my $self = shift;
   my $text = shift;
   my $lines_nr = shift;
+  my $file = shift;
+  my $macro = shift;
+  my $fixed_line_number = shift;
 
   return undef if (!defined($text));
 
   if (!ref($text)) {
     $text = _text_to_lines($text);
   }
-  my $lines_array = _complete_line_nr($text, $lines_nr);
+  my $lines_array = _complete_line_nr($text, $lines_nr, $file, 
+                                     $macro, $fixed_line_number);
 
   $self = parser() if (!defined($self));
   $self->{'input'} = [{'pending' => $lines_array}];

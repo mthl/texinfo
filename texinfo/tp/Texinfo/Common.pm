@@ -986,11 +986,13 @@ sub parse_htmlxref_files($$)
   return $htmlxref;
 }
 
-sub parse_renamed_nodes_file($$;$)
+sub parse_renamed_nodes_file($$;$$)
 {
   my $self = shift;
   my $renamed_nodes_file = shift;
+  # if not given they are automatically created
   my $renamed_nodes = shift;
+  my $renamed_nodes_lines = shift;
 
   if (open(RENAMEDFILE, "<$renamed_nodes_file")) {
     if ($self->{'info'} and $self->{'info'}->{'perl_encoding'}) {
@@ -1007,6 +1009,7 @@ sub parse_renamed_nodes_file($$;$)
         if (scalar(@old_names)) {
           foreach my $old_node_name (@old_names) {
             $renamed_nodes->{$old_node_name} = $_;
+            $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
           }
           @old_names = ();
         } else {
@@ -1016,6 +1019,7 @@ sub parse_renamed_nodes_file($$;$)
       } else {
         chomp;
         s/^\s*//;
+        $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
         push @old_names, $_;
       }
     }
@@ -1027,6 +1031,29 @@ sub parse_renamed_nodes_file($$;$)
   } else {
     warn (sprintf($self->__("Cannot read %s: %s"), $renamed_nodes_file, $!));
   }
+  return ($renamed_nodes, $renamed_nodes_lines);
+}
+
+sub collect_renamed_nodes($$;$$)
+{
+  my $self = shift;
+  my $basename = shift;
+  my $renamed_nodes = shift;
+  my $renamed_nodes_lines = shift;
+
+  my $renamed_nodes_file;
+  if (defined($self->get_conf('RENAMED_NODES_FILE'))) {
+    $renamed_nodes_file = $self->get_conf('RENAMED_NODES_FILE');
+  } elsif (-f $basename . '-noderename.cnf') {
+    $renamed_nodes_file = $basename . '-noderename.cnf';
+  }
+  if (defined($renamed_nodes_file)) {
+    my ($renamed_nodes, $renamed_nodes_lines)
+     = parse_renamed_nodes_file($self, $renamed_nodes_file, $renamed_nodes,
+                                $renamed_nodes_lines);
+    return ($renamed_nodes, $renamed_nodes_lines, $renamed_nodes_file);
+  }
+  return (undef, undef, undef);
 }
 
 1;
