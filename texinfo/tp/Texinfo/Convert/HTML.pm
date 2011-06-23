@@ -3201,7 +3201,7 @@ sub _convert_menu_entry_type($$$)
   } else {
     $node = $self->label_command($node_entry->{'normalized'});
     # if NODE_NAME_IN_MENU, we pick the associated section, except if 
-    #Â the node is the element command
+    # the node is the element command
     if ($node->{'extra'}->{'associated_section'} 
       and !$self->get_conf('NODE_NAME_IN_MENU')
       and !($self->command_element_command($node) eq $node)) {
