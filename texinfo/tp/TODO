@@ -231,6 +231,9 @@ space_in_setfilename
 sectioning/
 node_footnote_end
 
+equivalent_nodes mainly for equivalent_nodes-noderename.cnf parsing and renamed
+nodes handling.
+
 formatting/
 inter_item_commands.texi
 

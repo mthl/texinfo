@@ -3783,6 +3783,9 @@ sub _initialize($)
       $self->{$formatting_references->[0]} = $formatting_references->[1];
     }
   }
+  if ($Texinfo::Config::renamed_nodes) {
+    %{$self->{'renamed_nodes'}} = %{$Texinfo::Config::renamed_nodes};
+  }
 
   $self->{'document_context'} = [],
   $self->_new_document_context('_toplevel_context');
@@ -5438,7 +5441,8 @@ sub output($$)
   # collect renamed nodes
   ($self->{'renamed_nodes'}, $self->{'renamed_nodes_lines'}, 
        $self->{'renamed_nodes_file'})
-    = Texinfo::Common::collect_renamed_nodes($self, $self->{'document_name'});
+    = Texinfo::Common::collect_renamed_nodes($self, $self->{'document_name'},
+                                             $self->{'renamed_nodes'});
 
   # This should return undef if called on a tree without node or sections.
   my ($elements, $special_elements, $special_pages) 
@@ -5681,6 +5685,10 @@ sub output($$)
         if ($self->label_command($parsed_old_node->{'normalized'})) {
           $self->document_error(sprintf($self->__(
                "Node `%s' that is to be renamed exists"), $old_node_name));
+          $parsed_old_node = undef;
+        } elsif ($parsed_old_node->{'normalized'} !~ /[^-]/) {
+          $self->document_error(sprintf($self->__(
+               "File empty for renamed node `%s'"), $old_node_name));
           $parsed_old_node = undef;
         }
       }
