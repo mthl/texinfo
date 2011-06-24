@@ -261,6 +261,16 @@ After quotation sp b a
 '@cartouche
 in cartouche.
 @end cartouche'],
+['comment_on_cartouche_line',
+'@cartouche @c comment
+in cartouche.
+@end cartouche
+'],
+['comment_on_group_line',
+'@group @c comment
+in group.
+@end group
+'],
 ['insertcopying',
 '@copying
 License.

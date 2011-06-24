@@ -67,6 +67,11 @@ a Warning.
 In quotation
 @end quotation
 '],
+['only_comment_on_quotation_line',
+'@quotation @c comment
+In quotation
+@end quotation
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

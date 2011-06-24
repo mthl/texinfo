@@ -73,6 +73,16 @@ Horizontal space
 * a: (f)b3c.c,    d@c c
 @end menu
 '],
+['comment_on_menu_line',
+'@node Top
+
+@menu  @c
+* first::
+@end menu
+
+@chapter first
+@node first
+'],
 ['no_colon_in_menu',
 '@node Top
 

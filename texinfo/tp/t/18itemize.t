@@ -19,6 +19,11 @@ my @test_cases = (
 @item item
 @end itemize
 '],
+['comment_first_on_itemize_line',
+'@itemize @c comment on itemize line
+@item first
+@end itemize
+'],
 ['enumerate_argument',
 '@enumerate 1
 @end enumerate
@@ -43,6 +48,11 @@ my @test_cases = (
 @enumerate z @c comment
 @item lower case first
 @item lower case second
+@end enumerate
+'],
+['comment_first_on_enumerate_line',
+'@enumerate @c comment on enumerate line
+@item first
 @end enumerate
 '],
 ['enumerate_letters',
