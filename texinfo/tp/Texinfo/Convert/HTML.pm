@@ -968,7 +968,8 @@ my %kept_misc_commands;
 
 my @informative_global_commands = ('contents', 'shortcontents',
   'summarycontents', 'allowcodebreaks', 'documentlanguage',
-  'footnotestyle');
+  'footnotestyle', 'documentencoding', 
+  'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage');
 # taken from global
 # 'xrefautomaticsectiontitle' (or in Parser?)
 # 'documentencoding'
@@ -985,6 +986,24 @@ foreach my $misc_command(@informative_global_commands,
 sub _global_commands($)
 {
   return @informative_global_commands;
+}
+
+my %contents_commands = (
+ 'contents' => 1,
+ 'shortcontents' => 1,
+ 'summarycontents' => 1,
+);
+
+sub _initialize_global_command($$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $root = shift;
+  if (ref($root) ne 'ARRAY') {
+    $self->_informative_command($root);
+  } elsif ($contents_commands{$command}) {
+    $self->_informative_command($root->[0]);
+  }
 }
 
 #my %ignored_misc_commands;
@@ -2901,6 +2920,29 @@ sub _convert_printindex_command($$$$)
 }
 $default_commands_conversion{'printindex'} = \&_convert_printindex_command;
 
+sub _contents_inline_element($$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+
+  my $content = $self->{'contents'}($self, $cmdname, $command);
+  if ($content) {
+    my $result = '';
+    my $special_element 
+      = $self->special_element($contents_command_element_name{$cmdname});
+    my $id = $self->command_id($special_element);
+    if ($id ne '') {
+      $result .= "<a name=\"$id\"></a>\n";
+    }
+    my $heading = $self->command_text($special_element, 'text');
+    $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
+    $result .= $content . "\n";
+    return $result;
+  }
+  return '';
+}
+
 sub _convert_informative_command($$$$)
 {
   my $self = shift;
@@ -2912,21 +2954,7 @@ sub _convert_informative_command($$$$)
   $self->_informative_command($command);
   if ($self->get_conf('INLINE_CONTENTS')) {
     if ($cmdname eq 'contents' or $cmdname eq 'shortcontents') {
-
-      my $content = $self->{'contents'}($self, $cmdname, $command);
-      if ($content) {
-        my $result = '';
-        my $special_element 
-          = $self->special_element($contents_command_element_name{$cmdname});
-        my $id = $self->command_id($special_element);
-        if ($id ne '') {
-          $result .= "<a name=\"$id\"></a>\n";
-        }
-        my $heading = $self->command_text($special_element, 'text');
-        $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
-        $result .= $content . "\n";
-        return $result;
-      }
+      return $self->_contents_inline_element($cmdname, $command);
     }
   }
   return '';
@@ -3507,13 +3535,11 @@ sub _default_titlepage($)
     if (defined($titlepage_text));
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
     if ($self->get_conf('setcontentsaftertitlepage')) {
-      # FIXME put formatted contents
-      # @{$Texi2HTML::THISDOC{'inline_contents'}->{'contents'}}
+      $result .= $self->_contents_inline_element('contents', undef);
       $result .= $self->get_conf('DEFAULT_RULE')."\n";
     }
     if ($self->get_conf('setshortcontentsaftertitlepage')) {
-      # FIXME put formatted shortcontents
-      # @{$Texi2HTML::THISDOC{'inline_contents'}->{'shortcontents'}}
+      $result .= $self->_contents_inline_element('shortcontents', undef);
       $result .= $self->get_conf('DEFAULT_RULE')."\n";
     }
   }
@@ -4443,17 +4469,17 @@ sub _prepare_special_elements($$)
   # FIXME do that here or let it to the user?
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
     if ($self->get_conf('contents')) {
-      if ($self->get_conf('INLINE_CONTENTS')) {
-      } elsif ($self->get_conf('setcontentsaftertitlepage')
-               and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
+      if ($self->get_conf('INLINE_CONTENTS') 
+         or ($self->get_conf('setcontentsaftertitlepage')
+             and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
       } else {
         $do_special{'Contents'} = 1;
       }
     }
     if ($self->get_conf('shortcontents')) {
-      if ($self->get_conf('INLINE_CONTENTS')) {
-      } elsif ($self->get_conf('setshortcontentsaftertitlepage')
-               and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
+      if ($self->get_conf('INLINE_CONTENTS')
+          or ($self->get_conf('setshortcontentsaftertitlepage')
+             and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
       } else {
         $do_special{'Overview'} = 1;
       }
