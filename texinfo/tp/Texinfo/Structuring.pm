@@ -650,8 +650,11 @@ sub _node_element($)
   if ($node->{'extra'} and $node->{'extra'}->{'manual_content'}) {
     return _new_external_node($node->{'extra'}->{'node_content'},
                               $node->{'extra'}->{'manual_content'});
-  } else {
+  } elsif ($node->{'cmdname'} and $node->{'cmdname'} eq 'node') {
     return $node->{'parent'};
+  } else {
+    # case of a @float or an @anchor
+    return undef;
   }
 }
 
