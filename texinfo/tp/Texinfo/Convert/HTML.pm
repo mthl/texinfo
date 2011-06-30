@@ -173,7 +173,6 @@ sub _get_target($$)
             and $sectioning_commands{$command->{'cmdname'}} 
             and !$root_commands{$command->{'cmdname'}}) {
     $target = $self->_new_sectioning_command_target($command);
-    
   }
   return $target;
 }
@@ -1984,7 +1983,9 @@ sub _convert_heading_command($$$$$)
   }
 
   my $heading = $self->command_text($command);
-  if ($heading ne '' and defined($heading_level)) {
+  # $heading not defined may happen if the command is a @node, for example
+  # if theere is an error in the node.
+  if (defined($heading) and $heading ne '' and defined($heading_level)) {
     if ($self->in_preformatted()) {
       $result .= '<strong>'.$heading.'</strong>'."\n";
     } else {
@@ -3507,6 +3508,7 @@ sub _convert_root_text_type($$$$)
       and (!$command->{'parent'} 
            or !$command->{'parent'}->{'type'}
            or $command->{'parent'}->{'type'} ne 'element')) {
+    $result .= &{$self->{'footnotes_text'}}($self);
     $result .= $self->get_conf('DEFAULT_RULE') ."\n",
       if $self->get_conf('PROGRAM_NAME_IN_FOOTER');
   }
@@ -3546,6 +3548,24 @@ sub _default_titlepage($)
   return $result;
 }
 
+sub _print_title($)
+{
+  my $self = shift;
+
+  my $result = '';
+  if ($self->get_conf('SHOW_TITLE')) {
+    if ($self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
+      $result .= &{$self->{'titlepage'}}($self);
+    } elsif ($self->{'simpletitle_tree'}) {
+      my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
+      $result .= &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
+                                          0, {'cmdname' => 'settitle',
+                   'contents' => $self->{'simpletitle_tree'}->{'contents'}});
+    }
+  }
+  return $result;
+}
+
 sub _convert_element_type($$$$)
 {
   my $self = shift;
@@ -3579,16 +3599,7 @@ sub _convert_element_type($$$$)
     $result .= &{$self->{'special_element_body'}}($self, 
                                                  $special_element, $element);
   } elsif (!$element->{'element_prev'}) {
-    if ($self->get_conf('SHOW_TITLE')) {
-      if ($self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
-        $result .= &{$self->{'titlepage'}}($self);
-      } elsif ($self->{'simpletitle_tree'}) {
-        my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
-        $result .= &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
-                                            0, {'cmdname' => 'settitle',
-                     'contents' => $self->{'simpletitle_tree'}->{'contents'}});
-      }
-    }
+    $result .= $self->_print_title();
     if (!$element->{'element_next'}) {
       # only one element
       my $foot_text = &{$self->{'footnotes_text'}}($self);
@@ -4092,7 +4103,7 @@ sub _new_sectioning_command_target($$)
   my $id_contents;
   my $target_shortcontents;
   my $id_shortcontents;
-  if ($Texinfo::Common::root_commands{$command->{'cmdname'}}) {
+  if ($Texinfo::Common::sectioning_commands{$command->{'cmdname'}}) {
     # FIXME choose one (in comments, use target, other use id)
     #my $target_contents = 'toc-'.$target;
     #my $target_base_contents;
@@ -4213,7 +4224,7 @@ sub _set_root_commands_targets_node_files($$)
         # root commands.  The target may also already be set for top node.
         next if (!defined($root_command->{'cmdname'}) 
                  or $self->{'targets'}->{$root_command});
-        if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
+        if ($Texinfo::Common::sectioning_commands{$root_command->{'cmdname'}}) {
           $self->_new_sectioning_command_target($root_command);
         }
       }
@@ -5612,6 +5623,7 @@ sub output($$)
     $self->{'current_filename'} = $self->{'output_filename'};
     my $header = &{$self->{'begin_file'}}($self, $self->{'output_filename'}, undef);
     $output .= _output_text($header, $fh);
+    $output .= _output_text($self->_print_title(), $fh);
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
         my $element_text = $self->_convert($element);
