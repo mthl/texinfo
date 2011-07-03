@@ -2737,7 +2737,9 @@ sub _convert_xref_commands($$$$)
       }
     } 
     if (!defined($tree)) {
-      die "external: $cmdname, ($args), tree undef";
+      # May happen if there is no argument
+      #die "external: $cmdname, ($args), '$name' '$file' '$book' '$href' '$reference'. tree undef";
+      return '';
     }
   }
   return $self->convert_tree($tree);

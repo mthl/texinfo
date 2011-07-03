@@ -144,7 +144,7 @@ my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus',
   'associated_section');
 my %avoided_keys_tree;
 my @avoided_keys_tree = (@sections_keys, @menus_keys, @node_keys, 
-   'menu_child');
+   'menu_child', 'element_next', 'directions');
 foreach my $avoided_key(@avoided_keys_tree) {
   $avoided_keys_tree{$avoided_key} = 1;
 }
@@ -185,6 +185,15 @@ foreach my $avoided_key(@avoided_keys_floats) {
   $avoided_keys_floats{$avoided_key} = 1;
 }
 sub filter_floats_keys { [grep {!$avoided_keys_floats{$_}}
+   ( sort keys %{$_[0]} )] }
+
+my %avoided_keys_elements;
+my @avoided_keys_elements = (@contents_keys, @sections_keys, @node_keys,
+  'element_next', 'element_prev');
+foreach my $avoided_key(@avoided_keys_elements) {
+  $avoided_keys_elements{$avoided_key} = 1;
+}
+sub filter_elements_keys {[grep {!$avoided_keys_elements{$_}}
    ( sort keys %{$_[0]} )] }
 
 sub convert_to_plaintext($$$;$)
@@ -280,6 +289,16 @@ sub test($$)
     $test_file = $parser_options->{'test_file'};
     delete $parser_options->{'test_file'};
   }
+  my $split = '';
+  if ($parser_options->{'test_split'}) {
+    $split = $parser_options->{'test_split'};
+    delete $parser_options->{'test_split'};
+  }
+  my $split_pages = '';
+  if ($parser_options->{'test_split_pages'}) {
+    $split_pages = $parser_options->{'test_split_pages'};
+    delete $parser_options->{'test_split_pages'};
+  }
 
   my @tested_formats;
   if ($parser_options and $parser_options->{'test_formats'}) {
@@ -340,11 +359,34 @@ sub test($$)
       #print STDERR "$format: \n$converted{$format}";
     }
   }
-  # associate elements with the document_root.
+  # re-associate elements with the document_root.
   Texinfo::Structuring::_unsplit($result);
+  my $elements;
+  if ($split eq 'node') {
+    $elements = Texinfo::Structuring::split_by_node($result);
+  } elsif ($split eq 'section') {
+    $elements = Texinfo::Structuring::split_by_section($result);
+  }
+  if ($split) {
+    Texinfo::Structuring::elements_directions($parser, $elements);
+  }
+  my $pages;
+  if ($split_pages) {
+    $pages = Texinfo::Structuring::split_pages($elements, 
+                                                      $split_pages);
+  }
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
   my $new_file = $file.'.new';
+
+  my $split_result;
+  if ($pages) {
+    $split_result = $pages;
+  } elsif ($elements) {
+    $split_result = $elements;
+  } else {
+    $split_result = $result;
+  }
 
   {
     local $Data::Dumper::Purity = 1;
@@ -357,14 +399,15 @@ sub test($$)
     binmode (OUT, ":encoding(utf8)");
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".
               '   %result_indices %result_sectioning %result_nodes %result_menus'."\n".
-              '   %result_floats %result_converted %result_converted_errors);'."\n\n";
+              '   %result_floats %result_converted %result_converted_errors '."\n".
+              '   %result_elements);'."\n\n";
     print OUT 'use utf8;'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result;
     {
       local $Data::Dumper::Sortkeys = \&filter_tree_keys;
-      $out_result = Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
+      $out_result = Data::Dumper->Dump([$split_result], ['$result_trees{\''.$test_name.'\'}']);
     }
     my $texi_string_result = Texinfo::Convert::Texinfo::convert($result);
     $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''
@@ -393,10 +436,13 @@ sub test($$)
       $out_result .= Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n"
          if ($indices);
     }
-    if ($floats)
-    {
+    if ($floats) {
       local $Data::Dumper::Sortkeys = \&filter_floats_keys;
       $out_result .= Data::Dumper->Dump([$floats], ['$result_floats{\''.$test_name.'\'}']) ."\n\n";
+    }
+    if ($elements) {
+      local $Data::Dumper::Sortkeys = \&filter_elements_keys;
+      $out_result .= Data::Dumper->Dump([$elements], ['$result_elements{\''.$test_name.'\'}']) ."\n\n";
     }
     foreach my $format (@tested_formats) {
       if (defined($converted{$format})) {
@@ -442,7 +488,7 @@ sub test($$)
       #my $diff = Data::Diff->new($result, $result_trees{$test_name});
       #print STDERR "".Data::Dumper->Dump([$diff->raw()], ['$diff']);
     #}
-    cmp_trimmed($result, $result_trees{$test_name}, \@avoided_keys_tree,
+    cmp_trimmed($split_result, $result_trees{$test_name}, \@avoided_keys_tree,
                 $test_name.' tree');
 #    ok (Data::Compare::Compare($result, $result_trees{$test_name}, 
 #               { 'ignore_hash_keys' => [@avoided_compare_tree] }), 

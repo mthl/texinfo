@@ -1219,7 +1219,8 @@ Second top.
 '@part part
 
 @section section 
-'],
+', {'test_split' => 'section'}
+],
 ['section_before_chapter',
 '@section section 
 

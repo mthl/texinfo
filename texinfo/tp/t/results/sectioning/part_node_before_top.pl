@@ -1,6 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
-   %result_floats %result_converted %result_converted_errors);
+   %result_floats %result_converted %result_converted_errors 
+   %result_elements);
 
 use utf8;
 
@@ -349,6 +350,7 @@ $result_trees{'part_node_before_top'} = {
         }
       ],
       'extra' => {
+        'associated_part' => {},
         'misc_content' => [
           {}
         ]
@@ -422,6 +424,7 @@ $result_trees{'part_node_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[
 $result_trees{'part_node_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'part_node_before_top'}{'contents'}[4]{'contents'}[1];
 $result_trees{'part_node_before_top'}{'contents'}[4]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'part_node_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[2];
 $result_trees{'part_node_before_top'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'part_node_before_top'}{'contents'}[4];
+$result_trees{'part_node_before_top'}{'contents'}[4]{'extra'}{'associated_part'} = $result_trees{'part_node_before_top'}{'contents'}[2];
 $result_trees{'part_node_before_top'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'part_node_before_top'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'part_node_before_top'}{'contents'}[4]{'parent'} = $result_trees{'part_node_before_top'};
 
@@ -463,7 +466,8 @@ $result_sectioning{'part_node_before_top'} = {
           'extra' => {
             'normalized' => 'Top'
           }
-        }
+        },
+        'associated_part' => {}
       },
       'level' => 0,
       'section_prev' => {},
@@ -472,6 +476,7 @@ $result_sectioning{'part_node_before_top'} = {
   ]
 };
 $result_sectioning{'part_node_before_top'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'part_node_before_top'};
+$result_sectioning{'part_node_before_top'}{'section_childs'}[1]{'extra'}{'associated_part'} = $result_sectioning{'part_node_before_top'}{'section_childs'}[0];
 $result_sectioning{'part_node_before_top'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'part_node_before_top'}{'section_childs'}[0];
 $result_sectioning{'part_node_before_top'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'part_node_before_top'};
 
@@ -480,7 +485,13 @@ $result_nodes{'part_node_before_top'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'associated_part' => {
+          'cmdname' => 'part',
+          'extra' => {},
+          'level' => 0
+        }
+      },
       'level' => 0
     },
     'normalized' => 'Top'

@@ -2722,7 +2722,13 @@ sub _end_line($$$)
           $self->{'current_node'}->{'extra'}->{'associated_section'} = $current;
           $current->{'extra'}->{'associated_node'} = $self->{'current_node'};
         }
+        if ($self->{'current_part'}) {
+          $current->{'extra'}->{'associated_part'} = $self->{'current_part'};
+          delete $self->{'current_part'};
+        }
         $self->{'current_section'} = $current;
+      } elsif ($command eq 'part') {
+        $self->{'current_part'} = $current;
       }
     }
    # do that last in order to have the line processed if one of the above

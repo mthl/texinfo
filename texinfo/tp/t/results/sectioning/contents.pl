@@ -1,6 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
-   %result_floats %result_converted %result_converted_errors);
+   %result_floats %result_converted %result_converted_errors 
+   %result_elements);
 
 use utf8;
 
@@ -346,6 +347,7 @@ $result_trees{'contents'} = {
         }
       ],
       'extra' => {
+        'associated_part' => {},
         'misc_content' => [
           {}
         ]
@@ -620,6 +622,7 @@ $result_trees{'contents'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $
 $result_trees{'contents'}{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents'}{'contents'}[7]{'args'}[0];
 $result_trees{'contents'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[7];
 $result_trees{'contents'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[7];
+$result_trees{'contents'}{'contents'}[7]{'extra'}{'associated_part'} = $result_trees{'contents'}{'contents'}[6];
 $result_trees{'contents'}{'contents'}[7]{'extra'}{'misc_content'}[0] = $result_trees{'contents'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'contents'}{'contents'}[7]{'parent'} = $result_trees{'contents'};
 $result_trees{'contents'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'contents'}{'contents'}[8];
@@ -769,7 +772,9 @@ $result_sectioning{'contents'} = {
       'section_childs' => [
         {
           'cmdname' => 'chapter',
-          'extra' => {},
+          'extra' => {
+            'associated_part' => {}
+          },
           'level' => 1,
           'number' => 2,
           'section_up' => {}
@@ -817,6 +822,7 @@ $result_sectioning{'contents'}{'section_childs'}[0]{'section_childs'}[0]{'sectio
 $result_sectioning{'contents'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'contents'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[0];
 $result_sectioning{'contents'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents'};
+$result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[0]{'extra'}{'associated_part'} = $result_sectioning{'contents'}{'section_childs'}[1];
 $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[1];
 $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[0];
 $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[1]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[1];
