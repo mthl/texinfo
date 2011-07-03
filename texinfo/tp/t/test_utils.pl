@@ -406,7 +406,7 @@ sub test($$)
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".
               '   %result_indices %result_sectioning %result_nodes %result_menus'."\n".
               '   %result_floats %result_converted %result_converted_errors '."\n".
-              '   %result_elements);'."\n\n";
+              '   %result_elements %result_directions_text);'."\n\n";
     print OUT 'use utf8;'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
@@ -449,6 +449,7 @@ sub test($$)
     if ($elements) {
       local $Data::Dumper::Sortkeys = \&filter_elements_keys;
       $out_result .= Data::Dumper->Dump([$elements], ['$result_elements{\''.$test_name.'\'}']) ."\n\n";
+     # $out_result .= "\n".'$result_directions_text{\''
     }
     foreach my $format (@tested_formats) {
       if (defined($converted{$format})) {
