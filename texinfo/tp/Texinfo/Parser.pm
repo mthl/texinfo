@@ -2723,9 +2723,12 @@ sub _end_line($$$)
           $current->{'extra'}->{'associated_node'} = $self->{'current_node'};
         }
         if ($self->{'current_parts'}) {
-          $current->{'extra'}->{'associated_part'} = $self->{'current_parts'}->[-1];
-          foreach my $part (@{$self->{'current_parts'}}) {
-            $part->{'extra'}->{'part_associated_section'} = $current;
+          # no @part associated with @top, but to other sectioning commands
+          if ($current->{'cmdname'} ne 'top') {
+            $current->{'extra'}->{'associated_part'} = $self->{'current_parts'}->[-1];
+            foreach my $part (@{$self->{'current_parts'}}) {
+              $part->{'extra'}->{'part_associated_section'} = $current;
+            }
           }
           delete $self->{'current_parts'};
         }

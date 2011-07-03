@@ -679,7 +679,7 @@ sub _node_element($)
   } elsif ($node->{'cmdname'} and $node->{'cmdname'} eq 'node') {
     return $node->{'parent'};
   } else {
-    # case of a @float or an @anchor
+    # case of a @float or an @anchor
     return undef;
   }
 }
@@ -772,7 +772,7 @@ sub elements_directions($$)
       foreach my $direction(['Up', 'section_up'], ['Next', 'section_next'],
                             ['Prev', 'section_prev']) {
         # in most cases $section->{$direction->[1]}->{'parent'} is defined
-        # but it may not be the case for the up of @top.
+        # but it may not be the case for the up of @top.
         $directions->{$direction->[0]} = $section->{$direction->[1]}->{'parent'}
           if ($section->{$direction->[1]} and $section->{$direction->[1]}->{'parent'});
       }
@@ -781,14 +781,21 @@ sub elements_directions($$)
       while ($up->{'level'} > 1 and $up->{'section_up'}) {
         $up = $up->{'section_up'};
       }
+
       # fastforward is the next element on same level than the upper parent
       # element.
-      # FIXME only for top and not for parts?
-      if ($up->{'level'} < 1) {
+      # FIXME and for parts?
+      if ($up->{'level'} < 1 and $up->{'cmdname'} and $up->{'cmdname'} eq 'top') {
         if ($up->{'section_childs'} and @{$up->{'section_childs'}}) {
           $directions->{'FastForward'} = $up->{'section_childs'}->[0]->{'parent'};
+        } elsif ($up->{'section_next'}) {
+          $directions->{'FastForward'} = $up->{'section_next'}->{'parent'};
         }
       } else {
+      # FIXME the result is not right for a construct like
+      # @chapter chap1
+      # @part part
+      # @chapter chap2
         $directions->{'FastForward'} = $up->{'section_next'}->{'parent'}
           if ($up->{'section_next'});
       }

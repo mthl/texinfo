@@ -1984,7 +1984,7 @@ sub _convert_heading_command($$$$$)
 
   my $heading = $self->command_text($command);
   # $heading not defined may happen if the command is a @node, for example
-  # if theere is an error in the node.
+  # if there is an error in the node.
   if (defined($heading) and $heading ne '' and defined($heading_level)) {
     if ($self->in_preformatted()) {
       $result .= '<strong>'.$heading.'</strong>'."\n";
@@ -2737,7 +2737,7 @@ sub _convert_xref_commands($$$$)
       }
     } 
     if (!defined($tree)) {
-      # May happen if there is no argument
+      # May happen if there is no argument
       #die "external: $cmdname, ($args), '$name' '$file' '$book' '$href' '$reference'. tree undef";
       return '';
     }

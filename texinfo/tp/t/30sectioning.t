@@ -266,6 +266,16 @@ A.
 
 @contents
 '],
+['chapter_before_part',
+'@chapter chapter
+
+@part part
+',{'test_split' => 'section'}],
+['part_before_top',
+'@part part
+
+@top top
+',{'test_split' => 'section'}],
 ['double_part',
 '@node Top
 @top top
@@ -283,7 +293,7 @@ Text part second.
 @node node chapter
 @chapter chapter after 2 parts
 
-', #{'test_split' => 'section', 'test_split_pages' => 'chapter'}
+', {'test_split' => 'section', 'test_split_pages' => 'chapter'}
 ],
 ['setfilename_on_top_and_after_node',
 '@node Top
@@ -642,6 +652,19 @@ Ref to footnote anchor
 * part node before top::
 @end menu
 '],
+['part_chapter_after_top',
+'@node Top
+@top top
+
+@menu
+* chapter::
+@end menu
+
+@part part
+
+@node chapter
+@chapter chapter 
+', {'test_split' => 'section'}],
 ['part_node_chapter_after_top',
 '@node Top
 @top top
@@ -658,7 +681,20 @@ After a node after part
 
 @node chapter
 @chapter chapter 
-'],
+', {'test_split' => 'section'}],
+['node_part_chapter_after_top',
+'@node Top
+@top top
+
+@menu
+* chapter node::
+@end menu
+
+@node chapter node
+@part part
+
+@chapter chapter 
+', {'test_split' => 'section'}],
 ['node_part_chapter_after_chapter',
 '@node Top
 @top top
@@ -678,7 +714,7 @@ After a node after part
 @chapter chapter with part node
 
 @contents
-',{'test_formats' => ['plaintext']} ],
+',{'test_formats' => ['plaintext'], 'test_split' => 'section'} ],
 ['section_before_top',
 '@node section node,,,Top
 @section section 
@@ -1253,6 +1289,13 @@ Second top.
 @chapter chapter 2
 ', {'test_split' => 'section'}
 ],
+['top_part_chapter',
+'@top top
+
+@part part
+
+@chapter chapter 
+', {'test_split' => 'section'}],
 ['section_before_top_no_node',
 '@section section 
 
