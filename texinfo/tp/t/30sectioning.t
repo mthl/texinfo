@@ -1251,7 +1251,8 @@ Second top.
 @part part
 
 @chapter chapter 2
-'],
+', {'test_split' => 'section'}
+],
 ['section_before_top_no_node',
 '@section section 
 

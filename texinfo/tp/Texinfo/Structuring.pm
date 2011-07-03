@@ -771,8 +771,10 @@ sub elements_directions($$)
       my $section = $element->{'extra'}->{'section'};
       foreach my $direction(['Up', 'section_up'], ['Next', 'section_next'],
                             ['Prev', 'section_prev']) {
+        # in most cases $section->{$direction->[1]}->{'parent'} is defined
+        # but it may not be the case for the up of @top.
         $directions->{$direction->[0]} = $section->{$direction->[1]}->{'parent'}
-          if ($section->{$direction->[1]});
+          if ($section->{$direction->[1]} and $section->{$direction->[1]}->{'parent'});
       }
 
       my $up = $section;
@@ -807,7 +809,8 @@ sub elements_directions($$)
         and $element->{'extra'}->{'node'}->{'node_up'} 
         and (!$node_top or ($element->{'extra'}->{'node'} ne $node_top))) {
       #print STDERR "Using node for up "._print_element_command_texi($element)."\n";
-      $directions->{'Up'} = _node_element($element->{'extra'}->{'node'}->{'node_up'});
+      my $up_node_element = _node_element($element->{'extra'}->{'node'}->{'node_up'});
+      $directions->{'Up'} = $up_node_element if ($up_node_element);
     }
     if ($element->{'extra'}->{'directions'}) {
       %{$element->{'extra'}->{'directions'}} = (%{$element->{'extra'}->{'directions'}}, 

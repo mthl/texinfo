@@ -218,4 +218,10 @@ $result_elements{'part_before_section'}[0]{'extra'}{'directions'}{'Up'} = $resul
 $result_elements{'part_before_section'}[0]{'extra'}{'section'} = $result_elements{'part_before_section'}[0]{'extra'}{'element_command'};
 
 
+
+$result_directions_text{'part_before_section'} = 'element: @section section
+  This: @section section
+  Up: @section section
+';
+
 1;

@@ -27,7 +27,8 @@ use Getopt::Long qw(GetOptions);
 # FIXME Is it really useful?
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
-   %result_floats %result_converted %result_converted_errors %result_elements);
+   %result_floats %result_converted %result_converted_errors 
+   %result_elements %result_directions_text);
 
 my $strings_textdomain = 'texi2html_document';
 Locale::Messages->select_package ('gettext_pp');
@@ -449,7 +450,8 @@ sub test($$)
     if ($elements) {
       local $Data::Dumper::Sortkeys = \&filter_elements_keys;
       $out_result .= Data::Dumper->Dump([$elements], ['$result_elements{\''.$test_name.'\'}']) ."\n\n";
-     # $out_result .= "\n".'$result_directions_text{\''
+      $out_result .= "\n".'$result_directions_text{\''.$test_name.'\'} = \''
+        .protect_perl_string($directions_text)."';\n\n";
     }
     foreach my $format (@tested_formats) {
       if (defined($converted{$format})) {
@@ -531,6 +533,14 @@ sub test($$)
          $test_name.' texi');
     ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
     $tests_count = $nr_comparisons;
+    if (defined($result_directions_text{$test_name})) {
+      cmp_trimmed($elements, $result_elements{$test_name}, 
+                  \@avoided_keys_elements, $test_name.' elements');
+      $tests_count++;
+      ok ($directions_text eq $result_directions_text{$test_name}, 
+          $test_name.' directions text');
+      $tests_count++;
+    }
     if (@tested_formats) {
       foreach my $format (@tested_formats) {
         if (!defined($result_converted{$format})) {
