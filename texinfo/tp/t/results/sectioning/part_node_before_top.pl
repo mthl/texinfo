@@ -454,31 +454,34 @@ $result_sectioning{'part_node_before_top'} = {
   'section_childs' => [
     {
       'cmdname' => 'part',
-      'extra' => {},
+      'extra' => {
+        'part_associated_section' => {
+          'cmdname' => 'top',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'Top'
+              }
+            },
+            'associated_part' => {}
+          },
+          'level' => 0,
+          'section_prev' => {},
+          'section_up' => {}
+        }
+      },
       'level' => 0,
       'section_up' => {}
     },
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top'
-          }
-        },
-        'associated_part' => {}
-      },
-      'level' => 0,
-      'section_prev' => {},
-      'section_up' => {}
-    }
+    {}
   ]
 };
+$result_sectioning{'part_node_before_top'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_part'} = $result_sectioning{'part_node_before_top'}{'section_childs'}[0];
+$result_sectioning{'part_node_before_top'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'section_prev'} = $result_sectioning{'part_node_before_top'}{'section_childs'}[0];
+$result_sectioning{'part_node_before_top'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'section_up'} = $result_sectioning{'part_node_before_top'};
 $result_sectioning{'part_node_before_top'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'part_node_before_top'};
-$result_sectioning{'part_node_before_top'}{'section_childs'}[1]{'extra'}{'associated_part'} = $result_sectioning{'part_node_before_top'}{'section_childs'}[0];
-$result_sectioning{'part_node_before_top'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'part_node_before_top'}{'section_childs'}[0];
-$result_sectioning{'part_node_before_top'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'part_node_before_top'};
+$result_sectioning{'part_node_before_top'}{'section_childs'}[1] = $result_sectioning{'part_node_before_top'}{'section_childs'}[0]{'extra'}{'part_associated_section'};
 
 $result_nodes{'part_node_before_top'} = {
   'cmdname' => 'node',

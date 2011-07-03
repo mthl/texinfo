@@ -266,6 +266,24 @@ A.
 
 @contents
 '],
+['double_part',
+'@node Top
+@top top
+
+@menu
+* node chapter::
+@end menu
+
+@part part first
+
+Text part first.
+@part part second
+Text part second.
+
+@node node chapter
+@chapter chapter after 2 parts
+
+'],
 ['setfilename_on_top_and_after_node',
 '@node Top
 @top In top @setfilename very badly placed setfilename

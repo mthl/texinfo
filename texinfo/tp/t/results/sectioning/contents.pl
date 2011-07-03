@@ -767,10 +767,8 @@ $result_sectioning{'contents'} = {
     },
     {
       'cmdname' => 'part',
-      'extra' => {},
-      'level' => 0,
-      'section_childs' => [
-        {
+      'extra' => {
+        'part_associated_section' => {
           'cmdname' => 'chapter',
           'extra' => {
             'associated_part' => {}
@@ -778,7 +776,11 @@ $result_sectioning{'contents'} = {
           'level' => 1,
           'number' => 2,
           'section_up' => {}
-        },
+        }
+      },
+      'level' => 0,
+      'section_childs' => [
+        {},
         {
           'cmdname' => 'chapter',
           'extra' => {},
@@ -822,9 +824,10 @@ $result_sectioning{'contents'}{'section_childs'}[0]{'section_childs'}[0]{'sectio
 $result_sectioning{'contents'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'contents'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[0];
 $result_sectioning{'contents'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents'};
-$result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[0]{'extra'}{'associated_part'} = $result_sectioning{'contents'}{'section_childs'}[1];
-$result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[1];
-$result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[0];
+$result_sectioning{'contents'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'extra'}{'associated_part'} = $result_sectioning{'contents'}{'section_childs'}[1];
+$result_sectioning{'contents'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[1];
+$result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[0] = $result_sectioning{'contents'}{'section_childs'}[1]{'extra'}{'part_associated_section'};
+$result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'contents'}{'section_childs'}[1]{'extra'}{'part_associated_section'};
 $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[1]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[1];
 $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[2]{'section_prev'} = $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[1];
 $result_sectioning{'contents'}{'section_childs'}[1]{'section_childs'}[2]{'section_up'} = $result_sectioning{'contents'}{'section_childs'}[1];

@@ -2722,13 +2722,16 @@ sub _end_line($$$)
           $self->{'current_node'}->{'extra'}->{'associated_section'} = $current;
           $current->{'extra'}->{'associated_node'} = $self->{'current_node'};
         }
-        if ($self->{'current_part'}) {
-          $current->{'extra'}->{'associated_part'} = $self->{'current_part'};
-          delete $self->{'current_part'};
+        if ($self->{'current_parts'}) {
+          $current->{'extra'}->{'associated_part'} = $self->{'current_parts'}->[-1];
+          foreach my $part (@{$self->{'current_parts'}}) {
+            $part->{'extra'}->{'part_associated_section'} = $current;
+          }
+          delete $self->{'current_parts'};
         }
         $self->{'current_section'} = $current;
       } elsif ($command eq 'part') {
-        $self->{'current_part'} = $current;
+        push @{$self->{'current_parts'}}, $current;
       }
     }
    # do that last in order to have the line processed if one of the above

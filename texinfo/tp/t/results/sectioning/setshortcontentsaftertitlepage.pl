@@ -774,10 +774,8 @@ $result_sectioning{'setshortcontentsaftertitlepage'} = {
     },
     {
       'cmdname' => 'part',
-      'extra' => {},
-      'level' => 0,
-      'section_childs' => [
-        {
+      'extra' => {
+        'part_associated_section' => {
           'cmdname' => 'chapter',
           'extra' => {
             'associated_part' => {}
@@ -785,7 +783,11 @@ $result_sectioning{'setshortcontentsaftertitlepage'} = {
           'level' => 1,
           'number' => 2,
           'section_up' => {}
-        },
+        }
+      },
+      'level' => 0,
+      'section_childs' => [
+        {},
         {
           'cmdname' => 'chapter',
           'extra' => {},
@@ -829,9 +831,10 @@ $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[0]{'secti
 $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[0];
 $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'setshortcontentsaftertitlepage'};
-$result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[0]{'extra'}{'associated_part'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1];
-$result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[0]{'section_up'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1];
-$result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[0];
+$result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'extra'}{'associated_part'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1];
+$result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'section_up'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1];
+$result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[0] = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'extra'}{'part_associated_section'};
+$result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'extra'}{'part_associated_section'};
 $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[1]{'section_up'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1];
 $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[2]{'section_prev'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[1];
 $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1]{'section_childs'}[2]{'section_up'} = $result_sectioning{'setshortcontentsaftertitlepage'}{'section_childs'}[1];
