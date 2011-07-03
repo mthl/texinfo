@@ -24,9 +24,10 @@ use Clone qw(clone);
 #use Struct::Compare;
 use Getopt::Long qw(GetOptions);
 
+# FIXME Is it really useful?
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
-   %result_floats %result_converted %result_converted_errors);
+   %result_floats %result_converted %result_converted_errors %result_elements);
 
 my $strings_textdomain = 'texi2html_document';
 Locale::Messages->select_package ('gettext_pp');
@@ -359,6 +360,7 @@ sub test($$)
       #print STDERR "$format: \n$converted{$format}";
     }
   }
+  my $directions_text;
   # re-associate elements with the document_root.
   Texinfo::Structuring::_unsplit($result);
   my $elements;
@@ -369,6 +371,10 @@ sub test($$)
   }
   if ($split) {
     Texinfo::Structuring::elements_directions($parser, $elements);
+    $directions_text = '';
+    foreach my $element (@$elements) {
+      $directions_text .= Texinfo::Structuring::_print_directions($element);
+    }
   }
   my $pages;
   if ($split_pages) {

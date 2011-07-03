@@ -283,7 +283,8 @@ Text part second.
 @node node chapter
 @chapter chapter after 2 parts
 
-'],
+', #{'test_split' => 'section', 'test_split_pages' => 'chapter'}
+],
 ['setfilename_on_top_and_after_node',
 '@node Top
 @top In top @setfilename very badly placed setfilename
@@ -1233,7 +1234,7 @@ Second top.
 @node second node
 @chapter a chapter
 '],
-['part_before_section',
+['part_before_section', # FIXME do HTML
 '@part part
 
 @section section 

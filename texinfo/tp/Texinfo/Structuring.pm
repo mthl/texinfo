@@ -506,7 +506,13 @@ sub split_by_node($)
   my $elements;
   my $current = { 'type' => 'element', 'extra' => {'no_node' => 1}};
   push @$elements, $current; 
+  my @pending_parts = ();
   foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'part'
+        and $content->{'extra'}->{'part_associated_section'}) {
+      push @pending_parts, $content;
+      next;
+    }
     if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node') {
       if ($current->{'extra'}->{'no_node'}) {
         delete $current->{'extra'}->{'no_node'};
@@ -523,6 +529,13 @@ sub split_by_node($)
           = $content->{'extra'}->{'associated_section'};
       }
     }
+    if (@pending_parts) {
+      foreach my $part (@pending_parts) {
+        push @{$current->{'contents'}}, $part;
+        $part->{'parent'} = $current;
+      }
+      @pending_parts = ();
+    }
     push @{$current->{'contents'}}, $content;
     $content->{'parent'} = $current;
   }
@@ -537,9 +550,15 @@ sub split_by_section($)
     return undef;
   }
   my $elements;
+  my @pending_parts = ();
   my $current = { 'type' => 'element', 'extra' => {'no_section' => 1}};
   push @$elements, $current; 
   foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'part'
+        and $content->{'extra'}->{'part_associated_section'}) {
+      push @pending_parts, $content;
+      next;
+    }
     if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node' 
          and $content->{'extra'}->{'associated_section'}) {
       if ($current->{'extra'}->{'no_section'}) {
@@ -571,6 +590,13 @@ sub split_by_section($)
         $elements->[-1]->{'element_next'} = $current;
         push @$elements, $current;
       }
+    }
+    if (@pending_parts) {
+      foreach my $part (@pending_parts) {
+        push @{$current->{'contents'}}, $part;
+        $part->{'parent'} = $current;
+      }
+      @pending_parts = ();
     }
     push @{$current->{'contents'}}, $content;
     $content->{'parent'} = $current;
