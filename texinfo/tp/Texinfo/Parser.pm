@@ -2429,6 +2429,29 @@ sub _end_line($$$)
           delete $current->{'extra'}->{'command_as_argument'};
         }
       }
+      # This code checks that the command_as_argument of the @itemize
+      # is alone on the line, otherwise it is not an command_as_argument.
+      if ($current->{'extra'}
+          and $current->{'extra'}->{'command_as_argument'}
+          and $current->{'cmdname'} eq 'itemize') {
+        my @args = @{$current->{'args'}->[0]->{'contents'}};
+        while (@args) {
+          my $arg = shift @args;
+          last if ($arg eq $current->{'extra'}->{'command_as_argument'});
+        }
+        while (@args) {
+          my $arg = shift @args;
+          if (!(($arg->{'cmdname'} 
+               and ($arg->{'cmdname'} eq 'c' 
+                     or $arg->{'cmdname'} eq 'comment'))
+               or (defined($arg->{'text'}) and $arg->{'text'} !~ /\S/))) {
+            #print STDERR " -> stop at "._print_current($arg)."\n";
+            delete $current->{'extra'}->{'command_as_argument'}->{'type'};
+            delete $current->{'extra'}->{'command_as_argument'};
+            last;
+          }
+        }
+      }
       if ($current->{'extra'}
           and $current->{'extra'}->{'command_as_argument'}
           and $accent_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}
@@ -2900,6 +2923,22 @@ sub _register_command_arg($$$)
   }
 }
 
+sub _command_with_command_as_argument($)
+{
+  my $current = shift;
+  return ($current and $current->{'type'}
+      and $current->{'type'} eq 'block_line_arg'
+      and $current->{'parent'} 
+      and $current->{'parent'}->{'cmdname'} and
+     ($current->{'parent'}->{'cmdname'} eq 'itemize'
+      or $item_line_commands{$current->{'parent'}->{'cmdname'}})
+      and (scalar(@{$current->{'contents'}}) == 1
+           or (scalar(@{$current->{'contents'}}) == 2
+            and defined($current->{'contents'}->[0]->{'text'})
+            and $current->{'contents'}->[0]->{'text'}
+                               =~ /^[^\S\n]*/)))
+}
+
 # the different types
 #c 'menu_entry'
 #c 'menu_entry'
@@ -3209,17 +3248,7 @@ sub _parse_texi($;$)
             $self->{'definfoenclose'}->{$current->{'cmdname'}})
            and $line !~ /^{/) {
         # special case for @-command as argument of @itemize or @*table.
-        if ($current->{'parent'} and $current->{'parent'}->{'type'}
-            and $current->{'parent'}->{'type'} eq 'block_line_arg'
-            and $current->{'parent'}->{'parent'} 
-            and $current->{'parent'}->{'parent'}->{'cmdname'} and
-           ($current->{'parent'}->{'parent'}->{'cmdname'} eq 'itemize'
-             or $item_line_commands{$current->{'parent'}->{'parent'}->{'cmdname'}})
-             and (scalar(@{$current->{'parent'}->{'contents'}}) == 1
-                  or (scalar(@{$current->{'parent'}->{'contents'}}) == 2
-                   and defined($current->{'parent'}->{'contents'}->[0]->{'text'})
-                   and $current->{'parent'}->{'contents'}->[0]->{'text'}
-                                      =~ /^[^\S\n]*/))) {
+        if (_command_with_command_as_argument($current->{'parent'})) {
           delete $current->{'contents'};
           print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'DEBUG'});
           $current->{'type'} = 'command_as_argument' if (!$current->{'type'});
@@ -4200,6 +4229,13 @@ sub _parse_texi($;$)
                     = $explained->{'extra'}->{'brace_command_contents'}->[1];
                 }
               }
+            } elsif (_command_with_command_as_argument($current->{'parent'}->{'parent'})
+                 and scalar(@{$current->{'contents'}}) == 0) {
+               print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'parent'}->{'cmdname'} command_as_argument braces $current->{'cmdname'}\n" if ($self->{'DEBUG'});
+               $current->{'parent'}->{'type'} = 'command_as_argument' 
+                  if (!$current->{'parent'}->{'type'});
+               $current->{'parent'}->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
+                  = $current->{'parent'};
             }
             $self->_register_global_command($current->{'parent'}->{'cmdname'},
                                             $current->{'parent'}, $line_nr);

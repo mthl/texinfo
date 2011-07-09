@@ -34,7 +34,8 @@ $result_trees{'w_argument'} = {
                 'line_nr' => 1,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'command_as_argument'
             },
             {
               'parent' => {},
@@ -196,6 +197,7 @@ $result_trees{'w_argument'} = {
             {}
           ]
         ],
+        'command_as_argument' => {},
         'end_command' => {}
       },
       'line_nr' => {},
@@ -234,6 +236,7 @@ $result_trees{'w_argument'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} =
 $result_trees{'w_argument'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'w_argument'}{'contents'}[0];
 $result_trees{'w_argument'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'w_argument'}{'contents'}[0];
 $result_trees{'w_argument'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'w_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'w_argument'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'w_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'w_argument'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'w_argument'}{'contents'}[0]{'contents'}[2];
 $result_trees{'w_argument'}{'contents'}[0]{'line_nr'} = $result_trees{'w_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'w_argument'}{'contents'}[0]{'parent'} = $result_trees{'w_argument'};

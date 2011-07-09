@@ -420,6 +420,15 @@ quotation after a blank line
 @item aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa fffffffff ggggggggg vvvvvvvvv ggggggggg h
 @end enumerate
 '],
+['itemize_line_commands_with_brace',
+'@itemize @bullet{}
+@item bullet
+@end itemize
+
+@itemize @minus{}
+@item minus
+@end itemize
+'],
 ['asis_as_itemize_argument',
 '@itemize @asis
 @item as is
