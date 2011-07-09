@@ -243,7 +243,8 @@ $result_sectioning{'chapter_before_and_after_part'} = {
           },
           'level' => 1,
           'number' => 2,
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       },
       'level' => 0,
@@ -257,6 +258,7 @@ $result_sectioning{'chapter_before_and_after_part'} = {
 $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'chapter_before_and_after_part'};
 $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'extra'}{'associated_part'} = $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1];
 $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'section_up'} = $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1];
+$result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'toplevel_prev'} = $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[0];
 $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1]{'section_childs'}[0] = $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1]{'extra'}{'part_associated_section'};
 $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'chapter_before_and_after_part'};
 
@@ -267,10 +269,11 @@ $result_elements{'chapter_before_and_after_part'} = [
   {
     'extra' => {
       'directions' => {
-        'Forward' => {
+        'FastForward' => {
           'extra' => {
             'directions' => {
               'Back' => {},
+              'FastBack' => {},
               'This' => {},
               'Up' => {}
             },
@@ -290,6 +293,7 @@ $result_elements{'chapter_before_and_after_part'} = [
           },
           'type' => 'element'
         },
+        'Forward' => {},
         'This' => {}
       },
       'element_command' => {
@@ -304,21 +308,25 @@ $result_elements{'chapter_before_and_after_part'} = [
   },
   {}
 ];
-$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Back'} = $result_elements{'chapter_before_and_after_part'}[0];
-$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'This'} = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Up'} = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'section'} = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
+$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Back'} = $result_elements{'chapter_before_and_after_part'}[0];
+$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastBack'} = $result_elements{'chapter_before_and_after_part'}[0];
+$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'This'} = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'};
+$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Up'} = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'};
+$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'section'} = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'element_command'};
+$result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'} = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'chapter_before_and_after_part'}[0];
 $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'section'} = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'element_command'};
-$result_elements{'chapter_before_and_after_part'}[1] = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'Forward'};
+$result_elements{'chapter_before_and_after_part'}[1] = $result_elements{'chapter_before_and_after_part'}[0]{'extra'}{'directions'}{'FastForward'};
 
 
 
 $result_directions_text{'chapter_before_and_after_part'} = 'element: @chapter chapter
+  FastForward: @chapter chapter 2
   Forward: @chapter chapter 2
   This: @chapter chapter
 element: @chapter chapter 2
   Back: @chapter chapter
+  FastBack: @chapter chapter
   This: @chapter chapter 2
   Up: @chapter chapter 2
 ';

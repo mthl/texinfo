@@ -548,7 +548,7 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @anchor{TOP}.
 '],
-['equivalent_nodes',
+['equivalent_nodes', #FIXME HTML
 '@node Top, @emph{node}
 
 @menu
@@ -559,7 +559,7 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @xref{node}.
 '],
-['no_element',
+['no_element', # FIXME HTML
 '@settitle no_element test
 @documentencoding ISO-8859-1
 
@@ -651,7 +651,18 @@ Ref to footnote anchor
 @menu
 * part node before top::
 @end menu
-'],
+', {'test_split' => 'section'}],
+['part_node_after_top',
+'@node Top
+@top top
+
+@menu
+* part node after top::
+@end menu
+
+@node part node after top
+@part part
+', {'test_split' => 'section'}],
 ['part_chapter_after_top',
 '@node Top
 @top top

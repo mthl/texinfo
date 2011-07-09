@@ -141,7 +141,8 @@ my @contents_keys = ('contents', 'args', 'parent', 'line_nr', 'node_content',
   'block_command_line_contents');
 my @menus_keys = ('menu_next', 'menu_up', 'menu_prev', 'menu_up_hash');
 my @sections_keys = ('section_next', 'section_prev', 'section_up', 
-  'section_childs', 'associated_node', 'part_associated_section');
+  'section_childs', 'associated_node', 'part_associated_section', 
+  'toplevel_prev', 'toplevel_next');
 my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus', 
   'associated_section');
 my %avoided_keys_tree;
@@ -156,7 +157,7 @@ sub filter_tree_keys { [grep {!$avoided_keys_tree{$_}} ( sort keys %{$_[0]} )] }
 
 my %avoided_keys_sectioning;
 my @avoided_keys_sectioning = ('section_next', @contents_keys, @menus_keys, 
-  @node_keys, 'menu_child');
+  @node_keys, 'menu_child', 'toplevel_next');
 foreach my $avoided_key(@avoided_keys_sectioning) {
   $avoided_keys_sectioning{$avoided_key} = 1;
 }

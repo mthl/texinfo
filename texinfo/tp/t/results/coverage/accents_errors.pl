@@ -135,61 +135,6 @@ $result_trees{'accents_errors'} = {
       ],
       'parent' => {},
       'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'With '
-        },
-        {
-          'cmdname' => '@',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ':
-'
-        },
-        {
-          'cmdname' => 'ringaccent',
-          'contents' => [],
-          'extra' => {
-            'spaces' => ' '
-          },
-          'parent' => {}
-        },
-        {
-          'cmdname' => '@',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '. '
-        },
-        {
-          'cmdname' => '^',
-          'contents' => [],
-          'parent' => {}
-        },
-        {
-          'cmdname' => '@',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
     }
   ],
   'type' => 'text_root'
@@ -221,17 +166,6 @@ $result_trees{'accents_errors'}{'contents'}[2]{'contents'}[9]{'parent'} = $resul
 $result_trees{'accents_errors'}{'contents'}[2]{'contents'}[10]{'parent'} = $result_trees{'accents_errors'}{'contents'}[2];
 $result_trees{'accents_errors'}{'contents'}[2]{'contents'}[11]{'parent'} = $result_trees{'accents_errors'}{'contents'}[2];
 $result_trees{'accents_errors'}{'contents'}[2]{'parent'} = $result_trees{'accents_errors'};
-$result_trees{'accents_errors'}{'contents'}[3]{'parent'} = $result_trees{'accents_errors'};
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[6]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[7]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'contents'}[8]{'parent'} = $result_trees{'accents_errors'}{'contents'}[4];
-$result_trees{'accents_errors'}{'contents'}[4]{'parent'} = $result_trees{'accents_errors'};
 
 $result_texis{'accents_errors'} = 'accent at end of line @ringaccent
 accent at end of line and spaces @ringaccent  
@@ -240,9 +174,6 @@ accent followed by @@ @ringaccent@.
 accent character with spaces @~ following.
 accent character at end of line @~
 accent character followed by @@ @~@.
-
-With @@:
-@ringaccent @@. @^@@.
 ';
 
 
@@ -253,9 +184,6 @@ accent followed by @ .
 accent character with spaces  following.
 accent character at end of line 
 accent character followed by @ .
-
-With @:
-@. @.
 ';
 
 $result_errors{'accents_errors'} = [
@@ -311,24 +239,6 @@ $result_errors{'accents_errors'} = [
     'line_nr' => 7,
     'macro' => '',
     'text' => 'Use braces to give a command as an argument to @~',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':10: Use braces to give a command as an argument to @ringaccent
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => 'Use braces to give a command as an argument to @ringaccent',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':10: Use braces to give a command as an argument to @^
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => 'Use braces to give a command as an argument to @^',
     'type' => 'error'
   }
 ];

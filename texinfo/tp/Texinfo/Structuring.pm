@@ -161,6 +161,7 @@ sub sectioning_structure($$)
 
   my $sec_root = {};
   my $previous_section;
+  my $previous_toplevel;
 
   my $in_appendix = 0;
   # lowest level with a number.  This is the lowest level above 0.
@@ -297,6 +298,14 @@ sub sectioning_structure($$)
         }
       }
       $previous_section = $content;
+      if ($content->{'cmdname'} ne 'part' 
+          and $content->{'level'} <= $number_top_level) {
+        if ($previous_toplevel) {
+          $previous_toplevel->{'toplevel_next'} = $content;
+          $content->{'toplevel_prev'} = $previous_toplevel;
+        }
+        $previous_toplevel = $content;
+      }
 
       if ($self->{'DEBUG'}) {
         my $number = '';
@@ -785,19 +794,13 @@ sub elements_directions($$)
       # fastforward is the next element on same level than the upper parent
       # element.
       # FIXME and for parts?
-      if ($up->{'level'} < 1 and $up->{'cmdname'} and $up->{'cmdname'} eq 'top') {
-        if ($up->{'section_childs'} and @{$up->{'section_childs'}}) {
-          $directions->{'FastForward'} = $up->{'section_childs'}->[0]->{'parent'};
-        } elsif ($up->{'section_next'}) {
-          $directions->{'FastForward'} = $up->{'section_next'}->{'parent'};
-        }
-      } else {
-      # FIXME the result is not right for a construct like
-      # @chapter chap1
-      # @part part
-      # @chapter chap2
-        $directions->{'FastForward'} = $up->{'section_next'}->{'parent'}
-          if ($up->{'section_next'});
+      if ($up->{'level'} < 1 and $up->{'cmdname'} and $up->{'cmdname'} eq 'top'
+          and $up->{'section_childs'} and @{$up->{'section_childs'}}) {
+        $directions->{'FastForward'} = $up->{'section_childs'}->[0]->{'parent'};
+      } elsif ($up->{'toplevel_next'}) {
+        $directions->{'FastForward'} = $up->{'toplevel_next'}->{'parent'};
+      } elsif ($up->{'section_next'}) {
+        $directions->{'FastForward'} = $up->{'section_next'}->{'parent'};
       }
       # if the element isn't at the highest level, fastback is the 
       # highest parent element

@@ -254,7 +254,8 @@ $result_sectioning{'no_empty_line_between_headings'} = {
               'section_up' => {}
             }
           ],
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       ],
       'section_up' => {}
@@ -263,6 +264,7 @@ $result_sectioning{'no_empty_line_between_headings'} = {
 };
 $result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0];
 $result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_empty_line_between_headings'};
 
 $result_errors{'no_empty_line_between_headings'} = [];

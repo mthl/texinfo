@@ -4313,7 +4313,8 @@ $result_sectioning{'macro_in_misc_commands'} = {
           },
           'level' => 1,
           'number' => 1,
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       ],
       'section_up' => {}
@@ -4321,6 +4322,7 @@ $result_sectioning{'macro_in_misc_commands'} = {
   ]
 };
 $result_sectioning{'macro_in_misc_commands'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'macro_in_misc_commands'}{'section_childs'}[0];
+$result_sectioning{'macro_in_misc_commands'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'macro_in_misc_commands'}{'section_childs'}[0];
 $result_sectioning{'macro_in_misc_commands'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'macro_in_misc_commands'};
 
 $result_nodes{'macro_in_misc_commands'} = {

@@ -560,14 +560,19 @@ sub _find_innermost_accent_contents($;$)
  ACCENT:
   while (1) {
     # the following can happen if called with a bad tree
-    if (!$current->{'args'} or !$current->{'cmdname'} 
+    if (!$current->{'cmdname'} 
         or !$accent_commands{$current->{'cmdname'}}) {
-      print STDERR "BUG: Not an accent command in accent\n";
+      #print STDERR "BUG: Not an accent command in accent\n";
+      cluck "BUG: Not an accent command in accent\n";
       print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
       print STDERR Data::Dumper->Dump([$current]);
       last;
     }
     push @accent_commands, $current->{'cmdname'};
+    # A bogus accent
+    if (!$current->{'args'}) {
+      return ([], $current, \@accent_commands);
+    }
     my $arg = $current->{'args'}->[0];
     # a construct like @'e without content
     if (defined($arg->{'text'})) {

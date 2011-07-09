@@ -1423,7 +1423,8 @@ $result_sectioning{'some_at_commands_in_ref_nodes'} = {
           },
           'level' => 1,
           'number' => 1,
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       ],
       'section_up' => {}
@@ -1431,6 +1432,7 @@ $result_sectioning{'some_at_commands_in_ref_nodes'} = {
   ]
 };
 $result_sectioning{'some_at_commands_in_ref_nodes'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'some_at_commands_in_ref_nodes'}{'section_childs'}[0];
+$result_sectioning{'some_at_commands_in_ref_nodes'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'some_at_commands_in_ref_nodes'}{'section_childs'}[0];
 $result_sectioning{'some_at_commands_in_ref_nodes'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'some_at_commands_in_ref_nodes'};
 
 $result_nodes{'some_at_commands_in_ref_nodes'} = {

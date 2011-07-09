@@ -1664,7 +1664,8 @@ $result_sectioning{'raiselowersections'} = {
               'section_up' => {}
             }
           ],
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -1679,7 +1680,8 @@ $result_sectioning{'raiselowersections'} = {
           'level' => 1,
           'number' => 2,
           'section_prev' => {},
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       ],
       'section_up' => {}
@@ -1690,8 +1692,10 @@ $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[
 $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'raiselowersections'}{'section_childs'}[0];
+$result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'raiselowersections'}{'section_childs'}[0];
 $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'raiselowersections'}{'section_childs'}[0];
+$result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'raiselowersections'};
 
 $result_nodes{'raiselowersections'} = {

@@ -967,7 +967,8 @@ $result_sectioning{'value_in_node'} = {
           },
           'level' => 1,
           'number' => 1,
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       ],
       'section_up' => {}
@@ -975,6 +976,7 @@ $result_sectioning{'value_in_node'} = {
   ]
 };
 $result_sectioning{'value_in_node'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_in_node'}{'section_childs'}[0];
+$result_sectioning{'value_in_node'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'value_in_node'}{'section_childs'}[0];
 $result_sectioning{'value_in_node'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_in_node'};
 
 $result_nodes{'value_in_node'} = {

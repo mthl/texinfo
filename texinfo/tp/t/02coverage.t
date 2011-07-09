@@ -497,7 +497,10 @@ In float with caption.
 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@tie{}BBBBBBBBBBB
 '],
 ['test_today',
-'@today{}.', {}, {'TEST' => 1}]
+'@today{}.', {}, {'TEST' => 1}],
+['at_after_accent_command',
+'@ringaccent @@. @^@@.
+'],
 );
 
 my @test_invalid = (
@@ -512,9 +515,6 @@ accent followed by @@ @ringaccent@.
 accent character with spaces @~ following.
 accent character at end of line @~
 accent character followed by @@ @~@.
-
-With @@:
-@ringaccent @@. @^@@.
 '],
 ['accent_no_closed',
 '@~{e'],

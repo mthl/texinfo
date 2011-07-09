@@ -1435,7 +1435,8 @@ $result_sectioning{'float_copying'} = {
           },
           'level' => 1,
           'number' => 'A',
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       ],
       'section_up' => {}
@@ -1443,6 +1444,7 @@ $result_sectioning{'float_copying'} = {
   ]
 };
 $result_sectioning{'float_copying'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'float_copying'}{'section_childs'}[0];
+$result_sectioning{'float_copying'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'float_copying'}{'section_childs'}[0];
 $result_sectioning{'float_copying'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'float_copying'};
 
 $result_nodes{'float_copying'} = {

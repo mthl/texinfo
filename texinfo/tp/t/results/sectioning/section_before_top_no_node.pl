@@ -152,13 +152,15 @@ $result_sectioning{'section_before_top_no_node'} = {
       'extra' => {},
       'level' => 2,
       'section_prev' => {},
-      'section_up' => {}
+      'section_up' => {},
+      'toplevel_prev' => {}
     }
   ]
 };
 $result_sectioning{'section_before_top_no_node'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'section_before_top_no_node'};
 $result_sectioning{'section_before_top_no_node'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'section_before_top_no_node'}{'section_childs'}[0];
 $result_sectioning{'section_before_top_no_node'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'section_before_top_no_node'};
+$result_sectioning{'section_before_top_no_node'}{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'section_before_top_no_node'}{'section_childs'}[0];
 
 $result_errors{'section_before_top_no_node'} = [
   {

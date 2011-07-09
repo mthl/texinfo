@@ -241,7 +241,8 @@ $result_sectioning{'top_part_chapter'} = {
           },
           'level' => 1,
           'number' => 1,
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       },
       'level' => 0,
@@ -256,6 +257,7 @@ $result_sectioning{'top_part_chapter'} = {
 $result_sectioning{'top_part_chapter'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'top_part_chapter'};
 $result_sectioning{'top_part_chapter'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'extra'}{'associated_part'} = $result_sectioning{'top_part_chapter'}{'section_childs'}[1];
 $result_sectioning{'top_part_chapter'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'section_up'} = $result_sectioning{'top_part_chapter'}{'section_childs'}[1];
+$result_sectioning{'top_part_chapter'}{'section_childs'}[1]{'extra'}{'part_associated_section'}{'toplevel_prev'} = $result_sectioning{'top_part_chapter'}{'section_childs'}[0];
 $result_sectioning{'top_part_chapter'}{'section_childs'}[1]{'section_childs'}[0] = $result_sectioning{'top_part_chapter'}{'section_childs'}[1]{'extra'}{'part_associated_section'};
 $result_sectioning{'top_part_chapter'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'top_part_chapter'}{'section_childs'}[0];
 $result_sectioning{'top_part_chapter'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'top_part_chapter'};

@@ -958,7 +958,8 @@ $result_sectioning{'semi_auto'} = {
               'section_up' => {}
             }
           ],
-          'section_up' => {}
+          'section_up' => {},
+          'toplevel_prev' => {}
         }
       ],
       'section_up' => {}
@@ -969,6 +970,7 @@ $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'secti
 $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'semi_auto'}{'section_childs'}[0];
+$result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'semi_auto'}{'section_childs'}[0];
 $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'semi_auto'};
 
 $result_nodes{'semi_auto'} = {

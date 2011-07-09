@@ -1720,7 +1720,8 @@ $result_sectioning{'detailmenu_on_subnodes'} = {
         }
       ],
       'section_prev' => {},
-      'section_up' => {}
+      'section_up' => {},
+      'toplevel_prev' => {}
     }
   ]
 };
@@ -1731,6 +1732,7 @@ $result_sectioning{'detailmenu_on_subnodes'}{'section_childs'}[1]{'section_child
 $result_sectioning{'detailmenu_on_subnodes'}{'section_childs'}[1]{'section_childs'}[1]{'section_up'} = $result_sectioning{'detailmenu_on_subnodes'}{'section_childs'}[1];
 $result_sectioning{'detailmenu_on_subnodes'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'detailmenu_on_subnodes'}{'section_childs'}[0];
 $result_sectioning{'detailmenu_on_subnodes'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'detailmenu_on_subnodes'};
+$result_sectioning{'detailmenu_on_subnodes'}{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'detailmenu_on_subnodes'}{'section_childs'}[0];
 
 $result_nodes{'detailmenu_on_subnodes'} = {
   'cmdname' => 'node',
