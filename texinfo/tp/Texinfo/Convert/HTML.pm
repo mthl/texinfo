@@ -1305,7 +1305,7 @@ sub _convert_anchor_command($$$$)
   my $args = shift;
 
   my $id = $self->command_id ($command);
-  if (defined($id) and $id ne '') {
+  if (defined($id) and $id ne '' and !@{$self->{'multiple_pass'}}) {
     return "<a name=\"$id\"></a>";
   }
   return '';
@@ -1317,6 +1317,8 @@ my $foot_num;
 my $foot_lines;
 my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
+# to avoid duplicate names, use a prefix that cannot happen in anchors
+my $target_prefix = "t_h";
 sub _convert_footnote_command($$$$)
 {
   my $self = shift;
@@ -1358,6 +1360,11 @@ sub _convert_footnote_command($$$$)
   }
   chomp ($footnote_text);
   $footnote_text .= "\n";
+
+  if (@{$self->{'multiple_pass'}}) {
+    $footid = $target_prefix.$self->{'multiple_pass'}->[-1].'_'.$footid.'_'.$foot_num;
+    $docid = $target_prefix.$self->{'multiple_pass'}->[-1].'_'.$docid.'_'.$foot_num;
+  }
 
   $foot_lines .= '<h3>' .
    "<a name=\"$footid\" href=\"$document_filename#$docid\">($number_in_doc)</a></h3>\n"
@@ -2250,7 +2257,9 @@ sub _convert_listoffloats_command($$$$)
      my $caption_text;
      if ($caption) {
        $self->{'ignore_notice'}++;
+       push @{$self->{'multiple_pass'}}, 'listoffloats';
        $caption_text = $self->convert_tree($caption->{'args'}->[0]);
+       pop @{$self->{'multiple_pass'}};
        $self->{'ignore_notice'}--;
      } else {
        $caption_text = '';
@@ -2473,8 +2482,11 @@ sub _convert_item_command($$$$)
       $prepend = '';
     } else {
       $self->{'ignore_notice'}++;
+      # This should not be needed, only in case of invalid constructs
+      push @{$self->{'multiple_pass'}}, 'item_prepended';
       $prepend = $self->convert_tree(
          {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}->[0]});
+      pop @{$self->{'multiple_pass'}};
       $self->{'ignore_notice'}--;
     }
     if ($contents =~ /\S/) {
@@ -2756,7 +2768,7 @@ sub _convert_index_command($$$$)
   my $args = shift;
 
   my $index_id = $self->command_id ($command);
-  if (defined($index_id) and $index_id ne '') {
+  if (defined($index_id) and $index_id ne '' and !@{$self->{'multiple_pass'}}) {
     return "<a name=\"$index_id\"></a>\n";
   }
   return '';
@@ -3429,7 +3441,7 @@ sub _convert_def_line_type($$$$)
 
   my $index_label = '';
   my $index_id = $self->command_id ($command);
-  if (defined($index_id) and $index_id ne '') {
+  if (defined($index_id) and $index_id ne '' and !@{$self->{'multiple_pass'}}) {
     $index_label = "<a name=\"$index_id\"></a>";
   }
   if (!$self->get_conf('DEF_TABLE')) {
@@ -3827,6 +3839,7 @@ sub _initialize($)
   }
 
   $self->{'document_context'} = [],
+  $self->{'multiple_pass'} = [],
   $self->_new_document_context('_toplevel_context');
 
   $self->_translate_names();
