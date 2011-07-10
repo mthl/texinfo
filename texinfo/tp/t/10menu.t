@@ -225,6 +225,22 @@ Menu comment
 
 @end menu
 '],
+['menu_in_example',
+'@node Top
+
+@example
+@menu
+* (entry)::
+@cartouche
+in cartouche in description in menu in example
+@end cartouche
+
+@cartouche
+in cartouche in menu comment in menu in example
+@end cartouche
+@end menu
+@end example
+']
 );
 
 my @test_invalid = (

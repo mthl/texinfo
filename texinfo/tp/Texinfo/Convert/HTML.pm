@@ -2143,7 +2143,8 @@ sub _convert_exdent_command($$$$)
   my $preformatted = $self->in_preformatted();
   
   if ($preformatted) {
-    return $self->_convert_preformatted_type($cmdname, $command, $args->[0]->{'normal'} ."\n");
+    return $self->_convert_preformatted_type($cmdname, $command, 
+                                             $args->[0]->{'normal'} ."\n");
   } else {
     # ignore alignment information
     return "<p>".$args->[0]->{'normal'} ."\n</p>";
@@ -2162,7 +2163,8 @@ sub _convert_center_command($$$$)
   my $preformatted = $self->in_preformatted();
   
   if ($preformatted) {
-    return $self->_convert_preformatted_type($cmdname, $command, $args->[0]->{'normal'} ."\n");
+    return $self->_convert_preformatted_type($cmdname, $command, 
+                                             $args->[0]->{'normal'} ."\n");
   } else {
     return "<p align=\"center\">".$args->[0]->{'normal'} ."\n</p>";
   }
@@ -2396,11 +2398,11 @@ sub _convert_cartouche_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
-  if ($contents =~ /\S/) {
+  if ($content =~ /\S/) {
     return $self->attribute_class('table', 'cartouche')
-       ." border=\"1\"><tr><td>\n". $contents ."</td></tr></table>\n";
+       ." border=\"1\"><tr><td>\n". $content ."</td></tr></table>\n";
   }
   return '';
 }
@@ -3086,6 +3088,11 @@ sub _convert_preformatted_type($$$$)
   my $command = shift;
   my $content = shift;
 
+  if (!defined($content)) {
+    cluck "content undef in _convert_preformatted_type " 
+       .Texinfo::Parser::_print_current($command);
+  }
+
   my $current = $command;
   my $pre_class;
   # !defined preformatted_number may happen if there is something before the
@@ -3286,6 +3293,7 @@ sub _convert_menu_entry_type($$$)
       $i++;
     }
     return &{$self->{'types_conversion'}->{'preformatted'}}($self,
+       'preformatted_in_menu_entry',
        {'type' => 'preformatted', 'parent' => $command->{'parent'}}, $result);
   }
 
@@ -6035,7 +6043,8 @@ sub _convert($$;$)
           my $new_content = $self->_convert($content, 
                                             "$command_type [$content_idx]");
           if (!defined($new_content)) {
-            print STDERR "content $content_idx not defined for ".Texinfo::Parser::_print_current ($root);
+            cluck "content not defined for $command_type [$content_idx]\n";
+            print STDERR "root is: ".Texinfo::Parser::_print_current ($root);
             print STDERR "content is: ".Texinfo::Parser::_print_current ($content);
           } else {
             $content_formatted .= $new_content;
@@ -6175,16 +6184,22 @@ sub _convert($$;$)
       if ($root->{'type'} eq 'text_root') {
         $only_spaces = 1;
       }
-      my $i = 0;
+      my $content_idx = 0;
       foreach my $content (@{$root->{'contents'}}) {
-        my $new_content = $self->_convert($content, "$command_type [$i]");
-        if ($only_spaces) {
-          if ($new_content =~ /\S/) {
-            $only_spaces = 0;
+        my $new_content = $self->_convert($content, "$command_type [$content_idx]");
+        if (!defined($new_content)) {
+          cluck "content not defined for $command_type [$content_idx]\n";
+          print STDERR "root is: ".Texinfo::Parser::_print_current ($root);
+          print STDERR "content is: ".Texinfo::Parser::_print_current ($content);
+        } else {
+          if ($only_spaces) {
+            if ($new_content =~ /\S/) {
+              $only_spaces = 0;
+            }
           }
+          $content_formatted .= $new_content unless ($only_spaces);
         }
-        $content_formatted .= $new_content unless ($only_spaces);
-        $i++;
+        $content_idx++;
       }
     }
     my $result = '';

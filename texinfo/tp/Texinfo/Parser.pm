@@ -927,6 +927,9 @@ sub labels_information ($)
 sub _print_current($)
 {
   my $current = shift;
+  if (ref($current) ne 'HASH') {
+    return  "_print_current: $current not a hash\n";
+  }
   my $type = '';
   my $cmd = '';
   my $parent_string = '';
@@ -2108,9 +2111,18 @@ sub _end_line($$$)
       $current = _end_paragraph($self, $current, $line_nr);
       push @{$current->{'contents'}}, $empty_line;
       $empty_line->{'parent'} = $current;
-    } elsif ($current->{'type'} 
-               and $current->{'type'} eq 'menu_entry_description') {
+    } elsif (($current->{'type'} 
+               and $current->{'type'} eq 'menu_entry_description')
+              or ($current->{'type'}
+               and $current->{'type'} eq 'preformatted'
+               and $current->{'parent'}->{'type'}
+               and $current->{'parent'}->{'type'} eq 'menu_entry_description'))  {
       my $empty_line = pop @{$current->{'contents'}};
+      if ($current->{'type'} eq 'preformatted') {
+        my $empty_preformatted = (!@{$current->{'contents'}});
+        $current = $current->{'parent'};
+        pop @{$current->{'contents'}} if ($empty_preformatted);
+      }
       # first parent is menu_entry
       $current = $current->{'parent'}->{'parent'};
       
@@ -3938,7 +3950,11 @@ sub _parse_texi($;$)
                 push @{$self->{'regions_stack'}}, $block;
               }
               if ($menu_commands{$command}) {
-                push @{$self->{'context_stack'}}, 'menu';
+                if ($self->{'context_stack'}->[-1] eq 'preformatted') {
+                  push @{$self->{'context_stack'}}, 'preformatted';
+                } else {
+                  push @{$self->{'context_stack'}}, 'menu';
+                }
                 push @{$self->{'info'}->{'dircategory_direntry'}}, $block
                   if ($command eq 'direntry');
                 if ($self->{'current_node'}) {

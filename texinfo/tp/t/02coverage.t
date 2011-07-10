@@ -333,6 +333,15 @@ In cartouche in quotation
 end quotation
 @end quotation
 '],
+['cartouche_in_example',
+'@example
+In example
+@cartouche
+In cartouche in example
+@end cartouche
+end example
+@end example
+'],
 ['flushright_example_nested',
 '@example
 @flushright
