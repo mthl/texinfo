@@ -15,48 +15,48 @@ $result_trees{'split_no_copying'} = {
               'parent' => {},
               'text' => '\\input texinfo
 '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => 'split-nocopying.info'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'misc_line_arg'
-                }
-              ],
-              'cmdname' => 'setfilename',
-              'extra' => {
-                'text_arg' => 'split-nocopying.info'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
-              },
-              'parent' => {}
             }
           ],
           'parent' => {},
           'type' => 'paragraph'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'extra' => {
+                    'command' => {}
+                  },
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'split-nocopying.info'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'setfilename',
+          'extra' => {
+            'text_arg' => 'split-nocopying.info'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -425,14 +425,14 @@ $result_trees{'split_no_copying'} = {
   'type' => 'document_root'
 };
 $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0];
+$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1];
+$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1];
 $result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0];
+$result_trees{'split_no_copying'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[0];
 $result_trees{'split_no_copying'}{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'};
 $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'split_no_copying'}{'contents'}[1];
 $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0];

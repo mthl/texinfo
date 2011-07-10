@@ -113,7 +113,9 @@ nodes.
 In html, test 
  empty lines at the begining, 
  content ignored before setfilename, 
-for the different cases of element/no element.
+for the different cases of element/no element.  This is to be done with 
+real input files, or test_utils.pl should be changed to parse entry like 
+a file.
 In html test empty @top for title, with different cases for 
 setcontentsaftertit* and for anchors.
 

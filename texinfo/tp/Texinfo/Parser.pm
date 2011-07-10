@@ -742,9 +742,9 @@ sub _complete_line_nr($$;$$$)
   return $new_lines;
 }
 
-# entry point for text fragments
-# it does not seems to be used anywhere, so not sure it is usefull.
-# Note that it has not asociated root type a oppoed to pare_texi_line
+# entry point for text fragments.
+# Used in tests.
+# Note that it has not asociated root type a opposed to parse_texi_line
 # and parse_texi_file.
 sub parse_texi_text($$;$$$$)
 {

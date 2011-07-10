@@ -312,7 +312,7 @@ quotation continues.
 
 @end quotation
 '],
-['flushleft_flushright_in_quotation',
+['flushleft_flushright_in_quotation', # FIXME test in HTML
 '
 @quotation
 @flushleft
@@ -501,6 +501,10 @@ In float with caption.
 ['at_after_accent_command',
 '@ringaccent @@. @^@@.
 '],
+['setfilename_in_paragraph',
+'Some text
+@setfilename filename.info
+']
 );
 
 my @test_invalid = (
