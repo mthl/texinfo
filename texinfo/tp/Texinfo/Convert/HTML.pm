@@ -80,7 +80,7 @@ my %default_index_commands = %Texinfo::Common::default_index_commands;
 my %style_commands = %Texinfo::Common::style_commands;
 my %align_commands = %Texinfo::Common::align_commands;
 my %region_commands = %Texinfo::Common::region_commands;
-my %context_brace_command = %Texinfo::Common::context_brace_command;
+my %context_brace_commands = %Texinfo::Common::context_brace_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -1410,7 +1410,7 @@ sub _convert_image_command($$$$)
 
   my @extensions = @image_files_extensions;
 
-  if (defined($args->[0]->{'text'})) {
+  if (defined($args->[0]->{'text'}) and $args->[0]->{'text'} ne '') {
     my $basefile = $args->[0]->{'text'};
     my $extension;
     if (defined($args->[4]) and defined($args->[4]->{'text'})) {
@@ -6007,7 +6007,7 @@ sub _convert($$;$)
     if (exists($self->{'commands_conversion'}->{$command_name})) {
       my $result;
       my $content_formatted;
-      if (exists($context_brace_command{$command_name})) {
+      if (exists($context_brace_commands{$command_name})) {
         $self->_new_document_context($command_name);
       }
       push @{$self->{'document_context'}->[-1]->{'commands'}}, 
@@ -6136,7 +6136,7 @@ sub _convert($$;$)
         pop @{$self->{'document_context'}->[-1]->{'context'}};
       }
       pop @{$self->{'document_context'}->[-1]->{'commands'}};
-      if (exists($context_brace_command{$command_name})) {
+      if (exists($context_brace_commands{$command_name})) {
         pop @{$self->{'document_context'}};
       }
       return $result;

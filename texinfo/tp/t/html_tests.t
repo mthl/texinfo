@@ -17,6 +17,13 @@ in first column, verbatim
 @end multitable
 @end example
 '],
+['commands_in_alt',
+'@image{f--ile,,,alt @b{in b}}
+
+@example
+@image{f--ile,,,alt @b{in b}}
+@end example
+']
 );
 
 foreach my $test (@test_cases) {
