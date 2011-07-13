@@ -100,6 +100,36 @@ Horizontal space
 @end detailmenu
 @end menu
 '],
+['detailmenu_in_description',
+'
+@menu
+* Copying Conditions::          Your rights.
+@detailmenu
+* detailmenu::
+@end detailmenu
+@end menu
+'],
+['entry_after_detailmenu',
+'@node Top
+
+@menu
+@detailmenu
+* second::
+@end detailmenu
+
+Menu comment
+
+* first::
+
+@detailmenu
+* second::
+@end detailmenu
+* second::
+@end menu
+
+@node first
+@node second
+'],
 ['detailmenu_on_subnodes',
 '@node Top
 

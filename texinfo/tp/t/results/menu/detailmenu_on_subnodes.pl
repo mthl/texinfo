@@ -294,10 +294,22 @@ $result_trees{'detailmenu_on_subnodes'} = {
               'parent' => {}
             },
             {
-              'parent' => {},
-              'text' => '
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => '
 ',
-              'type' => 'empty_line'
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'preformatted'
+                }
+              ],
+              'parent' => {},
+              'type' => 'menu_comment'
             },
             {
               'cmdname' => 'detailmenu',
@@ -1390,6 +1402,8 @@ $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'
 $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
 $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'contents'}[2];
 $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1];
+$result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'contents'}[0];
+$result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[5];
 $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1];
 $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'command'} = $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[6];
 $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'detailmenu_on_subnodes'}{'contents'}[1]{'contents'}[1]{'contents'}[6];

@@ -296,7 +296,8 @@ After caption
 ';
 
 
-$result_texts{'caption_in_example'} = '
+$result_texts{'caption_in_example'} = 'float
+
 in example 
 
 

@@ -437,10 +437,6 @@ Empty
 
 
 
-
-
-
-
 ';
 
 $result_errors{'empty_quotation'} = [];

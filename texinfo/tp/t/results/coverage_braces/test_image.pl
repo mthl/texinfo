@@ -4214,6 +4214,7 @@ f@i--le..  a@<"%@  < & @ % "
 
 In text f@i--le..  a@<"%@  < & @ % " .
 
+Image, Image with commands
 f@i--le..  a@<"%@  < & @ % " 
 
 In text f@i--le..  a@<"%@  < & @ % " .

@@ -7541,21 +7541,25 @@ A ref to float without type @ref{label but no type}.
 $result_texts{'numbering_captions_listoffloats'} = 'Test floats
 ***********
 
+Text, text with a lot of features
 
 
 
 
+Text
 No label but caption and shortcaption.
 
 
 
 
+label but no type
 No type but caption and shortcaption.
 
 
 
 
 
+label but no type and no caption
 No type but label and no caption nor shortcaption.
 
 
@@ -7567,11 +7571,13 @@ No label, no type, but caption and shortcaption.
 
 
 
+label but no type 2
 Second float with no type.
 
 
 
 
+Warning, warning in top
 A warning
 
 
@@ -7586,21 +7592,26 @@ A warning
 1 A chapter
 ***********
 
+Text, text in chapter
 Text in chapter
 
 
 
+Text, float with a lot of features and no shortcaption
 
 
+the\'ore`me, theoreme
 A the\'ore`me
 
 
 
+label but no type in chapter
 float with no type.
 
 
 
 
+Warning, warning in chapter
 A warning
 
 
@@ -7611,6 +7622,7 @@ A warning
 1.1 A section
 =============
 
+Text, text in section
 
 A text in float no caption a label a type.
 
@@ -7619,9 +7631,11 @@ Unnumbered
 **********
 
 * Section within unnumbered::
+Text, unnumbered float
 unnum
 
 
+label but no type in unnumbered
 float with no type.
 
 
@@ -7632,6 +7646,7 @@ float with no type.
 =============================
 
 
+Text, Section within unnumbered float
 Section within unnumbered
 
 
@@ -7640,6 +7655,7 @@ Section within unnumbered
 ***************************
 
 * unnumbered sec::
+Text, Chapter with subsec float
 Chap
 
 
@@ -7647,10 +7663,12 @@ Chap
 unnumbered sec
 ==============
 
+Text, unnumbered sec float
 Chap
 
 
 
+label but no type in unnumbered subsec in chapter
 float with no type.
 
 
@@ -7659,6 +7677,7 @@ float with no type.
 Appendix A Appendix for float
 *****************************
 
+Text, appendix sec float
 
 Appendix
 

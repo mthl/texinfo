@@ -480,9 +480,9 @@ $result_texts{'block_commands'} = '
 in group
 
 warning
-
 in quotation
 
+a float, b float
 In float
 
 

@@ -1245,13 +1245,14 @@ top! After punc
 item! After punc
 
 quotation arg! After punc
-
 In quotation
 exdent quotation! After punc
 
+float type! After punc, float label! After punc
 In float
 
 
+float type! After punc, label with caption
 In float with caption.
 
 

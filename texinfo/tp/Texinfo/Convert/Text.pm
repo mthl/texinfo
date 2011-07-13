@@ -970,10 +970,19 @@ sub convert($;$)
                 or $root->{'cmdname'} eq 'math')) {
       return convert($root->{'args'}->[0], $options);
     # block commands
-    } elsif (($root->{'cmdname'} eq 'quotation'
-          or $root->{'cmdname'} eq 'smallquotation')) {
+    } elsif ($root->{'cmdname'} eq 'quotation'
+             or $root->{'cmdname'} eq 'smallquotation'
+             or $root->{'cmdname'} eq 'float') {
       if ($root->{'args'}) {
-        $result = convert($root->{'args'}->[0], $options) ."\n";
+        foreach my $arg (@{$root->{'args'}}) {
+          my $converted_arg = convert($arg, $options);
+          if ($converted_arg =~ /\S/) {
+            $result .= $converted_arg.", ";
+          }
+        }
+        $result =~ s/, $//;
+        chomp ($result);
+        $result .= "\n";
       }
     } elsif ($formatting_misc_commands{$root->{'cmdname'}} and $root->{'args'}) {
       if ($root->{'cmdname'} eq 'sp') {

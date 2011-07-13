@@ -751,27 +751,21 @@ a Warning.
 
 
 $result_texts{'standard_quotations'} = 'Note
-
 A Note
 
 note
-
 A note
 
 Caution
-
 Caution
 
 Important
-
 Important
 
 Tip
-
 a Tip
 
 Warning
-
 a Warning.
 ';
 

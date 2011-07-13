@@ -436,8 +436,10 @@ In foat 2.
 ';
 
 
-$result_texts{'ref_to_float'} = 'Float
+$result_texts{'ref_to_float'} = 'Text, Label1
+Float
 
+Label2
 In foat 2.
 
 

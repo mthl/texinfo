@@ -555,6 +555,7 @@ and strong @strong{Note}.}}
 
 $result_texts{'error_in_footnote'} = '
 
+Text, label
 
 Float text1
 

@@ -1319,6 +1319,7 @@ my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
 # to avoid duplicate names, use a prefix that cannot happen in anchors
 my $target_prefix = "t_h";
+my %footnote_id_numbers;
 sub _convert_footnote_command($$$$)
 {
   my $self = shift;
@@ -1364,6 +1365,18 @@ sub _convert_footnote_command($$$$)
   if (@{$self->{'multiple_pass'}}) {
     $footid = $target_prefix.$self->{'multiple_pass'}->[-1].'_'.$footid.'_'.$foot_num;
     $docid = $target_prefix.$self->{'multiple_pass'}->[-1].'_'.$docid.'_'.$foot_num;
+  } else {
+    if (!defined($footnote_id_numbers{$footid})) {
+      $footnote_id_numbers{$footid} = $foot_num;
+    } else {
+      # This should rarely happen, except for @footnote is @copying and
+      # multiple @insertcopying...
+      # Here it is not checked that there is no clash with another anchor. 
+      # However, unless there are more than 1000 footnotes this should not 
+      # happen.
+      $footid .= '_'.$foot_num;
+      $docid .= '_'.$foot_num;
+    }
   }
 
   $foot_lines .= '<h3>' .
@@ -2925,7 +2938,7 @@ sub _convert_printindex_command($$$$)
          if ($associated_command_href);
        $entries_text .= "</td></tr>\n";
     }
-    # a letter and associated indes entries
+    # a letter and associated indice entries
     $result .= '<tr><th>' . 
     "<a name=\"$letter_id{$letter}\">".$self->xml_protect_text($letter).'</a>'
         .  "</th><td></td><td></td></tr>\n" . $entries_text .
@@ -3398,7 +3411,7 @@ sub _convert_before_item_type($$$$)
     $content =~ s/^\s*//;
     $content =~ s/\s*$//;
 
-    return '<tr><td>'.$content.'</tr></td>'."\n";
+    return '<tr><td>'.$content.'</td></tr>'."\n";
   }
 }
 
@@ -3736,6 +3749,7 @@ sub _initialize($)
   $foot_num = 0;
   $foot_lines = '';
   %formatted_index_entries = ();
+  %footnote_id_numbers = ();
 
   %{$self->{'css_map'}} = %css_map;
 
@@ -3782,7 +3796,7 @@ sub _initialize($)
           = $Texinfo::Config::commands_conversion{$command};
     } else {
       if (!$self->get_conf('SHOW_MENU') 
-           and $command eq 'menu' or $command eq 'detailmenu') {
+           and ($command eq 'menu' or $command eq 'detailmenu')) {
         $self->{'commands_conversion'}->{$command} = undef;
       } elsif (exists($default_commands_conversion{$command})) {
         $self->{'commands_conversion'}->{$command}
@@ -4004,7 +4018,7 @@ sub _prepare_css($)
       $css_file_fh = \*STDIN;
       $css_file = '-';
     } else {
-      $css_file = locate_include_file ($file);
+      $css_file = $self->Texinfo::Common::locate_include_file ($file);
       unless (defined($css_file)) {
         $self->document_warn (sprintf(
                $self->__("css file %s not found"), $file));
@@ -4746,9 +4760,10 @@ sub _prepare_footnotes($)
   my $self = shift;
 
   if ($self->{'extra'}->{'footnote'}) {
-    my $nr = 0;
+    my $footnote_nr = 0;
     foreach my $footnote (@{$self->{'extra'}->{'footnote'}}) {
-      $nr++;
+      $footnote_nr++;
+      my $nr = $footnote_nr;
       my $footid = $footid_base.$nr;
       my $docid = $docid_base.$nr;
       while ($self->{'ids'}->{$docid} or $self->{'ids'}->{$footid}) {
@@ -4763,7 +4778,7 @@ sub _prepare_footnotes($)
       $self->{'targets'}->{$footnote} = { 'id' => $docid,
                                           'target' => $footid,
                                         };
-      print STDERR "Enter footnote $footnote: id $docid, target $footid\n"
+      print STDERR "Enter footnote $footnote: id $docid, target $footid, nr $footnote_nr\n"
        .Texinfo::Convert::Texinfo::convert($footnote)."\n"
         if ($self->get_conf('DEBUG'));
     }

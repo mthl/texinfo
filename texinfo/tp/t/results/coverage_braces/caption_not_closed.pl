@@ -242,7 +242,8 @@ as much as possible is closed in order to find the @@float beginning.
 ';
 
 
-$result_texts{'caption_not_closed'} = '
+$result_texts{'caption_not_closed'} = 'Text
+
 
 ';
 

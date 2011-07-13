@@ -643,8 +643,10 @@ no label caption
 
 
 $result_texts{'empty_listoffloats_with_floats'} = '
+label1
 Label no caption.
 
+label2
 Label and caption.
 
 

@@ -244,6 +244,7 @@ in float
 
 
 $result_texts{'float_in_style_command'} = '
+A, B
 in float
 
 ';

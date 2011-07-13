@@ -4849,6 +4849,7 @@ A list of floats at the beginning.
 After the listoffloats.
 * chapter::
 
+Text, text with a lot of features
 An example of float ...
 
 
@@ -4877,6 +4878,7 @@ TeX and te\'i^an_url and it is @verb  a word !@ AE.
 1 A chapter
 ***********
 
+Text, float with a lot of features and no shortcaption
 
 Float text of a float with a lot of features.
 

@@ -787,8 +787,11 @@ $result_texts{'double_node_anchor_float'} = '
 
 
 
+Text, node1
 
+Text, anchor1
 
+Text, float1
 
 ';
 

@@ -3276,7 +3276,6 @@ end menu
 
 $result_texts{'line_passed_and_formats'} = '
 special
-
 Quotation special.
 Nested quotation sdflkmsfdlkmfsdqmlkfsdq mlfdsqlkmfdsqmlkfdsq klm fsqdlkmfdsq
 fdsfsdqmlkfsqd m lqlkmf qskmlfq sklm fqds

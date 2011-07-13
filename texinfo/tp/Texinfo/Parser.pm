@@ -1412,6 +1412,10 @@ sub _close_current($$$;$)
       if ($current->{'type'} eq 'menu_comment') {
         #print STDERR "Closing MENU_COMMENT when closing\n";
         pop @{$self->{'context_stack'}};
+        # close empty menu_comment
+        if (!@{$current->{'contents'}}) {
+          pop @{$current->{'parent'}->{'contents'}};
+        }
       }
       $current = $current->{'parent'} if ($current->{'parent'});
     }
@@ -2711,6 +2715,16 @@ sub _end_line($$$)
             print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'debug'});
           }
           push @{$closed_command->{'contents'}}, $end;
+
+          # closing a menu command, but still in a menu. Open a menu_comment
+          if ($menu_commands{$closed_command->{'cmdname'}} 
+              and $self->{'context_stack'}->[-1] eq 'menu') {
+            push @{$current->{'contents'}}, {'type' => 'menu_comment',
+                                             'parent' => $current,
+                                             'contents' => [] };
+            $current = $current->{'contents'}->[-1];
+            push @{$self->{'context_stack'}}, 'preformatted';
+          }
         }
         $current = $self->_begin_preformatted($current);
       }
@@ -3319,7 +3333,9 @@ sub _parse_texi($;$)
       } elsif ($line =~ /^\*/ and $current->{'type'}
                 and (($current->{'type'} eq 'preformatted'
                       and $current->{'parent'}->{'type'} 
-                      and $current->{'parent'}->{'type'} eq 'menu_comment')
+                      and ($current->{'parent'}->{'type'} eq 'menu_comment'
+                           # FIXME does menu_entry_description here work as intended?
+                           or $current->{'parent'}->{'type'} eq 'menu_entry_description'))
                     or $current->{'type'} eq 'menu_entry_description')
                 and @{$current->{'contents'}} 
                 and $current->{'contents'}->[-1]->{'type'}
@@ -3877,8 +3893,10 @@ sub _parse_texi($;$)
             if ($menu_commands{$command} and $current->{'type'} 
                 and (($current->{'type'} eq 'preformatted'
                      and $current->{'parent'}->{'type'} 
-                     and $current->{'parent'}->{'type'} eq 'menu_comment')
-                   or ($current->{'type'} eq 'menu_comment'))) {
+                     and ($current->{'parent'}->{'type'} eq 'menu_comment'
+                          or $current->{'parent'}->{'type'} eq 'menu_entry_description'))
+                   or ($current->{'type'} eq 'menu_comment' 
+                       or $current->{'type'} eq 'menu_entry_description'))) {
 
               my $menu;
               if ($current->{'type'} eq 'preformatted') {
@@ -3895,8 +3913,12 @@ sub _parse_texi($;$)
                 pop @{$menu->{'contents'}}
                   if (!@{$current->{'contents'}});
               }
-              #print STDERR "new menu cmd $command close MENU_COMMENT\n";
-              pop @{$self->{'context_stack'}};
+              if ($menu->{'type'} and $menu->{'type'} eq 'menu_entry') {
+                $menu = $menu->{'parent'};
+              } else {
+                #print STDERR "new menu cmd $command close MENU_COMMENT\n";
+                pop @{$self->{'context_stack'}};
+              }
 
               $current = $menu;
             }

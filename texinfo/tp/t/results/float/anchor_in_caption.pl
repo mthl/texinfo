@@ -376,6 +376,7 @@ In float.
 
 $result_texts{'anchor_in_caption'} = '
 
+fl, label
 In float.
 
 ';

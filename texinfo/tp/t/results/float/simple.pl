@@ -208,7 +208,8 @@ In float.
 @end float';
 
 
-$result_texts{'simple'} = '
+$result_texts{'simple'} = 'Type, Label
+
 In float.
 
 ';

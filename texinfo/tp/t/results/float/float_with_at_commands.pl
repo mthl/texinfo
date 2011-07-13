@@ -455,7 +455,8 @@ Ceci est notre premi@`ere entr@\'ee.
 ';
 
 
-$result_texts{'float_with_at_commands'} = '
+$result_texts{'float_with_at_commands'} = 'entre\'e, premie`re entre\'e
+
 Ceci est notre premie`re entre\'e.
 
 

@@ -334,6 +334,7 @@ Float
 
 
 $result_texts{'comment_space_comand_in_float'} = '
+Text  , label  
 Float
 
 ';

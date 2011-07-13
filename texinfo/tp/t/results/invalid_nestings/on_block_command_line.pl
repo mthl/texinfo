@@ -554,7 +554,6 @@ $result_texis{'on_block_command_line'} = '@multitable {@anchor{in anchor}} @titl
 $result_texts{'on_block_command_line'} = 'in titlefont
 
 in titlefont  exdent
-
 ';
 
 $result_errors{'on_block_command_line'} = [

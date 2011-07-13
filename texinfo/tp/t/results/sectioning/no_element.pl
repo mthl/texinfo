@@ -928,6 +928,7 @@ Ref to the anchor in footnote:
 
 
 
+float anchor
 In float
 
 Ref to float

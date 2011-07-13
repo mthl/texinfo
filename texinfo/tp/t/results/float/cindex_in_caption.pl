@@ -467,6 +467,7 @@ In float.
 
 $result_texts{'cindex_in_caption'} = '
 
+fl, label
 In float.
 
 

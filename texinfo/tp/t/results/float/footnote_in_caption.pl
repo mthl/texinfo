@@ -370,6 +370,7 @@ In float.
 
 $result_texts{'footnote_in_caption'} = '
 
+fl, label
 In float.
 
 ';
