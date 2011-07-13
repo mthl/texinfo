@@ -1070,7 +1070,14 @@ sub _convert_no_arg_command($$$)
 
   if ($cmdname eq 'click' and $command->{'extra'} 
       and exists($command->{'extra'}->{'clickstyle'})) {
-    $cmdname = $command->{'extra'}->{'clickstyle'};
+    my $click_cmdname = $command->{'extra'}->{'clickstyle'};
+    if (($self->in_preformatted() or $self->in_math()
+         and $self->{'commands_formatting'}->{'preformatted'}->{$click_cmdname})
+        or ($self->in_string() and 
+            $self->{'commands_formatting'}->{'string'}->{$click_cmdname})
+        or ($self->{'commands_formatting'}->{'normal'}->{$click_cmdname})) {
+      $cmdname = $click_cmdname;
+    }
   }
 
   my $result;
