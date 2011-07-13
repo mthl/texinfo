@@ -3189,6 +3189,7 @@ sub _convert_text($$$)
   my $command = shift;
   my $text = shift;
 
+  return $text if ($type and $type eq 'raw');
   $text = uc($text) if ($self->in_upper_case());
   $text = $self->xml_protect_text($text);
   if ($self->get_conf('ENABLE_ENCODING') and 

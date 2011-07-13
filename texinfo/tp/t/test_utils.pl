@@ -125,9 +125,9 @@ sub new_test ($;$$$)
   my $name = shift;
   my $generate = shift;
   my $debug = shift;
-  my $formats = shift;
+  my $test_formats = shift;
   my $test = {'name' => $name, 'generate' => $generate, 
-              'DEBUG' => $debug, 'test_formats' => $formats};
+              'DEBUG' => $debug, 'test_formats' => $test_formats};
   
   if ($generate) {
     mkdir "t/results/$name" if (! -d "t/results/$name");
@@ -199,13 +199,19 @@ foreach my $avoided_key(@avoided_keys_elements) {
 sub filter_elements_keys {[grep {!$avoided_keys_elements{$_}}
    ( sort keys %{$_[0]} )] }
 
-sub convert_to_plaintext($$$;$)
+sub convert_to_plaintext($$$$$;$)
 {
   my $self = shift;
+  my $format = shift;
   my $tree = shift;
   my $parser = shift;
+  my $parser_options = shift;
   my $converter_options = shift;
-  $converter_options = {} if (!defined($converter_options));
+  if (!defined($converter_options)) {
+    $converter_options = {};
+    $converter_options->{'expanded_formats'} = [$format]
+      if (!defined($parser_options->{'expanded_formats'}));
+  }
   my $converter = 
      Texinfo::Convert::Plaintext->converter({'DEBUG' => $self->{'DEBUG'},
                                              'parser' => $parser,
@@ -216,13 +222,20 @@ sub convert_to_plaintext($$$;$)
   return ($errors, $result);
 }
 
-sub convert_to_info($$$;$)
+sub convert_to_info($$$$$;$)
 {
   my $self = shift;
+  my $format = shift;
   my $tree = shift;
   my $parser = shift;
+  my $parser_options = shift;
   my $converter_options = shift;
-  $converter_options = {} if (!defined($converter_options));
+  if (!defined($converter_options)) {
+    $converter_options = {};
+    # FIXME plaintext too?
+    $converter_options->{'expanded_formats'} = [$format]
+      if (!defined($parser_options->{'expanded_formats'}));
+  }
   my $converter = 
      Texinfo::Convert::Info->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
@@ -235,13 +248,19 @@ sub convert_to_info($$$;$)
   return ($errors, $result);
 }
 
-sub convert_to_html($$$;$)
+sub convert_to_html($$$$$;$)
 {
   my $self = shift;
+  my $format = shift;
   my $tree = shift;
   my $parser = shift;
+  my $parser_options = shift;
   my $converter_options = shift;
-  $converter_options = {} if (!defined($converter_options));
+  if (!defined($converter_options)) {
+    $converter_options = {};
+    $converter_options->{'expanded_formats'} = [$format]
+      if (!defined($parser_options->{'expanded_formats'}));
+  }
   my $converter =
      Texinfo::Convert::HTML->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
@@ -254,11 +273,13 @@ sub convert_to_html($$$;$)
   return ($errors, $result);
 }
 
-sub debugcount($$$;$)
+sub debugcount($$$$$;$)
 {
   my $self = shift;
+  my $format = shift;
   my $tree = shift;
   my $parser = shift;
+  my $parser_options = shift;
   my $converter_options = shift;
   $converter_options = {} if (!defined($converter_options));
   my $converter =
@@ -277,7 +298,7 @@ sub test($$)
   my $test_case = shift;
 
   my $parser_options = {};
-  my $converter_options = {};
+  my $converter_options = undef;
   my ($test_name, $test_text);
 
   my $tests_count = 0;
@@ -357,7 +378,8 @@ sub test($$)
   foreach my $format (@tested_formats) {
     if (defined($formats{$format})) {
       ($converted_errors{$format}, $converted{$format}) 
-           = &{$formats{$format}}($self, $result, $parser, $converter_options);
+           = &{$formats{$format}}($self, $format, $result, $parser, 
+                                  $parser_options, $converter_options);
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       #print STDERR "$format: \n$converted{$format}";
     }

@@ -23,7 +23,12 @@ in first column, verbatim
 @example
 @image{f--ile,,,alt @b{in b}}
 @end example
-']
+'],
+['raw_html',
+'@html
+<i>
+@end html
+'],
 );
 
 foreach my $test (@test_cases) {
