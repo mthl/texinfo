@@ -1204,17 +1204,28 @@ sub _end_preformatted ($$$)
 }
 
 # put everything after the last @item/@itemx in an item_table type container.
-sub _gather_previous_item($)
+sub _gather_previous_item($;$)
 {
   my $current = shift;
+  my $next_command = shift;
 
-  my $table_item = {'type' => 'table_item',
+  #print STDERR "GATHER "._print_current($current)."\n";
+  my $type;
+  # if before an itemx, the type is different since there should not be 
+  # real content, so it may be treated differently
+  if ($next_command and $next_command eq 'itemx') {
+    $type = 'inter_item';
+  } else {
+    $type = 'table_item';
+  }
+  my $table_item = {'type' => $type,
                     'parent' => $current,
                     'contents' => []};
   # remove everything that is not an @item/@items or before_item to 
   # put it in the table_item, starting from the end.
   my $contents_count = scalar(@{$current->{'contents'}});
   for (my $i = 0; $i < $contents_count; $i++) {
+    #print STDERR "_gather_previous_item $i on $contents_count: "._print_current($current->{'contents'}->[-1])."\n";
     if (($current->{'contents'}->[-1]->{'type'} 
          and $current->{'contents'}->[-1]->{'type'} eq 'before_item')
         or ($current->{'contents'}->[-1]->{'cmdname'} 
@@ -1230,6 +1241,42 @@ sub _gather_previous_item($)
   # FIXME keep table_item with only comments and/or empty lines?
   if (scalar(@{$table_item->{'contents'}})) {
     push @{$current->{'contents'}}, $table_item;
+  }
+}
+
+sub _gather_def_item($;$)
+{
+  my $current = shift;
+  my $next_command = shift;
+  my $type;
+  # means that we are between a @def*x and a @def
+  if ($next_command) {
+    $type = 'inter_def_item';
+  } else {
+    $type = 'def_item';
+  }
+
+  #print STDERR "_gather_def_item in "._print_current($current)."\n";
+  my $def_item = {'type' => $type,
+                  'parent' => $current,
+                  'contents' => []};
+  # remove everything that is not a def_line to put it in the def_item,
+  # starting from the end.
+  my $contents_count = scalar(@{$current->{'contents'}});
+  for (my $i = 0; $i < $contents_count; $i++) {
+    #print STDERR "_gather_def_item $type ($i on $contents_count) "._print_current($current->{'contents'}->[-1])."\n";
+    if ($current->{'contents'}->[-1]->{'type'} 
+        and $current->{'contents'}->[-1]->{'type'} eq 'def_line') {
+     #   and !$current->{'contents'}->[-1]->{'extra'}->{'not_after_command'}) {
+      last;
+    } else {
+      my $item_content = pop @{$current->{'contents'}};
+      $item_content->{'parent'} = $def_item;
+      unshift @{$def_item->{'contents'}}, $item_content;
+    }
+  }
+  if (scalar(@{$def_item->{'contents'}})) {
+    push @{$current->{'contents'}}, $def_item;
   }
 }
 
@@ -1260,26 +1307,7 @@ sub _close_command_cleanup($$$) {
     #  die "BUG $current->{'cmdname'}: end don't match end_command "._print_current($current) ."end: "._print_current($end) ."end_command "._print_current($current->{'extra'}->{'end_command'})
     #    if ($end ne $current->{'extra'}->{'end_command'});
     #}
-    my $def_item = {'type' => 'def_item',
-                    'parent' => $current,
-                    'contents' => []};
-    # remove everything that is not a def_line to put it in the def_item,
-    # starting from the end.
-    my $contents_count = scalar(@{$current->{'contents'}});
-    for (my $i = 0; $i < $contents_count; $i++) {
-      if ($current->{'contents'}->[-1]->{'type'} 
-          and $current->{'contents'}->[-1]->{'type'} eq 'def_line'
-          and !$current->{'contents'}->[-1]->{'extra'}->{'not_after_command'}) {
-        last;
-      } else {
-        my $item_content = pop @{$current->{'contents'}};
-        $item_content->{'parent'} = $def_item;
-        unshift @{$def_item->{'contents'}}, $item_content;
-      }
-    }
-    if (scalar(@{$def_item->{'contents'}})) {
-      push @{$current->{'contents'}}, $def_item;
-    }
+    _gather_def_item($current);
   }
 
   if ($item_line_commands{$current->{'cmdname'}}) {
@@ -3676,7 +3704,7 @@ sub _parse_texi($;$)
                 if ($command eq 'item' or $command eq 'itemx') {
                   print STDERR "ITEM_LINE\n" if ($self->{'DEBUG'});
                   $current = $parent;
-                  _gather_previous_item($current) if ($command eq 'item');
+                  _gather_previous_item($current, $command);
                   $misc = { 'cmdname' => $command, 'parent' => $current };
                   push @{$current->{'contents'}}, $misc;
                   $line_arg = 1;
@@ -3772,6 +3800,12 @@ sub _parse_texi($;$)
                 $current->{'contents'}->[-1]->{'extra'} = 
                    {'def_command' => $base_command,
                     'original_def_cmdname' => $command};
+                if ($current->{'cmdname'} 
+                    and $current->{'cmdname'} eq $base_command) {
+                  pop @{$current->{'contents'}};
+                  _gather_def_item($current, $command);
+                  push @{$current->{'contents'}}, $misc; 
+                }
                 if (!$current->{'cmdname'} 
                      or $current->{'cmdname'} ne $base_command
                      or $after_paragraph) {

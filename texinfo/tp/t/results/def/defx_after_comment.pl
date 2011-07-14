@@ -125,16 +125,22 @@ $result_trees{'defx_after_comment'} = {
           'type' => 'def_line'
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'parent' => {},
-              'text' => ' comment
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment
 ',
-              'type' => 'misc_arg'
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'parent' => {}
             }
           ],
-          'cmdname' => 'c',
-          'parent' => {}
+          'parent' => {},
+          'type' => 'inter_def_item'
         },
         {
           'args' => [
@@ -289,7 +295,8 @@ $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_
 $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[0];
 $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_comment'}{'contents'}[0];
-$result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[1];
+$result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[1];
 $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'defx_after_comment'}{'contents'}[0];
 $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[2];
 $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_comment'}{'contents'}[0]{'contents'}[2]{'args'}[0];

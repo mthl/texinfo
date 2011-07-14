@@ -162,6 +162,12 @@ sub commands_stack($)
   return @{$self->{'document_context'}->[-1]->{'commands'}};
 }
 
+sub preformatted_classes_stack($)
+{
+  my $self = shift;
+  return @{$self->{'document_context'}->[-1]->{'preformatted_classes'}};
+}
+
 sub align($)
 {  
   my $self = shift;
@@ -3131,16 +3137,23 @@ sub _convert_preformatted_type($$$$)
 
   return '' if ($content eq '');
 
-  while ($current->{'parent'}) {
-    $current = $current->{'parent'};
-    if ($current->{'cmdname'} and $pre_class_commands{$current->{'cmdname'}}) {
-      $pre_class = $pre_class_commands{$current->{'cmdname'}};
-      last;
-    } elsif ($current->{'type'} and $pre_class_types{$current->{'type'}}) {
-      $pre_class = $pre_class_types{$current->{'type'}};
-      last;
-    }
+  my @pre_classes = $self->preformatted_classes_stack();
+  foreach my $class (@pre_classes) {
+    $pre_class = $class unless ($pre_class 
+                           and $preformatted_code_commands{$pre_class}
+                           and !($preformatted_code_commands{$class}
+                                 or $class eq 'menu-preformatted'));
   }
+  #while ($current->{'parent'}) {
+  #  $current = $current->{'parent'};
+  #  if ($current->{'cmdname'} and $pre_class_commands{$current->{'cmdname'}}) {
+  #    $pre_class = $pre_class_commands{$current->{'cmdname'}};
+  #    last;
+  #  } elsif ($current->{'type'} and $pre_class_types{$current->{'type'}}) {
+  #    $pre_class = $pre_class_types{$current->{'type'}};
+  #    last;
+  #  }
+  #}
 
   if ($self->top_format() eq 'multitable') {
     $content =~ s/^\s*//;
@@ -3512,6 +3525,7 @@ sub _convert_def_item_type($$$$)
 }
 
 $default_types_conversion{'def_item'} = \&_convert_def_item_type;
+$default_types_conversion{'inter_def_item'} = \&_convert_def_item_type;
 
 sub _convert_def_command($$$$) {
   my $self = shift;
@@ -3544,6 +3558,7 @@ sub _convert_table_item_type($$$$)
 }
 
 $default_types_conversion{'table_item'} = \&_convert_table_item_type;
+$default_types_conversion{'inter_item'} = \&_convert_table_item_type;
 
 # This type is the only one present if there are no elements.  It is 
 # therefore used to do the formatting of the element in case there are no 
@@ -6048,8 +6063,8 @@ sub _convert($$;$)
       push @{$self->{'document_context'}->[-1]->{'commands'}}, 
         $root->{'cmdname'}; 
       if (exists($format_context_commands{$command_name})) {
-        push @{$self->{'document_context'}->[-1]->{'context'}}, {'cmdname' => $command_name,
-                                     'align' => ['raggedright']};
+        push @{$self->{'document_context'}->[-1]->{'context'}}, 
+                       {'cmdname' => $command_name, 'align' => ['raggedright']};
       }
       if (exists($block_commands{$command_name})) {
         push @{$self->{'document_context'}->[-1]->{'formats'}}, $command_name;
@@ -6057,6 +6072,10 @@ sub _convert($$;$)
       if ($preformatted_commands_context{$command_name}
           or $command_name eq 'menu' and $self->get_conf('SIMPLE_MENU')) {
         push @{$self->{'document_context'}->[-1]->{'preformatted_context'}}, $command_name;
+      }
+      if ($pre_class_commands{$command_name}) {
+        push @{$self->{'document_context'}->[-1]->{'preformatted_classes'}},
+          $pre_class_commands{$command_name};
       }
       if ($command_name eq 'verb' or $command_name eq 'verbatim') {
         $self->{'document_context'}->[-1]->{'context'}->[-1]->{'verbatim'}++;
@@ -6155,6 +6174,9 @@ sub _convert($$;$)
           or $command_name eq 'menu' and $self->get_conf('SIMPLE_MENU')) {
         pop @{$self->{'document_context'}->[-1]->{'preformatted_context'}};
       }
+      if ($pre_class_commands{$command_name}) {
+        pop @{$self->{'document_context'}->[-1]->{'preformatted_classes'}};
+      }
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
@@ -6205,6 +6227,9 @@ sub _convert($$;$)
       $self->{'current_filename'} = $root->{'filename'};
     } elsif ($root->{'type'} eq 'element') { 
       $self->{'current_element'} = $root;
+    } elsif ($pre_class_types{$root->{'type'}}) {
+      push @{$self->{'document_context'}->[-1]->{'preformatted_classes'}},
+        $pre_class_types{$root->{'type'}};
     }
     my $content_formatted;
     if ($root->{'type'} eq 'definfoenclose_command') {
@@ -6262,6 +6287,8 @@ sub _convert($$;$)
       delete $self->{'current_filename'};
     } elsif ($root->{'type'} eq 'element') { 
       delete $self->{'current_element'};
+    } elsif ($pre_class_types{$root->{'type'}}) {
+      pop @{$self->{'document_context'}->[-1]->{'preformatted_classes'}};
     }
     print STDERR "DO type ($root->{'type'}) => `$result'\n"
       if ($self->get_conf('DEBUG'));

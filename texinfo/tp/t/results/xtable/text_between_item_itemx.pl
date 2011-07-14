@@ -75,13 +75,19 @@ $result_trees{'text_between_item_itemx'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'text
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'text
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'paragraph'
             }
           ],
           'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'inter_item'
         },
         {
           'args' => [
@@ -190,6 +196,7 @@ $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[0]{'args'}[0
 $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[0];
 $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_between_item_itemx'}{'contents'}[0];
+$result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[1];
 $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_between_item_itemx'}{'contents'}[0];
 $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'text_between_item_itemx'}{'contents'}[0]{'contents'}[2];
