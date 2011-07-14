@@ -5305,4 +5305,183 @@ samp: ```simple-double--three---four----\'\' `simple\' quotedblleft: ``\'
 
 ';
 
+
+$result_converted{'html'}->{'codequoteundirected_codequotebacktick'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+code: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+asis: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+strong: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+kbd: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+samp: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+
+@codequoteundirected on
+@codequotebacktick on
+``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+code: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+asis: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+strong: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+kbd: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+samp: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+
+@codequoteundirected off
+@codequotebacktick off
+``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+code: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+asis: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+strong: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+kbd: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+samp: ``simple-double-three-four-\'\' `simple\' quotedblleft: `` 
+
+ -->
+<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>test quotes</title>
+
+<meta name="description" content="test quotes">
+<meta name="keywords" content="test quotes">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<a name="test-quotes"></a>
+<h1 class="top">test quotes</h1>
+
+<p>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo; <br>
+code: <code>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</code> <br>
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo; <br>
+strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo;</strong> <br>
+kbd: <kbd>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</kbd> <br>
+samp: &lsquo;<samp>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</samp>&rsquo; <br>
+</p>
+<div class="example">
+<pre class="example">@codequoteundirected on
+@codequotebacktick on
+</pre></div>
+<p>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo; <br>
+code: <code>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</code> <br>
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo; <br>
+strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo;</strong> <br>
+kbd: <kbd>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</kbd> <br>
+samp: &lsquo;<samp>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</samp>&rsquo; <br>
+</p>
+<div class="example">
+<pre class="example">@codequoteundirected off
+@codequotebacktick off
+</pre></div>
+<p>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo; <br>
+code: <code>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</code> <br>
+asis: &ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo; <br>
+strong: <strong>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo;</strong> <br>
+kbd: <kbd>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</kbd> <br>
+samp: &lsquo;<samp>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</samp>&rsquo; <br>
+</p>
+<div class="example">
+<pre class="example">``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo; 
+
+code: <code>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</code> 
+
+asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo; 
+
+strong: <strong>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</strong> 
+
+kbd: <kbd>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</kbd> 
+
+samp: &lsquo;<samp>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</samp>&rsquo; 
+
+
+</pre><div class="example">
+<pre class="example">@codequoteundirected on
+@codequotebacktick on
+</pre></div>
+<pre class="example">``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo; 
+
+code: <code>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</code> 
+
+asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo; 
+
+strong: <strong>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</strong> 
+
+kbd: <kbd>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</kbd> 
+
+samp: &lsquo;<samp>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</samp>&rsquo; 
+
+
+</pre><div class="example">
+<pre class="example">@codequoteundirected off
+@codequotebacktick off
+</pre></div>
+<pre class="example">``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo; 
+
+code: <code>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</code> 
+
+asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo; 
+
+strong: <strong>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</strong> 
+
+kbd: <kbd>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</kbd> 
+
+samp: &lsquo;<samp>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</samp>&rsquo; 
+
+</pre></div>
+
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
 1;

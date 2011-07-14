@@ -2703,15 +2703,18 @@ sub _convert_xref_commands($$$$)
   } else {
     my $node_entry = {};
     $node_entry->{'node_content'} = $root->{'extra'}->{'node_argument'}->{'node_content'}
-      if ($root->{'extra'}->{'node_argument'}->{'node_content'});
+      if ($root->{'extra'}->{'node_argument'}
+          and $root->{'extra'}->{'node_argument'}->{'node_content'});
     $node_entry->{'normalized'} = $root->{'extra'}->{'node_argument'}->{'normalized'} 
-      if (exists($root->{'extra'}->{'node_argument'}->{'normalized'}));
+      if ($root->{'extra'}->{'node_argument'} 
+          and exists($root->{'extra'}->{'node_argument'}->{'normalized'}));
 
 
     # file argument takes precedence over the file in the node (file)node entry
     if (defined($file_arg_tree)) {
       $node_entry->{'manual_content'} = $file_arg_tree->{'contents'};
-    } elsif ($root->{'extra'}->{'node_argument'}->{'manual_content'}) {
+    } elsif ($root->{'extra'}->{'node_argument'}
+             and $root->{'extra'}->{'node_argument'}->{'manual_content'}) {
       $node_entry->{'manual_content'} 
         = $root->{'extra'}->{'node_argument'}->{'manual_content'};
     }
@@ -5695,13 +5698,13 @@ sub output($$)
     $self->{'current_filename'} = $self->{'output_filename'};
     my $header = &{$self->{'begin_file'}}($self, $self->{'output_filename'}, undef);
     $output .= _output_text($header, $fh);
-    $output .= _output_text($self->_print_title(), $fh);
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
         my $element_text = $self->_convert($element);
         $output .= _output_text($element_text, $fh);
       }
     } else {
+      $output .= _output_text($self->_print_title(), $fh);
       $output .= _output_text($self->_convert($root), $fh);
     }
     $output .= _output_text(&{$self->{'end_file'}}($self), $fh);

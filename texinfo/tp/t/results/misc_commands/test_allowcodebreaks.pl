@@ -2704,4 +2704,115 @@ ddd\' `9aaa-bbb rrr_vv\' `fff-- --- minus-b aa-tte\'ff_gg aar-oman anc-hor\'
      `in-example\'
 ';
 
+
+$result_converted{'html'}->{'test_allowcodebreaks'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+
+
+<p>Before first allowcodebreaks
+Out of code &mdash; out-of-code.
+<code>1aaa</code> <code>2aaa-</code> <code>-3bbb</code> <code>4aaa-bbb</code> 
+<code> 5aaa-bb</code> <code>6aaa-bb </code> <code>ccc 7aaa-bbb</code> <code>ccc 8aaa-bbb ddd</code>
+<code>9aaa-bbb rrr_vv</code>
+&lsquo;<samp>fff-- --- minus-b aa-tt&eacute;ff_gg aa<span class="roman">r-oman</span> 
+anc-hor<a name="A-node0"></a></samp>&rsquo;
+</p>
+<div class="example">
+<pre class="example"><code>in-example</code>
+</pre></div>
+
+<p>After false
+Out of code &mdash; out-of-code.
+<code>1aaa</code> <code><span class="nocodebreak">2aaa-</span></code> <code><span class="nocodebreak">-3bbb</span></code> <code><span class="nocodebreak">4aaa-bbb</span></code> 
+<code> <span class="nocodebreak">5aaa-bb</span></code> <code><span class="nocodebreak">6aaa-bb</span> </code> <code>ccc <span class="nocodebreak">7aaa-bbb</span></code> <code>ccc <span class="nocodebreak">8aaa-bbb</span> ddd</code>
+<code><span class="nocodebreak">9aaa-bbb</span> <span class="nocodebreak">rrr_vv</span></code>
+&lsquo;<samp><span class="nocodebreak">fff--</span> <span class="nocodebreak">---</span> minus-b <span class="nocodebreak">aa-tt</span>&eacute;<span class="nocodebreak">ff_gg</span> aa<span class="roman"><span class="nocodebreak">r-oman</span></span> 
+<span class="nocodebreak">anc-hor</span><a name="A-node1"></a></samp>&rsquo;
+</p>
+<div class="example">
+<pre class="example"><code>in-example</code>
+</pre></div>
+
+<p>In w:
+Out&nbsp;of&nbsp;code&nbsp;&mdash;&nbsp;<span class="nolinebreak">out-of-code.</span>&nbsp;<code>1aaa</code>&nbsp;<code><span class="nocodebreak">2aaa-</span></code>&nbsp;<code><span class="nocodebreak">-3bbb</span></code>&nbsp;<code><span class="nocodebreak">4aaa-bbb</span></code>&nbsp;&nbsp;<code>&nbsp;<span class="nocodebreak">5aaa-bb</span></code>&nbsp;<code><span class="nocodebreak">6aaa-bb</span>&nbsp;</code>&nbsp;<code>ccc&nbsp;<span class="nocodebreak">7aaa-bbb</span></code>&nbsp;<code>ccc&nbsp;<span class="nocodebreak">8aaa-bbb</span>&nbsp;ddd</code>&nbsp;<code><span class="nocodebreak">9aaa-bbb</span>&nbsp;<span class="nocodebreak">rrr_vv</span></code>&nbsp;&lsquo;<samp><span class="nocodebreak">fff--</span>&nbsp;<span class="nocodebreak">---</span>&nbsp;minus-b&nbsp;<span class="nocodebreak">aa-tt</span>&eacute;<span class="nocodebreak">ff_gg</span>&nbsp;aa<span class="roman"><span class="nocodebreak">r-oman</span></span>&nbsp;&nbsp;<span class="nocodebreak">anc-hor</span><a name="A-nodew"></a></samp>&rsquo;&nbsp;
+</p>
+<div class="example">
+<pre class="example"><code>in-example</code>
+</pre></div>
+
+<p>After true
+Out of code &mdash; out-of-code.
+<code>1aaa</code> <code>2aaa-</code> <code>-3bbb</code> <code>4aaa-bbb</code> 
+<code> 5aaa-bb</code> <code>6aaa-bb </code> <code>ccc 7aaa-bbb</code> <code>ccc 8aaa-bbb ddd</code>
+<code>9aaa-bbb rrr_vv</code>
+&lsquo;<samp>fff-- --- minus-b aa-tt&eacute;ff_gg aa<span class="roman">r-oman</span> 
+anc-hor<a name="A-node2"></a></samp>&rsquo;
+</p>
+<div class="example">
+<pre class="example"><code>in-example</code>
+</pre></div>
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'test_allowcodebreaks'} = [
+  {
+    'error_line' => 'warning: Must specify a title with a title command or @top
+',
+    'text' => 'Must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
+
 1;
