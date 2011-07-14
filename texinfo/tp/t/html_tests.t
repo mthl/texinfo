@@ -29,6 +29,15 @@ in first column, verbatim
 <i>
 @end html
 '],
+['xml_protected_in_verb',
+'@verbatim
+<a>
+@end verbatim
+
+@verb{. <i> .}.
+
+@verbatiminclude file_with_xml_chars.texi
+'],
 );
 
 foreach my $test (@test_cases) {

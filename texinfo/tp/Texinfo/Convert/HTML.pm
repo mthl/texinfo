@@ -132,6 +132,12 @@ sub in_string($)
   return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'};
 }
 
+sub in_verbatim($)
+{
+  my $self = shift;
+  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'verbatim'};
+}
+
 sub paragraph_number($)
 {
   my $self = shift;
@@ -3196,6 +3202,10 @@ sub _convert_text($$$)
   my $command = shift;
   my $text = shift;
 
+  # do that first because in verb and verbatim, type is 'raw'
+  if ($self->in_verbatim()) {
+    return $self->xml_protect_text($text);
+  }
   return $text if ($type and $type eq 'raw');
   $text = uc($text) if ($self->in_upper_case());
   $text = $self->xml_protect_text($text);
@@ -5941,6 +5951,7 @@ sub _convert($$;$)
   }
 
   if ($self->get_conf('DEBUG')) {
+    $explanation = 'NO EXPLANATION' if (!defined($explanation));
     print STDERR "ROOT($explanation):$root (".join('|',@{$self->{'document_context'}->[-1]->{'context'}})."), ->";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
@@ -6045,6 +6056,9 @@ sub _convert($$;$)
       if ($preformatted_commands_context{$command_name}
           or $command_name eq 'menu' and $self->get_conf('SIMPLE_MENU')) {
         push @{$self->{'document_context'}->[-1]->{'preformatted_context'}}, $command_name;
+      }
+      if ($command_name eq 'verb' or $command_name eq 'verbatim') {
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'verbatim'}++;
       }
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
@@ -6151,6 +6165,9 @@ sub _convert($$;$)
         $self->{'document_context'}->[-1]->{'context'}->[-1]->{'space_protected'}--;
       } elsif ($align_commands{$command_name}) {
         pop @{$self->{'document_context'}->[-1]->{'context'}->[-1]->{'align'}};
+      }
+      if ($command_name eq 'verb' or $command_name eq 'verbatim') {
+        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'verbatim'}--;
       }
       if (exists($block_commands{$command_name})) {
         pop @{$self->{'document_context'}->[-1]->{'formats'}};
