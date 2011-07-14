@@ -1209,6 +1209,11 @@ sub _convert_style_command($$$$)
     #print STDERR Texinfo::Structuring::_print_current($command);
     return '';
   }
+  # handle the effect of kbdinputstyle
+  if ($cmdname eq 'kbd' and $command->{'extra'} 
+      and $command->{'extra'}->{'code'}) {
+    $cmdname = 'code';
+  }
 
   my $attribute_hash = {};
   if ($self->in_preformatted()) {
@@ -1514,7 +1519,6 @@ sub _convert_key_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #cluck "text not defined in _convert_style_command";
     #print STDERR Texinfo::Structuring::_print_current($command);
     return '';
   }
@@ -1534,7 +1538,6 @@ sub _convert_indicateurl_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #cluck "text not defined in _convert_style_command";
     #print STDERR Texinfo::Structuring::_print_current($command);
     return '';
   }
@@ -1556,7 +1559,6 @@ sub _convert_ctrl_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #cluck "text not defined in _convert_style_command";
     #print STDERR Texinfo::Structuring::_print_current($command);
     return '';
   }
@@ -1575,7 +1577,6 @@ sub _convert_titlefont_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #cluck "text not defined in _convert_style_command";
     #print STDERR Texinfo::Structuring::_print_current($command);
     return '';
   }
