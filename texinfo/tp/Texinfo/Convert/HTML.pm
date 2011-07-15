@@ -1396,8 +1396,8 @@ sub _convert_footnote_command($$$$)
       # This should rarely happen, except for @footnote is @copying and
       # multiple @insertcopying...
       # Here it is not checked that there is no clash with another anchor. 
-      # However, unless there are more than 1000 footnotes this should not 
-      # happen.
+      # However, unless there are more than 1000 footnotes this should not 
+      # happen.
       $footid .= '_'.$foot_num;
       $docid .= '_'.$foot_num;
     }
