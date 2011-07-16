@@ -185,6 +185,8 @@ also commands.
 Test character lengths and encoding.  For instance tests in 
 encodings/at_commands_in_refs_utf8.texi
 
+use test ogoutf.texi ogolat2.texi for html.
+
 Image on sectioning command line haven't their length ignored correctly.
 Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
 

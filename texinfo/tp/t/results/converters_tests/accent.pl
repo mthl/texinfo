@@ -1218,6 +1218,128 @@ $result_trees{'accent'} = {
           'contents' => [
             {
               'parent' => {},
+              'text' => 'should be a; : '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'a'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'ogonek',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 42,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => 'a',
+                  'type' => 'space_command_arg'
+                }
+              ],
+              'cmdname' => 'ogonek',
+              'extra' => {
+                'spaces' => ' '
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '
+'
+            }
+          ],
+          'parent' => {},
+          'type' => 'paragraph'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'should be e; : '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'ogonek',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 44,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => 'e',
+                  'type' => 'space_command_arg'
+                }
+              ],
+              'cmdname' => 'ogonek',
+              'extra' => {
+                'spaces' => ' '
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '
+'
+            }
+          ],
+          'parent' => {},
+          'type' => 'paragraph'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'parent' => {},
               'text' => 'upside down: '
             },
             {
@@ -1416,7 +1538,7 @@ $result_trees{'accent'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 48,
+                'line_nr' => 52,
                 'macro' => ''
               },
               'parent' => {}
@@ -1661,7 +1783,7 @@ $result_trees{'accent'} = {
                       'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 59,
+                        'line_nr' => 63,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -1718,7 +1840,7 @@ $result_trees{'accent'} = {
                       'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 61,
+                        'line_nr' => 65,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -1775,7 +1897,7 @@ $result_trees{'accent'} = {
                       'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 63,
+                        'line_nr' => 67,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -1832,7 +1954,7 @@ $result_trees{'accent'} = {
                       'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 65,
+                        'line_nr' => 69,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -1901,7 +2023,7 @@ $result_trees{'accent'} = {
                       'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 68,
+                        'line_nr' => 72,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -1958,7 +2080,7 @@ $result_trees{'accent'} = {
                       'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 70,
+                        'line_nr' => 74,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -2015,7 +2137,7 @@ $result_trees{'accent'} = {
                       'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 72,
+                        'line_nr' => 76,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -2072,7 +2194,7 @@ $result_trees{'accent'} = {
                       'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 74,
+                        'line_nr' => 78,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -2321,6 +2443,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[4]{'parent'} 
 $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[38]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39];
@@ -2330,6 +2453,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[4]{'parent'} 
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[40]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41];
@@ -2345,22 +2469,13 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[2]{'parent'} 
 $result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[5];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[5]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[6]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[7];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[7]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'contents'}[8]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[43];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[43]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[44]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[1]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[3];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[3]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[1]{'line_nr'};
 $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[45];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[45]{'parent'} = $result_trees{'accent'}{'contents'}[2];
@@ -2372,13 +2487,22 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[2]{'parent'} 
 $result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[5];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[5]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[6]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[7];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[7]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'contents'}[8]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[47]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[48]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[1]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[3];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[3]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[1]{'line_nr'};
 $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[49];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[49]{'parent'} = $result_trees{'accent'}{'contents'}[2];
@@ -2387,35 +2511,33 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[0]{'parent'} 
 $result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[51];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[51];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[3];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[51];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[51];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[51]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[52]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[53];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[53];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[53];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[3];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[53];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[53];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[53]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[54]{'parent'} = $result_trees{'accent'}{'contents'}[2];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[55]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[55];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[55]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[55];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[55]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[55]{'contents'}[1];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[55]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[55];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[55]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[55];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[55]{'parent'} = $result_trees{'accent'}{'contents'}[2];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[56];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
-$result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[56];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[56];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[56]{'parent'} = $result_trees{'accent'}{'contents'}[2];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[57]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[57];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[57]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[57]{'contents'}[1];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[57]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[57];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[57]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[57];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[57]{'parent'} = $result_trees{'accent'}{'contents'}[2];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[58];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
-$result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[58];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[58];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[58]{'parent'} = $result_trees{'accent'}{'contents'}[2];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[59]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[59];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[59]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[60]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[60];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[60]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[60]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -2437,27 +2559,27 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[62]{'contents'}[1]{'parent'} 
 $result_trees{'accent'}{'contents'}[2]{'contents'}[62]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[62];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[62]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[63]{'parent'} = $result_trees{'accent'}{'contents'}[2];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'args'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
+$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[64];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[64]{'parent'} = $result_trees{'accent'}{'contents'}[2];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[65];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
-$result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[65];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[65];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[65]{'parent'} = $result_trees{'accent'}{'contents'}[2];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[66];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'args'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
+$result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[66];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[66];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[66]{'parent'} = $result_trees{'accent'}{'contents'}[2];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[67];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'args'}[0];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
-$result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[67];
-$result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[67];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[67]{'parent'} = $result_trees{'accent'}{'contents'}[2];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[68]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[68];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[68]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[69]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[69];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[69]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[69]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -2478,6 +2600,26 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[71]{'contents'}[1]{'line_nr'}
 $result_trees{'accent'}{'contents'}[2]{'contents'}[71]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[71];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[71]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[71];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[71]{'parent'} = $result_trees{'accent'}{'contents'}[2];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[72]{'parent'} = $result_trees{'accent'}{'contents'}[2];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[73];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'args'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[73];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[73];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[73]{'parent'} = $result_trees{'accent'}{'contents'}[2];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[74]{'parent'} = $result_trees{'accent'}{'contents'}[2];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'args'}[0];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[75];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[75]{'parent'} = $result_trees{'accent'}{'contents'}[2];
 $result_trees{'accent'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'accent'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'parent'} = $result_trees{'accent'};
 
@@ -2521,6 +2663,10 @@ should be e_: @ubaraccent{e} @ubaraccent e
 should be .e: @udotaccent{e} @udotaccent e
 
 should be e<: @v{e} @v e
+
+should be a; : @ogonek{a} @ogonek a
+
+should be e; : @ogonek{e} @ogonek e
 
 upside down: @questiondown{} @exclamdown{}
 
@@ -2598,6 +2744,10 @@ should be e_: e_ e_
 should be .e: .e .e
 
 should be e<: e< e<
+
+should be a; : a; a;
+
+should be e; : e; e;
 
 upside down: ? !
 
@@ -2725,6 +2875,10 @@ should be e`: e` e`
 
    should be e<: e< e<
 
+   should be a; : a; a;
+
+   should be e; : e; e;
+
    upside down: ?  !
 
    A-with-circle: aa,AA
@@ -2844,6 +2998,10 @@ ul.no-bullet {list-style: none}
 <p>should be .e: &#7865; &#7865;
 </p>
 <p>should be e&lt;: &#283; &#283;
+</p>
+<p>should be a; : &#261; &#261;
+</p>
+<p>should be e; : &#281; &#281;
 </p>
 <p>upside down: &iquest; &iexcl;
 </p>

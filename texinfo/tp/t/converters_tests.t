@@ -43,6 +43,10 @@ should be .e: @udotaccent{e} @udotaccent e
 
 should be e<: @v{e} @v e
 
+should be a; : @ogonek{a} @ogonek a
+
+should be e; : @ogonek{e} @ogonek e
+
 upside down: @questiondown{} @exclamdown{}
 
 A-with-circle: @aa{},@AA{}
@@ -95,12 +99,18 @@ my $weird_accents_text = '@documentencoding ISO-8859-1
 
 @^{@udotaccent{@`r}}
 
-@={@code{@\'{@`{r}}}}
+@={@\'{@`{r}}}
 ';
 
 my @test_cases = (
 ['accentenc',
 $latin1_accents_text
+],
+['weird_accents',
+$weird_accents_text
+],
+['weird_accents_disable_encoding',
+$weird_accents_text, {}, {'ENABLE_ENCODING' => 0}
 ],
 ['accent',
 $accents_text
