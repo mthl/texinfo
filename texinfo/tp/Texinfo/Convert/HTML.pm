@@ -27,6 +27,7 @@ use Texinfo::Common;
 use Texinfo::Report;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Text;
+use Texinfo::Convert::Unicode;
 use Texinfo::Parser qw(gdt);
 
 use Carp qw(cluck);
@@ -821,6 +822,7 @@ our %defaults = (
   'TRANSLITERATE_FILE_NAMES' => 1,
   'USE_LINKS'            => 1,
   'USE_NUMERIC_ENTITY'   => 1,
+  'ENABLE_ENCODING_USE_ENTITY'   => 1,
   'DATE_IN_HEADER'       => 0,
   'AVOID_MENU_REDUNDANCY' => 0,
   'HEADERS'              => 1,
@@ -3776,6 +3778,14 @@ sub _new_document_context($$)
           };
 }
 
+sub _use_entity_is_entity($$)
+{
+  my $self = shift;
+  my $text = shift;
+  return 0 if (!$self->get_conf('ENABLE_ENCODING_USE_ENTITY'));
+  return 1 if ($text =~ /^&/ and $text =~ /;$/);
+}
+
 sub _initialize($)
 {
   my $self = shift;
@@ -3807,8 +3817,18 @@ sub _initialize($)
         $self->{'commands_formatting'}->{$context}->{$command} 
            = $Texinfo::Config::commands_formatting{$context}->{$command};
       } else {
-        $self->{'commands_formatting'}->{$context}->{$command} 
-           = $default_commands_formatting{$context}->{$command};
+        if ($self->{'encoding_name'} 
+            and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command}
+            and ($self->{'encoding_name'} eq 'utf-8'
+                 or ($Texinfo::Common::eight_bit_encoding_aliases{$self->{'encoding_name'}}
+                    and $Texinfo::Convert::Text::unicode_to_eight_bit{$Texinfo::Common::eight_bit_encoding_aliases{$self->{'encoding_name'}}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))
+            and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
+          $self->{'commands_formatting'}->{$context}->{$command}
+            = $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command}
+        } else {
+          $self->{'commands_formatting'}->{$context}->{$command} 
+            = $default_commands_formatting{$context}->{$command};
+        }
       }
     }
   }

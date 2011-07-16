@@ -158,7 +158,7 @@ our %text_no_brace_commands = (
 
 my %accent_commands = %Texinfo::Common::accent_commands;
 
-my %unicode_to_eight_bit = (
+our %unicode_to_eight_bit = (
    'iso8859_1' => {
       '00A0' => 'A0',
       '00A1' => 'A1',
@@ -810,10 +810,10 @@ sub brace_no_arg_command($;$$)
       and defined($root->{'extra'}->{'clickstyle'})
       and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
   if ($encoding 
-    and (($encoding eq 'utf-8' 
-       and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command})
-        or ($Texinfo::Common::eight_bit_encoding_aliases{$encoding}
-        and $unicode_to_eight_bit{$Texinfo::Common::eight_bit_encoding_aliases{$encoding}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))) {
+      and (($encoding eq 'utf-8' 
+            and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command})
+           or ($Texinfo::Common::eight_bit_encoding_aliases{$encoding}
+               and $unicode_to_eight_bit{$Texinfo::Common::eight_bit_encoding_aliases{$encoding}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))) {
     return $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command};
   } elsif ($sort_string and $sort_brace_no_arg_commands{$command}) {
     return $sort_brace_no_arg_commands{$command};

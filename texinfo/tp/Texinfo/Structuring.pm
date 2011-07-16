@@ -344,8 +344,8 @@ sub nodes_tree ($)
         }
       }
       # Remark: since the @menu are only checked if they are in @node, 
-      # menu entry before the first node may be treated slightly differently.
-      # at least, there are no error messages for them
+      # menu entry before the first node may be treated slightly differently.
+      # at least, there are no error messages for them
       foreach my $menu (@{$node->{'menus'}}) {
         my $previous_node;
         foreach my $menu_content (@{$menu->{'contents'}}) {
