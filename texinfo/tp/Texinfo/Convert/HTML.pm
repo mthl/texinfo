@@ -3817,7 +3817,8 @@ sub _initialize($)
         $self->{'commands_formatting'}->{$context}->{$command} 
            = $Texinfo::Config::commands_formatting{$context}->{$command};
       } else {
-        if ($self->{'encoding_name'} 
+        if ($self->get_conf('ENABLE_ENCODING') 
+            and $self->{'encoding_name'} 
             and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command}
             and ($self->{'encoding_name'} eq 'utf-8'
                  or ($Texinfo::Common::eight_bit_encoding_aliases{$self->{'encoding_name'}}

@@ -2939,25 +2939,25 @@ ul.no-bullet {list-style: none}
 <a name="top"></a>
 <h1 class="top">top</h1>
 
-<p>should be e`: &egrave; &egrave;
+<p>should be e`: è è
 </p>
-<p>should be e\': &eacute; &eacute;
+<p>should be e\': é é
 </p>
-<p>should be e^: &ecirc; &ecirc;
+<p>should be e^: ê ê
 </p>
-<p>should be u&quot;: &uuml; &uuml;
+<p>should be u&quot;: ü ü
 </p>
-<p>should be i`: &igrave; &igrave;
+<p>should be i`: ì ì
 </p>
-<p>should be i\': &iacute; &iacute;
+<p>should be i\': í í
 </p>
-<p>should be i^: &icirc; &icirc;
+<p>should be i^: î î
 </p>
-<p>should be u&quot;: &uuml; &uuml;
+<p>should be u&quot;: ü ü
 </p>
-<p>should be c,: &ccedil; &ccedil;
+<p>should be c,: ç ç
 </p>
-<p>should be n~: &ntilde; &ntilde;
+<p>should be n~: ñ ñ
 </p>
 <p>should be e=: &#275; &#275;
 </p>
@@ -2997,13 +2997,13 @@ ul.no-bullet {list-style: none}
 </p>
 <p>pounds sterling: £
 </p>
-<p>should be dotless i`: &igrave;
+<p>should be dotless i`: ì
 </p>
-<p>should be dotless i\': &iacute;
+<p>should be dotless i\': í
 </p>
-<p>should be dotless i^: &icirc;
+<p>should be dotless i^: î
 </p>
-<p>should be dotless i&quot;: &iuml;
+<p>should be dotless i&quot;: ï
 </p>
 <p>should be dotless j`: j`
 </p>

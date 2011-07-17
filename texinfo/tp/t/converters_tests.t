@@ -119,7 +119,8 @@ $accents_text
 
 my @html_cases = (
 ['accentenc_no_iso_no_entity',
-$latin1_accents_text, {}, {'ENABLE_ENCODING_USE_ENTITY' => 0, 'USE_ISO' => 0}
+$latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
+                           'ENABLE_ENCODING_USE_ENTITY' => 0, 'USE_ISO' => 0}
 ],
 );
 
