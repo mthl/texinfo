@@ -2809,7 +2809,9 @@ sub _convert_index_command($$$$)
 
   my $index_id = $self->command_id ($command);
   if (defined($index_id) and $index_id ne '' and !@{$self->{'multiple_pass'}}) {
-    return "<a name=\"$index_id\"></a>\n";
+    my $result = "<a name=\"$index_id\"></a>";
+    $result .= "\n" unless ($self->in_preformatted());
+    return $result;
   }
   return '';
 }
@@ -2986,14 +2988,21 @@ sub _contents_inline_element($$$)
     my $result = '';
     my $special_element 
       = $self->special_element($contents_command_element_name{$cmdname});
-    my $id = $self->command_id($special_element);
-    if ($id ne '') {
-      $result .= "<a name=\"$id\"></a>\n";
+    # This may not be defined if setcontentsaftertitlepage is set and 
+    # @titlepage is not used.
+    if ($special_element) {
+      my $id = $self->command_id($special_element);
+      if ($id ne '') {
+        $result .= "<a name=\"$id\"></a>\n";
+      }
+      my $heading = $self->command_text($special_element, 'text');
+      $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
+      $result .= $content . "\n";
+      return $result;
     }
-    my $heading = $self->command_text($special_element, 'text');
-    $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
-    $result .= $content . "\n";
-    return $result;
+      #else {
+      #cluck "$cmdname special element not defined";
+    #}
   }
   return '';
 }
@@ -3007,10 +3016,11 @@ sub _convert_informative_command($$$$)
   $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
 
   $self->_informative_command($command);
-  if ($self->get_conf('INLINE_CONTENTS')) {
-    if ($cmdname eq 'contents' or $cmdname eq 'shortcontents') {
-      return $self->_contents_inline_element($cmdname, $command);
-    }
+  if ($self->get_conf('INLINE_CONTENTS') 
+       and ($cmdname eq 'contents' or $cmdname eq 'shortcontents')
+       and ! ($self->get_conf('set'.$cmdname.'aftertitlepage')
+              and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
+    return $self->_contents_inline_element($cmdname, $command);
   }
   return '';
 }
@@ -3144,6 +3154,8 @@ sub _convert_preformatted_type($$$$)
 
   my @pre_classes = $self->preformatted_classes_stack();
   foreach my $class (@pre_classes) {
+    # FIXME maybe add   or $pre_class eq 'menu-preformatted'  to override
+    # 'menu-preformatted' wiith 'menu-comment'?
     $pre_class = $class unless ($pre_class 
                            and $preformatted_code_commands{$pre_class}
                            and !($preformatted_code_commands{$class}
@@ -3611,12 +3623,17 @@ sub _default_titlepage($)
     if (defined($titlepage_text));
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
     if ($self->get_conf('setcontentsaftertitlepage')) {
-      $result .= $self->_contents_inline_element('contents', undef);
-      $result .= $self->get_conf('DEFAULT_RULE')."\n";
+      my $contents_text = $self->_contents_inline_element('contents', undef);
+      if ($contents_text ne '') {
+        $result .= $contents_text . $self->get_conf('DEFAULT_RULE')."\n";
+      }
     }
     if ($self->get_conf('setshortcontentsaftertitlepage')) {
-      $result .= $self->_contents_inline_element('shortcontents', undef);
-      $result .= $self->get_conf('DEFAULT_RULE')."\n";
+      my $shortcontents_text 
+        = $self->_contents_inline_element('shortcontents', undef);
+      if ($shortcontents_text ne '') {
+        $result .= $shortcontents_text . $self->get_conf('DEFAULT_RULE')."\n";
+      }
     }
   }
   return $result;
@@ -4180,11 +4197,13 @@ sub _new_sectioning_command_target($$)
   }
   my $nr=1;
   my $target = $target_base;
-  while ($self->{'ids'}->{$target}) {
-    $target = $target_base.'-'.$nr;
-    $nr++;
-    # Avoid integer overflow
-    die if ($nr == 0);
+  if ($target ne '') {
+    while ($self->{'ids'}->{$target}) {
+      $target = $target_base.'-'.$nr;
+      $nr++;
+      # Avoid integer overflow
+      die if ($nr == 0);
+    }
   }
   my $id = $target;
 
@@ -4208,35 +4227,37 @@ sub _new_sectioning_command_target($$)
     #} else {
     # $target_base_contents = $target_base;
     #}
-    $target_contents = 'toc-'.$id;
-    my $target_base_contents = $target_base;
-    my $toc_nr = $nr -1;
-    while ($self->{'ids'}->{$target_contents}) {
-      $target_contents = 'toc-'.$target_base_contents.'-'.$toc_nr;
-      $toc_nr++;
-      # Avoid integer overflow
-      die if ($toc_nr == 0);
-    }
-    $id_contents = $target_contents;
+    if ($id ne '') {
+      $target_contents = 'toc-'.$id;
+      my $target_base_contents = $target_base;
+      my $toc_nr = $nr -1;
+      while ($self->{'ids'}->{$target_contents}) {
+        $target_contents = 'toc-'.$target_base_contents.'-'.$toc_nr;
+        $toc_nr++;
+        # Avoid integer overflow
+        die if ($toc_nr == 0);
+      }
+      $id_contents = $target_contents;
 
-    # FIXME choose one (in comments, use target, other use id)
-    #my $target_shortcontents = 'stoc-'.$target;
-    #my $target_base_shortcontents;
-    #if ($command->{'extra'}->{'associated_node'} 
-    #    and $self->get_conf('USE_NODE_TARGET') {
-    #  $target_base_shortcontents = $target;
-    #} else {
-    #  $target_base_shortcontents = $target_base;
-    #}
-    $target_shortcontents = 'stoc-'.$id;
-    my $target_base_shortcontents = $target_base;
-    my $stoc_nr = $nr -1;
-    while ($self->{'ids'}->{$target_shortcontents}) {
-      $target_shortcontents = 'stoc-'.$target_base_shortcontents
-                                 .'-'.$stoc_nr;
-      $stoc_nr++;
-      # Avoid integer overflow
-      die if ($stoc_nr == 0);
+      # FIXME choose one (in comments, use target, other use id)
+      #my $target_shortcontents = 'stoc-'.$target;
+      #my $target_base_shortcontents;
+      #if ($command->{'extra'}->{'associated_node'} 
+      #    and $self->get_conf('USE_NODE_TARGET') {
+      #  $target_base_shortcontents = $target;
+      #} else {
+      #  $target_base_shortcontents = $target_base;
+      #}
+      $target_shortcontents = 'stoc-'.$id;
+      my $target_base_shortcontents = $target_base;
+      my $stoc_nr = $nr -1;
+      while ($self->{'ids'}->{$target_shortcontents}) {
+        $target_shortcontents = 'stoc-'.$target_base_shortcontents
+                                   .'-'.$stoc_nr;
+        $stoc_nr++;
+        # Avoid integer overflow
+        die if ($stoc_nr == 0);
+      }
     }
     $id_shortcontents = $target_shortcontents;
   }
@@ -4670,11 +4691,14 @@ sub _prepare_contents_elements($)
   my $self = shift;
 
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
-    foreach my $cmdname('contents', 'shortcontents') {
+    foreach my $cmdname ('contents', 'shortcontents') {
       my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
         my $default_filename;
-        if ($self->get_conf('INLINE_CONTENTS')) {
+        if ($self->get_conf('set'.$cmdname.'aftertitlepage')
+                 and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
+          $default_filename = $self->{'pages'}->[0]->{'filename'};
+        } elsif ($self->get_conf('INLINE_CONTENTS')) {
           if ($self->{'extra'} and $self->{'extra'}->{$cmdname}) {
             foreach my $command(@{$self->{'extra'}->{$cmdname}}) {
               my ($page, $element, $root_command) 
@@ -4685,9 +4709,6 @@ sub _prepare_contents_elements($)
               }
             }
           }
-        } elsif ($self->get_conf('set'.$cmdname.'aftertitlepage')
-                 and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
-          $default_filename = $self->{'pages'}->[0]->{'filename'};
         }
         if (defined($default_filename)) {
           my $element = {'type' => 'element',
@@ -5079,13 +5100,16 @@ sub _default_contents($$;$$)
   my $result = '';
   $result .= $self->attribute_class('div', $cmdname).">\n";
 
+  if (@{$section_root->{'section_childs'}} > 1 
+      or $section_root->{'section_childs'}->[0]->{'cmdname'} ne 'top') {
+    $result .= $self->attribute_class('ul', $ul_class) .">\n";
+  }
   foreach my $top_section (@{$section_root->{'section_childs'}}) {
     my $section = $top_section;
  SECTION:
-    while ($section) {# and $section ne $section_root) {
+    while ($section) {
       if ($section->{'cmdname'} ne 'top') {
         my $text = $self->command_text($section);
-        # FIXME OVERVIEW_LINK_TO_TOC?
         my $href;
         if (!$contents and $self->get_conf('OVERVIEW_LINK_TO_TOC')) {
           $href = $self->command_contents_href($section, 'contents', $filename);
@@ -5097,7 +5121,7 @@ sub _default_contents($$;$$)
           # no indenting for shortcontents
           $result .= (' ' x (2*($section->{'level'} - $root_level))) 
             if ($contents);
-          if  ($toc_id ne '' or $href ne '') {
+          if ($toc_id ne '' or $href ne '') {
             my $toc_name_attribute = '';
             if ($toc_id ne '') {
               $toc_name_attribute = "name=\"$toc_id\" ";
@@ -5120,7 +5144,7 @@ sub _default_contents($$;$$)
           if ($contents);
         $result .= $self->attribute_class('ul', $ul_class) .">\n";
         $section = $section->{'section_childs'}->[0];
-      } elsif ($section->{'section_next'}) {
+      } elsif ($section->{'section_next'} and $section->{'cmdname'} ne 'top') {
         $result .= "</li>\n";
         last if ($section eq $top_section);
         $section = $section->{'section_next'};
@@ -5139,8 +5163,12 @@ sub _default_contents($$;$$)
         }
       }
     }
-    $result .= "\n</div>\n";
   }
+  if (@{$section_root->{'section_childs'}} > 1 
+      or $section_root->{'section_childs'}->[0]->{'cmdname'} ne 'top') {
+    $result .= "\n</ul>";
+  }
+  $result .= "\n</div>\n";
   return $result;
 }
 

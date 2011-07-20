@@ -304,6 +304,10 @@ Text part second.
 ['section_in_unnumbered_plaintext',
 $section_in_unnumbered_text
 ],
+['two_unnumbered_no_argument',
+'@unnumbered
+@unnumbered
+'],
 );
 
 my @tests_info = (
