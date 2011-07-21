@@ -135,8 +135,13 @@ our %text_brace_no_arg_commands = (
 my %sort_brace_no_arg_commands = (
   'copyright' => 'C',
   'registeredsymbol' => 'R',
-  'today' => 't'
+  'today' => 't', 
 );
+
+foreach my $accent_letter ('o','O','l','L') {
+  $sort_brace_no_arg_commands{$accent_letter} = $accent_letter;
+}
+
 
 our %text_no_brace_commands = (
            '*', "\n",

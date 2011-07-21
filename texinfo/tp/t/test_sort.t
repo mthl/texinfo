@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 5 };
+BEGIN { plan tests => 6 };
 
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use lib '../texi2html/lib/libintl-perl/lib/';
@@ -37,6 +37,7 @@ $tree = $parser->parse_texi_text('@node Top
 @cindex @~e
 @cindex
 @cindex aaaaaaaaaaaa
+@cindex @l{}
 ');
 
 my ($index_names, $merged_indices, $index_entries) = 
@@ -49,8 +50,40 @@ foreach my $entry (@{$sorted_index_entries->{'cp'}}) {
 }
 
 # e is before E because they are equal and e appears before E in the document 
-my @entries_ref = ('!', '``', 'aaaaaaaaaaaa', 'e', 'E', 'e~');
+my @entries_ref = ('!', '``', 'aaaaaaaaaaaa', 'e', 'E', 'e~', 'l');
 
 cmp_deeply (\@entries, \@entries_ref, 'sorted index entries');
 
+my $sorted_index_entries_by_letter 
+  = Texinfo::Structuring::sort_indices_by_letter($tree, $index_entries);
 
+my @letter_entries_ref = (
+   {'!' => [ '!' ]},
+   {'`' => [ '``' ]},
+   {'A' => [ 'aaaaaaaaaaaa' ]},
+   {'E' => [ 'e', 'E', 'e~']},
+   {'L' => [ 'l' ]},
+);
+ 
+my @letter_entries;
+foreach my $letter (@{$sorted_index_entries_by_letter->{'cp'}}) {
+  #my $letter_entry = {'letter' => $letter->{'letter'}};
+  my $letter_entry = {};
+  push @letter_entries, $letter_entry;
+  foreach my $entry (@{$letter->{'entries'}}) {
+    push @{$letter_entry->{$letter->{'letter'}}}, $entry->{'key'};
+  }
+}
+
+{
+local $Data::Dumper::Purity = 1;
+local $Data::Dumper::Maxdepth = 2;
+local $Data::Dumper::Indent = 1;
+#print STDERR "".Data::Dumper->Dump([$sorted_index_entries_by_letter])."\n";
+#foreach my $letter (@{$sorted_index_entries_by_letter->{'cp'}}) {
+#  print STDERR "AAA $letter->{'letter'} ".join('|',keys(%$letter))."\n";
+#}
+# print STDERR "".Data::Dumper->Dump([\@letter_entries])."\n";
+}
+
+cmp_deeply (\@letter_entries, \@letter_entries_ref, 'by letter index entries');
