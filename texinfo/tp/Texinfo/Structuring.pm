@@ -168,6 +168,7 @@ sub sectioning_structure($$)
   my $number_top_level;
 
   my $section_top;
+  my @sections_list;
   
   # holds the current number for all the levels.  It is not possible to use
   # something like the last child index, because of @unnumbered.
@@ -177,6 +178,7 @@ sub sectioning_structure($$)
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
         and $content->{'cmdname'} ne 'bye') {
+      push @sections_list, $content;
       if ($content->{'cmdname'} eq 'top') {
         if ($section_top) {
       #    already warned as a unique command.
@@ -315,6 +317,7 @@ sub sectioning_structure($$)
     }
   }
   $self->{'structuring'}->{'sectioning_root'} = $sec_root;
+  $self->{'structuring'}->{'sections_list'} = \@sections_list;
   return $sec_root;
 }
 
@@ -896,7 +899,7 @@ sub _print_root_command_texi($)
   return '@'.$command->{'cmdname'}. ' '
        .Texinfo::Convert::Texinfo::convert ({'contents' => $tree})
           if ($tree);
-  return undef;
+  return 'UNDEF @'.$command->{'cmdname'};
 }
 
 # for debugging

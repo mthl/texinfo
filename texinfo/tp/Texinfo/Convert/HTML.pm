@@ -521,7 +521,7 @@ sub special_element($$)
 {
   my $self = shift;
   my $type = shift;
-  return $self->{'special_elements'}->{$type};
+  return $self->{'special_elements_types'}->{$type};
 }
 
 sub global_element($$)
@@ -711,10 +711,10 @@ sub _translate_names($)
   # delete the tree and formatted results such that they are redone
   # with the new tree when needed.
   foreach my $special_element (keys (%SPECIAL_ELEMENTS_NAME)) {
-    if ($self->{'special_elements'}->{$special_element} and
-        $self->{'targets'}->{$self->{'special_elements'}->{$special_element}}) {
+    if ($self->{'special_elements_types'}->{$special_element} and
+        $self->{'targets'}->{$self->{'special_elements_types'}->{$special_element}}) {
       my $target 
-        = $self->{'targets'}->{$self->{'special_elements'}->{$special_element}};
+        = $self->{'targets'}->{$self->{'special_elements_types'}->{$special_element}};
       foreach my $key ('text', 'string', 'tree') {
         delete $target->{$key};
       }
@@ -3621,7 +3621,8 @@ sub _default_titlepage($)
   my $result = '';
   $result .= $titlepage_text.$self->get_conf('DEFAULT_RULE')."\n"
     if (defined($titlepage_text));
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
+      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
     if ($self->get_conf('setcontentsaftertitlepage')) {
       my $contents_text = $self->_contents_inline_element('contents', undef);
       if ($contents_text ne '') {
@@ -4354,6 +4355,9 @@ sub _set_page_file($$$)
   my $page = shift;
   my $filename = shift;
 
+  if (!defined($filename)) {
+    cluck("_set_page_file: filename not defined\n");
+  }
 # FIXME directory should be the file name!
   $page->{'filename'} = $filename;
   if (defined($self->{'destination_directory'})) {
@@ -4405,9 +4409,9 @@ sub _get_page($$)
                                                   or defined($root_command));
         return (undef, undef, undef);
       } elsif ($current->{'cmdname'} eq 'footnote' 
-           and $self->{'special_pages'}->{'Footnotes'}) {
+           and $self->{'special_pages_types'}->{'Footnotes'}) {
         # FIXME element and root_command?
-        return ($self->{'special_pages'}->{'Footnotes'});
+        return ($self->{'special_pages_types'}->{'Footnotes'});
       }
       # } elsif (($current->{'cmdname'} eq 'contents' 
       #           or $current->{'cmdname'} eq 'shortcontents'
@@ -4478,11 +4482,16 @@ sub _set_page_files($$)
         # For Top node.
         next if (defined($page->{'filename'}));
         foreach my $element (@{$page->{'contents'}}) {
-          foreach my $root_comand (@{$element->{'contents'}}) {
-            if ($root_comand->{'cmdname'} 
-                and $root_comand->{'cmdname'} eq 'node') {
+          foreach my $root_command (@{$element->{'contents'}}) {
+            if ($root_command->{'cmdname'} 
+                and $root_command->{'cmdname'} eq 'node') {
+              # Hapens for bogus nodes
+              #if (!defined($self->{'targets'}->{$root_command})
+              #    or !defined($self->{'targets'}->{$root_command}->{'node_filename'})) {
+              #  print STDERR "BUG: no target/filename($root_command): ".Texinfo::Structuring::_print_root_command_texi($root_command)."\n";
+              #}
               $self->_set_page_file($page, 
-                   $self->{'targets'}->{$root_comand}->{'node_filename'});
+                   $self->{'targets'}->{$root_command}->{'node_filename'});
               next PAGE;
             }
           }
@@ -4583,6 +4592,12 @@ sub _prepare_elements($$)
   #  }
   #}
   $self->_set_root_commands_targets_node_files($elements);
+  foreach my $couple ([$elements, 'elements'], 
+                      [$special_elements, 'special_elements'],
+                      [$special_pages, 'special_pages']) {
+    $self->{$couple->[1]} = $couple->[0]
+      if (defined($couple->[0]));
+  }
   return ($elements, $special_elements, $special_pages);
 }
 
@@ -4594,7 +4609,8 @@ sub _prepare_special_elements($$)
 
   my %do_special;
   # FIXME do that here or let it to the user?
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
+      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
     if ($self->get_conf('contents')) {
       if ($self->get_conf('INLINE_CONTENTS') 
          or ($self->get_conf('setcontentsaftertitlepage')
@@ -4637,7 +4653,7 @@ sub _prepare_special_elements($$)
                    'extra' => {'special_element' => $type,
                                }};
     $element->{'extra'}->{'directions'}->{'This'} = $element;
-    $self->{'special_elements'}->{$type} = $element;
+    $self->{'special_elements_types'}->{$type} = $element;
     push @$special_elements, $element;
 
     my $id = $self->{'misc_elements_targets'}->{$type};
@@ -4669,7 +4685,7 @@ sub _prepare_special_elements($$)
       my $page = {'type' => 'page'};
       push @{$page->{'contents'}}, $element;
       $page->{'extra'}->{'element'} = $element;
-      $self->{'special_pages'}->{$type} = $page;
+      $self->{'special_pages_types'}->{$type} = $page;
       $element->{'parent'} = $page;
       $self->_set_page_file($page, $filename);
       print STDERR "NEW page for $type\n" if ($self->get_conf('DEBUG'));
@@ -4690,7 +4706,8 @@ sub _prepare_contents_elements($)
 {
   my $self = shift;
 
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
+      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
     foreach my $cmdname ('contents', 'shortcontents') {
       my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
@@ -4713,7 +4730,7 @@ sub _prepare_contents_elements($)
         if (defined($default_filename)) {
           my $element = {'type' => 'element',
                          'extra' => {'special_element' => $type}};
-          $self->{'special_elements'}->{$type} = $element;
+          $self->{'special_elements_types'}->{$type} = $element;
           my $id = $self->{'misc_elements_targets'}->{$type};
           my $target = $id;
           my $filename;
