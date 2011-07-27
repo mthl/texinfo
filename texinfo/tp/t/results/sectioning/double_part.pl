@@ -889,4 +889,90 @@ Text part second.
 
 ';
 
+
+$result_converted{'html'}->{'double_part'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>top</title>
+
+<meta name="description" content="top">
+<meta name="keywords" content="top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#node-chapter" accesskey="n" rel="next">node chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+</div>
+<a name="top"></a>
+<h1 class="top">top</h1>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#node-chapter" accesskey="1">node chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="part-first"></a>
+<div class="header">
+<p>
+Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<h1 class="part">part first</h1>
+<hr>
+
+<p>Text part first.
+</p><a name="part-second"></a>
+<h1 class="part">part second</h1>
+<hr>
+<p>Text part second.
+</p>
+<a name="node-chapter"></a>
+<a name="chapter-after-2-parts"></a>
+<h1 class="chapter">1 chapter after 2 parts</h1>
+
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
 1;
