@@ -1105,7 +1105,6 @@ $result_trees{'section_in_unnumbered_plaintext'} = {
         'line_nr' => 37,
         'macro' => ''
       },
-      'number' => '1.2',
       'parent' => {}
     },
     {
@@ -6808,8 +6807,8 @@ unnumbered
 
 * section in unnumbered::
 
-1.2 section in unnumbered
-=========================
+section in unnumbered
+=====================
 
 2 chapter 2
 ***********
@@ -6997,7 +6996,6 @@ $result_sectioning{'section_in_unnumbered_plaintext'} = {
                 }
               },
               'level' => 2,
-              'number' => '1.2',
               'section_up' => {}
             }
           ],
@@ -7527,8 +7525,7 @@ $result_nodes{'section_in_unnumbered_plaintext'} = {
           'associated_section' => {
             'cmdname' => 'section',
             'extra' => {},
-            'level' => 2,
-            'number' => '1.2'
+            'level' => 2
           },
           'normalized' => 'section-in-unnumbered'
         },
@@ -8534,7 +8531,7 @@ $result_converted{'plaintext'}->{'section_in_unnumbered_plaintext'} = 'Test sect
 1 chapter
   1.1 section in chapter
 unnumbered
-  1.2 section in unnumbered
+  section in unnumbered
 2 chapter 2
   unnumbered section 2
     unnumbered subsection 2
@@ -8593,8 +8590,8 @@ unnumbered
 
 * section in unnumbered::
 
-1.2 section in unnumbered
-=========================
+section in unnumbered
+=====================
 
 2 chapter 2
 ***********

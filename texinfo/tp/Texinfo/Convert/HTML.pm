@@ -2660,6 +2660,8 @@ sub _convert_xref_commands($$$$)
       and $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}) {
     my $node 
      = $self->label_command($root->{'extra'}->{'node_argument'}->{'normalized'}); 
+    # This is the node if USE_NODES, otherwise this may be the sectioning 
+    # if the sectioning command is really associated to the node
     my $command = $self->command_element_command($node);
     $command = $node if (!$node->{'extra'}->{'associated_section'}
                          or $node->{'extra'}->{'associated_section'} ne $command);
@@ -2988,8 +2990,6 @@ sub _contents_inline_element($$$)
     my $result = '';
     my $special_element 
       = $self->special_element($contents_command_element_name{$cmdname});
-    # This may not be defined if setcontentsaftertitlepage is set and 
-    # @titlepage is not used.
     if ($special_element) {
       my $id = $self->command_id($special_element);
       if ($id ne '') {
@@ -2999,10 +2999,9 @@ sub _contents_inline_element($$$)
       $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
       $result .= $content . "\n";
       return $result;
+    } else {
+      cluck "$cmdname special element not defined";
     }
-      #else {
-      #cluck "$cmdname special element not defined";
-    #}
   }
   return '';
 }
@@ -3018,8 +3017,8 @@ sub _convert_informative_command($$$$)
   $self->_informative_command($command);
   if ($self->get_conf('INLINE_CONTENTS') 
        and ($cmdname eq 'contents' or $cmdname eq 'shortcontents')
-       and ! ($self->get_conf('set'.$cmdname.'aftertitlepage')
-              and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
+       and ! $self->get_conf('set'.$cmdname.'aftertitlepage')) {
+#              and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
     return $self->_contents_inline_element($cmdname, $command);
   }
   return '';
@@ -3603,6 +3602,27 @@ sub _convert_root_text_type($$$$)
 
 $default_types_conversion{'text_root'} = \&_convert_root_text_type;
 
+sub _contents_shortcontents_in_title($)
+{
+  my $self = shift;
+
+  my $result = '';
+
+  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
+      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
+    foreach my $command ('contents', 'shortcontents') {
+      if ($self->get_conf($command)
+          and $self->get_conf('set'.$command.'aftertitlepage')) {
+        my $contents_text = $self->_contents_inline_element($command, undef);
+        if ($contents_text ne '') {
+          $result .= $contents_text . $self->get_conf('DEFAULT_RULE')."\n";
+        }
+      }
+    }
+  }
+  return $result;
+}
+
 # Convert @titlepage.  Falls back to simpletitle.
 sub _default_titlepage($)
 {
@@ -3621,22 +3641,7 @@ sub _default_titlepage($)
   my $result = '';
   $result .= $titlepage_text.$self->get_conf('DEFAULT_RULE')."\n"
     if (defined($titlepage_text));
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
-      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
-    if ($self->get_conf('setcontentsaftertitlepage')) {
-      my $contents_text = $self->_contents_inline_element('contents', undef);
-      if ($contents_text ne '') {
-        $result .= $contents_text . $self->get_conf('DEFAULT_RULE')."\n";
-      }
-    }
-    if ($self->get_conf('setshortcontentsaftertitlepage')) {
-      my $shortcontents_text 
-        = $self->_contents_inline_element('shortcontents', undef);
-      if ($shortcontents_text ne '') {
-        $result .= $shortcontents_text . $self->get_conf('DEFAULT_RULE')."\n";
-      }
-    }
-  }
+  $result .= $self->_contents_shortcontents_in_title();
   return $result;
 }
 
@@ -3648,11 +3653,14 @@ sub _print_title($)
   if ($self->get_conf('SHOW_TITLE')) {
     if ($self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
       $result .= &{$self->{'titlepage'}}($self);
-    } elsif ($self->{'simpletitle_tree'}) {
-      my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
-      $result .= &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
-                                          0, {'cmdname' => 'settitle',
-                   'contents' => $self->{'simpletitle_tree'}->{'contents'}});
+    } else {
+      if ($self->{'simpletitle_tree'}) {
+        my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
+        $result .= &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
+                                            0, {'cmdname' => 'settitle',
+                     'contents' => $self->{'simpletitle_tree'}->{'contents'}});
+      }
+      $result .= $self->_contents_shortcontents_in_title();
     }
   }
   return $result;
@@ -3668,6 +3676,9 @@ sub _convert_element_type($$$$)
   #print STDERR "GGGGGGGG $element $element->{'parent'} $element->{'parent'}->{'type'}\n";
   #print STDERR "$element->{'extra'}->{'special_element'}\n"
   #   if ($element->{'extra'}->{'special_element'});
+  #if (!defined($element->{'parent'})) {
+  #  print STDERR "NO PARENT ".Texinfo::Parser::_print_current($element)."\n";
+  #}
 
   my $result = '';
   my $special_element;
@@ -3707,8 +3718,12 @@ sub _convert_element_type($$$$)
     and $self->{'global_target_elements'}->{'Top'} eq $element->{'element_next'});
   my $next_is_special = (defined($element->{'element_next'})
     and $element->{'element_next'}->{'extra'}->{'special_element'});
+  # no 'parent' defined happens if there are no pages, and elements 
+  # which should only happen when called with $self->get_conf('OUTFILE') 
+  # set to ''.
   my $end_page = (!$element->{'element_next'} 
-       or $element->{'parent'} ne $element->{'element_next'}->{'parent'});
+       or (defined($element->{'parent'}) 
+           and $element->{'parent'} ne $element->{'element_next'}->{'parent'}));
   my $is_special = $element->{'extra'}->{'special_element'};
 
   if (($end_page or $next_is_top or $next_is_special)
@@ -4611,22 +4626,34 @@ sub _prepare_special_elements($$)
   # FIXME do that here or let it to the user?
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
       and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
-    if ($self->get_conf('contents')) {
-      if ($self->get_conf('INLINE_CONTENTS') 
-         or ($self->get_conf('setcontentsaftertitlepage')
-             and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
-      } else {
-        $do_special{'Contents'} = 1;
+    
+    foreach my $cmdname ('contents', 'shortcontents') {
+      my $type = $contents_command_element_name{$cmdname};
+      if ($self->get_conf($cmdname)) {
+        if ($self->get_conf('INLINE_CONTENTS') 
+           or ($self->get_conf('set'.$cmdname.'aftertitlepage'))) {
+     #        and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
+        } else {
+          $do_special{$type} = 1;
+        }
       }
     }
-    if ($self->get_conf('shortcontents')) {
-      if ($self->get_conf('INLINE_CONTENTS')
-          or ($self->get_conf('setshortcontentsaftertitlepage')
-             and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
-      } else {
-        $do_special{'Overview'} = 1;
-      }
-    }
+   # if ($self->get_conf('contents')) {
+   #   if ($self->get_conf('INLINE_CONTENTS') 
+   #      or ($self->get_conf('setcontentsaftertitlepage')
+   #          and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
+   #   } else {
+   #     $do_special{'Contents'} = 1;
+   #   }
+   # }
+   # if ($self->get_conf('shortcontents')) {
+   #   if ($self->get_conf('INLINE_CONTENTS')
+   #       or ($self->get_conf('setshortcontentsaftertitlepage')
+   #          and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
+   #   } else {
+   #     $do_special{'Overview'} = 1;
+   #   }
+   # }
   }
   if ($self->{'extra'}->{'footnote'} 
       and $self->get_conf('footnotestyle') eq 'separate'
@@ -4712,9 +4739,11 @@ sub _prepare_contents_elements($)
       my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
         my $default_filename;
-        if ($self->get_conf('set'.$cmdname.'aftertitlepage')
-                 and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
-          $default_filename = $self->{'pages'}->[0]->{'filename'};
+        if ($self->get_conf('set'.$cmdname.'aftertitlepage')) {
+          #next unless $self->get_conf('USE_TITLEPAGE_FOR_TITLE');
+          if ($self->{'pages'}) {
+            $default_filename = $self->{'pages'}->[0]->{'filename'};
+          }
         } elsif ($self->get_conf('INLINE_CONTENTS')) {
           if ($self->{'extra'} and $self->{'extra'}->{$cmdname}) {
             foreach my $command(@{$self->{'extra'}->{$cmdname}}) {
@@ -4725,32 +4754,36 @@ sub _prepare_contents_elements($)
                 last;
               }
             }
+          } else {
+            next;
           }
+        } else { # in this case, there should already be a special element
+                 # if needed, done together with the other special elements.
+          next;
         }
-        if (defined($default_filename)) {
-          my $element = {'type' => 'element',
-                         'extra' => {'special_element' => $type}};
-          $self->{'special_elements_types'}->{$type} = $element;
-          my $id = $self->{'misc_elements_targets'}->{$type};
-          my $target = $id;
-          my $filename;
-          if (defined($Texinfo::Config::special_element_target_file_name)) {
-            ($target, $id, $filename)
-                 = &$Texinfo::Config::special_element_target_file_name(
-                                                            $self,
-                                                            $element,
-                                                            $target, $id,
-                                                            $default_filename);
-          }
-          $filename = $default_filename if (!defined($filename));
-          print STDERR "Add content $element $type: target $target, id $id,\n".
-             "    filename $filename\n" if ($self->get_conf('DEBUG'));
-          $self->{'targets'}->{$element} = {'id' => $id,
-                                            'target' => $target,
-                                            'misc_filename' => $filename,
-                                            'filename' => $filename,
-                                            };
+
+        my $element = {'type' => 'element',
+                       'extra' => {'special_element' => $type}};
+        $self->{'special_elements_types'}->{$type} = $element;
+        my $id = $self->{'misc_elements_targets'}->{$type};
+        my $target = $id;
+        my $filename;
+        if (defined($Texinfo::Config::special_element_target_file_name)) {
+          ($target, $id, $filename)
+               = &$Texinfo::Config::special_element_target_file_name(
+                                                          $self,
+                                                          $element,
+                                                          $target, $id,
+                                                          $default_filename);
         }
+        $filename = $default_filename if (!defined($filename));
+        print STDERR "Add content $element $type: target $target, id $id,\n".
+           "    filename $filename\n" if ($self->get_conf('DEBUG'));
+        $self->{'targets'}->{$element} = {'id' => $id,
+                                          'target' => $target,
+                                          'misc_filename' => $filename,
+                                          'filename' => $filename,
+                                          };
       }
     }
   }
@@ -5117,9 +5150,11 @@ sub _default_contents($$;$$)
   my $result = '';
   $result .= $self->attribute_class('div', $cmdname).">\n";
 
-  if (@{$section_root->{'section_childs'}} > 1 
-      or $section_root->{'section_childs'}->[0]->{'cmdname'} ne 'top') {
+  my $toplevel_contents;
+  if (@{$section_root->{'section_childs'}} > 1) { 
+  #    or $section_root->{'section_childs'}->[0]->{'cmdname'} ne 'top') {
     $result .= $self->attribute_class('ul', $ul_class) .">\n";
+    $toplevel_contents = 1;
   }
   foreach my $top_section (@{$section_root->{'section_childs'}}) {
     my $section = $top_section;
@@ -5152,7 +5187,11 @@ sub _default_contents($$;$$)
             $result .= "<li>$text";
           }
         }
+      } elsif ($section->{'section_childs'} and @{$section->{'section_childs'}}
+               and $toplevel_contents) {
+        $result .= "<li>";
       }
+        
       # for shortcontents don't do child if child is not toplevel
       if ($section->{'section_childs'}
           and ($contents or $section->{'level'} < $root_level+1)) {
@@ -5166,12 +5205,19 @@ sub _default_contents($$;$$)
         last if ($section eq $top_section);
         $section = $section->{'section_next'};
       } else {
-        last if ($section eq $top_section);
+        #last if ($section eq $top_section);
+        if ($section eq $top_section) {
+          $result .= "</li>\n" unless ($section->{'cmdname'} eq 'top');
+          last;
+        }
         while ($section->{'section_up'}) {
           $section = $section->{'section_up'};
           $result .= "</li>\n". ' ' x (2*($section->{'level'} - $root_level))
             . "</ul>";
-          last SECTION if ($section eq $top_section);
+          if ($section eq $top_section) {
+            $result .= "</li>\n" if ($toplevel_contents);
+            last SECTION;
+          }
           if ($section->{'section_next'}) {
             $result .= "</li>\n";
             $section = $section->{'section_next'};
@@ -5181,8 +5227,8 @@ sub _default_contents($$;$$)
       }
     }
   }
-  if (@{$section_root->{'section_childs'}} > 1 
-      or $section_root->{'section_childs'}->[0]->{'cmdname'} ne 'top') {
+  if (@{$section_root->{'section_childs'}} > 1) {
+   #   or $section_root->{'section_childs'}->[0]->{'cmdname'} ne 'top') {
     $result .= "\n</ul>";
   }
   $result .= "\n</div>\n";
@@ -5220,7 +5266,8 @@ $pre_body_close
 ";
 }
 
-# This is in order to avoid code duplication with other file headers
+# This is used for normal output files and other files, like renamed
+# nodes file headers, or redirection file headers.
 sub _file_header_informations($$)
 {
   my $self = shift;
@@ -5670,7 +5717,9 @@ sub output($$)
   $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage') 
    . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 
-  # prepare title
+  # prepare title.  fulltitle uses more possibility than simpletitle for
+  # title, including @-commands found in @titlepage only.  Therefore
+  # simpletitle is more in line with what makeinfo in C does.
   my $fulltitle;
   foreach my $fulltitle_command('settitle', 'title', 
      'shorttitlepage', 'top') {

@@ -101,6 +101,8 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
 );
 
 # FIXME TOP_HEADING_AT_BEGINNING seems to be a no-op
+# FIXME USE_SECTIONS is now a no-op, there are only two possibilities, 
+# USE_NODES set or not.
 my @variable_settables = (
   'DEBUG', 'FRAMES', 'FRAMESET_DOCTYPE', 'DOCTYPE', 'TEST', 'DUMP_TEXI',
   'TOP_FILE', 'TOC_FILE', 'SHOW_MENU', 'USE_NODES', 'TOC_LINKS', 'SHORTEXTN',

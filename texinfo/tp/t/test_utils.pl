@@ -35,6 +35,9 @@ Locale::Messages->select_package ('gettext_pp');
 # FIXME use texinfo instead of texi2html
 Locale::Messages::bindtextdomain ('texi2html_document', '../texi2html/locales');
 
+my $output_files_dir = 't/output_files/';
+mkdir $output_files_dir if (! -d $output_files_dir);
+
 ok(1);
 
 my %formats = (
@@ -44,14 +47,20 @@ my %formats = (
   'debugcount' => \&debugcount,
 );
 
+my %extensions = (
+  'plaintext' => 'txt',
+  'debugcount' => 'txt',
+);
+
 our $arg_generate;
 our $arg_debug;
 our $arg_complete;
+our $arg_output;
 our $nr_comparisons = 8;
 
 Getopt::Long::Configure("gnu_getopt");
 GetOptions('g|generate' => \$arg_generate, 'd|debug=i' => \$arg_debug, 
-           'c|complete' => \$arg_complete);
+           'c|complete' => \$arg_complete, 'o|output' => \$arg_output);
 
 our $arg_test_case = shift @ARGV;
 
@@ -382,6 +391,35 @@ sub test($$)
                                   $parser_options, $converter_options);
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       #print STDERR "$format: \n$converted{$format}";
+      if ($arg_output) {
+        mkdir ("$output_files_dir/$self->{'name'}") 
+          if (! -d "$output_files_dir/$self->{'name'}");
+        my $extension;
+        if ($extensions{$format}) {
+          $extension = $extensions{$format};
+        } else {
+          $extension = $format;
+        }
+        my $outfile = "$output_files_dir/$self->{'name'}/$test_name.$extension";
+        if (!open (OUTFILE, ">$outfile")) {
+          warn "Open $outfile: $!\n";
+        } else {
+          print OUTFILE $converted{$format};
+          close (OUTFILE) or warn "Close $outfile: $!\n";
+        }
+        if ($converted_errors{$format}) {
+          my $errors_file 
+            = "$output_files_dir/$self->{'name'}/${test_name}_$extension.err";
+          if (!open (ERRFILE, ">$errors_file")) {
+            warn "Open $errors_file: $!\n";
+          } else {
+            foreach my $error_message (@{$converted_errors{$format}}) {
+              print ERRFILE $error_message->{'error_line'};
+            }
+            close (ERRFILE) or warn "Close $errors_file: $!\n";
+          }
+        }
+      }
     }
   }
   my $directions_text;

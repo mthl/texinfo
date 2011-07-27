@@ -4244,7 +4244,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
         'line_nr' => 130,
         'macro' => ''
       },
-      'number' => '1.2',
       'parent' => {}
     },
     {
@@ -7642,8 +7641,8 @@ float with no type.
 
 
 
-1.2 Section within unnumbered
-=============================
+Section within unnumbered
+=========================
 
 
 Text, Section within unnumbered float
@@ -7773,7 +7772,6 @@ $result_sectioning{'numbering_captions_listoffloats'} = {
                 }
               },
               'level' => 2,
-              'number' => '1.2',
               'section_up' => {}
             }
           ],
@@ -7932,8 +7930,7 @@ $result_nodes{'numbering_captions_listoffloats'} = {
           'associated_section' => {
             'cmdname' => 'section',
             'extra' => {},
-            'level' => 2,
-            'number' => '1.2'
+            'level' => 2
           },
           'normalized' => 'Section-within-unnumbered'
         },
@@ -8651,8 +8648,7 @@ $result_floats{'numbering_captions_listoffloats'} = {
       'float_section' => {
         'cmdname' => 'section',
         'extra' => {},
-        'level' => 2,
-        'number' => '1.2'
+        'level' => 2
       },
       'number' => 6
     },
@@ -9050,8 +9046,8 @@ float with no type.
 
 5: C No type in unnumbered
 
-1.2 Section within unnumbered
-=============================
+Section within unnumbered
+=========================
 
 Section within unnumbered
 

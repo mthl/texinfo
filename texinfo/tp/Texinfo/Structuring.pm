@@ -287,7 +287,8 @@ sub sectioning_structure($$)
       }
       if (!$unnumbered_commands{$content->{'cmdname'}}) {
         # construct the number, if not below an unnumbered
-        if ($command_numbers[$number_top_level]) {
+        #if ($command_numbers[$number_top_level]) {
+        if (!$command_unnumbered[$number_top_level]) {
           $content->{'number'} = $command_numbers[$number_top_level];
           for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
             $content->{'number'} .= ".$command_numbers[$i]";

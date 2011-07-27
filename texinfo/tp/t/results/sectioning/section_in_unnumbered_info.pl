@@ -1105,7 +1105,6 @@ $result_trees{'section_in_unnumbered_info'} = {
         'line_nr' => 37,
         'macro' => ''
       },
-      'number' => '1.2',
       'parent' => {}
     },
     {
@@ -6808,8 +6807,8 @@ unnumbered
 
 * section in unnumbered::
 
-1.2 section in unnumbered
-=========================
+section in unnumbered
+=====================
 
 2 chapter 2
 ***********
@@ -6997,7 +6996,6 @@ $result_sectioning{'section_in_unnumbered_info'} = {
                 }
               },
               'level' => 2,
-              'number' => '1.2',
               'section_up' => {}
             }
           ],
@@ -7527,8 +7525,7 @@ $result_nodes{'section_in_unnumbered_info'} = {
           'associated_section' => {
             'cmdname' => 'section',
             'extra' => {},
-            'level' => 2,
-            'number' => '1.2'
+            'level' => 2
           },
           'normalized' => 'section-in-unnumbered'
         },
@@ -8577,8 +8574,8 @@ unnumbered
 
 File: ,  Node: section in unnumbered,  Up: unnumbered
 
-1.2 section in unnumbered
-=========================
+section in unnumbered
+=====================
 
 
 File: ,  Node: chapter 2,  Next: chapter 3,  Prev: unnumbered,  Up: Top
@@ -8804,33 +8801,33 @@ Node: chapter246
 Node: section in chapter367
 Node: unnumbered465
 Node: section in unnumbered597
-Node: chapter 2707
-Node: unnumberedsec 2859
-Node: unnumbered sub 21070
-Node: numbered sub 21199
-Node: unnumbered sub2 21350
-Node: numbered sub2 21506
-Node: unnumberedsec 2-11635
-Node: numbered sub 2-11779
-Node: chapter 31887
-Node: unnumberedsec 32095
-Node: unnumbered sub 32300
-Node: numbered sub 32429
-Node: unnumbered sub2 32580
-Node: numbered sub2 32736
-Node: section 3-12865
-Node: unnumberedsec 3-22994
-Node: numbered sub 3-23154
-Node: section 3-33262
-Node: subsection 3-33422
-Node: unnumberedsec 3-43516
-Node: numbered sub 3-43656
-Node: unnumbered 43764
-Node: unnumberedsec 43880
-Node: unnumbered sub 44068
-Node: numbered sub 44197
-Node: unnumbered sub2 44348
-Node: numbered sub2 44504
+Node: chapter 2699
+Node: unnumberedsec 2851
+Node: unnumbered sub 21062
+Node: numbered sub 21191
+Node: unnumbered sub2 21342
+Node: numbered sub2 21498
+Node: unnumberedsec 2-11627
+Node: numbered sub 2-11771
+Node: chapter 31879
+Node: unnumberedsec 32087
+Node: unnumbered sub 32292
+Node: numbered sub 32421
+Node: unnumbered sub2 32572
+Node: numbered sub2 32728
+Node: section 3-12857
+Node: unnumberedsec 3-22986
+Node: numbered sub 3-23146
+Node: section 3-33254
+Node: subsection 3-33414
+Node: unnumberedsec 3-43508
+Node: numbered sub 3-43648
+Node: unnumbered 43756
+Node: unnumberedsec 43872
+Node: unnumbered sub 44060
+Node: numbered sub 44189
+Node: unnumbered sub2 44340
+Node: numbered sub2 44496
 
 End Tag Table
 ';
