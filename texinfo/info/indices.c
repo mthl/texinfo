@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.14 2011-07-28 07:15:01 gray Exp $
+   $Id: indices.c,v 1.15 2011-07-28 08:13:43 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -21,6 +21,7 @@
 
 #include "info.h"
 #include "indices.h"
+#include "variables.h"
 
 /* User-visible variable controls the output of info-index-next. */
 int show_index_match = 1;
@@ -246,6 +247,14 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
         }
     }
 
+  if (mbslen (line) < min_search_length)
+    {
+      info_error (_("Search string too short"));
+      free (line);
+      return;
+    }
+
+  
   /* The user typed either a completed index label, or a partial string.
      Find an exact match, or, failing that, the first index entry containing
      the partial string.  So, we just call info_next_index_match () with minor
