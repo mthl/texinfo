@@ -1,5 +1,18 @@
 2011-07-28  Sergey Poznyakoff  <gray@gnu.org>
 
+	* info/variables.c (info_variables): New variable:
+	min-search-length.
+	* info/variables.h (min_search_length): New extern.
+	* info/session.c (min_search_length): New variable.
+	(info_search_1): Do not search for patterns shorter
+	than min_search_length.
+	* info/indices.c (do_info_index_search): Do not search
+	for patterns shorter than min_search_length.
+	* doc/info-stnd.texi: Document min-search-length.
+	* NEWS: Document min-search-length.
+
+2011-07-28  Sergey Poznyakoff  <gray@gnu.org>
+
 	* info/info-utils.c (printed_representation): Change first
 	argument to const char *, all callers updated.
 	* info/info-utils.h (printed_representation): Change signature.
