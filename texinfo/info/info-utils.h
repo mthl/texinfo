@@ -1,5 +1,5 @@
 /* info-utils.h -- Exported functions and variables from info-utils.c.
-   $Id: info-utils.h,v 1.8 2008-05-10 14:39:04 gray Exp $   
+   $Id: info-utils.h,v 1.9 2011-07-28 07:13:05 gray Exp $   
 
    Copyright (C) 1993, 1996, 1998, 2002, 2003, 2004, 2007 Free Software
    Foundation, Inc.
@@ -98,7 +98,7 @@ void canonicalize_whitespace (char *string);
 
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */
-extern char *printed_representation (const unsigned char *cp, size_t len,
+extern char *printed_representation (const char *str, size_t len,
 				     size_t hpos, size_t *plen);
 
 /* Return a pointer to the part of PATHNAME that simply defines the file. */
