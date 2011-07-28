@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.30 2011-03-18 23:20:37 karl Exp $
+@comment $Id: info-stnd.texi,v 1.31 2011-07-28 08:14:16 gray Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -980,6 +980,10 @@ otherwise Info ignores the letter case.  With a numeric argument of
 @var{N}, search for @var{N}th occurrence of the string.  Negative
 arguments search backwards.
 
+Normally, the search pattern should not be shorter than some
+predefined limit.  By default, this limit is set to 3 characters.
+@xref{min-search-length}, for more information on this.
+
 @item @kbd{?} (@code{search-backward}, vi-like operation)
 @kindex ?, vi-like operation
 @findex search-backward
@@ -1048,6 +1052,10 @@ is case-sensitive; otherwise Info ignores the letter case.
 @cindex searching, in the indices
 Look up a string in the indices for this Info file, and select a node
 to which the found index entry points.
+
+Normally, the search string should not be shorter than some
+predefined limit.  By default, this limit is set to 3 characters.
+@xref{min-search-length}, for more information on this.
 
 @item @kbd{,} (@code{next-index-match})
 @kindex ,
@@ -1935,6 +1943,12 @@ By default, Info assumes an ASCII character set.  @code{ISO-Latin} tells
 Info that it is running in an environment where the European standard
 character set is in use, and allows you to input such characters to
 Info, as well as display them.
+
+@anchor{min-search-length}
+@item min-search-length
+Minimal length of a search string.  Attempts to initiate a
+search for a string (or regular expression) shorter than this value,
+result in error.  The default is 3 characters.
 
 @anchor{scroll-behavior}
 @item scroll-behavior
