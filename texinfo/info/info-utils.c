@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.14 2009-01-23 09:37:40 gray Exp $
+   $Id: info-utils.c,v 1.15 2011-07-28 07:12:47 gray Exp $
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009
    Free Software Foundation, Inc.
@@ -504,10 +504,11 @@ static size_t the_rep_size;
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */
 char *
-printed_representation (const unsigned char *cp, size_t len, size_t hpos,
+printed_representation (const char *character, size_t len, size_t hpos,
 			/* Return: */
 			size_t *plen)
 {
+  const unsigned char *cp = (const unsigned char *) character;
   register int i = 0;
   int printable_limit = ISO_Latin_p ? 255 : 127;
 #define REPSPACE(s)                                            \
