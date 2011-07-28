@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.49 2011-07-28 07:15:20 gray Exp $
+   $Id: session.c,v 1.50 2011-07-28 08:13:19 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -65,6 +65,9 @@ static int info_windows_slots = 0;
 
 /* Whether to use regexps or not for search.  */
 static int use_regex = 1;
+
+/* Minimal length of a search string */
+int min_search_length = 3;
 
 void remember_window_and_node (WINDOW *window, NODE *node);
 void forget_window_and_nodes (WINDOW *window);
@@ -4108,6 +4111,12 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
           strcpy (search_string, line);
           free (line);
         }
+    }
+
+  if (mbslen (search_string) < min_search_length)
+    {
+      info_error (_("Search string too short"));
+      return;
     }
 
   /* If the search string includes upper-case letters, make the search
