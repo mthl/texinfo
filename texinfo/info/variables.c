@@ -1,5 +1,5 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.11 2011-07-28 07:14:06 gray Exp $
+   $Id: variables.c,v 1.12 2011-07-28 08:12:39 gray Exp $
 
    Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -82,6 +82,10 @@ VARIABLE_ALIST info_variables[] = {
        "last node"),
     &scroll_last_node, (char**)scroll_last_node_choices },
   
+  { "min-search-length",
+    N_("Minimal length of a search string"),
+    &min_search_length, NULL },
+
   { NULL }
 };
 
