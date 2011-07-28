@@ -1,3 +1,24 @@
+2011-07-28  Sergey Poznyakoff  <gray@gnu.org>
+
+	* info/info-utils.c (printed_representation): Change first
+	argument to const char *, all callers updated.
+	* info/info-utils.h (printed_representation): Change signature.
+
+	* info/doc.h (key_documentation): Remove prototype.
+	* info/filesys.c, info/footnotes.c,
+	info/info-utils.c, info/info.c, 
+	info/infomap.c, info/m-x.c, info/nodemenu.c,
+	info/search.c, info/variables.c,
+	info/window.c: Remove extra arguments from calls to variadic functions.
+	* info/infodoc.c (key_documentation): Remove unused function.
+	Remove extra arguments from calls to variadic functions.
+	* info/indices.c (info_next_index_match): Fix error message.
+	Remove extra arguments from calls to variadic functions.
+	* info/session.c (info_menu_digit): Use ngettext.
+	Remove extra arguments from calls to variadic functions.
+	* info/echo-area.c (ea_possible_completions): Use ngettext.
+        Remove extra arguments from calls to variadic functions.
+
 2011-05-29  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: version, copyright year.
