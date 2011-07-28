@@ -1,5 +1,5 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.11 2011-02-10 09:15:11 gray Exp $
+   $Id: search.c,v 1.12 2011-07-28 07:14:05 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009
    Free Software Foundation, Inc.
@@ -163,7 +163,7 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
           int size = regerror (result, &preg, NULL, 0);
           char *buf = xmalloc (size);
           regerror (result, &preg, buf, size);
-          info_error (_("regexp error: %s"), buf, NULL);
+          info_error (_("regexp error: %s"), buf);
           return search_failure;
         }
 

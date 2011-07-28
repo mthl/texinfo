@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.22 2011-04-06 21:19:02 gray Exp $
+   $Id: window.c,v 1.23 2011-07-28 07:14:06 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -1233,7 +1233,6 @@ build_message_buffer (const char *format, va_list ap)
 	  !memchr (message_buffer + message_buffer_index, '\0',
 		   message_buffer_size - message_buffer_index + 1))
 	{
-	  char *newbuf;
 	  size_t newlen = message_buffer_size * 2;
 	  if (newlen < message_buffer_size)
 	    xalloc_die ();

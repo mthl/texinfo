@@ -1,5 +1,5 @@
 /* variables.c -- how to manipulate user visible variables in Info.
-   $Id: variables.c,v 1.10 2008-06-11 09:55:43 gray Exp $
+   $Id: variables.c,v 1.11 2011-07-28 07:14:06 gray Exp $
 
    Copyright (C) 1993, 1997, 2001, 2002, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -106,7 +106,7 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
     sprintf (description, "%s (%d): %s.",
 	     var->name, *(var->value), _(var->doc));
 
-  window_message_in_echo_area ("%s", description, NULL);
+  window_message_in_echo_area ("%s", description);
   free (description);
 }
 

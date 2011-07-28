@@ -1,5 +1,5 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c,v 1.9 2008-06-11 09:55:42 gray Exp $
+   $Id: footnotes.c,v 1.10 2011-07-28 07:14:05 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2004, 2007,
    2008 Free Software Foundation, Inc.
@@ -256,11 +256,11 @@ DECLARE_INFO_COMMAND (info_show_footnotes,
       switch (result)
         {
         case FN_UNFOUND:
-          info_error (msg_no_foot_node, NULL, NULL);
+          info_error (msg_no_foot_node);
           break;
 
         case FN_UNABLE:
-          info_error (msg_win_too_small, NULL, NULL);
+          info_error (msg_win_too_small);
           break;
         }
     }

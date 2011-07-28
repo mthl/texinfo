@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.21 2008-06-11 09:55:42 gray Exp $
+   $Id: infomap.c,v 1.22 2011-07-28 07:14:05 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -937,8 +937,7 @@ fetch_user_maps (void)
         {
                 if (filename && errno != ENOENT)
                 {
-                        info_error(filesys_error_string(filename, errno),
-                            NULL, NULL);
+                        info_error(filesys_error_string(filename, errno));
                         free(filename);
                 }
                 return 0;
@@ -953,10 +952,10 @@ fetch_user_maps (void)
                    more than 100 KB is a problem). */
                 if (len < INFOKEY_NMAGIC + 2)
                         info_error(_("Ignoring invalid infokey file `%s' - too small"),
-                                   filename, NULL);
+                                   filename);
                 else
                         info_error(_("Ignoring invalid infokey file `%s' - too big"),
-                                   filename, NULL);
+                                   filename);
                 close(f);
                 free(filename);
                 return 0;
@@ -969,7 +968,7 @@ fetch_user_maps (void)
         if ((unsigned int) nread != len)
         {
                 info_error(_("Error reading infokey file `%s' - short read"),
-                    filename, NULL);
+                           filename);
                 free(buf);
                 free(filename);
                 return 0;
@@ -988,7 +987,7 @@ fetch_user_maps (void)
         )
         {
                 info_error(_("Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"),
-                    filename, NULL);
+                           filename);
                 free(filename);
                 return 0;
         }
@@ -997,7 +996,7 @@ fetch_user_maps (void)
         {
                 info_error
                   (_("Your infokey file `%s' is out of date -- run infokey to update it"),
-                    filename, NULL);
+                    filename);
                 free(filename);
                 return 0;
         }
@@ -1013,7 +1012,7 @@ fetch_user_maps (void)
                 if (n < 0 || (unsigned int) n > len - 4 - (p - buf))
                 {
                         info_error(_("Invalid infokey file `%s' (bad section length) -- run infokey to update it"),
-                            filename, NULL);
+                            filename);
                         free(filename);
                         return 0;
                 }
@@ -1034,7 +1033,7 @@ fetch_user_maps (void)
                         break;
                 default:
                         info_error(_("Invalid infokey file `%s' (bad section code) -- run infokey to update it"),
-                            filename, NULL);
+                            filename);
                         free(filename);
                         return 0;
                 }
@@ -1168,8 +1167,7 @@ section_to_keymaps(Keymap map, unsigned char *table, unsigned int len)
                 }
         }
         if (state != getseq)
-                info_error(_("Bad data in infokey file -- some key bindings ignored"),
-                    NULL, NULL);
+                info_error(_("Bad data in infokey file -- some key bindings ignored"));
         return !stop;
 }
 
@@ -1218,8 +1216,7 @@ section_to_vars(unsigned char *table, unsigned int len)
               }
           }
       if (state != getvar)
-        info_error(_("Bad data in infokey file -- some var settings ignored"),
-            NULL, NULL);
+        info_error(_("Bad data in infokey file -- some var settings ignored"));
 }
 
 void

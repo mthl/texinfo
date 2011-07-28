@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.15 2011-02-16 21:31:06 gray Exp $
+   $Id: echo-area.c,v 1.16 2011-07-28 07:14:05 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -937,11 +937,10 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       int limit, iterations, max_label = 0;
 
       initialize_message_buffer ();
-      printf_to_message_buffer (completions_found_index == 1
-                                ? _("One completion:\n")
-                                : _("%d completions:\n"),
-				(void *) (long) completions_found_index,
-				NULL, NULL);
+      printf_to_message_buffer (ngettext ("%d completion:\n",
+					  "%d completions:\n",
+					  completions_found_index),
+				completions_found_index);
 
       /* Find the maximum length of a label. */
       for (i = 0; i < completions_found_index; i++)
@@ -987,17 +986,17 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 
                   label = completions_found[l]->label;
                   printed_length = strlen (label);
-                  printf_to_message_buffer ("%s", label, NULL, NULL);
+                  printf_to_message_buffer ("%s", label);
 
                   if (j + 1 < limit)
                     {
                       for (k = 0; k < max_label - printed_length; k++)
-                        printf_to_message_buffer (" ", NULL, NULL, NULL);
+                        printf_to_message_buffer (" ");
                     }
                 }
               l += iterations;
             }
-          printf_to_message_buffer ("\n", NULL, NULL, NULL);
+          printf_to_message_buffer ("\n");
         }
 
       /* Make a new node to hold onto possible completions.  Don't destroy
@@ -1221,8 +1220,7 @@ build_completions (void)
       if (!informed_of_lengthy_job && completions_found_index > 100)
         {
           informed_of_lengthy_job = 1;
-          window_message_in_echo_area (_("Building completions..."),
-              NULL, NULL);
+          window_message_in_echo_area (_("Building completions..."));
         }
     }
 

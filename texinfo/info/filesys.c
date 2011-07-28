@@ -1,5 +1,5 @@
 /* filesys.c -- filesystem specific functions.
-   $Id: filesys.c,v 1.15 2009-10-25 18:29:00 karl Exp $
+   $Id: filesys.c,v 1.16 2011-07-28 07:14:05 gray Exp $
 
    Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009
    Free Software Foundation, Inc.
@@ -684,7 +684,7 @@ filesys_read_compressed (char *pathname, long int *filesize)
 
       temp = xmalloc (5 + strlen (command));
       sprintf (temp, "%s...", command);
-      message_in_echo_area ("%s", temp, NULL);
+      message_in_echo_area ("%s", temp);
       free (temp);
     }
 #endif /* !BUILDING_LIBRARY */

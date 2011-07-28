@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.36 2011-04-06 21:16:12 gray Exp $
+   $Id: info.c,v 1.37 2011-07-28 07:14:05 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
@@ -369,10 +369,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (!initial_node)
     {
       if (info_recent_file_error)
-        info_error (info_recent_file_error, NULL, NULL);
+        info_error ("%s", info_recent_file_error);
       else
         info_error (msg_cant_find_node,
-                    user_nodenames ? user_nodenames[0] : "Top", NULL);
+                    user_nodenames ? user_nodenames[0] : "Top");
       xexit (1);
     }
 

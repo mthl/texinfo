@@ -1,5 +1,5 @@
 /* nodemenu.c -- produce a menu of all visited nodes.
-   $Id: nodemenu.c,v 1.11 2008-06-11 09:55:42 gray Exp $
+   $Id: nodemenu.c,v 1.12 2011-07-28 07:14:05 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -199,15 +199,13 @@ get_visited_nodes (Function *filter_func)
   printf_to_message_buffer
     ("%s", replace_in_documentation
      (_("Here is the menu of nodes you have recently visited.\n\
-Select one from this menu, or use `\\[history-node]' in another window.\n"), 0),
-     NULL, NULL);
+Select one from this menu, or use `\\[history-node]' in another window.\n"), 0));
 
-  printf_to_message_buffer ("%s\n", (char *) nodemenu_format_info (),
-      NULL, NULL);
+  printf_to_message_buffer ("%s\n", nodemenu_format_info ());
 
   for (i = 0; (lines != NULL) && (i < lines_index); i++)
     {
-      printf_to_message_buffer ("%s\n", lines[i], NULL, NULL);
+      printf_to_message_buffer ("%s\n", lines[i]);
       free (lines[i]);
     }
 
@@ -333,7 +331,7 @@ DECLARE_INFO_COMMAND (select_visited_node,
       entry = info_get_labeled_reference (line, menu);
 
       if (!entry)
-        info_error (_("The reference disappeared! (%s)."), line, NULL);
+        info_error (_("The reference disappeared! (%s)."), line);
       else
         info_select_reference (window, entry);
     }

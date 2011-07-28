@@ -1,5 +1,5 @@
 /* m-x.c -- Meta-x minibuffer reader.
-   $Id: m-x.c,v 1.8 2008-06-11 09:55:42 gray Exp $
+   $Id: m-x.c,v 1.9 2011-07-28 07:14:05 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -136,8 +136,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
         (strncmp (line, "echo-area-", 10) == 0))
       {
         free (line);
-        info_error (_("Cannot execute an `echo-area' command here."),
-            NULL, NULL);
+        info_error (_("Cannot execute an `echo-area' command here."));
         return;
       }
 
@@ -150,7 +149,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
     if (InfoFunction(command))
       (*InfoFunction(command)) (active_window, count, 0);
     else
-      info_error (_("Undefined command: %s"), line, NULL);
+      info_error (_("Undefined command: %s"), line);
   }
 }
 
