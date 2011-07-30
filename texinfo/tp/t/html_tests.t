@@ -38,6 +38,14 @@ in first column, verbatim
 
 @verbatiminclude file_with_xml_chars.texi
 '],
+['index_and_node_same_name',
+'@top top
+@node index node
+
+@cindex node
+@printindex cp
+
+']
 );
 
 foreach my $test (@test_cases) {

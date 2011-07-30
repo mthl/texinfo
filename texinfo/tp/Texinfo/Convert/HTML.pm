@@ -2861,6 +2861,9 @@ sub _convert_printindex_command($$$$)
     # FIXME id or target?
     my $index_element_id = $self->_element_direction($self->{'current_element'},
                                                      'This', 'id');
+    if (!defined($index_element_id)) {
+      $index_element_id = $target_prefix;
+    }
     # FIXME use [[:alpha:]]
     my $is_symbol = $letter !~ /^[A-Za-z]/;
     my $identifier;

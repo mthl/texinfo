@@ -249,6 +249,59 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
           'text' => '
 ',
           'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'Copying footnote'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'xref',
+              'contents' => [],
+              'extra' => {
+                'brace_command_contents' => [
+                  [
+                    {}
+                  ]
+                ],
+                'label' => {},
+                'node_argument' => {
+                  'node_content' => [
+                    {}
+                  ],
+                  'normalized' => 'Copying-footnote'
+                }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 16,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '.
+'
+            }
+          ],
+          'parent' => {},
+          'type' => 'paragraph'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
       'extra' => {
@@ -314,6 +367,15 @@ $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[3]{'pa
 $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
 $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
 $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'label'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
 $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'};
@@ -333,6 +395,8 @@ In footnote.
 
 @insertcopying
 
+@xref{Copying footnote}.
+
 ';
 
 
@@ -341,6 +405,8 @@ $result_texts{'anchor_in_copying_in_footnote'} = '
 
 
 
+
+.
 
 ';
 
@@ -388,6 +454,8 @@ Copying(1).
 
    Copying(2).
 
+   *Note Copying footnote::.
+
    ---------- Footnotes ----------
 
    (1) In footnote.
@@ -398,9 +466,9 @@ Copying(1).
 
 Tag Table:
 Node: Top122
-Ref: Top-Footnote-1221
-Ref: Copying footnote240
-Ref: Top-Footnote-2242
+Ref: Top-Footnote-1251
+Ref: Copying footnote270
+Ref: Top-Footnote-2272
 
 End Tag Table
 ';
@@ -414,6 +482,100 @@ $result_converted_errors{'info'}->{'anchor_in_copying_in_footnote'} = [
     'type' => 'error',
     'macro' => '',
     'line_nr' => 5
+  }
+];
+
+
+
+$result_converted{'html'}->{'anchor_in_copying_in_footnote'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+Copying.
+
+ -->
+<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+
+<p>Copying<a name="DOCF1" href="#FOOT1">(1)</a>.
+</p>
+
+
+
+<p>Copying<a name="DOCF1_2" href="#FOOT1_2">(2)</a>.
+</p>
+
+
+<p>See <a href="#Copying-footnote">Copying footnote</a>.
+</p>
+<div class="footnote">
+<hr>
+<h3 class="footnote">Footnotes</h3>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>In footnote.
+<a name="Copying-footnote"></a></p>
+<h3><a name="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
+<p>In footnote.
+<a name="Copying-footnote"></a></p>
+</div>
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'anchor_in_copying_in_footnote'} = [
+  {
+    'error_line' => 'warning: Must specify a title with a title command or @top
+',
+    'text' => 'Must specify a title with a title command or @top',
+    'type' => 'warning'
   }
 ];
 

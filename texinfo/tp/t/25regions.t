@@ -46,6 +46,8 @@ Copying.
 
 @insertcopying
 
+@xref{Copying information}.
+
 '],
 ['anchor_in_copying_in_footnote',
 '@copying
@@ -63,6 +65,8 @@ In footnote.
 
 @insertcopying
 
+@xref{Copying footnote}.
+
 '],
 ['format_in_titlepage',
 '@titlepage
@@ -76,10 +80,22 @@ Published
 @node Top
 
 '],
+['anchor_in_titlepage',
+'@titlepage
+
+@anchor{in titlepage}
+@end titlepage
+
+@top top
+@node Top
+
+@xref{in titlepage}.
+'],
 );
 
 foreach my $test (@test_formatted) {
-  $test->[2]->{'test_formats'} = ['info'];
+  push @{$test->[2]->{'test_formats'}}, 'info';
+  push @{$test->[2]->{'test_formats'}}, 'html';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

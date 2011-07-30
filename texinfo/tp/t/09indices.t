@@ -227,6 +227,15 @@ Top.
 
 @printindex cp
 '],
+['index_entry_in_footnote',
+'@node Top
+
+Top node@footnote{in footnote
+@cindex index entry in footnote
+}
+
+@printindex cp
+'],
 ['printindex_index_entry_in_copying_in_footnote',
 '@copying
 
