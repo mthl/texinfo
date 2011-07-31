@@ -270,6 +270,7 @@ sub command_filename($$)
       return $target->{'filename'};
     }
   }
+  #print STDERR "No filename ".Texinfo::Parser::_print_command_args_texi($command);
   return undef;
 }
 
@@ -351,10 +352,23 @@ sub command_href($$$)
   my $href = '';
 
   my $target_filename = $self->command_filename($command);
-  if (defined($target_filename) and 
-      (!defined($filename) 
-       or $filename ne $target_filename)) {
-    $href .= $target_filename;
+  if (!defined($target_filename)) {
+    # Happens if there are no pages, for example if OUTPUT is set to ''
+    # as in the test cases.  Also for things in @titlepage when
+    # titlepage is not output.
+    if ($self->{'pages'} and $self->{'pages'}->[0]
+       and defined($self->{'pages'}->[0]->{'filename'})) {
+      # In that case use the first page.
+      # FIXME error message?
+      #print STDERR "No filename for $target\n";
+      $target_filename = $self->{'pages'}->[0]->{'filename'};
+    }
+  }
+  if (defined($target_filename)) { 
+    if (!defined($filename) 
+         or $filename ne $target_filename) {
+      $href .= $target_filename;
+    }
   }
   $href .= '#' . $target if ($target ne '');
   return $href;
@@ -839,7 +853,7 @@ our %defaults = (
                              [ 'NodeUp', \&_default_node_direction ], ' ',
                              'Contents', 'Index'],
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
-                              'Up', 'NextFile', 'PrevFile'],
+                              'NodeUp', 'NextFile', 'PrevFile'],
 #  'TOP_BUTTONS'          => ['Back', 'Forward', ' ',
 #                             'Contents', 'Index', 'About'],
 #
@@ -1371,12 +1385,18 @@ sub _convert_footnote_command($$$$)
     return '';
   }
 
-  my $document_filename = $self->{'current_filename'};
-  my $footnote_filename = $self->command_filename($command);
-  $footnote_filename = '' if (!defined($footnote_filename));
-  $document_filename = '' if (!defined($document_filename));
+  my $document_filename;
+  my $footnote_filename;
+  if ($self->get_conf('footnotestyle') eq 'separate') {
+    $footnote_filename = $self->command_filename($command);
+    $document_filename = $self->{'current_filename'};
+    $footnote_filename = '' if (!defined($footnote_filename));
+    $document_filename = '' if (!defined($document_filename));
 
-  if ($document_filename eq $footnote_filename) {
+    if ($document_filename eq $footnote_filename) {
+      $document_filename = $footnote_filename = '';
+    }
+  } else {
     $document_filename = $footnote_filename = '';
   }
   my $footnote_text;
@@ -2661,7 +2681,7 @@ sub _convert_xref_commands($$$$)
     my $node 
      = $self->label_command($root->{'extra'}->{'node_argument'}->{'normalized'}); 
     # This is the node if USE_NODES, otherwise this may be the sectioning 
-    # if the sectioning command is really associated to the node
+    # command (if the sectioning command is really associated to the node)
     my $command = $self->command_element_command($node);
     $command = $node if (!$node->{'extra'}->{'associated_section'}
                          or $node->{'extra'}->{'associated_section'} ne $command);
@@ -3021,7 +3041,6 @@ sub _convert_informative_command($$$$)
   if ($self->get_conf('INLINE_CONTENTS') 
        and ($cmdname eq 'contents' or $cmdname eq 'shortcontents')
        and ! $self->get_conf('set'.$cmdname.'aftertitlepage')) {
-#              and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
     return $self->_contents_inline_element($cmdname, $command);
   }
   return '';
@@ -3702,8 +3721,14 @@ sub _convert_element_type($$$$)
     my $heading = $self->command_text($element, 'text');
     $result .= &{$self->{'heading_text'}}($self, '', $heading, 0)."\n";
 
-    $result .= &{$self->{'special_element_body'}}($self, 
+    my $special_element_body .= &{$self->{'special_element_body'}}($self, 
                                                  $special_element, $element);
+    # This may happen with footnotes in regions that are not expanded,
+    # like @copying or @titlepage
+    if ($special_element_body eq '') {
+      return '';
+    }
+    $result .= $special_element_body;
   } elsif (!$element->{'element_prev'}) {
     $result .= $self->_print_title();
     if (!$element->{'element_next'}) {
@@ -4430,13 +4455,12 @@ sub _get_page($$)
            and $self->{'special_pages_types'}->{'Footnotes'}) {
         # FIXME element and root_command?
         return ($self->{'special_pages_types'}->{'Footnotes'});
-      }
       # } elsif (($current->{'cmdname'} eq 'contents' 
       #           or $current->{'cmdname'} eq 'shortcontents'
       #           or $current->{'cmdname'} eq 'summarycontents')
       #          and !$self->get_conf('INLINE_CONTENTS')) {
       #   setcontentsaftertitlepage
-      # }
+      }
     }
     if ($current->{'parent'}) {
       $current = $current->{'parent'};
@@ -4503,7 +4527,7 @@ sub _set_page_files($$)
           foreach my $root_command (@{$element->{'contents'}}) {
             if ($root_command->{'cmdname'} 
                 and $root_command->{'cmdname'} eq 'node') {
-              # Hapens for bogus nodes
+              # Happens for bogus nodes
               #if (!defined($self->{'targets'}->{$root_command})
               #    or !defined($self->{'targets'}->{$root_command}->{'node_filename'})) {
               #  print STDERR "BUG: no target/filename($root_command): ".Texinfo::Structuring::_print_root_command_texi($root_command)."\n";
@@ -4635,28 +4659,11 @@ sub _prepare_special_elements($$)
       if ($self->get_conf($cmdname)) {
         if ($self->get_conf('INLINE_CONTENTS') 
            or ($self->get_conf('set'.$cmdname.'aftertitlepage'))) {
-     #        and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
         } else {
           $do_special{$type} = 1;
         }
       }
     }
-   # if ($self->get_conf('contents')) {
-   #   if ($self->get_conf('INLINE_CONTENTS') 
-   #      or ($self->get_conf('setcontentsaftertitlepage')
-   #          and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
-   #   } else {
-   #     $do_special{'Contents'} = 1;
-   #   }
-   # }
-   # if ($self->get_conf('shortcontents')) {
-   #   if ($self->get_conf('INLINE_CONTENTS')
-   #       or ($self->get_conf('setshortcontentsaftertitlepage')
-   #          and $self->get_conf('USE_TITLEPAGE_FOR_TITLE'))) {
-   #   } else {
-   #     $do_special{'Overview'} = 1;
-   #   }
-   # }
   }
   if ($self->{'extra'}->{'footnote'} 
       and $self->get_conf('footnotestyle') eq 'separate'
@@ -4715,6 +4722,7 @@ sub _prepare_special_elements($$)
       my $page = {'type' => 'page'};
       push @{$page->{'contents'}}, $element;
       $page->{'extra'}->{'element'} = $element;
+      $page->{'extra'}->{'special_page'} = $type;
       $self->{'special_pages_types'}->{$type} = $page;
       $element->{'parent'} = $page;
       $self->_set_page_file($page, $filename);
@@ -4729,7 +4737,6 @@ sub _prepare_special_elements($$)
     $self->{'ids'}->{$id} = $element;
   }
   return ($special_elements, $pages);
-
 }
 
 sub _prepare_contents_elements($)
@@ -4743,7 +4750,6 @@ sub _prepare_contents_elements($)
       if ($self->get_conf($cmdname)) {
         my $default_filename;
         if ($self->get_conf('set'.$cmdname.'aftertitlepage')) {
-          #next unless $self->get_conf('USE_TITLEPAGE_FOR_TITLE');
           if ($self->{'pages'}) {
             $default_filename = $self->{'pages'}->[0]->{'filename'};
           }
@@ -4800,6 +4806,8 @@ sub _prepare_global_targets($$)
 
   $self->{'global_target_elements'}->{'First'} = $elements->[0];
   $self->{'global_target_elements'}->{'Last'} = $elements->[-1];
+  # It is always the first printindex, even if it is not output (for example
+  # it is in @copying and @titlepage, which are certainly wrong constructs).
   if ($self->{'extra'} and $self->{'extra'}->{'printindex'}) {
     my ($page, $element, $root_command) 
      = $self->_get_page($self->{'extra'}->{'printindex'}->[0]);
@@ -5085,6 +5093,8 @@ sub _element_direction($$$$;$)
         return $self->command_href($external_node, $filename);
       } elsif ($type eq 'text' or $type eq 'node') {
         return $self->command_text($external_node);
+      } elsif ($type eq 'string') {
+        return $self->command_text($external_node, $type);
       }
     } elsif ($type eq 'node') {
       $command = $element_target->{'extra'}->{'node'};
@@ -5612,8 +5622,6 @@ sub convert($$)
 
   if (!defined($elements)) {
     $result = $self->_convert($root);
-    #my $footnotes = $self->_footnotes();
-    #$result .= $footnotes;
   } else {
     foreach my $element (@$elements) {
       my $element_text = $self->_convert($element);
@@ -5837,9 +5845,20 @@ sub output($$)
     foreach my $page (@$pages, @$special_pages) {
       my $file_fh;
       $self->{'current_filename'} = $page->{'filename'};
+      # First do the special pages, to avoid outputting these if they are
+      # empty.
+      my $special_page_content;
+      if ($page->{'extra'} and $page->{'extra'}->{'special_page'}) {
+        $special_page_content = '';
+        foreach my $element (@{$page->{'contents'}}) {
+          $special_page_content .= $self->_convert($element);
+        }
+        next if ($special_page_content eq '');
+      }
+      # Then open the file and output the elements or the special_page_content
       if (!$files{$page->{'filename'}}->{'fh'}) {
         $file_fh = $self->Texinfo::Common::open_out ($page->{'out_filename'},
-                                                      $self->{'perl_encoding'});
+                                                     $self->{'perl_encoding'});
         if (!$file_fh) {
          $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $page->{'out_filename'}, $!));
@@ -5853,9 +5872,13 @@ sub output($$)
       } else {
         $file_fh = $files{$page->{'filename'}}->{'fh'};
       }
-      foreach my $element (@{$page->{'contents'}}) {
-        my $element_text = $self->_convert($element);
-        print $file_fh $element_text;
+      if (defined($special_page_content)) {
+        print $file_fh $special_page_content;
+      } else {
+        foreach my $element (@{$page->{'contents'}}) {
+          my $element_text = $self->_convert($element);
+          print $file_fh $element_text;
+        }
       }
       $self->{'file_counters'}->{$page->{'filename'}}--;
       if ($self->{'file_counters'}->{$page->{'filename'}} == 0) {
@@ -5871,6 +5894,8 @@ sub output($$)
     foreach my $label (keys (%{$self->{'labels'}})) {
       my $node = $self->{'labels'}->{$label};
       my $target = $self->_get_target($node);
+      # filename may not be defined in case of an @anchor or similar in
+      # @titlepage, and @titlepage is not used.
       my $filename = $self->command_filename($node);
       my $node_filename;
       if ($node->{'extra'}->{'normalized'} eq 'Top' 
@@ -5884,7 +5909,7 @@ sub output($$)
       } else {
         $node_filename = $target->{'node_filename'};
       }
-      if ($node_filename ne $filename) {
+      if (defined($filename) and $node_filename ne $filename) {
         my $redirection_page 
           = &{$self->{'node_redirection_page'}}($self, $node);
         my $out_filename;

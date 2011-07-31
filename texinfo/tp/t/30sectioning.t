@@ -308,6 +308,15 @@ $section_in_unnumbered_text
 '@unnumbered
 @unnumbered
 '],
+['node_up_external_node',
+'@node Top
+
+@menu
+* first::
+@end menu
+
+@node first, (manual1), (manual2) , (manual3)
+', {'test_split' => 'node'}]
 );
 
 my @tests_info = (

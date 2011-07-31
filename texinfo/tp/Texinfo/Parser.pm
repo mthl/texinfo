@@ -957,6 +957,30 @@ sub _print_current($)
   }
 }
 
+# for debugging
+sub _print_command_args_texi($)
+{
+  my $current = shift;
+  return '' if (!$current->{'cmdname'});
+  my $args = '';
+  my $with_brace;
+  if ($current->{'args'} and @{$current->{'args'}}) {
+    $with_brace 
+        = ($current->{'args'}->[0]->{'type'} eq 'brace_command_arg'
+           or $current->{'args'}->[0]->{'type'} eq 'brace_command_context');
+    $args .= '{' if ($with_brace);
+    foreach my $arg (@{$current->{'args'}}) {
+      $args .= Texinfo::Convert::Texinfo::convert($arg).', ';
+    }
+    $args =~ s/, $//;
+  }
+  chomp($args);
+  if ($with_brace) {
+    $args .= '}';
+  }
+  return '@'.$current->{'cmdname'} .$args."\n";
+}
+
 sub _print_current_keys($)
 {
   my $current = shift;

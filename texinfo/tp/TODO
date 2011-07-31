@@ -1,7 +1,7 @@
 l 3273 in HTML.pm don't be in preformatted for the description.
 but call the function for the other stuff.
 
-remove _*directions('This' and replace with new API.
+remove _*directions('This' and replace with new API. Done?
 
 There should be an error message (report by Tom Tromey) in 
 t/results/xtable/text_between_item_itemx.pl
@@ -284,6 +284,11 @@ tex_in_copying.texi               (this is not invalid and not
 partly done:
 indices/recursive_synindex.texi (only done: @synindex aaa bbb
                                             @synindex bbb aaa)
+indices/index_special_region.texi  (in HTML, split output test. For 
+                                    anchor in @titlepage, for example.
+                                    It is mostly in 25regions.t too)
+                                   also tests for the footnotes in 
+                                   titlepage/copying. 
 
 done: info_coverage
 code.texi                 certainly not needed
