@@ -67,6 +67,11 @@ our %unicode_diacritics = (
        'ogonek'     => '0328'
 );
 
+our %diacritics_accent_commands;
+foreach my $diacritic(keys(%unicode_diacritics)) {
+  $diacritics_accent_commands{$unicode_diacritics{$diacritic}} = $diacritic;
+}
+
 our %unicode_accented_letters = (
     'dotaccent' => { # dot above
         'A' => '0226', #C moz-1.2 
@@ -596,6 +601,15 @@ foreach my $symbol(keys(%unicode_map)) {
     $no_transliterate_map{$unicode_map{$symbol}} = 1;
   }
 }
+
+our %transliterate_accent_map;
+foreach my $command (keys(%unicode_accented_letters)) {
+  foreach my $letter(keys (%{$unicode_accented_letters{$command}})) {
+    $transliterate_accent_map{$unicode_accented_letters{$command}->{$letter}} = $letter
+      unless (exists($transliterate_map{$unicode_accented_letters{$command}->{$letter}}));
+  }
+}
+
 
 # currently unused
 my %makeinfo_transliterate_map = (

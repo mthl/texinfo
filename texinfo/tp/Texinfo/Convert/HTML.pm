@@ -631,6 +631,7 @@ my (%BUTTONS_TEXT, %BUTTONS_GOTO, %BUTTONS_NAME, %SPECIAL_ELEMENTS_NAME);
 sub _translate_names($)
 {
   my $self = shift;
+  #print STDERR "encoding_name: $self->{'encoding_name'} documentlanguage: ".$self->get_conf('documentlanguage')."\n";
 
 
   %BUTTONS_TEXT = (
@@ -2033,7 +2034,9 @@ sub _convert_heading_command($$$$$)
   if ($cmdname eq 'node') {
     if (!$element or (!$element->{'extra'}->{'section'}
                       and $element->{'extra'}->{'node'}
-                      and $element->{'extra'}->{'node'} eq $command)) {
+                      and $element->{'extra'}->{'node'} eq $command
+                      # bogus node may not have been normalized
+                      and defined($command->{'extra'}->{'normalized'}))) {
       if ($command->{'extra'}->{'normalized'} eq 'Top') {
         $heading_level = 0;
       } else {
@@ -3043,6 +3046,9 @@ sub _convert_informative_command($$$$)
        and ! $self->get_conf('set'.$cmdname.'aftertitlepage')) {
     return $self->_contents_inline_element($cmdname, $command);
   }
+  if ($cmdname eq 'documentlanguage') {
+    $self->_translate_names();
+  }
   return '';
 }
 
@@ -3983,7 +3989,7 @@ sub _initialize($)
   $self->{'multiple_pass'} = [],
   $self->_new_document_context('_toplevel_context');
 
-  $self->_translate_names();
+  #$self->_translate_names();
 
   return $self;
 }
@@ -4527,13 +4533,33 @@ sub _set_page_files($$)
           foreach my $root_command (@{$element->{'contents'}}) {
             if ($root_command->{'cmdname'} 
                 and $root_command->{'cmdname'} eq 'node') {
-              # Happens for bogus nodes
+              # Happens for bogus nodes, as bogus nodes are not in 
+              # %{$self->{'labels'}}
               #if (!defined($self->{'targets'}->{$root_command})
               #    or !defined($self->{'targets'}->{$root_command}->{'node_filename'})) {
               #  print STDERR "BUG: no target/filename($root_command): ".Texinfo::Structuring::_print_root_command_texi($root_command)."\n";
               #}
-              $self->_set_page_file($page, 
-                   $self->{'targets'}->{$root_command}->{'node_filename'});
+              my $node_filename;
+              # double node are not normalized
+              if (!defined($root_command->{'extra'}->{'normalized'})
+                  or !defined($self->{'labels'}->{$root_command->{'extra'}->{'normalized'}})) {
+                $node_filename = 'unknown_node';
+                $node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
+                  if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
+                    and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+              } else { 
+                if (!defined($self->{'targets'}->{$root_command})
+                    or !defined($self->{'targets'}->{$root_command}->{'node_filename'})) {
+                  # Should normally be a double node.  Use the equivalent node.
+                  # However since double nodes are not normalized, in fact it 
+                  # never happens.
+                  $root_command
+                    = $self->{'labels'}->{$root_command->{'extra'}->{'normalized'}};
+                }
+                $node_filename 
+                  = $self->{'targets'}->{$root_command}->{'node_filename'};
+              }
+              $self->_set_page_file($page, $node_filename);
               next PAGE;
             }
           }
@@ -4616,6 +4642,7 @@ sub _prepare_elements($$)
   # do that now to have it available for formatting
   # FIXME set language and documentencoding/encoding_name? If not done already.
   $self->_set_global_multiple_commands(-1);
+  $self->_translate_names();
 
   if ($self->get_conf('USE_NODES')) {
     $elements = Texinfo::Structuring::split_by_node($root);
@@ -4633,13 +4660,16 @@ sub _prepare_elements($$)
   #    print STDERR "ELEMENT $element->{'type'}: $element\n";
   #  }
   #}
+
   $self->_set_root_commands_targets_node_files($elements);
+
   foreach my $couple ([$elements, 'elements'], 
                       [$special_elements, 'special_elements'],
                       [$special_pages, 'special_pages']) {
     $self->{$couple->[1]} = $couple->[0]
       if (defined($couple->[0]));
   }
+
   return ($elements, $special_elements, $special_pages);
 }
 
@@ -5909,6 +5939,9 @@ sub output($$)
       } else {
         $node_filename = $target->{'node_filename'};
       }
+      #if (!defined($filename)) {
+      #  print STDERR "No filename ".Texinfo::Parser::_print_command_args_texi($node);
+      #}
       if (defined($filename) and $node_filename ne $filename) {
         my $redirection_page 
           = &{$self->{'node_redirection_page'}}($self, $node);

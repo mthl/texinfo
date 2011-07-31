@@ -173,7 +173,7 @@ sub _unicode_to_transliterate($;$)
                and exists($Texinfo::Convert::Unicode::transliterate_map{uc(sprintf("%04x",ord($char)))})) {
         $result .= $Texinfo::Convert::Unicode::transliterate_map{uc(sprintf("%04x",ord($char)))};
       } elsif (ord($char) <= hex(0xFFFF) 
-               and exists($Texinfo::Convert::Unicode::unicode_diacritics{uc(sprintf("%04x",ord($char)))})) {
+               and exists($Texinfo::Convert::Unicode::diacritics_accent_commands{uc(sprintf("%04x",ord($char)))})) {
         $result .= '';
       # in this case, we want to avoid calling unidecode, as we are sure
       # that there is no useful transliteration of the unicode character
@@ -186,11 +186,17 @@ sub _unicode_to_transliterate($;$)
         $result .= $char;
       } else {
         if ($no_unidecode) {
-          $result .= $char;
+          if (ord($char) <= hex(0xFFFF)
+              and exists ($Texinfo::Convert::Unicode::transliterate_accent_map{uc(sprintf("%04x",ord($char)))})) {
+            $result .= $Texinfo::Convert::Unicode::transliterate_accent_map{uc(sprintf("%04x",ord($char)))};
+          } else {
+            $result .= $char;
+          }
         } else {
           $result .= unidecode($char);
         }
       }
+      #print STDERR " ($no_unidecode) $text -> CHAR: ".ord($char)." ".uc(sprintf("%04x",ord($char)))."\n$result\n";
     } else {
       print STDERR "Bug: unknown character in cross ref transliteration (likely in infinite loop)\n";
       print STDERR "Text: !!$text!!\n";
