@@ -957,7 +957,7 @@ sub _print_current($)
   }
 }
 
-#Â for debugging
+# for debugging
 sub _print_command_args_texi($)
 {
   my $current = shift;
