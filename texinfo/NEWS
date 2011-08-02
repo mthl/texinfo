@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.203 2011-07-28 08:14:16 gray Exp $
+$Id: NEWS,v 1.204 2011-08-02 06:51:32 gray Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -70,7 +70,7 @@ one of the relevant sections:
     is specified.
   . Info keywords not included in searches.
   . There is a lower limit on the length of search patterns.  The default
-    value is 3.  It can be changed by setting the variable min-search-length,
+    value is 1.  It can be changed by setting the variable min-search-length,
     either by `M-x set-variable', or using infokey.
   . xz compression supported.
 

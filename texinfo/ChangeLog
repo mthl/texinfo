@@ -1,3 +1,9 @@
+2011-08-02  Sergey Poznyakoff  <gray@gnu.org>
+
+	* info/session.c (min_search_length): Set to 1.
+	* NEWS: Update.
+	* doc/info-stnd.texi: Update.
+
 2011-07-28  Sergey Poznyakoff  <gray@gnu.org>
 
 	* info/variables.c (info_variables): New variable:
