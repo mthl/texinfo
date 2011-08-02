@@ -1205,7 +1205,7 @@ sub _convert($$)
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'today') {
-      my $today = $self->expand_today();
+      my $today = $self->Texinfo::Common::expand_today();
       unshift @{$self->{'current_contents'}->[-1]}, $today;
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
       my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 

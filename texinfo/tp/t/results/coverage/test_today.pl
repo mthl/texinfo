@@ -40,7 +40,7 @@ $result_trees{'test_today'}{'contents'}[0]{'parent'} = $result_trees{'test_today
 $result_texis{'test_today'} = '@today{}.';
 
 
-$result_texts{'test_today'} = '.';
+$result_texts{'test_today'} = 'a sunny day.';
 
 $result_errors{'test_today'} = [];
 

@@ -380,7 +380,7 @@ sub test($$)
   $indices->{'merged_indices'} = $merged_indices
     unless (Data::Compare::Compare($merged_indices, $initial_merged_indices));
 
-  my $converted_text = Texinfo::Convert::Text::convert($result);
+  my $converted_text = Texinfo::Convert::Text::convert($result, {'TEST' => 1});
 
   my %converted;
   my %converted_errors;

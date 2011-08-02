@@ -138,6 +138,7 @@ my @variable_settables = (
   'NODE_FOOTER_BUTTONS',
   'MISC_BUTTONS', 'CHAPTER_BUTTONS', 'BUTTONS_NAME',
   'BUTTONS_EXAMPLE', 'SPECIAL_ELEMENTS_NAME',
+  'ACTIVE_ICONS', 'PASSIVE_ICONS',
   'DEFAULT_RULE', 'BIG_RULE',
   'MENU_ENTRY_COLON', 'INDEX_ENTRY_COLON', 'MENU_SYMBOL', 'DO_ABOUT',
   'CSS_FILES', 'CSS_REFS');
@@ -701,6 +702,13 @@ foreach my $encoding (keys(%eight_bit_encoding_aliases)) {
   $encoding_aliases{$eight_bit_encoding_aliases{$encoding}} = $encoding;
 }
 
+our @MONTH_NAMES =
+    (
+     'January', 'February', 'March', 'April', 'May',
+     'June', 'July', 'August', 'September', 'October',
+     'November', 'December'
+    );
+
 sub locate_include_file($$)
 {
   my $self = shift;
@@ -820,6 +828,20 @@ sub definition_category($$)
       return {'contents' => [$arg_category, {'text' => ' of '}, $arg_class]};
     }
   }
+}
+
+sub expand_today($)
+{
+  my $self = shift;
+  if ($self->get_conf('TEST')) {
+    return {'text' => 'a sunny day'};
+  }
+  my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
+   = localtime(time);
+  $year += ($year < 70) ? 2000 : 1900;
+  return $self->gdt('{month} {day}, {year}',
+          { 'month' => $self->gdt($MONTH_NAMES[$mon]),
+            'day' => $mday, 'year' => $year });
 }
 
 sub definition_arguments_content($)

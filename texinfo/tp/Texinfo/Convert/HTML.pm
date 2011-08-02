@@ -1130,7 +1130,7 @@ sub _convert_today_command($$$)
   my $cmdname = shift;
   my $command = shift;
 
-  my $tree = $self->expand_today();
+  my $tree = $self->Texinfo::Common::expand_today();
   return $self->convert_tree($tree);
 }
 

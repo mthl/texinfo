@@ -18594,7 +18594,7 @@ $result_texts{'at_commands_in_refs'} = 'Top
 * == error--> Euro ! ==> -::
 * >= <= ->::
 * a o -!- # -| ? (R)::
-* => o a b  aa::
+* => o a b a sunny day aa::
 * AA ae oe AE OE /o /O ss /l /L D d TH th::
 * a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
 * e. e( e_ .e e< j ee[::
@@ -18632,8 +18632,8 @@ $result_texts{'at_commands_in_refs'} = 'Top
 6 a o -!- # -| ? (R)
 ********************
 
-7 => o a b  aa
-**************
+7 => o a b a sunny day aa
+*************************
 
 8 AA ae oe AE OE /o /O ss /l /L D d TH th
 *****************************************

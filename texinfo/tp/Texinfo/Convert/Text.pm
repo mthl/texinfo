@@ -954,6 +954,21 @@ sub convert($;$)
     my $command = $root->{'cmdname'};
     if (defined($text_no_brace_commands{$root->{'cmdname'}})) {
       return $text_no_brace_commands{$root->{'cmdname'}};
+    } elsif ($root->{'cmdname'} eq 'today') {
+      if ($options->{'sort_string'} 
+          and $sort_brace_no_arg_commands{$root->{'cmdname'}}) {
+        return $sort_brace_no_arg_commands{$root->{'cmdname'}};
+      } elsif ($options->{'converter'}) {
+        return convert(Texinfo::Common::expand_today($options->{'converter'}),
+                       $options);
+      } elsif ($options->{'TEST'}) {
+        return 'a sunny day';
+      } else {
+        my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
+          = localtime(time);
+        $year += ($year < 70) ? 2000 : 1900;
+        return "$Texinfo::Common::MONTH_NAMES[$mon] $mday, $year";
+      }
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
       return brace_no_arg_command($root, $options->{'enabled_encoding'}, 
                                   $options->{'sort_string'});
