@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.50 2011-07-28 08:13:19 gray Exp $
+   $Id: session.c,v 1.51 2011-08-02 06:49:41 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -67,7 +67,7 @@ static int info_windows_slots = 0;
 static int use_regex = 1;
 
 /* Minimal length of a search string */
-int min_search_length = 3;
+int min_search_length = 1;
 
 void remember_window_and_node (WINDOW *window, NODE *node);
 void forget_window_and_nodes (WINDOW *window);
