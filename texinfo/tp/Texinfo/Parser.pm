@@ -4306,7 +4306,7 @@ sub _parse_texi($;$)
               if (!@{$explained->{'args'}} 
                   or !@{$explained->{'extra'}->{'brace_command_contents'}}
                   or !defined($explained->{'extra'}->{'brace_command_contents'}->[0])) {
-                $self->line_warning(
+                $self->line_warn(
                    sprintf($self->__("\@%s missing first argument"),
                            $explained->{'cmdname'}), $line_nr);
               } else {

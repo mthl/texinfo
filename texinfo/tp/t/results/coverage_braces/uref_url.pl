@@ -544,14 +544,14 @@ $result_texis{'uref_url'} = '@uref{--a,--b}
 ';
 
 
-$result_texts{'uref_url'} = '--a
+$result_texts{'uref_url'} = '--a (--b)
 --c
-
+ (--d)
 --g
 --i
 --k
 --l
---m
+--m (--n)
 --q
 ';
 

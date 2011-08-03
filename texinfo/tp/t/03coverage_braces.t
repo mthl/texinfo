@@ -28,6 +28,9 @@ my @test_cases = (
 @url{--m,--n}
 @url{--o,--p,--q}
 '],
+['empty_commands',
+'@uref{} @abbr{} @email{} @code{} @~{} @dotless{} @verb{;;}
+'],
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}, S@~{e}ction, 
 @cite{manual}}.'],

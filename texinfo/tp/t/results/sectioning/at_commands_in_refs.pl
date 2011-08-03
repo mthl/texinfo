@@ -18611,7 +18611,7 @@ $result_texts{'at_commands_in_refs'} = 'Top
 * 8.27in::
 * sansserif slanted::
 * indicateurl::
-* http://somewhere_aaa url ls::
+* http://somewhere_aaa url (text) ls::
 
 1  { }
 ******
@@ -18683,8 +18683,8 @@ $result_texts{'at_commands_in_refs'} = 'Top
 23 indicateurl
 **************
 
-24 http://somewhere_aaa url ls
-******************************
+24 http://somewhere_aaa url (text) ls
+*************************************
 
 
 

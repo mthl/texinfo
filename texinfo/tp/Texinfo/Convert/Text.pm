@@ -989,7 +989,15 @@ sub convert($;$)
       $replacement = _normalise_space(convert($root->{'args'}->[2], $options))
         if (defined($root->{'args'}->[2]));
       return $replacement if (defined($replacement) and $replacement ne '');
-      return convert($root->{'args'}->[0], $options);
+      my $text;
+      $text = convert($root->{'args'}->[1], $options)
+        if (defined($root->{'args'}->[1]));
+      my $result = convert($root->{'args'}->[0], $options);
+      if (defined($text) and $text ne '') {
+        return "$result ($text)";
+      } else {
+        return $result;
+      }
     } elsif ($Texinfo::Common::explained_commands{$root->{'cmdname'}}
              and $root->{'args'} and $root->{'args'}->[1]) {
       my $explanation = convert($root->{'args'}->[1], $options);
