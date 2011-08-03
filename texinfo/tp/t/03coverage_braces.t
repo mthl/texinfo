@@ -34,6 +34,10 @@ my @test_cases = (
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}, S@~{e}ction, 
 @cite{manual}}.'],
+['nested_in_sc',
+'@sc{@sc{aaa @~n @footnote{In footnote}, @abbr{ABr, expl}, 
+@verb{:in verb:}}}
+'],
 ['ref_in_style_command', '@samp{@ref{(manula)other node}}.'],
 ['uref_in_ref',
 '@ref{(file)node, cross ref with uref @uref{href://http/myhost.com/index.html,uref1}, title with uref2 @uref{href://http/myhost.com/index2.html,uref2}, info file with uref3 @uref{href://http/myhost.com/index3.html,uref3}, printed manual with uref4 @uref{href://http/myhost.com/index4.html,uref4}}

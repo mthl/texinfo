@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = '0.01';
 
 # this is in fact not needed for 'footnote', 'shortcaption', 'caption'
-# since they have no brace_command_arg below.
+# when they have no brace_command_arg, see below.
 my %ignored_brace_commands;
 foreach my $ignored_brace_command ('xref','ref','pxref','inforef','anchor',
    'footnote', 'shortcaption', 'caption', 'hyphenation') {
@@ -949,6 +949,17 @@ sub convert($;$)
   my $result = '';
   if (defined($root->{'text'})) {
     $result = $root->{'text'};
+    if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
+      if ($options->{'sc'}) {
+        $result = uc($result);
+      }
+      # FIXME don't do that in code and preformatted?  This won't be right
+      # for Xref anymore since '' `` should lead to " irrespective of code
+      # style.  However it is important, for instance in @image file 
+      # argument...
+      #$result =~ s/``/"/g;
+      #$result =~ s/\'\'/"/g;
+    }
   }
   if ($root->{'cmdname'}) {
     my $command = $root->{'cmdname'};
@@ -974,7 +985,12 @@ sub convert($;$)
                                   $options->{'sort_string'});
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
-      return text_accents ($root, $options->{'enabled_encoding'});
+      my $result = text_accents ($root, $options->{'enabled_encoding'});
+      if ($options->{'sc'}) {
+        return uc ($result);
+      } else {
+        return $result;
+      }
     } elsif ($root->{'cmdname'} eq 'image') {
       return convert($root->{'args'}->[0], $options);
     } elsif ($root->{'cmdname'} eq 'email') {
@@ -992,11 +1008,11 @@ sub convert($;$)
       my $text;
       $text = convert($root->{'args'}->[1], $options)
         if (defined($root->{'args'}->[1]));
-      my $result = convert($root->{'args'}->[0], $options);
+      my $url = convert($root->{'args'}->[0], $options);
       if (defined($text) and $text ne '') {
-        return "$result ($text)";
+        return "$url ($text)";
       } else {
-        return $result;
+        return $url;
       }
     } elsif ($Texinfo::Common::explained_commands{$root->{'cmdname'}}
              and $root->{'args'} and $root->{'args'}->[1]) {
@@ -1010,7 +1026,15 @@ sub convert($;$)
            and (($root->{'args'}->[0]->{'type'}
                 and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg')
                 or $root->{'cmdname'} eq 'math')) {
-      return convert($root->{'args'}->[0], $options);
+      my $result;
+      if ($root->{'cmdname'} eq 'sc') {
+        $options->{'sc'}++;
+      }
+      $result = convert($root->{'args'}->[0], $options);
+      if ($root->{'cmdname'} eq 'sc') {
+        $options->{'sc'}--;
+      }
+      return $result;
     # block commands
     } elsif ($root->{'cmdname'} eq 'quotation'
              or $root->{'cmdname'} eq 'smallquotation'

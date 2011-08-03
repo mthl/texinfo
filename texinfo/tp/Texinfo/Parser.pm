@@ -2622,7 +2622,11 @@ sub _end_line($$$)
                 if (defined($end_command));
             }
             if ($line =~ /\S/ and defined($end_command)) {
-              $self->line_error (sprintf($self->__("Superfluous argument to \@%s %s: %s"), $command, $end_command, $line), $line_nr);
+              my $texi_line 
+                = Texinfo::Convert::Texinfo::convert($current->{'args'}->[0]);
+              $texi_line =~ s/^\s*([[:alnum:]][[:alnum:]-]+)//;
+              $self->line_error (sprintf($self->__("Superfluous argument to \@%s %s: %s"), 
+                                 $command, $end_command, $texi_line), $line_nr);
             }
           } else {
             $self->line_error (sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
