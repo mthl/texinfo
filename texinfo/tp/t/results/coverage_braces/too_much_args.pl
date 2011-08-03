@@ -75,7 +75,7 @@ $result_trees{'too_much_args'}{'contents'}[0]{'parent'} = $result_trees{'too_muc
 $result_texis{'too_much_args'} = '@abbr{AZE, A truc Z b, E eep}';
 
 
-$result_texts{'too_much_args'} = 'AZE';
+$result_texts{'too_much_args'} = 'AZE (A truc Z b, E eep)';
 
 $result_errors{'too_much_args'} = [];
 

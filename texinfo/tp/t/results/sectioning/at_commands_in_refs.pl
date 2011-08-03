@@ -18601,8 +18601,8 @@ $result_texts{'at_commands_in_refs'} = 'Top
 * `` \'\' ` \' ,, ,::
 * << >> << >> < >::
 * `` \'\' --- --::
-* AAA AAA BBB::
-* CCC CCC DDD::
+* AAA (fff) AAA BBB::
+* CCC (rrr) CCC DDD::
 * the someone no_explain@there::
 * f--ile1  f--ile::
 *  @ {} . ::
@@ -18611,7 +18611,7 @@ $result_texts{'at_commands_in_refs'} = 'Top
 * 8.27in::
 * sansserif slanted::
 * indicateurl::
-* http://somewhere_aaa url /man.cgi/1/ls::
+* http://somewhere_aaa url ls::
 
 1  { }
 ******
@@ -18653,11 +18653,11 @@ $result_texts{'at_commands_in_refs'} = 'Top
 13 `` \'\' --- --
 ***************
 
-14 AAA AAA BBB
-**************
+14 AAA (fff) AAA BBB
+********************
 
-15 CCC CCC DDD
-**************
+15 CCC (rrr) CCC DDD
+********************
 
 16 the someone no_explain@there
 *******************************
@@ -18683,8 +18683,8 @@ $result_texts{'at_commands_in_refs'} = 'Top
 23 indicateurl
 **************
 
-24 http://somewhere_aaa url /man.cgi/1/ls
-*****************************************
+24 http://somewhere_aaa url ls
+******************************
 
 
 

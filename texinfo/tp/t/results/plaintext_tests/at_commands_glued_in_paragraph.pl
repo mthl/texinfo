@@ -654,7 +654,7 @@ index@cindex index
 $result_texts{'at_commands_glued_in_paragraph'} = 'at@.
 TeXTeXTeX.
 codein codecode.
-acronymABCacronym.
+acronymABC (aaa bb cc)acronym.
 acronym2ABCacronym.
 emailmaliemail.
 refref.

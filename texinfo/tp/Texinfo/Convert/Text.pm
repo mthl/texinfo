@@ -984,6 +984,20 @@ sub convert($;$)
          if (defined($root->{'args'}->[1]));
       return $text if (defined($text) and ($text ne ''));
       return $mail;
+    } elsif ($root->{'cmdname'} eq 'uref' or $root->{'cmdname'} eq 'url') {
+      my $replacement;
+      $replacement = _normalise_space(convert($root->{'args'}->[2], $options))
+        if (defined($root->{'args'}->[2]));
+      return $replacement if (defined($replacement) and $replacement ne '');
+      return convert($root->{'args'}->[0], $options);
+    } elsif ($Texinfo::Common::explained_commands{$root->{'cmdname'}}
+             and $root->{'args'} and $root->{'args'}->[1]) {
+      my $explanation = convert($root->{'args'}->[1], $options);
+      if ($explanation ne '') {
+        return convert($root->{'args'}->[0], $options) ." ($explanation)";
+      } else {
+        return convert($root->{'args'}->[0], $options);
+      }
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
            and (($root->{'args'}->[0]->{'type'}
                 and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg')

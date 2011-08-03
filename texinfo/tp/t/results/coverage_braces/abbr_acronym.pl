@@ -462,10 +462,10 @@ $result_texis{'abbr_acronym'} = '@acronym{--a,an accronym}
 ';
 
 
-$result_texts{'abbr_acronym'} = '--a
+$result_texts{'abbr_acronym'} = '--a (an accronym)
 --a
---a
-E\'--a. ,A.
+--a (an accronym , ...)
+E\'--a. ,A. (E\'tude--, Autonome)
 E\'--a. ,A.
 ';
 

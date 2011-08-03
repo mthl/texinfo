@@ -547,12 +547,12 @@ $result_texis{'uref_url'} = '@uref{--a,--b}
 $result_texts{'uref_url'} = '--a
 --c
 
---e
-
---j
-
+--g
+--i
+--k
+--l
 --m
---o
+--q
 ';
 
 $result_errors{'uref_url'} = [];
