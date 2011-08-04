@@ -133,7 +133,7 @@ Tests in contents/ are incorporated?  Also a test is missing, along:
 @chapter jjj
 @contents
 
-Fix @sc{@aa{}} 
+Fix @sc{@aa{}} and @sc{@'e} in HTML.
 
 construct like 
   @menu @c 

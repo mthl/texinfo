@@ -225,7 +225,7 @@ $result_texis{'nested_in_sc'} = '@sc{@sc{aaa @~n @aa{} @footnote{In footnote}, @
 ';
 
 
-$result_texts{'nested_in_sc'} = 'AAA N~ aa , ABR (EXPL), 
+$result_texts{'nested_in_sc'} = 'AAA N~ AA , ABR (EXPL), 
 in verb
 ';
 
@@ -233,7 +233,7 @@ $result_errors{'nested_in_sc'} = [];
 
 
 
-$result_converted{'plaintext'}->{'nested_in_sc'} = 'AAA N~ aa (1), ABR (EXPL), in verb
+$result_converted{'plaintext'}->{'nested_in_sc'} = 'AAA N~ AA (1), ABR (EXPL), in verb
 
    ---------- Footnotes ----------
 

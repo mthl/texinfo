@@ -247,7 +247,11 @@ sub _convert($;$)
          if ($root->{'extra'}
           and defined($root->{'extra'}->{'clickstyle'})
           and defined($normalize_node_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
-      return $normalize_node_brace_no_arg_commands{$command};
+      my $result = $normalize_node_brace_no_arg_commands{$command};
+      if ($in_sc and $Texinfo::Common::letter_no_arg_commands{$command}) {
+        $result = uc($result);
+      }
+      return $result;
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return '' if (!$root->{'args'});

@@ -803,28 +803,37 @@ sub text_accents($$)
   }
 }
 
-sub brace_no_arg_command($;$$)
+sub brace_no_arg_command($;$)
 {
   my $root = shift;
-  my $encoding = shift;
-  my $sort_string = shift;
+  my $options = shift;
+  my $encoding;
+  $encoding = $options->{'enabled_encoding'}
+    if ($options and $options->{'enabled_encoding'});
 
   my $command = $root->{'cmdname'};
   $command = $root->{'extra'}->{'clickstyle'}
      if ($root->{'extra'}
       and defined($root->{'extra'}->{'clickstyle'})
       and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
-  if ($encoding 
+  my $result;
+  if ($encoding
       and (($encoding eq 'utf-8' 
             and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command})
            or ($Texinfo::Common::eight_bit_encoding_aliases{$encoding}
                and $unicode_to_eight_bit{$Texinfo::Common::eight_bit_encoding_aliases{$encoding}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))) {
-    return $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command};
-  } elsif ($sort_string and $sort_brace_no_arg_commands{$command}) {
-    return $sort_brace_no_arg_commands{$command};
+    $result = $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command};
+  } elsif ($options and $options->{'sort_string'} 
+           and $sort_brace_no_arg_commands{$command}) {
+    $result = $sort_brace_no_arg_commands{$command};
   } else {
-    return $text_brace_no_arg_commands{$command};
+    $result = $text_brace_no_arg_commands{$command};
   }
+  if ($options and $options->{'sc'} 
+      and $Texinfo::Common::letter_no_arg_commands{$command}) {
+    $result = uc($result);
+  }
+  return $result;
 }
 
 # decompose a decimal number on a given base. The algorithm looks like
@@ -981,8 +990,7 @@ sub convert($;$)
         return "$Texinfo::Common::MONTH_NAMES[$mon] $mday, $year";
       }
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
-      return brace_no_arg_command($root, $options->{'enabled_encoding'}, 
-                                  $options->{'sort_string'});
+      return brace_no_arg_command($root, $options);
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       my $result = text_accents ($root, $options->{'enabled_encoding'});

@@ -332,11 +332,16 @@ foreach my $index_name (keys (%index_names)) {
 # command with braces. Value is the max number of arguments.
 our %brace_commands;    
 
+our %letter_no_arg_commands;
+foreach my $letter_no_arg_command ('aa','AA','ae','oe','AE','OE','o','O',
+                                   'ss','l','L','DH','dh','TH','th') {
+  $letter_no_arg_commands{$letter_no_arg_command} = 1;
+  $brace_commands{$letter_no_arg_command} = 0;
+}
 
 foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright',
   'registeredsymbol','dots','enddots','equiv','error','expansion','arrow',
   'minus','point','print','result','today',
-  'aa','AA','ae','oe','AE','OE','o','O','ss','l','L','DH','dh','TH','th',
   'exclamdown','questiondown','pounds','ordf','ordm','comma','euro',
   'geq','leq','tie','textdegree','click',
   'quotedblleft','quotedblright','quoteleft','quoteright','quotedblbase',

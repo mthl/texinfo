@@ -450,7 +450,7 @@ $result_converted{'plaintext'}->{'characters_and_commands_in_var'} = 'AAA. DLKSF
 
    SOMETHINGF VVAR.
 
-   AAC, R( E` aa.
+   AAC, R( E` AA.
 
    AAA(1)
 
