@@ -1028,12 +1028,9 @@ sub convert($;$)
                 or $root->{'cmdname'} eq 'math')) {
       my $result;
       if ($root->{'cmdname'} eq 'sc') {
-        $options->{'sc'}++;
+        $options = {%$options, 'sc' => 1};
       }
       $result = convert($root->{'args'}->[0], $options);
-      if ($root->{'cmdname'} eq 'sc') {
-        $options->{'sc'}--;
-      }
       return $result;
     # block commands
     } elsif ($root->{'cmdname'} eq 'quotation'

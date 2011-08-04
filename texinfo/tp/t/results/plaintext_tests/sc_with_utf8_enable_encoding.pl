@@ -100,7 +100,7 @@ $result_texis{'sc_with_utf8_enable_encoding'} = '@documentencoding utf-8
 ';
 
 
-$result_texts{'sc_with_utf8_enable_encoding'} = 'in sc.
+$result_texts{'sc_with_utf8_enable_encoding'} = 'IN SC.
 ';
 
 $result_errors{'sc_with_utf8_enable_encoding'} = [];

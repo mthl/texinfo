@@ -35,7 +35,7 @@ my @test_cases = (
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}, S@~{e}ction, 
 @cite{manual}}.'],
 ['nested_in_sc',
-'@sc{@sc{aaa @~n @footnote{In footnote}, @abbr{ABr, expl}, 
+'@sc{@sc{aaa @~n @aa{} @footnote{In footnote}, @abbr{ABr, expl}, 
 @verb{:in verb:}}}
 '],
 ['ref_in_style_command', '@samp{@ref{(manula)other node}}.'],

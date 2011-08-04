@@ -382,7 +382,7 @@ A quot---ation
 @var{somethingf  @c ]
 vvar}.
 
-@var{AA@,c @u{r} @`e}.
+@var{AA@,c @u{r} @`e @aa{}}.
 
 AAA@footnote{jdhfmqsdf
 dsf

@@ -4868,7 +4868,7 @@ A ref.
 A footnote.
 .
 
-TeX and te\'i^an_url and it is @verb  a word !@ AE.
+TeX and te\'i^an_url AND it is @verb  a word !@ AE.
 
 
 

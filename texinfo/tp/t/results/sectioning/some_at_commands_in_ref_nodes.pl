@@ -133,7 +133,17 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                           'contents' => [
                             {
                               'parent' => {},
-                              'text' => 'sc'
+                              'text' => 'sc '
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'parent' => {},
+                                  'text' => 'n'
+                                }
+                              ],
+                              'cmdname' => '~',
+                              'parent' => {}
                             }
                           ],
                           'parent' => {},
@@ -327,7 +337,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                     {},
                     {}
                   ],
-                  'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+                  'normalized' => 'A-SC-_00d1-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
                 }
               },
               'line_nr' => {},
@@ -427,7 +437,17 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'sc'
+                      'text' => 'sc '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'parent' => {},
+                          'text' => 'n'
+                        }
+                      ],
+                      'cmdname' => '~',
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -614,10 +634,10 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
         'nodes_manuals' => [
           {
             'node_content' => [],
-            'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+            'normalized' => 'A-SC-_00d1-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
           }
         ],
-        'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+        'normalized' => 'A-SC-_00d1-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
       },
       'line_nr' => {},
       'parent' => {}
@@ -1124,6 +1144,8 @@ $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'co
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1];
@@ -1192,6 +1214,8 @@ $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'conten
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0];
 $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'some_at_commands_in_ref_nodes'}{'contents'}[3]{'args'}[0];
@@ -1374,10 +1398,10 @@ $result_texis{'some_at_commands_in_ref_nodes'} = '
 @top Top
 
 @menu
-* A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}::
+* A @sc{sc @~n} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}::
 @end menu
 
-@node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}
+@node A @sc{sc @~n} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}
 @chapter  A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}
 
 see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotless i trema @"{@dotless{i}} @`{@=E} and exclamdown @exclamdown{},,,manual}.
@@ -1388,9 +1412,9 @@ $result_texts{'some_at_commands_in_ref_nodes'} = '
 Top
 ***
 
-* A sc node i" i" E=` /l C\', !::
+* A SC N~ node i" i" E=` /l C\', !::
 
-1 A sc node i" i" E=` /l C\', !
+1 A SC node i" i" E=` /l C\', !
 ******************************
 
 see .
@@ -1417,7 +1441,7 @@ $result_sectioning{'some_at_commands_in_ref_nodes'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+                'normalized' => 'A-SC-_00d1-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
               }
             }
           },
@@ -1454,7 +1478,7 @@ $result_nodes{'some_at_commands_in_ref_nodes'} = {
         'level' => 1,
         'number' => 1
       },
-      'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+      'normalized' => 'A-SC-_00d1-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
     },
     'node_prev' => {},
     'node_up' => {}
@@ -1498,7 +1522,7 @@ $result_menus{'some_at_commands_in_ref_nodes'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
-      'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+      'normalized' => 'A-SC-_00d1-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
     },
     'menu_up' => {},
     'menu_up_hash' => {
@@ -1515,17 +1539,17 @@ $result_errors{'some_at_commands_in_ref_nodes'} = [];
 $result_converted{'info'}->{'some_at_commands_in_ref_nodes'} = 'This is , produced by makeinfo version 4.13 from .
 
 
-File: ,  Node: Top,  Next: A SC node i" i" E=` /l C\', !,  Up: (dir)
+File: ,  Node: Top,  Next: A SC N~ node i" i" E=` /l C\', !,  Up: (dir)
 
 Top
 ***
 
 * Menu:
 
-* A SC node i" i" E=` /l C\', !::
+* A SC N~ node i" i" E=` /l C\', !::
 
 
-File: ,  Node: A SC node i" i" E=` /l C\', !,  Prev: Top,  Up: Top
+File: ,  Node: A SC N~ node i" i" E=` /l C\', !,  Prev: Top,  Up: Top
 
 1 A SC node i" i" E=` /l C\', !
 ******************************
@@ -1537,7 +1561,7 @@ dotless i trema i" E=` and exclamdown !.
 
 Tag Table:
 Node: Top52
-Node: A SC node i" i" E=` /l C\', !175
+Node: A SC N~ node i" i" E=` /l C\', !181
 
 End Tag Table
 ';

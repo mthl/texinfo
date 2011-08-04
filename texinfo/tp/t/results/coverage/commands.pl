@@ -520,7 +520,7 @@ $result_texis{'commands'} = '@@ @TeX{} @
 $result_texts{'commands'} = '@ TeX  e" i^ a~ a*
 File -> Open.
 b code --- -- \'\' ``
---- -- \'\' ``. small caps.
+--- -- \'\' ``. SMALL CAPS.
 
 
 majorheading in b

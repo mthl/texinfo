@@ -116,7 +116,7 @@ It is unclear whether it is right or wrong. It happens this way because
 the paragraph starts right after the footnote number.
 
 test node non automatic directions, especially in html and for external
-nodes.
+nodes.  Done?
 
 In html, test 
  empty lines at the begining, 
@@ -133,8 +133,7 @@ Tests in contents/ are incorporated?  Also a test is missing, along:
 @chapter jjj
 @contents
 
-@var{@u{r}} leads to R( in @var?  Test in 
-plaintext_tests/characters_and_commands_in_var
+Fix @sc{@aa{}} 
 
 construct like 
   @menu @c 

@@ -2085,12 +2085,12 @@ $result_errors{'symbol_after_block'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':29: Superfluous argument to @end table: @
+    'error_line' => ':29: Superfluous argument to @end table: @@
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => 'Superfluous argument to @end table: @',
+    'text' => 'Superfluous argument to @end table: @@',
     'type' => 'error'
   },
   {
@@ -2103,12 +2103,12 @@ $result_errors{'symbol_after_block'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':39: Superfluous argument to @end itemize: @
+    'error_line' => ':39: Superfluous argument to @end itemize: @@
 ',
     'file_name' => '',
     'line_nr' => 39,
     'macro' => '',
-    'text' => 'Superfluous argument to @end itemize: @',
+    'text' => 'Superfluous argument to @end itemize: @@',
     'type' => 'error'
   },
   {
@@ -2121,12 +2121,12 @@ $result_errors{'symbol_after_block'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':51: Superfluous argument to @end multitable: {
+    'error_line' => ':51: Superfluous argument to @end multitable: @{
 ',
     'file_name' => '',
     'line_nr' => 51,
     'macro' => '',
-    'text' => 'Superfluous argument to @end multitable: {',
+    'text' => 'Superfluous argument to @end multitable: @{',
     'type' => 'error'
   },
   {
@@ -2139,12 +2139,12 @@ $result_errors{'symbol_after_block'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':61: Superfluous argument to @end flushleft: @
+    'error_line' => ':61: Superfluous argument to @end flushleft: @@
 ',
     'file_name' => '',
     'line_nr' => 61,
     'macro' => '',
-    'text' => 'Superfluous argument to @end flushleft: @',
+    'text' => 'Superfluous argument to @end flushleft: @@',
     'type' => 'error'
   },
   {
@@ -2166,12 +2166,12 @@ $result_errors{'symbol_after_block'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':71: Superfluous argument to @end copying: @
+    'error_line' => ':71: Superfluous argument to @end copying: @@
 ',
     'file_name' => '',
     'line_nr' => 71,
     'macro' => '',
-    'text' => 'Superfluous argument to @end copying: @',
+    'text' => 'Superfluous argument to @end copying: @@',
     'type' => 'error'
   }
 ];

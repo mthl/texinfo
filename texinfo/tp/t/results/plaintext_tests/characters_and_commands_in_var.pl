@@ -226,6 +226,22 @@ $result_trees{'characters_and_commands_in_var'} = {
                   ],
                   'cmdname' => '`',
                   'parent' => {}
+                },
+                {
+                  'parent' => {},
+                  'text' => ' '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [],
+                      'parent' => {},
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'aa',
+                  'contents' => [],
+                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -379,6 +395,9 @@ $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'a
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
+$result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
+$result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'line_nr'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[3]{'line_nr'};
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4];
@@ -405,7 +424,7 @@ $result_texis{'characters_and_commands_in_var'} = '@var{aaa}. @var{dlksfjf ) }. 
 @var{somethingf  @c ]
 vvar}.
 
-@var{AA@,c @u{r} @`e}.
+@var{AA@,c @u{r} @`e @aa{}}.
 
 AAA@footnote{jdhfmqsdf
 dsf
@@ -418,7 +437,7 @@ $result_texts{'characters_and_commands_in_var'} = 'aaa. dlksfjf ) . (fdfdsfsd. s
 
 somethingf  vvar.
 
-AAc, r( e`.
+AAc, r( e` aa.
 
 AAA
 ';
@@ -431,7 +450,7 @@ $result_converted{'plaintext'}->{'characters_and_commands_in_var'} = 'AAA. DLKSF
 
    SOMETHINGF VVAR.
 
-   AAc, r( e`.
+   AAC, R( E` aa.
 
    AAA(1)
 

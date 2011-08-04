@@ -18606,7 +18606,7 @@ $result_texts{'at_commands_in_refs'} = 'Top
 * the someone no_explain@there::
 * f--ile1  f--ile::
 *  @ {} . ::
-* cite asis in @w b in r sc str t var dfn i::
+* cite asis in @w b in r SC str t var dfn i::
 * env code option samp command file C-x ESC::
 * 8.27in::
 * sansserif slanted::
@@ -18668,7 +18668,7 @@ $result_texts{'at_commands_in_refs'} = 'Top
 18  @ {} . 
 ***********
 
-19 cite asis in @w b in r sc str t var dfn i
+19 cite asis in @w b in r SC str t var dfn i
 ********************************************
 
 20 env code option samp command file C-x ESC
