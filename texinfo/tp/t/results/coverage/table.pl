@@ -286,6 +286,7 @@ $result_trees{'table'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_prefix' => 'c',
+                  'key' => 'index entry',
                   'number' => 1
                 },
                 'misc_content' => []
@@ -344,6 +345,7 @@ $result_trees{'table'} = {
               'index_at_command' => 'vtable',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'vtable item',
               'number' => 1
             },
             'misc_content' => []
@@ -401,6 +403,7 @@ $result_trees{'table'} = {
                   'index_at_command' => 'kindex',
                   'index_name' => 'ky',
                   'index_prefix' => 'k',
+                  'key' => 'key',
                   'number' => 1
                 },
                 'misc_content' => []
@@ -464,6 +467,7 @@ $result_trees{'table'} = {
               'index_at_command' => 'vtable',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'itemx vtable',
               'number' => 2
             },
             'misc_content' => []

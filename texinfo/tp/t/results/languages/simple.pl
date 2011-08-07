@@ -199,6 +199,7 @@ $result_trees{'simple'} = {
                   'index_at_command' => 'defivar',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'BBB de AAA',
                   'node' => {},
                   'number' => 1
                 },

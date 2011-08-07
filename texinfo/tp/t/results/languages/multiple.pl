@@ -172,6 +172,7 @@ $result_trees{'multiple'} = {
                       'index_at_command' => 'defivar',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
+                      'key' => 'a de copying',
                       'number' => 1,
                       'region' => {}
                     },
@@ -426,6 +427,7 @@ $result_trees{'multiple'} = {
                   'index_at_command' => 'defivar',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'BBB de fr',
                   'node' => {},
                   'number' => 2
                 },
@@ -649,6 +651,7 @@ $result_trees{'multiple'} = {
                   'index_at_command' => 'defivar',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'BBB da pt',
                   'node' => {},
                   'number' => 3
                 },

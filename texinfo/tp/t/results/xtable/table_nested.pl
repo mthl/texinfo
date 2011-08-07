@@ -282,6 +282,7 @@ After table.
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'first item',
                   'number' => 1
                 },
                 'misc_content' => []
@@ -325,6 +326,7 @@ After table.
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'second itemx',
                   'number' => 2
                 },
                 'misc_content' => []
@@ -397,6 +399,7 @@ After table.
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'second item',
                   'number' => 3
                 },
                 'misc_content' => []
@@ -469,6 +472,7 @@ After table.
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'last',
                   'number' => 4
                 },
                 'misc_content' => []
@@ -898,6 +902,7 @@ After table.
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'first item',
                   'number' => 5
                 },
                 'misc_content' => []
@@ -941,6 +946,7 @@ After table.
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'second itemx',
                   'number' => 6
                 },
                 'misc_content' => []
@@ -1013,6 +1019,7 @@ After table.
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'second item',
                   'number' => 7
                 },
                 'misc_content' => []
@@ -1085,6 +1092,7 @@ After table.
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => 'last',
                   'number' => 8
                 },
                 'misc_content' => []
@@ -1526,6 +1534,7 @@ After table.
                       'index_at_command' => 'vtable',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
+                      'key' => 'first item',
                       'number' => 9
                     },
                     'misc_content' => []
@@ -1569,6 +1578,7 @@ After table.
                       'index_at_command' => 'vtable',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
+                      'key' => 'second itemx',
                       'number' => 10
                     },
                     'misc_content' => []
@@ -1641,6 +1651,7 @@ After table.
                       'index_at_command' => 'vtable',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
+                      'key' => 'second item',
                       'number' => 11
                     },
                     'misc_content' => []
@@ -1713,6 +1724,7 @@ After table.
                       'index_at_command' => 'vtable',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
+                      'key' => 'last',
                       'number' => 12
                     },
                     'misc_content' => []

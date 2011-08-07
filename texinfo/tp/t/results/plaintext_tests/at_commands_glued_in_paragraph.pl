@@ -523,6 +523,7 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',
+              'key' => 'index',
               'number' => 1
             },
             'misc_content' => []

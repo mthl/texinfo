@@ -620,6 +620,7 @@ $result_trees{'in_table'} = {
                           'index_at_command' => 'cindex',
                           'index_name' => 'cp',
                           'index_prefix' => 'c',
+                          'key' => 'index',
                           'node' => {},
                           'number' => 1
                         },
@@ -788,6 +789,7 @@ $result_trees{'in_table'} = {
                           'index_at_command' => 'cindex',
                           'index_name' => 'cp',
                           'index_prefix' => 'c',
+                          'key' => 'index',
                           'node' => {},
                           'number' => 2
                         },
@@ -816,6 +818,7 @@ $result_trees{'in_table'} = {
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => '',
                   'node' => {},
                   'number' => 1
                 },
@@ -916,6 +919,7 @@ $result_trees{'in_table'} = {
                           'index_at_command' => 'cindex',
                           'index_name' => 'cp',
                           'index_prefix' => 'c',
+                          'key' => '2 index',
                           'node' => {},
                           'number' => 3
                         },
@@ -944,6 +948,7 @@ $result_trees{'in_table'} = {
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'key' => '',
                   'node' => {},
                   'number' => 2
                 },

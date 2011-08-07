@@ -88,6 +88,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_prefix' => 'c',
+                  'key' => 'also a cindex in itemize',
                   'number' => 1
                 },
                 'misc_content' => []
@@ -263,6 +264,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_prefix' => 'c',
+                  'key' => 'index entry within itemize',
                   'number' => 2
                 },
                 'misc_content' => []
@@ -364,6 +366,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_prefix' => 'c',
+                  'key' => 'index entry right after @item',
                   'number' => 3
                 },
                 'misc_content' => []
@@ -525,6 +528,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                       'index_at_command' => 'cindex',
                       'index_name' => 'cp',
                       'index_prefix' => 'c',
+                      'key' => 'also a cindex in itemize',
                       'number' => 4
                     },
                     'misc_content' => []

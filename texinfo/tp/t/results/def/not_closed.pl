@@ -80,6 +80,7 @@ $result_trees{'not_closed'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'bidule',
               'number' => 1
             },
             'original_def_cmdname' => 'deffn'
@@ -158,6 +159,7 @@ $result_trees{'not_closed'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'chose',
               'number' => 2
             },
             'original_def_cmdname' => 'deffnx'
@@ -258,6 +260,7 @@ $result_trees{'not_closed'} = {
                       'index_at_command' => 'defvar',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
+                      'key' => 'type1',
                       'number' => 1
                     },
                     'original_def_cmdname' => 'defvar'

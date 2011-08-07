@@ -92,6 +92,7 @@ $result_trees{'inter_item_commands_in_table'} = {
               'index_at_command' => 'vtable',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'a',
               'number' => 1
             },
             'misc_content' => []
@@ -245,6 +246,7 @@ $result_trees{'inter_item_commands_in_table'} = {
               'index_at_command' => 'vtable',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'a',
               'number' => 2
             },
             'misc_content' => []
@@ -306,6 +308,7 @@ $result_trees{'inter_item_commands_in_table'} = {
               'index_at_command' => 'vtable',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'b',
               'number' => 3
             },
             'misc_content' => []
@@ -459,6 +462,7 @@ $result_trees{'inter_item_commands_in_table'} = {
               'index_at_command' => 'ftable',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'a',
               'number' => 1
             },
             'misc_content' => []
@@ -504,6 +508,7 @@ $result_trees{'inter_item_commands_in_table'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_prefix' => 'c',
+                  'key' => 'index entry between item and itemx',
                   'number' => 1
                 },
                 'misc_content' => []
@@ -580,6 +585,7 @@ $result_trees{'inter_item_commands_in_table'} = {
               'index_at_command' => 'ftable',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'b',
               'number' => 2
             },
             'misc_content' => []
@@ -640,6 +646,7 @@ $result_trees{'inter_item_commands_in_table'} = {
               'index_at_command' => 'ftable',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'c',
               'number' => 3
             },
             'misc_content' => []
@@ -713,6 +720,7 @@ $result_trees{'inter_item_commands_in_table'} = {
               'index_at_command' => 'ftable',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd',
               'number' => 4
             },
             'misc_content' => []
@@ -875,6 +883,7 @@ $result_trees{'inter_item_commands_in_table'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_prefix' => 'c',
+                  'key' => 'cindex in table',
                   'number' => 2
                 },
                 'misc_content' => []
@@ -1086,6 +1095,7 @@ $result_trees{'inter_item_commands_in_table'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_prefix' => 'c',
+                  'key' => 'cindex in table',
                   'number' => 3
                 },
                 'misc_content' => []

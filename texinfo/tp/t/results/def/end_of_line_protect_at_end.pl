@@ -85,6 +85,7 @@ $result_trees{'end_of_line_protect_at_end'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'deffn_name2',
               'number' => 1
             },
             'original_def_cmdname' => 'deffn'

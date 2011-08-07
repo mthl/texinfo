@@ -226,6 +226,7 @@ $result_trees{'on_def_line'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'in titlefont',
               'number' => 1
             },
             'original_def_cmdname' => 'deffn'
@@ -450,6 +451,7 @@ $result_trees{'on_def_line'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'in titlefontx',
               'number' => 2
             },
             'original_def_cmdname' => 'deffnx'

@@ -100,6 +100,7 @@ $result_trees{'leading_space_in_def_arg'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'name',
               'number' => 1
             },
             'original_def_cmdname' => 'deffn'

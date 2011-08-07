@@ -347,6 +347,7 @@ $result_trees{'commands'} = {
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
           'index_prefix' => 'c',
+          'key' => 'index entry in text LaTeX',
           'number' => 1
         },
         'misc_content' => []

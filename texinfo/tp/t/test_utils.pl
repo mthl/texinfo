@@ -370,15 +370,22 @@ sub test($$)
   my ($errors, $error_nrs) = $parser->errors();
   my ($index_names, $merged_indices, $index_entries) 
        = $parser->indices_information();
-  # FIXME merged_index_entries are not used further, maybe it would be good to
-  # compare them.  Maybe even call sort_indices before.
+  # FIXME maybe it would be good to compare $merged_index_entries?
   my $merged_index_entries 
      = Texinfo::Structuring::merge_indices($index_names, $merged_indices, $index_entries);
+  
   my $indices;
   $indices->{'index_names'} = $index_names
     unless (Data::Compare::Compare($index_names, $initial_index_names));
   $indices->{'merged_indices'} = $merged_indices
     unless (Data::Compare::Compare($merged_indices, $initial_merged_indices));
+
+  my $sorted_index_entries;
+  if ($index_entries) {
+    $sorted_index_entries 
+      = Texinfo::Structuring::sort_indices_by_letter($parser, 
+                                                     $merged_index_entries);
+  }
 
   my $converted_text = Texinfo::Convert::Text::convert($result, {'TEST' => 1});
 

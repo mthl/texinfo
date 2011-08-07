@@ -109,6 +109,7 @@ $result_trees{'def_in_style_command'} = {
               'index_at_command' => 'defun',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'name',
               'number' => 1
             },
             'invalid_nesting' => 1,

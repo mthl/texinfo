@@ -743,6 +743,7 @@ $result_trees{'no_element'} = {
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
           'index_prefix' => 'c',
+          'key' => 'index entry',
           'number' => 1
         },
         'misc_content' => []

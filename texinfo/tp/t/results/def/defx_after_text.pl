@@ -117,6 +117,7 @@ $result_trees{'defx_after_text'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'i',
               'number' => 1
             },
             'original_def_cmdname' => 'deffn'
@@ -224,6 +225,7 @@ $result_trees{'defx_after_text'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'bidulr',
               'number' => 2
             },
             'not_after_command' => 1,

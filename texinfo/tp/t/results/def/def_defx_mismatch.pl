@@ -156,6 +156,7 @@ $result_trees{'def_defx_mismatch'} = {
               'index_at_command' => 'defun',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'my def',
               'number' => 1
             },
             'original_def_cmdname' => 'defun'
@@ -301,6 +302,7 @@ $result_trees{'def_defx_mismatch'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'name',
               'number' => 2
             },
             'not_after_command' => 1,

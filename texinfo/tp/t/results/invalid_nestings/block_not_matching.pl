@@ -129,6 +129,7 @@ $result_trees{'block_not_matching'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'print_navigation',
               'number' => 1
             },
             'original_def_cmdname' => 'deffn'

@@ -67,6 +67,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defvr',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'd--efvr_name',
               'number' => 1
             },
             'original_def_cmdname' => 'defvr'
@@ -235,6 +236,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--eftypefn_name',
               'number' => 1
             },
             'original_def_cmdname' => 'deftypefn'
@@ -427,6 +429,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--eftypeop_name on c--lass',
               'number' => 2
             },
             'original_def_cmdname' => 'deftypeop'
@@ -582,6 +585,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'deftypevr',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'd--eftypevr_name',
               'number' => 2
             },
             'original_def_cmdname' => 'deftypevr'
@@ -737,6 +741,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defcv',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'd--efcv_name',
               'number' => 3
             },
             'original_def_cmdname' => 'defcv'
@@ -915,6 +920,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defop',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--efop_name on c--lass',
               'number' => 3
             },
             'original_def_cmdname' => 'defop'
@@ -1069,6 +1075,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'deftp',
               'index_name' => 'tp',
               'index_prefix' => 't',
+              'key' => 'd--eftp_name',
               'number' => 1
             },
             'original_def_cmdname' => 'deftp'
@@ -1223,6 +1230,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defun',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--efun_name',
               'number' => 4
             },
             'original_def_cmdname' => 'defun'
@@ -1377,6 +1385,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defmac',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--efmac_name',
               'number' => 5
             },
             'original_def_cmdname' => 'defmac'
@@ -1541,6 +1550,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defspec',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--efspec_name',
               'number' => 6
             },
             'original_def_cmdname' => 'defspec'
@@ -1682,6 +1692,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defvar',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'd--efvar_name',
               'number' => 4
             },
             'original_def_cmdname' => 'defvar'
@@ -1833,6 +1844,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defopt',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'd--efopt_name',
               'number' => 5
             },
             'original_def_cmdname' => 'defopt'
@@ -2001,6 +2013,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'deftypefun',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--eftypefun_name',
               'number' => 7
             },
             'original_def_cmdname' => 'deftypefun'
@@ -2156,6 +2169,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'deftypevar',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'd--eftypevar_name',
               'number' => 6
             },
             'original_def_cmdname' => 'deftypevar'
@@ -2331,6 +2345,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defivar',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'd--efivar_name of c--lass',
               'number' => 7
             },
             'original_def_cmdname' => 'defivar'
@@ -2520,6 +2535,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'deftypeivar',
               'index_name' => 'vr',
               'index_prefix' => 'v',
+              'key' => 'd--eftypeivar_name of c--lass',
               'number' => 8
             },
             'original_def_cmdname' => 'deftypeivar'
@@ -2698,6 +2714,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'defmethod',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--efmethod_name on c--lass',
               'number' => 8
             },
             'original_def_cmdname' => 'defmethod'
@@ -2890,6 +2907,7 @@ $result_trees{'all_commands'} = {
               'index_at_command' => 'deftypemethod',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'd--eftypemethod_name on c--lass',
               'number' => 9
             },
             'original_def_cmdname' => 'deftypemethod'

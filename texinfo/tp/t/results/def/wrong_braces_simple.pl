@@ -106,6 +106,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'machin',
               'number' => 1
             },
             'original_def_cmdname' => 'deffn'
@@ -282,6 +283,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'machin',
               'number' => 2
             },
             'original_def_cmdname' => 'deffn'
@@ -470,6 +472,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'machin',
               'number' => 3
             },
             'original_def_cmdname' => 'deffn'
@@ -667,6 +670,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'machin',
               'number' => 4
             },
             'original_def_cmdname' => 'deffn'
@@ -830,6 +834,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'b',
               'number' => 5
             },
             'original_def_cmdname' => 'deffn'
@@ -934,6 +939,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'machin',
               'number' => 6
             },
             'original_def_cmdname' => 'deffnx'
@@ -1056,6 +1062,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'machin',
               'number' => 7
             },
             'original_def_cmdname' => 'deffnx'
@@ -1190,6 +1197,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'machin',
               'number' => 8
             },
             'original_def_cmdname' => 'deffnx'
@@ -1333,6 +1341,7 @@ $result_trees{'wrong_braces_simple'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'key' => 'machin',
               'number' => 9
             },
             'original_def_cmdname' => 'deffnx'

@@ -91,6 +91,7 @@ $result_trees{'unknown_then_known_index_entry'} = {
               'index_at_command' => 'someindex',
               'index_name' => 'some',
               'index_prefix' => 'some',
+              'key' => 'someindex entry.',
               'number' => 1
             },
             'misc_content' => []

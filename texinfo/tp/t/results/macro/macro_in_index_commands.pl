@@ -782,6 +782,7 @@ $result_trees{'macro_in_index_commands'} = {
               'index_at_command' => 'trucindex',
               'index_name' => 'truc',
               'index_prefix' => 'truc',
+              'key' => 'index truc',
               'node' => {},
               'number' => 1
             },
@@ -914,6 +915,7 @@ $result_trees{'macro_in_index_commands'} = {
               'index_at_command' => 'codeidxindex',
               'index_name' => 'codeidx',
               'index_prefix' => 'codeidx',
+              'key' => 'a index entry te\' i^',
               'node' => {},
               'number' => 1
             },
@@ -969,6 +971,7 @@ $result_trees{'macro_in_index_commands'} = {
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',
+              'key' => 'cindex entry',
               'node' => {},
               'number' => 1
             },
@@ -1071,6 +1074,7 @@ $result_trees{'macro_in_index_commands'} = {
               'index_at_command' => 'kindex',
               'index_name' => 'ky',
               'index_prefix' => 'k',
+              'key' => 'truc kindex',
               'node' => {},
               'number' => 1
             },
@@ -1120,6 +1124,7 @@ $result_trees{'macro_in_index_commands'} = {
               'index_at_command' => 'pindex',
               'index_name' => 'pg',
               'index_prefix' => 'p',
+              'key' => 'pindex codeidx',
               'node' => {},
               'number' => 1
             },
@@ -1396,6 +1401,7 @@ $result_trees{'macro_in_index_commands'} = {
               'index_at_command' => 'defgindex',
               'index_name' => 'defg',
               'index_prefix' => 'defg',
+              'key' => 'defg index entry',
               'node' => {},
               'number' => 1
             },
@@ -1451,6 +1457,7 @@ $result_trees{'macro_in_index_commands'} = {
               'index_at_command' => 'abcindex',
               'index_name' => 'abc',
               'index_prefix' => 'abc',
+              'key' => 'abc index entry',
               'node' => {},
               'number' => 1
             },
