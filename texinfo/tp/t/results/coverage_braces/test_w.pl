@@ -946,4 +946,99 @@ followed in Texinfo files.  TeX converts two single quotes to left- and
 right-hand doubled.
 ';
 
+
+$result_converted{'html'}->{'test_w'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&nbsp;bbbbbbbbbbbbb&nbsp;bbbbb&nbsp;bbb&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;bb&nbsp;.&nbsp;ccc&nbsp;dddd.
+</p>
+<p>a a a a a a a a a a a a a a a a a a a a a a a a a a a a  b&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a
+</p>
+
+
+<p>&nbsp;a&nbsp;rr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ggg.
+</p>
+<p>AAbbb.
+</p>
+<p>FFdnnn.
+</p>
+<p>aa&nbsp;&nbsp;f&nbsp;&nbsp;fggg.
+</p>
+<p>aa2&nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;ggg2.
+</p>
+
+<p>aa3 &nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;ggg3.
+</p>
+
+<p>aa4 &nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp; ggg4.
+</p>
+<p>aa5  ggg5.
+</p>
+<p>aa6 ggg6.
+</p>
+<p>aa6 ggg6.
+</p>
+<p>aaf &nbsp; bbb.
+</p>
+<p>begin and end quotations: <tt>&lsquo;&lsquo;&hellip;&rsquo;&rsquo;</tt>.  This
+convention should be followed in Texinfo files.  TeX converts
+two single quotes to left- and right-hand doubled.
+</p><p>
+
+
+</p>
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'test_w'} = [
+  {
+    'error_line' => 'warning: Must specify a title with a title command or @top
+',
+    'text' => 'Must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
+
 1;

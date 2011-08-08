@@ -4312,4 +4312,204 @@ In text .
 
 ';
 
+
+$result_converted{'html'}->{'test_image'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Text in copying.
+f@i-le..  a@<"%@  < & @ % " 
+
+In text f@i-le..  a@<"%@  < & @ % " .
+ -->
+<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+
+<p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+</p>
+<p>Insertcopying
+</p><p>Text in copying.
+<img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+</p>
+<p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+</p>
+
+<div class="example">
+<pre class="example">[ f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot;  ]
+
+In text [ alt <b>&icirc;--le..</b>  a
+&lt;&quot;%@<tt>  &lt; &amp; @ % &quot; </tt> ].
+</pre></div>
+
+<div class="float"><a name="Image-with-commands"></a>
+<img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+
+<p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+</p>
+
+</div><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+
+<p><strong>Image 1: </strong>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p>
+<dl class="listoffloats">
+<dt><a href="#Image-with-commands">Image 1</a></dt><dd><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+
+<p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></dd>
+</dl>
+
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'test_image'} = [
+  {
+    'error_line' => 'warning: Must specify a title with a title command or @top
+',
+    'text' => 'Must specify a title with a title command or @top',
+    'type' => 'warning'
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':14: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 14
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':14: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 14
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':9: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 9
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':9: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 9
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':20: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 20
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':20: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 20
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':24: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 24
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':24: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 24
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':26: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 26
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':26: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 26
+  }
+];
+
+
 1;

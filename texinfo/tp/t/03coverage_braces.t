@@ -277,6 +277,7 @@ our ($arg_test_case, $arg_generate, $arg_debug);
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
+  push @{$test->[2]->{'test_formats'}}, 'html';
 }
 
 run_all ('coverage_braces', [@test_cases, @test_invalid], $arg_test_case,

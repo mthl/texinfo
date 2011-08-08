@@ -135,7 +135,8 @@ Tests in contents/ are incorporated?  Also a test is missing, along:
 
 test an lone @contents without any sectioning command.
 
-Fix @sc{@aa{}} and @sc{@'e} in HTML.
+Fix @sc{@aa{}} and @sc{@'e} in HTML.  Test with 8bit and utf_, with and without
+enable encoding and entities.
 
 construct like 
   @menu @c 

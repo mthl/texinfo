@@ -303,4 +303,83 @@ $result_converted{'plaintext'}->{'format_on_first_footnote_line'} = 'Texte(1).
 
 ';
 
+
+$result_converted{'html'}->{'format_on_first_footnote_line'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<p>Texte<a name="DOCF1" href="#FOOT1">(1)</a>.
+</p>
+<p>Last text <a name="DOCF2" href="#FOOT2">(2)</a>
+</p><div class="footnote">
+<hr>
+<h3 class="footnote">Footnotes</h3>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<blockquote>
+<p>in quotation on the first footnote line
+</p></blockquote>
+<h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
+<div class="example">
+<pre class="example">in example
+</pre></div>
+
+</div>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'format_on_first_footnote_line'} = [
+  {
+    'error_line' => 'warning: Must specify a title with a title command or @top
+',
+    'text' => 'Must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
+
 1;
