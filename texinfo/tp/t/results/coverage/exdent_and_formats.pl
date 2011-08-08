@@ -2306,4 +2306,147 @@ very loooooooooooooooooooooooooooooooooong exdented quotation line oidfjslsd aez
 az az az az
 ';
 
+
+$result_converted{'html'}->{'exdent_and_formats'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<div class="example">
+<pre class="example"> Example   Hoho. TeX . 
+ @.
+
+</pre><pre class="example">Other line
+</pre><pre class="example">not exdented
+</pre></div>
+
+
+<div class="example">
+<pre class="example">exdented  and dash --- in example
+</pre><pre class="example">Not exdented
+</pre><pre class="example">exdented
+</pre><pre class="example">Not exdented
+</pre></div>
+
+<p>Para1.
+</p>
+<blockquote>
+<p>qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+</p></blockquote>
+
+<p>Para2.
+</p>
+<p>Para3.
+</p>
+<p>Last para.
+</p>
+<blockquote>
+<p>quotation1
+quotation2
+</p></blockquote>
+
+<blockquote>
+<p>quotation para 1
+</p>
+<p>quotation para 2
+</p></blockquote>
+
+<div class="example">
+<pre class="example">Example   Hoho.
+</pre><div class="example">
+<pre class="example">Nested Other line
+</pre><pre class="example">exdented nested other line
+</pre></div>
+</div>
+
+<blockquote>
+<p>exdented quotation line   and dash &mdash; in quotation
+</p></blockquote>
+
+<blockquote>
+<p>Not exdented followed by exdented
+</p><p>exdented quotation line
+</p></blockquote>
+
+<blockquote>
+<p>exdented quotation line
+</p><p>Followed by not exdented 
+</p></blockquote>
+
+<blockquote>
+<p>exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az
+</p><p>azeaz az az az az
+</p></blockquote>
+
+<blockquote>
+<p>exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line
+</p><p>az az az az
+</p></blockquote>
+
+<blockquote>
+<p>quotation line oidfjslsd aez a aze azaz aeae za eaz az zelef  aaa
+</p><p>ezkfjklezf
+</p></blockquote>
+
+<blockquote>
+<p>very loooooooooooooooooooooooooooooooooong exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line
+</p><p>az az az az
+</p></blockquote>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'exdent_and_formats'} = [
+  {
+    'error_line' => 'warning: Must specify a title with a title command or @top
+',
+    'text' => 'Must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
+
 1;

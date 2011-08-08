@@ -3042,8 +3042,11 @@ sub _convert_informative_command($$$$)
 
   $self->_informative_command($command);
   if ($self->get_conf('INLINE_CONTENTS') 
-       and ($cmdname eq 'contents' or $cmdname eq 'shortcontents')
-       and ! $self->get_conf('set'.$cmdname.'aftertitlepage')) {
+      and ($cmdname eq 'contents' or $cmdname eq 'shortcontents')
+      and $self->get_conf($cmdname)
+      and $self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
+      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1
+      and ! $self->get_conf('set'.$cmdname.'aftertitlepage')) {
     return $self->_contents_inline_element($cmdname, $command);
   }
   if ($cmdname eq 'documentlanguage') {
