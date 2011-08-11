@@ -285,7 +285,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<p><small><small>AAA &Ntilde; &aring; <a name="DOCF1" href="#FOOT1">(1)</a>, <abbr title="EXPL">ABR</abbr> (EXPL), 
+<p><small><small>AAA &Ntilde; &Aring; <a name="DOCF1" href="#FOOT1">(1)</a>, <abbr title="EXPL">ABR</abbr> (EXPL), 
 <tt>in verb</tt></small></small>
 </p><div class="footnote">
 <hr>

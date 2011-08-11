@@ -567,13 +567,18 @@ my %xml_accent_text_with_entities = (
 );
 
 
-sub xml_accent($$;$)
+sub xml_accent($$;$$)
 {
   my $text = shift;
   my $command = shift;
+  my $in_upper_case = shift;
   my $use_numeric_entities = shift;
   my $accent = $command->{'cmdname'};
   
+  if ($in_upper_case and $text =~ /^\w$/) {
+    $text = uc ($text);
+  }
+ 
   return "&${text}$xml_accent_entities{$accent};" 
     if (defined($xml_accent_entities{$accent}) 
         and defined($xml_accent_text_with_entities{$accent}) 
@@ -588,11 +593,12 @@ sub xml_accent($$;$)
   return Texinfo::Convert::Text::ascii_accent($text, $command);
 }
 
-sub xml_accent_numeric_entities($$)
+sub xml_accent_numeric_entities($$;$)
 {
   my $text = shift;
   my $command = shift;
-  return xml_accent($text, $command, 1);
+  my $in_upper_case = shift;
+  return xml_accent($text, $command, $in_upper_case, 1);
 }
 
 sub xml_accents($$;$)
@@ -609,11 +615,14 @@ sub xml_accents($$;$)
   
   if ($self->get_conf('ENABLE_ENCODING')) {
     if ($self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
-      return Texinfo::Convert::Text::unicode_accents($accent, $format_accents);
+      return Texinfo::Convert::Text::unicode_accents($accent, $format_accents,
+                                                     $in_upper_case);
     } elsif ($self->{'encoding_name'} 
            and $Texinfo::Common::eight_bit_encoding_aliases{$self->{'encoding_name'}}) {
       return Texinfo::Convert::Text::eight_bit_accents($accent, 
-                                      $self->{'encoding_name'}, $format_accents);
+                                      $self->{'encoding_name'}, 
+                                      $format_accents,
+                                      $in_upper_case);
     }
   }
   my ($contents, $innermost_accent, $stack)
@@ -621,7 +630,8 @@ sub xml_accents($$;$)
   my $result = $self->_convert({'contents' => $contents});
   
   foreach my $accent_command (reverse(@$stack)) {
-    $result = &$format_accents ($result, {'cmdname' => $accent_command});
+    $result = &$format_accents ($result, {'cmdname' => $accent_command}, 
+                                $in_upper_case);
   }
   return $result;
 }

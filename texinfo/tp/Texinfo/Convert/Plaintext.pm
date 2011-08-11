@@ -1240,8 +1240,8 @@ sub _convert($$)
         $encoding = $self->{'encoding_name'};
       }
       my $accented_text 
-         = Texinfo::Convert::Text::text_accents($root, $encoding);
-      $accented_text = uc($accented_text) if ($formatter->{'upper_case'});
+         = Texinfo::Convert::Text::text_accents($root, $encoding,
+                                                $formatter->{'upper_case'});
       $result .= $self->_count_added($formatter->{'container'},
          $formatter->{'container'}->add_text($accented_text));
       # in case the text added ends with punctuation.  

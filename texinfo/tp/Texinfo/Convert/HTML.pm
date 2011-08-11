@@ -82,6 +82,7 @@ my %style_commands = %Texinfo::Common::style_commands;
 my %align_commands = %Texinfo::Common::align_commands;
 my %region_commands = %Texinfo::Common::region_commands;
 my %context_brace_commands = %Texinfo::Common::context_brace_commands;
+my %letter_no_arg_commands = %Texinfo::Common::letter_no_arg_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -1108,6 +1109,10 @@ sub _convert_no_arg_command($$$)
       $cmdname = $click_cmdname;
     }
   }
+  if ($self->in_upper_case and $letter_no_arg_commands{$cmdname}
+      and $self->{'commands_formatting'}->{'normal'}->{uc($cmdname)}) {
+    $cmdname = uc($cmdname);
+  }
 
   my $result;
   if ($self->in_preformatted() or $self->in_math()) {
@@ -1530,7 +1535,7 @@ sub _convert_accent_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  return $self->xml_accents($command);
+  return $self->xml_accents($command, $self->in_upper_case());
 }
 
 foreach my $command (keys(%accent_commands)) {

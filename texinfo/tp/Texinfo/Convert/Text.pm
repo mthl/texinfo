@@ -751,7 +751,9 @@ sub eight_bit_accents($$$;$)
     if ($eight_bit_command_index > -1);
   for (my $remaining_accents = $eight_bit_command_index+1; 
           $remaining_accents <= $#results_stack; $remaining_accents++) {
-    $result = &$convert_accent($result, $results_stack[$remaining_accents]->[1]);
+    $result = &$convert_accent($result, 
+                               $results_stack[$remaining_accents]->[1],
+                               $in_upper_case);
     print STDERR "REMAINING($remaining_accents) "
        .Encode::encode('utf8', $result)."\n" if ($debug);
   }
@@ -780,11 +782,14 @@ sub ascii_accent($$)
 }
 
 # format a stack of accents as ascii
-sub ascii_accents ($)
+sub ascii_accents ($;$)
 {
   my $current = shift;
+  my $in_upper_case = shift;
+
   my ($result, $innermost_accent, $stack) = _find_innermost_accent($current);
 
+  $result = uc($result) if ($in_upper_case);
   foreach my $accent_command (reverse(@$stack)) {
     $result = ascii_accent ($result, {'cmdname' => $accent_command});
   }
@@ -821,19 +826,20 @@ sub unicode_accents ($$;$)
   return $result;
 }
 
-sub text_accents($$)
+sub text_accents($$;$)
 {
   my $accent = shift;
   my $encoding = shift;
+  my $in_upper_case = shift;
   
   return '' if (!$accent->{'args'});
   if ($encoding and $encoding eq 'utf-8') {
-    return unicode_accents($accent, \&ascii_accent);
+    return unicode_accents($accent, \&ascii_accent, $in_upper_case);
   } elsif ($encoding 
            and $Texinfo::Common::eight_bit_encoding_aliases{$encoding}) {
-    return eight_bit_accents($accent, $encoding, \&ascii_accent);
+    return eight_bit_accents($accent, $encoding, \&ascii_accent, $in_upper_case);
   } else {
-    return ascii_accents($accent);
+    my $result = ascii_accents($accent, $in_upper_case);
   }
 }
 
@@ -1027,12 +1033,9 @@ sub convert($;$)
       return brace_no_arg_command($root, $options);
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
-      my $result = text_accents ($root, $options->{'enabled_encoding'});
-      if ($options->{'sc'}) {
-        return uc ($result);
-      } else {
-        return $result;
-      }
+      my $result = text_accents ($root, $options->{'enabled_encoding'}, 
+                                        $options->{'sc'});
+      return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
       return convert($root->{'args'}->[0], $options);
     } elsif ($root->{'cmdname'} eq 'email') {
