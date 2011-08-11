@@ -1841,7 +1841,7 @@ sub _convert($$)
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'verbatiminclude') {
-      my $expansion = $self->expand_verbatiminclude($root);
+      my $expansion = $self->Texinfo::Common::expand_verbatiminclude($root);
       unshift @{$self->{'current_contents'}->[-1]}, $expansion
         if ($expansion);
       return '';

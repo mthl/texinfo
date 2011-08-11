@@ -135,8 +135,12 @@ Tests in contents/ are incorporated?  Also a test is missing, along:
 
 test an lone @contents without any sectioning command.
 
-Fix @sc{@aa{}} and @sc{@'e} in HTML.  Test with 8bit and utf_, with and without
+Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
 enable encoding and entities.
+
+Test that some constructs in @copying in comments in HTML are converted
+differently (as there is a 'converter' passed to Texinfo::Text) than when
+there are in a Text expansion context.
 
 construct like 
   @menu @c 

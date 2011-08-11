@@ -2150,7 +2150,8 @@ sub _convert_verbatiminclude_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  my $verbatim_include_verbatim = $self->expand_verbatiminclude($command);
+  my $verbatim_include_verbatim 
+    = $self->Texinfo::Common::expand_verbatiminclude($command);
   if (defined($verbatim_include_verbatim)) {
     return $self->convert_tree($verbatim_include_verbatim);
   } else {

@@ -724,6 +724,13 @@ sub locate_include_file($$)
   if ($text =~ m,^(/|\./|\.\./),) {
     $file = $text if (-e $text and -r $text);
   } else {
+    my @dirs;
+    if ($self) {
+      @dirs = @{$self->{'include_directories'}};
+    } else {
+      # no object with directory list and not an absolute path, never succeed
+      return undef;
+    }
     foreach my $dir (@{$self->{'include_directories'}}) {
       $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
       last if (defined($file));
@@ -801,6 +808,45 @@ sub encoding_alias ($)
     $canonical_output_encoding = $encoding_aliases{$perl_encoding};
   }
   return ($canonical_texinfo_encoding, $perl_encoding, $canonical_output_encoding);
+}
+
+# This should do the job, or at least don't do wrong if $self
+# is not defined, as could be the case if called from 
+# Texinfo::Convert::Text.
+sub expand_verbatiminclude($$)
+{
+  my $self = shift;
+  my $current = shift;
+
+  return unless ($current->{'extra'} and defined($current->{'extra'}->{'text_arg'}));
+  my $text = $current->{'extra'}->{'text_arg'};
+  my $file = locate_include_file($self, $text);
+
+  my $verbatiminclude;
+
+  if (defined($file)) {
+    # FIXME encoding?
+    if (!open(VERBINCLUDE, $file)) {
+      if ($self) {
+        $self->line_error (sprintf($self->__("Cannot read %s: %s"), $file, $!), 
+                            $current->{'line_nr'});
+      }
+    } else {
+      $verbatiminclude = { 'cmdname' => 'verbatim',
+                           'parent' => $current->{'parent'},
+                           'extra' => 
+                        {'text_arg' => $current->{'extra'}->{'text_arg'}} };
+      while (<VERBINCLUDE>) {
+        push @{$verbatiminclude->{'contents'}}, 
+                  {'type' => 'raw', 'text' => $_ };
+      }
+      close (VERBINCLUDE);
+    }
+  } elsif ($self) {
+    $self->line_error (sprintf($self->__("\@%s: Cannot find %s"), 
+                    $current->{'cmdname'}, $text), $current->{'line_nr'});
+  }
+  return $verbatiminclude;
 }
 
 sub definition_category($$)

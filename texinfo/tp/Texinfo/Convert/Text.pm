@@ -534,10 +534,8 @@ our %unicode_to_eight_bit = (
    },
 );
 
-# verbatiminclude would be nice to have too, however it requires a Report
-# object and a list of directories, which is too much for this converter
 our %formatting_misc_commands;
-foreach my $command ('sp', 'center', 'exdent', 
+foreach my $command ('verbatiminclude', 'sp', 'center', 'exdent', 
                      'item', 'itemx', 'tab', 'headitem',
     'node', keys(%Texinfo::Common::sectioning_commands)) {
   $formatting_misc_commands{$command} = 1;
@@ -1099,6 +1097,13 @@ sub convert($;$)
           # this useless copy avoids perl changing the type to integer!
           my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
           $result = "\n" x $sp_nr;
+        }
+      } elsif ($root->{'cmdname'} eq 'verbatiminclude') {
+        my $verbatim_include_verbatim
+          = Texinfo::Common::expand_verbatiminclude($options->{'converter'},
+                                                    $root);
+        if (defined($verbatim_include_verbatim)) {
+          $result .= convert($verbatim_include_verbatim, $options);
         }
       } elsif ($root->{'cmdname'} ne 'node') {
         $result = convert($root->{'args'}->[0], $options);
