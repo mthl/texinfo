@@ -803,13 +803,14 @@ my %makeinfo_transliterate_map = (
 );
 
 
-sub unicode_accent($$$)
+sub unicode_accent($$)
 {
   my $text = shift;
   my $command = shift;
-  my $fallback_convert_accent = shift;
 
   my $accent = $command->{'cmdname'};
+
+  my $result;
 
   # special handling of @dotless{i}.
   # \x{0131}\x{0308} for @dotless{i} @" doesn't lead to NFC 00ef.
@@ -819,15 +820,19 @@ sub unicode_accent($$$)
                          or !$command->{'parent'}->{'parent'}
                          or !$command->{'parent'}->{'parent'}->{'cmdname'}
                          or !$unicode_accented_letters{$command->{'parent'}->{'parent'}->{'cmdname'}})) {
-      return "\x{0131}";
+      $result = "\x{0131}";
+    } else {
+      $result = $text;
     }
-    #return "\x{}" if ($text eq 'j'); # dotless j not known i unicode !
-    return $text;
+    return $result;
   }
 
-  return Unicode::Normalize::NFC($text . chr(hex($unicode_diacritics{$accent})))
-    if (defined($unicode_diacritics{$accent}));
-  return &$fallback_convert_accent($text, $command);
+  if (defined($unicode_diacritics{$accent})) {
+    $result = Unicode::Normalize::NFC($text . chr(hex($unicode_diacritics{$accent})));
+    return $result;
+  } else {
+    return undef;
+  }
 }
 
 sub unicode_text($$$$)

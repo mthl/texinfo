@@ -641,11 +641,12 @@ sub _eight_bit_and_unicode_point($$)
   return ($eight_bit, $codepoint);
 }
 
-sub eight_bit_accents($$$)
+sub eight_bit_accents($$$;$)
 {
   my $current = shift;
   my $encoding = shift;
   my $convert_accent = shift;
+  my $in_upper_case = shift;
 
   my $debug;
   #$debug = 1;
@@ -664,19 +665,36 @@ sub eight_bit_accents($$$)
   my @results_stack;
 
   while (1) {
-    $current_result 
-      = Texinfo::Convert::Unicode::unicode_accent($current_result, $accent,
-                                                    $convert_accent);
-    push @results_stack, [$current_result, $accent];
+    my $unicode_formatted_accent
+      = Texinfo::Convert::Unicode::unicode_accent($current_result, $accent);
+    if (!defined($unicode_formatted_accent)) {
+      last;
+    }
+    $current_result = $unicode_formatted_accent;
+    $unicode_formatted_accent = uc($unicode_formatted_accent)
+      if ($in_upper_case);
+    push @results_stack, [$unicode_formatted_accent, $accent];
     last if ($accent eq $current);
     $accent = $accent->{'parent'}->{'parent'};
   }
 
+  if ($accent ne $current) {
+    while (1) {
+      push @results_stack, [undef, $accent];
+      last if ($accent eq $current);
+      $accent = $accent->{'parent'}->{'parent'};
+    }
+  }
+
   if ($debug) {
-    print STDERR "stack: ".join('|',@$stack)."\nPARTIAL_RESULATS_STACK:\n";
+    print STDERR "stack: ".join('|',@$stack)."\nPARTIAL_RESULTS_STACK:\n";
     foreach my $partial_result (@results_stack) {
-      print STDERR "   -> ".Encode::encode('utf8', $partial_result->[0])
+      if (defined($partial_result->[0])) {
+        print STDERR "   -> ".Encode::encode('utf8', $partial_result->[0])
                             ."|$partial_result->[1]->{'cmdname'}\n";
+      } else {
+        print STDERR "   -> NO UTF8 |$partial_result->[1]->{'cmdname'}\n";
+      }
     }
   }
 
@@ -691,6 +709,7 @@ sub eight_bit_accents($$$)
   my $eight_bit_command_index = -1;
   foreach my $partial_result (@results_stack) {
     my $char = $partial_result->[0];
+    last if (!defined($char));
 
     my ($new_eight_bit, $new_codepoint) = _eight_bit_and_unicode_point($char,
                                                            $encoding_map_name);
@@ -773,16 +792,31 @@ sub ascii_accents ($)
 }
 
 # format a stack of accents as unicode
-sub unicode_accents ($$)
+sub unicode_accents ($$;$)
 {
   my $current = shift;
-  my $format_accents = shift;
+  my $format_accent = shift;
+  my $in_upper_case = shift;
   my ($result, $innermost_accent, $stack) = _find_innermost_accent($current,
           'utf-8');
+  my @stack_accent_commands = reverse(@$stack);
 
-  foreach my $accent_command (reverse(@$stack)) {
-    $result = Texinfo::Convert::Unicode::unicode_accent($result, 
-       {'cmdname' => $accent_command}, $format_accents);
+  while (@stack_accent_commands) {
+    my $accent_command = shift @stack_accent_commands;
+    my $formatted_result
+     = Texinfo::Convert::Unicode::unicode_accent($result, 
+       {'cmdname' => $accent_command});
+    if (!defined($formatted_result)) {
+      push @stack_accent_commands, $accent_command;
+    } else {
+      $result = $formatted_result;
+    }
+  }
+  $result = uc ($result) if ($in_upper_case);
+  while (@stack_accent_commands) {
+    my $accent_command = shift @stack_accent_commands;
+    $result = &$format_accent($result, 
+       {'cmdname' => $accent_command}, $in_upper_case);
   }
   return $result;
 }

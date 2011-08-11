@@ -255,8 +255,15 @@ sub _convert($;$)
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return '' if (!$root->{'args'});
-      my $accented_char = Texinfo::Convert::Unicode::unicode_accent(_convert($root->{'args'}->[0]), 
-                         $root, \&Texinfo::Convert::Text::ascii_accent);
+      my $accent_text = _convert($root->{'args'}->[0]);
+      my $accented_char 
+        = Texinfo::Convert::Unicode::unicode_accent($accent_text, 
+                         #$root, \&Texinfo::Convert::Text::ascii_accent);
+                                                    $root);
+      if (!defined($accented_char)) {
+        $accented_char = Texinfo::Convert::Text::ascii_accent($accent_text,
+                                                              $root);
+      }
       if ($in_sc) {
         return uc ($accented_char);
       } else {

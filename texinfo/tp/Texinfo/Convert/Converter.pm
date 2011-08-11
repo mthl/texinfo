@@ -595,10 +595,11 @@ sub xml_accent_numeric_entities($$)
   return xml_accent($text, $command, 1);
 }
 
-sub xml_accents($$)
+sub xml_accents($$;$)
 { 
   my $self = shift;
   my $accent = shift;
+  my $in_upper_case = shift;
   my $format_accents;
   if ($self->get_conf('USE_NUMERIC_ENTITY')) {
     $format_accents = \&xml_accent_numeric_entities;
