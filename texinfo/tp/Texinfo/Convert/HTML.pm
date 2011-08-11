@@ -3279,11 +3279,12 @@ sub _convert_text($$$)
   if ($self->get_conf('ENABLE_ENCODING') and 
       !$self->get_conf('ENABLE_ENCODING_USE_ENTITY')
       and $self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
-    my $context = {'code' => $self->in_code(), 
+    my $context = {'code' => ($self->in_code() or $self->in_math()), 
                    'preformatted' => $self->in_preformatted()};
     $text = Texinfo::Convert::Unicode::unicode_text($self, $text, $command,
                                                          $context);
-  } elsif (!$self->in_code() and !$self->in_preformatted()) {
+  } elsif (!$self->in_code() and !$self->in_math() 
+           and !$self->in_preformatted()) {
     if ($self->get_conf('USE_ISO')) {
       $text =~ s/---/\&mdash\;/g;
       $text =~ s/--/\&ndash\;/g;

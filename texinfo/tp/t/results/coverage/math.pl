@@ -457,7 +457,7 @@ ul.no-bullet {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <p>Simple math
-<em>&ndash;{x^i}\\over{\\tan y}</em>
+<em>--{x^i}\\over{\\tan y}</em>
 </p>
 <p>Math with @-command
 <em><code>math code</code> a &lt; b</em>
