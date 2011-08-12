@@ -1,3 +1,10 @@
+Mail Karl about   Xref Command Expansion
+
+ Quotation mark commands are likewise replaced by their Unicode values
+(*note Inserting Quotation Marks::).
+
+
+
 l 3273 in HTML.pm don't be in preformatted for the description.
 but call the function for the other stuff.
 

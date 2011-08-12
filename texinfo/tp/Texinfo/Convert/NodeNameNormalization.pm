@@ -234,6 +234,8 @@ sub _convert($;$)
                          or $root->{'args'}->[0]->{'type'} eq 'misc_arg')))));
   my $result = '';
   if (defined($root->{'text'})) {
+    # FIXME the manual says that (in HTML Xref Command Expansion)
+    # Quotation mark commands are likewise replaced by their Unicode values
     $result = $root->{'text'};
     $result =~ s/\s+/ /go;
     $result = uc($result) if ($in_sc);
@@ -261,6 +263,8 @@ sub _convert($;$)
                          #$root, \&Texinfo::Convert::Text::ascii_accent);
                                                     $root);
       if (!defined($accented_char)) {
+        # In this case, the node normalization do not follow the specification,
+        # but we cannot do better
         $accented_char = Texinfo::Convert::Text::ascii_accent($accent_text,
                                                               $root);
       }

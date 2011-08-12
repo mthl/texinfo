@@ -811,7 +811,7 @@ sub encoding_alias ($)
 }
 
 # This should do the job, or at least don't do wrong if $self
-# is not defined, as could be the case if called from 
+# is not defined, as could be the case if called from 
 # Texinfo::Convert::Text.
 sub expand_verbatiminclude($$)
 {

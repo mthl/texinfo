@@ -787,7 +787,7 @@ sub ascii_accents ($;$)
 
   my ($result, $innermost_accent, $stack) = _find_innermost_accent($current);
 
-  $result = uc($result) if ($in_upper_case);
+  $result = uc($result) if ($in_upper_case and $result =~ /^\w$/);
   foreach my $accent_command (reverse(@$stack)) {
     $result = ascii_accent ($result, {'cmdname' => $accent_command});
   }
