@@ -607,14 +607,16 @@ sub _find_innermost_accent_contents($;$)
 }
 
 # find the innermost accent and format the correspponding text contents
-sub _find_innermost_accent($;$)
+sub _find_innermost_accent($;$$)
 {
   my $current = shift;
   my $encoding = shift;
+  my $in_upper_case = shift;
   my ($contents, $innermost_accent, $stack) 
       = _find_innermost_accent_contents($current);
   my $options = {};
-  $options = {'enabled_encoding' => $encoding} if (defined($encoding));
+  $options->{'enabled_encoding'} = $encoding if (defined($encoding));
+  $options->{'sc'} = $in_upper_case if (defined($in_upper_case));
   return (convert({'contents' => $contents}, $options), 
                                              $innermost_accent, $stack);
 }
@@ -649,8 +651,10 @@ sub eight_bit_accents($$$;$)
   my $debug;
   #$debug = 1;
 
-  my ($text, $innermost_accent, $stack) = _find_innermost_accent($current, 
-                                                                 $encoding);
+  # FIXME shouldn't it be better to format the innermost conntents with 
+  # a converter, if present?
+  my ($text, $innermost_accent, $stack) 
+    = _find_innermost_accent($current, $encoding, $in_upper_case);
 
   print STDERR "INNERMOST: $innermost_accent->{'cmdname'}($text)\n"
     if ($debug);
@@ -785,7 +789,8 @@ sub ascii_accents ($;$)
   my $current = shift;
   my $in_upper_case = shift;
 
-  my ($result, $innermost_accent, $stack) = _find_innermost_accent($current);
+  my ($result, $innermost_accent, $stack) 
+    = _find_innermost_accent($current, undef, $in_upper_case);
 
   $result = uc($result) if ($in_upper_case and $result =~ /^\w$/);
   foreach my $accent_command (reverse(@$stack)) {
@@ -801,7 +806,7 @@ sub unicode_accents ($$;$)
   my $format_accent = shift;
   my $in_upper_case = shift;
   my ($result, $innermost_accent, $stack) = _find_innermost_accent($current,
-          'utf-8');
+          'utf-8', $in_upper_case);
   my @stack_accent_commands = reverse(@$stack);
 
   while (@stack_accent_commands) {
