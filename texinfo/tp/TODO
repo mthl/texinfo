@@ -4,6 +4,9 @@ Mail Karl about   Xref Command Expansion
 (*note Inserting Quotation Marks::).
 
 
+Make a test, maybe only for HTML? for the formatting of all 
+possibilities of @*ref.  Certainly in formatting.texi.
+
 
 l 3273 in HTML.pm don't be in preformatted for the description.
 but call the function for the other stuff.
@@ -148,6 +151,11 @@ enable encoding and entities.
 Test that some constructs in @copying in comments in HTML are converted
 differently (as there is a 'converter' passed to Texinfo::Text) than when
 there are in a Text expansion context.
+
+In @copying things like some raw formats may be expanded.  However it is
+not clear that it should be the same than in the main converter.  Maybe a 
+specific list of formats could be passed to Convert::Text::convert, which
+would be different (for example Info and Plaintext even if converting HTML).
 
 construct like 
   @menu @c 

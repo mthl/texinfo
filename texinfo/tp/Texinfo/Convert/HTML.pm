@@ -959,8 +959,11 @@ foreach my $preformatted_command (keys(%preformatted_commands_context)) {
 $pre_class_commands{'menu'} = 'menu-preformatted';
 $pre_class_types{'menu_comment'} = 'menu-comment';
 
-foreach my $indented_format ('example', 'display', 'lisp')
-{
+my %indented_preformatted_commands;
+foreach my $indented_format ('example', 'display', 'lisp') {
+  $indented_preformatted_commands{$indented_format} = 1;
+  $indented_preformatted_commands{"small$indented_format"} = 1;
+
   $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
 }
@@ -2101,11 +2104,6 @@ foreach my $command (@out_formats) {
   $default_commands_conversion{$command} = \&_convert_raw_command;
 }
 
-my %indented_preformatted_commands;
-foreach my $indented_format ('example', 'display', 'lisp') {
-  $indented_preformatted_commands{$indented_format} = 1;
-  $indented_preformatted_commands{"small$indented_format"} = 1;
-}
 
 sub _convert_preformatted_commands($$$$)
 {
@@ -3262,6 +3260,25 @@ sub _convert_definfoenclose_type($$$$) {
 $default_types_conversion{'definfoenclose_command'} 
   = \&_convert_definfoenclose_type;
 
+sub _in_preformatted_code($)
+{
+  my $self = shift;
+
+  return 0 if (!$self->in_preformatted());
+
+  my @pre_classes = $self->preformatted_classes_stack();
+  foreach my $class (@pre_classes) {
+    # FIXME maybe with $class eq 'menu-preformatted' override
+    # 'menu-preformatted' with 'menu-comment', removing the 
+    # code style?
+    if ($preformatted_code_commands{$class}
+        or $class eq 'menu-preformatted') {
+      return 1;
+    }
+  }
+  return 0;
+}
+
 sub _convert_text($$$)
 {
   my $self = shift;
@@ -3280,11 +3297,11 @@ sub _convert_text($$$)
       !$self->get_conf('ENABLE_ENCODING_USE_ENTITY')
       and $self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
     my $context = {'code' => ($self->in_code() or $self->in_math()), 
-                   'preformatted' => $self->in_preformatted()};
+                   'preformatted' => $self->_in_preformatted_code()};
     $text = Texinfo::Convert::Unicode::unicode_text($self, $text, $command,
                                                          $context);
   } elsif (!$self->in_code() and !$self->in_math() 
-           and !$self->in_preformatted()) {
+           and !$self->_in_preformatted_code()) {
     if ($self->get_conf('USE_ISO')) {
       $text =~ s/---/\&mdash\;/g;
       $text =~ s/--/\&ndash\;/g;
