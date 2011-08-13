@@ -2657,15 +2657,16 @@ sub _convert_xref_commands($$$$)
 
   my $tree;
   my $name;
-  if (defined($args->[2]->{'normal'}) and $args->[2]->{'normal'} ne '') {
+  if ($cmdname ne 'inforef'
+      and defined($args->[2]->{'normal'}) and $args->[2]->{'normal'} ne '') {
     $name = $args->[2]->{'normal'};
   } elsif (defined($args->[1]->{'normal'}) and $args->[1]->{'normal'} ne '') {
     $name = $args->[1]->{'normal'}
   }
 
   if ($cmdname eq 'inforef') {
-    $args->[4] = $args->[3];
-    $args->[3] = undef;
+    $args->[3] = $args->[2];
+    $args->[2] = undef;
   }
 
   my $file_arg_tree;
@@ -2679,7 +2680,7 @@ sub _convert_xref_commands($$$$)
   $book = $args->[4]->{'normal'} if (defined($args->[4]->{'normal'}));
 
   # internal reference
-  if ($book eq '' and $file eq ''
+  if ($cmdname ne 'inforef' and $book eq '' and $file eq ''
       and $root->{'extra'}->{'node_argument'}
       and $root->{'extra'}->{'node_argument'}->{'normalized'}
       and !$root->{'extra'}->{'node_argument'}->{'manual_content'}
@@ -2740,21 +2741,33 @@ sub _convert_xref_commands($$$$)
       if ($root->{'extra'}->{'node_argument'} 
           and exists($root->{'extra'}->{'node_argument'}->{'normalized'}));
 
-
     # file argument takes precedence over the file in the node (file)node entry
-    if (defined($file_arg_tree)) {
+    if (defined($file_arg_tree) and $file ne '') {
       $node_entry->{'manual_content'} = $file_arg_tree->{'contents'};
     } elsif ($root->{'extra'}->{'node_argument'}
              and $root->{'extra'}->{'node_argument'}->{'manual_content'}) {
-      $node_entry->{'manual_content'} 
+      $node_entry->{'manual_content'}
         = $root->{'extra'}->{'node_argument'}->{'manual_content'};
+      my $file_with_node_tree = {'type' => '_code', 
+                                  'contents' => [@{$node_entry->{'manual_content'}}]};
+      $file = $self->_convert($file_with_node_tree, 'node file in ref');
     }
     my $href = $self->command_href($node_entry);
+
+    if ($book eq '') {
+      if (!defined($name)) {
+        $name = $self->command_text($node_entry);
+      } elsif ($file ne '') {
+        $name = "($file)$name";
+      }
+    } elsif (!defined($name) and $node_entry->{'node_content'}) {
+      my $node_no_file_tree = {'type' => '_code',
+                               'contents' => [@{$node_entry->{'node_content'}}]};
+      $name = $self->_convert($node_no_file_tree, 'node in ref');
+    }
+
     $name = $args->[0]->{'code'} if (!defined($name));
       
-    if ($book eq '' and $file ne '') {
-      $name = "($file)$name";
-    }
     $name = '' if (!defined($name));
     my $reference = $name;
     $reference = "<a href=\"$href\">$name</a>" if ($href ne '');
