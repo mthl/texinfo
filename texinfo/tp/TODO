@@ -4,10 +4,6 @@ Mail Karl about   Xref Command Expansion
 (*note Inserting Quotation Marks::).
 
 
-Make a test, maybe only for HTML? for the formatting of all 
-possibilities of @*ref.  Certainly in formatting.texi.
-
-
 l 3273 in HTML.pm don't be in preformatted for the description.
 but call the function for the other stuff.
 
@@ -149,11 +145,8 @@ Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
 enable encoding and entities.
 
 in coverage/formatting
-  Test -- in @image in alt in example, to check that -- -> &ndash;
 
-  Test command in @abbr in @example -> @b -> <b>, it should not.
-
-  do Internal_links_formatting.
+do Internal_links_formatting.
 
 Test that some constructs in @copying in comments in HTML are converted
 differently (as there is a 'converter' passed to Texinfo::Text) than when

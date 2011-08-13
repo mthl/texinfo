@@ -33,7 +33,7 @@ $result_trees{'commands_in_alt'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'alt '
+              'text' => 'alt -- '
             },
             {
               'args' => [
@@ -131,7 +131,7 @@ $result_trees{'commands_in_alt'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'alt '
+                      'text' => 'alt -- '
                     },
                     {
                       'args' => [
@@ -285,10 +285,10 @@ $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[2]{'parent'} = $resu
 $result_trees{'commands_in_alt'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[2];
 $result_trees{'commands_in_alt'}{'contents'}[3]{'parent'} = $result_trees{'commands_in_alt'};
 
-$result_texis{'commands_in_alt'} = '@image{f--ile,,,alt @b{in b}}
+$result_texis{'commands_in_alt'} = '@image{f--ile,,,alt -- @b{in b}}
 
 @example
-@image{f--ile,,,alt @b{in b}}
+@image{f--ile,,,alt -- @b{in b}}
 @end example
 ';
 
@@ -345,10 +345,10 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<img src="f--ile.png" alt="alt in b">
+<img src="f--ile.png" alt="alt &ndash; in b">
 
 <div class="example">
-<pre class="example">[ alt <b>in b</b> ]
+<pre class="example">[ alt -- <b>in b</b> ]
 </pre></div>
 <p>
 

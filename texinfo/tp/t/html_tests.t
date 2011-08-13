@@ -18,10 +18,17 @@ in first column, verbatim
 @end example
 '],
 ['commands_in_alt',
-'@image{f--ile,,,alt @b{in b}}
+'@image{f--ile,,,alt -- @b{in b}}
 
 @example
-@image{f--ile,,,alt @b{in b}}
+@image{f--ile,,,alt -- @b{in b}}
+@end example
+'],
+['commands_in_abbr',
+'@abbr{A, @b{abbr} -- b}.
+
+@example
+@abbr{A, @b{abbr} -- b}.
 @end example
 '],
 ['raw_html',

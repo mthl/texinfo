@@ -211,7 +211,7 @@ $result_converted{'plaintext'}->{'inforef_too_much_args'} = '*note cross ref nam
 $result_converted{'html_text'}->{'inforef_too_much_args'} = '<a name="chapter"></a>
 <h3 class="node-heading">chapter</h3>
 
-<p>See <a href="../file name, spurious arg.html#chapter">(file name, spurious arg)cross ref name</a>
+<p>See <a href="file name, spurious arg.html#chapter">(file name, spurious arg)cross ref name</a>
 </p><hr>
 ';
 

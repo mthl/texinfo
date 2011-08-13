@@ -278,7 +278,7 @@ $result_converted{'plaintext'}->{'nested_in_sc'} = 'AAA N~ AA AA~ (1), ABR (EXPL
 ';
 
 
-$result_converted{'html_text'}->{'nested_in_sc'} = '<p><small><small>AAA &Ntilde; &Aring; &Aring;~ <a name="DOCF1" href="#FOOT1">(1)</a>, <abbr title="EXPL">ABR</abbr> (EXPL), 
+$result_converted{'html_text'}->{'nested_in_sc'} = '<p><small><small>AAA &Ntilde; &Aring; &Aring;~ <a name="DOCF1" href="#FOOT1">(1)</a>, <abbr title="expl">ABR</abbr> (EXPL), 
 <tt>in verb</tt></small></small>
 </p><div class="footnote">
 <hr>

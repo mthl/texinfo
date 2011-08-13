@@ -980,7 +980,7 @@ my %default_commands_args = (
   'xref' => [['code'],['normal'],['normal'],['text'],['normal']],
   'pxref' => [['code'],['normal'],['normal'],['text'],['normal']],
   'ref' => [['code'],['normal'],['normal'],['text'],['normal']],
-  'image' => [['text'],['text'],['text'],['string'],['text']],
+  'image' => [['text'],['text'],['text'],['string', 'normal'],['text']],
   'item' => [[]],
   'itemx' => [[]],
 );
@@ -1505,14 +1505,25 @@ sub _convert_image_command($$$$)
       #cluck "err ($self->{'ignore_notice'})";
       $self->line_warn(sprintf($self->__("\@image file `%s' (for HTML) not found, using `%s'"), $basefile, $image_file), $command->{'line_nr'});
     }
-    my $alt;
-    if (defined($args->[3]) and defined($args->[3]->{'string'})) {
-      $alt = $args->[3]->{'string'};
+    if ($self->in_preformatted()) {
+      my $alt_text;
+      if (defined($args->[3]) and defined($args->[3]->{'normal'})) {
+        $alt_text = $args->[3]->{'normal'};
+      }
+      if (!defined($alt_text) or ($alt_text eq '')) {
+        $alt_text = $self->xml_protect_text($basefile);
+      }
+      return "[ $alt_text ]";
+    } else {
+      my $alt_string;
+      if (defined($args->[3]) and defined($args->[3]->{'string'})) {
+        $alt_string = $args->[3]->{'string'};
+      }
+      if (!defined($alt_string) or ($alt_string eq '')) {
+        $alt_string = $self->xml_protect_text($basefile);
+      }
+      return "<img src=\"".$self->xml_protect_text($image_file)."\" alt=\"$alt_string\">";
     }
-    $alt = $self->xml_protect_text($basefile) 
-       if (!defined($alt) or ($alt eq ''));
-    return "[ $alt ]" if ($self->in_preformatted());
-    return "<img src=\"".$self->xml_protect_text($image_file)."\" alt=\"$alt\">";
   }
   return '';
 }
@@ -5394,10 +5405,9 @@ sub _file_header_informations($$)
 
   my $date = '';
   if ($self->get_conf('DATE_IN_HEADER')) {
-    # FIXME new context?
-    $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'} = 1;
+    $self->_new_document_context('DATE_IN_HEADER');
     my $today = $self->convert_tree({'cmdname' => 'today'});
-    delete $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'};
+    pop @{$self->{'document_context'}};
     $date = "\n<meta name=\"date\" content=\"$today\">";
   }
 
@@ -6359,15 +6369,16 @@ sub _convert($$;$)
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
               } elsif ($arg_type eq 'string') {
+                $self->_new_document_context($command_type);
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{$arg_type}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
-                $self->{'document_context'}->[-1]->{'context'}->[-1]->{$arg_type}--;
+                pop @{$self->{'document_context'}};
               } elsif ($arg_type eq 'codestring') {
+                $self->_new_document_context($command_type);
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
-                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}--;
-                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
+                pop @{$self->{'document_context'}};
               } elsif ($arg_type eq 'text') {
                 $arg_formatted->{$arg_type} 
                   = Texinfo::Convert::Text::convert($arg, 

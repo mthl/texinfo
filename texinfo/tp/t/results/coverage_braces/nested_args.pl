@@ -248,6 +248,6 @@ $result_converted{'plaintext'}->{'nested_args'} = '*Note descr in b: (`manual\')
 ';
 
 
-$result_converted{'html_text'}->{'nested_args'} = '<p>See <a href="../manual.html#g_t_0040-in-samp">(manual)S&#7869;ction</a>.</p>';
+$result_converted{'html_text'}->{'nested_args'} = '<p>See <a href="manual.html#g_t_0040-in-samp">(manual)S&#7869;ction</a>.</p>';
 
 1;
