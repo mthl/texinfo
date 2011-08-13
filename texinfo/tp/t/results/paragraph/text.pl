@@ -35,4 +35,7 @@ $result_errors{'text'} = [];
 $result_converted{'plaintext'}->{'text'} = 'text
 ';
 
+
+$result_converted{'html_text'}->{'text'} = '<p>text</p>';
+
 1;

@@ -57,4 +57,9 @@ $result_converted{'plaintext'}->{'text_line'} = 'text
 
 ';
 
+
+$result_converted{'html_text'}->{'text_line'} = '<p>text
+</p>
+';
+
 1;

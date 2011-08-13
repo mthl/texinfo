@@ -48,4 +48,7 @@ $result_errors{'text_comment'} = [];
 $result_converted{'plaintext'}->{'text_comment'} = 'text
 ';
 
+
+$result_converted{'html_text'}->{'text_comment'} = '<p>text</p>';
+
 1;

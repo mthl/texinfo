@@ -140,4 +140,21 @@ $result_errors{'image_in_paragraph'} = [];
 $result_converted{'plaintext'}->{'image_in_paragraph'} = 'Para. [Text for image out of paragraph.].  After image.
 ';
 
+
+$result_converted{'html_text'}->{'image_in_paragraph'} = '<p>Para. <img src="aa.ee" alt="dd">. After image.
+</p>';
+
+$result_converted_errors{'html_text'}->{'image_in_paragraph'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':1: warning: @image file `aa\' (for HTML) not found, using `aa.ee\'
+',
+    'text' => '@image file `aa\' (for HTML) not found, using `aa.ee\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 1
+  }
+];
+
+
 1;

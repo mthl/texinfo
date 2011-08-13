@@ -44,6 +44,7 @@ my %formats = (
   'plaintext' => \&convert_to_plaintext,
   'info' => \&convert_to_info,
   'html' => \&convert_to_html,
+  'html_text' => \&convert_to_html,
   'debugcount' => \&debugcount,
 );
 
@@ -267,7 +268,7 @@ sub convert_to_html($$$$$;$)
   my $converter_options = shift;
   if (!defined($converter_options)) {
     $converter_options = {};
-    $converter_options->{'expanded_formats'} = [$format]
+    $converter_options->{'expanded_formats'} = ['html']
       if (!defined($parser_options->{'expanded_formats'}));
   }
   my $converter =
@@ -276,7 +277,12 @@ sub convert_to_html($$$$$;$)
                                          'OUTFILE' => '',
                                          'output_format' => 'html',
                                           %$converter_options });
-  my $result = $converter->output($tree);
+  my $result;
+  if ($format eq 'html_text') {
+    $result = $converter->convert($tree);
+  } else {
+    $result = $converter->output($tree);
+  }
   die if (!defined($result));
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);

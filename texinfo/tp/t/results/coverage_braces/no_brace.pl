@@ -92,4 +92,7 @@ $result_errors{'no_brace'} = [
 ];
 
 
+
+$result_converted{'html_text'}->{'no_brace'} = '<p>TeX and  code and  footnote </p>';
+
 1;

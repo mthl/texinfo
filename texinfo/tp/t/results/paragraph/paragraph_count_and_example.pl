@@ -140,4 +140,12 @@ $result_converted{'plaintext'}->{'paragraph_count_and_example'} = '     in examp
    After.
 ';
 
+
+$result_converted{'html_text'}->{'paragraph_count_and_example'} = '<div class="example">
+<pre class="example">in example
+</pre></div>
+
+<p>After.
+</p>';
+
 1;

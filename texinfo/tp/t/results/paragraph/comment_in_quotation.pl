@@ -249,4 +249,12 @@ $result_converted{'plaintext'}->{'comment_in_quotation'} = '     Quotation
      Quotation no space
 ';
 
+
+$result_converted{'html_text'}->{'comment_in_quotation'} = '<blockquote>
+<p>Quotation </p></blockquote>
+
+<blockquote>
+<p>Quotation no space</p></blockquote>
+';
+
 1;

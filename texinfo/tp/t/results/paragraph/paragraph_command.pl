@@ -381,4 +381,26 @@ $result_converted{'plaintext'}->{'paragraph_command'} = '@
 
 ';
 
+
+$result_converted{'html_text'}->{'paragraph_command'} = '<p>@
+</p>
+<p><b>aaa</b>.
+</p>
+<p>i also dotless i.
+</p>
+<p><a href="mailto:m1">m1</a> email.
+</p>
+<p>\\@definfoenclose// should work at the beginning of a new paragraph.
+</p>
+<p><a name="DOCF1" href="#FOOT1">(1)</a>.
+</p>
+<div class="footnote">
+<hr>
+<h3 class="footnote">Footnotes</h3>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>lone footnote</p>
+</div>
+';
+
 1;

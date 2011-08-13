@@ -180,4 +180,14 @@ in titlefont
    inew p after sp
 ';
 
+
+$result_converted{'html_text'}->{'close_paragraph_command'} = '<p>para </p><h1 class="titlefont">in titlefont</h1><p> after titlefont.
+</p>
+<p>p before sp
+</p><br>
+<br>
+<br>
+<br>
+<p>inew p after sp</p>';
+
 1;

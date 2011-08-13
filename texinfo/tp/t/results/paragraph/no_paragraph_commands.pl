@@ -185,4 +185,23 @@ title font
 **********
 Text for image out of paragraph.';
 
+
+$result_converted{'html_text'}->{'no_paragraph_commands'} = '<br>
+<h1 class="titlefont">title font</h1>
+<img src="aa.ee" alt="dd">
+';
+
+$result_converted_errors{'html_text'}->{'no_paragraph_commands'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':3: warning: @image file `aa\' (for HTML) not found, using `aa.ee\'
+',
+    'text' => '@image file `aa\' (for HTML) not found, using `aa.ee\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 3
+  }
+];
+
+
 1;

@@ -154,7 +154,7 @@ Insertcopying
 
 @listoffloats Image
 
-',],
+', {'test_formats' => ['html']} ],
 # {'test_formats' => ['info']}],
 ['format_on_first_footnote_line',
 'Texte@footnote{@quotation
@@ -205,7 +205,7 @@ in html
 
 my @test_invalid = (
 ['no_brace', '@TeX and @code code and @footnote footnote ', 
-#,,{'test_formats' => ['html']}],
+{'test_formats' => ['html_text']}
 ],
 ['no_brace_space_end_line',
 '@code {c}.
@@ -279,7 +279,7 @@ our ($arg_test_case, $arg_generate, $arg_debug);
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
-  push @{$test->[2]->{'test_formats'}}, 'html';
+  push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
 run_all ('coverage_braces', [@test_cases, @test_invalid], $arg_test_case,

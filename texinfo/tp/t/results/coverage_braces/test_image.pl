@@ -4290,29 +4290,6 @@ $result_floats{'test_image'}{'Image'}[0]{'extra'}{'end_command'}{'extra'}{'comma
 
 
 
-$result_converted{'plaintext'}->{'test_image'} = 'In text .
-
-   Insertcopying
-   Text in copying. 
-
-   In text .
-
-     
-
-     In text .
-
-In text .
-
-Image 1: 
-In text .
-
-* Menu:
-
-* Image 1: Image with commands.          In text .
-
-';
-
-
 $result_converted{'html'}->{'test_image'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Text in copying.
@@ -4419,6 +4396,168 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'text' => 'Must specify a title with a title command or @top',
     'type' => 'warning'
   },
+  {
+    'file_name' => '',
+    'error_line' => ':14: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 14
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':14: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 14
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':9: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 9
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':9: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 9
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':20: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 20
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':20: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 20
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':24: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 24
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':24: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 24
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':26: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 26
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':26: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 26
+  }
+];
+
+
+
+$result_converted{'plaintext'}->{'test_image'} = 'In text .
+
+   Insertcopying
+   Text in copying. 
+
+   In text .
+
+     
+
+     In text .
+
+In text .
+
+Image 1: 
+In text .
+
+* Menu:
+
+* Image 1: Image with commands.          In text .
+
+';
+
+
+$result_converted{'html_text'}->{'test_image'} = '<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+
+<p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+</p>
+<p>Insertcopying
+</p><p>Text in copying.
+<img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+</p>
+<p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+</p>
+
+<div class="example">
+<pre class="example">[ f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot;  ]
+
+In text [ alt <b>&icirc;--le..</b>  a
+&lt;&quot;%@<tt>  &lt; &amp; @ % &quot; </tt> ].
+</pre></div>
+
+<div class="float"><a name="Image-with-commands"></a>
+<img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+
+<p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+</p>
+
+</div><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+
+<p><strong>Image 1: </strong>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p>
+<dl class="listoffloats">
+<dt><a href="#Image-with-commands">Image 1</a></dt><dd><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+
+<p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></dd>
+</dl>
+
+<hr>
+';
+
+$result_converted_errors{'html_text'}->{'test_image'} = [
   {
     'file_name' => '',
     'error_line' => ':14: warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)

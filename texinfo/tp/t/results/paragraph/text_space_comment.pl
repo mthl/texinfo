@@ -54,4 +54,7 @@ $result_errors{'text_space_comment'} = [];
 $result_converted{'plaintext'}->{'text_space_comment'} = 'text
 ';
 
+
+$result_converted{'html_text'}->{'text_space_comment'} = '<p>text  </p>';
+
 1;

@@ -2401,50 +2401,7 @@ $result_converted{'plaintext'}->{'def'} = ' -- c--ategory: d--effn_name a--rgume
 ';
 
 
-$result_converted{'html'}->{'def'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
-<head>
-<title>Untitled Document</title>
-
-<meta name="description" content="Untitled Document">
-<meta name="keywords" content="Untitled Document">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="texi2html">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-<!--
-a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
-pre.display {font-family: serif}
-pre.format {font-family: serif}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: serif; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: serif; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:pre}
-span.nolinebreak {white-space:pre}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
-ul.no-bullet {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-
-<dl>
+$result_converted{'html_text'}->{'def'} = '<dl>
 <dt><a name="index-d_002d_002deffn_005fname"></a>c--ategory: <strong>d--effn_name</strong><em> a--rguments...</em></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
@@ -2470,22 +2427,6 @@ ul.no-bullet {list-style: none}
 <dt><a name="index-deffnx"></a>truc: <strong>deffnx</strong><em> before end deffn</em></dt>
 <dd><p>Various deff lines
 </p></dd></dl>
-<p>
-
-
-</p>
-</body>
-</html>
 ';
-
-$result_converted_errors{'html'}->{'def'} = [
-  {
-    'error_line' => 'warning: Must specify a title with a title command or @top
-',
-    'text' => 'Must specify a title with a title command or @top',
-    'type' => 'warning'
-  }
-];
-
 
 1;

@@ -58,4 +58,8 @@ $result_errors{'comment_between_text'} = [];
 $result_converted{'plaintext'}->{'comment_between_text'} = 'text end para
 ';
 
+
+$result_converted{'html_text'}->{'comment_between_text'} = '<p>text
+end para</p>';
+
 1;

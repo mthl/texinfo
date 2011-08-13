@@ -1423,52 +1423,7 @@ top! After punc
 ';
 
 
-$result_converted{'html'}->{'punctuation_in_line_commands'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
-<head>
-<title>top! After punc</title>
-
-<meta name="description" content="top! After punc">
-<meta name="keywords" content="top! After punc">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="texi2html">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="#node_0021-After-punc" rel="start" title="node! After punc">
-<link href="#node_0021-After-punc" rel="index" title="node! After punc">
-<style type="text/css">
-<!--
-a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-div.smalldisplay {margin-left: 3.2em}
-div.smallexample {margin-left: 3.2em}
-div.smalllisp {margin-left: 3.2em}
-pre.display {font-family: serif}
-pre.format {font-family: serif}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: serif; font-size: smaller}
-pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: serif; font-size: smaller}
-pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:pre}
-span.nolinebreak {white-space:pre}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
-ul.no-bullet {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-
-<a name="node_0021-After-punc"></a>
+$result_converted{'html_text'}->{'punctuation_in_line_commands'} = '<a name="node_0021-After-punc"></a>
 <a name="top_0021-After-punc"></a>
 <h1 class="top">top! After punc</h1>
 
@@ -1503,28 +1458,22 @@ ul.no-bullet {list-style: none}
 
 <p align="center">center! After punc
 </p>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#node_0021-After-punc_cp_letter-I"><b>I</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="node_0021-After-punc_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index_0021-After-punc">index! After punc</a>:</td><td>&nbsp;</td><td valign="top"><a href="#node_0021-After-punc">node! After punc</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#node_0021-After-punc_cp_letter-I"><b>I</b></a>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
  &nbsp; 
 </td></tr></table>
 
 
 <hr>
-<p>
-
-
-</p>
-</body>
-</html>
 ';
 
 1;
