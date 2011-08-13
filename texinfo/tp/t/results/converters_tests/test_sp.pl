@@ -424,4 +424,25 @@ $result_converted{'plaintext'}->{'test_sp'} = 'Para
 
 ';
 
+
+$result_converted{'html_text'}->{'test_sp'} = '<p>Para
+</p><br>
+<p>other para
+Now lone @sp:
+</p>
+<br>
+
+<br>
+<br>
+<p>Para after sp
+</p>
+<p>A
+</p><br>
+<br>
+<p>B
+</p>
+<p>sp after para
+</p><br>
+';
+
 1;

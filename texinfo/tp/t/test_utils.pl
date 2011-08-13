@@ -271,6 +271,10 @@ sub convert_to_html($$$$$;$)
     $converter_options->{'expanded_formats'} = ['html']
       if (!defined($parser_options->{'expanded_formats'}));
   }
+  $converter_options->{'SPLIT'} = 0
+    if ($format eq 'html_text' 
+        and !defined($parser_options->{'SPLIT'})
+        and !defined($converter_options->{'SPLIT'}));
   my $converter =
      Texinfo::Convert::HTML->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,

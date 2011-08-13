@@ -196,10 +196,50 @@ $accents_text
 @code{@@inforef@{node@}} @inforef{node}
 @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
 @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
-']
+'],
+['unknown_value',
+'@value{unknown}'],
+['test_sp',
+'Para
+@sp 1
+other para
+Now lone @@sp:
+
+@sp 1
+
+@sp 2
+Para after sp
+
+A
+@sp 2
+B
+
+sp after para
+@sp 1
+'],
+['sp_in_example',
+'@example
+Para
+@sp 1
+other para
+Now lone @@sp:
+
+@sp 1
+
+@sp 2
+Para after sp
+
+A
+@sp 2
+B
+
+sp after para
+@sp 1
+@end example
+'],
 );
 
-my @html_cases = (
+my @html_text_cases = (
 ['accentenc_no_iso_no_entity',
 $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
                            'ENABLE_ENCODING_USE_ENTITY' => 0, 'USE_ISO' => 0}
@@ -208,16 +248,16 @@ $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
-  push @{$test->[2]->{'test_formats'}}, 'html';
+  push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
-foreach my $test (@html_cases) {
-  push @{$test->[2]->{'test_formats'}}, 'html';
+foreach my $test (@html_text_cases) {
+  push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('converters_tests', [@test_cases, @html_cases], $arg_test_case,
+run_all ('converters_tests', [@test_cases, @html_text_cases], $arg_test_case,
    $arg_generate, $arg_debug);
 
 1;

@@ -43,4 +43,7 @@ $result_errors{'unknown_value'} = [
 $result_converted{'plaintext'}->{'unknown_value'} = '{No value for `unknown\'}
 ';
 
+
+$result_converted{'html_text'}->{'unknown_value'} = '{No value for &lsquo;unknown&rsquo;}';
+
 1;

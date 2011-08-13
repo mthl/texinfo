@@ -467,4 +467,27 @@ $result_converted{'plaintext'}->{'sp_in_example'} = '     Para
 
 ';
 
+
+$result_converted{'html_text'}->{'sp_in_example'} = '<div class="example">
+<pre class="example">Para
+
+other para
+Now lone @sp:
+
+
+
+
+
+Para after sp
+
+A
+
+
+B
+
+sp after para
+
+</pre></div>
+';
+
 1;

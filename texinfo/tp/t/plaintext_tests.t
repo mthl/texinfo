@@ -401,46 +401,6 @@ sp@sp 4
 text
 @end example
 '],
-['unknown_value',
-'@value{unknown}'],
-['test_sp',
-'Para
-@sp 1
-other para
-Now lone @@sp:
-
-@sp 1
-
-@sp 2
-Para after sp
-
-A
-@sp 2
-B
-
-sp after para
-@sp 1
-'],
-['sp_in_example',
-'@example
-Para
-@sp 1
-other para
-Now lone @@sp:
-
-@sp 1
-
-@sp 2
-Para after sp
-
-A
-@sp 2
-B
-
-sp after para
-@sp 1
-@end example
-'],
 );
 
 my $insert_copying_and_paragraph = 
