@@ -100,6 +100,31 @@ foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
 }
 
+# There are 5 stacks that define the context.
+# 'context': relevant for alignement of text.  Set in math, footnote, 
+#            listoffloats, flush_commands, preformatted_context_commands 
+#            (preformatted + menu + verbatim), and raw commands if 
+#            on top level.
+# format_context: used for the count of paragraphs and for the indentation.
+#            Set in footnote, for all commands relevant for indenting, like
+#            @*table, @itemize, @enumerate, preformatted commands, 
+#            @*quotation, @def*, and also menu commands, @flushleft, 
+#            @flushright, @float, in multitable cell and raw commands if at
+#            toplevel.
+# text_element_context: for the max columns and the counter in the line
+#            position (although the counter in the line is taken over by 
+#            the formatter once a formatter is opened).
+#            Set in footnote and in multitable cells.
+# formatters: the current objects that does the counting of columns,
+#            actual indentation.  In general, it is better not to have
+#            formatters in parallel, but it may happen.
+# count_context: holds the bytes count, the lines count and the location
+#            of the commands that have their byte count or llines count
+#            recorded.  It is set for out of document formatting to avoid
+#            counting some converted text, but it is also set when it has
+#            to be modified afterwards, for aligned commands or multitable
+#            cells for example.
+
 my %default_preformatted_context_commands = %preformatted_commands;
 foreach my $preformatted_command ('verbatim', keys(%menu_commands)) {
   $default_preformatted_context_commands{$preformatted_command} = 1;
@@ -151,7 +176,7 @@ my %flush_commands = (
 );
 
 # commands that leads to advancing the paragraph number.  This is mostly
-#used to determine the first line, in fact.
+# used to determine the first line, in fact.
 my %advance_paragraph_count_commands;
 foreach my $command (keys(%block_commands)) {
   next if ($menu_commands{$command} 
