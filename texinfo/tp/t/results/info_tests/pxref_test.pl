@@ -84,10 +84,10 @@ $result_trees{'pxref_test'} = {
                   'node_content' => [
                     {
                       'parent' => {},
-                      'text' => ' in pxref'
+                      'text' => 'in pxref'
                     }
                   ],
-                  'normalized' => '-in-pxref'
+                  'normalized' => 'in-pxref'
                 }
               },
               'line_nr' => {
@@ -149,10 +149,10 @@ $result_trees{'pxref_test'} = {
                   'node_content' => [
                     {
                       'parent' => {},
-                      'text' => ' in pxref'
+                      'text' => 'in pxref'
                     }
                   ],
-                  'normalized' => '-in-pxref'
+                  'normalized' => 'in-pxref'
                 }
               },
               'line_nr' => {},

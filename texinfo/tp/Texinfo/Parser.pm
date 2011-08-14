@@ -1461,15 +1461,19 @@ sub _close_current($$$;$)
                                              ord('{')), $line_nr);
       $current = $current->{'parent'};
     } else {
-      if ($current->{'type'} eq 'menu_comment') {
-        #print STDERR "Closing MENU_COMMENT when closing\n";
-        pop @{$self->{'context_stack'}};
+      if ($current->{'type'} eq 'menu_comment' 
+          or $current->{'type'} eq 'menu_entry_description') {
+        print STDERR "Closing MENU COMMENT/ENTRY_DESCRIPTION ($current->{'type'}) when closing\n"
+          if ($self->{'DEBUG'});
+        my $context = pop @{$self->{'context_stack'}};
+        warn "BUG: not preformatted on context stack $context (close $current->{'type'})" 
+           if ($context ne 'preformatted');
         # close empty menu_comment
         if (!@{$current->{'contents'}}) {
           pop @{$current->{'parent'}->{'contents'}};
         }
       }
-      $current = $current->{'parent'} if ($current->{'parent'});
+      $current = $current->{'parent'};
     }
   } else { # Should never go here.
     $current = $current->{'parent'} if ($current->{'parent'});
@@ -1513,9 +1517,18 @@ sub _close_commands($$$;$)
   my $closed_command;
   if ($command and $current->{'cmdname'} 
     and $current->{'cmdname'} eq $command) {
-    pop @{$self->{'context_stack'}} if 
-       ($preformatted_commands{$current->{'cmdname'}} 
-         or $menu_commands{$current->{'cmdname'}});
+    if ($preformatted_commands{$current->{'cmdname'}}) {
+      my $context = pop @{$self->{'context_stack'}};
+      warn "BUG: closing preformatted_command $command wrong context $context"
+        if ($context ne 'preformatted');
+    } elsif ($menu_commands{$current->{'cmdname'}}) {
+      my $context = pop @{$self->{'context_stack'}};
+      # may be in menu, but context is preformatted if in a preformatted too.
+      warn "BUG: closing menu command $command wrong context $context"
+        if ($context ne 'menu' and $context ne 'preformatted');
+    }
+    #print STDERR "close context $context for $current->{'cmdname'}\n"
+    #  if ($self->{'DEBUG'});
     pop @{$self->{'regions_stack'}} 
        if ($region_commands{$current->{'cmdname'}});
     $closed_command = $current;
@@ -1908,6 +1921,7 @@ sub _parse_node_manual($)
         my ($before, $after) = split (/\)/, $brace_text, 2);
         push @$manual, { 'text' => $before, 'parent' => $content->{'parent'} }
             if ($before ne '');
+        $after =~ s/^\s*//;
         unshift @contents,  { 'text' => $after, 'parent' => $content->{'parent'} }
             if ($after ne '');
         last;
@@ -2168,6 +2182,7 @@ sub _end_line($$$)
       push @{$current->{'contents'}}, $empty_line;
       $empty_line->{'parent'} = $current;
     } elsif (($current->{'type'} 
+              # FIXME remove this condition
                and $current->{'type'} eq 'menu_entry_description')
               or ($current->{'type'}
                and $current->{'type'} eq 'preformatted'
@@ -2179,6 +2194,10 @@ sub _end_line($$$)
         $current = $current->{'parent'};
         pop @{$current->{'contents'}} if ($empty_preformatted);
       }
+      my $context = pop @{$self->{'context_stack'}};
+      warn "BUG: empty line after menu_entry_description bad context: $context"
+        if ($context ne 'preformatted');
+      
       # first parent is menu_entry
       $current = $current->{'parent'}->{'parent'};
       
@@ -2226,24 +2245,11 @@ sub _end_line($$$)
     # we abort the menu entry if there is no node name
     if ($empty_menu_entry_node 
           or $current->{'type'} eq 'menu_entry_name') {
+      my $description_or_menu_comment;
       print STDERR "FINALLY NOT MENU ENTRY\n" if ($self->{'DEBUG'});
       my $menu = $current->{'parent'}->{'parent'};
       my $menu_entry = pop @{$menu->{'contents'}};
       if (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
-         and $menu->{'contents'}->[-1]->{'type'} eq 'menu_comment') {
-        $current = $menu->{'contents'}->[-1];
-        if ($current->{'contents'}->[-1] and $current->{'contents'}->[-1]->{'type'}
-          and $current->{'contents'}->[-1]->{'type'} eq 'preformatted') {
-          $current = $current->{'contents'}->[-1];
-        } else {
-          #push @{$self->{'context_stack'}}, 'preformatted';
-          push @{$current->{'contents'}}, {'type' => 'preformatted',
-                                    'parent' => $current,
-                                    'contents' => [] };
-          $current = $current->{'contents'}->[-1];
-        }
-        push @{$self->{'context_stack'}}, 'preformatted';
-      } elsif (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
          and $menu->{'contents'}->[-1]->{'type'} eq 'menu_entry') {
         my $entry = $menu->{'contents'}->[-1];
         my $description;
@@ -2254,16 +2260,35 @@ sub _end_line($$$)
           }
         }
         if ($description) {
-          $current = $description;
+          $description_or_menu_comment = $description;
         } else {
           # Normally this cannot happen
           warn "BUG: No description in menu_entry";
           push @{$entry->{'args'}}, {'type' => 'menu_entry_description',
                                      'parent' => $entry,
                                      'contents' => [] };
-          $current = $entry->{'args'}->[-1];
+          $description_or_menu_comment = $entry->{'args'}->[-1];
         }
+      } elsif (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
+         and $menu->{'contents'}->[-1]->{'type'} eq 'menu_comment') {
+        $description_or_menu_comment = $menu->{'contents'}->[-1];
+      }
+      if ($description_or_menu_comment) {
+        $current = $description_or_menu_comment;
+        if ($current->{'contents'}->[-1] and $current->{'contents'}->[-1]->{'type'}
+          and $current->{'contents'}->[-1]->{'type'} eq 'preformatted') {
+          $current = $current->{'contents'}->[-1];
+        } else {
+          # FIXME verify that this may happen
+          #push @{$self->{'context_stack'}}, 'preformatted';
+          push @{$current->{'contents'}}, {'type' => 'preformatted',
+                                    'parent' => $current,
+                                    'contents' => [] };
+          $current = $current->{'contents'}->[-1];
+        }
+        push @{$self->{'context_stack'}}, 'preformatted';
       } else {
+        #warn "BUG: no menu_comment nor menu_entry in menu";
         push @{$menu->{'contents'}}, {'type' => 'menu_comment',
                                     'parent' => $menu,
                                     'contents' => [] };
@@ -2300,10 +2325,7 @@ sub _end_line($$$)
     } else {
       print STDERR "MENU ENTRY END LINE\n" if ($self->{'DEBUG'});
       $current = $current->{'parent'};
-      push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
-                                  'contents' => [], 'parent' => $current };
-      _enter_menu_entry_node($self, $current, $line_nr);
-      $current = $current->{'args'}->[-1];
+      $current = _enter_menu_entry_node($self, $current, $line_nr);
       if (defined($end_comment)) {
         $end_comment->{'parent'} = $current;
         push @{$current->{'contents'}}, $end_comment;
@@ -2776,6 +2798,8 @@ sub _end_line($$$)
           # closing a menu command, but still in a menu. Open a menu_comment
           if ($menu_commands{$closed_command->{'cmdname'}} 
               and $self->{'context_stack'}->[-1] eq 'menu') {
+            print STDERR "CLOSE MENU but still in menu context\n"
+              if ($self->{'DEBUG'});
             push @{$current->{'contents'}}, {'type' => 'menu_comment',
                                              'parent' => $current,
                                              'contents' => [] };
@@ -2974,6 +2998,10 @@ sub _enter_menu_entry_node($$$)
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
+  my $description = { 'type' => 'menu_entry_description',
+                      'contents' => [],
+                      'parent' => $current };
+  push @{$current->{'args'}}, $description;
   foreach my $arg (@{$current->{'args'}}) {
     if ($arg->{'type'} eq 'menu_entry_name') {
       $current->{'extra'}->{'menu_entry_name'} = $arg;
@@ -2990,6 +3018,13 @@ sub _enter_menu_entry_node($$$)
     }
   } 
   $current->{'line_nr'} = $line_nr;
+  $current = $description;
+  push @{$current->{'contents'}}, {'type' => 'preformatted',
+                                   'parent' => $current,
+                                   'contents' => [] };
+  $current = $current->{'contents'}->[-1];
+  push @{$self->{'context_stack'}}, 'preformatted';
+  return $current;
 }
 
 sub _register_command_arg($$$)
@@ -3076,6 +3111,7 @@ sub _parse_texi($;$)
       my $line_text = '';
       $line_text = "$line_nr->{'line_nr'}.$line_nr->{'macro'}" if ($line_nr);
       print STDERR "NEW LINE($self->{'context_stack'}->[-1]:@{$self->{'conditionals_stack'}}:$line_text): $line";
+      #print STDERR "CONTEXT_STACK ".join('|',@{$self->{'context_stack'}})."\n";
       delete $current->{'HERE !!!!'};
     }
 
@@ -3393,6 +3429,7 @@ sub _parse_texi($;$)
                       and ($current->{'parent'}->{'type'} eq 'menu_comment'
                            # FIXME does menu_entry_description here work as intended?
                            or $current->{'parent'}->{'type'} eq 'menu_entry_description'))
+                    # FIXME remove the next condition
                     or $current->{'type'} eq 'menu_entry_description')
                 and @{$current->{'contents'}} 
                 and $current->{'contents'}->[-1]->{'type'}
@@ -3425,11 +3462,19 @@ sub _parse_texi($;$)
           }
           $current = $menu;
           #print STDERR "Close MENU_COMMENT because new menu entry\n";
-          pop @{$self->{'context_stack'}};
         } else {
-          # first parent is menu_entry
-          $current = $current->{'parent'}->{'parent'};
+          # first parent preformatted, third is menu_entry
+          if ($current->{'type'} ne 'preformatted' 
+              or $current->{'parent'}->{'type'} ne 'menu_entry_description'
+              or $current->{'parent'}->{'parent'}->{'type'} ne 'menu_entry'
+              or !$menu_commands{$current->{'parent'}->{'parent'}->{'parent'}->{'cmdname'}}) {
+            warn "BUG: not in menu description";
+          }
+          $current = $current->{'parent'}->{'parent'}->{'parent'};
         }
+        my $context = pop @{$self->{'context_stack'}};
+        warn "BUG: not preformatted on context stack $context (after menu leading star)"
+          if ($context ne 'preformatted');
         push @{$current->{'contents'}}, { 'type' => 'menu_entry',
                                           'parent' => $current,
                                         };
@@ -3472,11 +3517,7 @@ sub _parse_texi($;$)
           # it was previously registered as menu_entry_name, it is 
           # changed to node
           $current->{'args'}->[-2]->{'type'} = 'menu_entry_node';
-          push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
-                                        'contents' => [],
-                                        'parent' => $current };
-          _enter_menu_entry_node($self, $current, $line_nr);
-          $current = $current->{'args'}->[-1];
+          $current = _enter_menu_entry_node($self, $current, $line_nr);
         # end of the menu entry name  
         } elsif ($separator =~ /^:/) {
           print STDERR "MENU ENTRY $separator\n" if ($self->{'DEBUG'});
@@ -3487,11 +3528,7 @@ sub _parse_texi($;$)
         # anything else is the end of the menu node following a menu_entry_name
         } else {
           print STDERR "MENU NODE $separator\n" if ($self->{'DEBUG'});
-          push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
-                                        'contents' => [],
-                                        'parent' => $current };
-          _enter_menu_entry_node($self, $current, $line_nr);
-          $current = $current->{'args'}->[-1];
+          $current = _enter_menu_entry_node($self, $current, $line_nr);
         }
         # REMACRO
       } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
@@ -3898,7 +3935,7 @@ sub _parse_texi($;$)
               and $command eq 'dircategory') {
             push @{$self->{'info'}->{'dircategory_direntry'}}, $misc;
           }
-        # @-command with matching @end
+        # @-command with matching @end opening
         } elsif (exists($block_commands{$command})) {
           if ($command eq 'macro' or $command eq 'rmacro') {
             my $macro = _parse_macro_command_line ($self, $command, $line, 
@@ -3958,11 +3995,15 @@ sub _parse_texi($;$)
                      and $current->{'parent'}->{'type'} 
                      and ($current->{'parent'}->{'type'} eq 'menu_comment'
                           or $current->{'parent'}->{'type'} eq 'menu_entry_description'))
+                   # FIXME remove the next conditions
                    or ($current->{'type'} eq 'menu_comment' 
                        or $current->{'type'} eq 'menu_entry_description'))) {
 
               my $menu;
+
               if ($current->{'type'} eq 'preformatted') {
+                # This should not happen since preformatted was closed above
+                warn "BUG: in preformatted in menu after an end preformatted";
                 $menu = $current->{'parent'}->{'parent'};
                 # don't keep empty menu_comment
                 if (!@{$current->{'contents'}}) {
@@ -3976,11 +4017,12 @@ sub _parse_texi($;$)
                 pop @{$menu->{'contents'}}
                   if (!@{$current->{'contents'}});
               }
+              my $context = pop @{$self->{'context_stack'}};
+              warn "BUG: not preformatted on context stack $context (new menu)" 
+                if ($context ne 'preformatted');
+              
               if ($menu->{'type'} and $menu->{'type'} eq 'menu_entry') {
                 $menu = $menu->{'parent'};
-              } else {
-                #print STDERR "new menu cmd $command close MENU_COMMENT\n";
-                pop @{$self->{'context_stack'}};
               }
 
               $current = $menu;

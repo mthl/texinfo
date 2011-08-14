@@ -268,6 +268,9 @@ in cartouche in description in menu in example
 @cartouche
 in cartouche in menu comment in menu in example
 @end cartouche
+
+* (node) menu::      a node in menu
+* a menu name:(other) node. 
 @end menu
 @end example
 ']

@@ -345,9 +345,15 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => '
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => '
 '
+                        }
+                      ],
+                      'parent' => {},
+                      'type' => 'preformatted'
                     }
                   ],
                   'parent' => {},
@@ -622,6 +628,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'c
 $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[1];
 $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1];
 $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[3]{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[3];
 $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1];
 $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[3];

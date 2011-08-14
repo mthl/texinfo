@@ -2050,11 +2050,16 @@ sub _convert($$)
                                                    'locations' => []};
       }
     } elsif ($root->{'type'} eq 'preformatted') {
-      $preformatted = $self->new_formatter('unfilled');
-      push @{$self->{'formatters'}}, $preformatted;
-      if ($self->{'context'}->[-1] eq 'flushright') {
-        push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
-                                                   'locations' => []};
+      # if in a description reuse the main menu unfilled, to keep things
+      # simpler and avoid having to do a separate count.
+      if ((!$root->{'parent'}->{'type'})
+           or $root->{'parent'}->{'type'} ne 'menu_entry_description') {
+        $preformatted = $self->new_formatter('unfilled');
+        push @{$self->{'formatters'}}, $preformatted;
+        if ($self->{'context'}->[-1] eq 'flushright') {
+          push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
+                                                     'locations' => []};
+        }
       }
     } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
@@ -2104,6 +2109,9 @@ sub _convert($$)
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
           if ($menu_entry_internal_node) {
+            if ($self->get_conf('DEBUG')) {
+              print STDERR "\n  ------------- BEGIN ignored 2 node formatting for error report -------------\n";
+            }
             # check that after space collapse the info reader will find the
             # node.  But always expand what the user provided for the 
             # menu entry, to keep the user defined spacing.
@@ -2131,6 +2139,9 @@ sub _convert($$)
                        $menu_node, $internal_node), $root->{'line_nr'});
             }
             pop @{$self->{'count_context'}};
+            if ($self->get_conf('DEBUG')) {
+              print STDERR "  ------------- END ignored 2 node formatting for error report -------------\n\n";
+            }
           }
           $result .= $self->_convert({'type' => 'code',
                                       'contents' => $arg->{'contents'}});

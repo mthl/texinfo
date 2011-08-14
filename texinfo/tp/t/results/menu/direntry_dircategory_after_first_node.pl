@@ -187,9 +187,15 @@ $result_trees{'direntry_dircategory_after_first_node'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'in text
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'in text
 '
+                        }
+                      ],
+                      'parent' => {},
+                      'type' => 'preformatted'
                     }
                   ],
                   'parent' => {},
@@ -315,6 +321,7 @@ $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[3];
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1];
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[4]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1];
+$result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[5]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[5]{'contents'}[0];
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[5]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[5];
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[5]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1];
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[5];

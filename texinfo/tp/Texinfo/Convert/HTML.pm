@@ -3214,7 +3214,7 @@ sub _convert_preformatted_type($$$$)
   my @pre_classes = $self->preformatted_classes_stack();
   foreach my $class (@pre_classes) {
     # FIXME maybe add   or $pre_class eq 'menu-preformatted'  to override
-    # 'menu-preformatted' wiith 'menu-comment'?
+    # 'menu-preformatted' with 'menu-comment'?
     $pre_class = $class unless ($pre_class 
                            and $preformatted_code_commands{$pre_class}
                            and !($preformatted_code_commands{$class}
@@ -3234,6 +3234,10 @@ sub _convert_preformatted_type($$$$)
   if ($self->top_format() eq 'multitable') {
     $content =~ s/^\s*//;
     $content =~ s/\s*$//;
+  }
+  if ($command->{'parent'}->{'type'} 
+      and $command->{'parent'}->{'type'} eq 'menu_entry_description') {
+    return $content;
   }
   my $result = $self->attribute_class('pre', $pre_class).">".$content."</pre>";
 
