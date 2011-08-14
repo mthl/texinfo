@@ -95,61 +95,67 @@ foreach my $misc_context_command('tab', 'item', 'itemx', 'headitem') {
   $format_context_commands{$misc_context_command} = 1;
 }
 
+my %composition_context_commands = (%preformatted_commands, %root_commands,
+  %menu_commands, %align_commands);
+$composition_context_commands{'float'} = 1;
+
 # FIXME allow customization?
 my %upper_case_commands = ( 'sc' => 1 );
 
 sub in_math($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'math'};
+  return $self->{'document_context'}->[-1]->{'math'};
 }
 
 sub in_preformatted($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'preformatted_context'}->[-1];
+  my $context = $self->{'document_context'}->[-1]->{'composition_context'}->[-1];
+  return ($preformatted_commands{$context} 
+         or ($menu_commands{$context} and $self->get_conf('SIMPLE_MENU')));;
 }
 
 sub in_upper_case($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'upper_case'};
+  return $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'};
 }
 
 sub in_space_protected($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'space_protected'};
+  return $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'space_protected'};
 }
 
 sub in_code($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'};
+  return $self->{'document_context'}->[-1]->{'code'};
 }
 
 sub in_string($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'};
+  return $self->{'document_context'}->[-1]->{'string'};
 }
 
 sub in_verbatim($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'verbatim'};
+  return $self->{'document_context'}->[-1]->{'verbatim'};
 }
 
 sub paragraph_number($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'paragraph_number'};
+  return $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'paragraph_number'};
 }
 
 sub preformatted_number($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'preformatted_number'};
+  return $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'preformatted_number'};
 }
 
 sub top_format($)
@@ -173,7 +179,7 @@ sub preformatted_classes_stack($)
 sub align($)
 {  
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'context'}->[-1]->{'align'}->[-1];
+  return $self->{'document_context'}->[-1]->{'composition_context'}->[-1];
 }
 
 sub _get_target($$)
@@ -3302,25 +3308,6 @@ sub _convert_definfoenclose_type($$$$) {
 $default_types_conversion{'definfoenclose_command'} 
   = \&_convert_definfoenclose_type;
 
-sub _in_preformatted_code($)
-{
-  my $self = shift;
-
-  return 0 if (!$self->in_preformatted());
-
-  my @pre_classes = $self->preformatted_classes_stack();
-  foreach my $class (@pre_classes) {
-    # FIXME maybe with $class eq 'menu-preformatted' override
-    # 'menu-preformatted' with 'menu-comment', removing the 
-    # code style?
-    if ($preformatted_code_commands{$class}
-        or $class eq 'menu-preformatted') {
-      return 1;
-    }
-  }
-  return 0;
-}
-
 sub _convert_text($$$)
 {
   my $self = shift;
@@ -3338,12 +3325,10 @@ sub _convert_text($$$)
   if ($self->get_conf('ENABLE_ENCODING') and 
       !$self->get_conf('ENABLE_ENCODING_USE_ENTITY')
       and $self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
-    my $context = {'code' => ($self->in_code() or $self->in_math()), 
-                   'preformatted' => $self->_in_preformatted_code()};
+    my $context = {'code' => ($self->in_code() or $self->in_math())}; 
     $text = Texinfo::Convert::Unicode::unicode_text($self, $text, $command,
                                                          $context);
-  } elsif (!$self->in_code() and !$self->in_math() 
-           and !$self->_in_preformatted_code()) {
+  } elsif (!$self->in_code() and !$self->in_math()) { 
     if ($self->get_conf('USE_ISO')) {
       $text =~ s/---/\&mdash\;/g;
       $text =~ s/--/\&ndash\;/g;
@@ -3911,9 +3896,8 @@ sub _new_document_context($$)
   my $cmdname = shift;
   push @{$self->{'document_context'}},
           {'cmdname' => $cmdname,
-           'context' => [{'cmdname' => $cmdname, 
-                         'align' => ['raggedright']}],
-           'preformatted_context' => [0],
+           'formatting_context' => [{'cmdname' => $cmdname}],
+           'composition_context' => ['raggedright'],
            'formats' => [],
           };
 }
@@ -6227,7 +6211,7 @@ sub _convert($$;$)
 
   if ($self->get_conf('DEBUG')) {
     $explanation = 'NO EXPLANATION' if (!defined($explanation));
-    print STDERR "ROOT($explanation):$root (".join('|',@{$self->{'document_context'}->[-1]->{'context'}})."), ->";
+    print STDERR "ROOT($explanation):$root (".join('|',@{$self->{'document_context'}->[-1]->{'formatting_context'}})."), ->";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     my $text = $root->{'text'}; 
@@ -6322,34 +6306,31 @@ sub _convert($$;$)
       push @{$self->{'document_context'}->[-1]->{'commands'}}, 
         $root->{'cmdname'}; 
       if (exists($format_context_commands{$command_name})) {
-        push @{$self->{'document_context'}->[-1]->{'context'}}, 
-                       {'cmdname' => $command_name, 'align' => ['raggedright']};
+        push @{$self->{'document_context'}->[-1]->{'formatting_context'}}, 
+                                              {'cmdname' => $command_name};
       }
       if (exists($block_commands{$command_name})) {
         push @{$self->{'document_context'}->[-1]->{'formats'}}, $command_name;
       }
-      if ($preformatted_commands_context{$command_name}
-          or $command_name eq 'menu' and $self->get_conf('SIMPLE_MENU')) {
-        push @{$self->{'document_context'}->[-1]->{'preformatted_context'}}, $command_name;
+      if (exists ($composition_context_commands{$command_name})) {
+        push @{$self->{'document_context'}->[-1]->{'composition_context'}}, $command_name;
       }
       if ($pre_class_commands{$command_name}) {
         push @{$self->{'document_context'}->[-1]->{'preformatted_classes'}},
           $pre_class_commands{$command_name};
       }
       if ($command_name eq 'verb' or $command_name eq 'verbatim') {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'verbatim'}++;
+        $self->{'document_context'}->[-1]->{'verbatim'}++;
       }
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
+        $self->{'document_context'}->[-1]->{'code'}++;
       } elsif ($upper_case_commands{$command_name}) {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'upper_case'}++;
+        $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'}++;
       } elsif ($command_name eq 'math') {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'math'}++;
+        $self->{'document_context'}->[-1]->{'math'}++;
       } elsif ($command_name eq 'w') {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'space_protected'}++;
-      } elsif ($align_commands{$root->{'cmdname'}}) {
-        push @{$self->{'document_context'}->[-1]->{'context'}->[-1]->{'align'}}, $command_name;
+        $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'space_protected'}++;
       }
       if ($root->{'contents'}) {
         $content_formatted = '';
@@ -6395,18 +6376,18 @@ sub _convert($$;$)
               if ($arg_type eq 'normal') {
                 $arg_formatted->{'normal'} = $self->_convert($arg, $explanation);
               } elsif ($arg_type eq 'code') {
-                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
+                $self->{'document_context'}->[-1]->{'code'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
-                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
+                $self->{'document_context'}->[-1]->{'code'}--;
               } elsif ($arg_type eq 'string') {
                 $self->_new_document_context($command_type);
-                $self->{'document_context'}->[-1]->{'context'}->[-1]->{$arg_type}++;
+                $self->{'document_context'}->[-1]->{'string'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 pop @{$self->{'document_context'}};
               } elsif ($arg_type eq 'codestring') {
                 $self->_new_document_context($command_type);
-                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
-                $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}++;
+                $self->{'document_context'}->[-1]->{'code'}++;
+                $self->{'document_context'}->[-1]->{'string'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 pop @{$self->{'document_context'}};
               } elsif ($arg_type eq 'codetext') {
@@ -6431,33 +6412,30 @@ sub _convert($$;$)
         $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
                 $command_name, $root, $content_formatted);
       }
-      if ($preformatted_commands_context{$command_name}
-          or $command_name eq 'menu' and $self->get_conf('SIMPLE_MENU')) {
-        pop @{$self->{'document_context'}->[-1]->{'preformatted_context'}};
+      if (exists ($composition_context_commands{$command_name})) {
+        pop @{$self->{'document_context'}->[-1]->{'composition_context'}};
       }
       if ($pre_class_commands{$command_name}) {
         pop @{$self->{'document_context'}->[-1]->{'preformatted_classes'}};
       }
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
+        $self->{'document_context'}->[-1]->{'code'}--;
       } elsif ($upper_case_commands{$command_name}) {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'upper_case'}--;
+        $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'}--;
       } elsif ($command_name eq 'math') {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'math'}--;
+        $self->{'document_context'}->[-1]->{'math'}--;
       } elsif ($command_name eq 'w') {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'space_protected'}--;
-      } elsif ($align_commands{$command_name}) {
-        pop @{$self->{'document_context'}->[-1]->{'context'}->[-1]->{'align'}};
+        $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'space_protected'}--;
       }
       if ($command_name eq 'verb' or $command_name eq 'verbatim') {
-        $self->{'document_context'}->[-1]->{'context'}->[-1]->{'verbatim'}--;
+        $self->{'document_context'}->[-1]->{'verbatim'}--;
       }
       if (exists($block_commands{$command_name})) {
         pop @{$self->{'document_context'}->[-1]->{'formats'}};
       }
       if (exists($format_context_commands{$command_name})) {
-        pop @{$self->{'document_context'}->[-1]->{'context'}};
+        pop @{$self->{'document_context'}->[-1]->{'formatting_context'}};
       }
       pop @{$self->{'document_context'}->[-1]->{'commands'}};
       if (exists($context_brace_commands{$command_name})) {
@@ -6476,13 +6454,13 @@ sub _convert($$;$)
       $root->{'cmdname'}
         if ($root->{'cmdname'});
     if ($root->{'type'} eq 'paragraph') {
-      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'paragraph_number'}++;
+      $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'paragraph_number'}++;
     } elsif ($root->{'type'} eq 'preformatted') {
-      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'preformatted_number'}++;
+      $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'preformatted_number'}++;
     } elsif ($root->{'type'} eq '_code') {
-      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}++;
+      $self->{'document_context'}->[-1]->{'code'}++;
     } elsif ($root->{'type'} eq '_string') {
-      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}++;
+      $self->{'document_context'}->[-1]->{'string'}++;
     } elsif ($root->{'type'} eq 'page') {
       $self->{'current_page'} = $root;
       $self->{'current_filename'} = $root->{'filename'};
@@ -6540,9 +6518,9 @@ sub _convert($$;$)
       $result = $content_formatted;
     }
     if ($root->{'type'} eq '_code') {
-      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'code'}--;
+      $self->{'document_context'}->[-1]->{'code'}--;
     } elsif ($root->{'type'} eq '_string') {
-      $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}--;
+      $self->{'document_context'}->[-1]->{'string'}--;
     } elsif ($root->{'type'} eq 'page') {
       delete $self->{'current_page'};
       delete $self->{'current_filename'};

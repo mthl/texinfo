@@ -1794,9 +1794,9 @@ _table itemx_
                                                              text col2
                     in multitable
 
-                                                               in float
+in float
 
-label 1:                                                              in caption
+label 1: in caption
 
                                                                     Sp:
 
@@ -1813,10 +1813,10 @@ in flushleft
 
 
 $result_converted{'html_text'}->{'commands_in_flushright'} = '
-<p>in group
+<p align="right">in group
 </p>
 <blockquote>
-<p><b>type:</b> in quotation
+<p align="right"><b>type:</b> in quotation
 </p></blockquote>
 
 <ol>
@@ -1828,9 +1828,9 @@ $result_converted{'html_text'}->{'commands_in_flushright'} = '
 <dl compact="compact">
 <dt><em>table item</em></dt>
 <dt><em>table itemx</em></dt>
-<dd><p>Table text
+<dd><p align="right">Table text
 </p>
-<p>Text.
+<p align="right">Text.
 </p></dd>
 </dl>
 
@@ -1838,7 +1838,7 @@ $result_converted{'html_text'}->{'commands_in_flushright'} = '
 <tr><td width="50%">col1</td><td width="50%">col2</td></tr>
 <tr><td width="50%">text
 
-<p>in multitable
+<p align="right">in multitable
 </p></td><td width="50%">text col2</td></tr>
 </table>
 

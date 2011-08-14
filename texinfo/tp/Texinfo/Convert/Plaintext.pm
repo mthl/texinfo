@@ -1605,7 +1605,8 @@ sub _convert($$)
       if ($menu_commands{$root->{'cmdname'}} and !$self->get_conf('SHOW_MENU')) {
         return '';
       }
-      if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}) {
+      if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}
+          or $root->{'cmdname'} eq 'float') {
         push @{$self->{'context'}}, $root->{'cmdname'};
       } elsif ($flush_commands{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, $root->{'cmdname'};
@@ -2426,10 +2427,12 @@ sub _convert($$)
 
   
     # close the contexts and register the cells
-    if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}) {
+    if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}
+        or $root->{'cmdname'} eq 'float') {
       my $old_context = pop @{$self->{'context'}};
       die "Not a preformatted context: $old_context"
-        if (!$self->{'preformatted_context_commands'}->{$old_context});
+        if (!$self->{'preformatted_context_commands'}->{$old_context}
+            and $old_context ne 'float');
       delete ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}})
        unless ($default_preformatted_context_commands{$root->{'cmdname'}});
     } elsif ($flush_commands{$root->{'cmdname'}}) {
