@@ -432,7 +432,14 @@ sub command_text($$$)
     if ($type eq 'tree') {
       return $tree;
     } else {
-      return $self->_convert($tree, 'external manual');
+      if ($type eq 'string') {
+        $tree = {'type' => '_string',
+                 'contents' => [$tree]};
+      }
+      $self->_new_document_context($command->{'cmdname'});
+      my $result = $self->_convert($tree, 'external manual');
+      pop @{$self->{'document_context'}};
+      return $result;
     }
   }
 
@@ -499,8 +506,8 @@ sub command_text($$$)
                                           and $target->{'tree_nonumber'});
     return $tree if ($type eq 'tree' or $type eq 'tree_nonumber');
     
-    push @{$self->{'document_context'}->[-1]->{'context'}}, 
-            {'cmdname' => $command->{'cmdname'}};
+    $self->_new_document_context($command->{'cmdname'});
+
     if ($type eq 'string') {
       $tree = {'type' => '_string',
                'contents' => [$tree]};
@@ -519,7 +526,7 @@ sub command_text($$$)
     #$self->{'ignore_notice'}-- if ($type ne 'text');
     $self->{'ignore_notice'}--;
 
-    pop @{$self->{'document_context'}->[-1]->{'context'}};
+    pop @{$self->{'document_context'}};
     return $target->{$type};
   }
   return undef;
@@ -1322,8 +1329,10 @@ sub _convert_explained_command($$$$)
   }
   if ($command->{'extra'}->{'explanation_contents'}) {
     $self->{'ignore_notice'}++;
+    $self->_new_document_context($cmdname);
     $explanation_string = $self->convert_tree({'type' => '_string',
           'contents' => $command->{'extra'}->{'explanation_contents'}});
+    pop @{$self->{'document_context'}};
     $self->{'ignore_notice'}--;
   }
   my $opening;
@@ -1976,7 +1985,7 @@ sub _convert_heading_command($$$$$)
   my $cmdname = shift;
   my $command = shift;
   my $args = shift;
-  my $contents = shift;
+  my $content = shift;
 
   my $content_ref = '';
   if ($self->get_conf('TOC_LINKS')) {
@@ -2083,7 +2092,7 @@ sub _convert_heading_command($$$$$)
                                             $heading_level, $command);
     }
   }
-  $result .= $contents if (defined($contents));
+  $result .= $content if (defined($content));
   return $result;
 }
 
@@ -2096,19 +2105,19 @@ sub _convert_raw_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
   if ($cmdname eq $self->{'output_format'}) {
-    chomp ($contents);
-    return $contents;
+    chomp ($content);
+    return $content;
   # FIXME compatibility with texi2html
   } elsif ($cmdname eq 'tex') {
     return $self->attribute_class('pre', $cmdname).'>' 
-          .$self->xml_protect_text($contents) . '</pre>';
+          .$self->xml_protect_text($content) . '</pre>';
   }
   $self->line_warn(sprintf($self->__("Raw format %s is not converted"), $cmdname),
                    $command->{'line_nr'});
-  return $self->xml_protect_text($contents);
+  return $self->xml_protect_text($content);
 }
 
 foreach my $command (@out_formats) {
@@ -2144,10 +2153,10 @@ sub _convert_verbatim_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
   return $self->attribute_class('pre', $cmdname).'>' 
-          .$contents . '</pre>';
+          .$content . '</pre>';
 }
 
 $default_commands_conversion{'verbatim'} = \&_convert_verbatim_command;
@@ -2176,9 +2185,9 @@ sub _convert_command_noop($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
-  return $contents;
+  return $content;
 }
 
 $default_commands_conversion{'flushleft'} = \&_convert_command_noop;
@@ -2332,9 +2341,11 @@ sub _convert_listoffloats_command($$$$)
      my $caption_text;
      if ($caption) {
        $self->{'ignore_notice'}++;
+       $self->_new_document_context($cmdname);
        push @{$self->{'multiple_pass'}}, 'listoffloats';
        $caption_text = $self->convert_tree($caption->{'args'}->[0]);
        pop @{$self->{'multiple_pass'}};
+       pop @{$self->{'document_context'}};
        $self->{'ignore_notice'}--;
      } else {
        $caption_text = '';
@@ -2354,12 +2365,12 @@ sub _convert_menu_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
-  return $contents if ($cmdname eq 'detailmenu');
+  return $content if ($cmdname eq 'detailmenu');
 
   $html_menu_entry_index = 0;
-  if ($contents !~ /\S/) {
+  if ($content !~ /\S/) {
     return '';
   }
   my $begin_row = '';
@@ -2370,7 +2381,7 @@ sub _convert_menu_command($$$$)
   }
   return $self->attribute_class('table', 'menu')
     ." border=\"0\" cellspacing=\"0\">${begin_row}\n"
-      . $contents . "${end_row}</table>\n";
+      . $content . "${end_row}</table>\n";
 }
 $default_commands_conversion{'menu'} = \&_convert_menu_command;
 $default_commands_conversion{'detailmenu'} = \&_convert_menu_command;
@@ -2381,7 +2392,7 @@ sub _convert_float_command($$$$$)
   my $cmdname = shift;
   my $command = shift;
   my $args = shift;
-  my $contents = shift;
+  my $content = shift;
 
   my $id = $self->command_id($command);
   my $label;
@@ -2435,7 +2446,7 @@ sub _convert_float_command($$$$$)
   if ($caption and !$caption_text) {
     $caption_text = $self->convert_tree ($caption->{'args'}->[0]);
   }
-  return $self->attribute_class('div','float'). '>' .$label."\n".$contents.
+  return $self->attribute_class('div','float'). '>' .$label."\n".$content.
      '</div>' . $prepended_text.$caption_text;
 }
 $default_commands_conversion{'float'} = \&_convert_float_command;
@@ -2446,7 +2457,7 @@ sub _convert_quotation_command($$$$$)
   my $cmdname = shift;
   my $command = shift;
   my $args = shift;
-  my $contents = shift;
+  my $content = shift;
 
   my $class = '';
   $class = $cmdname if ($cmdname ne 'quotation');
@@ -2460,7 +2471,7 @@ sub _convert_quotation_command($$$$$)
       $attribution .= $self->convert_tree($centered_author);
     }
   }
-  return $self->attribute_class('blockquote', $class).">\n" .$contents 
+  return $self->attribute_class('blockquote', $class).">\n" .$content 
     ."</blockquote>\n" . $attribution;
 }
 $default_commands_conversion{'quotation'} = \&_convert_quotation_command;
@@ -2487,14 +2498,14 @@ sub _convert_itemize_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
   if ($command->{'extra'}->{'command_as_argument'} 
      and $command->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
-    return "<ul>\n" . $contents. "</ul>\n";
+    return "<ul>\n" . $content. "</ul>\n";
   } else {
     return $self->attribute_class('ul',$NO_BULLET_LIST_CLASS).">\n" 
-            . $contents . "</ul>\n";
+            . $content . "</ul>\n";
   }
 }
 
@@ -2505,9 +2516,9 @@ sub _convert_enumerate_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
-  return "<ol>\n" . $contents . "</ol>\n";
+  return "<ol>\n" . $content . "</ol>\n";
 }
 
 $default_commands_conversion{'enumerate'} = \&_convert_enumerate_command;
@@ -2517,10 +2528,10 @@ sub _convert_multitable_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
-  if ($contents =~ /\S/) {
-    return "<table>\n" . $contents . "</table>\n";
+  if ($content =~ /\S/) {
+    return "<table>\n" . $content . "</table>\n";
   } else {
     return '';
   }
@@ -2533,9 +2544,9 @@ sub _convert_xtable_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
-  return "<dl compact=\"compact\">\n" . $contents . "</dl>\n";
+  return "<dl compact=\"compact\">\n" . $content . "</dl>\n";
 }
 $default_commands_conversion{'table'} = \&_convert_xtable_command;
 $default_commands_conversion{'ftable'} = \&_convert_xtable_command;
@@ -2546,7 +2557,7 @@ sub _convert_item_command($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
   if ($command->{'parent'}->{'cmdname'} 
       and $command->{'parent'}->{'cmdname'} eq 'itemize') {
@@ -2564,15 +2575,15 @@ sub _convert_item_command($$$$)
       pop @{$self->{'multiple_pass'}};
       $self->{'ignore_notice'}--;
     }
-    if ($contents =~ /\S/) {
-      return '<li>' . $prepend .' '. $contents . '</li>';
+    if ($content =~ /\S/) {
+      return '<li>' . $prepend .' '. $content . '</li>';
     } else {
       return '';
     }
   } elsif ($command->{'parent'}->{'cmdname'}
       and $command->{'parent'}->{'cmdname'} eq 'enumerate') {
-    if ($contents =~ /\S/) {
-      return '<li>' . ' ' . $contents . '</li>';
+    if ($content =~ /\S/) {
+      return '<li>' . ' ' . $content . '</li>';
     } else {
       return '';
     }
@@ -2580,7 +2591,7 @@ sub _convert_item_command($$$$)
       and ($command->{'parent'}->{'cmdname'} eq 'table'
            or $command->{'parent'}->{'cmdname'} eq 'ftable'
            or $command->{'parent'}->{'cmdname'} eq 'vtable')) {
-    my $args = $contents;
+    my $args = $content;
     if ($args->[0]) {
       my $tree = $args->[0]->{'tree'};
       if ($command->{'parent'}->{'extra'} 
@@ -2619,7 +2630,7 @@ sub _convert_item_command($$$$)
     }
   } elsif ($command->{'parent'}->{'type'} 
            and $command->{'parent'}->{'type'} eq 'row') {
-    return $self->_convert_tab_command ($cmdname, $command, $contents);
+    return $self->_convert_tab_command ($cmdname, $command, $content);
   }
   return '';
 }
@@ -2632,7 +2643,7 @@ sub _convert_tab_command ($$$$)
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
   
   my $cell_nr = $command->{'extra'}->{'cell_number'};
   my $row = $command->{'parent'};
@@ -2647,13 +2658,13 @@ sub _convert_tab_command ($$$$)
   }
 
   # FIXME is it right?
-  $contents =~ s/^\s*//;
-  $contents =~ s/\s*$//;
+  $content =~ s/^\s*//;
+  $content =~ s/\s*$//;
 
   if ($row_cmdname eq 'headitem') {
-    return "<th${fractions}>" . $contents . '</th>';
+    return "<th${fractions}>" . $content . '</th>';
   } else {
-    return "<td${fractions}>" . $contents . '</td>';
+    return "<td${fractions}>" . $content . '</td>';
   }
 }
 $default_commands_conversion{'tab'} = \&_convert_tab_command;
@@ -2966,6 +2977,8 @@ sub _convert_printindex_command($$$$)
     my $letter = $letter_entry->{'letter'};
     my $entries_text = '';
     foreach my $index_entry_ref (@{$letter_entry->{'entries'}}) {
+      # to avoid double error messages set ignore_notice if an entry was
+      # already formatted once, for example if there are multiple printindex.
       my $already_formatted;
       if (!$formatted_index_entries{$index_entry_ref}) {
         $formatted_index_entries{$index_entry_ref} = 1;
@@ -3363,14 +3376,14 @@ sub _convert_row_type($$$$) {
   my $self = shift;
   my $type = shift;
   my $command = shift;
-  my $contents = shift;
+  my $content = shift;
 
-  if ($contents =~ /\S/) {
+  if ($content =~ /\S/) {
     my $row_cmdname = $command->{'contents'}->[0]->{'cmdname'};
     if ($row_cmdname eq 'headitem') {
-      return '<thead><tr>' . $contents . '</tr></thead>' . "\n";
+      return '<thead><tr>' . $content . '</tr></thead>' . "\n";
     } else {
-      return '<tr>' . $contents . '</tr>' . "\n";
+      return '<tr>' . $content . '</tr>' . "\n";
     }
   } else {
     return '';
@@ -3717,7 +3730,9 @@ sub _default_titlepage($)
     $titlepage_text = $self->convert_tree({'contents' 
                => $self->{'extra'}->{'titlepage'}->{'contents'}});
   } elsif ($self->{'simpletitle_tree'}) {
+    $self->_new_document_context('simpletitle_string');
     my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
+    pop @{$self->{'document_context'}};
     $titlepage_text = &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
                                             0, {'cmdname' => 'settitle',
                      'contents' => $self->{'simpletitle_tree'}->{'contents'}});
@@ -3739,7 +3754,9 @@ sub _print_title($)
       $result .= &{$self->{'titlepage'}}($self);
     } else {
       if ($self->{'simpletitle_tree'}) {
+       $self->_new_document_context('simpletitle_string');
         my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
+        pop @{$self->{'document_context'}};
         $result .= &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
                                             0, {'cmdname' => 'settitle',
                      'contents' => $self->{'simpletitle_tree'}->{'contents'}});
@@ -5376,10 +5393,8 @@ sub _file_header_informations($$)
   
   my $title;
   if ($command) {
-    $self->{'ignore_notice'}++;
     my $command_string = 
       $self->command_text($command, 'string');
-    $self->{'ignore_notice'}--;
     if (defined($command_string) 
         and $command_string ne $self->{'title_string'}) {
       print STDERR "DO <title>\n"
@@ -5388,8 +5403,10 @@ sub _file_header_informations($$)
                    { 'title' => $self->{'title_tree'}, 
                    'element_text' => $self->command_text($command, 'tree')});
       $self->{'ignore_notice'}++;
+      $self->_new_document_context($command->{'cmdname'});
       $title = $self->_convert({'type' => '_string',
                                 'contents' => [$title_tree]});
+      pop @{$self->{'document_context'}};
       $self->{'ignore_notice'}--;
     }
   }
@@ -5856,14 +5873,18 @@ sub output($$)
   if ($fulltitle) {
     $self->{'title_tree'} = $fulltitle;
     print STDERR "DO fulltitle_string\n" if ($self->get_conf('DEBUG'));
+    $self->_new_document_context('title_string');
     $html_title_string = $self->_convert({'type' => '_string',
                                          'contents' => [$self->{'title_tree'}]});
+    pop @{$self->{'document_context'}};
   }
   if (!defined($html_title_string) or $html_title_string !~ /\S/) {
     my $default_title = $self->gdt('Untitled Document');
     $self->{'title_tree'} = $default_title;
+    $self->_new_document_context('title_string');
     $self->{'title_string'} = $self->_convert({'type' => '_string',
                                          'contents' => [$self->{'title_tree'}]});
+    pop @{$self->{'document_context'}};
     $self->document_warn($self->__(
                          "Must specify a title with a title command or \@top"));
   } else {
@@ -5888,9 +5909,11 @@ sub output($$)
   # documentdescription
   if ($self->{'extra'}->{'documentdescription'}) {
     print STDERR "DO documentdescription\n" if ($self->get_conf('DEBUG'));
+    $self->_new_document_context('documentdescription');
     $self->{'documentdescription_string'} = $self->_convert(
       {'type' => '_string',
        'contents' => $self->{'extra'}->{'documentdescription'}->{'contents'}});
+    pop @{$self->{'document_context'}};
   }
 
   # Now do the output

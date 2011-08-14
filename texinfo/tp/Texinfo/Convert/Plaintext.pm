@@ -1586,14 +1586,19 @@ sub _convert($$)
         push @{$self->{'context'}}, $root->{'cmdname'};
       } elsif ($raw_commands{$root->{'cmdname'}}) {
         if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
+          # reuse the current formatter if not in top level
           $result .= $self->_count_added($formatter->{'container'},
                               $formatter->{'container'}->add_pending_word(1));
         } else {
+          # if in top level, the raw block command is turned into a 
+          # simple preformatted command (alike @verbatim), to have a 
+          # formatter container being created.
           push @{$self->{'context'}}, $root->{'cmdname'};
           $self->{'format_context_commands'}->{$root->{'cmdname'}} = 1;
           $self->{'preformatted_context_commands'}->{$root->{'cmdname'}} = 1;
         }
       }
+
       if ($self->{'format_context_commands'}->{$root->{'cmdname'}}) {
         push @{$self->{'format_context'}}, 
              { 'cmdname' => $root->{'cmdname'},

@@ -72,6 +72,67 @@ Quotation @c
 Quotation no space@c
 @end quotation 
 '],
+['commands_in_flushright',
+'@flushright
+
+@group
+in group
+@end group
+
+@quotation type
+in quotation
+@end quotation
+
+@enumerate
+@item item
+
+@item other item
+@end enumerate
+
+@table @emph
+@item table item
+@itemx table itemx
+Table text
+
+Text.
+@end table
+
+@multitable @columnfractions 0.5 0.5
+@item col1 @tab col2
+@item text
+
+in multitable
+@tab 
+
+text col2
+@end multitable
+
+@float label, type
+
+in float
+
+@caption{in caption}
+@end float
+
+Sp:
+@sp 2
+
+@smallexample
+in example
+@end smallexample
+
+@format
+in format
+@end format
+
+@flushleft
+in flushleft
+@end flushleft
+
+@center in center
+
+@end flushright
+'],
 );
 
 my @test_invalid = (

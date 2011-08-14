@@ -273,7 +273,7 @@ in cartouche in menu comment in menu in example
 * a menu name:(other) node. 
 @end menu
 @end example
-']
+'],
 );
 
 my @test_invalid = (

@@ -312,7 +312,7 @@ quotation continues.
 
 @end quotation
 '],
-['flushleft_flushright_in_quotation', # FIXME test in HTML
+['flushleft_flushright_in_quotation',
 '
 @quotation
 @flushleft
