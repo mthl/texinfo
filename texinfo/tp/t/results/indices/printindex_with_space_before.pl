@@ -81,6 +81,7 @@ $result_trees{'printindex_with_space_before'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',

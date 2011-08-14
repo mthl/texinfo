@@ -169,6 +169,7 @@ $result_trees{'multiple'} = {
                         {},
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'defivar',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
@@ -424,6 +425,7 @@ $result_trees{'multiple'} = {
                     {},
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'defivar',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -648,6 +650,7 @@ $result_trees{'multiple'} = {
                     {},
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'defivar',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',

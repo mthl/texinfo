@@ -349,6 +349,7 @@ $result_trees{'index_entry_before_node'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',

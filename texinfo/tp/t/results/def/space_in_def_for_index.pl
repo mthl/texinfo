@@ -201,6 +201,7 @@ $result_trees{'space_in_def_for_index'} = {
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
@@ -309,6 +310,7 @@ $result_trees{'space_in_def_for_index'} = {
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',

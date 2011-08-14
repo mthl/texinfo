@@ -971,6 +971,19 @@ sub _normalise_space($)
   return $text;
 }
 
+sub _code_options($)
+{
+  my $options = shift;
+  my $code_options;
+  if (defined($options)) {
+    $code_options = { %$options };
+  } else {
+    $code_options = {};
+  }
+  $code_options->{'code'} = 1;
+  return $code_options;
+}
+
 sub convert($;$);
 
 sub convert($;$)
@@ -1009,8 +1022,11 @@ sub convert($;$)
       # for Xref anymore since '' `` should lead to " irrespective of code
       # style.  However it is important, for instance in @image file 
       # argument...
-      #$result =~ s/``/"/g;
-      #$result =~ s/\'\'/"/g;
+      #if (!$options->{'code'}) {
+      #  $result =~ s/``/"/g;
+      #  $result =~ s/\'\'/"/g;
+      #  $result =~ s/---/\x{1F}/g;
+      #  $result =~ s/--/-/g;
     }
   }
   if ($root->{'cmdname'}) {
@@ -1040,9 +1056,10 @@ sub convert($;$)
                                         $options->{'sc'});
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
-      return convert($root->{'args'}->[0], $options);
+      return convert($root->{'args'}->[0], _code_options($options));
     } elsif ($root->{'cmdname'} eq 'email') {
-      my $mail = _normalise_space(convert($root->{'args'}->[0], $options));
+      my $mail = _normalise_space(convert($root->{'args'}->[0], 
+                                          _code_options($options)));
       my $text;
       $text = _normalise_space(convert($root->{'args'}->[1], $options)) 
          if (defined($root->{'args'}->[1]));
@@ -1056,7 +1073,7 @@ sub convert($;$)
       my $text;
       $text = convert($root->{'args'}->[1], $options)
         if (defined($root->{'args'}->[1]));
-      my $url = convert($root->{'args'}->[0], $options);
+      my $url = convert($root->{'args'}->[0], _code_options($options));
       if (defined($text) and $text ne '') {
         return "$url ($text)";
       } else {
@@ -1077,6 +1094,8 @@ sub convert($;$)
       my $result;
       if ($root->{'cmdname'} eq 'sc') {
         $options = {%$options, 'sc' => 1};
+      } elsif ($Texinfo::Common::code_style_commands{$root->{'cmdname'}}) {
+        $options = _code_options($options);
       }
       $result = convert($root->{'args'}->[0], $options);
       return $result;
@@ -1147,15 +1166,23 @@ sub convert($;$)
         push @contents, @$arguments;
       }
       push @contents, {'text' => "\n"};
-      $result = convert({'contents' => \@contents}, $options);
+      $result = convert({'contents' => \@contents}, _code_options($options));
     }
     #$result = convert($root->{'args'}->[0], $options) if ($root->{'args'});
   } elsif ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
     foreach my $arg (@{$root->{'args'}}) {
-      $result .= convert($arg, $options);
+      if ($arg->{'type'} eq 'menu_entry_node') {
+        $result .= convert($arg, _code_options($options));
+      } else {
+        $result .= convert($arg, $options);
+      }
     }
   }
   if ($root->{'contents'}) {
+    if ($root->{'cmdname'} 
+        and $Texinfo::Common::preformatted_code_commands{$root->{'cmdname'}}) {
+      $options = _code_options($options);
+    }
     if (ref($root->{'contents'}) ne 'ARRAY') {
       cluck "contents not an array($root->{'contents'}).";
     }

@@ -129,6 +129,7 @@ $result_trees{'inter_item_commands_in_multitable'} = {
                       'content' => [
                         {}
                       ],
+                      'in_code' => 0,
                       'index_at_command' => 'cindex',
                       'index_name' => 'cp',
                       'index_prefix' => 'c',
@@ -558,6 +559,7 @@ $result_trees{'inter_item_commands_in_multitable'} = {
                           'content' => [
                             {}
                           ],
+                          'in_code' => 0,
                           'index_at_command' => 'cindex',
                           'index_name' => 'cp',
                           'index_prefix' => 'c',

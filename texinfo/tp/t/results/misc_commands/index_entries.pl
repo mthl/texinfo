@@ -41,6 +41,7 @@ $result_trees{'index_entries'} = {
           'content' => [
             {}
           ],
+          'in_code' => 0,
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
           'index_prefix' => 'c',
@@ -142,6 +143,7 @@ $result_trees{'index_entries'} = {
           'content' => [
             {}
           ],
+          'in_code' => 0,
           'index_at_command' => 'trucindex',
           'index_name' => 'truc',
           'index_prefix' => 'truc',

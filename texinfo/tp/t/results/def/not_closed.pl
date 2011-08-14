@@ -77,6 +77,7 @@ $result_trees{'not_closed'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -156,6 +157,7 @@ $result_trees{'not_closed'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -257,6 +259,7 @@ $result_trees{'not_closed'} = {
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'defvar',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',

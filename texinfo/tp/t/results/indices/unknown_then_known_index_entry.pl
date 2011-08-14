@@ -88,6 +88,7 @@ $result_trees{'unknown_then_known_index_entry'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 0,
               'index_at_command' => 'someindex',
               'index_name' => 'some',
               'index_prefix' => 'some',

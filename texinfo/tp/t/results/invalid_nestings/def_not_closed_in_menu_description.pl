@@ -117,6 +117,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                           'content' => [
                             {}
                           ],
+                          'in_code' => 1,
                           'index_at_command' => 'deffn',
                           'index_name' => 'fn',
                           'index_prefix' => 'f',

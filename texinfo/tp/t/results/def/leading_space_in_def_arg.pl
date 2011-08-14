@@ -97,6 +97,7 @@ $result_trees{'leading_space_in_def_arg'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',

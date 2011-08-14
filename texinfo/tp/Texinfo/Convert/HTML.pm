@@ -4937,10 +4937,12 @@ sub _prepare_index_entries($)
        = $self->{'parser'}->indices_information();
     $self->{'index_names'} = $index_names;
     #print STDERR "IIII ($index_names, $merged_indices, $index_entries)\n";
+    my $merged_index_entries 
+        = Texinfo::Structuring::merge_indices($index_names, $merged_indices,
+                                              $index_entries);
     $self->{'index_entries_by_letter'}
-      = $self->Texinfo::Structuring::sort_indices_by_letter(
-          Texinfo::Structuring::merge_indices($index_names, $merged_indices,
-                                              $index_entries));
+      = $self->Texinfo::Structuring::sort_indices_by_letter($merged_index_entries,
+                                                            $index_names);
 
     foreach my $index_name (sort(keys(%$index_entries))) {
       foreach my $index_entry (@{$index_entries->{$index_name}}) {

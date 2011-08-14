@@ -153,6 +153,7 @@ $result_trees{'def_defx_mismatch'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'defun',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -299,6 +300,7 @@ $result_trees{'def_defx_mismatch'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',

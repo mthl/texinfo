@@ -650,6 +650,7 @@ $result_trees{'placed_things_before_element'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',

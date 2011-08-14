@@ -179,6 +179,7 @@ $result_trees{'empty_deftypeop_name'} = {
                 {},
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
               'index_prefix' => 'f',

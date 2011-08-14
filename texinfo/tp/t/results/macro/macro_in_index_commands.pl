@@ -779,6 +779,7 @@ $result_trees{'macro_in_index_commands'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 0,
               'index_at_command' => 'trucindex',
               'index_name' => 'truc',
               'index_prefix' => 'truc',
@@ -912,6 +913,7 @@ $result_trees{'macro_in_index_commands'} = {
                 {},
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'codeidxindex',
               'index_name' => 'codeidx',
               'index_prefix' => 'codeidx',
@@ -968,6 +970,7 @@ $result_trees{'macro_in_index_commands'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',
@@ -1071,6 +1074,7 @@ $result_trees{'macro_in_index_commands'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'kindex',
               'index_name' => 'ky',
               'index_prefix' => 'k',
@@ -1121,6 +1125,7 @@ $result_trees{'macro_in_index_commands'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'pindex',
               'index_name' => 'pg',
               'index_prefix' => 'p',
@@ -1398,6 +1403,7 @@ $result_trees{'macro_in_index_commands'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 0,
               'index_at_command' => 'defgindex',
               'index_name' => 'defg',
               'index_prefix' => 'defg',
@@ -1454,6 +1460,7 @@ $result_trees{'macro_in_index_commands'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 0,
               'index_at_command' => 'abcindex',
               'index_name' => 'abc',
               'index_prefix' => 'abc',

@@ -61,6 +61,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'findex',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
@@ -153,6 +154,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'defun',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
@@ -233,6 +235,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'defun',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
@@ -388,6 +391,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'ftable',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
@@ -433,6 +437,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'ftable',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',

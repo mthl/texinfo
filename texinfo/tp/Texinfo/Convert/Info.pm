@@ -300,10 +300,12 @@ sub _printindex($$)
 
     my ($index_names, $merged_indices, $index_entries)
        = $self->{'parser'}->indices_information();
+    my $merged_index_entries 
+      = Texinfo::Structuring::merge_indices($index_names, $merged_indices,
+                                            $index_entries);
     $self->{'index_entries'} 
-      = $self->Texinfo::Structuring::sort_indices(
-          Texinfo::Structuring::merge_indices($index_names, $merged_indices, 
-                                              $index_entries));
+      = $self->Texinfo::Structuring::sort_indices($merged_index_entries,
+                                                  $index_names);
     $self->{'index_names'} = $index_names;
   }
   if (!$self->{'index_entries'} or !$self->{'index_entries'}->{$index_name}

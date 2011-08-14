@@ -791,6 +791,7 @@ $result_trees{'punctuation_in_line_commands'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',

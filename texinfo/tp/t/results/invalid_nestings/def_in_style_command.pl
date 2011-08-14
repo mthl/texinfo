@@ -106,6 +106,7 @@ $result_trees{'def_in_style_command'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'defun',
               'index_name' => 'fn',
               'index_prefix' => 'f',

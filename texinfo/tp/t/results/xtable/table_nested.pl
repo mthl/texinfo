@@ -279,6 +279,7 @@ After table.
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -323,6 +324,7 @@ After table.
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -396,6 +398,7 @@ After table.
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -469,6 +472,7 @@ After table.
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -899,6 +903,7 @@ After table.
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -943,6 +948,7 @@ After table.
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -1016,6 +1022,7 @@ After table.
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -1089,6 +1096,7 @@ After table.
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vtable',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
@@ -1531,6 +1539,7 @@ After table.
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'vtable',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
@@ -1575,6 +1584,7 @@ After table.
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'vtable',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
@@ -1648,6 +1658,7 @@ After table.
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'vtable',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
@@ -1721,6 +1732,7 @@ After table.
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'vtable',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',

@@ -210,6 +210,7 @@ $result_trees{'float_copying'} = {
                                           'content' => [
                                             {}
                                           ],
+                                          'in_code' => 0,
                                           'index_at_command' => 'cindex',
                                           'index_name' => 'cp',
                                           'index_prefix' => 'c',
@@ -260,6 +261,7 @@ $result_trees{'float_copying'} = {
                                           'content' => [
                                             {}
                                           ],
+                                          'in_code' => 1,
                                           'index_at_command' => 'findex',
                                           'index_name' => 'fn',
                                           'index_prefix' => 'f',
@@ -490,6 +492,7 @@ $result_trees{'float_copying'} = {
                               'content' => [
                                 {}
                               ],
+                              'in_code' => 0,
                               'index_at_command' => 'cindex',
                               'index_name' => 'cp',
                               'index_prefix' => 'c',
@@ -540,6 +543,7 @@ $result_trees{'float_copying'} = {
                               'content' => [
                                 {}
                               ],
+                              'in_code' => 1,
                               'index_at_command' => 'findex',
                               'index_name' => 'fn',
                               'index_prefix' => 'f',

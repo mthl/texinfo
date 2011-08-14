@@ -95,6 +95,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -334,6 +335,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -526,6 +528,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -628,6 +631,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -739,6 +743,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -854,6 +859,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -970,6 +976,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -1078,6 +1085,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -1204,6 +1212,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -1270,6 +1279,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -1356,6 +1366,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -1431,6 +1442,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -1553,6 +1565,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -1693,6 +1706,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -1833,6 +1847,7 @@ $result_trees{'def'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',

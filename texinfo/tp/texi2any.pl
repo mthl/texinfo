@@ -608,6 +608,7 @@ my %formats_table = (
              'nodes_tree' => 1,
              'floats' => 1,
              'split' => 1,
+             'internal_links' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
   'debugcount' => {
@@ -758,5 +759,23 @@ while(@input_files)
   my $converter = &{$formats_table{$format}->{'converter'}}($converter_options);
   $converter->output($tree);
   handle_errors($converter, $error_count);
+  if (defined(get_conf('INTERNAL_LINKS')) and $file_number == 0
+      and $formats_table{$format}->{'internal_links'}) {
+    my $internal_links_file = get_conf('INTERNAL_LINKS');
+    my $internal_links_fh = Texinfo::Common::open_out({}, $internal_links_file,
+                                               $parser->{'perl_encoding'});
+    if (defined ($internal_links_fh)) {
+      # FIXME no possibility of configuration?
+      Texinfo::Structuring::output_internal_links($converter, 
+                                                  $internal_links_fh);
+      close ($internal_links_fh);
+    } else {
+      warn (sprintf(__("Could not open %s for writing: %s\n"), 
+                    $internal_links_file, $!));
+      $error_count++;
+      exit (1) if ($error_count and (!get_conf('FORCE')
+         or $error_count > get_conf('ERROR_LIMIT')));
+    }
+  }
 }
 

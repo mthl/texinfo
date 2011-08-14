@@ -1056,16 +1056,21 @@ sub _sort_index_entries_in_letter($$)
   return $res;
 }
 
-sub _do_index_keys($$)
+sub _do_index_keys($$$)
 {
   my $self = shift;
   my $index_entries = shift;
+  my $index_names = shift;
+
   my $options = {'sort_string' => 1};
   if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'}) {
     $options->{'enabled_encoding'} = $self->{'encoding_name'};
   }
   foreach my $index_name (keys(%$index_entries)) {
     foreach my $entry (@{$index_entries->{$index_name}}) {
+      $entry->{'in_code'} 
+         = $index_names->{$index_name}->{$entry->{'index_name'}};
+      $options->{'code'} = $entry->{'in_code'};
       $entry->{'key'} = Texinfo::Convert::Text::convert(
                               {'contents' => $entry->{'content'}},
                               $options);
@@ -1074,12 +1079,13 @@ sub _do_index_keys($$)
 }
 
 # FIXME empty index entries are kept here, but not when sorting by letter.
-sub sort_indices($$)
+sub sort_indices($$$)
 {
   my $self = shift;
   my $index_entries = shift;
+  my $index_names = shift;
   my $sorted_index_entries;
-  _do_index_keys($self, $index_entries);
+  _do_index_keys($self, $index_entries, $index_names);
   foreach my $index_name (keys(%$index_entries)) {
     @{$sorted_index_entries->{$index_name}} = 
         sort _sort_index_entries @{$index_entries->{$index_name}};
@@ -1087,12 +1093,13 @@ sub sort_indices($$)
   return $sorted_index_entries;
 }
 
-sub sort_indices_by_letter($$)
+sub sort_indices_by_letter($$$)
 {
   my $self = shift;
   my $index_entries = shift;
+  my $index_names = shift;
   my $indices_sorted_by_letters;
-  _do_index_keys($self, $index_entries);
+  _do_index_keys($self, $index_entries, $index_names);
   foreach my $index_name (keys(%$index_entries)) {
     my $index_letter_hash;
     foreach my $index_entry (@{$index_entries->{$index_name}}) {
@@ -1130,6 +1137,59 @@ sub merge_indices($$$)
     }
   }
   return $merged_index_entries;
+}
+
+sub output_internal_links($$$)
+{
+  my $converter = shift;
+  my $fh = shift;
+  if ($converter->{'elements'}) {
+    my $options = {'converter' => $converter};
+    if ($converter->get_conf('ENABLE_ENCODING') and $converter->{'encoding_name'}) {
+      $options->{'enabled_encoding'} = $converter->{'encoding_name'};
+    }
+    foreach my $element (@{$converter->{'elements'}}) {
+      my $text;
+      my $href;
+      my $command = $converter->element_command($element);
+      if (defined($command)) {
+        # Use '' for filename, to force a filename in href.
+        $href = $converter->command_href($command, '');
+        my $tree = $converter->command_text($command, 'tree');
+        if ($tree) {
+          $text = Texinfo::Convert::Text::convert($tree, $options);
+        }
+      }
+      if (defined($href) or defined($text)) {
+        my $out_string = '';
+        $out_string .= $href if (defined($href));
+        $out_string .= "\ttoc\t";
+        $out_string .= $text if (defined($text));
+        $out_string .= "\n";
+        print $fh $out_string;
+      }
+    }
+  }
+  if ($converter->{'parser'}) {
+    foreach my $index_name (sort(keys (%{$converter->{'index_entries_by_letter'}}))) {
+      foreach my $letter_entry (@{$converter->{'index_entries_by_letter'}->{$index_name}}) {
+        foreach my $index_entry (@{$letter_entry->{'entries'}}) {
+          my $href;
+          my $key;
+          $href = $converter->command_href($index_entry->{'command'}, '');
+          $key = $index_entry->{'key'};
+          if (defined($key) and $key =~ /\S/) {
+            my $out_string = '';
+            $out_string .= $href if (defined($href));
+            $out_string .= "\t$index_name\t";
+            $out_string .= $key;
+            $out_string .= "\n";
+            print $fh $out_string;
+          }
+        }
+      }
+    }
+  }
 }
 
 1;

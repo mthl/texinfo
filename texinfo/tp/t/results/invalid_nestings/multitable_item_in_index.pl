@@ -100,6 +100,7 @@ $result_trees{'multitable_item_in_index'} = {
                     {},
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'vindex',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',

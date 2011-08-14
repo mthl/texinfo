@@ -117,6 +117,7 @@ $result_trees{'menu_in_deffn'} = {
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',

@@ -394,7 +394,8 @@ sub test($$)
   if ($index_entries) {
     $sorted_index_entries 
       = Texinfo::Structuring::sort_indices_by_letter($parser, 
-                                                     $merged_index_entries);
+                                                     $merged_index_entries,
+                                                     $index_names);
   }
 
   my $converted_text = Texinfo::Convert::Text::convert($result, {'TEST' => 1});

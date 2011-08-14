@@ -111,6 +111,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -300,6 +301,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',

@@ -275,6 +275,7 @@ $result_trees{'nested_multitable_anchor_index'} = {
                                           'content' => [
                                             {}
                                           ],
+                                          'in_code' => 0,
                                           'index_at_command' => 'cindex',
                                           'index_name' => 'cp',
                                           'index_prefix' => 'c',
@@ -536,6 +537,7 @@ $result_trees{'nested_multitable_anchor_index'} = {
                               'content' => [
                                 {}
                               ],
+                              'in_code' => 0,
                               'index_at_command' => 'cindex',
                               'index_name' => 'cp',
                               'index_prefix' => 'c',

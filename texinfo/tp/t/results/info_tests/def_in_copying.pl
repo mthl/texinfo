@@ -255,6 +255,7 @@ deffnx lines
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'deffn',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
@@ -335,6 +336,7 @@ deffnx lines
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'deffn',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
@@ -558,6 +560,7 @@ deffnx lines
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
@@ -638,6 +641,7 @@ deffnx lines
                   'content' => [
                     {}
                   ],
+                  'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',

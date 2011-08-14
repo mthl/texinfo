@@ -188,6 +188,7 @@ $result_trees{'double_command'} = {
                       'content' => [
                         {}
                       ],
+                      'in_code' => 1,
                       'index_at_command' => 'deffn',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
@@ -341,6 +342,7 @@ $result_trees{'double_command'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
@@ -498,6 +500,7 @@ $result_trees{'double_command'} = {
                           'content' => [
                             {}
                           ],
+                          'in_code' => 1,
                           'index_at_command' => 'defvr',
                           'index_name' => 'vr',
                           'index_prefix' => 'v',
@@ -582,6 +585,7 @@ $result_trees{'double_command'} = {
               'content' => [
                 {}
               ],
+              'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
