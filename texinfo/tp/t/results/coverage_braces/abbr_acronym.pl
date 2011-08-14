@@ -462,11 +462,11 @@ $result_texis{'abbr_acronym'} = '@acronym{--a,an accronym}
 ';
 
 
-$result_texts{'abbr_acronym'} = '--a (an accronym)
---a
---a (an accronym , ...)
-E\'--a. ,A. (E\'tude--, Autonome)
-E\'--a. ,A.
+$result_texts{'abbr_acronym'} = '-a (an accronym)
+-a
+-a (an accronym , ...)
+E\'-a. ,A. (E\'tude-, Autonome)
+E\'-a. ,A.
 ';
 
 $result_errors{'abbr_acronym'} = [];

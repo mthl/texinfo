@@ -2026,24 +2026,24 @@ In verbatim
 Table:
 
 a
-l--ine
+l-ine
 
 a
-l--ine
+l-ine
 
 Itemize:
 
-e--mph item
+e-mph item
 
-e--mph item
+e-mph item
 
 Multitable:
 
-mu--ltitable headitem another tab
-mu--ltitable item multitable tab
+mu-ltitable headitem another tab
+mu-ltitable item multitable tab
 
-mu--ltitable headitem another tab
-mu--ltitable item multitable tab
+mu-ltitable headitem another tab
+mu-ltitable item multitable tab
 
 Flushleft:
 

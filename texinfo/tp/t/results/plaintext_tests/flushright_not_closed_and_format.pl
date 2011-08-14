@@ -153,7 +153,7 @@ A quot---ation
 
 $result_texts{'flushright_not_closed_and_format'} = 'flushright
 
-A quot---ation
+A quot--ation
 ';
 
 $result_errors{'flushright_not_closed_and_format'} = [

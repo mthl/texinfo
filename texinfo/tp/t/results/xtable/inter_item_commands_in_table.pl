@@ -1499,15 +1499,15 @@ Texte before first item.
 
 
 $result_texts{'inter_item_commands_in_table'} = 'a
-l--ine
+l-ine
 
 a
 b
-l--ine
+l-ine
 
 a
 b
-l--ine
+l-ine
 c
 
 
@@ -1515,7 +1515,7 @@ d
 
 
 abb
-l--ine
+l-ine
 
 Texte before first item.
 abb

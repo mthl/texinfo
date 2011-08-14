@@ -336,7 +336,7 @@ A Note
 ';
 
 
-$result_texts{'quotation_and_author'} = 'A quot---ation
+$result_texts{'quotation_and_author'} = 'A quot--ation
 
 Note
 A Note

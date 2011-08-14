@@ -976,11 +976,11 @@ my %default_commands_args = (
   'url' => [['codestring'], ['normal'], ['normal']],
   'printindex' => [[]],
   'sp' => [[]],
-  'inforef' => [['code'],['normal'],['text']],
-  'xref' => [['code'],['normal'],['normal'],['text'],['normal']],
-  'pxref' => [['code'],['normal'],['normal'],['text'],['normal']],
-  'ref' => [['code'],['normal'],['normal'],['text'],['normal']],
-  'image' => [['text'],['text'],['text'],['string', 'normal'],['text']],
+  'inforef' => [['code'],['normal'],['codetext']],
+  'xref' => [['code'],['normal'],['normal'],['codetext'],['normal']],
+  'pxref' => [['code'],['normal'],['normal'],['codetext'],['normal']],
+  'ref' => [['code'],['normal'],['normal'],['codetext'],['normal']],
+  'image' => [['codetext'],['codetext'],['codetext'],['string', 'normal'],['codetext']],
   'item' => [[]],
   'itemx' => [[]],
 );
@@ -1478,11 +1478,11 @@ sub _convert_image_command($$$$)
 
   my @extensions = @image_files_extensions;
 
-  if (defined($args->[0]->{'text'}) and $args->[0]->{'text'} ne '') {
-    my $basefile = $args->[0]->{'text'};
+  if (defined($args->[0]->{'codetext'}) and $args->[0]->{'codetext'} ne '') {
+    my $basefile = $args->[0]->{'codetext'};
     my $extension;
-    if (defined($args->[4]) and defined($args->[4]->{'text'})) {
-      $extension = $args->[4]->{'text'};
+    if (defined($args->[4]) and defined($args->[4]->{'codetext'})) {
+      $extension = $args->[4]->{'codetext'};
       # FIXME determine with Karl if this is correct.
       unshift @extensions, ".$extension";
       unshift @extensions, "$extension";
@@ -2602,7 +2602,6 @@ sub _convert_item_command($$$$)
         }
       }
       my $result = $self->convert_tree ($tree);
-      my $in_code_preformatted;
       foreach my $command_name (reverse($self->commands_stack())) {
         if ($preformatted_code_commands{$command_name}) {
           $result = '<tt>' .$result. '</tt>';
@@ -2682,9 +2681,10 @@ sub _convert_xref_commands($$$$)
 
   my $file_arg_tree;
   my $file = '';
-  if (defined($args->[3]->{'text'}) and $args->[3]->{'text'} ne '') {
+  if (defined($args->[3]->{'codetext'}) 
+              and $args->[3]->{'codetext'} ne '') {
     $file_arg_tree = $args->[3]->{'tree'};
-    $file = $args->[3]->{'text'};
+    $file = $args->[3]->{'codetext'};
   }
 
   my $book = '';
@@ -2899,6 +2899,8 @@ sub _convert_printindex_command($$$$)
   #  }
   #}
 
+  $self->_new_document_context($cmdname);
+
   my $result = '';
 
   # First do the summary letters linking to the letters done below
@@ -2964,9 +2966,6 @@ sub _convert_printindex_command($$$$)
     my $letter = $letter_entry->{'letter'};
     my $entries_text = '';
     foreach my $index_entry_ref (@{$letter_entry->{'entries'}}) {
-      my $in_code 
-       = $self->{'index_names'}->{$index_name}->{$index_entry_ref->{'index_name'}};
-
       my $already_formatted;
       if (!$formatted_index_entries{$index_entry_ref}) {
         $formatted_index_entries{$index_entry_ref} = 1;
@@ -2976,8 +2975,7 @@ sub _convert_printindex_command($$$$)
       }
 
       my $entry;
-      if ($in_code) {
-        # FIXME clean state
+      if ($index_entry_ref->{'in_code'}) {
         $entry = $self->convert_tree({'type' => '_code',
                                       'contents' => $index_entry_ref->{'content'}});
       } else {
@@ -2988,7 +2986,7 @@ sub _convert_printindex_command($$$$)
       }
 
       next if ($entry !~ /\S/);
-      $entry = '<code>' .$entry .'</code>' if ($in_code);
+      $entry = '<code>' .$entry .'</code>' if ($index_entry_ref->{'in_code'});
       my $entry_href = $self->command_href ($index_entry_ref->{'command'});
       my $associated_command;
       if ($self->get_conf('NODE_NAME_IN_INDEX')) {
@@ -3029,6 +3027,9 @@ sub _convert_printindex_command($$$$)
 
   }
   $result .= "</table>\n";
+  
+  pop @{$self->{'document_context'}};
+  
   return $result .$summary;
 }
 $default_commands_conversion{'printindex'} = \&_convert_printindex_command;
@@ -3049,7 +3050,7 @@ sub _contents_inline_element($$$)
       if ($id ne '') {
         $result .= "<a name=\"$id\"></a>\n";
       }
-      my $heading = $self->command_text($special_element, 'text');
+      my $heading = $self->command_text($special_element);
       $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
       $result .= $content . "\n";
       return $result;
@@ -3775,7 +3776,7 @@ sub _convert_element_type($$$$)
                  $self->get_conf('MISC_BUTTONS'), undef, $element);
       
     }
-    my $heading = $self->command_text($element, 'text');
+    my $heading = $self->command_text($element);
     $result .= &{$self->{'heading_text'}}($self, '', $heading, 0)."\n";
 
     my $special_element_body .= &{$self->{'special_element_body'}}($self, 
@@ -5043,7 +5044,7 @@ sub _external_node_href($$;$)
   if ($external_node->{'manual_content'}) {
     my $manual_name = Texinfo::Convert::Text::convert(
        {'contents' => $external_node->{'manual_content'}}, 
-       {'converter' => $self});
+       {'converter' => $self, 'code' => 1});
     my $manual_base = $manual_name;
     $manual_base =~ s/\.[^\.]*$//;
     $manual_base =~ s/^.*\///;
@@ -6381,10 +6382,11 @@ sub _convert($$;$)
                 $self->{'document_context'}->[-1]->{'context'}->[-1]->{'string'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 pop @{$self->{'document_context'}};
-              } elsif ($arg_type eq 'text') {
+              } elsif ($arg_type eq 'codetext') {
                 $arg_formatted->{$arg_type} 
                   = Texinfo::Convert::Text::convert($arg, 
-                                                  {'converter' => $self});
+                                                  {'converter' => $self,
+                                                   'code' => 1});
               }
             }
             

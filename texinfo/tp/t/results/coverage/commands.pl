@@ -311,7 +311,7 @@ $result_trees{'commands'} = {
             },
             {
               'parent' => {},
-              'text' => 'index entry in text '
+              'text' => 'index entry ``in text\'\' '
             },
             {
               'args' => [
@@ -348,7 +348,7 @@ $result_trees{'commands'} = {
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
           'index_prefix' => 'c',
-          'key' => 'index entry in text LaTeX',
+          'key' => 'index entry "in text" LaTeX',
           'number' => 1
         },
         'misc_content' => []
@@ -513,7 +513,7 @@ $result_texis{'commands'} = '@@ @TeX{} @
 @email{a, b} @code{code --- -- \'\' ``}
 --- -- \'\' ``. @sc{small caps}.
 
-@cindex index entry in text @LaTeX{}
+@cindex index entry ``in text\'\' @LaTeX{}
 
 @majorheading majorheading @b{in b}
 ';
@@ -522,7 +522,7 @@ $result_texis{'commands'} = '@@ @TeX{} @
 $result_texts{'commands'} = '@ TeX  e" i^ a~ a*
 File -> Open.
 b code --- -- \'\' ``
---- -- \'\' ``. SMALL CAPS.
+-- - " ". SMALL CAPS.
 
 
 majorheading in b
@@ -557,7 +557,7 @@ File &rarr; Open.
 <a href="mailto:a">b</a> <code>code --- -- \'\' ``</code>
 &mdash; &ndash; &rdquo; &ldquo;. <small>SMALL CAPS</small>.
 </p>
-<a name="index-index-entry-in-text-LaTeX"></a>
+<a name="index-index-entry-_0060_0060in-text_0027_0027-LaTeX"></a>
 
 <a name="majorheading-in-b"></a>
 <h1 class="majorheading">majorheading <b>in b</b></h1>

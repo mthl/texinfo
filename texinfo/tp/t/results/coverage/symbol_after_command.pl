@@ -490,10 +490,10 @@ $result_texts{'symbol_after_command'} = '. dot
 @ @
 { {
 ! exclam
-\'\' quotes
+" quotes
 : colon
 
-@. {, @@ ?, !: @{ @\'\' @:
+@. {, @@ ?, !: @{ @" @:
 ';
 
 $result_errors{'symbol_after_command'} = [];

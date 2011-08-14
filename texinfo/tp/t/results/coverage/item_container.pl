@@ -450,9 +450,9 @@ $result_texis{'item_container'} = '
 
 
 $result_texts{'item_container'} = '
-i--tem +
+i-tem +
 
-b--ullet
+b-ullet
 
 no itemize argument
 ';

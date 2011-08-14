@@ -156,7 +156,7 @@ $result_texis{'inter_item_commands_in_enumerate'} = '@enumerate
 
 
 $result_texts{'inter_item_commands_in_enumerate'} = '
-1. e--numerate
+1. e-numerate
 ';
 
 $result_errors{'inter_item_commands_in_enumerate'} = [];

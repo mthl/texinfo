@@ -46,13 +46,13 @@ $result_trees{'accent_and_dash'}{'contents'}[0]{'parent'} = $result_trees{'accen
 $result_texis{'accent_and_dash'} = '@^{a--}';
 
 
-$result_texts{'accent_and_dash'} = 'a--^';
+$result_texts{'accent_and_dash'} = 'a-^';
 
 $result_errors{'accent_and_dash'} = [];
 
 
 
-$result_converted{'plaintext'}->{'accent_and_dash'} = 'a--^
+$result_converted{'plaintext'}->{'accent_and_dash'} = 'a-^
 ';
 
 

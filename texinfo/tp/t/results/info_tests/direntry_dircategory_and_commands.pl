@@ -669,7 +669,7 @@ Text
 ';
 
 
-$result_texts{'direntry_dircategory_and_commands'} = '* foo: (foo).   ``hello---there?\'\'
+$result_texts{'direntry_dircategory_and_commands'} = '* foo: (foo).   "hello--there?"
 
 * aaa ::               aaaa
                    bbbbb

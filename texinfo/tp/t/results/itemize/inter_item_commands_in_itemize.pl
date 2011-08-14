@@ -783,12 +783,12 @@ T--ext before items.
 ';
 
 
-$result_texts{'inter_item_commands_in_itemize'} = 'e--mph item
+$result_texts{'inter_item_commands_in_itemize'} = 'e-mph item
 
-i--tem 1
-i--tem 2
+i-tem 1
+i-tem 2
 
-T--ext before items.
+T-ext before items.
 bullet item
 ';
 

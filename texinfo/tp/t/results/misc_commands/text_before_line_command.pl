@@ -407,7 +407,7 @@ quotation
 
 
 $result_texts{'text_before_line_command'} = 'before title 
-i--- 1 LD Version Scripts
+i-- 1 LD Version Scripts
 ********************
 
 ddd 

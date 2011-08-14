@@ -60,12 +60,6 @@ foreach my $ignored_brace_command ('xref','ref','pxref','inforef','anchor',
   $ignored_brace_commands{$ignored_brace_command} = 1;
 }
 
-#my %code_style_commands;
-#foreach my $command ('code', 'command', 'env', 'file', 'kbd', 'key', 'option',
-#   'samp', 'indicateurl', 'verb') {
-#  $code_style_commands{$command} = 1;
-#}
-
 my %ignored_block_commands;
 foreach my $ignored_command ('titlepage', 'copying', 'documentdescription',
   'html', 'tex', 'xml', 'docbook', 'ignore', 'macro', 'rmacro') {
@@ -1018,15 +1012,13 @@ sub convert($;$)
       if ($options->{'sc'}) {
         $result = uc($result);
       }
-      # FIXME don't do that in code and preformatted?  This won't be right
-      # for Xref anymore since '' `` should lead to " irrespective of code
-      # style.  However it is important, for instance in @image file 
-      # argument...
-      #if (!$options->{'code'}) {
-      #  $result =~ s/``/"/g;
-      #  $result =~ s/\'\'/"/g;
-      #  $result =~ s/---/\x{1F}/g;
-      #  $result =~ s/--/-/g;
+      if (!$options->{'code'}) {
+        $result =~ s/``/"/g;
+        $result =~ s/\'\'/"/g;
+        $result =~ s/---/\x{1F}/g;
+        $result =~ s/--/-/g;
+        $result =~ s/\x{1F}/--/g;
+      }
     }
   }
   if ($root->{'cmdname'}) {
@@ -1094,7 +1086,8 @@ sub convert($;$)
       my $result;
       if ($root->{'cmdname'} eq 'sc') {
         $options = {%$options, 'sc' => 1};
-      } elsif ($Texinfo::Common::code_style_commands{$root->{'cmdname'}}) {
+      } elsif ($Texinfo::Common::code_style_commands{$root->{'cmdname'}}
+               or $root->{'cmdname'} eq 'math') {
         $options = _code_options($options);
       }
       $result = convert($root->{'args'}->[0], $options);

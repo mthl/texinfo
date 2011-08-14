@@ -364,9 +364,8 @@ sub _printindex($$)
     #my @keys = keys(%$entry);
     #print STDERR "$index_name $entry: @keys\n";
     next if ($ignored_entries{$entry});
-    my $in_code = $self->{'index_names'}->{$index_name}->{$entry->{'index_name'}};
     my $entry_tree = {'contents' => $entry->{'content'}};
-    if ($in_code) {
+    if ($entry->{'in_code'}) {
       $entry_tree->{'type'} = 'code';
     } else {
       $entry_tree->{'type'} = 'frenchspacing';
@@ -526,10 +525,12 @@ sub _image($$)
 
   if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
     my $basefile = Texinfo::Convert::Text::convert(
-      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]});
+      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
+      {'code' => 1});
     if (defined($root->{'extra'}->{'brace_command_contents'}->[4])) {
       my $extension = Texinfo::Convert::Text::convert(
-        {'contents' => $root->{'extra'}->{'brace_command_contents'}->[4]});
+        {'contents' => $root->{'extra'}->{'brace_command_contents'}->[4]},
+        {'code' => 1});
       unshift @extensions, ".$extension";
       unshift @extensions, "$extension";
     }

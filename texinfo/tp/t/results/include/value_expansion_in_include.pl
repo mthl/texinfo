@@ -585,15 +585,15 @@ $result_texts{'value_expansion_in_include'} = '
 
 
 
-testvar include: This is the included file (include-value2.txi) <> ---. 
+testvar include: This is the included file (include-value2.txi) <> --. 
 
 testvar verbatiminclude: 
 
-test-var include: This is the included file (include-value2.txi) <> ---. 
+test-var include: This is the included file (include-value2.txi) <> --. 
 
 test-var verbatiminclude: 
 
-test_var include: This is the included file (include-value2.txi) <> ---. 
+test_var include: This is the included file (include-value2.txi) <> --. 
 
 test_var verbatiminclude: ';
 

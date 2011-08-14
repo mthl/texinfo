@@ -121,7 +121,7 @@ and now -- yes---now and ``so\'\'.
 
 
 $result_texts{'quote_dash_in_display'} = '
-and now -- yes---now and ``so\'\'.
+and now - yes--now and "so".
 
 ';
 

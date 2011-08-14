@@ -164,8 +164,8 @@ $result_texis{'email_possibilities'} = '@email{--a,--b}
 ';
 
 
-$result_texts{'email_possibilities'} = '--b
---b
+$result_texts{'email_possibilities'} = '-b
+-b
 --a
 ';
 

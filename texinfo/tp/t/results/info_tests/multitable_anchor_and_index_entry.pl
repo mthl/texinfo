@@ -1299,10 +1299,10 @@ CTTTTTT
 
 
 $result_texts{'multitable_anchor_and_index_entry'} = '
-mu--ltitable headitem another tab
-mu--ltitable item multitable tab
-mu--ltitable item 2 multitable tab 2
-lone mu--ltitable item
+mu-ltitable headitem another tab
+mu-ltitable item multitable tab
+mu-ltitable item 2 multitable tab 2
+lone mu-ltitable item
 
 A
 B

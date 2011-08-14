@@ -9,7 +9,7 @@ my @test_cases = (
 @email{a, b} @code{code --- -- \'\' ``}
 --- -- \'\' ``. @sc{small caps}.
 
-@cindex index entry in text @LaTeX{}
+@cindex index entry ``in text\'\' @LaTeX{}
 
 @majorheading majorheading @b{in b}
 '],

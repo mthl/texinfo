@@ -2227,7 +2227,7 @@ Example   Hoho.
 Nested Other line
 exdented nested other line
 
-exdented quotation line   and dash --- in quotation
+exdented quotation line   and dash -- in quotation
 
 Not exdented followed by exdented
 exdented quotation line

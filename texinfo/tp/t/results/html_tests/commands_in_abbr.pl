@@ -282,7 +282,7 @@ $result_texis{'commands_in_abbr'} = '@abbr{A, @b{abbr} -- b}.
 ';
 
 
-$result_texts{'commands_in_abbr'} = 'A (abbr -- b).
+$result_texts{'commands_in_abbr'} = 'A (abbr - b).
 
 A (abbr -- b).
 ';

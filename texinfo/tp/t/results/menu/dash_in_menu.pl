@@ -219,9 +219,9 @@ comment --- in.
 
 
 $result_texts{'dash_in_menu'} = '
-* entry---in: (manual)n---ode.         description --- in.
+* entry--in: (manual)n---ode.         description -- in.
 
-comment --- in.
+comment -- in.
 ';
 
 $result_errors{'dash_in_menu'} = [

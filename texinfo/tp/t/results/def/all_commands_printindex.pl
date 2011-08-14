@@ -3917,58 +3917,58 @@ d--eftypemethod
 
 
 $result_texts{'all_commands_printindex'} = 'c--ategory: d--efvr_name
-d--efvr
+d-efvr
 
 c--ategory: t--ype d--eftypefn_name a--rguments...
-d--eftypefn
+d-eftypefn
 
 c--ategory on c--lass: t--ype d--eftypeop_name a--rguments...
-d--eftypeop
+d-eftypeop
 
 c--ategory: t--ype d--eftypevr_name
-d--eftypevr
+d-eftypevr
 
 c--ategory of c--lass: d--efcv_name
-d--efcv
+d-efcv
 
 c--ategory on c--lass: d--efop_name a--rguments...
-d--efop
+d-efop
 
 c--ategory: d--eftp_name a--ttributes...
-d--eftp
+d-eftp
 
 Function: d--efun_name a--rguments...
-d--efun
+d-efun
 
 Macro: d--efmac_name a--rguments...
-d--efmac
+d-efmac
 
 Special Form: d--efspec_name a--rguments...
-d--efspec
+d-efspec
 
 Variable: d--efvar_name
-d--efvar
+d-efvar
 
 User Option: d--efopt_name
-d--efopt
+d-efopt
 
 Function: t--ype d--eftypefun_name a--rguments...
-d--eftypefun
+d-eftypefun
 
 Variable: t--ype d--eftypevar_name
-d--eftypevar
+d-eftypevar
 
 Instance Variable of c--lass: d--efivar_name
-d--efivar
+d-efivar
 
 Instance Variable of c--lass: t--ype d--eftypeivar_name
-d--eftypeivar
+d-eftypeivar
 
 Method on c--lass: d--efmethod_name a--rguments...
-d--efmethod
+d-efmethod
 
 Method on c--lass: t--ype d--eftypemethod_name a--rguments...
-d--eftypemethod
+d-eftypemethod
 
 Functions
 =========

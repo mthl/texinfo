@@ -133,7 +133,7 @@ $result_trees{'syncode_index_print_both'} = {
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',
-              'key' => 'c---oncept',
+              'key' => 'c--oncept',
               'node' => {},
               'number' => 1
             },

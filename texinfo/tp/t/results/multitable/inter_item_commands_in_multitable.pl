@@ -827,10 +827,10 @@ truc
 
 trouc
 
-mu--ltitable headitem another tab
-mu--ltitable item multitable tab
-mu--ltitable item 2 multitable tab 2
-lone mu--ltitable item
+mu-ltitable headitem another tab
+mu-ltitable item multitable tab
+mu-ltitable item 2 multitable tab 2
+lone mu-ltitable item
 ';
 
 $result_errors{'inter_item_commands_in_multitable'} = [
