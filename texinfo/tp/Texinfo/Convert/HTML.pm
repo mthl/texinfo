@@ -108,12 +108,16 @@ sub in_math($)
   return $self->{'document_context'}->[-1]->{'math'};
 }
 
+# set if in menu or preformatted command
 sub in_preformatted($)
 {
   my $self = shift;
   my $context = $self->{'document_context'}->[-1]->{'composition_context'}->[-1];
-  return ($preformatted_commands{$context} 
-         or ($menu_commands{$context} and $self->get_conf('SIMPLE_MENU')));;
+  if ($preformatted_commands{$context} or $menu_commands{$context}) {
+    return $context;
+  } else {
+    return undef;
+  }
 }
 
 sub in_upper_case($)
@@ -176,10 +180,16 @@ sub preformatted_classes_stack($)
   return @{$self->{'document_context'}->[-1]->{'preformatted_classes'}};
 }
 
-sub align($)
+sub in_align($)
 {  
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'composition_context'}->[-1];
+  my $context 
+       = $self->{'document_context'}->[-1]->{'composition_context'}->[-1];
+  if ($align_commands{$context}) {
+    return $context;
+  } else {
+    return undef;
+  }
 }
 
 sub _get_target($$)
@@ -2365,6 +2375,17 @@ sub _convert_listoffloats_command($$$$)
 }
 $default_commands_conversion{'listoffloats'} = \&_convert_listoffloats_command;
 
+sub _in_preformatted_in_menu($)
+{
+  my $self = shift;
+  return 1 if ($self->get_conf('SIMPLE_MENU'));
+  my @pre_classes = $self->preformatted_classes_stack();
+  foreach my $pre_class (@pre_classes) {
+    return 1 if ($preformatted_commands{$pre_class});
+  }
+  return 0;
+}
+
 my $html_menu_entry_index;
 sub _convert_menu_command($$$$)
 {
@@ -2381,7 +2402,10 @@ sub _convert_menu_command($$$$)
   }
   my $begin_row = '';
   my $end_row = '';
-  if ($self->in_preformatted()) {
+  if ($self->_in_preformatted_in_menu()) {
+    #my $pre_class = $self->_preformatted_class();
+    #return $self->attribute_class('pre', $pre_class).">".$content."</pre>";
+    
     $begin_row = '<tr><td>';
     $end_row = '</td></tr>';
   }
@@ -3194,8 +3218,8 @@ sub _convert_paragraph_type($$$$)
   }
 
   if ($content =~ /\S/) {
-    my $align = $self->align();
-    if ($paragraph_style{$align}) {
+    my $align = $self->in_align();
+    if ($align and $paragraph_style{$align}) {
       return "<p align=\"$paragraph_style{$align}\">".$content."</p>";
     } else {
       return "<p>".$content."</p>";
@@ -3206,6 +3230,22 @@ sub _convert_paragraph_type($$$$)
 }
 
 $default_types_conversion{'paragraph'} = \&_convert_paragraph_type;
+
+sub _preformatted_class()
+{
+  my $self = shift;
+  my $pre_class;
+  my @pre_classes = $self->preformatted_classes_stack();
+  foreach my $class (@pre_classes) {
+    # FIXME maybe add   or $pre_class eq 'menu-preformatted'  to override
+    # 'menu-preformatted' with 'menu-comment'?
+    $pre_class = $class unless ($pre_class 
+                           and $preformatted_code_commands{$pre_class}
+                           and !($preformatted_code_commands{$class}
+                                 or $class eq 'menu-preformatted'));
+  }
+  return $pre_class;
+}
 
 sub _convert_preformatted_type($$$$)
 {
@@ -3220,7 +3260,7 @@ sub _convert_preformatted_type($$$$)
   }
 
   my $current = $command;
-  my $pre_class;
+
   # !defined preformatted_number may happen if there is something before the
   # first preformatted.  For example an @exdent.
   if ($self->preformatted_number() and $self->preformatted_number() == 1) {
@@ -3230,15 +3270,7 @@ sub _convert_preformatted_type($$$$)
 
   return '' if ($content eq '');
 
-  my @pre_classes = $self->preformatted_classes_stack();
-  foreach my $class (@pre_classes) {
-    # FIXME maybe add   or $pre_class eq 'menu-preformatted'  to override
-    # 'menu-preformatted' with 'menu-comment'?
-    $pre_class = $class unless ($pre_class 
-                           and $preformatted_code_commands{$pre_class}
-                           and !($preformatted_code_commands{$class}
-                                 or $class eq 'menu-preformatted'));
-  }
+  my $pre_class = $self->_preformatted_class();
   #while ($current->{'parent'}) {
   #  $current = $current->{'parent'};
   #  if ($current->{'cmdname'} and $pre_class_commands{$current->{'cmdname'}}) {
@@ -3255,7 +3287,8 @@ sub _convert_preformatted_type($$$$)
     $content =~ s/\s*$//;
   }
   if ($command->{'parent'}->{'type'} 
-      and $command->{'parent'}->{'type'} eq 'menu_entry_description') {
+      and $command->{'parent'}->{'type'} eq 'menu_entry_description'
+      and !$self->_in_preformatted_in_menu()) {
     return $content;
   }
   my $result = $self->attribute_class('pre', $pre_class).">".$content."</pre>";
@@ -3413,10 +3446,14 @@ sub _convert_menu_entry_type($$$)
   my $MENU_SYMBOL = $self->get_conf('MENU_SYMBOL');
   my $MENU_ENTRY_COLON = $self->get_conf('MENU_ENTRY_COLON');
 
-  if ($self->in_preformatted()) {
+  if ($self->_in_preformatted_in_menu()) {
     my $result = '';
     my $i = 0;
-    foreach my $arg (@{$command->{'args'}}) {
+    my @args = @{$command->{'args'}};
+    while (@args) {
+      last if ($args[0]->{'type'} 
+               and $args[0]->{'type'} eq 'menu_entry_description');
+      my $arg = shift @args;
       if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_node') {
         my $name = $self->convert_tree(
            {'type' => '_code', 'contents' => $arg->{'contents'}});
@@ -3435,9 +3472,19 @@ sub _convert_menu_entry_type($$$)
       }
       $i++;
     }
-    return &{$self->{'types_conversion'}->{'preformatted'}}($self,
-       'preformatted_in_menu_entry',
-       {'type' => 'preformatted', 'parent' => $command->{'parent'}}, $result);
+    #my $menu_entry = &{$self->{'types_conversion'}->{'preformatted'}}($self,
+    #   'preformatted_in_menu_entry',
+    #   {'type' => 'preformatted', 'parent' => $command->{'parent'}}, $result);
+    my $description = '';
+    foreach my $arg (@args) {
+      $description .= $self->convert_tree($arg, "menu_arg preformatted [$i]");
+      $i++;
+    }
+    $description =~ s/^<pre[^>]*>//;
+    $description =~ s/<\/pre>$//;
+
+    my $pre_class = $self->_preformatted_class();
+    return $self->attribute_class('pre', $pre_class).">".$result . $description."</pre>";
   }
 
   my $name;
@@ -3512,7 +3559,7 @@ sub _convert_menu_comment_type($$$$)
   my $command = shift;
   my $content = shift;
 
-  if ($self->in_preformatted()) {
+  if ($self->_in_preformatted_in_menu()) {
     return $content;
   } else {
     return "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">".$content
@@ -6167,29 +6214,6 @@ sub protect_space_codebreak($$)
   }
   return $text;
 }
-
-
-# on top, the converter object which holds some global information
-# 
-# context (for footnotes, multitable cells):
-# 'preformatted'
-# 'max'
-#
-# format_context
-# indentation + count for prepending text
-# also paragraph count and maybe empty line count
-#
-# containers on their own stack
-# in container
-# 'upper_case'
-# 'code'
-# 
-# paragraph number: incremented with block commands except html and such
-# and group and raggedright and menu*
-# and also center and listoffloats
-# and with paragraphs. 
-
-# preformatted
 
 sub _convert($$;$);
 

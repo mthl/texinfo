@@ -101,7 +101,7 @@ foreach my $def_command (keys(%def_commands)) {
 }
 
 # There are 5 stacks that define the context.
-# 'context': relevant for alignement of text.  Set in math, footnote, 
+# context:   relevant for alignement of text.  Set in math, footnote, 
 #            listoffloats, flush_commands, preformatted_context_commands 
 #            (preformatted + menu + verbatim), and raw commands if 
 #            on top level.
@@ -115,15 +115,24 @@ foreach my $def_command (keys(%def_commands)) {
 #            position (although the counter in the line is taken over by 
 #            the formatter once a formatter is opened).
 #            Set in footnote and in multitable cells.
-# formatters: the current objects that does the counting of columns,
-#            actual indentation.  In general, it is better not to have
-#            formatters in parallel, but it may happen.
+# formatters: a formatter environment has stacks for formatting context.
+#            Also holds a container, an objects that does the counting 
+#            of columns, actual indentation.  In general, it is better not 
+#            to have formatters in parallel, but it may happen.
 # count_context: holds the bytes count, the lines count and the location
 #            of the commands that have their byte count or llines count
 #            recorded.  It is set for out of document formatting to avoid
 #            counting some converted text, but it is also set when it has
 #            to be modified afterwards, for aligned commands or multitable
 #            cells for example.
+
+# formatters have their own stack
+# in container
+# 'upper_case'
+# 'code'
+# 
+# paragraph number incremented with paragraphs, center, listoffloats
+# and block commands except: html and such, group, raggedright, menu*, float
 
 my %default_preformatted_context_commands = %preformatted_commands;
 foreach my $preformatted_command ('verbatim', keys(%menu_commands)) {
@@ -1030,28 +1039,6 @@ sub _image($$)
   }
   return ('', 0);
 }
-
-# on top, the converter object which holds some global information
-# 
-# context (for footnotes, multitable cells):
-# 'preformatted'
-# 'max'
-#
-# format_context
-# indentation + count for prepending text
-# also paragraph count and maybe empty line count
-#
-# containers on their own stack
-# in container
-# 'upper_case'
-# 'code'
-# 
-# paragraph number: incremented with block commands except html and such
-# and group and raggedright and menu*
-# and also center and listoffloats
-# and with paragraphs. 
-
-# preformatted
 
 sub _convert($$);
 

@@ -4,9 +4,6 @@ Mail Karl about   Xref Command Expansion
 (*note Inserting Quotation Marks::).
 
 
-l 3273 in HTML.pm don't be in preformatted for the description.
-but call the function for the other stuff.
-
 remove _*directions('This' and replace with new API. Done?
 
 There should be an error message (report by Tom Tromey) in 
