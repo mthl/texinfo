@@ -1,3 +1,9 @@
+2011-08-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\cartouche): restore \parskip glue if following
+	a sectioning command.  Bug report from Werner Lemberg,
+	12 Aug 2011 08:04:46.
+
 2011-08-02  Sergey Poznyakoff  <gray@gnu.org>
 
 	* info/session.c (min_search_length): Set to 1.
