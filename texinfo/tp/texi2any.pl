@@ -609,7 +609,7 @@ my %formats_table = (
              'floats' => 1,
              'split' => 1,
              'internal_links' => 1,
-             'simple_menus' => 1,
+             'simple_menu' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
   'debugcount' => {
