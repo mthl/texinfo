@@ -609,6 +609,7 @@ my %formats_table = (
              'floats' => 1,
              'split' => 1,
              'internal_links' => 1,
+             'simple_menus' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
   'debugcount' => {
@@ -745,6 +746,10 @@ while(@input_files)
     Texinfo::Structuring::number_floats($floats);
   }
   $error_count = handle_errors($parser, $error_count);
+  if (get_conf('SIMPLE_MENU')
+      and $formats_table{$format}->{'simple_menu'}) {
+    $parser->Texinfo::Structuring::set_menus_to_simple_menu();
+  }
 
   my $converter_options = { %$converter_default_options, 
                             %$cmdline_options,

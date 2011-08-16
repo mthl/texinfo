@@ -52,7 +52,64 @@ in first column, verbatim
 @cindex node
 @printindex cp
 
-']
+'],
+['simple_menu',
+'@menu
+* (ggg):: description
+@itemize
+@item idescr
+@end itemize
+AAA
+
+CCC
+
+@itemize
+@item iaa
+@end itemize
+
+BBB
+
+@itemize
+@item ibb
+@end itemize
+* (manual)::
+
+comment
+
+* (after_comment):: description
+in description
+* (after_description)::
+
+@detailmenu
+* (detailggg):: detaildescription
+@itemize
+@item idetaildescr
+@end itemize
+detailAAA
+
+detailCCC
+
+@itemize
+@item detailiaa
+@end itemize
+
+detailBBB
+
+@itemize
+@item detailibb
+@end itemize
+* (detailmanual)::
+
+detailcomment
+
+* (detailafter_comment):: detaildescription
+in detaildescription
+* (detailafter_description)::
+
+@end detailmenu
+@end menu
+' ,{'SIMPLE_MENU' => 1}
+],
 );
 
 foreach my $test (@test_cases) {

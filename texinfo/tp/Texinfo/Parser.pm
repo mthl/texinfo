@@ -260,7 +260,9 @@ our %default_configuration = (
                               # @documentlanguage
   'ENABLE_ENCODING' => 1,     # corresponds to --enable-encoding.
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
-  'TOP_NODE_UP' => '(dir)'    # up node of Top node
+  'TOP_NODE_UP' => '(dir)',   # up node of Top node
+  'SIMPLE_MENU' => 0          # currently not used in the parser for now, 
+                              # but relevant for structuring
 );
 
 # The commands in initialization_overrides are not set in the document if
@@ -904,6 +906,11 @@ sub global_commands_information ($)
   return $self->{'extra'};
 }
 
+# @ dircategory_direntry
+# @ unassociated_menus
+# perl_encoding
+# encoding_name
+# input_file_name
 sub global_informations ($)
 {
   my $self = shift;
@@ -4096,6 +4103,9 @@ sub _parse_texi($;$)
                                               $command), $line_nr);
                   $self->line_error ($self->__("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), 
                                 $line_nr, 1);
+                  if ($command eq 'menu') {
+                    push @{$self->{'info'}->{'unassociated_menus'}}, $current;
+                  }
                 }
                 push @{$current->{'contents'}}, {'type' => 'menu_comment',
                                                  'parent' => $current,

@@ -340,6 +340,7 @@ my @test_invalid = (
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
+  push @{$test->[2]->{'test_formats'}}, 'html';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

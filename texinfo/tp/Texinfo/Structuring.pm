@@ -374,7 +374,7 @@ sub nodes_tree ($)
                   = $menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'};
                 $menu_node = $self->{'labels'}->{$normalized_menu_node};
                 $menu_node->{'menu_up'} = $node;
-                $menu_node->{'menu_up_hash'}->{$node->{'extra'}->{'normalized'}} =1;
+                $menu_node->{'menu_up_hash'}->{$node->{'extra'}->{'normalized'}} = 1;
               }
             } else {
               $external_node = 1;
@@ -1186,6 +1186,90 @@ sub output_internal_links($$$)
             $out_string .= "\n";
             print $fh $out_string;
           }
+        }
+      }
+    }
+  }
+}
+
+# modify the menu tree to put description and menu comment content
+# together directly in the menu.  Put the menu_entry in a preformatted.
+# last merge preformatted.
+sub menu_to_simple_menu($);
+
+sub menu_to_simple_menu($)
+{
+  my $menu = shift;
+  
+  my @contents;
+  foreach my $content (@{$menu->{'contents'}}) {
+    if ($content->{'type'} and $content->{'type'} eq 'menu_comment') {
+      foreach my $comment_content (@{$content->{'contents'}}) {
+        push @contents, $comment_content;
+      }
+    } elsif ($content->{'type'} and $content->{'type'} eq 'menu_entry') {
+      my $preformatted = {'type' => 'preformatted', 'contents' => [$content]};
+      $content->{'parent'} = $preformatted;
+      push @contents, $preformatted;
+      my $in_description;
+      my @args = @{$content->{'args'}};
+      @{$content->{'args'}} = ();
+      while (@args) {
+        if ($args[0]->{'type'} and $args[0]->{'type'} eq 'menu_entry_description') {
+          my $description = shift @args;
+          push @contents, @{$description->{'contents'}};
+          push @contents, @args;
+          last;
+        } else {
+          my $arg = shift @args;
+          push @{$content->{'args'}}, $arg;
+        }
+      }
+    } elsif ($content->{'cmdname'}
+             and $Texinfo::Common::menu_commands{$content->{'cmdname'}}) {
+      menu_to_simple_menu($content);
+      push @contents, $content;
+    } else {
+      push @contents, $content;
+    }
+  }
+  
+  # reset parent, put in menu and merge preformatted.
+  @{$menu->{'contents'}} = ();
+  my $current_preformatted;
+  foreach my $content (@contents) {
+    $content->{'parent'} = $menu;
+    if ($content->{'type'} and $content->{'type'} eq 'preformatted') {
+      if (!defined($current_preformatted)) {
+        $current_preformatted = $content;
+        push @{$menu->{'contents'}}, $content;
+      } else {
+        foreach my $preformatted_content (@{$content->{'contents'}}) {
+          push @{$current_preformatted->{'contents'}}, $preformatted_content;
+          $preformatted_content->{'parent'} = $current_preformatted;
+        }
+      }
+    } else {
+      $current_preformatted = undef;
+      push @{$menu->{'contents'}}, $content;
+    }
+  }
+}
+
+sub set_menus_to_simple_menu($)
+{
+  my $self = shift;
+
+  if ($self->{'info'} and $self->{'info'}->{'unassociated_menus'}) {
+    foreach my $menu (@{$self->{'info'}->{'unassociated_menus'}}) {
+      menu_to_simple_menu ($menu);
+    }
+  }
+  if ($self->{'nodes'} and @{$self->{'nodes'}}) {
+    foreach my $node (@{$self->{'nodes'}}) {
+      if ($node->{'menus'}) {
+        foreach my $menu (@{$node->{'menus'}}) {
+          menu_to_simple_menu ($menu);
         }
       }
     }

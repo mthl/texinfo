@@ -35,12 +35,12 @@ Locale::Messages->select_package ('gettext_pp');
 # FIXME use texinfo instead of texi2html
 Locale::Messages::bindtextdomain ('texi2html_document', '../texi2html/locales');
 
-my $output_files_dir = 't/output_files/';
+our $output_files_dir = 't/output_files/';
 mkdir $output_files_dir if (! -d $output_files_dir);
 
 ok(1);
 
-my %formats = (
+our %formats = (
   'plaintext' => \&convert_to_plaintext,
   'info' => \&convert_to_info,
   'html' => \&convert_to_html,
@@ -48,9 +48,10 @@ my %formats = (
   'debugcount' => \&debugcount,
 );
 
-my %extensions = (
+our %extensions = (
   'plaintext' => 'txt',
   'debugcount' => 'txt',
+  'html_text' => 'html',
 );
 
 our $arg_generate;
@@ -156,7 +157,7 @@ my @sections_keys = ('section_next', 'section_prev', 'section_up',
 my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus', 
   'associated_section');
 my %avoided_keys_tree;
-my @avoided_keys_tree = (@sections_keys, @menus_keys, @node_keys, 
+our @avoided_keys_tree = (@sections_keys, @menus_keys, @node_keys, 
    'menu_child', 'element_next', 'directions', 'page_next');
 foreach my $avoided_key(@avoided_keys_tree) {
   $avoided_keys_tree{$avoided_key} = 1;
@@ -275,6 +276,10 @@ sub convert_to_html($$$$$;$)
     if ($format eq 'html_text' 
         and !defined($parser_options->{'SPLIT'})
         and !defined($converter_options->{'SPLIT'}));
+  if (!defined($converter_options->{'SIMPLE_MENU'}) 
+       and $parser_options->{'SIMPLE_MENU'}) {
+    $converter_options->{'SIMPLE_MENU'} = 1;
+  }
   my $converter =
      Texinfo::Convert::HTML->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
@@ -396,6 +401,9 @@ sub test($$)
       = Texinfo::Structuring::sort_indices_by_letter($parser, 
                                                      $merged_index_entries,
                                                      $index_names);
+  }
+  if ($parser_options->{'SIMPLE_MENU'}) {
+    $parser->Texinfo::Structuring::set_menus_to_simple_menu();
   }
 
   my $converted_text = Texinfo::Convert::Text::convert($result, {'TEST' => 1});

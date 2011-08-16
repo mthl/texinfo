@@ -3482,9 +3482,13 @@ sub _convert_menu_entry_type($$$)
     }
     $description =~ s/^<pre[^>]*>//;
     $description =~ s/<\/pre>$//;
+    $result = $result . $description;
 
-    my $pre_class = $self->_preformatted_class();
-    return $self->attribute_class('pre', $pre_class).">".$result . $description."</pre>";
+    if (!$self->get_conf('SIMPLE_MENU')) {
+      my $pre_class = $self->_preformatted_class();
+      $result = $self->attribute_class('pre', $pre_class).">".$result."</pre>";
+    }
+    return $result;
   }
 
   my $name;
@@ -4030,6 +4034,10 @@ sub _initialize($)
       } elsif (exists($default_commands_conversion{$command})) {
         $self->{'commands_conversion'}->{$command}
            = $default_commands_conversion{$command};
+        if ($command eq 'menu' and $self->get_conf('SIMPLE_MENU')) {
+          $self->{'commands_conversion'}->{$command} 
+            = $default_commands_conversion{'example'};
+        }
       }
     }
   }
