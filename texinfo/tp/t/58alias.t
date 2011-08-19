@@ -21,7 +21,14 @@ Should be verb: @o-theralias{!verb!}
 @alias garbage-on-line =cmd garbage
 
 @alias garbage-on-line =cmd @code{in code}
-']
+'],
+['block_command_alias',
+'@alias lang=lisp
+
+@lang
+in lang
+@end lang
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

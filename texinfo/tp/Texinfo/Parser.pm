@@ -4611,8 +4611,15 @@ sub _parse_line_command_args($$$)
   if ($command eq 'alias') {
     # REMACRO
     if ($line =~ s/^([[:alnum:]][[:alnum:]-]*)(\s*=\s*)([[:alnum:]][[:alnum:]-]*)$//) {
-      $self->{'aliases'}->{$1} = $3;
+      my $new_command = $1;
+      my $existing_command = $3;
       $args = [$1, $3];
+      $self->{'aliases'}->{$new_command} = $existing_command;
+      if (exists($block_commands{$existing_command})) {
+        $self->line_warn (sprintf($self->
+                             __("Environment command %s as argument to \@%s"), 
+                             $existing_command, $command), $line_nr);
+      }
     } else {
       $self->line_error (sprintf($self->
                              __("Bad argument to \@%s"), $command), $line_nr);

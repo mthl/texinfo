@@ -59,10 +59,7 @@ in Texinfo::Config.
 Add an API for everything used in conf, for example in page_head, use 
 $self->title_string() and so on and so forth.  
 
-In Texinfo::Parser.pm put preformatted in menu_entry_description when in
-preformatted.  It means adding a _begin_preformatted*, but also taking
-care of it in the code handling entry that was not, in the end a menu
-entry (which is a mess and maybe  should be redone).
+add --output-encoding.
 
 html tests which should be right:
 sectioning setfilename_on_top_and_after_node
