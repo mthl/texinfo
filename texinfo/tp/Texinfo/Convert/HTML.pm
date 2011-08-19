@@ -2737,7 +2737,7 @@ sub _convert_xref_commands($$$$)
   # internal reference
   if ($cmdname ne 'inforef' and $book eq '' and $file eq ''
       and $root->{'extra'}->{'node_argument'}
-      and $root->{'extra'}->{'node_argument'}->{'normalized'}
+      and defined($root->{'extra'}->{'node_argument'}->{'normalized'})
       and !$root->{'extra'}->{'node_argument'}->{'manual_content'}
       and $self->{'labels'}
       and $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}) {
@@ -3429,7 +3429,7 @@ sub _convert_menu_entry_type($$$)
     $external_node = 1;
   } else {
     $node = $self->label_command($node_entry->{'normalized'});
-    # if NODE_NAME_IN_MENU, we pick the associated section, except if 
+    # if !NODE_NAME_IN_MENU, we pick the associated section, except if 
     # the node is the element command
     if ($node->{'extra'}->{'associated_section'} 
       and !$self->get_conf('NODE_NAME_IN_MENU')

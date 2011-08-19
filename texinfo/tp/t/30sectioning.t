@@ -561,7 +561,7 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @anchor{TOP}.
 '],
-['equivalent_nodes', #FIXME HTML
+['equivalent_nodes',
 '@node Top, @emph{node}
 
 @menu
@@ -572,7 +572,7 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @xref{node}.
 '],
-['no_element', # FIXME HTML
+['no_element',
 '@settitle no_element test
 @documentencoding ISO-8859-1
 
@@ -1340,6 +1340,7 @@ foreach my $test (@tests_converted) {
 }
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';
+  push @{$test->[2]->{'test_formats'}}, 'html';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
