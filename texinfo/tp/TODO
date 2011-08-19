@@ -218,9 +218,6 @@ Following should be an error:
 
 test empty line in block or brace command in menu description.
 
-test recursive acronym
-@acronym{GNU, @acronym{GNU}'s Not Unix}
-
 in hyphenation: only text and accent commands, and should
 only appear in toplevel
 

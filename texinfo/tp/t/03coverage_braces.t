@@ -17,6 +17,9 @@ my @test_cases = (
 @abbr{@\'E--a. @comma{}A., @\'Etude--@comma{} @b{Autonome} }
 @abbr{@\'E--a. @comma{}A.}
 '],
+['recursive_acronym',
+'@acronym{GNU, @acronym{GNU}\'s Not Unix}
+'],
 ['uref_url',
 '@uref{--a,--b}
 @uref{--c}

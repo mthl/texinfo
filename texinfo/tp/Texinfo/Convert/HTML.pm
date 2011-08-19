@@ -1351,21 +1351,24 @@ sub _convert_explained_command($$$$)
     pop @{$self->{'document_context'}};
     $self->{'ignore_notice'}--;
   }
-  my $opening;
-  if (defined($explanation_string)) {
-    $opening = "<$cmdname title=\"$explanation_string\">"; 
-  } else {
-    $opening = "<$cmdname>";
+  my $result = $args->[0]->{'normal'};
+  if (!$self->in_string()) {
+    if (defined($explanation_string)) {
+      $result = "<$cmdname title=\"$explanation_string\">".$result; 
+    } else {
+      $result = "<$cmdname>".$result;
+    }
+    $result .= "</$cmdname>";
   }
   if ($with_explanation) {
-    return $self->convert_tree ($self->gdt('{explained_string} ({explanation})',
+    $result = $self->convert_tree ($self->gdt('{explained_string} ({explanation})',
           {'explained_string' => {'type' => '_converted',
-                   'text' => $opening.$args->[0]->{'normal'}."</$cmdname>"},
+                   'text' => $result},
            'explanation' => $args->[1]->{'tree'} }));
-  } else {
-    return $opening.$args->[0]->{'normal'}."</$cmdname>";
   }
+  return $result;
 }
+
 foreach my $explained_command (keys(%explained_commands)) {
   $default_commands_conversion{$explained_command} 
     = \&_convert_explained_command;
