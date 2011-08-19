@@ -858,6 +858,18 @@ $section_in_unnumbered_text
 @node first
 ',{'TOP_NODE_UP' => 'node@@ node', 'test_split' => 'node'}
 ],
+['top_node_up_url',
+'@node Top
+@top internal top node up
+
+@menu
+* first::
+@end menu
+
+@node first
+',{'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals', 
+   'test_split' => 'node'}, {'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
+],
 );
 
 my @test_cases = (

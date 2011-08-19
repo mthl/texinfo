@@ -5100,10 +5100,10 @@ sub _external_node_href($$;$)
   my $external_node = shift;
   my $filename = shift;
   
-  #if ($external_node->{'top_node_up'} 
-  #    and defined($self->get_conf('TOP_NODE_UP_URL'))) {
-  #  return $self->get_conf('TOP_NODE_UP_URL');
-  #}
+  if ($external_node->{'top_node_up'} 
+      and defined($self->get_conf('TOP_NODE_UP_URL'))) {
+    return $self->get_conf('TOP_NODE_UP_URL');
+  }
 
   #print STDERR "external_node: ".join('|', keys(%$external_node))."\n";
   my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
