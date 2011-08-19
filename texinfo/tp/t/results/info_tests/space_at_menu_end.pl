@@ -321,12 +321,15 @@ $result_nodes{'space_at_menu_end'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'space_at_menu_end'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'space_at_menu_end'}{'menus'}[0];
 $result_nodes{'space_at_menu_end'}{'node_next'} = $result_nodes{'space_at_menu_end'}{'menu_child'};
+$result_nodes{'space_at_menu_end'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'space_at_menu_end'};
 
 $result_menus{'space_at_menu_end'} = {
   'cmdname' => 'node',

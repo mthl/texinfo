@@ -979,10 +979,13 @@ $result_nodes{'nested_multitable_anchor_index'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'nested_multitable_anchor_index'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'nested_multitable_anchor_index'};
 
 $result_menus{'nested_multitable_anchor_index'} = {
   'cmdname' => 'node',

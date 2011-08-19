@@ -1083,8 +1083,10 @@ $result_nodes{'semi_auto'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'semi_auto'}{'menu_child'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'semi_auto'}{'menu_child'};
@@ -1096,6 +1098,7 @@ $result_nodes{'semi_auto'}{'menu_child'}{'node_prev'} = $result_nodes{'semi_auto
 $result_nodes{'semi_auto'}{'menu_child'}{'node_up'} = $result_nodes{'semi_auto'};
 $result_nodes{'semi_auto'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'semi_auto'}{'menus'}[0];
 $result_nodes{'semi_auto'}{'node_next'} = $result_nodes{'semi_auto'}{'menu_child'};
+$result_nodes{'semi_auto'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'semi_auto'};
 
 $result_menus{'semi_auto'} = {
   'cmdname' => 'node',

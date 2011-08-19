@@ -360,7 +360,7 @@ sub command_href($$$)
 
   $filename = $self->{'current_filename'} if (!defined($filename));
 
-  if ($command->{'manual_content'}) {
+  if ($command->{'manual_content'} or $command->{'top_node_up'}) {
     return $self->_external_node_href($command, $filename);
   }
 
@@ -438,13 +438,19 @@ sub command_text($$$)
     cluck "in command_text($type) command not defined";
   }
 
-  if ($command->{'manual_content'}) {
+  if ($command->{'manual_content'} or $command->{'top_node_up'}) {
     my $node_content = [];
     $node_content = $command->{'node_content'}
       if (defined($command->{'node_content'}));
-    my $tree = {'type' => '_code',
+    my $tree;
+    if ($command->{'manual_content'}) {
+      $tree = {'type' => '_code',
           'contents' => [{'text' => '('}, @{$command->{'manual_content'}},
                          {'text' => ')'}, @$node_content]};
+    } else {
+      $tree = {'type' => '_code',
+          'contents' => $node_content};
+    }
     if ($type eq 'tree') {
       return $tree;
     } else {
@@ -1711,9 +1717,15 @@ sub _default_node_direction($$)
                                            $direction, 'href');
   my $node = $self->_element_direction($self->{'current_element'},
                                            $direction, 'node');
-  if ($href and $node) {
+  my $anchor;
+  if (defined($href) and defined($node) and $node =~ /\S/) {
     my $anchor_attributes = $self->_direction_href_attributes($direction);
-    my $anchor = "<a href=\"$href\"${anchor_attributes}>$node</a>";
+    $anchor = "<a href=\"$href\"${anchor_attributes}>$node</a>";
+  #} elsif (defined($node) and $node =~ /\S/) {
+  #  $anchor = $node; 
+  #} else {
+  }
+  if (defined($anchor)) {
     # i18n
     $result = $self->get_conf('BUTTONS_TEXT')->{$direction}.": $anchor";
   }
@@ -5088,6 +5100,11 @@ sub _external_node_href($$;$)
   my $external_node = shift;
   my $filename = shift;
   
+  #if ($external_node->{'top_node_up'} 
+  #    and defined($self->get_conf('TOP_NODE_UP_URL'))) {
+  #  return $self->get_conf('TOP_NODE_UP_URL');
+  #}
+
   #print STDERR "external_node: ".join('|', keys(%$external_node))."\n";
   my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
   #print STDERR "HHHH ".Texinfo::Structuring::_node_extra_to_texi($external_node)."\n";
@@ -5155,6 +5172,7 @@ sub _external_node_href($$;$)
       }
     }
   } else {
+    $file = '';
     $target_split = $default_target_split;
   }
 
@@ -5234,7 +5252,8 @@ sub _element_direction($$$$;$)
         . "directions :". Texinfo::Structuring::_print_directions($element);
     }
     ########
-    if ($element_target->{'type'} eq 'external_node') {
+    if ($element_target->{'type'} eq 'external_node'
+        or $element_target->{'type'} eq 'top_node_up') {
       my $external_node = $element_target->{'extra'};
       if ($type eq 'href') {
         return $self->command_href($external_node, $filename);

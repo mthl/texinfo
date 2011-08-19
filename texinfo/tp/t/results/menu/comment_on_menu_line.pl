@@ -442,14 +442,17 @@ $result_nodes{'comment_on_menu_line'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'comment_on_menu_line'}{'menu_child'}{'node_prev'} = $result_nodes{'comment_on_menu_line'};
 $result_nodes{'comment_on_menu_line'}{'menu_child'}{'node_up'} = $result_nodes{'comment_on_menu_line'};
 $result_nodes{'comment_on_menu_line'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'comment_on_menu_line'}{'menus'}[0];
 $result_nodes{'comment_on_menu_line'}{'node_next'} = $result_nodes{'comment_on_menu_line'}{'menu_child'};
+$result_nodes{'comment_on_menu_line'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'comment_on_menu_line'};
 
 $result_menus{'comment_on_menu_line'} = {
   'cmdname' => 'node',

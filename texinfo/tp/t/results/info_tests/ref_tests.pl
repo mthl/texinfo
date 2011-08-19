@@ -673,10 +673,13 @@ $result_nodes{'ref_tests'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'ref_tests'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_tests'};
 
 $result_menus{'ref_tests'} = {
   'cmdname' => 'node',

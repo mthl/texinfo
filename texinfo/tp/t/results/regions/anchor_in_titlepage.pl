@@ -364,10 +364,13 @@ $result_nodes{'anchor_in_titlepage'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'anchor_in_titlepage'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_in_titlepage'};
 
 $result_menus{'anchor_in_titlepage'} = {
   'cmdname' => 'node',

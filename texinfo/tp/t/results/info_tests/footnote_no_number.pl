@@ -215,10 +215,13 @@ $result_nodes{'footnote_no_number'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'footnote_no_number'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'footnote_no_number'};
 
 $result_menus{'footnote_no_number'} = {
   'cmdname' => 'node',

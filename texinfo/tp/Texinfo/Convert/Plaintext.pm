@@ -132,7 +132,7 @@ foreach my $def_command (keys(%def_commands)) {
 # 'code'
 # 
 # paragraph number incremented with paragraphs, center, listoffloats
-# and block commands except: html and such, group, raggedright, menu*, float
+# and block commands except: html and such, group, raggedright, menu*, float
 
 my %default_preformatted_context_commands = %preformatted_commands;
 foreach my $preformatted_command ('verbatim', keys(%menu_commands)) {

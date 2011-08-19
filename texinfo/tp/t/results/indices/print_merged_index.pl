@@ -181,10 +181,13 @@ $result_nodes{'print_merged_index'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'print_merged_index'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'print_merged_index'};
 
 $result_menus{'print_merged_index'} = {
   'cmdname' => 'node',

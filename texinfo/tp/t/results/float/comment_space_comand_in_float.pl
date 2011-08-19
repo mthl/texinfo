@@ -352,10 +352,13 @@ $result_nodes{'comment_space_comand_in_float'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'comment_space_comand_in_float'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'comment_space_comand_in_float'};
 
 $result_menus{'comment_space_comand_in_float'} = {
   'cmdname' => 'node',

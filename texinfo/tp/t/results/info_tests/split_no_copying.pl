@@ -624,14 +624,17 @@ $result_nodes{'split_no_copying'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'split_no_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'split_no_copying'};
 $result_nodes{'split_no_copying'}{'menu_child'}{'node_up'} = $result_nodes{'split_no_copying'};
 $result_nodes{'split_no_copying'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'split_no_copying'}{'menus'}[0];
 $result_nodes{'split_no_copying'}{'node_next'} = $result_nodes{'split_no_copying'}{'menu_child'};
+$result_nodes{'split_no_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'split_no_copying'};
 
 $result_menus{'split_no_copying'} = {
   'cmdname' => 'node',

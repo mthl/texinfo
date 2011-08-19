@@ -270,10 +270,13 @@ $result_nodes{'image_text_lines_count'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'image_text_lines_count'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_text_lines_count'};
 
 $result_menus{'image_text_lines_count'} = {
   'cmdname' => 'node',

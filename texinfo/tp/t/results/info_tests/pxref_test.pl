@@ -244,10 +244,13 @@ $result_nodes{'pxref_test'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'pxref_test'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'pxref_test'};
 
 $result_menus{'pxref_test'} = {
   'cmdname' => 'node',

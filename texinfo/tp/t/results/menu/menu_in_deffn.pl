@@ -437,12 +437,15 @@ $result_nodes{'menu_in_deffn'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'menu_in_deffn'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menu_in_deffn'}{'menus'}[0];
 $result_nodes{'menu_in_deffn'}{'node_next'} = $result_nodes{'menu_in_deffn'}{'menu_child'};
+$result_nodes{'menu_in_deffn'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_in_deffn'};
 
 $result_menus{'menu_in_deffn'} = {
   'cmdname' => 'node',

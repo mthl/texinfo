@@ -824,8 +824,10 @@ $result_nodes{'entry_after_detailmenu'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'entry_after_detailmenu'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'entry_after_detailmenu'}{'menu_child'};
@@ -834,6 +836,7 @@ $result_nodes{'entry_after_detailmenu'}{'menu_child'}{'node_prev'} = $result_nod
 $result_nodes{'entry_after_detailmenu'}{'menu_child'}{'node_up'} = $result_nodes{'entry_after_detailmenu'};
 $result_nodes{'entry_after_detailmenu'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'entry_after_detailmenu'}{'menus'}[0];
 $result_nodes{'entry_after_detailmenu'}{'node_next'} = $result_nodes{'entry_after_detailmenu'}{'menu_child'};
+$result_nodes{'entry_after_detailmenu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'entry_after_detailmenu'};
 
 $result_menus{'entry_after_detailmenu'} = {
   'cmdname' => 'node',

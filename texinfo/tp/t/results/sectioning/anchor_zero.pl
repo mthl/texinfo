@@ -221,10 +221,13 @@ $result_nodes{'anchor_zero'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'anchor_zero'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_zero'};
 
 $result_menus{'anchor_zero'} = {
   'cmdname' => 'node',

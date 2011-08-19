@@ -664,14 +664,17 @@ $result_nodes{'double_index_entry'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'double_index_entry'}{'menu_child'}{'node_prev'} = $result_nodes{'double_index_entry'};
 $result_nodes{'double_index_entry'}{'menu_child'}{'node_up'} = $result_nodes{'double_index_entry'};
 $result_nodes{'double_index_entry'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'double_index_entry'}{'menus'}[0];
 $result_nodes{'double_index_entry'}{'node_next'} = $result_nodes{'double_index_entry'}{'menu_child'};
+$result_nodes{'double_index_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'double_index_entry'};
 
 $result_menus{'double_index_entry'} = {
   'cmdname' => 'node',

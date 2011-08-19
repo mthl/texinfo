@@ -283,10 +283,13 @@ $result_nodes{'image_file_search'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'image_file_search'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_file_search'};
 
 $result_menus{'image_file_search'} = {
   'cmdname' => 'node',

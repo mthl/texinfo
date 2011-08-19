@@ -505,14 +505,17 @@ $result_nodes{'style_not_closed_no_newline_root_commands'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'style_not_closed_no_newline_root_commands'}{'menu_child'}{'node_prev'} = $result_nodes{'style_not_closed_no_newline_root_commands'};
 $result_nodes{'style_not_closed_no_newline_root_commands'}{'menu_child'}{'node_up'} = $result_nodes{'style_not_closed_no_newline_root_commands'};
 $result_nodes{'style_not_closed_no_newline_root_commands'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'style_not_closed_no_newline_root_commands'}{'menus'}[0];
 $result_nodes{'style_not_closed_no_newline_root_commands'}{'node_next'} = $result_nodes{'style_not_closed_no_newline_root_commands'}{'menu_child'};
+$result_nodes{'style_not_closed_no_newline_root_commands'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'style_not_closed_no_newline_root_commands'};
 
 $result_menus{'style_not_closed_no_newline_root_commands'} = {
   'cmdname' => 'node',

@@ -168,10 +168,13 @@ $result_nodes{'known_encoding'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'known_encoding'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'known_encoding'};
 
 $result_menus{'known_encoding'} = {
   'cmdname' => 'node',

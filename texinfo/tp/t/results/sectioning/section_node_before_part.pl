@@ -249,10 +249,13 @@ $result_nodes{'section_node_before_part'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'section_node_before_part'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'section_node_before_part'};
 
 $result_menus{'section_node_before_part'} = {
   'cmdname' => 'node',

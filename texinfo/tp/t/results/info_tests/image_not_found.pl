@@ -134,10 +134,13 @@ $result_nodes{'image_not_found'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'image_not_found'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_not_found'};
 
 $result_menus{'image_not_found'} = {
   'cmdname' => 'node',

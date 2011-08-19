@@ -862,8 +862,10 @@ $result_nodes{'node_part_chapter_after_chapter'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'node_part_chapter_after_chapter'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'node_part_chapter_after_chapter'}{'menu_child'};
@@ -872,6 +874,7 @@ $result_nodes{'node_part_chapter_after_chapter'}{'menu_child'}{'node_prev'} = $r
 $result_nodes{'node_part_chapter_after_chapter'}{'menu_child'}{'node_up'} = $result_nodes{'node_part_chapter_after_chapter'};
 $result_nodes{'node_part_chapter_after_chapter'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'node_part_chapter_after_chapter'}{'menus'}[0];
 $result_nodes{'node_part_chapter_after_chapter'}{'node_next'} = $result_nodes{'node_part_chapter_after_chapter'}{'menu_child'};
+$result_nodes{'node_part_chapter_after_chapter'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'node_part_chapter_after_chapter'};
 
 $result_menus{'node_part_chapter_after_chapter'} = {
   'cmdname' => 'node',

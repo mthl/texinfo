@@ -570,8 +570,10 @@ $result_nodes{'next_no_prev_to_node'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'next_no_prev_to_node'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'next_no_prev_to_node'};
@@ -579,6 +581,7 @@ $result_nodes{'next_no_prev_to_node'}{'menu_child'}{'node_prev'} = $result_nodes
 $result_nodes{'next_no_prev_to_node'}{'menu_child'}{'node_up'} = $result_nodes{'next_no_prev_to_node'};
 $result_nodes{'next_no_prev_to_node'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'next_no_prev_to_node'}{'menus'}[0];
 $result_nodes{'next_no_prev_to_node'}{'node_next'} = $result_nodes{'next_no_prev_to_node'}{'menu_child'};
+$result_nodes{'next_no_prev_to_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'next_no_prev_to_node'};
 
 $result_menus{'next_no_prev_to_node'} = {
   'cmdname' => 'node',

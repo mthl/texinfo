@@ -613,10 +613,13 @@ $result_nodes{'weird_accents'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'weird_accents'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'weird_accents'};
 
 $result_menus{'weird_accents'} = {
   'cmdname' => 'node',

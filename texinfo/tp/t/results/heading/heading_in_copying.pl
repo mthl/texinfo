@@ -453,10 +453,13 @@ $result_nodes{'heading_in_copying'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'heading_in_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'heading_in_copying'};
 
 $result_menus{'heading_in_copying'} = {
   'cmdname' => 'node',

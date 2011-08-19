@@ -440,10 +440,13 @@ $result_nodes{'xref_test'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'xref_test'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'xref_test'};
 
 $result_menus{'xref_test'} = {
   'cmdname' => 'node',

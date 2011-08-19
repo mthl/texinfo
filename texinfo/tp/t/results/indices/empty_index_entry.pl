@@ -331,10 +331,13 @@ $result_nodes{'empty_index_entry'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'empty_index_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_index_entry'};
 
 $result_menus{'empty_index_entry'} = {
   'cmdname' => 'node',

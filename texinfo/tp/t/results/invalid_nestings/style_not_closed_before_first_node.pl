@@ -153,10 +153,13 @@ $result_nodes{'style_not_closed_before_first_node'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'style_not_closed_before_first_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'style_not_closed_before_first_node'};
 
 $result_menus{'style_not_closed_before_first_node'} = {
   'cmdname' => 'node',

@@ -601,14 +601,17 @@ $result_nodes{'chapter_node_before_and_after_part'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'chapter_node_before_and_after_part'}{'menu_child'}{'node_prev'} = $result_nodes{'chapter_node_before_and_after_part'};
 $result_nodes{'chapter_node_before_and_after_part'}{'menu_child'}{'node_up'} = $result_nodes{'chapter_node_before_and_after_part'};
 $result_nodes{'chapter_node_before_and_after_part'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'chapter_node_before_and_after_part'}{'menus'}[0];
 $result_nodes{'chapter_node_before_and_after_part'}{'node_next'} = $result_nodes{'chapter_node_before_and_after_part'}{'menu_child'};
+$result_nodes{'chapter_node_before_and_after_part'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'chapter_node_before_and_after_part'};
 
 $result_menus{'chapter_node_before_and_after_part'} = {
   'cmdname' => 'node',

@@ -737,14 +737,17 @@ $result_nodes{'double_part'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'double_part'}{'menu_child'}{'node_prev'} = $result_nodes{'double_part'};
 $result_nodes{'double_part'}{'menu_child'}{'node_up'} = $result_nodes{'double_part'};
 $result_nodes{'double_part'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'double_part'}{'menus'}[0];
 $result_nodes{'double_part'}{'node_next'} = $result_nodes{'double_part'}{'menu_child'};
+$result_nodes{'double_part'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'double_part'};
 
 $result_menus{'double_part'} = {
   'cmdname' => 'node',

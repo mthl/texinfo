@@ -471,10 +471,13 @@ $result_nodes{'image_and_punctuation'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'image_and_punctuation'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_and_punctuation'};
 
 $result_menus{'image_and_punctuation'} = {
   'cmdname' => 'node',

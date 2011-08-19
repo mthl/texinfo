@@ -310,12 +310,15 @@ $result_nodes{'menu_in_style_command'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'menu_in_style_command'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menu_in_style_command'}{'menus'}[0];
 $result_nodes{'menu_in_style_command'}{'node_next'} = $result_nodes{'menu_in_style_command'}{'menu_child'};
+$result_nodes{'menu_in_style_command'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_in_style_command'};
 
 $result_menus{'menu_in_style_command'} = {
   'cmdname' => 'node',

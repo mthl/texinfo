@@ -835,7 +835,29 @@ $section_in_unnumbered_text
 
 @node subsection
 @subsection subsection
-']
+'],
+['empty_top_node_up',
+'@node Top
+@top empty top node up
+
+@menu
+* first::
+@end menu
+
+@node first
+',{'TOP_NODE_UP' => ''}
+],
+['internal_top_node_up',
+'@node Top
+@top internal top node up
+
+@menu
+* first::
+@end menu
+
+@node first
+',{'TOP_NODE_UP' => 'node@@ node', 'test_split' => 'node'}
+],
 );
 
 my @test_cases = (

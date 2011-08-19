@@ -2665,10 +2665,13 @@ $result_nodes{'test_allowcodebreaks'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'test_allowcodebreaks'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'test_allowcodebreaks'};
 
 $result_menus{'test_allowcodebreaks'} = {
   'cmdname' => 'node',

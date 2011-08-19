@@ -749,12 +749,15 @@ $result_nodes{'menu_in_example'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'menu_in_example'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menu_in_example'}{'menus'}[0];
 $result_nodes{'menu_in_example'}{'node_next'} = $result_nodes{'menu_in_example'}{'menu_child'};
+$result_nodes{'menu_in_example'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_in_example'};
 
 $result_menus{'menu_in_example'} = {
   'cmdname' => 'node',

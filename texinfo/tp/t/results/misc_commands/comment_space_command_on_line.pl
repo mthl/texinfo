@@ -833,10 +833,13 @@ $result_nodes{'comment_space_command_on_line'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'comment_space_command_on_line'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'comment_space_command_on_line'};
 
 $result_menus{'comment_space_command_on_line'} = {
   'cmdname' => 'node',

@@ -574,10 +574,13 @@ $result_nodes{'character_and_spaces_in_node'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'character_and_spaces_in_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'character_and_spaces_in_node'};
 
 $result_menus{'character_and_spaces_in_node'} = {
   'cmdname' => 'node',

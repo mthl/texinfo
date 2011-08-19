@@ -168,10 +168,13 @@ $result_nodes{'encoding_us_ascii'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'encoding_us_ascii'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'encoding_us_ascii'};
 
 $result_menus{'encoding_us_ascii'} = {
   'cmdname' => 'node',

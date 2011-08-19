@@ -271,8 +271,6 @@ node_footnote_end
 
 equivalent_nodes mainly for equivalent_nodes-noderename.cnf parsing and renamed
 nodes handling.
-The following maybe could be added:
-empty_top_node_up menu-whitespace.texi --set-init-var TOP_NODE_UP
 
 
 formatting/

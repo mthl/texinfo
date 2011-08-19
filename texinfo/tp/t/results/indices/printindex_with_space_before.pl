@@ -235,10 +235,13 @@ $result_nodes{'printindex_with_space_before'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'printindex_with_space_before'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'printindex_with_space_before'};
 
 $result_menus{'printindex_with_space_before'} = {
   'cmdname' => 'node',

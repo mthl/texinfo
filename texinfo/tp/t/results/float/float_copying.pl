@@ -1504,14 +1504,17 @@ $result_nodes{'float_copying'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'float_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'float_copying'};
 $result_nodes{'float_copying'}{'menu_child'}{'node_up'} = $result_nodes{'float_copying'};
 $result_nodes{'float_copying'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'float_copying'}{'menus'}[0];
 $result_nodes{'float_copying'}{'node_next'} = $result_nodes{'float_copying'}{'menu_child'};
+$result_nodes{'float_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'float_copying'};
 
 $result_menus{'float_copying'} = {
   'cmdname' => 'node',

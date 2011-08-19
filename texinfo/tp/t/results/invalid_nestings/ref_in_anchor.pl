@@ -179,10 +179,13 @@ $result_nodes{'ref_in_anchor'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'ref_in_anchor'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_in_anchor'};
 
 $result_menus{'ref_in_anchor'} = {
   'cmdname' => 'node',

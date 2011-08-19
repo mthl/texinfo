@@ -544,10 +544,13 @@ $result_nodes{'index_entries_locations'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'index_entries_locations'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'index_entries_locations'};
 
 $result_menus{'index_entries_locations'} = {
   'cmdname' => 'node',

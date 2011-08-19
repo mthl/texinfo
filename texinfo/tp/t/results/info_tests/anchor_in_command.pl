@@ -271,10 +271,13 @@ $result_nodes{'anchor_in_command'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'anchor_in_command'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'anchor_in_command'};
 
 $result_menus{'anchor_in_command'} = {
   'cmdname' => 'node',

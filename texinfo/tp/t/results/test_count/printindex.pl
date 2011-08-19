@@ -524,10 +524,13 @@ $result_nodes{'printindex'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'printindex'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'printindex'};
 
 $result_menus{'printindex'} = {
   'cmdname' => 'node',

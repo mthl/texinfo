@@ -2875,10 +2875,13 @@ $result_nodes{'accentenc_no_iso_no_entity'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'accentenc_no_iso_no_entity'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'accentenc_no_iso_no_entity'};
 
 $result_menus{'accentenc_no_iso_no_entity'} = {
   'cmdname' => 'node',

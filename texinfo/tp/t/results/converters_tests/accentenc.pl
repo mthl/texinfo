@@ -2875,10 +2875,13 @@ $result_nodes{'accentenc'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'accentenc'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'accentenc'};
 
 $result_menus{'accentenc'} = {
   'cmdname' => 'node',

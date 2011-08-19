@@ -4237,10 +4237,13 @@ $result_nodes{'test_image'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'test_image'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'test_image'};
 
 $result_menus{'test_image'} = {
   'cmdname' => 'node',

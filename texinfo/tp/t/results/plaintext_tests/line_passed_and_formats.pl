@@ -3401,12 +3401,15 @@ $result_nodes{'line_passed_and_formats'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'line_passed_and_formats'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'line_passed_and_formats'}{'menus'}[0];
 $result_nodes{'line_passed_and_formats'}{'node_next'} = $result_nodes{'line_passed_and_formats'}{'menu_child'};
+$result_nodes{'line_passed_and_formats'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'line_passed_and_formats'};
 
 $result_menus{'line_passed_and_formats'} = {
   'cmdname' => 'node',

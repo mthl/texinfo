@@ -2818,10 +2818,13 @@ $result_nodes{'accent'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'accent'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'accent'};
 
 $result_menus{'accent'} = {
   'cmdname' => 'node',

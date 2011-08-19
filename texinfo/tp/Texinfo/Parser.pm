@@ -906,9 +906,9 @@ sub global_commands_information ($)
   return $self->{'extra'};
 }
 
-# @ dircategory_direntry
+# @ dircategory_direntry
 # @ unassociated_menus
-# perl_encoding
+# perl_encoding
 # encoding_name
 # input_file_name
 sub global_informations ($)

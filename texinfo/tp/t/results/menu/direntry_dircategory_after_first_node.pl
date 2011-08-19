@@ -392,10 +392,13 @@ $result_nodes{'direntry_dircategory_after_first_node'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'direntry_dircategory_after_first_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'direntry_dircategory_after_first_node'};
 
 $result_menus{'direntry_dircategory_after_first_node'} = {
   'cmdname' => 'node',

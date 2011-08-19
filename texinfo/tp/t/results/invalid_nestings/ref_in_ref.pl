@@ -175,10 +175,13 @@ $result_nodes{'ref_in_ref'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'ref_in_ref'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_in_ref'};
 
 $result_menus{'ref_in_ref'} = {
   'cmdname' => 'node',

@@ -388,10 +388,13 @@ $result_nodes{'footnote_in_caption'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'footnote_in_caption'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'footnote_in_caption'};
 
 $result_menus{'footnote_in_caption'} = {
   'cmdname' => 'node',

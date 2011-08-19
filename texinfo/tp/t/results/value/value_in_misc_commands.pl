@@ -3448,10 +3448,13 @@ $result_nodes{'value_in_misc_commands'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'value_in_misc_commands'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'value_in_misc_commands'};
 
 $result_menus{'value_in_misc_commands'} = {
   'cmdname' => 'node',

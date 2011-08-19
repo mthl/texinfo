@@ -524,14 +524,17 @@ $result_nodes{'section_before_top'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'section_before_top'}{'menu_child'}{'node_prev'} = $result_nodes{'section_before_top'};
 $result_nodes{'section_before_top'}{'menu_child'}{'node_up'} = $result_nodes{'section_before_top'};
 $result_nodes{'section_before_top'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'section_before_top'}{'menus'}[0];
 $result_nodes{'section_before_top'}{'node_next'} = $result_nodes{'section_before_top'}{'menu_child'};
+$result_nodes{'section_before_top'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'section_before_top'};
 
 $result_menus{'section_before_top'} = {
   'cmdname' => 'node',

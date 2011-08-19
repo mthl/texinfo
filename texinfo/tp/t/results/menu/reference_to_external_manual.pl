@@ -284,12 +284,15 @@ $result_nodes{'reference_to_external_manual'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'reference_to_external_manual'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'reference_to_external_manual'}{'menus'}[0];
 $result_nodes{'reference_to_external_manual'}{'node_next'} = $result_nodes{'reference_to_external_manual'}{'menu_child'};
+$result_nodes{'reference_to_external_manual'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'reference_to_external_manual'};
 
 $result_menus{'reference_to_external_manual'} = {
   'cmdname' => 'node',

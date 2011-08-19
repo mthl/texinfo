@@ -1335,10 +1335,13 @@ $result_nodes{'multitable_anchor_and_index_entry'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'multitable_anchor_and_index_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'multitable_anchor_and_index_entry'};
 
 $result_menus{'multitable_anchor_and_index_entry'} = {
   'cmdname' => 'node',

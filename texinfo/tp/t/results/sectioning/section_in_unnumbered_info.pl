@@ -8287,8 +8287,10 @@ $result_nodes{'section_in_unnumbered_info'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'section_in_unnumbered_info'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'section_in_unnumbered_info'}{'menu_child'};
@@ -8355,6 +8357,7 @@ $result_nodes{'section_in_unnumbered_info'}{'menu_child'}{'node_prev'} = $result
 $result_nodes{'section_in_unnumbered_info'}{'menu_child'}{'node_up'} = $result_nodes{'section_in_unnumbered_info'};
 $result_nodes{'section_in_unnumbered_info'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'section_in_unnumbered_info'}{'menus'}[0];
 $result_nodes{'section_in_unnumbered_info'}{'node_next'} = $result_nodes{'section_in_unnumbered_info'}{'menu_child'};
+$result_nodes{'section_in_unnumbered_info'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'section_in_unnumbered_info'};
 
 $result_menus{'section_in_unnumbered_info'} = {
   'cmdname' => 'node',

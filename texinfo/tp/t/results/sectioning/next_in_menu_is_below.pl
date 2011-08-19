@@ -1124,8 +1124,10 @@ $result_nodes{'next_in_menu_is_below'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'next_in_menu_is_below'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_prev'} = $result_nodes{'next_in_menu_is_below'}{'menu_child'}{'menu_child'};
@@ -1138,6 +1140,7 @@ $result_nodes{'next_in_menu_is_below'}{'menu_child'}{'node_prev'} = $result_node
 $result_nodes{'next_in_menu_is_below'}{'menu_child'}{'node_up'} = $result_nodes{'next_in_menu_is_below'};
 $result_nodes{'next_in_menu_is_below'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'next_in_menu_is_below'}{'menus'}[0];
 $result_nodes{'next_in_menu_is_below'}{'node_next'} = $result_nodes{'next_in_menu_is_below'}{'menu_child'};
+$result_nodes{'next_in_menu_is_below'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'next_in_menu_is_below'};
 
 $result_menus{'next_in_menu_is_below'} = {
   'cmdname' => 'node',

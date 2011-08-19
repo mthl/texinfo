@@ -267,10 +267,13 @@ $result_nodes{'setfilename_on_top_and_after_node'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'setfilename_on_top_and_after_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'setfilename_on_top_and_after_node'};
 
 $result_menus{'setfilename_on_top_and_after_node'} = {
   'cmdname' => 'node',

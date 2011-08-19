@@ -16306,10 +16306,13 @@ $result_nodes{'all_commands_delimiters_printindex'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'all_commands_delimiters_printindex'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'all_commands_delimiters_printindex'};
 
 $result_menus{'all_commands_delimiters_printindex'} = {
   'cmdname' => 'node',

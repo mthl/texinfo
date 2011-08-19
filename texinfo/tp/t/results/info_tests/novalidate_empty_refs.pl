@@ -431,10 +431,13 @@ $result_nodes{'novalidate_empty_refs'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'novalidate_empty_refs'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'novalidate_empty_refs'};
 
 $result_menus{'novalidate_empty_refs'} = {
   'cmdname' => 'node',

@@ -1458,10 +1458,13 @@ $result_nodes{'in_table'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'in_table'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'in_table'};
 
 $result_menus{'in_table'} = {
   'cmdname' => 'node',

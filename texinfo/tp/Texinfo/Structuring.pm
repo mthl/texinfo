@@ -445,9 +445,13 @@ sub nodes_tree ($)
         }
       } else {
         # Special case for Top node.
-        $node->{'node_up'} = {'extra' => Texinfo::Parser::_parse_node_manual(
-                            {'contents' => [ {'text' 
-                                               => $self->{'TOP_NODE_UP'} } ]})};
+        my $top_node_content_tree = Texinfo::Parser::parse_texi_line($self, 
+                                                    $self->{'TOP_NODE_UP'});
+        $node->{'node_up'}
+          = {'extra' => Texinfo::Parser::_parse_node_manual(
+                    {'contents' => $top_node_content_tree->{'contents'}})};
+        $node->{'node_up'}->{'type'} = 'top_node_up';
+        $node->{'node_up'}->{'extra'}->{'top_node_up'} = $node;
         if ($node->{'menu_child'}) {
           $node->{'node_next'} = $node->{'menu_child'};
           if (!$node->{'menu_child'}->{'extra'}->{'manual_content'}) {
@@ -694,6 +698,8 @@ sub _node_element($)
                               $node->{'extra'}->{'manual_content'});
   } elsif ($node->{'cmdname'} and $node->{'cmdname'} eq 'node') {
     return $node->{'parent'};
+  } elsif ($node->{'type'} and $node->{'type'} eq 'top_node_up') {
+    return $node;
   } else {
     # case of a @float or an @anchor
     return undef;

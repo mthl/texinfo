@@ -2014,8 +2014,10 @@ $result_nodes{'lowered_subsubsection'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'lowered_subsubsection'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_next'}{'menu_child'}{'node_prev'} = $result_nodes{'lowered_subsubsection'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_next'};
@@ -2034,6 +2036,7 @@ $result_nodes{'lowered_subsubsection'}{'menu_child'}{'node_prev'} = $result_node
 $result_nodes{'lowered_subsubsection'}{'menu_child'}{'node_up'} = $result_nodes{'lowered_subsubsection'};
 $result_nodes{'lowered_subsubsection'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'lowered_subsubsection'}{'menus'}[0];
 $result_nodes{'lowered_subsubsection'}{'node_next'} = $result_nodes{'lowered_subsubsection'}{'menu_child'};
+$result_nodes{'lowered_subsubsection'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'lowered_subsubsection'};
 
 $result_menus{'lowered_subsubsection'} = {
   'cmdname' => 'node',

@@ -375,14 +375,17 @@ $result_nodes{'top_node_normalization'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'top_node_normalization'}{'menu_child'} = $result_nodes{'top_node_normalization'};
 $result_nodes{'top_node_normalization'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'top_node_normalization'}{'menus'}[0];
 $result_nodes{'top_node_normalization'}{'node_next'} = $result_nodes{'top_node_normalization'};
 $result_nodes{'top_node_normalization'}{'node_prev'} = $result_nodes{'top_node_normalization'};
+$result_nodes{'top_node_normalization'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'top_node_normalization'};
 
 $result_menus{'top_node_normalization'} = {
   'cmdname' => 'node',

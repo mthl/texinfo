@@ -176,10 +176,13 @@ $result_nodes{'space_in_setfilename'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'space_in_setfilename'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'space_in_setfilename'};
 
 $result_menus{'space_in_setfilename'} = {
   'cmdname' => 'node',

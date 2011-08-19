@@ -613,10 +613,13 @@ $result_nodes{'weird_accents_disable_encoding'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'weird_accents_disable_encoding'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'weird_accents_disable_encoding'};
 
 $result_menus{'weird_accents_disable_encoding'} = {
   'cmdname' => 'node',

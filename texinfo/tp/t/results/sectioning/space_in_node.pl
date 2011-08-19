@@ -663,8 +663,10 @@ $result_nodes{'space_in_node'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'space_in_node'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'space_in_node'}{'menu_child'}{'node_next'};
@@ -675,6 +677,7 @@ $result_nodes{'space_in_node'}{'menu_child'}{'node_prev'} = $result_nodes{'space
 $result_nodes{'space_in_node'}{'menu_child'}{'node_up'} = $result_nodes{'space_in_node'};
 $result_nodes{'space_in_node'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'space_in_node'}{'menus'}[0];
 $result_nodes{'space_in_node'}{'node_next'} = $result_nodes{'space_in_node'}{'menu_child'};
+$result_nodes{'space_in_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'space_in_node'};
 
 $result_menus{'space_in_node'} = {
   'cmdname' => 'node',

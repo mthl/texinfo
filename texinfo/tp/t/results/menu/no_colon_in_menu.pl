@@ -215,11 +215,14 @@ $result_nodes{'no_colon_in_menu'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'no_colon_in_menu'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'no_colon_in_menu'}{'menus'}[0];
+$result_nodes{'no_colon_in_menu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'no_colon_in_menu'};
 
 $result_menus{'no_colon_in_menu'} = {
   'cmdname' => 'node',

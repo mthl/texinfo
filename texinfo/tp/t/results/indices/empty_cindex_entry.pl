@@ -127,10 +127,13 @@ $result_nodes{'empty_cindex_entry'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'empty_cindex_entry'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_cindex_entry'};
 
 $result_menus{'empty_cindex_entry'} = {
   'cmdname' => 'node',

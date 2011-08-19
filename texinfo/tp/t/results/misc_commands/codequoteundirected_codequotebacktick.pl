@@ -5161,10 +5161,13 @@ $result_nodes{'codequoteundirected_codequotebacktick'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'codequoteundirected_codequotebacktick'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'codequoteundirected_codequotebacktick'};
 
 $result_menus{'codequoteundirected_codequotebacktick'} = {
   'cmdname' => 'node',

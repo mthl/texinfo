@@ -464,12 +464,15 @@ $result_nodes{'node_up_external_node'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'node_up_external_node'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'node_up_external_node'}{'menus'}[0];
 $result_nodes{'node_up_external_node'}{'node_next'} = $result_nodes{'node_up_external_node'}{'menu_child'};
+$result_nodes{'node_up_external_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'node_up_external_node'};
 
 $result_menus{'node_up_external_node'} = {
   'cmdname' => 'node',

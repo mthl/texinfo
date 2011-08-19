@@ -451,14 +451,17 @@ $result_nodes{'top_node_no_menu_direction'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'top_node_no_menu_direction'}{'menu_child'}{'node_prev'} = $result_nodes{'top_node_no_menu_direction'};
 $result_nodes{'top_node_no_menu_direction'}{'menu_child'}{'node_up'} = $result_nodes{'top_node_no_menu_direction'};
 $result_nodes{'top_node_no_menu_direction'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'top_node_no_menu_direction'}{'menus'}[0];
 $result_nodes{'top_node_no_menu_direction'}{'node_next'} = $result_nodes{'top_node_no_menu_direction'}{'menu_child'};
+$result_nodes{'top_node_no_menu_direction'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'top_node_no_menu_direction'};
 
 $result_menus{'top_node_no_menu_direction'} = {
   'cmdname' => 'node',

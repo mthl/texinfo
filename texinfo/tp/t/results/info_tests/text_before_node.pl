@@ -422,14 +422,17 @@ $result_nodes{'text_before_node'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
 $result_nodes{'text_before_node'}{'menu_child'}{'node_prev'} = $result_nodes{'text_before_node'};
 $result_nodes{'text_before_node'}{'menu_child'}{'node_up'} = $result_nodes{'text_before_node'};
 $result_nodes{'text_before_node'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'text_before_node'}{'menus'}[0];
 $result_nodes{'text_before_node'}{'node_next'} = $result_nodes{'text_before_node'}{'menu_child'};
+$result_nodes{'text_before_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'text_before_node'};
 
 $result_menus{'text_before_node'} = {
   'cmdname' => 'node',

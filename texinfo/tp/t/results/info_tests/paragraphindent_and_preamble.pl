@@ -447,10 +447,13 @@ $result_nodes{'paragraphindent_and_preamble'} = {
         {
           'text' => 'dir'
         }
-      ]
-    }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
 };
+$result_nodes{'paragraphindent_and_preamble'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'paragraphindent_and_preamble'};
 
 $result_menus{'paragraphindent_and_preamble'} = {
   'cmdname' => 'node',
