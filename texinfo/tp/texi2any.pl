@@ -569,7 +569,7 @@ $makeinfo_help .= __("Conditional processing in input:
   --ifhtml          process \@ifhtml and \@html even if not generating HTML.
   --ifinfo          process \@ifinfo even if not generating Info.
   --ifplaintext     process \@ifplaintext even if not generating plain text.
-  --iftex           process \@iftex and \@tex; implies --no-split.
+  --iftex           process \@iftex and \@tex.
   --ifxml           process \@ifxml and \@xml.
   --no-ifdocbook    do not process \@ifdocbook and \@docbook text.
   --no-ifhtml       do not process \@ifhtml and \@html text.
