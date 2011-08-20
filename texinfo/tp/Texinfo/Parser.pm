@@ -30,6 +30,10 @@ package Texinfo::Parser;
 # We need the unicode stuff.
 use 5.006;
 use strict;
+
+# debug
+#use Carp qw(cluck);
+
 use Data::Dumper;
 
 # to detect if an encoding may be used to open the files
@@ -777,7 +781,8 @@ sub parse_texi_text($$;$$$$)
 
   $self = parser() if (!defined($self));
   $self->{'input'} = [{'pending' => $lines_array}];
-  return $self->_parse_texi();
+  my $tree = $self->_parse_texi();
+  return $tree;
 }
 
 # parse a texi file
@@ -821,6 +826,7 @@ sub parse_texi_file ($$)
   $self->{'info'}->{'input_file_name'} = $file_name;
   my $tree = $self->_parse_texi($root);
 
+  # Find 'text_root', which contains everything before first node/section.
   # if there are elements, 'text_root' is the first content, otherwise it
   # is the root.
   my $text_root;
@@ -870,7 +876,8 @@ sub parse_texi_line($$;$$$$)
 
   $self = parser() if (!defined($self));
   $self->{'input'} = [{'pending' => $lines_array}];
-  return $self->_parse_texi({'contents' => [], 'type' => 'root_line'});
+  my $tree = $self->_parse_texi({'contents' => [], 'type' => 'root_line'});
+  return $tree;
 }
 
 # return the errors and warnings
@@ -2936,7 +2943,8 @@ sub _end_line($$$)
         $current = $current->{'parent'};
         print STDERR "$indent"._print_current($current);
       }
-      die "BUG: didn't go up (infinite loop)\n" 
+      #cluck "Problem with opened line command $self->{'context_stack'}->[-1]";
+      die "BUG: did not go up (infinite loop)\n" 
     }
 
     my $other_included_file = 0;
@@ -4491,6 +4499,16 @@ sub _parse_texi($;$)
     $self->line_error (sprintf($self->__("Expected \@end %s"), $end_conditional), $line_nr);
   }
   $current = _close_commands($self, $current, $line_nr);
+
+  if (@{$self->{'context_stack'}} != 1) {
+    # This happens in 2 cases in the tests:
+    #   @verb not closed on misc commands line
+    #   def line escaped with @ ending the file
+    if ($self->{'DEBUG'}) {
+      print STDERR "CONTEXT_STACK no empty end _parse_texi: ".join('|', @{$self->{'context_stack'}})."\n";
+    }
+    @{$self->{'context_stack'}} = ($self->{'context'});
+  }
   return $root;
 }
 
