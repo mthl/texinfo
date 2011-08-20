@@ -34,14 +34,12 @@ my %defaults = (
   'firstparagraphindent' => 'none',
   'ENABLE_ENCODING'      => 1,
   'footnotestyle'        => 'end',
-  'fillcolumn'           => 72,
 #  'perl_encoding'        => 'ascii',
 #  'encoding_name'      => 'us-ascii',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
   'NUMBER_FOOTNOTES'     => 1,
-  'SPLIT_SIZE'           => 300000,
   'include_directories'  => undef,
   'NUMBER_SECTIONS'      => 1,
 );
@@ -51,6 +49,10 @@ my %defaults = (
 our %all_converters_defaults = (
   'htmlxref_files'       => undef,
   'output_format'        => undef,
+  'SPLIT_SIZE'           => 300000,
+  'paragraphindent'      => 3,
+  'fillcolumn'           => 72,
+  
 
   'DEBUG'                => 0,
   'TEST'                 => 0,

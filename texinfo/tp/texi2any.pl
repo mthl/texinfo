@@ -468,7 +468,148 @@ sub _set_variables_texi2html()
   }
 }
 
+sub _get_converter_default($)
+{
+  my $option = shift;
+  return $Texinfo::Convert::Converter::all_converters_defaults{$option}
+   if (defined($Texinfo::Convert::Converter::all_converters_defaults{$option}));
+  return undef;
+}
+
+my $makeinfo_help =
+sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"), $real_command_name)
+."\n".
+__("Translate Texinfo source documentation to various other formats, by default
+Info files suitable for reading online with Emacs or standalone GNU Info.\n")
+."\n";
+$makeinfo_help .= sprintf(__("General options:
+      --error-limit=NUM       quit after NUM errors (default %d).
+      --document-language=STR locale to use in translating Texinfo keywords
+                                for the output document (default C).
+      --force                 preserve output even if errors.
+      --help                  display this help and exit.
+      --no-validate           suppress node cross-reference validation.
+      --no-warn               suppress warnings (but not errors).
+      --conf-dir=DIR          search also for initialization files in DIR.
+      --init-file=FILE        load FILE to modify the default behaviour.
+      --set-init-variable VAR=VAL  set configuration variable VAR to VAL.
+  -v, --verbose               explain what is being done.
+      --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
+."\n";
+$makeinfo_help .= __("Output format selection (default is to produce Info):
+      --docbook               output Docbook XML rather than Info.
+      --html                  output HTML rather than Info.
+      --xml                   output Texinfo XML rather than Info.
+      --plaintext             output plain text rather than Info.\n")
+."\n";
+$makeinfo_help .= __("General output options:
+  -E, --macro-expand=FILE     output macro-expanded source to FILE,
+                                ignoring any \@setfilename.
+      --no-headers            suppress node separators, Node: lines, and menus
+                                from Info output (thus producing plain text)
+                                or from HTML (thus producing shorter output);
+                                also, write to standard output by default if
+                                producing Info.
+      --split=SPLIT           split at SPLIT, where SPLIT may be chapter, 
+                                section or node if output supports splitting.
+      --no-split              suppress the splitting of Info or HTML output,
+                                generate only one output file.
+      --number-sections       output chapter and sectioning numbers.
+  -o, --output=FILE           output to FILE (or directory if split).
+                                If not split and FILE is a directory, put the
+                                resulting files in FILE.\n")
+."\n";
+$makeinfo_help .= sprintf(__("Options for Info and plain text:
+      --disable-encoding      do not output accented and special characters
+                                in Info output based on \@documentencoding.
+      --enable-encoding       override --disable-encoding (default).
+      --fill-column=NUM       break Info lines at NUM characters (default %d).
+      --footnote-style=STYLE  output footnotes in Info according to STYLE:
+                                `separate' to put them in their own node;
+                                `end' to put them at the end of the node, in
+                                which they are defined (this is the default).
+      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).
+                                If VAL is `none', do not indent; if VAL is
+                                `asis', preserve existing indentation.
+      --split-size=NUM        split Info files at size NUM (default %d).\n"),
+  _get_converter_default('fillcolumn'), 
+  _get_converter_default('paragraphindent'), 
+  _get_converter_default('SPLIT_SIZE'))
+."\n";
+$makeinfo_help .= __("Options for HTML:
+      --css-include=FILE      include FILE in HTML <style> output;
+                                read stdin if FILE is -.
+      --css-ref=URL           generate reference to a CSS file.
+      --internal-links=FILE   produce list of internal links in FILE.
+      --transliterate-file-names
+                              produce file names in ASCII transliteration.
+      --node-files            produce redirection files for nodes and 
+                                anchors. Default is set only if split.\n")
+."\n";
+$makeinfo_help .= __("Options for XML and Docbook:
+      --output-indent=VAL     does nothing, retained for compatibility.\n")
+."\n";
+# This is ignored
+#Options for XML and Docbook:
+#      --output-indent=VAL     indent XML elements by VAL spaces (default 2).
+#                                If VAL is 0, ignorable whitespace is dropped.
+# Always set and ignored
+#      --commands-in-node-names  allow \@ commands in node names.
+#
+$makeinfo_help .= __("Input file options:
+      --commands-in-node-names  does nothing, retained for compatibility.
+  -D VAR                        define the variable VAR, as with \@set.
+  -I DIR                        append DIR to the \@include search path.
+  -P DIR                        prepend DIR to the \@include search path.
+  -U VAR                        undefine the variable VAR, as with \@clear.\n")
+."\n";
+$makeinfo_help .= __("Conditional processing in input:
+  --ifdocbook       process \@ifdocbook and \@docbook even if
+                      not generating Docbook.
+  --ifhtml          process \@ifhtml and \@html even if not generating HTML.
+  --ifinfo          process \@ifinfo even if not generating Info.
+  --ifplaintext     process \@ifplaintext even if not generating plain text.
+  --iftex           process \@iftex and \@tex; implies --no-split.
+  --ifxml           process \@ifxml and \@xml.
+  --no-ifdocbook    do not process \@ifdocbook and \@docbook text.
+  --no-ifhtml       do not process \@ifhtml and \@html text.
+  --no-ifinfo       do not process \@ifinfo text.
+  --no-ifplaintext  do not process \@ifplaintext text.
+  --no-iftex        do not process \@iftex and \@tex text.
+  --no-ifxml        do not process \@ifxml and \@xml text.
+
+  Also, for the --no-ifFORMAT options, do process \@ifnotFORMAT text.\n")
+."\n";
+$makeinfo_help .= __("  The defaults for the \@if... conditionals depend on the output format:
+  if generating HTML, --ifhtml is on and the others are off;
+  if generating Info, --ifinfo is on and the others are off;
+  if generating plain text, --ifplaintext is on and the others are off;
+  if generating XML, --ifxml is on and the others are off.\n")
+."\n";
+$makeinfo_help .= __("Examples:
+  makeinfo foo.texi                      write Info to foo's \@setfilename
+  makeinfo --html foo.texi               write HTML to \@setfilename
+  makeinfo --xml foo.texi                write Texinfo XML to \@setfilename
+  makeinfo --docbook foo.texi            write DocBook XML to \@setfilename
+  makeinfo --no-headers foo.texi         write plain text to standard output
+
+  makeinfo --html --no-headers foo.texi  write html without node lines, menus
+  makeinfo --number-sections foo.texi    write Info with numbered sections
+  makeinfo --no-split foo.texi           write one Info file however big\n")
+."\n";
+$makeinfo_help .= __("Email bug reports to bug-texinfo\@gnu.org,
+general questions and discussion to help-texinfo\@gnu.org.
+Texinfo home page: http://www.gnu.org/software/texinfo/") ."\n";
+
+
 my $result_options = Getopt::Long::GetOptions (
+ 'help|h' => sub { print "$makeinfo_help"; exit 0; },
+ 'version|V' => sub {print "$real_command_name (GNU texinfo) $configured_version\n\n";
+    printf __("Copyright (C) %s Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.\n"), '2008';
+      exit 0;},
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
                              set_from_cmdline('MACRO_EXPAND', $_[1]); },
  'ifhtml!' => sub { set_expansion('html', $_[1]); },
