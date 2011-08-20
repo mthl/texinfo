@@ -57,6 +57,11 @@ $result_trees{'no_argument_for_table'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

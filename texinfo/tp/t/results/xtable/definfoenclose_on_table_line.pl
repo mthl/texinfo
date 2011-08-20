@@ -122,6 +122,11 @@ $result_trees{'definfoenclose_on_table_line'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -156,6 +161,11 @@ $result_trees{'definfoenclose_on_table_line'} = {
             'misc_content' => [
               {}
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
           },
           'parent' => {}
         },

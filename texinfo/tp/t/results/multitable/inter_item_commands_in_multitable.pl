@@ -155,6 +155,11 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -203,6 +208,11 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
               },
               'parent' => {}
             }
@@ -365,6 +375,11 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -393,6 +408,7 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               'extra' => {
                 'cell_number' => 2
               },
+              'line_nr' => {},
               'parent' => {}
             }
           ],
@@ -428,6 +444,11 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 14,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -469,6 +490,7 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               'extra' => {
                 'cell_number' => 2
               },
+              'line_nr' => {},
               'parent' => {}
             }
           ],
@@ -504,6 +526,11 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 16,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -583,6 +610,7 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               'extra' => {
                 'cell_number' => 2
               },
+              'line_nr' => {},
               'parent' => {}
             }
           ],
@@ -619,6 +647,11 @@ $result_trees{'inter_item_commands_in_multitable'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
               },
               'parent' => {}
             }
@@ -746,6 +779,7 @@ $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[1];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[1];
+$result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
@@ -759,6 +793,7 @@ $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[0];
@@ -779,6 +814,7 @@ $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'};
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[1];
+$result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'line_nr'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'line_nr'};
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[2]{'contents'}[3]{'contents'}[0];

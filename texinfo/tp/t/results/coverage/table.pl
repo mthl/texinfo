@@ -76,6 +76,11 @@ $result_trees{'table'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -110,6 +115,11 @@ $result_trees{'table'} = {
             'misc_content' => [
               {}
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -352,6 +362,11 @@ $result_trees{'table'} = {
             },
             'misc_content' => []
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -475,6 +490,11 @@ $result_trees{'table'} = {
               'number' => 2
             },
             'misc_content' => []
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
           },
           'parent' => {}
         },

@@ -373,6 +373,11 @@ sub _printindex($$)
     my $entry_text = '';
     $entry_text .= $self->convert_line($entry_tree, {'indent' => 0});
     next if ($entry_text !~ /\S/);
+    if ($entry_text =~ /:/) {
+      $self->line_warn (sprintf($self->__("Index entry in \@%s with a : will lead to invalid Info"),
+                                 $entry->{'index_at_command'}), 
+                        $entry->{'command'}->{'line_nr'});
+    }
 
     my $entry_nr = '';
     if (!defined($entry_counts{$entry_text})) {

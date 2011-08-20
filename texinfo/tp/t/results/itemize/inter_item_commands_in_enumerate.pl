@@ -69,6 +69,11 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

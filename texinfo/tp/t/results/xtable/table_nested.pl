@@ -288,6 +288,11 @@ After table.
                 },
                 'misc_content' => []
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => 'myvtable'
+              },
               'parent' => {}
             },
             {
@@ -332,6 +337,11 @@ After table.
                   'number' => 2
                 },
                 'misc_content' => []
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => 'myvtable'
               },
               'parent' => {}
             },
@@ -407,6 +417,11 @@ After table.
                 },
                 'misc_content' => []
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => 'myvtable'
+              },
               'parent' => {}
             },
             {
@@ -480,6 +495,11 @@ After table.
                   'number' => 4
                 },
                 'misc_content' => []
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => 'myvtable'
               },
               'parent' => {}
             },
@@ -620,6 +640,11 @@ After table.
                   {}
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => 'myvtable'
+              },
               'parent' => {}
             },
             {
@@ -671,6 +696,11 @@ After table.
                 'misc_content' => [
                   {}
                 ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => 'myvtable'
               },
               'parent' => {}
             },
@@ -912,6 +942,11 @@ After table.
                 },
                 'misc_content' => []
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => 'myvtable'
+              },
               'parent' => {}
             },
             {
@@ -956,6 +991,11 @@ After table.
                   'number' => 6
                 },
                 'misc_content' => []
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => 'myvtable'
               },
               'parent' => {}
             },
@@ -1031,6 +1071,11 @@ After table.
                 },
                 'misc_content' => []
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => 'myvtable'
+              },
               'parent' => {}
             },
             {
@@ -1104,6 +1149,11 @@ After table.
                   'number' => 8
                 },
                 'misc_content' => []
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => 'myvtable'
               },
               'parent' => {}
             },
@@ -1244,6 +1294,11 @@ After table.
                   {}
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => 'myvtable'
+              },
               'parent' => {}
             },
             {
@@ -1295,6 +1350,11 @@ After table.
                 'misc_content' => [
                   {}
                 ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => 'myvtable'
               },
               'parent' => {}
             },
@@ -1548,6 +1608,11 @@ After table.
                     },
                     'misc_content' => []
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 38,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {}
                 },
                 {
@@ -1592,6 +1657,11 @@ After table.
                       'number' => 10
                     },
                     'misc_content' => []
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 38,
+                    'macro' => 'myvtable'
                   },
                   'parent' => {}
                 },
@@ -1667,6 +1737,11 @@ After table.
                     },
                     'misc_content' => []
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 38,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {}
                 },
                 {
@@ -1740,6 +1815,11 @@ After table.
                       'number' => 12
                     },
                     'misc_content' => []
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 38,
+                    'macro' => 'myvtable'
                   },
                   'parent' => {}
                 },
@@ -1880,6 +1960,11 @@ After table.
                       {}
                     ]
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 38,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {}
                 },
                 {
@@ -1931,6 +2016,11 @@ After table.
                     'misc_content' => [
                       {}
                     ]
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 38,
+                    'macro' => 'myvtable'
                   },
                   'parent' => {}
                 },

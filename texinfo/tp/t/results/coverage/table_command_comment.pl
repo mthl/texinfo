@@ -76,6 +76,11 @@ $result_trees{'table_command_comment'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

@@ -70,6 +70,11 @@ $result_trees{'item_in_ref'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -185,6 +190,11 @@ $result_trees{'item_in_ref'} = {
             'misc_content' => [
               {}
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
           },
           'parent' => {}
         },

@@ -73,6 +73,11 @@ $result_trees{'empty_def_command'} = {
             },
             'original_def_cmdname' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -120,11 +125,7 @@ $result_trees{'empty_def_command'} = {
       'extra' => {
         'end_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -225,6 +226,11 @@ $result_trees{'empty_def_command'} = {
             },
             'original_def_cmdname' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -284,7 +290,7 @@ $result_trees{'empty_def_command'} = {
                 {}
               ],
               'in_code' => 1,
-              'index_at_command' => 'deffn',
+              'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
               'key' => 'deffnx',
@@ -344,11 +350,7 @@ $result_trees{'empty_def_command'} = {
       'extra' => {
         'end_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -371,6 +373,7 @@ $result_trees{'empty_def_command'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'par
 $result_trees{'empty_def_command'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'empty_def_command'}{'contents'}[0];
 $result_trees{'empty_def_command'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_def_command'}{'contents'}[0];
 $result_trees{'empty_def_command'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_def_command'}{'contents'}[0]{'contents'}[1];
+$result_trees{'empty_def_command'}{'contents'}[0]{'line_nr'} = $result_trees{'empty_def_command'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_def_command'}{'contents'}[0]{'parent'} = $result_trees{'empty_def_command'};
 $result_trees{'empty_def_command'}{'contents'}[1]{'parent'} = $result_trees{'empty_def_command'};
 $result_trees{'empty_def_command'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_def_command'}{'contents'}[2];
@@ -399,6 +402,7 @@ $result_trees{'empty_def_command'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'par
 $result_trees{'empty_def_command'}{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'empty_def_command'}{'contents'}[2];
 $result_trees{'empty_def_command'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'empty_def_command'}{'contents'}[2];
 $result_trees{'empty_def_command'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'empty_def_command'}{'contents'}[2]{'contents'}[2];
+$result_trees{'empty_def_command'}{'contents'}[2]{'line_nr'} = $result_trees{'empty_def_command'}{'contents'}[2]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_def_command'}{'contents'}[2]{'parent'} = $result_trees{'empty_def_command'};
 
 $result_texis{'empty_def_command'} = '@deffn empty deffn

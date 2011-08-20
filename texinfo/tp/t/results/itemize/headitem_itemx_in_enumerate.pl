@@ -88,6 +88,11 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

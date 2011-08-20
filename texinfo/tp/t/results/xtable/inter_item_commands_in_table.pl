@@ -98,6 +98,11 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             'misc_content' => []
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -253,6 +258,11 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             'misc_content' => []
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -315,6 +325,11 @@ $result_trees{'inter_item_commands_in_table'} = {
               'number' => 3
             },
             'misc_content' => []
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -471,6 +486,11 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             'misc_content' => []
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -596,6 +616,11 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             'misc_content' => []
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 19,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -657,6 +682,11 @@ $result_trees{'inter_item_commands_in_table'} = {
               'number' => 3
             },
             'misc_content' => []
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 21,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -732,6 +762,11 @@ $result_trees{'inter_item_commands_in_table'} = {
               'number' => 4
             },
             'misc_content' => []
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 25,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -953,6 +988,11 @@ $result_trees{'inter_item_commands_in_table'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 33,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1164,6 +1204,11 @@ $result_trees{'inter_item_commands_in_table'} = {
             'misc_content' => [
               {}
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 40,
+            'macro' => ''
           },
           'parent' => {}
         },

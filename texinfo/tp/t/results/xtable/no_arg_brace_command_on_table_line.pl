@@ -70,6 +70,11 @@ $result_trees{'no_arg_brace_command_on_table_line'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

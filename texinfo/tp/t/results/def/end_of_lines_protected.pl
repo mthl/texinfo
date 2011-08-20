@@ -221,6 +221,11 @@ $result_trees{'end_of_lines_protected'} = {
             },
             'original_def_cmdname' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -285,11 +290,7 @@ $result_trees{'end_of_lines_protected'} = {
       'extra' => {
         'end_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -331,6 +332,7 @@ $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2];
+$result_trees{'end_of_lines_protected'}{'contents'}[0]{'line_nr'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'};
 
 $result_texis{'end_of_lines_protected'} = '@deffn category deffn_name arguments    more {args   with end of line within} with 3 @@ @@ {one last arg}

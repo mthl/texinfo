@@ -109,6 +109,11 @@ $result_trees{'empty_item_itemx'} = {
             },
             'misc_content' => []
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -132,6 +137,11 @@ $result_trees{'empty_item_itemx'} = {
           'cmdname' => 'itemx',
           'extra' => {
             'missing_argument' => 1
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -178,6 +188,11 @@ $result_trees{'empty_item_itemx'} = {
             },
             'misc_content' => []
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -201,6 +216,11 @@ $result_trees{'empty_item_itemx'} = {
           'cmdname' => 'item',
           'extra' => {
             'missing_argument' => 1
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -246,6 +266,11 @@ $result_trees{'empty_item_itemx'} = {
               'number' => 3
             },
             'misc_content' => []
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
           },
           'parent' => {}
         },

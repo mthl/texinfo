@@ -263,6 +263,11 @@ $result_trees{'simple'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

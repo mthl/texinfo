@@ -86,6 +86,11 @@ $result_trees{'not_closed'} = {
             },
             'original_def_cmdname' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -158,7 +163,7 @@ $result_trees{'not_closed'} = {
                 {}
               ],
               'in_code' => 1,
-              'index_at_command' => 'deffn',
+              'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
               'key' => 'chose',
@@ -268,15 +273,16 @@ $result_trees{'not_closed'} = {
                     },
                     'original_def_cmdname' => 'defvar'
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'def_line'
                 }
               ],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {}
             }
           ],
@@ -284,11 +290,7 @@ $result_trees{'not_closed'} = {
           'type' => 'def_item'
         }
       ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -321,8 +323,10 @@ $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'conten
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
+$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'line_nr'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'not_closed'}{'contents'}[0];
+$result_trees{'not_closed'}{'contents'}[0]{'line_nr'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'not_closed'}{'contents'}[0]{'parent'} = $result_trees{'not_closed'};
 
 $result_texis{'not_closed'} = '@deffn truc bidule machin

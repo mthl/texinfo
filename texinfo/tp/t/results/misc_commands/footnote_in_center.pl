@@ -124,6 +124,11 @@ $result_trees{'footnote_in_center'} = {
                                   {}
                                 ]
                               },
+                              'line_nr' => {
+                                'file_name' => '',
+                                'line_nr' => 6,
+                                'macro' => ''
+                              },
                               'parent' => {}
                             },
                             {

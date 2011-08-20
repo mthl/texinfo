@@ -35,15 +35,16 @@ $result_trees{'end_of_line_end_file'} = {
             'def_command' => 'deffn',
             'original_def_cmdname' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         }
       ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -54,6 +55,7 @@ $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0];
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0];
+$result_trees{'end_of_line_end_file'}{'contents'}[0]{'line_nr'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'parent'} = $result_trees{'end_of_line_end_file'};
 
 $result_texis{'end_of_line_end_file'} = '@deffn category deffn_name arguments @end deffn

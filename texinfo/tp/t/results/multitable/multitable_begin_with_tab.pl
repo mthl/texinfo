@@ -251,6 +251,11 @@ $result_trees{'multitable_begin_with_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

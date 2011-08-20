@@ -164,6 +164,11 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                     },
                     'original_def_cmdname' => 'defun'
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'def_line'
                 },
@@ -236,7 +241,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                         {}
                       ],
                       'in_code' => 1,
-                      'index_at_command' => 'defun',
+                      'index_at_command' => 'defunx',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
                       'key' => 'xf',
@@ -314,11 +319,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
               'extra' => {
                 'end_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -401,6 +402,11 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                     },
                     'misc_content' => []
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 11,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -446,6 +452,11 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                       'region' => {}
                     },
                     'misc_content' => []
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 12,
+                    'macro' => ''
                   },
                   'parent' => {}
                 },
@@ -1033,6 +1044,7 @@ $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[3]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[3];
+$result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[0]{'line_nr'};
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[6];

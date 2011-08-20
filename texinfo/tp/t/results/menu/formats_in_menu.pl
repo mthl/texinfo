@@ -157,6 +157,11 @@ $result_trees{'formats_in_menu'} = {
                               {}
                             ]
                           },
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 6,
+                            'macro' => ''
+                          },
                           'parent' => {}
                         },
                         {

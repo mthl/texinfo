@@ -165,6 +165,11 @@ $result_trees{'punctuation_in_line_commands'} = {
                   {}
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

@@ -448,10 +448,27 @@ menutitle
 
 Text
 '],
+['colon_in_index_entry',
+'@node Top
+
+@synindex vr cp
+
+@cindex a:b
+
+@vtable @emph
+@item %main::value
+@end vtable
+
+@defvr {a:b} {c:d} e f
+@defvrx {x:y} {z:t} n m o
+@end defvr
+
+@printindex cp
+'],
 );
 
 foreach my $test (@test_cases) {
-  $test->[2]->{'test_formats'} = ['info'];
+  push @{$test->[2]->{'test_formats'}}, 'info';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

@@ -101,6 +101,11 @@ $result_trees{'simple_menu'} = {
                           'extra' => {
                             'item_number' => 1
                           },
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 4,
+                            'macro' => ''
+                          },
                           'parent' => {}
                         },
                         {
@@ -263,6 +268,11 @@ $result_trees{'simple_menu'} = {
               'extra' => {
                 'item_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 11,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -391,6 +401,11 @@ $result_trees{'simple_menu'} = {
               ],
               'extra' => {
                 'item_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -761,6 +776,11 @@ $result_trees{'simple_menu'} = {
                               'extra' => {
                                 'item_number' => 1
                               },
+                              'line_nr' => {
+                                'file_name' => '',
+                                'line_nr' => 30,
+                                'macro' => ''
+                              },
                               'parent' => {}
                             },
                             {
@@ -923,6 +943,11 @@ $result_trees{'simple_menu'} = {
                   'extra' => {
                     'item_number' => 1
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 37,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -1051,6 +1076,11 @@ $result_trees{'simple_menu'} = {
                   ],
                   'extra' => {
                     'item_number' => 1
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 43,
+                    'macro' => ''
                   },
                   'parent' => {}
                 },

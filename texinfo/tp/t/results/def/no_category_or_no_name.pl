@@ -32,6 +32,11 @@ $result_trees{'no_category_or_no_name'} = {
             'def_command' => 'deffn',
             'original_def_cmdname' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -96,11 +101,7 @@ $result_trees{'no_category_or_no_name'} = {
       'extra' => {
         'end_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -160,6 +161,11 @@ $result_trees{'no_category_or_no_name'} = {
               'category' => {}
             },
             'original_def_cmdname' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -225,11 +231,7 @@ $result_trees{'no_category_or_no_name'} = {
       'extra' => {
         'end_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -329,6 +331,11 @@ $result_trees{'no_category_or_no_name'} = {
               'number' => 1
             },
             'original_def_cmdname' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -471,11 +478,7 @@ $result_trees{'no_category_or_no_name'} = {
       'extra' => {
         'end_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -496,6 +499,7 @@ $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'args'}[0]
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'no_category_or_no_name'}{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2];
+$result_trees{'no_category_or_no_name'}{'contents'}[0]{'line_nr'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'};
 $result_trees{'no_category_or_no_name'}{'contents'}[1]{'parent'} = $result_trees{'no_category_or_no_name'};
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'no_category_or_no_name'}{'contents'}[2];
@@ -519,6 +523,7 @@ $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[2]{'args'}[0]
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'no_category_or_no_name'}{'contents'}[2];
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[2];
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[2];
+$result_trees{'no_category_or_no_name'}{'contents'}[2]{'line_nr'} = $result_trees{'no_category_or_no_name'}{'contents'}[2]{'contents'}[0]{'line_nr'};
 $result_trees{'no_category_or_no_name'}{'contents'}[2]{'parent'} = $result_trees{'no_category_or_no_name'};
 $result_trees{'no_category_or_no_name'}{'contents'}[3]{'parent'} = $result_trees{'no_category_or_no_name'};
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'no_category_or_no_name'}{'contents'}[4];
@@ -551,6 +556,7 @@ $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[4]{'args'}[0]
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[4]{'extra'}{'command'} = $result_trees{'no_category_or_no_name'}{'contents'}[4];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[4];
+$result_trees{'no_category_or_no_name'}{'contents'}[4]{'line_nr'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[0]{'line_nr'};
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'parent'} = $result_trees{'no_category_or_no_name'};
 
 $result_texis{'no_category_or_no_name'} = '@deffn

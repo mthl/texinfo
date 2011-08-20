@@ -70,6 +70,11 @@ $result_trees{'text_between_item_itemx'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -121,6 +126,11 @@ $result_trees{'text_between_item_itemx'} = {
             'misc_content' => [
               {}
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
           },
           'parent' => {}
         },

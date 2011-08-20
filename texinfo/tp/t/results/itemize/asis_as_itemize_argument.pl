@@ -63,6 +63,11 @@ $result_trees{'asis_as_itemize_argument'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

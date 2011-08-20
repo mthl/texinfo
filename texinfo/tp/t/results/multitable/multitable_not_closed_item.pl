@@ -83,6 +83,11 @@ $result_trees{'multitable_not_closed_item'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

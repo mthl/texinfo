@@ -86,6 +86,11 @@ $result_trees{'itemize_in_example'} = {
               'extra' => {
                 'item_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -213,6 +218,11 @@ $result_trees{'itemize_in_example'} = {
               'extra' => {
                 'item_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 9,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -338,6 +348,11 @@ $result_trees{'itemize_in_example'} = {
               ],
               'extra' => {
                 'item_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -475,6 +490,11 @@ $result_trees{'itemize_in_example'} = {
               ],
               'extra' => {
                 'item_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => ''
               },
               'parent' => {}
             },

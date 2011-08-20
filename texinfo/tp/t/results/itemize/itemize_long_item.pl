@@ -62,6 +62,11 @@ $result_trees{'itemize_long_item'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -165,6 +170,11 @@ $result_trees{'itemize_long_item'} = {
           'extra' => {
             'item_number' => 2
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -199,6 +209,11 @@ $result_trees{'itemize_long_item'} = {
           ],
           'extra' => {
             'item_number' => 3
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -298,6 +313,11 @@ $result_trees{'itemize_long_item'} = {
           'extra' => {
             'item_number' => 4
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -396,6 +416,11 @@ $result_trees{'itemize_long_item'} = {
           'extra' => {
             'item_number' => 5
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 17,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -493,6 +518,11 @@ $result_trees{'itemize_long_item'} = {
           ],
           'extra' => {
             'item_number' => 6
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 22,
+            'macro' => ''
           },
           'parent' => {}
         },

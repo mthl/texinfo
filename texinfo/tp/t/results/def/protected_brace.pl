@@ -79,6 +79,11 @@ $result_trees{'protected_brace'} = {
             },
             'original_def_cmdname' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -126,11 +131,7 @@ $result_trees{'protected_brace'} = {
       'extra' => {
         'end_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -156,6 +157,7 @@ $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'paren
 $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'protected_brace'}{'contents'}[0];
 $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'protected_brace'}{'contents'}[0];
 $result_trees{'protected_brace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[1];
+$result_trees{'protected_brace'}{'contents'}[0]{'line_nr'} = $result_trees{'protected_brace'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'protected_brace'}{'contents'}[0]{'parent'} = $result_trees{'protected_brace'};
 
 $result_texis{'protected_brace'} = '@deffn c @{

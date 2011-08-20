@@ -116,6 +116,11 @@ $result_trees{'def_in_style_command'} = {
             'invalid_nesting' => 1,
             'original_def_cmdname' => 'defun'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -181,11 +186,7 @@ $result_trees{'def_in_style_command'} = {
         'end_command' => {},
         'invalid_nesting' => 1
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -215,6 +216,7 @@ $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'def_in_style_command'}{'contents'}[1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2];
+$result_trees{'def_in_style_command'}{'contents'}[1]{'line_nr'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'def_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'def_in_style_command'};
 
 $result_texis{'def_in_style_command'} = '@code{

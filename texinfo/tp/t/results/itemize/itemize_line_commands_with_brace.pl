@@ -71,6 +71,11 @@ $result_trees{'itemize_line_commands_with_brace'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -199,6 +204,11 @@ $result_trees{'itemize_line_commands_with_brace'} = {
           ],
           'extra' => {
             'item_number' => 1
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
           },
           'parent' => {}
         },

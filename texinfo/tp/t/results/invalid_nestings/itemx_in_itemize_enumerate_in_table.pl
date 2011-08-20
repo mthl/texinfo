@@ -70,6 +70,11 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
               {}
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

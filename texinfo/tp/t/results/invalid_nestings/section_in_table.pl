@@ -72,6 +72,11 @@ $result_trees{'section_in_table'} = {
                   {}
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

@@ -2396,7 +2396,8 @@ sub _end_line($$$)
         } else {
           $index_contents = [$index_entry];
         }
-        _enter_index_entry($self, $current->{'parent'}->{'extra'}->{'def_command'},
+        _enter_index_entry($self, 
+          $current->{'parent'}->{'extra'}->{'original_def_cmdname'},
           $current->{'parent'}, $index_contents, $line_nr);
       } else {
         $self->line_warn (sprintf($self->__('Missing name for @%s'), 
@@ -3841,8 +3842,8 @@ sub _parse_texi($;$)
               } else {
                 $self->line_error (sprintf($self->__("\@%s outside of table or list"), $command), $line_nr);
               }
+              $misc->{'line_nr'} = $line_nr if (defined($misc));
             } else {
-
               $misc = { 'cmdname' => $command, 'parent' => $current,
                   'line_nr' => $line_nr };
               push @{$current->{'contents'}}, $misc;
@@ -4055,6 +4056,7 @@ sub _parse_texi($;$)
               push @{$current->{'contents'}}, { 
                                                 'type' => 'def_line',
                                                 'parent' => $current,
+                                                'line_nr' => $line_nr,
                                                 'extra' => 
                                                  {'def_command' => $command,
                                                   'original_def_cmdname' => $command}

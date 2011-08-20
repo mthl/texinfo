@@ -69,6 +69,11 @@ $result_trees{'accent_argument'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -193,6 +198,11 @@ $result_trees{'accent_argument'} = {
           ],
           'extra' => {
             'item_number' => 1
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
           },
           'parent' => {}
         },

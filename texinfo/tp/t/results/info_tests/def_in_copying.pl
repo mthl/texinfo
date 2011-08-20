@@ -265,6 +265,11 @@ deffnx lines
                     },
                     'original_def_cmdname' => 'deffn'
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 13,
+                    'macro' => 'mymacro'
+                  },
                   'parent' => {},
                   'type' => 'def_line'
                 },
@@ -337,7 +342,7 @@ deffnx lines
                         {}
                       ],
                       'in_code' => 1,
-                      'index_at_command' => 'deffn',
+                      'index_at_command' => 'deffnx',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
                       'key' => 'bbx',
@@ -415,11 +420,7 @@ deffnx lines
               'extra' => {
                 'end_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => 'mymacro'
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -570,6 +571,11 @@ deffnx lines
                 },
                 'original_def_cmdname' => 'deffn'
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => 'mymacro'
+              },
               'parent' => {},
               'type' => 'def_line'
             },
@@ -642,7 +648,7 @@ deffnx lines
                     {}
                   ],
                   'in_code' => 1,
-                  'index_at_command' => 'deffn',
+                  'index_at_command' => 'deffnx',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'bbx',
@@ -720,11 +726,7 @@ deffnx lines
           'extra' => {
             'end_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 17,
-            'macro' => 'mymacro'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -849,6 +851,7 @@ $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'co
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'contents'}[3]{'extra'}{'command'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'contents'}[3];
+$result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'line_nr'};
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1];
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[3];
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'args'}[0];
@@ -893,6 +896,7 @@ $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4]{'contents'}[3]{'ar
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4]{'contents'}[3]{'extra'}{'command'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4];
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4];
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4]{'contents'}[3];
+$result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4]{'line_nr'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'line_nr'};
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[2];
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'def_in_copying'}{'contents'}[2];
 $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'def_in_copying'}{'contents'}[2]{'contents'}[6];

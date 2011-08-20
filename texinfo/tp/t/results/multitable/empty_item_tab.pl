@@ -90,6 +90,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -116,6 +121,11 @@ $result_trees{'empty_item_tab'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
               },
               'parent' => {}
             }
@@ -154,6 +164,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -180,6 +195,11 @@ $result_trees{'empty_item_tab'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
               },
               'parent' => {}
             }
@@ -329,6 +349,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 10,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -355,6 +380,11 @@ $result_trees{'empty_item_tab'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
               },
               'parent' => {}
             }
@@ -399,6 +429,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -435,6 +470,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -453,6 +493,7 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 2
               },
+              'line_nr' => {},
               'parent' => {}
             }
           ],
@@ -490,6 +531,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 16,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -513,6 +559,11 @@ $result_trees{'empty_item_tab'} = {
               ],
               'extra' => {
                 'cell_number' => 2
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => ''
               },
               'parent' => {}
             }
@@ -540,6 +591,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 19,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -558,6 +614,7 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 2
               },
+              'line_nr' => {},
               'parent' => {}
             }
           ],
@@ -585,6 +642,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -608,6 +670,11 @@ $result_trees{'empty_item_tab'} = {
               ],
               'extra' => {
                 'cell_number' => 2
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 21,
+                'macro' => ''
               },
               'parent' => {}
             }
@@ -645,6 +712,11 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 23,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -673,6 +745,7 @@ $result_trees{'empty_item_tab'} = {
               'extra' => {
                 'cell_number' => 2
               },
+              'line_nr' => {},
               'parent' => {}
             }
           ],
@@ -806,6 +879,7 @@ $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'co
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
+$result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[4]{'contents'}[0];
@@ -823,6 +897,7 @@ $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'co
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
+$result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'line_nr'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[6]{'contents'}[0];
@@ -842,6 +917,7 @@ $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'co
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'contents'}[1];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1];
+$result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'line_nr'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'empty_item_tab'}{'contents'}[2];
 $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_item_tab'}{'contents'}[2]{'contents'}[8];

@@ -491,6 +491,7 @@ foreach my $def_command(keys %def_map) {
   $misc_commands{$def_command.'x'} = 'line';
   $def_commands{$def_command} = 1;
   $def_commands{$def_command.'x'} = 1;
+  $command_index_prefix{$def_command.'x'} = $command_index_prefix{$def_command};
 }
 
 #print STDERR "".Data::Dumper->Dump([\%def_aliases]);

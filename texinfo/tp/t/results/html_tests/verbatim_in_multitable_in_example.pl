@@ -107,6 +107,11 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                   'extra' => {
                     'cell_number' => 1
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -134,6 +139,11 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                   ],
                   'extra' => {
                     'cell_number' => 2
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 4,
+                    'macro' => ''
                   },
                   'parent' => {}
                 }
@@ -197,6 +207,11 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                   'extra' => {
                     'cell_number' => 1
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -252,6 +267,11 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                   ],
                   'extra' => {
                     'cell_number' => 2
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 9,
+                    'macro' => ''
                   },
                   'parent' => {}
                 }

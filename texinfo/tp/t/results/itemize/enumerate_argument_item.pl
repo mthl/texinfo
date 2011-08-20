@@ -62,6 +62,11 @@ $result_trees{'enumerate_argument_item'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -89,6 +94,11 @@ $result_trees{'enumerate_argument_item'} = {
           ],
           'extra' => {
             'item_number' => 2
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -216,6 +226,11 @@ $result_trees{'enumerate_argument_item'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -243,6 +258,11 @@ $result_trees{'enumerate_argument_item'} = {
           ],
           'extra' => {
             'item_number' => 2
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -375,6 +395,11 @@ $result_trees{'enumerate_argument_item'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -402,6 +427,11 @@ $result_trees{'enumerate_argument_item'} = {
           ],
           'extra' => {
             'item_number' => 2
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
           },
           'parent' => {}
         },

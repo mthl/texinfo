@@ -135,6 +135,7 @@ $result_trees{'defx_after_preformatted_with_text'} = {
                 },
                 'original_def_cmdname' => 'deffn'
               },
+              'line_nr' => {},
               'parent' => {},
               'type' => 'def_line'
             },
@@ -242,7 +243,7 @@ $result_trees{'defx_after_preformatted_with_text'} = {
                     {}
                   ],
                   'in_code' => 1,
-                  'index_at_command' => 'deffn',
+                  'index_at_command' => 'deffnx',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'bidulr',
@@ -375,6 +376,7 @@ $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]
 $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1];
 $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'defx_after_preformatted_with_text'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0];

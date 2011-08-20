@@ -94,6 +94,11 @@ $result_trees{'formats_not_closed_in_example'} = {
                   {}
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -176,6 +181,11 @@ $result_trees{'formats_not_closed_in_example'} = {
                       'extra' => {
                         'item_number' => 1
                       },
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 10,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     },
                     {
@@ -209,6 +219,11 @@ $result_trees{'formats_not_closed_in_example'} = {
                       ],
                       'extra' => {
                         'item_number' => 2
+                      },
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 11,
+                        'macro' => ''
                       },
                       'parent' => {}
                     }

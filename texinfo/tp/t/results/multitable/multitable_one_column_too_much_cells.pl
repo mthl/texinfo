@@ -123,6 +123,11 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -159,6 +164,11 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
               },
               'parent' => {}
             }
@@ -251,6 +261,11 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
               'extra' => {
                 'cell_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -305,6 +320,11 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
               ],
               'extra' => {
                 'cell_number' => 1
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
               },
               'parent' => {}
             }

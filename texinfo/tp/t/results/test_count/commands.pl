@@ -358,6 +358,11 @@ $result_trees{'commands'} = {
             },
             'misc_content' => []
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

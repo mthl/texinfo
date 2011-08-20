@@ -62,6 +62,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -165,6 +170,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           'extra' => {
             'item_number' => 2
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -199,6 +209,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           ],
           'extra' => {
             'item_number' => 3
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -378,6 +393,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           'extra' => {
             'item_number' => 4
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -475,6 +495,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           ],
           'extra' => {
             'item_number' => 5
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 21,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -583,6 +608,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 29,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -686,6 +716,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           'extra' => {
             'item_number' => 2
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 30,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -720,6 +755,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           ],
           'extra' => {
             'item_number' => 3
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 36,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -819,6 +859,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           'extra' => {
             'item_number' => 4
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 39,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -917,6 +962,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           'extra' => {
             'item_number' => 5
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 44,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1014,6 +1064,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           ],
           'extra' => {
             'item_number' => 6
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 49,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -1155,6 +1210,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           ],
           'extra' => {
             'item_number' => 1
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 58,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -1362,6 +1422,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                   'extra' => {
                     'item_number' => 1
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 69,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -1435,6 +1500,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           ],
           'extra' => {
             'item_number' => 1
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 66,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -1568,6 +1638,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           'extra' => {
             'item_number' => 1
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 76,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1595,6 +1670,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           ],
           'extra' => {
             'item_number' => 2
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 77,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -1628,6 +1708,11 @@ $result_trees{'itemize_and_empty_lines'} = {
           ],
           'extra' => {
             'item_number' => 3
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 78,
+            'macro' => ''
           },
           'parent' => {}
         },

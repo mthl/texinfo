@@ -256,6 +256,11 @@ $result_trees{'commands_in_flushright'} = {
               'extra' => {
                 'item_number' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -283,6 +288,11 @@ $result_trees{'commands_in_flushright'} = {
               ],
               'extra' => {
                 'item_number' => 2
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 14,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -407,6 +417,11 @@ $result_trees{'commands_in_flushright'} = {
                   {}
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -441,6 +456,11 @@ $result_trees{'commands_in_flushright'} = {
                 'misc_content' => [
                   {}
                 ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 19,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -628,6 +648,11 @@ $result_trees{'commands_in_flushright'} = {
                   'extra' => {
                     'cell_number' => 1
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 26,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -656,6 +681,7 @@ $result_trees{'commands_in_flushright'} = {
                   'extra' => {
                     'cell_number' => 2
                   },
+                  'line_nr' => {},
                   'parent' => {}
                 }
               ],
@@ -710,6 +736,11 @@ $result_trees{'commands_in_flushright'} = {
                   'extra' => {
                     'cell_number' => 1
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 27,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -744,6 +775,11 @@ $result_trees{'commands_in_flushright'} = {
                   ],
                   'extra' => {
                     'cell_number' => 2
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 30,
+                    'macro' => ''
                   },
                   'parent' => {}
                 }
@@ -1499,6 +1535,7 @@ $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[1];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[1];
+$result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'contents'}[0];
