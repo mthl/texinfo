@@ -374,8 +374,9 @@ sub _printindex($$)
     $entry_text .= $self->convert_line($entry_tree, {'indent' => 0});
     next if ($entry_text !~ /\S/);
     if ($entry_text =~ /:/) {
-      $self->line_warn (sprintf($self->__("Index entry in \@%s with a : will lead to invalid Info"),
-                                 $entry->{'index_at_command'}), 
+      $self->line_warn (sprintf($self->__("Index entry in \@%s with : produces invalid Info: %s"),
+                                 $entry->{'index_at_command'},
+          Texinfo::Convert::Texinfo::convert($entry_tree)), 
                         $entry->{'command'}->{'line_nr'});
     }
 

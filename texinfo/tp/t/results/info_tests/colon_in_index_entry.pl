@@ -887,36 +887,36 @@ End Tag Table
 $result_converted_errors{'info'}->{'colon_in_index_entry'} = [
   {
     'file_name' => '',
-    'error_line' => ':8: warning: Index entry in @vtable with a : will lead to invalid Info
+    'error_line' => ':8: warning: Index entry in @vtable with : produces invalid Info: %main::value
 ',
-    'text' => 'Index entry in @vtable with a : will lead to invalid Info',
+    'text' => 'Index entry in @vtable with : produces invalid Info: %main::value',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 8
   },
   {
     'file_name' => '',
-    'error_line' => ':5: warning: Index entry in @cindex with a : will lead to invalid Info
+    'error_line' => ':5: warning: Index entry in @cindex with : produces invalid Info: a:b
 ',
-    'text' => 'Index entry in @cindex with a : will lead to invalid Info',
+    'text' => 'Index entry in @cindex with : produces invalid Info: a:b',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 5
   },
   {
     'file_name' => '',
-    'error_line' => ':11: warning: Index entry in @defvr with a : will lead to invalid Info
+    'error_line' => ':11: warning: Index entry in @defvr with : produces invalid Info: c:d
 ',
-    'text' => 'Index entry in @defvr with a : will lead to invalid Info',
+    'text' => 'Index entry in @defvr with : produces invalid Info: c:d',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 11
   },
   {
     'file_name' => '',
-    'error_line' => ':12: warning: Index entry in @defvrx with a : will lead to invalid Info
+    'error_line' => ':12: warning: Index entry in @defvrx with : produces invalid Info: z:t
 ',
-    'text' => 'Index entry in @defvrx with a : will lead to invalid Info',
+    'text' => 'Index entry in @defvrx with : produces invalid Info: z:t',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 12
