@@ -36,6 +36,20 @@ Getopt::Long::Configure("gnu_getopt");
 
 use Texinfo::Convert::Texinfo;
 
+# defaults for options relevant in the main program, not undef, and also
+# defaults for all the converters.
+# Other relevant options (undef) are NO_WARN FORCE OUTFILE
+# Others are set in the converters.
+my $converter_default_options = { 'ERROR_LIMIT' => 100,
+                                  'TEXI2DVI' => 'texi2dvi' };
+
+# this associates the command line options to the arrays set during
+# command line parsing.
+my @css_files = ();
+my @css_refs = ();
+my $cmdline_options = { 'CSS_FILES' => \@css_files,
+                        'CSS_REFS' => \@css_refs };
+
 # determine the path separators
 my $path_separator = $Config{'path_sep'};
 $path_separator = ':' if (!defined($path_separator));
@@ -327,19 +341,6 @@ my $default_expanded_format = [ $format ];
 my @conf_dirs = ();
 my @include_dirs = ();
 my @prepend_dirs = ();
-my @css_files = ();
-my @css_refs = ();
-
-# defaults for options relevant in the main program, not undef, and also
-# defaults for all the converters.
-# Other relevant options (undef) are NO_WARN FORCE OUTFILE
-# Others are set in the converters.
-my $converter_default_options = { 'ERROR_LIMIT' => 100 };
-
-# this associates the command line options to the arrays set during
-# command line parsing.
-my $cmdline_options = { 'CSS_FILES' => \@css_files,
-                        'CSS_REFS' => \@css_refs };
 
 # options for all the files
 my $parser_default_options = {'expanded_formats' => [], 'values' => {},
@@ -362,12 +363,25 @@ sub set_expansion($$) {
   }
 }
 
+my $format_from_command_line = 0;
 sub set_format($)
 {
   my $format = shift;
   $default_expanded_format = [$format];
+  $format_from_command_line = 1;
   return $format;
 }
+
+my $call_texi2dvi = 0;
+sub set_texi2dvi_format($)
+{
+  my $format = shift;
+  $call_texi2dvi = 1;
+  push @texi2dvi_args, '--'.$format; 
+  $format_from_command_line = 1;
+  return $format;
+}
+
 
 sub document_warn ($) {
   return if (get_conf('NO_WARN'));
@@ -583,9 +597,9 @@ my $result_options = Getopt::Long::GetOptions (
  'info' => sub {$format = set_format($_[0]);},
  'docbook' => sub {$format = set_format($_[0]);},
  'xml' => sub {$format = set_format($_[0]);},
- 'dvi' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
- 'ps' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
- 'pdf' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
+ 'dvi' => sub {$format = set_texi2dvi_format($_[0]);},
+ 'ps' => sub {$format = set_texi2dvi_format($_[0]);},
+ 'pdf' => sub {$format = set_texi2dvi_format($_[0]);},
  'debug=i' => sub {set_from_cmdline('DEBUG', $_[1]); 
                    $parser_default_options->{'DEBUG'} = $_[1];
                    push @texi2dvi_args, '--'.$_[0]; },
@@ -612,12 +626,47 @@ my %formats_table = (
              'simple_menu' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
+  'pdf' => {
+             'texi2dvi_format' => 1,
+           },
+  'ps' =>  {
+             'texi2dvi_format' => 1,
+           },
+  'dvi' => {
+             'texi2dvi_format' => 1,
+           },
   'debugcount' => {
              'nodes_tree' => 1,
              'floats' => 1,
              'converter' => sub{DebugTexinfo::DebugCount->converter(@_)},
            },
 );
+
+if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 
+    and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '') {
+  if (!$formats_table{$ENV{'TEXINFO_OUTPUT_FORMAT'}}) {
+    warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
+                 $real_command_name, $ENV{'TEXINFO_OUTPUT_FORMAT'});
+  } else {
+    if ($formats_table{$ENV{'TEXINFO_OUTPUT_FORMAT'}}->{'texi2dvi_format'}) {
+      $format = set_texi2dvi_format($ENV{'TEXINFO_OUTPUT_FORMAT'});
+    } else {
+      $format = set_format($ENV{'TEXINFO_OUTPUT_FORMAT'});
+    }
+  }
+}
+
+if ($call_texi2dvi) {
+  if (defined(get_conf('OUT')) and @ARGV > 1) {
+    die sprintf(__('when generating %s, only one input FILE may be specified with -o'),
+                $format);
+  }
+  if (get_conf('DEBUG') or get_conf('VERBOSE')) {
+    print STDERR "".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV)) 
+       ."\n";
+  }
+  exec { get_conf('TEXI2DVI') } (@texi2dvi_args,  @ARGV);
+}
 
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
   document_warn (sprintf(__('Ignoring splitting for format %s'), $format));
