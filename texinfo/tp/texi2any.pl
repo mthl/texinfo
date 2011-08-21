@@ -491,7 +491,7 @@ $makeinfo_help .= sprintf(__("General options:
       --no-validate           suppress node cross-reference validation.
       --no-warn               suppress warnings (but not errors).
       --conf-dir=DIR          search also for initialization files in DIR.
-      --init-file=FILE        load FILE to modify the default behaviour.
+      --init-file=FILE        load FILE to modify the default behavior.
       --set-init-variable VAR=VAL  set configuration variable VAR to VAL.
   -v, --verbose               explain what is being done.
       --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
@@ -499,25 +499,28 @@ $makeinfo_help .= sprintf(__("General options:
 $makeinfo_help .= __("Output format selection (default is to produce Info):
       --docbook               output Docbook XML rather than Info.
       --html                  output HTML rather than Info.
+      --plaintext             output plain text rather than Info.
       --xml                   output Texinfo XML rather than Info.
-      --plaintext             output plain text rather than Info.\n")
+      --dvi, --ps, --pdf      call texi2dvi to generate specified output.\n")
+
 ."\n";
 $makeinfo_help .= __("General output options:
   -E, --macro-expand=FILE     output macro-expanded source to FILE,
                                 ignoring any \@setfilename.
       --no-headers            suppress node separators, Node: lines, and menus
                                 from Info output (thus producing plain text)
-                                or from HTML (thus producing shorter output);
-                                also, write to standard output by default if
-                                producing Info.
+                                or from HTML (thus producing shorter output).
+                                Also, if producing Info, write to
+                                standard output by default 
       --split=SPLIT           split at SPLIT, where SPLIT may be chapter, 
                                 section or node if output supports splitting.
       --no-split              suppress the splitting of Info or HTML output,
                                 generate only one output file.
-      --number-sections       output chapter and sectioning numbers.
+      --[no-]number-sections  output chapter and sectioning numbers;
+                                default is on.
   -o, --output=FILE           output to FILE (or directory if split).
                                 If not split and FILE is a directory, put the
-                                resulting files in FILE.\n")
+                                resulting files under FILE.\n")
 ."\n";
 $makeinfo_help .= sprintf(__("Options for Info and plain text:
       --disable-encoding      do not output accented and special characters
@@ -544,18 +547,14 @@ $makeinfo_help .= __("Options for HTML:
       --transliterate-file-names
                               produce file names in ASCII transliteration.
       --node-files            produce redirection files for nodes and 
-                                anchors. Default is set only if split.\n")
+                                anchors; default is set only if split.\n")
 ."\n";
 $makeinfo_help .= __("Options for XML and Docbook:
       --output-indent=VAL     does nothing, retained for compatibility.\n")
 ."\n";
-# This is ignored
-#Options for XML and Docbook:
-#      --output-indent=VAL     indent XML elements by VAL spaces (default 2).
-#                                If VAL is 0, ignorable whitespace is dropped.
-# Always set and ignored
-#      --commands-in-node-names  allow \@ commands in node names.
-#
+$makeinfo_help .= __("Options for DVI/PS/PDF:
+      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n")
+."\n";
 $makeinfo_help .= __("Input file options:
       --commands-in-node-names  does nothing, retained for compatibility.
   -D VAR                        define the variable VAR, as with \@set.
