@@ -870,6 +870,42 @@ $section_in_unnumbered_text
 ',{'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals', 
    'test_split' => 'node'}, {'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
 ],
+['non_automatic_top_node_up_url',
+'@node Top, first, (dir), (dir)
+@top internal top node up
+
+@menu
+* first::
+@end menu
+
+@node first, , Top, (dir)
+',{'test_split' => 'node'},{'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
+],
+['non_automatic_internal_top_node_up',
+'@node Top, first, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
+@top internal top node up
+
+@menu
+* first::
+@end menu
+
+@node first, , Top, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
+',{'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals',
+   'test_split' => 'node'}
+],
+['non_automatic_top_node_up_and_url',
+'@node Top, first, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
+@top internal top node up
+
+@menu
+* first::
+@end menu
+
+@node first, , Top, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
+',{'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals',
+  'test_split' => 'node'},
+  {'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
+],
 );
 
 my @test_cases = (

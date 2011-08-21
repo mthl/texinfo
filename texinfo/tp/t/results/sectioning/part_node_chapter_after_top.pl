@@ -943,7 +943,8 @@ $result_elements{'part_node_chapter_after_top'} = [
               {
                 'text' => 'dir'
               }
-            ]
+            ],
+            'top_node_up' => {}
           },
           'type' => 'external_node'
         },
@@ -976,6 +977,7 @@ $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'directions'}{'Next'
 $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'directions'}{'NodeBack'} = $result_elements{'part_node_chapter_after_top'}[0];
 $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'part_node_chapter_after_top'}[0];
 $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'part_node_chapter_after_top'}[0];
+$result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_prev'}{'menu_up'};
 $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'part_node_chapter_after_top'}[0];
 $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'node'} = $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_prev'}{'menu_up'};
 $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'section'} = $result_elements{'part_node_chapter_after_top'}[0]{'extra'}{'element_command'};

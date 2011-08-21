@@ -827,7 +827,8 @@ $result_elements{'double_part'} = [
               {
                 'text' => 'dir'
               }
-            ]
+            ],
+            'top_node_up' => {}
           },
           'type' => 'external_node'
         },
@@ -858,6 +859,7 @@ $result_elements{'double_part'}[0]{'extra'}{'directions'}{'Forward'} = $result_e
 $result_elements{'double_part'}[0]{'extra'}{'directions'}{'Next'} = $result_elements{'double_part'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'double_part'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'double_part'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'double_part'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'double_part'}[0]{'extra'}{'directions'}{'FastForward'};
+$result_elements{'double_part'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'double_part'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_up'};
 $result_elements{'double_part'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'double_part'}[0];
 $result_elements{'double_part'}[0]{'extra'}{'node'} = $result_elements{'double_part'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_up'};
 $result_elements{'double_part'}[0]{'extra'}{'section'} = $result_elements{'double_part'}[0]{'extra'}{'element_command'};

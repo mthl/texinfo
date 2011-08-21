@@ -586,7 +586,8 @@ $result_elements{'node_up_external_node'} = [
               {
                 'text' => 'dir'
               }
-            ]
+            ],
+            'top_node_up' => {}
           },
           'type' => 'external_node'
         },
@@ -608,6 +609,7 @@ $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'
 $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'};
 $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'NodeNext'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'};
+$result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'NodeUp'}{'extra'}{'top_node_up'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'node_up_external_node'}[0];
 $result_elements{'node_up_external_node'}[0]{'extra'}{'element_command'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};
 $result_elements{'node_up_external_node'}[0]{'extra'}{'node'} = $result_elements{'node_up_external_node'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'};

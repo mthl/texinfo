@@ -338,8 +338,17 @@ sub nodes_tree ($)
   my $self = shift;
   return undef unless ($self->{'nodes'} and @{$self->{'nodes'}});
   my $top_node;
+  my $top_node_up;
   foreach my $node (@{$self->{'nodes'}}) {
-    $top_node = $node if ($node->{'extra'}->{'normalized'} eq 'Top');
+    if ($node->{'extra'}->{'normalized'} eq 'Top') {
+      $top_node = $node;
+      my $top_node_up_content_tree = Texinfo::Parser::parse_texi_line($self, 
+                                                    $self->{'TOP_NODE_UP'});
+      $top_node_up
+        = {'type' => 'top_node_up',
+           'extra' => Texinfo::Parser::_parse_node_manual(
+                {'contents' => $top_node_up_content_tree->{'contents'}})};
+    }
     if ($node->{'menus'}) {
       if ($self->{'SHOW_MENU'} and @{$node->{'menus'}} > 1) {
         foreach my $menu (@{$node->{'menus'}}[1 .. $#{$node->{'menus'}}]) {
@@ -445,12 +454,7 @@ sub nodes_tree ($)
         }
       } else {
         # Special case for Top node.
-        my $top_node_content_tree = Texinfo::Parser::parse_texi_line($self, 
-                                                    $self->{'TOP_NODE_UP'});
-        $node->{'node_up'}
-          = {'extra' => Texinfo::Parser::_parse_node_manual(
-                    {'contents' => $top_node_content_tree->{'contents'}})};
-        $node->{'node_up'}->{'type'} = 'top_node_up';
+        $node->{'node_up'} = $top_node_up;
         $node->{'node_up'}->{'extra'}->{'top_node_up'} = $node;
         if ($node->{'menu_child'}) {
           $node->{'node_next'} = $node->{'menu_child'};
@@ -468,6 +472,19 @@ sub nodes_tree ($)
         # external node
         if ($node_direction->{'manual_content'}) {
           $node->{'node_'.$direction} = { 'extra' => $node_direction };
+          # set top_node_up for up of Top if it is the same as top_node_up
+          if ($node->{'extra'}->{'normalized'} eq 'Top'
+              and $direction eq 'up'
+              and $top_node_up->{'extra'}->{'manual_content'}
+              and ((!defined($node_direction->{'normalized'})
+                    and !defined($top_node_up->{'extra'}->{'normalized'}))
+                   or $node_direction->{'normalized'} eq $top_node_up->{'extra'}->{'normalized'})
+              and (Texinfo::Convert::NodeNameNormalization::normalize_node(
+                     {'contents' => $node_direction->{'manual_content'}})
+                  eq Texinfo::Convert::NodeNameNormalization::normalize_node(
+                     {'contents' => $top_node_up->{'extra'}->{'manual_content'}}))) {
+            $node->{'node_'.$direction}->{'extra'}->{'top_node_up'} = $node;
+          }
         } else {
           if ($self->{'labels'}->{$node_direction->{'normalized'}}) {
             $node->{'node_'.$direction} 
@@ -475,6 +492,17 @@ sub nodes_tree ($)
           } else {
             if ($self->{'novalidate'}) {
               $node->{'node_'.$direction} = { 'extra' => $node_direction };
+            # special case of up for top an internal node and the same
+            # as TOP_NODE_UP.  This is not the default case, since in the
+            # default case TOP_NODE_UP is an external node.
+            } elsif ($node->{'extra'}->{'normalized'} eq 'Top' 
+                     and $direction eq 'up'
+                     and !$top_node_up->{'extra'}->{'manual_content'}
+                     and $node_direction->{'normalized'} eq $top_node_up->{'extra'}->{'normalized'}) {
+              $node->{'node_'.$direction} = { 'type' => 'top_node_up',
+                                              'extra' => $node_direction };
+              $node->{'node_'.$direction}->{'extra'}->{'top_node_up'} 
+                = $node;
             } else {
               $self->line_error (sprintf($self->
                                   __("%s reference to nonexistent `%s'"),
@@ -672,30 +700,25 @@ sub split_pages ($$)
   return \@pages;
 }
 
-sub _new_external_node($;$$)
-{
-  my $node_content = shift;
-  my $manual_content = shift;
-
-  my $external_node = { 'type' => 'external_node',
-                'extra' => {'manual_content' => $manual_content}};
-  
-  if ($node_content) {
-    $external_node->{'extra'}->{'node_content'} = $node_content;
-    $external_node->{'extra'}->{'normalized'} = 
-       Texinfo::Convert::NodeNameNormalization::normalize_node(
-          {'contents' => $node_content}); 
-  }
-  return $external_node;
-}
-
 # FIXME node not existing
 sub _node_element($)
 {
   my $node = shift;
   if ($node->{'extra'} and $node->{'extra'}->{'manual_content'}) {
-    return _new_external_node($node->{'extra'}->{'node_content'},
-                              $node->{'extra'}->{'manual_content'});
+    my $external_node = { 'type' => 'external_node',
+      'extra' => {'manual_content' => $node->{'extra'}->{'manual_content'}}};
+  
+    if ($node->{'extra'}->{'node_content'}) {
+      $external_node->{'extra'}->{'node_content'} 
+        = $node->{'extra'}->{'node_content'};
+      $external_node->{'extra'}->{'normalized'} = 
+        Texinfo::Convert::NodeNameNormalization::normalize_node(
+          {'contents' => $node->{'extra'}->{'node_content'}}); 
+    }
+    $external_node->{'extra'}->{'top_node_up'} 
+      = $node->{'extra'}->{'top_node_up'}
+      if (exists($node->{'extra'}->{'top_node_up'}));
+    return $external_node;
   } elsif ($node->{'cmdname'} and $node->{'cmdname'} eq 'node') {
     return $node->{'parent'};
   } elsif ($node->{'type'} and $node->{'type'} eq 'top_node_up') {

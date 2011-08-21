@@ -1,3 +1,6 @@
+./texi2any.pl --html c.texi 
+doesn't lead to html output being put in the directory named c!
+
 Mail Karl about   Xref Command Expansion
 
  Quotation mark commands are likewise replaced by their Unicode values
