@@ -494,7 +494,7 @@ sub nodes_tree ($)
               $node->{'node_'.$direction} = { 'extra' => $node_direction };
             # special case of up for top an internal node and the same
             # as TOP_NODE_UP.  This is not the default case, since in the
-            # default case TOP_NODE_UP is an external node.
+            # default case TOP_NODE_UP is an external node.
             } elsif ($node->{'extra'}->{'normalized'} eq 'Top' 
                      and $direction eq 'up'
                      and !$top_node_up->{'extra'}->{'manual_content'}

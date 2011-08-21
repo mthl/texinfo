@@ -4504,7 +4504,7 @@ sub _parse_texi($;$)
 
   if (@{$self->{'context_stack'}} != 1) {
     # This happens in 2 cases in the tests:
-    #   @verb not closed on misc commands line
+    #   @verb not closed on misc commands line
     #   def line escaped with @ ending the file
     if ($self->{'DEBUG'}) {
       print STDERR "CONTEXT_STACK no empty end _parse_texi: ".join('|', @{$self->{'context_stack'}})."\n";
