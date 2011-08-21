@@ -385,10 +385,27 @@ sub _create_destination_directory($)
   if (defined($self->{'destination_directory'})
       and ! -d $self->{'destination_directory'}) {
     if (!mkdir($self->{'destination_directory'}, oct(755))) {
-      $self->document_error(sprintf($self->__(
+      if ($self->get_conf('SPLIT') 
+          and $self->get_conf('EXTENSION') 
+          and $self->get_conf('EXTENSION') ne '') {
+        my $new_directory = $self->{'destination_directory'};
+        $new_directory =~ s/\/*$//;
+        $new_directory .= '.' . $self->get_conf('EXTENSION') . '/';
+        if (! -d $new_directory) {
+          if (!mkdir($new_directory, oct(755))) {
+            $self->document_error(sprintf($self->__(
+              "Can't create directories `%s' or `%s': %s"), 
+              $self->{'destination_directory'}, $new_directory, $!));
+            return undef;
+          }
+        }
+        $self->{'destination_directory'} = $new_directory;
+      } else {
+        $self->document_error(sprintf($self->__(
              "Can't create directories `%s': %s"), 
              $self->{'destination_directory'}, $!));
-      return undef;
+        return undef;
+      }
     }
   }
   return 1;

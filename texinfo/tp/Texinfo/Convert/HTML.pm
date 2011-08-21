@@ -5837,6 +5837,10 @@ sub output($$)
   # this sets OUTFILE, to be used if not split, but also
   # 'destination_directory' and 'output_filename' that are useful when split.
   $self->_set_outfile();
+  if (!defined($self->{'destination_directory'}) and $self->get_conf('SPLIT')
+      and $self->{'document_name'} ne '') {
+    $self->{'destination_directory'} = $self->{'document_name'}.'/';
+  }
   return undef unless $self->_create_destination_directory();
 
   # collect renamed nodes
