@@ -512,15 +512,17 @@ $makeinfo_help .= __("General output options:
                                 or from HTML (thus producing shorter output).
                                 Also, if producing Info, write to
                                 standard output by default 
-      --split=SPLIT           split at SPLIT, where SPLIT may be chapter, 
-                                section or node if output supports splitting.
-      --no-split              suppress the splitting of Info or HTML output,
+      --no-split              suppress any splitting of the output;
                                 generate only one output file.
       --[no-]number-sections  output chapter and sectioning numbers;
                                 default is on.
-  -o, --output=FILE           output to FILE (or directory if split).
-                                If not split and FILE is a directory, put the
-                                resulting files under FILE.\n")
+  -o, --output=DEST           output to DEST.
+                                With split output, create DEST as a directory
+                                 and put the output files there.
+                                With non-split output, if DEST is already
+                                 a directory or ends with a /,
+                                 put the output file there.
+                                Otherwise, DEST names the output file.\n")
 ."\n";
 $makeinfo_help .= sprintf(__("Options for Info and plain text:
       --disable-encoding      do not output accented and special characters
@@ -542,10 +544,11 @@ $makeinfo_help .= sprintf(__("Options for Info and plain text:
 $makeinfo_help .= __("Options for HTML:
       --css-include=FILE      include FILE in HTML <style> output;
                                 read stdin if FILE is -.
-      --css-ref=URL           generate reference to a CSS file.
+      --css-ref=URL           generate CSS reference to URL.
       --internal-links=FILE   produce list of internal links in FILE.
-      --transliterate-file-names
-                              produce file names in ASCII transliteration.
+      --split=SPLIT           split at SPLIT, where SPLIT may be `chapter',
+                                `section' or `node'.
+      --transliterate-file-names  use file names in ASCII transliteration.
       --node-files            produce redirection files for nodes and 
                                 anchors; default is set only if split.\n")
 ."\n";
