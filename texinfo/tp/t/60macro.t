@@ -207,6 +207,19 @@ result: @emph{\arg1\} protected \\\\ -> \\\\arg1\\\\ @emph{\arg2\}
 
 @macro1 @samp{f\irst arg}, second arg
 '],
+['backslash_in_arg',
+'@node Top
+
+@macro funindex {TEXT}
+@findex \TEXT\
+@end macro
+
+@funindex \\\\q
+@funindex{\\\\r}
+@funindex \q
+@funindex{\r}
+@printindex fn
+'],
 ['protect_comma_macro_line',
 '@macro macro2 { arg }
 we get \arg\ and another \arg\

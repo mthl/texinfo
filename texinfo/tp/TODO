@@ -1,3 +1,10 @@
+Test
+@definfoenclose headword, , :
+ to define `@headword' as an Info
+ formatting command that inserts nothing before and a colon after the
+ argument to `@headword'.
+
+
 Mail Karl about   Xref Command Expansion
 
  Quotation mark commands are likewise replaced by their Unicode values

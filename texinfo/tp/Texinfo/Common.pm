@@ -197,8 +197,8 @@ our %misc_commands = (
   'comment'           => 'lineraw',
   'c'                 => 'lineraw',
   # special
-  'definfoenclose'    => 5,
-  'alias'             => 3, 
+  'definfoenclose'    => 3,
+  'alias'             => 2, 
   # number of arguments is not known in advance.
   'columnfractions'   => 1, 
   # file names

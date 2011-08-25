@@ -527,7 +527,7 @@ sub xml_default_comment($$)
   return '<!-- ' . $text . ' -->' . "\n";
 }
 
-my %xml_accent_entities = (
+our %xml_accent_entities = (
           '"',  'uml',
           '~',  'tilde',
           '^',  'circ',

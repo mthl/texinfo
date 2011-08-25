@@ -184,6 +184,7 @@ require Texinfo::Parser;
 require Texinfo::Structuring;
 require Texinfo::Convert::Info;
 require Texinfo::Convert::HTML;
+require Texinfo::Convert::XML;
 require DebugTexinfo::DebugCount;
 
 # determine configuration directories.
@@ -768,6 +769,10 @@ my %formats_table = (
              'internal_links' => 1,
              'simple_menu' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
+           },
+  'xml' => {
+             'nodes_tree' => 1,
+             'converter' => sub{Texinfo::Convert::XML->converter(@_)},
            },
   'pdf' => {
              'texi2dvi_format' => 1,
