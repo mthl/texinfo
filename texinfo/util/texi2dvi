@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.165 2011-08-27 00:04:02 karl Exp $
+# $Id: texi2dvi,v 1.166 2011-08-27 15:44:40 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.165 $'
+rcs_revision='$Revision: 1.166 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -391,10 +391,11 @@ directory, occasionally TeX won't be able to find some files (e.g., when
 using \\graphicspath): in that case use -I to specify the additional
 directories to consider.
 
-The values of the BIBTEX, DVIPDF, DVIPS, LATEX, MAKEINDEX, MAKEINFO,
-PDFLATEX, PDFTEX, TEX, TEXINDEX, and THUMBPDF environment variables are used
-to run those commands, if they are set.  Any CMD strings are added after
-@setfilename for Texinfo input, in the first line for LaTeX input.
+The values of the BIBTEX, DVIPDF, DVIPS, HEVEA, LATEX, MAKEINDEX,
+MAKEINFO, PDFLATEX, PDFTEX, T4HT, TEX, TEX4HT, TEXINDEX, and THUMBPDF
+environment variables are used to run those commands, if they are set.
+Any CMD strings are added after @setfilename for Texinfo input, or in
+the first line for LaTeX input.
 
 Report bugs to bug-texinfo@gnu.org,
 general questions and discussion to help-texinfo@gnu.org.
@@ -1162,7 +1163,7 @@ run_tex4ht ()
 {
   case $in_lang:$latex2html:`out_lang_tex` in
     latex:tex4ht:html)
-      : ${TEX4HT=tex4ht} ${T4HT=t4ht}
+      : ${TEX4HT:=tex4ht} ${T4HT:=t4ht}
       run "$TEX4HT" "-f/$in_noext"
       # Do not remove the / after the destdir.
       run "$T4HT" "-d`destdir`/" "-f/$in_noext"
@@ -1268,7 +1269,7 @@ run_tex_suite ()
       ;;
     *:ps)
       : ${DVIPS:=dvips}
-      $DVIPS -o "$in_noext.`out_lang_ext`" "$in_noext.`out_lang_tex`"
+      run $DVIPS -o "$in_noext.`out_lang_ext`" "$in_noext.`out_lang_tex`"
       move_to_dest "$in_noext.`out_lang_ext`"
       ;;
   esac
