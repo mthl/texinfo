@@ -208,8 +208,8 @@ sub _set_global_multiple_commands($;$)
   }
 }
 
-# Notice that set_conf is used, which means that it is not possible to
-# customize what is done for those commands.
+# Notice that set_conf is used, which means that it is not possible to
+# customize what is done for those commands.
 sub _unset_global_multiple_commands($)
 {
   my $self = shift;

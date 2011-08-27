@@ -818,9 +818,7 @@ if ($call_texi2dvi) {
 
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
   document_warn (sprintf(__('Ignoring splitting for format %s'), $format));
-  # FIXME see if the following is required.  Should not be
-  # since defaults are per format.
-  #set_from_cmdline('SPLIT', ''); 
+  set_from_cmdline('SPLIT', ''); 
   #set_from_cmdline('FRAMES', 0); 
 }
 

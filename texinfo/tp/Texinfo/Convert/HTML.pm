@@ -841,7 +841,6 @@ our %defaults = (
   #'perl_encoding'        => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
-  'documentlanguage'     => undef,
   'NUMBER_FOOTNOTES'     => 1,
   'expanded_formats'     => undef,
   'include_directories'  => undef,
@@ -4112,8 +4111,8 @@ sub _initialize($)
     %{$self->{'renamed_nodes'}} = %{$Texinfo::Config::renamed_nodes};
   }
 
-  $self->{'document_context'} = [],
-  $self->{'multiple_pass'} = [],
+  $self->{'document_context'} = [];
+  $self->{'multiple_pass'} = [];
   $self->_new_document_context('_toplevel_context');
 
   #$self->_translate_names();
