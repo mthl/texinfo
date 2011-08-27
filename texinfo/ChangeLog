@@ -1,3 +1,9 @@
+2011-08-26  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (usage): we currently generate .ps with --ps,
+	not .pdf.  Other wording tweaks.
+	(run_tex_suite): missed $ in setting DVIPS by default.
+
 2011-08-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\cartouche): restore \parskip glue if following

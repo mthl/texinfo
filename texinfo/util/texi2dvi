@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.164 2011-05-29 14:18:46 karl Exp $
+# $Id: texi2dvi,v 1.165 2011-08-27 00:04:02 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.164 $'
+rcs_revision='$Revision: 1.165 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -343,10 +343,10 @@ TeX tuning:
 Output format:
       --dvi     output a DVI file [default]
       --dvipdf  output a PDF file via DVI (using dvipdf)
-      --html    output an HTML file.  Use HeVeA for LaTeX files
-      --info    output an Info file.  Use HeVeA for LaTeX files
+      --html    output an HTML file; run HeVeA for LaTeX files
+      --info    output an Info file; run HeVeA for LaTeX files
   -p, --pdf     use pdftex or pdflatex for processing
-      --ps      output a PDF file via DVI (using dvips)
+      --ps      output a PostScript file via DVI (using dvips)
       --text    output a plain text file.  Use HeVeA for LaTeX files
 
 Build modes:
@@ -1267,7 +1267,7 @@ run_tex_suite ()
       move_to_dest "$in_noext.`out_lang_ext`"
       ;;
     *:ps)
-      : {DVIPS=dvips}
+      : ${DVIPS:=dvips}
       $DVIPS -o "$in_noext.`out_lang_ext`" "$in_noext.`out_lang_tex`"
       move_to_dest "$in_noext.`out_lang_ext`"
       ;;
