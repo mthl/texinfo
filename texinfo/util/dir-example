@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.87 2011-05-23 23:36:54 karl Exp $
+$Id: dir-example,v 1.88 2011-08-28 18:34:06 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -273,6 +273,9 @@ Science
 * Asymptote FAQ: (asy-faq).     FAQ for Asymptote.
 * Octave: (octave).             A language for numerical computation.
 * R FAQ: (R-FAQ).               The R statistical language FAQ.
+
+System administration
+* GSRC: (gsrc).                 Building the GNU Source Release Collection.
 
 TeX
 * Afm2tfm: (dvips)Invoking afm2tfm.  Making Type 1 fonts available to TeX.
