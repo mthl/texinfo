@@ -256,6 +256,12 @@ sub _informative_command($$)
   }
 }
 
+sub _normalize_top_node($)
+{
+  my $node = shift;
+  return Texinfo::Common::normalize_top_node($node);
+}
+
 sub output($$)
 {
   my $self = shift;
@@ -308,6 +314,8 @@ sub output($$)
   }
   return $result;
 }
+
+my @node_directions = ('Next', 'Prev', 'Up');
 
 sub convert($$;$);
 
@@ -375,11 +383,43 @@ sub convert($$;$)
                ."</$command>\n"
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
-          # FIXME
-          $result = '';
+          $result .= "<node>\n";
+          $self->{'document_context'}->[-1]->{'code'}++;
+          $result .= "<nodename>".
+             $self->convert({'contents' => $root->{'extra'}->{'node_content'}})
+             ."</nodename>\n";
+          my $direction_index = 0;
+          foreach my $direction(@node_directions) {
+            if ($root->{'node_'.lc($direction)}) {
+              my $node_direction = $root->{'node_'.lc($direction)};
+              my $element = 'node'.lc($direction);
+              my $node_name = '';
+              my $attribute = '';
+              if (! defined($node_direction->{'extra'}->{'nodes_manuals'}->[$direction_index])) {
+                $attribute = ' automatic="on"';
+              }
+              if ($node_direction->{'extra'}->{'manual_content'}) {
+                $node_name .= $self->convert({
+                             'contents' => [{'text' => '('},
+                             @{$node_direction->{'extra'}->{'manual_content'}},
+                                          {'text' => ')'}]});
+              }
+              if ($node_direction->{'extra'}->{'node_content'}) {
+                $node_name .= _normalize_top_node($self->convert({
+                  'contents' => $node_direction->{'extra'}->{'node_content'}}));
+              }
+              $result .= "<$element${attribute}>$node_name</$element>\n";
+              $direction_index++;
+            }
+          }
+          $result .= "</node>\n";
+          $self->{'document_context'}->[-1]->{'code'}--;
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
           # FIXME
           $result = '';
+         # FIXME index entry
+        #} elsif {
+          
         } else {
           my $attribute = '';
           if ($root->{'cmdname'} eq 'listoffloats' and $root->{'extra'} 

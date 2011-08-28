@@ -460,10 +460,7 @@ sub _error_outside_of_any_node($$)
 sub _normalize_top_node($)
 {
   my $node = shift;
-  if ($node =~ /^top$/i) {
-    return 'Top';
-  }
-  return $node;
+  return Texinfo::Common::normalize_top_node($node);
 }
 
 my @directions = ('Next', 'Prev', 'Up');

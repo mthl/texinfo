@@ -1133,4 +1133,13 @@ sub collect_renamed_nodes($$;$$)
   return (undef, undef, undef);
 }
 
+sub normalize_top_node($)
+{
+  my $node = shift;
+  if ($node =~ /^top$/i) {
+    return 'Top';
+  }
+  return $node;
+}
+
 1;
