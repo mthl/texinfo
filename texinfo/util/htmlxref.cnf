@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-07-06.23; # UTC
+htmlxrefversion=2011-08-28.18; # UTC
 
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -312,6 +312,9 @@ gsasl		mono	${GS}/gsasl/manual/gsasl.html
 gsasl		node	${GS}/gsasl/manual/html_node/
 
 gsl		node	${GS}/gsl/manual/html_node/
+
+gsrc		mono	${GS}/gsrc/manual/gsrc.html
+gsrc		node	${GS}/gsrc/manual/html_node/
 
 gss		mono	${GS}/gss/manual/gss.html
 gss		node	${GS}/gss/manual/html_node/
