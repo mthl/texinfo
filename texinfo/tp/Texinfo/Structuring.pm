@@ -150,6 +150,15 @@ $unnumbered_commands{'part'} = 1;
 my $min_level = $command_structuring_level{'top'};
 my $max_level = $command_structuring_level{'subsubsection'};
 
+# sets:
+# 'level'
+# 'number'
+# 'section_childs'
+# 'section_up'
+# 'section_prev'
+# 'section_next'
+# 'toplevel_next'
+# 'toplevel_prev'
 sub sectioning_structure($$)
 {
   my $self = shift;

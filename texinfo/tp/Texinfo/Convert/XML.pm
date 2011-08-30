@@ -100,7 +100,7 @@ my %specific_xml_commands_formatting = (
            'error'        => '&errorglyph;',
            'expansion'     => '&expansion;',
            'arrow'        => '&rarr;',
-           'click' => '<click command="arrow">',
+           'click' => '<click command="arrow"/>',
            'minus'        => '&minus;',
            'point'        => '&point;',
            'print'        => '&printglyph;',
@@ -299,7 +299,7 @@ sub output($$)
   }
   foreach my $content (@{$root->{'contents'}}) {
     #print STDERR " --> $content\n";
-    my $output = $self->convert($content);
+    my $output = $self->_convert($content);
     if ($fh) {
       print $fh $output;
     } else {
@@ -315,11 +315,33 @@ sub output($$)
   return $result;
 }
 
+sub _level_corrected_section($)
+{
+  my $root = shift;
+  my $heading_level = $root->{'level'};
+  my $command;
+  if ($heading_level ne $Texinfo::Common::command_structuring_level{$root->{'cmdname'}}) {
+    $command
+      = $Texinfo::Common::level_to_structuring_command{$root->{'cmdname'}}->[$heading_level];
+  } else {
+    $command = $root->{'cmdname'};
+  }
+  return $command;
+}
+
 my @node_directions = ('Next', 'Prev', 'Up');
 
-sub convert($$;$);
-
 sub convert($$;$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  return $self->_convert($root);
+}
+
+sub _convert($$;$);
+
+sub _convert($$;$)
 {
   my $self = shift;
   my $root = shift;
@@ -348,17 +370,16 @@ sub convert($$;$)
     }
   }
   if ($root->{'cmdname'}) {
-    
     if (defined($xml_commands_formatting{$root->{'cmdname'}})) {
       if ($root->{'cmdname'} eq 'click' 
           and $root->{'extra'} 
           and defined($root->{'extra'}->{'clickstyle'})) {
-        return "<click command=\"$root->{'extra'}->{'clickstyle'}\">";
+        return "<click command=\"$root->{'extra'}->{'clickstyle'}\"/>";
       }
       return $xml_commands_formatting{$root->{'cmdname'}};
     } elsif ($xml_accent_types{$root->{'cmdname'}}) {
       $result = "<accent type=\"$xml_accent_types{$root->{'cmdname'}}\">";
-      $result .= $self->convert($root->{'args'}->[0])
+      $result .= $self->_convert($root->{'args'}->[0])
         if ($root->{'args'} and $root->{'args'}->[0]);
       $result .= '</accent>';
       return $result;
@@ -379,14 +400,14 @@ sub convert($$;$)
                 . $self->xml_protect_text($root->{'extra'}->{'text_arg'}) ."\"";
           }
         }
-        return "<$command${attribute}>".$self->convert($root->{'args'}->[0])
+        return "<$command${attribute}>".$self->_convert($root->{'args'}->[0])
                ."</$command>\n"
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
           $result .= "<node>\n";
           $self->{'document_context'}->[-1]->{'code'}++;
           $result .= "<nodename>".
-             $self->convert({'contents' => $root->{'extra'}->{'node_content'}})
+             $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
              ."</nodename>\n";
           my $direction_index = 0;
           foreach my $direction(@node_directions) {
@@ -399,13 +420,13 @@ sub convert($$;$)
                 $attribute = ' automatic="on"';
               }
               if ($node_direction->{'extra'}->{'manual_content'}) {
-                $node_name .= $self->convert({
+                $node_name .= $self->_convert({
                              'contents' => [{'text' => '('},
                              @{$node_direction->{'extra'}->{'manual_content'}},
                                           {'text' => ')'}]});
               }
               if ($node_direction->{'extra'}->{'node_content'}) {
-                $node_name .= _normalize_top_node($self->convert({
+                $node_name .= _normalize_top_node($self->_convert({
                   'contents' => $node_direction->{'extra'}->{'node_content'}}));
               }
               $result .= "<$element${attribute}>$node_name</$element>\n";
@@ -415,9 +436,17 @@ sub convert($$;$)
           $result .= "</node>\n";
           $self->{'document_context'}->[-1]->{'code'}--;
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
-          # FIXME
-          $result = '';
-         # FIXME index entry
+          my $attribute;
+          $command = _level_corrected_section($root);
+          if ($command ne $root->{'cmdname'}) {
+            $attribute = " originalcommand=\"$root->{'cmdname'}\"";
+          } else {
+            $attribute = '';
+          }
+          $result .= "<$command${attribute}>\n";
+          $result .= "<title>". $self->_convert($root->{'args'}->[0])."</title>\n"
+            if ($root->{'args'} and $root->{'args'}->[0]);
+         # FIXME index entry + new index entries that should appear elsewhere
         #} elsif {
           
         } else {
@@ -427,7 +456,7 @@ sub convert($$;$)
               and defined($root->{'extra'}->{'type'}->{'normalized'})) {
             $attribute = " type=\"$root->{'extra'}->{'type'}->{'normalized'}\n";
           }
-          return "<$command${attribute}>".$self->convert($root->{'args'}->[0])
+          return "<$command${attribute}>".$self->_convert($root->{'args'}->[0])
                  ."</$command>\n";
         }
       } elsif ($type eq 'skipline' or $type eq 'noarg') {
@@ -509,7 +538,7 @@ sub convert($$;$)
             if (defined($commands_args_style{$root->{'cmdname'}})
               and defined($commands_args_style{$root->{'cmdname'}}->[$arg_index]));
           $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-          my $arg = $self->convert($root->{'args'}->[$arg_index]);
+          my $arg = $self->_convert($root->{'args'}->[$arg_index]);
           if ($arg ne '') {
             $result .= "<$element>$arg</$element>";
           }
@@ -580,7 +609,7 @@ sub convert($$;$)
       cluck "contents not an array($root->{'contents'}).";
     }
     foreach my $content (@{$root->{'contents'}}) {
-      $result .= $self->convert($content);
+      $result .= $self->_convert($content);
     }
   }
   $result = '{'.$result.'}' 
@@ -593,6 +622,19 @@ sub convert($$;$)
     $result .= "</$root->{'cmdname'}>\n";
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
+    }
+  } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}
+           and $root->{'cmdname'} ne 'node') {
+    my $command = _level_corrected_section($root);
+    if (!($root->{'section_childs'} and scalar(@{$root->{'section_childs'}}))
+        or $command eq 'top') {
+      $result .= "</$command>\n";
+      my $current = $root;
+      while ($current->{'section_up'}
+             and _level_corrected_section($current->{'section_up'}) ne 'top') {
+        $current = $current->{'section_up'};
+        $result .= '</'._level_corrected_section($current) .">\n";
+      }
     }
   }
   return $result;
@@ -673,22 +715,12 @@ sub convert($$;$)
 #quotation
 #    return "<$command>\n" . $text . "</$command>\n";
 
-
+# node:
 #        $result .= xml_close_section();
 #     $result .= "<node>\n";
-#        $result .= "<nodename>$element->{'text'}</nodename>\n";
-#        foreach my $direction('nodenext', 'nodeprev', 'nodeup')
-#        {
-#            if ($element->{$direction})
-#            {
-#                $result .= "<${direction}>$element->{$direction}->{'text'}</${direction}>\n";
-#            }
-#        }
-#        $result .= "</node>\n";
 #
-#      xml_element_tag = $element->{'tag_level'}
+# section:
 #     $result .= xml_close_section();
-#        $result .= "<".xml_element_tag($element).">\n<title>$element->{'text'}</title>\n";
 #        $xml_current_section = $element;
 
 #xml_close_section

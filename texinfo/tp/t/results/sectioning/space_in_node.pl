@@ -350,7 +350,7 @@ $result_trees{'space_in_node'} = {
             },
             {
               'parent' => {},
-              'text' => 'Chap first	here'
+              'text' => 'Chap first  here'
             },
             {
               'parent' => {},
@@ -592,7 +592,7 @@ $result_texis{'space_in_node'} = '
 *   Last with spaces    ::
 @end menu
 
-@node  Chap first	here
+@node  Chap first  here
 
 @node Test               title
 
@@ -806,7 +806,7 @@ ul.no-bullet {list-style: none}
 <a name="Top"></a>
 <div class="header">
 <p>
-Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first	here</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <h1 class="node-heading">Top</h1>
 
@@ -825,13 +825,13 @@ Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first	here</a>, U
 <p>
 Next: <a href="#Test-title" accesskey="n" rel="next">Test               title</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">Chap first	here</h3>
+<h3 class="node-heading">Chap first  here</h3>
 
 <hr>
 <a name="Test-title"></a>
 <div class="header">
 <p>
-Next: <a href="#Last-with-spaces" accesskey="n" rel="next">Last with spaces</a>, Previous: <a href="#Chap-first-here" accesskey="p" rel="previous">Chap first	here</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Last-with-spaces" accesskey="n" rel="next">Last with spaces</a>, Previous: <a href="#Chap-first-here" accesskey="p" rel="previous">Chap first  here</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h3 class="node-heading">Test               title</h3>
 

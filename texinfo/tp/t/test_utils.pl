@@ -13,6 +13,7 @@ use Texinfo::Structuring;
 use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
+use Texinfo::Convert::XML;
 use DebugTexinfo::DebugCount;
 use File::Basename;
 use Data::Dumper;
@@ -24,7 +25,7 @@ use Clone qw(clone);
 #use Struct::Compare;
 use Getopt::Long qw(GetOptions);
 
-# FIXME Is it really useful?
+# FIXME Is it really useful?
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
@@ -45,6 +46,7 @@ our %formats = (
   'info' => \&convert_to_info,
   'html' => \&convert_to_html,
   'html_text' => \&convert_to_html,
+  'xml' => \&convert_to_xml,
   'debugcount' => \&debugcount,
 );
 
@@ -52,6 +54,7 @@ our %extensions = (
   'plaintext' => 'txt',
   'debugcount' => 'txt',
   'html_text' => 'html',
+  'xml' => 'xml',
 );
 
 our $arg_generate;
@@ -292,6 +295,31 @@ sub convert_to_html($$$$$;$)
   } else {
     $result = $converter->output($tree);
   }
+  die if (!defined($result));
+  my ($errors, $error_nrs) = $converter->errors();
+  return ($errors, $result);
+}
+
+sub convert_to_xml($$$$$;$)
+{
+  my $self = shift;
+  my $format = shift;
+  my $tree = shift;
+  my $parser = shift;
+  my $parser_options = shift;
+  my $converter_options = shift;
+  if (!defined($converter_options)) {
+    $converter_options = {};
+    $converter_options->{'expanded_formats'} = ['xml']
+      if (!defined($parser_options->{'expanded_formats'}));
+  }
+  my $converter =
+     Texinfo::Convert::XML->converter ({'DEBUG' => $self->{'DEBUG'},
+                                         'parser' => $parser,
+                                         'OUTFILE' => '',
+                                         'output_format' => 'xml',
+                                          %$converter_options });
+  my $result = $converter->convert($tree);
   die if (!defined($result));
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);

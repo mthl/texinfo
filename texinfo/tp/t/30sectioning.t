@@ -316,7 +316,42 @@ $section_in_unnumbered_text
 @end menu
 
 @node first, (manual1), (manual2) , (manual3)
-', {'test_split' => 'node'}]
+', {'test_split' => 'node'}],
+['two_nodes_between_chapters',
+'@node Top
+@top top
+
+@menu
+* chapter 1::
+* node between chapters::
+* chapter 2::
+@end menu
+
+@node chapter 1, Top, node between chapters, Top
+@chapter chapter c1
+
+@node node between chapters
+
+@node chapter 2
+@chapter chapter c2
+', {'test_split' => 'section'}],
+['two_nodes_at_the_end',
+'@node Top
+@top top
+
+@menu
+* chapter 1::
+* node after chapter 1::
+* node after chapter 2::
+@end menu
+
+@node chapter 1
+@chapter chapter c1
+
+@node node after chapter 1
+
+@node node after chapter 2
+', {'test_split' => 'section'}],
 );
 
 my @tests_info = (
@@ -531,7 +566,7 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 @ref{@url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}}
 
 @bye
-', {}, {'TEST' => 1}],
+', {}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
 ['double_node_anchor_float',
 '@node node1
 
@@ -805,7 +840,7 @@ $section_in_unnumbered_text
 *   Last with spaces    ::
 @end menu
 
-@node  Chap first	here
+@node  Chap first  here
 
 @node Test               title
 
@@ -1364,7 +1399,7 @@ Second top.
 @node second node
 @chapter a chapter
 '],
-['part_before_section', # FIXME do HTML
+['part_before_section', # FIXME do HTML
 '@part part
 
 @section section 
@@ -1402,15 +1437,54 @@ Second top.
 
 @top top
 '],
+['sectioning_part_appendix',
+$test_text
+],
+['contents_in_html_text',
+'@top top
+
+@chapter Chap1
+
+@section Sec 1
+
+@chapter Chap2
+
+@shortcontents
+@contents
+', {'test_formats' => ['html_text']}
+],
 );
+
+my @xml_tests_converted_tests = ('section_before_part', 'chapter_before_part', 
+  'part_before_top', 'double_part', 'section_in_unnumbered_plaintext',
+  'two_unnumbered_no_argument');
 
 foreach my $test (@tests_converted) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html';
+#  push @{$test->[2]->{'test_formats'}}, 'xml' 
+#    if (grep {$_ eq $test->[0]} @xml_tests_converted_tests);
 }
+
+my @xml_tests_info_tests = ('part_chapter_after_top', 
+  'part_node_chapter_after_top', 'node_part_chapter_after_top',
+  'node_part_chapter_after_chapter', 'section_before_top', 
+  'section_node_before_part', 'chapter_node_before_and_after_part');
+
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';
   push @{$test->[2]->{'test_formats'}}, 'html';
+#  push @{$test->[2]->{'test_formats'}}, 'xml' 
+#    if (grep {$_ eq $test->[0]} @xml_tests_info_tests);
+}
+
+my @xml_tests_cases_tests = ('part_before_section', 
+'section_before_chapter', 'chapter_before_and_after_part', 
+'top_part_chapter', 'section_before_top_no_node', 
+'section_chapter_before_top', 'sectioning_part_appendix');
+foreach my $test (@test_cases) {
+#  push @{$test->[2]->{'test_formats'}}, 'xml' 
+#    if (grep {$_ eq $test->[0]} @xml_tests_cases_tests);
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

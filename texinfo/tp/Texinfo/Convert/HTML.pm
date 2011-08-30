@@ -769,8 +769,9 @@ sub _translate_names($)
   foreach my $hash (\%BUTTONS_TEXT, \%BUTTONS_GOTO, \%BUTTONS_NAME) {
     foreach my $button (keys (%$hash)) {
       if (ref($hash->{$button})) {
-        # FIXME put it out of document context
+        $self->_new_document_context("button $button");
         $hash->{$button} = $self->convert_tree($hash->{$button});
+        pop @{$self->{'document_context'}};
       }
     }
   }
@@ -3102,18 +3103,23 @@ sub _contents_inline_element($$$)
     my $result = '';
     my $special_element 
       = $self->special_element($contents_command_element_name{$cmdname});
+    my $heading;
     if ($special_element) {
       my $id = $self->command_id($special_element);
       if ($id ne '') {
         $result .= "<a name=\"$id\"></a>\n";
       }
-      my $heading = $self->command_text($special_element);
-      $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
-      $result .= $content . "\n";
-      return $result;
+      $heading = $self->command_text($special_element);
     } else {
-      cluck "$cmdname special element not defined";
+      # happens when called as convert() and not output()
+      #cluck "$cmdname special element not defined";
+      my $element_name = $contents_command_element_name{$cmdname};
+      $heading 
+        = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{$element_name});
     }
+    $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
+    $result .= $content . "\n";
+    return $result;
   }
   return '';
 }
