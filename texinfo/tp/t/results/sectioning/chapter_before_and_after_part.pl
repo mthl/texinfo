@@ -331,4 +331,18 @@ element: @chapter chapter 2
   Up: @chapter chapter 2
 ';
 
+
+$result_converted{'xml'}->{'chapter_before_and_after_part'} = '<chapter>
+<title>chapter</title>
+
+</chapter>
+<part>
+<title>part</title>
+
+<chapter>
+<title>chapter 2</title>
+</chapter>
+</part>
+';
+
 1;

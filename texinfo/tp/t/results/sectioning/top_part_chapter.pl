@@ -333,4 +333,18 @@ element: @chapter chapter
   Up: @chapter chapter
 ';
 
+
+$result_converted{'xml'}->{'top_part_chapter'} = '<top>
+<title>top</title>
+
+</top>
+<part>
+<title>part</title>
+
+<chapter>
+<title>chapter</title>
+</chapter>
+</part>
+';
+
 1;

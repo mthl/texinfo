@@ -224,4 +224,14 @@ $result_directions_text{'part_before_section'} = 'element: @section section
   Up: @section section
 ';
 
+
+$result_converted{'xml'}->{'part_before_section'} = '<part>
+<title>part</title>
+
+<chapter originalcommand="section">
+<title>section</title>
+</chapter>
+</part>
+';
+
 1;

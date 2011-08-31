@@ -834,4 +834,50 @@ $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_up'
 $result_errors{'sectioning_part_appendix'} = [];
 
 
+
+$result_converted{'xml'}->{'sectioning_part_appendix'} = '<top>
+<title>top</title>
+
+</top>
+<chapter>
+<title>chapter</title>
+
+<section>
+<title>section</title>
+
+<subsection>
+<title>subsection</title>
+
+<subsubsection>
+<title>subsubsection</title>
+
+</subsubsection>
+</subsection>
+</section>
+</chapter>
+<part>
+<title>part</title>
+
+<chapter>
+<title>chapter in part</title>
+
+</chapter>
+<chapter>
+<title>second chapter in part</title>
+
+</chapter>
+<unnumbered>
+<title>unnumbered</title>
+
+</unnumbered>
+<appendix>
+<title>appendix</title>
+
+<appendixsec>
+<title>appendixsec</title>
+</appendixsec>
+</appendix>
+</part>
+';
+
 1;

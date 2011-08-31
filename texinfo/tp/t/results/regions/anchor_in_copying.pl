@@ -444,7 +444,6 @@ $result_converted{'html'}->{'anchor_in_copying'} = '<!DOCTYPE html PUBLIC "-//W3
 <html>
 <!-- 
 Copying.
-
  -->
 <!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
 <head>

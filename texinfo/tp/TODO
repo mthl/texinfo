@@ -1,3 +1,6 @@
+@appendix should stop @part. Right now it do not do that.
+Cf sectioning_part_appendix.
+
 Test
 @definfoenclose headword, , :
  to define `@headword' as an Info

@@ -22,6 +22,9 @@
 #           drop the See
 #           @findex -> <findex><indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>
 #           @abbr do not becomes abbrev
+#       menu comment -> menucomment
+#       menu entry description -> menudescription
+#       preformatted -> pre
 
 
 package Texinfo::Convert::XML;
@@ -163,19 +166,6 @@ foreach my $command ('item', 'headitem', 'itemx', 'tab') {
   delete $xml_misc_commands{$command};
 }
 
-my %ignored_types;
-foreach my $type ('empty_line_after_command', 'preamble',
-            'empty_spaces_after_command', 'spaces_at_end',
-            'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
-            'empty_spaces_after_close_brace', 
-            'empty_space_at_end_def_bracketed') {
-  $ignored_types{$type} = 1;
-}
-
-my %context_block_commands = (
-  'float' => 1,
-);
-
 my %commands_args_style = (
   'email' => ['code'],
   'anchor' => ['code'],
@@ -217,6 +207,33 @@ foreach my $command (keys(%Texinfo::Common::brace_commands)) {
     push @{$commands_elements{$command}}, @{$commands_args_elements{$command}};
   }
 }
+
+my %ignored_types;
+foreach my $type ('empty_line_after_command', 'preamble',
+            'empty_spaces_after_command', 'spaces_at_end',
+            'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
+            'empty_spaces_after_close_brace', 
+            'empty_space_at_end_def_bracketed',
+            # FIXME keep those? Information is lost...
+            'menu_entry_separator',
+            'menu_entry_leading_text',
+            
+  ) {
+  $ignored_types{$type} = 1;
+}
+
+my %type_elements = (
+  'paragraph' => 'para',
+  'menu_entry' => 'menuentry',
+  'menu_entry_node' => 'menunode',
+  'menu_comment' => 'menucomment',
+  'menu_entry_description' => 'menudescription',
+  'menu_entry_name' => 'menutitle',
+);
+
+my %context_block_commands = (
+  'float' => 1,
+);
 
 sub _defaults($)
 {
@@ -590,26 +607,40 @@ sub _convert($$;$)
   #    push @contents, {'text' => "\n"};
   #    $result = convert({'contents' => \@contents}, _code_options($options));
   #  }
-    #$result = convert($root->{'args'}->[0], $options) if ($root->{'args'});
-  #} elsif ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
-  #  foreach my $arg (@{$root->{'args'}}) {
-  #    if ($arg->{'type'} eq 'menu_entry_node') {
-  #      $result .= convert($arg, _code_options($options));
-  #    } else {
-  #      $result .= convert($arg, $options);
-  #    }
-  #  }
-  #}
+  if ($root->{'type'}) {
+    if (defined($type_elements{$root->{'type'}})) {
+      $result .= "<$type_elements{$root->{'type'}}>";
+    }
+  }
   if ($root->{'contents'}) {
+    my $in_code;
     if ($root->{'cmdname'} 
         and $Texinfo::Common::preformatted_code_commands{$root->{'cmdname'}}) {
-      #$options = _code_options($options);
+      $in_code = 1;
     }
+    $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
     if (ref($root->{'contents'}) ne 'ARRAY') {
       cluck "contents not an array($root->{'contents'}).";
     }
     foreach my $content (@{$root->{'contents'}}) {
       $result .= $self->_convert($content);
+    }
+    $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+  }
+  if ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
+    foreach my $arg (@{$root->{'args'}}) {
+      my $in_code;
+      if ($arg->{'type'} eq 'menu_entry_node') {
+        $in_code = 1;
+      }
+      $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+      $result .= $self->_convert($arg);
+      $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+    }
+  }
+  if ($root->{'type'}) {
+    if (defined($type_elements{$root->{'type'}})) {
+      $result .= "</$type_elements{$root->{'type'}}>";
     }
   }
   $result = '{'.$result.'}' 
@@ -635,6 +666,7 @@ sub _convert($$;$)
              # the most up element is a virtual sectioning root element, this
              # condition avoids getting into it
              and $current->{'section_up'}->{'cmdname'}
+             and !$current->{'section_next'}
              and _level_corrected_section($current->{'section_up'}) ne 'top') {
         $current = $current->{'section_up'};
         $result .= '</'._level_corrected_section($current) .">\n";
@@ -702,12 +734,6 @@ sub _convert($$;$)
 
 # $complex_format_map{$complex_format}->{'begin'} = "<$complex_format xml:space=\"preserve\">";
 #   $complex_format_map{$complex_format}->{'end'} = "</$complex_format>";
-
-#xml_menu_description
-#    return "<menucomment>$text</menucomment>\n</menuentry>";
-
-#sub xml_menu_link($$$$$$$$$$)
-#    return "<menuentry>\n<menunode>$menunode_normalized</menunode>\n<menutitle>$menutitle</menutitle>\n";
 
 #xml_index_entry_label
 #    return "<indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>";

@@ -526,6 +526,7 @@ sub xml_default_comment($$)
 {
   my $self = shift;
   my $text = shift;
+  chomp $text;
   $text =~ s/--+/-/go;
   return '<!-- ' . $text . ' -->' . "\n";
 }

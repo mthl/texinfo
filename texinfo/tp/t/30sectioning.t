@@ -1483,8 +1483,8 @@ my @xml_tests_cases_tests = ('part_before_section',
 'top_part_chapter', 'section_before_top_no_node', 
 'section_chapter_before_top', 'sectioning_part_appendix');
 foreach my $test (@test_cases) {
-#  push @{$test->[2]->{'test_formats'}}, 'xml' 
-#    if (grep {$_ eq $test->[0]} @xml_tests_cases_tests);
+  push @{$test->[2]->{'test_formats'}}, 'xml' 
+    if (grep {$_ eq $test->[0]} @xml_tests_cases_tests);
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

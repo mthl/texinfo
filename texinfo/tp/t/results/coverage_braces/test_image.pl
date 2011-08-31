@@ -4298,8 +4298,7 @@ $result_converted{'html'}->{'test_image'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD 
 <!-- Text in copying.
 f@i-le..  a@<"%@  < & @ % " 
 
-In text f@i-le..  a@<"%@  < & @ % " .
- -->
+In text f@i-le..  a@<"%@  < & @ % " . -->
 <!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>Untitled Document</title>

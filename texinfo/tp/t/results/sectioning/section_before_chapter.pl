@@ -177,4 +177,14 @@ $result_errors{'section_before_chapter'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'section_before_chapter'} = '<section>
+<title>section</title>
+
+</section>
+<section originalcommand="chapter">
+<title>chapter</title>
+</section>
+';
+
 1;

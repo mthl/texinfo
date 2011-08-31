@@ -494,7 +494,6 @@ $result_converted{'html'}->{'anchor_in_copying_in_footnote'} = '<!DOCTYPE html P
 <html>
 <!-- 
 Copying.
-
  -->
 <!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
 <head>
