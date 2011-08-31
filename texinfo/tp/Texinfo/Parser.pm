@@ -950,6 +950,7 @@ sub _print_current($)
   my $text = '';
   $type = "($current->{'type'})" if (defined($current->{'type'}));
   $cmd = "\@$current->{'cmdname'}" if (defined($current->{'cmdname'}));
+  $cmd .= "($current->{'level'})" if (defined($current->{'level'}));
   $text = "[text: $current->{'text'}]" if (defined($current->{'text'}));
   if ($current->{'parent'}) {
     my $parent = $current->{'parent'};

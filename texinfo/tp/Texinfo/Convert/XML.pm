@@ -623,7 +623,8 @@ sub _convert($$;$)
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
-  } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}
+  } elsif ($root->{'cmdname'} 
+           and $Texinfo::Common::root_commands{$root->{'cmdname'}}
            and $root->{'cmdname'} ne 'node') {
     my $command = _level_corrected_section($root);
     if (!($root->{'section_childs'} and scalar(@{$root->{'section_childs'}}))
@@ -631,6 +632,9 @@ sub _convert($$;$)
       $result .= "</$command>\n";
       my $current = $root;
       while ($current->{'section_up'}
+             # the most up element is a virtual sectioning root element, this
+             # condition avoids getting into it
+             and $current->{'section_up'}->{'cmdname'}
              and _level_corrected_section($current->{'section_up'}) ne 'top') {
         $current = $current->{'section_up'};
         $result .= '</'._level_corrected_section($current) .">\n";

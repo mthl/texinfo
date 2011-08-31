@@ -288,8 +288,6 @@ my %defaults = (
   'NUMBER_FOOTNOTES'     => 1,
   'empty_lines_count'    => undef,
   'SPLIT_SIZE'           => 300000,
-  'expanded_formats'     => undef,
-  'include_directories'  => undef,
   'NUMBER_SECTIONS'      => 1,
 
   'DEBUG'                => 0,

@@ -52,6 +52,9 @@ our %all_converters_defaults = (
   'SPLIT_SIZE'           => 300000,
   'paragraphindent'      => 3,
   'fillcolumn'           => 72,
+  'expanded_formats'     => undef,
+  'include_directories'  => undef,
+
   
 
   'DEBUG'                => 0,
@@ -90,7 +93,7 @@ sub converter(;$)
     bless $converter;
   } elsif (defined($class)) {
     bless $converter, $class;
-    $name = ref($class);
+    $name = ref($converter);
     $conf = shift;
   } else {
     bless $converter;
