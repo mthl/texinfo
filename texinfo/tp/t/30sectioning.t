@@ -1462,8 +1462,8 @@ my @xml_tests_converted_tests = ('section_before_part', 'chapter_before_part',
 foreach my $test (@tests_converted) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html';
-#  push @{$test->[2]->{'test_formats'}}, 'xml' 
-#    if (grep {$_ eq $test->[0]} @xml_tests_converted_tests);
+  push @{$test->[2]->{'test_formats'}}, 'xml' 
+    if (grep {$_ eq $test->[0]} @xml_tests_converted_tests);
 }
 
 my @xml_tests_info_tests = ('part_chapter_after_top', 
@@ -1474,8 +1474,8 @@ my @xml_tests_info_tests = ('part_chapter_after_top',
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';
   push @{$test->[2]->{'test_formats'}}, 'html';
-#  push @{$test->[2]->{'test_formats'}}, 'xml' 
-#    if (grep {$_ eq $test->[0]} @xml_tests_info_tests);
+  push @{$test->[2]->{'test_formats'}}, 'xml' 
+    if (grep {$_ eq $test->[0]} @xml_tests_info_tests);
 }
 
 my @xml_tests_cases_tests = ('part_before_section', 

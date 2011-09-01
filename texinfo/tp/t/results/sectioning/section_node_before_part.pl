@@ -355,4 +355,19 @@ $result_converted_errors{'html'}->{'section_node_before_part'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'section_node_before_part'} = '
+<node>
+<nodename>Top</nodename>
+<nodeup automatic="on">(dir)</nodeup>
+</node>
+<section>
+<title>section</title>
+
+</section>
+<part>
+<title>part</title>
+</part>
+';
+
 1;

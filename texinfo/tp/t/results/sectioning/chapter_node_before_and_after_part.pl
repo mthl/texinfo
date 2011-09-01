@@ -783,4 +783,35 @@ $result_converted_errors{'html'}->{'chapter_node_before_and_after_part'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'chapter_node_before_and_after_part'} = '
+<node>
+<nodename>Top</nodename>
+<nodenext automatic="on">after</nodenext>
+<nodeup automatic="on">(dir)</nodeup>
+</node>
+<chapter>
+<title>chapter</title>
+
+<menu>
+<menuentry><menunode>after</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+</chapter>
+<part>
+<title>part</title>
+
+<node>
+<nodename>after</nodename>
+<nodeprev automatic="on">Top</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<chapter>
+<title>chapter 2</title>
+
+<contents></contents>
+</chapter>
+</part>
+';
+
 1;

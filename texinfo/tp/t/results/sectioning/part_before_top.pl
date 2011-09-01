@@ -308,4 +308,14 @@ ul.no-bullet {list-style: none}
 </html>
 ';
 
+
+$result_converted{'xml'}->{'part_before_top'} = '<part>
+<title>part</title>
+
+</part>
+<top>
+<title>top</title>
+</top>
+';
+
 1;

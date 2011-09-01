@@ -307,4 +307,14 @@ $result_converted_errors{'html'}->{'chapter_before_part'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'chapter_before_part'} = '<chapter>
+<title>chapter</title>
+
+</chapter>
+<part>
+<title>part</title>
+</part>
+';
+
 1;

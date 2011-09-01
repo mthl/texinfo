@@ -1256,4 +1256,46 @@ Previous: <a href="#chapter-node" accesskey="p" rel="previous">chapter node</a>,
 </html>
 ';
 
+
+$result_converted{'xml'}->{'node_part_chapter_after_chapter'} = '<node>
+<nodename>Top</nodename>
+<nodenext automatic="on">chapter node</nodenext>
+<nodeup automatic="on">(dir)</nodeup>
+</node>
+<top>
+<title>top</title>
+
+<menu>
+<menuentry><menunode>chapter node</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>part chapter node</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+</top>
+<node>
+<nodename>chapter node</nodename>
+<nodenext automatic="on">part chapter node</nodenext>
+<nodeprev automatic="on">Top</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+
+<chapter>
+<title>chapter node</title>
+
+</chapter>
+<node>
+<nodename>part chapter node</nodename>
+<nodeprev automatic="on">chapter node</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<part>
+<title>part</title>
+
+<chapter>
+<title>chapter with part node</title>
+
+<contents></contents>
+</chapter>
+</part>
+';
+
 1;

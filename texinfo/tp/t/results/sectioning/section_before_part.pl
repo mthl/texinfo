@@ -267,4 +267,16 @@ $result_converted_errors{'html'}->{'section_before_part'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'section_before_part'} = '<section>
+<title>section</title>
+
+</section>
+<part>
+<title>part</title>
+
+<contents></contents>
+</part>
+';
+
 1;

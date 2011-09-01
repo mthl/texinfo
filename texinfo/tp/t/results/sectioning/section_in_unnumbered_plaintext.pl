@@ -9461,4 +9461,378 @@ Previous: <a href="#unnumbered-sub2-4" accesskey="p" rel="previous">unnumbered s
 </html>
 ';
 
+
+$result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
+<setcontentsaftertitlepage></setcontentsaftertitlepage>
+
+<node>
+<nodename>Top</nodename>
+<nodenext automatic="on">chapter</nodenext>
+<nodeup automatic="on">(dir)</nodeup>
+</node>
+<top>
+<title>Test section in unnumbered</title>
+
+<contents></contents>
+
+<para>Menu:
+</para>
+<menu>
+<menuentry><menunode>chapter</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>unnumbered</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>chapter 2</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>chapter 3</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>unnumbered 4</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+</top>
+<node>
+<nodename>chapter</nodename>
+<nodenext automatic="on">unnumbered</nodenext>
+<nodeprev automatic="on">Top</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<chapter>
+<title>chapter</title>
+
+<menu>
+<menuentry><menunode>section in chapter</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>section in chapter</nodename>
+<nodeup automatic="on">chapter</nodeup>
+</node>
+<section>
+<title>section in chapter</title>
+
+</section>
+</chapter>
+<node>
+<nodename>unnumbered</nodename>
+<nodenext automatic="on">chapter 2</nodenext>
+<nodeprev automatic="on">chapter</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<unnumbered>
+<title>unnumbered</title>
+
+<menu>
+<menuentry><menunode>section in unnumbered</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>section in unnumbered</nodename>
+<nodeup automatic="on">unnumbered</nodeup>
+</node>
+<section>
+<title>section in unnumbered</title>
+
+</section>
+</unnumbered>
+<node>
+<nodename>chapter 2</nodename>
+<nodenext automatic="on">chapter 3</nodenext>
+<nodeprev automatic="on">unnumbered</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<chapter>
+<title>chapter 2</title>
+
+<menu>
+<menuentry><menunode>unnumberedsec 2</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>unnumberedsec 2-1</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>unnumberedsec 2</nodename>
+<nodenext automatic="on">unnumberedsec 2-1</nodenext>
+<nodeup automatic="on">chapter 2</nodeup>
+</node>
+<unnumberedsec>
+<title>unnumbered section 2</title>
+
+<menu>
+<menuentry><menunode>unnumbered sub 2</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>numbered sub 2</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>unnumbered sub2 2</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>numbered sub2 2</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>unnumbered sub 2</nodename>
+<nodenext automatic="on">numbered sub 2</nodenext>
+<nodeup automatic="on">unnumberedsec 2</nodeup>
+</node>
+<unnumberedsubsec>
+<title>unnumbered subsection 2</title>
+
+</unnumberedsubsec>
+<node>
+<nodename>numbered sub 2</nodename>
+<nodenext automatic="on">unnumbered sub2 2</nodenext>
+<nodeprev automatic="on">unnumbered sub 2</nodeprev>
+<nodeup automatic="on">unnumberedsec 2</nodeup>
+</node>
+<subsection>
+<title>numbered subsection 2</title>
+
+</subsection>
+<node>
+<nodename>unnumbered sub2 2</nodename>
+<nodenext automatic="on">numbered sub2 2</nodenext>
+<nodeprev automatic="on">numbered sub 2</nodeprev>
+<nodeup automatic="on">unnumberedsec 2</nodeup>
+</node>
+<unnumberedsubsec>
+<title>unnumbered subsection2 2</title>
+
+</unnumberedsubsec>
+<node>
+<nodename>numbered sub2 2</nodename>
+<nodeprev automatic="on">unnumbered sub2 2</nodeprev>
+<nodeup automatic="on">unnumberedsec 2</nodeup>
+</node>
+<subsection>
+<title>numbered subsection2 2</title>
+
+</subsection>
+</unnumberedsec>
+<node>
+<nodename>unnumberedsec 2-1</nodename>
+<nodeprev automatic="on">unnumberedsec 2</nodeprev>
+<nodeup automatic="on">chapter 2</nodeup>
+</node>
+<unnumberedsec>
+<title>unnumberedsec 2-1</title>
+
+<menu>
+<menuentry><menunode>numbered sub 2-1</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>numbered sub 2-1</nodename>
+<nodeup automatic="on">unnumberedsec 2-1</nodeup>
+</node>
+<subsection>
+<title>numbered subsection 2-1</title>
+
+
+</subsection>
+</unnumberedsec>
+</chapter>
+<node>
+<nodename>chapter 3</nodename>
+<nodenext automatic="on">unnumbered 4</nodenext>
+<nodeprev automatic="on">chapter 2</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<chapter>
+<title>chapter 3</title>
+
+<menu>
+<menuentry><menunode>unnumberedsec 3</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>section 3-1</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>unnumberedsec 3-2</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>section 3-3</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>unnumberedsec 3-4</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>unnumberedsec 3</nodename>
+<nodenext automatic="on">section 3-1</nodenext>
+<nodeup automatic="on">chapter 3</nodeup>
+</node>
+<unnumberedsec>
+<title>unnumbered section 3</title>
+
+<menu>
+<menuentry><menunode>unnumbered sub 3</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>numbered sub 3</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>unnumbered sub2 3</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>numbered sub2 3</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>unnumbered sub 3</nodename>
+<nodenext automatic="on">numbered sub 3</nodenext>
+<nodeup automatic="on">unnumberedsec 3</nodeup>
+</node>
+<unnumberedsubsec>
+<title>unnumbered subsection 3</title>
+
+</unnumberedsubsec>
+<node>
+<nodename>numbered sub 3</nodename>
+<nodenext automatic="on">unnumbered sub2 3</nodenext>
+<nodeprev automatic="on">unnumbered sub 3</nodeprev>
+<nodeup automatic="on">unnumberedsec 3</nodeup>
+</node>
+<subsection>
+<title>numbered subsection 3</title>
+
+</subsection>
+<node>
+<nodename>unnumbered sub2 3</nodename>
+<nodenext automatic="on">numbered sub2 3</nodenext>
+<nodeprev automatic="on">numbered sub 3</nodeprev>
+<nodeup automatic="on">unnumberedsec 3</nodeup>
+</node>
+<unnumberedsubsec>
+<title>unnumbered subsection2 3</title>
+
+</unnumberedsubsec>
+<node>
+<nodename>numbered sub2 3</nodename>
+<nodeprev automatic="on">unnumbered sub2 3</nodeprev>
+<nodeup automatic="on">unnumberedsec 3</nodeup>
+</node>
+<subsection>
+<title>numbered subsection2 3</title>
+
+</subsection>
+</unnumberedsec>
+<node>
+<nodename>section 3-1</nodename>
+<nodenext automatic="on">unnumberedsec 3-2</nodenext>
+<nodeprev automatic="on">unnumberedsec 3</nodeprev>
+<nodeup automatic="on">chapter 3</nodeup>
+</node>
+<section>
+<title>section 3-1</title>
+
+</section>
+<node>
+<nodename>unnumberedsec 3-2</nodename>
+<nodenext automatic="on">section 3-3</nodenext>
+<nodeprev automatic="on">section 3-1</nodeprev>
+<nodeup automatic="on">chapter 3</nodeup>
+</node>
+<unnumberedsec>
+<title>unnumberedsec 3-2</title>
+
+<menu>
+<menuentry><menunode>numbered sub 3-2</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>numbered sub 3-2</nodename>
+<nodeup automatic="on">unnumberedsec 3-2</nodeup>
+</node>
+<subsection>
+<title>numbered subsection 3-2</title>
+
+</subsection>
+</unnumberedsec>
+<node>
+<nodename>section 3-3</nodename>
+<nodenext automatic="on">unnumberedsec 3-4</nodenext>
+<nodeprev automatic="on">unnumberedsec 3-2</nodeprev>
+<nodeup automatic="on">chapter 3</nodeup>
+</node>
+<section>
+<title>section 3-3</title>
+
+<menu>
+<menuentry><menunode>subsection 3-3</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>subsection 3-3</nodename>
+<nodeup automatic="on">section 3-3</nodeup>
+</node>
+<subsection>
+<title>subsection 3-3</title>
+
+</subsection>
+</section>
+<node>
+<nodename>unnumberedsec 3-4</nodename>
+<nodeprev automatic="on">section 3-3</nodeprev>
+<nodeup automatic="on">chapter 3</nodeup>
+</node>
+<unnumberedsec>
+<title>unnumberedsec 3-4</title>
+
+<menu>
+<menuentry><menunode>numbered sub 3-4</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>numbered sub 3-4</nodename>
+<nodeup automatic="on">unnumberedsec 3-4</nodeup>
+</node>
+<subsection>
+<title>numbered subsection 3-4</title>
+
+</subsection>
+</unnumberedsec>
+</chapter>
+<node>
+<nodename>unnumbered 4</nodename>
+<nodeprev automatic="on">chapter 3</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<unnumbered>
+<title>unnumbered  4</title>
+
+<menu>
+<menuentry><menunode>unnumberedsec 4</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>unnumberedsec 4</nodename>
+<nodeup automatic="on">unnumbered 4</nodeup>
+</node>
+<unnumberedsec>
+<title>unnumbered section 4</title>
+
+<menu>
+<menuentry><menunode>unnumbered sub 4</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>numbered sub 4</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>unnumbered sub2 4</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>numbered sub2 4</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+<node>
+<nodename>unnumbered sub 4</nodename>
+<nodenext automatic="on">numbered sub 4</nodenext>
+<nodeup automatic="on">unnumberedsec 4</nodeup>
+</node>
+<unnumberedsubsec>
+<title>unnumbered subsection 4</title>
+
+</unnumberedsubsec>
+<node>
+<nodename>numbered sub 4</nodename>
+<nodenext automatic="on">unnumbered sub2 4</nodenext>
+<nodeprev automatic="on">unnumbered sub 4</nodeprev>
+<nodeup automatic="on">unnumberedsec 4</nodeup>
+</node>
+<subsection>
+<title>numbered subsection 4</title>
+
+</subsection>
+<node>
+<nodename>unnumbered sub2 4</nodename>
+<nodenext automatic="on">numbered sub2 4</nodenext>
+<nodeprev automatic="on">numbered sub 4</nodeprev>
+<nodeup automatic="on">unnumberedsec 4</nodeup>
+</node>
+<unnumberedsubsec>
+<title>unnumbered subsection2 4</title>
+
+</unnumberedsubsec>
+<node>
+<nodename>numbered sub2 4</nodename>
+<nodeprev automatic="on">unnumbered sub2 4</nodeprev>
+<nodeup automatic="on">unnumberedsec 4</nodeup>
+</node>
+<subsection>
+<title>numbered subsection2 4</title>
+</subsection>
+</unnumberedsec>
+</unnumbered>
+';
+
 1;

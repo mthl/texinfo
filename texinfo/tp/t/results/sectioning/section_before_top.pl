@@ -669,4 +669,28 @@ Next: <a href="#section-node" accesskey="n" rel="next">section node</a>, Up: <a 
 </html>
 ';
 
+
+$result_converted{'xml'}->{'section_before_top'} = '<node>
+<nodename>section node</nodename>
+<nodeprev automatic="on">Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<section>
+<title>section</title>
+
+</section>
+<node>
+<nodename>Top</nodename>
+<nodenext automatic="on">section node</nodenext>
+<nodeup automatic="on">(dir)</nodeup>
+</node>
+<unnumberedsec originalcommand="top">
+<title>top</title>
+
+<menu>
+<menuentry><menunode>section node</menunode><menudescription>
+</menudescription></menuentry></menu>
+</unnumberedsec>
+';
+
 1;

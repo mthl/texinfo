@@ -1128,4 +1128,41 @@ Previous: <a href="#a-node-after-part" accesskey="p" rel="previous">a node after
 </html>
 ';
 
+
+$result_converted{'xml'}->{'part_node_chapter_after_top'} = '<node>
+<nodename>Top</nodename>
+<nodenext automatic="on">a node after part</nodenext>
+<nodeup automatic="on">(dir)</nodeup>
+</node>
+<top>
+<title>top</title>
+
+<menu>
+<menuentry><menunode>a node after part</menunode><menudescription>
+</menudescription></menuentry><menuentry><menunode>chapter</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+</top>
+<part>
+<title>part</title>
+
+<node>
+<nodename>a node after part</nodename>
+<nodenext>chapter</nodenext>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<para>After a node after part
+</para>
+<node>
+<nodename>chapter</nodename>
+<nodeprev automatic="on">a node after part</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<chapter>
+<title>chapter</title>
+</chapter>
+</part>
+';
+
 1;

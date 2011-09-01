@@ -426,14 +426,15 @@ sub _convert($$;$)
           $result .= "<nodename>".
              $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
              ."</nodename>\n";
-          my $direction_index = 0;
+          # first arg is the node name.
+          my $direction_index = 1;
           foreach my $direction(@node_directions) {
             if ($root->{'node_'.lc($direction)}) {
               my $node_direction = $root->{'node_'.lc($direction)};
               my $element = 'node'.lc($direction);
               my $node_name = '';
               my $attribute = '';
-              if (! defined($node_direction->{'extra'}->{'nodes_manuals'}->[$direction_index])) {
+              if (! defined($root->{'extra'}->{'nodes_manuals'}->[$direction_index])) {
                 $attribute = ' automatic="on"';
               }
               if ($node_direction->{'extra'}->{'manual_content'}) {
@@ -447,8 +448,8 @@ sub _convert($$;$)
                   'contents' => $node_direction->{'extra'}->{'node_content'}}));
               }
               $result .= "<$element${attribute}>$node_name</$element>\n";
-              $direction_index++;
             }
+            $direction_index++;
           }
           $result .= "</node>\n";
           $self->{'document_context'}->[-1]->{'code'}--;

@@ -987,4 +987,39 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 </html>
 ';
 
+
+$result_converted{'xml'}->{'double_part'} = '<node>
+<nodename>Top</nodename>
+<nodenext automatic="on">node chapter</nodenext>
+<nodeup automatic="on">(dir)</nodeup>
+</node>
+<top>
+<title>top</title>
+
+<menu>
+<menuentry><menunode>node chapter</menunode><menudescription>
+</menudescription></menuentry></menu>
+
+</top>
+<part>
+<title>part first</title>
+
+<para>Text part first.
+</para></part>
+<part>
+<title>part second</title>
+<para>Text part second.
+</para>
+<node>
+<nodename>node chapter</nodename>
+<nodeprev automatic="on">Top</nodeprev>
+<nodeup automatic="on">Top</nodeup>
+</node>
+<chapter>
+<title>chapter after 2 parts</title>
+
+</chapter>
+</part>
+';
+
 1;
