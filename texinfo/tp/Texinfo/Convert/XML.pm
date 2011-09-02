@@ -25,6 +25,7 @@
 #       menu comment -> menucomment
 #       menu entry description -> menudescription
 #       preformatted -> pre
+#       preamble
 
 
 package Texinfo::Convert::XML;
@@ -78,9 +79,9 @@ my %defaults = (
 
 my %specific_xml_commands_formatting = (
            '*' => '&linebreak;',
-           ' ' => '<spacecmd type="spc">',
-           "\t" => '<spacecmd type="tab">',
-           "\n" => '<spacecmd type="nl">',
+           ' ' => '<spacecmd type="spc"/>',
+           "\t" => '<spacecmd type="tab"/>',
+           "\n" => '<spacecmd type="nl"/>',
            '-' => '&hyphenbreak;',  # hyphenation hint
            '|' => '',  # used in formatting commands @evenfooting and friends
            '/' => '&slashbreak;',
@@ -209,7 +210,7 @@ foreach my $command (keys(%Texinfo::Common::brace_commands)) {
 }
 
 my %ignored_types;
-foreach my $type ('empty_line_after_command', 'preamble',
+foreach my $type ('empty_line_after_command',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
             'empty_spaces_after_close_brace', 
@@ -229,6 +230,7 @@ my %type_elements = (
   'menu_comment' => 'menucomment',
   'menu_entry_description' => 'menudescription',
   'menu_entry_name' => 'menutitle',
+  'preamble' => 'preamble',
 );
 
 my %context_block_commands = (

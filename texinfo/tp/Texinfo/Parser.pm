@@ -810,9 +810,13 @@ sub parse_texi_file ($$)
     }
   }
   my $root = { 'contents' => [], 'type' => 'text_root' };
-  foreach my $line (@first_lines) {
-    push @{$root->{'contents'}}, { 'text' => $line,
-                                   'type' => 'preamble' };
+  if (@first_lines) {
+    push @{$root->{'contents'}}, { 'type' => 'preamble', 'contents' => [] };
+    foreach my $line (@first_lines) {
+      push @{$root->{'contents'}->[-1]->{'contents'}}, 
+                                   { 'text' => $line,
+                                     'type' => 'preamble_text' };
+    }
   }
 
   $self = parser() if (!defined($self));
