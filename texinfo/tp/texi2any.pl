@@ -614,7 +614,7 @@ my $result_options = Getopt::Long::GetOptions (
     printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.\n"), '2008';
+There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
       exit 0;},
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
                              set_from_cmdline('MACRO_EXPAND', $_[1]); },
