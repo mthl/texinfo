@@ -1311,7 +1311,6 @@ sub _gather_previous_item($;$)
       unshift @{$table_gathered->{'contents'}}, $item_content;
     }
   }
-  # FIXME TODO Now group @item, inter_item and @itemx in table_term
   if ($type eq 'table_item') {
     my $table_entry = {'type' => 'table_entry',
                     'parent' => $current,

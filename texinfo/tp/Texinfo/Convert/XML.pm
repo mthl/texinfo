@@ -17,18 +17,20 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
-# msg Karl: printindex
+# msg Karl: <printindex value="cp"></printindex> instead of <printindex>cp</printindex>
 #           <xref> -> xref or pxref or ref
 #           drop the See
 #           @findex -> <findex><indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>
-#           @abbr do not becomes abbrev
+#           @abbr do not becomes abbrev, but stays as abbr
 #       menu comment -> menucomment
-#       menu entry description -> menudescription
+#       menu entry description -> menudescription (instead of menucomment)
 #       preformatted -> pre
-#       preamble
+#       preamble added
 #       <tableterm command="item">
 #       'command_as_argument' -> apply it?
-#       <ftable commandarg="asis">
+#       <ftable commandarg="asis"> or <itemize commandarg="bullet">
+#       in itemize <itemfunction> -> <itemprepend>?
+#       no more <floatpos>
 
 
 package Texinfo::Convert::XML;
@@ -194,6 +196,7 @@ my %commands_args_elements = (
               'alttext', 'imageextension'],
   'quotation' => ['quotationtype'],
   'float' => ['floatname', 'floattype'],
+  'itemize' => ['itemfunction'],
 );
 
 foreach my $ref_cmd ('pxref', 'xref', 'ref') {
@@ -238,6 +241,8 @@ my %type_elements = (
   'menu_entry_description' => 'menudescription',
   'menu_entry_name' => 'menutitle',
   'preamble' => 'preamble',
+  'table_item' => 'item',
+  'table_entry' => 'tableitem',
 );
 
 my %context_block_commands = (
@@ -355,6 +360,23 @@ sub _level_corrected_section($)
   return $command;
 }
 
+sub _index_entry($$)
+{
+  my $self = shift;
+  my $root = shift;
+  if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
+    my $index_entry = $root->{'extra'}->{'index_entry'};
+    my $result = "<indexterm index=\"$index_entry->{'index_name'}\">";
+    push @{$self->{'document_context'}}, {};
+    $self->{'document_context'}->[-1]->{'code'}++ 
+      if ($index_entry->{'in_code'});
+    $result .= $self->_convert({'contents' => $index_entry->{'content'}});
+    pop @{$self->{'document_context'}};
+    return $result ."</indexterm>"
+  }
+  return '';
+}
+
 my @node_directions = ('Next', 'Prev', 'Up');
 
 sub convert($$;$)
@@ -394,7 +416,9 @@ sub _convert($$;$)
         $result =~ s/--/&textndash;/g;
       }
     }
+    return $result;
   }
+  my $close_element;
   if ($root->{'cmdname'}) {
     if (defined($xml_commands_formatting{$root->{'cmdname'}})) {
       if ($root->{'cmdname'} eq 'click' 
@@ -409,9 +433,44 @@ sub _convert($$;$)
         if ($root->{'args'} and $root->{'args'}->[0]);
       $result .= '</accent>';
       return $result;
+   # } elsif ($root->{'cmdname'} eq 'item' and 
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
       # TODO
+      if ($root->{'cmdname'} eq 'item'
+          and $root->{'parent'}->{'cmdname'}
+          and ($root->{'parent'}->{'cmdname'} eq 'itemize'
+               or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
+        $result .= "<item>";
+        $close_element = 'item';
+      } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
+               and $root->{'parent'}->{'type'} 
+               and $root->{'parent'}->{'type'} eq 'table_term') {
+        my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
+        my $format_item_attribute;
+        my $format_item_command;
+        if ($table_command->{'extra'} 
+            and $table_command->{'extra'}->{'command_as_argument'}) {
+          $format_item_command 
+            = $table_command->{'extra'}->{'command_as_argument'}->{'cmdname'};
+          $format_item_attribute = " itemfunction=\"$format_item_command\"";
+        } else {
+          $format_item_attribute = '';
+        }
+        $result .= "<tableterm command=\"$root->{'cmdname'}\"${format_item_attribute}>";
+        $result .= $self->_index_entry($root);
+        # FIXME
+        my $in_code;
+        $in_code = 1
+          if ($format_item_command 
+              and defined($commands_args_style{$format_item_command})
+              and defined($commands_args_style{$format_item_command}->[0]));
+        $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+        $result .= $self->_convert($root->{'args'}->[0]);
+        $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+        chomp ($result);
+        $result .= "</tableterm>\n";
+      }
     } elsif (exists($xml_misc_commands{$root->{'cmdname'}})) {
       my $command;
       if (exists ($xml_misc_elements_with_arg_map{$root->{'cmdname'}})) {
@@ -591,6 +650,11 @@ sub _convert($$;$)
       if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
         $attribute 
          .= " commandarg=\"$root->{'extra'}->{'command_as_argument'}->{'cmdname'}\"";
+      } elsif ($root->{'extra'}
+               and $root->{'extra'}->{'enumerate_specification'}) {
+        $attribute .= " first=\""
+          .$self->xml_protect_text($root->{'extra'}->{'enumerate_specification'})
+          ."\"";
       }
       $result .= "<$root->{'cmdname'}${attribute}>";
       if ($root->{'args'} and $commands_args_elements{$root->{'cmdname'}}) {
@@ -617,6 +681,7 @@ sub _convert($$;$)
       }
       chomp($result);
       $result .= "\n";
+      $close_element = $root->{'cmdname'};
     }
   }
     #} elsif ($root->{'cmdname'} eq 'item' 
@@ -689,9 +754,13 @@ sub _convert($$;$)
          and (!$root->{'parent'}->{'type'} or
               ($root->{'parent'}->{'type'} ne 'block_line_arg'
                and $root->{'parent'}->{'type'} ne 'misc_line_arg')));
+  if ($close_element) {
+    $result .= "</$close_element>";
+  }
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
-    $result .= "</$root->{'cmdname'}>\n";
+    #$result .= "</$root->{'cmdname'}>\n";
+    $result .= "\n";
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
@@ -719,24 +788,12 @@ sub _convert($$;$)
 
 
 #set_default('NUMBER_SECTIONS', 0);
-#node special
-
 
 #special -> args -> {type 'misc_arg' , text }
 
 # anchor, node and float -> add a name="->normalized" attribute
-
-#_parse_line_command_args (number of args) 
-#  'args' => {'type' => 'misc_line_arg',  'contents' => []}
-#  'extra' => { 'misc_args' => []}
-  
+# float
 #    my $result = "<float name=\"$label_texi\">\n";
-#    my $style = $float->{'style'};
-#    $style = '' if (!defined($style));
-#    $result .= "<floattype>$style</floattype>\n";
-#    $result .= "<floatpos></floatpos>\n";
-#    $result .= $text;
-#    return $result."</float>\n";
 
 #        return '<verbatim xml:space="preserve">' . &$protect_text($text) . '</verbatim>';
 
@@ -745,20 +802,6 @@ sub _convert($$;$)
 #If prototypes are used, something along
 #<columnprototype fraction="0.7">prototy</columnprototype><columnprototype fraction="0.5">pro</columnprototype>
 
-#<nodenext explicit="on">next node</nodenext>
-
-#<table><tableitem><item>@item<item>
-#<item>@itemx</item> </tableitem>
-#<tableterm>$text ."</tableterm>\n";
-#sub xml_table_line($)
-#        return "<item>$text</item>" unless $only_inter_item_commands;
-#
-#    $result .= $text ."</tableterm>\n";
-
-
-#sub xml_list_item($$$$$$$$$)
-#    return '<item>' . $text . "</item>\n";
-#
 #sub xml_row($$;$$)
 #<thead>@headitem ... </thead>
 #<tbody>@item... </tbody>
@@ -766,18 +809,9 @@ sub _convert($$;$)
 
 #cell
 #    return "<entry>" . $text . '</entry>';
-#
-#<$format_command>
-#itemize
-#<itemfunction>$itemfunction</itemfunction>
-#enumerate
-#<$format_command first=\"$enumerate_style\">
 
 # $complex_format_map{$complex_format}->{'begin'} = "<$complex_format xml:space=\"preserve\">";
 #   $complex_format_map{$complex_format}->{'end'} = "</$complex_format>";
-
-#xml_index_entry_label
-#    return "<indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>";
 
 #   my $tag = 'inlineimage';
 #    $tag = 'image' if ($preformatted or !$in_paragraph);
