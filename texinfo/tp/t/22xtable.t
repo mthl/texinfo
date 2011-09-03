@@ -163,7 +163,18 @@ In item.
 text
 @itemx in itemx
 @end table
-']
+'],
+['itemx_before_item',
+'@table @emph
+@itemx in itemx
+@end table
+'],
+['title_and_itemx_before_item',
+'@table @emph
+Title
+@itemx in itemx
+@end table
+'],
 );
 
 foreach my $test (@test_cases) {

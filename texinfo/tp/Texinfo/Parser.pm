@@ -1252,6 +1252,11 @@ sub _gather_previous_item($;$)
   my $current = shift;
   my $next_command = shift;
 
+  # nothing to do in that case.
+  if ($current->{'contents'}->[-1]->{'type'}
+      and $current->{'contents'}->[-1]->{'type'} eq 'before_item') {
+    return;
+  }
   #print STDERR "GATHER "._print_current($current)."\n";
   my $type;
   # if before an itemx, the type is different since there should not be 
@@ -1261,29 +1266,65 @@ sub _gather_previous_item($;$)
   } else {
     $type = 'table_item';
   }
-  my $table_item = {'type' => $type,
-                    'parent' => $current,
-                    'contents' => []};
+  my $table_gathered = {'type' => $type,
+                       'contents' => []};
   # remove everything that is not an @item/@items or before_item to 
   # put it in the table_item, starting from the end.
   my $contents_count = scalar(@{$current->{'contents'}});
   for (my $i = 0; $i < $contents_count; $i++) {
     #print STDERR "_gather_previous_item $i on $contents_count: "._print_current($current->{'contents'}->[-1])."\n";
-    if (($current->{'contents'}->[-1]->{'type'} 
-         and $current->{'contents'}->[-1]->{'type'} eq 'before_item')
-        or ($current->{'contents'}->[-1]->{'cmdname'} 
-            and ($current->{'contents'}->[-1]->{'cmdname'} eq 'item' 
-                 or ($current->{'contents'}->[-1]->{'cmdname'} eq 'itemx')))) {
+    if ($current->{'contents'}->[-1]->{'cmdname'} 
+        and ($current->{'contents'}->[-1]->{'cmdname'} eq 'item' 
+             or ($current->{'contents'}->[-1]->{'cmdname'} eq 'itemx'))) {
       last;
     } else {
       my $item_content = pop @{$current->{'contents'}};
-      $item_content->{'parent'} = $table_item;
-      unshift @{$table_item->{'contents'}}, $item_content;
+      $item_content->{'parent'} = $table_gathered;
+      unshift @{$table_gathered->{'contents'}}, $item_content;
     }
   }
+  # FIXME TODO Now group @item, inter_item and @itemx in table_term
+  if (0 and $type eq 'table_item') {
+    my $table_entry = {'type' => 'table_entry',
+                    'parent' => $current,
+                    'contents' => []};
+    my $table_term = {'type' => 'table_term',
+                    'parent' => $table_entry,
+                    'contents' => []};
+    push @{$table_entry->{'contents'}}, $table_term;
+    my $contents_count = scalar(@{$current->{'contents'}});
+    for (my $i = 0; $i < $contents_count; $i++) {
+      if ($current->{'contents'}->[-1]->{'type'} 
+           and ($current->{'contents'}->[-1]->{'type'} eq 'before_item'
+                or $current->{'contents'}->[-1]->{'type'} eq 'table_entry')) {
+        last;
+      } else {
+        my $item_content = pop @{$current->{'contents'}};
+        $item_content->{'parent'} = $table_term;
+        unshift @{$table_term->{'contents'}}, $item_content;
+        # debug
+        if (! (($item_content->{'cmdname'} 
+                and ($item_content->{'cmdname'} eq 'itemx'
+                    or $item_content->{'cmdname'} eq 'item'))
+               or ($item_content->{'type'} 
+                   and $item_content->{'type'} eq 'inter_item'))) {
+          print STDERR "BUG: wrong element in table term: "
+             ._print_current($item_content);
+        }
+      }
+    }
+    push @{$current->{'contents'}}, $table_entry;
+    if (scalar(@{$table_gathered->{'contents'}})) {
+      push @{$table_entry->{'contents'}}, $table_gathered;
+      $table_gathered->{'parent'} = $table_entry;
+    }
+  } else {
   # FIXME keep table_item with only comments and/or empty lines?
-  if (scalar(@{$table_item->{'contents'}})) {
-    push @{$current->{'contents'}}, $table_item;
+  # FIXME check that there are only comments, empty preformatted and indices
+    if (scalar(@{$table_gathered->{'contents'}})) {
+      push @{$current->{'contents'}}, $table_gathered;
+      $table_gathered->{'parent'} = $current;
+    }
   }
 }
 
@@ -1374,8 +1415,8 @@ sub _close_command_cleanup($$$) {
     if (@{$current->{'contents'}}) {
       my $leading_spaces = 0;
       my $before_item;
-      if ($current->{'contents'}->[0]->{'type'} and 
-          $current->{'contents'}->[0]->{'type'} eq 'empty_line_after_command'
+      if ($current->{'contents'}->[0]->{'type'}
+          and $current->{'contents'}->[0]->{'type'} eq 'empty_line_after_command'
           and $current->{'contents'}->[1]
           and $current->{'contents'}->[1]->{'type'}
           and $current->{'contents'}->[1]->{'type'} eq 'before_item') {
@@ -1397,6 +1438,7 @@ sub _close_command_cleanup($$$) {
         if (!@{$before_item->{'contents'}}) {
           if ($leading_spaces) {
             my $space = shift @{$current->{'contents'}};
+            shift @{$current->{'contents'}};
             unshift @{$current->{'contents'}}, $space;
           } else {
             shift @{$current->{'contents'}};

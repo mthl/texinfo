@@ -26,6 +26,9 @@
 #       menu entry description -> menudescription
 #       preformatted -> pre
 #       preamble
+#       <tableterm command="item">
+#       'command_as_argument' -> apply it?
+#       <ftable commandarg="asis">
 
 
 package Texinfo::Convert::XML;
@@ -177,6 +180,10 @@ my %commands_args_style = (
 # and type?
   'float' => ['code'],
 );
+
+foreach my $code_style_command (keys(%Texinfo::Common::code_style_commands)) {
+  $commands_args_style{$code_style_command} = ['code']; 
+}
 
 my %commands_args_elements = (
   'email' => ['emailaddress', 'emailname'],
@@ -402,6 +409,9 @@ sub _convert($$;$)
         if ($root->{'args'} and $root->{'args'}->[0]);
       $result .= '</accent>';
       return $result;
+    } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
+             or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
+      # TODO
     } elsif (exists($xml_misc_commands{$root->{'cmdname'}})) {
       my $command;
       if (exists ($xml_misc_elements_with_arg_map{$root->{'cmdname'}})) {
@@ -468,7 +478,6 @@ sub _convert($$;$)
             if ($root->{'args'} and $root->{'args'}->[0]);
          # FIXME index entry + new index entries that should appear elsewhere
         #} elsif {
-          
         } else {
           my $attribute = '';
           if ($root->{'cmdname'} eq 'listoffloats' and $root->{'extra'} 
@@ -578,7 +587,36 @@ sub _convert($$;$)
       if ($context_block_commands{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
       }
-      $result .= "<$root->{'cmdname'}>\n";
+      my $attribute = '';
+      if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
+        $attribute 
+         .= " commandarg=\"$root->{'extra'}->{'command_as_argument'}->{'cmdname'}\"";
+      }
+      $result .= "<$root->{'cmdname'}${attribute}>";
+      if ($root->{'args'} and $commands_args_elements{$root->{'cmdname'}}) {
+        my $arg_index = 0;
+        foreach my $element (@{$commands_args_elements{$root->{'cmdname'}}}) {
+          if (defined($root->{'args'}->[$arg_index])) {
+            my $in_code;
+            $in_code = 1
+              if (defined($commands_args_style{$root->{'cmdname'}})
+                and defined($commands_args_style{$root->{'cmdname'}}->[$arg_index]));
+            $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+            my $arg = $self->_convert($root->{'args'}->[$arg_index]);
+            chomp($arg);
+            if ($arg ne '') {
+              
+              $result .= "<$element>$arg</$element>\n";
+            }
+            $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+          } else {
+            last;
+          }
+          $arg_index++;
+        }
+      }
+      chomp($result);
+      $result .= "\n";
     }
   }
     #} elsif ($root->{'cmdname'} eq 'item' 
@@ -748,44 +786,6 @@ sub _convert($$;$)
 #quotation
 #    return "<$command>\n" . $text . "</$command>\n";
 
-# node:
-#        $result .= xml_close_section();
-#     $result .= "<node>\n";
-#
-# section:
-#     $result .= xml_close_section();
-#        $xml_current_section = $element;
-
-#xml_close_section
-#   my $element = $xml_current_section;
-#   if (!defined($element))
-#    {
-#        return '';
-#    }
-#    my $result = '';
-
-#    $xml_current_section = undef;
-#    # there is a special case for a @chapter that is a child of @top
-#    # but should not be considered as is, since it is also toplevel.
-#    # @part, however may have other toplevel elements as children.
-#    return '' if ($element->{'child'} and (!$element->{'child'}->{'toplevel'} or $element->{'tag'} ne 'top'));
-#    $result .= '</'.xml_element_tag($element).">\n";
-#
-#    my $current = $element;
-#    # the second condition is such that top is closed only if it has
-#    # sub-elements below chapter.
-#    # the third condition is such that elements with a next element are
-#    # only closed for the last element, except when the next element is 
-#    # toplevel and below top, such that @top is closed before the first 
-#    # @chapter if there are @section or the like below @top
-#    while ($current->{'sectionup'} and !($current->{'sectionup'}->{'tag'} eq 'top' and $current->{'toplevel'}) and (!$current->{'childnext'} or ($current->{'childnext'}->{'toplevel'} and $current->{'sectionup'}->{'tag'} eq 'top')))
-#    {
-#        $current = $current->{'sectionup'};
-#        $result .= '</'.xml_element_tag($current).">\n";
-#    }
-#    return $result;
-#
-#
 #%def_format_xml = (
 #  'deffn' => [ ['category', 'category'], ['function', 'name'] ],
 #   'defvr' => [ ['category', 'category'], ['variable', 'name'] ],

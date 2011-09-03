@@ -1,3 +1,10 @@
+Enhance @table formatting: group together all the @item
+and @itemx and things in between and group this with
+table_item
+table_entry -> the whole?
+table_term -> all @item?x
+table_item -> the text
+
 @appendix should stop @part. Right now it do not do that.
 Cf sectioning_part_appendix.
 
@@ -18,6 +25,8 @@ remove _*directions('This' and replace with new API. Done?
 
 There should be an error message (report by Tom Tromey) in 
 t/results/xtable/text_between_item_itemx.pl
+
+There should be a warning when beginning a table item with @itemx.
 
 Verify that there is a test with a node both internal and external 
 ref, like
