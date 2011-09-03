@@ -41,6 +41,7 @@ use Encode;
 # for i18n
 use Locale::Messages;
 
+#use POSIX qw(setlocale LC_ALL LC_CTYPE LC_MESSAGES);
 
 # commands definitions
 use Texinfo::Common;
@@ -122,7 +123,13 @@ sub gdt($$;$$)
   my $re = join '|', map { quotemeta $_ } keys %$context
       if (defined($context) and ref($context));
 
+  my $saved_env_LC_ALL = $ENV{'LC_ALL'};
   my $saved_LANGUAGE = $ENV{'LANGUAGE'};
+#  my $saved_LANG = $ENV{'LANG'};
+#  my $saved_LC_ALL = POSIX::setlocale (LC_ALL);
+#  my $saved_LC_CTYPE = POSIX::setlocale (LC_CTYPE);
+#  my $saved_LC_MESSAGES = POSIX::setlocale (LC_MESSAGES);
+
   Locale::Messages::textdomain($strings_textdomain);
   Locale::Messages::bind_textdomain_codeset($strings_textdomain, $encoding)
     if ($encoding and $encoding ne 'us-ascii');
@@ -176,6 +183,27 @@ sub gdt($$;$$)
   } else {
     $ENV{'LANGUAGE'} = $saved_LANGUAGE;
   }
+  if (!defined($saved_env_LC_ALL)) {
+    delete ($ENV{'LC_ALL'});
+  } else {
+    $ENV{'LC_ALL'} = $saved_env_LC_ALL;
+  }
+#  my $new_LC_ALL = POSIX::setlocale (LC_ALL);
+#  my $new_LC_CTYPE = POSIX::setlocale (LC_CTYPE);
+#  my $new_LC_MESSAGES = POSIX::setlocale (LC_MESSAGES);
+#  my $new_env_LC_ALL = 'UNDEF';
+#  $new_env_LC_ALL = $ENV{'LC_ALL'} if defined($ENV{'LC_ALL'});
+#  my $saved_str_env_LC_ALL = $saved_env_LC_ALL;
+#  $saved_str_env_LC_ALL = 'UNDEF' if (!defined($saved_str_env_LC_ALL));
+
+#  print STDERR "  LC_ALL $saved_LC_ALL $new_LC_ALL ENV: $saved_str_env_LC_ALL $new_env_LC_ALL\n";
+#  print STDERR "  LC_CTYPE $saved_LC_CTYPE $new_LC_CTYPE\n";
+#  print STDERR "  LC_MESSAGES $saved_LC_MESSAGES $new_LC_MESSAGES\n";
+#  my $new_LANG = 'UNDEF';
+#  $new_LANG = $ENV{'LANG'} if defined($ENV{'LANG'});
+#  my $saved_str_LANG = $saved_LANG;
+#  $saved_str_LANG = 'UNDEF' if (!defined($saved_str_LANG));
+#  print STDERR "  LANG $saved_str_LANG $new_LANG\n";
 
   my $parser_conf;
   # we change the substituted brace-enclosed strings to values, that
