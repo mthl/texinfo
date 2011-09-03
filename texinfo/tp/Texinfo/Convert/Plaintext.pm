@@ -1748,8 +1748,9 @@ sub _convert($$)
             and $root->{'args'}->[0]->{'type'} eq 'misc_line_arg') {
       if ($root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
         my $contents = $root->{'extra'}->{'misc_content'};
-        if ($root->{'parent'}->{'extra'} and $root->{'parent'}->{'extra'}->{'command_as_argument'}) {
-          my $command_as_argument = $root->{'parent'}->{'extra'}->{'command_as_argument'};
+        my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
+        if ($table_command->{'extra'} and $table_command->{'extra'}->{'command_as_argument'}) {
+          my $command_as_argument = $table_command->{'extra'}->{'command_as_argument'};
           if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
             $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
                      'args' => [{'type' => 'brace_command_arg', 

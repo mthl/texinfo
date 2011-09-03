@@ -2630,17 +2630,16 @@ sub _convert_item_command($$$$)
     } else {
       return '';
     }
-  } elsif ($command->{'parent'}->{'cmdname'}
-      and ($command->{'parent'}->{'cmdname'} eq 'table'
-           or $command->{'parent'}->{'cmdname'} eq 'ftable'
-           or $command->{'parent'}->{'cmdname'} eq 'vtable')) {
+  } elsif ($command->{'parent'}->{'type'}
+           and $command->{'parent'}->{'type'} eq 'table_term') {
     my $args = $content;
     if ($args->[0]) {
       my $tree = $args->[0]->{'tree'};
-      if ($command->{'parent'}->{'extra'} 
-          and $command->{'parent'}->{'extra'}->{'command_as_argument'}) {
+      my $table_command = $command->{'parent'}->{'parent'}->{'parent'};
+      if ($table_command->{'extra'} 
+          and $table_command->{'extra'}->{'command_as_argument'}) {
         my $command_as_argument 
-          = $command->{'parent'}->{'extra'}->{'command_as_argument'};
+          = $table_command->{'extra'}->{'command_as_argument'};
         if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
           $tree = {'cmdname' => $command_as_argument->{'cmdname'},
                    'args' => [{'type' => 'brace_command_arg',
@@ -6415,10 +6414,8 @@ sub _convert($$;$)
           or ($misc_commands{$command_name} 
               and $misc_commands{$command_name} eq 'line')
           or (($command_name eq 'item' or $command_name eq 'itemx')
-               and ($root->{'parent'}->{'cmdname'}
-                    and ($root->{'parent'}->{'cmdname'} eq 'table'
-                         or $root->{'parent'}->{'cmdname'} eq 'ftable'
-                         or $root->{'parent'}->{'cmdname'} eq 'vtable')))
+               and ($root->{'parent'}->{'type'}
+                    and $root->{'parent'}->{'type'} eq 'table_term'))
           or ($command_name eq 'quotation' 
               or $command_name eq 'smallquotation')
               or ($command_name eq 'float')) {

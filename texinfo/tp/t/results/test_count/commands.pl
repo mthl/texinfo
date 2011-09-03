@@ -316,77 +316,89 @@ $result_trees{'commands'} = {
       'cmdname' => 'vtable',
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
               'contents' => [
                 {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'extra' => {
+                            'command' => {}
+                          },
+                          'parent' => {},
+                          'text' => ' ',
+                          'type' => 'empty_spaces_after_command'
+                        },
+                        {
+                          'parent' => {},
+                          'text' => 'vitem table'
+                        },
+                        {
+                          'parent' => {},
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
+                        }
+                      ],
+                      'parent' => {},
+                      'type' => 'misc_line_arg'
+                    }
+                  ],
+                  'cmdname' => 'item',
                   'extra' => {
-                    'command' => {}
+                    'index_entry' => {
+                      'command' => {},
+                      'content' => [
+                        {}
+                      ],
+                      'in_code' => 1,
+                      'index_at_command' => 'vtable',
+                      'index_name' => 'vr',
+                      'index_prefix' => 'v',
+                      'key' => 'vitem table',
+                      'number' => 1
+                    },
+                    'misc_content' => []
                   },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'vitem table'
-                },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 13,
+                    'macro' => ''
+                  },
+                  'parent' => {}
+                }
+              ],
+              'parent' => {},
+              'type' => 'table_term'
+            },
+            {
+              'contents' => [
                 {
                   'parent' => {},
                   'text' => '
 ',
-                  'type' => 'spaces_at_end'
-                }
-              ],
-              'parent' => {},
-              'type' => 'misc_line_arg'
-            }
-          ],
-          'cmdname' => 'item',
-          'extra' => {
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'vtable',
-              'index_name' => 'vr',
-              'index_prefix' => 'v',
-              'key' => 'vitem table',
-              'number' => 1
-            },
-            'misc_content' => []
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line'
-            },
-            {
-              'contents' => [
+                  'type' => 'empty_line'
+                },
                 {
-                  'parent' => {},
-                  'text' => 'text
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'text
 '
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'paragraph'
                 }
               ],
               'parent' => {},
-              'type' => 'paragraph'
+              'type' => 'table_item'
             }
           ],
           'parent' => {},
-          'type' => 'table_item'
+          'type' => 'table_entry'
         },
         {
           'args' => [
@@ -495,28 +507,30 @@ $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $
 $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'args'}[0];
 $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'args'}[0];
 $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'extra'}{'index_entry'}{'content'};
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'};
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[0];
 $result_trees{'commands'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'contents'}[1];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'args'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'args'}[0];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[9];
 $result_trees{'commands'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[9];
-$result_trees{'commands'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[9];
 $result_trees{'commands'}{'contents'}[9]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[9]{'extra'}{'command_as_argument'} = $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[1];
-$result_trees{'commands'}{'contents'}[9]{'extra'}{'end_command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[2];
+$result_trees{'commands'}{'contents'}[9]{'extra'}{'end_command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[9]{'parent'} = $result_trees{'commands'};
 
 $result_texis{'commands'} = '@TeX{}. Ab. @@. @
@@ -616,27 +630,31 @@ $result_converted{'debugcount'}->{'commands'} = ' [1] (0,0) :text_root
   [24] (46,9) :empty_line:text|\\n|
   [24] (47,10)
   [25] (47,10) @vtable
-   [26] (47,10) @item
-    [27] (47,10) :frenchspacing
-     [28] (47,10) @samp
-      [29] (47,10) :brace_command_arg
-       [30] (47,10) :text|vitem table|
-       [30] (53,10)
+   [26] (47,10) :table_entry
+    [27] (47,10) :table_term
+     [28] (47,10) @item
+      [29] (47,10) :frenchspacing
+       [30] (47,10) @samp
+        [31] (47,10) :brace_command_arg
+         [32] (47,10) :text|vitem table|
+         [32] (53,10)
  locations  (1) l 10
+        [31] (53,10)
+       [30] (53,10)
       [29] (53,10)
-     [28] (53,10)
-    [27] (53,10)
-   [26] (61,11)
-   [31] (61,11) :table_item
-    [32] (61,11) :empty_line:text|\\n|
-    [32] (62,12)
-    [33] (62,12) :paragraph
-     [34] (62,12) :text|text\\n|
-     [34] (71,12)
+     [28] (61,11)
+    [27] (61,11)
+    [33] (61,11) :table_item
+     [34] (61,11) :empty_line:text|\\n|
+     [34] (62,12)
+     [35] (62,12) :paragraph
+      [36] (62,12) :text|text\\n|
+      [36] (71,12)
+     [35] (72,13)
     [33] (72,13)
-   [31] (72,13)
-   [35] (72,13) @end
-   [35] (72,13)
+   [26] (72,13)
+   [37] (72,13) @end
+   [37] (72,13)
   [25] (72,13)
  [1] (72,13)
 TeX. Ab.  @.  e~, i^

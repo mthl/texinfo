@@ -1284,7 +1284,7 @@ sub _gather_previous_item($;$)
     }
   }
   # FIXME TODO Now group @item, inter_item and @itemx in table_term
-  if (0 and $type eq 'table_item') {
+  if ($type eq 'table_item') {
     my $table_entry = {'type' => 'table_entry',
                     'parent' => $current,
                     'contents' => []};
