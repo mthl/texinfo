@@ -443,7 +443,7 @@ sub _convert($$;$)
                or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
         $result .= "<item>";
         $close_element = 'item';
-      } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
+      } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
                and $root->{'parent'}->{'type'} 
                and $root->{'parent'}->{'type'} eq 'table_term') {
         my $table_command = $root->{'parent'}->{'parent'}->{'parent'};

@@ -1395,13 +1395,36 @@ sub _gather_def_item($;$)
 sub _close_command_cleanup($$$) {
   my $self = shift;
   my $current = shift;
-# remove the dynamic counters in multitable, they are not of use in the final
-# tree
+
   return unless ($current->{'cmdname'});
+  # remove the dynamic counters in multitable, they are not of use in the final
+  # tree.  Also determine the multitable_body and multitable_head with 
+  # @item or @headitem rows.
   if ($current->{'cmdname'} eq 'multitable') {
-    foreach my $row (@{$current->{'contents'}}) {
+    my $in_head_or_rows;
+    my @contents = @{$current->{'contents'}};
+    $current->{'contents'} = [];
+    foreach my $row (@contents) {
       if ($row->{'type'} and $row->{'type'} eq 'row') {
         delete $row->{'cells_count'};
+        if ($row->{'contents'}->[0]->{'cmdname'} eq 'headitem') {
+          if (!$in_head_or_rows) {
+            push @{$current->{'contents'}}, {'type' => 'multitable_head',
+                                             'parent' => $current};
+            $in_head_or_rows = 1;
+          }
+        } elsif ($row->{'contents'}->[0]->{'cmdname'} eq 'item') {
+          if (!defined($in_head_or_rows) or $in_head_or_rows) {
+            push @{$current->{'contents'}}, {'type' => 'multitable_body',
+                                             'parent' => $current};
+            $in_head_or_rows = 0;
+          }
+        }
+        push @{$current->{'contents'}->[-1]->{'contents'}}, $row;
+        $row->{'parent'} = $current->{'contents'}->[-1];
+      } else {
+        push @{$current->{'contents'}}, $row;
+        $in_head_or_rows = undef;
       }
     }
     delete $current->{'rows_count'};

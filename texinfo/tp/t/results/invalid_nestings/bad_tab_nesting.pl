@@ -58,91 +58,97 @@ $result_trees{'bad_tab_nesting'} = {
         {
           'contents' => [
             {
-              'cmdname' => 'item',
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
+                  'cmdname' => 'item',
                   'contents' => [
                     {
+                      'extra' => {
+                        'command' => {}
+                      },
                       'parent' => {},
-                      'text' => 'truc
-'
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'args' => [
+                      'contents' => [
                         {
-                          'contents' => [],
                           'parent' => {},
-                          'type' => 'brace_command_arg'
+                          'text' => 'truc
+'
+                        },
+                        {
+                          'args' => [
+                            {
+                              'contents' => [],
+                              'parent' => {},
+                              'type' => 'brace_command_arg'
+                            }
+                          ],
+                          'cmdname' => 'code',
+                          'contents' => [],
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 3,
+                            'macro' => ''
+                          },
+                          'parent' => {}
                         }
                       ],
-                      'cmdname' => 'code',
-                      'contents' => [],
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
-                      },
-                      'parent' => {}
+                      'parent' => {},
+                      'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'paragraph'
-                }
-              ],
-              'extra' => {
-                'cell_number' => 1
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'cmdname' => 'tab',
-              'contents' => [
-                {
                   'extra' => {
-                    'command' => {}
+                    'cell_number' => 1
                   },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 2,
+                    'macro' => ''
+                  },
+                  'parent' => {}
                 },
                 {
+                  'cmdname' => 'tab',
                   'contents' => [
                     {
+                      'extra' => {
+                        'command' => {}
+                      },
                       'parent' => {},
-                      'text' => 'bidule
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'bidule
 '
+                        }
+                      ],
+                      'parent' => {},
+                      'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'paragraph'
+                  'extra' => {
+                    'cell_number' => 2,
+                    'invalid_nesting' => 1
+                  },
+                  'line_nr' => {},
+                  'parent' => {}
                 }
               ],
               'extra' => {
-                'cell_number' => 2,
-                'invalid_nesting' => 1
+                'row_number' => 1
               },
-              'line_nr' => {},
-              'parent' => {}
+              'parent' => {},
+              'type' => 'row'
             }
           ],
-          'extra' => {
-            'row_number' => 1
-          },
           'parent' => {},
-          'type' => 'row'
+          'type' => 'multitable_body'
         },
         {
           'args' => [
@@ -220,19 +226,20 @@ $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'conte
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'line_nr'};
-$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'args'}[0];

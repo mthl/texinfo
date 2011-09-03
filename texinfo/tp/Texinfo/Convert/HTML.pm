@@ -2690,7 +2690,7 @@ sub _convert_tab_command ($$$$)
   my $cell_nr = $command->{'extra'}->{'cell_number'};
   my $row = $command->{'parent'};
   my $row_cmdname = $row->{'contents'}->[0]->{'cmdname'};
-  my $multitable = $row->{'parent'};
+  my $multitable = $row->{'parent'}->{'parent'};
 
   my $fractions = '';
   if ($multitable->{'extra'}->{'columnfractions'} and 
