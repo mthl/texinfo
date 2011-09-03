@@ -746,6 +746,7 @@ $result_trees{'no_element'} = {
           'content' => [
             {}
           ],
+          'content_normalized' => [],
           'in_code' => 0,
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
@@ -888,6 +889,7 @@ $result_trees{'no_element'}{'contents'}[19]{'args'}[0]{'contents'}[2]{'parent'} 
 $result_trees{'no_element'}{'contents'}[19]{'args'}[0]{'parent'} = $result_trees{'no_element'}{'contents'}[19];
 $result_trees{'no_element'}{'contents'}[19]{'extra'}{'index_entry'}{'command'} = $result_trees{'no_element'}{'contents'}[19];
 $result_trees{'no_element'}{'contents'}[19]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'no_element'}{'contents'}[19]{'args'}[0]{'contents'}[1];
+$result_trees{'no_element'}{'contents'}[19]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'no_element'}{'contents'}[19]{'extra'}{'index_entry'}{'content'};
 $result_trees{'no_element'}{'contents'}[19]{'extra'}{'misc_content'} = $result_trees{'no_element'}{'contents'}[19]{'extra'}{'index_entry'}{'content'};
 $result_trees{'no_element'}{'contents'}[19]{'parent'} = $result_trees{'no_element'};
 

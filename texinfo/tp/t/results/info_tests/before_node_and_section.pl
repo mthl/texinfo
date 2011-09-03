@@ -142,6 +142,7 @@ $result_trees{'before_node_and_section'} = {
                   'content' => [
                     {}
                   ],
+                  'content_normalized' => [],
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
@@ -831,6 +832,7 @@ $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'command'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'content'};
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'content'};
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0];
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[0];

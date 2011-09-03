@@ -187,6 +187,7 @@ $result_trees{'on_index_entry_line'} = {
             {},
             {}
           ],
+          'content_normalized' => [],
           'in_code' => 0,
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
@@ -244,6 +245,7 @@ $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'con
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[5] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[6] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[7];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[7] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8];
+$result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'};
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'};
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'line_nr'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'parent'} = $result_trees{'on_index_entry_line'};

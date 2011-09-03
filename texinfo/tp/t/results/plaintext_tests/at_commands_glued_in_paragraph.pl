@@ -520,6 +520,7 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
               'content' => [
                 {}
               ],
+              'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
@@ -632,6 +633,7 @@ $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'a
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'command'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'};
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'};
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[2]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'};

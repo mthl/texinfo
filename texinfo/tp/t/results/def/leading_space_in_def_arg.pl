@@ -97,6 +97,9 @@ $result_trees{'leading_space_in_def_arg'} = {
               'content' => [
                 {}
               ],
+              'content_normalized' => [
+                {}
+              ],
               'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
@@ -134,6 +137,7 @@ $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'extra'}
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'line_nr'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'parent'} = $result_trees{'leading_space_in_def_arg'};
