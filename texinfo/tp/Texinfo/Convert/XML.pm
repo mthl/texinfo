@@ -243,6 +243,9 @@ my %type_elements = (
   'preamble' => 'preamble',
   'table_item' => 'item',
   'table_entry' => 'tableitem',
+  'row' => 'row',
+  'multitable_head' => 'thead',
+  'multitable_body' => 'tbody',
 );
 
 my %context_block_commands = (
@@ -470,6 +473,17 @@ sub _convert($$;$)
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
         chomp ($result);
         $result .= "</tableterm>\n";
+      } else {
+        unless (($root->{'cmdname'} eq 'item' 
+                     or $root->{'cmdname'} eq 'headitem'
+                     or $root->{'cmdname'} eq 'tab')
+                    and $root->{'parent'}->{'type'}
+                    and $root->{'parent'}->{'type'} eq 'row') {
+          print STDERR "HHH ".Texinfo::Parser::_print_current($root);
+        }
+        
+        $result .= "<entry command=\"$root->{'cmdname'}\">";
+        $close_element = 'entry';
       }
     } elsif (exists($xml_misc_commands{$root->{'cmdname'}})) {
       my $command;
@@ -801,14 +815,6 @@ sub _convert($$;$)
 
 #If prototypes are used, something along
 #<columnprototype fraction="0.7">prototy</columnprototype><columnprototype fraction="0.5">pro</columnprototype>
-
-#sub xml_row($$;$$)
-#<thead>@headitem ... </thead>
-#<tbody>@item... </tbody>
-#    $result .= "<row>$text</row>";
-
-#cell
-#    return "<entry>" . $text . '</entry>';
 
 # $complex_format_map{$complex_format}->{'begin'} = "<$complex_format xml:space=\"preserve\">";
 #   $complex_format_map{$complex_format}->{'end'} = "</$complex_format>";

@@ -2557,7 +2557,7 @@ sub _end_line($$$)
           if ($content->{'text'} =~ /\S/) {
             foreach my $prototype(split /\s+/, $content->{'text'}) {
               push @prototype_row, { 'text' => $prototype, 
-                            'type' => 'row_prototype' };
+                            'type' => 'row_prototype' } unless ($prototype eq '');
             }
           }
         } else {
@@ -2568,7 +2568,7 @@ sub _end_line($$$)
          Texinfo::Convert::Texinfo::convert({ $content->{'contents'} })), 
                                             $line_nr);
           } elsif ($content->{'cmdname'} eq 'c' 
-                 and $content->{'cmdname'} eq 'comment') {
+                   or $content->{'cmdname'} eq 'comment') {
           } else {
             push @prototype_row, $content;
           }

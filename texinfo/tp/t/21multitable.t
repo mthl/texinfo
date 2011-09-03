@@ -80,7 +80,19 @@ bbbbbbbbbb}
 
 @item not empty @tab tab not empty
 @end multitable
-']
+'],
+['prototype_brace_no_brace',
+'@multitable {aa} bb
+@end multitable
+'],
+['prototype_brace_no_brace_comment',
+'@multitable {aa} bb@comment cc
+@end multitable
+'],
+['prototype_no_brace',
+'@multitable aa@var{FF} b    cc
+@end multitable
+'],
 );
 
 my @test_invalid = (
