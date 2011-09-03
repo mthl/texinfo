@@ -31,6 +31,7 @@
 #       <ftable commandarg="asis"> or <itemize commandarg="bullet">
 #       in itemize <itemfunction> -> <itemprepend>?
 #       no more <floatpos>
+#       both inlineimage and image?
 
 
 package Texinfo::Convert::XML;
@@ -671,26 +672,40 @@ sub _convert($$;$)
           ."\"";
       }
       $result .= "<$root->{'cmdname'}${attribute}>";
-      if ($root->{'args'} and $commands_args_elements{$root->{'cmdname'}}) {
-        my $arg_index = 0;
-        foreach my $element (@{$commands_args_elements{$root->{'cmdname'}}}) {
-          if (defined($root->{'args'}->[$arg_index])) {
-            my $in_code;
-            $in_code = 1
-              if (defined($commands_args_style{$root->{'cmdname'}})
-                and defined($commands_args_style{$root->{'cmdname'}}->[$arg_index]));
-            $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-            my $arg = $self->_convert($root->{'args'}->[$arg_index]);
-            chomp($arg);
-            if ($arg ne '') {
-              
-              $result .= "<$element>$arg</$element>\n";
+      if ($root->{'args'}) {
+        if ($commands_args_elements{$root->{'cmdname'}}) {
+          my $arg_index = 0;
+          foreach my $element (@{$commands_args_elements{$root->{'cmdname'}}}) {
+            if (defined($root->{'args'}->[$arg_index])) {
+              my $in_code;
+               $in_code = 1
+                if (defined($commands_args_style{$root->{'cmdname'}})
+                  and defined($commands_args_style{$root->{'cmdname'}}->[$arg_index]));
+              $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+              my $arg = $self->_convert($root->{'args'}->[$arg_index]);
+              chomp($arg);
+              if ($arg ne '') {  
+                $result .= "<$element>$arg</$element>\n";
+              }
+              $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+            } else {
+              last;
             }
-            $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
-          } else {
-            last;
+            $arg_index++;
           }
-          $arg_index++;
+        } elsif ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
+          if ($root->{'extra'}->{'prototypes'}) {
+            foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
+              $result .= "<columnprototype>".$self->_convert($prototype)
+                         ."</columnprototype>";
+            }
+          } elsif ($root->{'extra'}->{'columnfractions'}) {
+            $result .= "<columnfractions>";
+            foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
+              $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
+            }
+            $result .= "</columnfractions>";
+          }
         }
       }
       chomp($result);
@@ -811,20 +826,12 @@ sub _convert($$;$)
 
 #        return '<verbatim xml:space="preserve">' . &$protect_text($text) . '</verbatim>';
 
-#<columnfraction fraction="0.4"></columnfraction><columnfraction fraction="0.6"></columnfraction>
-
-#If prototypes are used, something along
-#<columnprototype fraction="0.7">prototy</columnprototype><columnprototype fraction="0.5">pro</columnprototype>
-
 # $complex_format_map{$complex_format}->{'begin'} = "<$complex_format xml:space=\"preserve\">";
 #   $complex_format_map{$complex_format}->{'end'} = "</$complex_format>";
 
 #   my $tag = 'inlineimage';
 #    $tag = 'image' if ($preformatted or !$in_paragraph);
 #    return "<$tag width=\"$width\" height=\"$height\" name=\"". &$protect_text($base)."\" extension=\"$extension\"><alttext>$alt</alttext></$tag>";
-
-#quotation
-#    return "<$command>\n" . $text . "</$command>\n";
 
 #%def_format_xml = (
 #  'deffn' => [ ['category', 'category'], ['function', 'name'] ],
