@@ -477,13 +477,15 @@ sub _get_converter_default($)
   return undef;
 }
 
-my $makeinfo_help =
-sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"), $real_command_name)
+sub makeinfo_help()
+{
+  my $makeinfo_help =
+    sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"), $real_command_name)
 ."\n".
 __("Translate Texinfo source documentation to various other formats, by default
 Info files suitable for reading online with Emacs or standalone GNU Info.\n")
 ."\n";
-$makeinfo_help .= sprintf(__("General options:
+  $makeinfo_help .= sprintf(__("General options:
       --error-limit=NUM       quit after NUM errors (default %d).
       --document-language=STR locale to use in translating Texinfo keywords
                                 for the output document (default C).
@@ -497,7 +499,7 @@ $makeinfo_help .= sprintf(__("General options:
   -v, --verbose               explain what is being done.
       --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
 ."\n";
-$makeinfo_help .= __("Output format selection (default is to produce Info):
+  $makeinfo_help .= __("Output format selection (default is to produce Info):
       --docbook               output Docbook XML rather than Info.
       --html                  output HTML rather than Info.
       --plaintext             output plain text rather than Info.
@@ -505,7 +507,7 @@ $makeinfo_help .= __("Output format selection (default is to produce Info):
       --dvi, --ps, --pdf      call texi2dvi to generate specified output.\n")
 
 ."\n";
-$makeinfo_help .= __("General output options:
+  $makeinfo_help .= __("General output options:
   -E, --macro-expand=FILE     output macro-expanded source to FILE,
                                 ignoring any \@setfilename.
       --no-headers            suppress node separators, Node: lines, and menus
@@ -525,7 +527,7 @@ $makeinfo_help .= __("General output options:
                                  put the output file there.
                                 Otherwise, DEST names the output file.\n")
 ."\n";
-$makeinfo_help .= sprintf(__("Options for Info and plain text:
+  $makeinfo_help .= sprintf(__("Options for Info and plain text:
       --disable-encoding      do not output accented and special characters
                                 in Info output based on \@documentencoding.
       --enable-encoding       override --disable-encoding (default).
@@ -538,11 +540,11 @@ $makeinfo_help .= sprintf(__("Options for Info and plain text:
                                 If VAL is `none', do not indent; if VAL is
                                 `asis', preserve existing indentation.
       --split-size=NUM        split Info files at size NUM (default %d).\n"),
-  _get_converter_default('fillcolumn'), 
-  _get_converter_default('paragraphindent'), 
-  _get_converter_default('SPLIT_SIZE'))
+    _get_converter_default('fillcolumn'), 
+    _get_converter_default('paragraphindent'), 
+    _get_converter_default('SPLIT_SIZE'))
 ."\n";
-$makeinfo_help .= __("Options for HTML:
+  $makeinfo_help .= __("Options for HTML:
       --css-include=FILE      include FILE in HTML <style> output;
                                 read stdin if FILE is -.
       --css-ref=URL           generate CSS reference to URL.
@@ -553,20 +555,20 @@ $makeinfo_help .= __("Options for HTML:
       --node-files            produce redirection files for nodes and 
                                 anchors; default is set only if split.\n")
 ."\n";
-$makeinfo_help .= __("Options for XML and Docbook:
+  $makeinfo_help .= __("Options for XML and Docbook:
       --output-indent=VAL     does nothing, retained for compatibility.\n")
 ."\n";
-$makeinfo_help .= __("Options for DVI/PS/PDF:
+  $makeinfo_help .= __("Options for DVI/PS/PDF:
       --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n")
 ."\n";
-$makeinfo_help .= __("Input file options:
+  $makeinfo_help .= __("Input file options:
       --commands-in-node-names  does nothing, retained for compatibility.
   -D VAR                        define the variable VAR, as with \@set.
   -I DIR                        append DIR to the \@include search path.
   -P DIR                        prepend DIR to the \@include search path.
   -U VAR                        undefine the variable VAR, as with \@clear.\n")
 ."\n";
-$makeinfo_help .= __("Conditional processing in input:
+  $makeinfo_help .= __("Conditional processing in input:
   --ifdocbook       process \@ifdocbook and \@docbook even if
                       not generating Docbook.
   --ifhtml          process \@ifhtml and \@html even if not generating HTML.
@@ -583,13 +585,13 @@ $makeinfo_help .= __("Conditional processing in input:
 
   Also, for the --no-ifFORMAT options, do process \@ifnotFORMAT text.\n")
 ."\n";
-$makeinfo_help .= __("  The defaults for the \@if... conditionals depend on the output format:
+  $makeinfo_help .= __("  The defaults for the \@if... conditionals depend on the output format:
   if generating HTML, --ifhtml is on and the others are off;
   if generating Info, --ifinfo is on and the others are off;
   if generating plain text, --ifplaintext is on and the others are off;
   if generating XML, --ifxml is on and the others are off.\n")
 ."\n";
-$makeinfo_help .= __("Examples:
+  $makeinfo_help .= __("Examples:
   makeinfo foo.texi                      write Info to foo's \@setfilename
   makeinfo --html foo.texi               write HTML to \@setfilename
   makeinfo --xml foo.texi                write Texinfo XML to \@setfilename
@@ -600,13 +602,14 @@ $makeinfo_help .= __("Examples:
   makeinfo --number-sections foo.texi    write Info with numbered sections
   makeinfo --no-split foo.texi           write one Info file however big\n")
 ."\n";
-$makeinfo_help .= __("Email bug reports to bug-texinfo\@gnu.org,
+  $makeinfo_help .= __("Email bug reports to bug-texinfo\@gnu.org,
 general questions and discussion to help-texinfo\@gnu.org.
 Texinfo home page: http://www.gnu.org/software/texinfo/") ."\n";
-
+  return $makeinfo_help;
+}
 
 my $result_options = Getopt::Long::GetOptions (
- 'help|h' => sub { print "$makeinfo_help"; exit 0; },
+ 'help|h' => sub { print makeinfo_help(); exit 0; },
  'version|V' => sub {print "$real_command_name (GNU texinfo) $configured_version\n\n";
     printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -839,13 +842,12 @@ foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
 
 # Main processing, process all the files given on the command line
 
-my $failure_text =  sprintf(__("Try `%s --help' for more information.\n"), 
-                            $real_command_name);
 my @input_files = @ARGV;
 # use STDIN if not a tty, like makeinfo does
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
 die sprintf(__("%s: missing file argument.\n"), $real_command_name) 
-   .$failure_text unless (scalar(@input_files) >= 1);
+   .sprintf(__("Try `%s --help' for more information.\n"), $real_command_name)
+     unless (scalar(@input_files) >= 1);
 
 my $file_number = -1;
 # main processing
