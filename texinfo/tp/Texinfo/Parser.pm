@@ -2187,31 +2187,48 @@ sub _register_label($$$$)
   }
 }
 
+sub _non_bracketed_contents($)
+{
+  my $current = shift;
+  if ($current->{'type'} and $current->{'type'} eq 'bracketed') {
+    my $new = {};
+    $new->{'contents'} = $current->{'contents'} if ($current->{'parent'});
+    $new->{'parent'} = $current->{'parent'} if ($current->{'parent'});
+    return $new;
+  } else {
+    return $current;
+  }
+}
+
 # store an index entry.
 # $current is the command element.
 # $content holds the actual content.
 # for index entries and v|ftable items, it is the index entry content, 
 # for def, it is the parsed arguments, based on the definition line 
 # arguments.
-sub _enter_index_entry($$$$$)
+sub _enter_index_entry($$$$$$)
 {
   my $self = shift;
   my $command = shift;
   my $current = shift;
   my $content = shift;
+  my $content_normalized = shift;
   my $line_nr = shift;
+
+  $content_normalized = $content if (!defined($content_normalized));
 
   my $prefix = $self->{'command_index_prefix'}->{$command};
   my $index_name = $self->{'prefix_to_index_name'}->{$prefix};
   my $number = (defined($self->{'index_entries'}->{$index_name})
                  ? (scalar(@{$self->{'index_entries'}->{$index_name}}) + 1)
                    : 1);
-  my $index_entry = { 'index_name'       => $index_name,
-                      'index_at_command' => $command,
-                      'index_prefix'     => $prefix,
-                      'content'          => $content,
-                      'command'          => $current,
-                      'number'           => $number,
+  my $index_entry = { 'index_name'           => $index_name,
+                      'index_at_command'     => $command,
+                      'index_prefix'         => $prefix,
+                      'content'              => $content,
+                      'content_normalized'   => $content_normalized,
+                      'command'              => $current,
+                      'number'               => $number,
                     };
   if (@{$self->{'regions_stack'}}) {
     $index_entry->{'region'} = $self->{'regions_stack'}->[-1];
@@ -2452,18 +2469,29 @@ sub _end_line($$$)
       # do an standard index entry tree
       my $index_entry = $def_parsed_hash->{'name'};
       if (defined($index_entry)) {
+        my $index_contents_normalized;
         if ($def_parsed_hash->{'class'}) {
           if ($command_index_prefix{$def_command} eq 'f') {
             $index_entry = $self->gdt('{name} on {class}', 
                                   {'name' => $def_parsed_hash->{'name'},
                                    'class' => $def_parsed_hash->{'class'}});
+           $index_contents_normalized
+             = [_non_bracketed_contents($def_parsed_hash->{'name'}),
+                { 'text' => ' on '},
+                _non_bracketed_contents($def_parsed_hash->{'class'})];
           } elsif ($command_index_prefix{$def_command} eq 'v'
                   and $def_command ne 'defcv') {
             $index_entry = $self->gdt('{name} of {class}', 
                                      {'name' => $def_parsed_hash->{'name'},
                                      'class' => $def_parsed_hash->{'class'}});
+            $index_contents_normalized
+              = [_non_bracketed_contents($def_parsed_hash->{'name'}),
+                 { 'text' => ' of '},
+                 _non_bracketed_contents($def_parsed_hash->{'class'})];
           }
         }
+        $index_contents_normalized = [$index_entry]
+          if (!defined($index_contents_normalized));
         my $index_contents;
         # 'root_line' is the container returned by gdt.
         if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
@@ -2473,7 +2501,8 @@ sub _end_line($$$)
         }
         _enter_index_entry($self, 
           $current->{'parent'}->{'extra'}->{'original_def_cmdname'},
-          $current->{'parent'}, $index_contents, $line_nr);
+          $current->{'parent'}, $index_contents, 
+          $index_contents_normalized, $line_nr);
       } else {
         $self->line_warn (sprintf($self->__('Missing name for @%s'), 
          $current->{'parent'}->{'extra'}->{'original_def_cmdname'}), $line_nr); 
@@ -2838,10 +2867,12 @@ sub _end_line($$$)
         if (($command eq 'item' or $command eq 'itemx')
             and $self->{'command_index_prefix'}->{$current->{'parent'}->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, $current,
-                             $current->{'extra'}->{'misc_content'}, $line_nr);
+                             $current->{'extra'}->{'misc_content'}, 
+                             undef, $line_nr);
         } elsif ($self->{'command_index_prefix'}->{$current->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'cmdname'}, $current,
-                             $current->{'extra'}->{'misc_content'}, $line_nr);
+                             $current->{'extra'}->{'misc_content'}, 
+                             undef, $line_nr);
         }
       }
       if (defined($command_structuring_level{$command})) {

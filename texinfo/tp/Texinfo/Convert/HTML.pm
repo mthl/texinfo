@@ -5027,7 +5027,7 @@ sub _prepare_index_entries($)
         my $region = '';
         $region = "$index_entry->{'region'}->{'cmdname'}-" 
           if (defined($index_entry->{'region'}));
-        my @contents = @{$index_entry->{'content'}};
+        my @contents = @{$index_entry->{'content_normalized'}};
         my $trimmed_contents 
           = Texinfo::Common::trim_spaces_comment_from_content(\@contents);
         my $normalized_index =
