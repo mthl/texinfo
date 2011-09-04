@@ -9465,7 +9465,7 @@ Previous: <a href="#unnumbered-sub2-4" accesskey="p" rel="previous">unnumbered s
 $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <setcontentsaftertitlepage></setcontentsaftertitlepage>
 
-<node>
+<node name="Top">
 <nodename>Top</nodename>
 <nodenext automatic="on">chapter</nodenext>
 <nodeup automatic="on">(dir)</nodeup>
@@ -9486,7 +9486,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 </menudescription></menuentry></menu>
 
 </top>
-<node>
+<node name="chapter">
 <nodename>chapter</nodename>
 <nodenext automatic="on">unnumbered</nodenext>
 <nodeprev automatic="on">Top</nodeprev>
@@ -9499,7 +9499,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <menuentry><menunode>section in chapter</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="section-in-chapter">
 <nodename>section in chapter</nodename>
 <nodeup automatic="on">chapter</nodeup>
 </node>
@@ -9508,7 +9508,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 
 </section>
 </chapter>
-<node>
+<node name="unnumbered">
 <nodename>unnumbered</nodename>
 <nodenext automatic="on">chapter 2</nodenext>
 <nodeprev automatic="on">chapter</nodeprev>
@@ -9521,7 +9521,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <menuentry><menunode>section in unnumbered</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="section-in-unnumbered">
 <nodename>section in unnumbered</nodename>
 <nodeup automatic="on">unnumbered</nodeup>
 </node>
@@ -9530,7 +9530,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 
 </section>
 </unnumbered>
-<node>
+<node name="chapter-2">
 <nodename>chapter 2</nodename>
 <nodenext automatic="on">chapter 3</nodenext>
 <nodeprev automatic="on">unnumbered</nodeprev>
@@ -9544,7 +9544,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 </menudescription></menuentry><menuentry><menunode>unnumberedsec 2-1</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="unnumberedsec-2">
 <nodename>unnumberedsec 2</nodename>
 <nodenext automatic="on">unnumberedsec 2-1</nodenext>
 <nodeup automatic="on">chapter 2</nodeup>
@@ -9559,7 +9559,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 </menudescription></menuentry><menuentry><menunode>numbered sub2 2</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="unnumbered-sub-2">
 <nodename>unnumbered sub 2</nodename>
 <nodenext automatic="on">numbered sub 2</nodenext>
 <nodeup automatic="on">unnumberedsec 2</nodeup>
@@ -9568,7 +9568,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>unnumbered subsection 2</title>
 
 </unnumberedsubsec>
-<node>
+<node name="numbered-sub-2">
 <nodename>numbered sub 2</nodename>
 <nodenext automatic="on">unnumbered sub2 2</nodenext>
 <nodeprev automatic="on">unnumbered sub 2</nodeprev>
@@ -9578,7 +9578,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>numbered subsection 2</title>
 
 </subsection>
-<node>
+<node name="unnumbered-sub2-2">
 <nodename>unnumbered sub2 2</nodename>
 <nodenext automatic="on">numbered sub2 2</nodenext>
 <nodeprev automatic="on">numbered sub 2</nodeprev>
@@ -9588,7 +9588,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>unnumbered subsection2 2</title>
 
 </unnumberedsubsec>
-<node>
+<node name="numbered-sub2-2">
 <nodename>numbered sub2 2</nodename>
 <nodeprev automatic="on">unnumbered sub2 2</nodeprev>
 <nodeup automatic="on">unnumberedsec 2</nodeup>
@@ -9598,7 +9598,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 
 </subsection>
 </unnumberedsec>
-<node>
+<node name="unnumberedsec-2_002d1">
 <nodename>unnumberedsec 2-1</nodename>
 <nodeprev automatic="on">unnumberedsec 2</nodeprev>
 <nodeup automatic="on">chapter 2</nodeup>
@@ -9610,7 +9610,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <menuentry><menunode>numbered sub 2-1</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="numbered-sub-2_002d1">
 <nodename>numbered sub 2-1</nodename>
 <nodeup automatic="on">unnumberedsec 2-1</nodeup>
 </node>
@@ -9621,7 +9621,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 </subsection>
 </unnumberedsec>
 </chapter>
-<node>
+<node name="chapter-3">
 <nodename>chapter 3</nodename>
 <nodenext automatic="on">unnumbered 4</nodenext>
 <nodeprev automatic="on">chapter 2</nodeprev>
@@ -9638,7 +9638,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 </menudescription></menuentry><menuentry><menunode>unnumberedsec 3-4</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="unnumberedsec-3">
 <nodename>unnumberedsec 3</nodename>
 <nodenext automatic="on">section 3-1</nodenext>
 <nodeup automatic="on">chapter 3</nodeup>
@@ -9653,7 +9653,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 </menudescription></menuentry><menuentry><menunode>numbered sub2 3</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="unnumbered-sub-3">
 <nodename>unnumbered sub 3</nodename>
 <nodenext automatic="on">numbered sub 3</nodenext>
 <nodeup automatic="on">unnumberedsec 3</nodeup>
@@ -9662,7 +9662,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>unnumbered subsection 3</title>
 
 </unnumberedsubsec>
-<node>
+<node name="numbered-sub-3">
 <nodename>numbered sub 3</nodename>
 <nodenext automatic="on">unnumbered sub2 3</nodenext>
 <nodeprev automatic="on">unnumbered sub 3</nodeprev>
@@ -9672,7 +9672,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>numbered subsection 3</title>
 
 </subsection>
-<node>
+<node name="unnumbered-sub2-3">
 <nodename>unnumbered sub2 3</nodename>
 <nodenext automatic="on">numbered sub2 3</nodenext>
 <nodeprev automatic="on">numbered sub 3</nodeprev>
@@ -9682,7 +9682,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>unnumbered subsection2 3</title>
 
 </unnumberedsubsec>
-<node>
+<node name="numbered-sub2-3">
 <nodename>numbered sub2 3</nodename>
 <nodeprev automatic="on">unnumbered sub2 3</nodeprev>
 <nodeup automatic="on">unnumberedsec 3</nodeup>
@@ -9692,7 +9692,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 
 </subsection>
 </unnumberedsec>
-<node>
+<node name="section-3_002d1">
 <nodename>section 3-1</nodename>
 <nodenext automatic="on">unnumberedsec 3-2</nodenext>
 <nodeprev automatic="on">unnumberedsec 3</nodeprev>
@@ -9702,7 +9702,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>section 3-1</title>
 
 </section>
-<node>
+<node name="unnumberedsec-3_002d2">
 <nodename>unnumberedsec 3-2</nodename>
 <nodenext automatic="on">section 3-3</nodenext>
 <nodeprev automatic="on">section 3-1</nodeprev>
@@ -9715,7 +9715,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <menuentry><menunode>numbered sub 3-2</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="numbered-sub-3_002d2">
 <nodename>numbered sub 3-2</nodename>
 <nodeup automatic="on">unnumberedsec 3-2</nodeup>
 </node>
@@ -9724,7 +9724,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 
 </subsection>
 </unnumberedsec>
-<node>
+<node name="section-3_002d3">
 <nodename>section 3-3</nodename>
 <nodenext automatic="on">unnumberedsec 3-4</nodenext>
 <nodeprev automatic="on">unnumberedsec 3-2</nodeprev>
@@ -9737,7 +9737,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <menuentry><menunode>subsection 3-3</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="subsection-3_002d3">
 <nodename>subsection 3-3</nodename>
 <nodeup automatic="on">section 3-3</nodeup>
 </node>
@@ -9746,7 +9746,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 
 </subsection>
 </section>
-<node>
+<node name="unnumberedsec-3_002d4">
 <nodename>unnumberedsec 3-4</nodename>
 <nodeprev automatic="on">section 3-3</nodeprev>
 <nodeup automatic="on">chapter 3</nodeup>
@@ -9758,7 +9758,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <menuentry><menunode>numbered sub 3-4</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="numbered-sub-3_002d4">
 <nodename>numbered sub 3-4</nodename>
 <nodeup automatic="on">unnumberedsec 3-4</nodeup>
 </node>
@@ -9768,7 +9768,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 </subsection>
 </unnumberedsec>
 </chapter>
-<node>
+<node name="unnumbered-4">
 <nodename>unnumbered 4</nodename>
 <nodeprev automatic="on">chapter 3</nodeprev>
 <nodeup automatic="on">Top</nodeup>
@@ -9780,7 +9780,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <menuentry><menunode>unnumberedsec 4</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="unnumberedsec-4">
 <nodename>unnumberedsec 4</nodename>
 <nodeup automatic="on">unnumbered 4</nodeup>
 </node>
@@ -9794,7 +9794,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 </menudescription></menuentry><menuentry><menunode>numbered sub2 4</menunode><menudescription>
 </menudescription></menuentry></menu>
 
-<node>
+<node name="unnumbered-sub-4">
 <nodename>unnumbered sub 4</nodename>
 <nodenext automatic="on">numbered sub 4</nodenext>
 <nodeup automatic="on">unnumberedsec 4</nodeup>
@@ -9803,7 +9803,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>unnumbered subsection 4</title>
 
 </unnumberedsubsec>
-<node>
+<node name="numbered-sub-4">
 <nodename>numbered sub 4</nodename>
 <nodenext automatic="on">unnumbered sub2 4</nodenext>
 <nodeprev automatic="on">unnumbered sub 4</nodeprev>
@@ -9813,7 +9813,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>numbered subsection 4</title>
 
 </subsection>
-<node>
+<node name="unnumbered-sub2-4">
 <nodename>unnumbered sub2 4</nodename>
 <nodenext automatic="on">numbered sub2 4</nodenext>
 <nodeprev automatic="on">numbered sub 4</nodeprev>
@@ -9823,7 +9823,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <title>unnumbered subsection2 4</title>
 
 </unnumberedsubsec>
-<node>
+<node name="numbered-sub2-4">
 <nodename>numbered sub2 4</nodename>
 <nodeprev automatic="on">unnumbered sub2 4</nodeprev>
 <nodeup automatic="on">unnumberedsec 4</nodeup>

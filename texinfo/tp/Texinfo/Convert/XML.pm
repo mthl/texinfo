@@ -21,17 +21,26 @@
 #           <xref> -> xref or pxref or ref
 #           drop the See
 #           @findex -> <findex><indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>
+#           @fooindex -> <indexcommand command="fooindex" index="foo"><indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>
 #           @abbr do not becomes abbrev, but stays as abbr
 #       menu comment -> menucomment
 #       menu entry description -> menudescription (instead of menucomment)
 #       preformatted -> pre
 #       preamble added
 #       <tableterm command="item">
-#       'command_as_argument' -> apply it?
+#       'command_as_argument' -> apply it? definfoenclosed? attribute automatic=on?
 #       <ftable commandarg="asis"> or <itemize commandarg="bullet">
 #       in itemize <itemfunction> -> <itemprepend>?
 #       no more <floatpos>
 #       both inlineimage and image?
+#       definfoenclose -> <infoenclose command=".." begin=".." end="..">...
+#       settitle and title -> corresponding elements
+#       title -> sectiontitle
+#       def* -> 
+#       <defivar>
+#       <definitionterm>
+#       'category', 'class' , 'type', 'name'
+#       typearg, arg, delimiter    'param', 'paramtype', 'delimiter'
 
 
 package Texinfo::Convert::XML;
@@ -169,7 +178,8 @@ my %misc_command_numbered_arguments_attributes = (
 
 my %xml_misc_commands = %Texinfo::Common::misc_commands;
 
-foreach my $command ('item', 'headitem', 'itemx', 'tab') {
+foreach my $command ('item', 'headitem', 'itemx', 'tab', 
+                      keys %Texinfo::Common::def_commands) {
   delete $xml_misc_commands{$command};
 }
 
@@ -196,7 +206,7 @@ my %commands_args_elements = (
   'image' => ['imagefile', 'imagewidth', 'imageheight', 
               'alttext', 'imageextension'],
   'quotation' => ['quotationtype'],
-  'float' => ['floatname', 'floattype'],
+  'float' => ['floattype', 'floatname'],
   'itemize' => ['itemfunction'],
 );
 
@@ -219,6 +229,18 @@ foreach my $command (keys(%Texinfo::Common::brace_commands)) {
     push @{$commands_elements{$command}}, @{$commands_args_elements{$command}};
   }
 }
+
+my %defcommand_name_type = (
+ 'deffn'     => 'function',
+ 'defvr'     => 'variable',
+ 'deftypefn' => 'function',
+ 'deftypeop' => 'operation',
+ 'deftypevr' => 'variable',
+ 'defcv'     => 'classvar',
+ 'deftypecv' => 'classvar',
+ 'defop'     => 'operation',
+ 'deftp'     => 'datatype',
+);
 
 my %ignored_types;
 foreach my $type ('empty_line_after_command',
@@ -247,6 +269,7 @@ my %type_elements = (
   'row' => 'row',
   'multitable_head' => 'thead',
   'multitable_body' => 'tbody',
+  'def_item' => 'definitionitem',
 );
 
 my %context_block_commands = (
@@ -440,7 +463,6 @@ sub _convert($$;$)
    # } elsif ($root->{'cmdname'} eq 'item' and 
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
-      # TODO
       if ($root->{'cmdname'} eq 'item'
           and $root->{'parent'}->{'cmdname'}
           and ($root->{'parent'}->{'cmdname'} eq 'itemize'
@@ -480,7 +502,8 @@ sub _convert($$;$)
                      or $root->{'cmdname'} eq 'tab')
                     and $root->{'parent'}->{'type'}
                     and $root->{'parent'}->{'type'} eq 'row') {
-          print STDERR "HHH ".Texinfo::Parser::_print_current($root);
+          print STDERR "BUG: multitable cell command not in a row "
+            .Texinfo::Parser::_print_current($root);
         }
         
         $result .= "<entry command=\"$root->{'cmdname'}\">";
@@ -507,7 +530,7 @@ sub _convert($$;$)
                ."</$command>\n"
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
-          $result .= "<node>\n";
+          $result .= "<node name=\"$root->{'extra'}->{'normalized'}\">\n";
           $self->{'document_context'}->[-1]->{'code'}++;
           $result .= "<nodename>".
              $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
@@ -557,10 +580,11 @@ sub _convert($$;$)
           if ($root->{'cmdname'} eq 'listoffloats' and $root->{'extra'} 
               and $root->{'extra'}->{'type'} 
               and defined($root->{'extra'}->{'type'}->{'normalized'})) {
-            $attribute = " type=\"$root->{'extra'}->{'type'}->{'normalized'}\n";
+            $attribute = " type=\"$root->{'extra'}->{'type'}->{'normalized'}\"";
           }
-          return "<$command${attribute}>".$self->_convert($root->{'args'}->[0])
-                 ."</$command>\n";
+          my $arg = $self->_convert($root->{'args'}->[0]);
+          #chomp ($arg);
+          return "<$command${attribute}>$arg</$command>\n";
         }
       } elsif ($type eq 'skipline' or $type eq 'noarg') {
         return "<$command></$command>\n";
@@ -623,6 +647,19 @@ sub _convert($$;$)
         }
         return "<$command${attribute}></$command>\n";
       }
+    } elsif ($root->{'type'}
+             and $root->{'type'} eq 'definfoenclose_command') {
+      my $in_code;
+      $in_code = 1
+        if (defined($commands_args_style{$root->{'cmdname'}})
+            and defined($commands_args_style{$root->{'cmdname'}}->[0]));
+      $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+      my $arg = $self->_convert($root->{'args'}->[0]);
+      $result .= "<infoenclose command=\"$root->{'cmdname'}\" begin=\"".
+        $self->xml_protect_text($root->{'extra'}->{'begin'})."\" end=\"".
+        $self->xml_protect_text($root->{'extra'}->{'end'})
+        ."\">$arg</infoenclose>";
+      $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
     } elsif ($root->{'args'}
              and exists($Texinfo::Common::brace_commands{$root->{'cmdname'}})) {
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
@@ -633,6 +670,13 @@ sub _convert($$;$)
       if (scalar(@elements) > 1) {
         $command = shift @elements;
       }
+      my $attribute = '';
+      if ($root->{'cmdname'} eq 'verb') {
+        $attribute = " delimiter=\"".$self->xml_protect_text($root->{'type'})
+                       ."\"";
+      } elsif ($root->{'cmdname'} eq 'anchor') {
+        $attribute = " name=\"$root->{'extra'}->{'normalized'}\"";
+      }
       my $arg_index = 0;
       foreach my $element (@elements) {
         if (defined($root->{'args'}->[$arg_index])) {
@@ -642,8 +686,9 @@ sub _convert($$;$)
               and defined($commands_args_style{$root->{'cmdname'}}->[$arg_index]));
           $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
           my $arg = $self->_convert($root->{'args'}->[$arg_index]);
-          if ($arg ne '') {
-            $result .= "<$element>$arg</$element>";
+          if (!defined($command) or $arg ne '') {
+            # ${attribute} is only set for @verb
+            $result .= "<$element${attribute}>$arg</$element>";
           }
           $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
         } else {
@@ -651,7 +696,7 @@ sub _convert($$;$)
         }
         $arg_index++;
       }
-      if (defined($command) and $result ne '') {
+      if (defined($command)) {
         $result = "<$command>$result<$command>";
       }
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
@@ -670,6 +715,16 @@ sub _convert($$;$)
         $attribute .= " first=\""
           .$self->xml_protect_text($root->{'extra'}->{'enumerate_specification'})
           ."\"";
+      } elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}) {
+        if (defined($root->{'extra'}->{'normalized'})) {
+          $attribute .= " name=\"$root->{'extra'}->{'normalized'}\"";
+        }
+        if ($root->{'extra'}->{'type'} and 
+            defined($root->{'extra'}->{'type'}->{'normalized'})) {
+          $attribute .= " type=\"$root->{'extra'}->{'type'}->{'normalized'}\"";
+        }
+      } elsif ($root->{'cmdname'} eq 'verbatim') {
+        $attribute = " xml:space=\"preserve\"";
       }
       $result .= "<$root->{'cmdname'}${attribute}>";
       if ($root->{'args'}) {
@@ -695,10 +750,12 @@ sub _convert($$;$)
           }
         } elsif ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
           if ($root->{'extra'}->{'prototypes'}) {
+            $result .= "<columnprototypes>";
             foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
               $result .= "<columnprototype>".$self->_convert($prototype)
                          ."</columnprototype>";
             }
+            $result .= "</columnprototypes>";
           } elsif ($root->{'extra'}->{'columnfractions'}) {
             $result .= "<columnfractions>";
             foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
@@ -713,38 +770,60 @@ sub _convert($$;$)
       $close_element = $root->{'cmdname'};
     }
   }
-    #} elsif ($root->{'cmdname'} eq 'item' 
-    #        and $root->{'parent'}->{'cmdname'} 
-    #        and $root->{'parent'}->{'cmdname'} eq 'enumerate') {
-    #  $result .= enumerate_item_representation(
-    #     $root->{'parent'}->{'extra'}->{'enumerate_specification'},
-    #     $root->{'extra'}->{'item_number'}) . '. ';
-    #}
-  #}
-  #if ($root->{'type'} and $root->{'type'} eq 'def_line') {
-    #print STDERR "$root->{'extra'}->{'def_command'}\n";
-  #  if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
-  #           and @{$root->{'extra'}->{'def_args'}}) {
-  #    my $parsed_definition_category
-  #      = Texinfo::Common::definition_category ($options->{'converter'}, $root);
-  #    my @contents = ($parsed_definition_category, {'text' => ': '});
-  #    if ($root->{'extra'}->{'def_parsed_hash'}->{'type'}) {
-  #      push @contents, ($root->{'extra'}->{'def_parsed_hash'}->{'type'},
-  #                       {'text' => ' '});
-  #    }
-  #    push @contents, $root->{'extra'}->{'def_parsed_hash'}->{'name'};
-#
-  #    my $arguments = Texinfo::Common::definition_arguments_content($root);
-  #    if ($arguments) {
-  #      push @contents, {'text' => ' '};
-  #      push @contents, @$arguments;
-  #    }
-  #    push @contents, {'text' => "\n"};
-  #    $result = convert({'contents' => \@contents}, _code_options($options));
-  #  }
   if ($root->{'type'}) {
     if (defined($type_elements{$root->{'type'}})) {
       $result .= "<$type_elements{$root->{'type'}}>";
+    }
+    if ($root->{'type'} eq 'def_line') {
+      if ($root->{'cmdname'}) {
+        $result .= "<$root->{'cmdname'}>";
+      }
+      $result .= "<definitionterm>";
+      $result .= $self->_index_entry($root);
+      $self->{'document_context'}->[-1]->{'code'}++;
+      if ($root->{'extra'} and $root->{'extra'}->{'def_args'}) {
+        my $main_command;
+        my $alias;
+        if ($Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}}) {
+          $main_command = $Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}};
+          $alias = 1;
+        } else {
+          $main_command = $root->{'extra'}->{'def_command'};
+          $alias = 0;
+        }
+        foreach my $arg (@{$root->{'extra'}->{'def_args'}}) {
+          my $type = $arg->[0];
+          my $content = $self->_convert($arg->[1]);
+          if ($type eq 'spaces') {
+            $result .= $content;
+          } else {
+            my $attribute;
+            if ($type eq 'category' and $alias) {
+              $attribute = " automatic=\"on\"";
+            } else {
+              $attribute = "";
+            }
+            my $element;
+            if ($type eq 'name') {
+              $element = $defcommand_name_type{$main_command};
+            } elsif ($type eq 'arg') {
+              $element = 'param';
+            } elsif ($type eq 'argtype') {
+              $element = 'paramtype';
+            } else {
+              $element = $type;
+            }
+            $result .= "<def$element${attribute}>$content</def$element>";
+          }
+        }
+      }
+      $self->{'document_context'}->[-1]->{'code'}--;
+      $result .= "</definitionterm>";
+      if ($root->{'cmdname'}) {
+        $result .= "</$root->{'cmdname'}>";
+      }
+      chomp ($result);
+      $result .= "\n";
     }
   }
   if ($root->{'contents'}) {
@@ -818,32 +897,10 @@ sub _convert($$;$)
 
 #set_default('NUMBER_SECTIONS', 0);
 
-#special -> args -> {type 'misc_arg' , text }
-
-# anchor, node and float -> add a name="->normalized" attribute
-# float
-#    my $result = "<float name=\"$label_texi\">\n";
-
-#        return '<verbatim xml:space="preserve">' . &$protect_text($text) . '</verbatim>';
-
 # $complex_format_map{$complex_format}->{'begin'} = "<$complex_format xml:space=\"preserve\">";
 #   $complex_format_map{$complex_format}->{'end'} = "</$complex_format>";
 
 #   my $tag = 'inlineimage';
 #    $tag = 'image' if ($preformatted or !$in_paragraph);
-#    return "<$tag width=\"$width\" height=\"$height\" name=\"". &$protect_text($base)."\" extension=\"$extension\"><alttext>$alt</alttext></$tag>";
-
-#%def_format_xml = (
-#  'deffn' => [ ['category', 'category'], ['function', 'name'] ],
-#   'defvr' => [ ['category', 'category'], ['variable', 'name'] ],
-#   'deftypefn' => [ ['category', 'category'], ['type', 'type'], ['function', 'name'] ],
-#   'deftypeop' => [ ['category', 'category'], ['type', 'type'], ['operation', 'name'] ],
-#   'deftypevr' => [ ['category', 'category'], ['type', 'type'], ['variable', 'name'] ],
-#   'defcv' => [ ['category' , 'category'], ['class', 'class'], ['classvar', 'name'] ],
-#   'deftypecv' => [ ['category', 'category'], ['type', 'type'], ['classvar', 'name'] ],
-#   'defop' => [ ['category', 'category'], ['class', 'class'], ['operation', 'name'] ],
-#   'deftp' => [ ['category', 'category'], ['datatype', 'name'] ]
-#);
-
 
 1;

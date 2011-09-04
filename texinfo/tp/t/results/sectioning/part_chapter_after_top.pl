@@ -855,7 +855,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 ';
 
 
-$result_converted{'xml'}->{'part_chapter_after_top'} = '<node>
+$result_converted{'xml'}->{'part_chapter_after_top'} = '<node name="Top">
 <nodename>Top</nodename>
 <nodenext automatic="on">chapter</nodenext>
 <nodeup automatic="on">(dir)</nodeup>
@@ -871,7 +871,7 @@ $result_converted{'xml'}->{'part_chapter_after_top'} = '<node>
 <part>
 <title>part</title>
 
-<node>
+<node name="chapter">
 <nodename>chapter</nodename>
 <nodeprev automatic="on">Top</nodeprev>
 <nodeup automatic="on">Top</nodeup>
