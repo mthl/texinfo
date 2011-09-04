@@ -619,7 +619,7 @@ sub xml_accents($$;$)
   my $result = $self->_convert({'contents' => $contents});
   
   foreach my $accent_command (reverse(@$stack)) {
-    $result = &$format_accents ($result, {'cmdname' => $accent_command}, 
+    $result = &$format_accents ($result, $accent_command, 
                                 $in_upper_case);
   }
   return $result;

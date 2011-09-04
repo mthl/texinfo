@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 50 };
+BEGIN { plan tests => 63 };
 
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use lib '../texi2html/lib/libintl-perl/lib/';
@@ -22,12 +22,13 @@ sub test_accent_stack ($)
   my $reference = $test->[2]; 
   my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
   my $tree = $parser->parse_texi_text($texi);
-  my ($text, $innermost_accent, $stack) = 
+  my ($text, $innermost_accent, $commands_stack) = 
     Texinfo::Convert::Text::_find_innermost_accent($tree->{'contents'}->[0]);
+  my @stack = map {$_->{'cmdname'}} @$commands_stack;
   if (defined($reference)) {
-    ok ($reference eq join('|',($text, @$stack)), 'innermost '.$name);
+    ok ($reference eq join('|',($text, @stack)), 'innermost '.$name);
   } else {
-    print STDERR join('|',($text, @$stack))."\n";
+    print STDERR join('|',($text, @stack))."\n";
   }
 }
 
@@ -43,6 +44,20 @@ e}', 'comment', 'e|~'],
   test_accent_stack($test);
 }
 
+sub ord_hex_string($)
+{
+  my $result = shift;
+  my $ord = '';
+  my $hex = '';
+  foreach my $char (split '', $result) {
+    $ord .= ord($char).'-';
+    $hex .= sprintf("%04x-", ord($char));
+  }
+  $ord =~ s/-$//;
+  $hex =~ s/-$//;
+  return ($ord, $hex);
+}
+
 sub test_enable_encoding ($)
 {
   my $test = shift;
@@ -51,6 +66,7 @@ sub test_enable_encoding ($)
   my $reference = $test->[2];
   my $reference_xml = $test->[3];
   my $reference_xml_entity = $test->[4];
+  my $reference_unicode = $test->[5];
   my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
   my $text_root = $parser->parse_texi_text($texi);
   my $tree = $text_root->{'contents'}->[0];
@@ -64,16 +80,14 @@ sub test_enable_encoding ($)
   $html_converter->{'conf'}->{'USE_NUMERIC_ENTITY'} = 1;
   my $result_xml_entity 
       = Texinfo::Convert::Converter::xml_accents($html_converter, $tree);
+  my $result_unicode = Texinfo::Convert::Text::unicode_accents($tree,
+                      \&Texinfo::Convert::Text::ascii_accent);
   if (defined($reference)) {
     #ok (Encode::decode('iso-8859-1', $reference) eq $result, $name);
     #ok ($reference eq Encode::encode('iso-8859-1', $result), $name);
     is (Encode::encode('iso-8859-1', $result), $reference, $name);
   } else {
-    my $ord = '';
-    foreach my $char (split '', $result) {
-      $ord .= ord($char).'-';
-    }
-    $ord =~ s/-$//;
+    my ($ord, $hex) = ord_hex_string($result);
     print STDERR "$name ($ord)--> utf8: ".Encode::encode('utf8', $result).
         " latin1: ".Encode::encode('iso-8859-1', $result)."\n";
   }
@@ -89,30 +103,55 @@ sub test_enable_encoding ($)
     print STDERR "$name xml entity: $result_xml_entity\n";
     #print STDERR "<p>$texi $name xml entity: $result_xml_entity\n</p>";
   }
+  if (defined($reference_unicode)) {
+    is ($result_unicode, $reference_unicode, "$name unicode");
+  } else {
+    my ($ord, $hex) = ord_hex_string($result);
+    my ($ord_unicode, $hex_unicode) = ord_hex_string($result_unicode);
+    print STDERR "$name ($ord/$hex)--> result utf8: ".Encode::encode('utf8', $result).
+         " ($ord_unicode/$hex_unicode)--> unicode: ".Encode::encode('utf8', $result_unicode)."\n";
+  }
+}
+
+sub chrx(@)
+{
+  my $result = '';
+  foreach my $hex_string(@_) {
+    $result .= chr(hex($hex_string));
+  }
+  return $result;
 }
 
 # some come from encodings/weird_accents.texi
 foreach my $test (
-  ['@~e',                   'no 8bit encoding',    "e~", 'e~', '&#7869;'],
-  ['@~n',                   'simple encoding',     chr(241), 
-                                                   '&ntilde;', '&ntilde;'],
-  ['@~{n}' ,                'brace encoding',      chr(241), 
-                                                   '&ntilde;', '&ntilde;'],
+  ['@~e',                   'no 8bit encoding',    "e~", 'e~', '&#7869;', 
+                                                   chrx('1ebd')],
+  ['@~n',                   'simple encoding',     chr(241), '&ntilde;', 
+                                                   '&ntilde;', chrx('00f1')],
+  ['@~{n}' ,                'brace encoding',      chr(241), '&ntilde;', 
+                                                   '&ntilde;', chrx('00f1')],
   ['@^{@dotless{i}}',       'dotless',             chr(238), '&icirc;', 
-                                                             '&icirc;'],
-  ['@~{@dotless{i}}',       'no 8bit dotless',     'i~', 'i~', '&#297;'],
-  ['@={@~{@dotless{i}}}',   'no 8 cplx dotless',   'i~=', 'i~=', 
-                                                          '&#297;='],
-  ['@={@^{@dotless{i}}}',   'complex dotless',     chr(238).'=', 
-                                                   '&icirc;=', '&icirc;='],
+                                                   '&icirc;', chrx('00ee')],
+  ['@~{@dotless{i}}',       'no 8bit dotless',     'i~', 'i~', '&#297;',
+                                                   chrx('0129')],
+  ['@={@~{@dotless{i}}}',   'no 8 cplx dotless',   'i~=', 'i~=', '&#297;=',
+                                                   chrx('0129','0304')],
+  ['@={@^{@dotless{i}}}',   'complex dotless',     chr(238).'=', '&icirc;=', 
+                                                   '&icirc;=',
+                                                   chrx('00ee','0304')],
   ['@={@,{@~{n}}}',         'complex encoding',    chr(241).',=', '&ntilde;,=',
-                                                                  '&ntilde;,='],
-  ['@udotaccent{r}',        'udotaccent',          '.r', '.r', '&#7771;'],
-  ['@={@ubaraccent{a}}',    'complex ubaraccent',  'a_=', 'a_=', 'a_='],
-  ['@^{@udotaccent{@`r}}',  'complex udotaccent',  '.r`^', '.r`^', '.r`^'],
+                                                   '&ntilde;,=', 
+                                                   chrx('0146','0303','0304')],
+  ['@udotaccent{r}',        'udotaccent',          '.r', '.r', '&#7771;',
+                                                   chrx('1e5b')],
+  ['@={@ubaraccent{a}}',    'complex ubaraccent',  'a_=', 'a_=', 'a_=',
+                                                   chrx('0101','0332')],
+  ['@^{@udotaccent{@`r}}',  'complex udotaccent',  '.r`^', '.r`^', '.r`^',
+                                                   chrx('1e5b','0300','0302')],
   ['@v{@\'{r}}',            'utf8 possible inside', 'r\'<', 'r\'&lt;', 
-                                                    '&#341;&lt;'],
-  ['@={@code{@\'{@`{r}}}}', 'command in accent',   '=', '=', '=']
+                                                    '&#341;&lt;', 
+                                                    chrx('0155','030c')],
+  ['@={@code{@\'{@`{r}}}}', 'command in accent',   '=', '=', '=', chrx('0304')]
             ) {
   test_enable_encoding($test);
 }

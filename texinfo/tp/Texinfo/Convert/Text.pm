@@ -25,7 +25,7 @@ use strict;
 # accent commands list.
 use Texinfo::Common;
 use Texinfo::Convert::Unicode;
-# for debugging
+# for debugging
 use Texinfo::Convert::Texinfo;
 use Data::Dumper;
 use Carp qw(cluck);
@@ -545,9 +545,9 @@ foreach my $type ('empty_line_after_command', 'preamble',
 }
 
 # find the innermost accent and the correspponding text contents
-# FIXME This is not output dependent, so could be in 
-# Texinfo::Convert::Converter.  However this would create a 
-# dependency loop.
+# FIXME This is not output dependent, so could be in 
+# Texinfo::Convert::Converter.  However this would create a 
+# dependency loop.
 sub _find_innermost_accent_contents($;$)
 {
   my $current = shift;
@@ -556,7 +556,7 @@ sub _find_innermost_accent_contents($;$)
   my $debug = 0;
  ACCENT:
   while (1) {
-    # the following can happen if called with a bad tree
+    # the following can happen if called with a bad tree
     if (!$current->{'cmdname'} 
         or !$accent_commands{$current->{'cmdname'}}) {
       #print STDERR "BUG: Not an accent command in accent\n";
@@ -565,7 +565,7 @@ sub _find_innermost_accent_contents($;$)
       print STDERR Data::Dumper->Dump([$current]);
       last;
     }
-    push @accent_commands, $current->{'cmdname'};
+    push @accent_commands, $current;
     # A bogus accent
     if (!$current->{'args'}) {
       return ([], $current, \@accent_commands);
@@ -595,7 +595,7 @@ sub _find_innermost_accent_contents($;$)
         }
       }
     }
-    # we go here if there was no nested accent
+    # we go here if there was no nested accent
     return ($text_contents, $current, \@accent_commands);
   }
 }
@@ -612,7 +612,7 @@ sub _find_innermost_accent($;$$)
   $options->{'enabled_encoding'} = $encoding if (defined($encoding));
   $options->{'sc'} = $in_upper_case if (defined($in_upper_case));
   return (convert({'contents' => $contents}, $options), 
-                                             $innermost_accent, $stack);
+          $innermost_accent, $stack);
 }
 
 # return the 8 bit, if it exists, and the unicode codepoint
@@ -646,7 +646,7 @@ sub eight_bit_accents($$$;$)
   #$debug = 1;
 
   # FIXME shouldn't it be better to format the innermost conntents with 
-  # a converter, if present?
+  # a converter, if present?
   my ($text, $innermost_accent, $stack) 
     = _find_innermost_accent($current, $encoding, $in_upper_case);
 
@@ -683,7 +683,8 @@ sub eight_bit_accents($$$;$)
   }
 
   if ($debug) {
-    print STDERR "stack: ".join('|',@$stack)."\nPARTIAL_RESULTS_STACK:\n";
+    print STDERR "stack: ".join('|', map {$_->{'cmdname'}} @$stack)
+     ."\nPARTIAL_RESULTS_STACK:\n";
     foreach my $partial_result (@results_stack) {
       if (defined($partial_result->[0])) {
         print STDERR "   -> ".Encode::encode('utf8', $partial_result->[0])
@@ -712,7 +713,8 @@ sub eight_bit_accents($$$;$)
     if ($debug) {
       my $eight_bit_txt = 'undef';
       $eight_bit_txt = $eight_bit if (defined($eight_bit));
-      print STDERR "" . Encode::encode('utf8', $char) . " ($partial_result->[1]->{'cmdname'}), new_codepoint: $new_codepoint 8bit: $new_eight_bit old:$eight_bit_txt\n";
+      print STDERR "" . Encode::encode('utf8', $char) 
+        . " ($partial_result->[1]->{'cmdname'}), new_codepoint: $new_codepoint 8bit: $new_eight_bit old:$eight_bit_txt\n";
     }
 
     # no corresponding eight bit character found for a composed character
@@ -788,7 +790,7 @@ sub ascii_accents ($;$)
 
   $result = uc($result) if ($in_upper_case and $result =~ /^\w$/);
   foreach my $accent_command (reverse(@$stack)) {
-    $result = ascii_accent ($result, {'cmdname' => $accent_command});
+    $result = ascii_accent ($result, $accent_command);
   }
   return $result;
 }
@@ -806,10 +808,9 @@ sub unicode_accents ($$;$)
   while (@stack_accent_commands) {
     my $accent_command = shift @stack_accent_commands;
     my $formatted_result
-     = Texinfo::Convert::Unicode::unicode_accent($result, 
-       {'cmdname' => $accent_command});
+     = Texinfo::Convert::Unicode::unicode_accent($result, $accent_command);
     if (!defined($formatted_result)) {
-      push @stack_accent_commands, $accent_command;
+      unshift @stack_accent_commands, $accent_command;
     } else {
       $result = $formatted_result;
     }
@@ -817,8 +818,7 @@ sub unicode_accents ($$;$)
   $result = uc ($result) if ($in_upper_case);
   while (@stack_accent_commands) {
     my $accent_command = shift @stack_accent_commands;
-    $result = &$format_accent($result, 
-       {'cmdname' => $accent_command}, $in_upper_case);
+    $result = &$format_accent($result, $accent_command, $in_upper_case);
   }
   return $result;
 }
