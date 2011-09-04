@@ -226,6 +226,13 @@ $test_text.
 '
 @shortcontents
 '],
+['contents_and_shortcontents',
+$test_text.
+'
+@shortcontents
+
+@contents
+'],
 ['section_below_unnumbered',
 '
 @contents

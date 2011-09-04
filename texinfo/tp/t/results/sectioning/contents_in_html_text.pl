@@ -352,8 +352,8 @@ $result_converted{'html_text'}->{'contents_in_html_text'} = '<a name="top"></a>
 
 <div class="shortcontents">
 <ul class="no-bullet">
-<li><a name="stoc-Chap1" href="#Chap1">1 Chap1</a></li>
-<li><a name="stoc-Chap2" href="#Chap2">2 Chap2</a></li>
+<li><a name="stoc-Chap1" href="#toc-Chap1">1 Chap1</a></li>
+<li><a name="stoc-Chap2" href="#toc-Chap2">2 Chap2</a></li>
 </ul>
 </div>
 

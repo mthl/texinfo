@@ -886,7 +886,7 @@ two spaces   @@noindent @noindent-macro{}    @@refill @refill-macro{}
 
 @bye-macro{}
 '],
-# this does not lead to a recursive call with the current implementation
+# this does not lead to a recursive call with the current implementation
 ['recursive_call_in_argument',
 '@macro norecurse{arg}
 a

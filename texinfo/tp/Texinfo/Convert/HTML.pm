@@ -197,6 +197,9 @@ sub _get_target($$)
   my $self = shift;
   my $command = shift;
   my $target;
+  if (!defined($command)) {
+    cluck("_get_target command not defined");
+  }
   if ($self->{'targets'}->{$command}) {
     $target = $self->{'targets'}->{$command};
   } elsif ($command->{'cmdname'}
@@ -239,6 +242,8 @@ sub command_contents_target($$$)
   my $self = shift;
   my $command = shift;
   my $contents_or_shortcontents = shift;
+  $contents_or_shortcontents = 'shortcontents' 
+    if ($contents_or_shortcontents eq 'summarycontents');
 
   my $target = $self->_get_target($command);
   if ($target) {
@@ -407,15 +412,14 @@ sub command_contents_href($$$$)
   my $href;
   my $name = $contents_command_element_name{$contents_or_shortcontents};
   
-  my $target;
-  if ($name eq 'Contents') {
-    $target = $self->command_contents_target($command);
-  } else {
-    $target = $self->command_shortcontents_target($command);
-  }
+  my $target = $self->command_contents_target($command, $contents_or_shortcontents);
 
   my $target_element = $self->special_element($name);
-  my $target_filename = $self->command_filename($target_element);
+  my $target_filename;
+  # !defined happens when called as convert() and not output()
+  if (defined($target_element)) {
+    $target_filename = $self->command_filename($target_element);
+  }
   if (defined($target_filename) and
       (!defined($filename)
        or $filename ne $target_filename)) {
@@ -875,6 +879,7 @@ our %defaults = (
   'NODE_NAME_IN_MENU'    => 1,
   'NODE_NAME_IN_INDEX'   => 1,
   'SHORT_REF'            => 1,
+  'OVERVIEW_LINK_TO_TOC' => 1,
   'COMPLEX_FORMAT_IN_TABLE' => 0,
   'WORDS_IN_PAGE'        => 300,
   'SECTION_BUTTONS'      => [[ 'NodeNext', \&_default_node_direction ],

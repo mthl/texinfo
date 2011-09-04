@@ -948,13 +948,13 @@ ul.no-bullet {list-style: none}
 <div class="shortcontents">
 <ul class="no-bullet">
 <li><ul class="no-bullet">
-<li><a name="stoc-chapter" href="#chapter">1 chapter</a></li>
+<li><a name="stoc-chapter" href="#toc-chapter">1 chapter</a></li>
 </ul></li>
-<li><a name="stoc-part" href="#part">part</a><ul class="no-bullet">
-<li><a name="stoc-chapter-in-part" href="#chapter-in-part">2 chapter in part</a></li>
-<li><a name="stoc-second-chapter-in-part" href="#second-chapter-in-part">3 second chapter in part</a></li>
-<li><a name="stoc-unnumbered" href="#unnumbered">unnumbered</a></li>
-<li><a name="stoc-appendix" href="#appendix">Appendix A appendix</a></li>
+<li><a name="stoc-part" href="#toc-part">part</a><ul class="no-bullet">
+<li><a name="stoc-chapter-in-part" href="#toc-chapter-in-part">2 chapter in part</a></li>
+<li><a name="stoc-second-chapter-in-part" href="#toc-second-chapter-in-part">3 second chapter in part</a></li>
+<li><a name="stoc-unnumbered" href="#toc-unnumbered">unnumbered</a></li>
+<li><a name="stoc-appendix" href="#toc-appendix">Appendix A appendix</a></li>
 </ul></li>
 
 </ul>
