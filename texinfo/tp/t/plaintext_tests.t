@@ -549,7 +549,8 @@ $no_punctuation_commands_text
 );
 
 my @deep_recursion_tests = (
-# more than 100 calls
+# more than 100 calls -> perl gives an error message, so those tests are 
+# disabled for now.
 ['deep_recursion_in_formats',
 '
 @enumerate
