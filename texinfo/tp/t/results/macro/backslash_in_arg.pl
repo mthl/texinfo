@@ -150,7 +150,8 @@ $result_trees{'backslash_in_arg'} = {
             'line_nr' => 7,
             'macro' => 'funindex'
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [
@@ -202,7 +203,8 @@ $result_trees{'backslash_in_arg'} = {
             'line_nr' => 8,
             'macro' => 'funindex'
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [
@@ -254,7 +256,8 @@ $result_trees{'backslash_in_arg'} = {
             'line_nr' => 9,
             'macro' => 'funindex'
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [
@@ -306,7 +309,8 @@ $result_trees{'backslash_in_arg'} = {
             'line_nr' => 10,
             'macro' => 'funindex'
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [

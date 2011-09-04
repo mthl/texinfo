@@ -145,7 +145,8 @@ $result_trees{'syncode_index_print_both'} = {
             'line_nr' => 5,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [
@@ -197,7 +198,8 @@ $result_trees{'syncode_index_print_both'} = {
             'line_nr' => 6,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

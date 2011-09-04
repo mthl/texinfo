@@ -128,7 +128,8 @@ $result_trees{'index_entries_locations'} = {
                 'line_nr' => 7,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             },
             {
               'parent' => {},
@@ -185,7 +186,8 @@ $result_trees{'index_entries_locations'} = {
                 'line_nr' => 9,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             }
           ],
           'parent' => {},
@@ -264,7 +266,8 @@ $result_trees{'index_entries_locations'} = {
             'line_nr' => 13,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'contents' => [
@@ -333,7 +336,8 @@ $result_trees{'index_entries_locations'} = {
             'line_nr' => 16,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

@@ -226,7 +226,8 @@ $result_trees{'float_copying'} = {
                                         'line_nr' => 12,
                                         'macro' => ''
                                       },
-                                      'parent' => {}
+                                      'parent' => {},
+                                      'type' => 'index_entry_command'
                                     },
                                     {
                                       'args' => [
@@ -278,7 +279,8 @@ $result_trees{'float_copying'} = {
                                         'line_nr' => 13,
                                         'macro' => ''
                                       },
-                                      'parent' => {}
+                                      'parent' => {},
+                                      'type' => 'index_entry_command'
                                     },
                                     {
                                       'parent' => {},
@@ -510,7 +512,8 @@ $result_trees{'float_copying'} = {
                             'line_nr' => 20,
                             'macro' => ''
                           },
-                          'parent' => {}
+                          'parent' => {},
+                          'type' => 'index_entry_command'
                         },
                         {
                           'args' => [
@@ -562,7 +565,8 @@ $result_trees{'float_copying'} = {
                             'line_nr' => 21,
                             'macro' => ''
                           },
-                          'parent' => {}
+                          'parent' => {},
+                          'type' => 'index_entry_command'
                         }
                       ],
                       'parent' => {},

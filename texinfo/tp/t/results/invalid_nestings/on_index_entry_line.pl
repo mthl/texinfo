@@ -199,7 +199,8 @@ $result_trees{'on_index_entry_line'} = {
         'misc_content' => []
       },
       'line_nr' => {},
-      'parent' => {}
+      'parent' => {},
+      'type' => 'index_entry_command'
     }
   ],
   'type' => 'text_root'

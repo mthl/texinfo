@@ -172,7 +172,8 @@ $result_trees{'tab_in_index'} = {
                             'line_nr' => 3,
                             'macro' => ''
                           },
-                          'parent' => {}
+                          'parent' => {},
+                          'type' => 'index_entry_command'
                         }
                       ],
                       'parent' => {},

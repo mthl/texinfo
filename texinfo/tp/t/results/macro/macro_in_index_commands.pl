@@ -795,7 +795,8 @@ $result_trees{'macro_in_index_commands'} = {
             'line_nr' => 51,
             'macro' => 'trucindex-command'
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -930,7 +931,8 @@ $result_trees{'macro_in_index_commands'} = {
             'line_nr' => 53,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -988,7 +990,8 @@ $result_trees{'macro_in_index_commands'} = {
             'line_nr' => 55,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -1093,7 +1096,8 @@ $result_trees{'macro_in_index_commands'} = {
             'line_nr' => 59,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [
@@ -1145,7 +1149,8 @@ $result_trees{'macro_in_index_commands'} = {
             'line_nr' => 60,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -1424,7 +1429,8 @@ $result_trees{'macro_in_index_commands'} = {
             'line_nr' => 70,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -1482,7 +1488,8 @@ $result_trees{'macro_in_index_commands'} = {
             'line_nr' => 72,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

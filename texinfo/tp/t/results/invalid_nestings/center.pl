@@ -220,7 +220,8 @@ $result_trees{'center'} = {
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             }
           ],
           'parent' => {},

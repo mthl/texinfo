@@ -137,7 +137,8 @@ $result_trees{'image_lines_count'} = {
             'line_nr' => 5,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

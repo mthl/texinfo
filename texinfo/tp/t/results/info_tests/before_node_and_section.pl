@@ -157,7 +157,8 @@ $result_trees{'before_node_and_section'} = {
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             },
             {
               'parent' => {},

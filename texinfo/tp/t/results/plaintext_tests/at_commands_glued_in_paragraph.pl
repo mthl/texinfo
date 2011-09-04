@@ -535,7 +535,8 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
             'line_nr' => 14,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         }
       ],
       'parent' => {},

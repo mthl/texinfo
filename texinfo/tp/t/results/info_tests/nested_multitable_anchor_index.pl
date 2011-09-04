@@ -296,7 +296,8 @@ $result_trees{'nested_multitable_anchor_index'} = {
                                                 'line_nr' => 7,
                                                 'macro' => ''
                                               },
-                                              'parent' => {}
+                                              'parent' => {},
+                                              'type' => 'index_entry_command'
                                             }
                                           ],
                                           'parent' => {},
@@ -575,7 +576,8 @@ $result_trees{'nested_multitable_anchor_index'} = {
                                 'line_nr' => 11,
                                 'macro' => ''
                               },
-                              'parent' => {}
+                              'parent' => {},
+                              'type' => 'index_entry_command'
                             }
                           ],
                           'parent' => {},

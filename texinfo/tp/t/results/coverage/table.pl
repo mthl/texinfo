@@ -320,7 +320,8 @@ $result_trees{'table'} = {
                 'line_nr' => 11,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             },
             {
               'parent' => {},
@@ -450,7 +451,8 @@ $result_trees{'table'} = {
                         'line_nr' => 15,
                         'macro' => ''
                       },
-                      'parent' => {}
+                      'parent' => {},
+                      'type' => 'index_entry_command'
                     }
                   ],
                   'parent' => {},

@@ -146,7 +146,8 @@ $result_trees{'inter_item_commands_in_multitable'} = {
                         'line_nr' => 6,
                         'macro' => ''
                       },
-                      'parent' => {}
+                      'parent' => {},
+                      'type' => 'index_entry_command'
                     },
                     {
                       'parent' => {},
@@ -616,7 +617,8 @@ $result_trees{'inter_item_commands_in_multitable'} = {
                             'line_nr' => 17,
                             'macro' => ''
                           },
-                          'parent' => {}
+                          'parent' => {},
+                          'type' => 'index_entry_command'
                         }
                       ],
                       'parent' => {},

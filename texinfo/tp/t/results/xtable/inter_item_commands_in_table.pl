@@ -576,7 +576,8 @@ $result_trees{'inter_item_commands_in_table'} = {
                         'line_nr' => 16,
                         'macro' => ''
                       },
-                      'parent' => {}
+                      'parent' => {},
+                      'type' => 'index_entry_command'
                     },
                     {
                       'args' => [
@@ -994,7 +995,8 @@ $result_trees{'inter_item_commands_in_table'} = {
                 'line_nr' => 31,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             },
             {
               'args' => [
@@ -1225,7 +1227,8 @@ $result_trees{'inter_item_commands_in_table'} = {
                 'line_nr' => 38,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             },
             {
               'contents' => [

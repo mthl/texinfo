@@ -56,7 +56,8 @@ $result_trees{'index_entries'} = {
         'line_nr' => 1,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'type' => 'index_entry_command'
     },
     {
       'parent' => {},
@@ -159,7 +160,8 @@ $result_trees{'index_entries'} = {
         'line_nr' => 5,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'type' => 'index_entry_command'
     }
   ],
   'type' => 'text_root'

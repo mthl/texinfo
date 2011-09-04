@@ -671,7 +671,8 @@ $result_trees{'placed_things_before_element'} = {
             'line_nr' => 28,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

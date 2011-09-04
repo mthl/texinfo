@@ -824,7 +824,8 @@ $result_trees{'punctuation_in_line_commands'} = {
             'line_nr' => 26,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

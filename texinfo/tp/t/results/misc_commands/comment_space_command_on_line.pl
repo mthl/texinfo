@@ -302,7 +302,8 @@ $result_trees{'comment_space_command_on_line'} = {
             'line_nr' => 8,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

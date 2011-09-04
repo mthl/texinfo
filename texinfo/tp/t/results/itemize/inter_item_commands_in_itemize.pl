@@ -100,7 +100,8 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             }
           ],
           'parent' => {},
@@ -283,7 +284,8 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                 'line_nr' => 8,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             }
           ],
           'parent' => {},
@@ -392,7 +394,8 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                 'line_nr' => 10,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             },
             {
               'contents' => [
@@ -557,7 +560,8 @@ $result_trees{'inter_item_commands_in_itemize'} = {
                     'line_nr' => 17,
                     'macro' => ''
                   },
-                  'parent' => {}
+                  'parent' => {},
+                  'type' => 'index_entry_command'
                 }
               ],
               'parent' => {},

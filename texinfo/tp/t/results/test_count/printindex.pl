@@ -97,7 +97,8 @@ $result_trees{'printindex'} = {
             'line_nr' => 3,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [
@@ -149,7 +150,8 @@ $result_trees{'printindex'} = {
             'line_nr' => 4,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [
@@ -201,7 +203,8 @@ $result_trees{'printindex'} = {
             'line_nr' => 5,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -305,7 +308,8 @@ $result_trees{'printindex'} = {
             'line_nr' => 9,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -570,13 +574,13 @@ $result_converted{'debugcount'}->{'printindex'} = ' [1] (0,0) :element
    [6] (27,0)
    [10] (34,3) :empty_line:text|\\n|
    [10] (34,3)
-   [11] (34,3) @cindex
+   [11] (34,3) @cindex:index_entry_command
    [11] (34,3)
  locations  (2) l 3
-   [12] (34,3) @cindex
+   [12] (34,3) @cindex:index_entry_command
    [12] (34,3)
  locations  (3) l 3
-   [13] (34,3) @cindex
+   [13] (34,3) @cindex:index_entry_command
    [13] (34,3)
  locations  (4) l 3
    [14] (34,3) :empty_line:text|\\n|
@@ -617,7 +621,7 @@ $result_converted{'debugcount'}->{'printindex'} = ' [1] (0,0) :element
    [15] (431,12)
    [32] (431,12) :empty_line:text|\\n|
    [32] (431,12)
-   [33] (431,12) @cindex
+   [33] (431,12) @cindex:index_entry_command
    [33] (431,12)
  locations  (5) l 12
    [34] (431,12) :empty_line:text|\\n|

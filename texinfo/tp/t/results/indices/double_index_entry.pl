@@ -97,7 +97,8 @@ $result_trees{'double_index_entry'} = {
             'line_nr' => 3,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -172,7 +173,8 @@ $result_trees{'double_index_entry'} = {
             'line_nr' => 7,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},
@@ -431,7 +433,8 @@ $result_trees{'double_index_entry'} = {
             'line_nr' => 15,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

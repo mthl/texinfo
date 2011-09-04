@@ -443,7 +443,8 @@ $result_trees{'complex_float'} = {
                     'line_nr' => 30,
                     'macro' => ''
                   },
-                  'parent' => {}
+                  'parent' => {},
+                  'type' => 'index_entry_command'
                 }
               ],
               'parent' => {},
@@ -1769,7 +1770,8 @@ $result_trees{'complex_float'} = {
                             'line_nr' => 71,
                             'macro' => ''
                           },
-                          'parent' => {}
+                          'parent' => {},
+                          'type' => 'index_entry_command'
                         }
                       ],
                       'parent' => {},
@@ -3389,7 +3391,8 @@ $result_trees{'complex_float'} = {
                             'line_nr' => 116,
                             'macro' => ''
                           },
-                          'parent' => {}
+                          'parent' => {},
+                          'type' => 'index_entry_command'
                         }
                       ],
                       'parent' => {},

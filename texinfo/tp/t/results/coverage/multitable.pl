@@ -334,7 +334,8 @@ $result_trees{'multitable'} = {
                             'line_nr' => 7,
                             'macro' => ''
                           },
-                          'parent' => {}
+                          'parent' => {},
+                          'type' => 'index_entry_command'
                         }
                       ],
                       'parent' => {},

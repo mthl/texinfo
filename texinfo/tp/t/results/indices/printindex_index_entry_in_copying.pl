@@ -77,7 +77,8 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             },
             {
               'parent' => {},

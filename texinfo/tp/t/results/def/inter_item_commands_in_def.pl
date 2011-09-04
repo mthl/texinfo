@@ -324,7 +324,8 @@ $result_trees{'inter_item_commands_in_def'} = {
                 'line_nr' => 5,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             }
           ],
           'parent' => {},
@@ -511,7 +512,8 @@ $result_trees{'inter_item_commands_in_def'} = {
                 'line_nr' => 7,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             },
             {
               'parent' => {},

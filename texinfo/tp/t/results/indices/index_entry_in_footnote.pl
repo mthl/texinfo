@@ -114,7 +114,8 @@ $result_trees{'index_entry_in_footnote'} = {
                             'line_nr' => 4,
                             'macro' => ''
                           },
-                          'parent' => {}
+                          'parent' => {},
+                          'type' => 'index_entry_command'
                         }
                       ],
                       'parent' => {},

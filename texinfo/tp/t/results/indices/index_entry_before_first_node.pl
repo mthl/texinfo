@@ -64,7 +64,8 @@ $result_trees{'index_entry_before_first_node'} = {
             'line_nr' => 2,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

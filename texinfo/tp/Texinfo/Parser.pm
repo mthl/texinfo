@@ -2895,6 +2895,7 @@ sub _end_line($$$)
           _enter_index_entry($self, $current->{'cmdname'}, $current,
                              $current->{'extra'}->{'misc_content'}, 
                              undef, $line_nr);
+          $current->{'type'} = 'index_entry_command';
         }
       }
       if (defined($command_structuring_level{$command})) {

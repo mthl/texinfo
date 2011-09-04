@@ -761,7 +761,8 @@ $result_trees{'no_element'} = {
         'line_nr' => 32,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'type' => 'index_entry_command'
     }
   ],
   'type' => 'text_root'

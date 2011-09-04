@@ -144,7 +144,8 @@ $result_trees{'colon_in_index_entry'} = {
             'line_nr' => 5,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

@@ -369,7 +369,8 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                                 'line_nr' => 8,
                                 'macro' => ''
                               },
-                              'parent' => {}
+                              'parent' => {},
+                              'type' => 'index_entry_command'
                             },
                             {
                               'args' => [
@@ -750,7 +751,8 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                                 'line_nr' => 21,
                                 'macro' => ''
                               },
-                              'parent' => {}
+                              'parent' => {},
+                              'type' => 'index_entry_command'
                             }
                           ],
                           'parent' => {},

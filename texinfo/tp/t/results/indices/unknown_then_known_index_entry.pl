@@ -103,7 +103,8 @@ $result_trees{'unknown_then_known_index_entry'} = {
             'line_nr' => 3,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         }
       ],
       'parent' => {},

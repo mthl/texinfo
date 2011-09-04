@@ -509,6 +509,18 @@ sub _convert($$;$)
         $result .= "<entry command=\"$root->{'cmdname'}\">";
         $close_element = 'entry';
       }
+    } elsif ($root->{'type'} and $root->{'type'} eq 'index_entry_command') {
+      my $element;
+      my $attribute;
+      if (exists $Texinfo::Common::misc_commands{$root->{'cmdname'}}) {
+        $element = $root->{'cmdname'};
+        $attribute = '';
+      } else {
+        $element = "indexcommand";
+        $attribute = " command=\"$root->{'cmdname'}\"";
+      }
+      $attribute .= " index=\"$root->{'extra'}->{'index_entry'}->{'index_name'}\"";
+      return "<$element${attribute}>".$self->_index_entry($root)."</$element>\n";
     } elsif (exists($xml_misc_commands{$root->{'cmdname'}})) {
       my $command;
       if (exists ($xml_misc_elements_with_arg_map{$root->{'cmdname'}})) {

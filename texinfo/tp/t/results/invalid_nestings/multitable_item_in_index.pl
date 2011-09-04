@@ -115,7 +115,8 @@ $result_trees{'multitable_item_in_index'} = {
                 'line_nr' => 2,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             }
           ],
           'parent' => {},

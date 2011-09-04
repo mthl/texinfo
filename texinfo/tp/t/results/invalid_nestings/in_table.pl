@@ -677,7 +677,8 @@ $result_trees{'in_table'} = {
                                 'line_nr' => 13,
                                 'macro' => ''
                               },
-                              'parent' => {}
+                              'parent' => {},
+                              'type' => 'index_entry_command'
                             }
                           ],
                           'parent' => {},
@@ -861,7 +862,8 @@ $result_trees{'in_table'} = {
                                 'line_nr' => 17,
                                 'macro' => ''
                               },
-                              'parent' => {}
+                              'parent' => {},
+                              'type' => 'index_entry_command'
                             }
                           ],
                           'parent' => {},
@@ -1008,7 +1010,8 @@ $result_trees{'in_table'} = {
                                 'line_nr' => 20,
                                 'macro' => ''
                               },
-                              'parent' => {}
+                              'parent' => {},
+                              'type' => 'index_entry_command'
                             }
                           ],
                           'parent' => {},

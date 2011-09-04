@@ -139,7 +139,8 @@ $result_trees{'index_and_node_same_name'} = {
             'line_nr' => 4,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'args' => [

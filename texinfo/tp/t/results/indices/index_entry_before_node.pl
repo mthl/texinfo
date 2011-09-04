@@ -377,7 +377,8 @@ $result_trees{'index_entry_before_node'} = {
             'line_nr' => 12,
             'macro' => ''
           },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'index_entry_command'
         },
         {
           'parent' => {},

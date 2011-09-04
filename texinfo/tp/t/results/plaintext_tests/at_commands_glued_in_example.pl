@@ -541,7 +541,8 @@ $result_trees{'at_commands_glued_in_example'} = {
                 'line_nr' => 15,
                 'macro' => ''
               },
-              'parent' => {}
+              'parent' => {},
+              'type' => 'index_entry_command'
             }
           ],
           'parent' => {},
