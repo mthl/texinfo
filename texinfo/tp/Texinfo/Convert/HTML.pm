@@ -1827,12 +1827,16 @@ sub _default_button_formatting($$)
     }
   } elsif ($button eq ' ') {
     # handle space button
+    # FIXME for the alt, the second button_icon_img argument, we don't use
+    # the button name (we do it for other buttons).  This doesn't matter much
+    # however, as ' ' is not translated in BUTTON_NAMES.
     if ($self->get_conf('ICONS') and $self->get_conf('ACTIVE_ICONS')
-        and defined($self->get_conf('ACTIVE_ICONS')->{' '})) {
+        and defined($self->get_conf('ACTIVE_ICONS')->{$button})
+        and $self->get_conf('ACTIVE_ICONS')->{$button} ne '') {
       $active = &{$self->{'button_icon_img'}}($self, $button, 
                                        $self->get_conf('ACTIVE_ICONS')->{' '});
     } else {
-      $active = $self->get_conf('BUTTONS_TEXT')->{' '};
+      $active = $self->get_conf('BUTTONS_TEXT')->{$button};
     }
   } else {
     my $href = $self->_element_direction($self->{'current_element'}, 
@@ -5706,15 +5710,16 @@ EOT
     foreach my $button (@{$self->get_conf('SECTION_BUTTONS')}) {
       next if ($button eq ' ' or ref($button) eq 'CODE' or ref($button) eq 'SCALAR' 
                 or ref($button) eq 'ARRAY');
+      my $button_name = $self->get_conf('BUTTONS_NAME')->{$button};
       $about .= "  <tr>\n    <td align=\"center\">";
       $about .=
             ($self->get_conf('ICONS') && $self->get_conf('ACTIVE_ICONS')->{$button} ?
-             &{$self->{'button_icon_img'}}($self, $button, 
+             &{$self->{'button_icon_img'}}($self, $button_name, 
                                        $self->get_conf('ACTIVE_ICONS')->{$button}) :
              ' [' . $self->get_conf('BUTTONS_TEXT')->{$button} . '] ');
       $about .= "</td>\n";
       $about .= 
-"    <td align=\"center\">".$self->get_conf('BUTTONS_NAME')->{$button}."</td>
+"    <td align=\"center\">".$button_name."</td>
     <td>".$self->get_conf('BUTTONS_GOTO')->{$button}."</td>
     <td>".$self->get_conf('BUTTONS_EXAMPLE')->{$button}."</td>
   </tr>
