@@ -518,10 +518,6 @@ normal text
 <pre class="example">in example
 </pre></div>
 
-<div class="example">
-<div class="example">
-</div>
-</div>
 ';
 
 1;

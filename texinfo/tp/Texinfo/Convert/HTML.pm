@@ -2161,14 +2161,18 @@ sub _convert_preformatted_commands($$$$)
   my $command = shift;
   my $content = shift;
 
-  if ($self->get_conf('COMPLEX_FORMAT_IN_TABLE')) {
-    if ($indented_preformatted_commands{$cmdname}) {
-      return '<table><tr><td>&nbsp;</td><td>'.$content."</td></tr></table>\n";
+  if ($content ne '') {
+    if ($self->get_conf('COMPLEX_FORMAT_IN_TABLE')) {
+      if ($indented_preformatted_commands{$cmdname}) {
+        return '<table><tr><td>&nbsp;</td><td>'.$content."</td></tr></table>\n";
+      } else {
+        return $content."\n";
+      }
     } else {
-      return $content."\n";
+      return $self->attribute_class('div', $cmdname).">\n".$content.'</div>'."\n";
     }
   } else {
-    return $self->attribute_class('div', $cmdname).">\n".$content.'</div>'."\n";
+    return '';
   }
 }
 
@@ -2561,7 +2565,11 @@ sub _convert_enumerate_command($$$$)
   my $command = shift;
   my $content = shift;
 
-  return "<ol>\n" . $content . "</ol>\n";
+  if ($content ne '') {
+    return "<ol>\n" . $content . "</ol>\n";
+  } else {
+    return '';
+  }
 }
 
 $default_commands_conversion{'enumerate'} = \&_convert_enumerate_command;
@@ -2589,7 +2597,11 @@ sub _convert_xtable_command($$$$)
   my $command = shift;
   my $content = shift;
 
-  return "<dl compact=\"compact\">\n" . $content . "</dl>\n";
+  if ($content ne '') {
+    return "<dl compact=\"compact\">\n" . $content . "</dl>\n";
+  } else {
+    return '';
+  }
 }
 $default_commands_conversion{'table'} = \&_convert_xtable_command;
 $default_commands_conversion{'ftable'} = \&_convert_xtable_command;
