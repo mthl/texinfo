@@ -212,10 +212,10 @@ $result_converted_errors{'html'}->{'two_unnumbered_no_argument'} = [
 
 
 $result_converted{'xml'}->{'two_unnumbered_no_argument'} = '<unnumbered>
-<title></title>
+<sectiontitle></sectiontitle>
 </unnumbered>
 <unnumbered>
-<title></title>
+<sectiontitle></sectiontitle>
 </unnumbered>
 ';
 

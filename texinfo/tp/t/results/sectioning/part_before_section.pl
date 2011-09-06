@@ -226,10 +226,10 @@ $result_directions_text{'part_before_section'} = 'element: @section section
 
 
 $result_converted{'xml'}->{'part_before_section'} = '<part>
-<title>part</title>
+<sectiontitle>part</sectiontitle>
 
 <chapter originalcommand="section">
-<title>section </title>
+<sectiontitle>section </sectiontitle>
 </chapter>
 </part>
 ';

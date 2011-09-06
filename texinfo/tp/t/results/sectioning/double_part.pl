@@ -994,7 +994,7 @@ $result_converted{'xml'}->{'double_part'} = '<node name="Top">
 <nodeup automatic="on">(dir)</nodeup>
 </node>
 <top>
-<title>top</title>
+<sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>node chapter</menunode><menudescription>
@@ -1002,12 +1002,12 @@ $result_converted{'xml'}->{'double_part'} = '<node name="Top">
 
 </top>
 <part>
-<title>part first</title>
+<sectiontitle>part first</sectiontitle>
 
 <para>Text part first.
 </para></part>
 <part>
-<title>part second</title>
+<sectiontitle>part second</sectiontitle>
 <para>Text part second.
 </para>
 <node name="node-chapter">
@@ -1016,7 +1016,7 @@ $result_converted{'xml'}->{'double_part'} = '<node name="Top">
 <nodeup automatic="on">Top</nodeup>
 </node>
 <chapter>
-<title>chapter after 2 parts</title>
+<sectiontitle>chapter after 2 parts</sectiontitle>
 
 </chapter>
 </part>

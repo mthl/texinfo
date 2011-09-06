@@ -676,7 +676,7 @@ $result_converted{'xml'}->{'section_before_top'} = '<node name="section-node">
 <nodeup>Top</nodeup>
 </node>
 <section>
-<title>section </title>
+<sectiontitle>section </sectiontitle>
 
 </section>
 <node name="Top">
@@ -685,7 +685,7 @@ $result_converted{'xml'}->{'section_before_top'} = '<node name="section-node">
 <nodeup automatic="on">(dir)</nodeup>
 </node>
 <unnumberedsec originalcommand="top">
-<title>top</title>
+<sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>section node</menunode><menudescription>

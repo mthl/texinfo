@@ -17,30 +17,12 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
-# msg Karl: <printindex value="cp"></printindex> instead of <printindex>cp</printindex>
-#           <xref> -> xref or pxref or ref
-#           drop the See
-#           @findex -> <findex><indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>
-#           @fooindex -> <indexcommand command="fooindex" index="foo"><indexterm index=\"${index_name}\">${formatted_entry_reference}</indexterm>
-#           @abbr do not becomes abbrev, but stays as abbr
-#       menu comment -> menucomment
-#       menu entry description -> menudescription (instead of menucomment)
+# msg Karl: 
 #       preformatted -> pre
-#       preamble added
 #       <tableterm command="item">
 #       'command_as_argument' -> apply it? definfoenclosed? attribute automatic=on?
 #       <ftable commandarg="asis"> or <itemize commandarg="bullet">
 #       in itemize <itemfunction> -> <itemprepend>?
-#       no more <floatpos>
-#       both inlineimage and image?
-#       definfoenclose -> <infoenclose command=".." begin=".." end="..">...
-#       settitle and title -> corresponding elements
-#       title -> sectiontitle
-#       def* -> 
-#       <defivar>
-#       <definitionterm>
-#       'category', 'class' , 'type', 'name'
-#       typearg, arg, delimiter    'param', 'paramtype', 'delimiter'
 
 
 package Texinfo::Convert::XML;
@@ -153,12 +135,6 @@ my @other_accents = ('dotaccent', 'tieaccent', 'ubaraccent', 'udotaccent');
 foreach my $accent (@other_accents) {
   $xml_accent_types{$accent} = $accent;
 }
-
-
-my %xml_misc_elements_with_arg_map = (
-  'title'     => 'booktitle',
-  'subtitle'  => 'booksubtitle'
-);
 
 my %misc_command_line_attributes = (
   'setfilename' => 'file',
@@ -509,12 +485,7 @@ sub _convert($$;$)
       $attribute .= " index=\"$root->{'extra'}->{'index_entry'}->{'index_name'}\"";
       return "<$element${attribute}>".$self->_index_entry($root)."</$element>\n";
     } elsif (exists($xml_misc_commands{$root->{'cmdname'}})) {
-      my $command;
-      if (exists ($xml_misc_elements_with_arg_map{$root->{'cmdname'}})) {
-        $command = $xml_misc_elements_with_arg_map{$root->{'cmdname'}};
-      } else {
-        $command = $root->{'cmdname'};
-      }
+      my $command = $root->{'cmdname'};
       my $type = $xml_misc_commands{$root->{'cmdname'}};
       if ($type eq 'text') {
         return '' if ($root->{'cmdname'} eq 'end');
@@ -584,7 +555,7 @@ sub _convert($$;$)
             } else {
               $end_line = "";
             }
-            $result .= "<title>$arg</title>$end_line"
+            $result .= "<sectiontitle>$arg</sectiontitle>$end_line"
           }
         } else {
           my $attribute = '';

@@ -1263,7 +1263,7 @@ $result_converted{'xml'}->{'node_part_chapter_after_chapter'} = '<node name="Top
 <nodeup automatic="on">(dir)</nodeup>
 </node>
 <top>
-<title>top</title>
+<sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>chapter node</menunode><menudescription>
@@ -1279,7 +1279,7 @@ $result_converted{'xml'}->{'node_part_chapter_after_chapter'} = '<node name="Top
 </node>
 
 <chapter>
-<title>chapter node</title>
+<sectiontitle>chapter node</sectiontitle>
 
 </chapter>
 <node name="part-chapter-node">
@@ -1288,10 +1288,10 @@ $result_converted{'xml'}->{'node_part_chapter_after_chapter'} = '<node name="Top
 <nodeup automatic="on">Top</nodeup>
 </node>
 <part>
-<title>part</title>
+<sectiontitle>part</sectiontitle>
 
 <chapter>
-<title>chapter with part node</title>
+<sectiontitle>chapter with part node</sectiontitle>
 
 <contents></contents>
 </chapter>

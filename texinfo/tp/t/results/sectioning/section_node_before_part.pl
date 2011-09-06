@@ -362,11 +362,11 @@ $result_converted{'xml'}->{'section_node_before_part'} = '
 <nodeup automatic="on">(dir)</nodeup>
 </node>
 <section>
-<title>section </title>
+<sectiontitle>section </sectiontitle>
 
 </section>
 <part>
-<title>part</title>
+<sectiontitle>part</sectiontitle>
 </part>
 ';
 

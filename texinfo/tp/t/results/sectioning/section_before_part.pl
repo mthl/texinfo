@@ -269,11 +269,11 @@ $result_converted_errors{'html'}->{'section_before_part'} = [
 
 
 $result_converted{'xml'}->{'section_before_part'} = '<section>
-<title>section </title>
+<sectiontitle>section </sectiontitle>
 
 </section>
 <part>
-<title>part</title>
+<sectiontitle>part</sectiontitle>
 
 <contents></contents>
 </part>

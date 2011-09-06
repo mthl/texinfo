@@ -177,11 +177,11 @@ $result_errors{'section_before_top_no_node'} = [
 
 
 $result_converted{'xml'}->{'section_before_top_no_node'} = '<section>
-<title>section </title>
+<sectiontitle>section </sectiontitle>
 
 </section>
 <unnumberedsec originalcommand="top">
-<title>top</title>
+<sectiontitle>top</sectiontitle>
 </unnumberedsec>
 ';
 

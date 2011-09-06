@@ -335,14 +335,14 @@ element: @chapter chapter
 
 
 $result_converted{'xml'}->{'top_part_chapter'} = '<top>
-<title>top</title>
+<sectiontitle>top</sectiontitle>
 
 </top>
 <part>
-<title>part</title>
+<sectiontitle>part</sectiontitle>
 
 <chapter>
-<title>chapter </title>
+<sectiontitle>chapter </sectiontitle>
 </chapter>
 </part>
 ';

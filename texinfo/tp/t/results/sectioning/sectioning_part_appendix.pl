@@ -836,45 +836,45 @@ $result_errors{'sectioning_part_appendix'} = [];
 
 
 $result_converted{'xml'}->{'sectioning_part_appendix'} = '<top>
-<title>top</title>
+<sectiontitle>top</sectiontitle>
 
 </top>
 <chapter>
-<title>chapter</title>
+<sectiontitle>chapter</sectiontitle>
 
 <section>
-<title>section</title>
+<sectiontitle>section</sectiontitle>
 
 <subsection>
-<title>subsection</title>
+<sectiontitle>subsection</sectiontitle>
 
 <subsubsection>
-<title>subsubsection</title>
+<sectiontitle>subsubsection</sectiontitle>
 
 </subsubsection>
 </subsection>
 </section>
 </chapter>
 <part>
-<title>part</title>
+<sectiontitle>part</sectiontitle>
 
 <chapter>
-<title>chapter in part</title>
+<sectiontitle>chapter in part</sectiontitle>
 
 </chapter>
 <chapter>
-<title>second chapter in part</title>
+<sectiontitle>second chapter in part</sectiontitle>
 
 </chapter>
 <unnumbered>
-<title>unnumbered</title>
+<sectiontitle>unnumbered</sectiontitle>
 
 </unnumbered>
 <appendix>
-<title>appendix</title>
+<sectiontitle>appendix</sectiontitle>
 
 <appendixsec>
-<title>appendixsec</title>
+<sectiontitle>appendixsec</sectiontitle>
 </appendixsec>
 </appendix>
 </part>

@@ -179,11 +179,11 @@ $result_errors{'section_before_chapter'} = [
 
 
 $result_converted{'xml'}->{'section_before_chapter'} = '<section>
-<title>section </title>
+<sectiontitle>section </sectiontitle>
 
 </section>
 <section originalcommand="chapter">
-<title>chapter</title>
+<sectiontitle>chapter</sectiontitle>
 </section>
 ';
 
