@@ -21,8 +21,6 @@
 #       preformatted -> pre
 #       <tableterm command="item">
 #       'command_as_argument' -> apply it? definfoenclosed? attribute automatic=on?
-#       <ftable commandarg="asis"> or <itemize commandarg="bullet">
-#       in itemize <itemfunction> -> <itemprepend>?
 
 
 package Texinfo::Convert::XML;
@@ -171,7 +169,8 @@ my %commands_args_elements = (
               'alttext', 'imageextension'],
   'quotation' => ['quotationtype'],
   'float' => ['floattype', 'floatname'],
-  'itemize' => ['itemfunction'],
+  'itemize' => ['itemprepend'],
+  'enumerate' => ['enumeratefirst'],
 );
 
 foreach my $ref_cmd ('pxref', 'xref', 'ref') {
@@ -702,7 +701,7 @@ sub _convert($$;$)
       my $attribute = '';
       if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
         $attribute 
-         .= " commandarg=\"$root->{'extra'}->{'command_as_argument'}->{'cmdname'}\"";
+         .= " commandarg=\"\@$root->{'extra'}->{'command_as_argument'}->{'cmdname'}\"";
       } elsif ($root->{'extra'}
                and $root->{'extra'}->{'enumerate_specification'}) {
         $attribute .= " first=\""
@@ -720,6 +719,7 @@ sub _convert($$;$)
         $attribute = " xml:space=\"preserve\"";
       }
       $result .= "<$root->{'cmdname'}${attribute}>";
+      my $end_line = '';
       if ($root->{'args'}) {
         if ($commands_args_elements{$root->{'cmdname'}}) {
           my $arg_index = 0;
@@ -730,34 +730,78 @@ sub _convert($$;$)
                 if (defined($default_args_code_style{$root->{'cmdname'}})
                   and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
               $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-              my $arg = $self->_convert($root->{'args'}->[$arg_index]);
-              chomp($arg);
-              if ($arg ne '') {  
-                $result .= "<$element>$arg</$element>\n";
+              my $comment;
+              my $arg_tree;
+              if ($root->{'args'}->[$arg_index]->{'contents'} 
+                  and $root->{'args'}->[$arg_index]->{'contents'}->[-1]->{'cmdname'}
+                  and ($root->{'args'}->[$arg_index]->{'contents'}->[-1]->{'cmdname'} eq 'c'
+                       or $root->{'args'}->[$arg_index]->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
+                my @contents = @{$root->{'args'}->[$arg_index]->{'contents'}};
+                $comment = pop @contents;
+                $arg_tree = {'contents' => \@contents, 
+                             'type' => $root->{'args'}->[$arg_index]->{'type'},
+                             'parent' => $root->{'args'}->[$arg_index]->{'parent'}};
+              } else {
+                $arg_tree = $root->{'args'}->[$arg_index];
               }
+              my $arg = $self->_convert($arg_tree);
+              #chomp($arg);
+              if ($comment) {
+                $end_line = $self->_convert($comment);
+              } else {
+                chomp($arg);
+                $end_line = "\n";
+              }
+              if ($arg ne '') {
+                $result .= "<$element>$arg</$element>";
+              }
+              #$result .= "\n";
               $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
             } else {
               last;
             }
             $arg_index++;
           }
-        } elsif ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
-          if ($root->{'extra'}->{'prototypes'}) {
-            $result .= "<columnprototypes>";
-            foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
-              $result .= "<columnprototype>".$self->_convert($prototype)
-                         ."</columnprototype>";
+        } else {
+          my $contents_possible_comment;
+          if ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
+            if ($root->{'extra'}->{'prototypes'}) {
+              $result .= "<columnprototypes>";
+              foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
+                $result .= "<columnprototype>".$self->_convert($prototype)
+                           ."</columnprototype>";
+              }
+              $result .= "</columnprototypes>";
+              $contents_possible_comment 
+                = $root->{'args'}->[-1]->{'contents'};
+            } elsif ($root->{'extra'}->{'columnfractions'}) {
+              $result .= "<columnfractions>";
+              foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
+                $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
+              }
+              $result .= "</columnfractions>";
+              $contents_possible_comment 
+                = $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'}
+                  if ($root->{'args'}->[-1]->{'contents'}
+                      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}
+                      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'});
             }
-            $result .= "</columnprototypes>";
-          } elsif ($root->{'extra'}->{'columnfractions'}) {
-            $result .= "<columnfractions>";
-            foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
-              $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
-            }
-            $result .= "</columnfractions>";
+          } else {
+            $contents_possible_comment = $root->{'args'}->[-1]->{'contents'}
+              if ($root->{'args'}->[-1]->{'contents'});
+          }
+          
+          if ($contents_possible_comment
+              and $contents_possible_comment->[-1]->{'cmdname'}
+              and ($contents_possible_comment->[-1]->{'cmdname'} eq 'c'
+                   or $contents_possible_comment->[-1]->{'cmdname'} eq 'comment')) {
+            $end_line = $self->_convert($contents_possible_comment->[-1]);
+          } else {
+            $end_line = "\n";
           }
         }
       }
+      $result .= $end_line;
       #chomp($result);
       #$result .= "\n";
       $close_element = $root->{'cmdname'};

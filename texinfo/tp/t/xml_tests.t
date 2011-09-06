@@ -58,6 +58,68 @@ T@footnote{
 @caption{@image{in_caption} PAra @image{in_caption_para}}
 @end float
 '],
+['comments_on_block_command_lines',
+'@itemize @c comm
+@item itemize it
+@end itemize
+
+@itemize x @c comm
+@item itemize xit
+@end itemize
+
+@itemize @bullet @c comm
+@item itemize bulletit
+@end itemize
+
+@enumerate @c comm
+@item en
+@end enumerate
+
+@enumerate a @c comm
+@item aen
+@end enumerate
+
+@table @asis @c table
+@item it
+@end table
+
+@quotation @c quot no arg
+Quot no arg
+@end quotation
+
+@quotation quotarg @c quot arg
+Quot arg
+@end quotation
+
+@group @c comm
+in gr
+@end group
+
+@example @c comm
+in ex
+@end example
+
+@multitable @columnfractions 0.4 0.6 @c comm
+@item a @tab b
+@end multitable
+
+@multitable {aaa} {bbb} @c c
+@item aaa @tab bbb
+@end multitable
+
+@float f,g @c comm
+In f
+@end float
+
+@flushright @c comm
+flushright
+@end flushright
+
+@raggedright @c comm
+raggedright
+@end raggedright
+
+'],
 );
 
 foreach my $test (@test_cases) {

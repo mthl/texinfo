@@ -133,4 +133,10 @@ $result_converted{'html_text'}->{'comment_on_cartouche_line'} = '<table class="c
 </p></td></tr></table>
 ';
 
+
+$result_converted{'xml'}->{'comment_on_cartouche_line'} = '<cartouche><!--  comment -->
+<para>in cartouche.
+</para></cartouche>
+';
+
 1;

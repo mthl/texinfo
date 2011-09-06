@@ -2247,7 +2247,8 @@ T
 <image><imagefile>in_quotation_content</imagefile><image>
 </quotation>
 
-<table commandarg="asis"><tableitem><tableterm command="item" itemfunction="asis"><image where="inline"><imagefile>in_table_item</imagefile><image></tableterm>
+<table commandarg="@asis">
+<tableitem><tableterm command="item" itemfunction="asis"><image where="inline"><imagefile>in_table_item</imagefile><image></tableterm>
 <item>
 <image><imagefile>in_table_def</imagefile><image>
 
@@ -2270,14 +2271,13 @@ T
 <nodeup automatic="on">Top</nodeup>
 </node>
 <chapter>
-<title><image where="inline"><imagefile>in_chapter_arg</imagefile><image></title>
+<sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile><image></sectiontitle>
 
 
 <para>T<footnote><image where="inline"><imagefile>in_footnote</imagefile><image>
 </footnote>
 </para>
-<float name="g" type="F"><floattype>F</floattype>
-<floatname>g</floatname>
+<float name="g" type="F"><floattype>F</floattype><floatname>g</floatname>
 
 <image><imagefile>in_float</imagefile><image>
 

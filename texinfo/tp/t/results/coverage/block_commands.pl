@@ -567,8 +567,7 @@ $result_converted{'xml'}->{'block_commands'} = '
 <para>in quotation
 </para></quotation>
 
-<float name="b-float" type="a-float"><floattype>a float</floattype>
-<floatname>b float</floatname>
+<float name="b-float" type="a-float"><floattype>a float</floattype><floatname>b float</floatname>
 <para>In float
 </para>
 
