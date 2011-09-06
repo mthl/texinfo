@@ -477,7 +477,7 @@ sub test($$)
     }
   }
   my $directions_text;
-  # re-associate elements with the document_root.
+  # re-associate elements with the document_root.
   Texinfo::Structuring::_unsplit($result);
   my $elements;
   if ($split eq 'node') {
@@ -659,7 +659,8 @@ sub test($$)
     if (@tested_formats) {
       foreach my $format (@tested_formats) {
         if (!defined($result_converted{$format})) {
-          print STDERR "\n$format $test_name:\n$converted{$format}";
+          print STDERR "\n$format $test_name:\n$converted{$format}"#;
+             if ($format ne 'xml');
         } else {
           $tests_count += 2;
           ok ($converted{$format} eq $result_converted{$format}->{$test_name},

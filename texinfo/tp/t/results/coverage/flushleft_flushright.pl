@@ -327,4 +327,23 @@ ldskf dsflj
 <p align="right">lhds
 </p>';
 
+
+$result_converted{'xml'}->{'flushleft_flushright'} = '
+<flushleft>
+<para>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+ldskf dsflj
+     lklsdlv l    lll. Bbb.
+</para>
+<para>lhds
+</para></flushleft>
+
+<flushright>
+<para>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+ldskf dsflj
+     lklsdlv l    lll. Bbb.
+</para>
+<para>lhds
+</para></flushright>
+';
+
 1;

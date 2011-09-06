@@ -2476,4 +2476,99 @@ $result_converted{'html_text'}->{'nested_block_commands'} = '<p>In group
 </p>
 ';
 
+
+$result_converted{'xml'}->{'nested_block_commands'} = '<group>
+<para>In group
+</para><quotation>
+<para>in quotation
+</para></quotation>
+</group>
+
+<group>
+<quotation>
+<para>in quotation
+</para></quotation>
+</group>
+
+<group>
+<para>In group
+</para><quotation>
+<para>in quotation
+</para></quotation>
+<para>after quotation
+</para></group>
+
+<group>
+
+<para>In group sp b
+</para><quotation>
+<para>in quotation
+</para></quotation>
+</group>
+
+<group>
+
+<para>In group sp b a
+</para>
+<quotation>
+<para>in quotation
+</para></quotation>
+</group>
+
+<group>
+<para>In group sp a
+</para>
+<quotation>
+<para>in quotation
+</para></quotation>
+</group>
+
+<group>
+<quotation>
+
+<para>in quotation sp b
+</para></quotation>
+</group>
+
+<group>
+<quotation>
+
+<para>in quotation sp b a
+</para>
+</quotation>
+</group>
+
+<group>
+<quotation>
+<para>in quotation sp a
+</para>
+</quotation>
+</group>
+
+<group>
+<quotation>
+<para>in quotation
+</para></quotation>
+
+<para>After quotation sp b
+</para></group>
+
+<group>
+<quotation>
+<para>in quotation
+</para></quotation>
+<para>After quotation sp a
+</para>
+</group>
+
+<group>
+<quotation>
+<para>in quotation
+</para></quotation>
+
+<para>After quotation sp b a
+</para>
+</group>
+';
+
 1;

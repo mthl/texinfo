@@ -877,7 +877,7 @@ $result_converted{'xml'}->{'node_part_chapter_after_top'} = '<node name="Top">
 <title>part</title>
 
 <chapter>
-<title>chapter</title>
+<title>chapter </title>
 </chapter>
 </part>
 ';

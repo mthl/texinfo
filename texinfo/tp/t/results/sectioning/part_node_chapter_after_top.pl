@@ -1160,7 +1160,7 @@ $result_converted{'xml'}->{'part_node_chapter_after_top'} = '<node name="Top">
 <nodeup automatic="on">Top</nodeup>
 </node>
 <chapter>
-<title>chapter</title>
+<title>chapter </title>
 </chapter>
 </part>
 ';

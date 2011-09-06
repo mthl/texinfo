@@ -74,4 +74,9 @@ $result_converted{'plaintext'}->{'hyphenation'} = '';
 
 $result_converted{'html_text'}->{'hyphenation'} = '';
 
+
+$result_converted{'xml'}->{'hyphenation'} = '
+<hyphenation>some-where </hyphenation>
+';
+
 1;

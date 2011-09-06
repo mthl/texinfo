@@ -120,4 +120,10 @@ $result_converted{'html_text'}->{'center'} = '<p align="center">in center <code>
 </p>
 ';
 
+
+$result_converted{'xml'}->{'center'} = '
+<center>in center <code>in code</code></center>
+
+';
+
 1;

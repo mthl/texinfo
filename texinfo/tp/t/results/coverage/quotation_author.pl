@@ -281,4 +281,15 @@ quotation continues.
 </p><p align="center">&mdash; <em>S&#7869;cond author</em>
 </p>';
 
+
+$result_converted{'xml'}->{'quotation_author'} = '<quotation>
+
+<author>First Author</author>
+<para>quotation
+<author>S<accent type="tilde">e</accent>cond author</author>
+quotation continues.
+</para>
+</quotation>
+';
+
 1;

@@ -52,4 +52,7 @@ $result_converted{'plaintext'}->{'test_today'} = 'a sunny day.
 
 $result_converted{'html_text'}->{'test_today'} = '<p>a sunny day.</p>';
 
+
+$result_converted{'xml'}->{'test_today'} = '<para><today/>.</para>';
+
 1;

@@ -342,7 +342,7 @@ $result_converted{'xml'}->{'top_part_chapter'} = '<top>
 <title>part</title>
 
 <chapter>
-<title>chapter</title>
+<title>chapter </title>
 </chapter>
 </part>
 ';

@@ -112,4 +112,10 @@ $result_converted{'html_text'}->{'cartouche'} = '<table class="cartouche" border
 </p></td></tr></table>
 ';
 
+
+$result_converted{'xml'}->{'cartouche'} = '<cartouche>
+<para>in cartouche.
+</para></cartouche>
+';
+
 1;

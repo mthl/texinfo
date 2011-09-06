@@ -557,4 +557,25 @@ $result_converted{'html_text'}->{'block_commands'} = '<p>in group
 </p>
 <p>in caption</p>';
 
+
+$result_converted{'xml'}->{'block_commands'} = '
+<group>
+<para>in group
+</para></group>
+
+<quotation><quotationtype>warning</quotationtype>
+<para>in quotation
+</para></quotation>
+
+<float name="b-float" type="a-float"><floattype>a float</floattype>
+<floatname>b float</floatname>
+<para>In float
+</para>
+
+<caption><para>in caption
+</para>
+<para>in caption</para></caption>
+</float>
+';
+
 1;

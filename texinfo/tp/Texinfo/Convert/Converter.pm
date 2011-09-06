@@ -278,7 +278,7 @@ sub force_conf($$$)
 
 my $STDIN_DOCU_NAME = 'stdin';
 
-# This is especially useful for unsplit manuals
+# This is especially useful for unsplit manuals
 sub _set_outfile($$$)
 {
   my $self = shift;
@@ -442,6 +442,53 @@ sub float_type_number($$)
   return $tree;
 }
 
+my @inline_types = ('def_line', 'paragraph', 'preformatted',
+  'misc_command_arg', 'misc_line_arg', 'block_line_arg',
+  'menu_entry_name', 'menu_entry_node');
+
+my %inline_types;
+foreach my $type (@inline_types) {
+  $inline_types{$type} = 1;
+}
+
+my %not_inline_commands = (%Texinfo::Common::root_commands, 
+  %Texinfo::Common::block_commands, %Texinfo::Common::context_brace_command);
+
+sub _is_inline($$)
+{
+  my $self = shift;
+  my $current = shift;
+  while ($current->{'parent'}) {
+    $current = $current->{'parent'};
+    if ($current->{'type'} and $inline_types{$current->{'type'}}) {
+      return 1;
+    } elsif ($current->{'cmdname'} 
+             and $not_inline_commands{$current->{'cmdname'}}) {
+      return 0;
+    }
+  }
+  return 0;
+}
+
+our %default_args_code_style = (
+  'email' => ['code'],
+  'anchor' => ['code'],
+  'uref' => ['code'],
+  'url' => ['code'],
+  'math' => ['code'],
+  'inforef' => ['code',undef,'code'],
+  'image' => ['code', 'code', 'code', undef, 'code'],
+# and type?
+  'float' => ['code'],
+);
+
+foreach my $code_style_command (keys(%Texinfo::Common::code_style_commands)) {
+  $default_args_code_style{$code_style_command} = ['code'];
+}
+foreach my $ref_cmd ('pxref', 'xref', 'ref') {
+  $default_args_code_style{$ref_cmd} = ['code', undef, undef, 'code'];
+}
+
 sub xml_protect_text($$)
 {
   my $self = shift;
@@ -451,10 +498,9 @@ sub xml_protect_text($$)
   $text =~ s/>/&gt;/g;
   $text =~ s/\"/&quot;/g;
   return $text;
-
 }
 
-# 'today' is not set here.
+# 'today' is not set here.
 our %default_xml_commands_formatting; 
 $default_xml_commands_formatting{'normal'} = {
                'TeX'          => 'TeX',
@@ -579,6 +625,9 @@ sub xml_accent($$;$$)
       hex($Texinfo::Convert::Unicode::unicode_accented_letters{$accent}->{$text}). ';';
   }
   return $text . '&lt;' if ($accent eq 'v');
+  # FIXME it is not possible to call xml_protect_text since what is in $text
+  # may already be xml.  But this means that each time ascii_accent changes
+  # it should be changed here too.
   return Texinfo::Convert::Text::ascii_accent($text, $command);
 }
 
@@ -590,16 +639,18 @@ sub xml_accent_numeric_entities($$;$)
   return xml_accent($text, $command, $in_upper_case, 1);
 }
 
-sub xml_accents($$;$)
+sub xml_accents($$;$$)
 { 
   my $self = shift;
   my $accent = shift;
   my $in_upper_case = shift;
-  my $format_accents;
-  if ($self->get_conf('USE_NUMERIC_ENTITY')) {
-    $format_accents = \&xml_accent_numeric_entities;
-  } else {
-    $format_accents = \&xml_accent;
+  my $format_accents = shift;
+  if (!defined($format_accents)) {
+    if ($self->get_conf('USE_NUMERIC_ENTITY')) {
+      $format_accents = \&xml_accent_numeric_entities;
+    } else {
+      $format_accents = \&xml_accent;
+    }
   }
   
   if ($self->get_conf('ENABLE_ENCODING')) {

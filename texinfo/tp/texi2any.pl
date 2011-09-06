@@ -100,7 +100,8 @@ my $messages_textdomain = '@PACKAGE@';
 $messages_textdomain = 'texinfo' if ($messages_textdomain eq '@'.'PACKAGE@');
 my $strings_textdomain = '@PACKAGE@' . '_document';
 # FIXME use texinfo
-$strings_textdomain = 'texi2html_document' if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
+$strings_textdomain = 'texi2html_document' 
+   if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
 
 sub __($) {
   my $msgid = shift;
@@ -153,6 +154,7 @@ if ($0 =~ /\.pl$/) {
 } else {
   Locale::Messages::bindtextdomain ($strings_textdomain, "$datadir/locale");
 }
+
 Locale::Messages::bindtextdomain ($messages_textdomain, "$datadir/locale");
 
 if ($0 =~ /\.pl$/) {
@@ -185,6 +187,7 @@ require Texinfo::Structuring;
 require Texinfo::Convert::Info;
 require Texinfo::Convert::HTML;
 require Texinfo::Convert::XML;
+#require Texinfo::Convert::DocBook;
 require DebugTexinfo::DebugCount;
 
 # determine configuration directories.
@@ -777,6 +780,9 @@ my %formats_table = (
              'nodes_tree' => 1,
              'converter' => sub{Texinfo::Convert::XML->converter(@_)},
            },
+#  'docbook' => {
+#             'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
+#           },
   'pdf' => {
              'texi2dvi_format' => 1,
            },

@@ -566,4 +566,15 @@ File &rarr; Open.
 <h1 class="majorheading">majorheading <b>in b</b></h1>
 ';
 
+
+$result_converted{'xml'}->{'commands'} = '<para>&arobase; &tex; <spacecmd type="nl"/><accent type="uml">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="tilde">a</accent> <accent type="ring">a</accent>
+<clicksequence>File <click command="arrow"/> Open</clicksequence>&eosperiod;
+<email><emailaddress>a</emailaddress><emailname>b</emailname><email> <code>code --- -- \'\' ``</code>
+&textmdash; &textndash; &textrdquo; &textldquo;. <sc>small caps</sc>.
+</para>
+<cindex index="cp"><indexterm index="cp">index entry &textldquo;in text&textrdquo; &latex;</indexterm></cindex>
+
+<majorheading>majorheading <b>in b</b></majorheading>
+';
+
 1;

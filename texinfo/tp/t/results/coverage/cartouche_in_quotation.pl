@@ -232,4 +232,14 @@ $result_converted{'html_text'}->{'cartouche_in_quotation'} = '<blockquote>
 </p></blockquote>
 ';
 
+
+$result_converted{'xml'}->{'cartouche_in_quotation'} = '<quotation>
+<para>In quotation
+</para><cartouche>
+<para>In cartouche in quotation
+</para></cartouche>
+<para>end quotation
+</para></quotation>
+';
+
 1;

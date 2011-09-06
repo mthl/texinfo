@@ -427,4 +427,19 @@ $result_converted{'html_text'}->{'math'} = '<p>Simple math
 </p>
 ';
 
+
+$result_converted{'xml'}->{'math'} = '<para>Simple math
+<math>--{x^i}\\over{\\tan y}</math>
+</para>
+<para>Math with &arobase;-command
+<math><code>math code</code> a &lt; b</math>
+</para>
+<para>Complex
+<math>\\underline{<code>math \\hbox{ code }</code>} &backslash;i \\sum_{i}{\\underline{f}}</math>
+</para>
+<para>&arobase;\\ outside of math
+&backslash;
+</para>
+';
+
 1;

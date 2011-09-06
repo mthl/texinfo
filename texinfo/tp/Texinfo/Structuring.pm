@@ -1043,7 +1043,8 @@ sub number_floats($)
       if ($float->{'float_section'}) {
         my $up = $float->{'float_section'};
         while ($up->{'section_up'} 
-               and $command_structuring_level{$up->{'cmdname'}} 
+               #and $command_structuring_level{$up->{'cmdname'}} 
+               and defined($up->{'section_up'}->{'cmdname'})
                and $command_structuring_level{$up->{'section_up'}->{'cmdname'}}) {
           $up = $up->{'section_up'};
         }

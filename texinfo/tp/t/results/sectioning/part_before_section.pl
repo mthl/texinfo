@@ -229,7 +229,7 @@ $result_converted{'xml'}->{'part_before_section'} = '<part>
 <title>part</title>
 
 <chapter originalcommand="section">
-<title>section</title>
+<title>section </title>
 </chapter>
 </part>
 ';

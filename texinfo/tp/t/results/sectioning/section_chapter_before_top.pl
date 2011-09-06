@@ -261,7 +261,7 @@ $result_errors{'section_chapter_before_top'} = [
 
 
 $result_converted{'xml'}->{'section_chapter_before_top'} = '<section>
-<title>section</title>
+<title>section </title>
 
 </section>
 <section originalcommand="chapter">

@@ -676,7 +676,7 @@ $result_converted{'xml'}->{'section_before_top'} = '<node name="section-node">
 <nodeup>Top</nodeup>
 </node>
 <section>
-<title>section</title>
+<title>section </title>
 
 </section>
 <node name="Top">

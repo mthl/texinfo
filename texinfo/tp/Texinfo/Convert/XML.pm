@@ -183,20 +183,8 @@ foreach my $command ('item', 'headitem', 'itemx', 'tab',
   delete $xml_misc_commands{$command};
 }
 
-my %commands_args_style = (
-  'email' => ['code'],
-  'anchor' => ['code'],
-  'uref' => ['code'],
-  'url' => ['code'],
-  'inforef' => ['code',undef,'code'],
-  'image' => ['code', 'code', 'code', undef, 'code'],
-# and type?
-  'float' => ['code'],
-);
-
-foreach my $code_style_command (keys(%Texinfo::Common::code_style_commands)) {
-  $commands_args_style{$code_style_command} = ['code']; 
-}
+my %default_args_code_style
+  = %Texinfo::Convert::Converter::default_args_code_style;
 
 my %commands_args_elements = (
   'email' => ['emailaddress', 'emailname'],
@@ -211,7 +199,6 @@ my %commands_args_elements = (
 );
 
 foreach my $ref_cmd ('pxref', 'xref', 'ref') {
-  $commands_args_style{$ref_cmd} = ['code', undef, undef, 'code'];
   $commands_args_elements{$ref_cmd} 
     = ['xrefnodename', 'xrefinfoname', 'xrefprinteddesc', 'xrefinfofile', 
        'xrefprintedname'];
@@ -243,15 +230,15 @@ my %defcommand_name_type = (
 );
 
 my %ignored_types;
-foreach my $type ('empty_line_after_command',
-            'empty_spaces_after_command', 'spaces_at_end',
+foreach my $type (#'empty_line_after_command',
+            'empty_spaces_after_command', 
+            #'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
             'empty_spaces_after_close_brace', 
             'empty_space_at_end_def_bracketed',
             # FIXME keep those? Information is lost...
             'menu_entry_separator',
             'menu_entry_leading_text',
-            
   ) {
   $ignored_types{$type} = 1;
 }
@@ -489,8 +476,8 @@ sub _convert($$;$)
         my $in_code;
         $in_code = 1
           if ($format_item_command 
-              and defined($commands_args_style{$format_item_command})
-              and defined($commands_args_style{$format_item_command}->[0]));
+              and defined($default_args_code_style{$format_item_command})
+              and defined($default_args_code_style{$format_item_command}->[0]));
         $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
         $result .= $self->_convert($root->{'args'}->[0]);
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
@@ -538,8 +525,14 @@ sub _convert($$;$)
                 . $self->xml_protect_text($root->{'extra'}->{'text_arg'}) ."\"";
           }
         }
-        return "<$command${attribute}>".$self->_convert($root->{'args'}->[0])
-               ."</$command>\n"
+        my $arg = $self->_convert($root->{'args'}->[0]);
+        my $end_line;
+        if (chomp ($arg)) {
+          $end_line = "\n";
+        } else {
+          $end_line = "";
+        }
+        return "<$command${attribute}>$arg</$command>$end_line";
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
           $result .= "<node name=\"$root->{'extra'}->{'normalized'}\">\n";
@@ -583,10 +576,16 @@ sub _convert($$;$)
             $attribute = '';
           }
           $result .= "<$command${attribute}>\n";
-          $result .= "<title>". $self->_convert($root->{'args'}->[0])."</title>\n"
-            if ($root->{'args'} and $root->{'args'}->[0]);
-         # FIXME index entry + new index entries that should appear elsewhere
-        #} elsif {
+          if ($root->{'args'} and $root->{'args'}->[0]) {
+            my $arg = $self->_convert($root->{'args'}->[0]);
+            my $end_line;
+            if (chomp ($arg)) {
+              $end_line = "\n";
+            } else {
+              $end_line = "";
+            }
+            $result .= "<title>$arg</title>$end_line"
+          }
         } else {
           my $attribute = '';
           if ($root->{'cmdname'} eq 'listoffloats' and $root->{'extra'} 
@@ -595,8 +594,13 @@ sub _convert($$;$)
             $attribute = " type=\"$root->{'extra'}->{'type'}->{'normalized'}\"";
           }
           my $arg = $self->_convert($root->{'args'}->[0]);
-          #chomp ($arg);
-          return "<$command${attribute}>$arg</$command>\n";
+          my $end_line;
+          if (chomp ($arg)) {
+            $end_line = "\n";
+          } else {
+            $end_line = "";
+          }
+          return "<$command${attribute}>$arg</$command>$end_line";
         }
       } elsif ($type eq 'skipline' or $type eq 'noarg') {
         return "<$command></$command>\n";
@@ -663,8 +667,8 @@ sub _convert($$;$)
              and $root->{'type'} eq 'definfoenclose_command') {
       my $in_code;
       $in_code = 1
-        if (defined($commands_args_style{$root->{'cmdname'}})
-            and defined($commands_args_style{$root->{'cmdname'}}->[0]));
+        if (defined($default_args_code_style{$root->{'cmdname'}})
+            and defined($default_args_code_style{$root->{'cmdname'}}->[0]));
       $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
       my $arg = $self->_convert($root->{'args'}->[0]);
       $result .= "<infoenclose command=\"$root->{'cmdname'}\" begin=\"".
@@ -688,14 +692,14 @@ sub _convert($$;$)
                        ."\"";
       } elsif ($root->{'cmdname'} eq 'anchor') {
         $attribute = " name=\"$root->{'extra'}->{'normalized'}\"";
-      }
+      };
       my $arg_index = 0;
       foreach my $element (@elements) {
         if (defined($root->{'args'}->[$arg_index])) {
           my $in_code;
           $in_code = 1
-            if (defined($commands_args_style{$root->{'cmdname'}})
-              and defined($commands_args_style{$root->{'cmdname'}}->[$arg_index]));
+            if (defined($default_args_code_style{$root->{'cmdname'}})
+              and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
           $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
           my $arg = $self->_convert($root->{'args'}->[$arg_index]);
           if (!defined($command) or $arg ne '') {
@@ -708,8 +712,14 @@ sub _convert($$;$)
         }
         $arg_index++;
       }
+      $attribute = '';
+      if ($root->{'cmdname'} eq 'image') {
+        if ($self->_is_inline($root)) {
+          $attribute = " where=\"inline\"";
+        }
+      }
       if (defined($command)) {
-        $result = "<$command>$result<$command>";
+        $result = "<$command${attribute}>$result<$command>";
       }
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
         pop @{$self->{'document_context'}};
@@ -746,8 +756,8 @@ sub _convert($$;$)
             if (defined($root->{'args'}->[$arg_index])) {
               my $in_code;
                $in_code = 1
-                if (defined($commands_args_style{$root->{'cmdname'}})
-                  and defined($commands_args_style{$root->{'cmdname'}}->[$arg_index]));
+                if (defined($default_args_code_style{$root->{'cmdname'}})
+                  and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
               $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
               my $arg = $self->_convert($root->{'args'}->[$arg_index]);
               chomp($arg);
@@ -777,8 +787,8 @@ sub _convert($$;$)
           }
         }
       }
-      chomp($result);
-      $result .= "\n";
+      #chomp($result);
+      #$result .= "\n";
       $close_element = $root->{'cmdname'};
     }
   }

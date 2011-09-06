@@ -91,4 +91,8 @@ $result_converted{'plaintext'}->{'at_after_accent_command'} = '@.  @.
 $result_converted{'html_text'}->{'at_after_accent_command'} = '<p>*@. ^@.
 </p>';
 
+
+$result_converted{'xml'}->{'at_after_accent_command'} = '<para><accent type="ring"></accent>&arobase;. <accent type="circ"></accent>&arobase;.
+</para>';
+
 1;
