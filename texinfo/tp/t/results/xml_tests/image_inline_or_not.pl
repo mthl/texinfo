@@ -2248,14 +2248,14 @@ T
 </quotation>
 
 <table commandarg="@asis">
-<tableitem><tableterm command="item" itemfunction="asis"><image where="inline"><imagefile>in_table_item</imagefile><image></tableterm>
-<item>
+<tableentry><tableterm><item><itemformat command="@asis"><image where="inline"><imagefile>in_table_item</imagefile><image></itemformat></item>
+</tableterm><tableitem>
 <image><imagefile>in_table_def</imagefile><image>
 
 <para>AA <image where="inline"><imagefile>in_table_def_para</imagefile><image>
 </para>
 <image><imagefile>in_table_def_after</imagefile><image>
-</item></tableitem></table>
+</tableitem></tableentry></table>
 
 <menu>
 <menuentry><menunode><image where="inline"><imagefile>node_image</imagefile><image></menunode><menudescription><image where="inline"><imagefile>image_in_description</imagefile><image>

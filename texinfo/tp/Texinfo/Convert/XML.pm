@@ -18,9 +18,13 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 # msg Karl: 
-#       preformatted -> pre
-#       <tableterm command="item">
-#       'command_as_argument' -> apply it? definfoenclosed? attribute automatic=on?
+#       preformatted -> <pre xml:space="preserve">
+#       if a 'command_as_argument' is definfoenclosed should lead to
+#        @definfoenclose a,:,:
+#        <table commandarg="a" begin=":" end=":">
+#        ..... <item><itemformat infoenclose="a" begin=":" end=":"> ...
+#       @itemize: add a <prepend>&bullet;</prepend> if needed.
+#       consistently use command="@$command" 
 
 
 package Texinfo::Convert::XML;
@@ -226,8 +230,9 @@ my %type_elements = (
   'menu_entry_description' => 'menudescription',
   'menu_entry_name' => 'menutitle',
   'preamble' => 'preamble',
-  'table_item' => 'item',
-  'table_entry' => 'tableitem',
+  'table_item' => 'tableitem',
+  'table_entry' => 'tableentry',
+  'table_term' => 'tableterm',
   'row' => 'row',
   'multitable_head' => 'thead',
   'multitable_body' => 'tbody',
@@ -435,17 +440,16 @@ sub _convert($$;$)
                and $root->{'parent'}->{'type'} 
                and $root->{'parent'}->{'type'} eq 'table_term') {
         my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
-        my $format_item_attribute;
         my $format_item_command;
         if ($table_command->{'extra'} 
             and $table_command->{'extra'}->{'command_as_argument'}) {
           $format_item_command 
             = $table_command->{'extra'}->{'command_as_argument'}->{'cmdname'};
-          $format_item_attribute = " itemfunction=\"$format_item_command\"";
-        } else {
-          $format_item_attribute = '';
         }
-        $result .= "<tableterm command=\"$root->{'cmdname'}\"${format_item_attribute}>";
+        $result .= "<$root->{'cmdname'}>";
+        if ($format_item_command) {
+          $result .= "<itemformat command=\"\@$format_item_command\">";
+        }
         $result .= $self->_index_entry($root);
         # FIXME
         my $in_code;
@@ -457,7 +461,10 @@ sub _convert($$;$)
         $result .= $self->_convert($root->{'args'}->[0]);
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
         chomp ($result);
-        $result .= "</tableterm>\n";
+        if ($format_item_command) {
+          $result .= "</itemformat>";
+        }
+        $result .= "</$root->{'cmdname'}>\n";
       } else {
         unless (($root->{'cmdname'} eq 'item' 
                      or $root->{'cmdname'} eq 'headitem'

@@ -2441,8 +2441,8 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 </para></item></enumerate>
 
 <table commandarg="@asis"><!--  table -->
-<tableitem><tableterm command="item" itemfunction="asis">it</tableterm>
-</tableitem></table>
+<tableentry><tableterm><item><itemformat command="@asis">it</itemformat></item>
+</tableterm></tableentry></table>
 
 <quotation><!--  quot no arg -->
 <para>Quot no arg
