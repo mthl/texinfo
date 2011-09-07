@@ -8,28 +8,36 @@ use utf8;
 $result_trees{'comment_on_cartouche_line'} = {
   'contents' => [
     {
-      'cmdname' => 'cartouche',
-      'contents' => [
+      'args' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => ' ',
-          'type' => 'empty_spaces_after_command'
-        },
-        {
-          'args' => [
+          'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
-              'text' => ' comment
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment
 ',
-              'type' => 'misc_arg'
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'parent' => {}
             }
           ],
-          'cmdname' => 'c',
-          'parent' => {}
-        },
+          'parent' => {},
+          'type' => 'block_line_arg'
+        }
+      ],
+      'cmdname' => 'cartouche',
+      'contents' => [
         {
           'contents' => [
             {
@@ -95,20 +103,21 @@ $result_trees{'comment_on_cartouche_line'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'args'}[0];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'args'}[0];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
 $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[2];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'extra'}{'command'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0];
-$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[3];
+$result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'comment_on_cartouche_line'}{'contents'}[0]{'parent'} = $result_trees{'comment_on_cartouche_line'};
 
 $result_texis{'comment_on_cartouche_line'} = '@cartouche @c comment

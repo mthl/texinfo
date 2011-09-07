@@ -515,10 +515,7 @@ foreach my $block_command (keys(%block_commands)) {
   $begin_line_commands{$block_command} = 1;
   $default_no_paragraph_commands{$block_command} = 1;
   $block_arg_commands{$block_command} = 1 
-    if ($block_command eq 'multitable' 
-        or $def_commands{$block_command}
-        or ($block_commands{$block_command} 
-            and $block_commands{$block_command} =~ /^\d+$/));
+    if ($block_commands{$block_command} ne 'raw');
 }
 
 my %close_preformatted_commands = %close_paragraph_commands;
@@ -2721,6 +2718,18 @@ sub _end_line($$$)
          'contents' => [], 'parent', $current };
       $current = $current->{'contents'}->[-1];
     }
+    if ($current->{'cmdname'} and $menu_commands{$current->{'cmdname'}}) {
+      push @{$current->{'contents'}}, {'type' => 'menu_comment',
+                                       'parent' => $current,
+                                       'contents' => [] };
+      $current = $current->{'contents'}->[-1];
+     #push @{$current->{'contents'}}, {'type' => 'preformatted',
+     #                                 'parent' => $current,
+     #                                 'contents' => [] };
+     #$current = $current->{'contents'}->[-1];
+      print STDERR "MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
+      push @{$self->{'context_stack'}}, 'preformatted';
+    }
     $current = $self->_begin_preformatted($current);
 
   # if we are after a @end verbatim, we must restart a preformatted if needed,
@@ -4199,19 +4208,8 @@ sub _parse_texi($;$)
               push @{$current->{'contents'}}, $block;
             }
             $current = $current->{'contents'}->[-1];
+
             if ($block_arg_commands{$command}) {
-              $current->{'args'} = [ {
-                 'type' => 'block_line_arg',
-                 'contents' => [],
-                 'parent' => $current } ];
-              
-              $current->{'remaining_args'} = $block_commands{$command} -1 
-                if ($block_commands{$command} =~ /^\d+$/ 
-                    and $block_commands{$command} -1);
-              $current = $current->{'args'}->[-1];
-              push @{$self->{'context_stack'}}, 'line' 
-                unless ($def_commands{$command});
-            } else {
               push @{$self->{'context_stack'}}, 'preformatted' 
                 if ($preformatted_commands{$command});
               if ($region_commands{$command}) {
@@ -4246,19 +4244,18 @@ sub _parse_texi($;$)
                     push @{$self->{'info'}->{'unassociated_menus'}}, $current;
                   }
                 }
-                push @{$current->{'contents'}}, {'type' => 'menu_comment',
-                                                 'parent' => $current,
-                                                 'contents' => [] };
-                $current = $current->{'contents'}->[-1];
-                #push @{$current->{'contents'}}, {'type' => 'preformatted',
-                #                                 'parent' => $current,
-                #                                 'contents' => [] };
-                #$current = $current->{'contents'}->[-1];
-                print STDERR "MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
-                push @{$self->{'context_stack'}}, 'preformatted';
               }
-              $current = $self->_begin_preformatted($current) 
-                unless ($block_commands{$command} eq 'raw');
+              $current->{'args'} = [ {
+                 'type' => 'block_line_arg',
+                 'contents' => [],
+                 'parent' => $current } ];
+              
+              $current->{'remaining_args'} = $block_commands{$command} -1 
+                if ($block_commands{$command} =~ /^\d+$/ 
+                    and $block_commands{$command} -1 > 0);
+              $current = $current->{'args'}->[-1];
+              push @{$self->{'context_stack'}}, 'line' 
+                unless ($def_commands{$command});
             }
             $block->{'line_nr'} = $line_nr;
             $block->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
