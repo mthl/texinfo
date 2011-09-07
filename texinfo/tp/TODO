@@ -21,6 +21,10 @@ t/results/xtable/text_between_item_itemx.pl
 
 There should be a warning when beginning a table item with @itemx.
 
+There should be a warning with something like
+@example text
+...
+
 Verify that there is a test with a node both internal and external 
 ref, like
 @xref{node1}.

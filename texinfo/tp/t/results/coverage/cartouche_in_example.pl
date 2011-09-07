@@ -232,4 +232,14 @@ $result_converted{'html_text'}->{'cartouche_in_example'} = '<div class="example"
 </pre></div>
 ';
 
+
+$result_converted{'xml'}->{'cartouche_in_example'} = '<example>
+<pre xml:space="preserve">In example
+</pre><cartouche>
+<pre xml:space="preserve">In cartouche in example
+</pre></cartouche>
+<pre xml:space="preserve">end example
+</pre></example>
+';
+
 1;

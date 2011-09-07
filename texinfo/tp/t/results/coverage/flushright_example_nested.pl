@@ -378,4 +378,18 @@ $result_converted{'html_text'}->{'flushright_example_nested'} = '<div class="exa
 </pre></div>
 ';
 
+
+$result_converted{'xml'}->{'flushright_example_nested'} = '<example>
+<flushright>
+<pre xml:space="preserve">in   --- flushright
+</pre></flushright>
+</example>
+
+<flushright>
+<example>
+<pre xml:space="preserve">in   --- example
+</pre></example>
+</flushright>
+';
+
 1;

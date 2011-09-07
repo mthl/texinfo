@@ -18,7 +18,6 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 # msg Karl: 
-#       preformatted -> <pre xml:space="preserve">
 #       if a 'command_as_argument' is definfoenclosed should lead to
 #        @definfoenclose a,:,:
 #        <table commandarg="a" begin=":" end=":">
@@ -224,7 +223,7 @@ foreach my $type (#'empty_line_after_command',
 
 my %type_elements = (
   'paragraph' => 'para',
-  #'preformatted' => 'pre',
+  'preformatted' => 'pre',
   'menu_entry' => 'menuentry',
   'menu_entry_node' => 'menunode',
   'menu_comment' => 'menucomment',

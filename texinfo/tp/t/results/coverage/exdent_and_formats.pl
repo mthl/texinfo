@@ -2390,4 +2390,87 @@ quotation2
 </p></blockquote>
 ';
 
+
+$result_converted{'xml'}->{'exdent_and_formats'} = '<example>
+<pre xml:space="preserve"> Example   Hoho. &tex; . &linebreak; &arobase;.
+
+</pre><exdent>Other line</exdent>
+<pre xml:space="preserve">not exdented
+</pre></example>
+
+
+<example>
+<exdent>exdented  and dash --- in example</exdent>
+<pre xml:space="preserve">Not exdented
+</pre><exdent>exdented</exdent>
+<pre xml:space="preserve">Not exdented
+</pre></example>
+
+<para>Para1.
+</para>
+<quotation>
+<para>qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+</para></quotation>
+
+<para>Para2.
+</para>
+<para>Para3.
+</para>
+<para>Last para.
+</para>
+<quotation>
+<para>quotation1
+quotation2
+</para></quotation>
+
+<quotation>
+<para>quotation para 1
+</para>
+<para>quotation para 2
+</para></quotation>
+
+<example>
+<pre xml:space="preserve">Example   Hoho.
+</pre><example>
+<pre xml:space="preserve">Nested Other line
+</pre><exdent>exdented nested other line</exdent>
+</example>
+</example>
+
+<quotation>
+<exdent>exdented quotation line   and dash &textmdash; in quotation</exdent>
+</quotation>
+
+<quotation>
+<para>Not exdented followed by exdented
+</para><exdent>exdented quotation line</exdent>
+</quotation>
+
+<quotation>
+<exdent>exdented quotation line</exdent>
+<para>Followed by not exdented 
+</para></quotation>
+
+<quotation>
+<exdent>exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az</exdent>
+<exdent>azeaz az az az az</exdent>
+</quotation>
+
+<quotation>
+<exdent>exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line</exdent>
+<exdent>az az az az</exdent>
+</quotation>
+
+<quotation>
+<para>quotation line oidfjslsd aez a aze azaz aeae za eaz az zelef  aaa
+</para><exdent>ezkfjklezf </exdent>
+</quotation>
+
+<quotation>
+<exdent>very loooooooooooooooooooooooooooooooooong exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line</exdent>
+<exdent>az az az az</exdent>
+</quotation>
+';
+
 1;

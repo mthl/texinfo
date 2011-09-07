@@ -2236,12 +2236,12 @@ $result_converted{'xml'}->{'image_inline_or_not'} = '<image><imagefile>A</imagef
 <para>Para <image where="inline"><imagefile>jj</imagefile><image>.
 </para>
 <example>
-
+<pre xml:space="preserve">
 <image where="inline"><imagefile>in_example</imagefile><image>
 
 T
 <image where="inline"><imagefile>in example after text</imagefile><image>
-</example>
+</pre></example>
 
 <quotation><quotationtype><image where="inline"><imagefile>in_quotation_arg</imagefile><image></quotationtype>
 <image><imagefile>in_quotation_content</imagefile><image>
@@ -2258,11 +2258,11 @@ T
 </tableitem></tableentry></table>
 
 <menu>
-<menuentry><menunode><image where="inline"><imagefile>node_image</imagefile><image></menunode><menudescription><image where="inline"><imagefile>image_in_description</imagefile><image>
-</menudescription></menuentry><menuentry><menutitle><image where="inline"><imagefile>in_menu_entry_name</imagefile><image></menutitle><menunode>(somewhere)<image where="inline"><imagefile>extnode</imagefile><image></menunode><menudescription>
-</menudescription></menuentry><menucomment>
+<menuentry><menunode><image where="inline"><imagefile>node_image</imagefile><image></menunode><menudescription><pre xml:space="preserve"><image where="inline"><imagefile>image_in_description</imagefile><image>
+</pre></menudescription></menuentry><menuentry><menutitle><image where="inline"><imagefile>in_menu_entry_name</imagefile><image></menutitle><menunode>(somewhere)<image where="inline"><imagefile>extnode</imagefile><image></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 <image where="inline"><imagefile>in_menu_comment</imagefile><image>
-</menucomment></menu>
+</pre></menucomment></menu>
 
 <node name="node_005fimage">
 <nodename><image where="inline"><imagefile>node_image</imagefile><image></nodename>

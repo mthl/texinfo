@@ -794,8 +794,8 @@ $result_converted{'xml'}->{'chapter_node_before_and_after_part'} = '
 <sectiontitle>chapter</sectiontitle>
 
 <menu>
-<menuentry><menunode>after</menunode><menudescription>
-</menudescription></menuentry></menu>
+<menuentry><menunode>after</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
 
 </chapter>
 <part>

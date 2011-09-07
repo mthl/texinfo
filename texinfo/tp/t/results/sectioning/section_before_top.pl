@@ -688,8 +688,8 @@ $result_converted{'xml'}->{'section_before_top'} = '<node name="section-node">
 <sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>section node</menunode><menudescription>
-</menudescription></menuentry></menu>
+<menuentry><menunode>section node</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
 </unnumberedsec>
 ';
 

@@ -2493,8 +2493,8 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 </para></group>
 
 <example><!--  comm -->
-in ex
-</example>
+<pre xml:space="preserve">in ex
+</pre></example>
 
 <multitable><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions><!--  comm -->
 <tbody><row><entry command="item"><para>a </para></entry><entry command="tab"><para>b

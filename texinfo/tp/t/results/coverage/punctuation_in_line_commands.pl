@@ -1499,4 +1499,48 @@ $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '<a name="nod
 <hr>
 ';
 
+
+$result_converted{'xml'}->{'punctuation_in_line_commands'} = '
+<node name="node_0021-After-punc">
+<nodename>node! After punc</nodename>
+</node>
+<top>
+<sectiontitle>top! After punc</sectiontitle>
+
+<table commandarg="@asis">
+<tableentry><tableterm><item><itemformat command="@asis">item! After punc</itemformat></item>
+</tableterm></tableentry></table>
+
+<quotation><quotationtype>quotation arg! After punc</quotationtype>
+<para>In quotation
+</para><exdent>exdent quotation! After punc</exdent>
+</quotation>
+
+<float name="float-label_0021-After-punc" type="float-type_0021-After-punc"><floattype>float type! After punc</floattype><floatname>float label! After punc</floatname>
+<para>In float
+</para><shortcaption><para>shortcaption! After punc</para></shortcaption>
+</float>
+
+<float name="label-with-caption" type="float-type_0021-After-punc"><floattype>float type! After punc</floattype><floatname>label with caption</floatname>
+<para>In float with caption.
+</para><caption><para>caption! After punc</para></caption>
+</float>
+
+<listoffloats type="float-type_0021-After-punc">float type! After punc</listoffloats>
+
+<cindex index="cp"><indexterm index="cp">index! After punc</indexterm></cindex>
+
+<heading>heading! After punc</heading>
+
+<titlefont>titlefont! After punc</titlefont>
+
+<center>center! After punc</center>
+
+<printindex value="cp"></printindex>
+
+<contents></contents>
+
+</top>
+';
+
 1;

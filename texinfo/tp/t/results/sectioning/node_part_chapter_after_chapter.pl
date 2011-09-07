@@ -1266,9 +1266,9 @@ $result_converted{'xml'}->{'node_part_chapter_after_chapter'} = '<node name="Top
 <sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>chapter node</menunode><menudescription>
-</menudescription></menuentry><menuentry><menunode>part chapter node</menunode><menudescription>
-</menudescription></menuentry></menu>
+<menuentry><menunode>chapter node</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>part chapter node</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
 
 </top>
 <node name="chapter-node">

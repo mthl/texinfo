@@ -658,4 +658,18 @@ $result_converted{'html_text'}->{'symbol_after_command'} = '<dl compact="compact
 <p>@. {, @@ ?, !: @{ @&rdquo; @:
 </p>';
 
+
+$result_converted{'xml'}->{'symbol_after_command'} = '<table commandarg="@asis">
+<tableentry><tableterm><item><itemformat command="@asis">. dot</itemformat></item>
+</tableterm></tableentry><tableentry><tableterm><item><itemformat command="@asis">, comma</itemformat></item>
+</tableterm></tableentry><tableentry><tableterm><item><itemformat command="@asis">&arobase; &arobase;</itemformat></item>
+</tableterm></tableentry><tableentry><tableterm><item><itemformat command="@asis">&rbrace; &rbrace;</itemformat></item>
+</tableterm></tableentry><tableentry><tableterm><item><itemformat command="@asis">! exclam</itemformat></item>
+</tableterm></tableentry><tableentry><tableterm><item><itemformat command="@asis">&textrdquo; quotes</itemformat></item>
+</tableterm></tableentry><tableentry><tableterm><item><itemformat command="@asis">: colon</itemformat></item>
+</tableterm></tableentry></table>
+
+<para>&arobase;. &rbrace;, &arobase;&arobase; &eosquest;, &eosexcl;: &arobase;&rbrace; &arobase;&textrdquo; &arobase;:
+</para>';
+
 1;

@@ -473,4 +473,21 @@ in table in format
 </div>
 ';
 
+
+$result_converted{'xml'}->{'preformatted'} = '
+<example>
+<pre xml:space="preserve">e--xample  some  
+
+   text
+</pre></example>
+
+<format>
+<vtable commandarg="@code">
+<tableentry><tableterm><item><itemformat command="@code"><indexterm index="vr">item in table in format</indexterm>item in table in format</itemformat></item>
+</tableterm><tableitem><pre xml:space="preserve">
+in table in format
+</pre></tableitem></tableentry></vtable>
+</format>
+';
+
 1;
