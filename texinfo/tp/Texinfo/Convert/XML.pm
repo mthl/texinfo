@@ -224,6 +224,7 @@ foreach my $type (#'empty_line_after_command',
 
 my %type_elements = (
   'paragraph' => 'para',
+  #'preformatted' => 'pre',
   'menu_entry' => 'menuentry',
   'menu_entry_node' => 'menunode',
   'menu_comment' => 'menucomment',
@@ -369,6 +370,64 @@ sub _index_entry($$)
     return $result ."</indexterm>"
   }
   return '';
+}
+
+# This is used when the formatted text has no comment nor new line, but
+# one want to add the comment or new line from the original arg
+sub _end_line_or_comment($$)
+{
+  my $self = shift;
+  my $contents_possible_comment = shift;
+  my $end_line;
+  if ($contents_possible_comment
+      and $contents_possible_comment->[-1]->{'cmdname'}
+      and ($contents_possible_comment->[-1]->{'cmdname'} eq 'c'
+          or $contents_possible_comment->[-1]->{'cmdname'} eq 'comment')) {
+    $end_line = $self->_convert($contents_possible_comment->[-1]);
+  } else {
+    $end_line = "\n";
+  }
+  return $end_line;
+}
+
+sub _tree_without_comment($)
+{
+  my $contents_possible_comment = shift;
+  my $comment;
+  my $tree;
+
+  if ($contents_possible_comment->{'contents'}
+      and $contents_possible_comment->{'contents'}->[-1]->{'cmdname'}
+      and ($contents_possible_comment->{'contents'}->[-1]->{'cmdname'} eq 'c'
+           or $contents_possible_comment->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
+    my @contents = @{$contents_possible_comment->{'contents'}};
+    $comment = pop @contents;
+    $tree = {'contents' => \@contents};
+    foreach my $key ('extra', 'type', 'cmdname', 'parent', 'line_nr') {
+      $tree->{$key} = $contents_possible_comment->{$key}
+        if (exists($contents_possible_comment->{$key}));
+    }
+  } else {
+   $tree = $contents_possible_comment;
+  }
+  return ($comment, $tree);
+}
+
+sub _convert_argument_and_end_line($$)
+{
+  my $self = shift;
+  my $root = shift;
+  my ($comment, $tree) 
+    = _tree_without_comment($root);
+  my $converted = $self->_convert($tree);
+  my $end_line;
+  if ($comment) {
+    $end_line = $self->_convert($comment);
+  } else {
+    chomp($converted);
+    $end_line = "\n";
+  }
+  return ($converted, $end_line);
 }
 
 my @node_directions = ('Next', 'Prev', 'Up');
@@ -737,28 +796,9 @@ sub _convert($$;$)
                 if (defined($default_args_code_style{$root->{'cmdname'}})
                   and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
               $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-              my $comment;
-              my $arg_tree;
-              if ($root->{'args'}->[$arg_index]->{'contents'} 
-                  and $root->{'args'}->[$arg_index]->{'contents'}->[-1]->{'cmdname'}
-                  and ($root->{'args'}->[$arg_index]->{'contents'}->[-1]->{'cmdname'} eq 'c'
-                       or $root->{'args'}->[$arg_index]->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
-                my @contents = @{$root->{'args'}->[$arg_index]->{'contents'}};
-                $comment = pop @contents;
-                $arg_tree = {'contents' => \@contents, 
-                             'type' => $root->{'args'}->[$arg_index]->{'type'},
-                             'parent' => $root->{'args'}->[$arg_index]->{'parent'}};
-              } else {
-                $arg_tree = $root->{'args'}->[$arg_index];
-              }
-              my $arg = $self->_convert($arg_tree);
-              #chomp($arg);
-              if ($comment) {
-                $end_line = $self->_convert($comment);
-              } else {
-                chomp($arg);
-                $end_line = "\n";
-              }
+              my $arg;
+              ($arg, $end_line) 
+                = $self->_convert_argument_and_end_line($root->{'args'}->[$arg_index]);
               if ($arg ne '') {
                 $result .= "<$element>$arg</$element>";
               }
@@ -798,14 +838,7 @@ sub _convert($$;$)
               if ($root->{'args'}->[-1]->{'contents'});
           }
           
-          if ($contents_possible_comment
-              and $contents_possible_comment->[-1]->{'cmdname'}
-              and ($contents_possible_comment->[-1]->{'cmdname'} eq 'c'
-                   or $contents_possible_comment->[-1]->{'cmdname'} eq 'comment')) {
-            $end_line = $self->_convert($contents_possible_comment->[-1]);
-          } else {
-            $end_line = "\n";
-          }
+          $end_line = $self->_end_line_or_comment($contents_possible_comment);
         }
       }
       $result .= $end_line;
@@ -816,7 +849,13 @@ sub _convert($$;$)
   }
   if ($root->{'type'}) {
     if (defined($type_elements{$root->{'type'}})) {
-      $result .= "<$type_elements{$root->{'type'}}>";
+      my $attribute;
+      if ($root->{'type'} eq 'preformatted') {
+        $attribute = ' xml:space="preserve"';
+      } else {
+        $attribute = '';
+      }
+      $result .= "<$type_elements{$root->{'type'}}${attribute}>";
     }
     if ($root->{'type'} eq 'def_line') {
       if ($root->{'cmdname'}) {
