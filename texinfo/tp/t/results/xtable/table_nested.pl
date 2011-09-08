@@ -3284,4 +3284,108 @@ Something.
 </blockquote>
 ';
 
+
+$result_converted{'xml'}->{'table_nested'} = '<macro>
+@vtable @asis
+@item first item
+@itemx second itemx
+
+Text.
+
+@item second item
+
+Text 2
+
+@item last
+@end vtable
+
+Something.
+@table @emph
+@item in item
+Text without blank line
+@item second item
+Text without blank line 2
+@end table
+After table.
+</macro>
+
+
+<para>Quotation
+</para><quotation>
+<vtable commandarg="@asis">
+<tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
+<itemx><itemformat command="@asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+</tableterm><tableitem>
+<para>Text.
+</para>
+</tableitem></tableentry><tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</tableterm><tableitem>
+<para>Text 2
+</para>
+</tableitem></tableentry><tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</tableterm></tableentry></vtable>
+
+<para>Something.
+</para><table commandarg="@emph">
+<tableentry><tableterm><item><itemformat command="@emph">in item</itemformat></item>
+</tableterm><tableitem><para>Text without blank line
+</para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="@emph">second item</itemformat></item>
+</tableterm><tableitem><para>Text without blank line 2
+</para></tableitem></tableentry></table>
+<para>After table.
+</para></quotation>
+
+<para>Example
+</para><example>
+<vtable commandarg="@asis">
+<tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
+<itemx><itemformat command="@asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+</tableterm><tableitem><pre xml:space="preserve">
+Text.
+
+</pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</tableterm><tableitem><pre xml:space="preserve">
+Text 2
+
+</pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</tableterm></tableentry></vtable>
+<pre xml:space="preserve">
+Something.
+</pre><table commandarg="@emph">
+<tableentry><tableterm><item><itemformat command="@emph">in item</itemformat></item>
+</tableterm><tableitem><pre xml:space="preserve">Text without blank line
+</pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="@emph">second item</itemformat></item>
+</tableterm><tableitem><pre xml:space="preserve">Text without blank line 2
+</pre></tableitem></tableentry></table>
+<pre xml:space="preserve">After table.
+</pre></example>
+
+<para>Double quotation
+</para><quotation>
+<quotation>
+<vtable commandarg="@asis">
+<tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
+<itemx><itemformat command="@asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+</tableterm><tableitem>
+<para>Text.
+</para>
+</tableitem></tableentry><tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</tableterm><tableitem>
+<para>Text 2
+</para>
+</tableitem></tableentry><tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</tableterm></tableentry></vtable>
+
+<para>Something.
+</para><table commandarg="@emph">
+<tableentry><tableterm><item><itemformat command="@emph">in item</itemformat></item>
+</tableterm><tableitem><para>Text without blank line
+</para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="@emph">second item</itemformat></item>
+</tableterm><tableitem><para>Text without blank line 2
+</para></tableitem></tableentry></table>
+<para>After table.
+</para></quotation>
+</quotation>
+';
+
 1;

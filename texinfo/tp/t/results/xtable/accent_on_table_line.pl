@@ -300,4 +300,11 @@ $result_converted{'html_text'}->{'accent_on_table_line'} = '<dl compact="compact
 </dl>
 ';
 
+
+$result_converted{'xml'}->{'accent_on_table_line'} = '<table commandarg="@asis">
+<tableentry><tableterm><item><itemformat command="@asis">first item</itemformat></item>
+</tableterm></tableentry><tableentry><tableterm><item><itemformat command="@asis">no at-command <code>code</code></itemformat></item>
+</tableterm></tableentry></table>
+';
+
 1;

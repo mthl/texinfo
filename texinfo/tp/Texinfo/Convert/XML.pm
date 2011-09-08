@@ -18,11 +18,6 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 # msg Karl: 
-#       if a 'command_as_argument' is definfoenclosed should lead to
-#        @definfoenclose a,:,:
-#        <table commandarg="a" begin=":" end=":">
-#        ..... <item><itemformat infoenclose="a" begin=":" end=":"> ...
-#       @itemize: add a <prepend>&bullet;</prepend> if needed.
 #       consistently use command="@$command" 
 
 
@@ -429,6 +424,20 @@ sub _convert_argument_and_end_line($$)
   return ($converted, $end_line);
 }
 
+sub _infoenclose_attribute($$) {
+  my $self = shift;
+  my $root = shift;
+  my $attribute = '';
+  return '' if (!$root->{'extra'});
+  $attribute .= " begin=\"".
+        $self->xml_protect_text($root->{'extra'}->{'begin'})."\""
+    if (defined($root->{'extra'}->{'begin'}));
+  $attribute .= "  end=\"".
+        $self->xml_protect_text($root->{'extra'}->{'end'})."\""
+    if (defined($root->{'extra'}->{'end'}));
+  return $attribute;
+}
+
 my @node_directions = ('Next', 'Prev', 'Up');
 
 sub convert($$;$)
@@ -508,14 +517,17 @@ sub _convert($$;$)
                and $root->{'parent'}->{'type'} eq 'table_term') {
         my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
         my $format_item_command;
+        my $attribute;
         if ($table_command->{'extra'} 
             and $table_command->{'extra'}->{'command_as_argument'}) {
           $format_item_command 
             = $table_command->{'extra'}->{'command_as_argument'}->{'cmdname'};
+          $attribute 
+           = $self->_infoenclose_attribute($table_command->{'extra'}->{'command_as_argument'});
         }
         $result .= "<$root->{'cmdname'}>";
         if ($format_item_command) {
-          $result .= "<itemformat command=\"\@$format_item_command\">";
+          $result .= "<itemformat command=\"\@$format_item_command\"${attribute}>";
         }
         $result .= $self->_index_entry($root);
         # FIXME
@@ -715,10 +727,9 @@ sub _convert($$;$)
             and defined($default_args_code_style{$root->{'cmdname'}}->[0]));
       $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
       my $arg = $self->_convert($root->{'args'}->[0]);
-      $result .= "<infoenclose command=\"$root->{'cmdname'}\" begin=\"".
-        $self->xml_protect_text($root->{'extra'}->{'begin'})."\" end=\"".
-        $self->xml_protect_text($root->{'extra'}->{'end'})
-        ."\">$arg</infoenclose>";
+      $result .= "<infoenclose command=\"$root->{'cmdname'}\""
+         . $self->_infoenclose_attribute($root)
+        .">$arg</infoenclose>";
       $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
     } elsif ($root->{'args'}
              and exists($Texinfo::Common::brace_commands{$root->{'cmdname'}})) {
@@ -774,8 +785,10 @@ sub _convert($$;$)
       }
       my $attribute = '';
       if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
+        my $command_as_arg = $root->{'extra'}->{'command_as_argument'};
         $attribute 
-         .= " commandarg=\"\@$root->{'extra'}->{'command_as_argument'}->{'cmdname'}\"";
+         .= " commandarg=\"\@$command_as_arg->{'cmdname'}\""
+             .$self->_infoenclose_attribute($command_as_arg);
       } elsif ($root->{'extra'}
                and $root->{'extra'}->{'enumerate_specification'}) {
         $attribute .= " first=\""
@@ -987,14 +1000,5 @@ sub _convert($$;$)
   }
   return $result;
 }
-
-
-#set_default('NUMBER_SECTIONS', 0);
-
-# $complex_format_map{$complex_format}->{'begin'} = "<$complex_format xml:space=\"preserve\">";
-#   $complex_format_map{$complex_format}->{'end'} = "</$complex_format>";
-
-#   my $tag = 'inlineimage';
-#    $tag = 'image' if ($preformatted or !$in_paragraph);
 
 1;

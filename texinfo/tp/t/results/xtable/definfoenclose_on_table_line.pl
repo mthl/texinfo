@@ -356,4 +356,15 @@ $result_converted{'html_text'}->{'definfoenclose_on_table_line'} = '<dl compact=
 </dl>
 ';
 
+
+$result_converted{'xml'}->{'definfoenclose_on_table_line'} = '<definfoenclose command="phi" open=":" close=":"></definfoenclose>
+
+<table commandarg="@phi" begin=":"  end=":">
+<tableentry><tableterm><item><itemformat command="@phi" begin=":"  end=":">item</itemformat></item>
+<itemx><itemformat command="@phi" begin=":"  end=":">item x</itemformat></itemx>
+</tableterm><tableitem>
+<para>table content.
+</para></tableitem></tableentry></table>
+';
+
 1;

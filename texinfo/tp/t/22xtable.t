@@ -180,6 +180,7 @@ Title
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
+  push @{$test->[2]->{'test_formats'}}, 'xml';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
