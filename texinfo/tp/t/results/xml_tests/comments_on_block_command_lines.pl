@@ -2457,15 +2457,15 @@ $result_floats{'comments_on_block_command_lines'}{'f'}[0]{'extra'}{'end_command'
 
 
 $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="@bullet"><!--  comm -->
-<item><para>itemize it
+<item><prepend>&bullet;</prepend><para>itemize it
 </para></item></itemize>
 
 <itemize><itemprepend>x </itemprepend><!--  comm -->
-<item><para>itemize xit
+<item><prepend>x</prepend><para>itemize xit
 </para></item></itemize>
 
 <itemize commandarg="@bullet"><itemprepend>&bullet; </itemprepend><!--  comm -->
-<item><para>itemize bulletit
+<item><prepend>&bullet;</prepend><para>itemize bulletit
 </para></item></itemize>
 
 <enumerate first="1"><!--  comm -->

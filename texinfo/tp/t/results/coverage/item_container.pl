@@ -491,4 +491,20 @@ $result_converted{'html_text'}->{'item_container'} = '<ul class="no-bullet">
 </li></ul>
 ';
 
+
+$result_converted{'xml'}->{'item_container'} = '
+<itemize><itemprepend>+</itemprepend>
+<item><prepend>+</prepend><para>i&textndash;tem +
+</para></item></itemize>
+
+<itemize commandarg="@bullet"><itemprepend>&bullet;</itemprepend>
+<item><prepend>&bullet;</prepend>
+<para>b&textndash;ullet
+</para></item></itemize>
+
+<itemize commandarg="@bullet">
+<item><prepend>&bullet;</prepend><para>no itemize argument
+</para></item></itemize>
+';
+
 1;

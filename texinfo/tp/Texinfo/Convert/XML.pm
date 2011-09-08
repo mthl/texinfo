@@ -470,7 +470,7 @@ sub _convert($$;$)
     }
     return $result;
   }
-  my $close_element;
+  my @close_elements;
   if ($root->{'cmdname'}) {
     if (defined($xml_commands_formatting{$root->{'cmdname'}})) {
       if ($root->{'cmdname'} eq 'click' 
@@ -493,7 +493,16 @@ sub _convert($$;$)
           and ($root->{'parent'}->{'cmdname'} eq 'itemize'
                or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
         $result .= "<item>";
-        $close_element = 'item';
+        if ($root->{'parent'}->{'cmdname'} eq 'itemize'
+            and $root->{'parent'}->{'extra'} 
+            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}
+            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]) {
+          $result .= "<prepend>"
+            .$self->_convert({'contents' 
+        => $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]})
+            ."</prepend>";
+        }
+        unshift @close_elements, 'item';
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
                and $root->{'parent'}->{'type'} 
                and $root->{'parent'}->{'type'} eq 'table_term') {
@@ -534,7 +543,7 @@ sub _convert($$;$)
         }
         
         $result .= "<entry command=\"$root->{'cmdname'}\">";
-        $close_element = 'entry';
+        unshift @close_elements, 'entry';
       }
     } elsif ($root->{'type'} and $root->{'type'} eq 'index_entry_command') {
       my $element;
@@ -796,12 +805,15 @@ sub _convert($$;$)
                   and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
               $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
               my $arg;
-              ($arg, $end_line) 
-                = $self->_convert_argument_and_end_line($root->{'args'}->[$arg_index]);
+              if ($arg_index+1 eq scalar(@{$root->{'args'}})) {
+                ($arg, $end_line) 
+                  = $self->_convert_argument_and_end_line($root->{'args'}->[$arg_index]);
+              } else {
+                $arg = $self->_convert($root->{'args'}->[$arg_index]);
+              }
               if ($arg ne '') {
                 $result .= "<$element>$arg</$element>";
               }
-              #$result .= "\n";
               $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
             } else {
               last;
@@ -843,7 +855,7 @@ sub _convert($$;$)
       $result .= $end_line;
       #chomp($result);
       #$result .= "\n";
-      $close_element = $root->{'cmdname'};
+      unshift @close_elements, $root->{'cmdname'};
     }
   }
   if ($root->{'type'}) {
@@ -944,8 +956,8 @@ sub _convert($$;$)
          and (!$root->{'parent'}->{'type'} or
               ($root->{'parent'}->{'type'} ne 'block_line_arg'
                and $root->{'parent'}->{'type'} ne 'misc_line_arg')));
-  if ($close_element) {
-    $result .= "</$close_element>";
+  foreach my $element (@close_elements) {
+    $result .= "</$element>";
   }
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
