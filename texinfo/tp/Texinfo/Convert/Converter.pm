@@ -302,6 +302,7 @@ sub _set_outfile($$$)
         and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
 
   my $document_name;
+  my $set_outfile = $self->get_conf('OUTFILE');
   # determine output file and output file name
   my $outfile;
   if (!defined($self->get_conf('OUTFILE'))) {
@@ -350,15 +351,30 @@ sub _set_outfile($$$)
       $document_name =~ s/\.[^\.]*$//;
     }
   }
-  # FIXME use a specific configuration variable (TOP_FILE, PREFIX)?
+  # FIXME use a specific configuration variable (TOP_FILE, PREFIX)?
   $document_name =~ s/^.*\///;
   $self->{'document_name'} = $document_name;
   $output_basename =~ s/^.*\///;
   $self->{'output_filename'} = $output_basename;
-  my $output_dir = $self->get_conf('OUTFILE');
-  $output_dir =~ s|[^/]*$||;
-  if ($output_dir ne '') {
-    $self->{'destination_directory'} = $output_dir;
+  if ($self->get_conf('SPLIT')) {
+    if (defined($set_outfile)) {
+      $self->{'destination_directory'} = $self->get_conf('OUTFILE');
+    } elsif (defined($self->get_conf('SUBDIR'))) {
+      $self->{'destination_directory'} = $self->get_conf('SUBDIR');
+    } else {
+      $self->{'destination_directory'} = $output_basename;
+    }
+  } else {
+    my $output_dir = $self->get_conf('OUTFILE');
+    $output_dir =~ s|[^/]*$||;
+    if ($output_dir ne '') {
+      $self->{'destination_directory'} = $output_dir;
+    }
+  }
+  if (defined($self->{'destination_directory'}) 
+      and $self->{'destination_directory'} ne '') {
+    $self->{'destination_directory'} =~ s/\/*$//;
+    $self->{'destination_directory'} .= '/';
   }
 }
 
