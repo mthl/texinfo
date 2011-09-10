@@ -669,10 +669,10 @@ sub _convert($$;$)
             = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
           return "<$command${attribute}>$arg</$command>$end_line";
         }
-      } elsif ($type eq 'skipline' or $type eq 'noarg') {
+      } elsif ($type eq 'skipline') {
         return "<$command></$command>\n";
-      #} elsif ($type eq 'noarg') {
-      #  return "<$command></$command>";
+      } elsif ($type eq 'noarg') {
+        return "<$command></$command>";
       } elsif ($type eq 'special') {
         if ($root->{'cmdname'} eq 'clear' or $root->{'cmdname'} eq 'set') {
           my $attribute = '';

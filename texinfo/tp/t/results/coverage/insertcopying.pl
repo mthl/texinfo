@@ -284,7 +284,6 @@ $result_converted{'xml'}->{'insertcopying'} = '<copying>
 <para>License:
 </para>
 <insertcopying></insertcopying>
-
 ';
 
 1;
