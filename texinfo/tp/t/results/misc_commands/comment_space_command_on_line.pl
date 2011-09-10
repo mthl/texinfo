@@ -503,9 +503,20 @@ $result_trees{'comment_space_command_on_line'} = {
                     },
                     {
                       'parent' => {},
-                      'text' => '
-',
+                      'text' => ' ',
                       'type' => 'spaces_at_end'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'parent' => {},
+                          'text' => ' end
+',
+                          'type' => 'misc_arg'
+                        }
+                      ],
+                      'cmdname' => 'c',
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -734,6 +745,8 @@ $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'co
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'extra'}{'command'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9];
@@ -776,7 +789,7 @@ $result_texis{'comment_space_command_on_line'} = '@settitle Settitle @ @c settit
 
 @float Text, label
 float
-@end float
+@end float @c end
 
 @listoffloats Text @ @c listoffloats
 
@@ -985,7 +998,7 @@ $result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle>Settitl
 
 <float name="label" type="Text"><floattype>Text</floattype><floatname>label</floatname>
 <para>float
-</para></float>
+</para></float><!--  end -->
 
 <listoffloats type="Text--">Text <spacecmd type="spc"/></listoffloats><!--  listoffloats -->
 

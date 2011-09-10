@@ -421,7 +421,7 @@ Titlepage
 
 @float Text, label
 float
-@end float
+@end float @c end
 
 @listoffloats Text @ @c listoffloats
 

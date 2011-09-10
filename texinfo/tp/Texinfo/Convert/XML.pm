@@ -986,6 +986,8 @@ sub _convert($$;$)
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
     #$result .= "</$root->{'cmdname'}>\n";
+    # FIXME The end of line and comment is taken into account 
+    # but 'space_at_end' is ignored.
     my $end_command = $root->{'extra'}->{'end_command'}; 
     my $end_line;
     if ($end_command) {
