@@ -989,26 +989,22 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 
 
 $result_converted{'xml'}->{'double_part'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">node chapter</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top>
-<sectiontitle>top</sectiontitle>
+<top><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>node chapter</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 </top>
-<part>
-<sectiontitle>part first</sectiontitle>
+<part><sectiontitle>part first</sectiontitle>
 
 <para>Text part first.
 </para></part>
-<part>
-<sectiontitle>part second</sectiontitle>
+<part><sectiontitle>part second</sectiontitle>
 <para>Text part second.
 </para>
 <node name="node-chapter"><nodename>node chapter</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter>
-<sectiontitle>chapter after 2 parts</sectiontitle>
+<chapter><sectiontitle>chapter after 2 parts</sectiontitle>
 
 </chapter>
 </part>

@@ -309,12 +309,10 @@ ul.no-bullet {list-style: none}
 ';
 
 
-$result_converted{'xml'}->{'part_before_top'} = '<part>
-<sectiontitle>part</sectiontitle>
+$result_converted{'xml'}->{'part_before_top'} = '<part><sectiontitle>part</sectiontitle>
 
 </part>
-<top>
-<sectiontitle>top</sectiontitle>
+<top><sectiontitle>top</sectiontitle>
 </top>
 ';
 

@@ -308,12 +308,10 @@ $result_converted_errors{'html'}->{'chapter_before_part'} = [
 
 
 
-$result_converted{'xml'}->{'chapter_before_part'} = '<chapter>
-<sectiontitle>chapter</sectiontitle>
+$result_converted{'xml'}->{'chapter_before_part'} = '<chapter><sectiontitle>chapter</sectiontitle>
 
 </chapter>
-<part>
-<sectiontitle>part</sectiontitle>
+<part><sectiontitle>part</sectiontitle>
 </part>
 ';
 

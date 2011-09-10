@@ -332,15 +332,12 @@ element: @chapter chapter 2
 ';
 
 
-$result_converted{'xml'}->{'chapter_before_and_after_part'} = '<chapter>
-<sectiontitle>chapter</sectiontitle>
+$result_converted{'xml'}->{'chapter_before_and_after_part'} = '<chapter><sectiontitle>chapter</sectiontitle>
 
 </chapter>
-<part>
-<sectiontitle>part</sectiontitle>
+<part><sectiontitle>part</sectiontitle>
 
-<chapter>
-<sectiontitle>chapter 2</sectiontitle>
+<chapter><sectiontitle>chapter 2</sectiontitle>
 </chapter>
 </part>
 ';

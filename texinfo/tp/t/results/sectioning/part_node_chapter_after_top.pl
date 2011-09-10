@@ -1130,8 +1130,7 @@ Previous: <a href="#a-node-after-part" accesskey="p" rel="previous">a node after
 
 
 $result_converted{'xml'}->{'part_node_chapter_after_top'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">a node after part</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top>
-<sectiontitle>top</sectiontitle>
+<top><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>a node after part</menunode><menudescription><pre xml:space="preserve">
@@ -1139,14 +1138,12 @@ $result_converted{'xml'}->{'part_node_chapter_after_top'} = '<node name="Top"><n
 </pre></menudescription></menuentry></menu>
 
 </top>
-<part>
-<sectiontitle>part</sectiontitle>
+<part><sectiontitle>part</sectiontitle>
 
 <node name="a-node-after-part"><nodename>a node after part</nodename><nodenext>chapter</nodenext><nodeprev>Top</nodeprev><nodeup>Top</nodeup></node><para>After a node after part
 </para>
 <node name="chapter"><nodename>chapter</nodename><nodeprev automatic="on">a node after part</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter>
-<sectiontitle>chapter </sectiontitle>
+<chapter><sectiontitle>chapter </sectiontitle>
 </chapter>
 </part>
 ';

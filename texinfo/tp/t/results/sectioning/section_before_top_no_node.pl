@@ -176,12 +176,10 @@ $result_errors{'section_before_top_no_node'} = [
 
 
 
-$result_converted{'xml'}->{'section_before_top_no_node'} = '<section>
-<sectiontitle>section </sectiontitle>
+$result_converted{'xml'}->{'section_before_top_no_node'} = '<section><sectiontitle>section </sectiontitle>
 
 </section>
-<unnumberedsec originalcommand="top">
-<sectiontitle>top</sectiontitle>
+<unnumberedsec originalcommand="top"><sectiontitle>top</sectiontitle>
 </unnumberedsec>
 ';
 

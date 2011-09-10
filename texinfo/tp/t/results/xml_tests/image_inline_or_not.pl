@@ -2261,8 +2261,7 @@ T
 </pre></menucomment></menu>
 
 <node name="node_005fimage"><nodename><image where="inline"><imagefile>node_image</imagefile><image></nodename><nodenext automatic="on">(somewhere)<image where="inline"><imagefile>extnode</imagefile><image></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter>
-<sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile><image></sectiontitle>
+<chapter><sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile><image></sectiontitle>
 
 
 <para>T<footnote><image where="inline"><imagefile>in_footnote</imagefile><image>

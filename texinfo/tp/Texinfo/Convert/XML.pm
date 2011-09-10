@@ -652,7 +652,7 @@ sub _convert($$;$)
           } else {
             $attribute = '';
           }
-          $result .= "<$command${attribute}>\n";
+          $result .= "<$command${attribute}>";
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
               = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
@@ -671,6 +671,8 @@ sub _convert($$;$)
         }
       } elsif ($type eq 'skipline' or $type eq 'noarg') {
         return "<$command></$command>\n";
+      #} elsif ($type eq 'noarg') {
+      #  return "<$command></$command>";
       } elsif ($type eq 'special') {
         if ($root->{'cmdname'} eq 'clear' or $root->{'cmdname'} eq 'set') {
           my $attribute = '';
