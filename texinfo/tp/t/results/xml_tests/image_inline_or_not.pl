@@ -2225,11 +2225,7 @@ $result_converted{'xml'}->{'image_inline_or_not'} = '<image><imagefile>A</imagef
 
 <para>Para <image where="inline"><imagefile>hh</imagefile><image>.
 </para>
-<node name="Top">
-<nodename>Top</nodename>
-<nodenext automatic="on"><image where="inline"><imagefile>node_image</imagefile><image></nodenext>
-<nodeup automatic="on">(dir)</nodeup>
-</node>
+<node name="Top"><nodename>Top</nodename><nodenext automatic="on"><image where="inline"><imagefile>node_image</imagefile><image></nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
 <image><imagefile>B</imagefile><image>
 
@@ -2264,12 +2260,7 @@ T
 <image where="inline"><imagefile>in_menu_comment</imagefile><image>
 </pre></menucomment></menu>
 
-<node name="node_005fimage">
-<nodename><image where="inline"><imagefile>node_image</imagefile><image></nodename>
-<nodenext automatic="on">(somewhere)<image where="inline"><imagefile>extnode</imagefile><image></nodenext>
-<nodeprev automatic="on">Top</nodeprev>
-<nodeup automatic="on">Top</nodeup>
-</node>
+<node name="node_005fimage"><nodename><image where="inline"><imagefile>node_image</imagefile><image></nodename><nodenext automatic="on">(somewhere)<image where="inline"><imagefile>extnode</imagefile><image></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter>
 <sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile><image></sectiontitle>
 

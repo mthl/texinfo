@@ -785,11 +785,7 @@ $result_converted_errors{'html'}->{'chapter_node_before_and_after_part'} = [
 
 
 $result_converted{'xml'}->{'chapter_node_before_and_after_part'} = '
-<node name="Top">
-<nodename>Top</nodename>
-<nodenext automatic="on">after</nodenext>
-<nodeup automatic="on">(dir)</nodeup>
-</node>
+<node name="Top"><nodename>Top</nodename><nodenext automatic="on">after</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <chapter>
 <sectiontitle>chapter</sectiontitle>
 
@@ -801,11 +797,7 @@ $result_converted{'xml'}->{'chapter_node_before_and_after_part'} = '
 <part>
 <sectiontitle>part</sectiontitle>
 
-<node name="after">
-<nodename>after</nodename>
-<nodeprev automatic="on">Top</nodeprev>
-<nodeup automatic="on">Top</nodeup>
-</node>
+<node name="after"><nodename>after</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter>
 <sectiontitle>chapter 2</sectiontitle>
 

@@ -981,10 +981,7 @@ End Tag Table
 
 $result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle>Settitle <spacecmd type="spc"/></settitle><!--  settittle -->
 
-<node name="Top">
-<nodename>Top</nodename>
-<nodeup automatic="on">(dir)</nodeup>
-</node>
+<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node><!--  @node Top -->
 <top>
 <sectiontitle>top element<spacecmd type="spc"/> </sectiontitle><!--  @top -->
 

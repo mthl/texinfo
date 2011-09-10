@@ -1501,9 +1501,7 @@ $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '<a name="nod
 
 
 $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
-<node name="node_0021-After-punc">
-<nodename>node! After punc</nodename>
-</node>
+<node name="node_0021-After-punc"><nodename>node! After punc</nodename></node>
 <top>
 <sectiontitle>top! After punc</sectiontitle>
 

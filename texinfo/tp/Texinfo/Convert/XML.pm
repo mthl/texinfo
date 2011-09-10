@@ -605,11 +605,11 @@ sub _convert($$;$)
         return "<$command${attribute}>$arg</$command>$end_line";
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
-          $result .= "<node name=\"$root->{'extra'}->{'normalized'}\">\n";
+          $result .= "<node name=\"$root->{'extra'}->{'normalized'}\">";
           $self->{'document_context'}->[-1]->{'code'}++;
           $result .= "<nodename>".
              $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
-             ."</nodename>\n";
+             ."</nodename>";
           # first arg is the node name.
           my $direction_index = 1;
           foreach my $direction(@node_directions) {
@@ -631,11 +631,18 @@ sub _convert($$;$)
                 $node_name .= _normalize_top_node($self->_convert({
                   'contents' => $node_direction->{'extra'}->{'node_content'}}));
               }
-              $result .= "<$element${attribute}>$node_name</$element>\n";
+              $result .= "<$element${attribute}>$node_name</$element>";
             }
             $direction_index++;
           }
-          $result .= "</node>\n";
+          my $end_line;
+          if ($root->{'args'}->[0]) {
+            $end_line 
+              = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
+          } else {
+            $end_line = "\n";
+          }
+          $result .= "</node>${end_line}";
           $self->{'document_context'}->[-1]->{'code'}--;
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
           my $attribute;
@@ -722,7 +729,7 @@ sub _convert($$;$)
           }
         }
         my $end_line;
-        if ($root->{'args'}->[0] and $root->{'args'}->[0]->{'contents'}) {
+        if ($root->{'args'}->[0]) {
           $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'})
         } else {
           $end_line = "\n";

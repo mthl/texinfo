@@ -988,11 +988,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 ';
 
 
-$result_converted{'xml'}->{'double_part'} = '<node name="Top">
-<nodename>Top</nodename>
-<nodenext automatic="on">node chapter</nodenext>
-<nodeup automatic="on">(dir)</nodeup>
-</node>
+$result_converted{'xml'}->{'double_part'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">node chapter</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top>
 <sectiontitle>top</sectiontitle>
 
@@ -1010,11 +1006,7 @@ $result_converted{'xml'}->{'double_part'} = '<node name="Top">
 <sectiontitle>part second</sectiontitle>
 <para>Text part second.
 </para>
-<node name="node-chapter">
-<nodename>node chapter</nodename>
-<nodeprev automatic="on">Top</nodeprev>
-<nodeup automatic="on">Top</nodeup>
-</node>
+<node name="node-chapter"><nodename>node chapter</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter>
 <sectiontitle>chapter after 2 parts</sectiontitle>
 
