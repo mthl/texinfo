@@ -965,4 +965,32 @@ Ref: label229
 End Tag Table
 ';
 
+
+$result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle>Settitle <spacecmd type="spc"/></settitle><!--  settittle -->
+
+<node name="Top">
+<nodename>Top</nodename>
+<nodeup automatic="on">(dir)</nodeup>
+</node>
+<top>
+<sectiontitle>top element<spacecmd type="spc"/> </sectiontitle><!--  @top -->
+
+<frenchspacing value="on"></frenchspacing><!--  comment frenchspacing -->
+
+<cindex index="cp"><indexterm index="cp">index entry <spacecmd type="spc"/></indexterm></cindex><!--  index entry -->
+
+<heading>Heading <spacecmd type="spc"/>    </heading><!--  heading -->
+
+<printindex value="cp"></printindex><!--  printindex  -->
+
+<float name="label" type="Text"><floattype>Text</floattype><floatname>label</floatname>
+<para>float
+</para></float>
+
+<listoffloats type="Text--">Text <spacecmd type="spc"/></listoffloats><!--  listoffloats -->
+
+</top>
+<bye></bye>
+';
+
 1;

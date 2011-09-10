@@ -361,7 +361,8 @@ sub _index_entry($$)
       if ($index_entry->{'in_code'});
     $result .= $self->_convert({'contents' => $index_entry->{'content'}});
     pop @{$self->{'document_context'}};
-    return $result ."</indexterm>"
+    $result .= "</indexterm>";
+    return $result;
   }
   return '';
 }
@@ -378,8 +379,16 @@ sub _end_line_or_comment($$)
       and ($contents_possible_comment->[-1]->{'cmdname'} eq 'c'
           or $contents_possible_comment->[-1]->{'cmdname'} eq 'comment')) {
     $end_line = $self->_convert($contents_possible_comment->[-1]);
+  } elsif ($contents_possible_comment      
+           and $contents_possible_comment->[-1]->{'text'}) {
+    my $text = $contents_possible_comment->[-1]->{'text'};
+    if (chomp($text)) {
+      $end_line = "\n";
+    } else {
+      $end_line = '';
+    }
   } else {
-    $end_line = "\n";
+    $end_line = '';
   }
   return $end_line;
 }
@@ -418,8 +427,11 @@ sub _convert_argument_and_end_line($$)
   if ($comment) {
     $end_line = $self->_convert($comment);
   } else {
-    chomp($converted);
-    $end_line = "\n";
+    if (chomp($converted)) {
+      $end_line = "\n";
+    } else {
+      $end_line = "";
+    }
   }
   return ($converted, $end_line);
 }
@@ -568,7 +580,14 @@ sub _convert($$;$)
         $attribute = " command=\"$root->{'cmdname'}\"";
       }
       $attribute .= " index=\"$root->{'extra'}->{'index_entry'}->{'index_name'}\"";
-      return "<$element${attribute}>".$self->_index_entry($root)."</$element>\n";
+      my $end_line;
+      if ($root->{'args'}->[0]) {
+        $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
+      } else {
+        # May that happen?
+        $end_line = '';
+      }
+      return "<$element${attribute}>".$self->_index_entry($root)."</$element>${end_line}";
     } elsif (exists($xml_misc_commands{$root->{'cmdname'}})) {
       my $command = $root->{'cmdname'};
       my $type = $xml_misc_commands{$root->{'cmdname'}};
@@ -581,13 +600,8 @@ sub _convert($$;$)
                 . $self->xml_protect_text($root->{'extra'}->{'text_arg'}) ."\"";
           }
         }
-        my $arg = $self->_convert($root->{'args'}->[0]);
-        my $end_line;
-        if (chomp ($arg)) {
-          $end_line = "\n";
-        } else {
-          $end_line = "";
-        }
+        my ($arg, $end_line)
+            = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
         return "<$command${attribute}>$arg</$command>$end_line";
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
@@ -633,13 +647,8 @@ sub _convert($$;$)
           }
           $result .= "<$command${attribute}>\n";
           if ($root->{'args'} and $root->{'args'}->[0]) {
-            my $arg = $self->_convert($root->{'args'}->[0]);
-            my $end_line;
-            if (chomp ($arg)) {
-              $end_line = "\n";
-            } else {
-              $end_line = "";
-            }
+            my ($arg, $end_line)
+              = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
             $result .= "<sectiontitle>$arg</sectiontitle>$end_line"
           }
         } else {
@@ -649,13 +658,8 @@ sub _convert($$;$)
               and defined($root->{'extra'}->{'type'}->{'normalized'})) {
             $attribute = " type=\"$root->{'extra'}->{'type'}->{'normalized'}\"";
           }
-          my $arg = $self->_convert($root->{'args'}->[0]);
-          my $end_line;
-          if (chomp ($arg)) {
-            $end_line = "\n";
-          } else {
-            $end_line = "";
-          }
+          my ($arg, $end_line)
+            = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
           return "<$command${attribute}>$arg</$command>$end_line";
         }
       } elsif ($type eq 'skipline' or $type eq 'noarg') {
@@ -717,7 +721,13 @@ sub _convert($$;$)
             $arg_index++;
           }
         }
-        return "<$command${attribute}></$command>\n";
+        my $end_line;
+        if ($root->{'args'}->[0] and $root->{'args'}->[0]->{'contents'}) {
+          $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'})
+        } else {
+          $end_line = "\n";
+        }
+        return "<$command${attribute}></$command>$end_line";
       }
     } elsif ($root->{'type'}
              and $root->{'type'} eq 'definfoenclose_command') {
@@ -819,6 +829,7 @@ sub _convert($$;$)
               $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
               my $arg;
               if ($arg_index+1 eq scalar(@{$root->{'args'}})) {
+                # last argument
                 ($arg, $end_line) 
                   = $self->_convert_argument_and_end_line($root->{'args'}->[$arg_index]);
               } else {
@@ -975,7 +986,17 @@ sub _convert($$;$)
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
     #$result .= "</$root->{'cmdname'}>\n";
-    $result .= "\n";
+    my $end_command = $root->{'extra'}->{'end_command'}; 
+    my $end_line;
+    if ($end_command) {
+      $end_line 
+       = $self->_end_line_or_comment($end_command->{'args'}->[0]->{'contents'})
+         if ($end_command->{'args'}->[0]
+             and $end_command->{'args'}->[0]->{'contents'});
+    } else {
+      $end_line = "\n";
+    }
+    $result .= $end_line;
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }

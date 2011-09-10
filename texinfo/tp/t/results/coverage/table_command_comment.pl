@@ -199,7 +199,6 @@ $result_converted{'html_text'}->{'table_command_comment'} = '<dl compact="compac
 
 $result_converted{'xml'}->{'table_command_comment'} = '<table commandarg="@code"><!--  in comment -->
 <tableentry><tableterm><item><itemformat command="@code">item</itemformat></item>
-</tableterm></tableentry></table>
-';
+</tableterm></tableentry></table>';
 
 1;

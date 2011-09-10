@@ -97,7 +97,7 @@ A @click{} (result).
 @setfilename file_space_comment @c comment
 @setfilename @ @verb{: name :}@ 
 
-'],
+', {'test_formats' => ['xml']}],
 ['bye',
 '@bye
 '],
@@ -441,7 +441,10 @@ my %info_tests = (
 foreach my $test (@converted_test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
-  push @{$test->[2]->{'test_formats'}}, 'info' if ($info_tests{$test->[0]});
+  if ($info_tests{$test->[0]}) {
+    push @{$test->[2]->{'test_formats'}}, 'info';
+    push @{$test->[2]->{'test_formats'}}, 'xml';
+  }
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
