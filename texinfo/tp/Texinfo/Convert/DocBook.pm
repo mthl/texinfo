@@ -80,6 +80,11 @@ my %defaults = (
 my @docbook_image_extensions
   = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg');
 
+my %docbook_special_quotations;
+foreach my $special_quotation ('note', 'caution', 'important', 'tip', 'warning') {
+  $docbook_special_quotations{$special_quotation} = 1;
+}
+
 my %docbook_specific_formatting = (
   'TeX' => '&tex;',
   'LaTeX' => '&latex;',
@@ -181,24 +186,7 @@ my %default_args_code_style
   = %Texinfo::Convert::Converter::default_args_code_style;
 
 my %commands_args_elements = (
-  'inforef' => ['inforefnodename', 'inforefrefname', 'inforefinfoname'],
-  'image' => ['imagefile', 'imagewidth', 'imageheight', 
-              'alttext', 'imageextension'],
-  'quotation' => ['quotationtype'],
-  'float' => ['floattype', 'floatname'],
-  'itemize' => ['itemfunction'],
 );
-
-foreach my $ref_cmd ('pxref', 'xref', 'ref') {
-  $commands_args_elements{$ref_cmd} 
-    = ['xrefnodename', 'xrefinfoname', 'xrefprinteddesc', 'xrefinfofile', 
-       'xrefprintedname'];
-}
-
-foreach my $explained_command (keys(%Texinfo::Common::explained_commands)) {
-  $commands_args_elements{$explained_command} = ["${explained_command}word",
-                                                 "${explained_command}desc"];
-}
 
 my %commands_elements;
 foreach my $command (keys(%Texinfo::Common::brace_commands)) {
@@ -248,6 +236,17 @@ my %type_elements = (
 
 my %context_block_commands = (
   'float' => 1,
+);
+
+my %docbook_preformatted_formats = (
+   'example' => 'screen',
+   'smallexample' => 'screen',
+   'display' => 'literallayout',
+   'smalldisplay' => 'literallayout',
+   'lisp' => 'programlisting',
+   'smalllisp' => 'programlisting',
+   'format' => 'abstract',
+   'smallformat' => 'screen'
 );
 
 sub _defaults($)
@@ -474,8 +473,6 @@ sub _parse_attribute($)
 
 sub _convert($$;$);
 
-
-
 sub _convert($$;$)
 {
   my $self = shift;
@@ -509,7 +506,7 @@ sub _convert($$;$)
     }
     return $result;
   }
-  my $close_element;
+  my @close_elements;
   if ($root->{'cmdname'}) {
     if (defined($docbook_commands_formatting{$root->{'cmdname'}})) {
       my $command;
@@ -531,7 +528,7 @@ sub _convert($$;$)
           and ($root->{'parent'}->{'cmdname'} eq 'itemize'
                or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
         $result .= "<listitem>";
-        $close_element = 'listitem';
+        push @close_elements, 'listitem';
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
                and $root->{'parent'}->{'type'} 
                and $root->{'parent'}->{'type'} eq 'table_term') {
@@ -572,7 +569,7 @@ sub _convert($$;$)
         }
         
         $result .= "<entry>";
-        $close_element = 'entry';
+        push @close_elements, 'entry';
       }
     } elsif ($root->{'type'} and $root->{'type'} eq 'index_entry_command') {
       my $end_line;
@@ -960,7 +957,10 @@ sub _convert($$;$)
       }
       my $attribute = '';
       my $element;
-      if ($root->{'cmdname'} eq 'enumerate') {
+      if (exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
+        push @{$self->{'document_context'}->[-1]->{'preformatted_stack'}}, 
+           $docbook_preformatted_formats{$root->{'cmdname'}};
+      } elsif ($root->{'cmdname'} eq 'enumerate') {
         $element = 'orderedlist'; 
         my $numeration;
         if ($root->{'extra'}
@@ -981,41 +981,8 @@ sub _convert($$;$)
       } elsif ($root->{'cmdname'} eq 'itemize') {
         $element = 'itemizedlist';
       } elsif ($root->{'cmdname'} eq 'multitable') {
-      }
-        elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}) {
-        if (defined($root->{'extra'}->{'normalized'})) {
-          $attribute .= " name=\"$root->{'extra'}->{'normalized'}\"";
-        }
-        if ($root->{'extra'}->{'type'} and 
-            defined($root->{'extra'}->{'type'}->{'normalized'})) {
-          $attribute .= " type=\"$root->{'extra'}->{'type'}->{'normalized'}\"";
-        }
-      } elsif ($root->{'cmdname'} eq 'verbatim') {
-        $attribute = " xml:space=\"preserve\"";
-      }
-      $result .= "<$root->{'cmdname'}${attribute}>";
-      if ($root->{'args'}) {
-        if ($commands_args_elements{$root->{'cmdname'}}) {
-          my $arg_index = 0;
-          foreach my $element (@{$commands_args_elements{$root->{'cmdname'}}}) {
-            if (defined($root->{'args'}->[$arg_index])) {
-              my $in_code;
-               $in_code = 1
-                if (defined($default_args_code_style{$root->{'cmdname'}})
-                  and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
-              $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-              my $arg = $self->_convert($root->{'args'}->[$arg_index]);
-              chomp($arg);
-              if ($arg ne '') {  
-                $result .= "<$element>$arg</$element>\n";
-              }
-              $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
-            } else {
-              last;
-            }
-            $arg_index++;
-          }
-        } elsif ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
+        $element = "informaltable";
+        if ($root->{'extra'}) {
           if ($root->{'extra'}->{'prototypes'}) {
             $result .= "<columnprototypes>";
             foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
@@ -1031,17 +998,31 @@ sub _convert($$;$)
             $result .= "</columnfractions>";
           }
         }
+      } elsif ($root->{'cmdname'} eq 'float') {
+        if ($root->{'extra'} and defined($root->{'extra'}->{'normalized'})) {
+          $result .= "<anchor id=\"$root->{'extra'}->{'normalized'}\">\n";
+        }
+      } elsif ($root->{'cmdname'} eq 'verbatim') {
+        $element = 'screen';
+      } elsif ($root->{'cmdname'} eq 'quotation') {
+        # docbook_special_quotations
+        $element = 'blockquote';
       }
-      #chomp($result);
-      #$result .= "\n";
-      $close_element = $root->{'cmdname'};
+      if (defined($element)) {
+        $result .= "<$element${attribute}>";
+        push @close_elements, $element;
+        if ($root->{'cmdname'} eq 'multitable') {
+          push @close_elements, 'tgroup';
+        }
+      }
     }
   }
   if ($root->{'type'}) {
     if (defined($type_elements{$root->{'type'}})) {
       $result .= "<$type_elements{$root->{'type'}}>";
-    }
-    if ($root->{'type'} eq 'def_line') {
+    } elsif ($root->{'type'} eq 'preformatted') {
+      $result .= "<$self->{'document_context'}->[-1]->{'preformatted_stack'}->[-1]>";
+    } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'cmdname'}) {
         $result .= "<$root->{'cmdname'}>";
       }
@@ -1111,6 +1092,8 @@ sub _convert($$;$)
   if ($root->{'type'}) {
     if (defined($type_elements{$root->{'type'}})) {
       $result .= "</$type_elements{$root->{'type'}}>";
+    } elsif ($root->{'type'} eq 'preformatted') {
+      $result .= "</$self->{'document_context'}->[-1]->{'preformatted_stack'}->[-1]>";
     }
   }
   $result = '{'.$result.'}' 
@@ -1118,13 +1101,18 @@ sub _convert($$;$)
          and (!$root->{'parent'}->{'type'} or
               ($root->{'parent'}->{'type'} ne 'block_line_arg'
                and $root->{'parent'}->{'type'} ne 'misc_line_arg')));
-  if ($close_element) {
-    $result .= "</$close_element>";
+  foreach my $element (@close_elements) {
+    $result .= "</$element>";
   }
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
     #$result .= "</$root->{'cmdname'}>\n";
     $result .= "\n";
+    if (exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
+      my $format = pop @{$self->{'document_context'}->[-1]->{'preformatted_stack'}};
+      die "BUG $format ne $docbook_preformatted_formats{$root->{'cmdname'}}"
+       if ($format ne $docbook_preformatted_formats{$root->{'cmdname'}});
+    }
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }

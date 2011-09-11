@@ -1845,46 +1845,46 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table'} = '<dl compact=
 ';
 
 
-$result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg="@code">
+$result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg="code">
 <!--  comment in table -->
-<tableentry><tableterm><item><itemformat command="@code"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item><itemformat command="code"><indexterm index="vr">a</indexterm>a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
-<vtable commandarg="@asis">
-<tableentry><tableterm><item><itemformat command="@asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<vtable commandarg="asis">
+<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
 <!--  comment between item and itemx -->
-<itemx><itemformat command="@asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+<itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
-<ftable commandarg="@var">
-<tableentry><tableterm><item><itemformat command="@var"><indexterm index="fn">a</indexterm>a</itemformat></item>
+<ftable commandarg="var">
+<tableentry><tableterm><item><itemformat command="var"><indexterm index="fn">a</indexterm>a</itemformat></item>
 <cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
 <!--  and a comment -->
 <!--  and another comment -->
-<itemx><itemformat command="@var"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+<itemx><itemformat command="var"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
-</para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="@var"><indexterm index="fn">c</indexterm>c</itemformat></item>
+</para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="var"><indexterm index="fn">c</indexterm>c</itemformat></item>
 
 <!--  comment between lines -->
 
-<itemx><itemformat command="@var"><indexterm index="fn">d</indexterm>d</itemformat></itemx>
+<itemx><itemformat command="var"><indexterm index="fn">d</indexterm>d</itemformat></itemx>
 </tableterm><tableitem>
 <!--  comment at end -->
 </tableitem></tableentry></ftable>
 
-<table commandarg="@code">
+<table commandarg="code">
 <cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
 <!--  comment in table -->
-<tableentry><tableterm><item><itemformat command="@code">abb</itemformat></item>
+<tableentry><tableterm><item><itemformat command="code">abb</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
-<table commandarg="@code">
+<table commandarg="code">
 <cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
 <para>Texte before first item.
-</para><tableentry><tableterm><item><itemformat command="@code">abb</itemformat></item>
+</para><tableentry><tableterm><item><itemformat command="code">abb</itemformat></item>
 </tableterm></tableentry></table>
 ';
 

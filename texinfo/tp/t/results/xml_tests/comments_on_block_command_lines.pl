@@ -2456,7 +2456,7 @@ $result_floats{'comments_on_block_command_lines'}{'f'}[0]{'extra'}{'end_command'
 
 
 
-$result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="@bullet"><!--  comm -->
+$result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet"><!--  comm -->
 <item><prepend>&bullet;</prepend><para>itemize it
 </para></item></itemize>
 
@@ -2464,7 +2464,7 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 <item><prepend>x</prepend><para>itemize xit
 </para></item></itemize>
 
-<itemize commandarg="@bullet"><itemprepend>&bullet; </itemprepend><!--  comm -->
+<itemize commandarg="bullet"><itemprepend>&bullet; </itemprepend><!--  comm -->
 <item><prepend>&bullet;</prepend><para>itemize bulletit
 </para></item></itemize>
 
@@ -2476,8 +2476,8 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 <item><para>aen
 </para></item></enumerate>
 
-<table commandarg="@asis"><!--  table -->
-<tableentry><tableterm><item><itemformat command="@asis">it</itemformat></item>
+<table commandarg="asis"><!--  table -->
+<tableentry><tableterm><item><itemformat command="asis">it</itemformat></item>
 </tableterm></tableentry></table>
 
 <quotation><!--  quot no arg -->

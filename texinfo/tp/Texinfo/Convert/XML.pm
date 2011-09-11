@@ -17,10 +17,6 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
-# msg Karl: 
-#       consistently use command="@$command" 
-
-
 package Texinfo::Convert::XML;
 
 use 5.00405;
@@ -456,7 +452,7 @@ sub _convert($$;$)
         }
         $result .= "<$root->{'cmdname'}>";
         if ($format_item_command) {
-          $result .= "<itemformat command=\"\@$format_item_command\"${attribute}>";
+          $result .= "<itemformat command=\"$format_item_command\"${attribute}>";
         }
         $result .= $self->_index_entry($root);
         # FIXME
@@ -723,7 +719,7 @@ sub _convert($$;$)
       if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
         my $command_as_arg = $root->{'extra'}->{'command_as_argument'};
         $attribute 
-         .= " commandarg=\"\@$command_as_arg->{'cmdname'}\""
+         .= " commandarg=\"$command_as_arg->{'cmdname'}\""
              .$self->_infoenclose_attribute($command_as_arg);
       } elsif ($root->{'extra'}
                and $root->{'extra'}->{'enumerate_specification'}) {

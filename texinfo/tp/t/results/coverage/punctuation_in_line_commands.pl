@@ -1504,8 +1504,8 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 <node name="node_0021-After-punc"><nodename>node! After punc</nodename></node>
 <top><sectiontitle>top! After punc</sectiontitle>
 
-<table commandarg="@asis">
-<tableentry><tableterm><item><itemformat command="@asis">item! After punc</itemformat></item>
+<table commandarg="asis">
+<tableentry><tableterm><item><itemformat command="asis">item! After punc</itemformat></item>
 </tableterm></tableentry></table>
 
 <quotation><quotationtype>quotation arg! After punc</quotationtype>

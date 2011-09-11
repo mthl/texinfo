@@ -246,9 +246,9 @@ $result_converted{'html_text'}->{'long_item'} = '<dl compact="compact">
 ';
 
 
-$result_converted{'xml'}->{'long_item'} = '<table commandarg="@emph">
-<tableentry><tableterm><item><itemformat command="@emph">first item      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa</itemformat></item>
-<itemx><itemformat command="@emph">second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b</itemformat></itemx>
+$result_converted{'xml'}->{'long_item'} = '<table commandarg="emph">
+<tableentry><tableterm><item><itemformat command="emph">first item      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa</itemformat></item>
+<itemx><itemformat command="emph">second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b</itemformat></itemx>
 </tableterm><tableitem>
 <para>Text.
 </para></tableitem></tableentry></table>

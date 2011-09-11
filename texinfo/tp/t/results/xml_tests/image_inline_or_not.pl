@@ -2243,8 +2243,8 @@ T
 <image><imagefile>in_quotation_content</imagefile><image>
 </quotation>
 
-<table commandarg="@asis">
-<tableentry><tableterm><item><itemformat command="@asis"><image where="inline"><imagefile>in_table_item</imagefile><image></itemformat></item>
+<table commandarg="asis">
+<tableentry><tableterm><item><itemformat command="asis"><image where="inline"><imagefile>in_table_item</imagefile><image></itemformat></item>
 </tableterm><tableitem>
 <image><imagefile>in_table_def</imagefile><image>
 

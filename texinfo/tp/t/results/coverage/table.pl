@@ -819,21 +819,21 @@ $result_converted{'html_text'}->{'table'} = '<dl compact="compact">
 
 
 $result_converted{'xml'}->{'table'} = '
-<table commandarg="@asis">
-<tableentry><tableterm><item><itemformat command="@asis">table item</itemformat></item>
-<itemx><itemformat command="@asis">table itemx</itemformat></itemx>
+<table commandarg="asis">
+<tableentry><tableterm><item><itemformat command="asis">table item</itemformat></item>
+<itemx><itemformat command="asis">table itemx</itemformat></itemx>
 </tableterm><tableitem>
 <para>In table
 </para></tableitem></tableentry></table>
 
-<vtable commandarg="@samp"><!--  samp -->
+<vtable commandarg="samp"><!--  samp -->
 <!--  after vtable -->
 <cindex index="cp"><indexterm index="cp">index entry</indexterm></cindex>
 
-<tableentry><tableterm><item><itemformat command="@samp"><indexterm index="vr">vtable item</indexterm>vtable item</itemformat></item>
+<tableentry><tableterm><item><itemformat command="samp"><indexterm index="vr">vtable item</indexterm>vtable item</itemformat></item>
 <!--  after item -->
 <kindex index="ky"><indexterm index="ky">key</indexterm></kindex>
-<itemx><itemformat command="@samp"><indexterm index="vr">itemx vtable</indexterm>itemx vtable <!--  comment in itemx line --></itemformat></itemx>
+<itemx><itemformat command="samp"><indexterm index="vr">itemx vtable</indexterm>itemx vtable <!--  comment in itemx line --></itemformat></itemx>
 </tableterm><tableitem>
 </tableitem></tableentry></vtable>
 ';
