@@ -458,6 +458,75 @@ sub float_type_number($$)
   return $tree;
 }
 
+# This is used when the formatted text has no comment nor new line, but
+# one want to add the comment or new line from the original arg
+sub _end_line_or_comment($$)
+{
+  my $self = shift;
+  my $contents_possible_comment = shift;
+  my $end_line;
+  if ($contents_possible_comment
+      and $contents_possible_comment->[-1]->{'cmdname'}
+      and ($contents_possible_comment->[-1]->{'cmdname'} eq 'c'
+          or $contents_possible_comment->[-1]->{'cmdname'} eq 'comment')) {
+    $end_line = $self->_convert($contents_possible_comment->[-1]);
+  } elsif ($contents_possible_comment      
+           and $contents_possible_comment->[-1]->{'text'}) {
+    my $text = $contents_possible_comment->[-1]->{'text'};
+    if (chomp($text)) {
+      $end_line = "\n";
+    } else {
+      $end_line = '';
+    }
+  } else {
+    $end_line = '';
+  }
+  return $end_line;
+}
+
+sub _tree_without_comment($)
+{
+  my $contents_possible_comment = shift;
+  my $comment;
+  my $tree;
+
+  if ($contents_possible_comment->{'contents'}
+      and $contents_possible_comment->{'contents'}->[-1]->{'cmdname'}
+      and ($contents_possible_comment->{'contents'}->[-1]->{'cmdname'} eq 'c'
+           or $contents_possible_comment->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
+    my @contents = @{$contents_possible_comment->{'contents'}};
+    $comment = pop @contents;
+    $tree = {'contents' => \@contents};
+    foreach my $key ('extra', 'type', 'cmdname', 'parent', 'line_nr') {
+      $tree->{$key} = $contents_possible_comment->{$key}
+        if (exists($contents_possible_comment->{$key}));
+    }
+  } else {
+   $tree = $contents_possible_comment;
+  }
+  return ($comment, $tree);
+}
+
+sub _convert_argument_and_end_line($$)
+{
+  my $self = shift;
+  my $root = shift;
+  my ($comment, $tree) 
+    = _tree_without_comment($root);
+  my $converted = $self->_convert($tree);
+  my $end_line;
+  if ($comment) {
+    $end_line = $self->_convert($comment);
+  } else {
+    if (chomp($converted)) {
+      $end_line = "\n";
+    } else {
+      $end_line = "";
+    }
+  }
+  return ($converted, $end_line);
+}
+
 my @inline_types = ('def_line', 'paragraph', 'preformatted',
   'misc_command_arg', 'misc_line_arg', 'block_line_arg',
   'menu_entry_name', 'menu_entry_node');

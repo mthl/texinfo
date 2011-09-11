@@ -1,4 +1,4 @@
-# XML.pm: output tree as Texinfo XML.
+# DocBook.pm: output tree as DocBook.
 #
 # Copyright 2011 Free Software Foundation, Inc.
 # 
@@ -17,11 +17,9 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
-# msg Karl: 
-#       consistently use command="@$command" 
+# TODO @*ref, block commands, abbrev, image, 
 
-
-package Texinfo::Convert::XML;
+package Texinfo::Convert::DocBook;
 
 use 5.00405;
 use strict;
@@ -56,80 +54,97 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
+my $mdash = '&#'.hex('2014').';';
+my $ndash = '&#'.hex('2013').';';
+my $ldquo = '&#'.hex('201C').';';
+my $rdquo = '&#'.hex('201D').';';
+my $rsquo = '&#'.hex('2019').';';
+my $lsquo = '&#'.hex('2018').';';
+
 my %defaults = (
-  'ENABLE_ENCODING'      => 1,
-  'SHOW_MENU'            => 1,
-  'EXTENSION'            => 'xml',
+  #'ENABLE_ENCODING'      => 0,
+  'SHOW_MENU'            => 0,
+  'EXTENSION'            => 'xml', # dbk?
   'perl_encoding'        => 'utf8',
   'encoding_name'        => 'utf-8',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
-  'output_format'        => 'xml',
+  'output_format'        => 'docbook',
   'SPLIT'                => 0,
   'documentlanguage'     => 'en',
+  'OPEN_QUOTE_SYMBOL'    => $lsquo,
+  'CLOSE_QUOTE_SYMBOL'   => $rsquo,
 );
 
 
-my %specific_xml_commands_formatting = (
-           '*' => '&linebreak;',
-           ' ' => '<spacecmd type="spc"/>',
-           "\t" => '<spacecmd type="tab"/>',
-           "\n" => '<spacecmd type="nl"/>',
-           '-' => '&hyphenbreak;',  # hyphenation hint
-           '|' => '',  # used in formatting commands @evenfooting and friends
-           '/' => '&slashbreak;',
-           ':' => '&noeos;',
-           '!' => '&eosexcl;',
-           '?' => '&eosquest;',
-           '.' => '&eosperiod;',
-           '@' => '&arobase;',
-           '}' => '&lbrace;',
-           '{' => '&rbrace;',
-           '\\' => '&backslash;',  # should only appear in math
-
-           'TeX' => '&tex;',
-           'LaTeX' => '&latex;',
-           'bullet' => '&bullet;',
-           'copyright'    => '&copyright;',
-           'registeredsymbol'   => '&registered;',
-           'dots'    => '&dots',
-           'enddots'    => '&enddots',
-           'error'        => '&errorglyph;',
-           'expansion'     => '&expansion;',
-           'arrow'        => '&rarr;',
-           'click' => '<click command="arrow"/>',
-           'minus'        => '&minus;',
-           'point'        => '&point;',
-           'print'        => '&printglyph;',
-           'result'       => '&result;',
-           'l'            => '&lslash;',
-           'L'            => '&Lslash;',
-           'today'        => '<today/>',
-           'comma'        => '&comma;',
+my %docbook_specific_formatting = (
+  'TeX' => '&tex;',
+  'LaTeX' => '&latex;',
 );
-
-my %xml_commands_formatting
+my %docbook_commands_formatting
   = %{$Texinfo::Convert::Converter::default_xml_commands_formatting{'normal'}};
 
-foreach my $command (keys(%specific_xml_commands_formatting)) {
-  $xml_commands_formatting{$command}
-    = $specific_xml_commands_formatting{$command}
+foreach my $command (keys(%Texinfo::Convert::Unicode::unicode_map)) {
+  $docbook_commands_formatting{$command}
+   = '&#'.hex($Texinfo::Convert::Unicode::unicode_map{$command}).';'
+    if ($Texinfo::Convert::Unicode::unicode_map{$command} ne '');
 }
 
-my %xml_accents = (
- '=' => 'macr',
-# following are not entities
- 'H' => 'doubleacute',
- 'u' => 'breve',
- 'v' => 'caron',
+foreach my $command (keys(%docbook_specific_formatting)) {
+  $docbook_commands_formatting{$command} 
+    = $docbook_specific_formatting{$command};
+}
+
+my %quoted_style_commands = (
+  'samp' => 1,
 );
 
-my %xml_accent_types = (%Texinfo::Convert::Converter::xml_accent_entities, %xml_accents);
+my %style_attribute_commands;
+%style_attribute_commands = (
+      'b'           => 'emphasis role="bold"',
+      'cite'        => 'citetitle',
+      'code'        => 'literal',
+      'command'     => 'command',
+      'dfn'         => 'firstterm',
+      'emph'        => 'emphasis',
+      'env'         => 'envar',
+      'file'        => 'filename',
+      'headitemfont' => 'emphasis role="bold"', # not really that, in fact it is 
+                             # in <th> rather than <td>
+      'i'           => 'wordasword',
+      'indicateurl' => 'wordasword',
+      'sansserif'   => 'span class="sansserif"',
+      'kbd'         => 'userinput',
+      'key'         => 'keycap',
+      'option'      => 'option',
+      'r'           => 'span class="roman"',
+      'samp'        => 'literal',
+      'strong'      => 'emphasis role="bold"',
+      't'           => 'literal',
+      'var'         => 'replaceable',
+      'verb'        => 'literal',
+      'footnote'    => 'footnote',
+#      'math'        => 'em',
+);
 
-# no entity
-my @other_accents = ('dotaccent', 'tieaccent', 'ubaraccent', 'udotaccent');
-foreach my $accent (@other_accents) {
-  $xml_accent_types{$accent} = $accent;
+# this weird construct does like uniq, it avoids duplicates.
+# it may be required since math is not in the %style_commands as it is 
+# in context command.
+my @all_style_commands = keys %{{ map { $_ => 1 }
+    (keys(%Texinfo::Common::style_commands), keys(%style_attribute_commands),
+     'dmn', 'math', 'titlefont') }};
+# 'w' is special
+
+my %style_commands_formatting;
+foreach my $command(@all_style_commands) {
+  $style_commands_formatting{$command} = {};
+  if ($style_attribute_commands{$command}) {
+    $style_commands_formatting{$command}->{'attribute'} 
+      = $style_attribute_commands{$command};
+  }
+  if ($quoted_style_commands{$command}) {
+    $style_commands_formatting{$command}->{'quote'} = 1;
+  }
 }
 
 my %misc_command_line_attributes = (
@@ -148,27 +163,27 @@ my %misc_command_numbered_arguments_attributes = (
 #  'sp' => [ 'lines' ],
 );
 
-my %xml_misc_commands = %Texinfo::Common::misc_commands;
+my %docbook_misc_elements_with_arg_map = (
+  'settitle' => 'title',
+);
+
+my %docbook_misc_commands = %Texinfo::Common::misc_commands;
 
 foreach my $command ('item', 'headitem', 'itemx', 'tab', 
                       keys %Texinfo::Common::def_commands) {
-  delete $xml_misc_commands{$command};
+  delete $docbook_misc_commands{$command};
 }
 
-my %default_args_code_style
+my %default_args_code_style 
   = %Texinfo::Convert::Converter::default_args_code_style;
 
 my %commands_args_elements = (
-  'email' => ['emailaddress', 'emailname'],
-  'uref' => ['urefurl', 'urefdesc', 'urefreplacement'],
-  'url' => ['urefurl', 'urefdesc', 'urefreplacement'],
   'inforef' => ['inforefnodename', 'inforefrefname', 'inforefinfoname'],
   'image' => ['imagefile', 'imagewidth', 'imageheight', 
               'alttext', 'imageextension'],
   'quotation' => ['quotationtype'],
   'float' => ['floattype', 'floatname'],
-  'itemize' => ['itemprepend'],
-  'enumerate' => ['enumeratefirst'],
+  'itemize' => ['itemfunction'],
 );
 
 foreach my $ref_cmd ('pxref', 'xref', 'ref') {
@@ -204,6 +219,7 @@ my %defcommand_name_type = (
 
 my %ignored_types;
 foreach my $type (#'empty_line_after_command',
+            'preamble',
             'empty_spaces_after_command', 
             #'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
@@ -218,20 +234,13 @@ foreach my $type (#'empty_line_after_command',
 
 my %type_elements = (
   'paragraph' => 'para',
-  'preformatted' => 'pre',
-  'menu_entry' => 'menuentry',
-  'menu_entry_node' => 'menunode',
-  'menu_comment' => 'menucomment',
-  'menu_entry_description' => 'menudescription',
-  'menu_entry_name' => 'menutitle',
-  'preamble' => 'preamble',
-  'table_item' => 'tableitem',
-  'table_entry' => 'tableentry',
-  'table_term' => 'tableterm',
+  'table_item' => 'listitem',
+  'table_entry' => 'varlistentry',
   'row' => 'row',
   'multitable_head' => 'thead',
   'multitable_body' => 'tbody',
-  'def_item' => 'definitionitem',
+  # FIXME is this right?
+  'def_item' => 'blockquote',
 );
 
 my %context_block_commands = (
@@ -276,10 +285,56 @@ sub _informative_command($$)
   }
 }
 
+sub _initialize_document($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $elements;
+
+  $self->_set_global_multiple_commands(-1);
+  $elements = Texinfo::Structuring::split_by_section($root);
+  $self->{'elements'} = $elements;
+  return $elements;
+}
+
+sub convert($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $elements = $self->_initialize_document($root);
+
+  my $result = '';
+  if (!defined($elements)) {
+    $result = $self->_convert($root);
+  } else {
+    foreach my $element (@$elements) {
+      my $element_text = $self->_convert($element);
+      $result .= $element_text;
+    }
+  }
+
+  return $result;
+}
+
 sub _normalize_top_node($)
 {
   my $node = shift;
   return Texinfo::Common::normalize_top_node($node);
+}
+
+# output fo $fh if defined, otherwise return the text.
+sub _output_text($$)
+{
+  my $text = shift;
+  my $fh = shift;
+  if ($fh) {
+    print $fh $text;
+    return '';
+  } else {
+    return $text;
+  }
 }
 
 sub output($$)
@@ -301,44 +356,62 @@ sub output($$)
     }
   }
 
-  $self->_set_global_multiple_commands(-1);
-  my $header =  '<?xml version="1.0"?>
-<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
-<texinfo xml:lang="' . $self->get_conf('documentlanguage') ."\">\n";
+  my $elements = $self->_initialize_document($root);
+
+  my $id;
   if ($self->get_conf('OUTFILE') ne '') {
     my $output_filename = $self->{'output_filename'};
-    $header .= "<filename file=\"".$self->xml_protect_text($output_filename)
-                ."\"></filename>\n";
+    $id = " id=\"".$self->xml_protect_text($output_filename)."\"";
+  } else {
+    $id = '';
   }
 
+  my $header = '<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+'. "<book${id} lang=\"".$self->get_conf('documentlanguage') ."\">\n";
+
   my $result = '';
-  if ($fh) {
-    print $fh $header;
+  $result .= _output_text($header, $fh);
+  if (!defined($elements)) {
+    $result .= _output_text($self->_convert($root), $fh);
   } else {
-    $result .= $header;
-  }
-  foreach my $content (@{$root->{'contents'}}) {
-    #print STDERR " --> $content\n";
-    my $output = $self->_convert($content);
-    if ($fh) {
-      print $fh $output;
-    } else {
-      $result .= $output;
+    foreach my $element (@$elements) {
+      $result .= _output_text($self->_convert($root), $fh);
     }
   }
-  my $footer = "</texinfo>\n";
-  if ($fh) {
-    print $fh $footer;
-  } else {
-    $result .= $footer;
-  }
+
+  $result .= _output_text("</book>\n", $fh);
   return $result;
 }
+
+my %docbook_sections = (
+  'top'  => 'chapter',
+  'part' => 'part',
+  'chapter'  => 'chapter',
+  'unnumbered'  => 'chapter',
+  'centerchap'  => 'chapter',
+  'appendix' => 'appendix',
+  'majorheading' => 'other',
+  'chapheading' => 'other',
+  'heading' => 'sect1',
+  'subheading' => 'sect2',
+  'subsubheading' => 'sect3',
+  2 => 'sect1',
+  3 => 'sect2',
+  4 => 'sect3'
+);
+
 
 sub _level_corrected_section($)
 {
   my $root = shift;
   my $heading_level = $root->{'level'};
+  if (exists $docbook_sections{$heading_level}) {
+    return $docbook_sections{$heading_level};
+  }
   my $command;
   if ($heading_level ne $Texinfo::Common::command_structuring_level{$root->{'cmdname'}}) {
     $command
@@ -346,7 +419,7 @@ sub _level_corrected_section($)
   } else {
     $command = $root->{'cmdname'};
   }
-  return $command;
+  return $docbook_sections{$command};
 }
 
 sub _index_entry($$)
@@ -355,43 +428,56 @@ sub _index_entry($$)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $index_entry = $root->{'extra'}->{'index_entry'};
-    my $result = "<indexterm index=\"$index_entry->{'index_name'}\">";
+    my $result = "<indexterm role=\"$index_entry->{'index_name'}\"><primary>";
     push @{$self->{'document_context'}}, {};
     $self->{'document_context'}->[-1]->{'code'}++ 
       if ($index_entry->{'in_code'});
     $result .= $self->_convert({'contents' => $index_entry->{'content'}});
     pop @{$self->{'document_context'}};
-    $result .= "</indexterm>";
-    return $result;
+    return $result ."</primary></indexterm>"
   }
   return '';
 }
 
-sub _infoenclose_attribute($$) {
-  my $self = shift;
-  my $root = shift;
-  my $attribute = '';
-  return '' if (!$root->{'extra'});
-  $attribute .= " begin=\"".
-        $self->xml_protect_text($root->{'extra'}->{'begin'})."\""
-    if (defined($root->{'extra'}->{'begin'}));
-  $attribute .= "  end=\"".
-        $self->xml_protect_text($root->{'extra'}->{'end'})."\""
-    if (defined($root->{'extra'}->{'end'}));
-  return $attribute;
-}
-
-my @node_directions = ('Next', 'Prev', 'Up');
-
-sub convert($$;$)
+sub docbook_accent($$;$$)
 {
-  my $self = shift;
-  my $root = shift;
+  my $text = shift;
+  my $command = shift;
+  my $in_upper_case = shift;
+  my $accent = $command->{'cmdname'};
 
-  return $self->_convert($root);
+  if ($in_upper_case and $text =~ /^\w$/) {
+    $text = uc ($text);
+  }
+  if (exists($Texinfo::Convert::Unicode::unicode_accented_letters{$accent})
+      and exists($Texinfo::Convert::Unicode::unicode_accented_letters{$accent}->{$text})) {
+    return '&#' .
+      hex($Texinfo::Convert::Unicode::unicode_accented_letters{$accent}->{$text}). ';';
+  }
+  return $text . '&lt;' if ($accent eq 'v');
+  # FIXME it is not possible to call xml_protect_text since what is in $text
+  # may already be xml.  But this means that each time ascii_accent changes
+  # it should be changed here too.
+  return Texinfo::Convert::Text::ascii_accent($text, $command);
 }
+
+sub _parse_attribute($)
+{
+  my $element = shift;
+  return ('', '') if (!defined($element));
+  my $attributes = '';
+  if ($element =~ /^(\w+)(\s+.*)/)
+  {
+    $element = $1;
+    $attributes = $2;
+  }
+  return ($element, $attributes);
+}
+
 
 sub _convert($$;$);
+
+
 
 sub _convert($$;$)
 {
@@ -414,29 +500,30 @@ sub _convert($$;$)
     $result = $self->xml_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
       if (!$self->{'document_context'}->[-1]->{'code'}) {
-        $result =~ s/``/&textldquo;/g;
-        $result =~ s/\'\'/&textrdquo;/g;
-        $result =~ s/---/&textmdash;/g;
-        $result =~ s/--/&textndash;/g;
+        $result =~ s/``/$ldquo/g;
+        $result =~ s/\'\'/$rdquo/g;
+        $result =~ s/`/$lsquo/g;
+        $result =~ s/\'/$rsquo/g;
+        $result =~ s/---/$mdash/g;
+        $result =~ s/--/$ndash/g;
       }
     }
     return $result;
   }
-  my @close_elements;
+  my $close_element;
   if ($root->{'cmdname'}) {
-    if (defined($xml_commands_formatting{$root->{'cmdname'}})) {
+    if (defined($docbook_commands_formatting{$root->{'cmdname'}})) {
+      my $command;
       if ($root->{'cmdname'} eq 'click' 
           and $root->{'extra'} 
           and defined($root->{'extra'}->{'clickstyle'})) {
-        return "<click command=\"$root->{'extra'}->{'clickstyle'}\"/>";
+        $command = $root->{'extra'}->{'clickstyle'};
+      } else {
+        $command = $root->{'cmdname'};
       }
-      return $xml_commands_formatting{$root->{'cmdname'}};
-    } elsif ($xml_accent_types{$root->{'cmdname'}}) {
-      $result = "<accent type=\"$xml_accent_types{$root->{'cmdname'}}\">";
-      $result .= $self->_convert($root->{'args'}->[0])
-        if ($root->{'args'} and $root->{'args'}->[0]);
-      $result .= '</accent>';
-      return $result;
+      return $docbook_commands_formatting{$command};
+    } elsif ($Texinfo::Common::accent_commands{$root->{'cmdname'}}) {
+      return $self->xml_accents($root, undef, \&docbook_accent);#, $self->in_upper_case());
    # } elsif ($root->{'cmdname'} eq 'item' and 
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
@@ -444,35 +531,26 @@ sub _convert($$;$)
           and $root->{'parent'}->{'cmdname'}
           and ($root->{'parent'}->{'cmdname'} eq 'itemize'
                or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
-        $result .= "<item>";
-        if ($root->{'parent'}->{'cmdname'} eq 'itemize'
-            and $root->{'parent'}->{'extra'} 
-            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}
-            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]) {
-          $result .= "<prepend>"
-            .$self->_convert({'contents' 
-        => $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]})
-            ."</prepend>";
-        }
-        unshift @close_elements, 'item';
+        $result .= "<listitem>";
+        $close_element = 'listitem';
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
                and $root->{'parent'}->{'type'} 
                and $root->{'parent'}->{'type'} eq 'table_term') {
         my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
         my $format_item_command;
-        my $attribute;
+        my $arg_tree;
         if ($table_command->{'extra'} 
             and $table_command->{'extra'}->{'command_as_argument'}) {
           $format_item_command 
-            = $table_command->{'extra'}->{'command_as_argument'}->{'cmdname'};
-          $attribute 
-           = $self->_infoenclose_attribute($table_command->{'extra'}->{'command_as_argument'});
+           = $table_command->{'extra'}->{'command_as_argument'}->{'cmdname'};
+          $arg_tree = { 'cmdname' => $format_item_command,
+             'contents' => $root->{'args'}->[0]->{'contents'}};
+        } else {
+          $arg_tree = $root->{'args'}->[0];
         }
-        $result .= "<$root->{'cmdname'}>";
-        if ($format_item_command) {
-          $result .= "<itemformat command=\"\@$format_item_command\"${attribute}>";
-        }
-        $result .= $self->_index_entry($root);
+        $result .= "<term>";
+        # Is it automaticcally entered in docbook?
+        #$result .= $self->_index_entry($root);
         # FIXME
         my $in_code;
         $in_code = 1
@@ -480,13 +558,10 @@ sub _convert($$;$)
               and defined($default_args_code_style{$format_item_command})
               and defined($default_args_code_style{$format_item_command}->[0]));
         $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-        $result .= $self->_convert($root->{'args'}->[0]);
+        $result .= $self->_convert($arg_tree);
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
         chomp ($result);
-        if ($format_item_command) {
-          $result .= "</itemformat>";
-        }
-        $result .= "</$root->{'cmdname'}>\n";
+        $result .= "</term>\n";
       } else {
         unless (($root->{'cmdname'} eq 'item' 
                      or $root->{'cmdname'} eq 'headitem'
@@ -497,20 +572,10 @@ sub _convert($$;$)
             .Texinfo::Parser::_print_current($root);
         }
         
-        $result .= "<entry command=\"$root->{'cmdname'}\">";
-        unshift @close_elements, 'entry';
+        $result .= "<entry>";
+        $close_element = 'entry';
       }
     } elsif ($root->{'type'} and $root->{'type'} eq 'index_entry_command') {
-      my $element;
-      my $attribute;
-      if (exists $Texinfo::Common::misc_commands{$root->{'cmdname'}}) {
-        $element = $root->{'cmdname'};
-        $attribute = '';
-      } else {
-        $element = "indexcommand";
-        $attribute = " command=\"$root->{'cmdname'}\"";
-      }
-      $attribute .= " index=\"$root->{'extra'}->{'index_entry'}->{'index_name'}\"";
       my $end_line;
       if ($root->{'args'}->[0]) {
         $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
@@ -518,10 +583,15 @@ sub _convert($$;$)
         # May that happen?
         $end_line = '';
       }
-      return "<$element${attribute}>".$self->_index_entry($root)."</$element>${end_line}";
-    } elsif (exists($xml_misc_commands{$root->{'cmdname'}})) {
-      my $command = $root->{'cmdname'};
-      my $type = $xml_misc_commands{$root->{'cmdname'}};
+      return $self->_index_entry($root).${end_line};
+    } elsif (exists($docbook_misc_commands{$root->{'cmdname'}})) {
+      my $command;
+      if (exists ($docbook_misc_elements_with_arg_map{$root->{'cmdname'}})) {
+        $command = $docbook_misc_elements_with_arg_map{$root->{'cmdname'}};
+      } else {
+        $command = $root->{'cmdname'};
+      }
+      my $type = $docbook_misc_commands{$root->{'cmdname'}};
       if ($type eq 'text') {
         return '' if ($root->{'cmdname'} eq 'end');
         my $attribute = '';
@@ -531,105 +601,47 @@ sub _convert($$;$)
                 . $self->xml_protect_text($root->{'extra'}->{'text_arg'}) ."\"";
           }
         }
-        my ($arg, $end_line)
-            = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+        my $arg = $self->_convert($root->{'args'}->[0]);
+        my $end_line;
+        if (chomp ($arg)) {
+          $end_line = "\n";
+        } else {
+          $end_line = "";
+        }
         return "<$command${attribute}>$arg</$command>$end_line";
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
-          $result .= "<node name=\"$root->{'extra'}->{'normalized'}\">";
-          $self->{'document_context'}->[-1]->{'code'}++;
-          $result .= "<nodename>".
-             $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
-             ."</nodename>";
-          # first arg is the node name.
-          my $direction_index = 1;
-          foreach my $direction(@node_directions) {
-            if ($root->{'node_'.lc($direction)}) {
-              my $node_direction = $root->{'node_'.lc($direction)};
-              my $element = 'node'.lc($direction);
-              my $node_name = '';
-              my $attribute = '';
-              if (! defined($root->{'extra'}->{'nodes_manuals'}->[$direction_index])) {
-                $attribute = ' automatic="on"';
-              }
-              if ($node_direction->{'extra'}->{'manual_content'}) {
-                $node_name .= $self->_convert({
-                             'contents' => [{'text' => '('},
-                             @{$node_direction->{'extra'}->{'manual_content'}},
-                                          {'text' => ')'}]});
-              }
-              if ($node_direction->{'extra'}->{'node_content'}) {
-                $node_name .= _normalize_top_node($self->_convert({
-                  'contents' => $node_direction->{'extra'}->{'node_content'}}));
-              }
-              $result .= "<$element${attribute}>$node_name</$element>";
-            }
-            $direction_index++;
+          if (!$root->{'extra'} or !$root->{'extra'}->{'associated_section'}) {
+            $result .= "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>\n";
           }
-          my $end_line;
-          if ($root->{'args'}->[0]) {
-            $end_line 
-              = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
-          } else {
-            $end_line = "\n";
-          }
-          $result .= "</node>${end_line}";
-          $self->{'document_context'}->[-1]->{'code'}--;
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
           my $attribute;
-          $command = _level_corrected_section($root);
-          if ($command ne $root->{'cmdname'}) {
-            $attribute = " originalcommand=\"$root->{'cmdname'}\"";
-          } else {
-            $attribute = '';
+          if ($root->{'extra'} and $root->{'extra'}->{'associated_node'}) {
+            $attribute = " id=\"$root->{'extra'}->{'associated_node'}->{'normalized'}\"";
           }
-          $result .= "<$command${attribute}>";
+          $command = _level_corrected_section($root);
+          $result .= "<$command${attribute}>\n";
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
               = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
-            $result .= "<sectiontitle>$arg</sectiontitle>$end_line"
+            $result .= "<title>$arg</title>$end_line";
           }
+        } elsif ($Texinfo::Common::sectioning_commands{$root->{'cmdname'}}) {
+          if ($root->{'args'} and $root->{'args'}->[0]) {
+            my ($arg, $end_line)
+              = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+            return "<bridgehead renderas=\"$docbook_sections{$root->{'cmdname'}}>$arg</bridgehead>$end_line";
+          }
+          return '';
         } else {
           my $attribute = '';
-          if ($root->{'cmdname'} eq 'listoffloats' and $root->{'extra'} 
-              and $root->{'extra'}->{'type'} 
-              and defined($root->{'extra'}->{'type'}->{'normalized'})) {
-            $attribute = " type=\"$root->{'extra'}->{'type'}->{'normalized'}\"";
-          }
           my ($arg, $end_line)
             = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
           return "<$command${attribute}>$arg</$command>$end_line";
         }
-      } elsif ($type eq 'skipline') {
+      } elsif ($type eq 'skipline' or $type eq 'noarg') {
         return "<$command></$command>\n";
-      } elsif ($type eq 'noarg') {
-        return "<$command></$command>";
       } elsif ($type eq 'special') {
-        if ($root->{'cmdname'} eq 'clear' or $root->{'cmdname'} eq 'set') {
-          my $attribute = '';
-          if ($root->{'args'} and $root->{'args'}->[0]
-              and defined($root->{'args'}->[0]->{'text'})) {
-            $attribute = " name=\""
-              .$self->xml_protect_text($root->{'args'}->[0]->{'text'})."\"";
-          }
-          my $value = '';
-          if ($root->{'cmdname'} eq 'set' and $root->{'args'} and $root->{'args'}->[1]
-              and defined($root->{'args'}->[1]->{'text'})) {
-            $value = $self->xml_protect_text($root->{'args'}->[1]->{'text'});
-          }
-          return "<${command}value${attribute}>$value</${command}value>\n";
-        } elsif ($root->{'cmdname'} eq 'clickstyle') {
-          my $attribute = '';
-          my $value = '';
-          if ($root->{'args'} and $root->{'args'}->[0]
-              and defined($root->{'args'}->[0]->{'text'})) {
-            my $click_command = $root->{'args'}->[0]->{'text'};
-            $click_command =~ s/^\@//;
-            $attribute = " command=\"".$self->xml_protect_text($click_command)."\"";
-            $value = $self->xml_protect_text($root->{'args'}->[0]->{'text'});
-          };
-          return "<${command}${attribute}>$value</${command}>\n";
-        }
       } elsif ($type eq 'lineraw') {
         if ($root->{'cmdname'} eq 'c' or $root->{'cmdname'} eq 'comment') {
           return $self->xml_default_comment($root->{'args'}->[0]->{'text'})
@@ -661,13 +673,7 @@ sub _convert($$;$)
             $arg_index++;
           }
         }
-        my $end_line;
-        if ($root->{'args'}->[0]) {
-          $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'})
-        } else {
-          $end_line = "\n";
-        }
-        return "<$command${attribute}></$command>$end_line";
+        return "<$command${attribute}></$command>\n";
       }
     } elsif ($root->{'type'}
              and $root->{'type'} eq 'definfoenclose_command') {
@@ -677,14 +683,90 @@ sub _convert($$;$)
             and defined($default_args_code_style{$root->{'cmdname'}}->[0]));
       $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
       my $arg = $self->_convert($root->{'args'}->[0]);
-      $result .= "<infoenclose command=\"$root->{'cmdname'}\""
-         . $self->_infoenclose_attribute($root)
-        .">$arg</infoenclose>";
+      $result .= $self->xml_protect_text($root->{'extra'}->{'begin'}).$arg
+                .$self->xml_protect_text($root->{'extra'}->{'end'});
       $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
     } elsif ($root->{'args'}
              and exists($Texinfo::Common::brace_commands{$root->{'cmdname'}})) {
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
+      }
+      if ($style_commands_formatting{$root->{'cmdname'}}) {
+        my $formatting = $style_commands_formatting{$root->{'cmdname'}};
+        my $in_code;
+        $in_code = 1
+          if (defined($default_args_code_style{$root->{'cmdname'}})
+              and defined($default_args_code_style{$root->{'cmdname'}}->[0]));
+        $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+        my ($style, $attribute_text) = _parse_attribute($formatting->{'attribute'});
+        my $result = $self->_convert($root->{'args'}->[0]);
+        if ($style ne '') {
+          $result = "<$style${attribute_text}>$result</$style>";
+        }
+        if (defined($formatting->{'quote'})) {
+          $result = $self->get_conf('OPEN_QUOTE_SYMBOL') . $result
+                   . $self->get_conf('CLOSE_QUOTE_SYMBOL');
+        }
+        $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+        return $result;
+      } elsif ($root->{'cmdname'} eq 'anchor') {
+        return "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>";
+      } elsif ($root->{'cmdname'} eq 'email') {
+        if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+          my $name;
+          my $email;
+          my $email_text;
+          if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
+              and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+            $name = $root->{'extra'}->{'brace_command_contents'}->[1];
+          }
+          if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+            $email = $root->{'extra'}->{'brace_command_contents'}->[0];
+            $email_text 
+              = $self->xml_protect_text(Texinfo::Convert::Text::convert(
+                                         {'contents' => $email},
+                                         {'converter' => $self, 'code' => 1}));
+          }
+          if ($name and $email) {
+            return "<ulink url=\"mailto:$email_text\">"
+              .$self->_convert({'contents' => $name}).'</ulink>';
+          } elsif ($email) {
+            return "<email>$email_text</email>";
+          } elsif ($name) {
+            return $self->_convert({'contents' => $name});
+          }
+        } else {
+          return '';
+        }
+      } elsif ($root->{'cmdname'} eq 'uref' or $root->{'cmdname'} eq 'url') {
+        if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+          my ($url_text, $url_content);
+          if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+            $url_content = $root->{'extra'}->{'brace_command_contents'}->[0];
+            $url_text = $self->xml_protect_text(Texinfo::Convert::Text::convert(
+                                         {'contents' => $url_content},
+                                         {'converter' => $self, 'code' => 1}));
+          } else {
+            $url_text = '';
+          }
+          my $replacement;
+          if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) >= 2 
+              and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+            $replacement = $self->_convert({'contents' 
+                      => $root->{'extra'}->{'brace_command_contents'}->[1]});
+          }
+          if (!defined($replacement) or $replacement eq '') {
+            if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 3
+                and defined($root->{'extra'}->{'brace_command_contents'}->[2])) {
+              $replacement = $self->_convert({'contents' 
+                      => $root->{'extra'}->{'brace_command_contents'}->[2]});
+            }
+          }
+          if (!defined($replacement) or $replacement eq '') {
+            $replacement = $url_text;
+          }
+          return "<ulink url=\"$url_text\">$replacement</ulink>";
+        }
       }
       my @elements = @{$commands_elements{$root->{'cmdname'}}};
       my $command;
@@ -692,12 +774,7 @@ sub _convert($$;$)
         $command = shift @elements;
       }
       my $attribute = '';
-      if ($root->{'cmdname'} eq 'verb') {
-        $attribute = " delimiter=\"".$self->xml_protect_text($root->{'type'})
-                       ."\"";
-      } elsif ($root->{'cmdname'} eq 'anchor') {
-        $attribute = " name=\"$root->{'extra'}->{'normalized'}\"";
-      };
+      # TODO after, it is wrong.
       my $arg_index = 0;
       foreach my $element (@elements) {
         if (defined($root->{'args'}->[$arg_index])) {
@@ -717,14 +794,8 @@ sub _convert($$;$)
         }
         $arg_index++;
       }
-      $attribute = '';
-      if ($root->{'cmdname'} eq 'image') {
-        if ($self->_is_inline($root)) {
-          $attribute = " where=\"inline\"";
-        }
-      }
       if (defined($command)) {
-        $result = "<$command${attribute}>$result<$command>";
+        $result = "<$command>$result<$command>";
       }
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
         pop @{$self->{'document_context'}};
@@ -735,10 +806,8 @@ sub _convert($$;$)
       }
       my $attribute = '';
       if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
-        my $command_as_arg = $root->{'extra'}->{'command_as_argument'};
         $attribute 
-         .= " commandarg=\"\@$command_as_arg->{'cmdname'}\""
-             .$self->_infoenclose_attribute($command_as_arg);
+         .= " commandarg=\"$root->{'extra'}->{'command_as_argument'}->{'cmdname'}\"";
       } elsif ($root->{'extra'}
                and $root->{'extra'}->{'enumerate_specification'}) {
         $attribute .= " first=\""
@@ -756,7 +825,6 @@ sub _convert($$;$)
         $attribute = " xml:space=\"preserve\"";
       }
       $result .= "<$root->{'cmdname'}${attribute}>";
-      my $end_line = '';
       if ($root->{'args'}) {
         if ($commands_args_elements{$root->{'cmdname'}}) {
           my $arg_index = 0;
@@ -767,16 +835,10 @@ sub _convert($$;$)
                 if (defined($default_args_code_style{$root->{'cmdname'}})
                   and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
               $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-              my $arg;
-              if ($arg_index+1 eq scalar(@{$root->{'args'}})) {
-                # last argument
-                ($arg, $end_line) 
-                  = $self->_convert_argument_and_end_line($root->{'args'}->[$arg_index]);
-              } else {
-                $arg = $self->_convert($root->{'args'}->[$arg_index]);
-              }
-              if ($arg ne '') {
-                $result .= "<$element>$arg</$element>";
+              my $arg = $self->_convert($root->{'args'}->[$arg_index]);
+              chomp($arg);
+              if ($arg ne '') {  
+                $result .= "<$element>$arg</$element>\n";
               }
               $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
             } else {
@@ -784,53 +846,31 @@ sub _convert($$;$)
             }
             $arg_index++;
           }
-        } else {
-          my $contents_possible_comment;
-          if ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
-            if ($root->{'extra'}->{'prototypes'}) {
-              $result .= "<columnprototypes>";
-              foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
-                $result .= "<columnprototype>".$self->_convert($prototype)
-                           ."</columnprototype>";
-              }
-              $result .= "</columnprototypes>";
-              $contents_possible_comment 
-                = $root->{'args'}->[-1]->{'contents'};
-            } elsif ($root->{'extra'}->{'columnfractions'}) {
-              $result .= "<columnfractions>";
-              foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
-                $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
-              }
-              $result .= "</columnfractions>";
-              $contents_possible_comment 
-                = $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'}
-                  if ($root->{'args'}->[-1]->{'contents'}
-                      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}
-                      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'});
+        } elsif ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
+          if ($root->{'extra'}->{'prototypes'}) {
+            $result .= "<columnprototypes>";
+            foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
+              $result .= "<columnprototype>".$self->_convert($prototype)
+                         ."</columnprototype>";
             }
-          } else {
-            $contents_possible_comment = $root->{'args'}->[-1]->{'contents'}
-              if ($root->{'args'}->[-1]->{'contents'});
+            $result .= "</columnprototypes>";
+          } elsif ($root->{'extra'}->{'columnfractions'}) {
+            $result .= "<columnfractions>";
+            foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
+              $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
+            }
+            $result .= "</columnfractions>";
           }
-          
-          $end_line = $self->_end_line_or_comment($contents_possible_comment);
         }
       }
-      $result .= $end_line;
       #chomp($result);
       #$result .= "\n";
-      unshift @close_elements, $root->{'cmdname'};
+      $close_element = $root->{'cmdname'};
     }
   }
   if ($root->{'type'}) {
     if (defined($type_elements{$root->{'type'}})) {
-      my $attribute;
-      if ($root->{'type'} eq 'preformatted') {
-        $attribute = ' xml:space="preserve"';
-      } else {
-        $attribute = '';
-      }
-      $result .= "<$type_elements{$root->{'type'}}${attribute}>";
+      $result .= "<$type_elements{$root->{'type'}}>";
     }
     if ($root->{'type'} eq 'def_line') {
       if ($root->{'cmdname'}) {
@@ -899,17 +939,6 @@ sub _convert($$;$)
     }
     $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
   }
-  if ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
-    foreach my $arg (@{$root->{'args'}}) {
-      my $in_code;
-      if ($arg->{'type'} eq 'menu_entry_node') {
-        $in_code = 1;
-      }
-      $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-      $result .= $self->_convert($arg);
-      $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
-    }
-  }
   if ($root->{'type'}) {
     if (defined($type_elements{$root->{'type'}})) {
       $result .= "</$type_elements{$root->{'type'}}>";
@@ -920,25 +949,13 @@ sub _convert($$;$)
          and (!$root->{'parent'}->{'type'} or
               ($root->{'parent'}->{'type'} ne 'block_line_arg'
                and $root->{'parent'}->{'type'} ne 'misc_line_arg')));
-  foreach my $element (@close_elements) {
-    $result .= "</$element>";
+  if ($close_element) {
+    $result .= "</$close_element>";
   }
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
     #$result .= "</$root->{'cmdname'}>\n";
-    # FIXME The end of line and comment is taken into account 
-    # but 'space_at_end' is ignored.
-    my $end_command = $root->{'extra'}->{'end_command'}; 
-    my $end_line;
-    if ($end_command) {
-      $end_line 
-       = $self->_end_line_or_comment($end_command->{'args'}->[0]->{'contents'})
-         if ($end_command->{'args'}->[0]
-             and $end_command->{'args'}->[0]->{'contents'});
-    } else {
-      $end_line = "\n";
-    }
-    $result .= $end_line;
+    $result .= "\n";
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }

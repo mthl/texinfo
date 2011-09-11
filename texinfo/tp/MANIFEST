@@ -19,6 +19,7 @@ Texinfo/Convert/Converter.pm
 Texinfo/Convert/XML.pm
 Texinfo/Convert/Plaintext.pm
 Texinfo/Convert/HTML.pm
+Texinfo/Convert/DocBook.pm
 Texinfo/Convert/Text.pm
 Texinfo/Convert/UnFilled.pm
 Texinfo/Convert/Paragraph.pm

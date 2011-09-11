@@ -14,6 +14,7 @@ use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
 use Texinfo::Convert::XML;
+use Texinfo::Convert::DocBook;
 use DebugTexinfo::DebugCount;
 use File::Basename;
 use Data::Dumper;
@@ -47,6 +48,7 @@ our %formats = (
   'html' => \&convert_to_html,
   'html_text' => \&convert_to_html,
   'xml' => \&convert_to_xml,
+  'docbook' => \&convert_to_docbook,
   'debugcount' => \&debugcount,
 );
 
@@ -318,6 +320,31 @@ sub convert_to_xml($$$$$;$)
                                          'parser' => $parser,
                                          'OUTFILE' => '',
                                          'output_format' => 'xml',
+                                          %$converter_options });
+  my $result = $converter->convert($tree);
+  die if (!defined($result));
+  my ($errors, $error_nrs) = $converter->errors();
+  return ($errors, $result);
+}
+
+sub convert_to_docbook($$$$$;$)
+{
+  my $self = shift;
+  my $format = shift;
+  my $tree = shift;
+  my $parser = shift;
+  my $parser_options = shift;
+  my $converter_options = shift;
+  if (!defined($converter_options)) {
+    $converter_options = {};
+    $converter_options->{'expanded_formats'} = ['docbook']
+      if (!defined($parser_options->{'expanded_formats'}));
+  }
+  my $converter =
+     Texinfo::Convert::DocBook->converter ({'DEBUG' => $self->{'DEBUG'},
+                                         'parser' => $parser,
+                                         'OUTFILE' => '',
+                                         'output_format' => 'docbook',
                                           %$converter_options });
   my $result = $converter->convert($tree);
   die if (!defined($result));

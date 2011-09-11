@@ -187,7 +187,7 @@ require Texinfo::Structuring;
 require Texinfo::Convert::Info;
 require Texinfo::Convert::HTML;
 require Texinfo::Convert::XML;
-#require Texinfo::Convert::DocBook;
+require Texinfo::Convert::DocBook;
 require DebugTexinfo::DebugCount;
 
 # determine configuration directories.
@@ -745,7 +745,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
  },
  'html' => sub {$format = set_format($_[0]);},
  'info' => sub {$format = set_format($_[0]);},
- 'docbook' => sub {$format = set_format($_[0]);},
+ 'docbook' => sub {$format = set_format($_[0]);
+                   set_from_cmdline('SHOW_MENU', 0)},
  'xml' => sub {$format = set_format($_[0]);},
  'dvi' => sub {$format = set_texi2dvi_format($_[0]);},
  'ps' => sub {$format = set_texi2dvi_format($_[0]);},
@@ -780,9 +781,9 @@ my %formats_table = (
              'nodes_tree' => 1,
              'converter' => sub{Texinfo::Convert::XML->converter(@_)},
            },
-#  'docbook' => {
-#             'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
-#           },
+  'docbook' => {
+             'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
+           },
   'pdf' => {
              'texi2dvi_format' => 1,
            },
