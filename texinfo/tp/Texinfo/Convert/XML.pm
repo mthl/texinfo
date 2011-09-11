@@ -335,20 +335,6 @@ sub output($$)
   return $result;
 }
 
-sub _level_corrected_section($)
-{
-  my $root = shift;
-  my $heading_level = $root->{'level'};
-  my $command;
-  if ($heading_level ne $Texinfo::Common::command_structuring_level{$root->{'cmdname'}}) {
-    $command
-      = $Texinfo::Common::level_to_structuring_command{$root->{'cmdname'}}->[$heading_level];
-  } else {
-    $command = $root->{'cmdname'};
-  }
-  return $command;
-}
-
 sub _index_entry($$)
 {
   my $self = shift;
@@ -577,7 +563,7 @@ sub _convert($$;$)
           $self->{'document_context'}->[-1]->{'code'}--;
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
           my $attribute;
-          $command = _level_corrected_section($root);
+          $command = $self->_level_corrected_section($root);
           if ($command ne $root->{'cmdname'}) {
             $attribute = " originalcommand=\"$root->{'cmdname'}\"";
           } else {
@@ -945,7 +931,7 @@ sub _convert($$;$)
   } elsif ($root->{'cmdname'} 
            and $Texinfo::Common::root_commands{$root->{'cmdname'}}
            and $root->{'cmdname'} ne 'node') {
-    my $command = _level_corrected_section($root);
+    my $command = $self->_level_corrected_section($root);
     if (!($root->{'section_childs'} and scalar(@{$root->{'section_childs'}}))
         or $command eq 'top') {
       $result .= "</$command>\n";
@@ -955,9 +941,9 @@ sub _convert($$;$)
              # condition avoids getting into it
              and $current->{'section_up'}->{'cmdname'}
              and !$current->{'section_next'}
-             and _level_corrected_section($current->{'section_up'}) ne 'top') {
+             and $self->_level_corrected_section($current->{'section_up'}) ne 'top') {
         $current = $current->{'section_up'};
-        $result .= '</'._level_corrected_section($current) .">\n";
+        $result .= '</'.$self->_level_corrected_section($current) .">\n";
       }
     }
   }

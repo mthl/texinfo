@@ -17,7 +17,7 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
-# TODO @*ref, block commands, abbrev, image, 
+# TODO block commands
 
 package Texinfo::Convert::DocBook;
 
@@ -31,6 +31,7 @@ use Texinfo::Convert::Unicode;
 use Texinfo::Convert::Texinfo;
 use Data::Dumper;
 use Carp qw(cluck);
+use Texinfo::Parser qw(gdt);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -76,6 +77,8 @@ my %defaults = (
   'CLOSE_QUOTE_SYMBOL'   => $rsquo,
 );
 
+my @docbook_image_extensions
+  = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg');
 
 my %docbook_specific_formatting = (
   'TeX' => '&tex;',
@@ -124,7 +127,7 @@ my %style_attribute_commands;
       'var'         => 'replaceable',
       'verb'        => 'literal',
       'footnote'    => 'footnote',
-#      'math'        => 'em',
+      'math'        => 'mathphrase',
 );
 
 # this weird construct does like uniq, it avoids duplicates.
@@ -132,7 +135,7 @@ my %style_attribute_commands;
 # in context command.
 my @all_style_commands = keys %{{ map { $_ => 1 }
     (keys(%Texinfo::Common::style_commands), keys(%style_attribute_commands),
-     'dmn', 'math', 'titlefont') }};
+     'dmn', 'titlefont') }};
 # 'w' is special
 
 my %style_commands_formatting;
@@ -404,21 +407,15 @@ my %docbook_sections = (
   4 => 'sect3'
 );
 
-
-sub _level_corrected_section($)
+sub _docbook_section_element($$)
 {
+  my $self = shift;
   my $root = shift;
   my $heading_level = $root->{'level'};
   if (exists $docbook_sections{$heading_level}) {
     return $docbook_sections{$heading_level};
   }
-  my $command;
-  if ($heading_level ne $Texinfo::Common::command_structuring_level{$root->{'cmdname'}}) {
-    $command
-      = $Texinfo::Common::level_to_structuring_command{$root->{'cmdname'}}->[$heading_level];
-  } else {
-    $command = $root->{'cmdname'};
-  }
+  my $command = $self->_level_corrected_section($root);
   return $docbook_sections{$command};
 }
 
@@ -497,6 +494,8 @@ sub _convert($$;$)
   return '' if ($root->{'type'} and $ignored_types{$root->{'type'}});
   my $result = '';
   if (defined($root->{'text'})) {
+    return $root->{'text'} if (defined($root->{'type'}) 
+                               and $root->{'type'} eq '_converted');
     $result = $self->xml_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
       if (!$self->{'document_context'}->[-1]->{'code'}) {
@@ -619,7 +618,7 @@ sub _convert($$;$)
           if ($root->{'extra'} and $root->{'extra'}->{'associated_node'}) {
             $attribute = " id=\"$root->{'extra'}->{'associated_node'}->{'normalized'}\"";
           }
-          $command = _level_corrected_section($root);
+          $command = $self->_docbook_section_element($root);
           $result .= "<$command${attribute}>\n";
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
@@ -688,10 +687,10 @@ sub _convert($$;$)
       $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
     } elsif ($root->{'args'}
              and exists($Texinfo::Common::brace_commands{$root->{'cmdname'}})) {
-      if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
-        push @{$self->{'document_context'}}, {};
-      }
       if ($style_commands_formatting{$root->{'cmdname'}}) {
+        if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
+          push @{$self->{'document_context'}}, {};
+        }
         my $formatting = $style_commands_formatting{$root->{'cmdname'}};
         my $in_code;
         $in_code = 1
@@ -708,9 +707,158 @@ sub _convert($$;$)
                    . $self->get_conf('CLOSE_QUOTE_SYMBOL');
         }
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+        if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
+          pop @{$self->{'document_context'}};
+        }
+        if ($root->{'cmdname'} eq 'math') {
+          $result = "<inlineequation>$result</inlineequation>";
+        } elsif ($root->{'cmdname'} eq 'w') {
+          $result .= '<!-- /@w -->';
+        }
         return $result;
       } elsif ($root->{'cmdname'} eq 'anchor') {
         return "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>";
+      } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
+        if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+          if ($root->{'cmdname'} eq 'inforef') {
+            # FIXME?
+            my $filename;
+            if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 3
+                and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+              $filename 
+                = $self->xml_protect_text(Texinfo::Convert::Text::convert(
+              {'contents' => $root->{'extra'}->{'brace_command_contents'}->[-1]},
+                                           {'converter' => $self, 'code' => 1}));
+            }
+            my $node;
+            if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+              $self->{'document_context'}->[-1]->{'code'}++;
+              $node = $self->_convert({'contents' 
+                     => $root->{'extra'}->{'brace_command_contents'}->[0]});
+              $self->{'document_context'}->[-1]->{'code'}--;
+            }
+            my $name;
+            if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 2
+                and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+              $name = $self->_convert({'contents' 
+                   => $root->{'extra'}->{'brace_command_contents'}->[0]});
+            }
+            my $node_file = '';
+            if (defined($node)) {
+              $node_file .= $node;
+            }
+            if (defined($filename)) {
+              $node_file .= "($filename)";
+            }
+            if (defined($name)) {
+              return "*note $name: $node_file";
+            } else {
+              return "*note ${node_file}::";
+            }
+          } else {
+            my $book_contents;
+            if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 5
+                and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+              $book_contents = $root->{'extra'}->{'brace_command_contents'}->[-1];
+            }
+            my $manual_file_contents;
+            if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 4
+                and defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
+              $manual_file_contents = $root->{'extra'}->{'brace_command_contents'}->[3];
+            }
+            my $section_name_contents;
+            if (defined($root->{'extra'}->{'brace_command_contents'}->[2])) {
+              $section_name_contents 
+                = $root->{'extra'}->{'brace_command_contents'}->[2];
+            } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+              $section_name_contents
+                = $root->{'extra'}->{'brace_command_contents'}->[1];
+            } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+              $section_name_contents
+                = $root->{'extra'}->{'brace_command_contents'}->[0];
+            } else {
+              $section_name_contents = [];
+            }
+            # external ref
+            if ($book_contents or $manual_file_contents) {
+              return '' if (!$book_contents);
+              if ($root->{'cmdname'} eq 'ref') {
+                # FIXME drop the asis?
+                return $self->_convert(
+                  $self->gdt('section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}',
+                    { 'section_name' => {'contents' => $section_name_contents},
+                      'book' => $book_contents }));
+              } elsif ($root->{'cmdname'} eq 'xref') {
+                return $self->_convert(
+                  $self->gdt('See section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}',
+                    { 'section_name' => {'contents' => $section_name_contents},
+                      'book' => $book_contents }));
+              } elsif ($root->{'cmdname'} eq 'pxref') {
+                return $self->_convert(
+                  $self->gdt('(see section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}})',
+                    { 'section_name' => {'contents' => $section_name_contents},
+                      'book' => $book_contents }));
+              }
+            } else {
+              my $linkend = '';
+              if ($root->{'extra'}->{'node_argument'}
+                  and defined($root->{'extra'}->{'node_argument'}->{'normalized'})
+                  and !$root->{'extra'}->{'node_argument'}->{'manual_content'}) {
+                $linkend = " linkend=\"$root->{'extra'}->{'node_argument'}->{'normalized'}\"";
+              }
+              my $argument = "<link${linkend}>".$self->_convert({'contents' => 
+                        $section_name_contents}) ."</link>";
+              if ($root->{'cmdname'} eq 'ref') {
+                return $self->_convert(
+                        $self->gdt('{title_ref}', {'type' => '_converted',
+                              'text' => $argument}));
+              } elsif ($root->{'cmdname'} eq 'xref') {
+                return $self->_convert(
+                        $self->gdt('See {title_ref}', {'type' => '_converted',
+                              'text' => $argument}));
+              } elsif ($root->{'cmdname'} eq 'pxref') {
+                return $self->_convert(
+                        $self->gdt('(see {title_ref})', {'type' => '_converted',
+                              'text' => $argument}));
+              }
+            }
+          }
+        } else {
+          return '';
+        }
+      } elsif ($root->{'cmdname'} eq 'image') {
+        if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+          my $basefile = Texinfo::Convert::Text::convert(
+           {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
+           {'code' => 1});
+          my $element;
+          if ($self->_is_inline($root)) {
+            $element = 'inlinemediaobject';
+          } else {
+            $element = 'mediaobject';
+          }
+          $result .= "<$element>";
+          my @files;
+          foreach my $extension (@docbook_image_extensions) {
+            if ($self->Texinfo::Common::locate_include_file ($basefile.$extension)) {
+              push @files, ["$basefile.$extension", $extension];
+            }
+          }
+          if (!scalar(@files)) {
+            push @files, ["$basefile.jpg", 'jpg'];
+          }
+          foreach my $file (@files) {
+            $result .= "<imageobject><imagedata fileref=\"$file->[0]\" format=\"$file->[1]\"</imagedata></imageobject>";
+          }
+          my $image_text
+            = $self->Texinfo::Convert::Plaintext::_image_text($root, $basefile);
+          if (defined($image_text)) {
+            $result .= "<textobject><literallayout>"
+               .$self->xml_protect_text($image_text)
+               .'</literallayout></textobject>';
+          }
+          $result .= "</$element>";
+        }
       } elsif ($root->{'cmdname'} eq 'email') {
         if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
           my $name;
@@ -767,53 +915,74 @@ sub _convert($$;$)
           }
           return "<ulink url=\"$url_text\">$replacement</ulink>";
         }
-      }
-      my @elements = @{$commands_elements{$root->{'cmdname'}}};
-      my $command;
-      if (scalar(@elements) > 1) {
-        $command = shift @elements;
-      }
-      my $attribute = '';
-      # TODO after, it is wrong.
-      my $arg_index = 0;
-      foreach my $element (@elements) {
-        if (defined($root->{'args'}->[$arg_index])) {
-          my $in_code;
-          $in_code = 1
-            if (defined($default_args_code_style{$root->{'cmdname'}})
-              and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
-          $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-          my $arg = $self->_convert($root->{'args'}->[$arg_index]);
-          if (!defined($command) or $arg ne '') {
-            # ${attribute} is only set for @verb
-            $result .= "<$element${attribute}>$arg</$element>";
+      } elsif ($root->{'cmdname'} eq 'abbr' or $root->{'cmdname'} eq 'acronym') {
+        my $argument;
+        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 1
+            and defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+          my $arg = $self->_convert({'contents' 
+                      => $root->{'extra'}->{'brace_command_contents'}->[0]});
+          if ($arg ne '') {
+            my $element;
+            if ($root->{'cmdname'} eq 'abbr') {
+              $element = 'abbrev';
+            } else {
+              $element = $root->{'cmdname'};
+            }
+            $argument = "<$element>$arg</$element>";
           }
-          $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
-        } else {
-          last;
         }
-        $arg_index++;
-      }
-      if (defined($command)) {
-        $result = "<$command>$result<$command>";
-      }
-      if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
-        pop @{$self->{'document_context'}};
+        
+        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
+           and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+          if (defined($argument)) {
+            my $tree = $self->gdt('{abbr_or_acronym} ({explanation})',
+                           {'abbr_or_acronym' => {'type' => '_converted',
+                                                  'text' => $argument},
+                            'explanation' =>
+                             $root->{'extra'}->{'brace_command_contents'}->[-1]});
+            return $self->_convert($tree);
+          } else {
+            return $self->_convert({'contents' 
+                    => $root->{'extra'}->{'brace_command_contents'}->[-1]});
+          }
+        } elsif (defined($argument)) {
+          return $argument;
+        } else {
+          return '';
+        }
+      } else {
+        # ignored command
+        return '';
       }
     } elsif (exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
       if ($context_block_commands{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
       }
       my $attribute = '';
-      if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
-        $attribute 
-         .= " commandarg=\"$root->{'extra'}->{'command_as_argument'}->{'cmdname'}\"";
-      } elsif ($root->{'extra'}
+      my $element;
+      if ($root->{'cmdname'} eq 'enumerate') {
+        $element = 'orderedlist'; 
+        my $numeration;
+        if ($root->{'extra'}
                and $root->{'extra'}->{'enumerate_specification'}) {
-        $attribute .= " first=\""
-          .$self->xml_protect_text($root->{'extra'}->{'enumerate_specification'})
-          ."\"";
-      } elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}) {
+          if ($root->{'extra'}->{'enumerate_specification'} =~ /^[A-Z]/) {
+            $numeration = 'upperalpha';
+          } elsif ($root->{'extra'}->{'enumerate_specification'} =~ /^[a-z]/) {
+            $numeration = 'loweralpha';
+          } else {
+            $numeration = 'arabic';
+          }
+        } else {
+          $numeration = 'arabic';
+        }
+        $attribute = " numeration=\"$numeration\"";
+      } elsif ($Texinfo::Common::item_line_commands{$root->{'cmdname'}}) {
+        $element = 'variablelist';
+      } elsif ($root->{'cmdname'} eq 'itemize') {
+        $element = 'itemizedlist';
+      } elsif ($root->{'cmdname'} eq 'multitable') {
+      }
+        elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}) {
         if (defined($root->{'extra'}->{'normalized'})) {
           $attribute .= " name=\"$root->{'extra'}->{'normalized'}\"";
         }
@@ -962,9 +1131,10 @@ sub _convert($$;$)
   } elsif ($root->{'cmdname'} 
            and $Texinfo::Common::root_commands{$root->{'cmdname'}}
            and $root->{'cmdname'} ne 'node') {
-    my $command = _level_corrected_section($root);
+    my $command = $self->_docbook_section_element($root);
+    my $command_texi = $self->_level_corrected_section($root);
     if (!($root->{'section_childs'} and scalar(@{$root->{'section_childs'}}))
-        or $command eq 'top') {
+        or $command_texi eq 'top') {
       $result .= "</$command>\n";
       my $current = $root;
       while ($current->{'section_up'}
@@ -972,13 +1142,15 @@ sub _convert($$;$)
              # condition avoids getting into it
              and $current->{'section_up'}->{'cmdname'}
              and !$current->{'section_next'}
-             and _level_corrected_section($current->{'section_up'}) ne 'top') {
+             and $self->_level_corrected_section($current->{'section_up'}) ne 'top') {
         $current = $current->{'section_up'};
-        $result .= '</'._level_corrected_section($current) .">\n";
+        $result .= '</'.$self->_docbook_section_element($current) .">\n";
       }
     }
   }
   return $result;
 }
+
+# figure: mandatory title->use it with shortcaption?. Has a caption. 
 
 1;

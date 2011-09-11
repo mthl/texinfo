@@ -527,6 +527,21 @@ sub _convert_argument_and_end_line($$)
   return ($converted, $end_line);
 }
 
+sub _level_corrected_section($$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $heading_level = $root->{'level'};
+  my $command;
+  if ($heading_level ne $Texinfo::Common::command_structuring_level{$root->{'cmdname'}}) {
+    $command
+      = $Texinfo::Common::level_to_structuring_command{$root->{'cmdname'}}->[$heading_level];
+  } else {
+    $command = $root->{'cmdname'};
+  }
+  return $command;
+}
+
 my @inline_types = ('def_line', 'paragraph', 'preformatted',
   'misc_command_arg', 'misc_line_arg', 'block_line_arg',
   'menu_entry_name', 'menu_entry_node');
