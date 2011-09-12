@@ -577,4 +577,22 @@ $result_converted{'xml'}->{'exdent_and_commands'} = '<quotation>
 </pre></example>
 ';
 
+
+$result_converted{'docbook'}->{'exdent_and_commands'} = '<blockquote>
+<para>quotation1
+</para><simpara>in exdented protected eol &#160;</simpara><para>following
+</para><simpara>in exdented a @* 
+ and following</simpara>
+<para>after exdented
+</para></blockquote>
+
+
+<screen>example
+</screen><simpara>in exdented protected eol &#160;</simpara><screen>following
+</screen><simpara>in exdented a @* 
+ and following</simpara>
+<screen>after exdented
+</screen>
+';
+
 1;

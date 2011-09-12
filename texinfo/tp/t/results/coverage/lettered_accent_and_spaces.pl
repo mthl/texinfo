@@ -62,4 +62,8 @@ $result_converted{'html_text'}->{'lettered_accent_and_spaces'} = '<p>&aring;
 $result_converted{'xml'}->{'lettered_accent_and_spaces'} = '<para><accent type="ring">a</accent>
 </para>';
 
+
+$result_converted{'docbook'}->{'lettered_accent_and_spaces'} = '<para>&#229;
+</para>';
+
 1;

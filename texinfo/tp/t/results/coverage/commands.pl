@@ -577,4 +577,15 @@ $result_converted{'xml'}->{'commands'} = '<para>&arobase; &tex; <spacecmd type="
 <majorheading>majorheading <b>in b</b></majorheading>
 ';
 
+
+$result_converted{'docbook'}->{'commands'} = '<para>@ &tex; &#160;&#235; &#238; &#227; &#229;
+File &#8594; Open.
+<ulink url="mailto:a">b</ulink> <literal>code --- -- \'\' ``</literal>
+&#8212; &#8211; &#8221; &#8220;. small caps.
+</para>
+<indexterm role="cp"><primary>index entry &#8220;in text&#8221; &latex;</primary></indexterm>
+
+<bridgehead renderas="other">majorheading <emphasis role="bold">in b</emphasis></bridgehead>
+';
+
 1;

@@ -1540,4 +1540,41 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 </top>
 ';
 
+
+$result_converted{'docbook'}->{'punctuation_in_line_commands'} = '
+<chapter id="node_0021-After-punc">
+<title>top! After punc</title>
+
+<variablelist><varlistentry><term>item! After punc
+</term></varlistentry></variablelist>
+
+<blockquote><para><emphasis role="bold">quotation arg! After punc:</emphasis> In quotation
+</para><simpara>exdent quotation! After punc</simpara>
+</blockquote>
+
+<anchor id="float-label_0021-After-punc"/>
+<para>In float
+</para>
+
+
+<anchor id="label-with-caption"/>
+<para>In float with caption.
+</para>
+
+
+
+<indexterm role="cp"><primary>index! After punc</primary></indexterm>
+
+<bridgehead renderas="sect1">heading! After punc</bridgehead>
+
+titlefont! After punc
+
+center! After punc
+
+<index role="cp"></index>
+
+
+</chapter>
+';
+
 1;

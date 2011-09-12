@@ -57,6 +57,16 @@ our %extensions = (
   'debugcount' => 'txt',
   'html_text' => 'html',
   'xml' => 'xml',
+  'docbook' => 'dbk',
+);
+
+my %outfile_preamble = (
+  'docbook' => ['<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+'. "<book lang=\"en\">\n", "</book>\n"],
 );
 
 our $arg_generate;
@@ -485,7 +495,13 @@ sub test($$)
         if (!open (OUTFILE, ">$outfile")) {
           warn "Open $outfile: $!\n";
         } else {
+          if ($outfile_preamble{$format}) {
+            print OUTFILE $outfile_preamble{$format}->[0];
+          }
           print OUTFILE $converted{$format};
+          if ($outfile_preamble{$format}) {
+            print OUTFILE $outfile_preamble{$format}->[1];
+          }
           close (OUTFILE) or warn "Close $outfile: $!\n";
         }
         if ($converted_errors{$format}) {

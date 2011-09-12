@@ -490,4 +490,20 @@ in table in format
 </format>
 ';
 
+
+$result_converted{'docbook'}->{'preformatted'} = '
+
+<screen>e--xample  some  
+
+   text
+</screen>
+
+
+<variablelist><varlistentry><term><literal>item in table in format
+</literal></term><listitem><abstract>
+in table in format
+</abstract></listitem></varlistentry></variablelist>
+
+';
+
 1;

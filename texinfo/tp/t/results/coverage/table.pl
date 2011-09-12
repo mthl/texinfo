@@ -838,4 +838,23 @@ $result_converted{'xml'}->{'table'} = '
 </tableitem></tableentry></vtable>
 ';
 
+
+$result_converted{'docbook'}->{'table'} = '
+<variablelist><varlistentry><term>table item
+</term><term>table itemx
+</term><listitem>
+<para>In table
+</para></listitem></varlistentry></variablelist>
+
+<variablelist><!--  after vtable -->
+<indexterm role="cp"><primary>index entry</primary></indexterm>
+
+<varlistentry><term>&#8216;<literal>vtable item
+</literal>&#8217;</term><!--  after item -->
+<indexterm role="ky"><primary>key</primary></indexterm>
+<term>&#8216;<literal>itemx vtable <!--  comment in itemx line -->
+</literal>&#8217;</term><listitem>
+</listitem></varlistentry></variablelist>
+';
+
 1;

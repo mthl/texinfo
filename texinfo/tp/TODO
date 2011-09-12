@@ -85,6 +85,49 @@ add --output-encoding.
 html tests which should be right:
 sectioning setfilename_on_top_and_after_node
 
+* docbook: in function no style.
+  replaceable is for @var or function argument. Only characters.
+  Maybe replaced with parameter?
+
+  Instead of synopsis may use specialized synopsis, funcsynopsis/funcprototype
+  for deftype*, funcdef for defffn, ooclass for object oriented.
+  deffn:
+  <funcsynopsis><funcprototype><funcdef role=...><function>d--effn_name</function></funcdef><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
+  defvr, deftypevr: varname, and type and not returnvalue
+  deftypefn:
+  <funcsynopsis><funcprototype><funcdef role=...>type <function>d--eftypefn_name</function></funcdef><paramdef>a type<parameter>in var..</parameter></paramdef></funcprototype></funcsynopsis>
+  deftp: structname/structfield. Both contains a replaceable. Problem with
+  structfield is that there should be one by field.
+  defcv: classname + property, and category in synopsis
+  deftypecv: classname + type + property, and category in synopsis
+    fieldsynopsis?
+  defop: <classsynopsis><classsynopsisinfo>category</classsynopsisinfo><ooclass><classname>class<><><methodsynopsis><methodname><replaceable><></methodname><methodparam><parameter>...<><><>
+  deftypeop: same with type in methodparam.
+
+  also informalfigure in @float
+
+  also use informaltable or table, for multitable?
+
+  What is before the first sectioning command is put in <bookinfo><abstract>.
+
+  what about @titlefont in docbook?
+
+  maybe use simpara instead of para. Indeed, simpara is for paragraph without
+  block elent within, and it should be that way in generated output.
+
+  put <title> in <articleinfo>?
+
+  what to do for guilsinglleft, guilsinglright? Currently &lt; &gt; since
+  there is no &lsaquo; nor &rsaquo;
+
+* to solve above issue (first issue), the definition arg formatted with
+  simple_format should alo be passed down
+
+* in docbook, when there is only one section <article> should be better
+  than book. Maybe the best way to do that would be passing the
+  information that there is only one section to the functions formatting
+  the page header and page footer.
+
 Test tree leading to non empty preamble_before_setfilename.  Currently there
 are none in the test suite, maybe require a real file as input.
 

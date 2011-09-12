@@ -17,8 +17,6 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
-# TODO block commands
-
 package Texinfo::Convert::DocBook;
 
 use 5.00405;
@@ -61,6 +59,7 @@ my $ldquo = '&#'.hex('201C').';';
 my $rdquo = '&#'.hex('201D').';';
 my $rsquo = '&#'.hex('2019').';';
 my $lsquo = '&#'.hex('2018').';';
+my $nbsp = '&#'.hex('00A0').';';
 
 my %defaults = (
   #'ENABLE_ENCODING'      => 0,
@@ -88,6 +87,10 @@ foreach my $special_quotation ('note', 'caution', 'important', 'tip', 'warning')
 my %docbook_specific_formatting = (
   'TeX' => '&tex;',
   'LaTeX' => '&latex;',
+  "\t" => $nbsp,
+  "\n" => $nbsp,
+  " " => $nbsp,
+# FIXME and '*'?
 );
 my %docbook_commands_formatting
   = %{$Texinfo::Convert::Converter::default_xml_commands_formatting{'normal'}};
@@ -97,6 +100,7 @@ foreach my $command (keys(%Texinfo::Convert::Unicode::unicode_map)) {
    = '&#'.hex($Texinfo::Convert::Unicode::unicode_map{$command}).';'
     if ($Texinfo::Convert::Unicode::unicode_map{$command} ne '');
 }
+$docbook_commands_formatting{'tie'} = $nbsp;
 
 foreach my $command (keys(%docbook_specific_formatting)) {
   $docbook_commands_formatting{$command} 
@@ -106,6 +110,13 @@ foreach my $command (keys(%docbook_specific_formatting)) {
 my %quoted_style_commands = (
   'samp' => 1,
 );
+
+my @inline_elements = ('emphasis', 'abbrev', 'acronym', 'link', 
+  'inlinemediaobject', 'firstterm', 'footnote', 'replaceable', 'wordasword');
+my %inline_elements;
+foreach my $inline_element (@inline_elements) {
+  $inline_elements{$inline_element} = 1;
+};
 
 my %style_attribute_commands;
 %style_attribute_commands = (
@@ -119,13 +130,15 @@ my %style_attribute_commands;
       'file'        => 'filename',
       'headitemfont' => 'emphasis role="bold"', # not really that, in fact it is 
                              # in <th> rather than <td>
+      # FIXME wordasword is likely to be wrong. Maybe emph for i and literal
+      # for indicateurl.
       'i'           => 'wordasword',
       'indicateurl' => 'wordasword',
-      'sansserif'   => 'span class="sansserif"',
+      'sansserif'   => '',
       'kbd'         => 'userinput',
       'key'         => 'keycap',
       'option'      => 'option',
-      'r'           => 'span class="roman"',
+      'r'           => 'lineannotation',
       'samp'        => 'literal',
       'strong'      => 'emphasis role="bold"',
       't'           => 'literal',
@@ -173,6 +186,8 @@ my %misc_command_numbered_arguments_attributes = (
 
 my %docbook_misc_elements_with_arg_map = (
   'settitle' => 'title',
+  'exdent' => 'simpara',
+  'center' => '',
 );
 
 my %docbook_misc_commands = %Texinfo::Common::misc_commands;
@@ -198,15 +213,23 @@ foreach my $command (keys(%Texinfo::Common::brace_commands)) {
 
 my %defcommand_name_type = (
  'deffn'     => 'function',
- 'defvr'     => 'variable',
+ 'defvr'     => 'varname',
  'deftypefn' => 'function',
- 'deftypeop' => 'operation',
- 'deftypevr' => 'variable',
- 'defcv'     => 'classvar',
- 'deftypecv' => 'classvar',
- 'defop'     => 'operation',
- 'deftp'     => 'datatype',
+ 'deftypeop' => 'methodname',
+ 'deftypevr' => 'varname',
+ 'defcv'     => 'property',
+ 'deftypecv' => 'property',
+ 'defop'     => 'methodname',
+ 'deftp'     => 'structname',
 );
+
+my %def_argument_types_docbook = (
+  'type' => ['returnvalue'],
+  'class' => ['ooclass', 'classname'],
+  'arg' => ['replaceable'],
+  'argtype' => ['type'],
+);
+
 
 my %ignored_types;
 foreach my $type (#'empty_line_after_command',
@@ -236,6 +259,7 @@ my %type_elements = (
 
 my %context_block_commands = (
   'float' => 1,
+  'docbook' => 1,
 );
 
 my %docbook_preformatted_formats = (
@@ -424,6 +448,7 @@ sub _index_entry($$)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $index_entry = $root->{'extra'}->{'index_entry'};
+    # FIXME DocBook 5 role->type
     my $result = "<indexterm role=\"$index_entry->{'index_name'}\"><primary>";
     push @{$self->{'document_context'}}, {};
     $self->{'document_context'}->[-1]->{'code'}++ 
@@ -491,8 +516,9 @@ sub _convert($$;$)
   return '' if ($root->{'type'} and $ignored_types{$root->{'type'}});
   my $result = '';
   if (defined($root->{'text'})) {
-    return $root->{'text'} if (defined($root->{'type'}) 
-                               and $root->{'type'} eq '_converted');
+    return $root->{'text'} if ((defined($root->{'type'}) 
+                                and $root->{'type'} eq '_converted')
+                               or $self->{'document_context'}->[-1]->{'raw'});
     $result = $self->xml_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
       if (!$self->{'document_context'}->[-1]->{'code'}) {
@@ -518,6 +544,8 @@ sub _convert($$;$)
         $command = $root->{'cmdname'};
       }
       return $docbook_commands_formatting{$command};
+    } elsif ($root->{'cmdname'} eq 'today') {
+      return $self->_convert(Texinfo::Common::expand_today($self));
     } elsif ($Texinfo::Common::accent_commands{$root->{'cmdname'}}) {
       return $self->xml_accents($root, undef, \&docbook_accent);#, $self->in_upper_case());
    # } elsif ($root->{'cmdname'} eq 'item' and 
@@ -528,6 +556,16 @@ sub _convert($$;$)
           and ($root->{'parent'}->{'cmdname'} eq 'itemize'
                or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
         $result .= "<listitem>";
+        if ($root->{'parent'}->{'cmdname'} eq 'itemize'
+            and $root->{'parent'}->{'extra'}
+            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}
+            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]) {
+       #   $result .= $self->_convert({'contents'
+       # => $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]})
+       #     ." ";
+          $self->{'pending_prepend'} = $self->_convert({'contents'
+       => $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]}) ." ";
+        }
         push @close_elements, 'listitem';
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
                and $root->{'parent'}->{'type'} 
@@ -535,17 +573,29 @@ sub _convert($$;$)
         my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
         my $format_item_command;
         my $arg_tree;
+        my $tree = $root->{'args'}->[0];
         if ($table_command->{'extra'} 
             and $table_command->{'extra'}->{'command_as_argument'}) {
-          $format_item_command 
-           = $table_command->{'extra'}->{'command_as_argument'}->{'cmdname'};
-          $arg_tree = { 'cmdname' => $format_item_command,
-             'contents' => $root->{'args'}->[0]->{'contents'}};
+          my $command_as_argument
+            = $table_command->{'extra'}->{'command_as_argument'};
+          if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
+            $arg_tree = {'cmdname' => $command_as_argument->{'cmdname'},
+                     'args' => [{'type' => 'brace_command_arg',
+                              'contents' => [$tree]}]
+            };
+          } else {
+            $arg_tree = {'cmdname' => $command_as_argument->{'cmdname'},
+                          'type' => $command_as_argument->{'type'},
+                          'extra' => $command_as_argument->{'extra'},
+                     'args' => [{'type' => 'brace_command_arg',
+                                'contents' => [$tree]}]
+            };
+          }
         } else {
-          $arg_tree = $root->{'args'}->[0];
+          $arg_tree = $tree;
         }
         $result .= "<term>";
-        # Is it automaticcally entered in docbook?
+        # Is it automaticcally entered in docbook?  No.
         #$result .= $self->_index_entry($root);
         # FIXME
         my $in_code;
@@ -556,8 +606,7 @@ sub _convert($$;$)
         $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
         $result .= $self->_convert($arg_tree);
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
-        chomp ($result);
-        $result .= "</term>\n";
+        $result .= "</term>";
       } else {
         unless (($root->{'cmdname'} eq 'item' 
                      or $root->{'cmdname'} eq 'headitem'
@@ -584,27 +633,20 @@ sub _convert($$;$)
       my $command;
       if (exists ($docbook_misc_elements_with_arg_map{$root->{'cmdname'}})) {
         $command = $docbook_misc_elements_with_arg_map{$root->{'cmdname'}};
-      } else {
-        $command = $root->{'cmdname'};
       }
       my $type = $docbook_misc_commands{$root->{'cmdname'}};
       if ($type eq 'text') {
-        return '' if ($root->{'cmdname'} eq 'end');
-        my $attribute = '';
-        if ($misc_command_line_attributes{$root->{'cmdname'}}) {
-          if ($root->{'extra'} and defined($root->{'extra'}->{'text_arg'})) {
-            $attribute = " $misc_command_line_attributes{$root->{'cmdname'}}=\""
-                . $self->xml_protect_text($root->{'extra'}->{'text_arg'}) ."\"";
+        if ($root->{'cmdname'} eq 'verbatiminclude') {
+          my $verbatim_include_verbatim
+            = Texinfo::Common::expand_verbatiminclude($self, $root);
+          if (defined($verbatim_include_verbatim)) {
+            $result .= $self->_convert($verbatim_include_verbatim);
+          } else {
+            return '';
           }
-        }
-        my $arg = $self->_convert($root->{'args'}->[0]);
-        my $end_line;
-        if (chomp ($arg)) {
-          $end_line = "\n";
         } else {
-          $end_line = "";
+          return '';
         }
-        return "<$command${attribute}>$arg</$command>$end_line";
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
           if (!$root->{'extra'} or !$root->{'extra'}->{'associated_section'}) {
@@ -613,7 +655,7 @@ sub _convert($$;$)
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
           my $attribute;
           if ($root->{'extra'} and $root->{'extra'}->{'associated_node'}) {
-            $attribute = " id=\"$root->{'extra'}->{'associated_node'}->{'normalized'}\"";
+            $attribute = " id=\"$root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'}\"";
           }
           $command = $self->_docbook_section_element($root);
           $result .= "<$command${attribute}>\n";
@@ -626,50 +668,56 @@ sub _convert($$;$)
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
               = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
-            return "<bridgehead renderas=\"$docbook_sections{$root->{'cmdname'}}>$arg</bridgehead>$end_line";
+            return "<bridgehead renderas=\"$docbook_sections{$root->{'cmdname'}}\">$arg</bridgehead>$end_line";
           }
           return '';
         } else {
           my $attribute = '';
-          my ($arg, $end_line)
-            = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
-          return "<$command${attribute}>$arg</$command>$end_line";
+          if (defined($command)) {
+            my ($arg, $end_line)
+              = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+            if ($command eq '') {
+              return "$arg$end_line";
+            } else {
+              return "<$command${attribute}>$arg</$command>$end_line";
+            }
+          }
+          return '';
         }
       } elsif ($type eq 'skipline' or $type eq 'noarg') {
-        return "<$command></$command>\n";
+        if ($root->{'cmdname'} eq 'insertcopying') {
+          if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
+            return $self->_convert({'contents'
+               => $self->{'extra'}->{'copying'}->{'contents'}});
+          } else {
+            return '';
+          }
+        } else {
+        #return "<$command></$command>\n";
+          return '';
+        }
       } elsif ($type eq 'special') {
+        return '';
       } elsif ($type eq 'lineraw') {
         if ($root->{'cmdname'} eq 'c' or $root->{'cmdname'} eq 'comment') {
           return $self->xml_default_comment($root->{'args'}->[0]->{'text'})
         } else {
-          my $value = '';
-          if ($root->{'args'} and $root->{'args'}->[0]
-              and defined($root->{'args'}->[0]->{'text'})) {
-            $value = $self->xml_protect_text($root->{'args'}->[0]->{'text'});
-          }
-          return "<${command}>$value</${command}>\n";
+          return "";
         }
       } else {
         print STDERR "BUG: unknown misc_command style $type" if ($type !~ /^\d$/);
-        my $args_attributes;
-        if ($misc_command_numbered_arguments_attributes{$root->{'cmdname'}}) {
-          $args_attributes = $misc_command_numbered_arguments_attributes{$root->{'cmdname'}};
-        } else {
-          $args_attributes = ['value'];
-        }
-        my $attribute = '';
-        my $arg_index = 0;
-        if (defined($root->{'extra'}) 
-            and defined($root->{'extra'}->{'misc_args'})) {
-          foreach my $arg_attribute (@{$args_attributes}) {
-            if (defined ($root->{'extra'}->{'misc_args'}->[$arg_index])) {
-              $attribute .= " $arg_attribute=\""
-               .$self->xml_protect_text($root->{'extra'}->{'misc_args'}->[$arg_index])."\"";
-            }
-            $arg_index++;
+        if ($root->{'cmdname'} eq 'printindex') {
+          if (defined($root->{'extra'})
+              and defined($root->{'extra'}->{'misc_args'})) {
+            # FIXME DocBook 5
+            #return "<index type=\"$root->{'extra'}->{'misc_args'}->[0]\"></index>\n";
+            return "<index role=\"$root->{'extra'}->{'misc_args'}->[0]\"></index>\n";
+          } else {
+            return "<index></index>\n";
           }
+        } else {
+          return '';
         }
-        return "<$command${attribute}></$command>\n";
       }
     } elsif ($root->{'type'}
              and $root->{'type'} eq 'definfoenclose_command') {
@@ -696,8 +744,12 @@ sub _convert($$;$)
         $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
         my ($style, $attribute_text) = _parse_attribute($formatting->{'attribute'});
         my $result = $self->_convert($root->{'args'}->[0]);
-        if ($style ne '') {
+        if ($style ne '' and (!$self->{'document_context'}->[-1]->{'inline'}
+                               or $inline_elements{$style})) {
           $result = "<$style${attribute_text}>$result</$style>";
+          if ($root->{'cmdname'} eq 'math') {
+            $result = "<inlineequation>$result</inlineequation>";
+          }
         }
         if (defined($formatting->{'quote'})) {
           $result = $self->get_conf('OPEN_QUOTE_SYMBOL') . $result
@@ -707,9 +759,7 @@ sub _convert($$;$)
         if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
           pop @{$self->{'document_context'}};
         }
-        if ($root->{'cmdname'} eq 'math') {
-          $result = "<inlineequation>$result</inlineequation>";
-        } elsif ($root->{'cmdname'} eq 'w') {
+        if ($root->{'cmdname'} eq 'w') {
           $result .= '<!-- /@w -->';
         }
         return $result;
@@ -845,7 +895,7 @@ sub _convert($$;$)
             push @files, ["$basefile.jpg", 'jpg'];
           }
           foreach my $file (@files) {
-            $result .= "<imageobject><imagedata fileref=\"$file->[0]\" format=\"$file->[1]\"</imagedata></imageobject>";
+            $result .= "<imageobject><imagedata fileref=\"$file->[0]\" format=\"$file->[1]\"></imagedata></imageobject>";
           }
           my $image_text
             = $self->Texinfo::Convert::Plaintext::_image_text($root, $basefile);
@@ -876,6 +926,7 @@ sub _convert($$;$)
             return "<ulink url=\"mailto:$email_text\">"
               .$self->_convert({'contents' => $name}).'</ulink>';
           } elsif ($email) {
+            # FIXME in_inline
             return "<email>$email_text</email>";
           } elsif ($name) {
             return $self->_convert({'contents' => $name});
@@ -911,6 +962,8 @@ sub _convert($$;$)
             $replacement = $url_text;
           }
           return "<ulink url=\"$url_text\">$replacement</ulink>";
+          # DocBook 5
+          # return "<link xl:href=\"$url_text\">$replacement</link>";
         }
       } elsif ($root->{'cmdname'} eq 'abbr' or $root->{'cmdname'} eq 'acronym') {
         my $argument;
@@ -955,13 +1008,14 @@ sub _convert($$;$)
       if ($context_block_commands{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
       }
-      my $attribute = '';
-      my $element;
+      my @attributes;
+      my $appended = '';
+      my @elements;
       if (exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
         push @{$self->{'document_context'}->[-1]->{'preformatted_stack'}}, 
            $docbook_preformatted_formats{$root->{'cmdname'}};
       } elsif ($root->{'cmdname'} eq 'enumerate') {
-        $element = 'orderedlist'; 
+        push @elements, 'orderedlist'; 
         my $numeration;
         if ($root->{'extra'}
                and $root->{'extra'}->{'enumerate_specification'}) {
@@ -975,46 +1029,95 @@ sub _convert($$;$)
         } else {
           $numeration = 'arabic';
         }
-        $attribute = " numeration=\"$numeration\"";
+        push @attributes, " numeration=\"$numeration\"";
       } elsif ($Texinfo::Common::item_line_commands{$root->{'cmdname'}}) {
-        $element = 'variablelist';
+        push @elements, 'variablelist';
       } elsif ($root->{'cmdname'} eq 'itemize') {
-        $element = 'itemizedlist';
+        push @elements, 'itemizedlist';
       } elsif ($root->{'cmdname'} eq 'multitable') {
-        $element = "informaltable";
+        push @elements, "informaltable";
+        push @attributes, '';
+        my $columns_count;
+        if ($root->{'extra'} and defined($root->{'extra'}->{'max_columns'})) {
+          $columns_count = $root->{'extra'}->{'max_columns'};
+        } else {
+          $columns_count = 0;
+        }
+        push @elements, 'tgroup';
+        push @attributes, " cols=\"$columns_count\"";
         if ($root->{'extra'}) {
+          my @fractions;
+          my $multiply;
           if ($root->{'extra'}->{'prototypes'}) {
-            $result .= "<columnprototypes>";
+            $multiply = 1;
             foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
-              $result .= "<columnprototype>".$self->_convert($prototype)
-                         ."</columnprototype>";
+              my $prototype_text
+                = Texinfo::Convert::Text::convert($prototype,
+                                                  {'converter' => $self});
+              push @fractions, 
+                Texinfo::Convert::Unicode::string_width($prototype_text);
             }
-            $result .= "</columnprototypes>";
           } elsif ($root->{'extra'}->{'columnfractions'}) {
-            $result .= "<columnfractions>";
-            foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
-              $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
-            }
-            $result .= "</columnfractions>";
+            @fractions = @{$root->{'extra'}->{'columnfractions'}};
+            $multiply = 100;
+          }
+          foreach my $fraction (@fractions) {
+            $appended .= '<colspec colwidth="'.($fraction*$multiply)
+                         .'*"></colspec>';
           }
         }
       } elsif ($root->{'cmdname'} eq 'float') {
         if ($root->{'extra'} and defined($root->{'extra'}->{'normalized'})) {
-          $result .= "<anchor id=\"$root->{'extra'}->{'normalized'}\">\n";
+          $result .= "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>\n";
         }
       } elsif ($root->{'cmdname'} eq 'verbatim') {
-        $element = 'screen';
-      } elsif ($root->{'cmdname'} eq 'quotation') {
-        # docbook_special_quotations
-        $element = 'blockquote';
-      }
-      if (defined($element)) {
-        $result .= "<$element${attribute}>";
-        push @close_elements, $element;
-        if ($root->{'cmdname'} eq 'multitable') {
-          push @close_elements, 'tgroup';
+        push @elements, 'screen';
+      } elsif ($root->{'cmdname'} eq 'quotation' 
+               or $root->{'cmdname'} eq 'smallquotation') {
+        my $element;
+        if ($root->{'extra'}) {
+          if ($root->{'extra'}->{'authors'}) {
+            foreach my $author (@{$root->{'extra'}->{'authors'}}) {
+              if ($author->{'extra'} and $author->{'extra'}->{'misc_content'}) {
+                $appended .= '<attribution>'.$self->_convert(
+                  {'contents' => $author->{'extra'}->{'misc_content'}})
+                           ."</attribution>\n";
+              }
+            }
+          }
+          if ($root->{'extra'}->{'block_command_line_contents'}
+              and defined($root->{'extra'}->{'block_command_line_contents'}->[0])) {
+            my $quotation_arg_text = Texinfo::Convert::Text::convert(
+                     {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
+            if ($docbook_special_quotations{lc($quotation_arg_text)}) {
+              $element = lc($quotation_arg_text);
+            } else {
+              $self->{'pending_prepend'} 
+                = $self->_convert($self->gdt('@b{{quotation_arg}:} ',
+                              {'quotation_arg' =>
+                    $root->{'extra'}->{'block_command_line_contents'}->[0]}));
+            }
+          }
+        }
+        $element = 'blockquote' if (!defined($element));
+        push @elements, $element;
+      } elsif ($root->{'cmdname'} eq 'copying') {
+        push @elements, ('bookinfo', 'legalnotice');
+      } elsif ($Texinfo::Common::block_commands{$root->{'cmdname'}} eq 'raw') {
+        return '' if (!$self->{'expanded_formats_hash'}->{$root->{'cmdname'}});
+        if ($root->{'cmdname'} eq 'docbook') {
+          # the context ids here only for the command, so this is forgotten
+          # once al the raw internal text has been formatted
+          $self->{'document_context'}->[-1]->{'raw'} = 1;
         }
       }
+      foreach my $element (@elements) {
+        my $attribute = shift @attributes;
+        $attribute = '' if (!defined($attribute));
+        $result .= "<$element${attribute}>";
+        unshift @close_elements, $element;
+      }
+      $result .= $appended if (defined($appended));
     }
   }
   if ($root->{'type'}) {
@@ -1023,54 +1126,38 @@ sub _convert($$;$)
     } elsif ($root->{'type'} eq 'preformatted') {
       $result .= "<$self->{'document_context'}->[-1]->{'preformatted_stack'}->[-1]>";
     } elsif ($root->{'type'} eq 'def_line') {
-      if ($root->{'cmdname'}) {
-        $result .= "<$root->{'cmdname'}>";
-      }
-      $result .= "<definitionterm>";
-      $result .= $self->_index_entry($root);
+      $result .= "<synopsis>";
+      push @{$self->{'document_context'}}, {};
       $self->{'document_context'}->[-1]->{'code'}++;
+      $self->{'document_context'}->[-1]->{'inline'}++;
+      $result .= $self->_index_entry($root);
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}) {
         my $main_command;
-        my $alias;
         if ($Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}}) {
           $main_command = $Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}};
-          $alias = 1;
         } else {
           $main_command = $root->{'extra'}->{'def_command'};
-          $alias = 0;
         }
         foreach my $arg (@{$root->{'extra'}->{'def_args'}}) {
           my $type = $arg->[0];
           my $content = $self->_convert($arg->[1]);
-          if ($type eq 'spaces') {
+          if ($type eq 'spaces' or $type eq 'delimiter') {
             $result .= $content;
+          } elsif ($type eq 'category') {
+            $result .= "<emphasis type=\"bold\">$content</emphasis>:";
+          } elsif ($type eq 'name') {
+            $result .= "<$defcommand_name_type{$main_command}>$content</$defcommand_name_type{$main_command}>";
           } else {
-            my $attribute;
-            if ($type eq 'category' and $alias) {
-              $attribute = " automatic=\"on\"";
-            } else {
-              $attribute = "";
+            foreach my $element (reverse (
+                                   @{$def_argument_types_docbook{$type}})) {
+              $content = "<$element>$content</$element>";
             }
-            my $element;
-            if ($type eq 'name') {
-              $element = $defcommand_name_type{$main_command};
-            } elsif ($type eq 'arg') {
-              $element = 'param';
-            } elsif ($type eq 'argtype') {
-              $element = 'paramtype';
-            } else {
-              $element = $type;
-            }
-            $result .= "<def$element${attribute}>$content</def$element>";
+            $result .= $content;
           }
         }
       }
-      $self->{'document_context'}->[-1]->{'code'}--;
-      $result .= "</definitionterm>";
-      if ($root->{'cmdname'}) {
-        $result .= "</$root->{'cmdname'}>";
-      }
-      chomp ($result);
+      pop @{$self->{'document_context'}};
+      $result .= "</synopsis>";
       $result .= "\n";
     }
   }
@@ -1083,6 +1170,10 @@ sub _convert($$;$)
     $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
     if (ref($root->{'contents'}) ne 'ARRAY') {
       cluck "contents not an array($root->{'contents'}).";
+    }
+    if (defined($self->{'pending_prepend'}) and $self->_in_inline($root)) {
+      $result .= $self->{'pending_prepend'};
+      delete $self->{'pending_prepend'};
     }
     foreach my $content (@{$root->{'contents'}}) {
       $result .= $self->_convert($content);

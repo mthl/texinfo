@@ -507,4 +507,18 @@ $result_converted{'xml'}->{'item_container'} = '
 </para></item></itemize>
 ';
 
+
+$result_converted{'docbook'}->{'item_container'} = '
+<itemizedlist><listitem><para>+ i&#8211;tem +
+</para></listitem></itemizedlist>
+
+<itemizedlist><listitem>
+<para>&#8226; b&#8211;ullet
+</para></listitem></itemizedlist>
+
+<itemizedlist>
+<listitem><para>&#8226; no itemize argument
+</para></listitem></itemizedlist>
+';
+
 1;

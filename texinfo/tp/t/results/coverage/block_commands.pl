@@ -577,4 +577,21 @@ $result_converted{'xml'}->{'block_commands'} = '
 </float>
 ';
 
+
+$result_converted{'docbook'}->{'block_commands'} = '
+
+<para>in group
+</para>
+
+<warning><para>in quotation
+</para></warning>
+
+<anchor id="b-float"/>
+<para>In float
+</para>
+
+
+
+';
+
 1;

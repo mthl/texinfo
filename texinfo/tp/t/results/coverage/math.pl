@@ -442,4 +442,19 @@ $result_converted{'xml'}->{'math'} = '<para>Simple math
 </para>
 ';
 
+
+$result_converted{'docbook'}->{'math'} = '<para>Simple math
+<inlineequation><mathphrase>--{x^i}\\over{\\tan y}</mathphrase></inlineequation>
+</para>
+<para>Math with @-command
+<inlineequation><mathphrase><literal>math code</literal> a &lt; b</mathphrase></inlineequation>
+</para>
+<para>Complex
+<inlineequation><mathphrase>\\underline{<literal>math \\hbox{ code }</literal>} \\i \\sum_{i}{\\underline{f}}</mathphrase></inlineequation>
+</para>
+<para>@\\ outside of math
+\\
+</para>
+';
+
 1;

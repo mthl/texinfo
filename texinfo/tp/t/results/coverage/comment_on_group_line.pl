@@ -146,4 +146,9 @@ $result_converted{'xml'}->{'comment_on_group_line'} = '<group><!--  comment -->
 </para></group>
 ';
 
+
+$result_converted{'docbook'}->{'comment_on_group_line'} = '<para>in group.
+</para>
+';
+
 1;

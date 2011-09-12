@@ -92,4 +92,8 @@ $result_converted{'xml'}->{'setfilename_in_paragraph'} = '<para>Some text
 </para><setfilename file="filename.info">filename.info</setfilename>
 ';
 
+
+$result_converted{'docbook'}->{'setfilename_in_paragraph'} = '<para>Some text
+</para>';
+
 1;

@@ -392,4 +392,18 @@ $result_converted{'xml'}->{'flushright_example_nested'} = '<example>
 </flushright>
 ';
 
+
+$result_converted{'docbook'}->{'flushright_example_nested'} = '
+
+<screen>in   --- flushright
+</screen>
+
+
+
+
+<screen>in   --- example
+</screen>
+
+';
+
 1;

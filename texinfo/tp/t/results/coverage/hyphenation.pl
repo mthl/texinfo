@@ -79,4 +79,9 @@ $result_converted{'xml'}->{'hyphenation'} = '
 <hyphenation>some-where </hyphenation>
 ';
 
+
+$result_converted{'docbook'}->{'hyphenation'} = '
+
+';
+
 1;

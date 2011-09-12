@@ -2473,4 +2473,88 @@ quotation2
 </quotation>
 ';
 
+
+$result_converted{'docbook'}->{'exdent_and_formats'} = '
+<screen> Example   Hoho. &tex; . 
+ @.
+
+</screen><simpara>Other line</simpara>
+<screen>not exdented
+</screen>
+
+
+
+<simpara>exdented  and dash --- in example</simpara>
+<screen>Not exdented
+</screen><simpara>exdented</simpara>
+<screen>Not exdented
+</screen>
+
+<para>Para1.
+</para>
+<blockquote>
+<para>qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+</para></blockquote>
+
+<para>Para2.
+</para>
+<para>Para3.
+</para>
+<para>Last para.
+</para>
+<blockquote>
+<para>quotation1
+quotation2
+</para></blockquote>
+
+<blockquote>
+<para>quotation para 1
+</para>
+<para>quotation para 2
+</para></blockquote>
+
+
+<screen>Example   Hoho.
+</screen>
+<screen>Nested Other line
+</screen><simpara>exdented nested other line</simpara>
+
+
+
+<blockquote>
+<simpara>exdented quotation line   and dash &#8212; in quotation</simpara>
+</blockquote>
+
+<blockquote>
+<para>Not exdented followed by exdented
+</para><simpara>exdented quotation line</simpara>
+</blockquote>
+
+<blockquote>
+<simpara>exdented quotation line</simpara>
+<para>Followed by not exdented 
+</para></blockquote>
+
+<blockquote>
+<simpara>exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az</simpara>
+<simpara>azeaz az az az az</simpara>
+</blockquote>
+
+<blockquote>
+<simpara>exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line</simpara>
+<simpara>az az az az</simpara>
+</blockquote>
+
+<blockquote>
+<para>quotation line oidfjslsd aez a aze azaz aeae za eaz az zelef  aaa
+</para><simpara>ezkfjklezf </simpara>
+</blockquote>
+
+<blockquote>
+<simpara>very loooooooooooooooooooooooooooooooooong exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line</simpara>
+<simpara>az az az az</simpara>
+</blockquote>
+';
+
 1;

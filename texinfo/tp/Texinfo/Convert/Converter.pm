@@ -554,20 +554,39 @@ foreach my $type (@inline_types) {
 my %not_inline_commands = (%Texinfo::Common::root_commands, 
   %Texinfo::Common::block_commands, %Texinfo::Common::context_brace_command);
 
+sub _inline_or_block($$)
+{
+  my $self = shift;
+  my $current = shift;
+  if ($current->{'type'} and $inline_types{$current->{'type'}}) {
+    return 1;
+  } elsif ($current->{'cmdname'} 
+           and $not_inline_commands{$current->{'cmdname'}}) {
+    return 0;
+  } else {
+    return undef;
+  }
+}
+
 sub _is_inline($$)
 {
   my $self = shift;
   my $current = shift;
   while ($current->{'parent'}) {
     $current = $current->{'parent'};
-    if ($current->{'type'} and $inline_types{$current->{'type'}}) {
-      return 1;
-    } elsif ($current->{'cmdname'} 
-             and $not_inline_commands{$current->{'cmdname'}}) {
-      return 0;
-    }
+    my $inline_or_block = $self->_inline_or_block($current);
+    return ($inline_or_block) if (defined($inline_or_block));
   }
   return 0;
+}
+
+sub _in_inline($$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $inline_or_block = $self->_inline_or_block($current);
+  return ($inline_or_block) if (defined($inline_or_block));
+  return $self->_is_inline($current);
 }
 
 our %default_args_code_style = (

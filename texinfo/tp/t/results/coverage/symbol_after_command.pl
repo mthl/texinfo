@@ -672,4 +672,17 @@ $result_converted{'xml'}->{'symbol_after_command'} = '<table commandarg="asis">
 <para>&arobase;. &rbrace;, &arobase;&arobase; &eosquest;, &eosexcl;: &arobase;&rbrace; &arobase;&textrdquo; &arobase;:
 </para>';
 
+
+$result_converted{'docbook'}->{'symbol_after_command'} = '<variablelist><varlistentry><term>. dot
+</term></varlistentry><varlistentry><term>, comma
+</term></varlistentry><varlistentry><term>@ @
+</term></varlistentry><varlistentry><term>{ {
+</term></varlistentry><varlistentry><term>! exclam
+</term></varlistentry><varlistentry><term>&#8221; quotes
+</term></varlistentry><varlistentry><term>: colon
+</term></varlistentry></variablelist>
+
+<para>@. {, @@ ?, !: @{ @&#8221; @:
+</para>';
+
 1;

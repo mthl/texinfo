@@ -95,4 +95,8 @@ $result_converted{'html_text'}->{'at_after_accent_command'} = '<p>*@. ^@.
 $result_converted{'xml'}->{'at_after_accent_command'} = '<para><accent type="ring"></accent>&arobase;. <accent type="circ"></accent>&arobase;.
 </para>';
 
+
+$result_converted{'docbook'}->{'at_after_accent_command'} = '<para>*@. ^@.
+</para>';
+
 1;

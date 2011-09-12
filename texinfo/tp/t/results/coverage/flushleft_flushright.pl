@@ -346,4 +346,23 @@ ldskf dsflj
 </para></flushright>
 ';
 
+
+$result_converted{'docbook'}->{'flushleft_flushright'} = '
+
+<para>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+ldskf dsflj
+     lklsdlv l    lll. Bbb.
+</para>
+<para>lhds
+</para>
+
+
+<para>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+ldskf dsflj
+     lklsdlv l    lll. Bbb.
+</para>
+<para>lhds
+</para>
+';
+
 1;
