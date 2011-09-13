@@ -1,5 +1,19 @@
 #! /usr/bin/perl -w
 
+# regenerate_documentlanguages.pl: download the iana files language
+# and regenerate Texinfo/Documentlanguages.pm list of languages and regions
+#
+# Copyright 2010, 2011 Free Software Foundation, Inc.
+# 
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.  This file is offered as-is,
+# without any warranty.
+#
+# Original author: Patrice Dumas <pertusus@free.fr>
+#
+# Calling that script for each release could be a good idea.
+
 use strict;
 
 system ("wget -N http://www.iana.org/assignments/language-subtag-registry");
@@ -23,6 +37,7 @@ while (<TXT>)
        }
    }
 }
+push @entries, $entry if (defined($entry));
 
 open (OUT, ">Texinfo/Documentlanguages.pm") or die "Open Texinfo/Documentlanguages.pm: $!\n";
 
@@ -33,7 +48,7 @@ print OUT "package Texinfo::Documentlanguages;\n\n";
 print OUT 'our %language_codes = ('."\n";
 foreach my $entry (@entries)
 {
-   # Scope collection macrolanguage are used
+   # Scope collection macrolanguage are used
    if ($entry->{'Type'} eq 'language' and !defined($entry->{'Preferred-Value'})
          and !defined($entry->{'Macrolanguage'}) and 
          (!defined($entry->{'Scope'}) or ($entry->{'Scope'} ne 'special' and
