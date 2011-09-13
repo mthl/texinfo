@@ -426,7 +426,7 @@ sub _convert($$;$)
           and $root->{'parent'}->{'cmdname'}
           and ($root->{'parent'}->{'cmdname'} eq 'itemize'
                or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
-        $result .= "<item>";
+        $result .= "<listitem>";
         if ($root->{'parent'}->{'cmdname'} eq 'itemize'
             and $root->{'parent'}->{'extra'} 
             and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}
@@ -436,7 +436,7 @@ sub _convert($$;$)
         => $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]})
             ."</prepend>";
         }
-        unshift @close_elements, 'item';
+        unshift @close_elements, 'listitem';
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
                and $root->{'parent'}->{'type'} 
                and $root->{'parent'}->{'type'} eq 'table_term') {
@@ -706,7 +706,7 @@ sub _convert($$;$)
         }
       }
       if (defined($command)) {
-        $result = "<$command${attribute}>$result<$command>";
+        $result = "<$command${attribute}>$result</$command>";
       }
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
         pop @{$self->{'document_context'}};

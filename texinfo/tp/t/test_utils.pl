@@ -67,6 +67,10 @@ my %outfile_preamble = (
   <!ENTITY latex "LaTeX">
 ]>
 '. "<book lang=\"en\">\n", "</book>\n"],
+  'xml' => ['<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+', "</texinfo>\n"],
 );
 
 our $arg_generate;

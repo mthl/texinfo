@@ -2457,24 +2457,24 @@ $result_floats{'comments_on_block_command_lines'}{'f'}[0]{'extra'}{'end_command'
 
 
 $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet"><!--  comm -->
-<item><prepend>&bullet;</prepend><para>itemize it
-</para></item></itemize>
+<listitem><prepend>&bullet;</prepend><para>itemize it
+</para></listitem></itemize>
 
 <itemize><itemprepend>x </itemprepend><!--  comm -->
-<item><prepend>x</prepend><para>itemize xit
-</para></item></itemize>
+<listitem><prepend>x</prepend><para>itemize xit
+</para></listitem></itemize>
 
 <itemize commandarg="bullet"><itemprepend>&bullet; </itemprepend><!--  comm -->
-<item><prepend>&bullet;</prepend><para>itemize bulletit
-</para></item></itemize>
+<listitem><prepend>&bullet;</prepend><para>itemize bulletit
+</para></listitem></itemize>
 
 <enumerate first="1"><!--  comm -->
-<item><para>en
-</para></item></enumerate>
+<listitem><para>en
+</para></listitem></enumerate>
 
 <enumerate first="a"><enumeratefirst>a </enumeratefirst><!--  comm -->
-<item><para>aen
-</para></item></enumerate>
+<listitem><para>aen
+</para></listitem></enumerate>
 
 <table commandarg="asis"><!--  table -->
 <tableentry><tableterm><item><itemformat command="asis">it</itemformat></item>

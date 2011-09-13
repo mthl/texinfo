@@ -2221,57 +2221,57 @@ $result_floats{'image_inline_or_not'}{'F'}[0]{'extra'}{'end_command'}{'extra'}{'
 
 
 
-$result_converted{'xml'}->{'image_inline_or_not'} = '<image><imagefile>A</imagefile><image>
+$result_converted{'xml'}->{'image_inline_or_not'} = '<image><imagefile>A</imagefile></image>
 
-<para>Para <image where="inline"><imagefile>hh</imagefile><image>.
+<para>Para <image where="inline"><imagefile>hh</imagefile></image>.
 </para>
-<node name="Top"><nodename>Top</nodename><nodenext automatic="on"><image where="inline"><imagefile>node_image</imagefile><image></nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top"><nodename>Top</nodename><nodenext automatic="on"><image where="inline"><imagefile>node_image</imagefile></image></nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
-<image><imagefile>B</imagefile><image>
+<image><imagefile>B</imagefile></image>
 
-<para>Para <image where="inline"><imagefile>jj</imagefile><image>.
+<para>Para <image where="inline"><imagefile>jj</imagefile></image>.
 </para>
 <example>
 <pre xml:space="preserve">
-<image where="inline"><imagefile>in_example</imagefile><image>
+<image where="inline"><imagefile>in_example</imagefile></image>
 
 T
-<image where="inline"><imagefile>in example after text</imagefile><image>
+<image where="inline"><imagefile>in example after text</imagefile></image>
 </pre></example>
 
-<quotation><quotationtype><image where="inline"><imagefile>in_quotation_arg</imagefile><image></quotationtype>
-<image><imagefile>in_quotation_content</imagefile><image>
+<quotation><quotationtype><image where="inline"><imagefile>in_quotation_arg</imagefile></image></quotationtype>
+<image><imagefile>in_quotation_content</imagefile></image>
 </quotation>
 
 <table commandarg="asis">
-<tableentry><tableterm><item><itemformat command="asis"><image where="inline"><imagefile>in_table_item</imagefile><image></itemformat></item>
+<tableentry><tableterm><item><itemformat command="asis"><image where="inline"><imagefile>in_table_item</imagefile></image></itemformat></item>
 </tableterm><tableitem>
-<image><imagefile>in_table_def</imagefile><image>
+<image><imagefile>in_table_def</imagefile></image>
 
-<para>AA <image where="inline"><imagefile>in_table_def_para</imagefile><image>
+<para>AA <image where="inline"><imagefile>in_table_def_para</imagefile></image>
 </para>
-<image><imagefile>in_table_def_after</imagefile><image>
+<image><imagefile>in_table_def_after</imagefile></image>
 </tableitem></tableentry></table>
 
 <menu>
-<menuentry><menunode><image where="inline"><imagefile>node_image</imagefile><image></menunode><menudescription><pre xml:space="preserve"><image where="inline"><imagefile>image_in_description</imagefile><image>
-</pre></menudescription></menuentry><menuentry><menutitle><image where="inline"><imagefile>in_menu_entry_name</imagefile><image></menutitle><menunode>(somewhere)<image where="inline"><imagefile>extnode</imagefile><image></menunode><menudescription><pre xml:space="preserve">
+<menuentry><menunode><image where="inline"><imagefile>node_image</imagefile></image></menunode><menudescription><pre xml:space="preserve"><image where="inline"><imagefile>image_in_description</imagefile></image>
+</pre></menudescription></menuentry><menuentry><menutitle><image where="inline"><imagefile>in_menu_entry_name</imagefile></image></menutitle><menunode>(somewhere)<image where="inline"><imagefile>extnode</imagefile></image></menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
-<image where="inline"><imagefile>in_menu_comment</imagefile><image>
+<image where="inline"><imagefile>in_menu_comment</imagefile></image>
 </pre></menucomment></menu>
 
-<node name="node_005fimage"><nodename><image where="inline"><imagefile>node_image</imagefile><image></nodename><nodenext automatic="on">(somewhere)<image where="inline"><imagefile>extnode</imagefile><image></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile><image></sectiontitle>
+<node name="node_005fimage"><nodename><image where="inline"><imagefile>node_image</imagefile></image></nodename><nodenext automatic="on">(somewhere)<image where="inline"><imagefile>extnode</imagefile></image></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile></image></sectiontitle>
 
 
-<para>T<footnote><image where="inline"><imagefile>in_footnote</imagefile><image>
+<para>T<footnote><image where="inline"><imagefile>in_footnote</imagefile></image>
 </footnote>
 </para>
 <float name="g" type="F"><floattype>F</floattype><floatname>g</floatname>
 
-<image><imagefile>in_float</imagefile><image>
+<image><imagefile>in_float</imagefile></image>
 
-<caption><image><imagefile>in_caption</imagefile><image><para> PAra <image where="inline"><imagefile>in_caption_para</imagefile><image></para></caption>
+<caption><image><imagefile>in_caption</imagefile></image><para> PAra <image where="inline"><imagefile>in_caption_para</imagefile></image></para></caption>
 </float>
 </chapter>
 ';

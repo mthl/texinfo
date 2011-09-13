@@ -1,3 +1,7 @@
+export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
+perl -w t/02coverage.t -o
+xmllint --nonet --noout --valid commands.xml
+
 @appendix should stop @part. Right now it do not do that.
 Cf sectioning_part_appendix.
 
