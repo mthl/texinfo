@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.17 2011-02-14 19:16:56 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.18 2011-09-13 23:11:08 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -28,17 +28,22 @@
 <!ENTITY % toc "contents | shortcontents">
 
 <!-- Title page -->
-<!ENTITY % titlepage_cmds "author | booktitle | booksubtitle">
+<!ENTITY % titlepage_cmds "author | title | subtitle">
+
+<!-- index entry commands -->
+<!ENTITY % indexentry.cmds "cindex | kindex | pindex | tindex | vindex | indexcommand">
 
 <!-- Block -->
-<!ENTITY % block "menu | para | quotation | smallquotation
+<!ENTITY % block "menu | para | pre | quotation | smallquotation
                   | example | smallexample | lisp | smalllisp
                   | cartouche | copying
                   | format | smallformat
                   | display | smalldisplay
                   | raggedright | flushleft | flushright
-                  | itemize | enumerate | sp | center | group
-                  | table | multitable | definition | float | image">
+                  | itemize | enumerate | sp | titlefont | center | group
+                  | table | vtable | ftable | multitable | definition | float | image
+                  | %indexentry.cmds;
+                  | verbatiminclude| insertcopying | listoffloats">
 
 <!-- API definitions -->
 <!ENTITY % definition.cmds "defcategory | deffunction | defvariable | defparam
@@ -71,7 +76,6 @@
                                    | verbatim | titlepage | %toc;
                                    | %lang; | %variables;
                                    | %headings;
-                                   | listoffloats
                                    | printindex)*">
 
 <!ENTITY % section.level2.content "(%block;
@@ -94,34 +98,43 @@
 
 <!-- Options (many missing) -->
 <!ENTITY % onoff "on|off">
+<!ENTITY % spacetype "spc|tab|nl">
 <!ENTITY % option.cmds "frenchspacing">
 
 <!-- Inline -->
 <!ENTITY % Inline.emphasize "strong | emph">
-<!ENTITY % Inline.fonts "b | i | r | sansserif | slanted | titlefont | tt
+<!ENTITY % Inline.fonts "b | i | r | sansserif | slanted | tt
                          | sc">
 <!ENTITY % Inline.footnote "footnote">
 <!ENTITY % Inline.markup "code | command | env | file | option | samp | verb
                           | dfn | cite | key | kbd | var | acronym | url"> 
 <!ENTITY % Inline.math "math | dmn">
-<!ENTITY % Inline.reference "xref | inforef | indexterm | email | uref">
-<!ENTITY % Inline.misc "click | clicksequence | logo | punct">
+<!ENTITY % Inline.reference "xref | inforef | email | uref">
+<!ENTITY % Inline.misc "click | clicksequence | logo | punct | spacecmd | today
+                        | linebreak | accent | dotless ">
 
 <!ENTITY % Inline.phrase
            "%Inline.emphasize;  | %Inline.misc; | %Inline.fonts;
             | %Inline.markup;   | %Inline.math; | %Inline.reference;
+            | %indexentry.cmds; 
             | %Inline.footnote; | %option.cmds; ">
 
 
 <!-- ELEMENTS -->
 
 <!-- TOP Level Element -->
-<!ELEMENT texinfo ((%metainformation; | titlepage | node | synindex
+<!ELEMENT texinfo ((%metainformation; | titlepage | node | synindex 
+                    | hyphenation
+                    | syncodeindex | %indexentry.cmds;
+                    | %section.all; | %headings;
                     | %block; | %toc; | %variables; | %lang;)* )>
 <!ATTLIST texinfo xml:lang (%languagecodes;) 'en'>
 
 <!-- meta-information -->
 <!ELEMENT setfilename (#PCDATA)>
+<!ATTLIST setfilename
+          file   CDATA #IMPLIED>
+<!ELEMENT filename (#PCDATA)>
 <!ELEMENT settitle    (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT dircategory (#PCDATA)>
 
@@ -143,19 +156,22 @@
 <!-- Titlepage -->
 <!ELEMENT titlepage    (%titlepage_cmds; | %block;)*>
 <!ELEMENT author       (#PCDATA | %Inline.phrase;)*>
-<!ELEMENT booktitle    (#PCDATA | %Inline.phrase;)*>
-<!ELEMENT booksubtitle (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT title    (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT subtitle (#PCDATA | %Inline.phrase;)*>
 
 <!-- Explicit blank lines -->
 <!ELEMENT sp (#PCDATA)>
 <!ATTLIST sp
           lines CDATA #IMPLIED>
 
+<!ELEMENT insertcopying EMPTY>
 
 <!-- emacs-page
      Nodes -->
 <!ELEMENT node (nodename, nodenext?, nodeprev?, nodeup?,
                 (%section.all; | %block; | %toc; | %lang;)*) >
+<!ATTLIST node
+          name CDATA #IMPLIED>
 
 <!ELEMENT nodename (#PCDATA)>
 <!ELEMENT nodenext (#PCDATA)>
@@ -164,23 +180,23 @@
 
 
 <!-- Sectioning -->
-<!ELEMENT top           (title?, (%section.level1.content;))>
-<!ELEMENT part          (title?, (%section.level1.content;))>
+<!ELEMENT top           (sectiontitle?, (%section.level1.content;))>
+<!ELEMENT part          (sectiontitle?, (%section.level1.content;))>
 
-<!ELEMENT chapter       (title?, (%section.level1.content;))>
-<!ELEMENT section       (title?, (%section.level2.content;))>
-<!ELEMENT subsection    (title?, (%section.level3.content;))>
-<!ELEMENT subsubsection (title?, (%section.level4.content;))>
+<!ELEMENT chapter       (sectiontitle?, (%section.level1.content;))>
+<!ELEMENT section       (sectiontitle?, (%section.level2.content;))>
+<!ELEMENT subsection    (sectiontitle?, (%section.level3.content;))>
+<!ELEMENT subsubsection (sectiontitle?, (%section.level4.content;))>
 
-<!ELEMENT unnumbered          (title?, (%section.level1.content;))>
-<!ELEMENT unnumberedsec       (title?, (%section.level2.content;))>
-<!ELEMENT unnumberedsubsec    (title?, (%section.level3.content;))>
-<!ELEMENT unnumberedsubsubsec (title?, (%section.level4.content;))>
+<!ELEMENT unnumbered          (sectiontitle?, (%section.level1.content;))>
+<!ELEMENT unnumberedsec       (sectiontitle?, (%section.level2.content;))>
+<!ELEMENT unnumberedsubsec    (sectiontitle?, (%section.level3.content;))>
+<!ELEMENT unnumberedsubsubsec (sectiontitle?, (%section.level4.content;))>
 
-<!ELEMENT appendix          (title?, (%section.level1.content;))>
-<!ELEMENT appendixsec       (title?, (%section.level2.content;))>
-<!ELEMENT appendixsubsec    (title?, (%section.level3.content;))>
-<!ELEMENT appendixsubsubsec (title?, (%section.level4.content;))>
+<!ELEMENT appendix          (sectiontitle?, (%section.level1.content;))>
+<!ELEMENT appendixsec       (sectiontitle?, (%section.level2.content;))>
+<!ELEMENT appendixsubsec    (sectiontitle?, (%section.level3.content;))>
+<!ELEMENT appendixsubsubsec (sectiontitle?, (%section.level4.content;))>
 
 <!-- Headings and titles -->
 <!ELEMENT majorheading  (#PCDATA | %Inline.phrase;)*>
@@ -188,26 +204,30 @@
 <!ELEMENT heading       (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT subheading    (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT subsubheading (#PCDATA | %Inline.phrase;)*>
-<!ELEMENT title         (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT sectiontitle  (#PCDATA | %Inline.phrase;)*>
 
 
 <!-- emacs-page
      Block elements -->
 
-<!ELEMENT quotation    (%block; | %Inline.phrase; | exdent)*>
-<!ELEMENT documentdescription (#PCDATA | %block; | %Inline.phrase;)*>
-<!ELEMENT example      (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT smallexample (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT lisp         (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT smalllisp    (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT cartouche    (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT copying      (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT format       (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT smallformat  (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT display      (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT smalldisplay (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT center       (#PCDATA | %block; | %Inline.phrase; | exdent)*>
-<!ELEMENT group        (#PCDATA | %block; | %Inline.phrase; | exdent)*>
+<!ELEMENT quotation    (quotationtype?, (%block; | exdent | author)*)>
+<!ELEMENT smallquotation    (quotationtype?, (%block; | exdent | author)*)>
+<!ELEMENT quotationtype (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT documentdescription (#PCDATA | %block;)*>
+<!ELEMENT example      (#PCDATA | %block; | exdent)*>
+<!ELEMENT smallexample (#PCDATA | %block; | exdent)*>
+<!ELEMENT lisp         (#PCDATA | %block; | exdent)*>
+<!ELEMENT smalllisp    (#PCDATA | %block; | exdent)*>
+<!ELEMENT cartouche    (#PCDATA | %block; | exdent)*>
+<!ELEMENT copying      (#PCDATA | %block; | exdent)*>
+<!ELEMENT format       (#PCDATA | %block; | exdent)*>
+<!ELEMENT smallformat  (#PCDATA | %block; | exdent)*>
+<!ELEMENT display      (#PCDATA | %block; | exdent)*>
+<!ELEMENT smalldisplay (#PCDATA | %block; | exdent)*>
+<!ELEMENT center       (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT group        (#PCDATA | %block; | exdent)*>
+<!ELEMENT flushleft    (#PCDATA | %block; | exdent)*>
+<!ELEMENT flushright   (#PCDATA | %block; | exdent)*>
 
 <!ELEMENT image        (alttext)>
 <!ELEMENT alttext      (#PCDATA)>
@@ -218,21 +238,15 @@
             height    CDATA #REQUIRED>
 
 <!-- Whitespace in these elements are always preserved -->
-<!ATTLIST example      xml:space (preserve) #FIXED 'preserve'>
-<!ATTLIST smallexample xml:space (preserve) #FIXED 'preserve'>
-<!ATTLIST lisp         xml:space (preserve) #FIXED 'preserve'>
-<!ATTLIST smalllisp    xml:space (preserve) #FIXED 'preserve'>
-<!ATTLIST display      xml:space (preserve) #FIXED 'preserve'>
-<!ATTLIST smalldisplay xml:space (preserve) #FIXED 'preserve'>
-<!ATTLIST format       xml:space (preserve) #FIXED 'preserve'>
-<!ATTLIST smallformat  xml:space (preserve) #FIXED 'preserve'>
-
 <!ELEMENT verbatim     (#PCDATA)>
 <!ATTLIST verbatim     xml:space (preserve) #FIXED 'preserve'>
 
-<!ELEMENT para         (#PCDATA | %Inline.phrase; | %lang;)*>
+<!-- author is there because it may happen in a quotation para -->
+<!ELEMENT para         (#PCDATA | %Inline.phrase; | %lang; | author)*>
 <!ATTLIST para
           role CDATA #IMPLIED>
+<!ELEMENT pre          (#PCDATA | %Inline.phrase; | %lang; | author)*>
+<!ATTLIST pre          xml:space (preserve) #FIXED 'preserve'>
 
 <!ELEMENT menu (menuentry | detailmenu | para)*>
 <!ELEMENT detailmenu (menuentry | para)*>
@@ -244,40 +258,69 @@
 <!-- Negative indentation in blocks -->
 <!ELEMENT exdent       (#PCDATA | %Inline.phrase;)*>
 
+<!ELEMENT verbatiminclude (#PCDATA)>
+<!ATTLIST verbatiminclude
+          file CDATA #REQUIRED>
+
 <!-- Floating displays -->
-<!ELEMENT float (floattype, floatpos, (%block;)*,
-                ((caption, shortcaption?) | (shortcaption, caption))?)>
+<!ELEMENT float (floattype?, floatname?, (%block;)*,
+                (caption | shortcaption)?)>
 <!ATTLIST float
-          name CDATA #IMPLIED>
-<!ELEMENT floattype (#PCDATA)>
-<!ELEMENT floatpos (#PCDATA)>
-<!ELEMENT caption (#PCDATA | %Inline.phrase;)*>
-<!ELEMENT shortcaption (#PCDATA | %Inline.phrase;)*>
-<!ELEMENT listoffloats EMPTY>
+          name CDATA #IMPLIED
+          type CDATA #IMPLIED>
+<!ELEMENT floattype (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT floatname (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT caption (#PCDATA | %block;)*>
+<!ELEMENT shortcaption (#PCDATA | %Inline.phrase; | para)*>
+<!ELEMENT listoffloats (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST listoffloats
           type CDATA #IMPLIED>
 
 <!-- Lists -->
-<!ELEMENT itemize (itemfunction, (item | itemize | enumerate | indexterm)*)>
-<!ELEMENT enumerate (item | itemize | enumerate | indexterm)*>
+<!ELEMENT itemize (itemprepend?, (listitem | itemize | enumerate | %indexentry.cmds;)*)>
+<!ATTLIST itemize
+          commandarg CDATA #IMPLIED>
+<!ELEMENT enumerate (listitem | itemize | enumerate | %indexentry.cmds;)*>
 <!ATTLIST enumerate
           first CDATA #IMPLIED>
 
-<!ELEMENT item (%block;)*>
+<!ELEMENT listitem (prepend?, (%block;)*)>
+<!ELEMENT prepend (#PCDATA | %Inline.phrase;)*>
 
-<!ELEMENT itemfunction (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT itemprepend (#PCDATA | %Inline.phrase;)*>
 
 <!-- Tables -->
-<!ELEMENT table (tableitem | indexterm)+>
-<!ELEMENT tableitem ((tableterm, indexterm*)+, item?)>
-<!ELEMENT tableterm (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT table (tableentry | %indexentry.cmds;)+>
+<!ATTLIST table
+          commandarg CDATA #IMPLIED>
+<!ELEMENT vtable (tableentry | %indexentry.cmds;)+>
+<!ATTLIST vtable
+          commandarg CDATA #IMPLIED>
+<!ELEMENT ftable (tableentry | %indexentry.cmds;)+>
+<!ATTLIST ftable
+          commandarg CDATA #IMPLIED>
+<!ELEMENT tableentry (tableterm, tableitem?)>
+<!ELEMENT tableterm (item,  (itemx | %indexentry.cmds;)*)>
+<!ELEMENT item (#PCDATA | %Inline.phrase; | itemformat | indexterm)*>
+<!ELEMENT itemx (#PCDATA | %Inline.phrase; | itemformat | indexterm)*>
+<!ELEMENT itemformat (#PCDATA | %Inline.phrase; | indexterm)*>
+<!ATTLIST itemformat
+          command   CDATA #REQUIRED>
+<!ELEMENT tableitem (#PCDATA | %block;)*>
 
-<!ELEMENT multitable (columnfraction*, thead?, tbody)>
-<!ELEMENT columnfraction (#PCDATA)>
+<!ELEMENT multitable ((columnfractions | columnprototypes), thead?, tbody)>
+<!ELEMENT columnfractions (columnfraction+)>
+<!ELEMENT columnprototypes (columnprototype+)>
+<!ELEMENT columnfraction EMPTY>
+<!ATTLIST columnfraction
+          value CDATA #REQUIRED>
+<!ELEMENT columnprototype (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT thead (row+)>
 <!ELEMENT tbody (row+)>
 <!ELEMENT row (entry*)>
-<!ELEMENT entry (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT entry (#PCDATA | %block;)*>
+<!ATTLIST entry
+          command   CDATA #REQUIRED>
 
 <!-- API definitions -->
 <!ELEMENT definition (definitionterm | definitionitem | indexterm)+>
@@ -300,9 +343,11 @@
 <!-- emacs-page
      Inline elements -->
 
+<!ELEMENT hyphenation (#PCDATA)>
+
 <!-- options -->
 <!ELEMENT frenchspacing (#PCDATA)> <!-- must be on or off -->
-<!ATTLIST frenchspacing val (%onoff;) 'off'>
+<!ATTLIST frenchspacing value (%onoff;) 'off'>
 
 <!-- emphasize -->
 <!ELEMENT strong (#PCDATA | %Inline.phrase;)*>
@@ -333,6 +378,7 @@
 <!ELEMENT kbd     (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT var     (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT url     (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT clicksequence (#PCDATA | %Inline.phrase;)*>
 
 <!ELEMENT acronym (acronymword, acronymdesc?)>
 <!ELEMENT acronymword (#PCDATA | %Inline.phrase;)*>
@@ -347,7 +393,7 @@
 <!ELEMENT dmn     (#PCDATA | %Inline.phrase;)*>
 
 <!-- reference -->
-<!ELEMENT anchor EMPTY>
+<!ELEMENT anchor (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST anchor
           name CDATA #IMPLIED>
 
@@ -366,13 +412,40 @@
 
 <!ELEMENT synindex  EMPTY>
 <!ATTLIST synindex
-          code      (yes|no) 'no'
+          from      NMTOKEN #REQUIRED
+          to        NMTOKEN #REQUIRED>
+<!ELEMENT syncodeindex  EMPTY>
+<!ATTLIST syncodeindex
           from      NMTOKEN #REQUIRED
           to        NMTOKEN #REQUIRED>
 <!ELEMENT indexterm (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST indexterm
           index CDATA #IMPLIED>
-<!ELEMENT printindex (#PCDATA)>
+<!ELEMENT indexcommand (indexterm)>
+<!ATTLIST indexcommand
+          command   CDATA #REQUIRED
+          index     CDATA #REQUIRED>
+<!ELEMENT cindex (indexterm)>
+<!ATTLIST cindex 
+          index     CDATA #REQUIRED>
+<!ELEMENT findex (indexterm)>
+<!ATTLIST findex 
+          index     CDATA #REQUIRED>
+<!ELEMENT kindex (indexterm)>
+<!ATTLIST kindex 
+          index     CDATA #REQUIRED>
+<!ELEMENT pindex (indexterm)>
+<!ATTLIST pindex 
+          index     CDATA #REQUIRED>
+<!ELEMENT tindex (indexterm)>
+<!ATTLIST tindex 
+          index     CDATA #REQUIRED>
+<!ELEMENT vindex (indexterm)>
+<!ATTLIST vindex 
+          index     CDATA #REQUIRED>
+<!ELEMENT printindex EMPTY>
+<!ATTLIST printindex
+          value     NMTOKEN #REQUIRED>
 
 <!ELEMENT email (emailaddress, emailname?)>
 <!ELEMENT emailaddress (#PCDATA | %Inline.phrase;)*>
@@ -383,7 +456,20 @@
 <!ELEMENT urefdesc        (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT urefreplacement (#PCDATA | %Inline.phrase;)*>
 
-<!ELEMENT footnote (para)>
+<!ELEMENT footnote (%block;)*>
+
+<!-- space and accent commands -->
+<!ELEMENT spacecmd EMPTY>
+<!ATTLIST spacecmd
+          type (%spacetype;) #IMPLIED>
+<!ELEMENT accent (#PCDATA | accent | dotless)*>
+<!ATTLIST accent
+          type        CDATA #REQUIRED>
+<!ELEMENT dotless (#PCDATA)>
+<!ELEMENT click  EMPTY>
+<!ATTLIST click
+          command        CDATA #REQUIRED>
+<!ELEMENT today EMPTY>
 
 
 <!-- emacs-page
@@ -394,6 +480,7 @@
           end-of-sentence (yes|no) #IMPLIED>
 <!ELEMENT logo      (#PCDATA)>
 <!ELEMENT linebreak EMPTY>
+<!ELEMENT noeos EMPTY>
 
 <!ENTITY tex        "<logo>TeX</logo>">
 <!ENTITY latex      "<logo>LaTeX</logo>">
@@ -407,7 +494,6 @@
 <!ENTITY pounds     "&#xa3;">
 <!ENTITY minus      "&#x2212;">
 <!ENTITY linebreak  "<linebreak/>">
-<!ENTITY space      " ">          <!-- Should become an element. -->
 <!ENTITY dots       "<punct end-of-sentence='no'>&#x2026;</punct>">
 <!ENTITY enddots    "<punct end-of-sentence='yes'>&#x2026;</punct>">
 <!ENTITY amp        "&#x26;">
@@ -415,20 +501,29 @@
 <!ENTITY rsquo      "&#x2019;">
 <!ENTITY sbquo      "&#x201a;">
 <!ENTITY ldquo      "&#x201c;">
+<!ENTITY textldquo      "&#x201c;">
 <!ENTITY rdquo      "&#x201d;">
+<!ENTITY textrdquo      "&#x201d;">
 <!ENTITY bdquo      "&#x201e;">
 <!ENTITY laquo      "&#xab;">
 <!ENTITY raquo      "&#xbb;">
 <!ENTITY lsaquo     "&#x2039;">
 <!ENTITY rsaquo     "&#x203a;">
-<!ENTITY mdash      "&#x2014;">
-<!ENTITY ndash      "&#x2013;">
+<!ENTITY textmdash      "&#x2014;">
+<!ENTITY textndash      "&#x2013;">
 <!ENTITY period     "<punct end-of-sentence='no'>.</punct>">
 <!ENTITY eosperiod  "<punct end-of-sentence='yes'>.</punct>">
 <!ENTITY quest      "<punct end-of-sentence='no'>?</punct>">
 <!ENTITY eosquest   "<punct end-of-sentence='yes'>?</punct>">
 <!ENTITY excl       "<punct end-of-sentence='no'>!</punct>">
 <!ENTITY eosexcl    "<punct end-of-sentence='yes'>!</punct>">
+<!ENTITY hyphenbreak "&#x00ad;">
+<!ENTITY slashbreak "/">
+<!ENTITY noeos      "<noeos/>">
+<!ENTITY arobase    "@">
+<!ENTITY lbrace     "}">
+<!ENTITY rbrace     "{">
+<!ENTITY nbsp       "&#xa0;">
 
 <!ENTITY auml "&#xe4;">
 <!ENTITY ouml "&#xf6;">
@@ -509,3 +604,5 @@
 <!ENTITY rArr "&#x21d2;">
 
 <!ENTITY macr "&#xaf;">
+
+<!ENTITY backslash  "\">
