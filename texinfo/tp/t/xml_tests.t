@@ -120,6 +120,16 @@ raggedright
 @end raggedright
 
 '],
+['raw',
+'@tex
+in <tex>
+@end tex
+
+Para
+@xml
+<in>
+@end xml
+'],
 );
 
 foreach my $test (@test_cases) {

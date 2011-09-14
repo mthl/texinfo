@@ -516,9 +516,15 @@ sub _convert($$;$)
   return '' if ($root->{'type'} and $ignored_types{$root->{'type'}});
   my $result = '';
   if (defined($root->{'text'})) {
-    return $root->{'text'} if ((defined($root->{'type'}) 
-                                and $root->{'type'} eq '_converted')
-                               or $self->{'document_context'}->[-1]->{'raw'});
+    if (defined($root->{'type'}) and $root->{'type'} eq '_converted') {
+      return $root->{'text'};
+    } elsif ($self->{'document_context'}->[-1]->{'raw'}) {
+      if ($root->{'type'} and $root->{'type'} eq 'empty_line_after_command') {
+        return '';
+      } else {
+        return $root->{'text'};
+      }
+    }
     $result = $self->xml_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
       if (!$self->{'document_context'}->[-1]->{'code'}) {
@@ -1106,7 +1112,7 @@ sub _convert($$;$)
       } elsif ($Texinfo::Common::block_commands{$root->{'cmdname'}} eq 'raw') {
         return '' if (!$self->{'expanded_formats_hash'}->{$root->{'cmdname'}});
         if ($root->{'cmdname'} eq 'docbook') {
-          # the context ids here only for the command, so this is forgotten
+          # the context is here only for the command, so this is forgotten
           # once al the raw internal text has been formatted
           $self->{'document_context'}->[-1]->{'raw'} = 1;
         }
@@ -1198,11 +1204,16 @@ sub _convert($$;$)
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
     #$result .= "</$root->{'cmdname'}>\n";
-    $result .= "\n";
-    if (exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
-      my $format = pop @{$self->{'document_context'}->[-1]->{'preformatted_stack'}};
-      die "BUG $format ne $docbook_preformatted_formats{$root->{'cmdname'}}"
-       if ($format ne $docbook_preformatted_formats{$root->{'cmdname'}});
+    if ($self->{'document_context'}->[-1]->{'raw'}) {
+      chomp ($result);
+      chomp ($result);
+    } else {
+      $result .= "\n";
+      if (exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
+        my $format = pop @{$self->{'document_context'}->[-1]->{'preformatted_stack'}};
+        die "BUG $format ne $docbook_preformatted_formats{$root->{'cmdname'}}"
+         if ($format ne $docbook_preformatted_formats{$root->{'cmdname'}});
+      }
     }
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};

@@ -2,6 +2,23 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
+xml_tests/raw
+
+ Para
+ @xml
+ <in>
+ @end xml
+
+leads to
+
+ <para>Para
+ <in>
+ </para>
+
+should be 
+ <para>Para
+ <in></para>
+
 @appendix should stop @part. Right now it do not do that.
 Cf sectioning_part_appendix.
 

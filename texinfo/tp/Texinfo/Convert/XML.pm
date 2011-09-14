@@ -88,8 +88,8 @@ my %specific_xml_commands_formatting = (
            'bullet' => '&bullet;',
            'copyright'    => '&copyright;',
            'registeredsymbol'   => '&registered;',
-           'dots'    => '&dots',
-           'enddots'    => '&enddots',
+           'dots'    => '&dots;',
+           'enddots'    => '&enddots;',
            'error'        => '&errorglyph;',
            'expansion'     => '&expansion;',
            'arrow'        => '&rarr;',
@@ -132,7 +132,7 @@ my %misc_command_line_attributes = (
   'setfilename' => 'file',
   'documentencoding' => 'encoding',
   'verbatiminclude' => 'file',
-  'documentlanguage' => 'language',
+  'documentlanguage' => 'xml:lang',
 );
 
 # FIXME printindex is special?
@@ -232,6 +232,7 @@ my %type_elements = (
 
 my %context_block_commands = (
   'float' => 1,
+  'xml' => 1,
 );
 
 sub _defaults($)
@@ -393,6 +394,14 @@ sub _convert($$;$)
   return '' if ($root->{'type'} and $ignored_types{$root->{'type'}});
   my $result = '';
   if (defined($root->{'text'})) {
+    if ($self->{'document_context'}->[-1]->{'raw'}) {
+      # ignore the newline at the end of the @xml line
+      if ($root->{'type'} and $root->{'type'} eq 'empty_line_after_command') {
+        return '';
+      } else {
+        return $root->{'text'};
+      }
+    }
     $result = $self->xml_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
       if (!$self->{'document_context'}->[-1]->{'code'}) {
@@ -737,71 +746,76 @@ sub _convert($$;$)
       } elsif ($root->{'cmdname'} eq 'verbatim') {
         $attribute = " xml:space=\"preserve\"";
       }
-      $result .= "<$root->{'cmdname'}${attribute}>";
-      my $end_line = '';
-      if ($root->{'args'}) {
-        if ($commands_args_elements{$root->{'cmdname'}}) {
-          my $arg_index = 0;
-          foreach my $element (@{$commands_args_elements{$root->{'cmdname'}}}) {
-            if (defined($root->{'args'}->[$arg_index])) {
-              my $in_code;
-               $in_code = 1
-                if (defined($default_args_code_style{$root->{'cmdname'}})
-                  and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
-              $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
-              my $arg;
-              if ($arg_index+1 eq scalar(@{$root->{'args'}})) {
-                # last argument
-                ($arg, $end_line) 
-                  = $self->_convert_argument_and_end_line($root->{'args'}->[$arg_index]);
+      if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}
+          and $root->{'cmdname'} eq 'xml') {
+        $self->{'document_context'}->[-1]->{'raw'} = 1;
+      } else {
+        $result .= "<$root->{'cmdname'}${attribute}>";
+        my $end_line = '';
+        if ($root->{'args'}) {
+          if ($commands_args_elements{$root->{'cmdname'}}) {
+            my $arg_index = 0;
+            foreach my $element (@{$commands_args_elements{$root->{'cmdname'}}}) {
+              if (defined($root->{'args'}->[$arg_index])) {
+                my $in_code;
+                 $in_code = 1
+                  if (defined($default_args_code_style{$root->{'cmdname'}})
+                    and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
+                $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+                my $arg;
+                if ($arg_index+1 eq scalar(@{$root->{'args'}})) {
+                  # last argument
+                  ($arg, $end_line) 
+                    = $self->_convert_argument_and_end_line($root->{'args'}->[$arg_index]);
+                } else {
+                  $arg = $self->_convert($root->{'args'}->[$arg_index]);
+                }
+                if ($arg ne '') {
+                  $result .= "<$element>$arg</$element>";
+                }
+                $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
               } else {
-                $arg = $self->_convert($root->{'args'}->[$arg_index]);
+                last;
               }
-              if ($arg ne '') {
-                $result .= "<$element>$arg</$element>";
-              }
-              $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
-            } else {
-              last;
-            }
-            $arg_index++;
-          }
-        } else {
-          my $contents_possible_comment;
-          if ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
-            if ($root->{'extra'}->{'prototypes'}) {
-              $result .= "<columnprototypes>";
-              foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
-                $result .= "<columnprototype>".$self->_convert($prototype)
-                           ."</columnprototype>";
-              }
-              $result .= "</columnprototypes>";
-              $contents_possible_comment 
-                = $root->{'args'}->[-1]->{'contents'};
-            } elsif ($root->{'extra'}->{'columnfractions'}) {
-              $result .= "<columnfractions>";
-              foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
-                $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
-              }
-              $result .= "</columnfractions>";
-              $contents_possible_comment 
-                = $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'}
-                  if ($root->{'args'}->[-1]->{'contents'}
-                      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}
-                      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'});
+              $arg_index++;
             }
           } else {
-            $contents_possible_comment = $root->{'args'}->[-1]->{'contents'}
-              if ($root->{'args'}->[-1]->{'contents'});
+            my $contents_possible_comment;
+            if ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
+              if ($root->{'extra'}->{'prototypes'}) {
+                $result .= "<columnprototypes>";
+                foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
+                  $result .= "<columnprototype>".$self->_convert($prototype)
+                             ."</columnprototype>";
+                }
+                $result .= "</columnprototypes>";
+                $contents_possible_comment 
+                  = $root->{'args'}->[-1]->{'contents'};
+              } elsif ($root->{'extra'}->{'columnfractions'}) {
+                $result .= "<columnfractions>";
+                foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
+                  $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
+                }
+                $result .= "</columnfractions>";
+                $contents_possible_comment 
+                  = $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'}
+                    if ($root->{'args'}->[-1]->{'contents'}
+                        and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}
+                        and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'});
+              }
+            } else {
+              $contents_possible_comment = $root->{'args'}->[-1]->{'contents'}
+                if ($root->{'args'}->[-1]->{'contents'});
+            }
+            
+            $end_line = $self->_end_line_or_comment($contents_possible_comment);
           }
-          
-          $end_line = $self->_end_line_or_comment($contents_possible_comment);
         }
+        $result .= $end_line;
+        #chomp($result);
+        #$result .= "\n";
+        unshift @close_elements, $root->{'cmdname'};
       }
-      $result .= $end_line;
-      #chomp($result);
-      #$result .= "\n";
-      unshift @close_elements, $root->{'cmdname'};
     }
   }
   if ($root->{'type'}) {
@@ -848,7 +862,7 @@ sub _convert($$;$)
               $element = $defcommand_name_type{$main_command};
             } elsif ($type eq 'arg') {
               $element = 'param';
-            } elsif ($type eq 'argtype') {
+            } elsif ($type eq 'typearg') {
               $element = 'paramtype';
             } else {
               $element = $type;
@@ -911,16 +925,22 @@ sub _convert($$;$)
     # FIXME The end of line and comment is taken into account 
     # but 'space_at_end' is ignored.
     my $end_command = $root->{'extra'}->{'end_command'}; 
-    my $end_line;
-    if ($end_command) {
-      $end_line 
-       = $self->_end_line_or_comment($end_command->{'args'}->[0]->{'contents'})
-         if ($end_command->{'args'}->[0]
-             and $end_command->{'args'}->[0]->{'contents'});
+    if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}
+        and $root->{'cmdname'} eq 'xml') {
+      chomp ($result);
+      chomp ($result);
     } else {
-      $end_line = "\n";
+      my $end_line;
+      if ($end_command) {
+        $end_line 
+         = $self->_end_line_or_comment($end_command->{'args'}->[0]->{'contents'})
+           if ($end_command->{'args'}->[0]
+               and $end_command->{'args'}->[0]->{'contents'});
+      } else {
+        $end_line = "\n";
+      }
+      $result .= $end_line;
     }
-    $result .= $end_line;
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
