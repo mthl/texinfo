@@ -272,7 +272,7 @@ our %misc_commands = (
   'printindex'        => 1,
   'listoffloats'      => 'line',
   # especially in titlepage
-  'shorttitle'        => 'line',
+#  'shorttitle'        => 'line',
   'shorttitlepage'    => 'line',
   'settitle'          => 'line',
   'author'            => 'line',

@@ -67,7 +67,7 @@ foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
 
 # anchor may appear in @center? @item/x?
 # going in node, sectioning 
-# not going in: pagesizes listoffloats shorttitle shorttitlepage 
+# not going in: pagesizes listoffloats shorttitlepage 
 #               settitle author subtitle title
 # index entries
 # footnote? section node

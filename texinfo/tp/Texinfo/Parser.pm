@@ -446,7 +446,7 @@ foreach my $global_multiple_command ('author', 'documentlanguage',
   'documentencoding', 'insertcopying',
   'subtitle', 'contents', 'shortcontents', 'summarycontents',
   'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
-  'frenchspacing', 'footnotestyle', 'hyphenation', 'urefbreakstyle',
+  'frenchspacing', 'hyphenation', 'urefbreakstyle',
   'xrefautomaticsectiontitle', 'codequoteundirected',
   'codequotebacktick', 'titlefont', 'footnote', 'printindex') {
   $global_multiple_commands{$global_multiple_command} = 1;
@@ -457,7 +457,7 @@ foreach my $global_unique_command ('title',
   'shorttitlepage', 'settitle', 'copying', 'documentdescription',
   'novalidate', 'titlepage',
   'setfilename', 'setcontentsaftertitlepage', 
-  'setshortcontentsaftertitlepage',
+  'setshortcontentsaftertitlepage', 'footnotestyle',
   'documentencoding', 'everyheadingmarks','everyfootingmarks',
   'evenheadingmarks', 'oddheadingmarks', 'evenfootingmarks', 'oddfootingmarks',
   'fonttextsize', 'pagesizes', 'setchapternewpage', 'top'

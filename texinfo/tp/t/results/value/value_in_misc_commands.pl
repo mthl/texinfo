@@ -3483,6 +3483,15 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':80: warning: Multiple @footnotestyle
+',
+    'file_name' => '',
+    'line_nr' => 80,
+    'macro' => '',
+    'text' => 'Multiple @footnotestyle',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':88: warning: @documentlanguage should only appear at a line beginning
 ',
     'file_name' => '',

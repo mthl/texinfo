@@ -1769,6 +1769,15 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':28: warning: Multiple @footnotestyle
+',
+    'file_name' => '',
+    'line_nr' => 28,
+    'macro' => '',
+    'text' => 'Multiple @footnotestyle',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':29: warning: @documentencoding should only appear at a line beginning
 ',
     'file_name' => '',
