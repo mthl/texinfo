@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.20 2011-09-15 20:05:07 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.21 2011-09-15 22:17:40 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -480,10 +480,12 @@
           type CDATA #IMPLIED>
 
 <!-- Lists -->
-<!ELEMENT itemize (itemprepend?, (listitem | %indexentry.cmds;)*)>
+<!ELEMENT itemize (itemprepend?, beforefirstitem?, 
+                   (listitem | %indexentry.cmds;)*)>
 <!ATTLIST itemize
           commandarg CDATA #IMPLIED>
-<!ELEMENT enumerate (enumeratefirst?, (listitem | %indexentry.cmds;)*)>
+<!ELEMENT enumerate (enumeratefirst?, beforefirstitem?,
+                     (listitem | %indexentry.cmds;)*)>
 <!ATTLIST enumerate
           first CDATA #IMPLIED>
 
@@ -491,15 +493,16 @@
 <!ELEMENT prepend (#PCDATA | %Inline.line;)*>
 
 <!ELEMENT itemprepend (#PCDATA | %Inline.line;)*>
+<!ELEMENT beforefirstitem (%block;)*>
 
 <!-- Tables -->
-<!ELEMENT table (tableentry | %indexentry.cmds;)+>
+<!ELEMENT table (beforefirstitem?, (tableentry | %indexentry.cmds;)+)>
 <!ATTLIST table
           commandarg CDATA #IMPLIED>
-<!ELEMENT vtable (tableentry | %indexentry.cmds;)+>
+<!ELEMENT vtable (beforefirstitem?, (tableentry | %indexentry.cmds;)+)>
 <!ATTLIST vtable
           commandarg CDATA #IMPLIED>
-<!ELEMENT ftable (tableentry | %indexentry.cmds;)+>
+<!ELEMENT ftable (beforefirstitem?, (tableentry | %indexentry.cmds;)+)>
 <!ATTLIST ftable
           commandarg CDATA #IMPLIED>
 <!ELEMENT tableentry (tableterm, tableitem?)>
@@ -512,7 +515,8 @@
           command   CDATA #REQUIRED>
 <!ELEMENT tableitem (%block;)*>
 
-<!ELEMENT multitable ((columnfractions | columnprototypes), thead?, tbody)>
+<!ELEMENT multitable ((columnfractions | columnprototypes), beforefirstitem?, 
+                      thead?, tbody)>
 <!ELEMENT columnfractions (columnfraction+)>
 <!ELEMENT columnprototypes (columnprototype+)>
 <!ELEMENT columnfraction EMPTY>
