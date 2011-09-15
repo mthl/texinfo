@@ -1846,8 +1846,8 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table'} = '<dl compact=
 
 
 $result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg="code">
-<!--  comment in table -->
-<tableentry><tableterm><item><itemformat command="code"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<beforefirstitem><!--  comment in table -->
+</beforefirstitem><tableentry><tableterm><item><itemformat command="code"><indexterm index="vr">a</indexterm>a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
@@ -1875,16 +1875,16 @@ $result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg
 </tableitem></tableentry></ftable>
 
 <table commandarg="code">
-<cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
+<beforefirstitem><cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
 <!--  comment in table -->
-<tableentry><tableterm><item><itemformat command="code">abb</itemformat></item>
+</beforefirstitem><tableentry><tableterm><item><itemformat command="code">abb</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
 <table commandarg="code">
-<cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
+<beforefirstitem><cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
 <para>Texte before first item.
-</para><tableentry><tableterm><item><itemformat command="code">abb</itemformat></item>
+</para></beforefirstitem><tableentry><tableterm><item><itemformat command="code">abb</itemformat></item>
 </tableterm></tableentry></table>
 ';
 

@@ -539,10 +539,10 @@ $result_converted{'html_text'}->{'empty_item_itemx'} = '<dl compact="compact">
 
 
 $result_converted{'xml'}->{'empty_item_itemx'} = '<vtable commandarg="asis">
-
+<beforefirstitem>
 <para>VTable
 </para>
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
+</beforefirstitem><tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
 <itemx><itemformat command="asis"></itemformat></itemx>
 <itemx><itemformat command="asis"><indexterm index="vr">after an empty itemx, before an empty item</indexterm>after an empty itemx, before an empty item</itemformat></itemx>
 </tableterm></tableentry><tableentry><tableterm><item><itemformat command="asis"> </itemformat></item>

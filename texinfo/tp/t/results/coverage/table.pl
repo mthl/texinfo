@@ -827,10 +827,10 @@ $result_converted{'xml'}->{'table'} = '
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="samp"><!--  samp -->
-<!--  after vtable -->
+<beforefirstitem><!--  after vtable -->
 <cindex index="cp"><indexterm index="cp">index entry</indexterm></cindex>
 
-<tableentry><tableterm><item><itemformat command="samp"><indexterm index="vr">vtable item</indexterm>vtable item</itemformat></item>
+</beforefirstitem><tableentry><tableterm><item><itemformat command="samp"><indexterm index="vr">vtable item</indexterm>vtable item</itemformat></item>
 <!--  after item -->
 <kindex index="ky"><indexterm index="ky">key</indexterm></kindex>
 <itemx><itemformat command="samp"><indexterm index="vr">itemx vtable</indexterm>itemx vtable <!--  comment in itemx line --></itemformat></itemx>

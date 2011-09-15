@@ -228,6 +228,7 @@ my %type_elements = (
   'multitable_head' => 'thead',
   'multitable_body' => 'tbody',
   'def_item' => 'definitionitem',
+  'before_item' => 'beforefirstitem',
 );
 
 my %context_block_commands = (
