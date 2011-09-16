@@ -91,6 +91,24 @@ Published
 
 @xref{in titlepage}.
 '],
+['ref_in_copying',
+'@copying
+@ref{GFDL}
+@end copying
+
+@node Top
+@top top
+
+@insertcopying
+
+@menu
+* GFDL::
+@end menu
+
+@node GFDL
+@chapter GFDL
+
+'],
 );
 
 foreach my $test (@test_formatted) {
