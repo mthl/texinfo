@@ -16,7 +16,7 @@ WriteMakefile(
                          },
     BUILD_REQUIRES    => {"Data::Compare" => 0,
                           "Test::Deep" => 0,
-                          "Test::More" => 0,
+                          "Test::More" => "0.88",
                           "Clone" => 0,
                          },
     PMLIBDIRS         => [ 'Texinfo' ],
