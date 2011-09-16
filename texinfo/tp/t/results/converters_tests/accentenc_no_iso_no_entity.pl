@@ -2920,7 +2920,7 @@ $result_converted{'html_text'}->{'accentenc_no_iso_no_entity'} = '<a name="Top">
 </p>
 <p>should be e=: &#275; &#275;
 </p>
-<p>should be e\'\': e\'\' e\'\'
+<p>should be e\'<!-- /@w -->\': e\'\' e\'\'
 </p>
 <p>should be e.: &#279; &#279;
 </p>

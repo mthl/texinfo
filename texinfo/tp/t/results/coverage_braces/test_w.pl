@@ -947,37 +947,38 @@ right-hand doubled.
 ';
 
 
-$result_converted{'html_text'}->{'test_w'} = '<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&nbsp;bbbbbbbbbbbbb&nbsp;bbbbb&nbsp;bbb&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;bb&nbsp;.&nbsp;ccc&nbsp;dddd.
+$result_converted{'html_text'}->{'test_w'} = '<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&nbsp;bbbbbbbbbbbbb&nbsp;bbbbb&nbsp;bbb&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;b&nbsp;bb&nbsp;.&nbsp;ccc&nbsp;dddd<!-- /@w -->.
 </p>
-<p>a a a a a a a a a a a a a a a a a a a a a a a a a a a a  b&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a
-</p>
-
-
-<p>&nbsp;a&nbsp;rr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ggg.
-</p>
-<p>AAbbb.
-</p>
-<p>FFdnnn.
-</p>
-<p>aa&nbsp;&nbsp;f&nbsp;&nbsp;fggg.
-</p>
-<p>aa2&nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;ggg2.
+<p>a a a a a a a a a a a a a a a a a a a a a a a a a a a a  b&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a<!-- /@w -->
 </p>
 
-<p>aa3 &nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;ggg3.
+<p><!-- /@w -->
+</p>
+<p>&nbsp;a&nbsp;rr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ggg.<!-- /@w -->
+</p>
+<p>AA<!-- /@w -->bbb.
+</p>
+<p>FFd<!-- /@w -->nnn.
+</p>
+<p>aa&nbsp;&nbsp;f&nbsp;&nbsp;f<!-- /@w -->ggg.
+</p>
+<p>aa2&nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;<!-- /@w -->ggg2.
 </p>
 
-<p>aa4 &nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp; ggg4.
+<p>aa3 &nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;<!-- /@w -->ggg3.
 </p>
-<p>aa5  ggg5.
+
+<p>aa4 &nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;<!-- /@w --> ggg4.
 </p>
-<p>aa6 ggg6.
+<p>aa5 <!-- /@w --> ggg5.
 </p>
-<p>aa6 ggg6.
+<p>aa6 <!-- /@w -->ggg6.
 </p>
-<p>aaf &nbsp; bbb.
+<p>aa6<!-- /@w --> ggg6.
 </p>
-<p>begin and end quotations: <tt>&lsquo;&lsquo;&hellip;&rsquo;&rsquo;</tt>.  This
+<p>aaf &nbsp;<!-- /@w --> bbb.
+</p>
+<p>begin and end quotations: <tt>&lsquo;<!-- /@w -->&lsquo;&hellip;&rsquo;<!-- /@w -->&rsquo;</tt><!-- /@w -->.  This
 convention should be followed in Texinfo files.  TeX converts
 two single quotes to left- and right-hand doubled.
 </p>';

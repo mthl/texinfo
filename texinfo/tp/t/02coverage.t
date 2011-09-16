@@ -32,6 +32,9 @@ Complex
 @\
 
 '],
+['empty_w',
+'@w{} @w{a b}.'
+],
 ['hyphenation',
 '
 @hyphenation{some-where }

@@ -2738,10 +2738,10 @@ Out of code &mdash; out-of-code.
 </pre></div>
 
 <p>In w:
-Out&nbsp;of&nbsp;code&nbsp;&mdash;&nbsp;<span class="nolinebreak">out-of-code.</span>&nbsp;<code>1aaa</code>&nbsp;<code><span class="nocodebreak">2aaa-</span></code>&nbsp;<code><span class="nocodebreak">-3bbb</span></code>&nbsp;<code><span class="nocodebreak">4aaa-bbb</span></code>&nbsp;&nbsp;<code>&nbsp;<span class="nocodebreak">5aaa-bb</span></code>&nbsp;<code><span class="nocodebreak">6aaa-bb</span>&nbsp;</code>&nbsp;<code>ccc&nbsp;<span class="nocodebreak">7aaa-bbb</span></code>&nbsp;<code>ccc&nbsp;<span class="nocodebreak">8aaa-bbb</span>&nbsp;ddd</code>&nbsp;<code><span class="nocodebreak">9aaa-bbb</span>&nbsp;<span class="nocodebreak">rrr_vv</span></code>&nbsp;&lsquo;<samp><span class="nocodebreak">fff--</span>&nbsp;<span class="nocodebreak">---</span>&nbsp;minus-b&nbsp;<span class="nocodebreak">aa-tt</span>&eacute;<span class="nocodebreak">ff_gg</span>&nbsp;aa<span class="roman"><span class="nocodebreak">r-oman</span></span>&nbsp;&nbsp;<span class="nocodebreak">anc-hor</span><a name="A-nodew"></a></samp>&rsquo;&nbsp;
+Out&nbsp;of&nbsp;code&nbsp;&mdash;&nbsp;<span class="nolinebreak">out-of-code.</span>&nbsp;<code>1aaa</code>&nbsp;<code><span class="nocodebreak">2aaa-</span></code>&nbsp;<code><span class="nocodebreak">-3bbb</span></code>&nbsp;<code><span class="nocodebreak">4aaa-bbb</span></code>&nbsp;&nbsp;<code>&nbsp;<span class="nocodebreak">5aaa-bb</span></code>&nbsp;<code><span class="nocodebreak">6aaa-bb</span>&nbsp;</code>&nbsp;<code>ccc&nbsp;<span class="nocodebreak">7aaa-bbb</span></code>&nbsp;<code>ccc&nbsp;<span class="nocodebreak">8aaa-bbb</span>&nbsp;ddd</code>&nbsp;<code><span class="nocodebreak">9aaa-bbb</span>&nbsp;<span class="nocodebreak">rrr_vv</span></code>&nbsp;&lsquo;<samp><span class="nocodebreak">fff--</span>&nbsp;<span class="nocodebreak">---</span>&nbsp;minus-b&nbsp;<span class="nocodebreak">aa-tt</span>&eacute;<span class="nocodebreak">ff_gg</span>&nbsp;aa<span class="roman"><span class="nocodebreak">r-oman</span></span>&nbsp;&nbsp;<span class="nocodebreak">anc-hor</span><a name="A-nodew"></a></samp>&rsquo;&nbsp;<!-- /@w -->
 </p>
 <div class="example">
-<pre class="example"><code>in-example</code>
+<pre class="example"><code>in-example</code><!-- /@w -->
 </pre></div>
 
 <p>After true

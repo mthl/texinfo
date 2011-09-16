@@ -1217,7 +1217,7 @@ my %style_commands_formatting;
 # in context command.
 my @all_style_commands = keys %{{ map { $_ => 1 } 
     (keys(%style_commands), keys(%{$style_attribute_commands{'normal'}}),
-     'w', 'dmn') }};
+     'dmn') }};
 
 foreach my $command(@all_style_commands) {
   # default is no attribute.
@@ -1298,6 +1298,20 @@ sub _convert_style_command($$$$)
   }
   return $text;
 }
+
+sub _convert_w_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+  my $text = $args->[0]->{'normal'};
+  if (!defined($text)) {
+    $text = '';
+  }
+  return $text . '<!-- /@w -->';
+}
+$default_commands_conversion{'w'} = \&_convert_w_command;
 
 sub _convert_value_command($$$$)
 {

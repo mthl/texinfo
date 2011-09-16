@@ -2942,7 +2942,7 @@ $result_converted{'html_text'}->{'accent'} = '<a name="Top"></a>
 </p>
 <p>should be e=: &#275; &#275;
 </p>
-<p>should be e&rsquo;&rsquo;: e\'\' e\'\'
+<p>should be e&rsquo;<!-- /@w -->&rsquo;: e\'\' e\'\'
 </p>
 <p>should be e.: &#279; &#279;
 </p>

@@ -153,8 +153,9 @@ my %style_attribute_commands;
 # in context command.
 my @all_style_commands = keys %{{ map { $_ => 1 }
     (keys(%Texinfo::Common::style_commands), keys(%style_attribute_commands),
-     'dmn', 'titlefont') }};
+     'w', 'dmn', 'titlefont') }};
 # 'w' is special
+my $w_command_mark = '<!-- /@w -->';
 
 my %style_commands_formatting;
 foreach my $command(@all_style_commands) {
@@ -766,7 +767,7 @@ sub _convert($$;$)
           pop @{$self->{'document_context'}};
         }
         if ($root->{'cmdname'} eq 'w') {
-          $result .= '<!-- /@w -->';
+          $result .= $w_command_mark;
         }
         return $result;
       } elsif ($root->{'cmdname'} eq 'anchor') {
@@ -1010,6 +1011,9 @@ sub _convert($$;$)
         # ignored command
         return '';
       }
+    # special case to ensure that @w leads to something even if empty
+    } elsif ($root->{'cmdname'} eq 'w') {
+      return $w_command_mark;
     } elsif (exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
       if ($context_block_commands{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
