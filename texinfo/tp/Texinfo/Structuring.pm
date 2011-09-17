@@ -59,6 +59,12 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
+=head1 NAME
+
+Texinfo::Structuring - Set informations in Texinfo::Parser tree and rearrange
+
+=cut
+
 my %types_to_enter;
 foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
     'paragraph') {
@@ -73,11 +79,6 @@ foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
 # footnote? section node
 # float printindex contents shortcontents
 # anchor
-
-# todo:
-# complete directions for nodes with automatic sectioning
-#     automatic sectioning: scalar(@{$node->{'extra'}->{'nodes_manuals'} != 1)
-# 
 
 # Not used for now
 sub _next_content($)

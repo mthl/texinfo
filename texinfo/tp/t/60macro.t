@@ -548,6 +548,19 @@ arg
 arg
 }
 ', {'values' => {'notes' => 1}}],
+['ifset_and_end_isef_in_macro',
+'@macro beginifset {}
+@ifset a
+@end macro
+
+@macro endifset {}
+@end ifset
+@end macro
+
+@beginifset
+in ifset
+@endifset
+'],
 # unmacro is required for C makeinfo to avoid a warning.
 # texi2dvi breaks.
 ['arg_body_expansion_order',

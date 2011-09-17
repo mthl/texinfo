@@ -1331,4 +1331,25 @@ Previous: <a href="#chapter-1" accesskey="p" rel="previous">chapter 1</a>, Up: <
 </html>
 ';
 
+
+$result_converted{'xml'}->{'two_nodes_between_chapters'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">chapter 1</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top><sectiontitle>top</sectiontitle>
+
+<menu>
+<menuentry><menunode>chapter 1</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>node between chapters</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>chapter 2</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+</top>
+<node name="chapter-1"><nodename>chapter 1</nodename><nodenext>Top</nodenext><nodeprev>node between chapters</nodeprev><nodeup>Top</nodeup></node><chapter><sectiontitle>chapter c1</sectiontitle>
+
+<node name="node-between-chapters"><nodename>node between chapters</nodename><nodenext automatic="on">chapter 2</nodenext><nodeprev automatic="on">chapter 1</nodeprev><nodeup automatic="on">Top</nodeup></node>
+
+</chapter>
+<node name="chapter-2"><nodename>chapter 2</nodename><nodeprev automatic="on">chapter 1</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>chapter c2</sectiontitle>
+</chapter>
+';
+
 1;

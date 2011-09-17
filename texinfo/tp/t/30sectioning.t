@@ -1467,7 +1467,7 @@ $test_text
 
 my @xml_tests_converted_tests = ('section_before_part', 'chapter_before_part', 
   'part_before_top', 'double_part', 'section_in_unnumbered_plaintext',
-  'two_unnumbered_no_argument');
+  'two_unnumbered_no_argument', 'two_nodes_between_chapters');
 
 foreach my $test (@tests_converted) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';

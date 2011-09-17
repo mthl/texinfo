@@ -810,13 +810,26 @@ sub output_texi_file($)
      unless (-d $dir);
   my $file = "${dir}$test_name.texi";
   open (OUTFILE, ">$file") or die ("Open $file: $!\n");
+  my $setfilename;
+  if ($test_text =~ /^\@setfilename/) {
+    $setfilename = ''
+  } else {
+    $setfilename = "\@setfilename $test_name.info\n";
+  }
+  my $node_top;
+  my $top = '';
+  if ($test_text =~ /^\@node +top *\@/i or $test_text =~ /^\@node +top *$/i) {
+    $node_top = "\@node Top\n";
+    unless ($test_text =~ /^\@top *\@/ or $test_text =~ /^\@top *$/) {
+      $node_top .= "\@top $test_name\n";
+    }
+  } else {
+    $node_top = '';
+  }
   print OUTFILE "\\input texinfo \@c -*-texinfo-*-
 
-\@setfilename $test_name.info
-
-\@node Top
-
-\@top $test_name
+$setfilename
+$node_top
 
 $test_text
 

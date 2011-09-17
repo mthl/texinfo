@@ -315,15 +315,7 @@ sub output($$)
   } else {
     $result .= $header;
   }
-  foreach my $content (@{$root->{'contents'}}) {
-    #print STDERR " --> $content\n";
-    my $output = $self->_convert($content);
-    if ($fh) {
-      print $fh $output;
-    } else {
-      $result .= $output;
-    }
-  }
+  $result .= $self->convert($root, $fh);
   my $footer = "</texinfo>\n";
   if ($fh) {
     print $fh $footer;
@@ -371,8 +363,25 @@ sub convert($$;$)
 {
   my $self = shift;
   my $root = shift;
+  my $fh = shift;
 
-  return $self->_convert($root);
+  my $result = '';
+  my $elements = Texinfo::Structuring::split_by_section($root);
+  if ($elements) {
+    foreach my $element (@$elements) {
+      if ($fh) {
+        print $fh $self->_convert($element);
+      } else {
+        $result .= $self->_convert($element);
+      }
+    }
+    return $result;
+  } elsif ($fh) {
+    print $fh $self->_convert($root);
+    return '';
+  } else {
+    return $self->_convert($root);
+  }
 }
 
 sub _convert($$;$);
@@ -429,7 +438,6 @@ sub _convert($$;$)
         if ($root->{'args'} and $root->{'args'}->[0]);
       $result .= '</accent>';
       return $result;
-   # } elsif ($root->{'cmdname'} eq 'item' and 
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
       if ($root->{'cmdname'} eq 'item'
@@ -593,6 +601,15 @@ sub _convert($$;$)
           return "<$command${attribute}>$arg</$command>$end_line";
         }
       } elsif ($type eq 'skipline') {
+        # the command associated with an element is closed at the end of the
+        # element. @bye is withing the element, but we want it to appear after
+        # the comand closing.  So we delay the output of @bye, and store it.
+        if ($root->{'cmdname'} eq 'bye' and $root->{'parent'}
+            and $root->{'parent'}->{'type'}
+            and $root->{'parent'}->{'type'} eq 'element') {
+          $self->{'pending_bye'} = "<$command></$command>\n";
+          return '';
+        }
         return "<$command></$command>\n";
       } elsif ($type eq 'noarg') {
         return "<$command></$command>";
@@ -945,9 +962,20 @@ sub _convert($$;$)
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
-  } elsif ($root->{'cmdname'} 
-           and $Texinfo::Common::root_commands{$root->{'cmdname'}}
-           and $root->{'cmdname'} ne 'node') {
+  # The command is closed either when the corresponding tree element
+  # is done, and the command is not associated to an element, or when
+  # the element is closed.
+  } elsif (($root->{'type'} and $root->{'type'} eq 'element')
+           or ($root->{'cmdname'} 
+               and $Texinfo::Common::root_commands{$root->{'cmdname'}}
+               and $root->{'cmdname'} ne 'node'
+               and !($root->{'parent'} and $root->{'parent'}->{'type'}
+                     and $root->{'parent'}->{'type'} eq 'element'
+                     and $root->{'parent'}->{'extra'} 
+                     and $root->{'parent'}->{'extra'}->{'element_command'} eq $root))) {
+    if ($root->{'type'} and $root->{'type'} eq 'element') {
+      $root = $root->{'extra'}->{'element_command'};
+    }
     my $command = $self->_level_corrected_section($root);
     if (!($root->{'section_childs'} and scalar(@{$root->{'section_childs'}}))
         or $command eq 'top') {
@@ -962,6 +990,10 @@ sub _convert($$;$)
         $current = $current->{'section_up'};
         $result .= '</'.$self->_level_corrected_section($current) .">\n";
       }
+    }
+    if ($self->{'pending_bye'}) {
+      $result .= $self->{'pending_bye'};
+      delete $self->{'pending_bye'};
     }
   }
   return $result;

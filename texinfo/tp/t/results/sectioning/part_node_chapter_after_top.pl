@@ -1137,11 +1137,11 @@ $result_converted{'xml'}->{'part_node_chapter_after_top'} = '<node name="Top"><n
 </pre></menudescription></menuentry><menuentry><menunode>chapter</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-</top>
 <part><sectiontitle>part</sectiontitle>
 
 <node name="a-node-after-part"><nodename>a node after part</nodename><nodenext>chapter</nodenext><nodeprev>Top</nodeprev><nodeup>Top</nodeup></node><para>After a node after part
 </para>
+</top>
 <node name="chapter"><nodename>chapter</nodename><nodeprev automatic="on">a node after part</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter><sectiontitle>chapter </sectiontitle>
 </chapter>
