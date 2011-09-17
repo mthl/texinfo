@@ -569,7 +569,7 @@ sub _convert($$;$)
           my $end_line;
           if ($root->{'args'}->[0]) {
             $end_line 
-              = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
+              = $self->_end_line_or_comment($root->{'args'}->[-1]->{'contents'});
           } else {
             $end_line = "\n";
           }
