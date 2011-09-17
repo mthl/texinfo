@@ -2531,9 +2531,9 @@ $result_converted{'xml'}->{'def'} = '
 <deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory> <deffunction>bidule machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
-<!--  comment -->
+<!-- comment -->
 <deffnx><definitionterm><indexterm index="fn">after</indexterm><defcategory>truc</defcategory> <deffunction>after</deffunction> <defparam>a</defparam> <defparam>deff</defparam> <defparam>item</defparam></definitionterm></deffnx>
-<!--  comment -->
+<!-- comment -->
 <deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 <definitionitem><para>Various deff lines
 </para></definitionitem></deffn>
@@ -2561,9 +2561,9 @@ $result_converted{'docbook'}->{'def'} = '
 <synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><emphasis type="bold"></emphasis>: <function>bidule machin</function></synopsis>
 <synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis type="bold">truc</emphasis>: <function>machin</function></synopsis>
 <synopsis><indexterm role="fn"><primary>followed</primary></indexterm><emphasis type="bold">truc</emphasis>: <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
-<!--  comment -->
+<!-- comment -->
 <synopsis><indexterm role="fn"><primary>after</primary></indexterm><emphasis type="bold">truc</emphasis>: <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
-<!--  comment -->
+<!-- comment -->
 <synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis type="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 <blockquote><para>Various deff lines
 </para></blockquote>

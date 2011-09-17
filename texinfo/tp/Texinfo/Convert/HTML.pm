@@ -1691,7 +1691,7 @@ $default_commands_conversion{'titlefont'} = \&_convert_titlefont_command;
 sub _default_comment($$) {
   my $self = shift;
   my $text = shift;
-  return $self->xml_default_comment($text);
+  return $self->xml_default_comment(' '.$text);
 }
 
 sub _default_heading_text($$$$$)

@@ -828,7 +828,7 @@ $result_converted{'xml'}->{'multitable'} = '
 <multitable><columnfractions><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
-<!--  comment in multitable -->
+<!-- comment in multitable -->
 </para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
@@ -843,7 +843,7 @@ $result_converted{'xml'}->{'multitable'} = '
 $result_converted{'docbook'}->{'multitable'} = '
 <informaltable><tgroup cols="2"><colspec colwidth="60*"></colspec><colspec colwidth="40*"></colspec><thead><row><entry><para>mu&#8211;ltitable headitem </para></entry><entry><para>another tab
 </para></entry></row></thead><tbody><row><entry><para>mu&#8211;ltitable item </para></entry><entry><para>multitable tab
-<!--  comment in multitable -->
+<!-- comment in multitable -->
 </para></entry></row><row><entry><para>mu&#8211;ltitable item 2 </para></entry><entry><para>multitable tab 2
 <indexterm role="cp"><primary>index entry within multitable</primary></indexterm>
 </para></entry></row><row><entry><para>lone mu&#8211;ltitable item

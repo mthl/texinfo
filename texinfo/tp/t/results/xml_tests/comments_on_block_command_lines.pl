@@ -2456,63 +2456,63 @@ $result_floats{'comments_on_block_command_lines'}{'f'}[0]{'extra'}{'end_command'
 
 
 
-$result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet"><!--  comm -->
+$result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet"><!-- comm -->
 <listitem><prepend>&bullet;</prepend><para>itemize it
 </para></listitem></itemize>
 
-<itemize><itemprepend>x </itemprepend><!--  comm -->
+<itemize><itemprepend>x </itemprepend><!-- comm -->
 <listitem><prepend>x</prepend><para>itemize xit
 </para></listitem></itemize>
 
-<itemize commandarg="bullet"><itemprepend>&bullet; </itemprepend><!--  comm -->
+<itemize commandarg="bullet"><itemprepend>&bullet; </itemprepend><!-- comm -->
 <listitem><prepend>&bullet;</prepend><para>itemize bulletit
 </para></listitem></itemize>
 
-<enumerate first="1"><!--  comm -->
+<enumerate first="1"><!-- comm -->
 <listitem><para>en
 </para></listitem></enumerate>
 
-<enumerate first="a"><enumeratefirst>a </enumeratefirst><!--  comm -->
+<enumerate first="a"><enumeratefirst>a </enumeratefirst><!-- comm -->
 <listitem><para>aen
 </para></listitem></enumerate>
 
-<table commandarg="asis"><!--  table -->
+<table commandarg="asis"><!-- table -->
 <tableentry><tableterm><item><itemformat command="asis">it</itemformat></item>
 </tableterm></tableentry></table>
 
-<quotation><!--  quot no arg -->
+<quotation><!-- quot no arg -->
 <para>Quot no arg
 </para></quotation>
 
-<quotation><quotationtype>quotarg </quotationtype><!--  quot arg -->
+<quotation><quotationtype>quotarg </quotationtype><!-- quot arg -->
 <para>Quot arg
 </para></quotation>
 
-<group><!--  comm -->
+<group><!-- comm -->
 <para>in gr
 </para></group>
 
-<example><!--  comm -->
+<example><!-- comm -->
 <pre xml:space="preserve">in ex
 </pre></example>
 
-<multitable><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions><!--  comm -->
+<multitable><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions><!-- comm -->
 <tbody><row><entry command="item"><para>a </para></entry><entry command="tab"><para>b
 </para></entry></row></tbody></multitable>
 
-<multitable><columnprototypes><columnprototype>aaa</columnprototype><columnprototype>bbb</columnprototype></columnprototypes><!--  c -->
+<multitable><columnprototypes><columnprototype>aaa</columnprototype><columnprototype>bbb</columnprototype></columnprototypes><!-- c -->
 <tbody><row><entry command="item"><para>aaa </para></entry><entry command="tab"><para>bbb
 </para></entry></row></tbody></multitable>
 
-<float name="g" type="f"><floattype>f</floattype><floatname>g </floatname><!--  comm -->
+<float name="g" type="f"><floattype>f</floattype><floatname>g </floatname><!-- comm -->
 <para>In f
 </para></float>
 
-<flushright><!--  comm -->
+<flushright><!-- comm -->
 <para>flushright
 </para></flushright>
 
-<raggedright><!--  comm -->
+<raggedright><!-- comm -->
 <para>raggedright
 </para></raggedright>
 

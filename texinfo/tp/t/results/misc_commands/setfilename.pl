@@ -286,9 +286,9 @@ $result_errors{'setfilename'} = [
 
 
 
-$result_converted{'xml'}->{'setfilename'} = '<setfilename file="file_comment">file_comment</setfilename><!--  comment -->
+$result_converted{'xml'}->{'setfilename'} = '<setfilename file="file_comment">file_comment</setfilename><!-- comment -->
 <setfilename file="file_and_spaces">file_and_spaces   </setfilename>
-<setfilename file="file_space_comment">file_space_comment </setfilename><!--  comment -->
+<setfilename file="file_space_comment">file_space_comment </setfilename><!-- comment -->
 <setfilename file="  name  "><spacecmd type="spc"/><verb delimiter=":"> name </verb><spacecmd type="spc"/></setfilename>
 
 ';

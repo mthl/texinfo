@@ -141,7 +141,7 @@ $result_converted{'html_text'}->{'comment_on_group_line'} = '<p>in group.
 </p>';
 
 
-$result_converted{'xml'}->{'comment_on_group_line'} = '<group><!--  comment -->
+$result_converted{'xml'}->{'comment_on_group_line'} = '<group><!-- comment -->
 <para>in group.
 </para></group>
 ';

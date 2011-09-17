@@ -693,7 +693,7 @@ sub xml_default_comment($$)
   my $text = shift;
   chomp $text;
   $text =~ s/--+/-/go;
-  return '<!-- ' . $text . ' -->' . "\n";
+  return '<!--' . $text . ' -->' . "\n";
 }
 
 our %xml_accent_entities = (
