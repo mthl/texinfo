@@ -424,6 +424,9 @@ sub nodes_tree ($)
                     Texinfo::Parser::_node_extra_to_texi($node->{'extra'})), 
                        $node->{'line_nr'});
     }
+    #print STDERR "Processing "
+    #  .Texinfo::Parser::_node_extra_to_texi($node->{'extra'})."\n";
+   
     my $automatic_directions = 
       (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
 
@@ -487,7 +490,9 @@ sub nodes_tree ($)
               and $top_node_up->{'extra'}->{'manual_content'}
               and ((!defined($node_direction->{'normalized'})
                     and !defined($top_node_up->{'extra'}->{'normalized'}))
-                   or $node_direction->{'normalized'} eq $top_node_up->{'extra'}->{'normalized'})
+                   or (defined($node_direction->{'normalized'}) 
+                       and defined($top_node_up->{'extra'}->{'normalized'})
+                       and $node_direction->{'normalized'} eq $top_node_up->{'extra'}->{'normalized'}))
               and (Texinfo::Convert::NodeNameNormalization::normalize_node(
                      {'contents' => $node_direction->{'manual_content'}})
                   eq Texinfo::Convert::NodeNameNormalization::normalize_node(

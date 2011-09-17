@@ -889,6 +889,9 @@ $section_in_unnumbered_text
 @node first
 ',{'TOP_NODE_UP' => ''}
 ],
+['node_up_direction_for_top_with_manual',
+'@node Top,,,(dir)top
+'],
 ['internal_top_node_up',
 '@node Top
 @top internal top node up
