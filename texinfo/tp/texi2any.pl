@@ -189,6 +189,7 @@ require Texinfo::Convert::HTML;
 require Texinfo::Convert::XML;
 require Texinfo::Convert::DocBook;
 require DebugTexinfo::DebugCount;
+require DebugTexinfo::DebugTree;
 
 # determine configuration directories.
 
@@ -698,6 +699,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
        $format = set_format('html');
        _set_variables_texi2html();
        $parser_default_options->{'values'}->{'texi2html'} = 1;
+     } elsif ($var eq 'DEBUGTREE') {
+       $format = 'debugtree';
      } else {
        set_from_cmdline ($var, $value);
      # this is very wrong, but a way to avoid a spurious warning.
@@ -798,6 +801,10 @@ my %formats_table = (
              'floats' => 1,
              'converter' => sub{DebugTexinfo::DebugCount->converter(@_)},
            },
+  'debugtree' => {
+     'split' => 1,
+     'converter' => sub{DebugTexinfo::DebugTree->converter(@_)},
+  },
 );
 
 if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 

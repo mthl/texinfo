@@ -26,6 +26,7 @@ Texinfo/Convert/Paragraph.pm
 Texinfo/Convert/Line.pm
 Texinfo/Convert/Unicode.pm
 DebugTexinfo/DebugCount.pm
+DebugTexinfo/DebugTree.pm
 t/27float.t
 t/test_count.t
 t/03coverage_braces.t
