@@ -864,16 +864,19 @@ sub _convert($$;$)
                         $section_name_contents}) ."</link>";
               if ($root->{'cmdname'} eq 'ref') {
                 return $self->_convert(
-                        $self->gdt('{title_ref}', {'type' => '_converted',
-                              'text' => $argument}));
+                        $self->gdt('{title_ref}', {'title_ref' => 
+                             {'type' => '_converted',
+                              'text' => $argument}}));
               } elsif ($root->{'cmdname'} eq 'xref') {
                 return $self->_convert(
-                        $self->gdt('See {title_ref}', {'type' => '_converted',
-                              'text' => $argument}));
+                        $self->gdt('See {title_ref}', {'title_ref' =>
+                             {'type' => '_converted',
+                              'text' => $argument}}));
               } elsif ($root->{'cmdname'} eq 'pxref') {
                 return $self->_convert(
-                        $self->gdt('(see {title_ref})', {'type' => '_converted',
-                              'text' => $argument}));
+                        $self->gdt('(see {title_ref})', {'title_ref' =>
+                             {'type' => '_converted',
+                              'text' => $argument}}));
               }
             }
           }
