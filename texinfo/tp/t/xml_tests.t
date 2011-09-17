@@ -130,6 +130,9 @@ Para
 <in>
 @end xml
 '],
+['node_no_section',
+'@node Top
+'],
 );
 
 foreach my $test (@test_cases) {

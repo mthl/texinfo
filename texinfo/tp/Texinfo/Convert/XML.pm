@@ -965,7 +965,8 @@ sub _convert($$;$)
   # The command is closed either when the corresponding tree element
   # is done, and the command is not associated to an element, or when
   # the element is closed.
-  } elsif (($root->{'type'} and $root->{'type'} eq 'element')
+  } elsif (($root->{'type'} and $root->{'type'} eq 'element'
+            and $root->{'extra'} and $root->{'extra'}->{'element_command'})
            or ($root->{'cmdname'} 
                and $Texinfo::Common::root_commands{$root->{'cmdname'}}
                and $root->{'cmdname'} ne 'node'
