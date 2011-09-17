@@ -325,43 +325,20 @@ sub _initialize_document($$)
   return $elements;
 }
 
-sub convert($$)
+sub convert($$;$)
 {
   my $self = shift;
   my $root = shift;
+  my $fh = shift;
 
   my $elements = $self->_initialize_document($root);
-
-  my $result = '';
-  if (!defined($elements)) {
-    $result = $self->_convert($root);
-  } else {
-    foreach my $element (@$elements) {
-      my $element_text = $self->_convert($element);
-      $result .= $element_text;
-    }
-  }
-
-  return $result;
+  return $self->_convert_document_sections($root, $fh);
 }
 
 sub _normalize_top_node($)
 {
   my $node = shift;
   return Texinfo::Common::normalize_top_node($node);
-}
-
-# output fo $fh if defined, otherwise return the text.
-sub _output_text($$)
-{
-  my $text = shift;
-  my $fh = shift;
-  if ($fh) {
-    print $fh $text;
-    return '';
-  } else {
-    return $text;
-  }
 }
 
 sub output($$)
@@ -401,16 +378,9 @@ sub output($$)
 '. "<book${id} lang=\"".$self->get_conf('documentlanguage') ."\">\n";
 
   my $result = '';
-  $result .= _output_text($header, $fh);
-  if (!defined($elements)) {
-    $result .= _output_text($self->_convert($root), $fh);
-  } else {
-    foreach my $element (@$elements) {
-      $result .= _output_text($self->_convert($root), $fh);
-    }
-  }
-
-  $result .= _output_text("</book>\n", $fh);
+  $result .= Texinfo::Convert::Converter::_output_text($header, $fh);
+  $result .= $self->convert($root, $fh);
+  $result .= Texinfo::Convert::Converter::_output_text("</book>\n", $fh);
   return $result;
 }
 
@@ -1225,9 +1195,21 @@ sub _convert($$;$)
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
-  } elsif ($root->{'cmdname'} 
-           and $Texinfo::Common::root_commands{$root->{'cmdname'}}
-           and $root->{'cmdname'} ne 'node') {
+  # The command is closed either when the corresponding tree element
+  # is done, and the command is not associated to an element, or when
+  # the element is closed.
+  } elsif (($root->{'type'} and $root->{'type'} eq 'element'
+            and $root->{'extra'} and $root->{'extra'}->{'element_command'})
+           or ($root->{'cmdname'} 
+               and $Texinfo::Common::root_commands{$root->{'cmdname'}}
+               and $root->{'cmdname'} ne 'node'
+               and !($root->{'parent'} and $root->{'parent'}->{'type'}
+                     and $root->{'parent'}->{'type'} eq 'element'
+                     and $root->{'parent'}->{'extra'} 
+                     and $root->{'parent'}->{'extra'}->{'element_command'} eq $root))) {
+    if ($root->{'type'} and $root->{'type'} eq 'element') {
+      $root = $root->{'extra'}->{'element_command'};
+    }
     my $command = $self->_docbook_section_element($root);
     my $command_texi = $self->_level_corrected_section($root);
     if (!($root->{'section_childs'} and scalar(@{$root->{'section_childs'}}))

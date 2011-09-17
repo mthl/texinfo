@@ -310,18 +310,10 @@ sub output($$)
   }
 
   my $result = '';
-  if ($fh) {
-    print $fh $header;
-  } else {
-    $result .= $header;
-  }
+  $result .= Texinfo::Convert::Converter::_output_text($header, $fh);
   $result .= $self->convert($root, $fh);
-  my $footer = "</texinfo>\n";
-  if ($fh) {
-    print $fh $footer;
-  } else {
-    $result .= $footer;
-  }
+  $result .= Texinfo::Convert::Converter::_output_text("</texinfo>\n", $fh);
+
   return $result;
 }
 
@@ -364,24 +356,8 @@ sub convert($$;$)
   my $self = shift;
   my $root = shift;
   my $fh = shift;
-
-  my $result = '';
-  my $elements = Texinfo::Structuring::split_by_section($root);
-  if ($elements) {
-    foreach my $element (@$elements) {
-      if ($fh) {
-        print $fh $self->_convert($element);
-      } else {
-        $result .= $self->_convert($element);
-      }
-    }
-    return $result;
-  } elsif ($fh) {
-    print $fh $self->_convert($root);
-    return '';
-  } else {
-    return $self->_convert($root);
-  }
+  
+  return $self->_convert_document_sections($root, $fh);
 }
 
 sub _convert($$;$);

@@ -542,6 +542,37 @@ sub _level_corrected_section($$)
   return $command;
 }
 
+# output fo $fh if defined, otherwise return the text.
+sub _output_text($$)
+{
+  my $text = shift;
+  my $fh = shift;
+  if ($fh) { 
+    print $fh $text;
+    return '';
+  } else {
+    return $text;
+  } 
+}   
+
+sub _convert_document_sections($$;$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $fh = shift;
+
+  my $result = '';
+  my $elements = Texinfo::Structuring::split_by_section($root);
+  if ($elements) {
+    foreach my $element (@$elements) {
+      $result .= _output_text ($self->_convert($element), $fh);
+    }
+    return $result;
+  } else {
+    return _output_text ($self->_convert($root), $fh);
+  }
+}
+
 my @inline_types = ('def_line', 'paragraph', 'preformatted',
   'misc_command_arg', 'misc_line_arg', 'block_line_arg',
   'menu_entry_name', 'menu_entry_node');
