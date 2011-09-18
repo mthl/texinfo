@@ -290,6 +290,7 @@ our %default_configuration = (
   'documentlanguage' => undef, 
                               # Current documentlanguage set by 
                               # @documentlanguage
+  # FIXME not used?
   'ENABLE_ENCODING' => 1,     # corresponds to --enable-encoding.
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
   'TOP_NODE_UP' => '(dir)',   # up node of Top node
@@ -4983,28 +4984,163 @@ __END__
 
 =head1 NAME
 
-Texinfo::Parser - Perl extension for blah blah blah
+Texinfo::Parser - Parse Texinfo code in a Perl tree
 
 =head1 SYNOPSIS
 
   use Texinfo::Parser;
-  blah blah blah
+  my $parser = Texinfo::Parser::parser();
+  my $tree = $parser->parse_texi_file("somefile.texi");
+  my ($errors, $errors_count) = $parser->errors();
+  foreach my $error_message (@$errors) {
+    warn $error_message->{'error_line'};
+  }
+
+  my ($index_names, $merged_indices_hash, $index_entries_arrays)
+      = $parser->indices_information();
+  my $float_types_arrays = $parser->floats_information();
+  my $internal_references_array
+    = $parser->internal_references_information();
+  # An hash reference on normalized node/float/anchor names
+  my $labels_information = $parser->labels_information();
+  # A hash reference, keys are @-command names, value is an 
+  # array reference holding all the corresponding @-commands.
+  my $global_commands_information = $parser->global_commands_information();
+  # a hash reference on some document informations (encodings, 
+  # input file name, dircategory and direntry list, for exampel).
+  my $global_informations = $parser->global_informations();
 
 =head1 DESCRIPTION
 
-Stub documentation for Texinfo::Parser, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
+Texinfo::Parser will parse Texinfo text into a perl tree.  In one pass
+it expands user defined @-commands, conditionals (@ifset, @ifinfo...)
+and @value and constructs the tree.  Some extra information is gathered
+while doing the tree, for example the block command associated with @end,
+the number of row in a multitable, the node associated with a section.
 
-Blah blah blah.
+
+
 
 =head2 EXPORT
 
 None by default.
 
 
+=head2 METHODS
+
+The following method is used to construct a new C<Texinfo::Parser> object:
+
+=over
+
+=item $parser = Texinfo::Parser::parser($options);
+
+This method creates a new parser.  The options may be provided as a hash
+reference.  There are two types of options.  The first type of options
+change the way the parser behave, they are described right here.  The 
+other type of options allow to give to the parser some information as if 
+it came from texinfo code, for example allow to set aliases (as with 
+C<@alias>), values (as with C<@set>), merged indices (as with 
+C<@synindex>).  These options are described below in L</TEXINFO PARSER OPTIONS>.
+
+=over
+
+=item SHOW_MENU
+
+If false, no menu related error are reported.  Default is true.
+
+=item expanded_formats
+
+An array reference of the output formats for which C<@ifI<FORMAT>> 
+conditional blocks should be expanded.  Default is empty.
+
+The raw block formats (within C<@html> blocks, for example) are 
+alwyas kept.
+
+=item include_directories
+
+An array reference of directories in which C<@include> files should be 
+searched for.  Default contains the working directory, F<.>.
+
+=item INLINE_INSERTCOPYING
+
+If set, C<@insertcopying> is replaced by the C<@copying> content as if
+C<@insertcopying> was a user-defined macro.  In the default case, it is 
+considered to be a simple @-command and kept as is in the tree.
+
+=item IGNORE_BEFORE_SETFILENAME
+
+If set, and C<@setfilename> exists, everything before C<@setfilename>
+is put in a special container type, @C<preamble_before_setfilename>.
+This option is set in the default case.
+
+=item gettext
+
+If set, the function reference is used to translate error and warning
+messages.  It takes a string as argument and returns a string.  The default 
+function returns the error message as is.
+
+=item MAX_MACRO_CALL_NESTING
+
+Maximal number of nested user-defined macro calls.  Default is 100000.
+
+=begin :comment
+
+Used by Sectioning only
+=item TOP_NODE_UP
+
+Text for the up node of the Top node.  The default is C<(dir)>.  The
+string may contain @-commands.
+
+=end :comment
+
+=back
+
+=back
+
+=head2 TEXINFO PARSER OPTIONS
+
+=over
+
+=item aliases
+
+A hash reference.  The key is a command name, the value is the alias, as
+could be set by C<@alias>.
+
+=item explained_commands
+
+A hash reference of explained commands (currently abbr or acronym).
+The value is also a hash reference.  The key of this hash is a normalized
+first argument of these commands, the value is a content array
+corresponding to the explanation associated with this first argument.
+
+For example giving as an option:
+
+  'explained_commands' 
+    => {'acronym' => {'EU' => [{'text' => 'European Union'}]} 
+
+is the same as having the following texinfo code in the document:
+
+  @acronym{EU, European Union}
+
+=item indices
+
+If it is a hash reference, the keys are index names, the values are
+index prefix hash references.  The index prefix hash reference values are
+prefix, the value is set if the corresponding index entries should be
+formatted as if in C<@code>.
+
+If it is an array reference, it is a list of index names, as if they were
+entered as
+
+  @defindex name
+
+=back
 
 =head1 SEE ALSO
+
+L<Texinfo manual|http://www.gnu.org/s/texinfo/manual/texinfo/>
+
+=begin :comment
 
 Mention other useful documentation such as the documentation of
 related modules or operating system documentation (such as man pages
@@ -5015,9 +5151,11 @@ If you have a mailing list set up for your module, mention it here.
 
 If you have a web site set up for your module, mention it here.
 
+=end :comment
+
 =head1 AUTHOR
 
-Patrice Dumas, E<lt>dumas@E<gt>
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
@@ -5025,8 +5163,8 @@ Copyright (C) 2010 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3 of the License,
-# or (at your option) any later version.
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
 
 
 =cut

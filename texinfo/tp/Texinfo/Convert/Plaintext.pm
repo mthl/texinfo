@@ -221,6 +221,7 @@ my %upper_case_commands = (
 
 my %ignored_types;
 foreach my $type ('empty_line_after_command', 'preamble',
+            'preamble_before_setfilename',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
             'empty_spaces_after_close_brace', 

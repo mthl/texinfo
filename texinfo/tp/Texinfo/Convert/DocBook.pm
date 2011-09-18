@@ -235,6 +235,7 @@ my %def_argument_types_docbook = (
 my %ignored_types;
 foreach my $type ('empty_line_after_command',
             'preamble',
+            'preamble_before_setfilename',
             'empty_spaces_after_command', 
             'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
