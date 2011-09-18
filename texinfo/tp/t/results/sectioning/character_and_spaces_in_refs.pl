@@ -2139,8 +2139,8 @@ Test refs
 Testing distant nodes
 ---------------------
 
-*note a node: (manual)a node.  *note :: (manual):.  *note top:
-(manual)top.  *note (texinfo)Cross References:: *note node:
+*note a node: (manual)a node. *note :: (manual):. *note top:
+(manual)top. *note (texinfo)Cross References:: *note node:
 (../manual/doc.texi)node.
 
 Testing local nodes
@@ -2174,10 +2174,10 @@ File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
 
 Tag Table:
 Node: Top52
-Node: other nodes467
-Node: !_"#$%&\'()*+-.648
-Node: /;<=>?[\\]^_`|~742
-Node: local node835
+Node: other nodes464
+Node: !_"#$%&\'()*+-.645
+Node: /;<=>?[\\]^_`|~739
+Node: local node832
 
 End Tag Table
 ';

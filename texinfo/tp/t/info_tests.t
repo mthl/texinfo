@@ -92,6 +92,7 @@ Para2@footnote{Footnote 2.}.
 '@node Top
 
 Hey (@pxref{(m) in pxref}) and continue (@pxref{(m) in pxref, name}) and end.
+@pxref{(m) n}. @pxref{(m) n, name}.
 '],
 ['contents_setcontentsaftertitlepage_before_node',
 '

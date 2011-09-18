@@ -701,7 +701,7 @@ File: ,  Node: Top,  Up: (dir)
 comma:: after ref.  `*note (m)in ref followed by end command::\'.
 
    *note name: (m)in ref followed by comma, *note name: (m)in ref not
-followed by comma.  after ref.  `*note name: (m)in ref followed by end
+followed by comma. after ref.  `*note name: (m)in ref followed by end
 command.\'.  *note name: (m)in ref ending with a dot. after ref.
 
 
