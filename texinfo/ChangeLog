@@ -1,5 +1,10 @@
 2011-09-18  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Node Line Requirements): parens are 
+	disallowed specifically when confused with external manuals,
+	not always.  Discussion in thread of 18 Sep 2011 09:16:27,
+	and bug http://savannah.gnu.org/bugs/?33373.
+
 	* doc/texinfo.txi (HTML Xref Command Expansion): be more
 	specific about quotation cmds being replaced, not quote chars.
 

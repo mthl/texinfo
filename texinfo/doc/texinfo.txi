@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.382 2011-09-18 18:50:24 karl Exp $
+@c $Id: texinfo.txi,v 1.383 2011-09-18 23:24:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5228,9 +5228,11 @@ limitation will be removed some day.
 @cindex Characters, invalid in node name
 @cindex Invalid characters in node names
 @cindex Node names, invalid characters in
-Unfortunately, you cannot use periods, commas, colons or parentheses
-within a node name; these confuse the Texinfo processors.  Perhaps
-this limitation will be removed some day, too.
+Unfortunately, you cannot use periods, commas, or colons within a node
+name; these confuse the Texinfo processors.  Also, a node name may not
+start with a left parenthesis and contain a right parenthesis, as in
+@code{(not)allowed}; this specifies an external manual in Info.
+Perhaps these limitations will be removed some day, too.
 
 @need 700
 For example, the following is a section title in this manual:
@@ -23211,7 +23213,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.382 2011-09-18 18:50:24 karl Exp $
+$Id: texinfo.txi,v 1.383 2011-09-18 23:24:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23290,7 +23292,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.382 2011-09-18 18:50:24 karl Exp $
+@comment $Id: texinfo.txi,v 1.383 2011-09-18 23:24:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
