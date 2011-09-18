@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.381 2011-05-23 23:35:51 karl Exp $
+@c $Id: texinfo.txi,v 1.382 2011-09-18 18:50:24 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14539,6 +14539,9 @@ macros with @command{makeinfo} by invoking @command{texi2dvi} with the
 As mentioned earlier, macro names must consist entirely of letters.
 
 @item
+Macros may take at most nine arguments.
+
+@item
 It is not advisable to redefine any @TeX{} primitive, plain, or
 Texinfo command name as a macro. Unfortunately this is a very large
 set of names, and the possible resulting errors are unpredictable.
@@ -18528,8 +18531,10 @@ characters to @samp{-}, etc., according to the other rules.
 @item @code{@@tie}              @tab (space)
 @end multitable
 
-Quotation mark commands are likewise replaced by their Unicode values
-(@pxref{Inserting Quotation Marks}).
+Quotation mark commands (@code{@@quotedblright@{@}} and the like), are
+likewise replaced by their Unicode values.  Normal quotation
+@emph{characters} (` and ') are not altered.  @xref{Inserting
+Quotation Marks}.
 
 An @code{@@acronym} or @code{@@abbr} command is replaced by the first
 argument, followed by the second argument in parentheses, if present.
@@ -19559,7 +19564,7 @@ names.  The input file names' directories are available.
 @item @@command_handler_init
 Called as soon as the input file names are known.  It may be at
 different moments: before processing anything, right after
-@code{@@setfilename}, or at the end of pass@tie{0} (after
+@code{@@setfilename}, or at the end of pass@tie{}0 (after
 @code{@@macro} and @code{@@include} expansions).  At that time the
 information available is essentially just the input file names.
 
@@ -23206,7 +23211,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.381 2011-05-23 23:35:51 karl Exp $
+$Id: texinfo.txi,v 1.382 2011-09-18 18:50:24 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23285,7 +23290,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.381 2011-05-23 23:35:51 karl Exp $
+@comment $Id: texinfo.txi,v 1.382 2011-09-18 18:50:24 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
