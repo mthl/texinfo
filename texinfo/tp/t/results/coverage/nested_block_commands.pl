@@ -2572,98 +2572,50 @@ $result_converted{'xml'}->{'nested_block_commands'} = '<group>
 ';
 
 
-$result_converted{'docbook'}->{'nested_block_commands'} = '
+$result_converted{'docbook'}->{'nested_block_commands'} = '<para>In group
+</para><blockquote><para>in quotation
+</para></blockquote>
+<blockquote><para>in quotation
+</para></blockquote>
 <para>In group
-</para><blockquote>
-<para>in quotation
-</para></blockquote>
-
-
-
-<blockquote>
-<para>in quotation
-</para></blockquote>
-
-
-
-<para>In group
-</para><blockquote>
-<para>in quotation
-</para></blockquote>
-<para>after quotation
+</para><blockquote><para>in quotation
+</para></blockquote><para>after quotation
 </para>
 
-
-
 <para>In group sp b
-</para><blockquote>
-<para>in quotation
+</para><blockquote><para>in quotation
 </para></blockquote>
-
-
-
 
 <para>In group sp b a
 </para>
-<blockquote>
-<para>in quotation
+<blockquote><para>in quotation
 </para></blockquote>
-
-
-
 <para>In group sp a
 </para>
-<blockquote>
-<para>in quotation
+<blockquote><para>in quotation
 </para></blockquote>
-
-
-
 <blockquote>
-
 <para>in quotation sp b
 </para></blockquote>
-
-
-
 <blockquote>
-
 <para>in quotation sp b a
 </para>
 </blockquote>
-
-
-
-<blockquote>
-<para>in quotation sp a
+<blockquote><para>in quotation sp a
 </para>
 </blockquote>
-
-
-
-<blockquote>
-<para>in quotation
+<blockquote><para>in quotation
 </para></blockquote>
-
 <para>After quotation sp b
 </para>
-
-
-<blockquote>
-<para>in quotation
-</para></blockquote>
-<para>After quotation sp a
+<blockquote><para>in quotation
+</para></blockquote><para>After quotation sp a
 </para>
 
-
-
-<blockquote>
-<para>in quotation
+<blockquote><para>in quotation
 </para></blockquote>
-
 <para>After quotation sp b a
 </para>
-
 ';
 
 1;

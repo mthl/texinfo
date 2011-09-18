@@ -287,23 +287,16 @@ $result_converted{'xml'}->{'insertcopying'} = '<copying>
 ';
 
 
-$result_converted{'docbook'}->{'insertcopying'} = '<bookinfo><legalnotice>
-<para>License.
+$result_converted{'docbook'}->{'insertcopying'} = '<bookinfo><legalnotice><para>License.
 </para>
-<blockquote> 
-<para>You are not allowed.
-</para></blockquote>
-</legalnotice></bookinfo>
-
+<blockquote><para>You are not allowed.
+</para></blockquote></legalnotice></bookinfo>
 <para>License:
 </para>
-
 <para>License.
 </para>
-<blockquote> 
-<para>You are not allowed.
+<blockquote><para>You are not allowed.
 </para></blockquote>
-
 ';
 
 1;

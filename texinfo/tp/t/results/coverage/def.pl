@@ -2544,12 +2544,10 @@ $result_converted{'docbook'}->{'def'} = '
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><emphasis type="bold">c--ategory</emphasis>: <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
-
 <synopsis><indexterm role="fn"><primary>de--ffn_name</primary></indexterm><emphasis type="bold">cate--gory</emphasis>: <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
 </replaceable> <replaceable>even</replaceable> <replaceable>more</replaceable> <replaceable>so</replaceable></synopsis>
 <blockquote><para>def&#8211;fn
 </para></blockquote>
-
 <synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis type="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis type="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><emphasis type="bold">Command</emphasis>: <function>log trap</function> <replaceable></replaceable></synopsis>
@@ -2566,7 +2564,6 @@ $result_converted{'docbook'}->{'def'} = '
 <!-- comment -->
 <synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis type="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 <blockquote><para>Various deff lines
-</para></blockquote>
-';
+</para></blockquote>';
 
 1;

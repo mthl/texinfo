@@ -118,9 +118,7 @@ $result_converted{'xml'}->{'cartouche'} = '<cartouche>
 </para></cartouche>';
 
 
-$result_converted{'docbook'}->{'cartouche'} = '
-<para>in cartouche.
-</para>
-';
+$result_converted{'docbook'}->{'cartouche'} = '<para>in cartouche.
+</para>';
 
 1;

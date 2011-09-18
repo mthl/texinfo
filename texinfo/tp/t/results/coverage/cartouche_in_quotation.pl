@@ -243,13 +243,9 @@ $result_converted{'xml'}->{'cartouche_in_quotation'} = '<quotation>
 ';
 
 
-$result_converted{'docbook'}->{'cartouche_in_quotation'} = '<blockquote>
-<para>In quotation
-</para>
-<para>In cartouche in quotation
-</para>
-<para>end quotation
-</para></blockquote>
-';
+$result_converted{'docbook'}->{'cartouche_in_quotation'} = '<blockquote><para>In quotation
+</para><para>In cartouche in quotation
+</para><para>end quotation
+</para></blockquote>';
 
 1;

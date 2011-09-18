@@ -845,16 +845,14 @@ $result_converted{'docbook'}->{'table'} = '
 </term><listitem>
 <para>In table
 </para></listitem></varlistentry></variablelist>
-
 <variablelist><!-- after vtable -->
 <indexterm role="cp"><primary>index entry</primary></indexterm>
 
-<varlistentry><term>&#8216;<literal>vtable item
-</literal>&#8217;</term><!-- after item -->
+<varlistentry><term>&#8216;<literal>vtable item</literal>&#8217;
+</term><!-- after item -->
 <indexterm role="ky"><primary>key</primary></indexterm>
-<term>&#8216;<literal>itemx vtable <!-- comment in itemx line -->
-</literal>&#8217;</term><listitem>
-</listitem></varlistentry></variablelist>
-';
+<term>&#8216;<literal>itemx vtable</literal>&#8217;
+</term><listitem>
+</listitem></varlistentry></variablelist>';
 
 1;

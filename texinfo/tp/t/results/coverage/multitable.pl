@@ -848,9 +848,7 @@ $result_converted{'docbook'}->{'multitable'} = '
 <indexterm role="cp"><primary>index entry within multitable</primary></indexterm>
 </para></entry></row><row><entry><para>lone mu&#8211;ltitable item
 </para></entry></row></tbody></tgroup></informaltable>
-
 <informaltable><tgroup cols="2"><colspec colwidth="4*"></colspec><colspec colwidth="6*"></colspec><tbody><row><entry><para>truc </para></entry><entry><para>bidule
-</para></entry></row></tbody></tgroup></informaltable>
-';
+</para></entry></row></tbody></tgroup></informaltable>';
 
 1;

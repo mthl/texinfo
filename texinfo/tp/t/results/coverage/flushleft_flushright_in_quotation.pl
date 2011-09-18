@@ -336,15 +336,9 @@ $result_converted{'xml'}->{'flushleft_flushright_in_quotation'} = '
 
 
 $result_converted{'docbook'}->{'flushleft_flushright_in_quotation'} = '
-<blockquote>
-
-<para>f l
+<blockquote><para>f l
 </para>
-
-
 <para>f r
-</para>
-</blockquote>
-';
+</para></blockquote>';
 
 1;

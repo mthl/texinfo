@@ -34,12 +34,6 @@ not begin with an end of line
 Is it right or not?
 
 
-Mail Karl about   Xref Command Expansion
-
- Quotation mark commands are likewise replaced by their Unicode values
-(*note Inserting Quotation Marks::).
-
-
 remove _*directions('This' and replace with new API. Done?
 
 There should be an error message (report by Tom Tromey) in 

@@ -202,8 +202,7 @@ $result_converted{'xml'}->{'table_command_comment'} = '<table commandarg="code">
 </tableterm></tableentry></table>';
 
 
-$result_converted{'docbook'}->{'table_command_comment'} = '<variablelist><varlistentry><term><literal>item
-</literal></term></varlistentry></variablelist>
-';
+$result_converted{'docbook'}->{'table_command_comment'} = '<variablelist><varlistentry><term><literal>item</literal>
+</term></varlistentry></variablelist>';
 
 1;

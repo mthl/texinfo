@@ -296,11 +296,9 @@ quotation continues.
 $result_converted{'docbook'}->{'quotation_author'} = '<blockquote><attribution>First Author</attribution>
 <attribution>S&#7869;cond author</attribution>
 
-
 <para>quotation
 quotation continues.
 </para>
-</blockquote>
-';
+</blockquote>';
 
 1;

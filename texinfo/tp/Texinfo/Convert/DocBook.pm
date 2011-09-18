@@ -228,15 +228,15 @@ my %def_argument_types_docbook = (
   'type' => ['returnvalue'],
   'class' => ['ooclass', 'classname'],
   'arg' => ['replaceable'],
-  'argtype' => ['type'],
+  'typearg' => ['type'],
 );
 
 
 my %ignored_types;
-foreach my $type (#'empty_line_after_command',
+foreach my $type ('empty_line_after_command',
             'preamble',
             'empty_spaces_after_command', 
-            #'spaces_at_end',
+            'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
             'empty_spaces_after_close_brace', 
             'empty_space_at_end_def_bracketed',
@@ -264,6 +264,7 @@ my %context_block_commands = (
 );
 
 my %docbook_preformatted_formats = (
+# command
    'example' => 'screen',
    'smallexample' => 'screen',
    'display' => 'literallayout',
@@ -271,7 +272,10 @@ my %docbook_preformatted_formats = (
    'lisp' => 'programlisting',
    'smalllisp' => 'programlisting',
    'format' => 'abstract',
-   'smallformat' => 'screen'
+   'smallformat' => 'screen',
+# type
+   'menu_comment' => 'literallayout',
+   'menu_description' => 'literallayout',
 );
 
 sub _defaults($)
@@ -550,7 +554,13 @@ sub _convert($$;$)
         my $table_command = $root->{'parent'}->{'parent'}->{'parent'};
         my $format_item_command;
         my $arg_tree;
-        my $tree = $root->{'args'}->[0];
+        my $content_tree;
+        #my $content_tree = $root->{'args'}->[0];
+        if ($root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
+          $content_tree = $root->{'extra'}->{'misc_content'};
+        } else {
+          $content_tree = [];
+        }
         if ($table_command->{'extra'} 
             and $table_command->{'extra'}->{'command_as_argument'}) {
           my $command_as_argument
@@ -558,18 +568,18 @@ sub _convert($$;$)
           if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
             $arg_tree = {'cmdname' => $command_as_argument->{'cmdname'},
                      'args' => [{'type' => 'brace_command_arg',
-                              'contents' => [$tree]}]
+                              'contents' => $content_tree}]
             };
           } else {
             $arg_tree = {'cmdname' => $command_as_argument->{'cmdname'},
                           'type' => $command_as_argument->{'type'},
                           'extra' => $command_as_argument->{'extra'},
                      'args' => [{'type' => 'brace_command_arg',
-                                'contents' => [$tree]}]
+                                'contents' => $content_tree}]
             };
           }
         } else {
-          $arg_tree = $tree;
+          $arg_tree = $root->{'args'}->[0];
         }
         $result .= "<term>";
         # Is it automaticcally entered in docbook?  No.
@@ -583,6 +593,8 @@ sub _convert($$;$)
         $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
         $result .= $self->_convert($arg_tree);
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+        chomp ($result);
+        $result .= "\n";
         $result .= "</term>";
       } else {
         unless (($root->{'cmdname'} eq 'item' 
@@ -631,8 +643,25 @@ sub _convert($$;$)
           }
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
           my $attribute;
+          my $label = '';
+          if (defined($root->{'number'})
+            and ($self->get_conf('NUMBER_SECTIONS')
+                 or !defined($self->get_conf('NUMBER_SECTIONS')))) {
+            # Looking at docbook2html output, Appendix is appended in the 
+            # section title, so only the letter is used.
+            #if ($root->{'cmdname'} eq 'appendix' and $root->{'level'} == 1) {
+            #  $label = Texinfo::Convert::Text::convert($self->gdt(
+            #      'Appendix {number}', {'number' => 
+            #                                 {'text' => $root->{'number'}}}),
+            #                            {'converter' => $self});
+            #} else {
+            #  $label = $root->{'number'};
+            #}
+            $label = $root->{'number'};
+          }
+          $attribute = " label=\"$label\"";
           if ($root->{'extra'} and $root->{'extra'}->{'associated_node'}) {
-            $attribute = " id=\"$root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'}\"";
+            $attribute .= " id=\"$root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'}\"";
           }
           $command = $self->_docbook_section_element($root);
           $result .= "<$command${attribute}>\n";
@@ -640,12 +669,18 @@ sub _convert($$;$)
             my ($arg, $end_line)
               = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
             $result .= "<title>$arg</title>$end_line";
+            chomp ($result);
+            $result .= "\n";
           }
         } elsif ($Texinfo::Common::sectioning_commands{$root->{'cmdname'}}) {
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
               = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
-            return "<bridgehead renderas=\"$docbook_sections{$root->{'cmdname'}}\">$arg</bridgehead>$end_line";
+            $result .= 
+              "<bridgehead renderas=\"$docbook_sections{$root->{'cmdname'}}\">$arg</bridgehead>$end_line";
+            chomp ($result);
+            $result .= "\n";
+            return $result;
           }
           return '';
         } else {
@@ -654,10 +689,13 @@ sub _convert($$;$)
             my ($arg, $end_line)
               = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
             if ($command eq '') {
-              return "$arg$end_line";
+              $result .= "$arg$end_line";
             } else {
-              return "<$command${attribute}>$arg</$command>$end_line";
+              $result .= "<$command${attribute}>$arg</$command>$end_line";
             }
+            chomp ($result);
+            $result .= "\n";
+            return $result;
           }
           return '';
         }
@@ -670,7 +708,6 @@ sub _convert($$;$)
             return '';
           }
         } else {
-        #return "<$command></$command>\n";
           return '';
         }
       } elsif ($type eq 'special') {
@@ -819,7 +856,7 @@ sub _convert($$;$)
                       'book' => $book_contents }));
               } elsif ($root->{'cmdname'} eq 'pxref') {
                 return $self->_convert(
-                  $self->gdt('(see section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}})',
+                  $self->gdt('see section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}',
                     { 'section_name' => {'contents' => $section_name_contents},
                       'book' => $book_contents }));
               }
@@ -844,7 +881,7 @@ sub _convert($$;$)
                               'text' => $argument}}));
               } elsif ($root->{'cmdname'} eq 'pxref') {
                 return $self->_convert(
-                        $self->gdt('(see {title_ref})', {'title_ref' =>
+                        $self->gdt('see {title_ref}', {'title_ref' =>
                              {'type' => '_converted',
                               'text' => $argument}}));
               }
@@ -859,23 +896,25 @@ sub _convert($$;$)
            {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
            {'code' => 1});
           my $element;
-          if ($self->_is_inline($root)) {
-            $element = 'inlinemediaobject';
+          my $is_inline = $self->_is_inline($root);
+          if ($is_inline) {
+            $result .= "<inlinemediaobject>";
           } else {
-            $element = 'mediaobject';
+            $result .= "<informalfigure><mediaobject>";
           }
-          $result .= "<$element>";
           my @files;
           foreach my $extension (@docbook_image_extensions) {
-            if ($self->Texinfo::Common::locate_include_file ($basefile.$extension)) {
-              push @files, ["$basefile.$extension", $extension];
+            if ($self->Texinfo::Common::locate_include_file ("$basefile.$extension")) {
+              push @files, ["$basefile.$extension", uc($extension)];
             }
           }
           if (!scalar(@files)) {
-            push @files, ["$basefile.jpg", 'jpg'];
+            push @files, ["$basefile.jpg", 'JPG'];
           }
           foreach my $file (@files) {
-            $result .= "<imageobject><imagedata fileref=\"$file->[0]\" format=\"$file->[1]\"></imagedata></imageobject>";
+            $result .= "<imageobject><imagedata fileref=\""
+               .$self->xml_protect_text($file->[0])
+               ."\" format=\"$file->[1]\"></imagedata></imageobject>";
           }
           my $image_text
             = $self->Texinfo::Convert::Plaintext::_image_text($root, $basefile);
@@ -884,7 +923,11 @@ sub _convert($$;$)
                .$self->xml_protect_text($image_text)
                .'</literallayout></textobject>';
           }
-          $result .= "</$element>";
+          if ($is_inline) {
+            $result .= "</inlinemediaobject>";
+          } else {
+            $result .= "</mediaobject></informalfigure>";
+          }
         }
       } elsif ($root->{'cmdname'} eq 'email') {
         if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
@@ -1017,6 +1060,7 @@ sub _convert($$;$)
         push @elements, 'variablelist';
       } elsif ($root->{'cmdname'} eq 'itemize') {
         push @elements, 'itemizedlist';
+        #push @attributes, " mark=\"\"";
       } elsif ($root->{'cmdname'} eq 'multitable') {
         push @elements, "informaltable";
         push @attributes, '';
@@ -1093,6 +1137,8 @@ sub _convert($$;$)
           # once al the raw internal text has been formatted
           $self->{'document_context'}->[-1]->{'raw'} = 1;
         }
+      } elsif ($Texinfo::Common::menu_commands{$root->{'cmdname'}}) {
+        return '';
       }
       foreach my $element (@elements) {
         my $attribute = shift @attributes;
@@ -1104,6 +1150,10 @@ sub _convert($$;$)
     }
   }
   if ($root->{'type'}) {
+    if (exists($docbook_preformatted_formats{$root->{'type'}})) {
+      push @{$self->{'document_context'}->[-1]->{'preformatted_stack'}}, 
+         $docbook_preformatted_formats{$root->{'type'}};
+    }
     if (defined($type_elements{$root->{'type'}})) {
       $result .= "<$type_elements{$root->{'type'}}>";
     } elsif ($root->{'type'} eq 'preformatted') {
@@ -1131,6 +1181,10 @@ sub _convert($$;$)
           } elsif ($type eq 'name') {
             $result .= "<$defcommand_name_type{$main_command}>$content</$defcommand_name_type{$main_command}>";
           } else {
+            if (!defined($def_argument_types_docbook{$type})) {
+              print STDERR "BUG: no def_argument_types_docbook for $type\n";
+              next;
+            }
             foreach my $element (reverse (
                                    @{$def_argument_types_docbook{$type}})) {
               $content = "<$element>$content</$element>";
@@ -1185,7 +1239,7 @@ sub _convert($$;$)
       chomp ($result);
       chomp ($result);
     } else {
-      $result .= "\n";
+      #$result .= "\n";
       if (exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
         my $format = pop @{$self->{'document_context'}->[-1]->{'preformatted_stack'}};
         die "BUG $format ne $docbook_preformatted_formats{$root->{'cmdname'}}"
@@ -1195,6 +1249,10 @@ sub _convert($$;$)
     if ($context_block_commands{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
+  } elsif ($root->{'type'} and exists($docbook_preformatted_formats{$root->{'type'}})) {
+    my $format = pop @{$self->{'document_context'}->[-1]->{'preformatted_stack'}};
+    die "BUG $format ne $docbook_preformatted_formats{$root->{'type'}}"
+      if ($format ne $docbook_preformatted_formats{$root->{'type'}});
   # The command is closed either when the corresponding tree element
   # is done, and the command is not associated to an element, or when
   # the element is closed.

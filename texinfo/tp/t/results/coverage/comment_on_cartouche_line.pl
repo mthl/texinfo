@@ -150,7 +150,6 @@ $result_converted{'xml'}->{'comment_on_cartouche_line'} = '<cartouche><!-- comme
 
 
 $result_converted{'docbook'}->{'comment_on_cartouche_line'} = '<para>in cartouche.
-</para>
-';
+</para>';
 
 1;

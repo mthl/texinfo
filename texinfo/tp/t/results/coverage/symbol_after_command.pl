@@ -681,7 +681,6 @@ $result_converted{'docbook'}->{'symbol_after_command'} = '<variablelist><varlist
 </term></varlistentry><varlistentry><term>&#8221; quotes
 </term></varlistentry><varlistentry><term>: colon
 </term></varlistentry></variablelist>
-
 <para>@. {, @@ ?, !: @{ @&#8221; @:
 </para>';
 

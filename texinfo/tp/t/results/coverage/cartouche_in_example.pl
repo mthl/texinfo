@@ -243,13 +243,9 @@ $result_converted{'xml'}->{'cartouche_in_example'} = '<example>
 ';
 
 
-$result_converted{'docbook'}->{'cartouche_in_example'} = '
-<screen>In example
-</screen>
-<screen>In cartouche in example
-</screen>
-<screen>end example
-</screen>
-';
+$result_converted{'docbook'}->{'cartouche_in_example'} = '<screen>In example
+</screen><screen>In cartouche in example
+</screen><screen>end example
+</screen>';
 
 1;
