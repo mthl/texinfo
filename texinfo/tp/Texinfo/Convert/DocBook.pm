@@ -494,11 +494,7 @@ sub _convert($$;$)
     if (defined($root->{'type'}) and $root->{'type'} eq '_converted') {
       return $root->{'text'};
     } elsif ($self->{'document_context'}->[-1]->{'raw'}) {
-      if ($root->{'type'} and $root->{'type'} eq 'empty_line_after_command') {
-        return '';
-      } else {
-        return $root->{'text'};
-      }
+      return $root->{'text'};
     }
     $result = $self->xml_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
@@ -529,7 +525,6 @@ sub _convert($$;$)
       return $self->_convert(Texinfo::Common::expand_today($self));
     } elsif ($Texinfo::Common::accent_commands{$root->{'cmdname'}}) {
       return $self->xml_accents($root, undef, \&docbook_accent);#, $self->in_upper_case());
-   # } elsif ($root->{'cmdname'} eq 'item' and 
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
       if ($root->{'cmdname'} eq 'item'
@@ -1177,7 +1172,7 @@ sub _convert($$;$)
           if ($type eq 'spaces' or $type eq 'delimiter') {
             $result .= $content;
           } elsif ($type eq 'category') {
-            $result .= "<emphasis type=\"bold\">$content</emphasis>:";
+            $result .= "<emphasis role=\"bold\">$content</emphasis>:";
           } elsif ($type eq 'name') {
             $result .= "<$defcommand_name_type{$main_command}>$content</$defcommand_name_type{$main_command}>";
           } else {
@@ -1234,12 +1229,13 @@ sub _convert($$;$)
   }
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
+    # a pending_prepend still there may happen if a quotation is empty.
+    delete $self->{'pending_prepend'};
     #$result .= "</$root->{'cmdname'}>\n";
     if ($self->{'document_context'}->[-1]->{'raw'}) {
       chomp ($result);
       chomp ($result);
     } else {
-      #$result .= "\n";
       if (exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
         my $format = pop @{$self->{'document_context'}->[-1]->{'preformatted_stack'}};
         die "BUG $format ne $docbook_preformatted_formats{$root->{'cmdname'}}"

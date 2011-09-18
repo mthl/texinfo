@@ -448,4 +448,24 @@ $result_converted{'plaintext'}->{'empty_quotation'} = '     Empty:
 
      : ';
 
+
+$result_converted{'xml'}->{'empty_quotation'} = '<quotation>
+</quotation>
+
+<quotation><quotationtype>Empty</quotationtype>
+</quotation>
+
+<quotation><quotationtype><asis></asis></quotationtype>
+</quotation>
+
+<quotation><quotationtype>&linebreak;</quotationtype>
+</quotation>
+';
+
+
+$result_converted{'docbook'}->{'empty_quotation'} = '<blockquote></blockquote>
+<blockquote></blockquote>
+<blockquote></blockquote>
+<blockquote></blockquote>';
+
 1;

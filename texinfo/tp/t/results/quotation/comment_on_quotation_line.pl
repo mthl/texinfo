@@ -155,4 +155,14 @@ $result_errors{'comment_on_quotation_line'} = [];
 $result_converted{'plaintext'}->{'comment_on_quotation_line'} = '     truc : In quotation
 ';
 
+
+$result_converted{'xml'}->{'comment_on_quotation_line'} = '<quotation><quotationtype>truc<spacecmd type="spc"/></quotationtype><!-- quotation  -->
+<para>In quotation
+</para></quotation>
+';
+
+
+$result_converted{'docbook'}->{'comment_on_quotation_line'} = '<blockquote><para><emphasis role="bold">truc&#160;:</emphasis> In quotation
+</para></blockquote>';
+
 1;

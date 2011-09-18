@@ -137,4 +137,14 @@ $result_errors{'only_comment_on_quotation_line'} = [];
 $result_converted{'plaintext'}->{'only_comment_on_quotation_line'} = '     In quotation
 ';
 
+
+$result_converted{'xml'}->{'only_comment_on_quotation_line'} = '<quotation><!-- comment -->
+<para>In quotation
+</para></quotation>
+';
+
+
+$result_converted{'docbook'}->{'only_comment_on_quotation_line'} = '<blockquote><para>In quotation
+</para></blockquote>';
+
 1;

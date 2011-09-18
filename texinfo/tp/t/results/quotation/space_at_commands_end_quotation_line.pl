@@ -353,4 +353,21 @@ $result_converted{'plaintext'}->{'space_at_commands_end_quotation_line'} = '    
      @  at the end of line  : A @  at the end of the @quotation line.
 ';
 
+
+$result_converted{'xml'}->{'space_at_commands_end_quotation_line'} = '
+<quotation><quotationtype>&arobase; at the end of line <spacecmd type="nl"/></quotationtype><para>A &arobase; at the end of the &arobase;quotation line.
+</para></quotation>
+
+<quotation><quotationtype>&arobase;<spacecmd type="spc"/> at the end of line <spacecmd type="spc"/></quotationtype>
+<para>A &arobase;<spacecmd type="spc"/> at the end of the &arobase;quotation line.
+</para></quotation>
+';
+
+
+$result_converted{'docbook'}->{'space_at_commands_end_quotation_line'} = '
+<blockquote><para><emphasis role="bold">@ at the end of line &#160;:</emphasis> A @ at the end of the @quotation line.
+</para></blockquote>
+<blockquote><para><emphasis role="bold">@&#160; at the end of line &#160;:</emphasis> A @&#160; at the end of the @quotation line.
+</para></blockquote>';
+
 1;

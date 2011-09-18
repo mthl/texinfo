@@ -77,7 +77,9 @@ In quotation
 our ($arg_test_case, $arg_generate, $arg_debug);
 
 foreach my $test (@test_cases) {
-  $test->[2]->{'test_formats'} = ['plaintext'];
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
+  push @{$test->[2]->{'test_formats'}}, 'xml';
+  push @{$test->[2]->{'test_formats'}}, 'docbook';
 }
 
 run_all ('quotation', \@test_cases, $arg_test_case,

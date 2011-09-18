@@ -786,4 +786,44 @@ $result_converted{'plaintext'}->{'standard_quotations'} = '     Note: A Note
      Warning: a Warning.
 ';
 
+
+$result_converted{'xml'}->{'standard_quotations'} = '<quotation><quotationtype>Note</quotationtype>
+<para>A Note
+</para></quotation>
+
+<quotation><quotationtype>note</quotationtype>
+<para>A note
+</para></quotation>
+
+<quotation><quotationtype>Caution</quotationtype>
+<para>Caution
+</para></quotation>
+
+<quotation><quotationtype>Important</quotationtype>
+<para>Important
+</para></quotation>
+
+<quotation><quotationtype>Tip</quotationtype>
+<para>a Tip
+</para></quotation>
+
+<quotation><quotationtype>Warning</quotationtype>
+<para>a Warning.
+</para></quotation>
+';
+
+
+$result_converted{'docbook'}->{'standard_quotations'} = '<note><para>A Note
+</para></note>
+<note><para>A note
+</para></note>
+<caution><para>Caution
+</para></caution>
+<important><para>Important
+</para></important>
+<tip><para>a Tip
+</para></tip>
+<warning><para>a Warning.
+</para></warning>';
+
 1;

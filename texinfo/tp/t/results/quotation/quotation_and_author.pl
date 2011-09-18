@@ -353,4 +353,24 @@ $result_converted{'plaintext'}->{'quotation_and_author'} = '     A quot--ation
                           -- _Some Notifier_
 ';
 
+
+$result_converted{'xml'}->{'quotation_and_author'} = '<quotation> 
+<author>Some One</author>
+<para>A quot&textmdash;ation
+</para></quotation>
+
+<quotation><quotationtype>Note</quotationtype>
+<author>Some Notifier</author>
+<para>A Note
+</para></quotation>
+';
+
+
+$result_converted{'docbook'}->{'quotation_and_author'} = '<blockquote><attribution>Some One</attribution>
+<para>A quot&#8212;ation
+</para></blockquote>
+<note><attribution>Some Notifier</attribution>
+<para>A Note
+</para></note>';
+
 1;
