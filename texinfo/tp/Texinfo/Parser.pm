@@ -1162,6 +1162,10 @@ sub _gather_previous_item($$;$$)
   # nothing to do in that case.
   if ($current->{'contents'}->[-1]->{'type'}
       and $current->{'contents'}->[-1]->{'type'} eq 'before_item') {
+    if ($next_command and $next_command eq 'itemx') {
+      $self->line_error(sprintf($self->__("\@itemx should not begin \@%s"), 
+                                $current->{'cmdname'}), $line_nr);
+    }
     return;
   }
   #print STDERR "GATHER "._print_current($current)."\n";
@@ -1191,6 +1195,7 @@ sub _gather_previous_item($$;$$)
     }
   }
   if ($type eq 'table_item') {
+  # FIXME keep table_item with only comments and/or empty lines?
     my $table_entry = {'type' => 'table_entry',
                     'parent' => $current,
                     'contents' => []};
@@ -1225,7 +1230,6 @@ sub _gather_previous_item($$;$$)
       $table_gathered->{'parent'} = $table_entry;
     }
   } else {
-  # FIXME keep table_item with only comments and/or empty lines?
     my $after_paragraph = _check_no_text($table_gathered);
     if ($after_paragraph) {
       $self->line_error($self->__("\@itemx must follow \@item"), $line_nr);

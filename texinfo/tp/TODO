@@ -36,8 +36,6 @@ Is it right or not?
 
 remove _*directions('This' and replace with new API. Done?
 
-There should be a warning when beginning a table item with @itemx.
-
 There should be a warning with something like
 @example text
 ...

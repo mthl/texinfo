@@ -175,6 +175,12 @@ Title
 @itemx in itemx
 @end table
 '],
+['comment_and_itemx_before_item',
+'@table @code
+@c comment
+@itemx in itemx
+@end table
+'],
 );
 
 foreach my $test (@test_cases) {

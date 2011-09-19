@@ -184,7 +184,17 @@ $result_texis{'itemx_before_item'} = '@table @emph
 $result_texts{'itemx_before_item'} = 'in itemx
 ';
 
-$result_errors{'itemx_before_item'} = [];
+$result_errors{'itemx_before_item'} = [
+  {
+    'error_line' => ':2: @itemx should not begin @table
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@itemx should not begin @table',
+    'type' => 'error'
+  }
+];
 
 
 1;
