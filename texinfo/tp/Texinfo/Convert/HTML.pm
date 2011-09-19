@@ -24,11 +24,9 @@ use strict;
 
 use Texinfo::Convert::Converter;
 use Texinfo::Common;
-use Texinfo::Report;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Unicode;
-use Texinfo::Parser qw(gdt);
 
 use Carp qw(cluck);
 

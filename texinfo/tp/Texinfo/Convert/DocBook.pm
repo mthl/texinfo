@@ -29,7 +29,6 @@ use Texinfo::Convert::Unicode;
 use Texinfo::Convert::Texinfo;
 use Data::Dumper;
 use Carp qw(cluck);
-use Texinfo::Parser qw(gdt);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);

@@ -29,7 +29,6 @@ use Texinfo::Convert::Text;
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
-use Texinfo::Parser qw(gdt);
 
 use Carp qw(cluck);
 
