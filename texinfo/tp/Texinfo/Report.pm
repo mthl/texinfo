@@ -46,6 +46,7 @@ package Texinfo::Report;
 use 5.00405;
 use strict;
 
+use Locale::Messages;
 # to be able to load a parser if none was given to gdt.
 use Texinfo::Parser;
 
