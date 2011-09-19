@@ -38,21 +38,19 @@ use Data::Dumper;
 
 # to detect if an encoding may be used to open the files
 use Encode;
-# for i18n
-use Locale::Messages;
 
 #use POSIX qw(setlocale LC_ALL LC_CTYPE LC_MESSAGES);
 
 # commands definitions
 use Texinfo::Common;
-# Error reporting and counting, and translation of strings.
+# Error reporting and counting, translation of strings.
 use Texinfo::Report;
 
-# to expand file names in @include
+# to expand file names in @include and similar @-commands
 use Texinfo::Convert::Text;
 # to normalize node name, anchor, float arg, listoffloats and first *ref argument.
 use Texinfo::Convert::NodeNameNormalization;
-# in error messages
+# in error messages, and for macro body expansion
 use Texinfo::Convert::Texinfo;
 
 require Exporter;
@@ -1126,11 +1124,40 @@ sub _end_preformatted ($$$)
   return $current;
 }
 
-# put everything after the last @item/@itemx in an item_table type container.
-sub _gather_previous_item($;$)
+# check that there are no text holding environment (currently
+# checking only paragraphs and preformatted) in contents
+sub _check_no_text($)
 {
   my $current = shift;
+  my $after_paragraph = 0;
+  foreach my $content (@{$current->{'contents'}}) {
+    if ($content->{'type'} and $content->{'type'} eq 'paragraph') {
+      $after_paragraph = 1;
+      last;
+    } elsif ($content->{'type'} and $content->{'type'} eq 'preformatted') {
+      foreach my $preformatted_content (@{$content->{'contents'}}) {
+        if ((defined($preformatted_content->{'text'}) 
+             and $preformatted_content->{'text'} =~ /\S/)
+            or ($preformatted_content->{'cmdname'} 
+                and ($preformatted_content->{'cmdname'} ne 'c'
+                     and $preformatted_content->{'cmdname'} ne 'comment'))) {
+          $after_paragraph = 1;
+          last;
+        }
+      }
+      last if ($after_paragraph);
+    }
+  }
+  return $after_paragraph;
+}
+
+# put everything after the last @item/@itemx in an item_table type container.
+sub _gather_previous_item($$;$$)
+{
+  my $self = shift;
+  my $current = shift;
   my $next_command = shift;
+  my $line_nr = shift;
 
   # nothing to do in that case.
   if ($current->{'contents'}->[-1]->{'type'}
@@ -1199,7 +1226,10 @@ sub _gather_previous_item($;$)
     }
   } else {
   # FIXME keep table_item with only comments and/or empty lines?
-  # FIXME check that there are only comments, empty preformatted and indices
+    my $after_paragraph = _check_no_text($table_gathered);
+    if ($after_paragraph) {
+      $self->line_error($self->__("\@itemx must follow \@item"), $line_nr);
+    }
     if (scalar(@{$table_gathered->{'contents'}})) {
       push @{$current->{'contents'}}, $table_gathered;
       $table_gathered->{'parent'} = $current;
@@ -1305,7 +1335,7 @@ sub _close_command_cleanup($$$) {
     #    if (!$end->{'cmdname'} or $end->{'cmdname'} ne 'end');
     #}
     if (@{$current->{'contents'}}) {
-      _gather_previous_item($current);
+      $self->_gather_previous_item($current);
     }
     #push @{$current->{'contents'}}, $end if ($end);
   }
@@ -3779,7 +3809,7 @@ sub _parse_texi($;$)
                 if ($command eq 'item' or $command eq 'itemx') {
                   print STDERR "ITEM_LINE\n" if ($self->{'DEBUG'});
                   $current = $parent;
-                  _gather_previous_item($current, $command);
+                  $self->_gather_previous_item($current, $command, $line_nr);
                   $misc = { 'cmdname' => $command, 'parent' => $current };
                   push @{$current->{'contents'}}, $misc;
                   $line_arg = 1;
@@ -3851,25 +3881,7 @@ sub _parse_texi($;$)
                 $base_command =~ s/x$//;
                 # check that the def*x is first after @def*, no paragraph
                 # in-between.
-                my $after_paragraph = 0;
-                foreach my $content (@{$current->{'contents'}}) {
-                  if ($content->{'type'} and $content->{'type'} eq 'paragraph') {
-                    $after_paragraph = 1;
-                    last;
-                  } elsif ($content->{'type'} and $content->{'type'} eq 'preformatted') {
-                    foreach my $preformatted_content (@{$content->{'contents'}}) {
-                      if ((defined($preformatted_content->{'text'}) 
-                           and $preformatted_content->{'text'} =~ /\S/)
-                          or ($preformatted_content->{'cmdname'} 
-                              and ($preformatted_content->{'cmdname'} ne 'c'
-                                   and $preformatted_content->{'cmdname'} ne 'comment'))) {
-                        $after_paragraph = 1;
-                        last;
-                      }
-                    }
-                    last if ($after_paragraph);
-                  }
-                }
+                my $after_paragraph = _check_no_text ($current);
                 push @{$self->{'context_stack'}}, 'def';
                 $current->{'contents'}->[-1]->{'type'} = 'def_line';
                 $current->{'contents'}->[-1]->{'extra'} = 

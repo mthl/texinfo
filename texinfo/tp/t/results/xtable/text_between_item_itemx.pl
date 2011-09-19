@@ -255,7 +255,17 @@ text
 in itemx
 ';
 
-$result_errors{'text_between_item_itemx'} = [];
+$result_errors{'text_between_item_itemx'} = [
+  {
+    'error_line' => ':4: @itemx must follow @item
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@itemx must follow @item',
+    'type' => 'error'
+  }
+];
 
 
 1;
