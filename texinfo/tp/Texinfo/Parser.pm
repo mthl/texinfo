@@ -4914,10 +4914,6 @@ C<@synindex>).  These options are described below in L</TEXINFO PARSER OPTIONS>.
 
 =over
 
-=item SHOW_MENU
-
-If false, no menu related error are reported.  Default is true.
-
 =item expanded_formats
 
 An array reference of the output formats for which C<@ifI<FORMAT>> 
@@ -4925,6 +4921,12 @@ conditional blocks should be expanded.  Default is empty.
 
 The raw block formats (within C<@html> blocks, for example) are 
 alwyas kept.
+
+=item gettext
+
+If set, the function reference is used to translate error and warning
+messages.  It takes a string as argument and returns a string.  The default 
+function returns the error message as is.
 
 =item include_directories
 
@@ -4943,15 +4945,13 @@ If set, and C<@setfilename> exists, everything before C<@setfilename>
 is put in a special container type, @C<preamble_before_setfilename>.
 This option is set in the default case.
 
-=item gettext
-
-If set, the function reference is used to translate error and warning
-messages.  It takes a string as argument and returns a string.  The default 
-function returns the error message as is.
-
 =item MAX_MACRO_CALL_NESTING
 
 Maximal number of nested user-defined macro calls.  Default is 100000.
+
+=item SHOW_MENU
+
+If false, no menu related error are reported.  Default is true.
 
 =begin :comment
 
@@ -4967,6 +4967,197 @@ string may contain @-commands.
 
 =back
 
+There are three methods that may be called to parse some Texinfo code,
+C<parse_texi_line> for a line, C<parse_texi_text> for a text fragment, 
+and C<parse_texi_file> for a file.
+
+For all those functions, if the I<$parser> argument is undef, a new 
+parser object is generated to parse the line, otherwise the parser given 
+in argument is used to parse into a tree.
+
+When C<parse_texi_text> is used, the resulting tree is rooted at 
+a C<root_line> type container.  Otherwise, the resulting tree should be 
+rooted at a C<text_root> type container if it do not contain nodes or 
+sections, at a C<document_root> type container otherwise.
+
+=over
+
+=item parse_texi_line($parser, $text, $first_line_number, $file_name, $macro_name, $fixed_line_number)
+
+This function is used to parse a short fragment of Texinfo code.
+
+I<$text> may be either an array reference of lines, or a text.
+
+The other arguments are optional and allow to specify the position
+information of the Texinfo code.  I<$first_line_number> is the line number
+of the first text line.  I<$file_name> is the name of the file the
+text comes from.  I<$macro> is for the user-defined macro name the text
+is expanded from.  If I<$fixed_line_number> is set, the line number is
+not increased for the different lines, as if the text was the expansion
+of a macro.
+
+=item parse_texi_text ($parser, $text, $line_numbers_specification, $file_name, $macro_name, $fixed_line_number)
+
+This function is used to parse some Texinfo text.
+
+I<$text> may be either an array reference of lines, or a text.
+
+The other arguments are optional and allow to specify the position
+information of the Texinfo code.  There are two distinct cases for 
+I<$line_numbers_specification>.  
+
+=over
+
+=item 1.
+
+If it is an array reference, it is considered to hold objects describing 
+the position information of each text lines.
+
+=item 2.
+
+If I<$line_numbers_specification> is a scalar, it is the line number of 
+the first text line.  In that case (like for C<parse_texi_text>), 
+I<$file_name> is the name of the file the text comes from.  
+I<$macro> is for the user-defined macro name the text
+is expanded from.  If I<$fixed_line_number> is set, the line number is
+not increased for the different lines, as if the text was the expansion
+of a macro.
+
+=back
+
+=item parse_texi_file($parser, $file_name)
+
+The file with name I<$file_name> is considered to be a Texinfo file and
+is parsed into a tree.
+
+undef is returned if the file couldn't be read.
+
+=back
+
+The errors collected during the tree parsing are available through the
+C<errors> method:
+
+=over
+
+=item errors ($parser)
+
+  ($error_warnings_list, $error_count) = errors ($parser)
+
+This function returns as I<$error_count> the count of errors while processing
+texinfo texts.  The I<$error_warnings_list> is an array of hash references
+one for each error, warning or error line continuation.  Each of these has 
+the following keys:
+
+=over
+
+=item type
+
+May be C<warning>, C<error>, or C<error continuation> (for a continuation of
+an error line).
+
+=item text
+
+The text of the error.
+
+=item error_line
+
+The text of the error formatted with the file name, line number and macro
+name, as needed.
+
+=item line_nr
+
+The line number of the error or warning.
+
+=item file_name
+
+The file name where the error or warning occured.
+
+=item macro
+
+The user macro name that was expanded when the error or warning occured.
+
+=back
+
+=back
+
+After parsing some informations about the Texinfo code that was processed
+are available from the parser.
+
+Some global informations is available through C<global_informations>
+
+=over
+
+=item $info = global_informations($parser)
+
+The I<$info> returned is a hash reference.  The possible keys are
+
+=over
+
+=item input_file_name
+
+The name of the main Texinfo input file.
+
+=item encoding_name
+
+=item perl_encoding
+
+C<encoding_name> string is the encoding name use for the Texinfo code.
+C<perl_encoding> string is a corresponding perl encoding name.
+
+=item dircategory_direntry
+
+An array of successive C<@dircategory> and C<@direntry> as they appear
+in the document.
+
+=item unassociated_menus
+
+An array of menus that are not associated with a node.
+
+=back
+
+=back
+
+Some command lists are available, such that it is possible to go through
+the corresponding tree elements without walking the tree.  They are
+available through C<global_commands_information>
+
+=over
+
+=item $commands = global_commands_information($parser)
+
+I<$commands> is an hash reference.  The keys are @-command names.  The 
+associated values are array references containing all the corresponding
+tree elements.
+
+=back
+
+All the @-commands that have an associated label, that can be the
+target of cross references, C<@node>, C<@anchor> and C<@float> with
+label have a normalized name associated, constructed as described in the
+`HTML Xref' node in the Texinfo manual.  Those normalized labels and
+the association with @-commands is available through C<labels_information>:
+
+=over
+
+=item $labels_information = labels_information($parser)
+
+I<$labels_information> is a hash reference whose keys are normalized
+labels, and the associated value is the corresponding @-command.
+
+=back
+
+Internal references, that is, @-commands that refers to node, anchors
+or floats within the document are also available:
+
+=over
+
+=item $internal_references_array = internal_references_information($parser);
+
+The function returns a list of cross reference commands referring to
+the same document.
+
+=back
+
 =head2 TEXINFO PARSER OPTIONS
 
 =over
@@ -4975,6 +5166,14 @@ string may contain @-commands.
 
 A hash reference.  The key is a command name, the value is the alias, as
 could be set by C<@alias>.
+
+=item clickstyle
+
+A string, the command name associated with C<@clickstyle>.
+
+=item documentlanguage
+
+A string corresponding to a document language set by C<@documentlanguage>.
 
 =item explained_commands
 
@@ -4992,6 +5191,14 @@ is the same as having the following texinfo code in the document:
 
   @acronym{EU, European Union}
 
+=item encoding_name
+
+=item perl_encoding
+
+C<encoding_name> string is the encoding name as set by C<@documentencoding>.
+C<perl_encoding> string is a corresponding perl encoding name.  In general
+those two strings should be set simultaneously.
+
 =item indices
 
 If it is a hash reference, the keys are index names, the values are
@@ -5003,6 +5210,50 @@ If it is an array reference, it is a list of index names, as if they were
 entered as
 
   @defindex name
+
+=item kbdinputstyle
+
+A string, the C<@kbdinputstyle> style.
+
+=item labels
+
+A hash reference.  Keys are normalized node names as described in the
+`HTML Xref' node in the Texinfo manual.  Instead of a node, it may also
+be a float label or an anchor name.  The value is the corresponding 
+@-command element in the tree.
+
+=item macros
+
+The associated hash reference has as key user-defined macro names.  The
+value is the reference on a macro definition element as obtained by 
+the Parser when parsing a C<@macro>.  For example
+
+  @macro mymacro{arg}
+  coucou \arg\ after arg
+  @end macro
+
+Is associated to a macro definition element
+
+  {'cmdname' => 'macro',
+   'args' => [{'text' => 'mymacro', 'type' => 'macro_name'},
+              {'text' => 'arg', 'type' => 'macro_arg}],
+   'contents' => [{'text' => "coucou \arg\ after arg\n", 'type' => 'raw'}],
+   'extra' => {'arg_line' => " mymacro{arg}\n",
+               'macrobody' => "coucou \arg\ after arg\n"}}
+
+=item novalidate
+
+If set, it is as if C<@novalidate> was set in the document.
+
+=item sections_level
+
+Modifier of the sections level.  Same as calling C<@lowersections> or
+C<@raisesections>.
+
+=item values
+
+A hash reference.  Keys are names, values are the corresponding values.
+Same as values set by C<@set>.
 
 =back
 
