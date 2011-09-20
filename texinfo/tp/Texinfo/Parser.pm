@@ -4850,8 +4850,6 @@ sub _parse_line_command_args($$$)
 
 1;
 __END__
-# Below is stub documentation.
-
 =head1 NAME
 
 Texinfo::Parser - Parse Texinfo code in a Perl tree
@@ -4890,13 +4888,13 @@ the number of row in a multitable, the node associated with a section.
 
 
 
+=head1 METHODS
 
-=head2 EXPORT
+No method is exported in the default case.  The module allows both
+an object oriented syntax, or traditional function, with the parser
+as an opaque data structure given in argument to every function.
 
-None by default.
-
-
-=head2 METHODS
+=head2 Initialization
 
 The following method is used to construct a new C<Texinfo::Parser> object:
 
@@ -4910,7 +4908,7 @@ change the way the parser behave, they are described right here.  The
 other type of options allow to give to the parser some information as if 
 it came from texinfo code, for example allow to set aliases (as with 
 C<@alias>), values (as with C<@set>), merged indices (as with 
-C<@synindex>).  These options are described below in L</TEXINFO PARSER OPTIONS>.
+C<@synindex>).  These options are described below in L</Texinfo Parser options>.
 
 =over
 
@@ -4967,6 +4965,8 @@ string may contain @-commands.
 
 =back
 
+=head2 Parsing Texinfo text
+
 There are three methods that may be called to parse some Texinfo code,
 C<parse_texi_line> for a line, C<parse_texi_text> for a text fragment, 
 and C<parse_texi_file> for a file.
@@ -4982,7 +4982,7 @@ sections, at a C<document_root> type container otherwise.
 
 =over
 
-=item parse_texi_line($parser, $text, $first_line_number, $file_name, $macro_name, $fixed_line_number)
+=item $tree = parse_texi_line($parser, $text, $first_line_number, $file_name, $macro_name, $fixed_line_number)
 
 This function is used to parse a short fragment of Texinfo code.
 
@@ -4996,7 +4996,7 @@ is expanded from.  If I<$fixed_line_number> is set, the line number is
 not increased for the different lines, as if the text was the expansion
 of a macro.
 
-=item parse_texi_text ($parser, $text, $line_numbers_specification, $file_name, $macro_name, $fixed_line_number)
+=item $tree = parse_texi_text ($parser, $text, $line_numbers_specification, $file_name, $macro_name, $fixed_line_number)
 
 This function is used to parse some Texinfo text.
 
@@ -5025,7 +5025,7 @@ of a macro.
 
 =back
 
-=item parse_texi_file($parser, $file_name)
+=item $tree = parse_texi_file($parser, $file_name)
 
 The file with name I<$file_name> is considered to be a Texinfo file and
 is parsed into a tree.
@@ -5039,9 +5039,7 @@ C<errors> method:
 
 =over
 
-=item errors ($parser)
-
-  ($error_warnings_list, $error_count) = errors ($parser)
+=item ($error_warnings_list, $error_count) = errors ($parser)
 
 This function returns as I<$error_count> the count of errors while processing
 texinfo texts.  The I<$error_warnings_list> is an array of hash references
@@ -5079,6 +5077,8 @@ The user macro name that was expanded when the error or warning occured.
 =back
 
 =back
+
+=head2 Getting informations on the document
 
 After parsing some informations about the Texinfo code that was processed
 are available from the parser.
@@ -5146,6 +5146,21 @@ labels, and the associated value is the corresponding @-command.
 
 =back
 
+Information on C<@float> is also available, grouped by type of 
+floats, each type correponding to potential C<@listoffloats>.
+This information is available through the method C<floats_information>.
+
+=over
+
+=item $float_types = floats_information($parser)
+
+I<$float_types> is a hash reference whose keys are normalized float
+types (the first float argument, or the C<@listoffloats> argument).
+The normalization is the same than for node names. The value is the list
+of float tree elements appearing in the texinfo document.
+
+=back
+
 Internal references, that is, @-commands that refers to node, anchors
 or floats within the document are also available:
 
@@ -5158,7 +5173,92 @@ the same document.
 
 =back
 
-=head2 TEXINFO PARSER OPTIONS
+Information about defined indices, merged indices and index entries is
+also available through the C<indices_information> method.
+
+=over
+
+=item indices_information
+
+  ($index_names, $merged_indices_hash, $index_entries_arrays)
+    = indices_information($parser);
+
+The index names is a hash reference.  The keys are the index names.  They
+are associated to a hash reference. The keys of these hash references are 
+the index prefixes associated to the index name, and the value is set if
+the index entries should be formatted as code.
+
+The following shows the references corresponding with the default indexes
+I<cp> and I<fn>, the I<fn> index having its entries formatted as code and 
+the indices corresponding to the following texinfo
+
+  @defindex some
+  @defcodeindex code
+
+  $index_names = {'cp' => {'cp' => 0, 'c' => 0},
+                  'fn' => {'fn' => 1, 'f' => 1},
+                  'some' => {'some' => 0},
+                  'code' => {'code' => 1}};
+
+I<$merged_indices_hash> is a hash reference, the key is an index
+name merged in the value.
+
+Last, I<$index_entries_arrays> is an hash reference. The keys are
+index names, the values are index entry structures that are associated
+with ell the index entries, associated to 0-commands like C<@cindex>,
+or C<@item> in C<@vtable>, or definition commands entries like C<@deffn>.
+
+The keys of the index entry structures are
+
+=over
+
+=item index_name
+
+The index name.
+
+=item index_prefix
+
+The associated index prefix.
+
+=item index_at_command
+
+The name of the @-command associated with the index entry.
+
+=item content
+
+An array reference corresponding to the index entry content.
+
+=item content_normalized
+
+An array reference corresponding to the index entry content, independent
+of the current language.
+
+=item command
+
+The element in the parsed tree associated with the @-command holding the 
+index entry.
+
+=item node
+
+The node in the parsed tree containing the index entry.
+
+=item number
+
+The number of the index entry.
+
+=item region
+
+The region command (C<@copying>, C<@titlepage>) containing the index entry,
+if it is in such an environement.
+
+=back
+
+=back
+
+=head2 Texinfo Parser options
+
+Setting those options is the same as seeing some Texinfo constructs in the 
+document.
 
 =over
 
@@ -5204,7 +5304,7 @@ those two strings should be set simultaneously.
 If it is a hash reference, the keys are index names, the values are
 index prefix hash references.  The index prefix hash reference values are
 prefix, the value is set if the corresponding index entries should be
-formatted as if in C<@code>.
+formatted as if in C<@code>.  An example is as L</indices_information>.
 
 If it is an array reference, it is a list of index names, as if they were
 entered as
@@ -5256,6 +5356,287 @@ A hash reference.  Keys are names, values are the corresponding values.
 Same as values set by C<@set>.
 
 =back
+
+=head1 TEXINFO TREE
+
+A Texinfo tree element (called element because node is overloaded in 
+the Texinfo world) is an hash reference.  There are three main category
+of tree element.  Tree elements associated with an @-command have a 
+C<cmdname> key holding the @-command name.  Tree element corresponding
+to text fragments have a C<text> key holding the corresponding text.
+The last category corresponds to other containers (hereafter called 
+containers).  In most case these containers have a C<type> key holding 
+their name.  Text fragments and @-command elements may also have an 
+associated type when such information is needed.
+
+The children of @-command or container elements are in the array
+correponding with the C<args> key or with the C<contents> key.  The
+C<args> key is for arguments of @-commands, in braces or on the @-command
+line.  C<args> is also used for the elements of a menu entry, as a menu
+entry is well structured with a limited number of arguments.  
+The C<contents> key array holds the contents of the texinfo 
+code appearing within a block @-command, within a container, 
+within a C<@node> or sectioning @-command.
+
+Another important key for the elements is the C<extra> key which is 
+associated to a hash reference and holds all kinds of informations gathered
+during the parsing and that may help with the conversion.
+
+=head2 Element keys
+
+=over
+
+=item cmdname
+
+The command name of @-command elements.
+
+=item text
+
+The text fragment of text elements.
+
+=item type
+
+The type of the element.  For C<@verb> it is the delimiter.  But otherwise
+it is the type of element considered as a container.  Frequent types 
+encountered are I<paragraph> for a paragraph container, 
+I<brace_command_arg> for the container holding the brace @-commands 
+contents, I<misc_line_arg> and I<block_line_arg> contain the arguments 
+appearing on the line of @-commands.  Text fragments may have a type to
+give an information of the kind of text fragment, for example 
+C<empty_spaces_before_argument> is associated to spaces after a brace 
+opening and before the argument.  Many @-commands elements don't have
+a type associated.
+
+=item args
+
+Arguments in braces or on @-command line, and the elements of a menu entry.
+
+=item contents
+
+The Texinfo appearing in the element.  For block commands, other 
+containers, C<@node> and sectioning commands.
+
+=item parent
+
+The parent element.
+
+=item line_nr
+
+An hash reference corresponding to information on the location of the 
+element in the Texinfo input manual.  It should only be available for 
+@-command elements, and only for @-commands that are considered to be 
+complex enough that the location in the document is needed, for example 
+to prepare an error message.  
+
+The keys of the line number hash references are
+
+=over
+
+=item line_nr
+
+The line number of the @-command.
+
+=item file_name
+
+The file name where @-command appeared.
+
+=item macro
+
+The user macro name the @-command is expanded from.
+
+=back
+
+=item extra
+
+A hash reference holding any additional information.
+
+=back
+
+=head2 The containers and types
+
+Some types areassociated with @-commands.  As said above, for C<@verb> 
+the type is the delimiter.  For a C<@value> command that is not 
+expanded because there is no corresponding value set, the type is the 
+value argument string.  
+
+The following types also happen for @-commands:
+
+=over
+
+=item def_line
+
+This type may be associated with a definition command with a x form,
+liks C<@defunx>, C<@defvrx>.  For the form without x, the associated
+I<def_line> is the first C<contents> element.  It is described in more
+details below.
+
+=item command_as_argument
+
+This is the type of a command given in argument of C<@itemize>, 
+C<@table>, C<@vtable> or C<@ftable>.  For example in 
+
+ @itemize @bullet
+ @item item
+ @end itemize
+
+the element corresponding with bullet has the following keys:
+
+  'cmdname' => 'bullet'
+  'type' => 'command_as_argument'
+
+The parent @-command has an entry in extra for the I<command_as_argument>
+element:
+
+  'cmdname' => 'itemize'
+  'extra => {'command_as_argument' => $command_element_as_argument}
+
+=item index_entry_command
+
+This is the type of index entry commandsl ike C<@cindex>, and, more
+importantly user defined index entry commands.  So for example if there
+is 
+
+ @defindex foo
+  ...
+
+ @fooindex index entry
+
+the C<@fooindex> @-command element will have the I<index_entry_command>
+type.
+
+=item space_command_arg
+
+This type is set for accent @-commands that don't use brace but instead
+have their argument after some space, as
+
+  @ringaccent A
+
+This is not a recommended construct, but it is valid.
+
+=item definfoenclose_command
+
+This type is set for an @-command that is redefined by C<@definfoenclose>.
+The beginning is in C<{'extra'}->{'begin'}> and the end in 
+C<{'extra'}->{'end'}>.
+
+=back
+
+The text elements may be associated to the following types:
+
+=over
+
+=item empty_line
+
+An empty line.
+
+=item empty_line_after_command
+
+The text is spaces followed by newline after a @-command that that
+take an argument on the line, or block @-commands.
+
+=item raw
+
+Text in an environment where it should be kept as is (in C<@verbatim>,
+C<@verb>, C<@macro> body).
+
+=item preamble_text
+
+Text appearing before real content, including the C<\input texinfo.tex>. 
+
+=item space_at_end_menu_node
+
+Space after a node in the menu entry.
+
+=back
+
+Other special types are described in the following.
+
+=over
+
+=item text_root
+=item document_root
+=item root_line
+
+These types correspond to document roots.  C<text_root> is the document
+root when there is no C<@node> or sectioning command.  When
+such a command appears, a new root container is used, C<document_root>,
+and C<text_root> becomes the first content of C<document_root>.
+C<root_line> is the type of the root tree when parsing Texinfo line
+fragments using C<parse_texi_line>.
+
+=item preamble
+
+This container holds the text appearing before the first content, including
+the C<\input texinfo.tex> line and following blank lines.
+
+=item preamble_before_setfilename
+
+This container holds everything that appears before C<@setfilename>
+if I<IGNORE_BEFORE_SETFILENAME> parser option is set.
+
+=item paragraph
+
+A paragraph.
+
+=item preformatted
+
+Texinfo code within a format that is not filled.  Happens within some
+block commands as C<@example>, but also in menu (in menu descriptions,
+menu comments...).
+
+=item brace_command_arg
+=item brace_command_context
+=item block_line_arg
+=item misc_line_arg
+
+Those containers are within C<args> of @-commands with braces for 
+C<brace_command_arg>, @-commands with braces that start a new context 
+(C<@footnote>, C<@caption>, C<@math>), block command argument on their
+line for C<block_line_arg> and other commands that take texinfo coe as 
+argument on their line (C<@settitle>, C<@node>, C<@section> and similar) 
+for C<misc_line_arg>.  They hold the content of the command argument.
+
+For example
+
+ @code{in code}
+
+leads to
+
+ {'cmdname' => 'code',
+  'args' => [{'type' => 'brace_command_arg',
+              'contents' => [{'text' => 'in code'}]}]}
+
+=item menu_entry
+=item menu_entry_leading_text
+=item menu_entry_name
+=item menu_entry_separator
+=item menu_entry_node
+=item menu_entry_description
+
+A I<menu_entry> holds a full menu entry, like
+
+  * node::    description.
+
+The different elements of the menu entry are directly in the 
+I<menu_entry> C<args> array reference.
+
+I<menu_entry_leading_text> holds the star and following spaces. 
+I<menu_entry_name> is the menu entry name, I<menu_entry_node>
+corresponds to the node in the menu entry, I<menu_entry_separator> holds
+the text after the node and before the description, in most case
+C<::   >.   Last I<menu_entry_description> is for the description.
+
+
+
+=item bracketed
+
+This a special type containing content in brackets in the context
+where they are valid, namely in C<@math>, on C<@multitable> line as
+column prototypes and on definition command lines.
+
+=back
+
+=head2 Information available in the extra key
 
 =head1 SEE ALSO
 
