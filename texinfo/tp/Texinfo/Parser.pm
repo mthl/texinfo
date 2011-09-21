@@ -5134,7 +5134,7 @@ tree elements.
 All the @-commands that have an associated label, that can be the
 target of cross references, C<@node>, C<@anchor> and C<@float> with
 label have a normalized name associated, constructed as described in the
-`HTML Xref' node in the Texinfo manual.  Those normalized labels and
+B<HTML Xref> node in the Texinfo manual.  Those normalized labels and
 the association with @-commands is available through C<labels_information>:
 
 =over
@@ -5318,7 +5318,7 @@ A string, the C<@kbdinputstyle> style.
 =item labels
 
 A hash reference.  Keys are normalized node names as described in the
-`HTML Xref' node in the Texinfo manual.  Instead of a node, it may also
+B<HTML Xref> node in the Texinfo manual.  Instead of a node, it may also
 be a float label or an anchor name.  The value is the corresponding 
 @-command element in the tree.
 
@@ -5448,13 +5448,14 @@ The user macro name the @-command is expanded from.
 
 =item extra
 
-A hash reference holding any additional information.
+A hash reference holding any additional information. 
+See L</Information available in the extra key>.
 
 =back
 
 =head2 The containers and types
 
-Some types areassociated with @-commands.  As said above, for C<@verb> 
+Some types are associated with @-commands.  As said above, for C<@verb> 
 the type is the delimiter.  For a C<@value> command that is not 
 expanded because there is no corresponding value set, the type is the 
 value argument string.  
@@ -5466,7 +5467,7 @@ The following types also happen for @-commands:
 =item def_line
 
 This type may be associated with a definition command with a x form,
-liks C<@defunx>, C<@defvrx>.  For the form without x, the associated
+like C<@defunx>, C<@defvrx>.  For the form without x, the associated
 I<def_line> is the first C<contents> element.  It is described in more
 details below.
 
@@ -5516,8 +5517,8 @@ This is not a recommended construct, but it is valid.
 =item definfoenclose_command
 
 This type is set for an @-command that is redefined by C<@definfoenclose>.
-The beginning is in C<{'extra'}->{'begin'}> and the end in 
-C<{'extra'}->{'end'}>.
+The beginning is in C<< {'extra'}->{'begin'} >> and the end in 
+C<< {'extra'}->{'end'} >>.
 
 =back
 
@@ -5529,15 +5530,48 @@ The text elements may be associated to the following types:
 
 An empty line.
 
-=item empty_line_after_command
-
-The text is spaces followed by newline after a @-command that that
-take an argument on the line, or block @-commands.
-
-=item raw
+=item Z<>raw
 
 Text in an environment where it should be kept as is (in C<@verbatim>,
 C<@verb>, C<@macro> body).
+
+=item empty_line_after_command
+
+=item empty_spaces_after_command
+
+The text is spaces for I<empty_spaces_after_command> 
+or spaces followed by a newline for 
+I<empty_line_after_command>, appearing after a @-command that 
+takes an argument on the line or a block 
+@-commands.
+
+=item spaces_at_end
+
+Space at the end of a @-command line, at the end of some @-commands
+with braces or at the end of a bracketed content on a 
+C<@multitable> line.
+
+=item empty_space_at_end_def_bracketed
+
+Space at the end of a bracketed content on definition line.
+
+=item space_at_end_block_command
+
+Space at the end of a block @-command line.
+
+=item empty_spaces_before_argument
+
+The text is spaces appearing after an opening brace of after a 
+comma separated @-command arguments.
+
+=item empty_spaces_after_close_brace
+
+Spaces appearing after a closing brace, for some rare commands for which
+this space should be ignorable (like C<@caption>).
+
+=item empty_spaces_before_paragraph
+
+Space appearing before a paragraph beginning.
 
 =item preamble_text
 
@@ -5545,7 +5579,10 @@ Text appearing before real content, including the C<\input texinfo.tex>.
 
 =item space_at_end_menu_node
 
-Space after a node in the menu entry.
+=item after_description_line
+
+Space after a node in the menu entry, when there is no description,
+and space appearing after the description line.
 
 =back
 
@@ -5554,7 +5591,9 @@ Other special types are described in the following.
 =over
 
 =item text_root
+
 =item document_root
+
 =item root_line
 
 These types correspond to document roots.  C<text_root> is the document
@@ -5585,16 +5624,20 @@ block commands as C<@example>, but also in menu (in menu descriptions,
 menu comments...).
 
 =item brace_command_arg
+
 =item brace_command_context
+
 =item block_line_arg
+
 =item misc_line_arg
 
 Those containers are within C<args> of @-commands with braces for 
-C<brace_command_arg>, @-commands with braces that start a new context 
-(C<@footnote>, C<@caption>, C<@math>), block command argument on their
-line for C<block_line_arg> and other commands that take texinfo coe as 
-argument on their line (C<@settitle>, C<@node>, C<@section> and similar) 
-for C<misc_line_arg>.  They hold the content of the command argument.
+I<brace_command_arg>, @-commands with braces that start a new context 
+(C<@footnote>, C<@caption>, C<@math>) for I<brace_command_context>, 
+block command argument on their line for I<block_line_arg> and 
+other commands that take texinfo code as argument on their line 
+(C<@settitle>, C<@node>, C<@section> and similar) for I<misc_line_arg>.
+They hold the content of the command argument.
 
 For example
 
@@ -5606,11 +5649,22 @@ leads to
   'args' => [{'type' => 'brace_command_arg',
               'contents' => [{'text' => 'in code'}]}]}
 
+=item misc_arg
+
+Argument of @-command taking specific textual arguments on the line.
+For example C<@set>, C<@clickstyle>, C<@unmacro>, C<@comment>.
+The argument is associated to the I<text> key.
+
 =item menu_entry
+
 =item menu_entry_leading_text
+
 =item menu_entry_name
+
 =item menu_entry_separator
+
 =item menu_entry_node
+
 =item menu_entry_description
 
 A I<menu_entry> holds a full menu entry, like
@@ -5621,22 +5675,375 @@ The different elements of the menu entry are directly in the
 I<menu_entry> C<args> array reference.
 
 I<menu_entry_leading_text> holds the star and following spaces. 
-I<menu_entry_name> is the menu entry name, I<menu_entry_node>
+I<menu_entry_name> is the menu entry name (if present), I<menu_entry_node>
 corresponds to the node in the menu entry, I<menu_entry_separator> holds
 the text after the node and before the description, in most case
-C<::   >.   Last I<menu_entry_description> is for the description.
+C<::   >.  Last I<menu_entry_description> is for the description.
 
+=item menu_comment
 
+The I<menu_comment> container holds what is between menu entries 
+in menus.  For example in 
+
+  @menu
+  Menu title
+
+  * entry::
+
+  Between entries
+  * other::
+  @end menu
+
+Both 
+
+  Menu title
+
+and
+
+  Between entries
+
+will be in I<menu_comment>.
+
+=item macro_name
+
+=item macro_arg
+
+Taken from C<@macro> definition and put in the C<args> key array of
+the macro, I<macro_name> is the type of the text fragment corresponding 
+to the macro name, I<macro_arg> is the type of the text fragments 
+correponding to macro formal arguments.
+
+=item before_item
+
+A container for content before the first C<@item> of block @-commands
+with items (C<@table>, C<@multitable>, C<@enumerate>...).
+
+=item table_entry
+
+=item table_term
+
+=item table_item
+
+=item inter_item
+
+Those containers appear in C<@table>, C<@ftable> and C<@vtable>.
+A I<table_entry> container contains C<@item> and C<@itemx> and
+the text following the C<@item> and C<@itemx> entries.  A I<table_term>
+container holds all the C<@item> and C<@itemx> of the I<table_entry>.
+The I<table_item> container holds the content following the I<table_term>.
+If there is some content before an C<@itemx> (normally only comments, 
+empty lines or maybe index entriees are allowed), it will be in 
+a container with type I<inter_item>. 
+
+=item def_line
+
+=item def_item
+
+=item inter_def_item
+
+The I<def_line> type is either associated with a container within a
+definition command, or is the type of a definition command with a x
+form, like C<@deffnx>.  It holds the definition line arguments.
+The container with type I<def_item> holds the definition text content.
+Content appearing before a definition command with a x form is in
+an I<inter_def_item> container.
+
+=item multitable_head
+
+=item multitable_body
+
+=item row
+
+In C<@multitable>, a I<multitable_head> container contains all the row
+with C<@headitem>, while I<multitable_body> contains the rows associated 
+with C<@item>.  A I<row> container contains the C<@item> and @<tab> 
+forming a row.
 
 =item bracketed
 
 This a special type containing content in brackets in the context
-where they are valid, namely in C<@math>, on C<@multitable> line as
-column prototypes and on definition command lines.
+where they are valid, in C<@math>.
+
+=item bracketed_def_content
+
+Content in brackets on definition command lines.
+
+=item bracketed_multitable_prototype
+
+=item row_prototype
+
+On C<@multitable> line, content in brackets is in 
+I<bracketed_multitable_prototype>, text not in brackets
+is in I<row_prototype>.
 
 =back
 
 =head2 Information available in the extra key
+
+Some extra keys are available for more than one @-command:
+
+=over
+
+=item block_command_line_contents
+
+=item brace_command_contents
+
+An array associated with block @-commands or @-commands with braces
+taking more than one argument or with a simple text content
+(C<@anchor>, C<@titlefont>, C<@dmn>).  Each of the element of the
+array is either undef, if there is no argument at that place,
+or an array reference holding the argument contents.
+
+=item misc_content
+
+The contents of an @-command taking regular Texinfo code as
+argument, like C<@sttitle> or C<@exdent>.
+
+=item end_command
+
+The C<@end> associated to the block @-command.
+
+=item missing_argument
+
+Set for some @-commands with line arguments and a missing argument.
+
+=item invalid_nesting
+
+Set if the @-command appears in a context it shouldn't appear in,
+like a block @-command on sectioning @-command line.
+
+=item arg_line
+
+The string correspond to the line after the @-command 
+for @-commands that have special arguments on their line,
+and for C<@macro> line.
+
+=item text_arg
+
+The string correspond to the line after the @-command for @-commands 
+that have an argument interpreted as simple text, like C<@setfilename>,
+C<@end> or C<@documentencoding>.
+
+=item index_entry
+
+The index entry information (described in L</indices_information>
+in details) is associated to @-commands that have an associated
+index entry.
+
+=item misc_args
+
+An array holding strings, the arguments of @-commands taking simple
+textual arguments as arguments, like C<@everyheadingmarks>, 
+C<@frenchspacing>, C<@alias>, C<@synindex>, C<@columnfractions>.
+
+=item spaces
+
+For accent commands consisting in letter only, like C<@ringaccent>
+appearing like
+
+ @ringaccent A
+
+there is a I<spaces> key which holds the spaces appearing between
+the command and the argument.
+
+=back
+
+Then there are extra keys specific of @-commands or containers.
+
+=over
+
+=item C<@macro>
+
+I<invalid_syntax> is set if there was an error on the C<@macro>
+line.  The key I<args_index> associates format arguments with
+their index on the @macro line formal arguments definition.
+The I<macrobody> holds the @macro body.  I<arg_line> holds the
+line after C<@macro>.
+
+=item C<@node>
+
+The arguments are in the I<nodes_manuals> array. Each
+of the entry has a I<node_content> key for
+an array holding the corresponding content, a I<manual_content>
+if there is an associated external manual name, and I<normalized>
+key for the normalized label, built as specified in the Texinfo manual
+in the B<HTML Xref> node.
+
+An I<associated_section> key holds the tree element of the 
+sectioning command that follows the node.
+
+=item C<@part>
+
+The next sectioning command is in I<part_associated_section>.
+
+=item sectioning command
+
+The node preceding the command is in I<associated_node>.
+The part preceding the command is in I<associated_part>.
+If the level of the document was modified by C<@raisections>
+or C<@lowersections>, the differential level is in I<sections_level>.
+
+=item C<@float>
+
+=item C<@listoffloats>
+
+If float has a second argument, and for C<@listoffloats>
+argument there is a I<type> key which is also a hash reference, 
+with two keys. I<content> is an array holding the associated
+contents, I<normalized> holds the normalized float type.
+
+I<caption> and I<shortcaption> holds the corresponding 
+tree elements for float.  The C<@caption> or C<@shortcaption>
+have the float tree element stored in I<float>.
+
+=item C<@float>
+
+=item C<@anchor>
+
+@-Commands that are targets for cross references have a I<normalized>
+key for the normalized label, built as specified in the Texinfo manual
+in the B<HTML Xref> node.  There is also a I<node_content> key for
+an array holding the corresponding content.
+
+C<@anchor> also has I<region> set to the special region name if
+in a special region (C<@copying>, C<@titlepage>).
+
+=item C<@ref>
+
+=item C<@xref>
+
+=item C<@pxref>
+
+=item C<@inforef>
+
+The I<node_argument> entry holds a parsed node entry, like
+the one appearing in the I<nodes_manuals> array for C<@node>.
+
+=item C<@abbr>
+
+=item C<@acronym>
+
+The first argument normalized is in I<normalized>.  If there is no
+second argument, but a second argument appeared previously for the
+same first argument, the second argument content of the previous
+command is stored in I<explanation_contents>.
+
+=item definition command
+
+I<def_command> holds the command name, without x if it is
+an x form of a definition command.
+I<original_def_cmdname> is the original def command.
+
+If it is an x form, it has I<not_after_command> set if not 
+appearing after the definition command without x.
+
+=item def_line
+
+The I<def_arg> extra key holds an array reference corresponding to
+the parsed definition line argument.  Each of the the element of the
+array is a two element array reference.  The first element is the type
+which could be I<spaces> for a space, types specific of the 
+definition, like I<category>, I<name>, I<class>, I<type>, and, at the
+end, a mix of I<arg>, I<typearg>, I<delimiter> depending on the definition.
+The second element is a hash reference holding the content of the 
+type.
+
+The I<def_parsed_hash> hash reference has as key the type specific
+of the definition, and as value the corresponding content tree.
+
+=item C<@multitable>
+
+The key I<max_columns> holds the maximal number of columns.  If there
+are prototypes on the line they are in the array associated with 
+I<prototypes>.  If there is a C<@columnfractions> as argument, then 
+the I<columnfractions> key is associated with the array of columnfractions
+arguments, holding all the column fractions.
+
+=item C<@enumerate>
+
+The extra key I<enumerate_specification> contains the enumerate 
+argument.
+
+=item C<@itemize>
+
+=item C<@table>
+
+=item C<@vtable>
+
+=item C<@ftable>
+
+The I<command_as_argument> extra key points on the @-command on
+as argument on the @-command line.
+
+=item paragraph
+
+The I<indent> or I<noindent> key value is set if the corresponding 
+@-commands are associated with that paragraph. 
+
+=item C<@item> in C<@enumerate> or C<@itemize>
+
+The I<item_number> extra key holds the number of this item.
+
+=item C<@item> and C<@tab> in C<@multitable>
+
+The I<cell_count> index key holds the index of the column of
+the cell.
+
+=item row
+
+The I<row_number> index key holds the index of the row in 
+the C<@multitable>.
+
+=item C<@author>
+
+If in a C<@titlepage>, the titlepage is in I<titlepage>, if in
+C<@quotation> or C<@smallquotation>, the corresponding tree element
+is in I<quotation>.
+
+The author tree element is in the I<author> array of the C<@titlepage>
+or the C<@quotation> or C<@smallquotation> it is associated with.
+
+=item @ifclear
+
+=item @ifset
+
+The original line is in I<line>.
+
+=item @end
+
+The textual argument is in I<command_argument>.
+The corresponding @-command is in I<command>.
+
+=item @documentencoding
+
+The argument, normalized is in I<encoding_name> if it is recognized.
+The correpsonding perl encoding name is in I<perl_encoding>.
+
+=item @click
+
+In I<clickstyle> there is the current clickstyle command.
+
+=item kbd
+
+I<code> is set depending on the context and C<@kbdinputstyle>.
+
+=item definfoenclose defined commands
+
+I<begin> holds the string beginning the definfoenclose, 
+I<end> holds the string ending the definfoenclose.
+
+=item menu_entry
+
+The I<menu_entry_description> and I<menu_entry_name> keys
+are associated with the corresponding tree elements. The
+I<menu_entry_node> holds the parsed node entry, like
+the one appearing in the I<nodes_manuals> array for C<@node>.
+
+=item empty_line_after_command
+
+The corresponding command is in I<command>.
+
+=back
 
 =head1 SEE ALSO
 
@@ -5667,6 +6074,5 @@ This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 3 of the License,
 or (at your option) any later version.
-
 
 =cut
