@@ -16,9 +16,10 @@
 
 use strict;
 
-system ("wget -N http://www.iana.org/assignments/language-subtag-registry");
+my $dir = 'maintain';
+system ("cd $dir && wget -N http://www.iana.org/assignments/language-subtag-registry");
 
-open (TXT,"language-subtag-registry") or die "Open language-subtag-registry: $!\n";
+open (TXT,"$dir/language-subtag-registry") or die "Open $dir/language-subtag-registry: $!\n";
 
 my $entry;
 my @entries;
@@ -38,6 +39,9 @@ while (<TXT>)
    }
 }
 push @entries, $entry if (defined($entry));
+if (!defined($entry->{'Type'})) {
+  die "Type not defined for $entry ".join('|', keys(%$entry))."\n";
+}
 
 open (OUT, ">Texinfo/Documentlanguages.pm") or die "Open Texinfo/Documentlanguages.pm: $!\n";
 

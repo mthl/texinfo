@@ -34,6 +34,12 @@ use Getopt::Long qw(GetOptions);
 
 Getopt::Long::Configure("gnu_getopt");
 
+BEGIN
+{
+  my $texinfolibdir = '@datadir@/@PACKAGE@';
+  unshift @INC, ($texinfolibdir) if ($texinfolibdir ne '');
+}
+
 use Texinfo::Convert::Texinfo;
 
 # defaults for options relevant in the main program, not undef, and also
@@ -117,9 +123,9 @@ sub __p($$) {
 # FIXME use something else than srcdir?
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
 # FIXME
-$srcdir = "$srcdir/../texi2html";
+my $libsrcdir = "$srcdir/../texi2html";
 if ($0 =~ /\.pl$/) {
-  unshift @INC, "$srcdir/lib/libintl-perl/lib";
+  unshift @INC, "$libsrcdir/lib/libintl-perl/lib";
 } elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
   unshift @INC, "$pkgdatadir/lib/libintl-perl/lib";
 } else {
@@ -141,7 +147,7 @@ if ($0 =~ /\.pl$/) {
   # FIXME
   # or in the texi2html directory
   my $locales_dir_found = 0;
-  foreach my $locales_dir ("$srcdir/locales", "./locales", '../texi2html/locales') {
+  foreach my $locales_dir ("$libsrcdir/locales", "./locales", '../texi2html/locales') {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       $locales_dir_found = 1;
@@ -158,7 +164,7 @@ if ($0 =~ /\.pl$/) {
 Locale::Messages::bindtextdomain ($messages_textdomain, "$datadir/locale");
 
 if ($0 =~ /\.pl$/) {
-  unshift @INC, "$srcdir/lib/Unicode-EastAsianWidth/lib";
+  unshift @INC, "$libsrcdir/lib/Unicode-EastAsianWidth/lib";
 } elsif ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
   unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
 } else {
@@ -170,7 +176,7 @@ if ($0 =~ /\.pl$/) {
 require Unicode::EastAsianWidth;
 
 if ($0 =~ /\.pl$/) {
-  unshift @INC, "$srcdir/lib/Text-Unidecode/lib";
+  unshift @INC, "$libsrcdir/lib/Text-Unidecode/lib";
 } elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
   unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
 } else {

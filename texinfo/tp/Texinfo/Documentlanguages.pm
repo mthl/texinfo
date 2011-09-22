@@ -1,4 +1,4 @@
-# This file was automatically generated from ./regenerate_documentlanguages.pl
+# This file was automatically generated from ./maintain/regenerate_documentlanguages.pl
 
 package Texinfo::Documentlanguages;
 

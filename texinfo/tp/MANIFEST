@@ -11,7 +11,6 @@ Texinfo/Report.pm
 Texinfo/Common.pm
 Texinfo/Structuring.pm
 Texinfo/Documentlanguages.pm
-Texinfo/Parser.pm
 Texinfo/Convert/Texinfo.pm
 Texinfo/Convert/Info.pm
 Texinfo/Convert/NodeNameNormalization.pm
