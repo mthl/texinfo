@@ -22,7 +22,7 @@ while (<TXT>)
       {
          $format = $1;
       }
-      system("perl -w -x ../../texi2html.pl  nested_formats.texi -D $def --macro-expand=all_texi/$format-nested_formats.texi");
+      system("perl -w -x ../../texi2html.pl --force nested_formats.texi -D $def --macro-expand=all_texi/$format-nested_formats.texi");
       system ("cp all_texi/$format-nested_formats.texi all_texi/$dir/nested_formats.texi");
       #system ("perl -w -x ../../texi2html.pl -D $def --expand-macro=all_texi/$dir/$format-nested_formats.texi");
       system ("cd all_texi/$dir/ && makeinfo --force nested_formats.texi 2>nested_formats.2");
