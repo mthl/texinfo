@@ -176,9 +176,8 @@ my $DEFAULT_LANGUAGE = 'en';
 # gettext.
 Locale::Messages->select_package ('gettext_pp');
 
-#my $strings_textdomain = 'texinfo_document';
-# FIXME use texinfo_document
-my $strings_textdomain = 'texi2html_document';
+# FIXME make those configurable?  Set them with call to new?
+my $strings_textdomain = 'texinfo_document';
 my $messages_textdomain = 'texinfo';
 
 # libintl converts between encodings but doesn't decode them into the

@@ -103,7 +103,7 @@ macro_included.texi
 ['test_paths',
 '@include inc_file.texi
 
-@include ./t/include/inc_file.texi
+@include ./t/include_dir/inc_file.texi
 
 @@include dot path.
 @include ./inc_file.texi 

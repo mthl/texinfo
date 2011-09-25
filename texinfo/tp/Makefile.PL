@@ -25,3 +25,11 @@ WriteMakefile(
       (ABSTRACT_FROM  => 'Texinfo/Parser.pm', # retrieve abstract from module
        AUTHOR         => 'Patrice Dumas <pertusus@free.fr>') : ()),
 );
+
+#package MY;
+#sub test 
+#{
+#  my $inherited = shift->SUPER::test(@_);
+#  print STDERR "|$inherited|\n";
+#  $inherited;
+#}

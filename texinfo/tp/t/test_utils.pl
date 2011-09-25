@@ -17,6 +17,7 @@ use Texinfo::Convert::XML;
 use Texinfo::Convert::DocBook;
 use DebugTexinfo::DebugCount;
 use File::Basename;
+use File::Copy;
 use Data::Dumper;
 use Data::Compare;
 use Test::Deep;
@@ -32,13 +33,39 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
    %result_floats %result_converted %result_converted_errors 
    %result_elements %result_directions_text);
 
-my $strings_textdomain = 'texi2html_document';
+my $strings_textdomain = 'texinfo_document';
 Locale::Messages->select_package ('gettext_pp');
-# FIXME use texinfo instead of texi2html
-Locale::Messages::bindtextdomain ('texi2html_document', '../texi2html/locales');
+Locale::Messages::bindtextdomain ('texinfo_document', 't/locales');
+
+my $srcdir = $ENV{'srcdir'};
+if (defined($srcdir)) {
+  $srcdir =~ s/\/*$/\//;
+} else {
+  $srcdir = '';
+}
 
 our $output_files_dir = 't/output_files/';
-mkdir $output_files_dir if (! -d $output_files_dir);
+foreach my $dir ('t', 't/results', $output_files_dir) {
+  if (! -d $dir) {
+    mkdir $dir or die "mkdir $dir: $!\n";
+  }
+}
+
+my $include_reference_dir = 't/include_reference';
+my $include_dir = 't/include_dir';
+if (! -d $include_dir) {
+  mkdir $include_dir or die "mkdir $include_dir: $!\n";
+  if (opendir DIR, $include_reference_dir) {
+    my @files = grep {-f "$include_reference_dir/$_"} readdir DIR;
+    closedir DIR;
+    foreach my $file (@files) {
+      copy ("$include_reference_dir/$file", "$include_dir/$file")
+        or die "Copy $include_reference_dir/$file $include_dir/$file failed: $!\n";
+    }
+  } else {
+    die "Opendir $include_reference_dir failed: $!\n";
+  }
+}
 
 ok(1);
 
@@ -426,7 +453,10 @@ sub test($$)
   }
 
   my $parser = Texinfo::Parser->parser({'TEST' => 1,
-                                        'include_directories' => ['t/include/'],
+                                        'include_directories' => [
+                                          't/include_dir/',
+                                          't/include/',
+                                          $srcdir.'t/include/'],
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});
   # take the initial values to record only if there is something new
@@ -564,6 +594,7 @@ sub test($$)
     my $out_file = $new_file;
     $out_file = $file if ($self->{'generate'});
 
+    mkdir "t/results/$self->{'name'}" if (! -d "t/results/$self->{'name'}");
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
     binmode (OUT, ":encoding(utf8)");
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".

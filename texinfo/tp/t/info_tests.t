@@ -162,14 +162,14 @@ Para.
 ['image_file_search',
 '@node Top
 
-@image{tp/t/include/f--ile}
+@image{tp/t/include_dir/f--ile}
 
 @@image dot.
-@image{./tp/t/include/f--ile}
+@image{./tp/t/include_dir/f--ile}
 
 @@image dot parent.
-@image{../include/f--ile}
-',{'include_directories' => ['.', '..', 't/include']}],
+@image{../include_dir/f--ile}
+',{'include_directories' => ['.', '..', 't/include_dir']}],
 ['image_extension',
 '@node Top
 

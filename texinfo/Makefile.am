@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.29 2011-04-08 10:40:50 gray Exp $
+# $Id: Makefile.am,v 1.30 2011-09-25 22:07:04 pertusus Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -27,15 +27,16 @@ TEXINFO_TEX = doc/texinfo.tex
 
 if TOOLS_ONLY
   # Build native tools only.
-  SUBDIRS = lib info install-info makeinfo texi2html util
+  SUBDIRS = lib info install-info makeinfo tp util
 else
   # All subdirectories.
   # Do libs first since the C programs depend on it.
   # Do doc last so makeinfo will be built when we get there.
   # Others are alphabetical.
   SUBDIRS = $(native_tools) gnulib/lib lib \
-            install-info info makeinfo texi2html po po_document util doc
+            install-info info makeinfo po po_document tp util doc
 endif
+DIST_SUBDIRS = $(SUBDIRS) texi2html
 
 # One special target for installers to use by hand if desired.
 install-tex:
@@ -48,8 +49,8 @@ dist-local:
 	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
 	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
 
-dist-hook:
-	tar -C $(srcdir) -c -f - --exclude CVS tp | tar -C $(distdir) -x -f -
+#dist-hook:
+#	tar -C $(srcdir) -c -f - --exclude CVS tp | tar -C $(distdir) -x -f -
 
 # Don't install native tools for cross compile.
 if TOOLS_ONLY

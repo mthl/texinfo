@@ -1,3 +1,9 @@
+# $(POD2MAN) \
+#	--center="Texinfo Parser"	\
+#	--release=$(VERSION)				\
+#	$(srcdir)/truc.pod > truc.3
+
+
 include Makefile.incl
 
 $(srcdir)/Makefile.incl:
@@ -79,30 +85,30 @@ test_files = \
  t/html_tests.t \
  t/50value.t \
  t/60macro.t \
+ t/include_reference/section_file.texi \
+ t/include_reference/f--ile.txt \
+ t/include_reference/f--ile.png \
+ t/include_reference/inc_file.texi \
+ t/include_reference/incl-incl.txi \
+ t/include_reference/macro_included.texi \
  t/include/file_with_xml_chars.texi \
  t/include/a.txt \
  t/include/count_image.txt \
  t/include/fdotext.png \
- t/include/incl-incl.txi \
  t/include/fdotext.ext \
  t/include/count_image_text.txt \
  t/include/aa.txt \
  t/include/image.txt \
- t/include/section_file.texi \
  t/include/f.txt \
  t/include/this_is_a_long_unknown_file.png \
  t/include/count_image.png \
- t/include/f--ile.txt \
  t/include/fext.png \
  t/include/fextext \
  t/include/included_file_with_setfilename.texi \
  t/include/fext.txt \
- t/include/inc_file.texi \
  t/include/inc_@f--ile.texi \
- t/include/f--ile.png \
  t/include/words.txt \
  t/include/fdotext.txt \
- t/include/macro_included.texi \
  t/include/fext.ext \
  t/languages.t \
  t/16raw.t \
@@ -112,17 +118,36 @@ test_files = \
  t/README \
  t/init/test_renamed_nodes.init \
  t/init/redefine_need.init \
- t/init/test_directions.init
+ t/init/test_directions.init \
+ t/manual_tree.pl
 
+relative_include_dir = t/include_dir
+document_domain = $(PACKAGE)_document
+all-local:
+	rm -rf t/locales
+	for file in $(srcdir)/../po_document/*.gmo; do \
+	  cat=`basename "$$file"` ; \
+	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
+	  $(MKDIR_P) "t/locales/$$lang/LC_MESSAGES/" ; \
+	  $(INSTALL_DATA) $$file t/locales/$$lang/LC_MESSAGES/$(document_domain).mo; \
+	done
+	$(MKDIR_P) $(relative_include_dir); \
+	for file in $(srcdir)/t/include_reference/*.*; do \
+	  bfile=`basename "$$file"`; \
+	  $(INSTALL_DATA) "$$file" "$(relative_include_dir)/$$bfile"; \
+	done
+
+TESTS = prove.sh
 
 EXTRA_DIST = \
   texi2any.pl \
   $(test_results) \
-  $(test_files)
+  $(test_files) \
+  $(TESTS)
 
 # FIXME put those somewhere else?  In maintain/lib?
 libsrcdir = $(srcdir)/../texi2html/lib
-  
+
 install-data-local:
 	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
@@ -141,7 +166,15 @@ install-data-local:
 	$(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode/*.pm \
 	  $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
 
+install-exec-hook:
+	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
+
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
+
+distclean-local:
+	rm -rf t/locales
+	rm -f t/results/*/*.pl.new
+	rm -rf $(relative_include_dir)
 
 CLEANFILES = texi2any

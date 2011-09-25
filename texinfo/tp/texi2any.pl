@@ -105,8 +105,7 @@ $real_command_name =~ s/\.pl$//;
 my $messages_textdomain = '@PACKAGE@';
 $messages_textdomain = 'texinfo' if ($messages_textdomain eq '@'.'PACKAGE@');
 my $strings_textdomain = '@PACKAGE@' . '_document';
-# FIXME use texinfo
-$strings_textdomain = 'texi2html_document' 
+$strings_textdomain = 'texinfo_document' 
    if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
 
 sub __($) {

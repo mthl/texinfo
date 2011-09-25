@@ -362,7 +362,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
 '
           },
           'line_nr' => {
-            'file_name' => 't/include//macro_included.texi',
+            'file_name' => 't/include_dir//macro_included.texi',
             'line_nr' => 2,
             'macro' => ''
           },

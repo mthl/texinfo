@@ -53,7 +53,7 @@ $result_trees{'image_file_search'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'tp/t/include/f--ile'
+                  'text' => 'tp/t/include_dir/f--ile'
                 }
               ],
               'parent' => {},
@@ -104,7 +104,7 @@ $result_trees{'image_file_search'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => './tp/t/include/f--ile'
+                      'text' => './tp/t/include_dir/f--ile'
                     }
                   ],
                   'parent' => {},
@@ -159,7 +159,7 @@ $result_trees{'image_file_search'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => '../include/f--ile'
+                      'text' => '../include_dir/f--ile'
                     }
                   ],
                   'parent' => {},
@@ -250,24 +250,24 @@ $result_trees{'image_file_search'}{'contents'}[1]{'parent'} = $result_trees{'ima
 
 $result_texis{'image_file_search'} = '@node Top
 
-@image{tp/t/include/f--ile}
+@image{tp/t/include_dir/f--ile}
 
 @@image dot.
-@image{./tp/t/include/f--ile}
+@image{./tp/t/include_dir/f--ile}
 
 @@image dot parent.
-@image{../include/f--ile}
+@image{../include_dir/f--ile}
 ';
 
 
 $result_texts{'image_file_search'} = '
-tp/t/include/f--ile
+tp/t/include_dir/f--ile
 
 @image dot.
-./tp/t/include/f--ile
+./tp/t/include_dir/f--ile
 
 @image dot parent.
-../include/f--ile
+../include_dir/f--ile
 ';
 
 $result_sectioning{'image_file_search'} = {};
@@ -307,7 +307,7 @@ $result_converted{'info'}->{'image_file_search'} = 'This is , produced by makein
 
 File: ,  Node: Top,  Up: (dir)
 
- [image src="tp/t/include/f--ile.png" text="Image description\\"\\"\\\\." ]
+ [image src="tp/t/include_dir/f--ile.png" text="Image description\\"\\"\\\\." ]
 
 @image dot. 
 
@@ -323,18 +323,18 @@ End Tag Table
 $result_converted_errors{'info'}->{'image_file_search'} = [
   {
     'file_name' => '',
-    'error_line' => ':6: warning: Cannot find @image file `./tp/t/include/f--ile.txt\'
+    'error_line' => ':6: warning: Cannot find @image file `./tp/t/include_dir/f--ile.txt\'
 ',
-    'text' => 'Cannot find @image file `./tp/t/include/f--ile.txt\'',
+    'text' => 'Cannot find @image file `./tp/t/include_dir/f--ile.txt\'',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 6
   },
   {
     'file_name' => '',
-    'error_line' => ':9: warning: Cannot find @image file `../include/f--ile.txt\'
+    'error_line' => ':9: warning: Cannot find @image file `../include_dir/f--ile.txt\'
 ',
-    'text' => 'Cannot find @image file `../include/f--ile.txt\'',
+    'text' => 'Cannot find @image file `../include_dir/f--ile.txt\'',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 9

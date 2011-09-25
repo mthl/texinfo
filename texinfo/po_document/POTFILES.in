@@ -15,7 +15,10 @@ texi2html/maintained_extra/html32.pm
 texi2html/maintained_extra/tex4ht.pm
 texi2html/maintained_extra/mediawiki.pm
 texi2html/examples/roff.pm
+tp/Texinfo/Common.pm
 tp/Texinfo/Parser.pm
+tp/Texinfo/Convert/Converter.pm
+tp/Texinfo/Convert/DocBook.pm
 tp/Texinfo/Convert/Info.pm
 tp/Texinfo/Convert/Plaintext.pm
 tp/Texinfo/Convert/HTML.pm
