@@ -1,3 +1,8 @@
+2011-09-25  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Configuration Variables): comment out or
+	remove variables the Parser doesn't have, per Patrice.
+
 2011-09-23  Vincent Bela@^iche  <vincent.belaiche@gmail.com>
 
 	* doc/texinfo.tex (\macroxxx): complain if more than 256 args

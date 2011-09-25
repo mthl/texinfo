@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.383 2011-09-18 23:24:25 karl Exp $
+@c $Id: texinfo.txi,v 1.384 2011-09-25 18:36:04 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14110,14 +14110,14 @@ At present, Texinfo supports only these encodings:
 @item US-ASCII
 This has no particular effect, but it's included for completeness.
 
-@itemx UTF-8
+@item UTF-8
 The vast global character encoding, expressed in 8-bit bytes.
 The Texinfo processors have no deep knowledge of Unicode; for the most
 part, they just pass along the input they are given to the output.
 
+@item ISO-8859-2
 @itemx ISO-8859-1
 @itemx ISO-8859-15
-@item ISO-8859-2
 These specify the standard encodings for Western European (the first
 two) and Eastern European languages (the third), respectively.  ISO
 8859-15 replaces some little-used characters from 8859-1 (e.g.,
@@ -16879,10 +16879,10 @@ For HTML, XML.  If @option{--enable-encoding} is set, and there is an
 entity corresponding with the letter or the symbol being output,
 prefer the entity.
 
-@item ENCODING_NAME
-Output document encoding name. By default, it is set automatically
-based on @code{@@documentencoding}.  This encoding name is the
-classical charset name in HTML.
+@c @item ENCODING_NAME
+@c Output document encoding name. By default, it is set automatically
+@c based on @code{@@documentencoding}.  This encoding name is the
+@c classical charset name in HTML.
 
 @item EXTERNAL_CROSSREF_SPLIT
 For cross references to other manuals, this determines if the other
@@ -16910,10 +16910,6 @@ description.
 For HTML.  Use simple header formatting, rather than tables with node
 names.
 
-@item I18N_PERL_HASH
-If set, use the old system for the translation of strings output by
-the program in the document.
-
 @item ICONS
 For HTML.  Use icons for the navigation panel.
 
@@ -16932,14 +16928,9 @@ the form:
 If set, begin outputting at @code{@@setfilename}, if
 @code{@@setfilename} is present.
 
-@item IGNORE_PREAMBLE_TEXT
-If this is set the text before @code{@@node} and sectioning commands
-is ignored.  This is a configuration variable kept for backward
-compatibility and has no particular usefulness nowadays.
-
-@item IN_ENCODING
-Set the input file encoding (@pxref{documentencoding,,
-@code{@@documentencoding}}) using Perl encoding names.
+@c @item IN_ENCODING
+@c Set the input file encoding (@pxref{documentencoding,,
+@c @code{@@documentencoding}}) using Perl encoding names.
 
 @item INLINE_CONTENTS
 If set, output the contents where the @code{@@contents} and similar
@@ -16955,45 +16946,41 @@ If set, @code{@@insertcopying} is replaced by the @code{@@copying}
 content (@pxref{copying,, @code{@@copying}}) as if
 @code{@@insertcopying} were a user-defined macro.
 
-@item L2H
-For HTML.  If set, @command{latex2html} is used to convert @code{@@math}
-and @code{@@tex} sections.  Best used with @option{--iftex}.
-
-@item L2H_CLEAN
-(Relevant only if @code{L2H} is set.)  If this is set the intermediate
-files generated in relation with @command{latex2html} are removed.
-
-@item L2H_FILE
-(Relevant only if @code{L2H} is set.)  If set, the given file is used
-as @command{latex2html}'s init file.
-
-@item L2H_HTML_VERSION
-(Relevant only if @code{L2H} is set.)  The HTML version used in the
-@command{latex2html} call.
-
-@item L2H_L2H
-The program invoked as @command{latex2html} if @code{L2H} is set.
-
-@item L2H_SKIP
-(Relevant only if @code{L2H} is set.)  If this is set the actual call
-to @command{latex2html} is skipped; previously generated content is
-reused, instead.  If set to 0, the cache is not used at all.  If set
-to undef, the cache is used for as many @TeX{} fragments as possible
-and for the remaining the command is run.
-
-@item L2H_TMP
-(Relevant only if @code{L2H} is set.)  Set the directory used for
-temporary files. None of the file name components in this directory
-name may start with @samp{.}; otherwise, @command{latex2html} will
-fail (because of @command{dvips}).
+@c @item L2H
+@c For HTML.  If set, @command{latex2html} is used to convert @code{@@math}
+@c and @code{@@tex} sections.  Best used with @option{--iftex}.
+@c 
+@c @item L2H_CLEAN
+@c (Relevant only if @code{L2H} is set.)  If this is set the intermediate
+@c files generated in relation with @command{latex2html} are removed.
+@c 
+@c @item L2H_FILE
+@c (Relevant only if @code{L2H} is set.)  If set, the given file is used
+@c as @command{latex2html}'s init file.
+@c 
+@c @item L2H_HTML_VERSION
+@c (Relevant only if @code{L2H} is set.)  The HTML version used in the
+@c @command{latex2html} call.
+@c 
+@c @item L2H_L2H
+@c The program invoked as @command{latex2html} if @code{L2H} is set.
+@c 
+@c @item L2H_SKIP
+@c (Relevant only if @code{L2H} is set.)  If this is set the actual call
+@c to @command{latex2html} is skipped; previously generated content is
+@c reused, instead.  If set to 0, the cache is not used at all.  If set
+@c to undef, the cache is used for as many @TeX{} fragments as possible
+@c and for the remaining the command is run.
+@c 
+@c @item L2H_TMP
+@c (Relevant only if @code{L2H} is set.)  Set the directory used for
+@c temporary files. None of the file name components in this directory
+@c name may start with @samp{.}; otherwise, @command{latex2html} will
+@c fail (because of @command{dvips}).
 
 @item MONOLITHIC
 For HTML.  Output only one file including the table of contents.  This
 only makes sense when the output is not split.  It is set by default.
-
-@item NEW_CROSSREF_STYLE
-If unset, use an old cross reference schema.  This is a backward
-compatibility setting, you should certainly never unset this variable.
 
 @item NO_CSS
 For HTML.  Do not use CSS (@pxref{HTML CSS}).
@@ -17042,10 +17029,6 @@ Link Preservation}.
 @item RENAMED_NODES_REDIRECTIONS
 If set, do redirection files for renamed nodes.  Set for HTML by default.
 
-@item SEPARATE_DESCRIPTION
-If set, always separate menu description and menu link, even in 
-preformatted environment.
-
 @item SHORT_REF
 For HTML.  If this is set, internal cross references are given without
 the sectioning word, even if the target of the reference is a section.
@@ -17065,11 +17048,11 @@ For HTML.  If set, output the title at the beginning of the document.
 If set, use a simple preformatted style for the menu, instead of
 breaking down the different parts of the menu.  @xref{Menu Parts}.
 
-@item SPLIT_INDEX
-For HTML.  If set, the output is split, and the output from
-@code{@@printindex} happens in a sectioning element at the level of
-splitting, then split index pages at the next letter after they have
-more than that many entries.  If set to 0, no index splitting.
+@c @item SPLIT_INDEX
+@c For HTML.  If set, the output is split, and the output from
+@c @code{@@printindex} happens in a sectioning element at the level of
+@c splitting, then split index pages at the next letter after they have
+@c more than that many entries.  If set to 0, no index splitting.
 
 @item TEST
 If set to true, some variables which are normally dynamically
@@ -17115,11 +17098,6 @@ For HTML.  Use entities for doubled single-quote characters
 @cindex @code{<head>} HTML tag, and @code{<link>}
 For HTML.  Generate @code{<link>} elements in the HTML @code{<head>} output.
 
-@item USE_NLS
-If set, use Native Language Support (NLS) support fully.  The default
-is determined automatically at build time, and is overridden
-automatically runtime.
-
 @item USE_NODES
 Preferentially use nodes to decide where elements are separated.
 
@@ -17153,9 +17131,6 @@ extension.  You should not need to set this variable.
 @item USE_TITLEPAGE_FOR_TITLE
 Use the full @code{@@titlepage} as the title, not a simple title string.
 
-@item USE_UNICODE
-Use Perl support for unicode. This is automatically detected.
-
 @item USE_UNIDECODE
 @pindex Text::Unidecode
 Use the @code{Text::Unidecode} Perl module to transliterate more
@@ -17164,10 +17139,10 @@ characters.  This is automatically detected.
 @item VERTICAL_HEAD_NAVIGATION
 For HTML.  If set, a vertical navigation panel is used.
 
-@item WORDS_IN_PAGE
-For HTML, with output split at nodes.  Specifies the approximate
-minimum page length required before a navigation panel is placed at
-the bottom of a page.
+@c @item WORDS_IN_PAGE
+@c For HTML, with output split at nodes.  Specifies the approximate
+@c minimum page length required before a navigation panel is placed at
+@c the bottom of a page.
 
 @end vtable
 
@@ -21394,7 +21369,7 @@ Indicate an acronym in all capital letters, such as `NASA'.
 Generate the uppercase and lowercase AE ligatures, respectively:
 @AE{}, @ae{}.  @xref{Inserting Accents}.
 
-@itemx @@afivepaper
+@item @@afivepaper
 Change page dimensions for the A5 paper size.  @xref{A4 Paper}.
 
 @item @@afourlatex
@@ -21976,7 +21951,7 @@ Begin text to be ignored in one output format but not the others.
 the corresponding @code{@@end ifnot@var{format}}.
 @xref{Conditionals}.
 
-@itemx @@ifnotinfo
+@item @@ifnotinfo
 Begin text to appear in output other than Info and (for historical
 compatibility) plain text.  Pair with @code{@@end ifnotinfo}.
 @xref{Conditionals}.
@@ -23213,7 +23188,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.383 2011-09-18 23:24:25 karl Exp $
+$Id: texinfo.txi,v 1.384 2011-09-25 18:36:04 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23292,7 +23267,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.383 2011-09-18 23:24:25 karl Exp $
+@comment $Id: texinfo.txi,v 1.384 2011-09-25 18:36:04 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
