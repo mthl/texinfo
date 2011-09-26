@@ -41,15 +41,21 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
-  sectioning_structure  
-  nodes_tree
   associate_internal_references
-  number_floats
   elements_directions
   elements_file_directions
   merge_indices
+  nodes_tree
+  number_floats
+  menu_to_simple_menu
+  output_internal_links
+  sectioning_structure
+  set_menus_to_simple_menu
   sort_indices
   sort_indices_by_letter
+  split_by_node
+  split_by_section
+  split_pages
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -59,11 +65,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
-=head1 NAME
-
-Texinfo::Structuring - Set informations in Texinfo::Parser tree and rearrange
-
-=cut
 
 my %types_to_enter;
 foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
@@ -1322,3 +1323,243 @@ sub set_menus_to_simple_menu($)
 }
 
 1;
+
+__END__
+=head1 NAME
+
+Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
+
+=head1 SYNOPSIS
+
+  use Texinfo::Structuring qw(sectioning_structure nodes_tree number_floats
+    associate_internal_references split_by_node split_by_section split_pages
+    merge_indices sort_indices_by_letter sort_indices elements_directions
+    elements_file_directions);
+  # $tree is a Texinfo document tree.  $parser is a Texinfo::Parser object.
+  my $sections_root = sectioning_structure ($parser, $tree);
+  my $top_node = nodes_tree($parser);
+  number_floats($parser->floats_information());
+  associate_internal_references($parser);
+  my $elements;
+  if ($split_at_nodes) {
+    $elements = split_by_node($tree);
+  } else {
+    $elements = split_by_section($tree);
+  }
+  # $split may be 'section', 'chapter', a false value. Else means 'node'.
+  my $pages = split_pages($elements, $split);
+  elements_directions($parser, $elements);
+  elements_file_directions($parser, $elements);
+
+  my ($index_names, $merged_indices, $index_entries) 
+     = $parser->indices_information();
+  my $merged_index_entries
+     = merge_indices($index_names, $merged_indices, $index_entries);
+  my $index_entries_sorted;
+  if ($sort_by_letter) {
+    $index_entries_sorted = sort_indices_by_letter($parser,
+                                       $merged_index_entries, $index_names);
+  } else {
+    $index_entries_sorted = sort_indices($parser, $merged_index_entries,
+                                         $index_names);
+  }
+  
+  
+=head1 DESCRIPTION
+
+Texinfo::Structuring first allows to collect informations on a Texinfo tree.
+In most case, it also requires a parser object to do that job.  Thanks to
+C<sectioning_structure> the hierarchy of sectioning commands is determined.
+The node and menus tree is analysed with C<nodes_tree>.  Floats get their 
+standard numbering with C<number_floats> and internal references are matched
+up with nodes, floats or anchors with C<associate_internal_references>.
+
+It is also possible to group the top-level contents of the tree, which consist
+in nodes and sectioning commands into elements that group together a node and
+the next sectioning element.  With C<split_by_node> nodes are considered
+to be the main sectionning elements, while with C<split_by_section> the 
+sectioning command elements are the main elements.  The first mode is typical
+of Info format, while the second correspond to a traditional book.
+The elements may be further split in I<pages>, which are not pages as
+in book pages, but more like web pages, and hold series of elements.
+
+The elements may have directions to other elements prepared 
+by C<elements_directions>.  C<elements_file_directions> should also
+set direction related to files, provided files are associated with 
+elements by the user.
+
+C<merge_indices> may be used to merge indices, which may be sorted
+with C<sort_indices> or C<sort_indices_by_letter> to sort by letters.
+
+Other miscellaneous methods include C<set_menus_to_simple_menu> and
+C<menu_to_simple_menu> to change the menu texinfo tree. Last,
+C<output_internal_links> may be used to output element and
+index entries references, mostly for HTML output.
+
+
+=head1 METHODS
+
+No method is exported in the default case.
+
+=over
+
+=item $sections_root = sectioning_structure ($parser, $tree)
+
+This function goes through the tree and gather information on
+the document structure for sectioning commands.  It returns the 
+root of the sectioning commands tree.
+
+For section elements, it sets:
+
+=over
+
+=item level
+
+The level in the sectioning tree hierarchy.  0 is for C<@top> or 
+C<@part>, 1 for C<@chapter>, C<@appendix>...  This level is corrected
+by C<@raisesections> and C<@lowersections>.
+
+=item number
+
+The sectioning element number.
+
+=item section_childs
+
+An array holding sectioning elements children of the element.
+
+=item section_up
+
+=item section_prev
+
+=item section_next
+
+The up, previous and next sectioning elements.
+
+=item toplevel_next
+
+=item toplevel_prev
+
+The next and previous sectioning elements of toplevel sectioning
+elements (like C<@top>, C<@chapter>, C<@appendix>) , not taking into 
+account C<@part> elements.
+
+=back
+
+=item my $top_node = nodes_tree($parser)
+
+Goes through menu and nodes and set directions.  Returns the top
+node.
+
+This functions sets:
+
+=over
+
+=item menu_child
+
+The first child in the menu of the node.
+
+=item menu_up
+
+=item menu_next
+
+=item menu_prev
+
+Up, next and previous directions as set in menus.
+
+=item node_up
+
+=item node_prev
+
+=item node_next
+
+Up, next and previous directions for the node.
+
+=back
+
+=item number_floats($float_information)
+
+Number the floats as described in the Texinfo manual.  Sets
+the I<number> key of the float tree elements.
+
+=item associate_internal_references($parser)
+
+Verify that internal references (C<@ref> and similar without
+fourth of fifth argument) have an associated node, anchor or float.
+Set the I<label> key in the I<extra> hash of the reference tree
+element to the associated labeled tree element.
+
+=item $elements = split_by_node($tree)
+
+Returns a reference array of elements where a node is associated to
+the following sectioning commands.  Sectioning commands without nodes
+are also with the previous node, while nodes without sectioning commands
+are alone in their elements.
+
+Elements are regular tree items with type I<element>, the
+associated nodes and sectioning tree items are in the array associated
+with the I<contents> key.  They have directions, namely I<element_next>
+and I<element_prev> pointing to the previous and the next element.
+
+In the I<extra> hash they have
+
+=over
+
+=item no_node
+
+A special case, if there are no nodes in the document, the value is set.
+
+=item node
+
+=item element_command
+
+The node command associated with the element.
+
+=item section
+
+The sectioning command associated with the element node.
+
+=back
+
+=item $elements = split_by_section($tree) 
+
+Similarly with C<split_by_node>, returns an array of elements.  This time,
+lone nodes are associtated with the previous sections and lone sections
+makes up an element.
+
+The extra hash keys set are the same, except that I<element_command> is 
+the sectioning command associated with the element, and I<no_node> is 
+replaced by I<no_section>.
+
+=item $pages = split_pages($elements, $split)
+
+The elements from the array reference argument are grouped based on the
+value of I<$split>.  The I<$pages> array with all those groupings
+is returned by the function.  The possible values for I<$split> are
+
+=over
+
+=item chapter
+
+The elements are split at chapter or other toplevel sectioning elements.
+
+=item section
+
+The elements are split at sectioning commands below chapter.
+
+=item value evaluating to false
+
+No splitting, only one page is returned, holding all the elements.
+
+=item anything else
+
+Each element has its own page.
+
+=back
+
+Pages are regular tree items with type I<page>, holding thier elements
+in the I<contents> array.  They also have directions, namely I<page_next>
+and I<page_prev> pointing to the previous and the next page.
+
+=back
+
+=cut

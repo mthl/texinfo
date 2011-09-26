@@ -1267,7 +1267,7 @@ sub _convert_style_command($$$$)
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
     #cluck "text not defined in _convert_style_command";
-    #print STDERR Texinfo::Structuring::_print_current($command);
+    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   # handle the effect of kbdinputstyle
@@ -1616,7 +1616,7 @@ sub _convert_key_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #print STDERR Texinfo::Structuring::_print_current($command);
+    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   return $self->xml_protect_text('<') .$text .$self->xml_protect_text('>');
@@ -1635,7 +1635,7 @@ sub _convert_indicateurl_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #print STDERR Texinfo::Structuring::_print_current($command);
+    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   return $self->xml_protect_text('<').'<code>' .$text 
@@ -1656,7 +1656,7 @@ sub _convert_ctrl_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #print STDERR Texinfo::Structuring::_print_current($command);
+    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   return $self->xml_protect_text('^') .$text;
@@ -1674,7 +1674,7 @@ sub _convert_titlefont_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #print STDERR Texinfo::Structuring::_print_current($command);
+    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   # FIXME is it the right way to do?  Or should it be handled in heading_text?
