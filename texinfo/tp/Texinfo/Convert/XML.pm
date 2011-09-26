@@ -381,11 +381,18 @@ sub _convert($$;$)
   my $result = '';
   if (defined($root->{'text'})) {
     if ($self->{'document_context'}->[-1]->{'raw'}) {
-      # ignore the newline at the end of the @xml line
-      if ($root->{'type'} and $root->{'type'} eq 'empty_line_after_command') {
+      # ignore the newline at the end of the @xml line, and the last in xml
+      if ($root->{'type'} and ($root->{'type'} eq 'empty_line_after_command'
+                               or $root->{'type'} eq 'last_raw_newline')) {
         return '';
       } else {
         return $root->{'text'};
+      }
+    } elsif ($root->{'type'} eq 'empty_line_after_command') {
+      my $command = $root->{'extra'}->{'command'};
+      if ($self->{'expanded_formats_hash'}->{$command->{'cmdname'}}
+          and $command->{'cmdname'} eq 'xml') {
+        return '';
       }
     }
     $result = $self->xml_protect_text($root->{'text'});
@@ -921,8 +928,6 @@ sub _convert($$;$)
     my $end_command = $root->{'extra'}->{'end_command'}; 
     if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}
         and $root->{'cmdname'} eq 'xml') {
-      chomp ($result);
-      chomp ($result);
     } else {
       my $end_line;
       if ($end_command) {

@@ -152,7 +152,6 @@ in &lt;tex&gt;
 
 
 <para>Para
-<in>
-</para>';
+<in></para>';
 
 1;

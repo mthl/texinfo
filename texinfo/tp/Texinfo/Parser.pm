@@ -5544,10 +5544,14 @@ The text elements may be associated to the following types:
 
 An empty line.
 
-=item Z<>raw
+=item raw
 
 Text in an environment where it should be kept as is (in C<@verbatim>,
-C<@verb>, C<@macro> body).
+C<@verb>, C<@html>, C<@macro> body).
+
+=item last_raw_newline
+
+The last end of line in a raw block (except for C<@verbatim>).
 
 =item empty_line_after_command
 

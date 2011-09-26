@@ -2,23 +2,6 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
-xml_tests/raw
-
- Para
- @xml
- <in>
- @end xml
-
-leads to
-
- <para>Para
- <in>
- </para>
-
-should be 
- <para>Para
- <in></para>
-
 @appendix should stop @part. Right now it do not do that.
 Cf sectioning_part_appendix.
 
@@ -137,6 +120,9 @@ sectioning setfilename_on_top_and_after_node
   than book. Maybe the best way to do that would be passing the
   information that there is only one section to the functions formatting
   the page header and page footer.
+
+Should more Converter ignore the last new line (with type 
+last_raw_newline) of a raw block format?
 
 Test tree leading to non empty preamble_before_setfilename.  Currently there
 are none in the test suite, maybe require a real file as input.
