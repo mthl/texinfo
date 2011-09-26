@@ -38,9 +38,14 @@ $result_trees{'nested_macros'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'other macro
-',
+              'text' => 'other macro',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -116,6 +121,7 @@ $result_trees{'nested_macros'}{'contents'}[0]{'args'}[1]{'parent'} = $result_tre
 $result_trees{'nested_macros'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
+$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];

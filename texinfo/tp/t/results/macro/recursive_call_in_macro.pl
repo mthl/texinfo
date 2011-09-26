@@ -24,9 +24,14 @@ $result_trees{'recursive_call_in_macro'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '@norecurse{arg}
-',
+          'text' => '@norecurse{arg}',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -72,6 +77,7 @@ $result_trees{'recursive_call_in_macro'} = {
 $result_trees{'recursive_call_in_macro'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'recursive_call_in_macro'}{'contents'}[0];
 $result_trees{'recursive_call_in_macro'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'recursive_call_in_macro'}{'contents'}[0];
 $result_trees{'recursive_call_in_macro'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_macro'}{'contents'}[0];
+$result_trees{'recursive_call_in_macro'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'recursive_call_in_macro'}{'contents'}[0];
 $result_trees{'recursive_call_in_macro'}{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_macro'};
 $result_trees{'recursive_call_in_macro'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'recursive_call_in_macro'}{'contents'}[0];
 $result_trees{'recursive_call_in_macro'}{'contents'}[1]{'parent'} = $result_trees{'recursive_call_in_macro'};

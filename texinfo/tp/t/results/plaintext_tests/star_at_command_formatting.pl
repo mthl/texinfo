@@ -85,9 +85,14 @@ $result_trees{'star_at_command_formatting'} = {
         },
         {
           'parent' => {},
-          'text' => 'And end para.
-',
+          'text' => 'And end para.',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -1142,6 +1147,7 @@ $result_trees{'star_at_command_formatting'}{'contents'}[0]{'contents'}[8]{'paren
 $result_trees{'star_at_command_formatting'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'star_at_command_formatting'}{'contents'}[0];
 $result_trees{'star_at_command_formatting'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'star_at_command_formatting'}{'contents'}[0];
 $result_trees{'star_at_command_formatting'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'star_at_command_formatting'}{'contents'}[0];
+$result_trees{'star_at_command_formatting'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'star_at_command_formatting'}{'contents'}[0];
 $result_trees{'star_at_command_formatting'}{'contents'}[0]{'parent'} = $result_trees{'star_at_command_formatting'};
 $result_trees{'star_at_command_formatting'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'star_at_command_formatting'}{'contents'}[0];
 $result_trees{'star_at_command_formatting'}{'contents'}[1]{'parent'} = $result_trees{'star_at_command_formatting'};

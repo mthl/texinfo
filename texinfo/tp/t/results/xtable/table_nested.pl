@@ -139,9 +139,14 @@ $result_trees{'table_nested'} = {
         },
         {
           'parent' => {},
-          'text' => 'After table.
-',
+          'text' => 'After table.',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -2428,6 +2433,7 @@ $result_trees{'table_nested'}{'contents'}[0]{'contents'}[17]{'parent'} = $result
 $result_trees{'table_nested'}{'contents'}[0]{'contents'}[18]{'parent'} = $result_trees{'table_nested'}{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[0]{'contents'}[19]{'parent'} = $result_trees{'table_nested'}{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[0]{'contents'}[20]{'parent'} = $result_trees{'table_nested'}{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[0]{'contents'}[21]{'parent'} = $result_trees{'table_nested'}{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[0]{'parent'} = $result_trees{'table_nested'};
 $result_trees{'table_nested'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'table_nested'}{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[1]{'parent'} = $result_trees{'table_nested'};

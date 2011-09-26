@@ -1111,7 +1111,8 @@ sub _convert($$)
   # process text
   if (defined($root->{'text'})) {
     if (!$formatter->{'_top_formatter'}) {
-      if ($root->{'type'} and $root->{'type'} eq 'raw') {
+      if ($root->{'type'} and ($root->{'type'} eq 'raw' 
+                               or $root->{'type'} eq 'last_raw_newline')) {
         $result = $self->_count_added($formatter->{'container'},
                     $formatter->{'container'}->add_next($root->{'text'}));
       } else {

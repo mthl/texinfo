@@ -55,9 +55,14 @@ $result_trees{'value_in_macro_formal_arg'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\
-',
+          'text' => 'result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -115,6 +120,7 @@ $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'args'}[0]{'parent'} =
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[3]{'extra'}{'command'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[3]{'parent'} = $result_trees{'value_in_macro_formal_arg'};

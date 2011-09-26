@@ -1,26 +1,13 @@
-# Before `make install' is performed this script should be runnable with
-# `make test'. After `make install' it should work as `perl Texinfo-Parser.t'
-
-#########################
-
-# change 'tests => 1' to 'tests => last_test_to_print';
-
 use strict;
 
-#use Test;
 use Test::More;
-BEGIN { plan tests => 116 };
+BEGIN { plan tests => 120 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
 ok(1, "modules loading"); # If we made it this far, we're ok.
-
-#########################
-
-# Insert your test code below, the Test::More module is use()ed here so read
-# its man page ( perldoc Test::More ) for help writing this test script.
 
 sub test_para($$$;$)
 {
@@ -51,6 +38,8 @@ test_para(['word ', ' other'], "word other\n", 'two_words feed, space inside');
 test_para(['word '], "word\n", 'trailing spaces');
 test_para([' word'], "word\n", 'leading spaces');
 test_para([' ', ' word'], "word\n", 'double leading spaces');
+test_para(["word\n", "a"], "word a\n", 'trailing end of line and word');
+test_para(['word', "\n", "a"], "word a\n", 'appended end of line and word');
 test_para(['word other'], "word\nother\n", 'two_words_max', {'max' => 2});
 test_para(['word other'], "word\nother\n", 'two_words_max_less_one', {'max' => 3});
 test_para(['word other'], "word\nother\n", 'two_words_max_exact', {'max' => 4});
@@ -149,6 +138,23 @@ $result .= $para->add_text(' after');
 $result .= $para->end();
 is ($result, "b _._  after\n", 'add char after end sentence');
 
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->add_next('a');
+$result .= $para->add_next("\n");
+$result .= $para->add_next('_');
+$result .= $para->end();
+is ($result, "a\n_\n", 'add_next: add char after separate end line');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->add_next("a\n");
+$result .= $para->add_next('_');
+$result .= $para->end();
+is ($result, "a\n_\n", 'add_next: add char after end line');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
 $result .= $para->add_text("aa.\n");

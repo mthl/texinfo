@@ -73,9 +73,14 @@ $result_trees{'kbdinputstyle'} = {
         },
         {
           'parent' => {},
-          'text' => '@end example
-',
+          'text' => '@end example',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -1353,6 +1358,7 @@ $result_trees{'kbdinputstyle'}{'contents'}[0]{'contents'}[6]{'parent'} = $result
 $result_trees{'kbdinputstyle'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[0];
+$result_trees{'kbdinputstyle'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'kbdinputstyle'}{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'};

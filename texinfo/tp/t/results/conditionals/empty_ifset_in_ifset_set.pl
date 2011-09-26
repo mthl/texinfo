@@ -53,9 +53,14 @@ $result_trees{'empty_ifset_in_ifset_set'} = {
         },
         {
           'parent' => {},
-          'text' => '@ifset
-',
+          'text' => '@ifset',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'line_nr' => {
@@ -85,6 +90,7 @@ $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[2]{'parent'} = $result_tre
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
+$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[4]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};

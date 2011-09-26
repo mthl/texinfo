@@ -21,9 +21,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'cp
-',
+              'text' => 'cp',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -60,9 +65,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'fn
-',
+              'text' => 'fn',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -99,9 +109,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '@syncodeindex
-',
+              'text' => '@syncodeindex',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -232,9 +247,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'en
-',
+              'text' => 'en',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -271,9 +291,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '@documentlanguage
-',
+              'text' => '@documentlanguage',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -430,9 +455,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'truc
-',
+              'text' => 'truc',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -537,9 +567,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '@trucindex
-',
+              'text' => '@trucindex',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -582,9 +617,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'codeidx
-',
+              'text' => 'codeidx',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -673,9 +713,14 @@ $result_trees{'macro_in_index_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'a @var{index entry} t@\'e @^{@dotless{i}}
-',
+              'text' => 'a @var{index entry} t@\'e @^{@dotless{i}}',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -2029,16 +2074,19 @@ $result_trees{'macro_in_index_commands'} = {
 };
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[0];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[2];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[2];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[2];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[3]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[2];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[4];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[4];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[4];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[5]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[4];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
@@ -2058,11 +2106,13 @@ $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[8]{'parent'}
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[10];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[10];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[10];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[11]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[10];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[12];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[12];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[12];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[13]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[12];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
@@ -2088,6 +2138,7 @@ $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[17]{'parent'
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[18]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[19]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[19];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[19]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[19];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[19]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[19];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[19]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[20]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[19];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[20]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
@@ -2104,12 +2155,14 @@ $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[22]{'parent'
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[23]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[24]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[24];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[24]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[24];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[24]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[24];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[24]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[25]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[24];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[25]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[26]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[27]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[27];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[27]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[27];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[27]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[27];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[27]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[28]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[27];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[28]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
@@ -2123,6 +2176,7 @@ $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[30]{'parent'
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[31]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[32]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[32];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[32]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[32];
+$result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[32]{'contents'}[1]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[32];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[32]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[33]{'extra'}{'command'} = $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[32];
 $result_trees{'macro_in_index_commands'}{'contents'}[0]{'contents'}[33]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[0];

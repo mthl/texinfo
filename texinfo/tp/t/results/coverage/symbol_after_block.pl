@@ -21,9 +21,14 @@ $result_trees{'symbol_after_block'} = {
         },
         {
           'parent' => {},
-          'text' => 'In html
-',
+          'text' => 'In html',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'line_nr' => {
@@ -64,9 +69,14 @@ $result_trees{'symbol_after_block'} = {
         },
         {
           'parent' => {},
-          'text' => 'In html
-',
+          'text' => 'In html',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'line_nr' => {
@@ -1739,6 +1749,7 @@ $result_trees{'symbol_after_block'} = {
 $result_trees{'symbol_after_block'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'symbol_after_block'}{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[0];
+$result_trees{'symbol_after_block'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'};
@@ -1746,6 +1757,7 @@ $result_trees{'symbol_after_block'}{'contents'}[2]{'parent'} = $result_trees{'sy
 $result_trees{'symbol_after_block'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'symbol_after_block'}{'contents'}[3];
 $result_trees{'symbol_after_block'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[3];
 $result_trees{'symbol_after_block'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[3];
+$result_trees{'symbol_after_block'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[3];
 $result_trees{'symbol_after_block'}{'contents'}[3]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[4];
 $result_trees{'symbol_after_block'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[4];

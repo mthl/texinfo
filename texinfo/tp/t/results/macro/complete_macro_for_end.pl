@@ -19,9 +19,14 @@ $result_trees{'complete_macro_for_end'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '@end cartouche
-',
+          'text' => '@end cartouche',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -114,6 +119,7 @@ $result_trees{'complete_macro_for_end'} = {
 };
 $result_trees{'complete_macro_for_end'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'complete_macro_for_end'}{'contents'}[0];
 $result_trees{'complete_macro_for_end'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'complete_macro_for_end'}{'contents'}[0];
+$result_trees{'complete_macro_for_end'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'complete_macro_for_end'}{'contents'}[0];
 $result_trees{'complete_macro_for_end'}{'contents'}[0]{'parent'} = $result_trees{'complete_macro_for_end'};
 $result_trees{'complete_macro_for_end'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'complete_macro_for_end'}{'contents'}[0];
 $result_trees{'complete_macro_for_end'}{'contents'}[1]{'parent'} = $result_trees{'complete_macro_for_end'};

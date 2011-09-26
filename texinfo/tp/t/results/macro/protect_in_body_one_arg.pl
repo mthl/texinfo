@@ -29,9 +29,14 @@ $result_trees{'protect_in_body_one_arg'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
-',
+          'text' => 'result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -141,6 +146,7 @@ $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'args'}[0]{'parent'} = $
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
+$result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'};
 $result_trees{'protect_in_body_one_arg'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[1]{'parent'} = $result_trees{'protect_in_body_one_arg'};

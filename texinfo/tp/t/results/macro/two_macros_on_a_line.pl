@@ -19,9 +19,14 @@ $result_trees{'two_macros_on_a_line'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'in mymacro
-',
+          'text' => 'in mymacro',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -81,9 +86,14 @@ $result_trees{'two_macros_on_a_line'} = {
         },
         {
           'parent' => {},
-          'text' => 'after
-',
+          'text' => 'after',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -328,6 +338,7 @@ after
 };
 $result_trees{'two_macros_on_a_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[0];
 $result_trees{'two_macros_on_a_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[0];
+$result_trees{'two_macros_on_a_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[0];
 $result_trees{'two_macros_on_a_line'}{'contents'}[0]{'parent'} = $result_trees{'two_macros_on_a_line'};
 $result_trees{'two_macros_on_a_line'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'two_macros_on_a_line'}{'contents'}[0];
 $result_trees{'two_macros_on_a_line'}{'contents'}[1]{'parent'} = $result_trees{'two_macros_on_a_line'};
@@ -337,6 +348,7 @@ $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'args'}[1]{'parent'} = $res
 $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
 $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
 $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
+$result_trees{'two_macros_on_a_line'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
 $result_trees{'two_macros_on_a_line'}{'contents'}[3]{'parent'} = $result_trees{'two_macros_on_a_line'};
 $result_trees{'two_macros_on_a_line'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'two_macros_on_a_line'}{'contents'}[3];
 $result_trees{'two_macros_on_a_line'}{'contents'}[4]{'parent'} = $result_trees{'two_macros_on_a_line'};

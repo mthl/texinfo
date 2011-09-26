@@ -19,9 +19,14 @@ $result_trees{'bad_macro_name_with_underscore'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'In macro
-',
+          'text' => 'In macro',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -52,6 +57,7 @@ $result_trees{'bad_macro_name_with_underscore'} = {
 };
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
+$result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0]{'parent'} = $result_trees{'bad_macro_name_with_underscore'};
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'bad_macro_name_with_underscore'}{'contents'}[0];
 $result_trees{'bad_macro_name_with_underscore'}{'contents'}[1]{'parent'} = $result_trees{'bad_macro_name_with_underscore'};

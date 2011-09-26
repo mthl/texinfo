@@ -27,9 +27,14 @@ $result_trees{'isolated_html_expanded'} = {
         },
         {
           'parent' => {},
-          'text' => 'html
-',
+          'text' => 'html',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'line_nr' => {
@@ -55,6 +60,7 @@ $result_trees{'isolated_html_expanded'}{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'isolated_html_expanded'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'isolated_html_expanded'}{'contents'}[1];
 $result_trees{'isolated_html_expanded'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'isolated_html_expanded'}{'contents'}[1];
 $result_trees{'isolated_html_expanded'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'isolated_html_expanded'}{'contents'}[1];
+$result_trees{'isolated_html_expanded'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'isolated_html_expanded'}{'contents'}[1];
 $result_trees{'isolated_html_expanded'}{'contents'}[1]{'parent'} = $result_trees{'isolated_html_expanded'};
 $result_trees{'isolated_html_expanded'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'isolated_html_expanded'}{'contents'}[1];
 $result_trees{'isolated_html_expanded'}{'contents'}[2]{'parent'} = $result_trees{'isolated_html_expanded'};

@@ -19,9 +19,14 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'badm
-',
+          'text' => 'badm',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -89,6 +94,7 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
 };
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0];
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0];
+$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0];
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'};
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0];
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'};

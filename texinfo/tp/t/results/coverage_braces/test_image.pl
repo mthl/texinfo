@@ -33,9 +33,14 @@ $result_trees{'test_image'} = {
             },
             {
               'parent' => {},
-              'text' => 'In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-',
+              'text' => 'In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -3305,6 +3310,7 @@ $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} =
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[0];
+$result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[0];

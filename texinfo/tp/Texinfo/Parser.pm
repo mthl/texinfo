@@ -3206,13 +3206,27 @@ sub _parse_texi($;$)
                          'extra' => {'line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
-        } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
+          # FIXME accept only a command at the beginning spaces?
+        } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/
+                 and ($2 eq $current->{'cmdname'})) {
           my $end_command = $2;
           my $raw_command = $current;
           $line =~ s/^(.*?)(\@end\s$current->{'cmdname'})//;
-          push @{$current->{'contents'}}, 
-            { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
-              if ($1 ne '');
+          if ($1 eq '') {
+            # FIXME exclude other formats, like @macro, @ifset, @ignore?
+            if ($current->{'cmdname'} ne 'verbatim'
+                and @{$current->{'contents'}}
+                and $current->{'contents'}->[-1]->{'type'}
+                and $current->{'contents'}->[-1]->{'type'} eq 'raw') {
+              if ($current->{'contents'}->[-1]->{'text'} =~ s/(\n)//) {
+                push @{$current->{'contents'}}, {'type' => 'last_raw_newline',
+                                          'text' => $1, 'parent' => $current};
+              }
+            }
+          } else {
+            push @{$current->{'contents'}}, 
+              { 'text' => $1, 'type' => 'raw', 'parent' => $current };
+          }
           # the condition $line !~ /^\s*@/ leads to no warning when followed by
           # any @-command.  This is in order to avoid warnings for correct
           # constructs, like @comment after @end raw

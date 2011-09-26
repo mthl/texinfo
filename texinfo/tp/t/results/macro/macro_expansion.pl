@@ -53,9 +53,14 @@ $result_trees{'macro_expansion'} = {
         },
         {
           'parent' => {},
-          'text' => '@end verbatim
-',
+          'text' => '@end verbatim',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -484,6 +489,7 @@ $result_trees{'macro_expansion'}{'contents'}[1]{'contents'}[0]{'parent'} = $resu
 $result_trees{'macro_expansion'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[1];
 $result_trees{'macro_expansion'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[1];
 $result_trees{'macro_expansion'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[1];
+$result_trees{'macro_expansion'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[1];
 $result_trees{'macro_expansion'}{'contents'}[1]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'macro_expansion'}{'contents'}[1];
 $result_trees{'macro_expansion'}{'contents'}[2]{'parent'} = $result_trees{'macro_expansion'};

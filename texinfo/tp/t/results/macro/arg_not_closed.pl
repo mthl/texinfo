@@ -24,9 +24,14 @@ $result_trees{'arg_not_closed'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'foo
-',
+          'text' => 'foo',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -77,6 +82,7 @@ $result_trees{'arg_not_closed'} = {
 $result_trees{'arg_not_closed'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[0];
 $result_trees{'arg_not_closed'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[0];
 $result_trees{'arg_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[0];
+$result_trees{'arg_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[0];
 $result_trees{'arg_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'arg_not_closed'};
 $result_trees{'arg_not_closed'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'arg_not_closed'}{'contents'}[0];
 $result_trees{'arg_not_closed'}{'contents'}[1]{'parent'} = $result_trees{'arg_not_closed'};

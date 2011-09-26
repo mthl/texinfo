@@ -2,8 +2,6 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
-autoreconf && ./configure --prefix=$HOME/tmp/install_texinfo && make && make install
-
 xml_tests/raw
 
  Para

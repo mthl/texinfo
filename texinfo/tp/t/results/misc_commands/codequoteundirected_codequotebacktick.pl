@@ -51,9 +51,14 @@ $result_trees{'codequoteundirected_codequotebacktick'} = {
             },
             {
               'parent' => {},
-              'text' => 'samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
-',
+              'text' => 'samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -197,9 +202,14 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
             },
             {
               'parent' => {},
-              'text' => '@quotes{}
-',
+              'text' => '@quotes{}',
               'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'last_raw_newline'
             }
           ],
           'extra' => {
@@ -4172,6 +4182,7 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
@@ -4194,6 +4205,7 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'contents'}[14]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'contents'}[15]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'contents'}[16]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'contents'}[17]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[4]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];

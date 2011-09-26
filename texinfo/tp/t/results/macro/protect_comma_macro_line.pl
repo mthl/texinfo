@@ -42,9 +42,14 @@ $result_trees{'protect_comma_macro_line'} = {
         },
         {
           'parent' => {},
-          'text' => 'and a last in another paragraph
-',
+          'text' => 'and a last in another paragraph',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -123,6 +128,7 @@ $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[0]{'parent'
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
+$result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'};
 $result_trees{'protect_comma_macro_line'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'};

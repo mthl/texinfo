@@ -25,9 +25,14 @@ $result_trees{'macro_in_ifset'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'truc
-',
+          'text' => 'truc',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -81,6 +86,7 @@ $result_trees{'macro_in_ifset'} = {
 $result_trees{'macro_in_ifset'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset'};
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
+$result_trees{'macro_in_ifset'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset'};
 $result_trees{'macro_in_ifset'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'macro_in_ifset'}{'contents'}[1];
 $result_trees{'macro_in_ifset'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_ifset'};

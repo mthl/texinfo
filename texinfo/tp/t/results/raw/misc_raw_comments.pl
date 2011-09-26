@@ -74,9 +74,14 @@ $result_trees{'misc_raw_comments'} = {
         },
         {
           'parent' => {},
-          'text' => 'in tex
-',
+          'text' => 'in tex',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'line_nr' => {
@@ -168,6 +173,7 @@ $result_trees{'misc_raw_comments'}{'contents'}[3]{'parent'} = $result_trees{'mis
 $result_trees{'misc_raw_comments'}{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[4];
 $result_trees{'misc_raw_comments'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[4];
 $result_trees{'misc_raw_comments'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[4];
+$result_trees{'misc_raw_comments'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[4];
 $result_trees{'misc_raw_comments'}{'contents'}[4]{'parent'} = $result_trees{'misc_raw_comments'};
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[4];
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'parent'} = $result_trees{'misc_raw_comments'};

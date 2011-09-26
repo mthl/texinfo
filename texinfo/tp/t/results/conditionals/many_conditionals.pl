@@ -21,9 +21,14 @@ $result_trees{'many_conditionals'} = {
         },
         {
           'parent' => {},
-          'text' => 'This is html text.
-',
+          'text' => 'This is html text.',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'line_nr' => {
@@ -120,9 +125,14 @@ $result_trees{'many_conditionals'} = {
         },
         {
           'parent' => {},
-          'text' => 'This is tex text.
-',
+          'text' => 'This is tex text.',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'line_nr' => {
@@ -170,6 +180,7 @@ $result_trees{'many_conditionals'} = {
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0];
+$result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'};
 $result_trees{'many_conditionals'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[1]{'parent'} = $result_trees{'many_conditionals'};
@@ -187,6 +198,7 @@ $result_trees{'many_conditionals'}{'contents'}[10]{'parent'} = $result_trees{'ma
 $result_trees{'many_conditionals'}{'contents'}[11]{'contents'}[0]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[11];
 $result_trees{'many_conditionals'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[11];
 $result_trees{'many_conditionals'}{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[11];
+$result_trees{'many_conditionals'}{'contents'}[11]{'contents'}[2]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[11];
 $result_trees{'many_conditionals'}{'contents'}[11]{'parent'} = $result_trees{'many_conditionals'};
 $result_trees{'many_conditionals'}{'contents'}[12]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[11];
 $result_trees{'many_conditionals'}{'contents'}[12]{'parent'} = $result_trees{'many_conditionals'};

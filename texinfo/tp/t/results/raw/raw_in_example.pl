@@ -35,9 +35,14 @@ $result_trees{'raw_in_example'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => 'in html
-',
+                  'text' => 'in html',
                   'type' => 'raw'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'last_raw_newline'
                 }
               ],
               'line_nr' => {
@@ -119,6 +124,7 @@ $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[0]{'parent'} = $resul
 $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'command'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1];

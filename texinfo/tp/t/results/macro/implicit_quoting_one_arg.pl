@@ -30,9 +30,14 @@ $result_trees{'implicit_quoting_one_arg'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '@strong{FIXME: \\a\\}
-',
+          'text' => '@strong{FIXME: \\a\\}',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'extra' => {
@@ -106,6 +111,7 @@ $result_trees{'implicit_quoting_one_arg'}{'contents'}[0]{'parent'} = $result_tre
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
+$result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[2]{'parent'} = $result_trees{'implicit_quoting_one_arg'};

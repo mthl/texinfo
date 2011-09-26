@@ -53,9 +53,14 @@ $result_trees{'end_ifset_in_format'} = {
         },
         {
           'parent' => {},
-          'text' => '@end ifset
-',
+          'text' => '@end ifset',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
         }
       ],
       'line_nr' => {
@@ -185,6 +190,7 @@ $result_trees{'end_ifset_in_format'}{'contents'}[2]{'parent'} = $result_trees{'e
 $result_trees{'end_ifset_in_format'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'end_ifset_in_format'}{'contents'}[3];
 $result_trees{'end_ifset_in_format'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'end_ifset_in_format'}{'contents'}[3];
 $result_trees{'end_ifset_in_format'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'end_ifset_in_format'}{'contents'}[3];
+$result_trees{'end_ifset_in_format'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'end_ifset_in_format'}{'contents'}[3];
 $result_trees{'end_ifset_in_format'}{'contents'}[3]{'parent'} = $result_trees{'end_ifset_in_format'};
 $result_trees{'end_ifset_in_format'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'end_ifset_in_format'}{'contents'}[3];
 $result_trees{'end_ifset_in_format'}{'contents'}[4]{'parent'} = $result_trees{'end_ifset_in_format'};
