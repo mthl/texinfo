@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.384 2011-09-25 18:36:04 karl Exp $
+@c $Id: texinfo.txi,v 1.385 2011-09-26 18:47:45 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1548,7 +1548,7 @@ which it is distributed.  @xref{GNU Sample Texts}.
 @@copying
 This is a short example of a complete Texinfo file, version 1.0.
 
-Copyright @@copyright@{@} 2009 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2011 Free Software Foundation, Inc.
 @@end copying
 @end group
 @end example
@@ -23098,7 +23098,7 @@ it for a printed manual.
 @@copying
 This is a short example of a complete Texinfo file.
 
-Copyright @@copyright@{@} 2010 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2011 Free Software Foundation, Inc.
 @@end copying
 
 @@titlepage
@@ -23188,7 +23188,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.384 2011-09-25 18:36:04 karl Exp $
+$Id: texinfo.txi,v 1.385 2011-09-26 18:47:45 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23244,17 +23244,9 @@ Free Documentation License}.
 If the FSF is not the copyright holder, then use the appropriate name.
 
 @item
-If your manual is not published on paper by the FSF, then definitely
-omit the last sentence in the Back-Cover Text that talks about copies
-from GNU Press.
-
-@item
-GNU packages can entirely omit both cover texts if it is not published
-on paper by the FSF, at the package maintainer's discretion.
-
-@item
-If your manual has Invariant Sections (again, see the license itself
-for details), then change the text here accordingly.
+If your manual is published on paper by the FSF or is longer than 400
+pages, you should include the standard FSF cover texts (@pxref{License
+Notices for Documentation,,, maintain, GNU Maintainer Information}).
 
 @item
 For documents that express your personal views, feelings or experiences,
@@ -23267,7 +23259,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.384 2011-09-25 18:36:04 karl Exp $
+@comment $Id: texinfo.txi,v 1.385 2011-09-26 18:47:45 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -23278,20 +23270,15 @@ Here is the sample document:
 This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @copyright{} 2010 Free Software Foundation, Inc.
+Copyright @copyright{} 2011 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
 any later version published by the Free Software Foundation; with no
-Invariant Sections, with the Front-Cover Texts being ``A GNU Manual,''
-and with the Back-Cover Texts as in (a) below.  A copy of the
-license is included in the section entitled ``GNU Free Documentation
-License.''
-
-(a) The FSF's Back-Cover Text is: ``You have the freedom to
-copy and modify this GNU manual.  Buying copies from the FSF
-supports it in developing GNU and promoting software freedom.''
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+``GNU Free Documentation License''.
 @end quotation
 @end copying
 
@@ -23303,7 +23290,7 @@ supports it in developing GNU and promoting software freedom.''
 @titlepage
 @title GNU Sample
 @subtitle for version @value{VERSION}, @value{UPDATED}
-@author A.U. Thor (@email{bug-texinfo@@gnu.org})
+@author A.U. Thor (@email{bug-sample@@gnu.org})
 @page
 @vskip 0pt plus 1filll
 @insertcopying
@@ -23357,7 +23344,7 @@ and command line options here.
 @cindex Verbatim copying license
 @cindex License for verbatim copying
 
-For software manuals and other documentation, it is important to use a
+For software manuals and other documentation, it is critical to use a
 license permitting free redistribution and updating, so that when a free
 program is changed, the documentation can be updated as well.
 
@@ -23373,7 +23360,7 @@ see the previous sections.
 @copying
 This document is a sample for allowing verbatim copying only.
 
-Copyright @copyright{} 2009 Free Software Foundation, Inc.
+Copyright @copyright{} 2011 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to make and distribute verbatim copies
@@ -23404,7 +23391,7 @@ the license text itself.  For a complete sample document, see the
 previous sections.
 
 @example
-Copyright @@copyright@{@} 2009 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2011 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright

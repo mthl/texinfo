@@ -1,8 +1,14 @@
+2011-09-26  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (GNU Sample Texts): change example to be
+	without cover texts, since that is by far the most common case.
+	Update years.
+
 2011-09-26  Patrice Dumas  <pertusus@free.fr>
 
 	* Makefile.am (SUBDIRS, DIST_SUBDIRS), configure.ac, po*/POTFILES.in: 
-	build and distribute the Parser in tp.  Don't build texi2html, but still
-	distribute it.
+	build and distribute the Parser in tp.  Don't build texi2html, but
+	still distribute it.
 
 2011-09-25  Karl Berry  <karl@gnu.org>
 
