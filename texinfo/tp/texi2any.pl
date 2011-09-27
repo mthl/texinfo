@@ -146,7 +146,7 @@ if ($0 =~ /\.pl$/) {
   # FIXME
   # or in the texi2html directory
   my $locales_dir_found = 0;
-  foreach my $locales_dir ("$libsrcdir/locales", "./locales", '../texi2html/locales') {
+  foreach my $locales_dir ("../../../tp/t/locales", "$libsrcdir/locales", "./locales", '../texi2html/locales') {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       $locales_dir_found = 1;
