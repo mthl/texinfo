@@ -342,7 +342,7 @@ sub convert($$;$)
 sub _normalize_top_node($)
 {
   my $node = shift;
-  return Texinfo::Common::normalize_top_node($node);
+  return Texinfo::Common::normalize_top_node_name($node);
 }
 
 sub output($$)

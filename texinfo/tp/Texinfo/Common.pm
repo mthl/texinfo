@@ -45,6 +45,12 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
+expand_verbatiminclude
+definition_category
+expand_today
+trim_spaces_comment_from_content
+float_name_caption
+normalize_top_node_name
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -1133,7 +1139,7 @@ sub collect_renamed_nodes($$;$$)
   return (undef, undef, undef);
 }
 
-sub normalize_top_node($)
+sub normalize_top_node_name($)
 {
   my $node = shift;
   if ($node =~ /^top$/i) {
@@ -1143,3 +1149,175 @@ sub normalize_top_node($)
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Texinfo::Common - Classification of commands and miscellaneous methods
+
+=head1 SYNOPSIS
+
+  use Texinfo::Common qw(expand_today expand_verbatiminclude);
+  if ($Texinfo::Common::accent_commands{$a_command}) {
+    print STDERR "$a_command is an accent command\n";
+  }
+  
+  my $today_tree = expand_today($converter);
+  my $verbatiminclude_tree 
+     = expand_verbatiminclude(undef, $verbatiminclude);
+
+=head1 DESCRIPTION
+
+Texinfo::Common holds interesting hashes classifying Texinfo @-commands,
+as well as miscellaneous methods that may be useful for any backend
+converting texinfo trees.
+
+It also defines, as our variable a hash for default indices,
+named C<%index_names>.  The format of this hash is described in 
+L<Texinfo::Parser/indices_information>.
+
+=head1 COMMAND CLASSES
+
+Hashes are defined as C<our> variables, and are therefore available
+outside of the module.
+
+The key of the hashes are @-command names without the @.  The 
+following hashes are available:
+
+=over
+
+=item %no_brace_commands
+
+Commands without brace with a single character as name, like C<*>
+or C<:>.
+
+=item %misc_commands
+
+Command that do not take braces and are not block commands either, like
+C<@node>, C<@chapter>, C<@cindex>, C<@deffnx>, C<@end>, C<@footnotestyle>, 
+C<@set>, C<@settitle>, C<@indent>, C<@definfoenclose>, C<@comment> and many 
+others.
+
+=item %default_index_commands
+
+Index entry commands corresponding to default indices. For example 
+C<@cindex>.
+
+=item %root_commands
+
+Commands that are at the root of a Texinfo document, namely
+C<@node> and sectioning commands, except heading commands.
+
+=item %sectioning_commands
+
+All the sectioning and heading commands.
+
+=item %brace_commands
+
+The commands that take braces.  The associated value is the maximum
+number of arguments.
+
+=item %letter_no_arg_commands
+
+@-commands with braces but no argument corresponding to letters, 
+like C<@AA{}> or C<@ss{}> or C<@o{}>.
+
+=item %accent_commands
+
+Accent @-commands taking an argument, like C<@'> or C<@ringaccent> 
+including C<@dotless> and C<@tieaccent>.
+
+=item %style_commands
+
+Commands that mark a fragment of texinfo, like C<@strong>,
+C<@cite>, C<@code> or C<@asis>.
+
+=item %code_style_commands
+
+I<style_commands> that have their argument in code style, like 
+C<@code>.
+
+=item %context_brace_commands
+
+@-commands with brace enclosing texinfo fragment that are outside
+of the main text in one way or another, namely C<@footnote>,
+C<@caption> and C<@math>.
+
+=item %ref_commands
+
+Cross reference @-command referencing nodes, like C<@xref>.
+
+=item %explained_commands
+
+@-commands whose second argument explain first argument and further
+@-command call without first argument, as C<@abbr> and C<@acronym>.
+
+=item %block commands
+
+Commands delimiting a block with a closing C<@end>.  The value
+is I<conditional> for C<@if> commands, I<def> for definition
+commandslike C<@deffn>, I<raw> for @-commands that have no expansion
+of @-commands in their bodies and I<multitable> for C<@multitable>.  
+Otherwise it is set to the number of arguments separated by commas 
+that may appear on the @-command line. That means 0 in most cases, 
+1 for C<@quotation> and 2 for C<@float>.
+
+=item %raw_commands
+
+@-commands that have no expansion of @-commands in their bodies,
+as C<@macro>, C<@verbatim>, C<@ignore>, or C<@html>.
+
+=item %def_commands
+
+=item %def_aliases
+
+Definition commands.  C<%def_aliases> associates an aliased command
+to the original command, for example C<defun> is associated to C<deffn>.
+
+=item %menu_commands
+
+@-commands with menu entries.
+
+=item %align_commands
+
+@-commands related with alignement of text.
+
+=item %region_commands
+
+Block @-commands that enclose full text regions, like C<@titlepage>.
+
+=item %preformatted_commands
+
+=item %preformatted_code_commands
+
+I<%preformatted_commands> is for commands whose content should not 
+be filled, like C<@example> or C<@display>.  If the command is meant 
+for code, it is also in I<%preformatted_code_commands>, like C<@example>.
+
+=item %item_container_commands
+
+Commands holding C<@item> with C<@item> that contains blocks of text, 
+like C<@itemize>.
+
+=item %item_line_commands
+
+Commands with C<@item> that have their arguments on their lines, like
+C<@ftable>.
+
+=back
+
+=head1 METHODS
+
+No method is exported in the default case.
+
+=over
+
+=item expand_today($converter)
+
+Expand today's date, as a texinfo tree with translations.
+
+=back
+
+=cut
+

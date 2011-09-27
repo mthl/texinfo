@@ -2142,11 +2142,11 @@ sub _convert($$)
             my $saved_error_errors_warnings = $self->{'errors_warnings'};
             $self->{'errors_warnings'} = [];
             push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-            my $internal_node = Texinfo::Convert::Info::_normalize_top_node(
+            my $internal_node = Texinfo::Common::normalize_top_node_name(
                  $self->convert_line({'type' => 'code',
                  'contents' 
                   => $menu_entry_internal_node->{'extra'}->{'node_content'}}));
-            my $menu_node = Texinfo::Convert::Info::_normalize_top_node(
+            my $menu_node = Texinfo::Common::normalize_top_node_name(
                  $self->convert_line({'type' => 'code',
                  'contents' 
                   => $arg->{'contents'}}));
