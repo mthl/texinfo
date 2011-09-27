@@ -388,7 +388,8 @@ sub _convert($$;$)
       } else {
         return $root->{'text'};
       }
-    } elsif ($root->{'type'} eq 'empty_line_after_command') {
+    } elsif ($root->{'type'} 
+             and $root->{'type'} eq 'empty_line_after_command') {
       my $command = $root->{'extra'}->{'command'};
       if ($self->{'expanded_formats_hash'}->{$command->{'cmdname'}}
           and $command->{'cmdname'} eq 'xml') {

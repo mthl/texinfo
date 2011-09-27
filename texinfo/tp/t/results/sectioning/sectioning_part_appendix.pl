@@ -783,28 +783,28 @@ $result_sectioning{'sectioning_part_appendix'} = {
           'section_prev' => {},
           'section_up' => {},
           'toplevel_prev' => {}
-        },
-        {
-          'cmdname' => 'appendix',
-          'extra' => {},
-          'level' => 1,
-          'number' => 'A',
-          'section_childs' => [
-            {
-              'cmdname' => 'appendixsec',
-              'extra' => {},
-              'level' => 2,
-              'number' => 'A.1',
-              'section_up' => {}
-            }
-          ],
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
         }
       ],
       'section_prev' => {},
       'section_up' => {}
+    },
+    {
+      'cmdname' => 'appendix',
+      'extra' => {},
+      'level' => 1,
+      'number' => 'A',
+      'section_childs' => [
+        {
+          'cmdname' => 'appendixsec',
+          'extra' => {},
+          'level' => 2,
+          'number' => 'A.1',
+          'section_up' => {}
+        }
+      ],
+      'section_prev' => {},
+      'section_up' => {},
+      'toplevel_prev' => {}
     }
   ]
 };
@@ -824,12 +824,12 @@ $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_chi
 $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[2]{'section_prev'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[1];
 $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[2]{'section_up'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1];
 $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[2]{'toplevel_prev'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[1];
-$result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[3]{'section_childs'}[0]{'section_up'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[3];
-$result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[3]{'section_prev'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[2];
-$result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[3]{'section_up'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1];
-$result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[3]{'toplevel_prev'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[2];
 $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[0];
 $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'sectioning_part_appendix'};
+$result_sectioning{'sectioning_part_appendix'}{'section_childs'}[2]{'section_childs'}[0]{'section_up'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[2];
+$result_sectioning{'sectioning_part_appendix'}{'section_childs'}[2]{'section_prev'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1];
+$result_sectioning{'sectioning_part_appendix'}{'section_childs'}[2]{'section_up'} = $result_sectioning{'sectioning_part_appendix'};
+$result_sectioning{'sectioning_part_appendix'}{'section_childs'}[2]{'toplevel_prev'} = $result_sectioning{'sectioning_part_appendix'}{'section_childs'}[1]{'section_childs'}[2];
 
 $result_errors{'sectioning_part_appendix'} = [];
 
@@ -861,12 +861,12 @@ $result_converted{'xml'}->{'sectioning_part_appendix'} = '<top><sectiontitle>top
 <unnumbered><sectiontitle>unnumbered</sectiontitle>
 
 </unnumbered>
+</part>
 <appendix><sectiontitle>appendix</sectiontitle>
 
 <appendixsec><sectiontitle>appendixsec</sectiontitle>
 </appendixsec>
 </appendix>
-</part>
 ';
 
 1;

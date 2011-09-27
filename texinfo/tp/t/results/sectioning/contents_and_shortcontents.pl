@@ -814,28 +814,28 @@ $result_sectioning{'contents_and_shortcontents'} = {
           'section_prev' => {},
           'section_up' => {},
           'toplevel_prev' => {}
-        },
-        {
-          'cmdname' => 'appendix',
-          'extra' => {},
-          'level' => 1,
-          'number' => 'A',
-          'section_childs' => [
-            {
-              'cmdname' => 'appendixsec',
-              'extra' => {},
-              'level' => 2,
-              'number' => 'A.1',
-              'section_up' => {}
-            }
-          ],
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
         }
       ],
       'section_prev' => {},
       'section_up' => {}
+    },
+    {
+      'cmdname' => 'appendix',
+      'extra' => {},
+      'level' => 1,
+      'number' => 'A',
+      'section_childs' => [
+        {
+          'cmdname' => 'appendixsec',
+          'extra' => {},
+          'level' => 2,
+          'number' => 'A.1',
+          'section_up' => {}
+        }
+      ],
+      'section_prev' => {},
+      'section_up' => {},
+      'toplevel_prev' => {}
     }
   ]
 };
@@ -855,12 +855,12 @@ $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_c
 $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[2]{'section_prev'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[1];
 $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[2]{'section_up'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1];
 $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[2]{'toplevel_prev'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[1];
-$result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[3]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[3];
-$result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[3]{'section_prev'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[2];
-$result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[3]{'section_up'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1];
-$result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[3]{'toplevel_prev'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[2];
 $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[0];
 $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'contents_and_shortcontents'};
+$result_sectioning{'contents_and_shortcontents'}{'section_childs'}[2]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[2];
+$result_sectioning{'contents_and_shortcontents'}{'section_childs'}[2]{'section_prev'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1];
+$result_sectioning{'contents_and_shortcontents'}{'section_childs'}[2]{'section_up'} = $result_sectioning{'contents_and_shortcontents'};
+$result_sectioning{'contents_and_shortcontents'}{'section_childs'}[2]{'toplevel_prev'} = $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[1]{'section_childs'}[2];
 
 $result_errors{'contents_and_shortcontents'} = [];
 
@@ -1007,8 +1007,8 @@ ul.no-bullet {list-style: none}
 <li><a name="stoc-chapter-in-part" href="#toc-chapter-in-part">2 chapter in part</a></li>
 <li><a name="stoc-second-chapter-in-part" href="#toc-second-chapter-in-part">3 second chapter in part</a></li>
 <li><a name="stoc-unnumbered" href="#toc-unnumbered">unnumbered</a></li>
-<li><a name="stoc-appendix" href="#toc-appendix">Appendix A appendix</a></li>
 </ul></li>
+<li><a name="stoc-appendix" href="#toc-appendix">Appendix A appendix</a></li>
 
 </ul>
 </div>
@@ -1037,11 +1037,11 @@ ul.no-bullet {list-style: none}
   <li><a name="toc-chapter-in-part" href="#chapter-in-part">2 chapter in part</a></li>
   <li><a name="toc-second-chapter-in-part" href="#second-chapter-in-part">3 second chapter in part</a></li>
   <li><a name="toc-unnumbered" href="#unnumbered">unnumbered</a></li>
+</ul></li>
   <li><a name="toc-appendix" href="#appendix">Appendix A appendix</a>
   <ul class="no-bullet">
     <li><a name="toc-appendixsec" href="#appendixsec">A.1 appendixsec</a></li>
   </ul></li>
-</ul></li>
 
 </ul>
 </div>

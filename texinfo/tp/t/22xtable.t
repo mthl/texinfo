@@ -81,6 +81,21 @@ Texte before first item.
 @item abb
 @end table
 '],
+['inter_item_commands_in_table_in_example',
+'@example
+@table @var
+@item a
+@cindex index entry between item and itemx
+@c and a comment
+@comment and another comment
+@itemx b
+
+@itemx c
+l--ine
+@item d
+@end table
+@end example
+'],
 ['table_nested',
 '@macro myvtable
 @vtable @asis

@@ -2,8 +2,9 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
-@appendix should stop @part. Right now it do not do that.
-Cf sectioning_part_appendix.
+cd t/output_files/sectioning
+export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
+xmllint --nonet --noout --valid part_node_chapter_after_top.xml
 
 Test
 @definfoenclose headword, , :

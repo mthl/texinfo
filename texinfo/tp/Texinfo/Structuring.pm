@@ -260,6 +260,11 @@ sub sectioning_structure($$)
               }
             }
           }
+          if ($appendix_commands{$content->{'cmdname'}} and !$in_appendix
+              and $content->{'level'} <= $number_top_level 
+              and $up->{'cmdname'} and $up->{'cmdname'} eq 'part') {
+            $up = $up->{'section_up'};
+          }
           if ($new_upper_element) {
             # In that case the root has to be updated because the first 'part' just appeared
             $content->{'section_up'} = $sec_root;

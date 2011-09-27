@@ -112,6 +112,20 @@ deffn
 In deff item.
 @end deffn
 '],
+['inter_item_commands_in_def_in_example',
+'@example
+@deffn fset @var{i} a g
+@c comment before first deffnx
+
+@deffnx Command { log trap1} {}  
+@cindex between deffnx
+@deffnx cmde2 @b{id @samp{i} ule} truc
+@cindex cindex in deff item
+
+In deff item.
+@end deffn
+@end example
+'],
 ['defx_after_empty_line',
 '@deffn fset @var{i} a g
 

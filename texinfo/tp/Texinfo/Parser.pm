@@ -1140,7 +1140,9 @@ sub _check_no_text($)
              and $preformatted_content->{'text'} =~ /\S/)
             or ($preformatted_content->{'cmdname'} 
                 and ($preformatted_content->{'cmdname'} ne 'c'
-                     and $preformatted_content->{'cmdname'} ne 'comment'))) {
+                     and $preformatted_content->{'cmdname'} ne 'comment')
+                and !($preformatted_content->{'type'} 
+                      and $preformatted_content->{'type'} eq 'index_entry_command'))) {
           $after_paragraph = 1;
           last;
         }
