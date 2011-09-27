@@ -21,6 +21,9 @@
 
 package Texinfo::Structuring;
 
+# FIXME output_internal_links is not documented, but it is not clear
+# that is belongs here
+
 use 5.00405;
 use strict;
 
@@ -1325,6 +1328,11 @@ sub set_menus_to_simple_menu($)
 1;
 
 __END__
+
+#Last,
+#C<output_internal_links> may be used to output element and
+#index entries references, mostly for HTML output.
+
 =head1 NAME
 
 Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
@@ -1392,9 +1400,8 @@ C<merge_indices> may be used to merge indices, which may be sorted
 with C<sort_indices> or C<sort_indices_by_letter> to sort by letters.
 
 Other miscellaneous methods include C<set_menus_to_simple_menu> and
-C<menu_to_simple_menu> to change the menu texinfo tree. Last,
-C<output_internal_links> may be used to output element and
-index entries references, mostly for HTML output.
+C<menu_to_simple_menu> to change the menu texinfo tree. 
+
 
 
 =head1 METHODS
@@ -1440,7 +1447,7 @@ The up, previous and next sectioning elements.
 =item toplevel_prev
 
 The next and previous sectioning elements of toplevel sectioning
-elements (like C<@top>, C<@chapter>, C<@appendix>) , not taking into 
+elements (like C<@top>, C<@chapter>, C<@appendix>), not taking into 
 account C<@part> elements.
 
 =back
@@ -1523,7 +1530,7 @@ The sectioning command associated with the element node.
 =item $elements = split_by_section($tree) 
 
 Similarly with C<split_by_node>, returns an array of elements.  This time,
-lone nodes are associtated with the previous sections and lone sections
+lone nodes are associated with the previous sections and lone sections
 makes up an element.
 
 The extra hash keys set are the same, except that I<element_command> is 
@@ -1556,9 +1563,119 @@ Each element has its own page.
 
 =back
 
-Pages are regular tree items with type I<page>, holding thier elements
+Pages are regular tree items with type I<page>, holding their elements
 in the I<contents> array.  They also have directions, namely I<page_next>
 and I<page_prev> pointing to the previous and the next page.
+
+=item elements_directions($parser, $elements)
+
+Directions are set up for the elements in the array reference given in 
+argument.  The corresponding hash reference is in 
+C<< {'extra'}->{'directions'} >>
+and keys correspond to directions while values are elements.
+
+The following directions are set up:
+
+=over
+
+=item This
+
+The element itself.
+
+=item Forward
+
+Element next.
+
+=item Back
+
+Previous element.
+
+=item NodeForward
+
+Following node element in reading order.  It is the next node, or the 
+first in menu or the next of the up node.
+
+=item NodeBack
+
+Preceding node element.
+
+=item NodeUp
+
+=item NodeNext
+
+=item NodePrev
+
+The up, next and previous node elements.
+
+=item Up
+
+=item Next
+
+=item Prev
+
+The up, next and previous section elements.
+
+=item FastForward
+
+The next top level section element.
+
+=item FastBack
+
+For top level elements, the previous top level element.  For other elements
+the up top level element.  For example, for a chapter element it is the 
+previous chapter, for a subsection element it is the chapter element 
+that contains the subsection.
+
+=item FastForward
+
+The next top level element.
+
+=back
+
+=item elements_file_directions($parser, $elements)
+
+In the directions reference described above for C<elements_directions>, sets
+the I<PrevFile> and C<NextFile> directions to the elements in previous and
+following files.  
+
+The API for association of pages/elements to files is not defined yet.
+
+=item $merged_entries = merge_indices($index_names, $merged_indices, $index_entries)
+
+Using informations returned by L<Texinfo::Parser/indices_information>,
+a structure similar with the one returned by 
+L<Texinfo::Parser/indices_information>, but with all the entries of 
+merged indices merged with those of the indice merged into.  
+The I<$merged_entries> returned is a hash reference whose
+keys are the index names and values arrays of index entry structures
+described in details in L<Texinfo::Parser/indices_information>.
+
+=item $index_entries_sorted = sort_indices_by_letter($parser, $merged_index_entries, $index_names)
+
+=item $index_entries_sorted = sort_indices($parser, $merged_index_entries, $index_names)
+
+These functions first sets a plain text key for each index entry, used for 
+sorting.  In both cases, a hash reference with index names as keys is returned.
+
+When sorting by letter, an array reference of letter hash references is 
+associated with each index name.  Each letter hash reference has two 
+keys, a I<letter> key with the letter, and an I<entries> key with an array
+reference of sorted index entries beginning with the letter.
+
+When simply sorting, the array of the sorted indes entries is associated
+with the index name.
+
+=item menu_to_simple_menu ($menu)
+
+=item set_menus_to_simple_menu ($parser)
+
+C<menu_to_simple_menu> transforms the tree of a menu tree element.  
+C<set_menus_to_simple_menu> calls C<menu_to_simple_menu> for all the
+menus of the document.
+
+A simple menu has no I<menu_comment>, I<menu_entry> or I<menu_entry_description>
+container anymore, their content are merged directly in the menu in 
+I<preformatted> container.
 
 =back
 
