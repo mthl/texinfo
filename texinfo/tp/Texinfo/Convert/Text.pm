@@ -873,50 +873,6 @@ sub brace_no_arg_command($;$)
   return $result;
 }
 
-# decompose a decimal number on a given base. The algorithm looks like
-# the division with growing powers (division suivant les puissances
-# croissantes) ?
-sub _decompose_integer($$)
-{
-  my $number = shift;
-  my $base = shift;
-  my @result = ();
-
-  return (0) if ($number == 0);
-  my $power = 1;
-  my $remaining = $number;
-
-  while ($remaining) {
-    my $factor = $remaining % ($base ** $power);
-    $remaining -= $factor;
-    push (@result, $factor / ($base ** ($power - 1)));
-    $power++;
-  }
-  return @result;
-}
-
-# the enumerate item number or letter.
-sub enumerate_item_representation($$)
-{
-  my $specification = shift;
-  my $number = shift;
-
-  if ($specification =~ /^[0-9]$/) {
-    return $specification + $number -1;
-  }
-
-  my $result = '';
-  my $base_letter = ord('a');
-  $base_letter = ord('A') if (ucfirst($specification) eq $specification);
-  my @letter_ords = _decompose_integer(ord($specification) - $base_letter + $number - 1, 26);
-  foreach my $ord (@letter_ords) {
-    # FIXME we go directly to 'ba' after 'z', and not 'aa'
-    #because 'ba' is 1,0 and 'aa' is 0,0.
-    $result = chr($base_letter + $ord) . $result;
-  }
-  return $result;
-}
-
 my %underline_symbol = (
   0 => '*',
   1 => '*',
@@ -1135,7 +1091,7 @@ sub convert($;$)
     } elsif ($root->{'cmdname'} eq 'item' 
             and $root->{'parent'}->{'cmdname'} 
             and $root->{'parent'}->{'cmdname'} eq 'enumerate') {
-      $result .= enumerate_item_representation(
+      $result .= Texinfo::Common::enumerate_item_representation(
          $root->{'parent'}->{'extra'}->{'enumerate_specification'},
          $root->{'extra'}->{'item_number'}) . '. ';
     }

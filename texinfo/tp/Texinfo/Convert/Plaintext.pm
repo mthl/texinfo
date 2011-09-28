@@ -1792,7 +1792,7 @@ sub _convert($$)
       if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
         $result = $self->_count_added($line->{'container'},
             $line->{'container'}->add_next(
-               Texinfo::Convert::Text::enumerate_item_representation(
+               Texinfo::Common::enumerate_item_representation(
                  $root->{'parent'}->{'extra'}->{'enumerate_specification'},
                  $root->{'extra'}->{'item_number'}) . '. '));
       } elsif ($root->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
