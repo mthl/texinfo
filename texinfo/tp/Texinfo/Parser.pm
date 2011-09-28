@@ -69,7 +69,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   parse_texi_text
   parse_texi_line
   parse_texi_file
-  errors
   indices_information
   floats_information
   internal_references_information
@@ -190,8 +189,6 @@ my %initialization_overrides = (
 #                         entry commands dynamically added
 # simple_text_commands    the same than %simple_text_commands below, but 
 #                         with index entry commands dynamically added
-# errors_warnings         a structure with the errors and warnings.
-# error_nrs               number of errors.
 # current_node            last seen node.
 # current_section         last seen section.
 # nodes                   list of nodes.
@@ -760,13 +757,6 @@ sub parse_texi_line($$;$$$$)
   $self->{'input'} = [{'pending' => $lines_array}];
   my $tree = $self->_parse_texi({'contents' => [], 'type' => 'root_line'});
   return $tree;
-}
-
-# return the errors and warnings
-sub errors ($)
-{
-  my $self = shift;
-  return ($self->{'errors_warnings'}, $self->{'error_nrs'});
 }
 
 # return indices informations
@@ -5051,48 +5041,8 @@ undef is returned if the file couldn't be read.
 =back
 
 The errors collected during the tree parsing are available through the
-C<errors> method:
-
-=over
-
-=item ($error_warnings_list, $error_count) = errors ($parser)
-
-This function returns as I<$error_count> the count of errors while processing
-texinfo texts.  The I<$error_warnings_list> is an array of hash references
-one for each error, warning or error line continuation.  Each of these has 
-the following keys:
-
-=over
-
-=item type
-
-May be C<warning>, C<error>, or C<error continuation> (for a continuation of
-an error line).
-
-=item text
-
-The text of the error.
-
-=item error_line
-
-The text of the error formatted with the file name, line number and macro
-name, as needed.
-
-=item line_nr
-
-The line number of the error or warning.
-
-=item file_name
-
-The file name where the error or warning occured.
-
-=item macro
-
-The user macro name that was expanded when the error or warning occured.
-
-=back
-
-=back
+C<errors> method.  This method comes from C<Texinfo::Report>, and is 
+described in L<Texinfo::Report/errors>.
 
 =head2 Getting informations on the document
 

@@ -183,7 +183,7 @@ my $messages_textdomain = 'texinfo';
 # libintl converts between encodings but doesn't decode them into the
 # perl internal format.  This is only caled if the encoding is a proper
 # perl encoding.
-sub encode_i18n_string($$)
+sub _encode_i18n_string($$)
 {
   my $string = shift;
   my $encoding = shift;
@@ -215,7 +215,7 @@ sub gdt($$;$$)
     if ($encoding and $encoding ne 'us-ascii');
   if (!($encoding and $encoding eq 'us-ascii') and $self->{'perl_encoding'}) {
     Locale::Messages::bind_textdomain_filter($strings_textdomain,
-      \&encode_i18n_string, $self->{'perl_encoding'});
+      \&_encode_i18n_string, $self->{'perl_encoding'});
   }
 
   # FIXME do that in the converters when @documentlanguage is found.
@@ -314,3 +314,177 @@ sub gdt($$;$$)
 
 
 1;
+
+__END__
+
+=head1 NAME
+
+Texinfo::Report - Error storing and string translations for Texinfo modules
+
+=head1 SYNOPSIS
+
+  @ISA = qw(Texinfo::Report);
+
+  $converter->Texinfo::Report::new();
+  
+  if ($warning_happened) {
+    $converter->line_warn(sprintf($converter->__("\@%s is wrongly used"),
+                       $current->{'cmdname'}), $current->{'line_nr'});
+  }
+  
+  my ($errors, $errors_count) = $converter->errors();
+  foreach my $error_message (@$errors) {
+    warn $error_message->{'error_line'};
+  }
+
+  my $tree_translated = $converter->gdt('See {reference} in @cite{{book}}',
+                       {'reference' => $tree_reference,
+                        'book'  => {'text' => $book_name}});
+
+
+=head1 DESCRIPTION
+
+The Texinfo::Report module helps with string translations and errors 
+handling.  It is used by Texinfo modules, Texinfo::Parser and 
+Texinfo::Convert::Converter.  To use this module, the usual way is
+to inherit Texinfo::Report methods and initialize Texinfo::Report
+variables for a I<$converter> object, by calling 
+C<Texinfo::Report::new()> on the I<$converter> object.  This is done by 
+Texinfo::Convert::Converter, for instance, so every module that inherits
+Texinfo::Convert::Converter can automatically use the Texinfo::Report
+methods in an object oriented way.
+
+Besides the C<new> method, C<gdt> is used for strings translations, 
+C<errors> to report errors and the other methods to store errors
+(and warnings).
+
+=head1 METHODS
+
+No method is exported in the default case.  
+
+The C<new> method initializes Texinfo::Report related fields:
+
+  $converter->Texinfo::Report::new()
+
+The C<gdt> method is used to translate strings to be output in 
+converted documents, and return a texinfo tree.
+
+=over
+
+=item $tree = $converter->gdt($string, $replaced_substrings)
+
+The I<$string> is a string to be translated.  The function returns a 
+Texinfo tree, as the string is interpreted as Texinfo code after
+translation.  I<$replaced_substrings> is an optional 
+hash reference specifying some 
+substitution to be done after the translation.  The key of 
+the I<$replaced_substrings> hash reference identifies what is to 
+be substituted, the value is some texinfo tree or array content 
+that is substituted in the resulting texinfo tree.
+In the string to be translated word in brace matching keys of 
+I<$replaced_substrings> are replaced.
+
+For example in the following call, the string 
+I<See {reference} in @cite{{book}}> is translated, then
+parsed as a Texinfo string, with I<{reference}> substituted by
+I<$tree_reference> in the resulting tree, and I<{book}> 
+replaced by the associated texinfo tree text element:
+
+  $tree = $converter->gdt('See {reference} in @cite{{book}}',
+                       {'reference' => $tree_reference,
+                        'book'  => {'text' => $book_name}});
+
+C<gdt> uses the information in the I<$converter> to know the
+encoding and documentlanguage.  More precisely, 
+C<< $converter->{'encoding_name'} >>, C<< $converter->{'perl_encoding'} >>
+and C<< $converter->get_conf('documentlanguage') >> are used.
+
+C<gdt> use a gettext-like infrastructure to retrieve the 
+translated strings, using the I<texinfo_document> domain.
+
+=back
+
+The errors collected are available through the C<errors> method, the other
+methods allow to register errors and warnings.
+
+=over
+
+=item ($error_warnings_list, $error_count) = errors ($converter)
+
+This function returns as I<$error_count> the count of errors since
+calling C<new>.  The I<$error_warnings_list> is an array of hash references
+one for each error, warning or error line continuation.  Each of these has 
+the following keys:
+
+=over
+
+=item type
+
+May be C<warning>, C<error>, or C<error continuation> (for a continuation of
+an error line).
+
+=item text
+
+The text of the error.
+
+=item error_line
+
+The text of the error formatted with the file name, line number and macro
+name, as needed.
+
+=item line_nr
+
+The line number of the error or warning.
+
+=item file_name
+
+The file name where the error or warning occurs.
+
+=item macro
+
+The user macro name that is expanded at the location of 
+the error or warning.
+
+=back
+
+=item $converter->line_warn($text, $line_nr)
+
+=item $converter->line_error($text, $line_nr, $continuation)
+
+Register a warning or an error.  The I<$text> is the text of the
+error or warning.  The optional I<$line_nr> holds the information
+on the error or warning location.  It is associated with the I<line_nr> 
+key of Texinfo tree elements as described in L<Texinfo::Parser/line_nr>
+for the @-commands.  The I<$line_nr> structure is described in L</errors>
+above.  If I<$continuation> is set, the line is an error message continuation
+line and not a new error.
+
+=item $converter->document_warn($text)
+
+=item $converter->document_error($text)
+
+Register a document-wide error or warning.  I<$text> is the error or
+warning message.
+
+=item $converter->file_line_warn($text, $file, $line_nr)
+
+Register the warning message I<$text> for file I<$file>, with, optionally
+the line I<$line_nr> in the file.
+
+=back
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010, 2011 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
+
+=cut
+
