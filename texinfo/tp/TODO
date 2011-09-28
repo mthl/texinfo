@@ -2,10 +2,6 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
-cd t/output_files/sectioning
-export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
-xmllint --nonet --noout --valid part_node_chapter_after_top.xml
-
 Test
 @definfoenclose headword, , :
  to define `@headword' as an Info

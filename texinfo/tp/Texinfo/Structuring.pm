@@ -626,28 +626,33 @@ sub split_by_section($)
   my $current = { 'type' => 'element', 'extra' => {'no_section' => 1}};
   push @$elements, $current; 
   foreach my $content (@{$root->{'contents'}}) {
-    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'part'
-        and $content->{'extra'}->{'part_associated_section'}) {
-      push @pending_parts, $content;
-      next;
-    }
-    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node' 
-         and $content->{'extra'}->{'associated_section'}) {
-      if ($current->{'extra'}->{'no_section'}) {
-        delete $current->{'extra'}->{'no_section'};
-        $current->{'extra'}->{'section'} 
-          = $content->{'extra'}->{'associated_section'};
-        $current->{'extra'}->{'node'} = $content;
+    if ($content->{'cmdname'}
+        and (($content->{'cmdname'} eq 'node' 
+              and $content->{'extra'}->{'associated_section'})
+             or ($content->{'cmdname'} eq 'part'
+                 and $content->{'extra'}->{'part_associated_section'}))) {
+      my $new_section;
+      if ($content->{'cmdname'} eq 'node') {
+        $new_section = $content->{'extra'}->{'associated_section'};
       } else {
-        $current = { 'type' => 'element', 'extra' 
-                => {'section' => $content->{'extra'}->{'associated_section'},
-                    'node' => $content }};
-        $current->{'element_prev'} = $elements->[-1];
-        $elements->[-1]->{'element_next'} = $current;
-        push @$elements, $current;
+        $new_section = $content->{'extra'}->{'part_associated_section'};
       }
-      $elements->[-1]->{'extra'}->{'element_command'} 
-        = $content->{'extra'}->{'associated_section'};
+      if (! $current->{'extra'}->{'section'}
+        or $new_section ne $current->{'extra'}->{'section'}) {
+        if ($current->{'extra'}->{'no_section'}) {
+          delete $current->{'extra'}->{'no_section'};
+          $current->{'extra'}->{'section'}
+            = $new_section;
+        } else {
+          $current = { 'type' => 'element', 
+                       'extra' => {'section' => $new_section}};
+          $current->{'element_prev'} = $elements->[-1];
+          $elements->[-1]->{'element_next'} = $current;
+          push @$elements, $current;
+        }
+        $elements->[-1]->{'extra'}->{'element_command'} 
+          = $new_section;
+      }
     # FIXME Handle part differently? (associate with prev sectioning command?)
     } elsif ($content->{'cmdname'} and $content->{'cmdname'} ne 'node' 
                                    and $content->{'cmdname'} ne 'bye') {
@@ -663,12 +668,9 @@ sub split_by_section($)
         push @$elements, $current;
       }
     }
-    if (@pending_parts) {
-      foreach my $part (@pending_parts) {
-        push @{$current->{'contents'}}, $part;
-        $part->{'parent'} = $current;
-      }
-      @pending_parts = ();
+    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node' 
+        and $content->{'extra'}->{'associated_section'}) {
+      $current->{'extra'}->{'node'} = $content;
     }
     push @{$current->{'contents'}}, $content;
     $content->{'parent'} = $current;
