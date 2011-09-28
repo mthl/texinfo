@@ -1240,9 +1240,8 @@ C<@code>.
 
 =item %context_brace_commands
 
-@-commands with brace enclosing texinfo fragment that are outside
-of the main text in one way or another, namely C<@footnote>,
-C<@caption> and C<@math>.
+@-commands with brace like C<@footnote>, C<@caption> and C<@math>
+whose argument is outside of the main text flow in one way or another.
 
 =item %ref_commands
 
@@ -1311,13 +1310,65 @@ C<@ftable>.
 
 No method is exported in the default case.
 
+Most methods takes a I<$converter> as argument, sometime optionally, 
+to get some information and use methods for error reporting, 
+see L<Texinfo::convert::Converter> and L<Texinfo::Report>.
+
 =over
 
-=item expand_today($converter)
+=item $tree = expand_today($converter)
 
 Expand today's date, as a texinfo tree with translations.
 
+=item $tree = expand_verbatiminclude($converter, $verbatiminclude)
+
+The I<$converter> argument may be undef.  I<$verbatiminclude> is a
+C<@verbatiminclude> tree element.  This function returns a 
+C<@verbatim> tree elements after finding the included file and
+reading it.
+
+=item $tree = definition_category($converter, $def_line)
+
+The I<$converter> argument may be undef.  I<$def_line> is a 
+C<def_line> texinfo tree container.  This function
+returns a texinfo tree corresponding to the category of the
+I<$def_line> taking the class into account, if there is one.
+
+=item trim_spaces_comment_from_content($contents)
+
+Remove empty spaces after commands or braces at begina and
+and spaces and comments at end from a content array, modifying it.
+
+=item ($caption, $prepended) = float_name_caption ($converter, $float)
+
+I<$float> is a texinfo tree C<@float> element.  This function 
+returns the caption that should be used for the float formatting 
+and the I<$prepended> texinfo tree combining the type and label
+of the float.
+
+=item $normalized_name = normalize_top_node_name ($node_string)
+
+Normalize the node name string given in argument, by normalizing
+Top node case.
+
 =back
+
+=head1 SEE ALSO
+
+L<Texinfo::Parser>, L<Texinfo::convert::Converter> and L<Texinfo::Report>. 
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010, 2011 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
 
 =cut
 

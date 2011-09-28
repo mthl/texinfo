@@ -1413,6 +1413,9 @@ C<menu_to_simple_menu> to change the menu texinfo tree.
 
 No method is exported in the default case.
 
+Most of those function references takes a Texinfo::Parser object
+as argument, see L<Texinfo::Parser>.
+
 =over
 
 =item $sections_root = sectioning_structure ($parser, $tree)
@@ -1683,5 +1686,23 @@ container anymore, their content are merged directly in the menu in
 I<preformatted> container.
 
 =back
+
+=head1 SEE ALSO
+
+L<Texinfo manual|http://www.gnu.org/s/texinfo/manual/texinfo/>, 
+L<Texinfo::Parser>.
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010, 2011 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
 
 =cut
