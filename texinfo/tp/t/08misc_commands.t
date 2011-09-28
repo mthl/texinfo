@@ -247,6 +247,13 @@ definfoenclose phi,:,:  @definfoenclose phi,:,:
 
 @strong{ is it really strong? }
 '],
+['definfoenclose_with_empty_arg',
+'
+@definfoenclose headword, , :
+
+My @headword{something}.
+
+'],
 ['no_empty_line_between_headings',
 '@top Top
 @subheading Subheading
@@ -438,11 +445,17 @@ my %info_tests = (
   'comment_space_command_on_line' => 1,
 );
 
+my %xml_tests = (
+  'definfoenclose_with_empty_arg' => 1,
+);
+
 foreach my $test (@converted_test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
   if ($info_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'info';
+    push @{$test->[2]->{'test_formats'}}, 'xml';
+  } elsif ($xml_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'xml';
   }
 }
