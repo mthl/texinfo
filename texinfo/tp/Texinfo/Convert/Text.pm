@@ -189,33 +189,23 @@ sub eight_bit_accents($$$;$)
   if ($debug) {
     print STDERR "stack: ".join('|', map {$_->{'cmdname'}} @$stack)."\n";
   }
+
   # accents are formatted and the intermediate results are kept, such
   # that we can return the maximum of multiaccented letters that can be
-  # rendered with a given eight bit formatting.
-  my $accent = $stack->[-1];
-  my $current_result = $text;
+  # rendered with a given eight bit formatting.  undef is stored when 
+  # there is no corresponding unicode anymore.
   my @results_stack;
+  my $unicode_formatted = $text;
 
-  while (1) {
-    my $unicode_formatted_accent
-      = Texinfo::Convert::Unicode::unicode_accent($current_result, $accent);
-    if (!defined($unicode_formatted_accent)) {
-      last;
+  while (@$stack) {
+    if (defined($unicode_formatted)) {
+      $unicode_formatted
+        = Texinfo::Convert::Unicode::unicode_accent($unicode_formatted, $stack->[-1]);
+      $unicode_formatted = uc($unicode_formatted)
+        if ($in_upper_case and defined($unicode_formatted));
     }
-    $current_result = $unicode_formatted_accent;
-    $unicode_formatted_accent = uc($unicode_formatted_accent)
-      if ($in_upper_case);
-    push @results_stack, [$unicode_formatted_accent, $accent];
-    last if ($accent eq $current);
-    $accent = $accent->{'parent'}->{'parent'};
-  }
-
-  if ($accent ne $current) {
-    while (1) {
-      push @results_stack, [undef, $accent];
-      last if ($accent eq $current);
-      $accent = $accent->{'parent'}->{'parent'};
-    }
+    push @results_stack, [$unicode_formatted, $stack->[-1]];
+    pop @$stack;
   }
 
   if ($debug) {
