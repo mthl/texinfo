@@ -882,7 +882,7 @@ sub definition_arguments_content($)
   return $result;
 }
 
-# find the innermost accent and the correspponding text contents
+# find the accent commands stack and the innermost text contents
 sub find_innermost_accent_contents($;$)
 {
   my $current = shift;
@@ -903,12 +903,12 @@ sub find_innermost_accent_contents($;$)
     push @accent_commands, $current;
     # A bogus accent
     if (!$current->{'args'}) {
-      return ([], $current, \@accent_commands);
+      return ([], \@accent_commands);
     }
     my $arg = $current->{'args'}->[0];
     # a construct like @'e without content
     if (defined($arg->{'text'})) {
-      return ([$arg], $current, \@accent_commands);
+      return ([$arg], \@accent_commands);
     }
     if (!$arg->{'contents'}) {
       print STDERR "BUG: No content in accent command\n";
@@ -931,7 +931,7 @@ sub find_innermost_accent_contents($;$)
       }
     }
     # we go here if there was no nested accent
-    return ($text_contents, $current, \@accent_commands);
+    return ($text_contents, \@accent_commands);
   }
 }
 

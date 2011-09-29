@@ -808,7 +808,7 @@ sub xml_accent_numeric_entities($$;$)
 }
 
 sub xml_accents($$;$$)
-{ 
+{
   my $self = shift;
   my $accent = shift;
   my $in_upper_case = shift;
@@ -833,10 +833,10 @@ sub xml_accents($$;$$)
                                       $in_upper_case);
     }
   }
-  my ($contents, $innermost_accent, $stack)
+  my ($contents, $stack)
       = Texinfo::Common::find_innermost_accent_contents($accent);
-  my $result = $self->_convert({'contents' => $contents});
-  
+
+  my $result = $self->_convert({'contents' => $contents});  
   foreach my $accent_command (reverse(@$stack)) {
     $result = &$format_accents ($result, $accent_command, 
                                 $in_upper_case);

@@ -22,7 +22,7 @@ sub test_accent_stack ($)
   my $reference = $test->[2]; 
   my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
   my $tree = $parser->parse_texi_text($texi);
-  my ($text, $innermost_accent, $commands_stack) = 
+  my ($text, $commands_stack) = 
     Texinfo::Convert::Text::_find_innermost_accent($tree->{'contents'}->[0]);
   my @stack = map {$_->{'cmdname'}} @$commands_stack;
   if (defined($reference)) {
