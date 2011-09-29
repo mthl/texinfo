@@ -19,40 +19,16 @@ ref, like
 @xref{node1}.
 @xref{node1,,manual}.
 
-sectioning/sectioning_directions
-Differences with texi2html: 
-* name-NodeNext (which is more like text-NodeNext
-  in tp) is always the node name in texi2html, it is the command element
-  text in tp (so here it is the section name). --> keep it like it
-* In tp, for node-Next sectioning commands directions are taken into 
-  account even if there are no automatic directions. Thus
-@node First node,,Top,Top
-@chapter first node chapter
+In tp, for node-Next sectioning commands directions are taken into 
+account even if there are no automatic directions. Thus
+ @node First node,,Top,Top
+ @chapter first node chapter
 
-...
+ @node Second node,Third node unnumbered,,Top
+ @chapter second node chapter
 
-@node Second node,Third node unnumbered,,Top
-@chapter second node chapter
-
-  leads to Second node being node-Next for First node in tp (and not in 
-  texi2html).  ---> not sure about this one
-
-* not taken by texi2html but certainly right, node-Next for unnumbered sub
-  as numbered sub
-@menu
-* unnumbered sub:: un
-* numbered sub:: nu
-@end menu
-
-@node unnumbered sub
-@unnumberedsubsec unnumbered subsection
-
-@node numbered sub
-@subsection numbered subsection
-
-  Also in texi2html 'unnumbered sub' node-NodePrev is 'unnumbered' which 
-  is certainly wrong.   ---> keep it like this
-
+leads to Second node being node-Next for First node in tp (and not in 
+texi2html).  ---> not sure about this one
 
 Handle better @exdent in html?
 
@@ -64,10 +40,7 @@ in Texinfo::Config.
 Add an API for everything used in conf, for example in page_head, use 
 $self->title_string() and so on and so forth.  
 
-add --output-encoding.
-
-html tests which should be right:
-sectioning setfilename_on_top_and_after_node
+add --output-encoding.  Design better the encoding handling.
 
 * docbook: in function no style.
   replaceable is for @var or function argument. Only characters.
@@ -122,6 +95,7 @@ Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd
 arg of @*ref).
+https://savannah.gnu.org/bugs/?11700
 
 do something for?
 @set txicodequoteundirected
@@ -130,7 +104,9 @@ do something for?
 @codequotebacktick
 
 In Info A ref like @ref{node,,,manual} should lead to
-*note (manual)node::.
+ *note (manual)node::.
+instead of, currently 
+ *note chapter: (file name)chapter.
 
 Document that NO_USE_SETFILENAME replaced USE_SETFILENAME
 
@@ -139,6 +115,8 @@ Test @w{'} for the substitution of '.
 Before the release, verify that everything on 
 https://savannah.gnu.org/bugs/?group=texinfo
 is fixed and tested for.
+Remains:
+https://savannah.gnu.org/bugs/?15514
 
 In a first step, close when the the command to be closed is at the 
 top of the tree, not when it should be closed theoretically.
@@ -188,10 +166,6 @@ test an lone @contents without any sectioning command.
 
 Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
 enable encoding and entities.
-
-in coverage/formatting
-
-do Internal_links_formatting.
 
 Test that some constructs in @copying in comments in HTML are converted
 differently (as there is a 'converter' passed to Texinfo::Text) than when
