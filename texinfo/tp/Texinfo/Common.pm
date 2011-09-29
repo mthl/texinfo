@@ -163,11 +163,24 @@ sub valid_option($)
 }
 
 our %no_brace_commands;             # commands never taking braces
+%no_brace_commands = (
+           '*', "\n",
+           ' ', ' ',
+           "\t", ' ',
+           "\n", ' ',
+           '-', '',  # hyphenation hint
+           '|', '',  # used in formatting commands @evenfooting and friends
+           '/', '',
+           ':', '',
+           '!', '!',
+           '?', '?',
+           '.', '.',
+           '@', '@',
+           '}', '}',
+           '{', '{',
+           '\\', '\\',  # should only appear in math
+);
 
-foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
-                              '?','.','@','}','{','\\') {
-  $no_brace_commands{$no_brace_command} = 1;
-}
 
 # commands taking a line as argument or no argument.
 # sectioning commands and def* commands are added below.
@@ -1233,7 +1246,8 @@ following hashes are available:
 =item %no_brace_commands
 
 Commands without brace with a single character as name, like C<*>
-or C<:>.
+or C<:>.  The value is an ascii representation of the command.  It
+may be an empty string.
 
 =item %misc_commands
 

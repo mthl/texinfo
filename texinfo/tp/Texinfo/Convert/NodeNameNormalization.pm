@@ -66,7 +66,7 @@ foreach my $command (keys(%Texinfo::Convert::Unicode::unicode_character_brace_no
 }
 
 my %normalize_node_no_brace_commands 
-  = %Texinfo::Convert::Text::text_no_brace_commands;
+  = %Texinfo::Common::no_brace_commands;
 $normalize_node_no_brace_commands{'*'} = ' ';
 
 my %accent_commands = %Texinfo::Common::accent_commands;
@@ -260,7 +260,6 @@ sub _convert($;$)
       my $accent_text = _convert($root->{'args'}->[0]);
       my $accented_char 
         = Texinfo::Convert::Unicode::unicode_accent($accent_text, 
-                         #$root, \&Texinfo::Convert::Text::ascii_accent);
                                                     $root);
       if (!defined($accented_char)) {
         # In this case, the node normalization do not follow the specification,

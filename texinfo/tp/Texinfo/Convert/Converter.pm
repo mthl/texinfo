@@ -675,10 +675,7 @@ our %default_xml_commands_formatting;
 $default_xml_commands_formatting{'normal'} = {
                'TeX'          => 'TeX',
                'LaTeX'          => 'LaTeX',
-# pertusus: unknown by makeinfo, not in texinfo manual (@* is the right thing)
-#               'br', '<br>',     # paragraph break
                'bullet'       => '&bull;',
-#               #'copyright' => '(C)',
                'copyright'    => '&copy;',
                'registeredsymbol'   => '&reg;',
                'dots'         => '&hellip;',
@@ -733,9 +730,9 @@ $default_xml_commands_formatting{'normal'} = {
                'guilsinglright'          => '&rsaquo;',
 };
 
-foreach my $text_no_brace_command (keys(%Texinfo::Convert::Text::text_no_brace_commands)) {
-  $default_xml_commands_formatting{'normal'}->{$text_no_brace_command}
-    = $Texinfo::Convert::Text::text_no_brace_commands{$text_no_brace_command};
+foreach my $no_brace_command (keys(%Texinfo::Common::no_brace_commands)) {
+  $default_xml_commands_formatting{'normal'}->{$no_brace_command}
+    = $Texinfo::Common::no_brace_commands{$no_brace_command};
 }
 
 sub xml_default_comment($$)

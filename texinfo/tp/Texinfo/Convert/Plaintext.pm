@@ -70,8 +70,12 @@ foreach my $informative_command (@informative_global_commands) {
   $informative_commands{$informative_command} = 1;
 }
 
-my %text_no_brace_commands = %Texinfo::Convert::Text::text_no_brace_commands;
-my %text_brace_no_arg_commands = %Texinfo::Convert::Text::text_brace_no_arg_commands;
+my %no_brace_commands = %Texinfo::Common::no_brace_commands;
+my %brace_no_arg_commands;
+foreach my $command (keys (%Texinfo::Common::brace_commands)) {
+  $brace_no_arg_commands{$command} = 1 
+    if ($Texinfo::Common::brace_commands{$command} == 0);
+}
 my %accent_commands = %Texinfo::Common::accent_commands;
 my %misc_commands = %Texinfo::Common::misc_commands;
 my %sectioning_commands = %Texinfo::Common::sectioning_commands;
@@ -1185,7 +1189,7 @@ sub _convert($$)
   if ($root->{'cmdname'}) {
     my $unknown_command;
     my $command = $root->{'cmdname'};
-    if (defined($text_no_brace_commands{$command})) {
+    if (defined($no_brace_commands{$command})) {
       if ($command eq ':') {
         $formatter->{'container'}->inhibit_end_sentence();
         return '';
@@ -1199,18 +1203,22 @@ sub _convert($$)
             $formatter->{'container'}->add_next($command, undef, 1));
       } elsif ($command eq ' ' or $command eq "\n" or $command eq "\t") {
         $result .= $self->_count_added($formatter->{'container'}, 
-            $formatter->{'container'}->add_next($text_no_brace_commands{$command}));
+            $formatter->{'container'}->add_next($no_brace_commands{$command}));
       } else {
         $result .= $self->_count_added($formatter->{'container'}, 
-            $formatter->{'container'}->add_text($text_no_brace_commands{$command}));
+            $formatter->{'container'}->add_text($no_brace_commands{$command}));
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'today') {
       my $today = $self->Texinfo::Common::expand_today();
       unshift @{$self->{'current_contents'}->[-1]}, $today;
-    } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
+    } elsif (exists($brace_no_arg_commands{$root->{'cmdname'}})) {
+      my $encoding;
+      if ($self->get_conf('ENABLE_ENCODING')) {
+        $encoding = $self->{'encoding_name'};
+      }
       my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
-                             {'enabled_encoding' => $self->{'encoding_name'},
+                             {'enabled_encoding' => $encoding,
                               'sc' => $formatter->{'upper_case'}});
       if ($punctuation_no_arg_commands{$command}) {
         $result .= $self->_count_added($formatter->{'container'},

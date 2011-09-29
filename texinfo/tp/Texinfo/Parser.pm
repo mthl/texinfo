@@ -376,16 +376,19 @@ foreach my $no_close_preformatted('sp') {
 }
 
 # commands that may appear in accents
-my %in_accent_commands = (%no_brace_commands, %accent_commands);
+my %in_accent_commands = (%accent_commands);
 foreach my $brace_command(keys(%brace_commands)) {
   $in_accent_commands{$brace_command} = 1 if (!$brace_commands{$brace_command});
+}
+foreach my $no_brace_command (keys(%no_brace_commands)) {
+  $in_accent_commands{$no_brace_command} = 1;
 }
 $in_accent_commands{'c'} = 1;
 $in_accent_commands{'comment'} = 1;
 
 # commands that may appear in texts arguments
-my %in_full_text_commands = %no_brace_commands;
-foreach my $command (keys(%brace_commands)) {
+my %in_full_text_commands;
+foreach my $command (keys(%brace_commands), keys(%no_brace_commands)) {
   $in_full_text_commands{$command} = 1;
 }
 foreach my $misc_command_in_full_text('c', 'comment', 'refill', 'noindent',
@@ -4171,7 +4174,7 @@ sub _parse_texi($;$)
                  'begin' => $self->{'definfoenclose'}->{$command}->[0], 
                  'end' => $self->{'definfoenclose'}->{$command}->[1] };
           }
-        } elsif ($no_brace_commands{$command}) {
+        } elsif (exists ($no_brace_commands{$command})) {
           push @{$current->{'contents'}},
                  { 'cmdname' => $command, 'parent' => $current };
           # FIXME generalize?

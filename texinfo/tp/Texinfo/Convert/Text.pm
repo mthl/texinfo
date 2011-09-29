@@ -66,6 +66,7 @@ foreach my $ignored_command ('titlepage', 'copying', 'documentdescription',
   $ignored_block_commands{$ignored_command} = 1;
 }
 
+# used by Texinfo::Convert::NodeNormalization
 our %text_brace_no_arg_commands = (
                'TeX'                => 'TeX',
                'LaTeX'              => 'LaTeX',
@@ -136,26 +137,8 @@ foreach my $accent_letter ('o','O','l','L') {
   $sort_brace_no_arg_commands{$accent_letter} = $accent_letter;
 }
 
-
-our %text_no_brace_commands = (
-           '*', "\n",
-           ' ', ' ',
-           "\t", ' ',
-           "\n", ' ',
-           '-', '',  # hyphenation hint
-           '|', '',  # used in formatting commands @evenfooting and friends
-           '/', '',
-           ':', '',
-           '!', '!',
-           '?', '?',
-           '.', '.',
-           '@', '@',
-           '}', '}',
-           '{', '{',
-           '\\', '\\',  # should only appear in math
-);
-
 my %accent_commands = %Texinfo::Common::accent_commands;
+my %no_brace_commands = %Texinfo::Common::no_brace_commands;
 my %unicode_to_eight_bit = %Texinfo::Convert::Unicode::unicode_to_eight_bit;
 
 our %formatting_misc_commands;
@@ -219,7 +202,7 @@ sub eight_bit_accents($$$;$)
   my $debug;
   #$debug = 1;
 
-  # FIXME shouldn't it be better to format the innermost conntents with 
+  # FIXME shouldn't it be better to format the innermost contents with 
   # a converter, if present?
   my ($text, $innermost_accent, $stack) 
     = _find_innermost_accent($current, $encoding, $in_upper_case);
@@ -553,8 +536,8 @@ sub convert($;$)
   }
   if ($root->{'cmdname'}) {
     my $command = $root->{'cmdname'};
-    if (defined($text_no_brace_commands{$root->{'cmdname'}})) {
-      return $text_no_brace_commands{$root->{'cmdname'}};
+    if (defined($no_brace_commands{$root->{'cmdname'}})) {
+      return $no_brace_commands{$root->{'cmdname'}};
     } elsif ($root->{'cmdname'} eq 'today') {
       if ($options->{'sort_string'} 
           and $sort_brace_no_arg_commands{$root->{'cmdname'}}) {

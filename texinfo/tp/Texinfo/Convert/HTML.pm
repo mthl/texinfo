@@ -56,9 +56,7 @@ $VERSION = '0.01';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
-my %text_no_brace_commands = %Texinfo::Convert::Text::text_no_brace_commands;
 my %no_brace_commands = %Texinfo::Common::no_brace_commands;
-my %text_brace_no_arg_commands = %Texinfo::Convert::Text::text_brace_no_arg_commands;
 my %accent_commands = %Texinfo::Common::accent_commands;
 my %misc_commands = %Texinfo::Common::misc_commands;
 my %sectioning_commands = %Texinfo::Common::sectioning_commands;
