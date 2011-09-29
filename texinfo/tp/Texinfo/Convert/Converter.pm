@@ -808,7 +808,7 @@ sub xml_accents($$;$$)
       return Texinfo::Convert::Text::unicode_accents($accent, $format_accents,
                                                      $in_upper_case);
     } elsif ($self->{'encoding_name'} 
-           and $Texinfo::Common::eight_bit_encoding_aliases{$self->{'encoding_name'}}) {
+           and $Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}) {
       return Texinfo::Convert::Text::eight_bit_accents($accent, 
                                       $self->{'encoding_name'}, 
                                       $format_accents,

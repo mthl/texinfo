@@ -29,8 +29,6 @@ use 5.006;
 use Config;
 use File::Spec;
 
-use Encode;
-
 use Texinfo::Documentlanguages;
 
 require Exporter;
@@ -680,40 +678,6 @@ foreach my $sectioning_command (keys (%command_structuring_level)) {
 
 $root_commands{'node'} = 1;
 
-
-
-# charset related definitions.
-
-our %perl_charset_to_html = (
-              'utf8'       => 'utf-8',
-              'utf-8-strict'       => 'utf-8',
-              'ascii'      => 'us-ascii',
-              'shiftjis'      => 'shift_jis',
-);
-
-# encoding name normalization to html-compatible encoding names
-our %encoding_aliases = (
-              'latin1' => 'iso-8859-1',
-);
-
-foreach my $perl_charset (keys(%perl_charset_to_html)) {
-   $encoding_aliases{$perl_charset} = $perl_charset_to_html{$perl_charset};
-   $encoding_aliases{$perl_charset_to_html{$perl_charset}}
-        = $perl_charset_to_html{$perl_charset};
-}
-our %eight_bit_encoding_aliases = (
-  "iso-8859-1",  'iso8859_1',
-  "iso-8859-2",  'iso8859_2',
-  "iso-8859-15", 'iso8859_15',
-  "koi8-r",      'koi8',
-  "koi8-u",      'koi8',
-);
-
-foreach my $encoding (keys(%eight_bit_encoding_aliases)) {
-  $encoding_aliases{$encoding} = $encoding;
-  $encoding_aliases{$eight_bit_encoding_aliases{$encoding}} = $encoding;
-}
-
 our @MONTH_NAMES =
     (
      'January', 'February', 'March', 'April', 'May',
@@ -794,27 +758,6 @@ sub warn_unknown_language($$) {
                             $region_code);
   }
   return @messages;
-}
-
-our %canonical_texinfo_encodings;
-# These are the encodings from the texinfo manual
-foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1',
-  'iso-8859-15','iso-8859-2','koi8-r', 'koi8-u') {
-  $canonical_texinfo_encodings{$canonical_encoding} = 1;
-}
-
-sub encoding_alias ($)
-{
-  my $encoding = shift;
-  my $canonical_texinfo_encoding;
-  $canonical_texinfo_encoding 
-    = $encoding if ($canonical_texinfo_encodings{lc($encoding)});
-  my $perl_encoding = Encode::resolve_alias($encoding);
-  my $canonical_output_encoding;
-  if ($perl_encoding) {
-    $canonical_output_encoding = $encoding_aliases{$perl_encoding};
-  }
-  return ($canonical_texinfo_encoding, $perl_encoding, $canonical_output_encoding);
 }
 
 # This should do the job, or at least don't do wrong if $self

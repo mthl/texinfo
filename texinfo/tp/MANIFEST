@@ -9,6 +9,7 @@ TODO
 Texinfo/Parser.pm
 Texinfo/Report.pm
 Texinfo/Common.pm
+Texinfo/Encoding.pm
 Texinfo/Structuring.pm
 Texinfo/Documentlanguages.pm
 Texinfo/Convert/Texinfo.pm

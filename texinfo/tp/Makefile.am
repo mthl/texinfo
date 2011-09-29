@@ -32,6 +32,7 @@ dist_modules_DATA = \
  Texinfo/Parser.pm \
  Texinfo/Report.pm \
  Texinfo/Common.pm \
+ Texinfo/Encoding.pm \
  Texinfo/Structuring.pm \
  Texinfo/Documentlanguages.pm
 

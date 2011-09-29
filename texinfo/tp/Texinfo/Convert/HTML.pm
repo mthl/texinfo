@@ -4046,8 +4046,8 @@ sub _initialize($)
             and $self->{'encoding_name'} 
             and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command}
             and ($self->{'encoding_name'} eq 'utf-8'
-                 or ($Texinfo::Common::eight_bit_encoding_aliases{$self->{'encoding_name'}}
-                    and $Texinfo::Convert::Text::unicode_to_eight_bit{$Texinfo::Common::eight_bit_encoding_aliases{$self->{'encoding_name'}}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))
+                 or ($Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}
+                    and $Texinfo::Convert::Unicode::unicode_to_eight_bit{$Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))
             and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
           $self->{'commands_formatting'}->{$context}->{$command}
             = $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command}

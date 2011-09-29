@@ -45,6 +45,8 @@ use Encode;
 use Texinfo::Common;
 # Error reporting and counting, translation of strings.
 use Texinfo::Report;
+# encoding_alias
+use Texinfo::Encoding;
 
 # to expand file names in @include and similar @-commands
 use Texinfo::Convert::Text;
@@ -2710,10 +2712,10 @@ sub _end_line($$$)
           }
         } elsif ($command eq 'documentencoding') {
           my ($texinfo_encoding, $perl_encoding, $output_encoding)
-            = Texinfo::Common::encoding_alias($text);
+            = Texinfo::Encoding::encoding_alias($text);
           $self->line_warn (sprintf($self->__("Encoding `%s' is not a canonical texinfo encoding"), 
                                    $text), $line_nr)
-            if (!$texinfo_encoding);
+            if (!$texinfo_encoding or $texinfo_encoding ne lc($text));
           if (!$perl_encoding) {
             $self->line_warn (sprintf($self->__("unrecognized encoding name `%s'"), 
                        $text), $line_nr);
