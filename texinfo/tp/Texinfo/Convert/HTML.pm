@@ -4029,14 +4029,12 @@ sub _initialize($)
            = $Texinfo::Config::commands_formatting{$context}->{$command};
       } else {
         if ($self->get_conf('ENABLE_ENCODING') 
-            and $self->{'encoding_name'} 
-            and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command}
-            and ($self->{'encoding_name'} eq 'utf-8'
-                 or ($Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}
-                    and $Texinfo::Convert::Unicode::unicode_to_eight_bit{$Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))
+            and Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
+                           $command, $self->{'encoding_name'})
             and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
           $self->{'commands_formatting'}->{$context}->{$command}
-            = $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command}
+            = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
+                           $command, $self->{'encoding_name'})
         } else {
           $self->{'commands_formatting'}->{$context}->{$command} 
             = $default_commands_formatting{$context}->{$command};

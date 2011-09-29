@@ -1222,6 +1222,21 @@ sub unicode_text($$$$)
   return Unicode::Normalize::NFC($text);
 }
 
+sub unicode_for_brace_no_arg_command($$) {
+  my $command = shift;
+  my $encoding = shift;
+  
+  if ($unicode_character_brace_no_arg_commands{$command}
+      and $encoding 
+      and ($encoding eq 'utf-8'
+           or ($Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}
+               and $unicode_to_eight_bit{$Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}}->{$unicode_map{$command}}))) {
+    return $unicode_character_brace_no_arg_commands{$command};
+  } else {
+    return undef;
+  }  
+}
+
 # string length size taking into account that east asian characters
 # may take 2 spaces.
 sub string_width($)

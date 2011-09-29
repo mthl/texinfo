@@ -410,18 +410,15 @@ sub brace_no_arg_command($;$)
      if ($root->{'extra'}
       and defined($root->{'extra'}->{'clickstyle'})
       and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
-  my $result;
-  if ($encoding
-      and (($encoding eq 'utf-8' 
-            and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command})
-           or ($Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}
-               and $unicode_to_eight_bit{$Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))) {
-    $result = $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command};
-  } elsif ($options and $options->{'sort_string'} 
-           and $sort_brace_no_arg_commands{$command}) {
-    $result = $sort_brace_no_arg_commands{$command};
-  } else {
-    $result = $text_brace_no_arg_commands{$command};
+  my $result = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
+                       $command, $encoding);
+  if (!defined($result)) {
+    if ($options and $options->{'sort_string'} 
+        and $sort_brace_no_arg_commands{$command}) {
+      $result = $sort_brace_no_arg_commands{$command};
+    } else {
+      $result = $text_brace_no_arg_commands{$command};
+    }
   }
   if ($options and $options->{'sc'} 
       and $Texinfo::Common::letter_no_arg_commands{$command}) {
