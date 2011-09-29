@@ -95,8 +95,8 @@ sub _expand_cmd_args_to_texi ($) {
   $result = '@'.$cmdname if ($cmdname);
   #print STDERR "Expand $result\n";
 
-  # this is done here otherwise for some constructs, there are
-  # no 'args', and so the space is never readded.
+  # this is done here otherwise for some constructs, there are
+  # no 'args', and so the space is never readded.
   if ($cmd->{'extra'} and exists ($cmd->{'extra'}->{'spaces'})) {
     $result .= $cmd->{'extra'}->{'spaces'};
   }

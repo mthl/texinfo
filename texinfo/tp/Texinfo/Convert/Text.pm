@@ -174,62 +174,6 @@ foreach my $type ('empty_line_after_command', 'preamble',
   $ignored_types{$type} = 1;
 }
 
-# find the innermost accent and the correspponding text contents
-# FIXME This is not output dependent, so could be in 
-# Texinfo::Convert::Converter.  However this would create a 
-# dependency loop.
-sub _find_innermost_accent_contents($;$)
-{
-  my $current = shift;
-  my $encoding = shift;
-  my @accent_commands = ();
-  my $debug = 0;
- ACCENT:
-  while (1) {
-    # the following can happen if called with a bad tree
-    if (!$current->{'cmdname'} 
-        or !$accent_commands{$current->{'cmdname'}}) {
-      #print STDERR "BUG: Not an accent command in accent\n";
-      cluck "BUG: Not an accent command in accent\n";
-      print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
-      print STDERR Data::Dumper->Dump([$current]);
-      last;
-    }
-    push @accent_commands, $current;
-    # A bogus accent
-    if (!$current->{'args'}) {
-      return ([], $current, \@accent_commands);
-    }
-    my $arg = $current->{'args'}->[0];
-    # a construct like @'e without content
-    if (defined($arg->{'text'})) {
-      return ([$arg], $current, \@accent_commands);
-    }
-    if (!$arg->{'contents'}) {
-      print STDERR "BUG: No content in accent command\n";
-      print STDERR Data::Dumper->Dump([$current]);
-      print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
-      last;
-    }
-    # inside the braces of an accent
-    my $text_contents = [];
-    foreach my $content (@{$arg->{'contents'}}) {
-      if (!($content->{'extra'} and $content->{'extra'}->{'invalid_nesting'})
-         and !($content->{'cmdname'} and ($content->{'cmdname'} eq 'c'
-                                  or $content->{'cmdname'} eq 'comment'))) {
-        if ($content->{'cmdname'} and $accent_commands{$content->{'cmdname'}}) {
-          $current = $content;
-          next ACCENT;
-        } else {
-          push @$text_contents, $content;
-        }
-      }
-    }
-    # we go here if there was no nested accent
-    return ($text_contents, $current, \@accent_commands);
-  }
-}
-
 # find the innermost accent and format the correspponding text contents
 sub _find_innermost_accent($;$$)
 {
@@ -237,7 +181,7 @@ sub _find_innermost_accent($;$$)
   my $encoding = shift;
   my $in_upper_case = shift;
   my ($contents, $innermost_accent, $stack) 
-      = _find_innermost_accent_contents($current);
+      = Texinfo::Common::find_innermost_accent_contents($current);
   my $options = {};
   $options->{'enabled_encoding'} = $encoding if (defined($encoding));
   $options->{'sc'} = $in_upper_case if (defined($in_upper_case));

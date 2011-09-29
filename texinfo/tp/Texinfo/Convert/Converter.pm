@@ -25,8 +25,10 @@ use strict;
 use Texinfo::Report;
 use Texinfo::Common;
 
-use vars qw(@ISA);
+use vars qw(@ISA $VERSION);
 @ISA = qw(Texinfo::Report);
+
+$VERSION = '0.01';
 
 my %defaults = (
   'frenchspacing'        => 'off',
@@ -816,7 +818,7 @@ sub xml_accents($$;$$)
     }
   }
   my ($contents, $innermost_accent, $stack)
-      = Texinfo::Convert::Text::_find_innermost_accent_contents($accent);
+      = Texinfo::Common::find_innermost_accent_contents($accent);
   my $result = $self->_convert({'contents' => $contents});
   
   foreach my $accent_command (reverse(@$stack)) {

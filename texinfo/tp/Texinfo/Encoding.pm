@@ -44,6 +44,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
+$VERSION = '0.01';
+
 # charset related definitions.
 
 our %perl_charset_to_html = (
