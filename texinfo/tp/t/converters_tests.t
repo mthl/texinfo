@@ -115,6 +115,9 @@ $weird_accents_text, {}, {'ENABLE_ENCODING' => 0}
 ['accent',
 $accents_text
 ],
+['accent_with_text',
+'@u{--a} @dotless{--b} @^{--@dotless{i}} @^{--@dotless{j}} @^{--a}
+'],
 ['refs_formatting',
 '@node chapter
 @chapter chapter
