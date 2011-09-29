@@ -248,38 +248,6 @@ sub _initialize($)
   $self->{'document_context'} = [{}];
 }
 
-sub _global_commands($)
-{
-  return ('documentlanguage', 'documentencoding');
-}
-
-sub _informative_command($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my $cmdname = $root->{'cmdname'};
-  return if ($self->{'set'}->{$cmdname});
-
-  if (exists($root->{'extra'}->{'text_arg'})) {
-    $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
-    if ($cmdname eq 'documentencoding'
-        and defined($root->{'extra'})
-        and defined($root->{'extra'}->{'perl_encoding'})
-       ){
-        #and !$self->{'perl_encoding'}) {
-      $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
-      $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
-    }
-  }
-}
-
-sub _normalize_top_node($)
-{
-  my $node = shift;
-  return Texinfo::Common::normalize_top_node_name($node);
-}
-
 sub output($$)
 {
   my $self = shift;
@@ -311,7 +279,7 @@ sub output($$)
 
   my $result = '';
   $result .= Texinfo::Convert::Converter::_output_text($header, $fh);
-  $result .= $self->convert($root, $fh);
+  $result .= $self->_convert_document_sections($root, $fh);
   $result .= Texinfo::Convert::Converter::_output_text("</texinfo>\n", $fh);
 
   return $result;
@@ -543,7 +511,7 @@ sub _convert($$;$)
                                           {'text' => ')'}]});
               }
               if ($node_direction->{'extra'}->{'node_content'}) {
-                $node_name .= _normalize_top_node($self->_convert({
+                $node_name .= Texinfo::Common::normalize_top_node_name($self->_convert({
                   'contents' => $node_direction->{'extra'}->{'node_content'}}));
               }
               $result .= "<$element${attribute}>$node_name</$element>";

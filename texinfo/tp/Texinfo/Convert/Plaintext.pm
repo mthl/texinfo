@@ -62,7 +62,8 @@ my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
 my @informative_global_commands = ('paragraphindent', 'firstparagraphindent',
 'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage',
-'contents', 'shortcontents', 'summarycontents');
+'contents', 'shortcontents', 'summarycontents', 'setcontentsaftertitlepage',
+'setshortcontentsaftertitlepage');
 
 my %informative_commands;
 foreach my $informative_command (@informative_global_commands) {
@@ -318,18 +319,6 @@ my %contents_commands = (
  'shortcontents' => 1,
  'summarycontents' => 1,
 );
-
-sub _initialize_global_command($$)
-{
-  my $self = shift;
-  my $command = shift;
-  my $root = shift;
-  if (ref($root) ne 'ARRAY') {
-    $self->_informative_command($root);
-  } elsif ($contents_commands{$command}) {
-    $self->_informative_command($root->[0]);
-  }
-}
 
 sub _informative_command($$)
 {

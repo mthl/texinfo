@@ -193,8 +193,7 @@ $result_elements{'part_before_section'} = [
   {
     'extra' => {
       'directions' => {
-        'This' => {},
-        'Up' => {}
+        'This' => {}
       },
       'element_command' => {
         'cmdname' => 'section',
@@ -214,14 +213,12 @@ $result_elements{'part_before_section'} = [
   }
 ];
 $result_elements{'part_before_section'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'part_before_section'}[0];
-$result_elements{'part_before_section'}[0]{'extra'}{'directions'}{'Up'} = $result_elements{'part_before_section'}[0];
 $result_elements{'part_before_section'}[0]{'extra'}{'section'} = $result_elements{'part_before_section'}[0]{'extra'}{'element_command'};
 
 
 
 $result_directions_text{'part_before_section'} = 'element: @section section
   This: @section section
-  Up: @section section
 ';
 
 

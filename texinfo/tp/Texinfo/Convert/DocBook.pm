@@ -240,7 +240,6 @@ foreach my $type ('empty_line_after_command',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
             'empty_spaces_after_close_brace', 
             'empty_space_at_end_def_bracketed',
-            # FIXME keep those? Information is lost...
             'menu_entry_separator',
             'menu_entry_leading_text',
   ) {
@@ -290,59 +289,14 @@ sub _initialize($)
   $self->{'document_context'} = [{}];
 }
 
-sub _global_commands($)
-{
-  return ('documentlanguage', 'documentencoding');
-}
-
-sub _informative_command($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my $cmdname = $root->{'cmdname'};
-  return if ($self->{'set'}->{$cmdname});
-
-  if (exists($root->{'extra'}->{'text_arg'})) {
-    $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
-    if ($cmdname eq 'documentencoding'
-        and defined($root->{'extra'})
-        and defined($root->{'extra'}->{'perl_encoding'})
-       ){
-        #and !$self->{'perl_encoding'}) {
-      $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
-      $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
-    }
-  }
-}
-
-sub _initialize_document($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my $elements;
-
-  $self->_set_global_multiple_commands(-1);
-  $elements = Texinfo::Structuring::split_by_section($root);
-  $self->{'elements'} = $elements;
-  return $elements;
-}
-
 sub convert($$;$)
 {
   my $self = shift;
   my $root = shift;
   my $fh = shift;
 
-  my $elements = $self->_initialize_document($root);
+  $self->_set_global_multiple_commands(-1);
   return $self->_convert_document_sections($root, $fh);
-}
-
-sub _normalize_top_node($)
-{
-  my $node = shift;
-  return Texinfo::Common::normalize_top_node_name($node);
 }
 
 sub output($$)
@@ -364,7 +318,7 @@ sub output($$)
     }
   }
 
-  my $elements = $self->_initialize_document($root);
+  $self->_set_global_multiple_commands(-1);
 
   my $id;
   if ($self->get_conf('OUTFILE') ne '') {
@@ -383,7 +337,7 @@ sub output($$)
 
   my $result = '';
   $result .= Texinfo::Convert::Converter::_output_text($header, $fh);
-  $result .= $self->convert($root, $fh);
+  $result .= $self->_convert_document_sections($root, $fh);
   $result .= Texinfo::Convert::Converter::_output_text("</book>\n", $fh);
   return $result;
 }

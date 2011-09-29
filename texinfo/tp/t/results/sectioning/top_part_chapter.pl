@@ -274,8 +274,7 @@ $result_elements{'top_part_chapter'} = [
             'directions' => {
               'Back' => {},
               'FastBack' => {},
-              'This' => {},
-              'Up' => {}
+              'This' => {}
             },
             'element_command' => {
               'cmdname' => 'chapter',
@@ -311,7 +310,6 @@ $result_elements{'top_part_chapter'} = [
 $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Back'} = $result_elements{'top_part_chapter'}[0];
 $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'FastBack'} = $result_elements{'top_part_chapter'}[0];
 $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'This'} = $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Up'} = $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'section'} = $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'element_command'};
 $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'Forward'} = $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'};
 $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'Next'} = $result_elements{'top_part_chapter'}[0]{'extra'}{'directions'}{'FastForward'};
@@ -330,7 +328,6 @@ element: @chapter chapter
   Back: @top top
   FastBack: @top top
   This: @chapter chapter
-  Up: @chapter chapter
 ';
 
 

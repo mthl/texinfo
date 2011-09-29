@@ -844,8 +844,14 @@ sub elements_directions($$)
                             ['Prev', 'section_prev']) {
         # in most cases $section->{$direction->[1]}->{'parent'} is defined
         # but it may not be the case for the up of @top.
+        # The section may be its own up in cases like
+        #  @part part
+        #  @chapter chapter
+        # in that cas the direction is not set up
         $directions->{$direction->[0]} = $section->{$direction->[1]}->{'parent'}
-          if ($section->{$direction->[1]} and $section->{$direction->[1]}->{'parent'});
+          if ($section->{$direction->[1]} 
+              and $section->{$direction->[1]}->{'parent'}
+              and $section->{$direction->[1]}->{'parent'} ne $section->{'parent'});
       }
 
       my $up = $section;

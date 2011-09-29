@@ -67,6 +67,7 @@ sub output($)
   push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                      'locations' => []};
   my $header = $self->_info_header();
+
   pop @{$self->{'count_context'}};
   return undef unless $self->_create_destination_directory();
 
@@ -236,8 +237,8 @@ sub _info_header($)
   $self->{'empty_lines_count'} = 1;
 
   if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
-    print STDERR "COPYING HEADER\n" if ($self->get_conf('DEBUG'));
     $self->_set_global_multiple_commands();
+    print STDERR "COPYING HEADER\n" if ($self->get_conf('DEBUG'));
     $self->{'in_copying_header'} = 1;
     my $copying = $self->_convert({'contents' => 
           $self->{'extra'}->{'copying'}->{'contents'}});

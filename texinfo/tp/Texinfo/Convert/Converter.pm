@@ -75,11 +75,32 @@ sub _initialize($)
 
 sub _global_commands($)
 {
-  return ();
+  return ('documentlanguage', 'documentencoding');
 }
 
 sub _initialize_global_command($$$)
 {
+}
+
+sub _informative_command($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $cmdname = $root->{'cmdname'};
+  return if ($self->{'set'}->{$cmdname});
+
+  if (exists($root->{'extra'}->{'text_arg'})) {
+    $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
+    if ($cmdname eq 'documentencoding'
+        and defined($root->{'extra'})
+        and defined($root->{'extra'}->{'perl_encoding'})
+       ){
+        #and !$self->{'perl_encoding'}) {
+      $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
+      $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
+    }
+  }
 }
 
 sub converter(;$)
@@ -133,13 +154,10 @@ sub converter(;$)
       foreach my $global_command ($converter->_global_commands()) {
         if (defined($converter->{'extra'}->{$global_command})) {
           my $root = $converter->{'extra'}->{$global_command};
-          #if (ref($root) eq 'ARRAY') {
-          #  $root = $converter->{'extra'}->{$global_command}->[0];
-          #}
-          #if (ref($root) ne 'ARRAY') {
-          #$converter->_informative_command($root);
-          $converter->_initialize_global_command($global_command, $root);
-          #}
+          # always set unique commands
+          if (ref($root) ne 'ARRAY') {
+            $converter->_informative_command($root);
+          }
         }
       }
       $converter->set_conf('setcontentsaftertitlepage', 1)

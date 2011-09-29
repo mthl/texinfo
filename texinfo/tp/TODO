@@ -150,7 +150,7 @@ There is no forward looking code anymore, so maybe a lex/yacc parser
 could be used for the main loop.  More simply, a binary tokenizer, at 
 least, could make for a notable speedup.
 
-@ protecting end of lines in @def* is not kept in any way in the tree.
+@ protecting end of lines in @def* is not kept in any way in the tree.
 Maybe it could be possible to have it as a 'type'?
 
 in HTML, the argument of a quotation is ignored if the quotation is empty,
@@ -186,7 +186,7 @@ Tests in contents/ are incorporated?  Also a test is missing, along:
 
 test an lone @contents without any sectioning command.
 
-Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
+Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
 enable encoding and entities.
 
 in coverage/formatting
@@ -201,22 +201,6 @@ In @copying things like some raw formats may be expanded.  However it is
 not clear that it should be the same than in the main converter.  Maybe a 
 specific list of formats could be passed to Convert::Text::convert, which
 would be different (for example Info and Plaintext even if converting HTML).
-
-construct like 
-  @menu @c 
-leads to a menu_comment holding a preformatted which only contains
-the comment, it would certainly be better to remove the preformatted
-and menu_comment as they a e basically empty.  In HTML this results in an
-empty <tr>.
-Test in menu/comment_on_menu_line
-
-Flag the last end of line of text in a raw format, to let the converter 
-remove it in case a running text is needed.  For example, in
-  @html
-  html
-  something
-  @end html
-flag the end of line at the end of the 'something' line.
 
 An unknwown command in a context where not all commands are accepted leads
 to an error message.  There is a FIXME in the code.  The test case is
@@ -245,9 +229,6 @@ it is right or wrong.
 tests/indices/index_entry_in_footnote_separated_info the node of index
 entry is Top, it should be the node created especially for the footnote
 and the lines count should also be adjusted.
-
-Test empty/no empty line at a multitable beginning, between 2 rows and
-after a multitable.
 
 Test end_line_count in Texinfo/Convert/ containers.
 

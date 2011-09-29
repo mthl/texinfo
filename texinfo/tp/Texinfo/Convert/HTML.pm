@@ -1056,18 +1056,6 @@ my %contents_commands = (
  'summarycontents' => 1,
 );
 
-sub _initialize_global_command($$)
-{
-  my $self = shift;
-  my $command = shift;
-  my $root = shift;
-  if (ref($root) ne 'ARRAY') {
-    $self->_informative_command($root);
-  } elsif ($contents_commands{$command}) {
-    $self->_informative_command($root->[0]);
-  }
-}
-
 #my %ignored_misc_commands;
 foreach my $misc_command (keys(%misc_commands)) {
 #  $ignored_misc_commands{$misc_command} = 1 
