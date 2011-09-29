@@ -24,6 +24,7 @@ use strict;
 
 use Texinfo::Report;
 use Texinfo::Common;
+use Texinfo::Convert::Text;
 
 use vars qw(@ISA $VERSION);
 @ISA = qw(Texinfo::Report);

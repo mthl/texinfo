@@ -23,6 +23,7 @@ use 5.00405;
 use strict;
 
 use Texinfo::Convert::Plaintext;
+use Texinfo::Convert::Text;
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);

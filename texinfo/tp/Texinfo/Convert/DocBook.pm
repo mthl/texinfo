@@ -25,6 +25,7 @@ use strict;
 use Texinfo::Convert::Converter;
 use Texinfo::Common;
 use Texinfo::Convert::Unicode;
+use Texinfo::Convert::Text;
 # for debugging
 use Texinfo::Convert::Texinfo;
 use Data::Dumper;
@@ -598,14 +599,6 @@ sub _convert($$;$)
                  or !defined($self->get_conf('NUMBER_SECTIONS')))) {
             # Looking at docbook2html output, Appendix is appended in the 
             # section title, so only the letter is used.
-            #if ($root->{'cmdname'} eq 'appendix' and $root->{'level'} == 1) {
-            #  $label = Texinfo::Convert::Text::convert($self->gdt(
-            #      'Appendix {number}', {'number' => 
-            #                                 {'text' => $root->{'number'}}}),
-            #                            {'converter' => $self});
-            #} else {
-            #  $label = $root->{'number'};
-            #}
             $label = $root->{'number'};
           }
           $attribute = " label=\"$label\"";
