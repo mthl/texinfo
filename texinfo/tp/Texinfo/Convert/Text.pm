@@ -139,7 +139,6 @@ foreach my $accent_letter ('o','O','l','L') {
 
 my %accent_commands = %Texinfo::Common::accent_commands;
 my %no_brace_commands = %Texinfo::Common::no_brace_commands;
-my %unicode_to_eight_bit = %Texinfo::Convert::Unicode::unicode_to_eight_bit;
 
 our %formatting_misc_commands;
 foreach my $command ('verbatiminclude', 'sp', 'center', 'exdent', 
@@ -170,26 +169,6 @@ sub _find_innermost_accent($;$$)
   $options->{'sc'} = $in_upper_case if (defined($in_upper_case));
   return (convert({'contents' => $contents}, $options), 
           $innermost_accent, $stack);
-}
-
-# return the 8 bit, if it exists, and the unicode codepoint
-sub _eight_bit_and_unicode_point($$)
-{
-  my $char = shift;
-  my $encoding_map_name = shift;
-  my ($eight_bit, $codepoint);
-  if (ord($char) <= 128) { 
-    # 7bit ascii characters, the same in every 8bit encodings
-    $eight_bit = uc(sprintf("%02x",ord($char)));
-    $codepoint = uc(sprintf("%04x",ord($char)));
-  } elsif (ord($char) <= hex(0xFFFF)) {
-    $codepoint = uc(sprintf("%04x",ord($char)));
-    if (exists($unicode_to_eight_bit{$encoding_map_name}->{$codepoint})) {
-     $eight_bit 
-         = $unicode_to_eight_bit{$encoding_map_name}->{$codepoint};
-    }
-  }
-  return ($eight_bit, $codepoint);
 }
 
 sub eight_bit_accents($$$;$)
@@ -252,21 +231,21 @@ sub eight_bit_accents($$$;$)
     }
   }
 
-  my $encoding_map_name 
-       = $Texinfo::Encoding::eight_bit_encoding_aliases{$encoding};
   # At this point we have the utf8 encoded results for the accent
   # commands stack, with all the intermediate results.
   # For each one we'll check if it is possible to encode it in the 
   # current eight bit output encoding table
   my ($eight_bit, $dummy) 
-     = _eight_bit_and_unicode_point($text, $encoding_map_name);
+     = Texinfo::Convert::Unicode::eight_bit_and_unicode_point($text, 
+                                                            $encoding);
   my $eight_bit_command_index = -1;
   foreach my $partial_result (@results_stack) {
     my $char = $partial_result->[0];
     last if (!defined($char));
 
-    my ($new_eight_bit, $new_codepoint) = _eight_bit_and_unicode_point($char,
-                                                           $encoding_map_name);
+    my ($new_eight_bit, $new_codepoint) 
+      = Texinfo::Convert::Unicode::eight_bit_and_unicode_point($char,
+                                                              $encoding);
     if ($debug) {
       my $eight_bit_txt = 'undef';
       $eight_bit_txt = $eight_bit if (defined($eight_bit));

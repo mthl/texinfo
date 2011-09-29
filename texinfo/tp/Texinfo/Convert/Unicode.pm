@@ -610,7 +610,7 @@ foreach my $command (keys(%unicode_accented_letters)) {
   }
 }
 
-our %unicode_to_eight_bit = (
+my %unicode_to_eight_bit = (
    'iso8859_1' => {
       '00A0' => 'A0',
       '00A1' => 'A1',
@@ -1222,6 +1222,32 @@ sub unicode_text($$$$)
   return Unicode::Normalize::NFC($text);
 }
 
+# return the 8 bit, if it exists, and the unicode codepoint
+sub eight_bit_and_unicode_point($$)
+{
+  my $char = shift;
+  my $encoding = shift;
+
+  my $encoding_map_name
+   = $Texinfo::Encoding::eight_bit_encoding_aliases{$encoding};
+  my ($eight_bit, $codepoint);
+  if (ord($char) <= 128) {
+    # 7bit ascii characters, the same in every 8bit encodings
+    $eight_bit = uc(sprintf("%02x",ord($char)));
+    $codepoint = uc(sprintf("%04x",ord($char)));
+  } elsif (ord($char) <= hex(0xFFFF)) {
+    $codepoint = uc(sprintf("%04x",ord($char)));
+    if (exists($unicode_to_eight_bit{$encoding_map_name}->{$codepoint})) {
+     $eight_bit
+         = $unicode_to_eight_bit{$encoding_map_name}->{$codepoint};
+    }
+  }
+  return ($eight_bit, $codepoint);
+}
+
+
+# returns the unicode for a command with brace and no arg
+# if it is known that it is present for the encoding
 sub unicode_for_brace_no_arg_command($$) {
   my $command = shift;
   my $encoding = shift;
