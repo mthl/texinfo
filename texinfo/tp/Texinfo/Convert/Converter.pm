@@ -811,8 +811,9 @@ sub xml_accents($$;$$)
 {
   my $self = shift;
   my $accent = shift;
-  my $in_upper_case = shift;
   my $format_accents = shift;
+  my $in_upper_case = shift;
+
   if (!defined($format_accents)) {
     if ($self->get_conf('USE_NUMERIC_ENTITY')) {
       $format_accents = \&xml_accent_numeric_entities;
@@ -821,22 +822,32 @@ sub xml_accents($$;$$)
     }
   }
   
-  if ($self->get_conf('ENABLE_ENCODING')) {
-    if ($self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
-      return Texinfo::Convert::Text::unicode_accents($accent, $format_accents,
-                                                     $in_upper_case);
-    } elsif ($self->{'encoding_name'} 
-           and $Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}) {
-      return Texinfo::Convert::Text::eight_bit_accents($accent, 
-                                      $self->{'encoding_name'}, 
-                                      $format_accents,
-                                      $in_upper_case);
-    }
-  }
+  return $self->convert_accents($accent, $format_accents, $in_upper_case);
+}
+
+sub convert_accents($$$;$)
+{
+  my $self = shift;
+  my $accent = shift;
+  my $format_accents = shift;
+  my $in_upper_case = shift;
+
   my ($contents, $stack)
       = Texinfo::Common::find_innermost_accent_contents($accent);
+  my $result = $self->convert_tree({'contents' => $contents});  
 
-  my $result = $self->_convert({'contents' => $contents});  
+  if ($self->get_conf('ENABLE_ENCODING')) {
+    if ($self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
+      return Texinfo::Convert::Text::unicode_accents($result, $stack,
+                                             $format_accents, $in_upper_case);
+    } elsif ($self->{'encoding_name'}
+           and $Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}) {
+      return Texinfo::Convert::Text::eight_bit_accents($result, $stack, 
+                                                  $self->{'encoding_name'}, 
+                                                  $format_accents,
+                                                  $in_upper_case);
+    }
+  }
   foreach my $accent_command (reverse(@$stack)) {
     $result = &$format_accents ($result, $accent_command, 
                                 $in_upper_case);

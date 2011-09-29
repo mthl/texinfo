@@ -901,7 +901,7 @@ sub find_innermost_accent_contents($;$)
       last;
     }
     push @accent_commands, $current;
-    # A bogus accent
+    # A bogus accent, that may happen
     if (!$current->{'args'}) {
       return ([], \@accent_commands);
     }
@@ -914,7 +914,7 @@ sub find_innermost_accent_contents($;$)
       print STDERR "BUG: No content in accent command\n";
       #print STDERR Data::Dumper->Dump([$current]);
       #print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
-      last;
+      return ([], \@accent_commands);
     }
     # inside the braces of an accent
     my $text_contents = [];

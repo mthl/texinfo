@@ -156,37 +156,18 @@ foreach my $type ('empty_line_after_command', 'preamble',
   $ignored_types{$type} = 1;
 }
 
-# find the innermost accent and format the correspponding text contents
-sub _find_innermost_accent($;$$)
+sub eight_bit_accents($$$$;$)
 {
-  my $current = shift;
-  my $encoding = shift;
-  my $in_upper_case = shift;
-  my ($contents, $stack)
-      = Texinfo::Common::find_innermost_accent_contents($current);
-
-  # FIXME shouldn't it be better to format the innermost contents with 
-  # a converter, if present?
-  my $options = {};
-  $options->{'enabled_encoding'} = $encoding if (defined($encoding));
-  $options->{'sc'} = $in_upper_case if (defined($in_upper_case));
-  return (convert({'contents' => $contents}, $options), 
-          $stack);
-}
-
-sub eight_bit_accents($$$;$)
-{
-  my $current = shift;
+  my $unicode_formatted = shift;
+  my $stack = shift;
   my $encoding = shift;
   my $convert_accent = shift;
   my $in_upper_case = shift;
 
+  my $result = $unicode_formatted;
+
   my $debug;
   #$debug = 1;
-
-  my ($unicode_formatted, $stack) 
-    = _find_innermost_accent($current, $encoding, $in_upper_case);
-  my $result = $unicode_formatted;
 
   if ($debug) {
     print STDERR "STACK: ".join('|', map {$_->{'cmdname'}} @$stack)."\n";
@@ -308,13 +289,11 @@ sub ascii_accent($$)
 }
 
 # format a stack of accents as ascii
-sub ascii_accents ($;$)
+sub ascii_accents ($$;$)
 {
-  my $current = shift;
+  my $result = shift;
+  my $stack = shift;
   my $in_upper_case = shift;
-
-  my ($result, $stack) 
-    = _find_innermost_accent($current, undef, $in_upper_case);
 
   $result = uc($result) if ($in_upper_case and $result =~ /^\w$/);
   foreach my $accent_command (reverse(@$stack)) {
@@ -324,13 +303,12 @@ sub ascii_accents ($;$)
 }
 
 # format a stack of accents as unicode
-sub unicode_accents ($$;$)
+sub unicode_accents ($$$;$)
 {
-  my $current = shift;
+  my $result = shift;
+  my $stack = shift;
   my $format_accent = shift;
   my $in_upper_case = shift;
-  my ($result, $stack) = _find_innermost_accent($current,
-          'utf-8', $in_upper_case);
 
   while (@$stack) {
     my $formatted_result
@@ -355,13 +333,23 @@ sub text_accents($$;$)
   my $in_upper_case = shift;
   
   return '' if (!$accent->{'args'});
+
+  my ($contents, $stack)
+      = Texinfo::Common::find_innermost_accent_contents($accent);
+
+  my $options = {};
+  $options->{'enabled_encoding'} = $encoding if (defined($encoding));
+  $options->{'sc'} = $in_upper_case if (defined($in_upper_case));
+  my $text = convert({'contents' => $contents}, $options);
+
   if ($encoding and $encoding eq 'utf-8') {
-    return unicode_accents($accent, \&ascii_accent, $in_upper_case);
+    return unicode_accents($text, $stack, \&ascii_accent, $in_upper_case);
   } elsif ($encoding 
            and $Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}) {
-    return eight_bit_accents($accent, $encoding, \&ascii_accent, $in_upper_case);
+    return eight_bit_accents($text, $stack, $encoding, \&ascii_accent, 
+                             $in_upper_case);
   } else {
-    my $result = ascii_accents($accent, $in_upper_case);
+    my $result = ascii_accents($text, $stack, $in_upper_case);
   }
 }
 

@@ -43,6 +43,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   convert
+  convert_tree
+  output
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -53,7 +55,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = '0.01';
 
 my %defaults = (
-  'ENABLE_ENCODING'      => 1,
+  'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 1,
   'EXTENSION'            => 'xml',
   'perl_encoding'        => 'utf8',
@@ -317,7 +319,17 @@ sub _infoenclose_attribute($$) {
   return $attribute;
 }
 
-my @node_directions = ('Next', 'Prev', 'Up');
+sub _texinfo_xml_accent($$;$)
+{
+  my $text = shift;
+  my $root = shift;
+  my $in_upper_case = shift;
+
+  my $result = "<accent type=\"$xml_accent_types{$root->{'cmdname'}}\">";
+  $result .= $text;
+  $result .= '</accent>';
+  return $result;
+}
 
 sub convert($$;$)
 {
@@ -327,6 +339,16 @@ sub convert($$;$)
   
   return $self->_convert_document_sections($root, $fh);
 }
+
+sub convert_tree($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  return $self->_convert($root);
+}
+
+my @node_directions = ('Next', 'Prev', 'Up');
 
 sub _convert($$;$);
 
@@ -385,11 +407,16 @@ sub _convert($$;$)
       }
       return $xml_commands_formatting{$root->{'cmdname'}};
     } elsif ($xml_accent_types{$root->{'cmdname'}}) {
-      $result = "<accent type=\"$xml_accent_types{$root->{'cmdname'}}\">";
-      $result .= $self->_convert($root->{'args'}->[0])
-        if ($root->{'args'} and $root->{'args'}->[0]);
-      $result .= '</accent>';
-      return $result;
+      if ($self->get_conf('ENABLE_ENCODING')) {
+        return $self->convert_accents($root, \&_texinfo_xml_accent);
+      } else {
+        if (!$root->{'args'}) {
+          $result = '';
+        } else {
+          $result = $self->_convert($root->{'args'}->[0]);
+        }
+        return _texinfo_xml_accent($result, $root);
+      }
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
       if ($root->{'cmdname'} eq 'item'

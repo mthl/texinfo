@@ -22,8 +22,9 @@ sub test_accent_stack ($)
   my $reference = $test->[2]; 
   my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
   my $tree = $parser->parse_texi_text($texi);
-  my ($text, $commands_stack) = 
-    Texinfo::Convert::Text::_find_innermost_accent($tree->{'contents'}->[0]);
+  my ($contents, $commands_stack) = 
+    Texinfo::Common::find_innermost_accent_contents($tree->{'contents'}->[0]);
+  my $text = Texinfo::Convert::Text::convert({'contents' => $contents});
   my @stack = map {$_->{'cmdname'}} @$commands_stack;
   if (defined($reference)) {
     ok ($reference eq join('|',($text, @stack)), 'innermost '.$name);
@@ -70,9 +71,15 @@ sub test_enable_encoding ($)
   my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
   my $text_root = $parser->parse_texi_text($texi);
   my $tree = $text_root->{'contents'}->[0];
+
+  my ($contents, $commands_stack) = 
+    Texinfo::Common::find_innermost_accent_contents($tree);
+  my $text = Texinfo::Convert::Text::convert({'contents' => $contents});
+
   my $result = 
-       Texinfo::Convert::Text::eight_bit_accents($tree, 
+       Texinfo::Convert::Text::eight_bit_accents($text, $commands_stack, 
     'iso-8859-1', \&Texinfo::Convert::Text::ascii_accent);
+
   my $html_converter = Texinfo::Convert::HTML->converter();
   $html_converter->{'conf'}->{'USE_NUMERIC_ENTITY'} = 0;
   my $result_xml = Texinfo::Convert::Converter::xml_accents($html_converter, 
@@ -80,8 +87,14 @@ sub test_enable_encoding ($)
   $html_converter->{'conf'}->{'USE_NUMERIC_ENTITY'} = 1;
   my $result_xml_entity 
       = Texinfo::Convert::Converter::xml_accents($html_converter, $tree);
-  my $result_unicode = Texinfo::Convert::Text::unicode_accents($tree,
-                      \&Texinfo::Convert::Text::ascii_accent);
+
+  ($contents, $commands_stack) =
+    Texinfo::Common::find_innermost_accent_contents($tree);
+  $text = Texinfo::Convert::Text::convert({'contents' => $contents},
+                               {'enabled_encoding' => 'utf-8'});
+
+  my $result_unicode = Texinfo::Convert::Text::unicode_accents($text, 
+              $commands_stack, \&Texinfo::Convert::Text::ascii_accent);
   if (defined($reference)) {
     #ok (Encode::decode('iso-8859-1', $reference) eq $result, $name);
     #ok ($reference eq Encode::encode('iso-8859-1', $result), $name);

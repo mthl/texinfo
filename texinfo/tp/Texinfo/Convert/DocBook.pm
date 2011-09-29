@@ -44,6 +44,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   convert
+  convert_tree
+  output
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -300,6 +302,14 @@ sub convert($$;$)
   return $self->_convert_document_sections($root, $fh);
 }
 
+sub convert_tree($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  return $self->_convert($root);
+}
+
 sub output($$)
 {
   my $self = shift;
@@ -390,7 +400,7 @@ sub _index_entry($$)
   return '';
 }
 
-sub docbook_accent($$;$$)
+sub docbook_accent($$;$)
 {
   my $text = shift;
   my $command = shift;
@@ -405,10 +415,10 @@ sub docbook_accent($$;$$)
     return '&#' .
       hex($Texinfo::Convert::Unicode::unicode_accented_letters{$accent}->{$text}). ';';
   }
-  return $text . '&lt;' if ($accent eq 'v');
   # FIXME it is not possible to call xml_protect_text since what is in $text
   # may already be xml.  But this means that each time ascii_accent changes
   # it should be changed here too.
+  return $text . '&lt;' if ($accent eq 'v');
   return Texinfo::Convert::Text::ascii_accent($text, $command);
 }
 
@@ -479,7 +489,8 @@ sub _convert($$;$)
     } elsif ($root->{'cmdname'} eq 'today') {
       return $self->_convert(Texinfo::Common::expand_today($self));
     } elsif ($Texinfo::Common::accent_commands{$root->{'cmdname'}}) {
-      return $self->xml_accents($root, undef, \&docbook_accent);#, $self->in_upper_case());
+      # FIXME handle in_upper_case
+      return $self->convert_accents($root, \&docbook_accent);
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
       if ($root->{'cmdname'} eq 'item'

@@ -1584,7 +1584,7 @@ sub _convert_accent_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  return $self->xml_accents($command, $self->in_upper_case());
+  return $self->xml_accents($command, undef, $self->in_upper_case());
 }
 
 foreach my $command (keys(%accent_commands)) {
