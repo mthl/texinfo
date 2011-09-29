@@ -331,21 +331,18 @@ sub unicode_accents ($$;$)
   my $in_upper_case = shift;
   my ($result, $stack) = _find_innermost_accent($current,
           'utf-8', $in_upper_case);
-  my @stack_accent_commands = reverse(@$stack);
 
-  while (@stack_accent_commands) {
-    my $accent_command = shift @stack_accent_commands;
+  while (@$stack) {
     my $formatted_result
-     = Texinfo::Convert::Unicode::unicode_accent($result, $accent_command);
-    if (!defined($formatted_result)) {
-      unshift @stack_accent_commands, $accent_command;
-    } else {
-      $result = $formatted_result;
-    }
+     = Texinfo::Convert::Unicode::unicode_accent($result, $stack->[-1]);
+    last if (!defined($formatted_result));
+
+    $result = $formatted_result;
+    pop @$stack;
   }
   $result = uc ($result) if ($in_upper_case);
-  while (@stack_accent_commands) {
-    my $accent_command = shift @stack_accent_commands;
+  while (@$stack) {
+    my $accent_command = pop @$stack;
     $result = &$format_accent($result, $accent_command, $in_upper_case);
   }
   return $result;
