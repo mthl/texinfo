@@ -37,7 +37,7 @@ $result_trees{'invalid_accent_punctuation'}{'contents'}[0]{'parent'} = $result_t
 $result_texis{'invalid_accent_punctuation'} = 'a. @^@@';
 
 
-$result_texts{'invalid_accent_punctuation'} = 'a. @';
+$result_texts{'invalid_accent_punctuation'} = 'a. ^@';
 
 $result_errors{'invalid_accent_punctuation'} = [
   {
@@ -53,7 +53,7 @@ $result_errors{'invalid_accent_punctuation'} = [
 
 
 
-$result_converted{'plaintext'}->{'invalid_accent_punctuation'} = 'a.  @
+$result_converted{'plaintext'}->{'invalid_accent_punctuation'} = 'a.  ^@
 ';
 
 1;

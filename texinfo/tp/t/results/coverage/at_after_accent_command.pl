@@ -58,7 +58,7 @@ $result_texis{'at_after_accent_command'} = '@ringaccent @@. @^@@.
 ';
 
 
-$result_texts{'at_after_accent_command'} = '@. @.
+$result_texts{'at_after_accent_command'} = '*@. ^@.
 ';
 
 $result_errors{'at_after_accent_command'} = [
@@ -84,7 +84,7 @@ $result_errors{'at_after_accent_command'} = [
 
 
 
-$result_converted{'plaintext'}->{'at_after_accent_command'} = '@.  @.
+$result_converted{'plaintext'}->{'at_after_accent_command'} = '*@.  ^@.
 ';
 
 

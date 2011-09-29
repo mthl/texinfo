@@ -177,13 +177,13 @@ accent character followed by @@ @~@.
 ';
 
 
-$result_texts{'accents_errors'} = 'accent at end of line 
-accent at end of line and spaces 
-accent followed by @ .
+$result_texts{'accents_errors'} = 'accent at end of line *
+accent at end of line and spaces *
+accent followed by @ *.
 
-accent character with spaces  following.
-accent character at end of line 
-accent character followed by @ .
+accent character with spaces ~ following.
+accent character at end of line ~
+accent character followed by @ ~.
 ';
 
 $result_errors{'accents_errors'} = [

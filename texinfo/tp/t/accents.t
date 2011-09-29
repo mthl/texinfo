@@ -92,9 +92,9 @@ sub test_enable_encoding ($)
     Texinfo::Common::find_innermost_accent_contents($tree);
   $text = Texinfo::Convert::Text::convert({'contents' => $contents},
                                {'enabled_encoding' => 'utf-8'});
-
   my $result_unicode = Texinfo::Convert::Unicode::unicode_accents($text, 
               $commands_stack, \&Texinfo::Convert::Text::ascii_accent);
+
   if (defined($reference)) {
     #ok (Encode::decode('iso-8859-1', $reference) eq $result, $name);
     #ok ($reference eq Encode::encode('iso-8859-1', $result), $name);

@@ -196,8 +196,6 @@ sub text_accents($$;$)
   my $encoding = shift;
   my $in_upper_case = shift;
   
-  return '' if (!$accent->{'args'});
-
   my ($contents, $stack)
       = Texinfo::Common::find_innermost_accent_contents($accent);
 

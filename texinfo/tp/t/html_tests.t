@@ -112,6 +112,21 @@ in detaildescription
 ],
 );
 
+# problem is that the result is code with accented letters,
+# it may not come out right.  So this test is left unused for now.
+# Also could be in converters_tests
+my @todo = (
+['enable_encoding',
+'@documentencoding utf-8
+
+@u{--a}
+@^{--a}
+@AA{} @~{@dotless{i}} @dotless{i}.
+@equiv{}
+@sc{@AA{} @~{@dotless{i}} @dotless{i}}.
+',{}, {'ENABLE_ENCODING' => 1}]
+);
+
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['html'];
 }

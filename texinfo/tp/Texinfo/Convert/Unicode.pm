@@ -1334,8 +1334,10 @@ sub eight_bit_accents($$$$;$)
       my $command = 'TEXT';
       $command = $results_stack[0]->[1]->{'cmdname'} 
         if ($results_stack[0]->[1]);
+      my $new_eight_bit_txt = 'UNDEF';
+      $new_eight_bit_txt = $new_eight_bit if (defined($new_eight_bit));
       print STDERR "" . Encode::encode('utf8', $char) 
-        . " ($command) new_codepoint: $new_codepoint 8bit: $new_eight_bit old: $eight_bit\n";
+        . " ($command) new_codepoint: $new_codepoint 8bit: $new_eight_bit_txt old: $eight_bit\n";
     }
 
     # no corresponding eight bit character found for a composed character
