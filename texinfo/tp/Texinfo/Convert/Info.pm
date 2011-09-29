@@ -531,11 +531,11 @@ sub _image($$)
   if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
     my $basefile = Texinfo::Convert::Text::convert(
       {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
-      {'code' => 1});
+      {'code' => 1, Texinfo::Common::_convert_text_options($self)});
     if (defined($root->{'extra'}->{'brace_command_contents'}->[4])) {
       my $extension = Texinfo::Convert::Text::convert(
         {'contents' => $root->{'extra'}->{'brace_command_contents'}->[4]},
-        {'code' => 1});
+        {'code' => 1, Texinfo::Common::_convert_text_options($self)});
       unshift @extensions, ".$extension";
       unshift @extensions, "$extension";
     }
@@ -566,7 +566,8 @@ sub _image($$)
 
       if (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
         my $alt = Texinfo::Convert::Text::convert(
-         {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]});
+         {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]},
+         {Texinfo::Common::_convert_text_options($self)});
         $alt =~ s/\\/\\\\/g;
         $alt =~ s/\"/\\\"/g;
         $result .= " alt=\"$alt\"";

@@ -5143,7 +5143,8 @@ sub _external_node_href($$;$)
   if ($external_node->{'manual_content'}) {
     my $manual_name = Texinfo::Convert::Text::convert(
        {'contents' => $external_node->{'manual_content'}}, 
-       {'converter' => $self, 'code' => 1});
+       {'converter' => $self, 'code' => 1, 
+        Texinfo::Common::_convert_text_options($self)});
     my $manual_base = $manual_name;
     $manual_base =~ s/\.[^\.]*$//;
     $manual_base =~ s/^.*\///;
@@ -5974,14 +5975,10 @@ sub output($$)
 
   # copying comment
   if ($self->{'extra'}->{'copying'}) {
-    my $options = {'converter' => $self};
-    if ($self->get_conf('ENABLE_ENCODING') 
-        and $self->{'encoding_name'}) {
-      $options->{'enabled_encoding'} = $self->{'encoding_name'};
-    }
     print STDERR "DO copying_comment\n" if ($self->get_conf('DEBUG'));
     my $copying_comment = Texinfo::Convert::Text::convert(
-     {'contents' => $self->{'extra'}->{'copying'}->{'contents'}}, $options);
+     {'contents' => $self->{'extra'}->{'copying'}->{'contents'}}, 
+     {Texinfo::Common::_convert_text_options($self)});
     if ($copying_comment ne '') {
       $self->{'copying_comment'} = &{$self->{'comment'}}($self, $copying_comment);
     }
@@ -6466,7 +6463,8 @@ sub _convert($$;$)
                 $arg_formatted->{$arg_type} 
                   = Texinfo::Convert::Text::convert($arg, 
                                                   {'converter' => $self,
-                                                   'code' => 1});
+                                                   'code' => 1,
+                                           Texinfo::Common::_convert_text_options($self)});
               }
             }
             

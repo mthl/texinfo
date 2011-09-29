@@ -2647,7 +2647,8 @@ sub _end_line($$$)
       $current->{'extra'}->{'misc_args'} = $args if (defined($args));
     } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
       my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0],
-                                                 {'code' => 1});
+                                                 {'code' => 1, 
+                                          Texinfo::Common::_convert_text_options($self)});
       if ($text eq '') {
         $self->line_warn (sprintf($self->__("\@%s missing argument"), 
            $command), $line_nr);

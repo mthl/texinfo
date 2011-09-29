@@ -169,7 +169,9 @@ enable encoding and entities.
 
 Test that some constructs in @copying in comments in HTML are converted
 differently (as there is a 'converter' passed to Texinfo::Text) than when
-there are in a Text expansion context.
+there are in a Text expansion context.  The text is done, but the passed
+information is the enabled_encoding so cannot be in tests as long as
+there is an issue of encoding.
 
 In @copying things like some raw formats may be expanded.  However it is
 not clear that it should be the same than in the main converter.  Maybe a 

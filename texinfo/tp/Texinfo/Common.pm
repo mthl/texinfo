@@ -1204,6 +1204,17 @@ sub normalize_top_node_name($)
   return $node;
 }
 
+sub _convert_text_options($)
+{
+  my $self = shift;
+  my %options;
+  if ($self->get_conf('ENABLE_ENCODING')
+       and $self->{'encoding_name'}) {
+    $options{'enabled_encoding'} = $self->{'encoding_name'};
+  }
+  return %options;
+}
+
 1;
 
 __END__

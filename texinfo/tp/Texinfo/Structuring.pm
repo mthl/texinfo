@@ -1135,7 +1135,7 @@ sub _do_index_keys($$$)
       $options->{'code'} = $entry->{'in_code'};
       $entry->{'key'} = Texinfo::Convert::Text::convert(
                               {'contents' => $entry->{'content'}},
-                              $options);
+                  {%$options, Texinfo::Common::_convert_text_options($self)});
     }
   }
 }
@@ -1203,23 +1203,20 @@ sub merge_indices($$$)
 
 sub output_internal_links($$$)
 {
-  my $converter = shift;
+  my $self = shift;
   my $fh = shift;
-  if ($converter->{'elements'}) {
-    my $options = {'converter' => $converter};
-    if ($converter->get_conf('ENABLE_ENCODING') and $converter->{'encoding_name'}) {
-      $options->{'enabled_encoding'} = $converter->{'encoding_name'};
-    }
-    foreach my $element (@{$converter->{'elements'}}) {
+  if ($self->{'elements'}) {
+    foreach my $element (@{$self->{'elements'}}) {
       my $text;
       my $href;
-      my $command = $converter->element_command($element);
+      my $command = $self->element_command($element);
       if (defined($command)) {
         # Use '' for filename, to force a filename in href.
-        $href = $converter->command_href($command, '');
-        my $tree = $converter->command_text($command, 'tree');
+        $href = $self->command_href($command, '');
+        my $tree = $self->command_text($command, 'tree');
         if ($tree) {
-          $text = Texinfo::Convert::Text::convert($tree, $options);
+          $text = Texinfo::Convert::Text::convert($tree, 
+                             {Texinfo::Common::_convert_text_options($self)});
         }
       }
       if (defined($href) or defined($text)) {
@@ -1232,13 +1229,13 @@ sub output_internal_links($$$)
       }
     }
   }
-  if ($converter->{'parser'}) {
-    foreach my $index_name (sort(keys (%{$converter->{'index_entries_by_letter'}}))) {
-      foreach my $letter_entry (@{$converter->{'index_entries_by_letter'}->{$index_name}}) {
+  if ($self->{'parser'}) {
+    foreach my $index_name (sort(keys (%{$self->{'index_entries_by_letter'}}))) {
+      foreach my $letter_entry (@{$self->{'index_entries_by_letter'}->{$index_name}}) {
         foreach my $index_entry (@{$letter_entry->{'entries'}}) {
           my $href;
           my $key;
-          $href = $converter->command_href($index_entry->{'command'}, '');
+          $href = $self->command_href($index_entry->{'command'}, '');
           $key = $index_entry->{'key'};
           if (defined($key) and $key =~ /\S/) {
             my $out_string = '';

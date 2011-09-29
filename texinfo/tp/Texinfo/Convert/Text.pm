@@ -521,3 +521,50 @@ sub convert($;$)
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Texinfo::Convert::Text - Convert Texinfo tree to simple text
+
+=head1 SYNOPSIS
+
+  use Texinfo::Convert::Text qw(convert);
+
+  my $result = convert($tree);
+  my $result_encoded = convert($tree, 
+             {'enabled_encoding' => 'utf-8'});
+  my $result_converter = convert($tree,
+             {'converter' => $converter});
+
+  my $result_accent_text = ascii_accent('e', $accent_command);
+  my text_accents = text_accents($accents, 'utf-8');
+
+=head1 DESCRIPTION
+
+Texinfo::Convert::Text is a simple backend that Encoding takes care of encoding definition and aliasing.
+
+=head1 METHODS
+
+=over
+
+=item 
+
+=back
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010, 2011 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
+
+=cut
+

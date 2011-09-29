@@ -1018,7 +1018,7 @@ sub _image($$)
   if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
     my $basefile = Texinfo::Convert::Text::convert(
      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
-     {'code' => 1});
+     {'code' => 1, Texinfo::Common::_convert_text_options($self)});
     my $result = $self->_image_text($root, $basefile);
     if (defined($result)) {
       if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
