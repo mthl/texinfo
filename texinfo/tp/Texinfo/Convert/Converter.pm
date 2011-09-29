@@ -838,11 +838,11 @@ sub convert_accents($$$;$)
 
   if ($self->get_conf('ENABLE_ENCODING')) {
     if ($self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
-      return Texinfo::Convert::Text::unicode_accents($result, $stack,
+      return Texinfo::Convert::Unicode::unicode_accents($result, $stack,
                                              $format_accents, $in_upper_case);
     } elsif ($self->{'encoding_name'}
            and $Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}) {
-      return Texinfo::Convert::Text::eight_bit_accents($result, $stack, 
+      return Texinfo::Convert::Unicode::eight_bit_accents($result, $stack, 
                                                   $self->{'encoding_name'}, 
                                                   $format_accents,
                                                   $in_upper_case);

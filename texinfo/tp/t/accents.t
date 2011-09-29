@@ -77,7 +77,7 @@ sub test_enable_encoding ($)
   my $text = Texinfo::Convert::Text::convert({'contents' => $contents});
 
   my $result = 
-       Texinfo::Convert::Text::eight_bit_accents($text, $commands_stack, 
+       Texinfo::Convert::Unicode::eight_bit_accents($text, $commands_stack, 
     'iso-8859-1', \&Texinfo::Convert::Text::ascii_accent);
 
   my $html_converter = Texinfo::Convert::HTML->converter();
@@ -93,7 +93,7 @@ sub test_enable_encoding ($)
   $text = Texinfo::Convert::Text::convert({'contents' => $contents},
                                {'enabled_encoding' => 'utf-8'});
 
-  my $result_unicode = Texinfo::Convert::Text::unicode_accents($text, 
+  my $result_unicode = Texinfo::Convert::Unicode::unicode_accents($text, 
               $commands_stack, \&Texinfo::Convert::Text::ascii_accent);
   if (defined($reference)) {
     #ok (Encode::decode('iso-8859-1', $reference) eq $result, $name);
