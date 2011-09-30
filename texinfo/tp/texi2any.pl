@@ -878,7 +878,10 @@ while(@input_files)
   # try to concatenate with different suffixes. The last suffix is ''
   # such that the plain file name is checked.
   foreach my $suffix (@input_file_suffixes) {
-    $input_file_name = $input_file_arg.$suffix if (-e $input_file_arg.$suffix);
+    if (-e $input_file_arg.$suffix) {
+      $input_file_name = $input_file_arg.$suffix;
+      last;
+    }
   }
   # in case no file was found, still set the file name
   $input_file_name = $input_file_arg if (!defined($input_file_name));
