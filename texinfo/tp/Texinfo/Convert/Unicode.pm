@@ -1,4 +1,4 @@
-# Unicode.pm: handle conversion to and from unicode.
+# Unicode.pm: handle conversion to unicode.
 #
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -39,6 +39,11 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
+  unicode_accent
+  encoded_accents
+  unicode_for_brace_no_arg_command
+  unicode_text
+  string_width
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -1205,15 +1210,12 @@ sub unicode_accent($$)
   }
 }
 
-sub unicode_text($$$$)
+sub unicode_text($$)
 {
-  my $self = shift;
   my $text = shift;
-  my $command = shift;
-  my $context = shift;
-  $text = $command->{'text'} if (!defined($text));
+  my $in_code = shift;
 
-  if (!$context->{'code'} and !$context->{'preformatted'}) {
+  if (!$in_code) {
     $text =~ s/---/\x{2014}/g;
     $text =~ s/--/\x{2013}/g;
     $text =~ s/``/\x{201C}/g;
@@ -1383,6 +1385,24 @@ sub eight_bit_accents($$$$;$)
   return $result;
 }
 
+sub encoded_accents ($$$$;$)
+{
+  my $text = shift;
+  my $stack = shift;
+  my $encoding = shift;
+  my $format_accent = shift;
+  my $in_upper_case = shift;
+
+  if ($encoding) {
+    if ($encoding eq 'utf-8') {
+      return unicode_accents($text, $stack, $format_accent, $in_upper_case);
+    } elsif ($Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}) {
+      return eight_bit_accents($text, $stack, $encoding, $format_accent, 
+                               $in_upper_case);
+    }
+  }
+  return undef;
+}
 
 # returns the unicode for a command with brace and no arg
 # if it is known that it is present for the encoding
@@ -1424,3 +1444,93 @@ sub string_width($)
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Texinfo::Convert::Unicode - Handle conversion to Unicode
+
+=head1 SYNOPSIS
+
+  use Texinfo::Convert::Unicode qw(unicode_accent encoded_accents 
+                                   unicode_text);
+
+  my ($innermost_contents, $stack)
+      = Texinfo::Common::find_innermost_accent_contents($accent);
+  
+  my $formatted_accents = encoded_accents (convert($innermost_contents),
+                        $stack, $encoding, \&Texinfo::Text::ascii_accent);
+
+  my $accent_text = unicode_accent('e', $accent_command);
+
+=head1 DESCRIPTION
+
+Texinfo::Convert::Unicode provides methods that deals with unicode for
+converters. Unicode is important, because it is used internally in perl 
+for strings, therefore if converted to Unicode, a string could be output
+in other encodings as well when writting out the converted documents.
+
+When an encoding is given as argument of a method of the module, the 
+accented letters should only be converted to unicode if it is known that
+it will be possible to convert the unicode points to encoded charactes
+in the encoding character set.
+
+=head1 METHODS
+
+=over
+
+=item $result = unicode_accent($text, $accent_command)
+
+I<$text> is the text appearing within an accent command.  I<$accent_command>
+should be a Texinfo tree element corresponding to an accent command taking
+an argument.  The function returns the unicode representation of the accented
+character.
+
+=item $result = encoded_accents ($text, $stack, $encoding, $format_accent, $in_upper_case)
+
+I<$text> is the text appearing within nested accent commands.  I<$stack> is
+an array reference holding the nested accents texinfo element trees.  For
+example, I<$text> could be the formatted content and I<$stack> the stack 
+returned by C<Texinfo::Common::find_innermost_accent_contents>.  I<$encoding> 
+is the encoding the accented characters should be encoded to.  If 
+I<$encoding> not set the I<$result> is set to undef.  I<$format_accent> 
+is a function reference that is used to format the accent commands if 
+there is no encoded character available for the encoding I<$encoding>
+at some point of the conversion of the I<$stack>.  Last, if 
+I<$in_upper_case> is set, the result is upper-cased.
+
+=item $result = unicode_text ($text, $in_code)
+
+Return I<$text> with characters encoded in unicode.  If I<$in_code> 
+is set, the text is considered to be in code style.
+
+=item $result = unicode_for_brace_no_arg_command($command_name, $encoding)
+
+Return the unicode representing a command with brace and no argument
+I<$command_name> (like C<@bullet{}>, C<@aa{}> or C<@guilsinglleft{}>), 
+or undef if there is no available encoded character for encoding 
+I<$encoding>. 
+
+=item $width = string_width($string)
+
+Return the string width, taking into account the fact that some characters
+have a zero width (like composing accents) while some have a width of 2
+(most chinese characters, for example).
+
+=back
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010, 2011 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
+
+=cut
+

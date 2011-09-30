@@ -836,23 +836,22 @@ sub convert_accents($$$;$)
       = Texinfo::Common::find_innermost_accent_contents($accent);
   my $result = $self->convert_tree({'contents' => $contents});  
 
+  my $encoded;
   if ($self->get_conf('ENABLE_ENCODING')) {
-    if ($self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
-      return Texinfo::Convert::Unicode::unicode_accents($result, $stack,
-                                             $format_accents, $in_upper_case);
-    } elsif ($self->{'encoding_name'}
-           and $Texinfo::Encoding::eight_bit_encoding_aliases{$self->{'encoding_name'}}) {
-      return Texinfo::Convert::Unicode::eight_bit_accents($result, $stack, 
-                                                  $self->{'encoding_name'}, 
+    $encoded = Texinfo::Convert::Unicode::encoded_accents($result, $stack,
+                                                  $self->{'encoding_name'},
                                                   $format_accents,
                                                   $in_upper_case);
+  }
+  if (!defined($encoded)) {
+    foreach my $accent_command (reverse(@$stack)) {
+      $result = &$format_accents ($result, $accent_command, 
+                                  $in_upper_case);
     }
+    return $result;
+  } else {
+    return $encoded;
   }
-  foreach my $accent_command (reverse(@$stack)) {
-    $result = &$format_accents ($result, $accent_command, 
-                                $in_upper_case);
-  }
-  return $result;
 }
 
 1;

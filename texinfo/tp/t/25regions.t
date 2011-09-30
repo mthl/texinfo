@@ -109,6 +109,16 @@ Published
 @chapter GFDL
 
 '],
+['today_in_copying',
+'@copying
+@today{}.
+@end copying
+
+@node Top
+@top top
+
+@insertcopying
+',{},{'TEST' => 1}],
 );
 
 foreach my $test (@test_formatted) {

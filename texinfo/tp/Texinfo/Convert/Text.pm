@@ -43,6 +43,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   convert
+  ascii_accent
+  text_accents
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -190,7 +192,7 @@ sub ascii_accents ($$;$)
 }
 
 # format an accent command and nested accents within as Text.
-sub text_accents($$;$)
+sub text_accents($;$$)
 {
   my $accent = shift;
   my $encoding = shift;
@@ -204,15 +206,12 @@ sub text_accents($$;$)
   $options->{'sc'} = $in_upper_case if (defined($in_upper_case));
   my $text = convert({'contents' => $contents}, $options);
 
-  if ($encoding and $encoding eq 'utf-8') {
-    return Texinfo::Convert::Unicode::unicode_accents($text, $stack, 
-                                              \&ascii_accent, $in_upper_case);
-  } elsif ($encoding 
-           and $Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}) {
-    return Texinfo::Convert::Unicode::eight_bit_accents($text, $stack, 
-                                     $encoding, \&ascii_accent, $in_upper_case);
+  my $result = Texinfo::Convert::Unicode::encoded_accents($text, $stack,
+                                  $encoding, \&ascii_accent, $in_upper_case);
+  if (defined($result)) {
+    return $result;
   } else {
-    my $result = ascii_accents($text, $stack, $in_upper_case);
+    return ascii_accents($text, $stack, $in_upper_case);
   }
 }
 
@@ -530,7 +529,7 @@ Texinfo::Convert::Text - Convert Texinfo tree to simple text
 
 =head1 SYNOPSIS
 
-  use Texinfo::Convert::Text qw(convert);
+  use Texinfo::Convert::Text qw(convert ascii_accent text_accents);
 
   my $result = convert($tree);
   my $result_encoded = convert($tree, 
@@ -539,17 +538,84 @@ Texinfo::Convert::Text - Convert Texinfo tree to simple text
              {'converter' => $converter});
 
   my $result_accent_text = ascii_accent('e', $accent_command);
-  my text_accents = text_accents($accents, 'utf-8');
+  my $accents_text = text_accents($accents, 'utf-8');
 
 =head1 DESCRIPTION
 
-Texinfo::Convert::Text is a simple backend that Encoding takes care of encoding definition and aliasing.
+Texinfo::Convert::Text is a simple backend that converts a Texinfo tree
+to simple text.  It is used for some command argument expansion in 
+C<Texinfo::Parser>, for instance the file names, or encoding names.
+The converter is very simple, and, in the default case, cannot handle 
+output strings translation or error handling.
 
 =head1 METHODS
 
 =over
 
-=item 
+=item $result = convert($tree, $options)
+
+Convert a Texinfo tree to simple text.  I<$options> is a hash reference of 
+options.  The converter is very simple, and has no internal state besides
+the options.  It cannot handle as is output strings translation or error 
+storing.
+
+If the I<converter> option is set, some additional features may be available
+for the conversion of some @-commands, like output strings translation or
+error reporting.
+
+The following options may be set:
+
+=over
+
+=item enabled_encoding
+
+If set, the value is considered to be the encoding name texinfo accented
+letters should be converted to.  This option corresponds to the 
+C<--enable-encoding> option, or the C<ENABLE_ENCODING> customization 
+variable.
+
+=item sc
+
+If set, the text is upper-cased.
+
+=item code
+
+If set the text is in code style.  (mostly --, ---, '' and `` are kept as 
+is).
+
+=item NUMBER_SECTIONS
+
+If set, sections are numbered when output.
+
+=item sort_string
+
+A somehow internal option to convert to text more suitable for alphabetical
+sorting rather than presentation.
+
+=item converter
+
+If this converter object is passed to the function, some features of this
+object may be used during conversion.  Mostly error reporting and strings
+translation, as the converter object is also supposed to be a 
+L<Texinfo::Report> objet.  See also L<Texinfo::Convert::Converter>.
+
+=back
+
+=item $result_accent_text = ascii_accent($text, $accent_command)
+
+I<$text> is the text appearing within an accent command.  I<$accent_command>
+should be a Texinfo tree element corresponding to an accent command taking
+an argument.  The function returns a transliteration of the accented
+character.
+
+=item $accents_text = text_accents($accents, $encoding, $in_upper_case)
+
+I<$accents> is an accent command that may contain other nested accent 
+commands.  The function will format the whole stack of nested accent 
+commands and the innermost text.  If I<$encoding> is set, the formatted
+text is converted to this encoding as much as possible instead of being
+converted as simple ascii.  If I<$in_upper_case> is set, the result
+is meant to be upper-cased.
 
 =back
 

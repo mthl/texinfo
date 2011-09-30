@@ -2,6 +2,8 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
+Add automake conditionals if modules required for tests are not present.
+
 In xml output, as can be seen in xtable/table_nested macro output do
 not begin with an end of line
   <macro>@vtable @asis
@@ -167,16 +169,11 @@ test an lone @contents without any sectioning command.
 Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
 enable encoding and entities.
 
-Test that some constructs in @copying in comments in HTML are converted
-differently (as there is a 'converter' passed to Texinfo::Text) than when
-there are in a Text expansion context.  The text is done, but the passed
-information is the enabled_encoding so cannot be in tests as long as
-there is an issue of encoding.
-
 In @copying things like some raw formats may be expanded.  However it is
 not clear that it should be the same than in the main converter.  Maybe a 
 specific list of formats could be passed to Convert::Text::convert, which
 would be different (for example Info and Plaintext even if converting HTML).
+This requires a test, to begin with.
 
 An unknwown command in a context where not all commands are accepted leads
 to an error message.  There is a FIXME in the code.  The test case is

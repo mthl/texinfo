@@ -492,9 +492,8 @@ sub _process_text($$$)
   $text = uc($text) if ($self->{'formatters'}->[-1]->{'upper_case'});
   if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'} 
       and $self->{'encoding_name'} eq 'utf-8') {
-    return Texinfo::Convert::Unicode::unicode_text($self, $text, $command, 
-                                                   $context);
-  } elsif (!$context->{'code'} and !$context->{'preformatted'}) {
+    return Texinfo::Convert::Unicode::unicode_text($text, $context->{'code'});
+  } elsif (!$context->{'code'}) {
     $text =~ s/---/\x{1F}/g;
     $text =~ s/--/-/g;
     $text =~ s/\x{1F}/--/g;
@@ -562,7 +561,7 @@ sub new_formatter($$;$)
       if ($menu_commands{$context}) {
         last;
       } elsif ($preformatted_code_commands{$context}) {
-        $formatter->{'preformatted'} = 1;
+        $formatter->{'code'} = 1;
         last;
       }
     }

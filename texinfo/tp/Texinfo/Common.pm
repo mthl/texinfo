@@ -1212,6 +1212,9 @@ sub _convert_text_options($)
        and $self->{'encoding_name'}) {
     $options{'enabled_encoding'} = $self->{'encoding_name'};
   }
+  $options{'TEST'} = 1 if ($self->get_conf('TEST'));
+  $options{'NUMBER_SECTIONS'} = $self->get_conf('NUMBER_SECTIONS');
+  $options{'converter'} = $self;
   return %options;
 }
 
