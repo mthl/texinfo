@@ -1,3 +1,10 @@
+2011-09-30  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (texi2any Output Customization), 
+	doc/texi2oldapi.texi: archive the texi2any Output Customization
+	chapter in texi2oldapi.texi.  Reduce the text in texinfo.txi
+	to what should be stable.
+
 2011-09-26  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (GNU Sample Texts): change example to be
