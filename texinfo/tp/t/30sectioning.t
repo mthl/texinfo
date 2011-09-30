@@ -981,6 +981,9 @@ my @test_cases = (
 ['at_commands_in_node',
 '@node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}'
 ],
+['email_in_node',
+'@node @email{ a } @email{c , d} @email{ , e}
+'],
 ['sections',
 '@chapter a chapter
 '],

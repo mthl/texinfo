@@ -283,16 +283,6 @@ sub heading($$$)
   return $result;
 }
 
-sub _normalise_space($)
-{
-  return undef unless (defined ($_[0]));
-  my $text = shift;
-  $text =~ s/\s+/ /go;
-  $text =~ s/ $//;
-  $text =~ s/^ //;
-  return $text;
-}
-
 sub _code_options($)
 {
   my $options = shift;
@@ -378,16 +368,15 @@ sub convert($;$)
     } elsif ($root->{'cmdname'} eq 'image') {
       return convert($root->{'args'}->[0], _code_options($options));
     } elsif ($root->{'cmdname'} eq 'email') {
-      my $mail = _normalise_space(convert($root->{'args'}->[0], 
-                                          _code_options($options)));
+      my $mail = convert($root->{'args'}->[0], _code_options($options));
       my $text;
-      $text = _normalise_space(convert($root->{'args'}->[1], $options)) 
+      $text = convert($root->{'args'}->[1], $options)
          if (defined($root->{'args'}->[1]));
       return $text if (defined($text) and ($text ne ''));
       return $mail;
     } elsif ($root->{'cmdname'} eq 'uref' or $root->{'cmdname'} eq 'url') {
       my $replacement;
-      $replacement = _normalise_space(convert($root->{'args'}->[2], $options))
+      $replacement = convert($root->{'args'}->[2], $options)
         if (defined($root->{'args'}->[2]));
       return $replacement if (defined($replacement) and $replacement ne '');
       my $text;

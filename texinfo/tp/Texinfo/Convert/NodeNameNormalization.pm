@@ -115,16 +115,6 @@ sub convert($)
   my $result = _convert($root);
 }
 
-sub _normalise_space($)
-{
-  return undef unless (defined ($_[0]));
-  my $text = shift;
-  $text =~ s/\s+/ /go;
-  $text =~ s/ $//;
-  $text =~ s/^ //;
-  return $text;
-}
-
 sub _unicode_to_protected($)
 {
   my $text = shift;
@@ -234,8 +224,6 @@ sub _convert($;$)
                          or $root->{'args'}->[0]->{'type'} eq 'misc_arg')))));
   my $result = '';
   if (defined($root->{'text'})) {
-    # FIXME the manual says that (in HTML Xref Command Expansion)
-    # Quotation mark commands are likewise replaced by their Unicode values
     $result = $root->{'text'};
     $result =~ s/\s+/ /go;
     $result = uc($result) if ($in_sc);
@@ -275,9 +263,9 @@ sub _convert($;$)
     } elsif ($root->{'cmdname'} eq 'image') {
       return _convert($root->{'args'}->[0]);
     } elsif ($root->{'cmdname'} eq 'email') {
-      my $mail = _normalise_space(_convert($root->{'args'}->[0]));
+      my $mail = _convert($root->{'args'}->[0]);
       my $text;
-      $text = _normalise_space(_convert($root->{'args'}->[1])) 
+      $text = _convert($root->{'args'}->[1])
          if (defined($root->{'args'}->[1]));
       return $text if (defined($text) and ($text ne ''));
       return $mail;
