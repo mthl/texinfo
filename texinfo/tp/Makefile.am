@@ -116,6 +116,7 @@ test_files = \
  t/09indices.t \
  t/accents.t \
  t/28heading.t \
+ t/nodenormalization.t \
  t/README \
  t/init/test_renamed_nodes.init \
  t/init/redefine_need.init \

@@ -51,6 +51,7 @@ t/paragraph.t
 t/30sectioning.t
 t/test_utils.pl
 t/info_tests.t
+t/nodenormalization.t
 t/55conditionals.t
 t/html_tests.t
 t/50value.t
