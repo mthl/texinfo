@@ -7,7 +7,7 @@
 include Makefile.incl
 
 $(srcdir)/Makefile.incl:
-	(cd $(srcdir)/ && $(SHELL) ./maintain/regenerate_file_lists.pl)
+	(cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl)
 
 bin_SCRIPTS = texi2any
 

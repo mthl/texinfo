@@ -4,11 +4,15 @@ xmllint --nonet --noout --valid commands.xml
 
 Add automake conditionals if modules required for tests are not present.
 
+Handling of #line.
+
 In xml output, as can be seen in xtable/table_nested macro output do
 not begin with an end of line
   <macro>@vtable @asis
 Is it right or not?
 
+For plaintext @image output if there is no basename.txt, use alt else
+the basename as [image basename].
 
 remove _*directions('This' and replace with new API. Done?
 
