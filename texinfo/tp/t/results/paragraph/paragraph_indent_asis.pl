@@ -227,7 +227,8 @@ $result_converted{'plaintext'}->{'paragraph_indent_asis'} = '  para fff
 ';
 
 
-$result_converted{'html_text'}->{'paragraph_indent_asis'} = '<p>para
+$result_converted{'html_text'}->{'paragraph_indent_asis'} = '
+<p>para
   fff
 </p>
 <blockquote>

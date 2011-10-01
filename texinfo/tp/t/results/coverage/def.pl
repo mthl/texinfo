@@ -2482,7 +2482,8 @@ $result_converted{'plaintext'}->{'def'} = ' -- c--ategory: d--effn_name a--rgume
 ';
 
 
-$result_converted{'html_text'}->{'def'} = '<dl>
+$result_converted{'html_text'}->{'def'} = '
+<dl>
 <dt><a name="index-d_002d_002deffn_005fname"></a>c--ategory: <strong>d--effn_name</strong><em> a--rguments...</em></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>

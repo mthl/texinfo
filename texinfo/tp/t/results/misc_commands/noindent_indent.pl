@@ -231,7 +231,8 @@ noindent in para.
 ';
 
 
-$result_converted{'html_text'}->{'noindent_indent'} = '<p>First para
+$result_converted{'html_text'}->{'noindent_indent'} = '
+<p>First para
 </p>
 <p>qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
 qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q

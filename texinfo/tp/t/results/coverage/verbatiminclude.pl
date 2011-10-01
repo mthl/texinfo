@@ -78,7 +78,8 @@ $result_converted{'plaintext'}->{'verbatiminclude'} = 'This is the @emph{include
 ';
 
 
-$result_converted{'html_text'}->{'verbatiminclude'} = '<pre class="verbatim">This is the @emph{included} file (include-value2.txi) &lt;&gt; ---. 
+$result_converted{'html_text'}->{'verbatiminclude'} = '
+<pre class="verbatim">This is the @emph{included} file (include-value2.txi) &lt;&gt; ---. 
 </pre>';
 
 

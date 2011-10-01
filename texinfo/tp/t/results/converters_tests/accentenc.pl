@@ -2973,7 +2973,8 @@ should be e`: è è
 ';
 
 
-$result_converted{'html_text'}->{'accentenc'} = '<a name="Top"></a>
+$result_converted{'html_text'}->{'accentenc'} = '
+<a name="Top"></a>
 <a name="top"></a>
 <h1 class="top">top</h1>
 

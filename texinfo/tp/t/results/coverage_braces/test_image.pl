@@ -4347,6 +4347,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
+
 <a name="Top"></a>
 <h1 class="node-heading">Top</h1>
 
@@ -4521,7 +4522,9 @@ In text .
 ';
 
 
-$result_converted{'html_text'}->{'test_image'} = '<a name="Top"></a>
+$result_converted{'html_text'}->{'test_image'} = '
+
+<a name="Top"></a>
 <h1 class="node-heading">Top</h1>
 
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">

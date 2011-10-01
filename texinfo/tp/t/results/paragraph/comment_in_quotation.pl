@@ -250,7 +250,8 @@ $result_converted{'plaintext'}->{'comment_in_quotation'} = '     Quotation
 ';
 
 
-$result_converted{'html_text'}->{'comment_in_quotation'} = '<blockquote>
+$result_converted{'html_text'}->{'comment_in_quotation'} = '
+<blockquote>
 <p>Quotation </p></blockquote>
 
 <blockquote>

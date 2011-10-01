@@ -262,7 +262,8 @@ $result_converted{'plaintext'}->{'insertcopying'} = 'License:
 ';
 
 
-$result_converted{'html_text'}->{'insertcopying'} = '<p>License:
+$result_converted{'html_text'}->{'insertcopying'} = '
+<p>License:
 </p>
 <p>License.
 </p>

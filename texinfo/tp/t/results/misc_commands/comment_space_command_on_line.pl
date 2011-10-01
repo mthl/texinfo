@@ -916,7 +916,8 @@ Text 1
 ';
 
 
-$result_converted{'html_text'}->{'comment_space_command_on_line'} = '<a name="Top"></a>
+$result_converted{'html_text'}->{'comment_space_command_on_line'} = '
+<a name="Top"></a>
 <a name="top-element-"></a>
 <h1 class="top">top element&nbsp;</h1>
 

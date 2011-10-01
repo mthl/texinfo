@@ -535,7 +535,8 @@ $result_converted{'plaintext'}->{'text_on_command_line'} = '     normal text
 ';
 
 
-$result_converted{'html_text'}->{'text_on_command_line'} = '<div class="example">
+$result_converted{'html_text'}->{'text_on_command_line'} = '
+<div class="example">
 <pre class="example">normal text
 </pre></div>
 

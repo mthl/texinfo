@@ -794,7 +794,8 @@ table itemx
 ';
 
 
-$result_converted{'html_text'}->{'table'} = '<dl compact="compact">
+$result_converted{'html_text'}->{'table'} = '
+<dl compact="compact">
 <dt>table item</dt>
 <dt>table itemx</dt>
 <dd>

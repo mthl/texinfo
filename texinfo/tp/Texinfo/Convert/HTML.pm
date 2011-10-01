@@ -753,8 +753,8 @@ sub _translate_names($)
     'Footnotes'   => $self->gdt('Footnotes'),
   );
 
-  # delete the tree and formatted results such that they are redone
-  # with the new tree when needed.
+  # delete the tree and formatted results for special elements 
+  # such that they are redone with the new tree when needed.
   foreach my $special_element (keys (%SPECIAL_ELEMENTS_NAME)) {
     if ($self->{'special_elements_types'}->{$special_element} and
         $self->{'targets'}->{$self->{'special_elements_types'}->{$special_element}}) {
@@ -5125,8 +5125,6 @@ sub _external_node_href($$;$)
 
   #print STDERR "external_node: ".join('|', keys(%$external_node))."\n";
   my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
-  #print STDERR "HHHH ".Texinfo::Structuring::_node_extra_to_texi($external_node)."\n";
-  #print STDERR "EEEE $target_filebase, $target\n";
 
   my $xml_target = _normalized_to_id($target);
 
@@ -5142,8 +5140,8 @@ sub _external_node_href($$;$)
   if ($external_node->{'manual_content'}) {
     my $manual_name = Texinfo::Convert::Text::convert(
        {'contents' => $external_node->{'manual_content'}}, 
-       {'converter' => $self, 'code' => 1, 
-        Texinfo::Common::_convert_text_options($self)});
+       { 'code' => 1, 
+         Texinfo::Common::_convert_text_options($self)});
     my $manual_base = $manual_name;
     $manual_base =~ s/\.[^\.]*$//;
     $manual_base =~ s/^.*\///;
@@ -5600,8 +5598,7 @@ $extra_head
 </head>
 
 <body $bodytext>
-$after_body_open
-";
+$after_body_open";
 
   return $result;
 }
@@ -6025,8 +6022,6 @@ sub output($$)
   } else {
     # output with pages
     my %files;
-    # TODO set page file names $page->{'filename'} (relative) and 
-    # $page->{'out_filename'} (absolute)
     
     $special_pages = [] if (!defined($special_pages));
     foreach my $page (@$pages, @$special_pages) {
@@ -6185,11 +6180,11 @@ sub _parse_node_and_warn_external($$$$)
   my $line_number = shift;
   my $file = shift;
 
-  # FIXME nothing to check that there is an invalid nesting.  Using a 
-  # @-command, like @anhor{} would incorrectly lead to the name being 
+  # FIXME nothing to check that there is an invalid nesting.  Having a 
+  # @-command, like @anchor{} inside would incorrectly lead to the name being 
   # entered as a node.  Maybe the best thing to do would be to consider
-  # that the 'root_line' type as a $simple_text_command, or to avoid
-  # spurious messages, $full_text_command.  This would imply really using
+  # 'root_line' type as a $simple_text_command, or, to avoid spurious 
+  # messages, $full_text_command.  This would imply really using
   # the gdt 4th argument to pass 'paragraph' (rename that?) when in a 
   # less constrained environment, for instance @center in @quotation for
   # @author
@@ -6210,6 +6205,32 @@ sub _parse_node_and_warn_external($$$$)
     }
   }
   return undef;
+}
+
+sub _convert_contents($$$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $command_type = shift;
+  my $content_formatted = '';
+  if (ref($root->{'contents'}) ne 'ARRAY') {
+    cluck "for $root contents not an array: $root->{'contents'}";
+    print STDERR Texinfo::Parser::_print_current($root);
+  }
+
+  my $content_idx = 0;
+  foreach my $content (@{$root->{'contents'}}) {
+    my $new_content = $self->_convert($content, "$command_type [$content_idx]");
+    if (!defined($new_content)) {
+      cluck "content not defined for $command_type [$content_idx]\n";
+      print STDERR "root is: ".Texinfo::Parser::_print_current ($root);
+      print STDERR "content is: ".Texinfo::Parser::_print_current ($content);
+    } else {
+      $content_formatted .= $new_content;
+    }
+    $content_idx++;
+  }
+  return $content_formatted;
 }
 
 sub attribute_class($$$)
@@ -6340,18 +6361,6 @@ sub _convert($$;$)
     }
   }
 
-  #if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
-  #}
-      #and !$self->{'mmultiple_pass'} and !$self->{'in_copying_header'}) {
-    # special case for index entry not associated with a node but seen. 
-    # this will be an index entry in @copying, in @insertcopying.
-#    if (!$root->{'extra'}->{'index_entry'}->{'node'} and $self->{'node'}) {
-#      $location->{'node'} = $self->{'node'};
-#    }
-#    $self->{'index_entries_line_location'}->{$root} = $location;
-#    print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
-#       if ($self->get_conf('DEBUG'));
-
   # commands like @deffnx have both a cmdname and a def_line type.  It is
   # better to consider them as a def_line type, as the whole point of the
   # def_line type is to handle the same the def*x and def* line formatting. 
@@ -6403,21 +6412,7 @@ sub _convert($$;$)
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'space_protected'}++;
       }
       if ($root->{'contents'}) {
-        $content_formatted = '';
-        # TODO different types of contents
-        my $content_idx = 0;
-        foreach my $content (@{$root->{'contents'}}) {
-          my $new_content = $self->_convert($content, 
-                                            "$command_type [$content_idx]");
-          if (!defined($new_content)) {
-            cluck "content not defined for $command_type [$content_idx]\n";
-            print STDERR "root is: ".Texinfo::Parser::_print_current ($root);
-            print STDERR "content is: ".Texinfo::Parser::_print_current ($content);
-          } else {
-            $content_formatted .= $new_content;
-          }
-          $content_idx++;
-        }
+        $content_formatted = $self->_convert_contents($root, $command_type);
       }
       my $args_formatted;
       if ($brace_commands{$command_name} 
@@ -6460,10 +6455,8 @@ sub _convert($$;$)
                 pop @{$self->{'document_context'}};
               } elsif ($arg_type eq 'codetext') {
                 $arg_formatted->{$arg_type} 
-                  = Texinfo::Convert::Text::convert($arg, 
-                                                  {'converter' => $self,
-                                                   'code' => 1,
-                                           Texinfo::Common::_convert_text_options($self)});
+                  = Texinfo::Convert::Text::convert($arg, {'code' => 1,
+                            Texinfo::Common::_convert_text_options($self)});
               }
             }
             
@@ -6545,36 +6538,7 @@ sub _convert($$;$)
         $content_formatted = $self->_convert($root->{'args'}->[0]);
       }
     } elsif ($root->{'contents'}) {
-      $content_formatted = '';
-      # TODO different types of contents
-      if (ref($root->{'contents'}) ne 'ARRAY') {
-        cluck "for $root contents not an array: $root->{'contents'}";
-        print STDERR Texinfo::Parser::_print_current($root);
-      }
-
-      # FIXME as texi2html, ignore space only contents at the beginning.
-      # Is it right?
-      my $only_spaces;
-      if ($root->{'type'} eq 'text_root') {
-        $only_spaces = 1;
-      }
-      my $content_idx = 0;
-      foreach my $content (@{$root->{'contents'}}) {
-        my $new_content = $self->_convert($content, "$command_type [$content_idx]");
-        if (!defined($new_content)) {
-          cluck "content not defined for $command_type [$content_idx]\n";
-          print STDERR "root is: ".Texinfo::Parser::_print_current ($root);
-          print STDERR "content is: ".Texinfo::Parser::_print_current ($content);
-        } else {
-          if ($only_spaces) {
-            if ($new_content =~ /\S/) {
-              $only_spaces = 0;
-            }
-          }
-          $content_formatted .= $new_content unless ($only_spaces);
-        }
-        $content_idx++;
-      }
+      $content_formatted = $self->_convert_contents($root, $command_type);
     }
     my $result = '';
     if (exists($self->{'types_conversion'}->{$root->{'type'}})) {

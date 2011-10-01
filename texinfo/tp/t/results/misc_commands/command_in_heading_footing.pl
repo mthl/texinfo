@@ -108,7 +108,8 @@ $result_converted{'plaintext'}->{'command_in_heading_footing'} = 'In text text.
 ';
 
 
-$result_converted{'html_text'}->{'command_in_heading_footing'} = '<p>In text   text.
+$result_converted{'html_text'}->{'command_in_heading_footing'} = '
+<p>In text   text.
 </p>';
 
 1;

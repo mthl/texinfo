@@ -478,7 +478,8 @@ $result_converted{'plaintext'}->{'item_container'} = '   + i-tem +
 ';
 
 
-$result_converted{'html_text'}->{'item_container'} = '<ul class="no-bullet">
+$result_converted{'html_text'}->{'item_container'} = '
+<ul class="no-bullet">
 <li>+ i&ndash;tem +
 </li></ul>
 

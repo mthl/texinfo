@@ -271,7 +271,9 @@ $result_converted{'plaintext'}->{'empty_commands'} = '`\'(1) ~
 ';
 
 
-$result_converted{'html_text'}->{'empty_commands'} = '<p> <abbr></abbr>  <code></code><a name="DOCF1" href="#FOOT1">(1)</a> ~  <tt></tt>
+$result_converted{'html_text'}->{'empty_commands'} = '
+
+<p> <abbr></abbr>  <code></code><a name="DOCF1" href="#FOOT1">(1)</a> ~  <tt></tt>
 </p><div class="footnote">
 <hr>
 <h3 class="footnote">Footnotes</h3>

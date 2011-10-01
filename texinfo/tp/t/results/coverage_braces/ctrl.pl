@@ -164,7 +164,8 @@ $result_converted{'plaintext'}->{'ctrl'} = 'A
 ';
 
 
-$result_converted{'html_text'}->{'ctrl'} = '<p>^A
+$result_converted{'html_text'}->{'ctrl'} = '
+<p>^A
 </p>
 <p>With ^B.
 </p>';

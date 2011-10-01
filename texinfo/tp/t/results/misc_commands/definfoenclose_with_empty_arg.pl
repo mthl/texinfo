@@ -146,7 +146,9 @@ $result_converted{'plaintext'}->{'definfoenclose_with_empty_arg'} = 'My somethin
 ';
 
 
-$result_converted{'html_text'}->{'definfoenclose_with_empty_arg'} = '<p>My something:.
+$result_converted{'html_text'}->{'definfoenclose_with_empty_arg'} = '
+
+<p>My something:.
 </p>
 ';
 

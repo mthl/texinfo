@@ -1135,8 +1135,9 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-
 <h1 class="settitle" align="center">no_element test</h1>
+
+
 <a name="An-anchor"></a>
 <p>Ref to the anchor:
 <a href="#An-anchor">An anchor</a>

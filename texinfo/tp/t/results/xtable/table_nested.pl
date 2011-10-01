@@ -3176,7 +3176,8 @@ $result_converted{'plaintext'}->{'table_nested'} = 'Quotation
 ';
 
 
-$result_converted{'html_text'}->{'table_nested'} = '<p>Quotation
+$result_converted{'html_text'}->{'table_nested'} = '
+<p>Quotation
 </p><blockquote>
 <dl compact="compact">
 <dt>first item

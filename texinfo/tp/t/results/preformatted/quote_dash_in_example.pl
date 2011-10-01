@@ -134,7 +134,8 @@ $result_converted{'plaintext'}->{'quote_dash_in_example'} = '     and now -- yes
 ';
 
 
-$result_converted{'html_text'}->{'quote_dash_in_example'} = '<div class="example">
+$result_converted{'html_text'}->{'quote_dash_in_example'} = '
+<div class="example">
 <pre class="example">and now -- yes---now and ``so\'\'.
 
 </pre></div>

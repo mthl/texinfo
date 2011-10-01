@@ -1446,7 +1446,8 @@ top! After punc
 ';
 
 
-$result_converted{'html_text'}->{'punctuation_in_line_commands'} = '<a name="node_0021-After-punc"></a>
+$result_converted{'html_text'}->{'punctuation_in_line_commands'} = '
+<a name="node_0021-After-punc"></a>
 <a name="top_0021-After-punc"></a>
 <h1 class="top">top! After punc</h1>
 

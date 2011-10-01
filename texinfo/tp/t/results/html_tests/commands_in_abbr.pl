@@ -333,7 +333,6 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-
 <p><abbr title="abbr &ndash; b">A</abbr> (<b>abbr</b> &ndash; b).
 </p>
 <div class="example">

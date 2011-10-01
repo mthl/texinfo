@@ -171,22 +171,6 @@ foreach my $command(@all_style_commands) {
   }
 }
 
-my %misc_command_line_attributes = (
-  'setfilename' => 'file',
-  'documentencoding' => 'encoding',
-  'verbatiminclude' => 'file',
-  'documentlanguage' => 'language',
-);
-
-# FIXME printindex is special?
-my %misc_command_numbered_arguments_attributes = (
-  'definfoenclose' => [ 'command', 'open', 'close' ],
-  'alias' => [ 'new', 'existing' ],
-  'syncodeindex' => [ 'from', 'to' ],
-  'synindex' => [ 'from', 'to' ],
-#  'sp' => [ 'lines' ],
-);
-
 my %docbook_misc_elements_with_arg_map = (
   'settitle' => 'title',
   'exdent' => 'simpara',
@@ -202,17 +186,6 @@ foreach my $command ('item', 'headitem', 'itemx', 'tab',
 
 my %default_args_code_style 
   = %Texinfo::Convert::Converter::default_args_code_style;
-
-my %commands_args_elements = (
-);
-
-my %commands_elements;
-foreach my $command (keys(%Texinfo::Common::brace_commands)) {
-  $commands_elements{$command} = [$command];
-  if ($commands_args_elements{$command}) {
-    push @{$commands_elements{$command}}, @{$commands_args_elements{$command}};
-  }
-}
 
 my %defcommand_name_type = (
  'deffn'     => 'function',
@@ -742,8 +715,7 @@ sub _convert($$;$)
               $filename 
                 = $self->xml_protect_text(Texinfo::Convert::Text::convert(
               {'contents' => $root->{'extra'}->{'brace_command_contents'}->[-1]},
-                                           {'converter' => $self, 'code' => 1,
-                                    Texinfo::Common::_convert_text_options($self)}));
+              {'code' => 1, Texinfo::Common::_convert_text_options($self)}));
             }
             my $node;
             if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
@@ -848,7 +820,7 @@ sub _convert($$;$)
         if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
           my $basefile = Texinfo::Convert::Text::convert(
            {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
-           {'code' => 1, $self->_convert_text_options()});
+           {'code' => 1, Texinfo::Common::_convert_text_options($self)});
           my $element;
           my $is_inline = $self->_is_inline($root);
           if ($is_inline) {
@@ -897,7 +869,7 @@ sub _convert($$;$)
             $email_text 
               = $self->xml_protect_text(Texinfo::Convert::Text::convert(
                                          {'contents' => $email},
-                                         {'converter' => $self, 'code' => 1,
+                                         {'code' => 1,
                                   Texinfo::Common::_convert_text_options($self)}));
           }
           if ($name and $email) {
@@ -919,7 +891,7 @@ sub _convert($$;$)
             $url_content = $root->{'extra'}->{'brace_command_contents'}->[0];
             $url_text = $self->xml_protect_text(Texinfo::Convert::Text::convert(
                                          {'contents' => $url_content},
-                                         {'converter' => $self, 'code' => 1,
+                                         {'code' => 1,
                                   Texinfo::Common::_convert_text_options($self)}));
           } else {
             $url_text = '';
@@ -1036,8 +1008,7 @@ sub _convert($$;$)
             foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
               my $prototype_text
                 = Texinfo::Convert::Text::convert($prototype,
-                                                  {'converter' => $self,
-                                           Texinfo::Common::_convert_text_options($self)});
+                               {Texinfo::Common::_convert_text_options($self)});
               push @fractions, 
                 Texinfo::Convert::Unicode::string_width($prototype_text);
             }

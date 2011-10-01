@@ -181,7 +181,7 @@ my $strings_textdomain = 'texinfo_document';
 my $messages_textdomain = 'texinfo';
 
 # libintl converts between encodings but doesn't decode them into the
-# perl internal format.  This is only caled if the encoding is a proper
+# perl internal format.  This is only called if the encoding is a proper
 # perl encoding.
 sub _encode_i18n_string($$)
 {

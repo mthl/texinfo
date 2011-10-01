@@ -452,7 +452,8 @@ $result_converted{'plaintext'}->{'definfoenclose'} = 'definfoenclose phoo,//,\\
 ';
 
 
-$result_converted{'html_text'}->{'definfoenclose'} = '<p>definfoenclose phoo,//,\\  </p>
+$result_converted{'html_text'}->{'definfoenclose'} = '
+<p>definfoenclose phoo,//,\\  </p>
 <p>//bar\\
 </p>
 <p>definfoenclose phi,:,:  </p>

@@ -455,7 +455,8 @@ $result_converted{'plaintext'}->{'preformatted'} = '     e--xample  some
 ';
 
 
-$result_converted{'html_text'}->{'preformatted'} = '<div class="example">
+$result_converted{'html_text'}->{'preformatted'} = '
+<div class="example">
 <pre class="example">e--xample  some  
 
    text

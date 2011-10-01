@@ -4906,7 +4906,8 @@ node: (file name)node.
 ';
 
 
-$result_converted{'html_text'}->{'ref_error_formatting'} = '<p><code>@ref{node}</code> &lsquo;node&rsquo;
+$result_converted{'html_text'}->{'ref_error_formatting'} = '
+<p><code>@ref{node}</code> &lsquo;node&rsquo;
 </p>
 <p><code>@ref{,cross ref name}</code> &lsquo;cross ref name&rsquo;
 <code>@ref{,,title}</code> &lsquo;title&rsquo;

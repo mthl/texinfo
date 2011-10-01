@@ -2894,7 +2894,8 @@ $result_errors{'accentenc_no_iso_no_entity'} = [];
 
 
 
-$result_converted{'html_text'}->{'accentenc_no_iso_no_entity'} = '<a name="Top"></a>
+$result_converted{'html_text'}->{'accentenc_no_iso_no_entity'} = '
+<a name="Top"></a>
 <a name="top"></a>
 <h1 class="top">top</h1>
 
