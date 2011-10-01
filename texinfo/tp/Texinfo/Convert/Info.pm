@@ -224,6 +224,7 @@ sub _info_header($)
 
   # FIXME version/program
   #my $text = "This is $self->{'output_filename'}, produced by makeinfo version 4.13 from $self->{'input_basename'}.";
+  $self->_set_global_multiple_commands();
   my $paragraph = Texinfo::Convert::Paragraph->new();
   #my $result = $paragraph->add_text($text);
   my $result = $paragraph->add_text("This is ");
@@ -238,7 +239,6 @@ sub _info_header($)
   $self->{'empty_lines_count'} = 1;
 
   if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
-    $self->_set_global_multiple_commands();
     print STDERR "COPYING HEADER\n" if ($self->get_conf('DEBUG'));
     $self->{'in_copying_header'} = 1;
     my $copying = $self->_convert({'contents' => 
@@ -246,7 +246,6 @@ sub _info_header($)
     $result .= $copying;
     $result .= $self->_footnotes();
     delete $self->{'in_copying_header'};
-    $self->_unset_global_multiple_commands();
   }
   if ($self->{'info'}->{'dircategory_direntry'}) {
     $self->{'ignored_commands'}->{'direntry'} = 0;
@@ -269,6 +268,7 @@ sub _info_header($)
     }
     $self->{'ignored_commands'}->{'direntry'} = 1;
   }
+  $self->_unset_global_multiple_commands();
   return $result;
 }
 

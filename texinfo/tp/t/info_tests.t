@@ -29,6 +29,23 @@ After paragraphindent.
 @bye
 
 '],
+['paragraphindent_asis_first',
+'
+     bbb
+
+@paragraphindent asis
+     ccc
+'],
+['paragraphindent_none_first',
+'
+      first
+
+      second
+
+@paragraphindent none
+
+      after none
+'],
 ['space_at_menu_end',
 '@node Top
 

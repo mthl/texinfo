@@ -32,9 +32,6 @@ use vars qw(@ISA $VERSION);
 $VERSION = '0.01';
 
 my %defaults = (
-  'frenchspacing'        => 'off',
-  'paragraphindent'      => 3,
-  'firstparagraphindent' => 'none',
   'ENABLE_ENCODING'      => 1,
   'footnotestyle'        => 'end',
 #  'perl_encoding'        => 'ascii',
@@ -42,9 +39,7 @@ my %defaults = (
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
-  'NUMBER_FOOTNOTES'     => 1,
-  'include_directories'  => undef,
-  'NUMBER_SECTIONS'      => 1,
+
 );
 
 # defaults for all converters.  Maybe more could be added, especially what
@@ -57,8 +52,12 @@ our %all_converters_defaults = (
   'fillcolumn'           => 72,
   'expanded_formats'     => undef,
   'include_directories'  => undef,
-
-  
+  'NUMBER_SECTIONS'      => 1,
+  'NUMBER_FOOTNOTES'     => 1,
+  'frenchspacing'        => 'off',
+  'paragraphindent'      => 3,
+  'firstparagraphindent' => 'none',
+  'allowcodebreaks'      => 'true',
 
   'DEBUG'                => 0,
   'TEST'                 => 0,
@@ -89,18 +88,36 @@ sub _informative_command($$)
   my $root = shift;
 
   my $cmdname = $root->{'cmdname'};
+  $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
+
   return if ($self->{'set'}->{$cmdname});
 
-  if (exists($root->{'extra'}->{'text_arg'})) {
+  if ($Texinfo::Common::misc_commands{$cmdname} eq 'skipline') {
+    $self->set_conf($cmdname, 1);
+  } elsif (exists($root->{'extra'}->{'text_arg'})) {
     $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
     if ($cmdname eq 'documentencoding'
         and defined($root->{'extra'})
         and defined($root->{'extra'}->{'perl_encoding'})
        ){
-        #and !$self->{'perl_encoding'}) {
+      # the following does not work with shifijs.  The encoding
+      # has to be set only once by open_out. 
+      #if (defined($self->{'fh'})) {
+      #  my $encoding = $self->{'perl_encoding'};
+      #  my $filehandle = $self->{'fh'};
+      #  if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
+      #    binmode($filehandle, ':utf8');
+      #  } else { # FIXME also right for shiftijs or similar encodings?
+      #    binmode($filehandle, ':bytes');
+      #  }
+      #  binmode($filehandle, ":encoding($encoding)");
+      #}
       $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
       $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
     }
+  } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
+           and exists($root->{'extra'}->{'misc_args'}->[0])) {
+    $self->set_conf($cmdname, $root->{'extra'}->{'misc_args'}->[0]);
   }
 }
 
@@ -136,6 +153,7 @@ sub converter(;$)
       $converter->{$key} = $defaults{$key};
     }
   }
+  $converter->{'conf_default'} = \%defaults;
   if (defined($conf)) {
     if ($conf->{'parser'}) {
       $converter->{'parser'} = $conf->{'parser'};
@@ -241,16 +259,20 @@ sub _unset_global_multiple_commands($)
   foreach my $global_command ($self->_global_commands()) {
     if (defined($self->{'extra'}->{$global_command})
         and ref($self->{'extra'}->{$global_command}) eq 'ARRAY') {
-      next if (!exists($defaults{$global_command}));
-      if (Texinfo::Common::valid_option($global_command)) {
+      if (exists($self->{'conf_default'}->{$global_command})) {
         if ($self->get_conf('DEBUG')) {
           my $default = 'UNDEF';
-          $default = $defaults{$global_command} if (defined($defaults{$global_command}));
-          print STDERR "UNSET_global_multiple_commands $global_command: $default\n";
+          $default = $self->{'conf_default'}->{$global_command} 
+            if (defined($self->{'conf_default'}->{$global_command}));
+          my $set = 0;
+          $set = 1 if ($self->{'set'}->{$global_command});
+          print STDERR "UNSET_global_multiple_commands $global_command ($set): $default\n";
         }
-        $self->set_conf($global_command, $defaults{$global_command});
-      } else {
-        $self->{$global_command} = $defaults{$global_command};
+        if (Texinfo::Common::valid_option($global_command)) {
+          $self->set_conf($global_command, $self->{'conf_default'}->{$global_command});
+        } else {
+          $self->{$global_command} = $self->{'conf_default'}->{$global_command};
+        }
       }
     }
   }

@@ -272,9 +272,6 @@ foreach my $command ('var', 'cite', 'dmn', keys(%code_style_commands)) {
 }
 
 my %defaults = (
-  'frenchspacing'        => 'off',
-  'paragraphindent'      => 3,
-  'firstparagraphindent' => 'none',
   'ENABLE_ENCODING'      => 1,
 # this default is for Info, but also when doing Texinfo fragments.  So this 
 # has to be explicitly set to 0 when doing real plaintext.
@@ -284,19 +281,13 @@ my %defaults = (
   'USE_SETFILENAME_EXTENSION' => 1,
 
   'footnotestyle'        => 'end',
-  'fillcolumn'           => 72,
   'encoding_name'        => undef,
   'perl_encoding'        => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
-  'NUMBER_FOOTNOTES'     => 1,
   'empty_lines_count'    => undef,
-  'SPLIT_SIZE'           => 300000,
-  'NUMBER_SECTIONS'      => 1,
 
-  'DEBUG'                => 0,
-  'TEST'                 => 0,
   'output_format'        => '',
 );
 
@@ -323,54 +314,6 @@ my %contents_commands = (
  'shortcontents' => 1,
  'summarycontents' => 1,
 );
-
-sub _informative_command($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my $cmdname = $root->{'cmdname'};
-  $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
-
-  return if ($self->{'set'}->{$cmdname});
-
-  if ($misc_commands{$cmdname} eq 'skipline') {
-    $self->set_conf($cmdname, 1);
-  } elsif (exists($root->{'extra'}->{'text_arg'})) {
-    $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
-    if ($cmdname eq 'documentencoding'
-        and defined($root->{'extra'})
-        and defined($root->{'extra'}->{'perl_encoding'})
-        and !$self->{'perl_encoding'}) {
-      $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
-      $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
-      # the following does not work with shifijs.  The encoding
-      # has to be set only once by open_out. 
-      #if (defined($self->{'fh'})) {
-      #  my $encoding = $self->{'perl_encoding'};
-      #  my $filehandle = $self->{'fh'};
-      #  if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
-      #    binmode($filehandle, ':utf8');
-      #  } else { # FIXME also right for shiftijs or similar encodings?
-      #    binmode($filehandle, ':bytes');
-      #  }
-      #  binmode($filehandle, ":encoding($encoding)");
-      #}
-    }
-  } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
-           and exists($root->{'extra'}->{'misc_args'}->[0])) {
-    $self->set_conf($cmdname, $root->{'extra'}->{'misc_args'}->[0]);
-    if ($cmdname eq 'paragraphindent') {
-      if ($root->{'extra'}->{'misc_args'}->[0] eq 'asis') {
-        delete $self->{'ignored_types'}->{'empty_spaces_before_paragraph'};
-      } else {
-        $self->set_conf($cmdname, 0)
-          if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
-        $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
-      }
-    }
-  }
-}
 
 sub _defaults($)
 {
@@ -1069,7 +1012,9 @@ sub _convert($$)
   # NUMBER_FOOTNOTES SPLIT_SIZE IN_ENCODING FILLCOLUMN ENABLE_ENCODING
   # OUT_ENCODING ENCODING_NAME
 
-  if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}})
+  if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}}
+       and ($root->{'type'} ne 'empty_spaces_before_paragraph'
+            or $self->get_conf('paragraphindent') ne 'asis'))
        or ($root->{'cmdname'} 
             and $self->{'ignored_commands'}->{$root->{'cmdname'}})) {
     print STDERR "IGNORED\n" if ($self->get_conf('DEBUG'));
@@ -2060,6 +2005,8 @@ sub _convert($$)
                   or $self->get_conf('firstparagraphindent') eq 'insert') 
                and !$self->{'text_element_context'}->[-1]->{'counter'}))) {
         $conf->{'first_indent_length'} = $self->get_conf('paragraphindent');
+        $conf->{'first_indent_length'} = 0
+          if ($conf->{'first_indent_length'} eq 'none');
       }
       $paragraph = $self->new_formatter('paragraph', $conf);
       push @{$self->{'formatters'}}, $paragraph;

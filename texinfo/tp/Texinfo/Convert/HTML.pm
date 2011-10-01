@@ -842,8 +842,6 @@ our %defaults = (
   #'perl_encoding'        => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
-  'NUMBER_FOOTNOTES'     => 1,
-  'NUMBER_SECTIONS'      => 1,
   'USE_NODES'            => 1,
   'INLINE_CONTENTS'      => 1,
   'SPLIT'                => 'node',
@@ -856,7 +854,6 @@ our %defaults = (
   'OPEN_QUOTE_SYMBOL'    => '&lsquo;',
   'CLOSE_QUOTE_SYMBOL'   => '&rsquo;',
   'USE_ISO'              => 1,
-  'allowcodebreaks'      => 'true',
 # file name used for Top node when NODE_FILENAMES is true
   'TOP_NODE_FILE'        => 'index',
   'NODE_FILE_EXTENSION'  => 'html',
@@ -934,8 +931,6 @@ our %defaults = (
   'PASSIVE_ICONS'        => \%PASSIVE_ICONS,
   'SPECIAL_ELEMENTS_NAME' => \%SPECIAL_ELEMENTS_NAME,
   
-  'DEBUG'                => 0,
-  'TEST'                 => 0,
   'output_format'        => 'html',
 );
 
@@ -3161,33 +3156,6 @@ sub _convert_informative_command($$$$)
     $self->_translate_names();
   }
   return '';
-}
-
-sub _informative_command($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my $cmdname = $root->{'cmdname'};
-  $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
-
-  return if ($self->{'set'}->{$cmdname});
-  if ($misc_commands{$cmdname} eq 'skipline') {
-    $self->set_conf($cmdname, 1);
-  } elsif (exists($root->{'extra'}->{'text_arg'})) {
-    $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
-    if ($cmdname eq 'documentencoding'
-        and defined($root->{'extra'})
-        and defined($root->{'extra'}->{'perl_encoding'})
-       ){
-        #and !$self->{'perl_encoding'}) {
-      $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
-      $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
-    }
-  } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
-           and exists($root->{'extra'}->{'misc_args'}->[0])) {
-    $self->set_conf($cmdname, $root->{'extra'}->{'misc_args'}->[0]);
-  }
 }
 
 foreach my $informative_command (@informative_global_commands) {

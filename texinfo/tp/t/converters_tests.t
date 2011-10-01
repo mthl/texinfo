@@ -242,6 +242,7 @@ sp after para
 '],
 );
 
+# This should go to a file, not to code...
 my @html_text_cases = (
 ['accentenc_no_iso_no_entity',
 $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
@@ -252,6 +253,8 @@ $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
+  #push @{$test->[2]->{'test_formats'}}, 'xml';
+  #push @{$test->[2]->{'test_formats'}}, 'docbook';
 }
 
 foreach my $test (@html_text_cases) {

@@ -184,6 +184,16 @@ foreach my $command ('item', 'headitem', 'itemx', 'tab',
   delete $docbook_misc_commands{$command};
 }
 
+my %docbook_global_commands = (
+  'documentlanguage' => 1,
+  'documentencoding' => 1,
+);
+
+sub _global_commands($)
+{
+  return keys(%docbook_global_commands);
+}
+
 my %default_args_code_style 
   = %Texinfo::Convert::Converter::default_args_code_style;
 
@@ -553,6 +563,10 @@ sub _convert($$;$)
       }
       return $self->_index_entry($root).${end_line};
     } elsif (exists($docbook_misc_commands{$root->{'cmdname'}})) {
+      if ($docbook_global_commands{$root->{'cmdname'}}) {
+        $self->_informative_command($root);
+        return '';
+      }
       my $command;
       if (exists ($docbook_misc_elements_with_arg_map{$root->{'cmdname'}})) {
         $command = $docbook_misc_elements_with_arg_map{$root->{'cmdname'}};
