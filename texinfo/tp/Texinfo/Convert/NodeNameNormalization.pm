@@ -46,7 +46,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
-  convert
   normalize_node
   transliterate_texinfo
 ) ] );
@@ -136,7 +135,7 @@ sub _unicode_to_protected($)
         }
       }
     } else {
-      print STDERR "Bug: unknown character in a cross ref (likely in infinite loop)\n";
+      warn "Bug: unknown character _unicode_to_protected (likely in infinite loop)\n";
       print STDERR "Text: !!$text!!\n";
       sleep 1;
     }
@@ -149,7 +148,7 @@ sub _unicode_to_transliterate($;$)
   my $text = shift;
   my $no_unidecode = shift;
   if (chomp($text)) {
-     print STDERR "Strange: end of line to transliterate: $text\n";
+     warn "Bug: end of line to transliterate: $text\n";
   }
   my $result = '';
   while ($text ne '') {
@@ -188,7 +187,7 @@ sub _unicode_to_transliterate($;$)
       }
       #print STDERR " ($no_unidecode) $text -> CHAR: ".ord($char)." ".uc(sprintf("%04x",ord($char)))."\n$result\n";
     } else {
-      print STDERR "Bug: unknown character in cross ref transliteration (likely in infinite loop)\n";
+      warn "Bug: unknown character _unicode_to_transliterate (likely in infinite loop)\n";
       print STDERR "Text: !!$text!!\n";
       sleep 1;
     }
@@ -288,3 +287,70 @@ sub _convert($;$)
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Texinfo::Convert::NodeNameNormalization - Normalize and transliterate Texinfo trees
+
+=head1 SYNOPSIS
+
+  use Texinfo::Convert::NodeNameNormalization qw(normalize_node
+                                              transliterate_texinfo);
+
+  my $normalized = normalize_node({'contents' => $node_contents});
+
+  my $file_name = transliterate_texinfo({'contents'
+                                            => $section_contents});
+
+=head1 DESCRIPTION
+
+Texinfo::Convert::NodeNameNormalization allows to normalize node names,
+with C<normalize_node> following the specification described in the 
+Texinfo manual for HTML Xref.  This is usefull each time one want a 
+unique identifier for Texinfo content that is only composed of letter,
+digits, C<-> and C<_>.  In C<Texinfo::Parser> C<normalize_node> is used 
+for node, floats and anchor names normalization, but also float 
+types C<@acronym> and C<@abbr> first argument.
+
+It is also possible to transliterate non ascii letters, instead of mangling 
+them, with C<transliterate_texinfo>, losing the uniqueness feature of 
+normalized node names.
+
+=head1 METHODS
+
+=over
+
+=item $normalized = normalize_node($tree)
+
+The Texinfo I<$tree> is returned as a string, normalized as described in the
+Texinfo manual for HTML Xref.
+
+The result will be poor for Texinfo trees which are not @-command arguments 
+(on an @-command line or in braces), for instance if the tree contains 
+C<@node> or block commands.
+
+=item $transliterated = transliterate_texinfo($tree, $no_unidecode)
+
+The Texinfo I<$tree> is returned as a string, with non ascii letters
+transliterated as ascii, but otherwise similar with C<normalize_node>
+output.  If the optional I<$no_unidecode> argument is set, C<Text::Unidecode>
+is not used for characters whose transliteration is not built-in.
+
+=back
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2010, 2011 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
+
+=cut
