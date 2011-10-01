@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.101 2011-09-25 22:07:04 pertusus Exp $
+# $Id: configure.ac,v 1.102 2011-10-01 23:09:22 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -321,7 +321,31 @@ AC_CONFIG_FILES([install-info/tests/defs])
 AC_CONFIG_FILES([util/defs])
 AC_CHECK_PROGS([HEVEA], [hevea], [])
 AC_CHECK_PROGS([TEX], [tex], [])
+AC_CHECK_PROGS([PROVE], [prove], [])
 
+tp_tests='no'
+AC_ARG_ENABLE([tp-tests],
+    AC_HELP_STRING([--enable-tp-tests],
+        [run the parser and converters testsuite (default: detected)]),
+    [if test $enableval = 'no'; then
+       tp_tests='no'
+     else
+       tp_tests='yes'
+     fi],
+    [
+     if test "z$PROVE" = 'z'; then
+       tp_tests='no'
+     elif $PERL -e "use 5.006; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Clone qw(clone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
+     then
+       tp_tests='yes'
+     else  
+       tp_tests='no'
+     fi
+    ])
+
+AC_MSG_CHECKING([parser tests requirements])
+AC_MSG_RESULT([$tp_tests])
+AM_CONDITIONAL([TP_TESTS], [test "z$tp_tests" = 'zyes'])
 
 AC_CONFIG_FILES([texi2html/texi2html_configured.pl:texi2html/texi2html.pl], 
    [chmod +x texi2html/texi2html_configured.pl])

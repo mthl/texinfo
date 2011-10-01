@@ -2,6 +2,8 @@
 
 	* doc/texinfo.txi (Generic Translator texi2any/makeinfo): adapt to
 	the new implementation in tp/.
+	* configure.ac, tp/Makefile.am: add an automake conditional to avoid 
+	doing tp tests if dependencies are missing.
 
 2011-09-30  Patrice Dumas  <pertusus@free.fr>
 

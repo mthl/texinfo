@@ -2,8 +2,6 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
-Add automake conditionals if modules required for tests are not present.
-
 Handling of #line.
 
 In xml output, as can be seen in xtable/table_nested macro output do

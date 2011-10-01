@@ -139,13 +139,17 @@ all-local:
 	  $(INSTALL_DATA) "$$file" "$(relative_include_dir)/$$bfile"; \
 	done
 
-TESTS = prove.sh
+tp_tests = prove.sh
+
+if TP_TESTS
+TESTS = $(tp_tests)
+endif
 
 EXTRA_DIST = \
   texi2any.pl \
   $(test_results) \
   $(test_files) \
-  $(TESTS)
+  $(tp_tests)
 
 # FIXME put those somewhere else?  In maintain/lib?
 libsrcdir = $(srcdir)/../texi2html/lib
