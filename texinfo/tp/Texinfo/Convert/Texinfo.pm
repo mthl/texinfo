@@ -30,7 +30,21 @@ require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 
-#@EXPORT_OK = ('convert');
+# Items to export into callers namespace by default. Note: do not export
+# names by default without a very good reason. Use EXPORT_OK instead.
+# Do not simply export all your public functions/methods/constants.
+
+# This allows declaration   use Texinfo::Convert::Texinfo ':all';
+# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
+# will save memory.
+%EXPORT_TAGS = ( 'all' => [ qw(
+  convert
+) ] );
+
+@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+@EXPORT = qw(
+);
 
 $VERSION = '0.01';
 
@@ -77,7 +91,7 @@ sub convert ($)
     if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))
         and !($root->{'extra'} and $root->{'extra'}->{'end_command'})) {
       $result .= '@end '.$root->{'cmdname'};
-      # a missing @end
+      # a missing @end
       $result .= "\n" if ($block_commands{$root->{'cmdname'}} ne 'raw');
     }
   }
@@ -155,54 +169,47 @@ sub _expand_cmd_args_to_texi ($) {
 
 1;
 __END__
-# Below is stub documentation.
 
 =head1 NAME
 
-Texinfo::Parser - Perl extension for blah blah blah
+Texinfo::Convert::Texinfo - Convert a Texinfo tree to Texinfo code
 
 =head1 SYNOPSIS
 
-  use Texinfo::Parser;
-  blah blah blah
+  use Texinfo::Convert::Texinfo qw(convert);
+  
+  my $texinfo_text = convert($tree);
 
 =head1 DESCRIPTION
 
-Stub documentation for Texinfo::Parser, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
+Texinfo::Convert::Texinfo converts a Texinfo tree (described in 
+L<Texinfo::Parser>) to Texinfo code.  If the Texinfo tree results from 
+parsing some Texinfo document, The converted Texinfo code should be
+exactly the same as the initial document, except that user defined @-macros 
+and C<@value> are expanded, and some invalid code is discarded.
 
-Blah blah blah.
+=head1 METHODS
 
-=head2 EXPORT
+=over
 
-None by default.
+=item $texinfo_text = convert($tree)
 
+Converts the Texinfo tree I<$tree> to Texinfo code.
 
-
-=head1 SEE ALSO
-
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
-standards.
-
-If you have a mailing list set up for your module, mention it here.
-
-If you have a web site set up for your module, mention it here.
+=back
 
 =head1 AUTHOR
 
-Patrice Dumas, E<lt>dumas@E<gt>
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010 Free Software Foundation, Inc.
+Copyright (C) 2010, 2011 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3 of the License,
-# or (at your option) any later version.
-
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
 
 =cut
+
