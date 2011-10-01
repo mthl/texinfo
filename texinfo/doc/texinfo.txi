@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.386 2011-09-30 19:13:05 pertusus Exp $
+@c $Id: texinfo.txi,v 1.387 2011-10-01 20:39:06 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16141,14 +16141,8 @@ default, the formats that may be produced are:
 @item Texinfo XML (with @option{--xml}).
 @end table
 
-@command{makeinfo} is an alias of @command{texi2any}, and using this
-command is the same as using @code{texi2any --info}.
-
-Without any command line option, @command{texi2any} generates raw text
-with minimal formatting, which may be suitable for further processing.
-We do not recommend using this output format for actual documentation,
-since it is so basic.  Instead, produce plain text with
-@option{--plaintext}.
+@command{makeinfo} is an alias of @command{texi2any}.  Without any 
+command line option, @command{texi2any} generates Info output.
 
 Beside these default formats, command line options to
 @command{texi2any} can determine important aspects of the output.
@@ -16175,17 +16169,11 @@ The rest of this chapter gives further details on the program.
 To process a Texinfo file, invoke @command{texi2any} or
 @command{makeinfo} followed by the name of the Texinfo file.  Also
 select the format you want to output with the appropriate command line
-option (default is Info for @command{makeinfo}).  Thus, to create the
-Info file for Bison, type one of the following to the shell:
+option (default is Info).  Thus, to create the Info file for Bison, 
+type the following to the shell:
 
 @example
 texi2any --info bison.texinfo
-@end example
-
-@noindent or
-
-@example
-makeinfo bison.texinfo
 @end example
 
 You can specify more than one input file name; each is processed in
@@ -16195,11 +16183,13 @@ all are given, standard input is read.
 @anchor{makeinfo Options}
 @cindex @code{makeinfo} options
 @cindex Options for @code{makeinfo}
+@anchor{texi2any Options}
+@cindex @code{texi2any} options
+@cindex Options for @code{texi2any}
 
-The @command{texi2any}/@command{makeinfo} programs accept many
-options.  Perhaps the most basic are those that change the output
-format.  By default, @command{makeinfo} outputs Info files, while
-@command{texi2any} outputs raw text with minimal formatting.
+The @command{texi2any} program accept many options.  Perhaps the 
+most basic are those that change the output format.  By default, 
+@command{texi2any} outputs Info.
 
 Each command line option is either a long name preceded by @samp{--}
 or a single letter preceded by @samp{-}.  You can use abbreviations
@@ -16210,13 +16200,13 @@ file for @file{bison.texinfo} in which each line is filled to only 68
 columns:
 
 @example
-makeinfo --fill-column=68 bison.texinfo
+texi2any --fill-column=68 bison.texinfo
 @end example
 
 You can write two or more options in sequence, like this:
 
 @example
-makeinfo --no-split --fill-column=70 @dots{}
+texi2any --no-split --fill-column=70 @dots{}
 @end example
 
 @noindent
@@ -16698,9 +16688,20 @@ promise.
 
 Many aspects of the behavior and output of @command{texi2any} may be
 modified by modifying configuration variables.  These
-@dfn{configuration variables} fall into three general categories:
+@dfn{configuration variables} fall into four general categories:
 
 @itemize @bullet
+@item those changing the program behaviour.  Two such variables exist,
+and they may only be set on the command line:
+@vtable @code
+@item TEXI2HTML
+Generate HTML and try to be as compatible as possible with @command{texi2html}. 
+
+@item DEBUGTREE
+Instead of generating a regular output format, output a text representation
+of the tree obtained by parsing the input texinfo document.
+@end vtable
+
 @item those associated with @@-commands in the document,
 for example, @code{@@documentlanguage}.
 
@@ -17118,8 +17119,8 @@ For HTML.  Use @code{rel} in cross references.
 @item USE_SECTIONS
 Preferentially use sectioning to decide where elements are separated.
 
-@item USE_SETFILENAME
-If set, use @code{@@setfilename} to set the document name, otherwise
+@item NO_USE_SETFILENAME
+If set, do not use @code{@@setfilename} to set the document name,
 base the document name only on the input file name
 (@pxref{setfilename}).
 
@@ -17133,8 +17134,8 @@ Use the full @code{@@titlepage} as the title, not a simple title string.
 
 @item USE_UNIDECODE
 @pindex Text::Unidecode
-Use the @code{Text::Unidecode} Perl module to transliterate more
-characters.  This is automatically detected.
+If set to false, do not use the @code{Text::Unidecode} Perl module to 
+transliterate more characters.
 
 @item VERTICAL_HEAD_NAVIGATION
 For HTML.  If set, a vertical navigation panel is used.
@@ -21091,7 +21092,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.386 2011-09-30 19:13:05 pertusus Exp $
+$Id: texinfo.txi,v 1.387 2011-10-01 20:39:06 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21162,7 +21163,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.386 2011-09-30 19:13:05 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.387 2011-10-01 20:39:06 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
