@@ -3,8 +3,9 @@ use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 WriteMakefile(
-    NAME              => 'Texinfo::Parser',
+    NAME              => 'Texinfo',
     VERSION_FROM      => 'Texinfo/Parser.pm', # finds $VERSION
+    ABSTRACT          => 'Texinfo Parser and Converters',
     PREREQ_PM         => {"Encode" => 0,
                           "Data::Dumper" => 0,
                           "File::Spec" => 0,
@@ -22,7 +23,7 @@ WriteMakefile(
     PMLIBDIRS         => [ 'Texinfo' ],
     EXE_FILES         => [ 'texi2any.pl' ],
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'Texinfo/Parser.pm', # retrieve abstract from module
+      (
        AUTHOR         => 'Patrice Dumas <pertusus@free.fr>') : ()),
 );
 
