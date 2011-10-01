@@ -1235,3 +1235,70 @@ sub _convert($$;$)
 # figure: mandatory title->use it with shortcaption?. Has a caption. 
 
 1;
+
+__END__
+# Automatically generated from maintain/template.pod
+
+=head1 NAME
+
+Texinfo::Convert::DocBook - Convert Texinfo tree to DocBook
+
+=head1 SYNOPSIS
+
+  my $converter 
+    = Texinfo::Convert::DocBook->converter({'parser' => $parser});
+
+  $converter->output($tree);
+
+=head1 DESCRIPTION
+
+Texinfo::Convert::DocBook converts a Texinfo tree to DocBook.
+
+=head1 METHODS
+
+=over
+
+=item $converter = Texinfo::Convert::DocBook->converter($options)
+
+Initialize an DocBook converter.  
+
+The I<$options> hash reference holds options for the converter.  In
+this option hash reference a parser object may be associated with the 
+I<parser> key.  The other options should be configuration options
+described in the Texinfo manual.  Those options, when appropriate,
+override the document content.
+
+See L<Texinfo::Convert::Converter> for more informations.
+
+=item $converter->output($tree)
+
+Convert a Texinfo tree I<$tree> and output the result in files as
+described in the Texinfo manual.
+
+=item $result = $converter->convert($tree)
+
+Convert a Texinfo tree I<$tree> or tree portion and return 
+the resulting output.
+
+=item $result = $converter->convert_tree($tree)
+
+Convert a Texinfo tree portion I<$tree> and return the resulting 
+output.  This function do not try to output a full document but only
+portions of document.  For a full document use C<convert>.
+
+=back
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2011 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
+
+=cut
