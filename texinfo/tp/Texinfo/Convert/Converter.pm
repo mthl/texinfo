@@ -512,7 +512,7 @@ sub _end_line_or_comment($$)
       and $contents_possible_comment->[-1]->{'cmdname'}
       and ($contents_possible_comment->[-1]->{'cmdname'} eq 'c'
           or $contents_possible_comment->[-1]->{'cmdname'} eq 'comment')) {
-    $end_line = $self->_convert($contents_possible_comment->[-1]);
+    $end_line = $self->convert_tree($contents_possible_comment->[-1]);
   } elsif ($contents_possible_comment      
            and $contents_possible_comment->[-1]->{'text'}) {
     my $text = $contents_possible_comment->[-1]->{'text'};
@@ -556,10 +556,10 @@ sub _convert_argument_and_end_line($$)
   my $root = shift;
   my ($comment, $tree) 
     = _tree_without_comment($root);
-  my $converted = $self->_convert($tree);
+  my $converted = $self->convert_tree($tree);
   my $end_line;
   if ($comment) {
-    $end_line = $self->_convert($comment);
+    $end_line = $self->convert_tree($comment);
   } else {
     if (chomp($converted)) {
       $end_line = "\n";
@@ -609,11 +609,11 @@ sub convert_document_sections($$;$)
   my $elements = Texinfo::Structuring::split_by_section($root);
   if ($elements) {
     foreach my $element (@$elements) {
-      $result .= $self->_output_text ($self->_convert($element), $fh);
+      $result .= $self->_output_text ($self->convert_tree($element), $fh);
     }
     return $result;
   } else {
-    return $self->_output_text ($self->_convert($root), $fh);
+    return $self->_output_text ($self->convert_tree($root), $fh);
   }
 }
 
@@ -830,19 +830,17 @@ sub _xml_accent_numeric_entities($$;$)
   return xml_accent($text, $command, $in_upper_case, 1);
 }
 
-sub xml_accents($$;$$)
+sub xml_accents($$;$)
 {
   my $self = shift;
   my $accent = shift;
-  my $format_accents = shift;
   my $in_upper_case = shift;
 
-  if (!defined($format_accents)) {
-    if ($self->get_conf('USE_NUMERIC_ENTITY')) {
-      $format_accents = \&_xml_accent_numeric_entities;
-    } else {
-      $format_accents = \&xml_accent;
-    }
+  my $format_accents;
+  if ($self->get_conf('USE_NUMERIC_ENTITY')) {
+    $format_accents = \&_xml_accent_numeric_entities;
+  } else {
+    $format_accents = \&xml_accent;
   }
   
   return $self->convert_accents($accent, $format_accents, $in_upper_case);
@@ -878,3 +876,189 @@ sub convert_accents($$$;$)
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Texinfo::Convert::Converter - Parent class for Texinfo tree converters
+
+=head1 SYNOPSIS
+
+  package Texinfo::Convert::MyConverter;
+
+  use Texinfo::Convert::Converter;
+  @ISA = qw(Texinfo::Convert::Converter);
+
+  sub converter_defaults ($) {
+    return %myconverter_defaults;
+  }
+  sub converter_initialize($) {
+    my $self = shift;
+    $self->{'document_context'} = [{}];
+  }
+  sub converter_global_commands($) {
+    return ('documentlanguage', documentencoding', 'paragraphindent');
+  }
+
+  sub convert($$) {
+    ...
+  }
+  sub convert_tree($$) {
+    ...
+  }
+  sub output ($$) {
+    ...
+  }
+
+  # end of Texinfo::Convert::MyConverter
+
+  my $converter = Texinfo::Convert::MyConverter->converter(
+                                               {'parser' => $parser});
+  $converter->output($texinfo_tree);
+
+=head1 DESCRIPTION
+
+Texinfo::Convert::Converter is a super class that can be used to
+simplify converters initialization.  The class also provide some 
+useful methods.
+
+In turn, the converter should define some methods.  Three are optional,
+C<converter_defaults>, C<converter_initialize> and 
+C<converter_global_commands> and used for initialization, to 
+give C<Texinfo::Convert::Converter> some informations.
+
+The C<convert_tree> is more or less mandatory and should convert
+portions of Texinfo tree.  The C<output> and C<methods> are not
+required, but customarily used by converters as entry points for
+conversion to a file with headers and so on, or conversion of a
+texinfo tree.
+
+=head1 METHODS
+
+=head2 Initialization
+
+A module subclassing C<Texinfo::Convert::Converter> is created by calling
+the C<converter> method that should be inherited from 
+C<Texinfo::Convert::Converter>.
+
+=over
+
+=item $converter = MyConverter->converter($options)
+
+The I<$options> hash reference holds options for the converter.  In
+this option hash reference a parser object may be associated with the 
+I<parser> key.  The other options should be configuration options
+described in the Texinfo manual.  Those options, when appropriate,
+override the document content.
+
+The C<converter> function returns a converter object (a blessed hash 
+reference) after checking the options and performing some initializations,
+especially when a parser is given among the options.  The converter is
+also initialized as a C<Texinfo::Report>.
+
+=back
+
+To help with these initializations, the modules can define three methods:
+
+=over
+
+=item %defaults = $converter->converter_defaults()
+
+The converter can provide a defaults hash for configurations options.
+
+=item @global_commands = $converter->converter_global_commands()
+
+The list returned is the list of Texinfo global commands (like 
+C<@paragraphindent>, C<@documentlanguage>...) that are relevant for the
+converter.
+
+=item converter_initialize
+
+This method is called at the end of the converter initialization.
+
+=back
+
+=head2 Helper methods
+
+C<Texinfo::Convert::Converter> provides methods
+that may be useful for every converter:
+
+=over
+
+=item $converter->get_conf($option_string)
+
+Returns the value of the Texinfo configuration option I<$option_string>.
+
+=item $converter->set_conf($option_string, $value)
+
+Set the Texinfo configuration option I<$option_string> to I<$value> if
+not set as a converter option.
+
+=item $converter->force_conf($option_string, $value)
+
+Set the Texinfo configuration option I<$option_string> to I<$value>.
+This should rarely be used, but the purpose of this method is to be able
+to revert a configuration that is always wrong for a given output
+format, like the splitting for example.
+
+=item $result = $converter->convert_document_sections($root, $file_handler)
+
+This method splits the I<$root> Texinfo tree at sections and 
+calls C<convert_tree> on the elements.  If the optional I<$file_handler>
+is given in argument, the result are output in I<$file_handler>, otherwise
+the resulting string is returned.
+
+=item $result = $converter->convert_accents($accent_command, \&format_accents, $in_upper_case)
+
+I<$accent_command> is an accent command, which may have other accent
+commands nested.  The function returns the accents formatted either
+as encoded letters, or formatted using I<\&format_accents>.
+If I<$in_upper_case> is set, the result should be upper cased.  
+
+=back
+
+Other C<Texinfo::Convert::Converter> methods target conversion to XML:
+
+=over
+
+=item $protected_text = $converter->xml_protect_text($text)
+
+Protect special XML characters (&, E<lt>, E<gt>, ") of I<$text>.
+
+=item $comment = $converter->xml_comment($text)
+
+Returns an XML comment for I<$text>.
+
+=item $result = xml_accent($text, $accent_command, $in_upper_case, $use_numeric_entities)
+
+I<$text> is the text appearing within an accent command.  I<$accent_command>
+should be a Texinfo tree element corresponding to an accent command taking
+an argument.  I<$in_upper_case> is optional, and, if set, the text is put
+in upper case.  The function returns the accented letter as XML entity 
+if possible.  I<$use_numeric_entities> is also optional, and, if set, and
+there is no XML entity, the numerical entity corresponding to unicode 
+points is preferred to an ascii transliteration.
+
+=item $result = $converter->xml_accents($accent_command, $in_upper_case)
+
+I<$accent_command> is an accent command, which may have other accent
+commands nested.  If I<$in_upper_case> is set, the result should be 
+upper cased.  The function returns the accents formatted as XML.
+
+=back
+
+=head1 AUTHOR
+
+Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2011 Free Software Foundation, Inc.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at 
+your option) any later version.
+
+=cut
