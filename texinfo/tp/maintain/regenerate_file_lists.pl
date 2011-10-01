@@ -15,7 +15,6 @@ sub wanted
 }
 
 my %new_files = %files;
-#print STDERR join("\n", @files)."\n";
 
 open (FILE, "MANIFEST") or die "Open MANIFEST: $!\n";
 
@@ -26,15 +25,15 @@ while (<FILE>) {
 
 print join("\n", sort(keys(%new_files))) ."\n";
 
-if (! -d "tmp") {
-  mkdir "tmp" or die "mkdir tmp: $!\n";
-}
-open (OUT, '>maintain/MANIFEST_test_results') or die "Open maintain/MANIFEST_test_results: $!\n";
+#if (! -d "tmp") {
+#  mkdir "tmp" or die "mkdir tmp: $!\n";
+#}
+#open (OUT, '>maintain/MANIFEST_test_results') or die "Open maintain/MANIFEST_test_results: $!\n";
 open (INCLUDE, '>Makefile.incl') or die "Open Makefile.incl: $!\n";
 print INCLUDE "test_results =";
 
 foreach my $file (sort(keys(%files))) {
-  print OUT "$file\n";
+#  print OUT "$file\n";
   print INCLUDE " \\\n\t$file";
 }
 print INCLUDE "\n\n";
