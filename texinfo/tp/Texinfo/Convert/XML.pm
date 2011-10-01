@@ -238,12 +238,12 @@ my %context_block_commands = (
   'xml' => 1,
 );
 
-sub _defaults($)
+sub converter_defaults($)
 {
   return %defaults;
 }
 
-sub _initialize($)
+sub converter_initialize($)
 {
   my $self = shift;
 
@@ -280,9 +280,9 @@ sub output($$)
   }
 
   my $result = '';
-  $result .= Texinfo::Convert::Converter::_output_text($header, $fh);
-  $result .= $self->_convert_document_sections($root, $fh);
-  $result .= Texinfo::Convert::Converter::_output_text("</texinfo>\n", $fh);
+  $result .= $self->_output_text($header, $fh);
+  $result .= $self->convert_document_sections($root, $fh);
+  $result .= $self->_output_text("</texinfo>\n", $fh);
 
   return $result;
 }
@@ -337,7 +337,7 @@ sub convert($$;$)
   my $root = shift;
   my $fh = shift;
   
-  return $self->_convert_document_sections($root, $fh);
+  return $self->convert_document_sections($root, $fh);
 }
 
 sub convert_tree($$)
@@ -620,7 +620,7 @@ sub _convert($$;$)
         }
       } elsif ($type eq 'lineraw') {
         if ($root->{'cmdname'} eq 'c' or $root->{'cmdname'} eq 'comment') {
-          return $self->xml_default_comment($root->{'args'}->[0]->{'text'})
+          return $self->xml_comment($root->{'args'}->[0]->{'text'})
         } else {
           my $value = '';
           if ($root->{'args'} and $root->{'args'}->[0]

@@ -189,7 +189,7 @@ my %docbook_global_commands = (
   'documentencoding' => 1,
 );
 
-sub _global_commands($)
+sub converter_global_commands($)
 {
   return keys(%docbook_global_commands);
 }
@@ -263,12 +263,12 @@ my %docbook_preformatted_formats = (
    'menu_description' => 'literallayout',
 );
 
-sub _defaults($)
+sub converter_defaults($)
 {
   return %defaults;
 }
 
-sub _initialize($)
+sub converter_initialize($)
 {
   my $self = shift;
 
@@ -282,7 +282,7 @@ sub convert($$;$)
   my $fh = shift;
 
   $self->_set_global_multiple_commands(-1);
-  return $self->_convert_document_sections($root, $fh);
+  return $self->convert_document_sections($root, $fh);
 }
 
 sub convert_tree($$)
@@ -330,9 +330,9 @@ sub output($$)
 '. "<book${id} lang=\"".$self->get_conf('documentlanguage') ."\">\n";
 
   my $result = '';
-  $result .= Texinfo::Convert::Converter::_output_text($header, $fh);
-  $result .= $self->_convert_document_sections($root, $fh);
-  $result .= Texinfo::Convert::Converter::_output_text("</book>\n", $fh);
+  $result .= $self->_output_text($header, $fh);
+  $result .= $self->convert_document_sections($root, $fh);
+  $result .= $self->_output_text("</book>\n", $fh);
   return $result;
 }
 
@@ -654,7 +654,7 @@ sub _convert($$;$)
         return '';
       } elsif ($type eq 'lineraw') {
         if ($root->{'cmdname'} eq 'c' or $root->{'cmdname'} eq 'comment') {
-          return $self->xml_default_comment($root->{'args'}->[0]->{'text'})
+          return $self->xml_comment($root->{'args'}->[0]->{'text'})
         } else {
           return "";
         }

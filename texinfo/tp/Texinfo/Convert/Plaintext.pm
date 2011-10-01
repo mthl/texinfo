@@ -313,17 +313,17 @@ my %contents_commands = (
  'summarycontents' => 1,
 );
 
-sub _defaults($)
+sub converter_defaults($)
 {
   return %defaults;
 }
 
-sub _global_commands($)
+sub converter_global_commands($)
 {
   return @informative_global_commands;
 }
 
-sub _initialize($)
+sub converter_initialize($)
 {
   my $self = shift;
 
@@ -1386,7 +1386,7 @@ sub _convert($$)
             and $root->{'extra'}->{'label'}->{'cmdname'} eq 'float') {
           my $float = $root->{'extra'}->{'label'};
 
-          my $name = $self->float_type_number($float);;
+          my $name = $self->_float_type_number($float);;
           $args[1] = $name->{'contents'};
         }
         if ($command eq 'inforef' and scalar(@args) == 3) {

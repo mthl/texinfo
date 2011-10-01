@@ -38,7 +38,6 @@ my %defaults = (
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
-
 );
 
 # defaults for all converters.  Maybe more could be added, especially what
@@ -64,24 +63,25 @@ our %all_converters_defaults = (
 );
    
 
-sub _defaults($)
+sub converter_defaults($)
 {
   return %defaults;
 }
 
-sub _initialize($)
+sub converter_initialize($)
 {
 }
 
-sub _global_commands($)
+sub converter_global_commands($)
 {
   return ('documentlanguage', 'documentencoding');
 }
 
-sub _initialize_global_command($$$)
-{
-}
 
+# FIXME documentencoding handling is not reverted by resetting
+# a value with set_conf, so _unset_global_multiple_commands won't
+# reverse what _set_global_multiple_commands did through 
+# _informative_command.
 sub _informative_command($$)
 {
   my $self = shift;
@@ -141,7 +141,7 @@ sub converter(;$)
     $conf = shift;
     $name = ref($converter);
   }
-  my %defaults = $converter->_defaults();
+  my %defaults = $converter->converter_defaults();
   foreach my $key (keys(%all_converters_defaults)) {
     $defaults{$key} = $all_converters_defaults{$key} 
       if (!exists($defaults{$key}));
@@ -170,7 +170,7 @@ sub converter(;$)
 
       $converter->{'floats'} = $floats if ($floats);
       $converter->{'labels'} = $labels if ($labels);
-      foreach my $global_command ($converter->_global_commands()) {
+      foreach my $global_command ($converter->converter_global_commands()) {
         if (defined($converter->{'extra'}->{$global_command})) {
           my $root = $converter->{'extra'}->{$global_command};
           # always set unique commands
@@ -226,7 +226,7 @@ sub converter(;$)
 
   $converter->Texinfo::Report::new();
 
-  $converter->_initialize();
+  $converter->converter_initialize();
 
   return $converter;
 }
@@ -238,7 +238,7 @@ sub _set_global_multiple_commands($;$)
   # FIXME 0 (first) or -1 (last)?
   $multiple_commands_index = 0 if (!defined($multiple_commands_index));
 
-  foreach my $global_command ($self->_global_commands()) {
+  foreach my $global_command ($self->converter_global_commands()) {
     if (defined($self->{'extra'}->{$global_command})
         and ref($self->{'extra'}->{$global_command}) eq 'ARRAY') {
       my $root = $self->{'extra'}->{$global_command}->[$multiple_commands_index];
@@ -251,12 +251,13 @@ sub _set_global_multiple_commands($;$)
 }
 
 # Notice that set_conf is used, which means that it is not possible to
-# customize what is done for those commands.
+# customize what is done for those commands.  For documentencoding, for
+# example the values are not reset correctly, see the FIXME above.
 sub _unset_global_multiple_commands($)
 {
   my $self = shift;
 
-  foreach my $global_command ($self->_global_commands()) {
+  foreach my $global_command ($self->converter_global_commands()) {
     if (defined($self->{'extra'}->{$global_command})
         and ref($self->{'extra'}->{$global_command}) eq 'ARRAY') {
       if (exists($self->{'conf_default'}->{$global_command})) {
@@ -321,7 +322,6 @@ sub force_conf($$$)
 
 my $STDIN_DOCU_NAME = 'stdin';
 
-# This is especially useful for unsplit manuals
 sub _set_outfile($$$)
 {
   my $self = shift;
@@ -473,7 +473,7 @@ sub _create_destination_directory($)
   return 1;
 }
 
-sub float_type_number($$)
+sub _float_type_number($$)
 {
   my $self = shift;
   my $float = shift;
@@ -586,8 +586,9 @@ sub _level_corrected_section($$)
 }
 
 # output fo $fh if defined, otherwise return the text.
-sub _output_text($$)
+sub _output_text($$$)
 {
+  my $self = shift;
   my $text = shift;
   my $fh = shift;
   if ($fh) { 
@@ -598,7 +599,7 @@ sub _output_text($$)
   } 
 }   
 
-sub _convert_document_sections($$;$)
+sub convert_document_sections($$;$)
 {
   my $self = shift;
   my $root = shift;
@@ -608,11 +609,11 @@ sub _convert_document_sections($$;$)
   my $elements = Texinfo::Structuring::split_by_section($root);
   if ($elements) {
     foreach my $element (@$elements) {
-      $result .= _output_text ($self->_convert($element), $fh);
+      $result .= $self->_output_text ($self->_convert($element), $fh);
     }
     return $result;
   } else {
-    return _output_text ($self->_convert($root), $fh);
+    return $self->_output_text ($self->_convert($root), $fh);
   }
 }
 
@@ -758,7 +759,7 @@ foreach my $no_brace_command (keys(%Texinfo::Common::no_brace_commands)) {
     = $Texinfo::Common::no_brace_commands{$no_brace_command};
 }
 
-sub xml_default_comment($$)
+sub xml_comment($$)
 {
   my $self = shift;
   my $text = shift;
@@ -821,7 +822,7 @@ sub xml_accent($$;$$)
   return Texinfo::Convert::Text::ascii_accent($text, $command);
 }
 
-sub xml_accent_numeric_entities($$;$)
+sub _xml_accent_numeric_entities($$;$)
 {
   my $text = shift;
   my $command = shift;
@@ -838,7 +839,7 @@ sub xml_accents($$;$$)
 
   if (!defined($format_accents)) {
     if ($self->get_conf('USE_NUMERIC_ENTITY')) {
-      $format_accents = \&xml_accent_numeric_entities;
+      $format_accents = \&_xml_accent_numeric_entities;
     } else {
       $format_accents = \&xml_accent;
     }

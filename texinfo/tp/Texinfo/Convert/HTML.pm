@@ -485,7 +485,7 @@ sub command_text($$$)
         $tree = {'type' => '_code',
                  'contents' => $command->{'extra'}->{'node_content'}};
       } elsif ($command->{'cmdname'} and ($command->{'cmdname'} eq 'float')) {
-        $tree = $self->float_type_number($command); 
+        $tree = $self->_float_type_number($command); 
       } elsif ($command->{'extra'}->{'missing_argument'}) {
         if ($type eq 'tree' or $type eq 'tree_nonumber') {
           return {};
@@ -938,7 +938,7 @@ foreach my $buttons ('CHAPTER_BUTTONS', 'SECTION_FOOTER_BUTTONS', 'NODE_FOOTER_B
   $defaults{$buttons} = [@{$defaults{'SECTION_BUTTONS'}}];
 }
 
-sub _defaults($)
+sub converter_defaults($)
 {
   return %defaults;
 }
@@ -1037,7 +1037,7 @@ foreach my $misc_command(@informative_global_commands,
   $kept_misc_commands{$misc_command} = 1;
 }
 
-sub _global_commands($)
+sub converter_global_commands($)
 {
   return @informative_global_commands;
 }
@@ -1266,7 +1266,7 @@ sub _convert_style_command($$$$)
     if (defined($attribute_hash->{$cmdname}->{'attribute'})) {
       my ($style, $class, $attribute_text)
         = _parse_attribute ($attribute_hash->{$cmdname}->{'attribute'});
-      $text = $self->attribute_class($style, $class) . "$attribute_text>" 
+      $text = $self->_attribute_class($style, $class) . "$attribute_text>" 
               . $text . "</$style>";
     }
     if (defined($attribute_hash->{$cmdname}->{'quote'})) {
@@ -1669,7 +1669,7 @@ $default_commands_conversion{'titlefont'} = \&_convert_titlefont_command;
 sub _default_comment($$) {
   my $self = shift;
   my $text = shift;
-  return $self->xml_default_comment(' '.$text);
+  return $self->xml_comment(' '.$text);
 }
 
 sub _default_heading_text($$$$$)
@@ -1690,7 +1690,7 @@ sub _default_heading_text($$$$$)
   my $align = '';
   $align = ' align="center"' if ($cmdname eq 'centerchap' or $cmdname eq 'settitle');
   $level = 1 if ($level == 0);
-  my $result = $self->attribute_class ("h$level", $class) ."$align>$text</h$level>";
+  my $result = $self->_attribute_class("h$level", $class) ."$align>$text</h$level>";
   # FIXME titlefont appears inline in text, so no end of line is
   # added. The end of line should be added by the user if needed.
   $result .= "\n" unless ($cmdname eq 'titlefont');
@@ -1919,11 +1919,11 @@ sub _default_navigation_header_panel($$$$)
   my $first_button = 1;
   my $result = '';
   if ($self->get_conf('HEADER_IN_TABLE')) {
-    $result .= $self->attribute_class('table', 'header')
+    $result .= $self->_attribute_class('table', 'header')
         .' cellpadding="1" cellspacing="1" border="0">'."\n";
     $result .= "<tr>" unless $vertical;
   } else {
-    $result .= $self->attribute_class('div', 'header').">\n<p>\n";
+    $result .= $self->_attribute_class('div', 'header').">\n<p>\n";
   }
   foreach my $button (@$buttons) {
     if ($self->get_conf('HEADER_IN_TABLE')) {
@@ -2142,7 +2142,7 @@ sub _convert_raw_command($$$$)
     return $content;
   # FIXME compatibility with texi2html
   } elsif ($cmdname eq 'tex') {
-    return $self->attribute_class('pre', $cmdname).'>' 
+    return $self->_attribute_class('pre', $cmdname).'>' 
           .$self->xml_protect_text($content) . '</pre>';
   }
   $self->line_warn(sprintf($self->__("Raw format %s is not converted"), $cmdname),
@@ -2170,7 +2170,7 @@ sub _convert_preformatted_commands($$$$)
         return $content."\n";
       }
     } else {
-      return $self->attribute_class('div', $cmdname).">\n".$content.'</div>'."\n";
+      return $self->_attribute_class('div', $cmdname).">\n".$content.'</div>'."\n";
     }
   } else {
     return '';
@@ -2189,7 +2189,7 @@ sub _convert_verbatim_command($$$$)
   my $command = shift;
   my $content = shift;
 
-  return $self->attribute_class('pre', $cmdname).'>' 
+  return $self->_attribute_class('pre', $cmdname).'>' 
           .$content . '</pre>';
 }
 
@@ -2351,7 +2351,7 @@ sub _convert_listoffloats_command($$$$)
       and $self->{'floats'}->{$command->{'extra'}->{'type'}->{'normalized'}}
       and @{$self->{'floats'}->{$command->{'extra'}->{'type'}->{'normalized'}}}) { 
    my $listoffloats_name = $command->{'extra'}->{'type'}->{'normalized'};
-   my $result = $self->attribute_class('dl', 'listoffloats').">\n" ;
+   my $result = $self->_attribute_class('dl', 'listoffloats').">\n" ;
    foreach my $float (@{$self->{'floats'}->{$listoffloats_name}}) {
      my $float_href = $self->command_href($float);
      next if (!$float_href);
@@ -2422,12 +2422,12 @@ sub _convert_menu_command($$$$)
   my $end_row = '';
   if ($self->_in_preformatted_in_menu()) {
     #my $pre_class = $self->_preformatted_class();
-    #return $self->attribute_class('pre', $pre_class).">".$content."</pre>";
+    #return $self->_attribute_class('pre', $pre_class).">".$content."</pre>";
     
     $begin_row = '<tr><td>';
     $end_row = '</td></tr>';
   }
-  return $self->attribute_class('table', 'menu')
+  return $self->_attribute_class('table', 'menu')
     ." border=\"0\" cellspacing=\"0\">${begin_row}\n"
       . $content . "${end_row}</table>\n";
 }
@@ -2494,7 +2494,7 @@ sub _convert_float_command($$$$$)
   if ($caption and !$caption_text) {
     $caption_text = $self->convert_tree ($caption->{'args'}->[0]);
   }
-  return $self->attribute_class('div','float'). '>' .$label."\n".$content.
+  return $self->_attribute_class('div','float'). '>' .$label."\n".$content.
      '</div>' . $prepended_text.$caption_text;
 }
 $default_commands_conversion{'float'} = \&_convert_float_command;
@@ -2519,7 +2519,7 @@ sub _convert_quotation_command($$$$$)
       $attribution .= $self->convert_tree($centered_author);
     }
   }
-  return $self->attribute_class('blockquote', $class).">\n" .$content 
+  return $self->_attribute_class('blockquote', $class).">\n" .$content 
     ."</blockquote>\n" . $attribution;
 }
 $default_commands_conversion{'quotation'} = \&_convert_quotation_command;
@@ -2533,7 +2533,7 @@ sub _convert_cartouche_command($$$$)
   my $content = shift;
 
   if ($content =~ /\S/) {
-    return $self->attribute_class('table', 'cartouche')
+    return $self->_attribute_class('table', 'cartouche')
        ." border=\"1\"><tr><td>\n". $content ."</td></tr></table>\n";
   }
   return '';
@@ -2552,7 +2552,7 @@ sub _convert_itemize_command($$$$)
      and $command->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
     return "<ul>\n" . $content. "</ul>\n";
   } else {
-    return $self->attribute_class('ul',$NO_BULLET_LIST_CLASS).">\n" 
+    return $self->_attribute_class('ul',$NO_BULLET_LIST_CLASS).">\n" 
             . $content . "</ul>\n";
   }
 }
@@ -2994,7 +2994,7 @@ sub _convert_printindex_command($$$$)
     }
     $letter_id{$letter} = $identifier;
     
-    my $summary_letter_link = $self->attribute_class('a', 'summary-letter') 
+    my $summary_letter_link = $self->_attribute_class('a', 'summary-letter') 
        ." href=\"#$identifier\"><b>".$self->xml_protect_text($letter).'</b></a>';
     if ($is_symbol) {
       push @non_alpha, $summary_letter_link;
@@ -3021,7 +3021,7 @@ sub _convert_printindex_command($$$$)
   $result .= $summary;
 
   # now format the index entries
-  $result .= $self->attribute_class('table', "index-$index_name")
+  $result .= $self->_attribute_class('table', "index-$index_name")
     ." border=\"0\">\n" . "<tr><td></td><th align=\"left\">"
     . $self->convert_tree($self->gdt('Index Entry'))
     . "</th><td>&nbsp;</td><th align=\"left\"> "
@@ -3294,7 +3294,7 @@ sub _convert_preformatted_type($$$$)
       and !$self->_in_preformatted_in_menu()) {
     return $content;
   }
-  my $result = $self->attribute_class('pre', $pre_class).">".$content."</pre>";
+  my $result = $self->_attribute_class('pre', $pre_class).">".$content."</pre>";
 
   # this may happen with empty lines between a def* and def*x.
   if ($command->{'parent'}->{'cmdname'} 
@@ -3379,7 +3379,7 @@ sub _convert_text($$$)
       $text =~ s/\x{1F}/--/g;
     }
   }
-  $text = $self->protect_space_codebreak($text);
+  $text = $self->_protect_space_codebreak($text);
   return $text;
 }
 
@@ -3488,7 +3488,7 @@ sub _convert_menu_entry_type($$$)
 
     if (!$self->get_conf('SIMPLE_MENU')) {
       my $pre_class = $self->_preformatted_class();
-      $result = $self->attribute_class('pre', $pre_class).">".$result."</pre>";
+      $result = $self->_attribute_class('pre', $pre_class).">".$result."</pre>";
     }
     return $result;
   }
@@ -3963,7 +3963,7 @@ sub _use_entity_is_entity($$)
   return 1 if ($text =~ /^&/ and $text =~ /;$/);
 }
 
-sub _initialize($)
+sub converter_initialize($)
 {
   my $self = shift;
 
@@ -5069,7 +5069,10 @@ sub _prepare_footnotes($)
   }
 }
 
-sub htmlxref($$)
+# TODO this encapsulates some information.
+# The encapsulation and API should be more consistent for
+# the overall module.
+sub _htmlxref($$)
 {
   my $self = shift;
   my $file = shift;
@@ -5116,7 +5119,7 @@ sub _external_node_href($$;$)
     $document_split = 'mono' if (!$document_split);
     my $split_found;
     my $href;
-    my $htmlxref_info = $self->htmlxref($manual_base);
+    my $htmlxref_info = $self->_htmlxref($manual_base);
     if ($htmlxref_info) {
       foreach my $split_ordered (@{$htmlxref_entries{$document_split}}) {
         if (defined($htmlxref_info->{$split_ordered})) {
@@ -5311,12 +5314,12 @@ sub _default_contents($$;$$)
   $ul_class = $NO_BULLET_LIST_CLASS if ($self->get_conf('NUMBER_SECTIONS'));
 
   my $result = '';
-  $result .= $self->attribute_class('div', $cmdname).">\n";
+  $result .= $self->_attribute_class('div', $cmdname).">\n";
 
   my $toplevel_contents;
   if (@{$section_root->{'section_childs'}} > 1) { 
   #    or $section_root->{'section_childs'}->[0]->{'cmdname'} ne 'top') {
-    $result .= $self->attribute_class('ul', $ul_class) .">\n";
+    $result .= $self->_attribute_class('ul', $ul_class) .">\n";
     $toplevel_contents = 1;
   }
   foreach my $top_section (@{$section_root->{'section_childs'}}) {
@@ -5361,7 +5364,7 @@ sub _default_contents($$;$$)
         # no indenting for shortcontents
         $result .= "\n". ' ' x (2*($section->{'level'} - $root_level))
           if ($contents);
-        $result .= $self->attribute_class('ul', $ul_class) .">\n";
+        $result .= $self->_attribute_class('ul', $ul_class) .">\n";
         $section = $section->{'section_childs'}->[0];
       } elsif ($section->{'section_next'} and $section->{'cmdname'} ne 'top') {
         $result .= "</li>\n";
@@ -5570,14 +5573,6 @@ $after_body_open";
   return $result;
 }
 
-# FIXME is it usefull/used?
-sub convert_translation($$$)
-{
-  my $self = shift;
-  my $text = shift;
-  return $self->convert_tree($self->gdt($text));
-}
-
 sub _default_node_redirection_page($$)
 {
   my $self = shift;
@@ -5625,7 +5620,7 @@ sub _default_footnotes_text($)
 {
   my $self = shift;
   return '' if (!$foot_lines);
-  my $result = $self->attribute_class('div', 'footnote').">\n";
+  my $result = $self->_attribute_class('div', 'footnote').">\n";
   $result .= $self->get_conf('DEFAULT_RULE') . "\n" 
      if (defined($self->get_conf('DEFAULT_RULE')) 
          and $self->get_conf('DEFAULT_RULE') ne '');
@@ -5779,19 +5774,6 @@ sub convert($$)
   }
 
   return $result;
-}
-
-# output fo $fh if defined, otherwise return the text.
-sub _output_text($$)
-{
-  my $text = shift;
-  my $fh = shift;
-  if ($fh) {
-    print $fh $text;
-    return '';
-  } else {
-    return $text;
-  }
 }
 
 sub output($$)
@@ -5974,17 +5956,17 @@ sub output($$)
     }
     $self->{'current_filename'} = $self->{'output_filename'};
     my $header = &{$self->{'begin_file'}}($self, $self->{'output_filename'}, undef);
-    $output .= _output_text($header, $fh);
+    $output .= $self->_output_text($header, $fh);
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
         my $element_text = $self->_convert($element);
-        $output .= _output_text($element_text, $fh);
+        $output .= $self->_output_text($element_text, $fh);
       }
     } else {
-      $output .= _output_text($self->_print_title(), $fh);
-      $output .= _output_text($self->_convert($root), $fh);
+      $output .= $self->_output_text($self->_print_title(), $fh);
+      $output .= $self->_output_text($self->_convert($root), $fh);
     }
-    $output .= _output_text(&{$self->{'end_file'}}($self), $fh);
+    $output .= $self->_output_text(&{$self->{'end_file'}}($self), $fh);
     return $output if ($self->get_conf('OUTFILE') eq '');
   } else {
     # output with pages
@@ -6200,7 +6182,7 @@ sub _convert_contents($$$)
   return $content_formatted;
 }
 
-sub attribute_class($$$)
+sub _attribute_class($$$)
 {
   my $self = shift;
   my $element = shift;
@@ -6218,7 +6200,7 @@ sub attribute_class($$$)
   return "<$element class=\"$class\"$style";
 }
 
-sub protect_space_codebreak($$)
+sub _protect_space_codebreak($$)
 {
   my $self = shift;
   my $text = shift;
@@ -6233,7 +6215,7 @@ sub protect_space_codebreak($$)
     my $class = 'nolinebreak';
     $class = 'nocodebreak' if ($self->in_code() 
                            and $self->get_conf('allowcodebreaks') eq 'false');
-    my $open = $self->attribute_class('span', $class).'>';
+    my $open = $self->_attribute_class('span', $class).'>';
     # protect spaces in the html leading attribute in case we are in 'w'
     $open =~ s/ /\x{1F}/g if ($in_w);
     # special span to avoid breaking at _-
