@@ -929,7 +929,7 @@ C<converter_global_commands> and used for initialization, to
 give C<Texinfo::Convert::Converter> some informations.
 
 The C<convert_tree> is more or less mandatory and should convert
-portions of Texinfo tree.  The C<output> and C<methods> are not
+portions of Texinfo tree.  The C<output> and C<convert> are not
 required, but customarily used by converters as entry points for
 conversion to a file with headers and so on, or conversion of a
 texinfo tree.
