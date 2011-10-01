@@ -33,7 +33,6 @@ $VERSION = '0.01';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
-  'footnotestyle'        => 'end',
 #  'perl_encoding'        => 'ascii',
 #  'encoding_name'      => 'us-ascii',
   'OUTFILE'              => undef,
@@ -58,6 +57,7 @@ our %all_converters_defaults = (
   'paragraphindent'      => 3,
   'firstparagraphindent' => 'none',
   'allowcodebreaks'      => 'true',
+  'footnotestyle'        => 'end',
 
   'DEBUG'                => 0,
   'TEST'                 => 0,

@@ -280,13 +280,11 @@ my %defaults = (
   'EXTENSION'            => 'info',
   'USE_SETFILENAME_EXTENSION' => 1,
 
-  'footnotestyle'        => 'end',
   'encoding_name'        => undef,
   'perl_encoding'        => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
-  'empty_lines_count'    => undef,
 
   'output_format'        => '',
 );
@@ -331,6 +329,7 @@ sub _initialize($)
 
   $self->{'context'} = [];
   $self->{'format_context'} = [];
+  $self->{'empty_lines_count'} = undef;
   $self->push_top_formatter('_Root_context');
   push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                      'locations' => []};

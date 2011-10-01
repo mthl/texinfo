@@ -835,7 +835,6 @@ my %PASSIVE_ICONS = (
 our %defaults = (
   'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 1,
-  'footnotestyle'        => 'end',
   'perl_encoding'        => 'utf8',
   'encoding_name'        => 'utf-8',
   #'encoding_name'        => undef,
