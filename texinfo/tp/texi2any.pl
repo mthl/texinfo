@@ -466,15 +466,8 @@ sub _set_variables_texi2html()
                                             'Up', 'Forward', 'FastForward' ]],
   );
   foreach my $option (@texi2html_options) {
-    #set_from_init_file($option->[0], $option->[1]);
-    #$converter_default_options->{$option->[0]} = $option->[1];
-    #no warnings 'once';
-    if (exists($Texinfo::Convert::HTML::defaults{$option->[0]})) {
-      $Texinfo::Convert::HTML::defaults{$option->[0]} = $option->[1];
-    } else {# (exists($Texinfo::Convert::Converter::all_converters_defaults{$option->[0]})) {
-      no warnings 'once';
-      $Texinfo::Convert::Converter::all_converters_defaults{$option->[0]} = $option->[1];
-    }
+    no warnings 'once';
+    $Texinfo::Convert::HTML::defaults{$option->[0]} = $option->[1];
   }
 }
 
