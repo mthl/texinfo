@@ -992,7 +992,7 @@ foreach my $indented_format ('example', 'display', 'lisp') {
 
 # default specification of arguments formatting
 my %default_commands_args = (
-  'email' => [['code'], ['normal']],
+  'email' => [['code', 'codestring'], ['normal']],
   'anchor' => [['codestring']],
   'uref' => [['codestring'], ['normal'], ['normal']],
   'url' => [['codestring'], ['normal'], ['normal']],
@@ -1287,7 +1287,11 @@ sub _convert_w_command($$$$)
   if (!defined($text)) {
     $text = '';
   }
-  return $text . '<!-- /@w -->';
+  if ($self->in_string) {
+    return $text;
+  } else {
+    return $text . '<!-- /@w -->';
+  }
 }
 $default_commands_conversion{'w'} = \&_convert_w_command;
 
@@ -1314,18 +1318,22 @@ sub _convert_email_command($$$$)
   my $mail_arg = shift @$args;
   my $text_arg = shift @$args;
   my $mail = '';
+  my $mail_string = '';
   if (defined($mail_arg)) {
     $mail = $mail_arg->{'code'};
+    $mail_string = $mail_arg->{'codestring'};
   }
-  # $mail = main::normalise_space($mail);
   my $text = '';
   if (defined($text_arg)) {
     $text = $text_arg->{'normal'};
-    # $text = main::normalise_space($text);
   }
   $text = $mail unless ($text ne '');
   return $text if ($mail eq '');
-  return "<a href=\"mailto:$mail\">$text</a>";
+  if ($self->in_string()) {
+    return "$mail_string ($text)";
+  } else {
+    return "<a href=\"mailto:$mail_string\">$text</a>";
+  }
 }
 
 $default_commands_conversion{'email'} = \&_convert_email_command;
@@ -1383,7 +1391,8 @@ sub _convert_anchor_command($$$$)
   my $args = shift;
 
   my $id = $self->command_id ($command);
-  if (defined($id) and $id ne '' and !@{$self->{'multiple_pass'}}) {
+  if (defined($id) and $id ne '' and !@{$self->{'multiple_pass'}}
+      and !$self->in_string()) {
     return "<a name=\"$id\"></a>";
   }
   return '';
@@ -1413,6 +1422,7 @@ sub _convert_footnote_command($$$$)
     $number_in_doc = $NO_NUMBER_FOOTNOTE_SYMBOL;
   }
   
+  return "($number_in_doc)" if ($self->in_string());
   #print STDERR "FOOTNOTE $command\n";
   my $docid  = $self->command_id($command);
   my $footid = $self->command_target($command);
@@ -1491,6 +1501,7 @@ sub _convert_uref_command($$$$)
   $text = $replacement if (defined($replacement) and $replacement ne '');
   $text = $url if (!defined($text) or $text eq '');
   return $text if (!defined($url) or $url eq '');
+  return "$text ($url)" if ($self->in_string());
   return "<a href=\"$url\">$text</a>";
 }
 
@@ -1509,6 +1520,7 @@ sub _convert_image_command($$$$)
 
   if (defined($args->[0]->{'codetext'}) and $args->[0]->{'codetext'} ne '') {
     my $basefile = $args->[0]->{'codetext'};
+    return $basefile if ($self->in_string());
     my $extension;
     if (defined($args->[4]) and defined($args->[4]->{'codetext'})) {
       $extension = $args->[4]->{'codetext'};
@@ -1618,8 +1630,12 @@ sub _convert_indicateurl_command($$$$)
     #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
-  return $self->xml_protect_text('<').'<code>' .$text 
+  if (!$self->in_string()) {
+    return $self->xml_protect_text('<').'<code>' .$text 
                     .'</code>'.$self->xml_protect_text('>');
+  } else {
+    return $self->xml_protect_text('<').$text.$self->xml_protect_text('>');
+  }
 }
 
 $default_commands_conversion{'indicateurl'} = \&_convert_indicateurl_command;
@@ -1681,9 +1697,16 @@ sub _default_heading_text($$$$$)
   my $command = shift;
 
   return '' if ($text !~ /\S/);
+
+  # This should seldom happen.
+  if ($self->in_string()) {
+    $text .= "\n" unless ($cmdname eq 'titlefont');
+    return $text;
+  }
+
   # FIXME use a class=*contents?
   my $class = '';
-  if ($cmdname and $cmdname !~ /contents$/) {
+  if ($cmdname !~ /contents$/) {
     $class = $cmdname;
     $class = 'node-heading' if ($cmdname eq 'node');
   }
@@ -1691,7 +1714,7 @@ sub _default_heading_text($$$$$)
   $align = ' align="center"' if ($cmdname eq 'centerchap' or $cmdname eq 'settitle');
   $level = 1 if ($level == 0);
   my $result = $self->_attribute_class("h$level", $class) ."$align>$text</h$level>";
-  # FIXME titlefont appears inline in text, so no end of line is
+  # titlefont appears inline in text, so no end of line is
   # added. The end of line should be added by the user if needed.
   $result .= "\n" unless ($cmdname eq 'titlefont');
   $result .= $self->get_conf('DEFAULT_RULE') . "\n" 
@@ -1824,13 +1847,11 @@ sub _default_button_formatting($$)
     }
   } elsif ($button eq ' ') {
     # handle space button
-    # FIXME for the alt, the second button_icon_img argument, we don't use
-    # the button name (we do it for other buttons).  This doesn't matter much
-    # however, as ' ' is not translated in BUTTON_NAMES.
     if ($self->get_conf('ICONS') and $self->get_conf('ACTIVE_ICONS')
         and defined($self->get_conf('ACTIVE_ICONS')->{$button})
         and $self->get_conf('ACTIVE_ICONS')->{$button} ne '') {
-      $active = &{$self->{'button_icon_img'}}($self, $button, 
+      my $button_name = $self->get_conf('BUTTONS_NAME')->{$button};
+      $active = &{$self->{'button_icon_img'}}($self, $button_name, 
                                        $self->get_conf('ACTIVE_ICONS')->{' '});
     } else {
       $active = $self->get_conf('BUTTONS_TEXT')->{$button};
@@ -2017,18 +2038,17 @@ sub _convert_heading_command($$$$$)
   my $args = shift;
   my $content = shift;
 
-  my $content_ref = '';
-  if ($self->get_conf('TOC_LINKS')) {
-    my $content_href = $self->command_contents_href($command, 'contents',
-                                      $self->{'current_filename'});
-    if ($content_href) {
-      $content_ref = " href=\"$content_href\"";
-    }
-  }
   my $result = '';
+
+  # not clear that it may really happen
+  if ($self->in_string) {
+    $result .= $self->command_string($command) ."\n" if ($cmdname ne 'node');
+    $result .= $content if (defined($content));
+    return $result;
+  }
+
   my $element_id = $self->command_id($command);
-  # FIXME a href here doesn't make sense, there is no text?
-  $result .= "<a name=\"$element_id\"${content_ref}></a>\n" 
+  $result .= "<a name=\"$element_id\"></a>\n" 
     if (defined($element_id) and $element_id ne '');
 
   print STDERR "Process $command "
@@ -2109,6 +2129,16 @@ sub _convert_heading_command($$$$$)
   # $heading not defined may happen if the command is a @node, for example
   # if there is an error in the node.
   if (defined($heading) and $heading ne '' and defined($heading_level)) {
+
+    if ($self->get_conf('TOC_LINKS') and $root_commands{$cmdname}
+        and $sectioning_commands{$cmdname}) {
+      my $content_href = $self->command_contents_href($command, 'contents',
+                                        $self->{'current_filename'});
+      if ($content_href) {
+        $heading = "<a href=\"$content_href\">$heading</a>";
+      }
+    }
+
     if ($self->in_preformatted()) {
       $result .= '<strong>'.$heading.'</strong>'."\n";
     } else {
@@ -2141,6 +2171,8 @@ sub _convert_raw_command($$$$)
     chomp ($content);
     return $content;
   # FIXME compatibility with texi2html
+  } elsif ($self->in_string()) {
+    return $self->xml_protect_text($content);
   } elsif ($cmdname eq 'tex') {
     return $self->_attribute_class('pre', $cmdname).'>' 
           .$self->xml_protect_text($content) . '</pre>';
@@ -2162,7 +2194,7 @@ sub _convert_preformatted_commands($$$$)
   my $command = shift;
   my $content = shift;
 
-  if ($content ne '') {
+  if ($content ne '' and !$self->in_string()) {
     if ($self->get_conf('COMPLEX_FORMAT_IN_TABLE')) {
       if ($indented_preformatted_commands{$cmdname}) {
         return '<table><tr><td>&nbsp;</td><td>'.$content."</td></tr></table>\n";
@@ -2173,7 +2205,7 @@ sub _convert_preformatted_commands($$$$)
       return $self->_attribute_class('div', $cmdname).">\n".$content.'</div>'."\n";
     }
   } else {
-    return '';
+    return $content;
   }
 }
 
@@ -2189,8 +2221,12 @@ sub _convert_verbatim_command($$$$)
   my $command = shift;
   my $content = shift;
 
-  return $self->_attribute_class('pre', $cmdname).'>' 
+  if (!$self->in_string) {
+    return $self->_attribute_class('pre', $cmdname).'>' 
           .$content . '</pre>';
+  } else {
+    return $content;
+  }
 }
 
 $default_commands_conversion{'verbatim'} = \&_convert_verbatim_command;
@@ -2238,7 +2274,7 @@ sub _convert_sp_command($$$$)
 
   if (defined($command->{'extra'}->{'misc_args'}->[0])) {
     my $sp_nr = $command->{'extra'}->{'misc_args'}->[0];
-    if ($self->in_preformatted()) {
+    if ($self->in_preformatted() or $self->in_string()) {
       return "\n" x $sp_nr;
     } else {
       return "<br>\n" x $sp_nr;
@@ -2258,7 +2294,7 @@ sub _convert_exdent_command($$$$)
   # FIXME do something better with css and span?
   my $preformatted = $self->in_preformatted();
   
-  if ($preformatted) {
+  if ($self->in_preformatted() or $self->in_string()) {
     return $self->_convert_preformatted_type($cmdname, $command, 
                                              $args->[0]->{'normal'} ."\n");
   } else {
@@ -2276,9 +2312,7 @@ sub _convert_center_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  my $preformatted = $self->in_preformatted();
-  
-  if ($preformatted) {
+  if ($self->in_preformatted() or $self->in_string()) {
     return $self->_convert_preformatted_type($cmdname, $command, 
                                              $args->[0]->{'normal'} ."\n");
   } else {
@@ -2296,7 +2330,11 @@ sub _convert_author_command($$$$)
   my $args = shift;
 
   return '' if (!$args->[0] or !$command->{'extra'}->{'titlepage'});
-  return "<strong>$args->[0]->{'normal'}</strong><br>\n";
+  if (!$self->in_string()) {
+    return "<strong>$args->[0]->{'normal'}</strong><br>\n";
+  } else {
+    return $args->[0]->{'normal'}."\n";
+  }
 }
 
 $default_commands_conversion{'author'} = \&_convert_author_command;
@@ -2308,7 +2346,11 @@ sub _convert_title_command($$$$)
   my $command = shift;
   my $args = shift;
   return '' if (!$args->[0]);
-  return "<h1>$args->[0]->{'normal'}</h1>\n";
+  if (!$self->in_string()) {
+    return "<h1>$args->[0]->{'normal'}</h1>\n";
+  } else {
+    return $args->[0]->{'normal'};
+  }
 }
 $default_commands_conversion{'title'} = \&_convert_title_command;
 
@@ -2319,7 +2361,11 @@ sub _convert_subtitle_command($$$$)
   my $command = shift;
   my $args = shift;
   return '' if (!$args->[0]);
-  return "<h3 align=\"right\">$args->[0]->{'normal'}</h3>\n";
+  if (!$self->in_string()) {
+    return "<h3 align=\"right\">$args->[0]->{'normal'}</h3>\n";
+  } else {
+    return $args->[0]->{'normal'};
+  }
 }
 $default_commands_conversion{'subtitle'} = \&_convert_subtitle_command;
 
@@ -2345,7 +2391,8 @@ sub _convert_listoffloats_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  if ($command->{'extra'} and $command->{'extra'}->{'type'}
+  if (!$self->in_string()
+      and $command->{'extra'} and $command->{'extra'}->{'type'}
       and defined($command->{'extra'}->{'type'}->{'normalized'})
       and $self->{'floats'}
       and $self->{'floats'}->{$command->{'extra'}->{'type'}->{'normalized'}}
@@ -2418,6 +2465,9 @@ sub _convert_menu_command($$$$)
   if ($content !~ /\S/) {
     return '';
   }
+  if ($self->in_string()) {
+    return $content;
+  }
   my $begin_row = '';
   my $end_row = '';
   if ($self->_in_preformatted_in_menu()) {
@@ -2442,6 +2492,23 @@ sub _convert_float_command($$$$$)
   my $args = shift;
   my $content = shift;
 
+  my ($caption, $prepended) = Texinfo::Common::float_name_caption($self,
+                                                                   $command);
+  my $caption_text = '';
+  my $prepended_text;
+  if ($self->in_string()) {
+    if ($prepended) {
+      $prepended_text = $self->convert_tree ($prepended);
+    } else {
+      $prepended_text = '';
+    }
+    if ($caption) {
+      $caption_text = $self->convert_tree ({'contents' 
+                       => $caption->{'args'}->[0]->{'contents'}});
+    }
+    return $prepended.$content.$caption_text;
+  }
+
   my $id = $self->command_id($command);
   my $label;
   if (defined($id) and $id ne '') {
@@ -2450,10 +2517,6 @@ sub _convert_float_command($$$$$)
     $label = '';
   }
 
-  my ($caption, $prepended) = Texinfo::Common::float_name_caption($self,
-                                                                   $command);
-  my $caption_text = '';
-  my $prepended_text;
   if ($prepended) {
     if ($caption) {
       my @caption_original_contents = @{$caption->{'args'}->[0]->{'contents'}};
@@ -2519,8 +2582,12 @@ sub _convert_quotation_command($$$$$)
       $attribution .= $self->convert_tree($centered_author);
     }
   }
-  return $self->_attribute_class('blockquote', $class).">\n" .$content 
-    ."</blockquote>\n" . $attribution;
+  if (!$self->in_string()) {
+    return $self->_attribute_class('blockquote', $class).">\n" .$content 
+      ."</blockquote>\n" . $attribution;
+  } else {
+    return $content.$attribution;
+  }
 }
 $default_commands_conversion{'quotation'} = \&_convert_quotation_command;
 $default_commands_conversion{'smallquotation'} = \&_convert_quotation_command;
@@ -2532,11 +2599,11 @@ sub _convert_cartouche_command($$$$)
   my $command = shift;
   my $content = shift;
 
-  if ($content =~ /\S/) {
+  if ($content =~ /\S/ and !$self->in_string()) {
     return $self->_attribute_class('table', 'cartouche')
        ." border=\"1\"><tr><td>\n". $content ."</td></tr></table>\n";
   }
-  return '';
+  return $content;
 }
 
 $default_commands_conversion{'cartouche'} = \&_convert_cartouche_command;
@@ -2548,6 +2615,9 @@ sub _convert_itemize_command($$$$)
   my $command = shift;
   my $content = shift;
 
+  if ($self->in_string()) {
+    return $content;
+  }
   if ($command->{'extra'}->{'command_as_argument'} 
      and $command->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
     return "<ul>\n" . $content. "</ul>\n";
@@ -2566,6 +2636,9 @@ sub _convert_enumerate_command($$$$)
   my $command = shift;
   my $content = shift;
 
+  if ($self->in_string()) {
+    return $content;
+  }
   if ($content ne '') {
     return "<ol>\n" . $content . "</ol>\n";
   } else {
@@ -2582,6 +2655,9 @@ sub _convert_multitable_command($$$$)
   my $command = shift;
   my $content = shift;
 
+  if ($self->in_string()) {
+    return $content;
+  }
   if ($content =~ /\S/) {
     return "<table>\n" . $content . "</table>\n";
   } else {
@@ -2598,6 +2674,9 @@ sub _convert_xtable_command($$$$)
   my $command = shift;
   my $content = shift;
 
+  if ($self->in_string()) {
+    return $content;
+  }
   if ($content ne '') {
     return "<dl compact=\"compact\">\n" . $content . "</dl>\n";
   } else {
@@ -2615,6 +2694,9 @@ sub _convert_item_command($$$$)
   my $command = shift;
   my $content = shift;
 
+  if ($self->in_string()) {
+    return $content;
+  }
   if ($command->{'parent'}->{'cmdname'} 
       and $command->{'parent'}->{'cmdname'} eq 'itemize') {
     my $prepend ;
@@ -2716,6 +2798,9 @@ sub _convert_tab_command ($$$$)
   $content =~ s/^\s*//;
   $content =~ s/\s*$//;
 
+  if ($self->in_string()) {
+    return $content;
+  }
   if ($row_cmdname eq 'headitem') {
     return "<th${fractions}>" . $content . '</th>';
   } else {
@@ -2783,7 +2868,8 @@ sub _convert_xref_commands($$$$)
       }
     }
     my $reference = $name;
-    $reference = "<a href=\"$href\">$name</a>" if ($href ne '');
+    $reference = "<a href=\"$href\">$name</a>" if ($href ne '' 
+                                                   and !$self->in_string());
 
     # maybe use {'extra'}->{'node_argument'}?
     my $is_section = ($command->{'cmdname'} ne 'node' 
@@ -2847,7 +2933,8 @@ sub _convert_xref_commands($$$$)
       
     $name = '' if (!defined($name));
     my $reference = $name;
-    $reference = "<a href=\"$href\">$name</a>" if ($href ne '');
+    $reference = "<a href=\"$href\">$name</a>" if ($href ne '' 
+                                                   and !$self->in_string());
 
     if ($cmdname eq 'pxref') {
       if (($book ne '') and ($href ne '')) {
@@ -2927,7 +3014,9 @@ sub _convert_index_command($$$$)
   my $args = shift;
 
   my $index_id = $self->command_id ($command);
-  if (defined($index_id) and $index_id ne '' and !@{$self->{'multiple_pass'}}) {
+  if (defined($index_id) and $index_id ne '' 
+      and !@{$self->{'multiple_pass'}} 
+      and !$self->in_string()) {
     my $result = "<a name=\"$index_id\"></a>";
     $result .= "\n" unless ($self->in_preformatted());
     return $result;
@@ -2964,6 +3053,7 @@ sub _convert_printindex_command($$$$)
   #    print STDERR "   ".join('|', keys(%$index_entry))."||| $index_entry->{'key'}\n";
   #  }
   #}
+  return '' if ($self->in_string());
 
   $self->_new_document_context($cmdname);
 
@@ -3140,6 +3230,7 @@ sub _convert_informative_command($$$$)
   my $cmdname = shift;
   my $command = shift;
 
+  return '' if ($self->in_string());
   $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
 
   $self->_informative_command($command);
@@ -3219,6 +3310,7 @@ sub _convert_paragraph_type($$$$)
       }
     }
   }
+  return $content if ($self->in_string());
 
   if ($content =~ /\S/) {
     my $align = $self->in_align();
@@ -3292,6 +3384,9 @@ sub _convert_preformatted_type($$$$)
   if ($command->{'parent'}->{'type'} 
       and $command->{'parent'}->{'type'} eq 'menu_entry_description'
       and !$self->_in_preformatted_in_menu()) {
+    return $content;
+  }
+  if ($self->in_string()) {
     return $content;
   }
   my $result = $self->_attribute_class('pre', $pre_class).">".$content."</pre>";
@@ -3398,6 +3493,7 @@ sub _convert_row_type($$$$) {
   my $command = shift;
   my $content = shift;
 
+  return $content if ($self->in_string());
   if ($content =~ /\S/) {
     my $row_cmdname = $command->{'contents'}->[0]->{'cmdname'};
     if ($row_cmdname eq 'headitem') {
@@ -3448,7 +3544,7 @@ sub _convert_menu_entry_type($$$)
   my $MENU_SYMBOL = $self->get_conf('MENU_SYMBOL');
   my $MENU_ENTRY_COLON = $self->get_conf('MENU_ENTRY_COLON');
 
-  if ($self->_in_preformatted_in_menu()) {
+  if ($self->_in_preformatted_in_menu() or $self->in_string()) {
     my $result = '';
     my $i = 0;
     my @args = @{$command->{'args'}};
@@ -3459,7 +3555,7 @@ sub _convert_menu_entry_type($$$)
       if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_node') {
         my $name = $self->convert_tree(
            {'type' => '_code', 'contents' => $arg->{'contents'}});
-        if ($href ne '') {
+        if ($href ne '' and !$self->in_string()) {
           $result .= "<a href=\"$href\"$accesskey>".$name."</a>";
         } else {
           $result .= $name;
@@ -3565,7 +3661,7 @@ sub _convert_menu_comment_type($$$$)
   my $command = shift;
   my $content = shift;
 
-  if ($self->_in_preformatted_in_menu()) {
+  if ($self->_in_preformatted_in_menu() or $self->in_string()) {
     return $content;
   } else {
     return "<tr><th colspan=\"3\" align=\"left\" valign=\"top\">".$content
@@ -3583,6 +3679,7 @@ sub _convert_before_item_type($$$$)
   my $content = shift;
 
   return '' if ($content !~ /\S/);
+  return $content if ($self->in_string());
   my $top_format = $self->top_format();
   if ($top_format eq 'itemize' or $top_format eq 'enumerate') {
     return '<li>'. $content .'</li>';
@@ -3607,6 +3704,11 @@ sub _convert_def_line_type($$$$)
   my $type = shift;
   my $command = shift;
   my $content = shift;
+
+  if ($self->in_string()) {
+    return $self->xml_protect_text (Texinfo::Convert::Text::convert(
+       $command, Texinfo::Common::_convert_text_options($self)));
+  }
 
   my $category_prepared = '';
   if ($command->{'extra'} and $command->{'extra'}->{'def_args'}
@@ -3666,6 +3768,7 @@ sub _convert_def_item_type($$$$)
   my $command = shift;
   my $content = shift;
 
+  return $content if ($self->in_string());
   if ($content =~ /\S/) {
     if (! $self->get_conf('DEF_TABLE')) {
       return '<dd>' . $content . '</dd>';
@@ -3684,6 +3787,7 @@ sub _convert_def_command($$$$) {
   my $command = shift;
   my $content = shift;
 
+  return $content if ($self->in_string());
   #print STDERR "IIII $self $cmdname command $command args $args content $content\n";
   if (!$self->get_conf('DEF_TABLE')) {
     return "<dl>\n". $content ."</dl>\n";
@@ -3703,6 +3807,7 @@ sub _convert_table_item_type($$$$)
   my $command = shift;
   my $content = shift;
 
+  return $content if ($self->in_string());
   if ($content =~ /\S/) {
     return '<dd>' . $content . '</dd>'."\n";
   }
@@ -3724,13 +3829,14 @@ sub _convert_root_text_type($$$$)
   my $result = $content;
   #$result =~ s/^\s*//;
   # if there is no element, the parent should not be an element
-  if (defined($self->get_conf('DEFAULT_RULE'))
-      and (!$command->{'parent'} 
-           or !$command->{'parent'}->{'type'}
-           or $command->{'parent'}->{'type'} ne 'element')) {
+  if (!$command->{'parent'} 
+      or !$command->{'parent'}->{'type'}
+      or $command->{'parent'}->{'type'} ne 'element') {
     $result .= &{$self->{'footnotes_text'}}($self);
     $result .= $self->get_conf('DEFAULT_RULE') ."\n",
-      if $self->get_conf('PROGRAM_NAME_IN_FOOTER');
+      if ($self->get_conf('PROGRAM_NAME_IN_FOOTER') 
+          and defined($self->get_conf('DEFAULT_RULE'))
+          and !$self->in_string());
   }
   return $result;
 }
@@ -3818,6 +3924,13 @@ sub _convert_element_type($$$$)
   #if (!defined($element->{'parent'})) {
   #  print STDERR "NO PARENT ".Texinfo::Parser::_print_current($element)."\n";
   #}
+  if ($self->in_string()) {
+    if (defined($content)) {
+      return $content;
+    } else {
+      return '';
+    }
+  }
 
   my $result = '';
   my $special_element;
@@ -5945,6 +6058,7 @@ sub output($$)
     $self->{'documentdescription_string'} = $self->_convert(
       {'type' => '_string',
        'contents' => $self->{'extra'}->{'documentdescription'}->{'contents'}});
+    chomp($self->{'documentdescription_string'});
     pop @{$self->{'document_context'}};
   }
 

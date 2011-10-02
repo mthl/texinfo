@@ -53,6 +53,13 @@ in first column, verbatim
 @printindex cp
 
 '],
+['documentdescription',
+'@documentdescription
+in @code{documentdescri---ption} --- @bullet{} @enddots{} @verb{:"verb:} @aa{} @^{@dotless{i}} @email{@code{some}body}
+@end documentdescription
+
+@top top
+'],
 ['simple_menu',
 '@menu
 * (ggg):: description
@@ -112,6 +119,12 @@ in detaildescription
 ],
 );
 
+my @test_cases_text = (
+['commands_in_email',
+'@email{endots @enddots{} @code{in code}}'
+],
+);
+
 # problem is that the result is code with accented letters,
 # it may not come out right.  So this test is left unused for now.
 # Also could be in converters_tests
@@ -130,10 +143,13 @@ my @todo = (
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['html'];
 }
+foreach my $test (@test_cases_text) {
+  $test->[2]->{'test_formats'} = ['html_text'];
+}
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('html_tests', [@test_cases], $arg_test_case,
+run_all ('html_tests', [@test_cases, @test_cases_text], $arg_test_case,
    $arg_generate, $arg_debug);
 
 1;
