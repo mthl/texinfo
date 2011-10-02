@@ -3855,7 +3855,6 @@ sub _convert_element_type($$$$)
     }
   }
   $result .= $content unless ($special_element);
-  # FIXME footnotes
 
   my $is_top = $self->_element_is_top($element);
   my $next_is_top = ($self->{'global_target_elements'}->{'Top'}
@@ -3863,10 +3862,10 @@ sub _convert_element_type($$$$)
     and $self->{'global_target_elements'}->{'Top'} eq $element->{'element_next'});
   my $next_is_special = (defined($element->{'element_next'})
     and $element->{'element_next'}->{'extra'}->{'special_element'});
-  # no 'parent' defined happens if there are no pages, and elements 
+  # no 'parent' defined happens if there are no pages, and there are elements 
   # which should only happen when called with $self->get_conf('OUTFILE') 
   # set to ''.
-  my $end_page = (!$element->{'element_next'} 
+  my $end_page = (!$element->{'element_next'}
        or (defined($element->{'parent'}) 
            and $element->{'parent'} ne $element->{'element_next'}->{'parent'}));
   my $is_special = $element->{'extra'}->{'special_element'};
@@ -3882,7 +3881,7 @@ sub _convert_element_type($$$$)
   my $buttons;
   my $maybe_in_page;
   if (($is_top or $is_special)
-      and $self->get_conf('SPLIT')
+      and ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC'))
       and ($end_page 
          and ($self->get_conf('HEADERS') 
               or ($self->get_conf('SPLIT') and $self->get_conf('SPLIT') ne 'node')))) {
@@ -3891,15 +3890,11 @@ sub _convert_element_type($$$$)
     } else {
       $buttons = $self->get_conf('MISC_BUTTONS');
     }
-    #$rule = $self->get_conf('DEFAULT_RULE');
   } elsif ($end_page and $self->get_conf('SPLIT') eq 'section') {
     $buttons = $self->get_conf('SECTION_FOOTER_BUTTONS');
-    #$rule = $self->get_conf('DEFAULT_RULE');
   } elsif ($end_page and $self->get_conf('SPLIT') eq 'chapter') {
     $buttons = $self->get_conf('CHAPTER_BUTTONS');
-    #$rule = $self->get_conf('DEFAULT_RULE');
   } elsif ($self->get_conf('SPLIT') eq 'node' and $self->get_conf('HEADERS')) {
-    #$rule = $self->get_conf('DEFAULT_RULE');
     my $no_footer_word_count;
     if ($self->get_conf('WORDS_IN_PAGE')) {
       my @cnt = split(/\W*\s+\W*/, $content);

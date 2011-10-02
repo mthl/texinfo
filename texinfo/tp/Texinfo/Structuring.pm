@@ -687,17 +687,17 @@ sub split_pages ($$)
   return undef if (!$elements or !@$elements);
 
   my $split_level;
-  if ($split eq 'chapter') {
-    $split_level = 1;
-  } elsif ($split eq 'section') {
-    $split_level = 2;
-  } elsif (!$split) {
+  if (!$split) {
     my $page = {'type' => 'page'};
     foreach my $element (@$elements) {
       push @{$page->{'contents'}}, $element;
       $element->{'parent'} = $page;
     }
     return [$page];
+  } elsif ($split eq 'chapter') {
+    $split_level = 1;
+  } elsif ($split eq 'section') {
+    $split_level = 2;
   }
 
   my @pages = ();

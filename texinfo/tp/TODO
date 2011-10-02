@@ -112,8 +112,6 @@ In Info A ref like @ref{node,,,manual} should lead to
 instead of, currently 
  *note chapter: (file name)chapter.
 
-Document that NO_USE_SETFILENAME replaced USE_SETFILENAME
-
 Test @w{'} for the substitution of '.
 
 Before the release, verify that everything on 
@@ -250,8 +248,6 @@ t/30sectioning.t setfilename_on_top_and_after_node
 there could be a warning
  warning: @setfilename after the first element
 
-No &copy; &ldquo; &rdquo; in docbook.  Use instead numeric entities.
-
 Add @value to the corresponding commands categories?
 
 Functions:
@@ -291,6 +287,9 @@ nodes without sectioning commands below a chapter.
 
 @@verbatiminclude dot.
 @verbatiminclude ./formatting/simplest.texi
+
+NO_MONOLITHIC
+in layout/no_monolithic
 
 done: test/invalid. Not completly incorporated
 error_in_footnote_caption.texi    (at least partly done in 

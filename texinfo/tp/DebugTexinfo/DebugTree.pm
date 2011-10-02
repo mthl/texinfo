@@ -41,7 +41,8 @@ sub output($$)
     $elements = Texinfo::Structuring::split_by_section($root);
   }
   my $pages;
-  if ($elements and $self->get_conf('SPLIT')) {
+  if ($elements and ($self->get_conf('SPLIT') 
+                     or !$self->get_conf('MONOLITHIC'))) {
     #print STDERR "S ".$self->get_conf('SPLIT')."\n";
     $pages = Texinfo::Structuring::split_pages($elements,
                                                $self->get_conf('SPLIT'));
