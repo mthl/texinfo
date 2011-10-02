@@ -768,9 +768,17 @@ sub elements_directions($$)
     my $directions;
     $directions->{'This'} = $element;
     $directions->{'Forward'} = $element->{'element_next'}
-      if ($element->{'element_next'});
+      if ($element->{'element_next'}
+          and (($element->{'extra'}->{'special_element'}
+                and $element->{'element_next'}->{'extra'}->{'special_element'})
+               or (!$element->{'extra'}->{'special_element'}
+                and !$element->{'element_next'}->{'extra'}->{'special_element'})));
     $directions->{'Back'} = $element->{'element_prev'}
-      if ($element->{'element_prev'});
+      if ($element->{'element_prev'}
+          and (($element->{'extra'}->{'special_element'}
+                and $element->{'element_prev'}->{'extra'}->{'special_element'})
+               or (!$element->{'extra'}->{'special_element'}
+                and !$element->{'element_prev'}->{'extra'}->{'special_element'})));
     if ($element->{'extra'}->{'node'}) {
       my $node = $element->{'extra'}->{'node'};
       foreach my $direction(['NodeUp', 'node_up'], ['NodeNext', 'node_next'],

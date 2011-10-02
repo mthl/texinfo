@@ -3865,9 +3865,15 @@ sub _convert_element_type($$$$)
   # no 'parent' defined happens if there are no pages, and there are elements 
   # which should only happen when called with $self->get_conf('OUTFILE') 
   # set to ''.
+  #print STDERR "$element $element->{'parent'}->{'filename'} $self->{'file_counters'}->{$element->{'parent'}->{'filename'}}\n";
+  #print STDERR "next: $element->{'element_next'}->{'parent'}->{'filename'}\n" if ($element->{'element_next'});
   my $end_page = (!$element->{'element_next'}
        or (defined($element->{'parent'}) 
-           and $element->{'parent'} ne $element->{'element_next'}->{'parent'}));
+           and $element->{'parent'}->{'filename'} ne $element->{'element_next'}->{'parent'}->{'filename'}
+           and $self->{'file_counters'}->{$element->{'parent'}->{'filename'}} == 1));
+  #my $end_page = (!$element->{'element_next'}
+  #     or (defined($element->{'parent'}) 
+  #         and $element->{'parent'} ne $element->{'element_next'}->{'parent'}));
   my $is_special = $element->{'extra'}->{'special_element'};
 
   if (($end_page or $next_is_top or $next_is_special)
@@ -3919,7 +3925,13 @@ sub _convert_element_type($$$$)
                                                  and !$is_special))) {
     $rule = $self->get_conf('BIG_RULE');
   }
-  if ($end_page and $self->get_conf('footnotestyle') eq 'end') {
+
+  # FIXME the next is almost a duplication of end_page except that the
+  # file counter needs not be 1
+  if ((!$element->{'element_next'}
+       or (defined($element->{'parent'})
+           and $element->{'parent'}->{'filename'} ne $element->{'element_next'}->{'parent'}->{'filename'}))
+      and $self->get_conf('footnotestyle') eq 'end') {
     $result .= &{$self->{'footnotes_text'}}($self);
   }
   if (!$self->get_conf('PROGRAM_NAME_IN_FOOTER') 
@@ -4710,8 +4722,7 @@ sub _set_page_files($$)
       }
     }
   }
-  # FIXME there add the special element pages
-  # also set next_page/prev_page for the special element pages
+
   foreach my $page (@$pages) {
     if (defined($Texinfo::Config::page_file_name)) {
       # FIXME pass the information that it is associated with @top or @node Top?
@@ -4724,6 +4735,7 @@ sub _set_page_files($$)
       if ($self->get_conf('DEBUG'));
   }
   if ($special_pages) {
+    my $previous_element = $pages->[-1]->{'contents'}->[-1];
     my $previous_page = $pages->[-1];
     foreach my $page (@$special_pages) {
       my $filename 
@@ -4735,6 +4747,9 @@ sub _set_page_files($$)
       $previous_page = $page;
       print STDERR "Special page $page: $page->{'filename'}($self->{'file_counters'}->{$page->{'filename'}})\n"
         if ($self->get_conf('DEBUG'));
+      $page->{'contents'}->[0]->{'element_prev'} = $previous_element;
+      $previous_element->{'element_next'} = $page->{'contents'}->[0];
+      $previous_element = $page->{'contents'}->[0];
     }
   }
 }
@@ -5199,7 +5214,6 @@ foreach my $no_number_type ('text', 'tree', 'string') {
   $valid_types{$no_number_type .'_nonumber'} = 1;
 }
 
-# FIXME global targets
 sub _element_direction($$$$;$)
 {
   my $self = shift;

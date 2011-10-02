@@ -271,6 +271,14 @@ space_in_setfilename
 
 sectioning/
 node_footnote_end
+--> following changed when element_next for special elements became
+set.  Nothing tests that in the test suite.
+  node_footnote_use_node
+  no_node_chapter_split
+  nodes_after_top_before_section_use_nodes_chapter
+  nodes_after_top_before_chapter_use_nodes_chapter
+  test_refs_chapter
+  test_refs_nodes
 
 equivalent_nodes mainly for equivalent_nodes-noderename.cnf parsing and renamed
 nodes handling.
@@ -290,6 +298,7 @@ nodes without sectioning commands below a chapter.
 
 NO_MONOLITHIC
 in layout/no_monolithic
+          no_monolithic_only_toc_out
 
 done: test/invalid. Not completly incorporated
 error_in_footnote_caption.texi    (at least partly done in 
