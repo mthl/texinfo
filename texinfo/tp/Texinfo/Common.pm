@@ -765,13 +765,31 @@ sub warn_unknown_language($$) {
   }
 
   if (! $Texinfo::Documentlanguages::language_codes{$lang_code}) {
-    push @messages, sprintf(&$gettext("%s is not a valid language code"), 
+    push @messages, sprintf(&$gettext(N__("%s is not a valid language code")), 
                             $lang_code);
   }
   if (defined($region_code) 
        and ! $Texinfo::Documentlanguages::region_codes{$region_code}) {
-    push @messages, sprintf(&$gettext("%s is not a valid region code"), 
+    push @messages, sprintf(&$gettext(N__("%s is not a valid region code")), 
                             $region_code);
+  }
+  return @messages;
+}
+
+my %possible_split = (
+  'chapter' => 1,
+  'section' => 1,
+  'node' => 1,
+);
+
+sub warn_unknown_split($$) {
+  my $split = shift;
+  my $gettext = shift;
+
+  my @messages = ();
+  if ($split and !$possible_split{$split}) {
+    push @messages, sprintf(&$gettext(N__("%s is not a valid split possibility")),
+                            $split);
   }
   return @messages;
 }

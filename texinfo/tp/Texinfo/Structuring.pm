@@ -698,6 +698,8 @@ sub split_pages ($$)
     $split_level = 1;
   } elsif ($split eq 'section') {
     $split_level = 2;
+  } elsif ($split ne 'node') {
+    warn "Unknown split specification: $split\n";
   }
 
   my @pages = ();
@@ -711,7 +713,7 @@ sub split_pages ($$)
       $level = $element->{'extra'}->{'node'}->{'associated_section'}->{'level'};
     }
     #print STDERR "level($split_level) $level "._print_element_command_texi($element)."\n";
-    if ($split eq 'node' or (defined($level) and $split_level >= $level)
+    if (!defined($split_level) or (defined($level) and $split_level >= $level)
         or !@pages) {
       push @pages, {'type' => 'page',
                     'extra' => {'element' => $element}};
@@ -1372,7 +1374,7 @@ Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
   } else {
     $elements = split_by_section($tree);
   }
-  # $split may be 'section', 'chapter', a false value. Else means 'node'.
+  # $split may be 'section', 'chapter', 'node' or a false value.
   my $pages = split_pages($elements, $split);
   elements_directions($parser, $elements);
   elements_file_directions($parser, $elements);
@@ -1570,6 +1572,10 @@ is returned by the function.  The possible values for I<$split> are
 
 The elements are split at chapter or other toplevel sectioning elements.
 
+=item node
+
+Each element has its own page.
+
 =item section
 
 The elements are split at sectioning commands below chapter.
@@ -1577,10 +1583,6 @@ The elements are split at sectioning commands below chapter.
 =item value evaluating to false
 
 No splitting, only one page is returned, holding all the elements.
-
-=item anything else
-
-Each element has its own page.
 
 =back
 

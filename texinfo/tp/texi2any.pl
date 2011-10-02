@@ -640,7 +640,16 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
       die sprintf(__("%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"), $real_command_name, $_[1]);
     }
   },
- 'split=s' => sub { set_from_cmdline('SPLIT', $_[1]); },
+ 'split=s' => sub {  my $split = $_[1];
+                     my @messages 
+                       = Texinfo::Common::warn_unknown_split($_[1], \&__);
+                     if (@messages) {
+                       foreach my $message (@messages) {
+                         document_warn($message);
+                       }
+                       $split = $Texinfo::Convert::HTML::defaults{'SPLIT'};
+                     }
+                     set_from_cmdline('SPLIT', $split); },
  'no-split' => sub { set_from_cmdline('SPLIT', ''); 
                      set_from_cmdline('SPLIT_SIZE', undef);},
  'headers!' => sub { set_from_cmdline('HEADERS', $_[1]);

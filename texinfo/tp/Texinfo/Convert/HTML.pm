@@ -4221,6 +4221,11 @@ sub converter_initialize($)
   $self->{'multiple_pass'} = [];
   $self->_new_document_context('_toplevel_context');
 
+  if ($self->get_conf('SPLIT') and $self->get_conf('SPLIT') ne 'chapter'
+      and $self->get_conf('SPLIT') ne 'section'
+      and $self->get_conf('SPLIT') ne 'node') {
+    $self->force_conf('SPLIT', 'node');
+  }
   #$self->_translate_names();
 
   return $self;
