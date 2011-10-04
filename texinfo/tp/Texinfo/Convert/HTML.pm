@@ -1926,16 +1926,17 @@ foreach my $node_directions ('NodeNext', 'NodePrev', 'NodeUp') {
   $html_default_node_directions{$node_directions} = 1;
 }
 
-sub _default_navigation_header_panel($$$$)
+sub _default_navigation_header_panel($$$$;$)
 {
   my $self = shift;
   my $buttons = shift;
   my $cmdname = shift;
   my $command = shift;
+  my $vertical = shift;
 
   # if VERTICAL_HEAD_NAVIGATION, the buttons are in a vertical table which
   # is itself in the first column of a table opened in header_navigation
-  my $vertical = $self->get_conf('VERTICAL_HEAD_NAVIGATION');
+  #my $vertical = $self->get_conf('VERTICAL_HEAD_NAVIGATION');
 
   my $first_button = 1;
   my $result = '';
@@ -2004,7 +2005,8 @@ sub _default_navigation_header($$$$)
 ';
   }
   $result .= &{$self->{'navigation_header_panel'}}($self, $buttons,
-                                                   $cmdname, $command);
+                                                   $cmdname, $command,
+                                   $self->get_conf('VERTICAL_HEAD_NAVIGATION'));
   if ($self->get_conf('VERTICAL_HEAD_NAVIGATION')) {
     $result .= '</td>
 <td align="left">
@@ -2090,12 +2092,23 @@ sub _convert_heading_command($$$$$)
                  $self->get_conf('TOP_BUTTONS'), $cmdname, $command)
          if ($self->get_conf('SPLIT') or $self->get_conf('HEADERS'));
       } else {
+        if ($first_in_page and !$self->get_conf('HEADERS')) {
+          if ($self->get_conf('SPLIT') eq 'chapter') {
+            $result .= &{$self->{'navigation_header'}}($self, 
+                  $self->get_conf('CHAPTER_BUTTONS'), $cmdname, $command);
+            $result .= $self->get_conf('DEFAULT_RULE') ."\n"
+              if (defined($self->get_conf('DEFAULT_RULE'))
+                  and !$self->get_conf('VERTICAL_HEAD_NAVIGATION'));
+          } elsif ($self->get_conf('SPLIT') eq 'section') {
+            $result .= &{$self->{'navigation_header'}}($self, 
+                  $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
+          }
+        }
         if (($first_in_page or $previous_is_top) 
-             and $self->get_conf('HEADERS')) {
+             and ($self->get_conf('HEADERS'))) {
           $result .= &{$self->{'navigation_header'}}($self, 
                   $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
-        } else {  
-        # FIXME what about chapter?
+        } else {
           # got to do this here, as it isn't done otherwise since 
           # header_navigation is not called
           $result .= &{$self->{'navigation_header_panel'}}($self,
@@ -3989,8 +4002,10 @@ sub _convert_element_type($$$$)
   #         and $element->{'parent'} ne $element->{'element_next'}->{'parent'}));
   my $is_special = $element->{'extra'}->{'special_element'};
 
-  if (($end_page or $next_is_top or $next_is_special)
-       and $self->get_conf('VERTICAL_HEAD_NAVIGATION')) {
+  if (($end_page or $next_is_top or $next_is_special or $is_top)
+       and $self->get_conf('VERTICAL_HEAD_NAVIGATION')
+       and ($self->get_conf('SPLIT') ne 'node' 
+            or $self->get_conf('HEADERS') or $is_special or $is_top)) {
    $result .= "</td>
 </tr>
 </table>"."\n";
@@ -4013,16 +4028,18 @@ sub _convert_element_type($$$$)
     $buttons = $self->get_conf('SECTION_FOOTER_BUTTONS');
   } elsif ($end_page and $self->get_conf('SPLIT') eq 'chapter') {
     $buttons = $self->get_conf('CHAPTER_BUTTONS');
-  } elsif ($self->get_conf('SPLIT') eq 'node' and $self->get_conf('HEADERS')) {
-    my $no_footer_word_count;
-    if ($self->get_conf('WORDS_IN_PAGE')) {
-      my @cnt = split(/\W*\s+\W*/, $content);
-      if (scalar(@cnt) < $self->get_conf('WORDS_IN_PAGE')) {
-        $no_footer_word_count = 1;
+  } elsif ($self->get_conf('SPLIT') eq 'node') {
+    if ($self->get_conf('HEADERS')) {
+      my $no_footer_word_count;
+      if ($self->get_conf('WORDS_IN_PAGE')) {
+        my @cnt = split(/\W*\s+\W*/, $content);
+        if (scalar(@cnt) < $self->get_conf('WORDS_IN_PAGE')) {
+          $no_footer_word_count = 1;
+        }
       }
+      $buttons = $self->get_conf('NODE_FOOTER_BUTTONS')
+         unless ($no_footer_word_count);
     }
-    $buttons = $self->get_conf('NODE_FOOTER_BUTTONS')
-       unless ($no_footer_word_count);
   } else {
     $maybe_in_page = 1;
   }
@@ -4030,10 +4047,10 @@ sub _convert_element_type($$$$)
   if ($maybe_in_page or $is_top or $is_special
      or ($end_page and ($self->get_conf('SPLIT') eq 'chapter'
                        or $self->get_conf('SPLIT') eq 'section'))
-     or $self->get_conf('SPLIT') eq 'node' and $self->get_conf('HEADERS')) {
+     or ($self->get_conf('SPLIT') eq 'node' and $self->get_conf('HEADERS'))) {
     $rule = $self->get_conf('DEFAULT_RULE');
   }
-      
+
   if (!$end_page and ($is_top or $next_is_top or ($next_is_special 
                                                  and !$is_special))) {
     $rule = $self->get_conf('BIG_RULE');
