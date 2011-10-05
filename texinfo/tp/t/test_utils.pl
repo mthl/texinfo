@@ -569,19 +569,15 @@ sub test($$)
       $directions_text .= Texinfo::Structuring::_print_directions($element);
     }
   }
-  my $pages;
   if ($split_pages) {
-    $pages = Texinfo::Structuring::split_pages($elements, 
-                                                      $split_pages);
+    Texinfo::Structuring::split_pages($elements, $split_pages);
   }
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
   my $new_file = $file.'.new';
 
   my $split_result;
-  if ($pages) {
-    $split_result = $pages;
-  } elsif ($elements) {
+  if ($elements) {
     $split_result = $elements;
   } else {
     $split_result = $result;

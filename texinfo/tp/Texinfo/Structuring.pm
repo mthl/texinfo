@@ -688,12 +688,10 @@ sub split_pages ($$)
 
   my $split_level;
   if (!$split) {
-    my $page = {'type' => 'page'};
     foreach my $element (@$elements) {
-      push @{$page->{'contents'}}, $element;
-      $element->{'parent'} = $page;
+      $element->{'extra'}->{'first_in_page'} = $elements->[0];
     }
-    return [$page];
+    return;
   } elsif ($split eq 'chapter') {
     $split_level = 1;
   } elsif ($split eq 'section') {
@@ -702,8 +700,7 @@ sub split_pages ($$)
     warn "Unknown split specification: $split\n";
   }
 
-  my @pages = ();
-
+  my $current_first_in_page;
   foreach my $element (@$elements) {
     my $level;
     if ($element->{'extra'}->{'section'}) {
@@ -714,18 +711,11 @@ sub split_pages ($$)
     }
     #print STDERR "level($split_level) $level "._print_element_command_texi($element)."\n";
     if (!defined($split_level) or (defined($level) and $split_level >= $level)
-        or !@pages) {
-      push @pages, {'type' => 'page',
-                    'extra' => {'element' => $element}};
-      if (scalar(@pages) > 1) { 
-        $pages[-1]->{'page_prev'} = $pages[-2];
-        $pages[-2]->{'page_next'} = $pages[-1];
-      }
+        or !$current_first_in_page) {
+      $current_first_in_page = $element;
     }
-    push @{$pages[-1]->{'contents'}}, $element;
-    $element->{'parent'} = $pages[-1];
+    $element->{'extra'}->{'first_in_page'} = $current_first_in_page;
   }
-  return \@pages;
 }
 
 # FIXME node not existing
@@ -1374,8 +1364,7 @@ Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
   } else {
     $elements = split_by_section($tree);
   }
-  # $split may be 'section', 'chapter', 'node' or a false value.
-  my $pages = split_pages($elements, $split);
+  split_pages($elements, $split);
   elements_directions($parser, $elements);
   elements_file_directions($parser, $elements);
 
@@ -1562,9 +1551,9 @@ replaced by I<no_section>.
 
 =item $pages = split_pages($elements, $split)
 
-The elements from the array reference argument are grouped based on the
-value of I<$split>.  The I<$pages> array with all those groupings
-is returned by the function.  The possible values for I<$split> are
+The elements from the array reference argument have an extra I<first_in_page>
+value set to the first element on the unit, and based on the
+value of I<$split>.  The possible values for I<$split> are
 
 =over
 
@@ -1585,10 +1574,6 @@ The elements are split at sectioning commands below chapter.
 No splitting, only one page is returned, holding all the elements.
 
 =back
-
-Pages are regular tree items with type I<page>, holding their elements
-in the I<contents> array.  They also have directions, namely I<page_next>
-and I<page_prev> pointing to the previous and the next page.
 
 =item elements_directions($parser, $elements)
 
