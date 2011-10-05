@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.88 2011-08-28 18:34:06 karl Exp $
+$Id: dir-example,v 1.89 2011-10-05 23:57:35 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -44,8 +44,9 @@ Basics
 
 Text creation and manipulation
 * Diff: (diff).                 Comparing and merging files.
-* Diffutils: (diff).            Comparing and merging files.
+* Diffutils: (diffutils).       Comparing and merging files.
 * Gawk: (gawk).                 A text scanning and processing language.
+* Word differences: (wdiff).    GNU wdiff and diff related tools.
 * grep: (grep).                 Print lines matching a pattern.
 * M4: (m4).                     A powerful macro processor.
 * sed: (sed).                   Stream EDitor.  
@@ -278,17 +279,18 @@ System administration
 * GSRC: (gsrc).                 Building the GNU Source Release Collection.
 
 TeX
-* Afm2tfm: (dvips)Invoking afm2tfm.  Making Type 1 fonts available to TeX.
-* Dvips: (dvips).               DVI-to-PostScript translator.
 * DVI-to-PNG: (dvipng).         DVI to Portable Network Graphics (PNG).
+* DVI-to-PostScript: (dvips).   Translating TeX DVI files to PostScript.
 * Eplain: (eplain).             Expanding on plain TeX.
-* Kpathsearch: (kpathsea).      File lookup along search paths.
-* LaTeX: (latex2e).             LaTeX2e.
-* MakeIndex: (makeindex).       Index creation for TeX.
+* EpsPDF: (epspdf).             Portable GUI&cmdline EPS-to-PDF conversion.
+* Kpathsea: (kpathsea).         File lookup along search paths.
+* LaTeX2e: (latex2e).           LaTeX2e unofficial reference manual.
+* LaTeX2e-es: (latex2e-es).     Spanish translation of LaTeX2e.
+* Mf2pt1: (mf2pt1).             Make PostScript Type 1 fonts from Metafont.
 * Naming TeX fonts: (fontname). Filenames for TeX fonts.
 * TDS: (tds).                   Standard TeX directory structure.
 * TeXDraw: (texdraw).           Drawing PostScript diagrams within TeX.
-* Web2c: (web2c).               TeX, Metafont, and their companion programs.
+* Web2C: (web2c).               TeX, Metafont, and companion programs.
 
 Typesetting
 * Font utilities: (fontu).      Programs for font manipulation.
@@ -301,15 +303,15 @@ DOS
 
 GNU organization
 * Maintain: (maintain).         GNU maintainer guidelines.
-* Maintaining Findutils: (find-maint).
-                                Maintaining GNU findutils
+* Maintaining Findutils: (find-maint). Maintaining GNU findutils.
 * Quality code: (qualitycode).  GNU code quality recommendations.
 * Standards: (standards).       GNU coding standards.
 
 Individual utilities
+* afm2tfm: (dvips)Invoking afm2tfm.             Adobe to TeX font metrics.
 * aclocal: (automake)Invoking aclocal.          Generating aclocal.m4.
-* addr2line: (binutils)addr2line. Convert addresses to file and line.
-* ar: (binutils)ar.             Create, modify, and extract from archives.
+* addr2line: (binutils)addr2line.    Convert addresses to file and line.
+* ar: (binutils)ar.                  Create, modify, and extract from archives.
 * arch: (coreutils)arch invocation.             Print machine hardware name.
 * at-pr: (gnats)at-pr.                          Bug report timely reminders.
 * autoconf: (autoconf)autoconf Invocation. How to create configuration scripts.
@@ -339,7 +341,7 @@ Individual utilities
 * chown: (coreutils)chown invocation.           Change file owners/groups.
 * chroot: (coreutils)chroot invocation.         Specify the root directory.
 * cksum: (coreutils)cksum invocation.           Print POSIX CRC checksum.
-* cmp: (diff)Invoking cmp.                      Compare 2 files byte by byte.
+* cmp: (diffutils)Invoking cmp.                 Compare 2 files byte by byte.
 * comm: (coreutils)comm invocation.             Compare sorted files by line.
 * comsatd: (mailutils)comsatd.                  Comsat daemon.
 * config.                                       status: 
@@ -356,8 +358,8 @@ Individual utilities
 * date: (coreutils)date invocation.             Print/set system date and time.
 * dd: (coreutils)dd invocation.                 Copy and convert a file.
 * df: (coreutils)df invocation.                 Report file system disk usage.
-* diff: (diff)Invoking diff.                    Compare 2 files line by line.
-* diff3: (diff)Invoking diff3.                  Compare 3 files line by line.
+* diff: (diffutils)Invoking diff.               Compare 2 files line by line.
+* diff3: (diffutils)Invoking diff3.             Compare 3 files line by line.
 * dir: (coreutils)dir invocation.               List directories briefly.
 * dircolors: (coreutils)dircolors invocation.   Color setup for ls.
 * dirname: (coreutils)dirname invocation.       Strip last file name component.
@@ -452,7 +454,7 @@ Individual utilities
 * objdump: (binutils)objdump.   Display information from object files.
 * od: (coreutils)od invocation.                 Dump files in octal, etc.
 * paste: (coreutils)paste invocation.           Merge lines of files.
-* patch: (diff)Invoking patch.                  Apply a patch to a file.
+* patch: (diffutils)Invoking patch.             Apply a patch to a file.
 * patgen: (web2c)Patgen invocation.             Creating hyphenation patterns.
 * pathchk: (coreutils)pathchk invocation.       Check file name portability.
 * ping: (inetutils)ping invocation.             Packets to network hosts.
@@ -484,7 +486,7 @@ Individual utilities
 * rsh: (inetutils)rsh invocation.               Remote shell.
 * rshd: (inetutils)rshd invocation.             Remote shell server.
 * runcon: (coreutils)runcon invocation.         Run in specified SELinux CTX.
-* sdiff: (diff)Invoking sdiff.                  Merge 2 files side-by-side.
+* sdiff: (diffutils)Invoking sdiff.             Merge 2 files side-by-side.
 * send-pr: (gnats)Invoking send-pr.             Submitting bugs.
 * seq: (coreutils)seq invocation.               Print numeric sequences
 * sha1sum: (coreutils)sha1sum invocation.       Print or check SHA-1 digests.
@@ -496,7 +498,7 @@ Individual utilities
 * size: (binutils)size.         List section sizes and total size.
 * sleep: (coreutils)sleep invocation.           Delay for a specified time.
 * sort: (coreutils)sort invocation.             Sort text files.
-* split: (coreutils)split invocation.           Split into fixed-size pieces.
+* split: (coreutils)split invocation.           Split into pieces.
 * stat: (coreutils)stat invocation.             Report file(system) status.
 * stdbuf: (coreutils)stdbuf invocation.         Modify stdio buffering.
 * strings: (binutils)strings.   List printable strings from files.
