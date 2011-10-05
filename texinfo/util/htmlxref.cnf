@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-08-28.18; # UTC
+htmlxrefversion=2011-10-02.22; # UTC
 
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -107,7 +107,8 @@ dico		chapter	${DICO}/html_chapter/
 dico		section	${DICO}/html_section/
 dico		node	${DICO}/html_node/
 
-diffutils	mono	${GS}/diffutils/manual/diffutils.html
+diffutils	mono	${GS}/diffutils/manual/diffutils
+diffutils	node	${GS}/diffutils/manual/html_node/
 
 ed		mono	${GS}/ed/manual/ed_manual.html
 
@@ -222,7 +223,7 @@ gcal		node	${GS}/gcal/manual/html_node/
 
 GCC = http://gcc.gnu.org/onlinedocs
 gcc		node	${GCC}/gcc/
- cpp		node	${GCC}/gccint/
+ cpp		node	${GCC}/cpp/
  gcj		node	${GCC}/gcj/
  gfortran	node	${GCC}/gfortran/
  gnat_rm	node	${GCC}/gnat_rm/
@@ -461,6 +462,9 @@ R = http://cran.r-project.org/doc/manuals/
  R-data		mono	${R}/R-data.html
  R-admin	mono	${R}/R-admin.html
  R-ints		mono	${R}/R-ints.html
+
+rcs		mono	${GS}/rcs/manual/rcs.html
+rcs		node	${GS}/rcs/manual/html_node/
 
 recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
 
