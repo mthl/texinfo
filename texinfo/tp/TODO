@@ -299,6 +299,7 @@ nodes without sectioning commands below a chapter.
 NO_MONOLITHIC
 in layout/no_monolithic
           no_monolithic_only_toc_out
+   layout/navigation_*
 
 done: test/invalid. Not completly incorporated
 error_in_footnote_caption.texi    (at least partly done in 

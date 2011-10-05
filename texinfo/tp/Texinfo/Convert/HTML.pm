@@ -2076,11 +2076,9 @@ sub _convert_heading_command($$$$$)
       my $is_top = $self->_element_is_top($element);
       my $first_in_page = ($element->{'parent'} 
                and $element->{'parent'}->{'contents'}->[0] eq $element);
-      my $previous_is_top = 0;
-      if ($self->{'global_target_elements'}->{'Top'}) {
-       $previous_is_top = (defined($element->{'element_prev'}) 
-          and $self->{'global_target_elements'}->{'Top'} eq $element->{'element_prev'});
-      }
+      #my $previous_is_top = 0;
+      my $previous_is_top = ($element->{'element_prev'} 
+                     and $self->_element_is_top($element->{'element_prev'}));
       print STDERR "Header ($previous_is_top, $is_top, $first_in_page): "
         .Texinfo::Structuring::_print_root_command_texi($command)."\n"
           if ($self->get_conf('DEBUG'));
@@ -3983,9 +3981,8 @@ sub _convert_element_type($$$$)
   $result .= $content unless ($special_element);
 
   my $is_top = $self->_element_is_top($element);
-  my $next_is_top = ($self->{'global_target_elements'}->{'Top'}
-    and defined($element->{'element_next'})
-    and $self->{'global_target_elements'}->{'Top'} eq $element->{'element_next'});
+  my $next_is_top = ($element->{'element_next'} 
+                     and $self->_element_is_top($element->{'element_next'}));
   my $next_is_special = (defined($element->{'element_next'})
     and $element->{'element_next'}->{'extra'}->{'special_element'});
   # no 'parent' defined happens if there are no pages, and there are elements 
@@ -4572,7 +4569,8 @@ sub _new_sectioning_command_target($$)
         = &$Texinfo::Config::sectioning_command_target_name($self, 
                                      $command, $target, $id,
                                      $target_contents, $id_contents,
-                                     $target_shortcontents, $id_shortcontents);
+                                     $target_shortcontents, $id_shortcontents,
+                                     $filename);
   }
   if ($self->get_conf('DEBUG')) {
     print STDERR "Register $command->{'cmdname'} $target, $id\n";
