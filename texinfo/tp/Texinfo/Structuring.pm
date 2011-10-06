@@ -913,14 +913,13 @@ sub elements_file_directions($$)
   foreach my $element (@$elements) {
     my $directions;
     my $filename;
-    if ($element->{'parent'} and defined($element->{'parent'}->{'filename'})) {
-      $filename = $element->{'parent'}->{'filename'};
+    if (defined($element->{'filename'})) {
+      $filename = $element->{'filename'};
       my $current_element = $element;
       while ($current_element->{'element_prev'}) {
         $current_element = $current_element->{'element_prev'};
-        if ($current_element->{'parent'} 
-            and defined($current_element->{'parent'}->{'filename'})) {
-          if ($current_element->{'parent'}->{'filename'} ne $filename) {
+        if (defined($current_element->{'filename'})) {
+          if ($current_element->{'filename'} ne $filename) {
             $element->{'extra'}->{'directions'}->{'PrevFile'} = $current_element;
             last;
           }
@@ -931,9 +930,8 @@ sub elements_file_directions($$)
       $current_element = $element;
       while ($current_element->{'element_next'}) {
         $current_element = $current_element->{'element_next'};
-        if ($current_element->{'parent'} 
-            and defined($current_element->{'parent'}->{'filename'})) {
-          if ($current_element->{'parent'}->{'filename'} ne $filename) {
+        if (defined($current_element->{'filename'})) {
+          if ($current_element->{'filename'} ne $filename) {
             $element->{'extra'}->{'directions'}->{'NextFile'} = $current_element;
             last;
           }

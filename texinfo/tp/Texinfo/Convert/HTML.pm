@@ -272,7 +272,7 @@ sub command_filename($$)
     if (defined($target->{'filename'})) {
       return $target->{'filename'};
     }
-    my ($element, $root_command) = $self->_get_element($command);
+    my ($element, $root_command) = $self->_get_element($command, 1);
     #if (defined($command->{'cmdname'}) and $command->{'cmdname'} eq 'footnote') {
     #  print STDERR "footnote $command: page $page\n";
     #}
@@ -309,7 +309,8 @@ sub command_element_command($$)
   my $self = shift;
   my $command = shift;
 
-  my $element = $self->command_element($command);
+  my ($element, $root_command) = $self->_get_element($command);
+  #my $element = $self->command_element($command);
   if ($element and $element->{'extra'}) {
     return $element->{'extra'}->{'element_command'};
   }
@@ -4649,14 +4650,14 @@ sub _set_root_commands_targets_node_files($$)
   }
 }
 
-sub _set_page_file($$$)
+sub _set_element_file($$$)
 {
   my $self = shift;
   my $element = shift;
   my $filename = shift;
 
   if (!defined($filename)) {
-    cluck("_set_page_file: filename not defined\n");
+    cluck("_set_element_file: filename not defined\n");
   }
 # FIXME directory should be the file name!
   $element->{'filename'} = $filename;
@@ -4667,32 +4668,34 @@ sub _set_page_file($$$)
   }
 }
 
-sub _get_element($$);
+sub _get_element($$;$);
 
 # FIXME also find contents/shortcontents/summarycontents page
-sub _get_element($$)
+sub _get_element($$;$)
 {
   my $self = shift;
-  my $current = shift;
+  my $command = shift;
+  my $find_container = shift;
+
+  my $current = $command;
+
   my ($element, $root_command);
-  #print STDERR " --> GGGGGGG _get_element\n";
   while (1) {
     if ($current->{'type'}) {
-      #print STDERR "GGGGGGG Now in $current->{'type'}\n";
       if ($current->{'type'} eq 'element') {
         return ($current, $root_command);
       }
     }
     if ($current->{'cmdname'}) {
-      #print STDERR "GGGGGGG Now in $current->{'cmdname'}\n";
       if ($root_commands{$current->{'cmdname'}}) {
         $root_command = $current;
+        return ($element, $root_command) if defined($element);
       } elsif ($region_commands{$current->{'cmdname'}}) {
         if ($current->{'cmdname'} eq 'copying' 
             and $self->{'extra'} and $self->{'extra'}->{'insertcopying'}) {
           foreach my $insertcopying(@{$self->{'extra'}->{'insertcopying'}}) {
             my ($element, $root_command) 
-              = $self->_get_element($insertcopying);
+              = $self->_get_element($insertcopying, $find_container);
             return ($element, $root_command)
               if (defined($element) or defined($root_command));
           }
@@ -4708,9 +4711,11 @@ sub _get_element($$)
                                                   or defined($root_command));
         return (undef, undef);
       } elsif ($current->{'cmdname'} eq 'footnote' 
-           and $self->{'special_elements_types'}->{'Footnotes'}) {
-        # FIXME element and root_command?
-        return ($self->{'special_elements_types'}->{'Footnotes'});
+           and $self->{'special_elements_types'}->{'Footnotes'}
+           and $find_container) {
+        # FIXME root_command?
+          $element = $self->{'special_elements_types'}->{'Footnotes'};
+          return ($element);
       # } elsif (($current->{'cmdname'} eq 'contents' 
       #           or $current->{'cmdname'} eq 'shortcontents'
       #           or $current->{'cmdname'} eq 'summarycontents')
@@ -4726,7 +4731,7 @@ sub _get_element($$)
   }
 }
 
-sub _set_page_files($$)
+sub _set_pages_files($$)
 {
   my $self = shift;
   my $elements = shift;
@@ -4766,7 +4771,7 @@ sub _set_page_files($$)
       my ($node_top_element) = $self->_get_element($node_top);
       die "BUG: No page for top node" if (!defined($node_top));
       if (defined($self->get_conf('TOP_NODE_FILE'))) {
-        $self->_set_page_file($node_top_element, $top_node_filename);
+        $self->_set_element_file($node_top_element, $top_node_filename);
       }
     }
     # FIXME add a number for each page?
@@ -4810,7 +4815,7 @@ sub _set_page_files($$)
                 $node_filename 
                   = $self->{'targets'}->{$root_command}->{'node_filename'};
               }
-              $self->_set_page_file($file_element, $node_filename);
+              $self->_set_element_file($file_element, $node_filename);
               last;
             }
           }
@@ -4824,16 +4829,16 @@ sub _set_page_files($$)
             if ($command) {
               if ($command->{'cmdname'} eq 'top' and !$node_top
                   and defined($top_node_filename)) {
-                $self->_set_page_file($file_element, $top_node_filename);
+                $self->_set_element_file($file_element, $top_node_filename);
               } else {
-                $self->_set_page_file($file_element,
+                $self->_set_element_file($file_element,
                    $self->{'targets'}->{$command}->{'section_filename'});
               }
             } else {
               # when everything else has failed
               my $filename = $self->{'document_name'} . "_$file_nr";
               $filename .= $extension;
-              $self->_set_page_file($element, $filename);
+              $self->_set_element_file($element, $filename);
               $file_nr++;
             }
           }
@@ -4842,7 +4847,7 @@ sub _set_page_files($$)
           $filename .= '.'.$self->get_conf('EXTENSION') 
             if (defined($self->get_conf('EXTENSION')) 
                 and $self->get_conf('EXTENSION') ne '');
-          $self->_set_page_file($file_element, $filename);
+          $self->_set_element_file($file_element, $filename);
           $file_nr++;
         }
       }
@@ -4854,11 +4859,11 @@ sub _set_page_files($$)
   }
 
   foreach my $element (@$elements) {
-    if (defined($Texinfo::Config::page_file_name)) {
+    if (defined($Texinfo::Config::element_file_name)) {
       # FIXME pass the information that it is associated with @top or @node Top?
       my $filename = &$Texinfo::Config::element_file_name($self, $element, 
                                                           $element->{'filename'});
-      $self->_set_page_file($element, $filename) if (defined($filename));
+      $self->_set_element_file($element, $filename) if (defined($filename));
     }
     $self->{'file_counters'}->{$element->{'filename'}}++;
     print STDERR "Page $element ".Texinfo::Structuring::_print_element_command_texi($element).": $element->{'filename'}($self->{'file_counters'}->{$element->{'filename'}})\n"
@@ -4870,7 +4875,7 @@ sub _set_page_files($$)
       my $filename 
        = $self->{'targets'}->{$element}->{'misc_filename'};
       if (defined($filename)) {
-        $self->_set_page_file($element, $filename);
+        $self->_set_element_file($element, $filename);
         $self->{'file_counters'}->{$element->{'filename'}}++;
         print STDERR "Special page $element: $element->{'filename'}($self->{'file_counters'}->{$element->{'filename'}})\n"
           if ($self->get_conf('DEBUG'));
@@ -5000,7 +5005,7 @@ sub _prepare_special_elements($$)
       "    filename $filename\n" if ($self->get_conf('DEBUG'));
     if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')
         or $filename ne $default_filename) {
-      $self->_set_page_file($element, $filename);
+      $self->_set_element_file($element, $filename);
       print STDERR "NEW page for $type ($filename)\n" if ($self->get_conf('DEBUG'));
     }
     # FIXME add element, page... (see command_filename)?
@@ -5951,7 +5956,7 @@ sub output($$)
   # determine file names associated with the different pages, and setup
   # the counters for special element pages.
   if ($self->get_conf('OUTFILE') ne '') {
-    $self->_set_page_files($elements, $special_elements);
+    $self->_set_pages_files($elements, $special_elements);
   }
 
   $self->_prepare_contents_elements();
@@ -5969,8 +5974,8 @@ sub output($$)
   if ($special_elements) {
     foreach my $special_element (@$special_elements) {
       if (!defined($special_element->{'filename'})) {
-        $special_element->{'out_filename'} = $elements->[0]->{'out_filename'};
         $special_element->{'filename'} = $elements->[0]->{'filename'};
+        $special_element->{'out_filename'} = $elements->[0]->{'out_filename'};
         $self->{'file_counters'}->{$special_element->{'filename'}}++;
         print STDERR "Special page $special_element: $special_element->{'filename'}($self->{'file_counters'}->{$special_element->{'filename'}})\n"
           if ($self->get_conf('DEBUG'));
@@ -6150,7 +6155,6 @@ sub output($$)
       }
     }
   }
-
   $self->{'current_filename'} = undef;
   if ($self->get_conf('NODE_FILES') 
       and $self->{'labels'} and $self->get_conf('OUTFILE') ne '') {
@@ -6181,9 +6185,9 @@ sub output($$)
         my $out_filename;
         if (defined($self->{'destination_directory'})) {
           $out_filename = $self->{'destination_directory'} 
-               .$target->{'node_filename'};
+               .$node_filename;
         } else {
-          $out_filename = $target->{'node_filename'};
+          $out_filename = $node_filename;
         }
         my $file_fh = $self->Texinfo::Common::open_out ($out_filename,
                                                  $self->{'perl_encoding'});
