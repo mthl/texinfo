@@ -254,6 +254,16 @@ Functions:
 sectioning_command_target_name
 node_target_name
 
+.init files:
+manuals/cvs.init
+manuals/mini_ker_t2h.init
+singular_manual/t2h_singular.init
+
+not relevant since indices cannot be split anymore
+indices/index_test.init     
+
+
+
 Incorporation of texi2html tests
 --------------------------------
 
