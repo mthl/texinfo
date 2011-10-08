@@ -1091,18 +1091,18 @@ $default_commands_formatting{'normal'}->{' '} = '&nbsp;';
 $default_commands_formatting{'normal'}->{"\t"} = '&nbsp;';
 $default_commands_formatting{'normal'}->{"\n"} = '&nbsp;';
 
-foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
-  $default_commands_formatting{'preformatted'}->{$command} = 
-     $default_commands_formatting{'normal'}->{$command};
-#       unless exists($default_commands_formatting{'preformatted'}->{$command});
-  $default_commands_formatting{'string'}->{$command} =
-     $default_commands_formatting{'normal'}->{$command};
-#       unless exists($default_commands_formatting{'string'}->{$command});
-}
+#foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
+#  $default_commands_formatting{'preformatted'}->{$command} = 
+#     $default_commands_formatting{'normal'}->{$command};
+#  $default_commands_formatting{'string'}->{$command} =
+#     $default_commands_formatting{'normal'}->{$command};
+#}
 
 $default_commands_formatting{'normal'}->{'enddots'} 
     = '<small class="enddots">...</small>';
+$default_commands_formatting{'preformatted'}->{'enddots'} = '...';
 $default_commands_formatting{'normal'}->{'*'} = '<br>';
+$default_commands_formatting{'preformatted'}->{'*'} = "\n";
 
 
 sub _convert_no_arg_command($$$)
@@ -4122,36 +4122,13 @@ sub converter_initialize($)
                                                   $self->{'htmlxref_files'});
   }
 
-  foreach my $context (keys(%default_commands_formatting)) {
-    foreach my $command (keys(%{$default_commands_formatting{$context}})) {
-      if (exists ($Texinfo::Config::commands_formatting{$context}->{$command})) {
-        $self->{'commands_formatting'}->{$context}->{$command} 
-           = $Texinfo::Config::commands_formatting{$context}->{$command};
-      } else {
-        if ($self->get_conf('ENABLE_ENCODING') 
-            and Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
-                           $command, $self->{'encoding_name'})
-            and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
-          $self->{'commands_formatting'}->{$context}->{$command}
-            = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
-                           $command, $self->{'encoding_name'})
-        } else {
-          $self->{'commands_formatting'}->{$context}->{$command} 
-            = $default_commands_formatting{$context}->{$command};
-        }
-      }
-    }
-  }
-
-  foreach my $context (keys(%style_commands_formatting)) {
-    foreach my $command (keys(%{$style_commands_formatting{$context}})) {
-      if (exists ($Texinfo::Config::style_commands_formatting{$context}->{$command})) {
-        $self->{'style_commands_formatting'}->{$context}->{$command} 
-           = $Texinfo::Config::style_commands_formatting{$context}->{$command};
-      } elsif (exists($style_commands_formatting{$context}->{$command})) {
-        $self->{'style_commands_formatting'}->{$context}->{$command} 
-           = $style_commands_formatting{$context}->{$command};
-      }
+  foreach my $type (keys(%default_types_conversion)) {
+    if (exists($Texinfo::Config::types_conversion{$type})) {
+      $self->{'types_conversion'}->{$type}
+          = $Texinfo::Config::types_conversion{$type};
+    } else {
+      $self->{'types_conversion'}->{$type} 
+          = $default_types_conversion{$type};
     }
   }
 
@@ -4176,15 +4153,59 @@ sub converter_initialize($)
     }
   }
 
-  foreach my $type (keys(%default_types_conversion)) {
-    if (exists($Texinfo::Config::types_conversion{$type})) {
-      $self->{'types_conversion'}->{$type}
-          = $Texinfo::Config::types_conversion{$type};
-    } else {
-      $self->{'types_conversion'}->{$type} 
-          = $default_types_conversion{$type};
+  #foreach my $context (keys(%default_commands_formatting)) {
+  foreach my $context ('normal', 'preformatted', 'string') {
+    foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
+      if (exists ($Texinfo::Config::commands_formatting{$context}->{$command})) {
+        $self->{'commands_formatting'}->{$context}->{$command} 
+           = $Texinfo::Config::commands_formatting{$context}->{$command};
+      } else {
+        if ($self->get_conf('ENABLE_ENCODING') 
+            and Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
+                           $command, $self->{'encoding_name'})
+            and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
+          $self->{'commands_formatting'}->{$context}->{$command}
+            = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
+                           $command, $self->{'encoding_name'})
+        } else {
+          $self->{'commands_formatting'}->{$context}->{$command} 
+            = $default_commands_formatting{$context}->{$command};
+        }
+      }
     }
   }
+
+  # set sane defaults in case there is none and the default formatting
+  # function is used
+  foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
+    if ($self->{'commands_conversion'}->{$command} 
+        and $self->{'commands_conversion'}->{$command} eq $default_commands_conversion{$command}) {
+      if (!defined ($self->{'commands_formatting'}->{'normal'}->{$command})) {
+        $self->{'commands_formatting'}->{'normal'}->{$command} = '';
+      }
+      if (!defined ($self->{'commands_formatting'}->{'preformatted'}->{$command})) {
+        $self->{'commands_formatting'}->{'preformatted'}->{$command} = 
+          $self->{'commands_formatting'}->{'normal'}->{$command};
+      }
+      if (!defined ($self->{'commands_formatting'}->{'string'}->{$command})) {
+       $self->{'commands_formatting'}->{'string'}->{$command} = 
+          $self->{'commands_formatting'}->{'preformatted'}->{$command};
+      }
+    } 
+  }
+
+  foreach my $context (keys(%style_commands_formatting)) {
+    foreach my $command (keys(%{$style_commands_formatting{$context}})) {
+      if (exists ($Texinfo::Config::style_commands_formatting{$context}->{$command})) {
+        $self->{'style_commands_formatting'}->{$context}->{$command} 
+           = $Texinfo::Config::style_commands_formatting{$context}->{$command};
+      } elsif (exists($style_commands_formatting{$context}->{$command})) {
+        $self->{'style_commands_formatting'}->{$context}->{$command} 
+           = $style_commands_formatting{$context}->{$command};
+      }
+    }
+  }
+
   foreach my $command (keys %{$self->{'commands_conversion'}}) {
     if (exists($Texinfo::Config::commands_args{$command})) {
       $self->{'commands_args'}->{$command} 
@@ -5450,7 +5471,14 @@ sub _default_contents($$;$$)
   $ul_class = $NO_BULLET_LIST_CLASS if ($self->get_conf('NUMBER_SECTIONS'));
 
   my $result = '';
-  $result .= $self->_attribute_class('div', $cmdname).">\n";
+  if ($contents and !defined($self->get_conf('BEFORE_TOC_LINES'))
+      or (!$contents and !defined($self->get_conf('BEFORE_OVERVIEW')))) {
+    $result .= $self->_attribute_class('div', $cmdname).">\n";
+  } elsif($contents) {
+    $result .= $self->get_conf('BEFORE_TOC_LINES');
+  } else {
+    $result .= $self->get_conf('BEFORE_OVERVIEW');
+  }
 
   my $toplevel_contents;
   if (@{$section_root->{'section_childs'}} > 1) { 
@@ -5533,7 +5561,14 @@ sub _default_contents($$;$$)
    #   or $section_root->{'section_childs'}->[0]->{'cmdname'} ne 'top') {
     $result .= "\n</ul>";
   }
-  $result .= "\n</div>\n";
+  if ($contents and !defined($self->get_conf('AFTER_TOC_LINES'))
+      or (!$contents and !defined($self->get_conf('AFTER_OVERVIEW')))) {
+    $result .= "\n</div>\n";
+  } elsif($contents) {
+    $result .= $self->get_conf('AFTER_TOC_LINES');
+  } else {
+    $result .= $self->get_conf('AFTER_OVERVIEW');
+  }
   return $result;
 }
 

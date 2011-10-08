@@ -119,7 +119,6 @@ sub __p($$) {
   return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
 }
 
-# FIXME use something else than srcdir?
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
 # FIXME
 my $libsrcdir = "$srcdir/../texi2html";
