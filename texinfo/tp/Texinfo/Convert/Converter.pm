@@ -26,8 +26,28 @@ use Texinfo::Report;
 use Texinfo::Common;
 use Texinfo::Convert::Text;
 
-use vars qw(@ISA $VERSION);
-@ISA = qw(Texinfo::Report);
+require Exporter;
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+@ISA = qw(Exporter Texinfo::Report);
+
+# Items to export into callers namespace by default. Note: do not export
+# names by default without a very good reason. Use EXPORT_OK instead.
+# Do not simply export all your public functions/methods/constants.
+
+# This allows declaration       use Texinfo::Convert::Converter ':all';
+# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
+# will save memory.
+%EXPORT_TAGS = ( 'all' => [ qw(
+xml_protect_text
+xml_comment
+xml_accent
+xml_accents
+) ] );
+
+@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+@EXPORT = qw(
+);
 
 $VERSION = '0.01';
 
@@ -405,7 +425,7 @@ sub _set_outfile($$$)
     } elsif (defined($self->get_conf('SUBDIR'))) {
       $self->{'destination_directory'} = $self->get_conf('SUBDIR');
     } else {
-      $self->{'destination_directory'} = $output_basename;
+      $self->{'destination_directory'} = $document_name;
     }
   } else {
     my $output_dir = $self->get_conf('OUTFILE');
