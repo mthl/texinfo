@@ -1016,7 +1016,12 @@ foreach my $explained_command (keys(%explained_commands)) {
 # of commands.
 my %default_commands_conversion;
 
-# Ignored commands
+sub default_commands_conversion($$)
+{
+  my $self = shift;
+  my $command = shift;
+  return $default_commands_conversion{$command};
+}
 
 my %kept_misc_commands;
 
@@ -1552,7 +1557,7 @@ sub _convert_image_command($$$$)
         $alt_text = $args->[3]->{'normal'};
       }
       if (!defined($alt_text) or ($alt_text eq '')) {
-        $alt_text = $self->xml_protect_text($basefile);
+        $alt_text = $self->protect_text($basefile);
       }
       return "[ $alt_text ]";
     } else {
@@ -1561,9 +1566,9 @@ sub _convert_image_command($$$$)
         $alt_string = $args->[3]->{'string'};
       }
       if (!defined($alt_string) or ($alt_string eq '')) {
-        $alt_string = $self->xml_protect_text($basefile);
+        $alt_string = $self->protect_text($basefile);
       }
-      return "<img src=\"".$self->xml_protect_text($image_file)."\" alt=\"$alt_string\">";
+      return "<img src=\"".$self->protect_text($image_file)."\" alt=\"$alt_string\">";
     }
   }
   return '';
@@ -1611,7 +1616,7 @@ sub _convert_key_command($$$$)
     #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
-  return $self->xml_protect_text('<') .$text .$self->xml_protect_text('>');
+  return $self->protect_text('<') .$text .$self->protect_text('>');
 }
 
 $default_commands_conversion{'key'} = \&_convert_key_command;
@@ -1631,10 +1636,10 @@ sub _convert_indicateurl_command($$$$)
     return '';
   }
   if (!$self->in_string()) {
-    return $self->xml_protect_text('<').'<code>' .$text 
-                    .'</code>'.$self->xml_protect_text('>');
+    return $self->protect_text('<').'<code>' .$text 
+                    .'</code>'.$self->protect_text('>');
   } else {
-    return $self->xml_protect_text('<').$text.$self->xml_protect_text('>');
+    return $self->protect_text('<').$text.$self->protect_text('>');
   }
 }
 
@@ -1655,7 +1660,7 @@ sub _convert_ctrl_command($$$$)
     #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
-  return $self->xml_protect_text('^') .$text;
+  return $self->protect_text('^') .$text;
 }
 
 $default_commands_conversion{'ctrl'} = \&_convert_ctrl_command;
@@ -1686,6 +1691,18 @@ sub _default_comment($$) {
   my $self = shift;
   my $text = shift;
   return $self->xml_comment(' '.$text);
+}
+
+sub protect_text($$) {
+  my $self = shift;
+  my $text = shift;
+  return &{$self->{'protect_text'}}($self, $text);
+}
+
+sub _default_protect_text($$) {
+  my $self = shift;
+  my $text = shift;
+  return $self->xml_protect_text($text);
 }
 
 sub _default_heading_text($$$$$)
@@ -2183,14 +2200,14 @@ sub _convert_raw_command($$$$)
     return $content;
   # FIXME compatibility with texi2html
   } elsif ($self->in_string()) {
-    return $self->xml_protect_text($content);
+    return $self->protect_text($content);
   } elsif ($cmdname eq 'tex') {
     return $self->_attribute_class('pre', $cmdname).'>' 
-          .$self->xml_protect_text($content) . '</pre>';
+          .$self->protect_text($content) . '</pre>';
   }
   $self->line_warn(sprintf($self->__("Raw format %s is not converted"), $cmdname),
                    $command->{'line_nr'});
-  return $self->xml_protect_text($content);
+  return $self->protect_text($content);
 }
 
 foreach my $command (@out_formats) {
@@ -3096,7 +3113,7 @@ sub _convert_printindex_command($$$$)
     $letter_id{$letter} = $identifier;
     
     my $summary_letter_link = $self->_attribute_class('a', 'summary-letter') 
-       ." href=\"#$identifier\"><b>".$self->xml_protect_text($letter).'</b></a>';
+       ." href=\"#$identifier\"><b>".$self->protect_text($letter).'</b></a>';
     if ($is_symbol) {
       push @non_alpha, $summary_letter_link;
     } else {
@@ -3190,7 +3207,7 @@ sub _convert_printindex_command($$$$)
     }
     # a letter and associated indice entries
     $result .= '<tr><th>' . 
-    "<a name=\"$letter_id{$letter}\">".$self->xml_protect_text($letter).'</a>'
+    "<a name=\"$letter_id{$letter}\">".$self->protect_text($letter).'</a>'
         .  "</th><td></td><td></td></tr>\n" . $entries_text .
        "<tr><td colspan=\"4\"> ".$self->get_conf('DEFAULT_RULE')."</td></tr>\n";
 
@@ -3265,6 +3282,15 @@ foreach my $informative_command (@informative_global_commands) {
 }
 
 my %default_types_conversion;
+
+sub default_types_conversion($$)
+{
+  my $self = shift;
+  my $type = shift;
+  return $default_types_conversion{$type};
+}
+
+# Ignored commands
 
 #my %ignored_types;
 foreach my $type ('empty_line_after_command', 'preamble',
@@ -3443,8 +3469,8 @@ sub _convert_definfoenclose_type($$$$) {
   my $command = shift;
   my $content = shift;
 
-  return $self->xml_protect_text($command->{'extra'}->{'begin'}) . $content
-         .$self->xml_protect_text($command->{'extra'}->{'end'});
+  return $self->protect_text($command->{'extra'}->{'begin'}) . $content
+         .$self->protect_text($command->{'extra'}->{'end'});
 }
 
 $default_types_conversion{'definfoenclose_command'} 
@@ -3459,11 +3485,11 @@ sub _convert_text($$$)
 
   # do that first because in verb and verbatim, type is 'raw'
   if ($self->in_verbatim()) {
-    return $self->xml_protect_text($text);
+    return $self->protect_text($text);
   }
   return $text if ($type and $type eq 'raw');
   $text = uc($text) if ($self->in_upper_case());
-  $text = $self->xml_protect_text($text);
+  $text = $self->protect_text($text);
   if ($self->get_conf('ENABLE_ENCODING') and 
       !$self->get_conf('ENABLE_ENCODING_USE_ENTITY')
       and $self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
@@ -3717,7 +3743,7 @@ sub _convert_def_line_type($$$$)
   my $content = shift;
 
   if ($self->in_string()) {
-    return $self->xml_protect_text (Texinfo::Convert::Text::convert(
+    return $self->protect_text(Texinfo::Convert::Text::convert(
        $command, Texinfo::Common::_convert_text_options($self)));
   }
 
@@ -4160,16 +4186,18 @@ sub converter_initialize($)
         $self->{'commands_formatting'}->{$context}->{$command} 
            = $Texinfo::Config::commands_formatting{$context}->{$command};
       } else {
-        if ($self->get_conf('ENABLE_ENCODING') 
-            and Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
-                           $command, $self->{'encoding_name'})
-            and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
-          $self->{'commands_formatting'}->{$context}->{$command}
-            = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
-                           $command, $self->{'encoding_name'})
-        } else {
-          $self->{'commands_formatting'}->{$context}->{$command} 
-            = $default_commands_formatting{$context}->{$command};
+        if (defined($default_commands_formatting{$context}->{$command})) {
+          if ($self->get_conf('ENABLE_ENCODING') 
+              and Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
+                             $command, $self->{'encoding_name'})
+              and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
+            $self->{'commands_formatting'}->{$context}->{$command}
+              = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
+                             $command, $self->{'encoding_name'})
+          } else {
+            $self->{'commands_formatting'}->{$context}->{$command} 
+              = $default_commands_formatting{$context}->{$command};
+          }
         }
       }
     }
@@ -4191,7 +4219,7 @@ sub converter_initialize($)
        $self->{'commands_formatting'}->{'string'}->{$command} = 
           $self->{'commands_formatting'}->{'preformatted'}->{$command};
       }
-    } 
+    }
   }
 
   foreach my $context (keys(%style_commands_formatting)) {
@@ -4218,6 +4246,7 @@ sub converter_initialize($)
   foreach my $formatting_references (
      ['heading_text', \&_default_heading_text, $Texinfo::Config::heading_text],
      ['comment', \&_default_comment, $Texinfo::Config::comment],
+     ['protect_text', \&_default_protect_text, $Texinfo::Config::protect_text],
      ['css_lines', \&_default_css_lines, $Texinfo::Config::css_lines],
      ['begin_file', \&_default_begin_file, $Texinfo::Config::begin_file],
      ['node_redirection_page', \&_default_node_redirection_page, 
@@ -4243,6 +4272,7 @@ sub converter_initialize($)
      ['contents', \&_default_contents, $Texinfo::Config::contents],
   ) {
     if (defined($formatting_references->[2])) {
+      # FIXME this pollutes the main converter keys space!
       $self->{$formatting_references->[0]} = $formatting_references->[2];
     } else {
       $self->{$formatting_references->[0]} = $formatting_references->[1];
