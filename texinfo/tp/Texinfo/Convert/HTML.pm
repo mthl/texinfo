@@ -575,6 +575,13 @@ sub global_element($$)
   return $self->{'global_target_elements'}->{$type};
 }
 
+sub default_formatting_function($$)
+{
+  my $self = shift;
+  my $format = shift;
+  return $self->{'default_formatting_functions'}->{'format_'.$format};
+}
+
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 my %BUTTONS_REL =
@@ -1682,7 +1689,7 @@ sub _convert_titlefont_command($$$$)
   if ($self->in_string()) {
     return $text;
   }
-  return &{$self->{'heading_text'}}($self, 'titlefont', $text, 0, $command);
+  return &{$self->{'format_heading_text'}}($self, 'titlefont', $text, 0, $command);
 }
 
 $default_commands_conversion{'titlefont'} = \&_convert_titlefont_command;
@@ -1696,7 +1703,7 @@ sub _default_comment($$) {
 sub protect_text($$) {
   my $self = shift;
   my $text = shift;
-  return &{$self->{'protect_text'}}($self, $text);
+  return &{$self->{'format_protect_text'}}($self, $text);
 }
 
 sub _default_protect_text($$) {
@@ -1868,7 +1875,7 @@ sub _default_button_formatting($$)
         and defined($self->get_conf('ACTIVE_ICONS')->{$button})
         and $self->get_conf('ACTIVE_ICONS')->{$button} ne '') {
       my $button_name = $self->get_conf('BUTTONS_NAME')->{$button};
-      $active = &{$self->{'button_icon_img'}}($self, $button_name, 
+      $active = &{$self->{'format_button_icon_img'}}($self, $button_name, 
                                        $self->get_conf('ACTIVE_ICONS')->{' '});
     } else {
       $active = $self->get_conf('BUTTONS_TEXT')->{$button};
@@ -1904,7 +1911,7 @@ sub _default_button_formatting($$)
             and defined($button_name)) {
           # use icon
           $active = "<a href=\"$href\"${btitle}>".
-             &{$self->{'button_icon_img'}}($self, $button_name, $active_icon,
+             &{$self->{'format_button_icon_img'}}($self, $button_name, $active_icon,
                       $self->_element_direction($self->{'current_element'},
                                        $button, 'string')) ."</a>";
           $use_icon = 1;
@@ -1923,7 +1930,7 @@ sub _default_button_formatting($$)
         my $passive_icon = $self->get_conf('PASSIVE_ICONS')->{$button};
         my $button_name = $self->get_conf('BUTTONS_NAME')->{$button};
         if ($passive_icon and $passive_icon ne '') {
-          $passive = &{$self->{'button_icon_img'}}($self, $button_name, 
+          $passive = &{$self->{'format_button_icon_img'}}($self, $button_name, 
                                                    $passive_icon,
                       $self->_element_direction($self->{'current_element'},
                                        $button, 'string'));
@@ -1977,7 +1984,7 @@ sub _default_navigation_header_panel($$$$;$)
       $direction = $button;
     }
 
-    my ($active, $passive) = &{$self->{'button_formatting'}}($self, $button);
+    my ($active, $passive) = &{$self->{'format_button'}}($self, $button);
     if ($self->get_conf('HEADER_IN_TABLE')) {
       if (defined($active)) {
         $first_button = 0 if ($first_button);
@@ -2021,7 +2028,7 @@ sub _default_navigation_header($$$$)
 <td align="left">
 ';
   }
-  $result .= &{$self->{'navigation_header_panel'}}($self, $buttons,
+  $result .= &{$self->{'format_navigation_header_panel'}}($self, $buttons,
                                                    $cmdname, $command,
                                    $self->get_conf('VERTICAL_HEAD_NAVIGATION'));
   if ($self->get_conf('VERTICAL_HEAD_NAVIGATION')) {
@@ -2049,6 +2056,72 @@ sub _element_is_top($$)
              and $element->{'extra'}->{'element_command'}->{'cmdname'} eq 'node')));
 }
 
+sub _default_element_header($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $element = shift;
+
+  my $result = '';
+    
+  print STDERR "Element $element (@{$element->{'contents'}}) ".
+     Texinfo::Structuring::_print_element_command_texi($element) ."\n"
+        if ($self->get_conf('DEBUG'));
+  #print STDERR "First in element: "
+  #    .Texinfo::Parser::_print_current($element->{'contents'}->[0])
+  #      if ($self->get_conf('DEBUG'));
+  # First command in the element
+  if (($element->{'contents'}->[0] eq $command
+       or (!$element->{'contents'}->[0]->{'cmdname'} 
+            and $element->{'contents'}->[1] eq $command))
+      # and there is more than one element
+      and ($element->{'element_next'} or $element->{'element_prev'})) {
+    my $is_top = $self->_element_is_top($element);
+    my $first_in_page = (defined($element->{'filename'})
+           and $self->{'counter_in_file'}->{$element->{'filename'}} == 1);
+    #my $previous_is_top = 0;
+    my $previous_is_top = ($element->{'element_prev'} 
+                   and $self->_element_is_top($element->{'element_prev'}));
+    print STDERR "Header ($previous_is_top, $is_top, $first_in_page): "
+      .Texinfo::Structuring::_print_root_command_texi($command)."\n"
+        if ($self->get_conf('DEBUG'));
+    if ($is_top) {
+      # FIXME clarify this
+      # this is here because we want to always print the head navigation for top
+      # and use TOP_BUTTONS
+      $result .= &{$self->{'format_navigation_header'}}($self, 
+               $self->get_conf('TOP_BUTTONS'), $cmdname, $command)
+       if ($self->get_conf('SPLIT') or $self->get_conf('HEADERS'));
+    } else {
+      if ($first_in_page and !$self->get_conf('HEADERS')) {
+        if ($self->get_conf('SPLIT') eq 'chapter') {
+          $result .= &{$self->{'format_navigation_header'}}($self, 
+                $self->get_conf('CHAPTER_BUTTONS'), $cmdname, $command);
+          $result .= $self->get_conf('DEFAULT_RULE') ."\n"
+            if (defined($self->get_conf('DEFAULT_RULE'))
+                and !$self->get_conf('VERTICAL_HEAD_NAVIGATION'));
+        } elsif ($self->get_conf('SPLIT') eq 'section') {
+          $result .= &{$self->{'format_navigation_header'}}($self, 
+                $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
+        }
+      }
+      if (($first_in_page or $previous_is_top) 
+           and ($self->get_conf('HEADERS'))) {
+        $result .= &{$self->{'format_navigation_header'}}($self, 
+                $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
+      } else {
+        # got to do this here, as it isn't done otherwise since 
+        # header_navigation is not called
+        $result .= &{$self->{'format_navigation_header_panel'}}($self,
+                $self->get_conf('SECTION_BUTTONS'), $cmdname, $command)
+          if ($self->get_conf('HEADERS') or $self->get_conf('SPLIT') eq 'node');
+      }
+    }
+  }
+  return $result;
+}
+
 sub _convert_heading_command($$$$$)
 {
   my $self = shift;
@@ -2074,64 +2147,15 @@ sub _convert_heading_command($$$$$)
         .Texinfo::Structuring::_print_root_command_texi($command)."\n"
           if ($self->get_conf('DEBUG'));
   my $element;
-  if ($root_commands{$command->{'cmdname'}} and $command->{'parent'}
+  if ($Texinfo::Common::root_commands{$command->{'cmdname'}} 
+      and $command->{'parent'}
       and $command->{'parent'}->{'type'} 
       and $command->{'parent'}->{'type'} eq 'element') {
     $element = $command->{'parent'};
-    print STDERR "Element $element (@{$element->{'contents'}}) ".
-       Texinfo::Structuring::_print_element_command_texi($element) ."\n"
-          if ($self->get_conf('DEBUG'));
-    #print STDERR "First in element: "
-    #    .Texinfo::Parser::_print_current($element->{'contents'}->[0])
-    #      if ($self->get_conf('DEBUG'));
-    # First command in the element
-    if (($element->{'contents'}->[0] eq $command
-         or (!$element->{'contents'}->[0]->{'cmdname'} 
-              and $element->{'contents'}->[1] eq $command))
-        # and there is more than one element
-        and ($element->{'element_next'} or $element->{'element_prev'})) {
-      my $is_top = $self->_element_is_top($element);
-      my $first_in_page = (defined($element->{'filename'})
-             and $self->{'counter_in_file'}->{$element->{'filename'}} == 1);
-      #my $previous_is_top = 0;
-      my $previous_is_top = ($element->{'element_prev'} 
-                     and $self->_element_is_top($element->{'element_prev'}));
-      print STDERR "Header ($previous_is_top, $is_top, $first_in_page): "
-        .Texinfo::Structuring::_print_root_command_texi($command)."\n"
-          if ($self->get_conf('DEBUG'));
-      if ($is_top) {
-        # FIXME clarify this
-        # this is here because we want to always print the head navigation for top
-        # and use TOP_BUTTONS
-        $result .= &{$self->{'navigation_header'}}($self, 
-                 $self->get_conf('TOP_BUTTONS'), $cmdname, $command)
-         if ($self->get_conf('SPLIT') or $self->get_conf('HEADERS'));
-      } else {
-        if ($first_in_page and !$self->get_conf('HEADERS')) {
-          if ($self->get_conf('SPLIT') eq 'chapter') {
-            $result .= &{$self->{'navigation_header'}}($self, 
-                  $self->get_conf('CHAPTER_BUTTONS'), $cmdname, $command);
-            $result .= $self->get_conf('DEFAULT_RULE') ."\n"
-              if (defined($self->get_conf('DEFAULT_RULE'))
-                  and !$self->get_conf('VERTICAL_HEAD_NAVIGATION'));
-          } elsif ($self->get_conf('SPLIT') eq 'section') {
-            $result .= &{$self->{'navigation_header'}}($self, 
-                  $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
-          }
-        }
-        if (($first_in_page or $previous_is_top) 
-             and ($self->get_conf('HEADERS'))) {
-          $result .= &{$self->{'navigation_header'}}($self, 
-                  $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
-        } else {
-          # got to do this here, as it isn't done otherwise since 
-          # header_navigation is not called
-          $result .= &{$self->{'navigation_header_panel'}}($self,
-                  $self->get_conf('SECTION_BUTTONS'), $cmdname, $command)
-            if ($self->get_conf('HEADERS') or $self->get_conf('SPLIT') eq 'node');
-        }
-      }
-    }
+  }
+  if ($element) {
+    $result .= &{$self->{'format_element_header'}}($self, $cmdname, 
+                                            $command, $element);
   }
 
   my $heading_level;
@@ -2158,8 +2182,9 @@ sub _convert_heading_command($$$$$)
   # if there is an error in the node.
   if (defined($heading) and $heading ne '' and defined($heading_level)) {
 
-    if ($self->get_conf('TOC_LINKS') and $root_commands{$cmdname}
-        and $sectioning_commands{$cmdname}) {
+    if ($self->get_conf('TOC_LINKS')
+        and $Texinfo::Common::root_commands{$cmdname}
+        and $Texinfo::Common::sectioning_commands{$cmdname}) {
       my $content_href = $self->command_contents_href($command, 'contents',
                                         $self->{'current_filename'});
       if ($content_href) {
@@ -2176,7 +2201,7 @@ sub _convert_heading_command($$$$$)
         $cmdname 
           = $Texinfo::Common::level_to_structuring_command{$cmdname}->[$heading_level];
       }
-      $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 
+      $result .= &{$self->{'format_heading_text'}}($self, $cmdname, $heading, 
                                             $heading_level, $command);
     }
   }
@@ -3226,7 +3251,7 @@ sub _contents_inline_element($$$)
   my $cmdname = shift;
   my $command = shift;
 
-  my $content = $self->{'contents'}($self, $cmdname, $command);
+  my $content = &{$self->{'format_contents'}}($self, $cmdname, $command);
   if ($content) {
     my $result = '';
     my $special_element 
@@ -3245,7 +3270,7 @@ sub _contents_inline_element($$$)
       $heading 
         = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{$element_name});
     }
-    $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 0)."\n";
+    $result .= &{$self->{'format_heading_text'}}($self, $cmdname, $heading, 0)."\n";
     $result .= $content . "\n";
     return $result;
   }
@@ -3869,7 +3894,7 @@ sub _convert_root_text_type($$$$)
   if (!$command->{'parent'} 
       or !$command->{'parent'}->{'type'}
       or $command->{'parent'}->{'type'} ne 'element') {
-    $result .= &{$self->{'footnotes_text'}}($self);
+    $result .= &{$self->{'format_footnotes_text'}}($self);
     $result .= $self->get_conf('DEFAULT_RULE') ."\n",
       if ($self->get_conf('PROGRAM_NAME_IN_FOOTER') 
           and defined($self->get_conf('DEFAULT_RULE'))
@@ -3914,7 +3939,7 @@ sub _default_titlepage($)
     $self->_new_document_context('simpletitle_string');
     my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
     pop @{$self->{'document_context'}};
-    $titlepage_text = &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
+    $titlepage_text = &{$self->{'format_heading_text'}}($self, 'settitle', $title_text, 
                                             0, {'cmdname' => 'settitle',
                      'contents' => $self->{'simpletitle_tree'}->{'contents'}});
   }
@@ -3932,13 +3957,13 @@ sub _print_title($)
   my $result = '';
   if ($self->get_conf('SHOW_TITLE')) {
     if ($self->get_conf('USE_TITLEPAGE_FOR_TITLE')) {
-      $result .= &{$self->{'titlepage'}}($self);
+      $result .= &{$self->{'format_titlepage'}}($self);
     } else {
       if ($self->{'simpletitle_tree'}) {
        $self->_new_document_context('simpletitle_string');
         my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
         pop @{$self->{'document_context'}};
-        $result .= &{$self->{'heading_text'}}($self, 'settitle', $title_text, 
+        $result .= &{$self->{'format_heading_text'}}($self, 'settitle', $title_text, 
                                             0, {'cmdname' => 'settitle',
                      'contents' => $self->{'simpletitle_tree'}->{'contents'}});
       }
@@ -3981,14 +4006,14 @@ sub _convert_element_type($$$$)
     if ($self->get_conf('HEADERS') 
         # first in page
         or $self->{'counter_in_file'}->{$element->{'filename'}} == 1) {
-      $result .= &{$self->{'navigation_header'}}($self, 
+      $result .= &{$self->{'format_navigation_header'}}($self, 
                  $self->get_conf('MISC_BUTTONS'), undef, $element);
       
     }
     my $heading = $self->command_text($element);
-    $result .= &{$self->{'heading_text'}}($self, '', $heading, 0)."\n";
+    $result .= &{$self->{'format_heading_text'}}($self, '', $heading, 0)."\n";
 
-    my $special_element_body .= &{$self->{'special_element_body'}}($self, 
+    my $special_element_body .= &{$self->{'format_special_element_body'}}($self, 
                                                  $special_element, $element);
     # This may happen with footnotes in regions that are not expanded,
     # like @copying or @titlepage
@@ -4000,7 +4025,7 @@ sub _convert_element_type($$$$)
     $result .= $self->_print_title();
     if (!$element->{'element_next'}) {
       # only one element
-      my $foot_text = &{$self->{'footnotes_text'}}($self);
+      my $foot_text = &{$self->{'format_footnotes_text'}}($self);
       return $result.$content.$foot_text.$self->get_conf('DEFAULT_RULE')."\n";
     }
   }
@@ -4085,7 +4110,7 @@ sub _convert_element_type($$$$)
        or (defined($element->{'filename'})
            and $element->{'filename'} ne $element->{'element_next'}->{'filename'}))
       and $self->get_conf('footnotestyle') eq 'end') {
-    $result .= &{$self->{'footnotes_text'}}($self);
+    $result .= &{$self->{'format_footnotes_text'}}($self);
   }
   if (!$self->get_conf('PROGRAM_NAME_IN_FOOTER') 
       and !$buttons and !$maybe_in_page) {
@@ -4094,7 +4119,7 @@ sub _convert_element_type($$$$)
     $result .= "$rule\n" if ($rule);
   }
   if ($buttons) {
-    $result .= &{$self->{'navigation_header_panel'}}($self, $buttons,
+    $result .= &{$self->{'format_navigation_header_panel'}}($self, $buttons,
                                                      undef, $element);
   }
   
@@ -4244,35 +4269,38 @@ sub converter_initialize($)
   }
 
   foreach my $formatting_references (
-     ['heading_text', \&_default_heading_text, $Texinfo::Config::heading_text],
-     ['comment', \&_default_comment, $Texinfo::Config::comment],
-     ['protect_text', \&_default_protect_text, $Texinfo::Config::protect_text],
-     ['css_lines', \&_default_css_lines, $Texinfo::Config::css_lines],
-     ['begin_file', \&_default_begin_file, $Texinfo::Config::begin_file],
-     ['node_redirection_page', \&_default_node_redirection_page, 
+     ['format_heading_text', \&_default_heading_text, $Texinfo::Config::heading_text],
+     ['format_comment', \&_default_comment, $Texinfo::Config::comment],
+     ['format_protect_text', \&_default_protect_text, $Texinfo::Config::protect_text],
+     ['format_css_lines', \&_default_css_lines, $Texinfo::Config::css_lines],
+     ['format_begin_file', \&_default_begin_file, $Texinfo::Config::begin_file],
+     ['format_node_redirection_page', \&_default_node_redirection_page, 
                                $Texinfo::Config::node_redirection_page],
-     ['end_file', \&_default_end_file, $Texinfo::Config::end_file],
-     ['special_element_body', \&_default_special_element_body, 
+     ['format_end_file', \&_default_end_file, $Texinfo::Config::end_file],
+     ['format_special_element_body', \&_default_special_element_body, 
                               $Texinfo::Config::special_element_body],
-     ['footnotes_text', \&_default_footnotes_text, 
+     ['format_footnotes_text', \&_default_footnotes_text, 
                          $Texinfo::Config::footnotes_text],
-     ['program_string', \&_default_program_string, 
+     ['format_program_string', \&_default_program_string, 
                          $Texinfo::Config::program_string],
-     ['titlepage', \&_default_titlepage, $Texinfo::Config::titlepage],
-     ['navigation_header', \&_default_navigation_header, 
+     ['format_titlepage', \&_default_titlepage, $Texinfo::Config::titlepage],
+     ['format_navigation_header', \&_default_navigation_header, 
                                    $Texinfo::Config::navigation_header],
-     ['navigation_header_panel', \&_default_navigation_header_panel, 
+     ['format_navigation_header_panel', \&_default_navigation_header_panel, 
                               $Texinfo::Config::navigation_header_panel],
-     ['button_formatting', \&_default_button_formatting, 
+     ['format_element_header', \&_default_element_header,
+                              $Texinfo::Config::element_header],
+     ['format_button', \&_default_button_formatting, 
                                     $Texinfo::Config::button_formatting],
-     ['button_icon_img', \&_default_button_icon_img, 
+     ['format_button_icon_img', \&_default_button_icon_img, 
                                       $Texinfo::Config::button_icon_img],
-     ['external_href', \&_default_external_href, 
+     ['format_external_href', \&_default_external_href, 
                                     $Texinfo::Config::external_href],
-     ['contents', \&_default_contents, $Texinfo::Config::contents],
+     ['format_contents', \&_default_contents, $Texinfo::Config::contents],
   ) {
+    $self->{'default_formatting_functions'}->{$formatting_references->[0]}
+       = $formatting_references->[1];
     if (defined($formatting_references->[2])) {
-      # FIXME this pollutes the main converter keys space!
       $self->{$formatting_references->[0]} = $formatting_references->[2];
     } else {
       $self->{$formatting_references->[0]} = $formatting_references->[1];
@@ -4483,7 +4511,7 @@ sub _prepare_css($)
   $self->{'css_import_lines'} = \@css_import_lines;
   $self->{'css_rule_lines'} = \@css_rule_lines;
 
-  &{$self->{'css_lines'}}($self);
+  &{$self->{'format_css_lines'}}($self);
 }
 
 sub _node_id_file($$)
@@ -5616,7 +5644,7 @@ sub _default_end_file($)
   my $self = shift;
   my $program_text = '';
   if ($self->get_conf('PROGRAM_NAME_IN_FOOTER')) {
-    my $program_string = &{$self->{'program_string'}}($self);
+    my $program_string = &{$self->{'format_program_string'}}($self);
     $program_text = " <font size=\"-1\">
   $program_string
  </font>
@@ -5827,9 +5855,9 @@ sub _default_footnotes_text($)
          and $self->get_conf('DEFAULT_RULE') ne '');
   my $footnote_heading 
     = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{'Footnotes'});
-  $result .= &{$self->{'heading_text'}}($self, 'footnote', 
+  $result .= &{$self->{'format_heading_text'}}($self, 'footnote', 
                                         $footnote_heading, 3)."\n";
-  $result .= &{$self->{'special_element_body'}}($self, 'Footnotes',
+  $result .= &{$self->{'format_special_element_body'}}($self, 'Footnotes',
                                                $self->{'current_element'});
   $result .= "</div>\n";
   return $result;
@@ -5851,7 +5879,7 @@ sub _default_special_element_body($$$)
         $about .= $PRE_ABOUT;
       }
     } else {
-      $about .= '  '.&{$self->{'program_string'}}($self) ."\n";
+      $about .= '  '.&{$self->{'format_program_string'}}($self) ."\n";
     }
     $about .= <<EOT;
 </p>
@@ -5875,7 +5903,7 @@ EOT
       $about .= "  <tr>\n    <td align=\"center\">";
       $about .=
             ($self->get_conf('ICONS') && $self->get_conf('ACTIVE_ICONS')->{$button} ?
-             &{$self->{'button_icon_img'}}($self, $button_name, 
+             &{$self->{'format_button_icon_img'}}($self, $button_name, 
                                        $self->get_conf('ACTIVE_ICONS')->{$button}) :
              ' [' . $self->get_conf('BUTTONS_TEXT')->{$button} . '] ');
       $about .= "</td>\n";
@@ -5942,9 +5970,9 @@ $AFTER_ABOUT
 EOT
     return $about;
   } elsif ($special_type eq 'Contents') {
-    return $self->{'contents'}($self, 'contents', undef);
+    return &{$self->{'format_contents'}}($self, 'contents', undef);
   } elsif ($special_type eq 'Overview') {
-    return $self->{'contents'}($self, 'shortcontents', undef);
+    return &{$self->{'format_contents'}}($self, 'shortcontents', undef);
   } elsif ($special_type eq 'Footnotes') {
     my $result = $foot_lines;
     $foot_lines = '';
@@ -6120,7 +6148,7 @@ sub output($$)
      {'contents' => $self->{'extra'}->{'copying'}->{'contents'}}, 
      {Texinfo::Common::_convert_text_options($self)});
     if ($copying_comment ne '') {
-      $self->{'copying_comment'} = &{$self->{'comment'}}($self, $copying_comment);
+      $self->{'copying_comment'} = &{$self->{'format_comment'}}($self, $copying_comment);
     }
   }
 
@@ -6154,7 +6182,7 @@ sub output($$)
         if ($self->get_conf('DEBUG'));
     }
     $self->{'current_filename'} = $self->{'output_filename'};
-    my $header = &{$self->{'begin_file'}}($self, $self->{'output_filename'}, undef);
+    my $header = &{$self->{'format_begin_file'}}($self, $self->{'output_filename'}, undef);
     $output .= $self->_output_text($header, $fh);
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
@@ -6165,7 +6193,7 @@ sub output($$)
       $output .= $self->_output_text($self->_print_title(), $fh);
       $output .= $self->_output_text($self->_convert($root), $fh);
     }
-    $output .= $self->_output_text(&{$self->{'end_file'}}($self), $fh);
+    $output .= $self->_output_text(&{$self->{'format_end_file'}}($self), $fh);
     return $output if ($self->get_conf('OUTFILE') eq '');
   } else {
     # output with pages
@@ -6200,7 +6228,7 @@ sub output($$)
           # FIXME close/remove files already created
           return undef;
         }
-        print $file_fh "".&{$self->{'begin_file'}}($self, 
+        print $file_fh "".&{$self->{'format_begin_file'}}($self, 
                                            $element->{'filename'}, 
                                            $element);
         $files{$element->{'filename'}}->{'fh'} = $file_fh;
@@ -6216,7 +6244,7 @@ sub output($$)
       $self->{'file_counters'}->{$element->{'filename'}}--;
       if ($self->{'file_counters'}->{$element->{'filename'}} == 0) {
         # end file
-        print $file_fh "". &{$self->{'end_file'}}($self);
+        print $file_fh "". &{$self->{'format_end_file'}}($self);
       }
     }
   }
@@ -6246,7 +6274,7 @@ sub output($$)
       #}
       if (defined($filename) and $node_filename ne $filename) {
         my $redirection_page 
-          = &{$self->{'node_redirection_page'}}($self, $node);
+          = &{$self->{'format_node_redirection_page'}}($self, $node);
         my $out_filename;
         if (defined($self->{'destination_directory'})) {
           $out_filename = $self->{'destination_directory'} 
@@ -6300,7 +6328,7 @@ sub output($$)
           if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
             and $self->get_conf('NODE_FILE_EXTENSION') ne '');
         my $redirection_page 
-          = &{$self->{'node_redirection_page'}}($self, 
+          = &{$self->{'format_node_redirection_page'}}($self, 
                        $self->label_command($parsed_new_node->{'normalized'}));
         my $out_filename;
         if (defined($self->{'destination_directory'})) {
