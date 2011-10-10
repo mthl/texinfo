@@ -34,7 +34,7 @@ set_from_init_file('TOP_FILE', undef);
 set_from_init_file('SHOW_MENU', 0);
 set_from_init_file('SPLIT', 'node');
 set_from_init_file('contents', 1);
-set_from_init_file('SPLIT_INDEX', undef);
+#set_from_init_file('SPLIT_INDEX', undef);
 
 set_from_init_file('DEFAULT_RULE', '');
 set_from_init_file('BIG_RULE', '');
@@ -307,6 +307,16 @@ EOT
     foreach my $index_name (keys (%$index_entries)) {
       foreach my $index_entry_ref (@{$index_entries->{$index_name}}) {
         my $file = $self->command_filename($index_entry_ref->{'command'});
+        # happens for things in @titlepage when it is not output
+        if (!defined($file)) {
+          if ($self->{'elements'} and $self->{'elements'}->[0]
+             and defined($self->{'elements'}->[0]->{'filename'})) {
+            # In that case use the first page.
+            $file = $self->{'elements'}->[0]->{'filename'};
+          } else {
+            $file = '';
+          }
+        }
         my $anchor = $self->command_target($index_entry_ref->{'command'});
         my $origin_href = "$file#$anchor";
         my $entry = convert_tree($self, 
