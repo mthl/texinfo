@@ -149,7 +149,7 @@ my @variable_settables = (
   'DEFAULT_RULE', 'BIG_RULE',
   'MENU_ENTRY_COLON', 'INDEX_ENTRY_COLON', 'MENU_SYMBOL', 'DO_ABOUT',
   'CSS_FILES', 'CSS_REFS', 'BEFORE_OVERVIEW', 'AFTER_OVERVIEW',
-  'BEFORE_TOC_LINES', 'AFTER_TOC_LINES');
+  'BEFORE_TOC_LINES', 'AFTER_TOC_LINES', 'GLOBAL_COMMANDS');
 
 my %valid_options;
 foreach my $var (@document_settable_at_commands, @document_global_at_commands,

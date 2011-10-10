@@ -147,8 +147,9 @@ our %default_configuration = (
   'ENABLE_ENCODING' => 1,     # corresponds to --enable-encoding.
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
   'TOP_NODE_UP' => '(dir)',   # up node of Top node
-  'SIMPLE_MENU' => 0          # currently not used in the parser for now, 
+  'SIMPLE_MENU' => 0,         # currently not used in the parser for now, 
                               # but relevant for structuring
+  'GLOBAL_COMMANDS' => [],    # list of commands registered 
 );
 
 # The commands in initialization_overrides are not set in the document if

@@ -25,7 +25,7 @@
 use strict;
 use Texinfo::Convert::Converter qw(xml_protect_text);
 
-use vars qw(%commands_formatting %style_commands_formatting $protect_text
+use vars qw(%commands_formatting %style_commands_formatting
             %commands_conversion %types_conversion);
 
 set_from_init_file('COMPLEX_FORMAT_IN_TABLE', 1);
@@ -93,7 +93,7 @@ sub html32_protect_text($$)
   return $text;
 }
 
-$protect_text = \&html32_protect_text;
+texinfo_register_formatting_function('protect_text', \&html32_protect_text);
 
 sub html32_convert_text($$$$)
 {

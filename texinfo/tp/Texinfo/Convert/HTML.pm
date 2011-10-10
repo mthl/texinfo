@@ -579,10 +579,9 @@ sub default_formatting_function($$)
 {
   my $self = shift;
   my $format = shift;
-  return $self->{'default_formatting_functions'}->{'format_'.$format};
+  return $self->{'default_formatting_functions'}->{$format};
 }
 
-# see http://www.w3.org/TR/REC-html40/types.html#type-links
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 my %BUTTONS_REL =
 (
@@ -4140,6 +4139,27 @@ sub _new_document_context($$)
           };
 }
 
+my %default_formatting_references = (
+     'heading_text' => \&_default_heading_text,
+     'comment' => \&_default_comment,
+     'protect_text' => \&_default_protect_text,
+     'css_lines' => \&_default_css_lines,
+     'begin_file' => \&_default_begin_file, 
+     'node_redirection_page' => \&_default_node_redirection_page, 
+     'end_file' => \&_default_end_file, 
+     'special_element_body' => \&_default_special_element_body, 
+     'footnotes_text' => \&_default_footnotes_text, 
+     'program_string' => \&_default_program_string, 
+     'titlepage' => \&_default_titlepage, 
+     'navigation_header' => \&_default_navigation_header, 
+     'navigation_header_panel' => \&_default_navigation_header_panel, 
+     'element_header' => \&_default_element_header,
+     'button' => \&_default_button_formatting, 
+     'button_icon_img' => \&_default_button_icon_img, 
+     'external_href' => \&_default_external_href, 
+     'contents' => \&_default_contents,
+);
+
 sub _use_entity_is_entity($$)
 {
   my $self = shift;
@@ -4268,42 +4288,15 @@ sub converter_initialize($)
     }
   }
 
-  foreach my $formatting_references (
-     ['format_heading_text', \&_default_heading_text, $Texinfo::Config::heading_text],
-     ['format_comment', \&_default_comment, $Texinfo::Config::comment],
-     ['format_protect_text', \&_default_protect_text, $Texinfo::Config::protect_text],
-     ['format_css_lines', \&_default_css_lines, $Texinfo::Config::css_lines],
-     ['format_begin_file', \&_default_begin_file, $Texinfo::Config::begin_file],
-     ['format_node_redirection_page', \&_default_node_redirection_page, 
-                               $Texinfo::Config::node_redirection_page],
-     ['format_end_file', \&_default_end_file, $Texinfo::Config::end_file],
-     ['format_special_element_body', \&_default_special_element_body, 
-                              $Texinfo::Config::special_element_body],
-     ['format_footnotes_text', \&_default_footnotes_text, 
-                         $Texinfo::Config::footnotes_text],
-     ['format_program_string', \&_default_program_string, 
-                         $Texinfo::Config::program_string],
-     ['format_titlepage', \&_default_titlepage, $Texinfo::Config::titlepage],
-     ['format_navigation_header', \&_default_navigation_header, 
-                                   $Texinfo::Config::navigation_header],
-     ['format_navigation_header_panel', \&_default_navigation_header_panel, 
-                              $Texinfo::Config::navigation_header_panel],
-     ['format_element_header', \&_default_element_header,
-                              $Texinfo::Config::element_header],
-     ['format_button', \&_default_button_formatting, 
-                                    $Texinfo::Config::button_formatting],
-     ['format_button_icon_img', \&_default_button_icon_img, 
-                                      $Texinfo::Config::button_icon_img],
-     ['format_external_href', \&_default_external_href, 
-                                    $Texinfo::Config::external_href],
-     ['format_contents', \&_default_contents, $Texinfo::Config::contents],
-  ) {
-    $self->{'default_formatting_functions'}->{$formatting_references->[0]}
-       = $formatting_references->[1];
-    if (defined($formatting_references->[2])) {
-      $self->{$formatting_references->[0]} = $formatting_references->[2];
+  foreach my $formatting_reference (keys(%default_formatting_references)) {
+    $self->{'default_formatting_functions'}->{$formatting_reference}
+       = $default_formatting_references{$formatting_reference};
+    if (defined($Texinfo::Config::texinfo_formatting_references{$formatting_reference})) {
+      $self->{"format_".$formatting_reference} 
+       =  $Texinfo::Config::texinfo_formatting_references{$formatting_reference};
     } else {
-      $self->{$formatting_references->[0]} = $formatting_references->[1];
+      $self->{"format_".$formatting_reference} 
+       = $default_formatting_references{$formatting_reference};
     }
   }
   if ($Texinfo::Config::renamed_nodes) {
@@ -6043,7 +6036,7 @@ my $default_priority = 'default';
 {
 package Texinfo::Config;
 
-use vars qw(%texinfo_default_stage_handlers);
+use vars qw(%texinfo_default_stage_handlers %texinfo_formatting_references);
 
 sub texinfo_register_handler($$;$)
 {
@@ -6058,6 +6051,17 @@ sub texinfo_register_handler($$;$)
   $priority = $default_priority if (!defined($priority));
   push @{$texinfo_default_stage_handlers{$stage}->{$priority}}, $handler;
   return 1;
+}
+
+sub texinfo_register_formatting_function($$)
+{
+  my $type = shift;
+  my $handler = shift;
+  if (!$default_formatting_references{$type}) {
+    carp ("Unknown formatting type $type\n");
+    return 0;
+  }
+  $texinfo_formatting_references{$type} = $handler;
 }
 
 }

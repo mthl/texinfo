@@ -10,7 +10,7 @@
 
 use strict;
 
-use vars qw(%commands_conversion $navigation_header $element_file_name);
+use vars qw(%commands_conversion $element_file_name);
 
 set_from_init_file('contents', 1);
 set_from_init_file('INLINE_CONTENTS', 1);
@@ -115,7 +115,8 @@ sub book_navigation_header($$$$)
   }
 }
 
-$navigation_header = \&book_navigation_header;
+texinfo_register_formatting_function('navigation_header', 
+                                     \&book_navigation_header);
 
 sub book_print_sub_toc($$$);
 

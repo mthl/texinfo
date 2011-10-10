@@ -46,12 +46,10 @@ set_from_init_file('footnotestyle', 'end');
 set_from_init_file('USE_NODES', 0);
 #set_from_init_file('USE_SECTIONS', 1);
 
-use vars qw(%commands_formatting $end_file $navigation_header
-            $navigation_header_panel);
-$end_file = \&chm_end_file;
-# no-ops to avoid headers and footers
-$navigation_header = \&chm_noop;
-$navigation_header_panel = \&chm_noop;
+use vars qw(%commands_formatting);
+texinfo_register_formatting_function('end_file', \&chm_end_file);
+texinfo_register_formatting_function('navigation_header', \&chm_noop);
+texinfo_register_formatting_function('navigation_header_panel', \&chm_noop);
 
 my %chm_languages = (
     'en'         => '0x409 English (United States)',
