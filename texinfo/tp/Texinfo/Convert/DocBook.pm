@@ -92,17 +92,16 @@ my %docbook_specific_formatting = (
   "\t" => $nbsp,
   "\n" => $nbsp,
   " " => $nbsp,
+  'tie' => $nbsp,
 # FIXME and '*'?
 );
 my %docbook_commands_formatting
   = %{$Texinfo::Convert::Converter::default_xml_commands_formatting{'normal'}};
 
-foreach my $command (keys(%Texinfo::Convert::Unicode::unicode_map)) {
+foreach my $command (keys(%Texinfo::Convert::Unicode::unicode_entities)) {
   $docbook_commands_formatting{$command}
-   = '&#'.hex($Texinfo::Convert::Unicode::unicode_map{$command}).';'
-    if ($Texinfo::Convert::Unicode::unicode_map{$command} ne '');
+   = $Texinfo::Convert::Unicode::unicode_entities{$command};
 }
-$docbook_commands_formatting{'tie'} = $nbsp;
 
 foreach my $command (keys(%docbook_specific_formatting)) {
   $docbook_commands_formatting{$command} 

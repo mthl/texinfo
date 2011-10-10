@@ -58,7 +58,10 @@ dist_debugmodules_DATA = \
  DebugTexinfo/DebugTree.pm
 
 initdir = $(datadir)/texinfo/init
-dist_init_DATA = init/html32.pm
+dist_init_DATA = \
+ init/book.pm \
+ init/chm.pm \
+ init/html32.pm
 
 test_files = \
  t/27float.t \

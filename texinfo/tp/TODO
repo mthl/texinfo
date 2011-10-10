@@ -250,7 +250,11 @@ there could be a warning
 
 Add @value to the corresponding commands categories?
 
-Functions:
+Instead of _set_global_multiple_commands and _unset_global_multiple_commands
+have a better granularity and do something per command, with the possibility
+to really revert everything, including things that are not set by set_conf.
+
+Functions (?):
 sectioning_command_target_name
 node_target_name
 

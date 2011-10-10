@@ -36,11 +36,23 @@ set_from_init_file('SHOW_MENU', 0);
 set_from_init_file('USE_NODES', undef);
 set_from_init_file('USE_SECTIONS', 1);
 
-
 set_from_init_file('BIG_RULE', '<hr>');
 
-my $NO_BULLET_LIST_CLASS = 'no-bullet';
+my ($book_previous_default_filename, $book_previous_file_name, 
+    $book_unumbered_nr);
 
+sub book_init($)
+{
+  my $converter = shift;
+
+  $book_previous_default_filename = undef;
+  $book_previous_file_name = undef;
+  $book_unumbered_nr = 0;
+}
+
+texinfo_register_handler('init', \&book_init);
+
+my $NO_BULLET_LIST_CLASS = 'no-bullet';
 
 sub book_print_up_toc($$)
 {
@@ -241,9 +253,9 @@ sub book_element_file_name($$$)
   return undef if ($converter->get_conf('NODE_FILENAMES') 
                    or !$converter->get_conf('SPLIT'));
 
-  if (defined($converter->{'book_previous_default_filename'}) 
-      and ($filename eq $converter->{'book_previous_default_filename'})) {
-    return $converter->{'book_previous_file_name'};
+  if (defined($book_previous_default_filename)
+      and ($filename eq $book_previous_default_filename)) {
+    return $book_previous_file_name;
   }
 
   my $prefix = $converter->{'document_name'};
@@ -257,11 +269,11 @@ sub book_element_file_name($$$)
     $number .= '.' unless ($number =~ /\.$/);
     $new_file_name = "${prefix}_$number" . 'html';
   } else {
-    $converter->{'book_unumbered_nr'}++;
-    $new_file_name = "${prefix}_U." . $converter->{'book_unumbered_nr'} . '.html';
+    $book_unumbered_nr++;
+    $new_file_name = "${prefix}_U." . $book_unumbered_nr . '.html';
   }
-  $converter->{'book_previous_default_filename'} = $filename;
-  $converter->{'book_previous_file_name'} = $new_file_name;
+  $book_previous_default_filename = $filename;
+  $book_previous_file_name = $new_file_name;
   return $new_file_name;
 }
 

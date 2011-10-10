@@ -375,10 +375,11 @@ sub set_expansion($$) {
 my $format_from_command_line = 0;
 sub set_format($)
 {
-  my $format = shift;
-  $default_expanded_format = [$format];
+  my $set_format = shift;
+  $default_expanded_format = [$set_format];
   $format_from_command_line = 1;
-  return $format;
+  $format = $set_format;
+  return $set_format;
 }
 
 my $call_texi2dvi = 0;

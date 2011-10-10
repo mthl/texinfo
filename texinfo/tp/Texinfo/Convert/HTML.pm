@@ -4840,6 +4840,13 @@ sub _set_pages_files($$)
     my $top_node_filename;
     if (defined($self->get_conf('TOP_NODE_FILE'))) {
       $top_node_filename = $self->get_conf('TOP_NODE_FILE');
+    } else {
+      # FIXME this is like texi2html, but is it right?  Shouldn't it
+      # better to leave it undefined?  In that case the section name
+      # may be used, or the node name, or something along document_name-0
+      $top_node_filename = $self->{'document_name'};
+    }
+    if (defined($top_node_filename)) {
       $top_node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
           if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
               and $self->get_conf('NODE_FILE_EXTENSION') ne '');
@@ -4849,9 +4856,9 @@ sub _set_pages_files($$)
         and defined($top_node_filename)) {
       my ($node_top_element) = $self->_get_element($node_top);
       die "BUG: No page for top node" if (!defined($node_top));
-      if (defined($self->get_conf('TOP_NODE_FILE'))) {
-        $self->_set_element_file($node_top_element, $top_node_filename);
-      }
+      #if (defined($self->get_conf('TOP_NODE_FILE'))) {
+      $self->_set_element_file($node_top_element, $top_node_filename);
+      #}
     }
     # FIXME add a number for each page?
     my $file_nr = 0;
@@ -5220,6 +5227,7 @@ sub _prepare_index_entries($)
     $self->{'index_entries_by_letter'}
       = $self->Texinfo::Structuring::sort_indices_by_letter($merged_index_entries,
                                                             $index_names);
+    $self->{'index_entries'} = $merged_index_entries;
 
     foreach my $index_name (sort(keys(%$index_entries))) {
       foreach my $index_entry (@{$index_entries->{$index_name}}) {
@@ -6005,6 +6013,55 @@ sub convert($$)
   return $result;
 }
 
+my @possible_stages = ('setup', 'structure', 'init', 'finish');
+my %possible_stages;
+foreach my $stage (@possible_stages) {
+  $possible_stages{$stage} = 1;
+}
+
+sub run_stage_handlers($$)
+{
+  my $converter = shift;
+  my $stage = shift;
+  die if (!$possible_stages{$stage});
+
+  return if (!defined($Texinfo::Config::texinfo_default_stage_handlers{$stage}));
+
+  my @sorted_priorities = sort keys(%{$Texinfo::Config::texinfo_default_stage_handlers{$stage}});
+  foreach my $priority (@sorted_priorities) {
+    foreach my $handler (@{$Texinfo::Config::texinfo_default_stage_handlers{$stage}->{$priority}}) {
+      if ($converter->get_conf('DEBUG')) {
+        print STDERR "HANDLER($stage) , priority $priority: $handler\n";
+      }
+      &{$handler}($converter);
+    }
+  }
+}
+
+my $default_priority = 'default';
+
+{
+package Texinfo::Config;
+
+use vars qw(%texinfo_default_stage_handlers);
+
+sub texinfo_register_handler($$;$)
+{
+  my $stage = shift;
+  my $handler = shift;
+  my $priority = shift;
+
+  if (!$possible_stages{$stage}) {
+    carp ("Unknown stage $stage\n");
+    return 0;
+  }
+  $priority = $default_priority if (!defined($priority));
+  push @{$texinfo_default_stage_handlers{$stage}->{$priority}}, $handler;
+  return 1;
+}
+
+}
+
 sub output($$)
 {
   my $self = shift;
@@ -6026,6 +6083,8 @@ sub output($$)
     $self->set_conf('NODE_FILENAMES', 1);
   }
   $self->set_conf('EXTERNAL_CROSSREF_SPLIT', $self->get_conf('SPLIT'));
+
+  $self->run_stage_handlers('setup');
 
   $self->_prepare_css();
 
@@ -6078,6 +6137,8 @@ sub output($$)
 
   $self->_prepare_index_entries();
   $self->_prepare_footnotes();
+
+  $self->run_stage_handlers('structure');
 
   $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage') 
    . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
@@ -6162,6 +6223,9 @@ sub output($$)
     chomp($self->{'documentdescription_string'});
     pop @{$self->{'document_context'}};
   }
+
+  $self->run_stage_handlers('init');
+
   # Now do the output
   my $fh;
   my $output = '';
@@ -6248,6 +6312,9 @@ sub output($$)
       }
     }
   }
+
+  $self->run_stage_handlers('finish');
+
   $self->{'current_filename'} = undef;
   if ($self->get_conf('NODE_FILES') 
       and $self->{'labels'} and $self->get_conf('OUTFILE') ne '') {
@@ -6258,6 +6325,7 @@ sub output($$)
       # @titlepage, and @titlepage is not used.
       my $filename = $self->command_filename($node);
       my $node_filename;
+      # FIXME texi2html always use 'node_filename' even for Top.
       if ($node->{'extra'}->{'normalized'} eq 'Top' 
           and defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
         my $extension = '';

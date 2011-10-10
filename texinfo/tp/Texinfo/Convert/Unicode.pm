@@ -544,6 +544,15 @@ foreach my $command (keys(%unicode_map)) {
   }
 }
 
+our %unicode_entities;
+# set entities corresponding to unicode_map
+foreach my $command (keys(%unicode_map)) {
+  $unicode_entities{$command}
+   = '&#'.hex($unicode_map{$command}).';'
+    if ($unicode_map{$command} ne '');
+}
+
+
 our %transliterate_map = (
                '00C5'  => 'AA',
                '00E5'  => 'aa',
