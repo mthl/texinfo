@@ -4945,6 +4945,12 @@ If set, the function reference is used to translate error and warning
 messages.  It takes a string as argument and returns a string.  The default 
 function returns the error message as is.
 
+=item GLOBAL_COMMANDS
+
+The associated value is a reference on an array.  All the commands in the
+array are collected durin parsing.  They are afterwards available 
+through L</global_informations>.
+
 =item include_directories
 
 An array reference of directories in which C<@include> files should be 
