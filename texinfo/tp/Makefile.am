@@ -61,7 +61,8 @@ initdir = $(datadir)/texinfo/init
 dist_init_DATA = \
  init/book.pm \
  init/chm.pm \
- init/html32.pm
+ init/html32.pm \
+ init/tex4ht.pm
 
 test_files = \
  t/27float.t \

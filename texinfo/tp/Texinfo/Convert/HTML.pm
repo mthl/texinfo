@@ -4503,8 +4503,6 @@ sub _prepare_css($)
   }
   $self->{'css_import_lines'} = \@css_import_lines;
   $self->{'css_rule_lines'} = \@css_rule_lines;
-
-  &{$self->{'format_css_lines'}}($self);
 }
 
 sub _node_id_file($$)
@@ -6143,6 +6141,8 @@ sub output($$)
   $self->_prepare_footnotes();
 
   $self->run_stage_handlers('structure');
+
+  &{$self->{'format_css_lines'}}($self);
 
   $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage') 
    . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');

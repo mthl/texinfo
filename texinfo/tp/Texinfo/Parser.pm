@@ -573,6 +573,12 @@ sub parser(;$$)
     $parser->{'expanded_formats_hash'}->{$expanded_format} = 1;
   }
 
+  %{$parser->{'global_commands'}} = %global_multiple_commands;
+
+  foreach my $global_command (@{$parser->{'GLOBAL_COMMANDS'}}) {
+    $parser->{'global_commands'}->{$global_command} = 1;
+  }
+
   $parser->Texinfo::Report::new;
 
   return $parser;
@@ -913,7 +919,7 @@ sub _register_global_command($$$$)
   my $command = shift;
   my $current = shift;
   my $line_nr = shift;
-  if ($global_multiple_commands{$command} and $command ne 'author') {
+  if ($self->{'global_commands'}->{$command} and $command ne 'author') {
     push @{$self->{'extra'}->{$command}}, $current;
     return 1;
   } elsif ($global_unique_commands{$command}) {
