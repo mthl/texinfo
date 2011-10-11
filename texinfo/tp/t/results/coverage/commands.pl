@@ -563,7 +563,7 @@ File &rarr; Open.
 <a name="index-index-entry-_0060_0060in-text_0027_0027-LaTeX"></a>
 
 <a name="majorheading-in-b"></a>
-<h1 class="majorheading">majorheading <b>in b</b></h1>
+<h2 class="majorheading">majorheading <b>in b</b></h2>
 ';
 
 

@@ -230,7 +230,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="section"></a>
-<h2 class="section">1 section</h2>
+<h3 class="section">1 section</h3>
 
 <a name="part"></a>
 <h1 class="part">part</h1>

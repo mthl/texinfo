@@ -843,7 +843,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <hr>
 
 <a name="chapter"></a>
-<h1 class="chapter">1 chapter</h1>
+<h2 class="chapter">1 chapter</h2>
 <hr>
 <p>
 

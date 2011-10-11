@@ -2131,7 +2131,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-1"></a>
-<h1 class="chapter">1 chapter</h1>
+<h2 class="chapter">1 chapter</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#section" accesskey="1">section</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -2145,7 +2145,7 @@ Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a 
 Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
 </div>
 <a name="section-1"></a>
-<h2 class="section">1.1 section</h2>
+<h3 class="section">1.1 section</h3>
 
 <hr>
 <a name="chapter-2"></a>
@@ -2154,7 +2154,7 @@ Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
 Previous: <a href="#chapter" accesskey="p" rel="previous">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-2-1"></a>
-<h1 class="chapter">2 chapter 2</h1>
+<h2 class="chapter">2 chapter 2</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#section-chap-2" accesskey="1">section chap 2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -2170,7 +2170,7 @@ Previous: <a href="#chapter" accesskey="p" rel="previous">chapter</a>, Up: <a hr
 Next: <a href="#unnumberedsec" accesskey="n" rel="next">unnumberedsec</a>, Up: <a href="#chapter-2" accesskey="u" rel="up">chapter 2</a> &nbsp; </p>
 </div>
 <a name="section-chap-2-1"></a>
-<h2 class="section">2.1 section chap 2</h2>
+<h3 class="section">2.1 section chap 2</h3>
 
 <hr>
 <a name="unnumberedsec"></a>
@@ -2179,7 +2179,7 @@ Next: <a href="#unnumberedsec" accesskey="n" rel="next">unnumberedsec</a>, Up: <
 Previous: <a href="#section-chap-2" accesskey="p" rel="previous">section chap 2</a>, Up: <a href="#chapter-2" accesskey="u" rel="up">chapter 2</a> &nbsp; </p>
 </div>
 <a name="unnumberedsec-1"></a>
-<h2 class="unnumberedsec">unnumberedsec</h2>
+<h3 class="unnumberedsec">unnumberedsec</h3>
 <hr>
 <p>
 

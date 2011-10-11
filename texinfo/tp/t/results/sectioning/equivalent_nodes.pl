@@ -595,7 +595,7 @@ Next: <a href="#node" accesskey="n" rel="next">&lsquo;<samp>node</samp>&rsquo;</
 <p>
 Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">&lsquo;<samp>node</samp>&rsquo;</h3>
+<h4 class="node-heading">&lsquo;<samp>node</samp>&rsquo;</h4>
 
 <p>See <a href="#node">node</a>.
 </p><hr>

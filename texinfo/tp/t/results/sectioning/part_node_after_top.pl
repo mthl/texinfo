@@ -717,7 +717,7 @@ Next: <a href="#part-node-after-top" accesskey="n" rel="next">part node after to
 <p>
 Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">part node after top</h3>
+<h4 class="node-heading">part node after top</h4>
 <a name="part"></a>
 <h1 class="part">part</h1>
 <hr>

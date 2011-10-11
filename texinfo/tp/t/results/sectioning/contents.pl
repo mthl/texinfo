@@ -942,13 +942,13 @@ ul.no-bullet {list-style: none}
 <h1 class="top">top</h1>
 
 <a name="chapter"></a>
-<h1 class="chapter">1 chapter</h1>
+<h2 class="chapter">1 chapter</h2>
 
 <a name="section"></a>
-<h2 class="section">1.1 section</h2>
+<h3 class="section">1.1 section</h3>
 
 <a name="subsection"></a>
-<h3 class="subsection">1.1.1 subsection</h3>
+<h4 class="subsection">1.1.1 subsection</h4>
 
 <a name="subsubsection"></a>
 <h4 class="subsubsection">1.1.1.1 subsubsection</h4>
@@ -958,19 +958,19 @@ ul.no-bullet {list-style: none}
 <hr>
 
 <a name="chapter-in-part"></a>
-<h1 class="chapter">2 chapter in part</h1>
+<h2 class="chapter">2 chapter in part</h2>
 
 <a name="second-chapter-in-part"></a>
-<h1 class="chapter">3 second chapter in part</h1>
+<h2 class="chapter">3 second chapter in part</h2>
 
 <a name="unnumbered"></a>
-<h1 class="unnumbered">unnumbered</h1>
+<h2 class="unnumbered">unnumbered</h2>
 
 <a name="appendix"></a>
-<h1 class="appendix">Appendix A appendix</h1>
+<h2 class="appendix">Appendix A appendix</h2>
 
 <a name="appendixsec"></a>
-<h2 class="appendixsec">A.1 appendixsec</h2>
+<h3 class="appendixsec">A.1 appendixsec</h3>
 
 <a name="SEC_Contents"></a>
 <h1>Table of Contents</h1>

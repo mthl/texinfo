@@ -1107,7 +1107,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Previous: <a href
 <hr>
 
 <a name="a-node-after-part"></a>
-<h3 class="node-heading">a node after part</h3>
+<h4 class="node-heading">a node after part</h4>
 <p>After a node after part
 </p>
 <hr>
@@ -1117,7 +1117,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Previous: <a href
 Previous: <a href="#a-node-after-part" accesskey="p" rel="previous">a node after part</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-1"></a>
-<h1 class="chapter">1 chapter</h1>
+<h2 class="chapter">1 chapter</h2>
 <hr>
 <p>
 

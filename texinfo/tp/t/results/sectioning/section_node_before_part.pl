@@ -331,7 +331,7 @@ ul.no-bullet {list-style: none}
 
 <a name="Top"></a>
 <a name="section"></a>
-<h2 class="section">1 section</h2>
+<h3 class="section">1 section</h3>
 
 <a name="part"></a>
 <h1 class="part">part</h1>

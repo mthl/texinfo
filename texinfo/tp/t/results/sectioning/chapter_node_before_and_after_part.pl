@@ -730,7 +730,7 @@ ul.no-bullet {list-style: none}
 Next: <a href="#after" accesskey="n" rel="next">after</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <a name="chapter"></a>
-<h1 class="chapter">1 chapter</h1>
+<h2 class="chapter">1 chapter</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#after" accesskey="1">after</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -748,7 +748,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 
 <a name="after"></a>
 <a name="chapter-2"></a>
-<h1 class="chapter">2 chapter 2</h1>
+<h2 class="chapter">2 chapter 2</h2>
 
 <a name="SEC_Contents"></a>
 <h1>Table of Contents</h1>

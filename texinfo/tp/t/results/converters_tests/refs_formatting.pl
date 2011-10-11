@@ -4739,7 +4739,7 @@ title: (file name)(pman)anode. `@ref{(pman)anode,,,file name,manual}\'
 
 $result_converted{'html_text'}->{'refs_formatting'} = '<a name="chapter"></a>
 <a name="chapter-1"></a>
-<h1 class="chapter">1 chapter</h1>
+<h2 class="chapter">1 chapter</h2>
 
 <p><code>@ref{chapter,cross ref name}</code> <a href="#chapter">cross ref name</a>
 <code>@ref{chapter,,title}</code> <a href="#chapter">title</a>

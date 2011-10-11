@@ -959,7 +959,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 </p>
 <a name="node-chapter"></a>
 <a name="chapter-after-2-parts"></a>
-<h1 class="chapter">1 chapter after 2 parts</h1>
+<h2 class="chapter">1 chapter after 2 parts</h2>
 
 <hr>
 <p>

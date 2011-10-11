@@ -925,7 +925,7 @@ $result_converted{'html_text'}->{'comment_space_command_on_line'} = '
 <a name="index-index-entry--"></a>
 
 <a name="Heading--"></a>
-<h2 class="heading">Heading &nbsp;</h2>
+<h3 class="heading">Heading &nbsp;</h3>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
  &nbsp; 

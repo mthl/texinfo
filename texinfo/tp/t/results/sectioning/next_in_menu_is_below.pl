@@ -1301,7 +1301,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-1"></a>
-<h1 class="chapter">1 chapter</h1>
+<h2 class="chapter">1 chapter</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#section" accesskey="1">section</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1317,7 +1317,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 Next: <a href="#subsection" accesskey="n" rel="next">subsection</a>, Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
 </div>
 <a name="section-1"></a>
-<h2 class="section">1.1 section</h2>
+<h3 class="section">1.1 section</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#subsection" accesskey="1">subsection</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1331,7 +1331,7 @@ Next: <a href="#subsection" accesskey="n" rel="next">subsection</a>, Up: <a href
 Previous: <a href="#section" accesskey="p" rel="previous">section</a>, Up: <a href="#section" accesskey="u" rel="up">section</a> &nbsp; </p>
 </div>
 <a name="subsection-1"></a>
-<h3 class="subsection">1.1.1 subsection</h3>
+<h4 class="subsection">1.1.1 subsection</h4>
 <hr>
 <p>
 

@@ -529,7 +529,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 <p>
 Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">first</h3>
+<h4 class="node-heading">first</h4>
 <hr>
 <p>
 

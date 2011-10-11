@@ -825,7 +825,7 @@ Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a>, 
 <p>
 Next: <a href="#Test-title" accesskey="n" rel="next">Test               title</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">Chap first  here</h3>
+<h4 class="node-heading">Chap first  here</h4>
 
 <hr>
 <a name="Test-title"></a>
@@ -833,7 +833,7 @@ Next: <a href="#Test-title" accesskey="n" rel="next">Test               title</a
 <p>
 Next: <a href="#Last-with-spaces" accesskey="n" rel="next">Last with spaces</a>, Previous: <a href="#Chap-first-here" accesskey="p" rel="previous">Chap first  here</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">Test               title</h3>
+<h4 class="node-heading">Test               title</h4>
 
 <hr>
 <a name="Last-with-spaces"></a>
@@ -841,7 +841,7 @@ Next: <a href="#Last-with-spaces" accesskey="n" rel="next">Last with spaces</a>,
 <p>
 Previous: <a href="#Test-title" accesskey="p" rel="previous">Test               title</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">Last with spaces</h3>
+<h4 class="node-heading">Last with spaces</h4>
 <hr>
 <p>
 

@@ -282,7 +282,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="chapter"></a>
-<h1 class="chapter">1 chapter</h1>
+<h2 class="chapter">1 chapter</h2>
 
 <a name="part"></a>
 <h1 class="part">part</h1>

@@ -340,13 +340,13 @@ $result_converted{'html_text'}->{'contents_in_html_text'} = '<a name="top"></a>
 <h1 class="top">top</h1>
 
 <a name="Chap1"></a>
-<h1 class="chapter">1 Chap1</h1>
+<h2 class="chapter">1 Chap1</h2>
 
 <a name="Sec-1"></a>
-<h2 class="section">1.1 Sec 1</h2>
+<h3 class="section">1.1 Sec 1</h3>
 
 <a name="Chap2"></a>
-<h1 class="chapter">2 Chap2</h1>
+<h2 class="chapter">2 Chap2</h2>
 
 <h1>Short Table of Contents</h1>
 

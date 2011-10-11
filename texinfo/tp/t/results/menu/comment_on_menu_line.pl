@@ -536,14 +536,14 @@ Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="dir.html
 </table>
 
 <a name="first-1"></a>
-<h1 class="chapter">1 first</h1>
+<h2 class="chapter">1 first</h2>
 <hr>
 <a name="first"></a>
 <div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">first</h3>
+<h4 class="node-heading">first</h4>
 <hr>
 <p>
 

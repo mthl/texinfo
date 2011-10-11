@@ -289,11 +289,11 @@ Subheading
 $result_converted{'html_text'}->{'no_empty_line_between_headings'} = '<a name="Top"></a>
 <h1 class="top">Top</h1>
 <a name="Subheading"></a>
-<h3 class="subheading">Subheading</h3>
+<h4 class="subheading">Subheading</h4>
 <a name="Chapter"></a>
-<h1 class="chapter">1 Chapter</h1>
+<h2 class="chapter">1 Chapter</h2>
 <a name="Section"></a>
-<h2 class="section">1.1 Section</h2>
+<h3 class="section">1.1 Section</h3>
 <hr>
 ';
 

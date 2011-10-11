@@ -1214,7 +1214,7 @@ Next: <a href="#part-chapter-node" accesskey="n" rel="next">part chapter node</a
 </div>
 
 <a name="chapter-node-1"></a>
-<h1 class="chapter">1 chapter node</h1>
+<h2 class="chapter">1 chapter node</h2>
 
 <hr>
 <a name="part-chapter-node"></a>
@@ -1227,7 +1227,7 @@ Previous: <a href="#chapter-node" accesskey="p" rel="previous">chapter node</a>,
 <hr>
 
 <a name="chapter-with-part-node"></a>
-<h1 class="chapter">2 chapter with part node</h1>
+<h2 class="chapter">2 chapter with part node</h2>
 
 <a name="SEC_Contents"></a>
 <h1>Table of Contents</h1>

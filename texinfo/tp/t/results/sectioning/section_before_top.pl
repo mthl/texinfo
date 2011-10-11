@@ -644,7 +644,7 @@ ul.no-bullet {list-style: none}
 Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="section"></a>
-<h2 class="section">1 section</h2>
+<h3 class="section">1 section</h3>
 
 <hr>
 <a name="Top"></a>
@@ -653,7 +653,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 Next: <a href="#section-node" accesskey="n" rel="next">section node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <a name="top"></a>
-<h2 class="unnumberedsec">top</h2>
+<h3 class="unnumberedsec">top</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#section-node" accesskey="1">section node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">

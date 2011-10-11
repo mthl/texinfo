@@ -1057,7 +1057,7 @@ Next: <a href="#Unn" accesskey="n" rel="next">Unn</a>, Up: <a href="dir.html#Top
 Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <a name="Unn-1"></a>
-<h1 class="unnumbered">Unn</h1>
+<h2 class="unnumbered">Unn</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Sec" accesskey="1">Sec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1071,7 +1071,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 Up: <a href="#Unn" accesskey="u" rel="up">Unn</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <a name="Sec-1"></a>
-<h2 class="section">Sec</h2>
+<h3 class="section">Sec</h3>
 
 <p>Should be unnumbered.
 </p>

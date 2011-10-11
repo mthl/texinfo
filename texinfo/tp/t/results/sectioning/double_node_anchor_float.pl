@@ -1078,7 +1078,7 @@ ul.no-bullet {list-style: none}
 <p>
  &nbsp; </p>
 </div>
-<h3 class="node-heading">node1</h3>
+<h4 class="node-heading">node1</h4>
 
 <hr>
 <div class="header">

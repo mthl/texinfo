@@ -463,7 +463,7 @@ Next: <a href="#subnode" accesskey="n" rel="next">subnode</a>, Up: <a href="dir.
 <p>
 Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">subnode</h3>
+<h4 class="node-heading">subnode</h4>
 <hr>
 <p>
 

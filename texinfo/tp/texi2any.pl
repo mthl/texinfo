@@ -449,6 +449,7 @@ sub _set_variables_texi2html()
   ['ENABLE_ENCODING_USE_ENTITY', 1],
   ['DO_ABOUT', undef],
   ['NODE_NAME_IN_INDEX', 0],
+  ['CHAPTER_HEADER_LEVEL', 1],
   ['BIG_RULE', '<hr size="6">'],
   ['SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
                              ' ', ' ', ' ', ' ',

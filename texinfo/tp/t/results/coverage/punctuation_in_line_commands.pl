@@ -1476,7 +1476,7 @@ $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '
 <a name="index-index_0021-After-punc"></a>
 
 <a name="heading_0021-After-punc"></a>
-<h2 class="heading">heading! After punc</h2>
+<h3 class="heading">heading! After punc</h3>
 
 <h1 class="titlefont">titlefont! After punc</h1>
 

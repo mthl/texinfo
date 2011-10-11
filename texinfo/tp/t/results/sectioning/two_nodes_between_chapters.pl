@@ -1303,7 +1303,7 @@ Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a>, Up: <a href="
 Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#node-between-chapters" accesskey="p" rel="previous">node between chapters</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-c1"></a>
-<h1 class="chapter">1 chapter c1</h1>
+<h2 class="chapter">1 chapter c1</h2>
 
 <hr>
 <a name="node-between-chapters"></a>
@@ -1311,7 +1311,7 @@ Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#node-
 <p>
 Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a href="#chapter-1" accesskey="p" rel="previous">chapter 1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">node between chapters</h3>
+<h4 class="node-heading">node between chapters</h4>
 
 <hr>
 <a name="chapter-2"></a>
@@ -1320,7 +1320,7 @@ Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a 
 Previous: <a href="#chapter-1" accesskey="p" rel="previous">chapter 1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="chapter-c2"></a>
-<h1 class="chapter">2 chapter c2</h1>
+<h2 class="chapter">2 chapter c2</h2>
 <hr>
 <p>
 

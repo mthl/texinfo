@@ -754,7 +754,7 @@ ul.no-bullet {list-style: none}
 <p>
 Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">part node before top</h3>
+<h4 class="node-heading">part node before top</h4>
 <a name="part"></a>
 <h1 class="part">part</h1>
 <hr>

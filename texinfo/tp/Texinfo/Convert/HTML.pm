@@ -920,6 +920,8 @@ our %defaults = (
   'SHOW_TITLE'           => 1,
   'USE_TITLEPAGE_FOR_TITLE' => 0,
   'MONOLITHIC'           => 1,
+  'CHAPTER_HEADER_LEVEL' => 2,
+  'MAX_HEADER_LEVEL'     => 4,
 # This is the default, mainly for tests; the caller should set them.  These
 # values are in fact what should be set -- for now when TEST is true.
   'PROGRAM_AND_VERSION'  => 'texi2html',
@@ -1735,7 +1737,11 @@ sub _default_heading_text($$$$$)
   }
   my $align = '';
   $align = ' align="center"' if ($cmdname eq 'centerchap' or $cmdname eq 'settitle');
-  $level = 1 if ($level == 0);
+  if ($level < 1) {
+    $level = 1;
+  } elsif ($level > $self->get_conf('MAX_HEADER_LEVEL')) {
+    $level = $self->get_conf('MAX_HEADER_LEVEL');
+  }
   my $result = $self->_attribute_class("h$level", $class) ."$align>$text</h$level>";
   # titlefont appears inline in text, so no end of line is
   # added. The end of line should be added by the user if needed.
@@ -2201,7 +2207,7 @@ sub _convert_heading_command($$$$$)
           = $Texinfo::Common::level_to_structuring_command{$cmdname}->[$heading_level];
       }
       $result .= &{$self->{'format_heading_text'}}($self, $cmdname, $heading, 
-                                            $heading_level, $command);
+                 $heading_level +$self->get_conf('CHAPTER_HEADER_LEVEL') -1, $command);
     }
   }
   $result .= $content if (defined($content));

@@ -1047,7 +1047,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="#GNU-man
 <p>
 Previous: <a href="#Top" accesskey="p" rel="previous">Top</a> &nbsp; </p>
 </div>
-<h3 class="node-heading">first</h3>
+<h4 class="node-heading">first</h4>
 <hr>
 <p>
 
