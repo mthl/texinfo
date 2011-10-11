@@ -1,3 +1,13 @@
+2011-10-11  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AC_INIT): version 4.13.90.
+	(AM_INIT_AUTOMAKE): dist-xz rather than lzma.
+
+	* configure.ac (AC_CONFIG_SRCDIR): look for info.c, not makeinfo.c.
+	(AC_CONFIG_FILES),
+	* Makefile.am (SUBDIRS): remove makeinfo.
+	(DIST_SUBDIRS): no need.
+
 2011-10-01  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Generic Translator texi2any/makeinfo): adapt to

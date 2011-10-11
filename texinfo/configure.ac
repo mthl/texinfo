@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.102 2011-10-01 23:09:22 pertusus Exp $
+# $Id: configure.ac,v 1.103 2011-10-11 23:37:39 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -9,19 +9,19 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [4.13], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [4.13.90], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
 dnl tar-ustar because we have long filenames for some test files
-AM_INIT_AUTOMAKE([1.10.1 readme-alpha dist-lzma tar-ustar])
+AM_INIT_AUTOMAKE([1.10.1 readme-alpha dist-xz tar-ustar])
 
 # Minimum Autoconf version required.
 AC_PREREQ(2.59)
 
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
-AC_CONFIG_SRCDIR([makeinfo/makeinfo.c])
+AC_CONFIG_SRCDIR([info/info.c])
 
 AM_CONDITIONAL([TEXI2HTML],[false])
 
@@ -361,8 +361,6 @@ AC_CONFIG_FILES([\
   install-info/Makefile
   install-info/tests/Makefile
   lib/Makefile
-  makeinfo/Makefile
-  makeinfo/tests/Makefile
   po/Makefile.in
   po_document/Makefile.in
   util/Makefile

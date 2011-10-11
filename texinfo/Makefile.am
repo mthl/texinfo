@@ -1,8 +1,8 @@
-# $Id: Makefile.am,v 1.30 2011-09-25 22:07:04 pertusus Exp $
+# $Id: Makefile.am,v 1.31 2011-10-11 23:37:38 karl Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -27,16 +27,16 @@ TEXINFO_TEX = doc/texinfo.tex
 
 if TOOLS_ONLY
   # Build native tools only.
-  SUBDIRS = lib info install-info makeinfo tp util
+  SUBDIRS = lib info install-info tp util
 else
   # All subdirectories.
   # Do libs first since the C programs depend on it.
   # Do doc last so makeinfo will be built when we get there.
   # Others are alphabetical.
   SUBDIRS = $(native_tools) gnulib/lib lib \
-            install-info info makeinfo po po_document tp util doc
+            install-info info po po_document tp util \
+	    doc
 endif
-DIST_SUBDIRS = $(SUBDIRS) texi2html
 
 # One special target for installers to use by hand if desired.
 install-tex:
