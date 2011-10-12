@@ -194,7 +194,7 @@ do
     if [ "$use_latex2html" = 'yes' ]; then
       sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
        's/with LaTeX2HTML.*/with LaTeX2HTML/' "$out_dir/$dir/"*"_l2h.html"
-      # "*"_images.pl" files are not guaranteed to be present
+      # "*"_images.pl" files are not guaranteed to be present
       for file in "${outdir}$dir/"*"_images.pl" "${outdir}$dir/"*"_labels.pl"; do
        if [ -f "$file" ]; then
         sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file"
