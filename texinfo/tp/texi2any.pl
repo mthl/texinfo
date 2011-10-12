@@ -121,7 +121,7 @@ sub __p($$) {
 
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
 # FIXME
-my $libsrcdir = "$srcdir/../texi2html";
+my $libsrcdir = "$srcdir/maintain";
 if ($0 =~ /\.pl$/) {
   unshift @INC, "$libsrcdir/lib/libintl-perl/lib";
 } elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
@@ -145,7 +145,7 @@ if ($0 =~ /\.pl$/) {
   # FIXME
   # or in the texi2html directory
   my $locales_dir_found = 0;
-  foreach my $locales_dir ("../../../tp/t/locales", "$libsrcdir/locales", "./locales", '../texi2html/locales') {
+  foreach my $locales_dir ("../../../tp/t/locales", "$libsrcdir/locales", "./locales") {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       $locales_dir_found = 1;

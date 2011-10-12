@@ -3,9 +3,9 @@ use strict;
 use Test::More;
 BEGIN { plan tests => 63 };
 
-use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
-use lib '../texi2html/lib/libintl-perl/lib/';
-use lib '../texi2html/lib/Text-Unidecode/lib/';
+use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
+use lib 'maintain/lib/libintl-perl/lib/';
+use lib 'maintain/lib/Text-Unidecode/lib/';
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Converter;
 use Texinfo::Convert::HTML;

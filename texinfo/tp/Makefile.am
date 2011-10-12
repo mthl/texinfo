@@ -27,6 +27,9 @@ texi2any: texi2any.pl
 	$(do_subst) $(srcdir)/$< > $@
 	chmod a+x $@
 
+makeinfo: texi2any
+	-$(LN_S) texi2any $@
+
 modulesdir = $(pkgdatadir)/Texinfo
 dist_modules_DATA = \
  Texinfo/Parser.pm \
@@ -156,10 +159,10 @@ EXTRA_DIST = \
   texi2any.pl \
   $(test_results) \
   $(test_files) \
-  $(tp_tests)
+  $(tp_tests) \
+  maintain/lib
 
-# FIXME put those somewhere else?  In maintain/lib?
-libsrcdir = $(srcdir)/../texi2html/lib
+libsrcdir = $(srcdir)/maintain/lib
 
 install-data-local:
 	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
@@ -181,6 +184,9 @@ install-data-local:
 
 install-exec-hook:
 	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
+
+dist-hook:
+	rm -rf `find $(distdir)/maintain/lib -name CVS`
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
