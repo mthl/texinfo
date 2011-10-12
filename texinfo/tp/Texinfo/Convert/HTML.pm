@@ -4348,6 +4348,8 @@ sub _default_css_lines ($)
 {
   my $self = shift;
 
+  return if ($self->get_conf('NO_CSS'));
+
   my $css_refs = $self->get_conf('CSS_REFS');
 
   return if (!@{$self->{'css_import_lines'}} and !@{$self->{'css_rule_lines'}}

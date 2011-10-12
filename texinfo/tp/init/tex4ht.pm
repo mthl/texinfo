@@ -148,7 +148,12 @@ sub tex4ht_prepare($) {
         if ($command eq 'math') {
           $tree = $root->{'args'}->[0];
         } else {
-          $tree = {'contents' => $root->{'contents'}};
+          $tree = {'contents' => [@{$root->{'contents'}}]};
+          if ($tree->{'contents'}->[0] 
+              and $tree->{'contents'}->[0]->{'type'}
+              and $tree->{'contents'}->[0]->{'type'} eq 'empty_line_after_command') {
+            shift @{$tree->{'contents'}};
+          }
         }
         my $text = Texinfo::Convert::Texinfo::convert($tree);
         $commands{$command}->{'commands'}->[$counter-1] = $root;
@@ -262,7 +267,7 @@ sub tex4ht_process_command ($$) {
         #print STDERR "while search $command $count $line";
         if ($line =~ /!-- tex4ht_end $commands{$command}->{'basename'} $command $count --/) {
           $got_count++;
-          chomp($text);
+          chomp($text) if ($command eq 'math');
           $commands{$command}->{'results'}->{$commands{$command}->{'commands'}->[$count-1]} = $text;
           $end_found = 1;
           last;
