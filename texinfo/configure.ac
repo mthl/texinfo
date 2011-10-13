@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.104 2011-10-13 00:06:51 pertusus Exp $
+# $Id: configure.ac,v 1.105 2011-10-13 17:41:09 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -255,7 +255,8 @@ AC_SUBST([USE_UNICODE])
 AC_SUBST([USE_EXTERNAL_UNIDECODE])
 
 # i18n support.  To update to a new version of gettext, run:
-# gettextize -f -c
+#   gettextize -f -c
+# See http://www.gnu.org/s/hello/manual/gnulib/gettextize-and-autopoint.html.
 AM_GNU_GETTEXT_VERSION([0.18.1])
 AM_GNU_GETTEXT([external])
 
