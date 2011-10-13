@@ -1,3 +1,11 @@
+2011-10-13  Patrice Dumas  <pertusus@free.fr>
+
+	* info-stnd.texi: change @itemx to a missing @item.
+	* po/POTFILES.in, configure.ac, po_document/POTFILES.in: remove references
+	to makeinfo/ and texi2html/.
+	* doc/Makefile.am (MAKEINFO, man_rule_0): use tp/texi2any.pl or 
+	tp/makeinfo to regenerate info and man pages.
+
 2011-10-11  Karl Berry  <karl@gnu.org>
 
 	* configure.ac (AC_INIT): version 4.13.90.

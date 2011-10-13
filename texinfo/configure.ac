@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.103 2011-10-11 23:37:39 karl Exp $
+# $Id: configure.ac,v 1.104 2011-10-13 00:06:51 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -231,17 +231,6 @@ AC_ARG_ENABLE(install-warnings,
 AM_CONDITIONAL(INSTALL_WARNINGS,
    test x"$install_warnings" = xtrue || test x"$install_warnings" = xyes)
 
-USE_UNICODE=unknown
-AC_ARG_WITH([encode],
-    AC_HELP_STRING([--with-encode],
-           [use encode (default: runtime detection)]),
-    [if test $withval = 'no'; then
-         USE_UNICODE=0
-     else
-         USE_UNICODE=1
-     fi],
-    [])
-
 USE_EXTERNAL_EASTASIANWIDTH=no
 AC_ARG_WITH([external-Unicode-EastAsianWidth],
    AC_HELP_STRING([--with-external-Unicode-EastAsianWidth],
@@ -264,40 +253,6 @@ AC_ARG_WITH([external-Text-Unidecode],
 
 AC_SUBST([USE_UNICODE])
 AC_SUBST([USE_EXTERNAL_UNIDECODE])
-
-t2h_try_translations=
-AC_ARG_ENABLE([translations],
-    AC_HELP_STRING([--enable-translations],
-        [try to rebuild translation files (default: detected)]),
-    [if test $enableval = 'no'; then
-       t2h_try_translations='no'
-     else
-       t2h_try_translations='yes'
-     fi],
-    [ if $PERL -e "use 5.0; use Data::Dumper;" > /dev/null 2>&1;
-     then
-       t2h_try_translations='yes'
-     else  
-       t2h_try_translations='no'
-     fi
-    ])
-
-if test "z$t2h_try_translations" = 'zyes'; then
-    USE_DATA_DUMPER=1
-    REQUIRE_DATA_DUMPER="use Data::Dumper"
-else
-    USE_DATA_DUMPER=0
-    REQUIRE_DATA_DUMPER=1
-fi
-AC_SUBST([USE_DATA_DUMPER])
-AC_SUBST([REQUIRE_DATA_DUMPER])
-
-# top_builddir and subdir differs between standalone texi2html and 
-# texi2html in texinfo
-t2h_po_dir='texi2html/'
-AC_SUBST([t2h_po_dir])
-t2h_po_top_builddir='../..'
-AC_SUBST([t2h_po_top_builddir])
 
 # i18n support.  To update to a new version of gettext, run:
 # gettextize -f -c
@@ -347,11 +302,6 @@ AC_MSG_CHECKING([parser tests requirements])
 AC_MSG_RESULT([$tp_tests])
 AM_CONDITIONAL([TP_TESTS], [test "z$tp_tests" = 'zyes'])
 
-AC_CONFIG_FILES([texi2html/texi2html_configured.pl:texi2html/texi2html.pl], 
-   [chmod +x texi2html/texi2html_configured.pl])
-AC_CONFIG_FILES([texi2html/check_texinfo.pl], [chmod +x texi2html/check_texinfo.pl])
-AC_CONFIG_FILES([texi2html/manage_i18n.pl], [chmod +x texi2html/manage_i18n.pl])
-
 dnl The bulk config files.
 AC_CONFIG_FILES([\
   Makefile
@@ -365,36 +315,6 @@ AC_CONFIG_FILES([\
   po_document/Makefile.in
   util/Makefile
   tp/Makefile
-  texi2html/po_messages/POTFILES.in \
-  texi2html/po_document/POTFILES.in \
-  texi2html/po_messages/Makevars \
-  texi2html/po_document/Makevars \
-  texi2html/po_messages/Makefile.in
-  texi2html/po_document/Makefile.in
-  texi2html/Makefile \
-  texi2html/test/Makefile \
-  texi2html/test/contents/Makefile \
-  texi2html/test/coverage/Makefile \
-  texi2html/test/info_coverage/Makefile \
-  texi2html/test/formatting/Makefile \
-  texi2html/test/indices/Makefile \
-  texi2html/test/invalid/Makefile \
-  texi2html/test/misc/Makefile \
-  texi2html/test/encodings/Makefile \
-  texi2html/test/macros/Makefile \
-  texi2html/test/manuals/Makefile \
-  texi2html/test/nested_formats/Makefile \
-  texi2html/test/sectioning/Makefile \
-  texi2html/test/htmlxref/Makefile \
-  texi2html/test/htmlxref-only_mono/Makefile \
-  texi2html/test/htmlxref-only_split/Makefile \
-  texi2html/test/xemacs_manual/Makefile \
-  texi2html/test/texi2html_manual/Makefile \
-  texi2html/test/tar_manual/Makefile \
-  texi2html/test/singular_manual/Makefile \
-  texi2html/test/layout/Makefile \
-  texi2html/test/many_input_files/Makefile \
-  texi2html/test/path_separator
 ])
 
 AC_OUTPUT

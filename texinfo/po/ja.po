@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-09-25 20:24+0200\n"
+"POT-Creation-Date: 2011-10-13 01:00+0200\n"
 "PO-Revision-Date: 2011-04-24 19:38+0900\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -309,8 +309,7 @@ msgid "Try --help for more information.\n"
 msgstr "詳しくは --help オプションを試してみてください。\n"
 
 #: info/info.c:298 info/infokey.c:144 install-info/install-info.c:2133
-#: makeinfo/makeinfo.c:752 util/texindex.c:295 texi2html/texi2html.pl:4026
-#: tp/texi2any.pl:623
+#: util/texindex.c:295 tp/texi2any.pl:617
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -441,8 +440,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:682 info/infokey.c:911 makeinfo/makeinfo.c:425
-#: util/texindex.c:259
+#: info/info.c:682 info/infokey.c:911 util/texindex.c:259
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1898,8 +1896,7 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:589 texi2html/texi2html.pl:3946
-#: tp/texi2any.pl:614
+#: install-info/install-info.c:589 tp/texi2any.pl:608
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2022,1152 +2019,6 @@ msgstr "標準出力で ferror が発生しました\n"
 msgid "fflush error on stdout\n"
 msgstr "標準出力で fflush エラーが発生しました\n"
 
-#: makeinfo/cmds.c:590 makeinfo/cmds.c:612
-#, c-format
-msgid "arguments to @%s ignored"
-msgstr "@%s に対する引数は無視しました"
-
-#: makeinfo/cmds.c:787
-msgid "January"
-msgstr "一月"
-
-#: makeinfo/cmds.c:787
-msgid "February"
-msgstr "二月"
-
-#: makeinfo/cmds.c:787
-msgid "March"
-msgstr "三月"
-
-#: makeinfo/cmds.c:787
-msgid "April"
-msgstr "四月"
-
-#: makeinfo/cmds.c:787
-msgid "May"
-msgstr "五月"
-
-#: makeinfo/cmds.c:788
-msgid "June"
-msgstr "六月"
-
-#: makeinfo/cmds.c:788
-msgid "July"
-msgstr "七月"
-
-#: makeinfo/cmds.c:788
-msgid "August"
-msgstr "八月"
-
-#: makeinfo/cmds.c:788
-msgid "September"
-msgstr "九月"
-
-#: makeinfo/cmds.c:788
-msgid "October"
-msgstr "十月"
-
-#: makeinfo/cmds.c:789
-msgid "November"
-msgstr "十一月"
-
-#: makeinfo/cmds.c:789
-msgid "December"
-msgstr "十二月"
-
-#: makeinfo/cmds.c:1139
-#, c-format
-msgid "unlikely character %c in @var"
-msgstr "@var で使えそうにない文字 %c"
-
-#: makeinfo/cmds.c:1182
-#, c-format
-msgid "@sc argument all uppercase, thus no effect"
-msgstr "全て大文字の @sc 引数、従って効果がありません"
-
-#: makeinfo/cmds.c:1237
-#, c-format
-msgid "`{' expected, but saw `%c'"
-msgstr "`{' があるはずですが、`%c' でした"
-
-#: makeinfo/cmds.c:1277
-#, c-format
-msgid "end of file inside verb block"
-msgstr "verb ブロック内でファイル末尾となりました"
-
-#: makeinfo/cmds.c:1285
-#, c-format
-msgid "`}' expected, but saw `%c'"
-msgstr "`}' があるはずですが、`%c' でした"
-
-#: makeinfo/cmds.c:1316 texi2html/formats/info.pm:1188
-#: tp/Texinfo/Convert/Plaintext.pm:1299
-#, c-format
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr ""
-
-#: makeinfo/cmds.c:1512
-#, c-format
-msgid "%c%s is obsolete"
-msgstr "%c%s は廃れた命令です"
-
-#: makeinfo/cmds.c:1620 texi2html/texi2html.pl:6369
-#, c-format, perl-format
-msgid "@sp requires a positive numeric argument, not `%s'"
-msgstr "@sp には `%s' ではなく、正の数値を与えなければなりません"
-
-#: makeinfo/cmds.c:2031 makeinfo/footnote.c:81
-#, c-format
-msgid "Bad argument to %c%s"
-msgstr "%c%s に対する不正な引数"
-
-#: makeinfo/cmds.c:2041 makeinfo/makeinfo.c:4231
-msgid "asis"
-msgstr "そのまま"
-
-#: makeinfo/cmds.c:2043 makeinfo/cmds.c:2073 makeinfo/makeinfo.c:4233
-msgid "none"
-msgstr "なし"
-
-#: makeinfo/cmds.c:2057 texi2html/texi2html.pl:6003
-#: texi2html/texi2html.pl:6014 tp/Texinfo/Parser.pm:2528
-#: tp/Texinfo/Parser.pm:4642 tp/Texinfo/Parser.pm:4653
-#, c-format, perl-format
-msgid "Bad argument to @%s"
-msgstr "@%s に対する誤った引数です"
-
-#: makeinfo/cmds.c:2071
-msgid "insert"
-msgstr "挿入"
-
-#: makeinfo/cmds.c:2087 texi2html/texi2html.pl:5942
-#: texi2html/texi2html.pl:6160 texi2html/texi2html.pl:6188
-#: texi2html/texi2html.pl:6253 texi2html/texi2html.pl:6417
-#: texi2html/texi2html.pl:13222 texi2html/texi2html.pl:14620
-#: tp/Texinfo/Parser.pm:2694 tp/Texinfo/Parser.pm:4693
-#: tp/Texinfo/Parser.pm:4726 tp/Texinfo/Parser.pm:4752
-#: tp/Texinfo/Parser.pm:4785 tp/Texinfo/Parser.pm:4845
-#, c-format, perl-format
-msgid "Bad argument to @%s: %s"
-msgstr "@%s に対する誤った引数です: %s"
-
-#: makeinfo/cmds.c:2170 texi2html/texi2html.pl:5889 tp/Texinfo/Parser.pm:4819
-#, c-format, perl-format
-msgid "Expected @%s on or off, not `%s'"
-msgstr ""
-
-#: makeinfo/cmds.c:2190 texi2html/texi2html.pl:6211 tp/Texinfo/Parser.pm:4766
-#, c-format, perl-format
-msgid "Only @%s 10 or 11 is supported, not `%s'"
-msgstr ""
-
-#: makeinfo/defun.c:83
-#, c-format
-msgid "Missing `}' in @def arg"
-msgstr "@def 引数に `}' を忘れています"
-
-#: makeinfo/defun.c:711 texi2html/texi2html.pl:11169
-#, c-format, perl-format
-msgid "Must be in `@%s' environment to use `@%s'"
-msgstr "`@%2$s' を使用するためには `@%1$s' 環境でなければいけません"
-
-#: makeinfo/files.c:434
-#, c-format
-msgid "%s: getwd: %s, %s\n"
-msgstr "%s: getwd: %s, %s\n"
-
-#: makeinfo/files.c:637
-#, c-format
-msgid "`%s' omitted before output filename"
-msgstr ""
-
-#: makeinfo/files.c:645
-#, c-format
-msgid "`%s' omitted since writing to stdout"
-msgstr ""
-
-#: makeinfo/files.c:693
-#, c-format
-msgid "Output buffer not empty."
-msgstr ""
-
-#: makeinfo/float.c:181 texi2html/texi2html.pl:14578
-#, c-format, perl-format
-msgid "Requested float type `%s' not previously used"
-msgstr ""
-
-#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:959
-#: makeinfo/index.c:965
-msgid "See "
-msgstr "See "
-
-#: makeinfo/footnote.c:149
-#, c-format
-msgid "`%c%s' needs an argument `{...}', not just `%s'"
-msgstr "`%c%s' には `%s' だけでなく、`{...}' 形式の引数が必要です"
-
-#: makeinfo/footnote.c:164
-#, c-format
-msgid "No closing brace for footnote `%s'"
-msgstr "脚注 `%s' の閉じブレースがありません"
-
-#: makeinfo/footnote.c:197 texi2html/formats/info.pm:3199
-#, c-format
-msgid "Footnote defined without parent node"
-msgstr "脚注に親ノードの定義がありません"
-
-#: makeinfo/footnote.c:209
-#, c-format
-msgid "Footnotes inside footnotes are not allowed"
-msgstr "脚注に脚注を含めることはできません"
-
-#: makeinfo/footnote.c:301 makeinfo/index.c:187
-msgid "Footnotes"
-msgstr "脚注"
-
-#: makeinfo/html.c:91
-#, c-format
-msgid "%s: could not open --css-file: %s"
-msgstr "%s: --css-file %s を開くことができません"
-
-#: makeinfo/html.c:180 texi2html/texi2html.pl:16860
-#: tp/Texinfo/Convert/HTML.pm:4283
-#, c-format, perl-format
-msgid "%s:%d: --css-file ended in comment"
-msgstr "%s:%d: --css-file がコメント内で終了しています"
-
-#: makeinfo/html.c:426
-#, c-format
-msgid "[unexpected] no html tag to pop"
-msgstr "[unexpected] ポップアップする html タグがありません"
-
-#: makeinfo/html.c:786
-#, c-format
-msgid "[unexpected] invalid node name: `%s'"
-msgstr "[unexpected] 無効なノード名: `%s'"
-
-#: makeinfo/index.c:167 texi2html/texi2html.pl:8457
-#, c-format, perl-format
-msgid "Unknown index `%s'"
-msgstr "不明なインデックス `%s'"
-
-#: makeinfo/index.c:232
-#, c-format
-msgid "Info cannot handle `:' in index entry `%s'"
-msgstr "Info ではインデックス項目に `:' を使用できません `%s'"
-
-#: makeinfo/index.c:410
-#, c-format
-msgid "Index `%s' already exists"
-msgstr "見出し `%s' は既に存在します"
-
-#: makeinfo/index.c:453
-#, c-format
-msgid "Unknown index `%s' and/or `%s' in @synindex"
-msgstr "@synindex に不明な見出し `%s' や `%s' があります"
-
-#: makeinfo/index.c:676
-msgid "(line )"
-msgstr "(行 )"
-
-#: makeinfo/index.c:684
-#, c-format
-msgid "(line %*d)"
-msgstr "(行 %*d)"
-
-#: makeinfo/index.c:765 texi2html/texi2html.pl:13627 tp/Texinfo/Parser.pm:4733
-#, c-format, perl-format
-msgid "Unknown index `%s' in @printindex"
-msgstr "@printindex に不明な見出し `%s' があります"
-
-#: makeinfo/index.c:834 texi2html/texi2html.pl:8462
-#: texi2html/formats/info.pm:3075 tp/Texinfo/Parser.pm:2146
-#: tp/Texinfo/Convert/Info.pm:410
-#, c-format, perl-format
-msgid "Entry for index `%s' outside of any node"
-msgstr "見出し `%s' のエントリはあらゆるノードの外側です"
-
-#: makeinfo/index.c:837 makeinfo/index.c:873
-msgid "(outside of any node)"
-msgstr "(あらゆるノードの外側)"
-
-#: makeinfo/insertion.c:162
-#, c-format
-msgid "@item not allowed in argument to @itemize"
-msgstr "@itemize の引数として @item は許可されていません"
-
-#: makeinfo/insertion.c:243
-msgid "Broken-Type in insertion_type_pname"
-msgstr "insertion_type_pname 中に壊れた型があります"
-
-#: makeinfo/insertion.c:339
-#, c-format
-msgid "Enumeration stack overflow"
-msgstr "列挙用スタックがオーバフローしました"
-
-#: makeinfo/insertion.c:371
-#, c-format
-msgid "lettering overflow, restarting at %c"
-msgstr "ラベル文字がオーバーフロー、%c に戻します"
-
-#: makeinfo/insertion.c:640 texi2html/texi2html.pl:11309
-#: tp/Texinfo/Parser.pm:2537
-#, c-format, perl-format
-msgid "%s requires an argument: the formatter for %citem"
-msgstr "%s には引数が必要です: %citem を整形するため"
-
-#: makeinfo/insertion.c:728
-#, c-format
-msgid "%cfloat environments cannot be nested"
-msgstr ""
-
-#: makeinfo/insertion.c:1006 texi2html/texi2html.pl:10847
-#: texi2html/texi2html.pl:10874 texi2html/texi2html.pl:14483
-#: tp/Texinfo/Parser.pm:1436
-#, c-format, perl-format
-msgid "`@end' expected `%s', but saw `%s'"
-msgstr "`@end' には `%s' が必要ですが、`%s' が見つかりました"
-
-#: makeinfo/insertion.c:1382 texi2html/texi2html.pl:16003
-#: tp/Texinfo/Parser.pm:1439
-#, c-format, perl-format
-msgid "No matching `%cend %s'"
-msgstr "`%cend %s' との対応が見つかりません"
-
-#: makeinfo/insertion.c:1651
-#, c-format
-msgid "%s requires letter or digit"
-msgstr "%s には英数文字が必要です"
-
-#: makeinfo/insertion.c:1751
-#, c-format
-msgid "end of file inside verbatim block"
-msgstr "verbatim ブロック中でファイルの末尾となりました"
-
-#: makeinfo/insertion.c:1975 texi2html/texi2html.pl:11893
-#, c-format, perl-format
-msgid "@%s not meaningful outside `@float' environment"
-msgstr "`@float' 環境の外側では @%s は意味がありません"
-
-#: makeinfo/insertion.c:2011
-#, c-format
-msgid "@menu seen before first @node, creating `Top' node"
-msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
-
-#: makeinfo/insertion.c:2012 texi2html/texi2html.pl:13725
-#: tp/Texinfo/Parser.pm:4112
-#, c-format
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr "多分 @top ノードは @ifinfo よりは @ifnottex に覆われるべきでは？"
-
-#: makeinfo/insertion.c:2024
-#, c-format
-msgid "@detailmenu seen before first node, creating `Top' node"
-msgstr "@detailmenu が最初のノード以前に現れました。`頂点' ノードを作ります"
-
-#: makeinfo/insertion.c:2099 texi2html/texi2html.pl:6301
-#: tp/Texinfo/Parser.pm:3943
-#, c-format, perl-format
-msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr ""
-
-#: makeinfo/insertion.c:2113
-#, c-format
-msgid "@%s not meaningful outside `@titlepage' environment"
-msgstr "`@titlepage' 環境の外側では @%s は意味がありません"
-
-#: makeinfo/insertion.c:2144 texi2html/texi2html.pl:12847
-#: texi2html/texi2html.pl:13379 texi2html/texi2html.pl:14410
-#: texi2html/texi2html.pl:14430 texi2html/texi2html.pl:14472
-#: tp/Texinfo/Parser.pm:1535 tp/Texinfo/Parser.pm:2678
-#, c-format, perl-format
-msgid "Unmatched `%c%s'"
-msgstr "`%c%s' との対応が見つかりません"
-
-#: makeinfo/insertion.c:2149
-#, c-format
-msgid "`%c%s' needs something after it"
-msgstr "`%c%s' の後ろには何かが必要です"
-
-#: makeinfo/insertion.c:2155 texi2html/texi2html.pl:13964
-#, c-format, perl-format
-msgid "Bad argument `%s' to `@%s', using `%s'"
-msgstr "`@%2$s' に対する不正な引数 `%1$s'。`%3$s' を使います"
-
-#: makeinfo/insertion.c:2252 texi2html/texi2html.pl:14911
-#: texi2html/texi2html.pl:14924 tp/Texinfo/Parser.pm:3809
-#: tp/Texinfo/Parser.pm:3821 tp/Texinfo/Parser.pm:3865
-#, c-format, perl-format
-msgid "@%s not meaningful inside `@%s' block"
-msgstr "`@%2$s' ブロックの内側では `@%1$s' は意味がありません"
-
-#: makeinfo/insertion.c:2261
-#, c-format
-msgid "@itemx not meaningful inside `%s' block"
-msgstr "`%s' ブロック内側では @itemx は意味がありません"
-
-#: makeinfo/insertion.c:2435
-#, c-format
-msgid "%c%s found outside of an insertion block"
-msgstr "挿入ブロック外で、%c%s が見つかりました"
-
-#: makeinfo/lang.c:1218
-#, c-format
-msgid "no default territory known for language `%s'"
-msgstr ""
-
-#: makeinfo/lang.c:1281
-#, c-format
-msgid "%s is not a valid ISO 639 language code"
-msgstr "%s は有効な ISO 639 言語コードではありません"
-
-#: makeinfo/lang.c:1399 texi2html/texi2html.pl:2649 tp/Texinfo/Parser.pm:2726
-#, c-format, perl-format
-msgid "unrecognized encoding name `%s'"
-msgstr "認識できないエンコード名 `%s'"
-
-#: makeinfo/lang.c:1407
-#, c-format
-msgid "sorry, encoding `%s' not supported"
-msgstr "残念ながら、エンコード `%s' は受け付けられません"
-
-#: makeinfo/lang.c:1492
-#, c-format
-msgid "invalid encoded character `%s'"
-msgstr "エンコード文字 `%s' が無効です"
-
-#: makeinfo/lang.c:1800
-#, c-format
-msgid "%c%s expects `i' or `j' as argument, not `%c'"
-msgstr "%c%s は `%c' ではなく、`i' か `j' を引数として必要とします"
-
-#: makeinfo/lang.c:1804 texi2html/texi2html.pl:15648
-#, c-format, perl-format
-msgid "%c%s expects a single character `i' or `j' as argument"
-msgstr "%c%s は引数として `i' か `j' のいずれか一文字が必要です"
-
-#: makeinfo/macro.c:128 texi2html/texi2html.pl:12935 tp/Texinfo/Parser.pm:3235
-#, c-format, perl-format
-msgid "macro `%s' previously defined"
-msgstr "マクロ `%s' は以前に定義されています"
-
-#: makeinfo/macro.c:132 texi2html/texi2html.pl:12936 tp/Texinfo/Parser.pm:3237
-#, c-format, perl-format
-msgid "here is the previous definition of `%s'"
-msgstr "ここは、`%s' の前の定義です"
-
-#: makeinfo/macro.c:359
-#, c-format
-msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-msgstr "後ろに `%s' が続くマクロ展開内でパラメータ名ではなく \\ があります"
-
-#: makeinfo/macro.c:401
-#, c-format
-msgid "Macro `%s' called on line %d with too many args"
-msgstr "マクロ `%s' 呼び出し(%d行目)の引数が多すぎます"
-
-#: makeinfo/macro.c:580 texi2html/texi2html.pl:15834
-#, c-format, perl-format
-msgid "%cend macro not found"
-msgstr "%cend マクロが見つかりません"
-
-#: makeinfo/macro.c:591
-#, c-format
-msgid "@allow-recursion is deprecated; please use @rmacro instead"
-msgstr "@allow-recursion は廃止されました。@rmacro を代わりに使用してください"
-
-#: makeinfo/macro.c:606
-#, c-format
-msgid "@quote-arg is deprecated; arguments are quoted by default"
-msgstr ""
-
-#: makeinfo/macro.c:649 texi2html/texi2html.pl:11036
-#, c-format, perl-format
-msgid "mismatched @end %s with @%s"
-msgstr "@%2$s と一致しない @end %1$s"
-
-#: makeinfo/makeinfo.c:188 texi2html/texi2html.pl:9650
-#, c-format
-msgid "Too many errors!  Gave up.\n"
-msgstr "エラーが多すぎます!  諦めました。\n"
-
-#: makeinfo/makeinfo.c:260
-#, c-format
-msgid "%s:%d: warning: "
-msgstr "%s:%d: 警告: "
-
-#: makeinfo/makeinfo.c:275 makeinfo/makeinfo.c:2290
-#: texi2html/texi2html.pl:15075 texi2html/texi2html.pl:15095
-#: tp/Texinfo/Parser.pm:1457 tp/Texinfo/Parser.pm:4279
-#: tp/Texinfo/Parser.pm:4431
-#, c-format, perl-format
-msgid "Misplaced %c"
-msgstr "間違った位置に %c"
-
-#: makeinfo/makeinfo.c:294 texi2html/texi2html.pl:2392 tp/texi2any.pl:868
-#, c-format, perl-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "詳しくは `%s --help' を実行してください。\n"
-
-#: makeinfo/makeinfo.c:297 texi2html/texi2html.pl:3828 tp/texi2any.pl:492
-#, c-format, perl-format
-msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "使い方: %s [オプション]... TEXINFOファイル...\n"
-
-#: makeinfo/makeinfo.c:300 texi2html/texi2html.pl:3830 tp/texi2any.pl:494
-msgid ""
-"Translate Texinfo source documentation to various other formats, by default\n"
-"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
-msgstr ""
-"Texinfo ソース文書を様々な形式で読めるように変換します。デフォルトでは\n"
-"オンラインで Emacs や単独の GNU Info で読むのに適した Info ファイルです。\n"
-
-#: makeinfo/makeinfo.c:304
-#, c-format
-msgid ""
-"General options:\n"
-"      --error-limit=NUM       quit after NUM errors (default %d).\n"
-"      --document-language=STR locale to use in translating Texinfo keywords\n"
-"                                for the output document (default C).\n"
-"      --force                 preserve output even if errors.\n"
-"      --help                  display this help and exit.\n"
-"      --no-validate           suppress node cross-reference validation.\n"
-"      --no-warn               suppress warnings (but not errors).\n"
-"  -v, --verbose               explain what is being done.\n"
-"      --version               display version information and exit.\n"
-msgstr ""
-"一般的なオプション:\n"
-"      --error-limit=NUM       エラーが NUM 個発生したら中止する (default "
-"%d)。\n"
-"      --document-language=STR 出力文書に対して Texinfo のキーワード翻訳に使用"
-"する\n"
-"                                ロケール (デフォルトは C)。\n"
-"      --force                 エラーが発生しても出力を保存する。\n"
-"      --help                  このヘルプを表示して終了する。\n"
-"      --no-validate           ノード間相互参照の検証を抑制する。\n"
-"      --no-warn               警告を抑制する (エラーは表示する)。\n"
-"  -v, --verbose               行なわれる事を説明する。\n"
-"      --version               バージョン情報を表示して終了する。\n"
-
-#: makeinfo/makeinfo.c:319 texi2html/texi2html.pl:3847
-#, no-wrap
-msgid ""
-"Output format selection (default is to produce Info):\n"
-"      --docbook               output Docbook XML rather than Info.\n"
-"      --html                  output HTML rather than Info.\n"
-"      --xml                   output Texinfo XML rather than Info.\n"
-"      --plaintext             output plain text rather than Info.\n"
-msgstr ""
-"出力形式の選択 (デフォルトは Info を生成):\n"
-"      --docbook               Info ではなく Docbook XML を出力する。\n"
-"      --html                  Info ではなく HTML を出力する。\n"
-"      --xml                   Info ではなくTexinfo XML を出力する。\n"
-"      --plaintext             Info ではなくプレーンテキストを出力する。\n"
-
-#: makeinfo/makeinfo.c:327
-msgid ""
-"General output options:\n"
-"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-"                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
-"                                also, write to standard output by default.\n"
-"      --no-split              suppress the splitting of Info or HTML "
-"output,\n"
-"                                generate only one output file.\n"
-"      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
-msgstr ""
-"一般的な出力オプション:\n"
-"  -E, --macro-expand=FILE     マクロ展開されたソースを FILE に出力する。\n"
-"                                @setfilename は無視する。\n"
-"      --no-headers            ノード分割を抑止する。Info 出力 (プレーンテキ"
-"ス\n"
-"                                トを生成する) または HTML (短い出力を生成す"
-"る)\n"
-"                                からの Node: 行、およびメニューもデフォルト"
-"で\n"
-"                                標準出力に書き込まれる。\n"
-"      --no-split              Info や HTML の分割出力を抑制する。\n"
-"                                ただ一つの出力ファイルを生成する。\n"
-"      --number-sections       章や節の番号を出力する。\n"
-"  -o, --output=FILE           FILE へ出力する (分割 HTML の場合ディレクト"
-"リ)。\n"
-
-#: makeinfo/makeinfo.c:341 texi2html/texi2html.pl:3870 tp/texi2any.pl:539
-#, c-format, perl-format
-msgid ""
-"Options for Info and plain text:\n"
-"      --disable-encoding      do not output accented and special characters\n"
-"                                in Info output based on @documentencoding.\n"
-"      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default "
-"%d).\n"
-"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
-"                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
-"%d).\n"
-"                                If VAL is `none', do not indent; if VAL is\n"
-"                                `asis', preserve existing indentation.\n"
-"      --split-size=NUM        split Info files at size NUM (default %d).\n"
-msgstr ""
-"Info およびプレーンテキストのためのオプション:\n"
-"      --disable-encoding      Info 出力に @documentencoding に基づいたアク"
-"セ\n"
-"                                ントおよび特殊文字を出力しない。\n"
-"      --enable-encoding       --disable-encoding を上書きする (デフォル"
-"ト)。\n"
-"      --fill-column=NUM       Info を文字数 NUM で改行する (default %d)。\n"
-"      --footnote-style=STYLE  STYLE に基づいて Info の脚注を出力する。\n"
-"                                `separate' そのノード中に脚注を置く\n"
-"                                `end' 定義されたノードの末尾に置く (デフォル"
-"ト)\n"
-"      --paragraph-indent=VAL  Info 段落を VAL 個の空白で字下げする (default "
-"%d)。\n"
-"                                VAL が `none' の場合は字下げを行わない。"
-"`asis'\n"
-"                                の場合は既存の字下げを保持する。\n"
-"      --split-size=NUM        Info ファイルをサイズ NUM で分割する (default "
-"%d)。\n"
-
-#: makeinfo/makeinfo.c:359
-msgid ""
-"Options for HTML:\n"
-"      --css-include=FILE      include FILE in HTML <style> output;\n"
-"                                read stdin if FILE is -.\n"
-"      --css-ref=URL           generate reference to a CSS file.\n"
-"      --internal-links=FILE   produce list of internal links in FILE.\n"
-"      --transliterate-file-names\n"
-"                              produce file names in ASCII transliteration.\n"
-msgstr ""
-"HTML のためのオプション:\n"
-"      --css-include=FILE      HTMLの <style> 出力内に FILEを含める。\n"
-"                                FILE に - を指定した時は標準入力から読み込"
-"む。\n"
-"      --css-ref=URL           CSS ファイルへの参照を生成する。\n"
-"      --internal-links=FILE   内部リンクの一覧を FILE に生成する。\n"
-"      --transliterate-file-names\n"
-"                              ファイル名を ASCII 文字変換して生成する。\n"
-
-#: makeinfo/makeinfo.c:369
-#, c-format
-msgid ""
-"Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default "
-"%d).\n"
-"                                If VAL is 0, ignorable whitespace is "
-"dropped.\n"
-msgstr ""
-"XML および Docbook のためのオプション:\n"
-"      --output-indent=VAL     XML 要素を VAL 個のスペースで字下げする (デフォ"
-"ルト %d)。\n"
-"                                もし VAL が 0 の場合、無視できる空白は取り除"
-"かれる。\n"
-
-#: makeinfo/makeinfo.c:376
-msgid ""
-"Input file options:\n"
-"      --commands-in-node-names  allow @ commands in node names.\n"
-"  -D VAR                        define the variable VAR, as with @set.\n"
-"  -I DIR                        append DIR to the @include search path.\n"
-"  -P DIR                        prepend DIR to the @include search path.\n"
-"  -U VAR                        undefine the variable VAR, as with @clear.\n"
-msgstr ""
-"入力ファイルオプション:\n"
-"      --commands-in-node-names   ノード名で @ コマンドを許可する。\n"
-"  -D VAR                         変数 VAR を定義する。@set と同じ。\n"
-"  -I DIR                         @include 探索パスに DIR を追加する。\n"
-"  -P DIR                         @include 探索パスの先頭に DIR を挿入する。\n"
-"  -U VAR                         変数 VAR を未定義にする。@clear と同じ。\n"
-
-#: makeinfo/makeinfo.c:385 texi2html/texi2html.pl:3912
-msgid ""
-"Conditional processing in input:\n"
-"  --ifdocbook       process @ifdocbook and @docbook even if\n"
-"                      not generating Docbook.\n"
-"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
-"  --ifinfo          process @ifinfo even if not generating Info.\n"
-"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
-"  --iftex           process @iftex and @tex; implies --no-split.\n"
-"  --ifxml           process @ifxml and @xml.\n"
-"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
-"  --no-ifhtml       do not process @ifhtml and @html text.\n"
-"  --no-ifinfo       do not process @ifinfo text.\n"
-"  --no-ifplaintext  do not process @ifplaintext text.\n"
-"  --no-iftex        do not process @iftex and @tex text.\n"
-"  --no-ifxml        do not process @ifxml and @xml text.\n"
-"\n"
-"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:404 texi2html/texi2html.pl:3929 tp/texi2any.pl:597
-#, fuzzy
-msgid ""
-"  The defaults for the @if... conditionals depend on the output format:\n"
-"  if generating HTML, --ifhtml is on and the others are off;\n"
-"  if generating Info, --ifinfo is on and the others are off;\n"
-"  if generating plain text, --ifplaintext is on and the others are off;\n"
-"  if generating XML, --ifxml is on and the others are off.\n"
-msgstr ""
-"  @if... 条件のデフォルトは出力形式に依存します:\n"
-"  HTML を生成する場合、--ifhtml が有効で、他は無効になります。\n"
-"  Info を生成する場合、--ifinfo が有効で、他は無効になります。\n"
-"  平文テキストを生成する場合、--ifplaintext が有効で、他は無効になります。\n"
-"  XML を生成する場合、--ifxml が有効で、他は無効になります。\n"
-
-#: makeinfo/makeinfo.c:412 texi2html/texi2html.pl:3935 tp/texi2any.pl:603
-#, fuzzy
-msgid ""
-"Examples:\n"
-"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
-"  makeinfo --html foo.texi               write HTML to @setfilename\n"
-"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
-"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard "
-"output\n"
-"\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
-"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
-"  makeinfo --no-split foo.texi           write one Info file however big\n"
-msgstr ""
-"Examples:\n"
-"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
-"  makeinfo --html foo.texi               write HTML to @setfilename\n"
-"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
-"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard "
-"output\n"
-"\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
-"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
-"  makeinfo --no-split foo.texi           write one Info file however big\n"
-"例:\n"
-"  makeinfo foo.texi                    foo の @setfilename に Info を書込む\n"
-"  makeinfo --html foo.texi             foo の @setfilename に HTML を書込む\n"
-"  makeinfo --no-headers -o - foo.texi  標準出力にプレインテクストを書込む\n"
-"  makeinfo --number-sections foo.texi  節に番号を付けた Info を出力\n"
-"  makeinfo --no-split foo.texi         大きさに関わらず一つの Info を出力\n"
-
-#: makeinfo/makeinfo.c:572 texi2html/texi2html.pl:4056 tp/texi2any.pl:818
-#, c-format, perl-format
-msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:620 makeinfo/makeinfo.c:646 makeinfo/makeinfo.c:670
-#: makeinfo/makeinfo.c:730
-#, c-format
-msgid "%s: %s arg must be numeric, not `%s'.\n"
-msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
-
-#: makeinfo/makeinfo.c:633
-#, c-format
-msgid "%s: could not open macro expansion output `%s'"
-msgstr "%s: マクロ展開出力 `%s' を開けませんでした"
-
-#: makeinfo/makeinfo.c:638
-#, c-format
-msgid "%s: ignoring second macro expansion output `%s'.\n"
-msgstr "%s: 二回目のマクロ展開出力 `%s' を無視しています。\n"
-
-#: makeinfo/makeinfo.c:683
-#, c-format
-msgid "%s: could not open internal links output `%s'"
-msgstr "%s: 内部リンク出力 `%s' を開くことができませんでした"
-
-#: makeinfo/makeinfo.c:688
-#, c-format
-msgid "%s: ignoring second internal links output `%s'.\n"
-msgstr "%s: 二回目の内部リンク出力 `%s' を無視しています。\n"
-
-#: makeinfo/makeinfo.c:701 texi2html/texi2html.pl:2625 tp/texi2any.pl:731
-#, c-format, perl-format
-msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
-"    なりません。\n"
-
-#: makeinfo/makeinfo.c:719 texi2html/texi2html.pl:2569 tp/texi2any.pl:647
-#, c-format, perl-format
-msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
-"    なりません。\n"
-
-#: makeinfo/makeinfo.c:794 texi2html/texi2html.pl:17006 tp/texi2any.pl:867
-#, c-format, perl-format
-msgid "%s: missing file argument.\n"
-msgstr "%s: ファイル引数を忘れていますよ\n"
-
-#: makeinfo/makeinfo.c:991 makeinfo/makeinfo.c:4080
-#, c-format
-msgid "Multiline command %c%s used improperly"
-msgstr ""
-
-#: makeinfo/makeinfo.c:994
-#, c-format
-msgid "Expected `%s'"
-msgstr "ここでは `%s' が要求されます"
-
-#: makeinfo/makeinfo.c:1471 texi2html/texi2html.pl:4755
-#, c-format, perl-format
-msgid "Can't create directory `%s': %s"
-msgstr "ディレクトリ `%s' を作成できません: %s"
-
-#: makeinfo/makeinfo.c:1517
-#, c-format
-msgid "No `%s' found in `%s'"
-msgstr "`%2$s' に `%1$s' が見つかりません"
-
-#: makeinfo/makeinfo.c:1597
-#, c-format
-msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr "%s: Info の出力を行なうので、マクロ拡張を標準出力に出力しません。\n"
-
-#: makeinfo/makeinfo.c:1627
-#, c-format
-msgid "Making %s file `%s' from `%s'.\n"
-msgstr "`%3$s' から %1$s ファイル `%2$s' を作成します。\n"
-
-#: makeinfo/makeinfo.c:1694
-#, c-format
-msgid ""
-"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: エラーにより、マクロ出力ファイル `%s' を削除します。\n"
-"       -- 残したい場合には `--force' オプションを使ってください。\n"
-
-#: makeinfo/makeinfo.c:1749 texi2html/texi2html.pl:9599
-#, c-format, perl-format
-msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: エラーにより、出力ファイル `%s' を削除します。\n"
-"       -- 残したい場合には `--force' オプションを使ってください。\n"
-
-#: makeinfo/makeinfo.c:1768
-#, fuzzy, c-format
-msgid ""
-"%s: Removing internal links output file `%s' due to errors; use --force to "
-"preserve.\n"
-msgstr ""
-"%s: エラーが発生したため内部リンク出力ファイル `%s' を削除しています。保存す"
-"る場合は --force を使用してください。\n"
-
-#: makeinfo/makeinfo.c:2063 texi2html/texi2html.pl:15748
-#: tp/Texinfo/Parser.pm:4181
-#, c-format, perl-format
-msgid "Unknown command `%s'"
-msgstr "不明なコマンド `%s'"
-
-#: makeinfo/makeinfo.c:2085 texi2html/texi2html.pl:14751
-#: tp/Texinfo/Parser.pm:3436
-#, c-format, perl-format
-msgid "Use braces to give a command as an argument to @%s"
-msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
-
-#: makeinfo/makeinfo.c:2344 texi2html/texi2html.pl:15740
-#, c-format, perl-format
-msgid "%c%s expected braces"
-msgstr "%c%s には中括弧が予期されます"
-
-#: makeinfo/makeinfo.c:2357
-#, c-format
-msgid "Unmatched }"
-msgstr "対応のない }"
-
-#: makeinfo/makeinfo.c:2405
-msgid "NO_NAME!"
-msgstr "名前が無い！"
-
-#: makeinfo/makeinfo.c:2426 texi2html/texi2html.pl:16039
-#: texi2html/texi2html.pl:16067 tp/Texinfo/Parser.pm:1054
-#, c-format, perl-format
-msgid "%c%s missing close brace"
-msgstr "閉じる中括弧のない %c%s"
-
-#: makeinfo/makeinfo.c:3408
-#, c-format
-msgid "@image file `%s' (for HTML) not readable: %s"
-msgstr "@image ファイル `%s' (HTML 用) が読めません: %s"
-
-#: makeinfo/makeinfo.c:3414
-#, c-format
-msgid "No such file `%s'"
-msgstr "ファイル `%s' がありません"
-
-#: makeinfo/makeinfo.c:3550
-#, c-format
-msgid "@image file `%s' (for text) unreadable: %s"
-msgstr "@image ファイル `%s' (text 用) が読めません: %s"
-
-#: makeinfo/makeinfo.c:3559 tp/Texinfo/Parser.pm:4354
-#, c-format
-msgid "@image missing filename argument"
-msgstr "@image にファイル名が与えられていません"
-
-#: makeinfo/makeinfo.c:3777 texi2html/texi2html.pl:13010
-#: tp/Texinfo/Parser.pm:3614
-#, c-format, perl-format
-msgid "undefined flag: %s"
-msgstr "定義されていないフラグ: %s"
-
-#: makeinfo/makeinfo.c:3778
-#, c-format
-msgid "{No value for `%s'}"
-msgstr "{`%s' の値がない}"
-
-#: makeinfo/makeinfo.c:3830 texi2html/texi2html.pl:5802
-#: texi2html/texi2html.pl:5813 texi2html/texi2html.pl:10386
-#: tp/Texinfo/Parser.pm:981 tp/Texinfo/Parser.pm:3986
-#: tp/Texinfo/Parser.pm:4534 tp/Texinfo/Parser.pm:4543
-#: tp/Texinfo/Parser.pm:4553
-#, c-format, perl-format
-msgid "%c%s requires a name"
-msgstr "%c%s には名前が必要です"
-
-#: makeinfo/makeinfo.c:3936 texi2html/texi2html.pl:15826
-#, c-format, perl-format
-msgid "Reached eof before matching @end %s"
-msgstr "@end %s の対応の前にファイルの終りに出くわしました"
-
-#: makeinfo/makeinfo.c:4172
-#, c-format
-msgid "`%.40s...' is too long for expansion; not expanded"
-msgstr ""
-
-#: makeinfo/multi.c:116
-#, c-format
-msgid "Missing } in @multitable template"
-msgstr "@multitable テンプレートに } がありません"
-
-#: makeinfo/multi.c:260 texi2html/texi2html.pl:10760
-#, c-format, perl-format
-msgid "ignoring stray text `%s' after @multitable"
-msgstr "@multitable の後ろのテクスト `%s' を無視します"
-
-#: makeinfo/multi.c:400 texi2html/texi2html.pl:15004 tp/Texinfo/Parser.pm:3835
-#, c-format, perl-format
-msgid "Too many columns in multitable item (max %d)"
-msgstr "マルチテーブル項目内のカラム数が多すぎます(最大 %d)"
-
-#: makeinfo/multi.c:563
-#, fuzzy, c-format
-msgid "[unexpected] cannot select column #%d in multitable"
-msgstr "マルチテーブル内では、第 %d 行を選択できません"
-
-#: makeinfo/multi.c:592 texi2html/texi2html.pl:14993 tp/Texinfo/Parser.pm:3868
-#, c-format
-msgid "ignoring @tab outside of multitable"
-msgstr "マルチテーブルの外側の @tab を無視します"
-
-#: makeinfo/multi.c:640
-#, c-format
-msgid "** Multicolumn output from last row:\n"
-msgstr "** マルチカラムの最後の列から出力\n"
-
-#: makeinfo/multi.c:643
-#, c-format
-msgid "* column #%d: output = %s\n"
-msgstr "* 第 %d カラム: 出力 = %s\n"
-
-#: makeinfo/node.c:279
-#, c-format
-msgid "Node `%s' previously defined at line %d"
-msgstr "ノード `%s' 前(%d 行目)に定義されています"
-
-#: makeinfo/node.c:647
-#, c-format
-msgid "Formatting node %s...\n"
-msgstr "ノード %s を整形中...\n"
-
-#: makeinfo/node.c:714
-#, c-format
-msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
-msgstr "ノード `%s' にはセクション用コマンドが必要です (例: %c%s)"
-
-#: makeinfo/node.c:878
-#, c-format
-msgid "No node name specified for `%c%s' command"
-msgstr "`%c%s' コマンドに指定されたノード名がありません"
-
-#: makeinfo/node.c:919 makeinfo/node.c:1163
-#, c-format
-msgid "Anchor `%s' and node `%s' map to the same file name"
-msgstr "アンカー `%s' とノード `%s' が同じファイル名をマップしています"
-
-#: makeinfo/node.c:922
-#, c-format
-msgid "This @anchor command ignored; references to it will not work"
-msgstr "この @anchor コマンドは無視されます -- そこへの参照は動作しません"
-
-#: makeinfo/node.c:924 makeinfo/node.c:1166
-#, c-format
-msgid "Rename this anchor or use the `--no-split' option"
-msgstr "このアンカー名を変更するか `--no-split' オプションを使いましょう"
-
-#: makeinfo/node.c:954
-#, c-format
-msgid "Unexpected string at end of split-HTML file `%s'"
-msgstr "split-HTML ファイル `%s' の終りに、あるはずのない文字列があります"
-
-#: makeinfo/node.c:1160
-#, c-format
-msgid "Anchors `%s' and `%s' map to the same file name"
-msgstr "アンカー `%s' と `%s' が同じファイル名にマップしています"
-
-#: makeinfo/node.c:1165
-#, c-format
-msgid "@anchor command ignored; references to it will not work"
-msgstr "@anchor コマンドは無視されます -- そこへの参照は動作しません"
-
-#: makeinfo/node.c:1362
-#, c-format
-msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr ""
-"%s は存在しないノード `%s' を参照しています (正しくないセクション付けをしてい"
-"るかもしれません?)"
-
-#: makeinfo/node.c:1462
-#, fuzzy, c-format
-msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr "ノード `%s' の次のフィールドがノードを指していません -- "
-
-#: makeinfo/node.c:1465
-#, c-format
-msgid "This node (%s) has the bad Prev"
-msgstr "このノード (%s) はきちんと 前 を持っていません"
-
-#: makeinfo/node.c:1520
-#, c-format
-msgid "Prev field of node `%s' not pointed to"
-msgstr "ノード `%s' の前のフィールドがノードを指していません -- "
-
-#: makeinfo/node.c:1524
-#, c-format
-msgid "This node (%s) has the bad Next"
-msgstr "このノード (%s) はきちんと 次 を持っていません"
-
-#: makeinfo/node.c:1536
-#, c-format
-msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
-msgstr ""
-
-#: makeinfo/node.c:1605 texi2html/texi2html.pl:7350
-#: tp/Texinfo/Structuring.pm:542
-#, c-format, perl-format
-msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr ""
-"ノード `%s' には 上位項目があるのに、`%s' へのメニューアイテムを欠いています"
-
-#: makeinfo/node.c:1637 texi2html/texi2html.pl:7296
-#: tp/Texinfo/Structuring.pm:424
-#, c-format, perl-format
-msgid "unreferenced node `%s'"
-msgstr "参照されていないノード `%s'"
-
-#: makeinfo/node.c:1727
-#, c-format
-msgid "Removing %s\n"
-msgstr "%s を削除しています\n"
-
-#: makeinfo/node.c:1731
-#, c-format
-msgid "Can't remove file `%s': %s"
-msgstr "ファイル `%s' を削除できません: %s"
-
-#: makeinfo/sectioning.c:467
-#, c-format
-msgid "Internal error (search_sectioning) `%s'!"
-msgstr "内部エラー (節を探索中) `%s'!"
-
-#: makeinfo/sectioning.c:563
-#, c-format
-msgid "Internal error (search_sectioning) \"%s\"!"
-msgstr "内部エラー (節探索中) \"%s\"!"
-
-#: makeinfo/sectioning.c:624
-#, c-format
-msgid "%c%s is obsolete; use %c%s instead"
-msgstr "%c%s は廃止されました。%c%s を代わりに使用してください"
-
-#: makeinfo/sectioning.c:640
-#, c-format
-msgid "Node with %ctop as a section already exists"
-msgstr "%ctop のノードは、セクションとして既に存在します"
-
-#: makeinfo/sectioning.c:648
-#, c-format
-msgid "Here is the %ctop node"
-msgstr "ここは %ctop ノードです"
-
-#: makeinfo/sectioning.c:664
-#, c-format
-msgid "%ctop used before %cnode, defaulting to %s"
-msgstr "%ctop が %cnode の前に使われました、%s に決めうちします"
-
-#: makeinfo/xml.c:1655 texi2html/formats/docbook.pm:1021
-#: texi2html/formats/info.pm:2996 texi2html/formats/plaintext.pm:151
-#: tp/Texinfo/Convert/Plaintext.pm:1014
-#, c-format, perl-format
-msgid "@image file `%s' unreadable: %s"
-msgstr "@image ファイル `%s' が読めません: %s"
-
-#: makeinfo/xml.c:2000
-#, c-format
-msgid ""
-"@headitem as the last item of @multitable produces invalid Docbook documents"
-msgstr ""
-
-#: makeinfo/xml.c:2136
-msgid "of"
-msgstr "of"
-
-#: makeinfo/xml.c:2141
-msgid "on"
-msgstr "on"
-
-#: makeinfo/xref.c:127
-#, c-format
-msgid "First argument to cross-reference may not be empty"
-msgstr "相互参照への第一引数が空であってはなりません"
-
-#: makeinfo/xref.c:252
-#, c-format
-msgid "Empty file name for HTML cross reference in `%s'"
-msgstr ""
-
-#: makeinfo/xref.c:387
-#, c-format
-msgid "End of file reached while looking for `.' or `,'"
-msgstr ""
-
-#: makeinfo/xref.c:390
-#, c-format
-msgid "`.' or `,' must follow @%s, not `%c'"
-msgstr "`.' または `,' には `%2$c' では無く @%1$s が続かなければいけません。"
-
-#: makeinfo/xref.c:392
-#, c-format
-msgid "for cross-references in parentheses, use @pxref"
-msgstr "小括弧内での相互参照では @pxref を使用してください"
-
-#: makeinfo/xref.c:435
-#, c-format
-msgid "First argument to @inforef may not be empty"
-msgstr "@inforef への第一引数は空であってはなりません"
-
 #: util/texindex.c:223
 msgid "display this help and exit"
 msgstr "使い方を表示して終了します"
@@ -3225,805 +2076,35 @@ msgstr "%s にページ番号がありません"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "%s 項目に二つ目の項目名が続いています"
 
-#: texi2html/texi2html.pl:2495
-#, fuzzy, perl-format
-msgid "%s is not a valid language code"
-msgstr "%s は有効な ISO 639 言語コードではありません"
-
-#: texi2html/texi2html.pl:2499
-#, fuzzy, perl-format
-msgid "%s is not a valid region code"
-msgstr "%s は有効な ISO 639 言語コードではありません"
-
-#: texi2html/texi2html.pl:2574 tp/Texinfo/Parser.pm:4772
-#, fuzzy, perl-format
-msgid "@%s arg must be `separate' or `end', not `%s'"
-msgstr ""
-"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
-"    なりません。\n"
-
-#: texi2html/texi2html.pl:2629 tp/Texinfo/Parser.pm:4793
-#: tp/Texinfo/Parser.pm:4796
-#, fuzzy, perl-format
-msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
-msgstr ""
-"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
-"    なりません。\n"
-
-#: texi2html/texi2html.pl:2666
-#, fuzzy, perl-format
-msgid "Encoding %s certainly poorly supported"
-msgstr "残念ながら、エンコード `%s' は受け付けられません"
-
-#: texi2html/texi2html.pl:2790 texi2html/texi2html.pl:2794
-msgid "translation"
-msgstr ""
-
-#: texi2html/texi2html.pl:3833
-#, fuzzy, perl-format
-msgid ""
-"General options:\n"
-"      --error-limit=NUM       quit after NUM errors (default %d).\n"
-"      --document-language=STR locale to use in translating Texinfo keywords\n"
-"                                for the output document (default C).\n"
-"      --force                 preserve output even if errors.\n"
-"      --help                  display this help and exit.\n"
-"      --no-validate           suppress node cross-reference validation.\n"
-"      --no-warn               suppress warnings (but not errors).\n"
-"      --conf-dir=DIR          search also for initialization files in DIR.\n"
-"      --init-file=FILE        load FILE to modify the default behaviour.\n"
-"      --set-init-variable VAR=VAL  set configuration variable VAR to VAL.\n"
-"  -v, --verbose               explain what is being done.\n"
-"      --version               display version information and exit.\n"
-msgstr ""
-"一般的なオプション:\n"
-"      --error-limit=NUM       エラーが NUM 個発生したら中止する (default "
-"%d)。\n"
-"      --document-language=STR 出力文書に対して Texinfo のキーワード翻訳に使用"
-"する\n"
-"                                ロケール (デフォルトは C)。\n"
-"      --force                 エラーが発生しても出力を保存する。\n"
-"      --help                  このヘルプを表示して終了する。\n"
-"      --no-validate           ノード間相互参照の検証を抑制する。\n"
-"      --no-warn               警告を抑制する (エラーは表示する)。\n"
-"  -v, --verbose               行なわれる事を説明する。\n"
-"      --version               バージョン情報を表示して終了する。\n"
-
-#: texi2html/texi2html.pl:3853
-#, fuzzy
-msgid ""
-"General output options:\n"
-"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-"                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
-"                                also, write to standard output by default "
-"if\n"
-"                                producing Info.\n"
-"      --split=SPLIT           split at SPLIT, where SPLIT may be chapter, \n"
-"                                section or node if output supports "
-"splitting.\n"
-"      --no-split              suppress the splitting of Info or HTML "
-"output,\n"
-"                                generate only one output file.\n"
-"      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (or directory if split).\n"
-"                                If not split and FILE is a directory, put "
-"the\n"
-"                                resulting files in FILE.\n"
-msgstr ""
-"一般的な出力オプション:\n"
-"  -E, --macro-expand=FILE     マクロ展開されたソースを FILE に出力する。\n"
-"                                @setfilename は無視する。\n"
-"      --no-headers            ノード分割を抑止する。Info 出力 (プレーンテキ"
-"ス\n"
-"                                トを生成する) または HTML (短い出力を生成す"
-"る)\n"
-"                                からの Node: 行、およびメニューもデフォルト"
-"で\n"
-"                                標準出力に書き込まれる。\n"
-"      --no-split              Info や HTML の分割出力を抑制する。\n"
-"                                ただ一つの出力ファイルを生成する。\n"
-"      --number-sections       章や節の番号を出力する。\n"
-"  -o, --output=FILE           FILE へ出力する (分割 HTML の場合ディレクト"
-"リ)。\n"
-
-#: texi2html/texi2html.pl:3885
-#, fuzzy
-msgid ""
-"Options for HTML:\n"
-"      --css-include=FILE      include FILE in HTML <style> output;\n"
-"                                read stdin if FILE is -.\n"
-"      --css-ref=URL           generate reference to a CSS file.\n"
-"      --internal-links=FILE   produce list of internal links in FILE.\n"
-"      --transliterate-file-names\n"
-"                              produce file names in ASCII transliteration.\n"
-"      --node-files            produce redirection files for nodes and \n"
-"                                anchors. Default is set only if split.\n"
-msgstr ""
-"HTML のためのオプション:\n"
-"      --css-include=FILE      HTMLの <style> 出力内に FILEを含める。\n"
-"                                FILE に - を指定した時は標準入力から読み込"
-"む。\n"
-"      --css-ref=URL           CSS ファイルへの参照を生成する。\n"
-"      --internal-links=FILE   内部リンクの一覧を FILE に生成する。\n"
-"      --transliterate-file-names\n"
-"                              ファイル名を ASCII 文字変換して生成する。\n"
-
-#: texi2html/texi2html.pl:3895 tp/texi2any.pl:567
-msgid ""
-"Options for XML and Docbook:\n"
-"      --output-indent=VAL     does nothing, retained for compatibility.\n"
-msgstr ""
-
-#: texi2html/texi2html.pl:3905 tp/texi2any.pl:573
-#, fuzzy
-msgid ""
-"Input file options:\n"
-"      --commands-in-node-names  does nothing, retained for compatibility.\n"
-"  -D VAR                        define the variable VAR, as with @set.\n"
-"  -I DIR                        append DIR to the @include search path.\n"
-"  -P DIR                        prepend DIR to the @include search path.\n"
-"  -U VAR                        undefine the variable VAR, as with @clear.\n"
-msgstr ""
-"入力ファイルオプション:\n"
-"      --commands-in-node-names   ノード名で @ コマンドを許可する。\n"
-"  -D VAR                         変数 VAR を定義する。@set と同じ。\n"
-"  -I DIR                         @include 探索パスに DIR を追加する。\n"
-"  -P DIR                         @include 探索パスの先頭に DIR を挿入する。\n"
-"  -U VAR                         変数 VAR を未定義にする。@clear と同じ。\n"
-
-#: texi2html/texi2html.pl:4090 tp/texi2any.pl:831
-#, perl-format
-msgid "when generating %s, only one input FILE may be specified with -o"
-msgstr ""
-
-#: texi2html/texi2html.pl:4499 tp/Texinfo/Common.pm:1043
-msgid "Missing type"
-msgstr ""
-
-#: texi2html/texi2html.pl:4504 tp/Texinfo/Common.pm:1046
-#, fuzzy, perl-format
-msgid "Unrecognized type: %s"
-msgstr "%s: `--%s' は認識できないオプションです\n"
-
-#: texi2html/texi2html.pl:4578 tp/texi2any.pl:842
-#, perl-format
-msgid "Ignoring splitting for format %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:4674
-#, fuzzy, perl-format
-msgid "Cannot split output %s"
-msgstr "出力ファイル `%s' を作成できません"
-
-#: texi2html/texi2html.pl:4749 tp/Texinfo/Convert/Converter.pm:416
-#, fuzzy, perl-format
-msgid "Can't create directories `%s' or `%s': %s"
-msgstr "ディレクトリ `%s' を作成できません: %s"
-
-#: texi2html/texi2html.pl:4774
-msgid "current directory not writable"
-msgstr ""
-
-#: texi2html/texi2html.pl:4778
-#, perl-format
-msgid "%s not writable"
-msgstr ""
-
-#: texi2html/texi2html.pl:5126
-#, fuzzy
-msgid " end of file"
-msgstr "不明なファイル"
-
-#: texi2html/texi2html.pl:5491 tp/Texinfo/Parser.pm:4461
-#, fuzzy
-msgid "Superfluous arguments for node"
-msgstr "%2$s に対する引数 %1$s が曖昧です"
-
-#: texi2html/texi2html.pl:5499
-#, fuzzy, perl-format
-msgid "Node `%s' previously defined %s"
-msgstr "ノード `%s' 前(%d 行目)に定義されています"
-
-#: texi2html/texi2html.pl:5504 texi2html/texi2html.pl:13289
-#: texi2html/texi2html.pl:13794 tp/Texinfo/Parser.pm:3024
-#: tp/Texinfo/Convert/HTML.pm:6225
-#, perl-format
-msgid "Syntax for an external node used for `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5630
-#, fuzzy, perl-format
-msgid "@%s requires an argument"
-msgstr "%c%s には名前が必要です"
-
-#: texi2html/texi2html.pl:5721 texi2html/texi2html.pl:15854
-#: tp/Texinfo/Parser.pm:4498
-#, fuzzy, perl-format
-msgid "Expected @end %s"
-msgstr "ここでは `%s' が要求されます"
-
-#: texi2html/texi2html.pl:5770
-#, perl-format
-msgid "Translations for `%s' not found. Reverting to `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5825 tp/Texinfo/Parser.pm:4564
-#, fuzzy, perl-format
-msgid "@%s should only accept a @-command as argument, not `%s'"
-msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
-
-#: texi2html/texi2html.pl:5863 tp/Texinfo/Parser.pm:4802
-#, fuzzy, perl-format
-msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
-msgstr ""
-"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
-"    なりません。\n"
-
-#: texi2html/texi2html.pl:5878 tp/Texinfo/Parser.pm:4810
-#, fuzzy, perl-format
-msgid "@exampleindent arg must be numeric/`asis', not `%s'"
-msgstr ""
-"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
-"    なりません。\n"
-
-#: texi2html/texi2html.pl:5900 tp/Texinfo/Parser.pm:4826
-#, perl-format
-msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5924 tp/Texinfo/Parser.pm:4832
-#, fuzzy, perl-format
-msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
-msgstr ""
-"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
-"    なりません。\n"
-
-#: texi2html/texi2html.pl:5973
-#, perl-format
-msgid "Encoding %s is not a canonical texinfo encoding"
-msgstr ""
-
-#: texi2html/texi2html.pl:5992
-#, perl-format
-msgid "@%s arg must be an encoding"
-msgstr ""
-
-#: texi2html/texi2html.pl:6133 tp/Texinfo/Parser.pm:4700
-#, fuzzy, perl-format
-msgid "Unknown from index `%s' in @%s"
-msgstr "不明なインデックス `%s'"
-
-#: texi2html/texi2html.pl:6135 tp/Texinfo/Parser.pm:4702
-#, fuzzy, perl-format
-msgid "Unknown to index name `%s' in @%s"
-msgstr "不明なインデックス `%s'"
-
-#: texi2html/texi2html.pl:6170 tp/Texinfo/Parser.pm:4683
-#, perl-format
-msgid "Reserved index name %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:6200 tp/Texinfo/Parser.pm:4760
-#, fuzzy, perl-format
-msgid "@%s arg must be `top' or `bottom', not `%s'"
-msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
-
-#: texi2html/texi2html.pl:6241 tp/Texinfo/Parser.pm:4778
-#, fuzzy, perl-format
-msgid "@%s arg must be `on', `off' or `odd', not `%s'"
-msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
-
-#: texi2html/texi2html.pl:6389 texi2html/texi2html.pl:16980
-#: tp/Texinfo/Common.pm:832 tp/Texinfo/Common.pm:1109
-#, fuzzy, perl-format
-msgid "Cannot read %s: %s"
-msgstr "ディレクトリ `%s' を作成できません: %s"
-
-#: texi2html/texi2html.pl:6412 texi2html/texi2html.pl:13217
-#: tp/Texinfo/Common.pm:847 tp/Texinfo/Parser.pm:2716
-#, fuzzy, perl-format
-msgid "@%s: Cannot find %s"
-msgstr "`%s' を見つけられません。"
-
-#: texi2html/texi2html.pl:6592 tp/Texinfo/Parser.pm:3008
-#, perl-format
-msgid "Empty node name after expansion `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:7225 tp/Texinfo/Structuring.pm:523
-#, fuzzy, perl-format
-msgid "%s reference to nonexistent `%s'"
-msgstr "参照されていないノード `%s'"
-
-#: texi2html/texi2html.pl:7368 tp/Texinfo/Structuring.pm:550
-#, perl-format
-msgid "For `%s', up in menu `%s' and up `%s' don't match"
-msgstr ""
-
-#: texi2html/texi2html.pl:7421 tp/Texinfo/Structuring.pm:455
-#, perl-format
-msgid "No node following `%s' in menu, but `%s' follows in sectioning"
-msgstr ""
-
-#: texi2html/texi2html.pl:7422 tp/Texinfo/Structuring.pm:461
-#, perl-format
-msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr ""
-
-#: texi2html/texi2html.pl:8925
-#, perl-format
-msgid "@%s after the first element"
-msgstr ""
-
-#: texi2html/texi2html.pl:9391 tp/Texinfo/Convert/HTML.pm:6157
-#, fuzzy, perl-format
-msgid "File empty for renamed node `%s'"
-msgstr "参照されていないノード `%s'"
-
-#: texi2html/texi2html.pl:9395 tp/Texinfo/Convert/HTML.pm:6168
-#, perl-format
-msgid "Node to be renamed as, `%s' not found"
-msgstr ""
-
-#: texi2html/texi2html.pl:9399
-#, fuzzy, perl-format
-msgid "Node `%s' that is to be renamed exists "
-msgstr "見出し `%s' は既に存在します"
-
-#: texi2html/texi2html.pl:9603
-#, fuzzy, perl-format
-msgid "%s: Removing output files due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: エラーにより、出力ファイル `%s' を削除します。\n"
-"       -- 残したい場合には `--force' オプションを使ってください。\n"
-
-#: texi2html/texi2html.pl:9742 tp/Texinfo/Report.pm:91
-#, perl-format
-msgid "%s:%d: warning: %s (possibly involving @%s)\n"
-msgstr ""
-
-#: texi2html/texi2html.pl:9746 tp/Texinfo/Report.pm:94
-#, fuzzy, perl-format
-msgid "%s:%d: warning: %s\n"
-msgstr "%s:%d: 警告: "
-
-#: texi2html/texi2html.pl:9779
-#, perl-format
-msgid "(in %s l. %d possibly involving @%s)"
-msgstr ""
-
-#: texi2html/texi2html.pl:9783
-#, perl-format
-msgid "(l. %d possibly involving @%s)"
-msgstr ""
-
-#: texi2html/texi2html.pl:9788
-#, perl-format
-msgid "(in %s l. %d)"
-msgstr ""
-
-#: texi2html/texi2html.pl:9792
-#, perl-format
-msgid "(l. %d)"
-msgstr ""
-
-#: texi2html/texi2html.pl:9949
-#, perl-format
-msgid "Too much '}' in @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:9959
-#, fuzzy, perl-format
-msgid "Missing `}' on @%s line"
-msgstr "@def 引数に `}' を忘れています"
-
-#: texi2html/texi2html.pl:10109
-#, fuzzy, perl-format
-msgid "Anchor `%s' ignored in %s expanded more than once"
-msgstr "アンカー `%s' とノード `%s' が同じファイル名をマップしています"
-
-#: texi2html/texi2html.pl:10460 tp/Texinfo/Parser.pm:4088
-#, fuzzy, perl-format
-msgid "Region %s inside region %s is not allowed"
-msgstr "脚注に脚注を含めることはできません"
-
-#: texi2html/texi2html.pl:10739 tp/Texinfo/Parser.pm:4666
-#, fuzzy, perl-format
-msgid "column fraction not a number: %s"
-msgstr "iconv 関数が使えません"
-
-#: texi2html/texi2html.pl:10782
-#, perl-format
-msgid "Too many %s closed"
-msgstr ""
-
-#: texi2html/texi2html.pl:10852 texi2html/formats/info.pm:899
-#: tp/Texinfo/Parser.pm:1408
-#, perl-format
-msgid "@%s has text but no @item"
-msgstr ""
-
-#: texi2html/texi2html.pl:11012
-#, fuzzy, perl-format
-msgid "Unknown format %s"
-msgstr "不明なコマンド `%s'"
-
-#: texi2html/texi2html.pl:11228 texi2html/texi2html.pl:11666
-#, fuzzy, perl-format
-msgid "@%s (argument nr %d)"
-msgstr "@%s に対する誤った引数です"
-
-#: texi2html/texi2html.pl:11312
-#, perl-format
-msgid "prepended for @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:11328 tp/Texinfo/Parser.pm:2467
-#, fuzzy
-msgid "empty multitable"
-msgstr "%s: 空のファイル"
-
-#: texi2html/texi2html.pl:11338
-#, perl-format
-msgid "@columnfraction (argument nr %d)"
-msgstr ""
-
-#: texi2html/texi2html.pl:11526 texi2html/texi2html.pl:11540
-msgid "node name in menu"
-msgstr ""
-
-#: texi2html/texi2html.pl:11527
-msgid "normalized node name in menu"
-msgstr ""
-
-#: texi2html/texi2html.pl:11533
-msgid "menu entry name"
-msgstr ""
-
-#: texi2html/texi2html.pl:11568 tp/Texinfo/Structuring.pm:383
-#, fuzzy, perl-format
-msgid "Menu reference to nonexistent node `%s'"
-msgstr "参照されていないノード `%s'"
-
-#: texi2html/texi2html.pl:11642
-#, fuzzy, perl-format
-msgid "First argument to @%s may not be empty"
-msgstr "@inforef への第一引数は空であってはなりません"
-
-#: texi2html/texi2html.pl:11779
-#, perl-format
-msgid "@%s not in text (in anchor, node, section...)"
-msgstr ""
-
-#: texi2html/texi2html.pl:11791 texi2html/texi2html.pl:14562
-msgid "@listoffloats @float type"
-msgstr ""
-
-#: texi2html/texi2html.pl:11810 tp/Texinfo/Structuring.pm:1025
-#, fuzzy, perl-format
-msgid "@%s reference to nonexistent node `%s'"
-msgstr ""
-"%s は存在しないノード `%s' を参照しています (正しくないセクション付けをしてい"
-"るかもしれません?)"
-
-#: texi2html/texi2html.pl:11951
-msgid "@float style"
-msgstr ""
-
-#: texi2html/texi2html.pl:12083 texi2html/texi2html.pl:12084
-msgid "@image base name"
-msgstr ""
-
-#: texi2html/texi2html.pl:12093 texi2html/texi2html.pl:12094
-msgid "@image extension"
-msgstr ""
-
-#: texi2html/texi2html.pl:12101
-#, fuzzy
-msgid "@image file name"
-msgstr "@image ファイル `%s' が読めません: %s"
-
-#: texi2html/texi2html.pl:12123
-msgid "@image alt text"
-msgstr ""
-
-#: texi2html/texi2html.pl:12206 tp/Texinfo/Parser.pm:1731
-#, fuzzy, perl-format
-msgid "Macro `%s' called with too many args"
-msgstr "マクロ `%s' 呼び出し(%d行目)の引数が多すぎます"
-
-#: texi2html/texi2html.pl:12230
-#, fuzzy, perl-format
-msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
-msgstr "後ろに `%s' が続くマクロ展開内でパラメータ名ではなく \\ があります"
-
-#: texi2html/texi2html.pl:12425
-#, fuzzy, perl-format
-msgid "No index prefix found for @%s"
-msgstr "`%s' に対する項目が見つかりません\n"
-
-#: texi2html/texi2html.pl:12907 texi2html/texi2html.pl:14692
-#, fuzzy, perl-format
-msgid "@%s not allowed in argument to @%s"
-msgstr "@itemize の引数として @item は許可されていません"
-
-#: texi2html/texi2html.pl:12969
-#, perl-format
-msgid "Macro definition without macro name: %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13022 tp/Texinfo/Parser.pm:3617
-msgid "Bad syntax for @value"
-msgstr ""
-
-#: texi2html/texi2html.pl:13059 tp/Texinfo/Parser.pm:3344
-#, perl-format
-msgid ""
-"@%s defined with zero or more than one argument should be invoked with {}"
-msgstr ""
-
-#: texi2html/texi2html.pl:13082 tp/Texinfo/Parser.pm:3283
-#, perl-format
-msgid "@%s without associated character"
-msgstr ""
-
-#: texi2html/texi2html.pl:13232
-#, fuzzy, perl-format
-msgid "@%s already set"
-msgstr "見出し `%s' は既に存在します"
-
-#: texi2html/texi2html.pl:13284
-#, fuzzy, perl-format
-msgid "Anchor `%s' previously defined %s"
-msgstr "マクロ `%s' は以前に定義されています"
-
-#: texi2html/texi2html.pl:13320
-#, fuzzy, perl-format
-msgid "No closing brace for specially handled command %s"
-msgstr "脚注 `%s' の閉じブレースがありません"
-
-#: texi2html/texi2html.pl:13607 tp/Texinfo/Parser.pm:3624
-#, fuzzy, perl-format
-msgid "%c%s is obsolete."
-msgstr "%c%s は廃れた命令です"
-
-#: texi2html/texi2html.pl:13611 tp/Texinfo/Parser.pm:3627
-#, fuzzy, perl-format
-msgid "%c%s is obsolete; %s"
-msgstr "%c%s は廃れた命令です"
-
-#: texi2html/texi2html.pl:13632 tp/Texinfo/Parser.pm:4745
-#, perl-format
-msgid "Printindex before document beginning: @printindex %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13699
-#, perl-format
-msgid "ignored @%s already in an @%s entry"
-msgstr ""
-
-#: texi2html/texi2html.pl:13724 texi2html/texi2html.pl:13772
-#: tp/Texinfo/Parser.pm:4110
-#, fuzzy, perl-format
-msgid "@%s seen before first @node"
-msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
-
-#: texi2html/texi2html.pl:13729 tp/Texinfo/Parser.pm:925
-#: tp/Texinfo/Structuring.pm:365
-#, perl-format
-msgid "Multiple @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13741
-#, perl-format
-msgid "@%s not allowed within %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13790
-#, fuzzy, perl-format
-msgid "Float label `%s' previously defined %s"
-msgstr "マクロ `%s' は以前に定義されています"
-
-#: texi2html/texi2html.pl:14109 texi2html/texi2html.pl:14110
-#: texi2html/texi2html.pl:14113
-msgid "new menu entry"
-msgstr ""
-
-#: texi2html/texi2html.pl:14243
-msgid "paragraph end"
-msgstr ""
-
-#: texi2html/texi2html.pl:14555
-msgid "@listoffloats type"
-msgstr ""
-
-#: texi2html/texi2html.pl:14747 tp/Texinfo/Parser.pm:3430
-#, perl-format
-msgid "Accent command `@%s' must not be followed by whitespace"
-msgstr ""
-
-#: texi2html/texi2html.pl:14769 tp/Texinfo/Parser.pm:3464
-#, fuzzy, perl-format
-msgid "@%s expected braces"
-msgstr "%c%s には中括弧が予期されます"
-
-#: texi2html/texi2html.pl:14960 tp/Texinfo/Parser.pm:3870
-#, perl-format
-msgid "@%s outside of table or list"
-msgstr ""
-
-#: texi2html/texi2html.pl:14978 tp/Texinfo/Parser.pm:3828
-#, fuzzy, perl-format
-msgid "@%s in empty multitable"
-msgstr "%s: 空のファイル"
-
-#: texi2html/texi2html.pl:15000
-#, fuzzy
-msgid "ignoring @tab in empty multitable"
-msgstr "マルチテーブルの外側の @tab を無視します"
-
-#: texi2html/texi2html.pl:15035
-msgid "@center should not appear in another format"
-msgstr ""
-
-#: texi2html/texi2html.pl:15417 tp/Texinfo/Parser.pm:3833
-msgid "@tab before @item"
-msgstr ""
-
-#: texi2html/texi2html.pl:15652 tp/Texinfo/Parser.pm:3446
-#: tp/Texinfo/Parser.pm:4363
-#, fuzzy, perl-format
-msgid "%c%s expects `i' or `j' as argument, not `%s'"
-msgstr "%c%s は `%c' ではなく、`i' か `j' を引数として必要とします"
-
-#: texi2html/texi2html.pl:15704
-#, fuzzy, perl-format
-msgid "Unknown command with braces `@%s'"
-msgstr "不明なコマンド `%s'"
-
-#: texi2html/texi2html.pl:15744
-#, fuzzy, perl-format
-msgid "Unexpected command `%s' here"
-msgstr "未定義のコマンド: %s"
-
-#: texi2html/texi2html.pl:15839 tp/Texinfo/Parser.pm:1753
-#, fuzzy, perl-format
-msgid "@%s missing close brace"
-msgstr "閉じる中括弧のない %c%s"
-
-#: texi2html/texi2html.pl:16035 tp/Texinfo/Parser.pm:1057
-#, perl-format
-msgid "@%s missing closing delimiter sequence: %s}"
-msgstr ""
-
-#: texi2html/texi2html.pl:16148
-#, fuzzy, perl-format
-msgid "%s should not appear in %s"
-msgstr "%s: --css-file %s を開くことができません"
-
-#: texi2html/texi2html.pl:16625
-#, perl-format
-msgid "Index entry not caught: `%s' in %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:16723
-#, fuzzy, perl-format
-msgid "Empty index entry for @%s"
-msgstr "`%s' に対する項目が見つかりません\n"
-
-#: texi2html/texi2html.pl:16859 tp/Texinfo/Convert/HTML.pm:4281
-#, perl-format
-msgid "%s:%d: string not closed in css file"
-msgstr ""
-
-#: texi2html/texi2html.pl:16861 tp/Texinfo/Convert/HTML.pm:4285
-#, perl-format
-msgid "%s:%d @import not finished in css file"
-msgstr ""
-
-#: texi2html/texi2html.pl:16891
-#, fuzzy, perl-format
-msgid "%s: could not open --css-file %s: %s\n"
-msgstr "%s: --css-file %s を開くことができません"
-
-#: texi2html/texi2html.pl:16963 tp/Texinfo/Common.pm:1093
-#, perl-format
-msgid "%s:%d: no node to be renamed\n"
-msgstr ""
-
-#: texi2html/texi2html.pl:16974 tp/Texinfo/Common.pm:1104
-#, perl-format
-msgid "%s:%d: nodes without a new name at the end of file\n"
-msgstr ""
-
-#: texi2html/texi2html.pm:1275
-msgid "Document encoding is utf8, but there is no unicode support"
-msgstr ""
-
-#: texi2html/texi2html.pm:2227 tp/Texinfo/Common.pm:601
-msgid "recursion is always allowed"
-msgstr ""
-
-#: texi2html/texi2html.pm:2228 tp/Texinfo/Common.pm:602
-msgid "arguments are quoted by default"
-msgstr ""
-
-#: texi2html/texi2html.pm:6682 texi2html/formats/docbook.pm:1498
-#: texi2html/formats/html.pm:2352 texi2html/maintained_extra/mediawiki.pm:1141
-#: tp/Texinfo/Convert/HTML.pm:2168
-#, perl-format
-msgid "Raw format %s is not converted"
-msgstr ""
-
-#: texi2html/formats/docbook.pm:1026 texi2html/formats/info.pm:3001
-#: texi2html/formats/plaintext.pm:156 tp/Texinfo/Convert/Info.pm:555
-#, fuzzy, perl-format
-msgid "Cannot find @image file `%s.txt'"
-msgstr "`%s' ノードが見つかりません。"
-
-#: texi2html/formats/html.pm:2470 tp/Texinfo/Convert/HTML.pm:1555
-#, fuzzy, perl-format
-msgid "@image file `%s' (for HTML) not found, using `%s'"
-msgstr "@image ファイル `%s' (HTML 用) が読めません: %s"
-
-#: texi2html/formats/info.pm:1352
-#, fuzzy
-msgid "`.' or `,' must follow @xref."
-msgstr "`.' または `,' には `%2$c' では無く @%1$s が続かなければいけません。"
-
-#: texi2html/formats/info.pm:1357 tp/Texinfo/Convert/Plaintext.pm:1515
-#, fuzzy, perl-format
-msgid "`.' or `,' must follow @xref, not %s"
-msgstr "`.' または `,' には `%2$c' では無く @%1$s が続かなければいけません。"
-
-#: texi2html/formats/info.pm:2465
-msgid "anchor outside of any node, it won't be registered"
-msgstr ""
-
-#: texi2html/formats/info.pm:2780
-#, fuzzy
-msgid "@menu before first node"
-msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
-
-#: texi2html/formats/info.pm:2785 tp/Texinfo/Parser.pm:4104
-msgid "@direntry after first node"
-msgstr ""
-
-#: texi2html/formats/info.pm:3539
-msgid "float reference outside of any node, it won't be registered"
-msgstr ""
-
-#: texi2html/formats/info.pm:3642 tp/Texinfo/Parser.pm:3947
-msgid "@dircategory after first node"
-msgstr ""
-
-#: texi2html/maintained_extra/mediawiki.pm:1100
-#, fuzzy, perl-format
-msgid "@image file `%s' not found, using `%s'"
-msgstr "@image ファイル `%s' が読めません: %s"
-
-#: tp/texi2any.pl:247
+#: tp/texi2any.pl:246
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "\"%s\"の読込み中にエラーが発生しました"
 
-#: tp/texi2any.pl:256
+#: tp/texi2any.pl:255
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "不明なシグナル %d"
 
-#: tp/texi2any.pl:271
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "不明なシグナル %d"
 
-#: tp/texi2any.pl:497
+#: tp/texi2any.pl:486
+#, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "使い方: %s [オプション]... TEXINFOファイル...\n"
+
+#: tp/texi2any.pl:488
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+"Texinfo ソース文書を様々な形式で読めるように変換します。デフォルトでは\n"
+"オンラインで Emacs や単独の GNU Info で読むのに適した Info ファイルです。\n"
+
+#: tp/texi2any.pl:491
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -4053,7 +2134,7 @@ msgstr ""
 "  -v, --verbose               行なわれる事を説明する。\n"
 "      --version               バージョン情報を表示して終了する。\n"
 
-#: tp/texi2any.pl:511
+#: tp/texi2any.pl:505
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -4069,7 +2150,7 @@ msgstr ""
 "      --xml                   Info ではなくTexinfo XML を出力する。\n"
 "      --plaintext             Info ではなくプレーンテキストを出力する。\n"
 
-#: tp/texi2any.pl:519
+#: tp/texi2any.pl:513
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -4112,7 +2193,47 @@ msgstr ""
 "  -o, --output=FILE           FILE へ出力する (分割 HTML の場合ディレクト"
 "リ)。\n"
 
-#: tp/texi2any.pl:556
+#: tp/texi2any.pl:533
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"Info およびプレーンテキストのためのオプション:\n"
+"      --disable-encoding      Info 出力に @documentencoding に基づいたアク"
+"セ\n"
+"                                ントおよび特殊文字を出力しない。\n"
+"      --enable-encoding       --disable-encoding を上書きする (デフォル"
+"ト)。\n"
+"      --fill-column=NUM       Info を文字数 NUM で改行する (default %d)。\n"
+"      --footnote-style=STYLE  STYLE に基づいて Info の脚注を出力する。\n"
+"                                `separate' そのノード中に脚注を置く\n"
+"                                `end' 定義されたノードの末尾に置く (デフォル"
+"ト)\n"
+"      --paragraph-indent=VAL  Info 段落を VAL 個の空白で字下げする (default "
+"%d)。\n"
+"                                VAL が `none' の場合は字下げを行わない。"
+"`asis'\n"
+"                                の場合は既存の字下げを保持する。\n"
+"      --split-size=NUM        Info ファイルをサイズ NUM で分割する (default "
+"%d)。\n"
+
+#: tp/texi2any.pl:550
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -4135,13 +2256,36 @@ msgstr ""
 "      --transliterate-file-names\n"
 "                              ファイル名を ASCII 文字変換して生成する。\n"
 
-#: tp/texi2any.pl:570
+#: tp/texi2any.pl:561
+msgid ""
+"Options for XML and Docbook:\n"
+"      --output-indent=VAL     does nothing, retained for compatibility.\n"
+msgstr ""
+
+#: tp/texi2any.pl:564
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:580
+#: tp/texi2any.pl:567
+#, fuzzy
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  does nothing, retained for compatibility.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"入力ファイルオプション:\n"
+"      --commands-in-node-names   ノード名で @ コマンドを許可する。\n"
+"  -D VAR                         変数 VAR を定義する。@set と同じ。\n"
+"  -I DIR                         @include 探索パスに DIR を追加する。\n"
+"  -P DIR                         @include 探索パスの先頭に DIR を挿入する。\n"
+"  -U VAR                         変数 VAR を未定義にする。@clear と同じ。\n"
+
+#: tp/texi2any.pl:574
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -4161,345 +2305,1665 @@ msgid ""
 "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgstr ""
 
-#: tp/texi2any.pl:689
+#: tp/texi2any.pl:591
+#, fuzzy
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"  @if... 条件のデフォルトは出力形式に依存します:\n"
+"  HTML を生成する場合、--ifhtml が有効で、他は無効になります。\n"
+"  Info を生成する場合、--ifinfo が有効で、他は無効になります。\n"
+"  平文テキストを生成する場合、--ifplaintext が有効で、他は無効になります。\n"
+"  XML を生成する場合、--ifxml が有効で、他は無効になります。\n"
+
+#: tp/texi2any.pl:597
+#, fuzzy
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+"例:\n"
+"  makeinfo foo.texi                    foo の @setfilename に Info を書込む\n"
+"  makeinfo --html foo.texi             foo の @setfilename に HTML を書込む\n"
+"  makeinfo --no-headers -o - foo.texi  標準出力にプレインテクストを書込む\n"
+"  makeinfo --number-sections foo.texi  節に番号を付けた Info を出力\n"
+"  makeinfo --no-split foo.texi         大きさに関わらず一つの Info を出力\n"
+
+#: tp/texi2any.pl:641
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
+"    なりません。\n"
+
+#: tp/texi2any.pl:692
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "入力ファイル `%s' を開けません"
 
-#: tp/texi2any.pl:940 tp/texi2any.pl:996
+#: tp/texi2any.pl:734
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
+"    なりません。\n"
+
+#: tp/texi2any.pl:821
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr ""
+
+#: tp/texi2any.pl:834
+#, perl-format
+msgid "when generating %s, only one input FILE may be specified with -o"
+msgstr ""
+
+#: tp/texi2any.pl:845
+#, perl-format
+msgid "Ignoring splitting for format %s"
+msgstr ""
+
+#: tp/texi2any.pl:871
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: ファイル引数を忘れていますよ\n"
+
+#: tp/texi2any.pl:872
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "詳しくは `%s --help' を実行してください。\n"
+
+#: tp/texi2any.pl:947 tp/texi2any.pl:1003
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/Texinfo/Common.pm:1015
+#: tp/Texinfo/Common.pm:623
+msgid "recursion is always allowed"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:624
+msgid "arguments are quoted by default"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:770
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s は有効な ISO 639 言語コードではありません"
+
+#: tp/Texinfo/Common.pm:775
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s は有効な ISO 639 言語コードではありません"
+
+#: tp/Texinfo/Common.pm:793
+#, fuzzy, perl-format
+msgid "%s is not a valid split possibility"
+msgstr "%s は有効な ISO 639 言語コードではありません"
+
+#: tp/Texinfo/Common.pm:817 tp/Texinfo/Common.pm:1191
+#, fuzzy, perl-format
+msgid "Cannot read %s: %s"
+msgstr "ディレクトリ `%s' を作成できません: %s"
+
+#: tp/Texinfo/Common.pm:832 tp/Texinfo/Parser.pm:2721
+#, fuzzy, perl-format
+msgid "@%s: Cannot find %s"
+msgstr "`%s' を見つけられません。"
+
+#: tp/Texinfo/Common.pm:1097
 #, fuzzy, perl-format
 msgid "Cannot open html refs config file %s: %s"
 msgstr "ファイル `%s' を削除できません: %s"
 
-#: tp/Texinfo/Parser.pm:674
+#: tp/Texinfo/Common.pm:1125
+msgid "Missing type"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1128
+#, fuzzy, perl-format
+msgid "Unrecognized type: %s"
+msgstr "%s: `--%s' は認識できないオプションです\n"
+
+#: tp/Texinfo/Common.pm:1175
+#, perl-format
+msgid "%s:%d: no node to be renamed\n"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1186
+#, perl-format
+msgid "%s:%d: nodes without a new name at the end of file\n"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:683
 #, fuzzy, perl-format
 msgid "Can't read file %s: %s"
 msgstr "ファイル `%s' を削除できません: %s"
 
-#: tp/Texinfo/Parser.pm:956
+#: tp/Texinfo/Parser.pm:927 tp/Texinfo/Structuring.pm:374
+#, perl-format
+msgid "Multiple @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:958
 #, fuzzy, perl-format
 msgid "Bad syntax for @%s argument: %s"
 msgstr "引数 `%3$s' に対して %1$s%2$s が無効です"
 
-#: tp/Texinfo/Parser.pm:972
+#: tp/Texinfo/Parser.pm:974
 #, perl-format
 msgid "Bad or empty @%s formal argument: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1166
+#: tp/Texinfo/Parser.pm:983 tp/Texinfo/Parser.pm:4005
+#: tp/Texinfo/Parser.pm:4553 tp/Texinfo/Parser.pm:4562
+#: tp/Texinfo/Parser.pm:4572
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s には名前が必要です"
+
+#: tp/Texinfo/Parser.pm:1056
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "閉じる中括弧のない %c%s"
+
+#: tp/Texinfo/Parser.pm:1059
+#, perl-format
+msgid "@%s missing closing delimiter sequence: %s}"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1170
 #, fuzzy, perl-format
 msgid "@itemx should not begin @%s"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/Texinfo/Parser.pm:1235
+#: tp/Texinfo/Parser.pm:1239
 msgid "@itemx must follow @item"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1760
+#: tp/Texinfo/Parser.pm:1412
+#, perl-format
+msgid "@%s has text but no @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1440
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "`@end' には `%s' が必要ですが、`%s' が見つかりました"
+
+#: tp/Texinfo/Parser.pm:1443
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr "`%cend %s' との対応が見つかりません"
+
+#: tp/Texinfo/Parser.pm:1461 tp/Texinfo/Parser.pm:4298
+#: tp/Texinfo/Parser.pm:4450
+#, perl-format
+msgid "Misplaced %c"
+msgstr "間違った位置に %c"
+
+#: tp/Texinfo/Parser.pm:1539 tp/Texinfo/Parser.pm:2683
+#, perl-format
+msgid "Unmatched `%c%s'"
+msgstr "`%c%s' との対応が見つかりません"
+
+#: tp/Texinfo/Parser.pm:1735
+#, fuzzy, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr "マクロ `%s' 呼び出し(%d行目)の引数が多すぎます"
+
+#: tp/Texinfo/Parser.pm:1757
+#, fuzzy, perl-format
+msgid "@%s missing close brace"
+msgstr "閉じる中括弧のない %c%s"
+
+#: tp/Texinfo/Parser.pm:1764
 #, fuzzy, perl-format
 msgid "Macro `%s' declared without argument called with an argument"
 msgstr "マクロ `%s' 呼び出し(%d行目)の引数が多すぎます"
 
-#: tp/Texinfo/Parser.pm:1794
+#: tp/Texinfo/Parser.pm:1798
 #, fuzzy, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "後ろに `%s' が続くマクロ展開内でパラメータ名ではなく \\ があります"
 
-#: tp/Texinfo/Parser.pm:2081
+#: tp/Texinfo/Parser.pm:2085
 #, fuzzy, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "マクロ `%s' は以前に定義されています"
 
-#: tp/Texinfo/Parser.pm:2086
+#: tp/Texinfo/Parser.pm:2090
 #, fuzzy, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "ここは、`%s' の前の定義です"
 
-#: tp/Texinfo/Parser.pm:2415
+#: tp/Texinfo/Parser.pm:2150 tp/Texinfo/Convert/Info.pm:412
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "見出し `%s' のエントリはあらゆるノードの外側です"
+
+#: tp/Texinfo/Parser.pm:2419
 #, perl-format
 msgid "Missing name for @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2419
+#: tp/Texinfo/Parser.pm:2423
 #, perl-format
 msgid "Missing category for @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2452
+#: tp/Texinfo/Parser.pm:2456
 #, fuzzy, perl-format
 msgid "Unexpected argument on @%s line: %s"
 msgstr "@%s に対する誤った引数です: %s"
 
-#: tp/Texinfo/Parser.pm:2522 tp/Texinfo/Parser.pm:4621
+#: tp/Texinfo/Parser.pm:2471
+#, fuzzy
+msgid "empty multitable"
+msgstr "%s: 空のファイル"
+
+#: tp/Texinfo/Parser.pm:2526 tp/Texinfo/Parser.pm:4640
 #, fuzzy, perl-format
 msgid "Superfluous argument to @%s"
 msgstr "@%s に対する誤った引数です"
 
-#: tp/Texinfo/Parser.pm:2542
+#: tp/Texinfo/Parser.pm:2532 tp/Texinfo/Parser.pm:4661
+#: tp/Texinfo/Parser.pm:4672
+#, perl-format
+msgid "Bad argument to @%s"
+msgstr "@%s に対する誤った引数です"
+
+#: tp/Texinfo/Parser.pm:2541
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s には引数が必要です: %citem を整形するため"
+
+#: tp/Texinfo/Parser.pm:2546
 #, perl-format
 msgid "Command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2578
+#: tp/Texinfo/Parser.pm:2582
 #, fuzzy, perl-format
 msgid "Accent command `@%s' not allowed as @%s argument"
 msgstr "%s: オプション `--%s' は引数が不要です\n"
 
-#: tp/Texinfo/Parser.pm:2655 tp/Texinfo/Parser.pm:2782
-#: tp/Texinfo/Parser.pm:4613
+#: tp/Texinfo/Parser.pm:2660 tp/Texinfo/Parser.pm:2787
+#: tp/Texinfo/Parser.pm:4632
 #, fuzzy, perl-format
 msgid "@%s missing argument"
 msgstr "%s: ファイル引数を忘れていますよ\n"
 
-#: tp/Texinfo/Parser.pm:2668
+#: tp/Texinfo/Parser.pm:2673
 #, fuzzy, perl-format
 msgid "Unknown @end %s"
 msgstr "不明なインデックス `%s'"
 
-#: tp/Texinfo/Parser.pm:2690 tp/Texinfo/Parser.pm:3220
+#: tp/Texinfo/Parser.pm:2695 tp/Texinfo/Parser.pm:3239
 #, fuzzy, perl-format
 msgid "Superfluous argument to @%s %s: %s"
 msgstr "@%s に対する誤った引数です: %s"
 
-#: tp/Texinfo/Parser.pm:2712
+#: tp/Texinfo/Parser.pm:2699 tp/Texinfo/Parser.pm:4712
+#: tp/Texinfo/Parser.pm:4745 tp/Texinfo/Parser.pm:4771
+#: tp/Texinfo/Parser.pm:4804 tp/Texinfo/Parser.pm:4864
+#, perl-format
+msgid "Bad argument to @%s: %s"
+msgstr "@%s に対する誤った引数です: %s"
+
+#: tp/Texinfo/Parser.pm:2717
 #, fuzzy, perl-format
 msgid "@%s: Cannot open %s: %s"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/Texinfo/Parser.pm:2722
+#: tp/Texinfo/Parser.pm:2727
 #, perl-format
 msgid "Encoding `%s' is not a canonical texinfo encoding"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2868
+#: tp/Texinfo/Parser.pm:2731
+#, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "認識できないエンコード名 `%s'"
+
+#: tp/Texinfo/Parser.pm:2873
 #, fuzzy, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "`@titlepage' 環境の外側では @%s は意味がありません"
 
-#: tp/Texinfo/Parser.pm:3004
+#: tp/Texinfo/Parser.pm:3009
 #, fuzzy, perl-format
 msgid "Empty argument in @%s"
 msgstr "@%s に対する誤った引数です"
 
-#: tp/Texinfo/Parser.pm:3055
+#: tp/Texinfo/Parser.pm:3013
+#, perl-format
+msgid "Empty node name after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3029 tp/Texinfo/Convert/HTML.pm:6458
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3060
 msgid "Empty node in menu entry"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3367
+#: tp/Texinfo/Parser.pm:3254
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "マクロ `%s' は以前に定義されています"
+
+#: tp/Texinfo/Parser.pm:3256
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "ここは、`%s' の前の定義です"
+
+#: tp/Texinfo/Parser.pm:3302
+#, perl-format
+msgid "@%s without associated character"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3363
+#, perl-format
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3386
 #, perl-format
 msgid ""
 "Macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3375
+#: tp/Texinfo/Parser.pm:3394
 #, perl-format
 msgid "Recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3458
+#: tp/Texinfo/Parser.pm:3449
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3455
+#, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
+
+#: tp/Texinfo/Parser.pm:3465 tp/Texinfo/Parser.pm:4382
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s は `%c' ではなく、`i' か `j' を引数として必要とします"
+
+#: tp/Texinfo/Parser.pm:3477
 #, perl-format
 msgid "Accent command `@%s' must not be followed by new line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3635
+#: tp/Texinfo/Parser.pm:3483
+#, fuzzy, perl-format
+msgid "@%s expected braces"
+msgstr "%c%s には中括弧が予期されます"
+
+#: tp/Texinfo/Parser.pm:3633
+#, perl-format
+msgid "undefined flag: %s"
+msgstr "定義されていないフラグ: %s"
+
+#: tp/Texinfo/Parser.pm:3636
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3643
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%s は廃れた命令です"
+
+#: tp/Texinfo/Parser.pm:3646
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%s は廃れた命令です"
+
+#: tp/Texinfo/Parser.pm:3654
 #, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3648 tp/Texinfo/Parser.pm:3666
-#: tp/Texinfo/Parser.pm:3679
+#: tp/Texinfo/Parser.pm:3667 tp/Texinfo/Parser.pm:3685
+#: tp/Texinfo/Parser.pm:3698
 #, fuzzy, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/Texinfo/Parser.pm:3731
+#: tp/Texinfo/Parser.pm:3750
 #, fuzzy, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "`@%2$s' ブロックの内側では `@%1$s' は意味がありません"
 
-#: tp/Texinfo/Parser.pm:3739
+#: tp/Texinfo/Parser.pm:3758
 #, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3903
+#: tp/Texinfo/Parser.pm:3828 tp/Texinfo/Parser.pm:3840
+#: tp/Texinfo/Parser.pm:3884
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "`@%2$s' ブロックの内側では `@%1$s' は意味がありません"
+
+#: tp/Texinfo/Parser.pm:3847
+#, fuzzy, perl-format
+msgid "@%s in empty multitable"
+msgstr "%s: 空のファイル"
+
+#: tp/Texinfo/Parser.pm:3852
+msgid "@tab before @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3854
+#, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "マルチテーブル項目内のカラム数が多すぎます(最大 %d)"
+
+#: tp/Texinfo/Parser.pm:3887
+msgid "ignoring @tab outside of multitable"
+msgstr "マルチテーブルの外側の @tab を無視します"
+
+#: tp/Texinfo/Parser.pm:3889
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3922
 #, fuzzy, perl-format
 msgid "Must be after `@%s' to use `@%s'"
 msgstr "`@%2$s' を使用するためには `@%1$s' 環境でなければいけません"
 
-#: tp/Texinfo/Parser.pm:4171
+#: tp/Texinfo/Parser.pm:3962
+#, perl-format
+msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3966
+msgid "@dircategory after first node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4107
+#, fuzzy, perl-format
+msgid "Region %s inside region %s is not allowed"
+msgstr "脚注に脚注を含めることはできません"
+
+#: tp/Texinfo/Parser.pm:4123
+msgid "@direntry after first node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4129
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
+
+#: tp/Texinfo/Parser.pm:4131
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "多分 @top ノードは @ifinfo よりは @ifnottex に覆われるべきでは？"
+
+#: tp/Texinfo/Parser.pm:4190
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4191
+#: tp/Texinfo/Parser.pm:4200
+#, perl-format
+msgid "Unknown command `%s'"
+msgstr "不明なコマンド `%s'"
+
+#: tp/Texinfo/Parser.pm:4210
 #, fuzzy
 msgid "Unexpected @"
 msgstr "ここでは `%s' が要求されます"
 
-#: tp/Texinfo/Parser.pm:4219
+#: tp/Texinfo/Parser.pm:4238
 #, fuzzy, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "`@float' 環境の外側では @%s は意味がありません"
 
-#: tp/Texinfo/Parser.pm:4223
+#: tp/Texinfo/Parser.pm:4242
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4231
+#: tp/Texinfo/Parser.pm:4250
 #, perl-format
 msgid "Ignoring multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4317
+#: tp/Texinfo/Parser.pm:4336
 #, perl-format
 msgid "Command @%s does not accept arguments"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4336
+#: tp/Texinfo/Parser.pm:4355
 #, fuzzy, perl-format
 msgid "Command @%s missing a node argument"
 msgstr "%s: ファイル引数を忘れていますよ\n"
 
-#: tp/Texinfo/Parser.pm:4374
+#: tp/Texinfo/Parser.pm:4373
+msgid "@image missing filename argument"
+msgstr "@image にファイル名が与えられていません"
+
+#: tp/Texinfo/Parser.pm:4393
 #, fuzzy, perl-format
 msgid "@%s missing first argument"
 msgstr "%s: ファイル引数を忘れていますよ\n"
 
-#: tp/Texinfo/Parser.pm:4562
+#: tp/Texinfo/Parser.pm:4480
+#, fuzzy
+msgid "Superfluous arguments for node"
+msgstr "%2$s に対する引数 %1$s が曖昧です"
+
+#: tp/Texinfo/Parser.pm:4517
+#, fuzzy, perl-format
+msgid "Expected @end %s"
+msgstr "ここでは `%s' が要求されます"
+
+#: tp/Texinfo/Parser.pm:4581
 #, fuzzy, perl-format
 msgid "Remaining argument on @%s line: %s"
 msgstr "@%s に対する誤った引数です: %s"
 
-#: tp/Texinfo/Parser.pm:4637
+#: tp/Texinfo/Parser.pm:4583
+#, fuzzy, perl-format
+msgid "@%s should only accept a @-command as argument, not `%s'"
+msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
+
+#: tp/Texinfo/Parser.pm:4656
 #, fuzzy, perl-format
 msgid "Environment command %s as argument to @%s"
 msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
 
-#: tp/Texinfo/Parser.pm:4658
+#: tp/Texinfo/Parser.pm:4677
 #, perl-format
 msgid "Empty @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4675
+#: tp/Texinfo/Parser.pm:4685
+#, fuzzy, perl-format
+msgid "column fraction not a number: %s"
+msgstr "iconv 関数が使えません"
+
+#: tp/Texinfo/Parser.pm:4694
 #, fuzzy, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
 
+#: tp/Texinfo/Parser.pm:4702
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4719
+#, fuzzy, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr "不明なインデックス `%s'"
+
 #: tp/Texinfo/Parser.pm:4721
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "不明なインデックス `%s'"
+
+#: tp/Texinfo/Parser.pm:4740
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4738
+#: tp/Texinfo/Parser.pm:4752
+#, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "@printindex に不明な見出し `%s' があります"
+
+#: tp/Texinfo/Parser.pm:4757
 #, perl-format
 msgid "Printing an index `%s' merged in another one `%s'"
 msgstr ""
 
+#: tp/Texinfo/Parser.pm:4764
+#, perl-format
+msgid "Printindex before document beginning: @printindex %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4779
+#, fuzzy, perl-format
+msgid "@%s arg must be `top' or `bottom', not `%s'"
+msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
+
+#: tp/Texinfo/Parser.pm:4785
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4791
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr ""
+"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
+"    なりません。\n"
+
+#: tp/Texinfo/Parser.pm:4797
+#, fuzzy, perl-format
+msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
+
+#: tp/Texinfo/Parser.pm:4812 tp/Texinfo/Parser.pm:4815
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
+"    なりません。\n"
+
+#: tp/Texinfo/Parser.pm:4821
+#, fuzzy, perl-format
+msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+msgstr ""
+"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
+"    なりません。\n"
+
+#: tp/Texinfo/Parser.pm:4829
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
+"    なりません。\n"
+
 #: tp/Texinfo/Parser.pm:4838
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4845
+#, perl-format
+msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4851
+#, fuzzy, perl-format
+msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
+msgstr ""
+"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
+"    なりません。\n"
+
+#: tp/Texinfo/Parser.pm:4857
 #, fuzzy, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
 "%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
 "    なりません。\n"
 
+#: tp/Texinfo/Report.pm:91
+#, perl-format
+msgid "%s:%d: warning: %s (possibly involving @%s)\n"
+msgstr ""
+
+#: tp/Texinfo/Report.pm:94
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr "%s:%d: 警告: "
+
 #: tp/Texinfo/Report.pm:135
 #, fuzzy, perl-format
 msgid "warning: %s\n"
 msgstr "%s:%d: 警告: "
 
-#: tp/Texinfo/Structuring.pm:218
+#: tp/Texinfo/Structuring.pm:222
 #, perl-format
 msgid "Upping the section level of @%s which is too low"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:253
+#: tp/Texinfo/Structuring.pm:257
 #, perl-format
 msgid "Lowering the section level of @%s appearing after a lower element"
 msgstr ""
 
-#: tp/Texinfo/Convert/Converter.pm:424
+#: tp/Texinfo/Structuring.pm:392
+#, fuzzy, perl-format
+msgid "Menu reference to nonexistent node `%s'"
+msgstr "参照されていないノード `%s'"
+
+#: tp/Texinfo/Structuring.pm:433
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "参照されていないノード `%s'"
+
+#: tp/Texinfo/Structuring.pm:464
+#, perl-format
+msgid "No node following `%s' in menu, but `%s' follows in sectioning"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:470
+#, perl-format
+msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:532
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "参照されていないノード `%s'"
+
+#: tp/Texinfo/Structuring.pm:551
+#, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+"ノード `%s' には 上位項目があるのに、`%s' へのメニューアイテムを欠いています"
+
+#: tp/Texinfo/Structuring.pm:559
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1040
+#, fuzzy, perl-format
+msgid "@%s reference to nonexistent node `%s'"
+msgstr ""
+"%s は存在しないノード `%s' を参照しています (正しくないセクション付けをしてい"
+"るかもしれません?)"
+
+#: tp/Texinfo/Convert/Converter.pm:479
+#, fuzzy, perl-format
+msgid "Can't create directories `%s' or `%s': %s"
+msgstr "ディレクトリ `%s' を作成できません: %s"
+
+#: tp/Texinfo/Convert/Converter.pm:487
 #, fuzzy, perl-format
 msgid "Can't create directories `%s': %s"
 msgstr "ディレクトリ `%s' を作成できません: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6025
-#: tp/Texinfo/Convert/HTML.pm:6070 tp/Texinfo/Convert/HTML.pm:6135
-#: tp/Texinfo/Convert/HTML.pm:6190 tp/Texinfo/Convert/Info.pm:81
-#: tp/Texinfo/Convert/Info.pm:144 tp/Texinfo/Convert/Info.pm:163
-#: tp/Texinfo/Convert/Plaintext.pm:478 tp/Texinfo/Convert/XML.pm:296
+#: tp/Texinfo/Convert/DocBook.pm:308 tp/Texinfo/Convert/HTML.pm:6252
+#: tp/Texinfo/Convert/HTML.pm:6302 tp/Texinfo/Convert/HTML.pm:6368
+#: tp/Texinfo/Convert/HTML.pm:6423 tp/Texinfo/Convert/Info.pm:83
+#: tp/Texinfo/Convert/Info.pm:146 tp/Texinfo/Convert/Info.pm:165
+#: tp/Texinfo/Convert/Plaintext.pm:413 tp/Texinfo/Convert/XML.pm:266
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/Texinfo/Convert/HTML.pm:4311
+#: tp/Texinfo/Convert/HTML.pm:1560
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "@image ファイル `%s' (HTML 用) が読めません: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:2238
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4450
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4452
+#, perl-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr "%s:%d: --css-file がコメント内で終了しています"
+
+#: tp/Texinfo/Convert/HTML.pm:4454
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4480
 #, fuzzy, perl-format
 msgid "css file %s not found"
 msgstr "%cend マクロが見つかりません"
 
-#: tp/Texinfo/Convert/HTML.pm:4316
+#: tp/Texinfo/Convert/HTML.pm:4485
 #, fuzzy, perl-format
 msgid "could not open --css-file %s: %s"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/Texinfo/Convert/HTML.pm:5986
+#: tp/Texinfo/Convert/HTML.pm:6212
 msgid "Must specify a title with a title command or @top"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6153
+#: tp/Texinfo/Convert/HTML.pm:6386
 #, fuzzy, perl-format
 msgid "Node `%s' that is to be renamed exists"
 msgstr "見出し `%s' は既に存在します"
 
-#: tp/Texinfo/Convert/HTML.pm:6223
+#: tp/Texinfo/Convert/HTML.pm:6390
+#, fuzzy, perl-format
+msgid "File empty for renamed node `%s'"
+msgstr "参照されていないノード `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:6401
+#, perl-format
+msgid "Node to be renamed as, `%s' not found"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6456
 msgid "Empty node name"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:90
+#: tp/Texinfo/Convert/Info.pm:92
 #, fuzzy
 msgid "Document without nodes."
 msgstr "このノードにメニューはありません。"
 
-#: tp/Texinfo/Convert/Info.pm:102
+#: tp/Texinfo/Convert/Info.pm:104
 msgid "Document without Top node."
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:129
+#: tp/Texinfo/Convert/Info.pm:131
 #, perl-format
 msgid "Rename %s failed: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:188
+#: tp/Texinfo/Convert/Info.pm:190
 #, perl-format
 msgid "@%s `%s' output more than once"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:377
+#: tp/Texinfo/Convert/Info.pm:379
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:455
+#: tp/Texinfo/Convert/Info.pm:457
 #, fuzzy, perl-format
 msgid "@%s outside of any node"
 msgstr "(あらゆるノードの外側)"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1517
+#: tp/Texinfo/Convert/Info.pm:557
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt'"
+msgstr "`%s' ノードが見つかりません。"
+
+#: tp/Texinfo/Convert/Plaintext.pm:948
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "@image ファイル `%s' が読めません: %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1240
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1456
+#, fuzzy, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr "`.' または `,' には `%2$c' では無く @%1$s が続かなければいけません。"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1458
 #, fuzzy
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' または `,' には `%2$c' では無く @%1$s が続かなければいけません。"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2160
+#: tp/Texinfo/Convert/Plaintext.pm:2103
 #, perl-format
 msgid "Node expansion `%s' in menu differs from normal node expansion `%s'"
 msgstr ""
+
+#~ msgid "arguments to @%s ignored"
+#~ msgstr "@%s に対する引数は無視しました"
+
+#~ msgid "January"
+#~ msgstr "一月"
+
+#~ msgid "February"
+#~ msgstr "二月"
+
+#~ msgid "March"
+#~ msgstr "三月"
+
+#~ msgid "April"
+#~ msgstr "四月"
+
+#~ msgid "May"
+#~ msgstr "五月"
+
+#~ msgid "June"
+#~ msgstr "六月"
+
+#~ msgid "July"
+#~ msgstr "七月"
+
+#~ msgid "August"
+#~ msgstr "八月"
+
+#~ msgid "September"
+#~ msgstr "九月"
+
+#~ msgid "October"
+#~ msgstr "十月"
+
+#~ msgid "November"
+#~ msgstr "十一月"
+
+#~ msgid "December"
+#~ msgstr "十二月"
+
+#~ msgid "unlikely character %c in @var"
+#~ msgstr "@var で使えそうにない文字 %c"
+
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "全て大文字の @sc 引数、従って効果がありません"
+
+#~ msgid "`{' expected, but saw `%c'"
+#~ msgstr "`{' があるはずですが、`%c' でした"
+
+#~ msgid "end of file inside verb block"
+#~ msgstr "verb ブロック内でファイル末尾となりました"
+
+#~ msgid "`}' expected, but saw `%c'"
+#~ msgstr "`}' があるはずですが、`%c' でした"
+
+#~ msgid "%c%s is obsolete"
+#~ msgstr "%c%s は廃れた命令です"
+
+#~ msgid "@sp requires a positive numeric argument, not `%s'"
+#~ msgstr "@sp には `%s' ではなく、正の数値を与えなければなりません"
+
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "%c%s に対する不正な引数"
+
+#~ msgid "asis"
+#~ msgstr "そのまま"
+
+#~ msgid "none"
+#~ msgstr "なし"
+
+#~ msgid "insert"
+#~ msgstr "挿入"
+
+#~ msgid "Missing `}' in @def arg"
+#~ msgstr "@def 引数に `}' を忘れています"
+
+#~ msgid "Must be in `@%s' environment to use `@%s'"
+#~ msgstr "`@%2$s' を使用するためには `@%1$s' 環境でなければいけません"
+
+#~ msgid "%s: getwd: %s, %s\n"
+#~ msgstr "%s: getwd: %s, %s\n"
+
+#~ msgid "See "
+#~ msgstr "See "
+
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "`%c%s' には `%s' だけでなく、`{...}' 形式の引数が必要です"
+
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "脚注 `%s' の閉じブレースがありません"
+
+#~ msgid "Footnote defined without parent node"
+#~ msgstr "脚注に親ノードの定義がありません"
+
+#~ msgid "Footnotes inside footnotes are not allowed"
+#~ msgstr "脚注に脚注を含めることはできません"
+
+#~ msgid "Footnotes"
+#~ msgstr "脚注"
+
+#~ msgid "%s: could not open --css-file: %s"
+#~ msgstr "%s: --css-file %s を開くことができません"
+
+#~ msgid "[unexpected] no html tag to pop"
+#~ msgstr "[unexpected] ポップアップする html タグがありません"
+
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "[unexpected] 無効なノード名: `%s'"
+
+#~ msgid "Unknown index `%s'"
+#~ msgstr "不明なインデックス `%s'"
+
+#~ msgid "Info cannot handle `:' in index entry `%s'"
+#~ msgstr "Info ではインデックス項目に `:' を使用できません `%s'"
+
+#~ msgid "Index `%s' already exists"
+#~ msgstr "見出し `%s' は既に存在します"
+
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "@synindex に不明な見出し `%s' や `%s' があります"
+
+#~ msgid "(line )"
+#~ msgstr "(行 )"
+
+#~ msgid "(line %*d)"
+#~ msgstr "(行 %*d)"
+
+#~ msgid "(outside of any node)"
+#~ msgstr "(あらゆるノードの外側)"
+
+#~ msgid "@item not allowed in argument to @itemize"
+#~ msgstr "@itemize の引数として @item は許可されていません"
+
+#~ msgid "Broken-Type in insertion_type_pname"
+#~ msgstr "insertion_type_pname 中に壊れた型があります"
+
+#~ msgid "Enumeration stack overflow"
+#~ msgstr "列挙用スタックがオーバフローしました"
+
+#~ msgid "lettering overflow, restarting at %c"
+#~ msgstr "ラベル文字がオーバーフロー、%c に戻します"
+
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%s には英数文字が必要です"
+
+#~ msgid "end of file inside verbatim block"
+#~ msgstr "verbatim ブロック中でファイルの末尾となりました"
+
+#~ msgid "@%s not meaningful outside `@float' environment"
+#~ msgstr "`@float' 環境の外側では @%s は意味がありません"
+
+#~ msgid "@menu seen before first @node, creating `Top' node"
+#~ msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
+
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr "@detailmenu が最初のノード以前に現れました。`頂点' ノードを作ります"
+
+#~ msgid "@%s not meaningful outside `@titlepage' environment"
+#~ msgstr "`@titlepage' 環境の外側では @%s は意味がありません"
+
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "`%c%s' の後ろには何かが必要です"
+
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "`@%2$s' に対する不正な引数 `%1$s'。`%3$s' を使います"
+
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "`%s' ブロック内側では @itemx は意味がありません"
+
+#~ msgid "%c%s found outside of an insertion block"
+#~ msgstr "挿入ブロック外で、%c%s が見つかりました"
+
+#~ msgid "%s is not a valid ISO 639 language code"
+#~ msgstr "%s は有効な ISO 639 言語コードではありません"
+
+#~ msgid "sorry, encoding `%s' not supported"
+#~ msgstr "残念ながら、エンコード `%s' は受け付けられません"
+
+#~ msgid "invalid encoded character `%s'"
+#~ msgstr "エンコード文字 `%s' が無効です"
+
+#~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
+#~ msgstr "%c%s は `%c' ではなく、`i' か `j' を引数として必要とします"
+
+#~ msgid "%c%s expects a single character `i' or `j' as argument"
+#~ msgstr "%c%s は引数として `i' か `j' のいずれか一文字が必要です"
+
+#~ msgid "\\ in macro expansion followed by `%s' instead of parameter name"
+#~ msgstr "後ろに `%s' が続くマクロ展開内でパラメータ名ではなく \\ があります"
+
+#~ msgid "Macro `%s' called on line %d with too many args"
+#~ msgstr "マクロ `%s' 呼び出し(%d行目)の引数が多すぎます"
+
+#~ msgid "%cend macro not found"
+#~ msgstr "%cend マクロが見つかりません"
+
+#~ msgid "@allow-recursion is deprecated; please use @rmacro instead"
+#~ msgstr ""
+#~ "@allow-recursion は廃止されました。@rmacro を代わりに使用してください"
+
+#~ msgid "mismatched @end %s with @%s"
+#~ msgstr "@%2$s と一致しない @end %1$s"
+
+#~ msgid "Too many errors!  Gave up.\n"
+#~ msgstr "エラーが多すぎます!  諦めました。\n"
+
+#~ msgid "%s:%d: warning: "
+#~ msgstr "%s:%d: 警告: "
+
+#~ msgid ""
+#~ "General options:\n"
+#~ "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+#~ "      --document-language=STR locale to use in translating Texinfo "
+#~ "keywords\n"
+#~ "                                for the output document (default C).\n"
+#~ "      --force                 preserve output even if errors.\n"
+#~ "      --help                  display this help and exit.\n"
+#~ "      --no-validate           suppress node cross-reference validation.\n"
+#~ "      --no-warn               suppress warnings (but not errors).\n"
+#~ "  -v, --verbose               explain what is being done.\n"
+#~ "      --version               display version information and exit.\n"
+#~ msgstr ""
+#~ "一般的なオプション:\n"
+#~ "      --error-limit=NUM       エラーが NUM 個発生したら中止する (default "
+#~ "%d)。\n"
+#~ "      --document-language=STR 出力文書に対して Texinfo のキーワード翻訳に"
+#~ "使用する\n"
+#~ "                                ロケール (デフォルトは C)。\n"
+#~ "      --force                 エラーが発生しても出力を保存する。\n"
+#~ "      --help                  このヘルプを表示して終了する。\n"
+#~ "      --no-validate           ノード間相互参照の検証を抑制する。\n"
+#~ "      --no-warn               警告を抑制する (エラーは表示する)。\n"
+#~ "  -v, --verbose               行なわれる事を説明する。\n"
+#~ "      --version               バージョン情報を表示して終了する。\n"
+
+#~ msgid ""
+#~ "Output format selection (default is to produce Info):\n"
+#~ "      --docbook               output Docbook XML rather than Info.\n"
+#~ "      --html                  output HTML rather than Info.\n"
+#~ "      --xml                   output Texinfo XML rather than Info.\n"
+#~ "      --plaintext             output plain text rather than Info.\n"
+#~ msgstr ""
+#~ "出力形式の選択 (デフォルトは Info を生成):\n"
+#~ "      --docbook               Info ではなく Docbook XML を出力する。\n"
+#~ "      --html                  Info ではなく HTML を出力する。\n"
+#~ "      --xml                   Info ではなくTexinfo XML を出力する。\n"
+#~ "      --plaintext             Info ではなくプレーンテキストを出力する。\n"
+
+#~ msgid ""
+#~ "General output options:\n"
+#~ "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+#~ "                                ignoring any @setfilename.\n"
+#~ "      --no-headers            suppress node separators, Node: lines, and "
+#~ "menus\n"
+#~ "                                from Info output (thus producing plain "
+#~ "text)\n"
+#~ "                                or from HTML (thus producing shorter "
+#~ "output);\n"
+#~ "                                also, write to standard output by "
+#~ "default.\n"
+#~ "      --no-split              suppress the splitting of Info or HTML "
+#~ "output,\n"
+#~ "                                generate only one output file.\n"
+#~ "      --number-sections       output chapter and sectioning numbers.\n"
+#~ "  -o, --output=FILE           output to FILE (or directory if split "
+#~ "HTML).\n"
+#~ msgstr ""
+#~ "一般的な出力オプション:\n"
+#~ "  -E, --macro-expand=FILE     マクロ展開されたソースを FILE に出力する。\n"
+#~ "                                @setfilename は無視する。\n"
+#~ "      --no-headers            ノード分割を抑止する。Info 出力 (プレーンテ"
+#~ "キス\n"
+#~ "                                トを生成する) または HTML (短い出力を生成"
+#~ "する)\n"
+#~ "                                からの Node: 行、およびメニューもデフォル"
+#~ "トで\n"
+#~ "                                標準出力に書き込まれる。\n"
+#~ "      --no-split              Info や HTML の分割出力を抑制する。\n"
+#~ "                                ただ一つの出力ファイルを生成する。\n"
+#~ "      --number-sections       章や節の番号を出力する。\n"
+#~ "  -o, --output=FILE           FILE へ出力する (分割 HTML の場合ディレクト"
+#~ "リ)。\n"
+
+#~ msgid ""
+#~ "Options for HTML:\n"
+#~ "      --css-include=FILE      include FILE in HTML <style> output;\n"
+#~ "                                read stdin if FILE is -.\n"
+#~ "      --css-ref=URL           generate reference to a CSS file.\n"
+#~ "      --internal-links=FILE   produce list of internal links in FILE.\n"
+#~ "      --transliterate-file-names\n"
+#~ "                              produce file names in ASCII "
+#~ "transliteration.\n"
+#~ msgstr ""
+#~ "HTML のためのオプション:\n"
+#~ "      --css-include=FILE      HTMLの <style> 出力内に FILEを含める。\n"
+#~ "                                FILE に - を指定した時は標準入力から読み込"
+#~ "む。\n"
+#~ "      --css-ref=URL           CSS ファイルへの参照を生成する。\n"
+#~ "      --internal-links=FILE   内部リンクの一覧を FILE に生成する。\n"
+#~ "      --transliterate-file-names\n"
+#~ "                              ファイル名を ASCII 文字変換して生成する。\n"
+
+#~ msgid ""
+#~ "Options for XML and Docbook:\n"
+#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default "
+#~ "%d).\n"
+#~ "                                If VAL is 0, ignorable whitespace is "
+#~ "dropped.\n"
+#~ msgstr ""
+#~ "XML および Docbook のためのオプション:\n"
+#~ "      --output-indent=VAL     XML 要素を VAL 個のスペースで字下げする (デ"
+#~ "フォルト %d)。\n"
+#~ "                                もし VAL が 0 の場合、無視できる空白は取り"
+#~ "除かれる。\n"
+
+#~ msgid ""
+#~ "Input file options:\n"
+#~ "      --commands-in-node-names  allow @ commands in node names.\n"
+#~ "  -D VAR                        define the variable VAR, as with @set.\n"
+#~ "  -I DIR                        append DIR to the @include search path.\n"
+#~ "  -P DIR                        prepend DIR to the @include search path.\n"
+#~ "  -U VAR                        undefine the variable VAR, as with "
+#~ "@clear.\n"
+#~ msgstr ""
+#~ "入力ファイルオプション:\n"
+#~ "      --commands-in-node-names   ノード名で @ コマンドを許可する。\n"
+#~ "  -D VAR                         変数 VAR を定義する。@set と同じ。\n"
+#~ "  -I DIR                         @include 探索パスに DIR を追加する。\n"
+#~ "  -P DIR                         @include 探索パスの先頭に DIR を挿入す"
+#~ "る。\n"
+#~ "  -U VAR                         変数 VAR を未定義にする。@clear と同"
+#~ "じ。\n"
+
+#~ msgid "%s: %s arg must be numeric, not `%s'.\n"
+#~ msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
+
+#~ msgid "%s: could not open macro expansion output `%s'"
+#~ msgstr "%s: マクロ展開出力 `%s' を開けませんでした"
+
+#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
+#~ msgstr "%s: 二回目のマクロ展開出力 `%s' を無視しています。\n"
+
+#~ msgid "%s: could not open internal links output `%s'"
+#~ msgstr "%s: 内部リンク出力 `%s' を開くことができませんでした"
+
+#~ msgid "%s: ignoring second internal links output `%s'.\n"
+#~ msgstr "%s: 二回目の内部リンク出力 `%s' を無視しています。\n"
+
+#~ msgid "Expected `%s'"
+#~ msgstr "ここでは `%s' が要求されます"
+
+#~ msgid "Can't create directory `%s': %s"
+#~ msgstr "ディレクトリ `%s' を作成できません: %s"
+
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "`%2$s' に `%1$s' が見つかりません"
+
+#~ msgid ""
+#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr "%s: Info の出力を行なうので、マクロ拡張を標準出力に出力しません。\n"
+
+#~ msgid "Making %s file `%s' from `%s'.\n"
+#~ msgstr "`%3$s' から %1$s ファイル `%2$s' を作成します。\n"
+
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr ""
+#~ "%s: エラーにより、マクロ出力ファイル `%s' を削除します。\n"
+#~ "       -- 残したい場合には `--force' オプションを使ってください。\n"
+
+#~ msgid ""
+#~ "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr ""
+#~ "%s: エラーにより、出力ファイル `%s' を削除します。\n"
+#~ "       -- 残したい場合には `--force' オプションを使ってください。\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Removing internal links output file `%s' due to errors; use --force "
+#~ "to preserve.\n"
+#~ msgstr ""
+#~ "%s: エラーが発生したため内部リンク出力ファイル `%s' を削除しています。保存"
+#~ "する場合は --force を使用してください。\n"
+
+#~ msgid "%c%s expected braces"
+#~ msgstr "%c%s には中括弧が予期されます"
+
+#~ msgid "Unmatched }"
+#~ msgstr "対応のない }"
+
+#~ msgid "NO_NAME!"
+#~ msgstr "名前が無い！"
+
+#~ msgid "@image file `%s' (for HTML) not readable: %s"
+#~ msgstr "@image ファイル `%s' (HTML 用) が読めません: %s"
+
+#~ msgid "No such file `%s'"
+#~ msgstr "ファイル `%s' がありません"
+
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "@image ファイル `%s' (text 用) が読めません: %s"
+
+#~ msgid "{No value for `%s'}"
+#~ msgstr "{`%s' の値がない}"
+
+#~ msgid "Reached eof before matching @end %s"
+#~ msgstr "@end %s の対応の前にファイルの終りに出くわしました"
+
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "@multitable テンプレートに } がありません"
+
+#~ msgid "ignoring stray text `%s' after @multitable"
+#~ msgstr "@multitable の後ろのテクスト `%s' を無視します"
+
+#, fuzzy
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr "マルチテーブル内では、第 %d 行を選択できません"
+
+#~ msgid "** Multicolumn output from last row:\n"
+#~ msgstr "** マルチカラムの最後の列から出力\n"
+
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "* 第 %d カラム: 出力 = %s\n"
+
+#~ msgid "Node `%s' previously defined at line %d"
+#~ msgstr "ノード `%s' 前(%d 行目)に定義されています"
+
+#~ msgid "Formatting node %s...\n"
+#~ msgstr "ノード %s を整形中...\n"
+
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr "ノード `%s' にはセクション用コマンドが必要です (例: %c%s)"
+
+#~ msgid "No node name specified for `%c%s' command"
+#~ msgstr "`%c%s' コマンドに指定されたノード名がありません"
+
+#~ msgid "Anchor `%s' and node `%s' map to the same file name"
+#~ msgstr "アンカー `%s' とノード `%s' が同じファイル名をマップしています"
+
+#~ msgid "This @anchor command ignored; references to it will not work"
+#~ msgstr "この @anchor コマンドは無視されます -- そこへの参照は動作しません"
+
+#~ msgid "Rename this anchor or use the `--no-split' option"
+#~ msgstr "このアンカー名を変更するか `--no-split' オプションを使いましょう"
+
+#~ msgid "Unexpected string at end of split-HTML file `%s'"
+#~ msgstr "split-HTML ファイル `%s' の終りに、あるはずのない文字列があります"
+
+#~ msgid "Anchors `%s' and `%s' map to the same file name"
+#~ msgstr "アンカー `%s' と `%s' が同じファイル名にマップしています"
+
+#~ msgid "@anchor command ignored; references to it will not work"
+#~ msgstr "@anchor コマンドは無視されます -- そこへの参照は動作しません"
+
+#~ msgid ""
+#~ "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "%s は存在しないノード `%s' を参照しています (正しくないセクション付けをし"
+#~ "ているかもしれません?)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr "ノード `%s' の次のフィールドがノードを指していません -- "
+
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "このノード (%s) はきちんと 前 を持っていません"
+
+#~ msgid "Prev field of node `%s' not pointed to"
+#~ msgstr "ノード `%s' の前のフィールドがノードを指していません -- "
+
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "このノード (%s) はきちんと 次 を持っていません"
+
+#~ msgid "Removing %s\n"
+#~ msgstr "%s を削除しています\n"
+
+#~ msgid "Can't remove file `%s': %s"
+#~ msgstr "ファイル `%s' を削除できません: %s"
+
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "内部エラー (節を探索中) `%s'!"
+
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "内部エラー (節探索中) \"%s\"!"
+
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%s は廃止されました。%c%s を代わりに使用してください"
+
+#~ msgid "Node with %ctop as a section already exists"
+#~ msgstr "%ctop のノードは、セクションとして既に存在します"
+
+#~ msgid "Here is the %ctop node"
+#~ msgstr "ここは %ctop ノードです"
+
+#~ msgid "%ctop used before %cnode, defaulting to %s"
+#~ msgstr "%ctop が %cnode の前に使われました、%s に決めうちします"
+
+#~ msgid "of"
+#~ msgstr "of"
+
+#~ msgid "on"
+#~ msgstr "on"
+
+#~ msgid "First argument to cross-reference may not be empty"
+#~ msgstr "相互参照への第一引数が空であってはなりません"
+
+#~ msgid "`.' or `,' must follow @%s, not `%c'"
+#~ msgstr ""
+#~ "`.' または `,' には `%2$c' では無く @%1$s が続かなければいけません。"
+
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "小括弧内での相互参照では @pxref を使用してください"
+
+#~ msgid "First argument to @inforef may not be empty"
+#~ msgstr "@inforef への第一引数は空であってはなりません"
+
+#, fuzzy
+#~ msgid "Encoding %s certainly poorly supported"
+#~ msgstr "残念ながら、エンコード `%s' は受け付けられません"
+
+#, fuzzy
+#~ msgid ""
+#~ "General options:\n"
+#~ "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+#~ "      --document-language=STR locale to use in translating Texinfo "
+#~ "keywords\n"
+#~ "                                for the output document (default C).\n"
+#~ "      --force                 preserve output even if errors.\n"
+#~ "      --help                  display this help and exit.\n"
+#~ "      --no-validate           suppress node cross-reference validation.\n"
+#~ "      --no-warn               suppress warnings (but not errors).\n"
+#~ "      --conf-dir=DIR          search also for initialization files in "
+#~ "DIR.\n"
+#~ "      --init-file=FILE        load FILE to modify the default behaviour.\n"
+#~ "      --set-init-variable VAR=VAL  set configuration variable VAR to "
+#~ "VAL.\n"
+#~ "  -v, --verbose               explain what is being done.\n"
+#~ "      --version               display version information and exit.\n"
+#~ msgstr ""
+#~ "一般的なオプション:\n"
+#~ "      --error-limit=NUM       エラーが NUM 個発生したら中止する (default "
+#~ "%d)。\n"
+#~ "      --document-language=STR 出力文書に対して Texinfo のキーワード翻訳に"
+#~ "使用する\n"
+#~ "                                ロケール (デフォルトは C)。\n"
+#~ "      --force                 エラーが発生しても出力を保存する。\n"
+#~ "      --help                  このヘルプを表示して終了する。\n"
+#~ "      --no-validate           ノード間相互参照の検証を抑制する。\n"
+#~ "      --no-warn               警告を抑制する (エラーは表示する)。\n"
+#~ "  -v, --verbose               行なわれる事を説明する。\n"
+#~ "      --version               バージョン情報を表示して終了する。\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "General output options:\n"
+#~ "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+#~ "                                ignoring any @setfilename.\n"
+#~ "      --no-headers            suppress node separators, Node: lines, and "
+#~ "menus\n"
+#~ "                                from Info output (thus producing plain "
+#~ "text)\n"
+#~ "                                or from HTML (thus producing shorter "
+#~ "output);\n"
+#~ "                                also, write to standard output by default "
+#~ "if\n"
+#~ "                                producing Info.\n"
+#~ "      --split=SPLIT           split at SPLIT, where SPLIT may be "
+#~ "chapter, \n"
+#~ "                                section or node if output supports "
+#~ "splitting.\n"
+#~ "      --no-split              suppress the splitting of Info or HTML "
+#~ "output,\n"
+#~ "                                generate only one output file.\n"
+#~ "      --number-sections       output chapter and sectioning numbers.\n"
+#~ "  -o, --output=FILE           output to FILE (or directory if split).\n"
+#~ "                                If not split and FILE is a directory, put "
+#~ "the\n"
+#~ "                                resulting files in FILE.\n"
+#~ msgstr ""
+#~ "一般的な出力オプション:\n"
+#~ "  -E, --macro-expand=FILE     マクロ展開されたソースを FILE に出力する。\n"
+#~ "                                @setfilename は無視する。\n"
+#~ "      --no-headers            ノード分割を抑止する。Info 出力 (プレーンテ"
+#~ "キス\n"
+#~ "                                トを生成する) または HTML (短い出力を生成"
+#~ "する)\n"
+#~ "                                からの Node: 行、およびメニューもデフォル"
+#~ "トで\n"
+#~ "                                標準出力に書き込まれる。\n"
+#~ "      --no-split              Info や HTML の分割出力を抑制する。\n"
+#~ "                                ただ一つの出力ファイルを生成する。\n"
+#~ "      --number-sections       章や節の番号を出力する。\n"
+#~ "  -o, --output=FILE           FILE へ出力する (分割 HTML の場合ディレクト"
+#~ "リ)。\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Options for HTML:\n"
+#~ "      --css-include=FILE      include FILE in HTML <style> output;\n"
+#~ "                                read stdin if FILE is -.\n"
+#~ "      --css-ref=URL           generate reference to a CSS file.\n"
+#~ "      --internal-links=FILE   produce list of internal links in FILE.\n"
+#~ "      --transliterate-file-names\n"
+#~ "                              produce file names in ASCII "
+#~ "transliteration.\n"
+#~ "      --node-files            produce redirection files for nodes and \n"
+#~ "                                anchors. Default is set only if split.\n"
+#~ msgstr ""
+#~ "HTML のためのオプション:\n"
+#~ "      --css-include=FILE      HTMLの <style> 出力内に FILEを含める。\n"
+#~ "                                FILE に - を指定した時は標準入力から読み込"
+#~ "む。\n"
+#~ "      --css-ref=URL           CSS ファイルへの参照を生成する。\n"
+#~ "      --internal-links=FILE   内部リンクの一覧を FILE に生成する。\n"
+#~ "      --transliterate-file-names\n"
+#~ "                              ファイル名を ASCII 文字変換して生成する。\n"
+
+#, fuzzy
+#~ msgid "Cannot split output %s"
+#~ msgstr "出力ファイル `%s' を作成できません"
+
+#, fuzzy
+#~ msgid " end of file"
+#~ msgstr "不明なファイル"
+
+#, fuzzy
+#~ msgid "Node `%s' previously defined %s"
+#~ msgstr "ノード `%s' 前(%d 行目)に定義されています"
+
+#, fuzzy
+#~ msgid "@%s requires an argument"
+#~ msgstr "%c%s には名前が必要です"
+
+#, fuzzy
+#~ msgid "Node `%s' that is to be renamed exists "
+#~ msgstr "見出し `%s' は既に存在します"
+
+#, fuzzy
+#~ msgid "%s: Removing output files due to errors; use --force to preserve.\n"
+#~ msgstr ""
+#~ "%s: エラーにより、出力ファイル `%s' を削除します。\n"
+#~ "       -- 残したい場合には `--force' オプションを使ってください。\n"
+
+#, fuzzy
+#~ msgid "Missing `}' on @%s line"
+#~ msgstr "@def 引数に `}' を忘れています"
+
+#, fuzzy
+#~ msgid "Anchor `%s' ignored in %s expanded more than once"
+#~ msgstr "アンカー `%s' とノード `%s' が同じファイル名をマップしています"
+
+#, fuzzy
+#~ msgid "Unknown format %s"
+#~ msgstr "不明なコマンド `%s'"
+
+#, fuzzy
+#~ msgid "@%s (argument nr %d)"
+#~ msgstr "@%s に対する誤った引数です"
+
+#, fuzzy
+#~ msgid "First argument to @%s may not be empty"
+#~ msgstr "@inforef への第一引数は空であってはなりません"
+
+#, fuzzy
+#~ msgid "@image file name"
+#~ msgstr "@image ファイル `%s' が読めません: %s"
+
+#, fuzzy
+#~ msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
+#~ msgstr "後ろに `%s' が続くマクロ展開内でパラメータ名ではなく \\ があります"
+
+#, fuzzy
+#~ msgid "No index prefix found for @%s"
+#~ msgstr "`%s' に対する項目が見つかりません\n"
+
+#, fuzzy
+#~ msgid "@%s not allowed in argument to @%s"
+#~ msgstr "@itemize の引数として @item は許可されていません"
+
+#, fuzzy
+#~ msgid "@%s already set"
+#~ msgstr "見出し `%s' は既に存在します"
+
+#, fuzzy
+#~ msgid "Anchor `%s' previously defined %s"
+#~ msgstr "マクロ `%s' は以前に定義されています"
+
+#, fuzzy
+#~ msgid "No closing brace for specially handled command %s"
+#~ msgstr "脚注 `%s' の閉じブレースがありません"
+
+#, fuzzy
+#~ msgid "Float label `%s' previously defined %s"
+#~ msgstr "マクロ `%s' は以前に定義されています"
+
+#, fuzzy
+#~ msgid "ignoring @tab in empty multitable"
+#~ msgstr "マルチテーブルの外側の @tab を無視します"
+
+#, fuzzy
+#~ msgid "Unknown command with braces `@%s'"
+#~ msgstr "不明なコマンド `%s'"
+
+#, fuzzy
+#~ msgid "Unexpected command `%s' here"
+#~ msgstr "未定義のコマンド: %s"
+
+#, fuzzy
+#~ msgid "%s should not appear in %s"
+#~ msgstr "%s: --css-file %s を開くことができません"
+
+#, fuzzy
+#~ msgid "Empty index entry for @%s"
+#~ msgstr "`%s' に対する項目が見つかりません\n"
+
+#, fuzzy
+#~ msgid "%s: could not open --css-file %s: %s\n"
+#~ msgstr "%s: --css-file %s を開くことができません"
+
+#, fuzzy
+#~ msgid "`.' or `,' must follow @xref."
+#~ msgstr ""
+#~ "`.' または `,' には `%2$c' では無く @%1$s が続かなければいけません。"
+
+#, fuzzy
+#~ msgid "@menu before first node"
+#~ msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
+
+#, fuzzy
+#~ msgid "@image file `%s' not found, using `%s'"
+#~ msgstr "@image ファイル `%s' が読めません: %s"
 
 #~ msgid "One completion:\n"
 #~ msgstr "1 つの補完:\n"

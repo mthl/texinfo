@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-09-25 20:24+0200\n"
+"POT-Creation-Date: 2011-10-13 01:00+0200\n"
 "PO-Revision-Date: 2004-12-05 15:37+0100\n"
 "Last-Translator: Trond Endrestøl <Trond.Endrestol@gtf.ol.no>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -321,8 +321,7 @@ msgid "Try --help for more information.\n"
 msgstr "Prøv --help for mer informasjon.\n"
 
 #: info/info.c:298 info/infokey.c:144 install-info/install-info.c:2133
-#: makeinfo/makeinfo.c:752 util/texindex.c:295 texi2html/texi2html.pl:4026
-#: tp/texi2any.pl:623
+#: util/texindex.c:295 tp/texi2any.pl:617
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -417,8 +416,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:682 info/infokey.c:911 makeinfo/makeinfo.c:425
-#: util/texindex.c:259
+#: info/info.c:682 info/infokey.c:911 util/texindex.c:259
 msgid ""
 "\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1932,8 +1930,7 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:589 texi2html/texi2html.pl:3946
-#: tp/texi2any.pl:614
+#: install-info/install-info.c:589 tp/texi2any.pl:608
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2054,1163 +2051,6 @@ msgstr ""
 msgid "fflush error on stdout\n"
 msgstr ""
 
-#: makeinfo/cmds.c:590 makeinfo/cmds.c:612
-#, c-format
-msgid "arguments to @%s ignored"
-msgstr "argumentene til @%s ble ignorert"
-
-#: makeinfo/cmds.c:787
-msgid "January"
-msgstr "januar"
-
-#: makeinfo/cmds.c:787
-msgid "February"
-msgstr "februar"
-
-#: makeinfo/cmds.c:787
-msgid "March"
-msgstr "mars"
-
-#: makeinfo/cmds.c:787
-msgid "April"
-msgstr "april"
-
-#: makeinfo/cmds.c:787
-msgid "May"
-msgstr "mai"
-
-#: makeinfo/cmds.c:788
-msgid "June"
-msgstr "juni"
-
-#: makeinfo/cmds.c:788
-msgid "July"
-msgstr "juli"
-
-#: makeinfo/cmds.c:788
-msgid "August"
-msgstr "august"
-
-#: makeinfo/cmds.c:788
-msgid "September"
-msgstr "september"
-
-#: makeinfo/cmds.c:788
-msgid "October"
-msgstr "oktober"
-
-#: makeinfo/cmds.c:789
-msgid "November"
-msgstr "november"
-
-#: makeinfo/cmds.c:789
-msgid "December"
-msgstr "desember"
-
-#: makeinfo/cmds.c:1139
-#, c-format
-msgid "unlikely character %c in @var"
-msgstr "usannsynlig tegn %c i @var"
-
-#: makeinfo/cmds.c:1182
-#, c-format
-msgid "@sc argument all uppercase, thus no effect"
-msgstr "@sc-argument med store bokstaver, dermed ingen effekt"
-
-#: makeinfo/cmds.c:1237
-#, c-format
-msgid "`{' expected, but saw `%c'"
-msgstr "«{» forventet, men så «%c»"
-
-#: makeinfo/cmds.c:1277
-#, c-format
-msgid "end of file inside verb block"
-msgstr "slutt-på-fila inne i verb-blokk"
-
-#: makeinfo/cmds.c:1285
-#, c-format
-msgid "`}' expected, but saw `%c'"
-msgstr "«{» forventet, men så «%c»"
-
-#: makeinfo/cmds.c:1316 texi2html/formats/info.pm:1188
-#: tp/Texinfo/Convert/Plaintext.pm:1299
-#, c-format
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr ""
-"@strong{Note...} lager en overflødig kryssreferanse i Info; skriv om for å "
-"unngå dette"
-
-#: makeinfo/cmds.c:1512
-#, c-format
-msgid "%c%s is obsolete"
-msgstr "%c%s er utgått"
-
-#: makeinfo/cmds.c:1620 texi2html/texi2html.pl:6369
-#, c-format, perl-format
-msgid "@sp requires a positive numeric argument, not `%s'"
-msgstr "@sp krever et positivt numerisk argument, ikke `%s'"
-
-#: makeinfo/cmds.c:2031 makeinfo/footnote.c:81
-#, c-format
-msgid "Bad argument to %c%s"
-msgstr "Ugyldig argument til %c%s"
-
-#: makeinfo/cmds.c:2041 makeinfo/makeinfo.c:4231
-msgid "asis"
-msgstr "asis"
-
-#: makeinfo/cmds.c:2043 makeinfo/cmds.c:2073 makeinfo/makeinfo.c:4233
-msgid "none"
-msgstr "none"
-
-#: makeinfo/cmds.c:2057 texi2html/texi2html.pl:6003
-#: texi2html/texi2html.pl:6014 tp/Texinfo/Parser.pm:2528
-#: tp/Texinfo/Parser.pm:4642 tp/Texinfo/Parser.pm:4653
-#, c-format, perl-format
-msgid "Bad argument to @%s"
-msgstr "Ugyldig argument til @%s"
-
-#: makeinfo/cmds.c:2071
-msgid "insert"
-msgstr "insert"
-
-#: makeinfo/cmds.c:2087 texi2html/texi2html.pl:5942
-#: texi2html/texi2html.pl:6160 texi2html/texi2html.pl:6188
-#: texi2html/texi2html.pl:6253 texi2html/texi2html.pl:6417
-#: texi2html/texi2html.pl:13222 texi2html/texi2html.pl:14620
-#: tp/Texinfo/Parser.pm:2694 tp/Texinfo/Parser.pm:4693
-#: tp/Texinfo/Parser.pm:4726 tp/Texinfo/Parser.pm:4752
-#: tp/Texinfo/Parser.pm:4785 tp/Texinfo/Parser.pm:4845
-#, fuzzy, c-format, perl-format
-msgid "Bad argument to @%s: %s"
-msgstr "Ugyldig argument til @%s"
-
-#: makeinfo/cmds.c:2170 texi2html/texi2html.pl:5889 tp/Texinfo/Parser.pm:4819
-#, c-format, perl-format
-msgid "Expected @%s on or off, not `%s'"
-msgstr ""
-
-#: makeinfo/cmds.c:2190 texi2html/texi2html.pl:6211 tp/Texinfo/Parser.pm:4766
-#, c-format, perl-format
-msgid "Only @%s 10 or 11 is supported, not `%s'"
-msgstr ""
-
-#: makeinfo/defun.c:83
-#, c-format
-msgid "Missing `}' in @def arg"
-msgstr "Manglende «}» i @def-arg"
-
-#: makeinfo/defun.c:711 texi2html/texi2html.pl:11169
-#, c-format, perl-format
-msgid "Must be in `@%s' environment to use `@%s'"
-msgstr "Må være i et «@%s»-miljø for å bruke «@%s»"
-
-#: makeinfo/files.c:434
-#, c-format
-msgid "%s: getwd: %s, %s\n"
-msgstr "%s: getwd: %s, %s\n"
-
-#: makeinfo/files.c:637
-#, c-format
-msgid "`%s' omitted before output filename"
-msgstr "`%s' utelatt før outputfilnavn"
-
-#: makeinfo/files.c:645
-#, c-format
-msgid "`%s' omitted since writing to stdout"
-msgstr "`%s' utelatt pga skriving til stdout"
-
-#: makeinfo/files.c:693
-#, c-format
-msgid "Output buffer not empty."
-msgstr "Outputbuffer er ikke tomt."
-
-#: makeinfo/float.c:181 texi2html/texi2html.pl:14578
-#, c-format, perl-format
-msgid "Requested float type `%s' not previously used"
-msgstr ""
-
-#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:959
-#: makeinfo/index.c:965
-msgid "See "
-msgstr "Se "
-
-#: makeinfo/footnote.c:149
-#, c-format
-msgid "`%c%s' needs an argument `{...}', not just `%s'"
-msgstr "«%c%s» trenger et argument «{...}», ikke bare «%s»"
-
-#: makeinfo/footnote.c:164
-#, c-format
-msgid "No closing brace for footnote `%s'"
-msgstr "Ingen avsluttende krøllparentes for fotnoten «%s»"
-
-#: makeinfo/footnote.c:197 texi2html/formats/info.pm:3199
-#, c-format
-msgid "Footnote defined without parent node"
-msgstr "Fotnote definert uten foreldrenode"
-
-#: makeinfo/footnote.c:209
-#, c-format
-msgid "Footnotes inside footnotes are not allowed"
-msgstr "Fotnoter i fotnoter er ikke tillatt"
-
-#: makeinfo/footnote.c:301 makeinfo/index.c:187
-msgid "Footnotes"
-msgstr "Fotnoter"
-
-#: makeinfo/html.c:91
-#, c-format
-msgid "%s: could not open --css-file: %s"
-msgstr "%s: kunne ikke åpne --css-file: %s"
-
-#: makeinfo/html.c:180 texi2html/texi2html.pl:16860
-#: tp/Texinfo/Convert/HTML.pm:4283
-#, c-format, perl-format
-msgid "%s:%d: --css-file ended in comment"
-msgstr "%s:%d: --css-file endte i en kommentar"
-
-#: makeinfo/html.c:426
-#, c-format
-msgid "[unexpected] no html tag to pop"
-msgstr "[uforventet] kunne ikke poppe neste htmltagg"
-
-#: makeinfo/html.c:786
-#, c-format
-msgid "[unexpected] invalid node name: `%s'"
-msgstr "[uforventet] ugyldig nodenavn: «%s»"
-
-#: makeinfo/index.c:167 texi2html/texi2html.pl:8457
-#, c-format, perl-format
-msgid "Unknown index `%s'"
-msgstr "Ukjent indeks «%s»"
-
-#: makeinfo/index.c:232
-#, c-format
-msgid "Info cannot handle `:' in index entry `%s'"
-msgstr "Info kan ikke håndtere `:' i indeksinnslaget `%s'"
-
-#: makeinfo/index.c:410
-#, c-format
-msgid "Index `%s' already exists"
-msgstr "Indeksen «%s» eksisterer allerede"
-
-#: makeinfo/index.c:453
-#, c-format
-msgid "Unknown index `%s' and/or `%s' in @synindex"
-msgstr "Ukjent indeks «%s» og/eller «%s» i @synindex"
-
-#: makeinfo/index.c:676
-msgid "(line )"
-msgstr "(linje )"
-
-#: makeinfo/index.c:684
-#, c-format
-msgid "(line %*d)"
-msgstr "(linje %*d)"
-
-#: makeinfo/index.c:765 texi2html/texi2html.pl:13627 tp/Texinfo/Parser.pm:4733
-#, c-format, perl-format
-msgid "Unknown index `%s' in @printindex"
-msgstr "Ukjent indeks «%s» i @printindex"
-
-#: makeinfo/index.c:834 texi2html/texi2html.pl:8462
-#: texi2html/formats/info.pm:3075 tp/Texinfo/Parser.pm:2146
-#: tp/Texinfo/Convert/Info.pm:410
-#, c-format, perl-format
-msgid "Entry for index `%s' outside of any node"
-msgstr "Innslag for indeksen «%s» utenfor node"
-
-#: makeinfo/index.c:837 makeinfo/index.c:873
-msgid "(outside of any node)"
-msgstr "(utenfor noder)"
-
-#: makeinfo/insertion.c:162
-#, c-format
-msgid "@item not allowed in argument to @itemize"
-msgstr "@item er ikke tillatt som argument til @itemize"
-
-#: makeinfo/insertion.c:243
-msgid "Broken-Type in insertion_type_pname"
-msgstr "Broken-Type i insertion_type_pname"
-
-#: makeinfo/insertion.c:339
-#, c-format
-msgid "Enumeration stack overflow"
-msgstr "Stakkoverflyt ved oppramsing"
-
-#: makeinfo/insertion.c:371
-#, c-format
-msgid "lettering overflow, restarting at %c"
-msgstr "bokstavoverflyt, starter på nytt ved %c"
-
-#: makeinfo/insertion.c:640 texi2html/texi2html.pl:11309
-#: tp/Texinfo/Parser.pm:2537
-#, c-format, perl-format
-msgid "%s requires an argument: the formatter for %citem"
-msgstr "%s krever et argument: formattereren for %citem"
-
-#: makeinfo/insertion.c:728
-#, c-format
-msgid "%cfloat environments cannot be nested"
-msgstr "%cfloat-miljøer kan ikke nøstes"
-
-#: makeinfo/insertion.c:1006 texi2html/texi2html.pl:10847
-#: texi2html/texi2html.pl:10874 texi2html/texi2html.pl:14483
-#: tp/Texinfo/Parser.pm:1436
-#, c-format, perl-format
-msgid "`@end' expected `%s', but saw `%s'"
-msgstr "`@end' forventet «%s», men så «%s»"
-
-#: makeinfo/insertion.c:1382 texi2html/texi2html.pl:16003
-#: tp/Texinfo/Parser.pm:1439
-#, c-format, perl-format
-msgid "No matching `%cend %s'"
-msgstr "Ingen tilsvarende «%cend %s»"
-
-#: makeinfo/insertion.c:1651
-#, c-format
-msgid "%s requires letter or digit"
-msgstr "%s krever en bokstav eller et siffer"
-
-#: makeinfo/insertion.c:1751
-#, c-format
-msgid "end of file inside verbatim block"
-msgstr "slutt-på-filen inne i verbatimblokk"
-
-#: makeinfo/insertion.c:1975 texi2html/texi2html.pl:11893
-#, c-format, perl-format
-msgid "@%s not meaningful outside `@float' environment"
-msgstr "@%s er meningsløs utenfor et «@float»-miljø"
-
-#: makeinfo/insertion.c:2011
-#, c-format
-msgid "@menu seen before first @node, creating `Top' node"
-msgstr "@menu sett før første @node, oppretter «Top»-noden"
-
-#: makeinfo/insertion.c:2012 texi2html/texi2html.pl:13725
-#: tp/Texinfo/Parser.pm:4112
-#, c-format
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr ""
-"kanskje burde din @top-node bli pakket inn i @ifnottex istedet for @ifinfo?"
-
-#: makeinfo/insertion.c:2024
-#, c-format
-msgid "@detailmenu seen before first node, creating `Top' node"
-msgstr "@detailmenu sett før første node, oppretter «Top»-noden"
-
-#: makeinfo/insertion.c:2099 texi2html/texi2html.pl:6301
-#: tp/Texinfo/Parser.pm:3943
-#, c-format, perl-format
-msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr "@%s gir ikke mening utenfor «@titlepage»- og «@quotation»-miljøer"
-
-#: makeinfo/insertion.c:2113
-#, c-format
-msgid "@%s not meaningful outside `@titlepage' environment"
-msgstr "@%s er meningsløs utenfor et «@titlepage»-miljø"
-
-#: makeinfo/insertion.c:2144 texi2html/texi2html.pl:12847
-#: texi2html/texi2html.pl:13379 texi2html/texi2html.pl:14410
-#: texi2html/texi2html.pl:14430 texi2html/texi2html.pl:14472
-#: tp/Texinfo/Parser.pm:1535 tp/Texinfo/Parser.pm:2678
-#, c-format, perl-format
-msgid "Unmatched `%c%s'"
-msgstr "Umatchet «%c%s»"
-
-#: makeinfo/insertion.c:2149
-#, c-format
-msgid "`%c%s' needs something after it"
-msgstr "«%c%s» trenger noe etter den"
-
-#: makeinfo/insertion.c:2155 texi2html/texi2html.pl:13964
-#, c-format, perl-format
-msgid "Bad argument `%s' to `@%s', using `%s'"
-msgstr "Ugyldig argument «%s» til «%s», bruker «%s»"
-
-#: makeinfo/insertion.c:2252 texi2html/texi2html.pl:14911
-#: texi2html/texi2html.pl:14924 tp/Texinfo/Parser.pm:3809
-#: tp/Texinfo/Parser.pm:3821 tp/Texinfo/Parser.pm:3865
-#, c-format, perl-format
-msgid "@%s not meaningful inside `@%s' block"
-msgstr "@%s er meningsløs innenfor en «@%s»-blokk"
-
-#: makeinfo/insertion.c:2261
-#, c-format
-msgid "@itemx not meaningful inside `%s' block"
-msgstr "@itemx er meningsløs innenfor en «@%s»-blokk"
-
-#: makeinfo/insertion.c:2435
-#, c-format
-msgid "%c%s found outside of an insertion block"
-msgstr "%c%s funnet utenfor en innsettingsblokk"
-
-#: makeinfo/lang.c:1218
-#, c-format
-msgid "no default territory known for language `%s'"
-msgstr ""
-
-#: makeinfo/lang.c:1281
-#, c-format
-msgid "%s is not a valid ISO 639 language code"
-msgstr "%s er ikke en gyldig ISO 639-språkkode"
-
-#: makeinfo/lang.c:1399 texi2html/texi2html.pl:2649 tp/Texinfo/Parser.pm:2726
-#, c-format, perl-format
-msgid "unrecognized encoding name `%s'"
-msgstr "ugjenkjennelig kodingsnavn «%s»"
-
-#: makeinfo/lang.c:1407
-#, c-format
-msgid "sorry, encoding `%s' not supported"
-msgstr "beklager, kodingen «%s» er ikke støttet"
-
-#: makeinfo/lang.c:1492
-#, c-format
-msgid "invalid encoded character `%s'"
-msgstr "Ugyldig kodet tegn «%s»"
-
-#: makeinfo/lang.c:1800
-#, c-format
-msgid "%c%s expects `i' or `j' as argument, not `%c'"
-msgstr "%c%s forventer «i» eller «j» som argument, ikke «%c»"
-
-#: makeinfo/lang.c:1804 texi2html/texi2html.pl:15648
-#, c-format, perl-format
-msgid "%c%s expects a single character `i' or `j' as argument"
-msgstr "%c%s forventer et enkelt tegn, «i» eller «j» som argument"
-
-#: makeinfo/macro.c:128 texi2html/texi2html.pl:12935 tp/Texinfo/Parser.pm:3235
-#, c-format, perl-format
-msgid "macro `%s' previously defined"
-msgstr "makroen «%s» er tidligere definert"
-
-#: makeinfo/macro.c:132 texi2html/texi2html.pl:12936 tp/Texinfo/Parser.pm:3237
-#, c-format, perl-format
-msgid "here is the previous definition of `%s'"
-msgstr "her er den tidligere definisjonen av «%s»"
-
-#: makeinfo/macro.c:359
-#, c-format
-msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-msgstr "\\ i makroekspansjon fulgt av «%s» istedet for parameternavn"
-
-#: makeinfo/macro.c:401
-#, c-format
-msgid "Macro `%s' called on line %d with too many args"
-msgstr "Makroen «%s» kalt på linje %d med for mange argumenter"
-
-#: makeinfo/macro.c:580 texi2html/texi2html.pl:15834
-#, c-format, perl-format
-msgid "%cend macro not found"
-msgstr "%cend macro ikke funnet"
-
-#: makeinfo/macro.c:591
-#, c-format
-msgid "@allow-recursion is deprecated; please use @rmacro instead"
-msgstr ""
-
-#: makeinfo/macro.c:606
-#, c-format
-msgid "@quote-arg is deprecated; arguments are quoted by default"
-msgstr ""
-
-#: makeinfo/macro.c:649 texi2html/texi2html.pl:11036
-#, c-format, perl-format
-msgid "mismatched @end %s with @%s"
-msgstr "umatchet @end %s med @%s"
-
-#: makeinfo/makeinfo.c:188 texi2html/texi2html.pl:9650
-#, c-format
-msgid "Too many errors!  Gave up.\n"
-msgstr "For mange feil!  Ga opp.\n"
-
-#: makeinfo/makeinfo.c:260
-#, c-format
-msgid "%s:%d: warning: "
-msgstr "%s:%d: advarsel: "
-
-#: makeinfo/makeinfo.c:275 makeinfo/makeinfo.c:2290
-#: texi2html/texi2html.pl:15075 texi2html/texi2html.pl:15095
-#: tp/Texinfo/Parser.pm:1457 tp/Texinfo/Parser.pm:4279
-#: tp/Texinfo/Parser.pm:4431
-#, c-format, perl-format
-msgid "Misplaced %c"
-msgstr "Feilplassert %c"
-
-#: makeinfo/makeinfo.c:294 texi2html/texi2html.pl:2392 tp/texi2any.pl:868
-#, c-format, perl-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "Prøv «%s --help» for mer informasjon.\n"
-
-#: makeinfo/makeinfo.c:297 texi2html/texi2html.pl:3828 tp/texi2any.pl:492
-#, c-format, perl-format
-msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "Bruksmåte: %s [VALG]... TEXINFOFIL...\n"
-
-#: makeinfo/makeinfo.c:300 texi2html/texi2html.pl:3830 tp/texi2any.pl:494
-msgid ""
-"Translate Texinfo source documentation to various other formats, by default\n"
-"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
-msgstr ""
-"Oversette Texinfodokumentasjon til forskjellige andre formater:\n"
-"Infofiler for lesing online med Emacs eller den frittstående GNU Info.\n"
-
-#: makeinfo/makeinfo.c:304
-#, fuzzy, c-format
-msgid ""
-"General options:\n"
-"      --error-limit=NUM       quit after NUM errors (default %d).\n"
-"      --document-language=STR locale to use in translating Texinfo keywords\n"
-"                                for the output document (default C).\n"
-"      --force                 preserve output even if errors.\n"
-"      --help                  display this help and exit.\n"
-"      --no-validate           suppress node cross-reference validation.\n"
-"      --no-warn               suppress warnings (but not errors).\n"
-"  -v, --verbose               explain what is being done.\n"
-"      --version               display version information and exit.\n"
-msgstr ""
-"Generelle valg:\n"
-"      --error-limit=ANT       avbryte etter ANT feil (standard %d).\n"
-"      --force                 bevare output selv med feil.\n"
-"      --help                  vise denne hjelpen og avslutte.\n"
-"      --no-validate           undertrykke sjekking av kryssreferanser.\n"
-"      --no-warn               undertrykke advarsler (men ikke feil).\n"
-"      --reference-limit=ANT   advare om på det meste ANT referanser "
-"(standard %d).\n"
-"  -v, --verbose               forklare hva som blir gjort.\n"
-"      --version               vise programversjon og avslutte.\n"
-
-#: makeinfo/makeinfo.c:319 texi2html/texi2html.pl:3847
-#, fuzzy, no-wrap
-msgid ""
-"Output format selection (default is to produce Info):\n"
-"      --docbook               output Docbook XML rather than Info.\n"
-"      --html                  output HTML rather than Info.\n"
-"      --xml                   output Texinfo XML rather than Info.\n"
-"      --plaintext             output plain text rather than Info.\n"
-msgstr ""
-"Valg av outputformat (standard er å produsere Info):\n"
-"      --docbook             generere DocBook XML i stedet for Info.\n"
-"      --html                generere HTML i stedet for Info.\n"
-"      --xml                 generere Texinfo XML i stedet for Info.\n"
-"      --plaintext           generere ren tekst i stedet for Info.\n"
-
-#: makeinfo/makeinfo.c:327
-#, fuzzy
-msgid ""
-"General output options:\n"
-"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-"                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
-"                                also, write to standard output by default.\n"
-"      --no-split              suppress the splitting of Info or HTML "
-"output,\n"
-"                                generate only one output file.\n"
-"      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
-msgstr ""
-"Generelle outputvalg:\n"
-"  -E, --macro-expand FIL    sende makroekspandert kilde til FIL,\n"
-"                              ignorerer enhver @setfilename.\n"
-"      --no-headers          undertrykke nodeseparatorer, Node:-linjer og "
-"menyer\n"
-"                              fra Info-output (og dermed produsere ren "
-"tekst)\n"
-"                              eller fra HTML (og dermed produsere kortere "
-"output);\n"
-"                              standard er å skrive til standard ut.\n"
-"      --no-split            undertrykke splitting av Info- eller HTML-"
-"output,\n"
-"                              generere bare en outputfil.\n"
-"      --number-sections     nummerere kapitler og avdelinger (section).\n"
-"  -o, --output=FIL          sende output til FIL (eller katalog dersom "
-"splittet HTML),\n"
-
-#: makeinfo/makeinfo.c:341 texi2html/texi2html.pl:3870 tp/texi2any.pl:539
-#, fuzzy, c-format, perl-format
-msgid ""
-"Options for Info and plain text:\n"
-"      --disable-encoding      do not output accented and special characters\n"
-"                                in Info output based on @documentencoding.\n"
-"      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default "
-"%d).\n"
-"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
-"                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
-"%d).\n"
-"                                If VAL is `none', do not indent; if VAL is\n"
-"                                `asis', preserve existing indentation.\n"
-"      --split-size=NUM        split Info files at size NUM (default %d).\n"
-msgstr ""
-"Valg for Infooutput og ren tekst:\n"
-"      --enable-encoding       skrive ut spesialtegn og tegn med aksenter i\n"
-"                                Infooutput basert på @documentencoding.\n"
-"      --fill-column=ANT       bryte Infolinjer ved ANT tegn (standard %d).\n"
-"      --footnote-style=STIL   generere fotnoter i Info i henhold til STIL:\n"
-"                                «separate» for å legge fotnotene i egne "
-"noder;\n"
-"                                «end» for å legge fotnotene i slutten av "
-"hver node\n"
-"                                  der fotnotene er definert (standard).\n"
-"      --paragraph-indent=ANT  rykke inn Infoavsnitt med ANT mellomrom "
-"(standard %d).\n"
-"                                Dersom ANT er «none» rykkes ikke avsnittene "
-"inn;\n"
-"                                Dersom ANT er «asis» bevares eksisterende "
-"innrykk.\n"
-"      --split-size=ANT        splitte Infofilene ved lengde ANT (standard "
-"%d).\n"
-
-#: makeinfo/makeinfo.c:359
-#, fuzzy
-msgid ""
-"Options for HTML:\n"
-"      --css-include=FILE      include FILE in HTML <style> output;\n"
-"                                read stdin if FILE is -.\n"
-"      --css-ref=URL           generate reference to a CSS file.\n"
-"      --internal-links=FILE   produce list of internal links in FILE.\n"
-"      --transliterate-file-names\n"
-"                              produce file names in ASCII transliteration.\n"
-msgstr ""
-"Valg for HTML:\n"
-"      --css-include=FIL         inkluder FIL i HTML <style>-taggen;\n"
-"                                  les stdin dersom FIL er -.\n"
-
-#: makeinfo/makeinfo.c:369
-#, fuzzy, c-format
-msgid ""
-"Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default "
-"%d).\n"
-"                                If VAL is 0, ignorable whitespace is "
-"dropped.\n"
-msgstr ""
-"Valg for XML og DocBook:\n"
-"      --output-index=ANT         innrykk XML-elementer med ANT mellomrom "
-"(standard %d).\n"
-"                                  Dersom ANT er 0, blir ignorerbart tomrom "
-"ikke brukt.\n"
-
-#: makeinfo/makeinfo.c:376
-msgid ""
-"Input file options:\n"
-"      --commands-in-node-names  allow @ commands in node names.\n"
-"  -D VAR                        define the variable VAR, as with @set.\n"
-"  -I DIR                        append DIR to the @include search path.\n"
-"  -P DIR                        prepend DIR to the @include search path.\n"
-"  -U VAR                        undefine the variable VAR, as with @clear.\n"
-msgstr ""
-"Valg for inputfil:\n"
-"      --commands-in-node-names   tillate @-kommandoer i nodenavn.\n"
-"  -D VAR                         definer variabelen VAR, som om @set "
-"brukes.\n"
-"  -I KAT                         legg til KAT på slutten av @include-"
-"søkestien.\n"
-"  -P KAT                         legg til KAT på starten av @include-"
-"søkestien.\n"
-"  -U VAR                         udefiner variabelen VAR, som om @clear "
-"brukes.\n"
-
-#: makeinfo/makeinfo.c:385 texi2html/texi2html.pl:3912
-msgid ""
-"Conditional processing in input:\n"
-"  --ifdocbook       process @ifdocbook and @docbook even if\n"
-"                      not generating Docbook.\n"
-"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
-"  --ifinfo          process @ifinfo even if not generating Info.\n"
-"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
-"  --iftex           process @iftex and @tex; implies --no-split.\n"
-"  --ifxml           process @ifxml and @xml.\n"
-"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
-"  --no-ifhtml       do not process @ifhtml and @html text.\n"
-"  --no-ifinfo       do not process @ifinfo text.\n"
-"  --no-ifplaintext  do not process @ifplaintext text.\n"
-"  --no-iftex        do not process @iftex and @tex text.\n"
-"  --no-ifxml        do not process @ifxml and @xml text.\n"
-"\n"
-"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
-msgstr ""
-"Betinget behandling av input:\n"
-"  --ifdocbook        behandle @ifdocbook og @docbook selv om\n"
-"                       DocBook ikke skal genereres.\n"
-"  --ifhtml           behandle @ifhtml og @html selv om HTML ikke skal "
-"genereres.\n"
-"  --ifinfo           behandle @ifinfo selv når info ikke skal genereres.\n"
-"  --ifplaintext      behandle @ifplaintext selv om ren tekst ikke skal "
-"genereres.\n"
-"  --iftex            behandle @iftex og @tex; innebærer --no-split.\n"
-"  --ifxml            behandle @ifxml og @xml.\n"
-"  --no-ifdocbook     ikke behandle @ifdocbook og @docbook.\n"
-"  --no-ifhtml        ikke behandle @ifhtml og @html.\n"
-"  --no-ifinfo        ikke behandle @ifinfo.\n"
-"  --no-ifplaintext   ikke behandle @ifplaintext.\n"
-"  --no-iftex         ikke behandle @iftex og @tex.\n"
-"  --no-ifxml         ikke behandle @ifxml og @xml.\n"
-
-#: makeinfo/makeinfo.c:404 texi2html/texi2html.pl:3929 tp/texi2any.pl:597
-msgid ""
-"  The defaults for the @if... conditionals depend on the output format:\n"
-"  if generating HTML, --ifhtml is on and the others are off;\n"
-"  if generating Info, --ifinfo is on and the others are off;\n"
-"  if generating plain text, --ifplaintext is on and the others are off;\n"
-"  if generating XML, --ifxml is on and the others are off.\n"
-msgstr ""
-"  Standardverdiene for @if...-betingelsene avhenger av outputformatet:\n"
-"  dersom HTML genereres er --ifhtml påslått og de andre av;\n"
-"  dersom Info genereres er --ifinfo påslått og de andre av;\n"
-"  dersom ren tekst genereres er --ifplaintext påslått og de andre av;\n"
-"  dersom XML genereres er --ifxml påslått og de andre av.\n"
-
-#: makeinfo/makeinfo.c:412 texi2html/texi2html.pl:3935 tp/texi2any.pl:603
-#, fuzzy
-msgid ""
-"Examples:\n"
-"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
-"  makeinfo --html foo.texi               write HTML to @setfilename\n"
-"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
-"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard "
-"output\n"
-"\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
-"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
-"  makeinfo --no-split foo.texi           write one Info file however big\n"
-msgstr ""
-"Eksempler:\n"
-"  makeinfo foo.texi                     skrive Info til foos @setfilename\n"
-"  makeinfo --html foo.texi              skrive HTML til @setfilename\n"
-"  makeinfo --xml foo.texi               skrive Texinfo XML til @setfilename\n"
-"  makeinfo --docbook foo.texi           skrive Docbook XML til @setfilename\n"
-"  makeinfo --no-headers foo.texi        skrive ren tekst til standard ut\n"
-"\n"
-"  makeinfo --html --no-headers foo.texi skrive HTML uten nodelinjer\n"
-"  makeinfo --number-sections foo.texi   skrive Info med nummererte avsnitt\n"
-"  makeinfo --no-split foo.texi          skrive en Infofil uansett størrelse\n"
-
-#: makeinfo/makeinfo.c:572 texi2html/texi2html.pl:4056 tp/texi2any.pl:818
-#, c-format, perl-format
-msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
-msgstr "%s: Ignorerer ugjenkjennelig TEXINFO_OUTPUT_FORMAT-verdi «%s».\n"
-
-#: makeinfo/makeinfo.c:620 makeinfo/makeinfo.c:646 makeinfo/makeinfo.c:670
-#: makeinfo/makeinfo.c:730
-#, c-format
-msgid "%s: %s arg must be numeric, not `%s'.\n"
-msgstr "%s: %s arg må være numerisk, ikke «%s».\n"
-
-#: makeinfo/makeinfo.c:633
-#, c-format
-msgid "%s: could not open macro expansion output `%s'"
-msgstr "%s: kunne ikke åpne makroekspansjonoutput «%s»"
-
-#: makeinfo/makeinfo.c:638
-#, c-format
-msgid "%s: ignoring second macro expansion output `%s'.\n"
-msgstr "%s: ignorerer sekundær makroekspansjonoutpur «%s».\n"
-
-#: makeinfo/makeinfo.c:683
-#, fuzzy, c-format
-msgid "%s: could not open internal links output `%s'"
-msgstr "%s: kunne ikke åpne makroekspansjonoutput «%s»"
-
-#: makeinfo/makeinfo.c:688
-#, fuzzy, c-format
-msgid "%s: ignoring second internal links output `%s'.\n"
-msgstr "%s: ignorerer sekundær makroekspansjonoutpur «%s».\n"
-
-#: makeinfo/makeinfo.c:701 texi2html/texi2html.pl:2625 tp/texi2any.pl:731
-#, c-format, perl-format
-msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
-
-#: makeinfo/makeinfo.c:719 texi2html/texi2html.pl:2569 tp/texi2any.pl:647
-#, c-format, perl-format
-msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
-
-#: makeinfo/makeinfo.c:794 texi2html/texi2html.pl:17006 tp/texi2any.pl:867
-#, c-format, perl-format
-msgid "%s: missing file argument.\n"
-msgstr "%s: mangler filargument.\n"
-
-#: makeinfo/makeinfo.c:991 makeinfo/makeinfo.c:4080
-#, c-format
-msgid "Multiline command %c%s used improperly"
-msgstr "Flerlinjekommandoen %c%s brukes ikke riktig"
-
-#: makeinfo/makeinfo.c:994
-#, c-format
-msgid "Expected `%s'"
-msgstr "Forventet «%s»"
-
-#: makeinfo/makeinfo.c:1471 texi2html/texi2html.pl:4755
-#, c-format, perl-format
-msgid "Can't create directory `%s': %s"
-msgstr "Kan ikke opprette katalogen «%s»: %s"
-
-#: makeinfo/makeinfo.c:1517
-#, c-format
-msgid "No `%s' found in `%s'"
-msgstr "Ingen «%s» funnet i «%s»"
-
-#: makeinfo/makeinfo.c:1597
-#, c-format
-msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr ""
-"%s: Hopper over makroekspansjon til stdout siden Info-output også sendes "
-"dit.\n"
-
-#: makeinfo/makeinfo.c:1627
-#, c-format
-msgid "Making %s file `%s' from `%s'.\n"
-msgstr "Lager %s-filen «%s» fra «%s».\n"
-
-#: makeinfo/makeinfo.c:1694
-#, c-format
-msgid ""
-"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: Fjerner makroutskriftsfilen «%s» på grunn av feil; bruk --force for å "
-"bevare.\n"
-
-#: makeinfo/makeinfo.c:1749 texi2html/texi2html.pl:9599
-#, c-format, perl-format
-msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å "
-"bevare.\n"
-
-#: makeinfo/makeinfo.c:1768
-#, fuzzy, c-format
-msgid ""
-"%s: Removing internal links output file `%s' due to errors; use --force to "
-"preserve.\n"
-msgstr ""
-"%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å "
-"bevare.\n"
-
-#: makeinfo/makeinfo.c:2063 texi2html/texi2html.pl:15748
-#: tp/Texinfo/Parser.pm:4181
-#, c-format, perl-format
-msgid "Unknown command `%s'"
-msgstr "Ukjent kommando «%s»"
-
-#: makeinfo/makeinfo.c:2085 texi2html/texi2html.pl:14751
-#: tp/Texinfo/Parser.pm:3436
-#, c-format, perl-format
-msgid "Use braces to give a command as an argument to @%s"
-msgstr "Bruk krøllparenteser for å gi en kommando som et argument til @%s"
-
-#: makeinfo/makeinfo.c:2344 texi2html/texi2html.pl:15740
-#, c-format, perl-format
-msgid "%c%s expected braces"
-msgstr "%c%s forventet krøllparanteser"
-
-#: makeinfo/makeinfo.c:2357
-#, c-format
-msgid "Unmatched }"
-msgstr "Umatchet }"
-
-#: makeinfo/makeinfo.c:2405
-msgid "NO_NAME!"
-msgstr "INTET_NAVN!"
-
-#: makeinfo/makeinfo.c:2426 texi2html/texi2html.pl:16039
-#: texi2html/texi2html.pl:16067 tp/Texinfo/Parser.pm:1054
-#, c-format, perl-format
-msgid "%c%s missing close brace"
-msgstr "%c%s mangler avsluttende krøllparentes"
-
-#: makeinfo/makeinfo.c:3408
-#, c-format
-msgid "@image file `%s' (for HTML) not readable: %s"
-msgstr "@image-fil «%s» (for HTML) er uleselig: %s"
-
-#: makeinfo/makeinfo.c:3414
-#, c-format
-msgid "No such file `%s'"
-msgstr "«%s» er ingen fil"
-
-#: makeinfo/makeinfo.c:3550
-#, c-format
-msgid "@image file `%s' (for text) unreadable: %s"
-msgstr "@image-fil «%s» (for tekstformat) er uleselig: %s"
-
-#: makeinfo/makeinfo.c:3559 tp/Texinfo/Parser.pm:4354
-#, c-format
-msgid "@image missing filename argument"
-msgstr "@image mangler filnavn"
-
-#: makeinfo/makeinfo.c:3777 texi2html/texi2html.pl:13010
-#: tp/Texinfo/Parser.pm:3614
-#, c-format, perl-format
-msgid "undefined flag: %s"
-msgstr "udefinert flagg: %s"
-
-#: makeinfo/makeinfo.c:3778
-#, c-format
-msgid "{No value for `%s'}"
-msgstr "{Ingen verdi for «%s»}"
-
-#: makeinfo/makeinfo.c:3830 texi2html/texi2html.pl:5802
-#: texi2html/texi2html.pl:5813 texi2html/texi2html.pl:10386
-#: tp/Texinfo/Parser.pm:981 tp/Texinfo/Parser.pm:3986
-#: tp/Texinfo/Parser.pm:4534 tp/Texinfo/Parser.pm:4543
-#: tp/Texinfo/Parser.pm:4553
-#, c-format, perl-format
-msgid "%c%s requires a name"
-msgstr "%c%s krever et navn"
-
-#: makeinfo/makeinfo.c:3936 texi2html/texi2html.pl:15826
-#, c-format, perl-format
-msgid "Reached eof before matching @end %s"
-msgstr "Traff slutt-på-filen før matchende @end %s"
-
-#: makeinfo/makeinfo.c:4172
-#, c-format
-msgid "`%.40s...' is too long for expansion; not expanded"
-msgstr "`%.40s...' er for lang for ekspansjon; ikke ekspandert"
-
-#: makeinfo/multi.c:116
-#, c-format
-msgid "Missing } in @multitable template"
-msgstr "Manglende «}» i @multitable-mal"
-
-#: makeinfo/multi.c:260 texi2html/texi2html.pl:10760
-#, c-format, perl-format
-msgid "ignoring stray text `%s' after @multitable"
-msgstr "ignorerer løs tekst «%s» etter @multitable"
-
-#: makeinfo/multi.c:400 texi2html/texi2html.pl:15004 tp/Texinfo/Parser.pm:3835
-#, c-format, perl-format
-msgid "Too many columns in multitable item (max %d)"
-msgstr "For mange kolonner i multitabellrad (maks %d)"
-
-#: makeinfo/multi.c:563
-#, c-format
-msgid "[unexpected] cannot select column #%d in multitable"
-msgstr "[uforventet] kan ikke velge kolonne #%d i multitabell"
-
-#: makeinfo/multi.c:592 texi2html/texi2html.pl:14993 tp/Texinfo/Parser.pm:3868
-#, c-format
-msgid "ignoring @tab outside of multitable"
-msgstr "ignorerer @tab utenfor multitabell"
-
-#: makeinfo/multi.c:640
-#, c-format
-msgid "** Multicolumn output from last row:\n"
-msgstr "** Multikolonne-output fra siste rad:\n"
-
-#: makeinfo/multi.c:643
-#, c-format
-msgid "* column #%d: output = %s\n"
-msgstr "* kolonne #%d output = %s\n"
-
-#: makeinfo/node.c:279
-#, c-format
-msgid "Node `%s' previously defined at line %d"
-msgstr "Noden «%s» er tidligere definert ved linje %d"
-
-#: makeinfo/node.c:647
-#, c-format
-msgid "Formatting node %s...\n"
-msgstr "Skriver noden %s...\n"
-
-#: makeinfo/node.c:714
-#, c-format
-msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
-msgstr "Noden «%s» krever en inndelingskommando (f.eks. %c%s)"
-
-#: makeinfo/node.c:878
-#, c-format
-msgid "No node name specified for `%c%s' command"
-msgstr "Ingen nodenavn spesifisert for «%c%s»-kommandoen"
-
-#: makeinfo/node.c:919 makeinfo/node.c:1163
-#, c-format
-msgid "Anchor `%s' and node `%s' map to the same file name"
-msgstr "Ankeret «%s» og noden «%s» blir knyttet til det samme filnavnet"
-
-#: makeinfo/node.c:922
-#, c-format
-msgid "This @anchor command ignored; references to it will not work"
-msgstr ""
-"Denne @anchor-kommandoen ble ignorert, referanser til den vil ikke virke"
-
-#: makeinfo/node.c:924 makeinfo/node.c:1166
-#, c-format
-msgid "Rename this anchor or use the `--no-split' option"
-msgstr "Omdøpe dette ankeret eller bruk «--no-split»-valget"
-
-#: makeinfo/node.c:954
-#, c-format
-msgid "Unexpected string at end of split-HTML file `%s'"
-msgstr "Uforventet streng ved slutten av splitt-HTML-fila «%s»"
-
-#: makeinfo/node.c:1160
-#, c-format
-msgid "Anchors `%s' and `%s' map to the same file name"
-msgstr "Ankrene «%s» og «%s» peker til det samme filnavnet"
-
-#: makeinfo/node.c:1165
-#, c-format
-msgid "@anchor command ignored; references to it will not work"
-msgstr "@anchor-kommando ignorert; referanser til den vil ikke virke"
-
-#: makeinfo/node.c:1362
-#, c-format
-msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr ""
-"%s referanse til ikke-eksisterende node «%s» (kanskje ugyldig inndeling?)"
-
-#: makeinfo/node.c:1462
-#, c-format
-msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr ""
-"Nestefeltet til noden «%s» er ikke pekt på (kanskje ugyldig inndeling?)"
-
-#: makeinfo/node.c:1465
-#, c-format
-msgid "This node (%s) has the bad Prev"
-msgstr "Denne noden (%s) har den dårlige forrigepekeren"
-
-#: makeinfo/node.c:1520
-#, c-format
-msgid "Prev field of node `%s' not pointed to"
-msgstr "Forrigefeltet til noden «%s» er ikke pekt på"
-
-#: makeinfo/node.c:1524
-#, c-format
-msgid "This node (%s) has the bad Next"
-msgstr "Denne noden (%s) har den dårlige nestepekeren"
-
-#: makeinfo/node.c:1536
-#, c-format
-msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
-msgstr "`%s' har ingen Up-felt (kanskje feil inndeling?)"
-
-#: makeinfo/node.c:1605 texi2html/texi2html.pl:7350
-#: tp/Texinfo/Structuring.pm:542
-#, c-format, perl-format
-msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "Noden «%s» mangler et menypunkt for «%s» selv om den er dens oppmål"
-
-#: makeinfo/node.c:1637 texi2html/texi2html.pl:7296
-#: tp/Texinfo/Structuring.pm:424
-#, c-format, perl-format
-msgid "unreferenced node `%s'"
-msgstr "ureferert node «%s»"
-
-#: makeinfo/node.c:1727
-#, c-format
-msgid "Removing %s\n"
-msgstr "Fjerner %s\n"
-
-#: makeinfo/node.c:1731
-#, c-format
-msgid "Can't remove file `%s': %s"
-msgstr "Kan ikke slette filen «%s»: %s"
-
-#: makeinfo/sectioning.c:467
-#, c-format
-msgid "Internal error (search_sectioning) `%s'!"
-msgstr "Intern feil (search_sectioning) «%s»!"
-
-#: makeinfo/sectioning.c:563
-#, c-format
-msgid "Internal error (search_sectioning) \"%s\"!"
-msgstr "Intern feil (search_sectioning) «%s»!"
-
-#: makeinfo/sectioning.c:624
-#, c-format
-msgid "%c%s is obsolete; use %c%s instead"
-msgstr "%c%s er avlegs; bruk %c%s i stedet"
-
-#: makeinfo/sectioning.c:640
-#, c-format
-msgid "Node with %ctop as a section already exists"
-msgstr "Node med %ctop som en seksjon eksisterer allerede"
-
-#: makeinfo/sectioning.c:648
-#, c-format
-msgid "Here is the %ctop node"
-msgstr "Her er %ctop-noden"
-
-#: makeinfo/sectioning.c:664
-#, c-format
-msgid "%ctop used before %cnode, defaulting to %s"
-msgstr "%ctop brukt før %cnode, benytter %s"
-
-#: makeinfo/xml.c:1655 texi2html/formats/docbook.pm:1021
-#: texi2html/formats/info.pm:2996 texi2html/formats/plaintext.pm:151
-#: tp/Texinfo/Convert/Plaintext.pm:1014
-#, c-format, perl-format
-msgid "@image file `%s' unreadable: %s"
-msgstr "@image-fil «%s» er uleselig: %s"
-
-#: makeinfo/xml.c:2000
-#, c-format
-msgid ""
-"@headitem as the last item of @multitable produces invalid Docbook documents"
-msgstr ""
-"@headitem som siste punkt i en @multitable fører til uyldige DocBook-"
-"dokumenter"
-
-#: makeinfo/xml.c:2136
-msgid "of"
-msgstr "av"
-
-#: makeinfo/xml.c:2141
-msgid "on"
-msgstr "på"
-
-#: makeinfo/xref.c:127
-#, c-format
-msgid "First argument to cross-reference may not be empty"
-msgstr ""
-
-#: makeinfo/xref.c:252
-#, c-format
-msgid "Empty file name for HTML cross reference in `%s'"
-msgstr ""
-
-#: makeinfo/xref.c:387
-#, c-format
-msgid "End of file reached while looking for `.' or `,'"
-msgstr ""
-
-#: makeinfo/xref.c:390
-#, c-format
-msgid "`.' or `,' must follow @%s, not `%c'"
-msgstr ""
-
-#: makeinfo/xref.c:392
-#, fuzzy, c-format
-msgid "for cross-references in parentheses, use @pxref"
-msgstr "Ingen kryssreferanser i denne noden."
-
-#: makeinfo/xref.c:435
-#, c-format
-msgid "First argument to @inforef may not be empty"
-msgstr ""
-
 #: util/texindex.c:223
 msgid "display this help and exit"
 msgstr "vise denne hjelpen og avslutte"
@@ -3268,795 +2108,35 @@ msgstr "Ingen sidenummer i %s"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "oppføring %s følger en oppføring med et annet navn"
 
-#: texi2html/texi2html.pl:2495
-#, fuzzy, perl-format
-msgid "%s is not a valid language code"
-msgstr "%s er ikke en gyldig ISO 639-språkkode"
-
-#: texi2html/texi2html.pl:2499
-#, fuzzy, perl-format
-msgid "%s is not a valid region code"
-msgstr "%s er ikke en gyldig ISO 639-språkkode"
-
-#: texi2html/texi2html.pl:2574 tp/Texinfo/Parser.pm:4772
-#, fuzzy, perl-format
-msgid "@%s arg must be `separate' or `end', not `%s'"
-msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
-
-#: texi2html/texi2html.pl:2629 tp/Texinfo/Parser.pm:4793
-#: tp/Texinfo/Parser.pm:4796
-#, fuzzy, perl-format
-msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
-msgstr ""
-"%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
-
-#: texi2html/texi2html.pl:2666
-#, fuzzy, perl-format
-msgid "Encoding %s certainly poorly supported"
-msgstr "beklager, kodingen «%s» er ikke støttet"
-
-#: texi2html/texi2html.pl:2790 texi2html/texi2html.pl:2794
-msgid "translation"
-msgstr ""
-
-#: texi2html/texi2html.pl:3833
-#, fuzzy, perl-format
-msgid ""
-"General options:\n"
-"      --error-limit=NUM       quit after NUM errors (default %d).\n"
-"      --document-language=STR locale to use in translating Texinfo keywords\n"
-"                                for the output document (default C).\n"
-"      --force                 preserve output even if errors.\n"
-"      --help                  display this help and exit.\n"
-"      --no-validate           suppress node cross-reference validation.\n"
-"      --no-warn               suppress warnings (but not errors).\n"
-"      --conf-dir=DIR          search also for initialization files in DIR.\n"
-"      --init-file=FILE        load FILE to modify the default behaviour.\n"
-"      --set-init-variable VAR=VAL  set configuration variable VAR to VAL.\n"
-"  -v, --verbose               explain what is being done.\n"
-"      --version               display version information and exit.\n"
-msgstr ""
-"Generelle valg:\n"
-"      --error-limit=ANT       avbryte etter ANT feil (standard %d).\n"
-"      --force                 bevare output selv med feil.\n"
-"      --help                  vise denne hjelpen og avslutte.\n"
-"      --no-validate           undertrykke sjekking av kryssreferanser.\n"
-"      --no-warn               undertrykke advarsler (men ikke feil).\n"
-"      --reference-limit=ANT   advare om på det meste ANT referanser "
-"(standard %d).\n"
-"  -v, --verbose               forklare hva som blir gjort.\n"
-"      --version               vise programversjon og avslutte.\n"
-
-#: texi2html/texi2html.pl:3853
-#, fuzzy
-msgid ""
-"General output options:\n"
-"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-"                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
-"                                also, write to standard output by default "
-"if\n"
-"                                producing Info.\n"
-"      --split=SPLIT           split at SPLIT, where SPLIT may be chapter, \n"
-"                                section or node if output supports "
-"splitting.\n"
-"      --no-split              suppress the splitting of Info or HTML "
-"output,\n"
-"                                generate only one output file.\n"
-"      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (or directory if split).\n"
-"                                If not split and FILE is a directory, put "
-"the\n"
-"                                resulting files in FILE.\n"
-msgstr ""
-"Generelle outputvalg:\n"
-"  -E, --macro-expand FIL    sende makroekspandert kilde til FIL,\n"
-"                              ignorerer enhver @setfilename.\n"
-"      --no-headers          undertrykke nodeseparatorer, Node:-linjer og "
-"menyer\n"
-"                              fra Info-output (og dermed produsere ren "
-"tekst)\n"
-"                              eller fra HTML (og dermed produsere kortere "
-"output);\n"
-"                              standard er å skrive til standard ut.\n"
-"      --no-split            undertrykke splitting av Info- eller HTML-"
-"output,\n"
-"                              generere bare en outputfil.\n"
-"      --number-sections     nummerere kapitler og avdelinger (section).\n"
-"  -o, --output=FIL          sende output til FIL (eller katalog dersom "
-"splittet HTML),\n"
-
-#: texi2html/texi2html.pl:3885
-#, fuzzy
-msgid ""
-"Options for HTML:\n"
-"      --css-include=FILE      include FILE in HTML <style> output;\n"
-"                                read stdin if FILE is -.\n"
-"      --css-ref=URL           generate reference to a CSS file.\n"
-"      --internal-links=FILE   produce list of internal links in FILE.\n"
-"      --transliterate-file-names\n"
-"                              produce file names in ASCII transliteration.\n"
-"      --node-files            produce redirection files for nodes and \n"
-"                                anchors. Default is set only if split.\n"
-msgstr ""
-"Valg for HTML:\n"
-"      --css-include=FIL         inkluder FIL i HTML <style>-taggen;\n"
-"                                  les stdin dersom FIL er -.\n"
-
-#: texi2html/texi2html.pl:3895 tp/texi2any.pl:567
-msgid ""
-"Options for XML and Docbook:\n"
-"      --output-indent=VAL     does nothing, retained for compatibility.\n"
-msgstr ""
-
-#: texi2html/texi2html.pl:3905 tp/texi2any.pl:573
-#, fuzzy
-msgid ""
-"Input file options:\n"
-"      --commands-in-node-names  does nothing, retained for compatibility.\n"
-"  -D VAR                        define the variable VAR, as with @set.\n"
-"  -I DIR                        append DIR to the @include search path.\n"
-"  -P DIR                        prepend DIR to the @include search path.\n"
-"  -U VAR                        undefine the variable VAR, as with @clear.\n"
-msgstr ""
-"Valg for inputfil:\n"
-"      --commands-in-node-names   tillate @-kommandoer i nodenavn.\n"
-"  -D VAR                         definer variabelen VAR, som om @set "
-"brukes.\n"
-"  -I KAT                         legg til KAT på slutten av @include-"
-"søkestien.\n"
-"  -P KAT                         legg til KAT på starten av @include-"
-"søkestien.\n"
-"  -U VAR                         udefiner variabelen VAR, som om @clear "
-"brukes.\n"
-
-#: texi2html/texi2html.pl:4090 tp/texi2any.pl:831
-#, perl-format
-msgid "when generating %s, only one input FILE may be specified with -o"
-msgstr ""
-
-#: texi2html/texi2html.pl:4499 tp/Texinfo/Common.pm:1043
-msgid "Missing type"
-msgstr ""
-
-#: texi2html/texi2html.pl:4504 tp/Texinfo/Common.pm:1046
-#, fuzzy, perl-format
-msgid "Unrecognized type: %s"
-msgstr "%s: ukjent valg «--%s»\n"
-
-#: texi2html/texi2html.pl:4578 tp/texi2any.pl:842
-#, perl-format
-msgid "Ignoring splitting for format %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:4674
-#, fuzzy, perl-format
-msgid "Cannot split output %s"
-msgstr "Kunne ikke opprette outputfila «%s»"
-
-#: texi2html/texi2html.pl:4749 tp/Texinfo/Convert/Converter.pm:416
-#, fuzzy, perl-format
-msgid "Can't create directories `%s' or `%s': %s"
-msgstr "Kan ikke opprette katalogen «%s»: %s"
-
-#: texi2html/texi2html.pl:4774
-msgid "current directory not writable"
-msgstr ""
-
-#: texi2html/texi2html.pl:4778
-#, fuzzy, perl-format
-msgid "%s not writable"
-msgstr "%s: tom fil"
-
-#: texi2html/texi2html.pl:5126
-#, fuzzy
-msgid " end of file"
-msgstr "Finne fil: "
-
-#: texi2html/texi2html.pl:5491 tp/Texinfo/Parser.pm:4461
-msgid "Superfluous arguments for node"
-msgstr ""
-
-#: texi2html/texi2html.pl:5499
-#, fuzzy, perl-format
-msgid "Node `%s' previously defined %s"
-msgstr "Noden «%s» er tidligere definert ved linje %d"
-
-#: texi2html/texi2html.pl:5504 texi2html/texi2html.pl:13289
-#: texi2html/texi2html.pl:13794 tp/Texinfo/Parser.pm:3024
-#: tp/Texinfo/Convert/HTML.pm:6225
-#, perl-format
-msgid "Syntax for an external node used for `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5630
-#, fuzzy, perl-format
-msgid "@%s requires an argument"
-msgstr "%c%s krever et navn"
-
-#: texi2html/texi2html.pl:5721 texi2html/texi2html.pl:15854
-#: tp/Texinfo/Parser.pm:4498
-#, fuzzy, perl-format
-msgid "Expected @end %s"
-msgstr "Forventet «%s»"
-
-#: texi2html/texi2html.pl:5770
-#, perl-format
-msgid "Translations for `%s' not found. Reverting to `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5825 tp/Texinfo/Parser.pm:4564
-#, fuzzy, perl-format
-msgid "@%s should only accept a @-command as argument, not `%s'"
-msgstr "Bruk krøllparenteser for å gi en kommando som et argument til @%s"
-
-#: texi2html/texi2html.pl:5863 tp/Texinfo/Parser.pm:4802
-#, fuzzy, perl-format
-msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
-msgstr ""
-"%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
-
-#: texi2html/texi2html.pl:5878 tp/Texinfo/Parser.pm:4810
-#, fuzzy, perl-format
-msgid "@exampleindent arg must be numeric/`asis', not `%s'"
-msgstr ""
-"%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
-
-#: texi2html/texi2html.pl:5900 tp/Texinfo/Parser.pm:4826
-#, perl-format
-msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5924 tp/Texinfo/Parser.pm:4832
-#, fuzzy, perl-format
-msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
-msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
-
-#: texi2html/texi2html.pl:5973
-#, perl-format
-msgid "Encoding %s is not a canonical texinfo encoding"
-msgstr ""
-
-#: texi2html/texi2html.pl:5992
-#, perl-format
-msgid "@%s arg must be an encoding"
-msgstr ""
-
-#: texi2html/texi2html.pl:6133 tp/Texinfo/Parser.pm:4700
-#, fuzzy, perl-format
-msgid "Unknown from index `%s' in @%s"
-msgstr "Ukjent indeks «%s»"
-
-#: texi2html/texi2html.pl:6135 tp/Texinfo/Parser.pm:4702
-#, fuzzy, perl-format
-msgid "Unknown to index name `%s' in @%s"
-msgstr "Ukjent indeks «%s»"
-
-#: texi2html/texi2html.pl:6170 tp/Texinfo/Parser.pm:4683
-#, perl-format
-msgid "Reserved index name %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:6200 tp/Texinfo/Parser.pm:4760
-#, fuzzy, perl-format
-msgid "@%s arg must be `top' or `bottom', not `%s'"
-msgstr "%s: %s arg må være numerisk, ikke «%s».\n"
-
-#: texi2html/texi2html.pl:6241 tp/Texinfo/Parser.pm:4778
-#, fuzzy, perl-format
-msgid "@%s arg must be `on', `off' or `odd', not `%s'"
-msgstr "%s: %s arg må være numerisk, ikke «%s».\n"
-
-#: texi2html/texi2html.pl:6389 texi2html/texi2html.pl:16980
-#: tp/Texinfo/Common.pm:832 tp/Texinfo/Common.pm:1109
-#, fuzzy, perl-format
-msgid "Cannot read %s: %s"
-msgstr "Kan ikke opprette katalogen «%s»: %s"
-
-#: texi2html/texi2html.pl:6412 texi2html/texi2html.pl:13217
-#: tp/Texinfo/Common.pm:847 tp/Texinfo/Parser.pm:2716
-#, fuzzy, perl-format
-msgid "@%s: Cannot find %s"
-msgstr "Kan ikke finne «%s»."
-
-#: texi2html/texi2html.pl:6592 tp/Texinfo/Parser.pm:3008
-#, perl-format
-msgid "Empty node name after expansion `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:7225 tp/Texinfo/Structuring.pm:523
-#, fuzzy, perl-format
-msgid "%s reference to nonexistent `%s'"
-msgstr "ureferert node «%s»"
-
-#: texi2html/texi2html.pl:7368 tp/Texinfo/Structuring.pm:550
-#, perl-format
-msgid "For `%s', up in menu `%s' and up `%s' don't match"
-msgstr ""
-
-#: texi2html/texi2html.pl:7421 tp/Texinfo/Structuring.pm:455
-#, perl-format
-msgid "No node following `%s' in menu, but `%s' follows in sectioning"
-msgstr ""
-
-#: texi2html/texi2html.pl:7422 tp/Texinfo/Structuring.pm:461
-#, perl-format
-msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr ""
-
-#: texi2html/texi2html.pl:8925
-#, perl-format
-msgid "@%s after the first element"
-msgstr ""
-
-#: texi2html/texi2html.pl:9391 tp/Texinfo/Convert/HTML.pm:6157
-#, fuzzy, perl-format
-msgid "File empty for renamed node `%s'"
-msgstr "ureferert node «%s»"
-
-#: texi2html/texi2html.pl:9395 tp/Texinfo/Convert/HTML.pm:6168
-#, perl-format
-msgid "Node to be renamed as, `%s' not found"
-msgstr ""
-
-#: texi2html/texi2html.pl:9399
-#, fuzzy, perl-format
-msgid "Node `%s' that is to be renamed exists "
-msgstr "Indeksen «%s» eksisterer allerede"
-
-#: texi2html/texi2html.pl:9603
-#, fuzzy, perl-format
-msgid "%s: Removing output files due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å "
-"bevare.\n"
-
-#: texi2html/texi2html.pl:9742 tp/Texinfo/Report.pm:91
-#, fuzzy, perl-format
-msgid "%s:%d: warning: %s (possibly involving @%s)\n"
-msgstr "%s:%d: advarsel: "
-
-#: texi2html/texi2html.pl:9746 tp/Texinfo/Report.pm:94
-#, fuzzy, perl-format
-msgid "%s:%d: warning: %s\n"
-msgstr "%s:%d: advarsel: "
-
-#: texi2html/texi2html.pl:9779
-#, perl-format
-msgid "(in %s l. %d possibly involving @%s)"
-msgstr ""
-
-#: texi2html/texi2html.pl:9783
-#, perl-format
-msgid "(l. %d possibly involving @%s)"
-msgstr ""
-
-#: texi2html/texi2html.pl:9788
-#, fuzzy, perl-format
-msgid "(in %s l. %d)"
-msgstr "(linje %*d)"
-
-#: texi2html/texi2html.pl:9792
-#, fuzzy, perl-format
-msgid "(l. %d)"
-msgstr "(linje %*d)"
-
-#: texi2html/texi2html.pl:9949
-#, perl-format
-msgid "Too much '}' in @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:9959
-#, fuzzy, perl-format
-msgid "Missing `}' on @%s line"
-msgstr "Manglende «}» i @def-arg"
-
-#: texi2html/texi2html.pl:10109
-#, fuzzy, perl-format
-msgid "Anchor `%s' ignored in %s expanded more than once"
-msgstr "Ankeret «%s» og noden «%s» blir knyttet til det samme filnavnet"
-
-#: texi2html/texi2html.pl:10460 tp/Texinfo/Parser.pm:4088
-#, fuzzy, perl-format
-msgid "Region %s inside region %s is not allowed"
-msgstr "Fotnoter i fotnoter er ikke tillatt"
-
-#: texi2html/texi2html.pl:10739 tp/Texinfo/Parser.pm:4666
-#, perl-format
-msgid "column fraction not a number: %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:10782
-#, perl-format
-msgid "Too many %s closed"
-msgstr ""
-
-#: texi2html/texi2html.pl:10852 texi2html/formats/info.pm:899
-#: tp/Texinfo/Parser.pm:1408
-#, perl-format
-msgid "@%s has text but no @item"
-msgstr ""
-
-#: texi2html/texi2html.pl:11012
-#, fuzzy, perl-format
-msgid "Unknown format %s"
-msgstr "Ukjent kommando «%s»"
-
-#: texi2html/texi2html.pl:11228 texi2html/texi2html.pl:11666
-#, fuzzy, perl-format
-msgid "@%s (argument nr %d)"
-msgstr "Ugyldig argument til @%s"
-
-#: texi2html/texi2html.pl:11312
-#, perl-format
-msgid "prepended for @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:11328 tp/Texinfo/Parser.pm:2467
-#, fuzzy
-msgid "empty multitable"
-msgstr "%s: tom fil"
-
-#: texi2html/texi2html.pl:11338
-#, perl-format
-msgid "@columnfraction (argument nr %d)"
-msgstr ""
-
-#: texi2html/texi2html.pl:11526 texi2html/texi2html.pl:11540
-msgid "node name in menu"
-msgstr ""
-
-#: texi2html/texi2html.pl:11527
-msgid "normalized node name in menu"
-msgstr ""
-
-#: texi2html/texi2html.pl:11533
-msgid "menu entry name"
-msgstr ""
-
-#: texi2html/texi2html.pl:11568 tp/Texinfo/Structuring.pm:383
-#, fuzzy, perl-format
-msgid "Menu reference to nonexistent node `%s'"
-msgstr "ureferert node «%s»"
-
-#: texi2html/texi2html.pl:11642
-#, fuzzy, perl-format
-msgid "First argument to @%s may not be empty"
-msgstr "argumentene til @%s ble ignorert"
-
-#: texi2html/texi2html.pl:11779
-#, perl-format
-msgid "@%s not in text (in anchor, node, section...)"
-msgstr ""
-
-#: texi2html/texi2html.pl:11791 texi2html/texi2html.pl:14562
-msgid "@listoffloats @float type"
-msgstr ""
-
-#: texi2html/texi2html.pl:11810 tp/Texinfo/Structuring.pm:1025
-#, fuzzy, perl-format
-msgid "@%s reference to nonexistent node `%s'"
-msgstr ""
-"%s referanse til ikke-eksisterende node «%s» (kanskje ugyldig inndeling?)"
-
-#: texi2html/texi2html.pl:11951
-msgid "@float style"
-msgstr ""
-
-#: texi2html/texi2html.pl:12083 texi2html/texi2html.pl:12084
-msgid "@image base name"
-msgstr ""
-
-#: texi2html/texi2html.pl:12093 texi2html/texi2html.pl:12094
-msgid "@image extension"
-msgstr ""
-
-#: texi2html/texi2html.pl:12101
-#, fuzzy
-msgid "@image file name"
-msgstr "@image-fil «%s» er uleselig: %s"
-
-#: texi2html/texi2html.pl:12123
-msgid "@image alt text"
-msgstr ""
-
-#: texi2html/texi2html.pl:12206 tp/Texinfo/Parser.pm:1731
-#, fuzzy, perl-format
-msgid "Macro `%s' called with too many args"
-msgstr "Makroen «%s» kalt på linje %d med for mange argumenter"
-
-#: texi2html/texi2html.pl:12230
-#, fuzzy, perl-format
-msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
-msgstr "\\ i makroekspansjon fulgt av «%s» istedet for parameternavn"
-
-#: texi2html/texi2html.pl:12425
-#, fuzzy, perl-format
-msgid "No index prefix found for @%s"
-msgstr "ingen innslag funnet for «%s»\n"
-
-#: texi2html/texi2html.pl:12907 texi2html/texi2html.pl:14692
-#, fuzzy, perl-format
-msgid "@%s not allowed in argument to @%s"
-msgstr "@item er ikke tillatt som argument til @itemize"
-
-#: texi2html/texi2html.pl:12969
-#, perl-format
-msgid "Macro definition without macro name: %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13022 tp/Texinfo/Parser.pm:3617
-msgid "Bad syntax for @value"
-msgstr ""
-
-#: texi2html/texi2html.pl:13059 tp/Texinfo/Parser.pm:3344
-#, perl-format
-msgid ""
-"@%s defined with zero or more than one argument should be invoked with {}"
-msgstr ""
-
-#: texi2html/texi2html.pl:13082 tp/Texinfo/Parser.pm:3283
-#, perl-format
-msgid "@%s without associated character"
-msgstr ""
-
-#: texi2html/texi2html.pl:13232
-#, fuzzy, perl-format
-msgid "@%s already set"
-msgstr "Indeksen «%s» eksisterer allerede"
-
-#: texi2html/texi2html.pl:13284
-#, fuzzy, perl-format
-msgid "Anchor `%s' previously defined %s"
-msgstr "makroen «%s» er tidligere definert"
-
-#: texi2html/texi2html.pl:13320
-#, fuzzy, perl-format
-msgid "No closing brace for specially handled command %s"
-msgstr "Ingen avsluttende krøllparentes for fotnoten «%s»"
-
-#: texi2html/texi2html.pl:13607 tp/Texinfo/Parser.pm:3624
-#, fuzzy, perl-format
-msgid "%c%s is obsolete."
-msgstr "%c%s er utgått"
-
-#: texi2html/texi2html.pl:13611 tp/Texinfo/Parser.pm:3627
-#, fuzzy, perl-format
-msgid "%c%s is obsolete; %s"
-msgstr "%c%s er utgått"
-
-#: texi2html/texi2html.pl:13632 tp/Texinfo/Parser.pm:4745
-#, perl-format
-msgid "Printindex before document beginning: @printindex %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13699
-#, perl-format
-msgid "ignored @%s already in an @%s entry"
-msgstr ""
-
-#: texi2html/texi2html.pl:13724 texi2html/texi2html.pl:13772
-#: tp/Texinfo/Parser.pm:4110
-#, fuzzy, perl-format
-msgid "@%s seen before first @node"
-msgstr "@menu sett før første @node, oppretter «Top»-noden"
-
-#: texi2html/texi2html.pl:13729 tp/Texinfo/Parser.pm:925
-#: tp/Texinfo/Structuring.pm:365
-#, perl-format
-msgid "Multiple @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13741
-#, perl-format
-msgid "@%s not allowed within %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13790
-#, fuzzy, perl-format
-msgid "Float label `%s' previously defined %s"
-msgstr "makroen «%s» er tidligere definert"
-
-#: texi2html/texi2html.pl:14109 texi2html/texi2html.pl:14110
-#: texi2html/texi2html.pl:14113
-msgid "new menu entry"
-msgstr ""
-
-#: texi2html/texi2html.pl:14243
-msgid "paragraph end"
-msgstr ""
-
-#: texi2html/texi2html.pl:14555
-msgid "@listoffloats type"
-msgstr ""
-
-#: texi2html/texi2html.pl:14747 tp/Texinfo/Parser.pm:3430
-#, perl-format
-msgid "Accent command `@%s' must not be followed by whitespace"
-msgstr ""
-
-#: texi2html/texi2html.pl:14769 tp/Texinfo/Parser.pm:3464
-#, fuzzy, perl-format
-msgid "@%s expected braces"
-msgstr "%c%s forventet krøllparanteser"
-
-#: texi2html/texi2html.pl:14960 tp/Texinfo/Parser.pm:3870
-#, perl-format
-msgid "@%s outside of table or list"
-msgstr ""
-
-#: texi2html/texi2html.pl:14978 tp/Texinfo/Parser.pm:3828
-#, fuzzy, perl-format
-msgid "@%s in empty multitable"
-msgstr "%s: tom fil"
-
-#: texi2html/texi2html.pl:15000
-#, fuzzy
-msgid "ignoring @tab in empty multitable"
-msgstr "ignorerer @tab utenfor multitabell"
-
-#: texi2html/texi2html.pl:15035
-msgid "@center should not appear in another format"
-msgstr ""
-
-#: texi2html/texi2html.pl:15417 tp/Texinfo/Parser.pm:3833
-msgid "@tab before @item"
-msgstr ""
-
-#: texi2html/texi2html.pl:15652 tp/Texinfo/Parser.pm:3446
-#: tp/Texinfo/Parser.pm:4363
-#, fuzzy, perl-format
-msgid "%c%s expects `i' or `j' as argument, not `%s'"
-msgstr "%c%s forventer «i» eller «j» som argument, ikke «%c»"
-
-#: texi2html/texi2html.pl:15704
-#, fuzzy, perl-format
-msgid "Unknown command with braces `@%s'"
-msgstr "Ukjent kommando «%s»"
-
-#: texi2html/texi2html.pl:15744
-#, fuzzy, perl-format
-msgid "Unexpected command `%s' here"
-msgstr "udefinert kommando: %s"
-
-#: texi2html/texi2html.pl:15839 tp/Texinfo/Parser.pm:1753
-#, fuzzy, perl-format
-msgid "@%s missing close brace"
-msgstr "%c%s mangler avsluttende krøllparentes"
-
-#: texi2html/texi2html.pl:16035 tp/Texinfo/Parser.pm:1057
-#, fuzzy, perl-format
-msgid "@%s missing closing delimiter sequence: %s}"
-msgstr "%c%s mangler avsluttende krøllparentes"
-
-#: texi2html/texi2html.pl:16148
-#, fuzzy, perl-format
-msgid "%s should not appear in %s"
-msgstr "%s: kunne ikke åpne --css-file: %s"
-
-#: texi2html/texi2html.pl:16625
-#, perl-format
-msgid "Index entry not caught: `%s' in %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:16723
-#, fuzzy, perl-format
-msgid "Empty index entry for @%s"
-msgstr "ingen innslag funnet for «%s»\n"
-
-#: texi2html/texi2html.pl:16859 tp/Texinfo/Convert/HTML.pm:4281
-#, perl-format
-msgid "%s:%d: string not closed in css file"
-msgstr ""
-
-#: texi2html/texi2html.pl:16861 tp/Texinfo/Convert/HTML.pm:4285
-#, perl-format
-msgid "%s:%d @import not finished in css file"
-msgstr ""
-
-#: texi2html/texi2html.pl:16891
-#, fuzzy, perl-format
-msgid "%s: could not open --css-file %s: %s\n"
-msgstr "%s: kunne ikke åpne --css-file: %s"
-
-#: texi2html/texi2html.pl:16963 tp/Texinfo/Common.pm:1093
-#, perl-format
-msgid "%s:%d: no node to be renamed\n"
-msgstr ""
-
-#: texi2html/texi2html.pl:16974 tp/Texinfo/Common.pm:1104
-#, perl-format
-msgid "%s:%d: nodes without a new name at the end of file\n"
-msgstr ""
-
-#: texi2html/texi2html.pm:1275
-msgid "Document encoding is utf8, but there is no unicode support"
-msgstr ""
-
-#: texi2html/texi2html.pm:2227 tp/Texinfo/Common.pm:601
-msgid "recursion is always allowed"
-msgstr ""
-
-#: texi2html/texi2html.pm:2228 tp/Texinfo/Common.pm:602
-msgid "arguments are quoted by default"
-msgstr ""
-
-#: texi2html/texi2html.pm:6682 texi2html/formats/docbook.pm:1498
-#: texi2html/formats/html.pm:2352 texi2html/maintained_extra/mediawiki.pm:1141
-#: tp/Texinfo/Convert/HTML.pm:2168
-#, perl-format
-msgid "Raw format %s is not converted"
-msgstr ""
-
-#: texi2html/formats/docbook.pm:1026 texi2html/formats/info.pm:3001
-#: texi2html/formats/plaintext.pm:156 tp/Texinfo/Convert/Info.pm:555
-#, fuzzy, perl-format
-msgid "Cannot find @image file `%s.txt'"
-msgstr "Kan ikke finne noden «%s»."
-
-#: texi2html/formats/html.pm:2470 tp/Texinfo/Convert/HTML.pm:1555
-#, fuzzy, perl-format
-msgid "@image file `%s' (for HTML) not found, using `%s'"
-msgstr "@image-fil «%s» (for HTML) er uleselig: %s"
-
-#: texi2html/formats/info.pm:1352
-msgid "`.' or `,' must follow @xref."
-msgstr ""
-
-#: texi2html/formats/info.pm:1357 tp/Texinfo/Convert/Plaintext.pm:1515
-#, perl-format
-msgid "`.' or `,' must follow @xref, not %s"
-msgstr ""
-
-#: texi2html/formats/info.pm:2465
-msgid "anchor outside of any node, it won't be registered"
-msgstr ""
-
-#: texi2html/formats/info.pm:2780
-#, fuzzy
-msgid "@menu before first node"
-msgstr "@menu sett før første @node, oppretter «Top»-noden"
-
-#: texi2html/formats/info.pm:2785 tp/Texinfo/Parser.pm:4104
-#, fuzzy
-msgid "@direntry after first node"
-msgstr "@menu sett før første @node, oppretter «Top»-noden"
-
-#: texi2html/formats/info.pm:3539
-msgid "float reference outside of any node, it won't be registered"
-msgstr ""
-
-#: texi2html/formats/info.pm:3642 tp/Texinfo/Parser.pm:3947
-#, fuzzy
-msgid "@dircategory after first node"
-msgstr "@menu sett før første @node, oppretter «Top»-noden"
-
-#: texi2html/maintained_extra/mediawiki.pm:1100
-#, fuzzy, perl-format
-msgid "@image file `%s' not found, using `%s'"
-msgstr "@image-fil «%s» er uleselig: %s"
-
-#: tp/texi2any.pl:247
+#: tp/texi2any.pl:246
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "feil ved skriving til «%s»"
 
-#: tp/texi2any.pl:256
+#: tp/texi2any.pl:255
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "Ukjent kommando «%s»"
 
-#: tp/texi2any.pl:271
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Ukjent kommando «%s»"
 
-#: tp/texi2any.pl:497
+#: tp/texi2any.pl:486
+#, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "Bruksmåte: %s [VALG]... TEXINFOFIL...\n"
+
+#: tp/texi2any.pl:488
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+"Oversette Texinfodokumentasjon til forskjellige andre formater:\n"
+"Infofiler for lesing online med Emacs eller den frittstående GNU Info.\n"
+
+#: tp/texi2any.pl:491
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -4084,7 +2164,7 @@ msgstr ""
 "  -v, --verbose               forklare hva som blir gjort.\n"
 "      --version               vise programversjon og avslutte.\n"
 
-#: tp/texi2any.pl:511
+#: tp/texi2any.pl:505
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -4100,7 +2180,7 @@ msgstr ""
 "      --xml                 generere Texinfo XML i stedet for Info.\n"
 "      --plaintext           generere ren tekst i stedet for Info.\n"
 
-#: tp/texi2any.pl:519
+#: tp/texi2any.pl:513
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -4144,7 +2224,47 @@ msgstr ""
 "  -o, --output=FIL          sende output til FIL (eller katalog dersom "
 "splittet HTML),\n"
 
-#: tp/texi2any.pl:556
+#: tp/texi2any.pl:533
+#, fuzzy, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"Valg for Infooutput og ren tekst:\n"
+"      --enable-encoding       skrive ut spesialtegn og tegn med aksenter i\n"
+"                                Infooutput basert på @documentencoding.\n"
+"      --fill-column=ANT       bryte Infolinjer ved ANT tegn (standard %d).\n"
+"      --footnote-style=STIL   generere fotnoter i Info i henhold til STIL:\n"
+"                                «separate» for å legge fotnotene i egne "
+"noder;\n"
+"                                «end» for å legge fotnotene i slutten av "
+"hver node\n"
+"                                  der fotnotene er definert (standard).\n"
+"      --paragraph-indent=ANT  rykke inn Infoavsnitt med ANT mellomrom "
+"(standard %d).\n"
+"                                Dersom ANT er «none» rykkes ikke avsnittene "
+"inn;\n"
+"                                Dersom ANT er «asis» bevares eksisterende "
+"innrykk.\n"
+"      --split-size=ANT        splitte Infofilene ved lengde ANT (standard "
+"%d).\n"
+
+#: tp/texi2any.pl:550
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -4162,13 +2282,40 @@ msgstr ""
 "      --css-include=FIL         inkluder FIL i HTML <style>-taggen;\n"
 "                                  les stdin dersom FIL er -.\n"
 
-#: tp/texi2any.pl:570
+#: tp/texi2any.pl:561
+msgid ""
+"Options for XML and Docbook:\n"
+"      --output-indent=VAL     does nothing, retained for compatibility.\n"
+msgstr ""
+
+#: tp/texi2any.pl:564
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:580
+#: tp/texi2any.pl:567
+#, fuzzy
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  does nothing, retained for compatibility.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"Valg for inputfil:\n"
+"      --commands-in-node-names   tillate @-kommandoer i nodenavn.\n"
+"  -D VAR                         definer variabelen VAR, som om @set "
+"brukes.\n"
+"  -I KAT                         legg til KAT på slutten av @include-"
+"søkestien.\n"
+"  -P KAT                         legg til KAT på starten av @include-"
+"søkestien.\n"
+"  -U VAR                         udefiner variabelen VAR, som om @clear "
+"brukes.\n"
+
+#: tp/texi2any.pl:574
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -4205,344 +2352,1704 @@ msgstr ""
 "  --no-iftex         ikke behandle @iftex og @tex.\n"
 "  --no-ifxml         ikke behandle @ifxml og @xml.\n"
 
-#: tp/texi2any.pl:689
+#: tp/texi2any.pl:591
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"  Standardverdiene for @if...-betingelsene avhenger av outputformatet:\n"
+"  dersom HTML genereres er --ifhtml påslått og de andre av;\n"
+"  dersom Info genereres er --ifinfo påslått og de andre av;\n"
+"  dersom ren tekst genereres er --ifplaintext påslått og de andre av;\n"
+"  dersom XML genereres er --ifxml påslått og de andre av.\n"
+
+#: tp/texi2any.pl:597
+#, fuzzy
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Eksempler:\n"
+"  makeinfo foo.texi                     skrive Info til foos @setfilename\n"
+"  makeinfo --html foo.texi              skrive HTML til @setfilename\n"
+"  makeinfo --xml foo.texi               skrive Texinfo XML til @setfilename\n"
+"  makeinfo --docbook foo.texi           skrive Docbook XML til @setfilename\n"
+"  makeinfo --no-headers foo.texi        skrive ren tekst til standard ut\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi skrive HTML uten nodelinjer\n"
+"  makeinfo --number-sections foo.texi   skrive Info med nummererte avsnitt\n"
+"  makeinfo --no-split foo.texi          skrive en Infofil uansett størrelse\n"
+
+#: tp/texi2any.pl:641
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
+
+#: tp/texi2any.pl:692
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "Kan ikke åpne inputfilen «%s»"
 
-#: tp/texi2any.pl:940 tp/texi2any.pl:996
+#: tp/texi2any.pl:734
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
+
+#: tp/texi2any.pl:821
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr "%s: Ignorerer ugjenkjennelig TEXINFO_OUTPUT_FORMAT-verdi «%s».\n"
+
+#: tp/texi2any.pl:834
+#, perl-format
+msgid "when generating %s, only one input FILE may be specified with -o"
+msgstr ""
+
+#: tp/texi2any.pl:845
+#, perl-format
+msgid "Ignoring splitting for format %s"
+msgstr ""
+
+#: tp/texi2any.pl:871
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: mangler filargument.\n"
+
+#: tp/texi2any.pl:872
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Prøv «%s --help» for mer informasjon.\n"
+
+#: tp/texi2any.pl:947 tp/texi2any.pl:1003
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Common.pm:1015
+#: tp/Texinfo/Common.pm:623
+msgid "recursion is always allowed"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:624
+msgid "arguments are quoted by default"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:770
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s er ikke en gyldig ISO 639-språkkode"
+
+#: tp/Texinfo/Common.pm:775
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s er ikke en gyldig ISO 639-språkkode"
+
+#: tp/Texinfo/Common.pm:793
+#, fuzzy, perl-format
+msgid "%s is not a valid split possibility"
+msgstr "%s er ikke en gyldig ISO 639-språkkode"
+
+#: tp/Texinfo/Common.pm:817 tp/Texinfo/Common.pm:1191
+#, fuzzy, perl-format
+msgid "Cannot read %s: %s"
+msgstr "Kan ikke opprette katalogen «%s»: %s"
+
+#: tp/Texinfo/Common.pm:832 tp/Texinfo/Parser.pm:2721
+#, fuzzy, perl-format
+msgid "@%s: Cannot find %s"
+msgstr "Kan ikke finne «%s»."
+
+#: tp/Texinfo/Common.pm:1097
 #, fuzzy, perl-format
 msgid "Cannot open html refs config file %s: %s"
 msgstr "Kan ikke slette filen «%s»: %s"
 
-#: tp/Texinfo/Parser.pm:674
+#: tp/Texinfo/Common.pm:1125
+msgid "Missing type"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1128
+#, fuzzy, perl-format
+msgid "Unrecognized type: %s"
+msgstr "%s: ukjent valg «--%s»\n"
+
+#: tp/Texinfo/Common.pm:1175
+#, perl-format
+msgid "%s:%d: no node to be renamed\n"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1186
+#, perl-format
+msgid "%s:%d: nodes without a new name at the end of file\n"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:683
 #, fuzzy, perl-format
 msgid "Can't read file %s: %s"
 msgstr "Kan ikke slette filen «%s»: %s"
 
-#: tp/Texinfo/Parser.pm:956
+#: tp/Texinfo/Parser.pm:927 tp/Texinfo/Structuring.pm:374
+#, perl-format
+msgid "Multiple @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:958
 #, fuzzy, perl-format
 msgid "Bad syntax for @%s argument: %s"
 msgstr "Ugyldig argument til @%s"
 
-#: tp/Texinfo/Parser.pm:972
+#: tp/Texinfo/Parser.pm:974
 #, perl-format
 msgid "Bad or empty @%s formal argument: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1166
+#: tp/Texinfo/Parser.pm:983 tp/Texinfo/Parser.pm:4005
+#: tp/Texinfo/Parser.pm:4553 tp/Texinfo/Parser.pm:4562
+#: tp/Texinfo/Parser.pm:4572
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s krever et navn"
+
+#: tp/Texinfo/Parser.pm:1056
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%s mangler avsluttende krøllparentes"
+
+#: tp/Texinfo/Parser.pm:1059
+#, fuzzy, perl-format
+msgid "@%s missing closing delimiter sequence: %s}"
+msgstr "%c%s mangler avsluttende krøllparentes"
+
+#: tp/Texinfo/Parser.pm:1170
 #, fuzzy, perl-format
 msgid "@itemx should not begin @%s"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:1235
+#: tp/Texinfo/Parser.pm:1239
 msgid "@itemx must follow @item"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1760
+#: tp/Texinfo/Parser.pm:1412
+#, perl-format
+msgid "@%s has text but no @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1440
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "`@end' forventet «%s», men så «%s»"
+
+#: tp/Texinfo/Parser.pm:1443
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr "Ingen tilsvarende «%cend %s»"
+
+#: tp/Texinfo/Parser.pm:1461 tp/Texinfo/Parser.pm:4298
+#: tp/Texinfo/Parser.pm:4450
+#, perl-format
+msgid "Misplaced %c"
+msgstr "Feilplassert %c"
+
+#: tp/Texinfo/Parser.pm:1539 tp/Texinfo/Parser.pm:2683
+#, perl-format
+msgid "Unmatched `%c%s'"
+msgstr "Umatchet «%c%s»"
+
+#: tp/Texinfo/Parser.pm:1735
+#, fuzzy, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr "Makroen «%s» kalt på linje %d med for mange argumenter"
+
+#: tp/Texinfo/Parser.pm:1757
+#, fuzzy, perl-format
+msgid "@%s missing close brace"
+msgstr "%c%s mangler avsluttende krøllparentes"
+
+#: tp/Texinfo/Parser.pm:1764
 #, fuzzy, perl-format
 msgid "Macro `%s' declared without argument called with an argument"
 msgstr "Makroen «%s» kalt på linje %d med for mange argumenter"
 
-#: tp/Texinfo/Parser.pm:1794
+#: tp/Texinfo/Parser.pm:1798
 #, fuzzy, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "\\ i makroekspansjon fulgt av «%s» istedet for parameternavn"
 
-#: tp/Texinfo/Parser.pm:2081
+#: tp/Texinfo/Parser.pm:2085
 #, fuzzy, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "makroen «%s» er tidligere definert"
 
-#: tp/Texinfo/Parser.pm:2086
+#: tp/Texinfo/Parser.pm:2090
 #, fuzzy, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "her er den tidligere definisjonen av «%s»"
 
-#: tp/Texinfo/Parser.pm:2415
+#: tp/Texinfo/Parser.pm:2150 tp/Texinfo/Convert/Info.pm:412
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "Innslag for indeksen «%s» utenfor node"
+
+#: tp/Texinfo/Parser.pm:2419
 #, fuzzy, perl-format
 msgid "Missing name for @%s"
 msgstr "Manglende «}» i @def-arg"
 
-#: tp/Texinfo/Parser.pm:2419
+#: tp/Texinfo/Parser.pm:2423
 #, perl-format
 msgid "Missing category for @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2452
+#: tp/Texinfo/Parser.pm:2456
 #, fuzzy, perl-format
 msgid "Unexpected argument on @%s line: %s"
 msgstr "Ugyldig argument til @%s"
 
-#: tp/Texinfo/Parser.pm:2522 tp/Texinfo/Parser.pm:4621
+#: tp/Texinfo/Parser.pm:2471
+#, fuzzy
+msgid "empty multitable"
+msgstr "%s: tom fil"
+
+#: tp/Texinfo/Parser.pm:2526 tp/Texinfo/Parser.pm:4640
 #, fuzzy, perl-format
 msgid "Superfluous argument to @%s"
 msgstr "Ugyldig argument til @%s"
 
-#: tp/Texinfo/Parser.pm:2542
+#: tp/Texinfo/Parser.pm:2532 tp/Texinfo/Parser.pm:4661
+#: tp/Texinfo/Parser.pm:4672
+#, perl-format
+msgid "Bad argument to @%s"
+msgstr "Ugyldig argument til @%s"
+
+#: tp/Texinfo/Parser.pm:2541
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s krever et argument: formattereren for %citem"
+
+#: tp/Texinfo/Parser.pm:2546
 #, perl-format
 msgid "Command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2578
+#: tp/Texinfo/Parser.pm:2582
 #, fuzzy, perl-format
 msgid "Accent command `@%s' not allowed as @%s argument"
 msgstr "@item er ikke tillatt som argument til @itemize"
 
-#: tp/Texinfo/Parser.pm:2655 tp/Texinfo/Parser.pm:2782
-#: tp/Texinfo/Parser.pm:4613
+#: tp/Texinfo/Parser.pm:2660 tp/Texinfo/Parser.pm:2787
+#: tp/Texinfo/Parser.pm:4632
 #, fuzzy, perl-format
 msgid "@%s missing argument"
 msgstr "%s: mangler filargument.\n"
 
-#: tp/Texinfo/Parser.pm:2668
+#: tp/Texinfo/Parser.pm:2673
 #, fuzzy, perl-format
 msgid "Unknown @end %s"
 msgstr "Ukjent indeks «%s»"
 
-#: tp/Texinfo/Parser.pm:2690 tp/Texinfo/Parser.pm:3220
+#: tp/Texinfo/Parser.pm:2695 tp/Texinfo/Parser.pm:3239
 #, fuzzy, perl-format
 msgid "Superfluous argument to @%s %s: %s"
 msgstr "Ugyldig argument til @%s"
 
-#: tp/Texinfo/Parser.pm:2712
+#: tp/Texinfo/Parser.pm:2699 tp/Texinfo/Parser.pm:4712
+#: tp/Texinfo/Parser.pm:4745 tp/Texinfo/Parser.pm:4771
+#: tp/Texinfo/Parser.pm:4804 tp/Texinfo/Parser.pm:4864
+#, fuzzy, perl-format
+msgid "Bad argument to @%s: %s"
+msgstr "Ugyldig argument til @%s"
+
+#: tp/Texinfo/Parser.pm:2717
 #, fuzzy, perl-format
 msgid "@%s: Cannot open %s: %s"
 msgstr "Kan ikke finne «%s»."
 
-#: tp/Texinfo/Parser.pm:2722
+#: tp/Texinfo/Parser.pm:2727
 #, perl-format
 msgid "Encoding `%s' is not a canonical texinfo encoding"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2868
+#: tp/Texinfo/Parser.pm:2731
+#, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "ugjenkjennelig kodingsnavn «%s»"
+
+#: tp/Texinfo/Parser.pm:2873
 #, fuzzy, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s er meningsløs utenfor et «@titlepage»-miljø"
 
-#: tp/Texinfo/Parser.pm:3004
+#: tp/Texinfo/Parser.pm:3009
 #, fuzzy, perl-format
 msgid "Empty argument in @%s"
 msgstr "Ugyldig argument til @%s"
 
-#: tp/Texinfo/Parser.pm:3055
+#: tp/Texinfo/Parser.pm:3013
+#, perl-format
+msgid "Empty node name after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3029 tp/Texinfo/Convert/HTML.pm:6458
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3060
 #, fuzzy
 msgid "Empty node in menu entry"
 msgstr "ingen innslag funnet for «%s»\n"
 
-#: tp/Texinfo/Parser.pm:3367
+#: tp/Texinfo/Parser.pm:3254
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "makroen «%s» er tidligere definert"
+
+#: tp/Texinfo/Parser.pm:3256
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "her er den tidligere definisjonen av «%s»"
+
+#: tp/Texinfo/Parser.pm:3302
+#, perl-format
+msgid "@%s without associated character"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3363
+#, perl-format
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3386
 #, perl-format
 msgid ""
 "Macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3375
+#: tp/Texinfo/Parser.pm:3394
 #, perl-format
 msgid "Recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3458
+#: tp/Texinfo/Parser.pm:3449
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3455
+#, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "Bruk krøllparenteser for å gi en kommando som et argument til @%s"
+
+#: tp/Texinfo/Parser.pm:3465 tp/Texinfo/Parser.pm:4382
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s forventer «i» eller «j» som argument, ikke «%c»"
+
+#: tp/Texinfo/Parser.pm:3477
 #, perl-format
 msgid "Accent command `@%s' must not be followed by new line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3635
+#: tp/Texinfo/Parser.pm:3483
+#, fuzzy, perl-format
+msgid "@%s expected braces"
+msgstr "%c%s forventet krøllparanteser"
+
+#: tp/Texinfo/Parser.pm:3633
+#, perl-format
+msgid "undefined flag: %s"
+msgstr "udefinert flagg: %s"
+
+#: tp/Texinfo/Parser.pm:3636
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3643
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%s er utgått"
+
+#: tp/Texinfo/Parser.pm:3646
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%s er utgått"
+
+#: tp/Texinfo/Parser.pm:3654
 #, fuzzy, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:3648 tp/Texinfo/Parser.pm:3666
-#: tp/Texinfo/Parser.pm:3679
+#: tp/Texinfo/Parser.pm:3667 tp/Texinfo/Parser.pm:3685
+#: tp/Texinfo/Parser.pm:3698
 #, fuzzy, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:3731
+#: tp/Texinfo/Parser.pm:3750
 #, fuzzy, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s er meningsløs innenfor en «@%s»-blokk"
 
-#: tp/Texinfo/Parser.pm:3739
+#: tp/Texinfo/Parser.pm:3758
 #, fuzzy, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:3903
+#: tp/Texinfo/Parser.pm:3828 tp/Texinfo/Parser.pm:3840
+#: tp/Texinfo/Parser.pm:3884
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s er meningsløs innenfor en «@%s»-blokk"
+
+#: tp/Texinfo/Parser.pm:3847
+#, fuzzy, perl-format
+msgid "@%s in empty multitable"
+msgstr "%s: tom fil"
+
+#: tp/Texinfo/Parser.pm:3852
+msgid "@tab before @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3854
+#, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "For mange kolonner i multitabellrad (maks %d)"
+
+#: tp/Texinfo/Parser.pm:3887
+msgid "ignoring @tab outside of multitable"
+msgstr "ignorerer @tab utenfor multitabell"
+
+#: tp/Texinfo/Parser.pm:3889
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3922
 #, fuzzy, perl-format
 msgid "Must be after `@%s' to use `@%s'"
 msgstr "Må være i et «@%s»-miljø for å bruke «@%s»"
 
-#: tp/Texinfo/Parser.pm:4171
+#: tp/Texinfo/Parser.pm:3962
+#, perl-format
+msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr "@%s gir ikke mening utenfor «@titlepage»- og «@quotation»-miljøer"
+
+#: tp/Texinfo/Parser.pm:3966
+#, fuzzy
+msgid "@dircategory after first node"
+msgstr "@menu sett før første @node, oppretter «Top»-noden"
+
+#: tp/Texinfo/Parser.pm:4107
+#, fuzzy, perl-format
+msgid "Region %s inside region %s is not allowed"
+msgstr "Fotnoter i fotnoter er ikke tillatt"
+
+#: tp/Texinfo/Parser.pm:4123
+#, fuzzy
+msgid "@direntry after first node"
+msgstr "@menu sett før første @node, oppretter «Top»-noden"
+
+#: tp/Texinfo/Parser.pm:4129
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr "@menu sett før første @node, oppretter «Top»-noden"
+
+#: tp/Texinfo/Parser.pm:4131
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"kanskje burde din @top-node bli pakket inn i @ifnottex istedet for @ifinfo?"
+
+#: tp/Texinfo/Parser.pm:4190
 #, fuzzy, perl-format
 msgid "@%s should only appear in math context"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:4191
+#: tp/Texinfo/Parser.pm:4200
+#, perl-format
+msgid "Unknown command `%s'"
+msgstr "Ukjent kommando «%s»"
+
+#: tp/Texinfo/Parser.pm:4210
 #, fuzzy
 msgid "Unexpected @"
 msgstr "Forventet «%s»"
 
-#: tp/Texinfo/Parser.pm:4219
+#: tp/Texinfo/Parser.pm:4238
 #, fuzzy, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s er meningsløs utenfor et «@float»-miljø"
 
-#: tp/Texinfo/Parser.pm:4223
+#: tp/Texinfo/Parser.pm:4242
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4231
+#: tp/Texinfo/Parser.pm:4250
 #, perl-format
 msgid "Ignoring multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4317
+#: tp/Texinfo/Parser.pm:4336
 #, perl-format
 msgid "Command @%s does not accept arguments"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4336
+#: tp/Texinfo/Parser.pm:4355
 #, fuzzy, perl-format
 msgid "Command @%s missing a node argument"
 msgstr "%s: mangler filargument.\n"
 
-#: tp/Texinfo/Parser.pm:4374
+#: tp/Texinfo/Parser.pm:4373
+msgid "@image missing filename argument"
+msgstr "@image mangler filnavn"
+
+#: tp/Texinfo/Parser.pm:4393
 #, fuzzy, perl-format
 msgid "@%s missing first argument"
 msgstr "%s: mangler filargument.\n"
 
-#: tp/Texinfo/Parser.pm:4562
+#: tp/Texinfo/Parser.pm:4480
+msgid "Superfluous arguments for node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4517
+#, fuzzy, perl-format
+msgid "Expected @end %s"
+msgstr "Forventet «%s»"
+
+#: tp/Texinfo/Parser.pm:4581
 #, fuzzy, perl-format
 msgid "Remaining argument on @%s line: %s"
 msgstr "Ugyldig argument til @%s"
 
-#: tp/Texinfo/Parser.pm:4637
+#: tp/Texinfo/Parser.pm:4583
+#, fuzzy, perl-format
+msgid "@%s should only accept a @-command as argument, not `%s'"
+msgstr "Bruk krøllparenteser for å gi en kommando som et argument til @%s"
+
+#: tp/Texinfo/Parser.pm:4656
 #, fuzzy, perl-format
 msgid "Environment command %s as argument to @%s"
 msgstr "Bruk krøllparenteser for å gi en kommando som et argument til @%s"
 
-#: tp/Texinfo/Parser.pm:4658
+#: tp/Texinfo/Parser.pm:4677
 #, perl-format
 msgid "Empty @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4675
+#: tp/Texinfo/Parser.pm:4685
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4694
 #, fuzzy, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "%s: %s arg må være numerisk, ikke «%s».\n"
 
+#: tp/Texinfo/Parser.pm:4702
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4719
+#, fuzzy, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr "Ukjent indeks «%s»"
+
 #: tp/Texinfo/Parser.pm:4721
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "Ukjent indeks «%s»"
+
+#: tp/Texinfo/Parser.pm:4740
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4738
+#: tp/Texinfo/Parser.pm:4752
+#, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "Ukjent indeks «%s» i @printindex"
+
+#: tp/Texinfo/Parser.pm:4757
 #, perl-format
 msgid "Printing an index `%s' merged in another one `%s'"
 msgstr ""
 
+#: tp/Texinfo/Parser.pm:4764
+#, perl-format
+msgid "Printindex before document beginning: @printindex %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4779
+#, fuzzy, perl-format
+msgid "@%s arg must be `top' or `bottom', not `%s'"
+msgstr "%s: %s arg må være numerisk, ikke «%s».\n"
+
+#: tp/Texinfo/Parser.pm:4785
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4791
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
+
+#: tp/Texinfo/Parser.pm:4797
+#, fuzzy, perl-format
+msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+msgstr "%s: %s arg må være numerisk, ikke «%s».\n"
+
+#: tp/Texinfo/Parser.pm:4812 tp/Texinfo/Parser.pm:4815
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+"%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
+
+#: tp/Texinfo/Parser.pm:4821
+#, fuzzy, perl-format
+msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+msgstr ""
+"%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
+
+#: tp/Texinfo/Parser.pm:4829
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+"%s: --paragraph-indent arg må være numerisk/«none»/«asis», ikke «%s».\n"
+
 #: tp/Texinfo/Parser.pm:4838
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4845
+#, perl-format
+msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4851
+#, fuzzy, perl-format
+msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
+msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
+
+#: tp/Texinfo/Parser.pm:4857
 #, fuzzy, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr "%s: --footnote-style arg må være «separate» eller «end», ikke «%s».\n"
+
+#: tp/Texinfo/Report.pm:91
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s (possibly involving @%s)\n"
+msgstr "%s:%d: advarsel: "
+
+#: tp/Texinfo/Report.pm:94
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr "%s:%d: advarsel: "
 
 #: tp/Texinfo/Report.pm:135
 #, fuzzy, perl-format
 msgid "warning: %s\n"
 msgstr "%s:%d: advarsel: "
 
-#: tp/Texinfo/Structuring.pm:218
+#: tp/Texinfo/Structuring.pm:222
 #, perl-format
 msgid "Upping the section level of @%s which is too low"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:253
+#: tp/Texinfo/Structuring.pm:257
 #, perl-format
 msgid "Lowering the section level of @%s appearing after a lower element"
 msgstr ""
 
-#: tp/Texinfo/Convert/Converter.pm:424
+#: tp/Texinfo/Structuring.pm:392
+#, fuzzy, perl-format
+msgid "Menu reference to nonexistent node `%s'"
+msgstr "ureferert node «%s»"
+
+#: tp/Texinfo/Structuring.pm:433
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "ureferert node «%s»"
+
+#: tp/Texinfo/Structuring.pm:464
+#, perl-format
+msgid "No node following `%s' in menu, but `%s' follows in sectioning"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:470
+#, perl-format
+msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:532
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "ureferert node «%s»"
+
+#: tp/Texinfo/Structuring.pm:551
+#, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr "Noden «%s» mangler et menypunkt for «%s» selv om den er dens oppmål"
+
+#: tp/Texinfo/Structuring.pm:559
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1040
+#, fuzzy, perl-format
+msgid "@%s reference to nonexistent node `%s'"
+msgstr ""
+"%s referanse til ikke-eksisterende node «%s» (kanskje ugyldig inndeling?)"
+
+#: tp/Texinfo/Convert/Converter.pm:479
+#, fuzzy, perl-format
+msgid "Can't create directories `%s' or `%s': %s"
+msgstr "Kan ikke opprette katalogen «%s»: %s"
+
+#: tp/Texinfo/Convert/Converter.pm:487
 #, fuzzy, perl-format
 msgid "Can't create directories `%s': %s"
 msgstr "Kan ikke opprette katalogen «%s»: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6025
-#: tp/Texinfo/Convert/HTML.pm:6070 tp/Texinfo/Convert/HTML.pm:6135
-#: tp/Texinfo/Convert/HTML.pm:6190 tp/Texinfo/Convert/Info.pm:81
-#: tp/Texinfo/Convert/Info.pm:144 tp/Texinfo/Convert/Info.pm:163
-#: tp/Texinfo/Convert/Plaintext.pm:478 tp/Texinfo/Convert/XML.pm:296
+#: tp/Texinfo/Convert/DocBook.pm:308 tp/Texinfo/Convert/HTML.pm:6252
+#: tp/Texinfo/Convert/HTML.pm:6302 tp/Texinfo/Convert/HTML.pm:6368
+#: tp/Texinfo/Convert/HTML.pm:6423 tp/Texinfo/Convert/Info.pm:83
+#: tp/Texinfo/Convert/Info.pm:146 tp/Texinfo/Convert/Info.pm:165
+#: tp/Texinfo/Convert/Plaintext.pm:413 tp/Texinfo/Convert/XML.pm:266
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4311
+#: tp/Texinfo/Convert/HTML.pm:1560
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "@image-fil «%s» (for HTML) er uleselig: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:2238
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4450
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4452
+#, perl-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr "%s:%d: --css-file endte i en kommentar"
+
+#: tp/Texinfo/Convert/HTML.pm:4454
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4480
 #, fuzzy, perl-format
 msgid "css file %s not found"
 msgstr "%cend macro ikke funnet"
 
-#: tp/Texinfo/Convert/HTML.pm:4316
+#: tp/Texinfo/Convert/HTML.pm:4485
 #, fuzzy, perl-format
 msgid "could not open --css-file %s: %s"
 msgstr "%s: kunne ikke åpne --css-file: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5986
+#: tp/Texinfo/Convert/HTML.pm:6212
 msgid "Must specify a title with a title command or @top"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6153
+#: tp/Texinfo/Convert/HTML.pm:6386
 #, fuzzy, perl-format
 msgid "Node `%s' that is to be renamed exists"
 msgstr "Indeksen «%s» eksisterer allerede"
 
-#: tp/Texinfo/Convert/HTML.pm:6223
+#: tp/Texinfo/Convert/HTML.pm:6390
+#, fuzzy, perl-format
+msgid "File empty for renamed node `%s'"
+msgstr "ureferert node «%s»"
+
+#: tp/Texinfo/Convert/HTML.pm:6401
+#, perl-format
+msgid "Node to be renamed as, `%s' not found"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6456
 #, fuzzy
 msgid "Empty node name"
 msgstr "ingen innslag funnet for «%s»\n"
 
-#: tp/Texinfo/Convert/Info.pm:90
+#: tp/Texinfo/Convert/Info.pm:92
 #, fuzzy
 msgid "Document without nodes."
 msgstr "Ingen meny i denne noden."
 
-#: tp/Texinfo/Convert/Info.pm:102
+#: tp/Texinfo/Convert/Info.pm:104
 msgid "Document without Top node."
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:129
+#: tp/Texinfo/Convert/Info.pm:131
 #, perl-format
 msgid "Rename %s failed: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:188
+#: tp/Texinfo/Convert/Info.pm:190
 #, perl-format
 msgid "@%s `%s' output more than once"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:377
+#: tp/Texinfo/Convert/Info.pm:379
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:455
+#: tp/Texinfo/Convert/Info.pm:457
 #, fuzzy, perl-format
 msgid "@%s outside of any node"
 msgstr "(utenfor noder)"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1517
+#: tp/Texinfo/Convert/Info.pm:557
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt'"
+msgstr "Kan ikke finne noden «%s»."
+
+#: tp/Texinfo/Convert/Plaintext.pm:948
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "@image-fil «%s» er uleselig: %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1240
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"@strong{Note...} lager en overflødig kryssreferanse i Info; skriv om for å "
+"unngå dette"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1456
+#, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1458
 msgid "`.' or `,' must follow @xref"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2160
+#: tp/Texinfo/Convert/Plaintext.pm:2103
 #, perl-format
 msgid "Node expansion `%s' in menu differs from normal node expansion `%s'"
 msgstr ""
+
+#~ msgid "arguments to @%s ignored"
+#~ msgstr "argumentene til @%s ble ignorert"
+
+#~ msgid "January"
+#~ msgstr "januar"
+
+#~ msgid "February"
+#~ msgstr "februar"
+
+#~ msgid "March"
+#~ msgstr "mars"
+
+#~ msgid "April"
+#~ msgstr "april"
+
+#~ msgid "May"
+#~ msgstr "mai"
+
+#~ msgid "June"
+#~ msgstr "juni"
+
+#~ msgid "July"
+#~ msgstr "juli"
+
+#~ msgid "August"
+#~ msgstr "august"
+
+#~ msgid "September"
+#~ msgstr "september"
+
+#~ msgid "October"
+#~ msgstr "oktober"
+
+#~ msgid "November"
+#~ msgstr "november"
+
+#~ msgid "December"
+#~ msgstr "desember"
+
+#~ msgid "unlikely character %c in @var"
+#~ msgstr "usannsynlig tegn %c i @var"
+
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "@sc-argument med store bokstaver, dermed ingen effekt"
+
+#~ msgid "`{' expected, but saw `%c'"
+#~ msgstr "«{» forventet, men så «%c»"
+
+#~ msgid "end of file inside verb block"
+#~ msgstr "slutt-på-fila inne i verb-blokk"
+
+#~ msgid "`}' expected, but saw `%c'"
+#~ msgstr "«{» forventet, men så «%c»"
+
+#~ msgid "%c%s is obsolete"
+#~ msgstr "%c%s er utgått"
+
+#~ msgid "@sp requires a positive numeric argument, not `%s'"
+#~ msgstr "@sp krever et positivt numerisk argument, ikke `%s'"
+
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "Ugyldig argument til %c%s"
+
+#~ msgid "asis"
+#~ msgstr "asis"
+
+#~ msgid "none"
+#~ msgstr "none"
+
+#~ msgid "insert"
+#~ msgstr "insert"
+
+#~ msgid "Missing `}' in @def arg"
+#~ msgstr "Manglende «}» i @def-arg"
+
+#~ msgid "Must be in `@%s' environment to use `@%s'"
+#~ msgstr "Må være i et «@%s»-miljø for å bruke «@%s»"
+
+#~ msgid "%s: getwd: %s, %s\n"
+#~ msgstr "%s: getwd: %s, %s\n"
+
+#~ msgid "`%s' omitted before output filename"
+#~ msgstr "`%s' utelatt før outputfilnavn"
+
+#~ msgid "`%s' omitted since writing to stdout"
+#~ msgstr "`%s' utelatt pga skriving til stdout"
+
+#~ msgid "Output buffer not empty."
+#~ msgstr "Outputbuffer er ikke tomt."
+
+#~ msgid "See "
+#~ msgstr "Se "
+
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "«%c%s» trenger et argument «{...}», ikke bare «%s»"
+
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "Ingen avsluttende krøllparentes for fotnoten «%s»"
+
+#~ msgid "Footnote defined without parent node"
+#~ msgstr "Fotnote definert uten foreldrenode"
+
+#~ msgid "Footnotes inside footnotes are not allowed"
+#~ msgstr "Fotnoter i fotnoter er ikke tillatt"
+
+#~ msgid "Footnotes"
+#~ msgstr "Fotnoter"
+
+#~ msgid "%s: could not open --css-file: %s"
+#~ msgstr "%s: kunne ikke åpne --css-file: %s"
+
+#~ msgid "[unexpected] no html tag to pop"
+#~ msgstr "[uforventet] kunne ikke poppe neste htmltagg"
+
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "[uforventet] ugyldig nodenavn: «%s»"
+
+#~ msgid "Unknown index `%s'"
+#~ msgstr "Ukjent indeks «%s»"
+
+#~ msgid "Info cannot handle `:' in index entry `%s'"
+#~ msgstr "Info kan ikke håndtere `:' i indeksinnslaget `%s'"
+
+#~ msgid "Index `%s' already exists"
+#~ msgstr "Indeksen «%s» eksisterer allerede"
+
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "Ukjent indeks «%s» og/eller «%s» i @synindex"
+
+#~ msgid "(line )"
+#~ msgstr "(linje )"
+
+#~ msgid "(line %*d)"
+#~ msgstr "(linje %*d)"
+
+#~ msgid "(outside of any node)"
+#~ msgstr "(utenfor noder)"
+
+#~ msgid "@item not allowed in argument to @itemize"
+#~ msgstr "@item er ikke tillatt som argument til @itemize"
+
+#~ msgid "Broken-Type in insertion_type_pname"
+#~ msgstr "Broken-Type i insertion_type_pname"
+
+#~ msgid "Enumeration stack overflow"
+#~ msgstr "Stakkoverflyt ved oppramsing"
+
+#~ msgid "lettering overflow, restarting at %c"
+#~ msgstr "bokstavoverflyt, starter på nytt ved %c"
+
+#~ msgid "%cfloat environments cannot be nested"
+#~ msgstr "%cfloat-miljøer kan ikke nøstes"
+
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%s krever en bokstav eller et siffer"
+
+#~ msgid "end of file inside verbatim block"
+#~ msgstr "slutt-på-filen inne i verbatimblokk"
+
+#~ msgid "@%s not meaningful outside `@float' environment"
+#~ msgstr "@%s er meningsløs utenfor et «@float»-miljø"
+
+#~ msgid "@menu seen before first @node, creating `Top' node"
+#~ msgstr "@menu sett før første @node, oppretter «Top»-noden"
+
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr "@detailmenu sett før første node, oppretter «Top»-noden"
+
+#~ msgid "@%s not meaningful outside `@titlepage' environment"
+#~ msgstr "@%s er meningsløs utenfor et «@titlepage»-miljø"
+
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "«%c%s» trenger noe etter den"
+
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "Ugyldig argument «%s» til «%s», bruker «%s»"
+
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "@itemx er meningsløs innenfor en «@%s»-blokk"
+
+#~ msgid "%c%s found outside of an insertion block"
+#~ msgstr "%c%s funnet utenfor en innsettingsblokk"
+
+#~ msgid "%s is not a valid ISO 639 language code"
+#~ msgstr "%s er ikke en gyldig ISO 639-språkkode"
+
+#~ msgid "sorry, encoding `%s' not supported"
+#~ msgstr "beklager, kodingen «%s» er ikke støttet"
+
+#~ msgid "invalid encoded character `%s'"
+#~ msgstr "Ugyldig kodet tegn «%s»"
+
+#~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
+#~ msgstr "%c%s forventer «i» eller «j» som argument, ikke «%c»"
+
+#~ msgid "%c%s expects a single character `i' or `j' as argument"
+#~ msgstr "%c%s forventer et enkelt tegn, «i» eller «j» som argument"
+
+#~ msgid "\\ in macro expansion followed by `%s' instead of parameter name"
+#~ msgstr "\\ i makroekspansjon fulgt av «%s» istedet for parameternavn"
+
+#~ msgid "Macro `%s' called on line %d with too many args"
+#~ msgstr "Makroen «%s» kalt på linje %d med for mange argumenter"
+
+#~ msgid "%cend macro not found"
+#~ msgstr "%cend macro ikke funnet"
+
+#~ msgid "mismatched @end %s with @%s"
+#~ msgstr "umatchet @end %s med @%s"
+
+#~ msgid "Too many errors!  Gave up.\n"
+#~ msgstr "For mange feil!  Ga opp.\n"
+
+#~ msgid "%s:%d: warning: "
+#~ msgstr "%s:%d: advarsel: "
+
+#, fuzzy
+#~ msgid ""
+#~ "General options:\n"
+#~ "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+#~ "      --document-language=STR locale to use in translating Texinfo "
+#~ "keywords\n"
+#~ "                                for the output document (default C).\n"
+#~ "      --force                 preserve output even if errors.\n"
+#~ "      --help                  display this help and exit.\n"
+#~ "      --no-validate           suppress node cross-reference validation.\n"
+#~ "      --no-warn               suppress warnings (but not errors).\n"
+#~ "  -v, --verbose               explain what is being done.\n"
+#~ "      --version               display version information and exit.\n"
+#~ msgstr ""
+#~ "Generelle valg:\n"
+#~ "      --error-limit=ANT       avbryte etter ANT feil (standard %d).\n"
+#~ "      --force                 bevare output selv med feil.\n"
+#~ "      --help                  vise denne hjelpen og avslutte.\n"
+#~ "      --no-validate           undertrykke sjekking av kryssreferanser.\n"
+#~ "      --no-warn               undertrykke advarsler (men ikke feil).\n"
+#~ "      --reference-limit=ANT   advare om på det meste ANT referanser "
+#~ "(standard %d).\n"
+#~ "  -v, --verbose               forklare hva som blir gjort.\n"
+#~ "      --version               vise programversjon og avslutte.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Output format selection (default is to produce Info):\n"
+#~ "      --docbook               output Docbook XML rather than Info.\n"
+#~ "      --html                  output HTML rather than Info.\n"
+#~ "      --xml                   output Texinfo XML rather than Info.\n"
+#~ "      --plaintext             output plain text rather than Info.\n"
+#~ msgstr ""
+#~ "Valg av outputformat (standard er å produsere Info):\n"
+#~ "      --docbook             generere DocBook XML i stedet for Info.\n"
+#~ "      --html                generere HTML i stedet for Info.\n"
+#~ "      --xml                 generere Texinfo XML i stedet for Info.\n"
+#~ "      --plaintext           generere ren tekst i stedet for Info.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "General output options:\n"
+#~ "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+#~ "                                ignoring any @setfilename.\n"
+#~ "      --no-headers            suppress node separators, Node: lines, and "
+#~ "menus\n"
+#~ "                                from Info output (thus producing plain "
+#~ "text)\n"
+#~ "                                or from HTML (thus producing shorter "
+#~ "output);\n"
+#~ "                                also, write to standard output by "
+#~ "default.\n"
+#~ "      --no-split              suppress the splitting of Info or HTML "
+#~ "output,\n"
+#~ "                                generate only one output file.\n"
+#~ "      --number-sections       output chapter and sectioning numbers.\n"
+#~ "  -o, --output=FILE           output to FILE (or directory if split "
+#~ "HTML).\n"
+#~ msgstr ""
+#~ "Generelle outputvalg:\n"
+#~ "  -E, --macro-expand FIL    sende makroekspandert kilde til FIL,\n"
+#~ "                              ignorerer enhver @setfilename.\n"
+#~ "      --no-headers          undertrykke nodeseparatorer, Node:-linjer og "
+#~ "menyer\n"
+#~ "                              fra Info-output (og dermed produsere ren "
+#~ "tekst)\n"
+#~ "                              eller fra HTML (og dermed produsere kortere "
+#~ "output);\n"
+#~ "                              standard er å skrive til standard ut.\n"
+#~ "      --no-split            undertrykke splitting av Info- eller HTML-"
+#~ "output,\n"
+#~ "                              generere bare en outputfil.\n"
+#~ "      --number-sections     nummerere kapitler og avdelinger (section).\n"
+#~ "  -o, --output=FIL          sende output til FIL (eller katalog dersom "
+#~ "splittet HTML),\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Options for HTML:\n"
+#~ "      --css-include=FILE      include FILE in HTML <style> output;\n"
+#~ "                                read stdin if FILE is -.\n"
+#~ "      --css-ref=URL           generate reference to a CSS file.\n"
+#~ "      --internal-links=FILE   produce list of internal links in FILE.\n"
+#~ "      --transliterate-file-names\n"
+#~ "                              produce file names in ASCII "
+#~ "transliteration.\n"
+#~ msgstr ""
+#~ "Valg for HTML:\n"
+#~ "      --css-include=FIL         inkluder FIL i HTML <style>-taggen;\n"
+#~ "                                  les stdin dersom FIL er -.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Options for XML and Docbook:\n"
+#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default "
+#~ "%d).\n"
+#~ "                                If VAL is 0, ignorable whitespace is "
+#~ "dropped.\n"
+#~ msgstr ""
+#~ "Valg for XML og DocBook:\n"
+#~ "      --output-index=ANT         innrykk XML-elementer med ANT mellomrom "
+#~ "(standard %d).\n"
+#~ "                                  Dersom ANT er 0, blir ignorerbart "
+#~ "tomrom ikke brukt.\n"
+
+#~ msgid ""
+#~ "Input file options:\n"
+#~ "      --commands-in-node-names  allow @ commands in node names.\n"
+#~ "  -D VAR                        define the variable VAR, as with @set.\n"
+#~ "  -I DIR                        append DIR to the @include search path.\n"
+#~ "  -P DIR                        prepend DIR to the @include search path.\n"
+#~ "  -U VAR                        undefine the variable VAR, as with "
+#~ "@clear.\n"
+#~ msgstr ""
+#~ "Valg for inputfil:\n"
+#~ "      --commands-in-node-names   tillate @-kommandoer i nodenavn.\n"
+#~ "  -D VAR                         definer variabelen VAR, som om @set "
+#~ "brukes.\n"
+#~ "  -I KAT                         legg til KAT på slutten av @include-"
+#~ "søkestien.\n"
+#~ "  -P KAT                         legg til KAT på starten av @include-"
+#~ "søkestien.\n"
+#~ "  -U VAR                         udefiner variabelen VAR, som om @clear "
+#~ "brukes.\n"
+
+#~ msgid ""
+#~ "Conditional processing in input:\n"
+#~ "  --ifdocbook       process @ifdocbook and @docbook even if\n"
+#~ "                      not generating Docbook.\n"
+#~ "  --ifhtml          process @ifhtml and @html even if not generating "
+#~ "HTML.\n"
+#~ "  --ifinfo          process @ifinfo even if not generating Info.\n"
+#~ "  --ifplaintext     process @ifplaintext even if not generating plain "
+#~ "text.\n"
+#~ "  --iftex           process @iftex and @tex; implies --no-split.\n"
+#~ "  --ifxml           process @ifxml and @xml.\n"
+#~ "  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+#~ "  --no-ifhtml       do not process @ifhtml and @html text.\n"
+#~ "  --no-ifinfo       do not process @ifinfo text.\n"
+#~ "  --no-ifplaintext  do not process @ifplaintext text.\n"
+#~ "  --no-iftex        do not process @iftex and @tex text.\n"
+#~ "  --no-ifxml        do not process @ifxml and @xml text.\n"
+#~ "\n"
+#~ "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+#~ msgstr ""
+#~ "Betinget behandling av input:\n"
+#~ "  --ifdocbook        behandle @ifdocbook og @docbook selv om\n"
+#~ "                       DocBook ikke skal genereres.\n"
+#~ "  --ifhtml           behandle @ifhtml og @html selv om HTML ikke skal "
+#~ "genereres.\n"
+#~ "  --ifinfo           behandle @ifinfo selv når info ikke skal genereres.\n"
+#~ "  --ifplaintext      behandle @ifplaintext selv om ren tekst ikke skal "
+#~ "genereres.\n"
+#~ "  --iftex            behandle @iftex og @tex; innebærer --no-split.\n"
+#~ "  --ifxml            behandle @ifxml og @xml.\n"
+#~ "  --no-ifdocbook     ikke behandle @ifdocbook og @docbook.\n"
+#~ "  --no-ifhtml        ikke behandle @ifhtml og @html.\n"
+#~ "  --no-ifinfo        ikke behandle @ifinfo.\n"
+#~ "  --no-ifplaintext   ikke behandle @ifplaintext.\n"
+#~ "  --no-iftex         ikke behandle @iftex og @tex.\n"
+#~ "  --no-ifxml         ikke behandle @ifxml og @xml.\n"
+
+#~ msgid "%s: %s arg must be numeric, not `%s'.\n"
+#~ msgstr "%s: %s arg må være numerisk, ikke «%s».\n"
+
+#~ msgid "%s: could not open macro expansion output `%s'"
+#~ msgstr "%s: kunne ikke åpne makroekspansjonoutput «%s»"
+
+#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
+#~ msgstr "%s: ignorerer sekundær makroekspansjonoutpur «%s».\n"
+
+#, fuzzy
+#~ msgid "%s: could not open internal links output `%s'"
+#~ msgstr "%s: kunne ikke åpne makroekspansjonoutput «%s»"
+
+#, fuzzy
+#~ msgid "%s: ignoring second internal links output `%s'.\n"
+#~ msgstr "%s: ignorerer sekundær makroekspansjonoutpur «%s».\n"
+
+#~ msgid "Multiline command %c%s used improperly"
+#~ msgstr "Flerlinjekommandoen %c%s brukes ikke riktig"
+
+#~ msgid "Expected `%s'"
+#~ msgstr "Forventet «%s»"
+
+#~ msgid "Can't create directory `%s': %s"
+#~ msgstr "Kan ikke opprette katalogen «%s»: %s"
+
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "Ingen «%s» funnet i «%s»"
+
+#~ msgid ""
+#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr ""
+#~ "%s: Hopper over makroekspansjon til stdout siden Info-output også sendes "
+#~ "dit.\n"
+
+#~ msgid "Making %s file `%s' from `%s'.\n"
+#~ msgstr "Lager %s-filen «%s» fra «%s».\n"
+
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr ""
+#~ "%s: Fjerner makroutskriftsfilen «%s» på grunn av feil; bruk --force for å "
+#~ "bevare.\n"
+
+#~ msgid ""
+#~ "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr ""
+#~ "%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å "
+#~ "bevare.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Removing internal links output file `%s' due to errors; use --force "
+#~ "to preserve.\n"
+#~ msgstr ""
+#~ "%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å "
+#~ "bevare.\n"
+
+#~ msgid "%c%s expected braces"
+#~ msgstr "%c%s forventet krøllparanteser"
+
+#~ msgid "Unmatched }"
+#~ msgstr "Umatchet }"
+
+#~ msgid "NO_NAME!"
+#~ msgstr "INTET_NAVN!"
+
+#~ msgid "@image file `%s' (for HTML) not readable: %s"
+#~ msgstr "@image-fil «%s» (for HTML) er uleselig: %s"
+
+#~ msgid "No such file `%s'"
+#~ msgstr "«%s» er ingen fil"
+
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "@image-fil «%s» (for tekstformat) er uleselig: %s"
+
+#~ msgid "{No value for `%s'}"
+#~ msgstr "{Ingen verdi for «%s»}"
+
+#~ msgid "Reached eof before matching @end %s"
+#~ msgstr "Traff slutt-på-filen før matchende @end %s"
+
+#~ msgid "`%.40s...' is too long for expansion; not expanded"
+#~ msgstr "`%.40s...' er for lang for ekspansjon; ikke ekspandert"
+
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "Manglende «}» i @multitable-mal"
+
+#~ msgid "ignoring stray text `%s' after @multitable"
+#~ msgstr "ignorerer løs tekst «%s» etter @multitable"
+
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr "[uforventet] kan ikke velge kolonne #%d i multitabell"
+
+#~ msgid "** Multicolumn output from last row:\n"
+#~ msgstr "** Multikolonne-output fra siste rad:\n"
+
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "* kolonne #%d output = %s\n"
+
+#~ msgid "Node `%s' previously defined at line %d"
+#~ msgstr "Noden «%s» er tidligere definert ved linje %d"
+
+#~ msgid "Formatting node %s...\n"
+#~ msgstr "Skriver noden %s...\n"
+
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr "Noden «%s» krever en inndelingskommando (f.eks. %c%s)"
+
+#~ msgid "No node name specified for `%c%s' command"
+#~ msgstr "Ingen nodenavn spesifisert for «%c%s»-kommandoen"
+
+#~ msgid "Anchor `%s' and node `%s' map to the same file name"
+#~ msgstr "Ankeret «%s» og noden «%s» blir knyttet til det samme filnavnet"
+
+#~ msgid "This @anchor command ignored; references to it will not work"
+#~ msgstr ""
+#~ "Denne @anchor-kommandoen ble ignorert, referanser til den vil ikke virke"
+
+#~ msgid "Rename this anchor or use the `--no-split' option"
+#~ msgstr "Omdøpe dette ankeret eller bruk «--no-split»-valget"
+
+#~ msgid "Unexpected string at end of split-HTML file `%s'"
+#~ msgstr "Uforventet streng ved slutten av splitt-HTML-fila «%s»"
+
+#~ msgid "Anchors `%s' and `%s' map to the same file name"
+#~ msgstr "Ankrene «%s» og «%s» peker til det samme filnavnet"
+
+#~ msgid "@anchor command ignored; references to it will not work"
+#~ msgstr "@anchor-kommando ignorert; referanser til den vil ikke virke"
+
+#~ msgid ""
+#~ "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "%s referanse til ikke-eksisterende node «%s» (kanskje ugyldig inndeling?)"
+
+#~ msgid ""
+#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "Nestefeltet til noden «%s» er ikke pekt på (kanskje ugyldig inndeling?)"
+
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "Denne noden (%s) har den dårlige forrigepekeren"
+
+#~ msgid "Prev field of node `%s' not pointed to"
+#~ msgstr "Forrigefeltet til noden «%s» er ikke pekt på"
+
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "Denne noden (%s) har den dårlige nestepekeren"
+
+#~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
+#~ msgstr "`%s' har ingen Up-felt (kanskje feil inndeling?)"
+
+#~ msgid "Removing %s\n"
+#~ msgstr "Fjerner %s\n"
+
+#~ msgid "Can't remove file `%s': %s"
+#~ msgstr "Kan ikke slette filen «%s»: %s"
+
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "Intern feil (search_sectioning) «%s»!"
+
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "Intern feil (search_sectioning) «%s»!"
+
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%s er avlegs; bruk %c%s i stedet"
+
+#~ msgid "Node with %ctop as a section already exists"
+#~ msgstr "Node med %ctop som en seksjon eksisterer allerede"
+
+#~ msgid "Here is the %ctop node"
+#~ msgstr "Her er %ctop-noden"
+
+#~ msgid "%ctop used before %cnode, defaulting to %s"
+#~ msgstr "%ctop brukt før %cnode, benytter %s"
+
+#~ msgid ""
+#~ "@headitem as the last item of @multitable produces invalid Docbook "
+#~ "documents"
+#~ msgstr ""
+#~ "@headitem som siste punkt i en @multitable fører til uyldige DocBook-"
+#~ "dokumenter"
+
+#~ msgid "of"
+#~ msgstr "av"
+
+#~ msgid "on"
+#~ msgstr "på"
+
+#, fuzzy
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "Ingen kryssreferanser i denne noden."
+
+#, fuzzy
+#~ msgid "Encoding %s certainly poorly supported"
+#~ msgstr "beklager, kodingen «%s» er ikke støttet"
+
+#, fuzzy
+#~ msgid ""
+#~ "General options:\n"
+#~ "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+#~ "      --document-language=STR locale to use in translating Texinfo "
+#~ "keywords\n"
+#~ "                                for the output document (default C).\n"
+#~ "      --force                 preserve output even if errors.\n"
+#~ "      --help                  display this help and exit.\n"
+#~ "      --no-validate           suppress node cross-reference validation.\n"
+#~ "      --no-warn               suppress warnings (but not errors).\n"
+#~ "      --conf-dir=DIR          search also for initialization files in "
+#~ "DIR.\n"
+#~ "      --init-file=FILE        load FILE to modify the default behaviour.\n"
+#~ "      --set-init-variable VAR=VAL  set configuration variable VAR to "
+#~ "VAL.\n"
+#~ "  -v, --verbose               explain what is being done.\n"
+#~ "      --version               display version information and exit.\n"
+#~ msgstr ""
+#~ "Generelle valg:\n"
+#~ "      --error-limit=ANT       avbryte etter ANT feil (standard %d).\n"
+#~ "      --force                 bevare output selv med feil.\n"
+#~ "      --help                  vise denne hjelpen og avslutte.\n"
+#~ "      --no-validate           undertrykke sjekking av kryssreferanser.\n"
+#~ "      --no-warn               undertrykke advarsler (men ikke feil).\n"
+#~ "      --reference-limit=ANT   advare om på det meste ANT referanser "
+#~ "(standard %d).\n"
+#~ "  -v, --verbose               forklare hva som blir gjort.\n"
+#~ "      --version               vise programversjon og avslutte.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "General output options:\n"
+#~ "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+#~ "                                ignoring any @setfilename.\n"
+#~ "      --no-headers            suppress node separators, Node: lines, and "
+#~ "menus\n"
+#~ "                                from Info output (thus producing plain "
+#~ "text)\n"
+#~ "                                or from HTML (thus producing shorter "
+#~ "output);\n"
+#~ "                                also, write to standard output by default "
+#~ "if\n"
+#~ "                                producing Info.\n"
+#~ "      --split=SPLIT           split at SPLIT, where SPLIT may be "
+#~ "chapter, \n"
+#~ "                                section or node if output supports "
+#~ "splitting.\n"
+#~ "      --no-split              suppress the splitting of Info or HTML "
+#~ "output,\n"
+#~ "                                generate only one output file.\n"
+#~ "      --number-sections       output chapter and sectioning numbers.\n"
+#~ "  -o, --output=FILE           output to FILE (or directory if split).\n"
+#~ "                                If not split and FILE is a directory, put "
+#~ "the\n"
+#~ "                                resulting files in FILE.\n"
+#~ msgstr ""
+#~ "Generelle outputvalg:\n"
+#~ "  -E, --macro-expand FIL    sende makroekspandert kilde til FIL,\n"
+#~ "                              ignorerer enhver @setfilename.\n"
+#~ "      --no-headers          undertrykke nodeseparatorer, Node:-linjer og "
+#~ "menyer\n"
+#~ "                              fra Info-output (og dermed produsere ren "
+#~ "tekst)\n"
+#~ "                              eller fra HTML (og dermed produsere kortere "
+#~ "output);\n"
+#~ "                              standard er å skrive til standard ut.\n"
+#~ "      --no-split            undertrykke splitting av Info- eller HTML-"
+#~ "output,\n"
+#~ "                              generere bare en outputfil.\n"
+#~ "      --number-sections     nummerere kapitler og avdelinger (section).\n"
+#~ "  -o, --output=FIL          sende output til FIL (eller katalog dersom "
+#~ "splittet HTML),\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Options for HTML:\n"
+#~ "      --css-include=FILE      include FILE in HTML <style> output;\n"
+#~ "                                read stdin if FILE is -.\n"
+#~ "      --css-ref=URL           generate reference to a CSS file.\n"
+#~ "      --internal-links=FILE   produce list of internal links in FILE.\n"
+#~ "      --transliterate-file-names\n"
+#~ "                              produce file names in ASCII "
+#~ "transliteration.\n"
+#~ "      --node-files            produce redirection files for nodes and \n"
+#~ "                                anchors. Default is set only if split.\n"
+#~ msgstr ""
+#~ "Valg for HTML:\n"
+#~ "      --css-include=FIL         inkluder FIL i HTML <style>-taggen;\n"
+#~ "                                  les stdin dersom FIL er -.\n"
+
+#, fuzzy
+#~ msgid "Cannot split output %s"
+#~ msgstr "Kunne ikke opprette outputfila «%s»"
+
+#, fuzzy
+#~ msgid "%s not writable"
+#~ msgstr "%s: tom fil"
+
+#, fuzzy
+#~ msgid " end of file"
+#~ msgstr "Finne fil: "
+
+#, fuzzy
+#~ msgid "Node `%s' previously defined %s"
+#~ msgstr "Noden «%s» er tidligere definert ved linje %d"
+
+#, fuzzy
+#~ msgid "@%s requires an argument"
+#~ msgstr "%c%s krever et navn"
+
+#, fuzzy
+#~ msgid "Node `%s' that is to be renamed exists "
+#~ msgstr "Indeksen «%s» eksisterer allerede"
+
+#, fuzzy
+#~ msgid "%s: Removing output files due to errors; use --force to preserve.\n"
+#~ msgstr ""
+#~ "%s: Fjerner utskriftsfilen «%s» på grunn av feil; bruk --force for å "
+#~ "bevare.\n"
+
+#, fuzzy
+#~ msgid "(in %s l. %d)"
+#~ msgstr "(linje %*d)"
+
+#, fuzzy
+#~ msgid "(l. %d)"
+#~ msgstr "(linje %*d)"
+
+#, fuzzy
+#~ msgid "Missing `}' on @%s line"
+#~ msgstr "Manglende «}» i @def-arg"
+
+#, fuzzy
+#~ msgid "Anchor `%s' ignored in %s expanded more than once"
+#~ msgstr "Ankeret «%s» og noden «%s» blir knyttet til det samme filnavnet"
+
+#, fuzzy
+#~ msgid "Unknown format %s"
+#~ msgstr "Ukjent kommando «%s»"
+
+#, fuzzy
+#~ msgid "@%s (argument nr %d)"
+#~ msgstr "Ugyldig argument til @%s"
+
+#, fuzzy
+#~ msgid "First argument to @%s may not be empty"
+#~ msgstr "argumentene til @%s ble ignorert"
+
+#, fuzzy
+#~ msgid "@image file name"
+#~ msgstr "@image-fil «%s» er uleselig: %s"
+
+#, fuzzy
+#~ msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
+#~ msgstr "\\ i makroekspansjon fulgt av «%s» istedet for parameternavn"
+
+#, fuzzy
+#~ msgid "No index prefix found for @%s"
+#~ msgstr "ingen innslag funnet for «%s»\n"
+
+#, fuzzy
+#~ msgid "@%s not allowed in argument to @%s"
+#~ msgstr "@item er ikke tillatt som argument til @itemize"
+
+#, fuzzy
+#~ msgid "@%s already set"
+#~ msgstr "Indeksen «%s» eksisterer allerede"
+
+#, fuzzy
+#~ msgid "Anchor `%s' previously defined %s"
+#~ msgstr "makroen «%s» er tidligere definert"
+
+#, fuzzy
+#~ msgid "No closing brace for specially handled command %s"
+#~ msgstr "Ingen avsluttende krøllparentes for fotnoten «%s»"
+
+#, fuzzy
+#~ msgid "Float label `%s' previously defined %s"
+#~ msgstr "makroen «%s» er tidligere definert"
+
+#, fuzzy
+#~ msgid "ignoring @tab in empty multitable"
+#~ msgstr "ignorerer @tab utenfor multitabell"
+
+#, fuzzy
+#~ msgid "Unknown command with braces `@%s'"
+#~ msgstr "Ukjent kommando «%s»"
+
+#, fuzzy
+#~ msgid "Unexpected command `%s' here"
+#~ msgstr "udefinert kommando: %s"
+
+#, fuzzy
+#~ msgid "%s should not appear in %s"
+#~ msgstr "%s: kunne ikke åpne --css-file: %s"
+
+#, fuzzy
+#~ msgid "Empty index entry for @%s"
+#~ msgstr "ingen innslag funnet for «%s»\n"
+
+#, fuzzy
+#~ msgid "%s: could not open --css-file %s: %s\n"
+#~ msgstr "%s: kunne ikke åpne --css-file: %s"
+
+#, fuzzy
+#~ msgid "@menu before first node"
+#~ msgstr "@menu sett før første @node, oppretter «Top»-noden"
+
+#, fuzzy
+#~ msgid "@image file `%s' not found, using `%s'"
+#~ msgstr "@image-fil «%s» er uleselig: %s"
 
 #~ msgid "One completion:\n"
 #~ msgstr "En fullføring:\n"

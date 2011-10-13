@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.32 2011-08-02 06:51:33 gray Exp $
+@comment $Id: info-stnd.texi,v 1.33 2011-10-13 00:06:51 pertusus Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -586,7 +586,7 @@ start by repeating @key{DEL}.  The default scroll size can be changed by
 invoking the (@code{scroll-backward-page-only-set-window}) command,
 @samp{w} under @samp{--vi-keys}, with a numeric argument.
 
-@itemx @key{PREVIOUS} (arrow key) (@code{scroll-backward-page-only})
+@item @key{PREVIOUS} (arrow key) (@code{scroll-backward-page-only})
 @itemx @key{PRIOR} (arrow key)
 @itemx @kbd{M-v}
 @itemx @kbd{b}, vi-like operation

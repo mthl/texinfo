@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.43 2011-02-22 19:18:14 karl Exp $
+# $Id: Makefile.am,v 1.44 2011-10-13 00:06:51 pertusus Exp $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -21,7 +21,7 @@ man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1  \
 
 # Use the programs built in our distribution, taking account of possible
 # cross-compiling.
-MAKEINFO = $(top_builddir)/$(native_tools)/makeinfo/makeinfo
+MAKEINFO = $(PERL) -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl
 
 # We'd also like to use something like this, but Automake calls
 # "install-info" directly.
@@ -75,10 +75,11 @@ common_mandeps = $(top_srcdir)/configure.ac
 # Set up the variables:
 man_rule_0 = \
 	program=`expr '/$@' : '.*/\(.*\)\.1'` && \
-	case $$program in makeinfo) dir=makeinfo;; info*) dir=info;; \
+	case $$program in makeinfo) dir=tp;; info*) dir=info;; \
 	        *install-info) dir=install-info;; *) dir=util;; esac && \
 	dir="$(top_builddir)/$(native_tools)/$$dir" && \
 	case $$program in info|install-info) program=g$$program;; \
+	                  makeinfo) PERL5LIB="$(top_srcdir)/tp/:$(top_srcdir)/tp/maintain/lib/libintl-perl/lib:$(top_srcdir)/tp/maintain/lib/Unicode-EastAsianWidth/lib:$(top_srcdir)/tp/maintain/lib/Text-Unidecode/lib:"; export PERL5LIB;; \
 		esac
 
 # Update the manpage for a binary program; set up the variables,
@@ -104,7 +105,7 @@ $(srcdir)/install-info.1: $(top_srcdir)/install-info/install-info.c \
 	@name="update info/dir entries" && $(man_rule_bin)
 
 # Here we need some postprocessing to avoid man misformatting.
-$(srcdir)/makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
+$(srcdir)/makeinfo.1: $(top_srcdir)/tp/texi2any.pl $(common_mandeps)
 	@name="translate Texinfo documents" && $(man_rule_bin)
 	mv $@ $@.tmp
 	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@

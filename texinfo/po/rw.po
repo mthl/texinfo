@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-09-25 20:24+0200\n"
+"POT-Creation-Date: 2011-10-13 01:00+0200\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -344,8 +344,7 @@ msgid "Try --help for more information.\n"
 msgstr "Ifashayobora kugirango Birenzeho Ibisobanuro"
 
 #: info/info.c:298 info/infokey.c:144 install-info/install-info.c:2133
-#: makeinfo/makeinfo.c:752 util/texindex.c:295 texi2html/texi2html.pl:4026
-#: tp/texi2any.pl:623
+#: util/texindex.c:295 tp/texi2any.pl:617
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -439,8 +438,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:682 info/infokey.c:911 makeinfo/makeinfo.c:425
-#: util/texindex.c:259
+#: info/info.c:682 info/infokey.c:911 util/texindex.c:259
 #, fuzzy
 msgid ""
 "\n"
@@ -2014,8 +2012,7 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:589 texi2html/texi2html.pl:3946
-#: tp/texi2any.pl:614
+#: install-info/install-info.c:589 tp/texi2any.pl:608
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2120,1100 +2117,6 @@ msgstr ""
 msgid "fflush error on stdout\n"
 msgstr ""
 
-#: makeinfo/cmds.c:590 makeinfo/cmds.c:612
-#, fuzzy, c-format
-msgid "arguments to @%s ignored"
-msgstr "ingingo Kuri"
-
-#: makeinfo/cmds.c:787
-msgid "January"
-msgstr "Mutarama"
-
-#: makeinfo/cmds.c:787
-msgid "February"
-msgstr "Gashyantare"
-
-#: makeinfo/cmds.c:787
-msgid "March"
-msgstr "Werurwe"
-
-#: makeinfo/cmds.c:787
-msgid "April"
-msgstr "Mata"
-
-#: makeinfo/cmds.c:787
-msgid "May"
-msgstr "Gicurasi"
-
-#: makeinfo/cmds.c:788
-msgid "June"
-msgstr "Kamena"
-
-#: makeinfo/cmds.c:788
-msgid "July"
-msgstr "Nyakanga"
-
-#: makeinfo/cmds.c:788
-msgid "August"
-msgstr "Kanama"
-
-#: makeinfo/cmds.c:788
-msgid "September"
-msgstr "Nzeri"
-
-#: makeinfo/cmds.c:788
-msgid "October"
-msgstr "Ukwakira"
-
-#: makeinfo/cmds.c:789
-msgid "November"
-msgstr "Ugushyingo"
-
-#: makeinfo/cmds.c:789
-msgid "December"
-msgstr "Ukuboza"
-
-#: makeinfo/cmds.c:1139
-#, fuzzy, c-format
-msgid "unlikely character %c in @var"
-msgstr "Inyuguti in VAR"
-
-#: makeinfo/cmds.c:1182
-#, fuzzy, c-format
-msgid "@sc argument all uppercase, thus no effect"
-msgstr "@Byose Inyuguti nkuru Oya INGARUKA"
-
-#: makeinfo/cmds.c:1237
-#, fuzzy, c-format
-msgid "`{' expected, but saw `%c'"
-msgstr "`{'Ikitezwe:"
-
-#: makeinfo/cmds.c:1277
-#, fuzzy, c-format
-msgid "end of file inside verb block"
-msgstr "Impera Bya IDOSIYE Mo Imbere Ishinga Funga"
-
-#: makeinfo/cmds.c:1285
-#, fuzzy, c-format
-msgid "`}' expected, but saw `%c'"
-msgstr "`}'Ikitezwe:"
-
-#: makeinfo/cmds.c:1316 texi2html/formats/info.pm:1188
-#: tp/Texinfo/Convert/Plaintext.pm:1299
-#, fuzzy, c-format
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr "@a Kwambukiranya Indango in Kuri"
-
-#: makeinfo/cmds.c:1512
-#, fuzzy, c-format
-msgid "%c%s is obsolete"
-msgstr "%c%sni"
-
-#: makeinfo/cmds.c:1620 texi2html/texi2html.pl:6369
-#, fuzzy, c-format, perl-format
-msgid "@sp requires a positive numeric argument, not `%s'"
-msgstr "@SP a Bikurikije umubare OYA"
-
-#: makeinfo/cmds.c:2031 makeinfo/footnote.c:81
-#, fuzzy, c-format
-msgid "Bad argument to %c%s"
-msgstr "Kuri"
-
-#: makeinfo/cmds.c:2041 makeinfo/makeinfo.c:4231
-msgid "asis"
-msgstr ""
-
-#: makeinfo/cmds.c:2043 makeinfo/cmds.c:2073 makeinfo/makeinfo.c:4233
-msgid "none"
-msgstr "ntacyo"
-
-#: makeinfo/cmds.c:2057 texi2html/texi2html.pl:6003
-#: texi2html/texi2html.pl:6014 tp/Texinfo/Parser.pm:2528
-#: tp/Texinfo/Parser.pm:4642 tp/Texinfo/Parser.pm:4653
-#, fuzzy, c-format, perl-format
-msgid "Bad argument to @%s"
-msgstr "Kuri"
-
-# basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.RID_INSERT.text
-#: makeinfo/cmds.c:2071
-#, fuzzy
-msgid "insert"
-msgstr "Kongeramo"
-
-#: makeinfo/cmds.c:2087 texi2html/texi2html.pl:5942
-#: texi2html/texi2html.pl:6160 texi2html/texi2html.pl:6188
-#: texi2html/texi2html.pl:6253 texi2html/texi2html.pl:6417
-#: texi2html/texi2html.pl:13222 texi2html/texi2html.pl:14620
-#: tp/Texinfo/Parser.pm:2694 tp/Texinfo/Parser.pm:4693
-#: tp/Texinfo/Parser.pm:4726 tp/Texinfo/Parser.pm:4752
-#: tp/Texinfo/Parser.pm:4785 tp/Texinfo/Parser.pm:4845
-#, fuzzy, c-format, perl-format
-msgid "Bad argument to @%s: %s"
-msgstr "Kuri"
-
-#: makeinfo/cmds.c:2170 texi2html/texi2html.pl:5889 tp/Texinfo/Parser.pm:4819
-#, c-format, perl-format
-msgid "Expected @%s on or off, not `%s'"
-msgstr ""
-
-#: makeinfo/cmds.c:2190 texi2html/texi2html.pl:6211 tp/Texinfo/Parser.pm:4766
-#, c-format, perl-format
-msgid "Only @%s 10 or 11 is supported, not `%s'"
-msgstr ""
-
-#: makeinfo/defun.c:83
-#, fuzzy, c-format
-msgid "Missing `}' in @def arg"
-msgstr "in"
-
-#: makeinfo/defun.c:711 texi2html/texi2html.pl:11169
-#, fuzzy, c-format, perl-format
-msgid "Must be in `@%s' environment to use `@%s'"
-msgstr "in Kuri Gukoresha"
-
-#: makeinfo/files.c:434
-#, c-format
-msgid "%s: getwd: %s, %s\n"
-msgstr ""
-
-#: makeinfo/files.c:637
-#, fuzzy, c-format
-msgid "`%s' omitted before output filename"
-msgstr "`%s'Mbere Ibisohoka Izina ry'idosiye:"
-
-#: makeinfo/files.c:645
-#, fuzzy, c-format
-msgid "`%s' omitted since writing to stdout"
-msgstr "`%s'guhera Kuri"
-
-#: makeinfo/files.c:693
-#, fuzzy, c-format
-msgid "Output buffer not empty."
-msgstr "OYA ubusa"
-
-#: makeinfo/float.c:181 texi2html/texi2html.pl:14578
-#, c-format, perl-format
-msgid "Requested float type `%s' not previously used"
-msgstr ""
-
-#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:959
-#: makeinfo/index.c:965
-msgid "See "
-msgstr ""
-
-#: makeinfo/footnote.c:149
-#, fuzzy, c-format
-msgid "`%c%s' needs an argument `{...}', not just `%s'"
-msgstr "`%c%s'OYA"
-
-#: makeinfo/footnote.c:164
-#, fuzzy, c-format
-msgid "No closing brace for footnote `%s'"
-msgstr "kugirango Ubusobanuro mpezarupapuro"
-
-#: makeinfo/footnote.c:197 texi2html/formats/info.pm:3199
-#, c-format
-msgid "Footnote defined without parent node"
-msgstr ""
-
-#: makeinfo/footnote.c:209
-#, fuzzy, c-format
-msgid "Footnotes inside footnotes are not allowed"
-msgstr "Mo Imbere Ubusobanuro mpezarupapuro OYA"
-
-#: makeinfo/footnote.c:301 makeinfo/index.c:187
-msgid "Footnotes"
-msgstr "Ubusobanuro mpezarupapuro"
-
-#: makeinfo/html.c:91
-#, fuzzy, c-format
-msgid "%s: could not open --css-file: %s"
-msgstr "%s:OYA Gufungura IDOSIYE"
-
-#: makeinfo/html.c:180 texi2html/texi2html.pl:16860
-#: tp/Texinfo/Convert/HTML.pm:4283
-#, fuzzy, c-format, perl-format
-msgid "%s:%d: --css-file ended in comment"
-msgstr "%s:%d:--IDOSIYE in Icyo wongeraho"
-
-#: makeinfo/html.c:426
-#, fuzzy, c-format
-msgid "[unexpected] no html tag to pop"
-msgstr "[Oya HTML Itagi: Kuri"
-
-#: makeinfo/html.c:786
-#, fuzzy, c-format
-msgid "[unexpected] invalid node name: `%s'"
-msgstr "[Sibyo Izina:"
-
-#: makeinfo/index.c:167 texi2html/texi2html.pl:8457
-#, fuzzy, c-format, perl-format
-msgid "Unknown index `%s'"
-msgstr "Umubarendanga"
-
-#: makeinfo/index.c:232
-#, fuzzy, c-format
-msgid "Info cannot handle `:' in index entry `%s'"
-msgstr "in Umubarendanga Icyinjijwe"
-
-#: makeinfo/index.c:410
-#, c-format
-msgid "Index `%s' already exists"
-msgstr ""
-
-#: makeinfo/index.c:453
-#, fuzzy, c-format
-msgid "Unknown index `%s' and/or `%s' in @synindex"
-msgstr "Umubarendanga Na Cyangwa in"
-
-#: makeinfo/index.c:676
-#, fuzzy
-msgid "(line )"
-msgstr "(Umurongo"
-
-#: makeinfo/index.c:684
-#, fuzzy, c-format
-msgid "(line %*d)"
-msgstr "(Umurongo"
-
-#: makeinfo/index.c:765 texi2html/texi2html.pl:13627 tp/Texinfo/Parser.pm:4733
-#, fuzzy, c-format, perl-format
-msgid "Unknown index `%s' in @printindex"
-msgstr "Umubarendanga in"
-
-#: makeinfo/index.c:834 texi2html/texi2html.pl:8462
-#: texi2html/formats/info.pm:3075 tp/Texinfo/Parser.pm:2146
-#: tp/Texinfo/Convert/Info.pm:410
-#, fuzzy, c-format, perl-format
-msgid "Entry for index `%s' outside of any node"
-msgstr "kugirango Umubarendanga Hanze Bya"
-
-#: makeinfo/index.c:837 makeinfo/index.c:873
-#, fuzzy
-msgid "(outside of any node)"
-msgstr "(Hanze Bya"
-
-#: makeinfo/insertion.c:162
-#, fuzzy, c-format
-msgid "@item not allowed in argument to @itemize"
-msgstr "@Ikintu OYA in Kuri"
-
-#: makeinfo/insertion.c:243
-#, fuzzy
-msgid "Broken-Type in insertion_type_pname"
-msgstr "in"
-
-#: makeinfo/insertion.c:339
-#, fuzzy, c-format
-msgid "Enumeration stack overflow"
-msgstr "Byarenze urugero"
-
-#: makeinfo/insertion.c:371
-#, fuzzy, c-format
-msgid "lettering overflow, restarting at %c"
-msgstr "Byarenze urugero ku"
-
-#: makeinfo/insertion.c:640 texi2html/texi2html.pl:11309
-#: tp/Texinfo/Parser.pm:2537
-#, fuzzy, c-format, perl-format
-msgid "%s requires an argument: the formatter for %citem"
-msgstr "%si kugirango"
-
-#: makeinfo/insertion.c:728
-#, c-format
-msgid "%cfloat environments cannot be nested"
-msgstr ""
-
-#: makeinfo/insertion.c:1006 texi2html/texi2html.pl:10847
-#: texi2html/texi2html.pl:10874 texi2html/texi2html.pl:14483
-#: tp/Texinfo/Parser.pm:1436
-#, fuzzy, c-format, perl-format
-msgid "`@end' expected `%s', but saw `%s'"
-msgstr "`@Ikitezwe:"
-
-#: makeinfo/insertion.c:1382 texi2html/texi2html.pl:16003
-#: tp/Texinfo/Parser.pm:1439
-#, c-format, perl-format
-msgid "No matching `%cend %s'"
-msgstr ""
-
-#: makeinfo/insertion.c:1651
-#, fuzzy, c-format
-msgid "%s requires letter or digit"
-msgstr "%sIbaruwa... Cyangwa"
-
-#: makeinfo/insertion.c:1751
-#, fuzzy, c-format
-msgid "end of file inside verbatim block"
-msgstr "Impera Bya IDOSIYE Mo Imbere Funga"
-
-#: makeinfo/insertion.c:1975 texi2html/texi2html.pl:11893
-#, fuzzy, c-format, perl-format
-msgid "@%s not meaningful outside `@float' environment"
-msgstr "@%sOYA Hanze"
-
-#: makeinfo/insertion.c:2011
-#, fuzzy, c-format
-msgid "@menu seen before first @node, creating `Top' node"
-msgstr "@Ibikubiyemo Mbere Itangira"
-
-#: makeinfo/insertion.c:2012 texi2html/texi2html.pl:13725
-#: tp/Texinfo/Parser.pm:4112
-#, fuzzy, c-format
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr "Hejuru: in"
-
-#: makeinfo/insertion.c:2024
-#, fuzzy, c-format
-msgid "@detailmenu seen before first node, creating `Top' node"
-msgstr "@Mbere Itangira"
-
-#: makeinfo/insertion.c:2099 texi2html/texi2html.pl:6301
-#: tp/Texinfo/Parser.pm:3943
-#, fuzzy, c-format, perl-format
-msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr "@%sOYA Hanze Na"
-
-#: makeinfo/insertion.c:2113
-#, fuzzy, c-format
-msgid "@%s not meaningful outside `@titlepage' environment"
-msgstr "@%sOYA Hanze"
-
-#: makeinfo/insertion.c:2144 texi2html/texi2html.pl:12847
-#: texi2html/texi2html.pl:13379 texi2html/texi2html.pl:14410
-#: texi2html/texi2html.pl:14430 texi2html/texi2html.pl:14472
-#: tp/Texinfo/Parser.pm:1535 tp/Texinfo/Parser.pm:2678
-#, c-format, perl-format
-msgid "Unmatched `%c%s'"
-msgstr ""
-
-#: makeinfo/insertion.c:2149
-#, fuzzy, c-format
-msgid "`%c%s' needs something after it"
-msgstr "`%c%s'Nyuma"
-
-#: makeinfo/insertion.c:2155 texi2html/texi2html.pl:13964
-#, fuzzy, c-format, perl-format
-msgid "Bad argument `%s' to `@%s', using `%s'"
-msgstr "Kuri ikoresha"
-
-#: makeinfo/insertion.c:2252 texi2html/texi2html.pl:14911
-#: texi2html/texi2html.pl:14924 tp/Texinfo/Parser.pm:3809
-#: tp/Texinfo/Parser.pm:3821 tp/Texinfo/Parser.pm:3865
-#, fuzzy, c-format, perl-format
-msgid "@%s not meaningful inside `@%s' block"
-msgstr "@%sOYA Mo Imbere Funga"
-
-#: makeinfo/insertion.c:2261
-#, fuzzy, c-format
-msgid "@itemx not meaningful inside `%s' block"
-msgstr "@OYA Mo Imbere Funga"
-
-#: makeinfo/insertion.c:2435
-#, fuzzy, c-format
-msgid "%c%s found outside of an insertion block"
-msgstr "%c%sByabonetse Hanze Bya Iyinjizamo Funga"
-
-#: makeinfo/lang.c:1218
-#, c-format
-msgid "no default territory known for language `%s'"
-msgstr ""
-
-#: makeinfo/lang.c:1281
-#, fuzzy, c-format
-msgid "%s is not a valid ISO 639 language code"
-msgstr "%sni OYA a Byemewe Ururimi ITEGEKONGENGA"
-
-#: makeinfo/lang.c:1399 texi2html/texi2html.pl:2649 tp/Texinfo/Parser.pm:2726
-#, fuzzy, c-format, perl-format
-msgid "unrecognized encoding name `%s'"
-msgstr "Imisobekere: Izina:"
-
-#: makeinfo/lang.c:1407
-#, fuzzy, c-format
-msgid "sorry, encoding `%s' not supported"
-msgstr "Imisobekere: OYA"
-
-#: makeinfo/lang.c:1492
-#, fuzzy, c-format
-msgid "invalid encoded character `%s'"
-msgstr "Sibyo Inyuguti"
-
-#: makeinfo/lang.c:1800
-#, fuzzy, c-format
-msgid "%c%s expects `i' or `j' as argument, not `%c'"
-msgstr "%c%sCyangwa Nka OYA"
-
-#: makeinfo/lang.c:1804 texi2html/texi2html.pl:15648
-#, fuzzy, c-format, perl-format
-msgid "%c%s expects a single character `i' or `j' as argument"
-msgstr "%c%sa UMWE Inyuguti Cyangwa Nka"
-
-#: makeinfo/macro.c:128 texi2html/texi2html.pl:12935 tp/Texinfo/Parser.pm:3235
-#, fuzzy, c-format, perl-format
-msgid "macro `%s' previously defined"
-msgstr "Makoro"
-
-#: makeinfo/macro.c:132 texi2html/texi2html.pl:12936 tp/Texinfo/Parser.pm:3237
-#, fuzzy, c-format, perl-format
-msgid "here is the previous definition of `%s'"
-msgstr "ni i Ibanjirije Insobanuro Bya"
-
-#: makeinfo/macro.c:359
-#, fuzzy, c-format
-msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-msgstr "\\ in Makoro ku Bya Izina:"
-
-#: makeinfo/macro.c:401
-#, fuzzy, c-format
-msgid "Macro `%s' called on line %d with too many args"
-msgstr "ku Umurongo Na:"
-
-#: makeinfo/macro.c:580 texi2html/texi2html.pl:15834
-#, fuzzy, c-format, perl-format
-msgid "%cend macro not found"
-msgstr "%cendMakoro OYA Byabonetse"
-
-#: makeinfo/macro.c:591
-#, c-format
-msgid "@allow-recursion is deprecated; please use @rmacro instead"
-msgstr ""
-
-#: makeinfo/macro.c:606
-#, c-format
-msgid "@quote-arg is deprecated; arguments are quoted by default"
-msgstr ""
-
-#: makeinfo/macro.c:649 texi2html/texi2html.pl:11036
-#, fuzzy, c-format, perl-format
-msgid "mismatched @end %s with @%s"
-msgstr "Impera Na:"
-
-#: makeinfo/makeinfo.c:188 texi2html/texi2html.pl:9650
-#, fuzzy, c-format
-msgid "Too many errors!  Gave up.\n"
-msgstr "Amakosa Hejuru"
-
-#: makeinfo/makeinfo.c:260
-#, fuzzy, c-format
-msgid "%s:%d: warning: "
-msgstr "%s:%d:Iburira"
-
-#: makeinfo/makeinfo.c:275 makeinfo/makeinfo.c:2290
-#: texi2html/texi2html.pl:15075 texi2html/texi2html.pl:15095
-#: tp/Texinfo/Parser.pm:1457 tp/Texinfo/Parser.pm:4279
-#: tp/Texinfo/Parser.pm:4431
-#, c-format, perl-format
-msgid "Misplaced %c"
-msgstr ""
-
-#: makeinfo/makeinfo.c:294 texi2html/texi2html.pl:2392 tp/texi2any.pl:868
-#, fuzzy, c-format, perl-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "kugirango Birenzeho Ibisobanuro"
-
-#: makeinfo/makeinfo.c:297 texi2html/texi2html.pl:3828 tp/texi2any.pl:492
-#, c-format, perl-format
-msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:300 texi2html/texi2html.pl:3830 tp/texi2any.pl:494
-#, fuzzy
-msgid ""
-"Translate Texinfo source documentation to various other formats, by default\n"
-"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
-msgstr ""
-"Inkomoko Kuri Ikindi Imiterere ku Idosiye kugirango kiri kuri interineti Na: "
-"Cyangwa"
-
-#: makeinfo/makeinfo.c:304
-#, fuzzy, c-format
-msgid ""
-"General options:\n"
-"      --error-limit=NUM       quit after NUM errors (default %d).\n"
-"      --document-language=STR locale to use in translating Texinfo keywords\n"
-"                                for the output document (default C).\n"
-"      --force                 preserve output even if errors.\n"
-"      --help                  display this help and exit.\n"
-"      --no-validate           suppress node cross-reference validation.\n"
-"      --no-warn               suppress warnings (but not errors).\n"
-"  -v, --verbose               explain what is being done.\n"
-"      --version               display version information and exit.\n"
-msgstr ""
-"Amahitamo Ikosa Kuvamo Nyuma Amakosa Mburabuzi Ibisohoka ATARIIGIHARWE NIBA "
-"Amakosa Ifashayobora Kugaragaza iyi Ifashayobora Na Gusohoka Oya Kwemeza "
-"Kwambukiranya Indango Kwemeza Oya Iburira OYA Amakosa Indango Ibyerekeye ku "
-"Indango Mburabuzi v ni Byakozwe Verisiyo Kugaragaza Verisiyo Ibisobanuro Na "
-"Gusohoka"
-
-#: makeinfo/makeinfo.c:319 texi2html/texi2html.pl:3847
-#, fuzzy, no-wrap
-msgid ""
-"Output format selection (default is to produce Info):\n"
-"      --docbook               output Docbook XML rather than Info.\n"
-"      --html                  output HTML rather than Info.\n"
-"      --xml                   output Texinfo XML rather than Info.\n"
-"      --plaintext             output plain text rather than Info.\n"
-msgstr "Imiterere Ihitamo Mburabuzi ni Kuri InyandikoGitabo Ibisohoka HTML Ibisohoka xml Ibisohoka Ibisohoka Byuzuye Umwandiko"
-
-#: makeinfo/makeinfo.c:327
-#, fuzzy
-msgid ""
-"General output options:\n"
-"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-"                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
-"                                also, write to standard output by default.\n"
-"      --no-split              suppress the splitting of Info or HTML "
-"output,\n"
-"                                generate only one output file.\n"
-"      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
-msgstr ""
-"Ibisohoka Amahitamo E Makoro Kwagura Ibisohoka Makoro Cyagutse Inkomoko Kuri "
-"Oya Imitwe Imirongo Na Bivuye Ibisohoka Byuzuye Umwandiko Cyangwa Bivuye "
-"Ibisohoka Kwandika Kuri Bisanzwe Ibisohoka ku Mburabuzi Oya Gutandukanya Bya "
-"Cyangwa Ibisohoka Ibisohoka IDOSIYE Umubare Ibyatoranyijwe Ibisohoka Umutwe "
-"Na Imibare o Ibisohoka Ibisohoka Kuri bushyinguro NIBA Gutandukanya"
-
-#: makeinfo/makeinfo.c:341 texi2html/texi2html.pl:3870 tp/texi2any.pl:539
-#, fuzzy, c-format, perl-format
-msgid ""
-"Options for Info and plain text:\n"
-"      --disable-encoding      do not output accented and special characters\n"
-"                                in Info output based on @documentencoding.\n"
-"      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default "
-"%d).\n"
-"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
-"                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
-"%d).\n"
-"                                If VAL is `none', do not indent; if VAL is\n"
-"                                `asis', preserve existing indentation.\n"
-"      --split-size=NUM        split Info files at size NUM (default %d).\n"
-msgstr ""
-"kugirango Na Byuzuye Umwandiko Gushoboza Imisobekere: Ibisohoka Na "
-"Bidasanzwe Inyuguti Ibisohoka ku Kuzuza Inkingi itandukanya Imirongo ku "
-"Inyuguti Mburabuzi Ubusobanuro mpezarupapuro IMISUSIRE Ibisohoka Ubusobanuro "
-"mpezarupapuro in Kuri Kuri Gushyira in Kuri Gushyira ku i Impera Bya i in "
-"Mburabuzi Igika Ikurura Ikurura Ibika ku Imyanya Mburabuzi ni OYA Ikurura "
-"NIBA Gutandukanya Ingano Gutandukanya Idosiye ku Ingano Mburabuzi"
-
-#: makeinfo/makeinfo.c:359
-#, fuzzy
-msgid ""
-"Options for HTML:\n"
-"      --css-include=FILE      include FILE in HTML <style> output;\n"
-"                                read stdin if FILE is -.\n"
-"      --css-ref=URL           generate reference to a CSS file.\n"
-"      --internal-links=FILE   produce list of internal links in FILE.\n"
-"      --transliterate-file-names\n"
-"                              produce file names in ASCII transliteration.\n"
-msgstr "kugirango Gushyiramo Gushyiramo in IMISUSIRE Ibisohoka Gusoma NIBA ni"
-
-#: makeinfo/makeinfo.c:369
-#, fuzzy, c-format
-msgid ""
-"Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default "
-"%d).\n"
-"                                If VAL is 0, ignorable whitespace is "
-"dropped.\n"
-msgstr ""
-"kugirango Na Ibisohoka Ikurura Ikurura Ibintu ku Imyanya Mburabuzi ni 0 ni"
-
-#: makeinfo/makeinfo.c:376
-#, fuzzy
-msgid ""
-"Input file options:\n"
-"      --commands-in-node-names  allow @ commands in node names.\n"
-"  -D VAR                        define the variable VAR, as with @set.\n"
-"  -I DIR                        append DIR to the @include search path.\n"
-"  -P DIR                        prepend DIR to the @include search path.\n"
-"  -U VAR                        undefine the variable VAR, as with @clear.\n"
-msgstr ""
-"IDOSIYE Amahitamo Amabwiriza in Amazina Kwemerera Amabwiriza in Amazina "
-"Kugaragaza... i IMPINDURAGACIRO Nka Na: Gushyiraho Kongeraho... Kuri i "
-"Gushyiramo Gushaka Inzira Kuri i Gushyiramo Gushaka Inzira U i "
-"IMPINDURAGACIRO Nka Na: Gusiba"
-
-#: makeinfo/makeinfo.c:385 texi2html/texi2html.pl:3912
-#, fuzzy
-msgid ""
-"Conditional processing in input:\n"
-"  --ifdocbook       process @ifdocbook and @docbook even if\n"
-"                      not generating Docbook.\n"
-"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
-"  --ifinfo          process @ifinfo even if not generating Info.\n"
-"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
-"  --iftex           process @iftex and @tex; implies --no-split.\n"
-"  --ifxml           process @ifxml and @xml.\n"
-"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
-"  --no-ifhtml       do not process @ifhtml and @html text.\n"
-"  --no-ifinfo       do not process @ifinfo text.\n"
-"  --no-ifplaintext  do not process @ifplaintext text.\n"
-"  --no-iftex        do not process @iftex and @tex text.\n"
-"  --no-ifxml        do not process @ifxml and @xml text.\n"
-"\n"
-"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
-msgstr ""
-"Inonosora in Iyinjiza Na InyandikoGitabo ATARIIGIHARWE OYA Na HTML "
-"ATARIIGIHARWE NIBA OYA ATARIIGIHARWE NIBA OYA ATARIIGIHARWE NIBA OYA Byuzuye "
-"Umwandiko Na Oya Gutandukanya Na xml Oya OYA Na InyandikoGitabo Umwandiko "
-"Oya OYA Na HTML Umwandiko Oya OYA Umwandiko Oya OYA Umwandiko Oya OYA Na "
-"Umwandiko Oya OYA Na xml Umwandiko kugirango i Oya Amahitamo Umwandiko"
-
-#: makeinfo/makeinfo.c:404 texi2html/texi2html.pl:3929 tp/texi2any.pl:597
-#, fuzzy
-msgid ""
-"  The defaults for the @if... conditionals depend on the output format:\n"
-"  if generating HTML, --ifhtml is on and the others are off;\n"
-"  if generating Info, --ifinfo is on and the others are off;\n"
-"  if generating plain text, --ifplaintext is on and the others are off;\n"
-"  if generating XML, --ifxml is on and the others are off.\n"
-msgstr ""
-"kugirango i NIBA ku i Ibisohoka Imiterere NIBA ni ku Na i Ibindi Bidakora "
-"NIBA ni ku Na i Ibindi Bidakora NIBA Byuzuye Umwandiko ni ku Na i Ibindi "
-"Bidakora NIBA ni ku Na i Ibindi Bidakora"
-
-#: makeinfo/makeinfo.c:412 texi2html/texi2html.pl:3935 tp/texi2any.pl:603
-#, fuzzy
-msgid ""
-"Examples:\n"
-"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
-"  makeinfo --html foo.texi               write HTML to @setfilename\n"
-"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
-"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard "
-"output\n"
-"\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
-"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
-"  makeinfo --no-split foo.texi           write one Info file however big\n"
-msgstr ""
-"Kwandika Kuri HTML Kwandika Kuri xml Kwandika Kuri InyandikoGitabo Kwandika "
-"Kuri Oya Imitwe Kwandika Byuzuye Umwandiko Kuri Bisanzwe HTML Oya Imitwe "
-"Kwandika HTML Imirongo Umubare Ibyatoranyijwe Kwandika Na: Iriho Imibare Oya "
-"Gutandukanya Kwandika IDOSIYE"
-
-#: makeinfo/makeinfo.c:572 texi2html/texi2html.pl:4056 tp/texi2any.pl:818
-#, fuzzy, c-format, perl-format
-msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
-msgstr "%s:Kwirengagiza Agaciro"
-
-#: makeinfo/makeinfo.c:620 makeinfo/makeinfo.c:646 makeinfo/makeinfo.c:670
-#: makeinfo/makeinfo.c:730
-#, fuzzy, c-format
-msgid "%s: %s arg must be numeric, not `%s'.\n"
-msgstr "%s:%sBikurikije umubare OYA"
-
-#: makeinfo/makeinfo.c:633
-#, fuzzy, c-format
-msgid "%s: could not open macro expansion output `%s'"
-msgstr "%s:OYA Gufungura Makoro Ibisohoka"
-
-#: makeinfo/makeinfo.c:638
-#, fuzzy, c-format
-msgid "%s: ignoring second macro expansion output `%s'.\n"
-msgstr "%s:ISEGONDA Makoro Ibisohoka"
-
-#: makeinfo/makeinfo.c:683
-#, fuzzy, c-format
-msgid "%s: could not open internal links output `%s'"
-msgstr "%s:OYA Gufungura Makoro Ibisohoka"
-
-#: makeinfo/makeinfo.c:688
-#, fuzzy, c-format
-msgid "%s: ignoring second internal links output `%s'.\n"
-msgstr "%s:ISEGONDA Makoro Ibisohoka"
-
-#: makeinfo/makeinfo.c:701 texi2html/texi2html.pl:2625 tp/texi2any.pl:731
-#, fuzzy, c-format, perl-format
-msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
-
-#: makeinfo/makeinfo.c:719 texi2html/texi2html.pl:2569 tp/texi2any.pl:647
-#, fuzzy, c-format, perl-format
-msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
-
-#: makeinfo/makeinfo.c:794 texi2html/texi2html.pl:17006 tp/texi2any.pl:867
-#, fuzzy, c-format, perl-format
-msgid "%s: missing file argument.\n"
-msgstr "%s:Ibuze IDOSIYE"
-
-#: makeinfo/makeinfo.c:991 makeinfo/makeinfo.c:4080
-#, fuzzy, c-format
-msgid "Multiline command %c%s used improperly"
-msgstr "Komandi:"
-
-#: makeinfo/makeinfo.c:994
-#, fuzzy, c-format
-msgid "Expected `%s'"
-msgstr "Ikitezwe:"
-
-#: makeinfo/makeinfo.c:1471 texi2html/texi2html.pl:4755
-#, fuzzy, c-format, perl-format
-msgid "Can't create directory `%s': %s"
-msgstr "Kurema bushyinguro"
-
-#: makeinfo/makeinfo.c:1517
-#, fuzzy, c-format
-msgid "No `%s' found in `%s'"
-msgstr "Byabonetse in"
-
-#: makeinfo/makeinfo.c:1597
-#, fuzzy, c-format
-msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr "%s:Makoro Kuri Nka Ibisohoka ni"
-
-#: makeinfo/makeinfo.c:1627
-#, fuzzy, c-format
-msgid "Making %s file `%s' from `%s'.\n"
-msgstr "IDOSIYE Bivuye"
-
-#: makeinfo/makeinfo.c:1694
-#, fuzzy, c-format
-msgid ""
-"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%s:Makoro Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
-
-#: makeinfo/makeinfo.c:1749 texi2html/texi2html.pl:9599
-#, fuzzy, c-format, perl-format
-msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr "%s:Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
-
-#: makeinfo/makeinfo.c:1768
-#, fuzzy, c-format
-msgid ""
-"%s: Removing internal links output file `%s' due to errors; use --force to "
-"preserve.\n"
-msgstr "%s:Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
-
-#: makeinfo/makeinfo.c:2063 texi2html/texi2html.pl:15748
-#: tp/Texinfo/Parser.pm:4181
-#, fuzzy, c-format, perl-format
-msgid "Unknown command `%s'"
-msgstr "Komandi:"
-
-#: makeinfo/makeinfo.c:2085 texi2html/texi2html.pl:14751
-#: tp/Texinfo/Parser.pm:3436
-#, fuzzy, c-format, perl-format
-msgid "Use braces to give a command as an argument to @%s"
-msgstr "Ingirwadusodeko Kuri a Komandi: Nka Kuri"
-
-#: makeinfo/makeinfo.c:2344 texi2html/texi2html.pl:15740
-#, fuzzy, c-format, perl-format
-msgid "%c%s expected braces"
-msgstr "%c%sIkitezwe: Ingirwadusodeko"
-
-#: makeinfo/makeinfo.c:2357
-#, c-format
-msgid "Unmatched }"
-msgstr ""
-
-# 4203
-#: makeinfo/makeinfo.c:2405
-#, fuzzy
-msgid "NO_NAME!"
-msgstr "nta zina"
-
-#: makeinfo/makeinfo.c:2426 texi2html/texi2html.pl:16039
-#: texi2html/texi2html.pl:16067 tp/Texinfo/Parser.pm:1054
-#, fuzzy, c-format, perl-format
-msgid "%c%s missing close brace"
-msgstr "%c%sIbuze Gufunga"
-
-#: makeinfo/makeinfo.c:3408
-#, fuzzy, c-format
-msgid "@image file `%s' (for HTML) not readable: %s"
-msgstr "@Ishusho IDOSIYE kugirango OYA"
-
-#: makeinfo/makeinfo.c:3414
-#, fuzzy, c-format
-msgid "No such file `%s'"
-msgstr "IDOSIYE"
-
-#: makeinfo/makeinfo.c:3550
-#, fuzzy, c-format
-msgid "@image file `%s' (for text) unreadable: %s"
-msgstr "@Ishusho IDOSIYE kugirango Umwandiko"
-
-#: makeinfo/makeinfo.c:3559 tp/Texinfo/Parser.pm:4354
-#, fuzzy, c-format
-msgid "@image missing filename argument"
-msgstr "@Ishusho Ibuze Izina ry'idosiye:"
-
-#: makeinfo/makeinfo.c:3777 texi2html/texi2html.pl:13010
-#: tp/Texinfo/Parser.pm:3614
-#, fuzzy, c-format, perl-format
-msgid "undefined flag: %s"
-msgstr "kidasobanuye Ibendera"
-
-#: makeinfo/makeinfo.c:3778
-#, fuzzy, c-format
-msgid "{No value for `%s'}"
-msgstr "{Agaciro kugirango"
-
-#: makeinfo/makeinfo.c:3830 texi2html/texi2html.pl:5802
-#: texi2html/texi2html.pl:5813 texi2html/texi2html.pl:10386
-#: tp/Texinfo/Parser.pm:981 tp/Texinfo/Parser.pm:3986
-#: tp/Texinfo/Parser.pm:4534 tp/Texinfo/Parser.pm:4543
-#: tp/Texinfo/Parser.pm:4553
-#, fuzzy, c-format, perl-format
-msgid "%c%s requires a name"
-msgstr "%c%sa Izina:"
-
-#: makeinfo/makeinfo.c:3936 texi2html/texi2html.pl:15826
-#, fuzzy, c-format, perl-format
-msgid "Reached eof before matching @end %s"
-msgstr "Mbere Impera"
-
-#: makeinfo/makeinfo.c:4172
-#, fuzzy, c-format
-msgid "`%.40s...' is too long for expansion; not expanded"
-msgstr ""
-"`%.Project- Id- Version: basctl\n"
-"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
-"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
-"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
-"Content- Type: text/ plain; charset= UTF- 8\n"
-"Content- Transfer- Encoding: 8bit\n"
-"X- Generator: KBabel 1. 0\n"
-"."
-
-#: makeinfo/multi.c:116
-#, fuzzy, c-format
-msgid "Missing } in @multitable template"
-msgstr "in Inyandikorugero"
-
-#: makeinfo/multi.c:260 texi2html/texi2html.pl:10760
-#, fuzzy, c-format, perl-format
-msgid "ignoring stray text `%s' after @multitable"
-msgstr "Umwandiko Nyuma"
-
-#: makeinfo/multi.c:400 texi2html/texi2html.pl:15004 tp/Texinfo/Parser.pm:3835
-#, fuzzy, c-format, perl-format
-msgid "Too many columns in multitable item (max %d)"
-msgstr "Inkingi in Ikintu KININI"
-
-#: makeinfo/multi.c:563
-#, fuzzy, c-format
-msgid "[unexpected] cannot select column #%d in multitable"
-msgstr "[Guhitamo Inkingi in"
-
-#: makeinfo/multi.c:592 texi2html/texi2html.pl:14993 tp/Texinfo/Parser.pm:3868
-#, fuzzy, c-format
-msgid "ignoring @tab outside of multitable"
-msgstr "Isunika Hanze Bya"
-
-#: makeinfo/multi.c:640
-#, fuzzy, c-format
-msgid "** Multicolumn output from last row:\n"
-msgstr "**Ibisohoka Bivuye Iheruka Urubariro"
-
-#: makeinfo/multi.c:643
-#, fuzzy, c-format
-msgid "* column #%d: output = %s\n"
-msgstr "*Inkingi Ibisohoka"
-
-#: makeinfo/node.c:279
-#, fuzzy, c-format
-msgid "Node `%s' previously defined at line %d"
-msgstr "ku Umurongo"
-
-#: makeinfo/node.c:647
-#, c-format
-msgid "Formatting node %s...\n"
-msgstr ""
-
-#: makeinfo/node.c:714
-#, fuzzy, c-format
-msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
-msgstr "g."
-
-#: makeinfo/node.c:878
-#, fuzzy, c-format
-msgid "No node name specified for `%c%s' command"
-msgstr "Izina: kugirango Komandi:"
-
-#: makeinfo/node.c:919 makeinfo/node.c:1163
-#, fuzzy, c-format
-msgid "Anchor `%s' and node `%s' map to the same file name"
-msgstr "Na Kuri i IDOSIYE Izina:"
-
-#: makeinfo/node.c:922
-#, fuzzy, c-format
-msgid "This @anchor command ignored; references to it will not work"
-msgstr "Agafashi Komandi: Indango Kuri OYA Akazi"
-
-#: makeinfo/node.c:924 makeinfo/node.c:1166
-#, fuzzy, c-format
-msgid "Rename this anchor or use the `--no-split' option"
-msgstr "iyi Agafashi Cyangwa Gukoresha i Oya Ihitamo"
-
-#: makeinfo/node.c:954
-#, fuzzy, c-format
-msgid "Unexpected string at end of split-HTML file `%s'"
-msgstr "Ikurikiranyanyuguti ku Impera Bya Gutandukanya IDOSIYE"
-
-#: makeinfo/node.c:1160
-#, fuzzy, c-format
-msgid "Anchors `%s' and `%s' map to the same file name"
-msgstr "Na Kuri i IDOSIYE Izina:"
-
-#: makeinfo/node.c:1165
-#, fuzzy, c-format
-msgid "@anchor command ignored; references to it will not work"
-msgstr "@Agafashi Komandi: Indango Kuri OYA Akazi"
-
-#: makeinfo/node.c:1362
-#, fuzzy, c-format
-msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr "%sIndango Kuri"
-
-#: makeinfo/node.c:1462
-#, fuzzy, c-format
-msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr "Umwanya Bya OYA Kuri"
-
-#: makeinfo/node.c:1465
-#, fuzzy, c-format
-msgid "This node (%s) has the bad Prev"
-msgstr "i"
-
-#: makeinfo/node.c:1520
-#, fuzzy, c-format
-msgid "Prev field of node `%s' not pointed to"
-msgstr "Umwanya Bya OYA Kuri"
-
-#: makeinfo/node.c:1524
-#, fuzzy, c-format
-msgid "This node (%s) has the bad Next"
-msgstr "i"
-
-#: makeinfo/node.c:1536
-#, fuzzy, c-format
-msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
-msgstr "`%s'Oya Umwanya"
-
-#: makeinfo/node.c:1605 texi2html/texi2html.pl:7350
-#: tp/Texinfo/Structuring.pm:542
-#, fuzzy, c-format, perl-format
-msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "Ibikubiyemo Ikintu kugirango Intego"
-
-#: makeinfo/node.c:1637 texi2html/texi2html.pl:7296
-#: tp/Texinfo/Structuring.pm:424
-#, c-format, perl-format
-msgid "unreferenced node `%s'"
-msgstr ""
-
-#: makeinfo/node.c:1727
-#, c-format
-msgid "Removing %s\n"
-msgstr ""
-
-#: makeinfo/node.c:1731
-#, fuzzy, c-format
-msgid "Can't remove file `%s': %s"
-msgstr "Gukuraho... IDOSIYE"
-
-#: makeinfo/sectioning.c:467
-#, fuzzy, c-format
-msgid "Internal error (search_sectioning) `%s'!"
-msgstr "Ikosa"
-
-#: makeinfo/sectioning.c:563
-#, fuzzy, c-format
-msgid "Internal error (search_sectioning) \"%s\"!"
-msgstr "Ikosa"
-
-#: makeinfo/sectioning.c:624
-#, fuzzy, c-format
-msgid "%c%s is obsolete; use %c%s instead"
-msgstr "%c%sni Gukoresha"
-
-#: makeinfo/sectioning.c:640
-#, fuzzy, c-format
-msgid "Node with %ctop as a section already exists"
-msgstr "Na: Nka a Icyiciro"
-
-#: makeinfo/sectioning.c:648
-#, fuzzy, c-format
-msgid "Here is the %ctop node"
-msgstr "ni i"
-
-#: makeinfo/sectioning.c:664
-#, fuzzy, c-format
-msgid "%ctop used before %cnode, defaulting to %s"
-msgstr "%ctopMbere Kuri"
-
-#: makeinfo/xml.c:1655 texi2html/formats/docbook.pm:1021
-#: texi2html/formats/info.pm:2996 texi2html/formats/plaintext.pm:151
-#: tp/Texinfo/Convert/Plaintext.pm:1014
-#, fuzzy, c-format, perl-format
-msgid "@image file `%s' unreadable: %s"
-msgstr "@Ishusho IDOSIYE"
-
-#: makeinfo/xml.c:2000
-#, fuzzy, c-format
-msgid ""
-"@headitem as the last item of @multitable produces invalid Docbook documents"
-msgstr "@Nka i Iheruka Ikintu Bya Sibyo Inyandiko"
-
-#: makeinfo/xml.c:2136
-msgid "of"
-msgstr "ya"
-
-#: makeinfo/xml.c:2141
-msgid "on"
-msgstr "kuri"
-
-#: makeinfo/xref.c:127
-#, c-format
-msgid "First argument to cross-reference may not be empty"
-msgstr ""
-
-#: makeinfo/xref.c:252
-#, c-format
-msgid "Empty file name for HTML cross reference in `%s'"
-msgstr ""
-
-#: makeinfo/xref.c:387
-#, c-format
-msgid "End of file reached while looking for `.' or `,'"
-msgstr ""
-
-#: makeinfo/xref.c:390
-#, c-format
-msgid "`.' or `,' must follow @%s, not `%c'"
-msgstr ""
-
-#: makeinfo/xref.c:392
-#, fuzzy, c-format
-msgid "for cross-references in parentheses, use @pxref"
-msgstr "Kwambukiranya Indango in iyi"
-
-#: makeinfo/xref.c:435
-#, c-format
-msgid "First argument to @inforef may not be empty"
-msgstr ""
-
 #: util/texindex.c:223
 #, fuzzy
 msgid "display this help and exit"
@@ -3273,764 +2176,36 @@ msgstr "Ipaji Umubare in"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "Icyinjijwe Icyinjijwe Na: a Izina:"
 
-#: texi2html/texi2html.pl:2495
-#, fuzzy, perl-format
-msgid "%s is not a valid language code"
-msgstr "%sni OYA a Byemewe Ururimi ITEGEKONGENGA"
-
-#: texi2html/texi2html.pl:2499
-#, fuzzy, perl-format
-msgid "%s is not a valid region code"
-msgstr "%sni OYA a Byemewe Ururimi ITEGEKONGENGA"
-
-#: texi2html/texi2html.pl:2574 tp/Texinfo/Parser.pm:4772
-#, fuzzy, perl-format
-msgid "@%s arg must be `separate' or `end', not `%s'"
-msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
-
-#: texi2html/texi2html.pl:2629 tp/Texinfo/Parser.pm:4793
-#: tp/Texinfo/Parser.pm:4796
-#, fuzzy, perl-format
-msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
-msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
-
-#: texi2html/texi2html.pl:2666
-#, fuzzy, perl-format
-msgid "Encoding %s certainly poorly supported"
-msgstr "Imisobekere: OYA"
-
-#: texi2html/texi2html.pl:2790 texi2html/texi2html.pl:2794
-msgid "translation"
-msgstr ""
-
-#: texi2html/texi2html.pl:3833
-#, fuzzy, perl-format
-msgid ""
-"General options:\n"
-"      --error-limit=NUM       quit after NUM errors (default %d).\n"
-"      --document-language=STR locale to use in translating Texinfo keywords\n"
-"                                for the output document (default C).\n"
-"      --force                 preserve output even if errors.\n"
-"      --help                  display this help and exit.\n"
-"      --no-validate           suppress node cross-reference validation.\n"
-"      --no-warn               suppress warnings (but not errors).\n"
-"      --conf-dir=DIR          search also for initialization files in DIR.\n"
-"      --init-file=FILE        load FILE to modify the default behaviour.\n"
-"      --set-init-variable VAR=VAL  set configuration variable VAR to VAL.\n"
-"  -v, --verbose               explain what is being done.\n"
-"      --version               display version information and exit.\n"
-msgstr ""
-"Amahitamo Ikosa Kuvamo Nyuma Amakosa Mburabuzi Ibisohoka ATARIIGIHARWE NIBA "
-"Amakosa Ifashayobora Kugaragaza iyi Ifashayobora Na Gusohoka Oya Kwemeza "
-"Kwambukiranya Indango Kwemeza Oya Iburira OYA Amakosa Indango Ibyerekeye ku "
-"Indango Mburabuzi v ni Byakozwe Verisiyo Kugaragaza Verisiyo Ibisobanuro Na "
-"Gusohoka"
-
-#: texi2html/texi2html.pl:3853
-#, fuzzy
-msgid ""
-"General output options:\n"
-"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-"                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
-"                                also, write to standard output by default "
-"if\n"
-"                                producing Info.\n"
-"      --split=SPLIT           split at SPLIT, where SPLIT may be chapter, \n"
-"                                section or node if output supports "
-"splitting.\n"
-"      --no-split              suppress the splitting of Info or HTML "
-"output,\n"
-"                                generate only one output file.\n"
-"      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (or directory if split).\n"
-"                                If not split and FILE is a directory, put "
-"the\n"
-"                                resulting files in FILE.\n"
-msgstr ""
-"Ibisohoka Amahitamo E Makoro Kwagura Ibisohoka Makoro Cyagutse Inkomoko Kuri "
-"Oya Imitwe Imirongo Na Bivuye Ibisohoka Byuzuye Umwandiko Cyangwa Bivuye "
-"Ibisohoka Kwandika Kuri Bisanzwe Ibisohoka ku Mburabuzi Oya Gutandukanya Bya "
-"Cyangwa Ibisohoka Ibisohoka IDOSIYE Umubare Ibyatoranyijwe Ibisohoka Umutwe "
-"Na Imibare o Ibisohoka Ibisohoka Kuri bushyinguro NIBA Gutandukanya"
-
-#: texi2html/texi2html.pl:3885
-#, fuzzy
-msgid ""
-"Options for HTML:\n"
-"      --css-include=FILE      include FILE in HTML <style> output;\n"
-"                                read stdin if FILE is -.\n"
-"      --css-ref=URL           generate reference to a CSS file.\n"
-"      --internal-links=FILE   produce list of internal links in FILE.\n"
-"      --transliterate-file-names\n"
-"                              produce file names in ASCII transliteration.\n"
-"      --node-files            produce redirection files for nodes and \n"
-"                                anchors. Default is set only if split.\n"
-msgstr "kugirango Gushyiramo Gushyiramo in IMISUSIRE Ibisohoka Gusoma NIBA ni"
-
-#: texi2html/texi2html.pl:3895 tp/texi2any.pl:567
-msgid ""
-"Options for XML and Docbook:\n"
-"      --output-indent=VAL     does nothing, retained for compatibility.\n"
-msgstr ""
-
-#: texi2html/texi2html.pl:3905 tp/texi2any.pl:573
-#, fuzzy
-msgid ""
-"Input file options:\n"
-"      --commands-in-node-names  does nothing, retained for compatibility.\n"
-"  -D VAR                        define the variable VAR, as with @set.\n"
-"  -I DIR                        append DIR to the @include search path.\n"
-"  -P DIR                        prepend DIR to the @include search path.\n"
-"  -U VAR                        undefine the variable VAR, as with @clear.\n"
-msgstr ""
-"IDOSIYE Amahitamo Amabwiriza in Amazina Kwemerera Amabwiriza in Amazina "
-"Kugaragaza... i IMPINDURAGACIRO Nka Na: Gushyiraho Kongeraho... Kuri i "
-"Gushyiramo Gushaka Inzira Kuri i Gushyiramo Gushaka Inzira U i "
-"IMPINDURAGACIRO Nka Na: Gusiba"
-
-#: texi2html/texi2html.pl:4090 tp/texi2any.pl:831
-#, perl-format
-msgid "when generating %s, only one input FILE may be specified with -o"
-msgstr ""
-
-#: texi2html/texi2html.pl:4499 tp/Texinfo/Common.pm:1043
-msgid "Missing type"
-msgstr ""
-
-#: texi2html/texi2html.pl:4504 tp/Texinfo/Common.pm:1046
-#, fuzzy, perl-format
-msgid "Unrecognized type: %s"
-msgstr "%s:Ihitamo"
-
-#: texi2html/texi2html.pl:4578 tp/texi2any.pl:842
-#, perl-format
-msgid "Ignoring splitting for format %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:4674
-#, fuzzy, perl-format
-msgid "Cannot split output %s"
-msgstr "Kurema Ibisohoka IDOSIYE"
-
-#: texi2html/texi2html.pl:4749 tp/Texinfo/Convert/Converter.pm:416
-#, fuzzy, perl-format
-msgid "Can't create directories `%s' or `%s': %s"
-msgstr "Kurema bushyinguro"
-
-#: texi2html/texi2html.pl:4774
-msgid "current directory not writable"
-msgstr ""
-
-#: texi2html/texi2html.pl:4778
-#, fuzzy, perl-format
-msgid "%s not writable"
-msgstr "%s:ubusa IDOSIYE"
-
-#: texi2html/texi2html.pl:5126
-#, fuzzy
-msgid " end of file"
-msgstr "IDOSIYE"
-
-#: texi2html/texi2html.pl:5491 tp/Texinfo/Parser.pm:4461
-msgid "Superfluous arguments for node"
-msgstr ""
-
-#: texi2html/texi2html.pl:5499
-#, fuzzy, perl-format
-msgid "Node `%s' previously defined %s"
-msgstr "ku Umurongo"
-
-#: texi2html/texi2html.pl:5504 texi2html/texi2html.pl:13289
-#: texi2html/texi2html.pl:13794 tp/Texinfo/Parser.pm:3024
-#: tp/Texinfo/Convert/HTML.pm:6225
-#, perl-format
-msgid "Syntax for an external node used for `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5630
-#, fuzzy, perl-format
-msgid "@%s requires an argument"
-msgstr "%c%sa Izina:"
-
-#: texi2html/texi2html.pl:5721 texi2html/texi2html.pl:15854
-#: tp/Texinfo/Parser.pm:4498
-#, fuzzy, perl-format
-msgid "Expected @end %s"
-msgstr "Ikitezwe:"
-
-#: texi2html/texi2html.pl:5770
-#, perl-format
-msgid "Translations for `%s' not found. Reverting to `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5825 tp/Texinfo/Parser.pm:4564
-#, fuzzy, perl-format
-msgid "@%s should only accept a @-command as argument, not `%s'"
-msgstr "Ingirwadusodeko Kuri a Komandi: Nka Kuri"
-
-#: texi2html/texi2html.pl:5863 tp/Texinfo/Parser.pm:4802
-#, fuzzy, perl-format
-msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
-msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
-
-#: texi2html/texi2html.pl:5878 tp/Texinfo/Parser.pm:4810
-#, fuzzy, perl-format
-msgid "@exampleindent arg must be numeric/`asis', not `%s'"
-msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
-
-#: texi2html/texi2html.pl:5900 tp/Texinfo/Parser.pm:4826
-#, perl-format
-msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:5924 tp/Texinfo/Parser.pm:4832
-#, fuzzy, perl-format
-msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
-msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
-
-#: texi2html/texi2html.pl:5973
-#, perl-format
-msgid "Encoding %s is not a canonical texinfo encoding"
-msgstr ""
-
-#: texi2html/texi2html.pl:5992
-#, perl-format
-msgid "@%s arg must be an encoding"
-msgstr ""
-
-#: texi2html/texi2html.pl:6133 tp/Texinfo/Parser.pm:4700
-#, fuzzy, perl-format
-msgid "Unknown from index `%s' in @%s"
-msgstr "Umubarendanga"
-
-#: texi2html/texi2html.pl:6135 tp/Texinfo/Parser.pm:4702
-#, fuzzy, perl-format
-msgid "Unknown to index name `%s' in @%s"
-msgstr "Umubarendanga"
-
-#: texi2html/texi2html.pl:6170 tp/Texinfo/Parser.pm:4683
-#, perl-format
-msgid "Reserved index name %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:6200 tp/Texinfo/Parser.pm:4760
-#, fuzzy, perl-format
-msgid "@%s arg must be `top' or `bottom', not `%s'"
-msgstr "%s:%sBikurikije umubare OYA"
-
-#: texi2html/texi2html.pl:6241 tp/Texinfo/Parser.pm:4778
-#, fuzzy, perl-format
-msgid "@%s arg must be `on', `off' or `odd', not `%s'"
-msgstr "%s:%sBikurikije umubare OYA"
-
-#: texi2html/texi2html.pl:6389 texi2html/texi2html.pl:16980
-#: tp/Texinfo/Common.pm:832 tp/Texinfo/Common.pm:1109
-#, fuzzy, perl-format
-msgid "Cannot read %s: %s"
-msgstr "Kurema bushyinguro"
-
-#: texi2html/texi2html.pl:6412 texi2html/texi2html.pl:13217
-#: tp/Texinfo/Common.pm:847 tp/Texinfo/Parser.pm:2716
-#, fuzzy, perl-format
-msgid "@%s: Cannot find %s"
-msgstr "Gushaka"
-
-#: texi2html/texi2html.pl:6592 tp/Texinfo/Parser.pm:3008
-#, perl-format
-msgid "Empty node name after expansion `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:7225 tp/Texinfo/Structuring.pm:523
-#, fuzzy, perl-format
-msgid "%s reference to nonexistent `%s'"
-msgstr "%sIndango Kuri"
-
-#: texi2html/texi2html.pl:7368 tp/Texinfo/Structuring.pm:550
-#, perl-format
-msgid "For `%s', up in menu `%s' and up `%s' don't match"
-msgstr ""
-
-#: texi2html/texi2html.pl:7421 tp/Texinfo/Structuring.pm:455
-#, perl-format
-msgid "No node following `%s' in menu, but `%s' follows in sectioning"
-msgstr ""
-
-#: texi2html/texi2html.pl:7422 tp/Texinfo/Structuring.pm:461
-#, perl-format
-msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr ""
-
-#: texi2html/texi2html.pl:8925
-#, perl-format
-msgid "@%s after the first element"
-msgstr ""
-
-#: texi2html/texi2html.pl:9391 tp/Texinfo/Convert/HTML.pm:6157
-#, perl-format
-msgid "File empty for renamed node `%s'"
-msgstr ""
-
-#: texi2html/texi2html.pl:9395 tp/Texinfo/Convert/HTML.pm:6168
-#, perl-format
-msgid "Node to be renamed as, `%s' not found"
-msgstr ""
-
-#: texi2html/texi2html.pl:9399
-#, fuzzy, perl-format
-msgid "Node `%s' that is to be renamed exists "
-msgstr "Times"
-
-#: texi2html/texi2html.pl:9603
-#, fuzzy, perl-format
-msgid "%s: Removing output files due to errors; use --force to preserve.\n"
-msgstr "%s:Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
-
-#: texi2html/texi2html.pl:9742 tp/Texinfo/Report.pm:91
-#, fuzzy, perl-format
-msgid "%s:%d: warning: %s (possibly involving @%s)\n"
-msgstr "%s:%d:Iburira"
-
-#: texi2html/texi2html.pl:9746 tp/Texinfo/Report.pm:94
-#, fuzzy, perl-format
-msgid "%s:%d: warning: %s\n"
-msgstr "%s:%d:Iburira"
-
-#: texi2html/texi2html.pl:9779
-#, perl-format
-msgid "(in %s l. %d possibly involving @%s)"
-msgstr ""
-
-#: texi2html/texi2html.pl:9783
-#, perl-format
-msgid "(l. %d possibly involving @%s)"
-msgstr ""
-
-#: texi2html/texi2html.pl:9788
-#, fuzzy, perl-format
-msgid "(in %s l. %d)"
-msgstr "(Umurongo"
-
-#: texi2html/texi2html.pl:9792
-#, fuzzy, perl-format
-msgid "(l. %d)"
-msgstr "(Umurongo"
-
-#: texi2html/texi2html.pl:9949
-#, perl-format
-msgid "Too much '}' in @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:9959
-#, fuzzy, perl-format
-msgid "Missing `}' on @%s line"
-msgstr "in"
-
-#: texi2html/texi2html.pl:10109
-#, fuzzy, perl-format
-msgid "Anchor `%s' ignored in %s expanded more than once"
-msgstr "Na Kuri i IDOSIYE Izina:"
-
-#: texi2html/texi2html.pl:10460 tp/Texinfo/Parser.pm:4088
-#, fuzzy, perl-format
-msgid "Region %s inside region %s is not allowed"
-msgstr "Mo Imbere Ubusobanuro mpezarupapuro OYA"
-
-#: texi2html/texi2html.pl:10739 tp/Texinfo/Parser.pm:4666
-#, perl-format
-msgid "column fraction not a number: %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:10782
-#, perl-format
-msgid "Too many %s closed"
-msgstr ""
-
-#: texi2html/texi2html.pl:10852 texi2html/formats/info.pm:899
-#: tp/Texinfo/Parser.pm:1408
-#, perl-format
-msgid "@%s has text but no @item"
-msgstr ""
-
-#: texi2html/texi2html.pl:11012
-#, fuzzy, perl-format
-msgid "Unknown format %s"
-msgstr "Komandi:"
-
-#: texi2html/texi2html.pl:11228 texi2html/texi2html.pl:11666
-#, fuzzy, perl-format
-msgid "@%s (argument nr %d)"
-msgstr "Kuri"
-
-#: texi2html/texi2html.pl:11312
-#, perl-format
-msgid "prepended for @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:11328 tp/Texinfo/Parser.pm:2467
-#, fuzzy
-msgid "empty multitable"
-msgstr "%s:ubusa IDOSIYE"
-
-#: texi2html/texi2html.pl:11338
-#, perl-format
-msgid "@columnfraction (argument nr %d)"
-msgstr ""
-
-#: texi2html/texi2html.pl:11526 texi2html/texi2html.pl:11540
-msgid "node name in menu"
-msgstr ""
-
-#: texi2html/texi2html.pl:11527
-msgid "normalized node name in menu"
-msgstr ""
-
-#: texi2html/texi2html.pl:11533
-msgid "menu entry name"
-msgstr ""
-
-#: texi2html/texi2html.pl:11568 tp/Texinfo/Structuring.pm:383
-#, fuzzy, perl-format
-msgid "Menu reference to nonexistent node `%s'"
-msgstr "%sIndango Kuri"
-
-#: texi2html/texi2html.pl:11642
-#, fuzzy, perl-format
-msgid "First argument to @%s may not be empty"
-msgstr "ingingo Kuri"
-
-#: texi2html/texi2html.pl:11779
-#, perl-format
-msgid "@%s not in text (in anchor, node, section...)"
-msgstr ""
-
-#: texi2html/texi2html.pl:11791 texi2html/texi2html.pl:14562
-msgid "@listoffloats @float type"
-msgstr ""
-
-#: texi2html/texi2html.pl:11810 tp/Texinfo/Structuring.pm:1025
-#, fuzzy, perl-format
-msgid "@%s reference to nonexistent node `%s'"
-msgstr "%sIndango Kuri"
-
-#: texi2html/texi2html.pl:11951
-msgid "@float style"
-msgstr ""
-
-#: texi2html/texi2html.pl:12083 texi2html/texi2html.pl:12084
-msgid "@image base name"
-msgstr ""
-
-#: texi2html/texi2html.pl:12093 texi2html/texi2html.pl:12094
-msgid "@image extension"
-msgstr ""
-
-#: texi2html/texi2html.pl:12101
-#, fuzzy
-msgid "@image file name"
-msgstr "@Ishusho IDOSIYE"
-
-#: texi2html/texi2html.pl:12123
-msgid "@image alt text"
-msgstr ""
-
-#: texi2html/texi2html.pl:12206 tp/Texinfo/Parser.pm:1731
-#, fuzzy, perl-format
-msgid "Macro `%s' called with too many args"
-msgstr "ku Umurongo Na:"
-
-#: texi2html/texi2html.pl:12230
-#, fuzzy, perl-format
-msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
-msgstr "\\ in Makoro ku Bya Izina:"
-
-#: texi2html/texi2html.pl:12425
-#, fuzzy, perl-format
-msgid "No index prefix found for @%s"
-msgstr "Oya Umubarendanga Ibyinjijwe Byabonetse kugirango"
-
-#: texi2html/texi2html.pl:12907 texi2html/texi2html.pl:14692
-#, fuzzy, perl-format
-msgid "@%s not allowed in argument to @%s"
-msgstr "@Ikintu OYA in Kuri"
-
-#: texi2html/texi2html.pl:12969
-#, perl-format
-msgid "Macro definition without macro name: %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13022 tp/Texinfo/Parser.pm:3617
-msgid "Bad syntax for @value"
-msgstr ""
-
-#: texi2html/texi2html.pl:13059 tp/Texinfo/Parser.pm:3344
-#, perl-format
-msgid ""
-"@%s defined with zero or more than one argument should be invoked with {}"
-msgstr ""
-
-#: texi2html/texi2html.pl:13082 tp/Texinfo/Parser.pm:3283
-#, perl-format
-msgid "@%s without associated character"
-msgstr ""
-
-#: texi2html/texi2html.pl:13232
-#, perl-format
-msgid "@%s already set"
-msgstr ""
-
-#: texi2html/texi2html.pl:13284
-#, fuzzy, perl-format
-msgid "Anchor `%s' previously defined %s"
-msgstr "Makoro"
-
-#: texi2html/texi2html.pl:13320
-#, fuzzy, perl-format
-msgid "No closing brace for specially handled command %s"
-msgstr "kugirango Ubusobanuro mpezarupapuro"
-
-#: texi2html/texi2html.pl:13607 tp/Texinfo/Parser.pm:3624
-#, fuzzy, perl-format
-msgid "%c%s is obsolete."
-msgstr "%c%sni"
-
-#: texi2html/texi2html.pl:13611 tp/Texinfo/Parser.pm:3627
-#, fuzzy, perl-format
-msgid "%c%s is obsolete; %s"
-msgstr "%c%sni"
-
-#: texi2html/texi2html.pl:13632 tp/Texinfo/Parser.pm:4745
-#, perl-format
-msgid "Printindex before document beginning: @printindex %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13699
-#, perl-format
-msgid "ignored @%s already in an @%s entry"
-msgstr ""
-
-#: texi2html/texi2html.pl:13724 texi2html/texi2html.pl:13772
-#: tp/Texinfo/Parser.pm:4110
-#, fuzzy, perl-format
-msgid "@%s seen before first @node"
-msgstr "@Ibikubiyemo Mbere Itangira"
-
-#: texi2html/texi2html.pl:13729 tp/Texinfo/Parser.pm:925
-#: tp/Texinfo/Structuring.pm:365
-#, perl-format
-msgid "Multiple @%s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13741
-#, perl-format
-msgid "@%s not allowed within %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:13790
-#, fuzzy, perl-format
-msgid "Float label `%s' previously defined %s"
-msgstr "Makoro"
-
-#: texi2html/texi2html.pl:14109 texi2html/texi2html.pl:14110
-#: texi2html/texi2html.pl:14113
-msgid "new menu entry"
-msgstr ""
-
-#: texi2html/texi2html.pl:14243
-msgid "paragraph end"
-msgstr ""
-
-#: texi2html/texi2html.pl:14555
-msgid "@listoffloats type"
-msgstr ""
-
-#: texi2html/texi2html.pl:14747 tp/Texinfo/Parser.pm:3430
-#, perl-format
-msgid "Accent command `@%s' must not be followed by whitespace"
-msgstr ""
-
-#: texi2html/texi2html.pl:14769 tp/Texinfo/Parser.pm:3464
-#, fuzzy, perl-format
-msgid "@%s expected braces"
-msgstr "%c%sIkitezwe: Ingirwadusodeko"
-
-#: texi2html/texi2html.pl:14960 tp/Texinfo/Parser.pm:3870
-#, perl-format
-msgid "@%s outside of table or list"
-msgstr ""
-
-#: texi2html/texi2html.pl:14978 tp/Texinfo/Parser.pm:3828
-#, fuzzy, perl-format
-msgid "@%s in empty multitable"
-msgstr "%s:ubusa IDOSIYE"
-
-#: texi2html/texi2html.pl:15000
-#, fuzzy
-msgid "ignoring @tab in empty multitable"
-msgstr "Isunika Hanze Bya"
-
-#: texi2html/texi2html.pl:15035
-msgid "@center should not appear in another format"
-msgstr ""
-
-#: texi2html/texi2html.pl:15417 tp/Texinfo/Parser.pm:3833
-msgid "@tab before @item"
-msgstr ""
-
-#: texi2html/texi2html.pl:15652 tp/Texinfo/Parser.pm:3446
-#: tp/Texinfo/Parser.pm:4363
-#, fuzzy, perl-format
-msgid "%c%s expects `i' or `j' as argument, not `%s'"
-msgstr "%c%sCyangwa Nka OYA"
-
-#: texi2html/texi2html.pl:15704
-#, fuzzy, perl-format
-msgid "Unknown command with braces `@%s'"
-msgstr "Komandi:"
-
-#: texi2html/texi2html.pl:15744
-#, fuzzy, perl-format
-msgid "Unexpected command `%s' here"
-msgstr "Komandi:"
-
-#: texi2html/texi2html.pl:15839 tp/Texinfo/Parser.pm:1753
-#, fuzzy, perl-format
-msgid "@%s missing close brace"
-msgstr "%c%sIbuze Gufunga"
-
-#: texi2html/texi2html.pl:16035 tp/Texinfo/Parser.pm:1057
-#, fuzzy, perl-format
-msgid "@%s missing closing delimiter sequence: %s}"
-msgstr "%c%sIbuze Gufunga"
-
-#: texi2html/texi2html.pl:16148
-#, fuzzy, perl-format
-msgid "%s should not appear in %s"
-msgstr "%s:OYA Gufungura IDOSIYE"
-
-#: texi2html/texi2html.pl:16625
-#, perl-format
-msgid "Index entry not caught: `%s' in %s"
-msgstr ""
-
-#: texi2html/texi2html.pl:16723
-#, fuzzy, perl-format
-msgid "Empty index entry for @%s"
-msgstr "Oya Umubarendanga Ibyinjijwe Byabonetse kugirango"
-
-#: texi2html/texi2html.pl:16859 tp/Texinfo/Convert/HTML.pm:4281
-#, perl-format
-msgid "%s:%d: string not closed in css file"
-msgstr ""
-
-#: texi2html/texi2html.pl:16861 tp/Texinfo/Convert/HTML.pm:4285
-#, perl-format
-msgid "%s:%d @import not finished in css file"
-msgstr ""
-
-#: texi2html/texi2html.pl:16891
-#, fuzzy, perl-format
-msgid "%s: could not open --css-file %s: %s\n"
-msgstr "%s:OYA Gufungura IDOSIYE"
-
-#: texi2html/texi2html.pl:16963 tp/Texinfo/Common.pm:1093
-#, perl-format
-msgid "%s:%d: no node to be renamed\n"
-msgstr ""
-
-#: texi2html/texi2html.pl:16974 tp/Texinfo/Common.pm:1104
-#, perl-format
-msgid "%s:%d: nodes without a new name at the end of file\n"
-msgstr ""
-
-#: texi2html/texi2html.pm:1275
-msgid "Document encoding is utf8, but there is no unicode support"
-msgstr ""
-
-#: texi2html/texi2html.pm:2227 tp/Texinfo/Common.pm:601
-msgid "recursion is always allowed"
-msgstr ""
-
-#: texi2html/texi2html.pm:2228 tp/Texinfo/Common.pm:602
-msgid "arguments are quoted by default"
-msgstr ""
-
-#: texi2html/texi2html.pm:6682 texi2html/formats/docbook.pm:1498
-#: texi2html/formats/html.pm:2352 texi2html/maintained_extra/mediawiki.pm:1141
-#: tp/Texinfo/Convert/HTML.pm:2168
-#, perl-format
-msgid "Raw format %s is not converted"
-msgstr ""
-
-#: texi2html/formats/docbook.pm:1026 texi2html/formats/info.pm:3001
-#: texi2html/formats/plaintext.pm:156 tp/Texinfo/Convert/Info.pm:555
-#, fuzzy, perl-format
-msgid "Cannot find @image file `%s.txt'"
-msgstr "Gushaka"
-
-#: texi2html/formats/html.pm:2470 tp/Texinfo/Convert/HTML.pm:1555
-#, fuzzy, perl-format
-msgid "@image file `%s' (for HTML) not found, using `%s'"
-msgstr "@Ishusho IDOSIYE kugirango OYA"
-
-#: texi2html/formats/info.pm:1352
-msgid "`.' or `,' must follow @xref."
-msgstr ""
-
-#: texi2html/formats/info.pm:1357 tp/Texinfo/Convert/Plaintext.pm:1515
-#, perl-format
-msgid "`.' or `,' must follow @xref, not %s"
-msgstr ""
-
-#: texi2html/formats/info.pm:2465
-msgid "anchor outside of any node, it won't be registered"
-msgstr ""
-
-#: texi2html/formats/info.pm:2780
-#, fuzzy
-msgid "@menu before first node"
-msgstr "@Ibikubiyemo Mbere Itangira"
-
-#: texi2html/formats/info.pm:2785 tp/Texinfo/Parser.pm:4104
-#, fuzzy
-msgid "@direntry after first node"
-msgstr "@Ibikubiyemo Mbere Itangira"
-
-#: texi2html/formats/info.pm:3539
-msgid "float reference outside of any node, it won't be registered"
-msgstr ""
-
-#: texi2html/formats/info.pm:3642 tp/Texinfo/Parser.pm:3947
-#, fuzzy
-msgid "@dircategory after first node"
-msgstr "@Ibikubiyemo Mbere Itangira"
-
-#: texi2html/maintained_extra/mediawiki.pm:1100
-#, fuzzy, perl-format
-msgid "@image file `%s' not found, using `%s'"
-msgstr "@Ishusho IDOSIYE"
-
-#: tp/texi2any.pl:247
+#: tp/texi2any.pl:246
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "Ikosa Kuri"
 
-#: tp/texi2any.pl:256
+#: tp/texi2any.pl:255
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "Komandi:"
 
-#: tp/texi2any.pl:271
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Komandi:"
 
-#: tp/texi2any.pl:497
+#: tp/texi2any.pl:486
+#, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr ""
+
+#: tp/texi2any.pl:488
+#, fuzzy
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
+msgstr ""
+"Inkomoko Kuri Ikindi Imiterere ku Idosiye kugirango kiri kuri interineti Na: "
+"Cyangwa"
+
+#: tp/texi2any.pl:491
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -4053,7 +2228,7 @@ msgstr ""
 "Indango Mburabuzi v ni Byakozwe Verisiyo Kugaragaza Verisiyo Ibisobanuro Na "
 "Gusohoka"
 
-#: tp/texi2any.pl:511
+#: tp/texi2any.pl:505
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -4066,7 +2241,7 @@ msgstr ""
 "Imiterere Ihitamo Mburabuzi ni Kuri InyandikoGitabo Ibisohoka HTML Ibisohoka "
 "xml Ibisohoka Ibisohoka Byuzuye Umwandiko"
 
-#: tp/texi2any.pl:519
+#: tp/texi2any.pl:513
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -4099,7 +2274,35 @@ msgstr ""
 "Cyangwa Ibisohoka Ibisohoka IDOSIYE Umubare Ibyatoranyijwe Ibisohoka Umutwe "
 "Na Imibare o Ibisohoka Ibisohoka Kuri bushyinguro NIBA Gutandukanya"
 
-#: tp/texi2any.pl:556
+#: tp/texi2any.pl:533
+#, fuzzy, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"kugirango Na Byuzuye Umwandiko Gushoboza Imisobekere: Ibisohoka Na "
+"Bidasanzwe Inyuguti Ibisohoka ku Kuzuza Inkingi itandukanya Imirongo ku "
+"Inyuguti Mburabuzi Ubusobanuro mpezarupapuro IMISUSIRE Ibisohoka Ubusobanuro "
+"mpezarupapuro in Kuri Kuri Gushyira in Kuri Gushyira ku i Impera Bya i in "
+"Mburabuzi Igika Ikurura Ikurura Ibika ku Imyanya Mburabuzi ni OYA Ikurura "
+"NIBA Gutandukanya Ingano Gutandukanya Idosiye ku Ingano Mburabuzi"
+
+#: tp/texi2any.pl:550
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -4114,13 +2317,34 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr "kugirango Gushyiramo Gushyiramo in IMISUSIRE Ibisohoka Gusoma NIBA ni"
 
-#: tp/texi2any.pl:570
+#: tp/texi2any.pl:561
+msgid ""
+"Options for XML and Docbook:\n"
+"      --output-indent=VAL     does nothing, retained for compatibility.\n"
+msgstr ""
+
+#: tp/texi2any.pl:564
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:580
+#: tp/texi2any.pl:567
+#, fuzzy
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  does nothing, retained for compatibility.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"IDOSIYE Amahitamo Amabwiriza in Amazina Kwemerera Amabwiriza in Amazina "
+"Kugaragaza... i IMPINDURAGACIRO Nka Na: Gushyiraho Kongeraho... Kuri i "
+"Gushyiramo Gushaka Inzira Kuri i Gushyiramo Gushaka Inzira U i "
+"IMPINDURAGACIRO Nka Na: Gusiba"
+
+#: tp/texi2any.pl:574
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -4146,344 +2370,1701 @@ msgstr ""
 "Oya OYA Na HTML Umwandiko Oya OYA Umwandiko Oya OYA Umwandiko Oya OYA Na "
 "Umwandiko Oya OYA Na xml Umwandiko kugirango i Oya Amahitamo Umwandiko"
 
-#: tp/texi2any.pl:689
+#: tp/texi2any.pl:591
+#, fuzzy
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"kugirango i NIBA ku i Ibisohoka Imiterere NIBA ni ku Na i Ibindi Bidakora "
+"NIBA ni ku Na i Ibindi Bidakora NIBA Byuzuye Umwandiko ni ku Na i Ibindi "
+"Bidakora NIBA ni ku Na i Ibindi Bidakora"
+
+#: tp/texi2any.pl:597
+#, fuzzy
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Kwandika Kuri HTML Kwandika Kuri xml Kwandika Kuri InyandikoGitabo Kwandika "
+"Kuri Oya Imitwe Kwandika Byuzuye Umwandiko Kuri Bisanzwe HTML Oya Imitwe "
+"Kwandika HTML Imirongo Umubare Ibyatoranyijwe Kwandika Na: Iriho Imibare Oya "
+"Gutandukanya Kwandika IDOSIYE"
+
+#: tp/texi2any.pl:641
+#, fuzzy, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
+
+#: tp/texi2any.pl:692
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "Gufungura Iyinjiza IDOSIYE"
 
-#: tp/texi2any.pl:940 tp/texi2any.pl:996
+#: tp/texi2any.pl:734
+#, fuzzy, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
+
+#: tp/texi2any.pl:821
+#, fuzzy, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr "%s:Kwirengagiza Agaciro"
+
+#: tp/texi2any.pl:834
+#, perl-format
+msgid "when generating %s, only one input FILE may be specified with -o"
+msgstr ""
+
+#: tp/texi2any.pl:845
+#, perl-format
+msgid "Ignoring splitting for format %s"
+msgstr ""
+
+#: tp/texi2any.pl:871
+#, fuzzy, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s:Ibuze IDOSIYE"
+
+#: tp/texi2any.pl:872
+#, fuzzy, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "kugirango Birenzeho Ibisobanuro"
+
+#: tp/texi2any.pl:947 tp/texi2any.pl:1003
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/Texinfo/Common.pm:1015
+#: tp/Texinfo/Common.pm:623
+msgid "recursion is always allowed"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:624
+msgid "arguments are quoted by default"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:770
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%sni OYA a Byemewe Ururimi ITEGEKONGENGA"
+
+#: tp/Texinfo/Common.pm:775
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%sni OYA a Byemewe Ururimi ITEGEKONGENGA"
+
+#: tp/Texinfo/Common.pm:793
+#, fuzzy, perl-format
+msgid "%s is not a valid split possibility"
+msgstr "%sni OYA a Byemewe Ururimi ITEGEKONGENGA"
+
+#: tp/Texinfo/Common.pm:817 tp/Texinfo/Common.pm:1191
+#, fuzzy, perl-format
+msgid "Cannot read %s: %s"
+msgstr "Kurema bushyinguro"
+
+#: tp/Texinfo/Common.pm:832 tp/Texinfo/Parser.pm:2721
+#, fuzzy, perl-format
+msgid "@%s: Cannot find %s"
+msgstr "Gushaka"
+
+#: tp/Texinfo/Common.pm:1097
 #, fuzzy, perl-format
 msgid "Cannot open html refs config file %s: %s"
 msgstr "Gukuraho... IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:674
+#: tp/Texinfo/Common.pm:1125
+msgid "Missing type"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1128
+#, fuzzy, perl-format
+msgid "Unrecognized type: %s"
+msgstr "%s:Ihitamo"
+
+#: tp/Texinfo/Common.pm:1175
+#, perl-format
+msgid "%s:%d: no node to be renamed\n"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1186
+#, perl-format
+msgid "%s:%d: nodes without a new name at the end of file\n"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:683
 #, fuzzy, perl-format
 msgid "Can't read file %s: %s"
 msgstr "Gukuraho... IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:956
+#: tp/Texinfo/Parser.pm:927 tp/Texinfo/Structuring.pm:374
+#, perl-format
+msgid "Multiple @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:958
 #, fuzzy, perl-format
 msgid "Bad syntax for @%s argument: %s"
 msgstr "Kuri"
 
-#: tp/Texinfo/Parser.pm:972
+#: tp/Texinfo/Parser.pm:974
 #, perl-format
 msgid "Bad or empty @%s formal argument: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1166
+#: tp/Texinfo/Parser.pm:983 tp/Texinfo/Parser.pm:4005
+#: tp/Texinfo/Parser.pm:4553 tp/Texinfo/Parser.pm:4562
+#: tp/Texinfo/Parser.pm:4572
+#, fuzzy, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%sa Izina:"
+
+#: tp/Texinfo/Parser.pm:1056
+#, fuzzy, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%sIbuze Gufunga"
+
+#: tp/Texinfo/Parser.pm:1059
+#, fuzzy, perl-format
+msgid "@%s missing closing delimiter sequence: %s}"
+msgstr "%c%sIbuze Gufunga"
+
+#: tp/Texinfo/Parser.pm:1170
 #, fuzzy, perl-format
 msgid "@itemx should not begin @%s"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:1235
+#: tp/Texinfo/Parser.pm:1239
 msgid "@itemx must follow @item"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1760
+#: tp/Texinfo/Parser.pm:1412
+#, perl-format
+msgid "@%s has text but no @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1440
+#, fuzzy, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "`@Ikitezwe:"
+
+#: tp/Texinfo/Parser.pm:1443
+#, perl-format
+msgid "No matching `%cend %s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1461 tp/Texinfo/Parser.pm:4298
+#: tp/Texinfo/Parser.pm:4450
+#, perl-format
+msgid "Misplaced %c"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1539 tp/Texinfo/Parser.pm:2683
+#, perl-format
+msgid "Unmatched `%c%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1735
+#, fuzzy, perl-format
+msgid "Macro `%s' called with too many args"
+msgstr "ku Umurongo Na:"
+
+#: tp/Texinfo/Parser.pm:1757
+#, fuzzy, perl-format
+msgid "@%s missing close brace"
+msgstr "%c%sIbuze Gufunga"
+
+#: tp/Texinfo/Parser.pm:1764
 #, fuzzy, perl-format
 msgid "Macro `%s' declared without argument called with an argument"
 msgstr "ku Umurongo Na:"
 
-#: tp/Texinfo/Parser.pm:1794
+#: tp/Texinfo/Parser.pm:1798
 #, fuzzy, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "\\ in Makoro ku Bya Izina:"
 
-#: tp/Texinfo/Parser.pm:2081
+#: tp/Texinfo/Parser.pm:2085
 #, fuzzy, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "Makoro"
 
-#: tp/Texinfo/Parser.pm:2086
+#: tp/Texinfo/Parser.pm:2090
 #, fuzzy, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "ni i Ibanjirije Insobanuro Bya"
 
-#: tp/Texinfo/Parser.pm:2415
+#: tp/Texinfo/Parser.pm:2150 tp/Texinfo/Convert/Info.pm:412
+#, fuzzy, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "kugirango Umubarendanga Hanze Bya"
+
+#: tp/Texinfo/Parser.pm:2419
 #, fuzzy, perl-format
 msgid "Missing name for @%s"
 msgstr "in"
 
-#: tp/Texinfo/Parser.pm:2419
+#: tp/Texinfo/Parser.pm:2423
 #, perl-format
 msgid "Missing category for @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2452
+#: tp/Texinfo/Parser.pm:2456
 #, fuzzy, perl-format
 msgid "Unexpected argument on @%s line: %s"
 msgstr "Kuri"
 
-#: tp/Texinfo/Parser.pm:2522 tp/Texinfo/Parser.pm:4621
+#: tp/Texinfo/Parser.pm:2471
+#, fuzzy
+msgid "empty multitable"
+msgstr "%s:ubusa IDOSIYE"
+
+#: tp/Texinfo/Parser.pm:2526 tp/Texinfo/Parser.pm:4640
 #, fuzzy, perl-format
 msgid "Superfluous argument to @%s"
 msgstr "Kuri"
 
-#: tp/Texinfo/Parser.pm:2542
+#: tp/Texinfo/Parser.pm:2532 tp/Texinfo/Parser.pm:4661
+#: tp/Texinfo/Parser.pm:4672
+#, fuzzy, perl-format
+msgid "Bad argument to @%s"
+msgstr "Kuri"
+
+#: tp/Texinfo/Parser.pm:2541
+#, fuzzy, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%si kugirango"
+
+#: tp/Texinfo/Parser.pm:2546
 #, perl-format
 msgid "Command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2578
+#: tp/Texinfo/Parser.pm:2582
 #, fuzzy, perl-format
 msgid "Accent command `@%s' not allowed as @%s argument"
 msgstr "@Ikintu OYA in Kuri"
 
-#: tp/Texinfo/Parser.pm:2655 tp/Texinfo/Parser.pm:2782
-#: tp/Texinfo/Parser.pm:4613
+#: tp/Texinfo/Parser.pm:2660 tp/Texinfo/Parser.pm:2787
+#: tp/Texinfo/Parser.pm:4632
 #, fuzzy, perl-format
 msgid "@%s missing argument"
 msgstr "%s:Ibuze IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:2668
+#: tp/Texinfo/Parser.pm:2673
 #, fuzzy, perl-format
 msgid "Unknown @end %s"
 msgstr "Umubarendanga"
 
-#: tp/Texinfo/Parser.pm:2690 tp/Texinfo/Parser.pm:3220
+#: tp/Texinfo/Parser.pm:2695 tp/Texinfo/Parser.pm:3239
 #, fuzzy, perl-format
 msgid "Superfluous argument to @%s %s: %s"
 msgstr "Kuri"
 
-#: tp/Texinfo/Parser.pm:2712
+#: tp/Texinfo/Parser.pm:2699 tp/Texinfo/Parser.pm:4712
+#: tp/Texinfo/Parser.pm:4745 tp/Texinfo/Parser.pm:4771
+#: tp/Texinfo/Parser.pm:4804 tp/Texinfo/Parser.pm:4864
+#, fuzzy, perl-format
+msgid "Bad argument to @%s: %s"
+msgstr "Kuri"
+
+#: tp/Texinfo/Parser.pm:2717
 #, fuzzy, perl-format
 msgid "@%s: Cannot open %s: %s"
 msgstr "Gushaka"
 
-#: tp/Texinfo/Parser.pm:2722
+#: tp/Texinfo/Parser.pm:2727
 #, perl-format
 msgid "Encoding `%s' is not a canonical texinfo encoding"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2868
+#: tp/Texinfo/Parser.pm:2731
+#, fuzzy, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "Imisobekere: Izina:"
+
+#: tp/Texinfo/Parser.pm:2873
 #, fuzzy, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%sOYA Hanze"
 
-#: tp/Texinfo/Parser.pm:3004
+#: tp/Texinfo/Parser.pm:3009
 #, fuzzy, perl-format
 msgid "Empty argument in @%s"
 msgstr "Kuri"
 
-#: tp/Texinfo/Parser.pm:3055
+#: tp/Texinfo/Parser.pm:3013
+#, perl-format
+msgid "Empty node name after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3029 tp/Texinfo/Convert/HTML.pm:6458
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3060
 #, fuzzy
 msgid "Empty node in menu entry"
 msgstr "Oya Umubarendanga Ibyinjijwe Byabonetse kugirango"
 
-#: tp/Texinfo/Parser.pm:3367
+#: tp/Texinfo/Parser.pm:3254
+#, fuzzy, perl-format
+msgid "macro `%s' previously defined"
+msgstr "Makoro"
+
+#: tp/Texinfo/Parser.pm:3256
+#, fuzzy, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "ni i Ibanjirije Insobanuro Bya"
+
+#: tp/Texinfo/Parser.pm:3302
+#, perl-format
+msgid "@%s without associated character"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3363
+#, perl-format
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3386
 #, perl-format
 msgid ""
 "Macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3375
+#: tp/Texinfo/Parser.pm:3394
 #, perl-format
 msgid "Recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3458
+#: tp/Texinfo/Parser.pm:3449
+#, perl-format
+msgid "Accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3455
+#, fuzzy, perl-format
+msgid "Use braces to give a command as an argument to @%s"
+msgstr "Ingirwadusodeko Kuri a Komandi: Nka Kuri"
+
+#: tp/Texinfo/Parser.pm:3465 tp/Texinfo/Parser.pm:4382
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%sCyangwa Nka OYA"
+
+#: tp/Texinfo/Parser.pm:3477
 #, perl-format
 msgid "Accent command `@%s' must not be followed by new line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3635
+#: tp/Texinfo/Parser.pm:3483
+#, fuzzy, perl-format
+msgid "@%s expected braces"
+msgstr "%c%sIkitezwe: Ingirwadusodeko"
+
+#: tp/Texinfo/Parser.pm:3633
+#, fuzzy, perl-format
+msgid "undefined flag: %s"
+msgstr "kidasobanuye Ibendera"
+
+#: tp/Texinfo/Parser.pm:3636
+msgid "Bad syntax for @value"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3643
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%sni"
+
+#: tp/Texinfo/Parser.pm:3646
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%sni"
+
+#: tp/Texinfo/Parser.pm:3654
 #, fuzzy, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:3648 tp/Texinfo/Parser.pm:3666
-#: tp/Texinfo/Parser.pm:3679
+#: tp/Texinfo/Parser.pm:3667 tp/Texinfo/Parser.pm:3685
+#: tp/Texinfo/Parser.pm:3698
 #, fuzzy, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:3731
+#: tp/Texinfo/Parser.pm:3750
 #, fuzzy, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%sOYA Mo Imbere Funga"
 
-#: tp/Texinfo/Parser.pm:3739
+#: tp/Texinfo/Parser.pm:3758
 #, fuzzy, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:3903
+#: tp/Texinfo/Parser.pm:3828 tp/Texinfo/Parser.pm:3840
+#: tp/Texinfo/Parser.pm:3884
+#, fuzzy, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%sOYA Mo Imbere Funga"
+
+#: tp/Texinfo/Parser.pm:3847
+#, fuzzy, perl-format
+msgid "@%s in empty multitable"
+msgstr "%s:ubusa IDOSIYE"
+
+#: tp/Texinfo/Parser.pm:3852
+msgid "@tab before @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3854
+#, fuzzy, perl-format
+msgid "Too many columns in multitable item (max %d)"
+msgstr "Inkingi in Ikintu KININI"
+
+#: tp/Texinfo/Parser.pm:3887
+#, fuzzy
+msgid "ignoring @tab outside of multitable"
+msgstr "Isunika Hanze Bya"
+
+#: tp/Texinfo/Parser.pm:3889
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3922
 #, fuzzy, perl-format
 msgid "Must be after `@%s' to use `@%s'"
 msgstr "in Kuri Gukoresha"
 
-#: tp/Texinfo/Parser.pm:4171
+#: tp/Texinfo/Parser.pm:3962
+#, fuzzy, perl-format
+msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr "@%sOYA Hanze Na"
+
+#: tp/Texinfo/Parser.pm:3966
+#, fuzzy
+msgid "@dircategory after first node"
+msgstr "@Ibikubiyemo Mbere Itangira"
+
+#: tp/Texinfo/Parser.pm:4107
+#, fuzzy, perl-format
+msgid "Region %s inside region %s is not allowed"
+msgstr "Mo Imbere Ubusobanuro mpezarupapuro OYA"
+
+#: tp/Texinfo/Parser.pm:4123
+#, fuzzy
+msgid "@direntry after first node"
+msgstr "@Ibikubiyemo Mbere Itangira"
+
+#: tp/Texinfo/Parser.pm:4129
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr "@Ibikubiyemo Mbere Itangira"
+
+#: tp/Texinfo/Parser.pm:4131
+#, fuzzy
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "Hejuru: in"
+
+#: tp/Texinfo/Parser.pm:4190
 #, fuzzy, perl-format
 msgid "@%s should only appear in math context"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:4191
+#: tp/Texinfo/Parser.pm:4200
+#, fuzzy, perl-format
+msgid "Unknown command `%s'"
+msgstr "Komandi:"
+
+#: tp/Texinfo/Parser.pm:4210
 #, fuzzy
 msgid "Unexpected @"
 msgstr "Ikitezwe:"
 
-#: tp/Texinfo/Parser.pm:4219
+#: tp/Texinfo/Parser.pm:4238
 #, fuzzy, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%sOYA Hanze"
 
-#: tp/Texinfo/Parser.pm:4223
+#: tp/Texinfo/Parser.pm:4242
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4231
+#: tp/Texinfo/Parser.pm:4250
 #, perl-format
 msgid "Ignoring multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4317
+#: tp/Texinfo/Parser.pm:4336
 #, perl-format
 msgid "Command @%s does not accept arguments"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4336
+#: tp/Texinfo/Parser.pm:4355
 #, fuzzy, perl-format
 msgid "Command @%s missing a node argument"
 msgstr "%s:Ibuze IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:4374
+#: tp/Texinfo/Parser.pm:4373
+#, fuzzy
+msgid "@image missing filename argument"
+msgstr "@Ishusho Ibuze Izina ry'idosiye:"
+
+#: tp/Texinfo/Parser.pm:4393
 #, fuzzy, perl-format
 msgid "@%s missing first argument"
 msgstr "%s:Ibuze IDOSIYE"
 
-#: tp/Texinfo/Parser.pm:4562
+#: tp/Texinfo/Parser.pm:4480
+msgid "Superfluous arguments for node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4517
+#, fuzzy, perl-format
+msgid "Expected @end %s"
+msgstr "Ikitezwe:"
+
+#: tp/Texinfo/Parser.pm:4581
 #, fuzzy, perl-format
 msgid "Remaining argument on @%s line: %s"
 msgstr "Kuri"
 
-#: tp/Texinfo/Parser.pm:4637
+#: tp/Texinfo/Parser.pm:4583
+#, fuzzy, perl-format
+msgid "@%s should only accept a @-command as argument, not `%s'"
+msgstr "Ingirwadusodeko Kuri a Komandi: Nka Kuri"
+
+#: tp/Texinfo/Parser.pm:4656
 #, fuzzy, perl-format
 msgid "Environment command %s as argument to @%s"
 msgstr "Ingirwadusodeko Kuri a Komandi: Nka Kuri"
 
-#: tp/Texinfo/Parser.pm:4658
+#: tp/Texinfo/Parser.pm:4677
 #, perl-format
 msgid "Empty @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4675
+#: tp/Texinfo/Parser.pm:4685
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4694
 #, fuzzy, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "%s:%sBikurikije umubare OYA"
 
+#: tp/Texinfo/Parser.pm:4702
+#, perl-format
+msgid "Reserved index name %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4719
+#, fuzzy, perl-format
+msgid "Unknown from index `%s' in @%s"
+msgstr "Umubarendanga"
+
 #: tp/Texinfo/Parser.pm:4721
+#, fuzzy, perl-format
+msgid "Unknown to index name `%s' in @%s"
+msgstr "Umubarendanga"
+
+#: tp/Texinfo/Parser.pm:4740
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4738
+#: tp/Texinfo/Parser.pm:4752
+#, fuzzy, perl-format
+msgid "Unknown index `%s' in @printindex"
+msgstr "Umubarendanga in"
+
+#: tp/Texinfo/Parser.pm:4757
 #, perl-format
 msgid "Printing an index `%s' merged in another one `%s'"
 msgstr ""
 
+#: tp/Texinfo/Parser.pm:4764
+#, perl-format
+msgid "Printindex before document beginning: @printindex %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4779
+#, fuzzy, perl-format
+msgid "@%s arg must be `top' or `bottom', not `%s'"
+msgstr "%s:%sBikurikije umubare OYA"
+
+#: tp/Texinfo/Parser.pm:4785
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4791
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
+
+#: tp/Texinfo/Parser.pm:4797
+#, fuzzy, perl-format
+msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+msgstr "%s:%sBikurikije umubare OYA"
+
+#: tp/Texinfo/Parser.pm:4812 tp/Texinfo/Parser.pm:4815
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
+
+#: tp/Texinfo/Parser.pm:4821
+#, fuzzy, perl-format
+msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
+
+#: tp/Texinfo/Parser.pm:4829
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
+
 #: tp/Texinfo/Parser.pm:4838
+#, perl-format
+msgid "Expected @%s on or off, not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4845
+#, perl-format
+msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4851
+#, fuzzy, perl-format
+msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
+msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
+
+#: tp/Texinfo/Parser.pm:4857
 #, fuzzy, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
+
+#: tp/Texinfo/Report.pm:91
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s (possibly involving @%s)\n"
+msgstr "%s:%d:Iburira"
+
+#: tp/Texinfo/Report.pm:94
+#, fuzzy, perl-format
+msgid "%s:%d: warning: %s\n"
+msgstr "%s:%d:Iburira"
 
 #: tp/Texinfo/Report.pm:135
 #, fuzzy, perl-format
 msgid "warning: %s\n"
 msgstr "%s:%d:Iburira"
 
-#: tp/Texinfo/Structuring.pm:218
+#: tp/Texinfo/Structuring.pm:222
 #, perl-format
 msgid "Upping the section level of @%s which is too low"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:253
+#: tp/Texinfo/Structuring.pm:257
 #, perl-format
 msgid "Lowering the section level of @%s appearing after a lower element"
 msgstr ""
 
-#: tp/Texinfo/Convert/Converter.pm:424
+#: tp/Texinfo/Structuring.pm:392
+#, fuzzy, perl-format
+msgid "Menu reference to nonexistent node `%s'"
+msgstr "%sIndango Kuri"
+
+#: tp/Texinfo/Structuring.pm:433
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:464
+#, perl-format
+msgid "No node following `%s' in menu, but `%s' follows in sectioning"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:470
+#, perl-format
+msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:532
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "%sIndango Kuri"
+
+#: tp/Texinfo/Structuring.pm:551
+#, fuzzy, perl-format
+msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr "Ibikubiyemo Ikintu kugirango Intego"
+
+#: tp/Texinfo/Structuring.pm:559
+#, perl-format
+msgid "For `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1040
+#, fuzzy, perl-format
+msgid "@%s reference to nonexistent node `%s'"
+msgstr "%sIndango Kuri"
+
+#: tp/Texinfo/Convert/Converter.pm:479
+#, fuzzy, perl-format
+msgid "Can't create directories `%s' or `%s': %s"
+msgstr "Kurema bushyinguro"
+
+#: tp/Texinfo/Convert/Converter.pm:487
 #, fuzzy, perl-format
 msgid "Can't create directories `%s': %s"
 msgstr "Kurema bushyinguro"
 
-#: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6025
-#: tp/Texinfo/Convert/HTML.pm:6070 tp/Texinfo/Convert/HTML.pm:6135
-#: tp/Texinfo/Convert/HTML.pm:6190 tp/Texinfo/Convert/Info.pm:81
-#: tp/Texinfo/Convert/Info.pm:144 tp/Texinfo/Convert/Info.pm:163
-#: tp/Texinfo/Convert/Plaintext.pm:478 tp/Texinfo/Convert/XML.pm:296
+#: tp/Texinfo/Convert/DocBook.pm:308 tp/Texinfo/Convert/HTML.pm:6252
+#: tp/Texinfo/Convert/HTML.pm:6302 tp/Texinfo/Convert/HTML.pm:6368
+#: tp/Texinfo/Convert/HTML.pm:6423 tp/Texinfo/Convert/Info.pm:83
+#: tp/Texinfo/Convert/Info.pm:146 tp/Texinfo/Convert/Info.pm:165
+#: tp/Texinfo/Convert/Plaintext.pm:413 tp/Texinfo/Convert/XML.pm:266
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/Texinfo/Convert/HTML.pm:4311
+#: tp/Texinfo/Convert/HTML.pm:1560
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "@Ishusho IDOSIYE kugirango OYA"
+
+#: tp/Texinfo/Convert/HTML.pm:2238
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4450
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4452
+#, fuzzy, perl-format
+msgid "%s:%d: --css-file ended in comment"
+msgstr "%s:%d:--IDOSIYE in Icyo wongeraho"
+
+#: tp/Texinfo/Convert/HTML.pm:4454
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4480
 #, fuzzy, perl-format
 msgid "css file %s not found"
 msgstr "%cendMakoro OYA Byabonetse"
 
-#: tp/Texinfo/Convert/HTML.pm:4316
+#: tp/Texinfo/Convert/HTML.pm:4485
 #, fuzzy, perl-format
 msgid "could not open --css-file %s: %s"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/Texinfo/Convert/HTML.pm:5986
+#: tp/Texinfo/Convert/HTML.pm:6212
 msgid "Must specify a title with a title command or @top"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6153
+#: tp/Texinfo/Convert/HTML.pm:6386
 #, fuzzy, perl-format
 msgid "Node `%s' that is to be renamed exists"
 msgstr "Times"
 
-#: tp/Texinfo/Convert/HTML.pm:6223
+#: tp/Texinfo/Convert/HTML.pm:6390
+#, perl-format
+msgid "File empty for renamed node `%s'"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6401
+#, perl-format
+msgid "Node to be renamed as, `%s' not found"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6456
 #, fuzzy
 msgid "Empty node name"
 msgstr "Oya Umubarendanga Ibyinjijwe Byabonetse kugirango"
 
-#: tp/Texinfo/Convert/Info.pm:90
+#: tp/Texinfo/Convert/Info.pm:92
 #, fuzzy
 msgid "Document without nodes."
 msgstr "Ibikubiyemo in iyi"
 
-#: tp/Texinfo/Convert/Info.pm:102
+#: tp/Texinfo/Convert/Info.pm:104
 msgid "Document without Top node."
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:129
+#: tp/Texinfo/Convert/Info.pm:131
 #, perl-format
 msgid "Rename %s failed: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:188
+#: tp/Texinfo/Convert/Info.pm:190
 #, perl-format
 msgid "@%s `%s' output more than once"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:377
+#: tp/Texinfo/Convert/Info.pm:379
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Info.pm:455
+#: tp/Texinfo/Convert/Info.pm:457
 #, fuzzy, perl-format
 msgid "@%s outside of any node"
 msgstr "(Hanze Bya"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1517
+#: tp/Texinfo/Convert/Info.pm:557
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt'"
+msgstr "Gushaka"
+
+#: tp/Texinfo/Convert/Plaintext.pm:948
+#, fuzzy, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "@Ishusho IDOSIYE"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1240
+#, fuzzy
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr "@a Kwambukiranya Indango in Kuri"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1456
+#, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1458
 msgid "`.' or `,' must follow @xref"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2160
+#: tp/Texinfo/Convert/Plaintext.pm:2103
 #, perl-format
 msgid "Node expansion `%s' in menu differs from normal node expansion `%s'"
 msgstr ""
+
+#, fuzzy
+#~ msgid "arguments to @%s ignored"
+#~ msgstr "ingingo Kuri"
+
+#~ msgid "January"
+#~ msgstr "Mutarama"
+
+#~ msgid "February"
+#~ msgstr "Gashyantare"
+
+#~ msgid "March"
+#~ msgstr "Werurwe"
+
+#~ msgid "April"
+#~ msgstr "Mata"
+
+#~ msgid "May"
+#~ msgstr "Gicurasi"
+
+#~ msgid "June"
+#~ msgstr "Kamena"
+
+#~ msgid "July"
+#~ msgstr "Nyakanga"
+
+#~ msgid "August"
+#~ msgstr "Kanama"
+
+#~ msgid "September"
+#~ msgstr "Nzeri"
+
+#~ msgid "October"
+#~ msgstr "Ukwakira"
+
+#~ msgid "November"
+#~ msgstr "Ugushyingo"
+
+#~ msgid "December"
+#~ msgstr "Ukuboza"
+
+#, fuzzy
+#~ msgid "unlikely character %c in @var"
+#~ msgstr "Inyuguti in VAR"
+
+#, fuzzy
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "@Byose Inyuguti nkuru Oya INGARUKA"
+
+#, fuzzy
+#~ msgid "`{' expected, but saw `%c'"
+#~ msgstr "`{'Ikitezwe:"
+
+#, fuzzy
+#~ msgid "end of file inside verb block"
+#~ msgstr "Impera Bya IDOSIYE Mo Imbere Ishinga Funga"
+
+#, fuzzy
+#~ msgid "`}' expected, but saw `%c'"
+#~ msgstr "`}'Ikitezwe:"
+
+#, fuzzy
+#~ msgid "%c%s is obsolete"
+#~ msgstr "%c%sni"
+
+#, fuzzy
+#~ msgid "@sp requires a positive numeric argument, not `%s'"
+#~ msgstr "@SP a Bikurikije umubare OYA"
+
+#, fuzzy
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "Kuri"
+
+#~ msgid "none"
+#~ msgstr "ntacyo"
+
+# basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.RID_INSERT.text
+#, fuzzy
+#~ msgid "insert"
+#~ msgstr "Kongeramo"
+
+#, fuzzy
+#~ msgid "Missing `}' in @def arg"
+#~ msgstr "in"
+
+#, fuzzy
+#~ msgid "Must be in `@%s' environment to use `@%s'"
+#~ msgstr "in Kuri Gukoresha"
+
+#, fuzzy
+#~ msgid "`%s' omitted before output filename"
+#~ msgstr "`%s'Mbere Ibisohoka Izina ry'idosiye:"
+
+#, fuzzy
+#~ msgid "`%s' omitted since writing to stdout"
+#~ msgstr "`%s'guhera Kuri"
+
+#, fuzzy
+#~ msgid "Output buffer not empty."
+#~ msgstr "OYA ubusa"
+
+#, fuzzy
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "`%c%s'OYA"
+
+#, fuzzy
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "kugirango Ubusobanuro mpezarupapuro"
+
+#, fuzzy
+#~ msgid "Footnotes inside footnotes are not allowed"
+#~ msgstr "Mo Imbere Ubusobanuro mpezarupapuro OYA"
+
+#~ msgid "Footnotes"
+#~ msgstr "Ubusobanuro mpezarupapuro"
+
+#, fuzzy
+#~ msgid "%s: could not open --css-file: %s"
+#~ msgstr "%s:OYA Gufungura IDOSIYE"
+
+#, fuzzy
+#~ msgid "[unexpected] no html tag to pop"
+#~ msgstr "[Oya HTML Itagi: Kuri"
+
+#, fuzzy
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "[Sibyo Izina:"
+
+#, fuzzy
+#~ msgid "Unknown index `%s'"
+#~ msgstr "Umubarendanga"
+
+#, fuzzy
+#~ msgid "Info cannot handle `:' in index entry `%s'"
+#~ msgstr "in Umubarendanga Icyinjijwe"
+
+#, fuzzy
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "Umubarendanga Na Cyangwa in"
+
+#, fuzzy
+#~ msgid "(line )"
+#~ msgstr "(Umurongo"
+
+#, fuzzy
+#~ msgid "(line %*d)"
+#~ msgstr "(Umurongo"
+
+#, fuzzy
+#~ msgid "(outside of any node)"
+#~ msgstr "(Hanze Bya"
+
+#, fuzzy
+#~ msgid "@item not allowed in argument to @itemize"
+#~ msgstr "@Ikintu OYA in Kuri"
+
+#, fuzzy
+#~ msgid "Broken-Type in insertion_type_pname"
+#~ msgstr "in"
+
+#, fuzzy
+#~ msgid "Enumeration stack overflow"
+#~ msgstr "Byarenze urugero"
+
+#, fuzzy
+#~ msgid "lettering overflow, restarting at %c"
+#~ msgstr "Byarenze urugero ku"
+
+#, fuzzy
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%sIbaruwa... Cyangwa"
+
+#, fuzzy
+#~ msgid "end of file inside verbatim block"
+#~ msgstr "Impera Bya IDOSIYE Mo Imbere Funga"
+
+#, fuzzy
+#~ msgid "@%s not meaningful outside `@float' environment"
+#~ msgstr "@%sOYA Hanze"
+
+#, fuzzy
+#~ msgid "@menu seen before first @node, creating `Top' node"
+#~ msgstr "@Ibikubiyemo Mbere Itangira"
+
+#, fuzzy
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr "@Mbere Itangira"
+
+#, fuzzy
+#~ msgid "@%s not meaningful outside `@titlepage' environment"
+#~ msgstr "@%sOYA Hanze"
+
+#, fuzzy
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "`%c%s'Nyuma"
+
+#, fuzzy
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "Kuri ikoresha"
+
+#, fuzzy
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "@OYA Mo Imbere Funga"
+
+#, fuzzy
+#~ msgid "%c%s found outside of an insertion block"
+#~ msgstr "%c%sByabonetse Hanze Bya Iyinjizamo Funga"
+
+#, fuzzy
+#~ msgid "%s is not a valid ISO 639 language code"
+#~ msgstr "%sni OYA a Byemewe Ururimi ITEGEKONGENGA"
+
+#, fuzzy
+#~ msgid "sorry, encoding `%s' not supported"
+#~ msgstr "Imisobekere: OYA"
+
+#, fuzzy
+#~ msgid "invalid encoded character `%s'"
+#~ msgstr "Sibyo Inyuguti"
+
+#, fuzzy
+#~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
+#~ msgstr "%c%sCyangwa Nka OYA"
+
+#, fuzzy
+#~ msgid "%c%s expects a single character `i' or `j' as argument"
+#~ msgstr "%c%sa UMWE Inyuguti Cyangwa Nka"
+
+#, fuzzy
+#~ msgid "\\ in macro expansion followed by `%s' instead of parameter name"
+#~ msgstr "\\ in Makoro ku Bya Izina:"
+
+#, fuzzy
+#~ msgid "Macro `%s' called on line %d with too many args"
+#~ msgstr "ku Umurongo Na:"
+
+#, fuzzy
+#~ msgid "%cend macro not found"
+#~ msgstr "%cendMakoro OYA Byabonetse"
+
+#, fuzzy
+#~ msgid "mismatched @end %s with @%s"
+#~ msgstr "Impera Na:"
+
+#, fuzzy
+#~ msgid "Too many errors!  Gave up.\n"
+#~ msgstr "Amakosa Hejuru"
+
+#, fuzzy
+#~ msgid "%s:%d: warning: "
+#~ msgstr "%s:%d:Iburira"
+
+#, fuzzy
+#~ msgid ""
+#~ "General options:\n"
+#~ "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+#~ "      --document-language=STR locale to use in translating Texinfo "
+#~ "keywords\n"
+#~ "                                for the output document (default C).\n"
+#~ "      --force                 preserve output even if errors.\n"
+#~ "      --help                  display this help and exit.\n"
+#~ "      --no-validate           suppress node cross-reference validation.\n"
+#~ "      --no-warn               suppress warnings (but not errors).\n"
+#~ "  -v, --verbose               explain what is being done.\n"
+#~ "      --version               display version information and exit.\n"
+#~ msgstr ""
+#~ "Amahitamo Ikosa Kuvamo Nyuma Amakosa Mburabuzi Ibisohoka ATARIIGIHARWE "
+#~ "NIBA Amakosa Ifashayobora Kugaragaza iyi Ifashayobora Na Gusohoka Oya "
+#~ "Kwemeza Kwambukiranya Indango Kwemeza Oya Iburira OYA Amakosa Indango "
+#~ "Ibyerekeye ku Indango Mburabuzi v ni Byakozwe Verisiyo Kugaragaza "
+#~ "Verisiyo Ibisobanuro Na Gusohoka"
+
+#, fuzzy
+#~ msgid ""
+#~ "Output format selection (default is to produce Info):\n"
+#~ "      --docbook               output Docbook XML rather than Info.\n"
+#~ "      --html                  output HTML rather than Info.\n"
+#~ "      --xml                   output Texinfo XML rather than Info.\n"
+#~ "      --plaintext             output plain text rather than Info.\n"
+#~ msgstr ""
+#~ "Imiterere Ihitamo Mburabuzi ni Kuri InyandikoGitabo Ibisohoka HTML "
+#~ "Ibisohoka xml Ibisohoka Ibisohoka Byuzuye Umwandiko"
+
+#, fuzzy
+#~ msgid ""
+#~ "General output options:\n"
+#~ "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+#~ "                                ignoring any @setfilename.\n"
+#~ "      --no-headers            suppress node separators, Node: lines, and "
+#~ "menus\n"
+#~ "                                from Info output (thus producing plain "
+#~ "text)\n"
+#~ "                                or from HTML (thus producing shorter "
+#~ "output);\n"
+#~ "                                also, write to standard output by "
+#~ "default.\n"
+#~ "      --no-split              suppress the splitting of Info or HTML "
+#~ "output,\n"
+#~ "                                generate only one output file.\n"
+#~ "      --number-sections       output chapter and sectioning numbers.\n"
+#~ "  -o, --output=FILE           output to FILE (or directory if split "
+#~ "HTML).\n"
+#~ msgstr ""
+#~ "Ibisohoka Amahitamo E Makoro Kwagura Ibisohoka Makoro Cyagutse Inkomoko "
+#~ "Kuri Oya Imitwe Imirongo Na Bivuye Ibisohoka Byuzuye Umwandiko Cyangwa "
+#~ "Bivuye Ibisohoka Kwandika Kuri Bisanzwe Ibisohoka ku Mburabuzi Oya "
+#~ "Gutandukanya Bya Cyangwa Ibisohoka Ibisohoka IDOSIYE Umubare "
+#~ "Ibyatoranyijwe Ibisohoka Umutwe Na Imibare o Ibisohoka Ibisohoka Kuri "
+#~ "bushyinguro NIBA Gutandukanya"
+
+#, fuzzy
+#~ msgid ""
+#~ "Options for HTML:\n"
+#~ "      --css-include=FILE      include FILE in HTML <style> output;\n"
+#~ "                                read stdin if FILE is -.\n"
+#~ "      --css-ref=URL           generate reference to a CSS file.\n"
+#~ "      --internal-links=FILE   produce list of internal links in FILE.\n"
+#~ "      --transliterate-file-names\n"
+#~ "                              produce file names in ASCII "
+#~ "transliteration.\n"
+#~ msgstr ""
+#~ "kugirango Gushyiramo Gushyiramo in IMISUSIRE Ibisohoka Gusoma NIBA ni"
+
+#, fuzzy
+#~ msgid ""
+#~ "Options for XML and Docbook:\n"
+#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default "
+#~ "%d).\n"
+#~ "                                If VAL is 0, ignorable whitespace is "
+#~ "dropped.\n"
+#~ msgstr ""
+#~ "kugirango Na Ibisohoka Ikurura Ikurura Ibintu ku Imyanya Mburabuzi ni 0 ni"
+
+#, fuzzy
+#~ msgid ""
+#~ "Input file options:\n"
+#~ "      --commands-in-node-names  allow @ commands in node names.\n"
+#~ "  -D VAR                        define the variable VAR, as with @set.\n"
+#~ "  -I DIR                        append DIR to the @include search path.\n"
+#~ "  -P DIR                        prepend DIR to the @include search path.\n"
+#~ "  -U VAR                        undefine the variable VAR, as with "
+#~ "@clear.\n"
+#~ msgstr ""
+#~ "IDOSIYE Amahitamo Amabwiriza in Amazina Kwemerera Amabwiriza in Amazina "
+#~ "Kugaragaza... i IMPINDURAGACIRO Nka Na: Gushyiraho Kongeraho... Kuri i "
+#~ "Gushyiramo Gushaka Inzira Kuri i Gushyiramo Gushaka Inzira U i "
+#~ "IMPINDURAGACIRO Nka Na: Gusiba"
+
+#, fuzzy
+#~ msgid ""
+#~ "Conditional processing in input:\n"
+#~ "  --ifdocbook       process @ifdocbook and @docbook even if\n"
+#~ "                      not generating Docbook.\n"
+#~ "  --ifhtml          process @ifhtml and @html even if not generating "
+#~ "HTML.\n"
+#~ "  --ifinfo          process @ifinfo even if not generating Info.\n"
+#~ "  --ifplaintext     process @ifplaintext even if not generating plain "
+#~ "text.\n"
+#~ "  --iftex           process @iftex and @tex; implies --no-split.\n"
+#~ "  --ifxml           process @ifxml and @xml.\n"
+#~ "  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+#~ "  --no-ifhtml       do not process @ifhtml and @html text.\n"
+#~ "  --no-ifinfo       do not process @ifinfo text.\n"
+#~ "  --no-ifplaintext  do not process @ifplaintext text.\n"
+#~ "  --no-iftex        do not process @iftex and @tex text.\n"
+#~ "  --no-ifxml        do not process @ifxml and @xml text.\n"
+#~ "\n"
+#~ "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+#~ msgstr ""
+#~ "Inonosora in Iyinjiza Na InyandikoGitabo ATARIIGIHARWE OYA Na HTML "
+#~ "ATARIIGIHARWE NIBA OYA ATARIIGIHARWE NIBA OYA ATARIIGIHARWE NIBA OYA "
+#~ "Byuzuye Umwandiko Na Oya Gutandukanya Na xml Oya OYA Na InyandikoGitabo "
+#~ "Umwandiko Oya OYA Na HTML Umwandiko Oya OYA Umwandiko Oya OYA Umwandiko "
+#~ "Oya OYA Na Umwandiko Oya OYA Na xml Umwandiko kugirango i Oya Amahitamo "
+#~ "Umwandiko"
+
+#, fuzzy
+#~ msgid "%s: %s arg must be numeric, not `%s'.\n"
+#~ msgstr "%s:%sBikurikije umubare OYA"
+
+#, fuzzy
+#~ msgid "%s: could not open macro expansion output `%s'"
+#~ msgstr "%s:OYA Gufungura Makoro Ibisohoka"
+
+#, fuzzy
+#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
+#~ msgstr "%s:ISEGONDA Makoro Ibisohoka"
+
+#, fuzzy
+#~ msgid "%s: could not open internal links output `%s'"
+#~ msgstr "%s:OYA Gufungura Makoro Ibisohoka"
+
+#, fuzzy
+#~ msgid "%s: ignoring second internal links output `%s'.\n"
+#~ msgstr "%s:ISEGONDA Makoro Ibisohoka"
+
+#, fuzzy
+#~ msgid "Multiline command %c%s used improperly"
+#~ msgstr "Komandi:"
+
+#, fuzzy
+#~ msgid "Expected `%s'"
+#~ msgstr "Ikitezwe:"
+
+#, fuzzy
+#~ msgid "Can't create directory `%s': %s"
+#~ msgstr "Kurema bushyinguro"
+
+#, fuzzy
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "Byabonetse in"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr "%s:Makoro Kuri Nka Ibisohoka ni"
+
+#, fuzzy
+#~ msgid "Making %s file `%s' from `%s'.\n"
+#~ msgstr "IDOSIYE Bivuye"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr "%s:Makoro Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr "%s:Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s: Removing internal links output file `%s' due to errors; use --force "
+#~ "to preserve.\n"
+#~ msgstr "%s:Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
+
+#, fuzzy
+#~ msgid "%c%s expected braces"
+#~ msgstr "%c%sIkitezwe: Ingirwadusodeko"
+
+# 4203
+#, fuzzy
+#~ msgid "NO_NAME!"
+#~ msgstr "nta zina"
+
+#, fuzzy
+#~ msgid "@image file `%s' (for HTML) not readable: %s"
+#~ msgstr "@Ishusho IDOSIYE kugirango OYA"
+
+#, fuzzy
+#~ msgid "No such file `%s'"
+#~ msgstr "IDOSIYE"
+
+#, fuzzy
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "@Ishusho IDOSIYE kugirango Umwandiko"
+
+#, fuzzy
+#~ msgid "{No value for `%s'}"
+#~ msgstr "{Agaciro kugirango"
+
+#, fuzzy
+#~ msgid "Reached eof before matching @end %s"
+#~ msgstr "Mbere Impera"
+
+#, fuzzy
+#~ msgid "`%.40s...' is too long for expansion; not expanded"
+#~ msgstr ""
+#~ "`%.Project- Id- Version: basctl\n"
+#~ "POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
+#~ "PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
+#~ "Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
+#~ "Content- Type: text/ plain; charset= UTF- 8\n"
+#~ "Content- Transfer- Encoding: 8bit\n"
+#~ "X- Generator: KBabel 1. 0\n"
+#~ "."
+
+#, fuzzy
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "in Inyandikorugero"
+
+#, fuzzy
+#~ msgid "ignoring stray text `%s' after @multitable"
+#~ msgstr "Umwandiko Nyuma"
+
+#, fuzzy
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr "[Guhitamo Inkingi in"
+
+#, fuzzy
+#~ msgid "** Multicolumn output from last row:\n"
+#~ msgstr "**Ibisohoka Bivuye Iheruka Urubariro"
+
+#, fuzzy
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "*Inkingi Ibisohoka"
+
+#, fuzzy
+#~ msgid "Node `%s' previously defined at line %d"
+#~ msgstr "ku Umurongo"
+
+#, fuzzy
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr "g."
+
+#, fuzzy
+#~ msgid "No node name specified for `%c%s' command"
+#~ msgstr "Izina: kugirango Komandi:"
+
+#, fuzzy
+#~ msgid "Anchor `%s' and node `%s' map to the same file name"
+#~ msgstr "Na Kuri i IDOSIYE Izina:"
+
+#, fuzzy
+#~ msgid "This @anchor command ignored; references to it will not work"
+#~ msgstr "Agafashi Komandi: Indango Kuri OYA Akazi"
+
+#, fuzzy
+#~ msgid "Rename this anchor or use the `--no-split' option"
+#~ msgstr "iyi Agafashi Cyangwa Gukoresha i Oya Ihitamo"
+
+#, fuzzy
+#~ msgid "Unexpected string at end of split-HTML file `%s'"
+#~ msgstr "Ikurikiranyanyuguti ku Impera Bya Gutandukanya IDOSIYE"
+
+#, fuzzy
+#~ msgid "Anchors `%s' and `%s' map to the same file name"
+#~ msgstr "Na Kuri i IDOSIYE Izina:"
+
+#, fuzzy
+#~ msgid "@anchor command ignored; references to it will not work"
+#~ msgstr "@Agafashi Komandi: Indango Kuri OYA Akazi"
+
+#, fuzzy
+#~ msgid ""
+#~ "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
+#~ msgstr "%sIndango Kuri"
+
+#, fuzzy
+#~ msgid ""
+#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr "Umwanya Bya OYA Kuri"
+
+#, fuzzy
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "i"
+
+#, fuzzy
+#~ msgid "Prev field of node `%s' not pointed to"
+#~ msgstr "Umwanya Bya OYA Kuri"
+
+#, fuzzy
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "i"
+
+#, fuzzy
+#~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
+#~ msgstr "`%s'Oya Umwanya"
+
+#, fuzzy
+#~ msgid "Can't remove file `%s': %s"
+#~ msgstr "Gukuraho... IDOSIYE"
+
+#, fuzzy
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "Ikosa"
+
+#, fuzzy
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "Ikosa"
+
+#, fuzzy
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%sni Gukoresha"
+
+#, fuzzy
+#~ msgid "Node with %ctop as a section already exists"
+#~ msgstr "Na: Nka a Icyiciro"
+
+#, fuzzy
+#~ msgid "Here is the %ctop node"
+#~ msgstr "ni i"
+
+#, fuzzy
+#~ msgid "%ctop used before %cnode, defaulting to %s"
+#~ msgstr "%ctopMbere Kuri"
+
+#, fuzzy
+#~ msgid ""
+#~ "@headitem as the last item of @multitable produces invalid Docbook "
+#~ "documents"
+#~ msgstr "@Nka i Iheruka Ikintu Bya Sibyo Inyandiko"
+
+#~ msgid "of"
+#~ msgstr "ya"
+
+#~ msgid "on"
+#~ msgstr "kuri"
+
+#, fuzzy
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "Kwambukiranya Indango in iyi"
+
+#, fuzzy
+#~ msgid "Encoding %s certainly poorly supported"
+#~ msgstr "Imisobekere: OYA"
+
+#, fuzzy
+#~ msgid ""
+#~ "General options:\n"
+#~ "      --error-limit=NUM       quit after NUM errors (default %d).\n"
+#~ "      --document-language=STR locale to use in translating Texinfo "
+#~ "keywords\n"
+#~ "                                for the output document (default C).\n"
+#~ "      --force                 preserve output even if errors.\n"
+#~ "      --help                  display this help and exit.\n"
+#~ "      --no-validate           suppress node cross-reference validation.\n"
+#~ "      --no-warn               suppress warnings (but not errors).\n"
+#~ "      --conf-dir=DIR          search also for initialization files in "
+#~ "DIR.\n"
+#~ "      --init-file=FILE        load FILE to modify the default behaviour.\n"
+#~ "      --set-init-variable VAR=VAL  set configuration variable VAR to "
+#~ "VAL.\n"
+#~ "  -v, --verbose               explain what is being done.\n"
+#~ "      --version               display version information and exit.\n"
+#~ msgstr ""
+#~ "Amahitamo Ikosa Kuvamo Nyuma Amakosa Mburabuzi Ibisohoka ATARIIGIHARWE "
+#~ "NIBA Amakosa Ifashayobora Kugaragaza iyi Ifashayobora Na Gusohoka Oya "
+#~ "Kwemeza Kwambukiranya Indango Kwemeza Oya Iburira OYA Amakosa Indango "
+#~ "Ibyerekeye ku Indango Mburabuzi v ni Byakozwe Verisiyo Kugaragaza "
+#~ "Verisiyo Ibisobanuro Na Gusohoka"
+
+#, fuzzy
+#~ msgid ""
+#~ "General output options:\n"
+#~ "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+#~ "                                ignoring any @setfilename.\n"
+#~ "      --no-headers            suppress node separators, Node: lines, and "
+#~ "menus\n"
+#~ "                                from Info output (thus producing plain "
+#~ "text)\n"
+#~ "                                or from HTML (thus producing shorter "
+#~ "output);\n"
+#~ "                                also, write to standard output by default "
+#~ "if\n"
+#~ "                                producing Info.\n"
+#~ "      --split=SPLIT           split at SPLIT, where SPLIT may be "
+#~ "chapter, \n"
+#~ "                                section or node if output supports "
+#~ "splitting.\n"
+#~ "      --no-split              suppress the splitting of Info or HTML "
+#~ "output,\n"
+#~ "                                generate only one output file.\n"
+#~ "      --number-sections       output chapter and sectioning numbers.\n"
+#~ "  -o, --output=FILE           output to FILE (or directory if split).\n"
+#~ "                                If not split and FILE is a directory, put "
+#~ "the\n"
+#~ "                                resulting files in FILE.\n"
+#~ msgstr ""
+#~ "Ibisohoka Amahitamo E Makoro Kwagura Ibisohoka Makoro Cyagutse Inkomoko "
+#~ "Kuri Oya Imitwe Imirongo Na Bivuye Ibisohoka Byuzuye Umwandiko Cyangwa "
+#~ "Bivuye Ibisohoka Kwandika Kuri Bisanzwe Ibisohoka ku Mburabuzi Oya "
+#~ "Gutandukanya Bya Cyangwa Ibisohoka Ibisohoka IDOSIYE Umubare "
+#~ "Ibyatoranyijwe Ibisohoka Umutwe Na Imibare o Ibisohoka Ibisohoka Kuri "
+#~ "bushyinguro NIBA Gutandukanya"
+
+#, fuzzy
+#~ msgid ""
+#~ "Options for HTML:\n"
+#~ "      --css-include=FILE      include FILE in HTML <style> output;\n"
+#~ "                                read stdin if FILE is -.\n"
+#~ "      --css-ref=URL           generate reference to a CSS file.\n"
+#~ "      --internal-links=FILE   produce list of internal links in FILE.\n"
+#~ "      --transliterate-file-names\n"
+#~ "                              produce file names in ASCII "
+#~ "transliteration.\n"
+#~ "      --node-files            produce redirection files for nodes and \n"
+#~ "                                anchors. Default is set only if split.\n"
+#~ msgstr ""
+#~ "kugirango Gushyiramo Gushyiramo in IMISUSIRE Ibisohoka Gusoma NIBA ni"
+
+#, fuzzy
+#~ msgid "Cannot split output %s"
+#~ msgstr "Kurema Ibisohoka IDOSIYE"
+
+#, fuzzy
+#~ msgid "%s not writable"
+#~ msgstr "%s:ubusa IDOSIYE"
+
+#, fuzzy
+#~ msgid " end of file"
+#~ msgstr "IDOSIYE"
+
+#, fuzzy
+#~ msgid "Node `%s' previously defined %s"
+#~ msgstr "ku Umurongo"
+
+#, fuzzy
+#~ msgid "@%s requires an argument"
+#~ msgstr "%c%sa Izina:"
+
+#, fuzzy
+#~ msgid "Node `%s' that is to be renamed exists "
+#~ msgstr "Times"
+
+#, fuzzy
+#~ msgid "%s: Removing output files due to errors; use --force to preserve.\n"
+#~ msgstr "%s:Ibisohoka IDOSIYE Kuri Amakosa Gukoresha Kuri"
+
+#, fuzzy
+#~ msgid "(in %s l. %d)"
+#~ msgstr "(Umurongo"
+
+#, fuzzy
+#~ msgid "(l. %d)"
+#~ msgstr "(Umurongo"
+
+#, fuzzy
+#~ msgid "Missing `}' on @%s line"
+#~ msgstr "in"
+
+#, fuzzy
+#~ msgid "Anchor `%s' ignored in %s expanded more than once"
+#~ msgstr "Na Kuri i IDOSIYE Izina:"
+
+#, fuzzy
+#~ msgid "Unknown format %s"
+#~ msgstr "Komandi:"
+
+#, fuzzy
+#~ msgid "@%s (argument nr %d)"
+#~ msgstr "Kuri"
+
+#, fuzzy
+#~ msgid "First argument to @%s may not be empty"
+#~ msgstr "ingingo Kuri"
+
+#, fuzzy
+#~ msgid "@image file name"
+#~ msgstr "@Ishusho IDOSIYE"
+
+#, fuzzy
+#~ msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
+#~ msgstr "\\ in Makoro ku Bya Izina:"
+
+#, fuzzy
+#~ msgid "No index prefix found for @%s"
+#~ msgstr "Oya Umubarendanga Ibyinjijwe Byabonetse kugirango"
+
+#, fuzzy
+#~ msgid "@%s not allowed in argument to @%s"
+#~ msgstr "@Ikintu OYA in Kuri"
+
+#, fuzzy
+#~ msgid "Anchor `%s' previously defined %s"
+#~ msgstr "Makoro"
+
+#, fuzzy
+#~ msgid "No closing brace for specially handled command %s"
+#~ msgstr "kugirango Ubusobanuro mpezarupapuro"
+
+#, fuzzy
+#~ msgid "Float label `%s' previously defined %s"
+#~ msgstr "Makoro"
+
+#, fuzzy
+#~ msgid "ignoring @tab in empty multitable"
+#~ msgstr "Isunika Hanze Bya"
+
+#, fuzzy
+#~ msgid "Unknown command with braces `@%s'"
+#~ msgstr "Komandi:"
+
+#, fuzzy
+#~ msgid "Unexpected command `%s' here"
+#~ msgstr "Komandi:"
+
+#, fuzzy
+#~ msgid "%s should not appear in %s"
+#~ msgstr "%s:OYA Gufungura IDOSIYE"
+
+#, fuzzy
+#~ msgid "Empty index entry for @%s"
+#~ msgstr "Oya Umubarendanga Ibyinjijwe Byabonetse kugirango"
+
+#, fuzzy
+#~ msgid "%s: could not open --css-file %s: %s\n"
+#~ msgstr "%s:OYA Gufungura IDOSIYE"
+
+#, fuzzy
+#~ msgid "@menu before first node"
+#~ msgstr "@Ibikubiyemo Mbere Itangira"
+
+#, fuzzy
+#~ msgid "@image file `%s' not found, using `%s'"
+#~ msgstr "@Ishusho IDOSIYE"
 
 # framework/source\services\logindialog.src:RID_DLG_LOGIN.RID_PB_ADDITIONALSETTINGS.text
 #, fuzzy
