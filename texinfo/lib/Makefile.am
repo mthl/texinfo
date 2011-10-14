@@ -1,7 +1,7 @@
-# $Id: Makefile.am,v 1.12 2010-06-24 00:17:01 karl Exp $
+# $Id: Makefile.am,v 1.13 2011-10-14 16:02:06 karl Exp $
 # Makefile.am for texinfo/lib.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -19,6 +19,6 @@ AM_CPPFLAGS = -I$(top_srcdir)			\
   -I$(top_builddir)/gnulib/lib			\
   -DLOCALEDIR=\"$(localedir)\"
 
-libtxi_a_SOURCES = substring.c xexit.c
+libtxi_a_SOURCES = xexit.c
 
 EXTRA_DIST = README
