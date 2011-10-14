@@ -78,10 +78,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module mbswidth:
   # Code from module mbuiter:
   # Code from module memchr:
-  # Code from module memcpy:
   # Code from module memmem:
   # Code from module memmem-simple:
-  # Code from module memmove:
   # Code from module mempcpy:
   # Code from module mkstemp:
   # Code from module msvc-inval:
@@ -235,11 +233,6 @@ if test $HAVE_MEMCHR = 0 || test $REPLACE_MEMCHR = 1; then
   gl_PREREQ_MEMCHR
 fi
 gl_STRING_MODULE_INDICATOR([memchr])
-gl_FUNC_MEMCPY
-if test $ac_cv_func_memcpy = no; then
-  AC_LIBOBJ([memcpy])
-  gl_PREREQ_MEMCPY
-fi
 gl_FUNC_MEMMEM
 if test $HAVE_MEMMEM = 0 || test $REPLACE_MEMMEM = 1; then
   AC_LIBOBJ([memmem])
@@ -249,11 +242,6 @@ if test $HAVE_MEMMEM = 0 || test $REPLACE_MEMMEM = 1; then
   AC_LIBOBJ([memmem])
 fi
 gl_STRING_MODULE_INDICATOR([memmem])
-gl_FUNC_MEMMOVE
-if test $ac_cv_func_memmove = no; then
-  AC_LIBOBJ([memmove])
-  gl_PREREQ_MEMMOVE
-fi
 gl_FUNC_MEMPCPY
 if test $HAVE_MEMPCPY = 0; then
   AC_LIBOBJ([mempcpy])
@@ -546,9 +534,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbuiter.h
   lib/memchr.c
   lib/memchr.valgrind
-  lib/memcpy.c
   lib/memmem.c
-  lib/memmove.c
   lib/mempcpy.c
   lib/mkstemp.c
   lib/msvc-inval.c
@@ -650,9 +636,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbstate_t.m4
   m4/mbswidth.m4
   m4/memchr.m4
-  m4/memcpy.m4
   m4/memmem.m4
-  m4/memmove.m4
   m4/mempcpy.m4
   m4/mkstemp.m4
   m4/mmap-anon.m4
