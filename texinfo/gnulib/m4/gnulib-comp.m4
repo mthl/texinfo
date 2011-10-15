@@ -50,7 +50,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
   # Code from module fcntl-h:
-  # Code from module getopt:
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
   # Code from module gettext:
@@ -65,6 +64,7 @@ AC_DEFUN([gl_EARLY],
   AC_REQUIRE([AC_SYS_LARGEFILE])
   # Code from module localcharset:
   # Code from module lstat:
+  # Code from module malloc-posix:
   # Code from module malloca:
   # Code from module mbchar:
   # Code from module mbiter:
@@ -99,7 +99,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module stdint:
   # Code from module stdlib:
   # Code from module stpcpy:
-  # Code from module strdup:
+  # Code from module strdup-posix:
   # Code from module streq:
   # Code from module strerror:
   # Code from module strerror-override:
@@ -204,6 +204,11 @@ if test $REPLACE_LSTAT = 1; then
   gl_PREREQ_LSTAT
 fi
 gl_SYS_STAT_MODULE_INDICATOR([lstat])
+gl_FUNC_MALLOC_POSIX
+if test $REPLACE_MALLOC = 1; then
+  AC_LIBOBJ([malloc])
+fi
+gl_STDLIB_MODULE_INDICATOR([malloc-posix])
 gl_MALLOCA
 gl_MBCHAR
 gl_MBITER
@@ -286,8 +291,8 @@ if test $HAVE_STPCPY = 0; then
   gl_PREREQ_STPCPY
 fi
 gl_STRING_MODULE_INDICATOR([stpcpy])
-gl_FUNC_STRDUP
-if test $ac_cv_func_strdup = no; then
+gl_FUNC_STRDUP_POSIX
+if test $ac_cv_func_strdup = no || test $REPLACE_STRDUP = 1; then
   AC_LIBOBJ([strdup])
   gl_PREREQ_STRDUP
 fi
@@ -516,6 +521,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/localcharset.c
   lib/localcharset.h
   lib/lstat.c
+  lib/malloc.c
   lib/malloca.c
   lib/malloca.h
   lib/malloca.valgrind
@@ -627,6 +633,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lock.m4
   m4/longlong.m4
   m4/lstat.m4
+  m4/malloc.m4
   m4/malloca.m4
   m4/mbchar.m4
   m4/mbiter.m4

@@ -1,7 +1,13 @@
+2011-10-15  Karl Berry  <karl@gnu.org>
+
+	* gnulib: switch from now-deprecated getopt to getopt-gnu,
+	likewise strdup to strdup-posix.
+
 2011-10-15  Patrice Dumas  <pertusus@free.fr>
 
-	* doc/texinfo.txi (Other Configuration Variables): USE_SECTIONS is not
-	used anymore, the same effect is obtained by setting USE_NODES to false.
+	* doc/texinfo.txi (Other Configuration Variables): USE_SECTIONS is
+	not used anymore, the same effect is obtained by setting USE_NODES
+	to false.
 
 2011-10-14  Karl Berry  <karl@gnu.org>
 
