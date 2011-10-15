@@ -1044,7 +1044,7 @@ my @informative_global_commands = ('contents', 'shortcontents',
 # 'novalidate'
 foreach my $misc_command(@informative_global_commands,
         'verbatiminclude', 'insertcopying', 'printindex', 'listoffloats',
-        'shorttitlepage', 'author', 'subtitle',
+        'author', 'subtitle',
         'title', keys(%default_index_commands), 
         keys(%formatting_misc_commands)) {
   $kept_misc_commands{$misc_command} = 1;
