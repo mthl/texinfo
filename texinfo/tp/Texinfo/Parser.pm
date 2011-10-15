@@ -1039,6 +1039,42 @@ sub _begin_preformatted($)
   return $current;
 }
 
+sub _command_warn($$$$;@)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  my $message = shift;
+
+  if ($current->{'line_nr'}) {
+    $line_nr = $current->{'line_nr'};
+  }
+  if (@_) {
+    $self->line_warn(sprintf($message, @_), $line_nr);
+  } else {
+    $self->line_warn($message, $line_nr);
+  }
+}
+
+sub _command_error($$$$;@)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  my $message = shift;
+
+  # use the beginning of the @-command for the error message
+  # line number if available. FIXME currently not done for regular brace commands
+  if ($current->{'line_nr'}) {
+    $line_nr = $current->{'line_nr'};
+  }
+  if (@_) {
+    $self->line_error(sprintf($message, @_), $line_nr);
+  } else {
+    $self->line_error($message, $line_nr);
+  }
+}
+
 # currently doesn't do much more than
 # return $_[1]->{'parent'}
 sub _close_brace_command($$$)
@@ -1047,16 +1083,13 @@ sub _close_brace_command($$$)
   my $current = shift;
   my $line_nr = shift;
 
-  my $located_line_nr = $line_nr;
-  # use the beginning of the @-command for the error message
-  # line number if available. FIXME currently not done for regular brace commands
-  $located_line_nr = $current->{'line_nr'}
-    if ($current->{'line_nr'});
   if ($current->{'cmdname'} ne 'verb' or $current->{'type'} eq '') {
-    $self->line_error (sprintf($self->__("%c%s missing close brace"),
-                 ord('@'), $current->{'cmdname'}), $located_line_nr);
+    $self->_command_error($current, $line_nr, 
+       $self->__("%c%s missing close brace"), ord('@'), $current->{'cmdname'});
   } else {
-    $self->line_error (sprintf($self->__("\@%s missing closing delimiter sequence: %s}"), $current->{'cmdname'}, $current->{'type'}), $located_line_nr);
+    $self->_command_error($current, $line_nr,
+       $self->__("\@%s missing closing delimiter sequence: %s}"),
+       $current->{'cmdname'}, $current->{'type'});
   }
   $current = $current->{'parent'};
   return $current;
@@ -2420,12 +2453,14 @@ sub _end_line($$$)
           $current->{'parent'}, $index_contents, 
           $index_contents_normalized, $line_nr);
       } else {
-        $self->line_warn (sprintf($self->__('Missing name for @%s'), 
-         $current->{'parent'}->{'extra'}->{'original_def_cmdname'}), $line_nr); 
+        $self->_command_warn($current->{'parent'}, $line_nr, 
+           $self->__('Missing name for @%s'),
+           $current->{'parent'}->{'extra'}->{'original_def_cmdname'});
       }
     } else {
-      $self->line_warn (sprintf($self->__('Missing category for @%s'),
-         $current->{'parent'}->{'extra'}->{'original_def_cmdname'}), $line_nr); 
+      $self->_command_warn($current->{'parent'}, $line_nr, 
+         $self->__('Missing category for @%s'),
+         $current->{'parent'}->{'extra'}->{'original_def_cmdname'});
     }
     $current = $current->{'parent'}->{'parent'};
     $current = $self->_begin_preformatted($current);
@@ -2456,11 +2491,10 @@ sub _end_line($$$)
           }
         } else {
           if (!$content->{'cmdname'}) { 
-            $self->line_warn (sprintf($self->
-                   __("Unexpected argument on \@%s line: %s"), 
+            $self->_command_warn($current, $line_nr, 
+                $self->__("Unexpected argument on \@%s line: %s"),
                    $current->{'cmdname'}, 
-         Texinfo::Convert::Texinfo::convert({ $content->{'contents'} })), 
-                                            $line_nr);
+         Texinfo::Convert::Texinfo::convert({ $content->{'contents'} }));
           } elsif ($content->{'cmdname'} eq 'c' 
                    or $content->{'cmdname'} eq 'comment') {
           } else {
@@ -2472,7 +2506,8 @@ sub _end_line($$$)
       my $multitable = $current->{'parent'};
       $multitable->{'extra'}->{'max_columns'} = scalar(@prototype_row);
       if (!scalar(@prototype_row)) {
-        $self->line_warn ($self->__("empty multitable"), $line_nr);
+        $self->_command_warn($multitable, $line_nr, 
+                             $self->__("empty multitable"));
       }
       $multitable->{'extra'}->{'prototypes'} = \@prototype_row;
 
@@ -2527,13 +2562,15 @@ sub _end_line($$$)
         if ($current->{'extra'}->{'block_command_line_contents'}
             and defined($current->{'extra'}->{'block_command_line_contents'}->[0])) {
           if (scalar(@{$current->{'extra'}->{'block_command_line_contents'}->[0]}) > 1) {
-            $self->line_error (sprintf($self->__("Superfluous argument to \@%s"),
-               $current->{'cmdname'}), $line_nr);
+            $self->_command_error($current, $line_nr, 
+                        $self->__("Superfluous argument to \@%s"),
+                        $current->{'cmdname'});
           }
           my $arg = $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
           if (!defined($arg->{'text'}) or $arg->{'text'} !~ /^[[:alnum:]]$/) {
-            $self->line_error (sprintf($self->
-               __("Bad argument to \@%s"), $current->{'cmdname'}), $line_nr);
+            $self->_command_error($current, $line_nr, 
+                        $self->__("Bad argument to \@%s"),
+                        $current->{'cmdname'});
           } else {
             $spec = $arg->{'text'};
           }
@@ -2542,15 +2579,15 @@ sub _end_line($$$)
       } elsif ($item_line_commands{$current->{'cmdname'}}) {
         if (!$current->{'extra'} 
             or !$current->{'extra'}->{'command_as_argument'}) {
-          $self->line_error(sprintf($self->__("%s requires an argument: the formatter for %citem"), 
-                                    $current->{'cmdname'}, ord('@')), $line_nr);
+          $self->_command_error($current, $line_nr, 
+              $self->__("%s requires an argument: the formatter for %citem"),
+              $current->{'cmdname'}, ord('@'));
         } elsif (!$brace_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}
             and !$self->{'definfoenclose'}->{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}) {
-          $self->line_error (sprintf($self->
-             __("Command \@%s not accepting argument in brace should not be on \@%s line"), 
-                                    $current->{'extra'}->{'command_as_argument'}->{'cmdname'},
-                                    $current->{'cmdname'}),
-                              $line_nr);
+          $self->_command_error($current, $line_nr, 
+              $self->__("Command \@%s not accepting argument in brace should not be on \@%s line"),
+              $current->{'extra'}->{'command_as_argument'}->{'cmdname'},
+              $current->{'cmdname'});
           delete $current->{'extra'}->{'command_as_argument'};
         }
       }
@@ -2582,11 +2619,10 @@ sub _end_line($$$)
           and $accent_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}
           and ($current->{'cmdname'} eq 'itemize' 
                or $item_line_commands{$current->{'cmdname'}})) {
-        $self->line_warn (sprintf($self->
-           __("Accent command `\@%s' not allowed as \@%s argument"),
+        $self->_command_warn($current, $line_nr, 
+              $self->__("Accent command `\@%s' not allowed as \@%s argument"),
               $current->{'extra'}->{'command_as_argument'}->{'cmdname'}, 
-              $current->{'cmdname'}),
-              $line_nr);
+              $current->{'cmdname'});
         delete $current->{'extra'}->{'command_as_argument'};
         delete $current->{'extra'}->{'block_command_line_contents'};
       }
@@ -2661,8 +2697,8 @@ sub _end_line($$$)
                                                  {'code' => 1, 
                                           Texinfo::Common::_convert_text_options($self)});
       if ($text eq '') {
-        $self->line_warn (sprintf($self->__("\@%s missing argument"), 
-           $command), $line_nr);
+        $self->_command_warn($current, $line_nr, 
+                             $self->__("\@%s missing argument"), $command);
         $current->{'extra'}->{'missing_argument'} = 1;
       } else {
         $current->{'extra'}->{'text_arg'} = $text;
@@ -2673,9 +2709,8 @@ sub _end_line($$$)
             $end_command = $1;
             
             if (!exists $block_commands{$end_command}) {
-              $self->line_warn (
-                sprintf($self->__("Unknown \@end %s"), $end_command), $line_nr);
-              #$current = _merge_text ($self, $current, "\@end $end_command");
+              $self->_command_warn($current, $line_nr, 
+                             $self->__("Unknown \@end %s"), $end_command);
               $end_command = undef;
             } else {
               print STDERR "END BLOCK $end_command\n" if ($self->{'DEBUG'});
@@ -2684,8 +2719,8 @@ sub _end_line($$$)
                   and $self->{'conditionals_stack'}->[-1] eq $end_command) {
                   pop @{$self->{'conditionals_stack'}};
                 } else {
-                  $self->line_error (sprintf($self->__("Unmatched `%c%s'"),
-                       ord('@'), 'end'), $line_nr);
+                  $self->_command_error($current, $line_nr, 
+                             $self->__("Unmatched `%c%s'"), ord('@'), 'end');
                   $end_command = undef;
                 }
               }
@@ -2696,11 +2731,14 @@ sub _end_line($$$)
               my $texi_line 
                 = Texinfo::Convert::Texinfo::convert($current->{'args'}->[0]);
               $texi_line =~ s/^\s*([[:alnum:]][[:alnum:]-]+)//;
-              $self->line_error (sprintf($self->__("Superfluous argument to \@%s %s: %s"), 
-                                 $command, $end_command, $texi_line), $line_nr);
+              $self->_command_error($current, $line_nr, 
+                             $self->__("Superfluous argument to \@%s %s: %s"),
+                             $command, $end_command, $texi_line);
             }
           } else {
-            $self->line_error (sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+            $self->_command_error($current, $line_nr,
+                              $self->__("Bad argument to \@%s: %s"),
+                              $command, $line);
           }
         } elsif ($command eq 'include') {
           my $file = Texinfo::Common::locate_include_file($self, $text) ;
@@ -2718,22 +2756,25 @@ sub _end_line($$$)
                 'pending' => [],
                 'fh' => $filehandle };
             } else {
-              $self->line_error (sprintf($self->__("\@%s: Cannot open %s: %s"), 
-                 $command, $text, $!), $line_nr);
+              $self->_command_error($current, $line_nr,
+                              $self->__("\@%s: Cannot open %s: %s"),
+                              $command, $text, $!);
             }
           } else {
-            $self->line_error (sprintf($self->__("\@%s: Cannot find %s"), 
-               $command, $text), $line_nr);
+            $self->_command_error($current, $line_nr,
+                              $self->__("\@%s: Cannot find %s"),
+                              $command, $text);
           }
         } elsif ($command eq 'documentencoding') {
           my ($texinfo_encoding, $perl_encoding, $output_encoding)
             = Texinfo::Encoding::encoding_alias($text);
-          $self->line_warn (sprintf($self->__("Encoding `%s' is not a canonical texinfo encoding"), 
-                                   $text), $line_nr)
+          $self->_command_warn($current, $line_nr,
+                 $self->__("Encoding `%s' is not a canonical texinfo encoding"),
+                               $text)
             if (!$texinfo_encoding or $texinfo_encoding ne lc($text));
           if (!$perl_encoding) {
-            $self->line_warn (sprintf($self->__("unrecognized encoding name `%s'"), 
-                       $text), $line_nr);
+            $self->_command_warn($current, $line_nr,
+                 $self->__("unrecognized encoding name `%s'"), $text);
           } else {
             if ($output_encoding) {
               $current->{'extra'}->{'encoding_name'} = $output_encoding;
@@ -2754,7 +2795,7 @@ sub _end_line($$$)
           my @messages = Texinfo::Common::warn_unknown_language($text,
                                                           $self->{'gettext'});
           foreach my $message(@messages) {
-            $self->line_warn ($message, $line_nr);
+            $self->_command_warn($current, $line_nr, $message);
           }
           if (!$self->{'set'}->{'documentlanguage'}) {
             $self->{'documentlanguage'} = $text;
@@ -2788,8 +2829,8 @@ sub _end_line($$$)
       _trim_spaces_comment_from_content(\@contents);
       # empty @top is allowed
       if (!scalar(@contents) and $command ne 'top') {
-        $self->line_warn (sprintf($self->__("\@%s missing argument"), 
-           $command), $line_nr);
+        $self->_command_warn($current, $line_nr,
+               $self->__("\@%s missing argument"), $command);
         $current->{'extra'}->{'missing_argument'} = 1;
       } else {
         $current->{'extra'}->{'misc_content'} = \@contents;
@@ -2874,8 +2915,9 @@ sub _end_line($$$)
       # in a multitable, we are in a block_line_arg
       if (!$current->{'parent'} or !$current->{'parent'}->{'cmdname'} 
                    or $current->{'parent'}->{'cmdname'} ne 'multitable') {
-        $self->line_error (sprintf($self->__("\@%s only meaningful on a \@multitable line"), 
-           $command), $line_nr);
+        $self->_command_error($current, $line_nr,
+               $self->__("\@%s only meaningful on a \@multitable line"), 
+               $command);
       } else {
         # This is the multitable block_line_arg line context
         my $context = pop @{$self->{'context_stack'}};
@@ -4636,8 +4678,8 @@ sub _parse_line_command_args($$$)
   _trim_spaces_comment_from_content(\@contents);
 
   if (! @contents) {
-    $self->line_error (sprintf($self->__("\@%s missing argument"), 
-       $command), $line_nr);
+    $self->_command_error($line_command, $line_nr,
+               $self->__("\@%s missing argument"), $command);
     $line_command->{'extra'}->{'missing_argument'} = 1;
     return undef;
   }

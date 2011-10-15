@@ -929,7 +929,13 @@ a
 ['unknown_macro_on_line_command',
 '@setfilename @begin{}file'
 ],
+['macro_with_error_at_end_line_after_macro',
+'@macro witherror{string}
+@center
+@end macro
 
+@witherror{aaa}
+']
 );
 
 my @todo =(
