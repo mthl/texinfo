@@ -1,3 +1,8 @@
+2011-10-15  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Other Configuration Variables): USE_SECTIONS is not
+	used anymore, the same effect is obtained by setting USE_NODES to false.
+
 2011-10-14  Karl Berry  <karl@gnu.org>
 
 	* lib/substring.c: remove, only used in C makeinfo, no longer built.

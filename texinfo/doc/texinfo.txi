@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.388 2011-10-13 23:27:04 karl Exp $
+@c $Id: texinfo.txi,v 1.389 2011-10-15 12:09:03 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17099,6 +17099,8 @@ For HTML.  Generate @code{<link>} elements in the HTML @code{<head>} output.
 
 @item USE_NODES
 Preferentially use nodes to decide where elements are separated.
+If set to false, preferentially use sectioning to decide where elements 
+are separated.
 
 @item USE_NODE_TARGET
 If set, use the node associated with a section for the section target
@@ -17113,9 +17115,6 @@ If set, try Up sections to complete node directions.
 
 @item USE_REL_REV
 For HTML.  Use @code{rel} in cross references.
-
-@item USE_SECTIONS
-Preferentially use sectioning to decide where elements are separated.
 
 @item NO_USE_SETFILENAME
 If set, do not use @code{@@setfilename} to set the document name,
@@ -21090,7 +21089,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.388 2011-10-13 23:27:04 karl Exp $
+$Id: texinfo.txi,v 1.389 2011-10-15 12:09:03 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21161,7 +21160,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.388 2011-10-13 23:27:04 karl Exp $
+@comment $Id: texinfo.txi,v 1.389 2011-10-15 12:09:03 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
