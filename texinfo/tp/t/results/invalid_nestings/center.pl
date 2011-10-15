@@ -2353,13 +2353,13 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':31: @center missing argument
+    'error_line' => ':31: warning: @center missing argument
 ',
     'file_name' => '',
     'line_nr' => 31,
     'macro' => '',
     'text' => '@center missing argument',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':33: warning: @center should only appear at a line beginning

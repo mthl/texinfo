@@ -124,22 +124,22 @@ $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[1]{'toplevel_
 
 $result_errors{'two_unnumbered_no_argument'} = [
   {
-    'error_line' => ':1: @unnumbered missing argument
+    'error_line' => ':1: warning: @unnumbered missing argument
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => '@unnumbered missing argument',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':2: @unnumbered missing argument
+    'error_line' => ':2: warning: @unnumbered missing argument
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
     'text' => '@unnumbered missing argument',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

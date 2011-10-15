@@ -75,13 +75,13 @@ $result_sectioning{'unnumbered_no_argument'}{'section_childs'}[0]{'section_up'} 
 
 $result_errors{'unnumbered_no_argument'} = [
   {
-    'error_line' => ':1: @unnumbered missing argument
+    'error_line' => ':1: warning: @unnumbered missing argument
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => '@unnumbered missing argument',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

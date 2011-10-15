@@ -144,13 +144,13 @@ $result_menus{'empty_cindex_entry'} = {
 
 $result_errors{'empty_cindex_entry'} = [
   {
-    'error_line' => ':2: @cindex missing argument
+    'error_line' => ':2: warning: @cindex missing argument
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
     'text' => '@cindex missing argument',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

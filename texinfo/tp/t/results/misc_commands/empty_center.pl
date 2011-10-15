@@ -53,13 +53,13 @@ $result_texts{'empty_center'} = '
 
 $result_errors{'empty_center'} = [
   {
-    'error_line' => ':1: @center missing argument
+    'error_line' => ':1: warning: @center missing argument
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => '@center missing argument',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

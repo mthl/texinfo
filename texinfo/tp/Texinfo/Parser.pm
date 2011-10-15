@@ -2788,7 +2788,7 @@ sub _end_line($$$)
       _trim_spaces_comment_from_content(\@contents);
       # empty @top is allowed
       if (!scalar(@contents) and $command ne 'top') {
-        $self->line_error (sprintf($self->__("\@%s missing argument"), 
+        $self->line_warn (sprintf($self->__("\@%s missing argument"), 
            $command), $line_nr);
         $current->{'extra'}->{'missing_argument'} = 1;
       } else {

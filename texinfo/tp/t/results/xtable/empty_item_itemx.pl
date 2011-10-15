@@ -473,13 +473,13 @@ $result_errors{'empty_item_itemx'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: @itemx missing argument
+    'error_line' => ':6: warning: @itemx missing argument
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
     'text' => '@itemx missing argument',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':7: Entry for index `vr\' outside of any node
@@ -491,13 +491,13 @@ $result_errors{'empty_item_itemx'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':8: @item missing argument
+    'error_line' => ':8: warning: @item missing argument
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
     'text' => '@item missing argument',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':9: Entry for index `vr\' outside of any node
