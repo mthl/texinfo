@@ -43,7 +43,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module argz:
   # Code from module configmake:
   # Code from module dosname:
-  # Code from module environ:
   # Code from module errno:
   # Code from module error:
   # Code from module exitfail:
@@ -87,7 +86,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module multiarch:
   # Code from module nocrash:
   # Code from module pathmax:
-  # Code from module setenv:
   # Code from module snippet/_Noreturn:
   # Code from module snippet/arg-nonnull:
   # Code from module snippet/c++defs:
@@ -117,7 +115,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module unitypes:
   # Code from module uniwidth/base:
   # Code from module uniwidth/width:
-  # Code from module unsetenv:
   # Code from module verify:
   # Code from module wchar:
   # Code from module wctype-h:
@@ -125,7 +122,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module xalloc:
   # Code from module xalloc-die:
   # Code from module xalloc-oversized:
-  # Code from module xsetenv:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -150,8 +146,6 @@ if test -n "$ARGZ_H"; then
   AC_LIBOBJ([argz])
 fi
 gl_CONFIGMAKE_PREP
-gl_ENVIRON
-gl_UNISTD_MODULE_INDICATOR([environ])
 gl_HEADER_ERRNO_H
 gl_ERROR
 if test $ac_cv_lib_error_at_line = no; then
@@ -269,11 +263,6 @@ if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
 fi
 gl_MULTIARCH
 gl_PATHMAX
-gl_FUNC_SETENV
-if test $HAVE_SETENV = 0 || test $REPLACE_SETENV = 1; then
-  AC_LIBOBJ([setenv])
-fi
-gl_STDLIB_MODULE_INDICATOR([setenv])
 gt_TYPE_SSIZE_T
 gl_FUNC_STAT
 if test $REPLACE_STAT = 1; then
@@ -340,12 +329,6 @@ gl_UNISTD_H
 gl_LIBUNISTRING_LIBHEADER([0.9], [unitypes.h])
 gl_LIBUNISTRING_LIBHEADER([0.9], [uniwidth.h])
 gl_LIBUNISTRING_MODULE([0.9.4], [uniwidth/width])
-gl_FUNC_UNSETENV
-if test $HAVE_UNSETENV = 0 || test $REPLACE_UNSETENV = 1; then
-  AC_LIBOBJ([unsetenv])
-  gl_PREREQ_UNSETENV
-fi
-gl_STDLIB_MODULE_INDICATOR([unsetenv])
 gl_WCHAR_H
 gl_WCTYPE_H
 gl_FUNC_WCWIDTH
@@ -550,7 +533,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/pathmax.h
   lib/ref-add.sin
   lib/ref-del.sin
-  lib/setenv.c
   lib/stat.c
   lib/stdbool.in.h
   lib/stddef.in.h
@@ -580,7 +562,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/uniwidth.in.h
   lib/uniwidth/cjk.h
   lib/uniwidth/width.c
-  lib/unsetenv.c
   lib/verify.h
   lib/wchar.in.h
   lib/wctype.in.h
@@ -589,15 +570,12 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xalloc-oversized.h
   lib/xalloc.h
   lib/xmalloc.c
-  lib/xsetenv.c
-  lib/xsetenv.h
   m4/00gnulib.m4
   m4/alloca.m4
   m4/argz.m4
   m4/codeset.m4
   m4/configmake.m4
   m4/eealloc.m4
-  m4/environ.m4
   m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
@@ -657,7 +635,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/po.m4
   m4/printf-posix.m4
   m4/progtest.m4
-  m4/setenv.m4
   m4/size_max.m4
   m4/ssize_t.m4
   m4/stat.m4

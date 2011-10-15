@@ -1,7 +1,11 @@
 2011-10-15  Karl Berry  <karl@gnu.org>
 
+	* system.h: rm decls for xmalloc, xrealloc, xstrdup.
+	rm old DMALLOC debugging stuff.
+
 	* gnulib: switch from now-deprecated getopt to getopt-gnu,
 	likewise strdup to strdup-posix.
+	rm gnulib module xsetenv, was only used in C makeinfo.
 
 2011-10-15  Patrice Dumas  <pertusus@free.fr>
 

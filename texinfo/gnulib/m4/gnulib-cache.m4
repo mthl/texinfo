@@ -27,7 +27,7 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --no-conditional-dependencies --no-libtool --macro-prefix=gl --no-vc-files argz getopt-gnu gettext mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memmem mkstemp strdup-posix strerror xalloc xsetenv
+#   gnulib-tool --import --dir=. --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --no-conditional-dependencies --no-libtool --macro-prefix=gl --no-vc-files argz getopt-gnu gettext mbchar mbiter mbscasecmp mbschr mbslen mbsncasecmp mbsstr mbswidth memmem mkstemp strdup-posix strerror xalloc
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
@@ -48,7 +48,6 @@ gl_MODULES([
   strdup-posix
   strerror
   xalloc
-  xsetenv
 ])
 gl_AVOID([])
 gl_SOURCE_BASE([gnulib/lib])
