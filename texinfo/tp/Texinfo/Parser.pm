@@ -2752,7 +2752,7 @@ sub _end_line($$$)
               $included_file = 1;
               unshift @{$self->{'input'}}, { 
                 'name' => $file,
-                'line_nr' => 1,
+                'line_nr' => 0,
                 'pending' => [],
                 'fh' => $filehandle };
             } else {
