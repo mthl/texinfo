@@ -120,7 +120,6 @@ sub __p($$) {
 }
 
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
-# FIXME
 my $libsrcdir = "$srcdir/maintain";
 if ($0 =~ /\.pl$/) {
   unshift @INC, "$libsrcdir/lib/libintl-perl/lib";
@@ -139,13 +138,11 @@ require Locale::Messages;
 Locale::Messages->select_package ('gettext_pp');
 
 if ($0 =~ /\.pl$/) {
-  # in case of out of source build, the locales directory should
-  # FIXME srcdir
-  # be in the same directory or in the srcdir, 
-  # FIXME
-  # or in the texi2html directory
+  # in case of build from the source directory, out of source build, 
+  # this helps to locate the locales.
   my $locales_dir_found = 0;
-  foreach my $locales_dir ("../../../tp/t/locales", "$libsrcdir/locales", "./locales") {
+  foreach my $locales_dir ("$libsrcdir/../t/locales", "./t/locales", 
+       "../../../tp/t/locales") {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       $locales_dir_found = 1;

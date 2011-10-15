@@ -1016,7 +1016,7 @@ sub _unsplit($)
 {
   my $root = shift;
   if (!$root->{'type'} or $root->{'type'} ne 'document_root'
-      or !$root->{'contents'} or !@{$root->{'contents'}}) {
+      or !$root->{'contents'}) {
     return $root;
   }
   foreach my $content (@{$root->{'contents'}}) {

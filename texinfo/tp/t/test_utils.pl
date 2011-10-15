@@ -436,6 +436,9 @@ sub test($$)
   my $split = '';
   if ($parser_options->{'test_split'}) {
     $split = $parser_options->{'test_split'};
+    if ($split ne 'node' and $split ne 'section') {
+      warn "In test_utils.pl, test_split should be node or section, not $split\n";
+    }
     delete $parser_options->{'test_split'};
   }
   my $split_pages = '';
@@ -484,7 +487,7 @@ sub test($$)
   my ($errors, $error_nrs) = $parser->errors();
   my ($index_names, $merged_indices, $index_entries) 
        = $parser->indices_information();
-  # FIXME maybe it would be good to compare $merged_index_entries?
+  # FIXME maybe it would be good to compare $merged_index_entries?
   my $merged_index_entries 
      = Texinfo::Structuring::merge_indices($index_names, $merged_indices, $index_entries);
   
@@ -516,6 +519,8 @@ sub test($$)
                                   $parser_options, $converter_options);
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       #print STDERR "$format: \n$converted{$format}";
+
+      # output converted result and errors in files if $arg_output is set
       if ($arg_output) {
         mkdir ("$output_files_dir/$self->{'name'}") 
           if (! -d "$output_files_dir/$self->{'name'}");
@@ -554,7 +559,12 @@ sub test($$)
     }
   }
   my $directions_text;
-  # re-associate elements with the document_root.
+  # re-associate top level command with the document_root in case a converter
+  # split the document, by resetting their 'parent' key.
+  # It may be noticed that this is only done after all conversions.  This 
+  # means that depending on the order of converters call, trees feed to 
+  # converters may have a document_root as top level command parent or 
+  # elements.  All the converters will have the document_root as argument.
   Texinfo::Structuring::_unsplit($result);
   my $elements;
   if ($split eq 'node') {

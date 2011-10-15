@@ -5175,8 +5175,21 @@ sub _prepare_global_targets($$)
   if ($self->{'extra'} and $self->{'extra'}->{'printindex'}) {
     my ($element, $root_command) 
      = $self->_get_element($self->{'extra'}->{'printindex'}->[0]);
-    $self->{'global_target_elements'}->{'Index'} = $element
-      if (defined($element));
+    if (defined($element)) {
+      if ($root_command and $root_command->{'cmdname'} eq 'node' 
+          and $element->{'extra'}->{'section'}) {
+        $root_command = $element->{'extra'}->{'section'};
+      }
+      if ($root_command and $root_command->{'cmdname'} ne 'node') {
+        while ($root_command->{'level'} > 1
+               and $root_command->{'section_up'}
+               and $root_command->{'section_up'}->{'parent'}) {
+          $root_command = $root_command->{'section_up'};
+          $element = $root_command->{'parent'};
+        }
+      }
+      $self->{'global_target_elements'}->{'Index'} = $element;
+    }
   }
 
   my $node_top;

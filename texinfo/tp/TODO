@@ -9,6 +9,8 @@ not begin with an end of line
   <macro>@vtable @asis
 Is it right or not?
 
+Warning for obsolete/unused customization variables like USE_SECTIONS?
+
 For plaintext @image output if there is no basename.txt, use alt else
 the basename as [image basename].
 
@@ -247,6 +249,30 @@ use definfoenclose information in Convert::Text?
 t/30sectioning.t setfilename_on_top_and_after_node
 there could be a warning
  warning: @setfilename after the first element
+
+From vincent Belaïche. About svg image files in HTML:
+
+I don't think that supporting svg would be easy: its seems that to embed an
+svg picture you need to declare the width x height of the frame in
+which you embed it, and this information cannot be derived quite
+straightforwardly from the picture.
+With @image you can declare width and height but this is intended for
+scaling. I am not sure whether or not that these arguments can be used
+for the purpose of defining that frame...
+What I did in 5x5 is that coded the height of the frame directly in
+the macro @FIGURE with which I embed the figure, without going through
+an argument.
+The @FIGURE @macro is, for html:
+@macro FIGURE {F,W}
+@html
+<div align="center">
+<embed src="5x5_\F\.svg" height="276"
+ type="image/svg+xml"
+ pluginspage="http://www.adobe.com/svg/viewer/install/" /></div>
+@end html
+@end macro
+
+
 
 Add @value to the corresponding commands categories?
 

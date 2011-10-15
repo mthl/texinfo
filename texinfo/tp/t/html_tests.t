@@ -60,6 +60,16 @@ in @code{documentdescri---ption} --- @bullet{} @enddots{} @verb{:"verb:} @aa{} @
 
 @top top
 '],
+['index_below',
+'@top top
+
+@chapter chap
+
+@section sec
+
+@cindex entry
+@printindex cp
+', {'test_split' => 'section'}, {'USE_NODES', 0}],
 ['simple_menu',
 '@menu
 * (ggg):: description
