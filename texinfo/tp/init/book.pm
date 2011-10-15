@@ -34,7 +34,6 @@ set_from_init_file('LINKS_BUTTONS',
 set_from_init_file('WORDS_IN_PAGE', undef);
 set_from_init_file('SHOW_MENU', 0);
 set_from_init_file('USE_NODES', undef);
-set_from_init_file('USE_SECTIONS', 1);
 
 set_from_init_file('BIG_RULE', '<hr>');
 

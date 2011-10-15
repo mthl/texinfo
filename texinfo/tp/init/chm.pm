@@ -44,7 +44,6 @@ set_from_init_file('footnotestyle', 'end');
 
 #FIXME remove that later?
 set_from_init_file('USE_NODES', 0);
-#set_from_init_file('USE_SECTIONS', 1);
 
 use vars qw(%commands_formatting);
 texinfo_register_formatting_function('end_file', \&chm_end_file);

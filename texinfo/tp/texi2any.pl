@@ -432,7 +432,6 @@ sub _set_variables_texi2html()
   ['USE_REL_REV', 0],
   ['USE_LINKS', 0],
   ['USE_NODES', undef],
-  ['USE_SECTIONS', 1],
   ['NODE_FILENAMES', 0],
   ['USE_NUMERIC_ENTITY', 1],
   ['SPLIT', ''],

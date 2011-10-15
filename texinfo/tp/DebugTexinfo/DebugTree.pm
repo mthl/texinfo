@@ -19,7 +19,7 @@
 
 # Example of calls
 # with creation of elements and pages:
-# ./texi2any.pl --set DEBUGTREE --set USE_SECTIONS=1 --split section file.texi
+# ./texi2any.pl --set DEBUGTREE --set USE_NODES=0 --split section file.texi
 # no elements nor pages
 # ./texi2any.pl --set DEBUGTREE file.texi
 
@@ -36,8 +36,8 @@ sub output($$)
   my $elements;
   if ($self->get_conf('USE_NODES')) {
     $elements = Texinfo::Structuring::split_by_node($root);
-  } elsif ($self->get_conf('USE_SECTIONS')) {
-    #print STDERR "U USE_SECTIONS\n";
+  } elsif (defined($self->get_conf('USE_NODES'))) {
+    #print STDERR "U sections\n";
     $elements = Texinfo::Structuring::split_by_section($root);
   }
   my $pages;
