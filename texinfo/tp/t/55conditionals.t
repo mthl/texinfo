@@ -311,6 +311,43 @@ This will be in Info, but not plain text.
 @end ifinfo
 ', {'expanded_formats' => ['plaintext']}
 ],
+['text_on_conditional_line_expanded',
+'@ifnothtml text following ifnothtml,
+a
+@end ifnothtml
+'
+],
+['text_on_conditional_line',
+'@ifnothtml text following ifnothtml,
+a
+@end ifnothtml
+', {'expanded_formats' => ['html']}
+],
+['additional_space_in_end_conditional',
+'@ifnothtml
+not html
+@end  ifnothtml
+', {'expanded_formats' => ['html']}
+],
+['additional_space_in_end_conditional_expanded',
+'@ifnothtml
+not html
+@end  ifnothtml
+'],
+['superfluous_argument_to_end',
+'@ifnothtml
+not html
+@end ifnothtml superfluous
+'],
+['conditional_not_closed',
+'@ifhtml
+in ifhtml
+'],
+['end_conditional_not_at_line_begining',
+'@ifhtml
+inhtml
+  @end ifhtml
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

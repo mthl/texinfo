@@ -187,7 +187,17 @@ in  v---erbatim`` <>
 in verbatim2
 ';
 
-$result_errors{'misc_raw'} = [];
+$result_errors{'misc_raw'} = [
+  {
+    'error_line' => ':3: warning: @end html should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@end html should only appear at a line beginning',
+    'type' => 'warning'
+  }
+];
 
 
 

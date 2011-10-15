@@ -106,30 +106,6 @@ $result_trees{'ifset_and_end_isef_in_macro'} = {
       'text' => '
 ',
       'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'ifset',
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => 'in ifset
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '@endifset
-',
-          'type' => 'raw'
-        }
-      ],
-      'parent' => {}
     }
   ],
   'type' => 'text_root'
@@ -148,10 +124,6 @@ $result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[3]{'parent'} = $result_
 $result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[3];
 $result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[4]{'parent'} = $result_trees{'ifset_and_end_isef_in_macro'};
 $result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[5]{'parent'} = $result_trees{'ifset_and_end_isef_in_macro'};
-$result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[6];
-$result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[6];
-$result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[6];
-$result_trees{'ifset_and_end_isef_in_macro'}{'contents'}[6]{'parent'} = $result_trees{'ifset_and_end_isef_in_macro'};
 
 $result_texis{'ifset_and_end_isef_in_macro'} = '@macro beginifset {}
 @ifset a
@@ -161,18 +133,11 @@ $result_texis{'ifset_and_end_isef_in_macro'} = '@macro beginifset {}
 @end ifset
 @end macro
 
-@ifset
-in ifset
-@endifset
-@end ifset
 ';
 
 
 $result_texts{'ifset_and_end_isef_in_macro'} = '
 
-
-in ifset
-@endifset
 ';
 
 $result_errors{'ifset_and_end_isef_in_macro'} = [

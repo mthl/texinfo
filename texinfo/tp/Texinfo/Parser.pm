@@ -1442,6 +1442,10 @@ sub _close_current($$$;$)
       } else {
         $self->line_error(sprintf($self->__("No matching `%cend %s'"),
                                    ord('@'), $current->{'cmdname'}), $line_nr);
+        if ($block_commands{$current->{'cmdname'}} eq 'conditional') {
+          # in this case we are within an ignored conditional
+          my $conditional = pop @{$current->{'parent'}->{'contents'}};
+        }
       }
       pop @{$self->{'context_stack'}} if
          ($preformatted_commands{$current->{'cmdname'}}
@@ -3211,12 +3215,13 @@ sub _parse_texi($;$)
                          'extra' => {'line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
-          # FIXME accept only a command at the beginning spaces?
-        } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/
+          # FIXME accept only a command at the line beginning?
+          # FIXME accept only one space after @end?
+        } elsif ($line =~ /^(.*?)\@end\s+([a-zA-Z][\w-]*)/
                  and ($2 eq $current->{'cmdname'})) {
           my $end_command = $2;
           my $raw_command = $current;
-          $line =~ s/^(.*?)(\@end\s$current->{'cmdname'})//;
+          $line =~ s/^(.*?)(\@end\s+$current->{'cmdname'})//;
           if ($1 eq '') {
             # FIXME exclude other formats, like @macro, @ifset, @ignore?
             if ($current->{'cmdname'} ne 'verbatim'
@@ -3231,6 +3236,8 @@ sub _parse_texi($;$)
           } else {
             push @{$current->{'contents'}}, 
               { 'text' => $1, 'type' => 'raw', 'parent' => $current };
+            $self->line_warn (sprintf($self->__("\@end %s should only appear at a line beginning"), 
+                                     $end_command), $line_nr);
           }
           # the condition $line !~ /^\s*@/ leads to no warning when followed by
           # any @-command.  This is in order to avoid warnings for correct
