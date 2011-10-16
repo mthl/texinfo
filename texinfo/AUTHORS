@@ -1,7 +1,7 @@
-$Id: AUTHORS,v 1.15 2010-07-18 18:49:02 karl Exp $
+$Id: AUTHORS,v 1.16 2011-10-16 23:14:08 karl Exp $
 Texinfo authors.
 
-  Copyright (C) 2003, 2005, 2006, 2007, 2008, 2010
+  Copyright 2003, 2005, 2006, 2007, 2008, 2010, 2011
   Free Software Foundation, Inc.
   
   Copying and distribution of this file, with or without modification,
@@ -16,7 +16,7 @@ Torsten Bronger         texinfo.dtd.
 Bob Chassell		texinfo.tex, original texinfo.txi.
 Lionel Cons		original texi2html.
 Akim Demaille		texi2dvi, util/* tests.
-Patrice Dumas		texi2html, texi2html.texi, texinfo.txi.
+Patrice Dumas		texi2html, texi2html.texi, texinfo.txi, tp author.
 Alper Ersoy		makeinfo: enhancements in all files, especially
                           html-, xml-, and docbook-related.
 Brian Fox		all makeinfo/* and info/* files, info-stnd.texi.

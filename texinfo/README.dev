@@ -1,7 +1,7 @@
-$Id: README.dev,v 1.18 2010-06-24 17:24:05 karl Exp $
+$Id: README.dev,v 1.19 2011-10-16 23:14:08 karl Exp $
 This README.dev file describes the development environment.
 
-  Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010
+  Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011
   Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
@@ -30,18 +30,18 @@ After the initial autogen && configure, simply running make should suffice.
 The reason for that particular -W is that intermixing declarations with
 statements is an easy thing to do accidentally, gcc won't warn about it
 by default, and other compilers that don't support it are still
-widespread.  Lots of other -W options can be useful too, and patches are
-welcome to resolve the diagnostics.  If you're not using gcc, of
-course you shouldn't include it at all.
+widespread.  Other -W options can be useful too, and patches are welcome
+to resolve the diagnostics.  If you're not using gcc, of course you
+shouldn't include it at all.
 
 This distribution also uses Gnulib (http://www.gnu.org/software/gnulib)
 to share common files, with the files being checked in to CVS.  If you
 get automake/conf/etc. errors from ./autogen.sh, please try doing a CVS
-checkout of gnulib (in a separate directory to the texinfo checkout),
+checkout of gnulib (in a separate directory from the texinfo checkout),
 and then run
-  ../gnulib/gnulib-tool --update
+  ../gnulib/gnulib-tool --add-import
 in your top-level Texinfo directory.  (gnulib-tool is in the gnulib CVS tree.)
 
 The currently-used gnulib modules and other gnulib information are
 recorded in gnulib/m4/gnulib-cache.m4.  Given a source checkout of
-gnulib, you can update the files with gnulib-tool --import.
+gnulib, you can update the files with gnulib-tool --add-import.

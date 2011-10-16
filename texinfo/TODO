@@ -1,9 +1,9 @@
-$Id: TODO,v 1.53 2010-07-18 18:49:02 karl Exp $
+$Id: TODO,v 1.54 2011-10-16 23:14:08 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
-  Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
-  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2010
+  Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
+  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011
   Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
@@ -11,6 +11,19 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   notice and this notice are preserved.
 
 * General:
+  - Monitor and improve the dir categories in existing manuals,
+    following the Free Software Directory categories.  Much mail to
+    developers has already been sent, what's needed now is to check new
+    releases and make sure they are using the right categories.
+    See the util/dir-example in the Texinfo distribution for our current
+    recommended categories.
+    For background, see the thread (which discusses a lot of other
+    issues too) at
+    http://mail.gnu.org/pipermail/emacs-devel/2002-10/msg00011.html,
+    especially 
+      http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
+      http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
+  - Extend and improve the tests.
   - Support installation of manuals in different languages, along these lines:
     . support a LINGUAS file or variable saying which subdirs LL in the
       source to descend into (under doc/).
@@ -28,66 +41,38 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     From Wojciech Polak.
   - Or even multibyte languages like Japanese, see msg:
     http://lists.gnu.org/archive/html/bug-texinfo/2005-03/msg00000.html
-  - Monitor and improve the dir categories in existing manuals,
-    following the Free Software Directory categories.  Much mail to
-    developers has already been sent, what's needed now is to check new
-    releases and make sure they are using the right categories.
-    See the util/dir-example in the Texinfo distribution for our current
-    recommended categories.
-    For background, see the thread (which discusses a lot of other
-    issues too) at
-    http://mail.gnu.org/pipermail/emacs-devel/2002-10/msg00011.html,
-    especially 
-      http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
-      http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
-  - Extend and improve the tests.
-  - Get Info declared as a MIME Content-Type.
-  - Likewise the `info:' URI scheme; a library consortium has proposed a
-    completely different purpose for the URI scheme, but I don't know
-    how to send comments, despite it being a "request for comments".  Sigh.
-    There is mail about this in the bug-texinfo archives:
-      http://mail.gnu.org/archive/html/bug-texinfo/2003-09/msg00086.html
-  - Support compressed image files.
-  - Support reference card creation.
+  - Support general reference card creation.
   - Allow @end (and other?) commands to be indented in the source.
 
 * Language:
-  - generalize @vtable/@htable to any defined index.
+  - Allow : in node names for info files, for names like
+    `class::method'.  Likewise index entries.  A quoting mechanism such
+    as surrounding node names with SPACE BACKSPACE is probably the best
+    solution, although this is an incompatible change to Info format.
   - @else for the @if... conditionals.
   - @xindexterm [def] primary [,secondary [,tertiary]]  or some such?
   - Allow subitems and `see' and `see also' in indices.
+  - generalize @vtable/@htable to any defined index.
   - multicolumn * width to take up `the rest'.
+  - Allow @hsep/@vsep at @item, instead of just in template.
   - another table command to take N succeeding items and split them
     into M columns (see eplain).
   - support bibliographies with BibTeX (see web2c/doc for kludge prototype).
   - @flushboth to combine @flushleft and @flushright, for RFC's.
   - @exercise/@answer command for, e.g., gawk.
-  - Allow @hsep/@vsep at @item, instead of just in template.
   - Support automatic line numbering of examples.
-  - Better macro syntax, including a separate @inlinemacro (or
-    something) to distinguish macros that swallow their final newline
-    and those that don't.  Perhaps preprocessing with m4 is better?
-  - Better def... command syntax.
-  - Allow : in node names for info files, for names like
-    `class::method'.  Likewise index entries.  A quoting mechanism such
-    as surrounding node names with SPACE BACKSPACE is probably the best
-    solution, although this is an incompatible change to Info format, sigh.
+  - Better def... command syntax, explicitly marking variables, etc.
   - Glossary/general definition support (dumas msg 28 Nov 2003 17:09:57 +0100).
   - Add support for other Latin 9 (and Latin 2 and Latin 1) characters.
 
 * Makeinfo:
-  - Really support UTF-8 instead of just passing through the bytes.
   - lang.c setup doesn't support @v{S} (S with caron) -- no named entity.
   - Automatically do -I of directory of main source file.
-  - Make makeinfo -E just do macro expansion, avoiding all error checks.
-    That way, texi2dvi could run makeinfo --iftex -E.
   - A detexinfo program, like detex or delatex.  This command would
     strip all the texinfo commands out, and would be used as a filter on
     the way to a speller.  An option would be to NOT strip comments out.
     makeinfo --no-headers comes close.
-  - If node name contains an @ command, complain explicitly.
-  - HTML: split output by chapter to improve context, per Akim.
-    Even different splits for different chapters.
+  - HTML: different splits for different chapters?
     Generate dummy files for all nodes for the sake of cross-references?
   - HTML: support thumbnails.
   - HTML: make images of math, maybe.
@@ -97,9 +82,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     http://mail.gnu.org/archive/html/bug-texinfo/2004-01/msg00025.html
   - XML: cannot be loaded directly in a browser; why not?
   - Docbook: &euro; and other entities do not work; does anything work?
-  - Support the MediaWiki output format.
+  - Support LaTeX as a backend.
   - Support the epub output format, http://en.wikipedia.org/wiki/OEBPS.
     Suggested by Sean Young, 30 Nov 2008 20:13:11.
+  - Support the MediaWiki output format.
 
 * TeX:
   - Use @ as the escape character, and Texinfo syntax generally, in the
@@ -114,7 +100,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Introduce new command to change \bindingoffset.
   - Use marks to define a real @thissection.
   - Table of contents is misaligned if there are 10 or more [sub]sections.
-  - Use url.sty (or something) to allow linebreak of url's.
   - Make accent commands implicitly use @dotless{i/j}.
   - Include hyperlink \special's in the DVI output for xdvi, etc.
   - PDF: make each letter of the index (A, B, ...) a section in the TOC.
@@ -125,7 +110,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     27 Feb 2006 22:55:13 +0100.
 
 * Doc:
-  - Improve the manuals, especially for makeinfo, standalone info, etc.
+  - Improve the manuals.
   - new section on doing dedication pages. See gawk.texi
     for an example of doing it in both the tex and info versions.
 
@@ -186,6 +171,14 @@ Ideas that will not be implemented:
 - Call Ghostscript to get ASCII/jpg output for the @image command.
   [makeinfo should not try to be make, or assume it knows how the user
    wants to generate images.  Too many different methods are possible.]
+
+- Get Info declared as a MIME Content-Type, and
+  an `info:' URI scheme; a library consortium has proposed a
+  completely different purpose for the URI scheme, but I don't know
+  how to send comments, despite it being a "request for comments".  Sigh.
+  There is mail about this in the bug-texinfo archives:
+    http://mail.gnu.org/archive/html/bug-texinfo/2003-09/msg00086.html
+  [I suppose it is too late, and it doesn't seem to matter in practice.]
 
 - Change bars.  This is difficult or impossible in TeX,
   unfortunately.  To do it right requires device driver support.

@@ -1,10 +1,10 @@
-$Id: NEWS,v 1.204 2011-08-02 06:51:32 gray Exp $
+$Id: NEWS,v 1.205 2011-10-16 23:14:08 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
-  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software
-  Foundation, Inc.
+  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+  Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -26,13 +26,13 @@ one of the relevant sections:
 * Language:
   . new command @part for a group of chapters.
   . new environments @raggedright and @smallquotation.
-  . new commands @codequoteundirected and @codequotebacktick, for a
-    better interface than the @set variables.
+  . new commands @codequoteundirected and @codequotebacktick,
+      for a better interface than the @set variables.
   . new commands @deftypefnnewline to print return types on their own lines.
   . new command @headitemfont for the sake of template rows.
   . new command @urefbreakstyle to control breaking of @url/@uref in TeX.
   . new command @xrefautomaticsectiontitle to allow using section titles
-    in cross references by default, instead of node names.
+      in cross references by default, instead of node names.
   . new diacritic command @ogonek.
   . new commands for Icelandic letters eth and thorn: @DH{} @dh{} @TH{} @th{}.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
@@ -50,9 +50,9 @@ one of the relevant sections:
   supported, and extensive customization of the HTML output is possible.
   See xxx in the manual for more about this reimplementation.
   
-  The new program is unfortunately much slower at present than the C
-  program was.  We hope to make it faster in a future release.  In the
-  meantime, we hope all the many improvements make it worthwhile.
+  The new program is unfortunately noticeably slower at present than the
+  C program was.  We hope all the many improvements make the change
+  worthwhile nevertheless.
 
 * texinfo.tex:
   . urls (given to @uref and @url) are broken by default at special
@@ -61,9 +61,13 @@ one of the relevant sections:
     engine does (for instance, etex/pdfetex from TeX Live 2008 or
     later).  Words with accented letters are still not handled properly.
   . new Icelandic translation: txi-is.tex.
+  . official updates between full package releases available at
+    http://ftpmirror.gnu.org/texinfo/texinfo.tex.
 
 * texi2dvi:
   . new option --max-iterations.
+  . official updates between full package releases available at
+    http://ftpmirror.gnu.org/texinfo/texi2dvi.
   
 * info:
   . INFOPATH is determined from PATH by default, or if an element "PATH"
