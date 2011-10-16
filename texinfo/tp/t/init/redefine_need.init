@@ -1,6 +1,6 @@
 use strict;
 
-$Texinfo::Config::commands_conversion{'need'} = \&my_need_formatting;
+texinfo_register_command_formatting('need', \&my_need_formatting);
 
 sub my_need_formatting($$$)
 {

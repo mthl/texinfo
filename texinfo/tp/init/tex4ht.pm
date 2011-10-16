@@ -44,10 +44,8 @@ texinfo_register_handler('structure', \&tex4ht_prepare);
 texinfo_register_handler('init', \&tex4ht_convert);
 texinfo_register_handler('finish', \&tex4ht_finish);
 
-use vars qw(%commands_conversion);
-
-$commands_conversion{'math'} = \&tex4ht_do_tex;
-$commands_conversion{'tex'} = \&tex4ht_do_tex;
+texinfo_register_command_formatting('math', \&tex4ht_do_tex);
+texinfo_register_command_formatting('tex', \&tex4ht_do_tex);
 
 {
 use Cwd;

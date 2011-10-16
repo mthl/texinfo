@@ -231,8 +231,12 @@ comment --- in.
 @menu
 * @sc{value}:@sc{node}.   @sc{descrip tion}
 
+@sc{menu comment}
+
 @example
 * @sc{menu-example value}:(dir)@sc{menu-example node}.   @sc{menu-example descrip tion}
+
+@sc{menu-example comment}
 @end example
 @end menu
 
@@ -241,6 +245,8 @@ comment --- in.
 @example
 @menu
 * @sc{example value}:(dir)@sc{example node}.   @sc{example descrip tion}
+
+@sc{example comment}
 @end menu
 @end example
 

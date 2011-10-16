@@ -10,7 +10,7 @@
 
 use strict;
 
-use vars qw(%commands_conversion $element_file_name);
+use vars qw($element_file_name);
 
 set_from_init_file('contents', 1);
 set_from_init_file('INLINE_CONTENTS', 1);
@@ -241,7 +241,8 @@ sub book_convert_heading_command($$$$$)
 }
 
 foreach my $command (keys(%Texinfo::Common::sectioning_commands), 'node') {
-  $commands_conversion{$command} = \&book_convert_heading_command;
+  texinfo_register_command_formatting($command, 
+                                \&book_convert_heading_command);
 }
 
 sub book_element_file_name($$$)

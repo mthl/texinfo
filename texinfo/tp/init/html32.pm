@@ -25,8 +25,7 @@
 use strict;
 use Texinfo::Convert::Converter qw(xml_protect_text);
 
-use vars qw(%commands_formatting %style_commands_formatting
-            %commands_conversion %types_conversion);
+use vars qw(%commands_formatting %style_commands_formatting);
 
 set_from_init_file('COMPLEX_FORMAT_IN_TABLE', 1);
 
@@ -124,7 +123,7 @@ sub html32_convert_text($$$$)
   }
   return $text;
 }
-$types_conversion{'text'} = \&html32_convert_text;
+texinfo_register_type_formatting('text', \&html32_convert_text);
 
 
 sub html32_convert_explained_command($$$$)
@@ -156,8 +155,8 @@ sub html32_convert_explained_command($$$$)
 }
 
 foreach my $explained_command (keys(%Texinfo::Common::explained_commands)) {
-  $commands_conversion{$explained_command}
-    = \&html32_convert_explained_command;
+  texinfo_register_command_formatting($explained_command,
+                              \&html32_convert_explained_command);
 }
 
 # row in multitable. no thead in html 3.2
@@ -174,7 +173,7 @@ sub html32_convert_row_type($$$$) {
     return '';
   }
 }
-$types_conversion{'row'} = \&html32_convert_row_type;
+texinfo_register_type_formatting('row', \&html32_convert_row_type);
 
 sub html32_convert_tab_command ($$$$)
 {
@@ -199,7 +198,8 @@ sub html32_convert_tab_command ($$$$)
     return "<td>" . $content . '</td>';
   }
 }
-$commands_conversion{'tab'} = \&html32_convert_tab_command;
+texinfo_register_command_formatting('tab',
+                            \&html32_convert_tab_command);
 
 sub html32_convert_item_command($$$$)
 {
@@ -217,7 +217,9 @@ sub html32_convert_item_command($$$$)
     return &{$self->default_commands_conversion($cmdname)}($self, $cmdname, $command, $content);
   }
 }
-$commands_conversion{'item'} = \&html32_convert_item_command;
-$commands_conversion{'headitem'} = \&html32_convert_item_command;
 
+texinfo_register_command_formatting('item',
+                            \&html32_convert_item_command);
+texinfo_register_command_formatting('headitem',
+                            \&html32_convert_item_command);
 1;

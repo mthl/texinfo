@@ -15,8 +15,8 @@ sub convert_comment_command($$$)
   }
 }
 
-$commands_conversion{'comment'} = \&convert_comment_command;
-$commands_conversion{'c'} = \&convert_comment_command;
+texinfo_register_command_formatting('c', \&convert_comment_command);
+texinfo_register_command_formatting('comment', \&convert_comment_command);
 
 sub convert_ignore_command($$$$)
 {
@@ -29,4 +29,4 @@ sub convert_ignore_command($$$$)
   return $self->xml_comment(" ".$content."\n");
 }
 
-$commands_conversion{'ignore'} = \&convert_ignore_command;
+texinfo_register_command_formatting('ignore', \&convert_ignore_command);

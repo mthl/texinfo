@@ -95,6 +95,8 @@ my %composition_context_commands = (%preformatted_commands, %root_commands,
   %menu_commands, %align_commands);
 $composition_context_commands{'float'} = 1;
 
+my %pre_class_types;
+
 # FIXME allow customization?
 my %upper_case_commands = ( 'sc' => 1 );
 
@@ -110,6 +112,7 @@ sub in_preformatted($)
   my $self = shift;
   my $context = $self->{'document_context'}->[-1]->{'composition_context'}->[-1];
   if ($preformatted_commands{$context} 
+      or $pre_class_types{$context}
       or ($menu_commands{$context} and $self->_in_preformatted_in_menu())) {
     return $context;
   } else {
@@ -983,7 +986,6 @@ my %preformatted_commands_context = %preformatted_commands;
 $preformatted_commands_context{'verbatim'} = 1;
 
 my %pre_class_commands;
-my %pre_class_types;
 foreach my $preformatted_command (keys(%preformatted_commands_context)) {
   $pre_class_commands{$preformatted_command} = $preformatted_command;
 }
@@ -4052,7 +4054,19 @@ sub _convert_element_type($$$$)
     }
   }
   $result .= $content unless ($special_element);
+  $result .= &{$self->{'format_element_footer'}}($self, $type, 
+                                                 $element, $content);
+  return $result;
+}
 
+sub _default_element_footer($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $element = shift;
+  my $content = shift;
+
+  my $result = '';
   my $is_top = $self->_element_is_top($element);
   my $next_is_top = ($element->{'element_next'} 
                      and $self->_element_is_top($element->{'element_next'}));
@@ -4177,6 +4191,7 @@ my %default_formatting_references = (
      'navigation_header' => \&_default_navigation_header, 
      'navigation_header_panel' => \&_default_navigation_header_panel, 
      'element_header' => \&_default_element_header,
+     'element_footer' => \&_default_element_footer,
      'button' => \&_default_button_formatting, 
      'button_icon_img' => \&_default_button_icon_img, 
      'external_href' => \&_default_external_href, 
@@ -4217,9 +4232,9 @@ sub converter_initialize($)
   }
 
   foreach my $type (keys(%default_types_conversion)) {
-    if (exists($Texinfo::Config::types_conversion{$type})) {
+    if (exists($Texinfo::Config::texinfo_types_conversion{$type})) {
       $self->{'types_conversion'}->{$type}
-          = $Texinfo::Config::types_conversion{$type};
+          = $Texinfo::Config::texinfo_types_conversion{$type};
     } else {
       $self->{'types_conversion'}->{$type} 
           = $default_types_conversion{$type};
@@ -4239,9 +4254,9 @@ sub converter_initialize($)
   # FIXME put value in a category in Texinfo::Common?
   foreach my $command (keys(%misc_commands), keys(%brace_commands),
      keys (%block_commands), keys(%no_brace_commands), 'value') {
-    if (exists($Texinfo::Config::commands_conversion{$command})) {
+    if (exists($Texinfo::Config::texinfo_commands_conversion{$command})) {
       $self->{'commands_conversion'}->{$command} 
-          = $Texinfo::Config::commands_conversion{$command};
+          = $Texinfo::Config::texinfo_commands_conversion{$command};
     } else {
       if (!$self->get_conf('SHOW_MENU') 
            and ($command eq 'menu' or $command eq 'detailmenu')) {
@@ -4315,7 +4330,7 @@ sub converter_initialize($)
   foreach my $command (keys %{$self->{'commands_conversion'}}) {
     if (exists($Texinfo::Config::commands_args{$command})) {
       $self->{'commands_args'}->{$command} 
-         = $Texinfo::Config::commands_conversion{$command};
+         = $Texinfo::Config::commands_args{$command};
     } elsif (exists($default_commands_args{$command})) {
       $self->{'commands_args'}->{$command} = $default_commands_args{$command};
     }
@@ -6081,7 +6096,8 @@ my $default_priority = 'default';
 {
 package Texinfo::Config;
 
-use vars qw(%texinfo_default_stage_handlers %texinfo_formatting_references);
+use vars qw(%texinfo_default_stage_handlers %texinfo_formatting_references
+            %texinfo_commands_conversion %texinfo_types_conversion);
 
 sub texinfo_register_handler($$;$)
 {
@@ -6100,14 +6116,29 @@ sub texinfo_register_handler($$;$)
 
 sub texinfo_register_formatting_function($$)
 {
-  my $type = shift;
+  my $thing = shift;
   my $handler = shift;
-  if (!$default_formatting_references{$type}) {
-    carp ("Unknown formatting type $type\n");
+  if (!$default_formatting_references{$thing}) {
+    carp ("Unknown formatting type $thing\n");
     return 0;
   }
-  $texinfo_formatting_references{$type} = $handler;
+  $texinfo_formatting_references{$thing} = $handler;
 }
+
+sub texinfo_register_command_formatting($$)
+{
+  my $command = shift;
+  my $reference = shift;
+  $texinfo_commands_conversion{$command} = $reference;
+}
+
+sub texinfo_register_type_formatting($$)
+{
+  my $command = shift;
+  my $reference = shift;
+  $texinfo_types_conversion{$command} = $reference;
+}
+
 
 }
 
@@ -6822,6 +6853,8 @@ sub _convert($$;$)
     } elsif ($pre_class_types{$root->{'type'}}) {
       push @{$self->{'document_context'}->[-1]->{'preformatted_classes'}},
         $pre_class_types{$root->{'type'}};
+      push @{$self->{'document_context'}->[-1]->{'composition_context'}},
+        $root->{'type'};
     }
     if ($self->{'code_types'}->{$root->{'type'}}) {
       $self->{'document_context'}->[-1]->{'code'}++;
@@ -6858,6 +6891,7 @@ sub _convert($$;$)
       delete $self->{'current_filename'};
     } elsif ($pre_class_types{$root->{'type'}}) {
       pop @{$self->{'document_context'}->[-1]->{'preformatted_classes'}};
+      pop @{$self->{'document_context'}->[-1]->{'composition_context'}};
     }
     print STDERR "DO type ($root->{'type'}) => `$result'\n"
       if ($self->get_conf('DEBUG'));
