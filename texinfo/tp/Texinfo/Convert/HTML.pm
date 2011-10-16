@@ -999,6 +999,11 @@ foreach my $indented_format ('example', 'display', 'lisp') {
   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
 }
 
+# types that are in code style in the default case
+my %default_code_types = (
+ '_code' => 1,
+);
+
 # default specification of arguments formatting
 my %default_commands_args = (
   'email' => [['code', 'codestring'], ['normal']],
@@ -4220,6 +4225,16 @@ sub converter_initialize($)
           = $default_types_conversion{$type};
     }
   }
+  # FIXME API with a function call?
+  foreach my $type (keys(%default_code_types)) {
+    $self->{'code_types'}->{$type} = $default_code_types{$type};
+  }
+  if ($Texinfo::Config::texinfo_code_types) {
+    foreach my $type (keys(%$Texinfo::Config::texinfo_code_types)) {
+      $self->{'code_types'}->{$type}
+        = $Texinfo::Config::texinfo_code_types->{$type};
+    }
+  }
 
   # FIXME put value in a category in Texinfo::Common?
   foreach my $command (keys(%misc_commands), keys(%brace_commands),
@@ -4749,7 +4764,6 @@ sub _set_element_file($$$)
   if (!defined($filename)) {
     cluck("_set_element_file: filename not defined\n");
   }
-# FIXME directory should be the file name!
   $element->{'filename'} = $filename;
   if (defined($self->{'destination_directory'})) {
     $element->{'out_filename'} = $self->{'destination_directory'} . $filename;
@@ -6802,16 +6816,18 @@ sub _convert($$;$)
       $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'paragraph_number'}++;
     } elsif ($root->{'type'} eq 'preformatted') {
       $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'preformatted_number'}++;
-    } elsif ($root->{'type'} eq '_code') {
-      $self->{'document_context'}->[-1]->{'code'}++;
-    } elsif ($root->{'type'} eq '_string') {
-      $self->{'document_context'}->[-1]->{'string'}++;
     } elsif ($root->{'type'} eq 'element') { 
       $self->{'current_element'} = $root;
       $self->{'current_filename'} = $root->{'filename'};
     } elsif ($pre_class_types{$root->{'type'}}) {
       push @{$self->{'document_context'}->[-1]->{'preformatted_classes'}},
         $pre_class_types{$root->{'type'}};
+    }
+    if ($self->{'code_types'}->{$root->{'type'}}) {
+      $self->{'document_context'}->[-1]->{'code'}++;
+    }
+    if ($root->{'type'} eq '_string') {
+      $self->{'document_context'}->[-1]->{'string'}++;
     }
     my $content_formatted;
     if ($root->{'type'} eq 'definfoenclose_command') {
@@ -6831,11 +6847,13 @@ sub _convert($$;$)
     } elsif (defined($content_formatted)) {
       $result = $content_formatted;
     }
-    if ($root->{'type'} eq '_code') {
+    if ($self->{'code_types'}->{$root->{'type'}}) {
       $self->{'document_context'}->[-1]->{'code'}--;
-    } elsif ($root->{'type'} eq '_string') {
+    } 
+    if ($root->{'type'} eq '_string') {
       $self->{'document_context'}->[-1]->{'string'}--;
-    } elsif ($root->{'type'} eq 'element') { 
+    }
+    if ($root->{'type'} eq 'element') { 
       delete $self->{'current_element'};
       delete $self->{'current_filename'};
     } elsif ($pre_class_types{$root->{'type'}}) {
