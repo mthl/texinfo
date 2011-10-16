@@ -460,7 +460,9 @@ sub _set_variables_texi2html()
   ['SECTION_FOOTER_BUTTONS', [ 'FastBack', 'Back', 'Up', 
                                                'Forward', 'FastForward' ]],
   ['NODE_FOOTER_BUTTONS', [ 'FastBack', 'Back', 
-                                            'Up', 'Forward', 'FastForward' ]],
+                                            'Up', 'Forward', 'FastForward',
+                             ' ', ' ', ' ', ' ',
+                             'Top', 'Contents', 'Index', 'About' ]],
   );
   foreach my $option (@texi2html_options) {
     no warnings 'once';
