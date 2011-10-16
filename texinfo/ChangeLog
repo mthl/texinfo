@@ -1,3 +1,11 @@
+2011-10-16  Karl Berry  <karl@gnu.org>
+
+	* AUTHORS, INSTALL, INTRODUCTION, NEWS, README, README-alpha,
+	README.dev, TODO, */README: small text updates.
+
+	* doc/texinfo.txi (Not Ending a Sentence): also mention quotes
+	and brackets.
+
 2011-10-15  Karl Berry  <karl@gnu.org>
 
 	* system.h: rm decls for xmalloc, xrealloc, xstrdup.
