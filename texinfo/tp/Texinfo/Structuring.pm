@@ -1261,13 +1261,12 @@ sub menu_to_simple_menu($)
   my @contents;
   foreach my $content (@{$menu->{'contents'}}) {
     if ($content->{'type'} and $content->{'type'} eq 'menu_comment') {
-      foreach my $comment_content (@{$content->{'contents'}}) {
-        push @contents, $comment_content;
-      }
+      push @contents, @{$content->{'contents'}};
     } elsif ($content->{'type'} and $content->{'type'} eq 'menu_entry') {
       my $preformatted = {'type' => 'preformatted', 'contents' => [$content]};
-      $content->{'parent'} = $preformatted;
       push @contents, $preformatted;
+      $content->{'parent'} = $preformatted;
+
       my $in_description;
       my @args = @{$content->{'args'}};
       @{$content->{'args'}} = ();

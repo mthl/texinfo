@@ -224,6 +224,27 @@ menu comment.
 comment --- in.
 @end menu
 '],
+['sc_in_menu',
+'
+@node Top
+
+@menu
+* @sc{value}:@sc{node}.   @sc{descrip tion}
+
+@example
+* @sc{menu-example value}:(dir)@sc{menu-example node}.   @sc{menu-example descrip tion}
+@end example
+@end menu
+
+@node @sc{node}
+
+@example
+@menu
+* @sc{example value}:(dir)@sc{example node}.   @sc{example descrip tion}
+@end menu
+@end example
+
+'],
 ['formats_in_menu',
 '@node Top
 

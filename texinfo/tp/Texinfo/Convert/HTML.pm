@@ -109,7 +109,8 @@ sub in_preformatted($)
 {
   my $self = shift;
   my $context = $self->{'document_context'}->[-1]->{'composition_context'}->[-1];
-  if ($preformatted_commands{$context} or $menu_commands{$context}) {
+  if ($preformatted_commands{$context} 
+      or ($menu_commands{$context} and $self->_in_preformatted_in_menu())) {
     return $context;
   } else {
     return undef;
@@ -3448,17 +3449,27 @@ sub _convert_preformatted_type($$$$)
     $content =~ s/^\s*//;
     $content =~ s/\s*$//;
   }
+
+  # menu_entry_description is always in a preformatted container 
+  # in the tree, as the whole menu is meant to be an
+  # environment where spaces and newlines are preserved.
+  #
+  # However, if not in preformatted block command (nor in SIMPLE_MENU), 
+  # we don't preserve spaces and newlines in menu_entry_description, 
+  # instead the whole menu_entry is in a table, so here, not <pre>
   if ($command->{'parent'}->{'type'} 
       and $command->{'parent'}->{'type'} eq 'menu_entry_description'
       and !$self->_in_preformatted_in_menu()) {
     return $content;
   }
+
   if ($self->in_string()) {
     return $content;
   }
   my $result = $self->_attribute_class('pre', $pre_class).">".$content."</pre>";
 
-  # this may happen with empty lines between a def* and def*x.
+  # this may happen with lines without textual content 
+  # between a def* and def*x.
   if ($command->{'parent'}->{'cmdname'} 
       and $command->{'parent'}->{'cmdname'} =~ /^def/) {
     $result = '<dd>'.$result.'</dd>';
@@ -3637,16 +3648,17 @@ sub _convert_menu_entry_type($$$)
       }
       $i++;
     }
-    #my $menu_entry = &{$self->{'types_conversion'}->{'preformatted'}}($self,
-    #   'preformatted_in_menu_entry',
-    #   {'type' => 'preformatted', 'parent' => $command->{'parent'}}, $result);
     my $description = '';
     foreach my $arg (@args) {
       $description .= $self->convert_tree($arg, "menu_arg preformatted [$i]");
       $i++;
     }
-    $description =~ s/^<pre[^>]*>//;
-    $description =~ s/<\/pre>$//;
+
+    if (!$self->get_conf('SIMPLE_MENU')) {
+      $description =~ s/^<pre[^>]*>//;
+      $description =~ s/<\/pre>$//;
+    }
+
     $result = $result . $description;
 
     if (!$self->get_conf('SIMPLE_MENU')) {
