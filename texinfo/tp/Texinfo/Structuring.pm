@@ -429,7 +429,7 @@ sub nodes_tree ($)
   $top_node = $self->{'nodes'}->[0] if (!$top_node);
   foreach my $node (@{$self->{'nodes'}}) {
     # warn if node is not top node and doesn't appear in menu
-    if ($node ne $top_node and !$node->{'menu_up'}) {
+    if ($self->{'SHOW_MENU'} and $node ne $top_node and !$node->{'menu_up'}) {
       $self->line_warn (sprintf($self->__("unreferenced node `%s'"), 
                     Texinfo::Parser::_node_extra_to_texi($node->{'extra'})), 
                        $node->{'line_nr'});
@@ -458,7 +458,7 @@ sub nodes_tree ($)
             $node->{'node_'.$direction} = $node->{'menu_'.$direction};
           }
         }
-        if ($node->{'node_next'}) {
+        if ($node->{'node_next'} and $self->{'SHOW_MENU'}) {
           if (!defined($node->{'menu_next'})) {
             $self->line_warn(sprintf($self->
                __("No node following `%s' in menu, but `%s' follows in sectioning"), 
