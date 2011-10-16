@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.390 2011-10-16 23:14:38 karl Exp $
+@c $Id: texinfo.txi,v 1.391 2011-10-16 23:16:29 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14139,7 +14139,7 @@ This is the commonly used encoding for the Ukrainian language.
 Specifying an encoding @var{enc} has the following effects:
 
 @opindex --enable-encoding@r{, and Local Variables}
-@cindex Local Variables: section, for encoding
+@cindex Local Variables section, for encoding
 @cindex Info output, and encoding
 In Info output, unless the option @option{--disable-encoding} is given
 to @command{makeinfo}, a so-called `Local Variables' section
@@ -17133,7 +17133,7 @@ extension.  You should not need to set this variable.
 Use the full @code{@@titlepage} as the title, not a simple title string.
 
 @item USE_UNIDECODE
-@pindex Text::Unidecode
+@c when colons are supported ... pindex Text::Unidecode
 If set to false, do not use the @code{Text::Unidecode} Perl module to 
 transliterate more characters.
 
@@ -18936,7 +18936,7 @@ Init files are written in Perl, and by convention have extension
 @cindex Namespaces, for init files
 @cindex Perl namespaces, for init files
 
-@vindex Texinfo::Config @r{namespace}
+@c when colons are supported ... vindex Texinfo::Config @r{namespace}
 Initialization file are loaded from the main program via a
 @code{require} call in the @code{Texinfo::Config} namespace.  This
 means that the namespace of the main program and the namespace of
@@ -21092,7 +21092,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.390 2011-10-16 23:14:38 karl Exp $
+$Id: texinfo.txi,v 1.391 2011-10-16 23:16:29 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21163,7 +21163,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.390 2011-10-16 23:14:38 karl Exp $
+@comment $Id: texinfo.txi,v 1.391 2011-10-16 23:16:29 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
