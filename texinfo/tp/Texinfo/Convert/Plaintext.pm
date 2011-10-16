@@ -1343,7 +1343,7 @@ sub _convert($$)
         $self->_error_outside_of_any_node($root);
       }
       $result .= $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_text("($formatted_footnote_number)"));
+               $formatter->{'container'}->add_next("($formatted_footnote_number)"));
       if ($self->get_conf('footnotestyle') eq 'separate' and $self->{'node'}) {
         $result .= $self->_convert({'contents' => 
          [{'text' => ' ('},

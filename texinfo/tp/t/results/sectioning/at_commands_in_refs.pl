@@ -20465,10 +20465,9 @@ Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a>, Up: <a href="di
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#-_007b-_007d" accesskey="1">{ }</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="2">&nbsp; &nbsp;  ! 
- .  . ? @</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="2">&nbsp; &nbsp;  ! <br> .  . ? @</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="3">LaTeX TeX &bull; , &copy; &hellip; ...</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="3">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="4">&equiv; error--&gt; &euro; &iexcl; &rarr; -</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -20496,11 +20495,11 @@ Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a>, Up: <a href="di
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#the-someone-no_005fexplain_0040there"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#f_002d_002dile1-f_002d_002dile">[ f--ile1 ]  [ alt ]</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#f_002d_002dile1-f_002d_002dile"><img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#-_0040-_007b_007d-_002e-"><tt> @ {} . </tt></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <span class="roman">in r</span> SC <strong>str</strong> <tt>t</tt> <var>var</var> <em>dfn</em> <i>i</i></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><cite>cite asis</cite> in&nbsp;@w&nbsp;<b>b</b><!-- /@w --> <span class="roman">in r</span> <small>SC</small> <strong>str</strong> <tt>t</tt> <var>var</var> <em>dfn</em> <i>i</i></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#env-code-option-samp-command-file-C_002dx-ESC"><code>env</code> <code>code</code> &lsquo;<samp>option</samp>&rsquo; &lsquo;<samp>samp</samp>&rsquo; <code>command</code> &lsquo;<tt>file</tt>&rsquo; <kbd>C-x &lt;ESC&gt;</kbd></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>

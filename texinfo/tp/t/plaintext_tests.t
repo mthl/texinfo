@@ -474,7 +474,7 @@ push @test_cases, (
 $punctuation_text
 ],
 ['punctuation_frenchspacing',
-'@frenchspacing'."\n".$punctuation_text],
+'@frenchspacing on'."\n".$punctuation_text],
 );
 
 
@@ -512,7 +512,7 @@ push @test_cases, (
 $punctuation_commands_text
 ],
 ['punctuation_commands_frenchspacing',
-'@frenchspacing'."\n".$punctuation_commands_text],
+'@frenchspacing on'."\n".$punctuation_commands_text],
 );
 
 my $no_punctuation_commands_text = '
@@ -545,7 +545,31 @@ push @test_cases, (
 $no_punctuation_commands_text
 ],
 ['no_punctuation_commands_frenchspacing',
-'@frenchspacing'."\n".$no_punctuation_commands_text],
+'@frenchspacing on'."\n".$no_punctuation_commands_text],
+);
+
+my $punctuation_and_footnotes_text = '
+Text.@footnote{after period} Sentence 
+end.@footnote{after period double}  S2.@footnote{after period triple}   S3.
+
+No PERIOD.@footnote{no period} worD.@footnote{no period double}  w2 
+wW.@footnote{no period triple}   S3.
+
+Force PERIOD@.@footnote{after forced period} Sentence 
+W@.@footnote{after forced period double}  S2 
+W@.@footnote{after forced period triple}   S3.
+
+Force no period.@:@footnote{after forced no period} Sentence 
+w.@:@footnote{after forced no period double}  S2 
+w.@:@footnote{after forced no period triple}   S3.
+';
+
+push @test_cases, (
+['punctuation_and_footnotes',
+$punctuation_and_footnotes_text
+],
+['punctuation_and_footnotes_frenchspacing',
+'@frenchspacing on'."\n".$punctuation_and_footnotes_text],
 );
 
 my @deep_recursion_tests = (

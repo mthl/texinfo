@@ -16,9 +16,18 @@ $result_trees{'no_punctuation_commands_frenchspacing'} = {
                 'command' => {}
               },
               'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'on'
+            },
+            {
+              'parent' => {},
               'text' => '
 ',
-              'type' => 'empty_line_after_command'
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -27,7 +36,9 @@ $result_trees{'no_punctuation_commands_frenchspacing'} = {
       ],
       'cmdname' => 'frenchspacing',
       'extra' => {
-        'missing_argument' => 1
+        'misc_args' => [
+          'on'
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -358,6 +369,8 @@ $result_trees{'no_punctuation_commands_frenchspacing'} = {
 };
 $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0];
 $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'args'}[0];
+$result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'args'}[0];
+$result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'args'}[0];
 $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0];
 $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[0]{'parent'} = $result_trees{'no_punctuation_commands_frenchspacing'};
 $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[1]{'parent'} = $result_trees{'no_punctuation_commands_frenchspacing'};
@@ -430,7 +443,7 @@ $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[12]{'contents
 $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[12]{'contents'}[6]{'parent'} = $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[12];
 $result_trees{'no_punctuation_commands_frenchspacing'}{'contents'}[12]{'parent'} = $result_trees{'no_punctuation_commands_frenchspacing'};
 
-$result_texis{'no_punctuation_commands_frenchspacing'} = '@frenchspacing
+$result_texis{'no_punctuation_commands_frenchspacing'} = '@frenchspacing on
 
 Dot.@: Exclam!@: Question?@: Dot.@:  Exclam!@:  Question?@:  GAAA.
 
@@ -482,17 +495,7 @@ Symb.)"\']
 End.
 ';
 
-$result_errors{'no_punctuation_commands_frenchspacing'} = [
-  {
-    'error_line' => ':1: @frenchspacing missing argument
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@frenchspacing missing argument',
-    'type' => 'error'
-  }
-];
+$result_errors{'no_punctuation_commands_frenchspacing'} = [];
 
 
 

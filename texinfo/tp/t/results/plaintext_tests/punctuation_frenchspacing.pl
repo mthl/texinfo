@@ -16,9 +16,18 @@ $result_trees{'punctuation_frenchspacing'} = {
                 'command' => {}
               },
               'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'on'
+            },
+            {
+              'parent' => {},
               'text' => '
 ',
-              'type' => 'empty_line_after_command'
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -27,7 +36,9 @@ $result_trees{'punctuation_frenchspacing'} = {
       ],
       'cmdname' => 'frenchspacing',
       'extra' => {
-        'missing_argument' => 1
+        'misc_args' => [
+          'on'
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -198,6 +209,8 @@ $result_trees{'punctuation_frenchspacing'} = {
 };
 $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0];
 $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0];
+$result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0];
+$result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0];
 $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0];
 $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'parent'} = $result_trees{'punctuation_frenchspacing'};
 $result_trees{'punctuation_frenchspacing'}{'contents'}[1]{'parent'} = $result_trees{'punctuation_frenchspacing'};
@@ -230,7 +243,7 @@ $result_trees{'punctuation_frenchspacing'}{'contents'}[12]{'contents'}[1]{'paren
 $result_trees{'punctuation_frenchspacing'}{'contents'}[12]{'contents'}[2]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[12];
 $result_trees{'punctuation_frenchspacing'}{'contents'}[12]{'parent'} = $result_trees{'punctuation_frenchspacing'};
 
-$result_texis{'punctuation_frenchspacing'} = '@frenchspacing
+$result_texis{'punctuation_frenchspacing'} = '@frenchspacing on
 
 Dot. Exclam! Question? Dot.  Exclam!  Question?  GAAA.
 
@@ -282,31 +295,21 @@ Symb.)"\']
 End.
 ';
 
-$result_errors{'punctuation_frenchspacing'} = [
-  {
-    'error_line' => ':1: @frenchspacing missing argument
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@frenchspacing missing argument',
-    'type' => 'error'
-  }
-];
+$result_errors{'punctuation_frenchspacing'} = [];
 
 
 
-$result_converted{'plaintext'}->{'punctuation_frenchspacing'} = 'Dot.  Exclam!  Question?  Dot.  Exclam!  Question?  GAAA.
+$result_converted{'plaintext'}->{'punctuation_frenchspacing'} = 'Dot. Exclam! Question? Dot. Exclam! Question? GAAA.
 
-   End of lines Dot.  Exclam!  Question?  End.
+   End of lines Dot. Exclam! Question? End.
 
-   End of lines and spaces Dot.  Exclam!  Question?  End.
+   End of lines and spaces Dot. Exclam! Question? End.
 
-   With paren.)  paren.)  Symb.)"\']  Symb.)"\']  End.
+   With paren.) paren.) Symb.)"\'] Symb.)"\'] End.
 
-   End of lines paren.)  Symb.)"\']  End.
+   End of lines paren.) Symb.)"\'] End.
 
-   End of lines and spaces paren.)  Symb.)"\']  End.
+   End of lines and spaces paren.) Symb.)"\'] End.
 ';
 
 1;
