@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.31 2011-10-11 23:37:38 karl Exp $
+# $Id: Makefile.am,v 1.32 2011-10-17 00:18:57 karl Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -61,26 +61,27 @@ endif
 # From coreutils.
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # Run this before making pretests, as well as official releases, so that
-# translators will see changed string.
+# translators will see changed strings.
 po-check:
-	if test -f po/POTFILES.in; then					\
+	@if test -f po/POTFILES.in; then				\
 	  grep -E -v '^(#|$$)' po/POTFILES.in				\
 	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
 	  files=;							\
-	  for file in $$($(CVS_LIST_EXCEPT)) `find [a-z]* -name '*.[ch]'`; do \
+	  for file in $$($(CVS_LIST_EXCEPT))				\
+	      `find [a-z]* -name '*.[ch]' -o -name '*.p[lm]'`; do	\
 	    case $$file in						\
-	    djgpp/* | man/*) continue;;					\
+	    djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
+            tp/maintain/* ) continue;;					\
 	    esac;							\
 	    case $$file in						\
-	    *.[ch])							\
+	    *.[ch] | *.p[lm])						\
 	      base=`expr " $$file" : ' \(.*\)\..'`;			\
 	      { test -f $$base.l || test -f $$base.y; } && continue;;	\
 	    esac;							\
 	    files="$$files $$file";					\
 	  done;								\
-	  grep -E -l '\b(N?_|gettext *)\([^)"]*("|$$)' $$files		\
+	  grep -E -l '\b(N?__?|gdt|gettext *)\([^)"]*("|$$)' $$files	\
 	    | sort -u > $@-2;						\
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\
 	fi
-

@@ -1,4 +1,4 @@
-# Copyright (C) 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+# Copyright (C) 2005, 2006, 2007, 2008, 2011 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -9,7 +9,6 @@
 gnulib/lib/error.c
 gnulib/lib/getopt.c
 gnulib/lib/xalloc-die.c
-gnulib/lib/xsetenv.c
 info/echo-area.c
 info/footnotes.c
 info/footnotes.h
