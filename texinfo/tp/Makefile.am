@@ -1,13 +1,20 @@
-# $(POD2MAN) \
-#	--center="Texinfo Parser"	\
-#	--release=$(VERSION)				\
-#	$(srcdir)/truc.pod > truc.3
+# $Id: Makefile.am,v 1.11 2011-10-17 17:49:07 karl Exp $
+# Makefile.am for texinfo/tp.
+#
+# Copyright 2011 Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-
-include Makefile.incl
-
-$(srcdir)/Makefile.incl:
-	(cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl)
+# A long list of files that we generate.
+include $(srcdir)/Makefile.tres
+$(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
+	cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl
 
 bin_SCRIPTS = texi2any
 
@@ -24,10 +31,11 @@ do_subst = sed \
   -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g'
 
 texi2any: texi2any.pl
-	$(do_subst) $(srcdir)/$< > $@
+	$(do_subst) $(srcdir)/$< >$@
 	chmod a+x $@
 
 makeinfo: texi2any
+	rm -f $@
 	-$(LN_S) texi2any $@
 
 modulesdir = $(pkgdatadir)/Texinfo
@@ -68,70 +76,71 @@ dist_init_DATA = \
  init/tex4ht.pm
 
 test_files = \
- t/27float.t \
- t/test_count.t \
- t/03coverage_braces.t \
- t/70value_and_macro.t \
- t/10menu.t \
- t/05paragraph.t \
- t/22xtable.t \
- t/test_sort.t \
- t/02coverage.t \
- t/19def.t \
  t/01use.t \
- t/18itemize.t \
- t/06columnfractions.t \
+ t/02coverage.t \
+ t/03coverage_braces.t \
  t/04verb.t \
- t/plaintext_tests.t \
+ t/05paragraph.t \
+ t/06columnfractions.t \
+ t/08misc_commands.t \
+ t/09indices.t \
+ t/10menu.t \
+ t/16raw.t \
  t/181quotation.t \
+ t/18itemize.t \
+ t/19def.t \
+ t/21multitable.t \
+ t/22xtable.t \
+ t/27float.t \
+ t/28heading.t \
+ t/30sectioning.t \
+ t/50value.t \
+ t/55conditionals.t \
  t/57invalid_nestings.t \
  t/58alias.t \
- t/21multitable.t \
- t/08misc_commands.t \
- t/paragraph.t \
- t/30sectioning.t \
- t/test_utils.pl \
- t/info_tests.t \
- t/55conditionals.t \
- t/html_tests.t \
- t/50value.t \
  t/60macro.t \
- t/include_reference/section_file.texi \
- t/include_reference/f--ile.txt \
+ t/70value_and_macro.t \
+ t/README \
+ t/accents.t \
+ t/html_tests.t \
+ t/include/a.txt \
+ t/include/aa.txt \
+ t/include/count_image.png \
+ t/include/count_image.txt \
+ t/include/count_image_text.txt \
+ t/include/f.txt \
+ t/include/fdotext.ext \
+ t/include/fdotext.png \
+ t/include/fdotext.txt \
+ t/include/fext.ext \
+ t/include/fext.png \
+ t/include/fext.txt \
+ t/include/fextext \
+ t/include/file_with_xml_chars.texi \
+ t/include/image.txt \
+ t/include/inc_@f--ile.texi \
+ t/include/included_file_with_setfilename.texi \
+ t/include/this_is_a_long_unknown_file.png \
+ t/include/words.txt \
  t/include_reference/f--ile.png \
+ t/include_reference/f--ile.txt \
  t/include_reference/inc_file.texi \
  t/include_reference/incl-incl.txi \
  t/include_reference/macro_included.texi \
- t/include/file_with_xml_chars.texi \
- t/include/a.txt \
- t/include/count_image.txt \
- t/include/fdotext.png \
- t/include/fdotext.ext \
- t/include/count_image_text.txt \
- t/include/aa.txt \
- t/include/image.txt \
- t/include/f.txt \
- t/include/this_is_a_long_unknown_file.png \
- t/include/count_image.png \
- t/include/fext.png \
- t/include/fextext \
- t/include/included_file_with_setfilename.texi \
- t/include/fext.txt \
- t/include/inc_@f--ile.texi \
- t/include/words.txt \
- t/include/fdotext.txt \
- t/include/fext.ext \
- t/languages.t \
- t/16raw.t \
- t/09indices.t \
- t/accents.t \
- t/28heading.t \
- t/nodenormalization.t \
- t/README \
- t/init/test_renamed_nodes.init \
+ t/include_reference/section_file.texi \
+ t/info_tests.t \
  t/init/redefine_need.init \
  t/init/test_directions.init \
- t/manual_tree.pl
+ t/init/test_renamed_nodes.init \
+ t/languages.t \
+ t/manual_tree.pl \
+ t/nodenormalization.t \
+ t/paragraph.t \
+ t/plaintext_tests.t \
+ t/test_count.t \
+ t/test_sort.t \
+ t/test_utils.pl \
+ #
 
 relative_include_dir = t/include_dir
 document_domain = $(PACKAGE)_document

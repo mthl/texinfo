@@ -1,4 +1,15 @@
+2011-10-17  Karl Berry  <karl@gnu.org>
+
+	* tp/Makefile.am: rename include to Makefile.tres.
+	(Makefile.tres): regenerate.
+	* tp/maintain/regenerate_file_lists.pl: add copyright,
+	chdir to working directory.
+	* autogen.sh: invoke it.
+
 2011-10-16  Karl Berry  <karl@gnu.org>
+
+	* Makefile.am (po-check): update to find tp/ Perl files,
+	not makeinfo/ C files.
 
 	* AUTHORS, INSTALL, INTRODUCTION, NEWS, README, README-alpha,
 	README.dev, TODO, */README: small text updates.
