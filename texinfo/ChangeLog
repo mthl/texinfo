@@ -3,7 +3,7 @@
 	* AUTHORS, INSTALL, INTRODUCTION, NEWS, README, README-alpha,
 	README.dev, TODO, */README: small text updates.
 
-	* doc/texinfo.txi (Not Ending a Sentence): also mention quotes
+	* doc/texinfo.txi (Not Ending a Sentence): also mention right quote
 	and brackets.
 
 2011-10-15  Karl Berry  <karl@gnu.org>
