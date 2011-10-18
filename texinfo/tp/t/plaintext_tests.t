@@ -376,17 +376,42 @@ flushright
 A quot---ation
 @end quotation
 '],
+# FIXME the result is not right, space should be doubled after @abbr{AAA}. too.
+['punctuation_abbr_acronym',
+'@abbr{AAA}. @acronym{BBB}. @abbr{aaa}. @acronym{bbb}. Next.
+@abbr{AAA, expL}. @acronym{BBB, explA}. @abbr{aaa, expl}. 
+@acronym{bbb, expla}. Last.
+'],
 ['punctuation_and_upper_case_commands',
 '
-@var{aaa}. @var{@~e}. @sc{@aa{}}.
-@var{AAA}. @var{@~E}. @sc{@AA{}}.
-@var{double AAA}.  @var{double @~E}. @sc{double @AA{}}.  End.
+@var{aaa}. @var{@~e}. @var{@aa{}}.
+@var{AAA}. @var{@~E}. @var{@AA{}}.
+@var{double AAA}.  @var{double @~E}. @var{double @AA{}}.  End.
+
+@sc{aaa}. @sc{@~e}. @sc{@aa{}}.
+@sc{AAA}. @sc{@~E}. @sc{@AA{}}.
+@sc{double AAA}.  @sc{double @~E}. @sc{double @AA{}}.  End.
 '],
 ['punctuation_and_upper_case_commands_utf8',
 '@documentencoding utf-8
-@var{aaa}. @var{@~e}. @sc{@aa{}}.
-@var{AAA}. @var{@~E}. @sc{@AA{}}.
-@var{double AAA}.  @var{double @~E}. @sc{double @AA{}}.  End.
+@var{aaa}. @var{@~e}. @var{@aa{}}.
+@var{AAA}. @var{@~E}. @var{@AA{}}.
+@var{double AAA}.  @var{double @~E}. @var{double @AA{}}.  End.
+
+@sc{aaa}. @sc{@~e}. @sc{@aa{}}.
+@sc{AAA}. @sc{@~E}. @sc{@AA{}}.
+@sc{double AAA}.  @sc{double @~E}. @sc{double @AA{}}.  End.
+'],
+['punctuation_and_code_style_commands',
+'@command{aaa}. @code{@~e}. @samp{@aa{}}.
+@command{AAA}. @code{@~E}. @samp{@AA{}}.
+@command{double AAA}.  @code{double @~E}. @samp{double @AA{}}.  End.
+'],
+['punctuation_and_code_style_commands_utf8',
+'@documentencoding utf-8
+@command{aaa}. @code{@~e}. @samp{@aa{}}.
+@command{AAA}. @code{@~E}. @samp{@AA{}}.
+@command{double AAA}.  @code{double @~E}. @samp{double @AA{}}.  End.
 '],
 ['characters_and_commands_in_var',
 '@var{aaa}. @var{dlksfjf ) }. @var{(fdfdsfsd}. @var{sqdq,qdsdsq}.

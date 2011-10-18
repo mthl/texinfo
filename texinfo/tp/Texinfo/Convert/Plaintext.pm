@@ -134,6 +134,7 @@ foreach my $def_command (keys(%def_commands)) {
 # formatters have their own stack
 # in container
 # 'upper_case'
+# 'var'
 # 'code'
 # 
 # paragraph number incremented with paragraphs, center, listoffloats
@@ -433,17 +434,17 @@ sub _process_text($$$)
   my $text = $command->{'text'};
 
   my $lower_case_text;
-  if ($self->{'formatters'}->[-1]->{'upper_case'}) {
+  if ($context->{'upper_case'}) {
     $lower_case_text = $text;
     $text = uc($text);
   }
-  # Even if in upper case, in code style, end a sentence.
-  if ($context->{'code'}) {
+  # Even if in upper case, in code style or @var always end a sentence.
+  if ($context->{'code'} or $context->{'var'}) {
     $lower_case_text = lc($text);
   }
   if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'} 
       and $self->{'encoding_name'} eq 'utf-8') {
-    if ($self->{'formatters'}->[-1]->{'upper_case'}) {
+    if (defined($lower_case_text)) {
       $lower_case_text 
         = Texinfo::Convert::Unicode::unicode_text($lower_case_text, $context->{'code'});
     }
@@ -1181,11 +1182,22 @@ sub _convert($$)
       if ($self->get_conf('ENABLE_ENCODING')) {
         $encoding = $self->{'encoding_name'};
       }
+      # it is important that sc is either set or undef, as if 0 it means
+      # lower casing
+      my $sc;
+      if ($formatter->{'upper_case'}) {
+        $sc = 1;
+      }
       my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
                              {'enabled_encoding' => $encoding,
-                              'sc' => $formatter->{'upper_case'}});
+                              'sc' => $sc});
       my $lower_case_text;
-      if ($formatter->{'upper_case'}) {
+      # always double spacig, so set underlying text lower case.
+      if ($formatter->{'var'} or $formatter->{'code'}) {
+        $lower_case_text = Texinfo::Convert::Text::brace_no_arg_command($root,
+                             {'enabled_encoding' => $encoding,
+                              'lc' => 1});
+      } elsif ($formatter->{'upper_case'}) {
         $lower_case_text = Texinfo::Convert::Text::brace_no_arg_command($root,
                              {'enabled_encoding' => $encoding});
       }
@@ -1224,11 +1236,17 @@ sub _convert($$)
       if ($self->get_conf('ENABLE_ENCODING')) {
         $encoding = $self->{'encoding_name'};
       }
-      my $accented_text 
-         = Texinfo::Convert::Text::text_accents($root, $encoding,
-                                                $formatter->{'upper_case'});
-      my $accented_text_lower_case;
+      my $sc;
       if ($formatter->{'upper_case'}) {
+        $sc = 1;
+      }
+      my $accented_text 
+         = Texinfo::Convert::Text::text_accents($root, $encoding, $sc);
+      my $accented_text_lower_case;
+      if ($formatter->{'var'} or $formatter->{'code'}) {
+        $accented_text_lower_case
+         = Texinfo::Convert::Text::text_accents($root, $encoding, 0);
+      } elsif ($formatter->{'upper_case'}) {
         $accented_text_lower_case
          = Texinfo::Convert::Text::text_accents($root, $encoding);
       }
@@ -1250,7 +1268,10 @@ sub _convert($$)
         $formatter->{'container'}->set_space_protection(undef,
           undef,undef,1);
       }
-      $formatter->{'upper_case'}++ if ($upper_case_commands{$command});
+      if ($upper_case_commands{$command}) {
+        $formatter->{'upper_case'}++;
+        $formatter->{'var'}++ if ($command eq 'var');
+      }
       if ($command eq 'w') {
         $formatter->{'w'}++;
         $result .= $self->_count_added($formatter->{'container'},
@@ -1300,7 +1321,10 @@ sub _convert($$)
         $formatter->{'container'}->set_space_protection(undef,
           undef, undef, $frenchspacing);
       }
-      $formatter->{'upper_case'}-- if ($upper_case_commands{$command});
+      if ($upper_case_commands{$command}) {
+        $formatter->{'upper_case'}--;
+        $formatter->{'var'}-- if ($command eq 'var');
+      }
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
       $result = $self->_count_added($formatter->{'container'},

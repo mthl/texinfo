@@ -184,7 +184,13 @@ sub ascii_accents ($$;$)
   my $stack = shift;
   my $in_upper_case = shift;
 
-  $result = uc($result) if ($in_upper_case and $result =~ /^\w$/);
+  if (defined($in_upper_case) and $result =~ /^\w$/) {
+    if ($in_upper_case) {
+      $result = uc($result);
+    } else {
+      $result = lc($result);
+    }
+  }
   foreach my $accent_command (reverse(@$stack)) {
     $result = ascii_accent ($result, $accent_command);
   }
@@ -238,9 +244,12 @@ sub brace_no_arg_command($;$)
       $result = $text_brace_no_arg_commands{$command};
     }
   }
-  if ($options and $options->{'sc'} 
-      and $Texinfo::Common::letter_no_arg_commands{$command}) {
-    $result = uc($result);
+  if ($options and $Texinfo::Common::letter_no_arg_commands{$command}) {
+    if ($options->{'sc'}) {
+      $result = uc($result);
+    } elsif ($options->{'lc'}) {
+      $result = lc($result);
+    }
   }
   return $result;
 }
@@ -604,7 +613,8 @@ commands.  The function will format the whole stack of nested accent
 commands and the innermost text.  If I<$encoding> is set, the formatted
 text is converted to this encoding as much as possible instead of being
 converted as simple ascii.  If I<$in_upper_case> is set, the result
-is meant to be upper-cased.
+is meant to be upper-cased, if it is defined and false, the result is
+meant to be lower-cased.
 
 =back
 

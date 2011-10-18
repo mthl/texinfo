@@ -1271,7 +1271,11 @@ sub unicode_accents ($$$;$)
     $result = $formatted_result;
     pop @$stack;
   }
-  $result = uc ($result) if ($in_upper_case);
+  if ($in_upper_case) {
+    $result = uc ($result);
+  } elsif (defined($in_upper_case)) {
+    $result = lc ($result);
+  }
   while (@$stack) {
     my $accent_command = pop @$stack;
     $result = &$format_accent($result, $accent_command, $in_upper_case);
@@ -1306,8 +1310,13 @@ sub eight_bit_accents($$$$;$)
     if (defined($unicode_formatted)) {
       $unicode_formatted 
          = unicode_accent($unicode_formatted, $stack->[-1]);
-      $unicode_formatted = uc($unicode_formatted)
-        if ($in_upper_case and defined($unicode_formatted));
+      if (defined($unicode_formatted) and defined($in_upper_case)) {
+        if ($in_upper_case) {
+          $unicode_formatted = uc($unicode_formatted);
+        } else {
+          $unicode_formatted = lc($unicode_formatted);
+        }
+      }
     }
     push @results_stack, [$unicode_formatted, $stack->[-1]];
     pop @$stack;
@@ -1506,7 +1515,8 @@ I<$encoding> not set the I<$result> is set to undef.  I<$format_accent>
 is a function reference that is used to format the accent commands if 
 there is no encoded character available for the encoding I<$encoding>
 at some point of the conversion of the I<$stack>.  Last, if 
-I<$in_upper_case> is set, the result is upper-cased.
+I<$in_upper_case> is set, the result is upper-cased, while it is defined
+and flase, the result is lower-cased.
 
 =item $result = unicode_text ($text, $in_code)
 

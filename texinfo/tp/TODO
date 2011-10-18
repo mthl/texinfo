@@ -36,6 +36,12 @@ account even if there are no automatic directions. Thus
 leads to Second node being node-Next for First node in tp (and not in 
 texi2html).  ---> not sure about this one
 
+The result of
+  @abbr{AAA}. And text.
+is not right, space should be doubled after @abbr{AAA}, test in
+plaintext_tests/punctuation_abbr_acronym
+
+
 Handle better @exdent in html?
 
 LINKS_BUTTONS as config, check and document.
