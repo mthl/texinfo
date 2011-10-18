@@ -1,10 +1,10 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
-   $Id: window.h,v 1.13 2011-04-06 21:19:35 gray Exp $
+   $Id: window.h,v 1.14 2011-10-18 18:47:22 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
 
-   Copyright (C) 1993, 1997, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2004, 2007, 2011 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

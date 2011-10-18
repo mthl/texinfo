@@ -1,10 +1,10 @@
 /* variables.h -- Description of user visible variables in Info.
-   $Id: variables.h,v 1.10 2011-07-28 08:12:53 gray Exp $
+   $Id: variables.h,v 1.11 2011-10-18 18:47:22 karl Exp $
 
    This file is part of GNU Info, a program for reading online documentation
    stored in Info format.
 
-   Copyright (C) 1993, 1997, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 2004, 2007, 2011 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

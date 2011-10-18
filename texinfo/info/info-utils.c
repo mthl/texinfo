@@ -1,7 +1,7 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.15 2011-07-28 07:12:47 gray Exp $
+   $Id: info-utils.c,v 1.16 2011-10-18 18:47:20 karl Exp $
 
-   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009
+   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify

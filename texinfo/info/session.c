@@ -1,8 +1,8 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.51 2011-08-02 06:49:41 gray Exp $
+   $Id: session.c,v 1.52 2011-10-18 18:47:21 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2007, 2008, 2009 Free Software Foundation, Inc.
+   2004, 2007, 2008, 2009, 2011 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

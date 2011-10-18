@@ -1,8 +1,8 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c,v 1.10 2011-07-28 07:14:05 gray Exp $
+   $Id: footnotes.c,v 1.11 2011-10-18 18:47:20 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2002, 2004, 2007,
-   2008 Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 1999, 2002, 2004, 2007, 2008, 2011
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

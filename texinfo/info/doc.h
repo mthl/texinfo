@@ -1,7 +1,8 @@
 /* doc.h -- Structures associating function pointers with documentation.
-   $Id: doc.h,v 1.8 2011-07-28 07:14:21 gray Exp $
+   $Id: doc.h,v 1.9 2011-10-18 18:47:19 karl Exp $
 
-   Copyright (C) 1993, 2001, 2004, 2007 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001, 2004, 2007, 2011
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

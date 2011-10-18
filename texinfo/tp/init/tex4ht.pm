@@ -4,7 +4,7 @@
 #
 # tex4ht.pm: use tex4ht to convert tex to html
 #
-#    Copyright (C) 2005, 2007, 2009 Free Software Foundation, Inc.
+#    Copyright (C) 2005, 2007, 2009, 2011 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

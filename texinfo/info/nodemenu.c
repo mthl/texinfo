@@ -1,7 +1,7 @@
 /* nodemenu.c -- produce a menu of all visited nodes.
-   $Id: nodemenu.c,v 1.12 2011-07-28 07:14:05 gray Exp $
+   $Id: nodemenu.c,v 1.13 2011-10-18 18:47:21 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2003, 2004, 2007, 2008
+   Copyright (C) 1993, 1997, 1998, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify

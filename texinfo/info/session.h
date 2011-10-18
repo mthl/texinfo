@@ -1,7 +1,7 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h,v 1.11 2011-04-06 21:18:26 gray Exp $
+   $Id: session.h,v 1.12 2011-10-18 18:47:22 karl Exp $
 
-   Copyright (C) 1993, 1998, 1999, 2001, 2002, 2004, 2007
+   Copyright (C) 1993, 1998, 1999, 2001, 2002, 2004, 2007, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify

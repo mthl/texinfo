@@ -1,7 +1,7 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h,v 1.7 2011-02-10 09:14:47 gray Exp $
+   $Id: nodes.h,v 1.8 2011-10-18 18:47:21 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007
+   Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
