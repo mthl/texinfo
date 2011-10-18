@@ -1,8 +1,9 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.13 2011-10-15 15:49:55 karl Exp $
+   $Id: system.h,v 1.14 2011-10-18 18:37:31 karl Exp $
 
    Copyright 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
-   2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
+   2006, 2007, 2008, 2009, 2010, 2011
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,11 +28,6 @@
 #ifdef MIKTEX
 #include <gnu-miktex.h>
 #define S_ISDIR(x) ((x)&_S_IFDIR)
-#else
-/* MiKTeX defines substring() in a separate DLL, where it has its
-   own __declspec declaration.  We don't want to try to duplicate
-   this Microsoft-ism here.  */
-extern char *substring (const char *, const char *);
 #endif
 
 /* Assume ANSI C89 headers are available.  */
