@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 120 };
+BEGIN { plan tests => 127 };
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
@@ -52,6 +52,8 @@ test_para(['word.  other'], "word.  other\n", 'two_words_dot');
 test_para(['word. other'], "word.  other\n", 'two_words_dot_one_space');
 test_para(['word.) other'], "word.)  other\n", 'two_words_dot_paren_one_space');
 test_para(['worD.  other'], "worD. other\n", 'two_words_dot_upper');
+test_para(['worD.)  other'], "worD.) other\n", 'two_words_dot_paren_upper');
+test_para(['worD).  other'], "worD). other\n", 'two_words_paren_dot_upper');
 test_para(['word','other'], "wordother\n", 'concatenate');
 test_para(['word.', ' A'], "word.  A\n", 'punctuation_at_end_fragment');
 test_para(['word','other'], "wordother\n", 'concatenate_max', {'max' => 2});
@@ -154,6 +156,22 @@ is ($result, "a\n_\n", 'add_next: add char after end line');
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
+$result .= $para->add_text("A");
+$result .= $para->add_next('_');
+$result .= $para->add_text(".)");
+$result .= $para->add_text(" Next");
+$result .= $para->end();
+is ($result, "A_.)  Next\n", 'add_next: period after next, not transparent');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->add_text("A");
+$result .= $para->add_next('_', undef, undef, 1);
+$result .= $para->add_text(".)");
+$result .= $para->add_text(" Next");
+$result .= $para->end();
+is ($result, "A_.) Next\n", 'add_next: period after next, transparent');
+
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
 $result .= $para->add_text("aa.\n");
@@ -173,7 +191,6 @@ $result .= $para->end();
 is ($result, "b.  after\n", 'punctuation after end space protection');
 
 $para = Texinfo::Convert::Paragraph->new();
-#$para = Texinfo::Convert::Paragraph->new({'DEBUG' => 1});
 $result = '';
 $result .= $para->set_space_protection(undef,undef,undef,1);
 $result .= $para->add_text("b.");
@@ -202,7 +219,6 @@ is ($result, "b. follow\n", 'punctuation space before end space protection');
 
 
 $para = Texinfo::Convert::Paragraph->new();
-#$para = Texinfo::Convert::Paragraph->new({'DEBUG' => 1});
 $result = '';
 $result .= $para->add_text("In w:\n");
 $result .= $para->set_space_protection(1,1);
@@ -211,7 +227,6 @@ $result .= $para->end();
 is ($result, "In w: Out of code -- out-of-code.   ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg\n", 'space protection after end sentence');
 
 $para = Texinfo::Convert::Paragraph->new();
-#$para = Texinfo::Convert::Paragraph->new({'DEBUG' => 1});
 $result = '';
 $result .= $para->add_text("In w:\n");
 $result .= $para->set_space_protection(1,1);
@@ -452,8 +467,10 @@ is ($para->{'lines_counter'}, 1, 'count lines text pending');
 $result .= $para->end();
 is ($para->{'lines_counter'}, 2, 'count lines end paragraph');
 
-#print STDERR "$result";
-#exit;
+$para = Texinfo::Convert::Paragraph->new();
+$result = $para->add_text('AA. BB.', 'aa. bb.');
+$result .= $para->end();
+is ($result, "AA.  BB.\n", 'underlying text lower case');
 
 sub test_line($$$;$)
 {
@@ -505,6 +522,15 @@ $result .= $line->add_text(' after');
 $result .= $line->end();
 is ($result, "\nafter", 'line space after end_line');
 #print STDERR "$result";
+
+$line = Texinfo::Convert::Line->new();
+$result = '';
+$result .= $line->add_text("A");
+$result .= $line->add_next('_', undef, undef, 1);
+$result .= $line->add_text(".)");
+$result .= $line->add_text(" Next");
+$result .= $line->end();
+is ($result, "A_.) Next", 'line add_next: period after next, transparent');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';
@@ -641,6 +667,11 @@ is ($line->{'lines_counter'}, 1, 'line count line first line end');
 $result .= $line->add_text("\n");
 $result .= $line->end();
 is ($line->{'lines_counter'}, 2, 'line count line end line');
+
+$line = Texinfo::Convert::Line->new();
+$result = $line->add_text('AA. BB.', 'aa. bb.');
+$result .= $line->end();
+is ($result, "AA.  BB.", 'line underlying text lower case');
 
 my $unfilled = Texinfo::Convert::UnFilled->new({'indent_length' => 5});
 $result = '';

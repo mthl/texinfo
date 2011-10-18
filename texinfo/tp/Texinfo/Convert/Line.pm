@@ -55,10 +55,16 @@ sub dump($)
 {
   my $self = shift;
   my $word = 'UNDEF';
-  $word = $self->{'word'} if (defined($self->{'word'}));
+  my $underlying = '';
+  if (defined($self->{'word'})) {
+    $word = $self->{'word'};
+    if ($self->{'word'} ne $self->{'underlying_word'}) {
+      $underlying = ", underlying_word: $self->{'underlying_word'},";
+    }
+  }
   my $end_sentence = 'UNDEF';
   $end_sentence = $self->{'end_sentence'} if (defined($self->{'end_sentence'}));
-  print STDERR "line ($self->{'line_beginning'},$self->{'counter'}) word: $word, space `$self->{'space'}' end_sentence: $end_sentence\n"; 
+  print STDERR "line ($self->{'line_beginning'},$self->{'counter'}) word: $word, space `$self->{'space'}'${underlying} end_sentence: $end_sentence\n"; 
 }
 
 sub end_line($)
@@ -132,6 +138,7 @@ sub _add_pending_word($)
       $result .= $line->{'word'};
       print STDERR "ADD_WORD.L[$line->{'word'}]\n" if ($line->{'DEBUG'});
       $line->{'word'} = undef;
+      $line->{'underlying_word'} = undef;
     }
   }
   return $result;
@@ -148,28 +155,34 @@ sub end($)
   return $result;
 }
 
-sub add_next($;$$$)
+sub add_next($;$$$$)
 {
   my $line = shift;
   my $word = shift;
   my $space = shift;
   my $end_sentence = shift;
+  my $transparent = shift;
   $line->{'end_line_count'} = 0;
-  return $line->_add_next($word, $space, $end_sentence);
+  return $line->_add_next($word, undef, $space, $end_sentence, $transparent);
 }
 
 # add a word and/or spaces and end of sentence.
-sub _add_next($;$$$)
+sub _add_next($;$$$$$)
 {
   my $line = shift;
   my $word = shift;
+  my $underlying_word = shift;
   my $space = shift;
   my $end_sentence = shift;
+  my $transparent = shift;
   my $result = '';
+
+  $underlying_word = $word if (!defined($underlying_word));
 
   if (defined($word)) {
     if (!defined($line->{'word'})) {
       $line->{'word'} = '';
+      $line->{'underlying_word'} = '';
       if ($line->{'end_sentence'}
           and $line->{'end_sentence'} > 0
           and !$line->{'frenchspacing'}
@@ -181,7 +194,11 @@ sub _add_next($;$$$)
       }
     }
     $line->{'word'} .= $word;
-    print STDERR "WORD+.L $word -> $line->{'word'}\n" if ($line->{'DEBUG'});
+    $line->{'underlying_word'} .= $underlying_word unless ($transparent);
+    if ($line->{'DEBUG'}) {
+      print STDERR "WORD+.L $word -> $line->{'word'}\n";
+      print STDERR "WORD+.L $underlying_word -> $line->{'underlying_word'}\n";
+    }
   }
   if (defined($space)) {
     if ($line->{'protect_spaces'}) {
@@ -237,10 +254,12 @@ my $end_sentence_character = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
 # wrap a text.
-sub add_text($$)
+sub add_text($$;$)
 {
   my $line = shift;
   my $text = shift;
+  my $underlying_text = shift;
+  $underlying_text = $text if (!defined($underlying_text));
   $line->{'end_line_count'} = 0;
   my $result = '';
 
@@ -251,10 +270,12 @@ sub add_text($$)
       print STDERR "s `$line->{'space'}', w `$word'\n";
     }
     if ($text =~ s/^([^\S\n]+)//) {
+      $underlying_text =~ s/^([^\S\n]+)//;
       my $spaces = $1;
       print STDERR "SPACES.L\n" if ($line->{'DEBUG'});
       if ($line->{'protect_spaces'}) {
         $line->{'word'} .= $spaces;
+        $line->{'underlying_word'} .= $spaces;
       } else {
         my $added_word = $line->{'word'};
         $result .= $line->_add_pending_word();
@@ -276,13 +297,16 @@ sub add_text($$)
       }
     } elsif ($text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//) {
       my $added_word = $1;
-      $result .= $line->_add_next($added_word);
+      $underlying_text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//;
+      my $underlying_added_word = $1;
+
+      $result .= $line->_add_next($added_word, $underlying_added_word);
       # now check if it is considered as an end of sentence
       if (defined($line->{'end_sentence'}) and 
         $added_word =~ /^[$after_punctuation_characters]*$/) {
         # do nothing in the case of a continuation of after_punctuation_characters
-      } elsif ($line->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
-           and $line->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
+      } elsif ($line->{'underlying_word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
+           and $line->{'underlying_word'} !~ /[[:upper:]][$end_sentence_character$after_punctuation_characters]*$/) {
         if ($line->{'frenchspacing'}) {
           $line->{'end_sentence'} = -1;
         } else {
@@ -295,12 +319,19 @@ sub add_text($$)
         delete $line->{'end_sentence'};
       }
     } elsif ($text =~ s/^\n//) {
+      $underlying_text =~ s/^\n//;
       $result .= $line->_end_line();
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
       my $added = $1;
+      $underlying_text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//;
+      my $underlying_added = $1;
       print STDERR "EAST_ASIAN.L\n" if ($line->{'DEBUG'});
-      $line->{'word'} = '' if (!defined($line->{'word'}));
+      if (!defined($line->{'word'})) {
+        $line->{'word'} = '';
+        $line->{'underlying_word'} = '';
+      }
       $line->{'word'} .= $added;
+      $line->{'underlying_word'} .= $underlying_added; 
       $result .= $line->_add_pending_word();
       delete $line->{'end_sentence'};
       $line->{'space'} = '';

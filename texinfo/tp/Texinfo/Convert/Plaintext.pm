@@ -92,6 +92,7 @@ my @out_formats = @Texinfo::Common::out_formats;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 my %default_index_commands = %Texinfo::Common::default_index_commands;
+my %letter_no_arg_commands = %Texinfo::Common::letter_no_arg_commands;
 
 foreach my $kept_command(keys (%informative_commands),
   keys (%default_index_commands),
@@ -431,18 +432,38 @@ sub _process_text($$$)
   my $context = shift;
   my $text = $command->{'text'};
 
-  $text = uc($text) if ($self->{'formatters'}->[-1]->{'upper_case'});
+  my $lower_case_text;
+  if ($self->{'formatters'}->[-1]->{'upper_case'}) {
+    $lower_case_text = $text;
+    $text = uc($text);
+  }
+  # Even if in upper case, in code style, end a sentence.
+  if ($context->{'code'}) {
+    $lower_case_text = lc($text);
+  }
   if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'} 
       and $self->{'encoding_name'} eq 'utf-8') {
-    return Texinfo::Convert::Unicode::unicode_text($text, $context->{'code'});
+    if ($self->{'formatters'}->[-1]->{'upper_case'}) {
+      $lower_case_text 
+        = Texinfo::Convert::Unicode::unicode_text($lower_case_text, $context->{'code'});
+    }
+    return (Texinfo::Convert::Unicode::unicode_text($text, $context->{'code'}),
+            $lower_case_text);
   } elsif (!$context->{'code'}) {
     $text =~ s/---/\x{1F}/g;
     $text =~ s/--/-/g;
     $text =~ s/\x{1F}/--/g;
     $text =~ s/``/"/g;
     $text =~ s/\'\'/"/g;
+    if (defined($lower_case_text)) {
+      $lower_case_text =~ s/---/\x{1F}/g;
+      $lower_case_text =~ s/--/-/g;
+      $lower_case_text =~ s/\x{1F}/--/g;
+      $lower_case_text =~ s/``/"/g;
+      $lower_case_text =~ s/\'\'/"/g;
+    }
   }
-  return $text;
+  return ($text, $lower_case_text);
 }
 
 sub new_formatter($$;$)
@@ -1052,9 +1073,9 @@ sub _convert($$)
         $result = $self->_count_added($formatter->{'container'},
                     $formatter->{'container'}->add_next($root->{'text'}));
       } else {
+        my ($text, $lower_case_text) = $self->_process_text($root, $formatter);
         $result = $self->_count_added($formatter->{'container'},
-                    $formatter->{'container'}->add_text(
-                       $self->_process_text($root, $formatter)));
+                    $formatter->{'container'}->add_text($text, $lower_case_text));
       }
       return $result;
     # the following is only possible if paragraphindent is set to asis
@@ -1163,6 +1184,11 @@ sub _convert($$)
       my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
                              {'enabled_encoding' => $encoding,
                               'sc' => $formatter->{'upper_case'}});
+      my $lower_case_text;
+      if ($formatter->{'upper_case'}) {
+        $lower_case_text = Texinfo::Convert::Text::brace_no_arg_command($root,
+                             {'enabled_encoding' => $encoding});
+      }
       if ($punctuation_no_arg_commands{$command}) {
         $result .= $self->_count_added($formatter->{'container'},
                     $formatter->{'container'}->add_next($text, undef, 1));
@@ -1172,14 +1198,21 @@ sub _convert($$)
             $formatter->{'container'}->set_space_protection(1,1))
           if ($formatter->{'w'} == 1);
         $result .= $self->_count_added($formatter->{'container'}, 
-                       $formatter->{'container'}->add_text($text)); 
+                       $formatter->{'container'}->add_text($text,
+                                                           $lower_case_text)); 
         $formatter->{'w'}--;
         $result .= $self->_count_added($formatter->{'container'},
             $formatter->{'container'}->set_space_protection(0,0))
           if ($formatter->{'w'} == 0);
       } else {
+        # This is to have @TeX{}, for example, be considered as tex
+        # as underlying text in order not to prevent end sentences.
+        if (!$letter_no_arg_commands{$command}) {
+          $lower_case_text = lc($text);
+        }
         $result .= $self->_count_added($formatter->{'container'}, 
-                       $formatter->{'container'}->add_text($text)); 
+                       $formatter->{'container'}->add_text($text,
+                                                           $lower_case_text)); 
         if ($command eq 'dots') {
           $formatter->{'container'}->inhibit_end_sentence();
         }
@@ -1194,8 +1227,14 @@ sub _convert($$)
       my $accented_text 
          = Texinfo::Convert::Text::text_accents($root, $encoding,
                                                 $formatter->{'upper_case'});
+      my $accented_text_lower_case;
+      if ($formatter->{'upper_case'}) {
+        $accented_text_lower_case
+         = Texinfo::Convert::Text::text_accents($root, $encoding);
+      }
       $result .= $self->_count_added($formatter->{'container'},
-         $formatter->{'container'}->add_text($accented_text));
+         $formatter->{'container'}->add_text($accented_text, 
+                                             $accented_text_lower_case));
       # in case the text added ends with punctuation.  
       # If the text is empty (likely because of an error) previous 
       # punctuation will be cancelled, we don't want that.
@@ -1227,7 +1266,8 @@ sub _convert($$)
         $text_after = $style_map{$command}->[1];
       }
       $result .= $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_next($text_before))
+               $formatter->{'container'}->add_next($text_before, 
+                                                   undef, undef, 1))
          if ($text_before ne '');
       if ($root->{'args'}) {
         $result .= $self->_convert($root->{'args'}->[0]);
@@ -1241,7 +1281,8 @@ sub _convert($$)
         }
       }
       $result .= $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_next($text_after))
+               $formatter->{'container'}->add_next($text_after,
+                                                   undef, undef, 1))
          if ($text_after ne '');
       if ($command eq 'w') {
         $formatter->{'w'}--;
@@ -1343,7 +1384,8 @@ sub _convert($$)
         $self->_error_outside_of_any_node($root);
       }
       $result .= $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_next("($formatted_footnote_number)"));
+           $formatter->{'container'}->add_next("($formatted_footnote_number)", 
+                                                  undef, undef, 1));
       if ($self->get_conf('footnotestyle') eq 'separate' and $self->{'node'}) {
         $result .= $self->_convert({'contents' => 
          [{'text' => ' ('},

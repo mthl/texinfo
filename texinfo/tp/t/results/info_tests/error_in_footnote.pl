@@ -659,26 +659,26 @@ File: ,  Node: Top,  Up: (dir)
 
 Float text1
 
-Text 1: Caption.  TeX. In caption *note*.  Now footnote(1)
+Text 1: Caption.  TeX.  In caption *note*.  Now footnote(1)
 
 * Menu:
 
-* Text 1: label.                         Caption.  TeX. In caption ...
+* Text 1: label.                         Caption.  TeX.  In caption ...
 
 * Menu:
 
-* Text 1: label.                         Caption.  TeX. In caption ...
+* Text 1: label.                         Caption.  TeX.  In caption ...
 
    ---------- Footnotes ----------
 
-   (1) LaTeX. and strong *Note*.
+   (1) LaTeX.  and strong *Note*.
 
 
 
 Tag Table:
 Node: Top52
 Ref: label86
-Ref: Top-Footnote-1357
+Ref: Top-Footnote-1360
 
 End Tag Table
 ';

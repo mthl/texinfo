@@ -1,9 +1,3 @@
-In Info @var{aa} leads to aa being capitalized.  Right now, if there is a
-punctuation after the @var, the rule for capitalized word apply, ie, no
-doubling of spaces.  Same with @sc.  It is certainly wrong, especially
-for @var. In TeX, there is a doubling of space for both @var (which is not 
-capitalized) and @sc.
-
 export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml

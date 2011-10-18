@@ -50,10 +50,16 @@ sub dump($)
 {
   my $self = shift;
   my $word = 'UNDEF';
-  $word = $self->{'word'} if (defined($self->{'word'}));
+  my $underlying = '';
+  if (defined($self->{'word'})) {
+    $word = $self->{'word'};
+    if ($self->{'word'} ne $self->{'underlying_word'}) {
+      $underlying = ", underlying_word: $self->{'underlying_word'},";
+    }
+  }
   my $end_sentence = 'UNDEF';
   $end_sentence = $self->{'end_sentence'} if (defined($self->{'end_sentence'}));
-  print STDERR "para ($self->{'counter'}+$self->{'word_counter'}) word: $word, space `$self->{'space'}' end_sentence: $end_sentence\n"; 
+  print STDERR "para ($self->{'counter'}+$self->{'word_counter'}) word: $word, space `$self->{'space'}'${underlying} end_sentence: $end_sentence\n"; 
 }
 
 sub _cut_line($)
@@ -139,6 +145,7 @@ sub _add_pending_word($;$)
       print STDERR "ADD_WORD[$paragraph->{'word'}]+$paragraph->{'word_counter'} ($paragraph->{'counter'})\n"
         if ($paragraph->{'DEBUG'});
       $paragraph->{'word'} = undef;
+      $paragraph->{'underlying_word'} = undef;
       $paragraph->{'word_counter'} = 0;
     }
     $paragraph->{'space'} = '';
@@ -161,32 +168,40 @@ sub end($)
   return $result;
 }
 
-sub add_next($;$$$)
+sub add_next($;$$$$)
 {
   my $paragraph = shift;
   my $word = shift;
   my $space = shift;
   my $end_sentence = shift;
+  my $transparent = shift;
   $paragraph->{'end_line_count'} = 0;
-  return $paragraph->_add_next($word, $space, $end_sentence);
+  return $paragraph->_add_next($word, undef, $space, $end_sentence, 
+                               $transparent);
 }
 
 # add a word and/or spaces and end of sentence.
-sub _add_next($;$$$)
+sub _add_next($;$$$$$)
 {
   my $paragraph = shift;
   my $word = shift;
+  my $underlying_word = shift;
   my $space = shift;
   my $end_sentence = shift;
+  my $transparent = shift;
   my $result = '';
+
+  $underlying_word = $word if (!defined($underlying_word));
 
   if (defined($word)) {
     if (!defined($paragraph->{'word'})) {
       $paragraph->{'word'} = '';
+      $paragraph->{'underlying_word'} = '';
       if ($paragraph->{'end_sentence'} 
            and $paragraph->{'end_sentence'} > 0
            and !$paragraph->{'frenchspacing'}
            and $paragraph->{'counter'} != 0 and $paragraph->{'space'}) {
+        # do not to double space if there are leading spaces in word
         if ($word !~ /^\s/) {
           $paragraph->{'space'} = '  ';
         }
@@ -195,8 +210,12 @@ sub _add_next($;$$$)
     }
     
     $paragraph->{'word'} .= $word;
+    $paragraph->{'underlying_word'} .= $underlying_word unless($transparent);
     $paragraph->{'word_counter'} += length($word);
-    print STDERR "WORD+ $word -> $paragraph->{'word'}\n" if ($paragraph->{'DEBUG'});
+    if ($paragraph->{'DEBUG'}) {
+      print STDERR "WORD+ $word -> $paragraph->{'word'}\n";
+      print STDERR "UNDERLYING_WORD+ $underlying_word -> $paragraph->{'underlying_word'}\n";
+    }
     # The $paragraph->{'counter'} != 0 is here to avoid having an
     # additional line output when the text is longer than the max.
     if ($paragraph->{'counter'} != 0 and 
@@ -263,10 +282,12 @@ my $end_sentence_character = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
 # wrap a text.
-sub add_text($$)
+sub add_text($$;$)
 {
   my $paragraph = shift;
   my $text = shift;
+  my $underlying_text = shift;
+  $underlying_text = $text if (!defined($underlying_text));
   $paragraph->{'end_line_count'} = 0;
   my $result = '';
 
@@ -278,11 +299,12 @@ sub add_text($$)
     }
     if ($text =~ s/^(\s+)//) {
       my $spaces = $1;
+      $underlying_text =~ s/^(\s+)//;
       print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'DEBUG'});
-      my $added_word = $paragraph->{'word'};
+      #my $added_word = $paragraph->{'word'};
       if ($paragraph->{'protect_spaces'}) {
-        
         $paragraph->{'word'} .= $spaces;
+        $paragraph->{'underlying_word'} .= $spaces;
         $paragraph->{'word_counter'} += length($spaces);
         #$paragraph->{'space'} .= $spaces;
         if ($paragraph->{'word'} =~ s/\n/ /g 
@@ -292,6 +314,7 @@ sub add_text($$)
           $paragraph->{'word'} =~ /(\s*)$/;
           if (length($1) < 2) {
             $paragraph->{'word'} =~ s/(\s*)$/  /;
+            $paragraph->{'underlying_word'} =~ s/(\s*)$/  /;
             my $removed = $1;
             $paragraph->{'word_counter'} += length('  ') - length($removed);
           }
@@ -332,9 +355,16 @@ sub add_text($$)
       }
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
       my $added = $1;
+      $underlying_text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//;
+      my $underlying_added = $1;
+      
       print STDERR "EAST_ASIAN\n" if ($paragraph->{'DEBUG'});
-      $paragraph->{'word'} = '' if (!defined($paragraph->{'word'}));
+      if (!defined($paragraph->{'word'})) {
+        $paragraph->{'word'} = '';
+        $paragraph->{'underlying_word'} = '';
+      }
       $paragraph->{'word'} .= $added;
+      $paragraph->{'underlying_word'} .= $underlying_added; 
       $paragraph->{'word_counter'} += 2;
       if ($paragraph->{'counter'} != 0 and
           $paragraph->{'counter'} + $paragraph->{'word_counter'} 
@@ -346,13 +376,17 @@ sub add_text($$)
       $paragraph->{'space'} = '';
     } elsif ($text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//) {
       my $added_word = $1;
-      $result .= $paragraph->_add_next($added_word);
+      $underlying_text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//;
+      my $underlying_added_word = $1;
+
+      $result .= $paragraph->_add_next($added_word, $underlying_added_word);
+
       # now check if it is considered as an end of sentence
       if (defined($paragraph->{'end_sentence'})
-          and $added_word =~ /^[$after_punctuation_characters]*$/) {
+          and $underlying_added_word =~ /^[$after_punctuation_characters]*$/) {
         # do nothing in the case of a continuation of after_punctuation_characters
-      } elsif ($paragraph->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
-           and $paragraph->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
+      } elsif ($paragraph->{'underlying_word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
+           and $paragraph->{'underlying_word'} !~ /[[:upper:]][$end_sentence_character$after_punctuation_characters]*$/) {
         if ($paragraph->{'frenchspacing'}) {
           $paragraph->{'end_sentence'} = -1;
         } else {

@@ -376,6 +376,18 @@ flushright
 A quot---ation
 @end quotation
 '],
+['punctuation_and_upper_case_commands',
+'
+@var{aaa}. @var{@~e}. @sc{@aa{}}.
+@var{AAA}. @var{@~E}. @sc{@AA{}}.
+@var{double AAA}.  @var{double @~E}. @sc{double @AA{}}.  End.
+'],
+['punctuation_and_upper_case_commands_utf8',
+'@documentencoding utf-8
+@var{aaa}. @var{@~e}. @sc{@aa{}}.
+@var{AAA}. @var{@~E}. @sc{@AA{}}.
+@var{double AAA}.  @var{double @~E}. @sc{double @AA{}}.  End.
+'],
 ['characters_and_commands_in_var',
 '@var{aaa}. @var{dlksfjf ) }. @var{(fdfdsfsd}. @var{sqdq,qdsdsq}.
 
@@ -389,10 +401,19 @@ dsf
 ds @var{rrrr , azeeaz}
 end footnote}
 '],
+['transparent_text',
+'AA@footnote{in footnote}). B (@emph{C}). D.
+'],
 ['accents_in_var_enable_encoding',
 '@documentencoding utf-8
 
 @var{AA@,c @u{r} @`e}.
+'],
+['command_brace_no_arg_punctuation',
+'@TeX{}. And @LaTeX{}. @copyright{}. @registeredsymbol{}. End.
+'],
+['code_commands_and_punctuation',
+'@code{AA}. @samp{aa}. After.
 '],
 ['sp_with_text_before_in_example',
 '

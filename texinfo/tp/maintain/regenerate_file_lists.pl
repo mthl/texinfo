@@ -37,7 +37,7 @@ while (<FILE>) {
 }
 #print join("\n", sort(keys(%new_files))) ."\n";
 
-open (INCLUDE, '>Makefile.tres') or die "Open >Makefile.treas: $!";
+open (INCLUDE, '>Makefile.tres') or die "Open >Makefile.tres: $!";
 print INCLUDE "test_results =";
 foreach my $file (sort(keys(%files))) {
   print INCLUDE " \\\n  $file";

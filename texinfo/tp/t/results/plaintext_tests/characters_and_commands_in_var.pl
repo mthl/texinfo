@@ -446,7 +446,7 @@ $result_errors{'characters_and_commands_in_var'} = [];
 
 
 
-$result_converted{'plaintext'}->{'characters_and_commands_in_var'} = 'AAA. DLKSFJF ) .  (FDFDSFSD. SQDQ,QDSDSQ.
+$result_converted{'plaintext'}->{'characters_and_commands_in_var'} = 'AAA.  DLKSFJF ) .  (FDFDSFSD.  SQDQ,QDSDSQ.
 
    SOMETHINGF VVAR.
 

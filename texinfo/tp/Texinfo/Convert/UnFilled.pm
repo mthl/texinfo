@@ -146,12 +146,13 @@ sub end($)
 }
 
 # add a word and/or spaces and end of sentence.
-sub add_next($;$$$)
+sub add_next($;$$$$)
 {
   my $line = shift;
   my $word = shift;
   my $space = shift;
   my $end_sentence = shift;
+  my $transparent = shift;
   $line->{'end_line_count'} = 0;
   my $result = '';
 
@@ -179,6 +180,8 @@ sub add_text($$)
 {
   my $line = shift;
   my $text = shift;
+  my $underlying_text = shift;
+
   $line->{'end_line_count'} = 0;
   return $line->_add_text($text);
 }
