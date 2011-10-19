@@ -910,10 +910,15 @@ our %defaults = (
                               'Contents' => '_toc',
                               'Overview' => '_ovr',
                               'Footnotes' => '_fot',
-                              'About' => '_abt'
+                              'About' => '_abt',
+                            },
+  'frame_pages_file_string' => {
+                              'Frame' => '_frame',
+                              'Toc_Frame' => '_toc_frame',
                               },
   'misc_elements_order'  => ['Footnotes', 'Contents', 'Overview', 'About'],
   'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
+  'FRAMESET_DOCTYPE'     => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">',
   'DEFAULT_RULE'         => '<hr>',
   'BIG_RULE'             => '<hr>',
   'MENU_SYMBOL'          => '&bull;',
@@ -4196,6 +4201,7 @@ my %default_formatting_references = (
      'button_icon_img' => \&_default_button_icon_img, 
      'external_href' => \&_default_external_href, 
      'contents' => \&_default_contents,
+     'frame_files' => \&_default_frame_files,
 );
 
 sub _use_entity_is_entity($$)
@@ -5141,6 +5147,31 @@ sub _prepare_special_elements($$)
                                      };
     $self->{'ids'}->{$id} = $element;
   }
+  if ($self->get_conf('FRAMES')) {
+    foreach my $type (keys(%{$self->{'frame_pages_file_string'}})) {
+      my $default_filename;
+      $default_filename = $self->{'document_name'}.
+        $self->{'frame_pages_file_string'}->{$type};
+      $default_filename .= '.'.$extension if (defined($extension));
+
+      my $element = {'type' => 'element',
+                   'extra' => {'special_element' => $type,
+                               }};
+
+      # only the filename is used
+      my ($target, $id, $filename);
+      if (defined($Texinfo::Config::special_element_target_file_name)) {
+      ($target, $id, $filename) 
+                 = &$Texinfo::Config::special_element_target_file_name(
+                                                            $self,
+                                                            $element,
+                                                            $target, $id,
+                                                            $default_filename);
+      }
+      $filename = $default_filename if (!defined($filename));
+      $self->{'frame_pages_filenames'}->{$type} = $filename;
+    }
+  }
   return $special_elements;
 }
 
@@ -5501,7 +5532,8 @@ sub _element_direction($$$$;$)
   }
   if ($self->{'global_target_elements'}->{$direction}) {
     $element_target = $self->{'global_target_elements'}->{$direction};
-  } elsif ($element->{'extra'} and $element->{'extra'}->{'directions'}
+  } elsif ($element and $element->{'extra'} 
+      and $element->{'extra'}->{'directions'}
       and $element->{'extra'}->{'directions'}->{$direction}) {
     $element_target
       = $element->{'extra'}->{'directions'}->{$direction};
@@ -5800,22 +5832,11 @@ sub _file_header_informations($$)
           $program);
 }
 
-sub _default_begin_file($$$)
+sub _get_links ($$$)
 {
   my $self = shift;
   my $filename = shift;
   my $element = shift;
-
-  
-  my $command;
-  if ($element and $self->get_conf('SPLIT')) {
-    $command = $self->element_command($element);
-  }
-
-  my ($title, $description, $encoding, $date, $css_lines, 
-          $doctype, $bodytext, $copying_comment, $after_body_open,
-          $extra_head, $program_and_version, $program_homepage,
-          $program) = $self->_file_header_informations($command);
 
   my $links = '';
   if ($self->get_conf('USE_LINKS')) {
@@ -5827,15 +5848,35 @@ sub _default_begin_file($$$)
       if ($link_href and $link_href ne '') {
         my $link_string = $self->_element_direction($element,
                                           $link, 'string');
-        my $title = '';
-        $title = " title=\"$link_string\"" if (defined($link_string));
+        my $link_title = '';
+        $link_title = " title=\"$link_string\"" if (defined($link_string));
         my $rel = '';
         $rel = " rel=\"".$self->get_conf('BUTTONS_REL')->{$link}.'"' 
            if (defined($self->get_conf('BUTTONS_REL')->{$link}));
-        $links .= "<link href=\"$link_href\"${rel}${title}>\n";
+        $links .= "<link href=\"$link_href\"${rel}${link_title}>\n";
       }
     }
   }
+  return $links;
+}
+
+sub _default_begin_file($$$)
+{
+  my $self = shift;
+  my $filename = shift;
+  my $element = shift;
+  
+  my $command;
+  if ($element and $self->get_conf('SPLIT')) {
+    $command = $self->element_command($element);
+  }
+
+  my ($title, $description, $encoding, $date, $css_lines, 
+          $doctype, $bodytext, $copying_comment, $after_body_open,
+          $extra_head, $program_and_version, $program_homepage,
+          $program) = $self->_file_header_informations($command);
+
+  my $links = $self->_get_links ($filename, $element);
 
   # FIXME there is one empty line less than in texi2html.  Seems that in 
   # texi2html the following empty lines are stripped.  Not exactly sure
@@ -5902,8 +5943,7 @@ $after_body_open
 <p>$string</p>
 </body>
 ";
-
-  
+  return $result;
 }
 
 sub _default_footnotes_text($)
@@ -6041,6 +6081,65 @@ EOT
   }
 }
 
+sub _default_frame_files($)
+{
+  my $self = shift;
+
+  my $frame_file = $self->{'frame_pages_filenames'}->{'Frame'};
+  my $frame_outfile;
+  if (defined($self->{'destination_directory'})) {
+    $frame_outfile = $self->{'destination_directory'} . $frame_file;
+  } else {
+    $frame_outfile = $frame_file;
+  }
+  
+  my $toc_frame_file = $self->{'frame_pages_filenames'}->{'Toc_Frame'};
+  my $toc_frame_outfile;
+  if (defined($self->{'destination_directory'})) {
+    $toc_frame_outfile = $self->{'destination_directory'} . $toc_frame_file;
+  } else {
+    $toc_frame_outfile = $toc_frame_file;
+  }
+  
+  my $frame_fh = $self->Texinfo::Common::open_out ($frame_outfile,
+                                             $self->{'perl_encoding'});
+  if (defined($frame_fh)) {
+    my $doctype = $self->get_conf('FRAMESET_DOCTYPE');
+    my $top_file = '';
+    if ($self->global_element('Top')) {
+      my $top_element = $self->global_element('Top');
+      $top_file = $top_element->{'filename'};
+    }
+    my $title = $self->{'title_string'};
+    print $frame_fh <<EOT;
+$doctype
+<html>
+<head><title>$title</title></head>
+<frameset cols="140,*">
+  <frame name="toc" src="$toc_frame_file">
+  <frame name="main" src="$top_file">
+</frameset>
+</html>
+EOT
+
+  }
+
+  my $toc_frame_fh = $self->Texinfo::Common::open_out ($toc_frame_outfile,
+                                            $self->{'perl_encoding'});
+  if (defined($toc_frame_fh)) {
+
+    my $header = &{$self->{'format_begin_file'}}($self, $toc_frame_file, undef);
+    print $toc_frame_fh $header;
+    print $toc_frame_fh '<h2>Content</h2>'."\n";
+    my $shortcontents = 
+      &{$self->{'format_contents'}}($self, 'shortcontents', undef);
+    $shortcontents =~ s/\bhref=/target="main" href=/g;
+    print $toc_frame_fh $shortcontents;
+    print $toc_frame_fh "</body></html>\n";
+
+  }
+}
+
 sub convert($$)
 {
   my $self = shift;
@@ -6155,12 +6254,16 @@ sub output($$)
            or $self->get_conf('OUTFILE') eq '')) {
     $self->force_conf('SPLIT', 0);
     $self->force_conf('MONOLITHIC', 1);
+    $self->force_conf('FRAMES', 0);
   }
   if ($self->get_conf('SPLIT')) {
     $self->set_conf('NODE_FILES', 1);
   }
   if ($self->get_conf('NODE_FILES') or $self->get_conf('SPLIT') eq 'node') {
     $self->set_conf('NODE_FILENAMES', 1);
+  }
+  if ($self->get_conf('FRAMES')) {
+    $self->set_conf('shortcontents', 1);
   }
   $self->set_conf('EXTERNAL_CROSSREF_SPLIT', $self->get_conf('SPLIT'));
 
@@ -6307,6 +6410,10 @@ sub output($$)
   }
 
   $self->run_stage_handlers('init');
+
+  if ($self->get_conf('FRAMES')) {
+    &{$self->{'format_frame_files'}}($self);
+  }
 
   # Now do the output
   my $fh;
