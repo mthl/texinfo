@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.22 2011-09-18 18:55:37 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.23 2011-10-19 21:13:08 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -15,7 +15,8 @@
 
 <!-- Meta-information -->
 <!-- copying | titlepage could be there too -->
-<!ENTITY % metainformation "setfilename | settitle | dircategory | hyphenation
+<!ENTITY % metainformation "setfilename | settitle | dircategory | direntry
+                            | hyphenation
                             | documentdescription 
                             | shorttitlepage">
 <!ENTITY % variable.cmds "setvalue | clearvalue">
@@ -265,6 +266,7 @@
 <!ELEMENT evenfooting (#PCDATA)>
 <!ELEMENT oddheading (#PCDATA)>
 <!ELEMENT oddfooting (#PCDATA)>
+<!ELEMENT vskip (#PCDATA)>
 <!ELEMENT smallbook       EMPTY>
 <!ELEMENT cropmarks       EMPTY>
 
@@ -327,14 +329,14 @@
 <!ATTLIST node
           name CDATA #IMPLIED>
 
-<!ELEMENT nodename (#PCDATA)>
-<!ELEMENT nodenext (#PCDATA)>
+<!ELEMENT nodename (#PCDATA | %Inline.line;)*>
+<!ELEMENT nodenext (#PCDATA | %Inline.line;)*>
 <!ATTLIST nodenext
           automatic (%onoff;) 'off'>
-<!ELEMENT nodeprev (#PCDATA)>
+<!ELEMENT nodeprev (#PCDATA | %Inline.line;)*>
 <!ATTLIST nodeprev
           automatic (%onoff;) 'off'>
-<!ELEMENT nodeup   (#PCDATA)>
+<!ELEMENT nodeup   (#PCDATA | %Inline.line;)*>
 <!ATTLIST nodeup
           automatic (%onoff;) 'off'>
 
@@ -418,6 +420,7 @@
 <!ELEMENT group        (%block; | exdent)*>
 <!ELEMENT flushleft    (%block; | exdent)*>
 <!ELEMENT flushright   (%block; | exdent)*>
+<!ELEMENT raggedright  (%block; | exdent)*>
 
 <!ELEMENT center       (#PCDATA | %Inline.line;)*>
 
@@ -444,6 +447,7 @@
 
 <!ELEMENT menu (menuentry | detailmenu | menucomment)*>
 <!ELEMENT detailmenu (menuentry | menucomment)*>
+<!ELEMENT direntry (menuentry | menucomment)*>
 <!ELEMENT menuentry (menutitle?, menunode?, menudescription?)>
 <!ELEMENT menunode (#PCDATA | %Inline.line;)*>
 <!ELEMENT menutitle (#PCDATA | %Inline.line;)*>
@@ -488,6 +492,7 @@
                      (listitem | %indexentry.cmds;)*)>
 <!ATTLIST enumerate
           first CDATA #IMPLIED>
+<!ELEMENT enumeratefirst (#PCDATA)>
 
 <!ELEMENT listitem (prepend?, (%block;)*)>
 <!ELEMENT prepend (#PCDATA | %Inline.line;)*>
