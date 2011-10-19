@@ -590,7 +590,7 @@ sub _convert($$;$)
           return '';
         }
         return "<$command></$command>\n";
-      } elsif ($type eq 'noarg') {
+      } elsif ($type eq 'noarg' or $type eq 'skipspace') {
         return "<$command></$command>";
       } elsif ($type eq 'special') {
         if ($root->{'cmdname'} eq 'clear' or $root->{'cmdname'} eq 'set') {
@@ -630,7 +630,7 @@ sub _convert($$;$)
           return "<${command}>$value</${command}>\n";
         }
       } else {
-        print STDERR "BUG: unknown misc_command style $type" if ($type !~ /^\d$/);
+        print STDERR "BUG: unknown misc_command style $type\n" if ($type !~ /^\d$/);
         my $args_attributes;
         if ($misc_command_numbered_arguments_attributes{$root->{'cmdname'}}) {
           $args_attributes = $misc_command_numbered_arguments_attributes{$root->{'cmdname'}};
