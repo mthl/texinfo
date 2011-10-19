@@ -1,3 +1,16 @@
+2011-10-19  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\var, \doabbr, \doacronym): reset \spacefactor=1000
+	so capital letters in arg don't change spacing.
+	* doc/texinfo.txi (Not Ending a Sentence): briefly mention
+	commands which change the normal sentence-spacing rules.
+
+2011-10-18  Karl Berry  <karl@gnu.org>
+
+	* util/texindex.c, util/texi2pdf,
+	info/info.c, info/infokey.c,
+	install-info/install-info.c: update copyright year.
+
 2011-10-17  Karl Berry  <karl@gnu.org>
 
 	* tp/Makefile.am: rename include to Makefile.tres.

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.391 2011-10-16 23:16:29 karl Exp $
+@c $Id: texinfo.txi,v 1.392 2011-10-19 15:56:06 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10571,14 +10571,12 @@ produces
 @iftex
 produces the following.  If you look carefully at this printed output,
 you will see a little extraneous space after the @samp{vs.}@: and
-@samp{(this?)}@: in the second line.
+@samp{(or?)}@: in the second line.
 @end iftex
 
 @quotation
 foo vs.@: bar (or?)@: baz@*
 foo vs. bar (or?) baz@*
-foo vs.@: bar@*
-foo vs. bar
 @end quotation
 
 @noindent
@@ -10589,6 +10587,15 @@ instead of as the normal character: @samp{&period; &quest; &excl;
 add the usual extra space.
 
 Do not put braces after @code{@@:} (or any non-alphabetic command).
+
+A few Texinfo commands force normal interword spacing, so that you
+don't have to insert @code{@@:} or @code{@@.} and companions (see next
+section) where you otherwise would.  These are the code-like
+highlighting commands, @code{@@var}, @code{@@abbr}, @code{@@acronym}
+(@pxref{Useful Highlighting}), and @code{@@TeX}.  For example, that
+sentence ended with @samp{@@code@{@@@@TeX@}.}; @code{@@.} was not
+needed.  Another example: in @samp{@@code@{foo. bar@}} the period is
+not considered the end of a sentence, and no extra space is inserted.
 
 
 @node Ending a Sentence
@@ -10635,6 +10642,9 @@ work well with the Emacs sentence motion commands (@pxref{Sentences,,,
 emacs, The GNU Emacs Manual}).
 
 Do not put braces after any of these commands.
+
+See the end of the previous section for a few commands which
+special-case following spacing.
 
 
 @node Multiple Spaces
@@ -21092,7 +21102,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.391 2011-10-16 23:16:29 karl Exp $
+$Id: texinfo.txi,v 1.392 2011-10-19 15:56:06 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21163,7 +21173,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.391 2011-10-16 23:16:29 karl Exp $
+@comment $Id: texinfo.txi,v 1.392 2011-10-19 15:56:06 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
