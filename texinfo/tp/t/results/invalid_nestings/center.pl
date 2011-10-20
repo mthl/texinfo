@@ -21,6 +21,9 @@ $result_trees{'center'} = {
             },
             {
               'cmdname' => 'indent',
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -2136,6 +2139,15 @@ second item
 ';
 
 $result_errors{'center'} = [
+  {
+    'error_line' => ':1: warning: @indent should not appear in @center
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@indent should not appear in @center',
+    'type' => 'warning'
+  },
   {
     'error_line' => ':3: warning: @cindex should only appear at a line beginning
 ',

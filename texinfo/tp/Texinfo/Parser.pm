@@ -407,10 +407,16 @@ foreach my $block_command (keys(%block_commands)) {
     if ($block_commands{$block_command} eq 'conditional');
 }
 
+# commands that may happen on lines where everything is
+# permitted
+my %in_full_line_commands = %in_full_text_commands;
+foreach my $not_in_full_line_commands('noindent', 'indent') {
+  delete $in_full_line_commands{$not_in_full_line_commands};
+}
+
 # commands that may happen in simple text arguments
-my %in_simple_text_commands = %in_full_text_commands;
-foreach my $not_in_simple_text_command('noindent', 'indent', 
-                                       'titlefont', 'anchor', 'footnote',
+my %in_simple_text_commands = %in_full_line_commands;
+foreach my $not_in_simple_text_command('titlefont', 'anchor', 'footnote',
                                        'xref','ref','pxref', 'inforef') {
   delete $in_simple_text_commands{$not_in_simple_text_command};
 }
@@ -443,8 +449,12 @@ foreach my $brace_command (keys (%brace_commands)) {
     $full_text_commands{$brace_command} = 1;
   }
 }
-$full_text_commands{'center'} = 1;
-$full_text_commands{'exdent'} = 1;
+
+# commands that accept almost the same than in full text, except
+# what do not make sense on a line.
+my %full_line_commands;
+$full_line_commands{'center'} = 1;
+$full_line_commands{'exdent'} = 1;
 
 # contexts on the context_stack stack where empty line don't trigger
 # paragraph
@@ -3726,9 +3736,13 @@ sub _parse_texi($;$)
                                and $current->{'type'} eq 'block_line_arg')
                            or ($current->{'type'} 
                                and $current->{'type'} eq 'misc_line_arg'
-                               and ($root_commands{$current->{'parent'}->{'cmdname'}}
-                                    or $current->{'parent'}->{'cmdname'} eq 'itemx'
-                                    or $current->{'parent'}->{'cmdname'} eq 'item'))))
+                               and ($root_commands{$current->{'parent'}->{'cmdname'}}))))
+                     or (($full_line_commands{$current->{'parent'}->{'cmdname'}}
+                          or ($current->{'type'}
+                              and $current->{'type'} eq 'misc_line_arg'
+                              and ($current->{'parent'}->{'cmdname'} eq 'itemx'
+                                   or $current->{'parent'}->{'cmdname'} eq 'item')))
+                      and !$in_full_line_commands{$command})
                      or ($full_text_commands{$current->{'parent'}->{'cmdname'}}
                       and !$in_full_text_commands{$command})) {
               $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 

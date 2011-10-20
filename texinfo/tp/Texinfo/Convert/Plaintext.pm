@@ -1766,14 +1766,16 @@ sub _convert($$)
           if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
             $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
                      'args' => [{'type' => 'brace_command_arg', 
-                                'contents' => $contents}]
+                                'contents' => $contents}],
+                     'line_nr' => $root->{'line_nr'},
             }];
           } else {
             $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
                           'type' => $command_as_argument->{'type'},
                           'extra' => $command_as_argument->{'extra'},
                      'args' => [{'type' => 'brace_command_arg', 
-                                'contents' => $contents}]
+                                'contents' => $contents}],
+                     'line_nr' => $root->{'line_nr'},
             }];
           }
         }

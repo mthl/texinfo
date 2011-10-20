@@ -34,18 +34,20 @@ sub output($$)
   my $self = shift;
   my $root = shift;
   my $elements;
-  if ($self->get_conf('USE_NODES')) {
-    $elements = Texinfo::Structuring::split_by_node($root);
-  } elsif (defined($self->get_conf('USE_NODES'))) {
-    #print STDERR "U sections\n";
-    $elements = Texinfo::Structuring::split_by_section($root);
-  }
   my $pages;
-  if ($elements and ($self->get_conf('SPLIT') 
-                     or !$self->get_conf('MONOLITHIC'))) {
-    #print STDERR "S ".$self->get_conf('SPLIT')."\n";
-    $pages = Texinfo::Structuring::split_pages($elements,
-                                               $self->get_conf('SPLIT'));
+  if ($self) {
+    if ($self->get_conf('USE_NODES')) {
+      $elements = Texinfo::Structuring::split_by_node($root);
+    } elsif (defined($self->get_conf('USE_NODES'))) {
+      #print STDERR "U sections\n";
+      $elements = Texinfo::Structuring::split_by_section($root);
+    }
+    if ($elements and ($self->get_conf('SPLIT') 
+                       or !$self->get_conf('MONOLITHIC'))) {
+      #print STDERR "S ".$self->get_conf('SPLIT')."\n";
+      $pages = Texinfo::Structuring::split_pages($elements,
+                                                 $self->get_conf('SPLIT'));
+    }
   }
   if ($pages) {
     #print STDERR "PPP $pages\n";
@@ -55,7 +57,7 @@ sub output($$)
     $root = {'type' => 'elements_root',
              'contents' => $elements };
   }
-  return $self->_print_tree($root);
+  return _print_tree($self, $root);
 }
 
 sub _print_tree($$;$$);
@@ -87,12 +89,12 @@ sub _print_tree($$;$$)
   print $result ."\n";
   if ($root->{'args'}) {
     foreach my $arg (@{$root->{'args'}}) {
-      $self->_print_tree ($arg, $level +1, 1);
+      _print_tree ($self, $arg, $level +1, 1);
     }
   }
   if ($root->{'contents'}) {
     foreach my $content (@{$root->{'contents'}}) {
-      $self->_print_tree ($content, $level+1);
+      _print_tree ($self, $content, $level+1);
     }
   }
 }

@@ -237,8 +237,7 @@ $result_trees{'in_table'} = {
                                   [
                                     {}
                                   ]
-                                ],
-                                'invalid_nesting' => 1
+                                ]
                               },
                               'line_nr' => {},
                               'parent' => {}
@@ -268,7 +267,6 @@ $result_trees{'in_table'} = {
                                     {}
                                   ]
                                 ],
-                                'invalid_nesting' => 1,
                                 'node_content' => [
                                   {}
                                 ],
@@ -298,9 +296,6 @@ $result_trees{'in_table'} = {
                               ],
                               'cmdname' => 'footnote',
                               'contents' => [],
-                              'extra' => {
-                                'invalid_nesting' => 1
-                              },
                               'line_nr' => {},
                               'parent' => {}
                             },
@@ -481,8 +476,7 @@ $result_trees{'in_table'} = {
                                     {}
                                   ],
                                   undef
-                                ],
-                                'invalid_nesting' => 1
+                                ]
                               },
                               'line_nr' => {
                                 'file_name' => '',
@@ -1602,33 +1596,6 @@ $result_errors{'in_table'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: @titlefont should not appear in @item
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@titlefont should not appear in @item',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':8: warning: @anchor should not appear in @item
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@anchor should not appear in @item',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':8: warning: @footnote should not appear in @item
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@footnote should not appear in @item',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':8: warning: @exdent should only appear at a line beginning
 ',
     'file_name' => '',
@@ -1644,15 +1611,6 @@ $result_errors{'in_table'} = [
     'line_nr' => 8,
     'macro' => '',
     'text' => '@exdent should not appear in @item',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':10: warning: @ref should not appear in @item
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => '@ref should not appear in @item',
     'type' => 'warning'
   },
   {

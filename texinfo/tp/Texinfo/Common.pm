@@ -309,7 +309,7 @@ our %misc_commands = (
   'exdent'            => 'line',
   'headitem'          => 'skipspace',
   'item'              => 'skipspace', # or line, depending on the context
-  'itemx'             => 'skipspace',
+  'itemx'             => 'skipspace', # or line, depending on the context
   'tab'               => 'skipspace', 
   # only valid in heading or footing
   'thischapter'       => 'noarg',
