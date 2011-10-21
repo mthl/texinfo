@@ -107,6 +107,12 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'BATCH', 'SILENT'
 );
 
+# documented as pod
+our @parser_options = ('EXPANDED_FORMATS', 'GETTEXT', 'INCLUDE_DIRECTORIES',
+  'ALIASES', 'CLICKSTYLE', 'DOCUMENTLANGUAGE', 'EXPLAINED_COMMANDS',
+  'ENCODING_NAME', 'PERL_ENCODING', 'INDICES', 'KBDINPUTSTYLE', 'LABELS',
+  'MACROS', 'NOVALIDATE', 'SECTIONS_LEVEL', 'VALUES');
+
 # FIXME TOP_HEADING_AT_BEGINNING seems to be a no-op
 # FIXME USE_SECTIONS is now a no-op, there are only two possibilities, 
 # USE_NODES set or not.
@@ -154,7 +160,7 @@ my @variable_settables = (
 
 my %valid_options;
 foreach my $var (@document_settable_at_commands, @document_global_at_commands,
-         @command_line_settables, @variable_settables) {
+         @command_line_settables, @variable_settables, @parser_options) {
   $valid_options{$var} = 1;
 }
 

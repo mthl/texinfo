@@ -23,13 +23,13 @@
 #
 #-##############################################################################
 # To customize the command and the options, you could set
-# $Texi2HTML::TeX4HT::STYLE_MATH to latex/tex
-# $Texi2HTML::TeX4HT::STYLE_TEX to latex/texi
+# $Texinfo::TeX4HT::STYLE_MATH to latex/tex
+# $Texinfo::TeX4HT::STYLE_TEX to latex/texi
 # and/or change
-# $Texi2HTML::TeX4HT::tex4ht_command_math 
-#    and $Texi2HTML::TeX4HT::tex4ht_options_math
-# $Texi2HTML::TeX4HT::tex4ht_command_tex 
-#    and $Texi2HTML::TeX4HT::tex4ht_options_tex
+# $Texinfo::TeX4HT::tex4ht_command_math 
+#    and $Texinfo::TeX4HT::tex4ht_options_math
+# $Texinfo::TeX4HT::tex4ht_command_tex 
+#    and $Texinfo::TeX4HT::tex4ht_options_tex
 
 use strict;
 

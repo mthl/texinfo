@@ -670,7 +670,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
     },
  'no-warn' => sub { set_from_cmdline('NO_WARN', $_[1]); },
  # FIXME pass to parser? What could it mean in parser?
- 'verbose|v' => sub {set_from_cmdline('VERBOSE', $_[1]); 
+ 'verbose|v!' => sub {set_from_cmdline('VERBOSE', $_[1]); 
                      push @texi2dvi_args, '--verbose'; },
  'document-language=s' => sub {
                       set_from_cmdline('documentlanguage', $_[1]); 
@@ -859,6 +859,11 @@ foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
                                     'GLOBAL_COMMANDS') {
   $parser_default_options->{$parser_settable_option} = get_conf($parser_settable_option) 
     if (defined(get_conf($parser_settable_option)));
+}
+
+foreach my $parser_option (@Texinfo::Common::parser_options) {
+  $parser_default_options->{lc($parser_option)} = get_conf($parser_option)
+    if (defined(get_conf($parser_option)));
 }
 
 

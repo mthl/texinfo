@@ -5000,7 +5000,7 @@ An array reference of the output formats for which C<@ifI<FORMAT>>
 conditional blocks should be expanded.  Default is empty.
 
 The raw block formats (within C<@html> blocks, for example) are 
-alwyas kept.
+always kept.
 
 =item gettext
 
@@ -5011,7 +5011,7 @@ function returns the error message as is.
 =item GLOBAL_COMMANDS
 
 The associated value is a reference on an array.  All the commands in the
-array are collected durin parsing.  They are afterwards available 
+array are collected during parsing.  They are afterwards available 
 through L</global_informations>.
 
 =item include_directories

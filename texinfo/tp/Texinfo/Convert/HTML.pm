@@ -586,6 +586,18 @@ sub default_formatting_function($$)
   return $self->{'default_formatting_functions'}->{$format};
 }
 
+sub get_value($$)
+{
+  my $self = shift;
+  my $value = shift;
+  if (defined($self->{'parser'}) 
+      and exists ($self->{'parser'}->{'values'}->{$value})) {
+    return $self->{'parser'}->{'values'}->{$value};
+  } else {
+    return undef;
+  }
+}
+
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
 my %BUTTONS_REL =
 (
