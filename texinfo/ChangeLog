@@ -1,3 +1,10 @@
+2011-10-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texi2dvi,
+	* tp/texi2any.pl: help message changes to help help2man.
+	* man: new subdirectory.
+	* doc/Makefile.am, doc/*.5, info/ginfo.h2m: move man files.
+
 2011-10-19  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\var, \doabbr, \doacronym): reset \spacefactor=1000

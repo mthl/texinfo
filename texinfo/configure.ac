@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.105 2011-10-13 17:41:09 karl Exp $
+# $Id: configure.ac,v 1.106 2011-10-21 18:42:34 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -312,6 +312,7 @@ AC_CONFIG_FILES([\
   install-info/Makefile
   install-info/tests/Makefile
   lib/Makefile
+  man/Makefile
   po/Makefile.in
   po_document/Makefile.in
   util/Makefile

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.44 2011-10-13 00:06:51 pertusus Exp $
+# $Id: Makefile.am,v 1.45 2011-10-21 18:42:34 karl Exp $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -15,9 +15,6 @@
 # Put texinfo.txi first because that's the most important.
 info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
 DISTCLEANFILES = texinfo texinfo-* info*.info*
-
-man_MANS = info.1 infokey.1 install-info.1 makeinfo.1 texindex.1  \
-           info.5 texinfo.5
 
 # Use the programs built in our distribution, taking account of possible
 # cross-compiling.
@@ -66,77 +63,6 @@ install-tex:
 	$(INSTALL_DATA) $(srcdir)/epsf.tex $(DESTDIR)$(texmf_dvips)/epsf.tex
 	for f in $(TXI_XLATE); do \
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done
-
-# 
-# Make man pages with help2man.
-# They depend on the --help strings and the version number.
-common_mandeps = $(top_srcdir)/configure.ac
-
-# Set up the variables:
-man_rule_0 = \
-	program=`expr '/$@' : '.*/\(.*\)\.1'` && \
-	case $$program in makeinfo) dir=tp;; info*) dir=info;; \
-	        *install-info) dir=install-info;; *) dir=util;; esac && \
-	dir="$(top_builddir)/$(native_tools)/$$dir" && \
-	case $$program in info|install-info) program=g$$program;; \
-	                  makeinfo) PERL5LIB="$(top_srcdir)/tp/:$(top_srcdir)/tp/maintain/lib/libintl-perl/lib:$(top_srcdir)/tp/maintain/lib/Unicode-EastAsianWidth/lib:$(top_srcdir)/tp/maintain/lib/Text-Unidecode/lib:"; export PERL5LIB;; \
-		esac
-
-# Update the manpage for a binary program; set up the variables,
-# make sure the binary is up-to-date and then generate the man page.
-man_rule_bin = echo "Updating man page $@" && \
-	$(man_rule_0) && \
-	echo cd "$$dir" '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT) && \
-	    (cd "$$dir"  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT)) && \
-	echo $(HELP2MAN) --name=\""$$name"\" -I "$$dir/$$program.h2m" "$$dir/$$program" -o '$@' && \
-	     $(HELP2MAN) --name="$$name"     -I "$$dir/$$program.h2m" "$$dir/$$program" -o '$@'
-
-# for Info, we have an additional help2man file since the standard
-# SEE ALSO text from help2man does not fit.
-$(srcdir)/info.1: $(top_srcdir)/info/info.c $(top_srcdir)/info/ginfo.h2m \
-                  $(common_mandeps)
-	@name="read Info documents" && $(man_rule_bin)
-
-$(srcdir)/infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
-	@name="compile customizations for Info" && $(man_rule_bin)
-
-$(srcdir)/install-info.1: $(top_srcdir)/install-info/install-info.c \
-                          $(common_mandeps)
-	@name="update info/dir entries" && $(man_rule_bin)
-
-# Here we need some postprocessing to avoid man misformatting.
-$(srcdir)/makeinfo.1: $(top_srcdir)/tp/texi2any.pl $(common_mandeps)
-	@name="translate Texinfo documents" && $(man_rule_bin)
-	mv $@ $@.tmp
-	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
-	rm $@.tmp
-
-$(srcdir)/texindex.1: $(util_srcdir)/texindex.c $(common_mandeps)
-	@name="sort Texinfo index files" && $(man_rule_bin)
-
-
-# 
-# texi2dvi in all its forms.
-
-man_MANS += texi2dvi.1 texi2pdf.1 pdftexi2dvi.1
-util_srcdir = $(top_srcdir)/util
-
-# Do not depend on the current user's settings.
-# We need to include util_srcdir in PATH so texi2pdf can find texi2dvi.
-change_envvars = unset TEXI2DVI_BUILD_MODE; unset TEXI2DVI_BUILD_DIRECTORY; \
-  PATH="$(util_srcdir):$${PATH}"; export PATH
-
-common_texi2dvi_deps = $(common_mandeps) \
-                       $(util_srcdir)/texi2dvi $(util_srcdir)/texi2pdf
-
-$(srcdir)/texi2dvi.1: $(common_texi2dvi_deps)
-	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to DVI" $(util_srcdir)/texi2dvi >$@
-
-$(srcdir)/texi2pdf.1: $(common_texi2dvi_deps)
-	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/texi2pdf >$@
-
-$(srcdir)/pdftexi2dvi.1:  $(common_texi2dvi_deps)
-	$(change_envvars); $(HELP2MAN) --name="convert Texinfo documents to PDF" $(util_srcdir)/pdftexi2dvi >$@
 
 # Do not create info files for distribution.
 dist-info:

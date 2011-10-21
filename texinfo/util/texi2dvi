@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.166 2011-08-27 15:44:40 karl Exp $
+# $Id: texi2dvi,v 1.167 2011-10-21 18:42:37 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.166 $'
+rcs_revision='$Revision: 1.167 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -298,8 +298,8 @@ usage ()
   # where % denotes the eol character.
   cat <<EOF
 Usage: $program [OPTION]... FILE...
-       texi2pdf [OPTION]... FILE...
-       pdftexi2dvi [OPTION]... FILE...
+  or:  texi2pdf [OPTION]... FILE...
+  or:  pdftexi2dvi [OPTION]... FILE...
 
 Run each Texinfo or (La)TeX FILE through TeX in turn until all
 cross-references are resolved, building all indices.  The directory
@@ -388,7 +388,7 @@ Using the \`tidy' mode brings several advantages:
 
 On the other hand, because \`tidy' compilation takes place in another
 directory, occasionally TeX won't be able to find some files (e.g., when
-using \\graphicspath): in that case use -I to specify the additional
+using \\graphicspath): in that case, use -I to specify the additional
 directories to consider.
 
 The values of the BIBTEX, DVIPDF, DVIPS, HEVEA, LATEX, MAKEINDEX,

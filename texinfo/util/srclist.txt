@@ -36,6 +36,6 @@ $GNULIBSRC/build-aux/install-sh		build-aux
 $GNULIBSRC/build-aux/mdate-sh		build-aux
 $GNULIBSRC/build-aux/missing		build-aux
 #
-$GNULIBSRC/doc/COPYING		.
-$GNULIBSRC/doc/INSTALL		./INSTALL.generic
-$GNULIBSRC/doc/fdl.texi		doc
+$GNULIBSRC/doc/COPYINGv3		./COPYING
+$GNULIBSRC/doc/INSTALL			./INSTALL.generic
+$GNULIBSRC/doc/fdl.texi			doc

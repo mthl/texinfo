@@ -481,15 +481,16 @@ sub _get_converter_default($)
 sub makeinfo_help()
 {
   my $makeinfo_help =
-    sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"), $real_command_name)
+    __("Usage: makeinfo [OPTION]... TEXINFO-FILE...\n")
+  . __("  or:  texi2any [OPTION]... TEXINFO-FILE...\n")
 ."\n".
 __("Translate Texinfo source documentation to various other formats, by default
 Info files suitable for reading online with Emacs or standalone GNU Info.\n")
 ."\n";
   $makeinfo_help .= sprintf(__("General options:
-      --error-limit=NUM       quit after NUM errors (default %d).
       --document-language=STR locale to use in translating Texinfo keywords
                                 for the output document (default C).
+      --error-limit=NUM       quit after NUM errors (default %d).
       --force                 preserve output even if errors.
       --help                  display this help and exit.
       --no-validate           suppress node cross-reference validation.
@@ -596,7 +597,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
   makeinfo foo.texi                      write Info to foo's \@setfilename
   makeinfo --html foo.texi               write HTML to \@setfilename
   makeinfo --xml foo.texi                write Texinfo XML to \@setfilename
-  makeinfo --docbook foo.texi            write DocBook XML to \@setfilename
+  makeinfo --docbook foo.texi            write Docbook XML to \@setfilename
   makeinfo --no-headers foo.texi         write plain text to standard output
 
   makeinfo --html --no-headers foo.texi  write html without node lines, menus
