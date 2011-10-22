@@ -1,3 +1,7 @@
+2011-10-22  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi: add some required punctuation commands.
+
 2011-10-21  Karl Berry  <karl@gnu.org>
 
 	* doc/texi2dvi,

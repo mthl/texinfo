@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.392 2011-10-19 15:56:06 karl Exp $
+@c $Id: texinfo.txi,v 1.393 2011-10-22 17:50:33 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -4969,7 +4969,7 @@ beginning of Section 2.1, like this:
 @end group
 @end example
 
-Write the node for Sect. 2.1 like this:
+Write the node for Sect.@: 2.1 like this:
 
 @example
 @group
@@ -7426,7 +7426,7 @@ to output the @code{<@dots{}>} format if you wish.)@refill
 @findex env
 
 Use the @code{@@env} command to indicate environment variables, as used
-by many operating systems, including GNU.  Do not use it for
+by many operating systems, including GNU@.  Do not use it for
 metasyntactic variables; use @code{@@var} instead (see the previous
 section).
 
@@ -16491,7 +16491,7 @@ split, @option{--node-files} enables the creation of the redirection
 files, in addition to the monolithic main output file.
 @option{--no-node-files} suppresses the creation of redirection files
 in any case.  This option has no effect with any output format other
-than HTML.  @xref{Generating HTML}.
+than HTML@.  @xref{Generating HTML}.
 
 @item --output=@var{file}
 @itemx -o @var{file}
@@ -16848,14 +16848,14 @@ If set, the image files are computed to be relative from the document
 directory to the source manual directory, and then to the image.
 
 @item COMPLEX_FORMAT_IN_TABLE
-For HTML.  If set, use tables for indentation of complex formats.
+For HTML@.  If set, use tables for indentation of complex formats.
 
 @item CSS_LINES
 CSS output, automatically determined in the default case
 (@pxref{HTML CSS}).
 
 @item DATE_IN_HEADER
-For HTML.  Put the document generation date in the header.
+For HTML@.  Put the document generation date in the header.
 
 @item DEBUG
 The integer value specifies what kinds of debugging output are
@@ -16863,7 +16863,7 @@ generated.  It is a bitmask.  Setting it to 255 ensures having all
 available debugging output.
 
 @item DEF_TABLE
-For HTML.  If this is set a @code{<table>} construction for
+For HTML@.  If this is set a @code{<table>} construction for
 @code{@@deffn} and similar @@-commands is used (looking more like the
 @TeX{} output), instead of definition lists.
 
@@ -16906,24 +16906,24 @@ Xref Configuration}.
 The extension added to the output file name.
 
 @item EXTERNAL_DIR
-For HTML.  Base directory for external manuals.  It is better to use
+For HTML@.  Base directory for external manuals.  It is better to use
 the general external cross-reference mechanism (@pxref{HTML Xref
 Configuration}) and avoid this variable.
 
 @item FRAMES
-For HTML. If set, a file describing the frame layout is generated,
+For HTML@.  If set, a file describing the frame layout is generated,
 together with a file with the short table of contents.
 
 @item FRAMESET_DOCTYPE
-For HTML.  Same as DOCTYPE, but for the file containing the frame
+For HTML@.  Same as DOCTYPE, but for the file containing the frame
 description.
 
 @item HEADER_IN_TABLE
-For HTML.  Use simple header formatting, rather than tables with node
+For HTML@.  Use simple header formatting, rather than tables with node
 names.
 
 @item ICONS
-For HTML.  Use icons for the navigation panel.
+For HTML@.  Use icons for the navigation panel.
 
 @item IDX_SUMMARY
 If set, for each @code{@@printindex} a file named
@@ -16950,7 +16950,7 @@ If set, output the contents where the @code{@@contents} and similar
 @code{@@set*contentsaftertitlepage} is set.
 
 @item INLINE_CSS_STYLE
-For HTML.  Put CSS directly in HTML elements rather than at the
+For HTML@.  Put CSS directly in HTML elements rather than at the
 beginning of the output.
 
 @item INLINE_INSERTCOPYING
@@ -16959,7 +16959,7 @@ content (@pxref{copying,, @code{@@copying}}) as if
 @code{@@insertcopying} were a user-defined macro.
 
 @c @item L2H
-@c For HTML.  If set, @command{latex2html} is used to convert @code{@@math}
+@c For HTML@.  If set, @command{latex2html} is used to convert @code{@@math}
 @c and @code{@@tex} sections.  Best used with @option{--iftex}.
 @c 
 @c @item L2H_CLEAN
@@ -16991,11 +16991,11 @@ content (@pxref{copying,, @code{@@copying}}) as if
 @c fail (because of @command{dvips}).
 
 @item MONOLITHIC
-For HTML.  Output only one file including the table of contents.  This
+For HTML@.  Output only one file including the table of contents.  This
 only makes sense when the output is not split.  It is set by default.
 
 @item NO_CSS
-For HTML.  Do not use CSS (@pxref{HTML CSS}).
+For HTML@.  Do not use CSS (@pxref{HTML CSS}).
 
 @item NODE_FILE_EXTENSION
 Extension for node files if @code{NODE_FILENAMES} is set.
@@ -17030,7 +17030,7 @@ other configuration variables or command line options, such as split output
 and @code{NODE_FILENAMES}.
 
 @item PROGRAM_NAME_IN_FOOTER
-For HTML.  If set, output the program name and miscellanous related
+For HTML@.  If set, output the program name and miscellanous related
 information in the page footers.
 
 @item RENAMED_NODES_FILE
@@ -17042,7 +17042,7 @@ Link Preservation}.
 If set, do redirection files for renamed nodes.  Set for HTML by default.
 
 @item SHORT_REF
-For HTML.  If this is set, internal cross references are given without
+For HTML@.  If this is set, internal cross references are given without
 the sectioning word, even if the target of the reference is a section.
 
 @item SHORTEXTN
@@ -17054,14 +17054,14 @@ If set, the Texinfo menus are shown.  By default, it is only unset
 when generating Docbook or if @option{--no-headers} is specified.
 
 @item SHOW_TITLE
-For HTML.  If set, output the title at the beginning of the document.
+For HTML@.  If set, output the title at the beginning of the document.
 
 @item SIMPLE_MENU
 If set, use a simple preformatted style for the menu, instead of
 breaking down the different parts of the menu.  @xref{Menu Parts}.
 
 @c @item SPLIT_INDEX
-@c For HTML.  If set, the output is split, and the output from
+@c For HTML@.  If set, the output is split, and the output from
 @c @code{@@printindex} happens in a sectioning element at the level of
 @c splitting, then split index pages at the next letter after they have
 @c more than that many entries.  If set to 0, no index splitting.
@@ -17080,7 +17080,7 @@ and @code{INLINE_CONTENTS} is not set.  Default is
 @file{@var{docname}_toc.html}.
 
 @item TOC_LINKS
-For HTML.  If set, links from headings to toc entries are created.
+For HTML@.  If set, links from headings to toc entries are created.
 
 @item TOP_FILE
 This file name may be used for the top-level file.  The extension is
@@ -17098,17 +17098,17 @@ File used for the Top node in cross references.
 
 @item USE_ACCESSKEY
 @cindex @code{accesskey}, configuration variable for
-For HTML.  Use @code{accesskey} in cross references.
+For HTML@.  Use @code{accesskey} in cross references.
 
 @item USE_ISO
-For HTML.  Use entities for doubled single-quote characters
+For HTML@.  Use entities for doubled single-quote characters
 (@pxref{Inserting Quotation Marks}), and @samp{---} and @samp{--}
 (@pxref{Conventions, General Syntactic Conventions}).
 
 @item USE_LINKS
 @cindex @code{<link>} HTML tag, in @code{<head>}
 @cindex @code{<head>} HTML tag, and @code{<link>}
-For HTML.  Generate @code{<link>} elements in the HTML @code{<head>} output.
+For HTML@.  Generate @code{<link>} elements in the HTML @code{<head>} output.
 
 @item USE_NODES
 Preferentially use nodes to decide where elements are separated.
@@ -17127,7 +17127,7 @@ characters when there is no named entity.
 If set, try Up sections to complete node directions.
 
 @item USE_REL_REV
-For HTML.  Use @code{rel} in cross references.
+For HTML@.  Use @code{rel} in cross references.
 
 @item NO_USE_SETFILENAME
 If set, do not use @code{@@setfilename} to set the document name,
@@ -17148,7 +17148,7 @@ If set to false, do not use the @code{Text::Unidecode} Perl module to
 transliterate more characters.
 
 @item VERTICAL_HEAD_NAVIGATION
-For HTML.  If set, a vertical navigation panel is used.
+For HTML@.  If set, a vertical navigation panel is used.
 
 @c @item WORDS_IN_PAGE
 @c For HTML, with output split at nodes.  Specifies the approximate
@@ -19894,7 +19894,7 @@ ignore}.  @xref{Comments, , Comments and Ignored Text}.
 @item @@image@{@var{filename}, [@var{width}], [@var{height}], [@var{alt}], [@var{ext}]@}
 Include graphics image in external @var{filename} scaled to the given
 @var{width} and/or @var{height}, using @var{alt} text and looking for
-@samp{@var{filename}.@var{ext}} in HTML.  @xref{Images}.
+@samp{@var{filename}.@var{ext}} in HTML@.  @xref{Images}.
 
 @item @@include @var{filename}
 Read the contents of Texinfo source file @var{filename}.  @xref{Include Files}.
@@ -21102,7 +21102,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.392 2011-10-19 15:56:06 karl Exp $
+$Id: texinfo.txi,v 1.393 2011-10-22 17:50:33 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21173,7 +21173,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.392 2011-10-19 15:56:06 karl Exp $
+@comment $Id: texinfo.txi,v 1.393 2011-10-22 17:50:33 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -22185,7 +22185,7 @@ M-x Info-validate
 
 @noindent
 Note that the @code{Info-validate} command requires an upper case
-`I'.  You may also need to create a tag table before running
+`I'@.  You may also need to create a tag table before running
 @code{Info-validate}.  @xref{Tagifying}.
 
 If your file is valid, you will receive a message that says ``File appears
