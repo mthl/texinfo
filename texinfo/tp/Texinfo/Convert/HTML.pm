@@ -120,10 +120,15 @@ sub in_preformatted($)
   }
 }
 
+# 0 do not necessarily mean the same than undef, it may mean lower_casing
 sub in_upper_case($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'};
+  if ($self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'}) {
+    return $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'};
+  } else {
+    return undef;
+  }
 }
 
 sub in_space_protected($)
