@@ -1182,15 +1182,9 @@ sub _convert($$)
       if ($self->get_conf('ENABLE_ENCODING')) {
         $encoding = $self->{'encoding_name'};
       }
-      # it is important that sc is either set or undef, as if 0 it means
-      # lower casing
-      my $sc;
-      if ($formatter->{'upper_case'}) {
-        $sc = 1;
-      }
       my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
                              {'enabled_encoding' => $encoding,
-                              'sc' => $sc});
+                              'sc' => $formatter->{'upper_case'}});
       my $lower_case_text;
       # always double spacig, so set underlying text lower case.
       if ($formatter->{'var'} or $formatter->{'code'}) {
@@ -1245,7 +1239,7 @@ sub _convert($$)
       my $accented_text_lower_case;
       if ($formatter->{'var'} or $formatter->{'code'}) {
         $accented_text_lower_case
-         = Texinfo::Convert::Text::text_accents($root, $encoding, 0);
+         = Texinfo::Convert::Text::text_accents($root, $encoding, -1);
       } elsif ($formatter->{'upper_case'}) {
         $accented_text_lower_case
          = Texinfo::Convert::Text::text_accents($root, $encoding);

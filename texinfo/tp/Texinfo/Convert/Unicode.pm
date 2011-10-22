@@ -1262,7 +1262,7 @@ sub unicode_accents ($$$;$)
   my $result = shift;
   my $stack = shift;
   my $format_accent = shift;
-  my $in_upper_case = shift;
+  my $set_case = shift;
 
   while (@$stack) {
     my $formatted_result = unicode_accent($result, $stack->[-1]);
@@ -1271,14 +1271,16 @@ sub unicode_accents ($$$;$)
     $result = $formatted_result;
     pop @$stack;
   }
-  if ($in_upper_case) {
-    $result = uc ($result);
-  } elsif (defined($in_upper_case)) {
-    $result = lc ($result);
+  if ($set_case) {
+    if ($set_case > 0) {
+      $result = uc ($result);
+    } else {
+      $result = lc ($result);
+    }
   }
   while (@$stack) {
     my $accent_command = pop @$stack;
-    $result = &$format_accent($result, $accent_command, $in_upper_case);
+    $result = &$format_accent($result, $accent_command, $set_case);
   }
   return $result;
 }
@@ -1289,7 +1291,7 @@ sub eight_bit_accents($$$$;$)
   my $stack = shift;
   my $encoding = shift;
   my $convert_accent = shift;
-  my $in_upper_case = shift;
+  my $set_case = shift;
 
   my $result = $unicode_formatted;
 
@@ -1310,8 +1312,8 @@ sub eight_bit_accents($$$$;$)
     if (defined($unicode_formatted)) {
       $unicode_formatted 
          = unicode_accent($unicode_formatted, $stack->[-1]);
-      if (defined($unicode_formatted) and defined($in_upper_case)) {
-        if ($in_upper_case) {
+      if (defined($unicode_formatted) and $set_case) {
+        if ($set_case > 0) {
           $unicode_formatted = uc($unicode_formatted);
         } else {
           $unicode_formatted = lc($unicode_formatted);
@@ -1394,7 +1396,7 @@ sub eight_bit_accents($$$$;$)
   while (@results_stack) {
     $result = &$convert_accent($result,
                                $results_stack[0]->[1],
-                               $in_upper_case);
+                               $set_case);
     shift @results_stack;
   }
 
@@ -1409,14 +1411,14 @@ sub encoded_accents ($$$$;$)
   my $stack = shift;
   my $encoding = shift;
   my $format_accent = shift;
-  my $in_upper_case = shift;
+  my $set_case = shift;
 
   if ($encoding) {
     if ($encoding eq 'utf-8') {
-      return unicode_accents($text, $stack, $format_accent, $in_upper_case);
+      return unicode_accents($text, $stack, $format_accent, $set_case);
     } elsif ($Texinfo::Encoding::eight_bit_encoding_aliases{$encoding}) {
       return eight_bit_accents($text, $stack, $encoding, $format_accent, 
-                               $in_upper_case);
+                               $set_case);
     }
   }
   return undef;
@@ -1504,7 +1506,7 @@ should be a Texinfo tree element corresponding to an accent command taking
 an argument.  The function returns the unicode representation of the accented
 character.
 
-=item $result = encoded_accents ($text, $stack, $encoding, $format_accent, $in_upper_case)
+=item $result = encoded_accents ($text, $stack, $encoding, $format_accent, $set_case)
 
 I<$text> is the text appearing within nested accent commands.  I<$stack> is
 an array reference holding the nested accents texinfo element trees.  For
@@ -1515,8 +1517,8 @@ I<$encoding> not set the I<$result> is set to undef.  I<$format_accent>
 is a function reference that is used to format the accent commands if 
 there is no encoded character available for the encoding I<$encoding>
 at some point of the conversion of the I<$stack>.  Last, if 
-I<$in_upper_case> is set, the result is upper-cased, while it is defined
-and flase, the result is lower-cased.
+I<$set_case> is positive, the result is upper-cased, while if it is negative, 
+the result is lower-cased.
 
 =item $result = unicode_text ($text, $in_code)
 

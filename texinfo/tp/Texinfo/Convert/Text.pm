@@ -182,10 +182,10 @@ sub ascii_accents ($$;$)
 {
   my $result = shift;
   my $stack = shift;
-  my $in_upper_case = shift;
+  my $set_case = shift;
 
-  if (defined($in_upper_case) and $result =~ /^\w$/) {
-    if ($in_upper_case) {
+  if ($set_case and $result =~ /^\w$/) {
+    if ($set_case > 0) {
       $result = uc($result);
     } else {
       $result = lc($result);
@@ -202,22 +202,22 @@ sub text_accents($;$$)
 {
   my $accent = shift;
   my $encoding = shift;
-  my $in_upper_case = shift;
+  my $set_case = shift;
   
   my ($contents, $stack)
       = Texinfo::Common::find_innermost_accent_contents($accent);
 
   my $options = {};
   $options->{'enabled_encoding'} = $encoding if (defined($encoding));
-  $options->{'sc'} = $in_upper_case if (defined($in_upper_case));
+  $options->{'sc'} = $set_case if (defined($set_case));
   my $text = convert({'contents' => $contents}, $options);
 
   my $result = Texinfo::Convert::Unicode::encoded_accents($text, $stack,
-                                  $encoding, \&ascii_accent, $in_upper_case);
+                                  $encoding, \&ascii_accent, $set_case);
   if (defined($result)) {
     return $result;
   } else {
-    return ascii_accents($text, $stack, $in_upper_case);
+    return ascii_accents($text, $stack, $set_case);
   }
 }
 
@@ -606,15 +606,15 @@ should be a Texinfo tree element corresponding to an accent command taking
 an argument.  The function returns a transliteration of the accented
 character.
 
-=item $accents_text = text_accents($accents, $encoding, $in_upper_case)
+=item $accents_text = text_accents($accents, $encoding, $set_case)
 
 I<$accents> is an accent command that may contain other nested accent 
 commands.  The function will format the whole stack of nested accent 
 commands and the innermost text.  If I<$encoding> is set, the formatted
 text is converted to this encoding as much as possible instead of being
-converted as simple ascii.  If I<$in_upper_case> is set, the result
-is meant to be upper-cased, if it is defined and false, the result is
-meant to be lower-cased.
+converted as simple ascii.  If I<$set_case> is positive, the result
+is meant to be upper-cased, if it is negative, the result is to be 
+lower-cased.
 
 =back
 
