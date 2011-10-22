@@ -127,6 +127,17 @@ in detaildescription
 @end menu
 ' ,{'SIMPLE_MENU' => 1}
 ],
+['character_number_leading_toc_stoc',
+'@top top
+@chapter 0
+@unnumbered _
+@section ?
+
+@contents
+
+@shortcontents
+
+']
 );
 
 my @test_cases_text = (

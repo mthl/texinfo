@@ -4667,8 +4667,11 @@ sub _new_sectioning_command_target($$)
     # $target_base_contents = $target_base;
     #}
     if ($id ne '') {
-      $target_contents = 'toc-'.$id;
+      my $id_base_contents = $id;
+      $id_base_contents =~ s/^g_t//;
+      $target_contents = 'toc-'.$id_base_contents;
       my $target_base_contents = $target_base;
+      $target_base_contents =~ s/^g_t//;
       my $toc_nr = $nr -1;
       while ($self->{'ids'}->{$target_contents}) {
         $target_contents = 'toc-'.$target_base_contents.'-'.$toc_nr;
@@ -4687,8 +4690,9 @@ sub _new_sectioning_command_target($$)
       #} else {
       #  $target_base_shortcontents = $target_base;
       #}
-      $target_shortcontents = 'stoc-'.$id;
+      $target_shortcontents = 'stoc-'.$id_base_contents;
       my $target_base_shortcontents = $target_base;
+      $target_base_shortcontents =~ s/^g_t//;
       my $stoc_nr = $nr -1;
       while ($self->{'ids'}->{$target_shortcontents}) {
         $target_shortcontents = 'stoc-'.$target_base_shortcontents
