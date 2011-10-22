@@ -1,3 +1,7 @@
+2011-10-22  Karl Berry  <karl@gnu.org>
+
+	* man/Makefile.am (man_rule_0): only ginfo, not ginfokey.
+
 2011-10-22  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi: add some required punctuation commands.

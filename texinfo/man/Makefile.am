@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.1 2011-10-21 18:42:35 karl Exp $
+# $Id: Makefile.am,v 1.2 2011-10-22 23:16:55 karl Exp $
 # Makefile.am for texinfo/man.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -38,7 +38,7 @@ man_rule_0 = \
   program=`expr '/$@' : '.*/\(.*\)\.1'` \
   && case $$program in \
          makeinfo) dir=tp; PERL5LIB=$(mi_perl5lib); export PERL5LIB;; \
-            info*) dir=info; program=g$$program;; \
+            info*) dir=info; test $$program != info || program=g$$program;; \
     *install-info) dir=install-info; program=g$$program;; \
                 *) dir=util;; esac \
   && dir="$(top_builddir)/$(native_tools)/$$dir" \
