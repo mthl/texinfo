@@ -132,7 +132,6 @@ sub singular_banner
     src="${T2H_SING_base_images}singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 EOT
-#  print $fh $result if (defined($fh));
   return $result;
 }
 
@@ -164,10 +163,9 @@ set_from_init_file('ICONS', 1);
 my %ACTIVE_ICONS;
 my %PASSIVE_ICONS;
 
-if ($T2H_BLUE_BUTTONS)
-{
+if ($T2H_BLUE_BUTTONS) {
   
-%ACTIVE_ICONS =
+  %ACTIVE_ICONS =
   (
    'Top',      'blue_top.png',
    'Contents', 'blue_dir.png',
@@ -184,7 +182,7 @@ if ($T2H_BLUE_BUTTONS)
    ' ',        ''
   );
 
-%PASSIVE_ICONS =
+  %PASSIVE_ICONS =
   (
    'Top',      'blue_top.png',
    'Contents', 'blue_dir.png',
@@ -199,10 +197,10 @@ if ($T2H_BLUE_BUTTONS)
    'FastForward', 'blue_nnext.png',
    'About' ,    'blue_help.png',
   );
-}
-else
-{
-%ACTIVE_ICONS =
+
+} else {
+
+  %ACTIVE_ICONS =
   (
    'Top',      'a_top.png',
    'Contents', 'a_tableofcon.png',
@@ -219,7 +217,7 @@ else
    ' ',        'a_empty.png'
   );
 
-%PASSIVE_ICONS =
+  %PASSIVE_ICONS =
   (
    'Top',      'a_top_na.png',
    'Contents', 'a_tableofcon_na.png',
@@ -267,6 +265,7 @@ and <a href="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/">La
 and is best  viewed with a 16 or 18 point screen font.
 <p></p>
 EOT
+  return $result;
 }
 
 set_from_init_file ('PRE_ABOUT', \&T2H_SING_pre_about);

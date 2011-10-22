@@ -4229,7 +4229,7 @@ sub converter_initialize($)
   my $self = shift;
 
   if ($self->get_conf('SHORTEXTN')) {
-    $self->set_conf('EXTENSION', 'html');
+    $self->set_conf('EXTENSION', 'htm');
   }
   $foot_num = 0;
   $foot_lines = '';
@@ -4896,27 +4896,35 @@ sub _set_pages_files($$)
     #$section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
   
     my $top_node_filename;
-    if (defined($self->get_conf('TOP_NODE_FILE'))) {
-      $top_node_filename = $self->get_conf('TOP_NODE_FILE');
+    if (defined($self->get_conf('TOP_FILE')) 
+        and $self->get_conf('TOP_FILE') ne '') {
+      $top_node_filename = $self->get_conf('TOP_FILE');
     } else {
-      # FIXME this is like texi2html, but is it right?  Shouldn't it
-      # better to leave it undefined?  In that case the section name
-      # may be used, or the node name, or something along document_name-0
-      $top_node_filename = $self->{'document_name'};
-    }
-    if (defined($top_node_filename)) {
-      $top_node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
-          if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-              and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+      if (defined($self->get_conf('TOP_NODE_FILE'))) {
+        $top_node_filename = $self->get_conf('TOP_NODE_FILE');
+      } else {
+        # FIXME this is like texi2html, but is it right?  Shouldn't it
+        # better to leave it undefined?  In that case the section name
+        # may be used, or the node name, or something along document_name-0
+        $top_node_filename = $self->{'document_name'};
+      }
+      if (defined($top_node_filename)) {
+        my $top_node_extension;
+        if ($self->get_conf('NODE_FILENAMES')) {
+          $top_node_extension = $self->get_conf('NODE_FILE_EXTENSION');
+        } else {
+          $top_node_extension = $self->get_conf('EXTENSION');
+        }
+        $top_node_filename .= '.'.$top_node_extension 
+          if (defined($top_node_extension) and $top_node_extension ne '');
+      }
     }
     # first determine the top node file name.
     if ($self->get_conf('NODE_FILENAMES') and $node_top 
         and defined($top_node_filename)) {
       my ($node_top_element) = $self->_get_element($node_top);
-      die "BUG: No page for top node" if (!defined($node_top));
-      #if (defined($self->get_conf('TOP_NODE_FILE'))) {
+      die "BUG: No element for top node" if (!defined($node_top));
       $self->_set_element_file($node_top_element, $top_node_filename);
-      #}
     }
     # FIXME add a number for each page?
     my $file_nr = 0;

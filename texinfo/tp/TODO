@@ -154,9 +154,6 @@ and not
 It is unclear whether it is right or wrong. It happens this way because
 the paragraph starts right after the footnote number.
 
-test node non automatic directions, especially in html and for external
-nodes.  Done?
-
 In html, test 
  empty lines at the begining, 
  content ignored before setfilename, 
@@ -176,6 +173,12 @@ test an lone @contents without any sectioning command.
 
 Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
 enable encoding and entities.
+
+In singular manual, the first node is the Top node, it has no associated
+sectioning command.  The up_section for this node is set to the first
+sectioning element, the Preface, which is also associated with that node but
+is below, and maybe they are in the same element?  In any case it seems to
+be wrong.
 
 In @copying things like some raw formats may be expanded.  However it is
 not clear that it should be the same than in the main converter.  Maybe a 
@@ -329,6 +332,9 @@ set.  Nothing tests that in the test suite.
 equivalent_nodes mainly for equivalent_nodes-noderename.cnf parsing and renamed
 nodes handling.
 
+singular_manual
+SHORTEXTN and TOP_FILE, although those options should not necessarily be
+used anymore.
 
 formatting/
 inter_item_commands.texi

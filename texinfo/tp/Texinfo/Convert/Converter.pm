@@ -357,12 +357,21 @@ sub _set_outfile($$$)
   $input_basename =~ s/^.*\///;
   $self->{'input_basename'} = $input_basename;
   $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
+  $input_basename =~ s/\.te?x(i|info)?$//;
 
   my $setfilename;
   $setfilename = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}
     if ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
         and $self->{'extra'}->{'setfilename'}->{'extra'}
         and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
+
+  # FIXME use TOP_FILE?
+  # FIXME PREFIX is the same as setfilename, maybe override setfilename 
+  # instead?
+  if (defined($self->get_conf('PREFIX'))) {
+    $setfilename = undef;
+    $input_basename = $self->get_conf('PREFIX');
+  }
 
   my $document_name;
   my $set_outfile = $self->get_conf('OUTFILE');
@@ -382,7 +391,7 @@ sub _set_outfile($$$)
       }
     } elsif ($input_basename ne '') {
       $outfile = $input_basename;
-      $outfile =~ s/\.te?x(i|info)?$//;
+      #$outfile =~ s/\.te?x(i|info)?$//;
       $document_name = $outfile;
       $outfile .= '.'.$self->get_conf('EXTENSION') 
         if (defined($self->get_conf('EXTENSION')) 
@@ -414,7 +423,6 @@ sub _set_outfile($$$)
       $document_name =~ s/\.[^\.]*$//;
     }
   }
-  # FIXME use a specific configuration variable (TOP_FILE, PREFIX)?
   $document_name =~ s/^.*\///;
   $self->{'document_name'} = $document_name;
   $output_basename =~ s/^.*\///;
