@@ -1,8 +1,8 @@
-# $Id: Makefile.am,v 1.37 2010-07-25 16:59:42 karl Exp $
+# $Id: Makefile.am,v 1.38 2011-10-25 23:22:07 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
-# Copyright 2005, 2006, 2007, 2008, 2009, 2010
+# Copyright 2005, 2006, 2007, 2008, 2009, 2010, 2011
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -28,13 +28,14 @@ AM_CPPFLAGS = 					\
   -DLOCALEDIR=\"$(localedir)\"
 LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
-dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd texinfo.xsl
-pkgdata_DATA = texinfo.cat
+dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd texinfo.xsl texinfo.cat
 
+if MAINTAINER_MODE
 # we don't actually use version.texi in the rule, but it's one way of
 # noticing when the version changes.
 texinfo.cat: texinfo-cat.in $(top_srcdir)/doc/version.texi
 	sed 's/__VERSION__/@VERSION@/g' $(srcdir)/texinfo-cat.in >$@
+endif
 
 # Most of these are for fun.  The only official/installed ones are the
 # *texi2* scripts.
@@ -44,7 +45,6 @@ EXTRA_DIST = README deref.c dir-example fix-info-dir fixfonts \
   install-info-html outline.gawk pdftexi2dvi \
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi texi2pdf txitextest \
   $(dist_pkgdata_DATA) texinfo-cat.in
-CLEANFILES = $(pkgdata_DATA)
 
 
 # We must not stress people's TeX installations.

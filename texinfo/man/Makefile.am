@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.2 2011-10-22 23:16:55 karl Exp $
+# $Id: Makefile.am,v 1.3 2011-10-25 23:22:07 karl Exp $
 # Makefile.am for texinfo/man.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -20,6 +20,8 @@ man_MANS += info.5 texinfo.5
 
 # These are just .so's to the common program.
 man_MANS += texi2any.1 texi2pdf.1 pdftexi2dvi.1
+
+EXTRA_DIST = $(man_MANS) ginfo.h2m
 
 # Maintainers should be able to regenerate.
 MAINTAINERCLEANFILES = $(man_MANS)

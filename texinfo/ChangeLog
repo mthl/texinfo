@@ -1,3 +1,15 @@
+2011-10-25  Karl Berry  <karl@gnu.org>
+
+	* man/Makefile.am (EXTRA_DIST): add ginfo.h2m.
+	* configure.ac (AM_MAINTAINER_MODE): reenable.
+	* tp/Makefile.am (Makefile.tres): only rebuild the fragment
+	in maintainer mode.
+	* util/Makefile.am (texinfo.cat) [MAINTAINER_MODE]: make conditional.
+	(dist_pkgdata_DATA): add texinfo.cat to here, and remove
+	now-empty pkgdata_DATA.
+	* README.dev,
+	* autogen.sh: mention --enable-maintainer-mode.
+
 2011-10-22  Karl Berry  <karl@gnu.org>
 
 	* man/Makefile.am (man_rule_0): only ginfo, not ginfokey.
