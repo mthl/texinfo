@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.393 2011-10-22 17:50:33 pertusus Exp $
+@c $Id: texinfo.txi,v 1.394 2011-10-26 22:53:07 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16843,9 +16843,9 @@ automatically taking into account the document language.
 @item CLOSE_QUOTE_SYMBOL
 When a closing quote is needed, use the corresponding character.
 
-@item COMPLETE_IMAGE_PATHS
-If set, the image files are computed to be relative from the document
-directory to the source manual directory, and then to the image.
+@c @item COMPLETE_IMAGE_PATHS
+@c If set, the image files are computed to be relative from the document
+@c directory to the source manual directory, and then to the image.
 
 @item COMPLEX_FORMAT_IN_TABLE
 For HTML@.  If set, use tables for indentation of complex formats.
@@ -16925,16 +16925,16 @@ names.
 @item ICONS
 For HTML@.  Use icons for the navigation panel.
 
-@item IDX_SUMMARY
-If set, for each @code{@@printindex} a file named
-@file{@var{docname}_@var{idxname}.idx} is created, containing lines of
-the form:
-
-@example
-@var{key} @var{reference}
-@end example
-
-@noindent sorted alphabetically (case matters).
+@c @item IDX_SUMMARY
+@c If set, for each @code{@@printindex} a file named
+@c @file{@var{docname}_@var{idxname}.idx} is created, containing lines of
+@c the form:
+@c 
+@c @example
+@c @var{key} @var{reference}
+@c @end example
+@c 
+@c @noindent sorted alphabetically (case matters).
 
 @item IGNORE_BEFORE_SETFILENAME
 If set, begin outputting at @code{@@setfilename}, if
@@ -17123,9 +17123,6 @@ in cross references.
 For HTML, XML.  If set, use numeric entities instead of ASCII
 characters when there is no named entity.
 
-@item USE_UP_FOR_ADJACENT_NODES
-If set, try Up sections to complete node directions.
-
 @item USE_REL_REV
 For HTML@.  Use @code{rel} in cross references.
 
@@ -17150,10 +17147,10 @@ transliterate more characters.
 @item VERTICAL_HEAD_NAVIGATION
 For HTML@.  If set, a vertical navigation panel is used.
 
-@c @item WORDS_IN_PAGE
-@c For HTML, with output split at nodes.  Specifies the approximate
-@c minimum page length required before a navigation panel is placed at
-@c the bottom of a page.
+@item WORDS_IN_PAGE
+For HTML, with output split at nodes.  Specifies the approximate
+minimum page length required before a navigation panel is placed at
+the bottom of a page.
 
 @end vtable
 
@@ -21102,7 +21099,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.393 2011-10-22 17:50:33 pertusus Exp $
+$Id: texinfo.txi,v 1.394 2011-10-26 22:53:07 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21173,7 +21170,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.393 2011-10-22 17:50:33 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.394 2011-10-26 22:53:07 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

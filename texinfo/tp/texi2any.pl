@@ -423,7 +423,6 @@ sub _set_variables_texi2html()
   ['INLINE_CONTENTS', 0],
   ['FORCE', 1],
   ['AVOID_MENU_REDUNDANCY', 1],
-  ['TOP_HEADING_AT_BEGINNING', 1],
   ['TOP_FILE', ''],
   ['USE_ACCESSKEY', 0],
   ['NODE_NAME_IN_MENU', 0],
