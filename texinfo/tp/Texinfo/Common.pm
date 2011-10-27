@@ -822,13 +822,15 @@ sub expand_verbatiminclude($$)
   my $verbatiminclude;
 
   if (defined($file)) {
-    # FIXME encoding?
     if (!open(VERBINCLUDE, $file)) {
       if ($self) {
         $self->line_error (sprintf($self->__("Cannot read %s: %s"), $file, $!), 
                             $current->{'line_nr'});
       }
     } else {
+      if ($self and defined($self->{'perl_encoding'})) {
+        binmode(VERBINCLUDE, ":encoding($self->{'perl_encoding'})");
+      }
       $verbatiminclude = { 'cmdname' => 'verbatim',
                            'parent' => $current->{'parent'},
                            'extra' => 

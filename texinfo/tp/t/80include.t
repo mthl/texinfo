@@ -128,7 +128,17 @@ After.'],
 '],
 ['include_setfilename_on_setfilename_line',
 '@setfilename file @setfilename other file @include are you joking!
-']
+'],
+['verbatiminclude_and_encoding',
+'@documentencoding utf-8
+
+@verbatiminclude verbatim_encoded.texi
+', {'test_formats' => ['plaintext']}],
+['verbatiminclude_and_encoding_latin1',
+'@documentencoding iso-8859-1
+
+@verbatiminclude verbatim_encoded_latin1.texi
+', {'test_formats' => ['plaintext']}],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
