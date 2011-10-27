@@ -600,7 +600,7 @@ A. upper case first
 B. upper case second
 
 z. lower case first
-ba. lower case second
+aa. lower case second
 ';
 
 $result_errors{'enumerate_argument_item'} = [];
@@ -614,7 +614,7 @@ $result_converted{'plaintext'}->{'enumerate_argument_item'} = '  1. numeric firs
   B. upper case second
 
   z. lower case first
-  ba. lower case second
+  aa. lower case second
 ';
 
 1;

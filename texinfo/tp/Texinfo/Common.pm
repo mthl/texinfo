@@ -1046,24 +1046,17 @@ sub float_name_caption($$)
   return ($caption, $prepended);
 }
 
-# decompose a decimal number on a given base. The algorithm looks like
-# the division with growing powers (division suivant les puissances
-# croissantes) ?
+# decompose a decimal number on a given base.
 sub _decompose_integer($$)
 {
   my $number = shift;
   my $base = shift;
   my @result = ();
 
-  return (0) if ($number == 0);
-  my $power = 1;
-  my $remaining = $number;
-
-  while ($remaining) {
-    my $factor = $remaining % ($base ** $power);
-    $remaining -= $factor;
-    push (@result, $factor / ($base ** ($power - 1)));
-    $power++;
+  while ($number >= 0) {
+    my $factor = $number % $base;
+    push (@result, $factor);
+    $number = int(($number - $factor) / $base) - 1;
   }
   return @result;
 }
@@ -1082,8 +1075,6 @@ sub enumerate_item_representation($$)
   $base_letter = ord('A') if (ucfirst($specification) eq $specification);
   my @letter_ords = _decompose_integer(ord($specification) - $base_letter + $number - 1, 26);
   foreach my $ord (@letter_ords) {
-    # FIXME we go directly to 'ba' after 'z', and not 'aa'
-    #because 'ba' is 1,0 and 'aa' is 0,0.
     $result = chr($base_letter + $ord) . $result;
   }
   return $result;

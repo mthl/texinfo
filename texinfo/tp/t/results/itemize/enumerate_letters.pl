@@ -8175,6 +8175,32 @@ w. aaa
 x. aaa
 y. aaa
 z. aaa
+aa. aaa
+ab. aaa
+ac. aaa
+ad. aaa
+ae. aaa
+af. aaa
+ag. aaa
+ah. aaa
+ai. aaa
+aj. aaa
+ak. aaa
+al. aaa
+am. aaa
+an. aaa
+ao. aaa
+ap. aaa
+aq. aaa
+ar. aaa
+as. aaa
+at. aaa
+au. aaa
+av. aaa
+aw. aaa
+ax. aaa
+ay. aaa
+az. aaa
 ba. aaa
 bb. aaa
 bc. aaa
@@ -8331,32 +8357,6 @@ gw. aaa
 gx. aaa
 gy. aaa
 gz. aaa
-ha. aaa
-hb. aaa
-hc. aaa
-hd. aaa
-he. aaa
-hf. aaa
-hg. aaa
-hh. aaa
-hi. aaa
-hj. aaa
-hk. aaa
-hl. aaa
-hm. aaa
-hn. aaa
-ho. aaa
-hp. aaa
-hq. aaa
-hr. aaa
-hs. aaa
-ht. aaa
-hu. aaa
-hv. aaa
-hw. aaa
-hx. aaa
-hy. aaa
-hz. aaa
 ';
 
 $result_errors{'enumerate_letters'} = [];
@@ -8387,6 +8387,32 @@ $result_converted{'plaintext'}->{'enumerate_letters'} = '  c. aaa
   x. aaa
   y. aaa
   z. aaa
+  aa. aaa
+  ab. aaa
+  ac. aaa
+  ad. aaa
+  ae. aaa
+  af. aaa
+  ag. aaa
+  ah. aaa
+  ai. aaa
+  aj. aaa
+  ak. aaa
+  al. aaa
+  am. aaa
+  an. aaa
+  ao. aaa
+  ap. aaa
+  aq. aaa
+  ar. aaa
+  as. aaa
+  at. aaa
+  au. aaa
+  av. aaa
+  aw. aaa
+  ax. aaa
+  ay. aaa
+  az. aaa
   ba. aaa
   bb. aaa
   bc. aaa
@@ -8543,32 +8569,6 @@ $result_converted{'plaintext'}->{'enumerate_letters'} = '  c. aaa
   gx. aaa
   gy. aaa
   gz. aaa
-  ha. aaa
-  hb. aaa
-  hc. aaa
-  hd. aaa
-  he. aaa
-  hf. aaa
-  hg. aaa
-  hh. aaa
-  hi. aaa
-  hj. aaa
-  hk. aaa
-  hl. aaa
-  hm. aaa
-  hn. aaa
-  ho. aaa
-  hp. aaa
-  hq. aaa
-  hr. aaa
-  hs. aaa
-  ht. aaa
-  hu. aaa
-  hv. aaa
-  hw. aaa
-  hx. aaa
-  hy. aaa
-  hz. aaa
 ';
 
 1;
