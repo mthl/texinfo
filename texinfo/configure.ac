@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.106 2011-10-21 18:42:34 karl Exp $
+# $Id: configure.ac,v 1.107 2011-10-28 23:39:11 karl Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -23,9 +23,10 @@ AC_PREREQ(2.59)
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([info/info.c])
 
+# Conditional texi2html support.
 AM_CONDITIONAL([TEXI2HTML],[false])
 
-dnl Misc variable settings
+# Misc variable settings
 PACKAGE_DATE=`${SHELL} "$srcdir"/build-aux/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
 

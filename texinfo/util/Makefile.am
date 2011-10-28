@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.38 2011-10-25 23:22:07 karl Exp $
+# $Id: Makefile.am,v 1.39 2011-10-28 23:39:12 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -30,12 +30,10 @@ LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
 dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd texinfo.xsl texinfo.cat
 
-if MAINTAINER_MODE
 # we don't actually use version.texi in the rule, but it's one way of
 # noticing when the version changes.
 texinfo.cat: texinfo-cat.in $(top_srcdir)/doc/version.texi
 	sed 's/__VERSION__/@VERSION@/g' $(srcdir)/texinfo-cat.in >$@
-endif
 
 # Most of these are for fun.  The only official/installed ones are the
 # *texi2* scripts.

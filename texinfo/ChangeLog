@@ -1,3 +1,13 @@
+2011-10-28  Karl Berry  <karl@gnu.org>
+
+        Flip-flop again: no maintainer mode.
+	* configure.ac (AM_MAINTAINER_MODE): remove again.
+	* tp/Makefile.am (Makefile.tres): only rebuild the fragment
+	in maintainer mode.
+	* util/Makefile.am (texinfo.cat) [MAINTAINER_MODE]: make conditional.
+	* README.dev,
+	* autogen.sh: mention --enable-maintainer-mode.
+
 2011-10-25  Karl Berry  <karl@gnu.org>
 
 	* man/Makefile.am (EXTRA_DIST): add ginfo.h2m.

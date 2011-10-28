@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autogen.sh,v 1.8 2011-10-25 23:22:07 karl Exp $
+# $Id: autogen.sh,v 1.9 2011-10-28 23:39:10 karl Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then
@@ -33,4 +33,4 @@ $chicken eval $cmd "$@" || exit 1
 
 echo
 echo "Now run configure with your desired options, for instance:"
-echo "  ./configure --enable-maintainer-mode CFLAGS='-g'"
+echo "  ./configure CFLAGS='-g'"
