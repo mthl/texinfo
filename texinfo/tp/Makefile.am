@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.12 2011-10-25 23:22:07 karl Exp $
+# $Id: Makefile.am,v 1.13 2011-10-28 23:51:27 karl Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -14,10 +14,8 @@
 # A long list of files that we generate.
 include $(srcdir)/Makefile.tres
 
-if MAINTAINER_MODE
 $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 	cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl
-endif
 
 bin_SCRIPTS = texi2any
 
@@ -172,6 +170,7 @@ EXTRA_DIST = \
   $(test_results) \
   $(test_files) \
   $(tp_tests) \
+  maintain/regenerate_file_lists.pl \
   maintain/lib
 
 libsrcdir = $(srcdir)/maintain/lib
