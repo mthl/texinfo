@@ -86,15 +86,16 @@ sub _print_tree($$;$$)
     $text =~ s/\n/\\n/g;
     $result .= "|$text|";
   }
-  print $result ."\n";
+  $result .= "\n";
   if ($root->{'args'}) {
     foreach my $arg (@{$root->{'args'}}) {
-      _print_tree ($self, $arg, $level +1, 1);
+      $result .= _print_tree ($self, $arg, $level +1, 1);
     }
   }
   if ($root->{'contents'}) {
     foreach my $content (@{$root->{'contents'}}) {
-      _print_tree ($self, $content, $level+1);
+      $result .= _print_tree ($self, $content, $level+1);
     }
   }
+  return $result;
 }

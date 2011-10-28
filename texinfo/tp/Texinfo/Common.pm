@@ -466,6 +466,11 @@ our %close_paragraph_commands;
 
 $close_paragraph_commands{'exdent'} = 1;
 
+sub gdt($)
+{
+  return $_[0];
+}
+
 our %def_map = (
     # basic commands. 
     # 'arg' and 'argtype' are for everything appearing after the other
@@ -480,18 +485,17 @@ our %def_map = (
     'defop',     [ 'category', 'class' , 'name', 'arg' ],
     'deftp',     [ 'category', 'name', 'argtype' ],
     # shortcuts
-    # FIXME i18n
-    'defun',         {'deffn'     => 'Function'},
-    'defmac',        {'deffn'     => 'Macro'},
-    'defspec',       {'deffn'     => '{Special Form}'},
-    'defvar',        {'defvr'     => 'Variable'},
-    'defopt',        {'defvr'     => '{User Option}'},
-    'deftypefun',    {'deftypefn' => 'Function'},
-    'deftypevar',    {'deftypevr' => 'Variable'},
-    'defivar',       {'defcv'     => '{Instance Variable}'},
-    'deftypeivar',   {'deftypecv' => '{Instance Variable}'},
-    'defmethod',     {'defop'     => 'Method'},
-    'deftypemethod', {'deftypeop' => 'Method'},
+    'defun',         {'deffn'     => gdt('Function')},
+    'defmac',        {'deffn'     => gdt('Macro')},
+    'defspec',       {'deffn'     => '{'.gdt('Special Form').'}'},
+    'defvar',        {'defvr'     => gdt('Variable')},
+    'defopt',        {'defvr'     => '{'.gdt('User Option').'}'},
+    'deftypefun',    {'deftypefn' => gdt('Function')},
+    'deftypevar',    {'deftypevr' => gdt('Variable')},
+    'defivar',       {'defcv'     => '{'.gdt('Instance Variable').'}'},
+    'deftypeivar',   {'deftypecv' => '{'.gdt('Instance Variable').'}'},
+    'defmethod',     {'defop'     => gdt('Method')},
+    'deftypemethod', {'deftypeop' => gdt('Method')},
 );
 
 # the type of index, f: function, v: variable, t: type

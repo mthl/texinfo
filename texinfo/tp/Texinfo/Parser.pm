@@ -261,28 +261,6 @@ foreach my $brace_command (keys (%brace_commands)) {
     if ($brace_commands{$brace_command} > 1);
 }
 
-my %def_prepended_content;
-foreach my $def_command(keys %def_map) {
-
-  # prepare what will be prepended when the def command is an alias
-  if (ref($def_map{$def_command}) eq 'HASH') {
-    my ($real_command) = keys (%{$def_map{$def_command}});
-    my $prepended = $def_map{$def_command}->{$real_command};
-    if ($prepended =~ /^\{/) {
-      my $text = $prepended;
-      $text =~ s/\{([^\}]+)\}/$1/;
-      my $bracketed = { 'type' => 'bracketed'};
-      $bracketed->{'contents'} = [ { 'parent' => $bracketed,
-                                     'text' => $text } ];
-      $def_prepended_content{$def_command} = [$bracketed];
-    } else {
-      $def_prepended_content{$def_command} = [{ 'text' => $prepended }];
-    }
-    push @{$def_prepended_content{$def_command}}, { 'text' => ' ' };
-  }
-}
-
-
 my %type_with_paragraph;
 foreach my $type ('before_item', 'text_root', 'document_root',
                   'brace_command_context') {
@@ -2054,7 +2032,34 @@ sub _parse_def ($$$)
   shift @contents if ($contents[0] and $contents[0]->{'type'}
                     and $contents[0]->{'type'} eq 'empty_spaces_after_command');
   if ($def_aliases{$command}) {
-    unshift @contents, @{$def_prepended_content{$command}};
+    my $real_command = $def_aliases{$command};
+    my $prepended = $def_map{$command}->{$real_command};
+    my @prepended_content;
+
+    my $text;
+    my $in_bracketed;
+    if ($prepended =~ /^\{/) {
+      $text = $prepended;
+      $text =~ s/\{([^\}]+)\}/$1/;
+      $in_bracketed = 1;
+    } else {
+      $text = $prepended;
+    }
+    my $tree = $self->gdt($text);
+    if ($in_bracketed or @{$tree->{'contents'}} > 1) {
+      my $bracketed = { 'type' => 'bracketed' };
+      $bracketed->{'contents'} = $tree->{'contents'};
+      foreach my $content (@{$tree->{'contents'}}) {
+        $content->{'parent'} = $bracketed;
+      }
+      @prepended_content = ($bracketed);
+    } else {
+      @prepended_content = (@{$tree->{'contents'}});
+    }
+    push @prepended_content, { 'text' => ' ' };
+
+    unshift @contents, @prepended_content;
+
     $command = $def_aliases{$command};
   }
   foreach (my $i = 0; $i < scalar(@contents); $i++) {
