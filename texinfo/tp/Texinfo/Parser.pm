@@ -143,8 +143,6 @@ our %default_configuration = (
   'documentlanguage' => undef, 
                               # Current documentlanguage set by 
                               # @documentlanguage
-  # FIXME not used?
-  'ENABLE_ENCODING' => 1,     # corresponds to --enable-encoding.
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
   'TOP_NODE_UP' => '(dir)',   # up node of Top node
   'SIMPLE_MENU' => 0,         # currently not used in the parser for now, 
@@ -1052,7 +1050,8 @@ sub _command_error($$$$;@)
   my $message = shift;
 
   # use the beginning of the @-command for the error message
-  # line number if available. FIXME currently not done for regular brace commands
+  # line number if available. 
+  # FIXME currently not done for regular brace commands
   if ($current->{'line_nr'}) {
     $line_nr = $current->{'line_nr'};
   }
@@ -1220,7 +1219,6 @@ sub _gather_previous_item($$;$$)
     }
   }
   if ($type eq 'table_item') {
-  # FIXME keep table_item with only comments and/or empty lines?
     my $table_entry = {'type' => 'table_entry',
                     'parent' => $current,
                     'contents' => []};
@@ -1474,10 +1472,9 @@ sub _close_current($$$;$)
       pop @{$self->{'regions_stack'}} 
          if ($region_commands{$current->{'cmdname'}});
       $current = $current->{'parent'};
-    } else { # FIXME is this possible? And does it make sense?
-      # silently close containers and @-commands without brace nor @end
-      # $self->line_error(sprintf($self->__("Closing \@%s"), 
-      #                          $current->{'cmdname'}), $line_nr);
+    } else {
+      # There @item and @tab commands are closed, and also line commands
+      # with invalid content
       $current = $current->{'parent'};
     }
   } elsif ($current->{'type'}) {
@@ -2001,8 +1998,6 @@ sub _next_bracketed_or_word($$)
   if ($contents->[0]->{'type'} and $contents->[0]->{'type'} eq 'bracketed') {
     #print STDERR "Return bracketed\n";
     my $bracketed = shift @{$contents};
-    # FIXME don't modify type here?
-    # return ($spaces, $bracketed);
     $self->_isolate_last_space($bracketed, 'empty_space_at_end_def_bracketed');
     return ($spaces, { 'contents' => $bracketed->{'contents'},
                        'parent' => $bracketed->{'parent'},
@@ -2251,13 +2246,10 @@ sub _end_line($$$)
       $current = _end_paragraph($self, $current, $line_nr);
       push @{$current->{'contents'}}, $empty_line;
       $empty_line->{'parent'} = $current;
-    } elsif (($current->{'type'} 
-              # FIXME remove this condition
-               and $current->{'type'} eq 'menu_entry_description')
-              or ($current->{'type'}
-               and $current->{'type'} eq 'preformatted'
-               and $current->{'parent'}->{'type'}
-               and $current->{'parent'}->{'type'} eq 'menu_entry_description'))  {
+    } elsif ($current->{'type'}
+             and $current->{'type'} eq 'preformatted'
+             and $current->{'parent'}->{'type'}
+             and $current->{'parent'}->{'type'} eq 'menu_entry_description')  {
       my $empty_line = pop @{$current->{'contents'}};
       if ($current->{'type'} eq 'preformatted') {
         my $empty_preformatted = (!@{$current->{'contents'}});
@@ -2285,8 +2277,6 @@ sub _end_line($$$)
       push @{$self->{'context_stack'}}, 'preformatted';
       print STDERR "MENU: END DESCRIPTION, OPEN COMMENT\n" if ($self->{'DEBUG'});
     } elsif (!$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
-            # FIXME remove this if an empty line in a brace command
-            # is acceptable
       $current = _end_paragraph($self, $current, $line_nr);
     }
 
@@ -2349,8 +2339,8 @@ sub _end_line($$$)
           and $current->{'contents'}->[-1]->{'type'} eq 'preformatted') {
           $current = $current->{'contents'}->[-1];
         } else {
-          # FIXME verify that this may happen
-          #push @{$self->{'context_stack'}}, 'preformatted';
+          # this should not happen
+          warn "BUG: description or menu comment not in preformatted";
           push @{$current->{'contents'}}, {'type' => 'preformatted',
                                     'parent' => $current,
                                     'contents' => [] };
@@ -2485,7 +2475,7 @@ sub _end_line($$$)
             and $current->{'type'} eq 'block_line_arg') {
     my $empty_text;
     my $context = pop @{$self->{'context_stack'}};
-    print STDERR "BUG: $context in block_line_arg ne line\n" 
+    warn "BUG: $context in block_line_arg ne line\n" 
        if ($context ne 'line');
     # @multitable args
     if ($current->{'parent'}->{'cmdname'}
