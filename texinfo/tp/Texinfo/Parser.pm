@@ -32,7 +32,7 @@ use 5.006;
 use strict;
 
 # debug
-#use Carp qw(cluck);
+use Carp qw(cluck);
 
 use Data::Dumper;
 
@@ -1483,7 +1483,7 @@ sub _close_current($$$;$)
     }
   } elsif ($current->{'type'}) {
     if ($current->{'type'} eq 'bracketed') {
-    # FIXME record the line number in the bracketed and use it
+    # FIXME record the line number in the bracketed and use it?
       $self->line_error (sprintf($self->__("Misplaced %c"),
                                              ord('{')), $line_nr);
       $current = $current->{'parent'};
@@ -3169,6 +3169,20 @@ sub _command_with_command_as_argument($)
                                =~ /^[^\S\n]*/)))
 }
 
+sub _register_and_warn_invalid($$$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $invalid_parent = shift;
+  my $line_nr = shift;
+  my $registered_as_invalid_command = shift;
+
+  if (defined($invalid_parent)) {
+    $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
+              $command, $invalid_parent), $line_nr);
+    $registered_as_invalid_command->{'extra'}->{'invalid_nesting'} = 1;
+  }
+}
 # the different types
 #c 'menu_entry'
 #c 'menu_entry'
@@ -3553,13 +3567,10 @@ sub _parse_texi($;$)
         }
       # maybe a menu entry beginning: a * at the beginning of a menu line
       } elsif ($line =~ /^\*/ and $current->{'type'}
-                and (($current->{'type'} eq 'preformatted'
-                      and $current->{'parent'}->{'type'} 
-                      and ($current->{'parent'}->{'type'} eq 'menu_comment'
-                           # FIXME does menu_entry_description here work as intended?
-                           or $current->{'parent'}->{'type'} eq 'menu_entry_description'))
-                    # FIXME remove the next condition
-                    or $current->{'type'} eq 'menu_entry_description')
+                and $current->{'type'} eq 'preformatted'
+                and $current->{'parent'}->{'type'} 
+                and ($current->{'parent'}->{'type'} eq 'menu_comment'
+                     or $current->{'parent'}->{'type'} eq 'menu_entry_description')
                 and @{$current->{'contents'}} 
                 and $current->{'contents'}->[-1]->{'type'}
                 and $current->{'contents'}->[-1]->{'type'} eq 'empty_line'
@@ -3722,19 +3733,14 @@ sub _parse_texi($;$)
                                      $command), $line_nr);
         }
 
-        my $invalid;
+        my $invalid_parent;
         # error messages for forbidden constructs, like @node in @r, 
         # block command on line command, @xref in @anchor or node...
         if ($current->{'parent'}) { 
           if ($current->{'parent'}->{'cmdname'}) {
-          # FIXME in all the cases below, there is an error message even if
-          # the command is an unknown command
             if ($accent_commands{$current->{'parent'}->{'cmdname'}}                            
                 and !$in_accent_commands{$command}) {
-              $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
-                                     $command, $current->{'parent'}->{'cmdname'}),
-                           $line_nr);
-              $invalid = 1;
+              $invalid_parent = $current->{'parent'}->{'cmdname'};
             } elsif ((!$in_simple_text_commands{$command}
                       and ($self->{'simple_text_commands'}->{$current->{'parent'}->{'cmdname'}}
                            # following conditions arise because we distinguish
@@ -3753,10 +3759,7 @@ sub _parse_texi($;$)
                       and !$in_full_line_commands{$command})
                      or ($full_text_commands{$current->{'parent'}->{'cmdname'}}
                       and !$in_full_text_commands{$command})) {
-              $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
-                                     $command, $current->{'parent'}->{'cmdname'}),
-                           $line_nr);
-              $invalid = 1;
+              $invalid_parent = $current->{'parent'}->{'cmdname'};
             }
           } elsif ($self->{'context_stack'}->[-1] eq 'def'
                    and !$in_simple_text_commands{$command}) {
@@ -3766,10 +3769,7 @@ sub _parse_texi($;$)
                 $def_block = $def_block->{'parent'};
               }
  
-              $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
-                                     $command, $def_block->{'parent'}->{'parent'}->{'cmdname'}),
-                           $line_nr);
-              $invalid = 1;
+              $invalid_parent = $def_block->{'parent'}->{'parent'}->{'cmdname'};
           }
         }
 
@@ -3814,6 +3814,7 @@ sub _parse_texi($;$)
 
           if ($arg_spec eq 'noarg') {
             my $ignored = 0;
+            my $only_in_headings = 0;
             if ($command eq 'insertcopying') {
               my $parent = $current;
               while ($parent) {
@@ -3828,14 +3829,16 @@ sub _parse_texi($;$)
             } elsif ($in_heading_commands{$command}) {
               $self->line_error (sprintf($self->__("\@%s should only appear in heading or footing"),
                                               $command), $line_nr);
-              $invalid = 1;
+              $only_in_headings = 1;
             }
             unless ($ignored) {
               $misc = {'cmdname' => $command,
                       'parent' => $current};
               push @{$current->{'contents'}}, $misc;
             }
-            $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+            $self->_register_and_warn_invalid($command, $invalid_parent,
+                                              $line_nr, $misc);
+            $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
             $self->_register_global_command($command, $misc, $line_nr);
 
           # all the cases using the raw line
@@ -3872,7 +3875,8 @@ sub _parse_texi($;$)
             } elsif ($command eq 'novalidate') {
               $self->{'novalidate'} = 1;
             }
-            $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+            $self->_register_and_warn_invalid($command, $invalid_parent,
+                                              $line_nr, $misc);
             $self->_register_global_command($command, $misc, $line_nr);
 
             last NEXT_LINE if ($command eq 'bye');
@@ -4044,7 +4048,8 @@ sub _parse_texi($;$)
             }
             $line = _start_empty_line_after_command($line, $current, $misc);
           }
-          $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+          $self->_register_and_warn_invalid($command, $invalid_parent,
+                                            $line_nr, $misc);
 
           if (!$self->_register_global_command($command, $misc, $line_nr)
               and $command eq 'dircategory') {
@@ -4056,8 +4061,8 @@ sub _parse_texi($;$)
             my $macro = _parse_macro_command_line ($self, $command, $line, 
                                  $current, $line_nr);
             push @{$current->{'contents'}}, $macro;
-            $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-              if ($invalid);
+            $self->_register_and_warn_invalid($command, $invalid_parent,
+                                       $line_nr, $current->{'contents'}->[-1]);
             $current = $current->{'contents'}->[-1];
             last;
           } elsif ($block_commands{$command} eq 'conditional') {
@@ -4160,8 +4165,6 @@ sub _parse_texi($;$)
                                                  {'def_command' => $command,
                                                   'original_def_cmdname' => $command}
                                                 };
-              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                if ($invalid);
             } else {
               $block = { 'cmdname' => $command,
                          'parent' => $current,
@@ -4219,7 +4222,8 @@ sub _parse_texi($;$)
                 unless ($def_commands{$command});
             }
             $block->{'line_nr'} = $line_nr;
-            $block->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+            $self->_register_and_warn_invalid($command, $invalid_parent,
+                                              $line_nr, $block);
             $self->_register_global_command($command, $block, $line_nr);
 
             $line = _start_empty_line_after_command($line, $current, $block);
@@ -4232,8 +4236,8 @@ sub _parse_texi($;$)
                                             'contents' => [] };
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
             if ($keep_line_nr_brace_commands{$command});
-          $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-            if ($invalid);
+          $self->_register_and_warn_invalid($command, $invalid_parent,
+                                       $line_nr, $current->{'contents'}->[-1]);
           $current = $current->{'contents'}->[-1];
           if ($command eq 'click') {
             $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};

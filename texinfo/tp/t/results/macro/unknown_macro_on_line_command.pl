@@ -50,15 +50,6 @@ $result_texts{'unknown_macro_on_line_command'} = '';
 
 $result_errors{'unknown_macro_on_line_command'} = [
   {
-    'error_line' => ':1: warning: @begin should not appear in @setfilename
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@begin should not appear in @setfilename',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':1: Unknown command `begin\'
 ',
     'file_name' => '',

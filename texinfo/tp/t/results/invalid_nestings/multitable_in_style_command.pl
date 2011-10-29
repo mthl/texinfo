@@ -289,15 +289,6 @@ truc machin
 
 $result_errors{'multitable_in_style_command'} = [
   {
-    'error_line' => ':3: warning: @multitable should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => '@multitable should not appear in @code',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':1: @code missing close brace
 ',
     'file_name' => '',
@@ -305,6 +296,15 @@ $result_errors{'multitable_in_style_command'} = [
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':3: warning: @multitable should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@multitable should not appear in @code',
+    'type' => 'warning'
   },
   {
     'error_line' => ':6: Misplaced }

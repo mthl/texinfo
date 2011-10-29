@@ -260,15 +260,6 @@ text
 
 $result_errors{'table_in_code'} = [
   {
-    'error_line' => ':3: warning: @table should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => '@table should not appear in @code',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':1: @code missing close brace
 ',
     'file_name' => '',
@@ -276,6 +267,15 @@ $result_errors{'table_in_code'} = [
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':3: warning: @table should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@table should not appear in @code',
+    'type' => 'warning'
   },
   {
     'error_line' => ':7: Misplaced }

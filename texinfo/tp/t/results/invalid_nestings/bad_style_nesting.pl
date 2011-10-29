@@ -145,15 +145,6 @@ in quotation
 
 $result_errors{'bad_style_nesting'} = [
   {
-    'error_line' => ':2: warning: @quotation should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@quotation should not appear in @code',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':1: @code missing close brace
 ',
     'file_name' => '',
@@ -161,6 +152,15 @@ $result_errors{'bad_style_nesting'} = [
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':2: warning: @quotation should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@quotation should not appear in @code',
+    'type' => 'warning'
   },
   {
     'error_line' => ':3: Misplaced }

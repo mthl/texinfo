@@ -211,15 +211,6 @@ in verbatim
 
 $result_errors{'raw_in_brace_command'} = [
   {
-    'error_line' => ':8: warning: @verbatim should not appear in @samp
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@verbatim should not appear in @samp',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':7: @samp missing close brace
 ',
     'file_name' => '',
@@ -227,6 +218,15 @@ $result_errors{'raw_in_brace_command'} = [
     'macro' => '',
     'text' => '@samp missing close brace',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':8: warning: @verbatim should not appear in @samp
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => '@verbatim should not appear in @samp',
+    'type' => 'warning'
   },
   {
     'error_line' => ':11: Misplaced }

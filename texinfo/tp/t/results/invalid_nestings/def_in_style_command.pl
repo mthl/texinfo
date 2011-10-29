@@ -116,7 +116,6 @@ $result_trees{'def_in_style_command'} = {
               'key' => 'name',
               'number' => 1
             },
-            'invalid_nesting' => 1,
             'original_def_cmdname' => 'defun'
           },
           'line_nr' => {
@@ -237,15 +236,6 @@ text
 
 $result_errors{'def_in_style_command'} = [
   {
-    'error_line' => ':2: warning: @defun should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@defun should not appear in @code',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':1: @code missing close brace
 ',
     'file_name' => '',
@@ -253,6 +243,15 @@ $result_errors{'def_in_style_command'} = [
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':2: warning: @defun should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@defun should not appear in @code',
+    'type' => 'warning'
   },
   {
     'error_line' => ':2: Entry for index `fn\' outside of any node

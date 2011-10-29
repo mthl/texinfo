@@ -338,15 +338,6 @@ $result_menus{'menu_in_style_command'} = {
 
 $result_errors{'menu_in_style_command'} = [
   {
-    'error_line' => ':4: warning: @menu should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => '@menu should not appear in @code',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':3: @code missing close brace
 ',
     'file_name' => '',
@@ -354,6 +345,15 @@ $result_errors{'menu_in_style_command'} = [
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':4: warning: @menu should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@menu should not appear in @code',
+    'type' => 'warning'
   },
   {
     'error_line' => ':7: Misplaced }

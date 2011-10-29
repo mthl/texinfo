@@ -517,7 +517,6 @@ $result_trees{'double_command'} = {
                           'key' => 'd--efvr_name',
                           'number' => 1
                         },
-                        'invalid_nesting' => 1,
                         'original_def_cmdname' => 'defvr'
                       },
                       'line_nr' => {
@@ -784,15 +783,6 @@ $result_errors{'double_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @deffnx should not appear in @deffn
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@deffnx should not appear in @deffn',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':1: Must be after `@deffn\' to use `@deffnx\'
 ',
     'file_name' => '',
@@ -800,6 +790,15 @@ $result_errors{'double_command'} = [
     'macro' => '',
     'text' => 'Must be after `@deffn\' to use `@deffnx\'',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':1: warning: @deffnx should not appear in @deffn
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@deffnx should not appear in @deffn',
+    'type' => 'warning'
   },
   {
     'error_line' => ':1: Entry for index `fn\' outside of any node
