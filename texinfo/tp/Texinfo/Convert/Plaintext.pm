@@ -568,11 +568,7 @@ sub count_bytes($$)
   my $self = shift;
   my $string = shift;
 
-  if ($self->{'perl_encoding'} and $self->{'perl_encoding'} ne 'ascii') {
-    return length(Encode::encode($self->{'perl_encoding'}, $string));
-  } else {
-    return length($string);
-  }
+  return Texinfo::Common::count_bytes($self, $string);
 }
 
 sub _add_text_count($$)

@@ -855,7 +855,7 @@ foreach my $format (@{$default_expanded_format}) {
 foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
                                     'INLINE_INSERTCOPYING', 'SHOW_MENU',
                                     'IGNORE_BEFORE_SETFILENAME', 'TEST',
-                                    'GLOBAL_COMMANDS') {
+                                    'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES') {
   $parser_default_options->{$parser_settable_option} = get_conf($parser_settable_option) 
     if (defined(get_conf($parser_settable_option)));
 }

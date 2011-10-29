@@ -143,6 +143,9 @@ our %default_configuration = (
   'documentlanguage' => undef, 
                               # Current documentlanguage set by 
                               # @documentlanguage
+  'ENABLE_ENCODING' => 1,     # output accented and special characters
+                              # based on @documentencoding
+  'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
   'TOP_NODE_UP' => '(dir)',   # up node of Top node
   'SIMPLE_MENU' => 0,         # currently not used in the parser for now, 
@@ -674,11 +677,13 @@ sub parse_texi_file ($$)
   my $line;
   my @first_lines;
   while ($line = <$filehandle>) {
-    $line_nr++;
-    $line =~ s/\x{7F}.*\s*//;
     if ($line =~ /^ *\\input/ or $line =~ /^\s*$/) {
+      $line =~ s/\x{7F}.*\s*//;
       push @first_lines, $line;
+      $line_nr++;
     } else {
+      # put the line back in the filehandle
+      seek($filehandle, -Texinfo::Common::count_bytes($self, $line), 1);
       last;
     }
   }
@@ -694,8 +699,7 @@ sub parse_texi_file ($$)
 
   $self = parser() if (!defined($self));
   $self->{'input'} = [{
-       'pending' => [ [$line, { 'line_nr' => $line_nr,
-                      'file_name' => $file_name, 'macro' => '' }] ],
+       'pending' => [],
        'name' => $file_name,
        'line_nr' => $line_nr,
        'fh' => $filehandle
@@ -1677,12 +1681,21 @@ sub _next_text($$)
     } elsif ($current->{'fh'}) {
       my $fh = $current->{'fh'};
       my $line = <$fh>;
-      if (defined($line)) {
+      while (defined($line)) {
         $line =~ s/\x{7F}.*\s*//;
-        $current->{'line_nr'}++;
-        return ($line, {'line_nr' => $current->{'line_nr'}, 
-                        'file_name' => $current->{'name'},
-                        'macro' => ''});
+        if ($self->{'CPP_LINE_DIRECTIVES'}
+            and $line =~ /^\s*#\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*/) {
+          $current->{'line_nr'} = $2;
+          if (defined($4)) {
+            $current->{'name'} = $4;
+          }
+          $line = <$fh>;
+        } else {
+          $current->{'line_nr'}++;
+          return ($line, {'line_nr' => $current->{'line_nr'}, 
+                          'file_name' => $current->{'name'},
+                          'macro' => ''});
+        }
       }
     }
     shift(@{$self->{'input'}});

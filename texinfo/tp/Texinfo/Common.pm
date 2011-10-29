@@ -144,8 +144,9 @@ my @variable_settables = (
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
   'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
   'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
-  'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING',
 # TODO new, document?
+  'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING',
+  'CPP_LINE_DIRECTIVES',
   'PROGRAM_AND_VERSION', 'PROGRAM_HOMEPAGE', 'PROGRAM',
   'PRE_BODY_CLOSE', 'AFTER_BODY_OPEN', 'PRE_ABOUT', 'AFTER_ABOUT',
   'EXTRA_HEAD', 'LINKS_BUTTONS', 'DO_ABOUT',
@@ -1245,6 +1246,20 @@ sub _convert_text_options($)
   $options{'converter'} = $self;
   return %options;
 }
+
+sub count_bytes($$) 
+{
+  my $self = shift;
+  my $string = shift;
+
+  if ($self and $self->{'perl_encoding'} 
+      and $self->{'perl_encoding'} ne 'ascii') {
+    return length(Encode::encode($self->{'perl_encoding'}, $string));
+  } else {
+    return length($string);
+  }
+}
+
 
 1;
 
