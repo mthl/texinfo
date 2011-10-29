@@ -1684,7 +1684,7 @@ sub _next_text($$)
       while (defined($line)) {
         $line =~ s/\x{7F}.*\s*//;
         if ($self->{'CPP_LINE_DIRECTIVES'}
-            and $line =~ /^\s*#\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*/) {
+            and $line =~ /^\s*#\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*$/) {
           $current->{'line_nr'} = $2;
           if (defined($4)) {
             $current->{'name'} = $4;
