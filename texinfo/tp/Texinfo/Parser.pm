@@ -1483,9 +1483,8 @@ sub _close_current($$$;$)
     }
   } elsif ($current->{'type'}) {
     if ($current->{'type'} eq 'bracketed') {
-    # FIXME record the line number in the bracketed and use it?
-      $self->line_error (sprintf($self->__("Misplaced %c"),
-                                             ord('{')), $line_nr);
+      $self->_command_error($current, $line_nr, 
+                            $self->__("Misplaced %c"), ord('{'));
       $current = $current->{'parent'};
     } else {
       if ($current->{'type'} eq 'menu_comment' 
@@ -4111,32 +4110,15 @@ sub _parse_texi($;$)
             # block commands. This won't catch menu commands buried in 
             # other formats (that are incorrect anyway).
             if ($menu_commands{$command} and $current->{'type'} 
-                and (($current->{'type'} eq 'preformatted'
-                     and $current->{'parent'}->{'type'} 
-                     and ($current->{'parent'}->{'type'} eq 'menu_comment'
-                          or $current->{'parent'}->{'type'} eq 'menu_entry_description'))
-                   # FIXME remove the next conditions
-                   or ($current->{'type'} eq 'menu_comment' 
-                       or $current->{'type'} eq 'menu_entry_description'))) {
+                and ($current->{'type'} eq 'menu_comment' 
+                     or $current->{'type'} eq 'menu_entry_description')) {
 
               my $menu;
 
-              if ($current->{'type'} eq 'preformatted') {
-                # This should not happen since preformatted was closed above
-                warn "BUG: in preformatted in menu after an end preformatted";
-                $menu = $current->{'parent'}->{'parent'};
-                # don't keep empty menu_comment
-                if (!@{$current->{'contents'}}) {
-                  pop @{$current->{'parent'}->{'contents'}};
-                  if (!scalar(@{$current->{'parent'}->{'contents'}})) {
-                    pop @{$menu->{'contents'}};
-                  }
-                }
-              } else {
-                $menu = $current->{'parent'};
-                pop @{$menu->{'contents'}}
-                  if (!@{$current->{'contents'}});
-              }
+              $menu = $current->{'parent'};
+              pop @{$menu->{'contents'}}
+                if (!@{$current->{'contents'}});
+
               my $context = pop @{$self->{'context_stack'}};
               warn "BUG: not preformatted on context stack $context (new menu)" 
                 if ($context ne 'preformatted');
@@ -4358,6 +4340,10 @@ sub _parse_texi($;$)
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current };
             $current = $current->{'contents'}->[-1];
+            # we need the line number here in case @ protects end of line
+            $current->{'line_nr'} = $line_nr 
+              if ($current->{'parent'}->{'parent'}->{'type'}
+                  and $current->{'parent'}->{'parent'}->{'type'} eq 'def_line');
             push @{$current->{'contents'}}, 
                 {'type' => 'empty_spaces_before_argument',
                  'text' => '' };
@@ -4366,7 +4352,7 @@ sub _parse_texi($;$)
           } elsif ($self->{'context_stack'}->[-1] eq 'math') {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
-                   'parent' => $current };
+                   'parent' => $current, 'line_nr' => $line_nr };
             $current = $current->{'contents'}->[-1];
             print STDERR "BRACKETED in math\n" if ($self->{'DEBUG'});
           } else {

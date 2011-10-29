@@ -166,6 +166,11 @@ $result_trees{'defx_after_text'} = {
                       'text' => 'truc'
                     }
                   ],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'bracketed'
                 },
@@ -240,11 +245,7 @@ $result_trees{'defx_after_text'} = {
             'not_after_command' => 1,
             'original_def_cmdname' => 'deffnx'
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {},
           'type' => 'def_line'
         },
@@ -324,6 +325,7 @@ $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'extra'}{'def_par
 $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2];
 $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'extra'}{'def_args'}[2][1];
 $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'extra'}{'def_args'}[2][1];
+$result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'defx_after_text'}{'contents'}[0];
 $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[3];
 $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_text'}{'contents'}[0]{'contents'}[3]{'args'}[0];

@@ -248,6 +248,10 @@ Second paragraph.
 ['math_not_closed','@math{\delta + 2'],
 ['math_bracketed_not_closed','@math{{x^i}\over{\tan '],
 ['math_bracketed_inside_not_closed','@math{{x^i}\over{\tan}'],
+['math_bracketed_not_closed_next_line',
+'@math{aa {
+
+'],
 ['unknown_command_with_braces',
 'Unknown thing @thing{}
 

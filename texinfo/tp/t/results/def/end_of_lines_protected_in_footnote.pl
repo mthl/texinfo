@@ -45,6 +45,11 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                                   'text' => 'args   with end of line within'
                                 }
                               ],
+                              'line_nr' => {
+                                'file_name' => '',
+                                'line_nr' => 3,
+                                'macro' => ''
+                              },
                               'parent' => {},
                               'type' => 'bracketed'
                             },
@@ -75,6 +80,11 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                                   'text' => 'one last arg'
                                 }
                               ],
+                              'line_nr' => {
+                                'file_name' => '',
+                                'line_nr' => 5,
+                                'macro' => ''
+                              },
                               'parent' => {},
                               'type' => 'bracketed'
                             },

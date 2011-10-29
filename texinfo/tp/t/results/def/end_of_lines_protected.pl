@@ -33,6 +33,11 @@ $result_trees{'end_of_lines_protected'} = {
                       'text' => 'args   with end of line within'
                     }
                   ],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 2,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'bracketed'
                 },
@@ -63,6 +68,11 @@ $result_trees{'end_of_lines_protected'} = {
                       'text' => 'one last arg'
                     }
                   ],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 4,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'bracketed'
                 },
