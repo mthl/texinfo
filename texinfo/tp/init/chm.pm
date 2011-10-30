@@ -211,8 +211,7 @@ sub chm_init($)
   my $hhk_filename = $document_name . ".hhk";
   my $hhk_file = $self->{'destination_directory'} . $hhk_filename;
 
-  my $hhk_fh = Texinfo::Common::open_out($self, $hhk_file,
-                                      $self->{'perl_encoding'});
+  my $hhk_fh = Texinfo::Common::open_out($self, $hhk_file);
   # Not sure $! is still valid
   if (!defined($hhk_fh)) {
     die sprintf($self->__("Can't open %s for writing: %s\n"), 
@@ -232,8 +231,7 @@ sub chm_init($)
 
   my $hhp_filename = $document_name . ".hhp";
   my $hhp_file = $self->{'destination_directory'} . $hhp_filename;
-  my $hhp_fh = Texinfo::Common::open_out($self, $hhp_file,
-                                         $self->{'perl_encoding'});
+  my $hhp_fh = Texinfo::Common::open_out($self, $hhp_file);
   # Not sure $! is still valid
   if (!defined($hhp_fh)) {
     die sprintf($self->__("Can't open %s for writing: %s\n"), 
@@ -287,8 +285,7 @@ EOT
 
   my $hhc_filename = $document_name . ".hhc";
   my $hhc_file = $self->{'destination_directory'} . $hhc_filename;
-  my $hhc_fh = Texinfo::Common::open_out($self, $hhc_file,
-                                         $self->{'perl_encoding'});
+  my $hhc_fh = Texinfo::Common::open_out($self, $hhc_file);
   # Not sure $! is still valid
   if (!defined($hhc_fh)) {
     die sprintf($self->__("Can't open %s for writing: %s\n"), 

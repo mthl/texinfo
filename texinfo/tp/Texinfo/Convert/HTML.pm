@@ -45,6 +45,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   convert
   convert_tree
   output
+  output_internal_links
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -6125,8 +6126,7 @@ sub _default_frame_files($)
     $toc_frame_outfile = $toc_frame_file;
   }
   
-  my $frame_fh = $self->Texinfo::Common::open_out ($frame_outfile,
-                                             $self->{'perl_encoding'});
+  my $frame_fh = $self->Texinfo::Common::open_out ($frame_outfile);
   if (defined($frame_fh)) {
     my $doctype = $self->get_conf('FRAMESET_DOCTYPE');
     my $top_file = '';
@@ -6148,8 +6148,7 @@ EOT
 
   }
 
-  my $toc_frame_fh = $self->Texinfo::Common::open_out ($toc_frame_outfile,
-                                            $self->{'perl_encoding'});
+  my $toc_frame_fh = $self->Texinfo::Common::open_out ($toc_frame_outfile);
   if (defined($toc_frame_fh)) {
 
     my $header = &{$self->{'format_begin_file'}}($self, $toc_frame_file, undef);
@@ -6187,6 +6186,58 @@ sub convert($$)
   }
 
   return $result;
+}
+
+# This is called from the main program on the converter.
+sub output_internal_links($)
+{
+  my $self = shift;
+  my $out_string = '';
+  if ($self->{'elements'}) {
+    foreach my $element (@{$self->{'elements'}}) {
+      my $text;
+      my $href;
+      my $command = $self->element_command($element);
+      if (defined($command)) {
+        # Use '' for filename, to force a filename in href.
+        $href = $self->command_href($command, '');
+        my $tree = $self->command_text($command, 'tree');
+        if ($tree) {
+          $text = Texinfo::Convert::Text::convert($tree, 
+                             {Texinfo::Common::_convert_text_options($self)});
+        }
+      }
+      if (defined($href) or defined($text)) {
+        $out_string .= $href if (defined($href));
+        $out_string .= "\ttoc\t";
+        $out_string .= $text if (defined($text));
+        $out_string .= "\n";
+      }
+    }
+  }
+  if ($self->{'parser'}) {
+    foreach my $index_name (sort(keys (%{$self->{'index_entries_by_letter'}}))) {
+      foreach my $letter_entry (@{$self->{'index_entries_by_letter'}->{$index_name}}) {
+        foreach my $index_entry (@{$letter_entry->{'entries'}}) {
+          my $href;
+          my $key;
+          $href = $self->command_href($index_entry->{'command'}, '');
+          $key = $index_entry->{'key'};
+          if (defined($key) and $key =~ /\S/) {
+            $out_string .= $href if (defined($href));
+            $out_string .= "\t$index_name\t";
+            $out_string .= $key;
+            $out_string .= "\n";
+          }
+        }
+      }
+    }
+  }
+  if ($out_string ne '') {
+    return $out_string;
+  } else {
+    return undef;
+  }
 }
 
 my @possible_stages = ('setup', 'structure', 'init', 'finish');
@@ -6447,11 +6498,10 @@ sub output($$)
     if ($self->get_conf('OUTFILE') ne '') {
       print STDERR "DO No pages, output in ".$self->get_conf('OUTFILE')."\n"
         if ($self->get_conf('DEBUG'));
-      $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'),
-                                            $self->{'perl_encoding'});
-       if (!$fh) {
-         $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                    $self->get_conf('OUTFILE'), $!));
+      $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'));
+      if (!$fh) {
+        $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                      $self->get_conf('OUTFILE'), $!));
         return undef;
       }
     } else {
@@ -6497,10 +6547,9 @@ sub output($$)
       }
       # Then open the file and output the elements or the special_page_content
       if (!$files{$element->{'filename'}}->{'fh'}) {
-        $file_fh = $self->Texinfo::Common::open_out ($element->{'out_filename'},
-                                                     $self->{'perl_encoding'});
+        $file_fh = $self->Texinfo::Common::open_out ($element->{'out_filename'});
         if (!$file_fh) {
-         $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+          $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $element->{'out_filename'}, $!));
           # FIXME close/remove files already created
           return undef;
@@ -6563,8 +6612,7 @@ sub output($$)
         } else {
           $out_filename = $node_filename;
         }
-        my $file_fh = $self->Texinfo::Common::open_out ($out_filename,
-                                                 $self->{'perl_encoding'});
+        my $file_fh = $self->Texinfo::Common::open_out ($out_filename);
         if (!$file_fh) {
          $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $out_filename, $!));
@@ -6618,8 +6666,7 @@ sub output($$)
         } else {
           $out_filename = $filename;
         }
-        my $file_fh = $self->Texinfo::Common::open_out ($out_filename,
-                                                 $self->{'perl_encoding'});
+        my $file_fh = $self->Texinfo::Common::open_out ($out_filename);
         if (!$file_fh) {
          $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $out_filename, $!));
@@ -7103,6 +7150,12 @@ the resulting output.
 Convert a Texinfo tree portion I<$tree> and return the resulting 
 output.  This function do not try to output a full document but only
 portions of document.  For a full document use C<convert>.
+
+=item $result = $converter->output_internal_links()
+
+Returns text representing the links in the document.  At present the format 
+should follow the C<--internal-links> option of texi2any/makeinfo specification
+and this is only relevant for HTML.
 
 =back
 

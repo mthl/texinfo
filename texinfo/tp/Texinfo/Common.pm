@@ -749,15 +749,20 @@ sub open_out ($$;$)
   my $self = shift;
   my $file = shift;
   my $encoding = shift;
+
+  if (!defined($encoding) and $self and defined($self->{'perl_encoding'})) {
+    $encoding = $self->{'perl_encoding'};
+  }
+
   if ($file eq '-') {
-    binmode(STDOUT, ":encoding($encoding)") if (defined($encoding));
+    binmode(STDOUT, ":encoding($encoding)") if ($encoding);
     return \*STDOUT;
   }
   my $filehandle = do { local *FH };
   if (!open ($filehandle, '>', $file)) {
     return undef; 
   }
-  if (defined($encoding)) {
+  if ($encoding) {
     if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       binmode($filehandle, ':utf8');
     } else { # FIXME also right for shiftijs or similar encodings?
@@ -765,7 +770,8 @@ sub open_out ($$;$)
     }
     binmode($filehandle, ":encoding($encoding)");
   }
-  push @{$self->{'opened_files'}}, $file;
+  push @{$self->{'opened_files'}}, $file
+    if ($self);
   return $filehandle;
 }
 

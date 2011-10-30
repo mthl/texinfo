@@ -77,8 +77,7 @@ sub output($)
 
   my $fh;
   if (! $self->get_conf('OUTFILE') eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'), 
-                                            $self->{'perl_encoding'});
+    $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'));
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $self->get_conf('OUTFILE'), $!));
@@ -139,8 +138,7 @@ sub output($)
         }
         $out_file_nr++;
         $fh = $self->Texinfo::Common::open_out (
-                               $self->get_conf('OUTFILE').'-'.$out_file_nr, 
-                               $self->{'perl_encoding'});
+                               $self->get_conf('OUTFILE').'-'.$out_file_nr); 
         if (!$fh) {
            $self->document_error(sprintf(
                   $self->__("Could not open %s for writing: %s"),
@@ -158,8 +156,7 @@ sub output($)
   my $tag_text = '';
   if ($out_file_nr > 1) {
     close ($fh);
-    $fh = $self->Texinfo::Common::open_out($self->get_conf('OUTFILE'), 
-                                           $self->{'perl_encoding'});
+    $fh = $self->Texinfo::Common::open_out($self->get_conf('OUTFILE'));
     if (!$fh) {
       $self->document_error(sprintf(
             $self->__("Could not open %s for writing: %s"),
@@ -643,6 +640,12 @@ the resulting output.
 Convert a Texinfo tree portion I<$tree> and return the resulting 
 output.  This function do not try to output a full document but only
 portions of document.  For a full document use C<convert>.
+
+=item $result = $converter->output_internal_links()
+
+Returns text representing the links in the document.  At present the format 
+should follow the C<--internal-links> option of texi2any/makeinfo specification
+and this is only relevant for HTML.
 
 =back
 

@@ -409,8 +409,7 @@ sub output($$)
     $outfile = $self->get_conf('OUTFILE');
   }
   
-  my $fh = $self->Texinfo::Common::open_out ($outfile,
-                                             $self->{'perl_encoding'});
+  my $fh = $self->Texinfo::Common::open_out ($outfile);
   if (!$fh) {
     $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                   $outfile, $!));
@@ -2503,6 +2502,12 @@ the resulting output.
 Convert a Texinfo tree portion I<$tree> and return the resulting 
 output.  This function do not try to output a full document but only
 portions of document.  For a full document use C<convert>.
+
+=item $result = $converter->output_internal_links()
+
+Returns text representing the links in the document.  At present the format 
+should follow the C<--internal-links> option of texi2any/makeinfo specification
+and this is only relevant for HTML.
 
 =back
 

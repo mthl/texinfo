@@ -21,9 +21,6 @@
 
 package Texinfo::Structuring;
 
-# FIXME output_internal_links is not documented, but it is not clear
-# that is belongs here
-
 use 5.00405;
 use strict;
 
@@ -51,7 +48,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   nodes_tree
   number_floats
   menu_to_simple_menu
-  output_internal_links
   sectioning_structure
   set_menus_to_simple_menu
   sort_indices
@@ -1197,56 +1193,6 @@ sub merge_indices($$$)
     }
   }
   return $merged_index_entries;
-}
-
-sub output_internal_links($$$)
-{
-  my $self = shift;
-  my $fh = shift;
-  if ($self->{'elements'}) {
-    foreach my $element (@{$self->{'elements'}}) {
-      my $text;
-      my $href;
-      my $command = $self->element_command($element);
-      if (defined($command)) {
-        # Use '' for filename, to force a filename in href.
-        $href = $self->command_href($command, '');
-        my $tree = $self->command_text($command, 'tree');
-        if ($tree) {
-          $text = Texinfo::Convert::Text::convert($tree, 
-                             {Texinfo::Common::_convert_text_options($self)});
-        }
-      }
-      if (defined($href) or defined($text)) {
-        my $out_string = '';
-        $out_string .= $href if (defined($href));
-        $out_string .= "\ttoc\t";
-        $out_string .= $text if (defined($text));
-        $out_string .= "\n";
-        print $fh $out_string;
-      }
-    }
-  }
-  if ($self->{'parser'}) {
-    foreach my $index_name (sort(keys (%{$self->{'index_entries_by_letter'}}))) {
-      foreach my $letter_entry (@{$self->{'index_entries_by_letter'}->{$index_name}}) {
-        foreach my $index_entry (@{$letter_entry->{'entries'}}) {
-          my $href;
-          my $key;
-          $href = $self->command_href($index_entry->{'command'}, '');
-          $key = $index_entry->{'key'};
-          if (defined($key) and $key =~ /\S/) {
-            my $out_string = '';
-            $out_string .= $href if (defined($href));
-            $out_string .= "\t$index_name\t";
-            $out_string .= $key;
-            $out_string .= "\n";
-            print $fh $out_string;
-          }
-        }
-      }
-    }
-  }
 }
 
 # modify the menu tree to put description and menu comment content

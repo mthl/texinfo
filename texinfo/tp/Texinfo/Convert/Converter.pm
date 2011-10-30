@@ -97,6 +97,11 @@ sub converter_global_commands($)
   return ('documentlanguage', 'documentencoding');
 }
 
+sub output_internal_links($)
+{
+  my $self = shift;
+  return undef;
+}
 
 # FIXME documentencoding handling is not reverted by resetting
 # a value with set_conf, so _unset_global_multiple_commands won't

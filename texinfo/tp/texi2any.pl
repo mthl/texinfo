@@ -941,8 +941,8 @@ while(@input_files)
     my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree);
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
-    my $macro_expand_fh = Texinfo::Common::open_out({}, $macro_expand_file,
-                                               $parser->{'perl_encoding'});
+    my $macro_expand_fh = Texinfo::Common::open_out($parser, 
+                                                    $macro_expand_file);
     if (defined ($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
       close ($macro_expand_fh);
@@ -994,20 +994,24 @@ while(@input_files)
   handle_errors($converter, $error_count);
   if (defined(get_conf('INTERNAL_LINKS')) and $file_number == 0
       and $formats_table{$format}->{'internal_links'}) {
-    my $internal_links_file = get_conf('INTERNAL_LINKS');
-    my $internal_links_fh = Texinfo::Common::open_out({}, $internal_links_file,
-                                               $parser->{'perl_encoding'});
-    if (defined ($internal_links_fh)) {
-      # FIXME no possibility of configuration?
-      Texinfo::Structuring::output_internal_links($converter, 
-                                                  $internal_links_fh);
-      close ($internal_links_fh);
-    } else {
-      warn (sprintf(__("Could not open %s for writing: %s\n"), 
-                    $internal_links_file, $!));
-      $error_count++;
-      exit (1) if ($error_count and (!get_conf('FORCE')
-         or $error_count > get_conf('ERROR_LIMIT')));
+    my $internal_links_text 
+      = $converter->output_internal_links();
+    # FIXME output only if there are links or always, maybe creating an 
+    # empty file.
+    if (defined($internal_links_text)) {
+      my $internal_links_file = get_conf('INTERNAL_LINKS');
+      my $internal_links_fh = Texinfo::Common::open_out($converter, 
+                                               $internal_links_file);
+      if (defined ($internal_links_fh)) {
+        print $internal_links_fh $internal_links_text;
+        close ($internal_links_fh);
+      } else {
+        warn (sprintf(__("Could not open %s for writing: %s\n"), 
+                      $internal_links_file, $!));
+        $error_count++;
+        exit (1) if ($error_count and (!get_conf('FORCE')
+           or $error_count > get_conf('ERROR_LIMIT')));
+      }
     }
   }
 }
