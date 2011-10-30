@@ -557,8 +557,14 @@ $result_trees{'node'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'c'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'c'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => ',',
@@ -745,6 +751,7 @@ $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[2]{'args'}[0]{'paren
 $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[0];
 $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[0];
 $result_trees{'node'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7];
+$result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1];
 $result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[1];
 $result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[1];

@@ -180,8 +180,14 @@ $result_trees{'characters_and_commands_in_var'} = {
                 {
                   'args' => [
                     {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'c'
+                        }
+                      ],
                       'parent' => {},
-                      'text' => 'c'
+                      'type' => 'following_arg'
                     }
                   ],
                   'cmdname' => ',',
@@ -220,8 +226,14 @@ $result_trees{'characters_and_commands_in_var'} = {
                 {
                   'args' => [
                     {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'e'
+                        }
+                      ],
                       'parent' => {},
-                      'text' => 'e'
+                      'type' => 'following_arg'
                     }
                   ],
                   'cmdname' => '`',
@@ -386,6 +398,7 @@ $result_trees{'characters_and_commands_in_var'}{'contents'}[2]{'contents'}[1]{'p
 $result_trees{'characters_and_commands_in_var'}{'contents'}[2]{'parent'} = $result_trees{'characters_and_commands_in_var'};
 $result_trees{'characters_and_commands_in_var'}{'contents'}[3]{'parent'} = $result_trees{'characters_and_commands_in_var'};
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
+$result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
@@ -393,6 +406,7 @@ $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'a
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
+$result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'characters_and_commands_in_var'}{'contents'}[4]{'contents'}[0]{'args'}[0];

@@ -342,8 +342,14 @@ $result_trees{'weird_accents'} = {
                             {
                               'args' => [
                                 {
+                                  'contents' => [
+                                    {
+                                      'parent' => {},
+                                      'text' => 'r'
+                                    }
+                                  ],
                                   'parent' => {},
-                                  'text' => 'r'
+                                  'type' => 'following_arg'
                                 }
                               ],
                               'cmdname' => '`',
@@ -521,6 +527,7 @@ $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'par
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[5];
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2];
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2];
+$result_trees{'weird_accents'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0];

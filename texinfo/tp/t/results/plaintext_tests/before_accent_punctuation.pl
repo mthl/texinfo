@@ -16,8 +16,14 @@ $result_trees{'before_accent_punctuation'} = {
         {
           'args' => [
             {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'a'
+                }
+              ],
               'parent' => {},
-              'text' => 'a'
+              'type' => 'following_arg'
             }
           ],
           'cmdname' => '^',
@@ -31,6 +37,7 @@ $result_trees{'before_accent_punctuation'} = {
   'type' => 'text_root'
 };
 $result_trees{'before_accent_punctuation'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'before_accent_punctuation'}{'contents'}[0];
+$result_trees{'before_accent_punctuation'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'before_accent_punctuation'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'before_accent_punctuation'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'before_accent_punctuation'}{'contents'}[0]{'contents'}[1];
 $result_trees{'before_accent_punctuation'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'before_accent_punctuation'}{'contents'}[0];
 $result_trees{'before_accent_punctuation'}{'contents'}[0]{'parent'} = $result_trees{'before_accent_punctuation'};

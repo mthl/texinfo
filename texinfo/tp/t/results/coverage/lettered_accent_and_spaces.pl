@@ -12,8 +12,13 @@ $result_trees{'lettered_accent_and_spaces'} = {
         {
           'args' => [
             {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'a'
+                }
+              ],
               'parent' => {},
-              'text' => 'a',
               'type' => 'space_command_arg'
             }
           ],
@@ -35,6 +40,7 @@ $result_trees{'lettered_accent_and_spaces'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'lettered_accent_and_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'lettered_accent_and_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'lettered_accent_and_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'lettered_accent_and_spaces'}{'contents'}[0]{'contents'}[0];
 $result_trees{'lettered_accent_and_spaces'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'lettered_accent_and_spaces'}{'contents'}[0];
 $result_trees{'lettered_accent_and_spaces'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'lettered_accent_and_spaces'}{'contents'}[0];

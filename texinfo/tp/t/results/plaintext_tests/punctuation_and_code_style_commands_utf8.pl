@@ -82,8 +82,14 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
                 {
                   'args' => [
                     {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'e'
+                        }
+                      ],
                       'parent' => {},
-                      'text' => 'e'
+                      'type' => 'following_arg'
                     }
                   ],
                   'cmdname' => '~',
@@ -167,8 +173,14 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
                 {
                   'args' => [
                     {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'E'
+                        }
+                      ],
                       'parent' => {},
-                      'text' => 'E'
+                      'type' => 'following_arg'
                     }
                   ],
                   'cmdname' => '~',
@@ -256,8 +268,14 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
                 {
                   'args' => [
                     {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'E'
+                        }
+                      ],
                       'parent' => {},
-                      'text' => 'E'
+                      'type' => 'following_arg'
                     }
                   ],
                   'cmdname' => '~',
@@ -329,6 +347,7 @@ $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'conten
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
+$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2];
@@ -345,6 +364,7 @@ $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'conten
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[6];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
+$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8];
@@ -362,6 +382,7 @@ $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'conten
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0];
+$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14];

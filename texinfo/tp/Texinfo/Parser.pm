@@ -1055,7 +1055,7 @@ sub _command_error($$$$;@)
 
   # use the beginning of the @-command for the error message
   # line number if available. 
-  # FIXME currently not done for regular brace commands
+  # FIXME line_nr currently not registered for regular brace commands
   if ($current->{'line_nr'}) {
     $line_nr = $current->{'line_nr'};
   }
@@ -3538,8 +3538,11 @@ sub _parse_texi($;$)
           } elsif ($line =~ s/^(.)//o) {
             print STDERR "ACCENT \@$current->{'cmdname'}\n" 
               if ($self->{'DEBUG'});
-            # FIXME this is different than usual tree, no content here
-            $current->{'args'} = [ { 'text' => $1, 'parent' => $current } ];
+            my $following_arg = {'type' => 'following_arg',
+                                 'parent' => $current};
+            $following_arg->{'contents'} = [{ 'text' => $1,
+                                             'parent' => $following_arg } ];
+            $current->{'args'} = [ $following_arg ];
             if ($current->{'cmdname'} eq 'dotless' and $1 ne 'i' and $1 ne 'j') {
               $self->line_error (sprintf($self->
                  __("%c%s expects `i' or `j' as argument, not `%s'"), 
@@ -3881,6 +3884,7 @@ sub _parse_texi($;$)
             last NEXT_LINE if ($command eq 'bye');
             last;
           } else {
+            # $arg_spec is text, line, skipspace or a number
             my $line_arg = 0;
             $line_arg = 1 if ($arg_spec ne 'skipspace');
             if ($command eq 'item' or $command eq 'itemx' 
@@ -4007,7 +4011,8 @@ sub _parse_texi($;$)
                                       'parent' => $current } ];
               # @node is the only misc command with args separated with comma
               # FIXME a 3 lingering here deep into the code may not
-              # be very wise...
+              # be very wise...  However having a hash only for one @-command
+              # is not very appealing either...
               if ($command eq 'node') {
                 $current->{'remaining_args'} = 3;
               } elsif ($command eq 'author') {
@@ -5551,14 +5556,19 @@ is
 the C<@fooindex> @-command element will have the I<index_entry_command>
 type.
 
+=item following_arg
+
+This type is set for non alphabetic accent @-commands that don't use brace 
+but instead have their argument right after them, as
+
+  @~n
+
 =item space_command_arg
 
 This type is set for accent @-commands that don't use brace but instead
 have their argument after some space, as
 
   @ringaccent A
-
-This is not a recommended construct, but it is valid.
 
 =item definfoenclose_command
 

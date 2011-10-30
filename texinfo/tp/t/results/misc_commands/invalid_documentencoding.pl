@@ -403,8 +403,14 @@ $result_trees{'invalid_documentencoding'} = {
                 {
                   'args' => [
                     {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'e'
+                        }
+                      ],
                       'parent' => {},
-                      'text' => 'e'
+                      'type' => 'following_arg'
                     }
                   ],
                   'cmdname' => '\'',
@@ -504,6 +510,7 @@ $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[6]{'parent'
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0];
+$result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[2];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[5]{'contents'}[7]{'args'}[0];

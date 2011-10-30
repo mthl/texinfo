@@ -12,8 +12,13 @@ $result_trees{'not_i_j_in_dotless'} = {
         {
           'args' => [
             {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'a'
+                }
+              ],
               'parent' => {},
-              'text' => 'a',
               'type' => 'space_command_arg'
             }
           ],
@@ -74,6 +79,7 @@ $result_trees{'not_i_j_in_dotless'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'not_i_j_in_dotless'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_i_j_in_dotless'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'not_i_j_in_dotless'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_i_j_in_dotless'}{'contents'}[0]{'contents'}[0];
 $result_trees{'not_i_j_in_dotless'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_i_j_in_dotless'}{'contents'}[0];
 $result_trees{'not_i_j_in_dotless'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_i_j_in_dotless'}{'contents'}[0];

@@ -130,8 +130,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '`',
@@ -187,8 +193,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '\'',
@@ -244,8 +256,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '^',
@@ -301,8 +319,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'u'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'u'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '"',
@@ -358,8 +382,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'i'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'i'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '`',
@@ -415,8 +445,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'i'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'i'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '\'',
@@ -472,8 +508,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'i'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'i'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '^',
@@ -529,8 +571,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'u'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'u'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '"',
@@ -586,8 +634,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'c'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'c'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => ',',
@@ -643,8 +697,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'n'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'n'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '~',
@@ -700,8 +760,14 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e'
+                  'type' => 'following_arg'
                 }
               ],
               'cmdname' => '=',
@@ -779,8 +845,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -840,8 +911,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -901,8 +977,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -1005,8 +1086,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -1066,8 +1152,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -1127,8 +1218,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -1188,8 +1284,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -1249,8 +1350,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'a'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'a',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -1310,8 +1416,13 @@ $result_trees{'accent'} = {
             {
               'args' => [
                 {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'e'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => 'e',
                   'type' => 'space_command_arg'
                 }
               ],
@@ -2255,6 +2366,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{
 $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[1];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[1];
@@ -2265,6 +2377,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{
 $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[3];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[3]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[3];
@@ -2275,6 +2388,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[0]{
 $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[5];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[5];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[5];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[5]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[5];
@@ -2285,6 +2399,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'args'}[0]{
 $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[7];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[7];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[7];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[7];
@@ -2295,6 +2410,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{
 $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[9];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[9];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[9];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[9]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[9];
@@ -2305,6 +2421,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[11];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[11];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[11];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[11]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[11];
@@ -2315,6 +2432,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[13];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[13];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[13];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[13];
@@ -2325,6 +2443,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[15];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[15];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[15];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[15]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[15];
@@ -2335,6 +2454,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[17];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[17];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[17];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[17]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[17];
@@ -2345,6 +2465,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[19];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[19];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[19];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[19]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[19];
@@ -2355,6 +2476,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[21];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[21];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[21];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[21]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[21];
@@ -2370,6 +2492,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[3]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[3]{'line_nr'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[1]{'line_nr'};
 $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[23];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[23];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[5]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[5];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[5]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[23];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[23]{'contents'}[6]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[23];
@@ -2380,6 +2503,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[25];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[25];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[25];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[25]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[25];
@@ -2390,6 +2514,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[27];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[27];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[27];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[27]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[27];
@@ -2407,6 +2532,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[31];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[31];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[31];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[31]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[31];
@@ -2417,6 +2543,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[33];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[33];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[33];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[33]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[33];
@@ -2427,6 +2554,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[35];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[35];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[35];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[35]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[35];
@@ -2437,6 +2565,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[37];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[37];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[37];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[37]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[37];
@@ -2447,6 +2576,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[39]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[39];
@@ -2457,6 +2587,7 @@ $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1]{'args'}[0]
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[1]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[2]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41];
+$result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[3]{'args'}[0];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[3];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[3]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41];
 $result_trees{'accent'}{'contents'}[2]{'contents'}[41]{'contents'}[4]{'parent'} = $result_trees{'accent'}{'contents'}[2]{'contents'}[41];

@@ -944,17 +944,13 @@ sub find_innermost_accent_contents($;$)
       return ([], \@accent_commands);
     }
     my $arg = $current->{'args'}->[0];
-    # a construct like @'e without content
-    if (defined($arg->{'text'})) {
-      return ([$arg], \@accent_commands);
-    }
     if (!$arg->{'contents'}) {
       print STDERR "BUG: No content in accent command\n";
       #print STDERR Data::Dumper->Dump([$current]);
       #print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
       return ([], \@accent_commands);
     }
-    # inside the braces of an accent
+    # inside the argument of an accent
     my $text_contents = [];
     foreach my $content (@{$arg->{'contents'}}) {
       if (!($content->{'extra'} and $content->{'extra'}->{'invalid_nesting'})
