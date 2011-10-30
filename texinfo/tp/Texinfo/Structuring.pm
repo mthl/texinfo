@@ -246,7 +246,10 @@ sub sectioning_structure($$)
               if ($content->{'cmdname'} eq 'part') {
                 $new_upper_element = 1;
                 if ($level < $up->{'level'}) {
-                  # FIXME warn previous element too low
+                  # FIXME(Karl) error message
+                  $self->line_warn(sprintf($self->__(
+                    "No chapter-level command before \@%s"),
+                          $content->{'cmdname'}), $content->{'line_nr'});
                 }
               } else {
                 $self->line_error(sprintf($self->__(
@@ -338,7 +341,7 @@ sub sectioning_structure($$)
 }
 
 my @node_directions = ('next', 'prev', 'up');
-# FIXME i18n?
+# FIXME(Karl) i18n?
 my %direction_texts = (
  'prev' => 'Prev',
  'next' => 'Next',
@@ -649,7 +652,6 @@ sub split_by_section($)
         $elements->[-1]->{'extra'}->{'element_command'} 
           = $new_section;
       }
-    # FIXME Handle part differently? (associate with prev sectioning command?)
     } elsif ($content->{'cmdname'} and $content->{'cmdname'} ne 'node' 
                                    and $content->{'cmdname'} ne 'bye') {
       if ($current->{'extra'}->{'no_section'}) {
@@ -857,7 +859,6 @@ sub elements_directions($$)
 
       # fastforward is the next element on same level than the upper parent
       # element.
-      # FIXME and for parts?
       if ($up->{'level'} < 1 and $up->{'cmdname'} and $up->{'cmdname'} eq 'top'
           and $up->{'section_childs'} and @{$up->{'section_childs'}}) {
         $directions->{'FastForward'} = $up->{'section_childs'}->[0]->{'parent'};
@@ -878,7 +879,7 @@ sub elements_directions($$)
       }
     }
     # Use node up for Up if there is no section up.
-    # FIXME is it really right?
+    # FIXME(Karl) is it really right?
     if (!$directions->{'Up'} and $element->{'extra'}->{'node'}
         and $element->{'extra'}->{'node'}->{'node_up'} 
         and (!$node_top or ($element->{'extra'}->{'node'} ne $node_top))) {
@@ -1134,7 +1135,6 @@ sub _do_index_keys($$$)
   }
 }
 
-# FIXME empty index entries are kept here, but not when sorting by letter.
 sub sort_indices($$$)
 {
   my $self = shift;
@@ -1144,7 +1144,8 @@ sub sort_indices($$$)
   _do_index_keys($self, $index_entries, $index_names);
   foreach my $index_name (keys(%$index_entries)) {
     @{$sorted_index_entries->{$index_name}} = 
-        sort _sort_index_entries @{$index_entries->{$index_name}};
+        sort _sort_index_entries 
+            grep {$_->{'key'} =~ /\S/} @{$index_entries->{$index_name}};
   }
   return $sorted_index_entries;
 }

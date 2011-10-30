@@ -174,7 +174,17 @@ $result_sectioning{'section_before_part'} = {
 $result_sectioning{'section_before_part'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'section_before_part'};
 $result_sectioning{'section_before_part'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'section_before_part'};
 
-$result_errors{'section_before_part'} = [];
+$result_errors{'section_before_part'} = [
+  {
+    'error_line' => ':3: warning: No chapter-level command before @part
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'No chapter-level command before @part',
+    'type' => 'warning'
+  }
+];
 
 
 

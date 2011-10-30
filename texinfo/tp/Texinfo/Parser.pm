@@ -3288,8 +3288,8 @@ sub _parse_texi($;$)
                          'extra' => {'line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
-          # FIXME accept only a command at the line beginning?
-          # FIXME accept only one space after @end?
+          # FIXME(Karl) accept only a command at the line beginning?
+          # FIXME(Karl) accept only one space after @end?
         } elsif ($line =~ /^(.*?)\@end\s+([a-zA-Z][\w-]*)/
                  and ($2 eq $current->{'cmdname'})) {
           my $end_command = $2;
@@ -4106,7 +4106,7 @@ sub _parse_texi($;$)
                                                 'contents' => [] };
               $current = $current->{'contents'}->[-1];
             }
-            # FIXME ignore what is remaining on the line, to eat 
+            # FIXME(Karl) ignore what is remaining on the line, to eat 
             # the end of line?
             last;
           } else {

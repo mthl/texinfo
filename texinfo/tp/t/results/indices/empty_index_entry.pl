@@ -367,10 +367,6 @@ File: ,  Node: Top,  Up: (dir)
 
  -- :
 
- [index ]
-* Menu:
-
-
 
 
 Tag Table:

@@ -264,7 +264,17 @@ $result_menus{'section_node_before_part'} = {
   }
 };
 
-$result_errors{'section_node_before_part'} = [];
+$result_errors{'section_node_before_part'} = [
+  {
+    'error_line' => ':5: warning: No chapter-level command before @part
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'No chapter-level command before @part',
+    'type' => 'warning'
+  }
+];
 
 
 
