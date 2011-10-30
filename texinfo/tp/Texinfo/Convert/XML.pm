@@ -137,13 +137,11 @@ my %misc_command_line_attributes = (
   'documentlanguage' => 'xml:lang',
 );
 
-# FIXME printindex is special?
 my %misc_command_numbered_arguments_attributes = (
   'definfoenclose' => [ 'command', 'open', 'close' ],
   'alias' => [ 'new', 'existing' ],
   'syncodeindex' => [ 'from', 'to' ],
   'synindex' => [ 'from', 'to' ],
-#  'sp' => [ 'lines' ],
 );
 
 my %xml_misc_commands = %Texinfo::Common::misc_commands;

@@ -260,7 +260,6 @@ sub _set_global_multiple_commands($;$)
 {
   my $self = shift;
   my $multiple_commands_index = shift;
-  # FIXME 0 (first) or -1 (last)?
   $multiple_commands_index = 0 if (!defined($multiple_commands_index));
 
   foreach my $global_command ($self->converter_global_commands()) {
@@ -371,8 +370,8 @@ sub _set_outfile($$$)
         and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
 
   # FIXME use TOP_FILE?
-  # FIXME PREFIX is the same as setfilename, maybe override setfilename 
-  # instead?
+  # FIXME PREFIX overrides setfilename, maybe override setfilename 
+  # directly instead?
   if (defined($self->get_conf('PREFIX'))) {
     $setfilename = undef;
     $input_basename = $self->get_conf('PREFIX');

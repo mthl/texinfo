@@ -149,7 +149,8 @@ sub document_error ($$)
   $self->{'error_nrs'}++;
 }
 
-sub file_line_warn($$$;$) {
+sub file_line_warn($$$;$)
+{
   my $self = shift;
   my $text = shift;
   return if ($self->{'ignore_notice'});
@@ -198,8 +199,6 @@ sub gdt($$;$$)
   my $context = shift;
   my $conf = shift;
 
-  my $encoding = $self->{'encoding_name'};
-
   my $re = join '|', map { quotemeta $_ } keys %$context
       if (defined($context) and ref($context));
 
@@ -211,6 +210,10 @@ sub gdt($$;$$)
 #  my $saved_LC_MESSAGES = POSIX::setlocale (LC_MESSAGES);
 
   Locale::Messages::textdomain($strings_textdomain);
+
+  # FIXME do that only once when encoding is seen (or at beginning)
+  # instead of here, each time that gdt is called?
+  my $encoding = $self->{'encoding_name'};
   Locale::Messages::bind_textdomain_codeset($strings_textdomain, $encoding)
     if ($encoding and $encoding ne 'us-ascii');
   if (!($encoding and $encoding eq 'us-ascii') and $self->{'perl_encoding'}) {
@@ -218,7 +221,8 @@ sub gdt($$;$$)
       \&_encode_i18n_string, $self->{'perl_encoding'});
   }
 
-  # FIXME do that in the converters when @documentlanguage is found.
+  # FIXME do that once when @documentlanguage changes (or at beginning)
+  # instead of here, each time that gdt is called?
   my $lang = $self->get_conf('documentlanguage');
   $lang = $DEFAULT_LANGUAGE if (!defined($lang));
   my @langs = ($lang);
@@ -249,11 +253,13 @@ sub gdt($$;$$)
 
   Locale::Messages::nl_putenv("LANGUAGE=$locales");
 
-  my $result;
+  my $translation_result;
   if (!defined($context) or ref($context)) {
-    $result = Locale::Messages::gettext($message);
+    $translation_result = Locale::Messages::gettext($message);
   } else {
-    $result = Locale::Messages::pgettext($context, $message);
+    # In practice this is not used anywhere, context is always a HASH.
+    # for strings substitution not a context for translation.
+    $translation_result = Locale::Messages::pgettext($context, $message);
   }
 
   Locale::Messages::textdomain($messages_textdomain);
@@ -288,28 +294,48 @@ sub gdt($$;$$)
   my $parser_conf;
   # we change the substituted brace-enclosed strings to values, that
   # way they are substituted, including when they are Texinfo trees.
+  # a _ is prepended to avoid clashing with other values, although since
+  # the parser is a new one there should not be any problem anyway.
   if (defined($re)) {
     # next line taken from libintl perl, copyright Guido. sub __expand
-    $result =~ s/\{($re)\}/\@value\{$1\}/g;
+    $translation_result =~ s/\{($re)\}/\@value\{_$1\}/g;
     foreach my $substitution(keys %$context) {
-      #print STDERR "$result $substitution $context->{$substitution}\n";
-      $parser_conf->{'values'}->{$substitution} = $context->{$substitution};
+      #print STDERR "$translation_result $substitution $context->{$substitution}\n";
+      $parser_conf->{'values'}->{'_'.$substitution} = $context->{$substitution};
     }
   }
-  # FIXME reuse a parser?
-  if ($self->get_conf('DEBUG')) {
-    $parser_conf->{'DEBUG'} = 1;
-    print STDERR "GDT $result\n";
+
+  # Don't reuse the current parser itself, as (tested) the parsing goes 
+  # wrong, certainly because the parsed text can affect the parser state.
+  my $current_parser;
+  if (ref($self) eq 'Texinfo::Parser') {
+    $current_parser = $self;
+  } elsif ($self->{'parser'}) {
+    $current_parser = $self->{'parser'};
+  }
+
+  if ($current_parser) {
+    # not sure 'gettext' could in fact be useful in parser for
+    # translated fragments.  'TEST' can be used fot @today{} expansion.
+    foreach my $duplicated_conf ('clickstyle', 'kbdinputstyle', 'DEBUG',
+                                 'TEST', 'gettext') {
+      $parser_conf->{$duplicated_conf} = $current_parser->{$duplicated_conf}
+        if (defined($current_parser->{$duplicated_conf}));
+    }
   }
   my $parser = Texinfo::Parser::parser($parser_conf);
-
-  # FIXME it doesn't seems to be used anywhere.
-  if ($conf->{'paragraph'}) {
-    $result = $parser->parse_texi_text($result);
-  } else {
-    $result = $parser->parse_texi_line($result);
+  if ($parser->{'DEBUG'}) {
+    print STDERR "GDT $translation_result\n";
   }
-  return $result;
+
+  my $tree;
+  # Right now this is not used anywhere.
+  if ($conf->{'translated_paragraph'}) {
+    $tree = $parser->parse_texi_text($translation_result);
+  } else {
+    $tree = $parser->parse_texi_line($translation_result);
+  }
+  return $tree;
 }
 
 

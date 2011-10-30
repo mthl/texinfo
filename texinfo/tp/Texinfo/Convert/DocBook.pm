@@ -524,7 +524,7 @@ sub _convert($$;$)
           $arg_tree = $root->{'args'}->[0];
         }
         $result .= "<term>";
-        # Is it automaticcally entered in docbook?  No.
+        # Is it automatically entered in docbook?  No.
         #$result .= $self->_index_entry($root);
         # FIXME
         my $in_code;

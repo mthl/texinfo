@@ -111,8 +111,6 @@ our %default_configuration = (
   # this is the initial context.  It is put at the bottom of the 
   # 'context_stack'
   'context' => '_root',
-  # the stack of the macros being expanded (more recent are first)
-  'macro_stack' => [],
   # these are the user-added indices.  May be an array reference on names
   # or an hash reference in the same format than %index_names below
   'indices' => [],
@@ -143,6 +141,8 @@ our %default_configuration = (
   'documentlanguage' => undef, 
                               # Current documentlanguage set by 
                               # @documentlanguage
+  # This is not used directly, but passed to Convert::Text through 
+  # Texinfo::Common::_convert_text_options
   'ENABLE_ENCODING' => 1,     # output accented and special characters
                               # based on @documentencoding
   'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
@@ -152,6 +152,11 @@ our %default_configuration = (
                               # but relevant for structuring
   'GLOBAL_COMMANDS' => [],    # list of commands registered 
 );
+
+my %tree_informations;
+foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels') {
+  $tree_informations{$tree_information} = 1;
+}
 
 # The commands in initialization_overrides are not set in the document if
 # set at the parser initialization.
@@ -177,6 +182,7 @@ my %initialization_overrides = (
 #                         'math', 'footnote', 'caption', 'shortcaption' are 
 #                         also added when in those commands
 # conditionals_stack      a stack of conditional commands that are expanded.
+# macro_stack             stack of macros being expanded (more recent first)
 # definfoenclose          an hash, key is the command name, value is an array
 #                         reference with 2 values, beginning and ending.
 # input                   a stack, with last at bottom.  Holds the opened files
@@ -492,7 +498,19 @@ sub parser(;$$)
     # called on an existing parser, interpreted as a duplication
     my $old_parser = $class;
     $class = ref($class);
-    $parser = _deep_copy($old_parser);
+    foreach my $key (keys(%default_configuration)) {
+      if ($tree_informations{$key}) {
+        if (defined($old_parser->{$key})) {
+          foreach my $info_key (keys(%{$old_parser->{$key}})) {
+            $parser->{$key}->{$info_key}
+              = $old_parser->{$key}->{$info_key};
+          }
+        }
+      } else {
+        $parser->{$key} = _deep_copy($old_parser->{$key});
+      }
+    }
+    #$parser = _deep_copy($old_parser);
     $parser->{'gettext'} = $old_parser->{'gettext'};
     bless $parser, $class;
     $conf = shift;
@@ -556,6 +574,7 @@ sub parser(;$$)
   }
   $parser->{'context_stack'} = [ $parser->{'context'} ];
   $parser->{'regions_stack'} = [];
+  $parser->{'macro_stack'} = [];
   # turn the array to a hash for speed.  Not sure it really matters for such
   # a small array.
   foreach my $expanded_format(@{$parser->{'expanded_formats'}}) {

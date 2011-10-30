@@ -716,7 +716,9 @@ sub split_pages ($$)
   }
 }
 
-# FIXME node not existing
+# undef in argument should be an error.  Thus only node existing should be
+# passed to this function.  Even if not existing the value returned should
+# be undef.
 sub _node_element($)
 {
   my $node = shift;
