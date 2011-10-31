@@ -86,6 +86,9 @@ foreach my $special_quotation ('note', 'caution', 'important', 'tip', 'warning')
   $docbook_special_quotations{$special_quotation} = 1;
 }
 
+# For '*', there is no line break in DocBook, except in cmdsynopsis (in this
+# case it is <sbr>.  But currently we don't use cmdsynopsis, and it is unlikely
+# that cmdsynopsis is ever used.
 my %docbook_specific_formatting = (
   'TeX' => '&tex;',
   'LaTeX' => '&latex;',
@@ -93,7 +96,6 @@ my %docbook_specific_formatting = (
   "\n" => $nbsp,
   " " => $nbsp,
   'tie' => $nbsp,
-# FIXME and '*'?
 );
 my %docbook_commands_formatting
   = %{$Texinfo::Convert::Converter::default_xml_commands_formatting{'normal'}};
@@ -131,10 +133,8 @@ my %style_attribute_commands;
       'file'        => 'filename',
       'headitemfont' => 'emphasis role="bold"', # not really that, in fact it is 
                              # in <th> rather than <td>
-      # FIXME wordasword is likely to be wrong. Maybe emph for i and literal
-      # for indicateurl.
-      'i'           => 'wordasword',
-      'indicateurl' => 'wordasword',
+      'i'           => 'emphasis',
+      'indicateurl' => 'literal',
       'sansserif'   => '',
       'kbd'         => 'userinput',
       'key'         => 'keycap',
@@ -238,7 +238,7 @@ my %type_elements = (
   'row' => 'row',
   'multitable_head' => 'thead',
   'multitable_body' => 'tbody',
-  # FIXME is this right?
+  # Unfortunatly there does not seem to be anything better in DocBook.
   'def_item' => 'blockquote',
 );
 
@@ -524,9 +524,7 @@ sub _convert($$;$)
           $arg_tree = $root->{'args'}->[0];
         }
         $result .= "<term>";
-        # Is it automatically entered in docbook?  No.
-        #$result .= $self->_index_entry($root);
-        # FIXME
+        $result .= $self->_index_entry($root);
         my $in_code;
         $in_code = 1
           if ($format_item_command 
@@ -1101,10 +1099,10 @@ sub _convert($$;$)
       $result .= "<$self->{'document_context'}->[-1]->{'preformatted_stack'}->[-1]>";
     } elsif ($root->{'type'} eq 'def_line') {
       $result .= "<synopsis>";
+      $result .= $self->_index_entry($root);
       push @{$self->{'document_context'}}, {};
       $self->{'document_context'}->[-1]->{'code'}++;
       $self->{'document_context'}->[-1]->{'inline'}++;
-      $result .= $self->_index_entry($root);
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}) {
         my $main_command;
         if ($Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}}) {

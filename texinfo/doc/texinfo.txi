@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.394 2011-10-26 22:53:07 pertusus Exp $
+@c $Id: texinfo.txi,v 1.395 2011-10-31 14:58:59 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17085,7 +17085,8 @@ For HTML@.  If set, links from headings to toc entries are created.
 @item TOP_FILE
 This file name may be used for the top-level file.  The extension is
 set appropriately, if necessary.  This is used to override the default,
-and is, in general, only taken into account when output is split.
+and is, in general, only taken into account when output is split, and 
+for HTML@.
 
 @item TOP_NODE_UP
 Up node for the Top node; default is @samp{(dir)}.
@@ -21099,7 +21100,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.394 2011-10-26 22:53:07 pertusus Exp $
+$Id: texinfo.txi,v 1.395 2011-10-31 14:58:59 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21170,7 +21171,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.394 2011-10-26 22:53:07 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.395 2011-10-31 14:58:59 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

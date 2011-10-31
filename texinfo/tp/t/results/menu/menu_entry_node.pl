@@ -501,11 +501,11 @@ ul.no-bullet {list-style: none}
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="f.html#a1" accesskey="1">(f)a1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#a2" accesskey="2">(f)a2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+<tr><td align="left" valign="top">&bull; <a href="f.html#a2" accesskey="2">(f)a2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#a3" accesskey="3">(f)a3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         d
+<tr><td align="left" valign="top">&bull; <a href="f.html#a3" accesskey="3">(f)a3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#g_t_0040a" accesskey="4">(f)@a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> 
+<tr><td align="left" valign="top">&bull; <a href="f.html#g_t_0040a" accesskey="4">(f)@a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 <p>

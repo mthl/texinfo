@@ -1247,7 +1247,7 @@ Next: <a href="#NODE" accesskey="n" rel="next"><small>NODE</small></a>, Up: <a h
 <h1 class="node-heading">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#NODE" accesskey="1"><small>VALUE</small></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   <small>DESCRIP TION</small>
+<tr><td align="left" valign="top">&bull; <a href="#NODE" accesskey="1"><small>VALUE</small></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><small>DESCRIP TION</small>
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 MENU COMMENT

@@ -369,9 +369,7 @@ sub _set_outfile($$$)
         and $self->{'extra'}->{'setfilename'}->{'extra'}
         and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
 
-  # FIXME use TOP_FILE?
-  # FIXME PREFIX overrides setfilename, maybe override setfilename 
-  # directly instead?
+  # PREFIX overrides both setfilename and the input file base name
   if (defined($self->get_conf('PREFIX'))) {
     $setfilename = undef;
     $input_basename = $self->get_conf('PREFIX');
@@ -733,7 +731,7 @@ $default_xml_commands_formatting{'normal'} = {
                'dots'         => '&hellip;',
                'enddots'      => '...',
                'equiv'        => '&equiv;',
-# FIXME i18n
+# FIXME(Karl) i18n
                'error'        => 'error--&gt;',
                'expansion'    => '&rarr;',
                'arrow'        => '&rarr;',

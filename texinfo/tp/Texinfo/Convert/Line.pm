@@ -336,11 +336,11 @@ sub add_text($$;$)
       delete $line->{'end_sentence'};
       $line->{'space'} = '';
     } else {
-      # FIXME
-      # this should never happen, all cases are taken into account above.
-      # however it happens with strange caracters that appear sometime and
-      # look like invalid. Is it a perl bug? Maybe an invalid character in
-      # the encoding?
+      # Some characters are not handled by the cases above.
+      # For example, it happened for strange caracters that seems to be
+      # some special spaces.  It is a bit strange since the cases above 
+      # include a possibility and the complement.  Maybe a character 
+      # invalid in a given encoding?
       #die "Unknown caracter leading $text";
       last;
     }

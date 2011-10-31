@@ -382,8 +382,6 @@ sub command_href($$$)
     if ($self->{'elements'} and $self->{'elements'}->[0]
        and defined($self->{'elements'}->[0]->{'filename'})) {
       # In that case use the first page.
-      # FIXME error message?
-      #print STDERR "No filename for $target\n";
       $target_filename = $self->{'elements'}->[0]->{'filename'};
     }
   }
@@ -1563,7 +1561,7 @@ sub _convert_image_command($$$$)
     my $extension;
     if (defined($args->[4]) and defined($args->[4]->{'codetext'})) {
       $extension = $args->[4]->{'codetext'};
-      # FIXME determine with Karl if this is correct.
+      # FIXME(Karl) is this correct?
       unshift @extensions, ".$extension";
       unshift @extensions, "$extension";
     }
@@ -1636,7 +1634,7 @@ foreach my $command (keys(%accent_commands)) {
   $default_commands_conversion{$command} = \&_convert_accent_command;
 }
 
-# key is formatted as code since indicateurl is in code_style_commands
+# key is formatted as code since it is in code_style_commands
 sub _convert_key_command($$$$)
 {
   my $self = shift;
@@ -1712,10 +1710,6 @@ sub _convert_titlefont_command($$$$)
     #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
-  # FIXME is it the right way to do?  Or should it be handled in heading_text?
-  if ($self->in_string()) {
-    return $text;
-  }
   return &{$self->{'format_heading_text'}}($self, 'titlefont', $text, 0, $command);
 }
 
@@ -1755,12 +1749,13 @@ sub _default_heading_text($$$$$)
     return $text;
   }
 
-  # FIXME use a class=*contents?
-  my $class = '';
-  if ($cmdname !~ /contents$/) {
+  my $class;
+  if ($cmdname eq 'node') {
+    $class = 'node-heading';
+  } else {
     $class = $cmdname;
-    $class = 'node-heading' if ($cmdname eq 'node');
   }
+
   my $align = '';
   $align = ' align="center"' if ($cmdname eq 'centerchap' or $cmdname eq 'settitle');
   if ($level < 1) {
@@ -2099,10 +2094,8 @@ sub _default_element_header($$$$)
   print STDERR "Element $element (@{$element->{'contents'}}) ".
      Texinfo::Structuring::_print_element_command_texi($element) ."\n"
         if ($self->get_conf('DEBUG'));
-  #print STDERR "First in element: "
-  #    .Texinfo::Parser::_print_current($element->{'contents'}->[0])
-  #      if ($self->get_conf('DEBUG'));
-  # First command in the element
+
+  # Do the heading if the command is the first command in the element
   if (($element->{'contents'}->[0] eq $command
        or (!$element->{'contents'}->[0]->{'cmdname'} 
             and $element->{'contents'}->[1] eq $command))
@@ -2111,24 +2104,24 @@ sub _default_element_header($$$$)
     my $is_top = $self->_element_is_top($element);
     my $first_in_page = (defined($element->{'filename'})
            and $self->{'counter_in_file'}->{$element->{'filename'}} == 1);
-    #my $previous_is_top = 0;
     my $previous_is_top = ($element->{'element_prev'} 
                    and $self->_element_is_top($element->{'element_prev'}));
+
     print STDERR "Header ($previous_is_top, $is_top, $first_in_page): "
       .Texinfo::Structuring::_print_root_command_texi($command)."\n"
         if ($self->get_conf('DEBUG'));
+
     if ($is_top) {
-      # FIXME clarify this
-      # this is here because we want to always print the head navigation for top
-      # and use TOP_BUTTONS
+      # use TOP_BUTTONS for top.
       $result .= &{$self->{'format_navigation_header'}}($self, 
                $self->get_conf('TOP_BUTTONS'), $cmdname, $command)
-       if ($self->get_conf('SPLIT') or $self->get_conf('HEADERS'));
+        if ($self->get_conf('SPLIT') or $self->get_conf('HEADERS'));
     } else {
       if ($first_in_page and !$self->get_conf('HEADERS')) {
         if ($self->get_conf('SPLIT') eq 'chapter') {
           $result .= &{$self->{'format_navigation_header'}}($self, 
                 $self->get_conf('CHAPTER_BUTTONS'), $cmdname, $command);
+
           $result .= $self->get_conf('DEFAULT_RULE') ."\n"
             if (defined($self->get_conf('DEFAULT_RULE'))
                 and !$self->get_conf('VERTICAL_HEAD_NAVIGATION'));
@@ -2137,16 +2130,15 @@ sub _default_element_header($$$$)
                 $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
         }
       }
-      if (($first_in_page or $previous_is_top) 
-           and ($self->get_conf('HEADERS'))) {
+      if (($first_in_page or $previous_is_top)
+           and $self->get_conf('HEADERS')) {
         $result .= &{$self->{'format_navigation_header'}}($self, 
                 $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
-      } else {
+      } elsif($self->get_conf('HEADERS') or $self->get_conf('SPLIT') eq 'node') {
         # got to do this here, as it isn't done otherwise since 
-        # header_navigation is not called
+        # navigation_header is not called
         $result .= &{$self->{'format_navigation_header_panel'}}($self,
-                $self->get_conf('SECTION_BUTTONS'), $cmdname, $command)
-          if ($self->get_conf('HEADERS') or $self->get_conf('SPLIT') eq 'node');
+                $self->get_conf('SECTION_BUTTONS'), $cmdname, $command);
       }
     }
   }
@@ -2190,8 +2182,7 @@ sub _convert_heading_command($$$$$)
   }
 
   my $heading_level;
-  # FIXME this is done as in texi2html: node is used as heading if there 
-  # is nothing else.  Is it right?
+  # node is used as heading if there is nothing else.
   if ($cmdname eq 'node') {
     if (!$element or (!$element->{'extra'}->{'section'}
                       and $element->{'extra'}->{'node'}
@@ -2254,12 +2245,6 @@ sub _convert_raw_command($$$$)
   if ($cmdname eq $self->{'output_format'}) {
     chomp ($content);
     return $content;
-  # FIXME compatibility with texi2html
-  } elsif ($self->in_string()) {
-    return $self->protect_text($content);
-  } elsif ($cmdname eq 'tex') {
-    return $self->_attribute_class('pre', $cmdname).'>' 
-          .$self->protect_text($content) . '</pre>';
   }
   $self->line_warn(sprintf($self->__("Raw format %s is not converted"), $cmdname),
                    $command->{'line_nr'});
@@ -2878,7 +2863,6 @@ sub _convert_tab_command ($$$$)
     $fractions = " width=\"$fraction%\"";
   }
 
-  # FIXME is it right?
   $content =~ s/^\s*//;
   $content =~ s/\s*$//;
 
@@ -3151,14 +3135,12 @@ sub _convert_printindex_command($$$$)
   my $symbol_idx = 0;
   foreach my $letter_entry (@{$self->{'index_entries_by_letter'}->{$index_name}}) {
     my $letter = $letter_entry->{'letter'};
-    # FIXME id or target?
     my $index_element_id = $self->_element_direction($self->{'current_element'},
                                                      'This', 'id');
     if (!defined($index_element_id)) {
       $index_element_id = $target_prefix;
     }
-    # FIXME use [[:alpha:]]
-    my $is_symbol = $letter !~ /^[A-Za-z]/;
+    my $is_symbol = $letter !~ /^[[:alpha:]]/;
     my $identifier;
     if ($is_symbol) {
       $symbol_idx++;
@@ -3301,7 +3283,7 @@ sub _contents_inline_element($$$)
       $heading 
         = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{$element_name});
     }
-    $result .= &{$self->{'format_heading_text'}}($self, $cmdname, $heading, 0)."\n";
+    $result .= &{$self->{'format_heading_text'}}($self, '', $heading, 0)."\n";
     $result .= $content . "\n";
     return $result;
   }
@@ -3391,8 +3373,8 @@ sub _convert_paragraph_type($$$$)
 
   if ($self->paragraph_number() == 1) {
     my $in_format = $self->top_format();
-    # FIXME also verify that in @item/@tab/@headitem
     if ($in_format) {
+      # no first paragraph in those environment to avoid extra spacing
       if ($in_format eq 'itemize' 
           or $in_format eq 'enumerate'
           or $in_format eq 'multitable') {
@@ -3503,19 +3485,6 @@ sub _convert_preformatted_type($$$$)
 }
 
 $default_types_conversion{'preformatted'} = \&_convert_preformatted_type;
-
-# FIXME this should be very rare since this is caught by _convert_text.
-sub _convert_empty_line_type($$$) {
-  my $self = shift;
-  my $type = shift;
-  my $command = shift;
-
-  return "\n";
-}
-
-$default_types_conversion{'empty_line'} = \&_convert_empty_line_type;
-# in menu
-$default_types_conversion{'after_description_line'} = \&_convert_empty_line_type;
 
 sub _convert_bracketed_type($$$$) {
   my $self = shift;
@@ -3735,23 +3704,6 @@ sub _convert_menu_entry_type($$$)
       $description = '' if (_simplify_text_for_comparison($name_no_number) 
                            eq _simplify_text_for_comparison($description));
     }
-    if ($description ne '') {
-      # FIXME remove that.  This is a compatibility with texi2html, space 
-      # from preceding menu_entry_separator is used for description, but
-      # it is not really useful since space is not taken into account anyway
-      # in formatting
-      my $previous_arg;
-      foreach my $arg (@{$command->{'args'}}) {
-        if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_description') {
-          if ($previous_arg->{'type'} eq 'menu_entry_separator'
-               and $previous_arg->{'text'} =~ /(\s+)$/) {
-            $description = $1 . $description;
-          }
-          last;
-        }
-        $previous_arg = $arg;
-      }
-    }
   }
   return "<tr><td align=\"left\" valign=\"top\">$name$MENU_ENTRY_COLON</td><td>&nbsp;&nbsp;</td><td align=\"left\" valign=\"top\">$description</td></tr>\n";
 }
@@ -3791,7 +3743,6 @@ sub _convert_before_item_type($$$$)
            or $top_format eq 'ftable') {
     return '<dd>'. $content .'</dd>'."\n";
   } elsif ($top_format eq 'multitable') {
-    # FIXME is it right?
     $content =~ s/^\s*//;
     $content =~ s/\s*$//;
 
@@ -3801,7 +3752,6 @@ sub _convert_before_item_type($$$$)
 
 $default_types_conversion{'before_item'} = \&_convert_before_item_type;
 
-# FIXME not sure that there is contents.  Not sure that it matters either.
 sub _convert_def_line_type($$$$)
 {
   my $self = shift;
@@ -4158,8 +4108,8 @@ sub _default_element_footer($$$$)
     $rule = $self->get_conf('BIG_RULE');
   }
 
-  # FIXME the next is almost a duplication of end_page except that the
-  # file counter needs not be 1
+  # FIXME the following condition is almost a duplication of end_page 
+  # except that the file counter needs not be 1
   if ((!$element->{'element_next'}
        or (defined($element->{'filename'})
            and $element->{'filename'} ne $element->{'element_next'}->{'filename'}))
@@ -4908,9 +4858,11 @@ sub _set_pages_files($$)
       if (defined($self->get_conf('TOP_NODE_FILE'))) {
         $top_node_filename = $self->get_conf('TOP_NODE_FILE');
       } else {
-        # FIXME this is like texi2html, but is it right?  Shouldn't it
+        # FIXME(Karl) this is like texi2html, but is it right?  Shouldn't it
         # better to leave it undefined?  In that case the section name
-        # may be used, or the node name, or something along document_name-0
+        # may be used, or the node name, or something along document_name-0.
+        # This is not very important since TOP_NODE_FILE is set in the
+        # default case.
         $top_node_filename = $self->{'document_name'};
       }
       if (defined($top_node_filename)) {

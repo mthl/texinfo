@@ -849,10 +849,10 @@ $result_converted{'docbook'}->{'table'} = '
 <variablelist><!-- after vtable -->
 <indexterm role="cp"><primary>index entry</primary></indexterm>
 
-<varlistentry><term>&#8216;<literal>vtable item</literal>&#8217;
+<varlistentry><term><indexterm role="vr"><primary>vtable item</primary></indexterm>&#8216;<literal>vtable item</literal>&#8217;
 </term><!-- after item -->
 <indexterm role="ky"><primary>key</primary></indexterm>
-<term>&#8216;<literal>itemx vtable</literal>&#8217;
+<term><indexterm role="vr"><primary>itemx vtable</primary></indexterm>&#8216;<literal>itemx vtable</literal>&#8217;
 </term><listitem>
 </listitem></varlistentry></variablelist>';
 

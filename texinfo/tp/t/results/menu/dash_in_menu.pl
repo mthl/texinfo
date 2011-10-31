@@ -306,7 +306,7 @@ ul.no-bullet {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="manual.html#n_002d_002d_002dode" accesskey="1">entry&mdash;in</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         description &mdash; in.
+<tr><td align="left" valign="top">&bull; <a href="manual.html#n_002d_002d_002dode" accesskey="1">entry&mdash;in</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">description &mdash; in.
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 comment &mdash; in.

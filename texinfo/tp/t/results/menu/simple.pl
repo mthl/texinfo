@@ -700,11 +700,11 @@ ul.no-bullet {list-style: none}
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">comment
-</pre></th></tr><tr><td align="left" valign="top">&bull; menu entry name :</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    description
+</pre></th></tr><tr><td align="left" valign="top">&bull; menu entry name :</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">description
 </td></tr>
-<tr><td align="left" valign="top">&bull; node name:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                description new
+<tr><td align="left" valign="top">&bull; node name:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">description new
 </td></tr>
-<tr><td align="left" valign="top">&bull; other entry:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    
+<tr><td align="left" valign="top">&bull; other entry:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; last:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
                  description next line
