@@ -9,7 +9,8 @@ not begin with an end of line
   <macro>@vtable @asis
 Is it right or not?
 
-Warning for obsolete/unused customization variables like USE_SECTIONS?
+Warning for obsolete/unused customization variables like USE_SECTIONS
+(a FIXME in Texinfo/Common.pm).?
 
 For plaintext @image output if there is no basename.txt, use alt else
 the basename as [image basename].
@@ -293,12 +294,7 @@ Functions (?):
 sectioning_command_target_name
 node_target_name
 
-.init files:
-manuals/cvs.init
-manuals/mini_ker_t2h.init
-singular_manual/t2h_singular.init
-
-not relevant since indices cannot be split anymore
+tests .init file not relevant since indices cannot be split anymore
 indices/index_test.init     
 
 

@@ -132,7 +132,7 @@ sub _informative_command($$)
       #  my $filehandle = $self->{'fh'};
       #  if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       #    binmode($filehandle, ':utf8');
-      #  } else { # FIXME also right for shiftijs or similar encodings?
+      #  } else { # also right for shiftijs or similar encodings?
       #    binmode($filehandle, ':bytes');
       #  }
       #  binmode($filehandle, ":encoding($encoding)");
@@ -377,6 +377,8 @@ sub _set_outfile($$$)
     $input_basename = $self->get_conf('PREFIX');
   }
 
+  # the name of the document, which is more or less the basename, without 
+  # extension
   my $document_name;
   my $set_outfile = $self->get_conf('OUTFILE');
   # determine output file and output file name
@@ -384,19 +386,17 @@ sub _set_outfile($$$)
   if (!defined($self->get_conf('OUTFILE'))) {
     if (defined($setfilename) and !$self->get_conf('NO_USE_SETFILENAME')) {
       $outfile = $setfilename;
+      $document_name = $setfilename;
+      $document_name =~ s/\.[^\.]*$//;
       if (!$self->get_conf('USE_SETFILENAME_EXTENSION')) {
         $outfile =~ s/\.[^\.]*$//;
-        $document_name = $outfile;
         $outfile .= '.'.$self->get_conf('EXTENSION') 
           if (defined($self->get_conf('EXTENSION')) 
               and $self->get_conf('EXTENSION') ne '');
-      } else {
-        $document_name = $outfile;
       }
     } elsif ($input_basename ne '') {
       $outfile = $input_basename;
-      #$outfile =~ s/\.te?x(i|info)?$//;
-      $document_name = $outfile;
+      $document_name = $input_basename;
       $outfile .= '.'.$self->get_conf('EXTENSION') 
         if (defined($self->get_conf('EXTENSION')) 
             and $self->get_conf('EXTENSION') ne '');
@@ -410,27 +410,23 @@ sub _set_outfile($$$)
     $self->set_conf('OUTFILE', $outfile);
   } else {
     $document_name = $self->get_conf('OUTFILE');
-    # FIXME use a different configuration variable?
-    if (!$self->get_conf('USE_SETFILENAME_EXTENSION')) {
-      $document_name =~ s/\.[^\.]*$//;
-    }
+    $document_name =~ s/\.[^\.]*$//;
   }
 
-  my $output_basename = $self->get_conf('OUTFILE');
+  # the output file without directories part.
+  my $output_filename = $self->get_conf('OUTFILE');
   # this is a case that should happen rarely: one wants to get 
   # the result in a string and there is a setfilename.
   if ($self->get_conf('OUTFILE') eq '' and defined($setfilename)
       and !$self->get_conf('NO_USE_SETFILENAME')) {
-    $output_basename = $setfilename;
+    $output_filename = $setfilename;
     $document_name = $setfilename;
-    if (!$self->get_conf('USE_SETFILENAME_EXTENSION')) {
-      $document_name =~ s/\.[^\.]*$//;
-    }
+    $document_name =~ s/\.[^\.]*$//;
   }
   $document_name =~ s/^.*\///;
   $self->{'document_name'} = $document_name;
-  $output_basename =~ s/^.*\///;
-  $self->{'output_filename'} = $output_basename;
+  $output_filename =~ s/^.*\///;
+  $self->{'output_filename'} = $output_filename;
   if ($self->get_conf('SPLIT')) {
     if (defined($set_outfile)) {
       $self->{'destination_directory'} = $self->get_conf('OUTFILE');
