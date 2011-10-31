@@ -278,16 +278,12 @@ sub command_filename($$)
       return $target->{'filename'};
     }
     my ($element, $root_command) = $self->_get_element($command, 1);
-    #if (defined($command->{'cmdname'}) and $command->{'cmdname'} eq 'footnote') {
-    #  print STDERR "footnote $command: page $page\n";
-    #}
-    if (defined($element)) {
-      $target->{'element'} = $element;
-    }
+
     if (defined($root_command)) {
       $target->{'root_command'} = $root_command;
     }
     if (defined($element)) {
+      $target->{'element'} = $element;
       $target->{'filename'} = $element->{'filename'};
       return $element->{'filename'};
     }
@@ -576,6 +572,21 @@ sub global_element($$)
   my $self = shift;
   my $type = shift;
   return $self->{'global_target_elements'}->{$type};
+}
+
+# it is considered 'top' only if element corresponds to @top or 
+# element is a node
+sub element_is_top($$)
+{
+  my $self = shift;
+  my $element = shift;
+  return ($self->{'global_target_elements'}->{'Top'}
+    and $self->{'global_target_elements'}->{'Top'} eq $element
+    and $element->{'extra'}
+    and (($element->{'extra'}->{'section'} 
+         and $element->{'extra'}->{'section'}->{'cmdname'} eq 'top')
+         or ($element->{'extra'}->{'element_command'}
+             and $element->{'extra'}->{'element_command'}->{'cmdname'} eq 'node')));
 }
 
 sub default_formatting_function($$)
@@ -2067,21 +2078,6 @@ sub _default_navigation_header($$$$)
   return $result;
 }
 
-# it is considered 'top' only if element corresponds to @top or 
-# element is a node
-sub _element_is_top($$)
-{
-  my $self = shift;
-  my $element = shift;
-  return ($self->{'global_target_elements'}->{'Top'}
-    and $self->{'global_target_elements'}->{'Top'} eq $element
-    and $element->{'extra'}
-    and (($element->{'extra'}->{'section'} 
-         and $element->{'extra'}->{'section'}->{'cmdname'} eq 'top')
-         or ($element->{'extra'}->{'element_command'}
-             and $element->{'extra'}->{'element_command'}->{'cmdname'} eq 'node')));
-}
-
 sub _default_element_header($$$$)
 {
   my $self = shift;
@@ -2101,11 +2097,11 @@ sub _default_element_header($$$$)
             and $element->{'contents'}->[1] eq $command))
       # and there is more than one element
       and ($element->{'element_next'} or $element->{'element_prev'})) {
-    my $is_top = $self->_element_is_top($element);
+    my $is_top = $self->element_is_top($element);
     my $first_in_page = (defined($element->{'filename'})
            and $self->{'counter_in_file'}->{$element->{'filename'}} == 1);
     my $previous_is_top = ($element->{'element_prev'} 
-                   and $self->_element_is_top($element->{'element_prev'}));
+                   and $self->element_is_top($element->{'element_prev'}));
 
     print STDERR "Header ($previous_is_top, $is_top, $first_in_page): "
       .Texinfo::Structuring::_print_root_command_texi($command)."\n"
@@ -4035,9 +4031,9 @@ sub _default_element_footer($$$$)
   my $content = shift;
 
   my $result = '';
-  my $is_top = $self->_element_is_top($element);
+  my $is_top = $self->element_is_top($element);
   my $next_is_top = ($element->{'element_next'} 
-                     and $self->_element_is_top($element->{'element_next'}));
+                     and $self->element_is_top($element->{'element_next'}));
   my $next_is_special = (defined($element->{'element_next'})
     and $element->{'element_next'}->{'extra'}->{'special_element'});
   # no 'parent' defined happens if there are no pages, and there are elements 
@@ -4209,7 +4205,7 @@ sub converter_initialize($)
           = $default_types_conversion{$type};
     }
   }
-  # FIXME API with a function call?
+  # FIXME API with a function call?  Used in cvs.init.
   foreach my $type (keys(%default_code_types)) {
     $self->{'code_types'}->{$type} = $default_code_types{$type};
   }
@@ -4538,13 +4534,12 @@ sub _node_id_file($$)
   if (defined($normalized)) {
     $target = _normalized_to_id($normalized);
   } else {
-    # FIXME Top or configuration variable?
     $target = '';
   }
   if (!$node_info->{'manual_content'}) {
     $id = $target;
   }
-  # FIXME something special for Top node ?
+  # to find out the Top node, one could check $node_info->{'normalized'}
   if (defined($Texinfo::Config::node_target_name)) {
     ($target, $id) = &$Texinfo::Config::node_target_name($node_info,
                                                          $target, $id);
@@ -4608,8 +4603,8 @@ sub _new_sectioning_command_target($$)
   my $target_shortcontents;
   my $id_shortcontents;
   if ($Texinfo::Common::sectioning_commands{$command->{'cmdname'}}) {
-    # FIXME choose one (in comments, use target, other use id)
-    #my $target_contents = 'toc-'.$target;
+    # NOTE id is used as base for both id and target.  In comment an example
+    # showing how target could have been used.
     #my $target_base_contents;
     #if ($command->{'extra'}->{'associated_node'} 
     #    and $self->get_conf('USE_NODE_TARGET') {
@@ -4617,6 +4612,8 @@ sub _new_sectioning_command_target($$)
     #} else {
     # $target_base_contents = $target_base;
     #}
+    # $target_content =~ s/^g_t//;
+    #$target_contents = 'toc-'.$target_base_contents;
     if ($id ne '') {
       my $id_base_contents = $id;
       $id_base_contents =~ s/^g_t//;
@@ -4632,15 +4629,8 @@ sub _new_sectioning_command_target($$)
       }
       $id_contents = $target_contents;
 
-      # FIXME choose one (in comments, use target, other use id)
-      #my $target_shortcontents = 'stoc-'.$target;
-      #my $target_base_shortcontents;
-      #if ($command->{'extra'}->{'associated_node'} 
-      #    and $self->get_conf('USE_NODE_TARGET') {
-      #  $target_base_shortcontents = $target;
-      #} else {
-      #  $target_base_shortcontents = $target_base;
-      #}
+      # NOTE id is used as a base for id and target.  target could also
+      # have been used, see above for an example.
       $target_shortcontents = 'stoc-'.$id_base_contents;
       my $target_base_shortcontents = $target_base;
       $target_base_shortcontents =~ s/^g_t//;
@@ -4673,8 +4663,6 @@ sub _new_sectioning_command_target($$)
                            'id' => $id,
                            'section_filename' => $filename,
                           };
-  # FIXME this should really be use carefully, since the mapping
-  # is not what one expects
   $self->{'ids'}->{$id} = $command;
   if (defined($id_contents)) {
     $self->{'targets'}->{$command}->{'contents_id'} = $id_contents;
@@ -4694,11 +4682,11 @@ sub _new_sectioning_command_target($$)
   return $self->{'targets'}->{$command};
 }
 
-# FIXME also convert to html, to use name in cross-refs or do it on demand?
 # This set 2 unrelated things.  
 #  * The targets and id of sectioning elements
 #  * the target, id and normalized filename of 'labels', ie everything that 
 #    may be the target of a ref, like @node, @float, @anchor...
+# conversion to HTML is done on-demand, upon call to command_text.
 sub _set_root_commands_targets_node_files($$)
 {
   my $self = shift;
@@ -4731,7 +4719,7 @@ sub _set_root_commands_targets_node_files($$)
   if ($elements) {
     foreach my $element (@$elements) {
       foreach my $root_command(@{$element->{'contents'}}) {
-        # FIXME this happens for type 'text_root' which precedes the 
+        # this happens for type 'text_root' which precedes the 
         # root commands.  The target may also already be set for top node.
         next if (!defined($root_command->{'cmdname'}) 
                  or $self->{'targets'}->{$root_command});
@@ -4762,7 +4750,9 @@ sub _set_element_file($$$)
 
 sub _get_element($$;$);
 
-# FIXME also find contents/shortcontents/summarycontents page
+# If $find_container is set, the element that holds the command is found,
+# otherwise the element that holds the command content is found.  This is 
+# mostly relevant for footnote only.
 sub _get_element($$;$)
 {
   my $self = shift;
@@ -4795,7 +4785,6 @@ sub _get_element($$;$)
                  and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')
                  and $self->get_conf('SHOW_TITLE')
                  and $self->{'elements'}->[0]) {
-        # FIXME element and root_command?
           return ($self->{'elements'}->[0], 
                   $self->{'elements'}->[0]->{'extra'}->{'element_command'});
         }
@@ -4805,14 +4794,9 @@ sub _get_element($$;$)
       } elsif ($current->{'cmdname'} eq 'footnote' 
            and $self->{'special_elements_types'}->{'Footnotes'}
            and $find_container) {
-        # FIXME root_command?
+           # in that case there is no root_command
           $element = $self->{'special_elements_types'}->{'Footnotes'};
           return ($element);
-      # } elsif (($current->{'cmdname'} eq 'contents' 
-      #           or $current->{'cmdname'} eq 'shortcontents'
-      #           or $current->{'cmdname'} eq 'summarycontents')
-      #          and !$self->get_conf('INLINE_CONTENTS')) {
-      #   setcontentsaftertitlepage
       }
     }
     if ($current->{'parent'}) {
@@ -4883,7 +4867,6 @@ sub _set_pages_files($$)
       die "BUG: No element for top node" if (!defined($node_top));
       $self->_set_element_file($node_top_element, $top_node_filename);
     }
-    # FIXME add a number for each page?
     my $file_nr = 0;
     my $previous_page;
     foreach my $element(@$elements) {
@@ -4898,24 +4881,18 @@ sub _set_pages_files($$)
           foreach my $root_command (@{$file_element->{'contents'}}) {
             if ($root_command->{'cmdname'} 
                 and $root_command->{'cmdname'} eq 'node') {
-              # Happens for bogus nodes, as bogus nodes are not in 
-              # %{$self->{'labels'}}
-              #if (!defined($self->{'targets'}->{$root_command})
-              #    or !defined($self->{'targets'}->{$root_command}->{'node_filename'})) {
-              #  print STDERR "BUG: no target/filename($root_command): ".Texinfo::Structuring::_print_root_command_texi($root_command)."\n";
-              #}
               my $node_filename;
-              # double node are not normalized
+              # double node are not normalized, they are handled here
               if (!defined($root_command->{'extra'}->{'normalized'})
                   or !defined($self->{'labels'}->{$root_command->{'extra'}->{'normalized'}})) {
                 $node_filename = 'unknown_node';
                 $node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
                   if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
                     and $self->get_conf('NODE_FILE_EXTENSION') ne '');
-              } else { 
+              } else {
                 if (!defined($self->{'targets'}->{$root_command})
                     or !defined($self->{'targets'}->{$root_command}->{'node_filename'})) {
-                  # Should normally be a double node.  Use the equivalent node.
+                  # Could have been a double node, thus use equivalent node.
                   # However since double nodes are not normalized, in fact it 
                   # never happens.
                   $root_command
@@ -4930,11 +4907,7 @@ sub _set_pages_files($$)
           }
           if (!defined($file_element->{'filename'})) {
             # use section to do the file name if there is no node
-            my $command =$self->element_command($file_element);;
-            #foreach my $command (@{$element->{'contents'}}) {
-            #  $command = $self->element_command($element);
-            #  last if $command;
-            #}
+            my $command = $self->element_command($file_element);;
             if ($command) {
               if ($command->{'cmdname'} eq 'top' and !$node_top
                   and defined($top_node_filename)) {
@@ -4969,7 +4942,8 @@ sub _set_pages_files($$)
 
   foreach my $element (@$elements) {
     if (defined($Texinfo::Config::element_file_name)) {
-      # FIXME pass the information that it is associated with @top or @node Top?
+      # NOTE the information that it is associated with @top or @node Top
+      # may be determined with $self->element_is_top($element);
       my $filename = &$Texinfo::Config::element_file_name($self, $element, 
                                                           $element->{'filename'});
       $self->_set_element_file($element, $filename) if (defined($filename));
@@ -5004,7 +4978,9 @@ sub _prepare_elements($$)
   my $elements;
 
   # do that now to have it available for formatting
-  # FIXME set language and documentencoding/encoding_name? If not done already.
+  # NOTE this calls Convert::Converter::_informative_command on all the 
+  # @informative_global commands.
+  # Thus sets among others language and encodings.
   $self->_set_global_multiple_commands(-1);
   $self->_translate_names();
 
@@ -5045,10 +5021,9 @@ sub _prepare_special_elements($$)
   my $elements = shift;
 
   my %do_special;
-  # FIXME do that here or let it to the user?
+  # FIXME let the user decide how @*contents are treated?
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
       and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
-    
     foreach my $cmdname ('contents', 'shortcontents') {
       my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
@@ -5117,7 +5092,6 @@ sub _prepare_special_elements($$)
       $self->_set_element_file($element, $filename);
       print STDERR "NEW page for $type ($filename)\n" if ($self->get_conf('DEBUG'));
     }
-    # FIXME add element, page... (see command_filename)?
     $self->{'targets'}->{$element} = {'id' => $id,
                                       'target' => $target,
                                       'misc_filename' => $filename,
@@ -5448,7 +5422,6 @@ sub _external_node_href($$;$)
     $target_split = $default_target_split;
   }
 
-  # FIXME use $external_node->{'extra'}->{'node_content'}?
   if ($target eq '') {
     if ($target_split) {
       if (defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
@@ -5542,7 +5515,6 @@ sub _element_direction($$$$;$)
       if ($element_target->{'extra'}->{'special_element'}) {
         $command = $element_target;
       } else {
-      # FIXME be able to chose node over sectioning or the other way around?
         $command = $element_target->{'extra'}->{'element_command'};
       }
       if ($type eq 'href') {
@@ -5568,7 +5540,6 @@ sub _element_direction($$$$;$)
   if (exists($target->{$type})) {
     return $target->{$type};
   } elsif ($type eq 'id' or $type eq 'target') {
-    # FIXME
     return undef;
   } elsif ($command) {
     return $self->command_text($command, $type);
@@ -5855,10 +5826,6 @@ sub _default_begin_file($$$)
 
   my $links = $self->_get_links ($filename, $element);
 
-  # FIXME there is one empty line less than in texi2html.  Seems that in 
-  # texi2html the following empty lines are stripped.  Not exactly sure
-  # how, but it seems that some blank lines are removed before first element.
-  # Maybe misc commands are also stripped before.
   my $result = "$doctype
 <html>
 $copying_comment<!-- Created by $program_and_version, $program_homepage -->
@@ -6368,9 +6335,7 @@ sub output($$)
                    or $command->{'extra'}->{'missing_argument'}));
       print STDERR "Using $fulltitle_command as title\n"
         if ($self->get_conf('DEBUG'));
-      # FIXME remove the virtual _fulltitle type?
-      $fulltitle = {'contents' => $command->{'extra'}->{'misc_content'},
-                    'type' => '_fulltitle'};
+      $fulltitle = {'contents' => $command->{'extra'}->{'misc_content'}};
       last;
     }
   }
@@ -6529,6 +6494,7 @@ sub output($$)
 
   $self->run_stage_handlers('finish');
 
+  # do node redirection pages
   $self->{'current_filename'} = undef;
   if ($self->get_conf('NODE_FILES') 
       and $self->{'labels'} and $self->get_conf('OUTFILE') ne '') {
@@ -6539,7 +6505,9 @@ sub output($$)
       # @titlepage, and @titlepage is not used.
       my $filename = $self->command_filename($node);
       my $node_filename;
-      # FIXME texi2html always use 'node_filename' even for Top.
+      # NOTE 'node_filename' is not used for Top, so the other manual
+      # must use the same convention to get it right.  We avoid doing
+      # also 'node_filename' to avoid unneeded redirection files.
       if ($node->{'extra'}->{'normalized'} eq 'Top' 
           and defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
         my $extension = '';
@@ -6551,9 +6519,7 @@ sub output($$)
       } else {
         $node_filename = $target->{'node_filename'};
       }
-      #if (!defined($filename)) {
-      #  print STDERR "No filename ".Texinfo::Parser::_print_command_args_texi($node);
-      #}
+
       if (defined($filename) and $node_filename ne $filename) {
         my $redirection_page 
           = &{$self->{'format_node_redirection_page'}}($self, $node);
@@ -6577,9 +6543,16 @@ sub output($$)
   }
   if ($self->{'renamed_nodes'}
       and $self->{'labels'} and $self->get_conf('OUTFILE') ne '') {
+    # do a fresh parser, to avoid, for example adding new labels if renamed
+    # nodes incorrectly define anchors...
+    my $parser_for_renamed_nodes;
+    if ($self->{'parser'}) {
+      $parser_for_renamed_nodes = $self->{'parser'}->parser();
+    }
     foreach my $old_node_name (keys(%{$self->{'renamed_nodes'}})) {
       my $parsed_old_node = $self->_parse_node_and_warn_external(
-         $old_node_name, $self->{'renamed_nodes_lines'}->{$old_node_name},
+         $old_node_name, $parser_for_renamed_nodes,
+         $self->{'renamed_nodes_lines'}->{$old_node_name},
          $self->{'renamed_nodes_file'});
       if ($parsed_old_node) {
         if ($self->label_command($parsed_old_node->{'normalized'})) {
@@ -6594,7 +6567,8 @@ sub output($$)
       }
       my $new_node_name = $self->{'renamed_nodes'}->{$old_node_name};
       my $parsed_new_node = $self->_parse_node_and_warn_external(
-         $new_node_name, $self->{'renamed_nodes_lines'}->{$new_node_name},
+         $new_node_name, $parser_for_renamed_nodes,
+         $self->{'renamed_nodes_lines'}->{$new_node_name},
          $self->{'renamed_nodes_file'});
       if ($parsed_new_node) {
         if (!$self->label_command($parsed_new_node->{'normalized'})) {
@@ -6631,22 +6605,28 @@ sub output($$)
   }
 }
 
-sub _parse_node_and_warn_external($$$$)
+sub _parse_node_and_warn_external($$$$$)
 {
   my $self = shift;
   my $node_texi = shift;
+  my $parser = shift;
   my $line_number = shift;
   my $file = shift;
 
-  # FIXME nothing to check that there is an invalid nesting.  Having a 
-  # @-command, like @anchor{} inside would incorrectly lead to the name being 
-  # entered as a node.  Maybe the best thing to do would be to consider
+  # NOTE nothing to check that there is an invalid nesting.  Indeed, there
+  # is no information given to the parser stating that we are in a label
+  # command.  
+  # A possibility would be to consider
   # 'root_line' type as a $simple_text_command, or, to avoid spurious 
   # messages, $full_text_command.  This would imply really using
-  # the gdt 4th argument to pass 'paragraph' (rename that?) when in a 
+  # the gdt 4th argument to pass 'translated_paragraph' when in a 
   # less constrained environment, for instance @center in @quotation for
   # @author
-  my $node_tree = Texinfo::Parser::parse_texi_line($self->{'parser'},
+  #
+  # it is unlikely, however that invalid nesting does much harm, since
+  # the tree is mostly used to be normalized and this converter should
+  # be rather foolproof.
+  my $node_tree = Texinfo::Parser::parse_texi_line($parser,
                                           $node_texi, $line_number, $file);
   if ($node_tree) {
     my $node_normalized_result = Texinfo::Parser::_parse_node_manual(
@@ -7030,7 +7010,7 @@ sub _convert($$;$)
     return $result;
     # no type, no cmdname, but contents.
   } elsif ($root->{'contents'}) {
-    # FIXME document situations where that happens? Use virtual types?
+    # this happens inside accents, for section/node names, for @images.
     my $content_formatted = '';
     my $i = 0;
     foreach my $content (@{$root->{'contents'}}) {

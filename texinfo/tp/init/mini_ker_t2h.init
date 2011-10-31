@@ -7,7 +7,7 @@ sub mini_ker_element_type($$$$)
   my $command = shift;
   my $content = shift;
 
-  if ($self->_element_is_top($command)) {
+  if ($self->element_is_top($command)) {
     my $result = '';
     $result .= &{$self->{'format_navigation_header'}}($self,
           $self->get_conf('MISC_BUTTONS'), $cmdname, $command)

@@ -449,7 +449,6 @@ sub _convert($$;$)
           $result .= "<itemformat command=\"$format_item_command\"${attribute}>";
         }
         $result .= $self->_index_entry($root);
-        # FIXME
         my $in_code;
         $in_code = 1
           if ($format_item_command 
@@ -915,7 +914,6 @@ sub _convert($$;$)
   }
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
-    #$result .= "</$root->{'cmdname'}>\n";
     # FIXME The end of line and comment is taken into account 
     # but 'space_at_end' is ignored.
     my $end_command = $root->{'extra'}->{'end_command'}; 

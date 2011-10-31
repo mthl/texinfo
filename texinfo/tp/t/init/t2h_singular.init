@@ -67,7 +67,7 @@ sub singular_footer($$$$)
            and $element->{'filename'} ne $element->{'element_next'}->{'filename'}
            and $self->{'file_counters'}->{$element->{'filename'}} == 1));
 
-  if ($self->_element_is_top($element)) {
+  if ($self->element_is_top($element)) {
     my $buttons = $self->get_conf('TOP_BUTTONS');
     my $content_href = $self->_element_direction($element, 'Contents', 
                                                'href');

@@ -429,8 +429,8 @@ foreach my $command ('titlefont', 'anchor', 'xref','ref','pxref',
 my %full_text_commands;
 foreach my $brace_command (keys (%brace_commands)) {  
   if ($brace_commands{$brace_command} == 1 
-      and (!$simple_text_commands{$brace_command} 
-           and !$context_brace_commands{$brace_command})) {
+      and !$simple_text_commands{$brace_command} 
+      and !$context_brace_commands{$brace_command}) {
     $full_text_commands{$brace_command} = 1;
   }
 }

@@ -87,7 +87,7 @@ foreach my $type ('empty_line_after_command', 'preamble',
 }
 
 
-sub normalize_node ($)
+sub normalize_node($)
 {
   my $root = shift;
   my $result = convert($root);
@@ -97,7 +97,7 @@ sub normalize_node ($)
   return $result;
 }
 
-sub transliterate_texinfo ($;$)
+sub transliterate_texinfo($;$)
 {
   my $root = shift;
   my $no_unidecode = shift;

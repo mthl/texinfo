@@ -263,7 +263,7 @@ sub book_element_file_name($$$)
   my $new_file_name;
   my $command = $element->{'extra'}->{'section'};
   return undef unless ($command);
-  if ($converter->_element_is_top($element)) {
+  if ($converter->element_is_top($element)) {
     $new_file_name = "${prefix}_top.html";
   } elsif (defined($command->{'number'}) and ($command->{'number'} ne '')) {
     my $number = $command->{'number'};
