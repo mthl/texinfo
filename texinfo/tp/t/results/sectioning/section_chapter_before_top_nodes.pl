@@ -909,7 +909,7 @@ $result_errors{'section_chapter_before_top_nodes'} = [
 
 
 
-$result_converted{'info'}->{'section_chapter_before_top_nodes'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'section_chapter_before_top_nodes'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: section node,  Next: chapter node,  Up: chapter node
@@ -940,9 +940,9 @@ top
 
 
 Tag Table:
-Node: section node52
-Node: chapter node144
-Node: Top257
+Node: section node41
+Node: chapter node133
+Node: Top246
 
 End Tag Table
 ';

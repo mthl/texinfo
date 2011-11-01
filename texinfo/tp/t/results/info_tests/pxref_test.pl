@@ -393,7 +393,7 @@ $result_errors{'pxref_test'} = [];
 
 
 
-$result_converted{'info'}->{'pxref_test'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'pxref_test'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -403,7 +403,7 @@ end.  *note (m) n::.  *note name: (m) n.
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

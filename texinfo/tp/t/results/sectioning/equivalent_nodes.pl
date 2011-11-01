@@ -498,7 +498,7 @@ $result_errors{'equivalent_nodes'} = [];
 
 
 
-$result_converted{'info'}->{'equivalent_nodes'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'equivalent_nodes'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: `node\'
@@ -514,8 +514,8 @@ File: ,  Node: `node\',  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: `node\'110
+Node: Top41
+Node: `node\'99
 
 End Tag Table
 ';

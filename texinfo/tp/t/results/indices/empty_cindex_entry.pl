@@ -156,7 +156,7 @@ $result_errors{'empty_cindex_entry'} = [
 
 
 
-$result_converted{'info'}->{'empty_cindex_entry'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'empty_cindex_entry'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -164,7 +164,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

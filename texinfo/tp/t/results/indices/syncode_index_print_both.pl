@@ -504,7 +504,7 @@ $result_indices{'syncode_index_print_both'} = {
 
 
 
-$result_converted{'info'}->{'syncode_index_print_both'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'syncode_index_print_both'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -522,7 +522,7 @@ Print fn
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

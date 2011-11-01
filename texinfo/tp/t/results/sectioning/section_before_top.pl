@@ -568,7 +568,7 @@ $result_errors{'section_before_top'} = [
 
 
 
-$result_converted{'info'}->{'section_before_top'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'section_before_top'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: section node,  Prev: Top,  Up: Top
@@ -588,8 +588,8 @@ top
 
 
 Tag Table:
-Node: section node52
-Node: Top126
+Node: section node41
+Node: Top115
 
 End Tag Table
 ';

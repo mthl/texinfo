@@ -4150,7 +4150,7 @@ $result_errors{'all_commands_printindex'} = [];
 
 
 
-$result_converted{'info'}->{'all_commands_printindex'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'all_commands_printindex'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -4251,7 +4251,7 @@ Variables
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

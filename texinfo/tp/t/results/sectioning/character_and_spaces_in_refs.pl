@@ -2124,7 +2124,7 @@ $result_errors{'character_and_spaces_in_refs'} = [];
 
 
 
-$result_converted{'info'}->{'character_and_spaces_in_refs'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'character_and_spaces_in_refs'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: other nodes,  Up: (dir)
@@ -2172,11 +2172,11 @@ File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
 
 
 Tag Table:
-Node: Top52
-Node: other nodes446
-Node: !_"#$%&\'()*+-.627
-Node: /;<=>?[\\]^_`|~721
-Node: local node814
+Node: Top41
+Node: other nodes435
+Node: !_"#$%&\'()*+-.616
+Node: /;<=>?[\\]^_`|~710
+Node: local node803
 
 End Tag Table
 ';

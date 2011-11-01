@@ -1432,7 +1432,7 @@ $result_errors{'multitable_anchor_and_index_entry'} = [];
 
 
 
-$result_converted{'info'}->{'multitable_anchor_and_index_entry'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'multitable_anchor_and_index_entry'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -1470,9 +1470,9 @@ mdsfk2
 
 
 Tag Table:
-Node: Top52
-Ref: anchor in multitable294
-Ref: mark413
+Node: Top41
+Ref: anchor in multitable283
+Ref: mark402
 
 End Tag Table
 ';

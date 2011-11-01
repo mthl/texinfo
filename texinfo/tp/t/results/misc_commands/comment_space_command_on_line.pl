@@ -950,7 +950,7 @@ $result_converted{'html_text'}->{'comment_space_command_on_line'} = '
 ';
 
 
-$result_converted{'info'}->{'comment_space_command_on_line'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'comment_space_command_on_line'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -973,8 +973,8 @@ Text 1
 
 
 Tag Table:
-Node: Top52
-Ref: label229
+Node: Top41
+Ref: label218
 
 End Tag Table
 ';

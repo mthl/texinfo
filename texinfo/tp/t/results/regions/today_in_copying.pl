@@ -323,7 +323,7 @@ $result_errors{'today_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'today_in_copying'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'today_in_copying'} = 'This is , produced by tp version from .
 
 a sunny day.
 
@@ -337,7 +337,7 @@ a sunny day.
 
 
 Tag Table:
-Node: Top66
+Node: Top55
 
 End Tag Table
 ';

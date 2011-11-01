@@ -775,7 +775,7 @@ $result_errors{'index_entry_before_node'} = [];
 
 
 
-$result_converted{'info'}->{'index_entry_before_node'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'index_entry_before_node'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: first,  Up: (dir)
@@ -801,9 +801,9 @@ File: ,  Node: second,  Prev: first,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: first131
-Node: second199
+Node: Top41
+Node: first120
+Node: second188
 
 End Tag Table
 ';

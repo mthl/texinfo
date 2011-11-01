@@ -651,7 +651,7 @@ part
 ';
 
 
-$result_converted{'info'}->{'chapter_node_before_and_after_part'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'chapter_node_before_and_after_part'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: after,  Up: (dir)
@@ -672,8 +672,8 @@ File: ,  Node: after,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: after141
+Node: Top41
+Node: after130
 
 End Tag Table
 ';

@@ -630,7 +630,7 @@ element: @part part
 ';
 
 
-$result_converted{'info'}->{'part_node_after_top'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'part_node_after_top'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: part node after top,  Up: (dir)
@@ -648,8 +648,8 @@ File: ,  Node: part node after top,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: part node after top157
+Node: Top41
+Node: part node after top146
 
 End Tag Table
 ';

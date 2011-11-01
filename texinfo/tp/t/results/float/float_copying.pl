@@ -1635,7 +1635,7 @@ Copyright notice 1: The Public Domain notice(2)
 ';
 
 
-$result_converted{'info'}->{'float_copying'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'float_copying'} = 'This is , produced by tp version from .
 
 Public domain is not really a licence, as it means than the author
 abandon his copyright.
@@ -1714,14 +1714,14 @@ Copyright notice 1: The Public Domain notice(2)
 
 
 Tag Table:
-Node: Top301
-Ref: public domain371
-Ref: public domain anchor511
-Ref: Top-Footnote-1580
-Ref: caption copying footnote anchor615
-Node: Copying and floats653
-Ref: Copying and floats-Footnote-11504
-Ref: Copying and floats-Footnote-21577
+Node: Top290
+Ref: public domain360
+Ref: public domain anchor500
+Ref: Top-Footnote-1569
+Ref: caption copying footnote anchor604
+Node: Copying and floats642
+Ref: Copying and floats-Footnote-11493
+Ref: Copying and floats-Footnote-21566
 
 End Tag Table
 ';

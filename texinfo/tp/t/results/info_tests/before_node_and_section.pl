@@ -1146,7 +1146,7 @@ $result_errors{'before_node_and_section'} = [
 
 
 
-$result_converted{'info'}->{'before_node_and_section'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'before_node_and_section'} = 'This is , produced by tp version from .
 
 Garbage ref to Top *note Top::.  Hey(1).  An anchor .
 
@@ -1187,11 +1187,11 @@ File: ,  Node: node1,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Ref: anchor1103
-Node: Top127
-Ref: Top-Footnote-1342
-Ref: Top-Footnote-2361
-Node: node1386
+Ref: anchor192
+Node: Top116
+Ref: Top-Footnote-1331
+Ref: Top-Footnote-2350
+Node: node1375
 
 End Tag Table
 ';

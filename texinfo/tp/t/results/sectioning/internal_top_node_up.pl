@@ -558,7 +558,7 @@ element: @node first
 ';
 
 
-$result_converted{'info'}->{'internal_top_node_up'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'internal_top_node_up'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: first,  Up: node@ node
@@ -576,8 +576,8 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: first168
+Node: Top41
+Node: first157
 
 End Tag Table
 ';

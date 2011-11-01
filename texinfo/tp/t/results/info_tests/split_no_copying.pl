@@ -658,7 +658,7 @@ $result_errors{'split_no_copying'} = [];
 
 
 
-$result_converted{'info'}->{'split_no_copying'} = 'This is split-nocopying.info, produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'split_no_copying'} = 'This is split-nocopying.info, produced by tp version from .
 
 \\input texinfo
 
@@ -685,8 +685,8 @@ First chapter.
 
 
 Tag Table:
-Node: Top88
-Node: Ch1204
+Node: Top77
+Node: Ch1193
 
 End Tag Table
 ';

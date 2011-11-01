@@ -1316,7 +1316,7 @@ $result_errors{'printindex_index_entry_in_copying_no_insertcopying'} = [];
 
 
 
-$result_converted{'info'}->{'printindex_index_entry_in_copying_no_insertcopying'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'printindex_index_entry_in_copying_no_insertcopying'} = 'This is , produced by tp version from .
 
  -- Function: fun arg
  -- Function: xf arg
@@ -1351,8 +1351,8 @@ File: ,  Node: chapter,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top156
-Node: chapter234
+Node: Top145
+Node: chapter223
 
 End Tag Table
 ';

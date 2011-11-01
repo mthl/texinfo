@@ -809,7 +809,7 @@ $result_errors{'printindex_index_entry_in_copying_in_footnote'} = [];
 
 
 
-$result_converted{'info'}->{'printindex_index_entry_in_copying_in_footnote'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'printindex_index_entry_in_copying_in_footnote'} = 'This is , produced by tp version from .
 
 Copying(1).
 
@@ -860,10 +860,10 @@ Copying(1).
 
 
 Tag Table:
-Node: Top143
-Ref: Top-Footnote-1295
-Node: chapter315
-Ref: chapter-Footnote-1528
+Node: Top132
+Ref: Top-Footnote-1284
+Node: chapter304
+Ref: chapter-Footnote-1517
 
 End Tag Table
 ';

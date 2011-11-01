@@ -152,7 +152,7 @@ $result_errors{'node_up_direction_for_top_with_manual'} = [];
 
 
 
-$result_converted{'info'}->{'node_up_direction_for_top_with_manual'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'node_up_direction_for_top_with_manual'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)Top
@@ -160,7 +160,7 @@ File: ,  Node: Top,  Up: (dir)Top
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

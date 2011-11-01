@@ -698,7 +698,7 @@ $result_errors{'ref_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'ref_in_copying'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'ref_in_copying'} = 'This is , produced by tp version from .
 
 *note GFDL::
 
@@ -723,8 +723,8 @@ File: ,  Node: GFDL,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top66
-Node: GFDL155
+Node: Top55
+Node: GFDL144
 
 End Tag Table
 ';

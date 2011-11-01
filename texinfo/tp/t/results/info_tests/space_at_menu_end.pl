@@ -351,7 +351,7 @@ $result_errors{'space_at_menu_end'} = [];
 
 
 
-$result_converted{'info'}->{'space_at_menu_end'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'space_at_menu_end'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: (out),  Up: (dir)
@@ -364,7 +364,7 @@ A para.
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

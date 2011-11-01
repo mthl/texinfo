@@ -1111,7 +1111,7 @@ part
 ';
 
 
-$result_converted{'info'}->{'node_part_chapter_after_chapter'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'node_part_chapter_after_chapter'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: chapter node,  Up: (dir)
@@ -1139,9 +1139,9 @@ File: ,  Node: part chapter node,  Prev: chapter node,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: chapter node165
-Node: part chapter node275
+Node: Top41
+Node: chapter node154
+Node: part chapter node264
 
 End Tag Table
 ';

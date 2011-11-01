@@ -727,7 +727,7 @@ $result_errors{'space_in_node'} = [];
 
 
 
-$result_converted{'info'}->{'space_in_node'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'space_in_node'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: Chap first here,  Up: (dir)
@@ -750,10 +750,10 @@ File: ,  Node: Last with spaces,  Prev: Test title,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: Chap first here203
-Node: Test title278
-Node: Last with spaces366
+Node: Top41
+Node: Chap first here192
+Node: Test title267
+Node: Last with spaces355
 
 End Tag Table
 ';

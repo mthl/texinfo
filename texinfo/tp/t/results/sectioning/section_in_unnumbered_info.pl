@@ -8747,7 +8747,7 @@ $result_errors{'section_in_unnumbered_info'} = [];
 
 
 
-$result_converted{'info'}->{'section_in_unnumbered_info'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'section_in_unnumbered_info'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: chapter,  Up: (dir)
@@ -9016,38 +9016,38 @@ numbered subsection2 4
 
 
 Tag Table:
-Node: Top52
-Node: chapter246
-Node: section in chapter367
-Node: unnumbered465
-Node: section in unnumbered597
-Node: chapter 2699
-Node: unnumberedsec 2851
-Node: unnumbered sub 21062
-Node: numbered sub 21191
-Node: unnumbered sub2 21342
-Node: numbered sub2 21498
-Node: unnumberedsec 2-11627
-Node: numbered sub 2-11771
-Node: chapter 31879
-Node: unnumberedsec 32087
-Node: unnumbered sub 32292
-Node: numbered sub 32421
-Node: unnumbered sub2 32572
-Node: numbered sub2 32728
-Node: section 3-12857
-Node: unnumberedsec 3-22986
-Node: numbered sub 3-23146
-Node: section 3-33254
-Node: subsection 3-33414
-Node: unnumberedsec 3-43508
-Node: numbered sub 3-43648
-Node: unnumbered 43756
-Node: unnumberedsec 43872
-Node: unnumbered sub 44060
-Node: numbered sub 44189
-Node: unnumbered sub2 44340
-Node: numbered sub2 44496
+Node: Top41
+Node: chapter235
+Node: section in chapter356
+Node: unnumbered454
+Node: section in unnumbered586
+Node: chapter 2688
+Node: unnumberedsec 2840
+Node: unnumbered sub 21051
+Node: numbered sub 21180
+Node: unnumbered sub2 21331
+Node: numbered sub2 21487
+Node: unnumberedsec 2-11616
+Node: numbered sub 2-11760
+Node: chapter 31868
+Node: unnumberedsec 32076
+Node: unnumbered sub 32281
+Node: numbered sub 32410
+Node: unnumbered sub2 32561
+Node: numbered sub2 32717
+Node: section 3-12846
+Node: unnumberedsec 3-22975
+Node: numbered sub 3-23135
+Node: section 3-33243
+Node: subsection 3-33403
+Node: unnumberedsec 3-43497
+Node: numbered sub 3-43637
+Node: unnumbered 43745
+Node: unnumberedsec 43861
+Node: unnumbered sub 44049
+Node: numbered sub 44178
+Node: unnumbered sub2 44329
+Node: numbered sub2 44485
 
 End Tag Table
 ';

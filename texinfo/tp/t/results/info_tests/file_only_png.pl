@@ -209,7 +209,7 @@ $result_errors{'file_only_png'} = [];
 
 
 
-$result_converted{'info'}->{'file_only_png'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'file_only_png'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -219,7 +219,7 @@ text.
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

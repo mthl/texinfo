@@ -365,7 +365,7 @@ $result_errors{'anchor_and_spaces'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_and_spaces'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'anchor_and_spaces'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -379,10 +379,10 @@ Now .
 
 
 Tag Table:
-Node: Top52
-Ref: anchor 0103
-Ref: anchor1106
-Ref: anchor2121
+Node: Top41
+Ref: anchor 092
+Ref: anchor195
+Ref: anchor2110
 
 End Tag Table
 ';

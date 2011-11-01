@@ -893,7 +893,7 @@ $result_indices{'colon_in_index_entry'} = {
 
 
 
-$result_converted{'info'}->{'colon_in_index_entry'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'colon_in_index_entry'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -914,7 +914,7 @@ _%main::value_
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

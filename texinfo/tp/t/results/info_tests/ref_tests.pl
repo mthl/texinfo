@@ -692,7 +692,7 @@ $result_errors{'ref_tests'} = [];
 
 
 
-$result_converted{'info'}->{'ref_tests'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'ref_tests'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -707,7 +707,7 @@ command.\'.  *note name: (m)in ref ending with a dot. after ref.
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

@@ -717,7 +717,7 @@ sub _convert($$;$)
       } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
         if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
           if ($root->{'cmdname'} eq 'inforef') {
-            # FIXME?
+            # FIXME(Karl) how to format inforef?
             my $filename;
             if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 3
                 and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
@@ -885,7 +885,6 @@ sub _convert($$;$)
             return "<ulink url=\"mailto:$email_text\">"
               .$self->_convert({'contents' => $name}).'</ulink>';
           } elsif ($email) {
-            # FIXME in_inline
             return "<email>$email_text</email>";
           } elsif ($name) {
             return $self->_convert({'contents' => $name});

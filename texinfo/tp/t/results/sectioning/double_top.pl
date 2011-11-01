@@ -328,7 +328,7 @@ $result_errors{'double_top'} = [
 
 
 
-$result_converted{'info'}->{'double_top'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'double_top'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: Top
@@ -337,7 +337,7 @@ File: ,  Node: Top,  Next: Top
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

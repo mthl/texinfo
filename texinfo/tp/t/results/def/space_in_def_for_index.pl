@@ -589,7 +589,7 @@ $result_errors{'space_in_def_for_index'} = [];
 
 
 
-$result_converted{'info'}->{'space_in_def_for_index'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'space_in_def_for_index'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -606,7 +606,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

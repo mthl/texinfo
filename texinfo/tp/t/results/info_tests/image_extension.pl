@@ -355,7 +355,7 @@ $result_errors{'image_extension'} = [];
 
 
 
-$result_converted{'info'}->{'image_extension'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'image_extension'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -366,7 +366,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

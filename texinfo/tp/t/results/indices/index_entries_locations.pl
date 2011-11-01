@@ -575,7 +575,7 @@ $result_errors{'index_entries_locations'} = [];
 
 
 
-$result_converted{'info'}->{'index_entries_locations'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'index_entries_locations'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -601,7 +601,7 @@ Initial paragraph.
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

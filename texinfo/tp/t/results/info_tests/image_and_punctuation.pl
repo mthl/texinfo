@@ -490,7 +490,7 @@ $result_errors{'image_and_punctuation'} = [];
 
 
 
-$result_converted{'info'}->{'image_and_punctuation'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'image_and_punctuation'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -509,7 +509,7 @@ One space.  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ].
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

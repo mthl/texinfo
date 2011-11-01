@@ -296,7 +296,7 @@ $result_errors{'index_entry_in_footnote'} = [];
 
 
 
-$result_converted{'info'}->{'index_entry_in_footnote'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'index_entry_in_footnote'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -315,8 +315,8 @@ Top node(1)
 
 
 Tag Table:
-Node: Top52
-Ref: Top-Footnote-1230
+Node: Top41
+Ref: Top-Footnote-1219
 
 End Tag Table
 ';

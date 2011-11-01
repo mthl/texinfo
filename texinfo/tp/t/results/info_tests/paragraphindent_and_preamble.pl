@@ -466,7 +466,7 @@ $result_errors{'paragraphindent_and_preamble'} = [];
 
 
 
-$result_converted{'info'}->{'paragraphindent_and_preamble'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'paragraphindent_and_preamble'} = 'This is , produced by tp version from .
 
 In copying.
 
@@ -487,7 +487,7 @@ First para.
 
 
 Tag Table:
-Node: Top88
+Node: Top77
 
 End Tag Table
 ';

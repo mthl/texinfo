@@ -127,7 +127,7 @@ $result_errors{'paragraphindent_asis_first'} = [];
 
 
 
-$result_converted{'info'}->{'paragraphindent_asis_first'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'paragraphindent_asis_first'} = 'This is , produced by tp version from .
 
 bbb
 

@@ -1007,7 +1007,7 @@ $result_floats{'no_element'}{''}[0]{'extra'}{'end_command'}{'extra'}{'command'} 
 
 
 
-$result_converted{'info'}->{'no_element'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'no_element'} = 'This is , produced by tp version from .
 
 Ref to the anchor: *note An anchor::
 

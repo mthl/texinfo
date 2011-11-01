@@ -666,7 +666,7 @@ $result_errors{'character_and_spaces_in_node'} = [
 
 
 
-$result_converted{'info'}->{'character_and_spaces_in_node'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'character_and_spaces_in_node'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -686,11 +686,11 @@ File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
 
 
 Tag Table:
-Node: Top52
-Node: other nodes86
-Node: !_"#$%&\'()*+-.161
-Node: /;<=>?[\\]^_`|~255
-Node: local node348
+Node: Top41
+Node: other nodes75
+Node: !_"#$%&\'()*+-.150
+Node: /;<=>?[\\]^_`|~244
+Node: local node337
 
 End Tag Table
 ';

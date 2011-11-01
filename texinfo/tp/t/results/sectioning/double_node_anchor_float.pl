@@ -998,7 +998,7 @@ $result_floats{'double_node_anchor_float'}{'Text'}[2]{'extra'}{'end_command'}{'e
 
 
 
-$result_converted{'info'}->{'double_node_anchor_float'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'double_node_anchor_float'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: node1
@@ -1012,9 +1012,9 @@ Text 1
 
 
 Tag Table:
-Node: node152
-Ref: anchor176
-Ref: float188
+Node: node141
+Ref: anchor165
+Ref: float177
 
 End Tag Table
 ';

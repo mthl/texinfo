@@ -2775,7 +2775,7 @@ $result_errors{'image_formatting'} = [];
 
 
 
-$result_converted{'info'}->{'image_formatting'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'image_formatting'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -2809,7 +2809,7 @@ ccc]
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

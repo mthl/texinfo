@@ -1025,7 +1025,7 @@ $result_errors{'def_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'def_in_copying'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'def_in_copying'} = 'This is , produced by tp version from .
 
 In copying
  -- aa: bb cc
@@ -1052,7 +1052,7 @@ In text
 
 
 Tag Table:
-Node: Top113
+Node: Top102
 
 End Tag Table
 ';

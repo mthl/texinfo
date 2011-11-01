@@ -219,16 +219,15 @@ sub _info_header($)
 {
   my $self = shift;
 
-  # FIXME version/program
-  #my $text = "This is $self->{'output_filename'}, produced by makeinfo version 4.13 from $self->{'input_basename'}.";
   $self->_set_global_multiple_commands();
   my $paragraph = Texinfo::Convert::Paragraph->new();
   #my $result = $paragraph->add_text($text);
   my $result = $paragraph->add_text("This is ");
   # This ensures that spaces in file are kept.
   $result .= $paragraph->add_next($self->{'output_filename'});
-  # FIXME version/program
-  $result .= $paragraph->add_text(', produced by makeinfo version 4.13 from ');
+  my $program = $self->get_conf('PROGRAM');
+  my $version = $self->get_conf('PACKAGE_VERSION');
+  $result .= $paragraph->add_text(", produced by $program version $version from ");
   $result .= $paragraph->add_next($self->{'input_basename'});
   $result .= $paragraph->add_text('.');
   $result .= $paragraph->end();
@@ -402,9 +401,9 @@ sub _printindex($$)
 
     if (!defined($node)) {
       $node_text = $self->gdt('(outside of any node)');
-      # Warn, but only once.
       # FIXME when outside of sectioning commands this message was already
       # done by the Parser.
+      # Warn, only once.
       if (!$self->{'index_entries_no_node'}->{$entry}) {
         $self->line_warn (sprintf($self->__("Entry for index `%s' outside of any node"),
                                  $index_name), $entry->{'command'}->{'line_nr'});

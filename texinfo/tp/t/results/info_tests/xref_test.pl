@@ -459,7 +459,7 @@ $result_errors{'xref_test'} = [];
 
 
 
-$result_converted{'info'}->{'xref_test'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'xref_test'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -470,7 +470,7 @@ xref and dot inside.  *Note (m)in ref followed by symbol::.# g.
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

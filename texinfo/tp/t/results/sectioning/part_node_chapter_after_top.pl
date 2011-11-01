@@ -1004,7 +1004,7 @@ element: @chapter chapter
 ';
 
 
-$result_converted{'info'}->{'part_node_chapter_after_top'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'part_node_chapter_after_top'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: a node after part,  Up: (dir)
@@ -1031,9 +1031,9 @@ File: ,  Node: chapter,  Prev: a node after part,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: a node after part165
-Node: chapter264
+Node: Top41
+Node: a node after part154
+Node: chapter253
 
 End Tag Table
 ';

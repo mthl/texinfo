@@ -460,7 +460,7 @@ fl 1: in caption
 ';
 
 
-$result_converted{'info'}->{'anchor_in_caption'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'anchor_in_caption'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -475,9 +475,9 @@ fl 1: in caption
 
 
 Tag Table:
-Node: Top52
-Ref: label148
-Ref: in anchor175
+Node: Top41
+Ref: label137
+Ref: in anchor164
 
 End Tag Table
 ';

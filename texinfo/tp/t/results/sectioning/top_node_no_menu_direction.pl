@@ -504,7 +504,7 @@ $result_errors{'top_node_no_menu_direction'} = [
 
 
 
-$result_converted{'info'}->{'top_node_no_menu_direction'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'top_node_no_menu_direction'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: second node,  Up: (dir)
@@ -520,8 +520,8 @@ File: ,  Node: second node,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: second node147
+Node: Top41
+Node: second node136
 
 End Tag Table
 ';

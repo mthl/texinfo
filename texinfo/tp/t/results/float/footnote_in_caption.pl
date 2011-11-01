@@ -459,7 +459,7 @@ fl 1: in caption(1)
 ';
 
 
-$result_converted{'info'}->{'footnote_in_caption'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'footnote_in_caption'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -479,9 +479,9 @@ fl 1: in caption(1)
 
 
 Tag Table:
-Node: Top52
-Ref: label151
-Ref: Top-Footnote-1219
+Node: Top41
+Ref: label140
+Ref: Top-Footnote-1208
 
 End Tag Table
 ';

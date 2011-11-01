@@ -257,7 +257,7 @@ $result_errors{'printindex_with_space_before'} = [];
 
 
 
-$result_converted{'info'}->{'printindex_with_space_before'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'printindex_with_space_before'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -272,7 +272,7 @@ Text.
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

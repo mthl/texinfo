@@ -99,7 +99,7 @@ $result_errors{'no_top_node'} = [];
 
 
 
-$result_converted{'info'}->{'no_top_node'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'no_top_node'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: node Top not Top node
@@ -107,7 +107,7 @@ File: ,  Node: node Top not Top node
 
 
 Tag Table:
-Node: node Top not Top node52
+Node: node Top not Top node41
 
 End Tag Table
 ';

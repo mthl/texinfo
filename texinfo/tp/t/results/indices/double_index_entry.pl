@@ -707,7 +707,7 @@ $result_errors{'double_index_entry'} = [];
 
 
 
-$result_converted{'info'}->{'double_index_entry'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'double_index_entry'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: other node,  Up: (dir)
@@ -731,8 +731,8 @@ File: ,  Node: other node,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: other node136
+Node: Top41
+Node: other node125
 
 End Tag Table
 ';

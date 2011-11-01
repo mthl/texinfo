@@ -1342,7 +1342,7 @@ $result_errors{'printindex_index_entry_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'printindex_index_entry_in_copying'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'printindex_index_entry_in_copying'} = 'This is , produced by tp version from .
 
  -- Function: fun arg
  -- Function: xf arg
@@ -1414,8 +1414,8 @@ xftable xitem
 
 
 Tag Table:
-Node: Top156
-Node: chapter703
+Node: Top145
+Node: chapter692
 
 End Tag Table
 ';

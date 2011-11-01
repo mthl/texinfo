@@ -415,7 +415,7 @@ $result_errors{'top_node_normalization'} = [
 
 
 
-$result_converted{'info'}->{'top_node_normalization'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'top_node_normalization'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
@@ -428,7 +428,7 @@ File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

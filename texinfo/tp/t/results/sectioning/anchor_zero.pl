@@ -240,7 +240,7 @@ $result_errors{'anchor_zero'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_zero'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'anchor_zero'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -251,8 +251,8 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
-Ref: 086
+Node: Top41
+Ref: 075
 
 End Tag Table
 ';

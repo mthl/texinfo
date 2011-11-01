@@ -59,7 +59,7 @@ $result_errors{'only_documentencoding'} = [];
 
 
 
-$result_converted{'info'}->{'only_documentencoding'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'only_documentencoding'} = 'This is , produced by tp version from .
 
 
 

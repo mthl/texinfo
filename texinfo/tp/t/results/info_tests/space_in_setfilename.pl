@@ -195,7 +195,7 @@ $result_errors{'space_in_setfilename'} = [];
 
 
 
-$result_converted{'info'}->{'space_in_setfilename'} = 'This is   name  , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'space_in_setfilename'} = 'This is   name  , produced by tp version from .
 
 
 File:   name  ,  Node: Top,  Up: (dir)
@@ -203,7 +203,7 @@ File:   name  ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top60
+Node: Top49
 
 End Tag Table
 ';

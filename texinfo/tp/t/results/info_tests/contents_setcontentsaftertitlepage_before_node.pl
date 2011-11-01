@@ -217,7 +217,7 @@ $result_errors{'contents_setcontentsaftertitlepage_before_node'} = [];
 
 
 
-$result_converted{'info'}->{'contents_setcontentsaftertitlepage_before_node'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'contents_setcontentsaftertitlepage_before_node'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -228,7 +228,7 @@ Double contents
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

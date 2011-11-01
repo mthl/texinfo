@@ -404,7 +404,7 @@ $result_errors{'anchor_in_copying'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_in_copying'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'anchor_in_copying'} = 'This is , produced by tp version from .
 
 Copying.
 
@@ -420,8 +420,8 @@ Copying.
 
 
 Tag Table:
-Node: Top62
-Ref: Copying information104
+Node: Top51
+Ref: Copying information93
 
 End Tag Table
 ';

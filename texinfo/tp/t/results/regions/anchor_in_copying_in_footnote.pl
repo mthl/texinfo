@@ -442,7 +442,7 @@ $result_errors{'anchor_in_copying_in_footnote'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_in_copying_in_footnote'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'anchor_in_copying_in_footnote'} = 'This is , produced by tp version from .
 
 Copying(1).
 
@@ -468,10 +468,10 @@ Copying(1).
 
 
 Tag Table:
-Node: Top122
-Ref: Top-Footnote-1251
-Ref: Copying footnote270
-Ref: Top-Footnote-2272
+Node: Top111
+Ref: Top-Footnote-1240
+Ref: Copying footnote259
+Ref: Top-Footnote-2261
 
 End Tag Table
 ';

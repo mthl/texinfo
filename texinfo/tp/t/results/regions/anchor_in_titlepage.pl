@@ -383,7 +383,7 @@ $result_errors{'anchor_in_titlepage'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_in_titlepage'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'anchor_in_titlepage'} = 'This is , produced by tp version from .
 
 top
 ***
@@ -395,7 +395,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top61
+Node: Top50
 
 End Tag Table
 ';

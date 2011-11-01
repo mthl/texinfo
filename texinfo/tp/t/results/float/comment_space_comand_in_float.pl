@@ -415,7 +415,7 @@ Text   1
 ';
 
 
-$result_converted{'info'}->{'comment_space_comand_in_float'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'comment_space_comand_in_float'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -431,8 +431,8 @@ Text   1
 
 
 Tag Table:
-Node: Top52
-Ref: label  86
+Node: Top41
+Ref: label  75
 
 End Tag Table
 ';

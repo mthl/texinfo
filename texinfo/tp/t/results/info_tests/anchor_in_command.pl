@@ -290,7 +290,7 @@ $result_errors{'anchor_in_command'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_in_command'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'anchor_in_command'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -299,8 +299,8 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
-Ref: anchor in emph122
+Node: Top41
+Ref: anchor in emph111
 
 End Tag Table
 ';

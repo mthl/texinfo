@@ -32,7 +32,7 @@ $result_errors{'no_nodes'} = [];
 
 
 
-$result_converted{'info'}->{'no_nodes'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'no_nodes'} = 'This is , produced by tp version from .
 
 Text.
 

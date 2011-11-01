@@ -1146,7 +1146,7 @@ $result_errors{'image_and_spaces_formatting'} = [];
 
 
 
-$result_converted{'info'}->{'image_and_spaces_formatting'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'image_and_spaces_formatting'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -1166,7 +1166,7 @@ ddddddddddddd [This is an image words.] text eeeeeeeeeeeeeee [This is an image w
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

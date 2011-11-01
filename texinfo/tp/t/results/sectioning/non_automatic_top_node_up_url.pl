@@ -750,7 +750,7 @@ element: @node first
 ';
 
 
-$result_converted{'info'}->{'non_automatic_top_node_up_url'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'non_automatic_top_node_up_url'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: first,  Prev: (dir),  Up: (dir)
@@ -768,8 +768,8 @@ File: ,  Node: first,  Prev: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
-Node: first177
+Node: Top41
+Node: first166
 
 End Tag Table
 ';

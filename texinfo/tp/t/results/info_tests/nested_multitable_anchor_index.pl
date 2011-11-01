@@ -1036,7 +1036,7 @@ $result_errors{'nested_multitable_anchor_index'} = [];
 
 
 
-$result_converted{'info'}->{'nested_multitable_anchor_index'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'nested_multitable_anchor_index'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -1056,9 +1056,9 @@ other item         in tab
 
 
 Tag Table:
-Node: Top52
-Ref: mark inside119
-Ref: mark165
+Node: Top41
+Ref: mark inside108
+Ref: mark154
 
 End Tag Table
 ';

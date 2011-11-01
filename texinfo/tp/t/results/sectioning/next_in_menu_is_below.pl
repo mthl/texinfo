@@ -1191,7 +1191,7 @@ $result_errors{'next_in_menu_is_below'} = [];
 
 
 
-$result_converted{'info'}->{'next_in_menu_is_below'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'next_in_menu_is_below'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: chapter,  Up: (dir)
@@ -1230,10 +1230,10 @@ File: ,  Node: subsection,  Prev: section,  Up: section
 
 
 Tag Table:
-Node: Top52
-Node: chapter124
-Node: section230
-Node: subsection339
+Node: Top41
+Node: chapter113
+Node: section219
+Node: subsection328
 
 End Tag Table
 ';

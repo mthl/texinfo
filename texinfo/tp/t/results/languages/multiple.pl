@@ -992,7 +992,7 @@ $result_converted{'plaintext'}->{'multiple'} = ' -- Instance Variable de fr: BBB
 ';
 
 
-$result_converted{'info'}->{'multiple'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'multiple'} = 'This is , produced by tp version from .
 
  -- Instance Variable de copying: a b
 
@@ -1009,7 +1009,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top91
+Node: Top80
 
 End Tag Table
 ';

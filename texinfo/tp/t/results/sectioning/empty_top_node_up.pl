@@ -442,7 +442,7 @@ $result_errors{'empty_top_node_up'} = [];
 
 
 
-$result_converted{'info'}->{'empty_top_node_up'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'empty_top_node_up'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: first,  Up: 
@@ -460,8 +460,8 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: first152
+Node: Top41
+Node: first141
 
 End Tag Table
 ';

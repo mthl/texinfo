@@ -234,7 +234,7 @@ $result_errors{'footnote_no_number'} = [];
 
 
 
-$result_converted{'info'}->{'footnote_no_number'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'footnote_no_number'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -252,9 +252,9 @@ Para(*).
 
 
 Tag Table:
-Node: Top52
-Ref: Top-Footnote-1146
-Ref: Top-Footnote-2166
+Node: Top41
+Ref: Top-Footnote-1135
+Ref: Top-Footnote-2155
 
 End Tag Table
 ';

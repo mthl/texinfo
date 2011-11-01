@@ -652,7 +652,7 @@ $result_floats{'error_in_footnote'}{'Text'}[0]{'extra'}{'end_command'}{'extra'}{
 
 
 
-$result_converted{'info'}->{'error_in_footnote'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'error_in_footnote'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -676,9 +676,9 @@ Text 1: Caption.  TeX.  In caption *note*.  Now footnote(1)
 
 
 Tag Table:
-Node: Top52
-Ref: label86
-Ref: Top-Footnote-1360
+Node: Top41
+Ref: label75
+Ref: Top-Footnote-1349
 
 End Tag Table
 ';

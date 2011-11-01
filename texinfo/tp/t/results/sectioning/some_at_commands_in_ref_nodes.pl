@@ -1713,7 +1713,7 @@ $result_errors{'some_at_commands_in_ref_nodes'} = [];
 
 
 
-$result_converted{'info'}->{'some_at_commands_in_ref_nodes'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'some_at_commands_in_ref_nodes'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: A SC N~ AA TeX node i" i" E=` /l C\', !,  Up: (dir)
@@ -1736,8 +1736,8 @@ trema i" E=` and exclamdown !::.
 
 
 Tag Table:
-Node: Top52
-Node: A SC N~ AA TeX node i" i" E=` /l C\', !195
+Node: Top41
+Node: A SC N~ AA TeX node i" i" E=` /l C\', !184
 
 End Tag Table
 ';

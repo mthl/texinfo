@@ -960,7 +960,7 @@ element: @node first
 ';
 
 
-$result_converted{'info'}->{'non_automatic_top_node_up_and_url'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'non_automatic_top_node_up_and_url'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: first,  Up: GNU (GNU\'s Not Unix) manuals
@@ -978,8 +978,8 @@ File: ,  Node: first,  Prev: Top
 
 
 Tag Table:
-Node: Top52
-Node: first186
+Node: Top41
+Node: first175
 
 End Tag Table
 ';

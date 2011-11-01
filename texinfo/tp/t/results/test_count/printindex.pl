@@ -693,7 +693,7 @@ File: ,  Node: Top,  Up: (dir)
 ';
 
 
-$result_converted{'info'}->{'printindex'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'printindex'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -719,8 +719,8 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
-Ref: a counting anchor880
+Node: Top41
+Ref: a counting anchor869
 
 End Tag Table
 ';

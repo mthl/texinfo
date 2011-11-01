@@ -234,7 +234,7 @@ $result_errors{'footnote_no_number_separate'} = [];
 
 
 
-$result_converted{'info'}->{'footnote_no_number_separate'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'footnote_no_number_separate'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -253,10 +253,10 @@ File: ,  Node: Top-Footnotes,  Up: Top
 
 
 Tag Table:
-Node: Top52
-Node: Top-Footnotes160
-Ref: Top-Footnote-1202
-Ref: Top-Footnote-2222
+Node: Top41
+Node: Top-Footnotes149
+Ref: Top-Footnote-1191
+Ref: Top-Footnote-2211
 
 End Tag Table
 ';

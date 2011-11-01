@@ -91,7 +91,7 @@ $result_errors{'no_node_but_top'} = [];
 
 
 
-$result_converted{'info'}->{'no_node_but_top'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'no_node_but_top'} = 'This is , produced by tp version from .
 
 top
 ***

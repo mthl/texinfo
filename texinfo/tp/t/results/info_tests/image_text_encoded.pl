@@ -117,7 +117,7 @@ $result_errors{'image_text_encoded'} = [];
 
 
 
-$result_converted{'info'}->{'image_text_encoded'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'image_text_encoded'} = 'This is , produced by tp version from .
 
 îmage encodée
 

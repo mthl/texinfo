@@ -400,7 +400,7 @@ $result_errors{'note_in_strong'} = [];
 
 
 
-$result_converted{'info'}->{'note_in_strong'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'note_in_strong'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -417,7 +417,7 @@ One *Note*.
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';

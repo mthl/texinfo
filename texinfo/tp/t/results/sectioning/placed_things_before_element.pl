@@ -1126,7 +1126,7 @@ $result_floats{'placed_things_before_element'}{''}[0]{'extra'}{'end_command'}{'e
 
 
 
-$result_converted{'info'}->{'placed_things_before_element'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'placed_things_before_element'} = 'This is , produced by tp version from .
 
 Ref to the anchor: *note An anchor::
 

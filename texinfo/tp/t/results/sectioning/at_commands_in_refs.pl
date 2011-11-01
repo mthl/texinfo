@@ -20135,7 +20135,7 @@ $result_errors{'at_commands_in_refs'} = [];
 
 
 
-$result_converted{'info'}->{'at_commands_in_refs'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'at_commands_in_refs'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Next: { },  Up: (dir)
@@ -20341,32 +20341,32 @@ in r SC *str* t VAR "dfn" i:: *note `env\' `code\' `option\' `samp\'
 
 
 Tag Table:
-Node: Top52
-Node: { }830
+Node: Top41
+Node: { }819
 Node:     !
-. . ? @909
-Node: LaTeX TeX * , (C) ... ...1030
-Node: == error--> Euro ! ==> -1196
-Node: >= <= ->1355
-Node: a o -!- # -| ? (R)1475
-Node: => o a b a sunny day aa1614
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1794
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2021
-Node: e. e( e_ .e e< j ee[2233
-Node: `` \'\' ` \' ,, ,2396
-Node: << >> << >> < >2529
-Node: `` \'\' --- --2656
-Node: AAA (fff) AAA BBB2772
-Node: CCC (rrr) CCC DDD2908
-Node: the someone <someone@somewher> <no_explain@there>3081
-Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3374
-Node:  @ {} . 3703
-Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3903
-Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4165
-Node: 8.27in4445
-Node: sansserif slanted4593
-Node: <indicateurl>4719
-Node: `http://somewhere_aaa\' text (url) ls4867
+. . ? @898
+Node: LaTeX TeX * , (C) ... ...1019
+Node: == error--> Euro ! ==> -1185
+Node: >= <= ->1344
+Node: a o -!- # -| ? (R)1464
+Node: => o a b a sunny day aa1603
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1783
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2010
+Node: e. e( e_ .e e< j ee[2222
+Node: `` \'\' ` \' ,, ,2385
+Node: << >> << >> < >2518
+Node: `` \'\' --- --2645
+Node: AAA (fff) AAA BBB2761
+Node: CCC (rrr) CCC DDD2897
+Node: the someone <someone@somewher> <no_explain@there>3070
+Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3363
+Node:  @ {} . 3692
+Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3892
+Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4154
+Node: 8.27in4434
+Node: sansserif slanted4582
+Node: <indicateurl>4708
+Node: `http://somewhere_aaa\' text (url) ls4856
 
 End Tag Table
 ';

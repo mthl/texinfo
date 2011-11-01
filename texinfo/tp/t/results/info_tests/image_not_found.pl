@@ -153,7 +153,7 @@ $result_errors{'image_not_found'} = [];
 
 
 
-$result_converted{'info'}->{'image_not_found'} = 'This is , produced by makeinfo version 4.13 from .
+$result_converted{'info'}->{'image_not_found'} = 'This is , produced by tp version from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -161,7 +161,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top52
+Node: Top41
 
 End Tag Table
 ';
