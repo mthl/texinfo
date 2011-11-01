@@ -470,7 +470,6 @@ sub _convert($$;$)
     } elsif ($root->{'cmdname'} eq 'today') {
       return $self->_convert(Texinfo::Common::expand_today($self));
     } elsif ($Texinfo::Common::accent_commands{$root->{'cmdname'}}) {
-      # FIXME handle in_upper_case
       return $self->convert_accents($root, \&docbook_accent);
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {

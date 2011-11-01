@@ -813,7 +813,6 @@ sub _contents($$$)
       if ($top_section->{'level'} < $root_level);
   }
 
-  # FIXME return bytes count?
   my $result = '';
   my $lines_count = 0;
   # This is done like that because the tree may not be well formed if
@@ -949,20 +948,21 @@ sub _image_text($$$)
   if (!defined($txt_file)) {
     return undef;
   } else {
-    if (open (TXT, $txt_file)) {
-    # FIXME encoding
-    # my $in_encoding = get_conf('IN_ENCODING');
-    # binmode(TXT, ":encoding($in_encoding)");
+    my $filehandle = do { local *FH };
+    if (open ($filehandle, $txt_file)) {
+      binmode($filehandle, ":encoding($self->{'perl_encoding'})")
+                if (defined($self->{'perl_encoding'}));
       my $result = '';
-      while (<TXT>) {
+      while (<$filehandle>) {
         $result .= $_;
       }
       # remove last end of line
       chomp ($result);
-      close (TXT);
+      close ($filehandle);
       return $result;
     } else {
-      $self->line_warn(sprintf($self->__("\@image file `%s' unreadable: %s"), $txt_file, $!), $root->{'line_nr'});
+      $self->line_warn(sprintf($self->__("\@image file `%s' unreadable: %s"), 
+                               $txt_file, $!), $root->{'line_nr'});
     }
   }
   return undef;
@@ -1422,7 +1422,7 @@ sub _convert($$)
         $args[0] = [{'text' => ''}] if (!defined($args[0]));
 
         # normalize node name, to get a ref with the right formatting
-        # FIXME as a consequence, the line numbers appearing in case of errors
+        # NOTE as a consequence, the line numbers appearing in case of errors
         # correspond to the node lines numbers, and not the @ref.
         my $node_content;
         if ($root->{'extra'}

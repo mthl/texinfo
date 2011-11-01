@@ -87,9 +87,6 @@ add --output-encoding.  Design better the encoding handling.
 
   put <title> in <articleinfo>?
 
-  what to do for guilsinglleft, guilsinglright? Currently &lt; &gt; since
-  there is no &lsaquo; nor &rsaquo;
-
 * to solve above issue (first issue), the definition arg formatted with
   simple_format should alo be passed down
 
@@ -97,6 +94,8 @@ add --output-encoding.  Design better the encoding handling.
   than book. Maybe the best way to do that would be passing the
   information that there is only one section to the functions formatting
   the page header and page footer.
+
+* how to handle @sc in docbook?
 
 Should more Converter ignore the last new line (with type 
 last_raw_newline) of a raw block format?

@@ -194,6 +194,11 @@ Para.
 @image{fdotext,,,,ext}
 @image{f--ile,,,,ext}
 '],
+['image_text_encoded',
+'@documentencoding utf-8
+
+@image{image_encoded}
+'],
 ['image_formatting',
 '@node Top
 
