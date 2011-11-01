@@ -1731,9 +1731,8 @@ File: ,  Node: A SC N~ AA TeX node i" i" E=` /l C\', !,  Prev: Top,  Up: Top
 1 A SC node i" i" E=` /l C\', !
 ******************************
 
-see *note a *strong* ref with SC, a i trema i", a dotless i trema i" E=`
-and exclamdown !: (manual)a *strong* ref with SC, a i trema i", a
-dotless i trema i" E=` and exclamdown !.
+see *note (manual)a *strong* ref with SC, a i trema i", a dotless i
+trema i" E=` and exclamdown !::.
 
 
 Tag Table:

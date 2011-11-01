@@ -15,16 +15,9 @@ Warning for obsolete/unused customization variables like USE_SECTIONS
 For plaintext @image output if there is no basename.txt, use alt else
 the basename as [image basename].
 
-remove _*directions('This' and replace with new API. Done?
-
 There should be a warning with something like
 @example text
 ...
-
-Verify that there is a test with a node both internal and external 
-ref, like
-@xref{node1}.
-@xref{node1,,manual}.
 
 In tp, for node-Next sectioning commands directions are taken into 
 account even if there are no automatic directions. Thus
@@ -114,11 +107,6 @@ do something for?
 @codequoteundirected
 @set txicodequotebacktick
 @codequotebacktick
-
-In Info A ref like @ref{node,,,manual} should lead to
- *note (manual)node::.
-instead of, currently 
- *note chapter: (file name)chapter.
 
 Test @w{'} for the substitution of '.
 

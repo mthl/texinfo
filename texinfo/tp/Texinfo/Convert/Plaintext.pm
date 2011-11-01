@@ -1467,13 +1467,9 @@ sub _convert($$)
                     'contents' => $args[3]},
                    {'text' => ')'},];
         } elsif (defined($args[4])) {
-          # FIXME this is a bit strange.
+          # add a () such that the node is considered to be external, 
+          # even though the manual name is not known.
           $file = [{'text' => '()'}];
-        }
-        # FIXME why define the name if there is a file argument?
-        if ($file and !$name) {
-          @$name = ({'type' => 'code',
-                    'contents' => $node_content});
         }
          
         if ($name) {
@@ -1484,13 +1480,13 @@ sub _convert($$)
           # node name
           push @contents, ({'type' => 'code',
                             'contents' => $node_content});
-          #push @contents, ({'text' => '.'}, {'cmdname' => ':'}) 
-          #  if ($command eq 'pxref');
         } else {
+          if ($file) {
+            push @contents, @$file;
+          }
           push @contents, ({'type' => 'code',
                             'contents' => [@{$node_content}, {'text' => '::'}]});
         }
-        #unshift @{$self->{'current_contents'}->[-1]}, @contents;
         $result = $self->_convert({'contents' => \@contents});
         # we could use $formatter, but in case it was changed in _convert 
         # we play it safe.
