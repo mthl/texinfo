@@ -2059,7 +2059,7 @@ unnumberedsec
 
 $result_converted{'html'}->{'detailmenu_on_subnodes'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by texi2html, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>Untitled Document</title>
 
@@ -2067,7 +2067,7 @@ $result_converted{'html'}->{'detailmenu_on_subnodes'} = '<!DOCTYPE html PUBLIC "
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="texi2html">
+<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.13 2011-10-28 23:51:27 karl Exp $
+# $Id: Makefile.am,v 1.14 2011-11-01 12:01:12 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -22,6 +22,7 @@ bin_SCRIPTS = texi2any
 do_subst = sed \
   -e 's,[@]PACKAGE_VERSION[@],$(PACKAGE_VERSION),g' \
   -e 's,[@]PACKAGE_NAME[@],$(PACKAGE_NAME),g' \
+  -e 's,[@]PACKAGE_URL[@],$(PACKAGE_URL),g' \
   -e 's,[@]sysconfdir[@],$(sysconfdir),g' \
   -e 's,[@]prefix[@],$(prefix),g' \
   -e 's,[@]datarootdir[@],$(datarootdir),g' \

@@ -42,12 +42,31 @@ BEGIN
 
 use Texinfo::Convert::Texinfo;
 
+# Version: set in configure.in
+my $configured_version = '@PACKAGE_VERSION@';
+my $configured_package = '@PACKAGE@';
+my $configured_name = '@PACKAGE_NAME@';
+my $configured_name_version = "$configured_name $configured_version"; 
+my $configured_url = '@PACKAGE_URL@';
+
+my $real_command_name = $0;
+$real_command_name =~ s/.*\///;
+$real_command_name =~ s/\.pl$//;
+
 # defaults for options relevant in the main program, not undef, and also
 # defaults for all the converters.
 # Other relevant options (undef) are NO_WARN FORCE OUTFILE
 # Others are set in the converters.
-my $converter_default_options = { 'ERROR_LIMIT' => 100,
-                                  'TEXI2DVI' => 'texi2dvi' };
+my $converter_default_options = { 
+    'ERROR_LIMIT' => 100,
+    'TEXI2DVI' => 'texi2dvi',
+    'PACKAGE_VERSION' => $configured_version,
+    'PACKAGE' => $configured_package,
+    'PACKAGE_NAME' => $configured_name,
+    'PACKAGE_AND_VERSION' => $configured_name_version,
+    'PACKAGE_URL' => $configured_url,
+    'PROGRAM' => $real_command_name, 
+};
 
 # this associates the command line options to the arrays set during
 # command line parsing.
@@ -60,11 +79,6 @@ my $cmdline_options = { 'CSS_FILES' => \@css_files,
 my $path_separator = $Config{'path_sep'};
 $path_separator = ':' if (!defined($path_separator));
 my $quoted_path_separator = quotemeta($path_separator);
-
-# Version: set in configure.in
-my $configured_version = '@PACKAGE_VERSION@';
-my $configured_name = '@PACKAGE_NAME@';
-my $configured_name_version = "$configured_name $configured_version"; 
 
 # Paths and file names
 
@@ -96,10 +110,6 @@ if ('@datadir@' ne '@' . 'datadir@') {
   $pkgdatadir = '/usr/local/share/texinfo';
   $datadir = '/usr/local/share';
 }
-
-my $real_command_name = $0;
-$real_command_name =~ s/.*\///;
-$real_command_name =~ s/\.pl$//;
 
 #my $messages_textdomain = 'texinfo';
 my $messages_textdomain = '@PACKAGE@';
@@ -767,6 +777,21 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
 
 exit 1 if (!$result_options);
 
+my %test_conf = (
+    'PACKAGE_VERSION' => '',
+    'PACKAGE' => 'texinfo',
+    'PACKAGE_NAME' => 'texinfo',
+    'PACKAGE_AND_VERSION' => 'texinfo',
+    'PACKAGE_URL' => 'http://www.gnu.org/software/texinfo/',
+# maybe don't set this?
+    'PROGRAM' => 'texi2any', 
+);
+if (get_conf('TEST')) {
+  foreach my $conf (keys (%test_conf)) {
+    $converter_default_options->{$conf} = $test_conf{$conf};
+  }
+}
+
 my %formats_table = (
  'info' => {
              'nodes_tree' => 1,
@@ -842,7 +867,6 @@ if ($call_texi2dvi) {
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
   document_warn (sprintf(__('Ignoring splitting for format %s'), $format));
   set_from_cmdline('SPLIT', ''); 
-  #set_from_cmdline('FRAMES', 0); 
 }
 
 foreach my $format (@{$default_expanded_format}) {

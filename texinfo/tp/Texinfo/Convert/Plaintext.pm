@@ -1725,7 +1725,8 @@ sub _convert($$)
         my $heading = $self->convert_line({'type' => 'frenchspacing',
                          'contents' => $contents});
         pop @{$self->{'count_context'}};
-        # FIXME @* and @c?
+        # @* leads to an end of line, underlying appears on the line below
+        # over one line
         my $heading_underlined = 
              Texinfo::Convert::Text::heading ($root, $heading, 
                                               $self->get_conf('NUMBER_SECTIONS'));
@@ -1789,8 +1790,8 @@ sub _convert($$)
                  $root->{'parent'}->{'extra'}->{'enumerate_specification'},
                  $root->{'extra'}->{'item_number'}) . '. '));
       } elsif ($root->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
+        # this is the text prepended to items.
         
-        # FIXME convert_line and no array of contents?
         $result = $self->_convert(
           {'contents' => 
              [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
@@ -1934,7 +1935,6 @@ sub _convert($$)
           if ($caption) {
             $self->{'multiple_pass'} = 1;
             push @{$self->{'context'}}, 'listoffloats';
-            # FIXME should there be some indentation?
             my $tree = {'contents' => $caption->{'args'}->[0]->{'contents'}};
             # the following does nothing since there are paragraphs within
             # the shortcaption.
@@ -2084,7 +2084,7 @@ sub _convert($$)
              and @{$root->{'extra'}->{'def_args'}}) {
         my $parsed_definition_category 
           = Texinfo::Common::definition_category ($self, $root);
-        # FIXME need i18n here?
+        # FIXME(Karl) should the definition line formating use gdt?
         my @contents = ($parsed_definition_category, {'text' => ': '});
         if ($root->{'extra'}->{'def_parsed_hash'}->{'type'}) {
           push @contents, ($root->{'extra'}->{'def_parsed_hash'}->{'type'}, 
@@ -2391,15 +2391,8 @@ sub _convert($$)
           $self->{'empty_lines_count'} = 0;
         }
         if ($caption) {
-          # FIXME not sure it is right.
           $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
           my $tree = $caption->{'args'}->[0];
-          # the frenchspacing is ignored since there are paragraphs within
-          # the shortcaption.
-          #if ($caption->{'cmdname'} eq 'shortcaption') {
-          #  $tree = {'type' => 'frenchspacing',
-          #           'contents' => [$caption->{'args'}->[0]]};
-          #}
           $result .= $self->_convert($tree);
         }
       }

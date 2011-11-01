@@ -953,11 +953,6 @@ our %defaults = (
   'MONOLITHIC'           => 1,
   'CHAPTER_HEADER_LEVEL' => 2,
   'MAX_HEADER_LEVEL'     => 4,
-# This is the default, mainly for tests; the caller should set them.  These
-# values are in fact what should be set -- for now when TEST is true.
-  'PROGRAM_AND_VERSION'  => 'texi2html',
-  'PROGRAM_HOMEPAGE'     => 'http://www.gnu.org/software/texinfo/',
-  'PROGRAM'              => 'texi2html',
   
   'BUTTONS_REL'          => \%BUTTONS_REL,
   'BUTTONS_ACCESSKEY'    => \%BUTTONS_ACCESSKEY,
@@ -5676,7 +5671,7 @@ sub _default_program_string($)
   my $self = shift;
   return $self->convert_tree(
     $self->gdt('This document was generated on @emph{@today{}} using @uref{{program_homepage}, @emph{{program}}}.',
-         { 'program_homepage' => $self->get_conf('PROGRAM_HOMEPAGE'),
+         { 'program_homepage' => $self->get_conf('PACKAGE_URL'),
            'program' => $self->get_conf('PROGRAM') }));
 }
 
@@ -5770,8 +5765,8 @@ sub _file_header_informations($$)
   my $extra_head = '';
   $extra_head = $self->get_conf('EXTRA_HEAD')
     if (defined($self->get_conf('EXTRA_HEAD')));
-  my $program_and_version = $self->get_conf('PROGRAM_AND_VERSION');
-  my $program_homepage = $self->get_conf('PROGRAM_HOMEPAGE');
+  my $program_and_version = $self->get_conf('PACKAGE_AND_VERSION');
+  my $program_homepage = $self->get_conf('PACKAGE_URL');
   my $program = $self->get_conf('PROGRAM');
 
   return ($title, $description, $encoding, $date, $css_lines, 
