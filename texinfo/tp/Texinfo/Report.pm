@@ -197,7 +197,7 @@ sub gdt($$;$$)
   my $self = shift;
   my $message = shift;
   my $context = shift;
-  my $conf = shift;
+  my $type = shift;
 
   my $re = join '|', map { quotemeta $_ } keys %$context
       if (defined($context) and ref($context));
@@ -291,6 +291,14 @@ sub gdt($$;$$)
 #  $saved_str_LANG = 'UNDEF' if (!defined($saved_str_LANG));
 #  print STDERR "  LANG $saved_str_LANG $new_LANG\n";
 
+  if ($type and $type eq 'translated_text') {
+    if (defined($re)) {
+      # next line taken from libintl perl, copyright Guido. sub __expand
+      $translation_result =~ s/\{($re)\}/defined $context->{$1} ? $context->{$1} : "{$1}"/ge;
+    }
+    return $translation_result;
+  }
+
   my $parser_conf;
   # we change the substituted brace-enclosed strings to values, that
   # way they are substituted, including when they are Texinfo trees.
@@ -330,7 +338,7 @@ sub gdt($$;$$)
 
   my $tree;
   # Right now this is not used anywhere.
-  if ($conf->{'translated_paragraph'}) {
+  if ($type and $type eq 'translated_paragraph') {
     $tree = $parser->parse_texi_text($translation_result);
   } else {
     $tree = $parser->parse_texi_line($translation_result);
@@ -397,18 +405,37 @@ converted documents, and return a texinfo tree.
 
 =over
 
-=item $tree = $converter->gdt($string, $replaced_substrings)
+=item $tree = $converter->gdt($string, $replaced_substrings, $mode)
 
-The I<$string> is a string to be translated.  The function returns a 
-Texinfo tree, as the string is interpreted as Texinfo code after
+The I<$string> is a string to be translated.  In the default case, 
+the function returns a Texinfo tree, as the string is 
+interpreted as Texinfo code after
 translation.  I<$replaced_substrings> is an optional 
 hash reference specifying some 
 substitution to be done after the translation.  The key of 
 the I<$replaced_substrings> hash reference identifies what is to 
-be substituted, the value is some texinfo tree or array content 
+be substituted, the value is some string, texinfo tree or array content 
 that is substituted in the resulting texinfo tree.
 In the string to be translated word in brace matching keys of 
 I<$replaced_substrings> are replaced.
+
+I<$mode> is an optional string which may modify how the function
+behave.  The possible values are
+
+=over 
+
+=item translated_text
+
+In that case the string is not considered to be Texinfo, a plain string
+that is returned after translation and substitution.  The substitutions
+may only be strings in that case.
+
+=item translated_paragraph
+
+In that case, the parsing of the Texinfo string is done in a 
+context of a paragraph, not in the context of an inline text.
+
+=back
 
 For example in the following call, the string 
 I<See {reference} in @cite{{book}}> is translated, then

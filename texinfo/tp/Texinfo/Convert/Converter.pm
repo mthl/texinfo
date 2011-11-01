@@ -80,6 +80,7 @@ our %all_converters_defaults = (
 # This is the default, mainly for tests; the caller should set them.  These
 # values are what is used in tests of the Converters.
   'PACKAGE_AND_VERSION'  => 'texinfo',
+  'PACKAGE_VERSION'      => '',
   'PACKAGE_URL'          => 'http://www.gnu.org/software/texinfo/',
   'PROGRAM'              => 'tp',
 

@@ -1558,7 +1558,8 @@ sub _convert($$)
                'contents' => [$root->{'args'}->[0]]});
       pop @{$self->{'count_context'}};
       $result = Texinfo::Convert::Text::heading({'level' => 0, 
-        'cmdname' => 'titlefont'}, $result, $self->get_conf('NUMBER_SECTIONS'));
+        'cmdname' => 'titlefont'}, $result, $self, 
+        $self->get_conf('NUMBER_SECTIONS'));
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $self->_add_text_count($result);
       $self->_add_lines_count(2);
@@ -1728,7 +1729,7 @@ sub _convert($$)
         # @* leads to an end of line, underlying appears on the line below
         # over one line
         my $heading_underlined = 
-             Texinfo::Convert::Text::heading ($root, $heading, 
+             Texinfo::Convert::Text::heading ($root, $heading, $self,
                                               $self->get_conf('NUMBER_SECTIONS'));
         $result .= $self->_add_newline_if_needed();
         $self->{'empty_lines_count'} = 0 unless ($heading_underlined eq '');

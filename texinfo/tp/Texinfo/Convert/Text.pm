@@ -78,7 +78,7 @@ our %text_brace_no_arg_commands = (
                'dots'         => '...',
                'enddots'      => '...',
                'equiv'        => '==',
-# FIXME i18n
+# FIXME(Karl) i18n?
                'error'        => 'error-->',
                'expansion'    => '==>',
                'arrow'        => '->',
@@ -262,29 +262,15 @@ my %underline_symbol = (
   4 => '.'
 );
 
-sub numbered_heading($$$)
+sub heading($$$;$)
 {
   my $current = shift;
   my $text = shift;
+  my $converter = shift;
   my $numbered = shift;
 
-  $text = $current->{'number'}.' '.$text if (defined($current->{'number'}) 
-                                         and ($numbered or !defined($numbered)));
-  if ($current->{'cmdname'} eq 'appendix' and $current->{'level'} == 1) {
-    # FIXME i18n
-    $text = 'Appendix '.$text;
-  }
-  chomp ($text);
-  return $text;
-}
-
-sub heading($$$)
-{
-  my $current = shift;
-  my $text = shift;
-  my $numbered = shift;
-
-  $text = numbered_heading($current, $text, $numbered);
+  $text = Texinfo::Common::numbered_heading($converter, $current, $text, 
+                                            $numbered);
   return '' if ($text !~ /\S/);
   my $result = $text ."\n";
   $result .=($underline_symbol{$current->{'level'}} 
@@ -451,7 +437,8 @@ sub convert($;$)
       } elsif ($root->{'cmdname'} ne 'node') {
         $result = convert($root->{'args'}->[0], $options);
         if ($Texinfo::Common::sectioning_commands{$root->{'cmdname'}}) {
-          $result = heading ($root, $result, $options->{'NUMBER_SECTIONS'});
+          $result = heading ($root, $result, $options->{'converter'}, 
+                             $options->{'NUMBER_SECTIONS'});
         } else {
         # we always want an end of line even if is was eaten by a 
           chomp ($result);

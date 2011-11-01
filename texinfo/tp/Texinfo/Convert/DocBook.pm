@@ -779,19 +779,18 @@ sub _convert($$;$)
             if ($book_contents or $manual_file_contents) {
               return '' if (!$book_contents);
               if ($root->{'cmdname'} eq 'ref') {
-                # FIXME drop the asis?
                 return $self->_convert(
-                  $self->gdt('section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}',
+                  $self->gdt('section ``{section_name}\'\' in @cite{{book}}',
                     { 'section_name' => {'contents' => $section_name_contents},
                       'book' => $book_contents }));
               } elsif ($root->{'cmdname'} eq 'xref') {
                 return $self->_convert(
-                  $self->gdt('See section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}',
+                  $self->gdt('See section ``{section_name}\'\' in @cite{{book}}',
                     { 'section_name' => {'contents' => $section_name_contents},
                       'book' => $book_contents }));
               } elsif ($root->{'cmdname'} eq 'pxref') {
                 return $self->_convert(
-                  $self->gdt('see section `@asis{}`{section_name}\'@asis{}\' in @cite{{book}}',
+                  $self->gdt('see section ``{section_name}\'\' in @cite{{book}}',
                     { 'section_name' => {'contents' => $section_name_contents},
                       'book' => $book_contents }));
               }

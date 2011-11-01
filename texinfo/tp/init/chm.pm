@@ -362,7 +362,7 @@ EOT
       }
       my $text = convert_tree($self,
               {'contents' => $section->{'extra'}->{'misc_content'}});
-      $text = Texinfo::Convert::Text::numbered_heading($section, $text,
+      $text = $self->Texinfo::Common::numbered_heading($section, $text,
                           $self->get_conf('NUMBER_SECTIONS')); 
       my $file = $self->command_filename($section);
       my $anchor = $self->command_target($section);

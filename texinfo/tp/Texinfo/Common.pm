@@ -49,6 +49,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 expand_verbatiminclude
 definition_category
 expand_today
+numbered_heading
 trim_spaces_comment_from_content
 float_name_caption
 normalize_top_node_name
@@ -906,6 +907,44 @@ sub expand_today($)
             'day' => $mday, 'year' => $year });
 }
 
+sub numbered_heading($$$;$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $text = shift;
+  my $numbered = shift;
+
+  my $number;
+  if (defined($current->{'number'}) and ($numbered or !defined($numbered))) {
+    $number = $current->{'number'};
+  }
+
+  my $result;
+  if ($self) {
+    if (defined($number)) {
+      if ($current->{'cmdname'} eq 'appendix' and $current->{'level'} == 1) {
+        $result = $self->gdt('Appendix {number} {section_title}',
+                   {'number' => $number, 'section_title' => $text}, 
+                   'translated_text');
+      } else {
+        $result = $self->gdt('{number} {section_title}',
+                   {'number' => $number, 'section_title' => $text},
+                   'translated_text');
+      }
+    } else {
+      $result = $text;
+    }
+  } else {
+    $result = $text;
+    $result = $number.' '.$result if (defined($number));
+    if ($current->{'cmdname'} eq 'appendix' and $current->{'level'} == 1) {
+      $result = 'Appendix '.$result;
+    }
+  }
+  chomp ($result);
+  return $result;
+}
+
 sub definition_arguments_content($)
 {
   my $root = shift;
@@ -1450,6 +1489,15 @@ The I<$converter> argument may be undef.  I<$def_line> is a
 C<def_line> texinfo tree container.  This function
 returns a texinfo tree corresponding to the category of the
 I<$def_line> taking the class into account, if there is one.
+
+=item $result = numbered_heading ($converter, $heading_element, $heading_text, $do_number)
+
+The I<$converter> argument may be undef.  I<$heading_element> is 
+a heading command tree element.  I<$heading_text> is the already 
+formatted heading text.  if the I<$do_number> optional argument is 
+defined and false, no number is used and the text is returned as is.
+This function returns the heading with a number and the appendix 
+part if needed.
 
 =item ($caption, $prepended) = float_name_caption ($converter, $float)
 

@@ -32,10 +32,23 @@ my @test_cases = (
 @end defivar
 
 @insertcopying
-']);
+'],
+['appendix_translated',
+'@documentlanguage fr
+
+@node Top
+@top top
+
+@appendix dernier
+
+@contents
+'
+],
+);
 
 my %info_tests = (
   'multiple' => 1,
+  'appendix_translated' => 1,
 );
 
 foreach my $test (@test_cases) {
