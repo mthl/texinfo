@@ -117,7 +117,8 @@ sub tex4ht_prepare($) {
     if ($self->{'extra'}->{$command}) {
       local *TEX4HT_TEXFILE;
       unless (open (*TEX4HT_TEXFILE, ">$rfile")) {
-        $self->document_warn ("t2h_tex4ht error opening $rfile: $!");
+        $self->document_warn (sprintf($self->__("tex4ht error opening %s: %s"), 
+                                      $rfile, $!));
         return;
       }
       $commands{$command}->{'handle'} = *TEX4HT_TEXFILE;
@@ -207,10 +208,11 @@ sub tex4ht_convert ($)
 {
   my $self = shift;
   unless (chdir $tex4ht_out_dir) {
-    $self->document_warn ("t2h_tex4ht chdir to $tex4ht_out_dir failed");
+    $self->document_warn(sprintf($self->__("chdir to %s failed"),
+                         $tex4ht_out_dir));
     return;
   }
-  print STDERR "cwd($tex4ht_out_dir):" . Cwd::cwd() ."\n" 
+  print STDERR "cwd($tex4ht_out_dir): " . Cwd::cwd() ."\n" 
     if ($self->get_conf('VERBOSE'));
 
   my $errors = 0;
@@ -218,7 +220,7 @@ sub tex4ht_convert ($)
     $errors += tex4ht_process_command($self, $command);
   }
   unless (chdir $tex4ht_initial_dir) {
-    die "* tex4ht unable to return to the initial dir\n";
+    die "tex4ht unable to return to the initial dir\n";
   }
 }
 
@@ -228,7 +230,8 @@ sub tex4ht_process_command ($$) {
   
   return 0 unless ($commands{$command}->{'counter'});
 
-  $self->document_warn("tex4ht_process_command $commands{$command}->{'basefile'} missing") 
+  $self->document_warn(sprintf($self->__("tex4ht output %s missing"),
+                               $commands{$command}->{'basefile'}))
     unless (-f $commands{$command}->{'basefile'});
   my $style = $commands{$command}->{'style'};
   # now run tex4ht
@@ -279,7 +282,8 @@ sub tex4ht_process_command ($$) {
     }
   }
   if ($got_count != $commands{$command}->{'counter'}) {
-    $self->document_warn ("t2h_tex4ht: got $got_count for $commands{$command}->{'counter'} items entered");
+    $self->document_warn (sprintf($self->__("tex4ht output got %d for %d items entered"), 
+                                  $got_count, $commands{$command}->{'counter'}));
   }
   close (TEX4HT_HTMLFILE);
   return 0;
@@ -296,7 +300,8 @@ sub tex4ht_do_tex($$$$)
      $commands{$cmdname}->{'output_counter'}++;
      return $commands{$cmdname}->{'results'}->{$command};
   } else {
-    $self->document_warn ("tex4ht_do_tex: no text for \@$cmdname $command");
+    $self->document_warn (sprintf($self->__("tex4ht output no text for \@%s %s"),
+                                  $cmdname, $command));
     return '';
   }
 }
