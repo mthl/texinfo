@@ -281,7 +281,9 @@ sub set_from_cmdline ($$) {
   return 1;
 }
 
-# FIXME also get @-command results?
+# This also could get and set some @-command results.
+# FIXME But it does not take into account what happens during conversion,
+# for that something like $converter->get_conf(...) has to be used.
 sub get_conf($) {
   my $var = shift;
   if (exists($cmdline_options->{$var})) {
@@ -424,8 +426,6 @@ sub handle_errors($$) {
 
 sub _set_variables_texi2html()
 {
-  # FIXME all that are set to 0 could be negated, in order to have the default
-  # (undef) right.
   my @texi2html_options = (
   ['NO_USE_SETFILENAME', 1],
   ['USE_SETFILENAME_EXTENSION', 0],
@@ -678,7 +678,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
       $parser_default_options->{'novalidate'} = $_[1];
     },
  'no-warn' => sub { set_from_cmdline('NO_WARN', $_[1]); },
- # FIXME pass to parser? What could it mean in parser?
  'verbose|v!' => sub {set_from_cmdline('VERBOSE', $_[1]); 
                      push @texi2dvi_args, '--verbose'; },
  'document-language=s' => sub {
@@ -1020,8 +1019,9 @@ while(@input_files)
       and $formats_table{$format}->{'internal_links'}) {
     my $internal_links_text 
       = $converter->output_internal_links();
-    # FIXME output only if there are links or always, maybe creating an 
-    # empty file.
+    # FIXME(Karl) it is possible to output only if there are links, or always, 
+    # maybe creating an empty file.  Right now it is only output if there
+    # is something to output
     if (defined($internal_links_text)) {
       my $internal_links_file = get_conf('INTERNAL_LINKS');
       my $internal_links_fh = Texinfo::Common::open_out($converter, 
