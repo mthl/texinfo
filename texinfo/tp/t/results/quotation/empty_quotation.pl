@@ -435,8 +435,6 @@ $result_texts{'empty_quotation'} = '
 Empty
 
 
-
-
 ';
 
 $result_errors{'empty_quotation'} = [];

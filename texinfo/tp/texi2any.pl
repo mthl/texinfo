@@ -716,6 +716,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      } elsif ($var eq 'DEBUGTREE') {
        $format = 'debugtree';
+     } elsif ($var eq 'RAW_TEXT') {
+       $format = 'raw_text';
      } else {
        set_from_cmdline ($var, $value);
      # this is very wrong, but a way to avoid a spurious warning.
@@ -832,9 +834,12 @@ my %formats_table = (
              'converter' => sub{DebugTexinfo::DebugCount->converter(@_)},
            },
   'debugtree' => {
-     'split' => 1,
-     'converter' => sub{DebugTexinfo::DebugTree->converter(@_)},
-  },
+          'split' => 1,
+          'converter' => sub{DebugTexinfo::DebugTree->converter(@_)},
+         },
+  'raw_text' => {
+            'converter' => sub{Texinfo::Convert::Text->converter(@_)},
+           },
 );
 
 if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 

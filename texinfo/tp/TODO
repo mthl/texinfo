@@ -26,6 +26,28 @@ account even if there are no automatic directions. Thus
 leads to Second node being node-Next for First node in tp (and not in 
 texi2html).  ---> not sure about this one
 
+Texinfo::Convert::Text
+@c in menu lines (and maybe at other places) should be replaced by 
+\n and not eat the end of line.
+
+sectioning/next_in_menu_is_below there should certainly be a warning for
+the subsection that is both below and next the section, because it is 
+next in menu.
+
+tests/indices/index_entry_in_footnote_separated_info the node of index
+entry is Top, it should be the node created especially for the footnote
+and the lines count should also be adjusted.
+
+Missing warnings in
+t/19def.t empty_def_arguments
+for 
+@deffnx {} {}
+@deffnx{} {}
+
+t/30sectioning.t setfilename_on_top_and_after_node
+there could be a warning
+ warning: @setfilename after the first element
+
 The result of
   @abbr{AAA}. And text.
 is not right, space should be doubled after @abbr{AAA}, test in
@@ -40,10 +62,6 @@ have a better granularity and do something per command, with the possibility
 to really revert everything, including things that are not set by set_conf.
 (There is a FIXME in the code).
 
-Texinfo::Convert::Text
-@c in menu lines (and maybe at other places) should be replaced by 
-\n and not eat the end of line.
-
 Punctuation and spaces before @image do not lead to a doubling of space.
 
 Following should be an error:
@@ -51,32 +69,14 @@ Following should be an error:
 @heading A heading
 @end example
 
-sectioning/next_in_menu_is_below there should certainly be a warning for
-the subsection that is both below and next the section, because it is 
-next in menu.
-
-tests/indices/index_entry_in_footnote_separated_info the node of index
-entry is Top, it should be the node created especially for the footnote
-and the lines count should also be adjusted.
-
 Image on sectioning command line haven't their length ignored correctly.
 Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
-
-Missing warnings in
-t/19def.t empty_def_arguments
-for 
-@deffnx {} {}
-@deffnx{} {}
 
 warn when a @noindent/@indent appears within a paragraph.
 
 in info_tests/error_in_footnote there is an error message for each 
 listoffloats;  Line numbers are right, though, so maybe this is not
 an issue.
-
-t/30sectioning.t setfilename_on_top_and_after_node
-there could be a warning
- warning: @setfilename after the first element
 
 
 Missing tests

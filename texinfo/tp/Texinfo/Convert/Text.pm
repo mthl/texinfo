@@ -291,18 +291,35 @@ sub _code_options($)
   return $code_options;
 }
 
-sub convert($;$);
-
 sub convert($;$)
+{
+  my $root = shift;
+  # means it was called object oriented
+  if (ref ($root) ne 'HASH') {
+    $root = shift;
+  }
+  my $options = shift;
+  #print STDERR "CONVERT\n";
+  return _convert($root, $options);
+}
+
+sub _convert($;$);
+
+sub _convert($;$)
 {
   my $root = shift;
   my $options = shift;
 
   if (0) {
-    print STDERR "root\n";
-    print STDERR "  Command: $root->{'cmdname'}\n" if ($root->{'cmdname'});
-    print STDERR "  Type: $root->{'type'}\n" if ($root->{'type'});
-    print STDERR "  Text: $root->{'text'}\n" if (defined($root->{'text'}));
+    print STDERR "root $root";
+    print STDERR " cmd: \@$root->{'cmdname'}," if ($root->{'cmdname'});
+    print STDERR " type: $root->{'type'}," if ($root->{'type'});
+    my $text = $root->{'text'};
+    if (defined($text)) {
+      $text =~ s/\n/\\n/;
+      print STDERR " text: `$text'";
+    }
+    print STDERR "\n";
     #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
   }
@@ -343,7 +360,7 @@ sub convert($;$)
           and $sort_brace_no_arg_commands{$root->{'cmdname'}}) {
         return $sort_brace_no_arg_commands{$root->{'cmdname'}};
       } elsif ($options->{'converter'}) {
-        return convert(Texinfo::Common::expand_today($options->{'converter'}),
+        return _convert(Texinfo::Common::expand_today($options->{'converter'}),
                        $options);
       } elsif ($options->{'TEST'}) {
         return 'a sunny day';
@@ -361,23 +378,23 @@ sub convert($;$)
                                         $options->{'sc'});
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
-      return convert($root->{'args'}->[0], _code_options($options));
+      return _convert($root->{'args'}->[0], _code_options($options));
     } elsif ($root->{'cmdname'} eq 'email') {
-      my $mail = convert($root->{'args'}->[0], _code_options($options));
+      my $mail = _convert($root->{'args'}->[0], _code_options($options));
       my $text;
-      $text = convert($root->{'args'}->[1], $options)
+      $text = _convert($root->{'args'}->[1], $options)
          if (defined($root->{'args'}->[1]));
       return $text if (defined($text) and ($text ne ''));
       return $mail;
     } elsif ($root->{'cmdname'} eq 'uref' or $root->{'cmdname'} eq 'url') {
       my $replacement;
-      $replacement = convert($root->{'args'}->[2], $options)
+      $replacement = _convert($root->{'args'}->[2], $options)
         if (defined($root->{'args'}->[2]));
       return $replacement if (defined($replacement) and $replacement ne '');
       my $text;
-      $text = convert($root->{'args'}->[1], $options)
+      $text = _convert($root->{'args'}->[1], $options)
         if (defined($root->{'args'}->[1]));
-      my $url = convert($root->{'args'}->[0], _code_options($options));
+      my $url = _convert($root->{'args'}->[0], _code_options($options));
       if (defined($text) and $text ne '') {
         return "$url ($text)";
       } else {
@@ -385,11 +402,11 @@ sub convert($;$)
       }
     } elsif ($Texinfo::Common::explained_commands{$root->{'cmdname'}}
              and $root->{'args'} and $root->{'args'}->[1]) {
-      my $explanation = convert($root->{'args'}->[1], $options);
+      my $explanation = _convert($root->{'args'}->[1], $options);
       if ($explanation ne '') {
-        return convert($root->{'args'}->[0], $options) ." ($explanation)";
+        return _convert($root->{'args'}->[0], $options) ." ($explanation)";
       } else {
-        return convert($root->{'args'}->[0], $options);
+        return _convert($root->{'args'}->[0], $options);
       }
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
            and (($root->{'args'}->[0]->{'type'}
@@ -402,7 +419,7 @@ sub convert($;$)
                or $root->{'cmdname'} eq 'math') {
         $options = _code_options($options);
       }
-      $result = convert($root->{'args'}->[0], $options);
+      $result = _convert($root->{'args'}->[0], $options);
       return $result;
     # block commands
     } elsif ($root->{'cmdname'} eq 'quotation'
@@ -410,14 +427,14 @@ sub convert($;$)
              or $root->{'cmdname'} eq 'float') {
       if ($root->{'args'}) {
         foreach my $arg (@{$root->{'args'}}) {
-          my $converted_arg = convert($arg, $options);
+          my $converted_arg = _convert($arg, $options);
           if ($converted_arg =~ /\S/) {
             $result .= $converted_arg.", ";
           }
         }
         $result =~ s/, $//;
         chomp ($result);
-        $result .= "\n";
+        $result .= "\n" if ($result =~ /\S/);
       }
     } elsif ($formatting_misc_commands{$root->{'cmdname'}} and $root->{'args'}) {
       if ($root->{'cmdname'} eq 'sp') {
@@ -432,10 +449,10 @@ sub convert($;$)
           = Texinfo::Common::expand_verbatiminclude($options->{'converter'},
                                                     $root);
         if (defined($verbatim_include_verbatim)) {
-          $result .= convert($verbatim_include_verbatim, $options);
+          $result .= _convert($verbatim_include_verbatim, $options);
         }
       } elsif ($root->{'cmdname'} ne 'node') {
-        $result = convert($root->{'args'}->[0], $options);
+        $result = _convert($root->{'args'}->[0], $options);
         if ($Texinfo::Common::sectioning_commands{$root->{'cmdname'}}) {
           $result = heading ($root, $result, $options->{'converter'}, 
                              $options->{'NUMBER_SECTIONS'});
@@ -472,15 +489,15 @@ sub convert($;$)
         push @contents, @$arguments;
       }
       push @contents, {'text' => "\n"};
-      $result = convert({'contents' => \@contents}, _code_options($options));
+      $result = _convert({'contents' => \@contents}, _code_options($options));
     }
     #$result = convert($root->{'args'}->[0], $options) if ($root->{'args'});
   } elsif ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
     foreach my $arg (@{$root->{'args'}}) {
       if ($arg->{'type'} eq 'menu_entry_node') {
-        $result .= convert($arg, _code_options($options));
+        $result .= _convert($arg, _code_options($options));
       } else {
-        $result .= convert($arg, $options);
+        $result .= _convert($arg, $options);
       }
     }
   }
@@ -493,7 +510,7 @@ sub convert($;$)
       cluck "contents not an array($root->{'contents'}).";
     }
     foreach my $content (@{$root->{'contents'}}) {
-      $result .= convert($content, $options);
+      $result .= _convert($content, $options);
     }
   }
   $result = '{'.$result.'}' 
@@ -501,7 +518,111 @@ sub convert($;$)
          and (!$root->{'parent'}->{'type'} or
               ($root->{'parent'}->{'type'} ne 'block_line_arg'
                and $root->{'parent'}->{'type'} ne 'misc_line_arg')));
+  #print STDERR "  RR ($root) -> $result\n";
   return $result;
+}
+
+
+
+# Implement the converters API, but as simply as possible
+# initialization
+sub converter($)
+{
+  my $class = shift;
+  my $conf;
+  my $converter = {};
+  if (ref($class) eq 'HASH') {
+    $conf = $class;
+    bless $converter;
+  } elsif (defined($class)) {
+    bless $converter, $class;
+    $conf = shift;
+  } else {
+    bless $converter;
+    $conf = shift;
+  }
+
+  if ($conf) {
+    %{$converter} = %{$conf};
+  }
+  bless $converter;
+  return $converter;
+}
+
+sub convert_tree($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  return _convert($root);
+}
+
+# determine outfile and output to that file
+my $STDIN_DOCU_NAME = 'stdin';
+sub output($$)
+{
+  my $self = shift;
+  my $tree = shift;
+  #print STDERR "OUTPUT\n";
+  if ($self and $self->{'parser'}) {
+    my $parser = $self->{'parser'};
+    $self->{'info'} = $self->{'parser'}->global_informations();
+    $self->{'extra'} = $self->{'parser'}->global_commands_information();
+  }
+  my $input_basename;
+  if (defined($self->{'info'}->{'input_file_name'})) {
+    $input_basename = $self->{'info'}->{'input_file_name'};
+  } else {
+    # This could happen if called on a piece of texinfo
+    $input_basename = '';
+  }
+  $input_basename =~ s/^.*\///;
+  $self->{'input_basename'} = $input_basename;
+  $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
+  $input_basename =~ s/\.te?x(i|info)?$//;
+
+  my $setfilename;
+  $setfilename = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}
+    if ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
+        and $self->{'extra'}->{'setfilename'}->{'extra'}
+        and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
+  if (!defined($self->{'OUTFILE'})) {
+    my $outfile;
+    if (defined($setfilename)) {
+      $outfile = $setfilename;
+      $outfile =~ s/\.[^\.]*$//;
+    } elsif ($input_basename ne '') {
+      $outfile = $input_basename;
+    }
+    if (defined($outfile)) {
+      $outfile .= '.txt';
+      $self->{'OUTFILE'} = $outfile;
+    }
+  }
+  my $fh;
+  if (defined($self->{'OUTFILE'})) {
+    $fh = $self->Texinfo::Common::open_out ($self->{'OUTFILE'});
+    return undef if (!$fh);
+  }
+  my $result = _convert($tree);
+  if ($fh) {
+    print $fh $result;
+    $result = '';
+  }
+  return $result;
+}
+
+sub get_conf($$)
+{
+  my $self = shift;
+  my $key = shift;
+
+  return $self->{$key};
+}
+
+sub errors()
+{
+  return undef;
 }
 
 1;
