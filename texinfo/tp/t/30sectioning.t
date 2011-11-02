@@ -359,6 +359,16 @@ $section_in_unnumbered_text
 
 @node node after chapter 2
 ', {'test_split' => 'section'}],
+['chapter_before_and_after_part',
+'@chapter chapter
+
+@part part
+
+@chapter chapter 2
+
+@contents
+', {'test_split' => 'section'}
+],
 );
 
 my @tests_info = (
@@ -1423,14 +1433,6 @@ Second top.
 
 @chapter chapter
 '],
-['chapter_before_and_after_part',
-'@chapter chapter
-
-@part part
-
-@chapter chapter 2
-', {'test_split' => 'section'}
-],
 ['top_part_chapter',
 '@top top
 
@@ -1470,7 +1472,8 @@ $test_text
 
 my @xml_tests_converted_tests = ('section_before_part', 'chapter_before_part', 
   'part_before_top', 'double_part', 'section_in_unnumbered_plaintext',
-  'two_unnumbered_no_argument', 'two_nodes_between_chapters');
+  'two_unnumbered_no_argument', 'two_nodes_between_chapters',
+  'chapter_before_and_after_part');
 
 foreach my $test (@tests_converted) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
@@ -1492,7 +1495,7 @@ foreach my $test (@tests_info) {
 }
 
 my @xml_tests_cases_tests = ('part_before_section', 
-'section_before_chapter', 'chapter_before_and_after_part', 
+'section_before_chapter',
 'top_part_chapter', 'section_before_top_no_node', 
 'section_chapter_before_top', 'sectioning_part_appendix');
 foreach my $test (@test_cases) {

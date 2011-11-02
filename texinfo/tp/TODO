@@ -9,7 +9,7 @@ Warning for obsolete/unused customization variables like USE_SECTIONS
 
 Right now VERBOSE is almost not used.
 
-There should be a warning with something like
+There should be a warning for something like
 @example text
 ...
 
@@ -30,7 +30,7 @@ is not right, space should be doubled after @abbr{AAA}, test in
 plaintext_tests/punctuation_abbr_acronym
 
 
-Handle better @exdent in html (there is a FIXME in the code)?
+Handle better @exdent in html? (there is a FIXME in the code)
 
 When the HTML.pm is finished, document the API, that is everything
 in Texinfo::Config.
@@ -131,8 +131,8 @@ def/end_of_lines_protected_in_footnote.pl the footnote is
 and not 
    (1)
  -- category: deffn_name arguments arg2 more args with end of line
-It is unclear whether it is right or wrong. It happens this way because
-the paragraph starts right after the footnote number.
+It happens this way because the paragraph starts right after the footnote 
+number.
 
 In html, test 
  empty lines at the begining, 
@@ -143,11 +143,7 @@ a file.
 In html test empty @top for title, with different cases for 
 setcontentsaftertit* and for anchors.
 
-Tests in contents/ are incorporated?  Also a test is missing, along:
-@chapter chap
-@part part
-@chapter jjj
-@contents
+Tests in contents/ are incorporated?
 
 test an lone @contents without any sectioning command.
 

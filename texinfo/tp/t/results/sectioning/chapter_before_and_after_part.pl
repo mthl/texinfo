@@ -149,7 +149,18 @@ $result_trees{'chapter_before_and_after_part'} = [
           }
         ],
         'cmdname' => 'chapter',
-        'contents' => [],
+        'contents' => [
+          {
+            'parent' => {},
+            'text' => '
+',
+            'type' => 'empty_line'
+          },
+          {
+            'cmdname' => 'contents',
+            'parent' => {}
+          }
+        ],
         'extra' => {
           'associated_part' => {},
           'misc_content' => [
@@ -198,6 +209,8 @@ $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'args'}[0]{'con
 $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1];
+$result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1];
+$result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1];
 $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'extra'}{'associated_part'} = $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[0];
 $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'chapter_before_and_after_part'}[1]{'contents'}[1]{'parent'} = $result_trees{'chapter_before_and_after_part'}[1];
@@ -210,6 +223,8 @@ $result_texis{'chapter_before_and_after_part'} = '@chapter chapter
 @part part
 
 @chapter chapter 2
+
+@contents
 ';
 
 
@@ -221,6 +236,7 @@ part
 
 2 chapter 2
 ***********
+
 ';
 
 $result_sectioning{'chapter_before_and_after_part'} = {
@@ -329,12 +345,113 @@ element: @chapter chapter 2
 ';
 
 
+$result_converted{'plaintext'}->{'chapter_before_and_after_part'} = '1 chapter
+*********
+
+2 chapter 2
+***********
+
+1 chapter
+part
+2 chapter 2
+';
+
+
+$result_converted{'html'}->{'chapter_before_and_after_part'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="tp">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="chapter"></a>
+<h2 class="chapter">1 chapter</h2>
+
+<a name="part"></a>
+<h1 class="part">part</h1>
+<hr>
+
+<a name="chapter-2"></a>
+<h2 class="chapter">2 chapter 2</h2>
+
+<a name="SEC_Contents"></a>
+<h1>Table of Contents</h1>
+
+<div class="contents">
+<ul class="no-bullet">
+  <li><a name="toc-chapter" href="#chapter">1 chapter</a></li>
+<li><a name="toc-part" href="#part">part</a>
+<ul class="no-bullet">
+  <li><a name="toc-chapter-2" href="#chapter-2">2 chapter 2</a></li>
+</ul></li>
+
+</ul>
+</div>
+
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'chapter_before_and_after_part'} = [
+  {
+    'error_line' => 'warning: Must specify a title with a title command or @top
+',
+    'text' => 'Must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
+
+
 $result_converted{'xml'}->{'chapter_before_and_after_part'} = '<chapter><sectiontitle>chapter</sectiontitle>
 
 </chapter>
 <part><sectiontitle>part</sectiontitle>
 
 <chapter><sectiontitle>chapter 2</sectiontitle>
+
+<contents></contents>
 </chapter>
 </part>
 ';
