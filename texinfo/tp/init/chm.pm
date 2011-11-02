@@ -217,7 +217,7 @@ sub chm_init($)
     die sprintf($self->__("Can't open %s for writing: %s\n"), 
                   $hhk_file, $!);
   }
-  print "# writing HTML Help index in $hhk_file...\n" 
+  print STDERR "# writing HTML Help index in $hhk_file...\n" 
      if ($self->get_conf('VERBOSE'));
   print $hhk_fh "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
   print $hhk_fh "<HEAD>\n<meta name=\"GENERATOR\" content=\""
@@ -237,7 +237,7 @@ sub chm_init($)
     die sprintf($self->__("Can't open %s for writing: %s\n"), 
                   $hhp_file, $!);
   }
-  print "# writing HTML Help project in $hhp_file...\n" 
+  print STDERR "# writing HTML Help project in $hhp_file...\n" 
      if ($self->get_conf('VERBOSE'));
   my $language = $chm_languages{'en'};
   my $documentlanguage = $self->get_conf('documentlanguage');
@@ -291,7 +291,7 @@ EOT
     die sprintf($self->__("Can't open %s for writing: %s\n"), 
                   $hhc_file, $!);
   }
-  print "# writing HTML Help project in $hhc_file...\n" 
+  print STDERR "# writing HTML Help project in $hhc_file...\n" 
      if ($self->get_conf('VERBOSE'));
   
   my $index_entries = Texinfo::Structuring::sort_indices($self, 
