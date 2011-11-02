@@ -85,7 +85,7 @@ my @document_settable_at_commands =
         'evenfooting', 'oddheading', 'oddfooting', 'headings',
         'allowcodebreaks', 'frenchspacing', 'exampleindent',
         'firstparagraphindent', 'paragraphindent', 'clickstyle',
-        'documentlanguage');
+        'documentlanguage', 'xrefautomaticsectiontitle');
 
 # those should be unique
 my @document_global_at_commands = ('contents', 'shortcontents',

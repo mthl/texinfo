@@ -137,6 +137,25 @@ in detaildescription
 
 @shortcontents
 
+'],
+['test_xrefautomaticsectiontitle',
+'@node Top
+@top top
+
+@menu
+* chap::
+@end menu
+
+@node chap
+@chapter chapter
+
+@xrefautomaticsectiontitle on
+
+@xref{chap}.
+
+@xrefautomaticsectiontitle off
+
+@xref{chap}.
 ']
 );
 

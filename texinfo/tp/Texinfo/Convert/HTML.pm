@@ -948,6 +948,7 @@ our %defaults = (
   'INDEX_ENTRY_COLON'    => ':',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
+  'xrefautomaticsectiontitle' => 'off',
   'SHOW_TITLE'           => 1,
   'USE_TITLEPAGE_FOR_TITLE' => 0,
   'MONOLITHIC'           => 1,
@@ -1066,11 +1067,10 @@ my %kept_misc_commands;
 my @informative_global_commands = ('contents', 'shortcontents',
   'summarycontents', 'allowcodebreaks', 'documentlanguage',
   'footnotestyle', 'documentencoding', 
-  'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage');
+  'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage',
+  'xrefautomaticsectiontitle');
 # taken from global
-# 'xrefautomaticsectiontitle' (or in Parser?)
 # 'documentencoding'
-# 'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage'
 # 'novalidate'
 foreach my $misc_command(@informative_global_commands,
         'verbatiminclude', 'insertcopying', 'printindex', 'listoffloats',
@@ -2914,10 +2914,15 @@ sub _convert_xref_commands($$$$)
     my $command = $self->command_element_command($node);
     $command = $node if (!$node->{'extra'}->{'associated_section'}
                          or $node->{'extra'}->{'associated_section'} ne $command);
+
     my $href = $self->command_href($command);
 
     if (!defined($name)) {
-      if (!$self->get_conf('SHORT_REF')) {
+      if ($self->get_conf('xrefautomaticsectiontitle') eq 'on'
+         and $node->{'extra'}->{'associated_section'}) {
+        $command = $node->{'extra'}->{'associated_section'};
+        $name = $self->command_text($command, 'text_nonumber');
+      } elsif (!$self->get_conf('SHORT_REF')) {
         $name = $self->command_text($command, 'text_nonumber');
         #die "$command $command->{'normalized'}" if (!defined($name));
       } elsif (defined($args->[0]->{'code'})) {

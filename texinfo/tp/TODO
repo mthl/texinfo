@@ -2,18 +2,26 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
-Test for the handling of #line.
+Before next release
+===================
 
-Warning for obsolete/unused customization variables like USE_SECTIONS
-(a FIXME in Texinfo/Common.pm).?
+(A) do something for?
+@set txicodequoteundirected
+@codequoteundirected
+@set txicodequotebacktick
+@codequotebacktick
 
-Right now VERBOSE is almost not used.
+Verify that everything on 
+https://savannah.gnu.org/bugs/?group=texinfo
+is fixed and tested for.
+Remains:
+https://savannah.gnu.org/bugs/?15514
 
-There should be a warning for something like
-@example text
-...
 
-In tp, for node-Next sectioning commands directions are taken into 
+Bugs
+====
+
+(A) In tp, for node-Next sectioning commands directions are taken into 
 account even if there are no automatic directions. Thus
  @node First node,,Top,Top
  @chapter first node chapter
@@ -29,22 +37,112 @@ The result of
 is not right, space should be doubled after @abbr{AAA}, test in
 plaintext_tests/punctuation_abbr_acronym
 
+There should be a warning for something like
+@example text
+...
+
+Instead of _set_global_multiple_commands and _unset_global_multiple_commands
+have a better granularity and do something per command, with the possibility
+to really revert everything, including things that are not set by set_conf.
+
+Texinfo::Convert::Text
+@c in menu lines (and maybe at other places) should be replaced by 
+\n and not eat the end of line.
+
+Punctuation and spaces before @image do not lead to a doubling of space.
+
+Following should be an error:
+@example
+@heading A heading
+@end example
+
+sectioning/next_in_menu_is_below there should certainly be a warning for
+the subsection that is both below and next the section, because it is 
+next in menu.
+
+tests/indices/index_entry_in_footnote_separated_info the node of index
+entry is Top, it should be the node created especially for the footnote
+and the lines count should also be adjusted.
+
+Image on sectioning command line haven't their length ignored correctly.
+Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
+
+Missing warnings in
+t/19def.t empty_def_arguments
+for 
+@deffnx {} {}
+@deffnx{} {}
+
+warn when a @noindent/@indent appears within a paragraph.
+
+in info_tests/error_in_footnote there is an error message for each 
+listoffloats;  Line numbers are right, though, so maybe this is not
+an issue.
+
+t/30sectioning.t setfilename_on_top_and_after_node
+there could be a warning
+ warning: @setfilename after the first element
+
+
+Missing tests
+=============
+
+Test for the handling of #line.
+
+Test tree leading to non empty preamble_before_setfilename.  Currently there
+are none in the test suite, maybe require a real file as input.
+
+In html, test 
+ empty lines at the begining, 
+ content ignored before setfilename, 
+for the different cases of element/no element.  This is to be done with 
+real input files, or test_utils.pl should be changed to parse entry like 
+a file.
+In html test empty @top for title, with different cases for 
+setcontentsaftertit* and for anchors.
+
+Tests in contents/ are incorporated?
+
+test an lone @contents without any sectioning command.
+
+Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
+enable encoding and entities.
+
+Test end_line_count in Texinfo/Convert/ containers.
+
+Test no empty line before and after a sectioning command.  With text, but
+also commands.
+
+Test character lengths and encoding.  For instance tests in 
+encodings/at_commands_in_refs_utf8.texi
+
+use test ogoutf.texi ogolat2.texi for html.
+
+test empty line in block or brace command in menu description.
+
+
+Future features
+===============
+
+(A) Warning for obsolete/unused customization variables like USE_SECTIONS
+(a FIXME in Texinfo/Common.pm).?
+
+Right now VERBOSE is almost not used.
 
 Handle better @exdent in html? (there is a FIXME in the code)
 
-When the HTML.pm is finished, document the API, that is everything
-in Texinfo::Config.
-
-Add an API for everything used in conf, for example in page_head, use 
-$self->title_string() and so on and so forth.  
+Check the design of the HTML.pm API.  Document the API, in particular
+everything in Texinfo::Config.  Add an API for everything used in the 
+default functions, for example in page_head, use $self->title_string() 
+and so on and so forth.  
 
 add --output-encoding.  Design better the encoding handling.
 
-* docbook: in function no style.
-  replaceable is for @var or function argument. Only characters.
-  Maybe replaced with parameter?
 
-  Instead of synopsis may use specialized synopsis, funcsynopsis/funcprototype
+DocBook
+=======
+
+* Instead of synopsis may use specialized synopsis, funcsynopsis/funcprototype
   for deftype*, funcdef for defffn, ooclass for object oriented.
   deffn:
   <funcsynopsis><funcprototype><funcdef role=...><function>d--effn_name</function></funcdef><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
@@ -72,41 +170,19 @@ add --output-encoding.  Design better the encoding handling.
 
   put <title> in <articleinfo>?
 
-* to solve above issue (first issue), the definition arg formatted with
-  simple_format should alo be passed down
+  how to handle @sc in docbook?
 
 * in docbook, when there is only one section <article> should be better
   than book. Maybe the best way to do that would be passing the
   information that there is only one section to the functions formatting
   the page header and page footer.
 
-* how to handle @sc in docbook?
+
+Interrogations and remarks
+==========================
 
 Should more Converter ignore the last new line (with type 
 last_raw_newline) of a raw block format?
-
-Test tree leading to non empty preamble_before_setfilename.  Currently there
-are none in the test suite, maybe require a real file as input.
-
-Handle
-@xrefautomaticsectiontitle on|off
-(does nothing in info, in HTML automatically set the section name as 3rd
-arg of @*ref).
-https://savannah.gnu.org/bugs/?11700
-
-do something for?
-@set txicodequoteundirected
-@codequoteundirected
-@set txicodequotebacktick
-@codequotebacktick
-
-Test @w{'} for the substitution of '.
-
-Before the release, verify that everything on 
-https://savannah.gnu.org/bugs/?group=texinfo
-is fixed and tested for.
-Remains:
-https://savannah.gnu.org/bugs/?15514
 
 In a first step, close when the the command to be closed is at the 
 top of the tree, not when it should be closed theoretically.
@@ -121,11 +197,6 @@ least, could make for a notable speedup.
 @ protecting end of lines in @def* is not kept in any way in the tree.
 Maybe it could be possible to have it as a 'type'?
 
-in HTML, the argument of a quotation is ignored if the quotation is empty,
-like in
- @quotation thing
- @end quotation
-
 def/end_of_lines_protected_in_footnote.pl the footnote is
    (1)  -- category: deffn_name arguments arg2 more args with end of line
 and not 
@@ -134,21 +205,11 @@ and not
 It happens this way because the paragraph starts right after the footnote 
 number.
 
-In html, test 
- empty lines at the begining, 
- content ignored before setfilename, 
-for the different cases of element/no element.  This is to be done with 
-real input files, or test_utils.pl should be changed to parse entry like 
-a file.
-In html test empty @top for title, with different cases for 
-setcontentsaftertit* and for anchors.
-
-Tests in contents/ are incorporated?
-
-test an lone @contents without any sectioning command.
-
-Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
-enable encoding and entities.
+in HTML, the argument of a quotation is ignored if the quotation is empty,
+as in
+ @quotation thing
+ @end quotation
+Is it really a bug?
 
 In singular manual, the first node is the Top node, it has no associated
 sectioning command.  The up_section for this node is set to the first
@@ -162,70 +223,16 @@ specific list of formats could be passed to Convert::Text::convert, which
 would be different (for example Info and Plaintext even if converting HTML).
 This requires a test, to begin with.
 
-An unknwown command in a context where not all commands are accepted leads
-to an error message.  There is a FIXME in the code.  The test case is
-macro/unknown_macro_on_line_command
-
-sectioning/next_in_menu_is_below there should certainly be a warning for
-the subsection that is both below and next the section, because it is 
-next in menu.
-
-Punctuation and spaces before @image do not lead to a doubling of space.
-
 Use INLINE_INSERTCOPYING as the default for some formats?
 
-HEADERS is not used to determine if node headers are output or not, this is 
-determined by the module used (Plaintext.pm or Info.pm).  No idea whether
-it is right or wrong.
-
-tests/indices/index_entry_in_footnote_separated_info the node of index
-entry is Top, it should be the node created especially for the footnote
-and the lines count should also be adjusted.
-
-Test end_line_count in Texinfo/Convert/ containers.
-
-Test no empty line before and after a sectioning command.  With text, but
-also commands.
-
-Test character lengths and encoding.  For instance tests in 
-encodings/at_commands_in_refs_utf8.texi
-
-use test ogoutf.texi ogolat2.texi for html.
-
-Image on sectioning command line haven't their length ignored correctly.
-Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
-
-Following should be an error:
-@example
-@heading A heading
-@end example
-
-test empty line in block or brace command in menu description.
+In HTML, HEADERS is used.  But not in other modules, especially not in
+Plaintext.pm or Info.pm, this is determined by the module used (Plaintext.pm
+or Info.pm).  No idea whether it is right or wrong.
 
 in hyphenation: only text and accent commands, and should
 only appear in toplevel
 
-Missing warnings in
-t/19def.t empty_def_arguments
-for 
-@deffnx {} {}
-@deffnx{} {}
-
-warn when a @noindent/@indent appears within a paragraph.
-
-in info_tests/error_in_footnote there is an error message for each 
-listoffloats;  Line numbers are right, though, so maybe this is not
-an issue.
-
-Texinfo::Convert::Text
-@c in menu lines (and maybe at other places) should be replaced by 
-\n and not eat the end of line.
-
 use definfoenclose information in Convert::Text?
-
-t/30sectioning.t setfilename_on_top_and_after_node
-there could be a warning
- warning: @setfilename after the first element
 
 From vincent Belaïche. About svg image files in HTML:
 
@@ -249,15 +256,9 @@ The @FIGURE @macro is, for html:
 @end html
 @end macro
 
-
-
 Add @value to the corresponding commands categories?
 
-Instead of _set_global_multiple_commands and _unset_global_multiple_commands
-have a better granularity and do something per command, with the possibility
-to really revert everything, including things that are not set by set_conf.
-
-Functions (?):
+Functions to document (?):
 sectioning_command_target_name
 node_target_name
 
@@ -267,7 +268,7 @@ indices/index_test.init
 
 
 Incorporation of texi2html tests
---------------------------------
+================================
 
 tests in test/macros, not incorporated
 glossary.texi
