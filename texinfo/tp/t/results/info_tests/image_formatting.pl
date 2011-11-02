@@ -2782,8 +2782,8 @@ File: ,  Node: Top,  Up: (dir)
 
 `@image{f--ile}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ] `@image{f--ile,l--i}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ] `@image{f--ile,,l--e}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
 `@image{f--ile,,,alt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ] `@image{f--ile,,,,e-d-xt}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
-`@image{f--ile,aze,az,alt,e--xt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ] `@image{f-ile,aze,,a--lt}\' 
-`@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\'  [aaa
+`@image{f--ile,aze,az,alt,e--xt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ] `@image{f-ile,aze,,a--lt}\' [a-lt]
+`@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt] [aaa
 bbb
 ccc] [aaa
 bbb
@@ -2795,8 +2795,8 @@ ccc]
      `@image{f--ile,,,alt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
      `@image{f--ile,,,,e-d-xt}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
      `@image{f--ile,aze,az,alt,e--xt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
-     `@image{f-ile,aze,,a--lt}\' 
-     `@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' 
+     `@image{f-ile,aze,,a--lt}\' [a-lt]
+     `@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt]
      [aaa
 bbb
 ccc] [aaa

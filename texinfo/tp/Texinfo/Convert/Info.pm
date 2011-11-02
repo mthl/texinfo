@@ -544,12 +544,16 @@ sub _image($$)
       }
     }
     my $text = $self->_image_text($root, $basefile);
+    my $text_result;
     if (defined($text)) {
       if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-        $text = '['.$text.']';
+        $text_result = '['.$text.']';
+      } else {
+        $text_result = $text;
       }
     } elsif (!defined($image_file)) {
-      $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
+      $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"),
+                       $basefile), $root->{'line_nr'});
     }
 
     my $result;
@@ -567,22 +571,21 @@ sub _image($$)
         $alt =~ s/\"/\\\"/g;
         $result .= " alt=\"$alt\"";
       }
-      if (defined($text)) {
-        $text =~ s/\\/\\\\/g;
-        $text =~ s/\"/\\\"/g;
-        $result .= " text=\"$text\"";
+      if (defined($text_result)) {
+        $text_result =~ s/\\/\\\\/g;
+        $text_result =~ s/\"/\\\"/g;
+        $result .= " text=\"$text_result\"";
       }
       $result .= "\x{00}\x{08}]";
       if ($self->{'formatters'}->[-1]->{'_top_formatter'}) {
         $result .= "\n";
       }
-    } elsif (defined($text)) {
-      $result = $text;
+    } else {
+      $result = $self->_image_formatted_text($root, $basefile, $text,
+                                                $text_result);
       $lines_count = ($result =~ tr/\n/\n/);
     }
-    if (defined($result)) {
-      return ($result, $lines_count);
-    }
+    return ($result, $lines_count);
   }
   return ('', 0);
 }

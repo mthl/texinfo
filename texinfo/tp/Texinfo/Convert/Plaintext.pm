@@ -968,6 +968,32 @@ sub _image_text($$$)
   return undef;
 }
 
+sub _image_formatted_text($$$$$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $basefile = shift;
+  my $text = shift;
+  my $text_result = shift;
+
+  my $result;
+  if (defined($text)) {
+    $result = $text_result;
+  } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
+    my $alt = Texinfo::Convert::Text::convert(
+      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]},
+      {Texinfo::Common::_convert_text_options($self)});
+    if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
+      $result = '['.$alt.']';
+    } else {
+      $result = $alt;
+    }
+  } else {
+    $result = '['.$basefile.']';
+  }
+  return $result;
+}
+
 sub _image($$)
 {
   my $self = shift;
@@ -977,14 +1003,19 @@ sub _image($$)
     my $basefile = Texinfo::Convert::Text::convert(
      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
      {'code' => 1, Texinfo::Common::_convert_text_options($self)});
-    my $result = $self->_image_text($root, $basefile);
-    if (defined($result)) {
+    my $text = $self->_image_text($root, $basefile);
+    my $text_result;
+    if (defined($text)) {
       if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-        $result = '['.$result.']';
+        $text_result = '['.$text.']';
+      } else {
+        $text_result = $text;
       }
-      my $lines_count = ($result =~ tr/\n/\n/);
-      return ($result, $lines_count);
     }
+    my $result = $self->_image_formatted_text($root, $basefile, $text,
+                                              $text_result);
+    my $lines_count = ($result =~ tr/\n/\n/);
+    return ($result, $lines_count);
   }
   return ('', 0);
 }

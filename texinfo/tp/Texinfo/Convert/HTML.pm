@@ -6174,7 +6174,7 @@ sub run_stage_handlers($$)
       if ($converter->get_conf('DEBUG')) {
         print STDERR "HANDLER($stage) , priority $priority: $handler\n";
       }
-      &{$handler}($converter);
+      &{$handler}($converter, $stage);
     }
   }
 }

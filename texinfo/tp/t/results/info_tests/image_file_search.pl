@@ -309,9 +309,9 @@ File: ,  Node: Top,  Up: (dir)
 
  [image src="tp/t/include_dir/f--ile.png" text="Image description\\"\\"\\\\." ]
 
-@image dot. 
+@image dot. [./tp/t/include_dir/f--ile]
 
-   @image dot parent. 
+   @image dot parent. [../include_dir/f--ile]
 
 
 Tag Table:

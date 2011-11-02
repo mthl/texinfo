@@ -12,8 +12,7 @@ Is it right or not?
 Warning for obsolete/unused customization variables like USE_SECTIONS
 (a FIXME in Texinfo/Common.pm).?
 
-For plaintext @image output if there is no basename.txt, use alt else
-the basename as [image basename].
+Right now VERBOSE is almost not used.
 
 There should be a warning with something like
 @example text
