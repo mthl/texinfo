@@ -3292,7 +3292,7 @@ Something.
 ';
 
 
-$result_converted{'xml'}->{'table_nested'} = '<macro>@vtable @asis
+$result_converted{'xml'}->{'table_nested'} = '<macro name="myvtable" line=" myvtable">@vtable @asis
 @item first item
 @itemx second itemx
 

@@ -4,11 +4,6 @@ xmllint --nonet --noout --valid commands.xml
 
 Test for the handling of #line.
 
-In xml output, as can be seen in xtable/table_nested macro output do
-not begin with an end of line
-  <macro>@vtable @asis
-Is it right or not?
-
 Warning for obsolete/unused customization variables like USE_SECTIONS
 (a FIXME in Texinfo/Common.pm).?
 
@@ -35,7 +30,7 @@ is not right, space should be doubled after @abbr{AAA}, test in
 plaintext_tests/punctuation_abbr_acronym
 
 
-Handle better @exdent in html?
+Handle better @exdent in html (there is a FIXME in the code)?
 
 When the HTML.pm is finished, document the API, that is everything
 in Texinfo::Config.
@@ -179,20 +174,12 @@ sectioning/next_in_menu_is_below there should certainly be a warning for
 the subsection that is both below and next the section, because it is 
 next in menu.
 
-Use PREFIX to override setfilename/input file name to determine output
-name? Isn't -o sufficient? Or call it 'setfilename'?
-
 Punctuation and spaces before @image do not lead to a doubling of space.
 
 Use INLINE_INSERTCOPYING as the default for some formats?
 
-Force end lines before/after a menu?
-
-SHOW_MENU is used to determine if menus are shown in Plaintext, and is
-true in the default case.  
-
 HEADERS is not used to determine if node headers are output or not, this is 
-determined by the module used (Plaintext.pm or info.pm).  No idea whether
+determined by the module used (Plaintext.pm or Info.pm).  No idea whether
 it is right or wrong.
 
 tests/indices/index_entry_in_footnote_separated_info the node of index

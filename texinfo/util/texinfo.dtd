@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.23 2011-10-19 21:13:08 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.24 2011-11-02 12:13:58 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -63,7 +63,7 @@
       | defspec | defvar | defopt | deftypefun | deftypevar 
       | defivar | deftypeivar | defmethod | deftypemethod">
 
-<!ENTITY % raw.cmds "html | tex | docbook | macro | ignore">
+<!ENTITY % raw.cmds "html | tex | docbook | macro | rmacro | ignore">
 
 <!-- Commands that appear everywhere, both with block and in paragraphs -->
 <!ENTITY % ubiquitous.line.cmds "sp | anchor | indent | noindent | %raw.cmds; 
@@ -78,6 +78,7 @@
                   | raggedright | flushleft | flushright
                   | itemize | enumerate | titlefont | center | group
                   | table | vtable | ftable | multitable | definition 
+                  | image
                   | %def.cmds; 
                   | %ubiquitous.line.cmds;
                   | verbatim | verbatiminclude | insertcopying | page | need
@@ -459,7 +460,18 @@
 <!ELEMENT html (#PCDATA)>
 <!ELEMENT tex (#PCDATA)>
 
-<!ELEMENT macro (#PCDATA)>
+<!-- formalarg only before PCDATA, but mandating it seems not possible -->
+<!ELEMENT macro (#PCDATA | formalarg)*>
+<!ATTLIST macro
+          name CDATA #REQUIRED
+          line CDATA #REQUIRED>
+<!ELEMENT rmacro (#PCDATA | formalarg)*>
+<!ATTLIST rmacro
+          name CDATA #REQUIRED
+          line CDATA #REQUIRED>
+
+<!ELEMENT formalarg (#PCDATA)>
+
 <!ELEMENT ignore (#PCDATA)>
 
 <!-- Negative indentation in blocks -->

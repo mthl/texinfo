@@ -133,6 +133,13 @@ Para
 ['node_no_section',
 '@node Top
 '],
+['macro_and_args',
+'@macro good { aaa, 2b-bb}
+@end macro
+
+@macro bad { ggg"@@^_ ff, nnn_b, ccc v}
+@end macro
+']
 );
 
 foreach my $test (@test_cases) {

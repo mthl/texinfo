@@ -716,6 +716,7 @@ sub _convert($$;$)
       if ($context_block_commands{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
       }
+      my $prepended_elements = '';
       my $attribute = '';
       if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
         my $command_as_arg = $root->{'extra'}->{'command_as_argument'};
@@ -737,12 +738,32 @@ sub _convert($$;$)
         }
       } elsif ($root->{'cmdname'} eq 'verbatim') {
         $attribute = " xml:space=\"preserve\"";
+      } elsif ($root->{'cmdname'} eq 'macro' 
+               or $root->{'cmdname'} eq 'rmacro') {
+        if (defined($root->{'args'})) {
+          my @args = @{$root->{'args'}};
+          my $name_arg = shift @args;
+          if (defined($name_arg) and defined($name_arg->{'text'})) {
+            $attribute .= " name=\"$name_arg->{'text'}\"";
+          }
+          
+          while (@args) {
+            my $formal_arg = shift @args;
+            $prepended_elements .= "<formalarg>".
+                $self->xml_protect_text($formal_arg->{'text'})."</formalarg>";
+          }
+          if ($root->{'extra'} and defined($root->{'extra'}->{'arg_line'})) {
+            my $line = $root->{'extra'}->{'arg_line'};
+            chomp($line);
+            $attribute .= " line=\"".$self->xml_protect_text($line)."\"";
+          }
+        }
       }
       if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}
           and $root->{'cmdname'} eq 'xml') {
         $self->{'document_context'}->[-1]->{'raw'} = 1;
       } else {
-        $result .= "<$root->{'cmdname'}${attribute}>";
+        $result .= "<$root->{'cmdname'}${attribute}>${prepended_elements}";
         my $end_line = '';
         if ($root->{'args'}) {
           if ($commands_args_elements{$root->{'cmdname'}}) {
