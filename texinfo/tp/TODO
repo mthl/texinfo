@@ -5,17 +5,23 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-(A) do something for?
-@set txicodequoteundirected
-@codequoteundirected
-@set txicodequotebacktick
-@codequotebacktick
+Add css classes for special elements, like
+footnotes-heading about-heading contents-heading shortcontents-heading
+Add contents-heading shortcontents-heading for inline *contents too.
+And rename the class for footnotes with footnotestyle end as
+footnotes-heading.
+
+Always use <h3> as max heading for footnotes headings even when 
+in a special element.
+
+When footnotestyle is end always try to have the footnote be one less 
+h-level than the current sectioning level?
 
 
 Bugs
 ====
 
-(A) In tp, for node-Next sectioning commands directions are taken into 
+In tp, for node-Next sectioning commands directions are taken into 
 account even if there are no automatic directions. Thus
  @node First node,,Top,Top
  @chapter first node chapter
@@ -24,7 +30,7 @@ account even if there are no automatic directions. Thus
  @chapter second node chapter
 
 leads to Second node being node-Next for First node in tp (and not in 
-texi2html).  ---> not sure about this one
+texi2html).  This should not be that way.
 
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
