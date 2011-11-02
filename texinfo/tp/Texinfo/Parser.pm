@@ -1465,12 +1465,13 @@ sub _close_command_cleanup($$$) {
 # If the last argument is given it is the command being closed if
 # hadn't there be an error, currently only block command, used for a
 # better error message.
-sub _close_current($$$;$)
+sub _close_current($$$;$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
   my $command = shift;
+  my $interrupting_command = shift;
 
   if ($current->{'cmdname'}) {
     if (exists($brace_commands{$current->{'cmdname'}})) {
@@ -1481,6 +1482,10 @@ sub _close_current($$$;$)
       if (defined($command)) {
         $self->line_error(sprintf($self->__("`\@end' expected `%s', but saw `%s'"),
                                    $current->{'cmdname'}, $command), $line_nr);
+      } elsif ($interrupting_command) {
+        $self->line_error(sprintf($self->__("\@%s seen before \@end %s"),
+                                  $interrupting_command, $current->{'cmdname'}),
+                          $line_nr);
       } else {
         $self->line_error(sprintf($self->__("No matching `%cend %s'"),
                                    ord('@'), $current->{'cmdname'}), $line_nr);
@@ -1530,12 +1535,13 @@ sub _close_current($$$;$)
 # a command arg means closing until that command is found.
 # no command arg means closing until the root or a root_command
 # is found.
-sub _close_commands($$$;$)
+sub _close_commands($$$;$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
   my $command = shift;
+  my $interrupting_command = shift;;
 
   $current = _end_paragraph($self, $current, $line_nr);
   $current = _end_preformatted($self, $current, $line_nr);
@@ -1556,7 +1562,8 @@ sub _close_commands($$$;$)
                     or ($command and $current->{'parent'}->{'cmdname'}
                        and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
     $self->_close_command_cleanup($current);
-    $current = $self->_close_current($current, $line_nr, $command);
+    $current = $self->_close_current($current, $line_nr, $command, 
+                                     $interrupting_command);
   }
 
   my $closed_command;
@@ -3813,7 +3820,8 @@ sub _parse_texi($;$)
         # commands without braces and not block commands, ie no @end
         if (defined($self->{'misc_commands'}->{$command})) {
           if ($root_commands{$command} or $command eq 'bye') {
-            $current = _close_commands($self, $current, $line_nr);
+            $current = _close_commands($self, $current, $line_nr, undef, 
+                                       $command);
             # root_level commands leads to starting setting a new root
             # for the whole document and stuffing the preceding text
             # as the first content, this is done only once.

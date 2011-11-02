@@ -11,12 +11,6 @@ Before next release
 @set txicodequotebacktick
 @codequotebacktick
 
-Verify that everything on 
-https://savannah.gnu.org/bugs/?group=texinfo
-is fixed and tested for.
-Remains:
-https://savannah.gnu.org/bugs/?15514
-
 
 Bugs
 ====
@@ -44,6 +38,7 @@ There should be a warning for something like
 Instead of _set_global_multiple_commands and _unset_global_multiple_commands
 have a better granularity and do something per command, with the possibility
 to really revert everything, including things that are not set by set_conf.
+(There is a FIXME in the code).
 
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 

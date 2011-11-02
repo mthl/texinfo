@@ -270,12 +270,12 @@ $result_sectioning{'section_in_table'}{'section_childs'}[0]{'section_up'} = $res
 
 $result_errors{'section_in_table'} = [
   {
-    'error_line' => ':4: No matching `@end table\'
+    'error_line' => ':4: @section seen before @end table
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'No matching `@end table\'',
+    'text' => '@section seen before @end table',
     'type' => 'error'
   },
   {

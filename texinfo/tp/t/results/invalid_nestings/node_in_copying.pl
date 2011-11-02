@@ -133,12 +133,12 @@ $result_menus{'node_in_copying'} = {
 
 $result_errors{'node_in_copying'} = [
   {
-    'error_line' => ':2: No matching `@end copying\'
+    'error_line' => ':2: @node seen before @end copying
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'No matching `@end copying\'',
+    'text' => '@node seen before @end copying',
     'type' => 'error'
   },
   {

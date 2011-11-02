@@ -2247,12 +2247,17 @@ foreach my $command (@out_formats) {
 }
 
 
+my $html_menu_entry_index = 0;
 sub _convert_preformatted_commands($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
   my $content = shift;
+
+  if ($cmdname eq 'menu') {
+    $html_menu_entry_index = 0;
+  }
 
   if ($content ne '' and !$self->in_string()) {
     if ($self->get_conf('COMPLEX_FORMAT_IN_TABLE')) {
@@ -2511,7 +2516,6 @@ sub _in_preformatted_in_menu($)
   return 0;
 }
 
-my $html_menu_entry_index;
 sub _convert_menu_command($$$$)
 {
   my $self = shift;

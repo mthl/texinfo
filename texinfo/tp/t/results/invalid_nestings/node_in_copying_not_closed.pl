@@ -271,12 +271,12 @@ $result_menus{'node_in_copying_not_closed'} = {
 
 $result_errors{'node_in_copying_not_closed'} = [
   {
-    'error_line' => ':6: No matching `@end copying\'
+    'error_line' => ':6: @node seen before @end copying
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'No matching `@end copying\'',
+    'text' => '@node seen before @end copying',
     'type' => 'error'
   }
 ];
