@@ -125,7 +125,7 @@ in detaildescription
 
 @end detailmenu
 @end menu
-' ,{'SIMPLE_MENU' => 1}
+' ,{'SIMPLE_MENU' => 1, 'test_formats' => ['info']}
 ],
 ['character_number_leading_toc_stoc',
 '@top top
@@ -181,10 +181,10 @@ my @todo = (
 );
 
 foreach my $test (@test_cases) {
-  $test->[2]->{'test_formats'} = ['html'];
+  push @{$test->[2]->{'test_formats'}}, 'html';
 }
 foreach my $test (@test_cases_text) {
-  $test->[2]->{'test_formats'} = ['html_text'];
+  push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

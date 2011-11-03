@@ -1819,6 +1819,66 @@ $result_errors{'simple_menu'} = [
 
 
 
+$result_converted{'info'}->{'simple_menu'} = 'This is , produced by tp version from .
+
+* Menu:
+
+* (ggg):: description
+   * idescr
+AAA
+
+CCC
+
+   * iaa
+
+BBB
+
+   * ibb
+* (manual)::
+
+comment
+
+* (after_comment):: description
+in description
+* (after_description)::
+
+* (detailggg):: detaildescription
+   * idetaildescr
+detailAAA
+
+detailCCC
+
+   * detailiaa
+
+detailBBB
+
+   * detailibb
+* (detailmanual)::
+
+detailcomment
+
+* (detailafter_comment):: detaildescription
+in detaildescription
+* (detailafter_description)::
+
+
+
+Tag Table:
+
+End Tag Table
+';
+
+$result_converted_errors{'info'}->{'simple_menu'} = [
+  {
+    'error_line' => 'warning: Document without nodes.
+',
+    'text' => 'Document without nodes.',
+    'type' => 'warning'
+  }
+];
+
+
+
 $result_converted{'html'}->{'simple_menu'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->

@@ -2199,7 +2199,9 @@ sub _convert($$)
           $result .= $self->_convert($arg);
         }
       }
-      $result = $self->ensure_end_of_line($result);
+      $result = $self->ensure_end_of_line($result) 
+        unless ($root->{'parent'}->{'type'} 
+                and $root->{'parent'}->{'type'} eq 'preformatted');
     } elsif ($root->{'type'} eq 'frenchspacing') {
       push @{$formatter->{'frenchspacing_stack'}}, 'on';
       $formatter->{'container'}->set_space_protection(undef,

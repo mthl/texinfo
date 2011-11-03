@@ -107,7 +107,8 @@ $result_texis{'menu_no_closed_in_description'} = '@menu
 ';
 
 
-$result_texts{'menu_no_closed_in_description'} = '* (manual_in_menu):: desc';
+$result_texts{'menu_no_closed_in_description'} = '* (manual_in_menu):: desc
+';
 
 $result_errors{'menu_no_closed_in_description'} = [
   {

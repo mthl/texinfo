@@ -621,7 +621,12 @@ $result_texis{'menu_entry_name_comment'} = '@menu
 ';
 
 
-$result_texts{'menu_entry_name_comment'} = '* a: (f)b* a: (f)b * a: (f)b1c.c,* a: (f)b2c.c,     * a: (f)b3c.c,    d';
+$result_texts{'menu_entry_name_comment'} = '* a: (f)b
+* a: (f)b 
+* a: (f)b1c.c,
+* a: (f)b2c.c,     
+* a: (f)b3c.c,    d
+';
 
 $result_errors{'menu_entry_name_comment'} = [
   {

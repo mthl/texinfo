@@ -15,10 +15,6 @@ h-level than the current sectioning level?
 Bugs
 ====
 
-Texinfo::Convert::Text
-@c in menu lines (and maybe at other places) should be replaced by 
-\n and not eat the end of line.
-
 sectioning/next_in_menu_is_below there should certainly be a warning for
 the subsection that is both below and next the section, because it is 
 next in menu.

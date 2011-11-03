@@ -500,6 +500,11 @@ sub _convert($;$)
         $result .= _convert($arg, $options);
       }
     }
+    if (!$root->{'parent'}->{'type'} 
+        or $root->{'parent'}->{'type'} ne 'preformatted') {
+      chomp($result);
+      $result .= "\n";
+    }
   }
   if ($root->{'contents'}) {
     if ($root->{'cmdname'} 

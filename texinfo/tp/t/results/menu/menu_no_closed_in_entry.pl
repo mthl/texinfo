@@ -70,7 +70,8 @@ $result_texis{'menu_no_closed_in_entry'} = '@menu
 ';
 
 
-$result_texts{'menu_no_closed_in_entry'} = '* a1:';
+$result_texts{'menu_no_closed_in_entry'} = '* a1:
+';
 
 $result_errors{'menu_no_closed_in_entry'} = [
   {
