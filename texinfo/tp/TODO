@@ -5,12 +5,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-Always use <h3> as max heading for footnotes headings even when 
-in a special element.
-
-When footnotestyle is end always try to have the footnote be one less 
-h-level than the current sectioning level?
-
 
 Bugs
 ====
@@ -62,6 +56,12 @@ warn when a @noindent/@indent appears within a paragraph.
 in info_tests/error_in_footnote there is an error message for each 
 listoffloats;  Line numbers are right, though, so maybe this is not
 an issue.
+
+In singular manual, the first node is the Top node, it has no associated
+sectioning command.  The up_section for this node is set to the first
+sectioning element, the Preface, which is also associated with that node but
+is below, and maybe they are in the same element?  In any case it seems to
+be wrong.
 
 
 Missing tests
@@ -190,12 +190,6 @@ as in
  @quotation thing
  @end quotation
 Is it really a bug?
-
-In singular manual, the first node is the Top node, it has no associated
-sectioning command.  The up_section for this node is set to the first
-sectioning element, the Preface, which is also associated with that node but
-is below, and maybe they are in the same element?  In any case it seems to
-be wrong.
 
 In @copying things like some raw formats may be expanded.  However it is
 not clear that it should be the same than in the main converter.  Maybe a 

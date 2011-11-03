@@ -396,7 +396,7 @@ $result_converted{'html_text'}->{'paragraph_command'} = '<p>@
 </p>
 <div class="footnote">
 <hr>
-<h3 class="footnotes-heading">Footnotes</h3>
+<h4 class="footnotes-heading">Footnotes</h4>
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>lone footnote</p>

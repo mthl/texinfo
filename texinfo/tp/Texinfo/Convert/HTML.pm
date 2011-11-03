@@ -954,6 +954,8 @@ our %defaults = (
   'MONOLITHIC'           => 1,
   'CHAPTER_HEADER_LEVEL' => 2,
   'MAX_HEADER_LEVEL'     => 4,
+  'FOOTNOTE_END_HEADER_LEVEL' => 4,
+  'FOOTNOTE_SEPARATE_HEADER_LEVEL' => 4,
   
   'BUTTONS_REL'          => \%BUTTONS_REL,
   'BUTTONS_ACCESSKEY'    => \%BUTTONS_ACCESSKEY,
@@ -3290,6 +3292,10 @@ sub _contents_inline_element($$$)
         = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{$element_name});
     }
     my $class = $self->get_conf('SPECIAL_ELEMENTS_CLASS')->{$element_name};
+    my $level = $self->get_conf('CHAPTER_HEADER_LEVEL');
+    if ($element_name eq 'Footnotes') {
+      $level = $self->get_conf('FOOTNOTE_SEPARATE_HEADER_LEVEL');
+    }
     $result .= &{$self->{'format_heading_text'}}($self, $class.'-heading', 
                        $heading, $self->get_conf('CHAPTER_HEADER_LEVEL'))."\n";
     $result .= $content . "\n";
@@ -5916,8 +5922,9 @@ sub _default_footnotes_text($)
   my $footnote_heading 
     = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{'Footnotes'});
   my $class = $self->get_conf('SPECIAL_ELEMENTS_CLASS')->{'Footnotes'};
+  my $level = $self->get_conf('FOOTNOTE_END_HEADER_LEVEL');
   $result .= &{$self->{'format_heading_text'}}($self, $class.'-heading', 
-                                        $footnote_heading, 3)."\n";
+                                        $footnote_heading, $level)."\n";
   $result .= &{$self->{'format_special_element_body'}}($self, 'Footnotes',
                                                $self->{'current_element'});
   $result .= "</div>\n";

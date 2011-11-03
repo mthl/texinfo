@@ -309,7 +309,7 @@ $result_converted{'html_text'}->{'format_on_first_footnote_line'} = '<p>Texte<a 
 <p>Last text <a name="DOCF2" href="#FOOT2">(2)</a>
 </p><div class="footnote">
 <hr>
-<h3 class="footnotes-heading">Footnotes</h3>
+<h4 class="footnotes-heading">Footnotes</h4>
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <blockquote>

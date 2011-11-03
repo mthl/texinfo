@@ -163,7 +163,9 @@ my @variable_settables = (
   'MENU_ENTRY_COLON', 'INDEX_ENTRY_COLON', 'MENU_SYMBOL', 'DO_ABOUT',
   'CSS_FILES', 'CSS_REFS', 'BEFORE_OVERVIEW', 'AFTER_OVERVIEW',
   'BEFORE_TOC_LINES', 'AFTER_TOC_LINES', 'GLOBAL_COMMANDS',
-  'MAX_HEADER_LEVEL', 'CHAPTER_HEADER_LEVEL');
+  'MAX_HEADER_LEVEL', 'CHAPTER_HEADER_LEVEL',
+  'FOOTNOTE_END_HEADER_LEVEL', 'FOOTNOTE_SEPARATE_HEADER_LEVEL',
+);
 
 my %valid_options;
 foreach my $var (@document_settable_at_commands, @document_global_at_commands,
