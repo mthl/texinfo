@@ -15,17 +15,6 @@ h-level than the current sectioning level?
 Bugs
 ====
 
-In tp, for node-Next sectioning commands directions are taken into 
-account even if there are no automatic directions. Thus
- @node First node,,Top,Top
- @chapter first node chapter
-
- @node Second node,Third node unnumbered,,Top
- @chapter second node chapter
-
-leads to Second node being node-Next for First node in tp (and not in 
-texi2html).  This should not be that way.
-
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.

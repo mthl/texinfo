@@ -963,6 +963,87 @@ $section_in_unnumbered_text
 ],
 );
 
+my $complex_case = '@node Top,First node,(dir)
+@top
+@menu
+* First node:: 
+* between node::
+* Second node::   node 2
+* Third node unnumbered:: unnumbered in Top menu
+* Last node no description::
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+first node chapter text
+@menu
+* unnumbered:: un
+* unnumbered2:: un2
+* numbered:: nu
+
+@end menu
+
+@node unnumbered
+@unnumberedsec unnumbered section
+
+@menu
+* unnumbered sub:: un
+* numbered sub:: nu
+* unnumbered sub2:: un2
+* numbered sub2:: nu2
+@end menu
+
+@node unnumbered sub
+@unnumberedsubsec unnumbered subsection
+
+@node numbered sub
+@subsection numbered subsection
+
+@node unnumbered sub2
+@unnumberedsubsec unnumbered subsection2
+
+@node numbered sub2
+@subsection numbered subsection2
+
+@node unnumbered2
+@unnumberedsec unnumbered section2
+
+@menu
+*  numbered sub3::
+@end menu
+
+@node numbered sub3
+@subsection numbered subsection3
+
+
+@node numbered
+@section  numbered section
+
+@node between node,,,Top
+
+between node, node without sectioning node
+
+@node Second node,Third node unnumbered,,Top
+
+Second node text
+
+@chapter second node chapter
+
+second node chapter text.
+
+@node Third node unnumbered
+@unnumbered unnumbered chapter
+
+unnumbered chapter text.
+
+
+@node Last node no description,,Third node unnumbered,Top
+
+@contents
+@bye
+';
+
 my @test_cases = (
 [ 'node',
 '
@@ -1212,86 +1293,13 @@ in node following second
 @node node down
 '],
 ['complex',
-'@node Top,First node,(dir)
-@top
-@menu
-* First node:: 
-* between node::
-* Second node::   node 2
-* Third node unnumbered:: unnumbered in Top menu
-* Last node no description::
-@end menu
-
-@node First node,,Top,Top
-@chapter first node chapter
-
-first node chapter text
-@menu
-* unnumbered:: un
-* unnumbered2:: un2
-* numbered:: nu
-
-@end menu
-
-@node unnumbered
-@unnumberedsec unnumbered section
-
-@menu
-* unnumbered sub:: un
-* numbered sub:: nu
-* unnumbered sub2:: un2
-* numbered sub2:: nu2
-@end menu
-
-@node unnumbered sub
-@unnumberedsubsec unnumbered subsection
-
-@node numbered sub
-@subsection numbered subsection
-
-@node unnumbered sub2
-@unnumberedsubsec unnumbered subsection2
-
-@node numbered sub2
-@subsection numbered subsection2
-
-@node unnumbered2
-@unnumberedsec unnumbered section2
-
-@menu
-*  numbered sub3::
-@end menu
-
-@node numbered sub3
-@subsection numbered subsection3
-
-
-@node numbered
-@section  numbered section
-
-@node between node,,,Top
-
-between node, node without sectioning node
-
-@node Second node,Third node unnumbered,,Top
-
-Second node text
-
-@chapter second node chapter
-
-second node chapter text.
-
-@node Third node unnumbered
-@unnumbered unnumbered chapter
-
-unnumbered chapter text.
-
-
-@node Last node no description,,Third node unnumbered,Top
-
-@contents
-@bye
-'],
+$complex_case,
+{'test_split' => 'section'}
+],
+['complex_split_at_node',
+$complex_case,
+{'test_split' => 'node'}
+],
 ['double_top_section',
 '@top First top
 
