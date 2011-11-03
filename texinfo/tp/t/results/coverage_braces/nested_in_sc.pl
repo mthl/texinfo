@@ -289,7 +289,7 @@ $result_converted{'html_text'}->{'nested_in_sc'} = '<p><small><small>AAA &Ntilde
 <tt>in verb</tt></small></small>
 </p><div class="footnote">
 <hr>
-<h3 class="footnote">Footnotes</h3>
+<h3 class="footnotes-heading">Footnotes</h3>
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote</p>

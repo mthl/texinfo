@@ -5,12 +5,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-Add css classes for special elements, like
-footnotes-heading about-heading contents-heading shortcontents-heading
-Add contents-heading shortcontents-heading for inline *contents too.
-And rename the class for footnotes with footnotestyle end as
-footnotes-heading.
-
 Always use <h3> as max heading for footnotes headings even when 
 in a special element.
 

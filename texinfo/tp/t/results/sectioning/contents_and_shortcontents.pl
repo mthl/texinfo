@@ -995,7 +995,7 @@ ul.no-bullet {list-style: none}
 <h3 class="appendixsec">A.1 appendixsec</h3>
 
 <a name="SEC_Overview"></a>
-<h1>Short Table of Contents</h1>
+<h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">
 <ul class="no-bullet">
@@ -1014,7 +1014,7 @@ ul.no-bullet {list-style: none}
 
 
 <a name="SEC_Contents"></a>
-<h1>Table of Contents</h1>
+<h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
 <ul class="no-bullet">

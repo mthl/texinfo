@@ -9098,7 +9098,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="SEC_Contents"></a>
-<h1>Table of Contents</h1>
+<h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
 

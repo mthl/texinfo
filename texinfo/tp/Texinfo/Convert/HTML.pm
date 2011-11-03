@@ -964,6 +964,12 @@ our %defaults = (
   'ACTIVE_ICONS'         => \%ACTIVE_ICONS,
   'PASSIVE_ICONS'        => \%PASSIVE_ICONS,
   'SPECIAL_ELEMENTS_NAME' => \%SPECIAL_ELEMENTS_NAME,
+  'SPECIAL_ELEMENTS_CLASS' => {
+    'About'       => 'about',
+    'Contents'    => 'contents',
+    'Overview'    => 'shortcontents',
+    'Footnotes'   => 'footnotes',
+   },
   
   'output_format'        => 'html',
 );
@@ -3267,8 +3273,9 @@ sub _contents_inline_element($$$)
   my $content = &{$self->{'format_contents'}}($self, $cmdname, $command);
   if ($content) {
     my $result = '';
+    my $element_name = $contents_command_element_name{$cmdname};
     my $special_element 
-      = $self->special_element($contents_command_element_name{$cmdname});
+      = $self->special_element($element_name);
     my $heading;
     if ($special_element) {
       my $id = $self->command_id($special_element);
@@ -3279,11 +3286,12 @@ sub _contents_inline_element($$$)
     } else {
       # happens when called as convert() and not output()
       #cluck "$cmdname special element not defined";
-      my $element_name = $contents_command_element_name{$cmdname};
       $heading 
         = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{$element_name});
     }
-    $result .= &{$self->{'format_heading_text'}}($self, '', $heading, 0)."\n";
+    my $class = $self->get_conf('SPECIAL_ELEMENTS_CLASS')->{$element_name};
+    $result .= &{$self->{'format_heading_text'}}($self, $class.'-heading', 
+                       $heading, $self->get_conf('CHAPTER_HEADER_LEVEL'))."\n";
     $result .= $content . "\n";
     return $result;
   }
@@ -4003,7 +4011,10 @@ sub _convert_element_type($$$$)
       
     }
     my $heading = $self->command_text($element);
-    $result .= &{$self->{'format_heading_text'}}($self, '', $heading, 0)."\n";
+    my $element_name = $element->{'extra'}->{'special_element'};
+    my $class = $self->get_conf('SPECIAL_ELEMENTS_CLASS')->{$element_name};
+    $result .= &{$self->{'format_heading_text'}}($self, $class.'-heading', 
+                       $heading, $self->get_conf('CHAPTER_HEADER_LEVEL'))."\n";
 
     my $special_element_body .= &{$self->{'format_special_element_body'}}($self, 
                                                  $special_element, $element);
@@ -5904,7 +5915,8 @@ sub _default_footnotes_text($)
          and $self->get_conf('DEFAULT_RULE') ne '');
   my $footnote_heading 
     = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{'Footnotes'});
-  $result .= &{$self->{'format_heading_text'}}($self, 'footnote', 
+  my $class = $self->get_conf('SPECIAL_ELEMENTS_CLASS')->{'Footnotes'};
+  $result .= &{$self->{'format_heading_text'}}($self, $class.'-heading', 
                                         $footnote_heading, 3)."\n";
   $result .= &{$self->{'format_special_element_body'}}($self, 'Footnotes',
                                                $self->{'current_element'});

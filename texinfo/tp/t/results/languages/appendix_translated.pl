@@ -416,7 +416,7 @@ ul.no-bullet {list-style: none}
 <h2 class="appendix">Appendice A dernier</h2>
 
 <a name="SEC_Contents"></a>
-<h1>Table des mati&egrave;res</h1>
+<h2 class="contents-heading">Table des mati&egrave;res</h2>
 
 <div class="contents">
 

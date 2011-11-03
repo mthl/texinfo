@@ -348,7 +348,7 @@ $result_converted{'html_text'}->{'contents_in_html_text'} = '<a name="top"></a>
 <a name="Chap2"></a>
 <h2 class="chapter">2 Chap2</h2>
 
-<h1>Short Table of Contents</h1>
+<h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">
 <ul class="no-bullet">
@@ -357,7 +357,7 @@ $result_converted{'html_text'}->{'contents_in_html_text'} = '<a name="top"></a>
 </ul>
 </div>
 
-<h1>Table of Contents</h1>
+<h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
 

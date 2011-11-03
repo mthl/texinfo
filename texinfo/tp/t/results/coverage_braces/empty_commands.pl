@@ -276,7 +276,7 @@ $result_converted{'html_text'}->{'empty_commands'} = '
 <p> <abbr></abbr>  <code></code><a name="DOCF1" href="#FOOT1">(1)</a> ~  <tt></tt>
 </p><div class="footnote">
 <hr>
-<h3 class="footnote">Footnotes</h3>
+<h3 class="footnotes-heading">Footnotes</h3>
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 

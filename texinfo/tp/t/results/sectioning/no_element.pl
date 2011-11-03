@@ -1162,7 +1162,7 @@ ul.no-bullet {list-style: none}
 <a name="index-index-entry"></a>
 <div class="footnote">
 <hr>
-<h3 class="footnote">Footnotes</h3>
+<h3 class="footnotes-heading">Footnotes</h3>
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote.
