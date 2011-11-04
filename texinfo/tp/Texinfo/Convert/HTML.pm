@@ -3292,10 +3292,6 @@ sub _contents_inline_element($$$)
         = $self->convert_tree ($self->get_conf('SPECIAL_ELEMENTS_NAME')->{$element_name});
     }
     my $class = $self->get_conf('SPECIAL_ELEMENTS_CLASS')->{$element_name};
-    my $level = $self->get_conf('CHAPTER_HEADER_LEVEL');
-    if ($element_name eq 'Footnotes') {
-      $level = $self->get_conf('FOOTNOTE_SEPARATE_HEADER_LEVEL');
-    }
     $result .= &{$self->{'format_heading_text'}}($self, $class.'-heading', 
                        $heading, $self->get_conf('CHAPTER_HEADER_LEVEL'))."\n";
     $result .= $content . "\n";
@@ -4019,8 +4015,12 @@ sub _convert_element_type($$$$)
     my $heading = $self->command_text($element);
     my $element_name = $element->{'extra'}->{'special_element'};
     my $class = $self->get_conf('SPECIAL_ELEMENTS_CLASS')->{$element_name};
+    my $level = $self->get_conf('CHAPTER_HEADER_LEVEL');
+    if ($element_name eq 'Footnotes') {
+      $level = $self->get_conf('FOOTNOTE_SEPARATE_HEADER_LEVEL');
+    }
     $result .= &{$self->{'format_heading_text'}}($self, $class.'-heading', 
-                       $heading, $self->get_conf('CHAPTER_HEADER_LEVEL'))."\n";
+                       $heading, $level)."\n";
 
     my $special_element_body .= &{$self->{'format_special_element_body'}}($self, 
                                                  $special_element, $element);

@@ -100,6 +100,8 @@ use test ogoutf.texi ogolat2.texi for html.
 
 test empty line in block or brace command in menu description.
 
+in html test footnotestyle separate.
+
 
 Future features
 ===============
