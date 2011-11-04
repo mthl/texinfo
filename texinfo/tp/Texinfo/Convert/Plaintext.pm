@@ -304,6 +304,9 @@ sub push_top_formatter($$)
   push @{$self->{'text_element_context'}}, {
                                      'max' => $self->{'fillcolumn'}
                                    };
+  # This is not really meant to be used, as contents should open 
+  # their own formatters, however it happens that there is some text
+  # outside any content that needs to be formatted, as @sp for example.
   push @{$self->{'formatters'}}, $self->new_formatter('line');
   $self->{'formatters'}->[-1]->{'_top_formatter'} = 1;
 }
@@ -658,8 +661,9 @@ sub _footnotes($;$)
 
       my $node_contents = [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
                                      {'text' => '-Footnotes'}];
-      my $normalized 
-        = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $node_contents});
+      my $normalized
+        = Texinfo::Convert::NodeNameNormalization::normalize_node(
+                                                {'contents' => $node_contents});
       my $footnotes_node = {
         'cmdname' => 'node',
         'node_up' => $element->{'extra'}->{'node'},
@@ -667,7 +671,8 @@ sub _footnotes($;$)
                     'normalized' => $normalized}
       };
       $result .= $self->_node($footnotes_node);
-      $self->{'count_context'}->[-1]->{'lines'} = 0;
+      $self->{'node'} = $footnotes_node;
+      $self->{'count_context'}->[-1]->{'lines'} = 3;
     }
     while (@{$self->{'pending_footnotes'}}) {
       my $footnote = shift (@{$self->{'pending_footnotes'}});
@@ -1056,9 +1061,6 @@ sub _convert($$)
     }
   }
 
-  # NUMBER_FOOTNOTES SPLIT_SIZE IN_ENCODING FILLCOLUMN ENABLE_ENCODING
-  # OUT_ENCODING ENCODING_NAME
-
   if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}}
        and ($root->{'type'} ne 'empty_spaces_before_paragraph'
             or $self->get_conf('paragraphindent') ne 'asis'))
@@ -1165,9 +1167,12 @@ sub _convert($$)
         $location->{'lines'}--;
       }
     }
-    # special case for index entry not associated with a node but seen. 
-    # this will be an index entry in @copying, in @insertcopying.
-    if (!$root->{'extra'}->{'index_entry'}->{'node'} and $self->{'node'}) {
+    # this covers the special case for index entry not associated with a 
+    # node but seen.  this will be an index entry in @copying, 
+    # in @insertcopying.
+    # This also covers the case of an index entry in a node added by a 
+    # @footnote with footnotestyle separate.
+    if ($self->{'node'}) {
       $location->{'node'} = $self->{'node'};
     }
     $self->{'index_entries_line_location'}->{$root} = $location;

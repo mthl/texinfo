@@ -236,6 +236,28 @@ Top node@footnote{in footnote
 
 @printindex cp
 '],
+['index_entry_in_footnote_separate',
+'@footnotestyle separate
+@node Top
+
+@menu
+* First::
+@end menu
+
+Top node@footnote{in footnote
+@cindex index entry in footnote
+
+Blah
+
+Blih
+
+@cindex counting entry
+}
+
+@node First
+
+@printindex cp
+'],
 ['printindex_index_entry_in_copying_in_footnote',
 '@copying
 

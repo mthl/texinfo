@@ -335,10 +335,12 @@ sub _printindex($$)
     }
 
     my $node;
-    if (defined($entry->{'node'})) {
-      $node = $entry->{'node'};
-    } elsif (defined($self->{'index_entries_line_location'}->{$entry->{'command'}}->{'node'})) {
+    # priority given to the location determined dynamically as the
+    # index entry may be in footnote.
+    if (defined($self->{'index_entries_line_location'}->{$entry->{'command'}}->{'node'})) {
       $node = $self->{'index_entries_line_location'}->{$entry->{'command'}}->{'node'};
+    } elsif (defined($entry->{'node'})) {
+      $node = $entry->{'node'};
     }
     $entry_nodes{$entry} = $node;
     if (!defined($node)) {

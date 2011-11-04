@@ -11,11 +11,7 @@ Bugs
 
 sectioning/next_in_menu_is_below there should certainly be a warning for
 the subsection that is both below and next the section, because it is 
-next in menu.
-
-tests/indices/index_entry_in_footnote_separated_info the node of index
-entry is Top, it should be the node created especially for the footnote
-and the lines count should also be adjusted.
+next in menu.  Bug or not?
 
 Missing warnings in
 t/19def.t empty_def_arguments
