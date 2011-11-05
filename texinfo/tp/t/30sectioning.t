@@ -1325,6 +1325,17 @@ Second top.
 
 @subsection the subsection
 '],
+['lone_Top_node',
+'@node Top
+
+@menu
+* First::
+@end menu
+
+@node First
+@chapter chap
+', {'test_split' => 'section'}
+],
 ['lowered_subsubsection',
 '@node Top
 @top

@@ -13,11 +13,15 @@ Bugs
 the subsection that is both below and next the section, because it is 
 next in menu.  Bug or not?
 
-In singular manual, the first node is the Top node, it has no associated
-sectioning command.  The up_section for this node is set to the first
-sectioning element, the Preface, which is also associated with that node but
-is below, and maybe they are in the same element?  In any case it seems to
-be wrong.
+When there is a top node without sectioning command and USE_NODE is false
+and a sectioning command follows with an associated node:
+* the Top node ends up in the same element as the sectioning command and
+  second node
+* the node_up of the element is the Top node, the up for the element is 
+  therefore itself
+* the header appears at the same place as the Top node, but points up 
+  to the first sectioning element and the second node
+Example in sectioning/lone_Top_node.
 
 
 Delayed bugs
