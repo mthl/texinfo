@@ -867,7 +867,7 @@ if ($call_texi2dvi) {
     print STDERR "".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV)) 
        ."\n";
   }
-  exec { get_conf('TEXI2DVI') } (@texi2dvi_args,  @ARGV);
+  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV);
 }
 
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
