@@ -2965,6 +2965,10 @@ sub _end_line($$$)
                            and scalar(@{$self->{'input'}}) > 1)) {
       pop @{$current->{'contents'}};
     # columnfractions 
+    } elsif ($command eq 'setfilename'
+             and ($self->{'current_node'} or $self->{'current_section'})) {
+      $self->_command_warn($misc_cmd, $line_nr,
+               $self->__("\@%s after the first element"), $command);
     } elsif ($command eq 'columnfractions') {
       # in a multitable, we are in a block_line_arg
       if (!$current->{'parent'} or !$current->{'parent'}->{'cmdname'} 

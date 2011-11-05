@@ -302,12 +302,30 @@ $result_errors{'setfilename_on_top_and_after_node'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':2: warning: @setfilename after the first element
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@setfilename after the first element',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':4: warning: Multiple @setfilename
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
     'text' => 'Multiple @setfilename',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: @setfilename after the first element
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@setfilename after the first element',
     'type' => 'warning'
   }
 ];

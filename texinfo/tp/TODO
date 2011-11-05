@@ -13,10 +13,6 @@ sectioning/next_in_menu_is_below there should certainly be a warning for
 the subsection that is both below and next the section, because it is 
 next in menu.  Bug or not?
 
-t/30sectioning.t setfilename_on_top_and_after_node
-there could be a warning
- warning: @setfilename after the first element
-
 The result of
   @abbr{AAA}. And text.
 is not right, space should be doubled after @abbr{AAA}, test in
