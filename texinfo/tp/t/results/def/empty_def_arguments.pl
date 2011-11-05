@@ -365,21 +365,6 @@ $result_trees{'empty_def_arguments'} = {
               'category' => {},
               'name' => {}
             },
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {}
-              ],
-              'content_normalized' => [
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'deffnx',
-              'index_name' => 'fn',
-              'index_prefix' => 'f',
-              'key' => '',
-              'number' => 2
-            },
             'original_def_cmdname' => 'deffnx'
           },
           'line_nr' => {},
@@ -508,21 +493,6 @@ $result_trees{'empty_def_arguments'} = {
               'category' => {},
               'name' => {}
             },
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {}
-              ],
-              'content_normalized' => [
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'deffnx',
-              'index_name' => 'fn',
-              'index_prefix' => 'f',
-              'key' => '',
-              'number' => 3
-            },
             'original_def_cmdname' => 'deffnx'
           },
           'line_nr' => {},
@@ -646,21 +616,6 @@ $result_trees{'empty_def_arguments'} = {
               'category' => {},
               'name' => {}
             },
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {}
-              ],
-              'content_normalized' => [
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'deffnx',
-              'index_name' => 'fn',
-              'index_prefix' => 'f',
-              'key' => '',
-              'number' => 4
-            },
             'original_def_cmdname' => 'deffnx'
           },
           'line_nr' => {},
@@ -773,9 +728,6 @@ $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'def
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'def_args'}[0][1];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'command'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'extra'}{'def_args'}[2][1];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[5]{'args'}[0];
@@ -799,9 +751,6 @@ $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'def
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'def_args'}[0][1];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'index_entry'}{'command'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'extra'}{'def_args'}[2][1];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0];
@@ -825,9 +774,6 @@ $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'args'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def_args'}[0][1];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'index_entry'}{'command'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def_args'}[2][1];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'line_nr'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9];
@@ -902,13 +848,13 @@ $result_errors{'empty_def_arguments'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: Entry for index `fn\' outside of any node
+    'error_line' => ':5: warning: Missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'text' => 'Missing name for @deffnx',
+    'type' => 'warning'
   },
   {
     'error_line' => ':6: warning: Missing name for @deffnx
@@ -920,13 +866,13 @@ $result_errors{'empty_def_arguments'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: Entry for index `fn\' outside of any node
+    'error_line' => ':7: warning: Missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'text' => 'Missing name for @deffnx',
+    'type' => 'warning'
   },
   {
     'error_line' => ':8: warning: Missing name for @deffnx
@@ -938,13 +884,13 @@ $result_errors{'empty_def_arguments'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: Entry for index `fn\' outside of any node
+    'error_line' => ':9: warning: Missing name for @deffnx
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'text' => 'Missing name for @deffnx',
+    'type' => 'warning'
   }
 ];
 

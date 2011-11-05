@@ -2055,7 +2055,7 @@ sub _next_bracketed_or_word($$)
 }
 
 # definition line parsing
-sub _parse_def ($$$)
+sub _parse_def($$$)
 {
   my $self = shift;
   my $command = shift;
@@ -2112,7 +2112,7 @@ sub _parse_def ($$$)
     #print STDERR " contents ->".Texinfo::Convert::Texinfo::convert ({'contents' => \@contents});
     my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
     last if (!defined($next));
-    #print STDERR "NEXT ".Texinfo::Convert::Texinfo::convert($next)."\n";
+    #print STDERR "NEXT[$arg] ".Texinfo::Convert::Texinfo::convert($next)."\n";
     push @result, ['spaces', $spaces] if (defined($spaces));
     push @result, [$arg, $next];
   }
@@ -2437,8 +2437,8 @@ sub _end_line($$$)
     die "BUG: def_context $def_context "._print_current($current) 
       if ($def_context ne 'def');
     my $def_command = $current->{'parent'}->{'extra'}->{'def_command'};
-    my $arguments = $self->_parse_def ($def_command, 
-                                       $current->{'contents'});
+    my $arguments = $self->_parse_def($def_command, 
+                                      $current->{'contents'});
     if (scalar(@$arguments)) {
       $current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
       my $def_parsed_hash;
@@ -2459,7 +2459,18 @@ sub _end_line($$$)
       }
       $current->{'parent'}->{'extra'}->{'def_parsed_hash'} = $def_parsed_hash;
       # do an standard index entry tree
-      my $index_entry = $def_parsed_hash->{'name'};
+      my $index_entry;
+      if (defined($def_parsed_hash->{'name'})) {
+        $index_entry = $def_parsed_hash->{'name'}
+         # empty bracketed
+          unless ($def_parsed_hash->{'name'}->{'type'}
+                  and $def_parsed_hash->{'name'}->{'type'} eq 'bracketed_def_content'
+                  and (!$def_parsed_hash->{'name'}->{'contents'}
+                       or (!scalar(@{$def_parsed_hash->{'name'}->{'contents'}}))
+                       or (scalar(@{$def_parsed_hash->{'name'}->{'contents'}}) == 1
+                          and defined($def_parsed_hash->{'name'}->{'contents'}->[0]->{'text'})
+                          and $def_parsed_hash->{'name'}->{'contents'}->[0]->{'text'} !~ /\S/)));
+      }
       if (defined($index_entry)) {
         my $index_contents_normalized;
         if ($def_parsed_hash->{'class'}) {

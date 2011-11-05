@@ -128,22 +128,6 @@ $result_trees{'empty_index_entry'} = {
                   'category' => {},
                   'name' => {}
                 },
-                'index_entry' => {
-                  'command' => {},
-                  'content' => [
-                    {}
-                  ],
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'in_code' => 1,
-                  'index_at_command' => 'deffn',
-                  'index_name' => 'fn',
-                  'index_prefix' => 'f',
-                  'key' => '',
-                  'node' => {},
-                  'number' => 1
-                },
                 'original_def_cmdname' => 'deffn'
               },
               'line_nr' => {},
@@ -287,10 +271,6 @@ $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'empty_index_entry'}{'contents'}[1];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
@@ -356,7 +336,17 @@ $result_menus{'empty_index_entry'} = {
   }
 };
 
-$result_errors{'empty_index_entry'} = [];
+$result_errors{'empty_index_entry'} = [
+  {
+    'error_line' => ':3: warning: Missing name for @deffn
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Missing name for @deffn',
+    'type' => 'warning'
+  }
+];
 
 
 
