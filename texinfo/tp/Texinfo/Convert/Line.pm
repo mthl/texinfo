@@ -214,6 +214,17 @@ sub _add_next($;$$$$$)
   return $result;
 }
 
+sub add_underlying_text($$)
+{
+  my $line = shift;
+  my $underlying_text = shift;
+  if (defined($underlying_text)) {
+    $line->{'underlying_word'} = ''
+       if (!defined($line->{'underlying_word'}));
+    $line->{'underlying_word'} .= $underlying_text;
+  }
+}
+
 sub inhibit_end_sentence($)
 {
   my $line = shift;

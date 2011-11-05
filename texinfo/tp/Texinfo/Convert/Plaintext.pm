@@ -435,6 +435,7 @@ sub _process_text($$$)
   my $context = shift;
   my $text = $command->{'text'};
 
+
   my $lower_case_text;
   if ($context->{'upper_case'}) {
     $lower_case_text = $text;
@@ -1101,6 +1102,8 @@ sub _convert($$)
                                or $root->{'type'} eq 'last_raw_newline')) {
         $result = $self->_count_added($formatter->{'container'},
                     $formatter->{'container'}->add_next($root->{'text'}));
+      } elsif ($root->{'type'} and ($root->{'type'} eq 'underlying_text')) {
+        $formatter->{'container'}->add_underlying_text($root->{'text'});
       } else {
         my ($text, $lower_case_text) = $self->_process_text($root, $formatter);
         $result = $self->_count_added($formatter->{'container'},
@@ -1574,7 +1577,12 @@ sub _convert($$)
           #print STDERR "".Data::Dumper->Dump([$prepended])."\n";
           unshift @{$self->{'current_contents'}->[-1]}, $prepended;
         } else {
-          unshift @{$self->{'current_contents'}->[-1]}, $argument;
+          # FIXME The underlying_text added is very ugly.  It leads to 'a'
+          # being prepended in the underlying word after the abbr or acronym,
+          # the intended effect being that a following period is always
+          # interpreted as ending a sentence.
+          unshift @{$self->{'current_contents'}->[-1]}, ($argument,
+                    {'type' => 'underlying_text', 'text' => 'a'});
         }
       }
       return '';

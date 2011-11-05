@@ -9,25 +9,33 @@ Before next release
 Bugs
 ====
 
-sectioning/next_in_menu_is_below there should certainly be a warning for
+(A) sectioning/next_in_menu_is_below there should certainly be a warning for
 the subsection that is both below and next the section, because it is 
 next in menu.  Bug or not?
 
-The result of
-  @abbr{AAA}. And text.
-is not right, space should be doubled after @abbr{AAA}, test in
-plaintext_tests/punctuation_abbr_acronym
+In singular manual, the first node is the Top node, it has no associated
+sectioning command.  The up_section for this node is set to the first
+sectioning element, the Preface, which is also associated with that node but
+is below, and maybe they are in the same element?  In any case it seems to
+be wrong.
 
-There should be a warning for something like
-@example text
-...
+
+Delayed bugs
+============
+
+Punctuation and spaces before @image do not lead to a doubling of space.
+In fact @image is completly formatted outside of usual formatting containers.
+Not sure what should be the right way?
+test in info_test/image_and_punctuation
 
 Instead of _set_global_multiple_commands and _unset_global_multiple_commands
 have a better granularity and do something per command, with the possibility
 to really revert everything, including things that are not set by set_conf.
 (There is a FIXME in the code).
 
-Punctuation and spaces before @image do not lead to a doubling of space.
+There should be a warning for something like
+@example text
+...
 
 Following should be an error:
 @example
@@ -42,12 +50,6 @@ warn when a @noindent/@indent appears within a paragraph.
 in info_tests/error_in_footnote there is an error message for each 
 listoffloats;  Line numbers are right, though, so maybe this is not
 an issue.
-
-In singular manual, the first node is the Top node, it has no associated
-sectioning command.  The up_section for this node is set to the first
-sectioning element, the Preface, which is also associated with that node but
-is below, and maybe they are in the same element?  In any case it seems to
-be wrong.
 
 
 Missing tests

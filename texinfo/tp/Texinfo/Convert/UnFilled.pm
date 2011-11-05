@@ -165,6 +165,12 @@ sub add_next($;$$$$)
   return $result;
 }
 
+sub add_underlying_text($$)
+{
+  my $line = shift;
+  my $underlying_text = shift;
+}
+
 sub inhibit_end_sentence($)
 {
   my $line = shift;

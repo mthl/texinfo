@@ -413,7 +413,7 @@ $result_errors{'punctuation_abbr_acronym'} = [];
 
 
 
-$result_converted{'plaintext'}->{'punctuation_abbr_acronym'} = 'AAA. BBB. aaa.  bbb.  Next.  AAA (expL). BBB (explA). aaa (expl).  bbb
+$result_converted{'plaintext'}->{'punctuation_abbr_acronym'} = 'AAA.  BBB.  aaa.  bbb.  Next.  AAA (expL). BBB (explA). aaa (expl).  bbb
 (expla).  Last.
 ';
 
