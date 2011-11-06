@@ -1,7 +1,22 @@
+2011-11-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\dopdfimage): try .pdf and .PDF first.
+	* doc/texinfo.txi (Image Syntax): document this.
+	(implied by help-texinfo report from Rick Jones,
+	28 Oct 2011 11:09:33).
+
+	* doc/texinfo.txi (Configuration Variables): rename from
+	`@command{texi2any} Configuration Variables'.
+
+2011-11-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Configuration Variables): mention
+	CPP_LINE_DIRECTIVES.
+
 2011-10-31  Patrice Dumas  <pertusus@free.fr>
 
-	* doc/texinfo.txi(Other Configuration Variables): TOP_FILE is only for 
-	HTML
+	* doc/texinfo.txi (Other Configuration Variables): TOP_FILE is only
+	for HTML.
 
 2011-10-28  Karl Berry  <karl@gnu.org>
 

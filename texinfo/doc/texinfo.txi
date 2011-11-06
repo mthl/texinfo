@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.395 2011-10-31 14:58:59 pertusus Exp $
+@c $Id: texinfo.txi,v 1.396 2011-11-06 16:59:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -608,7 +608,7 @@ Generic Translator texi2any/makeinfo
 * Invoking texi2any::           How to run @command{texi2any} and @command{makeinfo} 
                                 from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
-* @command{texi2any} Configuration Variables:: Configuring @command{texi2any}.
+* Configuration Variables::     Configuring @command{texi2any}.
 
 Creating and Installing Info Files
 
@@ -9606,23 +9606,24 @@ extension, because the different processors support different formats:
 @itemize @bullet
 @item
 @pindex eps image format
-@TeX{} reads the file @file{@var{filename}.eps} (Encapsulated PostScript
-format).
+@TeX{} (DVI output) reads the file @file{@var{filename}.eps}
+(Encapsulated PostScript format).
 @item
 @pindex pdftex@r{, and images}
 @pindex png image format
 @pindex jpeg image format
 @pindex pdf image inclusions
-pdf@TeX{} reads @file{@var{filename}.png}, @file{@var{filename}.jpg},
-@file{@var{filename}.jpeg}, or @file{@var{filename}.pdf} (in that
+pdf@TeX{} reads @file{@var{filename}.pdf}, @file{@var{filename}.png},
+@file{@var{filename}.jpg}, or @file{@var{filename}.jpeg} (in that
 order).  It also tries uppercase versions of the extensions.  The PDF
-format cannot support EPS images, so they must be converted first.
+format does not support EPS images, so such must be converted first.
 @item
 @code{makeinfo} includes @file{@var{filename}.txt} verbatim for
 Info output (more or less as if it was an @code{@@example}).
 @item
 @code{makeinfo} uses the optional fifth argument @var{extension} to
-@code{@@image} for the filename extension, if it is specified.  For example:
+@code{@@image} for the filename extension, if it is specified.  Any
+leading period should be included in @var{extension}.  For example:
 
 @pindex XPM image format
 @example
@@ -9631,7 +9632,6 @@ Info output (more or less as if it was an @code{@@example}).
 
 @noindent
 will cause @code{makeinfo} to look for @file{foo.xpm} before any others.
-
 @end itemize
 
 If you want to install image files for use by Info readers too, we
@@ -16168,7 +16168,7 @@ The rest of this chapter gives further details on the program.
 @menu
 * Invoking texi2any::           How to run @command{texi2any} from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
-* @command{texi2any} Configuration Variables::  Configuring @command{texi2any}.
+* Configuration Variables::     Configuring @command{texi2any}.
 @end menu
 
 
@@ -16565,8 +16565,7 @@ to standard output by default; this can be overridden with @option{-o}.
 Set the configuration variable @var{var} to @var{value}.  Many aspects
 of the behavior and output may be modified by modifying configuration
 variables, beyond what can be set in the document by @@-commands and
-with other command line switches.  @xref{@command{texi2any} Configuration
-Variables}.
+with other command line switches.  @xref{Configuration Variables}.
 
 @item --split=@var{how}
 @itemx --no-split
@@ -16686,8 +16685,8 @@ cross reference.
 @end enumerate
 
 
-@node @command{texi2any} Configuration Variables
-@section @command{texi2any} Configuration Variables
+@node Configuration Variables
+@section Configuration Variables
 
 @cartouche
 @quotation Warning
@@ -16849,6 +16848,10 @@ When a closing quote is needed, use the corresponding character.
 
 @item COMPLEX_FORMAT_IN_TABLE
 For HTML@.  If set, use tables for indentation of complex formats.
+
+@item CPP_LINE_DIRECTIVES
+Recognize @code{#line} directives in a ``preprocessing'' pass.
+@c xxref somewhere
 
 @item CSS_LINES
 CSS output, automatically determined in the default case
@@ -18782,7 +18785,7 @@ redirected, via the file @var{manual}@file{-noderename.cnf}, where
 @file{texinfo.txi} would be supplemented by a file
 @file{texinfo-noderename}.cnf.  (This name can be overridden by
 setting the @file{RENAMED_NODES_FILE} configuration variable;
-@pxref{@command{texi2any} Configuration Variables}).
+@pxref{Configuration Variables}).
 
 The file is read in pairs of lines, as follows:
 
@@ -21100,7 +21103,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.395 2011-10-31 14:58:59 pertusus Exp $
+$Id: texinfo.txi,v 1.396 2011-11-06 16:59:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21171,7 +21174,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.395 2011-10-31 14:58:59 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.396 2011-11-06 16:59:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
