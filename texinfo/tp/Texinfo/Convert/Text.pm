@@ -591,8 +591,8 @@ sub output($$)
     if ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
         and $self->{'extra'}->{'setfilename'}->{'extra'}
         and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
+  my $outfile;
   if (!defined($self->{'OUTFILE'})) {
-    my $outfile;
     if (defined($setfilename)) {
       $outfile = $setfilename;
       $outfile =~ s/\.[^\.]*$//;
@@ -601,12 +601,13 @@ sub output($$)
     }
     if (defined($outfile)) {
       $outfile .= '.txt';
-      $self->{'OUTFILE'} = $outfile;
     }
+  } else {
+    $outfile = $self->{'OUTFILE'};
   }
   my $fh;
-  if (defined($self->{'OUTFILE'})) {
-    $fh = $self->Texinfo::Common::open_out ($self->{'OUTFILE'});
+  if (defined($outfile)) {
+    $fh = $self->Texinfo::Common::open_out ($outfile);
     return undef if (!$fh);
   }
   my $result = _convert($tree);

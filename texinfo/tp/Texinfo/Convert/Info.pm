@@ -60,8 +60,8 @@ sub output($)
   $self->{'input_basename'} = $STDIN_DOCU_NAME if ($self->{'input_basename'} eq '-');
 
   # no splitting when writing to the null device or to stdout
-  if ($Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')} 
-       or $self->get_conf('OUTFILE') eq '-') {
+  if ($Texinfo::Common::null_device_file{$self->{'output_file'}} 
+       or $self->{'output_file'} eq '-') {
     $self->force_conf('SPLIT_SIZE', undef);
   }
 
@@ -76,11 +76,11 @@ sub output($)
   my $elements = Texinfo::Structuring::split_by_node($root);
 
   my $fh;
-  if (! $self->get_conf('OUTFILE') eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'));
+  if (! $self->{'output_file'} eq '') {
+    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                    $self->get_conf('OUTFILE'), $!));
+                                    $self->{'output_file'}, $!));
       return undef;
     }
   }
@@ -125,24 +125,24 @@ sub output($)
           and @nodes and $fh) {
         close ($fh);
         if ($out_file_nr == 1) {
-          unless (rename ($self->get_conf('OUTFILE'), 
-                          $self->get_conf('OUTFILE').'-'.$out_file_nr)) {
+          unless (rename ($self->{'output_file'}, 
+                          $self->{'output_file'}.'-'.$out_file_nr)) {
             $self->document_error(sprintf($self->__("Rename %s failed: %s"), 
-                                         $self->get_conf('OUTFILE'), $!));
+                                         $self->{'output_file'}, $!));
           }
           push @{$self->{'opened_files'}}, 
-                   $self->get_conf('OUTFILE').'-'.$out_file_nr;
+                   $self->{'output_file'}.'-'.$out_file_nr;
           push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
                                  $first_node_bytes_count];
           #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
         }
         $out_file_nr++;
         $fh = $self->Texinfo::Common::open_out (
-                               $self->get_conf('OUTFILE').'-'.$out_file_nr); 
+                               $self->{'output_file'}.'-'.$out_file_nr); 
         if (!$fh) {
            $self->document_error(sprintf(
                   $self->__("Could not open %s for writing: %s"),
-                  $self->get_conf('OUTFILE').'-'.$out_file_nr, $!));
+                  $self->{'output_file'}.'-'.$out_file_nr, $!));
            return undef;
         }
         print $fh $header;
@@ -156,11 +156,11 @@ sub output($)
   my $tag_text = '';
   if ($out_file_nr > 1) {
     close ($fh);
-    $fh = $self->Texinfo::Common::open_out($self->get_conf('OUTFILE'));
+    $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf(
             $self->__("Could not open %s for writing: %s"),
-            $self->get_conf('OUTFILE'), $!));
+            $self->{'output_file'}, $!));
       return undef;
     }
     $tag_text = $header;

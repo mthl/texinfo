@@ -204,7 +204,7 @@ sub tex4ht_prepare($) {
   }
 }
 
-sub tex4ht_convert ($)
+sub tex4ht_convert($)
 {
   my $self = shift;
   unless (chdir $tex4ht_out_dir) {
@@ -224,7 +224,7 @@ sub tex4ht_convert ($)
   }
 }
 
-sub tex4ht_process_command ($$) {
+sub tex4ht_process_command($$) {
   my $self = shift;
   my $command = shift;
   

@@ -13,7 +13,7 @@ Bugs
 the subsection that is both below and next the section, because it is 
 next in menu.  Bug or not?
 
-When there is a top node without sectioning command and USE_NODE is false
+(A) When there is a top node without sectioning command and USE_NODE is false
 and a sectioning command follows with an associated node:
 * the Top node ends up in the same element as the sectioning command and
   second node

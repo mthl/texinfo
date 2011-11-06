@@ -256,11 +256,11 @@ sub output($$)
   return undef unless $self->_create_destination_directory();
 
   my $fh;
-  if (! $self->get_conf('OUTFILE') eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'));
+  if (! $self->{'output_file'} eq '') {
+    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                    $self->get_conf('OUTFILE'), $!));
+                                    $self->{'output_file'}, $!));
       return undef;
     }
   }
@@ -269,7 +269,7 @@ sub output($$)
   my $header =  '<?xml version="1.0"?>
 <!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
 <texinfo xml:lang="' . $self->get_conf('documentlanguage') ."\">\n";
-  if ($self->get_conf('OUTFILE') ne '') {
+  if ($self->{'output_file'} ne '') {
     my $output_filename = $self->{'output_filename'};
     $header .= "<filename file=\"".$self->xml_protect_text($output_filename)
                 ."\"></filename>\n";

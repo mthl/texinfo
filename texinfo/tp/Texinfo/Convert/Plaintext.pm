@@ -408,8 +408,8 @@ sub output($$)
   my $root = shift;
 
   my $outfile = '-';
-  if (defined($self->get_conf('OUTFILE'))) {
-    $outfile = $self->get_conf('OUTFILE');
+  if (defined($self->{'output_file'})) {
+    $outfile = $self->{'output_file'};
   }
   
   my $fh = $self->Texinfo::Common::open_out ($outfile);

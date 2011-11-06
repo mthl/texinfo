@@ -301,11 +301,11 @@ sub output($$)
   return undef unless $self->_create_destination_directory();
 
   my $fh;
-  if (! $self->get_conf('OUTFILE') eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'));
+  if (! $self->{'output_file'} eq '') {
+    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                    $self->get_conf('OUTFILE'), $!));
+                                    $self->{'output_file'}, $!));
       return undef;
     }
   }
@@ -313,7 +313,7 @@ sub output($$)
   $self->_set_global_multiple_commands(-1);
 
   my $id;
-  if ($self->get_conf('OUTFILE') ne '') {
+  if ($self->{'output_file'} ne '') {
     my $output_filename = $self->{'output_filename'};
     $id = " id=\"".$self->xml_protect_text($output_filename)."\"";
   } else {

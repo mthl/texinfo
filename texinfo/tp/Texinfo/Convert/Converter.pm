@@ -384,7 +384,6 @@ sub _set_outfile($$$)
   # the name of the document, which is more or less the basename, without 
   # extension
   my $document_name;
-  my $set_outfile = $self->get_conf('OUTFILE');
   # determine output file and output file name
   my $outfile;
   if (!defined($self->get_conf('OUTFILE'))) {
@@ -411,17 +410,18 @@ sub _set_outfile($$$)
     if (defined($self->get_conf('SUBDIR')) and $outfile ne '') {
       $outfile = $self->get_conf('SUBDIR')."/$outfile";
     }
-    $self->set_conf('OUTFILE', $outfile);
+    #$self->set_conf('OUTFILE', $outfile);
   } else {
     $document_name = $self->get_conf('OUTFILE');
     $document_name =~ s/\.[^\.]*$//;
+    $outfile = $self->get_conf('OUTFILE');
   }
 
   # the output file without directories part.
-  my $output_filename = $self->get_conf('OUTFILE');
+  my $output_filename = $outfile;
   # this is a case that should happen rarely: one wants to get 
   # the result in a string and there is a setfilename.
-  if ($self->get_conf('OUTFILE') eq '' and defined($setfilename)
+  if ($outfile eq '' and defined($setfilename)
       and !$self->get_conf('NO_USE_SETFILENAME')) {
     $output_filename = $setfilename;
     $document_name = $setfilename;
@@ -432,7 +432,7 @@ sub _set_outfile($$$)
   $output_filename =~ s/^.*\///;
   $self->{'output_filename'} = $output_filename;
   if ($self->get_conf('SPLIT')) {
-    if (defined($set_outfile)) {
+    if (defined($self->get_conf('OUTFILE'))) {
       $self->{'destination_directory'} = $self->get_conf('OUTFILE');
     } elsif (defined($self->get_conf('SUBDIR'))) {
       $self->{'destination_directory'} = $self->get_conf('SUBDIR');
@@ -440,7 +440,7 @@ sub _set_outfile($$$)
       $self->{'destination_directory'} = $document_name;
     }
   } else {
-    my $output_dir = $self->get_conf('OUTFILE');
+    my $output_dir = $outfile;
     $output_dir =~ s|[^/]*$||;
     if ($output_dir ne '') {
       $self->{'destination_directory'} = $output_dir;
@@ -451,6 +451,7 @@ sub _set_outfile($$$)
     $self->{'destination_directory'} =~ s/\/*$//;
     $self->{'destination_directory'} .= '/';
   }
+  $self->{'output_file'} = $outfile;
 }
 
 # This is not used as code, but used to mark months as strings to be

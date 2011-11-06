@@ -4058,7 +4058,7 @@ sub _default_element_footer($$$$)
   my $next_is_special = (defined($element->{'element_next'})
     and $element->{'element_next'}->{'extra'}->{'special_element'});
   # no 'parent' defined happens if there are no pages, and there are elements 
-  # which should only happen when called with $self->get_conf('OUTFILE') 
+  # which should only happen when called with $self->{'output_file'} 
   # set to ''.
   #print STDERR "$element $element->{'filename'} $self->{'file_counters'}->{$element->{'filename'}}\n";
   #print STDERR "next: $element->{'element_next'}->{'filename'}\n" if ($element->{'element_next'});
@@ -4828,6 +4828,39 @@ sub _get_element($$;$)
   }
 }
 
+sub _top_node_filename($)
+{
+  my $self = shift;
+
+  my $top_node_filename;
+  if (defined($self->get_conf('TOP_FILE')) 
+      and $self->get_conf('TOP_FILE') ne '') {
+    $top_node_filename = $self->get_conf('TOP_FILE');
+  } else {
+    if (defined($self->get_conf('TOP_NODE_FILE'))) {
+      $top_node_filename = $self->get_conf('TOP_NODE_FILE');
+    } else {
+      # FIXME(Karl) this is like texi2html, but is it right?  Shouldn't it
+      # better to leave it undefined?  In that case the section name
+      # may be used, or the node name, or something along document_name-0.
+      # This is not very important since TOP_NODE_FILE is set in the
+      # default case.
+      $top_node_filename = $self->{'document_name'};
+    }
+    if (defined($top_node_filename)) {
+      my $top_node_extension;
+      if ($self->get_conf('NODE_FILENAMES')) {
+        $top_node_extension = $self->get_conf('NODE_FILE_EXTENSION');
+      } else {
+        $top_node_extension = $self->get_conf('EXTENSION');
+      }
+      $top_node_filename .= '.'.$top_node_extension 
+        if (defined($top_node_extension) and $top_node_extension ne '');
+    }
+  }
+  return $top_node_filename;
+}
+
 sub _set_pages_files($$)
 {
   my $self = shift;
@@ -4846,7 +4879,7 @@ sub _set_pages_files($$)
     foreach my $element (@$elements) {
       if (!defined($element->{'filename'})) {
         $element->{'filename'} = $self->{'document_name'}.$extension;
-        $element->{'out_filename'} = $self->get_conf('OUTFILE');
+        $element->{'out_filename'} = $self->{'output_file'};
       }
     }
   } else {
@@ -4855,32 +4888,7 @@ sub _set_pages_files($$)
     $node_top = $self->{'labels'}->{'Top'} if ($self->{'labels'});
     #$section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
   
-    my $top_node_filename;
-    if (defined($self->get_conf('TOP_FILE')) 
-        and $self->get_conf('TOP_FILE') ne '') {
-      $top_node_filename = $self->get_conf('TOP_FILE');
-    } else {
-      if (defined($self->get_conf('TOP_NODE_FILE'))) {
-        $top_node_filename = $self->get_conf('TOP_NODE_FILE');
-      } else {
-        # FIXME(Karl) this is like texi2html, but is it right?  Shouldn't it
-        # better to leave it undefined?  In that case the section name
-        # may be used, or the node name, or something along document_name-0.
-        # This is not very important since TOP_NODE_FILE is set in the
-        # default case.
-        $top_node_filename = $self->{'document_name'};
-      }
-      if (defined($top_node_filename)) {
-        my $top_node_extension;
-        if ($self->get_conf('NODE_FILENAMES')) {
-          $top_node_extension = $self->get_conf('NODE_FILE_EXTENSION');
-        } else {
-          $top_node_extension = $self->get_conf('EXTENSION');
-        }
-        $top_node_filename .= '.'.$top_node_extension 
-          if (defined($top_node_extension) and $top_node_extension ne '');
-      }
-    }
+    my $top_node_filename = $self->_top_node_filename();
     # first determine the top node file name.
     if ($self->get_conf('NODE_FILENAMES') and $node_top 
         and defined($top_node_filename)) {
@@ -6307,7 +6315,7 @@ sub output($$)
 
   # determine file names associated with the different pages, and setup
   # the counters for special element pages.
-  if ($self->get_conf('OUTFILE') ne '') {
+  if ($self->{'output_file'} ne '') {
     $self->_set_pages_files($elements, $special_elements);
   }
 
@@ -6435,13 +6443,22 @@ sub output($$)
   my $output = '';
   if (!$elements or !defined($elements->[0]->{'filename'})) {
     # no page
-    if ($self->get_conf('OUTFILE') ne '') {
-      print STDERR "DO No pages, output in ".$self->get_conf('OUTFILE')."\n"
+    if ($self->{'output_file'} ne '') {
+      my $outfile;
+      if ($self->get_conf('SPLIT')) {
+        $outfile = $self->_top_node_filename();
+        if (defined($self->{'destination_directory'})) {
+          $outfile = $self->{'destination_directory'} . $outfile;
+        }
+      } else {
+        $outfile = $self->{'output_file'};
+      }
+      print STDERR "DO No pages, output in $outfile\n"
         if ($self->get_conf('DEBUG'));
-      $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'));
+      $fh = $self->Texinfo::Common::open_out ($outfile);
       if (!$fh) {
         $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                      $self->get_conf('OUTFILE'), $!));
+                                      $outfile, $!));
         return undef;
       }
     } else {
@@ -6461,7 +6478,7 @@ sub output($$)
       $output .= $self->_output_text($self->_convert($root), $fh);
     }
     $output .= $self->_output_text(&{$self->{'format_end_file'}}($self), $fh);
-    return $output if ($self->get_conf('OUTFILE') eq '');
+    return $output if ($self->{'output_file'} eq '');
   } else {
     # output with pages
     print STDERR "DO Elements with filenames\n"
@@ -6520,7 +6537,7 @@ sub output($$)
   # do node redirection pages
   $self->{'current_filename'} = undef;
   if ($self->get_conf('NODE_FILES') 
-      and $self->{'labels'} and $self->get_conf('OUTFILE') ne '') {
+      and $self->{'labels'} and $self->{'output_file'} ne '') {
     foreach my $label (keys (%{$self->{'labels'}})) {
       my $node = $self->{'labels'}->{$label};
       my $target = $self->_get_target($node);
@@ -6565,7 +6582,7 @@ sub output($$)
     }
   }
   if ($self->{'renamed_nodes'}
-      and $self->{'labels'} and $self->get_conf('OUTFILE') ne '') {
+      and $self->{'labels'} and $self->{'output_file'} ne '') {
     # do a fresh parser, to avoid, for example adding new labels if renamed
     # nodes incorrectly define anchors...
     my $parser_for_renamed_nodes;
