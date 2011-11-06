@@ -1,5 +1,9 @@
 2011-11-06  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\putworderror): new word for translation.
+	(\box0 for \errorbox for @error{}): use it.
+	* doc/texinfo-en.tex (\putworderror): define here too.
+
 	* doc/texinfo.tex (\dopdfimage): try .pdf and .PDF first.
 	* doc/texinfo.txi (Image Syntax): document this.
 	(implied by help-texinfo report from Rick Jones,
