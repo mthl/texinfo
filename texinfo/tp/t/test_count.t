@@ -57,7 +57,22 @@ new para.
 @printindex cp
 
 @anchor{a counting anchor}
-']);
+'],
+['expanded_tex',
+'AAA
+@tex
+TTT
+GGG
+@end tex
+After
+
+second
+@tex FFF
+GGG @end tex
+After2.
+', {'expanded_formats' => ['tex']}
+],
+);
 
 my %info_tests = ('printindex' => 1);
 foreach my $test (@test_cases) {

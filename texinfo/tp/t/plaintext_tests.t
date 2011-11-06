@@ -447,6 +447,16 @@ sp@sp 4
 text
 @end example
 '],
+['expanded_tex',
+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+@tex
+TTT
+GGG
+HHH
+@end tex
+bbbbbbbbb1 bbbbbbbbbbb2 bbbbbbbbbb3 bbbbbbbbbbbbbb4.
+', {'expanded_formats' => ['tex']}
+],
 );
 
 my $insert_copying_and_paragraph = 

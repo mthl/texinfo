@@ -211,7 +211,17 @@ sub _add_next($;$$$$$)
     
     $paragraph->{'word'} .= $word;
     $paragraph->{'underlying_word'} .= $underlying_word unless($transparent);
-    $paragraph->{'word_counter'} += length($word);
+    if ($word =~ /\n/) {
+      $paragraph->{'lines_counter'}++;
+      $paragraph->{'end_line_count'}++;
+      $paragraph->{'counter'} = 0;
+      $paragraph->{'word_counter'} = 0;
+      $result .= $paragraph->{'word'};
+      $paragraph->{'word'} = undef;
+      $paragraph->{'underlying_word'} = undef;
+    } else {
+      $paragraph->{'word_counter'} += length($word);
+    }
     if ($paragraph->{'DEBUG'}) {
       print STDERR "WORD+ $word -> $paragraph->{'word'}\n";
       print STDERR "UNDERLYING_WORD+ $underlying_word -> $paragraph->{'underlying_word'}\n";

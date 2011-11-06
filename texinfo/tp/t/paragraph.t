@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 127 };
+BEGIN { plan tests => 129 };
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
@@ -363,6 +363,20 @@ $result .= $para->set_space_protection(0,0);
 $result .= $para->add_text("c ");
 is ($result, "aa.)    bb  eee    .)_  aa  . gg.  a  c\n", "protected spaces many inputs");
 $para->end();
+
+$para = Texinfo::Convert::Paragraph->new({'max' => 10});
+$result = '';
+$result .= $para->add_next("AAAAAAA");
+$result .= $para->add_text("GGG GGG");
+$result .= $para->end();
+is ($result, "AAAAAAAGGG\nGGG\n", 'line split check');
+
+$para = Texinfo::Convert::Paragraph->new({'max' => 10});
+$result = '';
+$result .= $para->add_next("AAAAAAA\n");
+$result .= $para->add_text("GGG GGG");
+$result .= $para->end();
+is ($result, "AAAAAAA\nGGG GGG\n", 'end line reset counter');
 
 $para = Texinfo::Convert::Paragraph->new({'indent_length' => 3});
 $result = '';
