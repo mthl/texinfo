@@ -5590,11 +5590,17 @@ sub _default_contents($$;$$)
   my $contents;
   $contents = 1 if ($cmdname eq 'contents');
 
-  my $root_level = $section_root->{'section_childs'}->[0]->{'level'};
+  my $min_root_level = $section_root->{'section_childs'}->[0]->{'level'};
+  my $max_root_level = $section_root->{'section_childs'}->[0]->{'level'};
   foreach my $top_section(@{$section_root->{'section_childs'}}) {
-    $root_level = $top_section->{'level'}
-      if ($top_section->{'level'} < $root_level);
+    $min_root_level = $top_section->{'level'}
+      if ($top_section->{'level'} < $min_root_level);
+    $max_root_level = $top_section->{'level'}
+      if ($top_section->{'level'} > $max_root_level);
   }
+  # chapter level elements are considered top-level here.
+  $max_root_level = 1 if ($max_root_level < 1);
+  #print STDERR "ROOT_LEVEL Max: $max_root_level, Min: $min_root_level\n";
   my $ul_class = '';
   $ul_class = $NO_BULLET_LIST_CLASS if ($self->get_conf('NUMBER_SECTIONS'));
 
@@ -5629,7 +5635,7 @@ sub _default_contents($$;$$)
         my $toc_id = $self->command_contents_id($section, $cmdname);
         if ($text ne '') {
           # no indenting for shortcontents
-          $result .= (' ' x (2*($section->{'level'} - $root_level))) 
+          $result .= (' ' x (2*($section->{'level'} - $min_root_level))) 
             if ($contents);
           if ($toc_id ne '' or $href ne '') {
             my $toc_name_attribute = '';
@@ -5649,12 +5655,11 @@ sub _default_contents($$;$$)
                and $toplevel_contents) {
         $result .= "<li>";
       }
-        
       # for shortcontents don't do child if child is not toplevel
       if ($section->{'section_childs'}
-          and ($contents or $section->{'level'} < $root_level+1)) {
+          and ($contents or $section->{'level'} < $max_root_level)) {
         # no indenting for shortcontents
-        $result .= "\n". ' ' x (2*($section->{'level'} - $root_level))
+        $result .= "\n". ' ' x (2*($section->{'level'} - $min_root_level))
           if ($contents);
         $result .= $self->_attribute_class('ul', $ul_class) .">\n";
         $section = $section->{'section_childs'}->[0];
@@ -5670,7 +5675,7 @@ sub _default_contents($$;$$)
         }
         while ($section->{'section_up'}) {
           $section = $section->{'section_up'};
-          $result .= "</li>\n". ' ' x (2*($section->{'level'} - $root_level))
+          $result .= "</li>\n". ' ' x (2*($section->{'level'} - $min_root_level))
             . "</ul>";
           if ($section eq $top_section) {
             $result .= "</li>\n" if ($toplevel_contents);
