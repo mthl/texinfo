@@ -328,7 +328,9 @@ sub _convert($;$)
      and (($root->{'type'} and $ignored_types{$root->{'type'}})
           or ($root->{'cmdname'} 
              and ($ignored_brace_commands{$root->{'cmdname'}} 
-                 or $ignored_block_commands{$root->{'cmdname'}}
+                 or ($ignored_block_commands{$root->{'cmdname'}}
+                     and !(defined($options->{'expanded_formats_hash'})
+                           and $options->{'expanded_formats_hash'}->{$root->{'cmdname'}}))
              # here ignore most of the misc commands
                  or ($root->{'args'} and $root->{'args'}->[0] 
                      and $root->{'args'}->[0]->{'type'} 
@@ -569,10 +571,24 @@ sub output($$)
   my $self = shift;
   my $tree = shift;
   #print STDERR "OUTPUT\n";
+  my $expanded_formats = $self->{'expanded_formats'};;
   if ($self and $self->{'parser'}) {
     my $parser = $self->{'parser'};
     $self->{'info'} = $self->{'parser'}->global_informations();
     $self->{'extra'} = $self->{'parser'}->global_commands_information();
+    if (!$expanded_formats and $self->{'parser'}->{'expanded_formats'}) {
+      $expanded_formats = $self->{'parser'}->{'expanded_formats'};
+    }
+  }
+  my $expanded_formats_hash;
+  if ($expanded_formats) {
+    foreach my $expanded_format(@$expanded_formats) {
+      $expanded_formats_hash->{$expanded_format} = 1;
+    }
+  }
+  my %options;
+  if ($expanded_formats_hash) {
+    $options{'expanded_formats_hash'} = $expanded_formats_hash;
   }
   my $input_basename;
   if (defined($self->{'info'}->{'input_file_name'})) {
@@ -610,7 +626,7 @@ sub output($$)
     $fh = $self->Texinfo::Common::open_out ($outfile);
     return undef if (!$fh);
   }
-  my $result = _convert($tree);
+  my $result = _convert($tree, \%options);
   if ($fh) {
     print $fh $result;
     $result = '';
@@ -710,6 +726,11 @@ If this converter object is passed to the function, some features of this
 object may be used during conversion.  Mostly error reporting and strings
 translation, as the converter object is also supposed to be a 
 L<Texinfo::Report> objet.  See also L<Texinfo::Convert::Converter>.
+
+=item expanded_formats_hash
+
+A reference on a hash.  The keys should be format names (like C<html>, 
+C<tex>), and if thecorresponding  value is set, the format is expanded.
 
 =back
 

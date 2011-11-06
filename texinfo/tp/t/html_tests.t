@@ -138,6 +138,15 @@ in detaildescription
 @shortcontents
 
 '],
+['shortcontents_no_top',
+'@chapter chap
+
+@chapter chap2
+
+@section sec
+
+@shortcontents
+'],
 ['test_xrefautomaticsectiontitle',
 '@node Top
 @top top
@@ -157,6 +166,14 @@ in detaildescription
 
 @xref{chap}.
 ']
+,['tex_expanded_in_copying',
+'@copying
+@tex
+aa
+@end tex
+@end copying
+', {'expanded_formats' => ['tex']}
+],
 );
 
 my @test_cases_text = (

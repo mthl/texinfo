@@ -1288,6 +1288,7 @@ sub _convert_text_options($)
   $options{'TEST'} = 1 if ($self->get_conf('TEST'));
   $options{'NUMBER_SECTIONS'} = $self->get_conf('NUMBER_SECTIONS');
   $options{'converter'} = $self;
+  $options{'expanded_formats_hash'} = $self->{'expanded_formats_hash'};
   return %options;
 }
 

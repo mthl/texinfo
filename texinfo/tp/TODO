@@ -5,6 +5,9 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
+html_tests/shortcontents_no_top the section level also appears in 
+@shortcontents.
+
 
 Bugs
 ====

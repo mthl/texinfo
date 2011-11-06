@@ -328,6 +328,18 @@ sub locate_init_file($$$)
   return undef;
 }
 
+sub locate_and_load_init_file($$)
+{
+  my $filename = shift;
+  my $directories = shift;
+
+  my $file = locate_init_file($filename, $directories, 0);
+  if (defined($file)) {
+    Texinfo::Config::_load_init_file($file);
+  } else {
+    document_warn (sprintf(__("Can't read init file %s"), $filename));
+  }
+}
 
 # read initialization files
 foreach my $file (locate_init_file($conf_file_name, 
@@ -621,6 +633,8 @@ Texinfo home page: http://www.gnu.org/software/texinfo/") ."\n";
   return $makeinfo_help;
 }
 
+my $latex2html_file = 'latex2html.pm';
+
 my $result_options = Getopt::Long::GetOptions (
  'help|h' => sub { print makeinfo_help(); exit 0; },
  'version|V' => sub {print "$real_command_name (GNU texinfo) $configured_version\n\n";
@@ -694,12 +708,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
  'D=s' => sub {$parser_default_options->{'values'}->{$_[1]} = 1;},
  'U=s' => sub {delete $parser_default_options->{'values'}->{$_[1]};},
  'init-file=s' => sub {
-    my $file = locate_init_file($_[1], [ @conf_dirs, @program_init_dirs ], 0);
-    if (defined($file)) {
-      Texinfo::Config::_load_init_file($file);
-    } else {
-      document_warn (sprintf(__("Can't read init file %s"), $_[1]));
-    }
+    locate_and_load_init_file($_[1], [ @conf_dirs, @program_init_dirs ]);
  },
  'set-init-variable=s' => sub {
    my $var_val = $_[1];
@@ -722,6 +731,11 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
        $format = 'raw_text';
      } else {
        set_from_cmdline ($var, $value);
+       # FIXME do that here or all command line options are processed?
+       if ($var eq 'L2H' and get_conf('L2H')) {
+         locate_and_load_init_file($latex2html_file, 
+                               [ @conf_dirs, @program_init_dirs ]);
+       }
      # this is very wrong, but a way to avoid a spurious warning.
       # no warnings 'once';
       # if (set_from_cmdline ($var, $value) 
