@@ -1040,23 +1040,20 @@ while(@input_files)
       and $formats_table{$format}->{'internal_links'}) {
     my $internal_links_text 
       = $converter->output_internal_links();
-    # FIXME(Karl) it is possible to output only if there are links, or always, 
-    # maybe creating an empty file.  Right now it is only output if there
-    # is something to output
-    if (defined($internal_links_text)) {
-      my $internal_links_file = get_conf('INTERNAL_LINKS');
-      my $internal_links_fh = Texinfo::Common::open_out($converter, 
-                                               $internal_links_file);
-      if (defined ($internal_links_fh)) {
-        print $internal_links_fh $internal_links_text;
-        close ($internal_links_fh);
-      } else {
-        warn (sprintf(__("Could not open %s for writing: %s\n"), 
-                      $internal_links_file, $!));
-        $error_count++;
-        exit (1) if ($error_count and (!get_conf('FORCE')
-           or $error_count > get_conf('ERROR_LIMIT')));
-      }
+    # always create a file, even if empty.
+    $internal_links_text = '' if (!defined($internal_links_text));
+    my $internal_links_file = get_conf('INTERNAL_LINKS');
+    my $internal_links_fh = Texinfo::Common::open_out($converter, 
+                                             $internal_links_file);
+    if (defined ($internal_links_fh)) {
+      print $internal_links_fh $internal_links_text;
+      close ($internal_links_fh);
+    } else {
+      warn (sprintf(__("Could not open %s for writing: %s\n"), 
+                    $internal_links_file, $!));
+      $error_count++;
+      exit (1) if ($error_count and (!get_conf('FORCE')
+         or $error_count > get_conf('ERROR_LIMIT')));
     }
   }
 }
