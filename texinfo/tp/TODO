@@ -45,6 +45,8 @@ in info_tests/error_in_footnote there is an error message for each
 listoffloats;  Line numbers are right, though, so maybe this is not
 an issue.
 
+warn nested footnotes.
+
 
 Missing tests
 =============

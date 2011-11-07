@@ -678,6 +678,11 @@ sub _footnotes($;$)
     while (@{$self->{'pending_footnotes'}}) {
       my $footnote = shift (@{$self->{'pending_footnotes'}});
 
+      # If nested within another footnote and footnotestyle is separate,
+      # the element here will be the parent element and not the footnote
+      # element, while the pxref will point to the name with the 
+      # footnote node taken into account.  Not really problematic as
+      # nested footnotes are not right.
       if ($element) {
         my $node_contents = [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
                     {'text' => "-Footnote-$footnote->{'number'}"}];

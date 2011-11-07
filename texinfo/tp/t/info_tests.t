@@ -375,6 +375,15 @@ and strong @strong{Note}.}}
 
 @listoffloats Text
 '],
+['nested_footnotes_separate',
+'@footnotestyle separate
+@node Top
+
+F@footnote{F1
+
+V@footnote{F2}
+}
+'],
 ['encoding_us_ascii',
 '
 @documentencoding US-ASCII
