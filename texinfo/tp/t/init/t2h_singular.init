@@ -30,7 +30,8 @@ set_from_init_file('SHORT_REF', 1);
 set_from_init_file('VERBOSE', 1);
 
 # print index summary for 'cp' index
-set_from_init_file('IDX_SUMMARY', 'cp');
+# obsolete
+#set_from_init_file('IDX_SUMMARY', 'cp');
 
 my $T2H_SING_base_images = '../singular_images/';
 

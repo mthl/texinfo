@@ -239,7 +239,7 @@ my $default_options;
 # used in main program
 our $options = {};
 
-sub _load_config ($$) {
+sub _load_config($$) {
   $default_options = shift;
   $cmdline_options = shift;
   #print STDERR "cmdline_options: ".join('|',keys(%$cmdline_options))."\n";
@@ -255,12 +255,14 @@ sub _load_init_file($) {
   }
 }
 
-sub set_from_init_file ($$) {
+sub set_from_init_file($$) {
   my $var = shift;
   my $value = shift;
   if (!Texinfo::Common::valid_option($var)) {
     warn (sprintf(__('Unknown variable %s'), $var));
     return 0;
+  } elsif (Texinfo::Common::obsolete_option($var)) {
+    warn (sprintf(main::__("Obsolete variable %s\n"), $var));
   }
   return 0 if (defined($cmdline_options->{$var}));
   delete $default_options->{$var};
@@ -268,7 +270,7 @@ sub set_from_init_file ($$) {
   return 1;
 }
 
-sub set_from_cmdline ($$) {
+sub set_from_cmdline($$) {
   my $var = shift;
   my $value = shift;
   delete $options->{$var};
@@ -276,6 +278,8 @@ sub set_from_cmdline ($$) {
   if (!Texinfo::Common::valid_option($var)) {
     warn (sprintf(main::__("Unknown variable %s\n"), $var));
     return 0;
+  } elsif (Texinfo::Common::obsolete_option($var)) {
+    warn (sprintf(main::__("Obsolete variable %s\n"), $var));
   }
   $cmdline_options->{$var} = $value;
   return 1;
@@ -347,15 +351,15 @@ foreach my $file (locate_init_file($conf_file_name,
   Texinfo::Config::_load_init_file($file);
 }
 
-sub set_from_cmdline ($$) {
+sub set_from_cmdline($$) {
   return &Texinfo::Config::set_from_cmdline(@_);
 }
 
-sub set_from_init_file ($$) {
+sub set_from_init_file($$) {
   return &Texinfo::Config::set_from_init_file(@_);
 }
 
-sub get_conf ($) {
+sub get_conf($) {
   return &Texinfo::Config::get_conf(@_);
 }
 
@@ -414,7 +418,7 @@ sub set_texi2dvi_format($)
 }
 
 
-sub document_warn ($) {
+sub document_warn($) {
   return if (get_conf('NO_WARN'));
   my $text = shift;
   chomp ($text);

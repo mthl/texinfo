@@ -246,7 +246,6 @@ sub sectioning_structure($$)
               if ($content->{'cmdname'} eq 'part') {
                 $new_upper_element = 1;
                 if ($level < $up->{'level'}) {
-                  # FIXME(Karl) error message
                   $self->line_warn(sprintf($self->__(
                     "No chapter-level command before \@%s"),
                           $content->{'cmdname'}), $content->{'line_nr'});
@@ -341,7 +340,7 @@ sub sectioning_structure($$)
 }
 
 my @node_directions = ('next', 'prev', 'up');
-# FIXME(Karl) i18n?
+# No translation of those special Info keywords.
 my %direction_texts = (
  'prev' => 'Prev',
  'next' => 'Next',

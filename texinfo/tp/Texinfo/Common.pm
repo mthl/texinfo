@@ -114,7 +114,6 @@ our @parser_options = ('EXPANDED_FORMATS', 'GETTEXT', 'INCLUDE_DIRECTORIES',
   'ENCODING_NAME', 'PERL_ENCODING', 'INDICES', 'KBDINPUTSTYLE', 'LABELS',
   'MACROS', 'NOVALIDATE', 'SECTIONS_LEVEL', 'VALUES');
 
-# FIXME(Karl) warn when those variables are used?
 my @obsolete_variables = ('TOP_HEADING_AT_BEGINNING', 'USE_SECTIONS',
   'IDX_SUMMARY', 'I18N_PERL_HASH', 'USE_UNICODE', 'USE_NLS',
   'USE_UP_FOR_ADJACENT_NODES', 'SEPARATE_DESCRIPTION', 
@@ -174,10 +173,21 @@ foreach my $var (@document_settable_at_commands, @document_global_at_commands,
   $valid_options{$var} = 1;
 }
 
+my %obsolete_options;
+foreach my $var (@obsolete_variables) {
+  $obsolete_options{$var} = 1;
+}
+
 sub valid_option($)
 {
   my $option = shift;
   return $valid_options{$option};
+}
+
+sub obsolete_option($)
+{
+  my $option = shift;
+  return $obsolete_options{$option};
 }
 
 our %no_brace_commands;             # commands never taking braces
