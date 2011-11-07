@@ -1642,6 +1642,8 @@ sub _convert($$)
           # reuse the current formatter if not in top level
           $result .= $self->_count_added($formatter->{'container'},
                               $formatter->{'container'}->add_pending_word(1));
+          $result .= $self->_count_added($formatter->{'container'},
+                              $formatter->{'container'}->end_line());
         } else {
           # if in top level, the raw block command is turned into a 
           # simple preformatted command (alike @verbatim), to have a 

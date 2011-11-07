@@ -196,45 +196,47 @@ $result_converted{'debugcount'}->{'expanded_tex'} = ' [1] (0,0) :text_root
    [3] (0,0) :text|AAA\\n|
    [3] (3,0)
    [4] (3,0) @tex
-    [5] (4,0) :empty_line_after_command:text|\\n|
-    [5] (4,0)
-    [6] (4,0) :raw:text|TTT\\n|
-    [6] (8,1)
-    [7] (8,1) :raw:text|GGG|
-    [7] (8,1)
-    [8] (8,1) :last_raw_newline:text|\\n|
-    [8] (12,2)
-   [4] (12,2)
-   [9] (12,2) :empty_line_after_command:text|\\n|
-   [9] (12,2)
-   [10] (12,2) :text|After\\n|
-   [10] (17,2)
-  [2] (18,3)
-  [11] (18,3) :empty_line:text|\\n|
-  [11] (19,4)
-  [12] (19,4) :paragraph
-   [13] (19,4) :text|second\\n|
-   [13] (28,4)
-   [14] (28,4) @tex
-    [15] (29,4) :empty_line_after_command:text| |
-    [15] (29,4)
-    [16] (29,4) :raw:text|FFF\\n|
-    [16] (33,5)
-    [17] (33,5) :raw:text|GGG |
-    [17] (33,5)
-   [14] (33,5)
-   [18] (33,5) :empty_line_after_command:text|\\n|
-   [18] (33,5)
-   [19] (33,5) :text|After2.\\n|
-   [19] (47,5)
-  [12] (48,6)
- [1] (48,6)
-AAA TTT
+    [5] (5,1) :empty_line_after_command:text|\\n|
+    [5] (5,1)
+    [6] (5,1) :raw:text|TTT\\n|
+    [6] (9,2)
+    [7] (9,2) :raw:text|GGG|
+    [7] (9,2)
+    [8] (9,2) :last_raw_newline:text|\\n|
+    [8] (13,3)
+   [4] (13,3)
+   [9] (13,3) :empty_line_after_command:text|\\n|
+   [9] (13,3)
+   [10] (13,3) :text|After\\n|
+   [10] (18,3)
+  [2] (19,4)
+  [11] (19,4) :empty_line:text|\\n|
+  [11] (20,5)
+  [12] (20,5) :paragraph
+   [13] (20,5) :text|second\\n|
+   [13] (29,5)
+   [14] (29,5) @tex
+    [15] (31,6) :empty_line_after_command:text| |
+    [15] (31,6)
+    [16] (31,6) :raw:text|FFF\\n|
+    [16] (35,7)
+    [17] (35,7) :raw:text|GGG |
+    [17] (35,7)
+   [14] (35,7)
+   [18] (35,7) :empty_line_after_command:text|\\n|
+   [18] (35,7)
+   [19] (35,7) :text|After2.\\n|
+   [19] (46,7)
+  [12] (47,8)
+ [1] (47,8)
+AAA 
+TTT
 GGG
 After
 
-   second FFF
-   GGG After2.
+   second 
+FFF
+GGG After2.
 ';
 
 1;
