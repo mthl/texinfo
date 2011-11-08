@@ -1,3 +1,9 @@
+2011-11-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: replace @inforef's to the Info manual
+	with regular @xref's, since the Info manual has not been
+	Info-only for many years.
+
 2011-11-06  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\putworderror): new word for translation.

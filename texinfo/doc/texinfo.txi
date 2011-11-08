@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.396 2011-11-06 16:59:17 karl Exp $
+@c $Id: texinfo.txi,v 1.397 2011-11-08 00:21:01 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -887,8 +887,8 @@ plain text transliteration of the Texinfo source.  It adds a few
 control characters to separate nodes and provide navigational
 information for menus, cross references, indices, and so on.  See the
 next section (@pxref{Info Files}) for more details on this format.
-The Emacs Info subsystem (@pxref{Top,,Getting Started,info, Info}),
-and the standalone @command{info} program (@pxref{Top ,, Info
+The Emacs Info subsystem (@pxref{Top,, Getting Started, info, Info}),
+and the standalone @command{info} program (@pxref{Top,, Info
 Standalone, info-stnd, GNU Info}), among others, can read these files.
 @xref{Creating and Installing Info Files}.
 
@@ -1072,8 +1072,8 @@ the command line (@pxref{Top,,, info, Info}).
 
 If you want to read through an Info file in sequence, as if it were a
 printed manual, you can hit @key{SPC} repeatedly, or you get the whole
-file with the advanced Info command @kbd{g *}.  (@inforef{Advanced,
-Advanced Info commands, info}.)@refill
+file with the advanced Info command @kbd{g *}.  (@xref{Advanced,,
+Advanced Info commands, info, Info}.)
 
 @c !!! dir file may be located in one of many places:
 @c     /usr/local/emacs/info            mentioned in info.c DEFAULT_INFOPATH
@@ -5048,7 +5048,8 @@ You may insert spaces before each name on the @code{@@node} line if
 you wish; the spaces are ignored.  You must write the name of the node
 and (if present) the names of the `Next', `Previous', and `Up'
 pointers all on the same line.  Otherwise, the formatters fail.
-(@inforef{Top, info, info}, for more information about nodes in Info.)
+(@xref{Top,, Getting Started, info, Info}, for more information about
+nodes in Info.)
 
 Usually, you write one of the chapter-structuring command lines
 immediately after an @code{@@node} line---for example, an
@@ -5813,8 +5814,8 @@ unless it is to another manual altogether, in which case the cross
 reference names that manual.@refill
 
 In Info, a cross reference results in an entry that you can follow
-using the Info @samp{f} command.  (@inforef{Help-Xref, Following
-cross-references, info}.)
+using the Info @samp{f} command.  (@xref{Help-Xref,, Following
+cross-references, info, Info}.)
 
 The various cross reference commands use nodes (or anchors,
 @pxref{anchor,,@code{@@anchor}}) to define cross reference locations.
@@ -5843,16 +5844,16 @@ Used to start a sentence in the printed manual saying @w{`See
 @item @@ref
 Used within or, more often, at the end of a sentence; same as
 @code{@@xref} for Info; produces just the reference in the printed
-manual without a preceding `See'.@refill
+manual without a preceding `See'.
 
 @item @@pxref
 Used within parentheses to make a reference that suits both an Info
 file and a printed book.  Starts with a lower case `see' within the
-printed manual. (@samp{p} is for `parenthesis'.)@refill
+printed manual. (@samp{p} is for `parenthesis'.)
 
 @item @@inforef
 Used to make a reference to an Info file for which there is no printed
-manual.@refill
+manual.
 @end table
 
 @noindent
@@ -6630,7 +6631,7 @@ want to refer to conditional @code{@@ifinfo} text
 possibilities.
 
 The command takes either two or three arguments, in the following
-order:@refill
+order:
 
 @enumerate
 @item
@@ -6646,7 +6647,7 @@ The Info file name.
 @noindent
 Separate the arguments with commas, as with @code{@@xref}.  Also, you
 must terminate the reference with a comma or period after the
-@samp{@}}, as you do with @code{@@xref}.@refill
+@samp{@}}, as you do with @code{@@xref}.
 
 @noindent
 The template is:
@@ -6686,7 +6687,8 @@ See Info file @file{info}, node @samp{Advanced}, for more information.
 @end quotation
 
 (This particular example is not realistic, since the Info manual is
-written in Texinfo, so all formats are available.)
+written in Texinfo, so all formats are available.  In fact, we don't
+know of any extant Info-only manuals.)
 
 The converse of @code{@@inforef} is @code{@@cite}, which is used to
 refer to printed works for which no Info form exists.  @xref{cite, ,
@@ -17472,9 +17474,10 @@ validate the structure of the nodes, see @ref{Using Info-validate}.
 @cindex Info file installation
 @cindex @file{dir} directory for Info installation
 
-Info files are usually kept in the @file{info} directory.  You can read
-Info files using the standalone Info program or the Info reader built
-into Emacs.  (@inforef{Top, info, info}, for an introduction to Info.)
+Info files are usually kept in the @file{info} directory.  You can
+read Info files using the standalone Info program or the Info reader
+built into Emacs.  (@xref{Top,, Getting Started, info, Info}, for an
+introduction to Info.)
 
 @menu
 * Directory File::              The top level menu for all Info files.
@@ -19909,8 +19912,7 @@ Web.  @xref{indicateurl, , @code{@@indicateurl}}.
 
 @item @@inforef@{@var{node-name}, [@var{entry-name}], @var{info-file-name}@}
 Make a cross reference to an Info file for which there is no printed
-manual.  @xref{inforef, , Cross references using
-@code{@@inforef}}.
+manual.  @xref{inforef,, Cross references using @code{@@inforef}}.
 
 @item \input @var{macro-definitions-file}
 Use the specified macro definitions file.  This command is used only
@@ -21103,7 +21105,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.396 2011-11-06 16:59:17 karl Exp $
+$Id: texinfo.txi,v 1.397 2011-11-08 00:21:01 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21174,7 +21176,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.396 2011-11-06 16:59:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.397 2011-11-08 00:21:01 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
