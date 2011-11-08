@@ -4778,4 +4778,45 @@ $result_converted{'html_text'}->{'refs_formatting'} = '<a name="chapter"></a>
 </p><hr>
 ';
 
+
+$result_converted{'docbook'}->{'refs_formatting'} = '<chapter label="1" id="chapter">
+<title>chapter</title>
+
+<para><literal>@ref{chapter,cross ref name}</literal> <link linkend="chapter">cross ref name</link>
+<literal>@ref{chapter,,title}</literal> <link linkend="chapter">title</link>
+<literal>@ref{chapter,,,file name}</literal> 
+<literal>@ref{chapter,,,,manual}</literal> section &#8220;chapter&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,cross ref name,title,}</literal> <link linkend="chapter">title</link>
+<literal>@ref{chapter,cross ref name,,file name}</literal> 
+<literal>@ref{chapter,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,cross ref name,title,file name}</literal> 
+<literal>@ref{chapter,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,title,file name}</literal> 
+<literal>@ref{chapter,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,,file name,manual}</literal> section &#8220;chapter&#8221; in <citetitle>manual</citetitle>
+</para>
+<para><literal>@ref{(pman)anode,cross ref name}</literal> <link>cross ref name</link>
+<literal>@ref{(pman)anode,,title}</literal> <link>title</link>
+<literal>@ref{(pman)anode,,,file name}</literal> 
+<literal>@ref{(pman)anode,,,,manual}</literal> section &#8220;(pman)anode&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{(pman)anode,cross ref name,title,}</literal> <link>title</link>
+<literal>@ref{(pman)anode,cross ref name,,file name}</literal> 
+<literal>@ref{(pman)anode,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{(pman)anode,cross ref name,title,file name}</literal> 
+<literal>@ref{(pman)anode,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{(pman)anode,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{(pman)anode,,title,file name}</literal> 
+<literal>@ref{(pman)anode,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{(pman)anode,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{(pman)anode,,,file name,manual}</literal> section &#8220;(pman)anode&#8221; in <citetitle>manual</citetitle>
+</para>
+<para><literal>@inforef{chapter, cross ref name, file name}</literal> See Info file <filename>file name</filename>, node &#8216;<literal>chapter</literal>&#8217;
+<literal>@inforef{chapter}</literal> See node &#8216;<literal>chapter</literal>&#8217;
+<literal>@inforef{chapter, cross ref name}</literal> See node &#8216;<literal>chapter</literal>&#8217;
+<literal>@inforef{chapter,,file name}</literal> See Info file <filename>file name</filename>, node &#8216;<literal>chapter</literal>&#8217;
+</para></chapter>
+';
+
 1;

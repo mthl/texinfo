@@ -671,4 +671,21 @@ $result_converted{'html_text'}->{'weird_accents_disable_encoding'} = '
 </p><hr>
 ';
 
+
+$result_converted{'docbook'}->{'weird_accents_disable_encoding'} = '
+<chapter label="" id="Top">
+<title>top</title>
+
+<para>&#297;=
+</para>
+<para>&#241;,=
+</para>
+<para>a_=
+</para>
+<para>.r`^
+</para>
+<para>r`\'=
+</para></chapter>
+';
+
 1;

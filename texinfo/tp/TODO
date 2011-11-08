@@ -5,13 +5,15 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
+Internationalize 'error-->'.  FIXME in the code.
+
 
 Bugs
 ====
 
-(A) sectioning/next_in_menu_is_below there should certainly be a warning for
+sectioning/next_in_menu_is_below there should certainly be a warning for
 the subsection that is both below and next the section, because it is 
-next in menu.  Bug or not?
+next in menu.  This is a bug, there should be a warning.
 
 
 Delayed bugs

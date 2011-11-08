@@ -78,7 +78,7 @@ our %text_brace_no_arg_commands = (
                'dots'         => '...',
                'enddots'      => '...',
                'equiv'        => '==',
-# FIXME(Karl) i18n?
+# FIXME i18n
                'error'        => 'error-->',
                'expansion'    => '==>',
                'arrow'        => '->',

@@ -3127,4 +3127,86 @@ $result_converted{'html_text'}->{'accent'} = '<a name="Top"></a>
 </p><hr>
 ';
 
+
+$result_converted{'docbook'}->{'accent'} = '<chapter label="" id="Top">
+<title>top</title>
+
+<para>should be e&#8216;: &#232; &#232;
+</para>
+<para>should be e&#8217;: &#233; &#233;
+</para>
+<para>should be e^: &#234; &#234;
+</para>
+<para>should be u&quot;: &#252; &#252;
+</para>
+<para>should be i&#8216;: &#236; &#236;
+</para>
+<para>should be i&#8217;: &#237; &#237;
+</para>
+<para>should be i^: &#238; &#238;
+</para>
+<para>should be u&quot;: &#252; &#252;
+</para>
+<para>should be c,: &#231; &#231;
+</para>
+<para>should be n~: &#241; &#241;
+</para>
+<para>should be e=: &#275; &#275;
+</para>
+<para>should be e&#8217;<!-- /@w -->&#8217;: e\'\' e\'\'
+</para>
+<para>should be e.: &#279; &#279;
+</para>
+<para>should be e*: e* e*
+</para>
+<para>should be ee[: ee[
+</para>
+<para>should be e(: &#277; &#277;
+</para>
+<para>should be e_: e_ e_
+</para>
+<para>should be .e: &#7865; &#7865;
+</para>
+<para>should be e&lt;: &#283; &#283;
+</para>
+<para>should be a; : &#261; &#261;
+</para>
+<para>should be e; : &#281; &#281;
+</para>
+<para>upside down: &#191; &#161;
+</para>
+<para>A-with-circle: &#229;,&#197;
+</para>
+<para>AE, OE ligatures: &#230; &#198; &#339; &#338;
+</para>
+<para>dotless i, j: i j
+</para>
+<para>Polish suppressed-L: &#322; &#321;
+</para>
+<para>O-with-slash: &#248; &#216;
+</para>
+<para>es-zet or sharp S: &#223;
+</para>
+<para>pounds sterling: &#163;
+</para>
+<!-- arg is command - @dotless{i} is special-cased for HTML -->
+<para>should be dotless i&#8216;: &#236;
+</para>
+<para>should be dotless i&#8217;: &#237;
+</para>
+<para>should be dotless i^: &#238;
+</para>
+<para>should be dotless i&quot;: &#239;
+</para>
+<!-- arg is command - @dotless{j} -->
+<para>should be dotless j&#8216;: j`
+</para>
+<para>should be dotless j&#8217;: j\'
+</para>
+<para>should be dotless j^: &#309;
+</para>
+<para>should be dotless j&quot;: j"
+</para></chapter>
+';
+
 1;

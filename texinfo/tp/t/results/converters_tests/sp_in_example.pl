@@ -490,4 +490,18 @@ sp after para
 </pre></div>
 ';
 
+
+$result_converted{'docbook'}->{'sp_in_example'} = '<screen>Para
+other para
+Now lone @sp:
+
+
+Para after sp
+
+A
+B
+
+sp after para
+</screen>';
+
 1;

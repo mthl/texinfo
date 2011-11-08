@@ -445,4 +445,18 @@ Now lone @sp:
 </p><br>
 ';
 
+
+$result_converted{'docbook'}->{'test_sp'} = '<para>Para
+</para><para>other para
+Now lone @sp:
+</para>
+
+<para>Para after sp
+</para>
+<para>A
+</para><para>B
+</para>
+<para>sp after para
+</para>';
+
 1;

@@ -229,4 +229,8 @@ $result_converted{'plaintext'}->{'accent_with_text'} = '-a( -b i^ j^ -a^
 $result_converted{'html_text'}->{'accent_with_text'} = '<p>&ndash;a( &ndash;b &icirc; &#309; &ndash;a^
 </p>';
 
+
+$result_converted{'docbook'}->{'accent_with_text'} = '<para>&#8211;a( &#8211;b &#238; &#309; &#8211;a^
+</para>';
+
 1;

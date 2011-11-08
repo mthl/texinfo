@@ -717,7 +717,6 @@ sub _convert($$;$)
       } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
         if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
           if ($root->{'cmdname'} eq 'inforef') {
-            # FIXME(Karl) how to format inforef?
             my $filename;
             if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 3
                 and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
@@ -728,29 +727,29 @@ sub _convert($$;$)
             }
             my $node;
             if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
-              $self->{'document_context'}->[-1]->{'code'}++;
-              $node = $self->_convert({'contents' 
-                     => $root->{'extra'}->{'brace_command_contents'}->[0]});
-              $self->{'document_context'}->[-1]->{'code'}--;
+              $node = {'contents' 
+                        => $root->{'extra'}->{'brace_command_contents'}->[0]};
             }
-            my $name;
-            if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 2
-                and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
-              $name = $self->_convert({'contents' 
-                   => $root->{'extra'}->{'brace_command_contents'}->[0]});
+            if ($node and defined($filename)) {
+              return $self->_convert($self->gdt(
+                   "See Info file \@file{{myfile}}, node \@samp{{mynode}}",
+                   { 'myfile' => {'type' => '_converted', 'text' => $filename},
+                     'mynode' => $node}));
+            } elsif ($node) {
+              return $self->_convert($self->gdt(
+                   "See node \@samp{{mynode}}",
+                   {'mynode' => $node}));
+            } elsif (defined($filename)) {
+              return $self->_convert($self->gdt(
+                   "See Info file \@file{{myfile}}",
+                   { 'myfile' => {'type' => '_converted', 'text' => $filename}}));
             }
-            my $node_file = '';
-            if (defined($node)) {
-              $node_file .= $node;
-            }
-            if (defined($filename)) {
-              $node_file .= "($filename)";
-            }
-            if (defined($name)) {
-              return "*note $name: $node_file";
-            } else {
-              return "*note ${node_file}::";
-            }
+            #my $name;
+            #if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 2
+            #    and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+            #  $name = $self->_convert({'contents' 
+            #       => $root->{'extra'}->{'brace_command_contents'}->[0]});
+            #}
           } else {
             my $book_contents;
             if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 5

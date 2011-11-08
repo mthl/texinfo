@@ -742,7 +742,7 @@ $default_xml_commands_formatting{'normal'} = {
                'dots'         => '&hellip;',
                'enddots'      => '...',
                'equiv'        => '&equiv;',
-# FIXME(Karl) i18n
+# FIXME i18n
                'error'        => 'error--&gt;',
                'expansion'    => '&rarr;',
                'arrow'        => '&rarr;',

@@ -4948,4 +4948,48 @@ $result_converted{'html_text'}->{'ref_error_formatting'} = '
 <code>@inforef{node,,file name}</code> See <a href="file name.html#node">(file name)node</a>
 </p>';
 
+
+$result_converted{'docbook'}->{'ref_error_formatting'} = '
+<para><literal>@ref{node}</literal> <link linkend="node">node</link>
+</para>
+<para><literal>@ref{,cross ref name}</literal> <link>cross ref name</link>
+<literal>@ref{,,title}</literal> <link>title</link>
+<literal>@ref{,,,file name}</literal> 
+<literal>@ref{,,,,manual}</literal> section &#8220;&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name}</literal> <link linkend="node">cross ref name</link>
+<literal>@ref{node,,title}</literal> <link linkend="node">title</link>
+<literal>@ref{node,,,file name}</literal> 
+<literal>@ref{node,,,,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,}</literal> <link linkend="node">title</link>
+<literal>@ref{node,cross ref name,,file name}</literal> 
+<literal>@ref{node,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,file name}</literal> 
+<literal>@ref{node,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title,file name}</literal> 
+<literal>@ref{node,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,,file name,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,}</literal> <link>title</link>
+<literal>@ref{,cross ref name,,file name}</literal> 
+<literal>@ref{,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,file name}</literal> 
+<literal>@ref{,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title,file name}</literal> 
+<literal>@ref{,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,,file name,manual}</literal> section &#8220;&#8221; in <citetitle>manual</citetitle>
+</para>
+<para><literal>@inforef{,cross ref name }</literal> 
+<literal>@inforef{,,file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{,cross ref name, file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{}</literal> 
+</para>
+<para><literal>@inforef{node, cross ref name, file name}</literal> See Info file <filename>file name</filename>, node &#8216;<literal>node</literal>&#8217;
+<literal>@inforef{node}</literal> See node &#8216;<literal>node</literal>&#8217;
+<literal>@inforef{node, cross ref name}</literal> See node &#8216;<literal>node</literal>&#8217;
+<literal>@inforef{node,,file name}</literal> See Info file <filename>file name</filename>, node &#8216;<literal>node</literal>&#8217;
+</para>';
+
 1;
