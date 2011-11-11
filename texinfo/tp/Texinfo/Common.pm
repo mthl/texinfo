@@ -758,7 +758,7 @@ sub locate_include_file($$)
   return $file;
 }
 
-sub open_out ($$;$)
+sub open_out($$;$)
 {
   my $self = shift;
   my $file = shift;

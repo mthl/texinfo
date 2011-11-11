@@ -1027,13 +1027,14 @@ while(@input_files)
     $parser->Texinfo::Structuring::set_menus_to_simple_menu();
   }
 
+  if ($file_number != 0) {
+    delete $cmdline_options->{'OUTFILE'} if exists($cmdline_options->{'OUTFILE'});
+    delete $cmdline_options->{'OUT'} if exists($cmdline_options->{'OUT'});
+  }
   my $converter_options = { %$converter_default_options, 
                             %$cmdline_options,
                             %$Texinfo::Config::options };
 
-  if (defined(get_conf('OUTFILE')) and $file_number == 0) {
-    $converter_options->{'OUTFILE'} = get_conf('OUTFILE');
-  }
   $converter_options->{'parser'} = $parser;
   $converter_options->{'output_format'} = $format;
   $converter_options->{'htmlxref_files'} = \@texinfo_htmlxref_files;

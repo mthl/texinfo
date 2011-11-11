@@ -7,13 +7,17 @@ Before next release
 
 Internationalize 'error-->'.  FIXME in the code.
 
+In plaintext output internationalize definition lines like
+gdt(' -- {category} of {class}: {type} {name} {arguments}')
+
+
 
 Bugs
 ====
 
-sectioning/next_in_menu_is_below there should certainly be a warning for
+sectioning/next_in_menu_is_below there should be a warning for
 the subsection that is both below and next the section, because it is 
-next in menu.  This is a bug, there should be a warning.
+next in menu.
 
 
 Delayed bugs

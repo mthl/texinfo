@@ -1575,9 +1575,7 @@ sub _convert_image_command($$$$)
     my $extension;
     if (defined($args->[4]) and defined($args->[4]->{'codetext'})) {
       $extension = $args->[4]->{'codetext'};
-      # FIXME(Karl) is this correct?
-      unshift @extensions, ".$extension";
-      unshift @extensions, "$extension";
+      unshift @extensions, ("$extension", ".$extension");
     }
     my $image_file;
     foreach my $extension (@extensions) {
@@ -4840,11 +4838,8 @@ sub _top_node_filename($)
     if (defined($self->get_conf('TOP_NODE_FILE'))) {
       $top_node_filename = $self->get_conf('TOP_NODE_FILE');
     } else {
-      # FIXME(Karl) this is like texi2html, but is it right?  Shouldn't it
-      # better to leave it undefined?  In that case the section name
-      # may be used, or the node name, or something along document_name-0.
-      # This is not very important since TOP_NODE_FILE is set in the
-      # default case.
+      # TOP_NODE_FILE is set in the default case.
+      # If not the manual name is used.
       $top_node_filename = $self->{'document_name'};
     }
     if (defined($top_node_filename)) {

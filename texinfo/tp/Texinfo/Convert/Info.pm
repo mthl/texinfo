@@ -208,7 +208,10 @@ sub output($)
   }
   if ($fh) {
     print $fh $tag_text;
-    close ($fh);
+    # NOTE it should be possible to close STDOUT.  However this leads to
+    # 'Filehandle STDOUT reopened as FH only for input' if there are files
+    # reopened after closing STDOUT.
+    close ($fh) unless ($self->{'output_file'} eq '-');
   } else {
     $result .= $tag_text;
   }
