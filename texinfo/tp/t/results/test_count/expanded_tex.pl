@@ -101,7 +101,14 @@ $result_trees{'expanded_tex'} = {
             },
             {
               'parent' => {},
-              'text' => 'GGG ',
+              'text' => 'GGG @end tex
+',
+              'type' => 'raw'
+            },
+            {
+              'parent' => {},
+              'text' => 'After2.
+',
               'type' => 'raw'
             }
           ],
@@ -111,20 +118,6 @@ $result_trees{'expanded_tex'} = {
             'macro' => ''
           },
           'parent' => {}
-        },
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => 'After2.
-'
         }
       ],
       'parent' => {},
@@ -150,10 +143,8 @@ $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extr
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1];
+$result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2];
-$result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1];
-$result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2];
-$result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2];
 $result_trees{'expanded_tex'}{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'};
 
 $result_texis{'expanded_tex'} = 'AAA
@@ -167,25 +158,24 @@ second
 @tex FFF
 GGG @end tex
 After2.
-';
+@end tex';
 
 
 $result_texts{'expanded_tex'} = 'AAA
 After
 
 second
-After2.
 ';
 
 $result_errors{'expanded_tex'} = [
   {
-    'error_line' => ':10: warning: @end tex should only appear at a line beginning
+    'error_line' => ':11: No matching `@end tex\'
 ',
     'file_name' => '',
-    'line_nr' => 10,
+    'line_nr' => 11,
     'macro' => '',
-    'text' => '@end tex should only appear at a line beginning',
-    'type' => 'warning'
+    'text' => 'No matching `@end tex\'',
+    'type' => 'error'
   }
 ];
 
@@ -220,15 +210,13 @@ $result_converted{'debugcount'}->{'expanded_tex'} = ' [1] (0,0) :text_root
     [15] (31,6)
     [16] (31,6) :raw:text|FFF\\n|
     [16] (35,7)
-    [17] (35,7) :raw:text|GGG |
-    [17] (35,7)
-   [14] (35,7)
-   [18] (35,7) :empty_line_after_command:text|\\n|
-   [18] (35,7)
-   [19] (35,7) :text|After2.\\n|
-   [19] (46,7)
-  [12] (47,8)
- [1] (47,8)
+    [17] (35,7) :raw:text|GGG @end tex\\n|
+    [17] (48,8)
+    [18] (48,8) :raw:text|After2.\\n|
+    [18] (56,9)
+   [14] (56,9)
+  [12] (56,9)
+ [1] (56,9)
 AAA 
 TTT
 GGG
@@ -236,7 +224,8 @@ After
 
    second 
 FFF
-GGG After2.
+GGG @end tex
+After2.
 ';
 
 1;

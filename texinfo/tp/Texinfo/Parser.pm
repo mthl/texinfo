@@ -3329,13 +3329,13 @@ sub _parse_texi($;$)
                          'extra' => {'line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
-          # FIXME(Karl) accept only a command at the line beginning?
-          # FIXME(Karl) accept only one space after @end?
-        } elsif ($line =~ /^(.*?)\@end\s+([a-zA-Z][\w-]*)/
+          # FIXME(Karl) accept also not spaces at the line beginning?
+        #} elsif ($line =~ /^(.*?)\@end\s+([a-zA-Z][\w-]*)/
+        } elsif ($line =~ /^(\s*?)\@end\s+([a-zA-Z][\w-]*)/
                  and ($2 eq $current->{'cmdname'})) {
           my $end_command = $2;
           my $raw_command = $current;
-          $line =~ s/^(.*?)(\@end\s+$current->{'cmdname'})//;
+          $line =~ s/^(\s*?)(\@end\s+$current->{'cmdname'})//;
           if ($1 eq '') {
             # FIXME exclude other formats, like @macro, @ifset, @ignore?
             if ($current->{'cmdname'} ne 'verbatim'
@@ -3353,13 +3353,12 @@ sub _parse_texi($;$)
             $self->line_warn (sprintf($self->__("\@end %s should only appear at a line beginning"), 
                                      $end_command), $line_nr);
           }
-          # the condition $line !~ /^\s*@/ leads to no warning when followed by
-          # any @-command.  This is in order to avoid warnings for correct
-          # constructs, like @comment after @end raw
+          # if there is a user defined macro that expandes to spaces, there
+          # will be a spurious warning.
           $self->line_warn (sprintf($self->
                 __("Superfluous argument to \@%s %s: %s"), 'end', $end_command,
                                     $line), $line_nr)
-            if ($line =~ /\S/ and $line !~ /^\s*@/);
+            if ($line =~ /\S/ and $line !~ /^\s*\@c(omment)?\b/);
           # store toplevel macro specification
           if (($end_command eq 'macro' or $end_command eq 'rmacro') 
                and (! $current->{'parent'} 
@@ -3443,8 +3442,7 @@ sub _parse_texi($;$)
       # this mostly happens in the following cases:
       #   after expansion of user defined macro that doesn't end with EOL
       #   after a protection of @\n in @def* line
-      while ($line eq '')
-      {
+      while ($line eq '') {
         print STDERR "END OF TEXT not at end of line\n"
           if ($self->{'DEBUG'});
         ($line, $line_nr) = _next_text($self, $line_nr);

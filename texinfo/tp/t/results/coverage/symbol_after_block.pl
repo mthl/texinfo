@@ -2183,12 +2183,30 @@ $result_errors{'symbol_after_block'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':7: warning: Superfluous argument to @end html: @@ On the line.
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Superfluous argument to @end html: @@ On the line.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':13: warning: Superfluous argument to @end verbatim: ;
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
     'text' => 'Superfluous argument to @end verbatim: ;',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':17: warning: Superfluous argument to @end verbatim: @@
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => 'Superfluous argument to @end verbatim: @@',
     'type' => 'warning'
   },
   {

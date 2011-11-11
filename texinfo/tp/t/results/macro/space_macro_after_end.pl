@@ -126,7 +126,17 @@ in html
 $result_texts{'space_macro_after_end'} = '
 ';
 
-$result_errors{'space_macro_after_end'} = [];
+$result_errors{'space_macro_after_end'} = [
+  {
+    'error_line' => ':7: warning: Superfluous argument to @end html:  @spaces{}
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Superfluous argument to @end html:  @spaces{}',
+    'type' => 'warning'
+  }
+];
 
 
 1;

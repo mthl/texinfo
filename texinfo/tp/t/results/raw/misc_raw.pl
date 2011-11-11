@@ -27,88 +27,39 @@ $result_trees{'misc_raw'} = {
         },
         {
           'parent' => {},
-          'text' => 'in html <br> ',
-          'type' => 'raw'
-        }
-      ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
+          'text' => 'in html <br> @end html
 ',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'tex',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => ' ',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => 'in tex',
           'type' => 'raw'
         },
         {
           'parent' => {},
           'text' => '
 ',
-          'type' => 'last_raw_newline'
-        }
-      ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
+          'type' => 'raw'
+        },
         {
-          'extra' => {
-            'command' => {}
-          },
+          'parent' => {},
+          'text' => '@tex in tex
+',
+          'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '@end tex
+',
+          'type' => 'raw'
+        },
+        {
           'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '@verbatim
+',
+          'type' => 'raw'
         },
         {
           'parent' => {},
@@ -121,23 +72,20 @@ $result_trees{'misc_raw'} = {
           'text' => 'in verbatim2
 ',
           'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '@end verbatim
+',
+          'type' => 'raw'
         }
       ],
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 8,
+        'line_nr' => 2,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -146,25 +94,15 @@ $result_trees{'misc_raw'}{'contents'}[0]{'parent'} = $result_trees{'misc_raw'};
 $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw'}{'contents'}[1];
 $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
 $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
+$result_trees{'misc_raw'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
+$result_trees{'misc_raw'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
+$result_trees{'misc_raw'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
+$result_trees{'misc_raw'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
+$result_trees{'misc_raw'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
+$result_trees{'misc_raw'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
+$result_trees{'misc_raw'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
+$result_trees{'misc_raw'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
 $result_trees{'misc_raw'}{'contents'}[1]{'parent'} = $result_trees{'misc_raw'};
-$result_trees{'misc_raw'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'misc_raw'}{'contents'}[1];
-$result_trees{'misc_raw'}{'contents'}[2]{'parent'} = $result_trees{'misc_raw'};
-$result_trees{'misc_raw'}{'contents'}[3]{'parent'} = $result_trees{'misc_raw'};
-$result_trees{'misc_raw'}{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw'}{'contents'}[4];
-$result_trees{'misc_raw'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'misc_raw'}{'contents'}[4];
-$result_trees{'misc_raw'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'misc_raw'}{'contents'}[4];
-$result_trees{'misc_raw'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'misc_raw'}{'contents'}[4];
-$result_trees{'misc_raw'}{'contents'}[4]{'parent'} = $result_trees{'misc_raw'};
-$result_trees{'misc_raw'}{'contents'}[5]{'extra'}{'command'} = $result_trees{'misc_raw'}{'contents'}[4];
-$result_trees{'misc_raw'}{'contents'}[5]{'parent'} = $result_trees{'misc_raw'};
-$result_trees{'misc_raw'}{'contents'}[6]{'parent'} = $result_trees{'misc_raw'};
-$result_trees{'misc_raw'}{'contents'}[7]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw'}{'contents'}[7];
-$result_trees{'misc_raw'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'misc_raw'}{'contents'}[7];
-$result_trees{'misc_raw'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'misc_raw'}{'contents'}[7];
-$result_trees{'misc_raw'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'misc_raw'}{'contents'}[7];
-$result_trees{'misc_raw'}{'contents'}[7]{'parent'} = $result_trees{'misc_raw'};
-$result_trees{'misc_raw'}{'contents'}[8]{'extra'}{'command'} = $result_trees{'misc_raw'}{'contents'}[7];
-$result_trees{'misc_raw'}{'contents'}[8]{'parent'} = $result_trees{'misc_raw'};
 
 $result_texis{'misc_raw'} = '
 @html 
@@ -177,32 +115,26 @@ in html <br> @end html
 in  v---erbatim`` <>
 in verbatim2
 @end verbatim
-';
+@end html';
 
 
 $result_texts{'misc_raw'} = '
-
-
-in  v---erbatim`` <>
-in verbatim2
 ';
 
 $result_errors{'misc_raw'} = [
   {
-    'error_line' => ':3: warning: @end html should only appear at a line beginning
+    'error_line' => ':11: No matching `@end html\'
 ',
     'file_name' => '',
-    'line_nr' => 3,
+    'line_nr' => 11,
     'macro' => '',
-    'text' => '@end html should only appear at a line beginning',
-    'type' => 'warning'
+    'text' => 'No matching `@end html\'',
+    'type' => 'error'
   }
 ];
 
 
 
-$result_converted{'plaintext'}->{'misc_raw'} = 'in  v---erbatim`` <>
-in verbatim2
-';
+$result_converted{'plaintext'}->{'misc_raw'} = '';
 
 1;
