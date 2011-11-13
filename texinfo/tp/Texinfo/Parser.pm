@@ -1723,7 +1723,14 @@ sub _next_text($$)
         }
       }
     }
-    shift(@{$self->{'input'}});
+    my $previous_input = shift(@{$self->{'input'}});
+    if ($previous_input->{'fh'}) {
+      if (!close($previous_input->{'fh'})) {
+        $self->document_warn(sprintf($self->__("Error on closing %s: %s"),
+                                     $previous_input->{'name'}, $!));
+
+      }
+    }
   }
 
   return (undef, $line_nr);

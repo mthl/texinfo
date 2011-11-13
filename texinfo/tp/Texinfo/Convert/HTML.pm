@@ -4475,7 +4475,7 @@ sub _process_css_file ($$$)
   #file_line_warn (__("\@import not finished in css file"), $file)  if ($in_import and !$in_comment and !$in_string);
   warn (sprintf($self->__("%s:%d: string not closed in css file"), 
                 $file, $line_nr)) if ($in_string);
-  warn (sprintf($self->__("%s:%d: --css-file ended in comment"), 
+  warn (sprintf($self->__("%s:%d: --css-include ended in comment"), 
                 $file, $line_nr)) if ($in_comment);
   warn (sprintf($self->__("%s:%d \@import not finished in css file"), 
         $file, $line_nr)) 
@@ -4506,9 +4506,10 @@ sub _prepare_css($)
                $self->__("css file %s not found"), $file));
         next;
       }
-      unless (open (CSSFILE, "$css_file")) {
+      # FIXME use open_out?
+      unless (open (CSSFILE, $css_file)) {
         $self->document_warn (sprintf($self->__(
-             "could not open --css-file %s: %s"), 
+             "could not open --include-file %s: %s"), 
               $css_file, $!));
         next;
       }
@@ -4517,6 +4518,10 @@ sub _prepare_css($)
     my ($import_lines, $rules_lines);
     ($import_lines, $rules_lines) 
       = $self->_process_css_file ($css_file_fh, $css_file);
+    if (!close($css_file_fh)) {
+      $self->document_warn(sprintf($self->__("Error on closing CSS file %s: %s"),
+                                   $css_file, $!));
+    }
     push @css_import_lines, @$import_lines;
     push @css_rule_lines, @$rules_lines;
 
