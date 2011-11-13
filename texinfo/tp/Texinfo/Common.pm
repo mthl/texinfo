@@ -772,7 +772,7 @@ sub open_out($$;$)
     binmode(STDOUT, ":encoding($encoding)") if ($encoding);
     if ($self) {
       push @{$self->{'opened_files'}}, $file;
-      $self->{'unclosed_files'}->{$file} = 1;
+      $self->{'unclosed_files'}->{$file} = \*STDOUT;
     }
     return \*STDOUT;
   }
@@ -790,7 +790,7 @@ sub open_out($$;$)
   }
   if ($self) {
     push @{$self->{'opened_files'}}, $file;
-    $self->{'unclosed_files'}->{$file} = 1;
+    $self->{'unclosed_files'}->{$file} = $filehandle;
   }
   return $filehandle;
 }
