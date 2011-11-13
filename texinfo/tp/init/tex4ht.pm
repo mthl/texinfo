@@ -82,11 +82,12 @@ my %commands = ();
 my $tex4ht_initial_dir;
 my $tex4ht_out_dir;
 
-sub tex4ht_prepare($) {
+sub tex4ht_prepare($)
+{
   # set file names
   my $self = shift;
 
-  return if (defined($self->get_conf('OUTFILE'))
+  return 1 if (defined($self->get_conf('OUTFILE'))
         and $Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')});
 
   $tex4ht_initial_dir = Cwd::abs_path;
@@ -119,7 +120,7 @@ sub tex4ht_prepare($) {
       unless (open (*TEX4HT_TEXFILE, ">$rfile")) {
         $self->document_warn (sprintf($self->__("tex4ht error opening %s: %s"), 
                                       $rfile, $!));
-        return;
+        return 1;
       }
       $commands{$command}->{'handle'} = *TEX4HT_TEXFILE;
 
@@ -202,6 +203,7 @@ sub tex4ht_prepare($) {
          "\@import \"$commands{$command}->{'basename'}.css\";\n";
     }
   }
+  return 1;
 }
 
 sub tex4ht_convert($)
@@ -210,7 +212,7 @@ sub tex4ht_convert($)
   unless (chdir $tex4ht_out_dir) {
     $self->document_warn(sprintf($self->__("chdir to %s failed"),
                          $tex4ht_out_dir));
-    return;
+    return 1;
   }
   print STDERR "cwd($tex4ht_out_dir): " . Cwd::cwd() ."\n" 
     if ($self->get_conf('VERBOSE'));
@@ -220,8 +222,10 @@ sub tex4ht_convert($)
     $errors += tex4ht_process_command($self, $command);
   }
   unless (chdir $tex4ht_initial_dir) {
-    die "tex4ht unable to return to the initial dir\n";
+    warn "tex4ht unable to return to the initial dir\n";
+    return 0;
   }
+  return 1;
 }
 
 sub tex4ht_process_command($$) {
@@ -317,6 +321,7 @@ sub tex4ht_finish($)
       }
     }
   }
+  return 1;
 }
 
 1;  

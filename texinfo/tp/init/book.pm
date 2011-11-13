@@ -47,6 +47,7 @@ sub book_init($)
   $book_previous_default_filename = undef;
   $book_previous_file_name = undef;
   $book_unumbered_nr = 0;
+  return 1;
 }
 
 texinfo_register_handler('init', \&book_init);

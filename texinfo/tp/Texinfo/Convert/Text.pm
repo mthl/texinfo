@@ -629,6 +629,7 @@ sub output($$)
   my $result = _convert($tree, \%options);
   if ($fh) {
     print $fh $result;
+    return undef if (!close($fh));
     $result = '';
   }
   return $result;

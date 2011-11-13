@@ -227,6 +227,9 @@ sub l2h_process($)
   if ($status) {
     $status = l2h_init_from_html($self);
   }
+  # FIXME use $status?  That is abort when something goes wrong on the
+  # latex2html front?
+  return 1;
 }
 
 
@@ -539,7 +542,8 @@ sub l2h_do_tex($$)
 sub l2h_finish($)
 {
   my $self = shift;
-  return unless($status);
+  return 1 unless($status);
+
   if ($verbose) {
     if ($extract_error_count + $invalid_counter_count) {
       warn "# l2h: finished from html ($extract_error_count extract and $invalid_counter_count invalid counter errors)\n";

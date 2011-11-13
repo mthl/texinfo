@@ -6076,7 +6076,7 @@ sub _default_frame_files($)
     $toc_frame_outfile = $toc_frame_file;
   }
   
-  my $frame_fh = $self->Texinfo::Common::open_out ($frame_outfile);
+  my $frame_fh = $self->Texinfo::Common::open_out($frame_outfile);
   if (defined($frame_fh)) {
     my $doctype = $self->get_conf('FRAMESET_DOCTYPE');
     my $top_file = '';
@@ -6096,9 +6096,18 @@ $doctype
 </html>
 EOT
 
+    if (!close ($frame_fh)) {
+      $self->document_error(sprintf($self->__("Error on closing frame file %s: %s"),
+                                    $frame_outfile, $!));
+      return 0;
+    }
+  } else {
+    $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                  $frame_outfile, $!));
+    return 0;
   }
 
-  my $toc_frame_fh = $self->Texinfo::Common::open_out ($toc_frame_outfile);
+  my $toc_frame_fh = $self->Texinfo::Common::open_out($toc_frame_outfile);
   if (defined($toc_frame_fh)) {
 
     my $header = &{$self->{'format_begin_file'}}($self, $toc_frame_file, undef);
@@ -6110,7 +6119,17 @@ EOT
     print $toc_frame_fh $shortcontents;
     print $toc_frame_fh "</body></html>\n";
 
+    if (!close ($toc_frame_fh)) {
+      $self->document_error(sprintf($self->__("Error on closing TOC frame file %s: %s"),
+                                    $toc_frame_outfile, $!));
+      return 0;
+    }
+  } else {
+    $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                  $toc_frame_outfile, $!));
+    return 0;
   }
+  return 1;
 }
 
 sub convert($$)
@@ -6202,7 +6221,7 @@ sub run_stage_handlers($$)
   my $stage = shift;
   die if (!$possible_stages{$stage});
 
-  return if (!defined($Texinfo::Config::texinfo_default_stage_handlers{$stage}));
+  return 1 if (!defined($Texinfo::Config::texinfo_default_stage_handlers{$stage}));
 
   my @sorted_priorities = sort keys(%{$Texinfo::Config::texinfo_default_stage_handlers{$stage}});
   foreach my $priority (@sorted_priorities) {
@@ -6210,9 +6229,16 @@ sub run_stage_handlers($$)
       if ($converter->get_conf('DEBUG')) {
         print STDERR "HANDLER($stage) , priority $priority: $handler\n";
       }
-      &{$handler}($converter, $stage);
+      my $status = &{$handler}($converter, $stage);
+      if (!$status) {
+        if ($converter->get_conf('VERBOSE')) {
+          print STDERR "Handler $handler of $stage($priority) failed\n";
+        }
+        return $status;
+      }
     }
   }
+  return 1;
 }
 
 my $default_priority = 'default';
@@ -6292,7 +6318,8 @@ sub output($$)
   }
   $self->set_conf('EXTERNAL_CROSSREF_SPLIT', $self->get_conf('SPLIT'));
 
-  $self->run_stage_handlers('setup');
+  my $setup_status = $self->run_stage_handlers('setup');
+  return undef unless($setup_status);
 
   $self->_prepare_css();
 
@@ -6346,7 +6373,8 @@ sub output($$)
   $self->_prepare_index_entries();
   $self->_prepare_footnotes();
 
-  $self->run_stage_handlers('structure');
+  my $structure_status = $self->run_stage_handlers('structure');
+  return undef unless($structure_status);
 
   &{$self->{'format_css_lines'}}($self);
 
@@ -6432,10 +6460,12 @@ sub output($$)
     pop @{$self->{'document_context'}};
   }
 
-  $self->run_stage_handlers('init');
+  my $init_status = $self->run_stage_handlers('init');
+  return undef unless($init_status);
 
   if ($self->get_conf('FRAMES')) {
-    &{$self->{'format_frame_files'}}($self);
+    my $status = &{$self->{'format_frame_files'}}($self);
+    return undef if (!$status);
   }
 
   # Now do the output
@@ -6443,8 +6473,8 @@ sub output($$)
   my $output = '';
   if (!$elements or !defined($elements->[0]->{'filename'})) {
     # no page
+    my $outfile;
     if ($self->{'output_file'} ne '') {
-      my $outfile;
       if ($self->get_conf('SPLIT')) {
         $outfile = $self->_top_node_filename();
         if (defined($self->{'destination_directory'})) {
@@ -6455,7 +6485,7 @@ sub output($$)
       }
       print STDERR "DO No pages, output in $outfile\n"
         if ($self->get_conf('DEBUG'));
-      $fh = $self->Texinfo::Common::open_out ($outfile);
+      $fh = $self->Texinfo::Common::open_out($outfile);
       if (!$fh) {
         $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                       $outfile, $!));
@@ -6478,6 +6508,10 @@ sub output($$)
       $output .= $self->_output_text($self->_convert($root), $fh);
     }
     $output .= $self->_output_text(&{$self->{'format_end_file'}}($self), $fh);
+    if ($fh and !close($fh)) {
+      $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                                    $outfile, $!));
+    }
     return $output if ($self->{'output_file'} eq '');
   } else {
     # output with pages
@@ -6504,7 +6538,7 @@ sub output($$)
       }
       # Then open the file and output the elements or the special_page_content
       if (!$files{$element->{'filename'}}->{'fh'}) {
-        $file_fh = $self->Texinfo::Common::open_out ($element->{'out_filename'});
+        $file_fh = $self->Texinfo::Common::open_out($element->{'out_filename'});
         if (!$file_fh) {
           $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $element->{'out_filename'}, $!));
@@ -6528,11 +6562,17 @@ sub output($$)
       if ($self->{'file_counters'}->{$element->{'filename'}} == 0) {
         # end file
         print $file_fh "". &{$self->{'format_end_file'}}($self);
+        if (!close($file_fh)) {
+          $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                                $element->{'out_filename'}, $!));
+          # FIXME(Karl) return at that point?
+        }
       }
     }
   }
 
-  $self->run_stage_handlers('finish');
+  my $finish_status = $self->run_stage_handlers('finish');
+  return undef unless($finish_status);
 
   # do node redirection pages
   $self->{'current_filename'} = undef;
@@ -6570,13 +6610,17 @@ sub output($$)
         } else {
           $out_filename = $node_filename;
         }
-        my $file_fh = $self->Texinfo::Common::open_out ($out_filename);
+        my $file_fh = $self->Texinfo::Common::open_out($out_filename);
         if (!$file_fh) {
          $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $out_filename, $!));
         } else {
           print $file_fh $redirection_page;
-          close ($file_fh);
+          if (!close ($file_fh)) {
+            $self->document_error(sprintf($self->__("Error on closing redirection node file %s: %s"),
+                                    $out_filename, $!));
+            # FIXME(Karl) return at that point?
+          }
         }
       }
     }
@@ -6632,13 +6676,17 @@ sub output($$)
         } else {
           $out_filename = $filename;
         }
-        my $file_fh = $self->Texinfo::Common::open_out ($out_filename);
+        my $file_fh = $self->Texinfo::Common::open_out($out_filename);
         if (!$file_fh) {
          $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $out_filename, $!));
         } else {
           print $file_fh $redirection_page;
-          close ($file_fh);
+          if (!close ($file_fh)) {
+            $self->document_error(sprintf($self->__("Error on closing renamed node file %s: %s"),
+                                    $out_filename, $!));
+            # FIXME(Karl) return at that point?
+          }
         }
       }
     }

@@ -83,6 +83,7 @@ sub output($)
                                     $self->{'output_file'}, $!));
       return undef;
     }
+    push @{$self->{'opened_files'}}, $self->{'output_file'};
   }
   print STDERR "DOCUMENT\n" if ($self->get_conf('DEBUG'));
   my $out_file_nr = 0;
@@ -123,18 +124,40 @@ sub output($)
           and $self->{'count_context'}->[-1]->{'bytes'} > 
                   $out_file_nr * $self->get_conf('SPLIT_SIZE') 
           and @nodes and $fh) {
-        close ($fh);
+        my $close_error;
+        if (!close ($fh)) {
+          $close_error = $!;
+        }
         if ($out_file_nr == 1) {
+          if (defined($close_error)) {
+            $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                                  $self->{'output_file'}, $close_error));
+            return undef;
+          }
           unless (rename ($self->{'output_file'}, 
                           $self->{'output_file'}.'-'.$out_file_nr)) {
-            $self->document_error(sprintf($self->__("Rename %s failed: %s"), 
+            $self->document_error(sprintf($self->__("Rename %s failed: %s"),
                                          $self->{'output_file'}, $!));
+            return undef;
+          }
+          # remove the main file from opened files since it was renamed
+          my $outfile = pop @{$self->{'opened_files'}};
+          if ($outfile ne $self->{'output_file'}) {
+            die "BUG: on top of opened_files $outfile and not $self->{'output_file'}\n";
           }
           push @{$self->{'opened_files'}}, 
                    $self->{'output_file'}.'-'.$out_file_nr;
           push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
                                  $first_node_bytes_count];
           #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
+        } else {
+          if (defined($close_error)) {
+            $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                                  $self->{'output_file'}.'-'.$out_file_nr, 
+                                  $close_error));
+            # FIXME return undef, interrupting processing?
+            # return undef;
+          }
         }
         $out_file_nr++;
         $fh = $self->Texinfo::Common::open_out (
@@ -145,6 +168,8 @@ sub output($)
                   $self->{'output_file'}.'-'.$out_file_nr, $!));
            return undef;
         }
+        push @{$self->{'opened_files'}}, 
+                $self->{'output_file'}.'-'.$out_file_nr;
         print $fh $header;
         $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
         push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
@@ -155,7 +180,12 @@ sub output($)
   }
   my $tag_text = '';
   if ($out_file_nr > 1) {
-    close ($fh);
+    if (!close ($fh)) {
+      $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                            $self->{'output_file'}.'-'.$out_file_nr, $!));
+      # FIXME return undef, interrupting processing?
+      # return undef;
+    }
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf(
@@ -163,6 +193,7 @@ sub output($)
             $self->{'output_file'}, $!));
       return undef;
     }
+    push @{$self->{'opened_files'}}, $self->{'output_file'};
     $tag_text = $header;
     $tag_text .= "\x{1F}\nIndirect:";
     foreach my $indirect (@indirect_files) {
@@ -208,10 +239,15 @@ sub output($)
   }
   if ($fh) {
     print $fh $tag_text;
-    # NOTE it should be possible to close STDOUT.  However this leads to
+    # FIXME it should be possible to close STDOUT.  However this leads to
     # 'Filehandle STDOUT reopened as FH only for input' if there are files
     # reopened after closing STDOUT.
-    close ($fh) unless ($self->{'output_file'} eq '-');
+    unless ($self->{'output_file'} eq '-') {
+      if (!close ($fh)) {
+        $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                              $self->{'output_file'}, $!));
+      }
+    }
   } else {
     $result .= $tag_text;
   }

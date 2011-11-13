@@ -208,14 +208,15 @@ sub chm_init($)
   return if (defined($self->get_conf('OUTFILE'))
         and $Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')});
   my $document_name = $self->{'document_name'};
+
   my $hhk_filename = $document_name . ".hhk";
   my $hhk_file = $self->{'destination_directory'} . $hhk_filename;
-
   my $hhk_fh = Texinfo::Common::open_out($self, $hhk_file);
   # Not sure $! is still valid
   if (!defined($hhk_fh)) {
-    die sprintf($self->__("Can't open %s for writing: %s\n"), 
-                  $hhk_file, $!);
+    $self->document_error(sprintf($self->__("Can't open %s for writing: %s\n"), 
+                  $hhk_file, $!));
+    return 0;
   }
   print STDERR "# writing HTML Help index in $hhk_file...\n" 
      if ($self->get_conf('VERBOSE'));
@@ -229,71 +230,6 @@ sub chm_init($)
   }
   print $hhk_fh "</OBJECT>\n";
 
-  my $hhp_filename = $document_name . ".hhp";
-  my $hhp_file = $self->{'destination_directory'} . $hhp_filename;
-  my $hhp_fh = Texinfo::Common::open_out($self, $hhp_file);
-  # Not sure $! is still valid
-  if (!defined($hhp_fh)) {
-    die sprintf($self->__("Can't open %s for writing: %s\n"), 
-                  $hhp_file, $!);
-  }
-  print STDERR "# writing HTML Help project in $hhp_file...\n" 
-     if ($self->get_conf('VERBOSE'));
-  my $language = $chm_languages{'en'};
-  my $documentlanguage = $self->get_conf('documentlanguage');
-  $documentlanguage =~ s/_.*//;
-  if (exists ($chm_languages{$documentlanguage})) {
-    $language = $chm_languages{$documentlanguage};
-  }
-  my $title = convert_tree($self, $self->{'title_tree'});
-  my $top_file = '';
-  my $top_element = $self->global_element('Top');
-  if ($top_element and $top_element->{'extra'}->{'element_command'}) {
-    $top_file 
-     = $self->command_filename($top_element->{'extra'}->{'element_command'});
-  }
-
-  print $hhp_fh <<EOT;
-[OPTIONS]
-Compatibility=1.1 or later
-Compiled file=$document_name.chm
-Contents file=$document_name.hhc
-Default Window=Default
-Default topic=$top_file
-Display compile progress=No
-Full-text search=Yes
-Index file=$hhk_filename
-Language=$language
-Title=$title
-
-[WINDOWS]
-Default=,"$document_name.hhc","$hhk_filename","$top_file","$top_file",,,,,0x22520,,0x384e,,,,,,,,0
-
-[FILES]
-EOT
-
-  my %chm_files;
-  if ($self->{'elements'}) {
-    foreach my $element (@{$self->{'elements'}}) {
-      if (!$chm_files{$element->{'filename'}}) {
-        print $hhp_fh "$element->{'filename'}\n";
-        $chm_files{$element->{'filename'}} = 1;
-      }
-    }
-  }
-  close ($hhp_fh);
-
-  my $hhc_filename = $document_name . ".hhc";
-  my $hhc_file = $self->{'destination_directory'} . $hhc_filename;
-  my $hhc_fh = Texinfo::Common::open_out($self, $hhc_file);
-  # Not sure $! is still valid
-  if (!defined($hhc_fh)) {
-    die sprintf($self->__("Can't open %s for writing: %s\n"), 
-                  $hhc_file, $!);
-  }
-  print STDERR "# writing HTML Help project in $hhc_file...\n" 
-     if ($self->get_conf('VERBOSE'));
-  
   my $index_entries = Texinfo::Structuring::sort_indices($self, 
                                           $self->{'index_entries'},
                                           $self->{'index_names'});
@@ -322,8 +258,25 @@ EOT
     }
   }
   print $hhk_fh "</BODY>\n</HTML>\n";
-  close ($hhk_fh);
+  if (!close ($hhk_fh)) {
+    $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                          $hhk_file, $!));
+    return 0;                  
+  }
 
+  my $hhc_filename = $document_name . ".hhc";
+  my $hhc_file = $self->{'destination_directory'} . $hhc_filename;
+  my $hhc_fh = Texinfo::Common::open_out($self, $hhc_file);
+  # Not sure $! is still valid
+  if (!defined($hhc_fh)) {
+    $self->document_error(sprintf($self->__("Can't open %s for writing: %s\n"), 
+                  $hhc_file, $!));
+    return 0;
+  }
+
+  print STDERR "# writing HTML Help project in $hhc_file...\n" 
+     if ($self->get_conf('VERBOSE'));
+  
   print $hhc_fh "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
   print $hhc_fh "<HEAD>\n<meta name=\"GENERATOR\" content=\""
    .$self->get_conf('PROGRAM') ."\">\n";
@@ -375,6 +328,73 @@ EOT
     }
   }
   print $hhc_fh "</HTML>\n</BODY>\n";
+  if (!close ($hhc_fh)) {
+    $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                          $hhc_file, $!));
+    return 0;                  
+  }
+
+  my $hhp_filename = $document_name . ".hhp";
+  my $hhp_file = $self->{'destination_directory'} . $hhp_filename;
+  my $hhp_fh = Texinfo::Common::open_out($self, $hhp_file);
+  # Not sure $! is still valid
+  if (!defined($hhp_fh)) {
+    $self->document_error(sprintf($self->__("Can't open %s for writing: %s\n"), 
+                  $hhp_file, $!));
+    return 0;
+  }
+  print STDERR "# writing HTML Help project in $hhp_file...\n" 
+     if ($self->get_conf('VERBOSE'));
+  my $language = $chm_languages{'en'};
+  my $documentlanguage = $self->get_conf('documentlanguage');
+  $documentlanguage =~ s/_.*//;
+  if (exists ($chm_languages{$documentlanguage})) {
+    $language = $chm_languages{$documentlanguage};
+  }
+  my $title = convert_tree($self, $self->{'title_tree'});
+  my $top_file = '';
+  my $top_element = $self->global_element('Top');
+  if ($top_element and $top_element->{'extra'}->{'element_command'}) {
+    $top_file 
+     = $self->command_filename($top_element->{'extra'}->{'element_command'});
+  }
+
+  print $hhp_fh <<EOT;
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=$document_name.chm
+Contents file=$hhc_filename
+Default Window=Default
+Default topic=$top_file
+Display compile progress=No
+Full-text search=Yes
+Index file=$hhk_filename
+Language=$language
+Title=$title
+
+[WINDOWS]
+Default=,"$hhc_filename","$hhk_filename","$top_file","$top_file",,,,,0x22520,,0x384e,,,,,,,,0
+
+[FILES]
+EOT
+
+  my %chm_files;
+  if ($self->{'elements'}) {
+    foreach my $element (@{$self->{'elements'}}) {
+      if (!$chm_files{$element->{'filename'}}) {
+        print $hhp_fh "$element->{'filename'}\n";
+        $chm_files{$element->{'filename'}} = 1;
+      }
+    }
+  }
+
+  if (!close ($hhp_fh)) {
+    $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                          $hhp_file, $!));
+    return 0;                  
+  }
+
+  return 1;
 }
 texinfo_register_handler('init', \&chm_init);
 

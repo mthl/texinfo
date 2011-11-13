@@ -969,7 +969,10 @@ sub _image_text($$$)
       }
       # remove last end of line
       chomp ($result);
-      close ($filehandle);
+      if (!close ($filehandle)) {
+        $self->document_warn(sprintf($self->__("Error on closing image text file %s: %s"),
+                                     $txt_file, $!));
+      }
       return $result;
     } else {
       $self->line_warn(sprintf($self->__("\@image file `%s' unreadable: %s"), 

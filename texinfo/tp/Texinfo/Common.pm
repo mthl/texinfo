@@ -864,7 +864,10 @@ sub expand_verbatiminclude($$)
         push @{$verbatiminclude->{'contents'}}, 
                   {'type' => 'raw', 'text' => $_ };
       }
-      close (VERBINCLUDE);
+      if (!close (VERBINCLUDE)) {
+        $self->document_warn(sprintf($self->__("Error on closing \@verbatiminclude file %s: %s"),
+                             $file, $!));
+      }
     }
   } elsif ($self) {
     $self->line_error (sprintf($self->__("\@%s: Cannot find %s"), 
@@ -1203,7 +1206,10 @@ sub parse_htmlxref_files($$)
       }
       $htmlxref->{$manual}->{$split_or_mono} = $href;
     }
-    close (HTMLXREF);
+    if (!close (HTMLXREF)) {
+      $self->document_warn(sprintf($self->__("Error on closing html refs config file %s: %s"),
+                             $file, $!));
+    }
   }
   return $htmlxref;
 }
@@ -1249,9 +1255,13 @@ sub parse_renamed_nodes_file($$;$$)
       warn (sprintf($self->__("%s:%d: nodes without a new name at the end of file\n"),
              $renamed_nodes_file, $renamed_nodes_line_nr));
     }
-    close(RENAMEDFILE);
+    if (!close(RENAMEDFILE)) {
+      $self->document_warn(sprintf($self->__("Error on closing renamed nodes file %s: %s"), 
+                            $renamed_nodes_file, $!));
+    }
   } else {
-    warn (sprintf($self->__("Cannot read %s: %s"), $renamed_nodes_file, $!));
+    $self->document_warn(sprintf($self->__("Cannot read %s: %s"), 
+                         $renamed_nodes_file, $!));
   }
   return ($renamed_nodes, $renamed_nodes_lines);
 }

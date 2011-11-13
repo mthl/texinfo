@@ -991,12 +991,22 @@ while(@input_files)
     my $macro_expand_file = get_conf('MACRO_EXPAND');
     my $macro_expand_fh = Texinfo::Common::open_out($parser, 
                                                     $macro_expand_file);
+
+    my $error_macro_expand_file;
     if (defined ($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
-      close ($macro_expand_fh);
+      if (!close ($macro_expand_fh)) {
+        warn (sprintf(__("Error on closing macro expand file %s: %s\n"), 
+                      $macro_expand_file, $!));
+        $error_macro_expand_file = 1;
+      }
     } else {
       warn (sprintf(__("Could not open %s for writing: %s\n"), 
                     $macro_expand_file, $!));
+      $error_macro_expand_file = 1;
+    }
+
+    if ($error_macro_expand_file) {
       $error_count++;
       exit (1) if ($error_count and (!get_conf('FORCE')
          or $error_count > get_conf('ERROR_LIMIT')));
@@ -1050,12 +1060,21 @@ while(@input_files)
     my $internal_links_file = get_conf('INTERNAL_LINKS');
     my $internal_links_fh = Texinfo::Common::open_out($converter, 
                                              $internal_links_file);
+    my $error_internal_links_file;
     if (defined ($internal_links_fh)) {
       print $internal_links_fh $internal_links_text;
-      close ($internal_links_fh);
+      
+      if (!close ($internal_links_fh)) {
+        warn (sprintf(__("Error on closing internal links file %s: %s\n"), 
+                      $internal_links_file, $!));
+        $error_internal_links_file = 1;
+      }
     } else {
       warn (sprintf(__("Could not open %s for writing: %s\n"), 
                     $internal_links_file, $!));
+      $error_internal_links_file = 1;
+    }
+    if ($error_internal_links_file) {
       $error_count++;
       exit (1) if ($error_count and (!get_conf('FORCE')
          or $error_count > get_conf('ERROR_LIMIT')));
