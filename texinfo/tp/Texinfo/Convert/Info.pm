@@ -83,7 +83,6 @@ sub output($)
                                     $self->{'output_file'}, $!));
       return undef;
     }
-    push @{$self->{'opened_files'}}, $self->{'output_file'};
   }
   print STDERR "DOCUMENT\n" if ($self->get_conf('DEBUG'));
   my $out_file_nr = 0;
@@ -141,10 +140,9 @@ sub output($)
             return undef;
           }
           # remove the main file from opened files since it was renamed
-          my $outfile = pop @{$self->{'opened_files'}};
-          if ($outfile ne $self->{'output_file'}) {
-            die "BUG: on top of opened_files $outfile and not $self->{'output_file'}\n";
-          }
+          # and add the file with a number.
+          @{$self->{'opened_files'}} = grep {$_ ne $self->{'output_file'}}
+               @{$self->{'opened_files'}};
           push @{$self->{'opened_files'}}, 
                    $self->{'output_file'}.'-'.$out_file_nr;
           push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
@@ -168,8 +166,6 @@ sub output($)
                   $self->{'output_file'}.'-'.$out_file_nr, $!));
            return undef;
         }
-        push @{$self->{'opened_files'}}, 
-                $self->{'output_file'}.'-'.$out_file_nr;
         print $fh $header;
         $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
         push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
@@ -193,7 +189,6 @@ sub output($)
             $self->{'output_file'}, $!));
       return undef;
     }
-    push @{$self->{'opened_files'}}, $self->{'output_file'};
     $tag_text = $header;
     $tag_text .= "\x{1F}\nIndirect:";
     foreach my $indirect (@indirect_files) {
