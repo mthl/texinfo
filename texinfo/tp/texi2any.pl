@@ -1000,6 +1000,7 @@ while(@input_files)
                       $macro_expand_file, $!));
         $error_macro_expand_file = 1;
       }
+      delete $parser->{'unclosed_files'}->{$macro_expand_file};
     } else {
       warn (sprintf(__("Could not open %s for writing: %s\n"), 
                     $macro_expand_file, $!));
@@ -1069,6 +1070,7 @@ while(@input_files)
                       $internal_links_file, $!));
         $error_internal_links_file = 1;
       }
+      delete $parser->{'unclosed_files'}->{$internal_links_file};
     } else {
       warn (sprintf(__("Could not open %s for writing: %s\n"), 
                     $internal_links_file, $!));

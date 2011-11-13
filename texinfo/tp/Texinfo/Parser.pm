@@ -1724,7 +1724,8 @@ sub _next_text($$)
       }
     }
     my $previous_input = shift(@{$self->{'input'}});
-    if ($previous_input->{'fh'}) {
+    # Don't close STDIN
+    if ($previous_input->{'fh'} and $previous_input->{'name'} ne '-') {
       if (!close($previous_input->{'fh'})) {
         $self->document_warn(sprintf($self->__("Error on closing %s: %s"),
                                      $previous_input->{'name'}, $!));

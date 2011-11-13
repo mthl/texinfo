@@ -331,9 +331,13 @@ sub output($$)
   $result .= $self->_output_text($header, $fh);
   $result .= $self->convert_document_sections($root, $fh);
   $result .= $self->_output_text("</book>\n", $fh);
-  if ($fh and !close ($fh)) {
-    $self->document_error(sprintf($self->__("Error on closing %s: %s"),
-                                  $self->{'output_filename'}, $!));
+  if ($fh) {
+    # FIXME do not close STDOUT
+    delete $self->{'unclosed_files'}->{$self->{'output_filename'}};
+    if (!close ($fh)) {
+      $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                                    $self->{'output_filename'}, $!));
+    }
   }
   return $result;
 }

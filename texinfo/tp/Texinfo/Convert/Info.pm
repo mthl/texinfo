@@ -123,6 +123,7 @@ sub output($)
           and $self->{'count_context'}->[-1]->{'bytes'} > 
                   $out_file_nr * $self->get_conf('SPLIT_SIZE') 
           and @nodes and $fh) {
+        delete $self->{'unclosed_files'}->{$self->{'output_file'}};
         my $close_error;
         if (!close ($fh)) {
           $close_error = $!;
@@ -176,10 +177,11 @@ sub output($)
   }
   my $tag_text = '';
   if ($out_file_nr > 1) {
+    delete $self->{'unclosed_files'}->{$self->{'output_file'}.'-'.$out_file_nr};
     if (!close ($fh)) {
       $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                             $self->{'output_file'}.'-'.$out_file_nr, $!));
-      # FIXME return undef, interrupting processing?
+      # FIXME(Karl) return undef, interrupting processing?
       # return undef;
     }
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
@@ -238,6 +240,7 @@ sub output($)
     # 'Filehandle STDOUT reopened as FH only for input' if there are files
     # reopened after closing STDOUT.
     unless ($self->{'output_file'} eq '-') {
+      delete $self->{'unclosed_files'}->{$self->{'output_file'}};
       if (!close ($fh)) {
         $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                               $self->{'output_file'}, $!));

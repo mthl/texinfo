@@ -258,6 +258,7 @@ sub chm_init($)
     }
   }
   print $hhk_fh "</BODY>\n</HTML>\n";
+  delete $self->{'unclosed_files'}->{$hhk_file};
   if (!close ($hhk_fh)) {
     $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                           $hhk_file, $!));
@@ -328,6 +329,7 @@ sub chm_init($)
     }
   }
   print $hhc_fh "</HTML>\n</BODY>\n";
+  delete $self->{'unclosed_files'}->{$hhc_file};
   if (!close ($hhc_fh)) {
     $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                           $hhc_file, $!));
@@ -388,6 +390,7 @@ EOT
     }
   }
 
+  delete $self->{'unclosed_files'}->{$hhp_file};
   if (!close ($hhp_fh)) {
     $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                           $hhp_file, $!));

@@ -770,7 +770,10 @@ sub open_out($$;$)
 
   if ($file eq '-') {
     binmode(STDOUT, ":encoding($encoding)") if ($encoding);
-    push @{$self->{'opened_files'}}, $file if ($self);
+    if ($self) {
+      push @{$self->{'opened_files'}}, $file;
+      $self->{'unclosed_files'}->{$file} = 1;
+    }
     return \*STDOUT;
   }
   my $filehandle = do { local *FH };
@@ -785,8 +788,10 @@ sub open_out($$;$)
     }
     binmode($filehandle, ":encoding($encoding)");
   }
-  push @{$self->{'opened_files'}}, $file
-    if ($self);
+  if ($self) {
+    push @{$self->{'opened_files'}}, $file;
+    $self->{'unclosed_files'}->{$file} = 1;
+  }
   return $filehandle;
 }
 

@@ -6101,6 +6101,7 @@ $doctype
 </html>
 EOT
 
+    delete $self->{'unclosed_files'}->{$frame_outfile};
     if (!close ($frame_fh)) {
       $self->document_error(sprintf($self->__("Error on closing frame file %s: %s"),
                                     $frame_outfile, $!));
@@ -6124,6 +6125,7 @@ EOT
     print $toc_frame_fh $shortcontents;
     print $toc_frame_fh "</body></html>\n";
 
+    delete $self->{'unclosed_files'}->{$toc_frame_outfile};
     if (!close ($toc_frame_fh)) {
       $self->document_error(sprintf($self->__("Error on closing TOC frame file %s: %s"),
                                     $toc_frame_outfile, $!));
@@ -6513,9 +6515,13 @@ sub output($$)
       $output .= $self->_output_text($self->_convert($root), $fh);
     }
     $output .= $self->_output_text(&{$self->{'format_end_file'}}($self), $fh);
-    if ($fh and !close($fh)) {
-      $self->document_error(sprintf($self->__("Error on closing %s: %s"),
-                                    $outfile, $!));
+    # FIXME do not close STDOUT
+    if ($fh) {
+      delete $self->{'unclosed_files'}->{$outfile};
+      if (!close($fh)) {
+        $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                                      $outfile, $!));
+      }
     }
     return $output if ($self->{'output_file'} eq '');
   } else {
@@ -6567,6 +6573,9 @@ sub output($$)
       if ($self->{'file_counters'}->{$element->{'filename'}} == 0) {
         # end file
         print $file_fh "". &{$self->{'format_end_file'}}($self);
+
+        # FIXME do not close STDOUT
+        delete $self->{'unclosed_files'}->{$element->{'out_filename'}};
         if (!close($file_fh)) {
           $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                                 $element->{'out_filename'}, $!));
@@ -6621,6 +6630,7 @@ sub output($$)
                                     $out_filename, $!));
         } else {
           print $file_fh $redirection_page;
+          delete $self->{'unclosed_files'}->{$out_filename};
           if (!close ($file_fh)) {
             $self->document_error(sprintf($self->__("Error on closing redirection node file %s: %s"),
                                     $out_filename, $!));
@@ -6687,6 +6697,7 @@ sub output($$)
                                     $out_filename, $!));
         } else {
           print $file_fh $redirection_page;
+          delete $self->{'unclosed_files'}->{$out_filename};
           if (!close ($file_fh)) {
             $self->document_error(sprintf($self->__("Error on closing renamed node file %s: %s"),
                                     $out_filename, $!));
