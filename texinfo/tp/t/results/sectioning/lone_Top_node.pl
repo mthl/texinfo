@@ -464,8 +464,7 @@ $result_elements{'lone_Top_node'} = [
       'directions' => {
         'NodePrev' => {},
         'NodeUp' => {},
-        'This' => {},
-        'Up' => {}
+        'This' => {}
       },
       'element_command' => {
         'cmdname' => 'chapter',
@@ -497,7 +496,6 @@ $result_elements{'lone_Top_node'} = [
 $result_elements{'lone_Top_node'}[0]{'extra'}{'directions'}{'NodePrev'} = $result_elements{'lone_Top_node'}[0];
 $result_elements{'lone_Top_node'}[0]{'extra'}{'directions'}{'NodeUp'} = $result_elements{'lone_Top_node'}[0];
 $result_elements{'lone_Top_node'}[0]{'extra'}{'directions'}{'This'} = $result_elements{'lone_Top_node'}[0];
-$result_elements{'lone_Top_node'}[0]{'extra'}{'directions'}{'Up'} = $result_elements{'lone_Top_node'}[0];
 $result_elements{'lone_Top_node'}[0]{'extra'}{'node'}{'menu_up'}{'menu_child'} = $result_elements{'lone_Top_node'}[0]{'extra'}{'node'};
 $result_elements{'lone_Top_node'}[0]{'extra'}{'section'} = $result_elements{'lone_Top_node'}[0]{'extra'}{'element_command'};
 
@@ -507,7 +505,6 @@ $result_directions_text{'lone_Top_node'} = 'element: @chapter chap
   NodePrev: @chapter chap
   NodeUp: @chapter chap
   This: @chapter chap
-  Up: @chapter chap
 ';
 
 1;

@@ -468,7 +468,7 @@ sub _set_variables_texi2html()
   ['USE_ACCESSKEY', 0],
   ['NODE_NAME_IN_MENU', 0],
   ['OVERVIEW_LINK_TO_TOC', 0],
-  ['USE_UP_FOR_ADJACENT_NODES', 1],
+  ['USE_UP_NODE_FOR_ELEMENT_UP', 1],
   ['USE_REL_REV', 0],
   ['USE_LINKS', 0],
   ['USE_NODES', undef],
@@ -918,7 +918,8 @@ foreach my $format (@{$default_expanded_format}) {
 foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
                                     'INLINE_INSERTCOPYING', 'SHOW_MENU',
                                     'IGNORE_BEFORE_SETFILENAME', 'TEST',
-                                    'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES') {
+                                    'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES',
+                                    'USE_UP_NODE_FOR_ELEMENT_UP') {
   $parser_default_options->{$parser_settable_option} = get_conf($parser_settable_option) 
     if (defined(get_conf($parser_settable_option)));
 }

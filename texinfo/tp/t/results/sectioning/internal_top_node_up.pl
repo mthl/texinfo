@@ -476,8 +476,7 @@ $result_elements{'internal_top_node_up'} = [
               'NodeBack' => {},
               'NodePrev' => {},
               'NodeUp' => {},
-              'This' => {},
-              'Up' => {}
+              'This' => {}
             },
             'element_command' => {
               'cmdname' => 'node',
@@ -528,7 +527,6 @@ $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'e
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'NodePrev'} = $result_elements{'internal_top_node_up'}[0];
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'NodeUp'} = $result_elements{'internal_top_node_up'}[0];
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'This'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Up'} = $result_elements{'internal_top_node_up'}[0];
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'}{'menu_child'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'internal_top_node_up'}[0]{'extra'}{'directions'}{'Forward'};
@@ -554,7 +552,6 @@ element: @node first
   NodePrev: @node Top
   NodeUp: @node Top
   This: @node first
-  Up: @node Top
 ';
 
 

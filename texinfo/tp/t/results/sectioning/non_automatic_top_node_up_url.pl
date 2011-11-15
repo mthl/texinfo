@@ -649,13 +649,7 @@ $result_elements{'non_automatic_top_node_up_url'} = [
                 },
                 'type' => 'external_node'
               },
-              'This' => {},
-              'Up' => {
-                'extra' => {
-                  'manual_content' => []
-                },
-                'type' => 'external_node'
-              }
+              'This' => {}
             },
             'element_command' => {
               'cmdname' => 'node',
@@ -719,7 +713,6 @@ $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'For
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'NodeBack'} = $result_elements{'non_automatic_top_node_up_url'}[0];
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'NodePrev'} = $result_elements{'non_automatic_top_node_up_url'}[0];
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'This'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'};
-$result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'Up'}{'extra'}{'manual_content'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'directions'}{'NodeUp'}{'extra'}{'manual_content'};
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'}{'menu_up'}{'menu_child'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'node'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'}{'extra'}{'element_command'};
 $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'NodeForward'} = $result_elements{'non_automatic_top_node_up_url'}[0]{'extra'}{'directions'}{'Forward'};
@@ -746,7 +739,6 @@ element: @node first
   NodePrev: @node Top
   NodeUp: (dir)
   This: @node first
-  Up: (dir)
 ';
 
 

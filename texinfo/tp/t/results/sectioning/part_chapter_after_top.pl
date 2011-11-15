@@ -644,8 +644,7 @@ $result_elements{'part_chapter_after_top'} = [
               'NodeBack' => {},
               'NodePrev' => {},
               'NodeUp' => {},
-              'This' => {},
-              'Up' => {}
+              'This' => {}
             },
             'element_command' => {
               'cmdname' => 'chapter',
@@ -714,7 +713,6 @@ $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForwar
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'NodePrev'} = $result_elements{'part_chapter_after_top'}[0];
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'NodeUp'} = $result_elements{'part_chapter_after_top'}[0];
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'This'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'};
-$result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'directions'}{'Up'} = $result_elements{'part_chapter_after_top'}[0];
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'}{'menu_up'}{'menu_child'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'node'};
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'section'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'}{'extra'}{'element_command'};
 $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'Forward'} = $result_elements{'part_chapter_after_top'}[0]{'extra'}{'directions'}{'FastForward'};
@@ -744,7 +742,6 @@ element: @chapter chapter
   NodePrev: @top top
   NodeUp: @top top
   This: @chapter chapter
-  Up: @top top
 ';
 
 

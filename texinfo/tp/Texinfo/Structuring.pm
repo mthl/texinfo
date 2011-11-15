@@ -880,8 +880,9 @@ sub elements_directions($$)
       }
     }
     # Use node up for Up if there is no section up.
-    # FIXME(Karl) is it really right?
-    if (!$directions->{'Up'} and $element->{'extra'}->{'node'}
+    # Not done in the default case.
+    if ($self->get_conf('USE_UP_NODE_FOR_ELEMENT_UP')
+        and !$directions->{'Up'} and $element->{'extra'}->{'node'}
         and $element->{'extra'}->{'node'}->{'node_up'} 
         and (!$node_top or ($element->{'extra'}->{'node'} ne $node_top))) {
       #print STDERR "Using node for up "._print_element_command_texi($element)."\n";
@@ -897,7 +898,8 @@ sub elements_directions($$)
   }
   if ($self->get_conf('DEBUG')) {
     foreach my $element (@$elements) {
-      print STDERR "Directions($element): ".Texinfo::Structuring::_print_directions($element)."\n";
+      print STDERR "Directions($element): "
+         .Texinfo::Structuring::_print_directions($element)."\n";
     }
   }
 }
