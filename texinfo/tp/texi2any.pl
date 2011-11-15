@@ -425,9 +425,25 @@ sub document_warn($) {
   warn sprintf(__p("warning: warning_message", "warning: %s\n"), $text);
 }
 
-sub handle_errors($$) {
+sub _exit($$)
+{
+  my $error_count = shift;
+  my $opened_files = shift;
+
+  if ($opened_files and !get_conf('FORCE')) {
+    while (@$opened_files) {
+      my $opened_file = shift (@$opened_files);
+      unlink ($opened_file);
+    }
+  }
+  exit (1) if ($error_count and (!get_conf('FORCE')
+     or $error_count > get_conf('ERROR_LIMIT')));
+}
+
+sub handle_errors($$$) {
   my $self = shift;
   my $error_count = shift;
+  my $opened_files = shift;
   my ($errors, $new_error_count) = $self->errors();
   $error_count += $new_error_count if ($new_error_count);
   foreach my $error_message (@$errors) {
@@ -435,8 +451,7 @@ sub handle_errors($$) {
                                            or !get_conf('NO_WARN'));
   }
   
-  exit (1) if ($error_count and (!get_conf('FORCE')
-     or $error_count > get_conf('ERROR_LIMIT')));
+  _exit($error_count, $opened_files);
   return $error_count;
 }
 
@@ -735,7 +750,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
        $format = 'raw_text';
      } else {
        set_from_cmdline ($var, $value);
-       # FIXME do that here or all command line options are processed?
+       # FIXME do that here or when all command line options are processed?
        if ($var eq 'L2H' and get_conf('L2H')) {
          locate_and_load_init_file($latex2html_file, 
                                [ @conf_dirs, @program_init_dirs ]);
@@ -924,6 +939,9 @@ die sprintf(__("%s: missing file argument.\n"), $real_command_name)
      unless (scalar(@input_files) >= 1);
 
 my $file_number = -1;
+my @opened_files = ();
+my %unclosed_files;
+my $error_count = 0;
 # main processing
 while(@input_files)
 {
@@ -970,9 +988,8 @@ while(@input_files)
   my $parser = Texinfo::Parser::parser($parser_options);
   my $tree = $parser->parse_texi_file($input_file_name);
 
-  my $error_count = 0;
   if (!defined($tree)) {
-    handle_errors($parser, $error_count);
+    handle_errors($parser, $error_count, \@opened_files);
     next;
   }
 
@@ -1000,7 +1017,7 @@ while(@input_files)
                       $macro_expand_file, $!));
         $error_macro_expand_file = 1;
       }
-      delete $parser->{'unclosed_files'}->{$macro_expand_file};
+      $parser->Texinfo::Convert::Converter::register_close_file($macro_expand_file);
     } else {
       warn (sprintf(__("Could not open %s for writing: %s\n"), 
                     $macro_expand_file, $!));
@@ -1009,12 +1026,11 @@ while(@input_files)
 
     if ($error_macro_expand_file) {
       $error_count++;
-      exit (1) if ($error_count and (!get_conf('FORCE')
-         or $error_count > get_conf('ERROR_LIMIT')));
+      _exit($error_count, \@opened_files);
     }
   }
   if (get_conf('DUMP_TEXI')) {
-    handle_errors($parser, $error_count);
+    handle_errors($parser, $error_count, \@opened_files);
     next;
   }
   Texinfo::Structuring::associate_internal_references($parser);
@@ -1032,7 +1048,7 @@ while(@input_files)
   if ($formats_table{$format}->{'floats'}) {
     Texinfo::Structuring::number_floats($floats);
   }
-  $error_count = handle_errors($parser, $error_count);
+  $error_count = handle_errors($parser, $error_count, \@opened_files);
   if (get_conf('SIMPLE_MENU')
       and $formats_table{$format}->{'simple_menu'}) {
     $parser->Texinfo::Structuring::set_menus_to_simple_menu();
@@ -1051,7 +1067,25 @@ while(@input_files)
   $converter_options->{'htmlxref_files'} = \@texinfo_htmlxref_files;
   my $converter = &{$formats_table{$format}->{'converter'}}($converter_options);
   $converter->output($tree);
-  handle_errors($converter, $error_count);
+  push @opened_files, $converter->converter_opened_files();
+  handle_errors($converter, $error_count, \@opened_files);
+  my $converter_unclosed_files = $converter->converter_unclosed_files();
+  if ($converter_unclosed_files) {
+    foreach my $unclosed_file (keys(%$converter_unclosed_files)) {
+      if ($unclosed_file eq '-') {
+        $unclosed_files{$unclosed_file} 
+          = $converter_unclosed_files->{$unclosed_file};
+      } else {
+        if (!close($converter_unclosed_files->{$unclosed_file})) {
+          warn (sprintf(__("Error on closing %s: %s\n"), 
+                           $unclosed_file, $!));
+          $error_count++;
+          _exit($error_count, \@opened_files);
+        }
+      }
+    }
+  }
+  
   if (defined(get_conf('INTERNAL_LINKS')) and $file_number == 0
       and $formats_table{$format}->{'internal_links'}) {
     my $internal_links_text 
@@ -1070,7 +1104,7 @@ while(@input_files)
                       $internal_links_file, $!));
         $error_internal_links_file = 1;
       }
-      delete $parser->{'unclosed_files'}->{$internal_links_file};
+      $converter->register_close_file($internal_links_file);
     } else {
       warn (sprintf(__("Could not open %s for writing: %s\n"), 
                     $internal_links_file, $!));
@@ -1078,9 +1112,18 @@ while(@input_files)
     }
     if ($error_internal_links_file) {
       $error_count++;
-      exit (1) if ($error_count and (!get_conf('FORCE')
-         or $error_count > get_conf('ERROR_LIMIT')));
+      _exit($error_count, \@opened_files);
     }
   }
 }
 
+foreach my $unclosed_file (keys(%unclosed_files)) {
+  if (!close($unclosed_files{$unclosed_file})) {
+    warn (sprintf(__("Error on closing %s: %s\n"), 
+                     $unclosed_file, $!));
+    $error_count++;
+    _exit($error_count, \@opened_files);
+  }
+}
+
+1;

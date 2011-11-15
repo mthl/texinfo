@@ -3337,8 +3337,6 @@ sub _parse_texi($;$)
                          'extra' => {'line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
-          # FIXME(Karl) accept also not spaces at the line beginning?
-        #} elsif ($line =~ /^(.*?)\@end\s+([a-zA-Z][\w-]*)/
         } elsif ($line =~ /^(\s*?)\@end\s+([a-zA-Z][\w-]*)/
                  and ($2 eq $current->{'cmdname'})) {
           my $end_command = $2;

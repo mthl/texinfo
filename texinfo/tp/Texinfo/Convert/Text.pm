@@ -623,7 +623,7 @@ sub output($$)
   }
   my $fh;
   if (defined($outfile)) {
-    $fh = $self->Texinfo::Common::open_out ($outfile);
+    $fh = $self->Texinfo::Common::open_out($outfile);
     return undef if (!$fh);
   }
   my $result = _convert($tree, \%options);
@@ -648,6 +648,16 @@ sub errors()
   return undef;
 }
 
+sub converter_unclosed_files()
+{
+  return undef;
+}
+
+sub converter_opened_files()
+{
+  return ();
+}
+ 
 1;
 
 __END__

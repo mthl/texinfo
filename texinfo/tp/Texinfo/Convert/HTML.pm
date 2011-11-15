@@ -4878,7 +4878,7 @@ sub _set_pages_files($$)
   if (!$self->get_conf('SPLIT')) {
     foreach my $element (@$elements) {
       if (!defined($element->{'filename'})) {
-        $element->{'filename'} = $self->{'document_name'}.$extension;
+        $element->{'filename'} = $self->{'output_filename'};
         $element->{'out_filename'} = $self->{'output_file'};
       }
     }
@@ -5098,10 +5098,10 @@ sub _prepare_special_elements($$)
     if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')) {
       $default_filename = $self->{'document_name'}.
         $self->{'misc_pages_file_string'}->{$type};
+      $default_filename .= '.'.$extension if (defined($extension));
     } else {
-      $default_filename = $self->{'document_name'};
+      $default_filename = undef;
     }
-    $default_filename .= '.'.$extension if (defined($extension));
 
     my $filename;
     if (defined($Texinfo::Config::special_element_target_file_name)) {
@@ -5114,10 +5114,15 @@ sub _prepare_special_elements($$)
     }
     $filename = $default_filename if (!defined($filename));
 
-    print STDERR "Add special $element $type: target $target, id $id,\n".
-      "    filename $filename\n" if ($self->get_conf('DEBUG'));
+    if ($self->get_conf('DEBUG')) {
+      my $fileout = $filename;
+      $fileout = 'UNDEF' if (!defined($fileout));
+      print STDERR "Add special $element $type: target $target, id $id,\n".
+        "    filename $fileout\n" 
+    }
     if ($self->get_conf('SPLIT') or !$self->get_conf('MONOLITHIC')
-        or $filename ne $default_filename) {
+        or (defined($filename) ne defined($default_filename))
+        or (defined($filename) and $filename ne $default_filename)) {
       $self->_set_element_file($element, $filename);
       print STDERR "NEW page for $type ($filename)\n" if ($self->get_conf('DEBUG'));
     }
@@ -6101,7 +6106,7 @@ $doctype
 </html>
 EOT
 
-    delete $self->{'unclosed_files'}->{$frame_outfile};
+    $self->register_close_file($frame_outfile);
     if (!close ($frame_fh)) {
       $self->document_error(sprintf($self->__("Error on closing frame file %s: %s"),
                                     $frame_outfile, $!));
@@ -6125,7 +6130,7 @@ EOT
     print $toc_frame_fh $shortcontents;
     print $toc_frame_fh "</body></html>\n";
 
-    delete $self->{'unclosed_files'}->{$toc_frame_outfile};
+    $self->register_close_file($toc_frame_outfile);
     if (!close ($toc_frame_fh)) {
       $self->document_error(sprintf($self->__("Error on closing TOC frame file %s: %s"),
                                     $toc_frame_outfile, $!));
@@ -6515,9 +6520,9 @@ sub output($$)
       $output .= $self->_output_text($self->_convert($root), $fh);
     }
     $output .= $self->_output_text(&{$self->{'format_end_file'}}($self), $fh);
-    # FIXME do not close STDOUT
-    if ($fh) {
-      delete $self->{'unclosed_files'}->{$outfile};
+    # NOTE do not close STDOUT now to avoid a perl warning.
+    if ($fh and $outfile ne '-') {
+      $self->register_close_file($outfile);
       if (!close($fh)) {
         $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                                       $outfile, $!));
@@ -6535,7 +6540,7 @@ sub output($$)
       my $file_fh;
       $self->{'current_filename'} = $element->{'filename'};
       $self->{'counter_in_file'}->{$element->{'filename'}}++;
-      #print STDERR "TTTTTTT($element) $element->{'filename'}: $self->{'file_counters'}->{$element->{'filename'}}\n";
+      #print STDERR "TTTTTTT($element) $element->{'filename'}: $self->{'file_counters'}->{$element->{'filename'}} (out_filename $element->{'out_filename'})\n";
       # First do the special pages, to avoid outputting these if they are
       # empty.
       my $special_element_content;
@@ -6553,7 +6558,6 @@ sub output($$)
         if (!$file_fh) {
           $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $element->{'out_filename'}, $!));
-          # FIXME close/remove files already created
           return undef;
         }
         print $file_fh "".&{$self->{'format_begin_file'}}($self, 
@@ -6574,12 +6578,14 @@ sub output($$)
         # end file
         print $file_fh "". &{$self->{'format_end_file'}}($self);
 
-        # FIXME do not close STDOUT
-        delete $self->{'unclosed_files'}->{$element->{'out_filename'}};
-        if (!close($file_fh)) {
-          $self->document_error(sprintf($self->__("Error on closing %s: %s"),
-                                $element->{'out_filename'}, $!));
-          # FIXME(Karl) return at that point?
+        # NOTE do not close STDOUT here to avoid a perl warning
+        if ($element->{'out_filename'} ne '-') {
+          $self->register_close_file($element->{'out_filename'});
+          if (!close($file_fh)) {
+            $self->document_error(sprintf($self->__("Error on closing %s: %s"),
+                                  $element->{'out_filename'}, $!));
+            return undef;
+          }
         }
       }
     }
@@ -6630,11 +6636,11 @@ sub output($$)
                                     $out_filename, $!));
         } else {
           print $file_fh $redirection_page;
-          delete $self->{'unclosed_files'}->{$out_filename};
+          $self->register_close_file($out_filename);
           if (!close ($file_fh)) {
             $self->document_error(sprintf($self->__("Error on closing redirection node file %s: %s"),
                                     $out_filename, $!));
-            # FIXME(Karl) return at that point?
+            return undef;
           }
         }
       }
@@ -6697,11 +6703,11 @@ sub output($$)
                                     $out_filename, $!));
         } else {
           print $file_fh $redirection_page;
-          delete $self->{'unclosed_files'}->{$out_filename};
+          $self->register_close_file($out_filename);
           if (!close ($file_fh)) {
             $self->document_error(sprintf($self->__("Error on closing renamed node file %s: %s"),
                                     $out_filename, $!));
-            # FIXME(Karl) return at that point?
+            return undef;
           }
         }
       }

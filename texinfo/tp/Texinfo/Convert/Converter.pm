@@ -26,6 +26,8 @@ use Texinfo::Report;
 use Texinfo::Common;
 use Texinfo::Convert::Text;
 
+use Carp qw(cluck);
+
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter Texinfo::Report);
@@ -152,6 +154,17 @@ sub _informative_command($$)
   }
 }
 
+sub register_close_file($$)
+{
+  my $self = shift;
+  my $filename = shift;
+  if ($self->{'unclosed_files'}->{$filename}) {
+    delete $self->{'unclosed_files'}->{$filename};
+  } else {
+    cluck "$filename not opened\n";
+  }
+}
+
 sub converter(;$)
 {
   my $class = shift;
@@ -260,6 +273,22 @@ sub converter(;$)
   $converter->converter_initialize();
 
   return $converter;
+}
+
+sub converter_unclosed_files($)
+{
+  my $self = shift;
+  return $self->{'unclosed_files'};
+}
+
+sub converter_opened_files($)
+{
+  my $self = shift;
+  if (defined($self->{'opened_files'})) {
+    return @{$self->{'opened_files'}};
+  } else {
+    return ();
+  }
 }
 
 sub _set_global_multiple_commands($;$)
@@ -412,7 +441,10 @@ sub _set_outfile($$$)
       $document_name = $outfile;
     }
     if (defined($self->get_conf('SUBDIR')) and $outfile ne '') {
-      $outfile = $self->get_conf('SUBDIR')."/$outfile";
+      my $dir = $self->get_conf('SUBDIR');
+      $dir =~ s/\/*$//;
+      $dir .= '/';
+      $outfile = $dir.$outfile;
     }
     #$self->set_conf('OUTFILE', $outfile);
   } else {

@@ -77,7 +77,7 @@ sub output($)
 
   my $fh;
   if (! $self->{'output_file'} eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
+    $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
@@ -123,12 +123,12 @@ sub output($)
           and $self->{'count_context'}->[-1]->{'bytes'} > 
                   $out_file_nr * $self->get_conf('SPLIT_SIZE') 
           and @nodes and $fh) {
-        delete $self->{'unclosed_files'}->{$self->{'output_file'}};
         my $close_error;
         if (!close ($fh)) {
           $close_error = $!;
         }
         if ($out_file_nr == 1) {
+          $self->register_close_file($self->{'output_file'});
           if (defined($close_error)) {
             $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                                   $self->{'output_file'}, $close_error));
@@ -150,12 +150,12 @@ sub output($)
                                  $first_node_bytes_count];
           #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
         } else {
+          $self->register_close_file($self->{'output_file'}.'-'.$out_file_nr);
           if (defined($close_error)) {
             $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                                   $self->{'output_file'}.'-'.$out_file_nr, 
                                   $close_error));
-            # FIXME return undef, interrupting processing?
-            # return undef;
+            return undef;
           }
         }
         $out_file_nr++;
@@ -177,12 +177,11 @@ sub output($)
   }
   my $tag_text = '';
   if ($out_file_nr > 1) {
-    delete $self->{'unclosed_files'}->{$self->{'output_file'}.'-'.$out_file_nr};
+    $self->register_close_file($self->{'output_file'}.'-'.$out_file_nr);
     if (!close ($fh)) {
       $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                             $self->{'output_file'}.'-'.$out_file_nr, $!));
-      # FIXME(Karl) return undef, interrupting processing?
-      # return undef;
+      return undef;
     }
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
@@ -236,11 +235,12 @@ sub output($)
   }
   if ($fh) {
     print $fh $tag_text;
-    # FIXME it should be possible to close STDOUT.  However this leads to
+    # NOTE it should be possible to close STDOUT.  However this leads to
     # 'Filehandle STDOUT reopened as FH only for input' if there are files
-    # reopened after closing STDOUT.
+    # reopened after closing STDOUT.  So closing STDOUT is handled by the
+    # caller.
     unless ($self->{'output_file'} eq '-') {
-      delete $self->{'unclosed_files'}->{$self->{'output_file'}};
+      $self->register_close_file($self->{'output_file'});
       if (!close ($fh)) {
         $self->document_error(sprintf($self->__("Error on closing %s: %s"),
                               $self->{'output_file'}, $!));

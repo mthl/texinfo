@@ -771,7 +771,6 @@ sub open_out($$;$)
   if ($file eq '-') {
     binmode(STDOUT, ":encoding($encoding)") if ($encoding);
     if ($self) {
-      push @{$self->{'opened_files'}}, $file;
       $self->{'unclosed_files'}->{$file} = \*STDOUT;
     }
     return \*STDOUT;
@@ -791,6 +790,8 @@ sub open_out($$;$)
   if ($self) {
     push @{$self->{'opened_files'}}, $file;
     $self->{'unclosed_files'}->{$file} = $filehandle;
+    #print STDERR "OOOOOOO $file ".join('|',@{$self->{'opened_files'}})."\n";
+    #cluck;
   }
   return $filehandle;
 }
