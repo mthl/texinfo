@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.16 2011-10-18 18:47:20 karl Exp $
+   $Id: info-utils.c,v 1.17 2011-11-17 10:04:59 gray Exp $
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011
    Free Software Foundation, Inc.
@@ -746,4 +746,104 @@ get_window_of_node (NODE *node)
       break;
 
   return win;
+}
+
+/* Flexible Text Buffer */
+
+void
+text_buffer_init (struct text_buffer *buf)
+{
+  memset (buf, 0, sizeof *buf);
+}
+
+void
+text_buffer_free (struct text_buffer *buf)
+{
+  free (buf->base);
+}
+
+size_t
+text_buffer_vprintf (struct text_buffer *buf, const char *format, va_list ap)
+{
+  ssize_t n;
+  
+  if (!buf->base)
+    {
+      if (buf->size == 0)
+	buf->size = 512; /* Initial allocation */
+      
+      buf->base = xmalloc (buf->size);
+    }
+  
+  for (;;)
+    {
+      n = vsnprintf (buf->base + buf->off, buf->size - buf->off,
+		     format, ap);
+      if (n < 0 || buf->off + n >= buf->size ||
+	  !memchr (buf->base + buf->off, '\0', buf->size - buf->off + 1))
+	{
+	  size_t newlen = buf->size * 2;
+	  if (newlen < buf->size)
+	    xalloc_die ();
+	  buf->size = newlen;
+	  buf->base = xrealloc (buf->base, buf->size);
+	}
+      else
+	{
+	  buf->off += n;
+	  break;
+	}
+    }
+  return n;
+}
+
+size_t
+text_buffer_add_string (struct text_buffer *buf, const char *str, size_t len)
+{
+  if (buf->off + len > buf->size)
+    {
+      buf->size = buf->off + len;
+      buf->base = xrealloc (buf->base, buf->size);
+    }
+  memcpy (buf->base + buf->off, str, len);
+  buf->off += len;
+  return len;
+}
+
+size_t
+text_buffer_fill (struct text_buffer *buf, int c, size_t len)
+{
+  char *p;
+  int i;
+  
+  if (buf->off + len > buf->size)
+    {
+      buf->size = buf->off + len;
+      buf->base = xrealloc (buf->base, buf->size);
+    }
+
+  for (i = 0, p = buf->base + buf->off; i < len; i++)
+    *p++ = c;
+  buf->off += len;
+  
+  return len;
+}
+
+void
+text_buffer_add_char (struct text_buffer *buf, int c)
+{
+  char ch = c;
+  text_buffer_add_string (buf, &ch, 1);
+}
+
+size_t
+text_buffer_printf (struct text_buffer *buf, const char *format, ...)
+{
+  va_list ap;
+  size_t n;
+  
+  va_start (ap, format);
+  n = text_buffer_vprintf (buf, format, ap);
+  va_end (ap);
+  return n;
 }

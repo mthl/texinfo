@@ -1,5 +1,5 @@
 /* info-utils.h -- Exported functions and variables from info-utils.c.
-   $Id: info-utils.h,v 1.10 2011-10-18 18:47:20 karl Exp $   
+   $Id: info-utils.h,v 1.11 2011-11-17 10:04:59 gray Exp $   
 
    Copyright (C) 1993, 1996, 1998, 2002, 2003, 2004, 2007, 2011
    Free Software Foundation, Inc.
@@ -132,5 +132,22 @@ extern void info_parse_label (char *label, NODE *node);
     if (!info_parsed_nodename && !info_parsed_filename) \
       info_parse_label (INFO_ALTPREV_LABEL, n); \
   } while (0)
+
+struct text_buffer
+{
+  char *base;
+  size_t size;
+  size_t off;
+};
+
+void text_buffer_init (struct text_buffer *buf);
+void text_buffer_free (struct text_buffer *buf);
+size_t text_buffer_vprintf (struct text_buffer *buf, const char *format,
+			    va_list ap);
+size_t text_buffer_add_string (struct text_buffer *buf, const char *str,
+			       size_t len);
+size_t text_buffer_fill (struct text_buffer *buf, int c, size_t len);
+void text_buffer_add_char (struct text_buffer *buf, int c);
+size_t text_buffer_printf (struct text_buffer *buf, const char *format, ...);
 
 #endif /* not INFO_UTILS_H */

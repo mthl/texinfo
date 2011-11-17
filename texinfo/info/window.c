@@ -1,5 +1,5 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.23 2011-07-28 07:14:06 gray Exp $
+   $Id: window.c,v 1.24 2011-11-17 10:04:59 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -1207,44 +1207,14 @@ unmessage_in_echo_area (void)
 }
 
 /* A place to build a message. */
-static char *message_buffer = NULL;
-static size_t message_buffer_size = 0;
-static size_t message_buffer_index = 0;
+static struct text_buffer message_buffer;
 
 /* Format MESSAGE_BUFFER with the results of printing FORMAT with ARG1 and
    ARG2. */
 static void
 build_message_buffer (const char *format, va_list ap)
 {
-  if (!message_buffer)
-    {
-      if (message_buffer_size == 0)
-	message_buffer_size = 512; /* Initial allocation */
-      
-      message_buffer = xmalloc (message_buffer_size);
-    }
-  
-  for (;;)
-    {
-      ssize_t n = vsnprintf (message_buffer + message_buffer_index,
-			     message_buffer_size - message_buffer_index,
-			     format, ap);
-      if (n < 0 || message_buffer_index + n >= message_buffer_size ||
-	  !memchr (message_buffer + message_buffer_index, '\0',
-		   message_buffer_size - message_buffer_index + 1))
-	{
-	  size_t newlen = message_buffer_size * 2;
-	  if (newlen < message_buffer_size)
-	    xalloc_die ();
-	  message_buffer_size = newlen;
-	  message_buffer = xrealloc (message_buffer, message_buffer_size);
-	}
-      else
-	{
-	  message_buffer_index += n;
-	  break;
-	}
-    }
+  text_buffer_vprintf (&message_buffer, format, ap);
 }
 
 /* Build a new node which has FORMAT printed with ARG1 and ARG2 as the
@@ -1305,9 +1275,9 @@ message_buffer_to_node (void)
   node->display_pos =0;
 
   /* Make sure that this buffer ends with a newline. */
-  node->nodelen = 1 + strlen (message_buffer);
+  node->nodelen = 1 + strlen (message_buffer.base);
   node->contents = xmalloc (1 + node->nodelen);
-  strcpy (node->contents, message_buffer);
+  strcpy (node->contents, message_buffer.base);
   node->contents[node->nodelen - 1] = '\n';
   node->contents[node->nodelen] = '\0';
   return node;
@@ -1317,7 +1287,7 @@ message_buffer_to_node (void)
 void
 initialize_message_buffer (void)
 {
-  message_buffer_index = 0;
+  message_buffer.off = 0;
 }
 
 /* Print supplied arguments using FORMAT to the end of the current message
@@ -1339,12 +1309,12 @@ message_buffer_length_this_line (void)
 {
   char *p;
   
-  if (!message_buffer || !*message_buffer)
+  if (!message_buffer.base || !*message_buffer.base)
     return 0;
 
-  p = strrchr (message_buffer, '\n');
+  p = strrchr (message_buffer.base, '\n');
   if (!p)
-    p = message_buffer;
+    p = message_buffer.base;
   return string_width (p, 0);
 }
 

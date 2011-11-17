@@ -1,3 +1,27 @@
+2011-11-16  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Implement info-virtual-index.
+	
+	* info/indices.c (info_virtual_index): New function.
+	* info/info-utils.c (text_buffer_init)
+	(text_buffer_free,text_buffer_vprintf)
+	(text_buffer_add_string,text_buffer_fill)
+	(text_buffer_add_char,text_buffer_printf): New functions.
+	* info/info-utils.h (text_buffer): New struct.
+	(text_buffer_init)
+	(text_buffer_free,text_buffer_vprintf)	
+	(text_buffer_add_string,text_buffer_fill)
+	(text_buffer_add_char,text_buffer_printf): New protos.
+	* info/infomap.c (default_emacs_like_info_keys): 'I'
+	calls info-virtual-index.
+	(default_vi_like_info_keys): ESC-I calls info-virtual-index.
+	* info/window.c (message_buffer_size)
+	(message_buffer_index): Remove.
+	(message_buffer): Change type to struct text_buffer.
+	All uses changed.
+
+	* doc/info-stnd.texi: Document virtual-index.
+	
 2011-11-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: replace @inforef's to the Info manual

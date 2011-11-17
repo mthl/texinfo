@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.16 2011-10-18 18:47:20 karl Exp $
+   $Id: indices.c,v 1.17 2011-11-17 10:04:59 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -795,6 +795,159 @@ DECLARE_INFO_COMMAND (info_index_apropos,
     }
   free (line);
 
+  if (!info_error_was_printed)
+    window_clear_echo_area ();
+}
+
+static FILE_BUFFER *
+create_virtindex_file_buffer (const char *filename, char *contents, size_t size)
+{
+  FILE_BUFFER *file_buffer;
+
+  file_buffer = make_file_buffer ();
+  file_buffer->filename = xstrdup (filename);
+  file_buffer->fullpath = xstrdup (filename);
+  file_buffer->finfo.st_size = 0;
+  file_buffer->flags = (N_IsInternal | N_CannotGC);
+
+  file_buffer->contents = contents;
+  file_buffer->filesize = size;
+  build_tags_and_nodes (file_buffer);
+  return file_buffer;
+}
+
+static NODE *
+create_virtindex_node (FILE_BUFFER *file_buffer)
+{
+  NODE *node;
+  TAG *tag = file_buffer->tags[0];
+  char *text = file_buffer->contents + tag->nodestart;
+
+  text += skip_node_separator (text);
+  
+  node = xmalloc (sizeof (NODE));
+  node->filename = file_buffer->filename;
+  node->nodename = xstrdup (tag->nodename);
+  node->contents = text;
+  node->nodelen = strlen (text);
+  node->body_start = strcspn(node->contents, "\n");
+
+  node->flags    = 0;
+  node->display_pos = 0;
+  node->parent = NULL;
+  node->flags = 0;
+  
+  return node;
+}
+
+#define NODECOL 41
+#define LINECOL 62
+
+static void
+format_reference (REFERENCE *ref, const char *filename, struct text_buffer *buf)
+{
+  size_t n;
+  
+  n = text_buffer_printf (buf, "* %s: ", ref->label);
+  if (n < NODECOL)
+    n += text_buffer_fill (buf, ' ', NODECOL - n);
+  
+  if (ref->filename && strcmp (ref->filename, filename))
+    n += text_buffer_printf (buf, "(%s)", ref->filename);
+  n += text_buffer_printf (buf, "%s. ", ref->nodename);
+
+  if (n < LINECOL)
+    n += text_buffer_fill (buf, ' ', LINECOL - n);
+  else
+    {
+      text_buffer_add_char (buf, '\n');
+      text_buffer_fill (buf, ' ', LINECOL);
+    }
+  
+  text_buffer_printf (buf, "(line %4d)\n", ref->line_number);
+}
+
+DECLARE_INFO_COMMAND (info_virtual_index,
+   _("List all matches of a string in the index"))
+{
+  char *line;
+  size_t linelen;
+  FILE_BUFFER *fb, *tfb;
+  NODE *node;
+  struct text_buffer text;
+  int i;
+  size_t cnt, off;
+  
+  line = info_read_maybe_completing (window, _("Index topic: "),
+				     index_index);
+
+  window = active_window;
+
+  /* User aborted? */
+  if (!line)
+    {
+      info_abort_key (window, 1, 1);
+      return;
+    }
+
+  if (mbslen (line) < min_search_length)
+    {
+      info_error (_("Search string too short"));
+      free (line);
+      return;
+    }
+  linelen = strlen (line);
+  
+  fb = file_buffer_of_window (window);
+
+  if (!initial_index_filename ||
+      !fb ||
+      (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
+    {
+      info_free_references (index_index);
+      window_message_in_echo_area (_("Finding index entries..."));
+      index_index = info_indices_of_file_buffer (fb);
+    }
+
+  text_buffer_init (&text);
+  text_buffer_printf (&text, _("Index for `%s'"), line);
+  text_buffer_add_char (&text, 0);
+  off = text.off;
+  text_buffer_printf (&text,
+		      "\n\n%c\n%s %s,  %s %s,  %s Top\n\n"
+		      "Info Virtual Index\n"
+		      "******************\n\n"
+		      "Index entries that match `%s':\n\n"
+		      "* Menu:\n\n",
+		      INFO_COOKIE,
+		      INFO_FILE_LABEL, fb->filename,
+		      INFO_NODE_LABEL, text.base,
+		      INFO_UP_LABEL, line);
+  memmove (text.base, text.base + off, text.off - off);
+  text.off -= off;
+
+  cnt = 0;
+  for (i = 0; index_index[i]; i++)
+    {
+      if (string_in_line (line, index_index[i]->label) != -1)
+	{
+	  format_reference (index_index[i], fb->filename, &text);
+	  cnt++;
+	}
+    }
+
+  if (cnt == 0)
+    {
+      text_buffer_free (&text);
+      info_error (_("No index entries containing `%s'."), line);
+      return;
+    }
+
+  tfb = create_virtindex_file_buffer (fb->filename, text.base, text.off);
+  node = create_virtindex_node (tfb);
+  
+  info_set_node_of_window (1, window, node);
+  
   if (!info_error_was_printed)
     window_clear_echo_area ();
 }

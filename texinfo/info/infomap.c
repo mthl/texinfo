@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.23 2011-10-18 18:47:20 karl Exp $
+   $Id: infomap.c,v 1.24 2011-11-17 10:04:59 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
    2008, 2011 Free Software Foundation, Inc.
@@ -329,6 +329,7 @@ static unsigned char default_emacs_like_info_keys[] =
         'h', NUL,                       A_info_get_help_window,
         'H', NUL,                       A_info_get_info_help_node,
         'i', NUL,                       A_info_index_search,
+	'I', NUL,                       A_info_virtual_index,
         'l', NUL,                       A_info_history_node,
         'm', NUL,                       A_info_menu_item,
         'n', NUL,                       A_info_next_node,
@@ -610,7 +611,7 @@ static unsigned char default_vi_like_info_keys[] =
         Meta('8'), NUL,                 A_info_menu_digit,
         Meta('9'), NUL,                 A_info_menu_digit,
         '<', NUL,                       A_info_first_node,
-        '>', NUL,                       A_info_last_node,
+	'>', NUL,                       A_info_last_node,
         '?', NUL,                       A_info_search_backward,
         '[', NUL,                       A_info_global_prev_node,
         ']', NUL,                       A_info_global_next_node,
@@ -664,6 +665,7 @@ static unsigned char default_vi_like_info_keys[] =
         ESC, 'f', NUL,                  A_info_xref_item,
         ESC, 'g', NUL,                  A_info_select_reference_this_line,
         ESC, 'h', NUL,                  A_info_get_info_help_node,
+	ESC, 'I', NUL,                  A_info_virtual_index,
         ESC, 'm', NUL,                  A_info_menu_item,
         ESC, 'n', NUL,                  A_info_search,
         ESC, 'N', NUL,                  A_info_search_backward,
