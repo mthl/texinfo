@@ -1831,12 +1831,12 @@ $result_errors{'menutextorder'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':6: warning: No node following `bar\' in menu, but `foo\' follows in sectioning
+    'error_line' => ':6: warning: Node `foo\' is next for `bar\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'No node following `bar\' in menu, but `foo\' follows in sectioning',
+    'text' => 'Node `foo\' is next for `bar\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
@@ -1849,12 +1849,21 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: warning: No node following `onesub1\' in menu, but `onesub2\' follows in sectioning
+    'error_line' => ':13: warning: Node `onesub2\' is next for `onesub1\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'No node following `onesub1\' in menu, but `onesub2\' follows in sectioning',
+    'text' => 'Node `onesub2\' is next for `onesub1\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':13: warning: Node `bar\' is up for `onesub1\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => 'Node `bar\' is up for `onesub1\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
@@ -1867,12 +1876,30 @@ $result_errors{'menutextorder'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':16: warning: Node `onesub1\' is prev for `onesub2\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 16,
+    'macro' => '',
+    'text' => 'Node `onesub1\' is prev for `onesub2\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':20: warning: unreferenced node `foo\'
 ',
     'file_name' => '',
     'line_nr' => 20,
     'macro' => '',
     'text' => 'unreferenced node `foo\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':20: warning: Node `bar\' is prev for `foo\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => '',
+    'text' => 'Node `bar\' is prev for `foo\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
@@ -1885,12 +1912,12 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':32: warning: No node following `sub2\' in menu, but `sub3\' follows in sectioning
+    'error_line' => ':32: warning: Node `sub3\' is next for `sub2\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => '',
-    'text' => 'No node following `sub2\' in menu, but `sub3\' follows in sectioning',
+    'text' => 'Node `sub3\' is next for `sub2\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {

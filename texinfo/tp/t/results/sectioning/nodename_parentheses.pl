@@ -1328,6 +1328,24 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':22: warning: Node `Other node\' is prev for `node\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => 'Node `Other node\' is prev for `node\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':22: warning: Node `Top\' is up for `node\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => 'Node `Top\' is up for `node\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':1: Node `Top\' lacks menu item for `node\' despite being its Up target
 ',
     'file_name' => '',

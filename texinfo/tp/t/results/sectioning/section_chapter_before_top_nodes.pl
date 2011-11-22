@@ -888,6 +888,15 @@ $result_errors{'section_chapter_before_top_nodes'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':1: warning: Node `chapter node\' is next for `section node\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Node `chapter node\' is next for `section node\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':1: warning: Node `chapter node\' is up for `section node\' in menu but not in sectioning
 ',
     'file_name' => '',
@@ -897,12 +906,21 @@ $result_errors{'section_chapter_before_top_nodes'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: No node following `section node\' in menu, but `chapter node\' follows in sectioning
+    'error_line' => ':4: warning: Node `Top\' is next for `chapter node\' in sectioning but not in menu
 ',
     'file_name' => '',
-    'line_nr' => 1,
+    'line_nr' => 4,
     'macro' => '',
-    'text' => 'No node following `section node\' in menu, but `chapter node\' follows in sectioning',
+    'text' => 'Node `Top\' is next for `chapter node\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: Node `section node\' is prev for `chapter node\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Node `section node\' is prev for `chapter node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
@@ -912,15 +930,6 @@ $result_errors{'section_chapter_before_top_nodes'} = [
     'line_nr' => 4,
     'macro' => '',
     'text' => 'Node `Top\' is up for `chapter node\' in menu but not in sectioning',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':4: warning: No node following `chapter node\' in menu, but `Top\' follows in sectioning
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'No node following `chapter node\' in menu, but `Top\' follows in sectioning',
     'type' => 'warning'
   }
 ];

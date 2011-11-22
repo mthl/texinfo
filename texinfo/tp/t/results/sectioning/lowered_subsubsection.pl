@@ -2117,12 +2117,21 @@ $result_menus{'lowered_subsubsection'}{'menu_child'}{'menu_up'} = $result_menus{
 
 $result_errors{'lowered_subsubsection'} = [
   {
-    'error_line' => ':34: warning: No node following `Lowered subsec\' in menu, but `Lowered subsubsection\' follows in sectioning
+    'error_line' => ':34: warning: Node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 34,
     'macro' => '',
-    'text' => 'No node following `Lowered subsec\' in menu, but `Lowered subsubsection\' follows in sectioning',
+    'text' => 'Node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':41: warning: Node `Lowered subsec\' is prev for `Lowered subsubsection\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 41,
+    'macro' => '',
+    'text' => 'Node `Lowered subsec\' is prev for `Lowered subsubsection\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {

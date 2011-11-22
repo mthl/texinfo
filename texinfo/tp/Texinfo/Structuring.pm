@@ -474,7 +474,17 @@ sub nodes_tree ($)
                 last;
               }
             }
-            next if ($node->{'node_'.$direction});
+            if ($node->{'node_'.$direction}) {
+              if ($self->{'SHOW_MENU'} and !$node->{'menu_'.$direction}) {
+                $self->line_warn(sprintf($self->
+                  __("Node `%s' is %s for `%s' in sectioning but not in menu"), 
+                Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
+                $direction,
+                Texinfo::Parser::_node_extra_to_texi($node->{'extra'})),
+                $node->{'line_nr'});
+              }
+              next;
+            }
           }
           if ($node->{'menu_'.$direction} 
               and !$node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
@@ -492,13 +502,8 @@ sub nodes_tree ($)
         }
         if ($self->{'SHOW_MENU'}) {
           if ($node->{'node_next'}) {
-            if (!defined($node->{'menu_next'})) {
-              $self->line_warn(sprintf($self->
-                 __("No node following `%s' in menu, but `%s' follows in sectioning"), 
-               Texinfo::Parser::_node_extra_to_texi($node->{'extra'}), 
-               Texinfo::Parser::_node_extra_to_texi($node->{'node_next'}->{'extra'})), 
-               $node->{'line_nr'});
-            } elsif ($node->{'menu_next'} ne $node->{'node_next'}) {
+            if ($node->{'menu_next'}
+                and $node->{'menu_next'} ne $node->{'node_next'}) {
               $self->line_warn(sprintf($self->
                  __("Node following `%s' in menu `%s' and in sectioning `%s' differ"), 
               Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
@@ -506,11 +511,6 @@ sub nodes_tree ($)
               Texinfo::Parser::_node_extra_to_texi($node->{'node_next'}->{'extra'})),
               $node->{'line_nr'});
             }
-          #} elsif (defined($node->{'menu_next'})) {
-          #  $self->line_warn(sprintf($self->
-          #    __("Node following `%s' in menu, nothing follows in sectioning"), 
-          #    Texinfo::Parser::_node_extra_to_texi($node->{'extra'})), 
-          #    $node->{'line_nr'});
           }
         }
       } else {
