@@ -10,14 +10,16 @@ Internationalize 'error-->'.  FIXME in the code.
 In plaintext output internationalize definition lines like
 gdt(' -- {category} of {class}: {type} {name} {arguments}')
 
+add warning msg for @part if there is an associated node 
+or if there is no chapter like command.
 
 
 Bugs
 ====
 
-sectioning/next_in_menu_is_below there should be a warning for
-the subsection that is both below and next the section, because it is 
-next in menu.
+Other positive, check they are all in tests.
+Old Texinfo, use of subheading and explicit direction.
+a intercalar node
 
 
 Delayed bugs

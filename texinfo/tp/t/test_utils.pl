@@ -199,7 +199,7 @@ my @contents_keys = ('contents', 'args', 'parent', 'line_nr', 'node_content',
 my @menus_keys = ('menu_next', 'menu_up', 'menu_prev', 'menu_up_hash');
 my @sections_keys = ('section_next', 'section_prev', 'section_up', 
   'section_childs', 'associated_node', 'part_associated_section', 
-  'toplevel_prev', 'toplevel_next');
+  'toplevel_prev', 'toplevel_next', 'toplevel_up');
 my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus', 
   'associated_section');
 my %avoided_keys_tree;

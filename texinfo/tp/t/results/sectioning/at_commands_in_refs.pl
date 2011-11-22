@@ -18940,7 +18940,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'level' => 1,
           'number' => 1,
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -18956,7 +18957,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 2,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -18972,7 +18974,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 3,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -18988,7 +18991,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 4,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19004,7 +19008,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 5,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19020,7 +19025,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 6,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19036,7 +19042,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 7,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19052,7 +19059,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 8,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19068,7 +19076,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 9,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19084,7 +19093,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 10,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19100,7 +19110,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 11,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19116,7 +19127,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 12,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19132,7 +19144,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 13,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19148,7 +19161,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 14,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19164,7 +19178,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 15,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19180,7 +19195,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 16,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19196,7 +19212,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 17,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19212,7 +19229,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 18,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19228,7 +19246,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 19,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19244,7 +19263,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 20,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19260,7 +19280,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 21,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19276,7 +19297,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 22,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19292,7 +19314,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 23,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -19308,7 +19331,8 @@ $result_sectioning{'at_commands_in_refs'} = {
           'number' => 24,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -19317,75 +19341,99 @@ $result_sectioning{'at_commands_in_refs'} = {
 };
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[0];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[2]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[1];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[2]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[2]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[1];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[2]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[3]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[2];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[3]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[3]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[2];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[3]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[4]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[3];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[4]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[4]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[3];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[4]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[5]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[4];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[5]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[5]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[4];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[5]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[6]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[5];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[6]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[6]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[5];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[6]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[7]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[6];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[7]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[7]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[6];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[7]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[8]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[7];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[8]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[8]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[7];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[8]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[9]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[8];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[9]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[9]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[8];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[9]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[10]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[9];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[10]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[10]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[9];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[10]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[11]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[10];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[11]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[11]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[10];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[11]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[12]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[11];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[12]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[12]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[11];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[12]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[13]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[12];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[13]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[13]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[12];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[13]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[14]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[13];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[14]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[14]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[13];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[14]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[15]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[14];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[15]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[15]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[14];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[15]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[16]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[15];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[16]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[16]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[15];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[16]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[17]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[16];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[17]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[17]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[16];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[17]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[18]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[17];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[18]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[18]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[17];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[18]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[19]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[18];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[19]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[19]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[18];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[19]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[20]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[19];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[20]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[20]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[19];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[20]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[21]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[20];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[21]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[21]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[20];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[21]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[22]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[21];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[22]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[22]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[21];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[22]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[23]{'section_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[22];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[23]{'section_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[23]{'toplevel_prev'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[22];
+$result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_childs'}[23]{'toplevel_up'} = $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'at_commands_in_refs'};
 
 $result_nodes{'at_commands_in_refs'} = {

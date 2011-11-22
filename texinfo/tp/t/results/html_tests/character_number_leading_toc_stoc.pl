@@ -285,7 +285,8 @@ $result_sectioning{'character_number_leading_toc_stoc'} = {
           'level' => 1,
           'number' => 1,
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'unnumbered',
@@ -301,7 +302,8 @@ $result_sectioning{'character_number_leading_toc_stoc'} = {
           ],
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -310,10 +312,12 @@ $result_sectioning{'character_number_leading_toc_stoc'} = {
 };
 $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0];
 $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0];
 $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[0]{'section_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[1];
 $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0];
 $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0];
 $result_sectioning{'character_number_leading_toc_stoc'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'character_number_leading_toc_stoc'};
 
 $result_errors{'character_number_leading_toc_stoc'} = [];

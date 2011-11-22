@@ -455,7 +455,17 @@ $result_menus{'lone_Top_node'} = {
 };
 $result_menus{'lone_Top_node'}{'menu_child'}{'menu_up'} = $result_menus{'lone_Top_node'};
 
-$result_errors{'lone_Top_node'} = [];
+$result_errors{'lone_Top_node'} = [
+  {
+    'error_line' => ':7: warning: Node `Top\' is up for `First\' in menu but not in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Node `Top\' is up for `First\' in menu but not in sectioning',
+    'type' => 'warning'
+  }
+];
 
 
 $result_elements{'lone_Top_node'} = [

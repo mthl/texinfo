@@ -817,7 +817,8 @@ $result_sectioning{'section_below_unnumbered'} = {
             }
           ],
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -827,6 +828,7 @@ $result_sectioning{'section_below_unnumbered'} = {
 $result_sectioning{'section_below_unnumbered'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'section_below_unnumbered'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'section_below_unnumbered'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'section_below_unnumbered'}{'section_childs'}[0];
 $result_sectioning{'section_below_unnumbered'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'section_below_unnumbered'}{'section_childs'}[0];
+$result_sectioning{'section_below_unnumbered'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'section_below_unnumbered'}{'section_childs'}[0];
 $result_sectioning{'section_below_unnumbered'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'section_below_unnumbered'};
 
 $result_nodes{'section_below_unnumbered'} = {

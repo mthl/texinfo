@@ -631,7 +631,17 @@ $result_menus{'chapter_node_before_and_after_part'} = {
 };
 $result_menus{'chapter_node_before_and_after_part'}{'menu_child'}{'menu_up'} = $result_menus{'chapter_node_before_and_after_part'};
 
-$result_errors{'chapter_node_before_and_after_part'} = [];
+$result_errors{'chapter_node_before_and_after_part'} = [
+  {
+    'error_line' => ':11: warning: Node `Top\' is up for `after\' in menu but not in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => 'Node `Top\' is up for `after\' in menu but not in sectioning',
+    'type' => 'warning'
+  }
+];
 
 
 

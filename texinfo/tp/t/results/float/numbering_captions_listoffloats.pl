@@ -7859,7 +7859,8 @@ $result_sectioning{'numbering_captions_listoffloats'} = {
             }
           ],
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'unnumbered',
@@ -7889,7 +7890,8 @@ $result_sectioning{'numbering_captions_listoffloats'} = {
           ],
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -7920,7 +7922,8 @@ $result_sectioning{'numbering_captions_listoffloats'} = {
           ],
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'appendix',
@@ -7936,7 +7939,8 @@ $result_sectioning{'numbering_captions_listoffloats'} = {
           'number' => 'A',
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'unnumbered',
@@ -7951,7 +7955,8 @@ $result_sectioning{'numbering_captions_listoffloats'} = {
           'level' => 1,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -7961,20 +7966,25 @@ $result_sectioning{'numbering_captions_listoffloats'} = {
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
+$result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[0]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[1];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[0];
+$result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[2]{'section_childs'}[0]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[2];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[2]{'section_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[1];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[2]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[2]{'toplevel_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[1];
+$result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[2]{'toplevel_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[3]{'section_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[2];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[3]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[3]{'toplevel_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[2];
+$result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[3]{'toplevel_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[4]{'section_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[3];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[4]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[4]{'toplevel_prev'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[3];
+$result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_childs'}[4]{'toplevel_up'} = $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0];
 $result_sectioning{'numbering_captions_listoffloats'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'numbering_captions_listoffloats'};
 
 $result_nodes{'numbering_captions_listoffloats'} = {

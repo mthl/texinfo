@@ -375,6 +375,48 @@ $result_trees{'two_nodes_at_the_end'} = [
               {
                 'parent' => {},
                 'text' => 'chapter 1'
+              }
+            ],
+            'parent' => {},
+            'type' => 'misc_line_arg'
+          },
+          {
+            'contents' => [
+              {
+                'text' => ' ',
+                'type' => 'empty_spaces_before_argument'
+              },
+              {
+                'parent' => {},
+                'text' => 'node after chapter 1'
+              }
+            ],
+            'parent' => {},
+            'type' => 'misc_line_arg'
+          },
+          {
+            'contents' => [
+              {
+                'text' => ' ',
+                'type' => 'empty_spaces_before_argument'
+              },
+              {
+                'parent' => {},
+                'text' => 'Top'
+              }
+            ],
+            'parent' => {},
+            'type' => 'misc_line_arg'
+          },
+          {
+            'contents' => [
+              {
+                'text' => ' ',
+                'type' => 'empty_spaces_before_argument'
+              },
+              {
+                'parent' => {},
+                'text' => 'Top'
               },
               {
                 'parent' => {},
@@ -397,6 +439,24 @@ $result_trees{'two_nodes_at_the_end'} = [
             {
               'node_content' => [],
               'normalized' => 'chapter-1'
+            },
+            {
+              'node_content' => [
+                {}
+              ],
+              'normalized' => 'node-after-chapter-1'
+            },
+            {
+              'node_content' => [
+                {}
+              ],
+              'normalized' => 'Top'
+            },
+            {
+              'node_content' => [
+                {}
+              ],
+              'normalized' => 'Top'
             }
           ],
           'normalized' => 'chapter-1'
@@ -636,10 +696,19 @@ $result_trees{'two_nodes_at_the_end'}[0]{'extra'}{'section'} = $result_trees{'tw
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[1];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[2];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[3];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[3];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'extra'}{'node_content'};
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[2]{'contents'}[1];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'args'}[0];
@@ -680,7 +749,7 @@ $result_texis{'two_nodes_at_the_end'} = '@node Top
 * node after chapter 2::
 @end menu
 
-@node chapter 1
+@node chapter 1, node after chapter 1, Top, Top
 @chapter chapter c1
 
 @node node after chapter 1
@@ -730,7 +799,8 @@ $result_sectioning{'two_nodes_at_the_end'} = {
           'level' => 1,
           'number' => 1,
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -739,6 +809,7 @@ $result_sectioning{'two_nodes_at_the_end'} = {
 };
 $result_sectioning{'two_nodes_at_the_end'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'two_nodes_at_the_end'}{'section_childs'}[0];
 $result_sectioning{'two_nodes_at_the_end'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'two_nodes_at_the_end'}{'section_childs'}[0];
+$result_sectioning{'two_nodes_at_the_end'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'two_nodes_at_the_end'}{'section_childs'}[0];
 $result_sectioning{'two_nodes_at_the_end'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'two_nodes_at_the_end'};
 
 $result_nodes{'two_nodes_at_the_end'} = {

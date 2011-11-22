@@ -1892,6 +1892,15 @@ $result_errors{'menutextorder'} = [
     'macro' => '',
     'text' => 'No node following `sub2\' in menu, but `sub3\' follows in sectioning',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':35: warning: Node `sub2\' is next for `sub3\' in menu but not in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 35,
+    'macro' => '',
+    'text' => 'Node `sub2\' is next for `sub3\' in menu but not in sectioning',
+    'type' => 'warning'
   }
 ];
 

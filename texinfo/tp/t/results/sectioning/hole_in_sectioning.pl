@@ -366,7 +366,8 @@ $result_sectioning{'hole_in_sectioning'} = {
             }
           ],
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -379,6 +380,7 @@ $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0]{'section_childs'}[
 $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0];
 $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0];
+$result_sectioning{'hole_in_sectioning'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0];
 $result_sectioning{'hole_in_sectioning'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'hole_in_sectioning'};
 
 $result_errors{'hole_in_sectioning'} = [

@@ -680,6 +680,54 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
         }
       ],
       'cmdname' => 'node',
+      'contents' => [],
+      'extra' => {
+        'node_content' => [
+          {}
+        ],
+        'nodes_manuals' => [
+          {
+            'node_content' => [],
+            'normalized' => 'Top'
+          }
+        ],
+        'normalized' => 'Top'
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 19,
+        'macro' => ''
+      },
+      'parent' => {}
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'top'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'top',
       'contents' => [
         {
           'parent' => {},
@@ -767,7 +815,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 24,
+                'line_nr' => 25,
                 'macro' => ''
               },
               'parent' => {},
@@ -808,7 +856,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 25,
+                'line_nr' => 26,
                 'macro' => ''
               },
               'parent' => {}
@@ -819,7 +867,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 23,
+            'line_nr' => 24,
             'macro' => ''
           },
           'parent' => {}
@@ -832,20 +880,14 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
+        'misc_content' => [
           {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top'
+        ]
       },
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 19,
+        'line_nr' => 20,
         'macro' => ''
       },
       'parent' => {}
@@ -893,7 +935,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
       },
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 27,
+        'line_nr' => 28,
         'macro' => ''
       },
       'parent' => {}
@@ -974,7 +1016,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 31,
+            'line_nr' => 32,
             'macro' => ''
           },
           'parent' => {}
@@ -994,7 +1036,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
       'level' => 1,
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 28,
+        'line_nr' => 29,
         'macro' => ''
       },
       'number' => 1,
@@ -1118,32 +1160,6 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'};
@@ -1152,25 +1168,58 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'args'}[0];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'args'}[0];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'extra'}{'node_content'};
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'};
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0];
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3];
-$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'extra'}{'node_content'};
 $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'};
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'args'}[0];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'printindex_index_entry_in_copying_no_insertcopying'}{'contents'}[4]{'parent'} = $result_trees{'printindex_index_entry_in_copying_no_insertcopying'};
 
 $result_texis{'printindex_index_entry_in_copying_no_insertcopying'} = '@copying
 
@@ -1191,6 +1240,7 @@ Defun
 @end copying
 
 @node Top
+@top top
 
 Top.
 
@@ -1208,6 +1258,8 @@ Top.
 
 
 $result_texts{'printindex_index_entry_in_copying_no_insertcopying'} = '
+top
+***
 
 Top.
 
@@ -1221,29 +1273,54 @@ Top.
 ';
 
 $result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'} = {
-  'level' => 0,
+  'level' => -1,
   'section_childs' => [
     {
-      'cmdname' => 'chapter',
+      'cmdname' => 'top',
       'extra' => {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'chapter'
+            'normalized' => 'Top'
           }
         }
       },
-      'level' => 1,
-      'number' => 1,
+      'level' => 0,
+      'section_childs' => [
+        {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'chapter'
+              }
+            }
+          },
+          'level' => 1,
+          'number' => 1,
+          'section_up' => {},
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
+        }
+      ],
       'section_up' => {}
     }
   ]
 };
+$result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'}{'section_childs'}[0];
+$result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'}{'section_childs'}[0];
+$result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'}{'section_childs'}[0];
 $result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'};
 
 $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'} = {
   'cmdname' => 'node',
   'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
     'normalized' => 'Top'
   },
   'menu_child' => {
@@ -1332,6 +1409,9 @@ xftable xitem
 
 File: ,  Node: Top,  Next: chapter,  Up: (dir)
 
+top
+***
+
 Top.
 
 * Menu:
@@ -1352,7 +1432,7 @@ File: ,  Node: chapter,  Prev: Top,  Up: Top
 
 Tag Table:
 Node: Top145
-Node: chapter223
+Node: chapter232
 
 End Tag Table
 ';

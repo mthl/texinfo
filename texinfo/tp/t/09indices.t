@@ -169,6 +169,7 @@ Defun
 @end copying
 
 @node Top
+@top top
 
 Top.
 @insertcopying
@@ -205,6 +206,7 @@ Defun
 @end copying
 
 @node Top
+@top top
 
 Top.
 
@@ -272,6 +274,7 @@ In footnote
 @end copying
 
 @node Top
+@top top
 
 Top.
 @insertcopying

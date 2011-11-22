@@ -9,6 +9,7 @@ my @test_cases = (
 Para @image{hh}.
 
 @node Top
+@top top
 
 @image{B}
 

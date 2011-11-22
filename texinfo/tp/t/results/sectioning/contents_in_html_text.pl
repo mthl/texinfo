@@ -308,7 +308,8 @@ $result_sectioning{'contents_in_html_text'} = {
             }
           ],
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -317,7 +318,8 @@ $result_sectioning{'contents_in_html_text'} = {
           'number' => 2,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -327,9 +329,11 @@ $result_sectioning{'contents_in_html_text'} = {
 $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
 $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
 $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
 $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
 $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents_in_html_text'};
 
 $result_errors{'contents_in_html_text'} = [];

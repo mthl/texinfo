@@ -377,7 +377,8 @@ $result_sectioning{'index_below'} = {
             }
           ],
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -387,6 +388,7 @@ $result_sectioning{'index_below'} = {
 $result_sectioning{'index_below'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'index_below'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'index_below'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'index_below'}{'section_childs'}[0];
 $result_sectioning{'index_below'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'index_below'}{'section_childs'}[0];
+$result_sectioning{'index_below'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'index_below'}{'section_childs'}[0];
 $result_sectioning{'index_below'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'index_below'};
 
 $result_errors{'index_below'} = [];

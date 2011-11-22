@@ -980,7 +980,8 @@ $result_sectioning{'semi_auto'} = {
             }
           ],
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -992,6 +993,7 @@ $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'secti
 $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'semi_auto'}{'section_childs'}[0];
 $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'semi_auto'}{'section_childs'}[0];
+$result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'semi_auto'}{'section_childs'}[0];
 $result_sectioning{'semi_auto'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'semi_auto'};
 
 $result_nodes{'semi_auto'} = {
@@ -1143,6 +1145,15 @@ $result_menus{'semi_auto'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus
 $result_menus{'semi_auto'}{'menu_child'}{'menu_up'} = $result_menus{'semi_auto'};
 
 $result_errors{'semi_auto'} = [
+  {
+    'error_line' => ':9: warning: Node `Section non auto\' is next for `Chap1\' in menu but not in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => 'Node `Section non auto\' is next for `Chap1\' in menu but not in sectioning',
+    'type' => 'warning'
+  },
   {
     'error_line' => ':16: warning: No node following `Sec in chapter\' in menu, but `Section non auto\' follows in sectioning
 ',

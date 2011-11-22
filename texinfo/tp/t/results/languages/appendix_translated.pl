@@ -286,7 +286,8 @@ $result_sectioning{'appendix_translated'} = {
           'level' => 1,
           'number' => 'A',
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -295,6 +296,7 @@ $result_sectioning{'appendix_translated'} = {
 };
 $result_sectioning{'appendix_translated'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'appendix_translated'}{'section_childs'}[0];
 $result_sectioning{'appendix_translated'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'appendix_translated'}{'section_childs'}[0];
+$result_sectioning{'appendix_translated'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'appendix_translated'}{'section_childs'}[0];
 $result_sectioning{'appendix_translated'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'appendix_translated'};
 
 $result_nodes{'appendix_translated'} = {

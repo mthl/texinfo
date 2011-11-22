@@ -160,6 +160,7 @@ my $max_level = $command_structuring_level{'subsubsection'};
 # 'section_next'
 # 'toplevel_next'
 # 'toplevel_prev'
+# 'toplevel_up'
 sub sectioning_structure($$)
 {
   my $self = shift;
@@ -325,6 +326,9 @@ sub sectioning_structure($$)
           $content->{'toplevel_prev'} = $previous_toplevel;
         }
         $previous_toplevel = $content;
+        if ($section_top and $content ne $section_top) {
+          $content->{'toplevel_up'} = $section_top;
+        }
       }
 
       if ($self->{'DEBUG'}) {
@@ -441,35 +445,72 @@ sub nodes_tree ($)
     if ($automatic_directions) {
       if ($node->{'extra'}->{'normalized'} ne 'Top') {
         foreach my $direction (@node_directions) {
-          next if ($node->{'node_'.$direction});
+          # prev already defined for the node first Top node menu entry
+          if ($direction eq 'prev' and $node->{'node_'.$direction}
+              and $node->{'node_'.$direction}->{'extra'}
+              and $node->{'node_'.$direction}->{'extra'}->{'normalized'}
+              and $node->{'node_'.$direction}->{'extra'}->{'normalized'} eq 'Top') {
+            #print STDERR "node $node ". Texinfo::Parser::_node_extra_to_texi($node->{'extra'}).", $direction already exists: ".Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'})."\n";
+            next;
+          }
+          #die if ($node->{'node_'.$direction});
           if ($node->{'extra'}->{'associated_section'}) {
             my $section = $node->{'extra'}->{'associated_section'};
-            if ($section->{'section_'.$direction}
-               and $section->{'section_'.$direction}->{'extra'}
-               and $section->{'section_'.$direction}->{'extra'}->{'associated_node'}) {
-              $node->{'node_'.$direction} 
-                = $section->{'section_'.$direction}->{'extra'}->{'associated_node'};
-              next;
+            # prefer the section associated to the part for node directions.
+            if ($section->{'extra'}->{'part_associated_section'}) {
+              $section = $section->{'extra'}->{'part_associated_section'};
             }
-          } 
-          if ($node->{'menu_'.$direction}) {
+            # use toplevel to go through parts.  But not for @top as prev
+            # or next.
+            foreach my $direction_base ('section', 'toplevel') {
+              if ($section->{$direction_base.'_'.$direction}
+                 and $section->{$direction_base.'_'.$direction}->{'extra'}
+                 and ($direction_base ne 'toplevel'
+                      or $direction eq 'up'
+                      or $section->{$direction_base.'_'.$direction}->{'cmdname'} ne 'top')
+                 and $section->{$direction_base.'_'.$direction}->{'extra'}->{'associated_node'}) {
+                $node->{'node_'.$direction} 
+                  = $section->{$direction_base.'_'.$direction}->{'extra'}->{'associated_node'};
+                last;
+              }
+            }
+            next if ($node->{'node_'.$direction});
+          }
+          if ($node->{'menu_'.$direction} 
+              and !$node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
+            if ($self->{'SHOW_MENU'} and $node->{'extra'}->{'associated_section'}) {
+              $self->line_warn(sprintf($self->
+                  __("Node `%s' is %s for `%s' in menu but not in sectioning"), 
+                Texinfo::Parser::_node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}),
+                $direction,
+                Texinfo::Parser::_node_extra_to_texi($node->{'extra'}), 
+                  ), 
+                $node->{'line_nr'});
+            }
             $node->{'node_'.$direction} = $node->{'menu_'.$direction};
           }
         }
-        if ($node->{'node_next'} and $self->{'SHOW_MENU'}) {
-          if (!defined($node->{'menu_next'})) {
-            $self->line_warn(sprintf($self->
-               __("No node following `%s' in menu, but `%s' follows in sectioning"), 
-             Texinfo::Parser::_node_extra_to_texi($node->{'extra'}), 
-             Texinfo::Parser::_node_extra_to_texi($node->{'node_next'}->{'extra'})), 
-             $node->{'line_nr'})
-          } elsif ($node->{'menu_next'} ne $node->{'node_next'}) {
-            $self->line_warn(sprintf($self->
-               __("Node following `%s' in menu `%s' and in sectioning `%s' differ"), 
-            Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
-            Texinfo::Parser::_node_extra_to_texi($node->{'menu_next'}->{'extra'}), 
-            Texinfo::Parser::_node_extra_to_texi($node->{'node_next'}->{'extra'})),
-            $node->{'line_nr'})
+        if ($self->{'SHOW_MENU'}) {
+          if ($node->{'node_next'}) {
+            if (!defined($node->{'menu_next'})) {
+              $self->line_warn(sprintf($self->
+                 __("No node following `%s' in menu, but `%s' follows in sectioning"), 
+               Texinfo::Parser::_node_extra_to_texi($node->{'extra'}), 
+               Texinfo::Parser::_node_extra_to_texi($node->{'node_next'}->{'extra'})), 
+               $node->{'line_nr'});
+            } elsif ($node->{'menu_next'} ne $node->{'node_next'}) {
+              $self->line_warn(sprintf($self->
+                 __("Node following `%s' in menu `%s' and in sectioning `%s' differ"), 
+              Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
+              Texinfo::Parser::_node_extra_to_texi($node->{'menu_next'}->{'extra'}), 
+              Texinfo::Parser::_node_extra_to_texi($node->{'node_next'}->{'extra'})),
+              $node->{'line_nr'});
+            }
+          #} elsif (defined($node->{'menu_next'})) {
+          #  $self->line_warn(sprintf($self->
+          #    __("Node following `%s' in menu, nothing follows in sectioning"), 
+          #    Texinfo::Parser::_node_extra_to_texi($node->{'extra'})), 
+          #    $node->{'line_nr'});
           }
         }
       } else {
@@ -1405,7 +1446,9 @@ The up, previous and next sectioning elements.
 
 =item toplevel_prev
 
-The next and previous sectioning elements of toplevel sectioning
+=item toplevel_up
+
+The next and previous and up sectioning elements of toplevel sectioning
 elements (like C<@top>, C<@chapter>, C<@appendix>), not taking into 
 account C<@part> elements.
 

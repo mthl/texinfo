@@ -352,7 +352,7 @@ $section_in_unnumbered_text
 * node after chapter 2::
 @end menu
 
-@node chapter 1
+@node chapter 1, node after chapter 1, Top, Top
 @chapter chapter c1
 
 @node node after chapter 1
@@ -755,7 +755,7 @@ Ref to footnote anchor
 @node a node after part, chapter, Top, Top
 After a node after part
 
-@node chapter
+@node chapter, a node after part,, Top
 @chapter chapter 
 ', {'test_split' => 'section'}],
 ['node_part_chapter_after_top',
@@ -865,6 +865,7 @@ $section_in_unnumbered_text
 '],
 ['next_in_menu_is_below',
 '@node Top
+@top top
 
 @menu
 * chapter::
@@ -970,6 +971,7 @@ my $complex_case = '@node Top,First node,(dir)
 * between node::
 * Second node::   node 2
 * Third node unnumbered:: unnumbered in Top menu
+* continuity::
 * Last node no description::
 @end menu
 
@@ -1037,8 +1039,13 @@ second node chapter text.
 
 unnumbered chapter text.
 
+@node continuity,  Third node unnumbered, Last node no description, Top
+@unnumbered unnumbered continuity
 
-@node Last node no description,,Third node unnumbered,Top
+Unumbered and node needed for continuity between automatic 
+directions and lone node.
+
+@node Last node no description,,continuity,Top
 
 @contents
 @bye

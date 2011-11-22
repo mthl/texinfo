@@ -654,7 +654,8 @@ $result_sectioning{'value_node_directions'} = {
           'level' => 1,
           'number' => 1,
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -670,7 +671,8 @@ $result_sectioning{'value_node_directions'} = {
           'number' => 2,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -679,9 +681,11 @@ $result_sectioning{'value_node_directions'} = {
 };
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
+$result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[0];
+$result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_up'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_node_directions'};
 
 $result_nodes{'value_node_directions'} = {

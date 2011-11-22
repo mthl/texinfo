@@ -58,6 +58,7 @@ A para.
 '],
 ['text_before_node',
 '@node Top
+@top top
 
 @menu
 * chapter node::

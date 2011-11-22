@@ -132,6 +132,7 @@ Menu comment
 '],
 ['detailmenu_on_subnodes',
 '@node Top
+@top top
 
 @menu
 * chapter::

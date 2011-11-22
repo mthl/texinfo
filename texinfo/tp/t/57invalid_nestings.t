@@ -193,6 +193,7 @@ in quotation}
 '],
 ['style_not_closed_no_newline_root_commands',
 '@node Top
+@top top
 
 @menu
 * chapter::
@@ -207,6 +208,7 @@ in quotation}
 '],
 ['style_not_closed_root_commands',
 '@node Top
+@top top
 
 @menu
 * chapter::

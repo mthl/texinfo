@@ -888,12 +888,30 @@ $result_errors{'section_chapter_before_top_nodes'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':1: warning: Node `chapter node\' is up for `section node\' in menu but not in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Node `chapter node\' is up for `section node\' in menu but not in sectioning',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':1: warning: No node following `section node\' in menu, but `chapter node\' follows in sectioning
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'No node following `section node\' in menu, but `chapter node\' follows in sectioning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: Node `Top\' is up for `chapter node\' in menu but not in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Node `Top\' is up for `chapter node\' in menu but not in sectioning',
     'type' => 'warning'
   },
   {

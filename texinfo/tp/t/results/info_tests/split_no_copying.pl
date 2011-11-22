@@ -567,7 +567,8 @@ $result_sectioning{'split_no_copying'} = {
           'level' => 1,
           'number' => 1,
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -576,6 +577,7 @@ $result_sectioning{'split_no_copying'} = {
 };
 $result_sectioning{'split_no_copying'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'split_no_copying'}{'section_childs'}[0];
 $result_sectioning{'split_no_copying'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'split_no_copying'}{'section_childs'}[0];
+$result_sectioning{'split_no_copying'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'split_no_copying'}{'section_childs'}[0];
 $result_sectioning{'split_no_copying'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'split_no_copying'};
 
 $result_nodes{'split_no_copying'} = {

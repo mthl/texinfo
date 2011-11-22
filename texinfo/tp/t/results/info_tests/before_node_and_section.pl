@@ -1027,7 +1027,8 @@ $result_sectioning{'before_node_and_section'} = {
           'level' => 1,
           'number' => 1,
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -1036,6 +1037,7 @@ $result_sectioning{'before_node_and_section'} = {
 };
 $result_sectioning{'before_node_and_section'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'before_node_and_section'}{'section_childs'}[0];
 $result_sectioning{'before_node_and_section'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'before_node_and_section'}{'section_childs'}[0];
+$result_sectioning{'before_node_and_section'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'before_node_and_section'}{'section_childs'}[0];
 $result_sectioning{'before_node_and_section'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'before_node_and_section'};
 
 $result_nodes{'before_node_and_section'} = {

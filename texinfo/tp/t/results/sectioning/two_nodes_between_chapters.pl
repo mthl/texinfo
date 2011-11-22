@@ -867,7 +867,8 @@ $result_sectioning{'two_nodes_between_chapters'} = {
           'level' => 1,
           'number' => 1,
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -883,7 +884,8 @@ $result_sectioning{'two_nodes_between_chapters'} = {
           'number' => 2,
           'section_prev' => {},
           'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
         }
       ],
       'section_up' => {}
@@ -892,9 +894,11 @@ $result_sectioning{'two_nodes_between_chapters'} = {
 };
 $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0];
 $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0];
+$result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0];
 $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0];
 $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[0];
+$result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_up'} = $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0];
 $result_sectioning{'two_nodes_between_chapters'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'two_nodes_between_chapters'};
 
 $result_nodes{'two_nodes_between_chapters'} = {
