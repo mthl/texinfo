@@ -578,7 +578,17 @@ $result_menus{'part_node_before_top'} = {
 };
 $result_menus{'part_node_before_top'}{'menu_child'}{'menu_up'} = $result_menus{'part_node_before_top'};
 
-$result_errors{'part_node_before_top'} = [];
+$result_errors{'part_node_before_top'} = [
+  {
+    'error_line' => ':2: warning: No sectioning command associated with @part
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'No sectioning command associated with @part',
+    'type' => 'warning'
+  }
+];
 
 
 $result_elements{'part_node_before_top'} = [

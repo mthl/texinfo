@@ -179,7 +179,17 @@ $result_sectioning{'part_before_top'}{'section_childs'}[0]{'section_up'} = $resu
 $result_sectioning{'part_before_top'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'part_before_top'}{'section_childs'}[0];
 $result_sectioning{'part_before_top'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'part_before_top'};
 
-$result_errors{'part_before_top'} = [];
+$result_errors{'part_before_top'} = [
+  {
+    'error_line' => ':1: warning: No sectioning command associated with @part
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'No sectioning command associated with @part',
+    'type' => 'warning'
+  }
+];
 
 
 $result_elements{'part_before_top'} = [

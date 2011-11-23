@@ -10,16 +10,11 @@ Internationalize 'error-->'.  FIXME in the code.
 In plaintext output internationalize definition lines like
 gdt(' -- {category} of {class}: {type} {name} {arguments}')
 
-add warning msg for @part if there is an associated node 
-or if there is no chapter like command.
+add warning msg for @part if there is an associated node. 
 
 
 Bugs
 ====
-
-Other positive, check they are all in tests.
-Old Texinfo, use of subheading and explicit direction.
-a intercalar node
 
 
 Delayed bugs

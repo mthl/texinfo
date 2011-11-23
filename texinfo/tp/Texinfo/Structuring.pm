@@ -329,6 +329,11 @@ sub sectioning_structure($$)
         if ($section_top and $content ne $section_top) {
           $content->{'toplevel_up'} = $section_top;
         }
+      } elsif ($content->{'cmdname'} eq 'part' 
+               and !$content->{'extra'}->{'part_associated_section'}) {
+        $self->line_warn(sprintf($self->__(
+            "No sectioning command associated with \@%s"),
+                $content->{'cmdname'}), $content->{'line_nr'});
       }
 
       if ($self->{'DEBUG'}) {

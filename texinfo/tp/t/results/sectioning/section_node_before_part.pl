@@ -273,6 +273,15 @@ $result_errors{'section_node_before_part'} = [
     'macro' => '',
     'text' => 'No chapter-level command before @part',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: warning: No sectioning command associated with @part
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'No sectioning command associated with @part',
+    'type' => 'warning'
   }
 ];
 
