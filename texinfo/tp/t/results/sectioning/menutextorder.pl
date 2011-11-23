@@ -1903,12 +1903,12 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: Node following `sub1\' in menu `sub3\' and in sectioning `sub2\' differ
+    'error_line' => ':29: warning: Node next `sub1\' in menu `sub3\' and in sectioning `sub2\' differ
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => 'Node following `sub1\' in menu `sub3\' and in sectioning `sub2\' differ',
+    'text' => 'Node next `sub1\' in menu `sub3\' and in sectioning `sub2\' differ',
     'type' => 'warning'
   },
   {
@@ -1921,12 +1921,30 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':32: warning: Node prev `sub2\' in menu `sub3\' and in sectioning `sub1\' differ
+',
+    'file_name' => '',
+    'line_nr' => 32,
+    'macro' => '',
+    'text' => 'Node prev `sub2\' in menu `sub3\' and in sectioning `sub1\' differ',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':35: warning: Node `sub2\' is next for `sub3\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
     'text' => 'Node `sub2\' is next for `sub3\' in menu but not in sectioning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':35: warning: Node prev `sub3\' in menu `sub1\' and in sectioning `sub2\' differ
+',
+    'file_name' => '',
+    'line_nr' => 35,
+    'macro' => '',
+    'text' => 'Node prev `sub3\' in menu `sub1\' and in sectioning `sub2\' differ',
     'type' => 'warning'
   }
 ];

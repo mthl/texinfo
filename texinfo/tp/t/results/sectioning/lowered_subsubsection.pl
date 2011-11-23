@@ -2135,6 +2135,15 @@ $result_errors{'lowered_subsubsection'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':41: warning: Node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ
+',
+    'file_name' => '',
+    'line_nr' => 41,
+    'macro' => '',
+    'text' => 'Node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':22: Node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target
 ',
     'file_name' => '',

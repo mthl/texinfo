@@ -1310,12 +1310,12 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: Node following `Other node\' in menu `(manual)node\' and in sectioning `node\' differ
+    'error_line' => ':15: warning: Node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'Node following `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
+    'text' => 'Node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
     'type' => 'warning'
   },
   {

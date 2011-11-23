@@ -1029,7 +1029,17 @@ $result_menus{'two_nodes_between_chapters'}{'menu_child'}{'menu_next'}{'menu_pre
 $result_menus{'two_nodes_between_chapters'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'two_nodes_between_chapters'};
 $result_menus{'two_nodes_between_chapters'}{'menu_child'}{'menu_up'} = $result_menus{'two_nodes_between_chapters'};
 
-$result_errors{'two_nodes_between_chapters'} = [];
+$result_errors{'two_nodes_between_chapters'} = [
+  {
+    'error_line' => ':15: warning: Node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => 'Node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ',
+    'type' => 'warning'
+  }
+];
 
 
 $result_elements{'two_nodes_between_chapters'} = [

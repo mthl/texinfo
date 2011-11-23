@@ -450,10 +450,8 @@ sub nodes_tree ($)
               and $node->{'node_'.$direction}->{'extra'}
               and $node->{'node_'.$direction}->{'extra'}->{'normalized'}
               and $node->{'node_'.$direction}->{'extra'}->{'normalized'} eq 'Top') {
-            #print STDERR "node $node ". Texinfo::Parser::_node_extra_to_texi($node->{'extra'}).", $direction already exists: ".Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'})."\n";
             next;
           }
-          #die if ($node->{'node_'.$direction});
           if ($node->{'extra'}->{'associated_section'}) {
             my $section = $node->{'extra'}->{'associated_section'};
             # prefer the section associated to the part for node directions.
@@ -474,18 +472,33 @@ sub nodes_tree ($)
                 last;
               }
             }
+            # if set, a direction was found using sections.  Check consistency
+            # with menu before going to the next direction
             if ($node->{'node_'.$direction}) {
-              if ($self->{'SHOW_MENU'} and !$node->{'menu_'.$direction}) {
-                $self->line_warn(sprintf($self->
-                  __("Node `%s' is %s for `%s' in sectioning but not in menu"), 
-                Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
-                $direction,
-                Texinfo::Parser::_node_extra_to_texi($node->{'extra'})),
-                $node->{'line_nr'});
+              if ($self->{'SHOW_MENU'}) {
+                if (!$node->{'menu_'.$direction}) {
+                  $self->line_warn(sprintf($self->
+                    __("Node `%s' is %s for `%s' in sectioning but not in menu"), 
+                  Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
+                  $direction,
+                  Texinfo::Parser::_node_extra_to_texi($node->{'extra'})),
+                  $node->{'line_nr'});
+                } elsif ($node->{'menu_'.$direction} ne $node->{'node_'.$direction}) {
+                  $self->line_warn(sprintf($self->
+                    __("Node %s `%s' in menu `%s' and in sectioning `%s' differ"), 
+                    $direction,
+                    Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
+                    Texinfo::Parser::_node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}), 
+                    Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'})),
+                    $node->{'line_nr'});
+                }
               }
               next;
             }
           }
+          # no direction was found using sections, use menus.  This allows
+          # using only automatic direction for manuals without sectioning
+          # commands.
           if ($node->{'menu_'.$direction} 
               and !$node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
             if ($self->{'SHOW_MENU'} and $node->{'extra'}->{'associated_section'}) {
@@ -498,19 +511,6 @@ sub nodes_tree ($)
                 $node->{'line_nr'});
             }
             $node->{'node_'.$direction} = $node->{'menu_'.$direction};
-          }
-        }
-        if ($self->{'SHOW_MENU'}) {
-          if ($node->{'node_next'}) {
-            if ($node->{'menu_next'}
-                and $node->{'menu_next'} ne $node->{'node_next'}) {
-              $self->line_warn(sprintf($self->
-                 __("Node following `%s' in menu `%s' and in sectioning `%s' differ"), 
-              Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
-              Texinfo::Parser::_node_extra_to_texi($node->{'menu_next'}->{'extra'}), 
-              Texinfo::Parser::_node_extra_to_texi($node->{'node_next'}->{'extra'})),
-              $node->{'line_nr'});
-            }
           }
         }
       } else {
