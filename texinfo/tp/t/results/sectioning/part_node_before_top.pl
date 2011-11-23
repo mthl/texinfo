@@ -580,6 +580,15 @@ $result_menus{'part_node_before_top'}{'menu_child'}{'menu_up'} = $result_menus{'
 
 $result_errors{'part_node_before_top'} = [
   {
+    'error_line' => ':2: warning: @node precedes @part, but part are not associated with nodes
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@node precedes @part, but part are not associated with nodes',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':2: warning: No sectioning command associated with @part
 ',
     'file_name' => '',

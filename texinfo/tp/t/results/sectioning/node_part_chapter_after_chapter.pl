@@ -911,7 +911,17 @@ $result_menus{'node_part_chapter_after_chapter'}{'menu_child'}{'menu_next'}{'men
 $result_menus{'node_part_chapter_after_chapter'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'node_part_chapter_after_chapter'};
 $result_menus{'node_part_chapter_after_chapter'}{'menu_child'}{'menu_up'} = $result_menus{'node_part_chapter_after_chapter'};
 
-$result_errors{'node_part_chapter_after_chapter'} = [];
+$result_errors{'node_part_chapter_after_chapter'} = [
+  {
+    'error_line' => ':14: warning: @node precedes @part, but part are not associated with nodes
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => '',
+    'text' => '@node precedes @part, but part are not associated with nodes',
+    'type' => 'warning'
+  }
+];
 
 
 $result_elements{'node_part_chapter_after_chapter'} = [

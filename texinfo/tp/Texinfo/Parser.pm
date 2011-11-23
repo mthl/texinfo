@@ -3024,6 +3024,11 @@ sub _end_line($$$)
         $self->{'current_section'} = $current;
       } elsif ($command eq 'part') {
         push @{$self->{'current_parts'}}, $current;
+        if ($self->{'current_node'}
+           and !$self->{'current_node'}->{'extra'}->{'associated_section'}) {
+          $self->line_warn (sprintf($self->__("\@node precedes \@%s, but part are not associated with nodes"), 
+              $command), $line_nr);
+        }
       }
     }
    # do that last in order to have the line processed if one of the above

@@ -10,8 +10,6 @@ Internationalize 'error-->'.  FIXME in the code.
 In plaintext output internationalize definition lines like
 gdt(' -- {category} of {class}: {type} {name} {arguments}')
 
-add warning msg for @part if there is an associated node. 
-
 
 Bugs
 ====
