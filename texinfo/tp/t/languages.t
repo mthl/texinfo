@@ -44,11 +44,20 @@ my @test_cases = (
 @contents
 '
 ],
+['command_translated',
+'@documentlanguage fr
+
+@node Top
+@top top @error{}
+
+@error{}
+'],
 );
 
 my %info_tests = (
   'multiple' => 1,
   'appendix_translated' => 1,
+  'command_translated' => 1,
 );
 
 foreach my $test (@test_cases) {

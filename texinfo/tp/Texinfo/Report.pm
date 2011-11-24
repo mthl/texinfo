@@ -248,7 +248,7 @@ sub gdt($$;$$)
     }
   }
   $locales =~ s/:$//;
-  #print STDERR "$locales $message\n";
+  # print STDERR "$locales $message\n";
   # END FIXME
 
   Locale::Messages::nl_putenv("LANGUAGE=$locales");
@@ -261,6 +261,7 @@ sub gdt($$;$$)
     # for strings substitution not a context for translation.
     $translation_result = Locale::Messages::pgettext($context, $message);
   }
+  #print STDERR "$locales $message ----> $translation_result\n";
 
   Locale::Messages::textdomain($messages_textdomain);
   # old perl complains 'Use of uninitialized value in scalar assignment'

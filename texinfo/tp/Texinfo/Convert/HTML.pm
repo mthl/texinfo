@@ -807,6 +807,28 @@ sub _translate_names($)
       }
     }
   }
+  if ($self->{'commands_translation'}) {
+    my %translated_commands;
+    foreach my $context ('normal', 'preformatted', 'string') {
+      foreach my $command (keys(%{$self->{'commands_translation'}->{$context}})) {
+        $translated_commands{$command} = 1; 
+        delete $self->{'commands_formatting'}->{$context}->{$command};
+        if (defined($self->{'commands_translation'}->{$context}->{$command})) {
+          $self->_new_document_context("translated command $command");
+          #my $command_tree 
+          $self->{'commands_formatting'}->{$context}->{$command} 
+           = $self->gdt($self->{'commands_translation'}->{$context}->{$command},
+                        undef, 'translated_text');
+          #$self->{'commands_formatting'}->{$context}->{$command} 
+          #  = $self->convert_tree($command_tree);
+          pop @{$self->{'document_context'}};
+        }
+      }
+    }
+    foreach my $command(keys(%translated_commands)) {
+      $self->_complete_commands_formatting($command);
+    }
+  }
 }
 
 # insert here name of icon images for buttons
@@ -1141,6 +1163,14 @@ foreach my $command (keys(%{$Texinfo::Convert::Converter::default_xml_commands_f
 $default_commands_formatting{'normal'}->{' '} = '&nbsp;';
 $default_commands_formatting{'normal'}->{"\t"} = '&nbsp;';
 $default_commands_formatting{'normal'}->{"\n"} = '&nbsp;';
+
+my %default_commands_translation;
+$default_commands_translation{'normal'}->{'error'} = 'error--&gt;';
+# This is used to have gettext pick up the chain to be translated
+if (0) {
+  my $not_existing;
+  $not_existing->gdt('error--&gt;');
+}
 
 #foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
 #  $default_commands_formatting{'preformatted'}->{$command} = 
@@ -4190,6 +4220,23 @@ sub _use_entity_is_entity($$)
   return 1 if ($text =~ /^&/ and $text =~ /;$/);
 }
 
+sub _complete_commands_formatting($$)
+{
+  my $self = shift;
+  my $command = shift;
+  if (!defined ($self->{'commands_formatting'}->{'normal'}->{$command})) {
+    $self->{'commands_formatting'}->{'normal'}->{$command} = '';
+  }
+  if (!defined ($self->{'commands_formatting'}->{'preformatted'}->{$command})) {
+    $self->{'commands_formatting'}->{'preformatted'}->{$command} = 
+      $self->{'commands_formatting'}->{'normal'}->{$command};
+  }
+  if (!defined ($self->{'commands_formatting'}->{'string'}->{$command})) {
+   $self->{'commands_formatting'}->{'string'}->{$command} = 
+      $self->{'commands_formatting'}->{'preformatted'}->{$command};
+  }
+}
+
 sub converter_initialize($)
 {
   my $self = shift;
@@ -4256,7 +4303,6 @@ sub converter_initialize($)
     }
   }
 
-  #foreach my $context (keys(%default_commands_formatting)) {
   foreach my $context ('normal', 'preformatted', 'string') {
     foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
       if (exists ($Texinfo::Config::commands_formatting{$context}->{$command})) {
@@ -4277,6 +4323,13 @@ sub converter_initialize($)
           }
         }
       }
+      if (exists ($Texinfo::Config::commands_translation{$context}->{$command})) {
+        $self->{'commands_translation'}->{$context}->{$command} 
+           = $Texinfo::Config::commands_translation{$context}->{$command};
+      } elsif (defined($default_commands_translation{$context}->{$command})) {
+        $self->{'commands_translation'}->{$context}->{$command}
+          = $default_commands_translation{$context}->{$command};
+      }
     }
   }
 
@@ -4284,18 +4337,9 @@ sub converter_initialize($)
   # function is used
   foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
     if ($self->{'commands_conversion'}->{$command} 
-        and $self->{'commands_conversion'}->{$command} eq $default_commands_conversion{$command}) {
-      if (!defined ($self->{'commands_formatting'}->{'normal'}->{$command})) {
-        $self->{'commands_formatting'}->{'normal'}->{$command} = '';
-      }
-      if (!defined ($self->{'commands_formatting'}->{'preformatted'}->{$command})) {
-        $self->{'commands_formatting'}->{'preformatted'}->{$command} = 
-          $self->{'commands_formatting'}->{'normal'}->{$command};
-      }
-      if (!defined ($self->{'commands_formatting'}->{'string'}->{$command})) {
-       $self->{'commands_formatting'}->{'string'}->{$command} = 
-          $self->{'commands_formatting'}->{'preformatted'}->{$command};
-      }
+        and $self->{'commands_conversion'}->{$command} 
+            eq $default_commands_conversion{$command}) {
+      $self->_complete_commands_formatting($command);
     }
   }
 
