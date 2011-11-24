@@ -1,3 +1,11 @@
+2011-11-24  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (part): Protect @ in Texinfo example.
+	(Other Configuration Variables): Reenable latex2html related variables.
+	(Info Format Whole Manual, Info Format: Preamble): use subheading and
+	not subsection consistently.
+
+
 2011-11-16  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Implement info-virtual-index.

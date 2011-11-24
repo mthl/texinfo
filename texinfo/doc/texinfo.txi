@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.397 2011-11-08 00:21:01 karl Exp $
+@c $Id: texinfo.txi,v 1.398 2011-11-24 21:15:34 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -4739,7 +4739,7 @@ place in the document you want to mark off as starting that part.  For
 example:
 
 @example
-@@part Part I:@* The beginning
+@@part Part I:@@* The beginning
 @end example
 
 As can be inferred from this example, no automatic numbering or
@@ -4751,7 +4751,7 @@ be followed by a chapter-level command (including its node).  Thus, to
 continue the example:
 
 @example
-@@part Part I:@* The beginning
+@@part Part I:@@* The beginning
 
 @@node Introduction
 @@chapter Introduction
@@ -16963,37 +16963,37 @@ If set, @code{@@insertcopying} is replaced by the @code{@@copying}
 content (@pxref{copying,, @code{@@copying}}) as if
 @code{@@insertcopying} were a user-defined macro.
 
-@c @item L2H
-@c For HTML@.  If set, @command{latex2html} is used to convert @code{@@math}
-@c and @code{@@tex} sections.  Best used with @option{--iftex}.
-@c 
-@c @item L2H_CLEAN
-@c (Relevant only if @code{L2H} is set.)  If this is set the intermediate
-@c files generated in relation with @command{latex2html} are removed.
-@c 
-@c @item L2H_FILE
-@c (Relevant only if @code{L2H} is set.)  If set, the given file is used
-@c as @command{latex2html}'s init file.
-@c 
-@c @item L2H_HTML_VERSION
-@c (Relevant only if @code{L2H} is set.)  The HTML version used in the
-@c @command{latex2html} call.
-@c 
-@c @item L2H_L2H
-@c The program invoked as @command{latex2html} if @code{L2H} is set.
-@c 
-@c @item L2H_SKIP
-@c (Relevant only if @code{L2H} is set.)  If this is set the actual call
-@c to @command{latex2html} is skipped; previously generated content is
-@c reused, instead.  If set to 0, the cache is not used at all.  If set
-@c to undef, the cache is used for as many @TeX{} fragments as possible
-@c and for the remaining the command is run.
-@c 
-@c @item L2H_TMP
-@c (Relevant only if @code{L2H} is set.)  Set the directory used for
-@c temporary files. None of the file name components in this directory
-@c name may start with @samp{.}; otherwise, @command{latex2html} will
-@c fail (because of @command{dvips}).
+@item L2H
+For HTML@.  If set, @command{latex2html} is used to convert @code{@@math}
+and @code{@@tex} sections.  Best used with @option{--iftex}.
+ 
+@item L2H_CLEAN
+(Relevant only if @code{L2H} is set.)  If this is set the intermediate
+files generated in relation with @command{latex2html} are removed.
+ 
+@item L2H_FILE
+(Relevant only if @code{L2H} is set.)  If set, the given file is used
+as @command{latex2html}'s init file.
+ 
+@item L2H_HTML_VERSION
+(Relevant only if @code{L2H} is set.)  The HTML version used in the
+@command{latex2html} call.
+ 
+@item L2H_L2H
+The program invoked as @command{latex2html} if @code{L2H} is set.
+ 
+@item L2H_SKIP
+(Relevant only if @code{L2H} is set.)  If this is set the actual call
+to @command{latex2html} is skipped; previously generated content is
+reused, instead.  If set to 0, the cache is not used at all.  If set
+to undef, the cache is used for as many @TeX{} fragments as possible
+and for the remaining the command is run.
+ 
+@item L2H_TMP
+(Relevant only if @code{L2H} is set.)  Set the directory used for
+temporary files. None of the file name components in this directory
+name may start with @samp{.}; otherwise, @command{latex2html} will
+fail (because of @command{dvips}).
 
 @item MONOLITHIC
 For HTML@.  Output only one file including the table of contents.  This
@@ -21105,7 +21105,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.397 2011-11-08 00:21:01 karl Exp $
+$Id: texinfo.txi,v 1.398 2011-11-24 21:15:34 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21176,7 +21176,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.397 2011-11-08 00:21:01 karl Exp $
+@comment $Id: texinfo.txi,v 1.398 2011-11-24 21:15:34 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -22409,7 +22409,7 @@ This section describes the overall layout of Info manuals.
 
 
 @node Info Format Whole Manual
-@subsection Info Format: A Whole Manual
+@subheading Info Format: A Whole Manual
 
 @cindex Nonsplit manuals, Info format of
 @cindex Split manuals, Info format of
@@ -22450,7 +22450,7 @@ The subfiles in a split manual have the following syntax:
 
 
 @node Info Format Preamble
-@subsection Info Format: Preamble
+@subheading Info Format: Preamble
 
 @cindex Preamble, in Info format
 
