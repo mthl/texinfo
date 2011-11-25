@@ -930,6 +930,16 @@ sub expand_today($)
             'day' => $mday, 'year' => $year });
 }
 
+sub translated_command_tree($$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  if ($self->{'translated_commands'}->{$cmdname}) {
+    return $self->gdt($self->{'translated_commands'}->{$cmdname});
+  }
+  return undef;
+}
+
 sub numbered_heading($$$;$)
 {
   my $self = shift;

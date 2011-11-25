@@ -88,8 +88,13 @@ our %all_converters_defaults = (
 
   'DEBUG'                => 0,
   'TEST'                 => 0,
+  'translated_commands'  => {'error' => 'error@arrow{}',},
 );
-   
+
+if (0) {
+  my $self;
+  $self->gdt('error@arrow{}');
+}
 
 sub converter_defaults($)
 {

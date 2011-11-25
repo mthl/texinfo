@@ -1165,12 +1165,14 @@ $default_commands_formatting{'normal'}->{"\t"} = '&nbsp;';
 $default_commands_formatting{'normal'}->{"\n"} = '&nbsp;';
 
 my %default_commands_translation;
-$default_commands_translation{'normal'}->{'error'} = 'error--&gt;';
-# This is used to have gettext pick up the chain to be translated
-if (0) {
-  my $not_existing;
-  $not_existing->gdt('error--&gt;');
-}
+# possible example of use, right now not used, as the generic
+# translated command with gdt tree is used.
+#$default_commands_translation{'normal'}->{'error'} = 'error--&gt;';
+## This is used to have gettext pick up the chain to be translated
+#if (0) {
+#  my $not_existing;
+#  $not_existing->gdt('error--&gt;');
+#}
 
 #foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
 #  $default_commands_formatting{'preformatted'}->{$command} = 
@@ -1209,6 +1211,10 @@ sub _convert_no_arg_command($$$)
   }
 
   my $result;
+  if ($self->{'translated_commands'}->{$cmdname}) {
+    return $self->convert_tree(
+         $self->gdt($self->{'translated_commands'}->{$cmdname}));
+  }
   if ($self->in_preformatted() or $self->in_math()) {
     $result = $self->{'commands_formatting'}->{'preformatted'}->{$cmdname};
   } elsif ($self->in_string()) {
@@ -4326,9 +4332,11 @@ sub converter_initialize($)
       if (exists ($Texinfo::Config::commands_translation{$context}->{$command})) {
         $self->{'commands_translation'}->{$context}->{$command} 
            = $Texinfo::Config::commands_translation{$context}->{$command};
+        delete $self->{'translated_commands'}->{$command};
       } elsif (defined($default_commands_translation{$context}->{$command})) {
         $self->{'commands_translation'}->{$context}->{$command}
           = $default_commands_translation{$context}->{$command};
+        delete $self->{'translated_commands'}->{$command};
       }
     }
   }

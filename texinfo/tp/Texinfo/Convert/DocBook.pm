@@ -473,7 +473,12 @@ sub _convert($$;$)
       } else {
         $command = $root->{'cmdname'};
       }
-      return $docbook_commands_formatting{$command};
+      if ($self->{'translated_commands'}->{$command}) {
+        return $self->_convert(Texinfo::Common::translated_command_tree($self,
+                                                                   $command));
+      } else {
+        return $docbook_commands_formatting{$command};
+      }
     } elsif ($root->{'cmdname'} eq 'today') {
       return $self->_convert(Texinfo::Common::expand_today($self));
     } elsif ($Texinfo::Common::accent_commands{$root->{'cmdname'}}) {

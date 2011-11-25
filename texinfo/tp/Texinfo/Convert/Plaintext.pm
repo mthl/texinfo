@@ -1220,22 +1220,22 @@ sub _convert($$)
       my $today = $self->Texinfo::Common::expand_today();
       unshift @{$self->{'current_contents'}->[-1]}, $today;
     } elsif (exists($brace_no_arg_commands{$root->{'cmdname'}})) {
-      my $encoding;
-      if ($self->get_conf('ENABLE_ENCODING')) {
-        $encoding = $self->{'encoding_name'};
-      }
-      my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
-                             {'enabled_encoding' => $encoding,
-                              'sc' => $formatter->{'upper_case'}});
+      my $text;
+      my %text_options = Texinfo::Common::_convert_text_options($self);
+      
+      $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
+                            {%text_options, 
+                             'sc' => $formatter->{'upper_case'}});
       my $lower_case_text;
-      # always double spacig, so set underlying text lower case.
+      # always double spacing, so set underlying text lower case.
       if ($formatter->{'var'} or $formatter->{'code'}) {
         $lower_case_text = Texinfo::Convert::Text::brace_no_arg_command($root,
-                             {'enabled_encoding' => $encoding,
+                             {%text_options,
                               'lc' => 1});
       } elsif ($formatter->{'upper_case'}) {
         $lower_case_text = Texinfo::Convert::Text::brace_no_arg_command($root,
-                             {'enabled_encoding' => $encoding});
+                             {%text_options
+                              });
       }
       if ($punctuation_no_arg_commands{$command}) {
         $result .= $self->_count_added($formatter->{'container'},

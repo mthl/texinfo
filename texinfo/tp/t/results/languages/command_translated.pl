@@ -296,10 +296,10 @@ $result_errors{'command_translated'} = [];
 
 
 
-$result_converted{'plaintext'}->{'command_translated'} = 'top error-->
+$result_converted{'plaintext'}->{'command_translated'} = 'top erreur->
 ************
 
-error-->
+erreur->
 ';
 
 
@@ -308,10 +308,10 @@ $result_converted{'info'}->{'command_translated'} = 'This is , produced by tp ve
 
 File: ,  Node: Top,  Up: (dir)
 
-top error-->
+top erreur->
 ************
 
-error-->
+erreur->
 
 
 Tag Table:
@@ -325,10 +325,10 @@ $result_converted{'html'}->{'command_translated'} = '<!DOCTYPE html PUBLIC "-//W
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>top error--&gt;</title>
+<title>top erreur&rarr;</title>
 
-<meta name="description" content="top error--&gt;">
-<meta name="keywords" content="top error--&gt;">
+<meta name="description" content="top erreur&rarr;">
+<meta name="keywords" content="top erreur&rarr;">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="tp">
@@ -367,9 +367,9 @@ ul.no-bullet {list-style: none}
 
 <a name="Top"></a>
 <a name="top-error_002d_002d_003e"></a>
-<h1 class="top">top erreur--&gt;</h1>
+<h1 class="top">top erreur&rarr;</h1>
 
-<p>erreur--&gt;
+<p>erreur&rarr;
 </p><hr>
 <p>
 

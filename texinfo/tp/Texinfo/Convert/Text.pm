@@ -236,6 +236,13 @@ sub brace_no_arg_command($;$)
       and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
   my $result = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
                        $command, $encoding);
+  if (!defined($result and $options and $options->{'converter'})) {
+    my $tree = Texinfo::Common::translated_command_tree(
+                  $options->{'converter'}, $command);
+    if ($tree) {
+      $result = _convert($tree, $options);
+    }
+  }
   if (!defined($result)) {
     if ($options and $options->{'sort_string'} 
         and $sort_brace_no_arg_commands{$command}) {

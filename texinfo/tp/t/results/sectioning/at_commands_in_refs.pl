@@ -20197,7 +20197,7 @@ Top
 *      ! 
  .  . ? @::
 * LaTeX TeX * , (C) ... ...::
-* == error--> Euro ! ==> -::
+* == error-> Euro ! ==> -::
 * >= <= ->::
 * a o -!- # -| ? (R)::
 * => o a b a sunny day aa::
@@ -20235,20 +20235,20 @@ File: ,  Node:     !
 ***************
 
 
-File: ,  Node: LaTeX TeX * , (C) ... ...,  Next: == error--> Euro ! ==> -,  Prev:     !
+File: ,  Node: LaTeX TeX * , (C) ... ...,  Next: == error-> Euro ! ==> -,  Prev:     !
 . . ? @,  Up: Top
 
 3 LaTeX TeX * , (C) ... ...
 ***************************
 
 
-File: ,  Node: == error--> Euro ! ==> -,  Next: >= <= ->,  Prev: LaTeX TeX * , (C) ... ...,  Up: Top
+File: ,  Node: == error-> Euro ! ==> -,  Next: >= <= ->,  Prev: LaTeX TeX * , (C) ... ...,  Up: Top
 
-4 == error--> Euro ! ==> -
-**************************
+4 == error-> Euro ! ==> -
+*************************
 
 
-File: ,  Node: >= <= ->,  Next: a o -!- # -| ? (R),  Prev: == error--> Euro ! ==> -,  Up: Top
+File: ,  Node: >= <= ->,  Next: a o -!- # -| ? (R),  Prev: == error-> Euro ! ==> -,  Up: Top
 
 5 >= <= ->
 **********
@@ -20371,7 +20371,7 @@ File: ,  Node: `http://somewhere_aaa\' text (url) ls,  Prev: <indicateurl>,  Up:
 *note { }::
 
    *note     !
-. . ? @:: *note LaTeX TeX * , (C) ... ...:: *note == error--> Euro ! ==>
+. . ? @:: *note LaTeX TeX * , (C) ... ...:: *note == error-> Euro ! ==>
 -::
 
    *note >= <= ->::
@@ -20390,31 +20390,31 @@ in r SC *str* t VAR "dfn" i:: *note `env\' `code\' `option\' `samp\'
 
 Tag Table:
 Node: Top41
-Node: { }828
+Node: { }827
 Node:     !
-. . ? @907
-Node: LaTeX TeX * , (C) ... ...1028
-Node: == error--> Euro ! ==> -1194
-Node: >= <= ->1353
-Node: a o -!- # -| ? (R)1473
-Node: => o a b a sunny day aa1612
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1792
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2019
-Node: e. e( e_ .e e< j ee[2231
-Node: `` \'\' ` \' ,, ,2394
-Node: << >> << >> < >2527
-Node: `` \'\' --- --2654
-Node: AAA (fff) AAA BBB2770
-Node: CCC (rrr) CCC DDD2906
-Node: the someone <someone@somewher> <no_explain@there>3079
-Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3381
-Node:  @ {} . 3737
-Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3946
-Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4208
-Node: 8.27in4488
-Node: sansserif slanted4636
-Node: <indicateurl>4762
-Node: `http://somewhere_aaa\' text (url) ls4910
+. . ? @906
+Node: LaTeX TeX * , (C) ... ...1027
+Node: == error-> Euro ! ==> -1192
+Node: >= <= ->1348
+Node: a o -!- # -| ? (R)1467
+Node: => o a b a sunny day aa1606
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1786
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2013
+Node: e. e( e_ .e e< j ee[2225
+Node: `` \'\' ` \' ,, ,2388
+Node: << >> << >> < >2521
+Node: `` \'\' --- --2648
+Node: AAA (fff) AAA BBB2764
+Node: CCC (rrr) CCC DDD2900
+Node: the someone <someone@somewher> <no_explain@there>3073
+Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3375
+Node:  @ {} . 3731
+Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3940
+Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4202
+Node: 8.27in4482
+Node: sansserif slanted4630
+Node: <indicateurl>4756
+Node: `http://somewhere_aaa\' text (url) ls4904
 
 End Tag Table
 ';
@@ -20545,7 +20545,7 @@ Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a>, Up: <a href="di
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="3">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="4">&equiv; error--&gt; &euro; &iexcl; &rarr; -</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="4">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#g_t_2265-_2264-_2192" accesskey="5">&ge; &le; &rarr;</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -20611,7 +20611,7 @@ Next: <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="n"
 <a name="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e"></a>
 <div class="header">
 <p>
-Next: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="n" rel="next">&equiv; error--&gt; &euro; &iexcl; &rarr; -</a>, Previous: <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="p" rel="previous">&nbsp; &nbsp;      ! <br> .  . ? @</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="n" rel="next">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>, Previous: <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="p" rel="previous">&nbsp; &nbsp;      ! <br> .  . ? @</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e-1"></a>
 <h2 class="chapter">3 LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></h2>
@@ -20623,13 +20623,13 @@ Next: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey
 Next: <a href="#g_t_2265-_2264-_2192" accesskey="n" rel="next">&ge; &le; &rarr;</a>, Previous: <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="p" rel="previous">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212-1"></a>
-<h2 class="chapter">4 &equiv; error--&gt; &euro; &iexcl; &rarr; -</h2>
+<h2 class="chapter">4 &equiv; error&rarr; &euro; &iexcl; &rarr; -</h2>
 
 <hr>
 <a name="g_t_2265-_2264-_2192"></a>
 <div class="header">
 <p>
-Next: <a href="#g_t_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae" accesskey="n" rel="next">&ordf; &ordm; &lowast; &pound; -| &iquest; &reg;</a>, Previous: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="p" rel="previous">&equiv; error--&gt; &euro; &iexcl; &rarr; -</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#g_t_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae" accesskey="n" rel="next">&ordf; &ordm; &lowast; &pound; -| &iquest; &reg;</a>, Previous: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="p" rel="previous">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="g_t_2265-_2264-_2192-1"></a>
 <h2 class="chapter">5 &ge; &le; &rarr;</h2>
@@ -20809,7 +20809,7 @@ Previous: <a href="#indicateurl" accesskey="p" rel="previous">&lt;<code>indicate
 </p>
 <p><a href="#----_0021---_002e--_002e-_003f-_0040">&nbsp; &nbsp;       ! <br> .  . ? @</a>
 <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>
-<a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212">&equiv; error--&gt; &euro; &iexcl; &rarr; -</a>
+<a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>
 </p>
 <p><a href="#g_t_2265-_2264-_2192">&ge; &le; &rarr;</a>
 </p>
