@@ -430,7 +430,7 @@ sub _exit($$)
   my $error_count = shift;
   my $opened_files = shift;
 
-  if ($opened_files and !get_conf('FORCE')) {
+  if ($error_count and $opened_files and !get_conf('FORCE')) {
     while (@$opened_files) {
       my $opened_file = shift (@$opened_files);
       unlink ($opened_file);
