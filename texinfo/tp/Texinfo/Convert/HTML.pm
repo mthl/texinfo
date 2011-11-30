@@ -6295,9 +6295,12 @@ sub run_stage_handlers($$)
       }
       my $status = &{$handler}($converter, $stage);
       if (!$status) {
-        if ($converter->get_conf('VERBOSE')) {
-          print STDERR "Handler $handler of $stage($priority) failed\n";
-        }
+        #if ($converter->get_conf('VERBOSE')) {
+        #  print STDERR "Handler $handler of $stage($priority) failed\n";
+        #}
+        $converter->document_error(sprintf($converter->__(
+                 "Handler %s of stage %s priority %s failed"),
+                 $handler, $stage, $priority));
         return $status;
       }
     }
