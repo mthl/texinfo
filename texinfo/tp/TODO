@@ -5,9 +5,7 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-Internationalize 'error-->'.  FIXME in the code.
-
-In plaintext output internationalize definition lines like
+In HTML output internationalize definition lines along
 gdt(' -- {category} of {class}: {type} {name} {arguments}')
 
 

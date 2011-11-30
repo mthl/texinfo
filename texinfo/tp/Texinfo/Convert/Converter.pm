@@ -779,7 +779,8 @@ $default_xml_commands_formatting{'normal'} = {
                'dots'         => '&hellip;',
                'enddots'      => '...',
                'equiv'        => '&equiv;',
-# FIXME i18n
+               # in general the following is not used since error
+               # appears in 'translated_commands'
                'error'        => 'error--&gt;',
                'expansion'    => '&rarr;',
                'arrow'        => '&rarr;',

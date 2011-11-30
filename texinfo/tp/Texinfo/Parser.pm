@@ -3734,7 +3734,9 @@ sub _parse_texi($;$)
           if ($line =~ s/^{([\w\-]+)}//) {
             my $value = $1;
             if (exists($self->{'values'}->{$value})) {
-              if (!ref($self->{'values'}->{$value})) {
+              if (!defined($self->{'values'}->{$value})) {
+                print STDERR "BUG? $value exists but not defined\n";
+              } elsif (!ref($self->{'values'}->{$value})) {
                 $line = $self->{'values'}->{$value} . $line;
               # the push @{$current->{'contents'}}, {}; prevents a trailing
               # text to be merged, to avoid having the value tree modified.

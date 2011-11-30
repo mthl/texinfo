@@ -2137,20 +2137,112 @@ sub _convert($$)
     } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
              and @{$root->{'extra'}->{'def_args'}}) {
-        my $parsed_definition_category 
-          = Texinfo::Common::definition_category ($self, $root);
-        # FIXME(Karl) should the definition line formating use gdt?
-        my @contents = ($parsed_definition_category, {'text' => ': '});
-        if ($root->{'extra'}->{'def_parsed_hash'}->{'type'}) {
-          push @contents, ($root->{'extra'}->{'def_parsed_hash'}->{'type'}, 
-                           {'text' => ' '});
-        }
-        push @contents, $root->{'extra'}->{'def_parsed_hash'}->{'name'};
-
         my $arguments = Texinfo::Common::definition_arguments_content($root);
-        if ($arguments) {
-          push @contents, {'text' => ' '};
-          push @contents, @$arguments;
+        my $tree;
+        my $command;
+        if ($Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}}) {
+          $command = $Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}};
+        } else {
+          $command = $root->{'extra'}->{'def_command'};
+        }
+        my $name;
+        if ($root->{'extra'}->{'def_parsed_hash'}->{'name'}) {
+          $name = $root->{'extra'}->{'def_parsed_hash'}->{'name'};
+        } else {
+          $name = '';
+        }
+        
+        
+        if ($command eq 'deffn'
+            or $command eq 'defvr'
+            or $command eq 'deftp'
+            or (($command eq 'deftypefn'
+                 or $command eq 'deftypevr')
+                and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
+          if ($arguments) {
+            $tree = $self->gdt("\@tie{ }-- {category}: {name} {arguments}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'name' => $name,
+                    'arguments' => $arguments});
+          } else {
+            $tree = $self->gdt("\@tie{ }-- {category}: {name}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'name' => $name});
+          }
+        } elsif ($command eq 'deftypefn'
+                 or $command eq 'deftypevr') {
+          if ($arguments) {
+            $tree = $self->gdt("\@tie{ }-- {category}: {type} {name} {arguments}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'name' => $name,
+                    'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
+                    'arguments' => $arguments});
+          } else {
+            $tree = $self->gdt("\@tie{ }-- {category}: {type} {name}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
+                    'name' => $name});
+          }
+        } elsif ($command eq 'defcv'
+                 or ($command eq 'deftypecv'
+                     and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
+          if ($arguments) {
+            $tree = $self->gdt("\@tie{ }-- {category} of {class}: {name} {arguments}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'name' => $name,
+                    'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
+                    'arguments' => $arguments});
+          } else {
+            $tree = $self->gdt("\@tie{ }-- {category} of {class}: {name}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
+                    'name' => $name});
+          }
+        } elsif ($command eq 'defop'
+                 or ($command eq 'deftypeop'
+                     and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
+          if ($arguments) {
+            $tree = $self->gdt("\@tie{ }-- {category} on {class}: {name} {arguments}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'name' => $name,
+                    'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
+                    'arguments' => $arguments});
+          } else {
+            $tree = $self->gdt("\@tie{ }-- {category} on {class}: {name}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
+                    'name' => $name});
+          }
+        } elsif ($command eq 'deftypeop') {
+          if ($arguments) {
+            $tree = $self->gdt("\@tie{ }-- {category} on {class}: {type} {name} {arguments}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'name' => $name,
+                    'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
+                    'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
+                    'arguments' => $arguments});
+          } else {
+            $tree = $self->gdt("\@tie{ }-- {category} on {class}: {type} {name}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
+                    'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
+                    'name' => $name});
+          }
+        } elsif ($command eq 'deftypecv') {
+          if ($arguments) {
+            $tree = $self->gdt("\@tie{ }-- {category} of {class}: {type} {name} {arguments}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'name' => $name,
+                    'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
+                    'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
+                    'arguments' => $arguments});
+          } else {
+            $tree = $self->gdt("\@tie{ }-- {category} of {class}: {type} {name}", {
+                    'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+                    'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
+                    'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
+                    'name' => $name});
+          }
         }
 
         my $def_paragraph = $self->new_formatter('paragraph', 
@@ -2158,9 +2250,7 @@ sub _convert($$)
            'indent_length_next' => (1+$self->{'format_context'}->[-1]->{'indent_level'})*$indent_length});
         push @{$self->{'formatters'}}, $def_paragraph;
 
-        $result .= $self->_count_added($def_paragraph->{'container'}, 
-                        $def_paragraph->{'container'}->add_next(" -- "));
-        $result .= $self->_convert({'type' => 'code', 'contents' => \@contents});
+        $result .= $self->_convert({'type' => 'code', 'contents' => [$tree]});
         $result .= $self->_count_added($def_paragraph->{'container'},
                                       $def_paragraph->{'container'}->end());
 
