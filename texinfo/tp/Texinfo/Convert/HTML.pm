@@ -3808,49 +3808,159 @@ sub _convert_def_line_type($$$$)
        $command, Texinfo::Common::_convert_text_options($self)));
   }
 
-  my $category_prepared = '';
-  if ($command->{'extra'} and $command->{'extra'}->{'def_args'}
-      and @{$command->{'extra'}->{'def_args'}}) {
-    my $parsed_definition_category 
-       = Texinfo::Common::definition_category ($self, $command);
-    if ($parsed_definition_category) {
-      $category_prepared = $self->convert_tree({'type' => '_code',
-                   'contents' => [$parsed_definition_category]});
-    }
-  }
-  
-  my $arguments_content 
-    = Texinfo::Common::definition_arguments_content($command);
-  my $arguments = '';
-  if ($arguments_content) {
-    $arguments = $self->convert_tree({'type' => '_code',
-                   'contents' => $arguments_content});
-    $arguments = '<em> ' . $arguments . '</em>' if ($arguments =~ /\S/);
-  }
-
-  my $def_type = '';
-  my $type_name = '';
-  if ($command->{'extra'}->{'def_parsed_hash'}->{'type'}) {
-    $def_type = $self->convert_tree({'type' => '_code',
-        'contents' => [$command->{'extra'}->{'def_parsed_hash'}->{'type'}]});
-  }
-  $type_name = " <em>$def_type</em>" if ($def_type ne '');
-  my $name = '';
-  if ($command->{'extra'}->{'def_parsed_hash'}->{'name'}) {
-    $name = $self->convert_tree({'type' => '_code',
-        'contents' => [$command->{'extra'}->{'def_parsed_hash'}->{'name'}]});
-  }
-  $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
-  $type_name .= $arguments;
-
   my $index_label = '';
   my $index_id = $self->command_id ($command);
   if (defined($index_id) and $index_id ne '' and !@{$self->{'multiple_pass'}}) {
     $index_label = "<a name=\"$index_id\"></a>";
   }
+  my $arguments
+    = Texinfo::Common::definition_arguments_content($command);
+
   if (!$self->get_conf('DEF_TABLE')) {
-    return '<dt>'.$index_label.$category_prepared . ':' . $type_name . "</dt>\n";
+    my $tree;
+    my $command_name;
+    if ($Texinfo::Common::def_aliases{$command->{'extra'}->{'def_command'}}) {
+      $command_name = $Texinfo::Common::def_aliases{$command->{'extra'}->{'def_command'}};
+    } else {
+      $command_name = $command->{'extra'}->{'def_command'};
+    }
+    my $name;
+    if ($command->{'extra'}->{'def_parsed_hash'}->{'name'}) {
+      $name = $command->{'extra'}->{'def_parsed_hash'}->{'name'};
+    } else {
+      $name = '';
+    }
+    if ($command_name eq 'deffn'
+        or $command_name eq 'defvr'
+        or $command_name eq 'deftp'
+        or (($command_name eq 'deftypefn'
+             or $command_name eq 'deftypevr')
+            and !$command->{'extra'}->{'def_parsed_hash'}->{'type'})) {
+      if ($arguments) {
+        $tree = $self->gdt("{category}: \@strong{{name}}\@emph{ {arguments}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'name' => $name,
+                'arguments' => $arguments});
+      } else {
+        $tree = $self->gdt("{category}: \@strong{{name}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'name' => $name});
+      }
+    } elsif ($command_name eq 'deftypefn'
+             or $command_name eq 'deftypevr') {
+      if ($arguments) {
+        $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}}\@emph{ {arguments}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'name' => $name,
+                'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
+                'arguments' => $arguments});
+      } else {
+        $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
+                'name' => $name});
+      }
+    } elsif ($command_name eq 'defcv'
+             or ($command_name eq 'deftypecv'
+                 and !$command->{'extra'}->{'def_parsed_hash'}->{'type'})) {
+      if ($arguments) {
+        $tree = $self->gdt("{category} of {class}: \@strong{{name}}\@emph{ {arguments}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'name' => $name,
+                'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
+                'arguments' => $arguments});
+      } else {
+        $tree = $self->gdt("{category} of {class}: \@strong{{name}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
+                'name' => $name});
+      }
+    } elsif ($command_name eq 'defop'
+             or ($command_name eq 'deftypeop'
+                 and !$command->{'extra'}->{'def_parsed_hash'}->{'type'})) {
+      if ($arguments) {
+        $tree = $self->gdt("{category} on {class}: \@strong{{name}}\@emph{ {arguments}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'name' => $name,
+                'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
+                'arguments' => $arguments});
+      } else {
+        $tree = $self->gdt("{category} on {class}: \@strong{{name}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
+                'name' => $name});
+      }
+    } elsif ($command_name eq 'deftypeop') {
+      if ($arguments) {
+        $tree = $self->gdt("{category} on {class}: \@emph{{type}} \@strong{{name}}\@emph{ {arguments}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'name' => $name,
+                'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
+                'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
+                'arguments' => $arguments});
+      } else {
+        $tree = $self->gdt("{category} on {class}: \@emph{{type}} \@strong{{name}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
+                'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
+                'name' => $name});
+      }
+    } elsif ($command_name eq 'deftypecv') {
+      if ($arguments) {
+        $tree = $self->gdt("{category} of {class}: \@emph{{type}} \@strong{{name}}\@emph{ {arguments}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'name' => $name,
+                'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
+                'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
+                'arguments' => $arguments});
+      } else {
+        $tree = $self->gdt("{category} of {class}: \@emph{{type}} \@strong{{name}}", {
+                'category' => $command->{'extra'}->{'def_parsed_hash'}->{'category'},
+                'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
+                'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
+                'name' => $name});
+      }
+    }
+
+
+    return '<dt>'.$index_label.$self->convert_tree({'type' => '_code',
+                             'contents' => [$tree]}) . "</dt>\n";
   } else {
+    my $category_prepared = '';
+    if ($command->{'extra'} and $command->{'extra'}->{'def_args'}
+        and @{$command->{'extra'}->{'def_args'}}) {
+      my $parsed_definition_category 
+         = Texinfo::Common::definition_category ($self, $command);
+      if ($parsed_definition_category) {
+        $category_prepared = $self->convert_tree({'type' => '_code',
+                   'contents' => [$parsed_definition_category]});
+      }
+    }
+  
+    my $arguments_text = '';
+    if ($arguments) {
+      $arguments_text = $self->convert_tree({'type' => '_code',
+                   'contents' => $arguments});
+      $arguments_text = '<em> ' . $arguments_text . '</em>' 
+        if ($arguments_text =~ /\S/);
+    }
+
+  
+    my $def_type = '';
+    my $type_name = '';
+    if ($command->{'extra'}->{'def_parsed_hash'}->{'type'}) {
+      $def_type = $self->convert_tree({'type' => '_code',
+          'contents' => [$command->{'extra'}->{'def_parsed_hash'}->{'type'}]});
+    }
+    $type_name = " <em>$def_type</em>" if ($def_type ne '');
+    my $name = '';
+    if ($command->{'extra'}->{'def_parsed_hash'}->{'name'}) {
+      $name = $self->convert_tree({'type' => '_code',
+          'contents' => [$command->{'extra'}->{'def_parsed_hash'}->{'name'}]});
+    }
+    $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
+    $type_name .= $arguments_text;
+
     return "<tr><td align=\"left\">" . $type_name .
        "</td><td align=\"right\">" . $category_prepared . 
        $index_label . "</td></tr>\n";

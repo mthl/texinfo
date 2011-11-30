@@ -5,9 +5,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-In HTML output internationalize definition lines along
-gdt(' -- {category} of {class}: {type} {name} {arguments}')
-
 
 Bugs
 ====

@@ -2527,10 +2527,10 @@ $result_converted{'html_text'}->{'def'} = '
 
 <dl>
 <dt><a name="index-i"></a>fset: <strong><var>i</var></strong><em> a g</em></dt>
-<dt><a name="index-truc"></a>cmde: <strong>truc</strong></dt>
-<dt><a name="index-log-trap"></a>Command: <strong>log trap</strong></dt>
-<dt><a name="index-log-trap1"></a>Command: <strong>log trap1</strong></dt>
-<dt><a name="index-log-trap2"></a>Command: <strong>log trap2</strong></dt>
+<dt><a name="index-truc"></a>cmde: <strong>truc</strong><em> </em></dt>
+<dt><a name="index-log-trap"></a>Command: <strong>log trap</strong><em> </em></dt>
+<dt><a name="index-log-trap1"></a>Command: <strong>log trap1</strong><em> </em></dt>
+<dt><a name="index-log-trap2"></a>Command: <strong>log trap2</strong><em> </em></dt>
 <dt><a name="index-id-ule"></a>cmde: <strong><b>id ule</b></strong><em> truc</em></dt>
 <dt><a name="index-id-i-ule"></a>cmde2: <strong><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></strong><em> truc</em></dt>
 <dt><a name="index-machin"></a>: <strong>machin</strong></dt>
