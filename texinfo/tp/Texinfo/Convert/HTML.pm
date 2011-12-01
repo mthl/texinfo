@@ -3850,7 +3850,7 @@ sub _convert_def_line_type($$$$)
                  and !$command->{'extra'}->{'def_parsed_hash'}->{'type'}))
             and !$command->{'extra'}->{'def_parsed_hash'}->{'class'})) {
       if ($arguments) {
-        $tree = $self->gdt("{category}: \@strong{{name}}\@emph{ {arguments}}", {
+        $tree = $self->gdt("{category}: \@strong{{name}} \@emph{{arguments}}", {
                 'category' => $category,
                 'name' => $name,
                 'arguments' => $arguments});
@@ -3865,7 +3865,7 @@ sub _convert_def_line_type($$$$)
                   or $command_name eq 'deftypecv')
                  and !$command->{'extra'}->{'def_parsed_hash'}->{'class'})) {
       if ($arguments) {
-        $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}}\@emph{ {arguments}}", {
+        $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", {
                 'category' => $category,
                 'name' => $name,
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
@@ -3880,7 +3880,7 @@ sub _convert_def_line_type($$$$)
              or ($command_name eq 'deftypecv'
                  and !$command->{'extra'}->{'def_parsed_hash'}->{'type'})) {
       if ($arguments) {
-        $tree = $self->gdt("{category} of {class}: \@strong{{name}}\@emph{ {arguments}}", {
+        $tree = $self->gdt("{category} of {class}: \@strong{{name}} \@emph{{arguments}}", {
                 'category' => $category,
                 'name' => $name,
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
@@ -3895,7 +3895,7 @@ sub _convert_def_line_type($$$$)
              or ($command_name eq 'deftypeop'
                  and !$command->{'extra'}->{'def_parsed_hash'}->{'type'})) {
       if ($arguments) {
-        $tree = $self->gdt("{category} on {class}: \@strong{{name}}\@emph{ {arguments}}", {
+        $tree = $self->gdt("{category} on {class}: \@strong{{name}} \@emph{{arguments}}", {
                 'category' => $category,
                 'name' => $name,
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
@@ -3908,7 +3908,7 @@ sub _convert_def_line_type($$$$)
       }
     } elsif ($command_name eq 'deftypeop') {
       if ($arguments) {
-        $tree = $self->gdt("{category} on {class}: \@emph{{type}} \@strong{{name}}\@emph{ {arguments}}", {
+        $tree = $self->gdt("{category} on {class}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", {
                 'category' => $category,
                 'name' => $name,
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
@@ -3923,7 +3923,7 @@ sub _convert_def_line_type($$$$)
       }
     } elsif ($command_name eq 'deftypecv') {
       if ($arguments) {
-        $tree = $self->gdt("{category} of {class}: \@emph{{type}} \@strong{{name}}\@emph{ {arguments}}", {
+        $tree = $self->gdt("{category} of {class}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", {
                 'category' => $category,
                 'name' => $name,
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},

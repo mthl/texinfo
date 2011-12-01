@@ -1065,21 +1065,21 @@ ul.no-bullet {list-style: none}
 <h1 class="node-heading">Top</h1>
 
 <dl>
-<dt><a name="index-BBB-of-fr"></a>Instance Variable de fr: <strong>BBB</strong><em> CCC</em></dt>
+<dt><a name="index-BBB-of-fr"></a>Instance Variable de fr: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-copying-a-of-copying"></a>Instance Variable de copying: <strong>a</strong><em> b</em></dt>
+<dt><a name="index-copying-a-of-copying"></a>Instance Variable de copying: <strong>a</strong> <em>b</em></dt>
 </dl>
 
 
 
 <dl>
-<dt><a name="index-BBB-of-pt"></a>Instance Variable da pt: <strong>BBB</strong><em> CCC</em></dt>
+<dt><a name="index-BBB-of-pt"></a>Instance Variable da pt: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-copying-a-of-copying"></a>Instance Variable da copying: <strong>a</strong><em> b</em></dt>
+<dt><a name="index-copying-a-of-copying"></a>Instance Variable da copying: <strong>a</strong> <em>b</em></dt>
 </dl>
 
 <hr>

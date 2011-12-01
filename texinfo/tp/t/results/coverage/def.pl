@@ -2516,29 +2516,29 @@ $result_converted{'plaintext'}->{'def'} = ' -- c--ategory: d--effn_name a--rgume
 
 $result_converted{'html_text'}->{'def'} = '
 <dl>
-<dt><a name="index-d_002d_002deffn_005fname"></a>c--ategory: <strong>d--effn_name</strong><em> a--rguments...</em></dt>
+<dt><a name="index-d_002d_002deffn_005fname"></a>c--ategory: <strong>d--effn_name</strong> <em>a--rguments...</em></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-de_002d_002dffn_005fname"></a>cate--gory: <strong>de--ffn_name</strong><em> ar--guments    more args <br> even more so</em></dt>
+<dt><a name="index-de_002d_002dffn_005fname"></a>cate--gory: <strong>de--ffn_name</strong> <em>ar--guments    more args <br> even more so</em></dt>
 <dd><p>def&ndash;fn
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-i"></a>fset: <strong><var>i</var></strong><em> a g</em></dt>
-<dt><a name="index-truc"></a>cmde: <strong>truc</strong><em> </em></dt>
-<dt><a name="index-log-trap"></a>Command: <strong>log trap</strong><em> </em></dt>
-<dt><a name="index-log-trap1"></a>Command: <strong>log trap1</strong><em> </em></dt>
-<dt><a name="index-log-trap2"></a>Command: <strong>log trap2</strong><em> </em></dt>
-<dt><a name="index-id-ule"></a>cmde: <strong><b>id ule</b></strong><em> truc</em></dt>
-<dt><a name="index-id-i-ule"></a>cmde2: <strong><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></strong><em> truc</em></dt>
+<dt><a name="index-i"></a>fset: <strong><var>i</var></strong> <em>a g</em></dt>
+<dt><a name="index-truc"></a>cmde: <strong>truc</strong> <em></em></dt>
+<dt><a name="index-log-trap"></a>Command: <strong>log trap</strong> <em></em></dt>
+<dt><a name="index-log-trap1"></a>Command: <strong>log trap1</strong> <em></em></dt>
+<dt><a name="index-log-trap2"></a>Command: <strong>log trap2</strong> <em></em></dt>
+<dt><a name="index-id-ule"></a>cmde: <strong><b>id ule</b></strong> <em>truc</em></dt>
+<dt><a name="index-id-i-ule"></a>cmde2: <strong><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></strong> <em>truc</em></dt>
 <dt><a name="index-machin"></a>: <strong>machin</strong></dt>
 <dt><a name="index-bidule-machin"></a>: <strong>bidule machin</strong></dt>
 <dt><a name="index-machin-1"></a>truc: <strong>machin</strong></dt>
-<dt><a name="index-followed"></a>truc: <strong>followed</strong><em> by a comment</em></dt>
-<dt><a name="index-after"></a>truc: <strong>after</strong><em> a deff item</em></dt>
-<dt><a name="index-deffnx"></a>truc: <strong>deffnx</strong><em> before end deffn</em></dt>
+<dt><a name="index-followed"></a>truc: <strong>followed</strong> <em>by a comment</em></dt>
+<dt><a name="index-after"></a>truc: <strong>after</strong> <em>a deff item</em></dt>
+<dt><a name="index-deffnx"></a>truc: <strong>deffnx</strong> <em>before end deffn</em></dt>
 <dd><p>Various deff lines
 </p></dd></dl>
 ';
