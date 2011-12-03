@@ -65,7 +65,7 @@ Tests in contents/ are incorporated?
 
 test an lone @contents without any sectioning command.
 
-Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf_, with and without
+Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf8, with and without
 enable encoding and entities.
 
 Test end_line_count in Texinfo/Convert/ containers.
@@ -86,9 +86,6 @@ in html test footnotestyle separate.
 Future features
 ===============
 
-(A) Warning for obsolete/unused customization variables like USE_SECTIONS
-(a FIXME in Texinfo/Common.pm).?
-
 Right now VERBOSE is almost not used.
 
 Handle better @exdent in html? (there is a FIXME in the code)
@@ -97,8 +94,6 @@ Check the design of the HTML.pm API.  Document the API, in particular
 everything in Texinfo::Config.  Add an API for everything used in the 
 default functions, for example in page_head, use $self->title_string() 
 and so on and so forth.  
-
-add --output-encoding.  Design better the encoding handling.
 
 
 DocBook
