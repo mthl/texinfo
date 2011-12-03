@@ -150,6 +150,7 @@ $result_trees{'empty_deftype'} = {
               'index_at_command' => 'deftypefun',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deftypefun',
               'key' => 'f',
               'number' => 1
             },
@@ -346,6 +347,7 @@ $result_trees{'empty_deftype'} = {
               'index_at_command' => 'defun',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'defun',
               'key' => 'f',
               'number' => 2
             },
@@ -604,6 +606,7 @@ $result_trees{'empty_deftype'} = {
               'index_at_command' => 'deftypemethod',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deftypemethod',
               'key' => 'f on c',
               'number' => 3
             },
@@ -828,6 +831,7 @@ $result_trees{'empty_deftype'} = {
               'index_at_command' => 'defmethod',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'defmethod',
               'key' => 'f on c',
               'number' => 4
             },

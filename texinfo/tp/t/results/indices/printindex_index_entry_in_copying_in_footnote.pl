@@ -89,6 +89,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                                   'index_at_command' => 'cindex',
                                   'index_name' => 'cp',
                                   'index_prefix' => 'c',
+                                  'index_type_command' => 'cindex',
                                   'key' => 'Copying this document',
                                   'number' => 1,
                                   'region' => {}

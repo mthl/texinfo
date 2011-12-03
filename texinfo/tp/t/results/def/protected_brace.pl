@@ -77,6 +77,7 @@ $result_trees{'protected_brace'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => '{',
               'number' => 1
             },

@@ -123,6 +123,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'name',
               'number' => 1
             },
@@ -313,6 +314,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'name',
               'number' => 2
             },

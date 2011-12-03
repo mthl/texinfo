@@ -659,6 +659,7 @@ $result_trees{'in_table'} = {
                                   'index_at_command' => 'cindex',
                                   'index_name' => 'cp',
                                   'index_prefix' => 'c',
+                                  'index_type_command' => 'cindex',
                                   'key' => 'index',
                                   'node' => {},
                                   'number' => 1
@@ -844,6 +845,7 @@ $result_trees{'in_table'} = {
                                   'index_at_command' => 'cindex',
                                   'index_name' => 'cp',
                                   'index_prefix' => 'c',
+                                  'index_type_command' => 'cindex',
                                   'key' => 'index',
                                   'node' => {},
                                   'number' => 2
@@ -873,9 +875,10 @@ $result_trees{'in_table'} = {
                           ],
                           'content_normalized' => [],
                           'in_code' => 1,
-                          'index_at_command' => 'vtable',
+                          'index_at_command' => 'item',
                           'index_name' => 'vr',
                           'index_prefix' => 'v',
+                          'index_type_command' => 'vtable',
                           'key' => '',
                           'node' => {},
                           'number' => 1
@@ -992,6 +995,7 @@ $result_trees{'in_table'} = {
                                   'index_at_command' => 'cindex',
                                   'index_name' => 'cp',
                                   'index_prefix' => 'c',
+                                  'index_type_command' => 'cindex',
                                   'key' => '2 index',
                                   'node' => {},
                                   'number' => 3
@@ -1021,9 +1025,10 @@ $result_trees{'in_table'} = {
                           ],
                           'content_normalized' => [],
                           'in_code' => 1,
-                          'index_at_command' => 'vtable',
+                          'index_at_command' => 'item',
                           'index_name' => 'vr',
                           'index_prefix' => 'v',
+                          'index_type_command' => 'vtable',
                           'key' => '',
                           'node' => {},
                           'number' => 2
@@ -1665,6 +1670,24 @@ $result_errors{'in_table'} = [
     'line_nr' => 20,
     'macro' => '',
     'text' => '@cindex should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':17: warning: Empty index key in @item
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => 'Empty index key in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':20: warning: Empty index key in @item
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => '',
+    'text' => 'Empty index key in @item',
     'type' => 'warning'
   }
 ];

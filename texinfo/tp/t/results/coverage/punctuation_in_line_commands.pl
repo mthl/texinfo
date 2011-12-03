@@ -813,6 +813,7 @@ $result_trees{'punctuation_in_line_commands'} = {
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',
+              'index_type_command' => 'cindex',
               'key' => 'index! After punc',
               'node' => {},
               'number' => 1

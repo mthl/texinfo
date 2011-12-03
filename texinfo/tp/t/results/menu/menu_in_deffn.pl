@@ -124,6 +124,7 @@ $result_trees{'menu_in_deffn'} = {
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
+                  'index_type_command' => 'deffn',
                   'key' => 'b',
                   'node' => {},
                   'number' => 1

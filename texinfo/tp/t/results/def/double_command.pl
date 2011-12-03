@@ -195,6 +195,7 @@ $result_trees{'double_command'} = {
                       'index_at_command' => 'deffnx',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
+                      'index_type_command' => 'deffn',
                       'key' => 'plot2',
                       'number' => 1
                     },
@@ -352,6 +353,7 @@ $result_trees{'double_command'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'plot',
               'number' => 2
             },
@@ -514,6 +516,7 @@ $result_trees{'double_command'} = {
                           'index_at_command' => 'defvr',
                           'index_name' => 'vr',
                           'index_prefix' => 'v',
+                          'index_type_command' => 'defvr',
                           'key' => 'd--efvr_name',
                           'number' => 1
                         },
@@ -602,6 +605,7 @@ $result_trees{'double_command'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'aaaa',
               'number' => 3
             },

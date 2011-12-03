@@ -1180,6 +1180,11 @@ sub _do_index_keys($$$)
       $entry->{'key'} = Texinfo::Convert::Text::convert(
                               {'contents' => $entry->{'content'}},
                   {%$options, Texinfo::Common::_convert_text_options($self)});
+      if ($entry->{'key'} !~ /\S/) {
+        $self->line_warn(sprintf($self->__("Empty index key in \@%s"), 
+                                 $entry->{'index_at_command'}),
+                        $entry->{'command'}->{'line_nr'});
+      }
     }
   }
 }

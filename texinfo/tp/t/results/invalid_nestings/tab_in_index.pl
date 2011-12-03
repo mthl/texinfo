@@ -162,6 +162,7 @@ $result_trees{'tab_in_index'} = {
                               'index_at_command' => 'vindex',
                               'index_name' => 'vr',
                               'index_prefix' => 'v',
+                              'index_type_command' => 'vindex',
                               'key' => 'in index entry in tab',
                               'number' => 1
                             },

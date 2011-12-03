@@ -71,6 +71,7 @@ $result_trees{'empty_def_command'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'deffn',
               'number' => 1
             },
@@ -227,6 +228,7 @@ $result_trees{'empty_def_command'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'deffn',
               'number' => 2
             },
@@ -302,6 +304,7 @@ $result_trees{'empty_def_command'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'deffnx',
               'number' => 3
             },

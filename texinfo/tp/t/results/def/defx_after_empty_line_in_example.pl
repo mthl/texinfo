@@ -133,6 +133,7 @@ $result_trees{'defx_after_empty_line_in_example'} = {
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
+                  'index_type_command' => 'deffn',
                   'key' => 'i',
                   'number' => 1
                 },
@@ -282,6 +283,7 @@ $result_trees{'defx_after_empty_line_in_example'} = {
                   'index_at_command' => 'deffnx',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
+                  'index_type_command' => 'deffn',
                   'key' => 'bidulr',
                   'number' => 2
                 },

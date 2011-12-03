@@ -366,6 +366,7 @@ $result_trees{'index_entry_before_node'} = {
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',
+              'index_type_command' => 'cindex',
               'key' => 'lone entry',
               'node' => {},
               'number' => 1

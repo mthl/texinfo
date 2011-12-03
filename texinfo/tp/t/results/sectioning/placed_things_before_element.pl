@@ -661,6 +661,7 @@ $result_trees{'placed_things_before_element'} = {
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',
+              'index_type_command' => 'cindex',
               'key' => 'index entry',
               'number' => 1
             },

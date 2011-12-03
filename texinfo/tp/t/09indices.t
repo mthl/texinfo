@@ -149,6 +149,21 @@ Text.
 '@node Top
 @cindex
 '],
+['empty_string_index_entry',
+'@node Top
+
+@findex @w{}
+
+@ftable @code
+@item @w{}
+@end ftable
+
+@defun {@w{}} {} {}
+@defunx {@w{}} {} {}
+@end defun
+
+@printindex fn
+'],
 ['printindex_index_entry_in_copying',
 '@copying
 

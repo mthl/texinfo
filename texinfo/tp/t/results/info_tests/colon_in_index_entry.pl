@@ -133,6 +133,7 @@ $result_trees{'colon_in_index_entry'} = {
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
               'index_prefix' => 'c',
+              'index_type_command' => 'cindex',
               'key' => 'a:b',
               'node' => {},
               'number' => 1
@@ -223,9 +224,10 @@ $result_trees{'colon_in_index_entry'} = {
                           ],
                           'content_normalized' => [],
                           'in_code' => 0,
-                          'index_at_command' => 'vtable',
+                          'index_at_command' => 'item',
                           'index_name' => 'vr',
                           'index_prefix' => 'v',
+                          'index_type_command' => 'vtable',
                           'key' => '%main::value',
                           'node' => {},
                           'number' => 1
@@ -434,6 +436,7 @@ $result_trees{'colon_in_index_entry'} = {
                   'index_at_command' => 'defvr',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'index_type_command' => 'defvr',
                   'key' => 'c:d',
                   'node' => {},
                   'number' => 2
@@ -579,6 +582,7 @@ $result_trees{'colon_in_index_entry'} = {
                   'index_at_command' => 'defvrx',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'index_type_command' => 'defvr',
                   'key' => 'z:t',
                   'node' => {},
                   'number' => 3
@@ -922,9 +926,9 @@ End Tag Table
 $result_converted_errors{'info'}->{'colon_in_index_entry'} = [
   {
     'file_name' => '',
-    'error_line' => ':8: warning: Index entry in @vtable with : produces invalid Info: %main::value
+    'error_line' => ':8: warning: Index entry in @item with : produces invalid Info: %main::value
 ',
-    'text' => 'Index entry in @vtable with : produces invalid Info: %main::value',
+    'text' => 'Index entry in @item with : produces invalid Info: %main::value',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 8

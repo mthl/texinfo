@@ -107,6 +107,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'd--effn_name',
               'number' => 1
             },
@@ -347,6 +348,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'de--ffn_name',
               'number' => 2
             },
@@ -544,6 +546,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'i',
               'number' => 3
             },
@@ -657,6 +660,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'truc',
               'number' => 4
             },
@@ -774,6 +778,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'log trap',
               'number' => 5
             },
@@ -895,6 +900,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'log trap1',
               'number' => 6
             },
@@ -1017,6 +1023,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'log trap2',
               'number' => 7
             },
@@ -1125,6 +1132,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'id ule',
               'number' => 8
             },
@@ -1255,6 +1263,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'id i ule',
               'number' => 9
             },
@@ -1330,6 +1339,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'machin',
               'number' => 10
             },
@@ -1422,6 +1432,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'bidule machin',
               'number' => 11
             },
@@ -1502,6 +1513,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'machin',
               'number' => 12
             },
@@ -1629,6 +1641,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'followed',
               'number' => 13
             },
@@ -1774,6 +1787,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'after',
               'number' => 14
             },
@@ -1919,6 +1933,7 @@ $result_trees{'def'} = {
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deffn',
               'key' => 'deffnx',
               'number' => 15
             },

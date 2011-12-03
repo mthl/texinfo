@@ -191,6 +191,7 @@ $result_trees{'empty_deftypeop_name'} = {
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
               'index_prefix' => 'f',
+              'index_type_command' => 'deftypeop',
               'key' => 'expose on com',
               'number' => 1
             },

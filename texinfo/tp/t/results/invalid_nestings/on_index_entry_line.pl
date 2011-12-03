@@ -192,6 +192,7 @@ $result_trees{'on_index_entry_line'} = {
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
           'index_prefix' => 'c',
+          'index_type_command' => 'cindex',
           'key' => 'in titlefont exdent
 ',
           'number' => 1

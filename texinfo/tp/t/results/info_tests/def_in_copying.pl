@@ -267,6 +267,7 @@ deffnx lines
                       'index_at_command' => 'deffn',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
+                      'index_type_command' => 'deffn',
                       'key' => 'bb',
                       'number' => 1,
                       'region' => {}
@@ -356,6 +357,7 @@ deffnx lines
                       'index_at_command' => 'deffnx',
                       'index_name' => 'fn',
                       'index_prefix' => 'f',
+                      'index_type_command' => 'deffn',
                       'key' => 'bbx',
                       'number' => 2,
                       'region' => {}
@@ -579,6 +581,7 @@ deffnx lines
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
+                  'index_type_command' => 'deffn',
                   'key' => 'bb',
                   'node' => {},
                   'number' => 3
@@ -668,6 +671,7 @@ deffnx lines
                   'index_at_command' => 'deffnx',
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
+                  'index_type_command' => 'deffn',
                   'key' => 'bbx',
                   'node' => {},
                   'number' => 4

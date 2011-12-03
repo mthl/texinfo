@@ -2211,9 +2211,10 @@ sub _non_bracketed_contents($)
 # for index entries and v|ftable items, it is the index entry content, 
 # for def, it is the parsed arguments, based on the definition line 
 # arguments.
-sub _enter_index_entry($$$$$$)
+sub _enter_index_entry($$$$$$$)
 {
   my $self = shift;
+  my $command_container = shift;
   my $command = shift;
   my $current = shift;
   my $content = shift;
@@ -2222,13 +2223,14 @@ sub _enter_index_entry($$$$$$)
 
   $content_normalized = $content if (!defined($content_normalized));
 
-  my $prefix = $self->{'command_index_prefix'}->{$command};
+  my $prefix = $self->{'command_index_prefix'}->{$command_container};
   my $index_name = $self->{'prefix_to_index_name'}->{$prefix};
   my $number = (defined($self->{'index_entries'}->{$index_name})
                  ? (scalar(@{$self->{'index_entries'}->{$index_name}}) + 1)
                    : 1);
   my $index_entry = { 'index_name'           => $index_name,
                       'index_at_command'     => $command,
+                      'index_type_command'   => $command_container,
                       'index_prefix'         => $prefix,
                       'content'              => $content,
                       'content_normalized'   => $content_normalized,
@@ -2511,6 +2513,7 @@ sub _end_line($$$)
           $index_contents = [$index_entry];
         }
         _enter_index_entry($self, 
+          $current->{'parent'}->{'extra'}->{'def_command'},
           $current->{'parent'}->{'extra'}->{'original_def_cmdname'},
           $current->{'parent'}, $index_contents, 
           $index_contents_normalized, $line_nr);
@@ -2898,11 +2901,13 @@ sub _end_line($$$)
         $current->{'extra'}->{'misc_content'} = \@contents;
         if (($command eq 'item' or $command eq 'itemx')
             and $self->{'command_index_prefix'}->{$current->{'parent'}->{'cmdname'}}) {
-          _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, $current,
+          _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, 
+                             $command, $current,
                              $current->{'extra'}->{'misc_content'}, 
                              undef, $line_nr);
         } elsif ($self->{'command_index_prefix'}->{$current->{'cmdname'}}) {
-          _enter_index_entry($self, $current->{'cmdname'}, $current,
+          _enter_index_entry($self, $current->{'cmdname'}, 
+                             $current->{'cmdname'}, $current,
                              $current->{'extra'}->{'misc_content'}, 
                              undef, $line_nr);
           $current->{'type'} = 'index_entry_command';
@@ -5327,6 +5332,11 @@ The associated index prefix.
 =item index_at_command
 
 The name of the @-command associated with the index entry.
+
+=item index_type_command
+
+The @-command associated with the index entry allowing to 
+find the index type.
 
 =item content
 

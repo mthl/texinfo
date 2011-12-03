@@ -324,6 +324,7 @@ $result_trees{'multitable'} = {
                               'index_at_command' => 'cindex',
                               'index_name' => 'cp',
                               'index_prefix' => 'c',
+                              'index_type_command' => 'cindex',
                               'key' => 'index entry within multitable',
                               'number' => 1
                             },

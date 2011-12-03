@@ -310,6 +310,7 @@ $result_trees{'table'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_prefix' => 'c',
+                  'index_type_command' => 'cindex',
                   'key' => 'index entry',
                   'number' => 1
                 },
@@ -373,9 +374,10 @@ $result_trees{'table'} = {
                       ],
                       'content_normalized' => [],
                       'in_code' => 1,
-                      'index_at_command' => 'vtable',
+                      'index_at_command' => 'item',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
+                      'index_type_command' => 'vtable',
                       'key' => 'vtable item',
                       'number' => 1
                     },
@@ -441,6 +443,7 @@ $result_trees{'table'} = {
                           'index_at_command' => 'kindex',
                           'index_name' => 'ky',
                           'index_prefix' => 'k',
+                          'index_type_command' => 'kindex',
                           'key' => 'key',
                           'number' => 1
                         },
@@ -505,9 +508,10 @@ $result_trees{'table'} = {
                       ],
                       'content_normalized' => [],
                       'in_code' => 1,
-                      'index_at_command' => 'vtable',
+                      'index_at_command' => 'itemx',
                       'index_name' => 'vr',
                       'index_prefix' => 'v',
+                      'index_type_command' => 'vtable',
                       'key' => 'itemx vtable',
                       'number' => 2
                     },

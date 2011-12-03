@@ -105,6 +105,7 @@ $result_trees{'multitable_item_in_index'} = {
                   'index_at_command' => 'vindex',
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
+                  'index_type_command' => 'vindex',
                   'key' => 'on item line',
                   'number' => 1
                 },
