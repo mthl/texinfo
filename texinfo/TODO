@@ -1,4 +1,4 @@
-$Id: TODO,v 1.55 2011-12-03 18:44:22 pertusus Exp $
+$Id: TODO,v 1.56 2011-12-04 20:56:37 pertusus Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -76,12 +76,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     makeinfo --set RAW_TEXT comes close.
   - HTML: different splits for different chapters?
   - HTML: support thumbnails.
-  - HTML: make images of math, maybe.
-  - HTML: allow settable background color, table colors and spacing,
-    <head> meta tags, etc.  A la http://texi2html.cvshome.org.  In fact:
   - HTML: have a library of different CSS styles.
     http://mail.gnu.org/archive/html/bug-texinfo/2004-01/msg00025.html
-  - XML: cannot be loaded directly in a browser; why not?
+  - XML: cannot be loaded directly in a browser; browsers are supposed to
+    be able to look up the DTD and do something.
   - add --output-encoding.  Design better the encoding handling.
   - Support output formats retaining the tree structure of Texinfo documents
     as parsed by the Parser.  A lisp-like format for GUILE, and maybe JSON.
