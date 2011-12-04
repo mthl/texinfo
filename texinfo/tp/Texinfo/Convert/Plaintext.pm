@@ -259,6 +259,8 @@ foreach my $asis_command (@asis_commands) {
 my @quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
   'option', 'samp');
 
+# Quotes are reset in converter_initialize and unicode quotes are used 
+# if @documentencoding utf-8 is used.
 foreach my $quoted_command (@quoted_commands) {
   $style_map{$quoted_command} = ['`', "'"];
 }
@@ -352,6 +354,14 @@ sub converter_initialize($)
   foreach my $format (@out_formats) {
     $self->{'ignored_commands'}->{$format} = 1 
        unless ($self->{'expanded_formats_hash'}->{$format});
+  }
+
+  %{$self->{'style_map'}} = %style_map;
+  if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'} 
+      and $self->{'encoding_name'} eq 'utf-8') {
+    foreach my $quoted_command (@quoted_commands) {
+      $self->{'style_map'}->{$quoted_command} = ["\x{2018}", "\x{2019}"];
+    }
   }
 
   return $self;
@@ -1295,7 +1305,7 @@ sub _convert($$)
       $formatter->{'container'}->inhibit_end_sentence()
         if ($accented_text ne '');
       return $result;
-    } elsif ($style_map{$command} 
+    } elsif ($self->{'style_map'}->{$command} 
          or ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command')) {
       $formatter->{'code'}++
         if ($code_style_commands{$command});
@@ -1319,8 +1329,8 @@ sub _convert($$)
         $text_before = $root->{'extra'}->{'begin'};
         $text_after = $root->{'extra'}->{'end'};
       } else {
-        $text_before = $style_map{$command}->[0];
-        $text_after = $style_map{$command}->[1];
+        $text_before = $self->{'style_map'}->{$command}->[0];
+        $text_after = $self->{'style_map'}->{$command}->[1];
       }
       $result .= $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_next($text_before, 

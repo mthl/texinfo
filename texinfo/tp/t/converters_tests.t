@@ -240,6 +240,24 @@ sp after para
 @sp 1
 @end example
 '],
+['documentencoding_utf8_and_insertions',
+'@documentencoding utf-8
+
+-- --- \'\' `` @code{in code}. @~e.
+
+@example
+-- --- \'\' `` @code{in code}. @~e.
+@end example
+'],
+['no_documentencoding_and_insertions',
+'
+-- --- \'\' `` @code{in code}. @~e.
+
+@example
+-- --- \'\' `` @code{in code}. @~e.
+@end example
+'],
+
 );
 
 # This should go to a file, not to code...
