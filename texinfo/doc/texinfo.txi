@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.398 2011-11-24 21:15:34 pertusus Exp $
+@c $Id: texinfo.txi,v 1.399 2011-12-04 02:55:19 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16836,10 +16836,41 @@ option takes an argument, or @code{--@var{opt}} if not.
 If set, and the menu entry and menu description are the same, then do
 not print the menu description.
 
+@item AFTER_BODY_OPEN
+For HTML@.  If set, the corresponding text will appear at the beginning of
+each HTML file.
+
+@item AFTER_ABOUT
+For HTML, in case an About element is output. If set, the corresponding 
+text will appear at the end of the About element. 
+
+@item AFTER_OVERVIEW
+@itemx AFTER_TOC_LINES
+For HTML@.  If set, the corresponding text is output after the 
+short table of contents for @code{AFTER_OVERVIEW} and after
+the table of contents for @code{AFTER_TOC_LINES}, otherwise a
+default string is used.
+
+
+@item BEFORE_OVERVIEW
+@itemx BEFORE_TOC_LINES
+For HTML@.  If set, the corresponding text is output before the 
+short table of contents for @code{BEFORE_OVERVIEW} and before
+the table of contents for @code{BEFORE_TOC_LINES}, otherwise a
+default string is used.
+
+@item BIG_RULE
+For HTML@.  Rule used after and before the top element and before 
+special elements, but not for footers and headers.
+
 @item BODYTEXT
 @cindex @code{<body>} text, customizing
 For HTML, the text appearing in @code{<body>}.  By default, set
 automatically taking into account the document language.
+
+@item CHAPTER_HEADER_LEVEL
+For HTML@.  Header formatting level used for chapter level sectioning
+commands.
 
 @item CLOSE_QUOTE_SYMBOL
 When a closing quote is needed, use the corresponding character.
@@ -16872,12 +16903,18 @@ For HTML@.  If this is set a @code{<table>} construction for
 @code{@@deffn} and similar @@-commands is used (looking more like the
 @TeX{} output), instead of definition lists.
 
-@item DEFAULT_ENCODING
-The default output file encoding.  Currently @samp{utf8} or
-@samp{ascii} for Info.
+@item DEFAULT_RULE
+For HTML@.  Rule used between element, except after and before the 
+top element, or before special elements, and for footers and headers.
+
+@c not used for now
+@c @item DEFAULT_ENCODING
+@c The default output file encoding.  Currently @samp{utf8} or
+@c @samp{ascii} for Info.
 
 @item DO_ABOUT
-If unset never do an About special element. @c @xref{Output Elements Defined}.
+If set to 0 never do an About special element.
+If set to 1 always do an About special element. @c @xref{Output Elements Defined}.
 
 @item DOCTYPE
 @vindex SystemLiteral
@@ -16890,6 +16927,10 @@ document.
 For debugging.  If set, the result of the first pass is put in
 @file{@var{docname}.passtexi}, and the result of the second pass is
 put in @file{@var{docname}.passfirst}.
+
+@item DUMP_TREE
+For debugging.  If set, the tree constructed upon parsing a Texinfo
+document is output on standard error.
 
 @item ENABLE_ENCODING_USE_ENTITY
 For HTML, XML.  If @option{--enable-encoding} is set, and there is an
@@ -16914,6 +16955,17 @@ The extension added to the output file name.
 For HTML@.  Base directory for external manuals.  It is better to use
 the general external cross-reference mechanism (@pxref{HTML Xref
 Configuration}) and avoid this variable.
+
+@item EXTRA_HEAD
+For HTML, additional text appearing within @code{<head>}.
+
+@item FOOTNOTE_END_HEADER_LEVEL
+For HTML@.  Header formatting level used for footnotes header
+with footnotestyle end. @xref{Footnote Styles}.
+
+@item FOOTNOTE_SEPARATE_HEADER_LEVEL
+For HTML@.  Header formatting level used for footnotes header
+with footnotestyle separate. @xref{Footnote Styles}.
 
 @item FRAMES
 For HTML@.  If set, a file describing the frame layout is generated,
@@ -16944,6 +16996,9 @@ For HTML@.  Use icons for the navigation panel.
 @item IGNORE_BEFORE_SETFILENAME
 If set, begin outputting at @code{@@setfilename}, if
 @code{@@setfilename} is present.
+
+@item INDEX_ENTRY_COLON
+Symbol used between the index entry and the associated node or section.
 
 @c @item IN_ENCODING
 @c Set the input file encoding (@pxref{documentencoding,,
@@ -16995,6 +17050,22 @@ temporary files. None of the file name components in this directory
 name may start with @samp{.}; otherwise, @command{latex2html} will
 fail (because of @command{dvips}).
 
+@item MAX_MACRO_CALL_NESTING
+The maximal number of recursive calls of @@-commands defined
+through @code{@@rmacro}.  The purpose of this variable is to avoid
+infinite recursions.
+
+@item MAX_HEADER_LEVEL
+For HTML@.  Maximum header formatting level used (higher header formatting 
+level correspond to lower level in sectioning).
+
+@item MENU_ENTRY_COLON
+Symbol used between the menu entry and the description.
+
+@item MENU_SYMBOL
+Symbol used in front of menu entries when nodes names are used for 
+menu entries formatting.
+
 @item MONOLITHIC
 For HTML@.  Output only one file including the table of contents.  This
 only makes sense when the output is not split.  It is set by default.
@@ -17027,12 +17098,36 @@ this is set automatically based on @code{@@documentencoding}.
 If set, the cross references in the Overview link to the corresponding
 Table of Contents entry.
 
+@item PACKAGE
+@itemx PACKAGE_VERSION
+@itemx PACKAGE_AND_VERSION
+@itemx PACKAGE_URL
+@itemx PACKAGE_NAME
+Package short name, package version, package name and version concatenated,
+package url and package name.  In the default case these variables are set 
+through autoconf/automake/configure.
+
+@item PRE_ABOUT
+For HTML, in case an About element is output.
+If set to a text string, this text will appear at the beginning of the 
+About element.  If set to a reference on a subroutine, the result
+of the subroutine call  will appear at the beginning of the 
+About element.  If not set some default text is used.
+
+@item PRE_BODY_CLOSE
+For HTML@.  If set, the corresponding text will appear at the footer of
+each HTML file.
+
 @item PREFIX
 the output file prefix, which is prepended to some output files.  By
 default it is set by @code{@@setfilename} or from the input file
 (@pxref{setfilename}).  How this value is used depends on the value of
 other configuration variables or command line options, such as split output
 and @code{NODE_FILENAMES}.
+
+@item PROGRAM
+Name of the program used.  It is set automatically in the default case
+to the name of the program launched, with a trailing @samp{.pl} removed.
 
 @item PROGRAM_NAME_IN_FOOTER
 For HTML@.  If set, output the program name and miscellanous related
@@ -17076,6 +17171,9 @@ If set to true, some variables which are normally dynamically
 generated anew for each run (the date, the program name, the version)
 are set to fixed and given values.  This is useful to compare the
 output to a reference file, as is done for the tests.
+
+@item TEXI2DVI
+Name of the command used to produce PDF and DVI.
 
 @item TOC_FILE
 @vindex INLINE_CONTENTS
@@ -17131,6 +17229,11 @@ characters when there is no named entity.
 
 @item USE_REL_REV
 For HTML@.  Use @code{rel} in cross references.
+
+@item USE_UP_NODE_FOR_ELEMENT_UP
+Complete up sectioning direction with node direction when there is no
+sectioning up direction.  In practice this could only happen when there is
+no @@top section.  Not set in the default case.
 
 @item NO_USE_SETFILENAME
 If set, do not use @code{@@setfilename} to set the document name,
@@ -21105,7 +21208,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.398 2011-11-24 21:15:34 pertusus Exp $
+$Id: texinfo.txi,v 1.399 2011-12-04 02:55:19 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21176,7 +21279,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.398 2011-11-24 21:15:34 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.399 2011-12-04 02:55:19 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

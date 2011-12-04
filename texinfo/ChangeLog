@@ -1,3 +1,8 @@
+2011-12-04  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Other Configuration Variables): document
+	all configuration variables associated with a string.
+
 2011-12-03  Patrice Dumas  <pertusus@free.fr>
 
 	* TODO, tp/TODO: remove fixed entries, add some more and put the entry
