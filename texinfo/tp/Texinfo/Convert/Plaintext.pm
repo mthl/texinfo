@@ -418,6 +418,8 @@ sub output($$)
   my $root = shift;
 
   my $outfile = '-';
+  $self->set_conf('OUTFILE', '-');
+  $self->_set_outfile();
   if (defined($self->{'output_file'})) {
     $outfile = $self->{'output_file'};
   }
