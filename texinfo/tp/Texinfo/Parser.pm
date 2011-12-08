@@ -5314,7 +5314,7 @@ name merged in the value.
 
 Last, I<$index_entries_arrays> is an hash reference. The keys are
 index names, the values are index entry structures that are associated
-with ell the index entries, associated to 0-commands like C<@cindex>,
+with the index entries, associated to @-commands like C<@cindex>,
 or C<@item> in C<@vtable>, or definition commands entries like C<@deffn>.
 
 The keys of the index entry structures are
@@ -5607,7 +5607,7 @@ element:
 
 =item index_entry_command
 
-This is the type of index entry commandsl ike C<@cindex>, and, more
+This is the type of index entry command like C<@cindex>, and, more
 importantly user defined index entry commands.  So for example if there
 is 
 

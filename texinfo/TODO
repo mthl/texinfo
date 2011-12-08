@@ -1,4 +1,4 @@
-$Id: TODO,v 1.57 2011-12-04 23:18:00 pertusus Exp $
+$Id: TODO,v 1.58 2011-12-08 20:34:41 pertusus Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -69,6 +69,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Add support for other Latin 9 (and Latin 2 and Latin 1) characters.
 
 * Makeinfo:
+  - add automatic generation of @node and @menu.
   - Improve the HTML customization API.
   - A detexinfo program, like detex or delatex.  This command would
     strip all the texinfo commands out, and would be used as a filter on
