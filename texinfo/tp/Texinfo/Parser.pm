@@ -3394,7 +3394,7 @@ sub _parse_texi($;$)
                                    $name), $self->{'macros'}->{$name}->{'line_nr'});
               }
               if ($all_commands{$name}) {
-                $self->line_warn (sprintf($self->__("Redefining Texinfo language command \@%s"), 
+                $self->line_warn (sprintf($self->__("Redefining Texinfo language command: \@%s"), 
                                           $name), $current->{'line_nr'});
               }
               $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current
