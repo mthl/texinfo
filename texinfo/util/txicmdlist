@@ -26,12 +26,4 @@ BEGIN {
 
 use Texinfo::Common;
 
-my @all_commands = (
-  keys(%Texinfo::Common::block_commands),
-  keys(%Texinfo::Common::brace_commands),
-  keys(%Texinfo::Common::misc_commands),
-  keys(%Texinfo::Common::no_brace_commands), 
-  qw(value),
-);
-
-print map { "\@$_\n" } sort (@all_commands);
+print map { "\@$_\n" } sort (keys(%Texinfo::Common::all_commands));

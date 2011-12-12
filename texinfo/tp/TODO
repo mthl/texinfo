@@ -86,6 +86,12 @@ in html test footnotestyle separate.
 Future features
 ===============
 
+Add some elements of texinfo that are not of interest in the
+tree, like beginning and end of included file, @ protecting
+end of line in @def*, begin and end of user defined macro
+or value expansion.  Maybe call the key for these elements
+'sourcemark'?
+
 Right now VERBOSE is almost not used.
 
 Handle better @exdent in html? (there is a FIXME in the code)

@@ -258,6 +258,7 @@ my %region_commands           = %Texinfo::Common::region_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %in_heading_commands       = %Texinfo::Common::in_heading_commands;
 my %explained_commands        = %Texinfo::Common::explained_commands;
+my %all_commands              = %Texinfo::Common::all_commands;
 
 my %keep_line_nr_brace_commands = %context_brace_commands;
 foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
@@ -3391,6 +3392,10 @@ sub _parse_texi($;$)
                                           $name), $current->{'line_nr'});
                 $self->line_warn (sprintf($self->__("here is the previous definition of `%s'"), 
                                    $name), $self->{'macros'}->{$name}->{'line_nr'});
+              }
+              if ($all_commands{$name}) {
+                $self->line_warn (sprintf($self->__("Redefining Texinfo language command \@%s"), 
+                                          $name), $current->{'line_nr'});
               }
               $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current
                 unless ($current->{'extra'}->{'invalid_syntax'});

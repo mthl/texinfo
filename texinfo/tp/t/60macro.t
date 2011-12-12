@@ -935,7 +935,14 @@ a
 @end macro
 
 @witherror{aaa}
-']
+'],
+['redefine_texinfo_macro',
+'@macro code{arg}
+@emph{\arg\}
+@end macro
+
+@code{code}
+'],
 );
 
 my @todo =(

@@ -729,6 +729,17 @@ foreach my $sectioning_command (keys (%command_structuring_level)) {
 
 $root_commands{'node'} = 1;
 
+our %all_commands;
+foreach my $command (
+  keys(%Texinfo::Common::block_commands),
+  keys(%Texinfo::Common::brace_commands),
+  keys(%Texinfo::Common::misc_commands),
+  keys(%Texinfo::Common::no_brace_commands), 
+  qw(value),
+ ) {
+  $all_commands{$command} = 1;
+} 
+
 our @MONTH_NAMES =
     (
      'January', 'February', 'March', 'April', 'May',
@@ -1384,6 +1395,10 @@ The key of the hashes are @-command names without the @.  The
 following hashes are available:
 
 =over
+
+=item %all_commands
+
+All the @-commands.
 
 =item %no_brace_commands
 
