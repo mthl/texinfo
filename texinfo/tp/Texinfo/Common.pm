@@ -53,6 +53,7 @@ numbered_heading
 trim_spaces_comment_from_content
 float_name_caption
 normalize_top_node_name
+protect_comma_in_tree
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -1356,6 +1357,72 @@ sub count_bytes($$)
   }
 }
 
+sub modify_tree($$$);
+sub modify_tree($$$)
+{
+  my $self = shift;
+  my $tree = shift;
+  my $operation = shift;
+
+  if ($tree->{'args'}) {
+    my @args = @{$tree->{'args'}};
+    $tree->{'args'} = [];
+    foreach my $arg (@args) {
+      my @new_args = &$operation($self, 'arg', $arg);
+      push @{$tree->{'args'}}, @new_args;
+    }
+    foreach my $arg (@{$tree->{'args'}}) {
+      modify_tree($self, $arg, $operation);
+    }
+  }
+  if ($tree->{'contents'}) {
+    my @contents = @{$tree->{'contents'}};
+    $tree->{'contents'} = [];
+    foreach my $content (@contents) {
+      my @new_contents = &$operation($self, 'content', $content);
+      push @{$tree->{'contents'}}, @new_contents;
+    }
+    foreach my $content (@{$tree->{'contents'}}) {
+      modify_tree($self, $content, $operation);
+    }
+  }
+  return $tree;
+}
+
+sub _protect_comma($$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $current = shift;
+
+  if (defined($current->{'text'}) and $current->{'text'} =~ /,/
+      and !(defined($current->{'type'}) and $current->{'type'} eq 'raw')) {
+    my @result = ();
+    my @text_fragments = split /,/, $current->{'text'};
+    foreach my $text_fragment (@text_fragments) {
+      if ($text_fragment ne '') {
+        my $new_text = {'text' => $text_fragment, 
+                        'parent' => $current->{'parent'}};
+        $new_text->{'type'} = $current->{'type'} if defined($current->{'type'});
+        push @result, $new_text;
+      }
+      push @result, {'cmdname' => 'comma', 'parent' => $current->{'parent'},
+                     'args' => [{'type' => 'brace_command_arg'}]};
+    }
+    pop @result unless ($current->{'text'} =~ /,$/);
+    return @result;
+  } else {
+    return ($current);
+  }
+}
+
+sub protect_comma_in_tree($$)
+{
+  my $self = shift;
+  my $tree = shift;
+  return modify_tree($self, $tree, \&_protect_comma);
+}
+
 
 1;
 
@@ -1583,6 +1650,10 @@ and spaces and comments at end from a content array, modifying it.
 
 Normalize the node name string given in argument, by normalizing
 Top node case.
+
+=item protect_comma_in_tree
+
+Protect comma characters, replacing C<,> with @comma{} in tree.
 
 =back
 
