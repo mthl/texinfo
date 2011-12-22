@@ -331,7 +331,7 @@ foreach my $command ('node', 'end') {
 }
 
 foreach my $no_paragraph_command ('titlefont', 'caption', 'shortcaption', 
-          'image', '*', 'hyphenation', 'anchor') {
+          'image', '*', 'hyphenation', 'anchor', 'errormsg') {
   $default_no_paragraph_commands{$no_paragraph_command} = 1;
 }
 
@@ -422,7 +422,7 @@ delete $simple_text_commands{'exdent'};
 foreach my $command ('titlefont', 'anchor', 'xref','ref','pxref', 
                      'inforef', 'shortcaption', 'math', 'indicateurl',
                      'email', 'uref', 'url', 'image', 'abbr', 'acronym', 
-                     'dmn', 'ctrl') {
+                     'dmn', 'ctrl', 'errormsg') {
   $simple_text_commands{$command} = 1;
 }
 
@@ -4537,6 +4537,11 @@ sub _parse_texi($;$)
                     = $explained->{'extra'}->{'brace_command_contents'}->[1];
                 }
               }
+            } elsif ($current->{'parent'}->{'cmdname'} eq 'errormsg') {
+              my $error_message_text 
+               = Texinfo::Convert::Text::convert($current,
+                          {Texinfo::Common::_convert_text_options($self)});
+              $self->line_error($error_message_text, $line_nr);
             } elsif (_command_with_command_as_argument($current->{'parent'}->{'parent'})
                  and scalar(@{$current->{'contents'}}) == 0) {
                print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'parent'}->{'cmdname'} command_as_argument braces $current->{'cmdname'}\n" if ($self->{'DEBUG'});

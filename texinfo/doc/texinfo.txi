@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.399 2011-12-04 02:55:19 pertusus Exp $
+@c $Id: texinfo.txi,v 1.400 2011-12-22 10:54:40 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -21208,7 +21208,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.399 2011-12-04 02:55:19 pertusus Exp $
+$Id: texinfo.txi,v 1.400 2011-12-22 10:54:40 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21279,7 +21279,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.399 2011-12-04 02:55:19 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.400 2011-12-22 10:54:40 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -22654,7 +22654,7 @@ End Tag Table
 @end example
 
 The @samp{(Indirect)} line is the next line after @samp{Tag Table:}
-in the case of split output only.  In this 
+in the case of split output only.
 
 Each following line defines an identifier as either an anchor or a
 node, as specific.  It is an error to define the same identifier both

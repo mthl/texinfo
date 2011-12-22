@@ -423,7 +423,7 @@ foreach my $style_command ('asis','b','cite','clicksequence',
 
 foreach my $one_arg_command (
   'ctrl','dmn', 'w', 'key',
-  'titlefont','hyphenation','anchor') {
+  'titlefont','hyphenation','anchor','errormsg') {
   $brace_commands{$one_arg_command} = 1;
 }
 

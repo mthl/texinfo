@@ -427,7 +427,17 @@ First item text
 @anchor{TOP @ref{Top}}'],
 ['ref_in_ref',
 '@node Top
-@ref{@ref{Top}}']
+@ref{@ref{Top}}'],
+['in_errormsg',
+'
+@anchor{in ref}
+Text. @errormsg{@anchor{in anchor} @ref{in ref}}
+
+@errormsg{
+@table @asis
+@item item
+@end table
+}'],
 );
 
 my @formatted_cases = (

@@ -516,7 +516,11 @@ In float with caption.
 ['setfilename_in_paragraph',
 'Some text
 @setfilename filename.info
-']
+'],
+['test_errormsg',
+'Some text
+@errormsg{Text @~e @code{code}}
+'],
 );
 
 my @test_invalid = (

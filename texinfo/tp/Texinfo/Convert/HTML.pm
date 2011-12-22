@@ -7233,7 +7233,8 @@ sub _convert($$;$)
       }
       return $result;
     } else {
-      print STDERR "BUG: unknown command `$command_name'\n";
+      print STDERR "Unknown command `$command_name'\n"
+       if ($self->get_conf('VERBOSE') or $self->get_conf('DEBUG'));
       return '';
     }
     if ($root_commands{$command_name}) {

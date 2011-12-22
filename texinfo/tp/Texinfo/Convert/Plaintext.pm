@@ -1642,8 +1642,8 @@ sub _convert($$)
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
              and $root->{'args'}->[0]->{'type'}
              and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg') {
-      warn "Unhandled command with braces $root->{'cmdname'}\n";
-      $result .= "!!!!! Unhandled command with braces $root->{'cmdname'} !!!!!\n";
+      print STDERR "Unknown command with braces `$root->{'cmdname'}'\n"
+       if ($self->get_conf('VERBOSE') or $self->get_conf('DEBUG'));
     # block commands
     } elsif (exists($block_commands{$root->{'cmdname'}})) {
       # remark:
