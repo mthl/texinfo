@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.400 2011-12-22 10:54:40 pertusus Exp $
+@c $Id: texinfo.txi,v 1.401 2011-12-23 16:40:12 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -162,8 +162,8 @@ the menu lists all the lower level nodes in the document.
 * Include Files::                 How to incorporate other Texinfo files.
 
 * Hardcopy::                      Output for paper, with @TeX{}.
-* Generic Translator texi2any/makeinfo:: The all purpose converter.
-* Creating and Installing Info Files::   Details on Info output.
+* Generic Translator texi2any::   @command{texi2any}, an all-purpose converter.
+* Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
 * texi2any Output Customization:: Fine tuning with initialization files.
 
@@ -603,7 +603,7 @@ Formatting and Printing Hardcopy
 * PDF Output::                  Portable Document Format output.
 * Obtaining TeX::               How to Obtain @TeX{}.
 
-Generic Translator texi2any/makeinfo
+Generic Translator texi2any
 
 * Invoking texi2any::           How to run @command{texi2any} and @command{makeinfo} 
                                 from a shell.
@@ -9610,6 +9610,7 @@ extension, because the different processors support different formats:
 @pindex eps image format
 @TeX{} (DVI output) reads the file @file{@var{filename}.eps}
 (Encapsulated PostScript format).
+
 @item
 @pindex pdftex@r{, and images}
 @pindex png image format
@@ -9619,9 +9620,11 @@ pdf@TeX{} reads @file{@var{filename}.pdf}, @file{@var{filename}.png},
 @file{@var{filename}.jpg}, or @file{@var{filename}.jpeg} (in that
 order).  It also tries uppercase versions of the extensions.  The PDF
 format does not support EPS images, so such must be converted first.
+
 @item
 @code{makeinfo} includes @file{@var{filename}.txt} verbatim for
 Info output (more or less as if it was an @code{@@example}).
+
 @item
 @code{makeinfo} uses the optional fifth argument @var{extension} to
 @code{@@image} for the filename extension, if it is specified.  Any
@@ -11519,15 +11522,6 @@ Here are the different glyph commands:@refill
 @item @point{}
 @code{@@point@{@}} shows the location of point.
 @end table
-
-@menu
-* result::
-* expansion::
-* Print Glyph::
-* Error Glyph::
-* Equivalence::
-* Point Glyph::
-@end menu
 
 
 @node result
@@ -14216,8 +14210,8 @@ macro can have any number of @dfn{parameters}---text you supply each
 time you use the macro.
 
 Incidentally, these macros have nothing to do with the @code{@@defmac}
-command, which is for documenting macros in the subject of the manual
-(@pxref{Def Cmd Template}).
+command, which is for documenting macros in the subject area of the
+manual (@pxref{Def Cmd Template}).
 
 @item
 @samp{@@alias} is a convenient way to define a new name for an existing
@@ -15112,7 +15106,7 @@ Texinfo file: one for converting the Texinfo file into a file that will be
 printed, a second for sorting indices, and a third for printing the
 formatted document.  When you use the shell commands, you can either
 work directly in the operating system shell or work within a shell
-inside GNU Emacs.
+inside GNU Emacs (or some other computing environment).
 
 If you are using GNU Emacs, you can use commands provided by Texinfo
 mode instead of shell commands.  In addition to the three commands to
@@ -16135,8 +16129,8 @@ Many other @TeX{} distributions are available; see
 @uref{http://tug.org/}.
 
 
-@node Generic Translator texi2any/makeinfo
-@chapter A Generic Translator for Texinfo: @command{texi2any}/@command{makeinfo}
+@node Generic Translator texi2any
+@chapter @command{texi2any}: A Generic Translator for Texinfo
 
 @command{texi2any} is a generic translator for Texinfo that can
 produce different output formats and is highly customizable.  By
@@ -16154,8 +16148,8 @@ default, the formats that may be produced are:
 @item Texinfo XML (with @option{--xml}).
 @end table
 
-@command{makeinfo} is an alias of @command{texi2any}.  Without any 
-command line option, @command{texi2any} generates Info output.
+@command{makeinfo} is an alias for @command{texi2any}.  By default,
+both @command{texi2any} and @command{makeinfo} generate Info output.
 
 Beside these default formats, command line options to
 @command{texi2any} can determine important aspects of the output.
@@ -16176,6 +16170,7 @@ The rest of this chapter gives further details on the program.
 
 @node Invoking texi2any
 @section Running @command{texi2any}/@code{makeinfo} from a Shell
+@anchor{Invoking makeinfo}
 @pindex makeinfo
 @pindex texi2any
 
@@ -21208,7 +21203,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.400 2011-12-22 10:54:40 pertusus Exp $
+$Id: texinfo.txi,v 1.401 2011-12-23 16:40:12 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21279,7 +21274,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.400 2011-12-22 10:54:40 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.401 2011-12-23 16:40:12 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,6 +1,13 @@
+2011-12-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Generic Translator texi2any): rename node.
+	(Invoking makeinfo): leave anchor behind.
+	(Glyphs summary): remove spurious menu.
+	Other small wording changes.
+
 2011-12-08  Patrice Dumas  <pertusus@free.fr>
 
-	* TODO: add add automatic generation of @node and @menu.
+	* TODO: add automatic generation of @node and @menu.
 
 2011-12-04  Patrice Dumas  <pertusus@free.fr>
 
