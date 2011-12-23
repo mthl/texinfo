@@ -1,5 +1,11 @@
 2011-12-23  Karl Berry  <karl@gnu.org>
 
+	* NEWS: new command @errormsg.
+	* doc/texinfo.tex (\errormsg): new command.
+	(\commondummiesnofonts): add \anchor for the heck of it.
+	* doc/texinfo.txi (@@-Command List): add it.  
+	* doc/refcard/txirefcard.txi (Ending): likewise.
+
 	* doc/texinfo.txi (Generic Translator texi2any): rename node.
 	(Invoking makeinfo): leave anchor behind.
 	(Glyphs summary): remove spurious menu.

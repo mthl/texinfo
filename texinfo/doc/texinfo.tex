@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2011-11-09.15}
+\def\texinfoversion{2011-12-23.09}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -229,6 +229,13 @@
   \tracingcommands3  % 3 gives us more in etex
   \errorcontextlines16
 }%
+
+% @errormsg{MSG}.  Do the index-like expansions on MSG, but if things
+% aren't perfect, it's not the end of the world, being an error message,
+% after all.
+% 
+\def\errormsg{\begingroup \indexdummies \doerrormsg}
+\def\doerrormsg#1{\errmessage{#1}}
 
 % add check for \lastpenalty to plain's definitions.  If the last thing
 % we did was a \nobreak, we don't want to insert more space.
@@ -4486,6 +4493,7 @@ end
   %
   % Commands that take arguments.
   \definedummyword\acronym
+  \definedummyword\anchor
   \definedummyword\cite
   \definedummyword\code
   \definedummyword\command

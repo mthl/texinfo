@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.19 2011-10-05 23:58:18 karl Exp $
+% $Id: txirefcard.tex,v 1.20 2011-12-23 17:14:44 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -206,7 +206,7 @@ Floor, Boston, MA 02110-1301 USA.
   \nobreak\noindent {\subheadingfont #1}%
   \nobreak\vskip 0pt plus.5ex\nobreak}
 %
-\outer\def\subsection#1{\glueabove{1ex plus.5ex minus.5ex}%
+\outer\def\subsection#1{\glueabove{.75ex plus.5ex minus.5ex}%
   \nobreak\noindent \centerline{\it #1}%
   \nobreak\vskip-.5ex % reduce parskip
   \nobreak
@@ -572,7 +572,7 @@ corresponding \code{@end \var{envname}} is seen.
 \txicmd{@exdent}{line-of-text}{Output \var{line-of-text} without any indentation.}
 \txicmd{@cartouche}{}{Highlight an example or quotation by drawing a box with rounded corners around it. Pair with \code{@end cartouche}. No effect in Info.}
 
-\subsection{Displays in regular text fonts}
+\subsection{Displays using regular text fonts}
 
 \txicmd{@format}{}{Begin formatted text: do not fill text; retain normal
 margins and normal text font.  Pair with \code{@end format}.}
@@ -581,8 +581,8 @@ margins and normal text font.  Pair with \code{@end format}.}
 \txicmd{@smalldisplay}{}{Like \code{@display}, but select a smaller (text) font where possible.  Pair with \code{@end smalldisplay}.}
 \txicmd{@flushleft}{}{Left justify lines: do not fill text, retain normal margins and normal text font. Pair with \code{@end flushleft}.}
 \txicmd{@flushright}{}{Right justify lines, leaving the left end ragged: do not fill text, retain normal margins and normal text font. Pair with \code{@end flushright}.}
-\txicmd{@quotation}{}{Narrow both margins to indicate text that is quoted from another work; do normal line breaking and retain normal font. Takes optional argument of prefix text. Pair with \code{@end quotation}.}
 \txicmd{@raggedright}{}{Left justify lines, leaving the right end ragged: fill text, retain normal text font. Pair with \code{@end raggedright}.}
+\txicmd{@quotation}{}{Narrow both margins to indicate text that is quoted from another work; do normal line breaking and retain normal font. Takes optional argument of prefix text. Pair with \code{@end quotation}.}
 \txicmd{@smallquotation}{}{Like \code{@quotation}, but select a smaller (text) font where possible.  Pair with \code{@end quotation}.}
 
 \subsection{Displays using fixed-width fonts}
@@ -901,6 +901,10 @@ processing the document according to their desires.
 \section{Ending a Texinfo document}
 
 \txicmd{@bye}{}{End reading the Texinfo source.  Any following text in the file is ignored.}
+
+\smallskip Finally, this meta-command doesn't fit anywhere else:
+
+\txicmd{@errormsg}{\ttbraced{msg}}{Report \var{msg} as an error.}
 
 
 \chapter{Editing Texinfo sources in Emacs}

@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.205 2011-10-16 23:14:08 karl Exp $
+$Id: NEWS,v 1.206 2011-12-23 17:14:43 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -35,6 +35,7 @@ one of the relevant sections:
       in cross references by default, instead of node names.
   . new diacritic command @ogonek.
   . new commands for Icelandic letters eth and thorn: @DH{} @dh{} @TH{} @th{}.
+  . new command @errormsg to report an error.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
 
 * texi2any is a new generic converter that can produce all supported

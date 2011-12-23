@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.401 2011-12-23 16:40:12 karl Exp $
+@c $Id: texinfo.txi,v 1.402 2011-12-23 17:14:44 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19800,6 +19800,11 @@ glyph: @samp{@equiv{}}.  @xref{Equivalence}.
 Indicate to the reader with a glyph that the following text is
 an error message: @samp{@error{}}.  @xref{Error Glyph}.
 
+@item @@errormsg@{@var{msg}@}
+Report @var{msg} as an error to standard error, and exit unsuccessfully.
+Texinfo commands within @var{msg} are expanded to plain text.
+@c xx need xref, when we have #line? xx
+
 @item @@euro@{@}
 Generate the Euro currency sign.
 @xref{euro,,@code{@@euro@{@}}}.
@@ -21203,7 +21208,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.401 2011-12-23 16:40:12 karl Exp $
+$Id: texinfo.txi,v 1.402 2011-12-23 17:14:44 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21274,7 +21279,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.401 2011-12-23 16:40:12 karl Exp $
+@comment $Id: texinfo.txi,v 1.402 2011-12-23 17:14:44 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
