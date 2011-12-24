@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.14 2011-11-01 12:01:12 pertusus Exp $
+# $Id: Makefile.am,v 1.15 2011-12-24 01:46:50 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -75,36 +75,11 @@ dist_init_DATA = \
  init/book.pm \
  init/chm.pm \
  init/html32.pm \
- init/tex4ht.pm
+ init/tex4ht.pm \
+ init/latex2html.pm
 
 test_files = \
- t/01use.t \
- t/02coverage.t \
- t/03coverage_braces.t \
- t/04verb.t \
- t/05paragraph.t \
- t/06columnfractions.t \
- t/08misc_commands.t \
- t/09indices.t \
- t/10menu.t \
- t/16raw.t \
- t/181quotation.t \
- t/18itemize.t \
- t/19def.t \
- t/21multitable.t \
- t/22xtable.t \
- t/27float.t \
- t/28heading.t \
- t/30sectioning.t \
- t/50value.t \
- t/55conditionals.t \
- t/57invalid_nestings.t \
- t/58alias.t \
- t/60macro.t \
- t/70value_and_macro.t \
  t/README \
- t/accents.t \
- t/html_tests.t \
  t/include/a.txt \
  t/include/aa.txt \
  t/include/count_image.png \
@@ -120,9 +95,12 @@ test_files = \
  t/include/fextext \
  t/include/file_with_xml_chars.texi \
  t/include/image.txt \
+ t/include/image_encoded.txt \
  t/include/inc_@f--ile.texi \
  t/include/included_file_with_setfilename.texi \
  t/include/this_is_a_long_unknown_file.png \
+ t/include/verbatim_encoded.texi \
+ t/include/verbatim_encoded_latin1.texi \
  t/include/words.txt \
  t/include_reference/f--ile.png \
  t/include_reference/f--ile.txt \
@@ -130,17 +108,17 @@ test_files = \
  t/include_reference/incl-incl.txi \
  t/include_reference/macro_included.texi \
  t/include_reference/section_file.texi \
- t/info_tests.t \
+ t/init/only_toc_out.init \
+ t/init/cvs.init \
  t/init/redefine_need.init \
+ t/init/icons.init \
+ t/init/t2h_singular.init \
+ t/init/ignore_and_comments_output.init \
  t/init/test_directions.init \
+ t/init/mini_ker_t2h.init \
  t/init/test_renamed_nodes.init \
- t/languages.t \
+ t/init/misc_file_collision.init \
  t/manual_tree.pl \
- t/nodenormalization.t \
- t/paragraph.t \
- t/plaintext_tests.t \
- t/test_count.t \
- t/test_sort.t \
  t/test_utils.pl \
  #
 
@@ -166,13 +144,34 @@ if TP_TESTS
 TESTS = $(tp_tests)
 endif
 
+maintainance_files = \
+  maintain/all_tests.sh \
+  maintain/language-subtag-registry \
+  maintain/regenerate_converters_documentation.sh \
+  maintain/regenerate_documentlanguages.pl \
+  maintain/regenerate_file_lists.pl \
+  maintain/template.pod
+
+perl_specific_files = \
+  Makefile.PL \
+  Changes \
+  MANIFEST
+
 EXTRA_DIST = \
   texi2any.pl \
   $(test_results) \
   $(test_files) \
   $(tp_tests) \
-  maintain/regenerate_file_lists.pl \
+  $(maintainance_files) \
+  $(perl_specific_files) \
   maintain/lib
+
+MANIFEST: Makefile.am
+	echo "$(dist_modules_DATA) $(dist_converters_DATA) $(dist_debugmodules_DATA) " \
+	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_results) " \
+	"texi2any.pl $(maintainance_files) README TODO $(perl_specific_files)" \
+	 | sed 's/ \+/\n/g' | sort > $@
+    
 
 libsrcdir = $(srcdir)/maintain/lib
 
@@ -208,4 +207,4 @@ distclean-local:
 	rm -f t/results/*/*.pl.new
 	rm -rf $(relative_include_dir)
 
-CLEANFILES = texi2any
+CLEANFILES = texi2any makeinfo

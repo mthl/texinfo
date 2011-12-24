@@ -24,7 +24,8 @@ chdir("$mydir/..") || die "chdir $mydir/..: $!";
 find (\&wanted, ('t'));
 sub wanted 
 {
-  if (/\.pl$/ and $File::Find::dir =~ /^t\/results\//) {
+  if (/\.pl$/ and $File::Find::dir =~ /^t\/results\//
+      or /\.t$/ and $File::Find::dir =~ /t$/) {
     $files{$File::Find::name} = 1;
   }
 }

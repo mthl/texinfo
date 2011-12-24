@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# Helper script for tests.
+
 command=$1
 if [ $# -gt 0 ]; then 
  shift

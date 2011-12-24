@@ -1,4 +1,6 @@
 Revision history for Perl extension Texinfo::Parser.
+This files lists only perl specific informations.  The
+main ChangeLog is in the texinfo distribution.
 
 0.01  Sat Sep  4 13:51:26 2010
 	- original version; created by h2xs 1.23 with options
