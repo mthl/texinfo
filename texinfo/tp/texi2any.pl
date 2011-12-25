@@ -44,37 +44,9 @@ BEGIN
 
 use Texinfo::Convert::Texinfo;
 
-# Version: set in configure.in
-my $configured_version = '@PACKAGE_VERSION@';
-$configured_version = $Texinfo::Parser::VERSION 
-  if ($configured_version eq '@' . 'PACKAGE_VERSION@');
-my $configured_package = '@PACKAGE@';
-$configured_package = 'Texinfo' if ($configured_package eq '@' . 'PACKAGE@');
-my $configured_name = '@PACKAGE_NAME@';
-$configured_name = $configured_package 
-  if ($configured_name eq '@' .'PACKAGE_NAME@');
-my $configured_name_version = "$configured_name $configured_version"; 
-my $configured_url = '@PACKAGE_URL@';
-# FIXME url of the CPAN module if/when it exists?
-
 my $real_command_name = $0;
 $real_command_name =~ s/.*\///;
 $real_command_name =~ s/\.pl$//;
-
-# defaults for options relevant in the main program, not undef, and also
-# defaults for all the converters.
-# Other relevant options (undef) are NO_WARN FORCE OUTFILE
-# Others are set in the converters.
-my $converter_default_options = { 
-    'ERROR_LIMIT' => 100,
-    'TEXI2DVI' => 'texi2dvi',
-    'PACKAGE_VERSION' => $configured_version,
-    'PACKAGE' => $configured_package,
-    'PACKAGE_NAME' => $configured_name,
-    'PACKAGE_AND_VERSION' => $configured_name_version,
-    'PACKAGE_URL' => $configured_url,
-    'PROGRAM' => $real_command_name, 
-};
 
 # this associates the command line options to the arrays set during
 # command line parsing.
@@ -209,6 +181,34 @@ require Texinfo::Convert::XML;
 require Texinfo::Convert::DocBook;
 require DebugTexinfo::DebugCount;
 require DebugTexinfo::DebugTree;
+
+# Version: set in configure.in
+my $configured_version = '@PACKAGE_VERSION@';
+$configured_version = $Texinfo::Parser::VERSION 
+  if ($configured_version eq '@' . 'PACKAGE_VERSION@');
+my $configured_package = '@PACKAGE@';
+$configured_package = 'Texinfo' if ($configured_package eq '@' . 'PACKAGE@');
+my $configured_name = '@PACKAGE_NAME@';
+$configured_name = $configured_package 
+  if ($configured_name eq '@' .'PACKAGE_NAME@');
+my $configured_name_version = "$configured_name $configured_version"; 
+my $configured_url = '@PACKAGE_URL@';
+# FIXME url of the CPAN module if/when it exists?
+
+# defaults for options relevant in the main program, not undef, and also
+# defaults for all the converters.
+# Other relevant options (undef) are NO_WARN FORCE OUTFILE
+# Others are set in the converters.
+my $converter_default_options = { 
+    'ERROR_LIMIT' => 100,
+    'TEXI2DVI' => 'texi2dvi',
+    'PACKAGE_VERSION' => $configured_version,
+    'PACKAGE' => $configured_package,
+    'PACKAGE_NAME' => $configured_name,
+    'PACKAGE_AND_VERSION' => $configured_name_version,
+    'PACKAGE_URL' => $configured_url,
+    'PROGRAM' => $real_command_name, 
+};
 
 # determine configuration directories.
 
