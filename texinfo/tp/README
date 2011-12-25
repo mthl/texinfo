@@ -1,4 +1,4 @@
-$Id: README,v 1.5 2011-10-16 23:14:08 karl Exp $
+$Id: README,v 1.6 2011-12-25 01:37:51 pertusus Exp $
 texinfo/tp/README
 
   Copyright 2011 Free Software Foundation, Inc.
@@ -24,3 +24,11 @@ To run the tests you also need:
   Data::Compare, Test::Deep, Clone.
 On Debian-based distros, the corresponding packages are:
 libdata-compare-perl libtest-deep-perl libclone-perl
+
+
+This module is part of GNU Texinfo.  A standalone perl Module may also be
+produced from within the the Texinfo tree, using 
+  ./maintain/prepare_perl_module.sh
+The resulting module, although standalone, should be regenerated from
+the Texinfo sources, otherwise the divergence would render maintaining
+both complicated.

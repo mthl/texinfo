@@ -180,7 +180,9 @@ Para.
 ['image_file_search',
 '@node Top
 
-@image{tp/t/include_dir/f--ile}
+@c the followinf only works when in tp/, not for the
+@c standalone perl module...
+@c @image{tp/t/include_dir/f--ile}
 
 @@image dot.
 @image{./tp/t/include_dir/f--ile}

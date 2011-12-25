@@ -35,14 +35,28 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
 
 my $strings_textdomain = 'texinfo_document';
 Locale::Messages->select_package ('gettext_pp');
-Locale::Messages::bindtextdomain ('texinfo_document', 't/locales');
 
 my $srcdir = $ENV{'srcdir'};
+my $locales_srcdir;
 if (defined($srcdir)) {
   $srcdir =~ s/\/*$/\//;
+  $locales_srcdir = $srcdir;
 } else {
   $srcdir = '';
+  $locales_srcdir = '.';
 }
+
+my $localesdir;
+foreach my $dir ("LocalesData", "$locales_srcdir/LocalesData") {
+  if (-d $dir) {
+    $localesdir = $dir;
+  }
+}
+
+if (! defined($localesdir)) {
+  warn "No locales directory found, some tests will fail\n";
+}
+Locale::Messages::bindtextdomain ('texinfo_document', $localesdir);
 
 our $output_files_dir = 't/output_files/';
 foreach my $dir ('t', 't/results', $output_files_dir) {

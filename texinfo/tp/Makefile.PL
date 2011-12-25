@@ -23,7 +23,7 @@ WriteMakefile(
                           "Test::More" => "0.88",
                           "Clone" => 0,
                          },
-    PMLIBDIRS         => [ 'Texinfo' ],
+    PMLIBDIRS         => [ 'Texinfo', 'LocaleData' ],
     EXE_FILES         => [ 'texi2any.pl' ],
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (

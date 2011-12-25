@@ -151,8 +151,8 @@ if ($0 =~ /\.pl$/) {
   # in case of build from the source directory, out of source build, 
   # this helps to locate the locales.
   my $locales_dir_found = 0;
-  foreach my $locales_dir ("$libsrcdir/../t/locales", "./t/locales", 
-       "../../../tp/t/locales") {
+  foreach my $locales_dir ("$libsrcdir/../LocalesData", "./LocalesData", 
+       "../../../tp/LocalesData") {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       $locales_dir_found = 1;

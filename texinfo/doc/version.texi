@@ -1,4 +1,4 @@
-@set UPDATED 4 December 2011
+@set UPDATED 24 December 2011
 @set UPDATED-MONTH December 2011
 @set EDITION 4.13.90
 @set VERSION 4.13.90

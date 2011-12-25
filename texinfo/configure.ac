@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.107 2011-10-28 23:39:11 karl Exp $
+# $Id: configure.ac,v 1.108 2011-12-25 01:37:41 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -318,6 +318,7 @@ AC_CONFIG_FILES([\
   po_document/Makefile.in
   util/Makefile
   tp/Makefile
+  tp/maintain/package_name
 ])
 
 AC_OUTPUT

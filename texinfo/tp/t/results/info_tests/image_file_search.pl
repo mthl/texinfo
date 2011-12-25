@@ -50,36 +50,38 @@ $result_trees{'image_file_search'} = {
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'tp/t/include_dir/f--ile'
-                }
-              ],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => ' the followinf only works when in tp/, not for the
+',
+              'type' => 'misc_arg'
             }
           ],
-          'cmdname' => 'image',
-          'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
+          'cmdname' => 'c',
           'parent' => {}
         },
         {
-          'parent' => {},
-          'text' => '
-'
+          'args' => [
+            {
+              'parent' => {},
+              'text' => ' standalone perl module...
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'c',
+          'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => ' @image{tp/t/include_dir/f--ile}
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'c',
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -122,7 +124,7 @@ $result_trees{'image_file_search'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 6,
+                'line_nr' => 8,
                 'macro' => ''
               },
               'parent' => {}
@@ -177,7 +179,7 @@ $result_trees{'image_file_search'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 9,
+                'line_nr' => 11,
                 'macro' => ''
               },
               'parent' => {}
@@ -221,36 +223,39 @@ $result_trees{'image_file_search'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'par
 $result_trees{'image_file_search'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_file_search'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[1];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[2];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[3];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'args'}[0];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[2];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'contents'}[3]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'args'}[0];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[2];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7];
+$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
 $result_trees{'image_file_search'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_file_search'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'image_file_search'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_file_search'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'image_file_search'}{'contents'}[1]{'parent'} = $result_trees{'image_file_search'};
 
 $result_texis{'image_file_search'} = '@node Top
 
-@image{tp/t/include_dir/f--ile}
+@c the followinf only works when in tp/, not for the
+@c standalone perl module...
+@c @image{tp/t/include_dir/f--ile}
 
 @@image dot.
 @image{./tp/t/include_dir/f--ile}
@@ -261,7 +266,6 @@ $result_texis{'image_file_search'} = '@node Top
 
 
 $result_texts{'image_file_search'} = '
-tp/t/include_dir/f--ile
 
 @image dot.
 ./tp/t/include_dir/f--ile
@@ -307,8 +311,6 @@ $result_converted{'info'}->{'image_file_search'} = 'This is , produced by tp ver
 
 File: ,  Node: Top,  Up: (dir)
 
- [image src="tp/t/include_dir/f--ile.png" text="Image description\\"\\"\\\\." ]
-
 @image dot. [./tp/t/include_dir/f--ile]
 
    @image dot parent. [../include_dir/f--ile]
@@ -323,21 +325,21 @@ End Tag Table
 $result_converted_errors{'info'}->{'image_file_search'} = [
   {
     'file_name' => '',
-    'error_line' => ':6: warning: Cannot find @image file `./tp/t/include_dir/f--ile.txt\'
+    'error_line' => ':8: warning: Cannot find @image file `./tp/t/include_dir/f--ile.txt\'
 ',
     'text' => 'Cannot find @image file `./tp/t/include_dir/f--ile.txt\'',
     'type' => 'warning',
     'macro' => '',
-    'line_nr' => 6
+    'line_nr' => 8
   },
   {
     'file_name' => '',
-    'error_line' => ':9: warning: Cannot find @image file `../include_dir/f--ile.txt\'
+    'error_line' => ':11: warning: Cannot find @image file `../include_dir/f--ile.txt\'
 ',
     'text' => 'Cannot find @image file `../include_dir/f--ile.txt\'',
     'type' => 'warning',
     'macro' => '',
-    'line_nr' => 9
+    'line_nr' => 11
   }
 ];
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.15 2011-12-24 01:46:50 pertusus Exp $
+# $Id: Makefile.am,v 1.16 2011-12-25 01:37:51 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -125,12 +125,11 @@ test_files = \
 relative_include_dir = t/include_dir
 document_domain = $(PACKAGE)_document
 all-local:
-	rm -rf t/locales
 	for file in $(srcdir)/../po_document/*.gmo; do \
 	  cat=`basename "$$file"` ; \
 	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
-	  $(MKDIR_P) "t/locales/$$lang/LC_MESSAGES/" ; \
-	  $(INSTALL_DATA) $$file t/locales/$$lang/LC_MESSAGES/$(document_domain).mo; \
+	  $(MKDIR_P) "LocalesData/$$lang/LC_MESSAGES/" ; \
+	  $(INSTALL_DATA) $$file LocalesData/$$lang/LC_MESSAGES/$(document_domain).mo; \
 	done
 	$(MKDIR_P) $(relative_include_dir); \
 	for file in $(srcdir)/t/include_reference/*.*; do \
@@ -147,9 +146,13 @@ endif
 maintainance_files = \
   maintain/all_tests.sh \
   maintain/language-subtag-registry \
+  maintain/Makefile_perl_po \
+  maintain/MANIFEST_generated_files \
+  maintain/prepare_perl_module.sh \
   maintain/regenerate_converters_documentation.sh \
   maintain/regenerate_documentlanguages.pl \
   maintain/regenerate_file_lists.pl \
+  maintain/regenerate_perl_module_files.sh \
   maintain/template.pod
 
 perl_specific_files = \
@@ -166,11 +169,12 @@ EXTRA_DIST = \
   $(perl_specific_files) \
   maintain/lib
 
-MANIFEST: Makefile.am
+MANIFEST: maintain/MANIFEST_generated_files Makefile.am
 	echo "$(dist_modules_DATA) $(dist_converters_DATA) $(dist_debugmodules_DATA) " \
 	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_results) " \
-	"texi2any.pl $(maintainance_files) README TODO $(perl_specific_files)" \
-	 | sed 's/ \+/\n/g' | sort > $@
+	"texi2any.pl $(maintainance_files) README TODO COPYING " \
+	"maintain/package_name.in maintain/package_name $(perl_specific_files)" \
+	 | sed 's/ \+/\n/g' | sort | cat - $< > $@
     
 
 libsrcdir = $(srcdir)/maintain/lib
@@ -203,7 +207,7 @@ uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
 
 distclean-local:
-	rm -rf t/locales
+	rm -rf LocalesData
 	rm -f t/results/*/*.pl.new
 	rm -rf $(relative_include_dir)
 
