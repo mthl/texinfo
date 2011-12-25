@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.17 2011-12-25 10:57:42 pertusus Exp $
+# $Id: Makefile.am,v 1.18 2011-12-25 23:49:26 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -32,7 +32,7 @@ do_subst = sed \
   -e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \
   -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g'
 
-texi2any: texi2any.pl
+texi2any: texi2any.pl $(top_builddir)/config.status
 	$(do_subst) $(srcdir)/$< >$@
 	chmod a+x $@
 

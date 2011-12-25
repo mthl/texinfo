@@ -113,11 +113,12 @@ my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
 my $libsrcdir = "$srcdir/maintain";
 if ($0 =~ /\.pl$/) {
   unshift @INC, "$libsrcdir/lib/libintl-perl/lib";
-} elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
+} elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes'
+         and -d "$pkgdatadir/lib/libintl-perl/lib") {
   unshift @INC, "$pkgdatadir/lib/libintl-perl/lib";
 } else {
   eval { require Locale::Messages; };
-  if ($@) {
+  if ($@ and -d "$pkgdatadir/lib/libintl-perl/lib") {
     unshift @INC, "$pkgdatadir/lib/libintl-perl/lib";
   }
 }
@@ -126,6 +127,9 @@ require Locale::Messages;
 # we want a reliable way to switch locale, so we don't use the system
 # gettext.
 Locale::Messages->select_package ('gettext_pp');
+
+#my @search_locale_dirs = ("$datadir/locale", (map $_ . '/LocaleData', @INC),
+#  qw (/usr/share/locale /usr/local/share/locale));
 
 if ($0 =~ /\.pl$/) {
   # in case of build from the source directory, out of source build, 
@@ -150,11 +154,12 @@ Locale::Messages::bindtextdomain ($messages_textdomain, "$datadir/locale");
 
 if ($0 =~ /\.pl$/) {
   unshift @INC, "$libsrcdir/lib/Unicode-EastAsianWidth/lib";
-} elsif ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
+} elsif ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes'
+         and -d "$pkgdatadir/lib/Unicode-EastAsianWidth/lib") {
   unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
 } else {
   eval { require Unicode::EastAsianWidth; };
-  if ($@) {
+  if ($@ and -d "$pkgdatadir/lib/Unicode-EastAsianWidth/lib") {
     unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
   }
 }
@@ -162,11 +167,12 @@ require Unicode::EastAsianWidth;
 
 if ($0 =~ /\.pl$/) {
   unshift @INC, "$libsrcdir/lib/Text-Unidecode/lib";
-} elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
+} elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes'
+          and "$pkgdatadir/lib/Text-Unidecode/lib") {
   unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
 } else {
   eval { require Text::Unidecode; };
-  if ($@) {
+  if ($@ and -d "$pkgdatadir/lib/Text-Unidecode/lib") {
     unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
   }
 }
