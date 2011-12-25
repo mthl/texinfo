@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-12-24 00:47+0100\n"
+"POT-Creation-Date: 2011-12-25 11:27+0100\n"
 "PO-Revision-Date: 2008-08-25 21:25-0500\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -321,7 +321,7 @@ msgid "Try --help for more information.\n"
 msgstr "Daha fazla bilgi için --help seçeneðini kullanýn.\n"
 
 #: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
-#: util/texindex.c:296 tp/texi2any.pl:660
+#: util/texindex.c:296 tp/texi2any.pl:668
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -1997,7 +1997,7 @@ msgstr ""
 " --test              DÝZÝN-DOSYASI'nýn güncellenmesini engeller.\n"
 " --version           sürüm bilgisini gösterir ve çýkar."
 
-#: install-info/install-info.c:589 tp/texi2any.pl:649
+#: install-info/install-info.c:589 tp/texi2any.pl:657
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2174,43 +2174,43 @@ msgstr "%s'de sayfa numarasý yok"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "%s girdisi, ikincil isimli bir girdiyi takip ediyor"
 
-#: tp/texi2any.pl:253
+#: tp/texi2any.pl:261
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "`%s''e yazma hatasý"
 
-#: tp/texi2any.pl:262
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "Bilinmeyen komut `%s'"
 
-#: tp/texi2any.pl:265 tp/texi2any.pl:282 tp/Texinfo/Convert/Converter.pm:366
+#: tp/texi2any.pl:273 tp/texi2any.pl:290 tp/Texinfo/Convert/Converter.pm:366
 #: tp/Texinfo/Convert/Converter.pm:385
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "Deðiþkeni ata: "
 
-#: tp/texi2any.pl:279
+#: tp/texi2any.pl:287
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Bilinmeyen komut `%s'"
 
-#: tp/texi2any.pl:344
+#: tp/texi2any.pl:352
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "`%s' girdi dosyasý açýlamýyor"
 
-#: tp/texi2any.pl:526
+#: tp/texi2any.pl:534
 #, fuzzy
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr "Kullaným: %s [SEÇENEK]... TEXINFO-DOSYASI...\n"
 
-#: tp/texi2any.pl:527
+#: tp/texi2any.pl:535
 #, fuzzy
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr "Kullaným: %s [SEÇENEK]... TEXINFO-DOSYASI...\n"
 
-#: tp/texi2any.pl:529
+#: tp/texi2any.pl:537
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2219,7 +2219,7 @@ msgstr ""
 "Info dosyalarý çevrimiçi Emacs ya da tek baþýna GNU Info'yla okunmak için "
 "uygundur.\n"
 
-#: tp/texi2any.pl:532
+#: tp/texi2any.pl:540
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -2249,7 +2249,7 @@ msgstr ""
 "  -v, --verbose               ne yapýlýyor olduðunu açýklar.\n"
 "      --version               sürüm bilgisini görüntüler ve çýkar.\n"
 
-#: tp/texi2any.pl:546
+#: tp/texi2any.pl:554
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2265,7 +2265,7 @@ msgstr ""
 "      --xml                  Info yerine Texinfo XML çýktýsý üretir.\n"
 "      --plaintext            Info yerine salt metin çýktýsý üretir.\n"
 
-#: tp/texi2any.pl:554
+#: tp/texi2any.pl:562
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2309,7 +2309,7 @@ msgstr ""
 "  -o, --output=DOSYA         çýktýyý DOSYA'ya yazar (bölünmüþ HTML ise "
 "dizine).\n"
 
-#: tp/texi2any.pl:574
+#: tp/texi2any.pl:582
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2350,7 +2350,7 @@ msgstr ""
 "      --spilt-size=NUM        Info dosyalarýný NUM boyutuna böler (öntanýmlý "
 "%d).\n"
 
-#: tp/texi2any.pl:591
+#: tp/texi2any.pl:599
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -2373,19 +2373,19 @@ msgstr ""
 "                              dosya isimlerini ASCII alfabesine dönüþtürerek "
 "üretir.\n"
 
-#: tp/texi2any.pl:602
+#: tp/texi2any.pl:610
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:605
+#: tp/texi2any.pl:613
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:608
+#: tp/texi2any.pl:616
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2404,7 +2404,7 @@ msgstr ""
 "  -U VAR                         VAR deðiþkeninin tanýmýný, @clear ile "
 "olduðu gibi geri alýr.\n"
 
-#: tp/texi2any.pl:615
+#: tp/texi2any.pl:623
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -2441,7 +2441,7 @@ msgstr ""
 "\n"
 "  Ayrýca --no-ifFORMAT seçenekleri için ifnotFORMAT metnini iþler.\n"
 
-#: tp/texi2any.pl:632
+#: tp/texi2any.pl:640
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2455,7 +2455,7 @@ msgstr ""
 "  eðer salt metin oluþturuluyorsa, --ifplaintext açýk, diðerleri kapalýdýr;\n"
 "  eðer XML oluþturuluyorsa, --ifxml açýk, deiðerleri kapalýdýr.\n"
 
-#: tp/texi2any.pl:638
+#: tp/texi2any.pl:646
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2484,60 +2484,60 @@ msgstr ""
 "  makeinfo --no-split foo.texi          ne büyüklükte olursa olsun tek Info "
 "dosyasý yazar\n"
 
-#: tp/texi2any.pl:684
+#: tp/texi2any.pl:692
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%1$s: --footnote-style arg. `separate' ya da `end' olmalýdýr, `%2$s' deðil.\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:786
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%1$s: --paragraph-indent arg. sayýsal/`none'/`asis' olmalýdýr, `%2$s' "
 "deðil.\n"
 
-#: tp/texi2any.pl:883
+#: tp/texi2any.pl:891
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Tanýnamayan TEXINFO_OUTPUT_FORMAT deðeri `%s' yok sayýlýyor.\n"
 
-#: tp/texi2any.pl:896
+#: tp/texi2any.pl:904
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:907
+#: tp/texi2any.pl:915
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:946
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: dosya argümaný eksik.\n"
 
-#: tp/texi2any.pl:939
+#: tp/texi2any.pl:947
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Daha fazla bilgi için `%s --help' yazýn.\n"
 
-#: tp/texi2any.pl:1017
+#: tp/texi2any.pl:1025
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "`%s' çýktý dosyasýný kapatmada hata"
 
-#: tp/texi2any.pl:1023 tp/texi2any.pl:1110
+#: tp/texi2any.pl:1031 tp/texi2any.pl:1118
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: açýlamayan --css-dosyasý: %s"
 
-#: tp/texi2any.pl:1081 tp/texi2any.pl:1123
+#: tp/texi2any.pl:1089 tp/texi2any.pl:1131
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "`%s''e yazma hatasý"
 
-#: tp/texi2any.pl:1104
+#: tp/texi2any.pl:1112
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""

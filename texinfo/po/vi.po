@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-12-24 00:47+0100\n"
+"POT-Creation-Date: 2011-12-25 11:27+0100\n"
 "PO-Revision-Date: 2009-09-23 21:25+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -325,7 +325,7 @@ msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp « --help » để xem thông tin thêm.\n"
 
 #: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
-#: util/texindex.c:296 tp/texi2any.pl:660
+#: util/texindex.c:296 tp/texi2any.pl:668
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -1990,7 +1990,7 @@ msgstr ""
 " --test              thu hồi nâng cấp TẬP_TIN_THƯ_MỤC.\n"
 " --version           hiển thị thông tin phiên bản rồi thoát."
 
-#: install-info/install-info.c:589 tp/texi2any.pl:649
+#: install-info/install-info.c:589 tp/texi2any.pl:657
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2177,33 +2177,33 @@ msgstr "Không có số thứ tự trang trong %s"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "mục nhập %s nằm theo một mục nhập có tên phụ"
 
-#: tp/texi2any.pl:253
+#: tp/texi2any.pl:261
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "gặp lỗi khi ghi vào « %s »"
 
-#: tp/texi2any.pl:262
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "Lệnh không rõ « %s »"
 
-#: tp/texi2any.pl:265 tp/texi2any.pl:282 tp/Texinfo/Convert/Converter.pm:366
+#: tp/texi2any.pl:273 tp/texi2any.pl:290 tp/Texinfo/Convert/Converter.pm:366
 #: tp/Texinfo/Convert/Converter.pm:385
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "Lập biến: "
 
-#: tp/texi2any.pl:279
+#: tp/texi2any.pl:287
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Lệnh không rõ « %s »"
 
-#: tp/texi2any.pl:344
+#: tp/texi2any.pl:352
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "không thể mở tập tin nhập vào « %s »"
 
-#: tp/texi2any.pl:526
+#: tp/texi2any.pl:534
 #, fuzzy
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr ""
@@ -2211,7 +2211,7 @@ msgstr ""
 "\n"
 "[TTT\t\tTập Tin Texinfo]\n"
 
-#: tp/texi2any.pl:527
+#: tp/texi2any.pl:535
 #, fuzzy
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr ""
@@ -2219,7 +2219,7 @@ msgstr ""
 "\n"
 "[TTT\t\tTập Tin Texinfo]\n"
 
-#: tp/texi2any.pl:529
+#: tp/texi2any.pl:537
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2227,7 +2227,7 @@ msgstr ""
 "Dịch tài liệu nguồn Texinfo sang nhiều định dạng khác nhau, mặc định là tập "
 "tin Info thích hợp để đọc trực tuyến bằng Emacs hoặc Info GNU độc nhất.\n"
 
-#: tp/texi2any.pl:532
+#: tp/texi2any.pl:540
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -2261,7 +2261,7 @@ msgstr ""
 "      --version              hiển thị thông tin phiên bản rồi thoát (_phiên "
 "bản_)\n"
 
-#: tp/texi2any.pl:546
+#: tp/texi2any.pl:554
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2277,7 +2277,7 @@ msgstr ""
 "      --xml                 \txuất XML Texinfo thay cho Info.\n"
 "      --plaintext           \txuất văn bản thô thay cho Info (_nhập thô_).\n"
 
-#: tp/texi2any.pl:554
+#: tp/texi2any.pl:562
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2320,7 +2320,7 @@ msgstr ""
 "  -o, --output=TẬP_TIN\txuất ra tập tin này (vào thư mục nếu\n"
 "\t\tHTML đã chia tách) (_kết xuất_).\n"
 
-#: tp/texi2any.pl:574
+#: tp/texi2any.pl:582
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2364,7 +2364,7 @@ msgstr ""
 "      --split-size=SỐ        chia tách các tập tin Info ở kích cỡ SỐ (mặc "
 "định là %d).\n"
 
-#: tp/texi2any.pl:591
+#: tp/texi2any.pl:599
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -2387,19 +2387,19 @@ msgstr ""
 "                                                   trong tập tin này\n"
 "      --transliterate-file-names\ttạo các tên tập tin đã chuyển chữ ASCII.\n"
 
-#: tp/texi2any.pl:602
+#: tp/texi2any.pl:610
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:605
+#: tp/texi2any.pl:613
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:608
+#: tp/texi2any.pl:616
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2418,7 +2418,7 @@ msgstr ""
 "@include.\n"
 "  -U BIẾN              \thủy xác định biến này, như bằng @clear.\n"
 
-#: tp/texi2any.pl:615
+#: tp/texi2any.pl:623
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -2458,7 +2458,7 @@ msgstr ""
 "  Hơn nữa, đối với các tùy chọn « --no-ifĐỊNH_DẠNG », có phải xử lý văn bản "
 "@ifnotĐỊNH_DẠNG.\n"
 
-#: tp/texi2any.pl:632
+#: tp/texi2any.pl:640
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2473,7 +2473,7 @@ msgstr ""
 "  tạo ra nhập thô thì bật « --ifplaintext » và các điều khác bị tắt;\n"
 "  tạo ra XML thì bật « --ifxml » và các điều khác bị tắt;\n"
 
-#: tp/texi2any.pl:638
+#: tp/texi2any.pl:646
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2503,7 +2503,7 @@ msgstr ""
 "  makeinfo --no-split phu.texi\n"
 "\t\tghi một tập tin Info, bất chấp kích cỡ tối đa\n"
 
-#: tp/texi2any.pl:684
+#: tp/texi2any.pl:692
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
@@ -2511,7 +2511,7 @@ msgstr ""
 " • separate\triêng\n"
 " • end\t\tcuốinkhông phải « %s ».\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:786
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
@@ -2521,49 +2521,49 @@ msgstr ""
 " • asis\t\tnhư thế\n"
 "không phải « %s ».\n"
 
-#: tp/texi2any.pl:883
+#: tp/texi2any.pl:891
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr ""
 "%s: đang bỏ qua giá trị không được nhận ra « TEXINFO_OUTPUT_FORMAT » (định "
 "dạng xuất Texinfo) « %s ».\n"
 
-#: tp/texi2any.pl:896
+#: tp/texi2any.pl:904
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:907
+#: tp/texi2any.pl:915
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:946
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: thiếu đối số tập tin.\n"
 
-#: tp/texi2any.pl:939
+#: tp/texi2any.pl:947
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp « %s --help » để xem thông tin thêm.\n"
 
-#: tp/texi2any.pl:1017
+#: tp/texi2any.pl:1025
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "gặp lỗi khi đóng tập tin xuất « %s »"
 
-#: tp/texi2any.pl:1023 tp/texi2any.pl:1110
+#: tp/texi2any.pl:1031 tp/texi2any.pl:1118
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: không thể mở tập tin CSS « --css-file »: %s"
 
-#: tp/texi2any.pl:1081 tp/texi2any.pl:1123
+#: tp/texi2any.pl:1089 tp/texi2any.pl:1131
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "gặp lỗi khi ghi vào « %s »"
 
-#: tp/texi2any.pl:1104
+#: tp/texi2any.pl:1112
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""

@@ -11,8 +11,6 @@ maintain/all_tests.sh
 maintain/language-subtag-registry
 maintain/Makefile_perl_po
 maintain/MANIFEST_generated_files
-maintain/package_name
-maintain/package_name.in
 maintain/prepare_perl_module.sh
 maintain/regenerate_converters_documentation.sh
 maintain/regenerate_documentlanguages.pl
@@ -53,7 +51,7 @@ t/80include.t
 t/accents.t
 t/converters_tests.t
 t/docbook_tests.t
-texi2any.pl
+texi2any-perl
 Texinfo/Common.pm
 Texinfo/Convert/Converter.pm
 Texinfo/Convert/DocBook.pm

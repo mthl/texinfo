@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-12-24 00:47+0100\n"
+"POT-Creation-Date: 2011-12-25 11:27+0100\n"
 "PO-Revision-Date: 2008-03-09 20:35+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -335,7 +335,7 @@ msgid "Try --help for more information.\n"
 msgstr "Prova --help för mer information.\n"
 
 #: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
-#: util/texindex.c:296 tp/texi2any.pl:660
+#: util/texindex.c:296 tp/texi2any.pl:668
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -2022,7 +2022,7 @@ msgstr ""
 " --test              undertryck uppdatering av KATALOGFIL.\n"
 " --version           visa versionsinformation och avsluta."
 
-#: install-info/install-info.c:589 tp/texi2any.pl:649
+#: install-info/install-info.c:589 tp/texi2any.pl:657
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2198,43 +2198,43 @@ msgstr "Inget sidnummer i %s"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "posten %s följer på en post med ett sekundärt namn"
 
-#: tp/texi2any.pl:253
+#: tp/texi2any.pl:261
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "fel vid skrivning till \"%s\""
 
-#: tp/texi2any.pl:262
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "Okänt kommando \"%s\""
 
-#: tp/texi2any.pl:265 tp/texi2any.pl:282 tp/Texinfo/Convert/Converter.pm:366
+#: tp/texi2any.pl:273 tp/texi2any.pl:290 tp/Texinfo/Convert/Converter.pm:366
 #: tp/Texinfo/Convert/Converter.pm:385
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "Ställ in variabel: "
 
-#: tp/texi2any.pl:279
+#: tp/texi2any.pl:287
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Okänt kommando \"%s\""
 
-#: tp/texi2any.pl:344
+#: tp/texi2any.pl:352
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "kan inte öppna indatafilen \"%s\""
 
-#: tp/texi2any.pl:526
+#: tp/texi2any.pl:534
 #, fuzzy
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr "Användning: %s [FLAGGA]... TEXINFO-FIL...\n"
 
-#: tp/texi2any.pl:527
+#: tp/texi2any.pl:535
 #, fuzzy
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr "Användning: %s [FLAGGA]... TEXINFO-FIL...\n"
 
-#: tp/texi2any.pl:529
+#: tp/texi2any.pl:537
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2242,7 +2242,7 @@ msgstr ""
 "Översätt Texinfo-källdokumentation till diverse andra format, som standard\n"
 "infofiler som är lämpliga för läsning med Emacs eller GNU Info.\n"
 
-#: tp/texi2any.pl:532
+#: tp/texi2any.pl:540
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -2271,7 +2271,7 @@ msgstr ""
 "  -v, --verbose               förklara vad som görs.\n"
 "      --version               visa versionsinformation och avsluta.\n"
 
-#: tp/texi2any.pl:546
+#: tp/texi2any.pl:554
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2287,7 +2287,7 @@ msgstr ""
 "      --xml                   generera Texinfo XML istället för Info.\n"
 "      --plaintext             generera vanlig text istället för Info.\n"
 
-#: tp/texi2any.pl:554
+#: tp/texi2any.pl:562
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2327,7 +2327,7 @@ msgstr ""
 "      --number-sections       generera kapitel- och avsnittsnummer.\n"
 "  -o, --output=FIL            generera till FIL (katalog om delad HTML).\n"
 
-#: tp/texi2any.pl:574
+#: tp/texi2any.pl:582
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2369,7 +2369,7 @@ msgstr ""
 "      --split-size=ANTAL      dela upp Info-filer vid storleken ANTAL\n"
 "                                (standardvärde %d).\n"
 
-#: tp/texi2any.pl:591
+#: tp/texi2any.pl:599
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -2390,19 +2390,19 @@ msgstr ""
 "      --transliterate-file-names\n"
 "                              producera filnamn i ASCII-translitteration.\n"
 
-#: tp/texi2any.pl:602
+#: tp/texi2any.pl:610
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:605
+#: tp/texi2any.pl:613
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:608
+#: tp/texi2any.pl:616
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2422,7 +2422,7 @@ msgstr ""
 "  -U VARIABEL                    odefiniera variabeln VARIABEL, som med "
 "@clear.\n"
 
-#: tp/texi2any.pl:615
+#: tp/texi2any.pl:623
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -2460,7 +2460,7 @@ msgstr ""
 "\n"
 "  Dessutom, för flaggorna --no-ifFORMAT, behandla @ifnotFORMAT-text.\n"
 
-#: tp/texi2any.pl:632
+#: tp/texi2any.pl:640
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2474,7 +2474,7 @@ msgstr ""
 "  om vanlig text genereras är --ifplaintext på och de andra av;\n"
 "  om XML genereras är --ifxml på och de andra av.\n"
 
-#: tp/texi2any.pl:638
+#: tp/texi2any.pl:646
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2504,61 +2504,61 @@ msgstr ""
 "  makeinfo --no-split apa.texi           skriv en Info-fil hur stor den än "
 "är\n"
 
-#: tp/texi2any.pl:684
+#: tp/texi2any.pl:692
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: argumentet --footnote-style måste vara \"separate\" eller \"end\", inte "
 "\"%s\".\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:786
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: argumentet --paragraph-indent måste vara numeriskt/\"none\"/\"asis\", "
 "inte \"%s\".\n"
 
-#: tp/texi2any.pl:883
+#: tp/texi2any.pl:891
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Ignorerar okänt TEXINFO_OUTPUT_FORMAT-värde \"%s\".\n"
 
-#: tp/texi2any.pl:896
+#: tp/texi2any.pl:904
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:907
+#: tp/texi2any.pl:915
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:946
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: filargument saknas.\n"
 
-#: tp/texi2any.pl:939
+#: tp/texi2any.pl:947
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Prova \"%s --help\" för mer information.\n"
 
-#: tp/texi2any.pl:1017
+#: tp/texi2any.pl:1025
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "fel vid stängning av utdatafilen \"%s\""
 
-#: tp/texi2any.pl:1023 tp/texi2any.pl:1110
+#: tp/texi2any.pl:1031 tp/texi2any.pl:1118
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: kunde inte öppna --css-fil: %s"
 
-#: tp/texi2any.pl:1081 tp/texi2any.pl:1123
+#: tp/texi2any.pl:1089 tp/texi2any.pl:1131
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "fel vid skrivning till \"%s\""
 
-#: tp/texi2any.pl:1104
+#: tp/texi2any.pl:1112
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""

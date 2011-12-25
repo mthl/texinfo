@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-12-24 00:47+0100\n"
+"POT-Creation-Date: 2011-12-25 11:27+0100\n"
 "PO-Revision-Date: 2011-10-23 11:59+0900\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -322,7 +322,7 @@ msgid "Try --help for more information.\n"
 msgstr "詳しくは --help オプションを試してみてください。\n"
 
 #: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
-#: util/texindex.c:296 tp/texi2any.pl:660
+#: util/texindex.c:296 tp/texi2any.pl:668
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -1992,7 +1992,7 @@ msgstr ""
 " --test              DIR-FILE の更新を抑止する。\n"
 " --version           バージョン情報を表示して終了する。"
 
-#: install-info/install-info.c:589 tp/texi2any.pl:649
+#: install-info/install-info.c:589 tp/texi2any.pl:657
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2173,43 +2173,43 @@ msgstr "%s にページ番号がありません"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "%s 項目に二つ目の項目名が続いています"
 
-#: tp/texi2any.pl:253
+#: tp/texi2any.pl:261
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "\"%s\"の読込み中にエラーが発生しました"
 
-#: tp/texi2any.pl:262
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "不明なシグナル %d"
 
-#: tp/texi2any.pl:265 tp/texi2any.pl:282 tp/Texinfo/Convert/Converter.pm:366
+#: tp/texi2any.pl:273 tp/texi2any.pl:290 tp/Texinfo/Convert/Converter.pm:366
 #: tp/Texinfo/Convert/Converter.pm:385
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "変数を設定: "
 
-#: tp/texi2any.pl:279
+#: tp/texi2any.pl:287
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "不明なシグナル %d"
 
-#: tp/texi2any.pl:344
+#: tp/texi2any.pl:352
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "入力ファイル `%s' を開けません"
 
-#: tp/texi2any.pl:526
+#: tp/texi2any.pl:534
 #, fuzzy
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr "使用法: %s [OPTION]... TEXINFO-FILE...\n"
 
-#: tp/texi2any.pl:527
+#: tp/texi2any.pl:535
 #, fuzzy
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr "使用法: %s [OPTION]... TEXINFO-FILE...\n"
 
-#: tp/texi2any.pl:529
+#: tp/texi2any.pl:537
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2217,7 +2217,7 @@ msgstr ""
 "Texinfo ソース文書を様々な形式で読めるように変換します。デフォルトでは\n"
 "オンラインで Emacs や単独の GNU Info で読むのに適した Info ファイルです。\n"
 
-#: tp/texi2any.pl:532
+#: tp/texi2any.pl:540
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -2247,7 +2247,7 @@ msgstr ""
 "  -v, --verbose               行なわれる事を説明する。\n"
 "      --version               バージョン情報を表示して終了する。\n"
 
-#: tp/texi2any.pl:546
+#: tp/texi2any.pl:554
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2263,7 +2263,7 @@ msgstr ""
 "      --xml                   Info ではなくTexinfo XML を出力する。\n"
 "      --plaintext             Info ではなくプレーンテキストを出力する。\n"
 
-#: tp/texi2any.pl:554
+#: tp/texi2any.pl:562
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2306,7 +2306,7 @@ msgstr ""
 "  -o, --output=FILE           FILE へ出力する (分割 HTML の場合ディレクト"
 "リ)。\n"
 
-#: tp/texi2any.pl:574
+#: tp/texi2any.pl:582
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2346,7 +2346,7 @@ msgstr ""
 "      --split-size=NUM        Info ファイルをサイズ NUM で分割する (default "
 "%d)。\n"
 
-#: tp/texi2any.pl:591
+#: tp/texi2any.pl:599
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -2369,19 +2369,19 @@ msgstr ""
 "      --transliterate-file-names\n"
 "                              ファイル名を ASCII 文字変換して生成する。\n"
 
-#: tp/texi2any.pl:602
+#: tp/texi2any.pl:610
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:605
+#: tp/texi2any.pl:613
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:608
+#: tp/texi2any.pl:616
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2398,7 +2398,7 @@ msgstr ""
 "  -P DIR                         @include 探索パスの先頭に DIR を挿入する。\n"
 "  -U VAR                         変数 VAR を未定義にする。@clear と同じ。\n"
 
-#: tp/texi2any.pl:615
+#: tp/texi2any.pl:623
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -2440,7 +2440,7 @@ msgstr ""
 "  また、--no-ifFORMAT オプションを指定すると @ifnotFORMAT テキストを処理す"
 "る。\n"
 
-#: tp/texi2any.pl:632
+#: tp/texi2any.pl:640
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2454,7 +2454,7 @@ msgstr ""
 "  平文テキストを生成する場合、--ifplaintext が有効で、他は無効になります。\n"
 "  XML を生成する場合、--ifxml が有効で、他は無効になります。\n"
 
-#: tp/texi2any.pl:638
+#: tp/texi2any.pl:646
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2489,61 +2489,61 @@ msgstr ""
 "  makeinfo --no-split foo.texi           大きさにかかわらず一つの Info ファイ"
 "ルに書き込む\n"
 
-#: tp/texi2any.pl:684
+#: tp/texi2any.pl:692
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
 "    なりません。\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:786
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
 "    なりません。\n"
 
-#: tp/texi2any.pl:883
+#: tp/texi2any.pl:891
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: 認識できない TEXINFO_OUTPUT_FORMAT の値 `%s' を無視しています。\n"
 
-#: tp/texi2any.pl:896
+#: tp/texi2any.pl:904
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:907
+#: tp/texi2any.pl:915
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:946
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: ファイル引数を忘れていますよ\n"
 
-#: tp/texi2any.pl:939
+#: tp/texi2any.pl:947
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "詳しくは `%s --help' を実行してください。\n"
 
-#: tp/texi2any.pl:1017
+#: tp/texi2any.pl:1025
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "出力ファイル `%s' を閉じる際にエラーが発生しました"
 
-#: tp/texi2any.pl:1023 tp/texi2any.pl:1110
+#: tp/texi2any.pl:1031 tp/texi2any.pl:1118
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/texi2any.pl:1081 tp/texi2any.pl:1123
+#: tp/texi2any.pl:1089 tp/texi2any.pl:1131
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "正規表現 `%s' にエラーがあります: %s"
 
-#: tp/texi2any.pl:1104
+#: tp/texi2any.pl:1112
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""

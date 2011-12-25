@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-12-24 00:47+0100\n"
+"POT-Creation-Date: 2011-12-25 11:27+0100\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -358,7 +358,7 @@ msgid "Try --help for more information.\n"
 msgstr "Ifashayobora kugirango Birenzeho Ibisobanuro"
 
 #: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
-#: util/texindex.c:296 tp/texi2any.pl:660
+#: util/texindex.c:296 tp/texi2any.pl:668
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -2026,7 +2026,7 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:589 tp/texi2any.pl:649
+#: install-info/install-info.c:589 tp/texi2any.pl:657
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2190,42 +2190,42 @@ msgstr "Ipaji Umubare in"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "Icyinjijwe Icyinjijwe Na: a Izina:"
 
-#: tp/texi2any.pl:253
+#: tp/texi2any.pl:261
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "Ikosa Kuri"
 
-#: tp/texi2any.pl:262
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "Komandi:"
 
 # sw/source\ui\fldui\fldui.src:STR_SETFLD.text
-#: tp/texi2any.pl:265 tp/texi2any.pl:282 tp/Texinfo/Convert/Converter.pm:366
+#: tp/texi2any.pl:273 tp/texi2any.pl:290 tp/Texinfo/Convert/Converter.pm:366
 #: tp/Texinfo/Convert/Converter.pm:385
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "Gushyiraho igihinduka"
 
-#: tp/texi2any.pl:279
+#: tp/texi2any.pl:287
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Komandi:"
 
-#: tp/texi2any.pl:344
+#: tp/texi2any.pl:352
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "Gufungura Iyinjiza IDOSIYE"
 
-#: tp/texi2any.pl:526
+#: tp/texi2any.pl:534
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr ""
 
-#: tp/texi2any.pl:527
+#: tp/texi2any.pl:535
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr ""
 
-#: tp/texi2any.pl:529
+#: tp/texi2any.pl:537
 #, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
@@ -2234,7 +2234,7 @@ msgstr ""
 "Inkomoko Kuri Ikindi Imiterere ku Idosiye kugirango kiri kuri interineti Na: "
 "Cyangwa"
 
-#: tp/texi2any.pl:532
+#: tp/texi2any.pl:540
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -2257,7 +2257,7 @@ msgstr ""
 "Indango Mburabuzi v ni Byakozwe Verisiyo Kugaragaza Verisiyo Ibisobanuro Na "
 "Gusohoka"
 
-#: tp/texi2any.pl:546
+#: tp/texi2any.pl:554
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2270,7 +2270,7 @@ msgstr ""
 "Imiterere Ihitamo Mburabuzi ni Kuri InyandikoGitabo Ibisohoka HTML Ibisohoka "
 "xml Ibisohoka Ibisohoka Byuzuye Umwandiko"
 
-#: tp/texi2any.pl:554
+#: tp/texi2any.pl:562
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2303,7 +2303,7 @@ msgstr ""
 "Cyangwa Ibisohoka Ibisohoka IDOSIYE Umubare Ibyatoranyijwe Ibisohoka Umutwe "
 "Na Imibare o Ibisohoka Ibisohoka Kuri bushyinguro NIBA Gutandukanya"
 
-#: tp/texi2any.pl:574
+#: tp/texi2any.pl:582
 #, fuzzy, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2331,7 +2331,7 @@ msgstr ""
 "Mburabuzi Igika Ikurura Ikurura Ibika ku Imyanya Mburabuzi ni OYA Ikurura "
 "NIBA Gutandukanya Ingano Gutandukanya Idosiye ku Ingano Mburabuzi"
 
-#: tp/texi2any.pl:591
+#: tp/texi2any.pl:599
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -2346,19 +2346,19 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr "kugirango Gushyiramo Gushyiramo in IMISUSIRE Ibisohoka Gusoma NIBA ni"
 
-#: tp/texi2any.pl:602
+#: tp/texi2any.pl:610
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:605
+#: tp/texi2any.pl:613
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:608
+#: tp/texi2any.pl:616
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2373,7 +2373,7 @@ msgstr ""
 "Gushyiramo Gushaka Inzira Kuri i Gushyiramo Gushaka Inzira U i "
 "IMPINDURAGACIRO Nka Na: Gusiba"
 
-#: tp/texi2any.pl:615
+#: tp/texi2any.pl:623
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -2399,7 +2399,7 @@ msgstr ""
 "Oya OYA Na HTML Umwandiko Oya OYA Umwandiko Oya OYA Umwandiko Oya OYA Na "
 "Umwandiko Oya OYA Na xml Umwandiko kugirango i Oya Amahitamo Umwandiko"
 
-#: tp/texi2any.pl:632
+#: tp/texi2any.pl:640
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -2412,7 +2412,7 @@ msgstr ""
 "NIBA ni ku Na i Ibindi Bidakora NIBA Byuzuye Umwandiko ni ku Na i Ibindi "
 "Bidakora NIBA ni ku Na i Ibindi Bidakora"
 
-#: tp/texi2any.pl:638
+#: tp/texi2any.pl:646
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2433,57 +2433,57 @@ msgstr ""
 "Kwandika HTML Imirongo Umubare Ibyatoranyijwe Kwandika Na: Iriho Imibare Oya "
 "Gutandukanya Kwandika IDOSIYE"
 
-#: tp/texi2any.pl:684
+#: tp/texi2any.pl:692
 #, fuzzy, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s:--Ubusobanuro mpezarupapuro IMISUSIRE Cyangwa OYA"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:786
 #, fuzzy, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr "%s:--Igika Ikurura Bikurikije umubare OYA"
 
-#: tp/texi2any.pl:883
+#: tp/texi2any.pl:891
 #, fuzzy, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s:Kwirengagiza Agaciro"
 
-#: tp/texi2any.pl:896
+#: tp/texi2any.pl:904
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:907
+#: tp/texi2any.pl:915
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:946
 #, fuzzy, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s:Ibuze IDOSIYE"
 
-#: tp/texi2any.pl:939
+#: tp/texi2any.pl:947
 #, fuzzy, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "kugirango Birenzeho Ibisobanuro"
 
-#: tp/texi2any.pl:1017
+#: tp/texi2any.pl:1025
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "Ikosa Ibisohoka IDOSIYE"
 
-#: tp/texi2any.pl:1023 tp/texi2any.pl:1110
+#: tp/texi2any.pl:1031 tp/texi2any.pl:1118
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/texi2any.pl:1081 tp/texi2any.pl:1123
+#: tp/texi2any.pl:1089 tp/texi2any.pl:1131
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "Ikosa Kuri"
 
-#: tp/texi2any.pl:1104
+#: tp/texi2any.pl:1112
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""

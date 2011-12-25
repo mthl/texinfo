@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-12-24 00:47+0100\n"
+"POT-Creation-Date: 2011-12-25 11:27+0100\n"
 "PO-Revision-Date: 2005-02-07 09:27+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -320,7 +320,7 @@ msgid "Try --help for more information.\n"
 msgstr "Попробуйте --help для получения более подробного описания.\n"
 
 #: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
-#: util/texindex.c:296 tp/texi2any.pl:660
+#: util/texindex.c:296 tp/texi2any.pl:668
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -1923,7 +1923,7 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:589 tp/texi2any.pl:649
+#: install-info/install-info.c:589 tp/texi2any.pl:657
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2105,43 +2105,43 @@ msgstr "В %s нет номера страницы"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "за вхождением %s следует вхождение с вторичным именем"
 
-#: tp/texi2any.pl:253
+#: tp/texi2any.pl:261
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "ошибка записи в `%s'"
 
-#: tp/texi2any.pl:262
+#: tp/texi2any.pl:270
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "Неизвестная команда `%s'"
 
-#: tp/texi2any.pl:265 tp/texi2any.pl:282 tp/Texinfo/Convert/Converter.pm:366
+#: tp/texi2any.pl:273 tp/texi2any.pl:290 tp/Texinfo/Convert/Converter.pm:366
 #: tp/Texinfo/Convert/Converter.pm:385
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "Установить переменную: "
 
-#: tp/texi2any.pl:279
+#: tp/texi2any.pl:287
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Неизвестная команда `%s'"
 
-#: tp/texi2any.pl:344
+#: tp/texi2any.pl:352
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "невозможно открыть выходной файл `%s'"
 
-#: tp/texi2any.pl:526
+#: tp/texi2any.pl:534
 #, fuzzy
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr "Использование: %s [КЛЮЧ]... TEXINFO-ФАЙЛ...\n"
 
-#: tp/texi2any.pl:527
+#: tp/texi2any.pl:535
 #, fuzzy
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr "Использование: %s [КЛЮЧ]... TEXINFO-ФАЙЛ...\n"
 
-#: tp/texi2any.pl:529
+#: tp/texi2any.pl:537
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2150,7 +2150,7 @@ msgstr ""
 "умолчанию в Info-файлы, которые можно читать с помощью Emacs или\n"
 "отдельной программы GNU Info.\n"
 
-#: tp/texi2any.pl:532
+#: tp/texi2any.pl:540
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -2181,7 +2181,7 @@ msgstr ""
 "  -v, --verbose                 пояснять действия.\n"
 "      --version                 показать информацию о версии и выйти.\n"
 
-#: tp/texi2any.pl:546
+#: tp/texi2any.pl:554
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2197,7 +2197,7 @@ msgstr ""
 "      --xml                 выводить в формате Texinfo XML, а не в Info.\n"
 "      --plaintext           выводить простой текст, а не Info.\n"
 
-#: tp/texi2any.pl:554
+#: tp/texi2any.pl:562
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -2240,7 +2240,7 @@ msgstr ""
 " -o, --output=ФАЙЛ         выводить в указанный ФАЙЛ (каталог для HTML с \n"
 "                           разбиением).\n"
 
-#: tp/texi2any.pl:574
+#: tp/texi2any.pl:582
 #, fuzzy, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2281,7 +2281,7 @@ msgstr ""
 "      --split-size=РАЗМЕР     разбивать на файлы заданного РАЗМЕРА (по\n"
 "                                умолчанию %d).\n"
 
-#: tp/texi2any.pl:591
+#: tp/texi2any.pl:599
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -2300,19 +2300,19 @@ msgstr ""
 "                                читать стандартный ввод, если ФАЙЛ задан как "
 "-.\n"
 
-#: tp/texi2any.pl:602
+#: tp/texi2any.pl:610
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:605
+#: tp/texi2any.pl:613
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:608
+#: tp/texi2any.pl:616
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -2334,7 +2334,7 @@ msgstr ""
 " -U ПЕРЕМЕННАЯ           сделать ПЕРЕМЕННУЮ неопределенной, аналогично\n"
 "                           использованию @clear.\n"
 
-#: tp/texi2any.pl:615
+#: tp/texi2any.pl:623
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -2372,7 +2372,7 @@ msgstr ""
 "\n"
 "  Кроме того, для ключей --no-ifФОРМАТ, обрабатывать блоки @ifnotФОРМАТ.\n"
 
-#: tp/texi2any.pl:632
+#: tp/texi2any.pl:640
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2386,7 +2386,7 @@ msgstr ""
 "  при выводе простого текста включен --ifplaintext, остальные выключены;\n"
 "  при выводе XML включен --ifxml, остальные выключены.\n"
 
-#: tp/texi2any.pl:638
+#: tp/texi2any.pl:646
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -2416,60 +2416,60 @@ msgstr ""
 "разделами\n"
 "  makeinfo --no-split foo.texi         записать один большой Info-файл\n"
 
-#: tp/texi2any.pl:684
+#: tp/texi2any.pl:692
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: аргумент --footnote-style должен быть `separate' или `end'; а не `%s'.\n"
 
-#: tp/texi2any.pl:778
+#: tp/texi2any.pl:786
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: аргумент --paragraph-indent должен быть числовым, или\n"
 "`none', или `asis'; не `%s'.\n"
 
-#: tp/texi2any.pl:883
+#: tp/texi2any.pl:891
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: неизвестное значение TEXINFO_OUTPUT_FORMAT `%s' игнорировано.\n"
 
-#: tp/texi2any.pl:896
+#: tp/texi2any.pl:904
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:907
+#: tp/texi2any.pl:915
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:946
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: пропущен аргумент, задающий файл.\n"
 
-#: tp/texi2any.pl:939
+#: tp/texi2any.pl:947
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Попробуйте `%s --help' для получения более подробного описания.\n"
 
-#: tp/texi2any.pl:1017
+#: tp/texi2any.pl:1025
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "невозможно закрыть выходной файл `%s'"
 
-#: tp/texi2any.pl:1023 tp/texi2any.pl:1110
+#: tp/texi2any.pl:1031 tp/texi2any.pl:1118
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: невозможно открыть css-файл: %s"
 
-#: tp/texi2any.pl:1081 tp/texi2any.pl:1123
+#: tp/texi2any.pl:1089 tp/texi2any.pl:1131
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "ошибка записи в `%s'"
 
-#: tp/texi2any.pl:1104
+#: tp/texi2any.pl:1112
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""

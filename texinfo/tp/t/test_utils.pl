@@ -47,7 +47,7 @@ if (defined($srcdir)) {
 }
 
 my $localesdir;
-foreach my $dir ("LocalesData", "$locales_srcdir/LocalesData") {
+foreach my $dir ("LocaleData", "$locales_srcdir/LocaleData") {
   if (-d $dir) {
     $localesdir = $dir;
   }

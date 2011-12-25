@@ -37,17 +37,25 @@ Getopt::Long::Configure("gnu_getopt");
 BEGIN
 {
   my $texinfolibdir = '@datadir@/@PACKAGE@';
-  unshift @INC, ($texinfolibdir) if ($texinfolibdir ne '');
+  unshift @INC, ($texinfolibdir) 
+    if ($texinfolibdir ne '' 
+        and $texinfolibdir ne '@' .'datadir@/@PACKAGE'.'@');
 }
 
 use Texinfo::Convert::Texinfo;
 
 # Version: set in configure.in
 my $configured_version = '@PACKAGE_VERSION@';
+$configured_version = $Texinfo::Parser::VERSION 
+  if ($configured_version eq '@' . 'PACKAGE_VERSION@');
 my $configured_package = '@PACKAGE@';
+$configured_package = 'Texinfo' if ($configured_package eq '@' . 'PACKAGE@');
 my $configured_name = '@PACKAGE_NAME@';
+$configured_name = $configured_package 
+  if ($configured_name eq '@' .'PACKAGE_NAME@');
 my $configured_name_version = "$configured_name $configured_version"; 
 my $configured_url = '@PACKAGE_URL@';
+# FIXME url of the CPAN module if/when it exists?
 
 my $real_command_name = $0;
 $real_command_name =~ s/.*\///;
@@ -151,8 +159,8 @@ if ($0 =~ /\.pl$/) {
   # in case of build from the source directory, out of source build, 
   # this helps to locate the locales.
   my $locales_dir_found = 0;
-  foreach my $locales_dir ("$libsrcdir/../LocalesData", "./LocalesData", 
-       "../../../tp/LocalesData") {
+  foreach my $locales_dir ("$libsrcdir/../LocaleData", "./LocaleData", 
+       "../../../tp/LocaleData") {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       $locales_dir_found = 1;

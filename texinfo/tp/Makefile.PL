@@ -24,7 +24,7 @@ WriteMakefile(
                           "Clone" => 0,
                          },
     PMLIBDIRS         => [ 'Texinfo', 'LocaleData' ],
-    EXE_FILES         => [ 'texi2any.pl' ],
+    EXE_FILES         => [ 'texi2any-perl' ],
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (
        AUTHOR         => 'Patrice Dumas <pertusus@free.fr>') : ()),

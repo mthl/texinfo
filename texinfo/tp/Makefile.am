@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.16 2011-12-25 01:37:51 pertusus Exp $
+# $Id: Makefile.am,v 1.17 2011-12-25 10:57:42 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -128,8 +128,8 @@ all-local:
 	for file in $(srcdir)/../po_document/*.gmo; do \
 	  cat=`basename "$$file"` ; \
 	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
-	  $(MKDIR_P) "LocalesData/$$lang/LC_MESSAGES/" ; \
-	  $(INSTALL_DATA) $$file LocalesData/$$lang/LC_MESSAGES/$(document_domain).mo; \
+	  $(MKDIR_P) "LocaleData/$$lang/LC_MESSAGES/" ; \
+	  $(INSTALL_DATA) $$file LocaleData/$$lang/LC_MESSAGES/$(document_domain).mo; \
 	done
 	$(MKDIR_P) $(relative_include_dir); \
 	for file in $(srcdir)/t/include_reference/*.*; do \
@@ -172,8 +172,8 @@ EXTRA_DIST = \
 MANIFEST: maintain/MANIFEST_generated_files Makefile.am
 	echo "$(dist_modules_DATA) $(dist_converters_DATA) $(dist_debugmodules_DATA) " \
 	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_results) " \
-	"texi2any.pl $(maintainance_files) README TODO COPYING " \
-	"maintain/package_name.in maintain/package_name $(perl_specific_files)" \
+	"texi2any-perl $(maintainance_files) README TODO COPYING " \
+	"$(perl_specific_files)" \
 	 | sed 's/ \+/\n/g' | sort | cat - $< > $@
     
 
@@ -207,8 +207,8 @@ uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
 
 distclean-local:
-	rm -rf LocalesData
+	rm -rf LocaleData
 	rm -f t/results/*/*.pl.new
 	rm -rf $(relative_include_dir)
 
-CLEANFILES = texi2any makeinfo
+CLEANFILES = texi2any makeinfo texi2any-perl
