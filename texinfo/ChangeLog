@@ -1,3 +1,16 @@
+2011-12-24  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\errormsg): \indexnofonts rather than \indexdummies.
+	
+	* doc/texinfo.tex (\txiescapepdf): new macro, using the pdftex
+	primitive \pdfescapestring.
+	(\backslashparens, \activebackslashdouble, \HyPsdSubst,
+        \HyReturnAfterFi): no longer needed.  change calls.
+        
+        * doc/texinfo.tex (\dopdfoutline): output (literal) brace chars;
+        previous hack had become inoperative.
+	(\lbracecharliteral, \rbracecharliteral): new macros.
+
 2011-12-23  Karl Berry  <karl@gnu.org>
 
 	* NEWS: new command @errormsg.
