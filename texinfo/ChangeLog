@@ -1,3 +1,28 @@
+2011-12-26  Karl Berry  <karl@gnu.org>
+
+	* NEWS: new commands @atchar{} @lbracechar{} @rbracechar{}
+        @backslashchar{}.
+	* doc/texinfo.txi (Atsign Braces Comma Backslash): rename node,
+	leave @anchor behind.
+	(Inserting an Atsign),
+	(Inserting Braces),
+	(Inserting a Backslash),
+	(math),
+	* doc/refcard/txirefcard.tex: document them.
+        * doc/texinfo.tex (@normalbackslash): output a typewriter \
+        even in math mode.
+
+2011-12-25  Karl Berry  <karl@gnu.org>
+
+	* NEWS: new commands @inlinefmt and @inlineraw.
+	* doc/texinfo.txi (Inline Conditional Commands),
+	* doc/refcard/txirefcard.tex: document them.
+	* doc/texinfo.tex (\inlinefmt, \doinlinefmt,
+        \inlineraw, \doinlineraw, \doinlinerawtwo, \outfmtnametex): new macros.
+        
+        * doc/texinfo.tex (\atchar, \lbracechar, \rbracechar, \backslashchar):
+        more new macros for forthcoming new commands.
+
 2011-12-24  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\errormsg): \indexnofonts rather than \indexdummies.

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.403 2011-12-26 01:19:14 karl Exp $
+@c $Id: texinfo.txi,v 1.404 2011-12-26 22:14:06 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -445,7 +445,7 @@ Combining Indices
 
 Special Insertions
 
-* Atsign Braces Comma::         Inserting @@ and @{@} and ,.
+* Atsign Braces Comma Backslash:: Inserting @@ and @{@} and , and \.
 * Inserting Quote Characters::  Inserting left and right quotes, in code.
 * Inserting Space::             How to insert the right amount of space
                                  within a sentence.
@@ -469,6 +469,7 @@ Inserting @@ and @{@} and @comma{}
 * Inserting an Atsign::
 * Inserting Braces::
 * Inserting a Comma::
+* Inserting a Backslash::
 
 Inserting Space
 
@@ -10370,7 +10371,7 @@ These are:
 @end iftex
 
 @menu
-* Atsign Braces Comma::         Inserting @@ and @{@} and ,.
+* Atsign Braces Comma Backslash:: Inserting @@ and @{@} and , and \.
 * Inserting Quote Characters::  Inserting left and right quotes, in code.
 * Inserting Space::             How to insert the right amount of space
                                  within a sentence.
@@ -10391,51 +10392,67 @@ These are:
 @end menu
 
 
-@node Atsign Braces Comma
-@section Inserting @@ and @{@} and @comma{}
+@node Atsign Braces Comma Backslash
+@section Inserting @@ and @{@} and , and \
+@anchor{Braces Atsign}@c previous names for this node
+@anchor{Atsign Braces Comma}
 @cindex Special characters, inserting
 @cindex Commands to insert special characters
 
 @samp{@@} and curly braces are special characters in Texinfo.  To insert
 these characters so they appear in text, you must put an @samp{@@} in
 front of these characters to prevent Texinfo from misinterpreting
-them.
+them.  Alphabetic commands are also provided.
 
-The comma `,' is a special character only in one uncommon context:
+The comma `,' is a special character only in one context:
 it separates arguments to commands that take multiple arguments.
 
+The backslash `\' is a special character only in an even more
+restricted context: it delimits formal argument names inside macro
+bodies.
+
 @menu
-* Inserting an Atsign::
-* Inserting Braces::
-* Inserting a Comma::
+* Inserting an Atsign::    @code{@@}, @code{@@atchar@{@}}.
+* Inserting Braces::       @code{@@@{ @@@}}, @code{@@l rbracechar@{@}}.
+* Inserting a Comma::      @code{@@comma@{@}}.
+* Inserting a Backslash::  @code{@@backslashchar@{@}}.
 @end menu
 
 
 @node Inserting an Atsign
-@subsection Inserting `@@' with @code{@@@@}
+@subsection Inserting `@@' with @code{@@@@} and @code{@@atchar@{@}}
 @findex @@ @r{(literal @samp{@@})}
+@findex @@atchar@{@} @r{(literal @samp{@@})}
 @cindex Inserting @@ @r{(literal @samp{@@})}
 
-@code{@@@@} stands for a single @samp{@@} in either printed or Info
-output.
+@code{@@@@} produces a single @samp{@@} character in the output.  Do
+not put braces after an @code{@@@@} command.
 
-Do not put braces after an @code{@@@@} command.
+@code{@@atchar@{@}} also produces a single @samp{@@} character in the
+output.  It does need following braces, as usual for alphabetic
+commands.  In inline conditionals (@pxref{Inline Conditional
+Commands}), it can be necessary to avoid using the literal @samp{@@}
+character in the source (and may be clearer in other contexts).
 
 
 @node Inserting Braces
-@subsection Inserting `@{' and `@}' with @code{@@@{} and @code{@@@}}
+@subsection Inserting `@{ `@}' with @code{@@@{ @@@}} and @code{@@l rbracechar@{@}}
 @cindex Braces, inserting
 @findex @{ @r{(literal @samp{@{})}
 @findex @} @r{(literal @samp{@}})}
+@findex @@lbracechar@{@} @r{(literal @samp{@{})}
+@findex @@rbracechar@{@} @r{(literal @samp{@}})}
 
-@code{@@@{} stands for a single @samp{@{} in either printed or Info
-output.
+@code{@@@{} produces a single @samp{@{} in the output, and @code{@@@}}
+produces a single @samp{@}}.  Do not put braces after either an
+@code{@@@{} or an @code{@@@}} command.
 
-@code{@@@}} stands for a single @samp{@}} in either printed or Info
-output.
-
-Do not put braces after either an @code{@@@{} or an @code{@@@}}
-command.
+@code{@@lbracechar@{@}} and @code{@@rbracechar@{@}} also produce
+single @samp{@{} and @samp{@}} characters in the output.  They do need
+following braces, as usual for alphabetic commands.  In inline
+conditionals (@pxref{Inline Conditional Commands}), it can be
+necessary to avoid using literal brace characters in the source (and
+may be clearer in other contexts).
 
 
 @node Inserting a Comma
@@ -10446,11 +10463,11 @@ command.
 Ordinarily, a comma `,' is a normal character that can be simply typed
 in your input where you need it.
 
-However, Texinfo uses the comma as a special character in one uncommon
-context: some commands, such as @code{@@acronym} (@pxref{acronym}) and
-@code{@@xref} (@pxref{Cross References}), as well as user-defined
-macros (@pxref{Defining Macros}), can take more than one argument.  In
-these cases, the comma character is used to separate arguments.
+However, Texinfo uses the comma as a special character only in one
+context: to separate arguments to those Texinfo commands, such as
+@code{@@acronym} (@pxref{acronym}) and @code{@@xref} (@pxref{Cross
+References}), as well as user-defined macros (@pxref{Defining
+Macros}), which take more than one argument.
 
 Since a comma character would confuse Texinfo's parsing for these
 commands, you must use the command @samp{@@comma@{@}} instead if you want
@@ -10464,6 +10481,43 @@ to pass an actual comma.  Here are some examples:
 
 Although @samp{@@comma@{@}} can be used nearly anywhere, there is no
 need for it anywhere except in this unusual case.
+
+(Incidentally, the name @samp{@@comma} lacks the @samp{char} suffix used
+in its companion commands only for historical reasons.  It didn't seem
+important enough to define a synonym.)
+
+
+@node Inserting a Backslash
+@subsection Inserting `\' with @code{@@backslashchar@{@}}
+@cindex Backslashes, inserting
+@findex backslash
+
+Ordinarily, a backslash `\' is a normal character in Texinfo that can
+be simply typed in your input where you need it.  The result is to
+typeset the backslash from the typewriter font.
+
+However, Texinfo uses the backslash as a special character in one
+restricted context: to delimit formal arguments in the bodies of
+user-defined macros (@pxref{Defining Macros}).
+
+Due to the vagaries of macro argument parsing, it is more reliable to
+pass an alphabetic command that produces a backslash instead of using
+a literal \.  Hence @code{@@backslashchar@{@}}.  Here is an example:
+
+@example
+@@acronym@{ABC, A Bizarre @@comma@{@}@}
+@@xref@{Comma,, The @@comma@{@} symbol@}
+@@mymac@{One argument@@comma@{@} containing a comma@}
+@end example
+
+Texinfo documents may also use \ as a command character inside
+@code{@@math} (@xref{math},, @code{@@math}).  In this case, @code{@@\}
+or @code{\backslash} produces a ``math'' backslash (from the math
+symbol font), while @code{@@backslashchar@{@}} produces a typewriter
+backslash as usual.
+
+Although @samp{@@backslashchar@{@}} can be used nearly anywhere, there
+is no need for it anywhere except these unusual cases.
 
 
 @node Inserting Quote Characters
@@ -11382,10 +11436,9 @@ proper formatting in the @TeX{} output, at least.
 
 It's best to use @samp{\} instead of @samp{@@} for any such
 mathematical commands; otherwise, @command{makeinfo} will complain.
-On the other hand, input with matching (but unescaped) braces, such as
-@samp{k_@{75@}}, is allowed inside @code{@@math}, although
-@command{makeinfo} would complain about the bare braces in regular
-input.
+On the other hand, @command{makeinfo} allows input with matching (but
+unescaped) braces, such as @samp{k_@{75@}}, although it complains
+about such bare braces in regular input.
 
 Here's an example:
 
@@ -11407,11 +11460,13 @@ Here's an example:
 @end example
 
 @findex \ @r{(literal \ in @code{@@math})}
-Since @samp{\} is an escape character inside @code{@@math}, you can use
-@code{@@\} to get a literal backslash (@code{\\} will work in @TeX{},
-but you'd get the literal @samp{\\} in Info).  @code{@@\} is not
-defined outside of @code{@@math}, since a @samp{\} ordinarily produces a
-literal @samp{\}.
+Since @samp{\} is an escape character inside @code{@@math}, you can
+use @code{@@\} to get a literal backslash (@code{\\} will work in
+@TeX{}, but you'd get the literal two characters @samp{\\} in Info).
+@code{@@\} is not defined outside of @code{@@math}, since a @samp{\}
+ordinarily produces a literal (typewriter) @samp{\}.  You can also use
+@code{@@backslashchar@{@}} in any mode to get a typewriter backslash.
+@xref{Inserting a Backslash}.
 
 @cindex Displayed equations
 @cindex Equations, displayed
@@ -13701,6 +13756,15 @@ For example,
 In these commands, whitespace is ignored after the comma separating
 the two arguments, as usual, but is @emph{not} ignored at the end of
 @var{text}.
+
+In the case of @code{@@inlineraw}, to insert a literal at sign, left
+brace, or right brace, you must use the alphabetic commands
+@code{@@atchar@{@}} (@pxref{Inserting an Atsign}), and
+@code{@@lbracechar@{@}} or @code{@@rbracechar@{@}} (@pxref{Inserting
+Braces}), or the parsing will become confused.  (By the way, it is not
+necessary to use @code{@@comma@{@}}, since these commands always have
+exactly two arguments, so a @samp{,} cannot be mistaken for an
+argument separator.)
 
 
 @node set clear value
@@ -19324,6 +19388,7 @@ which allows specifying a string independently of the output format,
 but with rich formatting that may be translated appropriately in many
 languages.
 
+
 @node Command List
 @appendix @@-Command List
 @cindex Alphabetical @@-command list
@@ -19388,12 +19453,14 @@ Produce a question mark that ends a sentence (usually after an
 end-of-sentence capital letter).  @xref{Ending a Sentence}.
 
 @item @@@@
-Stands for an at sign, @samp{@@}.
-@xref{Atsign Braces Comma, , Inserting @@ and @{@} and @comma{}}.
+@itemx @@atchar@{@}
+Insert an at sign, @samp{@@}.  @xref{Inserting an Atsign}.
 
 @item @@\
-Stands for a backslash (@samp{\}) inside @code{@@math}.
-@xref{math,,@code{math}}.
+@itemx @@backslashchar@{@}
+Insert a backslash, @samp{\}; @code{@@backslashchar@{@}} works
+anywhere, while @code{@@\} works only inside @code{@@math}.
+@xref{Inserting a Backslash} and @ref{math,,@code{math}}.
 
 @item @@^
 @itemx @@`
@@ -19402,12 +19469,12 @@ character, as in @^o and @`e.
 @xref{Inserting Accents}.
 
 @item @@@{
-Stands for a left brace, @samp{@{}.
-@xref{Atsign Braces Comma, , Inserting @@ and @{@} and @comma{}}.
+@itemx @@lbracechar@{@}
+Insert a left brace, @samp{@{}.  @xref{Inserting Braces}.
 
 @item @@@}
-Stands for a right-hand brace, @samp{@}}.@*
-@xref{Atsign Braces Comma, , Inserting @@ and @{@} and @comma{}}.
+@itemx @@rbracechar@{@}
+Insert a right brace, @samp{@}}.  @xref{Inserting Braces}.
 
 @item @@~
 Generate a tilde accent over the next character, as in @~N.
@@ -21259,7 +21326,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.403 2011-12-26 01:19:14 karl Exp $
+$Id: texinfo.txi,v 1.404 2011-12-26 22:14:06 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21330,7 +21397,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.403 2011-12-26 01:19:14 karl Exp $
+@comment $Id: texinfo.txi,v 1.404 2011-12-26 22:14:06 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.21 2011-12-26 01:19:15 karl Exp $
+% $Id: txirefcard.tex,v 1.22 2011-12-26 22:14:06 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -613,13 +613,13 @@ margins and normal text font.  Pair with \code{@end format}.}
 \section{Floating displays}
 
 \txicmd{@float}{}{Environment within which floating material is defined. Pair with \code{@end float}.}
-\txicmd{@listoffloats}{}{Produce a list of floats for a given float type.}
+\txicmd{@listoffloats}{}{Generate a list of floats for a given float type.}
 \txicmd{@caption}{}{Define the full caption for a \code{@float} anywhere in the float environment.}
 \txicmd{@shortcaption}{}{Define the short caption for a \code{@float}, used in the list of floats.}
 \txicmd{@image}{\ttbraced{filename, \rmbrack[width], \rmbrack[height], \rmbrack[alt], \rmbrack[ext]}}{Include graphics image in external \var{filename} scaled to the given width and/or height, using alt text and looking for \samp{\var{filename}.\var{ext}} first.  Can occur inline or by itself on the page.}
 
 \subsection{Footnotes}
-\txicmd{@footnote}{\ttbraced{text-of-footnote}}{Produce a footnote: \var{text-of-footnote} is printed at the bottom of the page by \TeX, while Info and others may format at either (by default) the end of the current node, or in a separate node.}
+\txicmd{@footnote}{\ttbraced{text-of-footnote}}{Insert a footnote: \var{text-of-footnote} is printed at the bottom of the page by \TeX, while Info and others may format at either (by default) the end of the current node, or in a separate node.}
 \txicmd{@footnotestyle}{style}{Specify footnote style: \samp{end} or \samp{separate}.}
 
 
@@ -642,18 +642,19 @@ margins and normal text font.  Pair with \code{@end format}.}
 
 \subsection{Characters special to Texinfo}
 
-\txicmd{@@}{}{Insert an at sign, `@'.}
-\txicmd{@\lbracechar}{}{Produce a left brace, `$\{$'.}
-\txicmd{@\rbracechar}{}{Produce a right brace, `$\}$'.}
-\txicmd{@comma}{\ttbraced{}}{Produce a comma character; needed only when a literal comma would be an argument separator, as in \code{@xref}.}
+\txicmd{@@}{, \code{@atchar\ttbraced{}}}{Insert an at sign, `@'.}
+\txicmd{@\lbracechar}{, \code{@lbracechar\ttbraced{}}}{Insert a left brace, `$\{$'.}
+\txicmd{@\rbracechar}{, \code{@rbracechar\ttbraced{}}}{Insert a right brace, `$\}$'.}
+\txicmd{@backslashchar}{\ttbraced{}}{Insert a typewriter backslash, {\tt\char`\\}.}
+\txicmd{@comma}{\ttbraced{}}{Insert a comma character; needed only when a literal comma would be an argument separator, as in \code{@xref}.}
 \txicmd{@\var{whitespace}}{}{An \code{@} followed by a space, tab, or newline produces a normal, stretchable, interword space.}
 
 \subsection{Spacing refinements}
 
 \txicmd{@:}{}{Tell \TeX\  to refrain from inserting extra whitespace after an immediately preceding period, question mark, exclamation mark, or colon, as \TeX\  normally would.}
-\txicmd{@.}{}{Produce a period that ends a sentence; typically needed after an end-of-sentence capital letter.}
-\txicmd{@?}{}{Produce a question mark that ends a sentence.}
-\txicmd{@!}{}{Produce an exclamation point that ends a sentence.}
+\txicmd{@.}{}{Insert a period that ends a sentence; typically needed after an end-of-sentence capital letter.}
+\txicmd{@?}{}{Insert a question mark that ends a sentence.}
+\txicmd{@!}{}{Insert an exclamation point that ends a sentence.}
 \txicmd{@dmn}{\ttbraced{dimension}}{Format a unit of measure, as in `12\thinspace{}pt'. Causes \TeX\  to insert a thin space before \var{dimension}. No effect in Info.}
 
 \subsection{Accents}
@@ -695,18 +696,18 @@ exception of \code{@tieaccent}.
 
 \subsection{Other text characters and logos}
 
-\txicmd{@bullet}{\ttbraced{}}{Produce a large round dot, $\bullet$ (\samp{*} in Info).}
-\txicmd{@dots}{\ttbraced{}}{Produce an ellipsis, `\dots'.}
-\txicmd{@enddots}{\ttbraced{}}{Produce an end-of-sentence ellipsis, `\dots' (more following space in \TeX.)}
-\txicmd{@euro}{\ttbraced{}}{Produce the Euro currency sign, \euro.}
-\txicmd{@pounds}{\ttbraced{}}{Produce the pounds sterling currency sign, {\it\$}.}
-\txicmd{@textdegree}{\ttbraced{}}{Produce the degree symbol, $^\circ$.}
-\txicmd{@copyright}{\ttbraced{}}{Produce the copyright symbol, \copyright.}
-\txicmd{@registeredsymbol}{\ttbraced{}}{Produce the registered symbol, \registeredsymbol.}
-\txicmd{@TeX}{\ttbraced{}}{Produce the \TeX\ logo.}
-\txicmd{@LaTeX}{\ttbraced{}}{Produce the \LaTeX\ logo.}
-\txicmd{@today}{\ttbraced{}}{Produce the current date, in `1 Jan 2000' style.}
-\txicmd{@guillemetleft\ttbraced{} @guillemetright\ttbraced{} @guillemotleft\ttbraced{} @guillemotright @guilsinglleft\ttbraced{} @guilsinglright\ttbraced{} @quotedblbase\ttbraced{} @quotedblleft @quotedblright\ttbraced{} @quoteleft\ttbraced{} @quoteright\ttbraced{} @quotesinglbase\ttbraced{}}{}{Produce various quotation marks: \guillemetleft\ \guillemetright\ \guillemotleft\ \guillemotright\ \guilsinglleft\ \guilsinglright\ \quotedblbase\ \quotedblleft\ \quotedblright\ \quoteleft\ \quoteright\ \quotesinglbase.}
+\txicmd{@bullet}{\ttbraced{}}{Insert a large round dot, $\bullet$ (\samp{*} in Info).}
+\txicmd{@dots}{\ttbraced{}}{Insert an ellipsis, `\dots'.}
+\txicmd{@enddots}{\ttbraced{}}{Insert an end-of-sentence ellipsis, `\dots' (more following space in \TeX.)}
+\txicmd{@euro}{\ttbraced{}}{Insert the Euro currency sign, \euro.}
+\txicmd{@pounds}{\ttbraced{}}{Insert the pounds sterling currency sign, {\it\$}.}
+\txicmd{@textdegree}{\ttbraced{}}{Insert the degree symbol, $^\circ$.}
+\txicmd{@copyright}{\ttbraced{}}{Insert the copyright symbol, \copyright.}
+\txicmd{@registeredsymbol}{\ttbraced{}}{Insert the registered symbol, \registeredsymbol.}
+\txicmd{@TeX}{\ttbraced{}}{Insert the \TeX\ logo.}
+\txicmd{@LaTeX}{\ttbraced{}}{Insert the \LaTeX\ logo.}
+\txicmd{@today}{\ttbraced{}}{Insert the current date, in `1 Jan 2000' style.}
+\txicmd{@guillemetleft\ttbraced{} @guillemetright\ttbraced{} @guillemotleft\ttbraced{} @guillemotright @guilsinglleft\ttbraced{} @guilsinglright\ttbraced{} @quotedblbase\ttbraced{} @quotedblleft @quotedblright\ttbraced{} @quoteleft\ttbraced{} @quoteright\ttbraced{} @quotesinglbase\ttbraced{}}{}{Insert various quotation marks: \guillemetleft\ \guillemetright\ \guillemotleft\ \guillemotright\ \guilsinglleft\ \guilsinglright\ \quotedblbase\ \quotedblleft\ \quotedblright\ \quoteleft\ \quoteright\ \quotesinglbase.}
 
 \subsection{Glyphs for code examples}
 
@@ -722,21 +723,21 @@ exception of \code{@tieaccent}.
 \txicmd{@clicksequence}{\ttbraced{action \code{@click\ttbraced{}} \var{action} \dots}}{Represent a sequence of \acro{GUI} actions or clicks.}
 \txicmd{@click}{\ttbraced{}}{Represent a single `click' in a \code{@clicksequene}.}
 \txicmd{@clickstyle}{\code{@}cmd}{Execute \var{@cmd} for each \code{@click}; default is \code{@arrow}. Empty braces usually following \code{@\var{cmd}} are omitted here.}
-\txicmd{@arrow}{\ttbraced{}}{Generate a right arrow glyph, $\rightarrow$.}
+\txicmd{@arrow}{\ttbraced{}}{Insert a right arrow glyph, $\rightarrow$.}
 
 \subsection{Math}
 
 \txicmd{@math}{\ttbraced{math}}{Format the given math (inline); \bschar{} becomes an escape character, and all \TeX\ math is available.}
-\txicmd{@minus}{\ttbraced{}}{Produce a minus sign, `$-$'.}
-\txicmd{@\bschar}{}{Inside \code{@math}, generate a backslash, $\backslash$.}
-\txicmd{@geq}{\ttbraced{}}{Generate a greater-than-or-equal sign, $\geq$.}
-\txicmd{@leq}{\ttbraced{}}{Generate a less-than-or-equal sign, $\leq$.}
+\txicmd{@minus}{\ttbraced{}}{Insert a minus sign, `$-$'.}
+\txicmd{@\bschar}{}{Inside \code{@math}, insert a math backslash, $\backslash$.}
+\txicmd{@geq}{\ttbraced{}}{Insert a greater-than-or-equal sign, $\geq$.}
+\txicmd{@leq}{\ttbraced{}}{Insert a less-than-or-equal sign, $\leq$.}
 
 
 \section{Making and preventing breaks}
 
 \txicmd{@*}{}{Force a line break.}
-\txicmd{@/}{}{Produces no output, but allows a line break.}
+\txicmd{@/}{}{Generates no output, but allows a line break.}
 \txicmd{@-}{}{Insert a discretionary hyphenation point.}
 \txicmd{@hyphenation}{\ttbraced{hy-phen-a-ted words}}{Explicitly define hyphenation points.}
 \txicmd{@tie}{\ttbraced{}}{Generate a normal interword space at which a line break is not allowed.}
@@ -748,7 +749,7 @@ exception of \code{@tieaccent}.
 \txicmd{@sp}{n}{Skip \var{n} blank lines.}
 \txicmd{@page}{}{Start a new page in a printed manual. Ignored in other formats.}
 \txicmd{@need}{mils}{Start a new page in a printed manual if fewer than \var{mils} thousandths of an inch remain on the current page. Ignored in other formats.}
-\txicmd{@group}{}{Disallow page breaks in following text.  Pair with \code{@end group}. Ignored in other formats.}
+\txicmd{@group}{\dots\code{@end group}}{In \TeX\ output, disallow page breaks in enclosed text; ignored otherwise.}
 \txicmd{@vskip}{amount}{In a printed manual, insert whitespace \var{amount}.  Ignored in other formats.}
 
 
@@ -905,7 +906,6 @@ processing the document according to their desires.
 \txicmd{@bye}{}{End reading the Texinfo source.  Any following text in the file is ignored.}
 
 \smallskip Finally, this meta-command doesn't fit anywhere else:
-
 \txicmd{@errormsg}{\ttbraced{msg}}{Report \var{msg} as an error.}
 
 
