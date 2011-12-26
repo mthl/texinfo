@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.402 2011-12-23 17:14:44 karl Exp $
+@c $Id: texinfo.txi,v 1.403 2011-12-26 01:19:14 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -550,6 +550,7 @@ Conditionally Visible Text
 * Conditional Commands::        Text for a given format.
 * Conditional Not Commands::    Text for any format other than a given one.
 * Raw Formatter Commands::      Using raw formatter commands.
+* Inline Conditional Commands:: Brace-delimited conditional text.
 * set clear value::             Variable tests and substitutions.
 * Conditional Nesting::         Using conditionals inside conditionals.
 
@@ -917,7 +918,7 @@ details of the HTML language and much related information, see
 @cindex DVI output
 @pindex dvips
 @pindex xdvi
-(Generated via @command{texi2dvi}.)  This DeVice Independent binary
+(Generated via @command{texi2dvi}.)  This DeVIce Independent binary
 format is output by the @TeX{} typesetting program
 (@uref{http://tug.org}).  This is then read by a DVI `driver', which
 writes the actual device-specific commands that can be viewed or
@@ -5041,7 +5042,7 @@ HTML output from @command{makeinfo} for each node includes links to
 the `Next', `Previous', and `Up' nodes.  The HTML also uses the
 @code{accesskey} attribute with the values @samp{n}, @samp{p}, and
 @samp{u} respectively.  This allows people using web browsers to
-follow the nagivation using (typically) @kbd{M-@var{letter}}, e.g.,
+follow the navigation using (typically) @kbd{M-@var{letter}}, e.g.,
 @kbd{M-n} for the `Next' node, from anywhere within the node.
 
 You may insert spaces before each name on the @code{@@node} line if
@@ -13392,12 +13393,12 @@ The conditional commands comprise the following categories.
 Commands specific to an output format (Info, @TeX{}, HTML, @dots{}).
 
 @item
-Commands specific to any output format @emph{other} than a given
-one (not Info, not @TeX{}, @dots{}).
+Commands specific to any output format @emph{excluding} a given
+one (e.g., not Info, not @TeX{}, @dots{}).
 
 @item
 `Raw' formatter text for any output format, passed straight
-through with no interpretation of @@-commands.
+through with (almost) no interpretation of @@-commands.
 
 @item
 Format-independent variable substitutions, and testing if a variable
@@ -13409,6 +13410,7 @@ is set or clear.
 * Conditional Commands::        Text for a given format.
 * Conditional Not Commands::    Text for any format other than a given one.
 * Raw Formatter Commands::      Using raw formatter commands.
+* Inline Conditional Commands:: Brace-delimited conditional text.
 * set clear value::             Variable tests and substitutions.
 * Conditional Nesting::         Using conditionals inside conditionals.
 @end menu
@@ -13570,7 +13572,7 @@ with @code{@@iftex}, not raw formatter source as with @code{@@tex}
 Ordinarily, the @code{@@if@dots{}} conditionals just described must be
 used only with normal Texinfo source.  However, for historical reasons
 there is an exception for @code{@@iftex}---you can embed a few raw
-@TeX{} commands, just chaning @samp{\} to @samp{@@}.  For example, in
+@TeX{} commands, just changing @samp{\} to @samp{@@}.  For example, in
 the @code{@@titlepage} section of a Texinfo file, you can use the
 @TeX{} command @code{@@vskip} to format the copyright page.  (The
 @code{@@titlepage} command causes Info to ignore the region
@@ -13655,6 +13657,50 @@ The behavior of newlines in raw regions is unspecified.
 In all cases, the exception to the raw processing is that @code{@@} is
 still an escape character, so the @code{@@end} command can be
 recognized.
+
+
+@node Inline Conditional Commands
+@section Inline Conditional Commands: @code{@@inline}, @code{@@inlineraw}
+@findex inlinefmt
+@findex inlineraw
+@cindex Inline conditional commands
+@cindex Conditional commands, inline
+@cindex Brace-delimited conditional text
+@cindex Newlines, avoiding in conditionals
+@cindex Whitespace, controlling in conditionals
+
+Texinfo provides two conditional commands with arguments given within
+braces:
+
+@table @code
+@item @@inlinefmt@{@var{format}, @var{text}@}
+Process the Texinfo @var{text} if @var{format} output is being
+generated.
+
+@item @@inlineraw@{@var{format}, @var{text}@}
+Similar, but for raw @var{text} (@pxref{Raw Formatter Commands}).
+@end table
+
+For example,
+
+@example
+@@inlinefmt@{html, @@emph@{HTML-only text@}@}
+@end example
+
+@noindent is nearly equivalent to
+
+@example
+@@ifhtml
+@@emph@{HTML-only text@}
+@@end ifhtml
+@end example
+
+@noindent except that no whitespace is added, as happens in the latter
+(environment) case.
+
+In these commands, whitespace is ignored after the comma separating
+the two arguments, as usual, but is @emph{not} ignored at the end of
+@var{text}.
 
 
 @node set clear value
@@ -17125,7 +17171,7 @@ Name of the program used.  It is set automatically in the default case
 to the name of the program launched, with a trailing @samp{.pl} removed.
 
 @item PROGRAM_NAME_IN_FOOTER
-For HTML@.  If set, output the program name and miscellanous related
+For HTML@.  If set, output the program name and miscellaneous related
 information in the page footers.
 
 @item RENAMED_NODES_FILE
@@ -19281,7 +19327,7 @@ languages.
 @node Command List
 @appendix @@-Command List
 @cindex Alphabetical @@-command list
-@cindex List of  @@-commands
+@cindex List of @@-commands
 @cindex @@-command list
 @cindex Reference to @@-commands
 
@@ -20016,6 +20062,11 @@ Web.  @xref{indicateurl, , @code{@@indicateurl}}.
 @item @@inforef@{@var{node-name}, [@var{entry-name}], @var{info-file-name}@}
 Make a cross reference to an Info file for which there is no printed
 manual.  @xref{inforef,, Cross references using @code{@@inforef}}.
+
+@item @@inlinefmt@{@var{fmt}, @var{text}@}
+@itemx @@inlineraw@{@var{fmt}, @var{raw-text}@}
+Insert (raw) @var{text} only if the output format is @var{fmt}.
+@xref{Inline Conditional Commands}.
 
 @item \input @var{macro-definitions-file}
 Use the specified macro definitions file.  This command is used only
@@ -21208,7 +21259,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.402 2011-12-23 17:14:44 karl Exp $
+$Id: texinfo.txi,v 1.403 2011-12-26 01:19:14 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21279,7 +21330,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.402 2011-12-23 17:14:44 karl Exp $
+@comment $Id: texinfo.txi,v 1.403 2011-12-26 01:19:14 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

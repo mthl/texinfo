@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.20 2011-12-23 17:14:44 karl Exp $
+% $Id: txirefcard.tex,v 1.21 2011-12-26 01:19:15 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -804,40 +804,42 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \section{Conditionally (in)visible text}
 
 \txicmd{@comment}{comment}{Begin a comment in Texinfo. The rest of the line is not visible in any output.}
-\txicmd{@c}{comment}{Synonym for \code{@comment}.  \code{DEL} also starts a comment.}
-\txicmd{@ignore}{}{Begin text that will not appear in any output. Pair with \code{@end ignore}.}
+\txicmd{@c}{comment}{Synonym for \code{@comment}.  \code{DEL} also starts a comrment.}
+\txicmd{@ignore}{\dots\code{@end ignore}}{Text that will not appear in any output.}
 
 \subsection{Output formats}
 
-\txicmd{@ifdocbook}{}{Begin text to appear only in Docbook output. Pair with \code{@end ifdocbook}.}
-\txicmd{@ifhtml}{}{Begin text to appear only in HTML output. Pair with \code{@end ifhtml}.}
-\txicmd{@ifinfo}{}{Begin text to appear in both Info and (for historical compatibility) plain text output. Pair with \code{@end ifinfo}.}
-\txicmd{@ifplaintext}{}{Begin text to appear only in plain text output. Pair with \code{@end ifplaintext}.}
-\txicmd{@iftex}{}{Begin text to appear only in the \TeX\ output. Pair with \code{@end iftex}.}
-\txicmd{@ifxml}{}{Begin text that will appear only in the XML output. Pair with \tt @end ifxml.}
-\txicmd{@ifnotdocbook @ifnothtml @ifnotplaintext @ifnottex @ifnotxml}{}{Begin text to be ignored in one output format but not the others: \code{@ifnothtml} text is omitted from HTML output, etc.  Pair with the corresponding \code{@end ifnot\var{format}}.}
-\txicmd{@ifnotinfo}{}{Like the other \code{@ifnot\dots} commands, but omit from plain text output as well as Info. Pair with \code{@end ifnotinfo}.}
+\txicmd{@ifdocbook}{\dots\code{@end ifdocbook}}{Texinfo text to appear only in Docbook output.}
+\txicmd{@ifhtml}{\dots\code{@end ifhtml}}{Text to appear only in \acro{HTML} output.}
+\txicmd{@ifinfo}{\dots\code{@end ifinfo}}{Text to appear in both Info and (for historical compatibility) plain text output.}
+\txicmd{@ifplaintext}{\dots\code{@end ifplaintext}}{Text to appear only in plain text output.}
+\txicmd{@iftex}{\dots\code{@end iftex}}{Text to appear only in the \TeX\ output.}
+\txicmd{@ifxml}{\dots\code{@end ifxml}}{Text to appear only in \acro{XML} output.}
+\txicmd{@ifnotdocbook @ifnothtml @ifnotplaintext @ifnottex @ifnotxml}{\dots\code{@end ifnot\var{format}}}{Begin text to be ignored in one output format but no others: \code{@ifnothtml} text is omitted from \acro{HTML} output, etc.}
+\txicmd{@ifnotinfo}{\dots\code{@end ifnotinfo}}{Like the other \code{@ifnot\dots} commands, but omit from plain text output as well as Info.}
+\txicmd{@inlinefmt}{\ttbraced{format, text}}{Include Texinfo \var{text} only in \var{format} output.}
 
 \subsection{Raw formatter text}
 
-\txicmd{@docbook}{}{Enter Docbook completely. Pair with \code{@end docbook}.}
-\txicmd{@html}{}{Enter \acro{HTML} completely. Pair with \code{@end html}.}
-\txicmd{@tex}{}{Enter \TeX\  completely (e.g., \bschar\ becomes an escape character). Pair with \code{@end tex}.}
-\txicmd{@xml}{}{Enter \acro{XML} completely. Pair with \code{@end xml}.}
+\txicmd{@docbook}{\dots\code{@end docbook}}{Enter Docbook completely.}
+\txicmd{@html}{\dots\code{@end html}}{Enter \acro{HTML} completely.}
+\txicmd{@tex}{\dots\code{@end tex}}{Enter \TeX\  completely (e.g., \bschar\ becomes an escape character).}
+\txicmd{@xml}{\dots\code{@end xml}}{Enter \acro{XML} completely.}
+\txicmd{@inlineraw}{\ttbraced{format, text}}{Include raw \var{text} only in \var{format} output.}
 
 \subsection{Document variables}
 
 \txicmd{@set}{name \rmbrack[string]}{Define the Texinfo variable \var{name}, optionally to the value \var{string}.}
 \txicmd{@clear}{name}{Undefine the Texinfo variable \var{name}.}
 \txicmd{@value}{\ttbraced{name}}{Insert the value of the Texinfo variable \var{name}.}
-\txicmd{@ifset}{name}{If the Texinfo variable \var{name} is set, format the following text.  Pair with \code{@end ifset}.}
-\txicmd{@ifclear}{flag}{If the Texinfo variable \var{name} is not set, format the following text.  Pair with \code{@end ifclear}.}
+\txicmd{@ifset}{name \dots\code{@end ifset}}{If the Texinfo variable \var{name} is set, format the enclosed text.}
+\txicmd{@ifclear}{flag \dots\code{@end ifclear}}{If the Texinfo variable \var{name} is not set, format the enclosed text.}
 
 
 \section{Defining new Texinfo commands}
 
 \txicmd{@alias}{new\code{=}existing}{Make the command \code{@new} a synonym for the existing command \code{@existing}.}
-\txicmd{@macro}{macroname \ttbraced{\var{params}}}{Define a new Texinfo command  \code{@\var{macroname}}.  Pair with \code{@end macro}.}
+\txicmd{@macro}{macroname \ttbraced{\var{params}} \dots\code{@end macro}}{Define a new Texinfo command \code{@\var{macroname}}.}
 \txicmd{@unmacro}{macroname}{Undefine \code{@\var{macroname}} if it is defined.}
 \txicmd{@definfoenclose}{newcmd\code{,} before\code{,} after}{Can only be used within \code{@ifinfo}; create a new command that encloses its argument in the \var{before} and \var{after} strings.}
 
