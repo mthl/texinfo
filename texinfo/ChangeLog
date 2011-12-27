@@ -1,3 +1,10 @@
+2011-12-27  Karl Berry  <karl@gnu.org>
+
+	* NEWS: mention Info's virtual-index.
+	* doc/refcard/txirefcard.tex: likewise.
+	* doc/info-stnd.texi (Searching Commands): tweak text.
+	* info/infodoc.c: add to initial command list in help text.
+
 2011-12-26  Karl Berry  <karl@gnu.org>
 
 	* NEWS: new commands @atchar{} @lbracechar{} @rbracechar{}

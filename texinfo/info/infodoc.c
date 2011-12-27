@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.29 2011-10-18 18:47:20 karl Exp $
+   $Id: infodoc.c,v 1.30 2011-12-27 19:34:17 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008, 2011
@@ -79,6 +79,8 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[search-next]  Search for next occurrence.\n"),
   N_("\\%-10[index-search]  Search for a specified string in the index, and\n\
               select the node referenced by the first entry found.\n"),
+  N_("\\%-10[virtual-index]  Synthesize menu of matching index entries.\n"),
+  "\n",
   N_("\\%-10[abort-key]  Cancel the current operation.\n"),
   "\n",
   NULL

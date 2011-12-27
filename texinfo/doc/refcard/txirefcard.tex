@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.22 2011-12-26 22:14:06 karl Exp $
+% $Id: txirefcard.tex,v 1.23 2011-12-27 19:34:17 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -972,7 +972,7 @@ extensions.  This list of mode commands is from Emacs 22.1.
 
 There are two main Info readers: \code{M-x info} (\code{C-h i}) in GNU
 Emacs, and the standalone \code{info} program.  These basic keystrokes
-are for standalone Info, but most work in Emacs Info as well.
+are from standalone Info, but most work in Emacs Info as well.
 
 \begininfokeys %
 \infokey q           Quit Info altogether.\cr
@@ -982,7 +982,7 @@ are for standalone Info, but most work in Emacs Info as well.
 \infokey Down        Move down one line.\cr
 \infokey DEL         Scroll backward one screenful.\cr
 \infokey SPC         Scroll forward one screenful.\cr
-\infokey Home        Go to the beginning of this node.\cr
+\infokey Home, b     Go to the beginning of this node.\cr
 \infokey End         Go to the end of this node.\cr
 
 \infokey TAB         Skip to the next hypertext link.\cr
@@ -1000,7 +1000,7 @@ are for standalone Info, but most work in Emacs Info as well.
 \infokey 1...9       Pick the first...ninth item in this node's menu.\cr
 \infokey 0           Pick the last item in this node's menu.\cr
 \infokey m           Pick a menu item specified by name.\cr
-\infokey r           Follow a cross reference specified by name.\cr
+\infokey f           Follow a cross reference specified by name.\cr
 \infokey g           Go to a node specified by name.\cr
 
 \infokey s           Search forward for a specified string.\cr
@@ -1008,6 +1008,7 @@ are for standalone Info, but most work in Emacs Info as well.
 \infokey \rbracechar{}           Search for next occurrence.\cr
 \infokey i           Search for a specified string in the index, and\cr
 \infokey {}              select the node referenced by the first entry found.\cr
+\infokey I           Synthesize menu of matching index entries.\cr
 
 \infokey C-g         Cancel the current operation.\cr
 \endinfokeys
