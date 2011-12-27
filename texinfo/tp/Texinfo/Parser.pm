@@ -287,7 +287,8 @@ foreach my $global_multiple_command ('author', 'documentlanguage',
   'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
   'frenchspacing', 'hyphenation', 'urefbreakstyle',
   'xrefautomaticsectiontitle', 'codequoteundirected',
-  'codequotebacktick', 'titlefont', 'footnote', 'printindex') {
+  'codequotebacktick', 'titlefont', 'footnote', 'printindex',
+  'deftypefnnewline') {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
 
@@ -1889,8 +1890,8 @@ sub _abort_empty_line($$;$)
   if ($current->{'contents'} and @{$current->{'contents'}} 
        and $current->{'contents'}->[-1]->{'type'}
        and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line' 
-           or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
+           or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
     print STDERR "ABORT EMPTY additional text |$additional_text|, current |$current->{'contents'}->[-1]->{'text'}|\n" if ($self->{'DEBUG'});
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
@@ -4965,7 +4966,8 @@ sub _parse_line_command_args($$$)
   } elsif ($command eq 'frenchspacing' 
            or $command eq 'xrefautomaticsectiontitle'
            or $command eq 'codequoteundirected'
-           or $command eq 'codequotebacktick') {
+           or $command eq 'codequotebacktick'
+           or $command eq 'deftypefnnewline') {
     if ($line eq 'on' or $line eq 'off') {
       $args = [$line];
     } else {

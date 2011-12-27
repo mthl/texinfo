@@ -86,7 +86,8 @@ my @document_settable_at_commands =
         'evenfooting', 'oddheading', 'oddfooting', 'headings',
         'allowcodebreaks', 'frenchspacing', 'exampleindent',
         'firstparagraphindent', 'paragraphindent', 'clickstyle',
-        'documentlanguage', 'xrefautomaticsectiontitle');
+        'documentlanguage', 'xrefautomaticsectiontitle',
+        'deftypefnnewline');
 
 # those should be unique
 my @document_global_at_commands = ('contents', 'shortcontents',
@@ -282,6 +283,7 @@ our %misc_commands = (
   'codequoteundirected'       => 1, # on off
   'codequotebacktick'         => 1, # on off
   'xrefautomaticsectiontitle' => 1, # on off
+  'deftypefnnewline'  => 1, # on off
   'fonttextsize'      => 1, # 10 11
   'allowcodebreaks'   => 1, # false or true
   'exampleindent'     => 1, # asis or a number
