@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.26 2011-12-27 22:31:27 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.27 2011-12-27 23:11:41 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -824,9 +824,13 @@
 <!ENTITY slashbreak "/">
 <!ENTITY noeos      "<noeos/>">
 <!ENTITY arobase    "@">
-<!ENTITY lbrace     "}">
-<!ENTITY rbrace     "{">
-<!ENTITY comma     ",">
+<!ENTITY lbrace     "{">
+<!ENTITY rbrace     "}">
+<!ENTITY comma      ",">
+<!ENTITY atchar     "@">
+<!ENTITY lbracechar "{">
+<!ENTITY rbracechar "}">
+<!ENTITY backslashchar "\\">
 <!ENTITY nbsp       "&#xa0;">
 <!ENTITY deg        "&#xb0;">
 <!ENTITY expansion  "&#x2192;">

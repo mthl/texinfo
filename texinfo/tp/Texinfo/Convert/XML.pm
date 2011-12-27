@@ -81,8 +81,8 @@ my %specific_xml_commands_formatting = (
            '?' => '&eosquest;',
            '.' => '&eosperiod;',
            '@' => '&arobase;',
-           '}' => '&lbrace;',
-           '{' => '&rbrace;',
+           '{' => '&lbrace;',
+           '}' => '&rbrace;',
            '\\' => '&backslash;',  # should only appear in math
 
            'TeX' => '&tex;',
@@ -104,6 +104,10 @@ my %specific_xml_commands_formatting = (
            'L'            => '&Lslash;',
            'today'        => '<today/>',
            'comma'        => '&comma;',
+           'atchar'       => '&atchar;',
+           'lbracechar'   => '&lbracechar;',
+           'rbracechar'   => '&rbracechar;',
+           'backslashchar' => '&backslashchar;',
 );
 
 my %xml_commands_formatting
