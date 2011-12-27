@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.25 2011-12-22 10:54:42 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.26 2011-12-27 22:31:27 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -41,6 +41,7 @@
 <!ENTITY % multiple.option.cmds "frenchspacing | documentlanguage 
     | %variable.cmds; | kbdinputstyle | paragraphindent 
     | firstparagraphindent | urefbreakstyle | xrefautomaticsectiontitle
+    | deftypefnnewline
     | codequoteundirected | codequotebacktick | raisesections
     | lowersections | clickstyle">
 
@@ -292,6 +293,9 @@
           value CDATA #REQUIRED>
 <!ELEMENT xrefautomaticsectiontitle EMPTY>
 <!ATTLIST xrefautomaticsectiontitle
+          value (%onoff;) #REQUIRED>
+<!ELEMENT deftypefnnewline EMPTY>
+<!ATTLIST deftypefnnewline
           value (%onoff;) #REQUIRED>
 <!ELEMENT codequoteundirected EMPTY>
 <!ATTLIST codequoteundirected
