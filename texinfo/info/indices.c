@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.17 2011-11-17 10:04:59 gray Exp $
+   $Id: indices.c,v 1.18 2011-12-27 20:27:22 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -878,10 +878,25 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   int i;
   size_t cnt, off;
   
+  fb = file_buffer_of_window (window);
+
+  if (!initial_index_filename ||
+      !fb ||
+      (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
+    {
+      info_free_references (index_index);
+      window_message_in_echo_area (_("Finding index entries..."));
+      index_index = info_indices_of_file_buffer (fb);
+    }
+
+  if (!index_index)
+    {
+      info_error (_("No index"));
+      return;
+    }
+    
   line = info_read_maybe_completing (window, _("Index topic: "),
 				     index_index);
-
-  window = active_window;
 
   /* User aborted? */
   if (!line)
@@ -898,17 +913,6 @@ DECLARE_INFO_COMMAND (info_virtual_index,
     }
   linelen = strlen (line);
   
-  fb = file_buffer_of_window (window);
-
-  if (!initial_index_filename ||
-      !fb ||
-      (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
-    {
-      info_free_references (index_index);
-      window_message_in_echo_area (_("Finding index entries..."));
-      index_index = info_indices_of_file_buffer (fb);
-    }
-
   text_buffer_init (&text);
   text_buffer_printf (&text, _("Index for `%s'"), line);
   text_buffer_add_char (&text, 0);

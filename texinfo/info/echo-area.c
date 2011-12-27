@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.17 2011-10-18 18:47:19 karl Exp $
+   $Id: echo-area.c,v 1.18 2011-12-27 20:27:21 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -814,7 +814,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
 
   /* Initialize our local variables. */
   initialize_input_line (prompt);
-
+  
   /* Initialize the echo area for the first (but maybe not the last) time. */
   echo_area_initialize_node ();
 
@@ -828,6 +828,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
 
   active_window = the_echo_area;
   echo_area_is_active++;
+  window_line_map_init (active_window);
 
   /* Read characters in the echo area. */
   while (1)

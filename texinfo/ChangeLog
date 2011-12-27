@@ -1,3 +1,13 @@
+2011-12-27  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Bugfixes.
+	
+	* info/echo-area.c (info_read_completing_internal): Initialize
+	window line map before the loop, otherwise the previous contents
+	is used to compute cursor position.
+	* info/indices.c (info_virtual_index): Report and return
+	immediately if there are no indices in the document.
+
 2011-12-27  Karl Berry  <karl@gnu.org>
 
 	* NEWS: mention Info's virtual-index.
