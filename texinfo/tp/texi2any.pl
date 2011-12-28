@@ -199,7 +199,8 @@ $configured_name = $configured_package
   if ($configured_name eq '@' .'PACKAGE_NAME@');
 my $configured_name_version = "$configured_name $configured_version"; 
 my $configured_url = '@PACKAGE_URL@';
-# FIXME url of the CPAN module if/when it exists?
+$configured_url = 'http://www.gnu.org/software/texinfo/'
+  if ($configured_url eq '@' .'PACKAGE_URL@');
 
 # defaults for options relevant in the main program, not undef, and also
 # defaults for all the converters.
