@@ -260,6 +260,8 @@ sp after para
 ['test_deftypefnnewline',
 '
 @deftypefnnewline on
+
+@node Top
 @deftypefun data-type name arguments...
 aaa
 @end deftypefun

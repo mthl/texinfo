@@ -8,10 +8,62 @@ use utf8;
 $result_trees{'test_deftypefnnewline'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
 ',
-      'type' => 'empty_line'
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'extra' => {
+                    'command' => {}
+                  },
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'on'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'deftypefnnewline',
+          'extra' => {
+            'misc_args' => [
+              'on'
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'parent' => {},
+      'type' => 'text_root'
     },
     {
       'args' => [
@@ -27,7 +79,7 @@ $result_trees{'test_deftypefnnewline'} = {
             },
             {
               'parent' => {},
-              'text' => 'on'
+              'text' => 'Top'
             },
             {
               'parent' => {},
@@ -40,391 +92,333 @@ $result_trees{'test_deftypefnnewline'} = {
           'type' => 'misc_line_arg'
         }
       ],
-      'cmdname' => 'deftypefnnewline',
-      'extra' => {
-        'misc_args' => [
-          'on'
-        ]
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'deftypefun',
+      'cmdname' => 'node',
       'contents' => [
         {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'data-type name arguments...
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'block_line_arg'
-            }
-          ],
-          'extra' => {
-            'def_args' => [
-              [
-                'category',
-                {
-                  'text' => 'Function'
-                }
-              ],
-              [
-                'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
-              ],
-              [
-                'type',
-                {
-                  'text' => 'data-type'
-                }
-              ],
-              [
-                'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
-              ],
-              [
-                'name',
-                {
-                  'text' => 'name'
-                }
-              ],
-              [
-                'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
-              ],
-              [
-                'typearg',
-                {
-                  'text' => 'arguments...'
-                }
-              ]
-            ],
-            'def_command' => 'deftypefun',
-            'def_parsed_hash' => {
-              'category' => {},
-              'name' => {},
-              'type' => {}
-            },
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {}
-              ],
-              'content_normalized' => [
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'deftypefun',
-              'index_name' => 'fn',
-              'index_prefix' => 'f',
-              'index_type_command' => 'deftypefun',
-              'key' => 'name',
-              'number' => 1
-            },
-            'original_def_cmdname' => 'deftypefun'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {},
-          'type' => 'def_line'
-        },
-        {
+          'cmdname' => 'deftypefun',
           'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'aaa
+                  'contents' => [
+                    {
+                      'extra' => {
+                        'command' => {}
+                      },
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'data-type name arguments...
 '
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'block_line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'paragraph'
-            }
-          ],
-          'parent' => {},
-          'type' => 'def_item'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'deftypefun'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
-              ],
-              'parent' => {},
-              'type' => 'misc_line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command' => {},
-            'command_argument' => 'deftypefun',
-            'text_arg' => 'deftypefun'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {},
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'deffn',
-      'contents' => [
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'fun arg
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'block_line_arg'
-            }
-          ],
-          'extra' => {
-            'def_args' => [
-              [
-                'category',
-                {
-                  'text' => 'fun'
-                }
-              ],
-              [
-                'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
-              ],
-              [
-                'name',
-                {
-                  'text' => 'arg'
-                }
-              ]
-            ],
-            'def_command' => 'deffn',
-            'def_parsed_hash' => {
-              'category' => {},
-              'name' => {}
-            },
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {}
-              ],
-              'content_normalized' => [
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'deffn',
-              'index_name' => 'fn',
-              'index_prefix' => 'f',
-              'index_type_command' => 'deffn',
-              'key' => 'arg',
-              'number' => 2
-            },
-            'original_def_cmdname' => 'deffn'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
-          },
-          'parent' => {},
-          'type' => 'def_line'
-        },
-        {
-          'contents' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'fff
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'paragraph'
-            }
-          ],
-          'parent' => {},
-          'type' => 'def_item'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'deffn'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
-              ],
-              'parent' => {},
-              'type' => 'misc_line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command' => {},
-            'command_argument' => 'deffn',
-            'text_arg' => 'deffn'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {},
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'contents' => [
-            {
               'extra' => {
-                'command' => {}
+                'def_args' => [
+                  [
+                    'category',
+                    {
+                      'text' => 'Function'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'type',
+                    {
+                      'text' => 'data-type'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'name',
+                    {
+                      'text' => 'name'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'typearg',
+                    {
+                      'text' => 'arguments...'
+                    }
+                  ]
+                ],
+                'def_command' => 'deftypefun',
+                'def_parsed_hash' => {
+                  'category' => {},
+                  'name' => {},
+                  'type' => {}
+                },
+                'index_entry' => {
+                  'command' => {},
+                  'content' => [
+                    {}
+                  ],
+                  'content_normalized' => [
+                    {}
+                  ],
+                  'in_code' => 1,
+                  'index_at_command' => 'deftypefun',
+                  'index_name' => 'fn',
+                  'index_prefix' => 'f',
+                  'index_type_command' => 'deftypefun',
+                  'key' => 'name',
+                  'node' => {},
+                  'number' => 1
+                },
+                'original_def_cmdname' => 'deftypefun'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
               },
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
+              'type' => 'def_line'
             },
             {
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'aaa
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'paragraph'
+                }
+              ],
               'parent' => {},
-              'text' => 'off'
+              'type' => 'def_item'
             },
             {
-              'parent' => {},
-              'text' => '
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'extra' => {
+                        'command' => {}
+                      },
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'deftypefun'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
 ',
-              'type' => 'spaces_at_end'
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'deftypefun',
+                'text_arg' => 'deftypefun'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
+          'extra' => {
+            'end_command' => {}
+          },
+          'line_nr' => {},
+          'parent' => {}
+        },
+        {
           'parent' => {},
-          'type' => 'misc_line_arg'
-        }
-      ],
-      'cmdname' => 'deftypefnnewline',
-      'extra' => {
-        'misc_args' => [
-          'off'
-        ]
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 11,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'deftypefun',
-      'contents' => [
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'deffn',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'extra' => {
+                        'command' => {}
+                      },
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'fun arg
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'extra' => {
+                'def_args' => [
+                  [
+                    'category',
+                    {
+                      'text' => 'fun'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'name',
+                    {
+                      'text' => 'arg'
+                    }
+                  ]
+                ],
+                'def_command' => 'deffn',
+                'def_parsed_hash' => {
+                  'category' => {},
+                  'name' => {}
+                },
+                'index_entry' => {
+                  'command' => {},
+                  'content' => [
+                    {}
+                  ],
+                  'content_normalized' => [
+                    {}
+                  ],
+                  'in_code' => 1,
+                  'index_at_command' => 'deffn',
+                  'index_name' => 'fn',
+                  'index_prefix' => 'f',
+                  'index_type_command' => 'deffn',
+                  'key' => 'arg',
+                  'node' => {},
+                  'number' => 2
+                },
+                'original_def_cmdname' => 'deffn'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 9,
+                'macro' => ''
+              },
+              'parent' => {},
+              'type' => 'def_line'
+            },
+            {
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'fff
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'paragraph'
+                }
+              ],
+              'parent' => {},
+              'type' => 'def_item'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'extra' => {
+                        'command' => {}
+                      },
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'deffn'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'deffn',
+                'text_arg' => 'deffn'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 11,
+                'macro' => ''
+              },
+              'parent' => {}
+            }
+          ],
+          'extra' => {
+            'end_command' => {}
+          },
+          'line_nr' => {},
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
         {
           'args' => [
             {
@@ -439,423 +433,510 @@ $result_trees{'test_deftypefnnewline'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => 'data-type2 name2 arguments2...
-'
+                  'text' => 'off'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
-              'type' => 'block_line_arg'
+              'type' => 'misc_line_arg'
             }
           ],
+          'cmdname' => 'deftypefnnewline',
           'extra' => {
-            'def_args' => [
-              [
-                'category',
-                {
-                  'text' => 'Function'
-                }
-              ],
-              [
-                'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
-              ],
-              [
-                'type',
-                {
-                  'text' => 'data-type2'
-                }
-              ],
-              [
-                'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
-              ],
-              [
-                'name',
-                {
-                  'text' => 'name2'
-                }
-              ],
-              [
-                'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
-              ],
-              [
-                'typearg',
-                {
-                  'text' => 'arguments2...'
-                }
-              ]
-            ],
-            'def_command' => 'deftypefun',
-            'def_parsed_hash' => {
-              'category' => {},
-              'name' => {},
-              'type' => {}
-            },
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {}
-              ],
-              'content_normalized' => [
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'deftypefun',
-              'index_name' => 'fn',
-              'index_prefix' => 'f',
-              'index_type_command' => 'deftypefun',
-              'key' => 'name2',
-              'number' => 3
-            },
-            'original_def_cmdname' => 'deftypefun'
+            'misc_args' => [
+              'off'
+            ]
           },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 13,
             'macro' => ''
           },
-          'parent' => {},
-          'type' => 'def_line'
+          'parent' => {}
         },
         {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'deftypefun',
           'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'aaa2
+                  'contents' => [
+                    {
+                      'extra' => {
+                        'command' => {}
+                      },
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'data-type2 name2 arguments2...
 '
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'block_line_arg'
                 }
               ],
+              'extra' => {
+                'def_args' => [
+                  [
+                    'category',
+                    {
+                      'text' => 'Function'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'type',
+                    {
+                      'text' => 'data-type2'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'name',
+                    {
+                      'text' => 'name2'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'typearg',
+                    {
+                      'text' => 'arguments2...'
+                    }
+                  ]
+                ],
+                'def_command' => 'deftypefun',
+                'def_parsed_hash' => {
+                  'category' => {},
+                  'name' => {},
+                  'type' => {}
+                },
+                'index_entry' => {
+                  'command' => {},
+                  'content' => [
+                    {}
+                  ],
+                  'content_normalized' => [
+                    {}
+                  ],
+                  'in_code' => 1,
+                  'index_at_command' => 'deftypefun',
+                  'index_name' => 'fn',
+                  'index_prefix' => 'f',
+                  'index_type_command' => 'deftypefun',
+                  'key' => 'name2',
+                  'node' => {},
+                  'number' => 3
+                },
+                'original_def_cmdname' => 'deftypefun'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
+              },
               'parent' => {},
-              'type' => 'paragraph'
-            }
-          ],
-          'parent' => {},
-          'type' => 'def_item'
-        },
-        {
-          'args' => [
+              'type' => 'def_line'
+            },
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'aaa2
+'
+                    }
+                  ],
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'deftypefun'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
+                  'type' => 'paragraph'
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'def_item'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'extra' => {
+                        'command' => {}
+                      },
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'deftypefun'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'deftypefun',
+                'text_arg' => 'deftypefun'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
-          'cmdname' => 'end',
           'extra' => {
-            'command' => {},
-            'command_argument' => 'deftypefun',
-            'text_arg' => 'deftypefun'
+            'end_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 15,
-            'macro' => ''
+          'line_nr' => {},
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'deffn',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'extra' => {
+                        'command' => {}
+                      },
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'fun2 arg2
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'extra' => {
+                'def_args' => [
+                  [
+                    'category',
+                    {
+                      'text' => 'fun2'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'name',
+                    {
+                      'text' => 'arg2'
+                    }
+                  ]
+                ],
+                'def_command' => 'deffn',
+                'def_parsed_hash' => {
+                  'category' => {},
+                  'name' => {}
+                },
+                'index_entry' => {
+                  'command' => {},
+                  'content' => [
+                    {}
+                  ],
+                  'content_normalized' => [
+                    {}
+                  ],
+                  'in_code' => 1,
+                  'index_at_command' => 'deffn',
+                  'index_name' => 'fn',
+                  'index_prefix' => 'f',
+                  'index_type_command' => 'deffn',
+                  'key' => 'arg2',
+                  'node' => {},
+                  'number' => 4
+                },
+                'original_def_cmdname' => 'deffn'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 19,
+                'macro' => ''
+              },
+              'parent' => {},
+              'type' => 'def_line'
+            },
+            {
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'fff2
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'paragraph'
+                }
+              ],
+              'parent' => {},
+              'type' => 'def_item'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'extra' => {
+                        'command' => {}
+                      },
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'deffn'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'deffn',
+                'text_arg' => 'deffn'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 21,
+                'macro' => ''
+              },
+              'parent' => {}
+            }
+          ],
+          'extra' => {
+            'end_command' => {}
           },
+          'line_nr' => {},
           'parent' => {}
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'node_content' => [
+          {}
+        ],
+        'nodes_manuals' => [
+          {
+            'node_content' => [],
+            'normalized' => 'Top'
+          }
+        ],
+        'normalized' => 'Top'
       },
-      'line_nr' => {},
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'deffn',
-      'contents' => [
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'fun2 arg2
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'block_line_arg'
-            }
-          ],
-          'extra' => {
-            'def_args' => [
-              [
-                'category',
-                {
-                  'text' => 'fun2'
-                }
-              ],
-              [
-                'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
-              ],
-              [
-                'name',
-                {
-                  'text' => 'arg2'
-                }
-              ]
-            ],
-            'def_command' => 'deffn',
-            'def_parsed_hash' => {
-              'category' => {},
-              'name' => {}
-            },
-            'index_entry' => {
-              'command' => {},
-              'content' => [
-                {}
-              ],
-              'content_normalized' => [
-                {}
-              ],
-              'in_code' => 1,
-              'index_at_command' => 'deffn',
-              'index_name' => 'fn',
-              'index_prefix' => 'f',
-              'index_type_command' => 'deffn',
-              'key' => 'arg2',
-              'number' => 4
-            },
-            'original_def_cmdname' => 'deffn'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 17,
-            'macro' => ''
-          },
-          'parent' => {},
-          'type' => 'def_line'
-        },
-        {
-          'contents' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'fff2
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'paragraph'
-            }
-          ],
-          'parent' => {},
-          'type' => 'def_item'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'deffn'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
-              ],
-              'parent' => {},
-              'type' => 'misc_line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command' => {},
-            'command_argument' => 'deffn',
-            'text_arg' => 'deffn'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 19,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
       },
-      'line_nr' => {},
       'parent' => {}
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
+$result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[0];
 $result_trees{'test_deftypefnnewline'}{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'};
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0];
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[4][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[4][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[4][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'line_nr'};
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'line_nr'};
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[0][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[4][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[4][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[4][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'line_nr'};
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[0][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[1]{'contents'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[2];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'line_nr'};
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'test_deftypefnnewline'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'test_deftypefnnewline'}{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[4][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[4][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[4][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[2]{'contents'}[0]{'line_nr'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[3]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[1]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[4]{'contents'}[0]{'line_nr'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[4]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[5]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[6];
-$result_trees{'test_deftypefnnewline'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[6]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[6]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[6]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[6];
-$result_trees{'test_deftypefnnewline'}{'contents'}[6]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[7]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[4][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[4][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[4][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[1]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[8]{'contents'}[0]{'line_nr'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[8]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[9]{'parent'} = $result_trees{'test_deftypefnnewline'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[1]{'contents'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[1];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'args'}[0];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'extra'}{'command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[2];
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'line_nr'} = $result_trees{'test_deftypefnnewline'}{'contents'}[10]{'contents'}[0]{'line_nr'};
-$result_trees{'test_deftypefnnewline'}{'contents'}[10]{'parent'} = $result_trees{'test_deftypefnnewline'};
 
 $result_texis{'test_deftypefnnewline'} = '
 @deftypefnnewline on
+
+@node Top
 @deftypefun data-type name arguments...
 aaa
 @end deftypefun
@@ -877,6 +958,7 @@ fff2
 
 
 $result_texts{'test_deftypefnnewline'} = '
+
 Function: data-type name arguments...
 aaa
 
@@ -891,44 +973,35 @@ fun2: arg2
 fff2
 ';
 
-$result_errors{'test_deftypefnnewline'} = [
-  {
-    'error_line' => ':3: Entry for index `fn\' outside of any node
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+$result_sectioning{'test_deftypefnnewline'} = {};
+
+$result_nodes{'test_deftypefnnewline'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
   },
-  {
-    'error_line' => ':7: Entry for index `fn\' outside of any node
-',
-    'file_name' => '',
-    'line_nr' => 7,
-    'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':13: Entry for index `fn\' outside of any node
-',
-    'file_name' => '',
-    'line_nr' => 13,
-    'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':17: Entry for index `fn\' outside of any node
-',
-    'file_name' => '',
-    'line_nr' => 17,
-    'macro' => '',
-    'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+  'node_up' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ],
+      'top_node_up' => {}
+    },
+    'type' => 'top_node_up'
   }
-];
+};
+$result_nodes{'test_deftypefnnewline'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'test_deftypefnnewline'};
+
+$result_menus{'test_deftypefnnewline'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
+$result_errors{'test_deftypefnnewline'} = [];
 
 
 
@@ -949,6 +1022,9 @@ $result_converted{'plaintext'}->{'test_deftypefnnewline'} = ' -- Function:
 
 
 $result_converted{'html_text'}->{'test_deftypefnnewline'} = '
+
+<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
 <dl>
 <dt><a name="index-name"></a>Function:<br> <em>data-type</em><br> <strong>name</strong> <em>arguments...</em></dt>
 <dd><p>aaa
@@ -969,10 +1045,13 @@ $result_converted{'html_text'}->{'test_deftypefnnewline'} = '
 <dt><a name="index-arg2"></a>fun2: <strong>arg2</strong></dt>
 <dd><p>fff2
 </p></dd></dl>
+<hr>
 ';
 
 
 $result_converted{'docbook'}->{'test_deftypefnnewline'} = '
+
+<anchor id="Top"/>
 <synopsis><indexterm role="fn"><primary>name</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>data-type</returnvalue> <function>name</function> <type>arguments...</type></synopsis>
 <blockquote><para>aaa
 </para></blockquote>
