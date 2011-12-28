@@ -971,6 +971,7 @@ our %defaults = (
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
   'xrefautomaticsectiontitle' => 'off',
+  'deftypefnnewline'     => 'off',
   'SHOW_TITLE'           => 1,
   'USE_TITLEPAGE_FOR_TITLE' => 0,
   'MONOLITHIC'           => 1,
@@ -1098,7 +1099,7 @@ my @informative_global_commands = ('contents', 'shortcontents',
   'summarycontents', 'allowcodebreaks', 'documentlanguage',
   'footnotestyle', 'documentencoding', 
   'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage',
-  'xrefautomaticsectiontitle');
+  'xrefautomaticsectiontitle', 'deftypefnnewline');
 # taken from global
 # 'documentencoding'
 # 'novalidate'
@@ -1595,7 +1596,7 @@ sub _convert_uref_command($$$$)
 $default_commands_conversion{'uref'} = \&_convert_uref_command;
 $default_commands_conversion{'url'} = \&_convert_uref_command;
 
-my @image_files_extensions = ('.png', '.jpg');
+my @image_files_extensions = ('.png', '.jpg', '.jpeg', '.gif');
 sub _convert_image_command($$$$)
 {
   my $self = shift;
@@ -3865,16 +3866,32 @@ sub _convert_def_line_type($$$$)
                   or $command_name eq 'deftypecv')
                  and !$command->{'extra'}->{'def_parsed_hash'}->{'class'})) {
       if ($arguments) {
-        $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", {
+        my $strings = {
                 'category' => $category,
                 'name' => $name,
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
-                'arguments' => $arguments});
+                'arguments' => $arguments};
+        if ($self->get_conf('deftypefnnewline') eq 'on') {
+          $tree 
+             = $self->gdt("{category}:@* \@emph{{type}}@* \@strong{{name}} \@emph{{arguments}}", 
+                          $strings);
+        } else {
+          $tree 
+             = $self->gdt("{category}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", 
+                          $strings);
+        }
       } else {
-        $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}}", {
+        my $strings = {
                 'category' => $category,
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
-                'name' => $name});
+                'name' => $name};
+        if ($self->get_conf('deftypefnnewline') eq 'on') {
+          $tree = $self->gdt("{category}:@* \@emph{{type}}@* \@strong{{name}}",
+                  $strings);
+        } else {
+          $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}}",
+                  $strings);
+        }
       }
     } elsif ($command_name eq 'defcv'
              or ($command_name eq 'deftypecv'
@@ -3908,33 +3925,69 @@ sub _convert_def_line_type($$$$)
       }
     } elsif ($command_name eq 'deftypeop') {
       if ($arguments) {
-        $tree = $self->gdt("{category} on {class}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", {
+        my $strings = {
                 'category' => $category,
                 'name' => $name,
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
-                'arguments' => $arguments});
+                'arguments' => $arguments};
+        if ($self->get_conf('deftypefnnewline') eq 'on') {
+          $tree 
+            = $self->gdt("{category} on {class}:@* \@emph{{type}}@* \@strong{{name}} \@emph{{arguments}}", 
+                         $strings);
+        } else {
+          $tree 
+            = $self->gdt("{category} on {class}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", 
+                         $strings);
+        }
       } else {
-        $tree = $self->gdt("{category} on {class}: \@emph{{type}} \@strong{{name}}", {
+        my $strings = {
                 'category' => $category,
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
-                'name' => $name});
+                'name' => $name};
+        if ($self->get_conf('deftypefnnewline') eq 'on') {
+          $tree 
+            = $self->gdt("{category} on {class}:@* \@emph{{type}}@* \@strong{{name}}", 
+                         $strings);
+        } else {
+          $tree 
+            = $self->gdt("{category} on {class}: \@emph{{type}} \@strong{{name}}", 
+                         $strings);
+        }
       }
     } elsif ($command_name eq 'deftypecv') {
       if ($arguments) {
-        $tree = $self->gdt("{category} of {class}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", {
+        my $strings = {
                 'category' => $category,
                 'name' => $name,
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
-                'arguments' => $arguments});
+                'arguments' => $arguments};
+        if ($self->get_conf('deftypefnnewline') eq 'on') {
+          $tree 
+            = $self->gdt("{category} of {class}:@* \@emph{{type}}@* \@strong{{name}} \@emph{{arguments}}",
+                         $strings);
+        } else {
+          $tree 
+            = $self->gdt("{category} of {class}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}",
+                         $strings);
+        }
       } else {
-        $tree = $self->gdt("{category} of {class}: \@emph{{type}} \@strong{{name}}", {
+        my $strings = {
                 'category' => $category,
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
-                'name' => $name});
+                'name' => $name};
+        if ($self->get_conf('deftypefnnewline') eq 'on') {
+          $tree 
+            = $self->gdt("{category} of {class}:@* \@emph{{type}}@* \@strong{{name}}",
+                         $strings);
+        } else {
+          $tree 
+            = $self->gdt("{category} of {class}: \@emph{{type}} \@strong{{name}}",
+                         $strings);
+        }
       }
     }
 

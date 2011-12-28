@@ -257,6 +257,27 @@ sp after para
 -- --- \'\' `` @code{in code}. @~e.
 @end example
 '],
+['test_deftypefnnewline',
+'
+@deftypefnnewline on
+@deftypefun data-type name arguments...
+aaa
+@end deftypefun
+
+@deffn fun arg
+fff
+@end deffn
+
+@deftypefnnewline off
+
+@deftypefun data-type2 name2 arguments2...
+aaa2
+@end deftypefun
+
+@deffn fun2 arg2
+fff2
+@end deffn
+'],
 
 );
 
