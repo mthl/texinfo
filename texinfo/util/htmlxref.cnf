@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-10-02.22; # UTC
+htmlxrefversion=2011-12-29.01; # UTC
 
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -242,6 +242,12 @@ gdb		node	${GDB}/gdb/
  gdbint		node	${GDB}/gdbint/
  stabs		node	${GDB}/stabs/
 
+GDBM = http://www.gnu.org.ua/software/gdbm/manual
+gdbm		mono	${GDBM}/gdbm.html
+gdbm		chapter	${GDBM}/html_chapter/
+gdbm		section ${GDBM}/html_section/
+gdbm		node	${GDBM}/html_node/
+
 gettext		mono	${GS}/gettext/manual/gettext.html
 gettext		node	${GS}/gettext/manual/html_node/
 
@@ -401,6 +407,8 @@ m4		mono	${GS}/m4/manual/m4.html
 m4		node	${GS}/m4/manual/html_node/
 
 mailutils	mono	${GS}/mailutils/manual/mailutils.html
+mailutils	chapter	${GS}/mailutils/manual/html_chapter/
+mailutils	section	${GS}/mailutils/manual/html_section/
 mailutils	node	${GS}/mailutils/manual/html_node/
 
 make		mono	${GS}/make/manual/make.html
@@ -465,6 +473,11 @@ R = http://cran.r-project.org/doc/manuals/
 
 rcs		mono	${GS}/rcs/manual/rcs.html
 rcs		node	${GS}/rcs/manual/html_node/
+
+READLINE = http://cnswww.cns.cwru.edu/php/chet/readline
+readline        mono    ${READLINE}/readline.html
+ rluserman      mono    ${READLINE}/rluserman.html
+ history        mono    ${READLINE}/history.html
 
 recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
 
