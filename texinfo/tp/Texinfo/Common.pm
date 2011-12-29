@@ -1360,6 +1360,62 @@ sub count_bytes($$)
   }
 }
 
+# TODO
+# also recurse into
+# extra->misc_args, extra->args_index
+# extra->index_entry extra->type
+#
+# extra that should point to other elements: 
+# command_as_argument
+# @block_command_line_contents @brace_command_contents @misc_content end_command
+# associated_section part_associated_section associated_node associated_part
+# @prototypes @columnfractions titlepage quotation @author command
+# menu_entry_description menu_entry_name
+# 
+# should point to other elements, or be copied.  And some should be recursed
+# into too.
+# extra->type->content
+# extra->nodes_manuals->[]
+# extra->node_content
+# extra->node_argument
+# extra->explanation_contents
+# extra->menu_entry_node
+# extra->def_arg
+
+
+sub copy_tree($$);
+sub copy_tree($$)
+{
+  my $current = shift;
+  my $parent = shift;
+  my $new = {};
+  $new->{'parent'} = $parent if ($parent);
+  foreach my $key ('type', 'cmdname', 'text') {
+    $new->{$key} = $current->{$key} if (exists($current->{$key}));
+  }
+  foreach my $key ('args', 'contents') {
+    if ($current->{$key}) {
+      $new->{$key} = [];
+      foreach my $child (@{$current->{$key}}) {
+        push @{$new->{$key}}, copy_tree($child, $new);
+      }
+    }
+  }
+  if ($current->{'extra'}) {
+    $new->{'extra'} = {};
+    foreach my $key (keys %{$current->{'extra'}}) {
+      if (!ref($current->{'extra'}->{$key})) {
+        $new->{'extra'}->{$key} = $current->{'extra'}->{$key};
+      }
+    }
+    if ($current->{'extra'}->{'end_command'}) {
+      # FIXME this should be a ref to th eend command instead...
+      $new->{'extra'}->{'end_command'} = 1;
+    }
+  }
+  return $new;
+}
+
 sub modify_tree($$$);
 sub modify_tree($$$)
 {
