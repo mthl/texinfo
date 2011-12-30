@@ -246,6 +246,7 @@ my %def_commands              = %Texinfo::Common::def_commands;
 my %def_aliases               = %Texinfo::Common::def_aliases;
 my %menu_commands             = %Texinfo::Common::menu_commands;
 my %preformatted_commands     = %Texinfo::Common::preformatted_commands;
+my %preformatted_raw_commands = %Texinfo::Common::preformatted_raw_commands;
 my %item_container_commands   = %Texinfo::Common::item_container_commands;
 my %item_line_commands        = %Texinfo::Common::item_line_commands;
 my %deprecated_commands       = %Texinfo::Common::deprecated_commands;
@@ -443,10 +444,15 @@ my %full_line_commands;
 $full_line_commands{'center'} = 1;
 $full_line_commands{'exdent'} = 1;
 
+my @preformatted_contexts = ('preformatted', 'rawpreformatted');
+my %preformatted_contexts;
+foreach my $preformatted_context (@preformatted_contexts) {
+  $preformatted_contexts{$preformatted_context} = 1;
+}
 # contexts on the context_stack stack where empty line don't trigger
 # paragraph
 my %no_paragraph_contexts;
-foreach my $no_paragraph_context ('math', 'preformatted', 'menu', 'def') {
+foreach my $no_paragraph_context ('math', 'menu', @preformatted_contexts, 'def') {
   $no_paragraph_contexts{$no_paragraph_context} = 1;
 };
 
@@ -1041,9 +1047,10 @@ sub _begin_preformatted($)
 {
   my $self = shift;
   my $current = shift;
-  if ($self->{'context_stack'}->[-1] eq 'preformatted') {
+  if ($preformatted_contexts{$self->{'context_stack'}->[-1]}) {
     push @{$current->{'contents'}}, 
-          { 'type' => 'preformatted', 'parent' => $current, 'contents' => [] };
+          { 'type' => $self->{'context_stack'}->[-1], 
+            'parent' => $current, 'contents' => [] };
     $current = $current->{'contents'}->[-1];
     print STDERR "PREFORMATTED\n" if ($self->{'DEBUG'});
   }
@@ -1159,7 +1166,7 @@ sub _end_preformatted ($$$)
   my $line_nr = shift;
 
   $current = _close_all_style_commands($self, $current, $line_nr);
-  if ($current->{'type'} and $current->{'type'} eq 'preformatted') {
+  if ($current->{'type'} and $preformatted_contexts{$current->{'type'}}) {
     print STDERR "CLOSE PREFORMATTED\n" if ($self->{'DEBUG'});
     # completly remove void preformatted contexts
     if (!@{$current->{'contents'}}) {
@@ -1181,7 +1188,7 @@ sub _check_no_text($)
     if ($content->{'type'} and $content->{'type'} eq 'paragraph') {
       $after_paragraph = 1;
       last;
-    } elsif ($content->{'type'} and $content->{'type'} eq 'preformatted') {
+    } elsif ($content->{'type'} and $preformatted_contexts{$content->{'type'}}) {
       foreach my $preformatted_content (@{$content->{'contents'}}) {
         if ((defined($preformatted_content->{'text'}) 
              and $preformatted_content->{'text'} =~ /\S/)
@@ -1472,7 +1479,7 @@ sub _close_current($$$;$$)
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
-  my $command = shift;
+  my $closed_command = shift;
   my $interrupting_command = shift;
 
   if ($current->{'cmdname'}) {
@@ -1481,9 +1488,9 @@ sub _close_current($$$;$$)
          if (exists $context_brace_commands{$current->{'cmdname'}});
       $current = _close_brace_command($self, $current, $line_nr);
     } elsif (exists($block_commands{$current->{'cmdname'}})) {
-      if (defined($command)) {
+      if (defined($closed_command)) {
         $self->line_error(sprintf($self->__("`\@end' expected `%s', but saw `%s'"),
-                                   $current->{'cmdname'}, $command), $line_nr);
+                                   $current->{'cmdname'}, $closed_command), $line_nr);
       } elsif ($interrupting_command) {
         $self->line_error(sprintf($self->__("\@%s seen before \@end %s"),
                                   $interrupting_command, $current->{'cmdname'}),
@@ -1534,7 +1541,7 @@ sub _close_current($$$;$$)
   return $current;
 }
 
-# a command arg means closing until that command is found.
+# a closed_command arg means closing until that command is found.
 # no command arg means closing until the root or a root_command
 # is found.
 sub _close_commands($$$;$$)
@@ -1542,15 +1549,15 @@ sub _close_commands($$$;$$)
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
-  my $command = shift;
+  my $closed_command = shift;
   my $interrupting_command = shift;;
 
   $current = _end_paragraph($self, $current, $line_nr);
   $current = _end_preformatted($self, $current, $line_nr);
 
         # stop if the command is found
-  while (!($command and $current->{'cmdname'}
-           and $current->{'cmdname'} eq $command) 
+  while (!($closed_command and $current->{'cmdname'}
+           and $current->{'cmdname'} eq $closed_command) 
          # stop if at the root
          and $current->{'parent'}
      # stop if in a root command 
@@ -1561,38 +1568,42 @@ sub _close_commands($$$;$$)
      # completly closing the stack.
          and !($current->{'cmdname'}
                and ($root_commands{$current->{'cmdname'}}
-                    or ($command and $current->{'parent'}->{'cmdname'}
+                    or ($closed_command and $current->{'parent'}->{'cmdname'}
                        and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
     $self->_close_command_cleanup($current);
-    $current = $self->_close_current($current, $line_nr, $command, 
+    $current = $self->_close_current($current, $line_nr, $closed_command, 
                                      $interrupting_command);
   }
 
-  my $closed_command;
-  if ($command and $current->{'cmdname'} 
-    and $current->{'cmdname'} eq $command) {
+  my $closed_element;
+  if ($closed_command and $current->{'cmdname'} 
+    and $current->{'cmdname'} eq $closed_command) {
     if ($preformatted_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
-      warn "BUG: closing preformatted_command $command wrong context $context"
+      warn "BUG: closing preformatted_command $closed_command wrong context $context"
         if ($context ne 'preformatted');
+    } elsif ($preformatted_raw_commands{$current->{'cmdname'}}) {
+      my $context = pop @{$self->{'context_stack'}};
+      warn "BUG: closing preformatted_command $closed_command wrong context $context"
+        if ($context ne 'rawpreformatted');
     } elsif ($menu_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
       # may be in menu, but context is preformatted if in a preformatted too.
-      warn "BUG: closing menu command $command wrong context $context"
+      warn "BUG: closing menu command $closed_command wrong context $context"
         if ($context ne 'menu' and $context ne 'preformatted');
     }
     #print STDERR "close context $context for $current->{'cmdname'}\n"
     #  if ($self->{'DEBUG'});
     pop @{$self->{'regions_stack'}} 
        if ($region_commands{$current->{'cmdname'}});
-    $closed_command = $current;
+    $closed_element = $current;
     #$self->_close_command_cleanup($current);
     $current = $current->{'parent'};
-  } elsif ($command) {
+  } elsif ($closed_command) {
     $self->line_error (sprintf($self->__("Unmatched `%c%s'"), 
-                       ord('@'), "end $command"), $line_nr);
+                       ord('@'), "end $closed_command"), $line_nr);
   }
-  return ($closed_command, $current);
+  return ($closed_element, $current);
 }
 
 # begin paragraph if needed.  If not try to merge with the previous
@@ -2429,7 +2440,6 @@ sub _end_line($$$)
         }
         $arg = undef;
       }
-      #push @{$self->{'context_stack'}}, 'preformatted';
       # MENU_COMMENT open
       $menu_entry = undef;
     } else {
@@ -2723,10 +2733,6 @@ sub _end_line($$$)
                                        'parent' => $current,
                                        'contents' => [] };
       $current = $current->{'contents'}->[-1];
-     #push @{$current->{'contents'}}, {'type' => 'preformatted',
-     #                                 'parent' => $current,
-     #                                 'contents' => [] };
-     #$current = $current->{'contents'}->[-1];
       print STDERR "MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
       push @{$self->{'context_stack'}}, 'preformatted';
     }
@@ -3055,7 +3061,7 @@ sub _end_line($$$)
     # empty line after a @menu or before a preformatted. Reparent to the menu
     # or other format
     if ($current->{'type'}
-        and $current->{'type'} eq 'preformatted') {
+        and $preformatted_contexts{$current->{'type'}}) {
       my $parent = $current->{'parent'};
       if ($parent->{'type'} and $parent->{'type'} eq 'menu_comment'
           and scalar(@{$parent->{'contents'}}) == 1) {
@@ -4225,8 +4231,11 @@ sub _parse_texi($;$)
             $current = $current->{'contents'}->[-1];
 
             if ($block_arg_commands{$command}) {
-              push @{$self->{'context_stack'}}, 'preformatted' 
-                if ($preformatted_commands{$command});
+              if ($preformatted_commands{$command}) {
+                push @{$self->{'context_stack'}}, 'preformatted';
+              } elsif ($preformatted_raw_commands{$command}) {
+                push @{$self->{'context_stack'}}, 'rawpreformatted';
+              }
               if ($region_commands{$command}) {
                 if (@{$self->{'regions_stack'}}) {
                   $self->line_error (sprintf($self->__("Region %s inside region %s is not allowed"),
@@ -4418,7 +4427,8 @@ sub _parse_texi($;$)
                  'text' => '' };
             print STDERR "BRACKETED in def/multitable\n" if ($self->{'DEBUG'});
 
-          } elsif ($self->{'context_stack'}->[-1] eq 'math') {
+          } elsif ($self->{'context_stack'}->[-1] eq 'math'
+                   or $self->{'context_stack'}->[-1] eq 'rawpreformatted') {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current, 'line_nr' => $line_nr };

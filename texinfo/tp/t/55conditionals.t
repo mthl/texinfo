@@ -139,9 +139,9 @@ text
 ['empty_ifset_in_ifset_no_set',
 '
 @ifset notset
-@html
+@verbatim
 @ifset
-@end html
+@end verbatim
 @end ifset
 '],
 ['ifclear_in_ifset',
@@ -219,9 +219,9 @@ text
 @set notset
 
 @ifset notset
-@html
+@verbatim
 @ifset
-@end html
+@end verbatim
 @end ifset
 '],
 ['macro_in_ifset',

@@ -599,10 +599,16 @@ foreach my $preformatted_command(
   $preformatted_commands{$preformatted_command} = 1;
 }
 
-our %raw_commands;
 our @out_formats = ('html', 'tex', 'xml', 'docbook');
+our %preformatted_raw_commands;
+foreach my $preformatted_raw_command(@out_formats) {
+#  $block_commands{$preformatted_raw_command} = 0;
+#  $preformatted_raw_commands{$preformatted_raw_command} = 1;
+}
+
+our %raw_commands;
 # macro/rmacro are special
-foreach my $raw_command (@out_formats, 'verbatim', 
+foreach my $raw_command ('verbatim', @out_formats,
                          'ignore', 'macro', 'rmacro') {
   $block_commands{$raw_command} = 'raw';
   $raw_commands{$raw_command} = 1;
