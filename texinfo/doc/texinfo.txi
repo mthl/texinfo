@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.404 2011-12-26 22:14:06 karl Exp $
+@c $Id: texinfo.txi,v 1.405 2011-12-31 00:32:14 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -50,7 +50,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, with the Front-Cover Texts being ``A GNU Manual'',
 and with the Back-Cover Texts as in (a) below.  A copy of the license
 is included in the section entitled ``GNU Free Documentation
-License.''
+License''.
 
 (a) The FSF's Back-Cover Text is: ``You have the freedom to copy and
 modify this GNU manual.  Buying copies from the FSF supports it in
@@ -338,7 +338,7 @@ Cross References
 * Three Arguments::             @code{@@xref} with three arguments.
 * Four and Five Arguments::     @code{@@xref} with four and five arguments.
 
-Marking Words and Phrases
+Marking Text, Words and Phrases
 
 * Indicating::                  How to indicate definitions, files, etc.
 * Emphasis::                    How to emphasize text.
@@ -6842,7 +6842,7 @@ command since a reader can easily follow such a reference in Info.
 
 
 @node Marking Text
-@chapter Marking Words and Phrases
+@chapter Marking Text, Words and Phrases
 @cindex Paragraph, marking text within
 @cindex Marking words and phrases
 @cindex Words and phrases, marking them
@@ -11144,7 +11144,7 @@ Both distributions include installation instructions.
 @cindex Auk, bird species
 For the double angle quotation marks, Adobe and @LaTeX{} glyph names
 are also supported:  @code{@@guillemotleft} and
-@code{@@guillemotright}.  These names are actually incorrect; a
+@code{@@guillemotright}.  These names are incorrect; a
 ``guillemot'' is a bird species (a type of auk).
 
 Traditions for quotation mark usage vary to a great extent between
@@ -19460,7 +19460,7 @@ Insert an at sign, @samp{@@}.  @xref{Inserting an Atsign}.
 @itemx @@backslashchar@{@}
 Insert a backslash, @samp{\}; @code{@@backslashchar@{@}} works
 anywhere, while @code{@@\} works only inside @code{@@math}.
-@xref{Inserting a Backslash} and @ref{math,,@code{math}}.
+@xref{Inserting a Backslash}, and @ref{math,,@code{math}}.
 
 @item @@^
 @itemx @@`
@@ -21326,7 +21326,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.404 2011-12-26 22:14:06 karl Exp $
+$Id: texinfo.txi,v 1.405 2011-12-31 00:32:14 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21397,7 +21397,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.404 2011-12-26 22:14:06 karl Exp $
+@comment $Id: texinfo.txi,v 1.405 2011-12-31 00:32:14 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
