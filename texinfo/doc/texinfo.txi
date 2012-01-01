@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.405 2011-12-31 00:32:14 karl Exp $
+@c $Id: texinfo.txi,v 1.406 2012-01-01 17:09:11 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -41,7 +41,7 @@ printed manual from a single source.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
 1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-2010, 2011 Free Software Foundation, Inc.
+2010, 2011, 2012 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -1550,7 +1550,7 @@ which it is distributed.  @xref{GNU Sample Texts}.
 @@copying
 This is a short example of a complete Texinfo file, version 1.0.
 
-Copyright @@copyright@{@} 2011 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2012 Free Software Foundation, Inc.
 @@end copying
 @end group
 @end example
@@ -1750,7 +1750,7 @@ years, Brian Fox reimplemented the conversion program in C, now called
 
 @cindex Cons, Lionel
 @cindex Dumas, Patrice
-In 2011, the C @command{makeinfo} was itself replaced by a Perl
+In 2012, the C @command{makeinfo} was itself replaced by a Perl
 implementation generically called @command{texi2any}, based on
 @command{texi2html}, an independent program originally written by
 Lionel Cons, later with substantial work by many others.  The many
@@ -21236,7 +21236,7 @@ it for a printed manual.
 @@copying
 This is a short example of a complete Texinfo file.
 
-Copyright @@copyright@{@} 2011 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2012 Free Software Foundation, Inc.
 @@end copying
 
 @@titlepage
@@ -21322,11 +21322,11 @@ Here are some notes on the example:
 @cindex Documentation identification
 @cindex Identification of documentation
 The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
-Concurrent Versions System}) or RCS
-(@url{http://www.gnu.org/software/rcs}) version control systems, which
+Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
+Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.405 2011-12-31 00:32:14 karl Exp $
+$Id: texinfo.txi,v 1.406 2012-01-01 17:09:11 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21397,7 +21397,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.405 2011-12-31 00:32:14 karl Exp $
+@comment $Id@w{$}
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -21408,7 +21408,7 @@ Here is the sample document:
 This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @copyright{} 2011 Free Software Foundation, Inc.
+Copyright @copyright{} 2012 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -21498,7 +21498,7 @@ see the previous sections.
 @copying
 This document is a sample for allowing verbatim copying only.
 
-Copyright @copyright{} 2011 Free Software Foundation, Inc.
+Copyright @copyright{} 2012 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to make and distribute verbatim copies
@@ -21529,7 +21529,7 @@ the license text itself.  For a complete sample document, see the
 previous sections.
 
 @example
-Copyright @@copyright@{@} 2011 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2012 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright

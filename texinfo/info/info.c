@@ -1,8 +1,8 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.38 2011-10-18 18:36:56 karl Exp $
+   $Id: info.c,v 1.39 2012-01-01 17:09:11 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2005, 2007, 2008, 2009, 2010, 2011
+   2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -300,7 +300,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2011");
+	      "2012");
       xexit (0);
     }
 

@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.23 2011-12-27 19:34:17 karl Exp $
+% $Id: txirefcard.tex,v 1.24 2012-01-01 17:09:12 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -14,7 +14,7 @@
 \newcount\letterpaper
 \ifx\undefined\afour\letterpaper=1 \else\letterpaper=0 \fi
 
-% Copyright 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
+% Copyright 2008, 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
 %
 % This file is part of GNU Texinfo.
 %
@@ -48,9 +48,9 @@
 % Much of the text is based on, and sometimes copied from, the @-Command
 % Summary node in texinfo.txi, written primarily by Bob Chassell.
 
-\def\versionyear{2011}          % year manual was updated
-\def\versionTexinfo{4.13+}      % version of Texinfo this manual is for
-\def\year{2011}                 % copyright year
+\def\versionyear{2012}          % year manual was updated
+\def\versionTexinfo{5.0+}       % version of Texinfo this manual is for
+\def\year{2012}                 % copyright year
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
@@ -525,7 +525,7 @@ which they conventionally appear.
 \txicmd{@cite}{\ttbraced{title}}{Indicate the name of a book or other reference that has no Info file; no hyperlink.}
 
 
-\section{Marking words and phrases}
+\section{Marking text}
 
 \subsection{Markup for regular text}
 
@@ -549,6 +549,21 @@ which they conventionally appear.
 \txicmd{@indicateurl}{\ttbraced{url}}{Indicate a uniform resource locator, but without creating any hyperlink.}
 \txicmd{@samp}{\ttbraced{text}}{Indicate a sequence of literal characters, in general. Quoted in Info output.}
 \txicmd{@verb}{\ttbraced{delimchar literal-text delimchar}}{Output \var{literal-text}, delimited by the single character \var{delimchar}, exactly as is, including any whitespace or Texinfo special characters. Example: \code{@verb\ttbraced{|@ @\rbracechar|}}.}
+
+\subsection{GUI sequences}
+
+\txicmd{@clicksequence}{\ttbraced{action \code{@click\ttbraced{}} \var{action} \dots}}{Represent a sequence of \acro{GUI} actions or clicks.}
+\txicmd{@click}{\ttbraced{}}{Represent a single `click' in a \code{@clicksequene}.}
+\txicmd{@clickstyle}{\code{@}cmd}{Execute \var{@cmd} for each \code{@click}; default is \code{@arrow}. Empty braces usually following \code{@\var{cmd}} are omitted here.}
+\txicmd{@arrow}{\ttbraced{}}{Insert a right arrow glyph, $\rightarrow$.}
+
+\subsection{Math}
+
+\txicmd{@math}{\ttbraced{math}}{Format the given math (inline); \bschar{} becomes an escape character, and all \TeX\ math is available.}
+\txicmd{@minus}{\ttbraced{}}{Insert a minus sign, `$-$'.}
+\txicmd{@\bschar}{}{Inside \code{@math}, insert a math backslash, $\backslash$.}
+\txicmd{@geq}{\ttbraced{}}{Insert a greater-than-or-equal sign, $\geq$.}
+\txicmd{@leq}{\ttbraced{}}{Insert a less-than-or-equal sign, $\leq$.}
 
 \subsection{Explicit font selection}
 
@@ -717,21 +732,6 @@ exception of \code{@tieaccent}.
 \txicmd{@point}{\ttbraced{}}{Indicate the position of point in a buffer, \point.}
 \txicmd{@print}{\ttbraced{}}{Indicate printed output, \print.}
 \txicmd{@result}{\ttbraced{}}{Indicate the result of an expression, \result.}
-
-\subsection{GUI sequences}
-
-\txicmd{@clicksequence}{\ttbraced{action \code{@click\ttbraced{}} \var{action} \dots}}{Represent a sequence of \acro{GUI} actions or clicks.}
-\txicmd{@click}{\ttbraced{}}{Represent a single `click' in a \code{@clicksequene}.}
-\txicmd{@clickstyle}{\code{@}cmd}{Execute \var{@cmd} for each \code{@click}; default is \code{@arrow}. Empty braces usually following \code{@\var{cmd}} are omitted here.}
-\txicmd{@arrow}{\ttbraced{}}{Insert a right arrow glyph, $\rightarrow$.}
-
-\subsection{Math}
-
-\txicmd{@math}{\ttbraced{math}}{Format the given math (inline); \bschar{} becomes an escape character, and all \TeX\ math is available.}
-\txicmd{@minus}{\ttbraced{}}{Insert a minus sign, `$-$'.}
-\txicmd{@\bschar}{}{Inside \code{@math}, insert a math backslash, $\backslash$.}
-\txicmd{@geq}{\ttbraced{}}{Insert a greater-than-or-equal sign, $\geq$.}
-\txicmd{@leq}{\ttbraced{}}{Insert a less-than-or-equal sign, $\leq$.}
 
 
 \section{Making and preventing breaks}
