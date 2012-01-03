@@ -540,7 +540,8 @@ sub new_formatter($$;$)
     foreach my $context (reverse(@{$self->{'context'}})) {
       if ($menu_commands{$context}) {
         last;
-      } elsif ($preformatted_code_commands{$context}) {
+      } elsif ($preformatted_code_commands{$context}
+               or $format_raw_commands{$context}) {
         $formatter->{'code'} = 1;
         last;
       }
@@ -2094,7 +2095,6 @@ sub _convert($$)
     } else {
       $unknown_command = 1;
     }
-    #} els
     if ($unknown_command and !($root->{'extra'} 
                                and $root->{'extra'}->{'index_entry'})
         # commands like def*x are not processed above, since only the def_line
