@@ -246,6 +246,19 @@ in block
 'A @inlineraw{plaintext, plaintext `` @lbracechar{} } a.  Now html
 @inlineraw{html, in <i>@acronym{HTML}</i>}.
 '],
+['inline_in_example',
+'@example
+A @inlineraw{plaintext, plaintext 
+
+`` @lbracechar{} } a.
+@inlinefmt{plaintext, `` }.
+
+  Now html
+@inlineraw{html, 
+
+in <i>@acronym{HTML}</i>}.
+@end example
+'],
 );
 
 my @test_invalid = (
