@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.89 2011-10-05 23:57:35 karl Exp $
+$Id: dir-example,v 1.90 2012-01-03 18:26:27 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -29,13 +29,11 @@ Basics
 * BC: (bc).                     Arbitrary precision calculator language.
 * Bash: (bash).                 The GNU Bourne-Again SHell.
 * Common options: (coreutils)Common options.
-                                Common options.
 * Coreutils: (coreutils).       Core GNU (file, text, shell) utilities.
 * DC: (dc).                     Postfix desk calculator.
 * Date input formats: (coreutils)Date input formats.
 * Ed: (ed).                     The GNU line editor
-* File permissions: (coreutils)File permissions.
-                                Access modes.
+* File permissions:  (coreutils)File permissions.   Access modes.
 * Finding files: (find).        Operating on files matching certain criteria.
 * Gcal: (gcal).                 GNU calendar program.
 * Hello: (hello).               Hello, GNU world.
@@ -43,10 +41,8 @@ Basics
 * Time: (time).                 Measuring program resource usage.
 
 Text creation and manipulation
-* Diff: (diff).                 Comparing and merging files.
 * Diffutils: (diffutils).       Comparing and merging files.
 * Gawk: (gawk).                 A text scanning and processing language.
-* Word differences: (wdiff).    GNU wdiff and diff related tools.
 * grep: (grep).                 Print lines matching a pattern.
 * M4: (m4).                     A powerful macro processor.
 * sed: (sed).                   Stream EDitor.  
@@ -145,7 +141,7 @@ Software development
 * gcc: (gcc).                   The GNU Compiler Collection.
 * gccinstall: (gccinstall).     Installing the GNU Compiler Collection.
 * gccint: (gccint).             Internals of the GNU Compiler Collection.
-* help2man: (help2man).         Automatic manual page generation from -help.
+* help2man: (help2man).         Automatic manual page generation.
 * vc-dwim: (vc-dwim).           VCS-agnostic commit, diff, and change logs.
 
 Emacs
@@ -308,8 +304,8 @@ GNU organization
 * Standards: (standards).       GNU coding standards.
 
 Individual utilities
-* afm2tfm: (dvips)Invoking afm2tfm.             Adobe to TeX font metrics.
 * aclocal: (automake)Invoking aclocal.          Generating aclocal.m4.
+* afm2tfm: (dvips)Invoking afm2tfm.             Adobe to TeX font metrics.
 * addr2line: (binutils)addr2line.    Convert addresses to file and line.
 * ar: (binutils)ar.                  Create, modify, and extract from archives.
 * arch: (coreutils)arch invocation.             Print machine hardware name.
@@ -392,14 +388,13 @@ Individual utilities
 * gftodvi: (web2c)GFtoDVI invocation.           Generic font proofsheets.
 * gftopk: (web2c)GFtoPK invocation.             Generic to packed fonts.
 * gftype: (web2c)GFtype invocation.             GF to human-readable text.
-* git: (git).                                   GNU interactive tools.
 * groups: (coreutils)groups invocation.         Print group names a user is in.
 * guimb: (mailutils)guimb.                      Mailbox processing language.
 * gunzip: (gzip)Overview.                       Decompression.
 * gzexe: (gzip)Overview.                        Compress executables.
 * head: (coreutils)head invocation.             Output the first part of files.
 * hostid: (coreutils)hostid invocation.         Print numeric host identifier.
-* hostname: (coreutils)hostname invocation.     Print or set system name.
+* hostname: (inetutils)hostname invocation.     Show or set system host name.
 * id: (coreutils)id invocation.                 Print user identity.
 * ifnames: (autoconf)ifnames Invocation.        Listing conditionals in source.
 * imap4d: (mailutils)imap4d.                    IMAP4 daemon.
