@@ -1049,6 +1049,30 @@ $result_converted{'html_text'}->{'test_deftypefnnewline'} = '
 ';
 
 
+$result_converted{'xml'}->{'test_deftypefnnewline'} = '
+<deftypefnnewline value="on"></deftypefnnewline>
+
+<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<deftypefun><definitionterm><indexterm index="fn">name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>data-type</deftype> <deffunction>name</deffunction> <defparamtype>arguments...</defparamtype></definitionterm>
+<definitionitem><para>aaa
+</para></definitionitem></deftypefun>
+
+<deffn><definitionterm><indexterm index="fn">arg</indexterm><defcategory>fun</defcategory> <deffunction>arg</deffunction></definitionterm>
+<definitionitem><para>fff
+</para></definitionitem></deffn>
+
+<deftypefnnewline value="off"></deftypefnnewline>
+
+<deftypefun><definitionterm><indexterm index="fn">name2</indexterm><defcategory automatic="on">Function</defcategory> <deftype>data-type2</deftype> <deffunction>name2</deffunction> <defparamtype>arguments2...</defparamtype></definitionterm>
+<definitionitem><para>aaa2
+</para></definitionitem></deftypefun>
+
+<deffn><definitionterm><indexterm index="fn">arg2</indexterm><defcategory>fun2</defcategory> <deffunction>arg2</deffunction></definitionterm>
+<definitionitem><para>fff2
+</para></definitionitem></deffn>
+';
+
+
 $result_converted{'docbook'}->{'test_deftypefnnewline'} = '
 
 <anchor id="Top"/>

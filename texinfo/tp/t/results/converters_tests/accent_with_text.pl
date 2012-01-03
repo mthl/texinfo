@@ -230,6 +230,10 @@ $result_converted{'html_text'}->{'accent_with_text'} = '<p>&ndash;a( &ndash;b &i
 </p>';
 
 
+$result_converted{'xml'}->{'accent_with_text'} = '<para><accent type="breve">&textndash;a</accent> <dotless>&textndash;b</dotless> <accent type="circ">&textndash;<dotless>i</dotless></accent> <accent type="circ">&textndash;<dotless>j</dotless></accent> <accent type="circ">&textndash;a</accent>
+</para>';
+
+
 $result_converted{'docbook'}->{'accent_with_text'} = '<para>&#8211;a( &#8211;b &#238; &#309; &#8211;a^
 </para>';
 

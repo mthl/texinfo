@@ -294,7 +294,7 @@ $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
-  #push @{$test->[2]->{'test_formats'}}, 'xml';
+  push @{$test->[2]->{'test_formats'}}, 'xml';
   push @{$test->[2]->{'test_formats'}}, 'docbook';
 }
 

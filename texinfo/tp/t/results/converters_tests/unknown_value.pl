@@ -47,6 +47,9 @@ $result_converted{'plaintext'}->{'unknown_value'} = '{No value for `unknown\'}
 $result_converted{'html_text'}->{'unknown_value'} = '{No value for &lsquo;unknown&rsquo;}';
 
 
+$result_converted{'xml'}->{'unknown_value'} = '';
+
+
 $result_converted{'docbook'}->{'unknown_value'} = '';
 
 1;

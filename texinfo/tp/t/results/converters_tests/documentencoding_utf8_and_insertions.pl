@@ -314,6 +314,16 @@ $result_converted{'html_text'}->{'documentencoding_utf8_and_insertions'} = '
 ';
 
 
+$result_converted{'xml'}->{'documentencoding_utf8_and_insertions'} = '<documentencoding encoding="utf-8">utf-8</documentencoding>
+
+<para>&textndash; &textmdash; &textrdquo; &textldquo; <code>in code</code>. <accent type="tilde">e</accent>.
+</para>
+<example>
+<pre xml:space="preserve">-- --- \'\' `` <code>in code</code>. <accent type="tilde">e</accent>.
+</pre></example>
+';
+
+
 $result_converted{'docbook'}->{'documentencoding_utf8_and_insertions'} = '
 <para>&#8211; &#8212; &#8221; &#8220; <literal>in code</literal>. &#7869;.
 </para>

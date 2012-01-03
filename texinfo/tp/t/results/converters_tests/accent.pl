@@ -3128,6 +3128,88 @@ $result_converted{'html_text'}->{'accent'} = '<a name="Top"></a>
 ';
 
 
+$result_converted{'xml'}->{'accent'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<top><sectiontitle>top</sectiontitle>
+
+<para>should be e`: <accent type="grave">e</accent> <accent type="grave">e</accent>
+</para>
+<para>should be e\': <accent type="acute">e</accent> <accent type="acute">e</accent>
+</para>
+<para>should be e^: <accent type="circ">e</accent> <accent type="circ">e</accent>
+</para>
+<para>should be u&quot;: <accent type="uml">u</accent> <accent type="uml">u</accent>
+</para>
+<para>should be i`: <accent type="grave">i</accent> <accent type="grave">i</accent>
+</para>
+<para>should be i\': <accent type="acute">i</accent> <accent type="acute">i</accent>
+</para>
+<para>should be i^: <accent type="circ">i</accent> <accent type="circ">i</accent>
+</para>
+<para>should be u&quot;: <accent type="uml">u</accent> <accent type="uml">u</accent>
+</para>
+<para>should be c,: <accent type="cedil">c</accent> <accent type="cedil">c</accent>
+</para>
+<para>should be n~: <accent type="tilde">n</accent> <accent type="tilde">n</accent>
+</para>
+<para>should be e=: <accent type="macr">e</accent> <accent type="macr">e</accent>
+</para>
+<para>should be e<w>\'</w>\': <accent type="doubleacute">e</accent> <accent type="doubleacute">e</accent>
+</para>
+<para>should be e.: <accent type="dotaccent">e</accent> <accent type="dotaccent">e</accent>
+</para>
+<para>should be e*: <accent type="ring">e</accent> <accent type="ring">e</accent>
+</para>
+<para>should be ee[: <accent type="tieaccent">ee</accent>
+</para>
+<para>should be e(: <accent type="breve">e</accent> <accent type="breve">e</accent>
+</para>
+<para>should be e_: <accent type="ubaraccent">e</accent> <accent type="ubaraccent">e</accent>
+</para>
+<para>should be .e: <accent type="udotaccent">e</accent> <accent type="udotaccent">e</accent>
+</para>
+<para>should be e&lt;: <accent type="caron">e</accent> <accent type="caron">e</accent>
+</para>
+<para>should be a; : <accent type="ogon">a</accent> <accent type="ogon">a</accent>
+</para>
+<para>should be e; : <accent type="ogon">e</accent> <accent type="ogon">e</accent>
+</para>
+<para>upside down: &iquest; &iexcl;
+</para>
+<para>A-with-circle: &aring;,&Aring;
+</para>
+<para>AE, OE ligatures: &aelig; &AElig; &oelig; &OElig;
+</para>
+<para>dotless i, j: <dotless>i</dotless> <dotless>j</dotless>
+</para>
+<para>Polish suppressed-L: &lslash; &Lslash;
+</para>
+<para>O-with-slash: &oslash; &Oslash;
+</para>
+<para>es-zet or sharp S: &szlig;
+</para>
+<para>pounds sterling: &pound;
+</para>
+<!-- arg is command - @dotless{i} is special-cased for HTML -->
+<para>should be dotless i`: <accent type="grave"><dotless>i</dotless></accent>
+</para>
+<para>should be dotless i\': <accent type="acute"><dotless>i</dotless></accent>
+</para>
+<para>should be dotless i^: <accent type="circ"><dotless>i</dotless></accent>
+</para>
+<para>should be dotless i&quot;: <accent type="uml"><dotless>i</dotless></accent>
+</para>
+<!-- arg is command - @dotless{j} -->
+<para>should be dotless j`: <accent type="grave"><dotless>j</dotless></accent>
+</para>
+<para>should be dotless j\': <accent type="acute"><dotless>j</dotless></accent>
+</para>
+<para>should be dotless j^: <accent type="circ"><dotless>j</dotless></accent>
+</para>
+<para>should be dotless j&quot;: <accent type="uml"><dotless>j</dotless></accent>
+</para></top>
+';
+
+
 $result_converted{'docbook'}->{'accent'} = '<chapter label="" id="Top">
 <title>top</title>
 

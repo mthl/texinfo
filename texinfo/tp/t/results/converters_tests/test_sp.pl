@@ -446,6 +446,25 @@ Now lone @sp:
 ';
 
 
+$result_converted{'xml'}->{'test_sp'} = '<para>Para
+</para><sp value="1"></sp>
+<para>other para
+Now lone &arobase;sp:
+</para>
+<sp value="1"></sp>
+
+<sp value="2"></sp>
+<para>Para after sp
+</para>
+<para>A
+</para><sp value="2"></sp>
+<para>B
+</para>
+<para>sp after para
+</para><sp value="1"></sp>
+';
+
+
 $result_converted{'docbook'}->{'test_sp'} = '<para>Para
 </para><para>other para
 Now lone @sp:

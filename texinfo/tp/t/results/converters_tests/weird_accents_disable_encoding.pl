@@ -672,6 +672,24 @@ $result_converted{'html_text'}->{'weird_accents_disable_encoding'} = '
 ';
 
 
+$result_converted{'xml'}->{'weird_accents_disable_encoding'} = '<documentencoding encoding="ISO-8859-1">ISO-8859-1</documentencoding>
+
+<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<top><sectiontitle>top</sectiontitle>
+
+<para><accent type="macr"><accent type="tilde"><dotless>i</dotless></accent></accent>
+</para>
+<para><accent type="macr"><accent type="cedil"><accent type="tilde">n</accent></accent></accent>
+</para>
+<para><accent type="macr"><accent type="ubaraccent">a</accent></accent>
+</para>
+<para><accent type="circ"><accent type="udotaccent"><accent type="grave">r</accent></accent></accent>
+</para>
+<para><accent type="macr"><accent type="acute"><accent type="grave">r</accent></accent></accent>
+</para></top>
+';
+
+
 $result_converted{'docbook'}->{'weird_accents_disable_encoding'} = '
 <chapter label="" id="Top">
 <title>top</title>
