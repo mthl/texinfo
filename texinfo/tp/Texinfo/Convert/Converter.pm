@@ -815,6 +815,7 @@ $default_xml_commands_formatting{'normal'} = {
                'lbracechar'   => '{',
                'rbracechar'   => '}',
                'backslashchar' => '\\',
+               'hashchar' => '#',
                'euro'         => '&euro;',
                'geq'          => '&ge;',
                'leq'          => '&le;',

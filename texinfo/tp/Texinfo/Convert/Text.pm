@@ -112,6 +112,7 @@ our %text_brace_no_arg_commands = (
                'lbracechar'   => '{',
                'rbracechar'   => '}',
                'backslashchar' => '\\',
+               'hashchar'      => '#',
                'euro'         => 'Euro',
                'geq'          => '>=',
                'leq'          => '<=',

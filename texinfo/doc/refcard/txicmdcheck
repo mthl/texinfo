@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
-# $Id: txicmdcheck,v 1.4 2011-12-27 19:34:17 karl Exp $
-# Copyright 2008, 2011 Free Software Foundation, Inc.
+# $Id: txicmdcheck,v 1.5 2012-01-03 18:26:58 karl Exp $
+# Copyright 2008, 2011, 2012 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,8 +22,7 @@
 
 exit (&main ());
 
-sub main
-{
+sub main {
   my @card_cmds = &read_refcard ("txirefcard.tex");
   my @man_cmds = &read_refman ("../texinfo.txi");
   my @tp_cmds = &read_tp ("../../util/txicmdlist");
@@ -60,8 +59,7 @@ sub main
 
 # Return command names from the reference card.
 # 
-sub read_refcard
-{
+sub read_refcard {
   my ($fname) = @_;
   my @ret = ();
 
@@ -115,8 +113,7 @@ sub read_refcard
 # Return command names from the @-Command List
 # node in the reference manual.
 # 
-sub read_refman
-{
+sub read_refman {
   my ($fname) = @_;
   my @ret = ();
 
@@ -146,8 +143,7 @@ sub read_refman
 # Return command names implemented in the general parser.
 # The argument is the command to run to return the list.
 #
-sub read_tp
-{
+sub read_tp {
   my ($prog) = @_;
   my @ret = ();
   

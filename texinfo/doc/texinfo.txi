@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.406 2012-01-01 17:09:11 karl Exp $
+@c $Id: texinfo.txi,v 1.407 2012-01-03 18:26:57 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -445,7 +445,7 @@ Combining Indices
 
 Special Insertions
 
-* Atsign Braces Comma Backslash:: Inserting @@ and @{@} and , and \.
+* Special Characters::          Inserting @@ @{@} , \ #.
 * Inserting Quote Characters::  Inserting left and right quotes, in code.
 * Inserting Space::             How to insert the right amount of space
                                  within a sentence.
@@ -464,12 +464,13 @@ Special Insertions
 * Glyphs::                      How to indicate results of evaluation,
                                  expansion of macros, errors, etc.
 
-Inserting @@ and @{@} and @comma{}
+Special Characters
 
-* Inserting an Atsign::
-* Inserting Braces::
-* Inserting a Comma::
-* Inserting a Backslash::
+* Inserting an Atsign::    @code{@@}, @code{@@atchar@{@}}.
+* Inserting Braces::       @code{@@@{ @@@}}, @code{@@l rbracechar@{@}}.
+* Inserting a Comma::      , and @code{@@comma@{@}}.
+* Inserting a Backslash::  \ and @code{@@backslashchar@{@}}.
+* Inserting a Hashsign::   # and @code{@@hashchar@{@}}.
 
 Inserting Space
 
@@ -573,6 +574,7 @@ Defining New Texinfo Commands
 * Macro Details::               Limitations of Texinfo macros.
 * alias::                       Command aliases.
 * definfoenclose::              Customized highlighting.
+* External Macro Processors::   @code{#line} directives.
 
 Include Files
 
@@ -10355,7 +10357,7 @@ elements that do not correspond to simple characters you can type.
 These are:
 
 @itemize @bullet
-@item @samp{@@} and braces and commas.
+@item The Texinfo special characters: @samp{@@ @{@} , \ #}.
 @item Whitespace within and around a sentence.
 @item Accents.
 @item Dots and bullets.
@@ -10371,7 +10373,7 @@ These are:
 @end iftex
 
 @menu
-* Atsign Braces Comma Backslash:: Inserting @@ and @{@} and , and \.
+* Special Characters::          Inserting @@ @{@} , \ #.
 * Inserting Quote Characters::  Inserting left and right quotes, in code.
 * Inserting Space::             How to insert the right amount of space
                                  within a sentence.
@@ -10392,38 +10394,36 @@ These are:
 @end menu
 
 
-@node Atsign Braces Comma Backslash
-@section Inserting @@ and @{@} and , and \
+@node Special Characters
+@section Special Characters: Inserting @@ @{@} , \ #
 @anchor{Braces Atsign}@c previous names for this node
 @anchor{Atsign Braces Comma}
 @cindex Special characters, inserting
 @cindex Commands to insert special characters
 
-@samp{@@} and curly braces are special characters in Texinfo.  To insert
-these characters so they appear in text, you must put an @samp{@@} in
-front of these characters to prevent Texinfo from misinterpreting
-them.  Alphabetic commands are also provided.
+@samp{@@} and curly braces are the basic special characters in
+Texinfo.  To insert these characters so they appear in text, you must
+put an @samp{@@} in front of these characters to prevent Texinfo from
+misinterpreting them.  Alphabetic commands are also provided.
 
-The comma `,' is a special character only in one context:
-it separates arguments to commands that take multiple arguments.
-
-The backslash `\' is a special character only in an even more
-restricted context: it delimits formal argument names inside macro
-bodies.
+The other characters (comma, backslash, hash) are special only in
+restricted contexts, as explained in the respective sections.
 
 @menu
 * Inserting an Atsign::    @code{@@}, @code{@@atchar@{@}}.
 * Inserting Braces::       @code{@@@{ @@@}}, @code{@@l rbracechar@{@}}.
-* Inserting a Comma::      @code{@@comma@{@}}.
-* Inserting a Backslash::  @code{@@backslashchar@{@}}.
+* Inserting a Comma::      , and @code{@@comma@{@}}.
+* Inserting a Backslash::  \ and @code{@@backslashchar@{@}}.
+* Inserting a Hashsign::   # and @code{@@hashchar@{@}}.
 @end menu
 
 
 @node Inserting an Atsign
 @subsection Inserting `@@' with @code{@@@@} and @code{@@atchar@{@}}
+@cindex At sign, inserting
+@cindex Inserting @@ @r{(literal @samp{@@})}
 @findex @@ @r{(literal @samp{@@})}
 @findex @@atchar@{@} @r{(literal @samp{@@})}
-@cindex Inserting @@ @r{(literal @samp{@@})}
 
 @code{@@@@} produces a single @samp{@@} character in the output.  Do
 not put braces after an @code{@@@@} command.
@@ -10457,7 +10457,7 @@ may be clearer in other contexts).
 
 @node Inserting a Comma
 @subsection Inserting `,' with @code{@@comma@{@}}
-@cindex Commas, inserting
+@cindex Comma, inserting
 @findex comma
 
 Ordinarily, a comma `,' is a normal character that can be simply typed
@@ -10489,7 +10489,7 @@ important enough to define a synonym.)
 
 @node Inserting a Backslash
 @subsection Inserting `\' with @code{@@backslashchar@{@}}
-@cindex Backslashes, inserting
+@cindex Backslash, inserting
 @findex backslash
 
 Ordinarily, a backslash `\' is a normal character in Texinfo that can
@@ -10518,6 +10518,42 @@ backslash as usual.
 
 Although @samp{@@backslashchar@{@}} can be used nearly anywhere, there
 is no need for it anywhere except these unusual cases.
+
+
+@node Inserting a Hashsign
+@subsection Inserting `#' with @code{@@hashchar@{@}}
+@findex @@hashchar@{@} @r{(literal @samp{#})}
+@cindex Inserting #
+@cindex Hash sign, inserting
+
+Ordinarily, a hash `#' is a normal character in Texinfo that can be
+simply typed in your input where you need it.  The result is to
+typeset the hash character from the current font.
+
+@cindex Number sign, inserting
+@cindex Octotherp, inserting
+@cindex Sharp sign (not), inserting
+This character has many other names, varying by locale, such as
+``number sign'', ``pound'', and ``octothorp''.  It is also sometimes
+called ``sharp'' or ``sharp sign'' since it vaguely resembles the
+musical symbol by that name.  In situations where Texinfo is used,
+``hash'' is the most common in our experience.
+
+However, Texinfo uses the hash character as a special character in one
+restricted context: to introduce the so-called @code{#line} directive
+and variants (@pxref{External Macro Processors}).
+
+So, in order to typeset an actual hash character in such a place (for
+example, in a program that needs documentation about @code{#line}),
+it's necessary to use @code{@@hashchar@{@}} or some other construct.
+Here's an example:
+
+@example
+@@hashchar@{@} 10 "example.c"
+@end example
+
+Although @samp{@@hashchar@{@}} can be used nearly anywhere, there
+is no need for it anywhere except this unusual case.
 
 
 @node Inserting Quote Characters
@@ -13535,7 +13571,7 @@ And this text will only appear in HTML.
 Whereas this text will only appear in plain text.
 @@end ifplaintext
 @@ifxml
-Notwithstanding that this will only appear in XML.
+Notwithstanding that this will only appear in XML@.
 @@end ifxml
 @@ifdocbook
 Nevertheless, this will only appear in Docbook.
@@ -13558,7 +13594,7 @@ And this text will only appear in HTML.
 Whereas this text will only appear in plain text.
 @end ifplaintext
 @ifxml
-Notwithstanding that this will only appear in XML.
+Notwithstanding that this will only appear in XML@.
 @end ifxml
 @ifdocbook
 Nevertheless, this will only appear in Docbook.
@@ -13567,6 +13603,19 @@ Nevertheless, this will only appear in Docbook.
 @noindent
 Notice that you only see one of the input lines, depending on which
 version of the manual you are reading.
+
+@findex errormsg
+In complex documents, you may want Texinfo to issue an error message
+in some conditionals that should not ever be processed.  The
+@code{@@errormsg@{@var{text}@}} command will do this; it takes one
+argument, the text of the error message, which is expanded more or
+less as if it were Info text.
+
+We mention @code{@@errormsg@{@}} here even though it is not strictly
+related to conditionals, since in practice it is most likely to be
+useful in that context.  Technically, it can be used anywhere.
+@xref{External Macro Processors}, for a caveat regarding the line
+numbers.
 
 
 @node Conditional Not Commands
@@ -14331,6 +14380,9 @@ command.
 @samp{@@definfoenclose} allows you to define new commands with
 customized output in the Info file.
 
+@item
+It is possible to invoke an external macro processor and have Texinfo
+recognize so-called @code{#line} directives for error reporting.
 @end itemize
 
 @menu
@@ -14339,6 +14391,7 @@ customized output in the Info file.
 * Macro Details::               Limitations of Texinfo macros.
 * alias::                       Command aliases.
 * definfoenclose::              Customized highlighting.
+* External Macro Processors::   @code{#line} directives.
 @end menu
 
 
@@ -14912,6 +14965,12 @@ argument to @code{@@headword}.
 
 @samp{@@definfoenclose} definitions must not be recursive, directly or
 indirectly.
+
+
+@node External Macro Processors
+@section External Macro Processors: Line Directives
+
+xxxx
 
 
 @node Include Files
@@ -16988,8 +17047,8 @@ When a closing quote is needed, use the corresponding character.
 For HTML@.  If set, use tables for indentation of complex formats.
 
 @item CPP_LINE_DIRECTIVES
-Recognize @code{#line} directives in a ``preprocessing'' pass.
-@c xxref somewhere
+Recognize @code{#line} directives in a ``preprocessing'' pass
+(@pxref{External Macro Processors}).
 
 @item CSS_LINES
 CSS output, automatically determined in the default case
@@ -17023,22 +17082,22 @@ If set to 1 always do an About special element. @c @xref{Output Elements Defined
 
 @item DOCTYPE
 @vindex SystemLiteral
-For Docbook, HTML, XML.  Specifies the @code{SystemLiteral}, the
+For Docbook, HTML, XML@.  Specifies the @code{SystemLiteral}, the
 entity's system identifier.  It is a URI, which may be used to
 retrieve the entity, and identifies the canonical DTD for the
 document.
 
 @item DUMP_TEXI
-For debugging.  If set, the result of the first pass is put in
-@file{@var{docname}.passtexi}, and the result of the second pass is
-put in @file{@var{docname}.passfirst}.
+For debugging.  If set, the result of the first pass is put in a file
+named @file{@var{docname}.passtexi}, and the result of the second pass
+is put in @file{@var{docname}.passfirst}.
 
 @item DUMP_TREE
 For debugging.  If set, the tree constructed upon parsing a Texinfo
 document is output on standard error.
 
 @item ENABLE_ENCODING_USE_ENTITY
-For HTML, XML.  If @option{--enable-encoding} is set, and there is an
+For HTML, XML@.  If @option{--enable-encoding} is set, and there is an
 entity corresponding with the letter or the symbol being output,
 prefer the entity.
 
@@ -17329,7 +17388,7 @@ If set, use the node associated with a section for the section target
 in cross references.
 
 @item USE_NUMERIC_ENTITY
-For HTML, XML.  If set, use numeric entities instead of ASCII
+For HTML, XML@.  If set, use numeric entities instead of ASCII
 characters when there is no named entity.
 
 @item USE_REL_REV
@@ -19041,7 +19100,7 @@ be customized, but the interfaces will change and will be documented
 as soon as they are stable.
 
 The HTML converter uses a Texinfo perl tree as input and converts
-it to HTML.  The Texinfo perl tree describes a Texinfo document in a
+it to HTML@.  The Texinfo perl tree describes a Texinfo document in a
 structured way which makes easy going through the tree and format
 @@-commands and other containers.  The code that is used to go 
 through the tree cannot be customized, but the conversion of tree
@@ -19916,7 +19975,7 @@ an error message: @samp{@error{}}.  @xref{Error Glyph}.
 @item @@errormsg@{@var{msg}@}
 Report @var{msg} as an error to standard error, and exit unsuccessfully.
 Texinfo commands within @var{msg} are expanded to plain text.
-@c xx need xref, when we have #line? xx
+@xref{Conditionals}, and @ref{External Macro Processors}.
 
 @item @@euro@{@}
 Generate the Euro currency sign.
@@ -20032,6 +20091,11 @@ Quotation Marks}.
 
 @item @@H@{@var{c}@}
 Generate the long Hungarian umlaut accent over @var{c}, as in @H{o}.
+
+@item @@hashchar@{@}
+Insert a hash `#' character; only needed when a literal hash would
+introduce @code{#line} directive.  @xref{Inserting a Hashsign}, and
+@ref{External Macro Processors}.
 
 @item @@heading @var{title}
 Print an unnumbered section-like heading, but omit from the table of
@@ -21326,7 +21390,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.406 2012-01-01 17:09:11 karl Exp $
+$Id: texinfo.txi,v 1.407 2012-01-03 18:26:57 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

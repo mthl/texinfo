@@ -1,3 +1,12 @@
+2012-01-03  Karl Berry  <karl@gnu.org>
+
+	* NEWS: new command @hashchar{}.
+	* doc/texinfo.txi (Inserting Special Characters): rename node again.
+	(Inserting a Hashsign),
+	(External Macro Processors): new node.
+	* doc/refcard/txirefcard.tex: document it.
+        * doc/texinfo.tex (@hashchar): output a #.
+
 2011-12-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi,

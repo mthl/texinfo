@@ -95,7 +95,7 @@ my %specific_xml_commands_formatting = (
            'error'        => '&errorglyph;',
            'expansion'     => '&expansion;',
            'arrow'        => '&rarr;',
-           'click' => '<click command="arrow"/>',
+           'click'        => '<click command="arrow"/>',
            'minus'        => '&minus;',
            'point'        => '&point;',
            'print'        => '&printglyph;',
@@ -108,6 +108,7 @@ my %specific_xml_commands_formatting = (
            'lbracechar'   => '&lbracechar;',
            'rbracechar'   => '&rbracechar;',
            'backslashchar' => '&backslashchar;',
+           'hashchar'      => '&hashchar;',
 );
 
 my %xml_commands_formatting
