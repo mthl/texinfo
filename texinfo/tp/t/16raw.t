@@ -238,6 +238,14 @@ Before the opening command @verbatim
 in block
 @end verbatim. A symbol after the closing command.
 '],
+['inlinefmt',
+'A @inlinefmt{plaintext, plaintext `` @lbracechar{} } a.  Now html
+@inlinefmt{html, in <i>@acronym{HTML}</i>}.
+'],
+['inlineraw',
+'A @inlineraw{plaintext, plaintext `` @lbracechar{} } a.  Now html
+@inlineraw{html, in <i>@acronym{HTML}</i>}.
+'],
 );
 
 my @test_invalid = (
@@ -272,7 +280,26 @@ in html
 in verbatim
 @end verbatim
 }
-']
+'],
+['inlineraw_with_empty_line',
+'A @inlineraw{plaintext, plaintext ``
+
+@lbracechar{} } a.  Now html
+@inlineraw{html, in 
+
+<i>@acronym{HTML}</i>}.
+'],
+['inlinefmt_with_empty_line',
+'A @inlinefmt{plaintext, plaintext `` 
+
+@lbracechar{} } a.  Now html
+@inlinefmt{html, in 
+
+<i>@acronym{HTML}</i>}.
+'],
+['inline_missing_first_arg',
+'@inlinefmt{ , aaa}. @inlineraw{, bbb}.
+'],
 );
 
 foreach my $test (@test_cases) {

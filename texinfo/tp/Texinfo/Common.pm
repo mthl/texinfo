@@ -445,7 +445,19 @@ foreach my $context_brace_command ('footnote', 'caption', 'shortcaption', 'math'
   $brace_commands{$context_brace_command} = 1;
 }
 
-foreach my $two_arg_command('email','acronym','abbr') {
+our %explained_commands;
+foreach my $explained_command ('abbr', 'acronym') {
+  $explained_commands{$explained_command} = 1;
+  $brace_commands{$explained_command} = 2;
+}
+
+our %inline_format_commands;
+foreach my $inline_format_command ('inlineraw', 'inlinefmt') {
+  $inline_format_commands{$inline_format_command} = 1;
+  $brace_commands{$inline_format_command} = 2;
+}
+
+foreach my $two_arg_command('email') {
   $brace_commands{$two_arg_command} = 2;
 }
 
@@ -464,10 +476,6 @@ foreach my $ref_command ('xref','ref','pxref','inforef') {
   $ref_commands{$ref_command} = 1;
 }
 
-our %explained_commands;
-foreach my $explained_command ('abbr', 'acronym') {
-  $explained_commands{$explained_command} = 1;
-}
 
 our %in_heading_commands;
 foreach my $in_heading_command ('thischapter', 'thischaptername',

@@ -342,6 +342,9 @@ sub _convert($;$)
                  or ($ignored_block_commands{$root->{'cmdname'}}
                      and !(defined($options->{'expanded_formats_hash'})
                            and $options->{'expanded_formats_hash'}->{$root->{'cmdname'}}))
+                 or ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}
+                     and (!$root->{'extra'}->{'format'}
+                          or !$options->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}))
              # here ignore most of the misc commands
                  or ($root->{'args'} and $root->{'args'}->[0] 
                      and $root->{'args'}->[0]->{'type'} 
@@ -423,6 +426,9 @@ sub _convert($;$)
       } else {
         return _convert($root->{'args'}->[0], $options);
       }
+    } elsif ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}) {
+      $options->{'raw'} = 1 if ($root->{'cmdname'} eq 'inlineraw');
+      return _convert($root->{'args'}->[1], $options);
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
            and (($root->{'args'}->[0]->{'type'}
                 and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg')

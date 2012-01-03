@@ -3557,12 +3557,10 @@ sub _convert_text($$$)
   my $command = shift;
   my $text = shift;
 
-  # do that first because in verb and verbatim, type is 'raw'
   if ($self->in_verbatim()) {
     return $self->protect_text($text);
   }
-  #return $text if ($type and $type eq 'raw');
-  return $text if  ($self->in_raw());
+  return $text if ($self->in_raw());
   $text = uc($text) if ($self->in_upper_case());
   $text = $self->protect_text($text);
   if ($self->get_conf('ENABLE_ENCODING') and 

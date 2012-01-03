@@ -153,6 +153,7 @@ our %default_configuration = (
   'GLOBAL_COMMANDS' => [],    # list of commands registered 
 );
 
+# content is not copied but reference is copied when duplicating a parser.
 my %tree_informations;
 foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels') {
   $tree_informations{$tree_information} = 1;
@@ -258,8 +259,10 @@ my %region_commands           = %Texinfo::Common::region_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %in_heading_commands       = %Texinfo::Common::in_heading_commands;
 my %explained_commands        = %Texinfo::Common::explained_commands;
+my %inline_format_commands    = %Texinfo::Common::inline_format_commands;
 my %all_commands              = %Texinfo::Common::all_commands;
 
+# keep line information for those commands.
 my %keep_line_nr_brace_commands = %context_brace_commands;
 foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
   $keep_line_nr_brace_commands{$keep_line_nr_brace_command} = 1;
@@ -4472,7 +4475,9 @@ sub _parse_texi($;$)
                 and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
                    or $simple_text_commands{$current->{'parent'}->{'cmdname'}})
                 and $current->{'parent'}->{'cmdname'} ne 'math') {
-              $self->_isolate_last_space($current);
+              # @inline* always have end spaces considered as normal text 
+              $self->_isolate_last_space($current) 
+                unless ($inline_format_commands{$current->{'parent'}->{'cmdname'}});
               $self->_register_command_arg($current, 'brace_command_contents');
               # Remove empty arguments, as far as possible
               _remove_empty_content_arguments($current);
@@ -4534,28 +4539,37 @@ sub _parse_texi($;$)
                     Texinfo::Convert::Texinfo::convert($current)), $line_nr);
                 }
               }
-            } elsif ($explained_commands{$current->{'parent'}->{'cmdname'}}) {
-              my $explained = $current->{'parent'};
-              if (!@{$explained->{'args'}} 
-                  or !@{$explained->{'extra'}->{'brace_command_contents'}}
-                  or !defined($explained->{'extra'}->{'brace_command_contents'}->[0])) {
+            } elsif ($explained_commands{$current->{'parent'}->{'cmdname'}}
+                     or $inline_format_commands{$current->{'parent'}->{'cmdname'}}) {
+              my $current_command = $current->{'parent'};
+              if (!@{$current_command->{'args'}} 
+                  or !@{$current_command->{'extra'}->{'brace_command_contents'}}
+                  or !defined($current_command->{'extra'}->{'brace_command_contents'}->[0])) {
                 $self->line_warn(
                    sprintf($self->__("\@%s missing first argument"),
-                           $explained->{'cmdname'}), $line_nr);
+                           $current_command->{'cmdname'}), $line_nr);
               } else {
-                my $normalized_type
-                  = Texinfo::Convert::NodeNameNormalization::normalize_node(
-                      {'contents' =>
-                       $explained->{'extra'}->{'brace_command_contents'}->[0]});
-                $explained->{'extra'}->{'normalized'} = $normalized_type;
-                if (!$explained->{'extra'}->{'brace_command_contents'}->[1]) {
-                  if ($self->{'explained_commands'}->{$explained->{'cmdname'}}->{$normalized_type}) {
-                    $explained->{'extra'}->{'explanation_contents'} 
-                      = $self->{'explained_commands'}->{$explained->{'cmdname'}}->{$normalized_type};
+                if ($explained_commands{$current_command->{'cmdname'}}) {
+                  my $normalized_type
+                    = Texinfo::Convert::NodeNameNormalization::normalize_node(
+                        {'contents' =>
+                         $current_command->{'extra'}->{'brace_command_contents'}->[0]});
+                  $current_command->{'extra'}->{'normalized'} = $normalized_type;
+                  if (!$current_command->{'extra'}->{'brace_command_contents'}->[1]) {
+                    if ($self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type}) {
+                      $current_command->{'extra'}->{'explanation_contents'} 
+                        = $self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type};
+                    }
+                  } else {
+                    $self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type} 
+                      = $current_command->{'extra'}->{'brace_command_contents'}->[1];
                   }
                 } else {
-                  $self->{'explained_commands'}->{$explained->{'cmdname'}}->{$normalized_type} 
-                    = $explained->{'extra'}->{'brace_command_contents'}->[1];
+                  my $format
+                   = Texinfo::Convert::Text::convert({'contents' =>
+                       $current_command->{'extra'}->{'brace_command_contents'}->[0]},
+                       {Texinfo::Common::_convert_text_options($self)});
+                  $current_command->{'extra'}->{'format'} = $format; 
                 }
               }
             } elsif ($current->{'parent'}->{'cmdname'} eq 'errormsg') {

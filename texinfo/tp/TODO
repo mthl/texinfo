@@ -2,6 +2,9 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
+
+add hashcahar, rbracechar... to tests.
+
 Redo macros/space_macro_after_end with @verbatim
 duplicate coverage_braces/'raw_in_style','raw_expanded_in_style'
 and raw/'raw_in_brace_command'
@@ -53,6 +56,8 @@ Missing tests
 =============
 
 Test for @html in @copying when expanding @html.
+
+Test for '' -- in @tex (or @html) and expanded in plaintext.
 
 Test for the handling of #line.
 

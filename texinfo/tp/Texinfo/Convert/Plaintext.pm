@@ -86,6 +86,7 @@ my %menu_commands = %Texinfo::Common::menu_commands;
 my %root_commands = %Texinfo::Common::root_commands;
 my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
+my %inline_format_commands = %Texinfo::Common::inline_format_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
 my %format_raw_commands = %Texinfo::Common::format_raw_commands;
@@ -1088,7 +1089,10 @@ sub _convert($$)
        and ($root->{'type'} ne 'empty_spaces_before_paragraph'
             or $self->get_conf('paragraphindent') ne 'asis'))
        or ($root->{'cmdname'} 
-            and $self->{'ignored_commands'}->{$root->{'cmdname'}})) {
+            and ($self->{'ignored_commands'}->{$root->{'cmdname'}}
+                 or ($inline_format_commands{$root->{'cmdname'}}
+                     and (!$root->{'extra'}->{'format'}
+                          or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}))))) {
     print STDERR "IGNORED\n" if ($self->get_conf('DEBUG'));
     return '';
   }
@@ -1571,7 +1575,7 @@ sub _convert($$)
               }
             }
             my @added = ({'text' => '.'});
-            # the added dot do not end a senteence for pxref or ref.
+            # the added dot do not end a sentence for pxref or ref.
             push @added, {'cmdname' => ':'} if ($command ne 'xref');
             unshift @{$self->{'current_contents'}->[-1]}, @added;
           }
@@ -1606,6 +1610,18 @@ sub _convert($$)
           unshift @{$self->{'current_contents'}->[-1]}, ($argument,
                     {'type' => 'underlying_text', 'text' => 'a'});
         }
+      }
+      return '';
+    } elsif ($inline_format_commands{$command}) {
+      if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
+         and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+        my $argument;
+        if ($command eq 'inlineraw') {
+          $argument->{'type'} = 'code';
+        }
+        $argument->{'contents'} 
+            = $root->{'extra'}->{'brace_command_contents'}->[-1];
+        unshift @{$self->{'current_contents'}->[-1]}, ($argument);
       }
       return '';
     } elsif ($command eq 'math') {
