@@ -1,8 +1,8 @@
-<!-- $Id: texinfo.dtd,v 1.27 2011-12-27 23:11:41 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.28 2012-01-03 18:31:11 karl Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
-  2011 Free Software Foundation, Inc.
+  2011, 2012 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -831,6 +831,7 @@
 <!ENTITY lbracechar "{">
 <!ENTITY rbracechar "}">
 <!ENTITY backslashchar "\\">
+<!ENTITY hashchar   "#">
 <!ENTITY nbsp       "&#xa0;">
 <!ENTITY deg        "&#xb0;">
 <!ENTITY expansion  "&#x2192;">

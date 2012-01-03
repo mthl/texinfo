@@ -6,6 +6,7 @@
 	(External Macro Processors): new node.
 	* doc/refcard/txirefcard.tex: document it.
         * doc/texinfo.tex (@hashchar): output a #.
+        * util/texinfo.dtd: add entity.
 
 2011-12-31  Karl Berry  <karl@gnu.org>
 
