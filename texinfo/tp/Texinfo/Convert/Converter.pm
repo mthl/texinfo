@@ -79,6 +79,7 @@ our %all_converters_defaults = (
   'firstparagraphindent' => 'none',
   'allowcodebreaks'      => 'true',
   'footnotestyle'        => 'end',
+  'deftypefnnewline'     => 'off',
 # This is the default, mainly for tests; the caller should set them.  These
 # values are what is used in tests of the Converters.
   'PACKAGE_AND_VERSION'  => 'texinfo',

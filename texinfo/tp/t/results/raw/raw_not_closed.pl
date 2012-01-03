@@ -20,22 +20,26 @@ $result_trees{'raw_not_closed'} = {
           'type' => 'empty_line_after_command'
         },
         {
-          'parent' => {},
-          'text' => '
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => '
 ',
-          'type' => 'raw'
-        },
-        {
+              'type' => 'empty_line'
+            },
+            {
+              'parent' => {},
+              'text' => 'This is some html
+'
+            },
+            {
+              'parent' => {},
+              'text' => '<address> my address </address>
+'
+            }
+          ],
           'parent' => {},
-          'text' => 'This is some html
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '<address> my address </address>
-',
-          'type' => 'raw'
+          'type' => 'rawpreformatted'
         }
       ],
       'line_nr' => {
@@ -50,16 +54,18 @@ $result_trees{'raw_not_closed'} = {
 };
 $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_not_closed'}{'contents'}[0];
 $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0];
+$result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[1];
+$result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[1];
+$result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0];
-$result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0];
-$result_trees{'raw_not_closed'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'raw_not_closed'}{'contents'}[0];
 $result_trees{'raw_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'raw_not_closed'};
 
 $result_texis{'raw_not_closed'} = '@html
 
 This is some html
 <address> my address </address>
-@end html';
+@end html
+';
 
 
 $result_texts{'raw_not_closed'} = '';

@@ -71,7 +71,7 @@ my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
-my @out_formats = @Texinfo::Common::out_formats;
+my %format_raw_commands = %Texinfo::Common::format_raw_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 my %default_index_commands = %Texinfo::Common::default_index_commands;
@@ -149,6 +149,12 @@ sub in_verbatim($)
 {
   my $self = shift;
   return $self->{'document_context'}->[-1]->{'verbatim'};
+}
+
+sub in_raw($)
+{
+  my $self = shift;
+  return $self->{'document_context'}->[-1]->{'raw'};
 }
 
 sub paragraph_number($)
@@ -971,7 +977,6 @@ our %defaults = (
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
   'xrefautomaticsectiontitle' => 'off',
-  'deftypefnnewline'     => 'off',
   'SHOW_TITLE'           => 1,
   'USE_TITLEPAGE_FOR_TITLE' => 0,
   'MONOLITHIC'           => 1,
@@ -2285,7 +2290,7 @@ sub _convert_raw_command($$$$)
   return $self->protect_text($content);
 }
 
-foreach my $command (@out_formats) {
+foreach my $command (keys(%format_raw_commands)) {
   $default_commands_conversion{$command} = \&_convert_raw_command;
 }
 
@@ -2578,9 +2583,6 @@ sub _convert_menu_command($$$$)
   my $begin_row = '';
   my $end_row = '';
   if ($self->_in_preformatted_in_menu()) {
-    #my $pre_class = $self->_preformatted_class();
-    #return $self->_attribute_class('pre', $pre_class).">".$content."</pre>";
-    
     $begin_row = '<tr><td>';
     $end_row = '</td></tr>';
   }
@@ -3484,18 +3486,9 @@ sub _convert_preformatted_type($$$$)
   }
 
   return '' if ($content eq '');
+  return $content if ($type eq 'rawpreformatted');
 
   my $pre_class = $self->_preformatted_class();
-  #while ($current->{'parent'}) {
-  #  $current = $current->{'parent'};
-  #  if ($current->{'cmdname'} and $pre_class_commands{$current->{'cmdname'}}) {
-  #    $pre_class = $pre_class_commands{$current->{'cmdname'}};
-  #    last;
-  #  } elsif ($current->{'type'} and $pre_class_types{$current->{'type'}}) {
-  #    $pre_class = $pre_class_types{$current->{'type'}};
-  #    last;
-  #  }
-  #}
 
   if ($self->top_format() eq 'multitable') {
     $content =~ s/^\s*//;
@@ -3530,6 +3523,7 @@ sub _convert_preformatted_type($$$$)
 }
 
 $default_types_conversion{'preformatted'} = \&_convert_preformatted_type;
+$default_types_conversion{'rawpreformatted'} = \&_convert_preformatted_type;
 
 sub _convert_bracketed_type($$$$) {
   my $self = shift;
@@ -3567,7 +3561,8 @@ sub _convert_text($$$)
   if ($self->in_verbatim()) {
     return $self->protect_text($text);
   }
-  return $text if ($type and $type eq 'raw');
+  #return $text if ($type and $type eq 'raw');
+  return $text if  ($self->in_raw());
   $text = uc($text) if ($self->in_upper_case());
   $text = $self->protect_text($text);
   if ($self->get_conf('ENABLE_ENCODING') and 
@@ -4435,11 +4430,6 @@ sub converter_initialize($)
 
   %{$self->{'css_map'}} = %css_map;
 
-  foreach my $format (@out_formats) {
-    $default_commands_conversion{$format} = undef
-       unless ($self->{'expanded_formats_hash'}->{$format});
-  }
-
   $self->{'htmlxref'} = {};
   if ($self->{'htmlxref_files'}) {
     $self->{'htmlxref'} = Texinfo::Common::parse_htmlxref_files($self, 
@@ -4476,6 +4466,8 @@ sub converter_initialize($)
       if (!$self->get_conf('SHOW_MENU') 
            and ($command eq 'menu' or $command eq 'detailmenu')) {
         $self->{'commands_conversion'}->{$command} = undef;
+      } elsif ($format_raw_commands{$command}
+               and !$self->{'expanded_formats_hash'}->{$command}) {
       } elsif (exists($default_commands_conversion{$command})) {
         $self->{'commands_conversion'}->{$command}
            = $default_commands_conversion{$command};
@@ -7179,9 +7171,11 @@ sub _convert($$;$)
         push @{$self->{'document_context'}->[-1]->{'preformatted_classes'}},
           $pre_class_commands{$command_name};
       }
-      if ($command_name eq 'verb' or $command_name eq 'verbatim') {
+      if ($format_raw_commands{$command_name}) {
+        $self->{'document_context'}->[-1]->{'raw'}++;
+      } elsif ($command_name eq 'verb' or $command_name eq 'verbatim') {
         $self->{'document_context'}->[-1]->{'verbatim'}++;
-      }
+      } 
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'code'}++;
@@ -7271,7 +7265,9 @@ sub _convert($$;$)
       } elsif ($command_name eq 'w') {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'space_protected'}--;
       }
-      if ($command_name eq 'verb' or $command_name eq 'verbatim') {
+      if ($format_raw_commands{$command_name}) {
+        $self->{'document_context'}->[-1]->{'raw'}--;
+      } elsif ($command_name eq 'verb' or $command_name eq 'verbatim') {
         $self->{'document_context'}->[-1]->{'verbatim'}--;
       }
       if (exists($block_commands{$command_name})) {
@@ -7299,7 +7295,8 @@ sub _convert($$;$)
         if ($root->{'cmdname'});
     if ($root->{'type'} eq 'paragraph') {
       $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'paragraph_number'}++;
-    } elsif ($root->{'type'} eq 'preformatted') {
+    } elsif ($root->{'type'} eq 'preformatted'
+             or $root->{'type'} eq 'rawpreformatted') {
       $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'preformatted_number'}++;
     } elsif ($root->{'type'} eq 'element') { 
       $self->{'current_element'} = $root;

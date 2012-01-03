@@ -2,6 +2,11 @@ export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
+Redo macros/space_macro_after_end with @verbatim
+duplicate coverage_braces/'raw_in_style','raw_expanded_in_style'
+and raw/'raw_in_brace_command'
+
+
 Before next release
 ===================
 
@@ -46,6 +51,8 @@ warn nested footnotes.
 
 Missing tests
 =============
+
+Test for @html in @copying when expanding @html.
 
 Test for the handling of #line.
 

@@ -105,7 +105,7 @@ sub html32_convert_text($$$$)
   if ($self->in_verbatim()) {
     return $self->protect_text($text);
   }
-  return $text if ($type and $type eq 'raw');
+  return $text if ($self->in_raw());
 
   $text = uc($text) if ($self->in_upper_case());
   $text = $self->protect_text($text);

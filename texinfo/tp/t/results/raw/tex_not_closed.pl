@@ -20,16 +20,27 @@ $result_trees{'tex_not_closed'} = {
           'type' => 'empty_line_after_command'
         },
         {
-          'parent' => {},
-          'text' => '
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => '
 ',
-          'type' => 'raw'
-        },
-        {
+              'type' => 'empty_line'
+            },
+            {
+              'parent' => {},
+              'text' => 'This is some \\LaTeX'
+            },
+            {
+              'text' => '{'
+            },
+            {
+              'text' => '}
+'
+            }
+          ],
           'parent' => {},
-          'text' => 'This is some \\LaTeX{}
-',
-          'type' => 'raw'
+          'type' => 'rawpreformatted'
         }
       ],
       'line_nr' => {
@@ -44,14 +55,16 @@ $result_trees{'tex_not_closed'} = {
 };
 $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'tex_not_closed'}{'contents'}[0];
 $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'tex_not_closed'}{'contents'}[0];
+$result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1];
+$result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'tex_not_closed'}{'contents'}[0];
-$result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'tex_not_closed'}{'contents'}[0];
 $result_trees{'tex_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'tex_not_closed'};
 
 $result_texis{'tex_not_closed'} = '@tex
 
 This is some \\LaTeX{}
-@end tex';
+@end tex
+';
 
 
 $result_texts{'tex_not_closed'} = '';

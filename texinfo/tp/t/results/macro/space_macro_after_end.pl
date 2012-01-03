@@ -70,31 +70,65 @@ $result_trees{'space_macro_after_end'} = {
           'type' => 'empty_line_after_command'
         },
         {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'in html
+'
+            }
+          ],
           'parent' => {},
-          'text' => 'in html',
-          'type' => 'raw'
+          'type' => 'rawpreformatted'
         },
         {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'last_raw_newline'
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'extra' => {
+                    'command' => {}
+                  },
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'html'
+                },
+                {
+                  'parent' => {},
+                  'text' => '   ',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'html',
+            'text_arg' => 'html'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 5,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '   ',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -108,11 +142,17 @@ $result_trees{'space_macro_after_end'}{'contents'}[1]{'parent'} = $result_trees{
 $result_trees{'space_macro_after_end'}{'contents'}[2]{'parent'} = $result_trees{'space_macro_after_end'};
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[1];
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2];
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2];
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
+$result_trees{'space_macro_after_end'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[2];
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'parent'} = $result_trees{'space_macro_after_end'};
-$result_trees{'space_macro_after_end'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'space_macro_after_end'}{'contents'}[3];
-$result_trees{'space_macro_after_end'}{'contents'}[4]{'parent'} = $result_trees{'space_macro_after_end'};
 
 $result_texis{'space_macro_after_end'} = '@macro spaces
   
@@ -126,17 +166,7 @@ in html
 $result_texts{'space_macro_after_end'} = '
 ';
 
-$result_errors{'space_macro_after_end'} = [
-  {
-    'error_line' => ':7: warning: Superfluous argument to @end html:  @spaces{}
-',
-    'file_name' => '',
-    'line_nr' => 7,
-    'macro' => '',
-    'text' => 'Superfluous argument to @end html:  @spaces{}',
-    'type' => 'warning'
-  }
-];
+$result_errors{'space_macro_after_end'} = [];
 
 
 1;

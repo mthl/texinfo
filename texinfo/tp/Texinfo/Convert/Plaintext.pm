@@ -88,7 +88,7 @@ my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
-my @out_formats = @Texinfo::Common::out_formats;
+my %format_raw_commands = %Texinfo::Common::format_raw_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 my %default_index_commands = %Texinfo::Common::default_index_commands;
@@ -140,7 +140,8 @@ foreach my $def_command (keys(%def_commands)) {
 # paragraph number incremented with paragraphs, center, listoffloats
 # and block commands except: html and such, group, raggedright, menu*, float
 
-my %default_preformatted_context_commands = %preformatted_commands;
+my %default_preformatted_context_commands = (%preformatted_commands,
+                                             %format_raw_commands);
 foreach my $preformatted_command ('verbatim', keys(%menu_commands)) {
   $default_preformatted_context_commands{$preformatted_command} = 1;
 }
@@ -351,7 +352,7 @@ sub converter_initialize($)
   $self->{'footnote_index'} = 0;
   $self->{'pending_footnotes'} = [];
 
-  foreach my $format (@out_formats) {
+  foreach my $format (keys(%format_raw_commands)) {
     $self->{'ignored_commands'}->{$format} = 1 
        unless ($self->{'expanded_formats_hash'}->{$format});
   }
@@ -1654,6 +1655,13 @@ sub _convert($$)
       }
       if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}
           or $root->{'cmdname'} eq 'float') {
+        if ($self->{'formatters'}->[-1]->{'type'} eq 'paragraph'
+            and $format_raw_commands{$root->{'cmdname'}}) {
+          $result .= $self->_count_added($formatter->{'container'},
+                              $formatter->{'container'}->add_pending_word(1));
+          $result .= $self->_count_added($formatter->{'container'},
+                              $formatter->{'container'}->end_line());
+        }
         push @{$self->{'context'}}, $root->{'cmdname'};
       } elsif ($flush_commands{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, $root->{'cmdname'};
@@ -1688,7 +1696,8 @@ sub _convert($$)
         # command (ie if it is menu or verbatim, and not example or  
         # similar)
         if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}
-            and ! $preformatted_commands{$root->{'cmdname'}}) {
+            and ! $preformatted_commands{$root->{'cmdname'}}
+            and ! $format_raw_commands{$root->{'cmdname'}}) {
           $preformatted = $self->new_formatter('unfilled');
           push @{$self->{'formatters'}}, $preformatted;
         }
@@ -2134,11 +2143,13 @@ sub _convert($$)
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                                    'locations' => []};
       }
-    } elsif ($root->{'type'} eq 'preformatted') {
+    } elsif ($root->{'type'} eq 'preformatted'
+             or $root->{'type'} eq 'rawpreformatted') {
       # if in a description reuse the main menu unfilled, to keep things
       # simpler and avoid having to do a separate count.
-      if ((!$root->{'parent'}->{'type'})
-           or $root->{'parent'}->{'type'} ne 'menu_entry_description') {
+      if ($root->{'type'} eq 'rawpreformatted'
+          or !$root->{'parent'}->{'type'}
+          or $root->{'parent'}->{'type'} ne 'menu_entry_description') {
         $preformatted = $self->new_formatter('unfilled');
         push @{$self->{'formatters'}}, $preformatted;
         if ($self->{'context'}->[-1] eq 'flushright') {

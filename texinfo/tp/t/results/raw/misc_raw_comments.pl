@@ -14,57 +14,222 @@ $result_trees{'misc_raw_comments'} = {
       'type' => 'empty_line'
     },
     {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment space
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'parent' => {}
+            }
+          ],
+          'parent' => {},
+          'type' => 'block_line_arg'
+        }
+      ],
       'cmdname' => 'html',
+      'contents' => [
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'in html '
+            }
+          ],
+          'parent' => {},
+          'type' => 'rawpreformatted'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'extra' => {
+                    'command' => {}
+                  },
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'html'
+                },
+                {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' comment no space
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'parent' => {}
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'html',
+            'text_arg' => 'html'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
+          'parent' => {}
+        }
+      ],
+      'extra' => {
+        'end_command' => {}
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
+      'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'in tex'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'space_at_end_block_command'
+            }
+          ],
+          'parent' => {},
+          'type' => 'block_line_arg'
+        }
+      ],
+      'cmdname' => 'tex',
+      'contents' => [
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'extra' => {
+                    'command' => {}
+                  },
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'tex'
+                },
+                {
+                  'parent' => {},
+                  'text' => '    ',
+                  'type' => 'spaces_at_end'
+                },
+                {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' comment after end tex
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'parent' => {}
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'tex',
+            'text_arg' => 'tex'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
+          'parent' => {}
+        }
+      ],
+      'extra' => {
+        'block_command_line_contents' => [
+          [
+            {}
+          ]
+        ],
+        'end_command' => {}
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
+      'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'cmdname' => 'verbatim',
       'contents' => [
         {
           'extra' => {
             'command' => {}
           },
           'parent' => {},
-          'text' => ' ',
+          'text' => '
+',
           'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => '@c comment space
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => 'in html @end html@c comment no space
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '@tex in tex
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '@end tex    @c comment after end tex
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '@verbatim
-',
-          'type' => 'raw'
         },
         {
           'parent' => {},
@@ -77,38 +242,71 @@ $result_trees{'misc_raw_comments'} = {
           'text' => 'in verbatim2
 ',
           'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '@end verbatim
-',
-          'type' => 'raw'
         }
       ],
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 2,
+        'line_nr' => 8,
         'macro' => ''
       },
       'parent' => {}
+    },
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
 };
 $result_trees{'misc_raw_comments'}{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'};
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[0];
 $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
 $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
-$result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'misc_raw_comments'}{'contents'}[1]{'contents'}[1];
 $result_trees{'misc_raw_comments'}{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'};
+$result_trees{'misc_raw_comments'}{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'};
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[3];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[3];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0];
+$result_trees{'misc_raw_comments'}{'contents'}[3]{'parent'} = $result_trees{'misc_raw_comments'};
+$result_trees{'misc_raw_comments'}{'contents'}[4]{'parent'} = $result_trees{'misc_raw_comments'};
+$result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
+$result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
+$result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
+$result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
+$result_trees{'misc_raw_comments'}{'contents'}[5]{'parent'} = $result_trees{'misc_raw_comments'};
+$result_trees{'misc_raw_comments'}{'contents'}[6]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
+$result_trees{'misc_raw_comments'}{'contents'}[6]{'parent'} = $result_trees{'misc_raw_comments'};
 
 $result_texis{'misc_raw_comments'} = '
 @html @c comment space
@@ -121,26 +319,32 @@ in html @end html@c comment no space
 in verbatim @c in verbatim
 in verbatim2
 @end verbatim
-@end html';
+';
 
 
 $result_texts{'misc_raw_comments'} = '
+
+
+in verbatim @c in verbatim
+in verbatim2
 ';
 
 $result_errors{'misc_raw_comments'} = [
   {
-    'error_line' => ':11: No matching `@end html\'
+    'error_line' => ':3: warning: @end should only appear at a line beginning
 ',
     'file_name' => '',
-    'line_nr' => 11,
+    'line_nr' => 3,
     'macro' => '',
-    'text' => 'No matching `@end html\'',
-    'type' => 'error'
+    'text' => '@end should only appear at a line beginning',
+    'type' => 'warning'
   }
 ];
 
 
 
-$result_converted{'plaintext'}->{'misc_raw_comments'} = '';
+$result_converted{'plaintext'}->{'misc_raw_comments'} = 'in verbatim @c in verbatim
+in verbatim2
+';
 
 1;

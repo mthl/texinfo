@@ -599,22 +599,21 @@ foreach my $preformatted_command(
   $preformatted_commands{$preformatted_command} = 1;
 }
 
-our @out_formats = ('html', 'tex', 'xml', 'docbook');
-our %preformatted_raw_commands;
-foreach my $preformatted_raw_command(@out_formats) {
-#  $block_commands{$preformatted_raw_command} = 0;
-#  $preformatted_raw_commands{$preformatted_raw_command} = 1;
+our %format_raw_commands;
+foreach my $format_raw_command('html', 'tex', 'xml', 'docbook') {
+  $block_commands{$format_raw_command} = 0;
+  $format_raw_commands{$format_raw_command} = 1;
 }
 
 our %raw_commands;
 # macro/rmacro are special
-foreach my $raw_command ('verbatim', @out_formats,
+foreach my $raw_command ('verbatim',
                          'ignore', 'macro', 'rmacro') {
   $block_commands{$raw_command} = 'raw';
   $raw_commands{$raw_command} = 1;
 }
 
-foreach my $command (@out_formats, 'info', 'plaintext') {
+foreach my $command (keys(%format_raw_commands), 'info', 'plaintext') {
   $block_commands{'if' . $command} = 'conditional';
   $block_commands{'ifnot' . $command} = 'conditional';
 }
@@ -635,7 +634,8 @@ $block_commands{'float'} = 2;
 foreach my $block_command (keys(%block_commands)) {
   $close_paragraph_commands{$block_command} = 1
      unless ($block_commands{$block_command} eq 'raw' or
-             $block_commands{$block_command} eq 'conditional');
+             $block_commands{$block_command} eq 'conditional'
+             or $format_raw_commands{$block_command});
 }
 
 $close_paragraph_commands{'verbatim'} = 1;
@@ -1611,7 +1611,12 @@ that may appear on the @-command line. That means 0 in most cases,
 =item %raw_commands
 
 @-commands that have no expansion of @-commands in their bodies,
-as C<@macro>, C<@verbatim>, C<@ignore>, or C<@html>.
+as C<@macro>, C<@verbatim> or C<@ignore>.
+
+=item %format_raw_commands
+
+@-commands associated with raw output format, like C<@html>, or
+C<@docbook>.
 
 =item %def_commands
 

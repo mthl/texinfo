@@ -154,6 +154,10 @@ sub tex4ht_prepare($)
               and $tree->{'contents'}->[0]->{'type'} eq 'empty_line_after_command') {
             shift @{$tree->{'contents'}};
           }
+          if ($tree->{'contents'}->[-1]->{'cmdname'} 
+              and $tree->{'contents'}->[-1]->{'cmdname'} eq 'end') {
+            pop @{$tree->{'contents'}};
+          }
         }
         my $text = Texinfo::Convert::Texinfo::convert($tree);
         $commands{$command}->{'commands'}->[$counter-1] = $root;

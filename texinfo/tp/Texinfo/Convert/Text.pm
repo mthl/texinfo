@@ -350,7 +350,9 @@ sub _convert($;$)
   my $result = '';
   if (defined($root->{'text'})) {
     $result = $root->{'text'};
-    if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
+    if ((! defined($root->{'type'}) 
+         or $root->{'type'} ne 'raw')
+         and !$options->{'raw'}) {
       if ($options->{'sc'}) {
         $result = uc($result);
       }
@@ -448,6 +450,8 @@ sub _convert($;$)
         chomp ($result);
         $result .= "\n" if ($result =~ /\S/);
       }
+    } elsif ($options->{'expanded_formats_hash'}->{$root->{'cmdname'}}) {
+      $options->{'raw'} = 1;
     } elsif ($formatting_misc_commands{$root->{'cmdname'}} and $root->{'args'}) {
       if ($root->{'cmdname'} eq 'sp') {
         if ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
@@ -469,7 +473,7 @@ sub _convert($;$)
           $result = heading ($root, $result, $options->{'converter'}, 
                              $options->{'NUMBER_SECTIONS'});
         } else {
-        # we always want an end of line even if is was eaten by a 
+        # we always want an end of line even if is was eaten by a command
           chomp ($result);
           $result .= "\n";
         }
@@ -513,7 +517,8 @@ sub _convert($;$)
       }
     }
     if (!$root->{'parent'}->{'type'} 
-        or $root->{'parent'}->{'type'} ne 'preformatted') {
+        or ($root->{'parent'}->{'type'} ne 'preformatted'
+            and $root->{'parent'}->{'type'} ne 'rawpreformatted')) {
       chomp($result);
       $result .= "\n";
     }

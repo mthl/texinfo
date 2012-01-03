@@ -1077,13 +1077,15 @@ sub _convert($$;$)
         push @elements, $element;
       } elsif ($root->{'cmdname'} eq 'copying') {
         push @elements, ('bookinfo', 'legalnotice');
-      } elsif ($Texinfo::Common::block_commands{$root->{'cmdname'}} eq 'raw') {
+      } elsif ($Texinfo::Common::format_raw_commands{$root->{'cmdname'}}) {
         return '' if (!$self->{'expanded_formats_hash'}->{$root->{'cmdname'}});
         if ($root->{'cmdname'} eq 'docbook') {
           # the context is here only for the command, so this is forgotten
           # once al the raw internal text has been formatted
           $self->{'document_context'}->[-1]->{'raw'} = 1;
         }
+      } elsif ($Texinfo::Common::block_commands{$root->{'cmdname'}} eq 'raw') {
+        return '';
       } elsif ($Texinfo::Common::menu_commands{$root->{'cmdname'}}) {
         return '';
       }

@@ -190,9 +190,9 @@ my %initialization_overrides = (
 #                         is also in that structure.
 # misc_commands           the same than %misc_commands below, but with index
 #                         entry commands dynamically added
-# close_paragraph_commands      same than %close_paragraph_command, but with
+# close_paragraph_commands      same than %close_paragraph_commands, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
-# close_preformatted_commands   same than %close_preformatted_command, but with
+# close_preformatted_commands   same than %close_preformatted_commands, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
 # no_paragraph_commands   the same than %default_no_paragraph_commands
 #                         below, with index
@@ -246,12 +246,11 @@ my %def_commands              = %Texinfo::Common::def_commands;
 my %def_aliases               = %Texinfo::Common::def_aliases;
 my %menu_commands             = %Texinfo::Common::menu_commands;
 my %preformatted_commands     = %Texinfo::Common::preformatted_commands;
-my %preformatted_raw_commands = %Texinfo::Common::preformatted_raw_commands;
+my %format_raw_commands = %Texinfo::Common::format_raw_commands;
 my %item_container_commands   = %Texinfo::Common::item_container_commands;
 my %item_line_commands        = %Texinfo::Common::item_line_commands;
 my %deprecated_commands       = %Texinfo::Common::deprecated_commands;
 my %root_commands             = %Texinfo::Common::root_commands;
-my @out_formats               = @Texinfo::Common::out_formats;
 my %command_index_prefix      = %Texinfo::Common::command_index_prefix;
 my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 my %ref_commands              = %Texinfo::Common::ref_commands;
@@ -357,12 +356,17 @@ foreach my $block_command (keys(%block_commands)) {
   $default_no_paragraph_commands{$block_command} = 1;
   $block_arg_commands{$block_command} = 1 
     if ($block_commands{$block_command} ne 'raw');
+#        and ! $format_raw_commands{$block_command});
 }
 
 my %close_preformatted_commands = %close_paragraph_commands;
 foreach my $no_close_preformatted('sp') {
   delete $close_preformatted_commands{$no_close_preformatted};
 }
+# FIXME to close preformated or not to close?
+#foreach my $format_raw_command(keys(%format_raw_commands)) {
+#  $close_preformatted_commands{$format_raw_command} = 1;
+#}
 
 # commands that may appear in accents
 my %in_accent_commands = (%accent_commands);
@@ -385,7 +389,7 @@ foreach my $misc_command_in_full_text('c', 'comment', 'refill', 'noindent',
   $in_full_text_commands{$misc_command_in_full_text} = 1;
 }
 
-foreach my $out_format (@out_formats) {
+foreach my $out_format (keys(%format_raw_commands)) {
   $in_full_text_commands{$out_format} = 1;
 }
 delete $in_full_text_commands{'caption'};
@@ -1052,7 +1056,7 @@ sub _begin_preformatted($)
           { 'type' => $self->{'context_stack'}->[-1], 
             'parent' => $current, 'contents' => [] };
     $current = $current->{'contents'}->[-1];
-    print STDERR "PREFORMATTED\n" if ($self->{'DEBUG'});
+    print STDERR "PREFORMATTED $self->{'context_stack'}->[-1]\n" if ($self->{'DEBUG'});
   }
   return $current;
 }
@@ -1167,7 +1171,7 @@ sub _end_preformatted ($$$)
 
   $current = _close_all_style_commands($self, $current, $line_nr);
   if ($current->{'type'} and $preformatted_contexts{$current->{'type'}}) {
-    print STDERR "CLOSE PREFORMATTED\n" if ($self->{'DEBUG'});
+    print STDERR "CLOSE PREFORMATTED $current->{'type'}\n" if ($self->{'DEBUG'});
     # completly remove void preformatted contexts
     if (!@{$current->{'contents'}}) {
       my $removed = pop @{$current->{'parent'}->{'contents'}};
@@ -1582,7 +1586,7 @@ sub _close_commands($$$;$$)
       my $context = pop @{$self->{'context_stack'}};
       warn "BUG: closing preformatted_command $closed_command wrong context $context"
         if ($context ne 'preformatted');
-    } elsif ($preformatted_raw_commands{$current->{'cmdname'}}) {
+    } elsif ($format_raw_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
       warn "BUG: closing preformatted_command $closed_command wrong context $context"
         if ($context ne 'rawpreformatted');
@@ -2974,7 +2978,8 @@ sub _end_line($$$)
             push @{$self->{'context_stack'}}, 'preformatted';
           }
         }
-        $current = $self->_begin_preformatted($current);
+        $current = $self->_begin_preformatted($current)
+          if ($close_preformatted_commands{$end_command});
       }
     } else {
       $current = $self->_begin_preformatted($current) 
@@ -3302,7 +3307,7 @@ sub _parse_texi($;$)
       print STDERR "".Data::Dumper->Dump([$root], ['$root']);
       my $line_text = '';
       $line_text = "$line_nr->{'line_nr'}.$line_nr->{'macro'}" if ($line_nr);
-      print STDERR "NEW LINE($self->{'context_stack'}->[-1]:@{$self->{'conditionals_stack'}}:$line_text): $line";
+      print STDERR "NEW LINE(".join('|', @{$self->{'context_stack'}}).":@{$self->{'conditionals_stack'}}:$line_text): $line";
       #print STDERR "CONTEXT_STACK ".join('|',@{$self->{'context_stack'}})."\n";
       delete $current->{'HERE !!!!'};
     }
@@ -4233,7 +4238,7 @@ sub _parse_texi($;$)
             if ($block_arg_commands{$command}) {
               if ($preformatted_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'preformatted';
-              } elsif ($preformatted_raw_commands{$command}) {
+              } elsif ($format_raw_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'rawpreformatted';
               }
               if ($region_commands{$command}) {
@@ -4427,6 +4432,11 @@ sub _parse_texi($;$)
                  'text' => '' };
             print STDERR "BRACKETED in def/multitable\n" if ($self->{'DEBUG'});
 
+          # lone braces accepted right in a rawpreformatted
+          } elsif ($current->{'type'} 
+                   and $current->{'type'} eq 'rawpreformatted') {
+            push @{$current->{'contents'}}, {'text' => '{' };
+          # matching braces accepted in a rawpreformatted or math
           } elsif ($self->{'context_stack'}->[-1] eq 'math'
                    or $self->{'context_stack'}->[-1] eq 'rawpreformatted') {
             push @{$current->{'contents'}},
@@ -4571,6 +4581,10 @@ sub _parse_texi($;$)
             $current = $current->{'parent'}->{'parent'};
             $current = $self->_begin_preformatted ($current)
                if ($close_preformatted_commands{$closed_command});
+          # lone braces accepted right in a rawpreformatted
+          } elsif ($current->{'type'}
+                   and $current->{'type'} eq 'rawpreformatted') {
+            push @{$current->{'contents'}}, {'text' => '}' };
           # footnote caption closing, when there is a paragraph inside.
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
              # closing the context under broader situations
