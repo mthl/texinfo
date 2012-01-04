@@ -2,7 +2,7 @@
 
 # texi2any: Texinfo converter.
 #
-# Copyright 2010, 2011 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -675,7 +675,7 @@ my $result_options = Getopt::Long::GetOptions (
     printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.\n"), '2011';
+There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
       exit 0;},
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
                              set_from_cmdline('MACRO_EXPAND', $_[1]); },

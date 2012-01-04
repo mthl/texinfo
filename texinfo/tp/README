@@ -1,7 +1,7 @@
-$Id: README,v 1.6 2011-12-25 01:37:51 pertusus Exp $
+$Id: README,v 1.7 2012-01-04 19:16:57 karl Exp $
 texinfo/tp/README
 
-  Copyright 2011 Free Software Foundation, Inc.
+  Copyright 2011, 2012 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -16,19 +16,18 @@ parts of Perl for years.
   Getopt::Long, Unicode::Normalize
 
 It also uses the less widely-available modules:
-  Locale::Messages, Unicode::EastAsianWidth, Text::Unidecode.
+  Locale::Messages, Unicode::EastAsianWidth, Text::Unidecode
 For these, internal versions are included, and are installed and used as
 part of Texinfo (not disturbing the Perl installation at all).
 
 To run the tests you also need:
-  Data::Compare, Test::Deep, Clone.
-On Debian-based distros, the corresponding packages are:
+  Data::Compare, Test::Deep, Clone
+On Debian-based distros, the corresponding packages are named:
 libdata-compare-perl libtest-deep-perl libclone-perl
 
 
-This module is part of GNU Texinfo.  A standalone perl Module may also be
+This module is part of GNU Texinfo.  A standalone Perl module may also be
 produced from within the the Texinfo tree, using 
   ./maintain/prepare_perl_module.sh
-The resulting module, although standalone, should be regenerated from
-the Texinfo sources, otherwise the divergence would render maintaining
-both complicated.
+The resulting module, although standalone, should always be regenerated
+from the sources in texinfo, to avoid divergence of sources.
