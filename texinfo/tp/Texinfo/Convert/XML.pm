@@ -183,6 +183,11 @@ foreach my $explained_command (keys(%Texinfo::Common::explained_commands)) {
                                                  "${explained_command}desc"];
 }
 
+foreach my $inline_command (keys(%Texinfo::Common::inline_format_commands)) {
+  $commands_args_elements{$inline_command} = ["${inline_command}format",
+                                              "${inline_command}content"];
+}
+
 my %commands_elements;
 foreach my $command (keys(%Texinfo::Common::brace_commands)) {
   $commands_elements{$command} = [$command];
@@ -235,9 +240,8 @@ my %type_elements = (
   'before_item' => 'beforefirstitem',
 );
 
-my %context_block_commands = (
+my %default_context_block_commands = (
   'float' => 1,
-  'xml' => 1,
 );
 
 sub converter_defaults($)
@@ -250,6 +254,11 @@ sub converter_initialize($)
   my $self = shift;
 
   $self->{'document_context'} = [{}];
+  $self->{'context_block_commands'} = {%default_context_block_commands};
+  foreach my $raw (keys (%Texinfo::Common::format_raw_commands)) {
+    $self->{'context_block_commands'}->{$raw} = 1
+         if $self->{'expanded_formats_hash'};
+  } 
 }
 
 sub output($$)
@@ -388,9 +397,10 @@ sub _convert($$;$)
       }
     } elsif ($root->{'type'} 
              and $root->{'type'} eq 'empty_line_after_command') {
-      my $command = $root->{'extra'}->{'command'};
-      if ($self->{'expanded_formats_hash'}->{$command->{'cmdname'}}
-          and $command->{'cmdname'} eq 'xml') {
+      my $command_name = $root->{'extra'}->{'command'}->{'cmdname'};
+      
+      if ($Texinfo::Common::format_raw_commands{$command_name} and 
+          $self->{'expanded_formats_hash'}->{$command_name}) {
         return '';
       }
     }
@@ -681,6 +691,23 @@ sub _convert($$;$)
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
       }
+      if ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}
+          and $root->{'extra'} and $root->{'extra'}->{'format'}
+          and $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
+        if ($root->{'cmdname'} eq 'inlineraw') {
+          push @{$self->{'document_context'}}, {};
+          $self->{'document_context'}->[-1]->{'raw'} = 1;
+        }
+        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
+            and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+          $result .= $self->_convert({'contents' 
+                        => $root->{'extra'}->{'brace_command_contents'}->[-1]});
+        }
+        if ($root->{'cmdname'} eq 'inlineraw') {
+          pop @{$self->{'document_context'}};
+        }
+        return $result;
+      }
       my @elements = @{$commands_elements{$root->{'cmdname'}}};
       my $command;
       if (scalar(@elements) > 1) {
@@ -725,7 +752,7 @@ sub _convert($$;$)
         pop @{$self->{'document_context'}};
       }
     } elsif (exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
-      if ($context_block_commands{$root->{'cmdname'}}) {
+      if ($self->{'context_block_commands'}->{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
       }
       my $prepended_elements = '';
@@ -961,7 +988,7 @@ sub _convert($$;$)
       }
       $result .= $end_line;
     }
-    if ($context_block_commands{$root->{'cmdname'}}) {
+    if ($self->{'context_block_commands'}->{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
   # The command is closed either when the corresponding tree element
