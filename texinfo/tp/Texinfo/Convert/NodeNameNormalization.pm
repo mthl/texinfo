@@ -35,7 +35,7 @@ use Texinfo::Convert::Text;
 use Texinfo::Convert::Unicode;
 
 require Exporter;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 
 # Items to export into callers namespace by default. Note: do not export
@@ -54,8 +54,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 @EXPORT = qw(
 );
-
-$VERSION = '0.01';
 
 my %normalize_node_brace_no_arg_commands 
   = %Texinfo::Convert::Text::text_brace_no_arg_commands;

@@ -18,7 +18,7 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 require Exporter;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 
 # Items to export into callers namespace by default. Note: do not export
@@ -37,9 +37,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 @EXPORT = qw(
 );
-
-$VERSION = '0.01';
-
 
 package Texinfo::Report;
 
