@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.28 2012-01-03 18:31:11 karl Exp $
+<!-- $Id: texinfo.dtd,v 1.29 2012-01-05 23:34:52 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -64,11 +64,11 @@
       | defspec | defvar | defopt | deftypefun | deftypevar 
       | defivar | deftypeivar | defmethod | deftypemethod">
 
-<!ENTITY % raw.cmds "html | tex | docbook | macro | rmacro | ignore">
+<!ENTITY % raw.cmds "html | tex | docbook | xml | macro | rmacro | ignore">
 
 <!-- Commands that appear everywhere, both with block and in paragraphs -->
 <!ENTITY % ubiquitous.cmds "sp | anchor | indent | noindent | %raw.cmds; 
-                 | %option.cmds;
+                 | %option.cmds; | errormsg
                  | %indexentry.cmds; | refill | quote-arg | allow-recursion">
 
 <!-- Block -->
@@ -153,16 +153,23 @@
 <!ENTITY % Inline.math "math | dmn">
 <!ENTITY % Inline.reference "xref | ref | pxref | inforef | email | uref | url">
 <!ENTITY % Inline.misc "click | clicksequence | logo | punct | spacecmd | today
-                        | linebreak | accent | dotless | ctrl">
+                        | linebreak | accent | dotless | ctrl | inlineraw 
+                        | inlinefmt | infoenclose">
 
 <!-- on lines -->
-<!ENTITY % Inline.line "%Inline.emphasize; | %Inline.misc; | %Inline.fonts;
+<!ENTITY % Inline.linetext "%Inline.emphasize; | %Inline.misc; | %Inline.fonts;
           | %Inline.markup; | %Inline.math; | %Inline.reference;
-          | %Inline.footnote; | image">
+          | %Inline.footnote;" >
+<!ENTITY % Inline.line "%Inline.linetext; | image">
+
 <!-- in paragraphs -->
 <!ENTITY % Inline.phrase
            "%Inline.line; | %ubiquitous.cmds;">
 
+<!-- in raw (everything except sectioning commands) -->
+<!ENTITY % Raw.content "#PCDATA | %titlepage_cmds; | %block; | %heading.cmds; 
+           | %Inline.linetext; | exdent | %toc; | printindex 
+           | %metainformation;">
 
 <!-- ELEMENTS -->
 
@@ -460,9 +467,11 @@
 <!ELEMENT menucomment (%block;)*>
 
 <!-- Raw formats -->
-<!ELEMENT docbook (#PCDATA)>
-<!ELEMENT html (#PCDATA)>
-<!ELEMENT tex (#PCDATA)>
+<!ELEMENT docbook (%Raw.content;)*>
+<!ELEMENT html (%Raw.content;)*>
+<!ELEMENT tex (%Raw.content;)*>
+<!-- this may happen if xml is not expanded -->
+<!ELEMENT xml (%Raw.content;)*>
 
 <!-- formalarg only before PCDATA, but mandating it seems not possible -->
 <!ELEMENT macro (#PCDATA | formalarg)*>
@@ -518,22 +527,33 @@
 
 <!-- Tables -->
 <!ELEMENT table (beforefirstitem?, (tableentry | %indexentry.cmds;)+)>
+
+<!-- begin and end are for definfoenclose command as table argument -->
 <!ATTLIST table
-          commandarg CDATA #IMPLIED>
+          commandarg CDATA #IMPLIED
+          begin CDATA #IMPLIED
+          end CDATA #IMPLIED>
 <!ELEMENT vtable (beforefirstitem?, (tableentry | %indexentry.cmds;)+)>
 <!ATTLIST vtable
-          commandarg CDATA #IMPLIED>
+          commandarg CDATA #IMPLIED
+          begin CDATA #IMPLIED
+          end CDATA #IMPLIED>
 <!ELEMENT ftable (beforefirstitem?, (tableentry | %indexentry.cmds;)+)>
 <!ATTLIST ftable
-          commandarg CDATA #IMPLIED>
+          commandarg CDATA #IMPLIED
+          begin CDATA #IMPLIED
+          end CDATA #IMPLIED>
 <!ELEMENT tableentry (tableterm, tableitem?)>
 <!-- tableterm contains directly pre if there is an index entry before @itemx -->
 <!ELEMENT tableterm (item,  (pre | itemx | %indexentry.cmds;)*)>
 <!ELEMENT item (#PCDATA | %Inline.line; | itemformat | indexterm)*>
 <!ELEMENT itemx (#PCDATA | %Inline.line; | itemformat | indexterm)*>
 <!ELEMENT itemformat (#PCDATA | %Inline.line; | indexterm)*>
+<!-- begin and end are for definfoenclose command for item content -->
 <!ATTLIST itemformat
-          command   CDATA #REQUIRED>
+          command   CDATA #REQUIRED
+          begin CDATA #IMPLIED
+          end CDATA #IMPLIED>
 <!ELEMENT tableitem (%block;)*>
 
 <!ELEMENT multitable ((columnfractions | columnprototypes), beforefirstitem?, 
@@ -674,6 +694,21 @@
           name CDATA #IMPLIED>
 
 <!ELEMENT errormsg (#PCDATA | %Inline.phrase;)*>
+
+<!ELEMENT inlineraw (inlinerawformat, inlinerawcontent)>
+<!ELEMENT inlinerawformat (#PCDATA)>
+<!ELEMENT inlinerawcontent (#PCDATA | %Inline.phrase;)*>
+
+<!ELEMENT inlinefmt (inlinefmtformat, inlinefmtcontent)>
+<!ELEMENT inlinefmtformat (#PCDATA)>
+<!ELEMENT inlinefmtcontent (#PCDATA | %Inline.phrase;)*>
+
+<!-- command defined by definfoenclose -->
+<!ELEMENT infoenclose  (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST infoenclose
+          command CDATA #REQUIRED
+          begin CDATA #IMPLIED
+          end CDATA #IMPLIED>
 
 <!ENTITY % xref.args "xrefnodename, xrefinfoname?, xrefprinteddesc?,
                 xrefinfofile?, xrefprintedname?">

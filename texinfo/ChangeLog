@@ -1,3 +1,11 @@
+2012-01-06  Patrice Dumas  <pertusus@free.fr>
+
+	* util/texinfo.dtd: adapt raw block commands content to what can
+	really be in those commands.
+	Add inlineraw, inlinefmt.
+	Better handling of commands defined with @definfoenclose and
+	errormsg.
+
 2012-01-03  Karl Berry  <karl@gnu.org>
 
 	* NEWS: new command @hashchar{}.
