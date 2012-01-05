@@ -6,9 +6,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-remove duplicated coverage_braces/'raw_in_style','raw_expanded_in_style'
-and raw/'raw_in_brace_command'
-
 Do a sed script to change VERSION in all modules that have
 it.
 

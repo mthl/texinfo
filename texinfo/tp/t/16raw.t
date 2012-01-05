@@ -259,6 +259,25 @@ A @inlineraw{plaintext, plaintext
 in <i>@acronym{HTML}</i>}.
 @end example
 '],
+['raw_in_style',
+'@code{
+@html
+in html
+@end html
+}'],
+['raw_expanded_in_style',
+'@code{
+@html
+in html
+@end html
+}',{'expanded_formats' => ['html']}],
+['verbatim_in_brace_command',
+'@samp{
+@verbatim
+in verbatim
+@end verbatim
+}
+'],
 );
 
 my @test_invalid = (
@@ -281,19 +300,6 @@ some verbatim @
 @macro
 
 '],
-['raw_in_brace_command',
-'@code{
-@html
-in html
-@end html
-}
-
-@samp{
-@verbatim
-in verbatim
-@end verbatim
-}
-'],
 ['inlineraw_with_empty_line',
 'A @inlineraw{plaintext, plaintext ``
 
@@ -315,8 +321,17 @@ in verbatim
 '],
 );
 
+my %html_tests = (
+  'raw_in_style' => 1,
+  'raw_expanded_in_style' => 1,
+  'verbatim_in_style' => 1,
+);
+
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
+  if ($html_tests{$test->[0]}) {
+    push @{$test->[2]->{'test_formats'}}, 'html_text';
+  }
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

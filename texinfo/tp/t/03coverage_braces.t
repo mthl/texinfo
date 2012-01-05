@@ -192,18 +192,6 @@ in format
 @code{in format in kbd}.
 @end format
 '],
-['raw_in_style',
-'@code{
-@html
-in html
-@end html
-}'],
-['raw_expanded_in_style',
-'@code{
-@html
-in html
-@end html
-}',{'expanded_formats' => ['html']}],
 );
 
 my @test_invalid = (
