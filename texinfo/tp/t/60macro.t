@@ -285,6 +285,14 @@ cartouche
 @html
 in html
 @end html @spaces{}'],
+['space_macro_after_end_verbatim',
+'@macro spaces
+
+@end macro
+
+@verbatim
+in verbatim
+@end verbatim @spaces{}'],
 ['macro_in_menu',
 '
 @macro star
