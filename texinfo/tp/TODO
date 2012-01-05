@@ -6,9 +6,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-
-add hashcahar, rbracechar... to tests.
-
 remove duplicated coverage_braces/'raw_in_style','raw_expanded_in_style'
 and raw/'raw_in_brace_command'
 

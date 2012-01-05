@@ -448,6 +448,7 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 @menu
 * @- @{ @}::
 * @  @   @! @* @. @: .@: @? @@::
+* @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}::
 * @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}::
 * @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}::
 * @geq{} @leq{} @arrow{}::
@@ -477,6 +478,9 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @node @  @       @! @* @. @: .@: @? @@
 @chapter @  @    @! @* @. @: .@: @? @@
+
+@node @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}
+@chapter @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}
 
 @node @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}
 @chapter @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}
@@ -553,6 +557,7 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 @ref{@- @{ @}}
 
 @ref{@  @        @! @* @. @: .@: @? @@}
+@ref{@atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}}
 @ref{@LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}}
 @ref{@equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}}
 
