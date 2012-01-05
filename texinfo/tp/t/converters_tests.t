@@ -106,14 +106,14 @@ my $inline_text = '
 @inlinefmt{html, <blink>html</blink> ``}, 
 @inlinefmt{plaintext, plaintext ``}, 
 @inlinefmt{xml, <para>xml</para> ``},
-@inlinefmt{docbbok, <emphasis>docbook</emphasis> ``}, 
+@inlinefmt{docbook, <emphasis>docbook</emphasis> ``}, 
 @inlinefmt{tex, $\underline{a < b @code{tex \hbox{ code }}}$ ``}
 
 
 @inlineraw{html, raw <blink>html</blink> ``}, 
 @inlineraw{plaintext, raw plaintext ``}, 
 @inlineraw{xml, raw <para>xml</para> ``},
-@inlineraw{docbbok, raw <emphasis>docbook</emphasis> ``}, 
+@inlineraw{docbook, raw <emphasis>docbook</emphasis> ``}, 
 @inlineraw{tex, raw $\underline{a < b @code{tex \hbox{ code }}}$ ``}
 ';
 
@@ -319,15 +319,12 @@ $raw_commands_text
 ['raw_block_commands_expand_tex',
 $raw_commands_text, {'expanded_formats' => ['tex']},
 ],
-
-#['inline',
-#$inline_text
-#],
-#['inline_expand_tex',
-#$inline_text, {'expanded_formats' => ['tex']},
-#]
-
-
+['inline',
+$inline_text
+],
+['inline_expand_tex',
+$inline_text, {'expanded_formats' => ['tex']},
+]
 );
 
 # This should go to a file, not to code...

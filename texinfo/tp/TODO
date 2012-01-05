@@ -10,7 +10,7 @@ Before next release
 add hashcahar, rbracechar... to tests.
 
 Redo macros/space_macro_after_end with @verbatim
-duplicate coverage_braces/'raw_in_style','raw_expanded_in_style'
+remove duplicated coverage_braces/'raw_in_style','raw_expanded_in_style'
 and raw/'raw_in_brace_command'
 
 Do a sed script to change VERSION in all modules that have

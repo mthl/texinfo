@@ -72,6 +72,7 @@ my %explained_commands = %Texinfo::Common::explained_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
 my %format_raw_commands = %Texinfo::Common::format_raw_commands;
+my %inline_format_commands = %Texinfo::Common::inline_format_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 my %default_index_commands = %Texinfo::Common::default_index_commands;
@@ -1078,6 +1079,8 @@ my %default_commands_args = (
   'pxref' => [['code'],['normal'],['normal'],['codetext'],['normal']],
   'ref' => [['code'],['normal'],['normal'],['codetext'],['normal']],
   'image' => [['codetext'],['codetext'],['codetext'],['string', 'normal'],['codetext']],
+  'inlinefmt' => [['codetext'],['normal']],
+  'inlineraw' => [['codetext'],['raw']],
   'item' => [[]],
   'itemx' => [[]],
 );
@@ -2294,6 +2297,38 @@ foreach my $command (keys(%format_raw_commands)) {
   $default_commands_conversion{$command} = \&_convert_raw_command;
 }
 
+sub _convert_inline_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $format_arg = shift @$args;
+  my $text_arg = shift @$args;
+
+  my $format;
+  if (defined($format_arg)) {
+    $format = $format_arg->{'codetext'};
+  }
+  return '' if (!defined($format) or $format eq '');
+  
+  if ($self->{'expanded_formats_hash'}->{$format}) {
+    if ($text_arg) {
+      if ($text_arg->{'normal'}) {
+        return $text_arg->{'normal'};
+      } elsif ($text_arg->{'raw'}) {
+        return $text_arg->{'raw'};
+      }
+    }
+  } else {
+    return '';
+  }
+}
+
+foreach my $command (keys(%inline_format_commands)) {
+  $default_commands_conversion{$command} = \&_convert_inline_command;
+}
 
 my $html_menu_entry_index = 0;
 sub _convert_preformatted_commands($$$$)
@@ -7230,6 +7265,10 @@ sub _convert($$;$)
                 $arg_formatted->{$arg_type} 
                   = Texinfo::Convert::Text::convert($arg, {'code' => 1,
                             Texinfo::Common::_convert_text_options($self)});
+              } elsif ($arg_type eq 'raw') {
+                $self->{'document_context'}->[-1]->{'raw'}++;
+                $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
+                $self->{'document_context'}->[-1]->{'raw'}--;
               }
             }
             

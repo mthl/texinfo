@@ -973,8 +973,24 @@ sub _convert($$;$)
         } else {
           return '';
         }
+      } elsif ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}
+               and $root->{'extra'} and $root->{'extra'}->{'format'}
+               and $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
+        if ($root->{'cmdname'} eq 'inlineraw') {
+          push @{$self->{'document_context'}}, {};
+          $self->{'document_context'}->[-1]->{'raw'} = 1;
+        }
+        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
+            and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+          $result .= $self->_convert({'contents'
+                        => $root->{'extra'}->{'brace_command_contents'}->[-1]});
+        }
+        if ($root->{'cmdname'} eq 'inlineraw') {
+          pop @{$self->{'document_context'}};
+        }
+        return $result;
       } else {
-        # ignored command
+        # ignored brace command
         return '';
       }
     # special case to ensure that @w leads to something even if empty
