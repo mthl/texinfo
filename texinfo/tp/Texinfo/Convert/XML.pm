@@ -257,7 +257,7 @@ sub converter_initialize($)
   $self->{'context_block_commands'} = {%default_context_block_commands};
   foreach my $raw (keys (%Texinfo::Common::format_raw_commands)) {
     $self->{'context_block_commands'}->{$raw} = 1
-         if $self->{'expanded_formats_hash'};
+         if $self->{'expanded_formats_hash'}->{$raw};
   } 
 }
 
@@ -798,8 +798,7 @@ sub _convert($$;$)
           }
         }
       }
-      if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}
-          and $root->{'cmdname'} eq 'xml') {
+      if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}) {
         $self->{'document_context'}->[-1]->{'raw'} = 1;
       } else {
         $result .= "<$root->{'cmdname'}${attribute}>${prepended_elements}";
@@ -974,8 +973,7 @@ sub _convert($$;$)
   if ($root->{'cmdname'} 
       and exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
     my $end_command = $root->{'extra'}->{'end_command'}; 
-    if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}
-        and $root->{'cmdname'} eq 'xml') {
+    if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}) {
     } else {
       my $end_line;
       if ($end_command) {

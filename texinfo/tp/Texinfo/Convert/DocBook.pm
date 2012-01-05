@@ -242,9 +242,8 @@ my %type_elements = (
   'def_item' => 'blockquote',
 );
 
-my %context_block_commands = (
+my %default_context_block_commands = (
   'float' => 1,
-  'docbook' => 1,
 );
 
 my %docbook_preformatted_formats = (
@@ -272,6 +271,11 @@ sub converter_initialize($)
   my $self = shift;
 
   $self->{'document_context'} = [{}];
+  $self->{'context_block_commands'} = {%default_context_block_commands};
+  foreach my $raw (keys (%Texinfo::Common::format_raw_commands)) {
+    $self->{'context_block_commands'}->{$raw} = 1
+         if $self->{'expanded_formats_hash'}->{$raw};
+  }
 }
 
 sub convert($$;$)
@@ -977,7 +981,7 @@ sub _convert($$;$)
     } elsif ($root->{'cmdname'} eq 'w') {
       return $w_command_mark;
     } elsif (exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
-      if ($context_block_commands{$root->{'cmdname'}}) {
+      if ($self->{'context_block_commands'}->{$root->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {};
       }
       my @attributes;
@@ -1079,11 +1083,9 @@ sub _convert($$;$)
         push @elements, ('bookinfo', 'legalnotice');
       } elsif ($Texinfo::Common::format_raw_commands{$root->{'cmdname'}}) {
         return '' if (!$self->{'expanded_formats_hash'}->{$root->{'cmdname'}});
-        if ($root->{'cmdname'} eq 'docbook') {
-          # the context is here only for the command, so this is forgotten
-          # once al the raw internal text has been formatted
-          $self->{'document_context'}->[-1]->{'raw'} = 1;
-        }
+        # the context is here only for the command, so this is forgotten
+        # once all the raw internal text has been formatted
+        $self->{'document_context'}->[-1]->{'raw'} = 1;
       } elsif ($Texinfo::Common::block_commands{$root->{'cmdname'}} eq 'raw') {
         return '';
       } elsif ($Texinfo::Common::menu_commands{$root->{'cmdname'}}) {
@@ -1196,7 +1198,7 @@ sub _convert($$;$)
          if ($format ne $docbook_preformatted_formats{$root->{'cmdname'}});
       }
     }
-    if ($context_block_commands{$root->{'cmdname'}}) {
+    if ($self->{'context_block_commands'}->{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
   } elsif ($root->{'type'} and exists($docbook_preformatted_formats{$root->{'type'}})) {
