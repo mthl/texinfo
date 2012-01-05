@@ -459,7 +459,8 @@ foreach my $preformatted_context (@preformatted_contexts) {
 # contexts on the context_stack stack where empty line don't trigger
 # paragraph
 my %no_paragraph_contexts;
-foreach my $no_paragraph_context ('math', 'menu', @preformatted_contexts, 'def') {
+foreach my $no_paragraph_context ('math', 'menu', @preformatted_contexts, 
+                                  'def', 'inlineraw') {
   $no_paragraph_contexts{$no_paragraph_context} = 1;
 };
 
@@ -4398,7 +4399,7 @@ sub _parse_texi($;$)
                   }
                 }
               }
-              push @{$self->{'context_stack'}}, $current->{'parent'}->{'cmdname'};
+              push @{$self->{'context_stack'}}, $command;
               $line =~ s/([^\S\n]*)//;
               $current->{'type'} = 'brace_command_context';
               push @{$current->{'contents'}}, { 'type' => 'empty_spaces_before_argument', 
@@ -4409,9 +4410,11 @@ sub _parse_texi($;$)
               push @{$current->{'contents'}}, 
                  {'type' => 'empty_spaces_before_argument',
                   'text' => '' } 
-                   if ($brace_commands{$current->{'parent'}->{'cmdname'}}
-                     and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
-                        or $simple_text_commands{$current->{'parent'}->{'cmdname'}}));
+                   if ($brace_commands{$command}
+                     and ($brace_commands{$command} > 1
+                        or $simple_text_commands{$command}));
+              push @{$self->{'context_stack'}}, $command
+                if ($command eq 'inlineraw');
             }
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: "
               .(defined($current->{'parent'}->{'remaining_args'}) ? "remaining: $current->{'parent'}->{'remaining_args'}, " : '')
@@ -4441,7 +4444,8 @@ sub _parse_texi($;$)
             push @{$current->{'contents'}}, {'text' => '{' };
           # matching braces accepted in a rawpreformatted or math
           } elsif ($self->{'context_stack'}->[-1] eq 'math'
-                   or $self->{'context_stack'}->[-1] eq 'rawpreformatted') {
+                   or $self->{'context_stack'}->[-1] eq 'rawpreformatted'
+                   or $self->{'context_stack'}->[-1] eq 'inlineraw') {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current, 'line_nr' => $line_nr };
@@ -4542,6 +4546,11 @@ sub _parse_texi($;$)
             } elsif ($explained_commands{$current->{'parent'}->{'cmdname'}}
                      or $inline_format_commands{$current->{'parent'}->{'cmdname'}}) {
               my $current_command = $current->{'parent'};
+              if ($current_command->{'cmdname'} eq 'inlineraw') {
+                my $context_command = pop @{$self->{'context_stack'}};
+                die "BUG: def_context $context_command "._print_current($current) 
+                  if ($context_command ne $current_command->{'cmdname'});
+              }
               if (!@{$current_command->{'args'}} 
                   or !@{$current_command->{'extra'}->{'brace_command_contents'}}
                   or !defined($current_command->{'extra'}->{'brace_command_contents'}->[0])) {
