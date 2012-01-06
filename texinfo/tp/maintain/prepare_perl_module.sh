@@ -8,6 +8,7 @@ cp -p texi2any.pl texi2any-perl
 perl Makefile.PL
 VERSION=`grep '^VERSION = ' Makefile | sed 's/^VERSION = *//'`
 [ z"$VERSION" = 'z' ] && exit 1
+./maintain/change_perl_modules_version.sh $VERSION
 rm -f Texinfo-$VERSION.tar.gz
 cp -p ../COPYING .
 make && make dist

@@ -6,10 +6,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-Do a sed script to change VERSION in all modules that have
-it.
-
-
 
 Bugs
 ====
