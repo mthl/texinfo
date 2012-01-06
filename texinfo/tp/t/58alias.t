@@ -3,7 +3,7 @@ use strict;
 require 't/test_utils.pl';
 
 my @test_cases = (
-[ 'simple',
+['simple',
 '@alias myalias = code
 
 @alias o-theralias=verb @c comment
@@ -11,6 +11,9 @@ my @test_cases = (
 Should be code: @myalias{code}
 
 Should be verb: @o-theralias{!verb!}
+'],
+['alias_table_command',
+'@alias myalias = code
 
 @table @myalias
 @item table item (code)
