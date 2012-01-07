@@ -711,6 +711,27 @@ Ref to footnote anchor
 
 @node second node,,top,TOP
 '],
+['more_nodes_than_sections',
+'
+@node Top
+@top top section
+Top node
+
+@menu
+* section node::
+@end menu
+
+@chapter Chapter
+
+In chapter
+
+@node section node,,,Top
+@section section
+
+section.
+
+@contents
+'],
 ['part_node_before_top',
 '@node part node before top, Top,,Top
 @part part
@@ -1516,7 +1537,8 @@ foreach my $test (@tests_converted) {
 my @xml_tests_info_tests = ('part_chapter_after_top', 
   'part_node_chapter_after_top', 'node_part_chapter_after_top',
   'node_part_chapter_after_chapter', 'section_before_top', 
-  'section_node_before_part', 'chapter_node_before_and_after_part');
+  'section_node_before_part', 'chapter_node_before_and_after_part',
+  'more_nodes_than_sections');
 
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';
