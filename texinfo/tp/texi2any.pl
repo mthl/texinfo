@@ -1073,6 +1073,9 @@ while(@input_files)
   if ($file_number != 0) {
     delete $cmdline_options->{'OUTFILE'} if exists($cmdline_options->{'OUTFILE'});
     delete $cmdline_options->{'OUT'} if exists($cmdline_options->{'OUT'});
+    delete $cmdline_options->{'PREFIX'} if exists($cmdline_options->{'PREFIX'});
+    delete $cmdline_options->{'SUBDIR'} 
+      if (exists($cmdline_options->{'SUBDIR'}) and get_conf('SPLIT'));
   }
   my $converter_options = { %$converter_default_options, 
                             %$cmdline_options,

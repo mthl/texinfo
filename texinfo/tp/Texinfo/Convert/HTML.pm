@@ -3901,7 +3901,7 @@ sub _convert_def_line_type($$$$)
                 'arguments' => $arguments};
         if ($self->get_conf('deftypefnnewline') eq 'on') {
           $tree 
-             = $self->gdt("{category}:@* \@emph{{type}}@* \@strong{{name}} \@emph{{arguments}}", 
+             = $self->gdt("{category}:\@* \@emph{{type}}\@* \@strong{{name}} \@emph{{arguments}}", 
                           $strings);
         } else {
           $tree 
@@ -3914,7 +3914,7 @@ sub _convert_def_line_type($$$$)
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
                 'name' => $name};
         if ($self->get_conf('deftypefnnewline') eq 'on') {
-          $tree = $self->gdt("{category}:@* \@emph{{type}}@* \@strong{{name}}",
+          $tree = $self->gdt("{category}:\@* \@emph{{type}}\@* \@strong{{name}}",
                   $strings);
         } else {
           $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}}",
@@ -3961,7 +3961,7 @@ sub _convert_def_line_type($$$$)
                 'arguments' => $arguments};
         if ($self->get_conf('deftypefnnewline') eq 'on') {
           $tree 
-            = $self->gdt("{category} on {class}:@* \@emph{{type}}@* \@strong{{name}} \@emph{{arguments}}", 
+            = $self->gdt("{category} on {class}:\@* \@emph{{type}}\@* \@strong{{name}} \@emph{{arguments}}", 
                          $strings);
         } else {
           $tree 
@@ -3976,7 +3976,7 @@ sub _convert_def_line_type($$$$)
                 'name' => $name};
         if ($self->get_conf('deftypefnnewline') eq 'on') {
           $tree 
-            = $self->gdt("{category} on {class}:@* \@emph{{type}}@* \@strong{{name}}", 
+            = $self->gdt("{category} on {class}:\@* \@emph{{type}}\@* \@strong{{name}}", 
                          $strings);
         } else {
           $tree 
@@ -3994,7 +3994,7 @@ sub _convert_def_line_type($$$$)
                 'arguments' => $arguments};
         if ($self->get_conf('deftypefnnewline') eq 'on') {
           $tree 
-            = $self->gdt("{category} of {class}:@* \@emph{{type}}@* \@strong{{name}} \@emph{{arguments}}",
+            = $self->gdt("{category} of {class}:\@* \@emph{{type}}\@* \@strong{{name}} \@emph{{arguments}}",
                          $strings);
         } else {
           $tree 
@@ -4009,7 +4009,7 @@ sub _convert_def_line_type($$$$)
                 'name' => $name};
         if ($self->get_conf('deftypefnnewline') eq 'on') {
           $tree 
-            = $self->gdt("{category} of {class}:@* \@emph{{type}}@* \@strong{{name}}",
+            = $self->gdt("{category} of {class}:\@* \@emph{{type}}\@* \@strong{{name}}",
                          $strings);
         } else {
           $tree 

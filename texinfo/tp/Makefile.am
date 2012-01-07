@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.18 2011-12-25 23:49:26 pertusus Exp $
+# $Id: Makefile.am,v 1.19 2012-01-07 19:25:03 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -118,6 +118,7 @@ test_files = \
  t/init/mini_ker_t2h.init \
  t/init/test_renamed_nodes.init \
  t/init/misc_file_collision.init \
+ t/init/l2h.init \
  t/manual_tree.pl \
  t/test_utils.pl \
  #
