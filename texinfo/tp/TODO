@@ -248,6 +248,19 @@ Maybe:
 defcondx_Ubar defcondx_Dbar
 space_in_setfilename
 
+output files split (node or not split) could be interesting for
+sectioning/
+ more_nodes_than_sections
+ more_sections_than_nodes
+ two_nodes_between_chapters
+ two_nodes_at_the_end
+ character_and_spaces_in_refs
+ character_and_spaces_in_node
+ some_at_commands_in_ref_nodes
+ at_commands_in_refs  
+ character_and_spaces_in_refs <- split/mono (chapter/node+node-files+USE_NODES/docbook?)
+ rec_nodes (with USE_NODES and without)
+
 sectioning/
 node_footnote_end
 --> following changed when element_next for special elements became
@@ -315,8 +328,7 @@ sectioning/nodename_parentheses.texi
 sectioning/double_node_anchor_float.texi
 sectioning/double_top.texi
 sectioning/nodes_test.texi   (done: unknown entry in menu and * (info)::
-                              and errors.  Not sure the remaining is 
-                              interesting)
+                              and errors.  The remaining is not interesting)
 sectioning/rec_nodes.texi
 sectioning/semi_auto.texi
 sectioning/novalidate.texi    (errors that aren't flagged by novalidate

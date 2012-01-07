@@ -26,7 +26,7 @@ $result_trees{'rec_nodes'} = {
             },
             {
               'parent' => {},
-              'text' => 'ToP'
+              'text' => 'Top'
             },
             {
               'parent' => {},
@@ -1387,7 +1387,7 @@ $result_trees{'rec_nodes'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_con
 $result_trees{'rec_nodes'}{'contents'}[5]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'rec_nodes'}{'contents'}[5]{'args'}[3]{'contents'}[0];
 $result_trees{'rec_nodes'}{'contents'}[5]{'parent'} = $result_trees{'rec_nodes'};
 
-$result_texis{'rec_nodes'} = '@node ToP
+$result_texis{'rec_nodes'} = '@node Top
 Top node
 
 @menu

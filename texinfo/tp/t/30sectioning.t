@@ -618,6 +618,13 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @anchor{TOP}.
 '],
+['ref_to_top',
+'
+@node ToP
+@top top
+
+@xref{TOP}.
+'],
 ['equivalent_nodes',
 '@node Top, @emph{node}
 
@@ -1221,7 +1228,7 @@ Top node
 second node.
 '],
 ['rec_nodes',
-'@node ToP
+'@node Top
 Top node
 
 @menu
