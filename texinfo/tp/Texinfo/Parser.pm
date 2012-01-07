@@ -3504,8 +3504,11 @@ sub _parse_texi($;$)
                        $self->{'macros'}->{$self->{'aliases'}->{$1}}))) {
         $line =~ s/^\@([[:alnum:]][[:alnum:]-]*)//o;
         my $command = $1;
-        $command = $self->{'aliases'}->{$command} 
-           if (exists($self->{'aliases'}->{$command}));
+        my $alias_command;
+        if (exists($self->{'aliases'}->{$command})) {
+          $alias_command = $command;
+          $command = $self->{'aliases'}->{$command};
+        }
 
         my $expanded_macro = $self->{'macros'}->{$command};
         my $args_number = scalar(@{$expanded_macro->{'args'}}) -1;
@@ -3752,8 +3755,11 @@ sub _parse_texi($;$)
       } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
                or $line =~ s/^\@([[:alnum:]][[:alnum:]-]*)//o) {
         my $command = $1;
-        $command = $self->{'aliases'}->{$command} 
-           if (exists($self->{'aliases'}->{$command}));
+        my $alias_command;
+        if (exists($self->{'aliases'}->{$command})) {
+          $alias_command = $command;
+          $command = $self->{'aliases'}->{$command};
+        }
         print STDERR "COMMAND $command\n" if ($self->{'DEBUG'});
 
         if ($command eq 'value') {

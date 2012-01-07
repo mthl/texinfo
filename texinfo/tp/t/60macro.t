@@ -24,6 +24,25 @@ in macro
 
 @no-macrobody{arg brace}.
 '],
+['empty_macro_no_arg',
+'@macro foo
+@end macro
+
+@foo
+
+@foo{}
+'],
+['empty_macro_in_text_no_arg',
+'@macro texnl{}
+@end macro
+
+ This.@texnl  It.
+
+@macro texnl2
+@end macro
+
+This 2 see.@texnl2  A.
+'],
 ['empty_end','@macro foo {aaa, }
 in foo
 @end macro'],
@@ -81,25 +100,6 @@ res1
 @end macro
 
 @test1 abc
-'],
-['empty_macro',
-'@macro foo
-@end macro
-
-@foo
-
-@foo{}
-'],
-['empty_macro_in_text_no_arg',
-'@macro texnl{}
-@end macro
-
- This.@texnl  It.
-
-@macro texnl2
-@end macro
-
-This 2 see.@texnl2  A.
 '],
 ['macro_one_arg_end_of_file',
 '@macro one-arg{arg}

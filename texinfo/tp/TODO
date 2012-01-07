@@ -97,6 +97,8 @@ end of line in @def*, begin and end of user defined macro
 or value expansion.  Maybe call the key for these elements
 'sourcemark'?
 
+In a similar way, keep the information about aliases in the tree?
+
 Right now VERBOSE is almost not used.
 
 Handle better @exdent in html? (there is a FIXME in the code)
