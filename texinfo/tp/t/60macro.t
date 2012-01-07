@@ -587,8 +587,6 @@ different
 
 @redefineothermacro{@othermacro{}}
 '],
-# FIXME this tests much more than macro, but also index related stuff.
-# This part should certainly be elsewhere.
 ['macro_in_index_commands',
 '@macro cp
 cp
@@ -602,19 +600,6 @@ fn
 
 @syncodeindex @cp{} @fn{}
 @syncodeindex-command{} cp fn
-
-@macro en 
-en
-@end macro
-@macro documentlanguage-command 
-@documentlanguage
-@end macro
-
-documentlanguage @documentlanguage  @en{}
-
-documentlanguage on its line
-@documentlanguage-command{}  en
-line following documentlanguage
 
 @macro truc 
 truc
@@ -644,51 +629,15 @@ a @var{index entry} t@\'e @^{@dotless{i}}
 
 @codeidxindex @defcodeindex-entry{}
 
-@cindex cindex entry
-
-@syncodeindex ky pg
-
 @kindex @truc{} kindex
 @pindex pindex @codeidx{}
 
-@synindex truc cp
-
-@defindex abc
-@defindex defg
-
-@synindex abc defg
-@synindex defg ky
-
-@defgindex defg index entry
-
-@abcindex abc index entry
-
-pg
-@printindex pg
-
-ky
-@printindex ky
-
-truc
-@printindex truc
-
-value truc
+macro truc
 @printindex @truc{}
 
-cp
-@printindex cp
-
-value cp
+macro cp
 @printindex @cp{}
 
-defg
-@printindex defg
-
-abc
-@printindex abc
-
-fn
-@printindex fn
 '],
 ['macro_in_invalid_documentencoding',
 '@macro badmacro
@@ -711,6 +660,19 @@ Top
 
 Text line followed by a comment on the same line and another below @c comment @text{}
 @c comment @text{}
+
+@macro en 
+en
+@end macro
+@macro documentlanguage-command 
+@documentlanguage
+@end macro
+
+documentlanguage @documentlanguage  @en{}
+
+documentlanguage on its line
+@documentlanguage-command{}  en
+line following documentlanguage
 
 @macro pagesizes-arg
 200mm,150mm

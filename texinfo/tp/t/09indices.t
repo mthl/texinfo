@@ -315,6 +315,68 @@ Top.
 
 @printindex fn
 @printindex cp
+'],
+['def_syn_indices',
+'
+@syncodeindex cp fn
+
+@node Top
+
+definedx truc
+@defindex truc
+after
+
+@trucindex index truc
+
+@defcodeindex codeidx
+
+@codeidxindex a @var{index entry} t@~e @^{@dotless{i}}
+
+@cindex cindex entry
+
+@syncodeindex ky pg
+
+@kindex truc kindex
+@pindex pindex codeidx
+
+@synindex truc cp
+
+@defindex abc
+@defindex defg
+
+@synindex abc defg
+@synindex defg ky
+
+@defgindex defg index entry
+
+@abcindex abc index entry
+
+pg
+@printindex pg
+
+ky
+@printindex ky
+
+truc
+@printindex truc
+
+value truc
+@printindex truc
+
+cp
+@printindex cp
+
+value cp
+@printindex cp
+
+defg
+@printindex defg
+
+abc
+@printindex abc
+
+fn
+@printindex fn
 ']
 );
 

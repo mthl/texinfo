@@ -103,51 +103,14 @@ after
 
 @codeidxindex @value{defcodeindex_entry}
 
-@cindex cindex entry
-
-@syncodeindex ky pg
-
 @kindex @value{truc} kindex
 @pindex pindex @value{codeidx}
-
-@synindex truc cp
-
-@defindex abc
-@defindex defg
-
-@synindex abc defg
-@synindex defg ky
-
-@defgindex defg index entry
-
-@abcindex abc index entry
-
-pg
-@printindex pg
-
-ky
-@printindex ky
-
-truc
-@printindex truc
 
 value truc
 @printindex @value{truc}
 
-cp
-@printindex cp
-
 value cp
 @printindex @value{cp}
-
-defg
-@printindex defg
-
-abc
-@printindex abc
-
-fn
-@printindex fn
 '],
 ['value_in_misc_commands',
 '@set text atext
