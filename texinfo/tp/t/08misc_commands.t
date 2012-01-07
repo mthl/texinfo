@@ -91,13 +91,6 @@ Text line after the text line followed by the sp.
 
 A @click{} (result).
 '],
-['setfilename',
-'@setfilename file_comment@c comment
-@setfilename file_and_spaces   
-@setfilename file_space_comment @c comment
-@setfilename @ @verb{: name :}@ 
-
-', {'test_formats' => ['xml']}],
 ['bye',
 '@bye
 '],
@@ -231,6 +224,13 @@ Nested Other line
 );
 
 my @converted_test_cases = (
+['setfilename',
+'@setfilename file_comment@c comment
+@setfilename file_and_spaces   
+@setfilename file_space_comment @c comment
+@setfilename @ @verb{: name :}@ 
+
+'],
 ['definfoenclose',
 '
 definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
@@ -443,6 +443,7 @@ In text @thispage @thischapternum text.
 
 my %info_tests = (
   'comment_space_command_on_line' => 1,
+  'setfilename' => 1,
 );
 
 my %xml_tests = (

@@ -23,6 +23,44 @@ $result_trees{'include_with_setfilename'} = {
       ],
       'parent' => {},
       'type' => 'paragraph'
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'main_file.info'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'setfilename',
+      'extra' => {
+        'text_arg' => 'main_file.info'
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'
@@ -30,9 +68,16 @@ $result_trees{'include_with_setfilename'} = {
 $result_trees{'include_with_setfilename'}{'contents'}[0]{'parent'} = $result_trees{'include_with_setfilename'};
 $result_trees{'include_with_setfilename'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[1];
 $result_trees{'include_with_setfilename'}{'contents'}[1]{'parent'} = $result_trees{'include_with_setfilename'};
+$result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'include_with_setfilename'}{'contents'}[2];
+$result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0];
+$result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0];
+$result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0];
+$result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2];
+$result_trees{'include_with_setfilename'}{'contents'}[2]{'parent'} = $result_trees{'include_with_setfilename'};
 
 $result_texis{'include_with_setfilename'} = '
 In included file.
+@setfilename main_file.info
 ';
 
 
@@ -41,6 +86,27 @@ In included file.
 ';
 
 $result_errors{'include_with_setfilename'} = [];
+
+
+
+$result_converted{'info'}->{'include_with_setfilename'} = 'This is main_file.info, produced by tp version from .
+
+In included file.
+
+
+Tag Table:
+
+End Tag Table
+';
+
+$result_converted_errors{'info'}->{'include_with_setfilename'} = [
+  {
+    'error_line' => 'warning: Document without nodes.
+',
+    'text' => 'Document without nodes.',
+    'type' => 'warning'
+  }
+];
 
 
 1;

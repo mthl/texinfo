@@ -98,6 +98,8 @@ or value expansion.  Maybe call the key for these elements
 'sourcemark'?
 
 In a similar way, keep the information about aliases in the tree?
+And about @setfilename in included files which is for now completly
+removed (consistently with documentation).
 
 Right now VERBOSE is almost not used.
 

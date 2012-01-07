@@ -73,6 +73,7 @@ macro_included.texi
 macro_in_pass_texi_commands@{info@}
 @end-file-name{info}
 '],
+# the difference with the previous is that there are @-commands, like @@
 ['macro_and_commands_in_early_commands',
 '@macro begin-file
 macro_i--n_pass@@
@@ -124,8 +125,11 @@ macro_included.texi
 
 After.'],
 ['include_with_setfilename',
+# for now the plaintext expansion do not test anything as the setfilename in
+# included files is removed from the tree.  But this may change in the future.
 '@include included_file_with_setfilename.texi 
-'],
+@setfilename main_file.info
+', {'test_formats' => ['info']}],
 ['include_setfilename_on_setfilename_line',
 '@setfilename file @setfilename other file @include are you joking!
 '],

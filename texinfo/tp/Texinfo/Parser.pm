@@ -948,7 +948,10 @@ sub _register_global_command($$$$)
     push @{$self->{'extra'}->{$command}}, $current;
     return 1;
   } elsif ($global_unique_commands{$command}) {
-    if (exists ($self->{'extra'}->{$current->{'cmdname'}})) {
+    # setfilename ignored in an included file
+    if ($command eq 'setfilename'
+        and scalar(@{$self->{'input'}}) > 1) {
+    } elsif (exists ($self->{'extra'}->{$current->{'cmdname'}})) {
       $self->line_warn (sprintf($self->__('Multiple @%s'), 
         $current->{'cmdname'}), $line_nr); 
     } else {
@@ -2993,6 +2996,7 @@ sub _end_line($$$)
     # Also ignore @setfilename in included file, as said in the manual.
     if ($included_file or ($command eq 'setfilename'
                            and scalar(@{$self->{'input'}}) > 1)) {
+      # keep the information with sourcemark
       pop @{$current->{'contents'}};
     # columnfractions 
     } elsif ($command eq 'setfilename'

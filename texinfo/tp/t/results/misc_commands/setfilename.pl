@@ -286,6 +286,33 @@ $result_errors{'setfilename'} = [
 
 
 
+$result_converted{'plaintext'}->{'setfilename'} = '';
+
+
+$result_converted{'html_text'}->{'setfilename'} = '
+';
+
+
+$result_converted{'info'}->{'setfilename'} = 'This is file_comment, produced by tp version from .
+
+
+
+Tag Table:
+
+End Tag Table
+';
+
+$result_converted_errors{'info'}->{'setfilename'} = [
+  {
+    'error_line' => 'warning: Document without nodes.
+',
+    'text' => 'Document without nodes.',
+    'type' => 'warning'
+  }
+];
+
+
+
 $result_converted{'xml'}->{'setfilename'} = '<setfilename file="file_comment">file_comment</setfilename><!-- comment -->
 <setfilename file="file_and_spaces">file_and_spaces   </setfilename>
 <setfilename file="file_space_comment">file_space_comment </setfilename><!-- comment -->
