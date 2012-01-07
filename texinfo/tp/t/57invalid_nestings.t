@@ -392,12 +392,6 @@ in flushright
 example
 @end example
 }'],
-['verbatim_in_style_command',
-'@code{
-@verbatim
-verbatim
-@end verbatim
-}'],
 ['float_in_style_command',
 '@code{
 @float A, B
