@@ -529,4 +529,42 @@ Node: Top41
 End Tag Table
 ';
 
+
+$result_converted{'html_text'}->{'syncode_index_print_both'} = '
+<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<a name="index-c_002d_002d_002doncept"></a>
+<a name="index-f_002d_002d_002dun"></a>
+
+
+<p>Print fn
+</p>
+
+<p>Print vr
+</p>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#t_h_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-c_002d_002d_002doncept">c&mdash;oncept</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_cp_letter-F">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-f_002d_002d_002dun"><code>f---un</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#t_h_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<hr>
+';
+
 1;

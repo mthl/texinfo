@@ -292,4 +292,27 @@ $result_converted_errors{'info'}->{'index_entry_before_first_node'} = [
 ];
 
 
+
+$result_converted{'html_text'}->{'index_entry_before_first_node'} = '
+<a name="index-before-nodes"></a>
+
+<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_cp_letter-B">B</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-before-nodes">before nodes</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+</td></tr></table>
+<hr>
+';
+
 1;

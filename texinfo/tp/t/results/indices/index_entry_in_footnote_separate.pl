@@ -763,4 +763,50 @@ Node: First227
 End Tag Table
 ';
 
+
+$result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<a name="Top"></a>
+<div class="header">
+<p>
+ &nbsp; [<a href="#First" title="Index" rel="index">Index</a>]</p>
+</div>
+<h1 class="node-heading">Top</h1>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#First" accesskey="1">First</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<p>Top node<a name="DOCF1" href="#FOOT1">(1)</a>
+</p>
+<hr>
+<a name="First"></a>
+<div class="header">
+<p>
+ &nbsp; [<a href="#First" title="Index" rel="index">Index</a>]</p>
+</div>
+<h4 class="node-heading">First</h4>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-counting-entry">counting entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-index-entry-in-footnote">index entry in footnote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+</td></tr></table>
+<hr>
+';
+
 1;

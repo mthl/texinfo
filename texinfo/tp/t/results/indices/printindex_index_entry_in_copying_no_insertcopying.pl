@@ -1442,4 +1442,64 @@ Node: chapter232
 End Tag Table
 ';
 
+
+$result_converted{'html_text'}->{'printindex_index_entry_in_copying_no_insertcopying'} = '
+<a name="Top"></a>
+<div class="header">
+<p>
+ &nbsp; </p>
+</div>
+<a name="top"></a>
+<h1 class="top">top</h1>
+
+<p>Top.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="chapter"></a>
+<div class="header">
+<p>
+ &nbsp; </p>
+</div>
+<a name="Chapter"></a>
+<h2 class="chapter">1 Chapter</h2>
+
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#t_h_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#t_h_fn_letter-X"><b>X</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_fn_letter-C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-Copying-this-document"><code>Copying this document</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_fn_letter-F">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-ftable-item"><code>ftable item</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-fun"><code>fun</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_fn_letter-X">X</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-xf"><code>xf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-xftable-xitem"><code>xftable xitem</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#t_h_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#t_h_fn_letter-X"><b>X</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<hr>
+';
+
 1;

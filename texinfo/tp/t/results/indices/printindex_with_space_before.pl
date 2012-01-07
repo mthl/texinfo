@@ -278,4 +278,27 @@ Node: Top41
 End Tag Table
 ';
 
+
+$result_converted{'html_text'}->{'printindex_with_space_before'} = '<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<a name="index-index"></a>
+
+<p>Text.
+</p><table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-index">index</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+</td></tr></table>
+<hr>
+';
+
 1;

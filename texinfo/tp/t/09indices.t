@@ -304,10 +304,23 @@ Top.
 @insertcopying
 
 '],
+['double_syncodeindex',
+'@syncodeindex cp fn
+@syncodeindex cp fn
+
+@node Top
+
+@cindex cindex entry
+@findex findex entry
+
+@printindex fn
+@printindex cp
+']
 );
 
 foreach my $test (@test_formatted) {
-  $test->[2]->{'test_formats'} = ['info'];
+  push @{$test->[2]->{'test_formats'}}, 'info';
+  push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

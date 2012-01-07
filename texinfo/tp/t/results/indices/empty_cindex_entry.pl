@@ -169,4 +169,10 @@ Node: Top41
 End Tag Table
 ';
 
+
+$result_converted{'html_text'}->{'empty_cindex_entry'} = '<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+<hr>
+';
+
 1;

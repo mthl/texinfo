@@ -809,4 +809,55 @@ Node: second188
 End Tag Table
 ';
 
+
+$result_converted{'html_text'}->{'index_entry_before_node'} = '<a name="Top"></a>
+<div class="header">
+<p>
+ &nbsp; [<a href="#second" title="Index" rel="index">Index</a>]</p>
+</div>
+<h1 class="node-heading">Top</h1>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#second" accesskey="2">second</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="first"></a>
+<div class="header">
+<p>
+ &nbsp; [<a href="#second" title="Index" rel="index">Index</a>]</p>
+</div>
+<h4 class="node-heading">first</h4>
+
+<p>Para.
+</p>
+<a name="index-lone-entry"></a>
+
+<hr>
+<a name="second"></a>
+<div class="header">
+<p>
+ &nbsp; [<a href="#second" title="Index" rel="index">Index</a>]</p>
+</div>
+<h4 class="node-heading">second</h4>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_cp_letter-L">L</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lone-entry">lone entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#first">first</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+</td></tr></table>
+<hr>
+';
+
 1;

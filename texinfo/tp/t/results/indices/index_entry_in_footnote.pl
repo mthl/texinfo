@@ -322,4 +322,35 @@ Ref: Top-Footnote-1219
 End Tag Table
 ';
 
+
+$result_converted{'html_text'}->{'index_entry_in_footnote'} = '<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<p>Top node<a name="DOCF1" href="#FOOT1">(1)</a>
+</p>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-index-entry-in-footnote">index entry in footnote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+</td></tr></table>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>in footnote
+<a name="index-index-entry-in-footnote"></a>
+</p>
+</div>
+<hr>
+';
+
 1;

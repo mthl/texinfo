@@ -981,4 +981,64 @@ $result_converted_errors{'info'}->{'empty_string_index_entry'} = [
 ];
 
 
+
+$result_converted{'html_text'}->{'empty_string_index_entry'} = '<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<a name="index-"></a>
+
+<dl compact="compact">
+<dt><code><!-- /@w --></code>
+<a name="index--1"></a>
+</dt>
+</dl>
+
+<dl>
+<dt><a name="index--2"></a>Function: <strong><!-- /@w --></strong> <em> </em></dt>
+<dt><a name="index--3"></a>Function: <strong><!-- /@w --></strong> <em> </em></dt>
+</dl>
+
+<hr>
+';
+
+$result_converted_errors{'html_text'}->{'empty_string_index_entry'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':3: warning: Empty index key in @findex
+',
+    'text' => 'Empty index key in @findex',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 3
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':6: warning: Empty index key in @item
+',
+    'text' => 'Empty index key in @item',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 6
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':9: warning: Empty index key in @defun
+',
+    'text' => 'Empty index key in @defun',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 9
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':10: warning: Empty index key in @defunx
+',
+    'text' => 'Empty index key in @defunx',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 10
+  }
+];
+
+
 1;
