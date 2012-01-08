@@ -248,7 +248,8 @@ Maybe:
 defcondx_Ubar defcondx_Dbar
 space_in_setfilename
 
-output files split (node or not split) could be interesting for
+output files split (node or not split) could be interesting +texi2html 
+style for
 sectioning/
  more_nodes_than_sections
  more_sections_than_nodes
@@ -264,7 +265,12 @@ sectioning/
  nodes_before_top?
  no_element
  top_node_no_menu_direction? (with USE_NODES and without?)
- 
+ anchor_in_footnote
+ anchor_in_footnote_separate
+ placed_things_before_node    (with USE_NODES and without?)
+ placed_things_before_element (with USE_NODES and without?)
+ top_no_argument_and_node
+ top_no_argument_and_top_node
 
 
 sectioning/

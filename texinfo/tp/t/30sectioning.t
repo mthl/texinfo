@@ -201,6 +201,23 @@ Menu:
 @subsection numbered subsection2 4
 ';
 
+my $anchor_in_footnote_text = '@node Top
+@top Top
+
+In top node@footnote{in footnote
+@anchor{Anchor in footnote}.
+}
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chap
+
+@ref{Anchor in footnote}.
+';
+
 my @tests_converted = (
 ['setcontentsaftertitlepage',
 '@setcontentsaftertitlepage
@@ -383,6 +400,14 @@ my @tests_info = (
 @anchor{0}.
 
 @xref{0}.
+'],
+['top_no_argument_and_node',
+'@node start
+@top
+'],
+['top_no_argument_and_top_node',
+'@node Top
+@top
 '],
 ['character_and_spaces_in_refs',
 '@node Top
@@ -641,6 +666,14 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @xref{node}.
 '],
+['anchor_in_footnote',
+$anchor_in_footnote_text
+],
+['anchor_in_footnote_separate',
+'@footnotestyle separate
+'.
+$anchor_in_footnote_text
+],
 ['no_element',
 '@settitle no_element test
 @documentencoding ISO-8859-1
@@ -713,6 +746,59 @@ Ref to anchor
 Ref to footnote anchor
 @ref{Anchor in footnote}
 '],
+['placed_things_before_node',
+'@anchor{An anchor}
+
+Ref to the anchor:
+@ref{An anchor}
+
+Ref to the anchor in footnote:
+@ref{Anchor in footnote}.
+
+@footnote{In footnote.
+
+@anchor{Anchor in footnote}
+
+Ref to main text anchor
+@ref{An anchor}
+}
+
+@float , float anchor
+In float
+@end float
+
+Ref to float
+@ref{float anchor}.
+
+@menu
+* An anchor::                menu entry pointing to the anchor.
+@end menu
+
+@cindex index entry
+
+@node Top
+@top top section
+
+Ref to anchor
+@ref{An anchor}
+
+Ref to footnote anchor
+@ref{Anchor in footnote}
+'],
+['explicit_node_directions',
+'@node Top
+Top node
+@menu
+* second node::
+* third node::
+@end menu
+
+@node second node, third node,Top,Top
+
+second node
+
+@node third node,,second node,Top
+', {'test_split' => 'node'}],
 ['top_node_no_menu_direction',
 '@node Top
 
@@ -915,6 +1001,23 @@ After a node after part
 @part Part Appendix
 
 @appendix Appendix
+', {'test_split' => 'section'}],
+['unnumbered_before_top_node',
+'@unnumbered before nodes
+
+@node Top
+Top node
+
+@titlefont{Title titlefont}
+', {'test_split' => 'section'}],
+['unnumbered_before_node_top_top',
+'@unnumbered before nodes
+
+in unnumbered
+
+@node Top
+@top top section
+Top node
 ', {'test_split' => 'section'}],
 ['section_before_top',
 '@node section node,,,Top
@@ -1647,7 +1750,8 @@ my @xml_tests_info_tests = ('part_chapter_after_top',
   'section_node_before_part', 'chapter_node_before_and_after_part',
   'more_nodes_than_sections', 'part_node_chapter_appendix',
   'part_node_part_appendix', 'part_node_chapter_node_appendix',
-  'part_node_part_node_appendix', 'part_node_node_part_appendix');
+  'part_node_part_node_appendix', 'part_node_node_part_appendix',
+  'explicit_node_directions');
 
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';
