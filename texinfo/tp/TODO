@@ -260,6 +260,12 @@ sectioning/
  at_commands_in_refs  
  character_and_spaces_in_refs <- split/mono (chapter/node+node-files+USE_NODES/docbook?)
  rec_nodes (with USE_NODES and without)
+ loop_nodes?
+ nodes_before_top?
+ no_element
+ top_node_no_menu_direction? (with USE_NODES and without?)
+ 
+
 
 sectioning/
 node_footnote_end
@@ -332,25 +338,26 @@ sectioning/nodes_test.texi   (done: unknown entry in menu and * (info)::
 sectioning/rec_nodes.texi
 sectioning/semi_auto.texi
 sectioning/novalidate.texi    (errors that aren't flagged by novalidate
-                               done. Not sure the remaining is interesting)
-sectioning/test_two_include.texi (not done at all, but it tests 
+                               done. The remaining is not interesting)
+sectioning/test_two_include.texi (includes and paths already tested 
+          elsewhere, here command line is tested
           -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros)
-sectioning/node-whitespace.tex   (but not @ref)
+sectioning/node-whitespace.tex
 sectioning/loop_nodes.texi
 sectioning/sectioning.texi
 sectioning/text_before_line_command.texi
 sectioning/empty_nodes.texi
-sectioning/node_footnote.texi   (not interesting for Parser or Info, but 
-                                 maybe for html)
+sectioning/node_footnote.texi   (interesting for html output)
 sectioning/nodes_before_top.texi
 sectioning/no_element.texi
-sectioning/no_section.texi      (no test for the whole, but it is not interesting
-                                 for Structuring and Info)
+sectioning/no_section.texi      (no test for the whole, but not interesting)
 sectioning/only_documentencoding.texi
 sectioning/part_before_section.texi
 sectioning/part_node_before_top.texi
 sectioning/part_node_chapter_after_top.texi
+sectioning/part_node_after_top.texi
 sectioning/node_part_chapter_after_chapter.texi
+sectioning/node_part_chapter_after_top.texi
 sectioning/section_before_chapter.texi
 sectioning/section_before_part.texi
 sectioning/section_before_top.texi

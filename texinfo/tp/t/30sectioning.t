@@ -283,6 +283,11 @@ A.
 
 @top top
 ',{'test_split' => 'section'}],
+['part_before_chapter',
+'@part part
+
+@chapter chapter
+',{'test_split' => 'section'}],
 ['double_part',
 '@node Top
 @top top
@@ -824,6 +829,93 @@ After a node after part
 
 @contents
 ',{'test_formats' => ['plaintext'], 'test_split' => 'section'} ],
+['part_node_chapter_appendix',
+'@node Top
+@top top
+
+@menu
+* chapter node::
+@end menu
+
+@part Part 1
+
+@node chapter node
+@chapter chapter
+
+@appendix Appendix
+', {'test_split' => 'section'}],
+['part_node_part_appendix',
+'@node Top
+@top top
+
+@menu
+* chapter node::
+@end menu
+
+@part Part 1
+
+@node chapter node
+@chapter chapter
+
+@part Part Appendix
+
+@appendix Appendix
+', {'test_split' => 'section'}],
+['part_node_chapter_node_appendix',
+'@node Top
+@top top
+
+@menu
+* chapter node::
+* appendix node::
+@end menu
+
+@part Part 1
+
+@node chapter node
+@chapter chapter
+
+@node appendix node
+@appendix Appendix
+', {'test_split' => 'section'}],
+['part_node_part_node_appendix',
+'@node Top
+@top top
+
+@menu
+* chapter node::
+* appendix node::
+@end menu
+
+@part Part 1
+
+@node chapter node
+@chapter chapter
+
+@part Part Appendix
+
+@node appendix node
+@appendix Appendix
+', {'test_split' => 'section'}],
+['part_node_node_part_appendix',
+'@node Top
+@top top
+
+@menu
+* chapter node::
+* appendix part::
+@end menu
+
+@part Part 1
+
+@node chapter node
+@chapter chapter
+
+@node appendix part
+@part Part Appendix
+
+@appendix Appendix
+', {'test_split' => 'section'}],
 ['section_before_top',
 '@node section node,,,Top
 @section section 
@@ -1481,11 +1573,11 @@ Second top.
 @node second node
 @chapter a chapter
 '],
-['part_before_section', # FIXME do HTML
+['part_before_section',
 '@part part
 
 @section section 
-', {'test_split' => 'section'}
+', {'test_split' => 'section', 'test_formats' => ['html_text']}
 ],
 ['section_before_chapter',
 '@section section 
@@ -1510,6 +1602,14 @@ Second top.
 @chapter chapter
 
 @top top
+'],
+['part_chapter_appendix',
+'
+@part Part 1
+
+@chapter chapter
+
+@appendix Appendix
 '],
 ['sectioning_part_appendix',
 $test_text
@@ -1545,7 +1645,9 @@ my @xml_tests_info_tests = ('part_chapter_after_top',
   'part_node_chapter_after_top', 'node_part_chapter_after_top',
   'node_part_chapter_after_chapter', 'section_before_top', 
   'section_node_before_part', 'chapter_node_before_and_after_part',
-  'more_nodes_than_sections');
+  'more_nodes_than_sections', 'part_node_chapter_appendix',
+  'part_node_part_appendix', 'part_node_chapter_node_appendix',
+  'part_node_part_node_appendix', 'part_node_node_part_appendix');
 
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';
@@ -1557,7 +1659,8 @@ foreach my $test (@tests_info) {
 my @xml_tests_cases_tests = ('part_before_section', 
 'section_before_chapter',
 'top_part_chapter', 'section_before_top_no_node', 
-'section_chapter_before_top', 'sectioning_part_appendix');
+'section_chapter_before_top', 'sectioning_part_appendix',
+'part_chapter_appendix');
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'xml' 
     if (grep {$_ eq $test->[0]} @xml_tests_cases_tests);

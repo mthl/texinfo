@@ -222,6 +222,16 @@ $result_directions_text{'part_before_section'} = 'element: @section section
 ';
 
 
+$result_converted{'html_text'}->{'part_before_section'} = '<a name="part"></a>
+<h1 class="part">part</h1>
+<hr>
+
+<a name="section"></a>
+<h2 class="chapter">1 section</h2>
+<hr>
+';
+
+
 $result_converted{'xml'}->{'part_before_section'} = '<part><sectiontitle>part</sectiontitle>
 
 <chapter originalcommand="section"><sectiontitle>section </sectiontitle>
