@@ -218,6 +218,38 @@ In top node@footnote{in footnote
 @ref{Anchor in footnote}.
 ';
 
+my $nodes_after_top_before_chapter_text =
+'@node Top
+Top node
+@menu
+* second node::
+* third node::
+@end menu
+
+@node second node, third node,Top,Top
+
+second node
+
+@node third node,,second node,Top
+@chapter chapter
+';
+
+my $nodes_after_top_before_section_text =
+'@node Top
+Top node
+@menu
+* second node::
+* third node::
+@end menu
+
+@node second node, third node,Top,Top
+
+second node
+
+@node third node,,second node,Top
+@subsection subsection
+';
+
 my @tests_converted = (
 ['setcontentsaftertitlepage',
 '@setcontentsaftertitlepage
@@ -799,6 +831,18 @@ second node
 
 @node third node,,second node,Top
 ', {'test_split' => 'node'}],
+['nodes_after_top_before_chapter_nodes',
+$nodes_after_top_before_chapter_text,
+{'test_split' => 'node'}],
+['nodes_after_top_before_chapter_sections',
+$nodes_after_top_before_chapter_text,
+{'test_split' => 'section'}],
+['nodes_after_top_before_section_nodes',
+$nodes_after_top_before_section_text,
+{'test_split' => 'node'}],
+['nodes_after_top_before_section_sections',
+$nodes_after_top_before_section_text,
+{'test_split' => 'section'}],
 ['top_node_no_menu_direction',
 '@node Top
 
@@ -809,7 +853,7 @@ second node
 
 @node second node,,top,TOP
 '],
-['more_nodes_than_sections',
+['chapter_between_nodes',
 '
 @node Top
 @top top section
@@ -1715,8 +1759,8 @@ Second top.
 @appendix Appendix
 '],
 ['sectioning_part_appendix',
-$test_text
-],
+$test_text,
+{'test_split' => 'section'}],
 ['contents_in_html_text',
 '@top top
 
@@ -1751,7 +1795,7 @@ my @xml_tests_info_tests = ('part_chapter_after_top',
   'more_nodes_than_sections', 'part_node_chapter_appendix',
   'part_node_part_appendix', 'part_node_chapter_node_appendix',
   'part_node_part_node_appendix', 'part_node_node_part_appendix',
-  'explicit_node_directions');
+  'explicit_node_directions', 'nodes_after_top_before_chapter_nodes');
 
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';

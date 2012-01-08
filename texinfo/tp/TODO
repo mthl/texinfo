@@ -251,7 +251,7 @@ space_in_setfilename
 output files split (node or not split) could be interesting +texi2html 
 style for
 sectioning/
- more_nodes_than_sections
+ chapter_between_nodes (more_nodes_than_sections renamed)
  more_sections_than_nodes
  two_nodes_between_chapters
  two_nodes_at_the_end
@@ -271,6 +271,10 @@ sectioning/
  placed_things_before_element (with USE_NODES and without?)
  top_no_argument_and_node
  top_no_argument_and_top_node
+ nodes_after_top_before_chapter_(nodes/sections) (with USE_NODES and --split chapter)
+ nodes_after_top_before_section_(nodes/sections) (with USE_NODES and --split chapter and only --split chapter)
+ sectioning_part_appendix   (--split chapter)
+
 
 
 sectioning/
