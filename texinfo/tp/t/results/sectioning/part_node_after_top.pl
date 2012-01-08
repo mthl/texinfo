@@ -749,4 +749,18 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 </html>
 ';
 
+
+$result_converted{'xml'}->{'part_node_after_top'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">part node after top</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top><sectiontitle>top</sectiontitle>
+
+<menu>
+<menuentry><menunode>part node after top</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+<node name="part-node-after-top"><nodename>part node after top</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+</top>
+<part><sectiontitle>part</sectiontitle>
+</part>
+';
+
 1;

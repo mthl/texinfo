@@ -274,13 +274,15 @@ sectioning/
  nodes_after_top_before_chapter_(nodes/sections) (with USE_NODES and --split chapter)
  nodes_after_top_before_section_(nodes/sections) (with USE_NODES and --split chapter and only --split chapter)
  sectioning_part_appendix   (--split chapter)
-
-
+ nodes_no_node_top_explicit_directions (with USE_NODES and without)
+ one_node_explicit_directions_anchor (with USE_NODES and without) Really useful?
+ top_without_node_sections
 
 sectioning/
 node_footnote_end
 --> following changed when element_next for special elements became
-set.  Nothing tests that in the test suite.
+set.  Nothing tests that in the test suite, notably because nothing tests
+the texi2html output.
   node_footnote_use_node
   no_node_chapter_split
   nodes_after_top_before_section_use_nodes_chapter

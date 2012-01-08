@@ -2,10 +2,8 @@ use strict;
 
 require 't/test_utils.pl';
 
-my $test_text = 
-'@top top
-
-@chapter chapter
+my $sections_no_top_text =
+'@chapter chapter
 
 @section section
 
@@ -24,6 +22,59 @@ my $test_text =
 @appendix appendix
 
 @appendixsec appendixsec
+';
+
+my $test_text =
+'@top top
+
+'.$sections_no_top_text;
+
+my $chapter_sections_text = 
+'@unnumbered unnumbered
+
+@chapter First chapter
+
+@section second
+
+@chapter Chapter
+
+@section Section of chapter
+
+@subsection subsection 1
+
+@subsection subsection 2
+
+@chapter Chapter 2
+';
+
+my $top_chapter_sections_text = 
+'@top top
+
+'.$chapter_sections_text;
+
+my $unnumbered_top_without_node_text = 
+'@node a node,,,(dir)
+@unnumbered unnumbered
+
+in unnumbered
+
+@top top section
+Top section
+
+@node second,,,(dir)
+@chapter Chapter
+
+Text of chapter
+';
+
+my $top_without_node_text =
+'@top top section
+Top section
+
+@node second,,,(dir)
+@chapter Chapter
+
+Text of chapter
 ';
 
 my $section_in_unnumbered_text = '
@@ -282,6 +333,9 @@ $test_text.
 
 @contents
 '],
+['one_subsection',
+'@subsection The subsection
+'],
 ['section_below_unnumbered',
 '
 @contents
@@ -440,6 +494,10 @@ my @tests_info = (
 ['top_no_argument_and_top_node',
 '@node Top
 @top
+'],
+['one_subsection_and_node',
+'@node one node
+@subsection The subsection
 '],
 ['character_and_spaces_in_refs',
 '@node Top
@@ -853,6 +911,25 @@ $nodes_after_top_before_section_text,
 
 @node second node,,top,TOP
 '],
+['nodes_no_node_top_explicit_directions',
+'@node first,,,(dir)
+first node
+
+@menu
+* second node::
+@end menu
+
+@node second node,,first,first
+second node
+',{'test_split' => 'node'}],
+['one_node_explicit_directions_anchor',
+'@node one node,,,(dir)
+Top node
+
+anchor ref @anchor{ref}.
+
+ref to ref @ref{ref}.
+'],
 ['chapter_between_nodes',
 '
 @node Top
@@ -1119,6 +1196,18 @@ Top node
 ['section_in_unnumbered_info',
 $section_in_unnumbered_text
 ],
+['top_without_node_sections',
+$top_without_node_text,
+{'test_split' => 'section'}],
+['top_without_node_nodes',
+$top_without_node_text,
+{'test_split' => 'node'}],
+['unnumbered_top_without_node_sections',
+$unnumbered_top_without_node_text,
+{'test_split' => 'section'}],
+['unnumbered_top_without_node_nodes',
+$unnumbered_top_without_node_text,
+{'test_split' => 'node'}],
 ['space_in_node',
 '
 @node Top
@@ -1761,6 +1850,15 @@ Second top.
 ['sectioning_part_appendix',
 $test_text,
 {'test_split' => 'section'}],
+['sectioning_part_appendix_no_top',
+$sections_no_top_text,
+{'test_split' => 'section'}],
+['chapter_sections',
+$chapter_sections_text,
+{'test_split' => 'section'}],
+['top_chapter_sections',
+$top_chapter_sections_text,
+{'test_split' => 'section'}],
 ['contents_in_html_text',
 '@top top
 
@@ -1789,6 +1887,8 @@ foreach my $test (@tests_converted) {
 }
 
 my @xml_tests_info_tests = ('part_chapter_after_top', 
+  'part_node_after_top', 'part_node_before_top',
+  'chapter_between_nodes', 'nodes_no_node_top_explicit_directions',
   'part_node_chapter_after_top', 'node_part_chapter_after_top',
   'node_part_chapter_after_chapter', 'section_before_top', 
   'section_node_before_part', 'chapter_node_before_and_after_part',
@@ -1808,7 +1908,8 @@ my @xml_tests_cases_tests = ('part_before_section',
 'section_before_chapter',
 'top_part_chapter', 'section_before_top_no_node', 
 'section_chapter_before_top', 'sectioning_part_appendix',
-'part_chapter_appendix');
+'part_chapter_appendix', 'sectioning_part_appendix_no_top',
+'top_chapter_sections', 'chapter_sections');
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'xml' 
     if (grep {$_ eq $test->[0]} @xml_tests_cases_tests);

@@ -855,4 +855,29 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 </html>
 ';
 
+
+$result_converted{'xml'}->{'chapter_between_nodes'} = '
+<node name="Top"><nodename>Top</nodename><nodenext automatic="on">section node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top><sectiontitle>top section</sectiontitle>
+<para>Top node
+</para>
+<menu>
+<menuentry><menunode>section node</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+</top>
+<chapter><sectiontitle>Chapter</sectiontitle>
+
+<para>In chapter
+</para>
+<node name="section-node"><nodename>section node</nodename><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
+<section><sectiontitle>section</sectiontitle>
+
+<para>section.
+</para>
+<contents></contents>
+</section>
+</chapter>
+';
+
 1;

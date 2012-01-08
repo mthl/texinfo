@@ -302,6 +302,18 @@ in cartouche in menu comment in menu in example
 @end menu
 @end example
 '],
+['menu_pointing_to_anchor',
+'@node Top
+@top top
+
+Text
+
+@anchor{An anchor}
+
+@menu
+* An anchor::                menu entry pointing to the anchor.
+@end menu
+']
 );
 
 my @test_invalid = (
