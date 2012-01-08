@@ -6628,7 +6628,9 @@ sub output($$)
 
   # associate the special elements that have no page to the main page.
   # This may only happen if not split.
-  if ($special_elements) {
+  if ($special_elements 
+      and $elements and $elements->[0] 
+      and defined($elements->[0]->{'filename'})) {
     foreach my $special_element (@$special_elements) {
       if (!defined($special_element->{'filename'})) {
         $special_element->{'filename'} = $elements->[0]->{'filename'};
