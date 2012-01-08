@@ -2,6 +2,35 @@ use strict;
 
 require 't/test_utils.pl';
 
+my $two_footnotes_in_nodes_text = 
+'@node Top
+@top 2 footnotes in 2 nodes
+
+A@footnote{Footnote Top/1
+
+para2}
+
+B@footnote{Footnote Top/2
+
+para2}
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter chapter
+
+C@footnote{Footnote chapter/1
+
+para2}
+
+D@footnote{Footnote chapter/2
+
+para2}
+
+';
+
 my @test_cases = (
 ['simple', '@b{in  b}.'],
 ['empty_second_email_argument', '@email{ a@@b.c, }'],
@@ -158,7 +187,6 @@ Insertcopying
 @listoffloats Image
 
 ', {'test_formats' => ['html']} ],
-# {'test_formats' => ['info']}],
 ['format_on_first_footnote_line',
 'Texte@footnote{@quotation
 in quotation on the first footnote line
@@ -192,6 +220,14 @@ in format
 @code{in format in kbd}.
 @end format
 '],
+['two_footnotes_in_nodes',
+$two_footnotes_in_nodes_text,
+, {'test_formats' => ['html', 'info']} ],
+# FIXME no footnotes text in HTML...
+['two_footnotes_in_nodes_separate',
+'@footnotestyle separate
+'.$two_footnotes_in_nodes_text,
+, {'test_formats' => ['html', 'info']} ],
 );
 
 my @test_invalid = (

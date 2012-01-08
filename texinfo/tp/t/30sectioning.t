@@ -1872,6 +1872,48 @@ $top_chapter_sections_text,
 @contents
 ', {'test_formats' => ['html_text']}
 ],
+['more_sections_than_nodes',
+'@node Top
+@top top
+
+@menu
+* n c2::
+* n c3::
+* n c3 s1 s2::
+@end menu
+
+@chapter c1
+
+@node n c2
+@chapter c2
+
+@section s1
+
+@node n c3, n c3 s1 s2, n c2, Top
+@chapter c3
+
+@menu 
+* n c3 s 2::
+@end menu
+
+@section C3 s1
+
+@node n c3 s 2
+@section c3 s2
+
+@section c3 s3
+
+@chapter c4
+
+@section c3 s1
+
+@subsection c3 s1 s1
+
+@node n c3 s1 s2,,n c3,Top
+@subsection c3 s1 s2
+
+@appendix appendix
+'],
 );
 
 my @xml_tests_converted_tests = ('section_before_part', 'chapter_before_part', 
@@ -1909,7 +1951,8 @@ my @xml_tests_cases_tests = ('part_before_section',
 'top_part_chapter', 'section_before_top_no_node', 
 'section_chapter_before_top', 'sectioning_part_appendix',
 'part_chapter_appendix', 'sectioning_part_appendix_no_top',
-'top_chapter_sections', 'chapter_sections');
+'top_chapter_sections', 'chapter_sections',
+'more_sections_than_nodes');
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'xml' 
     if (grep {$_ eq $test->[0]} @xml_tests_cases_tests);
