@@ -39,7 +39,7 @@ Ceci est notre premi@`ere entr@\'ee.
 
 @listoffloats entr@\'ee
 '],
-['footnote_in_caption', # FIXME HTML
+['footnote_in_caption',
 '@node Top
 
 @listoffloats fl
@@ -49,7 +49,7 @@ In float.
 @caption{in caption@footnote{in footnote}}
 @end float
 '],
-['anchor_in_caption', # FIXME HTML
+['anchor_in_caption',
 '@node Top
 
 @listoffloats fl
@@ -59,7 +59,7 @@ In float.
 @caption{in caption@anchor{in anchor}}
 @end float
 '],
-['cindex_in_caption', # FIXME HTML
+['cindex_in_caption',
 '@node Top
 
 @listoffloats fl

@@ -63,6 +63,27 @@ End.
 in html
 @end html
 @end example
+
+@example
+
+@html
+
+Some html <code>some code</code>.
+
+@end html
+
+@tex
+
+$$ 
+\chi^2 = \sum_{i=1}^N
+\left(y_i - (a + b x_i)
+\over \sigma_i\right)^2 
+$$
+
+@end tex
+
+@end example
+
 '],
 ['braces_in_tex',
 '
@@ -325,6 +346,7 @@ my %html_tests = (
   'raw_in_style' => 1,
   'raw_expanded_in_style' => 1,
   'verbatim_in_style' => 1,
+  'raw_in_example' => 1,
 );
 
 foreach my $test (@test_cases) {

@@ -37,6 +37,12 @@ $result_trees{'flushright_example_nested'} = {
                   'parent' => {},
                   'text' => 'in   --- flushright
 '
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'empty_line'
                 }
               ],
               'parent' => {},
@@ -77,7 +83,7 @@ $result_trees{'flushright_example_nested'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 4,
+                'line_nr' => 5,
                 'macro' => ''
               },
               'parent' => {}
@@ -128,7 +134,7 @@ $result_trees{'flushright_example_nested'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 5,
+            'line_nr' => 6,
             'macro' => ''
           },
           'parent' => {}
@@ -180,6 +186,17 @@ $result_trees{'flushright_example_nested'} = {
                   'parent' => {},
                   'text' => 'in   --- example
 '
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'empty_line'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'flush then example
+'
                 }
               ],
               'parent' => {},
@@ -220,7 +237,7 @@ $result_trees{'flushright_example_nested'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 10,
+                'line_nr' => 13,
                 'macro' => ''
               },
               'parent' => {}
@@ -231,7 +248,7 @@ $result_trees{'flushright_example_nested'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 8,
+            'line_nr' => 9,
             'macro' => ''
           },
           'parent' => {}
@@ -271,7 +288,7 @@ $result_trees{'flushright_example_nested'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 11,
+            'line_nr' => 14,
             'macro' => ''
           },
           'parent' => {}
@@ -282,7 +299,7 @@ $result_trees{'flushright_example_nested'} = {
       },
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 7,
+        'line_nr' => 8,
         'macro' => ''
       },
       'parent' => {}
@@ -295,6 +312,7 @@ $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[0]{'parent
 $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1];
 $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1];
 $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1];
 $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
@@ -320,6 +338,8 @@ $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[0]{'parent
 $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1];
 $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1];
 $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1];
 $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_example_nested'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
@@ -343,12 +363,15 @@ $result_trees{'flushright_example_nested'}{'contents'}[2]{'parent'} = $result_tr
 $result_texis{'flushright_example_nested'} = '@example
 @flushright
 in   --- flushright
+
 @end flushright
 @end example
 
 @flushright
 @example
 in   --- example
+
+flush then example
 @end example
 @end flushright
 ';
@@ -356,7 +379,10 @@ in   --- example
 
 $result_texts{'flushright_example_nested'} = 'in   --- flushright
 
+
 in   --- example
+
+flush then example
 ';
 
 $result_errors{'flushright_example_nested'} = [];
@@ -366,15 +392,20 @@ $result_errors{'flushright_example_nested'} = [];
 $result_converted{'plaintext'}->{'flushright_example_nested'} = '                                                    in   --- flushright
 
      in   --- example
+
+     flush then example
 ';
 
 
 $result_converted{'html_text'}->{'flushright_example_nested'} = '<div class="example">
 <pre class="example">in   --- flushright
+
 </pre></div>
 
 <div class="example">
 <pre class="example">in   --- example
+
+flush then example
 </pre></div>
 ';
 
@@ -382,20 +413,26 @@ $result_converted{'html_text'}->{'flushright_example_nested'} = '<div class="exa
 $result_converted{'xml'}->{'flushright_example_nested'} = '<example>
 <flushright>
 <pre xml:space="preserve">in   --- flushright
+
 </pre></flushright>
 </example>
 
 <flushright>
 <example>
 <pre xml:space="preserve">in   --- example
+
+flush then example
 </pre></example>
 </flushright>
 ';
 
 
 $result_converted{'docbook'}->{'flushright_example_nested'} = '<screen>in   --- flushright
+
 </screen>
 <screen>in   --- example
+
+flush then example
 </screen>';
 
 1;

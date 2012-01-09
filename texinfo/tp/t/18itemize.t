@@ -482,6 +482,12 @@ T--ext before items.
 @comment comment before first item in enumerate
 @item e--numerate
 @end enumerate
+
+@enumerate
+Title
+@cindex cindex
+@item enum
+@end enumerate
 '],
 );
 

@@ -349,12 +349,15 @@ end example
 '@example
 @flushright
 in   --- flushright
+
 @end flushright
 @end example
 
 @flushright
 @example
 in   --- example
+
+flush then example
 @end example
 @end flushright
 '],
@@ -646,6 +649,32 @@ Copying
 @copying
 Copying
 @end copying@@
+'],
+['formats_titles',
+'@itemize
+before first itemize
+@item item
+@end itemize
+
+@enumerate
+before first enumerate
+@item enum
+@end enumerate
+
+@table @emph
+before first table
+@item tab
+@end table
+
+@vtable @asis
+before first vtable
+@item vtab
+@end vtable
+
+@multitable @columnfractions 0.5 0.5
+before first multitable
+@item item multit @tab tab multit
+@end multitable
 '],
 ['formats_only_titles',
 '@itemize

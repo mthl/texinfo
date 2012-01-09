@@ -325,6 +325,54 @@ $inline_text
 ['inline_expand_tex',
 $inline_text, {'expanded_formats' => ['tex']},
 ],
+['table_in_display_in_example',
+'@example
+@display
+@table @asis
+@item item
+Line
+@end table
+@end display
+@end example
+'],['table_in_example_in_display',
+'@display
+@example
+@table @asis
+@item item
+Line
+@end table
+@end example
+@end display
+'],
+['complex_nestings',
+'@node Top
+
+@example
+deffs
+@defun {my def} args @var{arg} @dots{}
+@defunx {other def} no args
+@deffn {type} {name} and now the args
+@defvar {variables} variable-name
+
+@defvarx {variables too} other-variable
+THis is the defvar
+
+A table within the def
+@table @asis
+@item item
+text
+
+more text
+@item second item
+@end table
+
+explanation
+@end defvar
+@end deffn
+@end defun
+
+@end example
+'],
 ['verbatiminclude_paths',
 '
 @verbatiminclude inc_file.texi

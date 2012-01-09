@@ -54,6 +54,13 @@ bbbbbbbbbb}
 @cindex index entry within multitable
 @item lone mu--ltitable item
 @end multitable
+
+@multitable {thing}
+Title
+@cindex cindex
+@item thing
+@end multitable
+
 '],
 ['empty_item_tab',
 '@multitable @columnfractions 1.0
