@@ -1,3 +1,9 @@
+2012-01-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Internationalization): move to above Conditionals,
+	so set clear value and Defining New Texinfo Commands are next
+	to each other.
+
 2012-01-07  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: do not use && and || as line continuations,

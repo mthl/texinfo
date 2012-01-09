@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.407 2012-01-03 18:26:57 karl Exp $
+@c $Id: texinfo.txi,v 1.408 2012-01-09 01:14:26 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -156,8 +156,8 @@ the menu lists all the lower level nodes in the document.
 * Insertions::                    Inserting @@-signs, braces, etc.
 * Breaks::                        Forcing or preventing line and page breaks.
 * Definition Commands::           Describing functions and the like uniformly.
-* Conditionals::                  Specifying text for only some output cases.
 * Internationalization::          Supporting languages other than English.
+* Conditionals::                  Specifying text for only some output cases.
 * Defining New Texinfo Commands:: User-defined macros and aliases.
 * Include Files::                 How to incorporate other Texinfo files.
 
@@ -547,6 +547,11 @@ Object-Oriented Programming
 * Variables: Object-Oriented Variables.
 * Methods: Object-Oriented Methods.
 
+Internationalization
+
+* documentlanguage::            Declaring the current language.
+* documentencoding::            Declaring the input encoding.
+
 Conditionally Visible Text
 
 * Conditional Commands::        Text for a given format.
@@ -561,11 +566,6 @@ Conditionally Visible Text
 * set value::                   Expand a flag variable to a string.
 * ifset ifclear::               Format a region if a flag is set.
 * value Example::               An easy way to update edition information.
-
-Internationalization
-
-* documentlanguage::            Declaring the current language.
-* documentencoding::            Declaring the input encoding.
 
 Defining New Texinfo Commands
 
@@ -13465,6 +13465,199 @@ Ordinary variables and user options are described using a format like
 that for functions except that variables do not take arguments.
 
 
+@node Internationalization
+@chapter Internationalization
+
+@cindex Internationalization
+Texinfo has some support for writing in languages other than English,
+although this area still needs considerable work.
+
+For a list of the various accented and special characters Texinfo
+supports, see @ref{Inserting Accents}.
+
+@menu
+* documentlanguage::            Declaring the current language.
+* documentencoding::            Declaring the input encoding.
+@end menu
+
+
+@node documentlanguage
+@section @code{@@documentlanguage @var{ll}[_@var{cc}]}: Set the Document Language
+
+@findex documentlanguage
+@cindex Language, declaring
+@cindex Locale, declaring
+@cindex Document language, declaring
+
+The @code{@@documentlanguage} command declares the current document
+locale.  Write it on a line by itself, near the beginning of the
+file, but after @code{@@setfilename}
+(@pxref{setfilename,,@code{@@setfilename}}):
+
+@example
+@@documentlanguage @var{ll}[_@var{cc}]
+@end example
+
+Include a two-letter ISO@tie{}639-2 language code (@var{ll}) following
+the command name, optionally followed by an underscore and two-letter
+ISO@tie{}3166 two-letter country code (@var{cc}).  If you have a
+multilingual document, the intent is to be able to use this command
+multiple times, to declare each language change.  If the command is
+not used at all, the default is @code{en_US} for US English.
+
+As with GNU Gettext (@pxref{Top,,,gettext, Gettext}), if the country
+code is omitted, the main dialect is assumed where possible.  For
+example, @code{de} is equivalent to @code{de_DE} (German as spoken in
+Germany).
+
+@cindex Document strings, translation of
+For Info and other online output, this command changes the translation
+of various @dfn{document strings} such as ``see'' in cross references
+(@pxref{Cross References}), ``Function' in defuns (@pxref{Definition
+Commands}), and so on.  Some strings, such as ``Node:'', ``Next:'',
+``Menu:'', etc., are keywords in Info output, so are not translated
+there; they are translated in other output formats.
+
+@cindex @file{txi-@var{cc}.tex}
+For @TeX{}, this command causes a file @file{txi-@var{locale}.tex} to
+be read (if it exists).  If @code{@@documentlanguage} argument
+contains the optional @samp{_@var{cc}} suffix, this is tried first.
+For example, with @code{@@documentlanguage de_DE}, @TeX{} first looks
+for @file{txi-de_DE.tex}, then @file{txi-de.tex}.
+
+Such a @file{txi-*} file is intended to redefine the various English
+words used in @TeX{} output, such as `Chapter', `See', and so on.  We
+are aware that individual words like these cannot always be translated
+in isolation, and that a very different strategy would be required for
+ideographic (among other) scripts.  Help in improving Texinfo's
+language support is welcome.
+
+@cindex Hyphenation patterns, language-dependent
+@code{@@documentlanguage} also changes @TeX{}'s current hyphenation
+patterns, if the @TeX{} program being run has the necessary support
+included.  This will generally not be the case for @command{tex}
+itself, but will often be the case for recent distributions of
+extended @TeX{} programs @command{etex} (DVI output) and
+@command{pdftex} (PDF output), such as @TeX{} Live 2008.
+@command{texi2dvi} will use the extended @TeX{}s if they are
+available (@pxref{Format with texi2dvi}).
+
+In September 2006, the W3C Internationalization Activity released a
+new recommendation for specifying languages:
+@url{http://www.rfc-editor.org/rfc/bcp/bcp47.txt}.  When Gettext
+supports this new scheme, Texinfo will too.
+
+@cindex ISO 639-2 language codes
+@cindex ISO 3166 country codes
+@cindex Language codes
+@cindex Country codes
+Since the lists of language codes and country codes are updated
+relatively frequently, we don't attempt to list them here.  The valid
+language codes are on the official home page for ISO@tie{}639,
+@url{http://www.loc.gov/standards/iso639-2/}.  The country codes and
+the official web site for ISO@tie{}3166 can be found via
+@url{http://en.wikipedia.org/wiki/ISO_3166}.
+
+
+@node documentencoding
+@section @code{@@documentencoding @var{enc}}: Set Input Encoding
+
+@findex documentencoding
+@cindex Encoding, declaring
+@cindex Input encoding, declaring
+@cindex Character set, declaring
+@cindex Document input encoding
+
+The @code{@@documentencoding} command declares the input document
+encoding.  Write it on a line by itself, with a valid encoding
+specification following, near the beginning of the file but after
+@code{@@setfilename} (@pxref{setfilename,,@code{@@setfilename}}):
+
+@example
+@@documentencoding @var{enc}
+@end example
+
+At present, Texinfo supports only these encodings:
+
+@table @code
+@item US-ASCII
+This has no particular effect, but it's included for completeness.
+
+@item UTF-8
+The vast global character encoding, expressed in 8-bit bytes.
+The Texinfo processors have no deep knowledge of Unicode; for the most
+part, they just pass along the input they are given to the output.
+
+@item ISO-8859-2
+@itemx ISO-8859-1
+@itemx ISO-8859-15
+These specify the standard encodings for Western European (the first
+two) and Eastern European languages (the third), respectively.  ISO
+8859-15 replaces some little-used characters from 8859-1 (e.g.,
+precomposed fractions) with more commonly needed ones, such as the
+Euro symbol (@euro{}).
+
+A full description of the encodings is beyond our scope here;
+one useful reference is @uref{http://czyborra.com/charsets/iso8859.html}.
+
+@item koi8-r
+This is the commonly used encoding for the Russian language.
+
+@item koi8-u
+This is the commonly used encoding for the Ukrainian language.
+
+@end table
+
+Specifying an encoding @var{enc} has the following effects:
+
+@opindex --enable-encoding@r{, and Local Variables}
+@cindex Local Variables section, for encoding
+@cindex Info output, and encoding
+In Info output, unless the option @option{--disable-encoding} is given
+to @command{makeinfo}, a so-called `Local Variables' section
+(@pxref{File Variables,,,emacs,The GNU Emacs Manual}) is output
+including @var{enc}.  This allows Info readers to set the encoding
+appropriately.
+
+@example
+Local Variables:
+coding: @var{enc}
+End:
+@end example
+
+Also, in Info and plain text output (barring
+@option{--disable-encoding}), accent constructs and special
+characters, such as @code{@@'e}, are output as the actual 8-bit
+character in the given encoding.
+
+@cindex HTML output, and encodings
+@cindex @code{http-equiv}, and charset specification
+@cindex @code{<meta>} HTML tag, and charset specification
+In HTML output, a @samp{<meta>} tag is output, in the @samp{<head>}
+section of the HTML, that specifies @var{enc}.  Web servers and
+browsers cooperate to use this information so the correct encoding is
+used to display the page, if supported by the system.
+
+@example
+<meta http-equiv="Content-Type" content="text/html;
+     charset=@var{enc}">
+@end example
+
+In split HTML output, if @option{--transliterate-file-names} is
+given (@pxref{HTML Xref 8-bit Character Expansion}), the names of HTML
+files are formed by transliteration of the corresponding node names,
+using the specified encoding.
+
+In XML and Docbook output, the given document encoding is written in
+the output file as usual with those formats.
+
+In @TeX{} output, the characters which are supported in the standard
+Computer Modern fonts are output accordingly.  (For example, this
+means using constructed accents rather than precomposed glyphs.)
+Using a missing character generates a warning message, as does
+specifying an unimplemented encoding.
+
+
 @node Conditionals
 @chapter Conditionally Visible Text
 @cindex Conditionally visible text
@@ -14158,199 +14351,6 @@ the processors cannot reliably determine which commands to consider
 for nesting purposes.
 
 
-@node Internationalization
-@chapter Internationalization
-
-@cindex Internationalization
-Texinfo has some support for writing in languages other than English,
-although this area still needs considerable work.
-
-For a list of the various accented and special characters Texinfo
-supports, see @ref{Inserting Accents}.
-
-@menu
-* documentlanguage::            Declaring the current language.
-* documentencoding::            Declaring the input encoding.
-@end menu
-
-
-@node documentlanguage
-@section @code{@@documentlanguage @var{ll}[_@var{cc}]}: Set the Document Language
-
-@findex documentlanguage
-@cindex Language, declaring
-@cindex Locale, declaring
-@cindex Document language, declaring
-
-The @code{@@documentlanguage} command declares the current document
-locale.  Write it on a line by itself, near the beginning of the
-file, but after @code{@@setfilename}
-(@pxref{setfilename,,@code{@@setfilename}}):
-
-@example
-@@documentlanguage @var{ll}[_@var{cc}]
-@end example
-
-Include a two-letter ISO@tie{}639-2 language code (@var{ll}) following
-the command name, optionally followed by an underscore and two-letter
-ISO@tie{}3166 two-letter country code (@var{cc}).  If you have a
-multilingual document, the intent is to be able to use this command
-multiple times, to declare each language change.  If the command is
-not used at all, the default is @code{en_US} for US English.
-
-As with GNU Gettext (@pxref{Top,,,gettext, Gettext}), if the country
-code is omitted, the main dialect is assumed where possible.  For
-example, @code{de} is equivalent to @code{de_DE} (German as spoken in
-Germany).
-
-@cindex Document strings, translation of
-For Info and other online output, this command changes the translation
-of various @dfn{document strings} such as ``see'' in cross references
-(@pxref{Cross References}), ``Function' in defuns (@pxref{Definition
-Commands}), and so on.  Some strings, such as ``Node:'', ``Next:'',
-``Menu:'', etc., are keywords in Info output, so are not translated
-there; they are translated in other output formats.
-
-@cindex @file{txi-@var{cc}.tex}
-For @TeX{}, this command causes a file @file{txi-@var{locale}.tex} to
-be read (if it exists).  If @code{@@documentlanguage} argument
-contains the optional @samp{_@var{cc}} suffix, this is tried first.
-For example, with @code{@@documentlanguage de_DE}, @TeX{} first looks
-for @file{txi-de_DE.tex}, then @file{txi-de.tex}.
-
-Such a @file{txi-*} file is intended to redefine the various English
-words used in @TeX{} output, such as `Chapter', `See', and so on.  We
-are aware that individual words like these cannot always be translated
-in isolation, and that a very different strategy would be required for
-ideographic (among other) scripts.  Help in improving Texinfo's
-language support is welcome.
-
-@cindex Hyphenation patterns, language-dependent
-@code{@@documentlanguage} also changes @TeX{}'s current hyphenation
-patterns, if the @TeX{} program being run has the necessary support
-included.  This will generally not be the case for @command{tex}
-itself, but will often be the case for recent distributions of
-extended @TeX{} programs @command{etex} (DVI output) and
-@command{pdftex} (PDF output), such as @TeX{} Live 2008.
-@command{texi2dvi} will use the extended @TeX{}s if they are
-available (@pxref{Format with texi2dvi}).
-
-In September 2006, the W3C Internationalization Activity released a
-new recommendation for specifying languages:
-@url{http://www.rfc-editor.org/rfc/bcp/bcp47.txt}.  When Gettext
-supports this new scheme, Texinfo will too.
-
-@cindex ISO 639-2 language codes
-@cindex ISO 3166 country codes
-@cindex Language codes
-@cindex Country codes
-Since the lists of language codes and country codes are updated
-relatively frequently, we don't attempt to list them here.  The valid
-language codes are on the official home page for ISO@tie{}639,
-@url{http://www.loc.gov/standards/iso639-2/}.  The country codes and
-the official web site for ISO@tie{}3166 can be found via
-@url{http://en.wikipedia.org/wiki/ISO_3166}.
-
-
-@node documentencoding
-@section @code{@@documentencoding @var{enc}}: Set Input Encoding
-
-@findex documentencoding
-@cindex Encoding, declaring
-@cindex Input encoding, declaring
-@cindex Character set, declaring
-@cindex Document input encoding
-
-The @code{@@documentencoding} command declares the input document
-encoding.  Write it on a line by itself, with a valid encoding
-specification following, near the beginning of the file but after
-@code{@@setfilename} (@pxref{setfilename,,@code{@@setfilename}}):
-
-@example
-@@documentencoding @var{enc}
-@end example
-
-At present, Texinfo supports only these encodings:
-
-@table @code
-@item US-ASCII
-This has no particular effect, but it's included for completeness.
-
-@item UTF-8
-The vast global character encoding, expressed in 8-bit bytes.
-The Texinfo processors have no deep knowledge of Unicode; for the most
-part, they just pass along the input they are given to the output.
-
-@item ISO-8859-2
-@itemx ISO-8859-1
-@itemx ISO-8859-15
-These specify the standard encodings for Western European (the first
-two) and Eastern European languages (the third), respectively.  ISO
-8859-15 replaces some little-used characters from 8859-1 (e.g.,
-precomposed fractions) with more commonly needed ones, such as the
-Euro symbol (@euro{}).
-
-A full description of the encodings is beyond our scope here;
-one useful reference is @uref{http://czyborra.com/charsets/iso8859.html}.
-
-@item koi8-r
-This is the commonly used encoding for the Russian language.
-
-@item koi8-u
-This is the commonly used encoding for the Ukrainian language.
-
-@end table
-
-Specifying an encoding @var{enc} has the following effects:
-
-@opindex --enable-encoding@r{, and Local Variables}
-@cindex Local Variables section, for encoding
-@cindex Info output, and encoding
-In Info output, unless the option @option{--disable-encoding} is given
-to @command{makeinfo}, a so-called `Local Variables' section
-(@pxref{File Variables,,,emacs,The GNU Emacs Manual}) is output
-including @var{enc}.  This allows Info readers to set the encoding
-appropriately.
-
-@example
-Local Variables:
-coding: @var{enc}
-End:
-@end example
-
-Also, in Info and plain text output (barring
-@option{--disable-encoding}), accent constructs and special
-characters, such as @code{@@'e}, are output as the actual 8-bit
-character in the given encoding.
-
-@cindex HTML output, and encodings
-@cindex @code{http-equiv}, and charset specification
-@cindex @code{<meta>} HTML tag, and charset specification
-In HTML output, a @samp{<meta>} tag is output, in the @samp{<head>}
-section of the HTML, that specifies @var{enc}.  Web servers and
-browsers cooperate to use this information so the correct encoding is
-used to display the page, if supported by the system.
-
-@example
-<meta http-equiv="Content-Type" content="text/html;
-     charset=@var{enc}">
-@end example
-
-In split HTML output, if @option{--transliterate-file-names} is
-given (@pxref{HTML Xref 8-bit Character Expansion}), the names of HTML
-files are formed by transliteration of the corresponding node names,
-using the specified encoding.
-
-In XML and Docbook output, the given document encoding is written in
-the output file as usual with those formats.
-
-In @TeX{} output, the characters which are supported in the standard
-Computer Modern fonts are output accordingly.  (For example, this
-means using constructed accents rather than precomposed glyphs.)
-Using a missing character generates a warning message, as does
-specifying an unimplemented encoding.
-
-
 @node Defining New Texinfo Commands
 @chapter Defining New Texinfo Commands
 @cindex Macros
@@ -14969,8 +14969,11 @@ indirectly.
 
 @node External Macro Processors
 @section External Macro Processors: Line Directives
+@cindex External macro processors
+@cindex Macro processors, external
 
-xxxx
+Due to the peculiarities of Texinfo macros and other substitutions,
+you may wish to 
 
 
 @node Include Files
@@ -21390,7 +21393,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.407 2012-01-03 18:26:57 karl Exp $
+$Id: texinfo.txi,v 1.408 2012-01-09 01:14:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
