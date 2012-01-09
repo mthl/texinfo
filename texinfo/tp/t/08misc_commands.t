@@ -194,6 +194,12 @@ documentlanguage @documentlanguage  en
 @documentencoding AAA@TeX{}
 @documentencoding BBB@\'e
 '],
+['defindex_too_much_args',
+'@defindex chose    machin'
+],
+['synindex_too_much_args',
+'@syncodeindex cp fn    truc
+'],
 ['command_not_closed_in_documentencoding',
 '@documentencoding @strong{'],
 ['text_before_line_command',
