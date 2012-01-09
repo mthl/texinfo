@@ -9244,4 +9244,308 @@ text with a lot of features.
 
 ';
 
+
+$result_converted{'html'}->{'numbering_captions_listoffloats'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Test floats</title>
+
+<meta name="description" content="Test floats">
+<meta name="keywords" content="Test floats">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="tp">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+</div>
+<a name="Test-floats"></a>
+<h1 class="top">Test floats</h1>
+
+<div class="float"><a name="text-with-a-lot-of-features"></a>
+
+
+
+</div><p><strong>Text 1: </strong>An example of float caption<small class="enddots">...</small></p>
+<div class="float">
+<p>No label but caption and shortcaption.
+</p>
+
+
+</div><p><strong>Text: </strong>C No label</p>
+<div class="float"><a name="label-but-no-type"></a>
+<p>No type but caption and shortcaption.
+</p>
+
+
+</div><p><strong>1: </strong>C No type</p>
+
+<div class="float"><a name="label-but-no-type-and-no-caption"></a>
+<p>No type but label and no caption nor shortcaption.
+</p>
+</div><p><strong>2
+</strong></p>
+
+<div class="float">
+<p>No label, no type, no caption no shortcaption.
+</p>
+</div>
+<div class="float">
+<p>No label, no type, but caption and shortcaption.
+</p>
+
+</div><p>C No label, no type, but caption and shortcaption.</p>
+<div class="float"><a name="label-but-no-type-2"></a>
+<p>Second float with no type.
+</p>
+
+
+</div><p><strong>3: </strong>C No type 2</p>
+<div class="float"><a name="warning-in-top"></a>
+<p>A warning
+</p>
+
+
+</div><p><strong>Warning 1: </strong>C A warning</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Unnumbered" accesskey="2">Unnumbered</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Chapter-with-unnumbsubsec" accesskey="3">Chapter with unnumbsubsec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Appendix-for-float" accesskey="4">Appendix for float</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#list-of-floats" accesskey="5">list of floats</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="chapter"></a>
+<div class="header">
+<p>
+Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="A-chapter"></a>
+<h2 class="chapter">1 A chapter</h2>
+
+<div class="float"><a name="text-in-chapter"></a>
+<p>Text in chapter
+</p>
+
+</div><p><strong>Text 1.1: </strong>C Text in chapter</p>
+<div class="float"><a name="float-with-a-lot-of-features-and-no-shortcaption"></a>
+
+</div><p><strong>Text 1.2: </strong>An example of float caption, no shortcaption<small class="enddots">...</small></p>
+<div class="float"><a name="theoreme"></a>
+<p>A th&eacute;or&egrave;me
+</p>
+
+</div><p><strong>th&eacute;or&egrave;me 1.1: </strong>C A th&eacute;or&egrave;me</p>
+<div class="float"><a name="label-but-no-type-in-chapter"></a>
+<p>float with no type.
+</p>
+
+
+</div><p><strong>1.1: </strong>C No type in chapter</p>
+<div class="float"><a name="warning-in-chapter"></a>
+<p>A warning
+</p>
+
+
+</div><p><strong>Warning 1.1: </strong>C A warning in chapter</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#section" accesskey="1">section</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="section"></a>
+<div class="header">
+<p>
+Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
+</div>
+<a name="A-section"></a>
+<h3 class="section">1.1 A section</h3>
+
+<div class="float"><a name="text-in-section"></a>
+
+<p>A text in float no caption a label a type.
+</p>
+</div><p><strong>Text 1.3
+</strong></p>
+<hr>
+<a name="Unnumbered"></a>
+<div class="header">
+<p>
+Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with unnumbsubsec</a>, Previous: <a href="#chapter" accesskey="p" rel="previous">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="Unnumbered-1"></a>
+<h2 class="unnumbered">Unnumbered</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Section-within-unnumbered" accesskey="1">Section within unnumbered</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+<div class="float"><a name="unnumbered-float"></a>
+<p>unnum
+</p>
+
+</div><p><strong>Text 5: </strong>C unnumbered float</p><div class="float"><a name="label-but-no-type-in-unnumbered"></a>
+<p>float with no type.
+</p>
+
+
+</div><p><strong>5: </strong>C No type in unnumbered</p>
+
+<hr>
+<a name="Section-within-unnumbered"></a>
+<div class="header">
+<p>
+Up: <a href="#Unnumbered" accesskey="u" rel="up">Unnumbered</a> &nbsp; </p>
+</div>
+<a name="Section-within-unnumbered-1"></a>
+<h3 class="section">Section within unnumbered</h3>
+
+
+<div class="float"><a name="Section-within-unnumbered-float"></a>
+<p>Section within unnumbered
+</p>
+
+</div><p><strong>Text 6: </strong>C Section within unnumbered</p>
+<hr>
+<a name="Chapter-with-unnumbsubsec"></a>
+<div class="header">
+<p>
+Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float</a>, Previous: <a href="#Unnumbered" accesskey="p" rel="previous">Unnumbered</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="Chapter-with-unnumbsubsec-1"></a>
+<h2 class="chapter">2 Chapter with unnumbsubsec</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sec" accesskey="1">unnumbered sec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+<div class="float"><a name="Chapter-with-subsec-float"></a>
+<p>Chap
+</p>
+
+</div><p><strong>Text 2.1: </strong>C Chapter with subsec</p>
+<hr>
+<a name="unnumbered-sec"></a>
+<div class="header">
+<p>
+Up: <a href="#Chapter-with-unnumbsubsec" accesskey="u" rel="up">Chapter with unnumbsubsec</a> &nbsp; </p>
+</div>
+<a name="unnumbered-sec-1"></a>
+<h3 class="unnumberedsec">unnumbered sec</h3>
+
+<div class="float"><a name="unnumbered-sec-float"></a>
+<p>Chap
+</p>
+
+</div><p><strong>Text 2.2: </strong>C unnumbered sec float</p>
+<div class="float"><a name="label-but-no-type-in-unnumbered-subsec-in-chapter"></a>
+<p>float with no type.
+</p>
+
+
+</div><p><strong>2.1: </strong>C No type in unnumbered subsec in chapter</p>
+<hr>
+<a name="Appendix-for-float"></a>
+<div class="header">
+<p>
+Next: <a href="#list-of-floats" accesskey="n" rel="next">list of floats</a>, Previous: <a href="#Chapter-with-unnumbsubsec" accesskey="p" rel="previous">Chapter with unnumbsubsec</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="Appendix-for-float-1"></a>
+<h2 class="appendix">Appendix A Appendix for float</h2>
+
+<div class="float"><a name="appendix-sec-float"></a>
+
+<p>Appendix
+</p>
+
+</div><p><strong>Text A.1: </strong>C appendix sec float</p>
+<hr>
+<a name="list-of-floats"></a>
+<div class="header">
+<p>
+Previous: <a href="#Appendix-for-float" accesskey="p" rel="previous">Appendix for float</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="list-of-floats-1"></a>
+<h2 class="unnumbered">list of floats</h2>
+
+<p>See <a href="#text-in-section">text in section</a>.
+And (see <a href="#text-in-chapter">text in chapter</a>).
+See <a href="#text-with-a-lot-of-features">text with a lot of features</a>.
+</p>
+<p>And now a ref (without manual or printed manual)
+<a href="#text-with-a-lot-of-features">title</a>.
+</p>
+<p>And now a ref (with manual without printed manual)
+<a href="manual.html#text-with-a-lot-of-features">(manual)title</a>.
+</p>
+<p>And now a ref (without manual with a printed manual)
+&lsquo;title&rsquo; in <cite>printed manual title</cite>.
+</p>
+<p>A ref to float without type <a href="#label-but-no-type">label but no type</a>.
+</p>
+<dl class="listoffloats">
+<dt><a href="#text-with-a-lot-of-features">Text 1</a></dt><dd><p>TeX and someething</p></dd>
+<dt><a href="#text-in-chapter">Text 1.1</a></dt><dd><p>C Text in chapter</p></dd>
+<dt><a href="#float-with-a-lot-of-features-and-no-shortcaption">Text 1.2</a></dt><dd><p>An example of float caption, no shortcaption<small class="enddots">...</small></p></dd>
+<dt><a href="#text-in-section">Text 1.3</a></dt><dd></dd>
+<dt><a href="#unnumbered-float">Text 5</a></dt><dd><p>SC unnumbered float</p></dd>
+<dt><a href="#Section-within-unnumbered-float">Text 6</a></dt><dd><p>SC Section within unnumbered</p></dd>
+<dt><a href="#Chapter-with-subsec-float">Text 2.1</a></dt><dd><p>SC Chapter with subsec</p></dd>
+<dt><a href="#unnumbered-sec-float">Text 2.2</a></dt><dd><p>SC unnumbered sec float</p></dd>
+<dt><a href="#appendix-sec-float">Text A.1</a></dt><dd><p>SC appendix sec float</p></dd>
+</dl>
+<dl class="listoffloats">
+<dt><a href="#theoreme">th&eacute;or&egrave;me 1.1</a></dt><dd><p>C A th&eacute;or&egrave;me</p></dd>
+</dl>
+
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
 1;

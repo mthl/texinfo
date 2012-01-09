@@ -1790,4 +1790,197 @@ $result_converted_errors{'info'}->{'float_copying'} = [
 ];
 
 
+
+$result_converted{'html'}->{'float_copying'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+Copyright notice, public domain
+
+Public domain is not really a licence, as it means than
+the author abandon his copyright.
+ -->
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Top</title>
+
+<meta name="description" content="Top">
+<meta name="keywords" content="Top">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="tp">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#Copying-and-floats" rel="index" title="Copying and floats">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#Copying-and-floats" accesskey="n" rel="next">Copying and floats</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#Copying-and-floats" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Top-1"></a>
+<h1 class="top">Top</h1>
+
+
+<div class="float"><a name="public-domain"></a>
+
+<p>Public domain is not really a licence, as it means than
+the author abandon his copyright.
+</p>
+</div><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1" href="#FOOT1">(1)</a>
+</p>
+<a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
+<a name="index-copying-indexed-caption-function"></a>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Copying-and-floats" accesskey="1">Copying and floats</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Copying-and-floats"></a>
+<div class="header">
+<p>
+Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Copying-and-floats" title="Index" rel="index">Index</a>]</p>
+</div>
+<a name="Copying-and-floats-1"></a>
+<h2 class="appendix">Appendix A Copying and floats</h2>
+
+
+<div class="float"><a name="public-domain"></a>
+
+<p>Public domain is not really a licence, as it means than
+the author abandon his copyright.
+</p>
+</div><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1_2" href="#FOOT1_2">(2)</a>
+</p>
+<a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
+<a name="index-copying-indexed-caption-function"></a>
+
+
+<div class="float"><a name="public-domain"></a>
+
+<p>Public domain is not really a licence, as it means than
+the author abandon his copyright.
+</p>
+</div><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1_3" href="#FOOT1_3">(3)</a>
+</p>
+<a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
+<a name="index-copying-indexed-caption-function"></a>
+
+
+<dl class="listoffloats">
+<dt><a href="#public-domain">Copyright notice 1</a></dt><dd><p>The Public Domain notice<a name="t_hlistoffloats_DOCF1_4" href="#t_hlistoffloats_FOOT1_4">(4)</a>
+</p>
+</dd>
+</dl>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Copying-and-floats_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Copying-and-floats_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-indexed-caption">indexed caption</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-indexed-caption-copying-footnote">indexed caption copying footnote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Copying-and-floats_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+</td></tr></table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Copying-and-floats_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Copying-and-floats_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Copying-and-floats_fn_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-indexed-caption-function"><code>indexed caption function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Copying-and-floats_fn_letter-P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-copying-public-domain-function"><code>public domain function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Copying-and-floats_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Copying-and-floats_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+</td></tr></table>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>The caption copying footnote
+<a name="caption-copying-footnote-anchor"></a></p>
+<a name="index-copying-indexed-caption-copying-footnote"></a>
+<a name="index-copying-public-domain-function"></a>
+
+<p>see <a href="#Copying-and-floats">Copying and floats</a>.
+</p>
+<h3><a name="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
+<p>The caption copying footnote
+<a name="caption-copying-footnote-anchor"></a></p>
+<a name="index-copying-indexed-caption-copying-footnote"></a>
+<a name="index-copying-public-domain-function"></a>
+
+<p>see <a href="#Copying-and-floats">Copying and floats</a>.
+</p>
+<h3><a name="FOOT1_3" href="#DOCF1_3">(3)</a></h3>
+<p>The caption copying footnote
+<a name="caption-copying-footnote-anchor"></a></p>
+<a name="index-copying-indexed-caption-copying-footnote"></a>
+<a name="index-copying-public-domain-function"></a>
+
+<p>see <a href="#Copying-and-floats">Copying and floats</a>.
+</p>
+<h3><a name="t_hlistoffloats_FOOT1_4" href="#t_hlistoffloats_DOCF1_4">(4)</a></h3>
+<p>The caption copying footnote
+</p>
+
+<p>see <a href="#Copying-and-floats">Copying and floats</a>.
+</p>
+</div>
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
 1;

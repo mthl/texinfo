@@ -5354,4 +5354,241 @@ TeX and _te\'i^`an_url\'_ AND it is @verb  a word !@ AE.
 
 ';
 
+
+$result_converted{'html'}->{'complex_float'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Test floats</title>
+
+<meta name="description" content="Test floats">
+<meta name="keywords" content="Test floats">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="tp">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Top"></a>
+<div class="header">
+<p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+</div>
+<a name="Test-floats"></a>
+<h1 class="top">Test floats</h1>
+
+<p>A list of floats at the beginning.
+</p><dl class="listoffloats">
+<dt><a href="#text-with-a-lot-of-features">Text 1</a></dt><dd><p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.</p></dd>
+<dt><a href="#float-with-a-lot-of-features-and-no-shortcaption">Text 1.1</a></dt><dd><p>An example of float caption<small class="enddots">...</small> 2
+An example 2.
+</p><div class="example">
+<pre class="example">example 2
+</pre></div>
+
+<p>A table 2.
+</p><dl compact="compact">
+<dt><em>truc 2</em></dt>
+<dd><p>line 2
+</p></dd>
+</dl>
+
+<p>A multitable 2.
+</p><table>
+<tr><td>truc 2</td><td>bidule</td></tr>
+<tr><td>truc 2</td><td>bidule</td></tr>
+</table>
+<p>An index entry 2
+</p>
+<p>An itemize 2.
+</p><ul class="no-bullet">
+<li>- truc 2
+line
+</li></ul>
+
+
+<p>A ref 2.
+See <a href="#Top">xref Text with features caption</a>.
+A footnote 2.
+<a name="t_hlistoffloats_DOCF3_1" href="#t_hlistoffloats_FOOT3_1">(1)</a>.
+</p>
+<p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
+</p></dd>
+</dl>
+
+<p>After the listoffloats.
+</p><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<div class="float"><a name="text-with-a-lot-of-features"></a>
+<p>An example of float <small class="enddots">...</small>
+</p>
+
+<p>An index entry
+<a name="index-float-example"></a>
+</p>
+<p>A table.
+</p><dl compact="compact">
+<dt><em>truc</em></dt>
+<dd><p>line
+</p></dd>
+</dl>
+
+<p>An itemize.
+</p><ul class="no-bullet">
+<li>- truc 
+line
+</li></ul>
+
+<p>A ref.
+See <a href="#Top">xref Text with features</a>.
+A footnote.
+<a name="DOCF1" href="#FOOT1">(2)</a>.
+</p>
+<p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
+</p>
+
+
+
+
+</div><p><strong>Text 1: </strong>An example of float caption<small class="enddots">...</small>
+An example.
+</p><div class="example">
+<pre class="example">example
+</pre></div>
+
+<a name="Anchor-in-caption"></a>
+<p>A table.
+</p><dl compact="compact">
+<dt><em>truc</em></dt>
+<dd><p>line
+</p></dd>
+</dl>
+
+<p>A multitable.
+</p><table>
+<tr><td>truc</td><td>bidule</td></tr>
+<tr><td>truc</td><td>bidule</td></tr>
+</table>
+<p>An index entry
+<a name="index-float-example-in-caption"></a>
+</p>
+<p>An itemize.
+</p><ul class="no-bullet">
+<li>- truc 
+line
+</li></ul>
+
+<p>A ref.
+See <a href="#Top">xref Text with features caption</a>.
+A footnote.
+<a name="DOCF2" href="#FOOT2">(3)</a>.
+</p>
+<p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
+</p>
+<hr>
+<a name="chapter"></a>
+<div class="header">
+<p>
+Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="A-chapter"></a>
+<h2 class="chapter">1 A chapter</h2>
+
+<div class="float"><a name="float-with-a-lot-of-features-and-no-shortcaption"></a>
+
+<p>Float text of a float with a lot of features.
+</p>
+
+
+</div><p><strong>Text 1.1: </strong>An example of float caption<small class="enddots">...</small> 2
+An example 2.
+</p><div class="example">
+<pre class="example">example 2
+</pre></div>
+
+<p>A table 2.
+</p><dl compact="compact">
+<dt><em>truc 2</em></dt>
+<dd><p>line 2
+</p></dd>
+</dl>
+
+<p>A multitable 2.
+</p><table>
+<tr><td>truc 2</td><td>bidule</td></tr>
+<tr><td>truc 2</td><td>bidule</td></tr>
+</table>
+<p>An index entry 2
+<a name="index-float-example-in-caption-2"></a>
+</p>
+<p>An itemize 2.
+</p><ul class="no-bullet">
+<li>- truc 2
+line
+</li></ul>
+
+<a name="Anchor-in-caption-2"></a>
+<p>A ref 2.
+See <a href="#Top">xref Text with features caption</a>.
+A footnote 2.
+<a name="DOCF3" href="#FOOT3">(4)</a>.
+</p>
+<p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
+</p>
+<p>See <a href="#text-with-a-lot-of-features">text with a lot of features</a>.
+</p>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="t_hlistoffloats_FOOT3_1" href="#t_hlistoffloats_DOCF3_1">(1)</a></h3>
+<p>footnote Text with features caption 2</p>
+<h3><a name="FOOT1" href="#DOCF1">(2)</a></h3>
+<p>footnote Text with features</p>
+<h3><a name="FOOT2" href="#DOCF2">(3)</a></h3>
+<p>footnote Text with features caption</p>
+<h3><a name="FOOT3" href="#DOCF3">(4)</a></h3>
+<p>footnote Text with features caption 2</p>
+</div>
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
 1;

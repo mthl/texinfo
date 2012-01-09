@@ -507,6 +507,7 @@ foreach my $test (@test_cases) {
   if ($info_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'info';
   }
+  push @{$test->[2]->{'test_formats'}}, 'html';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
