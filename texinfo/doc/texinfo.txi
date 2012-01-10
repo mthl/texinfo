@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.408 2012-01-09 01:14:26 karl Exp $
+@c $Id: texinfo.txi,v 1.409 2012-01-10 19:37:05 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -576,6 +576,12 @@ Defining New Texinfo Commands
 * definfoenclose::              Customized highlighting.
 * External Macro Processors::   @code{#line} directives.
 
+External Macro Processors
+
+* #line Directive::
+* #line and TeX::
+* #line Syntax Details::
+
 Include Files
 
 * Using Include Files::         How to use the @code{@@include} command.
@@ -814,7 +820,7 @@ online at @url{http://www.gnu.org/doc}.
 We welcome bug reports and suggestions for any aspect of the Texinfo system,
 programs, documentation, installation, anything.  Please email them to
 @email{bug-texinfo@@gnu.org}.  You can get the latest version of Texinfo
-from @uref{ftp://ftp.gnu.org/gnu/texinfo/} and its mirrors worldwide.
+from @uref{http://ftp.gnu.org/gnu/texinfo/} and its mirrors worldwide.
 
 @cindex Checklist for bug reports
 For bug reports, please include enough information for the maintainers
@@ -991,7 +997,7 @@ may find the program @command{help2man} to be useful; it generates a
 traditional man page from the @samp{--help} output of a program.  In
 fact, this is currently used to generate man pages for the programs in
 the Texinfo distribution.  It is GNU software written by Brendan
-O'Dea, available from @uref{ftp://ftp.gnu.org/gnu/help2man/}.
+O'Dea, available from @uref{http://ftp.gnu.org/gnu/help2man/}.
 
 @cindex Output formats, supporting more
 @cindex SGML-tools output format
@@ -6064,6 +6070,7 @@ mistake them for separators.@refill
 
 @node One Argument
 @subsection @code{@@xref} with One Argument
+@cindex One-argument form of cross-references
 
 The simplest form of @code{@@xref} takes one argument, the name of
 another node in the same Info file.  The Info formatters produce
@@ -6123,6 +6130,7 @@ comma, and then by the clause, which is followed by a period.)
 
 @node Two Arguments
 @subsection @code{@@xref} with Two Arguments
+@cindex Two-argument form of cross-references
 
 With two arguments, the second is used as the name of the Info cross
 reference, while the first is still the name of the node to which the
@@ -6189,6 +6197,7 @@ comma, and then by the clause, which is followed by a period.)
 
 @node Three Arguments
 @subsection @code{@@xref} with Three Arguments
+@cindex Three-argument form of cross-references
 
 A third argument replaces the node name in the @TeX{} output.  The third
 argument should be the name of the section in the printed output, or
@@ -6268,7 +6277,7 @@ See Section 5.2 [Thunder and Lightning], page 57, for details.
 
 As a practical matter, it is often best to write cross references with
 just the first argument if the node name and the section title are the
-same (or nearly so), and with the first and third arguments if the
+same (or nearly so), and with the first and third arguments only if the
 node name and title are different.
 
 If you want the section title to be used by default instead of
@@ -6288,6 +6297,7 @@ names.
 
 @node Four and Five Arguments
 @subsection @code{@@xref} with Four and Five Arguments
+@cindex Four- and five argument form of cross-references
 
 In a cross reference, a fourth argument specifies the name of another
 Info file, different from the file in which the reference appears, and
@@ -6764,36 +6774,36 @@ Here is an example of the simple one argument form, where the url is
 both the target and the text of the link:
 
 @example
-The official GNU ftp site is @@uref@{ftp://ftp.gnu.org/gnu@}.
+The official GNU ftp site is @@uref@{http://ftp.gnu.org/gnu@}.
 @end example
 
 @noindent produces:
 @display
-The official GNU ftp site is @uref{ftp://ftp.gnu.org/gnu}.
+The official GNU ftp site is @uref{http://ftp.gnu.org/gnu}.
 @end display
 
 
 An example of the two-argument form:
 @example
-The official @@uref@{ftp://ftp.gnu.org/gnu, GNU ftp site@}
+The official @@uref@{http://ftp.gnu.org/gnu, GNU ftp site@}
 holds programs and texts.
 @end example
 
 @noindent produces:
 @display
-The official @uref{ftp://ftp.gnu.org/gnu, GNU ftp site}
+The official @uref{http://ftp.gnu.org/gnu, GNU ftp site}
 holds programs and texts.
 @end display
 
 @noindent that is, the Info output is this:
 @example
-The official GNU ftp site (ftp://ftp.gnu.org/gnu)
+The official GNU ftp site (http://ftp.gnu.org/gnu)
 holds programs and texts.
 @end example
 
 @noindent and the HTML output is this:
 @example
-The official <a href="ftp://ftp.gnu.org/gnu">GNU ftp site</a>
+The official <a href="http://ftp.gnu.org/gnu">GNU ftp site</a>
 holds programs and texts.
 @end example
 
@@ -13808,7 +13818,7 @@ We mention @code{@@errormsg@{@}} here even though it is not strictly
 related to conditionals, since in practice it is most likely to be
 useful in that context.  Technically, it can be used anywhere.
 @xref{External Macro Processors}, for a caveat regarding the line
-numbers.
+numbers which @code{@@errormsg} emits in @TeX{}.
 
 
 @node Conditional Not Commands
@@ -14380,10 +14390,15 @@ command.
 @samp{@@definfoenclose} allows you to define new commands with
 customized output in the Info file.
 
-@item
-It is possible to invoke an external macro processor and have Texinfo
-recognize so-called @code{#line} directives for error reporting.
 @end itemize
+
+Most generally of all, not just for defining new commands, it is
+possible to invoke an external macro processor and have Texinfo
+recognize so-called @code{#line} directives for error reporting.
+
+If you want to do simple text substitution, @code{@@set} and
+@code{@@value} is the simplest approach (@pxref{set clear value,,
+@code{@@set}@comma{} @code{@@clear}@comma{} and @code{@@value}}).
 
 @menu
 * Defining Macros::             Defining and undefining new commands.
@@ -14972,8 +14987,129 @@ indirectly.
 @cindex External macro processors
 @cindex Macro processors, external
 
-Due to the peculiarities of Texinfo macros and other substitutions,
-you may wish to 
+Texinfo macros (and its other text substitution facilities) work fine
+in straightforward cases.  If your document needs unusually complex
+processing, however, their fragility and limitations can be a problem.
+In this case, you may want to use a different macro processor
+altogether, such as M4 (@pxref{Top,, Preliminaries, m4, M4}) or CPP
+(@pxref{Top,, Overview, cpp, The C Preprocessor}).
+
+With one exception, Texinfo does not need to know whether its input is
+``original'' source or preprocessed from some other source file.
+Therefore, you can arrange your build system to invoke whatever
+programs you like to handle macro expansion or other preprocessing
+needs.  Texinfo does not offer built-in support for any particular
+preprocessor, since no one program seemed likely to suffice for the
+requirements of all documents.
+
+@cindex Line numbers, in error messages
+@cindex Error messages, line numbers in
+The one exception is line numbers in error messages.  In that case,
+the line number should refer to the original source file, whatever it
+may be.  There's a well-known mechanism for this: the so-called
+@samp{#line} directive.  Texinfo supports this.
+
+@menu
+* #line Directive::
+* TeX: #line and TeX.
+* Syntax: #line Syntax Details.
+@end menu
+
+
+@node #line Directive
+@subsection @samp{#line} Directive
+@cindex @samp{#line} directive
+
+An input line such as this:
+
+@example
+@hashchar{}line 100 "foo.ptexi"
+@end example
+
+@noindent indicates that the next line was line 100 of the file
+@file{foo.ptexi}, and so that's what an error message should refer to.
+Both M4 (@pxref{Preprocessor features,,, m4, GNU M4}) and CPP
+(@pxref{Line Control,,, cpp, The C Preprocessor}, and
+@ref{Preprocessor Output,,, cpp, The C Preprocessor}) can generate
+such lines.
+
+The @command{makeinfo} program recognizes these lines by default.  It
+can be turned off with @code{CPP_LINE_DIRECTIVES} (@pxref{Other
+Configuration Variables}), though there is normally no reason to do
+so.  For those few programs (M4, CPP, Texinfo) which need to document
+@samp{#line} directives and therefore have examples which would
+otherwise match the pattern, the command @code{@@hashchar@{@}} can be
+used (@pxref{Inserting a Hashsign}).  The example line above looks
+like this in the source for this manual:
+
+@example
+@@hashchar@{@}line 100 "foo.ptexi"
+@end example
+
+The @code{@@hashchar} command was added to Texinfo in 2012.  If you
+don't want to rely on it, you can also use @code{@@set} and
+@code{@@value} to insert the literal @samp{#}:
+
+@example
+@@set hash #
+@@value@{hash@}line 1 "example.c"
+@end example
+
+
+@node #line and TeX
+@subsection @samp{#line} and @TeX{}
+@cindex @TeX{} and @samp{#line} directives
+
+As mentioned, @command{makeinfo} recognizes the @samp{#line}
+directives described in the previous section.  However,
+@file{texinfo.tex} does not and cannot.  Therefore, such a line will
+be incorrectly typeset verbatim if @TeX{} sees it.  The solution is to
+use the (Texinfo) macro expansion options.
+
+If you run @command{texi2dvi} or its variants (@pxref{Format with
+texi2dvi,, Format with @code{texi2dvi}}), you can pass @option{-E}.
+
+If you run @command{makeinfo} or its variants (@pxref{Generic
+Translator texi2any,, A Generic Translator: @command{texi2any}}), you
+can pass @option{--no-ifinfo --iftex -E somefile.mac} or @option{--dvi
+--Xopt -E}.  (Or @option{--pdf} instead of @option{--dvi}, of course.)
+With the former, you can then give @file{somefile.mac} to
+@code{texi2dvi} in a separate command; with the latter,
+@command{makeinfo} will call @command{texi2dvi}.
+
+@findex errormsg@r{, and line numbers in @TeX{}}
+There is one other caveat regarding use with @TeX{}: since the
+@code{#line} directives are not recognized, the line numbers emitted
+by the @code{@@errormsg@{@}} command (@pxref{Conditional Commands}),
+or by @TeX{} itself, are the (incorrect) line numbers from the derived
+file which @TeX{} is reading, rather than the preprocessor-specified
+line numbers.  This is another instance of why we recommend running
+@command{makeinfo} for the best diagnostics (@pxref{makeinfo
+advantages,, @code{makeinfo} Advantages}).
+
+
+@node #line Syntax Details
+@subsection @samp{#line} Syntax Details
+@cindex @samp{#line} syntax details
+@cindex Syntax details, @samp{#line}
+
+Syntax details for the @samp{#line} directive: the @samp{#} character
+can be preceded or followed by whitespace, the word @samp{line} is
+optional, and the file name can be followed by a whitespace-separated
+list of integers (these are so-called ``flags'' output by CPP in some
+cases).  For those who like to know the gory details, the actual
+(Perl) regular expression which is matched is this:
+
+@example
+^\s*#\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*$
+@end example
+
+For example, the following is also a valid @samp{#line} directive,
+meaning line 1 of @file{/usr/include/stdio.h}:
+
+@example
+# 1 "/usr/include/stdio.h" 1 3 4
+@end example
 
 
 @node Include Files
@@ -17470,7 +17606,7 @@ For information on installing the Info file in the Info system,
 
 
 @node makeinfo advantages
-@subsection @code{makeinfo} Preferred
+@subsection @code{makeinfo} Advantages
 
 The @code{makeinfo} utility creates an Info file from a Texinfo source
 file more quickly than either of the Emacs formatting commands and
@@ -21393,7 +21529,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.408 2012-01-09 01:14:26 karl Exp $
+$Id: texinfo.txi,v 1.409 2012-01-10 19:37:05 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21992,13 +22128,13 @@ command and you can use the @kbd{M-x Info-validate} command.@refill
 
 
 @node makeinfo Preferred
-@section @code{makeinfo} Find Errors
+@section @code{makeinfo} Preferred
 
 The @code{makeinfo} program does an excellent job of catching errors
 and reporting them---far better than @code{texinfo-format-region} or
 @code{texinfo-format-buffer}.  In addition, the various functions for
 automatically creating and updating node pointers and menus remove
-many opportunities for human error.@refill
+many opportunities for human error.
 
 If you can, use the updating commands to create and insert pointers
 and menus.  These prevent many errors.  Then use @code{makeinfo} (or
@@ -22006,7 +22142,8 @@ its Texinfo mode manifestations, @code{makeinfo-region} and
 @code{makeinfo-buffer}) to format your file and check for other
 errors.  This is the best way to work with Texinfo.  But if you
 cannot use @code{makeinfo}, or your problem is very puzzling, then you
-may want to use the tools described in this appendix.@refill
+may want to use the tools described in this appendix.
+
 
 @node Debugging with Info
 @section Catching Errors with Info Formatting
