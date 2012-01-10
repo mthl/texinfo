@@ -188,6 +188,17 @@ aa
 @end copying
 ', {'expanded_formats' => ['tex']}
 ],
+['titles',
+'@setfilename html-title.info
+@settitle @@title @sc{html} @code{test}
+
+@node Top
+@top Top of @@title @sc{html} @code{test}
+
+Top.
+
+Second paragraph.
+'],
 );
 
 my @test_cases_text = (
