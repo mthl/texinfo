@@ -735,4 +735,24 @@ $result_converted_errors{'html'}->{'simple'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'simple'} = '
+<para>Before menu.
+</para>
+<menu>
+<menucomment><pre xml:space="preserve">comment
+</pre></menucomment><menuentry><menutitle>menu entry name </menutitle><menunode>node</menunode><menudescription><pre xml:space="preserve">description
+</pre></menudescription></menuentry><menuentry><menunode>node name</menunode><menudescription><pre xml:space="preserve">description new
+</pre></menudescription></menuentry><menuentry><menutitle>other entry</menutitle><menunode>node</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>last</menunode><menudescription><pre xml:space="preserve">
+                 description next line
+                 still description
+</pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
+new comment
+</pre></menucomment><menuentry><menunode>last node entry </menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+<para>After menu.
+</para>';
+
 1;

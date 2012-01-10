@@ -985,4 +985,26 @@ $result_converted_errors{'html'}->{'entry_after_detailmenu'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'entry_after_detailmenu'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">first</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+
+<menu>
+<detailmenu>
+<menuentry><menunode>second</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></detailmenu>
+<menucomment><pre xml:space="preserve">
+Menu comment
+
+</pre></menucomment><menuentry><menunode>first</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
+</pre></menucomment><detailmenu>
+<menuentry><menunode>second</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></detailmenu>
+<menuentry><menunode>second</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+<node name="first"><nodename>first</nodename><nodenext automatic="on">second</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="second"><nodename>second</nodename><nodeprev automatic="on">first</nodeprev><nodeup automatic="on">Top</nodeup></node>
+';
+
 1;

@@ -347,4 +347,15 @@ $result_converted_errors{'html'}->{'menu_entry_no_entry'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'menu_entry_no_entry'} = '<menu>
+<menucomment><pre xml:space="preserve">* a1:
+* a2:  
+* a1c:<!-- c -->
+* a2c:  <!-- c -->
+* a4<b>a</b>: 
+* a5<b>b</b>: <!-- c -->
+</pre></menucomment></menu>
+';
+
 1;

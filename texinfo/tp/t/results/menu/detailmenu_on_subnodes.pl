@@ -2272,4 +2272,55 @@ Previous: <a href="#section-chap-2" accesskey="p" rel="previous">section chap 2<
 </html>
 ';
 
+
+$result_converted{'xml'}->{'detailmenu_on_subnodes'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top><sectiontitle>top</sectiontitle>
+
+<menu>
+<menuentry><menunode>chapter</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>chapter 2</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
+</pre></menucomment><detailmenu>
+<menuentry><menunode>section</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></detailmenu>
+<menucomment><pre xml:space="preserve">
+</pre></menucomment><detailmenu>
+<menucomment><pre xml:space="preserve">Chap 2
+
+</pre></menucomment><menuentry><menunode>section chap 2</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>unnumberedsec</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></detailmenu>
+</menu>
+
+</top>
+<node name="chapter"><nodename>chapter</nodename><nodenext automatic="on">chapter 2</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>chapter</sectiontitle>
+
+<menu>
+<menuentry><menunode>section</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+<node name="section"><nodename>section</nodename><nodeup automatic="on">chapter</nodeup></node>
+<section><sectiontitle>section</sectiontitle>
+
+</section>
+</chapter>
+<node name="chapter-2"><nodename>chapter 2</nodename><nodeprev automatic="on">chapter</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>chapter 2</sectiontitle>
+
+<menu>
+<menuentry><menunode>section chap 2</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>unnumberedsec</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+<node name="section-chap-2"><nodename>section chap 2</nodename><nodenext automatic="on">unnumberedsec</nodenext><nodeup automatic="on">chapter 2</nodeup></node>
+<section><sectiontitle>section chap 2</sectiontitle>
+
+</section>
+<node name="unnumberedsec"><nodename>unnumberedsec</nodename><nodeprev automatic="on">section chap 2</nodeprev><nodeup automatic="on">chapter 2</nodeup></node>
+<unnumberedsec><sectiontitle>unnumberedsec</sectiontitle>
+</unnumberedsec>
+</chapter>
+';
+
 1;

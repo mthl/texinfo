@@ -30,6 +30,30 @@ And still in title page
 ']
 );
 
+my $format_in_titlepage_text = '@titlepage
+
+@format
+Published
+@end format
+
+@end titlepage
+
+@node Top
+
+';
+
+my $anchor_in_titlepage_text = 
+'@titlepage
+
+@anchor{in titlepage}
+@end titlepage
+
+@top top
+@node Top
+
+@xref{in titlepage}.
+';
+
 my @test_formatted = (
 ['anchor_in_copying',
 '
@@ -69,28 +93,17 @@ In footnote.
 
 '],
 ['format_in_titlepage',
-'@titlepage
-
-@format
-Published
-@end format
-
-@end titlepage
-
-@node Top
-
-'],
+$format_in_titlepage_text
+],
+['format_in_titlepage_titlepage',
+$format_in_titlepage_text, {}, {'USE_TITLEPAGE_FOR_TITLE' => 1}
+],
 ['anchor_in_titlepage',
-'@titlepage
-
-@anchor{in titlepage}
-@end titlepage
-
-@top top
-@node Top
-
-@xref{in titlepage}.
-'],
+$anchor_in_titlepage_text
+],
+['anchor_in_titlepage_titlepage',
+$anchor_in_titlepage_text, {}, {'USE_TITLEPAGE_FOR_TITLE' => 1}
+],
 ['ref_in_copying',
 '@copying
 @ref{GFDL}

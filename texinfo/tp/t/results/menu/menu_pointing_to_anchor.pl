@@ -543,4 +543,17 @@ ul.no-bullet {list-style: none}
 </html>
 ';
 
+
+$result_converted{'xml'}->{'menu_pointing_to_anchor'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">An anchor</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top><sectiontitle>top</sectiontitle>
+
+<para>Text
+</para>
+<anchor name="An-anchor">An anchor</anchor>
+<menu>
+<menuentry><menunode>An anchor</menunode><menudescription><pre xml:space="preserve">menu entry pointing to the anchor.
+</pre></menudescription></menuentry></menu>
+</top>
+';
+
 1;

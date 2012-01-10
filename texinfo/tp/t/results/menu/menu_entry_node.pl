@@ -526,4 +526,13 @@ $result_converted_errors{'html'}->{'menu_entry_node'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'menu_entry_node'} = '<menu>
+<menuentry><menunode>(f)a1</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>(f)a2</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>(f)a3</menunode><menudescription><pre xml:space="preserve">d
+</pre></menudescription></menuentry><menuentry><menunode>(f)&arobase;a&noeos;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+';
+
 1;

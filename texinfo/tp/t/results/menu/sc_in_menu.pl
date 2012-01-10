@@ -1294,4 +1294,32 @@ $result_converted_errors{'html'}->{'sc_in_menu'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'sc_in_menu'} = '
+<node name="Top"><nodename>Top</nodename><nodenext automatic="on"><sc>node</sc></nodenext><nodeup automatic="on">(dir)</nodeup></node>
+
+<menu>
+<menuentry><menutitle><sc>value</sc></menutitle><menunode><sc>node</sc></menunode><menudescription><pre xml:space="preserve"><sc>descrip tion</sc>
+</pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
+<sc>menu comment</sc>
+
+</pre><example>
+<pre xml:space="preserve">* <sc>menu-example value</sc>:(dir)<sc>menu-example node</sc>.   <sc>menu-example descrip tion</sc>
+
+<sc>menu-example comment</sc>
+</pre></example>
+</menucomment></menu>
+
+<node name="NODE"><nodename><sc>node</sc></nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+
+<example>
+<menu>
+<menuentry><menutitle><sc>example value</sc></menutitle><menunode>(dir)<sc>example node</sc></menunode><menudescription><pre xml:space="preserve"><sc>example descrip tion</sc>
+</pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
+<sc>example comment</sc>
+</pre></menucomment></menu>
+</example>
+
+';
+
 1;

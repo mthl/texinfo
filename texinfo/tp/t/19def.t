@@ -498,8 +498,14 @@ bbb
 
 my @test_printindex = ();
 
+my %html_tests = (
+);
+
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
+  if ($html_tests{$test->[0]}) {
+    push @{$test->[2]->{'test_formats'}}, 'html_text';
+  }
 
   if ($test->[0] eq 'all_commands' or $test->[0] eq 'all_commands_delimiters') {
     push @test_printindex, [$test->[0] . '_printindex',

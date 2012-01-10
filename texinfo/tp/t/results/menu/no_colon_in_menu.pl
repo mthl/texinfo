@@ -309,4 +309,12 @@ $result_converted_errors{'html'}->{'no_colon_in_menu'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'no_colon_in_menu'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+
+<menu>
+<menucomment><pre xml:space="preserve">* a
+</pre></menucomment></menu>
+';
+
 1;
