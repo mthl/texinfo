@@ -76,6 +76,9 @@ in @code{documentdescri---ption} --- @bullet{} @enddots{} @verb{:"verb:} @aa{} @
 @itemize
 @item idescr
 @end itemize
+@html
+in html
+@end html
 AAA
 
 CCC
@@ -83,6 +86,10 @@ CCC
 @itemize
 @item iaa
 @end itemize
+
+@html
+in html title
+@end html
 
 BBB
 
@@ -102,6 +109,9 @@ in description
 @itemize
 @item idetaildescr
 @end itemize
+@html
+detailin detailhtml
+@end html
 detailAAA
 
 detailCCC
@@ -109,6 +119,10 @@ detailCCC
 @itemize
 @item detailiaa
 @end itemize
+
+@html
+detailin html detailtitle
+@end html
 
 detailBBB
 

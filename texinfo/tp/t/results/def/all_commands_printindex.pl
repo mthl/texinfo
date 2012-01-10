@@ -4274,4 +4274,222 @@ Node: Top41
 End Tag Table
 ';
 
+
+$result_converted{'html'}->{'all_commands_printindex'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="tp">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<link href="#Top" rel="index" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+<dl>
+<dt><a name="index-d_002d_002defvr_005fname"></a>c--ategory: <strong>d--efvr_name</strong></dt>
+<dd><p>d&ndash;efvr
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002deftypefn_005fname"></a>c--ategory: <em>t--ype</em> <strong>d--eftypefn_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;eftypefn
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002deftypeop_005fname-on-c_002d_002dlass"></a>c--ategory on c--lass: <em>t--ype</em> <strong>d--eftypeop_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;eftypeop
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002deftypevr_005fname"></a>c--ategory: <em>t--ype</em> <strong>d--eftypevr_name</strong></dt>
+<dd><p>d&ndash;eftypevr
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defcv_005fname"></a>c--ategory of c--lass: <strong>d--efcv_name</strong></dt>
+<dd><p>d&ndash;efcv
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defop_005fname-on-c_002d_002dlass"></a>c--ategory on c--lass: <strong>d--efop_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;efop
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002deftp_005fname"></a>c--ategory: <strong>d--eftp_name</strong> <em>a--ttributes...</em></dt>
+<dd><p>d&ndash;eftp
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defun_005fname"></a>Function: <strong>d--efun_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;efun
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defmac_005fname"></a>Macro: <strong>d--efmac_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;efmac
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defspec_005fname"></a>Special Form: <strong>d--efspec_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;efspec
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defvar_005fname"></a>Variable: <strong>d--efvar_name</strong></dt>
+<dd><p>d&ndash;efvar
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defopt_005fname"></a>User Option: <strong>d--efopt_name</strong></dt>
+<dd><p>d&ndash;efopt
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002deftypefun_005fname"></a>Function: <em>t--ype</em> <strong>d--eftypefun_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;eftypefun
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002deftypevar_005fname"></a>Variable: <em>t--ype</em> <strong>d--eftypevar_name</strong></dt>
+<dd><p>d&ndash;eftypevar
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defivar_005fname-of-c_002d_002dlass"></a>Instance Variable of c--lass: <strong>d--efivar_name</strong></dt>
+<dd><p>d&ndash;efivar
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass"></a>Instance Variable of c--lass: <em>t--ype</em> <strong>d--eftypeivar_name</strong></dt>
+<dd><p>d&ndash;eftypeivar
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002defmethod_005fname-on-c_002d_002dlass"></a>Method on c--lass: <strong>d--efmethod_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;efmethod
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass"></a>Method on c--lass: <em>t--ype</em> <strong>d--eftypemethod_name</strong> <em>a--rguments...</em></dt>
+<dd><p>d&ndash;eftypemethod
+</p></dd></dl>
+
+<a name="Functions"></a>
+<h3 class="heading">Functions</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Top_fn_letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defmac_005fname"><code>d--efmac_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defmethod_005fname-on-c_002d_002dlass"><code>d--efmethod_name on c--lass</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defop_005fname-on-c_002d_002dlass"><code>d--efop_name on c--lass</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defspec_005fname"><code>d--efspec_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002deftypefn_005fname"><code>d--eftypefn_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002deftypefun_005fname"><code>d--eftypefun_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass"><code>d--eftypemethod_name on c--lass</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002deftypeop_005fname-on-c_002d_002dlass"><code>d--eftypeop_name on c--lass</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defun_005fname"><code>d--efun_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<a name="Types"></a>
+<h3 class="heading">Types</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_tp_letter-D"><b>D</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-tp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Top_tp_letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002deftp_005fname"><code>d--eftp_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_tp_letter-D"><b>D</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<a name="Variables"></a>
+<h3 class="heading">Variables</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_vr_letter-D"><b>D</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-vr" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="Top_vr_letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defcv_005fname"><code>d--efcv_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defivar_005fname-of-c_002d_002dlass"><code>d--efivar_name of c--lass</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defopt_005fname"><code>d--efopt_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass"><code>d--eftypeivar_name of c--lass</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002deftypevar_005fname"><code>d--eftypevar_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002deftypevr_005fname"><code>d--eftypevr_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defvar_005fname"><code>d--efvar_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-d_002d_002defvr_005fname"><code>d--efvr_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_vr_letter-D"><b>D</b></a>
+ &nbsp; 
+</td></tr></table>
+<hr>
+<p>
+
+
+</p>
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'all_commands_printindex'} = [
+  {
+    'error_line' => 'warning: Must specify a title with a title command or @top
+',
+    'text' => 'Must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
+
 1;

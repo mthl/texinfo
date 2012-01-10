@@ -513,12 +513,12 @@ foreach my $test (@test_cases) {
 
 @heading Variables
 @printindex vr
-', {'test_formats' => ['info']}]; 
+', {'test_formats' => ['info', 'html']}]; 
   }
 }
 
 foreach my $test (@test_info) {
-  $test->[2]->{'test_formats'} = ['info'];
+  $test->[2]->{'test_formats'} = ['info', 'html'];
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
