@@ -33,7 +33,7 @@ my @test_cases = (
 our ($arg_test_case, $arg_generate, $arg_debug);
 
 foreach my $test (@test_cases) {
-  $test->[2]->{'test_formats'} = ['plaintext'];
+  $test->[2]->{'test_formats'} = ['plaintext', 'html'];
 }
 
 run_all ('heading', \@test_cases, $arg_test_case,
