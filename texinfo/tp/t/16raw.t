@@ -107,6 +107,15 @@ $$
 @end example
 
 '],
+['lone_braces_in_html',
+'@html
+}
+@end html
+
+@html
+{
+@end html
+'],
 ['verbatim_and_verbatiminclude',
 '@verbatim
 In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
@@ -347,6 +356,7 @@ my %html_tests = (
   'raw_expanded_in_style' => 1,
   'verbatim_in_style' => 1,
   'raw_in_example' => 1,
+  'lone_braces_in_html' => 1,
 );
 
 foreach my $test (@test_cases) {
