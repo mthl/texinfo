@@ -389,7 +389,14 @@ explanation
 @c does not work in the standalone perl module
 @c @@verbatiminclude full parent path
 @c @verbatiminclude tp/t/include_dir/inc_file.texi
-',{'include_directories' => ['.', '..', 't/include_dir']}]
+',{'include_directories' => ['.', '..', 't/include_dir']}],
+['image_with_spaces',
+'@image{f--ile,,,@ }.
+@image{f--ile,,,@:}.
+'],
+['image_extension',
+'@image{f---ile,,,,gr--a}
+'],
 );
 
 # This should go to a file, not to code...
@@ -400,11 +407,18 @@ $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
 ],
 );
 
+my %info_tests = (
+ 'image_with_spaces' => 1,
+ 'image_extension' => 1,
+);
+
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
   push @{$test->[2]->{'test_formats'}}, 'xml';
   push @{$test->[2]->{'test_formats'}}, 'docbook';
+  push @{$test->[2]->{'test_formats'}}, 'info'
+    if ($info_tests{$test->[0]});
 }
 
 foreach my $test (@html_text_cases) {
