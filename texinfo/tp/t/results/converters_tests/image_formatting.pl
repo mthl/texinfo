@@ -2775,6 +2775,211 @@ $result_errors{'image_formatting'} = [];
 
 
 
+$result_converted{'plaintext'}->{'image_formatting'} = '`@image{f--ile}\' [Image description""\\.] `@image{f--ile,l--i}\' [Image description""\\.] `@image{f--ile,,l--e}\' [Image description""\\.]
+`@image{f--ile,,,alt}\' [Image description""\\.] `@image{f--ile,,,,e-d-xt}\' [Image description""\\.]
+`@image{f--ile,aze,az,alt,e--xt}\' [Image description""\\.] `@image{f-ile,aze,,a--lt}\' [a-lt]
+`@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt] [aaa
+bbb
+ccc] [aaa
+bbb
+ccc]
+
+     `@image{f--ile}\' [Image description""\\.]
+     `@image{f--ile,l--i}\' [Image description""\\.]
+     `@image{f--ile,,l--e}\' [Image description""\\.]
+     `@image{f--ile,,,alt}\' [Image description""\\.]
+     `@image{f--ile,,,,e-d-xt}\' [Image description""\\.]
+     `@image{f--ile,aze,az,alt,e--xt}\' [Image description""\\.]
+     `@image{f-ile,aze,,a--lt}\' [a-lt]
+     `@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt]
+     [aaa
+bbb
+ccc] [aaa
+bbb
+ccc]
+
+Image description""\\.
+   in para [Image description""\\.].
+';
+
+
+$result_converted{'html_text'}->{'image_formatting'} = '<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<p><code>@image{f--ile}</code> <img src="f--ile.png" alt="f--ile">
+<code>@image{f--ile,l--i}</code> <img src="f--ile.png" alt="f--ile">
+<code>@image{f--ile,,l--e}</code> <img src="f--ile.png" alt="f--ile">
+<code>@image{f--ile,,,alt}</code> <img src="f--ile.png" alt="alt">
+<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.png" alt="f--ile">
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.png" alt="alt">
+<code>@image{f-ile,aze,,a--lt}</code> <img src="f-ile.jpg" alt="a&ndash;lt">
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img src="f--ile@..file ext e--xt}" alt="alt">
+<img src="image.jpg" alt="image"> <img src="image.jpg" alt="image">
+</p>
+<div class="example">
+<pre class="example"><code>@image{f--ile}</code> [ f--ile ]
+<code>@image{f--ile,l--i}</code> [ f--ile ]
+<code>@image{f--ile,,l--e}</code> [ f--ile ]
+<code>@image{f--ile,,,alt}</code> [ alt ]
+<code>@image{f--ile,,,,e-d-xt}</code> [ f--ile ]
+<code>@image{f--ile,aze,az,alt,e--xt}</code> [ alt ]
+<code>@image{f-ile,aze,,a--lt}</code> [ a--lt ]
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> [ alt ]
+[ image ] [ image ]
+</pre></div>
+
+<img src="f--ile.png" alt="a very long alt argument that could span more than one line who knows">
+
+<p>in para
+<img src="f--ile.png" alt="a very long alt argument that could span more than one line who knows">.
+</p><hr>
+';
+
+$result_converted_errors{'html_text'}->{'image_formatting'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':9: warning: @image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'
+',
+    'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 9
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':10: warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'
+',
+    'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 10
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':11: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
+',
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 11
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':11: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
+',
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 11
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':20: warning: @image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'
+',
+    'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 20
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':21: warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'
+',
+    'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 21
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':22: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
+',
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 22
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':22: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
+',
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 22
+  }
+];
+
+
+
+$result_converted{'xml'}->{'image_formatting'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+
+<para><code>&arobase;image&lbrace;f--ile&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile></image>
+<code>&arobase;image&lbrace;f--ile,l--i&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imagewidth>l--i</imagewidth></image>
+<code>&arobase;image&lbrace;f--ile,,l--e&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imageheight>l--e</imageheight></image>
+<code>&arobase;image&lbrace;f--ile,,,alt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><alttext>alt</alttext></image>
+<code>&arobase;image&lbrace;f--ile,,,,e-d-xt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imageextension>e--xt</imageextension></image>
+<code>&arobase;image&lbrace;f--ile,aze,az,alt,e--xt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image>
+<code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a&textndash;lt</alttext></image>
+<code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
+<image where="inline"><imagefile>image</imagefile></image> <image where="inline"><imagefile>image</imagefile></image>
+</para>
+<example>
+<pre xml:space="preserve"><code>&arobase;image&lbrace;f--ile&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile></image>
+<code>&arobase;image&lbrace;f--ile,l--i&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imagewidth>l--i</imagewidth></image>
+<code>&arobase;image&lbrace;f--ile,,l--e&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imageheight>l--e</imageheight></image>
+<code>&arobase;image&lbrace;f--ile,,,alt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><alttext>alt</alttext></image>
+<code>&arobase;image&lbrace;f--ile,,,,e-d-xt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imageextension>e--xt</imageextension></image>
+<code>&arobase;image&lbrace;f--ile,aze,az,alt,e--xt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image>
+<code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a--lt</alttext></image>
+<code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
+<image where="inline"><imagefile>image</imagefile></image> <image where="inline"><imagefile>image</imagefile></image>
+</pre></example>
+
+<image><imagefile>f--ile</imagefile><alttext>a very long alt argument that could span more than one line who knows</alttext></image>
+
+<para>in para
+<image where="inline"><imagefile>f--ile</imagefile><alttext>a very long alt argument that could span more than one line who knows</alttext></image>.
+</para>';
+
+
+$result_converted{'docbook'}->{'image_formatting'} = '<anchor id="Top"/>
+
+<para><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<inlinemediaobject><imageobject><imagedata fileref="image.jpg" format="JPG"></imagedata></imageobject><textobject><literallayout>aaa
+bbb
+ccc</literallayout></textobject></inlinemediaobject> <inlinemediaobject><imageobject><imagedata fileref="image.jpg" format="JPG"></imagedata></imageobject><textobject><literallayout>aaa
+bbb
+ccc</literallayout></textobject></inlinemediaobject>
+</para>
+<screen><literal>@image{f--ile}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,l--i}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<inlinemediaobject><imageobject><imagedata fileref="image.jpg" format="JPG"></imagedata></imageobject><textobject><literallayout>aaa
+bbb
+ccc</literallayout></textobject></inlinemediaobject> <inlinemediaobject><imageobject><imagedata fileref="image.jpg" format="JPG"></imagedata></imageobject><textobject><literallayout>aaa
+bbb
+ccc</literallayout></textobject></inlinemediaobject>
+</screen>
+<informalfigure><mediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></mediaobject></informalfigure>
+
+<para>in para
+<inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>.
+</para>';
+
+
 $result_converted{'info'}->{'image_formatting'} = 'This is , produced by tp version from .
 
 

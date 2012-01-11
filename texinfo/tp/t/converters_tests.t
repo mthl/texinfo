@@ -397,6 +397,36 @@ explanation
 ['image_extension',
 '@image{f---ile,,,,gr--a}
 '],
+['image_formatting',
+'@node Top
+
+@code{@@image@{f--ile@}} @image{f--ile}
+@code{@@image@{f--ile,l--i@}} @image{f--ile,l--i}
+@code{@@image@{f--ile,,l--e@}} @image{f--ile,,l--e}
+@code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+@code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
+@code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+@code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+@code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+@image{image} @image{image}
+
+@example
+@code{@@image@{f--ile@}} @image{f--ile}
+@code{@@image@{f--ile,l--i@}} @image{f--ile,l--i}
+@code{@@image@{f--ile,,l--e@}} @image{f--ile,,l--e}
+@code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+@code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
+@code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+@code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+@code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+@image{image} @image{image}
+@end example
+
+@image{f--ile,,,a very long alt argument that could span more than one line who knows}
+
+in para
+@image{f--ile,,,a very long alt argument that could span more than one line who knows}.
+'],
 );
 
 # This should go to a file, not to code...
@@ -410,6 +440,7 @@ $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
 my %info_tests = (
  'image_with_spaces' => 1,
  'image_extension' => 1,
+ 'image_formatting' => 1,
 );
 
 foreach my $test (@test_cases) {
