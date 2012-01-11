@@ -457,6 +457,23 @@ HHH
 bbbbbbbbb1 bbbbbbbbbbb2 bbbbbbbbbb3 bbbbbbbbbbbbbb4.
 ', {'expanded_formats' => ['tex']}
 ],
+['paragraphindent',
+'First
+
+           aaa b default
+
+@paragraphindent asis
+
+           aaa b asis
+
+@paragraphindent 0
+
+           aaa b 0
+
+@paragraphindent 7
+
+           aaa b 7
+'],
 );
 
 my $insert_copying_and_paragraph = 

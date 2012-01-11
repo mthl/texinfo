@@ -120,6 +120,31 @@ in -- example/format
 @end format
 @end example
 '],
+['comment_example_and_blank_lines',
+'Para.
+
+@example
+comment, blank after @c comment
+@end example
+
+Para.
+
+@example
+comment, no blank after @c comment
+@end example
+Para.
+
+@example
+no comment, blank after
+@end example
+
+Para.
+
+@example
+no comment, no blank after
+@end example
+Para.
+'],
 );
 
 my @test_invalid = (

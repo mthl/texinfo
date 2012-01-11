@@ -305,6 +305,15 @@ $ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HE
 @noindent
 Less recent versions are also present.
 '],
+['noindent_in_paragraph',
+'Begin para
+@noindent
+after noindent.
+
+Begin para2
+@noindent
+after noindent2.
+'],
 ['empty_center',
 '@center 
 '],

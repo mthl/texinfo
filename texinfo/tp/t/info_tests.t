@@ -56,6 +56,21 @@ After paragraphindent.
 
 A para.
 '],
+['space_in_menu',
+'@node Top
+@top Element
+
+Text.
+
+@menu
+* node::           
+@end menu
+
+@node node
+@chapter node
+
+in chapter.
+'],
 ['text_before_node',
 '@node Top
 @top top
@@ -314,6 +329,19 @@ In text
 '@node Top
 
 Just before an image @image{this_is_a_long_unknown_file} text after the image, and more text, and more @image{this_is_a_long_unknown_file} text.
+'],
+['float_long_captions',
+'@node Top
+
+@float Text, text1
+@caption{AAAAAAAAAAAAAAAA BBBBB CCCCCCCCCCC}
+@end float
+
+@float Text, text2
+@caption{AAAAAAAAAAAAAAAA BBBBBB CCCCCCCCCCC}
+@end float
+
+@listoffloats Text
 '],
 ['error_in_footnote',
 '
@@ -691,7 +719,64 @@ Functions index
 @anchor{a counting anchor}
 
 @bye
-']);
+'],
+['index_entry_at_end_node',
+'@node Top
+@top Element
+
+
+@menu
+* chapter::
+* indices::
+@end menu
+
+@node chapter
+@chapter Chapter
+
+
+
+@cindex index entry
+
+@node indices
+@appendix indices
+
+@printindex cp
+'],
+['center_flush',
+'@center centered
+
+@flushleft
+left and
+left2
+
+left3.
+
+
+left Last
+  with space.
+
+Now anchor
+@anchor{anchor in flushleft}
+after anchor
+@end flushleft
+
+@flushright
+right and
+right2
+
+Right3
+
+
+Right last
+  with space.     
+
+Now anchor
+@anchor{anchor in flushright}
+after anchor
+Second anchor in text @anchor{second anchor in flushright} after anchor.
+@end flushright
+'],
+);
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'info';
