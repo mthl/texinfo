@@ -397,4 +397,29 @@ item. tab.
 
 ';
 
+
+$result_converted{'html_text'}->{'paragraph_in_cells'} = '<table>
+<tr><td>truc</td><td>bidule</td></tr>
+<tr><td>begin item
+
+<p>new paragraph in item.
+</p></td><td>begin tab
+
+<p>new paragraph in tab.
+</p></td></tr>
+</table>
+';
+
+
+$result_converted{'xml'}->{'paragraph_in_cells'} = '<multitable><columnprototypes><columnprototype>AAA</columnprototype><columnprototype>BBB</columnprototype></columnprototypes>
+<tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
+</para></entry></row><row><entry command="item"><para>begin item
+</para>
+<para>new paragraph in item.
+</para>
+</entry><entry command="tab"><para>begin tab
+</para>
+<para>new paragraph in tab.
+</para></entry></row></tbody></multitable>';
+
 1;

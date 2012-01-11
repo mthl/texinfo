@@ -138,4 +138,12 @@ $result_errors{'prototype_brace_no_brace'} = [];
 
 $result_converted{'plaintext'}->{'prototype_brace_no_brace'} = '';
 
+
+$result_converted{'html_text'}->{'prototype_brace_no_brace'} = '';
+
+
+$result_converted{'xml'}->{'prototype_brace_no_brace'} = '<multitable><columnprototypes><columnprototype>aa</columnprototype><columnprototype>bb</columnprototype></columnprototypes>
+</multitable>
+';
+
 1;

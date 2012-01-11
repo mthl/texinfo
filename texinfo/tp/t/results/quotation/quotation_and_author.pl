@@ -354,6 +354,18 @@ $result_converted{'plaintext'}->{'quotation_and_author'} = '     A quot--ation
 ';
 
 
+$result_converted{'html_text'}->{'quotation_and_author'} = '<blockquote>
+<p>A quot&mdash;ation
+</p></blockquote>
+<p align="center">&mdash; <em>Some One</em>
+</p>
+<blockquote>
+<p><b>Note:</b> A Note
+</p></blockquote>
+<p align="center">&mdash; <em>Some Notifier</em>
+</p>';
+
+
 $result_converted{'xml'}->{'quotation_and_author'} = '<quotation> 
 <author>Some One</author>
 <para>A quot&textmdash;ation

@@ -999,4 +999,51 @@ item new line
 not empty                            tab not empty
 ';
 
+
+$result_converted{'html_text'}->{'empty_item_tab'} = '<table>
+<tr><td width="100%"></td></tr>
+<tr><td width="100%"></td></tr>
+<tr><td width="100%">text</td></tr>
+<tr><td width="100%"></td></tr>
+</table>
+
+<table>
+<tr><td width="50%"></td></tr>
+<tr><td width="50%"></td></tr>
+<tr><td width="50%">only item</td></tr>
+<tr><td width="50%">item text</td><td width="50%"></td></tr>
+<tr><td width="50%">item new line</td><td width="50%"></td></tr>
+<tr><td width="50%"></td><td width="50%"></td></tr>
+<tr><td width="50%"></td><td width="50%"></td></tr>
+<tr><td width="50%">not empty</td><td width="50%">tab not empty</td></tr>
+</table>
+';
+
+
+$result_converted{'xml'}->{'empty_item_tab'} = '<multitable><columnfractions><columnfraction value="1.0"></columnfraction></columnfractions>
+<tbody><row><entry command="item">
+
+</entry></row><row><entry command="item">
+</entry></row><row><entry command="item"><para>text
+</para></entry></row><row><entry command="item">
+</entry></row></tbody></multitable>
+
+<multitable><columnfractions><columnfraction value="0.5"></columnfraction><columnfraction value="0.5"></columnfraction></columnfractions>
+<tbody><row><entry command="item">
+
+</entry></row><row><entry command="item">
+</entry></row><row><entry command="item"><para>only item
+</para>
+</entry></row><row><entry command="item"><para>item text </para></entry><entry command="tab">
+</entry></row><row><entry command="item"><para>item new line
+</para></entry><entry command="tab">
+
+</entry></row><row><entry command="item"></entry><entry command="tab">
+</entry></row><row><entry command="item">
+</entry><entry command="tab">
+
+</entry></row><row><entry command="item"><para>not empty </para></entry><entry command="tab"><para>tab not empty
+</para></entry></row></tbody></multitable>
+';
+
 1;

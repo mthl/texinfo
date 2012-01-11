@@ -286,4 +286,18 @@ $result_errors{'w_in_multitable'} = [];
 $result_converted{'plaintext'}->{'w_in_multitable'} = 'aaaaaaaa bbbbbbbbbbgg
 ';
 
+
+$result_converted{'html_text'}->{'w_in_multitable'} = '<table>
+<tr><td>aaaaaaaa&nbsp;bbbbbbbbbb<!-- /@w --></td><td>gg</td></tr>
+</table>
+';
+
+
+$result_converted{'xml'}->{'w_in_multitable'} = '<multitable><columnprototypes><columnprototype>aaaaaaaaa</columnprototype><columnprototype>bbbbbbbbbbb</columnprototype></columnprototypes>
+<tbody><row><entry command="item"><para><w>aaaaaaaa
+bbbbbbbbbb</w>
+</para></entry><entry command="tab"><para>gg
+</para></entry></row></tbody></multitable>
+';
+
 1;

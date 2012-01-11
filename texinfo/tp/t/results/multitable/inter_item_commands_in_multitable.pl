@@ -1218,4 +1218,57 @@ thing
 
 ';
 
+
+$result_converted{'html_text'}->{'inter_item_commands_in_multitable'} = '<table>
+<tr><td>truc
+
+<a name="index-index-entry-between-empty-lines"></a></td></tr>
+<tr><td>trouc</td></tr>
+</table>
+
+<table>
+<thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="40%">another tab</th></tr></thead>
+<tr><td width="60%">mu&ndash;ltitable item</td><td width="40%">multitable tab</td></tr>
+<tr><td width="60%">mu&ndash;ltitable item 2</td><td width="40%">multitable tab 2
+<a name="index-index-entry-within-multitable"></a></td></tr>
+<tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</table>
+
+<table>
+<tr><td>Title
+<a name="index-cindex"></a></td></tr>
+<tr><td>thing</td></tr>
+</table>
+
+';
+
+
+$result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable><columnprototypes><columnprototype>truc</columnprototype></columnprototypes>
+<beforefirstitem><!-- comment before first item -->
+
+</beforefirstitem><tbody><row><entry command="item"><para>truc
+</para>
+<cindex index="cp"><indexterm index="cp">index entry between empty lines</indexterm></cindex>
+
+</entry></row><row><entry command="item"><para>trouc
+<!-- last comment -->
+</para></entry></row></tbody></multitable>
+
+<multitable><columnfractions><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
+<thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
+</para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
+<!-- comment in multitable -->
+</para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
+<cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
+</para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
+</para></entry></row></tbody></multitable>
+
+<multitable><columnprototypes><columnprototype>thing</columnprototype></columnprototypes>
+<beforefirstitem><para>Title
+<cindex index="cp"><indexterm index="cp">cindex</indexterm></cindex>
+</para></beforefirstitem><tbody><row><entry command="item"><para>thing
+</para></entry></row></tbody></multitable>
+
+';
+
 1;

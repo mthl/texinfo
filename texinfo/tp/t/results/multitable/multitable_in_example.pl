@@ -455,4 +455,31 @@ $result_converted{'plaintext'}->{'multitable_in_example'} = '     truc  bidule e
 
 ';
 
+
+$result_converted{'html_text'}->{'multitable_in_example'} = '<div class="example">
+<table>
+<tr><td><pre class="example">truc</pre></td><td><pre class="example">bidule example</pre></td></tr>
+<tr><td><pre class="example">begin item example
+
+new paragraph in item. example</pre></td><td><pre class="example">begin tab example
+
+new paragraph in tab. example</pre></td></tr>
+</table>
+</div>
+';
+
+
+$result_converted{'xml'}->{'multitable_in_example'} = '<example>
+<multitable><columnprototypes><columnprototype>AAA</columnprototype><columnprototype>BBB</columnprototype></columnprototypes>
+<tbody><row><entry command="item"><pre xml:space="preserve">truc </pre></entry><entry command="tab"><pre xml:space="preserve">bidule example
+</pre></entry></row><row><entry command="item"><pre xml:space="preserve">begin item example
+
+new paragraph in item. example
+
+</pre></entry><entry command="tab"><pre xml:space="preserve">begin tab example
+
+new paragraph in tab. example
+</pre></entry></row></tbody></multitable>
+</example>';
+
 1;

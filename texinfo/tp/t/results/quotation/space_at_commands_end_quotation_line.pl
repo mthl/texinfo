@@ -354,6 +354,17 @@ $result_converted{'plaintext'}->{'space_at_commands_end_quotation_line'} = '    
 ';
 
 
+$result_converted{'html_text'}->{'space_at_commands_end_quotation_line'} = '
+<blockquote>
+<p><b>@ at the end of line &nbsp;:</b> A @ at the end of the @quotation line.
+</p></blockquote>
+
+<blockquote>
+<p><b>@&nbsp; at the end of line &nbsp;:</b> A @&nbsp; at the end of the @quotation line.
+</p></blockquote>
+';
+
+
 $result_converted{'xml'}->{'space_at_commands_end_quotation_line'} = '
 <quotation><quotationtype>&arobase; at the end of line <spacecmd type="nl"/></quotationtype><para>A &arobase; at the end of the &arobase;quotation line.
 </para></quotation>
