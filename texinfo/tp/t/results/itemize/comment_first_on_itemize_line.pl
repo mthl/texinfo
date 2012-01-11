@@ -173,4 +173,10 @@ $result_errors{'comment_first_on_itemize_line'} = [];
 $result_converted{'plaintext'}->{'comment_first_on_itemize_line'} = '   * first
 ';
 
+
+$result_converted{'html_text'}->{'comment_first_on_itemize_line'} = '<ul>
+<li> first
+</li></ul>
+';
+
 1;

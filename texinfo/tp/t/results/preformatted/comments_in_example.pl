@@ -302,4 +302,26 @@ $result_converted{'html_text'}->{'comments_in_example'} = '<p>Example with comme
 <pre class="example">line </pre></div>
 ';
 
+
+$result_converted{'docbook'}->{'comments_in_example'} = '<para>Example with comments 2 lines
+</para><screen>line <!-- comment -->
+second line <!-- comment -->
+</screen>
+<para>Example with comments 1 line
+</para><screen>line <!-- comment -->
+</screen>';
+
+
+$result_converted{'xml'}->{'comments_in_example'} = '<para>Example with comments 2 lines
+</para><example> 
+<pre xml:space="preserve">line <!-- comment -->
+second line <!-- comment -->
+</pre></example>
+
+<para>Example with comments 1 line
+</para><example>
+<pre xml:space="preserve">line <!-- comment -->
+</pre></example>
+';
+
 1;

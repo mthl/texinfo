@@ -165,4 +165,16 @@ Text.
 </pre></div>
 ';
 
+
+$result_converted{'docbook'}->{'titlefont_in_example'} = 'Title<screen>
+Text.
+</screen>';
+
+
+$result_converted{'xml'}->{'titlefont_in_example'} = '<example>
+<titlefont>Title</titlefont><pre xml:space="preserve">
+Text.
+</pre></example>
+';
+
 1;

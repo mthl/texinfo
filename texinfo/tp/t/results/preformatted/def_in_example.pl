@@ -302,4 +302,17 @@ $result_converted{'html_text'}->{'def_in_example'} = '<div class="example">
 </div>
 ';
 
+
+$result_converted{'docbook'}->{'def_in_example'} = '<synopsis><indexterm role="fn"><primary>name</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>name</function> <replaceable>arg</replaceable></synopsis>
+<blockquote><screen>in defun
+</screen></blockquote>';
+
+
+$result_converted{'xml'}->{'def_in_example'} = '<example>
+<defun><definitionterm><indexterm index="fn">name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>name</deffunction> <defparam>arg</defparam></definitionterm>
+<definitionitem><pre xml:space="preserve">in defun
+</pre></definitionitem></defun>
+</example>
+';
+
 1;

@@ -617,4 +617,21 @@ $result_converted{'plaintext'}->{'enumerate_argument_item'} = '  1. numeric firs
   aa. lower case second
 ';
 
+
+$result_converted{'html_text'}->{'enumerate_argument_item'} = '<ol>
+<li> numeric first
+</li><li> numeric second
+</li></ol>
+
+<ol>
+<li> upper case first
+</li><li> upper case second
+</li></ol>
+
+<ol>
+<li> lower case first
+</li><li> lower case second
+</li></ol>
+';
+
 1;

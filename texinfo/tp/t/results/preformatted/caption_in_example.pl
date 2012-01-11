@@ -375,4 +375,26 @@ After caption
 </pre></div>
 </div><p><strong>float: </strong>caption</p>';
 
+
+$result_converted{'docbook'}->{'caption_in_example'} = '
+<screen>in example 
+
+</screen><screen>
+
+After caption
+</screen>';
+
+
+$result_converted{'xml'}->{'caption_in_example'} = '<float type="float"><floattype>float</floattype>
+
+<example>
+<pre xml:space="preserve">in example 
+
+</pre><caption><para>caption</para></caption><pre xml:space="preserve">
+
+After caption
+</pre></example>
+</float>
+';
+
 1;

@@ -369,4 +369,9 @@ $result_errors{'enumerate_argument'} = [];
 
 $result_converted{'plaintext'}->{'enumerate_argument'} = '';
 
+
+$result_converted{'html_text'}->{'enumerate_argument'} = '
+
+';
+
 1;

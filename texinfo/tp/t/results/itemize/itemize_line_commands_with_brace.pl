@@ -342,4 +342,14 @@ $result_converted{'plaintext'}->{'itemize_line_commands_with_brace'} = '   * bul
    - minus
 ';
 
+
+$result_converted{'html_text'}->{'itemize_line_commands_with_brace'} = '<ul>
+<li> bullet
+</li></ul>
+
+<ul class="no-bullet">
+<li>- minus
+</li></ul>
+';
+
 1;

@@ -141,4 +141,18 @@ $result_converted{'html_text'}->{'quote_dash_in_example'} = '
 </pre></div>
 ';
 
+
+$result_converted{'docbook'}->{'quote_dash_in_example'} = '
+<screen>and now -- yes---now and ``so\'\'.
+
+</screen>';
+
+
+$result_converted{'xml'}->{'quote_dash_in_example'} = '
+<example>
+<pre xml:space="preserve">and now -- yes---now and ``so\'\'.
+
+</pre></example>
+';
+
 1;

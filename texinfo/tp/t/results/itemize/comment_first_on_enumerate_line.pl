@@ -162,4 +162,10 @@ $result_errors{'comment_first_on_enumerate_line'} = [];
 $result_converted{'plaintext'}->{'comment_first_on_enumerate_line'} = '  1. first
 ';
 
+
+$result_converted{'html_text'}->{'comment_first_on_enumerate_line'} = '<ol>
+<li> first
+</li></ol>
+';
+
 1;

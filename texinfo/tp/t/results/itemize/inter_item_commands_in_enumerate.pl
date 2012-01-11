@@ -396,4 +396,16 @@ $result_converted{'plaintext'}->{'inter_item_commands_in_enumerate'} = '  1. e-n
   1. enum
 ';
 
+
+$result_converted{'html_text'}->{'inter_item_commands_in_enumerate'} = '<ol>
+<li> e&ndash;numerate
+</li></ol>
+
+<ol>
+<li>Title
+<a name="index-cindex"></a>
+</li><li> enum
+</li></ol>
+';
+
 1;

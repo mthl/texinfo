@@ -425,4 +425,32 @@ in -- example/format
 </div>
 ';
 
+
+$result_converted{'docbook'}->{'nested_formats'} = '<screen>
+in -- format/example
+
+</screen>
+<abstract>
+in -- example/format
+
+</abstract>';
+
+
+$result_converted{'xml'}->{'nested_formats'} = '<format>
+<example>
+<pre xml:space="preserve">
+in -- format/example
+
+</pre></example>
+</format>
+
+<example>
+<format>
+<pre xml:space="preserve">
+in -- example/format
+
+</pre></format>
+</example>
+';
+
 1;

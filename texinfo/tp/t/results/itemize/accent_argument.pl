@@ -358,4 +358,14 @@ $result_converted{'plaintext'}->{'accent_argument'} = '   * item
    * item
 ';
 
+
+$result_converted{'html_text'}->{'accent_argument'} = '<ul>
+<li> item
+</li></ul>
+
+<ul>
+<li> item
+</li></ul>
+';
+
 1;

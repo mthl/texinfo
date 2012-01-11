@@ -847,4 +847,33 @@ $result_converted{'plaintext'}->{'enumerate_and_empty_lines'} = '  1. first item
      vvvvvvvvv ggggggggg h
 ';
 
+
+$result_converted{'html_text'}->{'enumerate_and_empty_lines'} = '<ol>
+<li> first item
+</li><li> <div class="example">
+<pre class="example">In example
+
+end example.
+</pre></div>
+</li><li> 
+empty line.
+</li><li> 
+<div class="example">
+<pre class="example">In second example
+</pre></div>
+</li><li> <blockquote>
+<p>Quotation
+</p></blockquote>
+
+</li><li> 
+<blockquote>
+<p>quotation after a blank line
+</p></blockquote>
+</li></ol>
+
+<ol>
+<li> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa fffffffff ggggggggg vvvvvvvvv ggggggggg h
+</li></ol>
+';
+
 1;

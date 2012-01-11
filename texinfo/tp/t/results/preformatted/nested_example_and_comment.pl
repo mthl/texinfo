@@ -734,4 +734,44 @@ $result_converted{'html_text'}->{'nested_example_and_comment'} = '<div class="ex
 <pre class="example">In first one </pre></div>
 ';
 
+
+$result_converted{'docbook'}->{'nested_example_and_comment'} = '<screen>First line 0 <!-- -->
+</screen><screen>Nested example
+</screen><screen>In first one
+</screen>
+<screen>First line 1 <!-- -->
+</screen><screen>Nested example <!-- -->
+</screen><screen>In first one
+</screen>
+<screen>First line 2 <!-- -->
+</screen><screen>Nested example <!-- -->
+</screen><screen>In first one <!-- -->
+</screen>';
+
+
+$result_converted{'xml'}->{'nested_example_and_comment'} = '<example>
+<pre xml:space="preserve">First line 0 <!-- -->
+</pre><example>
+<pre xml:space="preserve">Nested example
+</pre></example>
+<pre xml:space="preserve">In first one
+</pre></example>
+
+<example>
+<pre xml:space="preserve">First line 1 <!-- -->
+</pre><example>
+<pre xml:space="preserve">Nested example <!-- -->
+</pre></example>
+<pre xml:space="preserve">In first one
+</pre></example>
+
+<example>
+<pre xml:space="preserve">First line 2 <!-- -->
+</pre><example>
+<pre xml:space="preserve">Nested example <!-- -->
+</pre></example>
+<pre xml:space="preserve">In first one <!-- -->
+</pre></example>
+';
+
 1;

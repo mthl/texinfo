@@ -762,4 +762,26 @@ $result_converted{'plaintext'}->{'itemize_in_example'} = '        * first
         * a-n itemize line in an itemize line
 ';
 
+
+$result_converted{'html_text'}->{'itemize_in_example'} = '<div class="example">
+<ul>
+<li> <pre class="example">first
+
+more.
+</pre></li></ul>
+<pre class="example">
+</pre><ul class="no-bullet">
+<li> <pre class="example">as is
+</pre></li></ul>
+<pre class="example">
+</pre><ul class="no-bullet">
+<li>+ <pre class="example">item +
+</pre></li></ul>
+<pre class="example">
+</pre><ul class="no-bullet">
+<li>&bull; a--n itemize line <pre class="example">in an itemize line
+</pre></li></ul>
+</div>
+';
+
 1;

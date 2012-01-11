@@ -141,4 +141,18 @@ after empty line
 </pre></div>
 ';
 
+
+$result_converted{'docbook'}->{'empty_line'} = '<screen>example
+
+after empty line
+</screen>';
+
+
+$result_converted{'xml'}->{'empty_line'} = '<example>
+<pre xml:space="preserve">example
+
+after empty line
+</pre></example>
+';
+
 1;

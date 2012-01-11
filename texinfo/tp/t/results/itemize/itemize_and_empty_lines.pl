@@ -2244,4 +2244,78 @@ $result_converted{'plaintext'}->{'itemize_and_empty_lines'} = '   youhou first i
      bbbbbbbbbbbbbbbbbbbbbbb.
 ';
 
+
+$result_converted{'html_text'}->{'itemize_and_empty_lines'} = '<ul class="no-bullet">
+<li>youhou first item
+</li><li>youhou <div class="example">
+<pre class="example">In example
+
+end example.
+</pre></div>
+</li><li>youhou 
+empty line.
+</li><li>youhou 
+<div class="example">
+<pre class="example">In second example
+</pre></div>
+<blockquote>
+<p>Quotation
+</p></blockquote>
+
+</li><li>youhou 
+<blockquote>
+<p>quotation after a blank line
+</p></blockquote>
+</li></ul>
+
+<ul>
+<li> first item
+</li><li> <div class="example">
+<pre class="example">In example
+
+end example.
+</pre></div>
+</li><li> 
+empty line.
+</li><li> 
+<div class="example">
+<pre class="example">In second example
+</pre></div>
+</li><li> <blockquote>
+<p>Quotation
+</p></blockquote>
+
+</li><li> 
+<blockquote>
+<p>quotation after a blank line
+</p></blockquote>
+</li></ul>
+
+<p>An itemize
+</p><ul class="no-bullet">
+<li>- truc 
+line
+</li></ul>
+<p>After itemize
+</p>
+
+<p>A nested itemize
+</p><ul class="no-bullet">
+<li>- truc 
+line
+<ul>
+<li> in nested itemize
+</li></ul>
+<p>After inside nested itemize.
+</p></li></ul>
+<p>After nested itemize
+</p>
+<ul>
+<li> the version number of Texinfo and the program(s) or manual(s) involved.
+</li><li> hardware and operating system names and versions.
+</li><li> something aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaa
+b b bbbbbbbbbbbbbbbbbbbbbbb.
+</li></ul>
+';
+
 1;

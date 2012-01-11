@@ -546,4 +546,30 @@ $result_converted{'html_text'}->{'text_on_command_line'} = '
 
 ';
 
+
+$result_converted{'docbook'}->{'text_on_command_line'} = '
+<screen>normal text
+</screen>
+<screen>in example
+</screen>
+';
+
+
+$result_converted{'xml'}->{'text_on_command_line'} = '<example>
+</example>
+
+<example>
+<pre xml:space="preserve">normal text
+</pre></example>
+
+<example>
+<pre xml:space="preserve">in example
+</pre></example>
+
+<example>
+<example>
+</example>
+</example>
+';
+
 1;
