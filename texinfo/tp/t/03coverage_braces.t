@@ -68,6 +68,14 @@ my @test_cases = (
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}, S@~{e}ction, 
 @cite{manual}}.'],
+['verb_in_xref',
+'@node Top
+
+@xref{Top, @verb{*with
+verb
+
+ggg *}}.
+'],
 ['nested_in_sc',
 '@sc{@sc{aaa @~n @aa{} @~{@aa{}} @footnote{In footnote}, @abbr{ABr, expl}, 
 @verb{:in verb:}}}
@@ -301,7 +309,7 @@ third}
 '],
 ['empty_ref',
 '
-@ref{} @xref{,,something}. @inforef{ }
+@ref{} @xref{,,something}. @inforef{ }
  @inforef{ , arg}.
 ']
 );

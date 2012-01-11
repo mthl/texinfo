@@ -422,6 +422,39 @@ First item text
 ['ref_in_ref',
 '@node Top
 @ref{@ref{Top}}'],
+['footnote_in_ref',
+'@node Top
+
+@xref{Top, Text@footnote{First para
+
+seond para}.'],
+['verbatim_in_ref',
+'@node Top
+
+@xref{Top, 
+@verbatim
+verbat text
+@end verbatim
+
+}.'],
+['quotation_in_ref',
+'@node Top
+
+@xref{Top,
+@quotation
+quotation in ref
+@end quotation
+}.
+'],
+['ignore_in_xref',
+'@node Top
+
+@xref{Top,
+@ignore
+ignore me
+@end ignore
+}.
+'],
 ['in_errormsg',
 '
 @anchor{in ref}

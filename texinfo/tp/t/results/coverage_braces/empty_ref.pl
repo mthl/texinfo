@@ -87,8 +87,8 @@ $result_trees{'empty_ref'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'Â '
+                  'text' => ' ',
+                  'type' => 'empty_spaces_before_argument'
                 }
               ],
               'parent' => {},
@@ -99,16 +99,8 @@ $result_trees{'empty_ref'} = {
           'contents' => [],
           'extra' => {
             'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
-            'node_argument' => {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => '_00c2_00a0'
-            }
+              undef
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -190,10 +182,7 @@ $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1];
-$result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4];
-$result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1];
@@ -207,7 +196,7 @@ $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_tre
 $result_trees{'empty_ref'}{'contents'}[1]{'parent'} = $result_trees{'empty_ref'};
 
 $result_texis{'empty_ref'} = '
-@ref{} @xref{,,something}. @inforef{Â }
+@ref{} @xref{,,something}. @inforef{ }
  @inforef{ , arg}.
 ';
 
@@ -234,6 +223,15 @@ $result_errors{'empty_ref'} = [
     'line_nr' => 2,
     'macro' => '',
     'text' => 'Command @xref missing a node argument',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: warning: Command @inforef missing a node argument
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Command @inforef missing a node argument',
     'type' => 'warning'
   },
   {

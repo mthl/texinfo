@@ -44,6 +44,9 @@ an issue.
 
 warn nested footnotes.
 
+coverage_braces/verb_in_xref there should certainly be an error
+message, and the *Note is stuck with the following word.
+
 
 Missing tests
 =============
