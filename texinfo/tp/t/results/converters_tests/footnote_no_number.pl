@@ -234,6 +234,54 @@ $result_errors{'footnote_no_number'} = [];
 
 
 
+$result_converted{'plaintext'}->{'footnote_no_number'} = 'Para(*).
+
+   Para2(*).
+
+   ---------- Footnotes ----------
+
+   (*) Footnote 1.
+
+   (*) Footnote 2.
+
+';
+
+
+$result_converted{'html_text'}->{'footnote_no_number'} = '<a name="Top"></a>
+<h1 class="node-heading">Top</h1>
+
+<p>Para<a name="DOCF1" href="#FOOT1">(*)</a>.
+</p>
+<p>Para2<a name="DOCF2" href="#FOOT2">(*)</a>.
+</p><div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT1" href="#DOCF1">(*)</a></h3>
+<p>Footnote 1.</p>
+<h3><a name="FOOT2" href="#DOCF2">(*)</a></h3>
+<p>Footnote 2.</p>
+</div>
+<hr>
+';
+
+
+$result_converted{'xml'}->{'footnote_no_number'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+
+<para>Para<footnote><para>Footnote 1.</para></footnote>.
+</para>
+<para>Para2<footnote><para>Footnote 2.</para></footnote>.
+</para>';
+
+
+$result_converted{'docbook'}->{'footnote_no_number'} = '<anchor id="Top"/>
+
+<para>Para<footnote><para>Footnote 1.</para></footnote>.
+</para>
+<para>Para2<footnote><para>Footnote 2.</para></footnote>.
+</para>';
+
+
 $result_converted{'info'}->{'footnote_no_number'} = 'This is , produced by tp version from .
 
 

@@ -68,20 +68,6 @@ text.
 @node chapter node
 @chapter chapter'
 ],
-['footnote_no_number',
-'@node Top
-
-Para@footnote{Footnote 1.}.
-
-Para2@footnote{Footnote 2.}.
-',{} , {'NUMBER_FOOTNOTES' => 0}],
-['footnote_no_number_separate',
-'@node Top
-
-Para@footnote{Footnote 1.}.
-
-Para2@footnote{Footnote 2.}.
-',{} , {'NUMBER_FOOTNOTES' => 0, 'footnotestyle' => 'separate'}],
 ['ref_tests',
 '
 @node Top
@@ -469,7 +455,243 @@ Text
 
 @printindex cp
 '],
-);
+['test_index',
+'@node Top
+@top Element top
+
+@xref{a counting anchor}.
+
+before menu.
+@cindex in Top
+@cindex @@
+@cindex @exclamdown{}
+@cindex "
+
+@deffn fset @var{i} a g
+@deffnx truc machin bidule chose
+
+@end deffn
+
+@ftable @emph
+@item a fun
+Var text
+
+@item second fun
+@itemx itemx fun
+
+@end ftable
+
+@menu
+* name::
+* name1 looooooooooooooooooooooooooooooooooooooooooooooooooooooooong::
+@end menu
+
+@node name
+@chapter A chapter
+
+@cindex index entry looooooooooooooooooooooooooooooooooooooooooooooooooooooooong
+@findex function index entry
+
+A paragraph 
+@findex other function
+end paragraph
+
+a
+
+a
+
+a
+
+a
+
+a
+
+@findex after lines.
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+b
+
+@findex after more than 100 lines
+
+@node name1 looooooooooooooooooooooooooooooooooooooooooooooooooooooooong
+@appendix Index
+
+@cindex index entry in appendix before para
+Para.
+
+Concept index
+@printindex cp
+
+@findex index entry between indices
+
+Functions index
+@printindex fn
+
+@appendixsec appendixsec
+
+@appendixsubsec appendixsubsec
+
+@appendixsubsubsec appendixsubsubsec
+
+@chapheading chapheading
+
+@centerchap centerchap
+
+@chapter chapter end
+
+@cindex index in chapter end
+
+@anchor{a counting anchor}
+
+@bye
+']);
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'info';

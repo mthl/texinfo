@@ -427,6 +427,20 @@ explanation
 in para
 @image{f--ile,,,a very long alt argument that could span more than one line who knows}.
 '],
+['footnote_no_number',
+'@node Top
+
+Para@footnote{Footnote 1.}.
+
+Para2@footnote{Footnote 2.}.
+',{} , {'NUMBER_FOOTNOTES' => 0}],
+['footnote_no_number_separate',
+'@node Top
+
+Para@footnote{Footnote 1.}.
+
+Para2@footnote{Footnote 2.}.
+',{} , {'NUMBER_FOOTNOTES' => 0, 'footnotestyle' => 'separate'}],
 );
 
 # This should go to a file, not to code...
@@ -441,6 +455,8 @@ my %info_tests = (
  'image_with_spaces' => 1,
  'image_extension' => 1,
  'image_formatting' => 1,
+ 'footnote_no_number' => 1,
+ 'footnote_no_number_separate' => 1,
 );
 
 foreach my $test (@test_cases) {
