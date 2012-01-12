@@ -49,6 +49,16 @@ In float.
 @caption{in caption@footnote{in footnote}}
 @end float
 '],
+['footnote_in_caption_and_error',
+'@node Top
+
+@listoffloats fl
+
+@float fl, label
+In float.
+@caption{in caption@footnote{in footnote @error}}
+@end float
+'],
 ['anchor_in_caption',
 '@node Top
 

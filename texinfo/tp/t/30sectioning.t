@@ -1413,6 +1413,9 @@ directions and lone node.
 ';
 
 my @test_cases = (
+['node_too_much_args',
+'@node Top, , , , (dir)'
+],
 [ 'node',
 '
 @node one arg1 
