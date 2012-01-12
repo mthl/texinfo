@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.169 2012-01-07 17:16:18 karl Exp $
+# $Id: texi2dvi,v 1.170 2012-01-12 18:56:31 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002,
 # 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
@@ -34,7 +34,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.169 $'
+rcs_revision='$Revision: 1.170 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -320,8 +320,7 @@ General options:
   -b, --batch         no interaction
   -D, --debug         turn on shell debugging (set -x)
   -h, --help          display this help and exit successfully
-  -o, --output=OFILE  leave output in OFILE (implies --clean);
-                        only one input FILE may be specified in this case
+  -o, --output=OFILE  leave output in OFILE; only one input FILE is allowed
   -q, --quiet         no output unless errors (implies --batch)
   -s, --silent        same as --quiet
   -v, --version       display version information and exit successfully
@@ -679,7 +678,10 @@ destdir ()
 # an auxiliary file with the same base name.
 move_to_dest ()
 {
-  # If we built in place, there is nothing to install, leave.
+#  echo "move_to_dest $*, tidy=$tidy, oname=$oname"
+
+  # If we built in place and have no output name, there is nothing to
+  # do, so just return.
   case $tidy:$oname in
     false:) return;;
   esac
@@ -697,9 +699,12 @@ move_to_dest ()
     case $tidy:$oname in
       true:)  destdir=$orig_pwd
               destfile=$destdir/$file;;
-      *:*)    destfile=`output_base_name "$file"`
+      true:*) destfile=`output_base_name "$file"`
               destdir=`dirname "$destfile"`;;
+      false:*) destfile=$oname
+               destdir=`dirname "$destfile"`;;
     esac
+ 
     # We want to compare the source location and the output location,
     # and if they are different, do the move.  But if they are the
     # same, we must preserve the source.  Since we can't assume
