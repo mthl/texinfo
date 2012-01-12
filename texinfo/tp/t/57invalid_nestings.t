@@ -266,6 +266,47 @@ Some text.
 
 @end table
 '],
+['section_in_flushright',
+'@flushright
+
+text flushed right
+
+@section a section
+'],
+['section_in_copying',
+'@copying
+
+in copying
+
+@section section
+'],
+['section_in_nested_block_commands',
+'@table @strong
+@item item
+table line
+
+@quotation
+
+in quotation
+
+@section a section
+'],
+['section_in_footnote',
+'
+Text@footnote{
+
+@section a section
+'],
+['section_in_math',
+'
+Some @math{aa {x^2
+
+@section sec1
+
+More @math{ in math
+
+@section sec2
+'],
 ['itemx_in_itemize_enumerate_in_table',
 '@table @strong
 @item item

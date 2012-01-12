@@ -32,7 +32,7 @@ In verb
 ['verb_at_end_of_line_not_closed',
  'verb at end of line @verb{
 
-']
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
