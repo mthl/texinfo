@@ -113,6 +113,8 @@ sub singular_end_file($)
   my $program_and_version = $self->get_conf('PACKAGE_AND_VERSION');
   my $version = $self->get_value('VERSION');
   my $version_date = $self->get_value('VERSION_DATE');
+  $version = 'NO VERSION' if (!defined($version));
+  $version_date = 'NO VERSION DATE' if (!defined($version_date));
   my $result = '
 <font size="-1">
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version '."$version, $version_date,
@@ -251,6 +253,8 @@ sub T2H_SING_pre_about($$)
   my $element = shift;
   my $version = $self->get_value('VERSION');
   my $version_date = $self->get_value('VERSION_DATE');
+  $version = 'NO VERSION' if (!defined($version));
+  $version_date = 'NO VERSION DATE' if (!defined($version_date));
   my $program_homepage = $self->get_conf('PACKAGE_URL');
   my $program_and_version = $self->get_conf('PACKAGE_AND_VERSION');
   my $result = '';
