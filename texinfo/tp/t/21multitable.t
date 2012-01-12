@@ -100,6 +100,11 @@ Title
 '@multitable aa@var{FF} b    cc
 @end multitable
 '],
+['multitable_with_empty_item_tab',
+'@multitable @columnfractions 0.3 0.7
+@item 1-1 @tab 1-2 @item@tab@item 3-1 @tab 3-2
+@end multitable
+'],
 );
 
 my @test_invalid = (
@@ -144,7 +149,7 @@ my @test_invalid = (
 @tab t2
 @item it
 @end multitable
-']
+'],
 );
 
 foreach my $test (@test_cases) {
