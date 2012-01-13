@@ -1,5 +1,11 @@
 2012-01-12  Karl Berry  <karl@gnu.org>
 
+	* util/texi2dvi (run_makeinfo): put the whole version check
+	subshell into the if condition, else the oh-so-helpful set -e
+	defeats the check for a broken texinfo.tex.
+	Report from Jim Meyering, 09 Nov 2011 20:43:08,
+	help from Eric Blake, 9 Nov 2011 21:59:33.
+
 	* util/texi2dvi (move_to_dest): support --output in non-clean modes.
 
 	* util/tests/automtest.sh: manual test from automake, via

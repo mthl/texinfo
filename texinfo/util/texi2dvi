@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.170 2012-01-12 18:56:31 karl Exp $
+# $Id: texi2dvi,v 1.171 2012-01-13 00:26:17 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002,
 # 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
@@ -34,7 +34,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.170 $'
+rcs_revision='$Revision: 1.171 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -1345,22 +1345,21 @@ run_makeinfo ()
     # Check if texinfo.tex performs macro expansion by looking for
     # its version.  The version is a date of the form YEAR-MO-DA.
     # We don't need to use [0-9] to match the digits since anyway
-    # the comparison with $txiprereq, a number, will fail with non
-    # digits.
+    # the comparison with $txiprereq, a number, will fail with non-digits.
     # Run in a temporary directory to avoid leaving files.
     version_test_dir=$t2ddir/version_test
     ensure_dir "$version_test_dir"
-    (
+    if (
        cd "$version_test_dir"
        echo '\input texinfo.tex @bye' >txiversion.tex
        # Be sure that if tex wants to fail, it is not interactive:
        # close stdin.
        $TEX txiversion.tex </dev/null >txiversion.out 2>txiversion.err
-    )
-    if test $? != 0; then
+    ); then :; else
+      report "texinfo.tex appears to be broken:"
       cat "$version_test_dir/txiversion.out"
       cat "$version_test_dir/txiversion.err" >&2
-      error 1 "texinfo.tex appears to be broken, quitting."
+      error 1 "quitting."
     fi
     eval `sed -n 's/^.*\[\(.*\)version \(....\)-\(..\)-\(..\).*$/txiformat=\1 txiversion="\2\3\4"/p' "$version_test_dir/txiversion.out"`
     verbose "texinfo.tex preloaded as \`$txiformat', version is \`$txiversion' ..."
