@@ -4520,12 +4520,17 @@ sub _parse_texi($;$)
               my $ref = $current->{'parent'};
               if (@{$ref->{'args'}}) {
                 my @args = @{$ref->{'extra'}->{'brace_command_contents'}};
-                if (!defined($args[0])) {
-                  $self->line_warn (sprintf($self->__("Command \@%s missing a node argument"),
+                if (($closed_command eq 'inforef' 
+                     and !defined($args[0]) and !defined($args[2]))
+                    or ($closed_command ne 'inforef'
+                     and !defined($args[0]) and !defined($args[3])
+                     and !defined($args[4]))) {
+                  $self->line_warn (sprintf($self->__("Command \@%s missing a node or external manual argument"),
                                         $closed_command), $line_nr);
                 } else {
                   my $parsed_ref_node = _parse_node_manual($ref->{'args'}->[0]);
-                  $ref->{'extra'}->{'node_argument'} = $parsed_ref_node;
+                  $ref->{'extra'}->{'node_argument'} = $parsed_ref_node
+                     if (defined($parsed_ref_node));
                   if ($closed_command ne 'inforef' 
                            and !defined($args[3]) and !defined($args[4])
                            and !$parsed_ref_node->{'manual_content'}) {

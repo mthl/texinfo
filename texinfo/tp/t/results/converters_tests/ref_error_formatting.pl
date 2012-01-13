@@ -4666,165 +4666,48 @@ $result_texts{'ref_error_formatting'} = '
 
 $result_errors{'ref_error_formatting'} = [
   {
-    'error_line' => ':4: warning: Command @ref missing a node argument
+    'error_line' => ':4: warning: Command @ref missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Command @ref missing a node argument',
+    'text' => 'Command @ref missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: Command @ref missing a node argument
+    'error_line' => ':5: warning: Command @ref missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Command @ref missing a node argument',
+    'text' => 'Command @ref missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':7: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 7,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':22: warning: Command @ref missing a node argument
+    'error_line' => ':22: warning: Command @ref missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'Command @ref missing a node argument',
+    'text' => 'Command @ref missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':24: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 24,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':25: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 25,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':26: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 26,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':27: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 27,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':28: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 28,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':29: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 29,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':30: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 30,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':31: warning: Command @ref missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 31,
-    'macro' => '',
-    'text' => 'Command @ref missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':33: warning: Command @inforef missing a node argument
+    'error_line' => ':33: warning: Command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 33,
     'macro' => '',
-    'text' => 'Command @inforef missing a node argument',
+    'text' => 'Command @inforef missing a node or external manual argument',
     'type' => 'warning'
   },
   {
-    'error_line' => ':34: warning: Command @inforef missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 34,
-    'macro' => '',
-    'text' => 'Command @inforef missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':35: warning: Command @inforef missing a node argument
-',
-    'file_name' => '',
-    'line_nr' => 35,
-    'macro' => '',
-    'text' => 'Command @inforef missing a node argument',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':36: warning: Command @inforef missing a node argument
+    'error_line' => ':36: warning: Command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 36,
     'macro' => '',
-    'text' => 'Command @inforef missing a node argument',
+    'text' => 'Command @inforef missing a node or external manual argument',
     'type' => 'warning'
   },
   {

@@ -311,6 +311,11 @@ third}
 '
 @ref{} @xref{,,something}. @inforef{ }
  @inforef{ , arg}.
+'],
+['ref_empty_node',
+'
+@ref{,,,manual} @ref{,,, , Manual} @inforef{,,imanual}
+@xref{ , Bidule, Truc, file, Printed}.
 ']
 );
 

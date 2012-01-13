@@ -170,6 +170,11 @@ t/results/converters_tests/accent.pl
 t/results/converters_tests/accent_with_text.pl
 t/results/converters_tests/complex_nestings.pl
 t/results/converters_tests/documentencoding_utf8_and_insertions.pl
+t/results/converters_tests/footnote_no_number.pl
+t/results/converters_tests/footnote_no_number_separate.pl
+t/results/converters_tests/image_extension.pl
+t/results/converters_tests/image_formatting.pl
+t/results/converters_tests/image_with_spaces.pl
 t/results/converters_tests/inline_expand_tex.pl
 t/results/converters_tests/inline.pl
 t/results/converters_tests/no_documentencoding_and_insertions.pl
@@ -242,6 +247,7 @@ t/results/coverage_braces/unknown_command_with_braces.pl
 t/results/coverage_braces/unmatched_brace.pl
 t/results/coverage_braces/uref_in_ref.pl
 t/results/coverage_braces/uref_url.pl
+t/results/coverage_braces/verb_in_xref.pl
 t/results/coverage/cartouche_in_example.pl
 t/results/coverage/cartouche_in_quotation.pl
 t/results/coverage/cartouche.pl
@@ -324,6 +330,7 @@ t/results/float/empty_listoffloats.pl
 t/results/float/empty_listoffloats_with_floats.pl
 t/results/float/float_copying.pl
 t/results/float/float_with_at_commands.pl
+t/results/float/footnote_in_caption_and_error.pl
 t/results/float/footnote_in_caption.pl
 t/results/float/listoffloats_with_commands.pl
 t/results/float/numbering_captions_listoffloats.pl
@@ -344,6 +351,7 @@ t/results/html_tests/shortcontents_no_top.pl
 t/results/html_tests/simple_menu.pl
 t/results/html_tests/test_xrefautomaticsectiontitle.pl
 t/results/html_tests/tex_expanded_in_copying.pl
+t/results/html_tests/titles.pl
 t/results/html_tests/verbatim_in_multitable_in_example.pl
 t/results/html_tests/xml_protected_in_verb.pl
 t/results/include/double_include.pl
@@ -368,6 +376,7 @@ t/results/indices/double_syncodeindex.pl
 t/results/indices/empty_cindex_entry.pl
 t/results/indices/empty_index_entry.pl
 t/results/indices/empty_string_index_entry.pl
+t/results/indices/ftable_vtable.pl
 t/results/indices/image_lines_count.pl
 t/results/indices/image_text_lines_count.pl
 t/results/indices/index_entries_locations.pl
@@ -391,6 +400,7 @@ t/results/indices/wrong_synindex.pl
 t/results/info_tests/anchor_and_spaces.pl
 t/results/info_tests/anchor_in_command.pl
 t/results/info_tests/before_node_and_section.pl
+t/results/info_tests/center_flush.pl
 t/results/info_tests/colon_in_index_entry.pl
 t/results/info_tests/contents_setcontentsaftertitlepage_before_node.pl
 t/results/info_tests/def_in_copying.pl
@@ -398,17 +408,16 @@ t/results/info_tests/direntry_dircategory_and_commands.pl
 t/results/info_tests/encoding_us_ascii.pl
 t/results/info_tests/error_in_footnote.pl
 t/results/info_tests/file_only_png.pl
-t/results/info_tests/footnote_no_number.pl
-t/results/info_tests/footnote_no_number_separate.pl
+t/results/info_tests/float_long_captions.pl
 t/results/info_tests/image_and_punctuation.pl
 t/results/info_tests/image_and_spaces_formatting.pl
 t/results/info_tests/image_extension.pl
 t/results/info_tests/image_file_search.pl
-t/results/info_tests/image_formatting.pl
 t/results/info_tests/image_in_paragraph.pl
 t/results/info_tests/image_not_found.pl
 t/results/info_tests/image_quotes.pl
 t/results/info_tests/image_text_encoded.pl
+t/results/info_tests/index_entry_at_end_node.pl
 t/results/info_tests/known_encoding.pl
 t/results/info_tests/multitable_anchor_and_index_entry.pl
 t/results/info_tests/nested_footnotes_separate.pl
@@ -425,8 +434,10 @@ t/results/info_tests/paragraphindent_none_first.pl
 t/results/info_tests/pxref_test.pl
 t/results/info_tests/ref_tests.pl
 t/results/info_tests/space_at_menu_end.pl
+t/results/info_tests/space_in_menu.pl
 t/results/info_tests/space_in_setfilename.pl
 t/results/info_tests/split_no_copying.pl
+t/results/info_tests/test_index.pl
 t/results/info_tests/text_before_node.pl
 t/results/info_tests/top_node_normalization.pl
 t/results/info_tests/unknown_encoding.pl
@@ -443,8 +454,10 @@ t/results/invalid_nestings/enumerate_in_style_command.pl
 t/results/invalid_nestings/example_in_style_command.pl
 t/results/invalid_nestings/float_in_style_command.pl
 t/results/invalid_nestings/flushright_in_style_command.pl
+t/results/invalid_nestings/footnote_in_ref.pl
 t/results/invalid_nestings/formats_not_closed_in_example.pl
 t/results/invalid_nestings/ignored_text.pl
+t/results/invalid_nestings/ignore_in_xref.pl
 t/results/invalid_nestings/in_errormsg.pl
 t/results/invalid_nestings/in_table.pl
 t/results/invalid_nestings/item_in_ref.pl
@@ -460,10 +473,16 @@ t/results/invalid_nestings/on_def_line.pl
 t/results/invalid_nestings/on_index_entry_line.pl
 t/results/invalid_nestings/on_itemize_line.pl
 t/results/invalid_nestings/on_section_line.pl
+t/results/invalid_nestings/quotation_in_ref.pl
 t/results/invalid_nestings/quotation_in_style_command.pl
 t/results/invalid_nestings/recursive_copying.pl
 t/results/invalid_nestings/ref_in_anchor.pl
 t/results/invalid_nestings/ref_in_ref.pl
+t/results/invalid_nestings/section_in_copying.pl
+t/results/invalid_nestings/section_in_flushright.pl
+t/results/invalid_nestings/section_in_footnote.pl
+t/results/invalid_nestings/section_in_math.pl
+t/results/invalid_nestings/section_in_nested_block_commands.pl
 t/results/invalid_nestings/section_in_table.pl
 t/results/invalid_nestings/style_not_closed_before_first_node.pl
 t/results/invalid_nestings/style_not_closed_in_block_command.pl
@@ -478,6 +497,7 @@ t/results/invalid_nestings/table_on_item_line.pl
 t/results/invalid_nestings/unclosed_verb_end_of_line_on_misc_line.pl
 t/results/invalid_nestings/unclosed_verb_on_misc_line.pl
 t/results/invalid_nestings/unclosed_verb_on_section_line.pl
+t/results/invalid_nestings/verbatim_in_ref.pl
 t/results/itemize/accent_argument.pl
 t/results/itemize/asis_as_itemize_argument.pl
 t/results/itemize/bad_enumerate_arguments.pl
@@ -624,6 +644,7 @@ t/results/misc_commands/many_lines.pl
 t/results/misc_commands/no_empty_line_between_headings.pl
 t/results/misc_commands/noindent_after_smallexample.pl
 t/results/misc_commands/noindent_indent.pl
+t/results/misc_commands/noindent_in_paragraph.pl
 t/results/misc_commands/ref_in_center.pl
 t/results/misc_commands/setfilename.pl
 t/results/misc_commands/simple.pl
@@ -642,6 +663,7 @@ t/results/multitable/multitable_not_closed_item_tab.pl
 t/results/multitable/multitable_not_closed.pl
 t/results/multitable/multitable_one_column_too_much_cells.pl
 t/results/multitable/multitable_two_columns_too_much_cells.pl
+t/results/multitable/multitable_with_empty_item_tab.pl
 t/results/multitable/paragraph_in_cells.pl
 t/results/multitable/prototype_brace_no_brace_comment.pl
 t/results/multitable/prototype_brace_no_brace.pl
@@ -692,6 +714,7 @@ t/results/plaintext_tests/multitable.pl
 t/results/plaintext_tests/nested_multitable.pl
 t/results/plaintext_tests/no_punctuation_commands_frenchspacing.pl
 t/results/plaintext_tests/no_punctuation_commands.pl
+t/results/plaintext_tests/paragraphindent.pl
 t/results/plaintext_tests/protected_space_end_line.pl
 t/results/plaintext_tests/protect_spaces_on_line.pl
 t/results/plaintext_tests/punctuation_abbr_acronym.pl
@@ -714,6 +737,7 @@ t/results/plaintext_tests/sp_with_text_before_in_example.pl
 t/results/plaintext_tests/star_at_command_formatting.pl
 t/results/plaintext_tests/transparent_text.pl
 t/results/preformatted/caption_in_example.pl
+t/results/preformatted/comment_example_and_blank_lines.pl
 t/results/preformatted/comments_in_example.pl
 t/results/preformatted/def_in_example.pl
 t/results/preformatted/empty_line.pl
@@ -754,10 +778,12 @@ t/results/raw/verbatim_not_closed.pl
 t/results/regions/anchor_in_copying_in_footnote.pl
 t/results/regions/anchor_in_copying.pl
 t/results/regions/anchor_in_titlepage.pl
+t/results/regions/anchor_in_titlepage_titlepage.pl
 t/results/regions/copying_not_closed.pl
 t/results/regions/double_copying.pl
 t/results/regions/double_titlepage_not_closed.pl
 t/results/regions/format_in_titlepage.pl
+t/results/regions/format_in_titlepage_titlepage.pl
 t/results/regions/ref_in_copying.pl
 t/results/regions/today_in_copying.pl
 t/results/sectioning/a_comma_after_node.pl
@@ -811,6 +837,7 @@ t/results/sectioning/nodes_after_top_before_section_nodes.pl
 t/results/sectioning/nodes_after_top_before_section_sections.pl
 t/results/sectioning/nodes_before_top.pl
 t/results/sectioning/nodes_no_node_top_explicit_directions.pl
+t/results/sectioning/node_too_much_args.pl
 t/results/sectioning/node_up_direction_for_top_with_manual.pl
 t/results/sectioning/node_up_external_node.pl
 t/results/sectioning/no_element.pl
@@ -914,6 +941,7 @@ t/results/xml_tests/macro_and_args.pl
 t/results/xml_tests/node_no_section.pl
 t/results/xml_tests/raw.pl
 t/results/xtable/accent_on_table_line.pl
+t/results/xtable/block_commands_in_table.pl
 t/results/xtable/comment_and_itemx_before_item.pl
 t/results/xtable/definfoenclose_on_table_line.pl
 t/results/xtable/empty_item_itemx.pl
