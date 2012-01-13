@@ -11,6 +11,46 @@ my @test_cases = (
 @defindex bbb
 @synindex aaa bbb
 @synindex bbb aaa'],
+['complex_recursive_synindex',
+'@node Top
+
+@defindex aaa
+@defindex bbb
+@defindex ccc
+@defindex ddd
+@defindex eee
+
+@synindex aaa bbb
+@synindex bbb aaa
+
+@synindex ccc aaa
+@synindex ddd bbb
+@eeeindex e before synindex
+
+@synindex eee ddd
+@synindex bbb eee
+
+@cccindex c index
+@bbbindex b entry
+@aaaindex a entry
+@dddindex d index
+@eeeindex e index
+
+bbb
+@printindex bbb
+
+aaa
+@printindex aaa
+
+ccc
+@printindex ccc
+
+ddd
+@printindex ddd
+
+eee
+@printindex eee
+'],
 ['unknown_index_entry',
 '@someindex someindex entry.
 '],
@@ -52,6 +92,31 @@ Text
 @cindex aaa
 
 @printindex cp
+'],
+['ftable_vtable',
+'
+@node Top
+
+@ftable @emph
+@item function1
+@itemx function2x
+Text
+@item fun3
+@end ftable
+
+@vtable @emph
+@item var1 @error{}
+@itemx varx2
+Text
+@item var3
+@end vtable
+
+@findex function1
+
+@printindex fn
+
+@printindex vr
+
 '],
 ['index_entries_locations',
 '
@@ -315,6 +380,21 @@ Top.
 
 @printindex fn
 @printindex cp
+'],
+['syncodeindex_to_plain',
+'@syncodeindex ky cp
+
+@node Top
+
+@kindex --k1
+@vindex --v
+@cindex --c
+
+cp index.
+@printindex cp
+
+vr index.
+@printindex vr
 '],
 ['def_syn_indices',
 '
