@@ -524,6 +524,21 @@ In float with caption.
 'Some text
 @errormsg{Text @~e @code{code}}
 '],
+['unknown_accents',
+'@"X @"x @"Q @"Y
+
+@\'z @\'q @\'r
+@\'Z @\'Q @\'R
+
+@,{H} @,{h}
+
+@^z @^r @^t @^k
+@^Z @^R @^T @^K
+
+@`z @`m @`p
+
+@~Z @~s
+'],
 );
 
 my @test_invalid = (

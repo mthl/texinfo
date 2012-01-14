@@ -52,12 +52,25 @@ my @test_cases = (
 
 @error{}
 '],
+['unknown_language',
+'@documentlanguage unknown
+
+@node Top
+@top unknkown language
+
+Unknown language. @xref{Top}.
+
+@documentlanguage another_UNKNOWN
+
+Another unknown language. @xref{Top}.
+'],
 );
 
 my %info_tests = (
   'multiple' => 1,
   'appendix_translated' => 1,
   'command_translated' => 1,
+  'unknown_language' => 1,
 );
 
 foreach my $test (@test_cases) {
