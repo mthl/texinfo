@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.21 2012-01-11 20:04:54 pertusus Exp $
+# $Id: Makefile.am,v 1.22 2012-01-14 13:28:52 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -127,7 +127,7 @@ test_files = \
 
 relative_include_dir = t/include_dir
 document_domain = $(PACKAGE)_document
-all-local:
+all-local: maintain/catalog.xml
 	for file in $(srcdir)/../po_document/*.gmo; do \
 	  cat=`basename "$$file"` ; \
 	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
@@ -148,6 +148,7 @@ endif
 
 maintainance_files = \
   maintain/all_tests.sh \
+  maintain/change_perl_modules_version.sh \
   maintain/language-subtag-registry \
   maintain/Makefile_perl_po \
   maintain/MANIFEST_generated_files \
@@ -156,7 +157,8 @@ maintainance_files = \
   maintain/regenerate_documentlanguages.pl \
   maintain/regenerate_file_lists.pl \
   maintain/regenerate_perl_module_files.sh \
-  maintain/template.pod
+  maintain/template.pod \
+  maintain/catalog.xml.in
 
 perl_specific_files = \
   Makefile.PL \
@@ -178,7 +180,10 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am
 	"texi2any-perl $(maintainance_files) README TODO COPYING " \
 	"$(perl_specific_files)" \
 	 | sed 's/ \+/\n/g' | sort | cat - $< > $@
-    
+
+maintain/catalog.xml: maintain/catalog.xml.in Makefile
+	sed -E 's|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|' $< > $@
+
 
 libsrcdir = $(srcdir)/maintain/lib
 
@@ -209,9 +214,12 @@ dist-hook:
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
 
+
 distclean-local:
 	rm -rf LocaleData
 	rm -f t/results/*/*.pl.new
 	rm -rf $(relative_include_dir)
+	rm -rf blib po po_document
 
 CLEANFILES = texi2any makeinfo texi2any-perl
+DISTCLEANFILES = maintain/catalog.xml pm_to_blib Makefile.old

@@ -1,4 +1,4 @@
-export XML_CATALOG_FILES=~/src/texinfo/tp/catalog.xml
+export XML_CATALOG_FILES=~/src/texinfo/tp/maintain/catalog.xml
 perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 

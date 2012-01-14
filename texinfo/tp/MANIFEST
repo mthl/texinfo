@@ -8,6 +8,8 @@ init/html32.pm
 init/latex2html.pm
 init/tex4ht.pm
 maintain/all_tests.sh
+maintain/catalog.xml.in
+maintain/change_perl_modules_version.sh
 maintain/language-subtag-registry
 maintain/Makefile_perl_po
 maintain/MANIFEST_generated_files
@@ -232,6 +234,7 @@ t/results/coverage_braces/nested.pl
 t/results/coverage_braces/no_brace.pl
 t/results/coverage_braces/no_brace_space_end_line.pl
 t/results/coverage_braces/recursive_acronym.pl
+t/results/coverage_braces/ref_empty_node.pl
 t/results/coverage_braces/ref_in_style_command.pl
 t/results/coverage_braces/simple.pl
 t/results/coverage_braces/space_command_in_image.pl
@@ -287,6 +290,7 @@ t/results/coverage/table.pl
 t/results/coverage/test_errormsg.pl
 t/results/coverage/test_tie.pl
 t/results/coverage/test_today.pl
+t/results/coverage/unknown_accents.pl
 t/results/coverage/unknown_commands.pl
 t/results/coverage/verbatiminclude.pl
 t/results/def/all_commands_delimiters.pl
@@ -370,6 +374,7 @@ t/results/include/test_paths.pl
 t/results/include/value_expansion_in_include.pl
 t/results/include/verbatiminclude_and_encoding_latin1.pl
 t/results/include/verbatiminclude_and_encoding.pl
+t/results/indices/complex_recursive_synindex.pl
 t/results/indices/def_syn_indices.pl
 t/results/indices/double_index_entry.pl
 t/results/indices/double_syncodeindex.pl
@@ -392,6 +397,7 @@ t/results/indices/printindex_with_space_before.pl
 t/results/indices/print_merged_index.pl
 t/results/indices/recursive_synindex.pl
 t/results/indices/syncode_index_print_both.pl
+t/results/indices/syncodeindex_to_plain.pl
 t/results/indices/unknown_index_entry.pl
 t/results/indices/unknown_printindex.pl
 t/results/indices/unknown_synindex.pl
@@ -524,6 +530,7 @@ t/results/languages/appendix_translated.pl
 t/results/languages/command_translated.pl
 t/results/languages/multiple.pl
 t/results/languages/simple.pl
+t/results/languages/unknown_language.pl
 t/results/macro/arg_body_expansion_order.pl
 t/results/macro/arg_not_closed.pl
 t/results/macro/backslash_in_arg.pl
