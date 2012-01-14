@@ -1,0 +1,17 @@
+\input texinfo   @c -*-texinfo-*-
+@comment %**start of header
+@setfilename at_commands_in_refs_utf8.info
+@documentencoding utf8
+
+@node Top
+@top Top
+
+@menu
+* A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@'C} @exclamdown{} à Â::
+@end menu
+
+@node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@'C} @exclamdown{} à Â
+@chapter  A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@'C} @exclamdown{} à Â
+
+see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotless i trema @"{@dotless{i}} @`{@=E} and exclamdown @exclamdown{} à Â,,,manual}.
+@bye

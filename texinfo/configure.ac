@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.109 2011-12-25 10:57:39 pertusus Exp $
+# $Id: configure.ac,v 1.110 2012-01-14 18:57:28 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -318,6 +318,20 @@ AC_CONFIG_FILES([\
   po_document/Makefile.in
   util/Makefile
   tp/Makefile
+  tp/tests/Makefile
+  tp/tests/many_input_files/Makefile
+  tp/tests/sectioning/Makefile
+  tp/tests/coverage/Makefile
+  tp/tests/formatting/Makefile
+  tp/tests/indices/Makefile
+  tp/tests/contents/Makefile   
+  tp/tests/htmlxref/Makefile
+  tp/tests/htmlxref-only_mono/Makefile
+  tp/tests/htmlxref-only_split/Makefile
+  tp/tests/nested_formats/Makefile
+  tp/tests/encodings/Makefile
+  tp/tests/layout/Makefile
+  tp/tests/path_separator
 ])
 
 AC_OUTPUT

@@ -1,0 +1,28 @@
+\input texinfo
+@setfilename ogonek.info
+
+@documentencoding ISO-8859-2
+
+@node Top
+@top OgoL2
+
+Latin 2 (precomposed).
+@c 0xa1=0241
+Aogonek: ¡
+@c 0xb1=0261
+aogonek: ±
+@c 0xb2=0262
+standalone ogonek: ²
+@c 0xca=0312
+Eogonek: Ê
+@c 0xea=0352
+eogonek: ê
+
+@noindent Accented.
+@ogonek{A} @ogonek{a}
+@ogonek{E} @ogonek{e}
+@ogonek{I} @ogonek{i}
+@ogonek{O} @ogonek{o}
+@ogonek{U} @ogonek{u}
+
+@bye

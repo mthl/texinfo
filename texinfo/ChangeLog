@@ -1,3 +1,11 @@
+2012-01-14  Patrice Dumas  <pertusus@free.fr>
+
+	Move tests from texi2html that are still relevant to tp.
+
+	* configure.ac (AC_CONFIG_FILES): Add tp/tests Makefiles.
+	* tp/Makefile.am (SUBDIRS),
+	* tp/tests: New directory for tests.
+
 2012-01-14  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Use literal matching when searching for xrefs or menu items.

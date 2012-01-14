@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+<filename file="cond.xml"></filename>
+<preamble>\input texinfo
+</preamble><setfilename file="cond.info">cond.info</setfilename>
+
+<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+
+<html>
+This is html text.
+</html>
+
+
+<para>This is ifnothtml text.
+</para>
+
+
+<para>This is ifnotinfo text.
+</para>
+
+<tex>
+This is tex text.
+</tex>
+
+
+<para>This is ifnottex text.
+</para>
+</texinfo>

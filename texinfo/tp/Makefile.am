@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.23 2012-01-14 14:04:58 pertusus Exp $
+# $Id: Makefile.am,v 1.24 2012-01-14 18:57:28 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -17,7 +17,7 @@ include $(srcdir)/Makefile.tres
 $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 	cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl
 
-#SUBDIRS = tests
+SUBDIRS = tests
 
 bin_SCRIPTS = texi2any
 
