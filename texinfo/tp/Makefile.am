@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.22 2012-01-14 13:28:52 pertusus Exp $
+# $Id: Makefile.am,v 1.23 2012-01-14 14:04:58 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -182,6 +182,7 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am
 	 | sed 's/ \+/\n/g' | sort | cat - $< > $@
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
+	$(MKDIR_P) maintain
 	sed -E 's|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|' $< > $@
 
 
