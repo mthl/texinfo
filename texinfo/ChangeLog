@@ -1,3 +1,23 @@
+2012-01-14  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Use literal matching when searching for xrefs or menu items.
+	
+	* info/nodes.c (adjust_nodestart): Reset body_start.
+	* info/session.c (info_toggle_regexp): Minor change.
+	(info_menu_or_ref_item): Set cursor at the start of
+	the body if the search fails.
+	(info_search_in_node_internal): Take additional argument
+	indicating whether to use regexp matching. All uses changed.
+	(info_search_in_node): Likewise.
+	(info_target_search_node): Use additional argument to mask
+	use_regex flag. All uses changed.
+	(info_menu_or_ref_item): Mask out use_regex.
+	* info/session.h (info_search_in_node)
+	(info_target_search_node): Change prototypes.
+	
+	* info/indices.c (info_next_index_match): Update.
+	* info/footnotes.c (make_footnotes_node): Update.
+
 2012-01-12  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_makeinfo): put the whole version check

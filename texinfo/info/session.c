@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.52 2011-10-18 18:47:21 karl Exp $
+   $Id: session.c,v 1.53 2012-01-14 17:58:32 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009, 2011 Free Software Foundation, Inc.
@@ -1995,7 +1995,7 @@ DECLARE_INFO_COMMAND (info_toggle_wrap,
 DECLARE_INFO_COMMAND (info_toggle_regexp,
               _("Toggle the usage of regular expressions in searches"))
 {
-  use_regex = 1 - use_regex;
+  use_regex = !use_regex;
   window_message_in_echo_area (use_regex
                                ? _("Using regular expressions for searches.")
                                : _("Using literal strings for searches."));
@@ -2603,14 +2603,12 @@ info_menu_or_ref_item (WINDOW *window, int count,
               else
                 start = 0;
 
-              offset =
-                info_target_search_node (window->node, entry->label, start);
+              offset = info_target_search_node (window->node, entry->label,
+						start, 0);
 
-              if (offset != -1)
-                {
-                  window->point = offset;
-                  window_adjust_pagetop (window);
-                }
+	      window->point = (offset == -1) ?
+		               window->node->body_start : offset;
+	      window_adjust_pagetop (window);
             }
 
             if (entry->line_number > 0)
@@ -3732,7 +3730,7 @@ file_buffer_of_window (WINDOW *window)
 static enum search_result
 info_search_in_node_internal (char *string, NODE *node, long int start,
 			      WINDOW *window, int dir, int case_sensitive,
-			      int match_nodename,
+			      int match_nodename, int match_regexp,
 			      long *poff, SEARCH_BINDING *resbnd)
 {
   SEARCH_BINDING binding;
@@ -3763,7 +3761,7 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
 	  binding.start = 0;
 	  binding.end = strlen (node->nodename);
 	  
-	  result = (use_regex ? 
+	  result = (match_regexp ? 
 		    regexp_search (string, &binding, poff, resbnd):
 		    search (string, &binding, poff));
 	  if (result == search_success)
@@ -3788,7 +3786,7 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
       else if (binding.start < node->body_start)
 	binding.start = node->body_start;
       
-      result = (use_regex ? 
+      result = (match_regexp ? 
 		regexp_search (string, &binding, poff, resbnd):
 		search (string, &binding, poff));
     }
@@ -3806,11 +3804,13 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
 
 long
 info_search_in_node (char *string, NODE *node, long int start,
-		     WINDOW *window, int dir, int case_sensitive)
+		     WINDOW *window, int dir, int case_sensitive,
+		     int match_regexp)
 {
   long offset;
   if (info_search_in_node_internal (string, node, start,
 				    window, dir, case_sensitive, 0,
+				    match_regexp,
 				    &offset, NULL) == search_success)
     return offset;
   return -1;
@@ -3820,7 +3820,8 @@ info_search_in_node (char *string, NODE *node, long int start,
    search at START.  Return the absolute position of the match, or -1, if
    no part of the string could be found. */
 long
-info_target_search_node (NODE *node, char *string, long int start)
+info_target_search_node (NODE *node, char *string, long int start,
+			 int use_regex_mask)
 {
   register int i;
   long offset = 0;
@@ -3834,7 +3835,8 @@ info_target_search_node (NODE *node, char *string, long int start)
   while (i)
     {
       target[i] = '\0';
-      offset = info_search_in_node (target, node, start, NULL, 1, 0);
+      offset = info_search_in_node (target, node, start, NULL, 1, 0,
+				    use_regex & use_regex_mask);
 
       if (offset != -1)
         break;
@@ -3886,7 +3888,7 @@ info_search_internal (char *string, WINDOW *window,
   
   result = info_search_in_node_internal
              (string, window->node, start, window, dir,
-	      case_sensitive, 0, &ret, resbnd);
+	      case_sensitive, 0, use_regex, &ret, resbnd);
 
   switch (result)
     {
@@ -4000,7 +4002,8 @@ info_search_internal (char *string, WINDOW *window,
 
           result =
             info_search_in_node_internal (string, node, start, window, dir,
-					  case_sensitive, 1, &ret, resbnd);
+					  case_sensitive, 1, use_regex,
+					  &ret, resbnd);
 
           /* Did we find the string in this node? */
           if (result == search_success)
@@ -4674,10 +4677,6 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
   long placement = -1;
   long start = 0;
   NODE *node = window->node;
-  int save_use_regex = use_regex;
-
-  /* Most of our keywords contain * characters; don't use regexes.  */
-  use_regex = 0;
 
   if (dir < 0)
     start = node->nodelen;
@@ -4686,8 +4685,8 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
      reference in the current node.  Otherwise, the first menu or xref
      found is moved to. */
 
-  firstmenu = info_search_in_node
-    (INFO_MENU_ENTRY_LABEL, node, start, NULL, dir, 0);
+  firstmenu = info_search_in_node (INFO_MENU_ENTRY_LABEL, node, start,
+				   NULL, dir, 0, 0);
 
   /* FIRSTMENU may point directly to the line defining the menu.  Skip that
      and go directly to the first item. */
@@ -4697,12 +4696,12 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
       char *text = node->contents + firstmenu;
 
       if (strncmp (text, INFO_MENU_LABEL, strlen (INFO_MENU_LABEL)) == 0)
-        firstmenu = info_search_in_node
-          (INFO_MENU_ENTRY_LABEL, node, firstmenu + dir, NULL, dir, 0);
+        firstmenu = info_search_in_node (INFO_MENU_ENTRY_LABEL, node,
+					 firstmenu + dir, NULL, dir, 0, 0);
     }
 
   firstxref =
-    info_search_in_node (INFO_XREF_LABEL, node, start, NULL, dir, 0);
+    info_search_in_node (INFO_XREF_LABEL, node, start, NULL, dir, 0, 0);
 
 #if defined (HANDLE_MAN_PAGES)
   if ((firstxref == -1) && (node->flags & N_IsManPage))
@@ -4715,18 +4714,17 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
     {
       if (!cursor_movement_scrolls_p)
         info_error (msg_no_xref_node);
-      use_regex = save_use_regex;
       return cursor_movement_scrolls_p;
     }
 
   /* There is at least one cross reference or menu entry in this node.
      Try hard to find the next available one. */
 
-  nextmenu = info_search_in_node
-    (INFO_MENU_ENTRY_LABEL, node, window->point + dir, NULL, dir, 0);
+  nextmenu = info_search_in_node (INFO_MENU_ENTRY_LABEL, node,
+				  window->point + dir, NULL, dir, 0, 0);
 
-  nextxref = info_search_in_node
-    (INFO_XREF_LABEL, node, window->point + dir, NULL, dir, 0);
+  nextxref = info_search_in_node (INFO_XREF_LABEL, node,
+				  window->point + dir, NULL, dir, 0, 0);
 
 #if defined (HANDLE_MAN_PAGES)
   if ((nextxref == -1) && (node->flags & N_IsManPage) && (firstxref != -1))
@@ -4739,12 +4737,9 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
       char *text = node->contents + nextmenu;
 
       if (strncmp (text, INFO_MENU_LABEL, strlen (INFO_MENU_LABEL)) == 0)
-        nextmenu = info_search_in_node
-          (INFO_MENU_ENTRY_LABEL, node, nextmenu + dir, NULL, dir, 0);
+        nextmenu = info_search_in_node (INFO_MENU_ENTRY_LABEL, node,
+					nextmenu + dir, NULL, dir, 0, 0);
     }
-
-  /* No more searches, back to whatever the user wanted.  */
-  use_regex = save_use_regex;
 
   /* If there is both a next menu entry, and a next xref entry, choose the
      one which occurs first.  Otherwise, select the one which actually

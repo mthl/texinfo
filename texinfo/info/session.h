@@ -1,5 +1,5 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h,v 1.12 2011-10-18 18:47:22 karl Exp $
+   $Id: session.h,v 1.13 2012-01-14 17:58:32 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2001, 2002, 2004, 2007, 2011
    Free Software Foundation, Inc.
@@ -86,9 +86,10 @@ extern void add_char_to_keyseq (char character);
 extern void info_gather_typeahead (void);
 extern FILE_BUFFER *file_buffer_of_window (WINDOW *window);
 extern long info_search_in_node (char *string, NODE *node,
-    long int start, WINDOW *window, int dir, int case_sensitive);
+    long int start, WINDOW *window, int dir, int case_sensitive,
+    int use_regexp);
 extern long info_target_search_node (NODE *node, char *string,
-    long int start);
+    long int start, int use_regexp_mask);
 extern void info_select_reference (WINDOW *window, REFERENCE *entry);
 extern int info_any_buffered_input_p (void);
 extern void print_node (NODE *node);

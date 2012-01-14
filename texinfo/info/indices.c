@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.18 2011-12-27 20:27:22 gray Exp $
+   $Id: indices.c,v 1.19 2012-01-14 17:58:32 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -510,7 +510,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
       {
 	/* Try to find an occurence of LABEL in this node. */
 	long start = window->line_starts[1] - window->node->contents;
-	loc = info_target_search_node (node, index_index[i]->label, start);
+	loc = info_target_search_node (node, index_index[i]->label, start, 1);
       }
 
     if (loc != -1)

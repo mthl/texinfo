@@ -1,5 +1,5 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c,v 1.11 2011-10-18 18:47:20 karl Exp $
+   $Id: footnotes.c,v 1.12 2012-01-14 17:58:32 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -60,8 +60,7 @@ make_footnotes_node (NODE *node)
   fn_node = node;
 
   /* See if this node contains the magic footnote label. */
-  fn_start =
-    info_search_in_node (FOOTNOTE_LABEL, node, 0, NULL, 1, 0);
+  fn_start = info_search_in_node (FOOTNOTE_LABEL, node, 0, NULL, 1, 0, 0);
 
   /* If it doesn't, check to see if it has an associated footnotes node. */
   if (fn_start == -1)

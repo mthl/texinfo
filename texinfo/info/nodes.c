@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.17 2011-10-18 18:47:21 karl Exp $
+   $Id: nodes.c,v 1.18 2012-01-14 17:58:31 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009, 2011 Free Software Foundation, Inc.
@@ -1259,6 +1259,7 @@ adjust_nodestart (NODE *node, int min, int max)
                   (strncmp (node->nodename, nodedef, offset) == 0))
                 {
                   node->contents = nodestart;
+		  node_set_body_start (node);
                   return node_body.buffer + position;
                 }
             }
@@ -1281,6 +1282,7 @@ adjust_nodestart (NODE *node, int min, int max)
      (if we used a tag to get here, that is).  Set the flag in NODE->flags. */
   node->contents = node_body.buffer + position;
   node->contents += skip_node_separator (node->contents);
+  node_set_body_start (node);
   if (node->flags & N_HasTagsTable)
     node->flags |= N_UpdateTags;
   return node_body.buffer + position;
