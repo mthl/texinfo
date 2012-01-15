@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.25 2012-01-15 13:59:44 pertusus Exp $
+# $Id: Makefile.am,v 1.26 2012-01-15 20:51:14 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -62,6 +62,7 @@ dist_converters_DATA = \
  Texinfo/Convert/HTML.pm \
  Texinfo/Convert/DocBook.pm \
  Texinfo/Convert/Text.pm \
+ Texinfo/Convert/TextContent.pm \
  Texinfo/Convert/UnFilled.pm \
  Texinfo/Convert/Paragraph.pm \
  Texinfo/Convert/Line.pm \

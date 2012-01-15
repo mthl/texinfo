@@ -185,6 +185,7 @@ require Texinfo::Convert::Info;
 require Texinfo::Convert::HTML;
 require Texinfo::Convert::XML;
 require Texinfo::Convert::DocBook;
+require Texinfo::Convert::TextContent;
 require DebugTexinfo::DebugCount;
 require DebugTexinfo::DebugTree;
 
@@ -763,6 +764,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
        $format = 'debugtree';
      } elsif ($var eq 'RAW_TEXT') {
        $format = 'raw_text';
+     } elsif ($var eq 'TEXTCONTENT') {
+       $format = 'textcontent';
      } else {
        set_from_cmdline ($var, $value);
        # FIXME do that here or when all command line options are processed?
@@ -887,6 +890,9 @@ my %formats_table = (
           'split' => 1,
           'converter' => sub{DebugTexinfo::DebugTree->converter(@_)},
          },
+  'textcontent' => {
+            'converter' => sub{Texinfo::Convert::TextContent->converter(@_)},
+           },
   'raw_text' => {
             'converter' => sub{Texinfo::Convert::Text->converter(@_)},
            },

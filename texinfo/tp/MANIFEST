@@ -64,6 +64,7 @@ Texinfo/Convert/NodeNameNormalization.pm
 Texinfo/Convert/Paragraph.pm
 Texinfo/Convert/Plaintext.pm
 Texinfo/Convert/Texinfo.pm
+Texinfo/Convert/TextContent.pm
 Texinfo/Convert/Text.pm
 Texinfo/Convert/UnFilled.pm
 Texinfo/Convert/Unicode.pm
