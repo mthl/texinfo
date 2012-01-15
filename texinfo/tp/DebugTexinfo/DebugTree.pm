@@ -29,6 +29,17 @@ package DebugTexinfo::DebugTree;
 
 @ISA = qw(Texinfo::Convert::Converter);
 
+my %defaults = (
+  'EXTENSION' => 'debugtree',
+);
+
+sub converter_defaults($)
+{
+  return %defaults;
+}
+
+# FIXME this cannot be used through texi2any.pl since it should write to
+# a file (unless OUTFILE is '' which should not happen when called by texi2any).
 sub output($$)
 {
   my $self = shift;
@@ -45,18 +56,30 @@ sub output($$)
     if ($elements and ($self->get_conf('SPLIT') 
                        or !$self->get_conf('MONOLITHIC'))) {
       #print STDERR "S ".$self->get_conf('SPLIT')."\n";
-      $pages = Texinfo::Structuring::split_pages($elements,
-                                                 $self->get_conf('SPLIT'));
+      Texinfo::Structuring::split_pages($elements,
+                                        $self->get_conf('SPLIT'));
     }
   }
-  if ($pages) {
-    #print STDERR "PPP $pages\n";
-    $root = {'type' => 'pages_root',
-             'contents' => $pages };
-  } elsif ($elements) {
+  if ($elements) {
     $root = {'type' => 'elements_root',
              'contents' => $elements };
   }
+  return _print_tree($self, $root);
+}
+
+sub convert($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  return _print_tree($self, $root);
+}
+
+sub convert_tree($$)
+{
+  my $self = shift;
+  my $root = shift;
+
   return _print_tree($self, $root);
 }
 

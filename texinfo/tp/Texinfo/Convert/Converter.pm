@@ -497,7 +497,32 @@ sub _set_outfile($$$)
   $self->{'output_file'} = $outfile;
 }
 
-#sub output
+sub output($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  $self->_set_outfile();
+  return undef unless $self->_create_destination_directory();
+  
+  my $fh;
+  if (! $self->{'output_file'} eq '') {
+    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
+    if (!$fh) {
+      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                    $self->{'output_file'}, $!));
+      return undef;
+    }
+  }
+
+  $self->_set_global_multiple_commands(-1);
+
+  if ($self->get_conf('USE_NODES')) {
+    return $self->convert_document_nodes($root, $fh);
+  } else {
+    return $self->convert_document_sections($root, $fh);
+  }
+}
 
 # This is not used as code, but used to mark months as strings to be
 # translated
@@ -675,17 +700,17 @@ sub _output_text($$$)
   } else {
     return $text;
   } 
-}   
+}
 
-sub convert_document_sections($$;$)
+sub _convert_document_elements($$;$$)
 {
   my $self = shift;
   my $root = shift;
+  my $elements = shift;
   my $fh = shift;
 
-  my $result = '';
-  my $elements = Texinfo::Structuring::split_by_section($root);
   if ($elements) {
+    my $result = '';
     foreach my $element (@$elements) {
       $result .= $self->_output_text ($self->convert_tree($element), $fh);
     }
@@ -694,6 +719,27 @@ sub convert_document_sections($$;$)
     return $self->_output_text ($self->convert_tree($root), $fh);
   }
 }
+
+sub convert_document_sections($$;$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $fh = shift;
+
+  my $elements = Texinfo::Structuring::split_by_section($root);
+  return $self->_convert_document_elements($root, $elements, $fh);
+}
+
+sub convert_document_nodes($$;$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $fh = shift;
+
+  my $elements = Texinfo::Structuring::split_by_node($root);
+  return $self->_convert_document_elements($root, $elements, $fh);
+}
+
 
 my @inline_types = ('def_line', 'paragraph', 'preformatted',
   'misc_command_arg', 'misc_line_arg', 'block_line_arg',
