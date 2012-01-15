@@ -1,3 +1,9 @@
+2012-01-15  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Configuration Variables for @@-Commands):
+	remove @-commands that have no effect and add new @-commands available
+	as customization options.
+
 2012-01-14  Patrice Dumas  <pertusus@free.fr>
 
 	Move tests from texi2html that are still relevant to tp.

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.409 2012-01-10 19:37:05 karl Exp $
+@c $Id: texinfo.txi,v 1.410 2012-01-15 15:23:18 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17053,17 +17053,17 @@ Each of the following @@-commands has an associated configuration
 variable with the same name (minus the leading @code{@@}):
 
 @smallexample
-@@allowcodebreaks @@clickstyle @@contents @@documentdescription
-@@documentencoding @@documentlanguage @@evenfooting
-@@evenfootingmarks @@evenheading @@evenheadingmarks
-@@everyfooting @@everyfootingmarks @@everyheading
+@@allowcodebreaks @@clickstyle @@codequotebacktick 
+@@codequoteundirected @@contents @@deftypefnnewline @c @@documentdescription
+@@documentencoding @@documentlanguage
+@@evenfootingmarks @@evenheadingmarks @@everyfootingmarks 
 @@everyheadingmarks @@exampleindent @@firstparagraphindent
 @@fonttextsize @@footnotestyle @@frenchspacing @@headings
-@@kbdinputstyle @@novalidate @@oddfooting @@oddfootingmarks
-@@oddheading @@oddheadingmarks @@pagesizes @@paragraphindent
-@@setchapternewpage @@setcontentsaftertitlepage @@setfilename
-@@setshortcontentsaftertitlepage @@shortcontents @@today
-@@urefbreakstyle
+@@kbdinputstyle @@novalidate @@oddfootingmarks
+@@oddheadingmarks @@pagesizes @@paragraphindent
+@@setchapternewpage @@setcontentsaftertitlepage @c @@setfilename
+@@setshortcontentsaftertitlepage @@shortcontents
+@@urefbreakstyle @@xrefautomaticsectiontitle
 @end smallexample
 
 Setting such a configuration variable to a value @samp{foo} is
@@ -21529,7 +21529,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.409 2012-01-10 19:37:05 karl Exp $
+$Id: texinfo.txi,v 1.410 2012-01-15 15:23:18 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
