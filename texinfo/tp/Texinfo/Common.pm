@@ -80,23 +80,36 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
   $null_device_file{'NUL'} = 1;
 }
 
+# command-line options
+#my @command_line_settable_at_commands = ('footnotestyle', 'novalidate',
+#  'documentlanguage', 'paragraphindent');
+
+
+# FIXME maybe this should better be set as texinfo passed to texi2any as
+# texi2dvi --command 
+
 # configuration options
-my @document_settable_at_commands =
-       ('everyheading', 'everyfooting', 'evenheading',
-        'evenfooting', 'oddheading', 'oddfooting', 'headings',
-        'allowcodebreaks', 'frenchspacing', 'exampleindent',
-        'firstparagraphindent', 'paragraphindent', 'clickstyle',
-        'documentlanguage', 'xrefautomaticsectiontitle',
-        'deftypefnnewline');
+our @document_settable_at_commands =
+       (
+        'allowcodebreaks', 'clickstyle', 'codequotebacktick',
+        'codequoteundirected', 'contents', 'deftypefnnewline',
+        'documentencoding', 'documentlanguage', 'exampleindent', 
+        'firstparagraphindent', 'frenchspacing', 'headings',
+        'kbdinputstyle', 'paragraphindent',
+        'shortcontents', 'urefbreakstyle', 'xrefautomaticsectiontitle',
+        );
 
 # those should be unique
-my @document_global_at_commands = ('contents', 'shortcontents',
-        'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage',
-        'footnotestyle', 'novalidate', 'kbdinputstyle', 'documentencoding',
-        'setfilename', 'today', 'documentdescription',
-        'everyheadingmarks','everyfootingmarks',
-        'evenheadingmarks','oddheadingmarks','evenfootingmarks','oddfootingmarks',
-        'fonttextsize', 'pagesizes', 'setchapternewpage'
+our @document_settable_unique_at_commands = (
+        'documentdescription', # FIXME this does not work
+        'evenfootingmarks', 'evenheadingmarks',
+        'everyfootingmarks', 'everyheadingmarks',
+        'fonttextsize', 'footnotestyle', 'novalidate',
+        'oddfootingmarks','oddheadingmarks',
+        'pagesizes', 'setchapternewpage',
+        'setcontentsaftertitlepage',
+        'setfilename', # FIXME this does not work
+        'setshortcontentsaftertitlepage',
         );
 
 
@@ -172,7 +185,8 @@ my @variable_settables = (
 );
 
 my %valid_options;
-foreach my $var (@document_settable_at_commands, @document_global_at_commands,
+foreach my $var (@document_settable_at_commands, 
+         @document_settable_unique_at_commands,
          @command_line_settables, @variable_settables, @parser_options,
          @obsolete_variables, @variable_settables_not_used) {
   $valid_options{$var} = 1;

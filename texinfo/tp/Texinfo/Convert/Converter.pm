@@ -92,6 +92,7 @@ our %all_converters_defaults = (
   'translated_commands'  => {'error' => 'error@arrow{}',},
 );
 
+# For translation of in document string.
 if (0) {
   my $self;
   $self->gdt('error@arrow{}');
@@ -495,6 +496,8 @@ sub _set_outfile($$$)
   }
   $self->{'output_file'} = $outfile;
 }
+
+#sub output
 
 # This is not used as code, but used to mark months as strings to be
 # translated

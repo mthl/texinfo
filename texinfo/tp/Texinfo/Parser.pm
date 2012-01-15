@@ -284,27 +284,18 @@ foreach my $command ('anchor', 'hyphenation', 'caption', 'shortcaption') {
 }
 
 my %global_multiple_commands;
-foreach my $global_multiple_command ('author', 'documentlanguage', 
-  'documentencoding', 'insertcopying',
-  'subtitle', 'contents', 'shortcontents', 'summarycontents',
-  'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
-  'frenchspacing', 'hyphenation', 'urefbreakstyle',
-  'xrefautomaticsectiontitle', 'codequoteundirected',
-  'codequotebacktick', 'titlefont', 'footnote', 'printindex',
-  'deftypefnnewline') {
+foreach my $global_multiple_command (
+  'author', 'footnote', 'hyphenation', 'insertcopying', 'printindex',
+  'subtitle','titlefont', 
+  @Texinfo::Common::document_settable_at_commands, ) {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
 
 my %global_unique_commands;
-foreach my $global_unique_command ('title', 
-  'shorttitlepage', 'settitle', 'copying', 'documentdescription',
-  'novalidate', 'titlepage',
-  'setfilename', 'setcontentsaftertitlepage', 
-  'setshortcontentsaftertitlepage', 'footnotestyle',
-  'documentencoding', 'everyheadingmarks','everyfootingmarks',
-  'evenheadingmarks', 'oddheadingmarks', 'evenfootingmarks', 'oddfootingmarks',
-  'fonttextsize', 'pagesizes', 'setchapternewpage', 'top'
-) {
+foreach my $global_unique_command (
+  'copying', 'documentdescription', 'settitle', 
+  'shorttitlepage', 'title', 'titlepage', 'top', 
+  @Texinfo::Common::document_settable_unique_at_commands, ) {
   $global_unique_commands{$global_unique_command} = 1;
 }
 
@@ -944,6 +935,9 @@ sub _register_global_command($$$$)
   my $command = shift;
   my $current = shift;
   my $line_nr = shift;
+  if ($command eq 'summarycontents' and !$self->{'global_commands'}->{$command}) {
+    $command = 'shortcontents';
+  }
   if ($self->{'global_commands'}->{$command} and $command ne 'author') {
     push @{$self->{'extra'}->{$command}}, $current;
     return 1;

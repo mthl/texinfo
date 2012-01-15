@@ -574,6 +574,32 @@ sub converter($)
   if ($conf) {
     %{$converter} = %{$conf};
   }
+
+  my $expanded_formats = $converter->{'expanded_formats'};;
+  if ($converter->{'parser'}) {
+    $converter->{'info'} = $converter->{'parser'}->global_informations();
+    $converter->{'extra'} = $converter->{'parser'}->global_commands_information();
+    foreach my $global_command ('documentencoding') {
+      if (defined($converter->{'extra'}->{$global_command})) {
+        my $root = $converter->{'extra'}->{$global_command}->[0];
+        if ($global_command eq 'documentencoding'
+            and defined($root->{'extra'})
+            and defined($root->{'extra'}->{'perl_encoding'})) {
+          $converter->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
+          $converter->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
+        }
+      }
+    }
+    if (!$expanded_formats and $converter->{'parser'}->{'expanded_formats'}) {
+      $expanded_formats = $converter->{'parser'}->{'expanded_formats'};
+    }
+  }
+  if ($expanded_formats) {
+    foreach my $expanded_format(@$expanded_formats) {
+      $converter->{'expanded_formats_hash'}->{$expanded_format} = 1;
+    }
+  }
+
   bless $converter;
   return $converter;
 }
@@ -593,25 +619,6 @@ sub output($$)
   my $self = shift;
   my $tree = shift;
   #print STDERR "OUTPUT\n";
-  my $expanded_formats = $self->{'expanded_formats'};;
-  if ($self and $self->{'parser'}) {
-    my $parser = $self->{'parser'};
-    $self->{'info'} = $self->{'parser'}->global_informations();
-    $self->{'extra'} = $self->{'parser'}->global_commands_information();
-    if (!$expanded_formats and $self->{'parser'}->{'expanded_formats'}) {
-      $expanded_formats = $self->{'parser'}->{'expanded_formats'};
-    }
-  }
-  my $expanded_formats_hash;
-  if ($expanded_formats) {
-    foreach my $expanded_format(@$expanded_formats) {
-      $expanded_formats_hash->{$expanded_format} = 1;
-    }
-  }
-  my %options;
-  if ($expanded_formats_hash) {
-    $options{'expanded_formats_hash'} = $expanded_formats_hash;
-  }
   my $input_basename;
   if (defined($self->{'info'}->{'input_file_name'})) {
     $input_basename = $self->{'info'}->{'input_file_name'};
@@ -648,6 +655,7 @@ sub output($$)
     $fh = $self->Texinfo::Common::open_out($outfile);
     return undef if (!$fh);
   }
+  my %options = $self->Texinfo::Common::_convert_text_options();
   my $result = _convert($tree, \%options);
   if ($fh) {
     print $fh $result;
