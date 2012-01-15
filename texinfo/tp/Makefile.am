@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.26 2012-01-15 20:51:14 pertusus Exp $
+# $Id: Makefile.am,v 1.27 2012-01-15 23:38:22 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -20,6 +20,7 @@ $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 SUBDIRS = . tests
 
 bin_SCRIPTS = texi2any
+noinst_SCRIPTS = texi_sort_elements_count
 
 do_subst = sed \
   -e 's,[@]PACKAGE_VERSION[@],$(PACKAGE_VERSION),g' \
@@ -35,6 +36,10 @@ do_subst = sed \
   -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g'
 
 texi2any: texi2any.pl $(top_builddir)/config.status
+	$(do_subst) $(srcdir)/$< >$@
+	chmod a+x $@
+
+texi_sort_elements_count: texi_sort_elements_count.pl $(top_builddir)/config.status
 	$(do_subst) $(srcdir)/$< >$@
 	chmod a+x $@
 
@@ -168,6 +173,7 @@ perl_specific_files = \
 
 EXTRA_DIST = \
   texi2any.pl \
+  texi_sort_elements_count.pl \
   $(test_results) \
   $(test_files) \
   $(tp_tests) \
