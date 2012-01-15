@@ -18,9 +18,11 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 # Example of calls
-# with creation of elements and pages:
-# ./texi2any.pl --set DEBUGTREE --set USE_NODES=0 --split section file.texi
-# no elements nor pages
+# with creation of elements corresponding to sections:
+# ./texi2any.pl --set DEBUGTREE --set USE_NODES=0 file.texi
+# with creation of elements corresponding to nodes:
+# ./texi2any.pl --set DEBUGTREE --set USE_NODES=1 file.texi
+# no elements
 # ./texi2any.pl --set DEBUGTREE file.texi
 
 use Texinfo::Convert::Converter;
@@ -31,6 +33,7 @@ package DebugTexinfo::DebugTree;
 
 my %defaults = (
   'EXTENSION' => 'debugtree',
+  'OUTFILE' => '-',
 );
 
 sub converter_defaults($)
@@ -38,14 +41,26 @@ sub converter_defaults($)
   return %defaults;
 }
 
-# FIXME this cannot be used through texi2any.pl since it should write to
-# a file (unless OUTFILE is '' which should not happen when called by texi2any).
 sub output($$)
 {
   my $self = shift;
   my $root = shift;
+
+
+  $self->_set_outfile();
+  return undef unless $self->_create_destination_directory();
+
+  my $fh;
+  if (! $self->{'output_file'} eq '') {
+    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
+    if (!$fh) {
+      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                    $self->{'output_file'}, $!));
+      return undef;
+    }
+  }
+
   my $elements;
-  my $pages;
   if ($self) {
     if ($self->get_conf('USE_NODES')) {
       $elements = Texinfo::Structuring::split_by_node($root);
@@ -53,6 +68,7 @@ sub output($$)
       #print STDERR "U sections\n";
       $elements = Texinfo::Structuring::split_by_section($root);
     }
+    # Currently the information added is not used further.
     if ($elements and ($self->get_conf('SPLIT') 
                        or !$self->get_conf('MONOLITHIC'))) {
       #print STDERR "S ".$self->get_conf('SPLIT')."\n";
@@ -64,7 +80,7 @@ sub output($$)
     $root = {'type' => 'elements_root',
              'contents' => $elements };
   }
-  return _print_tree($self, $root);
+  return $self->_output_text (_print_tree($self, $root), $fh);
 }
 
 sub convert($$)
