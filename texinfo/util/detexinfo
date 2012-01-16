@@ -1,0 +1,4 @@
+#! /bin/sh
+
+exec texi2any --set-init-variable TEXTCONTENT=1 "$@"
+
