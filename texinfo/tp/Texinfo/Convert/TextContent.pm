@@ -66,10 +66,10 @@ sub converter_initialize($)
   %{$self->{'formatting_misc_commands'}}
     = %Texinfo::Convert::Text::formatting_misc_commands;
 
-  #if ($self->get_conf('KEEP_COMMENTS')) {
-  #  $self->{'formatting_misc_commands'}->{'c'} = 1;
-  #  $self->{'formatting_misc_commands'}->{'comment'} = 1;
-  #}
+  if ($self->get_conf('TEXTCONTENT_COMMENT')) {
+    $self->{'formatting_misc_commands'}->{'c'} = 1;
+    $self->{'formatting_misc_commands'}->{'comment'} = 1;
+  }
 }
 
 sub convert_tree($$)
