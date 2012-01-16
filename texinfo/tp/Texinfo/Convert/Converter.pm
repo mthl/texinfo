@@ -25,6 +25,8 @@ use strict;
 use Texinfo::Report;
 use Texinfo::Common;
 use Texinfo::Convert::Text;
+use Texinfo::Convert::Texinfo;
+use Texinfo::Structuring;
 
 use Carp qw(cluck);
 
@@ -1003,6 +1005,70 @@ sub convert_accents($$$;$)
   } else {
     return $encoded;
   }
+}
+
+sub sort_element_counts($$;$$)
+{
+  my $converter =  shift;
+  my $tree = shift;
+  my $use_sections = shift;
+  my $count_words = shift;
+
+  my $elements;
+  if ($use_sections) {
+    $elements = Texinfo::Structuring::split_by_section($tree);
+  } else {
+    $elements = Texinfo::Structuring::split_by_node($tree);
+  }
+
+  if (!$elements) {
+    @$elements = ($tree);
+  } elsif (scalar(@$elements) >= 1 
+           and (!$elements->[0]->{'extra'}->{'node'}
+                and !$elements->[0]->{'extra'}->{'section'})) {
+    shift @$elements;
+  }
+
+  my $max_count = 0;
+  my @name_counts_array;
+  foreach my $element (@$elements) {
+    my $name = 'UNNAMED element';
+    if ($element->{'extra'} 
+        and ($element->{'extra'}->{'node'} or $element->{'extra'}->{'section'})) {
+      my $command = $element->{'extra'}->{'element_command'};
+      if ($command->{'cmdname'} eq 'node') {
+        $name = Texinfo::Convert::Texinfo::convert({'contents' 
+          => $command->{'extra'}->{'nodes_manuals'}->[0]->{'node_content'}});
+      } else {
+        $name = "\@$command->{'cmdname'} "
+          .Texinfo::Convert::Texinfo::convert($command->{'args'}->[0]);
+      }
+    }
+    chomp($name);
+    my $count;
+    my $element_content = $converter->convert_tree($element);
+    if ($count_words) {
+      my @res = split /\W+/, $element_content;
+      $count = scalar(@res);
+    } else {
+      my @res = split /^/, $element_content;
+      $count = scalar(@res);
+    }
+    push @name_counts_array, [$count, $name];
+    if ($count > $max_count) {
+      $max_count = $count;
+    }
+  }
+
+  my @sorted_name_counts_array = sort {$a->[0] <=> $b->[0]} @name_counts_array;
+  @sorted_name_counts_array = reverse(@sorted_name_counts_array);
+
+  my $max_length = length($max_count);
+  my $result = '';
+  foreach my $sorted_count (@sorted_name_counts_array) {
+    $result .=  sprintf("%${max_length}d  $sorted_count->[1]\n", $sorted_count->[0]);
+  }
+  return (\@sorted_name_counts_array, $result);
 }
 
 1;

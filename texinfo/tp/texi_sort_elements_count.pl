@@ -226,57 +226,11 @@ if (!defined($tree)) {
 my $converter_options = {};
 $converter_options->{'parser'} = $parser;
 my $converter = Texinfo::Convert::TextContent->converter($converter_options);
-my $elements;
-if ($use_sections) {
-  $elements = Texinfo::Structuring::split_by_section($tree);
-} else {
-  $elements = Texinfo::Structuring::split_by_node($tree);
-}
 
-if (!$elements) {
-  @$elements = ($tree);
-} elsif (scalar(@$elements) >= 1 
-         and (!$elements->[0]->{'extra'}->{'node'}
-              and !$elements->[0]->{'extra'}->{'section'})) {
-  shift @$elements;
-}
+my ($sorted_name_counts_array, $formatted_result) 
+  = $converter->sort_element_counts($tree, $use_sections, 
+                                    $count_words); 
 
-my $max_count = 0;
-my @name_counts_array;
-foreach my $element (@$elements) {
-  my $name = 'UNNAMED element';
-  if ($element->{'extra'} 
-      and ($element->{'extra'}->{'node'} or $element->{'extra'}->{'section'})) {
-    my $command = $element->{'extra'}->{'element_command'};
-    if ($command->{'cmdname'} eq 'node') {
-      $name = $converter->convert_tree({'contents' 
-        => $command->{'extra'}->{'nodes_manuals'}->[0]->{'node_content'}});
-    } else {
-      $name = "\@$command->{'cmdname'} ".$converter->convert_tree($command->{'args'}->[0]);
-    }
-  }
-  chomp($name);
-  my $count;
-  my $element_content = $converter->convert($element);
-  if ($count_words) {
-    my @res = split /\W+/, $element_content;
-    $count = scalar(@res);
-  } else {
-    my @res = split /^/, $element_content;
-    $count = scalar(@res);
-  }
-  push @name_counts_array, [$count, $name];
-  if ($count > $max_count) {
-    $max_count = $count;
-  }
-}
-
-my @sorted_name_counts_array = sort {$a->[0] <=> $b->[0]} @name_counts_array;
-@sorted_name_counts_array = reverse(@sorted_name_counts_array);
-
-my $max_length = length($max_count);
-foreach my $sorted_count (@sorted_name_counts_array) {
-  print STDOUT sprintf("%${max_length}d  $sorted_count->[1]\n", $sorted_count->[0]);
-}
+print STDOUT $formatted_result;
 
 1;
