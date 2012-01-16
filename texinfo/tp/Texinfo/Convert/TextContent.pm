@@ -153,7 +153,16 @@ sub _convert($$)
     #if ($root->{'type'} and ($root->{'type'} eq 'def_line'
     #                         or $root->{'type'} eq 'menu_entry')) { 
     #}
-    foreach my $arg (@{$root->{'args'}}) {
+    my $args;
+    if ($root->{'cmdname'} 
+      and $Texinfo::Common::inline_format_commands{$root->{'cmdname'}}) {
+      my @args = @{$root->{'args'}};
+      shift @args;
+      $args = \@args;
+    } else {
+      $args = $root->{'args'};
+    }
+    foreach my $arg (@{$args}) {
       $result .= _convert ($self, $arg);
     }
   }
