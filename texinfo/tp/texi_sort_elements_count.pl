@@ -23,6 +23,8 @@
 use strict;
 
 use Getopt::Long qw(GetOptions);
+# to determine the path separator
+use Config;
 
 Getopt::Long::Configure("gnu_getopt");
 
@@ -46,7 +48,10 @@ my $real_command_name = $0;
 $real_command_name =~ s/.*\///;
 $real_command_name =~ s/\.pl$//;
 
-
+# determine the path separators
+my $path_separator = $Config{'path_sep'};
+$path_separator = ':' if (!defined($path_separator));
+my $quoted_path_separator = quotemeta($path_separator);
 
 my $force = 0;
 my $use_sections = 0;
@@ -59,8 +64,38 @@ sub __($)
   return $_[0];
 }
 
+my $format = 'info';
+# this is the format associated with the output format, which is replaced
+# when the output format changes.  It may also be removed if there is the
+# corresponding --no-ifformat.
+#my $default_expanded_format = [ $format ];
+my @include_dirs = ();
+my @prepend_dirs = ();
+
+my $parser_default_options = {
+                              #'expanded_formats' => [], 
+                              'expanded_formats' => [ $format ], 
+                              'values' => {},
+                              #'gettext' => \&__
+                              };
+
+sub set_expansion($$) {
+  my $region = shift;
+  my $set = shift;
+  $set = 1 if (!defined($set));
+  if ($set) {
+    push @{$parser_default_options->{'expanded_formats'}}, $region
+      unless (grep {$_ eq $region} @{$parser_default_options->{'expanded_formats'}});
+  } else {
+    @{$parser_default_options->{'expanded_formats'}} = 
+      grep {$_ ne $region} @{$parser_default_options->{'expanded_formats'}};
+#    @{$default_expanded_format} 
+#       = grep {$_ ne $region} @{$default_expanded_format};
+  }
+}
+
 my $result_options = Getopt::Long::GetOptions (
- 'help|h' => sub { print_help(); exit 0; },
+ 'help|h' => sub { print help(); exit 0; },
  'version|V' => sub {print "$real_command_name $configured_version\n\n";
                      printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -68,9 +103,21 @@ This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
       exit 0;},
   'force' => \$force,
+  'ifhtml!' => sub { set_expansion('html', $_[1]); },
+  'ifinfo!' => sub { set_expansion('info', $_[1]); },
+  'ifxml!' => sub { set_expansion('xml', $_[1]); },
+  'ifdocbook!' => sub { set_expansion('docbook', $_[1]); },
+  'iftex!' => sub { set_expansion('tex', $_[1]); },
+  'ifplaintext!' => sub { set_expansion('plaintext', $_[1]); },
   'use-sections!' => \$use_sections,
   'count-words!' => \$count_words,
   'no-warn' => \$no_warn,
+  'D=s' => sub {$parser_default_options->{'values'}->{$_[1]} = 1;},
+  'U=s' => sub {delete $parser_default_options->{'values'}->{$_[1]};},
+  'I=s' => sub {
+                push @include_dirs, split(/$quoted_path_separator/, $_[1]); },
+  'P=s' => sub { unshift @prepend_dirs, split(/$quoted_path_separator/, $_[1]); },
+ 'number-sections!' => sub { set_from_cmdline('NUMBER_SECTIONS', $_[1]); },
 );
 
 exit 1 if (!$result_options);
@@ -88,28 +135,48 @@ if (scalar(@input_files) > 1) {
   warn sprintf(__("%s: superfluous file arguments.\n"), $real_command_name);
 }
 
-my $file = shift @input_files;
+my $input_file_name = shift @input_files;
 
-sub print_help()
+sub help()
 {
-  print STDERR sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...
+  my $help =
+    sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"), $real_command_name)
+   ."\n".
+    __("Dump out a list of elements sorted by the number of lines (or words) 
+they contain after removal of \@-commands.\n")
+."\n";
 
-Dump out a list of elements sorted by the number of lines (or words) 
-they contain after removal of \@-commands.
+  $help .= __("General Options:
+  --count-words    count words instead of lines.
+  --force          keep on even if the Texinfo file parsing failed.
+  --help           display this help and exit.
+  --no-warn        suppress warnings (but not errors).
+  --use-sections   use sections as elements instead of nodes.
+  --version        display version information and exit.\n")
+."\n";
+  $help .= __("Input file options:
+  -D VAR                        define the variable VAR, as with \@set.
+  -I DIR                        append DIR to the \@include search path.
+  -P DIR                        prepend DIR to the \@include search path.
+  -U VAR                        undefine the variable VAR, as with \@clear.\n")
+."\n";
+  $help .= __("Conditional processing in input:
+  --ifdocbook       process \@ifdocbook and \@docbook.
+  --ifhtml          process \@ifhtml and \@html.
+  --ifinfo          process \@ifinfo.
+  --ifplaintext     process \@ifplaintext.
+  --iftex           process \@iftex and \@tex.
+  --ifxml           process \@ifxml and \@xml.
+  --no-ifdocbook    do not process \@ifdocbook and \@docbook text.
+  --no-ifhtml       do not process \@ifhtml and \@html text.
+  --no-ifinfo       do not process \@ifinfo text.
+  --no-ifplaintext  do not process \@ifplaintext text.
+  --no-iftex        do not process \@iftex and \@tex text.
+  --no-ifxml        do not process \@ifxml and \@xml text.
 
-Options:
-     --count-words    count words instead of lines.
-     --force          keep on even if the Texinfo file parsing failed.
-     --help           display this help and exit.
-     --no-warn        suppress warnings (but not errors).
-     --use-sections   use sections as elements instead of nodes.
-     --version        display version information and exit.
-"), $real_command_name);
-}
-
-if (!defined($file)) {
-  print_help();
-  exit 1;
+  Also, for the --no-ifFORMAT options, do process \@ifnotFORMAT text.\n");
+  return $help;
+  
 }
 
 sub _exit($)
@@ -133,9 +200,23 @@ sub handle_errors($$)
   return $error_count;
 }
 
+my $input_directory = '.';
+if ($input_file_name =~ /(.*\/)/) {
+  $input_directory = $1;
+}
+
+my $parser_options = { %$parser_default_options };
+$parser_options->{'include_directories'} = [@include_dirs];
+my @prependended_include_directories = ('.');
+push @prependended_include_directories, $input_directory
+    if ($input_directory ne '.');
+unshift @{$parser_options->{'include_directories'}},
+   @prependended_include_directories;
+unshift @{$parser_options->{'include_directories'}}, @prepend_dirs;
+
 my $error_count = 0;
-my $parser = Texinfo::Parser::parser();
-my $tree = $parser->parse_texi_file($file);
+my $parser = Texinfo::Parser::parser($parser_options);
+my $tree = $parser->parse_texi_file($input_file_name);
 
 if (!defined($tree)) {
   handle_errors($parser, $error_count);
@@ -153,7 +234,7 @@ if ($use_sections) {
 }
 
 if (!$elements) {
-  @$elements = [ $tree ];
+  @$elements = ($tree);
 } elsif (scalar(@$elements) >= 1 
          and (!$elements->[0]->{'extra'}->{'node'}
               and !$elements->[0]->{'extra'}->{'section'})) {
@@ -164,7 +245,8 @@ my $max_count = 0;
 my @name_counts_array;
 foreach my $element (@$elements) {
   my $name = 'UNNAMED element';
-  if ($element->{'extra'}->{'node'} or $element->{'extra'}->{'section'}) {
+  if ($element->{'extra'} 
+      and ($element->{'extra'}->{'node'} or $element->{'extra'}->{'section'})) {
     my $command = $element->{'extra'}->{'element_command'};
     if ($command->{'cmdname'} eq 'node') {
       $name = $converter->convert_tree({'contents' 
