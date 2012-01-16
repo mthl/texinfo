@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.410 2012-01-15 15:23:18 pertusus Exp $
+@c $Id: texinfo.txi,v 1.411 2012-01-16 22:35:38 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17006,15 +17006,25 @@ modified by modifying configuration variables.  These
 @dfn{configuration variables} fall into four general categories:
 
 @itemize @bullet
-@item those changing the program behaviour.  Two such variables exist,
-and they may only be set on the command line:
+@item those changing the program behaviour.  Those variables
+may only be set on the command line:
 @vtable @code
-@item TEXI2HTML
-Generate HTML and try to be as compatible as possible with @command{texi2html}. 
-
 @item DEBUGTREE
 Instead of generating a regular output format, output a text representation
 of the tree obtained by parsing the input texinfo document.
+
+@item RAW_TEXT
+Output raw text, with minimal formatting.  For example footnotes are ignored
+and there is no paragraph filling.  This output is used by the parser, for
+file names, for example or for copyright code in comments in HTML.
+
+@item TEXI2HTML
+Generate HTML and try to be as compatible as possible with @command{texi2html}. 
+
+@item TEXTCONTENT
+Output the text contents stripped of commands, useful for spell checking or
+word counting, for example.
+
 @end vtable
 
 @item those associated with @@-commands in the document,
@@ -21529,7 +21539,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.410 2012-01-15 15:23:18 pertusus Exp $
+$Id: texinfo.txi,v 1.411 2012-01-16 22:35:38 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

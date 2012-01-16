@@ -2,6 +2,9 @@
 
 	* util/detexinfo, util/Makefile.am: new script to strip @-commands.
 
+	* doc/texinfo.txi (Configuration Variables): document TEXTCONTENT
+	and RAW_TEXT.
+
 2012-01-15  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Configuration Variables for @@-Commands):
