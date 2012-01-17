@@ -1040,7 +1040,7 @@ sub sort_element_counts($$;$$)
         $name = Texinfo::Convert::Texinfo::convert({'contents' 
           => $command->{'extra'}->{'nodes_manuals'}->[0]->{'node_content'}});
       } else {
-        $name = "\@$command->{'cmdname'} "
+        $name = "\@$command->{'cmdname'}"
           .Texinfo::Convert::Texinfo::convert($command->{'args'}->[0]);
       }
     }

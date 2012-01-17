@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.411 2012-01-16 22:35:38 pertusus Exp $
+@c $Id: texinfo.txi,v 1.412 2012-01-17 00:18:02 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17473,6 +17473,15 @@ For HTML@.  If set, output the title at the beginning of the document.
 If set, use a simple preformatted style for the menu, instead of
 breaking down the different parts of the menu.  @xref{Menu Parts}.
 
+@item SORT_ELEMENT_COUNT
+Name of a file where a list of elements (nodes or sections, depending
+on the output format generated) sorted by the number of lines they contain 
+after removal of @@-commands are dumped.
+
+@item SORT_ELEMENT_COUNT_COUNT_WORDS
+When sorting elements by their counting, use words count instead
+of line counts.
+
 @c @item SPLIT_INDEX
 @c For HTML@.  If set, the output is split, and the output from
 @c @code{@@printindex} happens in a sectioning element at the level of
@@ -21539,7 +21548,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.411 2012-01-16 22:35:38 pertusus Exp $
+$Id: texinfo.txi,v 1.412 2012-01-17 00:18:02 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

@@ -487,7 +487,7 @@ sub _set_variables_texi2html()
   ['USE_UP_NODE_FOR_ELEMENT_UP', 1],
   ['USE_REL_REV', 0],
   ['USE_LINKS', 0],
-  ['USE_NODES', undef],
+  ['USE_NODES', 0],
   ['NODE_FILENAMES', 0],
   ['USE_NUMERIC_ENTITY', 1],
   ['SPLIT', ''],
@@ -1136,6 +1136,40 @@ while(@input_files)
       $error_internal_links_file = 1;
     }
     if ($error_internal_links_file) {
+      $error_count++;
+      _exit($error_count, \@opened_files);
+    }
+  }
+  if (defined(get_conf('SORT_ELEMENT_COUNT')) and $file_number == 0) {
+    my $converter_element_count_file 
+      = Texinfo::Convert::TextContent->converter($converter_options);
+    my $use_sections = (! $formats_table{$format}->{'nodes_tree'}
+                        or (defined($converter->get_conf('USE_NODES'))
+                            and !$converter->get_conf('USE_NODES')));
+    my ($sorted_name_counts_array, $sort_element_count_text)
+        = Texinfo::Convert::Converter::sort_element_counts(
+               $converter_element_count_file, $tree, $use_sections,
+                             get_conf('SORT_ELEMENT_COUNT_COUNT_WORDS'));
+
+    my $sort_element_count_file = get_conf('SORT_ELEMENT_COUNT'); 
+    my $sort_element_count_fh = Texinfo::Common::open_out($converter, 
+                                             $sort_element_count_file);
+    my $error_sort_element_count_file;
+    if (defined ($sort_element_count_fh)) {
+      print $sort_element_count_fh $sort_element_count_text;
+      
+      if (!close ($sort_element_count_fh)) {
+        warn (sprintf(__("Error on closing internal links file %s: %s\n"), 
+                      $sort_element_count_file, $!));
+        $error_sort_element_count_file = 1;
+      }
+      $converter->register_close_file($sort_element_count_file);
+    } else {
+      warn (sprintf(__("Could not open %s for writing: %s\n"), 
+                    $sort_element_count_file, $!));
+      $error_sort_element_count_file = 1;
+    }
+    if ($error_sort_element_count_file) {
       $error_count++;
       _exit($error_count, \@opened_files);
     }

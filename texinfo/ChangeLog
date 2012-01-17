@@ -5,6 +5,12 @@
 	* doc/texinfo.txi (Configuration Variables): document TEXTCONTENT
 	and RAW_TEXT.
 
+	* tp/texi2any.pl: if SORT_ELEMENT_COUNT is set, dump elements names
+	sorted by line count (or word count if ISORT_ELEMENT_COUNT_COUNT_WORDS
+	is set) in the associated file.
+	* doc/texinfo.txi (Configuration Variables): document SORT_ELEMENT_COUNT
+	and SORT_ELEMENT_COUNT_COUNT_WORDS.
+
 2012-01-15  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Configuration Variables for @@-Commands):
