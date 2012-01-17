@@ -225,6 +225,72 @@ menu comment.
 comment --- in.
 @end menu
 '],
+['example_in_menu_description',
+'@node Top
+@top top
+
+@menu
+* (manual)::
+@example
+in 
+
+example
+@end example
+
+@end menu
+'],
+['block_commands_in_menu_description',
+'@node Top
+@top top
+
+@menu
+* (manual)::
+@itemize
+
+@item in item
+
+@end itemize
+@table @asis
+
+@item table item
+
+Text.
+
+@end table
+@html
+
+<b> in html </b>
+
+@end html
+@verbatim
+
+@end verbatim
+@end menu
+'],
+['verb_in_menu_description',
+'@node Top
+@top top
+
+@menu
+* (manual)::
+@verb{: in verb
+
+:}
+
+@end menu
+'],
+['inlineraw_in_menu_description',
+'@node Top
+@top top
+
+@menu
+* (manual)::
+@inlineraw{html, in inline raw
+
+end inlineraw}
+
+@end menu
+'],
 ['sc_in_menu',
 '
 @node Top

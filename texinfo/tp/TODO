@@ -52,8 +52,6 @@ message, and the *Note is stuck with the following word.
 Missing tests
 =============
 
-Test for '' -- in @tex (or @html) and expanded in plaintext.
-
 Test for the handling of #line.
 
 Test tree leading to non empty preamble_before_setfilename.  Currently there
@@ -85,8 +83,6 @@ encodings/at_commands_in_refs_utf8.texi
 
 use test ogoutf.texi ogolat2.texi for html.
 
-test empty line in block or brace command in menu description.
-
 in html test footnotestyle separate.
 
 
@@ -111,6 +107,10 @@ Check the design of the HTML.pm API.  Document the API, in particular
 everything in Texinfo::Config.  Add an API for everything used in the 
 default functions, for example in page_head, use $self->title_string() 
 and so on and so forth.  
+Functions to document for HTML API (many more are missing!):
+sectioning_command_target_name
+node_target_name
+
 
 Check that configuration variables that may only be set on the command 
 line should not be handled more like usual configuration variables.
@@ -228,10 +228,6 @@ The @FIGURE @macro is, for html:
 @end macro
 
 Add @value to the corresponding commands categories?
-
-Functions to document for HTML API (many more are missing!):
-sectioning_command_target_name
-node_target_name
 
 tests .init file not relevant since indices cannot be split anymore
 indices/index_test.init     
