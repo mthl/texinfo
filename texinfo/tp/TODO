@@ -52,8 +52,6 @@ message, and the *Note is stuck with the following word.
 Missing tests
 =============
 
-Test for @html in @copying when expanding @html.
-
 Test for '' -- in @tex (or @html) and expanded in plaintext.
 
 Test for the handling of #line.

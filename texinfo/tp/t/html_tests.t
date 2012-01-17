@@ -199,6 +199,20 @@ Top.
 
 Second paragraph.
 '],
+['html_in_copying',
+'
+@copying
+Copying
+
+@html
+in <b>html</b> in copying `` 
+@end html
+@end copying
+
+@node Top
+@top top
+
+'],
 );
 
 my @test_cases_text = (
