@@ -832,7 +832,8 @@ sub _contents($$$)
 
   my $contents = 1 if ($contents_or_shortcontents eq 'contents');
 
-  #my $section = $section_root->{'section_childs'}->[0];
+  # no sections
+  return ('', 0) if (!$section_root or !$section_root->{'section_childs'});
   my $root_level = $section_root->{'section_childs'}->[0]->{'level'};
   foreach my $top_section(@{$section_root->{'section_childs'}}) {
     $root_level = $top_section->{'level'} 

@@ -66,10 +66,6 @@ a file.
 In html test empty @top for title, with different cases for 
 setcontentsaftertit* and for anchors.
 
-Tests in contents/ are incorporated?
-
-test an lone @contents without any sectioning command.
-
 Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf8, with and without
 enable encoding and entities.
 

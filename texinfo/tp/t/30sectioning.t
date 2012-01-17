@@ -477,6 +477,15 @@ $section_in_unnumbered_text
 @contents
 ', {'test_split' => 'section'}
 ],
+['lone_contents',
+'@contents
+'],
+['contents_with_only_top_node',
+'
+@node Top
+
+@contents
+'],
 );
 
 my @tests_info = (
