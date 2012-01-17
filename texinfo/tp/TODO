@@ -1,5 +1,4 @@
 export XML_CATALOG_FILES=~/src/texinfo/tp/maintain/catalog.xml
-perl -w t/02coverage.t -o
 xmllint --nonet --noout --valid commands.xml
 
 
@@ -232,7 +231,7 @@ The @FIGURE @macro is, for html:
 
 Add @value to the corresponding commands categories?
 
-Functions to document (?):
+Functions to document for HTML API (many more are missing!):
 sectioning_command_target_name
 node_target_name
 
@@ -241,20 +240,9 @@ indices/index_test.init
 
 
 
-Incorporation of texi2html tests
-================================
+Tests in tests and missing tests in t/
+======================================
 
-tests in test/macros, not incorporated
-glossary.texi
-bib-example.texi (big test)
-
-tests of the command:
-macros/
-cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
-cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
-Maybe:
-defcondx_Ubar defcondx_Dbar
-space_in_setfilename
 
 output files split (node or not split) could be interesting +texi2html 
 style for
@@ -286,27 +274,27 @@ sectioning/
  one_node_explicit_directions_anchor (with USE_NODES and without) Really useful?
  top_without_node_sections
 
-sectioning/
-node_footnote_end
+info_tests
+ space_in_setfilename
+
 --> following changed when element_next for special elements became
-set.  Nothing tests that in the test suite, notably because nothing tests
-the texi2html output.
+set.  Nothing tests that in the t/ test suite, notably because nothing tests
+the texi2html output.  All are in tests/sectioning/
   node_footnote_use_node
   no_node_chapter_split
   nodes_after_top_before_section_use_nodes_chapter
   nodes_after_top_before_chapter_use_nodes_chapter
-  test_refs_chapter
-  test_refs_nodes
+
+tests/formatting/
+glossary.texi
+bib-example.texi (big test)
+cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
+cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
+defcondx_Ubar 
+defcondx_Dbar
 
 equivalent_nodes mainly for equivalent_nodes-noderename.cnf parsing and renamed
 nodes handling.
-
-singular_manual
-SHORTEXTN and TOP_FILE, although those options should not necessarily be
-used anymore.
-
-formatting/
-inter_item_commands.texi
 
 HTML command:
 sectioning/test_refs.texi with USE_NODES and split at nodes for testing 
@@ -317,127 +305,9 @@ in layout/no_monolithic
           no_monolithic_only_toc_out
    layout/navigation_*
 
-done: test/invalid. Not completly incorporated
-error_in_footnote_caption.texi    (at least partly done in 
-                    info_tests/error_in_footnote.  More shouldn't be needed)
-tex_in_copying.texi               (this is not invalid and not
-                                   such an interesting construct to test)
-
 partly done:
-indices/recursive_synindex.texi (only done: @synindex aaa bbb
-                                            @synindex bbb aaa)
-indices/index_special_region.texi  (in HTML, split output test. For 
-                                    anchor in @titlepage, for example.
-                                    It is mostly in 25regions.t too)
-                                   also tests for the footnotes in 
-                                   titlepage/copying. 
+indices/index_special_region.texi  (in HTML, split output test.)
 
-done: info_coverage
-code.texi                 certainly not needed
-commentexample.texi       the comment is in fact in comments_in_example
-                          but no test for vertical spacing (but not needed)
-split_nocopying.texi      this requires not using the test suite since 
+split_nocopying.texi      this requires not using the test suite in t/ since 
                           the test suite inhibits splitting
-
-done:
-formatting/def_end_of_line.texi
-formatting/def_end_of_line_footnote.texi
-formatting/empty_deftype.texi
-formatting/def_cmds.texi
-formatting/paragraph_in_samp.texi
-formatting/test_w.texi            (done especially in t/paragraph.t)
-
-sectioning/other_at_comands_in_nodes_refs.texi
-sectioning/at_commands_in_refs.texi
-sectioning/test_refs.texi
-sectioning/nodename_parentheses.texi
-sectioning/double_node_anchor_float.texi
-sectioning/double_top.texi
-sectioning/nodes_test.texi   (done: unknown entry in menu and * (info)::
-                              and errors.  The remaining is not interesting)
-sectioning/rec_nodes.texi
-sectioning/semi_auto.texi
-sectioning/novalidate.texi    (errors that aren't flagged by novalidate
-                               done. The remaining is not interesting)
-sectioning/test_two_include.texi (includes and paths already tested 
-          elsewhere, here command line is tested
-          -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros)
-sectioning/node-whitespace.tex
-sectioning/loop_nodes.texi
-sectioning/sectioning.texi
-sectioning/text_before_line_command.texi
-sectioning/empty_nodes.texi
-sectioning/node_footnote.texi   (interesting for html output)
-sectioning/nodes_before_top.texi
-sectioning/no_element.texi
-sectioning/no_section.texi      (no test for the whole, but not interesting)
-sectioning/only_documentencoding.texi
-sectioning/part_before_section.texi
-sectioning/part_node_before_top.texi
-sectioning/part_node_chapter_after_top.texi
-sectioning/part_node_after_top.texi
-sectioning/node_part_chapter_after_chapter.texi
-sectioning/node_part_chapter_after_top.texi
-sectioning/section_before_chapter.texi
-sectioning/section_before_part.texi
-sectioning/section_before_top.texi
-sectioning/section_before_top_no_node.texi
-sectioning/section_chapter_before_top.texi
-sectioning/section_chapter_before_top_nodes.texi
-sectioning/section_in_unnumbered.texi
-
-
-indices/unknown_index_entry.texi
-indices/more_unknown_index_entry.texi (but without the document structure)
-indices/double_index_entry.texi
-
-invalid/at_after_accent_command.texi
-invalid/author_outside_titlepage_quotation.texi
-invalid/bad_documentencoding.texi
-invalid/bad_nesting.texi
-invalid/bad_style_nesting.texi
-invalid/bad_tab_nesting.texi
-invalid/brace_not_closed.texi
-invalid/caption_not_closed.texi
-invalid/code_not_closed_no_newline.texi
-invalid/code_not_closed.texi 
-invalid/commands_not_closed.texi (but maybe still things to test)
-invalid/command_without_open_brace.texi
-invalid/copying_not_closed.texi
-invalid/def_bad_defx_command.texi
-invalid/def_braces_and_empty.texi
-invalid/def_cmd_dble.texi
-invalid/direntry_dircategory_after_first_node.texi
-invalid/double_top_section.texi
-invalid/empty_ifclear.texi
-invalid/footnote_not_closed.texi
-invalid/formats_not_closed.texi
-invalid/html_not_closed.texi
-invalid/ignored_not_closed.texi
-invalid/invalid_command_in_table.texi
-invalid/itemx_in_itemize.texi
-invalid/macro_call_not_closed.texi
-invalid/macro_def_not_closed.texi
-invalid/math_not_closed.texi
-invalid/multitable_begin_with_tab.texi
-invalid/multitable_too_much_col.texi
-invalid/node_in_copying.texi
-invalid/node_too_much_arguments.texi
-invalid/not_closed_in_menu.texi
-invalid/recursive_copying.texi             (but not the expansion)
-invalid/style_not_closed_in_cartouche.texi
-invalid/style_not_closed_in_table_line.texi
-invalid/tab_in_index.texi                  (but not the printindex)
-invalid/tex_not_closed.texi
-invalid/titlepage_not_closed.texi
-invalid/unclosed_verb_line_commands.texi   (but the result is different since
-                                            ignored until end of file).
-invalid/unknown_command_with_braces.texi
-invalid/verb_and_char_end_of_line.texi
-invalid/verb_end_of_line.texi
-invalid/verb_not_closed.texi
-invalid/verbatim_not_closed.texi
-
-
-coverage/pass0_macro.texi     (not everything, but tests are redundant)
 

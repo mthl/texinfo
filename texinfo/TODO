@@ -1,4 +1,4 @@
-$Id: TODO,v 1.59 2012-01-15 20:51:14 pertusus Exp $
+$Id: TODO,v 1.60 2012-01-17 21:23:32 pertusus Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -23,9 +23,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     especially 
       http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00090.html
       http://mail.gnu.org/archive/html/emacs-devel/2002-10/msg00137.html
-  - Extend and improve the tests.  See the tp/TODO file for some tests
-    using real files needed, and also for (maybe out of date) informations 
-    on texi2html tests inclusion.
+  - Cleanup the tests in tp/tests, there is some redundancy.
   - Support installation of manuals in different languages, along these lines:
     . support a LINGUAS file or variable saying which subdirs LL in the
       source to descend into (under doc/).
