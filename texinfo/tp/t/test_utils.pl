@@ -58,6 +58,8 @@ if (! defined($localesdir)) {
 }
 Locale::Messages::bindtextdomain ('texinfo_document', $localesdir);
 
+my $input_files_dir = $srcdir."t/input_files/";
+
 our $output_files_dir = 't/output_files/';
 foreach my $dir ('t', 't/results', $output_files_dir) {
   if (! -d $dir) {
@@ -444,7 +446,7 @@ sub test($$)
   $converter_options = shift @$test_case if (@$test_case);
   my $test_file;
   if ($parser_options->{'test_file'}) {
-    $test_file = $parser_options->{'test_file'};
+    $test_file = $input_files_dir . $parser_options->{'test_file'};
     delete $parser_options->{'test_file'};
   }
   my $split = '';

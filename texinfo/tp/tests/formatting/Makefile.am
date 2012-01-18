@@ -3,7 +3,7 @@ bib-example.texi           glossary.texi             simplest.texi \
 block_EOL.texi             ignore_and_comments.texi  split_nocopying.texi \
 cond.texi                  inc_file.texi             test_need.texi \
 defxcond.texi              lightweight_markups.texi  \
-delcomment.texi            tex_complex.texi \
+tex_complex.texi \
 direntry_dircategory.texi  tex_in_copying.texi \
 math_not_closed.texi       tex_not_closed.texi \
 float_copying.texi         my-bib-macros.texi        tex.texi \

@@ -115,6 +115,7 @@ t/init/redefine_need.init
 t/init/t2h_singular.init
 t/init/test_directions.init
 t/init/test_renamed_nodes.init
+t/input_files/delcomment.texi
 t/languages.t
 t/manual_tree.pl
 t/nodenormalization.t
@@ -260,6 +261,7 @@ t/results/coverage/commands.pl
 t/results/coverage/comment_on_cartouche_line.pl
 t/results/coverage/comment_on_group_line.pl
 t/results/coverage/def.pl
+t/results/coverage/delcomment.pl
 t/results/coverage/empty_w.pl
 t/results/coverage/exdent_and_commands.pl
 t/results/coverage/exdent_and_formats.pl
@@ -349,6 +351,7 @@ t/results/html_tests/commands_in_abbr.pl
 t/results/html_tests/commands_in_alt.pl
 t/results/html_tests/commands_in_email.pl
 t/results/html_tests/documentdescription.pl
+t/results/html_tests/html_in_copying.pl
 t/results/html_tests/index_and_node_same_name.pl
 t/results/html_tests/index_below.pl
 t/results/html_tests/raw_html.pl
@@ -593,6 +596,7 @@ t/results/macro/two_macros_on_a_line.pl
 t/results/macro/unknown_macro_on_line_command.pl
 t/results/macro/zero_argument.pl
 t/results/menu/bad_beginning.pl
+t/results/menu/block_commands_in_menu_description.pl
 t/results/menu/comment_on_menu_line.pl
 t/results/menu/dash_in_menu.pl
 t/results/menu/detailmenu_in_description.pl
@@ -601,7 +605,9 @@ t/results/menu/detailmenu.pl
 t/results/menu/direntry_dircategory_after_first_node.pl
 t/results/menu/entry_after_detailmenu.pl
 t/results/menu/example_in_menu_comment.pl
+t/results/menu/example_in_menu_description.pl
 t/results/menu/formats_in_menu.pl
+t/results/menu/inlineraw_in_menu_description.pl
 t/results/menu/menu_entry_name_comment.pl
 t/results/menu/menu_entry_name.pl
 t/results/menu/menu_entry_node_comments.pl
@@ -623,6 +629,7 @@ t/results/menu/reference_to_external_manual.pl
 t/results/menu/sc_in_menu.pl
 t/results/menu/simple_no_menu.pl
 t/results/menu/simple.pl
+t/results/menu/verb_in_menu_description.pl
 t/results/misc_commands/also_not_line.pl
 t/results/misc_commands/author_outside_titlepage_quotation.pl
 t/results/misc_commands/bad_documentlanguage.pl
@@ -812,6 +819,7 @@ t/results/sectioning/complex_split_at_node.pl
 t/results/sectioning/contents_and_shortcontents.pl
 t/results/sectioning/contents_in_html_text.pl
 t/results/sectioning/contents.pl
+t/results/sectioning/contents_with_only_top_node.pl
 t/results/sectioning/double_node_anchor_float.pl
 t/results/sectioning/double_part.pl
 t/results/sectioning/double_top_in_menu.pl
@@ -827,6 +835,7 @@ t/results/sectioning/equivalent_nodes.pl
 t/results/sectioning/explicit_node_directions.pl
 t/results/sectioning/hole_in_sectioning.pl
 t/results/sectioning/internal_top_node_up.pl
+t/results/sectioning/lone_contents.pl
 t/results/sectioning/lone_Top_node.pl
 t/results/sectioning/loop_nodes.pl
 t/results/sectioning/lowered_subsubsection.pl

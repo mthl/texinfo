@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.27 2012-01-15 23:38:22 pertusus Exp $
+# $Id: Makefile.am,v 1.28 2012-01-18 22:31:13 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -20,7 +20,6 @@ $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 SUBDIRS = . tests
 
 bin_SCRIPTS = texi2any
-noinst_SCRIPTS = texi_sort_elements_count
 
 do_subst = sed \
   -e 's,[@]PACKAGE_VERSION[@],$(PACKAGE_VERSION),g' \
@@ -36,10 +35,6 @@ do_subst = sed \
   -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g'
 
 texi2any: texi2any.pl $(top_builddir)/config.status
-	$(do_subst) $(srcdir)/$< >$@
-	chmod a+x $@
-
-texi_sort_elements_count: texi_sort_elements_count.pl $(top_builddir)/config.status
 	$(do_subst) $(srcdir)/$< >$@
 	chmod a+x $@
 
@@ -129,6 +124,7 @@ test_files = \
  t/init/l2h.init \
  t/manual_tree.pl \
  t/test_utils.pl \
+ t/input_files/delcomment.texi \
  #
 
 relative_include_dir = t/include_dir
@@ -173,7 +169,6 @@ perl_specific_files = \
 
 EXTRA_DIST = \
   texi2any.pl \
-  texi_sort_elements_count.pl \
   $(test_results) \
   $(test_files) \
   $(tp_tests) \
@@ -181,7 +176,7 @@ EXTRA_DIST = \
   $(perl_specific_files) \
   maintain/lib
 
-MANIFEST: maintain/MANIFEST_generated_files Makefile.am
+MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	echo "$(dist_modules_DATA) $(dist_converters_DATA) $(dist_debugmodules_DATA) " \
 	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_results) " \
 	"texi2any-perl $(maintainance_files) README TODO COPYING " \

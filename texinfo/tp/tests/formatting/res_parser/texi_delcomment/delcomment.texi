@@ -1,7 +1,0 @@
-\input texinfo
-@setfilename delcomment.info
-
-
-This line is the only output.
-
-@bye

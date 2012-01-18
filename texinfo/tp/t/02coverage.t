@@ -541,7 +541,7 @@ In float with caption.
 '],
 );
 
-my @test_invalid = (
+my @test_tree = (
 ['arg_in_brace_no_arg_command',
 '@TeX{in tex}
 '],
@@ -737,6 +737,8 @@ before first vtable
 before first multitable
 @end multitable
 '],
+['delcomment', undef, {'test_file' => 'delcomment.texi'}
+],
 );
 
 foreach my $test (@test_cases) {
@@ -748,5 +750,5 @@ foreach my $test (@test_cases) {
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('coverage', [@test_cases, @test_invalid], $arg_test_case,
+run_all ('coverage', [@test_cases, @test_tree], $arg_test_case,
    $arg_generate, $arg_debug);

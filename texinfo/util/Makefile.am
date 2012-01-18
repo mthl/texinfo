@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.40 2012-01-16 22:21:52 pertusus Exp $
+# $Id: Makefile.am,v 1.41 2012-01-18 22:31:12 pertusus Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -42,7 +42,7 @@ EXTRA_DIST = README deref.c detexinfo dir-example fix-info-dir fixfonts \
   fixref.gawk gdoc gen-dir-node gendocs.sh gendocs_template infosrch \
   install-info-html outline.gawk pdftexi2dvi \
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi texi2pdf txitextest \
-  $(dist_pkgdata_DATA) texinfo-cat.in
+  $(dist_pkgdata_DATA) texinfo-cat.in texi_sort_elements_count.pl
 
 
 # We must not stress people's TeX installations.

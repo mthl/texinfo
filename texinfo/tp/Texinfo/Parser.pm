@@ -671,6 +671,7 @@ sub parse_texi_text($$;$$$$)
   }
   $lines_nr = [] if (!defined($lines_nr));
   if (!ref($lines_nr)) {
+    #$file =~ s/^.*\/// if (defined($file) and $self->{'TEST'});
     $lines_array = _complete_line_nr($text, $lines_nr, $file, 
                                      $macro, $fixed_line_number);
   } else {
@@ -723,6 +724,7 @@ sub parse_texi_file ($$)
     }
   }
 
+  $file_name =~ s/^.*\/// if ($self->{'TEST'});
   $self = parser() if (!defined($self));
   $self->{'input'} = [{
        'pending' => [],
@@ -778,6 +780,7 @@ sub parse_texi_line($$;$$$$)
   if (!ref($text)) {
     $text = _text_to_lines($text);
   }
+  #$file =~ s/^.*\/// if (defined($file) and $self->{'TEST'});
   my $lines_array = _complete_line_nr($text, $lines_nr, $file, 
                                      $macro, $fixed_line_number);
 

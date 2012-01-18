@@ -52,27 +52,26 @@ message, and the *Note is stuck with the following word.
 Missing tests
 =============
 
+Unit test of end_line_count for Texinfo/Convert/Paragraph.pm .... containers.
+
+Test no empty line before and after a sectioning command.  With text, but
+also commands.
+
 Test for the handling of #line.
 
-Test tree leading to non empty preamble_before_setfilename.  Currently there
-are none in the test suite, maybe require a real file as input.
+Test input file without @setfilename
 
 In html, test 
  empty lines at the begining, 
  content ignored before setfilename, 
 for the different cases of element/no element.  This is to be done with 
-real input files, or test_utils.pl should be changed to parse entry like 
-a file.
+real input files.
+
 In html test empty @top for title, with different cases for 
 setcontentsaftertit* and for anchors.
 
 Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf8, with and without
 enable encoding and entities.
-
-Test end_line_count in Texinfo/Convert/ containers.
-
-Test no empty line before and after a sectioning command.  With text, but
-also commands.
 
 Test character lengths and encoding.  For instance tests in 
 encodings/at_commands_in_refs_utf8.texi
