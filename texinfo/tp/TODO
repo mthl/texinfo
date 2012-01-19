@@ -59,7 +59,9 @@ also commands.
 
 Test for the handling of #line.
 
-Test input file without @setfilename
+Test input file without @setfilename.
+
+test nodes that end up in the same files, like @'a and @^a.
 
 In html, test 
  empty lines at the begining, 

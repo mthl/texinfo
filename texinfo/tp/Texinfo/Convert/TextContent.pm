@@ -35,7 +35,7 @@ foreach my $ignored_brace_command ('hyphenation', 'errormsg') {
   $ignored_brace_commands{$ignored_brace_command} = 1;
 }
 my %ignored_block_commands;
-foreach my $ignored_command ('titlepage', 'copying', 'documentdescription',
+foreach my $ignored_command (
   'html', 'tex', 'xml', 'docbook', 'ignore', 'macro', 'rmacro') {
   $ignored_block_commands{$ignored_command} = 1;
 }
