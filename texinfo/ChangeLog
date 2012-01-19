@@ -1,3 +1,8 @@
+2012-01-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Configuration Variables for Program Behavior):
+	split out into new node, other text tweaks.
+
 2012-01-17  Patrice Dumas  <pertusus@free.fr>
 
 	* TODO, tp/TODO: clean tests related TODO parts.
@@ -12,8 +17,8 @@
 	* tp/texi2any.pl: if SORT_ELEMENT_COUNT is set, dump elements names
 	sorted by line count (or word count if ISORT_ELEMENT_COUNT_COUNT_WORDS
 	is set) in the associated file.
-	* doc/texinfo.txi (Configuration Variables): document SORT_ELEMENT_COUNT
-	and SORT_ELEMENT_COUNT_COUNT_WORDS.
+	* doc/texinfo.txi (Configuration Variables): document
+	SORT_ELEMENT_COUNT and SORT_ELEMENT_COUNT_COUNT_WORDS.
 
 2012-01-15  Patrice Dumas  <pertusus@free.fr>
 
@@ -21,7 +26,8 @@
 	remove @-commands that have no effect and add new @-commands available
 	as customization options.
 
-	* tp/texi2any.pl, tp/Texinfo/Convert/TextContent.pm, tp/Makefile.am, TODO: 
+	* tp/texi2any.pl, tp/Texinfo/Convert/TextContent.pm,
+	tp/Makefile.am, TODO: 
 	New converter that strips commands from output.
 
 2012-01-14  Patrice Dumas  <pertusus@free.fr>

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.412 2012-01-17 00:18:02 pertusus Exp $
+@c $Id: texinfo.txi,v 1.413 2012-01-19 01:41:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -619,6 +619,13 @@ Generic Translator texi2any
                                 from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
 * Configuration Variables::     Configuring @command{texi2any}.
+
+Configuration Variables
+
+* Configuration Variables for Program Behavior::
+* Configuration Variables for @@-Commands::
+* Configuration Variables and Options::
+* Other Configuration Variables::
 
 Creating and Installing Info Files
 
@@ -15108,7 +15115,7 @@ For example, the following is also a valid @samp{#line} directive,
 meaning line 1 of @file{/usr/include/stdio.h}:
 
 @example
-# 1 "/usr/include/stdio.h" 1 3 4
+@hashchar{} 1 "/usr/include/stdio.h" 1 3 4
 @end example
 
 
@@ -17002,55 +17009,75 @@ promise.
 @end cartouche
 
 Many aspects of the behavior and output of @command{texi2any} may be
-modified by modifying configuration variables.  These
-@dfn{configuration variables} fall into four general categories:
+modified by modifying so-called @dfn{configuration variables}.  These
+fall into four general categories:
 
-@itemize @bullet
-@item those changing the program behaviour.  Those variables
-may only be set on the command line:
-@vtable @code
-@item DEBUGTREE
-Instead of generating a regular output format, output a text representation
-of the tree obtained by parsing the input texinfo document.
+@itemize bullet
+@item
+Those changing fundamental program behavior; for example,
+@code{TEXI2HTML} for maximum compatibility with the
+@command{texi2html} program.  These variables may only be set on the
+command line.
 
-@item RAW_TEXT
-Output raw text, with minimal formatting.  For example footnotes are ignored
-and there is no paragraph filling.  This output is used by the parser, for
-file names, for example or for copyright code in comments in HTML.
+@item
+Those associated with @@-commands in the document; for example,
+@code{@@documentlanguage}.
 
-@item TEXI2HTML
-Generate HTML and try to be as compatible as possible with @command{texi2html}. 
+@item
+Those associated with command-line options; for example, the
+configuration variable @code{SPLIT} is associated with the
+@option{--split} command-line option.
 
-@item TEXTCONTENT
-Output the text contents stripped of commands, useful for spell checking or
-word counting, for example.
+@item
+Other ad hoc variables.
+@end itemize
 
-@end vtable
-
-@item those associated with @@-commands in the document,
-for example, @code{@@documentlanguage}.
-
-@item associated with command-line options,
-for example, the configuration variable @code{SPLIT} is associated
-with the @option{--split} command-line option.
-
-@item other ad hoc variables,
-for example, @code{NO_CSS} which can be set to 0 to avoid using
-CSS. These ad hoc variables can be set on the command line, using
+Configuration variables may set on the command line using
 @code{--set-init-variable '@var{var} @var{value}'} (quoting the
 variable/value pair) or @code{--set-init-variable
 @var{var}=@var{value}} (using @code{=}).  A special @var{value} is
-@samp{undef}, which sets the variable to this special Perl value for
-undefined.
-@end itemize
+@samp{undef}, which sets the variable to this special ``undefined''
+Perl value.
 
 The sections below give the details for each of these.
 
 @menu
+* Behavior: Configuration Variables for Program Behavior.
 * Commands: Configuration Variables for @@-Commands.
 * Options:  Configuration Variables and Options.
 * Other:    Other Configuration Variables.
 @end menu
+
+
+@node Configuration Variables for Program Behavior
+@subsection Configuration Variables for Program Behavior
+@cindex Configuration variables for program behavior
+@cindex Program behavior, configuration variables for
+
+@vtable @code
+@item DEBUGTREE
+@cindex tree representation, for debugging
+@cindex debugging document, with tree representation
+Instead of generating a regular output format, output a text representation
+of the tree obtained by parsing the input texinfo document.
+
+@item RAW_TEXT
+@cindex raw text output
+Output raw text, with minimal formatting.  For example, footnotes are
+ignored and there is no paragraph filling.  This is used by the parser
+for file names and copyright text in HTML comments, for example
+
+@item TEXI2HTML
+@cindex compatibility, with @command{texi2html}
+Generate HTML and try to be as compatible as possible with
+@command{texi2html}.
+
+@item TEXTCONTENT
+@cindex spell checking
+@cindex word counting
+Output the text content only, stripped of commands; this is useful for
+spell checking or word counting, for example.
+@end vtable
 
 
 @node Configuration Variables for @@-Commands
@@ -17432,7 +17459,7 @@ For HTML@.  If set, the corresponding text will appear at the footer of
 each HTML file.
 
 @item PREFIX
-the output file prefix, which is prepended to some output files.  By
+The output file prefix, which is prepended to some output files.  By
 default it is set by @code{@@setfilename} or from the input file
 (@pxref{setfilename}).  How this value is used depends on the value of
 other configuration variables or command line options, such as split output
@@ -17447,9 +17474,9 @@ For HTML@.  If set, output the program name and miscellaneous related
 information in the page footers.
 
 @item RENAMED_NODES_FILE
-Use the value for the renamed nodes description file.  If not set, the 
-file is @file{<input_file_basename>-noderename.cnf}.  @xref{HTML Xref
-Link Preservation}.
+If set, use the value for the renamed nodes description file.  If not
+set, the file is @file{<input_file_basename>-noderename.cnf}.
+@xref{HTML Xref Link Preservation}.
 
 @item RENAMED_NODES_REDIRECTIONS
 If set, do redirection files for renamed nodes.  Set for HTML by default.
@@ -17474,13 +17501,13 @@ If set, use a simple preformatted style for the menu, instead of
 breaking down the different parts of the menu.  @xref{Menu Parts}.
 
 @item SORT_ELEMENT_COUNT
-Name of a file where a list of elements (nodes or sections, depending
-on the output format generated) sorted by the number of lines they contain 
-after removal of @@-commands are dumped.
+If set, the name of a file to which a list of elements (nodes or
+sections, depending on the output format) is dumped, sorted by the
+number of lines they contain after removal of @@-commands.
 
 @item SORT_ELEMENT_COUNT_COUNT_WORDS
-When sorting elements by their counting, use words count instead
-of line counts.
+When dumping the elements-by-size file (see preceding item), use word
+counts instead of line counts.
 
 @c @item SPLIT_INDEX
 @c For HTML@.  If set, the output is split, and the output from
@@ -21548,7 +21575,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.412 2012-01-17 00:18:02 pertusus Exp $
+$Id: texinfo.txi,v 1.413 2012-01-19 01:41:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
