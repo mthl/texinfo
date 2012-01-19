@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.33 2011-10-21 18:42:34 karl Exp $
+# $Id: Makefile.am,v 1.34 2012-01-19 20:38:10 pertusus Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -34,7 +34,7 @@ else
   # Do doc and man last so makeinfo will be built when we get there.
   # Others are alphabetical.
   SUBDIRS = $(native_tools) gnulib/lib lib \
-            install-info info po po_document tp util \
+            install-info info po po_document tp Pod-Simple-Texinfo util \
 	    doc man
 endif
 

@@ -1,11 +1,38 @@
 #! /usr/bin/perl -w
 
+# pod2texi: Convert Pod to Texinfo
+#
+# Copyright 2012 Free Software Foundation, Inc.
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
+# Original author: Patrice Dumas <pertusus@free.fr>
+
 use strict;
 use Pod::Simple::Texinfo;
 
 use Getopt::Long qw(GetOptions);
 
 Getopt::Long::Configure("gnu_getopt");
+
+BEGIN
+{
+  my $texinfolibdir = '@datadir@/Pod-Simple-Texinfo';
+  unshift @INC, ($texinfolibdir)
+    if ($texinfolibdir ne ''
+        and $texinfolibdir ne '@' .'datadir@/Pod-Simple-Texinfo');
+}
 
 {
 # A fake package to be able to use Pod::Simple::PullParser without generating
@@ -48,12 +75,10 @@ my $top = 'top';
 my $result_options = Getopt::Long::GetOptions (
   'help|h' => sub { print pod2texi_help(); exit 0; },
   'version|V' => sub {print "$real_command_name $Pod::Simple::Texinfo::VERSION\n\n";
-    printf __("Copyright (C) %s Patrice Dumas
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-This program is distributed in the hope that it will be useful, but
-without any warranty; without even the implied warranty of
-merchantability or fitness for a particular purpose.\n"), '2011';
+    printf __("Copyright (C) %s Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
       exit 0;},
   'base-level=i' => \$base_level,
   'unnumbered-sections!' => \$unnumbered_sections,
@@ -210,14 +235,14 @@ L<Pod::Simple::Texinfo>.  The Texinfo manual.  L<perlpod>.
 
 =head1 COPYRIGHT
 
-Copyright (C) 2011 Patrice Dumas
+Copyright (C) 2012 Free Software Foundation, Inc.
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but
-without any warranty; without even the implied warranty of
-merchantability or fitness for a particular purpose.
+There is NO WARRANTY, to the extent permitted by law.
 
 =head1 AUTHOR
 

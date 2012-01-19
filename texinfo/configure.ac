@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.110 2012-01-14 18:57:28 pertusus Exp $
+# $Id: configure.ac,v 1.111 2012-01-19 20:38:10 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -332,6 +332,7 @@ AC_CONFIG_FILES([\
   tp/tests/encodings/Makefile
   tp/tests/layout/Makefile
   tp/tests/path_separator
+  Pod-Simple-Texinfo/Makefile
 ])
 
 AC_OUTPUT

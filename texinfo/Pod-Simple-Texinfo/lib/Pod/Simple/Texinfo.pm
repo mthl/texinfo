@@ -1,5 +1,23 @@
-# See informations on this perl module at the end of the file, in the pod
-# section.
+# Texinfo.pm: format Pod as Texinfo.
+#
+# Copyright 2011, 2012 Free Software Foundation, Inc.
+# 
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
+# Original author: Patrice Dumas <pertusus@free.fr>
+# Parts from L<Pod::Simple::HTML>.
+
 
 package Pod::Simple::Texinfo;
 
@@ -606,14 +624,12 @@ L<Pod::Simple>. L<Pod::Simple::PullParser>. The Texinfo manual.
 
 =head1 COPYRIGHT
 
-Copyright (C) 2011 Patrice Dumas
+Copyright (C) 2011, 2012 Free Software Foundation, Inc.
 
-This library is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-This program is distributed in the hope that it will be useful, but
-without any warranty; without even the implied warranty of
-merchantability or fitness for a particular purpose.
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License,
+or (at your option) any later version.
 
 C<_url_escape> is C<general_url_escape> from L<Pod::Simple::HTML>.
 
