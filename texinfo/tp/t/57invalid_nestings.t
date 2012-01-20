@@ -72,6 +72,32 @@ in table line
 ['on_index_entry_line',
 '@cindex @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 '],
+['section_on_index_entry_line', 
+'@cindex a @section b
+
+Somethin
+'],
+['node_on_index_entry_line',
+'
+@cindex entry @node a, (m)b, (m)c, (h)d
+
+Content
+'],
+['section_on_def_line',
+'@deffn a b @section s
+
+Something
+
+@end deffn
+'],
+['section_on_defx_line',
+'@deffn h j k l 
+@deffnx a b @section s
+
+Something
+
+@end deffn
+'],
 ['center',
 '@center @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote}
 

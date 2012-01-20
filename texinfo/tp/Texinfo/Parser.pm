@@ -1316,7 +1316,11 @@ sub _gather_def_item($;$)
     $type = 'def_item';
   }
 
-  #print STDERR "_gather_def_item in "._print_current($current)."\n";
+  # This may happen for a construct like
+  # @deffnx a b @section
+  # but otherwise the end of line will lead to the command closing
+  return if (!$current->{'cmdname'} or $current->{'cmdname'} =~ /x$/);
+  #print STDERR "_gather_def_item($type) in "._print_current($current)."\n";
   my $def_item = {'type' => $type,
                   'parent' => $current,
                   'contents' => []};
@@ -1491,6 +1495,7 @@ sub _close_current($$$;$$)
   my $interrupting_command = shift;
 
   if ($current->{'cmdname'}) {
+    print STDERR "CLOSING \@$current->{'cmdname'}\n" if ($self->{'DEBUG'});
     if (exists($brace_commands{$current->{'cmdname'}})) {
       pop @{$self->{'context_stack'}}
          if (exists $context_brace_commands{$current->{'cmdname'}});
@@ -1511,7 +1516,7 @@ sub _close_current($$$;$$)
           my $conditional = pop @{$current->{'parent'}->{'contents'}};
         }
       }
-      pop @{$self->{'context_stack'}} if
+      my $context = pop @{$self->{'context_stack'}} if
          ($preformatted_commands{$current->{'cmdname'}}
            or $menu_commands{$current->{'cmdname'}});
       pop @{$self->{'regions_stack'}} 
@@ -1520,9 +1525,17 @@ sub _close_current($$$;$$)
     } else {
       # There @item and @tab commands are closed, and also line commands
       # with invalid content
+      if ($current->{'cmdname'} and $current->{'args'}
+          and $current->{'args'}->[0] and $current->{'args'}->[0]->{'type'}
+          and $current->{'args'}->[0]->{'type'} eq 'misc_line_arg') {
+        my $context = pop @{$self->{'context_stack'}};
+        die "BUG: _close_current, command with misc_line_arg, context: $context\n" 
+          if ($context ne 'line' and $context ne 'def');
+      }
       $current = $current->{'parent'};
     }
   } elsif ($current->{'type'}) {
+    print STDERR "CLOSING type $current->{'type'}\n" if ($self->{'DEBUG'});
     if ($current->{'type'} eq 'bracketed') {
       $self->_command_error($current, $line_nr, 
                             $self->__("Misplaced %c"), ord('{'));
@@ -3010,8 +3023,8 @@ sub _end_line($$$)
       } else {
         # This is the multitable block_line_arg line context
         my $context = pop @{$self->{'context_stack'}};
-          print STDERR "BUG: $context in misc_line_arg ne line\n" 
-        if ($context ne 'line');
+        print STDERR "BUG: $context in misc_line_arg ne line\n" 
+          if ($context ne 'line');
         $current = $current->{'parent'};
         $current->{'extra'}->{'max_columns'} = 0;
         if (defined($misc_cmd->{'extra'}->{'misc_args'})) {
@@ -3926,6 +3939,7 @@ sub _parse_texi($;$)
             }
             $self->_register_and_warn_invalid($command, $invalid_parent,
                                               $line_nr, $misc);
+            # also sets invalid_nesting in that case
             $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
             $self->_register_global_command($command, $misc, $line_nr);
 
