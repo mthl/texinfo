@@ -1149,7 +1149,7 @@ while(@input_files)
     my ($sorted_name_counts_array, $sort_element_count_text)
         = Texinfo::Convert::Converter::sort_element_counts(
                $converter_element_count_file, $tree, $use_sections,
-                             get_conf('SORT_ELEMENT_COUNT_COUNT_WORDS'));
+                             get_conf('SORT_ELEMENT_COUNT_WORDS'));
 
     my $sort_element_count_file = get_conf('SORT_ELEMENT_COUNT'); 
     my $sort_element_count_fh = Texinfo::Common::open_out($converter, 
