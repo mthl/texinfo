@@ -172,6 +172,8 @@ sub _preamble($)
       $setfilename .= '.info';
       print $fh "\@setfilename $setfilename\n\n"
     }
+    # FIXME depend on =encoding
+    print $fh '@documentencoding utf-8'."\n\n";
 
     my $title = $self->get_title();
     if (defined($title) and $title =~ m/\S/) {
@@ -347,20 +349,22 @@ sub _convert_pod($)
       } elsif ($tag_commands{$tagname}) {
         _output($fh, \@accumulated_output, "\@$tag_commands{$tagname}\{");
       } elsif ($tagname eq 'Verbatim') {
-        print $fh '@verbatim'."\n";
+        _output($fh, \@accumulated_output, '@verbatim'."\n");
         push @format_stack, 'verbatim';
       } elsif ($environment_commands{$tagname}) {
-        print $fh "\@$environment_commands{$tagname}\n";
+        _output($fh, \@accumulated_output, "\@$environment_commands{$tagname}\n");
       } elsif ($tagname eq 'for') {
         my $target = $token->attr('target');
         push @format_stack, $target;
         if ($self->{'texinfo_raw_format_commands'}->{$target}) {
-          print $fh "\@$self->{'texinfo_raw_format_commands'}->{$target}\n";
+          _output($fh, \@accumulated_output, 
+             "\@$self->{'texinfo_raw_format_commands'}->{$target}\n");
         } elsif ($self->{'texinfo_if_format_commands'}->{$target}) {
-          print $fh "\@if$self->{'texinfo_if_format_commands'}->{$target}\n";
+          _output($fh, \@accumulated_output, 
+             "\@if$self->{'texinfo_if_format_commands'}->{$target}\n");
         }
       } elsif ($line_commands{$tagname}) {
-        print $fh "\@$line_commands{$tagname} ";
+        _output($fh, \@accumulated_output,"\@$line_commands{$tagname} ");
       } elsif ($tagname eq 'L') {
         my $linktype = $token->attr('type');
         my $content_implicit = $token->attr('content-implicit');
@@ -388,7 +392,7 @@ sub _convert_pod($)
             $url_arg = '';
           }
           $replacement_arg = _protect_text($replacement_arg);
-          _output($fh, \@accumulated_output, "\@url{$url_arg,,$replacement_arg}");
+          _output($fh, \@accumulated_output, "\@url{$url_arg,, $replacement_arg}");
         } else {
           if ($linktype eq 'url') {
             # NOTE: the .'' is here to force the $token->attr to be a real
@@ -434,7 +438,7 @@ sub _convert_pod($)
         #}
         #print STDERR $token->dump."\n";
       } elsif ($tagname eq 'X') {
-        print $fh '@cindex ';
+        _output($fh, \@accumulated_output, "\@cindex ");
       }
     } elsif ($type eq 'text') {
       my $text;
@@ -464,14 +468,15 @@ sub _convert_pod($)
           my $command;
           $command 
             = $self->{'texinfo_head_commands'}->{$tagname};
-          print $fh "\@$command $command_result\n";
+          _output($fh, \@accumulated_output, "\@$command $command_result\n");
         } else {
-          print $fh "\@$line_commands{$tagname} $command_result\n";
+          _output($fh, \@accumulated_output, 
+                  "\@$line_commands{$tagname} $command_result\n");
         }
-        print $fh "\@anchor{$node_name}\n";
-        print $fh "\n" if ($head_commands_level{$tagname});
+        _output($fh, \@accumulated_output, "\@anchor{$node_name}\n");
+        _output($fh, \@accumulated_output, "\n") if ($head_commands_level{$tagname});
       } elsif ($tagname eq 'Para') {
-        print $fh "\n\n";
+        _output($fh, \@accumulated_output, "\n\n");
         #my $next_token = $self->get_token();
         #if ($next_token) {
         #  if ($next_token->type() ne 'start' 
@@ -484,20 +489,22 @@ sub _convert_pod($)
         _output($fh, \@accumulated_output, "}");
       } elsif ($tagname eq 'Verbatim') {
         pop @format_stack;
-        print $fh "\n".'@end verbatim'."\n\n";
+        _output($fh, \@accumulated_output, "\n".'@end verbatim'."\n\n");
       } elsif ($environment_commands{$tagname}) {
         my $tag = $environment_commands{$tagname};
         $tag =~ s/ .*//;
-        print $fh "\@end $tag\n\n";
+        _output($fh, \@accumulated_output, "\@end $tag\n\n");
       } elsif ($tagname eq 'for') {
         my $target = pop @format_stack;
         if ($self->{'texinfo_raw_format_commands'}->{$target}) {
-          print $fh "\n\@end $self->{'texinfo_raw_format_commands'}->{$target}\n";
+          _output($fh, \@accumulated_output, 
+                  "\n\@end $self->{'texinfo_raw_format_commands'}->{$target}\n");
         } elsif ($self->{'texinfo_if_format_commands'}->{$target}) {
-          print $fh "\@end if$self->{'texinfo_if_format_commands'}->{$target}\n";
+          _output($fh, \@accumulated_output, 
+                  "\@end if$self->{'texinfo_if_format_commands'}->{$target}\n");
         }
       } elsif ($line_commands{$tagname}) {
-        print $fh "\n";
+        _output($fh, \@accumulated_output, "\n");
       } elsif ($tagname eq 'L') {
         my $result = pop @accumulated_output;
         my $format = pop @format_stack;
@@ -534,7 +541,7 @@ sub _convert_pod($)
         my $next_token = $self->get_token();
         if ($next_token) {
           if ($next_token->type() eq 'text') {
-            print $fh "\n";
+            _output($fh, \@accumulated_output, "\n");
           }
           $self->unget_token($next_token);
         }

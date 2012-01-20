@@ -129,6 +129,8 @@ foreach my $file (@ARGV) {
     open (OUT, ">$outfile") or die "Open $outfile: $!\n";
     $fh = *OUT;
   }
+  # FIXME should use =encoding
+  binmode($fh, ':encoding(utf8)');
   my $new = Pod::Simple::Texinfo->new();
   $new->output_fh($fh);
   $new->texinfo_sectioning_base_level($base_level);
@@ -163,6 +165,7 @@ if ($base_level > 0) {
   print $fh '\input texinfo'."\n";
   print $fh '@setfilename '
     .Pod::Simple::Texinfo::_protect_text ($outfile_name)."\n\n";
+  print $fh '@documentencoding utf-8'."\n\n";
   print $fh "\@node Top\n";
   # not escaped on purpose, user may want to use @-commands
   print $fh "\@top $top\n\n";
