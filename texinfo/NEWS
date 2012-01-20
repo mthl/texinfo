@@ -1,9 +1,9 @@
-$Id: NEWS,v 1.209 2012-01-03 18:26:57 karl Exp $
+$Id: NEWS,v 1.210 2012-01-20 18:00:57 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
-  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
   Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
@@ -39,6 +39,8 @@ one of the relevant sections:
   . new commands for Texinfo special characters:
     @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}.
   . new command @errormsg to report an error.
+  . five-argument xrefs can refer to a whole manual, by omitting the
+      section name and specifying Top for the node name, or omitting it.
   . #line directives are recognized.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
 
@@ -55,8 +57,8 @@ one of the relevant sections:
   supported, and extensive customization of the HTML output is possible.
   See xxx in the manual for more about this reimplementation.
   
-  The new program is unfortunately noticeably slower at present than the
-  C program was.  We hope all the many improvements make the change
+  The new program is, unfortunately, noticeably slower at present than
+  the C program was.  We hope all the many improvements make the change
   worthwhile nevertheless.
 
 * texinfo.tex:

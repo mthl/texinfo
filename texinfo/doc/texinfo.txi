@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.413 2012-01-19 01:41:17 karl Exp $
+@c $Id: texinfo.txi,v 1.414 2012-01-20 18:00:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -938,8 +938,8 @@ details of the HTML language and much related information, see
 format is output by the @TeX{} typesetting program
 (@uref{http://tug.org}).  This is then read by a DVI `driver', which
 writes the actual device-specific commands that can be viewed or
-printed, notably Dvips for translation to PostScript (@pxref{Invoking
-Dvips,,, dvips, Dvips}) and Xdvi for viewing on an X display
+printed, notably Dvips for translation to PostScript (@pxref{Top,,,
+dvips, Dvips}) and Xdvi for viewing on an X display
 (@uref{http://sourceforge.net/projects/xdvi/}).  @xref{Hardcopy}.
 
 Be aware that the Texinfo language is very different from and much
@@ -3200,7 +3200,7 @@ documents with a long history, having many different years of
 publication.  If you do use several lines, do not indent any of them
 (or anything else in the @code{@@copying} block) in the source file.
 
-@xref{Copyright Notices,,,maintain,GNU Maintainer Information}, for
+@xref{Copyright Notices,,, maintain, GNU Maintainer Information}, for
 additional information.
 
 
@@ -5455,9 +5455,9 @@ command on a line by itself if that helps readability of the source.
 Whitespace (including newlines) is ignored after @code{@@anchor}.
 
 Anchor names and node names may not conflict.  Anchors and nodes are
-given similar treatment in some ways; for example, the @code{goto-node}
-command in standalone Info takes either an anchor name or a node name as
-an argument.  (@xref{goto-node,,,info-stnd,GNU Info}.)
+given similar treatment in some ways; for example, the
+@code{goto-node} command takes either an anchor name or a node name as
+an argument.  (@xref{Go to node,,, info, Info}.)
 
 Also like node names, anchor names cannot include some characters
 (@pxref{Node Line Requirements}).
@@ -6311,8 +6311,7 @@ Info file, different from the file in which the reference appears, and
 a fifth argument specifies its title as a printed manual.
 
 Remember that a comma or period must follow the closing brace of an
-@code{@@xref} command to terminate the cross reference.  In the
-following examples, a clause follows a terminating comma.
+@code{@@xref} command to terminate the cross reference.
 
 @need 800
 @noindent
@@ -6326,16 +6325,14 @@ The full template is:
 @end example
 
 @need 700
-@noindent
-For example,
+@noindent For example,
 
 @example
 @@xref@{Electrical Effects, Lightning, Thunder and Lightning,
 weather, An Introduction to Meteorology@}.
 @end example
 
-@noindent
-produces
+@noindent produces this output in Info:
 
 @example
 *Note Lightning: (weather)Electrical Effects.
@@ -6363,16 +6360,12 @@ the long version of @code{@@xref}.  In this case, the third argument,
 the topic description, will be used as the cross reference name in
 Info.  For example,
 
-@need 700
-@noindent
-
 @example
 @@xref@{Electrical Effects, , Thunder and Lightning,
 weather, An Introduction to Meteorology@}.
 @end example
 
-@noindent
-produces
+@noindent produces
 
 @example
 @group
@@ -6380,8 +6373,7 @@ produces
 @end group
 @end example
 
-@noindent
-and
+@noindent and
 
 @quotation
 See section ``Thunder and Lightning'' in @cite{An Introduction to
@@ -6393,16 +6385,12 @@ Next case: If the node name and the section title are the same in the
 other manual, you may also leave out the section title.  In this case,
 the node name is used in both instances.  For example,
 
-@need 700
-@noindent
-
 @example
 @@xref@{Electrical Effects,,,
 weather, An Introduction to Meteorology@}.
 @end example
 
-@noindent
-produces
+@noindent produces
 
 @example
 @group
@@ -6410,20 +6398,22 @@ produces
 @end group
 @end example
 
-@noindent
-and
+@noindent and
 
 @quotation
 See section ``Electrical Effects'' in @cite{An Introduction to
 Meteorology}.
 @end quotation
 
+A very unusual case: you may want to refer to another Info file that
+is within a single printed manual---when multiple Texinfo files are
+incorporated into the same @TeX{} run but make separate Info files.
+In this case, you need to specify only the fourth argument, and not
+the fifth.
 
-Finally, on rare occasions, you may want to refer to another Info file
-that is within a single printed manual---when multiple Texinfo files
-are incorporated into the same @TeX{} run but make separate Info
-files.  In this case, you need to specify only the fourth argument,
-and not the fifth.
+Finally, it's also allowed to leave out all the arguments
+@emph{except} the fourth and fifth, to refer to another manual as a
+whole.  See the next section.
 
 
 @node Top Node Naming
@@ -6431,41 +6421,66 @@ and not the fifth.
 @cindex Naming a `Top' Node in references
 @cindex @samp{@r{Top}} node naming for references
 
-In a cross reference, you must always name a node.  This means that in
-order to refer to a whole manual, you must identify the `Top' node by
-writing it as the first argument to the @code{@@xref} command.  (This
-is different from the way you write a menu entry; see @ref{Other Info
-Files, , Referring to Other Info Files}.)  At the same time, to
-provide a meaningful section topic or title in the printed cross
-reference (instead of the word `Top'), you must write an appropriate
-entry for the third argument to the @code{@@xref} command.
-@refill
+@cindex Manual, referring to as a whole
+@cindex Referring to an entire manual
 
-@noindent
-Thus, to make a cross reference to @cite{The GNU Make Manual},
-write:@refill
+Ordinarily, you must always name a node in a cross reference.  it's
+not unusual to want to refer to another manual as a whole, rather than
+a particular section within it.  In this case, giving any section name
+would just be a distraction.
+
+So, if the first argument is either @samp{Top} (capitalized just that
+way) or omitted entirely, and the third argument is omitted, the
+printed output includes no node or section name.  (The Info output
+includes @samp{Top} if it was given.)  For example,
+
+@example
+@@xref@{Top,,, make, The GNU Make Manual@}.
+@end example
+
+@noindent produces
+
+@example
+@group
+*Note (make)::Top.
+@end group
+@end example
+
+@noindent and
+
+@quotation
+See @cite{The GNU Make Manual}.
+@end quotation
+
+@noindent Info readers will go to the Top node of the manual whether
+or not the `Top' node is explicitly specified.
+
+It's also acceptable (and is historical practice) to refer to a whole
+manual by specifying the `Top' node and an appropriate entry for the
+third argument to the @code{@@xref} command.  Using this idiom, to
+make a cross reference to @cite{The GNU Make Manual}, you would write:
 
 @example
 @@xref@{Top, , Overview, make, The GNU Make Manual@}.
 @end example
 
-@noindent
-which produces
+@noindent which produces
 
 @example
 *Note Overview: (make)Top.
 @end example
 
-@noindent
-and
+@noindent and
 
 @quotation
-See section ``Overview'' in @i{The GNU Make Manual}.
+See section ``Overview'' in @cite{The GNU Make Manual}.
 @end quotation
 
 @noindent
 In this example, @samp{Top} is the name of the first node, and
 @samp{Overview} is the name of the first section of the manual.
+(There is no widely-used convention for naming the first section in a
+printed manual, this is just what the Make manual happens to use.)
 
 
 @node ref
@@ -12755,7 +12770,7 @@ works like @code{@@defun}.
 @findex defspec
 @item @@defspec @var{name} @var{arguments}@dots{}
 The @code{@@defspec} command is the definition command for special
-forms.  (In Lisp, a special form is an entity much like a function,
+forms.  (In Lisp, a special form is an entity much like a function;
 @pxref{Special Forms,,, elisp, GNU Emacs Lisp Reference Manual}.)
 @code{@@defspec} is equivalent to @samp{@@deffn @{Special Form@}
 @dots{}} and works like @code{@@defun}.
@@ -13632,7 +13647,7 @@ Specifying an encoding @var{enc} has the following effects:
 @cindex Info output, and encoding
 In Info output, unless the option @option{--disable-encoding} is given
 to @command{makeinfo}, a so-called `Local Variables' section
-(@pxref{File Variables,,,emacs,The GNU Emacs Manual}) is output
+(@pxref{File Variables,,,emacs, The GNU Emacs Manual}) is output
 including @var{enc}.  This allows Info readers to set the encoding
 appropriately.
 
@@ -15496,7 +15511,7 @@ Texinfo distribution, among other places.)  (@command{texi2dvi} runs
 The @code{tex} formatting command outputs unsorted index files under
 names that obey a standard convention: the name of your main input file
 with any @samp{.tex} (or similar, @pxref{tex invocation,,, web2c,
-Web2c}) extension removed, followed by the two letter names of indices.
+Web2C}) extension removed, followed by the two letter names of indices.
 For example, the raw index output files for the input file
 @file{foo.texinfo} would be @file{foo.cp}, @file{foo.vr}, @file{foo.fn},
 @file{foo.tp}, @file{foo.pg} and @file{foo.ky}.  Those are exactly the
@@ -16098,7 +16113,7 @@ indicates searching the system directories at that point.)
 @cindex Dumping a .fmt file
 @cindex Format file, dumping
 Finally, you may wish to dump a @file{.fmt} file (@pxref{Memory dumps,,,
-web2c, Web2c}) so that @TeX{} can load Texinfo faster.  (The
+web2c, Web2C}) so that @TeX{} can load Texinfo faster.  (The
 disadvantage is that then updating @file{texinfo.tex} requires
 redumping.)  You can do this by running this command, assuming
 @file{epsf.tex} is findable by @TeX{}:
@@ -17020,7 +17035,7 @@ Those changing fundamental program behavior; for example,
 command line.
 
 @item
-Those associated with @@-commands in the document; for example,
+Those associated with @@-commands; for example,
 @code{@@documentlanguage}.
 
 @item
@@ -17075,8 +17090,16 @@ Generate HTML and try to be as compatible as possible with
 @item TEXTCONTENT
 @cindex spell checking
 @cindex word counting
+@pindex detexinfo
+@cindex stripping Texinfo commands
 Output the text content only, stripped of commands; this is useful for
-spell checking or word counting, for example.
+spell checking or word counting, for example.  The trivial
+@code{detexinfo} script setting this is in the @file{util}
+directory of the Texinfo source as an example.  It's one line:
+
+@example
+exec texi2any --set-init-variable TEXTCONTENT=1 "$@@"
+@end example
 @end vtable
 
 
@@ -17098,10 +17121,11 @@ variable with the same name (minus the leading @code{@@}):
 @@fonttextsize @@footnotestyle @@frenchspacing @@headings
 @@kbdinputstyle @@novalidate @@oddfootingmarks
 @@oddheadingmarks @@pagesizes @@paragraphindent
-@@setchapternewpage @@setcontentsaftertitlepage @c @@setfilename
+@@setchapternewpage @@setcontentsaftertitlepage
 @@setshortcontentsaftertitlepage @@shortcontents
 @@urefbreakstyle @@xrefautomaticsectiontitle
 @end smallexample
+@c @@setfilename
 
 Setting such a configuration variable to a value @samp{foo} is
 essentially the same as executing @code{@@@var{cmd} foo}.
@@ -18273,7 +18297,7 @@ If @var{dir-file} (however specified) does not exist,
 @cindex Bzipped dir files, reading
 @cindex LZMA-compressed dir files, reading
 @cindex Dir files, compressed
-If any input file is compressed with @code{gzip} (@pxref{Top,,,gzip,
+If any input file is compressed with @code{gzip} (@pxref{Top,,, gzip,
 Gzip}), @code{install-info} automatically uncompresses it for reading.
 And if @var{dir-file} is compressed, @code{install-info} also
 automatically leaves it compressed after writing any changes.  If
@@ -21575,7 +21599,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.413 2012-01-19 01:41:17 karl Exp $
+$Id: texinfo.txi,v 1.414 2012-01-20 18:00:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21596,7 +21620,7 @@ automatically by Automake (@pxref{Top,, Introduction, automake, GNU
 Automake}).  It sets the @samp{VERSION} and @samp{UPDATED} values used
 elsewhere.  If your distribution doesn't use Automake, but you do use
 Emacs, you may find the time-stamp.el package helpful (@pxref{Time
-Stamps,,,emacs,The GNU Emacs Manual}).
+Stamps,,, emacs, The GNU Emacs Manual}).
 
 @item
 The @code{@@syncodeindex} command reflects the recommendation to use
@@ -21611,7 +21635,7 @@ category names.
 @item
 The `Invoking' node is a GNU standard to help users find the basic
 information about command-line usage of a given program.  @xref{Manual
-Structure Details,,,standards, GNU Coding Standards}.
+Structure Details,,, standards, GNU Coding Standards}.
 
 @item
 @cindex GNU Free Documentation License, including entire

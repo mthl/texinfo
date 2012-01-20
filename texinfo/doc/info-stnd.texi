@@ -1,24 +1,24 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.35 2011-12-27 19:34:17 karl Exp $
+@comment $Id: info-stnd.texi,v 1.36 2012-01-20 18:00:59 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
 @comment %**start of header
 @setfilename info-stnd.info
 @include version-stnd.texi
-@settitle GNU Info @value{VERSION}
+@settitle Stand-alone GNU Info @value{VERSION}
 @syncodeindex vr cp
 @syncodeindex fn cp
 @syncodeindex ky cp
 @comment %**end of header
 
 @copying
-This manual is for GNU Info (version @value{VERSION}, @value{UPDATED}),
-a program for viewing documents in Info format (usually created from
-Texinfo source files).
+This manual is for Stand-alone GNU Info (version @value{VERSION},
+@value{UPDATED}), a program for viewing documents in Info format
+(usually created from Texinfo source files).
 
 Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999, 2001, 2002,
-2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012 Free Software
 Foundation, Inc.
 
 @quotation
@@ -28,7 +28,7 @@ any later version published by the Free Software Foundation; with no
 Invariant Sections, with the Front-Cover texts being ``A GNU Manual'',
 and with the Back-Cover Texts as in (a) below.  A copy of the
 license is included in the section entitled ``GNU Free Documentation
-License' in the Texinfo manual.
+License'' in the Texinfo manual.
 
 (a) The FSF's Back-Cover Text is: ``You have the freedom to
 copy and modify this GNU manual.  Buying copies from the FSF
@@ -43,12 +43,12 @@ license to the document, as described in section 6 of the license.
 
 @dircategory Texinfo documentation system
 @direntry
-* info standalone: (info-stnd).            Read Info documents without Emacs.
+* info stand-alone: (info-stnd).           Read Info documents without Emacs.
 * infokey: (info-stnd)Invoking infokey.    Compile Info customizations.
 @end direntry
 
 @titlepage
-@title GNU Info
+@title Stand-alone GNU Info
 @subtitle for version @value{VERSION}, @value{UPDATED}
 @author Brian J. Fox
 @page
@@ -60,14 +60,16 @@ license to the document, as described in section 6 of the license.
 
 @ifnottex
 @node Top
-@top GNU Info
+@top Stand-alone GNU Info
 
 If you do not know how to use Info, but have a working Info reader,
-you should read the Info manual before this one (@pxref{Top, Getting
-Started,,info, Info}), as it includes more background information and
-a thorough tutorial.  This documentation describes the stand-alone Info
-reader that is part of the Texinfo distribution, not the Info reader
-that is part of GNU Emacs.
+you should read the Info manual before this one (@pxref{Top,,, info,
+Info}), as it includes more background information and a thorough
+tutorial.
+
+This documentation describes the stand-alone Info reader that is part
+of the Texinfo distribution, not the Info reader that is part of GNU
+Emacs.
 @end ifnottex
 
 @menu
@@ -91,14 +93,16 @@ that is part of GNU Emacs.
 @node Stand-alone Info
 @chapter Stand-alone Info
 
-The @dfn{Info} program is a stand-alone program, part of the Texinfo
-distribution, which is used to view Info files on an ASCII terminal.
-@dfn{Info files} are typically the result of processing Texinfo files
-with the program @code{makeinfo} (also in the Texinfo distribution)
+The @dfn{Info} program described here is a stand-alone program, part
+of the Texinfo distribution, which is used to view Info files on an
+ASCII terminal.  @dfn{Info files} are typically the result of
+processing Texinfo files with the program @code{makeinfo} (also in the
+Texinfo distribution).
 
-Texinfo itself is a documentation system that uses a single source
-file to produce both on-line information and printed output.  You can
-typeset and print the files that you read in Info.
+Texinfo itself (@pxref{Top,,, texinfo, Texinfo}) is a documentation
+system that uses a single source file to produce both on-line
+information and printed output.  You can typeset and print the files
+that you read in Info.
 
 @cindex Emacs Info reader
 @cindex Info files, reading in Emacs

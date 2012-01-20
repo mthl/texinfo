@@ -1,3 +1,15 @@
+2012-01-20  Karl Berry  <karl@gnu.org>
+
+	* doc/NEWS: new convention to allow referring to a whole manual
+	without a node: a five-arg xref with either just Top or no node name.
+	* doc/texinfo.txi (Top Node Naming): document it.
+	(Four or Five Arguments): refer to it.
+	Also use that new feature throughout, and assorted other cleanups.
+	* doc/texinfo.tex (\xrefX): implement it.
+	(\topbox, \printedrefnamebox, \printedmanualbox): use these
+	named boxes instead of numeric ones.
+	* doc/info-stnd.texi: refer to whole manuals.
+
 2012-01-18  Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, Makefile.am (SUBDIRS), Pod-Simple-Texinfo: add a
