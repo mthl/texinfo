@@ -168,7 +168,7 @@ sub _preamble($)
       }
     }
     if (defined($setfilename) and $setfilename =~ m/\S/) {
-      $setfilename = _protect_text($setfilename);
+      $setfilename = _protect_text($setfilename, 1);
       $setfilename .= '.info';
       print $fh "\@setfilename $setfilename\n\n"
     }
@@ -177,38 +177,60 @@ sub _preamble($)
 
     my $title = $self->get_title();
     if (defined($title) and $title =~ m/\S/) {
-      print $fh "\@settitle "._protect_text($title)."\n\n";
+      print $fh "\@settitle "._protect_text($title, 1)."\n\n";
     }
     print $fh "\@node Top\n";
     if (defined($self->{'texinfo_short_title'})) {
-       print $fh "\@top "._protect_text($self->{'texinfo_short_title'})."\n\n";
+       print $fh "\@top "._protect_text($self->{'texinfo_short_title'}, 1)."\n\n";
     }
   } elsif (defined($self->{'texinfo_short_title'})
            and $self->texinfo_add_upper_sectioning_command) {
       my $level = $self->texinfo_sectioning_base_level() - 1;
       print $fh "\@$self->{'texinfo_sectioning_commands'}->[$level] "
-         ._protect_text($self->{'texinfo_short_title'})."\n\n";
+         ._protect_text($self->{'texinfo_short_title'}, 1)."\n\n";
   }
 }
 
 
-sub _output($$$)
+sub _output($$$;$)
 {
   my $fh = shift;
   my $accumulated_stack = shift;
   my $text = shift;
+  my $out = shift;
 
   if (scalar(@$accumulated_stack)) {
-    $accumulated_stack->[-1] .= $text;
+    if ($out) {
+      $accumulated_stack->[-1]->{'out'} .= $text;
+    } else {
+      $accumulated_stack->[-1]->{'text'} .= $text;
+    }
   } else {
     print $fh $text;
   }
 }
 
-sub _protect_text($)
+sub _begin_context($$)
+{
+  my $accumulated_stack = shift;
+  my $tag = shift;
+  push @$accumulated_stack, {'text' => '', 'tag' => $tag, 
+                             'out' => ''};
+}
+
+sub _end_context($)
+{
+  my $accumulated_stack = shift;
+  my $previous_context = pop @$accumulated_stack;
+  return ($previous_context->{'text'}, $previous_context->{'out'});
+}
+
+sub _protect_text($;$)
 {
   my $text = shift;
+  my $remove_new_lines = shift;
   cluck if (!defined($text));
+  $text =~ s/\n/ /g if ($remove_new_lines);
   $text =~ s/([\@\{\}])/\@$1/g;
   return $text;
 }
@@ -260,6 +282,7 @@ sub _prepare_anchor($$)
   my $self = shift;
   my $texinfo_node_name = shift;
 
+  chomp $texinfo_node_name;
   $texinfo_node_name 
      = $self->_section_manual_to_node_name($self->{'texinfo_short_title'},
                                           $texinfo_node_name,
@@ -313,6 +336,7 @@ my %tag_commands = (
 );
 
 my %environment_commands = (
+  'Verbatim' => 'verbatim',
   'over-text' => 'table @asis',
   'over-bullet' => 'itemize',
   'over-number' => 'enumerate',
@@ -325,6 +349,16 @@ my %line_commands = (
   'item-number' => 'item',
   'encoding' => 'documentencoding'
 );
+
+foreach my $tag (keys(%head_commands_level)) {
+  $line_commands{$tag} = 1;
+}
+
+my %tags_index_before;
+my %context_tags;
+foreach my $context_tag (keys(%line_commands), 'L', 'X', 'Para') {
+  $context_tags{$context_tag} = 1;
+}
 
 # do not appear as parsed token
 # E entity/character
@@ -344,15 +378,87 @@ sub _convert_pod($)
     #print STDERR $token->dump()."\n";
     if ($type eq 'start') {
       my $tagname = $token->tagname();
-      if ($head_commands_level{$tagname} or $tagname eq 'item-text') {
-        push @accumulated_output, '';
+      if ($context_tags{$tagname}) {
+        if ($tagname eq 'L') {
+          my $linktype = $token->attr('type');
+          my $content_implicit = $token->attr('content-implicit');
+          #print STDERR " L: $linktype";
+          my ($url_arg, $texinfo_node, $texinfo_manual);
+          if ($linktype eq 'man') {
+            # NOTE: the .'' is here to force the $token->attr to ba a real
+            # string and not an object.
+            my $replacement_arg = $token->attr('to').'';
+            # regexp from Pod::Simple::HTML resolve_man_page_link
+            # since it is very small, it is likely that copyright cannot be
+            # claimed for that part.
+            $replacement_arg =~ /^([^(]+)(?:[(](\d+)[)])?$/;
+            my $page = $1;
+            my $section = $2;
+            if (defined($page) and $page ne '') {
+              $section = 1 if (!defined($section));
+              # it is unlikely that there is a comma because of _url_escape
+              # but to be sure there is still a call to _protect_comma.
+              $url_arg 
+                = _protect_comma(_protect_text(
+                    $self->texinfo_man_url_prefix
+                    ."$section/"._url_escape($page)));
+            } else {
+              $url_arg = '';
+            }
+            $replacement_arg = _protect_text($replacement_arg);
+            _output($fh, \@accumulated_output, "\@url{$url_arg,, $replacement_arg}");
+          } else {
+            if ($linktype eq 'url') {
+              # NOTE: the .'' is here to force the $token->attr to be a real
+              # string and not an object.
+              $url_arg = _protect_comma(_protect_text($token->attr('to').''));
+            } elsif ($linktype eq 'pod') {
+              my $manual = $token->attr('to');
+              my $section = $token->attr('section');
+              $manual .= '' if (defined($manual));
+              $section .= '' if (defined($section));
+              #print STDERR "$manual/$section\n";
+              if (defined($manual)) {
+                if (! defined($section) or $section !~ m/\S/) {
+                  if ($self->{'texinfo_internal_pod_manuals_hash'}->{$manual}) {
+                    $section = 'NAME';
+                  } else {
+                    $section = 'Top';
+                  }
+                }
+                if ($self->{'texinfo_internal_pod_manuals_hash'}->{$manual}) {
+                  $texinfo_node =
+                   $self->_section_manual_to_node_name($manual, $section, 1);
+                } else {
+                  $texinfo_manual = _protect_text(_pod_title_to_file_name($manual));
+                  $texinfo_node = $section;
+                }
+              } elsif (defined($section) and $section =~ m/\S/) {
+                $texinfo_node = $section;
+              }
+              $texinfo_node = 'Top' if (!defined($texinfo_node));
+              $texinfo_node = _protect_comma(_protect_text($texinfo_node));
+            }
+            # for pod, 'to' is the pod manual name.  Then 'section' is the 
+            # section.
+          }
+          push @format_stack, [$linktype, $content_implicit, $url_arg, 
+                               $texinfo_manual, $texinfo_node];
+          #if (defined($to)) {
+          #  print STDERR " | $to\n";
+          #} else { 
+          #  print STDERR "\n";
+          #}
+          #print STDERR $token->dump."\n";
+        }
+        _begin_context(\@accumulated_output, $tagname);
       } elsif ($tag_commands{$tagname}) {
         _output($fh, \@accumulated_output, "\@$tag_commands{$tagname}\{");
-      } elsif ($tagname eq 'Verbatim') {
-        _output($fh, \@accumulated_output, '@verbatim'."\n");
-        push @format_stack, 'verbatim';
       } elsif ($environment_commands{$tagname}) {
         _output($fh, \@accumulated_output, "\@$environment_commands{$tagname}\n");
+        if ($tagname eq 'Verbatim') {
+          push @format_stack, 'verbatim';
+        }
       } elsif ($tagname eq 'for') {
         my $target = $token->attr('target');
         push @format_stack, $target;
@@ -363,82 +469,6 @@ sub _convert_pod($)
           _output($fh, \@accumulated_output, 
              "\@if$self->{'texinfo_if_format_commands'}->{$target}\n");
         }
-      } elsif ($line_commands{$tagname}) {
-        _output($fh, \@accumulated_output,"\@$line_commands{$tagname} ");
-      } elsif ($tagname eq 'L') {
-        my $linktype = $token->attr('type');
-        my $content_implicit = $token->attr('content-implicit');
-        #print STDERR " L: $linktype";
-        my ($url_arg, $texinfo_node, $texinfo_manual);
-        if ($linktype eq 'man') {
-          # NOTE: the .'' is here to force the $token->attr to ba a real
-          # string and not an object.
-          my $replacement_arg = $token->attr('to').'';
-          # regexp from Pod::Simple::HTML resolve_man_page_link
-          # since it is very small, it is likely that copyright cannot be
-          # claimed for that part.
-          $replacement_arg =~ /^([^(]+)(?:[(](\d+)[)])?$/;
-          my $page = $1;
-          my $section = $2;
-          if (defined($page) and $page ne '') {
-            $section = 1 if (!defined($section));
-            # it is unlikely that there is a comma because of _url_escape
-            # but to be sure there is still a call to _protect_comma.
-            $url_arg 
-              = _protect_comma(_protect_text(
-                  $self->texinfo_man_url_prefix
-                  ."$section/"._url_escape($page)));
-          } else {
-            $url_arg = '';
-          }
-          $replacement_arg = _protect_text($replacement_arg);
-          _output($fh, \@accumulated_output, "\@url{$url_arg,, $replacement_arg}");
-        } else {
-          if ($linktype eq 'url') {
-            # NOTE: the .'' is here to force the $token->attr to be a real
-            # string and not an object.
-            $url_arg = _protect_comma(_protect_text($token->attr('to').''));
-          } elsif ($linktype eq 'pod') {
-            my $manual = $token->attr('to');
-            my $section = $token->attr('section');
-            $manual .= '' if (defined($manual));
-            $section .= '' if (defined($section));
-            #print STDERR "$manual/$section\n";
-            if (defined($manual)) {
-              if (! defined($section) or $section !~ m/\S/) {
-                if ($self->{'texinfo_internal_pod_manuals_hash'}->{$manual}) {
-                  $section = 'NAME';
-                } else {
-                  $section = 'Top';
-                }
-              }
-              if ($self->{'texinfo_internal_pod_manuals_hash'}->{$manual}) {
-                $texinfo_node =
-                 $self->_section_manual_to_node_name($manual, $section, 1);
-              } else {
-                $texinfo_manual = _protect_text(_pod_title_to_file_name($manual));
-                $texinfo_node = $section;
-              }
-            } elsif (defined($section) and $section =~ m/\S/) {
-              $texinfo_node = $section;
-            }
-            $texinfo_node = 'Top' if (!defined($texinfo_node));
-            $texinfo_node = _protect_comma(_protect_text($texinfo_node));
-          }
-          # for pod, 'to' is the pod manual name.  Then 'section' is the 
-          # section.
-        }
-        push @accumulated_output, '';
-        push @format_stack, [$linktype, $content_implicit, $url_arg, 
-                             $texinfo_manual, $texinfo_node];
-        #if (defined($to)) {
-        #  print STDERR " | $to\n";
-        #} else { 
-        #  print STDERR "\n";
-        #}
-        #print STDERR $token->dump."\n";
-      } elsif ($tagname eq 'X') {
-        _output($fh, \@accumulated_output, "\@cindex ");
       }
     } elsif ($type eq 'text') {
       my $text;
@@ -450,47 +480,83 @@ sub _convert_pod($)
         $text = $token->text();
       }
       _output($fh, \@accumulated_output, $text);
-      my $next_token = $self->get_token();
-      if ($next_token) {
-        if ($next_token->type() eq 'start' and $next_token->tagname() eq 'X') {
-          print $fh "\n";
-        }
-        $self->unget_token($next_token);
-      }
     } elsif ($type eq 'end') {
       my $tagname = $token->tagname();
-      my $result;
-      if ($head_commands_level{$tagname} or $tagname eq 'item-text') {
-        my $command_result = pop @accumulated_output;
-        my $node_name = _prepare_anchor ($self, $command_result);
-        #print $fh "\@node $node_name\n";
-        if ($head_commands_level{$tagname}) {
+      if ($context_tags{$tagname}) {
+        my ($result, $out) = _end_context(\@accumulated_output);
+        if ($line_commands{$tagname}) {
           my $command;
-          $command 
-            = $self->{'texinfo_head_commands'}->{$tagname};
-          _output($fh, \@accumulated_output, "\@$command $command_result\n");
-        } else {
-          _output($fh, \@accumulated_output, 
-                  "\@$line_commands{$tagname} $command_result\n");
+          if ($head_commands_level{$tagname}) {
+            $command = $self->{'texinfo_head_commands'}->{$tagname};
+          } elsif ($line_commands{$tagname}) {
+            $command = $line_commands{$tagname};
+          }
+
+          if ($head_commands_level{$tagname} or $tagname eq 'item-text') {
+            chomp ($result);
+            $result =~ s/\n/ /g;
+            my $node_name = _prepare_anchor ($self, $result);
+            #print $fh "\@node $node_name\n";
+            $result .= "\n\@anchor{$node_name}";
+          }
+          _output($fh, \@accumulated_output, "\@$command $result\n$out\n");
+        } elsif ($tagname eq 'Para') {
+          _output($fh, \@accumulated_output, "$out$result\n\n");
+        } elsif ($tagname eq 'L') {
+          my ($result, $postponed) = _end_context(\@accumulated_output);
+          my $format = pop @format_stack;
+          my ($linktype, $content_implicit, $url_arg, 
+              $texinfo_manual, $texinfo_node) = @$format;
+          if ($linktype ne 'man') {
+            my $explanation;
+            if (defined($result) and $result =~ m/\S/ and !$content_implicit) {
+              $explanation = ' '. _protect_comma($result);
+            }
+            if ($linktype eq 'url') {
+              if (defined($explanation)) {
+                _output($fh, \@accumulated_output, 
+                         "\@url{$url_arg,$explanation}");
+              } else {
+                _output($fh, \@accumulated_output, 
+                         "\@url{$url_arg}");
+              }
+            } elsif ($linktype eq 'pod') {
+              if (defined($texinfo_manual)) {
+                $explanation = '' if (!defined($explanation));
+                _output($fh, \@accumulated_output,
+                         "\@ref{$texinfo_node,$explanation,, $texinfo_manual}");
+              } elsif (defined($explanation)) {
+                _output($fh, \@accumulated_output,
+                       "\@ref{$texinfo_node, $explanation}");
+              } else {
+                _output($fh, \@accumulated_output,
+                         "\@ref{$texinfo_node}");
+              }
+            }
+          }
+        } elsif ($tagname eq 'X') {
+          my $next_token = $self->get_token();
+          if ($next_token) {
+            if ($next_token->type() eq 'text') {
+              my $next_text = $next_token->text;
+              $next_text =~ s/^\s*//;
+              $next_token->text($next_text);
+              #_output($fh, \@accumulated_output, "\n");
+            }
+            $self->unget_token($next_token);
+          }
+          chomp ($result);
+          $result =~ s/\n/ /g;
+          $result .= "\n";
+          _output($fh, \@accumulated_output, "\@cindex $result", 1);
         }
-        _output($fh, \@accumulated_output, "\@anchor{$node_name}\n");
-        _output($fh, \@accumulated_output, "\n") if ($head_commands_level{$tagname});
-      } elsif ($tagname eq 'Para') {
-        _output($fh, \@accumulated_output, "\n\n");
-        #my $next_token = $self->get_token();
-        #if ($next_token) {
-        #  if ($next_token->type() ne 'start' 
-        #      or $next_token->tagname() ne 'Para') {
-        #    print $fh "\n";
-        #  }
-        #  $self->unget_token($next_token);
-        #}
       } elsif ($tag_commands{$tagname}) {
         _output($fh, \@accumulated_output, "}");
-      } elsif ($tagname eq 'Verbatim') {
-        pop @format_stack;
-        _output($fh, \@accumulated_output, "\n".'@end verbatim'."\n\n");
       } elsif ($environment_commands{$tagname}) {
+        if ($tagname eq 'Verbatim') {
+          pop @format_stack;
+          _output($fh, \@accumulated_output, "\n");
+        }
         my $tag = $environment_commands{$tagname};
         $tag =~ s/ .*//;
         _output($fh, \@accumulated_output, "\@end $tag\n\n");
@@ -502,48 +568,6 @@ sub _convert_pod($)
         } elsif ($self->{'texinfo_if_format_commands'}->{$target}) {
           _output($fh, \@accumulated_output, 
                   "\@end if$self->{'texinfo_if_format_commands'}->{$target}\n");
-        }
-      } elsif ($line_commands{$tagname}) {
-        _output($fh, \@accumulated_output, "\n");
-      } elsif ($tagname eq 'L') {
-        my $result = pop @accumulated_output;
-        my $format = pop @format_stack;
-        my ($linktype, $content_implicit, $url_arg, 
-            $texinfo_manual, $texinfo_node) = @$format;
-        if ($linktype ne 'man') {
-          my $explanation;
-          if (defined($result) and $result =~ m/\S/ and !$content_implicit) {
-            $explanation = ' '. _protect_comma($result);
-          }
-          if ($linktype eq 'url') {
-            if (defined($explanation)) {
-              _output($fh, \@accumulated_output, 
-                       "\@url{$url_arg,$explanation}");
-            } else {
-              _output($fh, \@accumulated_output, 
-                       "\@url{$url_arg}");
-            }
-          } elsif ($linktype eq 'pod') {
-            if (defined($texinfo_manual)) {
-              $explanation = '' if (!defined($explanation));
-              _output($fh, \@accumulated_output,
-                       "\@ref{$texinfo_node,$explanation,, $texinfo_manual}");
-            } elsif (defined($explanation)) {
-              _output($fh, \@accumulated_output,
-                       "\@ref{$texinfo_node,$explanation}");
-            } else {
-              _output($fh, \@accumulated_output,
-                       "\@ref{$texinfo_node}");
-            }
-          }
-        }
-      } elsif ($tagname eq 'X') {
-        my $next_token = $self->get_token();
-        if ($next_token) {
-          if ($next_token->type() eq 'text') {
-            _output($fh, \@accumulated_output, "\n");
-          }
-          $self->unget_token($next_token);
         }
       }
     }

@@ -91,6 +91,7 @@ exit 1 if (!$result_options);
 my @manuals;
 my @all_manual_names;
 
+# First gather all the manual names
 foreach my $file (@ARGV) {
   # not really used, only the manual name is used.
   my $parser = Pod::Simple::PullParserRun->new();
@@ -99,7 +100,7 @@ foreach my $file (@ARGV) {
   if (defined($short_title) and $short_title =~ m/\S/) {
     push @manuals, $short_title;
     push @all_manual_names, $short_title;
-    #print STDERR "$short_title\n";
+    #print STDERR "NEW MANUAL: $short_title\n";
   } else {
     push @all_manual_names, undef;
   }
