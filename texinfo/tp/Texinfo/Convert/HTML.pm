@@ -3067,28 +3067,47 @@ sub _convert_xref_commands($$$$)
 
     if ($book eq '') {
       if (!defined($name)) {
-        $name = $self->command_text($node_entry);
+        my $node_name = $self->command_text($node_entry);
+        $name = $node_name;
       } elsif ($file ne '') {
         $name = "($file)$name";
       }
     } elsif (!defined($name) and $node_entry->{'node_content'}) {
       my $node_no_file_tree = {'type' => '_code',
                                'contents' => [@{$node_entry->{'node_content'}}]};
-      $name = $self->_convert($node_no_file_tree, 'node in ref');
+      my $node_name = $self->_convert($node_no_file_tree, 'node in ref');
+      if (defined($node_name) and ($self->get_conf('KEEP_TOP_EXTERNAL_REF')
+                                   or $node_name ne 'Top')) {
+        $name = $node_name;
+      }
     }
 
-    $name = $args->[0]->{'code'} if (!defined($name));
+    # not exactly sure when it happens.  Something like @ref{(file),,,Manual}?
+    $name = $args->[0]->{'code'} 
+       if (!defined($name)
+           # FIXME could it really be Top?
+           and ($self->get_conf('KEEP_TOP_EXTERNAL_REF')
+                or $args->[0]->{'code'} ne 'Top'));
       
     $name = '' if (!defined($name));
     my $reference = $name;
-    $reference = "<a href=\"$href\">$name</a>" if ($href ne '' 
-                                                   and !$self->in_string());
-
+    my $book_reference = '';
+    if (!$self->in_string() and $href ne '') {
+      if ($name ne '') {
+        $reference = "<a href=\"$href\">$name</a>";
+      } elsif ($book ne '') {
+        $book_reference = "<a href=\"$href\">$book</a>"; 
+      }
+    }
     if ($cmdname eq 'pxref') {
-      if (($book ne '') and ($href ne '')) {
+      if (($book ne '') and ($href ne '') and ($reference ne '')) {
         $tree = $self->gdt('see {reference} in @cite{{book}}', 
             { 'reference' => {'type' => '_converted', 'text' => $reference}, 
               'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif ($book_reference ne '') {
+        $tree = $self->gdt('see @cite{{book_reference}}', 
+            { 'book_reference' => {'type' => '_converted', 
+                                   'text' => $book_reference }});
       } elsif (($book ne '') and ($reference ne '')) {
         $tree = $self->gdt('see `{section}\' in @cite{{book}}', 
             { 'section' => {'type' => '_converted', 'text' => $reference}, 
@@ -3104,10 +3123,14 @@ sub _convert_xref_commands($$$$)
               'section' => {'type' => '_converted', 'text' => $reference} });
       }
     } elsif ($cmdname eq 'xref' or $cmdname eq 'inforef') {
-      if (($book ne '') and ($href ne '')) {
+      if (($book ne '') and ($href ne '') and ($reference ne '')) {
         $tree = $self->gdt('See {reference} in @cite{{book}}', 
             { 'reference' => {'type' => '_converted', 'text' => $reference}, 
               'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif ($book_reference ne '') {
+        $tree = $self->gdt('See @cite{{book_reference}}', 
+            { 'book_reference' => {'type' => '_converted', 
+                                   'text' => $book_reference }});
       } elsif (($book ne '') and ($reference ne '')) {
         $tree = $self->gdt('See `{section}\' in @cite{{book}}', 
             { 'section' => {'type' => '_converted', 'text' => $reference}, 
@@ -3123,10 +3146,14 @@ sub _convert_xref_commands($$$$)
               'section' => {'type' => '_converted', 'text' => $reference} });
       }
     } else {
-      if (($book ne '') and ($href ne '')) {
+      if (($book ne '') and ($href ne '') and ($reference ne '')) {
         $tree = $self->gdt('{reference} in @cite{{book}}', 
             { 'reference' => {'type' => '_converted', 'text' => $reference}, 
               'book' => {'type' => '_converted', 'text' => $book }});
+      } elsif ($book_reference ne '') {
+        $tree = $self->gdt('@cite{{book_reference}}', 
+            { 'book_reference' => {'type' => '_converted', 
+                                   'text' => $book_reference }});
       } elsif (($book ne '') and ($reference ne '')) {
         $tree = $self->gdt('`{section}\' in @cite{{book}}', 
             { 'section' => {'type' => '_converted', 'text' => $reference}, 

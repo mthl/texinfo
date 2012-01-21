@@ -4818,7 +4818,7 @@ $result_converted{'html_text'}->{'ref_error_formatting'} = '
 <code>@ref{,,title,file name}</code> <a href="file name.html#Top">(file name)title</a>
 <code>@ref{,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
 <code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">title</a> in <cite>manual</cite>
-<code>@ref{,,,file name,manual}</code> <a href="file name.html#Top"></a> in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <cite><a href="file name.html#Top">manual</a></cite>
 </p>
 <p><code>@inforef{,cross ref name }</code> See &lsquo;cross ref name&rsquo;
 <code>@inforef{,,file name}</code> See <a href="file name.html#Top">(file name)</a>
@@ -4882,7 +4882,7 @@ $result_converted{'docbook'}->{'ref_error_formatting'} = '
 <para><literal>@ref{,cross ref name}</literal> <link>cross ref name</link>
 <literal>@ref{,,title}</literal> <link>title</link>
 <literal>@ref{,,,file name}</literal> 
-<literal>@ref{,,,,manual}</literal> section &#8220;&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,,,manual}</literal> <citetitle>manual</citetitle>
 <literal>@ref{node,cross ref name}</literal> <link linkend="node">cross ref name</link>
 <literal>@ref{node,,title}</literal> <link linkend="node">title</link>
 <literal>@ref{node,,,file name}</literal> 
@@ -4906,7 +4906,7 @@ $result_converted{'docbook'}->{'ref_error_formatting'} = '
 <literal>@ref{,,title,file name}</literal> 
 <literal>@ref{,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
 <literal>@ref{,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
-<literal>@ref{,,,file name,manual}</literal> section &#8220;&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,,file name,manual}</literal> <citetitle>manual</citetitle>
 </para>
 <para><literal>@inforef{,cross ref name }</literal> 
 <literal>@inforef{,,file name}</literal> See Info file <filename>file name</filename>

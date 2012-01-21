@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.414 2012-01-20 18:00:58 karl Exp $
+@c $Id: texinfo.txi,v 1.415 2012-01-21 23:27:52 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6424,7 +6424,7 @@ whole.  See the next section.
 @cindex Manual, referring to as a whole
 @cindex Referring to an entire manual
 
-Ordinarily, you must always name a node in a cross reference.  it's
+Ordinarily, you must always name a node in a cross reference.  It's
 not unusual to want to refer to another manual as a whole, rather than
 a particular section within it.  In this case, giving any section name
 would just be a distraction.
@@ -17382,6 +17382,11 @@ If set, @code{@@insertcopying} is replaced by the @code{@@copying}
 content (@pxref{copying,, @code{@@copying}}) as if
 @code{@@insertcopying} were a user-defined macro.
 
+@item KEEP_TOP_EXTERNAL_REF
+For HTML@.  If set, do not ignore @samp{Top} node as first 
+argument for an external ref to a manual, (the default case).
+@xref{Top Node Naming}.
+
 @item L2H
 For HTML@.  If set, @command{latex2html} is used to convert @code{@@math}
 and @code{@@tex} sections.  Best used with @option{--iftex}.
@@ -17529,7 +17534,7 @@ If set, the name of a file to which a list of elements (nodes or
 sections, depending on the output format) is dumped, sorted by the
 number of lines they contain after removal of @@-commands.
 
-@item SORT_ELEMENT_COUNT_COUNT_WORDS
+@item SORT_ELEMENT_COUNT_WORDS
 When dumping the elements-by-size file (see preceding item), use word
 counts instead of line counts.
 
@@ -21599,7 +21604,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.414 2012-01-20 18:00:58 karl Exp $
+$Id: texinfo.txi,v 1.415 2012-01-21 23:27:52 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

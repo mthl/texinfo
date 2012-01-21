@@ -784,30 +784,47 @@ sub _convert($$;$)
             } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
               $section_name_contents
                 = $root->{'extra'}->{'brace_command_contents'}->[1];
-            } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+            } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])
+                     and (!$book_contents 
+                          or $root->{'extra'}->{'node_argument'}->{'manual_content'}
+                          or $root->{'extra'}->{'node_argument'}->{'normalized'} ne 'Top')) {
               $section_name_contents
                 = $root->{'extra'}->{'brace_command_contents'}->[0];
-            } else {
-              $section_name_contents = [];
             }
             # external ref
             if ($book_contents or $manual_file_contents) {
               return '' if (!$book_contents);
-              if ($root->{'cmdname'} eq 'ref') {
-                return $self->_convert(
-                  $self->gdt('section ``{section_name}\'\' in @cite{{book}}',
-                    { 'section_name' => {'contents' => $section_name_contents},
-                      'book' => $book_contents }));
-              } elsif ($root->{'cmdname'} eq 'xref') {
-                return $self->_convert(
-                  $self->gdt('See section ``{section_name}\'\' in @cite{{book}}',
-                    { 'section_name' => {'contents' => $section_name_contents},
-                      'book' => $book_contents }));
-              } elsif ($root->{'cmdname'} eq 'pxref') {
-                return $self->_convert(
-                  $self->gdt('see section ``{section_name}\'\' in @cite{{book}}',
-                    { 'section_name' => {'contents' => $section_name_contents},
-                      'book' => $book_contents }));
+              if ($section_name_contents) {
+                if ($root->{'cmdname'} eq 'ref') {
+                  return $self->_convert(
+                    $self->gdt('section ``{section_name}\'\' in @cite{{book}}',
+                      { 'section_name' => {'contents' => $section_name_contents},
+                        'book' => $book_contents }));
+                } elsif ($root->{'cmdname'} eq 'xref') {
+                  return $self->_convert(
+                    $self->gdt('See section ``{section_name}\'\' in @cite{{book}}',
+                      { 'section_name' => {'contents' => $section_name_contents},
+                        'book' => $book_contents }));
+                } elsif ($root->{'cmdname'} eq 'pxref') {
+                  return $self->_convert(
+                    $self->gdt('see section ``{section_name}\'\' in @cite{{book}}',
+                      { 'section_name' => {'contents' => $section_name_contents},
+                        'book' => $book_contents }));
+                }
+              } else {
+                if ($root->{'cmdname'} eq 'ref') {
+                  return $self->_convert(
+                    $self->gdt('@cite{{book}}',
+                      {'book' => $book_contents }));
+                } elsif ($root->{'cmdname'} eq 'xref') {
+                  return $self->_convert(
+                    $self->gdt('See @cite{{book}}',
+                      {'book' => $book_contents }));
+                } elsif ($root->{'cmdname'} eq 'pxref') {
+                  return $self->_convert(
+                    $self->gdt('see @cite{{book}}',
+                      {'book' => $book_contents }));
+                }
               }
             } else {
               my $linkend = '';

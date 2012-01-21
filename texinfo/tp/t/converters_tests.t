@@ -135,6 +135,45 @@ $\underline{a < b @code{tex \hbox{ code }}}$ ``}
 @end tex
 ';
 
+my $top_in_ref_text = 
+'@node Top
+
+@code{@@ref@{Top,cross ref name@}} @ref{Top,cross ref name}
+@code{@@ref@{Top,,title@}} @ref{Top,,title}
+@code{@@ref@{Top,,,file name@}} @ref{Top,,,file name}
+@code{@@ref@{Top,,,,manual@}} @ref{Top,,,,manual}
+@code{@@ref@{Top,cross ref name,title,@}} @ref{Top,cross ref name,title,}
+@code{@@ref@{Top,cross ref name,,file name@}} @ref{Top,cross ref name,,file name}
+@code{@@ref@{Top,cross ref name,,,manual@}} @ref{Top,cross ref name,,,manual}
+@code{@@ref@{Top,cross ref name,title,file name@}} @ref{Top,cross ref name,title,file name}
+@code{@@ref@{Top,cross ref name,title,,manual@}} @ref{Top,cross ref name,title,,manual}
+@code{@@ref@{Top,cross ref name,title, file name, manual@}} @ref{Top,cross ref name,title, file name, manual}
+@code{@@ref@{Top,,title,file name@}} @ref{Top,,title,file name}
+@code{@@ref@{Top,,title,,manual@}} @ref{Top,,title,,manual}
+@code{@@ref@{Top,,title, file name, manual@}} @ref{Top,,title, file name, manual}
+@code{@@ref@{Top,,,file name,manual@}} @ref{Top,,,file name,manual}
+
+@code{@@ref@{(pman)Top,cross ref name@}} @ref{(pman)Top,cross ref name}
+@code{@@ref@{(pman)Top,,title@}} @ref{(pman)Top,,title}
+@code{@@ref@{(pman)Top,,,file name@}} @ref{(pman)Top,,,file name}
+@code{@@ref@{(pman)Top,,,,manual@}} @ref{(pman)Top,,,,manual}
+@code{@@ref@{(pman)Top,cross ref name,title,@}} @ref{(pman)Top,cross ref name,title,}
+@code{@@ref@{(pman)Top,cross ref name,,file name@}} @ref{(pman)Top,cross ref name,,file name}
+@code{@@ref@{(pman)Top,cross ref name,,,manual@}} @ref{(pman)Top,cross ref name,,,manual}
+@code{@@ref@{(pman)Top,cross ref name,title,file name@}} @ref{(pman)Top,cross ref name,title,file name}
+@code{@@ref@{(pman)Top,cross ref name,title,,manual@}} @ref{(pman)Top,cross ref name,title,,manual}
+@code{@@ref@{(pman)Top,cross ref name,title, file name, manual@}} @ref{(pman)Top,cross ref name,title, file name, manual}
+@code{@@ref@{(pman)Top,,title,file name@}} @ref{(pman)Top,,title,file name}
+@code{@@ref@{(pman)Top,,title,,manual@}} @ref{(pman)Top,,title,,manual}
+@code{@@ref@{(pman)Top,,title, file name, manual@}} @ref{(pman)Top,,title, file name, manual}
+@code{@@ref@{(pman)Top,,,file name,manual@}} @ref{(pman)Top,,,file name,manual}
+
+@code{@@inforef@{Top, cross ref name, file name@}} @inforef{Top, cross ref name, file name}
+@code{@@inforef@{Top@}} @inforef{Top}
+@code{@@inforef@{Top, cross ref name@}} @inforef{Top, cross ref name}
+@code{@@inforef@{Top,,file name@}} @inforef{Top,,file name}
+';
+
 my @test_cases = (
 ['accentenc',
 $latin1_accents_text
@@ -190,6 +229,9 @@ $accents_text
 @code{@@inforef@{chapter, cross ref name@}} @inforef{chapter, cross ref name}
 @code{@@inforef@{chapter,,file name@}} @inforef{chapter,,file name}
 '],
+['top_in_ref',
+$top_in_ref_text
+],
 ['ref_error_formatting',
 '
 @code{@@ref@{node@}} @ref{node}
@@ -449,6 +491,9 @@ my @html_text_cases = (
 $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
                            'ENABLE_ENCODING_USE_ENTITY' => 0, 'USE_ISO' => 0}
 ],
+['top_in_ref_keep_top',
+$top_in_ref_text,
+{}, {'KEEP_TOP_EXTERNAL_REF' => 1}],
 );
 
 my %info_tests = (

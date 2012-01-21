@@ -1,3 +1,16 @@
+2012-01-22  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_xref_commands), 
+	tp/Texinfo/Convert/DocBook.pm:
+	implement the new convention for five-arg xref with either 
+	just Top or no node name.
+	* tp/Texinfo/Convert/HTML.pm, texi2any.pl, tp/Texinfo/Common.pm:
+	For HTML, add a customization variable, KEEP_TOP_EXTERNAL_REF.
+	If set the Top node is not ignored for the reference for the 
+	five-arg xref.
+	* doc/texinfo.txi (Other Configuration Variables): document
+	KEEP_TOP_EXTERNAL_REF.
+
 2012-01-20  Karl Berry  <karl@gnu.org>
 
 	* doc/NEWS: new convention to allow referring to a whole manual

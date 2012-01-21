@@ -505,6 +505,7 @@ sub _set_variables_texi2html()
   ['BIG_RULE', '<hr size="6">'],
   ['FOOTNOTE_END_HEADER_LEVEL', 3],
   ['FOOTNOTE_SEPARATE_HEADER_LEVEL', 1],
+  ['KEEP_TOP_EXTERNAL_REF', 1],
   ['SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
                              ' ', ' ', ' ', ' ',
                              'Top', 'Contents', 'Index', 'About' ]],
