@@ -5715,9 +5715,9 @@ sub _external_node_href($$;$)
     if ($target_split) {
       if (defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
         return $file . $self->get_conf('TOP_NODE_FILE_TARGET') 
-           . $extension . '#Top';
+           . $extension;# . '#Top';
       } else {
-        return $file . '#Top';
+        return $file;# . '#Top';
       }
     } else {
       return $file . '#Top';
