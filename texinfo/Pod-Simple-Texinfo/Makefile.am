@@ -1,9 +1,10 @@
-bin_SCRIPTS = pod2texi
+nodist_bin_SCRIPTS = pod2texi
 
 EXTRA_DIST = Changes \
  Makefile.PL \
  MANIFEST \
  t/Pod-Simple-Texinfo.t \
+ pod2texi.pl \
  $(TESTS)
 
 modulesdir = $(pkgdatadir)/Pod-Simple-Texinfo/Pod/Simple/
@@ -16,3 +17,5 @@ pod2texi: pod2texi.pl
 	chmod a+x $@
 
 TESTS = prove.sh
+
+DISTCLEANFILES = pod2texi
