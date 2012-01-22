@@ -503,7 +503,6 @@ sub _convert_pod($)
         } elsif ($tagname eq 'Para') {
           _output($fh, \@accumulated_output, "$out$result\n\n");
         } elsif ($tagname eq 'L') {
-          my ($result, $postponed) = _end_context(\@accumulated_output);
           my $format = pop @format_stack;
           my ($linktype, $content_implicit, $url_arg, 
               $texinfo_manual, $texinfo_node) = @$format;
