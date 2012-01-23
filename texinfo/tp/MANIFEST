@@ -191,6 +191,8 @@ t/results/converters_tests/table_in_display_in_example.pl
 t/results/converters_tests/table_in_example_in_display.pl
 t/results/converters_tests/test_deftypefnnewline.pl
 t/results/converters_tests/test_sp.pl
+t/results/converters_tests/top_in_ref_keep_top.pl
+t/results/converters_tests/top_in_ref.pl
 t/results/converters_tests/unknown_value.pl
 t/results/converters_tests/verbatiminclude_paths.pl
 t/results/converters_tests/weird_accents_disable_encoding.pl
@@ -478,6 +480,7 @@ t/results/invalid_nestings/multitable_in_style_command.pl
 t/results/invalid_nestings/multitable_item_in_index.pl
 t/results/invalid_nestings/node_in_copying_not_closed.pl
 t/results/invalid_nestings/node_in_copying.pl
+t/results/invalid_nestings/node_on_index_entry_line.pl
 t/results/invalid_nestings/on_block_command_line.pl
 t/results/invalid_nestings/on_def_line.pl
 t/results/invalid_nestings/on_index_entry_line.pl
@@ -494,6 +497,9 @@ t/results/invalid_nestings/section_in_footnote.pl
 t/results/invalid_nestings/section_in_math.pl
 t/results/invalid_nestings/section_in_nested_block_commands.pl
 t/results/invalid_nestings/section_in_table.pl
+t/results/invalid_nestings/section_on_def_line.pl
+t/results/invalid_nestings/section_on_defx_line.pl
+t/results/invalid_nestings/section_on_index_entry_line.pl
 t/results/invalid_nestings/style_not_closed_before_first_node.pl
 t/results/invalid_nestings/style_not_closed_in_block_command.pl
 t/results/invalid_nestings/style_not_closed_in_table_line.pl
@@ -913,6 +919,10 @@ t/results/sectioning/top_node_up_url.pl
 t/results/sectioning/top_part_chapter.pl
 t/results/sectioning/top_without_node_nodes.pl
 t/results/sectioning/top_without_node_sections.pl
+t/results/sectioning/transliterated_split_equivalent_nodes.pl
+t/results/sectioning/transliterated_split_equivalent_nodes/res_html/a.html
+t/results/sectioning/transliterated_split_equivalent_nodes/res_html/index.html
+t/results/sectioning/transliterated_split_equivalent_nodes/res_html/n.html
 t/results/sectioning/two_nodes_at_the_end.pl
 t/results/sectioning/two_nodes_between_chapters.pl
 t/results/sectioning/two_unnumbered_no_argument.pl

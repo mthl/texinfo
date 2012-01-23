@@ -15,6 +15,7 @@ fi
 
 if [ "$command" = 'clean' ]; then
   rm -f t/results/*/*.pl.new
+  rm -rf t/results/*/*/out_*/
 elif [ "$command" = 'generate' ]; then
   for file in t/*.t; do
     perl $file -g

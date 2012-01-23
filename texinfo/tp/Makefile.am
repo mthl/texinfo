@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.28 2012-01-18 22:31:13 pertusus Exp $
+# $Id: Makefile.am,v 1.29 2012-01-23 23:28:31 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -221,6 +221,7 @@ uninstall-local:
 distclean-local:
 	rm -rf LocaleData
 	rm -f t/results/*/*.pl.new
+	rm -rf t/results/*/*/out_*/
 	rm -rf $(relative_include_dir)
 	rm -rf blib po po_document
 

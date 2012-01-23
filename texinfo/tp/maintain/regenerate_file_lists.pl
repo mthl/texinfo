@@ -24,19 +24,20 @@ chdir("$mydir/..") || die "chdir $mydir/..: $!";
 find (\&wanted, ('t'));
 sub wanted 
 {
-  if (/\.pl$/ and $File::Find::dir =~ /^t\/results\//
-      or /\.t$/ and $File::Find::dir =~ /t$/) {
+  if ((/\.pl$/ and $File::Find::dir =~ m:^t/results/[^/]+:)
+      or (/\.t$/ and $File::Find::dir =~ /t$/)
+      or (!/^CVS$/ and $File::Find::dir =~ m:^t/results/[^/]+/[^/]+/res_[^/]+$:)) {
     $files{$File::Find::name} = 1;
   }
 }
 
-my %new_files = %files;
-open (FILE, "MANIFEST") or die "Open MANIFEST: $!";
-while (<FILE>) {
-  chomp;
-  delete ($new_files{$_});
-}
-#print join("\n", sort(keys(%new_files))) ."\n";
+#my %new_files = %files;
+#open (FILE, "MANIFEST") or die "Open MANIFEST: $!";
+#while (<FILE>) {
+#  chomp;
+#  delete ($new_files{$_});
+#}
+#print join("Missing from MANIFEST:\n", sort(keys(%new_files))) ."\n";
 
 open (INCLUDE, '>Makefile.tres') or die "Open >Makefile.tres: $!";
 print INCLUDE "test_results =";

@@ -1928,6 +1928,29 @@ $top_chapter_sections_text,
 '],
 );
 
+my @test_out_files = (
+['transliterated_split_equivalent_nodes',
+'@node Top
+
+@menu
+* @~a::
+* n::
+* @^a::
+@end menu
+
+@node @~a
+
+@node n
+
+@node @^a
+', {'test_split' => 'node'}],
+);
+
+foreach my $test (@test_out_files) {
+  push @{$test->[2]->{'test_formats'}}, 'file_html';
+  $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+}
+
 my @xml_tests_converted_tests = ('section_before_part', 'chapter_before_part', 
   'part_before_top', 'double_part', 'section_in_unnumbered_plaintext',
   'two_unnumbered_no_argument', 'two_nodes_between_chapters',
@@ -1972,6 +1995,7 @@ foreach my $test (@test_cases) {
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('sectioning', [@test_cases, @tests_converted, @tests_info], $arg_test_case,
+run_all ('sectioning', [@test_cases, @tests_converted, 
+                        @test_out_files, @tests_info], $arg_test_case,
    $arg_generate, $arg_debug);
 

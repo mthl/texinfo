@@ -18,6 +18,7 @@ use Texinfo::Convert::DocBook;
 use DebugTexinfo::DebugCount;
 use File::Basename;
 use File::Copy;
+use File::Compare; # standard since 5.004
 use Data::Dumper;
 use Data::Compare;
 use Test::Deep;
@@ -26,6 +27,8 @@ use Clone qw(clone);
 #use Data::Transformer;
 #use Struct::Compare;
 use Getopt::Long qw(GetOptions);
+
+# File: test_file option.
 
 # FIXME Is it really useful?
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
@@ -89,6 +92,7 @@ our %formats = (
   'plaintext' => \&convert_to_plaintext,
   'info' => \&convert_to_info,
   'html' => \&convert_to_html,
+  'file_html' => \&convert_to_html,
   'html_text' => \&convert_to_html,
   'xml' => \&convert_to_xml,
   'docbook' => \&convert_to_docbook,
@@ -134,6 +138,92 @@ sub protect_perl_string($)
   $string =~ s/\\/\\\\/g;
   $string =~ s/'/\\'/g;
   return $string;
+}
+
+sub compare_dirs_files($$;$)
+{
+  my $dir1 = shift;
+  my $dir2 = shift;
+  my $ignore_files = shift;
+
+  my %dir1_files;
+  my %dir2_files;
+  my @errors;
+  my %ignored_files_hash;
+  foreach my $ignored_file (@$ignore_files) {
+    $ignored_files_hash{$ignored_file} = 1;
+  }
+  if (opendir(DIR1, $dir1)) {
+    my @files = readdir (DIR1);
+    foreach my $file (@files) {
+      next if (! -r "$dir1/$file" or ! -f "$dir1/$file"
+               or $ignored_files_hash{$file});
+      $dir1_files{$file} = 1;
+    }
+    closedir (DIR1);
+  } else {
+    push @errors, "readdir $dir1: $!";
+  }
+  if (opendir(DIR2, $dir2)) {
+    my @files = readdir (DIR2);
+    foreach my $file (@files) {
+      next if (! -r "$dir2/$file" or ! -f "$dir2/$file"
+               or $ignored_files_hash{$file});
+      $dir2_files{$file} = 1;
+    }
+    closedir (DIR2);
+  } else {
+    push @errors, "readdir $dir2: $!";
+  }
+  if (scalar(@errors)) {
+    return \@errors;
+  }
+  foreach my $file (sort(keys(%dir1_files))) {
+    if ($dir2_files{$file}) {
+      if (compare("$dir1/$file", "$dir2/$file")) {
+        push @errors, "$dir1/$file and $dir2/$file differ";
+      }
+      delete $dir2_files{$file};
+    } else {
+      push @errors, "No $file in $dir2";
+    }
+  }
+  foreach my $file (sort(keys(%dir2_files))) {
+    push @errors, "No $file in $dir1"
+  }
+  if (scalar(@errors)) {
+    return \@errors;
+  } else {
+    return undef;
+  }
+}
+
+#my $errors = compare_dirs_files('a', 'b',['nnn']);
+#if ($errors) {
+#  foreach my $error (@$errors) {
+#    warn $error."\n";
+#  }
+#}
+
+sub unlink_dir_files($;$)
+{
+  my $dir = shift;
+  my $ignore_files = shift;
+  my %ignored_files_hash;
+  foreach my $ignored_file (@$ignore_files) {
+    $ignored_files_hash{$ignored_file} = 1;
+  }
+  if (opendir(DIR, $dir)) {
+    my @files = readdir (DIR);
+    foreach my $file (@files) {
+      next if (! -f "$dir/$file"
+               or $ignored_files_hash{$file});
+      unlink "$dir/$file" or warn "Could not unlink $dir/$file: $!\n";
+    }
+    closedir (DIR);
+  } else {
+    warn "readdir $dir: $!";
+  }
 }
 
 #my $remove_parent = sub {my $h = shift; delete $h->{'parent'}};
@@ -272,6 +362,19 @@ foreach my $avoided_key(@avoided_keys_elements) {
 sub filter_elements_keys {[grep {!$avoided_keys_elements{$_}}
    ( sort keys %{$_[0]} )] }
 
+sub set_converter_option_defaults($$$)
+{
+  my $converter_options = shift;
+  my $parser_options = shift;
+  my $format = shift;
+  $converter_options = {} if (!defined($converter_options));
+  if (!defined($parser_options->{'expanded_formats'})
+      and !defined($converter_options->{'expanded_formats'})) {
+    $converter_options->{'expanded_formats'} = [$format];
+  }
+  return $converter_options;
+}
+
 sub convert_to_plaintext($$$$$;$)
 {
   my $self = shift;
@@ -280,11 +383,10 @@ sub convert_to_plaintext($$$$$;$)
   my $parser = shift;
   my $parser_options = shift;
   my $converter_options = shift;
-  if (!defined($converter_options)) {
-    $converter_options = {};
-    $converter_options->{'expanded_formats'} = [$format]
-      if (!defined($parser_options->{'expanded_formats'}));
-  }
+  $converter_options 
+    = set_converter_option_defaults($converter_options,
+                                    $parser_options, $format);
+  
   my $converter = 
      Texinfo::Convert::Plaintext->converter({'DEBUG' => $self->{'DEBUG'},
                                              'parser' => $parser,
@@ -303,12 +405,11 @@ sub convert_to_info($$$$$;$)
   my $parser = shift;
   my $parser_options = shift;
   my $converter_options = shift;
-  if (!defined($converter_options)) {
-    $converter_options = {};
-    # FIXME plaintext too?
-    $converter_options->{'expanded_formats'} = [$format]
-      if (!defined($parser_options->{'expanded_formats'}));
-  }
+  # FIXME plaintext too?
+  $converter_options 
+    = set_converter_option_defaults($converter_options,
+                                    $parser_options, $format);
+  
   my $converter = 
      Texinfo::Convert::Info->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
@@ -329,11 +430,10 @@ sub convert_to_html($$$$$;$)
   my $parser = shift;
   my $parser_options = shift;
   my $converter_options = shift;
-  if (!defined($converter_options)) {
-    $converter_options = {};
-    $converter_options->{'expanded_formats'} = ['html']
-      if (!defined($parser_options->{'expanded_formats'}));
-  }
+  $converter_options 
+    = set_converter_option_defaults($converter_options,
+                                    $parser_options, 'html');
+  
   $converter_options->{'SPLIT'} = 0
     if ($format eq 'html_text' 
         and !defined($parser_options->{'SPLIT'})
@@ -345,7 +445,6 @@ sub convert_to_html($$$$$;$)
   my $converter =
      Texinfo::Convert::HTML->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
-                                         'OUTFILE' => '',
                                          'output_format' => 'html',
                                           %$converter_options });
   my $result;
@@ -354,7 +453,7 @@ sub convert_to_html($$$$$;$)
   } else {
     $result = $converter->output($tree);
   }
-  die if (!defined($result));
+  die if (!defined($converter_options->{'SUBDIR'}) and !defined($result));
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }
@@ -367,11 +466,10 @@ sub convert_to_xml($$$$$;$)
   my $parser = shift;
   my $parser_options = shift;
   my $converter_options = shift;
-  if (!defined($converter_options)) {
-    $converter_options = {};
-    $converter_options->{'expanded_formats'} = ['xml']
-      if (!defined($parser_options->{'expanded_formats'}));
-  }
+  $converter_options 
+    = set_converter_option_defaults($converter_options,
+                                    $parser_options, 'xml');
+  
   my $converter =
      Texinfo::Convert::XML->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
@@ -392,11 +490,10 @@ sub convert_to_docbook($$$$$;$)
   my $parser = shift;
   my $parser_options = shift;
   my $converter_options = shift;
-  if (!defined($converter_options)) {
-    $converter_options = {};
-    $converter_options->{'expanded_formats'} = ['docbook']
-      if (!defined($parser_options->{'expanded_formats'}));
-  }
+  $converter_options 
+    = set_converter_option_defaults($converter_options,
+                                    $parser_options, 'docbook');
+  
   my $converter =
      Texinfo::Convert::DocBook->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
@@ -449,6 +546,11 @@ sub test($$)
     $test_file = $input_files_dir . $parser_options->{'test_file'};
     delete $parser_options->{'test_file'};
   }
+  my $test_input_file_name;
+  if ($parser_options->{'test_input_file_name'}) {
+    $test_input_file_name = $parser_options->{'test_input_file_name'};
+    delete $parser_options->{'test_input_file_name'};
+  }
   my $split = '';
   if ($parser_options->{'test_split'}) {
     $split = $parser_options->{'test_split'};
@@ -467,8 +569,8 @@ sub test($$)
   if ($parser_options and $parser_options->{'test_formats'}) {
     push @tested_formats, @{$parser_options->{'test_formats'}};
     delete $parser_options->{'test_formats'};
-  } elsif ($self->{'test_formats'}) {
-    push @tested_formats, @{$self->{'test_formats'}};
+  #} elsif ($self->{'test_formats'}) {
+  #  push @tested_formats, @{$self->{'test_formats'}};
   }
 
   my $parser = Texinfo::Parser->parser({'TEST' => 1,
@@ -488,6 +590,9 @@ sub test($$)
   my $result;
   if (!$test_file) {
     $result = $parser->parse_texi_text($test_text, 1);
+    if (defined($test_input_file_name)) {
+      $parser->{'info'}->{'input_file_name'} = $test_input_file_name;
+    }
   } else {
     $result = $parser->parse_texi_file($test_file);
   }
@@ -528,11 +633,36 @@ sub test($$)
 
   my %converted;
   my %converted_errors;
+  $converter_options = {} if (!defined($converter_options));
   foreach my $format (@tested_formats) {
     if (defined($formats{$format})) {
-      ($converted_errors{$format}, $converted{$format}) 
-           = &{$formats{$format}}($self, $format, $result, $parser, 
-                                  $parser_options, $converter_options);
+      my $format_converter_options = {%$converter_options};
+      my $format_type = $format;
+      if ($format_type =~ s/^file_//) {
+        my $base = "t/results/$self->{'name'}/$test_name/";
+        my $test_out_dir;
+        if ($self->{'generate'}) {
+          $test_out_dir = 'res_'.$format_type;
+          if (-d $base."$test_out_dir/") {
+             unlink_dir_files("t/results/$self->{'name'}/$test_name/$test_out_dir/");
+          }
+        } else {
+          $test_out_dir = 'out_'.$format_type;
+        }
+        if (!defined($format_converter_options->{'SUBDIR'})) {
+          mkdir ($base) 
+            if (! -d $base);
+          mkdir ($base."$test_out_dir/") 
+            if (! -d $base."$test_out_dir/");
+          $format_converter_options->{'SUBDIR'} 
+             = $base."$test_out_dir/";
+        }
+      } elsif (!defined($format_converter_options->{'OUTFILE'})) {
+        $format_converter_options->{'OUTFILE'} = '';
+      }
+      ($converted_errors{$format}, $converted{$format})
+           = &{$formats{$format_type}}($self, $format_type, $result, $parser, 
+                                  $parser_options, $format_converter_options);
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       #print STDERR "$format: \n$converted{$format}";
 
@@ -546,18 +676,21 @@ sub test($$)
         } else {
           $extension = $format;
         }
-        my $outfile = "$output_files_dir/$self->{'name'}/$test_name.$extension";
-        if (!open (OUTFILE, ">$outfile")) {
-          warn "Open $outfile: $!\n";
-        } else {
-          if ($outfile_preamble{$format}) {
-            print OUTFILE $outfile_preamble{$format}->[0];
+
+        if (defined ($converted{$format})) {
+          my $outfile = "$output_files_dir/$self->{'name'}/$test_name.$extension";
+          if (!open (OUTFILE, ">$outfile")) {
+            warn "Open $outfile: $!\n";
+          } else {
+            if ($outfile_preamble{$format}) {
+              print OUTFILE $outfile_preamble{$format}->[0];
+            }
+            print OUTFILE $converted{$format};
+            if ($outfile_preamble{$format}) {
+              print OUTFILE $outfile_preamble{$format}->[1];
+            }
+            close (OUTFILE) or warn "Close $outfile: $!\n";
           }
-          print OUTFILE $converted{$format};
-          if ($outfile_preamble{$format}) {
-            print OUTFILE $outfile_preamble{$format}->[1];
-          }
-          close (OUTFILE) or warn "Close $outfile: $!\n";
         }
         if ($converted_errors{$format}) {
           my $errors_file 
@@ -684,59 +817,26 @@ sub test($$)
     $out_result .= "1;\n";
     print OUT $out_result;
     close (OUT);
-    if (ref($test_case) ne 'ARRAY') {
-      my $out_texi_file = "t/results/$self->{'name'}/$test_name.texi";
-      open (OUT, ">$out_texi_file") or die "Open $out_texi_file: $!\n";
-      print OUT $texi_string_result;
-      close (OUT);
-    }
+    #if (ref($test_case) ne 'ARRAY') {
+    #  my $out_texi_file = "t/results/$self->{'name'}/$test_name.texi";
+    #  open (OUT, ">$out_texi_file") or die "Open $out_texi_file: $!\n";
+    #  print OUT $texi_string_result;
+    #  close (OUT);
+    #}
     
     print STDERR "--> $test_name\n".Texinfo::Convert::Texinfo::convert($result)."\n" 
             if ($self->{'generate'});
-  } 
+  }
   if (!$self->{'generate'}) {
     %result_converted = ();
-    require $file;
+    require "$srcdir/$file";
 
-    #$transformer->traverse($result_trees{$test_name});
-    #$transformer->traverse($result);
-    #{
-      #local $Data::Dumper::Purity = 1;
-      #local $Data::Dumper::Sortkeys = 1;
-      #local $Data::Dumper::Indent = 1;
-      #if (!Struct::Compare::compare($result, $result_trees{$test_name})) {
-      #  print STDERR "".Data::Dumper->Dump([$result],['$new']);
-      #  print STDERR "".Data::Dumper->Dump([$result_trees{$test_name}], ['$ref']);
-      #}
-
-      #my $diff = Data::Diff->new($result, $result_trees{$test_name});
-      #print STDERR "".Data::Dumper->Dump([$diff->raw()], ['$diff']);
-    #}
     cmp_trimmed($split_result, $result_trees{$test_name}, \@avoided_keys_tree,
                 $test_name.' tree');
-#    ok (Data::Compare::Compare($result, $result_trees{$test_name}, 
-#               { 'ignore_hash_keys' => [@avoided_compare_tree] }), 
-#        $test_name.' tree' );
     cmp_trimmed($structure, $result_sectioning{$test_name},
                  \@avoided_keys_sectioning, $test_name.' sectioning' );
-
-  #  ok (Data::Compare::Compare($structure, $result_sectioning{$test_name}, 
-  #            { 'ignore_hash_keys' => [@avoided_compare_sectioning] }), 
-  #      $test_name.' sectioning' );
-    #my $trimmed = remove_keys ($top_node, \@avoided_keys_nodes);
-    #cmp_deeply($trimmed, $result_nodes{$test_name}, $test_name.' nodes');
     cmp_trimmed($top_node, $result_nodes{$test_name}, \@avoided_keys_nodes,
                 $test_name.' nodes');
- #   ok (Data::Compare::Compare($top_node, $result_nodes{$test_name},
- #                      { 'ignore_hash_keys' => [@avoided_compare_nodes] }),
- #        $test_name.' nodes');
-    {
-    local $Data::Dumper::Purity = 1;
-    local $Data::Dumper::Indent = 1;
-  #     local $Data::Dumper::Sortkeys = \&filter_nodes_keys;
-       #print STDERR  Data::Dumper->Dump([$trimmed], ['$top_node']);
-  #      print STDERR  Data::Dumper->Dump([$result_nodes{$test_name}], ['$result']);
-    }
     cmp_trimmed($top_node, $result_menus{$test_name}, \@avoided_keys_menus,
                 $test_name.' menus');
 
@@ -758,16 +858,40 @@ sub test($$)
     }
     if (@tested_formats) {
       foreach my $format (@tested_formats) {
-        if (!defined($result_converted{$format})) {
-          print STDERR "\n$format $test_name:\n$converted{$format}";
-          #   if ($format ne 'xml');
+        my $reference_exists;
+        my $format_type = $format;
+        if ($format_type =~ s/^file_//) {
+          my $base = "t/results/$self->{'name'}/$test_name/";
+          my $reference_dir = "$srcdir/$base".'res_'.$format_type;
+          my $results_dir = $base.'out_'.$format_type;
+          if (-d $reference_dir) {
+            $reference_exists = 1;
+            $tests_count += 1;
+            my $errors = compare_dirs_files($reference_dir, $results_dir);
+            ok (!defined($errors), $test_name.' converted '.$format)
+             or diag (join("\n", @$errors));
+          } else {
+            print STDERR "\n$format $test_name: \n$results_dir\n";
+          }
+        } elsif (!defined($result_converted{$format})) {
+          my $result;
+          if (defined($converted{$format})) {
+            $result = $converted{$format};
+          } else {
+            $result = 'UNDEF'."\n";
+          }
+          print STDERR "\n$format $test_name:\n$result";
         } else {
-          $tests_count += 2;
+          $reference_exists = 1;
+          $tests_count += 1;
           ok ($converted{$format} eq $result_converted{$format}->{$test_name},
             $test_name.' converted '.$format);
+        }
+        if ($reference_exists) {
+          $tests_count += 1;
           ok (Data::Compare::Compare($converted_errors{$format}, 
-                 $result_converted_errors{$format}->{$test_name}),
-                 $test_name.' errors '.$format);
+               $result_converted_errors{$format}->{$test_name}),
+               $test_name.' errors '.$format);
         }
       #print STDERR "$format: \n$converted{$format}";
       }
@@ -813,41 +937,6 @@ sub run_all($$;$$$)
     plan tests => (1 + $test_nrs);
   }
 }
-
-sub run_all_files($$;$$$$)
-{
-  my $name = shift;
-  my $test_cases = shift;
-  my $test_case_name = shift;
-  my $generate = shift;
-  my $debug = shift;
-  my $formats = shift;
-
-  my $test = new_test($name, $generate, $debug, $formats);
-  my $ran_tests = $test_cases;
-  if (defined($test_case_name)) {
-    if ($test_case_name =~ /^\d+$/) {
-      $ran_tests = [ $test_cases->[$test_case_name-1] ];
-    } else {
-      foreach my $file (@$test_cases) {
-        my $test_case = basename ($file, '.texi');
-        $ran_tests = [ $file ] if ($test_case eq $test_case_name);
-      }
-    }
-  }
-  my $test_nrs = 0;
-  foreach my $test_case (@$ran_tests) {
-    my $test_name = basename($test_case, '.texi');
-    $test_nrs += $test->test([$test_name, undef, {'test_file' => $test_case}]);
-  }
-
-  if ($generate or $arg_complete) {
-    plan tests => 1;
-  } else {
-     plan tests => (1 + $test_nrs);
-  }
-}
-
 
 sub output_texi_file($)
 {
