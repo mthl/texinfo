@@ -829,7 +829,7 @@ sub test($$)
   }
   if (!$self->{'generate'}) {
     %result_converted = ();
-    require "$srcdir/$file";
+    require "$srcdir$file";
 
     cmp_trimmed($split_result, $result_trees{$test_name}, \@avoided_keys_tree,
                 $test_name.' tree');
@@ -862,7 +862,7 @@ sub test($$)
         my $format_type = $format;
         if ($format_type =~ s/^file_//) {
           my $base = "t/results/$self->{'name'}/$test_name/";
-          my $reference_dir = "$srcdir/$base".'res_'.$format_type;
+          my $reference_dir = "$srcdir$base".'res_'.$format_type;
           my $results_dir = $base.'out_'.$format_type;
           if (-d $reference_dir) {
             $reference_exists = 1;

@@ -190,6 +190,9 @@ $accents_text
 ['accent_with_text',
 '@u{--a} @dotless{--b} @^{--@dotless{i}} @^{--@dotless{j}} @^{--a}
 '],
+['empty_accent',
+'@`{}
+'],
 ['refs_formatting',
 '@node chapter
 @chapter chapter
