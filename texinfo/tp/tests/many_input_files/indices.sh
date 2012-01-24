@@ -15,8 +15,8 @@ echo "$basename" > $logfile
 [ -d index_split ] && rm -rf index_split
 [ -d $basename ] && rm -rf $basename
 mkdir $basename
-echo "perl -I $srcdir/../.. -w $srcdir/../../texi2any.pl --set-init-var 'TEXI2HTML 1' --conf-dir $srcdir/../indices/ --set-init-var 'TEST 1' --split chapter --out $basename/ $srcdir/../indices/index_table.texi $srcdir/../indices/index_split.texi --force >> $stdout_file 2>$basename/${basename}.2" >> $logfile
-perl -I $srcdir/../.. -w $srcdir/../../texi2any.pl --set-init-var 'TEXI2HTML 1' --conf-dir $srcdir/../indices/ --set-init-var 'TEST 1' --split chapter --out $basename/ $srcdir/../indices/index_table.texi $srcdir/../indices/index_split.texi --force >> $stdout_file 2>$basename/${basename}.2
+echo "perl -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-init-var 'TEXI2HTML 1' --conf-dir $srcdir/../indices/ --set-init-var 'TEST 1' --split chapter --out $basename/ $srcdir/../indices/index_table.texi $srcdir/../indices/index_split.texi --force >> $stdout_file 2>$basename/${basename}.2" >> $logfile
+perl -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-init-var 'TEXI2HTML 1' --conf-dir $srcdir/../indices/ --set-init-var 'TEST 1' --split chapter --out $basename/ $srcdir/../indices/index_table.texi $srcdir/../indices/index_split.texi --force >> $stdout_file 2>$basename/${basename}.2
 
 ret=$?
 if [ $ret != 0 ]; then
