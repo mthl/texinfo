@@ -1,8 +1,8 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-12-29.01; # UTC
+htmlxrefversion=2012-01-24.00; # UTC
 
-# Copyright 2010, 2011 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -385,8 +385,8 @@ libidn		node	${GS}/libidn/manual/html_node/
 libmatheval	mono	${GS}/libmatheval/manual/libmatheval.html
 
 LIBMICROHTTPD = http://www.gnu.org/software/libmicrohttpd/
- microhttpd	node	${LIBMICROHTTPD}/microhttpd.html
- # can't use tutorial.html since name is generic. 
+ microhttpd		mono	${LIBMICROHTTPD}/microhttpd.html
+ microhttpd-tutorial	mono	${LIBMICROHTTPD}/tutorial.html
 
 libtasn1	mono	${GS}/libtasn1/manual/libtasn1.html
 libtasn1	node	${GS}/libtasn1/manual/html_node/
