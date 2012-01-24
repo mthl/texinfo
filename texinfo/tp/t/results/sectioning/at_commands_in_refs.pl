@@ -20922,12 +20922,12 @@ Top
 * the someone <someone@somewher> <no_explain@there>::
 * [f--ile1]   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]::
 *  @ {} . ::
-* `cite asis\' in @w b in r SC *str* t VAR "dfn" i::
-* `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'::
+* \'cite asis\' in @w b in r SC *str* t VAR "dfn" i::
+* \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'::
 * 8.27in::
 * sansserif slanted::
 * <indicateurl>::
-* `http://somewhere_aaa\' text (url) ls::
+* \'http://somewhere_aaa\' text (url) ls::
 
 
 File: ,  Node: { },  Next:     !
@@ -21043,25 +21043,25 @@ File: ,  Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image descri
 *********************************************************************************
 
 
-File: ,  Node:  @ {} . ,  Next: `cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
+File: ,  Node:  @ {} . ,  Next: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
 
 19  @ {} . 
 ***********
 
 
-File: ,  Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Next: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\',  Prev:  @ {} . ,  Up: Top
+File: ,  Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Next: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Prev:  @ {} . ,  Up: Top
 
-20 `cite asis\' in @w b in r SC *str* t VAR "dfn" i
+20 \'cite asis\' in @w b in r SC *str* t VAR "dfn" i
 **************************************************
 
 
-File: ,  Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\',  Next: 8.27in,  Prev: `cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Up: Top
+File: ,  Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Next: 8.27in,  Prev: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Up: Top
 
-21 `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'
+21 \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'
 ************************************************************
 
 
-File: ,  Node: 8.27in,  Next: sansserif slanted,  Prev: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\',  Up: Top
+File: ,  Node: 8.27in,  Next: sansserif slanted,  Prev: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Up: Top
 
 22 8.27in
 *********
@@ -21073,15 +21073,15 @@ File: ,  Node: sansserif slanted,  Next: <indicateurl>,  Prev: 8.27in,  Up: Top
 ********************
 
 
-File: ,  Node: <indicateurl>,  Next: `http://somewhere_aaa\' text (url) ls,  Prev: sansserif slanted,  Up: Top
+File: ,  Node: <indicateurl>,  Next: \'http://somewhere_aaa\' text (url) ls,  Prev: sansserif slanted,  Up: Top
 
 24 <indicateurl>
 ****************
 
 
-File: ,  Node: `http://somewhere_aaa\' text (url) ls,  Prev: <indicateurl>,  Up: Top
+File: ,  Node: \'http://somewhere_aaa\' text (url) ls,  Prev: <indicateurl>,  Up: Top
 
-25 `http://somewhere_aaa\' text (url) ls
+25 \'http://somewhere_aaa\' text (url) ls
 ***************************************
 
 *note { }::
@@ -21097,10 +21097,10 @@ ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
 e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note `` \'\' ` \' ,, ,:: *note << >>
 << >> < >:: *note `` \'\' --- --:: *note AAA (fff) AAA BBB:: *note CCC
 (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]:: *note  @ {} . :: *note `cite asis\' in @w b
-in r SC *str* t VAR "dfn" i:: *note `env\' `code\' `option\' `samp\'
-`command\' `file\' `C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
-*note <indicateurl>:: *note `http://somewhere_aaa\' text (url) ls::
+<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]:: *note  @ {} . :: *note \'cite asis\' in @w b
+in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
+\'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
+*note <indicateurl>:: *note \'http://somewhere_aaa\' text (url) ls::
 
 
 
@@ -21126,12 +21126,12 @@ Node: CCC (rrr) CCC DDD3015
 Node: the someone <someone@somewher> <no_explain@there>3188
 Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3490
 Node:  @ {} . 3846
-Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i4055
-Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4317
+Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4055
+Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4317
 Node: 8.27in4597
 Node: sansserif slanted4745
 Node: <indicateurl>4871
-Node: `http://somewhere_aaa\' text (url) ls5019
+Node: \'http://somewhere_aaa\' text (url) ls5019
 
 End Tag Table
 ';

@@ -3028,7 +3028,7 @@ $result_errors{'accentenc'} = [];
 $result_converted{'plaintext'}->{'accentenc'} = 'top
 ***
 
-should be e`: è è
+should be e\': è è
 
    should be e\': é é
 
@@ -3036,7 +3036,7 @@ should be e`: è è
 
    should be u": ü ü
 
-   should be i`: ì ì
+   should be i\': ì ì
 
    should be i\': í í
 
@@ -3086,7 +3086,7 @@ should be e`: è è
 
    pounds sterling: £
 
-   should be dotless i`: ì
+   should be dotless i\': ì
 
    should be dotless i\': í
 
@@ -3094,7 +3094,7 @@ should be e`: è è
 
    should be dotless i": ï
 
-   should be dotless j`: j`
+   should be dotless j\': j`
 
    should be dotless j\': j\'
 
@@ -3191,17 +3191,17 @@ $result_converted{'xml'}->{'accentenc'} = '<documentencoding encoding="ISO-8859-
 <node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 <top><sectiontitle>top</sectiontitle>
 
-<para>should be e`: <accent type="grave">e</accent> <accent type="grave">e</accent>
+<para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave">e</accent>
 </para>
-<para>should be e\': <accent type="acute">e</accent> <accent type="acute">e</accent>
+<para>should be e&textrsquo;: <accent type="acute">e</accent> <accent type="acute">e</accent>
 </para>
 <para>should be e^: <accent type="circ">e</accent> <accent type="circ">e</accent>
 </para>
 <para>should be u&quot;: <accent type="uml">u</accent> <accent type="uml">u</accent>
 </para>
-<para>should be i`: <accent type="grave">i</accent> <accent type="grave">i</accent>
+<para>should be i&textlsquo;: <accent type="grave">i</accent> <accent type="grave">i</accent>
 </para>
-<para>should be i\': <accent type="acute">i</accent> <accent type="acute">i</accent>
+<para>should be i&textrsquo;: <accent type="acute">i</accent> <accent type="acute">i</accent>
 </para>
 <para>should be i^: <accent type="circ">i</accent> <accent type="circ">i</accent>
 </para>
@@ -3213,7 +3213,7 @@ $result_converted{'xml'}->{'accentenc'} = '<documentencoding encoding="ISO-8859-
 </para>
 <para>should be e=: <accent type="macr">e</accent> <accent type="macr">e</accent>
 </para>
-<para>should be e<w>\'</w>\': <accent type="doubleacute">e</accent> <accent type="doubleacute">e</accent>
+<para>should be e<w>&textrsquo;</w>&textrsquo;: <accent type="doubleacute">e</accent> <accent type="doubleacute">e</accent>
 </para>
 <para>should be e.: <accent type="dotaccent">e</accent> <accent type="dotaccent">e</accent>
 </para>
@@ -3250,18 +3250,18 @@ $result_converted{'xml'}->{'accentenc'} = '<documentencoding encoding="ISO-8859-
 <para>pounds sterling: &pound;
 </para>
 <!-- arg is command - @dotless{i} is special-cased for HTML -->
-<para>should be dotless i`: <accent type="grave"><dotless>i</dotless></accent>
+<para>should be dotless i&textlsquo;: <accent type="grave"><dotless>i</dotless></accent>
 </para>
-<para>should be dotless i\': <accent type="acute"><dotless>i</dotless></accent>
+<para>should be dotless i&textrsquo;: <accent type="acute"><dotless>i</dotless></accent>
 </para>
 <para>should be dotless i^: <accent type="circ"><dotless>i</dotless></accent>
 </para>
 <para>should be dotless i&quot;: <accent type="uml"><dotless>i</dotless></accent>
 </para>
 <!-- arg is command - @dotless{j} -->
-<para>should be dotless j`: <accent type="grave"><dotless>j</dotless></accent>
+<para>should be dotless j&textlsquo;: <accent type="grave"><dotless>j</dotless></accent>
 </para>
-<para>should be dotless j\': <accent type="acute"><dotless>j</dotless></accent>
+<para>should be dotless j&textrsquo;: <accent type="acute"><dotless>j</dotless></accent>
 </para>
 <para>should be dotless j^: <accent type="circ"><dotless>j</dotless></accent>
 </para>

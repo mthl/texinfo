@@ -6,7 +6,7 @@ File: accent.info,  Node: Top,  Up: (dir)
 Accent test top
 ***************
 
-should be e`: e` e`
+should be e': e` e`
 
    should be e': e' e'
 
@@ -14,7 +14,7 @@ should be e`: e` e`
 
    should be u": u" u"
 
-   should be i`: i` i`
+   should be i': i` i`
 
    should be i': i' i'
 
@@ -60,7 +60,7 @@ should be e`: e` e`
 
    pounds sterling: #
 
-   should be dotless i`: i`
+   should be dotless i': i`
 
    should be dotless i': i'
 
@@ -68,7 +68,7 @@ should be e`: e` e`
 
    should be dotless i": i"
 
-   should be dotless j`: j`
+   should be dotless j': j`
 
    should be dotless j': j'
 

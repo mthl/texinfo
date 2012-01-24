@@ -501,21 +501,21 @@ $result_errors{'equivalent_nodes'} = [];
 $result_converted{'info'}->{'equivalent_nodes'} = 'This is , produced by tp version from .
 
 
-File: ,  Node: Top,  Next: `node\'
+File: ,  Node: Top,  Next: \'node\'
 
 * Menu:
 
 * *node*::
 
 
-File: ,  Node: `node\',  Up: Top
+File: ,  Node: \'node\',  Up: Top
 
-*Note `node\'::.
+*Note \'node\'::.
 
 
 Tag Table:
 Node: Top41
-Node: `node\'99
+Node: \'node\'99
 
 End Tag Table
 ';
@@ -523,9 +523,9 @@ End Tag Table
 $result_converted_errors{'info'}->{'equivalent_nodes'} = [
   {
     'file_name' => '',
-    'error_line' => ':4: warning: Node expansion `*node*\' in menu differs from normal node expansion ``node\'\'
+    'error_line' => ':4: warning: Node expansion `*node*\' in menu differs from normal node expansion `\'node\'\'
 ',
-    'text' => 'Node expansion `*node*\' in menu differs from normal node expansion ``node\'\'',
+    'text' => 'Node expansion `*node*\' in menu differs from normal node expansion `\'node\'\'',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 4

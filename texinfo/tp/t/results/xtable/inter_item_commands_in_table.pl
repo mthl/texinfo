@@ -1778,7 +1778,7 @@ $result_errors{'inter_item_commands_in_table'} = [
 
 
 
-$result_converted{'plaintext'}->{'inter_item_commands_in_table'} = '`a\'
+$result_converted{'plaintext'}->{'inter_item_commands_in_table'} = '\'a\'
      l-ine
 
 a
@@ -1792,11 +1792,11 @@ C
 
 D
 
-`abb\'
+\'abb\'
      l-ine
 
      Texte before first item.
-`abb\'
+\'abb\'
 ';
 
 

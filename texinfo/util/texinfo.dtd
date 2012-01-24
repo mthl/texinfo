@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.29 2012-01-05 23:34:52 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.30 2012-01-24 22:17:09 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -836,7 +836,9 @@
 <!ENTITY enddots    "<punct end-of-sentence='yes'>&#x2026;</punct>">
 <!ENTITY amp        "&#x26;">
 <!ENTITY lsquo      "&#x2018;">
+<!ENTITY textlsquo      "&#x2018;">
 <!ENTITY rsquo      "&#x2019;">
+<!ENTITY textrsquo      "&#x2019;">
 <!ENTITY sbquo      "&#x201a;">
 <!ENTITY ldquo      "&#x201c;">
 <!ENTITY textldquo      "&#x201c;">

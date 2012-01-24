@@ -464,7 +464,7 @@ $result_converted{'info'}->{'xref_test'} = 'This is , produced by tp version fro
 
 File: ,  Node: Top,  Up: (dir)
 
-*Note (m)in xref::.  *Note (m)bad xref::.  after xref.  `*Note (m)bad
+*Note (m)in xref::.  *Note (m)bad xref::.  after xref.  \'*Note (m)bad
 nested xref::.\'.  *Note name: (m)in ref ending with a dot..  !  after
 xref and dot inside.  *Note (m)in ref followed by symbol::.# g.
 

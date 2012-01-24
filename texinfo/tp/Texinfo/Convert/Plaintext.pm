@@ -264,7 +264,8 @@ my @quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
 # Quotes are reset in converter_initialize and unicode quotes are used 
 # if @documentencoding utf-8 is used.
 foreach my $quoted_command (@quoted_commands) {
-  $style_map{$quoted_command} = ['`', "'"];
+  #$style_map{$quoted_command} = ['`', "'"];
+  $style_map{$quoted_command} = ["'", "'"];
 }
 
 $style_map{'key'} = ['<', '>'];
@@ -473,12 +474,14 @@ sub _process_text($$$)
     $text =~ s/\x{1F}/--/g;
     $text =~ s/``/"/g;
     $text =~ s/\'\'/"/g;
+    $text =~ s/`/'/g;
     if (defined($lower_case_text)) {
       $lower_case_text =~ s/---/\x{1F}/g;
       $lower_case_text =~ s/--/-/g;
       $lower_case_text =~ s/\x{1F}/--/g;
       $lower_case_text =~ s/``/"/g;
       $lower_case_text =~ s/\'\'/"/g;
+      $lower_case_text =~ s/`/'/g;
     }
   }
   return ($text, $lower_case_text);

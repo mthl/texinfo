@@ -263,7 +263,7 @@ $result_errors{'empty_commands'} = [
 
 
 
-$result_converted{'plaintext'}->{'empty_commands'} = '`\'(1) ~
+$result_converted{'plaintext'}->{'empty_commands'} = '\'\'(1) ~
 
    ---------- Footnotes ----------
 

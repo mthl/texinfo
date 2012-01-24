@@ -928,7 +928,7 @@ $result_converted{'info'}->{'empty_string_index_entry'} = 'This is , produced by
 
 File: ,  Node: Top,  Up: (dir)
 
-`\'
+\'\'
 
  -- Function: 
  -- Function: 

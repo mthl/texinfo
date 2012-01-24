@@ -166,7 +166,7 @@ File: nodetest_utf8.info,  Node: á,  Up: acute accent
 2.1 á
 =====
 
-With brace á.  Testing ' " ` ^.
+With brace á.  Testing ’ " ‘ ^.
 
 
 File: nodetest_utf8.info,  Node: é,  Up: acute accent
@@ -679,73 +679,73 @@ Node: ß1953
 Node: no section2021
 Node: acute accent2125
 Node: á2405
-Node: é2511
-Node: í2583
-Node: ó2655
-Node: ú2727
-Node: ý2799
-Node: Á2871
-Node: É2943
-Node: Í3015
-Node: Ó3087
-Node: Ú3161
-Node: Ý3235
-Node: grave accent3390
-Node: à3693
-Node: è3765
-Node: ì3837
-Node: with brace ì3909
-Node: with dotless ì3992
-Node: ò4077
-Node: ù4149
-Node: À4221
-Node: È4293
-Node: Ì4365
-Node: Ò4439
-Node: Ù4513
-Node: circumflex accent4587
-Node: â4854
-Node: ê4931
-Node: î5008
-Node: ô5085
-Node: û5162
-Node: Â5239
-Node: Ê5316
-Node: Î5393
-Node: Ô5470
-Node: Û5547
-Node: tilde accent5626
-Node: ã5808
-Node: ñ5880
-Node: õ5952
-Node: Ã6024
-Node: Õ6096
-Ref: x-spot6182
-Ref: é-o6221
-Node: cedilla accent6225
-Node: ç6371
-Node: Ç6445
-Node: rest6519
-Node: å6944
-Node: æ7008
-Node: œ7072
-Node: Å7136
-Node: Æ7200
-Node: Œ7264
-Node: ł7328
-Node: ø7392
-Node: Ł7456
-Node: Ø7520
-Node: a̋7586
-Node: ă7654
-Node: ǎ7720
-Node: ạ7786
-Node: ȧ7872
-Node: a͡7971
-Node: a̲8039
-Node: ı8107
-Node: j8173
-Node: ,8378
+Node: é2515
+Node: í2587
+Node: ó2659
+Node: ú2731
+Node: ý2803
+Node: Á2875
+Node: É2947
+Node: Í3019
+Node: Ó3091
+Node: Ú3165
+Node: Ý3239
+Node: grave accent3394
+Node: à3697
+Node: è3769
+Node: ì3841
+Node: with brace ì3913
+Node: with dotless ì3996
+Node: ò4081
+Node: ù4153
+Node: À4225
+Node: È4297
+Node: Ì4369
+Node: Ò4443
+Node: Ù4517
+Node: circumflex accent4591
+Node: â4858
+Node: ê4935
+Node: î5012
+Node: ô5089
+Node: û5166
+Node: Â5243
+Node: Ê5320
+Node: Î5397
+Node: Ô5474
+Node: Û5551
+Node: tilde accent5630
+Node: ã5812
+Node: ñ5884
+Node: õ5956
+Node: Ã6028
+Node: Õ6100
+Ref: x-spot6186
+Ref: é-o6225
+Node: cedilla accent6229
+Node: ç6375
+Node: Ç6449
+Node: rest6523
+Node: å6948
+Node: æ7012
+Node: œ7076
+Node: Å7140
+Node: Æ7204
+Node: Œ7268
+Node: ł7332
+Node: ø7396
+Node: Ł7460
+Node: Ø7524
+Node: a̋7590
+Node: ă7658
+Node: ǎ7724
+Node: ạ7790
+Node: ȧ7876
+Node: a͡7975
+Node: a̲8043
+Node: ı8111
+Node: j8177
+Node: ,8382
 
 End Tag Table
 

@@ -7,7 +7,7 @@ File: accentenc.info,  Node: Top,  Up: (dir)
 Accent encoding test top
 ************************
 
-should be e`: è è
+should be e': è è
 
    should be e': é é
 
@@ -15,7 +15,7 @@ should be e`: è è
 
    should be u": ü ü
 
-   should be i`: ì ì
+   should be i': ì ì
 
    should be i': í í
 
@@ -61,7 +61,7 @@ should be e`: è è
 
    pounds sterling: £
 
-   should be dotless i`: ì
+   should be dotless i': ì
 
    should be dotless i': í
 
@@ -69,7 +69,7 @@ should be e`: è è
 
    should be dotless i": ï
 
-   should be dotless j`: j`
+   should be dotless j': j`
 
    should be dotless j': j'
 

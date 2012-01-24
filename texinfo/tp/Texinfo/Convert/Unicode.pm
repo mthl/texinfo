@@ -1232,6 +1232,8 @@ sub unicode_text($$)
     $text =~ s/--/\x{2013}/g;
     $text =~ s/``/\x{201C}/g;
     $text =~ s/''/\x{201D}/g;
+    $text =~ s/'/\x{2019}/g;
+    $text =~ s/`/\x{2018}/g;
   }
   return Unicode::Normalize::NFC($text);
 }

@@ -677,7 +677,7 @@ TeX.  Ab.  @.  e~, i^
 
      truc
 
-`vitem table\'
+\'vitem table\'
 
      text
 ';

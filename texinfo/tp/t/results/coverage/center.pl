@@ -111,7 +111,7 @@ $result_errors{'center'} = [];
 
 
 
-$result_converted{'plaintext'}->{'center'} = '                          in center `in code\'
+$result_converted{'plaintext'}->{'center'} = '                          in center \'in code\'
 
 ';
 

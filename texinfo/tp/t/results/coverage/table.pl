@@ -792,8 +792,8 @@ table itemx
 
      In table
 
-`vtable item\'
-`itemx vtable\'
+\'vtable item\'
+\'itemx vtable\'
 
 ';
 

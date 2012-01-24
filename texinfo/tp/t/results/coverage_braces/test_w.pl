@@ -941,7 +941,7 @@ $result_converted{'plaintext'}->{'test_w'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
    aaf   bbb.
 
-   begin and end quotations: ``...\'\'.  This convention should be
+   begin and end quotations: \'\'...\'\'.  This convention should be
 followed in Texinfo files.  TeX converts two single quotes to left- and
 right-hand doubled.
 ';

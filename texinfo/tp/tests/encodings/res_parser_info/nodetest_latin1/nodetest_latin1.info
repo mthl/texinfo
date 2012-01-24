@@ -166,7 +166,7 @@ File: nodetest_latin1.info,  Node: á,  Up: acute accent
 2.1 á
 =====
 
-With brace á.  Testing ' " ` ^.
+With brace á.  Testing ' " ' ^.
 
 
 File: nodetest_latin1.info,  Node: é,  Up: acute accent

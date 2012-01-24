@@ -450,7 +450,7 @@ $result_converted{'plaintext'}->{'preformatted'} = '     e--xample  some
 
         text
 
-`item in table in format\'
+\'item in table in format\'
 
      in table in format
 ';

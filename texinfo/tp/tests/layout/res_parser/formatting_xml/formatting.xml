@@ -749,8 +749,8 @@ Various deff lines
 &gt;
 &quot;
 &amp;
-'
-`
+&textrsquo;
+&textlsquo;
 </para>
 <para>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&textrdquo;&linebreak;
 code: <code>``simple-double--three---four----''</code> &linebreak;
@@ -758,7 +758,7 @@ asis: <asis>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&
 strong: <strong>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&textrdquo;</strong> &linebreak;
 kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
-<para>`<w></w>`simple-double-<w></w>-three&textmdash;four&textmdash;-'<w></w>'&linebreak;
+<para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
 <cindex index="cp"><indexterm index="cp">&textndash;option</indexterm></cindex>
 <cindex index="cp"><indexterm index="cp">&textldquo;</indexterm></cindex>
@@ -769,16 +769,16 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
 &arobase;~n <accent type="tilde">n</accent>
 &arobase;^a <accent type="circ">a</accent>
-&arobase;'e <accent type="acute">e</accent>
+&arobase;&textrsquo;e <accent type="acute">e</accent>
 &arobase;=o <accent type="macr">o</accent>
-&arobase;`i <accent type="grave">i</accent>
-&arobase;'&lbrace;e&rbrace; <accent type="acute">e</accent>
-&arobase;'&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
+&arobase;&textlsquo;i <accent type="grave">i</accent>
+&arobase;&textrsquo;&lbrace;e&rbrace; <accent type="acute">e</accent>
+&arobase;&textrsquo;&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
 &arobase;dotless&lbrace;i&rbrace; <dotless>i</dotless>
 &arobase;dotless&lbrace;j&rbrace; <dotless>j</dotless>
-&arobase;`&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
+&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
 &arobase;l&lbrace;&rbrace; &lslash;
-&arobase;,&lbrace;&arobase;'C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
+&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
 &arobase;,c <accent type="cedil">c</accent>
 &arobase;,c&arobase;&quot;u <accent type="cedil">c</accent><accent type="uml">u</accent> &linebreak;
 </para>
@@ -1351,8 +1351,8 @@ docbook &textrdquo;
 &gt;
 &quot;
 &amp;
-'
-`
+&textrsquo;
+&textlsquo;
 </para>
 <para>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&textrdquo;&linebreak;
 code: <code>``simple-double--three---four----''</code> &linebreak;
@@ -1360,7 +1360,7 @@ asis: <asis>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&
 strong: <strong>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&textrdquo;</strong> &linebreak;
 kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
-<para>`<w></w>`simple-double-<w></w>-three&textmdash;four&textmdash;-'<w></w>'&linebreak;
+<para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
 <cindex index="cp"><indexterm index="cp">&textndash;option</indexterm></cindex>
 <cindex index="cp"><indexterm index="cp">&textldquo;</indexterm></cindex>
@@ -1371,16 +1371,16 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
 &arobase;~n <accent type="tilde">n</accent>
 &arobase;^a <accent type="circ">a</accent>
-&arobase;'e <accent type="acute">e</accent>
+&arobase;&textrsquo;e <accent type="acute">e</accent>
 &arobase;=o <accent type="macr">o</accent>
-&arobase;`i <accent type="grave">i</accent>
-&arobase;'&lbrace;e&rbrace; <accent type="acute">e</accent>
-&arobase;'&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
+&arobase;&textlsquo;i <accent type="grave">i</accent>
+&arobase;&textrsquo;&lbrace;e&rbrace; <accent type="acute">e</accent>
+&arobase;&textrsquo;&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
 &arobase;dotless&lbrace;i&rbrace; <dotless>i</dotless>
 &arobase;dotless&lbrace;j&rbrace; <dotless>j</dotless>
-&arobase;`&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
+&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
 &arobase;l&lbrace;&rbrace; &lslash;
-&arobase;,&lbrace;&arobase;'C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
+&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
 &arobase;,c <accent type="cedil">c</accent>
 &arobase;,c&arobase;&quot;u <accent type="cedil">c</accent><accent type="uml">u</accent> &linebreak;
 </para>
@@ -1953,8 +1953,8 @@ docbook &textrdquo;
 &gt;
 &quot;
 &amp;
-'
-`
+&textrsquo;
+&textlsquo;
 </para>
 <para>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&textrdquo;&linebreak;
 code: <code>``simple-double--three---four----''</code> &linebreak;
@@ -1962,7 +1962,7 @@ asis: <asis>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&
 strong: <strong>&textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&textrdquo;</strong> &linebreak;
 kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
-<para>`<w></w>`simple-double-<w></w>-three&textmdash;four&textmdash;-'<w></w>'&linebreak;
+<para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
 <cindex index="cp"><indexterm index="cp">&textndash;option</indexterm></cindex>
 <cindex index="cp"><indexterm index="cp">&textldquo;</indexterm></cindex>
@@ -1973,16 +1973,16 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
 &arobase;~n <accent type="tilde">n</accent>
 &arobase;^a <accent type="circ">a</accent>
-&arobase;'e <accent type="acute">e</accent>
+&arobase;&textrsquo;e <accent type="acute">e</accent>
 &arobase;=o <accent type="macr">o</accent>
-&arobase;`i <accent type="grave">i</accent>
-&arobase;'&lbrace;e&rbrace; <accent type="acute">e</accent>
-&arobase;'&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
+&arobase;&textlsquo;i <accent type="grave">i</accent>
+&arobase;&textrsquo;&lbrace;e&rbrace; <accent type="acute">e</accent>
+&arobase;&textrsquo;&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
 &arobase;dotless&lbrace;i&rbrace; <dotless>i</dotless>
 &arobase;dotless&lbrace;j&rbrace; <dotless>j</dotless>
-&arobase;`&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
+&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
 &arobase;l&lbrace;&rbrace; &lslash;
-&arobase;,&lbrace;&arobase;'C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
+&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
 &arobase;,c <accent type="cedil">c</accent>
 &arobase;,c&arobase;&quot;u <accent type="cedil">c</accent><accent type="uml">u</accent> &linebreak;
 </para>

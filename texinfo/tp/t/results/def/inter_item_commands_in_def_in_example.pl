@@ -855,7 +855,7 @@ $result_errors{'inter_item_commands_in_def_in_example'} = [
 $result_converted{'plaintext'}->{'inter_item_commands_in_def_in_example'} = '      -- fset: I a g
 
       -- Command: log trap1
-      -- cmde2: id `i\' ule truc
+      -- cmde2: id \'i\' ule truc
 
           In deff item.
 ';

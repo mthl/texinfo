@@ -411,6 +411,8 @@ sub _convert($$;$)
         $result =~ s/\'\'/&textrdquo;/g;
         $result =~ s/---/&textmdash;/g;
         $result =~ s/--/&textndash;/g;
+        $result =~ s/'/&textrsquo;/g;
+        $result =~ s/`/&textlsquo;/g;
       }
     }
     return $result;

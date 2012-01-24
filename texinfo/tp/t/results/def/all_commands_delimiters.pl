@@ -16795,84 +16795,84 @@ $result_converted{'plaintext'}->{'all_commands_delimiters'} = ' -- Command: FORW
  -- Class Option of Window: border-pattern (arg in brace, [something IN
           V--AR, in, b , comma aPREF p]) last
 
- -- Class Option2 of Window: `int\' border-pattern (arg in brace,
+ -- Class Option2 of Window: \'int\' border-pattern (arg in brace,
           [something IN V--AR, in, b , comma aPREF p]) last
 
  -- Operation on windows: expose (arg in brace, [something IN V--AR, in,
           b , comma aPREF p]) last
 
- -- Operation2 on W,indow: `int\' expose (arg in brace, [something IN
+ -- Operation2 on W,indow: \'int\' expose (arg in brace, [something IN
           V--AR, in, b , comma aPREF p]) last
 
- -- Operation5 on Window: `int\' expose type arg
+ -- Operation5 on Window: \'int\' expose type arg
 
- -- Operation3 on W,indow: `int\' e,xpose type arg
+ -- Operation3 on W,indow: \'int\' e,xpose type arg
 
- -- Operation4 on ,Window: `int\' ,expose type arg
+ -- Operation4 on ,Window: \'int\' ,expose type arg
 
- -- Operation6 on W,indow: `int\' e,xpose type arg
+ -- Operation6 on W,indow: \'int\' e,xpose type arg
 
- -- Operation7 on ,Window: `int\' ,expose type arg
+ -- Operation7 on ,Window: \'int\' ,expose type arg
 
- -- Operation13 on W)indow: `int\' e)xpose type arg
+ -- Operation13 on W)indow: \'int\' e)xpose type arg
 
- -- Operation14 on )Window: `int\' )expose type arg
+ -- Operation14 on )Window: \'int\' )expose type arg
 
- -- Operation16 on W)indow: `int\' e)xpose type arg
+ -- Operation16 on W)indow: \'int\' e)xpose type arg
 
- -- Operation17 on )Window: `int\' )expose type arg
+ -- Operation17 on )Window: \'int\' )expose type arg
 
- -- Operation18 on W;indow: `int\' e;xpose type arg
+ -- Operation18 on W;indow: \'int\' e;xpose type arg
 
- -- Operation19 on ;Window: `int\' ;expose type arg
+ -- Operation19 on ;Window: \'int\' ;expose type arg
 
- -- Operation20 on W;indow: `int\' e;xpose type arg
+ -- Operation20 on W;indow: \'int\' e;xpose type arg
 
- -- Operation21 on ;Window: `int\' ;expose type arg
+ -- Operation21 on ;Window: \'int\' ;expose type arg
 
- -- Command on `com\': Window`int\' expose EXP name
+ -- Command on \'com\': Window\'int\' expose EXP name
 
  -- Function: apply function &rest arguments
 
  -- A1: A2 A3 A4
 
- -- `A1\': `A2\' `A3\' `A4\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\'
 
  -- A1: A2 A3 A4
 
- -- `A1\': `A2\' `A3\' `A4\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\'
 
  -- A1: A2 A3 A4 A5
 
- -- `A1\': `A2\' `A3\' `A4\' `A5\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\' \'A5\'
 
  -- A1: A2 A3 A4 A5
 
- -- `A1\': A2 `A3\' `A4\' `A5\'
+ -- \'A1\': A2 \'A3\' \'A4\' \'A5\'
 
  -- A1: A2 A3 A4
 
- -- `A1\': `A2\' `A3\' `A4\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\'
 
  -- A1 of A2: A3 A4 A5
 
- -- `A1\': `A2\' `A3\' `A4\' `A5\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\' \'A5\'
 
  -- A1 of A2: A3 A4 A5 A6
 
- -- `A1\' of `A2\': `A3\' `A4\' `A5\' `A6\'
+ -- \'A1\' of \'A2\': \'A3\' \'A4\' \'A5\' \'A6\'
 
  -- A1 on A2: A3 A4 A5
 
- -- `A1\' on `A2\': `A3\' `A4\' `A5\'
+ -- \'A1\' on \'A2\': \'A3\' \'A4\' \'A5\'
 
  -- A1 on A2: A3 A4 A5 A6
 
- -- `A1\' on `A2\': `A3\' `A4\' `A5\' `A6\'
+ -- \'A1\' on \'A2\': \'A3\' \'A4\' \'A5\' \'A6\'
 
- -- code then var: ret_type fun_name `A1\' A2 `A3\' A4
+ -- code then var: ret_type fun_name \'A1\' A2 \'A3\' A4
 
- -- var then code: ret_type1 fun_name1 A1 `A2\' A3 `A4\'
+ -- var then code: ret_type1 fun_name1 A1 \'A2\' A3 \'A4\'
 ';
 
 1;

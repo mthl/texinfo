@@ -2971,7 +2971,7 @@ $result_errors{'accent'} = [];
 $result_converted{'plaintext'}->{'accent'} = 'top
 ***
 
-should be e`: e` e`
+should be e\': e` e`
 
    should be e\': e\' e\'
 
@@ -2979,7 +2979,7 @@ should be e`: e` e`
 
    should be u": u" u"
 
-   should be i`: i` i`
+   should be i\': i` i`
 
    should be i\': i\' i\'
 
@@ -3029,7 +3029,7 @@ should be e`: e` e`
 
    pounds sterling: #
 
-   should be dotless i`: i`
+   should be dotless i\': i`
 
    should be dotless i\': i\'
 
@@ -3037,7 +3037,7 @@ should be e`: e` e`
 
    should be dotless i": i"
 
-   should be dotless j`: j`
+   should be dotless j\': j`
 
    should be dotless j\': j\'
 
@@ -3131,17 +3131,17 @@ $result_converted{'html_text'}->{'accent'} = '<a name="Top"></a>
 $result_converted{'xml'}->{'accent'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 <top><sectiontitle>top</sectiontitle>
 
-<para>should be e`: <accent type="grave">e</accent> <accent type="grave">e</accent>
+<para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave">e</accent>
 </para>
-<para>should be e\': <accent type="acute">e</accent> <accent type="acute">e</accent>
+<para>should be e&textrsquo;: <accent type="acute">e</accent> <accent type="acute">e</accent>
 </para>
 <para>should be e^: <accent type="circ">e</accent> <accent type="circ">e</accent>
 </para>
 <para>should be u&quot;: <accent type="uml">u</accent> <accent type="uml">u</accent>
 </para>
-<para>should be i`: <accent type="grave">i</accent> <accent type="grave">i</accent>
+<para>should be i&textlsquo;: <accent type="grave">i</accent> <accent type="grave">i</accent>
 </para>
-<para>should be i\': <accent type="acute">i</accent> <accent type="acute">i</accent>
+<para>should be i&textrsquo;: <accent type="acute">i</accent> <accent type="acute">i</accent>
 </para>
 <para>should be i^: <accent type="circ">i</accent> <accent type="circ">i</accent>
 </para>
@@ -3153,7 +3153,7 @@ $result_converted{'xml'}->{'accent'} = '<node name="Top"><nodename>Top</nodename
 </para>
 <para>should be e=: <accent type="macr">e</accent> <accent type="macr">e</accent>
 </para>
-<para>should be e<w>\'</w>\': <accent type="doubleacute">e</accent> <accent type="doubleacute">e</accent>
+<para>should be e<w>&textrsquo;</w>&textrsquo;: <accent type="doubleacute">e</accent> <accent type="doubleacute">e</accent>
 </para>
 <para>should be e.: <accent type="dotaccent">e</accent> <accent type="dotaccent">e</accent>
 </para>
@@ -3190,18 +3190,18 @@ $result_converted{'xml'}->{'accent'} = '<node name="Top"><nodename>Top</nodename
 <para>pounds sterling: &pound;
 </para>
 <!-- arg is command - @dotless{i} is special-cased for HTML -->
-<para>should be dotless i`: <accent type="grave"><dotless>i</dotless></accent>
+<para>should be dotless i&textlsquo;: <accent type="grave"><dotless>i</dotless></accent>
 </para>
-<para>should be dotless i\': <accent type="acute"><dotless>i</dotless></accent>
+<para>should be dotless i&textrsquo;: <accent type="acute"><dotless>i</dotless></accent>
 </para>
 <para>should be dotless i^: <accent type="circ"><dotless>i</dotless></accent>
 </para>
 <para>should be dotless i&quot;: <accent type="uml"><dotless>i</dotless></accent>
 </para>
 <!-- arg is command - @dotless{j} -->
-<para>should be dotless j`: <accent type="grave"><dotless>j</dotless></accent>
+<para>should be dotless j&textlsquo;: <accent type="grave"><dotless>j</dotless></accent>
 </para>
-<para>should be dotless j\': <accent type="acute"><dotless>j</dotless></accent>
+<para>should be dotless j&textrsquo;: <accent type="acute"><dotless>j</dotless></accent>
 </para>
 <para>should be dotless j^: <accent type="circ"><dotless>j</dotless></accent>
 </para>

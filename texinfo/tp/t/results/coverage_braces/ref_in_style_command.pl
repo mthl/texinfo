@@ -99,7 +99,7 @@ $result_errors{'ref_in_style_command'} = [];
 
 
 
-$result_converted{'plaintext'}->{'ref_in_style_command'} = '`*note (manula)other node::\'.
+$result_converted{'plaintext'}->{'ref_in_style_command'} = '\'*note (manula)other node::\'.
 ';
 
 

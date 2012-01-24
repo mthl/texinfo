@@ -290,7 +290,7 @@ $result_errors{'table_in_code'} = [
 
 
 
-$result_converted{'plaintext'}->{'table_in_code'} = '` in code \'
+$result_converted{'plaintext'}->{'table_in_code'} = '\' in code \'
 ';
 
 1;

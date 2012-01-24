@@ -2775,23 +2775,23 @@ $result_errors{'image_formatting'} = [];
 
 
 
-$result_converted{'plaintext'}->{'image_formatting'} = '`@image{f--ile}\' [Image description""\\.] `@image{f--ile,l--i}\' [Image description""\\.] `@image{f--ile,,l--e}\' [Image description""\\.]
-`@image{f--ile,,,alt}\' [Image description""\\.] `@image{f--ile,,,,e-d-xt}\' [Image description""\\.]
-`@image{f--ile,aze,az,alt,e--xt}\' [Image description""\\.] `@image{f-ile,aze,,a--lt}\' [a-lt]
-`@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt] [aaa
+$result_converted{'plaintext'}->{'image_formatting'} = '\'@image{f--ile}\' [Image description""\\.] \'@image{f--ile,l--i}\' [Image description""\\.] \'@image{f--ile,,l--e}\' [Image description""\\.]
+\'@image{f--ile,,,alt}\' [Image description""\\.] \'@image{f--ile,,,,e-d-xt}\' [Image description""\\.]
+\'@image{f--ile,aze,az,alt,e--xt}\' [Image description""\\.] \'@image{f-ile,aze,,a--lt}\' [a-lt]
+\'@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt] [aaa
 bbb
 ccc] [aaa
 bbb
 ccc]
 
-     `@image{f--ile}\' [Image description""\\.]
-     `@image{f--ile,l--i}\' [Image description""\\.]
-     `@image{f--ile,,l--e}\' [Image description""\\.]
-     `@image{f--ile,,,alt}\' [Image description""\\.]
-     `@image{f--ile,,,,e-d-xt}\' [Image description""\\.]
-     `@image{f--ile,aze,az,alt,e--xt}\' [Image description""\\.]
-     `@image{f-ile,aze,,a--lt}\' [a-lt]
-     `@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt]
+     \'@image{f--ile}\' [Image description""\\.]
+     \'@image{f--ile,l--i}\' [Image description""\\.]
+     \'@image{f--ile,,l--e}\' [Image description""\\.]
+     \'@image{f--ile,,,alt}\' [Image description""\\.]
+     \'@image{f--ile,,,,e-d-xt}\' [Image description""\\.]
+     \'@image{f--ile,aze,az,alt,e--xt}\' [Image description""\\.]
+     \'@image{f-ile,aze,,a--lt}\' [a-lt]
+     \'@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt]
      [aaa
 bbb
 ccc] [aaa
@@ -2985,23 +2985,23 @@ $result_converted{'info'}->{'image_formatting'} = 'This is , produced by tp vers
 
 File: ,  Node: Top,  Up: (dir)
 
-`@image{f--ile}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ] `@image{f--ile,l--i}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ] `@image{f--ile,,l--e}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
-`@image{f--ile,,,alt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ] `@image{f--ile,,,,e-d-xt}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
-`@image{f--ile,aze,az,alt,e--xt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ] `@image{f-ile,aze,,a--lt}\' [a-lt]
-`@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt] [aaa
+\'@image{f--ile}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ] \'@image{f--ile,l--i}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ] \'@image{f--ile,,l--e}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
+\'@image{f--ile,,,alt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ] \'@image{f--ile,,,,e-d-xt}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
+\'@image{f--ile,aze,az,alt,e--xt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ] \'@image{f-ile,aze,,a--lt}\' [a-lt]
+\'@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt] [aaa
 bbb
 ccc] [aaa
 bbb
 ccc]
 
-     `@image{f--ile}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
-     `@image{f--ile,l--i}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
-     `@image{f--ile,,l--e}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
-     `@image{f--ile,,,alt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
-     `@image{f--ile,,,,e-d-xt}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
-     `@image{f--ile,aze,az,alt,e--xt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
-     `@image{f-ile,aze,,a--lt}\' [a-lt]
-     `@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt]
+     \'@image{f--ile}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
+     \'@image{f--ile,l--i}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
+     \'@image{f--ile,,l--e}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
+     \'@image{f--ile,,,alt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
+     \'@image{f--ile,,,,e-d-xt}\'  [image src="f--ile.png" text="[Image description\\"\\"\\\\.]" ]
+     \'@image{f--ile,aze,az,alt,e--xt}\'  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
+     \'@image{f-ile,aze,,a--lt}\' [a-lt]
+     \'@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}\' [alt]
      [aaa
 bbb
 ccc] [aaa

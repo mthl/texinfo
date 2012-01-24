@@ -2518,7 +2518,7 @@ $result_converted{'plaintext'}->{'def'} = ' -- c--ategory: d--effn_name a--rgume
  -- Command: log trap1
  -- Command: log trap2
  -- cmde: id ule truc
- -- cmde2: id `i\' ule truc
+ -- cmde2: id \'i\' ule truc
  -- : machin
  -- : bidule machin
  -- truc: machin

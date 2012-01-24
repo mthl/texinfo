@@ -16883,84 +16883,84 @@ File: ,  Node: Top,  Up: (dir)
  -- Class Option of Window: border-pattern (arg in brace, [something IN
           V--AR, in, b , comma aPREF p]) last
 
- -- Class Option2 of Window: `int\' border-pattern (arg in brace,
+ -- Class Option2 of Window: \'int\' border-pattern (arg in brace,
           [something IN V--AR, in, b , comma aPREF p]) last
 
  -- Operation on windows: expose (arg in brace, [something IN V--AR, in,
           b , comma aPREF p]) last
 
- -- Operation2 on W,indow: `int\' expose (arg in brace, [something IN
+ -- Operation2 on W,indow: \'int\' expose (arg in brace, [something IN
           V--AR, in, b , comma aPREF p]) last
 
- -- Operation5 on Window: `int\' expose type arg
+ -- Operation5 on Window: \'int\' expose type arg
 
- -- Operation3 on W,indow: `int\' e,xpose type arg
+ -- Operation3 on W,indow: \'int\' e,xpose type arg
 
- -- Operation4 on ,Window: `int\' ,expose type arg
+ -- Operation4 on ,Window: \'int\' ,expose type arg
 
- -- Operation6 on W,indow: `int\' e,xpose type arg
+ -- Operation6 on W,indow: \'int\' e,xpose type arg
 
- -- Operation7 on ,Window: `int\' ,expose type arg
+ -- Operation7 on ,Window: \'int\' ,expose type arg
 
- -- Operation13 on W)indow: `int\' e)xpose type arg
+ -- Operation13 on W)indow: \'int\' e)xpose type arg
 
- -- Operation14 on )Window: `int\' )expose type arg
+ -- Operation14 on )Window: \'int\' )expose type arg
 
- -- Operation16 on W)indow: `int\' e)xpose type arg
+ -- Operation16 on W)indow: \'int\' e)xpose type arg
 
- -- Operation17 on )Window: `int\' )expose type arg
+ -- Operation17 on )Window: \'int\' )expose type arg
 
- -- Operation18 on W;indow: `int\' e;xpose type arg
+ -- Operation18 on W;indow: \'int\' e;xpose type arg
 
- -- Operation19 on ;Window: `int\' ;expose type arg
+ -- Operation19 on ;Window: \'int\' ;expose type arg
 
- -- Operation20 on W;indow: `int\' e;xpose type arg
+ -- Operation20 on W;indow: \'int\' e;xpose type arg
 
- -- Operation21 on ;Window: `int\' ;expose type arg
+ -- Operation21 on ;Window: \'int\' ;expose type arg
 
- -- Command on `com\': Window`int\' expose EXP name
+ -- Command on \'com\': Window\'int\' expose EXP name
 
  -- Function: apply function &rest arguments
 
  -- A1: A2 A3 A4
 
- -- `A1\': `A2\' `A3\' `A4\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\'
 
  -- A1: A2 A3 A4
 
- -- `A1\': `A2\' `A3\' `A4\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\'
 
  -- A1: A2 A3 A4 A5
 
- -- `A1\': `A2\' `A3\' `A4\' `A5\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\' \'A5\'
 
  -- A1: A2 A3 A4 A5
 
- -- `A1\': A2 `A3\' `A4\' `A5\'
+ -- \'A1\': A2 \'A3\' \'A4\' \'A5\'
 
  -- A1: A2 A3 A4
 
- -- `A1\': `A2\' `A3\' `A4\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\'
 
  -- A1 of A2: A3 A4 A5
 
- -- `A1\': `A2\' `A3\' `A4\' `A5\'
+ -- \'A1\': \'A2\' \'A3\' \'A4\' \'A5\'
 
  -- A1 of A2: A3 A4 A5 A6
 
- -- `A1\' of `A2\': `A3\' `A4\' `A5\' `A6\'
+ -- \'A1\' of \'A2\': \'A3\' \'A4\' \'A5\' \'A6\'
 
  -- A1 on A2: A3 A4 A5
 
- -- `A1\' on `A2\': `A3\' `A4\' `A5\'
+ -- \'A1\' on \'A2\': \'A3\' \'A4\' \'A5\'
 
  -- A1 on A2: A3 A4 A5 A6
 
- -- `A1\' on `A2\': `A3\' `A4\' `A5\' `A6\'
+ -- \'A1\' on \'A2\': \'A3\' \'A4\' \'A5\' \'A6\'
 
- -- code then var: ret_type fun_name `A1\' A2 `A3\' A4
+ -- code then var: ret_type fun_name \'A1\' A2 \'A3\' A4
 
- -- var then code: ret_type1 fun_name1 A1 `A2\' A3 `A4\'
+ -- var then code: ret_type1 fun_name1 A1 \'A2\' A3 \'A4\'
 
 Functions
 =========
@@ -16975,13 +16975,13 @@ Functions
 * ;expose on ;Window:                    Top.                 (line  59)
 * ;expose on ;Window <1>:                Top.                 (line  63)
 * A2:                                    Top.                 (line  69)
-* `A2\':                                  Top.                 (line  71)
+* \'A2\':                                  Top.                 (line  71)
 * A3:                                    Top.                 (line  77)
-* `A3\':                                  Top.                 (line  79)
+* \'A3\':                                  Top.                 (line  79)
 * A3 on A2:                              Top.                 (line  97)
-* `A3\' on `A2\':                          Top.                 (line  99)
+* \'A3\' on \'A2\':                          Top.                 (line  99)
 * A4 on A2:                              Top.                 (line 101)
-* `A4\' on `A2\':                          Top.                 (line 103)
+* \'A4\' on \'A2\':                          Top.                 (line 103)
 * apply:                                 Top.                 (line  67)
 * e)xpose on W)indow:                    Top.                 (line  49)
 * e)xpose on W)indow <1>:                Top.                 (line  53)
@@ -16989,7 +16989,7 @@ Functions
 * e,xpose on W,indow <1>:                Top.                 (line  45)
 * e;xpose on W;indow:                    Top.                 (line  57)
 * e;xpose on W;indow <1>:                Top.                 (line  61)
-* expose on `com\':                       Top.                 (line  65)
+* expose on \'com\':                       Top.                 (line  65)
 * expose on W,indow:                     Top.                 (line  36)
 * expose on Window:                      Top.                 (line  39)
 * expose on windows:                     Top.                 (line  33)
@@ -17008,8 +17008,8 @@ Types
 * Menu:
 
 * A2:                                    Top.                  (line 85)
-* `A2\':                                  Top.                  (line 87)
-* `A2\' <1>:                              Top.                  (line 91)
+* \'A2\':                                  Top.                  (line 87)
+* \'A2\' <1>:                              Top.                  (line 91)
 * pair:                                  Top.                  (line 24)
 
 Variables
@@ -17019,12 +17019,12 @@ Variables
 * Menu:
 
 * A2:                                    Top.                  (line 73)
-* `A2\':                                  Top.                  (line 75)
+* \'A2\':                                  Top.                  (line 75)
 * A3:                                    Top.                  (line 81)
-* `A3\':                                  Top.                  (line 83)
+* \'A3\':                                  Top.                  (line 83)
 * A3 <1>:                                Top.                  (line 89)
 * A4 of A2:                              Top.                  (line 93)
-* `A4\' of `A2\':                          Top.                  (line 95)
+* \'A4\' of \'A2\':                          Top.                  (line 95)
 * border-pattern:                        Top.                  (line 27)
 * border-pattern of Window:              Top.                  (line 30)
 * enable:                                Top.                  (line 21)
