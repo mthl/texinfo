@@ -12,8 +12,9 @@ modulesdir = $(pkgdatadir)/Pod-Simple-Texinfo/Pod/Simple/
 dist_modules_DATA = \
  lib/Pod/Simple/Texinfo.pm
 
-pod2texi: pod2texi.pl
-	sed -e 's,[@]datadir[@],$(datadir),g' $(srcdir)/$< >$@
+pod2texi: pod2texi.pl Makefile
+	sed -e 's,[@]datadir[@],$(datadir),g' \
+	-e 's,[@]PACKAGE[@],$(PACKAGE),g' $(srcdir)/$< >$@
 	chmod a+x $@
 
 TESTS = prove.sh

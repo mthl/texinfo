@@ -20,19 +20,23 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 use strict;
-use Pod::Simple::Texinfo;
-
 use Getopt::Long qw(GetOptions);
 
 Getopt::Long::Configure("gnu_getopt");
 
 BEGIN
 {
-  my $texinfolibdir = '@datadir@/Pod-Simple-Texinfo';
-  unshift @INC, ($texinfolibdir)
-    if ($texinfolibdir ne ''
-        and $texinfolibdir ne '@' .'datadir@/Pod-Simple-Texinfo');
+  if ('@datadir@' ne '@' . 'datadir@') {
+    my $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
+    my $datadir = eval '"@datadir@"';
+    unshift @INC, ("$pkgdatadir/Pod-Simple-Texinfo",
+        "$pkgdatadir",
+        "$pkgdatadir/lib/libintl-perl/lib", 
+        "$pkgdatadir/lib/Unicode-EastAsianWidth/lib",
+        "$pkgdatadir/lib/Text-Unidecode/lib");
+  }
 }
+use Pod::Simple::Texinfo;
 
 {
 # A fake package to be able to use Pod::Simple::PullParser without generating
@@ -51,9 +55,15 @@ sub run(){};
 my $real_command_name = $0;
 $real_command_name =~ s/.*\///;
 
+# placeholder for string translations, not used for now
+sub __($)
+{
+  return $_[0];
+}
+
 sub pod2texi_help()
 {
-  print "Usage: pod2texi [OPTION]... POD-FILE...
+  print __("Usage: pod2texi [OPTION]... POD-FILE...
 
 Translate Pod to Texinfo.  If the base level is higher than 0, 
 a main manual including all the files is done otherwise all
@@ -64,7 +74,7 @@ Options:
     --unnumbered-sections   use unumbered sections.
     --output=NAME           output name for the first or the main manual.
     --top                   top for the main manual.
-    --version               display version information and exit.\n";
+    --version               display version information and exit.\n");
 }
 
 my $base_level = 0;
@@ -91,8 +101,16 @@ exit 1 if (!$result_options);
 my @manuals;
 my @all_manual_names;
 
+my @input_files = @ARGV;
+
+# use STDIN if not a tty, like makeinfo does
+@input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
+die sprintf(__("%s: missing file argument.\n"), $real_command_name)
+   .sprintf(__("Try `%s --help' for more information.\n"), $real_command_name)
+     unless (scalar(@input_files) >= 1);
+
 # First gather all the manual names
-foreach my $file (@ARGV) {
+foreach my $file (@input_files) {
   # not really used, only the manual name is used.
   my $parser = Pod::Simple::PullParserRun->new();
   $parser->parse_file($file);
@@ -108,7 +126,7 @@ foreach my $file (@ARGV) {
 
 my $file_nr = 0;
 my @included;
-foreach my $file (@ARGV) {
+foreach my $file (@input_files) {
   my $outfile;
   my $name = shift @all_manual_names;
   if ($base_level == 0 and !$file_nr and defined($output)) {
