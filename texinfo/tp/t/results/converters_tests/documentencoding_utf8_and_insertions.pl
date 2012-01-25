@@ -57,7 +57,7 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '-- --- \'\' `` '
+          'text' => '-- --- \'\' `` ` \' '
         },
         {
           'args' => [
@@ -132,7 +132,7 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '-- --- \'\' `` '
+              'text' => '-- --- \'\' `` ` \' '
             },
             {
               'args' => [
@@ -281,53 +281,53 @@ $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'parent'} =
 
 $result_texis{'documentencoding_utf8_and_insertions'} = '@documentencoding utf-8
 
--- --- \'\' `` @code{in code}. @~e.
+-- --- \'\' `` ` \' @code{in code}. @~e.
 
 @example
--- --- \'\' `` @code{in code}. @~e.
+-- --- \'\' `` ` \' @code{in code}. @~e.
 @end example
 ';
 
 
 $result_texts{'documentencoding_utf8_and_insertions'} = '
-- -- " " in code. e~.
+- -- " " ` \' in code. e~.
 
--- --- \'\' `` in code. e~.
+-- --- \'\' `` ` \' in code. e~.
 ';
 
 $result_errors{'documentencoding_utf8_and_insertions'} = [];
 
 
 
-$result_converted{'plaintext'}->{'documentencoding_utf8_and_insertions'} = '– — ” “ ‘in code’.  ẽ.
+$result_converted{'plaintext'}->{'documentencoding_utf8_and_insertions'} = '– — ” “ ‘ ’ ‘in code’.  ẽ.
 
-     -- --- \'\' `` ‘in code’. ẽ.
+     -- --- \'\' `` ` \' ‘in code’. ẽ.
 ';
 
 
 $result_converted{'html_text'}->{'documentencoding_utf8_and_insertions'} = '
-<p>&ndash; &mdash; &rdquo; &ldquo; <code>in code</code>. &#7869;.
+<p>&ndash; &mdash; &rdquo; &ldquo; &lsquo; &rsquo; <code>in code</code>. &#7869;.
 </p>
 <div class="example">
-<pre class="example">-- --- \'\' `` <code>in code</code>. &#7869;.
+<pre class="example">-- --- \'\' `` ` \' <code>in code</code>. &#7869;.
 </pre></div>
 ';
 
 
 $result_converted{'xml'}->{'documentencoding_utf8_and_insertions'} = '<documentencoding encoding="utf-8">utf-8</documentencoding>
 
-<para>&textndash; &textmdash; &textrdquo; &textldquo; <code>in code</code>. <accent type="tilde">e</accent>.
+<para>&textndash; &textmdash; &textrdquo; &textldquo; &textlsquo; &textrsquo; <code>in code</code>. <accent type="tilde">e</accent>.
 </para>
 <example>
-<pre xml:space="preserve">-- --- \'\' `` <code>in code</code>. <accent type="tilde">e</accent>.
+<pre xml:space="preserve">-- --- \'\' `` ` \' <code>in code</code>. <accent type="tilde">e</accent>.
 </pre></example>
 ';
 
 
 $result_converted{'docbook'}->{'documentencoding_utf8_and_insertions'} = '
-<para>&#8211; &#8212; &#8221; &#8220; <literal>in code</literal>. &#7869;.
+<para>&#8211; &#8212; &#8221; &#8220; &#8216; &#8217; <literal>in code</literal>. &#7869;.
 </para>
-<screen>-- --- \'\' `` <literal>in code</literal>. &#7869;.
+<screen>-- --- \'\' `` ` \' <literal>in code</literal>. &#7869;.
 </screen>';
 
 1;

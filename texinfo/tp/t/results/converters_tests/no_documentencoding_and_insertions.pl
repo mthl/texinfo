@@ -17,7 +17,7 @@ $result_trees{'no_documentencoding_and_insertions'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '-- --- \'\' `` '
+          'text' => '-- --- \'\' `` ` \' '
         },
         {
           'args' => [
@@ -92,7 +92,7 @@ $result_trees{'no_documentencoding_and_insertions'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '-- --- \'\' `` '
+              'text' => '-- --- \'\' `` ` \' '
             },
             {
               'args' => [
@@ -234,52 +234,52 @@ $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'extra'}{'end
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'parent'} = $result_trees{'no_documentencoding_and_insertions'};
 
 $result_texis{'no_documentencoding_and_insertions'} = '
--- --- \'\' `` @code{in code}. @~e.
+-- --- \'\' `` ` \' @code{in code}. @~e.
 
 @example
--- --- \'\' `` @code{in code}. @~e.
+-- --- \'\' `` ` \' @code{in code}. @~e.
 @end example
 ';
 
 
 $result_texts{'no_documentencoding_and_insertions'} = '
-- -- " " in code. e~.
+- -- " " ` \' in code. e~.
 
--- --- \'\' `` in code. e~.
+-- --- \'\' `` ` \' in code. e~.
 ';
 
 $result_errors{'no_documentencoding_and_insertions'} = [];
 
 
 
-$result_converted{'plaintext'}->{'no_documentencoding_and_insertions'} = '- -- " " \'in code\'.  e~.
+$result_converted{'plaintext'}->{'no_documentencoding_and_insertions'} = '- -- " " \' \' \'in code\'.  e~.
 
-     -- --- \'\' `` \'in code\'. e~.
+     -- --- \'\' `` ` \' \'in code\'. e~.
 ';
 
 
 $result_converted{'html_text'}->{'no_documentencoding_and_insertions'} = '
-<p>&ndash; &mdash; &rdquo; &ldquo; <code>in code</code>. &#7869;.
+<p>&ndash; &mdash; &rdquo; &ldquo; &lsquo; &rsquo; <code>in code</code>. &#7869;.
 </p>
 <div class="example">
-<pre class="example">-- --- \'\' `` <code>in code</code>. &#7869;.
+<pre class="example">-- --- \'\' `` ` \' <code>in code</code>. &#7869;.
 </pre></div>
 ';
 
 
 $result_converted{'xml'}->{'no_documentencoding_and_insertions'} = '
-<para>&textndash; &textmdash; &textrdquo; &textldquo; <code>in code</code>. <accent type="tilde">e</accent>.
+<para>&textndash; &textmdash; &textrdquo; &textldquo; &textlsquo; &textrsquo; <code>in code</code>. <accent type="tilde">e</accent>.
 </para>
 <example>
-<pre xml:space="preserve">-- --- \'\' `` <code>in code</code>. <accent type="tilde">e</accent>.
+<pre xml:space="preserve">-- --- \'\' `` ` \' <code>in code</code>. <accent type="tilde">e</accent>.
 </pre></example>
 ';
 
 
 $result_converted{'docbook'}->{'no_documentencoding_and_insertions'} = '
-<para>&#8211; &#8212; &#8221; &#8220; <literal>in code</literal>. &#7869;.
+<para>&#8211; &#8212; &#8221; &#8220; &#8216; &#8217; <literal>in code</literal>. &#7869;.
 </para>
-<screen>-- --- \'\' `` <literal>in code</literal>. &#7869;.
+<screen>-- --- \'\' `` ` \' <literal>in code</literal>. &#7869;.
 </screen>';
 
 1;

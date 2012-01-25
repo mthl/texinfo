@@ -174,41 +174,7 @@ my $top_in_ref_text =
 @code{@@inforef@{Top,,file name@}} @inforef{Top,,file name}
 ';
 
-my @test_cases = (
-['accentenc',
-$latin1_accents_text
-],
-['weird_accents',
-$weird_accents_text
-],
-['weird_accents_disable_encoding',
-$weird_accents_text, {}, {'ENABLE_ENCODING' => 0}
-],
-['accent',
-$accents_text
-],
-['accent_with_text',
-'@u{--a} @dotless{--b} @^{--@dotless{i}} @^{--@dotless{j}} @^{--a}
-'],
-['empty_accent',
-'@`{}
-'],
-['some_at_commands_in_ref_nodes',
-'
-@node Top
-@top Top
-
-@menu
-* A @sc{sc @~n @aa{} @TeX{}} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}::
-@end menu
-
-@node A @sc{sc @~n @aa{} @TeX{}} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}
-@chapter  A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}
-
-see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotless i trema @"{@dotless{i}} @`{@=E} and exclamdown @exclamdown{},,,manual}.
-'],
-['at_commands_in_refs',
-'@node Top
+my $at_commands_in_refs_text = '@node Top
 @top Top
 
 @menu
@@ -223,9 +189,10 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 * @AA{} @ae{} @oe{} @AE{} @OE{} @o{} @O{} @ss{} @l{} @L{} @DH{} @dh{} @TH{} @th{}::
 * @"{a} @~{e} @^{@dotless{i}} @^{a} @`{a} @\'e @,{c} @={e} @ringaccent{e} @H{e} @ogonek{e}::
 * @dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}::
+* @dotless{i} @`{@=E} @,{@\'C}::
 * @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}::
 * @guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}::
-* `` \'\' --- --::
+* `` \'\' --- -- ` \'::
 * @acronym{AAA, fff} @acronym{AAA} @acronym{BBB}::
 * @abbr{CCC, rrr} @abbr{CCC} @abbr{DDD}::
 * @email{someone@@somewher, the someone} @email{no_explain@@there}::
@@ -272,14 +239,17 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 @node @dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}
 @chapter @dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}
 
+@node @dotless{i} @`{@=E} @,{@\'C}
+@chapter @dotless{i} @`{@=E} @,{@\'C}
+
 @node @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}
 @chapter @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}
 
 @node @guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}
 @chapter @guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}
 
-@node `` \'\' --- --
-@chapter `` \'\' --- --
+@node `` \'\' --- -- ` \'
+@chapter `` \'\' --- -- ` \'
 
 @node @acronym{AAA, fff} @acronym{AAA} @acronym{BBB}
 @chapter @acronym{AAA, fff} @acronym{AAA} @acronym{BBB}
@@ -334,9 +304,10 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 @ref{@AA{} @ae{} @oe{} @AE{} @OE{} @o{} @O{} @ss{} @l{} @L{} @DH{} @dh{} @TH{} @th{}}
 @ref{@"{a} @~{e} @^{@dotless{i}} @^{a} @`{a} @\'e @,{c} @={e} @ringaccent{e} @H{e} @ogonek{e}}
 @ref{@dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}}
+@ref{@dotless{i} @`{@=E} @,{@\'C}}
 @ref{@quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}}
 @ref{@guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}}
-@ref{`` \'\' --- --}
+@ref{`` \'\' --- -- ` \'}
 @ref{@acronym{AAA, fff} @acronym{AAA} @acronym{BBB}}
 @ifnottex
 @ref{@abbr{CCC, rrr} @abbr{CCC} @abbr{DDD}}
@@ -354,7 +325,44 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 @ref{@url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}}
 
 @bye
-', {}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
+';
+
+my @test_cases = (
+['accentenc',
+$latin1_accents_text
+],
+['weird_accents',
+$weird_accents_text
+],
+['weird_accents_disable_encoding',
+$weird_accents_text, {}, {'ENABLE_ENCODING' => 0}
+],
+['accent',
+$accents_text
+],
+['accent_with_text',
+'@u{--a} @dotless{--b} @^{--@dotless{i}} @^{--@dotless{j}} @^{--a}
+'],
+['empty_accent',
+'@`{}
+'],
+['some_at_commands_in_ref_nodes',
+'
+@node Top
+@top Top
+
+@menu
+* A @sc{sc @~n @aa{} @TeX{}} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}::
+@end menu
+
+@node A @sc{sc @~n @aa{} @TeX{}} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}
+@chapter  A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}
+
+see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotless i trema @"{@dotless{i}} @`{@=E} and exclamdown @exclamdown{},,,manual}.
+'],
+['at_commands_in_refs',
+$at_commands_in_refs_text, 
+{}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
 ['refs_formatting',
 '@node chapter
 @chapter chapter
@@ -483,18 +491,18 @@ sp after para
 ['documentencoding_utf8_and_insertions',
 '@documentencoding utf-8
 
--- --- \'\' `` @code{in code}. @~e.
+-- --- \'\' `` ` \' @code{in code}. @~e.
 
 @example
--- --- \'\' `` @code{in code}. @~e.
+-- --- \'\' `` ` \' @code{in code}. @~e.
 @end example
 '],
 ['no_documentencoding_and_insertions',
 '
--- --- \'\' `` @code{in code}. @~e.
+-- --- \'\' `` ` \' @code{in code}. @~e.
 
 @example
--- --- \'\' `` @code{in code}. @~e.
+-- --- \'\' `` ` \' @code{in code}. @~e.
 @end example
 '],
 ['test_deftypefnnewline',
