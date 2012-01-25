@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.30 2012-01-25 08:16:08 pertusus Exp $
+# $Id: Makefile.am,v 1.31 2012-01-25 08:31:26 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -126,6 +126,7 @@ test_files = \
  t/test_utils.pl \
  t/input_files/delcomment.texi \
  t/input_files/char_latin1_utf8_in_refs.texi \
+ t/input_files/char_latin1_latin1_in_refs.texi \
  #
 
 relative_include_dir = t/include_dir

@@ -673,6 +673,9 @@ my @encoding_file_tests = (
 ['char_latin1_utf8_in_refs',
 undef, {'test_file' => 'char_latin1_utf8_in_refs.texi'}
 ],
+['char_latin1_latin1_in_refs',
+undef, {'test_file' => 'char_latin1_latin1_in_refs.texi'}
+],
 );
 
 my %info_tests = (
