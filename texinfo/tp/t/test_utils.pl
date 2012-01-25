@@ -91,6 +91,7 @@ ok(1);
 our %formats = (
   'plaintext' => \&convert_to_plaintext,
   'info' => \&convert_to_info,
+  'file_info' => \&convert_to_info,
   'html' => \&convert_to_html,
   'file_html' => \&convert_to_html,
   'html_text' => \&convert_to_html,
@@ -413,11 +414,10 @@ sub convert_to_info($$$$$;$)
   my $converter = 
      Texinfo::Convert::Info->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
-                                         'OUTFILE' => '',
                                          'output_format' => 'info',
                                           %$converter_options });
   my $result = $converter->output($tree);
-  die if (!defined($result));
+  die if (!defined($converter_options->{'SUBDIR'}) and !defined($result));
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }

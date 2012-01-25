@@ -115,6 +115,7 @@ t/init/redefine_need.init
 t/init/t2h_singular.init
 t/init/test_directions.init
 t/init/test_renamed_nodes.init
+t/input_files/char_latin1_utf8_in_refs.texi
 t/input_files/delcomment.texi
 t/languages.t
 t/manual_tree.pl
@@ -172,6 +173,15 @@ t/results/converters_tests/accentenc_no_iso_no_entity.pl
 t/results/converters_tests/accentenc.pl
 t/results/converters_tests/accent.pl
 t/results/converters_tests/accent_with_text.pl
+t/results/converters_tests/at_commands_in_refs.pl
+t/results/converters_tests/char_latin1_utf8_in_refs.pl
+t/results/converters_tests/char_latin1_utf8_in_refs/res_html/a-e-i-o-u-A-E-I-O-U.html
+t/results/converters_tests/char_latin1_utf8_in_refs/res_html/a-e-i-o-u-y-A-E-I-O-U.html
+t/results/converters_tests/char_latin1_utf8_in_refs/res_html/a-e-u.html
+t/results/converters_tests/char_latin1_utf8_in_refs/res_html/c.html
+t/results/converters_tests/char_latin1_utf8_in_refs/res_html/e.html
+t/results/converters_tests/char_latin1_utf8_in_refs/res_html/index.html
+t/results/converters_tests/char_latin1_utf8_in_refs/res_info/char_latin1_utf8_in_refs.info
 t/results/converters_tests/complex_nestings.pl
 t/results/converters_tests/documentencoding_utf8_and_insertions.pl
 t/results/converters_tests/empty_accent.pl
@@ -187,6 +197,7 @@ t/results/converters_tests/raw_block_commands_expand_tex.pl
 t/results/converters_tests/raw_block_commands.pl
 t/results/converters_tests/ref_error_formatting.pl
 t/results/converters_tests/refs_formatting.pl
+t/results/converters_tests/some_at_commands_in_ref_nodes.pl
 t/results/converters_tests/sp_in_example.pl
 t/results/converters_tests/table_in_display_in_example.pl
 t/results/converters_tests/table_in_example_in_display.pl
@@ -813,7 +824,6 @@ t/results/sectioning/anchor_in_footnote.pl
 t/results/sectioning/anchor_in_footnote_separate.pl
 t/results/sectioning/anchor_zero.pl
 t/results/sectioning/at_commands_in_node.pl
-t/results/sectioning/at_commands_in_refs.pl
 t/results/sectioning/chapter_before_and_after_part.pl
 t/results/sectioning/chapter_before_part.pl
 t/results/sectioning/chapter_between_nodes.pl
@@ -909,7 +919,6 @@ t/results/sectioning/setcontentsaftertitlepage.pl
 t/results/sectioning/setfilename_on_top_and_after_node.pl
 t/results/sectioning/setshortcontentsaftertitlepage.pl
 t/results/sectioning/shortcontents.pl
-t/results/sectioning/some_at_commands_in_ref_nodes.pl
 t/results/sectioning/space_in_node.pl
 t/results/sectioning/top_chapter_sections.pl
 t/results/sectioning/top_no_argument_and_content.pl

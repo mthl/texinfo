@@ -669,6 +669,12 @@ $top_in_ref_text,
 {}, {'KEEP_TOP_EXTERNAL_REF' => 1}],
 );
 
+my @encoding_file_tests = (
+['char_latin1_utf8_in_refs',
+undef, {'test_file' => 'char_latin1_utf8_in_refs.texi'}
+],
+);
+
 my %info_tests = (
  'image_with_spaces' => 1,
  'image_extension' => 1,
@@ -700,10 +706,16 @@ foreach my $test (@html_text_cases) {
   push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
+foreach my $test (@encoding_file_tests) {
+  push @{$test->[2]->{'test_formats'}}, 'file_html';
+  push @{$test->[2]->{'test_formats'}}, 'file_info';
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('converters_tests', [@test_cases, @html_text_cases], $arg_test_case,
-   $arg_generate, $arg_debug);
+run_all ('converters_tests', [@test_cases, @encoding_file_tests, 
+                              @html_text_cases], 
+   $arg_test_case, $arg_generate, $arg_debug);
 
 1;
 
