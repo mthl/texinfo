@@ -1,3 +1,8 @@
+2012-01-25  Patrice Dumas  <pertusus@free.fr>
+
+	* util/texi2html: new script to convert Texinfo to HTML, setting the 
+	default style to be the texi2html style.
+
 2012-01-24  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/Plaintext.pm, tp/Texinfo/Convert/Unicode.pm,

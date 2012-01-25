@@ -1,0 +1,23 @@
+#! /bin/sh
+# $Id: texi2html,v 1.1 2012-01-25 20:16:48 pertusus Exp $
+# Copyright 2012 Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# Original author: Patrice Dumas.
+ 
+# Convert Texinfo to HTML, setting the default style to be the texi2html
+# style.
+
+# It is not fully compatible with texi2html.  There is no possibility to 
+# split indices anymore.  Command line processing and options have also 
+# somehow changed, and the customization API is new.
+#
+exec texi2any --set-init-variable TEXTCONTENT=1 "$@"
+
