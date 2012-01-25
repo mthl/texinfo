@@ -20892,12 +20892,7 @@ $result_errors{'at_commands_in_refs'} = [];
 
 
 
-$result_converted{'info'}->{'at_commands_in_refs'} = 'This is , produced by tp version from .
-
-
-File: ,  Node: Top,  Next: { },  Up: (dir)
-
-Top
+$result_converted{'plaintext'}->{'at_commands_in_refs'} = 'Top
 ***
 
 * Menu:
@@ -20920,7 +20915,7 @@ Top
 * AAA (fff) AAA BBB::
 * CCC (rrr) CCC DDD::
 * the someone <someone@somewher> <no_explain@there>::
-* [f--ile1]   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]::
+* [f--ile1]  [Image description""\\.]::
 *  @ {} . ::
 * \'cite asis\' in @w b in r SC *str* t VAR "dfn" i::
 * \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'::
@@ -20929,157 +20924,79 @@ Top
 * <indicateurl>::
 * \'http://somewhere_aaa\' text (url) ls::
 
-
-File: ,  Node: { },  Next:     !
-. . ? @,  Prev: Top,  Up: Top
-
 1 { }
 *****
-
-
-File: ,  Node:     !
-. . ? @,  Next: @ { } \\ #,  Prev: { },  Up: Top
 
 2     !
 . . ? @
 ***************
 
-
-File: ,  Node: @ { } \\ #,  Next: LaTeX TeX * , (C) ... ...,  Prev:     !
-. . ? @,  Up: Top
-
 3 @ { } \\ #
 ***********
-
-
-File: ,  Node: LaTeX TeX * , (C) ... ...,  Next: == error-> Euro ! ==> -,  Prev: @ { } \\ #,  Up: Top
 
 4 LaTeX TeX * , (C) ... ...
 ***************************
 
-
-File: ,  Node: == error-> Euro ! ==> -,  Next: >= <= ->,  Prev: LaTeX TeX * , (C) ... ...,  Up: Top
-
 5 == error-> Euro ! ==> -
 *************************
-
-
-File: ,  Node: >= <= ->,  Next: a o -!- # -| ? (R),  Prev: == error-> Euro ! ==> -,  Up: Top
 
 6 >= <= ->
 **********
 
-
-File: ,  Node: a o -!- # -| ? (R),  Next: => o a b a sunny day aa,  Prev: >= <= ->,  Up: Top
-
 7 a o -!- # -| ? (R)
 ********************
-
-
-File: ,  Node: => o a b a sunny day aa,  Next: AA ae oe AE OE /o /O ss /l /L D d TH th,  Prev: a o -!- # -| ? (R),  Up: Top
 
 8 => o a b a sunny day aa
 *************************
 
-
-File: ,  Node: AA ae oe AE OE /o /O ss /l /L D d TH th,  Next: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Prev: => o a b a sunny day aa,  Up: Top
-
 9 AA ae oe AE OE /o /O ss /l /L D d TH th
 *****************************************
-
-
-File: ,  Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Next: e. e( e_ .e e< j ee[,  Prev: AA ae oe AE OE /o /O ss /l /L D d TH th,  Up: Top
 
 10 a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
 ************************************
 
-
-File: ,  Node: e. e( e_ .e e< j ee[,  Next: `` \'\' ` \' ,, ,,  Prev: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Up: Top
-
 11 e. e( e_ .e e< j ee[
 ***********************
-
-
-File: ,  Node: `` \'\' ` \' ,, ,,  Next: << >> << >> < >,  Prev: e. e( e_ .e e< j ee[,  Up: Top
 
 12 `` \'\' ` \' ,, ,
 *****************
 
-
-File: ,  Node: << >> << >> < >,  Next: `` \'\' --- --,  Prev: `` \'\' ` \' ,, ,,  Up: Top
-
 13 << >> << >> < >
 ******************
-
-
-File: ,  Node: `` \'\' --- --,  Next: AAA (fff) AAA BBB,  Prev: << >> << >> < >,  Up: Top
 
 14 " " -- -
 ***********
 
-
-File: ,  Node: AAA (fff) AAA BBB,  Next: CCC (rrr) CCC DDD,  Prev: `` \'\' --- --,  Up: Top
-
 15 AAA (fff) AAA BBB
 ********************
-
-
-File: ,  Node: CCC (rrr) CCC DDD,  Next: the someone <someone@somewher> <no_explain@there>,  Prev: AAA (fff) AAA BBB,  Up: Top
 
 16 CCC (rrr) CCC DDD
 ********************
 
-
-File: ,  Node: the someone <someone@somewher> <no_explain@there>,  Next: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Prev: CCC (rrr) CCC DDD,  Up: Top
-
 17 the someone <someone@somewher> <no_explain@there>
 ****************************************************
 
-
-File: ,  Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Next:  @ {} . ,  Prev: the someone <someone@somewher> <no_explain@there>,  Up: Top
 
-
-18 [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
-*********************************************************************************
-
-
-File: ,  Node:  @ {} . ,  Next: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
+18 [f--ile1] [Image description""\\.]
+************************************
 
 19  @ {} . 
 ***********
 
-
-File: ,  Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Next: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Prev:  @ {} . ,  Up: Top
-
 20 \'cite asis\' in @w b in r SC *str* t VAR "dfn" i
 **************************************************
-
-
-File: ,  Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Next: 8.27in,  Prev: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Up: Top
 
 21 \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'
 ************************************************************
 
-
-File: ,  Node: 8.27in,  Next: sansserif slanted,  Prev: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Up: Top
-
 22 8.27in
 *********
-
-
-File: ,  Node: sansserif slanted,  Next: <indicateurl>,  Prev: 8.27in,  Up: Top
 
 23 sansserif slanted
 ********************
 
-
-File: ,  Node: <indicateurl>,  Next: \'http://somewhere_aaa\' text (url) ls,  Prev: sansserif slanted,  Up: Top
-
 24 <indicateurl>
 ****************
-
-
-File: ,  Node: \'http://somewhere_aaa\' text (url) ls,  Prev: <indicateurl>,  Up: Top
 
 25 \'http://somewhere_aaa\' text (url) ls
 ***************************************
@@ -21097,111 +21014,12 @@ ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
 e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note `` \'\' ` \' ,, ,:: *note << >>
 << >> < >:: *note `` \'\' --- --:: *note AAA (fff) AAA BBB:: *note CCC
 (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]:: *note  @ {} . :: *note \'cite asis\' in @w b
+<no_explain@there>:: *note [f--ile1] [Image description""\\.]:: *note  @ {} . :: *note \'cite asis\' in @w b
 in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 \'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
 *note <indicateurl>:: *note \'http://somewhere_aaa\' text (url) ls::
 
-
-
-Tag Table:
-Node: Top41
-Node: { }841
-Node:     !
-. . ? @920
-Node: @ { } \\ #1025
-Node: LaTeX TeX * , (C) ... ...1144
-Node: == error-> Euro ! ==> -1305
-Node: >= <= ->1461
-Node: a o -!- # -| ? (R)1580
-Node: => o a b a sunny day aa1719
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1899
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2126
-Node: e. e( e_ .e e< j ee[2340
-Node: `` \'\' ` \' ,, ,2503
-Node: << >> << >> < >2636
-Node: `` \'\' --- --2763
-Node: AAA (fff) AAA BBB2879
-Node: CCC (rrr) CCC DDD3015
-Node: the someone <someone@somewher> <no_explain@there>3188
-Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3490
-Node:  @ {} . 3846
-Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4055
-Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4317
-Node: 8.27in4597
-Node: sansserif slanted4745
-Node: <indicateurl>4871
-Node: \'http://somewhere_aaa\' text (url) ls5019
-
-End Tag Table
 ';
-
-$result_converted_errors{'info'}->{'at_commands_in_refs'} = [
-  {
-    'file_name' => '',
-    'error_line' => ':22: warning: Cannot find @image file `f--ile1.txt\'
-',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 22
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
-',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 85
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
-',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 85
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':87: warning: Cannot find @image file `f--ile1.txt\'
-',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 87
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
-',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 85
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
-',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 85
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
-',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 85
-  }
-];
-
 
 
 $result_converted{'html'}->{'at_commands_in_refs'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21607,6 +21425,622 @@ $result_converted_errors{'html'}->{'at_commands_in_refs'} = [
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 136
+  }
+];
+
+
+
+$result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">&hyphenbreak; &lbrace; &rbrace;</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top><sectiontitle>Top</sectiontitle>
+
+<menu>
+<menuentry><menunode>&hyphenbreak; &lbrace; &rbrace;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><spacecmd type="spc"/> <spacecmd type="spc"/>  &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&ge; &le; &rarr;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&ordf; &ordm; &point; &pound; &printglyph; &iquest; &registered;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&result; &deg; a&nbsp;b <today/> &aring;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&Aring; &aelig; &oelig; &AElig; &OElig; &oslash; &Oslash; &szlig; &lslash; &Lslash; &ETH; &eth; &THORN; &thorn;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><accent type="uml">a</accent> <accent type="tilde">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="circ">a</accent> <accent type="grave">a</accent> <accent type="acute">e</accent> <accent type="cedil">c</accent> <accent type="macr">e</accent> <accent type="ring">e</accent> <accent type="doubleacute">e</accent> <accent type="ogon">e</accent></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><accent type="dotaccent">e</accent> <accent type="breve">e</accent> <accent type="ubaraccent">e</accent> <accent type="udotaccent">e</accent> <accent type="caron">e</accent> <dotless>j</dotless> <accent type="tieaccent">ee</accent></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>`` \'\' --- --</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><image where="inline"><imagefile>f--ile1</imagefile></image>  <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><verb delimiter="."> @ {} . </verb></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><cite>cite <asis>asis</asis></cite> <w>in &arobase;w <b>b</b></w> <r>in r</r> <sc>sc</sc> <strong>str</strong> <t>t</t> <var>var</var> <dfn>dfn</dfn> <i>i</i></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode>8.27<dmn>in</dmn></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><sansserif>sansserif</sansserif> <slanted>slanted</slanted></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><indicateurl>indicateurl</indicateurl></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><url><urefurl>http://somewhere_aaa</urefurl></url> <url><urefurl>url</urefurl><urefdesc>text</urefdesc></url> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+</top>
+<node name="-_007b-_007d"><nodename>&hyphenbreak; &lbrace; &rbrace;</nodename><nodenext automatic="on"><spacecmd type="spc"/> <spacecmd type="spc"/>      &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&hyphenbreak; &lbrace; &rbrace;</sectiontitle>
+
+</chapter>
+<node name="----_0021---_002e--_002e-_003f-_0040"><nodename><spacecmd type="spc"/> <spacecmd type="spc"/>      &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodename><nodenext automatic="on">&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</nodenext><nodeprev automatic="on">&hyphenbreak; &lbrace; &rbrace;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><spacecmd type="spc"/> <spacecmd type="spc"/>   &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</sectiontitle>
+
+</chapter>
+<node name="_0040-_007b-_007d-_005c-_0023"><nodename>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</nodename><nodenext automatic="on">&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</nodenext><nodeprev automatic="on"><spacecmd type="spc"/> <spacecmd type="spc"/>      &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</sectiontitle>
+
+</chapter>
+<node name="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e"><nodename>&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</nodename><nodenext automatic="on">&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</nodenext><nodeprev automatic="on">&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</sectiontitle>
+
+</chapter>
+<node name="_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212"><nodename>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</nodename><nodenext automatic="on">&ge; &le; &rarr;</nodenext><nodeprev automatic="on">&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</sectiontitle>
+
+</chapter>
+<node name="_2265-_2264-_2192"><nodename>&ge; &le; &rarr;</nodename><nodenext automatic="on">&ordf; &ordm; &point; &pound; &printglyph; &iquest; &registered;</nodenext><nodeprev automatic="on">&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&ge; &le; &rarr;</sectiontitle>
+
+</chapter>
+<node name="_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae"><nodename>&ordf; &ordm; &point; &pound; &printglyph; &iquest; &registered;</nodename><nodenext automatic="on">&result; &deg; a&nbsp;b <today/> &aring;</nodenext><nodeprev automatic="on">&ge; &le; &rarr;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&ordf; &ordm; &point; &pound; &printglyph; &iquest; &registered;</sectiontitle>
+
+</chapter>
+<node name="_21d2-_00b0-a-b--_00e5"><nodename>&result; &deg; a&nbsp;b <today/> &aring;</nodename><nodenext automatic="on">&Aring; &aelig; &oelig; &AElig; &OElig; &oslash; &Oslash; &szlig; &lslash; &Lslash; &ETH; &eth; &THORN; &thorn;</nodenext><nodeprev automatic="on">&ordf; &ordm; &point; &pound; &printglyph; &iquest; &registered;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&result; &deg; a&nbsp;b <today/> &aring;</sectiontitle>
+
+</chapter>
+<node name="_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe"><nodename>&Aring; &aelig; &oelig; &AElig; &OElig; &oslash; &Oslash; &szlig; &lslash; &Lslash; &ETH; &eth; &THORN; &thorn;</nodename><nodenext automatic="on"><accent type="uml">a</accent> <accent type="tilde">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="circ">a</accent> <accent type="grave">a</accent> <accent type="acute">e</accent> <accent type="cedil">c</accent> <accent type="macr">e</accent> <accent type="ring">e</accent> <accent type="doubleacute">e</accent> <accent type="ogon">e</accent></nodenext><nodeprev automatic="on">&result; &deg; a&nbsp;b <today/> &aring;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&Aring; &aelig; &oelig; &AElig; &OElig; &oslash; &Oslash; &szlig; &lslash; &Lslash; &ETH; &eth; &THORN; &thorn; </sectiontitle>
+
+</chapter>
+<node name="_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119"><nodename><accent type="uml">a</accent> <accent type="tilde">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="circ">a</accent> <accent type="grave">a</accent> <accent type="acute">e</accent> <accent type="cedil">c</accent> <accent type="macr">e</accent> <accent type="ring">e</accent> <accent type="doubleacute">e</accent> <accent type="ogon">e</accent></nodename><nodenext automatic="on"><accent type="dotaccent">e</accent> <accent type="breve">e</accent> <accent type="ubaraccent">e</accent> <accent type="udotaccent">e</accent> <accent type="caron">e</accent> <dotless>j</dotless> <accent type="tieaccent">ee</accent></nodenext><nodeprev automatic="on">&Aring; &aelig; &oelig; &AElig; &OElig; &oslash; &Oslash; &szlig; &lslash; &Lslash; &ETH; &eth; &THORN; &thorn;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><accent type="uml">a</accent> <accent type="tilde">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="circ">a</accent> <accent type="grave">a</accent> <accent type="acute">e</accent> <accent type="cedil">c</accent> <accent type="macr">e</accent> <accent type="ring">e</accent> <accent type="doubleacute">e</accent> <accent type="ogon">e</accent></sectiontitle>
+
+</chapter>
+<node name="_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361"><nodename><accent type="dotaccent">e</accent> <accent type="breve">e</accent> <accent type="ubaraccent">e</accent> <accent type="udotaccent">e</accent> <accent type="caron">e</accent> <dotless>j</dotless> <accent type="tieaccent">ee</accent></nodename><nodenext automatic="on">&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</nodenext><nodeprev automatic="on"><accent type="uml">a</accent> <accent type="tilde">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="circ">a</accent> <accent type="grave">a</accent> <accent type="acute">e</accent> <accent type="cedil">c</accent> <accent type="macr">e</accent> <accent type="ring">e</accent> <accent type="doubleacute">e</accent> <accent type="ogon">e</accent></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><accent type="dotaccent">e</accent> <accent type="breve">e</accent> <accent type="ubaraccent">e</accent> <accent type="udotaccent">e</accent> <accent type="caron">e</accent> <dotless>j</dotless> <accent type="tieaccent">ee</accent></sectiontitle>
+
+</chapter>
+<node name="_201c-_201d-_2018-_2019-_201e-_201a"><nodename>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</nodename><nodenext automatic="on">&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</nodenext><nodeprev automatic="on"><accent type="dotaccent">e</accent> <accent type="breve">e</accent> <accent type="ubaraccent">e</accent> <accent type="udotaccent">e</accent> <accent type="caron">e</accent> <dotless>j</dotless> <accent type="tieaccent">ee</accent></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</sectiontitle>
+
+</chapter>
+<node name="_00ab-_00bb-_00ab-_00bb-_2039-_203a"><nodename>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</nodename><nodenext automatic="on">`` \'\' --- --</nodenext><nodeprev automatic="on">&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</sectiontitle>
+
+</chapter>
+<node name="_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d"><nodename>`` \'\' --- --</nodename><nodenext automatic="on"><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></nodenext><nodeprev automatic="on">&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>&textldquo; &textrdquo; &textmdash; &textndash;</sectiontitle>
+
+</chapter>
+<node name="AAA-AAA-BBB"><nodename><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></nodename><nodenext automatic="on"><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></nodenext><nodeprev automatic="on">`` \'\' --- --</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></sectiontitle>
+
+</chapter>
+<node name="CCC-CCC-DDD"><nodename><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></nodename><nodenext automatic="on"><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></nodenext><nodeprev automatic="on"><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></sectiontitle>
+
+</chapter>
+<node name="the-someone-no_005fexplain_0040there"><nodename><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></nodename><nodenext automatic="on"><image where="inline"><imagefile>f--ile1</imagefile></image>  <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image></nodenext><nodeprev automatic="on"><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></sectiontitle>
+
+</chapter>
+<node name="f_002d_002dile1-f_002d_002dile"><nodename><image where="inline"><imagefile>f--ile1</imagefile></image>  <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image></nodename><nodenext automatic="on"><verb delimiter="."> @ {} . </verb></nodenext><nodeprev automatic="on"><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><image where="inline"><imagefile>f--ile1</imagefile></image>  <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image></sectiontitle>
+
+</chapter>
+<node name="-_0040-_007b_007d-_002e-"><nodename><verb delimiter="."> @ {} . </verb></nodename><nodenext automatic="on"><cite>cite <asis>asis</asis></cite> <w>in &arobase;w <b>b</b></w> <r>in r</r> <sc>sc</sc> <strong>str</strong> <t>t</t> <var>var</var> <dfn>dfn</dfn> <i>i</i></nodenext><nodeprev automatic="on"><image where="inline"><imagefile>f--ile1</imagefile></image>  <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><verb delimiter="."> @ {} . </verb></sectiontitle>
+
+</chapter>
+<node name="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><nodename><cite>cite <asis>asis</asis></cite> <w>in &arobase;w <b>b</b></w> <r>in r</r> <sc>sc</sc> <strong>str</strong> <t>t</t> <var>var</var> <dfn>dfn</dfn> <i>i</i></nodename><nodenext automatic="on"><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></nodenext><nodeprev automatic="on"><verb delimiter="."> @ {} . </verb></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><cite>cite <asis>asis</asis></cite> <w>in &arobase;w <b>b</b></w> <r>in r</r> <sc>sc</sc> <strong>str</strong> <t>t</t> <var>var</var> <dfn>dfn</dfn> <i>i</i></sectiontitle>
+
+</chapter>
+<node name="env-code-option-samp-command-file-C_002dx-ESC"><nodename><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></nodename><nodenext automatic="on">8.27<dmn>in</dmn></nodenext><nodeprev automatic="on"><cite>cite <asis>asis</asis></cite> <w>in &arobase;w <b>b</b></w> <r>in r</r> <sc>sc</sc> <strong>str</strong> <t>t</t> <var>var</var> <dfn>dfn</dfn> <i>i</i></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></sectiontitle>
+
+</chapter>
+<node name="8_002e27in"><nodename>8.27<dmn>in</dmn></nodename><nodenext automatic="on"><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodenext><nodeprev automatic="on"><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle>8.27<dmn>in</dmn></sectiontitle>
+
+</chapter>
+<node name="sansserif-slanted"><nodename><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodename><nodenext automatic="on"><indicateurl>indicateurl</indicateurl></nodenext><nodeprev automatic="on">8.27<dmn>in</dmn></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><sansserif>sansserif</sansserif> <slanted>slanted</slanted></sectiontitle>
+
+</chapter>
+<node name="indicateurl"><nodename><indicateurl>indicateurl</indicateurl></nodename><nodenext automatic="on"><url><urefurl>http://somewhere_aaa</urefurl></url> <url><urefurl>url</urefurl><urefdesc>text</urefdesc></url> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></nodenext><nodeprev automatic="on"><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><indicateurl>indicateurl</indicateurl></sectiontitle>
+
+</chapter>
+<node name="http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls"><nodename><url><urefurl>http://somewhere_aaa</urefurl></url> <url><urefurl>url</urefurl><urefdesc>text</urefdesc></url> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></nodename><nodeprev automatic="on"><indicateurl>indicateurl</indicateurl></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><url><urefurl>http://somewhere_aaa</urefurl></url> <url><urefurl>url</urefurl><urefdesc>text</urefdesc></url> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></sectiontitle>
+
+<para><ref><xrefnodename>&hyphenbreak; &lbrace; &rbrace;</xrefnodename></ref>
+</para>
+<para><ref><xrefnodename><spacecmd type="spc"/> <spacecmd type="spc"/>       &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</xrefnodename></ref>
+<ref><xrefnodename>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</xrefnodename></ref>
+<ref><xrefnodename>&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</xrefnodename></ref>
+<ref><xrefnodename>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</xrefnodename></ref>
+</para>
+<para><ref><xrefnodename>&ge; &le; &rarr;</xrefnodename></ref>
+</para>
+<para><ref><xrefnodename>&ordf; &ordm; &point; &pound; &printglyph; &iquest; &registered;</xrefnodename></ref>
+<ref><xrefnodename>&result; &deg; a&nbsp;b <today/> &aring;</xrefnodename></ref>
+<ref><xrefnodename>&Aring; &aelig; &oelig; &AElig; &OElig; &oslash; &Oslash; &szlig; &lslash; &Lslash; &ETH; &eth; &THORN; &thorn;</xrefnodename></ref>
+<ref><xrefnodename><accent type="uml">a</accent> <accent type="tilde">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="circ">a</accent> <accent type="grave">a</accent> <accent type="acute">e</accent> <accent type="cedil">c</accent> <accent type="macr">e</accent> <accent type="ring">e</accent> <accent type="doubleacute">e</accent> <accent type="ogon">e</accent></xrefnodename></ref>
+<ref><xrefnodename><accent type="dotaccent">e</accent> <accent type="breve">e</accent> <accent type="ubaraccent">e</accent> <accent type="udotaccent">e</accent> <accent type="caron">e</accent> <dotless>j</dotless> <accent type="tieaccent">ee</accent></xrefnodename></ref>
+<ref><xrefnodename>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</xrefnodename></ref>
+<ref><xrefnodename>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</xrefnodename></ref>
+<ref><xrefnodename>`` \'\' --- --</xrefnodename></ref>
+<ref><xrefnodename><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></xrefnodename></ref>
+<ref><xrefnodename><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></xrefnodename></ref>
+<ref><xrefnodename><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></xrefnodename></ref>
+<ref><xrefnodename><image where="inline"><imagefile>f--ile1</imagefile></image>  <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image></xrefnodename></ref>
+<ref><xrefnodename><verb delimiter="."> @ {} . </verb></xrefnodename></ref>
+<ref><xrefnodename><cite>cite <asis>asis</asis></cite> <w>in &arobase;w <b>b</b></w> <r>in r</r> <sc>sc</sc> <strong>str</strong> <t>t</t> <var>var</var> <dfn>dfn</dfn> <i>i</i></xrefnodename></ref>
+<ref><xrefnodename><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></xrefnodename></ref>
+<ref><xrefnodename>8.27<dmn>in</dmn></xrefnodename></ref>
+<ref><xrefnodename><sansserif>sansserif</sansserif> <slanted>slanted</slanted></xrefnodename></ref>
+<ref><xrefnodename><indicateurl>indicateurl</indicateurl></xrefnodename></ref>
+<ref><xrefnodename><url><urefurl>http://somewhere_aaa</urefurl></url> <url><urefurl>url</urefurl><urefdesc>text</urefdesc></url> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></xrefnodename></ref>
+</para>
+</chapter>
+<bye></bye>
+';
+
+
+$result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="Top">
+<title>Top</title>
+
+
+</chapter>
+<chapter label="1" id="-_007b-_007d">
+<title> { }</title>
+
+</chapter>
+<chapter label="2" id="----_0021---_002e--_002e-_003f-_0040">
+<title>&#160; &#160;   ! 
+ .  . ? @</title>
+
+</chapter>
+<chapter label="3" id="_0040-_007b-_007d-_005c-_0023">
+<title>&#64; &#123; &#125; &#92; &#35;</title>
+
+</chapter>
+<chapter label="4" id="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e">
+<title>&latex; &tex; &#8226; &#44; &#169; &#8230; ...</title>
+
+</chapter>
+<chapter label="5" id="_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212">
+<title>&#8801; error&#8594; &#8364; &#161; &#8594; &#8722;</title>
+
+</chapter>
+<chapter label="6" id="_2265-_2264-_2192">
+<title>&#8805; &#8804; &#8594;</title>
+
+</chapter>
+<chapter label="7" id="_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae">
+<title>&#170; &#186; &#9733; &#163; &#8867; &#191; &#174;</title>
+
+</chapter>
+<chapter label="8" id="_21d2-_00b0-a-b--_00e5">
+<title>&#8658; &#176; a&#160;b a sunny day &#229;</title>
+
+</chapter>
+<chapter label="9" id="_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe">
+<title>&#197; &#230; &#339; &#198; &#338; &#248; &#216; &#223; &#322; &#321; &#208; &#240; &#222; &#254;</title>
+
+</chapter>
+<chapter label="10" id="_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119">
+<title>&#228; &#7869; &#238; &#226; &#224; &#233; &#231; &#275; e* e\'\' &#281;</title>
+
+</chapter>
+<chapter label="11" id="_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361">
+<title>&#279; &#277; e_ &#7865; &#283; j ee[</title>
+
+</chapter>
+<chapter label="12" id="_201c-_201d-_2018-_2019-_201e-_201a">
+<title>&#8220; &#8221; &#8216; &#8217; &#8222; &#8218;</title>
+
+</chapter>
+<chapter label="13" id="_00ab-_00bb-_00ab-_00bb-_2039-_203a">
+<title>&#171; &#187; &#171; &#187; &#8249; &#8250;</title>
+
+</chapter>
+<chapter label="14" id="_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d">
+<title>&#8220; &#8221; &#8212; &#8211;</title>
+
+</chapter>
+<chapter label="15" id="AAA-AAA-BBB">
+<title><acronym>AAA</acronym> (fff) <acronym>AAA</acronym> <acronym>BBB</acronym></title>
+
+</chapter>
+<chapter label="16" id="CCC-CCC-DDD">
+<title><abbrev>CCC</abbrev> (rrr) <abbrev>CCC</abbrev> <abbrev>DDD</abbrev></title>
+
+</chapter>
+<chapter label="17" id="the-someone-no_005fexplain_0040there">
+<title><ulink url="mailto:someone@somewher">the someone</ulink> <email>no_explain@there</email></title>
+
+</chapter>
+<chapter label="18" id="f_002d_002dile1-f_002d_002dile">
+<title><inlinemediaobject><imageobject><imagedata fileref="f--ile1.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>  <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject></title>
+
+</chapter>
+<chapter label="19" id="-_0040-_007b_007d-_002e-">
+<title><literal> @ {} . </literal></title>
+
+</chapter>
+<chapter label="20" id="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i">
+<title><citetitle>cite asis</citetitle> in @w <emphasis role="bold">b</emphasis><!-- /@w --> <lineannotation>in r</lineannotation> sc <emphasis role="bold">str</emphasis> <literal>t</literal> <replaceable>var</replaceable> <firstterm>dfn</firstterm> <emphasis>i</emphasis></title>
+
+</chapter>
+<chapter label="21" id="env-code-option-samp-command-file-C_002dx-ESC">
+<title><envar>env</envar> <literal>code</literal> <option>option</option> &#8216;<literal>samp</literal>&#8217; <command>command</command> <filename>file</filename> <userinput>C-x <keycap>ESC</keycap></userinput></title>
+
+</chapter>
+<chapter label="22" id="8_002e27in">
+<title>8.27in</title>
+
+</chapter>
+<chapter label="23" id="sansserif-slanted">
+<title>sansserif slanted</title>
+
+</chapter>
+<chapter label="24" id="indicateurl">
+<title><literal>indicateurl</literal></title>
+
+</chapter>
+<chapter label="25" id="http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls">
+<title><ulink url="http://somewhere_aaa">http://somewhere_aaa</ulink> <ulink url="url">text</ulink> <ulink url="/man.cgi/1/ls">ls</ulink></title>
+
+<para><link linkend="-_007b-_007d"> { }</link>
+</para>
+<para><link linkend="----_0021---_002e--_002e-_003f-_0040">&#160; &#160;       ! 
+ .  . ? @</link>
+<link linkend="_0040-_007b-_007d-_005c-_0023">&#64; &#123; &#125; &#92; &#35;</link>
+<link linkend="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e">&latex; &tex; &#8226; &#44; &#169; &#8230; ...</link>
+<link linkend="_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212">&#8801; error&#8594; &#8364; &#161; &#8594; &#8722;</link>
+</para>
+<para><link linkend="_2265-_2264-_2192">&#8805; &#8804; &#8594;</link>
+</para>
+<para><link linkend="_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae">&#170; &#186; &#9733; &#163; &#8867; &#191; &#174;</link>
+<link linkend="_21d2-_00b0-a-b--_00e5">&#8658; &#176; a&#160;b a sunny day &#229;</link>
+<link linkend="_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe">&#197; &#230; &#339; &#198; &#338; &#248; &#216; &#223; &#322; &#321; &#208; &#240; &#222; &#254;</link>
+<link linkend="_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119">&#228; &#7869; &#238; &#226; &#224; &#233; &#231; &#275; e* e\'\' &#281;</link>
+<link linkend="_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361">&#279; &#277; e_ &#7865; &#283; j ee[</link>
+<link linkend="_201c-_201d-_2018-_2019-_201e-_201a">&#8220; &#8221; &#8216; &#8217; &#8222; &#8218;</link>
+<link linkend="_00ab-_00bb-_00ab-_00bb-_2039-_203a">&#171; &#187; &#171; &#187; &#8249; &#8250;</link>
+<link linkend="_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d">&#8220; &#8221; &#8212; &#8211;</link>
+<link linkend="AAA-AAA-BBB"><acronym>AAA</acronym> (fff) <acronym>AAA</acronym> <acronym>BBB</acronym></link>
+<link linkend="CCC-CCC-DDD"><abbrev>CCC</abbrev> (rrr) <abbrev>CCC</abbrev> <abbrev>DDD</abbrev></link>
+<link linkend="the-someone-no_005fexplain_0040there"><ulink url="mailto:someone@somewher">the someone</ulink> <email>no_explain@there</email></link>
+<link linkend="f_002d_002dile1-f_002d_002dile"><inlinemediaobject><imageobject><imagedata fileref="f--ile1.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>  <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject></link>
+<link linkend="-_0040-_007b_007d-_002e-"><literal> @ {} . </literal></link>
+<link linkend="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><citetitle>cite asis</citetitle> in @w <emphasis role="bold">b</emphasis><!-- /@w --> <lineannotation>in r</lineannotation> sc <emphasis role="bold">str</emphasis> <literal>t</literal> <replaceable>var</replaceable> <firstterm>dfn</firstterm> <emphasis>i</emphasis></link>
+<link linkend="env-code-option-samp-command-file-C_002dx-ESC"><envar>env</envar> <literal>code</literal> <option>option</option> &#8216;<literal>samp</literal>&#8217; <command>command</command> <filename>file</filename> <userinput>C-x <keycap>ESC</keycap></userinput></link>
+<link linkend="8_002e27in">8.27in</link>
+<link linkend="sansserif-slanted">sansserif slanted</link>
+<link linkend="indicateurl"><literal>indicateurl</literal></link>
+<link linkend="http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls"><ulink url="http://somewhere_aaa">http://somewhere_aaa</ulink> <ulink url="url">text</ulink> <ulink url="/man.cgi/1/ls">ls</ulink></link>
+</para>
+</chapter>
+';
+
+
+$result_converted{'info'}->{'at_commands_in_refs'} = 'This is , produced by tp version from .
+
+
+File: ,  Node: Top,  Next: { },  Up: (dir)
+
+Top
+***
+
+* Menu:
+
+*  { }::
+*      ! 
+ .  . ? @::
+* @ { } \\ #::
+* LaTeX TeX * , (C) ... ...::
+* == error-> Euro ! ==> -::
+* >= <= ->::
+* a o -!- # -| ? (R)::
+* => o a b a sunny day aa::
+* AA ae oe AE OE /o /O ss /l /L D d TH th::
+* a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
+* e. e( e_ .e e< j ee[::
+* `` \'\' ` \' ,, ,::
+* << >> << >> < >::
+* `` \'\' --- --::
+* AAA (fff) AAA BBB::
+* CCC (rrr) CCC DDD::
+* the someone <someone@somewher> <no_explain@there>::
+* [f--ile1]   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]::
+*  @ {} . ::
+* \'cite asis\' in @w b in r SC *str* t VAR "dfn" i::
+* \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'::
+* 8.27in::
+* sansserif slanted::
+* <indicateurl>::
+* \'http://somewhere_aaa\' text (url) ls::
+
+
+File: ,  Node: { },  Next:     !
+. . ? @,  Prev: Top,  Up: Top
+
+1 { }
+*****
+
+
+File: ,  Node:     !
+. . ? @,  Next: @ { } \\ #,  Prev: { },  Up: Top
+
+2     !
+. . ? @
+***************
+
+
+File: ,  Node: @ { } \\ #,  Next: LaTeX TeX * , (C) ... ...,  Prev:     !
+. . ? @,  Up: Top
+
+3 @ { } \\ #
+***********
+
+
+File: ,  Node: LaTeX TeX * , (C) ... ...,  Next: == error-> Euro ! ==> -,  Prev: @ { } \\ #,  Up: Top
+
+4 LaTeX TeX * , (C) ... ...
+***************************
+
+
+File: ,  Node: == error-> Euro ! ==> -,  Next: >= <= ->,  Prev: LaTeX TeX * , (C) ... ...,  Up: Top
+
+5 == error-> Euro ! ==> -
+*************************
+
+
+File: ,  Node: >= <= ->,  Next: a o -!- # -| ? (R),  Prev: == error-> Euro ! ==> -,  Up: Top
+
+6 >= <= ->
+**********
+
+
+File: ,  Node: a o -!- # -| ? (R),  Next: => o a b a sunny day aa,  Prev: >= <= ->,  Up: Top
+
+7 a o -!- # -| ? (R)
+********************
+
+
+File: ,  Node: => o a b a sunny day aa,  Next: AA ae oe AE OE /o /O ss /l /L D d TH th,  Prev: a o -!- # -| ? (R),  Up: Top
+
+8 => o a b a sunny day aa
+*************************
+
+
+File: ,  Node: AA ae oe AE OE /o /O ss /l /L D d TH th,  Next: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Prev: => o a b a sunny day aa,  Up: Top
+
+9 AA ae oe AE OE /o /O ss /l /L D d TH th
+*****************************************
+
+
+File: ,  Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Next: e. e( e_ .e e< j ee[,  Prev: AA ae oe AE OE /o /O ss /l /L D d TH th,  Up: Top
+
+10 a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
+************************************
+
+
+File: ,  Node: e. e( e_ .e e< j ee[,  Next: `` \'\' ` \' ,, ,,  Prev: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Up: Top
+
+11 e. e( e_ .e e< j ee[
+***********************
+
+
+File: ,  Node: `` \'\' ` \' ,, ,,  Next: << >> << >> < >,  Prev: e. e( e_ .e e< j ee[,  Up: Top
+
+12 `` \'\' ` \' ,, ,
+*****************
+
+
+File: ,  Node: << >> << >> < >,  Next: `` \'\' --- --,  Prev: `` \'\' ` \' ,, ,,  Up: Top
+
+13 << >> << >> < >
+******************
+
+
+File: ,  Node: `` \'\' --- --,  Next: AAA (fff) AAA BBB,  Prev: << >> << >> < >,  Up: Top
+
+14 " " -- -
+***********
+
+
+File: ,  Node: AAA (fff) AAA BBB,  Next: CCC (rrr) CCC DDD,  Prev: `` \'\' --- --,  Up: Top
+
+15 AAA (fff) AAA BBB
+********************
+
+
+File: ,  Node: CCC (rrr) CCC DDD,  Next: the someone <someone@somewher> <no_explain@there>,  Prev: AAA (fff) AAA BBB,  Up: Top
+
+16 CCC (rrr) CCC DDD
+********************
+
+
+File: ,  Node: the someone <someone@somewher> <no_explain@there>,  Next: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Prev: CCC (rrr) CCC DDD,  Up: Top
+
+17 the someone <someone@somewher> <no_explain@there>
+****************************************************
+
+
+File: ,  Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Next:  @ {} . ,  Prev: the someone <someone@somewher> <no_explain@there>,  Up: Top
+
+
+18 [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
+*********************************************************************************
+
+
+File: ,  Node:  @ {} . ,  Next: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
+
+19  @ {} . 
+***********
+
+
+File: ,  Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Next: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Prev:  @ {} . ,  Up: Top
+
+20 \'cite asis\' in @w b in r SC *str* t VAR "dfn" i
+**************************************************
+
+
+File: ,  Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Next: 8.27in,  Prev: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Up: Top
+
+21 \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'
+************************************************************
+
+
+File: ,  Node: 8.27in,  Next: sansserif slanted,  Prev: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Up: Top
+
+22 8.27in
+*********
+
+
+File: ,  Node: sansserif slanted,  Next: <indicateurl>,  Prev: 8.27in,  Up: Top
+
+23 sansserif slanted
+********************
+
+
+File: ,  Node: <indicateurl>,  Next: \'http://somewhere_aaa\' text (url) ls,  Prev: sansserif slanted,  Up: Top
+
+24 <indicateurl>
+****************
+
+
+File: ,  Node: \'http://somewhere_aaa\' text (url) ls,  Prev: <indicateurl>,  Up: Top
+
+25 \'http://somewhere_aaa\' text (url) ls
+***************************************
+
+*note { }::
+
+   *note     !
+. . ? @:: *note @ { } \\ #:: *note LaTeX TeX * , (C) ... ...:: *note ==
+error-> Euro ! ==> -::
+
+   *note >= <= ->::
+
+   *note a o -!- # -| ? (R):: *note => o a b a sunny day aa:: *note AA
+ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
+e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note `` \'\' ` \' ,, ,:: *note << >>
+<< >> < >:: *note `` \'\' --- --:: *note AAA (fff) AAA BBB:: *note CCC
+(rrr) CCC DDD:: *note the someone <someone@somewher>
+<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]:: *note  @ {} . :: *note \'cite asis\' in @w b
+in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
+\'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
+*note <indicateurl>:: *note \'http://somewhere_aaa\' text (url) ls::
+
+
+
+Tag Table:
+Node: Top41
+Node: { }841
+Node:     !
+. . ? @920
+Node: @ { } \\ #1025
+Node: LaTeX TeX * , (C) ... ...1144
+Node: == error-> Euro ! ==> -1305
+Node: >= <= ->1461
+Node: a o -!- # -| ? (R)1580
+Node: => o a b a sunny day aa1719
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1899
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2126
+Node: e. e( e_ .e e< j ee[2340
+Node: `` \'\' ` \' ,, ,2503
+Node: << >> << >> < >2636
+Node: `` \'\' --- --2763
+Node: AAA (fff) AAA BBB2879
+Node: CCC (rrr) CCC DDD3015
+Node: the someone <someone@somewher> <no_explain@there>3188
+Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3490
+Node:  @ {} . 3846
+Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4055
+Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4317
+Node: 8.27in4597
+Node: sansserif slanted4745
+Node: <indicateurl>4871
+Node: \'http://somewhere_aaa\' text (url) ls5019
+
+End Tag Table
+';
+
+$result_converted_errors{'info'}->{'at_commands_in_refs'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':22: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 22
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 85
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 85
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':87: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 87
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 85
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 85
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':85: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 85
   }
 ];
 
