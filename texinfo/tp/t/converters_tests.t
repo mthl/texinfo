@@ -676,6 +676,13 @@ undef, {'test_file' => 'char_latin1_utf8_in_refs.texi'}
 ['char_latin1_latin1_in_refs',
 undef, {'test_file' => 'char_latin1_latin1_in_refs.texi'}
 ],
+['at_commands_in_refs_utf8',
+'@setfilename at_commands_in_refs_utf8.info
+@documentencoding utf-8
+
+'.
+$at_commands_in_refs_text, 
+{}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
 );
 
 my %info_tests = (

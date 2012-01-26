@@ -664,6 +664,9 @@ sub test($$)
            = &{$formats{$format_type}}($self, $format_type, $result, $parser, 
                                   $parser_options, $format_converter_options);
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
+      if (defined($converted{$format}) and $format =~ /^file_/) {
+        warn "Warning: output generated for $format by $test_name\n";
+      }
       #print STDERR "$format: \n$converted{$format}";
 
       # output converted result and errors in files if $arg_output is set
