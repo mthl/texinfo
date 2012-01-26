@@ -61,7 +61,7 @@ protect_comma_in_tree
 @EXPORT = qw(
 );
 
-$VERSION = '0.01';
+$VERSION = '5.00';
 
 # i18n
 sub N__($)
