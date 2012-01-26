@@ -1,17 +1,5 @@
 # formats :_info
 
-nodetest_use_nodes_no_unidecode nodetest.texi --set-init-var 'USE_UNIDECODE 0' --node-files --set-init-var 'USE_NODES 1' --split node
-nodetest_use_nodes nodetest.texi --node-files --set-init-var 'USE_NODES 1' --split node
-nodetest_utf8 nodetest_utf8.texi
-nodetest_utf8_use_nodes nodetest_utf8.texi --node-files --set-init-var 'USE_NODES 1' --split node
-nodetest_utf8_use_nodes_no_unidecode nodetest_utf8.texi --set-init-var 'USE_UNIDECODE 0' --node-files --set-init-var 'USE_NODES 1' --split node
-nodetest_latin1 nodetest_latin1.texi
-nodetest_latin1_use_nodes nodetest_latin1.texi --node-files --split node
-at_commands_in_refs_no_unidecode ../sectioning/at_commands_in_refs.texi --set-init-var 'USE_UNIDECODE 0'
-at_commands_in_refs_latin1_use_nodes at_commands_in_refs_latin1.texi --node-files --split node
-at_commands_in_refs_latin1_use_nodes_no_unidecode at_commands_in_refs_latin1.texi --set-init-var 'USE_UNIDECODE 0' --node-files --split node
-at_commands_in_refs_utf8_use_nodes at_commands_in_refs_utf8.texi --node-files --split node
-at_commands_in_refs_utf8_use_nodes_no_unidecode at_commands_in_refs_utf8.texi --set-init-var 'USE_UNIDECODE 0' --node-files --split node
 multi_lang multi_lang.texi
 accentenc accentenc.texi
 accentenc_encoding accentenc.texi --enable-encoding --set-init-var 'ENABLE_ENCODING_USE_ENTITY 0' --set-init-var 'USE_ISO 0'
@@ -20,7 +8,6 @@ accent accent.texi
 weird_accents weird_accents.texi
 ogolat2 ogolat2.texi
 ogoutf ogoutf.texi
-nodetest_info nodetest.texi --info
 japanese japanese.texi
 japanese_shift_jis japanese_shift_jis.texi
 chinese_mixed_with_en chinese_mixed_with_en.texi
