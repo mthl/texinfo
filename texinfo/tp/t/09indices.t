@@ -457,7 +457,116 @@ abc
 
 fn
 @printindex fn
-']
+'],
+);
+
+sub encoding_index_text($)
+{
+  my $eacutes = shift;
+  return
+'
+@node Top
+@top top
+
+@cindex '."$eacutes
+".'@cindex @"{i} @"{i}@"{i}@"{i}
+@cindex @^i @^i@^i@^i@^i
+@cindex a
+@cindex b
+@cindex c
+@cindex d
+@cindex e
+@cindex f
+@cindex g
+@cindex h
+@cindex i
+@cindex j
+@cindex k
+@cindex l
+@cindex m
+@cindex n
+@cindex o
+@cindex p
+@cindex q
+@cindex r
+@cindex s
+@cindex t
+@cindex u
+@cindex v
+@cindex w
+@cindex x
+@cindex y
+@cindex z
+@cindex A
+@cindex B
+@cindex @l{}
+@cindex @L{}
+@cindex @dotless{i} @dotless{i} (dotless)
+@cindex @^{@dotless{i}} @^{@dotless{i}} (dotless)
+@cindex @ss{}
+@cindex @euro{}
+@cindex @AE{}
+@cindex @exclamdown{}
+@cindex @TH{}
+@cindex @DH{}
+@cindex @textdegree{}
+@cindex 0
+@cindex 9
+@cindex @quotedblleft{}
+@cindex @geq{}
+@cindex @comma{}
+@cindex ``
+@cindex `
+@cindex \'
+@cindex \'\'
+@cindex "
+@cindex @@
+@cindex --
+@cindex ---
+
+@printindex cp
+';
+}
+
+my @file_tests = (
+['encoding_index_ascii',
+'
+@setfilename encoding_index_ascii.info
+@documentencoding us-ascii
+'.encoding_index_text('@\'e @\'e'), {}, {'ENABLE_ENCODING' => 0}
+],
+# \x{e9} is e with a acute
+['encoding_index_latin1',
+'
+@setfilename encoding_index_latin1.info
+@documentencoding iso-8859-1
+'.encoding_index_text("\x{e9} \x{e9}"), {}, {'ENABLE_ENCODING' => 0}
+],
+['encoding_index_utf8',
+'
+@setfilename encoding_index_utf8.info
+@documentencoding utf-8
+'.encoding_index_text("\x{e9} \x{e9}"), {}, {'ENABLE_ENCODING' => 0}
+],
+['encoding_index_ascii_enable_encoding',
+'
+@setfilename encoding_index_ascii_enable_encoding.info
+@documentencoding us-ascii
+'.encoding_index_text('@\'e @\'e'), {}, {'ENABLE_ENCODING' => 1}
+],
+# \x{e9} is e with a acute
+['encoding_index_latin1_enable_encoding',
+'
+@setfilename encoding_index_latin1_enable_encoding.info
+@documentencoding iso-8859-1
+'.encoding_index_text("\x{e9} \x{e9}"), {}, {'ENABLE_ENCODING' => 1}
+],
+['encoding_index_utf8_enable_encoding',
+'
+@setfilename encoding_index_utf8_enable_encoding.info
+@documentencoding utf-8
+'.encoding_index_text("\x{e9} \x{e9}"), {}, {'ENABLE_ENCODING' => 1}
+],
 );
 
 foreach my $test (@test_formatted) {
@@ -465,8 +574,13 @@ foreach my $test (@test_formatted) {
   push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
+foreach my $test (@file_tests) {
+  push @{$test->[2]->{'test_formats'}}, 'file_html';
+  push @{$test->[2]->{'test_formats'}}, 'file_info';
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('indices', [@test_cases, @test_formatted], $arg_test_case,
-   $arg_generate, $arg_debug);
+run_all ('indices', [@test_cases, @test_formatted, @file_tests], 
+   $arg_test_case, $arg_generate, $arg_debug);
 

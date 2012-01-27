@@ -3,12 +3,3 @@
 documentlanguage_set documentlanguage_set.texi
 documentlanguage_set_option documentlanguage_set.texi --document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
-# iconv < encoding_index-utf8.texi -t latin1 |sed 's/utf8/latin1/' > encoding_index-latin1.texi
-encoding_index encoding_index.texi
-#encoding_index_toutf8 encoding_index.texi --init utf8.pm
-encoding_index-utf8 encoding_index-utf8.texi
-#encoding_index-utf8_toutf8 encoding_index-utf8.texi --init utf8.pm
-encoding_index-latin1 encoding_index-latin1.texi
-#encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.pm
-encoding_index-utf8_enable_encoding encoding_index-utf8.texi --enable-encoding
-encoding_index-latin1_enable_encoding encoding_index-latin1.texi --enable-encoding
