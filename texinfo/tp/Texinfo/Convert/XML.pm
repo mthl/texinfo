@@ -244,7 +244,7 @@ my %default_context_block_commands = (
   'float' => 1,
 );
 
-sub converter_defaults($)
+sub converter_defaults($$)
 {
   return %defaults;
 }

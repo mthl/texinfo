@@ -1,6 +1,5 @@
 # formats :_info
 
-multi_lang multi_lang.texi
 accentenc accentenc.texi
 accentenc_encoding accentenc.texi --enable-encoding --set-init-var 'ENABLE_ENCODING_USE_ENTITY 0' --set-init-var 'USE_ISO 0'
 accentenc_encoding_use_entity accentenc.texi --enable-encoding

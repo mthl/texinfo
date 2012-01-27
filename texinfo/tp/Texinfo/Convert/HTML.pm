@@ -893,7 +893,7 @@ my %PASSIVE_ICONS = (
 );
 
 
-our %defaults = (
+my %defaults = (
   'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 1,
   'perl_encoding'        => 'utf8',
@@ -1010,8 +1010,14 @@ foreach my $buttons ('CHAPTER_BUTTONS', 'SECTION_FOOTER_BUTTONS', 'NODE_FOOTER_B
   $defaults{$buttons} = [@{$defaults{'SECTION_BUTTONS'}}];
 }
 
-sub converter_defaults($)
+sub converter_defaults($$)
 {
+  my $self = shift;
+  my $conf = shift;
+  if ($conf->{'TEXI2HTML'}) {
+    _set_variables_texi2html();
+    delete $conf->{'TEXI2HTML'};
+  }
   return %defaults;
 }
 
@@ -7436,6 +7442,64 @@ sub _convert($$;$)
     }
   }
   print STDERR "DEBUG: HERE!($root)\n";
+}
+
+sub _set_variables_texi2html()
+{
+  my @texi2html_options = (
+  ['NO_USE_SETFILENAME', 1],
+  ['USE_SETFILENAME_EXTENSION', 0],
+  ['footnotestyle', 'separate'],
+  ['INLINE_CONTENTS', 0],
+  ['FORCE', 1],
+  ['AVOID_MENU_REDUNDANCY', 1],
+  ['TOP_FILE', ''],
+  ['USE_ACCESSKEY', 0],
+  ['NODE_NAME_IN_MENU', 0],
+  ['OVERVIEW_LINK_TO_TOC', 0],
+  ['USE_UP_NODE_FOR_ELEMENT_UP', 1],
+  ['USE_REL_REV', 0],
+  ['USE_LINKS', 0],
+  ['USE_NODES', 0],
+  ['NODE_FILENAMES', 0],
+  ['USE_NUMERIC_ENTITY', 1],
+  ['SPLIT', ''],
+  ['SPLIT_INDEX', 100],
+  ['PROGRAM_NAME_IN_FOOTER', 1],
+  ['HEADER_IN_TABLE', 1],
+  ['SHORT_REF', 0],
+  ['USE_TITLEPAGE_FOR_TITLE', 1],
+  ['MENU_ENTRY_COLON', ''],
+  ['INDEX_ENTRY_COLON', ''],
+  ['ENABLE_ENCODING_USE_ENTITY', 1],
+  ['DO_ABOUT', undef],
+  ['NODE_NAME_IN_INDEX', 0],
+  ['CHAPTER_HEADER_LEVEL', 1],
+  ['BIG_RULE', '<hr size="6">'],
+  ['FOOTNOTE_END_HEADER_LEVEL', 3],
+  ['FOOTNOTE_SEPARATE_HEADER_LEVEL', 1],
+  ['KEEP_TOP_EXTERNAL_REF', 1],
+  ['SECTION_BUTTONS', ['FastBack', 'Back', 'Up', 'Forward', 'FastForward',
+                             ' ', ' ', ' ', ' ',
+                             'Top', 'Contents', 'Index', 'About' ]],
+  ['TOP_BUTTONS', ['Back', 'Forward', ' ',
+                             'Contents', 'Index', 'About']],
+
+  ['MISC_BUTTONS', [ 'Top', 'Contents', 'Index', 'About' ]],
+  ['CHAPTER_BUTTONS', [ 'FastBack', 'FastForward', ' ',
+                              ' ', ' ', ' ', ' ',
+                              'Top', 'Contents', 'Index', 'About', ]],
+  ['SECTION_FOOTER_BUTTONS', [ 'FastBack', 'Back', 'Up', 
+                                               'Forward', 'FastForward' ]],
+  ['NODE_FOOTER_BUTTONS', [ 'FastBack', 'Back', 
+                                            'Up', 'Forward', 'FastForward',
+                             ' ', ' ', ' ', ' ',
+                             'Top', 'Contents', 'Index', 'About' ]],
+  );
+  foreach my $option (@texi2html_options) {
+    #no warnings 'once';
+    $defaults{$option->[0]} = $option->[1];
+  }
 }
 
 1;

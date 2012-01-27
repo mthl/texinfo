@@ -194,7 +194,7 @@ sub converter(;$)
     $conf = shift;
     $name = ref($converter);
   }
-  my %defaults = $converter->converter_defaults();
+  my %defaults = $converter->converter_defaults($conf);
   foreach my $key (keys(%all_converters_defaults)) {
     $defaults{$key} = $all_converters_defaults{$key} 
       if (!exists($defaults{$key}));
@@ -1086,7 +1086,7 @@ Texinfo::Convert::Converter - Parent class for Texinfo tree converters
   use Texinfo::Convert::Converter;
   @ISA = qw(Texinfo::Convert::Converter);
 
-  sub converter_defaults ($) {
+  sub converter_defaults ($$) {
     return %myconverter_defaults;
   }
   sub converter_initialize($) {
@@ -1159,9 +1159,10 @@ To help with these initializations, the modules can define three methods:
 
 =over
 
-=item %defaults = $converter->converter_defaults()
+=item %defaults = $converter->converter_defaults($options)
 
 The converter can provide a defaults hash for configurations options.
+The I<$options> hash reference holds options for the converter.
 
 =item @global_commands = $converter->converter_global_commands()
 

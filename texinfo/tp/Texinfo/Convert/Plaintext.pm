@@ -323,7 +323,7 @@ my %contents_commands = (
  'summarycontents' => 1,
 );
 
-sub converter_defaults($)
+sub converter_defaults($$)
 {
   return %defaults;
 }

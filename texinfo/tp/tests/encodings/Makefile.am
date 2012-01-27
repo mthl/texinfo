@@ -1,5 +1,5 @@
 EXTRA_DIST = \
- multi_lang.texi accent.texi \
+ accent.texi \
  weird_accents.texi accentenc.texi \
  accent-text.txi ogolat2.texi  ogoutf.texi \
  japanese.texi chinese_mixed_with_en.texi documentlanguage_set.texi \

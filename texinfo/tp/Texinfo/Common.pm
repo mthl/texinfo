@@ -176,6 +176,8 @@ my @variable_settables = (
   'KEEP_TOP_EXTERNAL_REF',
 # FIXME document
   'TEXTCONTENT_COMMENT',
+# from command line, but also in converter.
+  'TEXI2HTML',
 # FIXME Not strings. To be documented.
   'LINKS_BUTTONS', 'TOP_BUTTONS', 'SECTION_BUTTONS', 'BUTTONS_TEXT',
   'BUTTONS_ACCESSKEY', 'BUTTONS_REL', 'BUTTONS_GOTO',

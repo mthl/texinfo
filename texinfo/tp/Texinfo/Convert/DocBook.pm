@@ -261,7 +261,7 @@ my %docbook_preformatted_formats = (
    'menu_description' => 'literallayout',
 );
 
-sub converter_defaults($)
+sub converter_defaults($$)
 {
   return %defaults;
 }
