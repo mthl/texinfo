@@ -676,6 +676,9 @@ undef, {'test_file' => 'char_latin1_utf8_in_refs.texi'}
 ['char_latin1_latin1_in_refs',
 undef, {'test_file' => 'char_latin1_latin1_in_refs.texi'}
 ],
+['sample_utf8',
+undef, {'test_file' => 'sample_utf8.texi'}
+],
 ['at_commands_in_refs_utf8',
 '@setfilename at_commands_in_refs_utf8.info
 @documentencoding utf-8

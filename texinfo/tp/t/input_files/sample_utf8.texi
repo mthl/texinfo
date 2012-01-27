@@ -8,12 +8,14 @@
 @copying
 This is a short example of a complete Texinfo file.
 
-Copyright (C) 2005 Free Software Foundation, Inc.
+Copyright (C) 2005 Someone.
+Texinfo中文示例
 @end copying
 
 @titlepage
-@title 标题示例
+@title 标题示例 ĄĘ ae ąę Â ù
 @page
+Texinfo中文示例
 @vskip 0pt plus 1filll
 @insertcopying
 @end titlepage
@@ -31,7 +33,7 @@ Copyright (C) 2005 Free Software Foundation, Inc.
 @menu
 * 第一章（First Chapter）:: 这是此示例文档的第一章
                            (with mixed cjk & latin char title)
-* Second Chapter::  this is chapter 2.
+* Second Chapter AE ĄĘ ae ąę::  this is chapter 2. AE ĄĘ ae ąę
 * Index::    Complete index.
 @end menu
 
@@ -43,20 +45,23 @@ Copyright (C) 2005 Free Software Foundation, Inc.
 
 This is the first chapter. 这是第一章。
 @cindex 另一个，index entry
+@cindex ĄĘ ae ąę
+@cindex é Â
 
 Here is a numbered list.
 
 @enumerate
-@item
+@item 第
 This is the first item.
 
-@item
+@item ĄĘ
 This is the second item.
 @end enumerate
 
-@node Second Chapter
-@chapter Chapter 2
-empty
+@node Second Chapter AE ĄĘ ae ąę
+@chapter Chapter 2 AE ĄĘ ae ąę
+
+Zażółć gęślą jaźń!
 
 @node Index
 @unnumbered Index

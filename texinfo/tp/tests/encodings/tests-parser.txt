@@ -6,7 +6,6 @@ accentenc_encoding_use_entity accentenc.texi --enable-encoding
 accent accent.texi
 weird_accents weird_accents.texi
 ogolat2 ogolat2.texi
-ogoutf ogoutf.texi
 japanese japanese.texi
 japanese_shift_jis japanese_shift_jis.texi
 chinese_mixed_with_en chinese_mixed_with_en.texi
@@ -21,6 +20,5 @@ encoding_index-utf8 encoding_index-utf8.texi
 encoding_index-latin1 encoding_index-latin1.texi
 #encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.pm
 accentenc_info accentenc.texi --info
-sample_utf8 sample_utf8.texi
 encoding_index-utf8_enable_encoding encoding_index-utf8.texi --enable-encoding
 encoding_index-latin1_enable_encoding encoding_index-latin1.texi --enable-encoding
