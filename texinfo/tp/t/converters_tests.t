@@ -658,11 +658,13 @@ Para2@footnote{Footnote 2.}.
 ',{} , {'NUMBER_FOOTNOTES' => 0, 'footnotestyle' => 'separate'}],
 );
 
-# This should go to a file, not to code...
 my @html_text_cases = (
-['accentenc_no_iso_no_entity',
+['accentenc_no_entity',
 $latin1_accents_text, {}, {'ENABLE_ENCODING' => 1,
-                           'ENABLE_ENCODING_USE_ENTITY' => 0, 'USE_ISO' => 0}
+                           'ENABLE_ENCODING_USE_ENTITY' => 0}
+],
+['accentenc_enable_encoding',
+$latin1_accents_text, {}, {'ENABLE_ENCODING' => 1}
 ],
 ['top_in_ref_keep_top',
 $top_in_ref_text,

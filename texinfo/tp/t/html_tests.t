@@ -219,6 +219,40 @@ my @test_cases_text = (
 ['commands_in_email',
 '@email{endots @enddots{} @code{in code}}'
 ],
+['no_use_iso',
+'AA @^e --- -- \'` \'\' ``', {}, {'USE_ISO' => 0}],
+['utf8_no_use_entity',
+'@documentencoding utf-8
+
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING_USE_ENTITY' => 0}],
+['utf8_no_use_entity_enable_encoding',
+'@documentencoding utf-8
+
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1,
+                                  'ENABLE_ENCODING_USE_ENTITY' => 0}],
+['utf8_enable_encoding',
+'@documentencoding utf-8
+
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1}],
+['utf8_no_use_entity_no_use_iso',
+'@documentencoding utf-8
+
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING_USE_ENTITY' => 0,
+                                 'USE_ISO' => 0}],
+['utf8_no_use_entity_enable_encoding_no_use_iso',
+'@documentencoding utf-8
+
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1, 'USE_ISO' => 0,
+                                  'ENABLE_ENCODING_USE_ENTITY' => 0}],
+['utf8_enable_encoding_no_use_iso', # this one leads to transiliterated text as
+                                    # ENABLE_ENCODING_USE_ENTITY is set
+                                    # so even ENABLE_ENCODING transformation
+                                    # to utf-8 characters is not done
+'@documentencoding utf-8
+
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1,
+                                 'USE_ISO' => 0}],
+
 );
 
 # problem is that the result is code with accented letters,

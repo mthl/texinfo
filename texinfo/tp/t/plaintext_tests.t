@@ -816,6 +816,9 @@ my @file_tests = (
 ['japanese_utf8',
 undef, {'test_file' => 'japanese_utf8.texi'}
 ],
+['chinese_mixed_with_en',
+undef, {'test_file' => 'chinese_mixed_with_en.texi'}
+],
 );
 
 foreach my $test (@test_cases) {

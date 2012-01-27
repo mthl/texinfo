@@ -1,8 +1,6 @@
 EXTRA_DIST = \
- accent.texi \
- weird_accents.texi accentenc.texi \
- accent-text.txi ogolat2.texi \
- chinese_mixed_with_en.texi documentlanguage_set.texi \
+ ogolat2.texi \
+ documentlanguage_set.texi \
  encoding_index-latin1.texi encoding_index.texi  encoding_index-utf8.texi \
  japanese_shift_jis.texi \
  japanese_long_name.texi \

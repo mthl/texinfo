@@ -1,15 +1,9 @@
 \input texinfo
 @documentencoding utf-8
-@setfilename  chinese_mixed_with_en.info
+@setfilename chinese_mixed_with_en.info
 @settitle chinese mixed with english
 
-@contents
-
-@ifnottex
 @node Top
-@top Foo
-
-@end ifnottex
 
 1. english only
 
@@ -36,9 +30,5 @@ standard Emacs features when programming in Ada.
 restrict 表示在当前 scope 内不允许其它变量指向它。用处，比如防止 memory
 overlap。
 
-
-
-@menu
-@end menu
 
 @bye

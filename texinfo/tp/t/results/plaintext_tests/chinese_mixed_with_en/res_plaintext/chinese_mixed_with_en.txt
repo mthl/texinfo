@@ -1,12 +1,3 @@
-This is chinese_mixed_with_en.info, produced by texi2any version from
-chinese_mixed_with_en.texi.
-
-
-File: chinese_mixed_with_en.info,  Node: Top,  Up: (dir)
-
-Foo
-***
-
 1.  english only
 
    The Emacs mode for programming in Ada 95 with GNAT helps the user in
@@ -31,16 +22,3 @@ standard Emacs features when programming in Ada.
    restrict 表示在当前 scope 内不允许其它变量指向它。用处，比如防止
 memory overlap。
 
-* Menu:
-
-
-
-Tag Table:
-Node: Top99
-
-End Tag Table
-
-
-Local Variables:
-coding: utf-8
-End:

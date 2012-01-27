@@ -1,13 +1,7 @@
 # formats :_info
 
-accentenc accentenc.texi
-accentenc_encoding accentenc.texi --enable-encoding --set-init-var 'ENABLE_ENCODING_USE_ENTITY 0' --set-init-var 'USE_ISO 0'
-accentenc_encoding_use_entity accentenc.texi --enable-encoding
-accent accent.texi
-weird_accents weird_accents.texi
 ogolat2 ogolat2.texi
 japanese_shift_jis japanese_shift_jis.texi
-chinese_mixed_with_en chinese_mixed_with_en.texi
 documentlanguage_set documentlanguage_set.texi
 documentlanguage_set_option documentlanguage_set.texi --document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
@@ -18,6 +12,5 @@ encoding_index-utf8 encoding_index-utf8.texi
 #encoding_index-utf8_toutf8 encoding_index-utf8.texi --init utf8.pm
 encoding_index-latin1 encoding_index-latin1.texi
 #encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.pm
-accentenc_info accentenc.texi --info
 encoding_index-utf8_enable_encoding encoding_index-utf8.texi --enable-encoding
 encoding_index-latin1_enable_encoding encoding_index-latin1.texi --enable-encoding
