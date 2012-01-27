@@ -427,20 +427,24 @@ sub output($$)
     $outfile = $self->{'output_file'};
   }
   
-  my $fh = $self->Texinfo::Common::open_out ($outfile);
-  if (!$fh) {
-    $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                  $outfile, $!));
-    return undef;
+  my $fh;
+  if ($outfile ne '') {
+    $fh = $self->Texinfo::Common::open_out ($outfile);
+    if (!$fh) {
+      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                    $outfile, $!));
+      return undef;
+    }
   }
-  #$self->{'fh'} = $fh;
   my $result = $self->convert($root);
   if (defined($result)) {
-    print $fh $result;
-    return $self;
-  } else {
-    return undef;
+    if (defined($fh)) {
+      print $fh $result;
+    } else {
+      return $result;
+    }
   }
+  return undef;
 }
 
 sub _process_text($$$)

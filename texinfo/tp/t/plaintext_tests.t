@@ -812,13 +812,23 @@ my @deep_recursion_tests = (
 '],
 );
 
+my @file_tests = (
+['japanese_utf8',
+undef, {'test_file' => 'japanese_utf8.texi'}
+],
+);
+
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
 }
 
+foreach my $test (@file_tests) {
+  $test->[2]->{'test_formats'} = ['file_plaintext'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('plaintext_tests', [@test_cases], $arg_test_case,
+run_all ('plaintext_tests', [@test_cases, @file_tests], $arg_test_case,
    $arg_generate, $arg_debug);
 
 1;

@@ -6,7 +6,6 @@ accentenc_encoding_use_entity accentenc.texi --enable-encoding
 accent accent.texi
 weird_accents weird_accents.texi
 ogolat2 ogolat2.texi
-japanese japanese.texi
 japanese_shift_jis japanese_shift_jis.texi
 chinese_mixed_with_en chinese_mixed_with_en.texi
 documentlanguage_set documentlanguage_set.texi

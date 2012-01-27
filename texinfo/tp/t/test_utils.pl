@@ -90,6 +90,7 @@ ok(1);
 
 our %formats = (
   'plaintext' => \&convert_to_plaintext,
+  'file_plaintext' => \&convert_to_plaintext,
   'info' => \&convert_to_info,
   'file_info' => \&convert_to_info,
   'html' => \&convert_to_html,
@@ -376,9 +377,10 @@ sub set_converter_option_defaults($$$)
   return $converter_options;
 }
 
-sub convert_to_plaintext($$$$$;$)
+sub convert_to_plaintext($$$$$$;$)
 {
   my $self = shift;
+  my $test_name = shift;
   my $format = shift;
   my $tree = shift;
   my $parser = shift;
@@ -387,13 +389,24 @@ sub convert_to_plaintext($$$$$;$)
   $converter_options 
     = set_converter_option_defaults($converter_options,
                                     $parser_options, $format);
+  if (!defined($converter_options->{'OUTFILE'})
+      and defined($converter_options->{'SUBDIR'})) {
+    $converter_options->{'OUTFILE'} 
+      = $converter_options->{'SUBDIR'}.$test_name.".txt";
+  }
   
   my $converter = 
      Texinfo::Convert::Plaintext->converter({'DEBUG' => $self->{'DEBUG'},
                                              'parser' => $parser,
                                              'output_format' => 'plaintext',
                                              %$converter_options });
-  my $result = $converter->convert($tree);
+  my $result;
+  if ($converter_options->{'OUTFILE'} eq '') {
+    $result = $converter->convert($tree);
+  } else {
+    $result = $converter->output($tree);
+    $result = undef if (defined($result and $result eq ''));
+  }
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }
@@ -401,6 +414,7 @@ sub convert_to_plaintext($$$$$;$)
 sub convert_to_info($$$$$;$)
 {
   my $self = shift;
+  my $test_name = shift;
   my $format = shift;
   my $tree = shift;
   my $parser = shift;
@@ -422,9 +436,10 @@ sub convert_to_info($$$$$;$)
   return ($errors, $result);
 }
 
-sub convert_to_html($$$$$;$)
+sub convert_to_html($$$$$$;$)
 {
   my $self = shift;
+  my $test_name = shift;
   my $format = shift;
   my $tree = shift;
   my $parser = shift;
@@ -458,9 +473,10 @@ sub convert_to_html($$$$$;$)
   return ($errors, $result);
 }
 
-sub convert_to_xml($$$$$;$)
+sub convert_to_xml($$$$$$;$)
 {
   my $self = shift;
+  my $test_name = shift;
   my $format = shift;
   my $tree = shift;
   my $parser = shift;
@@ -482,9 +498,10 @@ sub convert_to_xml($$$$$;$)
   return ($errors, $result);
 }
 
-sub convert_to_docbook($$$$$;$)
+sub convert_to_docbook($$$$$$;$)
 {
   my $self = shift;
+  my $test_name = shift;
   my $format = shift;
   my $tree = shift;
   my $parser = shift;
@@ -506,9 +523,10 @@ sub convert_to_docbook($$$$$;$)
   return ($errors, $result);
 }
 
-sub debugcount($$$$$;$)
+sub debugcount($$$$$$;$)
 {
   my $self = shift;
+  my $test_name = shift;
   my $format = shift;
   my $tree = shift;
   my $parser = shift;
@@ -661,7 +679,8 @@ sub test($$)
         $format_converter_options->{'OUTFILE'} = '';
       }
       ($converted_errors{$format}, $converted{$format})
-           = &{$formats{$format_type}}($self, $format_type, $result, $parser, 
+           = &{$formats{$format}}($self, $test_name, $format_type, 
+                                  $result, $parser, 
                                   $parser_options, $format_converter_options);
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       if (defined($converted{$format}) and $format =~ /^file_/) {

@@ -1,18 +1,3 @@
-This is lilypond-learning.info, produced by texi2any version from
-japanese.texi.
-
-Copyright © 1999–2008 著作者一同
-
-   _The translation of the following copyright notice is provided for
-courtesy to non-English speakers, but only the notice in English legally
-counts._
-
-   _以下は英語を話さない人々のための著作権についての注意書きです。しかし
-ながら、 英語で書かれた注意書きだけが法的に有効です。_
-
-
-File: lilypond-learning.info,  Node: Top,  Next: Preface,  Up: (dir)
-
 GNU LilyPond — 学習マニュアル
 *****************************
 
@@ -22,9 +7,6 @@ GNU LilyPond — 学習マニュアル
 
 * Preface::
 * Introduction::                   LilyPond とは何なのか、なぜ LilyPond を使うのか、どうやって LilyPond を使うのか
-
-
-File: lilypond-learning.info,  Node: Preface,  Next: Introduction,  Prev: Top,  Up: Top
 
 1 Preface
 *********
@@ -41,24 +23,8 @@ File: lilypond-learning.info,  Node: Preface,  Next: Introduction,  Prev: Top,  
 た。この時、ジャンはハン-ウェンの新しいプロジェクトに引きずり込まれまし
 た。
 
-
-File: lilypond-learning.info,  Node: Introduction,  Prev: Preface,  Up: Top
-
 2 Introduction
 **************
 
 この章では読者に LilyPond とこのドキュメントについての紹介を行います。
 
-
-
-Tag Table:
-Node: Top466
-Node: Preface810
-Node: Introduction1967
-
-End Tag Table
-
-
-Local Variables:
-coding: utf-8
-End:
