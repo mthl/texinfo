@@ -1,7 +1,7 @@
 
 htmlxref_cnf_tests = htmlxref htmlxref-only_mono htmlxref-only_split
 base_tests = \
- formatting encodings \
+ formatting \
  $(htmlxref_cnf_tests)
 long_tests = \
  sectioning coverage indices nested_formats contents layout

@@ -7,6 +7,7 @@ tex_complex.texi \
 direntry_dircategory.texi  tex_in_copying.texi \
 math_not_closed.texi       tex_not_closed.texi \
 float_copying.texi         my-bib-macros.texi        tex.texi \
+documentlanguage_set.texi japanese_long_name.texi \
  file.css tests-parser.txt res_parser
 
 DISTCLEANFILES = tests.log tests.out

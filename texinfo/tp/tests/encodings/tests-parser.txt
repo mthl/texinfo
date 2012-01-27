@@ -1,5 +1,0 @@
-# formats :_info
-
-documentlanguage_set documentlanguage_set.texi
-documentlanguage_set_option documentlanguage_set.texi --document-language fr
-documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
