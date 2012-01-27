@@ -1,7 +1,5 @@
 # formats :_info
 
-ogolat2 ogolat2.texi
-japanese_shift_jis japanese_shift_jis.texi
 documentlanguage_set documentlanguage_set.texi
 documentlanguage_set_option documentlanguage_set.texi --document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown

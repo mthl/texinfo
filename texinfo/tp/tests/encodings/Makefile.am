@@ -1,8 +1,6 @@
 EXTRA_DIST = \
- ogolat2.texi \
  documentlanguage_set.texi \
  encoding_index-latin1.texi encoding_index.texi  encoding_index-utf8.texi \
- japanese_shift_jis.texi \
  japanese_long_name.texi \
  tests-parser.txt res_parser res_parser_info
 

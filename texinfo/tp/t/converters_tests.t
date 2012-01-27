@@ -678,6 +678,12 @@ undef, {'test_file' => 'char_latin1_utf8_in_refs.texi'}
 ['char_latin1_latin1_in_refs',
 undef, {'test_file' => 'char_latin1_latin1_in_refs.texi'}
 ],
+['char_latin2_latin2_in_refs',
+undef, {'test_file' => 'char_latin2_latin2_in_refs.texi'}
+],
+['japanese_shift_jis',
+undef, {'test_file' => 'japanese_shift_jis.texi'}
+],
 ['sample_utf8',
 undef, {'test_file' => 'sample_utf8.texi'}
 ],

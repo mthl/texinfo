@@ -117,8 +117,10 @@ t/init/test_directions.init
 t/init/test_renamed_nodes.init
 t/input_files/char_latin1_latin1_in_refs.texi
 t/input_files/char_latin1_utf8_in_refs.texi
+t/input_files/char_latin2_latin2_in_refs.texi
 t/input_files/chinese_mixed_with_en.texi
 t/input_files/delcomment.texi
+t/input_files/japanese_shift_jis.texi
 t/input_files/japanese_utf8.texi
 t/input_files/sample_utf8.texi
 t/languages.t
@@ -253,6 +255,10 @@ t/results/converters_tests/char_latin1_utf8_in_refs/res_html/c.html
 t/results/converters_tests/char_latin1_utf8_in_refs/res_html/e.html
 t/results/converters_tests/char_latin1_utf8_in_refs/res_html/index.html
 t/results/converters_tests/char_latin1_utf8_in_refs/res_info/char_latin1_utf8_in_refs.info
+t/results/converters_tests/char_latin2_latin2_in_refs.pl
+t/results/converters_tests/char_latin2_latin2_in_refs/res_html/A-a-_002c-E-e.html
+t/results/converters_tests/char_latin2_latin2_in_refs/res_html/index.html
+t/results/converters_tests/char_latin2_latin2_in_refs/res_info/char_latin2_latin2_in_refs.info
 t/results/converters_tests/complex_nestings.pl
 t/results/converters_tests/documentencoding_utf8_and_insertions.pl
 t/results/converters_tests/empty_accent.pl
@@ -263,6 +269,11 @@ t/results/converters_tests/image_formatting.pl
 t/results/converters_tests/image_with_spaces.pl
 t/results/converters_tests/inline_expand_tex.pl
 t/results/converters_tests/inline.pl
+t/results/converters_tests/japanese_shift_jis.pl
+t/results/converters_tests/japanese_shift_jis/res_html/index.html
+t/results/converters_tests/japanese_shift_jis/res_html/Introduction.html
+t/results/converters_tests/japanese_shift_jis/res_html/Preface.html
+t/results/converters_tests/japanese_shift_jis/res_info/japanese_shift_jis.info
 t/results/converters_tests/no_documentencoding_and_insertions.pl
 t/results/converters_tests/raw_block_commands_expand_tex.pl
 t/results/converters_tests/raw_block_commands.pl
