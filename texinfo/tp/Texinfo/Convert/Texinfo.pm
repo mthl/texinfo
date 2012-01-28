@@ -53,14 +53,17 @@ my %brace_commands           = %Texinfo::Common::brace_commands;
 my %block_commands           = %Texinfo::Common::block_commands;    
 my %def_commands             = %Texinfo::Common::def_commands;    
 
-sub convert ($);
+sub convert ($;$);
 # Following subroutines deal with transforming a texinfo tree into texinfo
 # text.  Should give the text that was used parsed, except for a few cases.
+# Second argument is undocumented for now, as it may change, for instance
+# become a hash if more has to be given.
 
 # expand a tree to the corresponding texinfo.
-sub convert ($)
+sub convert ($;$)
 {
   my $root = shift;
+  my $fix = shift;
   die "convert: root undef\n" if (!defined($root));
   die "convert: bad root type (".ref($root).") $root\n" 
      if (ref($root) ne 'HASH');
@@ -71,12 +74,15 @@ sub convert ($)
   if (defined($root->{'text'})) {
     $result .= $root->{'text'};
   } else {
+    if ($fix and $root->{'extra'} and $root->{'extra'}->{'invalid_nesting'}) {
+      return '';
+    }
     if ($root->{'cmdname'} 
        or ($root->{'type'} and ($root->{'type'} eq 'def_line'
                                 or $root->{'type'} eq 'menu_entry'
                                 or $root->{'type'} eq 'menu_comment'))) {
       #print STDERR "cmd: $root->{'cmdname'}\n";
-      $result .= _expand_cmd_args_to_texi($root);
+      $result .= _expand_cmd_args_to_texi($root, $fix);
     }
     $result .= '{' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
     #print STDERR "$root->{'contents'} @{$root->{'contents'}}\n" if (defined($root->{'contents'}));
@@ -84,14 +90,16 @@ sub convert ($)
       die "bad contents type(" . ref($root->{'contents'})
           . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
       foreach my $child (@{$root->{'contents'}}) {
-        $result .= convert($child);
+        $result .= convert($child, $fix);
       }
     }
     $result .= '}' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
     if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))
-        and $block_commands{$root->{'cmdname'}} eq 'raw') {
+        and ($block_commands{$root->{'cmdname'}} eq 'raw' 
+          or ($fix and !($root->{'extra'} and $root->{'extra'}->{'end_command'})))) {
       $result .= '@end '.$root->{'cmdname'};
-    }
+      $result .= "\n" if ($block_commands{$root->{'cmdname'}} ne 'raw');
+    } 
   }
   #print STDERR "convert result: $result\n";
   return $result;
@@ -99,8 +107,9 @@ sub convert ($)
 
 
 # expand a command argument as texinfo.
-sub _expand_cmd_args_to_texi ($) {
+sub _expand_cmd_args_to_texi ($;$) {
   my $cmd = shift;
+  my $fix = shift;
   my $cmdname = $cmd->{'cmdname'};
   $cmdname = '' if (!$cmd->{'cmdname'}); 
   my $result = '';
@@ -118,7 +127,7 @@ sub _expand_cmd_args_to_texi ($) {
               or $block_commands{$cmdname} eq 'multitable')
          and $cmd->{'args'}) {
      foreach my $arg (@{$cmd->{'args'}}) {
-        $result .= convert ($arg);
+        $result .= convert ($arg, $fix);
     }
   # for misc_commands with type special
   } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
@@ -129,7 +138,7 @@ sub _expand_cmd_args_to_texi ($) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
       if (ref($cmd->{'args'}) ne 'ARRAY');
     foreach my $arg (@{$cmd->{'args'}}) {
-       $result .= convert ($arg) . ',';
+       $result .= convert ($arg, $fix) . ',';
     }
     $result =~ s/,$//;
   } elsif (defined($cmd->{'args'})) {
@@ -149,7 +158,7 @@ sub _expand_cmd_args_to_texi ($) {
         $result .= ',' if ($arg_nr);
         $arg_nr++;
       }
-      $result .= convert ($arg);
+      $result .= convert ($arg, $fix);
     }
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};

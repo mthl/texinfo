@@ -652,7 +652,7 @@ sub _complete_line_nr($$;$$$)
 
 # entry point for text fragments.
 # Used in tests.
-# Note that it has not asociated root type a opposed to parse_texi_line
+# Note that it has no associated root type a opposed to parse_texi_line
 # and parse_texi_file.
 sub parse_texi_text($$;$$$$)
 {

@@ -963,7 +963,7 @@ while(@input_files)
   }
 
   if (defined(get_conf('MACRO_EXPAND'))) {
-    my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree);
+    my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree, 1);
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
     my $macro_expand_fh = Texinfo::Common::open_out($parser, 
