@@ -94,6 +94,7 @@ deffn
 '],
 ['leading_space_in_def_arg',
 '@deffn category { name} arg
+@end deffn
 '],
 ['defx_after_comment',
 '@deffn fset @var{i} a g

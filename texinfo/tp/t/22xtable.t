@@ -37,6 +37,7 @@ VTable
 @itemx second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b
 
 Text.
+@end table
 '],
 ['inter_item_commands_in_table',
 '@vtable @code

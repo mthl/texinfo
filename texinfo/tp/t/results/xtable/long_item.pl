@@ -151,6 +151,46 @@ $result_trees{'long_item'} = {
           ],
           'parent' => {},
           'type' => 'table_entry'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'extra' => {
+                    'command' => {}
+                  },
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'table'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'table',
+            'text_arg' => 'table'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
@@ -159,7 +199,8 @@ $result_trees{'long_item'} = {
             {}
           ]
         ],
-        'command_as_argument' => {}
+        'command_as_argument' => {},
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -196,8 +237,16 @@ $result_trees{'long_item'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'content
 $result_trees{'long_item'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'long_item'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'long_item'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'long_item'}{'contents'}[0]{'contents'}[0];
 $result_trees{'long_item'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'long_item'}{'contents'}[0];
+$result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'long_item'}{'contents'}[0]{'contents'}[1];
+$result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'long_item'}{'contents'}[0]{'contents'}[1];
+$result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'long_item'}{'contents'}[0];
+$result_trees{'long_item'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'long_item'}{'contents'}[0];
 $result_trees{'long_item'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'long_item'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'long_item'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'long_item'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'long_item'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'long_item'}{'contents'}[0]{'contents'}[1];
 $result_trees{'long_item'}{'contents'}[0]{'parent'} = $result_trees{'long_item'};
 
 $result_texis{'long_item'} = '@table @emph
@@ -215,17 +264,7 @@ second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b
 Text.
 ';
 
-$result_errors{'long_item'} = [
-  {
-    'error_line' => ':5: No matching `@end table\'
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => 'No matching `@end table\'',
-    'type' => 'error'
-  }
-];
+$result_errors{'long_item'} = [];
 
 
 
