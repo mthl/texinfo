@@ -204,7 +204,6 @@ $result_texis{'node_in_copying_not_closed'} = '@copying
 This is an unterminatted copyright notice
 
 
-@end copying
 @node Top
 @top Top section
 

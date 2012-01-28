@@ -122,7 +122,6 @@ $result_texis{'section_in_flushright'} = '@flushright
 
 text flushed right
 
-@end flushright
 @section a section
 ';
 

@@ -150,7 +150,6 @@ $result_texis{'block_command_alias'} = '@alias lang=lisp
 @lisp
 in lang
 @end lang
-@end lisp
 ';
 
 

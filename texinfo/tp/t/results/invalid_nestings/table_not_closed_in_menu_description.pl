@@ -289,7 +289,6 @@ $result_texis{'table_not_closed_in_menu_description'} = '@menu
 * (gcc):: text @table @asis
 @item item
 table line
-@end table
 @end menu
 ';
 

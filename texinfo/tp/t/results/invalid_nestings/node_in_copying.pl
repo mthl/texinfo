@@ -106,7 +106,6 @@ $result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'no
 $result_trees{'node_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'node_in_copying'};
 
 $result_texis{'node_in_copying'} = '@copying
-@end copying
 @node node
 
 ';

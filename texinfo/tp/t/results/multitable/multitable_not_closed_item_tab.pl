@@ -187,7 +187,6 @@ $result_trees{'multitable_not_closed_item_tab'}{'contents'}[0]{'parent'} = $resu
 
 $result_texis{'multitable_not_closed_item_tab'} = '@multitable {r} {t}
 @item rt @tab ds
-@end multitable
 ';
 
 

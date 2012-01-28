@@ -122,7 +122,6 @@ $result_texis{'section_in_copying'} = '@copying
 
 in copying
 
-@end copying
 @section section
 ';
 

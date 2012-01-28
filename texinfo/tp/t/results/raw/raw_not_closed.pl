@@ -64,7 +64,6 @@ $result_texis{'raw_not_closed'} = '@html
 
 This is some html
 <address> my address </address>
-@end html
 ';
 
 

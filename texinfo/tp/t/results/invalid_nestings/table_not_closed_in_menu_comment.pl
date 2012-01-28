@@ -323,7 +323,6 @@ $result_texis{'table_not_closed_in_menu_comment'} = '@menu
 @item item
 comment
 * (manual2)::
-@end table
 @end menu
 ';
 

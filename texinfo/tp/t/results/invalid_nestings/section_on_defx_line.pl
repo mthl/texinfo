@@ -254,8 +254,7 @@ $result_trees{'section_on_defx_line'}{'contents'}[1]{'line_nr'} = $result_trees{
 $result_trees{'section_on_defx_line'}{'contents'}[1]{'parent'} = $result_trees{'section_on_defx_line'};
 
 $result_texis{'section_on_defx_line'} = '@deffn h j k l 
-@deffnx a b @end deffn
-@section s
+@deffnx a b @section s
 
 Something
 

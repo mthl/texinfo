@@ -54,8 +54,7 @@ $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[1]{'p
 $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_entry_beginning'};
 
 $result_texis{'menu_no_closed_entry_beginning'} = '@menu
-* node@end menu
-';
+* node';
 
 
 $result_texts{'menu_no_closed_entry_beginning'} = '* node';

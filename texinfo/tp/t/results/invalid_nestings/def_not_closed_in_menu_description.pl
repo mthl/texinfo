@@ -288,7 +288,6 @@ $result_texis{'def_not_closed_in_menu_description'} = '@menu
 * (info):: before deff @deffn bidule truc chose
 
 deffn text
-@end deffn
 @end menu
 ';
 

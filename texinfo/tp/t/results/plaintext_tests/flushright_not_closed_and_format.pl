@@ -147,7 +147,6 @@ flushright
 @quotation 
 A quot---ation
 @end quotation
-@end flushright
 ';
 
 

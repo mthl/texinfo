@@ -2047,7 +2047,6 @@ $result_texis{'center'} = '@center @indent @titlefont{in titlefont} @anchor{in a
 @center center @cindex cindex
 
 @center @quotation
-@end quotation
 in quotation
 
 @center center @center second center
@@ -2087,7 +2086,6 @@ End of samp
 @end multitable
 
 @center before the table @table @asis
-@end table
  item in center
 Line in center
  second item

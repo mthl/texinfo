@@ -58,8 +58,7 @@ $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'parent'} = 
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'line_nr'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'parent'} = $result_trees{'end_of_line_end_file'};
 
-$result_texis{'end_of_line_end_file'} = '@deffn category deffn_name arguments @end deffn
-';
+$result_texis{'end_of_line_end_file'} = '@deffn category deffn_name arguments ';
 
 
 $result_texts{'end_of_line_end_file'} = '';

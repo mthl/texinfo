@@ -680,39 +680,30 @@ $result_trees{'block_not_matching'}{'contents'}[14]{'parent'} = $result_trees{'b
 
 $result_texis{'block_not_matching'} = '@quotation
 A quotation
-@end quotation
 
 @deffn {Function Reference} print_navigation $filehandle
 Text
-@end deffn
 
 @table @asis
 @item item
 line
-@end table
 
 @table @emph
 @item ref
 @example
 example
-@end example
-@end table
 
 @group
 in group
-@end group
 
 @group
 in group 2
-@end group
 
 @cartouche
 cartouche
-@end cartouche
 
 @cartouche
 carouche
-@end cartouche
 ';
 
 

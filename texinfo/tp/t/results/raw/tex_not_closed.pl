@@ -63,7 +63,6 @@ $result_trees{'tex_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'tex_no
 $result_texis{'tex_not_closed'} = '@tex
 
 This is some \\LaTeX{}
-@end tex
 ';
 
 

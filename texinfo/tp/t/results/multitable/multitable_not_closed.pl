@@ -96,7 +96,6 @@ $result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[1]{
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed'};
 
 $result_texis{'multitable_not_closed'} = '@multitable {r} {t}
-@end multitable
 ';
 
 

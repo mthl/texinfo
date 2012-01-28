@@ -389,8 +389,6 @@ Some text.
 @item first item
 @item an item
 
-@end enumerate
-@end table
 @end example
 ';
 

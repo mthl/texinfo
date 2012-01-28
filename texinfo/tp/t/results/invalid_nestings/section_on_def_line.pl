@@ -140,8 +140,7 @@ $result_trees{'section_on_def_line'}{'contents'}[3]{'contents'}[0]{'parent'} = $
 $result_trees{'section_on_def_line'}{'contents'}[3]{'parent'} = $result_trees{'section_on_def_line'};
 $result_trees{'section_on_def_line'}{'contents'}[4]{'parent'} = $result_trees{'section_on_def_line'};
 
-$result_texis{'section_on_def_line'} = '@deffn a b @end deffn
-@section s
+$result_texis{'section_on_def_line'} = '@deffn a b @section s
 
 Something
 

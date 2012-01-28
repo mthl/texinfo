@@ -348,7 +348,6 @@ $result_trees{'table_on_item_line'}{'contents'}[1]{'parent'} = $result_trees{'ta
 
 $result_texis{'table_on_item_line'} = '@table @asis
 @item item @table @asis
-@end table
    @item in nested table item
    in nested table line
    @end table

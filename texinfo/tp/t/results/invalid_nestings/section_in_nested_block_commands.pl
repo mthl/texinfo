@@ -268,8 +268,6 @@ table line
 
 in quotation
 
-@end quotation
-@end table
 @section a section
 ';
 

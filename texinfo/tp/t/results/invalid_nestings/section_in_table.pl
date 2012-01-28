@@ -237,7 +237,6 @@ $result_trees{'section_in_table'}{'contents'}[1]{'parent'} = $result_trees{'sect
 $result_texis{'section_in_table'} = '@table @asis
 @item Before
 
-@end table
 @section Subsection
 
  After

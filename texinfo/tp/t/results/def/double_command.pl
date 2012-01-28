@@ -761,7 +761,6 @@ aaa
 @end deffn
 
 @deffn func aaaa args  @defvr c--ategory d--efvr_name
-@end defvr
 bbb
 @end deffn
 ';

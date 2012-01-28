@@ -89,10 +89,8 @@ sub convert ($)
     }
     $result .= '}' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
     if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))
-        and !($root->{'extra'} and $root->{'extra'}->{'end_command'})) {
+        and $block_commands{$root->{'cmdname'}} eq 'raw') {
       $result .= '@end '.$root->{'cmdname'};
-      # a missing @end
-      $result .= "\n" if ($block_commands{$root->{'cmdname'}} ne 'raw');
     }
   }
   #print STDERR "convert result: $result\n";
@@ -122,6 +120,7 @@ sub _expand_cmd_args_to_texi ($) {
      foreach my $arg (@{$cmd->{'args'}}) {
         $result .= convert ($arg);
     }
+  # for misc_commands with type special
   } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
            and defined($cmd->{'extra'}->{'arg_line'})) {
     $result .= $cmd->{'extra'}->{'arg_line'};
