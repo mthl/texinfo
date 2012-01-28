@@ -63,7 +63,7 @@ sub __($)
 
 sub pod2texi_help()
 {
-  print __("Usage: pod2texi [OPTION]... POD-FILE...
+  return __("Usage: pod2texi [OPTION]... POD-FILE...
 
 Translate Pod to Texinfo.  If the base level is higher than 0, 
 a main manual including all the files is done otherwise all
@@ -72,14 +72,15 @@ manuals are standalone (the default).
 Options:
     --base-level=NUM        level of the head1 commands.
     --unnumbered-sections   use unumbered sections.
-    --output=NAME           output name for the first or the main manual.
+    --output=NAME           output to <NAME> for the first or the main manual
+                            instead of standard out.
     --top                   top for the main manual.
     --version               display version information and exit.\n");
 }
 
 my $base_level = 0;
 my $unnumbered_sections = 0;
-my $output = undef;
+my $output = '-';
 my $top = 'top';
 
 my $result_options = Getopt::Long::GetOptions (
@@ -129,7 +130,7 @@ my @included;
 foreach my $file (@input_files) {
   my $outfile;
   my $name = shift @all_manual_names;
-  if ($base_level == 0 and !$file_nr and defined($output)) {
+  if ($base_level == 0 and !$file_nr) {
     $outfile = $output;
   } else {
     if (defined($name)) {
@@ -169,7 +170,6 @@ foreach my $file (@input_files) {
 
 my $STDOUT_DOCU_NAME = 'stdout';
 if ($base_level > 0) {
-  $output = '-' if (!defined($output));
   my $fh;
   if ($output ne '-') {
     open (OUT, ">$output") or die "Open $output: $!\n";
@@ -235,6 +235,7 @@ rendered as a fragment of a Texinfo manual.
 =item B<--output>=I<NAME>
 
 Name for the first manual, or the main manual if there is a main manual.
+Default is output on standard out.
 
 =item B<--unnumbered-sections>
 
