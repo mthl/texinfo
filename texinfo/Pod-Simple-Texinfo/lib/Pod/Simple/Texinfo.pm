@@ -29,7 +29,7 @@ use Carp qw(cluck);
 use Pod::Simple::PullParser ();
 
 use Texinfo::Convert::NodeNameNormalization qw(normalize_node);
-use Texinfo::Parser qw(parse_texi_line);
+use Texinfo::Parser qw(parse_texi_line parse_texi_text);
 use Texinfo::Convert::Texinfo;
 use Texinfo::Common qw(protect_comma_in_tree);
 
@@ -288,7 +288,18 @@ sub _prepare_anchor($$)
                                           $texinfo_node_name,
                                           $self->texinfo_sectioning_base_level);
 
-  my $node_tree = parse_texi_line(undef, $texinfo_node_name);
+  # Pod may be more forgiven than Texinfo, so we go through
+  # a normalization, by parsing and converting back to Texinfo
+  my $anchor_tree = parse_texi_text(undef, "\@anchor{$texinfo_node_name}");
+  my $anchor = Texinfo::Convert::Texinfo::convert($anchor_tree, 1);
+  my $node = $anchor;
+  $node =~ s/^\@anchor\{(.*)\}$/$1/s;
+
+  if ($node !~ /\S/) {
+    return '';
+  }
+  # Now we know that we have something.
+  my $node_tree = parse_texi_line(undef, $node);
   my $normalized_base = normalize_node($node_tree);
   my $normalized = $normalized_base;
   my $number_appended = 0;
@@ -303,7 +314,8 @@ sub _prepare_anchor($$)
   }
   $node_tree = protect_comma_in_tree(undef, $node_tree);
   $self->{'texinfo_nodes'}->{$normalized} = $node_tree;
-  return Texinfo::Convert::Texinfo::convert($node_tree);
+  my $final_node_name = Texinfo::Convert::Texinfo::convert($node_tree, 1);
+  return $final_node_name;
 }
 
 # from Pod::Simple::HTML general_url_escape
@@ -387,6 +399,10 @@ sub _convert_pod($)
           if ($linktype eq 'man') {
             # NOTE: the .'' is here to force the $token->attr to ba a real
             # string and not an object.
+            # NOTE 2: It is not clear that setting the url should be done
+            # here, maybe this should be in the Texinfo HTML converter.
+            # However, there is a 'man' category here and not in Texinfo,
+            # so the information is more precise in pod.
             my $replacement_arg = $token->attr('to').'';
             # regexp from Pod::Simple::HTML resolve_man_page_link
             # since it is very small, it is likely that copyright cannot be
@@ -495,9 +511,17 @@ sub _convert_pod($)
           if ($head_commands_level{$tagname} or $tagname eq 'item-text') {
             chomp ($result);
             $result =~ s/\n/ /g;
+            $result =~ s/^\s*//;
+            $result =~ s/\s*$//;
             my $node_name = _prepare_anchor ($self, $result);
             #print $fh "\@node $node_name\n";
-            $result .= "\n\@anchor{$node_name}";
+            my $anchor;
+            if ($node_name =~ /\S/) {
+              $anchor = "\@anchor{$node_name}";
+            } else {
+              $anchor = '';
+            }
+            $result .= "\n$anchor";
           }
           _output($fh, \@accumulated_output, "\@$command $result\n$out\n");
         } elsif ($tagname eq 'Para') {

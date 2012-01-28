@@ -6,7 +6,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 4 };
+BEGIN { plan tests => 7 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
@@ -100,6 +100,36 @@ Para
 @end table
 
 ', 'index in item-text');
+
+run_test('=over
+
+=item L</somewhere>
+', '@table @asis
+@item @ref{somewhere}
+
+
+@end table
+
+', 'ref in item');
+
+run_test('=head1 NAME
+
+=head1 NAME 
+', '@chapter NAME
+@anchor{NAME}
+
+@chapter NAME
+@anchor{NAME 1}
+
+', 'double ref');
+
+run_test('=head1 head with
+new line
+', '@chapter head with new line
+@anchor{head with new line}
+
+', 'head with new line');
+
 
 1;
 
