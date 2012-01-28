@@ -123,7 +123,7 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'BATCH', 'SILENT'
 );
 
-# documented as pod
+# documented in the Texinfo::Parser pod section
 our @parser_options = ('EXPANDED_FORMATS', 'GETTEXT', 'INCLUDE_DIRECTORIES',
   'ALIASES', 'CLICKSTYLE', 'DOCUMENTLANGUAGE', 'EXPLAINED_COMMANDS',
   'ENCODING_NAME', 'PERL_ENCODING', 'INDICES', 'KBDINPUTSTYLE', 'LABELS',
@@ -135,6 +135,10 @@ my @obsolete_variables = ('TOP_HEADING_AT_BEGINNING', 'USE_SECTIONS',
   'NEW_CROSSREF_STYLE',);
 
 my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE');
+
+my @formats_settable = (
+  'DEBUGCOUNT', 'DEBUGTREE', 'RAWTEXT', 'TEXTCONTENT'
+);
 
 my @variable_settables = (
   'DEBUG', 'FRAMES', 'FRAMESET_DOCTYPE', 'DOCTYPE', 'TEST', 'DUMP_TEXI',
@@ -174,10 +178,9 @@ my @variable_settables = (
   'BEFORE_TOC_LINES', 'AFTER_TOC_LINES', 
   'SORT_ELEMENT_COUNT', 'SORT_ELEMENT_COUNT_WORDS',
   'KEEP_TOP_EXTERNAL_REF',
+  'TEXI2HTML',
 # FIXME document
   'TEXTCONTENT_COMMENT',
-# from command line, but also in converter.
-  'TEXI2HTML',
 # FIXME Not strings. To be documented.
   'LINKS_BUTTONS', 'TOP_BUTTONS', 'SECTION_BUTTONS', 'BUTTONS_TEXT',
   'BUTTONS_ACCESSKEY', 'BUTTONS_REL', 'BUTTONS_GOTO',
@@ -194,6 +197,7 @@ my %valid_options;
 foreach my $var (@document_settable_at_commands, 
          @document_settable_unique_at_commands,
          @command_line_settables, @variable_settables, @parser_options,
+         @formats_settable,
          @obsolete_variables, @variable_settables_not_used) {
   $valid_options{$var} = 1;
 }

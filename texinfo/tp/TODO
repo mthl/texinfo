@@ -109,10 +109,6 @@ sectioning_command_target_name
 node_target_name
 
 
-Check that configuration variables that may only be set on the command 
-line should not be handled more like usual configuration variables.
-
-
 DocBook
 =======
 

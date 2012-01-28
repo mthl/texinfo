@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-01-22 00:21+0100\n"
+"POT-Creation-Date: 2012-01-28 12:42+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Harmath Dénes <harmathdenes@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -16,89 +16,89 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tp/Texinfo/Common.pm:536 tp/Texinfo/Common.pm:541
+#: tp/Texinfo/Common.pm:542 tp/Texinfo/Common.pm:547
 #, fuzzy
 msgid "Function"
 msgstr "Szakasz"
 
-#: tp/Texinfo/Common.pm:537
+#: tp/Texinfo/Common.pm:543
 msgid "Macro"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:538
+#: tp/Texinfo/Common.pm:544
 msgid "Special Form"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:539 tp/Texinfo/Common.pm:542
+#: tp/Texinfo/Common.pm:545 tp/Texinfo/Common.pm:548
 msgid "Variable"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:540
+#: tp/Texinfo/Common.pm:546
 #, fuzzy
 msgid "User Option"
 msgstr "Szülő szakasz"
 
-#: tp/Texinfo/Common.pm:543 tp/Texinfo/Common.pm:544
+#: tp/Texinfo/Common.pm:549 tp/Texinfo/Common.pm:550
 msgid "Instance Variable"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:545 tp/Texinfo/Common.pm:546
+#: tp/Texinfo/Common.pm:551 tp/Texinfo/Common.pm:552
 msgid "Method"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:953
+#: tp/Texinfo/Common.pm:959
 #, fuzzy, perl-brace-format
 msgid "{category} on {class}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Common.pm:960
+#: tp/Texinfo/Common.pm:966
 #, fuzzy, perl-brace-format
 msgid "{category} of {class}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Common.pm:977
+#: tp/Texinfo/Common.pm:983
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1008 tp/Texinfo/Convert/Plaintext.pm:857
+#: tp/Texinfo/Common.pm:1014 tp/Texinfo/Convert/Plaintext.pm:864
 #: tp/Texinfo/Convert/HTML.pm:510
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1012 tp/Texinfo/Convert/Plaintext.pm:862
+#: tp/Texinfo/Common.pm:1018 tp/Texinfo/Convert/Plaintext.pm:869
 #: tp/Texinfo/Convert/HTML.pm:516
 #, fuzzy, perl-brace-format
 msgid "{number} {section_title}"
 msgstr "{style}: {caption_first_line}"
 
-#: tp/Texinfo/Common.pm:1149
+#: tp/Texinfo/Common.pm:1155
 #, fuzzy, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1153
+#: tp/Texinfo/Common.pm:1159
 #, fuzzy, perl-brace-format
 msgid "{float_type}: "
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1158
+#: tp/Texinfo/Common.pm:1164
 #, fuzzy, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1162
+#: tp/Texinfo/Common.pm:1168
 #, fuzzy, perl-brace-format
 msgid "{float_type}\n"
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1168
+#: tp/Texinfo/Common.pm:1174
 #, fuzzy, perl-brace-format
 msgid "{float_number}: "
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1171
+#: tp/Texinfo/Common.pm:1177
 #, fuzzy, perl-brace-format
 msgid "{float_number}\n"
 msgstr "{style} {number}"
@@ -210,17 +210,17 @@ msgstr "ld. ezt a szakaszt: `{section}' itt: @cite{{book}}"
 msgid "see section ``{section_name}'' in @cite{{book}}"
 msgstr "ld. ezt a szakaszt: `{section}' itt: @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:817 tp/Texinfo/Convert/HTML.pm:3162
+#: tp/Texinfo/Convert/DocBook.pm:817 tp/Texinfo/Convert/HTML.pm:3167
 #, perl-brace-format
 msgid "@cite{{book}}"
 msgstr "@cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:821 tp/Texinfo/Convert/HTML.pm:3139
+#: tp/Texinfo/Convert/DocBook.pm:821 tp/Texinfo/Convert/HTML.pm:3144
 #, perl-brace-format
 msgid "See @cite{{book}}"
 msgstr "Ld. @cite{{book}}"
 
-#: tp/Texinfo/Convert/DocBook.pm:825 tp/Texinfo/Convert/HTML.pm:3116
+#: tp/Texinfo/Convert/DocBook.pm:825 tp/Texinfo/Convert/HTML.pm:3121
 #, perl-brace-format
 msgid "see @cite{{book}}"
 msgstr "ld. @cite{{book}}"
@@ -240,13 +240,13 @@ msgstr "Ld. {title_ref}"
 msgid "see {title_ref}"
 msgstr "ld. {title_ref}"
 
-#: tp/Texinfo/Convert/DocBook.pm:978 tp/Texinfo/Convert/Plaintext.pm:1600
+#: tp/Texinfo/Convert/DocBook.pm:978 tp/Texinfo/Convert/Plaintext.pm:1607
 #, fuzzy, perl-brace-format
 msgid "{abbr_or_acronym} ({explanation})"
 msgstr "{acronym_like} ({explanation})"
 
-#: tp/Texinfo/Convert/DocBook.pm:1107 tp/Texinfo/Convert/Plaintext.pm:1726
-#: tp/Texinfo/Convert/HTML.pm:3468
+#: tp/Texinfo/Convert/DocBook.pm:1107 tp/Texinfo/Convert/Plaintext.pm:1733
+#: tp/Texinfo/Convert/HTML.pm:3473
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr "@b{{quotation_arg}:} "
@@ -255,142 +255,142 @@ msgstr "@b{{quotation_arg}:} "
 msgid "(outside of any node)"
 msgstr "(bármelyik csomóponton kívül)"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1410
+#: tp/Texinfo/Convert/Plaintext.pm:1417
 #, perl-brace-format
 msgid "{name} @indicateurl{{email}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1413
+#: tp/Texinfo/Convert/Plaintext.pm:1420
 #, perl-brace-format
 msgid "@indicateurl{{email}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1435
+#: tp/Texinfo/Convert/Plaintext.pm:1442
 #, perl-brace-format
 msgid "{text} ({url})"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1440
+#: tp/Texinfo/Convert/Plaintext.pm:1447
 #, perl-brace-format
 msgid "@code{{url}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1651 tp/Texinfo/Convert/HTML.pm:1401
+#: tp/Texinfo/Convert/Plaintext.pm:1658 tp/Texinfo/Convert/HTML.pm:1406
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr "@{Nincs értéke ennek: `{value}'@}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1989
+#: tp/Texinfo/Convert/Plaintext.pm:1996
 #, perl-brace-format
 msgid "* {float_type} {float_number}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1994
+#: tp/Texinfo/Convert/Plaintext.pm:2001
 #, perl-brace-format
 msgid "* {float_type}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2002
+#: tp/Texinfo/Convert/Plaintext.pm:2009
 #, perl-brace-format
 msgid "*  {float_number}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2006
+#: tp/Texinfo/Convert/Plaintext.pm:2013
 #, perl-brace-format
 msgid "* : {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2203
+#: tp/Texinfo/Convert/Plaintext.pm:2210
 #, perl-brace-format
 msgid "@tie{ }-- {category}: {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2208
+#: tp/Texinfo/Convert/Plaintext.pm:2215
 #, perl-brace-format
 msgid "@tie{ }-- {category}: {name}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2221
+#: tp/Texinfo/Convert/Plaintext.pm:2228
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category}:@*{type}@*{name} {arguments}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2224
+#: tp/Texinfo/Convert/Plaintext.pm:2231
 #, perl-brace-format
 msgid "@tie{ }-- {category}: {type} {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2233
+#: tp/Texinfo/Convert/Plaintext.pm:2240
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category}:@*{type}@*{name}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2236
+#: tp/Texinfo/Convert/Plaintext.pm:2243
 #, perl-brace-format
 msgid "@tie{ }-- {category}: {type} {name}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2244
+#: tp/Texinfo/Convert/Plaintext.pm:2251
 #, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2250
+#: tp/Texinfo/Convert/Plaintext.pm:2257
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {name}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2259
+#: tp/Texinfo/Convert/Plaintext.pm:2266
 #, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2265
+#: tp/Texinfo/Convert/Plaintext.pm:2272
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {name}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2280
+#: tp/Texinfo/Convert/Plaintext.pm:2287
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} on {class}:@*{type}@*{name} {arguments}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2284
+#: tp/Texinfo/Convert/Plaintext.pm:2291
 #, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {type} {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2295
+#: tp/Texinfo/Convert/Plaintext.pm:2302
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} on {class}:@*{type}@*{name}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2299
+#: tp/Texinfo/Convert/Plaintext.pm:2306
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {type} {name}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2313
+#: tp/Texinfo/Convert/Plaintext.pm:2320
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} of {class}:@*{type}@*{name} {arguments}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2317
+#: tp/Texinfo/Convert/Plaintext.pm:2324
 #, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {type} {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2328
+#: tp/Texinfo/Convert/Plaintext.pm:2335
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} of {class}:@*{type}@*{name}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2332
+#: tp/Texinfo/Convert/Plaintext.pm:2339
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {type} {name}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2640 tp/Texinfo/Convert/HTML.pm:2723
+#: tp/Texinfo/Convert/Plaintext.pm:2647 tp/Texinfo/Convert/HTML.pm:2728
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -619,216 +619,216 @@ msgstr "Rövid tartalomjegyzék"
 msgid "Footnotes"
 msgstr "Lábjegyzet"
 
-#: tp/Texinfo/Convert/HTML.pm:1469
+#: tp/Texinfo/Convert/HTML.pm:1474
 #, fuzzy, perl-brace-format
 msgid "{explained_string} ({explanation})"
 msgstr "{acronym_like} ({explanation})"
 
-#: tp/Texinfo/Convert/HTML.pm:3028
+#: tp/Texinfo/Convert/HTML.pm:3033
 #, perl-brace-format
 msgid "see section {reference_name}"
 msgstr "ld. ezt a szakaszt: {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3031
+#: tp/Texinfo/Convert/HTML.pm:3036
 #, perl-brace-format
 msgid "see {reference_name}"
 msgstr "ld. {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3036
+#: tp/Texinfo/Convert/HTML.pm:3041
 #, perl-brace-format
 msgid "See section {reference_name}"
 msgstr "Ld. ezt a szakaszt: {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3039
+#: tp/Texinfo/Convert/HTML.pm:3044
 #, perl-brace-format
 msgid "See {reference_name}"
 msgstr "Ld. {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3043
+#: tp/Texinfo/Convert/HTML.pm:3048
 #, perl-brace-format
 msgid "{reference_name}"
 msgstr "{reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3104
+#: tp/Texinfo/Convert/HTML.pm:3109
 #, fuzzy, perl-brace-format
 msgid "see {reference} in @cite{{book}}"
 msgstr "ld. {node_file_href} @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3108
+#: tp/Texinfo/Convert/HTML.pm:3113
 #, fuzzy, perl-brace-format
 msgid "see @cite{{book_reference}}"
 msgstr "ld. @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3112
+#: tp/Texinfo/Convert/HTML.pm:3117
 #, fuzzy, perl-brace-format
 msgid "see `{section}' in @cite{{book}}"
 msgstr "szakasz: `{section}' itt: @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3119
+#: tp/Texinfo/Convert/HTML.pm:3124
 #, fuzzy, perl-brace-format
 msgid "see {reference}"
 msgstr "ld. {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3122
+#: tp/Texinfo/Convert/HTML.pm:3127
 #, fuzzy, perl-brace-format
 msgid "see `{section}'"
 msgstr "Szülő szakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:3127
+#: tp/Texinfo/Convert/HTML.pm:3132
 #, fuzzy, perl-brace-format
 msgid "See {reference} in @cite{{book}}"
 msgstr "See {node_file_href} @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3131
+#: tp/Texinfo/Convert/HTML.pm:3136
 #, fuzzy, perl-brace-format
 msgid "See @cite{{book_reference}}"
 msgstr "Ld. @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3135
+#: tp/Texinfo/Convert/HTML.pm:3140
 #, fuzzy, perl-brace-format
 msgid "See `{section}' in @cite{{book}}"
 msgstr "Ld. ezt a szakaszt: `{section}' itt: @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3142
+#: tp/Texinfo/Convert/HTML.pm:3147
 #, fuzzy, perl-brace-format
 msgid "See {reference}"
 msgstr "Ld. {reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3145
+#: tp/Texinfo/Convert/HTML.pm:3150
 #, fuzzy, perl-brace-format
 msgid "See `{section}'"
 msgstr "Szülő szakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:3150
+#: tp/Texinfo/Convert/HTML.pm:3155
 #, fuzzy, perl-brace-format
 msgid "{reference} in @cite{{book}}"
 msgstr "{node_file_href} @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3154
+#: tp/Texinfo/Convert/HTML.pm:3159
 #, fuzzy, perl-brace-format
 msgid "@cite{{book_reference}}"
 msgstr "@cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3158
+#: tp/Texinfo/Convert/HTML.pm:3163
 #, fuzzy, perl-brace-format
 msgid "`{section}' in @cite{{book}}"
 msgstr "szakasz: `{section}' itt: @cite{{book}}"
 
-#: tp/Texinfo/Convert/HTML.pm:3165
+#: tp/Texinfo/Convert/HTML.pm:3170
 #, fuzzy, perl-brace-format
 msgid "{reference}"
 msgstr "{reference_name}"
 
-#: tp/Texinfo/Convert/HTML.pm:3168
+#: tp/Texinfo/Convert/HTML.pm:3173
 #, fuzzy, perl-brace-format
 msgid "`{section}'"
 msgstr "Szülő szakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:3281
+#: tp/Texinfo/Convert/HTML.pm:3286
 msgid "Jump to"
 msgstr "Ugorj ide"
 
-#: tp/Texinfo/Convert/HTML.pm:3289
+#: tp/Texinfo/Convert/HTML.pm:3294
 msgid "Index Entry"
 msgstr "Tárgymutató-bejegyzés"
 
-#: tp/Texinfo/Convert/HTML.pm:3291
+#: tp/Texinfo/Convert/HTML.pm:3296
 msgid "Section"
 msgstr "Szakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:3909
+#: tp/Texinfo/Convert/HTML.pm:3914
 #, fuzzy, perl-brace-format
 msgid "{category}: @strong{{name}} @emph{{arguments}}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3914
+#: tp/Texinfo/Convert/HTML.pm:3919
 #, fuzzy, perl-brace-format
 msgid "{category}: @strong{{name}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3931
+#: tp/Texinfo/Convert/HTML.pm:3936
 #, fuzzy, perl-brace-format
 msgid "{category}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3935
+#: tp/Texinfo/Convert/HTML.pm:3940
 #, fuzzy, perl-brace-format
 msgid "{category}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3944
+#: tp/Texinfo/Convert/HTML.pm:3949
 #, fuzzy, perl-brace-format
 msgid "{category}:@* @emph{{type}}@* @strong{{name}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3947
+#: tp/Texinfo/Convert/HTML.pm:3952
 #, perl-brace-format
 msgid "{category}: @emph{{type}} @strong{{name}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:3955
+#: tp/Texinfo/Convert/HTML.pm:3960
 #, fuzzy, perl-brace-format
 msgid "{category} of {class}: @strong{{name}} @emph{{arguments}}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3961
+#: tp/Texinfo/Convert/HTML.pm:3966
 #, fuzzy, perl-brace-format
 msgid "{category} of {class}: @strong{{name}}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3970
+#: tp/Texinfo/Convert/HTML.pm:3975
 #, fuzzy, perl-brace-format
 msgid "{category} on {class}: @strong{{name}} @emph{{arguments}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3976
+#: tp/Texinfo/Convert/HTML.pm:3981
 #, fuzzy, perl-brace-format
 msgid "{category} on {class}: @strong{{name}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3991
+#: tp/Texinfo/Convert/HTML.pm:3996
 #, fuzzy, perl-brace-format
 msgid ""
 "{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:3995
+#: tp/Texinfo/Convert/HTML.pm:4000
 #, fuzzy, perl-brace-format
 msgid "{category} on {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:4006
+#: tp/Texinfo/Convert/HTML.pm:4011
 #, fuzzy, perl-brace-format
 msgid "{category} on {class}:@* @emph{{type}}@* @strong{{name}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:4010
+#: tp/Texinfo/Convert/HTML.pm:4015
 #, fuzzy, perl-brace-format
 msgid "{category} on {class}: @emph{{type}} @strong{{name}}"
 msgstr "{name} ezen: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:4024
+#: tp/Texinfo/Convert/HTML.pm:4029
 #, fuzzy, perl-brace-format
 msgid ""
 "{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:4028
+#: tp/Texinfo/Convert/HTML.pm:4033
 #, fuzzy, perl-brace-format
 msgid "{category} of {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:4039
+#: tp/Texinfo/Convert/HTML.pm:4044
 #, fuzzy, perl-brace-format
 msgid "{category} of {class}:@* @emph{{type}}@* @strong{{name}}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:4043
+#: tp/Texinfo/Convert/HTML.pm:4048
 #, fuzzy, perl-brace-format
 msgid "{category} of {class}: @emph{{type}} @strong{{name}}"
 msgstr "{name} típusa: {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:5999
+#: tp/Texinfo/Convert/HTML.pm:6004
 #, fuzzy, perl-brace-format
 msgid ""
 "This document was generated on @emph{@today{}} using @uref"
@@ -837,37 +837,37 @@ msgstr ""
 "Ezt a dokumentumot @i{{date}} napon generálta a(z) @uref{{program_homepage}, "
 "@i{{program}}}."
 
-#: tp/Texinfo/Convert/HTML.pm:6041
+#: tp/Texinfo/Convert/HTML.pm:6046
 #, perl-brace-format
 msgid "{title}: {element_text}"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6186
+#: tp/Texinfo/Convert/HTML.pm:6191
 #, perl-brace-format
 msgid "The node you are looking for is at {href}."
 msgstr "A keresett csomópont itt található: {href}."
 
-#: tp/Texinfo/Convert/HTML.pm:6256
+#: tp/Texinfo/Convert/HTML.pm:6261
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr "  A navigációs panelen levő gombok jelentése a következő:"
 
-#: tp/Texinfo/Convert/HTML.pm:6262
+#: tp/Texinfo/Convert/HTML.pm:6267
 msgid "Button"
 msgstr "Gomb"
 
-#: tp/Texinfo/Convert/HTML.pm:6263
+#: tp/Texinfo/Convert/HTML.pm:6268
 msgid "Name"
 msgstr "Név"
 
-#: tp/Texinfo/Convert/HTML.pm:6264
+#: tp/Texinfo/Convert/HTML.pm:6269
 msgid "Go to"
 msgstr "Cél"
 
-#: tp/Texinfo/Convert/HTML.pm:6265
+#: tp/Texinfo/Convert/HTML.pm:6270
 msgid "From 1.2.3 go to"
 msgstr "1.2.3-ból ide jutunk"
 
-#: tp/Texinfo/Convert/HTML.pm:6291
+#: tp/Texinfo/Convert/HTML.pm:6296
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -876,47 +876,47 @@ msgstr ""
 "  @strong{ Példánkban } az aktuális pozíció az @strong{ 1.2.3 alalszakasz } "
 "egy olyan dokumentumban, melynek szerkezete a következő:"
 
-#: tp/Texinfo/Convert/HTML.pm:6301
+#: tp/Texinfo/Convert/HTML.pm:6306
 msgid "Section One"
 msgstr "szakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6303
+#: tp/Texinfo/Convert/HTML.pm:6308
 msgid "Subsection One-One"
 msgstr "alszakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6310
+#: tp/Texinfo/Convert/HTML.pm:6315
 msgid "Subsection One-Two"
 msgstr "alszakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6312
+#: tp/Texinfo/Convert/HTML.pm:6317
 msgid "Subsubsection One-Two-One"
 msgstr "alalszakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6313
+#: tp/Texinfo/Convert/HTML.pm:6318
 msgid "Subsubsection One-Two-Two"
 msgstr "alalszakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6314
+#: tp/Texinfo/Convert/HTML.pm:6319
 msgid "Subsubsection One-Two-Three"
 msgstr "alalszakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6316
+#: tp/Texinfo/Convert/HTML.pm:6321
 msgid "Current Position"
 msgstr "Aktuális pozíció"
 
-#: tp/Texinfo/Convert/HTML.pm:6317
+#: tp/Texinfo/Convert/HTML.pm:6322
 msgid "Subsubsection One-Two-Four"
 msgstr "alalszakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6320
+#: tp/Texinfo/Convert/HTML.pm:6325
 msgid "Subsection One-Three"
 msgstr "alszakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6327
+#: tp/Texinfo/Convert/HTML.pm:6332
 msgid "Subsection One-Four"
 msgstr "alszakasz"
 
-#: tp/Texinfo/Convert/HTML.pm:6728
+#: tp/Texinfo/Convert/HTML.pm:6733
 msgid "Untitled Document"
 msgstr "Névtelen dokumentum"
 

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.415 2012-01-21 23:27:52 pertusus Exp $
+@c $Id: texinfo.txi,v 1.416 2012-01-28 12:41:30 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17030,9 +17030,9 @@ fall into four general categories:
 @itemize bullet
 @item
 Those changing fundamental program behavior; for example,
-@code{TEXI2HTML} for maximum compatibility with the
-@command{texi2html} program.  These variables may only be set on the
-command line.
+@code{TEXTCONTENT} to output the text content only, stripped of commands.
+As these variables sets the expanded format, they will only have an effect
+when set on the command line.
 
 @item
 Those associated with @@-commands; for example,
@@ -17076,16 +17076,11 @@ The sections below give the details for each of these.
 Instead of generating a regular output format, output a text representation
 of the tree obtained by parsing the input texinfo document.
 
-@item RAW_TEXT
+@item RAWTEXT
 @cindex raw text output
 Output raw text, with minimal formatting.  For example, footnotes are
 ignored and there is no paragraph filling.  This is used by the parser
-for file names and copyright text in HTML comments, for example
-
-@item TEXI2HTML
-@cindex compatibility, with @command{texi2html}
-Generate HTML and try to be as compatible as possible with
-@command{texi2html}.
+for file names and copyright text in HTML comments, for example.
 
 @item TEXTCONTENT
 @cindex spell checking
@@ -17552,6 +17547,11 @@ output to a reference file, as is done for the tests.
 
 @item TEXI2DVI
 Name of the command used to produce PDF and DVI.
+
+@item TEXI2HTML
+@cindex compatibility, with @command{texi2html}
+Generate HTML and try to be as compatible as possible with
+@command{texi2html}.
 
 @item TOC_FILE
 @vindex INLINE_CONTENTS
@@ -21604,7 +21604,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.415 2012-01-21 23:27:52 pertusus Exp $
+$Id: texinfo.txi,v 1.416 2012-01-28 12:41:30 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

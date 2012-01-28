@@ -687,7 +687,7 @@ sub converter_opened_files()
 {
   return ();
 }
- 
+
 1;
 
 __END__

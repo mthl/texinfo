@@ -1014,9 +1014,8 @@ sub converter_defaults($$)
 {
   my $self = shift;
   my $conf = shift;
-  if ($conf->{'TEXI2HTML'}) {
+  if (defined($conf->{'TEXI2HTML'})) {
     _set_variables_texi2html();
-    delete $conf->{'TEXI2HTML'};
   }
   return %defaults;
 }

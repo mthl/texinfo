@@ -414,10 +414,12 @@ sub set_expansion($$) {
 }
 
 my $format_from_command_line = 0;
-sub set_format($)
+sub set_format($;$)
 {
   my $set_format = shift;
-  $default_expanded_format = [$set_format];
+  my $no_associated_texinfo_format = shift;
+  $default_expanded_format = [$set_format]
+    unless ($no_associated_texinfo_format);
   $format_from_command_line = 1;
   $format = $set_format;
   return $set_format;
@@ -699,30 +701,22 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
      }
      # special case, this is a pseudo format for debug
      if ($var eq 'DEBUGCOUNT') {
-       $format = 'debugcount';
+       $format = set_format('debugcount', 1);
      } elsif ($var eq 'TEXI2HTML') {
        $format = set_format('html');
-       Texinfo::Convert::HTML::_set_variables_texi2html();
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      } elsif ($var eq 'DEBUGTREE') {
-       $format = 'debugtree';
-     } elsif ($var eq 'RAW_TEXT') {
-       $format = 'raw_text';
+       $format = set_format('debugtree', 1);
+     } elsif ($var eq 'RAWTEXT') {
+       $format = set_format('rawtext', 1);
      } elsif ($var eq 'TEXTCONTENT') {
-       $format = 'textcontent';
-     } else {
-       set_from_cmdline ($var, $value);
-       # FIXME do that here or when all command line options are processed?
-       if ($var eq 'L2H' and get_conf('L2H')) {
-         locate_and_load_init_file($latex2html_file, 
-                               [ @conf_dirs, @program_init_dirs ]);
-       }
-     # this is very wrong, but a way to avoid a spurious warning.
-      # no warnings 'once';
-      # if (set_from_cmdline ($var, $value) 
-      #     and exists($Texinfo::Parser::default_configuration{$var})) {
-      #   $parser_default_options->{$var} = $value;
-      # }
+       $format = set_format('textcontent', 1);
+     }
+     set_from_cmdline ($var, $value);
+     # FIXME do that here or when all command line options are processed?
+     if ($var eq 'L2H' and get_conf('L2H')) {
+       locate_and_load_init_file($latex2html_file, 
+                             [ @conf_dirs, @program_init_dirs ]);
      }
    }
  },
@@ -837,7 +831,7 @@ my %formats_table = (
   'textcontent' => {
             'converter' => sub{Texinfo::Convert::TextContent->converter(@_)},
            },
-  'raw_text' => {
+  'rawtext' => {
             'converter' => sub{Texinfo::Convert::Text->converter(@_)},
            },
 );
