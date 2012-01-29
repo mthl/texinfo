@@ -31,6 +31,7 @@ use Pod::Simple::PullParser ();
 use Texinfo::Convert::NodeNameNormalization qw(normalize_node);
 use Texinfo::Parser qw(parse_texi_line parse_texi_text);
 use Texinfo::Convert::Texinfo;
+use Texinfo::Convert::TextContent;
 use Texinfo::Common qw(protect_comma_in_tree);
 
 use vars qw(
@@ -277,6 +278,35 @@ sub _section_manual_to_node_name($$$)
   }
 }
 
+sub _normalize_texinfo_name($$)
+{
+  # Pod may be more forgiven than Texinfo, so we go through
+  # a normalization, by parsing and converting back to Texinfo
+  my $name = shift;
+  my $command = shift;
+  my $texinfo_text;
+  if ($command eq 'anchor') {
+    $texinfo_text = "\@anchor{$name}";
+  } else {
+    # item is not correct since it cannot happen outside of a table
+    # context, so we use @center which accepts the same on the line
+    if ($command eq 'item') {
+      $command = 'center';
+    }
+    $texinfo_text = "\@$command $name\n";
+  }
+  my $tree = parse_texi_text(undef, $texinfo_text);
+  my $fixed_text = Texinfo::Convert::Texinfo::convert($tree, 1);
+  my $result = $fixed_text;
+  if ($command eq 'anchor') {
+    $result =~ s/^\@anchor\{(.*)\}$/$1/s;
+  } else {
+    chomp($result);
+    $result =~ s/^\@$command (.*)$/$1/s;
+  }
+  return $result;
+}
+
 sub _prepare_anchor($$)
 {
   my $self = shift;
@@ -288,12 +318,7 @@ sub _prepare_anchor($$)
                                           $texinfo_node_name,
                                           $self->texinfo_sectioning_base_level);
 
-  # Pod may be more forgiven than Texinfo, so we go through
-  # a normalization, by parsing and converting back to Texinfo
-  my $anchor_tree = parse_texi_text(undef, "\@anchor{$texinfo_node_name}");
-  my $anchor = Texinfo::Convert::Texinfo::convert($anchor_tree, 1);
-  my $node = $anchor;
-  $node =~ s/^\@anchor\{(.*)\}$/$1/s;
+  my $node = _normalize_texinfo_name($texinfo_node_name, 'anchor');
 
   if ($node !~ /\S/) {
     return '';
@@ -309,7 +334,7 @@ sub _prepare_anchor($$)
   }
   my $node_name;
   if ($number_appended) {
-    $texinfo_node_name = "$texinfo_node_name $number_appended";
+    $texinfo_node_name = "$node $number_appended";
     $node_tree = parse_texi_line(undef, $texinfo_node_name);
   }
   $node_tree = protect_comma_in_tree(undef, $node_tree);
@@ -501,7 +526,8 @@ sub _convert_pod($)
       if ($context_tags{$tagname}) {
         my ($result, $out) = _end_context(\@accumulated_output);
         if ($line_commands{$tagname}) {
-          my $command;
+
+          my ($command, $command_argument);
           if ($head_commands_level{$tagname}) {
             $command = $self->{'texinfo_head_commands'}->{$tagname};
           } elsif ($line_commands{$tagname}) {
@@ -513,6 +539,15 @@ sub _convert_pod($)
             $result =~ s/\n/ /g;
             $result =~ s/^\s*//;
             $result =~ s/\s*$//;
+
+            $command_argument = _normalize_texinfo_name($result, $command);
+            if ($result =~ /\S/ and $command_argument !~ /\S/) {
+              # use some raw text if the expansion lead to an empty section
+              my $tree = parse_texi_line(undef, $result);
+              my $converter = Texinfo::Convert::TextContent->converter();
+              $command_argument = _protect_text($converter->convert_tree($tree));
+            }
+
             my $node_name = _prepare_anchor ($self, $result);
             #print $fh "\@node $node_name\n";
             my $anchor;
@@ -521,9 +556,12 @@ sub _convert_pod($)
             } else {
               $anchor = '';
             }
-            $result .= "\n$anchor";
+            $command_argument .= "\n$anchor";
+          } else {
+            $command_argument = $result;
           }
-          _output($fh, \@accumulated_output, "\@$command $result\n$out\n");
+          _output($fh, \@accumulated_output, 
+                  "\@$command $command_argument\n$out\n");
         } elsif ($tagname eq 'Para') {
           _output($fh, \@accumulated_output, "$out$result\n\n");
         } elsif ($tagname eq 'L') {

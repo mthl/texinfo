@@ -6,7 +6,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 7 };
+BEGIN { plan tests => 9 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
@@ -130,6 +130,28 @@ new line
 
 ', 'head with new line');
 
+run_test('=head1 L</somewhere>
+', '@chapter somewhere
+
+
+', 'ref in section');
+
+run_test('=over
+
+=item a L<pod2text|pod2text>
+
+=item a L<pod2latex|pod2latex>
+
+', '@table @asis
+@item a @ref{Top, pod2text,, pod2text}
+@anchor{a }
+
+@item a @ref{Top, pod2latex,, pod2latex}
+@anchor{a  1}
+
+@end table
+
+', 'duplicate anchors ref');
 
 1;
 
