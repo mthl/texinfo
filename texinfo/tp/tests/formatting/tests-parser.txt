@@ -10,6 +10,8 @@ cond_xml cond.texi --xml
 cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
 cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
 cond_info cond.texi --info
+cond_info_no-ifhtml_no-ifinfo_no-iftex cond.texi --info --no-ifhtml --no-ifinfo --no-iftex
+cond_info_ifhtml_ifinfo_iftex cond.texi --info --ifhtml --ifinfo --iftex
 defcondx_Dbar defxcond.texi -D bar
 defcondx_Ubar defxcond.texi -U bar
 
