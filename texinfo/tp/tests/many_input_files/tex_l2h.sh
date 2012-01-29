@@ -1,5 +1,10 @@
 #! /bin/sh
 
+if test "z$LONG_TESTS" != z'yes' -a "z$ALL_TESTS" != z'yes'; then
+  echo "Skipping long tests that take a lot of time to run"
+  exit 77
+fi
+
 basename=tex_l2h
 diffs_dir=diffs
 logfile=$basename.log

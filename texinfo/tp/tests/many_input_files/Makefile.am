@@ -1,13 +1,15 @@
 EXTRA_DIST = $(TESTS) $(long_TESTS) \
   indices_res index_split_res tex_l2h_res tex_t4ht_res
 
-TESTS = indices.sh
-long_TESTS = tex_l2h.sh tex_t4ht.sh
+TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
 
 test_dirs = indices index_split tex_l2h tex_t4ht
 
 long-check: all
-	$(MAKE) $(AM_MAKEFLAGS) TESTS='$(long_TESTS)' check
+	$(MAKE) $(AM_MAKEFLAGS) check LONG_TESTS=yes
+
+all-checks: all
+	$(MAKE) $(AM_MAKEFLAGS) check ALL_TESTS=yes
 
 copy-tests:
 	for dir in $(test_dirs); do \

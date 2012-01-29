@@ -24,13 +24,13 @@ copy-long:
 clean-tests:
 	$(srcdir)/parser_tests.sh -clean $(base_tests) $(long_tests)
 
-TESTS = parser_base_tests
-long_TESTS = long_tests.sh
+TESTS = parser_base_tests long_tests.sh
 
 long-check: all
-	$(MAKE) $(AM_MAKEFLAGS) TESTS='$(long_TESTS)' check
+	$(MAKE) $(AM_MAKEFLAGS) check LONG_TESTS=yes
 
-all-checks: check long-check
+all-checks: all
+	$(MAKE) $(AM_MAKEFLAGS) check ALL_TESTS=yes
 
 # this is in order to have the files in .texinfo in the build dir
 all-local:

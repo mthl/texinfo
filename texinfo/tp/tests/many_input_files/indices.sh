@@ -1,5 +1,10 @@
 #! /bin/sh
 
+if test "z$LONG_TESTS" = z'yes'; then
+  echo "Skipping short tests because we are only doing long tests"
+  exit 77
+fi
+
 basename=indices
 diffs_dir=diffs
 logfile=$basename.log

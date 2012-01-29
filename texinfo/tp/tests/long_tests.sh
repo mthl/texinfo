@@ -9,5 +9,10 @@ if [ z"$srcdir" = 'z' ]; then
   srcdir=.
 fi
 
+if test "z$LONG_TESTS" != z'yes' -a "z$ALL_TESTS" != z'yes'; then
+  echo "Skipping long tests that take a lot of time to run"
+  exit 77
+fi
+
 "$srcdir"/parser_tests.sh "$@" \
  sectioning coverage indices nested_formats contents layout
