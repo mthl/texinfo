@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.35 2012-01-27 21:05:42 pertusus Exp $
+# $Id: Makefile.am,v 1.36 2012-01-29 22:16:07 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -132,6 +132,10 @@ test_files = \
  t/input_files/japanese_utf8.texi \
  t/input_files/japanese_shift_jis.texi \
  t/input_files/chinese_mixed_with_en.texi \
+ t/input_files/things_before_setfilename_no_element.texi \
+ t/input_files/empty_lines_at_beginning_no_setfilename.texi \
+ t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
+ t/input_files/things_before_setfilename.texi \
  #
 
 relative_include_dir = t/include_dir

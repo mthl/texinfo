@@ -213,6 +213,12 @@ in <b>html</b> in copying ``
 @top top
 
 '],
+['empty_lines_at_beginning_no_setfilename',
+undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename.texi'}
+],
+['empty_lines_at_beginning_no_setfilename_no_element',
+undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename_no_element.texi'}
+],
 );
 
 my @test_cases_text = (

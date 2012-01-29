@@ -74,6 +74,7 @@ Texinfo/Encoding.pm
 Texinfo/Parser.pm
 Texinfo/Report.pm
 Texinfo/Structuring.pm
+t/fix_texinfo.t
 t/html_tests.t
 t/include/aa.txt
 t/include/a.txt
@@ -120,9 +121,13 @@ t/input_files/char_latin1_utf8_in_refs.texi
 t/input_files/char_latin2_latin2_in_refs.texi
 t/input_files/chinese_mixed_with_en.texi
 t/input_files/delcomment.texi
+t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi
+t/input_files/empty_lines_at_beginning_no_setfilename.texi
 t/input_files/japanese_shift_jis.texi
 t/input_files/japanese_utf8.texi
 t/input_files/sample_utf8.texi
+t/input_files/things_before_setfilename_no_element.texi
+t/input_files/things_before_setfilename.texi
 t/languages.t
 t/manual_tree.pl
 t/nodenormalization.t
@@ -291,6 +296,8 @@ t/results/converters_tests/table_in_display_in_example.pl
 t/results/converters_tests/table_in_example_in_display.pl
 t/results/converters_tests/test_deftypefnnewline.pl
 t/results/converters_tests/test_sp.pl
+t/results/converters_tests/things_before_setfilename_no_element.pl
+t/results/converters_tests/things_before_setfilename.pl
 t/results/converters_tests/top_in_ref_keep_top.pl
 t/results/converters_tests/top_in_ref.pl
 t/results/converters_tests/unknown_value.pl
@@ -453,6 +460,8 @@ t/results/html_tests/commands_in_abbr.pl
 t/results/html_tests/commands_in_alt.pl
 t/results/html_tests/commands_in_email.pl
 t/results/html_tests/documentdescription.pl
+t/results/html_tests/empty_lines_at_beginning_no_setfilename_no_element.pl
+t/results/html_tests/empty_lines_at_beginning_no_setfilename.pl
 t/results/html_tests/html_in_copying.pl
 t/results/html_tests/index_and_node_same_name.pl
 t/results/html_tests/index_below.pl

@@ -656,6 +656,12 @@ Para@footnote{Footnote 1.}.
 
 Para2@footnote{Footnote 2.}.
 ',{} , {'NUMBER_FOOTNOTES' => 0, 'footnotestyle' => 'separate'}],
+['things_before_setfilename',
+undef, {'test_file' => 'things_before_setfilename.texi'}
+],
+['things_before_setfilename_no_element',
+undef, {'test_file' => 'things_before_setfilename_no_element.texi'}
+],
 );
 
 my @html_text_cases = (
@@ -671,7 +677,7 @@ $top_in_ref_text,
 {}, {'KEEP_TOP_EXTERNAL_REF' => 1}],
 );
 
-my @encoding_file_tests = (
+my @file_tests = (
 ['char_latin1_utf8_in_refs',
 undef, {'test_file' => 'char_latin1_utf8_in_refs.texi'}
 ],
@@ -711,10 +717,14 @@ my %info_tests = (
  'footnote_no_number_separate' => 1,
  'some_at_commands_in_ref_nodes' => 1,
  'at_commands_in_refs' => 1,
+ 'things_before_setfilename' => 1,
+ 'things_before_setfilename_no_element' => 1,
 );
 
 my %html_tests = (
   'at_commands_in_refs' => 1,
+ 'things_before_setfilename' => 1,
+ 'things_before_setfilename_no_element' => 1,
 );
 
 foreach my $test (@test_cases) {
@@ -734,15 +744,14 @@ foreach my $test (@html_text_cases) {
   push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
-foreach my $test (@encoding_file_tests) {
+foreach my $test (@file_tests) {
   push @{$test->[2]->{'test_formats'}}, 'file_html';
   push @{$test->[2]->{'test_formats'}}, 'file_info';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('converters_tests', [@test_cases, @encoding_file_tests, 
-                              @html_text_cases], 
+run_all ('converters_tests', [@test_cases, @file_tests, @html_text_cases], 
    $arg_test_case, $arg_generate, $arg_debug);
 
 1;

@@ -48,6 +48,10 @@ warn nested footnotes.
 coverage_braces/verb_in_xref there should certainly be an error
 message, and the *Note is stuck with the following word.
 
+converters_tests/things_before_setfilename there is no error
+for anchor and footnote before setfilename.  It is not completly
+clear that there should be, though.
+
 
 Missing tests
 =============
@@ -59,26 +63,11 @@ also commands.
 
 Test for the handling of #line.
 
-Test input file without @setfilename.
-
-test nodes that end up in the same files, like @'a and @^a.
-
-In html, test 
- empty lines at the begining, 
- content ignored before setfilename, 
-for the different cases of element/no element.  This is to be done with 
-real input files.
-
 In html test empty @top for title, with different cases for 
 setcontentsaftertit* and for anchors.
 
 Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf8, with and without
 enable encoding and entities.
-
-Test character lengths and encoding.  For instance tests in 
-encodings/at_commands_in_refs_utf8.texi
-
-use test ogoutf.texi ogolat2.texi for html.
 
 in html test footnotestyle separate.
 
