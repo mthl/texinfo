@@ -41,9 +41,10 @@ simplest_httex simplest.texi --init tex4ht.pm --iftex
 tex tex.texi --set-init-var 'L2H 1' --iftex
 tex_notex tex.texi
 tex_httex tex.texi --init tex4ht.pm --iftex
+# No mediawki tests for now
 #tex_mediawiki tex.texi --init mediawiki.pm --iftex
-tex_httex_mediawiki tex.texi --html --init tex4ht.pm --init mediawiki.pm --iftex
-tex_l2h_mediawiki tex.texi --html --set-init-var 'L2H 1' --iftex --init mediawiki.pm
+#tex_httex_mediawiki tex.texi --html --init tex4ht.pm --init mediawiki.pm --iftex
+#tex_l2h_mediawiki tex.texi --html --set-init-var 'L2H 1' --iftex --init mediawiki.pm
 tex_complex_httex tex_complex.texi --init tex4ht.pm --iftex
 tex_complex_l2h tex_complex.texi --set-init-var 'L2H 1' --iftex
 math_not_closed math_not_closed.texi --set-init-var 'L2H 1' --iftex
