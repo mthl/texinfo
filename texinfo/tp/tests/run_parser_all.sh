@@ -141,7 +141,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
              mkdir "${resdir}$dir/"
           fi
           cp -r "${outdir}$dir/"* "${resdir}$dir/"
-          rm -f "${resdir}$dir/"*.png "${resdir}$dir/"*_l2h.css
+          rm -f "${resdir}$dir/"*.png "${resdir}$dir/"*_l2h.css "${resdir}$dir/"*_2 "${resdir}$dir/"*_1
         else
           echo "No dir ${outdir}$dir" 1>&2
         fi
@@ -303,7 +303,14 @@ do
         rm -f "${outdir}$dir/"*".aux"  "${outdir}$dir/"*"_images.out"
       fi
       if [ "$use_latex2html" = 'yes' -o "$use_tex4ht" = 'yes' ]; then
-        rm -f "${outdir}$dir/$basename.1"
+        # to keep the files but avoid them being copyied or diffed
+        mv "${outdir}$dir/$basename.1" "${outdir}$dir/${basename}_1"
+      fi
+      if [ "$use_tex4ht" = 'yes' ]; then
+        # tex4ht may be customized to use dvipng or dvips, both being
+        # verbose, so there can not be reproducible tests on stderr either
+        # with tex4ht.
+        mv "${outdir}$dir/$basename.2" "${outdir}$dir/${basename}_2"
       fi
       res_dir_used=
       if [ -d "$results_dir/$dir" ]; then
@@ -312,7 +319,7 @@ do
       #  res_dir_used="$results_dir_ref/$dir"
       fi
       if [ "z$res_dir_used" != 'z' ]; then
-        diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
+        diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' --exclude='*_1' --exclude='*_2' -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
           echo "D: ${mydir}$diffs_dir/$diff_base.diff"
