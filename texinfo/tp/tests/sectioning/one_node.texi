@@ -10,7 +10,7 @@ Top node
 anchor ref @anchor{ref}.
 
 @menu
-* (gcc):: ref to gcc
+* (somemanual):: ref to some manual
 @end menu
 
 

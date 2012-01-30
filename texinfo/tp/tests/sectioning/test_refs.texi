@@ -28,10 +28,10 @@ mono : manual.html#Top
 split: ../manual/index.html#Top
 @end example
 
-@verb{:(texinfo)Cross References:} @ref{(texinfo)Cross References}
+@verb{:(mtexinfo)Cross References:} @ref{(mtexinfo)Cross References}
 @example
-mono: texinfo.html#Cross-References
-split: ../texinfo/Cross-References.html#Cross-References
+mono: mtexinfo.html#Cross-References
+split: ../mtexinfo/Cross-References.html#Cross-References
 @end example
 
 @subheading Testing manual name
