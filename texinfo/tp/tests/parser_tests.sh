@@ -35,7 +35,7 @@ while [ z"$1" != 'z' ]; do
   dir=$1
   shift
   [ -d "$dir" ] || mkdir $dir
-  (export srcdir_test=$dir; cd "$dir" && ../"$srcdir"/"$command" $arg)
+  (export srcdir_test=$dir; cd "$dir" && ../"$srcdir"/"$command" -dir $dir $arg)
   result=$?
   echo "$dir: $result"
   [ $result != 0 ] && failed=1

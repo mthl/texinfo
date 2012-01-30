@@ -28,17 +28,26 @@ main_command='texi2any.pl'
 commands=':'
 
 clean=no
-if [ z"$1" = 'z-clean' ]; then
-  clean=yes
-  shift
-fi
-
 copy=no
-if [ z"$1" = 'z-copy' ]; then
-  #[ -d "$res_dir" ] || mkdir "$res_dir"
-  copy=yes
-  shift
-fi
+mydir=
+
+while [ z"$1" = 'z-clean' -o z"$1" = 'z-copy'  -o z"$1" = 'z-dir' ]; do
+  if [ z"$1" = 'z-clean' ]; then
+    clean=yes
+    shift
+  fi
+
+  if [ z"$1" = 'z-copy' ]; then
+    #[ -d "$res_dir" ] || mkdir "$res_dir"
+    copy=yes
+    shift
+  fi
+  if [ z"$1" = 'z-dir' ]; then
+    shift 
+    mydir=`echo "$1" | sed 's:/*$::'`'/'
+    shift
+  fi
+done
 
 no_latex2html=yes
 if which latex2html > /dev/null 2>&1; then
@@ -306,7 +315,7 @@ do
         diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
-          echo "D: $diffs_dir/$diff_base.diff"
+          echo "D: ${mydir}$diffs_dir/$diff_base.diff"
           return_code=1
         else
           rm "$diffs_dir/$diff_base.diff"
