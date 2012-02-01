@@ -148,9 +148,28 @@ $unnumbered_commands{'top'} = 1;
 $unnumbered_commands{'centerchap'} = 1;
 $unnumbered_commands{'part'} = 1;
 
-my $min_level = $command_structuring_level{'top'};
+my $min_level = $command_structuring_level{'chapter'};
 my $max_level = $command_structuring_level{'subsubsection'};
 
+sub _section_level ($)
+{
+  my $section = shift;
+  my $level = $command_structuring_level{$section->{'cmdname'}};
+  # correct level according to raise/lowersections
+  if ($section->{'extra'} and $section->{'extra'}->{'sections_level'}) {
+    $level -= $section->{'extra'}->{'sections_level'};
+    if ($level < $min_level) {
+      if ($command_structuring_level{$section->{'cmdname'}} < $min_level) {
+        $level = $command_structuring_level{$section->{'cmdname'}};
+      } else {
+        $level = $min_level;
+      }
+    } elsif ($level > $max_level) {
+      $level = $max_level;
+    }
+  }
+  return $level;
+}
 # sets:
 # 'level'
 # 'number'
@@ -199,16 +218,7 @@ sub sectioning_structure($$)
           $section_top = $content;
         }
       }
-      my $level = $command_structuring_level{$content->{'cmdname'}};
-      # correct level according to raise/lowersections
-      if ($content->{'extra'} and $content->{'extra'}->{'sections_level'}) {
-        $level -= $content->{'extra'}->{'sections_level'};
-        if ($level < $min_level) {
-          $level = $min_level;
-        } elsif ($level > $max_level) {
-          $level = $max_level;
-        }
-      }
+      my $level = _section_level($content);
       $content->{'level'} = $level;
 
       if ($previous_section) {
@@ -346,6 +356,111 @@ sub sectioning_structure($$)
   $self->{'structuring'}->{'sectioning_root'} = $sec_root;
   $self->{'structuring'}->{'sections_list'} = \@sections_list;
   return $sec_root;
+}
+
+
+# Add raise/lowersections to be back at the normal level
+sub _correct_level ($$;$)
+{
+  my $section = shift;
+  my $parent = shift;
+  my $modifier = shift;
+  $modifier = 1 if (!defined($modifier));
+
+  my @result;
+  if ($section->{'extra'} and $section->{'extra'}->{'sections_level'}) {
+    my $level_to_remove = $modifier * $section->{'extra'}->{'sections_level'};
+    my $command;
+    if ($level_to_remove < 0) {
+      $command = 'raisesection';
+    } else {
+      $command = 'lowersection';
+    }
+    my $remaining_level = abs($level_to_remove);
+    while ($remaining_level) {
+      push @result, {'cmdname' => $command,
+                     'parent' => $parent};
+      push @result, {'type' => 'empty_line', 'text' => "\n",
+                     'parent' => $parent};
+      $remaining_level--;
+    }
+  }
+  return @result;
+}
+
+sub fill_gaps_in_sectioning($)
+{
+  my $root = shift;
+  if (!$root->{'type'} or $root->{'type'} ne 'document_root'
+      or !$root->{'contents'}) {
+    return undef;
+  }
+  my @sections_list;
+  foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
+        and $content->{'cmdname'} ne 'bye') {
+      push @sections_list, $content;
+    }
+  }
+
+  return undef if (!scalar(@sections_list));
+
+  my @contents;
+  my $previous_section;
+  foreach my $content(@{$root->{'contents'}}) {
+    push @contents, $content;
+    if (!@sections_list or $sections_list[0] ne $content) {
+      next;
+    }
+    my $current_section = shift @sections_list;
+    my $current_section_level = _section_level($current_section);
+    my $next_section = $sections_list[0];
+    
+    if (defined($next_section)) {
+      my $next_section_level = _section_level($next_section);
+      if ($next_section_level - $current_section_level > 1) {
+        my @correct_level_offset_commands = _correct_level($next_section,
+                                                          $contents[-1]);
+        if (@correct_level_offset_commands) {
+          push @{$contents[-1]->{'contents'}}, @correct_level_offset_commands;
+        }
+        while ($next_section_level - $current_section_level > 1) {
+          $current_section_level++;
+          my $new_section = {'cmdname' =>
+            $Texinfo::Common::level_to_structuring_command{'unnumbered'}->[$current_section_level],
+            'contents' => [],
+            'parent' => $root,
+          };
+          $new_section->{'args'} = [{'type' => 'misc_line_arg',
+                                     'parent' => $new_section}];
+          $new_section->{'args'}->[0]->{'contents'} = [
+             {'type' => 'empty_spaces_after_command',
+              'text' => " ",
+              'extra' => {'command' => $new_section},
+              'parent' => $new_section->{'args'}->[0]
+             },
+             {'cmdname' => 'asis',
+              'parent' => $new_section->{'args'}->[0]
+             },
+             {'type' => 'spaces_at_end',
+              'text' => "\n",
+              'parent' => $new_section->{'args'}->[0]
+             }];
+           $new_section->{'args'}->[0]->{'contents'}->[1]->{'args'}
+             = [{'type' => 'brace_command_arg',
+                 'contents' => [],
+                 'parent' => $new_section->{'args'}->[0]->{'contents'}->[1]}];
+          push @contents, $new_section;
+        }
+        my @set_level_offset_commands = _correct_level($next_section,
+                                                       $contents[-1], -1);
+        if (@set_level_offset_commands) {
+          push @{$contents[-1]->{'contents'}}, @set_level_offset_commands;
+        }
+      }
+    }
+  }
+  return \@contents;
 }
 
 my @node_directions = ('next', 'prev', 'up');

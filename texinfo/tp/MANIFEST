@@ -1128,6 +1128,7 @@ t/results/xtable/table_nested.pl
 t/results/xtable/text_between_item_itemx.pl
 t/results/xtable/title_and_itemx_before_item.pl
 t/test_count.t
+t/test_fill_gaps_in_sectioning.t
 t/test_sort.t
 t/test_tree_copy.t
 t/test_utils.pl
