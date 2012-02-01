@@ -1788,6 +1788,18 @@ reference of sorted index entries beginning with the letter.
 When simply sorting, the array of the sorted indes entries is associated
 with the index name.
 
+=item $root_content = fill_gaps_in_sectioning ($root)
+
+This function adds empty C<@unnumbered> and similar commands in a tree
+to fill gaps in sectioning.  This may be used, for example, when converting 
+from a format that can handle gaps in sectioning.  I<$root> is the tree
+root.  An array reference is returned, containing the root contents
+with added sectioning commands.
+
+If the sectioning commands are lowered or raised (with C<@raisesections>,
+C<@lowersection>) the tree may be modified with C<@raisesections> or
+C<@lowersection> added to some tree elements.
+
 =item menu_to_simple_menu ($menu)
 
 =item set_menus_to_simple_menu ($parser)
