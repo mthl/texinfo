@@ -54,6 +54,7 @@ trim_spaces_comment_from_content
 float_name_caption
 normalize_top_node_name
 protect_comma_in_tree
+protect_first_parenthesis
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -1513,13 +1514,36 @@ sub _protect_comma($$$)
   }
 }
 
-sub protect_comma_in_tree($$)
+sub protect_comma_in_tree($)
 {
-  my $self = shift;
   my $tree = shift;
-  return modify_tree($self, $tree, \&_protect_comma);
+  return modify_tree(undef, $tree, \&_protect_comma);
 }
 
+sub protect_first_parenthesis($)
+{
+  my $contents = shift;
+  my @contents = @$contents;
+  my $brace;
+  if ($contents[0] and @$contents->[0]{'text'} and @contents[0]->{'text'} =~ /^\(/) {
+    if ($contents[0]->{'text'} !~ /^\($/) {
+      $brace = shift @contents;
+      my $brace_text = $brace->{'text'};
+      $brace_text =~ s/^\(//;
+      unshift @contents, { 'text' => $brace_text, 'type' => $brace->{'type'},
+                           'parent' => $brace->{'parent'} } if $brace_text ne '';
+    } else {
+      $brace = shift @contents;
+    }
+    unshift @contents, {'cmdname' => 'asis', 'parent' => $brace->{'parent'}};
+    push @{$contents[0]->{'args'}}, {'type' => 'brace_command_arg', 
+                                    'parent' => $contents[0]};
+    push @{$contents[0]->{'args'}->[0]->{'contents'}}, {
+      'type' => $brace->{'type'}, 'text' => '(',
+      'parent' => $contents[0]->{'args'}->[0]};
+  }
+  return \@contents;
+}
 
 1;
 
@@ -1753,9 +1777,14 @@ and spaces and comments at end from a content array, modifying it.
 Normalize the node name string given in argument, by normalizing
 Top node case.
 
-=item protect_comma_in_tree
+=item protect_comma_in_tree($tree)
 
 Protect comma characters, replacing C<,> with @comma{} in tree.
+
+=item $contents_result = protect_first_parenthesis ($contents)
+
+Return a contents array reference with first parenthesis in the 
+contents array reference protected.
 
 =back
 

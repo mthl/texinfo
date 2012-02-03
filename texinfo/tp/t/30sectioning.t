@@ -1170,6 +1170,21 @@ $unnumbered_top_without_node_text,
   'test_split' => 'node'},
   {'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
 ],
+['protected_node_parentheses',
+'
+@node Top
+@top top
+
+@menu
+* @asis{(}manual) name::
+@end menu
+
+@node @asis{(}manual) name
+
+@anchor{@asis{(}manual2) name2}
+
+@ref{@asis{(}manual2) name2}.
+'],
 );
 
 my $complex_case = '@node Top,First node,(dir)

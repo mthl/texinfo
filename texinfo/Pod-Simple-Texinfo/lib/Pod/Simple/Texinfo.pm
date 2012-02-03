@@ -32,7 +32,7 @@ use Texinfo::Convert::NodeNameNormalization qw(normalize_node);
 use Texinfo::Parser qw(parse_texi_line parse_texi_text);
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::TextContent;
-use Texinfo::Common qw(protect_comma_in_tree);
+use Texinfo::Common qw(protect_comma_in_tree protect_first_parenthesis);
 
 use vars qw(
   @ISA $VERSION
@@ -249,7 +249,7 @@ sub _pod_title_to_file_name($)
 sub _protect_comma($) {
   my $texinfo = shift;
   my $tree = parse_texi_line(undef, $texinfo);
-  $tree = protect_comma_in_tree(undef, $tree);
+  $tree = protect_comma_in_tree($tree);
   return Texinfo::Convert::Texinfo::convert($tree);
 }
 
@@ -296,6 +296,11 @@ sub _normalize_texinfo_name($$)
     $texinfo_text = "\@$command $name\n";
   }
   my $tree = parse_texi_text(undef, $texinfo_text);
+  if ($command eq 'anchor') {
+    #print STDERR "GGG $tree->{'contents'}->[0]->{'cmdname'}\n";
+    $tree->{'contents'}->[0]->{'args'}->[-0]->{'contents'}
+      = protect_first_parenthesis($tree->{'contents'}->[0]->{'args'}->[-0]->{'contents'});
+  }
   my $fixed_text = Texinfo::Convert::Texinfo::convert($tree, 1);
   my $result = $fixed_text;
   if ($command eq 'anchor') {
@@ -337,7 +342,7 @@ sub _prepare_anchor($$)
     $texinfo_node_name = "$node $number_appended";
     $node_tree = parse_texi_line(undef, $texinfo_node_name);
   }
-  $node_tree = protect_comma_in_tree(undef, $node_tree);
+  $node_tree = protect_comma_in_tree($node_tree);
   $self->{'texinfo_nodes'}->{$normalized} = $node_tree;
   my $final_node_name = Texinfo::Convert::Texinfo::convert($node_tree, 1);
   return $final_node_name;
@@ -478,7 +483,9 @@ sub _convert_pod($)
                 $texinfo_node = $section;
               }
               $texinfo_node = 'Top' if (!defined($texinfo_node));
-              $texinfo_node = _protect_comma(_protect_text($texinfo_node));
+              $texinfo_node = _normalize_texinfo_name(
+                                 _protect_text($texinfo_node), 'anchor');
+              #$texinfo_node = _protect_comma(_protect_text($texinfo_node));
             }
             # for pod, 'to' is the pod manual name.  Then 'section' is the 
             # section.

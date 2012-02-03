@@ -7,8 +7,7 @@ Before next release
 
 Document TEXTCONTENT_COMMENT.
 
-pod2texi: remove ( ) that makes a node an external node.  remove :: in node
-to avoid confusing @ref in info.
+Remove :: in node to avoid confusing @ref in info.
 
 New command to modify/transform a texinfo manual, for now to fix
 a tree by adding empty unnumbered commands.

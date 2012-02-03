@@ -6,7 +6,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 9 };
+BEGIN { plan tests => 11 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
@@ -152,6 +152,20 @@ run_test('=over
 @end table
 
 ', 'duplicate anchors ref');
+
+run_test('=head1 a, b', '@chapter a, b
+@anchor{a@comma{} b}
+
+', 'comma in head1');
+
+run_test('=head1 (man) t
+
+L</(man) t>', '@chapter (man) t
+@anchor{@asis{(}man) t}
+
+@ref{@asis{(}man) t}
+
+', 'node beginning with a parenthesis');
 
 1;
 
