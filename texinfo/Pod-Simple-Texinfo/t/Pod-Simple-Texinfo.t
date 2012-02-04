@@ -6,7 +6,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 11 };
+BEGIN { plan tests => 12 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
@@ -143,10 +143,10 @@ run_test('=over
 =item a L<pod2latex|pod2latex>
 
 ', '@table @asis
-@item a @ref{Top, pod2text,, pod2text}
+@item a @ref{, pod2text,, pod2text}
 @anchor{a }
 
-@item a @ref{Top, pod2latex,, pod2latex}
+@item a @ref{, pod2latex,, pod2latex}
 @anchor{a  1}
 
 @end table
@@ -158,12 +158,34 @@ run_test('=head1 a, b', '@chapter a, b
 
 ', 'comma in head1');
 
+run_test('=head1 a, b
+
+=over
+
+=item c, d
+
+=back
+
+L</a, b>. L</c, d>.
+', '@chapter a, b
+@anchor{a@comma{} b}
+
+@table @asis
+@item c, d
+@anchor{c@comma{} d}
+
+@end table
+
+@ref{a@comma{} b}. @ref{c@comma{} d}.
+
+', 'comma in refs');
+
 run_test('=head1 (man) t
 
 L</(man) t>', '@chapter (man) t
 @anchor{@asis{(}man) t}
 
-@ref{@asis{(}man) t}
+@ref{@asis{(}man) t,, (man) t}
 
 ', 'node beginning with a parenthesis');
 

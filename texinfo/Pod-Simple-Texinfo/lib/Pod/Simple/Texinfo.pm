@@ -253,16 +253,6 @@ sub _protect_comma($) {
   return Texinfo::Convert::Texinfo::convert($tree);
 }
 
-sub _is_title($)
-{
-# Regexp from Pod::Simple::PullParser
-  my $title = shift;
-  return ($title =~ m/^(NAME | TITLE | VERSION | AUTHORS? | DESCRIPTION | SYNOPSIS
-             | COPYRIGHT | LICENSE | NOTES? | FUNCTIONS? | METHODS?
-             | CAVEATS? | BUGS? | SEE\ ALSO | SWITCHES | ENVIRONMENT)$/sx);
-
-}
-
 sub _section_manual_to_node_name($$$)
 {
   my $self = shift;
@@ -270,8 +260,7 @@ sub _section_manual_to_node_name($$$)
   my $section = shift;
   my $base_level = shift;
 
-  if (defined($manual) and $base_level > 0
-      and _is_title($section)) {
+  if (defined($manual) and $base_level > 0) {
     return "$manual $section";
   } else {
     return $section;
@@ -424,8 +413,8 @@ sub _convert_pod($)
         if ($tagname eq 'L') {
           my $linktype = $token->attr('type');
           my $content_implicit = $token->attr('content-implicit');
-          #print STDERR " L: $linktype";
-          my ($url_arg, $texinfo_node, $texinfo_manual);
+          #print STDERR " L: $linktype\n";
+          my ($url_arg, $texinfo_node, $texinfo_manual, $texinfo_section);
           if ($linktype eq 'man') {
             # NOTE: the .'' is here to force the $token->attr to ba a real
             # string and not an object.
@@ -453,45 +442,60 @@ sub _convert_pod($)
             }
             $replacement_arg = _protect_text($replacement_arg);
             _output($fh, \@accumulated_output, "\@url{$url_arg,, $replacement_arg}");
-          } else {
-            if ($linktype eq 'url') {
-              # NOTE: the .'' is here to force the $token->attr to be a real
-              # string and not an object.
-              $url_arg = _protect_comma(_protect_text($token->attr('to').''));
-            } elsif ($linktype eq 'pod') {
-              my $manual = $token->attr('to');
-              my $section = $token->attr('section');
-              $manual .= '' if (defined($manual));
-              $section .= '' if (defined($section));
-              #print STDERR "$manual/$section\n";
-              if (defined($manual)) {
-                if (! defined($section) or $section !~ m/\S/) {
-                  if ($self->{'texinfo_internal_pod_manuals_hash'}->{$manual}) {
-                    $section = 'NAME';
-                  } else {
-                    $section = 'Top';
-                  }
-                }
-                if ($self->{'texinfo_internal_pod_manuals_hash'}->{$manual}) {
-                  $texinfo_node =
-                   $self->_section_manual_to_node_name($manual, $section, 1);
-                } else {
-                  $texinfo_manual = _protect_text(_pod_title_to_file_name($manual));
-                  $texinfo_node = $section;
-                }
-              } elsif (defined($section) and $section =~ m/\S/) {
-                $texinfo_node = $section;
+          } elsif ($linktype eq 'url') {
+            # NOTE: the .'' is here to force the $token->attr to be a real
+            # string and not an object.
+            $url_arg = _protect_comma(_protect_text($token->attr('to').''));
+          } elsif ($linktype eq 'pod') {
+            my $manual = $token->attr('to');
+            my $section = $token->attr('section');
+            $manual .= '' if (defined($manual));
+            $section .= '' if (defined($section));
+            if (0) {
+              my $section_text = 'UNDEF'; 
+              if (defined($section)) {
+                $section_text = $section;
               }
-              $texinfo_node = 'Top' if (!defined($texinfo_node));
-              $texinfo_node = _normalize_texinfo_name(
-                                 _protect_text($texinfo_node), 'anchor');
-              #$texinfo_node = _protect_comma(_protect_text($texinfo_node));
+              my $manual_text = 'UNDEF';
+              if (defined($manual)) {
+                $manual_text = $manual;
+              } 
+              print STDERR "L: $linktype $manual_text/$section_text\n";
             }
+            if (defined($manual)) {
+              if (! defined($section) or $section !~ m/\S/) {
+                if ($self->{'texinfo_internal_pod_manuals_hash'}->{$manual}) {
+                  $section = 'NAME';
+                }
+              }
+              if ($self->{'texinfo_internal_pod_manuals_hash'}->{$manual}) {
+                $texinfo_node =
+                 $self->_section_manual_to_node_name($manual, $section, 
+                                     $self->texinfo_sectioning_base_level);
+              } else {
+                $texinfo_manual = _protect_text(_pod_title_to_file_name($manual));
+                if (defined($section)) {
+                  $texinfo_node = $section;
+                } else {
+                  $texinfo_node = '';
+                }
+              }
+            } elsif (defined($section) and $section =~ m/\S/) {
+              $texinfo_node =
+               $self->_section_manual_to_node_name(
+                                     $self->{'texinfo_short_title'}, $section, 
+                                     $self->texinfo_sectioning_base_level);
+              $texinfo_section = _normalize_texinfo_name(
+                 _protect_comma(_protect_text($section)), 'section');
+            }
+            $texinfo_node = _normalize_texinfo_name(
+                    _protect_comma(_protect_text($texinfo_node)), 'anchor');
+
             # for pod, 'to' is the pod manual name.  Then 'section' is the 
             # section.
           }
           push @format_stack, [$linktype, $content_implicit, $url_arg, 
-                               $texinfo_manual, $texinfo_node];
+                               $texinfo_manual, $texinfo_node, $texinfo_section];
           #if (defined($to)) {
           #  print STDERR " | $to\n";
           #} else { 
@@ -574,7 +578,7 @@ sub _convert_pod($)
         } elsif ($tagname eq 'L') {
           my $format = pop @format_stack;
           my ($linktype, $content_implicit, $url_arg, 
-              $texinfo_manual, $texinfo_node) = @$format;
+              $texinfo_manual, $texinfo_node, $texinfo_section) = @$format;
           if ($linktype ne 'man') {
             my $explanation;
             if (defined($result) and $result =~ m/\S/ and !$content_implicit) {
@@ -595,10 +599,16 @@ sub _convert_pod($)
                          "\@ref{$texinfo_node,$explanation,, $texinfo_manual}");
               } elsif (defined($explanation)) {
                 _output($fh, \@accumulated_output,
-                       "\@ref{$texinfo_node, $explanation}");
+                       "\@ref{$texinfo_node,$explanation,$explanation}");
               } else {
-                _output($fh, \@accumulated_output,
-                         "\@ref{$texinfo_node}");
+                if (defined($texinfo_section) 
+                    and $texinfo_section ne $texinfo_node) {
+                  _output($fh, \@accumulated_output,
+                           "\@ref{$texinfo_node,, $texinfo_section}");
+                } else {
+                  _output($fh, \@accumulated_output,
+                           "\@ref{$texinfo_node}");
+                }
               }
             }
           }

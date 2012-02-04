@@ -37,6 +37,7 @@ BEGIN
   }
 }
 use Pod::Simple::Texinfo;
+use Texinfo::Common;
 
 {
 # A fake package to be able to use Pod::Simple::PullParser without generating
@@ -70,7 +71,7 @@ a main manual including all the files is done otherwise all
 manuals are standalone (the default).
 
 Options:
-    --base-level=NUM        level of the head1 commands.
+    --base-level=NUM|NAME   level of the head1 commands.
     --unnumbered-sections   use unumbered sections.
     --output=NAME           output to <NAME> for the first or the main manual
                             instead of standard out.
@@ -91,7 +92,16 @@ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
       exit 0;},
-  'base-level=i' => \$base_level,
+  'base-level=s' => sub {
+     if ($_[1] =~ /^[0-4]$/) {
+       $base_level = $_[1];
+     } elsif (defined($Texinfo::Common::command_structuring_level{$_[1]})) {
+       $base_level = $Texinfo::Common::command_structuring_level{$_[1]};
+     } else {
+       die sprintf(__("%s: wrong argument for --base-level.\n"), 
+                   $real_command_name);
+     }
+   },
   'unnumbered-sections!' => \$unnumbered_sections,
   'output|o=s' => \$output,
   'top=s' => \$top,
@@ -146,7 +156,8 @@ foreach my $file (@input_files) {
   if ($outfile eq '-') {
     $fh = *STDOUT;
   } else {
-    open (OUT, ">$outfile") or die "Open $outfile: $!\n";
+    open (OUT, ">$outfile") or die sprintf(__("%s: Open %s: %s.\n"), 
+                                          $real_command_name, $outfile, $!);
     $fh = *OUT;
   }
   # FIXME should use =encoding
@@ -163,7 +174,8 @@ foreach my $file (@input_files) {
   
   $new->parse_file($file);
   if ($outfile ne '-') {
-    close($fh) or die "Close $outfile: $!\n";
+    close($fh) or die sprintf (__("%s: Close %s: %s.\n"), 
+                               $real_command_name, $outfile, $!);
   }
   $file_nr++;
 }
@@ -172,7 +184,8 @@ my $STDOUT_DOCU_NAME = 'stdout';
 if ($base_level > 0) {
   my $fh;
   if ($output ne '-') {
-    open (OUT, ">$output") or die "Open $output: $!\n";
+    open (OUT, ">$output") or die sprintf(__("%s: Open %s: %s.\n"), 
+                                          $real_command_name, $output, $!);
     $fh = *OUT;
   } else {
     $fh = *STDOUT;
@@ -188,6 +201,7 @@ if ($base_level > 0) {
   print $fh "\@node Top\n";
   # not escaped on purpose, user may want to use @-commands
   print $fh "\@top $top\n\n";
+  print $fh "\@contents\n\n";
   foreach my $include (@included) {
     my $file = $include->[1];
     print $fh "\@include ".Pod::Simple::Texinfo::_protect_text ($file)."\n";
@@ -195,12 +209,14 @@ if ($base_level > 0) {
   print $fh "\n\@bye\n";
   
   if ($output ne '-') {
-    close($fh) or die "Close $output: $!\n";
+    close($fh) or die sprintf (__("%s: Close %s: %s.\n"), 
+                               $real_command_name, $output, $!);
   }
 }
 
 if (defined($output) and $output eq '-') {
-  close (STDOUT) or die "Close stdout: $!\n";
+  close(STDOUT) or die sprintf (__("%s: Close stdout: %s.\n"), 
+                               $real_command_name, $!);
 }
 
 1;
@@ -225,12 +241,19 @@ manuals are standalone (the default).
 
 =over
 
-=item B<--base-level>=I<NUM>
+=item B<--base-level>=I<NUM|NAME>
 
-Sets the level of the head1 commands.  1 is for the @chapter/@unnumbered 
-level.  If set to 0, the head1 commands level is still 1, but the output 
-manual is considered to be a standalone manual.  If not 0, the pod file is 
-rendered as a fragment of a Texinfo manual.
+Sets the level of the head1 commands.  It may be an integer or a Texinfo
+sectioning command.  If it is a Texinfo sectioning command the corresponding
+level is used.  If the resulting level is 1, this corresponds to 
+@chapter/@unnumbered level.  If set to 0, the head1 commands level is 
+still 1, but the output manual is considered to be a standalone manual.
+
+If the level is not 0, the pod file is rendered as a fragment of a 
+Texinfo manual.  In that case, each pod file has an additional sectioning
+command one level above the head1 commands level added for the whole
+file.  Therefore if you want to have each pod file as a chapter, you should
+use C<section> as the base level.
 
 =item B<--output>=I<NAME>
 
