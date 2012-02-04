@@ -25,6 +25,8 @@ require 5.00405;
 
 use strict;
 
+# for file_name_is_absolute
+use File::Spec;
 # to determine the path separator and null file
 use Config;
 # for dirname.
@@ -331,7 +333,7 @@ sub locate_init_file($$$)
   my $directories = shift;
   my $all_files = shift;
 
-  if ($file =~ /^\//) {
+  if (File::Spec->file_name_is_absolute($file)) {
     return $file if (-e $file and -r $file);
   } else {
     my @files;
