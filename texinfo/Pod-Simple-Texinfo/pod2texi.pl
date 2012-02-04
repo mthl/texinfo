@@ -109,6 +109,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
 
 exit 1 if (!$result_options);
 
+my $STDOUT_DOCU_NAME = 'stdout';
+
 my @manuals;
 my @all_manual_names;
 
@@ -121,17 +123,23 @@ die sprintf(__("%s: missing file argument.\n"), $real_command_name)
      unless (scalar(@input_files) >= 1);
 
 # First gather all the manual names
-foreach my $file (@input_files) {
-  # not really used, only the manual name is used.
-  my $parser = Pod::Simple::PullParserRun->new();
-  $parser->parse_file($file);
-  my $short_title = $parser->get_short_title();
-  if (defined($short_title) and $short_title =~ m/\S/) {
-    push @manuals, $short_title;
-    push @all_manual_names, $short_title;
-    #print STDERR "NEW MANUAL: $short_title\n";
-  } else {
-    push @all_manual_names, undef;
+if ($base_level > 0) {
+  foreach my $file (@input_files) {
+    # we don't want to read from STDIN, as the input read would be lost
+    # same with named pipe and socket...
+    # FIXME are there other file that have the same problem?
+    next if ($file eq '-' or -p $file or -S $file);
+    # not really used, only the manual name is used.
+    my $parser = Pod::Simple::PullParserRun->new();
+    $parser->parse_file($file);
+    my $short_title = $parser->get_short_title();
+    if (defined($short_title) and $short_title =~ m/\S/) {
+      push @manuals, $short_title;
+      push @all_manual_names, $short_title;
+      #print STDERR "NEW MANUAL: $short_title\n";
+    } else {
+      push @all_manual_names, undef;
+    }
   }
 }
 
@@ -147,10 +155,21 @@ foreach my $file (@input_files) {
       $outfile = Pod::Simple::Texinfo::_pod_title_to_file_name($name);
       $outfile .= '.texi';
     } else {
-      $outfile = $file;
-      $outfile =~ s/\.(pm|pod)$/.texi/i;
+      if ($file eq '-') {
+        $outfile = $STDOUT_DOCU_NAME;
+      } else {
+        $outfile = $file;
+      }
+      if ($outfile =~ /\.(pm|pod)$/) {
+        $outfile =~ s/\.(pm|pod)$/.texi/i;
+      } else {
+        $outfile .= '.texi';
+      }
     }
   }
+
+  my $new = Pod::Simple::Texinfo->new();
+
   push @included, [$name, $outfile] if ($base_level > 0);
   my $fh;
   if ($outfile eq '-') {
@@ -162,7 +181,6 @@ foreach my $file (@input_files) {
   }
   # FIXME should use =encoding
   binmode($fh, ':encoding(utf8)');
-  my $new = Pod::Simple::Texinfo->new();
   $new->output_fh($fh);
   $new->texinfo_sectioning_base_level($base_level);
   if ($unnumbered_sections) {
@@ -177,10 +195,35 @@ foreach my $file (@input_files) {
     close($fh) or die sprintf (__("%s: Close %s: %s.\n"), 
                                $real_command_name, $outfile, $!);
   }
+
+  if ($base_level > 0) {
+    if (!$new->content_seen) {
+      warn sprintf(__("%s: removing %s as input file %s has no content\n"),
+                   $real_command_name, $outfile, $file);
+      unlink ($outfile);
+      pop @included;
+    # if we didn't gather the short title, try now, and rename out file if found
+    } elsif (!defined($name)) {
+      my $short_title = $new->texinfo_short_title;
+      if (defined($short_title) and $short_title =~ /\S/) {
+        push @manuals, $short_title;
+        pop @included;
+        my $new_outfile 
+         = Pod::Simple::Texinfo::_pod_title_to_file_name($short_title);
+        $new_outfile .= '.texi';
+        if ($new_outfile ne $outfile) {
+          unless (rename ($outfile, $new_outfile)) {
+            die sprintf(__("%s: Rename %s failed: %s\n"), 
+                        $real_command_name, $outfile, $!);
+          }
+        }
+        push @included, [$short_title, $new_outfile];
+      }
+    }
+  }
   $file_nr++;
 }
 
-my $STDOUT_DOCU_NAME = 'stdout';
 if ($base_level > 0) {
   my $fh;
   if ($output ne '-') {

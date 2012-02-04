@@ -63,6 +63,7 @@ my @raw_formats = ('html', 'HTML', 'docbook', 'DocBook', 'texinfo',
 # from other Pod::Simple modules.  Creates accessor subroutine.
 __PACKAGE__->_accessorize(
   'texinfo_sectioning_base_level',
+  'texinfo_short_title',
   'texinfo_man_url_prefix',
   'texinfo_sectioning_style',
   'texinfo_add_upper_sectioning_command',
@@ -146,18 +147,21 @@ sub _preamble($)
 
   my $fh = $self->{'output_fh'};
 
-  my $short_title = $self->get_short_title();
-  if (defined($short_title) and $short_title =~ m/\S/) {
-    $self->{'texinfo_short_title'} = $short_title;
+  if (!defined($self->texinfo_short_title)) {
+    my $short_title = $self->get_short_title();
+    if (defined($short_title) and $short_title =~ m/\S/) {
+      $self->texinfo_short_title($short_title);
+    }
   }
 
   if ($self->texinfo_sectioning_base_level == 0) {
     #print STDERR "$fh\n";
     print $fh '\input texinfo'."\n";
     my $setfilename;
-    if (defined($self->{'texinfo_short_title'})) {
-      $setfilename = _pod_title_to_file_name($self->{'texinfo_short_title'});
+    if (defined($self->texinfo_short_title)) {
+      $setfilename = _pod_title_to_file_name($self->texinfo_short_title);
     } else {
+      # FIXME maybe output filename would be better than source_filename?
       my $source_filename = $self->source_filename();
       if (defined($source_filename) and $source_filename ne '') {
         if ($source_filename eq '-') {
@@ -181,14 +185,14 @@ sub _preamble($)
       print $fh "\@settitle "._protect_text($title, 1)."\n\n";
     }
     print $fh "\@node Top\n";
-    if (defined($self->{'texinfo_short_title'})) {
-       print $fh "\@top "._protect_text($self->{'texinfo_short_title'}, 1)."\n\n";
+    if (defined($self->texinfo_short_title)) {
+       print $fh "\@top "._protect_text($self->texinfo_short_title, 1)."\n\n";
     }
-  } elsif (defined($self->{'texinfo_short_title'})
+  } elsif (defined($self->texinfo_short_title)
            and $self->texinfo_add_upper_sectioning_command) {
       my $level = $self->texinfo_sectioning_base_level() - 1;
       print $fh "\@$self->{'texinfo_sectioning_commands'}->[$level] "
-         ._protect_text($self->{'texinfo_short_title'}, 1)."\n\n";
+         ._protect_text($self->texinfo_short_title, 1)."\n\n";
   }
 }
 
@@ -308,7 +312,7 @@ sub _prepare_anchor($$)
 
   chomp $texinfo_node_name;
   $texinfo_node_name 
-     = $self->_section_manual_to_node_name($self->{'texinfo_short_title'},
+     = $self->_section_manual_to_node_name($self->texinfo_short_title,
                                           $texinfo_node_name,
                                           $self->texinfo_sectioning_base_level);
 
@@ -483,7 +487,7 @@ sub _convert_pod($)
             } elsif (defined($section) and $section =~ m/\S/) {
               $texinfo_node =
                $self->_section_manual_to_node_name(
-                                     $self->{'texinfo_short_title'}, $section, 
+                                     $self->texinfo_short_title, $section, 
                                      $self->texinfo_sectioning_base_level);
               $texinfo_section = _normalize_texinfo_name(
                  _protect_comma(_protect_text($section)), 'section');
