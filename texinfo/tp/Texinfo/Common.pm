@@ -1525,7 +1525,7 @@ sub protect_first_parenthesis($)
   my $contents = shift;
   my @contents = @$contents;
   my $brace;
-  if ($contents[0] and @$contents->[0]{'text'} and @contents[0]->{'text'} =~ /^\(/) {
+  if ($contents[0] and $contents->[0]{'text'} and $contents[0]->{'text'} =~ /^\(/) {
     if ($contents[0]->{'text'} !~ /^\($/) {
       $brace = shift @contents;
       my $brace_text = $brace->{'text'};
@@ -1719,7 +1719,7 @@ No method is exported in the default case.
 
 Most methods takes a I<$converter> as argument, sometime optionally, 
 to get some information and use methods for error reporting, 
-see L<Texinfo::convert::Converter> and L<Texinfo::Report>.
+see L<Texinfo::Convert::Converter> and L<Texinfo::Report>.
 
 =over
 
@@ -1790,7 +1790,7 @@ contents array reference protected.
 
 =head1 SEE ALSO
 
-L<Texinfo::Parser>, L<Texinfo::convert::Converter> and L<Texinfo::Report>. 
+L<Texinfo::Parser>, L<Texinfo::Convert::Converter> and L<Texinfo::Report>. 
 
 =head1 AUTHOR
 

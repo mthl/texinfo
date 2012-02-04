@@ -506,7 +506,7 @@ Register a warning or an error.  The I<$text> is the text of the
 error or warning.  The optional I<$line_nr> holds the information
 on the error or warning location.  It is associated with the I<line_nr> 
 key of Texinfo tree elements as described in L<Texinfo::Parser/line_nr>
-for the @-commands.  The I<$line_nr> structure is described in L</errors>
+for the @-commands.  The I<$line_nr> structure is described in L<errors|($error_warnings_list, $error_count) = errors ($converter)>
 above.  If I<$continuation> is set, the line is an error message continuation
 line and not a new error.
 

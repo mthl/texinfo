@@ -5158,7 +5158,7 @@ function returns the error message as is.
 
 The associated value is a reference on an array.  All the commands in the
 array are collected during parsing.  They are afterwards available 
-through L</global_informations>.
+through L<global_informations|/$info = global_informations($parser)>.
 
 =item include_directories
 
@@ -5270,7 +5270,7 @@ undef is returned if the file couldn't be read.
 
 The errors collected during the tree parsing are available through the
 C<errors> method.  This method comes from C<Texinfo::Report>, and is 
-described in L<Texinfo::Report/errors>.
+described in L<errors|Texinfo::Report/($error_warnings_list, $error_count) = errors ($converter)>.
 
 =head2 Getting informations on the document
 

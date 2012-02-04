@@ -7,10 +7,7 @@ Before next release
 
 Document TEXTCONTENT_COMMENT.
 
-Remove :: in node to avoid confusing @ref in info.
-
-New command to modify/transform a texinfo manual, for now to fix
-a tree by adding empty unnumbered commands.
+pod2texi: remove :: in node to avoid confusing @ref in info.
 
 
 Bugs
@@ -89,6 +86,9 @@ or value expansion.  Maybe call the key for these elements
 In a similar way, keep the information about aliases in the tree?
 And about @setfilename in included files which is for now completly
 removed (consistently with documentation).
+
+New command to modify/transform a texinfo manual, for now to fix
+a tree by adding empty unnumbered commands.
 
 Right now VERBOSE is almost not used.
 
