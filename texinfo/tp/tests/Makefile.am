@@ -1,13 +1,9 @@
-
-htmlxref_cnf_tests = htmlxref htmlxref-only_mono htmlxref-only_split
 base_tests = \
- formatting \
- $(htmlxref_cnf_tests)
+ formatting htmlxref htmlxref-only_mono htmlxref-only_split
 long_tests = \
  sectioning coverage indices nested_formats contents layout
 
-DIST_SUBDIRS = $(base_tests) $(long_tests) many_input_files
-SUBDIRS = . many_input_files
+SUBDIRS = . many_input_files $(base_tests) $(long_tests)
 
 copy-tests: copy-base copy-long
 	cd many_input_files && $(MAKE) copy-tests
@@ -15,9 +11,6 @@ copy-tests: copy-base copy-long
 copy-base:
 	$(srcdir)/parser_tests.sh -copy $(base_tests)
 
-# this is not used directly when recursively doing long-check from the 
-# parent directory as TESTS is set to long_tests.sh, but long_tests.sh
-# calls 
 copy-long:
 	$(srcdir)/parser_tests.sh -copy $(long_tests)
 
@@ -32,24 +25,27 @@ long-check: all
 all-checks: all
 	$(MAKE) $(AM_MAKEFLAGS) check ALL_TESTS=yes
 
-# this is in order to have the files in .texinfo in the build dir
-all-local:
-	for dir in $(htmlxref_cnf_tests); do \
-		if [ -f "$(srcdir)/$$dir/htmlxref.cnf-texinfo" ]; then \
-			$(mkdir_p) $$dir/.texinfo/ ; \
-			${INSTALL_DATA} "$(srcdir)/$$dir/htmlxref.cnf-texinfo" $$dir/.texinfo/ ; \
-		fi; \
-		if [ -f $(srcdir)/$$dir/htmlxref.cnf-ref ]; then \
-			${INSTALL_DATA} "$(srcdir)/$$dir/htmlxref.cnf-ref" $$dir/htmlxref.cnf ; \
-		fi; \
-	done
-	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref sectioning/equivalent_nodes-noderename.cnf
+# this is in order to have the htmlxref.cnf files in the build dir.
+# This is done in this directory to be sure that the files are there
+# when check is done in this directory.
+all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
+ htmlxref-only_split/htmlxref.cnf htmlxref-only_split/.texinfo/htmlxref.cnf
 
-clean-local:
-	for dir in $(htmlxref_cnf_tests); do \
-		rm -rf $$dir/.texinfo/ $$dir/htmlxref.cnf ; \
-	done
-	rm -f sectioning/equivalent_nodes-noderename.cnf
+htmlxref/htmlxref.cnf: htmlxref/htmlxref.cnf-ref
+	${INSTALL_DATA} $< $@
+
+htmlxref-only_mono/htmlxref.cnf: htmlxref-only_mono/htmlxref.cnf-ref
+	${INSTALL_DATA} $< $@
+
+htmlxref-only_split/htmlxref.cnf: htmlxref-only_split/htmlxref.cnf-ref
+	${INSTALL_DATA} $< $@
+
+htmlxref-only_split/.texinfo/htmlxref.cnf: \
+ htmlxref-only_split/htmlxref.cnf-texinfo htmlxref-only_split/.texinfo
+	${INSTALL_DATA} $< $@
+
+htmlxref-only_split/.texinfo:
+	$(mkdir_p) $@
 
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
  $(TESTS) $(long_TESTS) coverage_macro.texi
