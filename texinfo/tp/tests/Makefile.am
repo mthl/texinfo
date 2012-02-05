@@ -3,7 +3,8 @@ base_tests = \
 long_tests = \
  sectioning coverage indices nested_formats contents layout
 
-SUBDIRS = . many_input_files $(base_tests) $(long_tests)
+DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests)
+SUBDIRS = . many_input_files
 
 copy-tests: copy-base copy-long
 	cd many_input_files && $(MAKE) copy-tests
@@ -29,7 +30,8 @@ all-checks: all
 # This is done in this directory to be sure that the files are there
 # when check is done in this directory.
 all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
- htmlxref-only_split/htmlxref.cnf htmlxref-only_split/.texinfo/htmlxref.cnf
+ htmlxref-only_split/htmlxref.cnf htmlxref-only_split/.texinfo/htmlxref.cnf \
+ sectioning/equivalent_nodes-noderename.cnf
 
 htmlxref/htmlxref.cnf: htmlxref/htmlxref.cnf-ref
 	${INSTALL_DATA} $< $@
@@ -46,6 +48,9 @@ htmlxref-only_split/.texinfo/htmlxref.cnf: \
 
 htmlxref-only_split/.texinfo:
 	$(mkdir_p) $@
+
+sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
+	${INSTALL_DATA} $< $@
 
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
  $(TESTS) $(long_TESTS) coverage_macro.texi

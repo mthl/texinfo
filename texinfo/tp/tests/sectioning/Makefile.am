@@ -18,7 +18,7 @@ EXTRA_DIST = \
  tests-parser.txt \
  res_parser res_parser_html
 
-DISTCLEANFILES = tests.log tests.out
+DISTCLEANFILES = tests.log tests.out equivalent_nodes-noderename.cnf
 
 distclean-local:
 	rm -rf out_parser out_parser_html diffs
