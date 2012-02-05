@@ -463,6 +463,7 @@ t/results/html_tests/documentdescription.pl
 t/results/html_tests/empty_lines_at_beginning_no_setfilename_no_element.pl
 t/results/html_tests/empty_lines_at_beginning_no_setfilename.pl
 t/results/html_tests/html_in_copying.pl
+t/results/html_tests/image_link_prefix.pl
 t/results/html_tests/index_and_node_same_name.pl
 t/results/html_tests/index_below.pl
 t/results/html_tests/no_use_iso.pl
@@ -1030,6 +1031,7 @@ t/results/sectioning/part_node_part_appendix.pl
 t/results/sectioning/part_node_part_node_appendix.pl
 t/results/sectioning/placed_things_before_element.pl
 t/results/sectioning/placed_things_before_node.pl
+t/results/sectioning/protected_node_parentheses.pl
 t/results/sectioning/raiselowersections.pl
 t/results/sectioning/rec_nodes.pl
 t/results/sectioning/ref_to_top.pl

@@ -74,6 +74,7 @@ our %all_converters_defaults = (
   'fillcolumn'           => 72,
   'expanded_formats'     => undef,
   'include_directories'  => undef,
+  'IMAGE_LINK_PREFIX'    => undef,
   'NUMBER_SECTIONS'      => 1,
   'NUMBER_FOOTNOTES'     => 1,
   'frenchspacing'        => 'off',

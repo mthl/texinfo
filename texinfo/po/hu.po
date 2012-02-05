@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: info\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-01-28 12:42+0100\n"
+"POT-Creation-Date: 2012-02-05 10:56+0100\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Mate LABADI <labadimate@freemail.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -327,7 +327,7 @@ msgid "Try --help for more information.\n"
 msgstr "A --help több információt ad.\n"
 
 #: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
-#: util/texindex.c:296 tp/texi2any.pl:622
+#: util/texindex.c:296 tp/texi2any.pl:624
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -2042,7 +2042,7 @@ msgid ""
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:589 tp/texi2any.pl:611
+#: install-info/install-info.c:589 tp/texi2any.pl:613
 #, fuzzy
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2208,49 +2208,49 @@ msgstr "Nem található oldalszám ebben: %s"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "a(z) %s bejegyzés egy másodlagos névvel rendelkező bejegyzést követ"
 
-#: tp/texi2any.pl:269
+#: tp/texi2any.pl:271
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "hiba „%s“ írásakor."
 
-#: tp/texi2any.pl:278
+#: tp/texi2any.pl:280
 #, fuzzy, perl-format
 msgid "Unknown variable %s"
 msgstr "Ismeretlen parancs: „%s“"
 
-#: tp/texi2any.pl:281 tp/texi2any.pl:298 tp/Texinfo/Convert/Converter.pm:370
-#: tp/Texinfo/Convert/Converter.pm:389
+#: tp/texi2any.pl:283 tp/texi2any.pl:300 tp/Texinfo/Convert/Converter.pm:371
+#: tp/Texinfo/Convert/Converter.pm:390
 #, fuzzy, perl-format
 msgid "Obsolete variable %s\n"
 msgstr "Változó beállítása:"
 
-#: tp/texi2any.pl:295
+#: tp/texi2any.pl:297
 #, fuzzy, perl-format
 msgid "Unknown variable %s\n"
 msgstr "Ismeretlen parancs: „%s“"
 
-#: tp/texi2any.pl:360
+#: tp/texi2any.pl:362
 #, fuzzy, perl-format
 msgid "Can't read init file %s"
 msgstr "a(z) „%s“ input fájl nem nyitható meg."
 
-#: tp/texi2any.pl:488
+#: tp/texi2any.pl:490
 #, fuzzy
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr "Használat: %s [OPCIÓK] ... TEXINFO-FÁJL...\n"
 
-#: tp/texi2any.pl:489
+#: tp/texi2any.pl:491
 #, fuzzy
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr "Használat: %s [OPCIÓK] ... TEXINFO-FÁJL...\n"
 
-#: tp/texi2any.pl:491
+#: tp/texi2any.pl:493
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgstr ""
 
-#: tp/texi2any.pl:494
+#: tp/texi2any.pl:496
 #, perl-format
 msgid ""
 "General options:\n"
@@ -2268,7 +2268,7 @@ msgid ""
 "      --version               display version information and exit.\n"
 msgstr ""
 
-#: tp/texi2any.pl:508
+#: tp/texi2any.pl:510
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2284,7 +2284,7 @@ msgstr ""
 "      --xml                   Texinfo XML kimenet Info helyett\n"
 "      --plaintext             sima szöveg kimenet Info helyett\n"
 
-#: tp/texi2any.pl:516
+#: tp/texi2any.pl:518
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -2311,7 +2311,7 @@ msgid ""
 "                                Otherwise, DEST names the output file.\n"
 msgstr ""
 
-#: tp/texi2any.pl:536
+#: tp/texi2any.pl:538
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2333,7 +2333,7 @@ msgid ""
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 
-#: tp/texi2any.pl:553
+#: tp/texi2any.pl:555
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -2347,19 +2347,19 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr ""
 
-#: tp/texi2any.pl:564
+#: tp/texi2any.pl:566
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:567
+#: tp/texi2any.pl:569
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:570
+#: tp/texi2any.pl:572
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -2369,7 +2369,7 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 
-#: tp/texi2any.pl:577
+#: tp/texi2any.pl:579
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -2389,7 +2389,7 @@ msgid ""
 "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgstr ""
 
-#: tp/texi2any.pl:594
+#: tp/texi2any.pl:596
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2398,7 +2398,7 @@ msgid ""
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
 
-#: tp/texi2any.pl:600
+#: tp/texi2any.pl:602
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -2414,137 +2414,137 @@ msgid ""
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 
-#: tp/texi2any.pl:646
+#: tp/texi2any.pl:648
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: a --footnote-style argumentumának „separate“-nek vagy  „end“-nek kell "
 "lennie, „%s“ helyett.\n"
 
-#: tp/texi2any.pl:734
+#: tp/texi2any.pl:736
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: a --paragraph-indent argumentumának numerikusnak,  „none“-nak vagy  "
 "„asis“-nek kell lennie, „%s“ helyett.\n"
 
-#: tp/texi2any.pl:842
+#: tp/texi2any.pl:844
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr ""
 "%s: Figyelmen kívül hagyom a fel nem ismert TEXINFO_OUTPUT_FORMAT értéket "
 "(„%s“).\n"
 
-#: tp/texi2any.pl:855
+#: tp/texi2any.pl:857
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:866
+#: tp/texi2any.pl:868
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:897
+#: tp/texi2any.pl:899
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: hiányzó fájl argumentum.\n"
 
-#: tp/texi2any.pl:898
+#: tp/texi2any.pl:900
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "További információért próbálja meg a „%s --help“-t.\n"
 
-#: tp/texi2any.pl:976
+#: tp/texi2any.pl:978
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "hiba a(z) „%s“ output fájl bezárásakor"
 
-#: tp/texi2any.pl:982 tp/texi2any.pl:1072 tp/texi2any.pl:1106
+#: tp/texi2any.pl:984 tp/texi2any.pl:1074 tp/texi2any.pl:1108
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
-#: tp/texi2any.pl:1043 tp/texi2any.pl:1119
+#: tp/texi2any.pl:1045 tp/texi2any.pl:1121
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "hiba „%s“ írásakor."
 
-#: tp/texi2any.pl:1066 tp/texi2any.pl:1100
+#: tp/texi2any.pl:1068 tp/texi2any.pl:1102
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:698
+#: tp/Texinfo/Common.pm:701
 msgid "recursion is always allowed"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:699
+#: tp/Texinfo/Common.pm:702
 msgid "arguments are quoted by default"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:869
+#: tp/Texinfo/Common.pm:872
 #, fuzzy, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s nem egy ISO 639 szabvány szerinti nyelvkód"
 
-#: tp/Texinfo/Common.pm:874
+#: tp/Texinfo/Common.pm:877
 #, fuzzy, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s nem egy ISO 639 szabvány szerinti nyelvkód"
 
-#: tp/Texinfo/Common.pm:892
+#: tp/Texinfo/Common.pm:895
 #, fuzzy, perl-format
 msgid "%s is not a valid split possibility"
 msgstr "%s nem egy ISO 639 szabvány szerinti nyelvkód"
 
-#: tp/Texinfo/Common.pm:915 tp/Texinfo/Common.pm:1336
+#: tp/Texinfo/Common.pm:918 tp/Texinfo/Common.pm:1339
 #, fuzzy, perl-format
 msgid "Cannot read %s: %s"
 msgstr "A(z) „%s“ könyvtár nem hozható létre: %s"
 
-#: tp/Texinfo/Common.pm:931
+#: tp/Texinfo/Common.pm:934
 #, fuzzy, perl-format
 msgid "Error on closing @verbatiminclude file %s: %s"
 msgstr "hiba a(z) „%s“ output fájl bezárásakor"
 
 # található / találom
 # a mondatszerkezet miatt itt jó a nem található - sas
-#: tp/Texinfo/Common.pm:936 tp/Texinfo/Parser.pm:2859
+#: tp/Texinfo/Common.pm:939 tp/Texinfo/Parser.pm:2859
 #, fuzzy, perl-format
 msgid "@%s: Cannot find %s"
 msgstr "„%s“ nem található."
 
-#: tp/Texinfo/Common.pm:1236
+#: tp/Texinfo/Common.pm:1239
 #, fuzzy, perl-format
 msgid "Cannot open html refs config file %s: %s"
 msgstr "Nem törölhető fájl: `%s': %s"
 
-#: tp/Texinfo/Common.pm:1264
+#: tp/Texinfo/Common.pm:1267
 msgid "Missing type"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1267
+#: tp/Texinfo/Common.pm:1270
 #, fuzzy, perl-format
 msgid "Unrecognized type: %s"
 msgstr "%s: ismeretlen opció „--%s“\n"
 
-#: tp/Texinfo/Common.pm:1283
+#: tp/Texinfo/Common.pm:1286
 #, fuzzy, perl-format
 msgid "Error on closing html refs config file %s: %s"
 msgstr "Nem törölhető fájl: `%s': %s"
 
-#: tp/Texinfo/Common.pm:1317
+#: tp/Texinfo/Common.pm:1320
 #, perl-format
 msgid "%s:%d: no node to be renamed\n"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1328
+#: tp/Texinfo/Common.pm:1331
 #, perl-format
 msgid "%s:%d: nodes without a new name at the end of file\n"
 msgstr ""
 
-#: tp/Texinfo/Common.pm:1332
+#: tp/Texinfo/Common.pm:1335
 #, fuzzy, perl-format
 msgid "Error on closing renamed nodes file %s: %s"
 msgstr "hiba a(z) „%s“ output fájl bezárásakor"
@@ -2554,7 +2554,7 @@ msgstr "hiba a(z) „%s“ output fájl bezárásakor"
 msgid "Can't read file %s: %s"
 msgstr "Nem törölhető fájl: `%s': %s"
 
-#: tp/Texinfo/Parser.pm:952 tp/Texinfo/Structuring.pm:381
+#: tp/Texinfo/Parser.pm:952 tp/Texinfo/Structuring.pm:496
 #, perl-format
 msgid "Multiple @%s"
 msgstr ""
@@ -3175,79 +3175,79 @@ msgstr "%s:%d: figyelem: "
 msgid "warning: %s\n"
 msgstr "%s:%d: figyelem: "
 
-#: tp/Texinfo/Structuring.pm:219
+#: tp/Texinfo/Structuring.pm:229
 #, perl-format
 msgid "Upping the section level of @%s which is too low"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:251
+#: tp/Texinfo/Structuring.pm:261
 #, perl-format
 msgid "No chapter-level command before @%s"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:256
+#: tp/Texinfo/Structuring.pm:266
 #, perl-format
 msgid "Lowering the section level of @%s appearing after a lower element"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:335
+#: tp/Texinfo/Structuring.pm:345
 #, perl-format
 msgid "No sectioning command associated with @%s"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:399
+#: tp/Texinfo/Structuring.pm:514
 #, fuzzy, perl-format
 msgid "Menu reference to nonexistent node `%s'"
 msgstr "nem hivatkozott oldal „%s“"
 
-#: tp/Texinfo/Structuring.pm:440
+#: tp/Texinfo/Structuring.pm:555
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "nem hivatkozott oldal „%s“"
 
-#: tp/Texinfo/Structuring.pm:486
+#: tp/Texinfo/Structuring.pm:601
 #, perl-format
 msgid "Node `%s' is %s for `%s' in sectioning but not in menu"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:493
+#: tp/Texinfo/Structuring.pm:608
 #, perl-format
 msgid "Node %s `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:511
+#: tp/Texinfo/Structuring.pm:626
 #, perl-format
 msgid "Node `%s' is %s for `%s' in menu but not in sectioning"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:576
+#: tp/Texinfo/Structuring.pm:691
 #, fuzzy, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "nem hivatkozott oldal „%s“"
 
-#: tp/Texinfo/Structuring.pm:595
+#: tp/Texinfo/Structuring.pm:710
 #, perl-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "A(z) „%s“ oldal nem tartalmaz menüelemet „%s“-hez, bár ez uóbbi a szülője"
 
-#: tp/Texinfo/Structuring.pm:603
+#: tp/Texinfo/Structuring.pm:718
 #, perl-format
 msgid "For `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1086
+#: tp/Texinfo/Structuring.pm:1201
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr ""
 "%s egy nem létező oldalra („%s“) hivatkozik (esetleg hibás szekcionálás?)"
 
-#: tp/Texinfo/Structuring.pm:1184
+#: tp/Texinfo/Structuring.pm:1299
 #, fuzzy, perl-format
 msgid "Empty index key in @%s"
 msgstr "Nincs tárgymutató ehhez: %s\n"
 
-#: tp/Texinfo/Convert/Converter.pm:514 tp/Texinfo/Convert/DocBook.pm:311
+#: tp/Texinfo/Convert/Converter.pm:515 tp/Texinfo/Convert/DocBook.pm:311
 #: tp/Texinfo/Convert/HTML.pm:6403 tp/Texinfo/Convert/HTML.pm:6427
 #: tp/Texinfo/Convert/HTML.pm:6794 tp/Texinfo/Convert/HTML.pm:6851
 #: tp/Texinfo/Convert/HTML.pm:6927 tp/Texinfo/Convert/HTML.pm:6994
@@ -3258,12 +3258,12 @@ msgstr "Nincs tárgymutató ehhez: %s\n"
 msgid "Could not open %s for writing: %s"
 msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
-#: tp/Texinfo/Convert/Converter.pm:564
+#: tp/Texinfo/Convert/Converter.pm:565
 #, fuzzy, perl-format
 msgid "Can't create directories `%s' or `%s': %s"
 msgstr "A(z) „%s“ könyvtár nem hozható létre: %s"
 
-#: tp/Texinfo/Convert/Converter.pm:572
+#: tp/Texinfo/Convert/Converter.pm:573
 #, fuzzy, perl-format
 msgid "Can't create directories `%s': %s"
 msgstr "A(z) „%s“ könyvtár nem hozható létre: %s"

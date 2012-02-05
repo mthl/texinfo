@@ -1645,6 +1645,9 @@ sub _convert_image_command($$$$)
       #cluck "err ($self->{'ignore_notice'})";
       $self->line_warn(sprintf($self->__("\@image file `%s' (for HTML) not found, using `%s'"), $basefile, $image_file), $command->{'line_nr'});
     }
+    if (defined($self->get_conf('IMAGE_LINK_PREFIX'))) {
+      $image_file = $self->get_conf('IMAGE_LINK_PREFIX') . $image_file;
+    }
     if ($self->in_preformatted()) {
       my $alt_text;
       if (defined($args->[3]) and defined($args->[3]->{'normal'})) {

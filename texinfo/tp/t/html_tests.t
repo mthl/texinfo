@@ -24,6 +24,9 @@ in first column, verbatim
 @image{f--ile,,,alt -- @b{in b}}
 @end example
 '],
+['image_link_prefix',
+'@image{image}', {},{'IMAGE_LINK_PREFIX' => '../img'}
+],
 ['commands_in_abbr',
 '@abbr{A, @b{abbr} -- b}.
 

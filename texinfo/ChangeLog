@@ -1,3 +1,11 @@
+2012-02-05  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Configuration Variables), tp/Texinfo/Common.pm,
+	tp/Texinfo/Convert/HTML.pm(_convert_image_command), 
+	tp/Texinfo/Convert/Converter.pm(%all_converters_defaults): new 
+	configuration variable to prepend a path to images in HTML,
+	IMAGE_LINK_PREFIX.  Report from Vincent Belaïche.
+
 2012-01-28  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Configuration Variables): RAW_TEXT becomes RAWTEXT.
@@ -6,7 +14,7 @@
 	however they will have an effect only if set on the command line.
 	* tp/TODO, tp/texi2any.pl, tp/Texinfo/Common.pm,
 	tp/Texinfo/Convert/HTML.pm (converter_defaults): handle configuration 
-	variables for program behavior more laike other variables and formats.
+	variables for program behavior more like other variables and formats.
 
 2012-01-27  Patrice Dumas  <pertusus@free.fr>
 

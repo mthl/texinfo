@@ -179,7 +179,7 @@ my @variable_settables = (
   'BEFORE_TOC_LINES', 'AFTER_TOC_LINES', 
   'SORT_ELEMENT_COUNT', 'SORT_ELEMENT_COUNT_WORDS',
   'KEEP_TOP_EXTERNAL_REF',
-  'TEXI2HTML',
+  'TEXI2HTML', 'IMAGE_LINK_PREFIX',
 # FIXME document
   'TEXTCONTENT_COMMENT',
 # FIXME Not strings. To be documented.
