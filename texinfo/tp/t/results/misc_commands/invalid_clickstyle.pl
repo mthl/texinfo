@@ -26,6 +26,11 @@ $result_trees{'invalid_clickstyle'} = {
         'arg_line' => ' @result on the same line
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -83,6 +88,11 @@ $result_trees{'invalid_clickstyle'} = {
         'arg_line' => ' @nocmd
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -132,6 +142,11 @@ $result_trees{'invalid_clickstyle'} = {
       'extra' => {
         'arg_line' => ' something
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
       },
       'parent' => {}
     },

@@ -2933,6 +2933,11 @@ $result_trees{'complex_split_at_node'} = [
           },
           {
             'cmdname' => 'contents',
+            'line_nr' => {
+              'file_name' => '',
+              'line_nr' => 84,
+              'macro' => ''
+            },
             'parent' => {}
           }
         ],

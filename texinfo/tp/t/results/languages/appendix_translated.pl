@@ -191,6 +191,11 @@ $result_trees{'appendix_translated'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

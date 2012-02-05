@@ -99,6 +99,11 @@ $result_trees{'section_before_part'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

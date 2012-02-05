@@ -325,6 +325,11 @@ $result_trees{'heading_in_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

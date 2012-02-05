@@ -450,6 +450,11 @@ $result_trees{'chapter_between_nodes'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 19,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

@@ -149,6 +149,11 @@ $result_trees{'shortcontents_no_top'} = {
         },
         {
           'cmdname' => 'shortcontents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

@@ -690,6 +690,11 @@ $result_trees{'things_before_setfilename'} = {
             },
             {
               'cmdname' => 'contents',
+              'line_nr' => {
+                'file_name' => 'things_before_setfilename.texi',
+                'line_nr' => 32,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

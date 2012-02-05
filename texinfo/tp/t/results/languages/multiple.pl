@@ -523,6 +523,11 @@ $result_trees{'multiple'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -765,6 +770,11 @@ $result_trees{'multiple'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 20,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

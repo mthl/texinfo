@@ -807,6 +807,11 @@ $result_trees{'float_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 29,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -998,6 +1003,11 @@ $result_trees{'float_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 38,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1007,6 +1017,11 @@ $result_trees{'float_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 39,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

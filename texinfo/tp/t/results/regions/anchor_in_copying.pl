@@ -189,6 +189,11 @@ $result_trees{'anchor_in_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -204,6 +209,11 @@ $result_trees{'anchor_in_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

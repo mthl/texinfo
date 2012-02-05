@@ -252,6 +252,7 @@ my %item_container_commands   = %Texinfo::Common::item_container_commands;
 my %item_line_commands        = %Texinfo::Common::item_line_commands;
 my %deprecated_commands       = %Texinfo::Common::deprecated_commands;
 my %root_commands             = %Texinfo::Common::root_commands;
+my %sectioning_commands       = %Texinfo::Common::sectioning_commands;
 my %command_index_prefix      = %Texinfo::Common::command_index_prefix;
 my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 my %ref_commands              = %Texinfo::Common::ref_commands;
@@ -688,6 +689,47 @@ sub parse_texi_text($$;$$$$)
   return $tree;
 }
 
+sub _check_contents_location($$)
+{
+  my $self = shift;
+  my $tree = shift;
+
+  my $commands = $self->global_commands_information();
+  return unless ($commands);
+  # Find the last sectioning command
+  my $index = -1;
+  my %ending_root_commands;
+  my $found = 0;
+  while ($tree->{'contents'}->[$index]) {
+    if (defined($tree->{'contents'}->[$index]->{'cmdname'})) {
+      $ending_root_commands{$tree->{'contents'}->[$index]} = 1;
+      if ($sectioning_commands{$tree->{'contents'}->[$index]->{'cmdname'}}) {
+        $found = 1;
+        last;
+      }
+    }
+    $index--;
+  }
+  return if (!$found);
+
+  #print STDERR "ending_root_commands ".join('|',keys(%ending_root_commands))."\n";
+  #print STDERR "tree contents: ".join('|', @{$tree->{'contents'}})."\n";
+  foreach my $command ('contents', 'shortcontents', 'summarycontents') {
+    if ($commands->{$command}) {
+      foreach my $current (@{$commands->{$command}}) {
+        my $root_command = $self->Texinfo::Common::find_parent_root_command($current);
+        #print STDERR "root_command for $current->{'cmdname'}: $root_command\n";
+        if (defined($root_command) 
+            and !$ending_root_commands{$root_command}) {
+          $self->line_warn (sprintf($self->__(
+                  "\@%s should only appear at beginning or end of document"),
+                            $current->{'cmdname'}), $current->{'line_nr'});                       
+        }
+      }
+    }
+  }
+}
+
 # parse a texi file
 sub parse_texi_file ($$)
 {
@@ -762,6 +804,7 @@ sub parse_texi_file ($$)
     unshift (@{$text_root->{'contents'}}, $before_setfilename)
       if (@{$before_setfilename->{'contents'}});
   }
+  $self->_check_contents_location($tree);
 
   return $tree;
 }
@@ -943,9 +986,11 @@ sub _register_global_command($$$$)
   }
   if ($self->{'global_commands'}->{$command} and $command ne 'author') {
     push @{$self->{'extra'}->{$command}}, $current;
+    $current->{'line_nr'} = $line_nr if (!$current->{'line_nr'});
     return 1;
   } elsif ($global_unique_commands{$command}) {
     # setfilename ignored in an included file
+    $current->{'line_nr'} = $line_nr if (!$current->{'line_nr'});
     if ($command eq 'setfilename'
         and scalar(@{$self->{'input'}}) > 1) {
     } elsif (exists ($self->{'extra'}->{$current->{'cmdname'}})) {

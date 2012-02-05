@@ -11,6 +11,11 @@ $result_trees{'setcontentsaftertitlepage'} = {
       'contents' => [
         {
           'cmdname' => 'setcontentsaftertitlepage',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -552,6 +557,11 @@ $result_trees{'setcontentsaftertitlepage'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 24,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

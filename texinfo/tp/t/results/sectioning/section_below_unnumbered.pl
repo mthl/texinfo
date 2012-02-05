@@ -17,6 +17,11 @@ $result_trees{'section_below_unnumbered'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

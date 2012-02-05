@@ -553,6 +553,11 @@ $result_trees{'node_part_chapter_after_chapter'} = [
           },
           {
             'cmdname' => 'contents',
+            'line_nr' => {
+              'file_name' => '',
+              'line_nr' => 18,
+              'macro' => ''
+            },
             'parent' => {}
           }
         ],

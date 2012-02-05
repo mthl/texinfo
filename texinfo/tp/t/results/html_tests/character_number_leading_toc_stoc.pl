@@ -176,6 +176,11 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -186,6 +191,11 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         },
         {
           'cmdname' => 'shortcontents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

@@ -547,6 +547,11 @@ $result_trees{'contents'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 23,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

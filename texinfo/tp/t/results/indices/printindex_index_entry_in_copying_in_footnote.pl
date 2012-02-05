@@ -346,6 +346,11 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 17,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -584,6 +589,11 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 26,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

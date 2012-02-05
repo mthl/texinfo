@@ -17,6 +17,11 @@ $result_trees{'section_in_unnumbered_info'} = {
         },
         {
           'cmdname' => 'setcontentsaftertitlepage',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -114,6 +119,11 @@ $result_trees{'section_in_unnumbered_info'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

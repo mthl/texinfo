@@ -17,10 +17,20 @@ $result_trees{'contents_setcontentsaftertitlepage_before_node'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
           'cmdname' => 'setcontentsaftertitlepage',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

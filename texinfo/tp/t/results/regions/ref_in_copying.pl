@@ -261,6 +261,11 @@ $result_trees{'ref_in_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

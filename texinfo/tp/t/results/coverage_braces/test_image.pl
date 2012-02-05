@@ -1327,6 +1327,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 17,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

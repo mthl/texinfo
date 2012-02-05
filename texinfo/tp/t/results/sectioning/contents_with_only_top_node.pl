@@ -56,6 +56,11 @@ $result_trees{'contents_with_only_top_node'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

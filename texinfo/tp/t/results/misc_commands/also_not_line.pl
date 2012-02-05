@@ -240,6 +240,11 @@ $result_trees{'also_not_line'} = {
         },
         {
           'cmdname' => 'novalidate',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

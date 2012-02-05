@@ -547,6 +547,11 @@ $result_trees{'shortcontents'} = {
         },
         {
           'cmdname' => 'shortcontents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 23,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

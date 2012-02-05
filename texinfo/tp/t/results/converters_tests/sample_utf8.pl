@@ -357,6 +357,11 @@ $result_trees{'sample_utf8'} = {
             },
             {
               'cmdname' => 'insertcopying',
+              'line_nr' => {
+                'file_name' => 'sample_utf8.texi',
+                'line_nr' => 20,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -435,6 +440,11 @@ $result_trees{'sample_utf8'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => 'sample_utf8.texi',
+            'line_nr' => 24,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -532,6 +542,11 @@ $result_trees{'sample_utf8'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => 'sample_utf8.texi',
+            'line_nr' => 30,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

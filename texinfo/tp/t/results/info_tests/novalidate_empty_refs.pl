@@ -17,6 +17,11 @@ $result_trees{'novalidate_empty_refs'} = {
         },
         {
           'cmdname' => 'novalidate',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

@@ -547,6 +547,11 @@ $result_trees{'contents_and_shortcontents'} = {
         },
         {
           'cmdname' => 'shortcontents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 23,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -557,6 +562,11 @@ $result_trees{'contents_and_shortcontents'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 25,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

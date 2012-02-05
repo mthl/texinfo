@@ -688,6 +688,11 @@ $result_trees{'things_before_setfilename_no_element'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => 'things_before_setfilename_no_element.texi',
+            'line_nr' => 32,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

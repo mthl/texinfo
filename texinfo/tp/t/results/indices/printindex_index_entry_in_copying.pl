@@ -753,6 +753,11 @@ $result_trees{'printindex_index_entry_in_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 23,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -991,6 +996,11 @@ $result_trees{'printindex_index_entry_in_copying'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 32,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

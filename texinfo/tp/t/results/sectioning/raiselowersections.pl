@@ -1286,6 +1286,11 @@ $result_trees{'raiselowersections'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 35,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

@@ -377,6 +377,11 @@ $result_trees{'chapter_node_before_and_after_part'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

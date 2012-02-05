@@ -3170,6 +3170,11 @@ $result_trees{'macro_in_misc_commands'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 179,
+            'macro' => 'contents-macro'
+          },
           'parent' => {}
         },
         {
@@ -3493,6 +3498,11 @@ $result_trees{'macro_in_misc_commands'} = {
             'arg_line' => ' @result-macro{}
 '
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 202,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -3726,6 +3736,11 @@ $result_trees{'macro_in_misc_commands'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 211,
+            'macro' => 'contents-macro'
+          },
           'parent' => {}
         },
         {
@@ -3780,6 +3795,11 @@ $result_trees{'macro_in_misc_commands'} = {
         },
         {
           'cmdname' => 'shortcontents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 216,
+            'macro' => 'shortcontents-macro'
+          },
           'parent' => {}
         },
         {

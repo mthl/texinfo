@@ -185,6 +185,11 @@ $result_trees{'text_before_line_command'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

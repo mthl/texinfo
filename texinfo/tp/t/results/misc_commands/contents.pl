@@ -33,6 +33,11 @@ $result_trees{'contents'} = {
     },
     {
       'cmdname' => 'contents',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -55,6 +60,11 @@ $result_trees{'contents'} = {
     },
     {
       'cmdname' => 'contents',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -70,6 +80,11 @@ $result_trees{'contents'} = {
     },
     {
       'cmdname' => 'contents',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -89,6 +104,11 @@ $result_trees{'contents'} = {
     },
     {
       'cmdname' => 'shortcontents',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -103,6 +123,11 @@ $result_trees{'contents'} = {
     },
     {
       'cmdname' => 'shortcontents',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 8,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -117,6 +142,11 @@ $result_trees{'contents'} = {
     },
     {
       'cmdname' => 'summarycontents',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

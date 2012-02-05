@@ -1538,6 +1538,11 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
             },
             {
               'cmdname' => 'insertcopying',
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 35,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

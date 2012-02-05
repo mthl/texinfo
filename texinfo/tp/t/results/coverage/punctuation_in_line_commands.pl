@@ -1015,6 +1015,11 @@ $result_trees{'punctuation_in_line_commands'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 36,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

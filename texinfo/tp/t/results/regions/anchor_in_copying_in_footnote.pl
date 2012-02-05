@@ -222,6 +222,11 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -237,6 +242,11 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

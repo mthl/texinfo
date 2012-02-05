@@ -198,10 +198,20 @@ $result_trees{'contents_in_html_text'} = {
         },
         {
           'cmdname' => 'shortcontents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

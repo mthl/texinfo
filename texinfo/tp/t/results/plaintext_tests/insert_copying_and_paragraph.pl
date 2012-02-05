@@ -100,6 +100,11 @@ $result_trees{'insert_copying_and_paragraph'} = {
     },
     {
       'cmdname' => 'insertcopying',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -1545,6 +1545,39 @@ sub protect_first_parenthesis($)
   return \@contents;
 }
 
+sub find_parent_root_command($$)
+{
+  my $parser = shift;
+  my $current = shift;
+
+  my $root_command;
+  while (1) {
+    if ($current->{'cmdname'}) {
+      if ($root_commands{$current->{'cmdname'}}) {
+        return $current;
+      } elsif ($region_commands{$current->{'cmdname'}}) {
+        if ($current->{'cmdname'} eq 'copying' and $parser
+            and $parser->{'extra'} and $parser->{'extra'}->{'insertcopying'}) {
+          foreach my $insertcopying(@{$parser->{'extra'}->{'insertcopying'}}) {
+            my $root_command
+              = $parser->find_parent_root_command($insertcopying);
+            return $root_command if (defined($root_command));
+          }
+        } else {
+          return undef;
+        }
+      }
+    }
+    if ($current->{'parent'}) {
+      $current = $current->{'parent'};
+    } else {
+      return undef;
+    }
+  }
+  # Should never get there
+  return undef;
+}
+
 1;
 
 __END__
@@ -1785,6 +1818,12 @@ Protect comma characters, replacing C<,> with @comma{} in tree.
 
 Return a contents array reference with first parenthesis in the 
 contents array reference protected.
+
+=item $command = find_parent_root_command($parser, $tree_element)
+
+Find the parent root command of a tree element (sectioning command or node).
+The C<$parser> argument is optional, it is used to continue 
+through C<@insertcopying> if in a C<@copying>.
 
 =back
 

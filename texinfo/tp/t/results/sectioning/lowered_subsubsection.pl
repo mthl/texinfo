@@ -1369,6 +1369,11 @@ $result_trees{'lowered_subsubsection'} = {
         },
         {
           'cmdname' => 'contents',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 45,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

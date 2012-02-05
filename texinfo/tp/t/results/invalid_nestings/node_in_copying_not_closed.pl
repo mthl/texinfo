@@ -147,6 +147,11 @@ $result_trees{'node_in_copying_not_closed'} = {
         },
         {
           'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
