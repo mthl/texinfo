@@ -241,10 +241,14 @@ if ($base_level > 0) {
   print $fh '@setfilename '
     .Pod::Simple::Texinfo::_protect_text ($outfile_name)."\n\n";
   print $fh '@documentencoding utf-8'."\n\n";
+  print $fh "\@settitle $top\n\n";
+  print $fh "\@shorttitlepage $top\n\n";
+  print $fh "\@contents\n\n";
+  print $fh "\@ifnottex\n\n";
   print $fh "\@node Top\n";
   # not escaped on purpose, user may want to use @-commands
   print $fh "\@top $top\n\n";
-  print $fh "\@contents\n\n";
+  print $fh "\@end ifnottex\n\n";
   foreach my $include (@included) {
     my $file = $include->[1];
     print $fh "\@include ".Pod::Simple::Texinfo::_protect_text ($file)."\n";
