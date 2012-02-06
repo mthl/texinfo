@@ -874,7 +874,7 @@
 2011-02-06  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/Makefile.am: Add a missing $(srcdir).  Report 
-	from Jerker Bäck, fix by Karl.
+	from Jerker B\"ack, fix by Karl.
 	http://savannah.gnu.org/bugs/?32328
 
 2011-02-02  Ben Wong  <bugs.debian.org@wongs.net>  (tiny change)
@@ -1212,7 +1212,7 @@
 
 	* texi2html/texi2html.pl (makeinfo_help): tweak formatting/wording.
 
-2010-09-18  Jaakko Hollmén  <Jaakko.Hollmen@tkk.fi>
+2010-09-18  Jaakko Hollm\'en  <Jaakko.Hollmen@tkk.fi>
 
 	* texi2html/examples/texinfo-bright-colors.css, texi2html/Makefile.am:
 	New css file with bright and contrasting colors.
@@ -2821,7 +2821,7 @@
 
 	* Version 4.12.
 
-2008-04-19  Per Øyvind Karlsen  <peroyvind@mandriva.org>  (tiny change)
+2008-04-19  Per \O{}yvind Karlsen  <peroyvind@mandriva.org>  (tiny change)
 
 	* info/filesys.c (compress_suffices): decompress .lzma with unlzma.
 	* install-info/install-info.c: support lzma.
@@ -5402,7 +5402,7 @@
 	makeinfo/lang.c, makeinfo/macro.c, makeinfo/multi.c,
 	makeinfo/node.c, makeinfo/xml.c: More bounds checking.
 
-2005-05-09  Andreas Vögele  <voegelas@gmx.net>  (tiny change)
+2005-05-09  Andreas V\"ogele  <voegelas@gmx.net>  (tiny change)
 
 	* makeinfo/multi.c (output_multitable_row): don't look past
 		beginning of cell memory.  bug-texinfo mail,
@@ -5934,7 +5934,7 @@
 	* makeinfo/texinfo.dtd (Inline.fonts): add it; also slanted.
 	* makeinfo/xml.h (SANSSERIF, SLANTED): define these new elements.
 	* makeinfo/xml.c (texinfoml_element_list): add them.
-	From: Frank Küster, 21 Oct 2004 23:27:33 +0200, Debian bug#277754.
+	From: Frank K\"uster, 21 Oct 2004 23:27:33 +0200, Debian bug#277754.
 
 	* doc/texinfo.txi (Quotations and Examples, end titlepage): state
 	that there must be only one space between the @end and its
@@ -10685,7 +10685,7 @@
 2003-07-14    <karl@gnu.org>
 
 	* util/install-info.c (ensure_dirfile_exists): replace literal ^_ with
-	\x1f.  Report from Trond Endrestøl
+	\x1f.  Report from Trond Endrest\o{}l
 	<trond@ramstind.gtf.ol.no>, 14 Jul 2003 13:31:29 +0200.
 
 	* makeinfo/sectioning.c (sectioning_html): forgot to change closing </hN>
