@@ -9,6 +9,8 @@ Document TEXTCONTENT_COMMENT.
 
 pod2texi: remove :: in node to avoid confusing @ref in info.
 
+Converter that simply converts to Texinfo.
+
 
 Bugs
 ====

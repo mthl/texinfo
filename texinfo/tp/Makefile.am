@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.36 2012-01-29 22:16:07 pertusus Exp $
+# $Id: Makefile.am,v 1.37 2012-02-06 23:22:58 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -136,6 +136,11 @@ test_files = \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
  t/input_files/things_before_setfilename.texi \
+ t/input_files/contents_at_document_begin.texi \
+ t/input_files/contents_at_end_document_after_node.texi \
+ t/input_files/contents_at_end_document.texi \
+ t/input_files/contents_in_document.texi \
+ t/input_files/contents_no_section.texi \
  #
 
 relative_include_dir = t/include_dir
