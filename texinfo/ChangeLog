@@ -4,7 +4,7 @@
 	tp/Texinfo/Convert/HTML.pm(_convert_image_command), 
 	tp/Texinfo/Convert/Converter.pm(%all_converters_defaults): new 
 	configuration variable to prepend a path to images in HTML,
-	IMAGE_LINK_PREFIX.  Report from Vincent Belaïche.
+	IMAGE_LINK_PREFIX.  Report from Vincent Bela\"iche.
 
 2012-01-28  Patrice Dumas  <pertusus@free.fr>
 
@@ -486,7 +486,7 @@
 	* doc/texinfo.txi (Other Configuration Variables): comment out or
 	remove variables the Parser doesn't have, per Patrice.
 
-2011-09-23  Vincent Bela@^iche  <vincent.belaiche@gmail.com>
+2011-09-23  Vincent Bela\"iche  <vincent.belaiche@gmail.com>
 
 	* doc/texinfo.tex (\macroxxx): complain if more than 256 args
 	and non-etex.
@@ -614,7 +614,7 @@
 	* doc/texinfo.tex (^^a0): use \tie instead of ~ for the no-break space,
 	since we redefine the ~ character.
 	(^^L): \def without the \outer, so it can be used in comments.
-	Report from Vincent Bela@"iche.
+	Report from Vincent Bela\"iche.
 
 2011-05-01  Patrice Dumas  <pertusus@free.fr>
 
