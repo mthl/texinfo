@@ -83,6 +83,8 @@ our %all_converters_defaults = (
   'allowcodebreaks'      => 'true',
   'footnotestyle'        => 'end',
   'deftypefnnewline'     => 'off',
+# This is not used much as converters do their best to give a sane output
+  'FIX_TEXINFO'          => 1,
 # This is the default, mainly for tests; the caller should set them.  These
 # values are what is used in tests of the Converters.
   'PACKAGE_AND_VERSION'  => 'texinfo',

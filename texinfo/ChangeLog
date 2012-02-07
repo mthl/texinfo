@@ -1,3 +1,10 @@
+2012-02-07  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi, tp/Texinfo/Common.pm, tp/texi2any.pl,
+	tp/Texinfo/Convert/PlainTexinfo.pm, tp/Makefile.am: new converter,
+	converting the tree to Texinfo.  Add a FIX_TEXINFO customization
+	variable for this converter, set in the default case.
+
 2012-02-05  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Configuration Variables), tp/Texinfo/Common.pm,

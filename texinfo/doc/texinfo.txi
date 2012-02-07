@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.417 2012-02-05 10:54:49 pertusus Exp $
+@c $Id: texinfo.txi,v 1.418 2012-02-07 00:40:45 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17076,6 +17076,12 @@ The sections below give the details for each of these.
 Instead of generating a regular output format, output a text representation
 of the tree obtained by parsing the input texinfo document.
 
+@item PLAINTEXINFO
+Output the Texinfo source with all the macros, @code{@@include} and 
+@code{@@value@{@}} expanded.  This is similar with setting 
+@option{--macro-expand}, but instead of being output in addition to
+the normal conversion, output of Texinfo is the main output.
+
 @item RAWTEXT
 @cindex raw text output
 Output raw text, with minimal formatting.  For example, footnotes are
@@ -17283,9 +17289,9 @@ retrieve the entity, and identifies the canonical DTD for the
 document.
 
 @item DUMP_TEXI
-For debugging.  If set, the result of the first pass is put in a file
-named @file{@var{docname}.passtexi}, and the result of the second pass
-is put in @file{@var{docname}.passfirst}.
+For debugging.  If set, there is no conversion done, only parsing and 
+macros expansion.   If @option{--macro-expand} is set the Texinfo source
+is also expanded to the corresponding file.
 
 @item DUMP_TREE
 For debugging.  If set, the tree constructed upon parsing a Texinfo
@@ -17317,6 +17323,14 @@ Configuration}) and avoid this variable.
 
 @item EXTRA_HEAD
 For HTML, additional text appearing within @code{<head>}.
+
+@item FIX_TEXINFO
+For plain Teixonfo (with @code{PLAINTEXINFO}).  If set to false, 
+the resulting Texinfo is not corrected of all errors, like missing
+@samp{@@end}.
+
+This only has effect when expanding Texinfo, as other converter will
+always try to output something sane even if the Texinfo is broken.
 
 @item FOOTNOTE_END_HEADER_LEVEL
 For HTML@.  Header formatting level used for footnotes header
@@ -21608,7 +21622,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.417 2012-02-05 10:54:49 pertusus Exp $
+$Id: texinfo.txi,v 1.418 2012-02-07 00:40:45 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

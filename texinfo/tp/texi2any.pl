@@ -188,6 +188,7 @@ require Texinfo::Convert::HTML;
 require Texinfo::Convert::XML;
 require Texinfo::Convert::DocBook;
 require Texinfo::Convert::TextContent;
+require Texinfo::Convert::PlainTexinfo;
 require DebugTexinfo::DebugCount;
 require DebugTexinfo::DebugTree;
 
@@ -709,6 +710,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      } elsif ($var eq 'DEBUGTREE') {
        $format = set_format('debugtree', 1);
+     } elsif ($var eq 'PLAINTEXINFO') {
+       $format = set_format('plaintexinfo', 1);
      } elsif ($var eq 'RAWTEXT') {
        $format = set_format('rawtext', 1);
      } elsif ($var eq 'TEXTCONTENT') {
@@ -835,6 +838,9 @@ my %formats_table = (
            },
   'rawtext' => {
             'converter' => sub{Texinfo::Convert::Text->converter(@_)},
+           },
+  'plaintexinfo' => {
+            'converter' => sub{Texinfo::Convert::PlainTexinfo->converter(@_)},
            },
 );
 
