@@ -34,12 +34,6 @@ documentlanguage_set_option documentlanguage_set.texi --document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
 documentlanguage_set_option_info documentlanguage_set.texi --info --document-language fr
 float_copying float_copying.texi --split chapter
-# contents
-contents_at_end_document contents_at_end_document.texi
-contents_in_document contents_in_document.texi
-contents_at_document_begin contents_at_document_begin.texi
-contents_no_section contents_no_section.texi
-contents_at_end_document_after_node contents_at_end_document_after_node.texi
 
 # tex
 block_EOL_tex block_EOL.texi --set-init-var 'L2H 1' --iftex
