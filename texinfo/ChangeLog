@@ -4,6 +4,10 @@
 	tp/Texinfo/Convert/PlainTexinfo.pm, tp/Makefile.am: new converter,
 	converting the tree to Texinfo.  Add a FIX_TEXINFO customization
 	variable for this converter, set in the default case.
+	* doc/texinfo.txi (Configuration Variables), tp/Texinfo/Common.pm, 
+	tp/texi2any.pl:
+	new customization variable, TREE_TRANSFORMATIONS, to specify
+	transformations done to the tree before output.
 
 2012-02-05  Patrice Dumas  <pertusus@free.fr>
 

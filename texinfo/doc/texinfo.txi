@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.418 2012-02-07 00:40:45 pertusus Exp $
+@c $Id: texinfo.txi,v 1.419 2012-02-07 19:41:38 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17539,8 +17539,9 @@ when generating Docbook or if @option{--no-headers} is specified.
 For HTML@.  If set, output the title at the beginning of the document.
 
 @item SIMPLE_MENU
-If set, use a simple preformatted style for the menu, instead of
-breaking down the different parts of the menu.  @xref{Menu Parts}.
+For HTML@.  If set, use a simple preformatted style for the menu, 
+instead of breaking down the different parts of the menu.
+@xref{Menu Parts}.
 
 @item SORT_ELEMENT_COUNT
 If set, the name of a file to which a list of elements (nodes or
@@ -17595,6 +17596,24 @@ File used for the Top node, if @code{NODE_FILENAMES} is set.
 
 @item TOP_NODE_FILE_TARGET
 File used for the Top node in cross references.
+
+@item TREE_TRANSFORMATIONS
+The associated value is a comma separated list of transformations applied
+to the texinfo tree prior from outputting the result.  The following 
+transformations are currently supported:
+
+@table @samp
+@item fill_gaps_in_sectioning
+Adds empty @code{@@unnumbered} in a tree to fill gaps in sectioning.
+For example, an @code{@@unnumberedsec} will be inserted if a @code{@@chapter}
+is followed by a @code{subsection}.
+
+@item simple_menu
+Does the same as @code{SIMPLE_MENU}: use a simple preformatted style for the 
+menu.  It differs from setting @code{SIMPLE_MENU}, as @code{SIMPLE_MENU}
+will only have an effect for HTML@.
+
+@end table
 
 @item USE_ACCESSKEY
 @cindex @code{accesskey}, configuration variable for
@@ -21622,7 +21641,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.418 2012-02-07 00:40:45 pertusus Exp $
+$Id: texinfo.txi,v 1.419 2012-02-07 19:41:38 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

@@ -55,6 +55,7 @@ float_name_caption
 normalize_top_node_name
 protect_comma_in_tree
 protect_first_parenthesis
+valid_tree_transformation
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -180,6 +181,7 @@ my @variable_settables = (
   'SORT_ELEMENT_COUNT', 'SORT_ELEMENT_COUNT_WORDS',
   'KEEP_TOP_EXTERNAL_REF',
   'TEXI2HTML', 'IMAGE_LINK_PREFIX', 'FIX_TEXINFO',
+  'TREE_TRANSFORMATIONS',
 # FIXME document
   'TEXTCONTENT_COMMENT',
 # FIXME Not strings. To be documented.
@@ -218,6 +220,19 @@ sub obsolete_option($)
 {
   my $option = shift;
   return $obsolete_options{$option};
+}
+
+my %valid_tree_transformations;
+foreach my $valid_transformation ('simple_menus', 'fill_gaps_in_sectioning') {
+  $valid_tree_transformations{$valid_transformation} = 1;
+}
+
+sub valid_tree_transformation ($)
+{
+  my $transformation = shift;
+  return 1 if (defined($transformation) 
+               and $valid_tree_transformations{$transformation});
+  return 0;
 }
 
 our %no_brace_commands;             # commands never taking braces
@@ -1824,6 +1839,12 @@ contents array reference protected.
 Find the parent root command of a tree element (sectioning command or node).
 The C<$parser> argument is optional, it is used to continue 
 through C<@insertcopying> if in a C<@copying>.
+
+=item valid_tree_transformation($name)
+
+Return true if the I<$name> is a known tree transformation name
+that may be passed with C<TREE_TRANSFORMATIONS> to modify a texinfo
+tree.
 
 =back
 

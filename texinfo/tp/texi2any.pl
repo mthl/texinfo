@@ -870,6 +870,19 @@ if ($call_texi2dvi) {
   exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV);
 }
 
+my %tree_transformations;
+if (get_conf('TREE_TRANSFORMATIONS')) {
+  my @transformations = split /,/, get_conf('TREE_TRANSFORMATIONS');
+  foreach my $transformation (@transformations) {
+    if (Texinfo::Common::valid_tree_transformation($transformation)) {
+      $tree_transformations{$transformation} = 1;
+    } else {
+      document_warn (sprintf(__('Unknown tree transformation %s'), 
+                     $transformation));
+    }
+  }
+}
+
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
   document_warn (sprintf(__('Ignoring splitting for format %s'), $format));
   set_from_cmdline('SPLIT', ''); 
@@ -970,6 +983,20 @@ while(@input_files)
     print STDERR Data::Dumper->Dump([$tree]);
   }
 
+  if ($tree_transformations{'fill_gaps_in_sectioning'}) {
+    my $filled_contents = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+    if (!defined($filled_contents)) {
+      document_warn (__("fill_gaps_in_sectioning transformation return no result. No section?"));
+    } else {
+      $tree->{'contents'} = $filled_contents;
+    }
+  }
+  if ((get_conf('SIMPLE_MENU')
+       and $formats_table{$format}->{'simple_menu'})
+      or $tree_transformations{'simple_menus'}) {
+    $parser->Texinfo::Structuring::set_menus_to_simple_menu();
+  }
+
   if (defined(get_conf('MACRO_EXPAND'))) {
     my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree, 1);
     #print STDERR "$texinfo_text\n";
@@ -1017,10 +1044,6 @@ while(@input_files)
     Texinfo::Structuring::number_floats($floats);
   }
   $error_count = handle_errors($parser, $error_count, \@opened_files);
-  if (get_conf('SIMPLE_MENU')
-      and $formats_table{$format}->{'simple_menu'}) {
-    $parser->Texinfo::Structuring::set_menus_to_simple_menu();
-  }
 
   if ($file_number != 0) {
     delete $cmdline_options->{'OUTFILE'} if exists($cmdline_options->{'OUTFILE'});
