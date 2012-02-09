@@ -6,7 +6,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 13 };
+BEGIN { plan tests => 15 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
@@ -207,7 +207,64 @@ and
 @hashchar{} line 4 "bbb"
 @hashchar{} 7 "aaaa"
 
-', 'hash character');
+', 'cpp lines');
+
+run_test('=head1 head
+
+ # line 4 "ggggg"
+ and @
+ # line 5 "fff"
+
+Text
+
+  # line 4 "bbb"
+  # 7 "aaaa"
+', '@chapter head
+@anchor{head}
+
+@format
+ @hashchar{} line 4 "ggggg"
+ and @@
+ @hashchar{} line 5 "fff"
+@end format
+
+Text
+
+@format
+  @hashchar{} line 4 "bbb"
+  @hashchar{} 7 "aaaa"
+@end format
+
+', 'cpp lines in verbatim');
+
+run_test('=head1 head
+
+=for html
+ # line 4 "ggggg" 
+  <html> @
+
+=begin html
+
+ # line 8 "kkk"
+ and @
+ # line 5 "fff"
+
+=end html
+', '@chapter head
+@anchor{head}
+
+@html
+
+ @hashchar{} line 4 "ggggg" 
+  <html> @@
+@end html
+@html
+ @hashchar{} line 8 "kkk"
+ and @@
+ @hashchar{} line 5 "fff"
+
+@end html
+','cpp lines in formats');
 
 1;
 
