@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.38 2012-02-07 00:40:47 pertusus Exp $
+# $Id: Makefile.am,v 1.39 2012-02-09 23:51:50 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -11,11 +11,17 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-# A long list of files that we generate.
+# A long list of files that we generate and some rules.
 include $(srcdir)/Makefile.tres
+
+# document string locales files and associated rules.
+include $(srcdir)/Makefile.documents_strings_mo_files
 
 $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 	cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl
+
+$(srcdir)/Makefile.documents_strings_mo_files: maintain/regenerate_document_strings_make_rules.sh $(srcdir)/../po_document/LINGUAS
+	cd $(srcdir) && $(SHELL) ./maintain/regenerate_document_strings_make_rules.sh
 
 SUBDIRS = . tests
 
@@ -106,12 +112,6 @@ test_files = \
  t/include/verbatim_encoded.texi \
  t/include/verbatim_encoded_latin1.texi \
  t/include/words.txt \
- t/include_reference/f--ile.png \
- t/include_reference/f--ile.txt \
- t/include_reference/inc_file.texi \
- t/include_reference/incl-incl.txi \
- t/include_reference/macro_included.texi \
- t/include_reference/section_file.texi \
  t/init/only_toc_out.init \
  t/init/cvs.init \
  t/init/redefine_need.init \
@@ -144,20 +144,11 @@ test_files = \
  t/input_files/contents_no_section.texi \
  #
 
-relative_include_dir = t/include_dir
 document_domain = $(PACKAGE)_document
-all-local: maintain/catalog.xml
-	for file in $(srcdir)/../po_document/*.gmo; do \
-	  cat=`basename "$$file"` ; \
-	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
-	  $(MKDIR_P) "LocaleData/$$lang/LC_MESSAGES/" ; \
-	  $(INSTALL_DATA) $$file LocaleData/$$lang/LC_MESSAGES/$(document_domain).mo; \
-	done
-	$(MKDIR_P) $(relative_include_dir); \
-	for file in $(srcdir)/t/include_reference/*.*; do \
-	  bfile=`basename "$$file"`; \
-	  $(INSTALL_DATA) "$$file" "$(relative_include_dir)/$$bfile"; \
-	done
+
+# $(document_strings_mo_files) and $(test_copied_include_files) come from
+# generated makefiles, Makefile.tres and Makefile.documents_strings_mo_files
+all-local: maintain/catalog.xml $(document_strings_mo_files) $(test_copied_include_files)
 
 tp_tests = prove.sh
 
@@ -173,6 +164,7 @@ maintainance_files = \
   maintain/MANIFEST_generated_files \
   maintain/prepare_perl_module.sh \
   maintain/regenerate_converters_documentation.sh \
+  maintain/regenerate_document_strings_make_rules.sh \
   maintain/regenerate_documentlanguages.pl \
   maintain/regenerate_file_lists.pl \
   maintain/regenerate_perl_module_files.sh \
@@ -186,7 +178,7 @@ perl_specific_files = \
 
 EXTRA_DIST = \
   texi2any.pl \
-  $(test_results) \
+  $(test_files_generated_list) \
   $(test_files) \
   $(tp_tests) \
   $(maintainance_files) \
@@ -195,7 +187,7 @@ EXTRA_DIST = \
 
 MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	echo "$(dist_modules_DATA) $(dist_converters_DATA) $(dist_debugmodules_DATA) " \
-	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_results) " \
+	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_files_generated_list) " \
 	"texi2any-perl $(maintainance_files) README TODO COPYING " \
 	"$(perl_specific_files)" \
 	 | sed 's/ \+/\n/g' | sort | cat - $< > $@
@@ -239,7 +231,7 @@ distclean-local:
 	rm -rf LocaleData
 	rm -f t/results/*/*.pl.new
 	rm -rf t/results/*/*/out_*/
-	rm -rf $(relative_include_dir)
+	rm -rf t/include_dir
 	rm -rf blib po po_document
 
 CLEANFILES = texi2any makeinfo texi2any-perl

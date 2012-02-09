@@ -1,6 +1,6 @@
 #! /usr/bin/perl -w
 #
-# Copyright 2011 Free Software Foundation, Inc.
+# Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -14,6 +14,7 @@
 
 use strict;
 use File::Find;
+use File::Basename;
 
 my %files;
 
@@ -31,17 +32,32 @@ sub wanted
   }
 }
 
-#my %new_files = %files;
-#open (FILE, "MANIFEST") or die "Open MANIFEST: $!";
-#while (<FILE>) {
-#  chomp;
-#  delete ($new_files{$_});
-#}
-#print join("Missing from MANIFEST:\n", sort(keys(%new_files))) ."\n";
+my %include_files;
+find (\&wanted_include_files, ('t'));
+sub wanted_include_files
+{
+  if (/\.[a-z]+$/ and $File::Find::dir =~ m:^t/include_reference:) {
+    $include_files{$File::Find::name} = 1;
+  }
+}
+#print STDERR join('|', keys(%include_files))."\n";
 
 open (INCLUDE, '>Makefile.tres') or die "Open >Makefile.tres: $!";
-print INCLUDE "test_results =";
-foreach my $file (sort(keys(%files))) {
+print INCLUDE "test_files_generated_list =";
+foreach my $file (sort(keys(%files)), sort(keys(%include_files))) {
   print INCLUDE " \\\n  $file";
 }
-print INCLUDE "\n";
+print INCLUDE "\n\n";
+
+print INCLUDE "t/include_dir:\n".
+   "\t".'$(MKDIR_P) $@'."\n\n";
+my $test_copied_include_files = 'test_copied_include_files =';
+foreach my $include_file (keys(%include_files)) {
+  my $bfile = basename($include_file);
+  $test_copied_include_files .= " t/include_dir/$bfile";
+
+  print INCLUDE "t/include_dir/$bfile: $include_file t/include_dir\n"
+     ."\t".'$(INSTALL_DATA) $< $@'."\n\n";
+}
+
+print INCLUDE $test_copied_include_files ."\n\n";

@@ -16,6 +16,7 @@ maintain/MANIFEST_generated_files
 maintain/prepare_perl_module.sh
 maintain/regenerate_converters_documentation.sh
 maintain/regenerate_documentlanguages.pl
+maintain/regenerate_document_strings_make_rules.sh
 maintain/regenerate_file_lists.pl
 maintain/regenerate_perl_module_files.sh
 maintain/template.pod
@@ -62,6 +63,7 @@ Texinfo/Convert/Info.pm
 Texinfo/Convert/Line.pm
 Texinfo/Convert/NodeNameNormalization.pm
 Texinfo/Convert/Paragraph.pm
+Texinfo/Convert/PlainTexinfo.pm
 Texinfo/Convert/Plaintext.pm
 Texinfo/Convert/Texinfo.pm
 Texinfo/Convert/TextContent.pm
@@ -120,6 +122,11 @@ t/input_files/char_latin1_latin1_in_refs.texi
 t/input_files/char_latin1_utf8_in_refs.texi
 t/input_files/char_latin2_latin2_in_refs.texi
 t/input_files/chinese_mixed_with_en.texi
+t/input_files/contents_at_document_begin.texi
+t/input_files/contents_at_end_document_after_node.texi
+t/input_files/contents_at_end_document.texi
+t/input_files/contents_in_document.texi
+t/input_files/contents_no_section.texi
 t/input_files/delcomment.texi
 t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi
 t/input_files/empty_lines_at_beginning_no_setfilename.texi
@@ -968,7 +975,12 @@ t/results/sectioning/character_and_spaces_in_refs.pl
 t/results/sectioning/complex.pl
 t/results/sectioning/complex_split_at_node.pl
 t/results/sectioning/contents_and_shortcontents.pl
+t/results/sectioning/contents_at_document_begin.pl
+t/results/sectioning/contents_at_end_document_after_node.pl
+t/results/sectioning/contents_at_end_document.pl
+t/results/sectioning/contents_in_document.pl
 t/results/sectioning/contents_in_html_text.pl
+t/results/sectioning/contents_no_section.pl
 t/results/sectioning/contents.pl
 t/results/sectioning/contents_with_only_top_node.pl
 t/results/sectioning/double_node_anchor_float.pl
@@ -1131,6 +1143,7 @@ t/results/xtable/text_between_item_itemx.pl
 t/results/xtable/title_and_itemx_before_item.pl
 t/test_count.t
 t/test_fill_gaps_in_sectioning.t
+t/test_protect_hashchar_at_line_beginning.t
 t/test_sort.t
 t/test_tree_copy.t
 t/test_utils.pl

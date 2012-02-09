@@ -1,3 +1,10 @@
+2012-02-10  Patrice Dumas  <pertusus@free.fr>
+
+	* autogen.sh, tp/.cvsignore, tp/Makefile.am, 
+	maintain/regenerate_document_strings_make_rules.sh,
+	maintain/regenerate_file_lists.pl: replace unconditional copy by
+	generated make rules.
+
 2012-02-07  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi, tp/Texinfo/Common.pm, tp/texi2any.pl,
