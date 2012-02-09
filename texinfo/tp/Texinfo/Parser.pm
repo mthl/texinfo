@@ -887,35 +887,7 @@ sub labels_information ($)
 sub _print_current($)
 {
   my $current = shift;
-  if (ref($current) ne 'HASH') {
-    return  "_print_current: $current not a hash\n";
-  }
-  my $type = '';
-  my $cmd = '';
-  my $parent_string = '';
-  my $text = '';
-  $type = "($current->{'type'})" if (defined($current->{'type'}));
-  $cmd = "\@$current->{'cmdname'}" if (defined($current->{'cmdname'}));
-  $cmd .= "($current->{'level'})" if (defined($current->{'level'}));
-  $text = "[text: $current->{'text'}]" if (defined($current->{'text'}));
-  if ($current->{'parent'}) {
-    my $parent = $current->{'parent'};
-    my $parent_cmd = '';
-    my $parent_type = '';
-    $parent_cmd = "\@$parent->{'cmdname'}" if (defined($parent->{'cmdname'}));
-    $parent_type = "($parent->{'type'})" if (defined($parent->{'type'}));
-    $parent_string = " <- $parent_cmd$parent_type\n";
-  }
-  my $args = '';
-  my $contents = '';
-  $args = "args(".scalar(@{$current->{'args'}}).')' if $current->{'args'};
-  $contents = "contents(".scalar(@{$current->{'contents'}}).')'
-    if $current->{'contents'};
-  if ("$cmd$type" ne '') {
-    return "$cmd$type : $text $args $contents\n$parent_string";
-  } else {
-    return "$text $args $contents\n$parent_string";
-  }
+  return Texinfo::Common::_print_current($current);
 }
 
 # for debugging

@@ -6,7 +6,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 12 };
+BEGIN { plan tests => 13 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
@@ -188,6 +188,26 @@ L</(man) t>', '@chapter (man) t
 @ref{@asis{(}man) t,, (man) t}
 
 ', 'node beginning with a parenthesis');
+
+run_test('=head1 head
+
+# line 4 "ggggg"
+and
+ # line 5 "fff"
+
+# line 4 "bbb"
+# 7 "aaaa"
+', '@chapter head
+@anchor{head}
+
+@hashchar{} line 4 "ggggg"
+and
+ @hashchar{} line 5 "fff"
+
+@hashchar{} line 4 "bbb"
+@hashchar{} 7 "aaaa"
+
+', 'hash character');
 
 1;
 

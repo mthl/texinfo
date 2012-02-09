@@ -55,6 +55,7 @@ float_name_caption
 normalize_top_node_name
 protect_comma_in_tree
 protect_first_parenthesis
+protect_hashchar_at_line_beginning
 valid_tree_transformation
 ) ] );
 
@@ -223,7 +224,8 @@ sub obsolete_option($)
 }
 
 my %valid_tree_transformations;
-foreach my $valid_transformation ('simple_menus', 'fill_gaps_in_sectioning') {
+foreach my $valid_transformation ('simple_menus', 
+    'fill_gaps_in_sectioning', ) {
   $valid_tree_transformations{$valid_transformation} = 1;
 }
 
@@ -1463,7 +1465,7 @@ sub copy_tree($$)
       }
     }
     if ($current->{'extra'}->{'end_command'}) {
-      # FIXME this should be a ref to th eend command instead...
+      # FIXME this should be a ref to the end command instead...
       $new->{'extra'}->{'end_command'} = 1;
     }
   }
@@ -1479,25 +1481,33 @@ sub modify_tree($$$)
 
   if ($tree->{'args'}) {
     my @args = @{$tree->{'args'}};
-    $tree->{'args'} = [];
-    foreach my $arg (@args) {
-      my @new_args = &$operation($self, 'arg', $arg);
-      push @{$tree->{'args'}}, @new_args;
+    for (my $i = 0; $i <= $#args; $i++) {
+      my @new_args = &$operation($self, 'arg', $args[$i]);
+      # this puts the new args at the place of the old arg using the 
+      # offset from the end of the array
+      splice (@{$tree->{'args'}}, $i - $#args -1, 1, @new_args);
+      foreach my $arg (@new_args) {
+        modify_tree($self, $arg, $operation);
+      }
     }
-    foreach my $arg (@{$tree->{'args'}}) {
-      modify_tree($self, $arg, $operation);
-    }
+    #foreach my $arg (@{$tree->{'args'}}) {
+    #  modify_tree($self, $arg, $operation);
+    #}
   }
   if ($tree->{'contents'}) {
     my @contents = @{$tree->{'contents'}};
-    $tree->{'contents'} = [];
-    foreach my $content (@contents) {
-      my @new_contents = &$operation($self, 'content', $content);
-      push @{$tree->{'contents'}}, @new_contents;
+    for (my $i = 0; $i <= $#contents; $i++) {
+      my @new_contents = &$operation($self, 'content', $contents[$i]);
+      # this puts the new contents at the place of the old content using the 
+      # offset from the end of the array
+      splice (@{$tree->{'contents'}}, $i - $#contents -1, 1, @new_contents);
+      foreach my $content (@new_contents) {
+        modify_tree($self, $content, $operation);
+      }
     }
-    foreach my $content (@{$tree->{'contents'}}) {
-      modify_tree($self, $content, $operation);
-    }
+    #foreach my $content (@{$tree->{'contents'}}) {
+    #  modify_tree($self, $content, $operation);
+    #}
   }
   return $tree;
 }
@@ -1533,6 +1543,91 @@ sub protect_comma_in_tree($)
 {
   my $tree = shift;
   return modify_tree(undef, $tree, \&_protect_comma);
+}
+
+sub _is_cpp_line($)
+{
+  my $text = shift;
+  return 1 if ($text =~ /^\s*#\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*$/);
+  return 0;
+}
+
+sub _protect_hashchar_at_line_beginning($$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $current = shift;
+
+  #print STDERR "$type $current "._print_current($current)."\n";
+  # if the next is a hash character at line beginning, mark it
+  if (defined($current->{'text'}) and $current->{'text'} =~ /\n$/
+      and $current->{'parent'} and $current->{'parent'}->{'contents'}) {
+    my $parent = $current->{'parent'};
+    #print STDERR "End of line in $current, parent $parent: (@{$parent->{'contents'}})\n";
+    my $current_found = 0;
+    foreach my $content (@{$parent->{'contents'}}) {
+      if ($current_found) {
+        #print STDERR "after $current: $content $content->{'text'}\n";
+        if ($content->{'text'} and _is_cpp_line($content->{'text'})) {
+          $content->{'extra'}->{'_protect_hashchar'} = 1;
+        }
+        last;
+      } elsif ($content eq $current) {
+        $current_found = 1;
+      }
+    }
+  }
+
+  my $protect_hash = 0;
+  # if marked, or first and a cpp_line protect a leading hash character
+  if ($current->{'extra'} and $current->{'extra'}->{'_protect_hashchar'}) {
+    delete $current->{'extra'}->{'_protect_hashchar'};
+    if (!scalar(keys(%{$current->{'extra'}}))) {
+      delete $current->{'extra'};
+    }
+    $protect_hash = 1;
+  } elsif ($current->{'parent'} and $current->{'parent'}->{'contents'}
+           and $current->{'parent'}->{'contents'}->[0]
+           and $current->{'parent'}->{'contents'}->[0] eq $current
+           and $current->{'text'}
+           and _is_cpp_line($current->{'text'})) {
+    $protect_hash = 1;
+  }
+  if ($protect_hash) {
+    my @result = ();
+    if ($current->{'type'} and $current->{'type'} eq 'raw') {
+      if ($self) {
+        my $parent = $current->{'parent'};
+        while ($parent) {
+          if ($parent->{'cmdname'} and $parent->{'line_nr'}) {
+            $self->line_warn(sprintf($self->__(
+                  "protect_hashchar_at_line_beginning cannot protect in \@%s"), 
+                                     $parent->{'cmdname'}), $parent->{'line_nr'});
+            last;
+          }
+          $parent = $parent->{'parent'};
+        }
+      }
+    } else {
+      $current->{'text'} =~ s/^(\s*)#//;
+      if ($1 ne '') {
+        push @result, {'text' => $1, 'parent' => $current->{'parent'}};
+      }
+      push @result, {'cmdname' => 'hashchar', 'parent' => $current->{'parent'},
+                     'args' => [{'type' => 'brace_command_arg'}]};
+    }
+    push @result, $current;
+    return @result;
+  } else {
+    return ($current);
+  }
+}
+
+sub protect_hashchar_at_line_beginning($$)
+{
+  my $self = shift;
+  my $tree = shift;
+  return modify_tree($self, $tree, \&_protect_hashchar_at_line_beginning);
 }
 
 sub protect_first_parenthesis($)
@@ -1591,6 +1686,41 @@ sub find_parent_root_command($$)
   }
   # Should never get there
   return undef;
+}
+
+# for debugging
+sub _print_current($)
+{
+  my $current = shift;
+  if (ref($current) ne 'HASH') {
+    return  "_print_current: $current not a hash\n";
+  }
+  my $type = '';
+  my $cmd = '';
+  my $parent_string = '';
+  my $text = '';
+  $type = "($current->{'type'})" if (defined($current->{'type'}));
+  $cmd = "\@$current->{'cmdname'}" if (defined($current->{'cmdname'}));
+  $cmd .= "($current->{'level'})" if (defined($current->{'level'}));
+  $text = "[text: $current->{'text'}]" if (defined($current->{'text'}));
+  if ($current->{'parent'}) {
+    my $parent = $current->{'parent'};
+    my $parent_cmd = '';
+    my $parent_type = '';
+    $parent_cmd = "\@$parent->{'cmdname'}" if (defined($parent->{'cmdname'}));
+    $parent_type = "($parent->{'type'})" if (defined($parent->{'type'}));
+    $parent_string = " <- $parent_cmd$parent_type\n";
+  }
+  my $args = '';
+  my $contents = '';
+  $args = "args(".scalar(@{$current->{'args'}}).')' if $current->{'args'};
+  $contents = "contents(".scalar(@{$current->{'contents'}}).')'
+    if $current->{'contents'};
+  if ("$cmd$type" ne '') {
+    return "$cmd$type : $text $args $contents\n$parent_string";
+  } else {
+    return "$text $args $contents\n$parent_string";
+  }
 }
 
 1;
@@ -1833,6 +1963,13 @@ Protect comma characters, replacing C<,> with @comma{} in tree.
 
 Return a contents array reference with first parenthesis in the 
 contents array reference protected.
+
+=item protect_hashchar_at_line_beginning($parser, $tree)
+
+Protect hash character at beginning of line if the line is a cpp
+line directive.  The I<$parser> argument maybe undef, if it is 
+defined it is used for error reporting in case an hash character
+could not be protected because it appeared in a raw environment.
 
 =item $command = find_parent_root_command($parser, $tree_element)
 

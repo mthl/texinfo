@@ -32,7 +32,8 @@ use Texinfo::Convert::NodeNameNormalization qw(normalize_node);
 use Texinfo::Parser qw(parse_texi_line parse_texi_text);
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::TextContent;
-use Texinfo::Common qw(protect_comma_in_tree protect_first_parenthesis);
+use Texinfo::Common qw(protect_comma_in_tree protect_first_parenthesis
+                       protect_hashchar_at_line_beginning);
 
 use vars qw(
   @ISA $VERSION
@@ -196,7 +197,7 @@ sub _preamble($)
   }
 }
 
-
+# 'out' is out of the context, for now for index entries.
 sub _output($$$;$)
 {
   my $fh = shift;
@@ -257,6 +258,17 @@ sub _protect_comma($) {
   return Texinfo::Convert::Texinfo::convert($tree);
 }
 
+sub _protect_hashchar($) {
+  my $texinfo = shift;
+  # protect # first in line
+  if ($texinfo =~ /#/) {
+    my $tree = parse_texi_text(undef, $texinfo);
+    protect_hashchar_at_line_beginning(undef, $tree);
+    return Texinfo::Convert::Texinfo::convert($tree);
+  } else {
+    return $texinfo;
+  }
+}
 sub _section_manual_to_node_name($$$)
 {
   my $self = shift;
@@ -578,7 +590,8 @@ sub _convert_pod($)
           _output($fh, \@accumulated_output, 
                   "\@$command $command_argument\n$out\n");
         } elsif ($tagname eq 'Para') {
-          _output($fh, \@accumulated_output, "$out$result\n\n");
+          _output($fh, \@accumulated_output, $out.
+                                   _protect_hashchar($result)."\n\n");
         } elsif ($tagname eq 'L') {
           my $format = pop @format_stack;
           my ($linktype, $content_implicit, $url_arg, 
