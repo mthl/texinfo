@@ -72,10 +72,11 @@ manuals are standalone (the default).
 
 Options:
     --base-level=NUM|NAME   level of the head1 commands.
-    --unnumbered-sections   use unumbered sections.
     --output=NAME           output to <NAME> for the first or the main manual
                             instead of standard out.
+    --subdir=NAME           put files included in the main manual in <NAME>.
     --top                   top for the main manual.
+    --unnumbered-sections   use unumbered sections.
     --version               display version information and exit.\n");
 }
 
@@ -83,6 +84,7 @@ my $base_level = 0;
 my $unnumbered_sections = 0;
 my $output = '-';
 my $top = 'top';
+my $subdir;
 
 my $result_options = Getopt::Long::GetOptions (
   'help|h' => sub { print pod2texi_help(); exit 0; },
@@ -104,10 +106,24 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
    },
   'unnumbered-sections!' => \$unnumbered_sections,
   'output|o=s' => \$output,
+  'subdir=s' => \$subdir,
   'top=s' => \$top,
 );
 
 exit 1 if (!$result_options);
+
+if (defined($subdir) and ($subdir ne '/')) {
+  $subdir =~ s:/*$:/:;
+}
+
+if (defined($subdir)) {
+  if (! -d $subdir) {
+    if (!mkdir($subdir)) {
+      die sprintf(__("%s: Can't create directory %s"), 
+                  $real_command_name, $subdir);
+    }
+  }
+}
 
 my $STDOUT_DOCU_NAME = 'stdout';
 
@@ -122,6 +138,7 @@ die sprintf(__("%s: missing file argument.\n"), $real_command_name)
    .sprintf(__("Try `%s --help' for more information.\n"), $real_command_name)
      unless (scalar(@input_files) >= 1);
 
+my @processed_files;
 # First gather all the manual names
 if ($base_level > 0) {
   foreach my $file (@input_files) {
@@ -138,14 +155,20 @@ if ($base_level > 0) {
       push @all_manual_names, $short_title;
       #print STDERR "NEW MANUAL: $short_title\n";
     } else {
+      if (!$parser->content_seen) {
+        warn sprintf(__("%s: ignoring %s without content\n"),
+                     $real_command_name, $file);
+        next;
+      }
       push @all_manual_names, undef;
     }
+    push @processed_files, $file;
   }
 }
 
 my $file_nr = 0;
 my @included;
-foreach my $file (@input_files) {
+foreach my $file (@processed_files) {
   my $outfile;
   my $name = shift @all_manual_names;
   if ($base_level == 0 and !$file_nr) {
@@ -166,11 +189,12 @@ foreach my $file (@input_files) {
         $outfile .= '.texi';
       }
     }
+    $outfile = $subdir . $outfile if (defined($subdir));
   }
 
   my $new = Pod::Simple::Texinfo->new();
 
-  push @included, [$name, $outfile] if ($base_level > 0);
+  push @included, [$name, $outfile, $file] if ($base_level > 0);
   my $fh;
   if ($outfile eq '-') {
     $fh = *STDOUT;
@@ -198,6 +222,7 @@ foreach my $file (@input_files) {
 
   if ($base_level > 0) {
     if (!$new->content_seen) {
+      # this should only happen for input coming for pipe or the like
       warn sprintf(__("%s: removing %s as input file %s has no content\n"),
                    $real_command_name, $outfile, $file);
       unlink ($outfile);
@@ -211,13 +236,14 @@ foreach my $file (@input_files) {
         my $new_outfile 
          = Pod::Simple::Texinfo::_pod_title_to_file_name($short_title);
         $new_outfile .= '.texi';
+        $new_outfile = $subdir . $new_outfile if (defined($subdir));
         if ($new_outfile ne $outfile) {
           unless (rename ($outfile, $new_outfile)) {
             die sprintf(__("%s: Rename %s failed: %s\n"), 
                         $real_command_name, $outfile, $!);
           }
         }
-        push @included, [$short_title, $new_outfile];
+        push @included, [$short_title, $new_outfile, $file];
       }
     }
   }
@@ -306,6 +332,11 @@ use C<section> as the base level.
 
 Name for the first manual, or the main manual if there is a main manual.
 Default is output on standard out.
+
+=item B<--subdir>=I<NAME>
+
+If there is a main manual with include files, each corresponding to
+an input pod file, then include files are put in the directory I<NAME>.
 
 =item B<--unnumbered-sections>
 
