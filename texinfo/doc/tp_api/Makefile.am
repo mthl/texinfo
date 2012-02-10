@@ -1,0 +1,46 @@
+# $Id: Makefile.am,v 1.1 2012-02-10 10:29:35 pertusus Exp $
+# Makefile.am for texinfo/doc/tp_api.
+#
+# Copyright 2012
+# Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# Use the programs built in our distribution, taking account of possible
+# cross-compiling.
+MAKEINFO = $(PERL) -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl
+
+dist_info_TEXINFOS = tp_api.texi
+#info_TEXINFOS_SOURCES = tp_api.texi
+tp_api_TEXINFOS = tp_api.texi
+#dist_tp_api_TEXINFOS = tp_api.texi
+#tp_api_SOURCES = tp_api.texi
+BUILT_SOURCES = tp_api.texi
+
+#DISTCLEANFILES = tp_api.info
+
+tp_api_main.texi: $(top_srcdir)/tp/Texinfo/Common.pm $(top_srcdir)/tp/Texinfo/Parser.pm \
+  $(top_srcdir)/tp/Texinfo/Structuring.pm $(top_srcdir)/tp/Texinfo/Report.pm \
+  $(top_srcdir)/tp/Texinfo/Encoding.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/NodeNameNormalization.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/Text.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/Texinfo.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/Converter.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/Unicode.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/Info.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/DocBook.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/XML.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/Plaintext.pm \
+  $(top_srcdir)/tp/Texinfo/Convert/HTML.pm
+	$(PERL) -I $(top_srcdir)/Pod-Simple-Texinfo/lib/ -I $(top_srcdir)/tp/ $(top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl --base-level=section --top 'Texinfo perl module' --subdir=api_includes -o $@ $^
+
+tp_api.texi: tp_api_main.texi
+	$(PERL) -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl --set-init-var PLAINTEXINFO --set-init-var TREE_TRANSFORMATIONS=fill_gaps_in_sectioning $< > $@
+
+EXTRA_DIST = api_includes tp_api_main.texi tp_api.texi

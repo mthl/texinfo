@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.112 2012-01-27 23:38:04 pertusus Exp $
+# $Id: configure.ac,v 1.113 2012-02-10 10:29:35 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -308,6 +308,7 @@ dnl The bulk config files.
 AC_CONFIG_FILES([\
   Makefile
   doc/Makefile
+  doc/tp_api/Makefile
   gnulib/lib/Makefile
   info/Makefile
   install-info/Makefile

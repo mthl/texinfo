@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.45 2011-10-21 18:42:34 karl Exp $
+# $Id: Makefile.am,v 1.46 2012-02-10 10:29:35 pertusus Exp $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -11,6 +11,8 @@
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+SUBDIRS = tp_api
 
 # Put texinfo.txi first because that's the most important.
 info_TEXINFOS = texinfo.txi info-stnd.texi info.texi
