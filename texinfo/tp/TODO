@@ -71,7 +71,8 @@ setcontentsaftertit* and for anchors.
 Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf8, with and without
 enable encoding and entities.
 
-in html test footnotestyle separate.
+in html test footnotestyle separate.  There are such tests in tp/tests,
+mayeb they are sufficient, but they are only done for long checks.
 
 
 Future features
@@ -221,9 +222,8 @@ indices/index_test.init
 
 
 
-Tests in tests and missing tests in t/
-======================================
-
+Missing test outputs  in t/
+===========================
 
 output files split (node or not split) could be interesting +texi2html 
 style for
@@ -258,6 +258,10 @@ sectioning/
 info_tests
  space_in_setfilename
 
+
+Tests in tests and missing tests in t/
+======================================
+
 --> following changed when element_next for special elements became
 set.  Nothing tests that in the t/ test suite, notably because nothing tests
 the texi2html output.  All are in tests/sectioning/
@@ -265,14 +269,6 @@ the texi2html output.  All are in tests/sectioning/
   no_node_chapter_split
   nodes_after_top_before_section_use_nodes_chapter
   nodes_after_top_before_chapter_use_nodes_chapter
-
-tests/formatting/
-glossary.texi
-bib-example.texi (big test)
-cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
-cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
-defcondx_Ubar 
-defcondx_Dbar
 
 equivalent_nodes mainly for equivalent_nodes-noderename.cnf parsing and renamed
 nodes handling.
