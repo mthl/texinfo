@@ -164,6 +164,8 @@ if ($base_level > 0) {
     }
     push @processed_files, $file;
   }
+} else {
+  @processed_files = @input_files;
 }
 
 my $file_nr = 0;
