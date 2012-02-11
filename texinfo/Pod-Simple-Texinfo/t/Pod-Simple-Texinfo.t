@@ -219,21 +219,21 @@ Text
 
   # line 4 "bbb"
   # 7 "aaaa"
-', '@chapter head
+','@chapter head
 @anchor{head}
 
-@format
- @hashchar{} line 4 "ggggg"
- and @@
- @hashchar{} line 5 "fff"
-@end format
+@verbatim
+ # line 4 "ggggg"
+ and @
+ # line 5 "fff"
+@end verbatim
 
 Text
 
-@format
-  @hashchar{} line 4 "bbb"
-  @hashchar{} 7 "aaaa"
-@end format
+@verbatim
+  # line 4 "bbb"
+  # 7 "aaaa"
+@end verbatim
 
 ', 'cpp lines in verbatim');
 

@@ -383,8 +383,7 @@ my %tag_commands = (
 );
 
 my %environment_commands = (
-#  'Verbatim' => 'verbatim',
-  'Verbatim' => 'format',
+  'Verbatim' => 'verbatim',
   'over-text' => 'table @asis',
   'over-bullet' => 'itemize',
   'over-number' => 'enumerate',
@@ -541,15 +540,15 @@ sub _convert_pod($)
       }
     } elsif ($type eq 'text') {
       my $text;
-      if (@format_stack and ref($format_stack[-1])
-          and defined($self->{'texinfo_raw_format_commands'}->{$format_stack[-1]})
-          and !$self->{'texinfo_raw_format_commands'}->{$format_stack[-1]}) {
+      if (@format_stack and !ref($format_stack[-1])
+          and ((defined($self->{'texinfo_raw_format_commands'}->{$format_stack[-1]})
+                and !$self->{'texinfo_raw_format_commands'}->{$format_stack[-1]})
+               or ($format_stack[-1] eq 'verbatim'))) {
         $text = $token->text();
       } else {
         $text = _protect_text($token->text());
         if (@format_stack and !ref($format_stack[-1])
-            and ($format_stack[-1] eq 'verbatim' 
-                 or $self->{'texinfo_raw_format_commands'}->{$format_stack[-1]})) {
+            and ($self->{'texinfo_raw_format_commands'}->{$format_stack[-1]})) {
           $text =~ s/^(\s*)#(\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*)$/$1\@hashchar{}$2/mg;
         }
       }
