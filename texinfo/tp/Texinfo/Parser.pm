@@ -1738,15 +1738,16 @@ sub _item_multitable_parent($)
 
 # returns next text fragment, be it pending from a macro expansion or 
 # text or file
-sub _next_text($$)
+sub _next_text($$$)
 {
   my $self = shift;
   my $line_nr = shift;
+  my $current = shift;
  
   while (@{$self->{'input'}}) {
-    my $current = $self->{'input'}->[0];
-    if (@{$current->{'pending'}}) {
-      my $new_text = shift @{$current->{'pending'}};
+    my $input = $self->{'input'}->[0];
+    if (@{$input->{'pending'}}) {
+      my $new_text = shift @{$input->{'pending'}};
       if ($new_text->[1] and $new_text->[1]->{'end_macro'}) {
         delete $new_text->[1]->{'end_macro'};
         my $top_macro = shift @{$self->{'macro_stack'}};
@@ -1754,22 +1755,33 @@ sub _next_text($$)
           if ($self->{'DEBUG'});
       }
       return ($new_text->[0], $new_text->[1]);
-    } elsif ($current->{'fh'}) {
-      my $fh = $current->{'fh'};
+    } elsif ($input->{'fh'}) {
+      my $fh = $input->{'fh'};
       my $line = <$fh>;
       while (defined($line)) {
         $line =~ s/\x{7F}.*\s*//;
         if ($self->{'CPP_LINE_DIRECTIVES'}
+            # no cpp directives in ignored/macro/verbatim
+            and defined ($current)
+            and not 
+             (($current->{'cmdname'}
+              and $block_commands{$current->{'cmdname'}}
+               and ($block_commands{$current->{'cmdname'}} eq 'raw'
+                    or $block_commands{$current->{'cmdname'}} eq 'conditional'))
+             or 
+              ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
+               and $current->{'parent'}->{'cmdname'} eq 'verb')
+             )
             and $line =~ /^\s*#\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*$/) {
-          $current->{'line_nr'} = $2;
+          $input->{'line_nr'} = $2;
           if (defined($4)) {
-            $current->{'name'} = $4;
+            $input->{'name'} = $4;
           }
           $line = <$fh>;
         } else {
-          $current->{'line_nr'}++;
-          return ($line, {'line_nr' => $current->{'line_nr'}, 
-                          'file_name' => $current->{'name'},
+          $input->{'line_nr'}++;
+          return ($line, {'line_nr' => $input->{'line_nr'}, 
+                          'file_name' => $input->{'name'},
                           'macro' => ''});
         }
       }
@@ -1789,15 +1801,16 @@ sub _next_text($$)
 }
 
 # collect text and line numbers until an end of line is found.
-sub _new_line ($$)
+sub _new_line ($$$)
 {
   my $self = shift;
   my $line_nr = shift;
+  my $current = shift;
   my $new_line = '';
 
   while (1) {
     my $new_text;
-    ($new_text, $line_nr) = _next_text($self, $line_nr);
+    ($new_text, $line_nr) = _next_text($self, $line_nr, $current);
     if (!defined($new_text)) {
       $new_line = undef if ($new_line eq '');
       last;
@@ -1871,7 +1884,7 @@ sub _expand_macro_arguments($$$$)
       print STDERR "MACRO ARG end of line\n" if ($self->{'DEBUG'});
       $arguments->[-1] .= $line;
 
-      ($line, $line_nr) = _new_line($self, $line_nr);
+      ($line, $line_nr) = _new_line($self, $line_nr, $macro);
       if (!defined($line)) {
         $self->line_error (sprintf($self->__("\@%s missing close brace"), 
            $name), $line_nr_orig);
@@ -3332,7 +3345,7 @@ sub _parse_texi($;$)
  NEXT_LINE:
   while (1) {
     my $line;
-    ($line, $line_nr) = _next_text($self, $line_nr);
+    ($line, $line_nr) = _next_text($self, $line_nr, $current);
     last if (!defined($line));
 
     if ($self->{'DEBUG'}) {
@@ -3457,7 +3470,7 @@ sub _parse_texi($;$)
                   or $conditional->{'cmdname'} ne $end_command));
             # Ignore until end of line
             if ($line !~ /\n/) {
-              ($line, $line_nr) = _new_line($self, $line_nr);
+              ($line, $line_nr) = _new_line($self, $line_nr, $conditional);
               print STDERR "IGNORE CLOSE line: $line" if ($self->{'DEBUG'});
             }
             print STDERR "CLOSED conditional $end_command\n" if ($self->{'DEBUG'});
@@ -3513,7 +3526,7 @@ sub _parse_texi($;$)
       while ($line eq '') {
         print STDERR "END OF TEXT not at end of line\n"
           if ($self->{'DEBUG'});
-        ($line, $line_nr) = _next_text($self, $line_nr);
+        ($line, $line_nr) = _next_text($self, $line_nr, $current);
         if (!defined($line)) {
           # end of the file
           my $included_file;
@@ -3554,7 +3567,7 @@ sub _parse_texi($;$)
              if ($args_number >= 2);
         } else {
           if ($line !~ /\n/) {
-            ($line, $line_nr) = _new_line($self, $line_nr);
+            ($line, $line_nr) = _new_line($self, $line_nr, $expanded_macro);
             $line = '' if (!defined($line));
           }
           $line =~ s/^\s*// if ($line =~ /\S/);
@@ -3965,7 +3978,7 @@ sub _parse_texi($;$)
                    or $arg_spec eq 'special') {
             # complete the line if there was a user macro expansion
             if ($line !~ /\n/) {
-              my ($new_line, $new_line_nr) = _new_line($self, $line_nr);
+              my ($new_line, $new_line_nr) = _new_line($self, $line_nr, undef);
               $line .= $new_line if (defined($new_line));
             }
             $misc = {'cmdname' => $command,

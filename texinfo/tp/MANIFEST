@@ -90,6 +90,7 @@ t/include/fextext
 t/include/fext.ext
 t/include/fext.png
 t/include/fext.txt
+t/include/file_with_cpp_lines.texi
 t/include/file_with_xml_chars.texi
 t/include/f.txt
 t/include/image_encoded.txt
@@ -127,6 +128,7 @@ t/input_files/contents_at_end_document_after_node.texi
 t/input_files/contents_at_end_document.texi
 t/input_files/contents_in_document.texi
 t/input_files/contents_no_section.texi
+t/input_files/cpp_lines.texi
 t/input_files/delcomment.texi
 t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi
 t/input_files/empty_lines_at_beginning_no_setfilename.texi
@@ -488,6 +490,7 @@ t/results/html_tests/utf8_no_use_entity_no_use_iso.pl
 t/results/html_tests/utf8_no_use_entity.pl
 t/results/html_tests/verbatim_in_multitable_in_example.pl
 t/results/html_tests/xml_protected_in_verb.pl
+t/results/include/cpp_lines.pl
 t/results/include/double_include.pl
 t/results/include/include_at_end_line.pl
 t/results/include/include_comment.pl

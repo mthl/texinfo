@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.39 2012-02-09 23:51:50 pertusus Exp $
+# $Id: Makefile.am,v 1.40 2012-02-11 22:35:52 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -103,6 +103,7 @@ test_files = \
  t/include/fext.png \
  t/include/fext.txt \
  t/include/fextext \
+ t/include/file_with_cpp_lines.texi \
  t/include/file_with_xml_chars.texi \
  t/include/image.txt \
  t/include/image_encoded.txt \
@@ -142,6 +143,7 @@ test_files = \
  t/input_files/contents_at_end_document.texi \
  t/input_files/contents_in_document.texi \
  t/input_files/contents_no_section.texi \
+ t/input_files/cpp_lines.texi \
  #
 
 document_domain = $(PACKAGE)_document
