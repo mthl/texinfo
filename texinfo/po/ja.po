@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-02-10 00:22+0100\n"
+"POT-Creation-Date: 2012-02-13 19:18+0100\n"
 "PO-Revision-Date: 2011-10-23 11:59+0900\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -2600,7 +2600,7 @@ msgstr "ディレクトリ `%s' を作成できません: %s"
 msgid "Error on closing @verbatiminclude file %s: %s"
 msgstr "出力ファイル `%s' を閉じる際にエラーが発生しました"
 
-#: tp/Texinfo/Common.pm:954 tp/Texinfo/Parser.pm:2876
+#: tp/Texinfo/Common.pm:954 tp/Texinfo/Parser.pm:2889
 #, fuzzy, perl-format
 msgid "@%s: Cannot find %s"
 msgstr "`%s' が見つかりません。"
@@ -2669,9 +2669,9 @@ msgstr "引数 `%3$s' に対して %1$s%2$s が無効です"
 msgid "Bad or empty @%s formal argument: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:1025 tp/Texinfo/Parser.pm:4202
-#: tp/Texinfo/Parser.pm:4778 tp/Texinfo/Parser.pm:4787
-#: tp/Texinfo/Parser.pm:4797
+#: tp/Texinfo/Parser.pm:1025 tp/Texinfo/Parser.pm:4215
+#: tp/Texinfo/Parser.pm:4791 tp/Texinfo/Parser.pm:4800
+#: tp/Texinfo/Parser.pm:4810
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s には名前が必要です"
@@ -2715,18 +2715,18 @@ msgstr ""
 msgid "No matching `%cend %s'"
 msgstr "`%cend %s' との対応が見つかりません"
 
-#: tp/Texinfo/Parser.pm:1558 tp/Texinfo/Parser.pm:4493
-#: tp/Texinfo/Parser.pm:4675
+#: tp/Texinfo/Parser.pm:1558 tp/Texinfo/Parser.pm:4506
+#: tp/Texinfo/Parser.pm:4688
 #, perl-format
 msgid "Misplaced %c"
 msgstr "間違った位置に %c があります"
 
-#: tp/Texinfo/Parser.pm:1641 tp/Texinfo/Parser.pm:2834
+#: tp/Texinfo/Parser.pm:1641 tp/Texinfo/Parser.pm:2847
 #, perl-format
 msgid "Unmatched `%c%s'"
 msgstr "`%c%s' との対応が見つかりません"
 
-#: tp/Texinfo/Parser.pm:1781 tp/Texinfo/Convert/DocBook.pm:341
+#: tp/Texinfo/Parser.pm:1793 tp/Texinfo/Convert/DocBook.pm:341
 #: tp/Texinfo/Convert/HTML.pm:6822 tp/Texinfo/Convert/HTML.pm:6880
 #: tp/Texinfo/Convert/Info.pm:133 tp/Texinfo/Convert/Info.pm:155
 #: tp/Texinfo/Convert/Info.pm:182 tp/Texinfo/Convert/Info.pm:245
@@ -2735,513 +2735,513 @@ msgstr "`%c%s' との対応が見つかりません"
 msgid "Error on closing %s: %s"
 msgstr "正規表現 `%s' にエラーがあります: %s"
 
-#: tp/Texinfo/Parser.pm:1854
+#: tp/Texinfo/Parser.pm:1867
 #, fuzzy, perl-format
 msgid "Macro `%s' called with too many args"
 msgstr "マクロ `%s' 呼び出し(%d行目)の引数が多すぎます"
 
-#: tp/Texinfo/Parser.pm:1876
+#: tp/Texinfo/Parser.pm:1889
 #, fuzzy, perl-format
 msgid "@%s missing close brace"
 msgstr "閉じる中括弧のない %c%s"
 
-#: tp/Texinfo/Parser.pm:1883
+#: tp/Texinfo/Parser.pm:1896
 #, fuzzy, perl-format
 msgid "Macro `%s' declared without argument called with an argument"
 msgstr "マクロ `%s' 呼び出し(%d行目)の引数が多すぎます"
 
-#: tp/Texinfo/Parser.pm:1917
+#: tp/Texinfo/Parser.pm:1930
 #, fuzzy, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "後ろに `%s' が続くマクロ展開内でパラメータ名ではなく \\ があります"
 
-#: tp/Texinfo/Parser.pm:2229
+#: tp/Texinfo/Parser.pm:2242
 #, fuzzy, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "マクロ `%s' は以前に定義されています"
 
-#: tp/Texinfo/Parser.pm:2234
+#: tp/Texinfo/Parser.pm:2247
 #, fuzzy, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "ここは、`%s' の前の定義です"
 
-#: tp/Texinfo/Parser.pm:2296 tp/Texinfo/Convert/Info.pm:447
+#: tp/Texinfo/Parser.pm:2309 tp/Texinfo/Convert/Info.pm:447
 #, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "`%s' 見出し項目があらゆるノードの外側にあります"
 
-#: tp/Texinfo/Parser.pm:2572
+#: tp/Texinfo/Parser.pm:2585
 #, perl-format
 msgid "Missing name for @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2577
+#: tp/Texinfo/Parser.pm:2590
 #, perl-format
 msgid "Missing category for @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2610
+#: tp/Texinfo/Parser.pm:2623
 #, fuzzy, perl-format
 msgid "Unexpected argument on @%s line: %s"
 msgstr "@%s に対する誤った引数です: %s"
 
-#: tp/Texinfo/Parser.pm:2625
+#: tp/Texinfo/Parser.pm:2638
 #, fuzzy
 msgid "empty multitable"
 msgstr "%s: 空のファイル"
 
-#: tp/Texinfo/Parser.pm:2681 tp/Texinfo/Parser.pm:4865
+#: tp/Texinfo/Parser.pm:2694 tp/Texinfo/Parser.pm:4878
 #, fuzzy, perl-format
 msgid "Superfluous argument to @%s"
 msgstr "@%s に対する誤った引数です"
 
-#: tp/Texinfo/Parser.pm:2687 tp/Texinfo/Parser.pm:4886
-#: tp/Texinfo/Parser.pm:4897
+#: tp/Texinfo/Parser.pm:2700 tp/Texinfo/Parser.pm:4899
+#: tp/Texinfo/Parser.pm:4910
 #, perl-format
 msgid "Bad argument to @%s"
 msgstr "@%s に対する誤った引数です"
 
-#: tp/Texinfo/Parser.pm:2698
+#: tp/Texinfo/Parser.pm:2711
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s には引数が必要です: %citem を整形するため"
 
-#: tp/Texinfo/Parser.pm:2703
+#: tp/Texinfo/Parser.pm:2716
 #, perl-format
 msgid "Command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2738
+#: tp/Texinfo/Parser.pm:2751
 #, fuzzy, perl-format
 msgid "Accent command `@%s' not allowed as @%s argument"
 msgstr "%s: オプション `--%s' は引数が不要です\n"
 
-#: tp/Texinfo/Parser.pm:2812 tp/Texinfo/Parser.pm:2944
-#: tp/Texinfo/Parser.pm:4858
+#: tp/Texinfo/Parser.pm:2825 tp/Texinfo/Parser.pm:2957
+#: tp/Texinfo/Parser.pm:4871
 #, fuzzy, perl-format
 msgid "@%s missing argument"
 msgstr "%s: ファイル引数を忘れていますよ\n"
 
-#: tp/Texinfo/Parser.pm:2824
+#: tp/Texinfo/Parser.pm:2837
 #, fuzzy, perl-format
 msgid "Unknown @end %s"
 msgstr "不明な索引 `%s' です"
 
-#: tp/Texinfo/Parser.pm:2846 tp/Texinfo/Parser.pm:3423
+#: tp/Texinfo/Parser.pm:2859 tp/Texinfo/Parser.pm:3436
 #, fuzzy, perl-format
 msgid "Superfluous argument to @%s %s: %s"
 msgstr "@%s に対する誤った引数です: %s"
 
-#: tp/Texinfo/Parser.pm:2851 tp/Texinfo/Parser.pm:4937
-#: tp/Texinfo/Parser.pm:4970 tp/Texinfo/Parser.pm:4996
-#: tp/Texinfo/Parser.pm:5029 tp/Texinfo/Parser.pm:5090
+#: tp/Texinfo/Parser.pm:2864 tp/Texinfo/Parser.pm:4950
+#: tp/Texinfo/Parser.pm:4983 tp/Texinfo/Parser.pm:5009
+#: tp/Texinfo/Parser.pm:5042 tp/Texinfo/Parser.pm:5103
 #, perl-format
 msgid "Bad argument to @%s: %s"
 msgstr "@%s に対する誤った引数です: %s"
 
-#: tp/Texinfo/Parser.pm:2871
+#: tp/Texinfo/Parser.pm:2884
 #, fuzzy, perl-format
 msgid "@%s: Cannot open %s: %s"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/Texinfo/Parser.pm:2883
+#: tp/Texinfo/Parser.pm:2896
 #, perl-format
 msgid "Encoding `%s' is not a canonical texinfo encoding"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:2888
+#: tp/Texinfo/Parser.pm:2901
 #, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "認識できないエンコード名 `%s' です"
 
-#: tp/Texinfo/Parser.pm:3032
+#: tp/Texinfo/Parser.pm:3045
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3038
+#: tp/Texinfo/Parser.pm:3051
 #, fuzzy, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "`@titlepage' 環境の外側では @%s は意味がありません"
 
-#: tp/Texinfo/Parser.pm:3082
+#: tp/Texinfo/Parser.pm:3095
 #, perl-format
 msgid "@node precedes @%s, but part are not associated with nodes"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3179
+#: tp/Texinfo/Parser.pm:3192
 #, fuzzy, perl-format
 msgid "Empty argument in @%s"
 msgstr "@%s に対する誤った引数です"
 
-#: tp/Texinfo/Parser.pm:3183
+#: tp/Texinfo/Parser.pm:3196
 #, perl-format
 msgid "Empty node name after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3199 tp/Texinfo/Convert/HTML.pm:7043
+#: tp/Texinfo/Parser.pm:3212 tp/Texinfo/Convert/HTML.pm:7043
 #, perl-format
 msgid "Syntax for an external node used for `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3230
+#: tp/Texinfo/Parser.pm:3243
 msgid "Empty node in menu entry"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3287
+#: tp/Texinfo/Parser.pm:3300
 #, fuzzy, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/Texinfo/Parser.pm:3417
+#: tp/Texinfo/Parser.pm:3430
 #, perl-format
 msgid "@end %s should only appear at a line beginning"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3438
+#: tp/Texinfo/Parser.pm:3451
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "マクロ `%s' は以前に定義されています"
 
-#: tp/Texinfo/Parser.pm:3440
+#: tp/Texinfo/Parser.pm:3453
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "ここは、`%s' の前の定義です"
 
-#: tp/Texinfo/Parser.pm:3444
+#: tp/Texinfo/Parser.pm:3457
 #, perl-format
 msgid "Redefining Texinfo language command: @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3490
+#: tp/Texinfo/Parser.pm:3503
 #, perl-format
 msgid "@%s without associated character"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3553
+#: tp/Texinfo/Parser.pm:3566
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3576
+#: tp/Texinfo/Parser.pm:3589
 #, perl-format
 msgid ""
 "Macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3584
+#: tp/Texinfo/Parser.pm:3597
 #, perl-format
 msgid "Recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3639
+#: tp/Texinfo/Parser.pm:3652
 #, perl-format
 msgid "Accent command `@%s' must not be followed by whitespace"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3645
+#: tp/Texinfo/Parser.pm:3658
 #, perl-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
 
-#: tp/Texinfo/Parser.pm:3658 tp/Texinfo/Parser.pm:4584
+#: tp/Texinfo/Parser.pm:3671 tp/Texinfo/Parser.pm:4597
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s は `%c' ではなく、`i' か `j' を引数として必要とします"
 
-#: tp/Texinfo/Parser.pm:3670
+#: tp/Texinfo/Parser.pm:3683
 #, perl-format
 msgid "Accent command `@%s' must not be followed by new line"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3676
+#: tp/Texinfo/Parser.pm:3689
 #, fuzzy, perl-format
 msgid "@%s expected braces"
 msgstr "%c%s には中括弧が予期されます"
 
-#: tp/Texinfo/Parser.pm:3828
+#: tp/Texinfo/Parser.pm:3841
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "定義されていないフラグ: %s"
 
-#: tp/Texinfo/Parser.pm:3831
+#: tp/Texinfo/Parser.pm:3844
 msgid "Bad syntax for @value"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3838
+#: tp/Texinfo/Parser.pm:3851
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s は廃止予定 (または廃止済み) です"
 
-#: tp/Texinfo/Parser.pm:3841
+#: tp/Texinfo/Parser.pm:3854
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s は廃止予定 (または廃止済み) です"
 
-#: tp/Texinfo/Parser.pm:3849
+#: tp/Texinfo/Parser.pm:3862
 #, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3940
+#: tp/Texinfo/Parser.pm:3953
 #, fuzzy, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "`@%2$s' ブロックの内側では `@%1$s' は意味がありません"
 
-#: tp/Texinfo/Parser.pm:3948
+#: tp/Texinfo/Parser.pm:3961
 #, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4023 tp/Texinfo/Parser.pm:4035
-#: tp/Texinfo/Parser.pm:4079
+#: tp/Texinfo/Parser.pm:4036 tp/Texinfo/Parser.pm:4048
+#: tp/Texinfo/Parser.pm:4092
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%2$s' ブロックの内側では `@%1$s' は意味がありません"
 
-#: tp/Texinfo/Parser.pm:4042
+#: tp/Texinfo/Parser.pm:4055
 #, fuzzy, perl-format
 msgid "@%s in empty multitable"
 msgstr "%s: 空のファイル"
 
-#: tp/Texinfo/Parser.pm:4047
+#: tp/Texinfo/Parser.pm:4060
 msgid "@tab before @item"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4049
+#: tp/Texinfo/Parser.pm:4062
 #, perl-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "マルチテーブル項目内のカラム数が多すぎます(最大 %d)"
 
-#: tp/Texinfo/Parser.pm:4082
+#: tp/Texinfo/Parser.pm:4095
 msgid "ignoring @tab outside of multitable"
 msgstr "マルチテーブルの外側の @tab を無視します"
 
-#: tp/Texinfo/Parser.pm:4084
+#: tp/Texinfo/Parser.pm:4097
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4117
+#: tp/Texinfo/Parser.pm:4130
 #, fuzzy, perl-format
 msgid "Must be after `@%s' to use `@%s'"
 msgstr "`@%2$s' を使用するためには `@%1$s' 環境でなければいけません"
 
-#: tp/Texinfo/Parser.pm:4158
+#: tp/Texinfo/Parser.pm:4171
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s は `@titlepage' および `@quotation' 環境の外側では意味がありません"
 
-#: tp/Texinfo/Parser.pm:4162
+#: tp/Texinfo/Parser.pm:4175
 msgid "@dircategory after first node"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4288
+#: tp/Texinfo/Parser.pm:4301
 #, fuzzy, perl-format
 msgid "Region %s inside region %s is not allowed"
 msgstr "脚注に脚注を含めることはできません"
 
-#: tp/Texinfo/Parser.pm:4304
+#: tp/Texinfo/Parser.pm:4317
 msgid "@direntry after first node"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4310
+#: tp/Texinfo/Parser.pm:4323
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
 
-#: tp/Texinfo/Parser.pm:4312
+#: tp/Texinfo/Parser.pm:4325
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "多分 @top ノードは @ifinfo よりは @ifnottex に覆われるべきでは？"
 
-#: tp/Texinfo/Parser.pm:4372
+#: tp/Texinfo/Parser.pm:4385
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4382
+#: tp/Texinfo/Parser.pm:4395
 #, perl-format
 msgid "Unknown command `%s'"
 msgstr "不明なコマンド `%s'"
 
-#: tp/Texinfo/Parser.pm:4392
+#: tp/Texinfo/Parser.pm:4405
 #, fuzzy
 msgid "Unexpected @"
 msgstr "`%s' が予期されます"
 
-#: tp/Texinfo/Parser.pm:4420
+#: tp/Texinfo/Parser.pm:4433
 #, fuzzy, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "`@float' 環境の外側では @%s は意味がありません"
 
-#: tp/Texinfo/Parser.pm:4424
+#: tp/Texinfo/Parser.pm:4437
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4432
+#: tp/Texinfo/Parser.pm:4445
 #, perl-format
 msgid "Ignoring multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4533
+#: tp/Texinfo/Parser.pm:4546
 #, perl-format
 msgid "Command @%s does not accept arguments"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4556
+#: tp/Texinfo/Parser.pm:4569
 #, fuzzy, perl-format
 msgid "Command @%s missing a node or external manual argument"
 msgstr "%s: ファイル引数を忘れていますよ\n"
 
-#: tp/Texinfo/Parser.pm:4575
+#: tp/Texinfo/Parser.pm:4588
 msgid "@image missing filename argument"
 msgstr "@image にファイル名が与えられていません"
 
-#: tp/Texinfo/Parser.pm:4601
+#: tp/Texinfo/Parser.pm:4614
 #, fuzzy, perl-format
 msgid "@%s missing first argument"
 msgstr "%s: ファイル引数を忘れていますよ\n"
 
-#: tp/Texinfo/Parser.pm:4705
+#: tp/Texinfo/Parser.pm:4718
 #, fuzzy
 msgid "Superfluous arguments for node"
 msgstr "%2$s に対する引数 %1$s が曖昧です"
 
-#: tp/Texinfo/Parser.pm:4742
+#: tp/Texinfo/Parser.pm:4755
 #, fuzzy, perl-format
 msgid "Expected @end %s"
 msgstr "`%s' が予期されます"
 
-#: tp/Texinfo/Parser.pm:4806
+#: tp/Texinfo/Parser.pm:4819
 #, fuzzy, perl-format
 msgid "Remaining argument on @%s line: %s"
 msgstr "@%s に対する誤った引数です: %s"
 
-#: tp/Texinfo/Parser.pm:4808
+#: tp/Texinfo/Parser.pm:4821
 #, fuzzy, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
 
-#: tp/Texinfo/Parser.pm:4881
+#: tp/Texinfo/Parser.pm:4894
 #, fuzzy, perl-format
 msgid "Environment command %s as argument to @%s"
 msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
 
-#: tp/Texinfo/Parser.pm:4902
+#: tp/Texinfo/Parser.pm:4915
 #, perl-format
 msgid "Empty @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4910
+#: tp/Texinfo/Parser.pm:4923
 #, fuzzy, perl-format
 msgid "column fraction not a number: %s"
 msgstr "iconv 関数が使えません"
 
-#: tp/Texinfo/Parser.pm:4919
+#: tp/Texinfo/Parser.pm:4932
 #, fuzzy, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
 
-#: tp/Texinfo/Parser.pm:4927
+#: tp/Texinfo/Parser.pm:4940
 #, perl-format
 msgid "Reserved index name %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4944
+#: tp/Texinfo/Parser.pm:4957
 #, fuzzy, perl-format
 msgid "Unknown from index `%s' in @%s"
 msgstr "不明な索引 `%s' です"
 
-#: tp/Texinfo/Parser.pm:4946
+#: tp/Texinfo/Parser.pm:4959
 #, fuzzy, perl-format
 msgid "Unknown to index name `%s' in @%s"
 msgstr "不明な索引 `%s' です"
 
-#: tp/Texinfo/Parser.pm:4965
+#: tp/Texinfo/Parser.pm:4978
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4977
+#: tp/Texinfo/Parser.pm:4990
 #, perl-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "@printindex に不明な見出し `%s' があります"
 
-#: tp/Texinfo/Parser.pm:4982
+#: tp/Texinfo/Parser.pm:4995
 #, perl-format
 msgid "Printing an index `%s' merged in another one `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4989
+#: tp/Texinfo/Parser.pm:5002
 #, perl-format
 msgid "Printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5004
+#: tp/Texinfo/Parser.pm:5017
 #, fuzzy, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
 
-#: tp/Texinfo/Parser.pm:5010
+#: tp/Texinfo/Parser.pm:5023
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "@%s 10 または 11 がサポートされています。`%s' はサポートされていません"
 
-#: tp/Texinfo/Parser.pm:5016
+#: tp/Texinfo/Parser.pm:5029
 #, fuzzy, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
 "%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
 "    なりません。\n"
 
-#: tp/Texinfo/Parser.pm:5022
+#: tp/Texinfo/Parser.pm:5035
 #, fuzzy, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
 
-#: tp/Texinfo/Parser.pm:5037 tp/Texinfo/Parser.pm:5040
+#: tp/Texinfo/Parser.pm:5050 tp/Texinfo/Parser.pm:5053
 #, fuzzy, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
 "    なりません。\n"
 
-#: tp/Texinfo/Parser.pm:5046
+#: tp/Texinfo/Parser.pm:5059
 #, fuzzy, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
 "    なりません。\n"
 
-#: tp/Texinfo/Parser.pm:5054
+#: tp/Texinfo/Parser.pm:5067
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
 "    なりません。\n"
 
-#: tp/Texinfo/Parser.pm:5064
+#: tp/Texinfo/Parser.pm:5077
 #, perl-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr "@%s は on または off が予期されます。`%s' ではありません"
 
-#: tp/Texinfo/Parser.pm:5071
+#: tp/Texinfo/Parser.pm:5084
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5077
+#: tp/Texinfo/Parser.pm:5090
 #, fuzzy, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
 "%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
 "    なりません。\n"
 
-#: tp/Texinfo/Parser.pm:5083
+#: tp/Texinfo/Parser.pm:5096
 #, fuzzy, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
@@ -3265,7 +3265,7 @@ msgstr "%s: 警告: "
 
 #: tp/Texinfo/Structuring.pm:229
 #, perl-format
-msgid "Upping the section level of @%s which is too low"
+msgid "Raising the section level of @%s which is too low"
 msgstr ""
 
 #: tp/Texinfo/Structuring.pm:261

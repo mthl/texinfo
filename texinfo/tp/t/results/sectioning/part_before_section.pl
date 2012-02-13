@@ -178,12 +178,12 @@ $result_sectioning{'part_before_section'}{'section_childs'}[0]{'section_up'} = $
 
 $result_errors{'part_before_section'} = [
   {
-    'error_line' => ':3: Upping the section level of @section which is too low
+    'error_line' => ':3: Raising the section level of @section which is too low
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Upping the section level of @section which is too low',
+    'text' => 'Raising the section level of @section which is too low',
     'type' => 'error'
   }
 ];

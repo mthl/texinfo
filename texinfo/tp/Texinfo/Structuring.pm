@@ -226,7 +226,7 @@ sub sectioning_structure($$)
         if ($previous_section->{'level'} < $level) {
           if ($level - $previous_section->{'level'} > 1) {
             $self->line_error(sprintf($self->
-                  __("Upping the section level of \@%s which is too low"), 
+                  __("Raising the section level of \@%s which is too low"), 
                   $content->{'cmdname'}), $content->{'line_nr'});
             $content->{'level'} = $previous_section->{'level'} + 1;
           }
