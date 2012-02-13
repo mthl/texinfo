@@ -2,6 +2,9 @@ use strict;
 
 use Test::More;
 BEGIN { plan tests => 3 };
+use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
+use lib 'maintain/lib/libintl-perl/lib/';
+use lib 'maintain/lib/Text-Unidecode/lib/';
 use Texinfo::Parser;
 use Texinfo::Convert::Texinfo;
 

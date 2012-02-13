@@ -3,7 +3,9 @@ use strict;
 use Test::More;
 BEGIN { plan tests => 4 };
 
-use Texinfo::Common;
+use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
+use lib 'maintain/lib/libintl-perl/lib/';
+use lib 'maintain/lib/Text-Unidecode/lib/';
 use Texinfo::Parser qw(parse_texi_text);
 use Texinfo::Common qw(protect_hashchar_at_line_beginning);
 use Texinfo::Convert::Texinfo;
