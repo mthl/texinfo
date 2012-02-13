@@ -496,6 +496,8 @@ sub _convert($$;$)
         $result .= "<listitem>";
         if ($root->{'parent'}->{'cmdname'} eq 'itemize'
             and $root->{'parent'}->{'extra'}
+            and !($root->{'parent'}->{'extra'}->{'command_as_argument'}
+                  and $root->{'parent'}->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet')
             and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}
             and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]) {
        #   $result .= $self->_convert({'contents'
