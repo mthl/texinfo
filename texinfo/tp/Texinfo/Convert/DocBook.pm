@@ -876,7 +876,8 @@ sub _convert($$;$)
               push @files, ["$basefile.$extension", uc($extension)];
             }
           }
-          if (!scalar(@files)) {
+          my $image_file_found = scalar(@files);;
+          if (!$image_file_found) {
             push @files, ["$basefile.jpg", 'JPG'];
           }
           foreach my $file (@files) {
@@ -891,6 +892,10 @@ sub _convert($$;$)
                .$self->xml_protect_text($image_text)
                .'</literallayout></textobject>';
           }
+          if (!defined($image_text) and !$image_file_found) {
+            $self->line_warn(sprintf($self->__("\@image file `%s' not found, using `%s'"), $basefile, "$basefile.jpg"), $root->{'line_nr'});
+          }
+
           if ($is_inline) {
             $result .= "</inlinemediaobject>";
           } else {

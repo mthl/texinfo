@@ -1026,6 +1026,8 @@ sub _image_formatted_text($$$$$)
       $result = $alt;
     }
   } else {
+    $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt' nor alternate text"),
+                       $basefile), $root->{'line_nr'});
     $result = '['.$basefile.']';
   }
   return $result;

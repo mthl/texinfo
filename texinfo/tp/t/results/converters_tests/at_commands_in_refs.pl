@@ -21750,6 +21750,37 @@ in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 
 ';
 
+$result_converted_errors{'plaintext'}->{'at_commands_in_refs'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':23: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 23
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':91: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 91
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 89
+  }
+];
+
+
 
 $result_converted{'html'}->{'at_commands_in_refs'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22485,6 +22516,28 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 </chapter>
 ';
 
+$result_converted_errors{'docbook'}->{'at_commands_in_refs'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':91: warning: @image file `f--ile1\' not found, using `f--ile1.jpg\'
+',
+    'text' => '@image file `f--ile1\' not found, using `f--ile1.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 91
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':141: warning: @image file `f--ile1\' not found, using `f--ile1.jpg\'
+',
+    'text' => '@image file `f--ile1\' not found, using `f--ile1.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 141
+  }
+];
+
+
 
 $result_converted{'info'}->{'at_commands_in_refs'} = 'This is , produced by tp version from .
 
@@ -22741,63 +22794,63 @@ End Tag Table
 $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
   {
     'file_name' => '',
-    'error_line' => ':23: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':23: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 23
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
   },
   {
     'file_name' => '',
-    'error_line' => ':91: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':91: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 91
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
   },
   {
     'file_name' => '',
-    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':89: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89

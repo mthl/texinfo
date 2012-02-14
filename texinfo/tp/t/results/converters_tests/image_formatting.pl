@@ -2979,6 +2979,46 @@ ccc</literallayout></textobject></inlinemediaobject>
 <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>.
 </para>';
 
+$result_converted_errors{'docbook'}->{'image_formatting'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':9: warning: @image file `f-ile\' not found, using `f-ile.jpg\'
+',
+    'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 9
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':10: warning: @image file `f--ile@.\' not found, using `f--ile@..jpg\'
+',
+    'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 10
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':20: warning: @image file `f-ile\' not found, using `f-ile.jpg\'
+',
+    'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 20
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':21: warning: @image file `f--ile@.\' not found, using `f--ile@..jpg\'
+',
+    'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 21
+  }
+];
+
+
 
 $result_converted{'info'}->{'image_formatting'} = 'This is , produced by tp version from .
 
@@ -3018,45 +3058,5 @@ Node: Top41
 
 End Tag Table
 ';
-
-$result_converted_errors{'info'}->{'image_formatting'} = [
-  {
-    'file_name' => '',
-    'error_line' => ':9: warning: Cannot find @image file `f-ile.txt\'
-',
-    'text' => 'Cannot find @image file `f-ile.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 9
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':10: warning: Cannot find @image file `f--ile@..txt\'
-',
-    'text' => 'Cannot find @image file `f--ile@..txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 10
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':20: warning: Cannot find @image file `f-ile.txt\'
-',
-    'text' => 'Cannot find @image file `f-ile.txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 20
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':21: warning: Cannot find @image file `f--ile@..txt\'
-',
-    'text' => 'Cannot find @image file `f--ile@..txt\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 21
-  }
-];
-
 
 1;

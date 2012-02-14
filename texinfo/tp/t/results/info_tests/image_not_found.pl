@@ -169,9 +169,9 @@ End Tag Table
 $result_converted_errors{'info'}->{'image_not_found'} = [
   {
     'file_name' => '',
-    'error_line' => ':2: warning: Cannot find @image file `n_f_image.txt\'
+    'error_line' => ':2: warning: Cannot find @image file `n_f_image.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `n_f_image.txt\'',
+    'text' => 'Cannot find @image file `n_f_image.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 2

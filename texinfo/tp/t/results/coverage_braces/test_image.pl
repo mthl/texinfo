@@ -4533,6 +4533,64 @@ In text [alt i^-le..  a
 
 ';
 
+$result_converted_errors{'plaintext'}->{'test_image'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':14: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+',
+    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 14
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':9: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+',
+    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 9
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':20: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+',
+    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 20
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':24: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+',
+    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 24
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':26: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+',
+    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 26
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':26: warning: Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
+',
+    'text' => 'Cannot find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => 'files-char',
+    'line_nr' => 26
+  }
+];
+
+
 
 $result_converted{'html_text'}->{'test_image'} = '
 

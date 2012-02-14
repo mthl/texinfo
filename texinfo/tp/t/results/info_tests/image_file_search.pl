@@ -310,18 +310,18 @@ End Tag Table
 $result_converted_errors{'info'}->{'image_file_search'} = [
   {
     'file_name' => '',
-    'error_line' => ':7: warning: Cannot find @image file `./tp/t/include_dir/f--ile.txt\'
+    'error_line' => ':7: warning: Cannot find @image file `./tp/t/include_dir/f--ile.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `./tp/t/include_dir/f--ile.txt\'',
+    'text' => 'Cannot find @image file `./tp/t/include_dir/f--ile.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 7
   },
   {
     'file_name' => '',
-    'error_line' => ':10: warning: Cannot find @image file `../include_dir/f--ile.txt\'
+    'error_line' => ':10: warning: Cannot find @image file `../include_dir/f--ile.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `../include_dir/f--ile.txt\'',
+    'text' => 'Cannot find @image file `../include_dir/f--ile.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 10

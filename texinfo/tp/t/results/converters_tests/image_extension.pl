@@ -100,6 +100,19 @@ $result_errors{'image_extension'} = [];
 
 $result_converted{'plaintext'}->{'image_extension'} = '[f---ile]';
 
+$result_converted_errors{'plaintext'}->{'image_extension'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':1: warning: Cannot find @image file `f---ile.txt\' nor alternate text
+',
+    'text' => 'Cannot find @image file `f---ile.txt\' nor alternate text',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 1
+  }
+];
+
+
 
 $result_converted{'html_text'}->{'image_extension'} = '<img src="f---ile.gr--a" alt="f---ile">
 ';
@@ -125,6 +138,19 @@ $result_converted{'xml'}->{'image_extension'} = '<image><imagefile>f---ile</imag
 $result_converted{'docbook'}->{'image_extension'} = '<informalfigure><mediaobject><imageobject><imagedata fileref="f---ile.jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure>
 ';
 
+$result_converted_errors{'docbook'}->{'image_extension'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':1: warning: @image file `f---ile\' not found, using `f---ile.jpg\'
+',
+    'text' => '@image file `f---ile\' not found, using `f---ile.jpg\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 1
+  }
+];
+
+
 
 $result_converted{'info'}->{'image_extension'} = 'This is , produced by tp version from .
 
@@ -144,9 +170,9 @@ $result_converted_errors{'info'}->{'image_extension'} = [
   },
   {
     'file_name' => '',
-    'error_line' => ':1: warning: Cannot find @image file `f---ile.txt\'
+    'error_line' => ':1: warning: Cannot find @image file `f---ile.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f---ile.txt\'',
+    'text' => 'Cannot find @image file `f---ile.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 1
