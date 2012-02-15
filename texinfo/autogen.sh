@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autogen.sh,v 1.10 2012-02-09 23:51:50 pertusus Exp $
+# $Id: autogen.sh,v 1.11 2012-02-15 09:56:50 pertusus Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then
@@ -12,12 +12,12 @@ fi
 echo "Preparing Texinfo development infrastructure:"
 
 # Generates an include file for tp/Makefile.am.
-cmd="tp/maintain/regenerate_file_lists.pl"
+cmd="./tp/maintain/regenerate_file_lists.pl"
 echo "  $cmd"
 $chicken eval $cmd || exit 1
 
 # Generates another include file for tp/Makefile.am.
-cmd="tp/maintain/regenerate_document_strings_make_rules.sh"
+cmd="./tp/maintain/regenerate_document_strings_make_rules.sh"
 echo "  $cmd"
 $chicken eval $cmd || exit 1
 
