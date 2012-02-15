@@ -591,10 +591,7 @@ sub _image($$)
       } else {
         $text_result = $text;
       }
-    }# elsif (!defined($image_file)) {
-     # $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"),
-     #                  $basefile), $root->{'line_nr'});
-    #}
+    }
 
     my $result;
 

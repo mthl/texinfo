@@ -57,6 +57,7 @@ protect_comma_in_tree
 protect_first_parenthesis
 protect_hashchar_at_line_beginning
 valid_tree_transformation
+move_index_entries_after_items_in_tree
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -1721,6 +1722,101 @@ sub _print_current($)
   } else {
     return "$text $args $contents\n$parent_string";
   }
+}
+
+sub move_index_entries_after_items($) {
+  # enumerate or itemize
+  my $format = shift;
+
+  my $previous;
+  return unless ($format->{'contents'});
+  foreach my $item (@{$format->{'contents'}}) {
+    #print STDERR "Before proceeding: $previous $item->{'cmdname'} (@{$previous->{'contents'}})\n" if ($previous and $previous->{'contents'});
+    if (defined($previous) and $item->{'cmdname'} 
+        and $item->{'cmdname'} eq 'item' 
+        and $previous->{'contents'} and scalar(@{$previous->{'contents'}})) {
+
+      my $previous_ending_container;
+      if ($previous->{'contents'}->[-1]->{'type'}
+          and ($previous->{'contents'}->[-1]->{'type'} eq 'paragraph'
+               or $previous->{'contents'}->[-1]->{'type'} eq 'preformatted')) {
+        $previous_ending_container = $previous->{'contents'}->[-1];
+      } else {
+        $previous_ending_container = $previous;
+      }
+
+      my @gathered_index_entries;
+
+      #print STDERR "Gathering for item $item in previous $previous ($previous_ending_container)\n";
+      while ($previous_ending_container->{'contents'}->[-1]
+             and (($previous_ending_container->{'contents'}->[-1]->{'type'}
+                   and $previous_ending_container->{'contents'}->[-1]->{'type'} eq 'index_entry_command')
+                  or ($previous_ending_container->{'contents'}->[-1]->{'cmdname'}
+                      and ($previous_ending_container->{'contents'}->[-1]->{'cmdname'} eq 'c'
+                           or $previous_ending_container->{'contents'}->[-1]->{'cmdname'} eq 'comment')))) {
+        unshift @gathered_index_entries, pop @{$previous_ending_container->{'contents'}};
+      }
+      #print STDERR "Gathered: @gathered_index_entries\n";
+      if (scalar(@gathered_index_entries)) {
+        # put back leading comments
+        while (!$gathered_index_entries[0]->{'type'}
+               or $gathered_index_entries[0]->{'type'} ne 'index_entry_command') {
+          #print STDERR "Putting back $gathered_index_entries[0] $gathered_index_entries[0]->{'cmdname'}\n";
+          push @{$previous_ending_container->{'contents'}}, 
+             shift (@gathered_index_entries);
+        }
+
+        # We have the index entries of the previous @item or before item.
+        # Now put them right after the current @item command.
+        if (scalar(@gathered_index_entries)) {
+          my $item_container;
+          if ($item->{'contents'} and $item->{'contents'}->[0]
+              and $item->{'contents'}->[0]->{'type'}
+              and $item->{'contents'}->[0]->{'type'} eq 'preformatted') {
+            $item_container = $item->{'contents'}->[0];
+          } else {
+            $item_container = $item;
+          }
+          foreach my $entry(@gathered_index_entries) {
+            $entry->{'parent'} = $item_container;
+          }
+          if ($item_container->{'contents'} 
+              and $item_container->{'contents'}->[0]
+              and $item_container->{'contents'}->[0]->{'type'}) {
+            if ($item_container->{'contents'}->[0]->{'type'} eq 'empty_line_after_command') {
+              
+              unshift @gathered_index_entries, shift @{$item_container->{'contents'}};
+            } elsif ($item_container->{'contents'}->[0]->{'type'} eq 'empty_spaces_after_command') {
+               unshift @gathered_index_entries, shift @{$item_container->{'contents'}};
+               $gathered_index_entries[0]->{'type'} = 'empty_line_after_command';
+               $gathered_index_entries[0]->{'text'} .= "\n";
+            }
+          }
+          unshift @{$item_container->{'contents'}}, @gathered_index_entries;
+        }
+      }
+    }
+    $previous = $item;
+  }
+}
+
+sub _move_index_entries_after_items($)
+{
+  my $self = shift;
+  my $type = shift;
+  my $current = shift;
+
+  if ($current->{'cmdname'} and ($current->{'cmdname'} eq 'enumerate'
+                              or $current->{'cmdname'} eq 'itemize')) {
+    move_index_entries_after_items($current);
+  }
+  return $current;
+}
+
+sub move_index_entries_after_items_in_tree($)
+{
+  my $tree = shift;
+  return modify_tree(undef, $tree, \&_move_index_entries_after_items);
 }
 
 1;

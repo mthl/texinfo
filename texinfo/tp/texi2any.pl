@@ -774,6 +774,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
 
 exit 1 if (!$result_options);
 
+# For tests, set some strings to values not changing with releases
 my %test_conf = (
     'PACKAGE_VERSION' => '',
     'PACKAGE' => 'texinfo',
