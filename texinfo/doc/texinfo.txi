@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.420 2012-02-16 18:38:17 karl Exp $
+@c $Id: texinfo.txi,v 1.421 2012-02-16 18:47:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15089,31 +15089,41 @@ disabled inside verbatim blocks.
 @node #line and TeX
 @subsection @samp{#line} and @TeX{}
 @cindex @TeX{} and @samp{#line} directives
+@cindex @samp{#line} directives, not processing with @TeX{}
 
 As mentioned, @command{makeinfo} recognizes the @samp{#line}
 directives described in the previous section.  However,
 @file{texinfo.tex} does not and cannot.  Therefore, such a line will
 be incorrectly typeset verbatim if @TeX{} sees it.  The solution is to
-use the (Texinfo) macro expansion options.
+use the (@command{makeinfo}) macro expansion options before running
+@TeX{}.  There are three approaches.
 
+@itemize @bullet
+@item
 If you run @command{texi2dvi} or its variants (@pxref{Format with
-texi2dvi,, Format with @code{texi2dvi}}), you can pass @option{-E}.
+texi2dvi,, Format with @code{texi2dvi}}), you can pass @option{-E} and
+@command{texi2dvi} will run @command{makeinfo} first to expand macros
+and eliminate @samp{#line}.
 
+@item
 If you run @command{makeinfo} or its variants (@pxref{Generic
-Translator texi2any,, A Generic Translator: @command{texi2any}}), you
-can pass @option{--no-ifinfo --iftex -E somefile.mac} or @option{--dvi
---Xopt -E}.  (Or @option{--pdf} instead of @option{--dvi}, of course.)
-With the former, you can then give @file{somefile.mac} to
-@code{texi2dvi} in a separate command; with the latter,
-@command{makeinfo} will call @command{texi2dvi}.
+Translator texi2any,, @command{texi2any}: A Generic Translator}), you
+can specify @option{--no-ifinfo --iftex -E somefile.out}, you can then
+give @file{somefile.out} to @code{texi2dvi} in a separate command.
+
+@item
+Or you can run @option{makeinfo --dvi --Xopt -E}.  (Or @option{--pdf}
+instead of @option{--dvi}.)  @command{makeinfo} will then call
+@command{texi2dvi -E}.
+@end itemize
 
 @findex errormsg@r{, and line numbers in @TeX{}}
-There is one other caveat regarding use with @TeX{}: since the
-@code{#line} directives are not recognized, the line numbers emitted
-by the @code{@@errormsg@{@}} command (@pxref{Conditional Commands}),
-or by @TeX{} itself, are the (incorrect) line numbers from the derived
-file which @TeX{} is reading, rather than the preprocessor-specified
-line numbers.  This is another instance of why we recommend running
+One last caveat regarding use with @TeX{}: since the @code{#line}
+directives are not recognized, the line numbers emitted by the
+@code{@@errormsg@{@}} command (@pxref{Conditional Commands}), or by
+@TeX{} itself, are the (incorrect) line numbers from the derived file
+which @TeX{} is reading, rather than the preprocessor-specified line
+numbers.  This is another instance of why we recommend running
 @command{makeinfo} for the best diagnostics (@pxref{makeinfo
 advantages,, @code{makeinfo} Advantages}).
 
@@ -19353,6 +19363,7 @@ Another approach to preserving links to deleted or renamed nodes is to
 use anchors (@pxref{anchor,, @code{anchor}}).  There is no effective
 difference between the two approaches.
 
+
 @node texi2any Output Customization
 @chapter @command{texi2any} Output Customization
 
@@ -21662,7 +21673,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.420 2012-02-16 18:38:17 karl Exp $
+$Id: texinfo.txi,v 1.421 2012-02-16 18:47:35 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
