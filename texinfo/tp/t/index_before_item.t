@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 5 };
+BEGIN { plan tests => 6 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -153,3 +153,13 @@ in item
 in item
 @end itemize
 ', 'only comments and index entries in items');
+
+run_test('@itemize i
+@c comment in itemize
+@item e--mph item
+@end itemize
+', '@itemize i
+@c comment in itemize
+@item e--mph item
+@end itemize
+', 'only comment');

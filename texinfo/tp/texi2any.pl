@@ -807,6 +807,7 @@ my %formats_table = (
              'split' => 1,
              'internal_links' => 1,
              'simple_menu' => 1,
+             'move_index_entries_after_items' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
   'xml' => {
@@ -814,6 +815,7 @@ my %formats_table = (
              'converter' => sub{Texinfo::Convert::XML->converter(@_)},
            },
   'docbook' => {
+             'move_index_entries_after_items' => 1,
              'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
            },
   'pdf' => {
@@ -1029,6 +1031,12 @@ while(@input_files)
     handle_errors($parser, $error_count, \@opened_files);
     next;
   }
+
+  if ($formats_table{$format}->{'move_index_entries_after_items'}
+      or $tree_transformations{'simple_menus'}) {
+    Texinfo::Common::move_index_entries_after_items_in_tree($tree);
+  }
+
   Texinfo::Structuring::associate_internal_references($parser);
   # every format needs the sectioning structure
   # FIXME this adjusts the level of sectioning commands.  Maybe should be

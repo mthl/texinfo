@@ -107,6 +107,7 @@ t/include/this_is_a_long_unknown_file.png
 t/include/verbatim_encoded_latin1.texi
 t/include/verbatim_encoded.texi
 t/include/words.txt
+t/index_before_item.t
 t/info_tests.t
 t/init/cvs.init
 t/init/icons.init

@@ -261,8 +261,8 @@ After clickstyle &#8658;
 <itemizedlist><!-- comment in itemize -->
 <listitem><para><emphasis>after emph</emphasis> e&#8211;mph item
 </para></listitem></itemizedlist>
-<itemizedlist><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
-<listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+<itemizedlist><listitem><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
+<para>&#8226; a&#8211;n itemize line i&#8211;tem 1
 </para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
 </para></listitem></itemizedlist>
 <orderedlist numeration="arabic"><listitem><para>e&#8211;numerate
@@ -758,8 +758,8 @@ After clickstyle &#8658;
 <itemizedlist><!-- comment in itemize -->
 <listitem><para><emphasis>after emph</emphasis> e&#8211;mph item
 </para></listitem></itemizedlist>
-<itemizedlist><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
-<listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+<itemizedlist><listitem><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
+<para>&#8226; a&#8211;n itemize line i&#8211;tem 1
 </para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
 </para></listitem></itemizedlist>
 <orderedlist numeration="arabic"><listitem><para>e&#8211;numerate
@@ -1256,8 +1256,8 @@ After clickstyle &#8658;
 <itemizedlist><!-- comment in itemize -->
 <listitem><para><emphasis>after emph</emphasis> e&#8211;mph item
 </para></listitem></itemizedlist>
-<itemizedlist><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
-<listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+<itemizedlist><listitem><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
+<para>&#8226; a&#8211;n itemize line i&#8211;tem 1
 </para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
 </para></listitem></itemizedlist>
 <orderedlist numeration="arabic"><listitem><para>e&#8211;numerate
@@ -1755,8 +1755,8 @@ After clickstyle &#8658;
 <itemizedlist><!-- comment in itemize -->
 <listitem><para><emphasis>after emph</emphasis> e&#8211;mph item
 </para></listitem></itemizedlist>
-<itemizedlist><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
-<listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+<itemizedlist><listitem><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
+<para>&#8226; a&#8211;n itemize line i&#8211;tem 1
 </para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
 </para></listitem></itemizedlist>
 <orderedlist numeration="arabic"><listitem><para>e&#8211;numerate
@@ -2253,8 +2253,8 @@ After clickstyle &#8658;
 <itemizedlist><!-- comment in itemize -->
 <listitem><para><emphasis>after emph</emphasis> e&#8211;mph item
 </para></listitem></itemizedlist>
-<itemizedlist><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
-<listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+<itemizedlist><listitem><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
+<para>&#8226; a&#8211;n itemize line i&#8211;tem 1
 </para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
 </para></listitem></itemizedlist>
 <orderedlist numeration="arabic"><listitem><para>e&#8211;numerate
@@ -2750,8 +2750,8 @@ After clickstyle &#8658;
 </screen><itemizedlist><screen><!-- comment in itemize -->
 </screen><listitem><screen><emphasis>after emph</emphasis> e--mph item
 </screen></listitem></itemizedlist><screen>
-</screen><itemizedlist><screen><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
-</screen><listitem><screen>&#8226; a--n itemize line i--tem 1
+</screen><itemizedlist><screen></screen><listitem><screen>&#8226; a--n itemize line <indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
+i--tem 1
 </screen></listitem><listitem><screen>&#8226; a--n itemize line i--tem 2
 </screen></listitem></itemizedlist><screen>
 </screen><orderedlist numeration="arabic"><listitem><screen>e--numerate

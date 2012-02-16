@@ -226,7 +226,7 @@ sub obsolete_option($)
 
 my %valid_tree_transformations;
 foreach my $valid_transformation ('simple_menus', 
-    'fill_gaps_in_sectioning', ) {
+    'fill_gaps_in_sectioning', 'move_index_entries_after_items') {
   $valid_tree_transformations{$valid_transformation} = 1;
 }
 
@@ -1479,6 +1479,7 @@ sub modify_tree($$$)
   my $self = shift;
   my $tree = shift;
   my $operation = shift;
+  #print STDERR "tree: $tree\n";
 
   if ($tree->{'args'}) {
     my @args = @{$tree->{'args'}};
@@ -1726,11 +1727,12 @@ sub _print_current($)
 
 sub move_index_entries_after_items($) {
   # enumerate or itemize
-  my $format = shift;
+  my $current = shift;
+
+  return unless ($current->{'contents'});
 
   my $previous;
-  return unless ($format->{'contents'});
-  foreach my $item (@{$format->{'contents'}}) {
+  foreach my $item (@{$current->{'contents'}}) {
     #print STDERR "Before proceeding: $previous $item->{'cmdname'} (@{$previous->{'contents'}})\n" if ($previous and $previous->{'contents'});
     if (defined($previous) and $item->{'cmdname'} 
         and $item->{'cmdname'} eq 'item' 
@@ -1759,11 +1761,12 @@ sub move_index_entries_after_items($) {
       #print STDERR "Gathered: @gathered_index_entries\n";
       if (scalar(@gathered_index_entries)) {
         # put back leading comments
-        while (!$gathered_index_entries[0]->{'type'}
-               or $gathered_index_entries[0]->{'type'} ne 'index_entry_command') {
+        while ($gathered_index_entries[0]
+               and (!$gathered_index_entries[0]->{'type'}
+                    or $gathered_index_entries[0]->{'type'} ne 'index_entry_command')) {
           #print STDERR "Putting back $gathered_index_entries[0] $gathered_index_entries[0]->{'cmdname'}\n";
           push @{$previous_ending_container->{'contents'}}, 
-             shift (@gathered_index_entries);
+             shift @gathered_index_entries;
         }
 
         # We have the index entries of the previous @item or before item.
@@ -1800,17 +1803,17 @@ sub move_index_entries_after_items($) {
   }
 }
 
-sub _move_index_entries_after_items($)
+sub _move_index_entries_after_items($$$)
 {
   my $self = shift;
   my $type = shift;
   my $current = shift;
 
   if ($current->{'cmdname'} and ($current->{'cmdname'} eq 'enumerate'
-                              or $current->{'cmdname'} eq 'itemize')) {
+                                 or $current->{'cmdname'} eq 'itemize')) {
     move_index_entries_after_items($current);
   }
-  return $current;
+  return ($current);
 }
 
 sub move_index_entries_after_items_in_tree($)
@@ -2066,6 +2069,12 @@ Protect hash character at beginning of line if the line is a cpp
 line directive.  The I<$parser> argument maybe undef, if it is 
 defined it is used for error reporting in case an hash character
 could not be protected because it appeared in a raw environment.
+
+=item move_index_entries_after_items_in_tree($tree)
+
+In C<@enumerate> and C<@itemize> from the tree, move index entries 
+appearing just before C<@item> after the C<@item>.  Comment lines 
+between index entries are moved too.
 
 =item $command = find_parent_root_command($parser, $tree_element)
 
