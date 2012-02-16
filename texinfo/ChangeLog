@@ -1,3 +1,11 @@
+2012-02-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (#line Directive): mention CPP_LINE_DIRECTIVES,
+	and #line not recognized in verbatim.
+	(#line Syntax Details): update regexp, discuss surprising
+	false positives.
+	(Contents): must come before any sectioning command.
+
 2012-02-10  Patrice Dumas  <pertusus@free.fr>
 
 	* autogen.sh, tp/.cvsignore, tp/Makefile.am, 
