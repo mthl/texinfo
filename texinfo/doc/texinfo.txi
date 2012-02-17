@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.421 2012-02-16 18:47:35 karl Exp $
+@c $Id: texinfo.txi,v 1.422 2012-02-17 18:10:40 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17058,7 +17058,7 @@ Many aspects of the behavior and output of @command{texi2any} may be
 modified by modifying so-called @dfn{configuration variables}.  These
 fall into four general categories:
 
-@itemize bullet
+@itemize @bullet
 @item
 Those changing fundamental program behavior; for example,
 @code{TEXTCONTENT} to output the text content only, stripped of commands.
@@ -17290,9 +17290,10 @@ CSS output, automatically determined in the default case
 For HTML@.  Put the document generation date in the header.
 
 @item DEBUG
-The integer value specifies what kinds of debugging output are
-generated.  It is a bitmask.  Setting it to 255 ensures having all
-available debugging output.
+If set, debugging output is generated.
+@c The integer value specifies what kinds of debugging output are
+@c generated.  It is a bitmask.  Setting it to 255 ensures having all
+@c available debugging output.
 
 @item DEF_TABLE
 For HTML@.  If this is set a @code{<table>} construction for
@@ -17559,7 +17560,7 @@ For HTML@.  If this is set, internal cross references are given without
 the sectioning word, even if the target of the reference is a section.
 
 @item SHORTEXTN
-The short extension, @samp{.htm} by default.
+For HTML@.  If this is set, use @samp{.htm} as extension.
 
 @item SHOW_MENU
 @opindex --no-headers
@@ -17643,6 +17644,11 @@ is followed by a @code{subsection}.
 Does the same as @code{SIMPLE_MENU}: use a simple preformatted style for the 
 menu.  It differs from setting @code{SIMPLE_MENU}, as @code{SIMPLE_MENU}
 will only have an effect for HTML@.
+
+@item move_index_entries_after_items
+In @code{@@enumerate} and @code{@@itemize} move index entries 
+appearing just before @code{@@item} after the @code{@@item}.  Comment lines 
+between index entries are moved too.  Always done for HTML and DocBook outputs.
 
 @end table
 
@@ -21673,7 +21679,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.421 2012-02-16 18:47:35 karl Exp $
+$Id: texinfo.txi,v 1.422 2012-02-17 18:10:40 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
