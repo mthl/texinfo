@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.46 2012-02-10 10:29:35 pertusus Exp $
+# $Id: Makefile.am,v 1.47 2012-02-17 18:54:30 pertusus Exp $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -20,7 +20,9 @@ DISTCLEANFILES = texinfo texinfo-* info*.info*
 
 # Use the programs built in our distribution, taking account of possible
 # cross-compiling.
-MAKEINFO = $(PERL) -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl
+tpdir = $(top_srcdir)/tp
+tplibdir = $(tpdir)/maintain/lib
+MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tplibdir)/Unicode-EastAsianWidth/lib" -I "$(tplibdir)/Text-Unidecode/lib" $(top_builddir)/tp/texi2any
 
 # We'd also like to use something like this, but Automake calls
 # "install-info" directly.
