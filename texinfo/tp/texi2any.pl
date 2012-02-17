@@ -192,10 +192,20 @@ require Texinfo::Convert::PlainTexinfo;
 require DebugTexinfo::DebugCount;
 require DebugTexinfo::DebugTree;
 
+# When shipped as a perl modules, $hardcoded_version is set to undef here
+# by a sed one liner.
+# $hardcoded_version has to be manually adjusted.  I know that it is wrong, 
+# but that are the boss orders ;-)
+my $hardcoded_version = "4.13.90";
 # Version: set in configure.in
 my $configured_version = '@PACKAGE_VERSION@';
-$configured_version = $Texinfo::Parser::VERSION 
-  if ($configured_version eq '@' . 'PACKAGE_VERSION@');
+if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
+  if (defined($hardcoded_version)) {
+    $configured_version = $hardcoded_version;
+  } else {
+    $configured_version = $Texinfo::Parser::VERSION;
+  }
+}
 my $configured_package = '@PACKAGE@';
 $configured_package = 'Texinfo' if ($configured_package eq '@' . 'PACKAGE@');
 my $configured_name = '@PACKAGE_NAME@';

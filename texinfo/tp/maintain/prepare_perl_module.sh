@@ -4,7 +4,9 @@
 (cd ../ && ./config.status)
 ./maintain/regenerate_perl_module_files.sh
 make MANIFEST
-cp -p texi2any.pl texi2any-perl
+sed 's/\(my \$hardcoded_version = \).*/\1 undef;/' texi2any.pl > texi2any
+chmod a+x texi2any
+touch -r texi2any.pl texi2any 
 perl Makefile.PL
 VERSION=`grep '^VERSION = ' Makefile | sed 's/^VERSION = *//'`
 [ z"$VERSION" = 'z' ] && exit 1
@@ -18,3 +20,5 @@ tar xzvf Texinfo-$VERSION.tar.gz
                  ./maintain/all_tests.sh clean && make distcheck) || exit 1
 rm -rf Texinfo-$VERSION/
 (cd ../ && ./config.status)
+mv texi2any texi2any-perl
+make texi2any

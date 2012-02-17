@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.40 2012-02-11 22:35:52 pertusus Exp $
+# $Id: Makefile.am,v 1.41 2012-02-17 22:53:47 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011 Free Software Foundation, Inc.
@@ -190,7 +190,7 @@ EXTRA_DIST = \
 MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	echo "$(dist_modules_DATA) $(dist_converters_DATA) $(dist_debugmodules_DATA) " \
 	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_files_generated_list) " \
-	"texi2any-perl $(maintainance_files) README TODO COPYING " \
+	"texi2any $(maintainance_files) README TODO COPYING " \
 	"$(perl_specific_files)" \
 	 | sed 's/ \+/\n/g' | sort | cat - $< > $@
 

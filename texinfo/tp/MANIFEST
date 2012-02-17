@@ -54,7 +54,7 @@ t/80include.t
 t/accents.t
 t/converters_tests.t
 t/docbook_tests.t
-texi2any-perl
+texi2any
 Texinfo/Common.pm
 Texinfo/Convert/Converter.pm
 Texinfo/Convert/DocBook.pm
