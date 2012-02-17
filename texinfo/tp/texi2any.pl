@@ -435,6 +435,7 @@ sub set_texi2dvi_format($)
   $call_texi2dvi = 1;
   push @texi2dvi_args, '--'.$format; 
   $format_from_command_line = 1;
+  set_format('tex');
   return $format;
 }
 
@@ -627,8 +628,7 @@ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
       exit 0;},
- 'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
-                             set_from_cmdline('MACRO_EXPAND', $_[1]); },
+ 'macro-expand|E=s' => sub { set_from_cmdline('MACRO_EXPAND', $_[1]); },
  'ifhtml!' => sub { set_expansion('html', $_[1]); },
  'ifinfo!' => sub { set_expansion('info', $_[1]); },
  'ifxml!' => sub { set_expansion('xml', $_[1]); },
@@ -866,13 +866,7 @@ if ($call_texi2dvi) {
     die sprintf(__('when generating %s, only one input FILE may be specified with -o'),
                 $format);
   }
-  if (get_conf('DEBUG') or get_conf('VERBOSE')) {
-    print STDERR "".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV)) 
-       ."\n";
-  }
-  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV);
 }
-
 my %tree_transformations;
 if (get_conf('TREE_TRANSFORMATIONS')) {
   my @transformations = split /,/, get_conf('TREE_TRANSFORMATIONS');
@@ -1000,7 +994,7 @@ while(@input_files)
     $parser->Texinfo::Structuring::set_menus_to_simple_menu();
   }
 
-  if (defined(get_conf('MACRO_EXPAND'))) {
+  if (defined(get_conf('MACRO_EXPAND')) and $file_number == 0) {
     my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree, 1);
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
@@ -1027,7 +1021,7 @@ while(@input_files)
       _exit($error_count, \@opened_files);
     }
   }
-  if (get_conf('DUMP_TEXI')) {
+  if (get_conf('DUMP_TEXI') or $formats_table{$format}->{'texi2dvi_format'}) {
     handle_errors($parser, $error_count, \@opened_files);
     next;
   }
@@ -1161,6 +1155,14 @@ foreach my $unclosed_file (keys(%unclosed_files)) {
     $error_count++;
     _exit($error_count, \@opened_files);
   }
+}
+
+if ($call_texi2dvi) {
+  if (get_conf('DEBUG') or get_conf('VERBOSE')) {
+    print STDERR "".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV)) 
+       ."\n";
+  }
+  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args,  @ARGV);
 }
 
 1;
