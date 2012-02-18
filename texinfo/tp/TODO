@@ -7,7 +7,11 @@ Before next release
 
 Document TEXTCONTENT_COMMENT.
 
-pod2texi: remove :: in node to avoid confusing @ref in info.
+pod2texi: remove punctuation in node to avoid confusing @ref in info.
+in @ref. First : is searched.  if followed by a : the node name is found
+and there is no label. When parsing a node a filename with ( is searched for.
+Nested parentheses are taken into account.
+Then more parentheses?
 
 
 Bugs

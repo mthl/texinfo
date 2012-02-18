@@ -30,7 +30,6 @@ sub run_test($$$)
   } else {
     is ($texi_result, $out, $name);
   }
-
 }
 
 run_test ('# line 4 "ggggg"

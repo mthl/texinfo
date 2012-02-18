@@ -2024,6 +2024,58 @@ sub _node_extra_to_texi($)
   return $result;
 }
 
+sub _find_end_brace($$)
+{
+  my $text = shift;
+  my $braces_count = shift;
+
+  my $before = '';
+  while ($braces_count > 0 and length($text)) {
+    if ($text =~ s/([^()]*)([()])//) {
+      $before .= $1.$2;
+      my $brace = $2;
+      if ($brace eq '(') {
+        $braces_count++;
+      } else {
+        $braces_count--;
+        if ($braces_count == 0) {
+          return ($before, $text, 0);
+        }
+      }
+    } else {
+      $before .= $text;
+      $text = '';
+    }
+  }
+  return ($before, undef, $braces_count);
+}
+
+# This only counts opening braces, and returns 0 once all the parentheses
+# are closed
+sub _count_opened_tree_braces($$);
+sub _count_opened_tree_braces($$)
+{
+  my $current = shift;
+  my $braces_count = shift;
+  if (defined($current->{'text'})) {
+    my ($before, $after);
+    ($before, $after, $braces_count) = _find_end_brace($current->{'text'},
+                                                          $braces_count);
+  }
+  if ($current->{'args'}) {
+    foreach my $arg (@{$current->{'args'}}) {
+      $braces_count = _count_opened_tree_braces($arg, $braces_count);
+      return $braces_count if ($braces_count == 0);
+    }
+  }
+  if ($current->{'contents'}) {
+    foreach my $content (@{$current->{'contents'}}) {
+      $braces_count = _count_opened_tree_braces($content, $braces_count);
+      return $braces_count if ($braces_count == 0);
+    }
+  }
+  return $braces_count;
+}
 
 # retrieve a leading manual name in parentheses, if there is one.
 sub _parse_node_manual($)
@@ -2036,6 +2088,7 @@ sub _parse_node_manual($)
   my $result;
 #print STDERR "RRR $contents[0] and $contents[0]->{'text'} \n";
   if ($contents[0] and $contents[0]->{'text'} and $contents[0]->{'text'} =~ /^\(/) {
+    my $braces_count = 1;
     if ($contents[0]->{'text'} !~ /^\($/) {
       my $brace = shift @contents;
       my $brace_text = $brace->{'text'};
@@ -2049,15 +2102,26 @@ sub _parse_node_manual($)
       my $content = shift @contents;
       if (!defined($content->{'text'}) or $content->{'text'} !~ /\)/) {
         push @$manual, $content;
+        $braces_count = _count_opened_tree_braces($content, $braces_count);
+        # This is an error, braces were closed in a command
+        if ($braces_count == 0) {
+          last;
+        }
       } else {
-        my $brace_text = $content->{'text'};
-        my ($before, $after) = split (/\)/, $brace_text, 2);
-        push @$manual, { 'text' => $before, 'parent' => $content->{'parent'} }
+        my ($before, $after);
+        ($before, $after, $braces_count) = _find_end_brace($content->{'text'},
+                                                              $braces_count);
+        if ($braces_count == 0) {
+          $before =~ s/\)$//;
+          push @$manual, { 'text' => $before, 'parent' => $content->{'parent'} }
             if ($before ne '');
-        $after =~ s/^\s*//;
-        unshift @contents,  { 'text' => $after, 'parent' => $content->{'parent'} }
+          $after =~ s/^\s*//;
+          unshift @contents,  { 'text' => $after, 'parent' => $content->{'parent'} }
             if ($after ne '');
-        last;
+          last;
+        } else {
+          push @$manual, $content;
+        }
       }
     }
     $result->{'manual_content'} = $manual if (defined($manual));
@@ -3762,7 +3826,8 @@ sub _parse_texi($;$)
                and $current->{'args'}->[-1]->{'type'}
                and $current->{'args'}->[-1]->{'type'} eq 'menu_entry_separator') {
         my $separator = $current->{'args'}->[-1]->{'text'};
-        # separator is ::, we let it be in order to collect spaces below
+        # separator is ::, we concatenate and let the while restart
+        # in order to collect spaces below
         if ($separator eq ':' and $line =~ s/^(:)//) {
           $current->{'args'}->[-1]->{'text'} .= $1;
         # a . not followed by a space.  Not a separator.

@@ -1349,6 +1349,14 @@ Dummy section with (manual)node node syntax.
 @anchor{(manual)anchor}.
 
 '],
+['node_nested_parentheses',
+'@node Top
+
+@menu
+* ((some) file)::
+* (other (file))node name::
+@end menu
+'],
 ['node_empty_direction',
 '@node name, '
 ],
