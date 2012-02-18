@@ -1355,6 +1355,8 @@ Dummy section with (manual)node node syntax.
 @menu
 * ((some) file)::
 * (other (file))node name::
+* (@code{open(}) close)::
+* (@code{)))} error::
 @end menu
 '],
 ['node_empty_direction',
