@@ -1012,6 +1012,7 @@ t/results/sectioning/next_in_menu_is_below.pl
 t/results/sectioning/next_no_prev_to_node.pl
 t/results/sectioning/node_empty_direction.pl
 t/results/sectioning/nodename_parentheses.pl
+t/results/sectioning/node_nested_parentheses.pl
 t/results/sectioning/node_part_chapter_after_chapter.pl
 t/results/sectioning/node_part_chapter_after_top.pl
 t/results/sectioning/node.pl
@@ -1145,6 +1146,7 @@ t/results/xtable/no_argument_for_table.pl
 t/results/xtable/table_nested.pl
 t/results/xtable/text_between_item_itemx.pl
 t/results/xtable/title_and_itemx_before_item.pl
+t/test_brace_count.t
 t/test_count.t
 t/test_fill_gaps_in_sectioning.t
 t/test_protect_hashchar_at_line_beginning.t

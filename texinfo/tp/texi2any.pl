@@ -192,17 +192,36 @@ require Texinfo::Convert::PlainTexinfo;
 require DebugTexinfo::DebugCount;
 require DebugTexinfo::DebugTree;
 
+# Version setting is complicated, because we cope with 
+# * script with configure values substituted or not
+# * script shipped as part of texinfo or as a standalone perl module
+
 # When shipped as a perl modules, $hardcoded_version is set to undef here
-# by a sed one liner.
-# $hardcoded_version has to be manually adjusted.  I know that it is wrong, 
-# but that are the boss orders ;-)
-my $hardcoded_version = "4.13.90";
-# Version: set in configure.in
+# by a sed one liner.  The consequence is that configure.ac is not used
+# to retrieve the version number.
+# Otherwise this is only used as a safety value, and should never be used 
+# in practice as a regexp extracts the version from configure.ac.
+my $hardcoded_version = "4.13.90-hardcoded";
+# Version set in configure.ac
 my $configured_version = '@PACKAGE_VERSION@';
 if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
+  # if not configured, and $hardcoded_version is set search for the version 
+  # in configure.ac
   if (defined($hardcoded_version)) {
-    $configured_version = $hardcoded_version;
+    if (open (CONFIGURE, "$srcdir/../configure.ac")) {
+      while (<CONFIGURE>) {
+        if (/^AC_INIT\(\[[^\]]+\]\s*,\s*\[([^\]]+)\]\s*,/) {
+          $configured_version = $1;
+          last;
+        }
+      }
+      close (CONFIGURE);
+    }
+    # This should never be used, but is a safety value
+    $configured_version = $hardcoded_version if (!defined($configured_version));
   } else {
+    # used in the standalone perl module, as $hardcoded_version is undef
+    # and it should never be configured in that setup
     $configured_version = $Texinfo::Parser::VERSION;
   }
 }
