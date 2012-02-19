@@ -201,7 +201,7 @@ require DebugTexinfo::DebugTree;
 # to retrieve the version number.
 # Otherwise this is only used as a safety value, and should never be used 
 # in practice as a regexp extracts the version from configure.ac.
-my $hardcoded_version = "4.13.90-hardcoded";
+my $hardcoded_version = "0.00-hardcoded";
 # Version set in configure.ac
 my $configured_version = '@PACKAGE_VERSION@';
 if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
