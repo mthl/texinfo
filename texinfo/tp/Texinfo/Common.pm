@@ -56,6 +56,8 @@ normalize_top_node_name
 protect_comma_in_tree
 protect_first_parenthesis
 protect_hashchar_at_line_beginning
+protect_colon_in_tree
+protect_node_after_label_in_tree
 valid_tree_transformation
 move_index_entries_after_items_in_tree
 ) ] );
@@ -1479,37 +1481,33 @@ sub modify_tree($$$)
   my $self = shift;
   my $tree = shift;
   my $operation = shift;
-  #print STDERR "tree: $tree\n";
+  #print STDERR "modify_tree tree: $tree\n";
 
   if ($tree->{'args'}) {
     my @args = @{$tree->{'args'}};
     for (my $i = 0; $i <= $#args; $i++) {
+      modify_tree($self, $args[$i], $operation);
       my @new_args = &$operation($self, 'arg', $args[$i]);
       # this puts the new args at the place of the old arg using the 
       # offset from the end of the array
       splice (@{$tree->{'args'}}, $i - $#args -1, 1, @new_args);
-      foreach my $arg (@new_args) {
-        modify_tree($self, $arg, $operation);
-      }
+      #foreach my $arg (@new_args) {
+      #  modify_tree($self, $arg, $operation);
+      #}
     }
-    #foreach my $arg (@{$tree->{'args'}}) {
-    #  modify_tree($self, $arg, $operation);
-    #}
   }
   if ($tree->{'contents'}) {
     my @contents = @{$tree->{'contents'}};
     for (my $i = 0; $i <= $#contents; $i++) {
+      modify_tree($self, $contents[$i], $operation);
       my @new_contents = &$operation($self, 'content', $contents[$i]);
       # this puts the new contents at the place of the old content using the 
       # offset from the end of the array
       splice (@{$tree->{'contents'}}, $i - $#contents -1, 1, @new_contents);
-      foreach my $content (@new_contents) {
-        modify_tree($self, $content, $operation);
-      }
+      #foreach my $content (@new_contents) {
+      #  modify_tree($self, $content, $operation);
+      #}
     }
-    #foreach my $content (@{$tree->{'contents'}}) {
-    #  modify_tree($self, $content, $operation);
-    #}
   }
   return $tree;
 }
@@ -1520,31 +1518,102 @@ sub _protect_comma($$$)
   my $type = shift;
   my $current = shift;
 
-  if (defined($current->{'text'}) and $current->{'text'} =~ /,/
-      and !(defined($current->{'type'}) and $current->{'type'} eq 'raw')) {
-    my @result = ();
-    my @text_fragments = split /,/, $current->{'text'};
-    foreach my $text_fragment (@text_fragments) {
-      if ($text_fragment ne '') {
-        my $new_text = {'text' => $text_fragment, 
-                        'parent' => $current->{'parent'}};
-        $new_text->{'type'} = $current->{'type'} if defined($current->{'type'});
-        push @result, $new_text;
-      }
-      push @result, {'cmdname' => 'comma', 'parent' => $current->{'parent'},
-                     'args' => [{'type' => 'brace_command_arg'}]};
-    }
-    pop @result unless ($current->{'text'} =~ /,$/);
-    return @result;
-  } else {
-    return ($current);
-  }
+  return _protect_text($current, quotemeta(','));
 }
 
 sub protect_comma_in_tree($)
 {
   my $tree = shift;
   return modify_tree(undef, $tree, \&_protect_comma);
+}
+
+sub _new_asis_command_with_text($$;$)
+{
+  my $text = shift;
+  my $parent = shift;
+  my $text_type = shift;
+  my $new_command = {'cmdname' => 'asis', 'parent' => $parent };
+  push @{$new_command->{'args'}}, {'type' => 'brace_command_arg',
+                                   'parent' => $new_command};
+  push @{$new_command->{'args'}->[0]->{'contents'}}, {
+    'text' => $text,
+    'parent' => $new_command->{'args'}->[0]};
+  if (defined($text_type)) {
+    $new_command->{'args'}->[0]->{'contents'}->[0]->{'type'} = $text_type;
+  }
+  return $new_command;
+}
+
+
+sub _protect_text($$)
+{
+  my $current = shift;
+  my $to_protect = shift;
+
+  #print STDERR "$to_protect: $current "._print_current($current)."\n";
+  if (defined($current->{'text'}) and $current->{'text'} =~ /$to_protect/
+      and !(defined($current->{'type'}) and $current->{'type'} eq 'raw')) {
+    my @result = ();
+    my $remaining_text = $current->{'text'};
+    while ($remaining_text) {
+      if ($remaining_text =~ s/^(.*?)(($to_protect)+)//) {
+        if ($1 ne '') {
+          push @result, {'text' => $1, 'parent' => $current->{'parent'}};
+          $result[-1]->{'type'} = $current->{'type'} 
+            if defined($current->{'type'});
+        }
+        if ($to_protect eq quotemeta(',')) {
+          for (my $i = 0; $i < length($2); $i++) {
+            push @result, {'cmdname' => 'comma', 'parent' => $current->{'parent'},
+                           'args' => [{'type' => 'brace_command_arg'}]};
+          }
+        } else {
+          push @result, _new_asis_command_with_text($2, $current->{'parent'},
+                                                    $current->{'type'});
+        }
+      } else {
+        push @result, {'text' => $remaining_text, 'parent' => $current->{'parent'}};
+        $result[-1]->{'type'} = $current->{'type'} 
+          if defined($current->{'type'});
+        last;
+      }
+    }
+    #print STDERR "Result: @result\n";
+    return @result;
+  } else {
+    #print STDERR "No change: $current\n";
+    return ($current);
+  }
+}
+
+sub _protect_colon($$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $current = shift;
+
+  return _protect_text ($current, quotemeta(':'));
+}
+
+sub protect_colon_in_tree($)
+{
+  my $tree = shift;
+  return modify_tree(undef, $tree, \&_protect_colon);
+}
+
+sub _protect_node_after_label($$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $current = shift;
+
+  return _protect_text ($current, '['. quotemeta(".\t,") .']');
+}
+
+sub protect_node_after_label_in_tree($)
+{
+  my $tree = shift;
+  return modify_tree(undef, $tree, \&_protect_node_after_label);
 }
 
 sub _is_cpp_line($)
@@ -1647,12 +1716,8 @@ sub protect_first_parenthesis($)
     } else {
       $brace = shift @contents;
     }
-    unshift @contents, {'cmdname' => 'asis', 'parent' => $brace->{'parent'}};
-    push @{$contents[0]->{'args'}}, {'type' => 'brace_command_arg', 
-                                    'parent' => $contents[0]};
-    push @{$contents[0]->{'args'}->[0]->{'contents'}}, {
-      'type' => $brace->{'type'}, 'text' => '(',
-      'parent' => $contents[0]->{'args'}->[0]};
+    unshift @contents, _new_asis_command_with_text('(', $brace->{'parent'},
+                                                    $brace->{'type'});
   }
   return \@contents;
 }
@@ -2057,6 +2122,16 @@ Top node case.
 =item protect_comma_in_tree($tree)
 
 Protect comma characters, replacing C<,> with @comma{} in tree.
+
+=item protect_colon_in_tree($tree)
+
+=item protect_node_after_label_in_tree($tree)
+
+Protect colon with C<protect_colon_in_tree> and characters that 
+are special in node names after a label in menu entries (tab
+dot and comma) with C<protect_node_after_label_in_tree>.  
+The protection is achieved by putting protected characters 
+in C<@asis{}>.
 
 =item $contents_result = protect_first_parenthesis ($contents)
 

@@ -7,12 +7,6 @@ Before next release
 
 Document TEXTCONTENT_COMMENT.
 
-pod2texi: remove punctuation in node to avoid confusing @ref in info.
-in @ref. First : is searched.  if followed by a : the node name is found
-and there is no label. When parsing a node a filename with ( is searched for.
-Nested parentheses are taken into account.
-Then more parentheses?
-
 
 Bugs
 ====
@@ -104,6 +98,36 @@ and so on and so forth.
 Functions to document for HTML API (many more are missing!):
 sectioning_command_target_name
 node_target_name
+
+Protection of punctuation in nodes.
+in @ref. First : is searched.  if followed by a : the node name is found
+and there is no label. When parsing a node a filename with ( is searched for.
+Nested parentheses are taken into account.
+Then more parentheses?
+
+Automatic generation of node names from section names.  To be protected:
+* in every case
+  ( at the beginning
+* In @node line
+  commas
+* In menu entry
+  * if there is a label
+    tab comma dot
+  * if there is no label
+    :
+* In @ref
+  commas
+
+In generated info:
+* in every case 
+  ( at the beginning
+* in Node line 
+  commas
+* In menu entry and *Note
+  * if there is a label
+    tab comma dot
+  * if there is no label
+    :
 
 
 DocBook
