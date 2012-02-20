@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.422 2012-02-17 18:10:40 pertusus Exp $
+@c $Id: texinfo.txi,v 1.423 2012-02-20 16:41:32 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1014,7 +1014,8 @@ excellent.  But please do not write a separate translator texi2foo for
 your favorite format foo!  That is the hard way to do the job, and makes
 extra work in subsequent maintenance, since the Texinfo language is
 continually being enhanced and updated.  Instead, the best approach is
-modify @code{makeinfo} to generate the new format.
+modify @code{makeinfo} to generate the new format.  @xref{Generic
+Translator texi2any,, @command{texi2any}: The Generic Translator}.
 
 
 @node Info Files
@@ -1783,8 +1784,8 @@ had been happily using the HTML customization features in
 @command{texi2html} for years.  Thus, in effect two independent
 implementations of the Texinfo language had developed, and keeping
 them in sync was not simple.  Adding the HTML customization possible
-in @command{texi2html} to a C program would have been nearly
-impossible.
+in @command{texi2html} to a C program would have been an
+enormous effort.
 
 @item Unicode, and multilingual support generally, especially of east
 Asian languages.  Although of course it's perfectly plausible to write
@@ -15107,7 +15108,7 @@ and eliminate @samp{#line}.
 
 @item
 If you run @command{makeinfo} or its variants (@pxref{Generic
-Translator texi2any,, @command{texi2any}: A Generic Translator}), you
+Translator texi2any,, @command{texi2any}: The Generic Translator}), you
 can specify @option{--no-ifinfo --iftex -E somefile.out}, you can then
 give @file{somefile.out} to @code{texi2dvi} in a separate command.
 
@@ -16454,51 +16455,24 @@ self-contained file, so it has its place.
 @cindex Obtaining @TeX{}
 @cindex @TeX{}, how to obtain
 
-@c !!! Here is information about obtaining TeX.  Update it whenever.
-@c !!! Also consider updating TeX.README on ftp.gnu.org.
-@c     Updated by RJC on 1 March 1995, conversation with MacKay.
-@c     Updated by kb@cs.umb.edu on 29 July 1996.
-@c     Updated by kb@cs.umb.edu on 25 April 1997.
-@c     Updated by kb@cs.umb.edu on 27 February 1998.
-@TeX{} is freely redistributable.  You can obtain @TeX{} for Unix
-systems via anonymous ftp or on physical media.  The core material
-consists of the Web2c @TeX{} distribution (@uref{http://tug.org/web2c}).
+@TeX{} is a document formatter that is used by the FSF for its
+documentation.  It is the easiest way to get printed output (e.g., PDF
+and PostScript) for Texinfo manuals.  TeX is freely redistributable,
+and you can get it over the Internet or on physical media.  See
+@url{http://tug.org/texlive}.
 
-Instructions for retrieval by anonymous ftp and information on other
-available distributions:
-@uref{http://tug.org/unixtex.ftp}.
-
-The Free Software Foundation provides a core distribution on its Source
-Code CD-ROM suitable for printing Texinfo manuals.  To order it, contact:
-
-@display
-@group
-Free Software Foundation, Inc.
-51 Franklin St, Fifth Floor
-Boston, MA @ @ 02110-1301
-USA
-Telephone: @w{+1-617-542-5942}
-Fax: (including Japan) @w{+1-617-542-2652}
-Free Dial Fax (in Japan):
-@w{ } @w{ } @w{ } 0031-13-2473 (KDD)
-@w{ } @w{ } @w{ } 0066-3382-0158 (IDC)
-Electronic mail: @code{gnu@@gnu.org}
-@end group
-@end display
-
-Many other @TeX{} distributions are available; see
-@uref{http://tug.org/}.
+@c let's try to keep that text in sync with www.gnu.org/prep/FTP
 
 
 @node Generic Translator texi2any
-@chapter @command{texi2any}: A Generic Translator for Texinfo
+@chapter @command{texi2any}: The Generic Translator for Texinfo
 
-@command{texi2any} is a generic translator for Texinfo that can
-produce different output formats and is highly customizable.  By
-default, the formats that may be produced are:
+@command{texi2any} is the generic translator for Texinfo that can
+produce different output formats and is highly customizable.  It
+supports these formats:
 
 @table @asis
-@item Info (with @option{--info}),
+@item Info (by default, or with @option{--info}),
 
 @item HTML (with @option{--html}),
 
@@ -16510,17 +16484,32 @@ default, the formats that may be produced are:
 @end table
 
 @command{makeinfo} is an alias for @command{texi2any}.  By default,
-both @command{texi2any} and @command{makeinfo} generate Info output.
+both @command{texi2any} and @command{makeinfo} generate Info output;
+indeed, there are no differences in behavior based on the name.
 
 Beside these default formats, command line options to
-@command{texi2any} can determine important aspects of the output.
-Beyond that, initialization files provide an even finer degree of
-control over the final output, including nearly every aspect not
-specified in the Texinfo input file.  Initialization files are written
-in Perl, like the main program, and anything which may be specified on
-the command line may also be specified within a initialization file.
+@command{texi2any} can change many aspects of the output.  Beyond
+that, initialization files provide even more control over the final
+output---nearly anything not specified in the Texinfo input file.
+Initialization files are written in Perl, like the main program, and
+anything which may be specified on the command line may also be
+specified within a initialization file.
 
-The rest of this chapter gives further details on the program.
+We call it ``the'' translator for Texinfo instead of just ``a''
+translator, even though of course it's technically possible for other
+implementations to be written.  The reason is that alternative
+implementations are undesirable in practice; it leads to subtle (or
+not-so-subtle) differences in the language, and thus Texinfo documents
+become dependent on the processor, which is bad for everyone.  Indeed,
+it was the existence of the @command{texi2html} implementation which
+spawned the merging back into the one program we have now.
+
+We intend and hope that the present program should be rather easier
+than the previous C implementation of @command{makeinfo} to extend to
+different output styles, back-end output formats, and all other
+customizations.
+
+The rest of this chapter gives the rest of the details.
 
 @menu
 * Invoking texi2any::           How to run @command{texi2any} from a shell.
@@ -17714,6 +17703,11 @@ minimum page length required before a navigation panel is placed at
 the bottom of a page.
 
 @end vtable
+
+
+@c node texi2html
+@c section @command{texi2html}: Ancestor of @command{texi2any}
+@c pindex texi2html
 
 
 @node Creating and Installing Info Files
@@ -21679,7 +21673,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.422 2012-02-17 18:10:40 pertusus Exp $
+$Id: texinfo.txi,v 1.423 2012-02-20 16:41:32 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

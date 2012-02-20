@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.210 2012-01-20 18:00:57 karl Exp $
+$Id: NEWS,v 1.211 2012-02-20 16:41:31 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -44,22 +44,24 @@ one of the relevant sections:
   . #line directives are recognized.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
 
-* texi2any is a new generic converter that can produce all supported
-  output formats, both those from texi2dvi (PDF/DVI) and from makeinfo
-  (Info/HTML/etc.).  With this release, texi2any, makeinfo, and
-  texi2html are all essentially the same program with different
-  defaults.
+* texi2any is the new generic converter for Texinfo that can produce all
+  supported output formats, both those from texi2dvi (PDF/DVI) and from
+  makeinfo (Info/HTML/etc.).  texi2any and makeinfo are now different
+  names for the same program; there are no differences in behavior based
+  on the program name.
 
-  The new implementation is in Perl (originally the texi2html program).
-  It both replaces and is intended to be (for all practical purposes)
-  upward-compatible with the C makeinfo.  It has many new features not
-  in the C makeinfo.  For example, cross-manual references are now fully
-  supported, and extensive customization of the HTML output is possible.
-  See xxx in the manual for more about this reimplementation.
+  The new implementation is in Perl (based on the texi2html program, but
+  with a vast array of subsequent changes).  It both replaces and is
+  intended to be (for all practical purposes) upward-compatible with the
+  C makeinfo.  It has many new features not in the C makeinfo.  For
+  example, cross-manual references are now fully supported, and
+  extensive customization of the HTML output is possible.  See the
+  `Generic Translator texi2any' chapter in the manual (among other places)
+  for more about this reimplementation.
   
   The new program is, unfortunately, noticeably slower at present than
-  the C program was.  We hope all the many improvements make the change
-  worthwhile nevertheless.
+  the C program was.  We hope all the many improvements make the new
+  version worthwhile for users nevertheless.
 
 * texinfo.tex:
   . urls (given to @uref and @url) are broken by default at special

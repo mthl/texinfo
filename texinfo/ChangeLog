@@ -1,3 +1,13 @@
+2012-02-20  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Obtaining TeX): update a bit, keep
+	www.gnu.org/prep/FTP in sync.
+
+	* NEWS, doc/texinfo.txi (Generic Translator texi2any): clarify
+	that there are no differences based on the program name (makeinfo
+	vs. texi2any).  Also, call it "the" translator instead of just "a"
+	and explain why.
+
 2012-02-17  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Configuration Variables): update DEBUG and SHORTEXTN
