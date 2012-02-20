@@ -118,7 +118,9 @@ Automatic generation of node names from section names.  To be protected:
 * In @ref
   commas
 
-In generated info:
+In Info
+
+Nodes:
 * in every case 
   ( at the beginning
 * in Node line 
@@ -128,6 +130,11 @@ In generated info:
     tab comma dot
   * if there is no label
     :
+
+Labels in Info (which also means index entries)
+  :
+
+* at the beginning of a line in a @menu
 
 
 DocBook

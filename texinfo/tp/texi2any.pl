@@ -113,7 +113,7 @@ sub __p($$) {
 
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
 my $libsrcdir = "$srcdir/maintain";
-if ($0 =~ /\.pl$/) {
+if ($0 =~ /\.pl$/ or $ENV{'TEXINFO_DEV_SOURCE'}) {
   unshift @INC, "$libsrcdir/lib/libintl-perl/lib";
 } elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes'
          and -d "$pkgdatadir/lib/libintl-perl/lib") {
@@ -133,7 +133,7 @@ Locale::Messages->select_package ('gettext_pp');
 #my @search_locale_dirs = ("$datadir/locale", (map $_ . '/LocaleData', @INC),
 #  qw (/usr/share/locale /usr/local/share/locale));
 
-if ($0 =~ /\.pl$/) {
+if ($0 =~ /\.pl$/ or $ENV{'TEXINFO_DEV_SOURCE'}) {
   # in case of build from the source directory, out of source build, 
   # this helps to locate the locales.
   my $locales_dir_found = 0;
@@ -154,7 +154,7 @@ if ($0 =~ /\.pl$/) {
 
 Locale::Messages::bindtextdomain ($messages_textdomain, "$datadir/locale");
 
-if ($0 =~ /\.pl$/) {
+if ($0 =~ /\.pl$/ or $ENV{'TEXINFO_DEV_SOURCE'}) {
   unshift @INC, "$libsrcdir/lib/Unicode-EastAsianWidth/lib";
 } elsif ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes'
          and -d "$pkgdatadir/lib/Unicode-EastAsianWidth/lib") {
@@ -167,7 +167,7 @@ if ($0 =~ /\.pl$/) {
 }
 require Unicode::EastAsianWidth;
 
-if ($0 =~ /\.pl$/) {
+if ($0 =~ /\.pl$/ or $ENV{'TEXINFO_DEV_SOURCE'}) {
   unshift @INC, "$libsrcdir/lib/Text-Unidecode/lib";
 } elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes'
           and "$pkgdatadir/lib/Text-Unidecode/lib") {
