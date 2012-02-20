@@ -1,5 +1,8 @@
 2012-02-20  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (texi2html): new node, describing past,
+	present, future of texi2html.
+
 	* doc/texinfo.txi (Obtaining TeX): update a bit, keep
 	www.gnu.org/prep/FTP in sync.
 

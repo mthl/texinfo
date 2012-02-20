@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.423 2012-02-20 16:41:32 karl Exp $
+@c $Id: texinfo.txi,v 1.424 2012-02-20 19:34:38 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -619,6 +619,7 @@ Generic Translator texi2any
                                 from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
 * Configuration Variables::     Configuring @command{texi2any}.
+* texi2html::                   Ancestor of @command{texi2any}.
 
 Configuration Variables
 
@@ -16515,6 +16516,7 @@ The rest of this chapter gives the rest of the details.
 * Invoking texi2any::           How to run @command{texi2any} from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
 * Configuration Variables::     Configuring @command{texi2any}.
+* texi2html::                   Ancestor of @command{texi2any}.
 @end menu
 
 
@@ -17705,16 +17707,99 @@ the bottom of a page.
 @end vtable
 
 
-@c node texi2html
-@c section @command{texi2html}: Ancestor of @command{texi2any}
-@c pindex texi2html
+@node texi2html
+@section @command{texi2html}: Ancestor of @command{texi2any}
+@pindex texi2html
+
+@cindex Cons, Lionel
+The @command{texi2html} program is the parent of today's
+@command{texi2any} program.  It was developed independently,
+originally by Lionel Cons in 1998; at the time, @command{makeinfo}
+could not generate HTML.  Many other people contributed to
+@command{texi2html} over the years.
+
+The present @command{texi2any} supports nearly all the features of
+@command{texi2html}.  However, we did not attempt to maintain strict
+compatibility, so no @command{texi2html} executable is installed by
+the Texinfo package.  The closest equivalent is an invocation like
+this (available as @file{util/texi2html} in the Texinfo source):
+
+@example
+texi2any --set-init-variable TEXI2HTML=1 ...
+@end example
+
+@noindent but, to emphasize, this is @emph{not} a drop-in replacement
+for the previous @command{texi2html}.  Here are the biggest differences:
+
+@itemize @bullet
+@item Most blatantly, the command line options of @command{texi2html}
+are mostly now configuration variables.  A table of approximate
+equivalents is given below.
+
+@item The program-level customization API is very different in
+@command{texi2any}.
+
+@item Indices cannot be split.
+
+@item Translated strings cannot be customized; we hope to introduce
+this feature in @command{texi2any} in the future.
+
+@end itemize
+
+Aside from the last, we do not intend to reimplement these
+differences.  Therefore, the route forward for authors is alter
+manuals and build processes as necessary to use the new features and
+methods of @command{texi2any}.  The @command{texi2html} maintainers
+(one of whom is the principal author of @command{texi2any}) do not
+intend to make further releases.
+
+@cindex Options of @command{texi2html}
+@cindex Command-line options of @command{texi2html}
+Here is the table showing @command{texi2html} options and
+corresponding @command{texi2any} configuration variables
+(@pxref{texi2any Output Customization,, @command{texi2any} Output
+Customization}).
+
+@multitable {@option{--ignore-preamble-text}} {@code{IGNORE_PREAMBLE_TEXT}}
+@item @option{--toc-links}            @tab @code{TOC_LINKS}
+@item @option{--short-ext}            @tab @code{SHORTEXTN}
+@item @option{--prefix}               @tab @code{PREFIX}
+@item @option{--short-ref}            @tab @code{SHORT_REF}
+@item @option{--idx-sum}              @tab @code{IDX_SUMMARY}
+@item @option{--def-table}            @tab @code{DEF_TABLE}
+@item @option{--ignore-preamble-text} @tab @code{IGNORE_PREAMBLE_TEXT}
+@item @option{--html-xref-prefix}     @tab @code{EXTERNAL_DIR}
+@item @option{--l2h}                  @tab @code{L2H}
+@item @option{--l2h-l2h}              @tab @code{L2H_L2H}
+@item @option{--l2h-skip}             @tab @code{L2H_SKIP}
+@item @option{--l2h-tmp}              @tab @code{L2H_TMP}
+@item @option{--l2h-file}             @tab @code{L2H_FILE}
+@item @option{--l2h-clean}            @tab @code{L2H_CLEAN}
+@item @option{--use-nodes}            @tab @code{USE_NODES}
+@item @option{--monolithic}           @tab @code{MONOLITHIC}
+@item @option{--top-file}             @tab @code{TOP_FILE}
+@item @option{--toc-file}             @tab @code{TOC_FILE}
+@item @option{--frames}               @tab @code{FRAMES}
+@item @option{--menu}                 @tab @code{SHOW_MENU}
+@item @option{--debug}                @tab @code{DEBUG}
+@item @option{--doctype}              @tab @code{DOCTYPE}
+@item @option{--frameset-doctype}     @tab @code{FRAMESET_DOCTYPE}
+@item @option{--test}                 @tab @code{TEST}
+@end multitable
+
+@cindex @file{texi2oldapi.texi}, for @command{texi2any}
+Finally, any @command{texi2html} users seeking more detailed
+information can check the draft file @file{doc/texi2oldapi.texi} in
+the Texinfo source repository.  It consists mainly of very rough
+notes, but may still be useful to some.
 
 
 @node Creating and Installing Info Files
 @chapter Creating and Installing Info Files
 
-This chapter describes how to create and install Info files.  @xref{Info
-Files}, for general information about the file format itself.
+This chapter describes how to create and install Info files.
+@xref{Info Files}, for general information about the file format
+itself.
 
 @menu
 * Creating an Info File::
@@ -21673,7 +21758,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.423 2012-02-20 16:41:32 karl Exp $
+$Id: texinfo.txi,v 1.424 2012-02-20 19:34:38 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
