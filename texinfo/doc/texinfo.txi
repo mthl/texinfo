@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.424 2012-02-20 19:34:38 karl Exp $
+@c $Id: texinfo.txi,v 1.425 2012-02-21 17:32:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1009,14 +1009,15 @@ O'Dea, available from @uref{http://ftp.gnu.org/gnu/help2man/}.
 
 @cindex Output formats, supporting more
 @cindex SGML-tools output format
-If you are a programmer and would like to contribute to the GNU project
-by implementing additional output formats for Texinfo, that would be
-excellent.  But please do not write a separate translator texi2foo for
-your favorite format foo!  That is the hard way to do the job, and makes
-extra work in subsequent maintenance, since the Texinfo language is
-continually being enhanced and updated.  Instead, the best approach is
-modify @code{makeinfo} to generate the new format.  @xref{Generic
-Translator texi2any,, @command{texi2any}: The Generic Translator}.
+If you are a programmer and would like to contribute to the GNU
+project by implementing additional output formats for Texinfo, that
+would be excellent.  But please do not write a separate translator
+@samp{texi2foo} for your favorite format foo!  That is the hard way to
+do the job, and makes for an impractical amount of subsequent
+maintenance, since the Texinfo language is continually being enhanced
+and updated.  Instead, the best approach is modify @code{makeinfo} to
+generate the new format.  @xref{Generic Translator texi2any,,
+@command{texi2any}: The Generic Translator}.
 
 
 @node Info Files
@@ -16497,18 +16498,18 @@ anything which may be specified on the command line may also be
 specified within a initialization file.
 
 We call it ``the'' translator for Texinfo instead of just ``a''
-translator, even though of course it's technically possible for other
-implementations to be written.  The reason is that alternative
-implementations are undesirable in practice; it leads to subtle (or
+translator, even though of course it's technically and legally
+possible for other implementations to be written.  The reason is that
+alternative implementations are highly likely to have subtle (or
 not-so-subtle) differences in the language, and thus Texinfo documents
 become dependent on the processor, which is bad for everyone.  Indeed,
 it was the existence of the @command{texi2html} implementation which
-spawned the merging back into the one program we have now.
+spawned the merging back into the one program we have now.  We
+now consider @command{texi2any} as the reference implementation.
 
-We intend and hope that the present program should be rather easier
-than the previous C implementation of @command{makeinfo} to extend to
-different output styles, back-end output formats, and all other
-customizations.
+We intend and hope that the present program should be easier than the
+previous C implementation of @command{makeinfo} to extend to different
+output styles, back-end output formats, and all other customizations.
 
 The rest of this chapter gives the rest of the details.
 
@@ -17712,17 +17713,23 @@ the bottom of a page.
 @pindex texi2html
 
 @cindex Cons, Lionel
-The @command{texi2html} program is the parent of today's
-@command{texi2any} program.  It was developed independently,
-originally by Lionel Cons in 1998; at the time, @command{makeinfo}
-could not generate HTML.  Many other people contributed to
-@command{texi2html} over the years.
+Conceptually, the @command{texi2html} program is the parent of today's
+@command{texi2any} program.  @command{texi2html} was developed
+independently, originally by Lionel Cons in 1998; at the time,
+@command{makeinfo} could not generate HTML.  Many other people
+contributed to @command{texi2html} over the years.
 
-The present @command{texi2any} supports nearly all the features of
-@command{texi2html}.  However, we did not attempt to maintain strict
-compatibility, so no @command{texi2html} executable is installed by
-the Texinfo package.  The closest equivalent is an invocation like
-this (available as @file{util/texi2html} in the Texinfo source):
+The present @command{texi2any} uses little of the actual code of
+@command{texi2html}, and has quite a different general approach to the
+implementation (parsing the Texinfo document into a tree), but still,
+there is a family resemblance.
+
+By design, @command{texi2any} supports nearly all the features of
+@command{texi2html} in some way.  However, we did not attempt to
+maintain strict compatibility, so no @command{texi2html} executable is
+installed by the Texinfo package.  An approximation can be run with an
+invocation like this (available as @file{util/texi2html} in the
+Texinfo source):
 
 @example
 texi2any --set-init-variable TEXI2HTML=1 ...
@@ -21758,7 +21765,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.424 2012-02-20 19:34:38 karl Exp $
+$Id: texinfo.txi,v 1.425 2012-02-21 17:32:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

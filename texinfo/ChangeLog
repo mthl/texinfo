@@ -1,3 +1,7 @@
+2012-02-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: more on alternate implementations.
+
 2012-02-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (texi2html): new node, describing past,
