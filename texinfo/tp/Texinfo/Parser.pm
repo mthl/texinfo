@@ -1772,10 +1772,10 @@ sub _next_text($$$)
               ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
                and $current->{'parent'}->{'cmdname'} eq 'verb')
              )
-            and $line =~ /^\s*#\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*$/) {
+            and $line =~ /^\s*#\s*(line)? (\d+)(( "([^"]+)")(\s+\d+)*)?\s*$/) {
           $input->{'line_nr'} = $2;
-          if (defined($4)) {
-            $input->{'name'} = $4;
+          if (defined($5)) {
+            $input->{'name'} = $5;
           }
           $line = <$fh>;
         } else {

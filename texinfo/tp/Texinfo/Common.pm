@@ -1619,7 +1619,7 @@ sub protect_node_after_label_in_tree($)
 sub _is_cpp_line($)
 {
   my $text = shift;
-  return 1 if ($text =~ /^\s*#\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*$/);
+  return 1 if ($text =~ /^\s*#\s*(line)? (\d+)(( "([^"]+)")(\s+\d+)*)?\s*$/);
   return 0;
 }
 

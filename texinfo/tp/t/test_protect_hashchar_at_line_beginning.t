@@ -35,12 +35,16 @@ sub run_test($$$)
 run_test ('# line 4 "ggggg"
 and
  # line 5 "fff"
+# 46
+# 3 4
 
 # line 4 "bbb"
 # 7 "aaaa"
 ', '@hashchar{} line 4 "ggggg"
 and
  @hashchar{} line 5 "fff"
+@hashchar{} 46
+# 3 4
 
 @hashchar{} line 4 "bbb"
 @hashchar{} 7 "aaaa"
