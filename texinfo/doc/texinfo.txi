@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.425 2012-02-21 17:32:49 karl Exp $
+@c $Id: texinfo.txi,v 1.426 2012-02-23 02:53:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15145,14 +15145,18 @@ cases).  For those who like to know the gory details, the actual
 (Perl) regular expression which is matched is this:
 
 @example
-^(\s*)#(\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*)$
+/^\s*#\s*(line)? (\d+)(( "([^"]+)")(\s+\d+)*)?\s*$/
 @end example
 
-For example, the following is also a valid @samp{#line} directive,
-meaning line 1 of @file{/usr/include/stdio.h}:
+As far as we've been able to tell, the trailing integer flags only
+occur in conjunction with a filename, so that is reflected in the
+regular expression.
+
+As an example, the following is a syntactically valid @samp{#line}
+directive, meaning line 1 of @file{/usr/include/stdio.h}:
 
 @example
-@hashchar{} 1 "/usr/include/stdio.h" 1 3 4
+@hashchar{} 1 "/usr/include/stdio.h" 2 3 4
 @end example
 
 Unfortunately, the quoted filename (@samp{"..."}) has to be optional,
@@ -15161,7 +15165,7 @@ within a single file.  Since the @samp{line} is also optional, the
 result is that lines might match which you wouldn't expect, e.g.,
 
 @example
-@hashchar{} 1 2 3 4
+@hashchar{} 1
 @end example
 
 The possible solutions are described above (@pxref{#line Directive,,
@@ -21765,7 +21769,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.425 2012-02-21 17:32:49 karl Exp $
+$Id: texinfo.txi,v 1.426 2012-02-23 02:53:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
