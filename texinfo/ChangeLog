@@ -1,3 +1,8 @@
+2012-02-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Output Formats): expand the text on writing
+	new back-ends vs. a new programs; idea and basis from Patrice.
+
 2012-02-22  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (#line Syntax Details): update for new regexp,
