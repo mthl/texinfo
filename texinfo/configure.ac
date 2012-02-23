@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.113 2012-02-10 10:29:35 pertusus Exp $
+# $Id: configure.ac,v 1.114 2012-02-23 22:14:42 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -292,7 +292,7 @@ AC_ARG_ENABLE([tp-tests],
     [
      if test "z$PROVE" = 'z'; then
        tp_tests='no'
-     elif $PERL -e "use 5.006; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Clone qw(clone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
+     elif $PERL -e "use 5.006; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
      then
        tp_tests='yes'
      else  

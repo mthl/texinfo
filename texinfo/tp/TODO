@@ -68,7 +68,7 @@ Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf8, with and without
 enable encoding and entities.
 
 in html test footnotestyle separate.  There are such tests in tp/tests,
-mayeb they are sufficient, but they are only done for long checks.
+maybe they are sufficient, but they are only done for long checks.
 
 
 Future features
@@ -83,9 +83,6 @@ or value expansion.  Maybe call the key for these elements
 In a similar way, keep the information about aliases in the tree?
 And about @setfilename in included files which is for now completly
 removed (consistently with documentation).
-
-New command to modify/transform a texinfo manual, for now to fix
-a tree by adding empty unnumbered commands.
 
 Right now VERBOSE is almost not used.
 

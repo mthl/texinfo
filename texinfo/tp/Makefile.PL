@@ -21,7 +21,7 @@ WriteMakefile(
     BUILD_REQUIRES    => {"Data::Compare" => 0,
                           "Test::Deep" => 0,
                           "Test::More" => "0.88",
-                          "Clone" => 0,
+                          "Storable" => 0,
                          },
     PMLIBDIRS         => [ 'Texinfo', 'LocaleData', 'DebugTexinfo' ],
     EXE_FILES         => [ 'texi2any' ],

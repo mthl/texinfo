@@ -22,7 +22,7 @@ use File::Compare; # standard since 5.004
 use Data::Dumper;
 use Data::Compare;
 use Test::Deep;
-use Clone qw(clone);
+use Storable qw(dclone); # standard in 5.007003
 #use Data::Diff;
 #use Data::Transformer;
 #use Struct::Compare;
@@ -278,7 +278,7 @@ sub remove_keys($$;$)
   return undef if (!defined($root));
   if (!defined($been_there)) {
     #print STDERR "First call: $root\n";
-    $root = clone ($root);
+    $root = dclone ($root);
     #print STDERR Data::Dumper->Dump([$root]);
     $been_there = {};
   }

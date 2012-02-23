@@ -1,3 +1,9 @@
+2012-02-23  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac, tp/t/test_utils.pl, tp/README: use Storable::dclone 
+	instead of Clone::clone since it is in core perl since 5.007003.
+	Also it seemed more faster when I checked.
+
 2012-02-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Output Formats): expand the text on writing
