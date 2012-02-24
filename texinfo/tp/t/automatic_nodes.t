@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 7 };
+BEGIN { plan tests => 10 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -42,3 +42,6 @@ test_new_node ('a node', 'a-node', '@node a node
 test_new_node ('a node @code{in code} @c comment
 ', 'a-node-in-code-', '@node a node @code{in code} @c comment
 ', 'complex');
+test_new_node ('a ,, node @code{a,b,}', 'a-_002c_002c-node-a_002cb_002c',
+'@node a @comma{}@comma{} node @code{a@comma{}b@comma{}}
+', 'with comma');
