@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 10 };
+BEGIN { plan tests => 12 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -45,3 +45,81 @@ test_new_node ('a node @code{in code} @c comment
 test_new_node ('a ,, node @code{a,b,}', 'a-_002c_002c-node-a_002cb_002c',
 '@node a @comma{}@comma{} node @code{a@comma{}b@comma{}}
 ', 'with comma');
+
+my $parser = Texinfo::Parser::parser();
+my $tree = $parser->parse_texi_text('@node a node
+');
+my $line_tree = Texinfo::Parser::parse_texi_line (undef, 'a node');
+my $node = Texinfo::Structuring::_new_node($parser, $line_tree);
+is ('@node a node 1
+',  Texinfo::Convert::Texinfo::convert($node), 'duplicate node added');
+#print STDERR Texinfo::Convert::Texinfo::convert($node);
+
+
+my $sections_text = 
+'@top top section
+
+@part part
+
+@chapter chap, @code{a chap}
+
+@node a node
+@section section
+
+@section truc
+@subsection sub1
+
+Text.
+
+@subsection sub2 @c comment
+
+@section section
+
+@section section
+
+@unnumbered
+
+@bye';
+
+my $reference = 
+'@node Top
+@top top section
+
+@part part
+
+@node chap@comma{} @code{a chap}
+@chapter chap, @code{a chap}
+
+@node a node
+@section section
+
+@node truc
+@section truc
+@node sub1
+@subsection sub1
+
+Text.
+
+@node sub2
+@subsection sub2 @c comment
+
+@node section
+@section section
+
+@node section 1
+@section section
+
+@unnumbered
+
+@bye
+';
+
+  my $parser = Texinfo::Parser::parser();
+  my $tree = $parser->parse_texi_text ($sections_text);
+  my $new_content 
+   = Texinfo::Structuring::_insert_nodes_for_sectioning_commands($parser, $tree);
+  $tree->{'contents'} = $new_content;
+  my $result = Texinfo::Convert::Texinfo::convert($tree);
+  is ($reference, $result, 'add nodes');
+  #print STDERR "$result";
+  

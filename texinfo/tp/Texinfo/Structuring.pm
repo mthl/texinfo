@@ -29,6 +29,8 @@ use Texinfo::Convert::Text;
 # for error messages 
 use Texinfo::Convert::Texinfo;
 
+use Storable qw(dclone);
+
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
@@ -1286,14 +1288,50 @@ sub _new_node($$)
     $parsed_node = Texinfo::Parser::_parse_node_manual($node_arg);
     return undef if (!defined($parsed_node) or !$parsed_node->{'node_content'}
                      or $parsed_node->{'normalized'} !~ /[^-]/);
-    push @{$node->{'extra'}->{'nodes_manuals'}}, $parsed_node;
+    $appended_number++;
   }
 
+  push @{$node->{'extra'}->{'nodes_manuals'}}, $parsed_node;
   Texinfo::Parser::_register_label($self, $node, $parsed_node, undef);
   push @{$self->{'nodes'}}, $node;
   return $node;
 }
 
+sub _insert_nodes_for_sectioning_commands($$)
+{
+  my $self = shift;
+  my $root = shift;
+  if (!$root->{'type'} or $root->{'type'} ne 'document_root'
+      or !$root->{'contents'}) {
+    return undef;
+  }
+  my @contents;
+  foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
+        and $content->{'cmdname'} ne 'bye'
+        and $content->{'cmdname'} ne 'part'
+        and not ($content->{'extra'} 
+                 and $content->{'extra'}->{'associated_node'})) {
+      my $new_node_tree;
+      if ($content->{'cmdname'} eq 'top') {
+        $new_node_tree = {'contents' => [{'text' => 'Top'}]};
+      } else {
+        $new_node_tree = dclone({'contents' 
+          => $content->{'extra'}->{'misc_content'}});
+      }
+      my $new_node = _new_node ($self, $new_node_tree);
+      if (defined($new_node)) {
+        push @contents, $new_node;
+        $new_node->{'extra'}->{'associated_section'} = $content;
+        $content->{'extra'}->{'associated_node'} = $new_node;
+        $new_node->{'parent'} = $content->{'parent'};
+        # FIXME set $index_entry->{'node'}
+      }
+    }
+    push @contents, $content;
+  }
+  return \@contents;
+}
 
 sub _sort_string($$)
 {
