@@ -2728,8 +2728,6 @@ sub _end_line($$$)
       push @{$self->{'floats'}->{$type}}, $float;
       $float->{'float_section'} = $self->{'current_section'} 
         if (defined($self->{'current_section'}));
-      #$float->{'float_node'} = $self->{'current_node'} 
-      #  if (defined($self->{'current_node'}));
     }
     $current = $current->{'parent'};
     delete $current->{'remaining_args'};

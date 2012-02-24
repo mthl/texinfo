@@ -1241,6 +1241,58 @@ sub number_floats($)
   }
 }
 
+# prepare a new node and register it
+# FIXME protect comma and punctuation?
+sub _new_node($$)
+{
+  my $self = shift;
+  my $node_tree = shift;
+
+  return undef if (!$node_tree->{'contents'} 
+                   or !scalar(@{$node_tree->{'contents'}}));
+
+  unless (($node_tree->{'contents'}->[-1]->{'cmdname'}
+       and ($node_tree->{'contents'}->[-1]->{'cmdname'} eq 'c'
+            or $node_tree->{'contents'}->[-1]->{'cmdname'} eq 'comment'))
+      or (defined($node_tree->{'contents'}->[-1]->{'text'})
+          and $node_tree->{'contents'}->[-1]->{'text'} =~ /\n/)) {
+    push @{$node_tree->{'contents'}}, 
+           {'type' => 'spaces_at_end', 'text' => "\n"};
+  }
+
+  my $appended_number = 0;
+  my ($node, $parsed_node);
+
+  while (!defined($node) 
+         or ($self->{'labels'} 
+            and $self->{'labels'}->{$parsed_node->{'normalized'}})) {
+    $node = {'cmdname' => 'node', 'args' => [{}]};
+    my $node_arg = $node->{'args'}->[0];
+    $node_arg->{'parent'} = $node;
+    @{$node_arg->{'contents'}} = (
+       {'extra' => {'command' => $node},
+        'text' => ' ',
+        'type' => 'empty_spaces_after_command'},
+        @{$node_tree->{'contents'}});
+    if ($appended_number) {
+      splice (@{$node_arg->{'contents'}}, -1, 0,
+                  {'text' => " $appended_number"});
+    }
+    foreach my $content (@{$node_arg->{'contents'}}) {
+      $content->{'parent'} = $node_arg;
+    }
+    $parsed_node = Texinfo::Parser::_parse_node_manual($node_arg);
+    return undef if (!defined($parsed_node) or !$parsed_node->{'node_content'}
+                     or $parsed_node->{'normalized'} !~ /[^-]/);
+    push @{$node->{'extra'}->{'nodes_manuals'}}, $parsed_node;
+  }
+
+  Texinfo::Parser::_register_label($self, $node, $parsed_node, undef);
+  push @{$self->{'nodes'}}, $node;
+  return $node;
+}
+
+
 sub _sort_string($$)
 {
   my $a = shift;

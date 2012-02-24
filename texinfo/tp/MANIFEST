@@ -52,6 +52,7 @@ t/60macro.t
 t/70value_and_macro.t
 t/80include.t
 t/accents.t
+t/automatic_nodes.t
 t/converters_tests.t
 t/docbook_tests.t
 texi2any
@@ -144,6 +145,7 @@ t/nodenormalization.t
 TODO
 t/paragraph.t
 t/plaintext_tests.t
+t/protect_character_in_texinfo.t
 t/README
 t/results/alias/alias_table_command.pl
 t/results/alias/bad_line.pl
