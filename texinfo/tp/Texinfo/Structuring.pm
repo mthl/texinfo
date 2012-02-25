@@ -44,8 +44,10 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   associate_internal_references
+  complete_tree_nodes_menus
   elements_directions
   elements_file_directions
+  insert_nodes_for_sectioning_commands
   merge_indices
   nodes_tree
   number_floats
@@ -1340,7 +1342,7 @@ sub _reassociate_to_node($$$$)
   return ($current);
 }
 
-sub _insert_nodes_for_sectioning_commands($$)
+sub insert_nodes_for_sectioning_commands($$)
 {
   my $self = shift;
   my $root = shift;
@@ -1379,6 +1381,165 @@ sub _insert_nodes_for_sectioning_commands($$)
     push @contents, $content;
   }
   return \@contents;
+}
+
+sub _new_node_menu_entry($$)
+{
+  my $self = shift;
+  my $node_contents = shift;
+
+  my $entry = {'type' => 'menu_entry'};
+
+  my $menu_entry_node = {'type' => 'menu_entry_node'};
+  $menu_entry_node->{'contents'}
+    = dclone ($node_contents);
+  foreach my $content (@{$menu_entry_node->{'contents'}}) {
+    $content->{'parent'} = $menu_entry_node;
+  }
+  Texinfo::Common::protect_colon_in_tree($menu_entry_node);
+
+  my $description = {'type' => 'menu_entry_description'};
+  $description->{'contents'}->[0] = {'type' => 'preformatted',
+                                     'parent' => $description};
+  $description->{'contents'}->[0]->{'contents'}->[0] = {'text' =>"\n",
+         'parent' => $description->{'contents'}->[0]};
+  $entry->{'args'} 
+   = [{'text' => '* ', 'type' => 'menu_entry_leading_text'},
+     $menu_entry_node, 
+     {'text' => '::', 'type' => 'menu_entry_separator'},
+     $description];
+  foreach my $arg(@{$entry->{'args'}}) {
+    $arg->{'parent'} = $entry;
+  }
+  $self->Texinfo::Parser::_register_extra_menu_entry_information($entry);
+  return $entry;
+}
+
+sub _new_menu($$)
+{
+  my $menu_entries = shift;
+  my $parent = shift;
+
+  my $end = {'cmdname' => 'end', 'extra' => 
+                 {'command_argument' => 'menu',
+                  'text_arg' => 'menu'}};
+  push @{$end->{'args'}},
+    {'type' => 'misc_line_arg', 'parent' => $end};
+  push @{$end->{'args'}->[0]->{'contents'}},
+          ({'type' => 'empty_spaces_after_command',
+           'text' => ' ',
+           'extra' => {'command' => $end},
+           'parent' => $end->{'args'}->[0]},
+          {'text' => 'menu', 'parent' => $end->{'args'}->[0]},
+          {'type' => 'spaces_at_end', 'text' => "\n", 
+           'parent' => $end->{'args'}->[0]});
+  my $new_menu = {'cmdname' => 'menu', 'parent' => $parent,
+                  'extra'=>{'end_command' => $end}};
+  $end->{'extra'}->{'command'} = $new_menu;
+  $new_menu->{'contents'} = [{'extra' => 
+                                     {'command' => $new_menu},
+                              'type' => 'empty_line_after_command',
+                              'text' => "\n"},
+                              @$menu_entries, $end];
+  foreach my $content (@{$new_menu->{'contents'}}) {
+    $content->{'parent'} = $new_menu;
+  }
+  return $new_menu;
+}
+
+sub complete_node_menu($$)
+{
+  my $self = shift;
+  my $node = shift;
+
+  my @node_childs;
+  foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'section_childs'}}) {
+    if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
+      push @node_childs, $child->{'extra'}->{'associated_node'};
+    }
+  }
+  if (scalar(@node_childs)) {
+    my %existing_entries;
+    if ($node->{'menus'} and @{$node->{'menus'}}) {
+      foreach my $menu (@{$node->{'menus'}}) {
+        foreach my $entry (@{$menu->{'contents'}}) {
+          if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
+            my $entry_node = $entry->{'extra'}->{'menu_entry_node'};
+            if (! $entry_node->{'manual_content'}
+                and defined($entry_node->{'normalized'})) {
+              $existing_entries{$entry_node->{'normalized'}} 
+                = [$menu, $entry];
+            }
+          }
+        }
+      }
+    }
+    #print STDERR join('|', keys(%existing_entries))."\n";
+    my @pending;
+    my $current_menu;
+    foreach my $node_entry (@node_childs) {
+      if ($existing_entries{$node_entry->{'extra'}->{'normalized'}}) {
+        my $entry;
+        ($current_menu, $entry) 
+         = @{$existing_entries{$node_entry->{'extra'}->{'normalized'}}};
+        if (@pending) {
+          my $index;
+          for ($index = 0; $index < scalar(@{$current_menu->{'contents'}}); $index++) {
+            #print STDERR "$index, ".scalar(@{$current_menu->{'contents'}})."\n";
+            last if ($current_menu->{'contents'}->[$index] eq $entry);
+          }
+          splice (@{$current_menu->{'contents'}}, $index, 0, @pending);
+          foreach my $entry (@pending) {
+            $entry->{'parent'} = $current_menu;
+          }
+          @pending = ();
+        }
+      } else {
+        my $entry = _new_node_menu_entry($self, 
+                              $node_entry->{'extra'}->{'node_content'});
+        push @pending, $entry;
+      }
+    }
+    if (scalar(@pending)) {
+      if (!$current_menu) {
+        my $section = $node->{'extra'}->{'associated_section'};
+        $current_menu = _new_menu (\@pending, $section);
+        push @{$section->{'contents'}}, $current_menu;
+      } else {
+        foreach my $entry (@pending) {
+          $entry->{'parent'} = $current_menu;
+        }
+        my $end;
+        if ($current_menu->{'contents'}->[-1]->{'cmdname'}
+            and $current_menu->{'contents'}->[-1]->{'cmdname'} eq 'end') {
+          $end = pop @{$current_menu->{'contents'}};
+        }
+        push @{$current_menu->{'contents'}}, @pending;
+        push @{$current_menu->{'contents'}}, $end if ($end);
+      }
+    }
+  }
+}
+
+# This should be called after sectioning_structure
+sub complete_tree_nodes_menus($$)
+{
+  my $self = shift;
+  my $root = shift;
+  if (!$root->{'type'} or $root->{'type'} ne 'document_root'
+      or !$root->{'contents'}) {
+    return undef;
+  }
+  foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node'
+        and (scalar(@{$content->{'extra'}->{'nodes_manuals'}}) == 1)
+        and $content->{'extra'} 
+        and $content->{'extra'}->{'associated_section'}
+        and $content->{'extra'}->{'associated_section'}->{'section_childs'}
+        and @{$content->{'extra'}->{'associated_section'}->{'section_childs'}}) {
+      complete_node_menu($self, $content);
+    }
+  }
 }
 
 sub _sort_string($$)

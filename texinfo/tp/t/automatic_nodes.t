@@ -117,7 +117,7 @@ Text.
   $parser = Texinfo::Parser::parser();
   $tree = $parser->parse_texi_text ($sections_text);
   my $new_content 
-   = Texinfo::Structuring::_insert_nodes_for_sectioning_commands($parser, $tree);
+   = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
   $tree->{'contents'} = $new_content;
   my $result = Texinfo::Convert::Texinfo::convert($tree);
   is ($reference, $result, 'add nodes');
@@ -136,7 +136,7 @@ $tree = $parser->parse_texi_text ('@node Top
 @end menu
 ');
 $new_content
-   = Texinfo::Structuring::_insert_nodes_for_sectioning_commands($parser, $tree);
+   = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
 $tree->{'contents'} = $new_content;
 my ($index_names, $merged_indices, $index_entries) = $parser->indices_information();
 my $labels = $parser->labels_information();

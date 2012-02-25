@@ -3286,15 +3286,12 @@ sub _check_node_label($$$$)
   return _check_empty_node($self, $parsed_node, $command, $line_nr);
 }
 
-sub _enter_menu_entry_node($$$)
+sub _register_extra_menu_entry_information($$;$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
-  my $description = { 'type' => 'menu_entry_description',
-                      'contents' => [],
-                      'parent' => $current };
-  push @{$current->{'args'}}, $description;
+
   foreach my $arg (@{$current->{'args'}}) {
     if ($arg->{'type'} eq 'menu_entry_name') {
       $current->{'extra'}->{'menu_entry_name'} = $arg;
@@ -3310,6 +3307,18 @@ sub _enter_menu_entry_node($$$)
       $current->{'extra'}->{'menu_entry_description'} = $arg;
     }
   } 
+}
+
+sub _enter_menu_entry_node($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  my $description = { 'type' => 'menu_entry_description',
+                      'contents' => [],
+                      'parent' => $current };
+  push @{$current->{'args'}}, $description;
+  _register_extra_menu_entry_information($self, $current, $line_nr);
   $current->{'line_nr'} = $line_nr;
   $current = $description;
   push @{$current->{'contents'}}, {'type' => 'preformatted',
