@@ -1823,7 +1823,10 @@ C<merge_indices> may be used to merge indices, which may be sorted
 with C<sort_indices> or C<sort_indices_by_letter> to sort by letters.
 
 Other miscellaneous methods include C<set_menus_to_simple_menu> and
-C<menu_to_simple_menu> to change the menu texinfo tree. 
+C<menu_to_simple_menu> to change the menu texinfo tree, as well
+as C<insert_nodes_for_sectioning_commands> that adds nodes for 
+sectioning commands without nodes and C<complete_tree_nodes_menus>
+that completes the node menus based on the sectioning tree.
 
 
 
@@ -2112,6 +2115,16 @@ menus of the document.
 A simple menu has no I<menu_comment>, I<menu_entry> or I<menu_entry_description>
 container anymore, their content are merged directly in the menu in 
 I<preformatted> container.
+
+=item insert_nodes_for_sectioning_commands ($parser, $tree)
+
+Insert nodes for sectioning commands without node in C<$tree>.
+
+=item complete_tree_nodes_menus ($parser, $tree)
+
+Add menu entries or whole menus for nodes associated with sections,
+based on the sectioning tree.  This function should therefore be
+called after L<sectioning_structure>.
 
 =back
 
