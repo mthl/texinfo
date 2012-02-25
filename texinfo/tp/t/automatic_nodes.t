@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 12 };
+BEGIN { plan tests => 15 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -114,12 +114,43 @@ Text.
 @bye
 ';
 
-  my $parser = Texinfo::Parser::parser();
-  my $tree = $parser->parse_texi_text ($sections_text);
+  $parser = Texinfo::Parser::parser();
+  $tree = $parser->parse_texi_text ($sections_text);
   my $new_content 
    = Texinfo::Structuring::_insert_nodes_for_sectioning_commands($parser, $tree);
   $tree->{'contents'} = $new_content;
   my $result = Texinfo::Convert::Texinfo::convert($tree);
   is ($reference, $result, 'add nodes');
   #print STDERR "$result";
-  
+
+$parser = Texinfo::Parser::parser();
+$tree = $parser->parse_texi_text ('@node Top
+@top top
+
+@chapter chap
+
+@cindex index entry
+
+@menu
+* (some_manual)::
+@end menu
+');
+$new_content
+   = Texinfo::Structuring::_insert_nodes_for_sectioning_commands($parser, $tree);
+$tree->{'contents'} = $new_content;
+my ($index_names, $merged_indices, $index_entries) = $parser->indices_information();
+my $labels = $parser->labels_information();
+ok (($labels->{'chap'}->{'menus'} and @{$labels->{'chap'}->{'menus'}}
+     and scalar(@{$labels->{'chap'}->{'menus'}}) == 1
+     and !exists($labels->{'Top'}->{'menus'})), 'new node has a menu');
+is (Texinfo::Convert::Texinfo::convert($labels->{'chap'}->{'menus'}->[0]),
+'@menu
+* (some_manual)::
+@end menu
+', 'reassociated menu is correct');
+#print STDERR join('|', keys(%$index_entries))."\n";
+is ($labels->{'chap'}, $index_entries->{'cp'}->[0]->{'node'}, 
+  'index entry reassociated');
+#print STDERR Texinfo::Convert::Texinfo::convert($tree);
+
+

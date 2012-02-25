@@ -1475,19 +1475,20 @@ sub copy_tree($$)
   return $new;
 }
 
-sub modify_tree($$$);
-sub modify_tree($$$)
+sub modify_tree($$$;$);
+sub modify_tree($$$;$)
 {
   my $self = shift;
   my $tree = shift;
   my $operation = shift;
+  my $argument = shift;
   #print STDERR "modify_tree tree: $tree\n";
 
   if ($tree->{'args'}) {
     my @args = @{$tree->{'args'}};
     for (my $i = 0; $i <= $#args; $i++) {
-      modify_tree($self, $args[$i], $operation);
-      my @new_args = &$operation($self, 'arg', $args[$i]);
+      modify_tree($self, $args[$i], $operation, $argument);
+      my @new_args = &$operation($self, 'arg', $args[$i], $argument);
       # this puts the new args at the place of the old arg using the 
       # offset from the end of the array
       splice (@{$tree->{'args'}}, $i - $#args -1, 1, @new_args);
@@ -1499,8 +1500,8 @@ sub modify_tree($$$)
   if ($tree->{'contents'}) {
     my @contents = @{$tree->{'contents'}};
     for (my $i = 0; $i <= $#contents; $i++) {
-      modify_tree($self, $contents[$i], $operation);
-      my @new_contents = &$operation($self, 'content', $contents[$i]);
+      modify_tree($self, $contents[$i], $operation, $argument);
+      my @new_contents = &$operation($self, 'content', $contents[$i], $argument);
       # this puts the new contents at the place of the old content using the 
       # offset from the end of the array
       splice (@{$tree->{'contents'}}, $i - $#contents -1, 1, @new_contents);
@@ -1543,7 +1544,6 @@ sub _new_asis_command_with_text($$;$)
   }
   return $new_command;
 }
-
 
 sub _protect_text($$)
 {

@@ -1297,6 +1297,49 @@ sub _new_node($$)
   return $node;
 }
 
+# reassociate a tree element to the new node, from previous node
+sub _reassociate_to_node($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $current = shift;
+  my $nodes = shift;
+  my $new_node = $nodes->[0];
+  my $previous_node = $nodes->[1];
+
+  if ($current->{'cmdname'} and $current->{'cmdname'} eq 'menu') {
+    if ($previous_node) {
+      if (!$previous_node->{'menus'} or !@{$previous_node->{'menus'}}
+           or !grep {$current eq $_} @{$previous_node->{'menus'}}) {
+        print STDERR "Bug: menu $current not in previous node $previous_node\n";
+      } else {
+        @{$previous_node->{'menus'}} = grep {$_ ne $current} @{$previous_node->{'menus'}};
+        delete $previous_node->{'menus'} if !(@{$previous_node->{'menus'}});
+      }
+    } else {
+      my $info = $self->global_informations();
+      if (!$info or !$info->{'unassociated_menus'} 
+          or !@{$info->{'unassociated_menus'}}
+          or !grep {$current eq $_} @{$info->{'unassociated_menus'}}) {
+        print STDERR "Bug: menu $current not in unassociated menus\n";
+      } else {
+        @{$info->{'unassociated_menus'}} 
+          = grep {$_ ne $current} @{$info->{'unassociated_menus'}};
+        delete $info->{'unassociated_menus'} if !(@{$info->{'unassociated_menus'}});
+      }
+    }
+    push @{$new_node->{'menus'}}, $current;
+  } elsif ($current->{'extra'} and $current->{'extra'}->{'index_entry'}) {
+    if ($previous_node 
+        and (!$current->{'extra'}->{'index_entry'}->{'node'}
+             or $current->{'extra'}->{'index_entry'}->{'node'} ne $previous_node)) {
+      print STDERR "Bug: index entry $current not in previous node $previous_node\n";
+    }
+    $current->{'extra'}->{'index_entry'}->{'node'} = $new_node;
+  }
+  return ($current);
+}
+
 sub _insert_nodes_for_sectioning_commands($$)
 {
   my $self = shift;
@@ -1306,6 +1349,7 @@ sub _insert_nodes_for_sectioning_commands($$)
     return undef;
   }
   my @contents;
+  my $previous_node;
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
         and $content->{'cmdname'} ne 'bye'
@@ -1325,9 +1369,13 @@ sub _insert_nodes_for_sectioning_commands($$)
         $new_node->{'extra'}->{'associated_section'} = $content;
         $content->{'extra'}->{'associated_node'} = $new_node;
         $new_node->{'parent'} = $content->{'parent'};
-        # FIXME set $index_entry->{'node'}
+        # reassociate index entries and menus
+        Texinfo::Common::modify_tree($self, $content, \&_reassociate_to_node,
+                                     [$new_node, $previous_node]);
       }
     }
+    $previous_node = $content 
+      if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node');
     push @contents, $content;
   }
   return \@contents;
