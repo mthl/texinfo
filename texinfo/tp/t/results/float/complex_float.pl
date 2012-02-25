@@ -5583,10 +5583,9 @@ A footnote 2.
 <p>footnote Text with features caption 2</p>
 </div>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

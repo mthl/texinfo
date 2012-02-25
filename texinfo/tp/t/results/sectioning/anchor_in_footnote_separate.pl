@@ -857,10 +857,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 
 <p><a href="#Anchor-in-footnote">Anchor in footnote</a>.
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

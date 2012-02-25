@@ -4395,10 +4395,9 @@ In text [ alt <b>&icirc;--le..</b>  a
 </dl>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

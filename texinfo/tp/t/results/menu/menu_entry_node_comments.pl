@@ -533,10 +533,9 @@ ul.no-bullet {list-style: none}
 <tr><td align="left" valign="top">&bull; <a href="f.html#a3c" accesskey="3">(f)a3c</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d</td></tr>
 <tr><td align="left" valign="top">&bull; <a href="f.html#a4" accesskey="4">(f)a4 </a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
 </table>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

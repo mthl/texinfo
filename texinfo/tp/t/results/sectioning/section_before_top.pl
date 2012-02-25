@@ -660,10 +660,9 @@ Next: <a href="#section-node" accesskey="n" rel="next">section node</a>, Up: <a 
 </td></tr>
 </table>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

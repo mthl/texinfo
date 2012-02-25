@@ -217,10 +217,9 @@ ul.no-bullet {list-style: none}
 <p><tt> &lt;i&gt; </tt>.
 </p>
 <pre class="verbatim">&lt;bidule truc=&quot;ff &amp;amp;&quot;&gt; &amp; &lt;/bidule&gt;
-</pre><p>
+</pre>
 
 
-</p>
 </body>
 </html>
 ';

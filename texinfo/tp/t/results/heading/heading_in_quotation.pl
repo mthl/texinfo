@@ -257,10 +257,9 @@ ul.no-bullet {list-style: none}
 <h3 class="heading">in quotation @ <em>heading</em></h3>
 
 </blockquote>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

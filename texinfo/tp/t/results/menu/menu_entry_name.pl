@@ -1179,10 +1179,9 @@ ul.no-bullet {list-style: none}
 <tr><td align="left" valign="top">&bull; <a href="f.html#b3_002ec">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d
 </td></tr>
 </table>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

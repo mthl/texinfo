@@ -1433,10 +1433,9 @@ Previous: <a href="#section" accesskey="p" rel="previous">section</a>, Up: <a hr
 <a name="subsection-1"></a>
 <h4 class="subsection">1.1.1 subsection</h4>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

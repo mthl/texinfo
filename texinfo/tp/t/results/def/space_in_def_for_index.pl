@@ -687,10 +687,9 @@ ul.no-bullet {list-style: none}
  &nbsp; 
 </td></tr></table>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

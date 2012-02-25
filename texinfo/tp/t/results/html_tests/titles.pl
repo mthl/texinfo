@@ -522,10 +522,9 @@ ul.no-bullet {list-style: none}
 </p>
 <p>Second paragraph.
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

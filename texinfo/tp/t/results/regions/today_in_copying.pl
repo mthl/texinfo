@@ -400,10 +400,9 @@ ul.no-bullet {list-style: none}
 <p>a sunny day.
 </p>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

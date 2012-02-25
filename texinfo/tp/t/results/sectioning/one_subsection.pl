@@ -144,10 +144,9 @@ ul.no-bullet {list-style: none}
 <a name="The-subsection"></a>
 <h4 class="subsection">1 The subsection</h4>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

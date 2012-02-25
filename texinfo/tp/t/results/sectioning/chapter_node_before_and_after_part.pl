@@ -780,10 +780,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 </div>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

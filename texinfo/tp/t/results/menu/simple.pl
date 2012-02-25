@@ -717,10 +717,9 @@ new comment
 </table>
 
 <p>After menu.
-</p><p>
-
-
 </p>
+
+
 </body>
 </html>
 ';

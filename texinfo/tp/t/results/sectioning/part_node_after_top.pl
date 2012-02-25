@@ -741,10 +741,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <h1 class="part">part</h1>
 <hr>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

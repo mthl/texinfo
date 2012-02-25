@@ -550,10 +550,9 @@ ul.no-bullet {list-style: none}
 <p>in footnote</p>
 </div>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

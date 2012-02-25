@@ -1032,10 +1032,9 @@ Previous: <a href="#second-node" accesskey="p" rel="previous">second node</a>, U
 <a name="subsection"></a>
 <h4 class="subsection">1 subsection</h4>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

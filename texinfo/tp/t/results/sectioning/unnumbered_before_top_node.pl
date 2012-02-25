@@ -356,10 +356,9 @@ ul.no-bullet {list-style: none}
 </p>
 <h1 class="titlefont">Title titlefont</h1>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

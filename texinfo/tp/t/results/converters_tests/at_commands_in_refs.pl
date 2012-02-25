@@ -22153,10 +22153,9 @@ Previous: <a href="#indicateurl" accesskey="p" rel="previous">&lt;<code>indicate
 <a href="#http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls"><a href="http://somewhere_aaa">http://somewhere_aaa</a> <a href="url">text</a> <a href="/man.cgi/1/ls">ls</a></a>
 </p>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

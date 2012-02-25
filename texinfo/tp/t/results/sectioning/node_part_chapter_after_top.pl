@@ -854,10 +854,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <a name="chapter"></a>
 <h2 class="chapter">1 chapter</h2>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

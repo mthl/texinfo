@@ -356,10 +356,9 @@ ul.no-bullet {list-style: none}
 <h1 class="part">part</h1>
 <hr>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

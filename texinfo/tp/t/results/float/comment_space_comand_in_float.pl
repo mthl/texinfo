@@ -492,10 +492,9 @@ ul.no-bullet {list-style: none}
 <dt><a href="#label--">Text &nbsp; 1</a></dt><dd></dd>
 </dl>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

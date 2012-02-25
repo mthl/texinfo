@@ -961,10 +961,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <h2 class="chapter">1 chapter after 2 parts</h2>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

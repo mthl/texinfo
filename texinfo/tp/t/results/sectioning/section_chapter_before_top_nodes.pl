@@ -1055,10 +1055,9 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a 
 </table>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

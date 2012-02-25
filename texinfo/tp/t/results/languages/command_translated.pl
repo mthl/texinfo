@@ -371,10 +371,9 @@ ul.no-bullet {list-style: none}
 
 <p>erreur&rarr;
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

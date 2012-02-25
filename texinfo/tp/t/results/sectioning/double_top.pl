@@ -401,10 +401,9 @@ Next: <a href="#Top" accesskey="n" rel="next">ToP</a> &nbsp; </p>
 
 <p>.
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

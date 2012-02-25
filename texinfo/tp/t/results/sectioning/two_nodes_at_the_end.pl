@@ -1176,10 +1176,9 @@ Previous: <a href="#node-after-chapter-1" accesskey="p" rel="previous">node afte
 </div>
 <h4 class="node-heading">node after chapter 2</h4>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

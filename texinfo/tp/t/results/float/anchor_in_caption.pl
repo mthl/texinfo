@@ -537,10 +537,9 @@ ul.no-bullet {list-style: none}
 <p>In float.
 </p>
 </div><p><strong>fl 1: </strong>in caption<a name="in-anchor"></a></p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

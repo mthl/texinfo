@@ -538,10 +538,9 @@ ul.no-bullet {list-style: none}
 <p>in footnote error&rarr;</p>
 </div>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

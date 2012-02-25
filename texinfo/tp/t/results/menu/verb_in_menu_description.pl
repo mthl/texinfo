@@ -518,10 +518,9 @@ ul.no-bullet {list-style: none}
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 </pre></th></tr></table>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

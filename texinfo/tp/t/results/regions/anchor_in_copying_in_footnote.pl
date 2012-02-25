@@ -574,10 +574,9 @@ ul.no-bullet {list-style: none}
 <a name="Copying-footnote"></a></p>
 </div>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

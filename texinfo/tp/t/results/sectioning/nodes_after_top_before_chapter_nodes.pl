@@ -1030,10 +1030,9 @@ Previous: <a href="#second-node" accesskey="p" rel="previous">second node</a>, U
 <a name="chapter"></a>
 <h2 class="chapter">1 chapter</h2>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

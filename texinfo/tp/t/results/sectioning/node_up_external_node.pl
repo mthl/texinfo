@@ -697,10 +697,9 @@ Next: <a href="manual1.html#Top" accesskey="n" rel="next">(manual1)</a>, Previou
 </div>
 <h4 class="node-heading">first</h4>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

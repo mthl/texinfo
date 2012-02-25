@@ -508,10 +508,9 @@ ul.no-bullet {list-style: none}
 <tr><td align="left" valign="top">&bull; <a href="f.html#g_t_0040a" accesskey="4">(f)@a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

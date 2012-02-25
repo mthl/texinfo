@@ -9576,10 +9576,9 @@ Previous: <a href="#unnumbered-sub2-4" accesskey="p" rel="previous">unnumbered s
 <a name="numbered-subsection2-4"></a>
 <h4 class="subsection">numbered subsection2 4</h4>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

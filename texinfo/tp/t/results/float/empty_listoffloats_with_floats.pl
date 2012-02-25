@@ -837,10 +837,9 @@ ul.no-bullet {list-style: none}
 <dt><a href="#label1">1</a></dt><dd></dd>
 <dt><a href="#label2">2</a></dt><dd><p>caption with label</p></dd>
 </dl>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

@@ -552,10 +552,9 @@ ul.no-bullet {list-style: none}
 <h4 class="subheading">second in copying @ <em>subheading</em></h4>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

@@ -990,10 +990,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <p>D<a name="DOCF4" href="#FOOT4">(4)</a>
 </p>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

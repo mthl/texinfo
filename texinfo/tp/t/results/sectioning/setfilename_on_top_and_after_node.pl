@@ -386,10 +386,9 @@ ul.no-bullet {list-style: none}
 <h1 class="top">In top</h1>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

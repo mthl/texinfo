@@ -1282,10 +1282,9 @@ Previous: <a href="#chapter-node" accesskey="p" rel="previous">chapter node</a>,
 <a name="Appendix"></a>
 <h2 class="appendix">Appendix A Appendix</h2>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

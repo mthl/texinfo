@@ -488,10 +488,9 @@ ul.no-bullet {list-style: none}
 <h2 class="unnumbered">top section</h2>
 <p>Top node
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

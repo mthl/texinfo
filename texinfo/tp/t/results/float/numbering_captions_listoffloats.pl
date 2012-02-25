@@ -9540,10 +9540,9 @@ See <a href="#text-with-a-lot-of-features">text with a lot of features</a>.
 </dl>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

@@ -599,10 +599,9 @@ Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 
 <p>See <a href="#node">node</a>.
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

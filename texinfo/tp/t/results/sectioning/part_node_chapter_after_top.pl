@@ -1174,10 +1174,9 @@ Next: <a href="#a-node-after-part" accesskey="n" rel="next">a node after part</a
 <a name="chapter-1"></a>
 <h2 class="chapter">1 chapter</h2>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

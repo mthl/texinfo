@@ -792,10 +792,9 @@ Next: <a href="#part-node-before-top" accesskey="n" rel="next">part node before 
 </td></tr>
 </table>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

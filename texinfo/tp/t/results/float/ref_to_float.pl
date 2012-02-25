@@ -569,10 +569,9 @@ ul.no-bullet {list-style: none}
 <p><a href="#Label1">Label1</a>
 </p>
 <p><a href="#Label2">Label2</a>
-</p><p>
-
-
 </p>
+
+
 </body>
 </html>
 ';

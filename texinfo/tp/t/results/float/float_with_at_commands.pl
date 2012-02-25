@@ -630,10 +630,9 @@ ul.no-bullet {list-style: none}
 <dl class="listoffloats">
 <dt><a href="#premi_00e8re-entr_00e9e">entr&eacute;e 1</a></dt><dd><p>La premi&egrave;re entr&eacute;e est importante</p></dd>
 </dl>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

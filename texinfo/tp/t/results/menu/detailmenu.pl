@@ -437,10 +437,9 @@ ul.no-bullet {list-style: none}
 </pre></th></tr><tr><td align="left" valign="top">&bull; detailmenu:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

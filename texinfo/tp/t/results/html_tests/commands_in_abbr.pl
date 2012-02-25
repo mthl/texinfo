@@ -338,10 +338,9 @@ ul.no-bullet {list-style: none}
 <div class="example">
 <pre class="example"><abbr title="abbr &ndash; b">A</abbr> (<b>abbr</b> -- b).
 </pre></div>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

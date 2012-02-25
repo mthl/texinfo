@@ -1020,10 +1020,9 @@ ul.no-bullet {list-style: none}
 </div>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

@@ -1016,10 +1016,9 @@ Text.
 </pre></td></tr>
 </table>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

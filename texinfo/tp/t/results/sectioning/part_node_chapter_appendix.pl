@@ -974,10 +974,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <a name="Appendix"></a>
 <h2 class="appendix">Appendix A Appendix</h2>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

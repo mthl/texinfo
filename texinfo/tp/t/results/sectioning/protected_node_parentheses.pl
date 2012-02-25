@@ -771,10 +771,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <a name="g_t_0028manual2_0029-name2"></a>
 <p><a href="#g_t_0028manual2_0029-name2">(manual2) name2</a>.
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

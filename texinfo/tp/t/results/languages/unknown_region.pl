@@ -462,10 +462,9 @@ ul.no-bullet {list-style: none}
 <dt><a name="index-BBB-of-AAA"></a>Instance Variable de AAA: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

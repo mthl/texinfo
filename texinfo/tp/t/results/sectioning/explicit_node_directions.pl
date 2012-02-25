@@ -940,10 +940,9 @@ Previous: <a href="#second-node" accesskey="p" rel="previous">second node</a>, U
 </div>
 <h4 class="node-heading">third node</h4>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

@@ -150,10 +150,9 @@ ul.no-bullet {list-style: none}
 
 <p>A.
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

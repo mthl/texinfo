@@ -6015,17 +6015,15 @@ sub _default_end_file($)
   my $program_text = '';
   if ($self->get_conf('PROGRAM_NAME_IN_FOOTER')) {
     my $program_string = &{$self->{'format_program_string'}}($self);
-    $program_text = " <font size=\"-1\">
+    $program_text = "<p><font size=\"-1\">
   $program_string
- </font>
- <br>";
+</font></p>";
   }
   my $pre_body_close = $self->get_conf('PRE_BODY_CLOSE');
   $pre_body_close = '' if (!defined($pre_body_close));
-  return "<p>
-$program_text
+  return "$program_text
+
 $pre_body_close
-</p>
 </body>
 </html>
 ";

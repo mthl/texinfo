@@ -426,10 +426,9 @@ with text.
 <tr><td align="left" valign="top">&bull; <a href="last manual.html#Top" accesskey="3">(last manual)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

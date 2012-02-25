@@ -679,10 +679,9 @@ Previous: <a href="#first" accesskey="p" rel="previous">first</a>, Up: <a href="
 <h4 class="node-heading">second node</h4>
 <p>second node
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

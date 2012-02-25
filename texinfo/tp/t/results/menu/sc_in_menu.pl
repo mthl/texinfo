@@ -1276,10 +1276,9 @@ EXAMPLE COMMENT
 </div>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

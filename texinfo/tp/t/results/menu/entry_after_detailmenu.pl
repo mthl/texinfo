@@ -967,10 +967,9 @@ Previous: <a href="#first" accesskey="p" rel="previous">first</a>, Up: <a href="
 </div>
 <h4 class="node-heading">second</h4>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

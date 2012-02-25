@@ -2355,10 +2355,9 @@ in detaildescription
 &bull; <a href="detailafter_description.html#Top" accesskey="8">(detailafter_description)</a>::
 
 </pre></div>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

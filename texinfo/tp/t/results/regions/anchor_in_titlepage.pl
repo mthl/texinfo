@@ -452,10 +452,9 @@ ul.no-bullet {list-style: none}
 
 <p>See <a href="#in-titlepage">in titlepage</a>.
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

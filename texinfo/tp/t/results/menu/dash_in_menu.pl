@@ -311,10 +311,9 @@ ul.no-bullet {list-style: none}
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 comment &mdash; in.
 </pre></th></tr></table>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

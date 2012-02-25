@@ -381,10 +381,9 @@ ul.no-bullet {list-style: none}
 <h1 class="node-heading">Top</h1>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

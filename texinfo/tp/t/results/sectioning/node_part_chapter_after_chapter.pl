@@ -1263,10 +1263,9 @@ Previous: <a href="#chapter-node" accesskey="p" rel="previous">chapter node</a>,
 </div>
 
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

@@ -416,10 +416,9 @@ example
 menu comment.
 
 </pre></th></tr></table>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

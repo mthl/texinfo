@@ -349,10 +349,9 @@ ul.no-bullet {list-style: none}
 <div class="example">
 <pre class="example">[ alt -- <b>in b</b> ]
 </pre></div>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

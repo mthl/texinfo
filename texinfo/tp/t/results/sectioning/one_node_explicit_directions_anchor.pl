@@ -378,10 +378,9 @@ ul.no-bullet {list-style: none}
 </p>
 <p>ref to ref <a href="#ref">ref</a>.
 </p><hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

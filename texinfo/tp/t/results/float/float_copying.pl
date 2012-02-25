@@ -1990,10 +1990,9 @@ the author abandon his copyright.
 </p>
 </div>
 <hr>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';

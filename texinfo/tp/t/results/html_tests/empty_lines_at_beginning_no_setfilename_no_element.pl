@@ -177,10 +177,9 @@ ul.no-bullet {list-style: none}
 </p>
 <p>Some text.
 </p>
-<p>
 
 
-</p>
+
 </body>
 </html>
 ';
