@@ -1416,14 +1416,15 @@ sub _new_node_menu_entry($$)
   return $entry;
 }
 
-sub _new_menu($$)
+sub _new_block_command($$$)
 {
-  my $menu_entries = shift;
+  my $block_contents = shift;
   my $parent = shift;
+  my $command_name = shift;
 
   my $end = {'cmdname' => 'end', 'extra' => 
-                 {'command_argument' => 'menu',
-                  'text_arg' => 'menu'}};
+                 {'command_argument' => $command_name,
+                  'text_arg' => $command_name}};
   push @{$end->{'args'}},
     {'type' => 'misc_line_arg', 'parent' => $end};
   push @{$end->{'args'}->[0]->{'contents'}},
@@ -1431,21 +1432,21 @@ sub _new_menu($$)
            'text' => ' ',
            'extra' => {'command' => $end},
            'parent' => $end->{'args'}->[0]},
-          {'text' => 'menu', 'parent' => $end->{'args'}->[0]},
+          {'text' => $command_name, 'parent' => $end->{'args'}->[0]},
           {'type' => 'spaces_at_end', 'text' => "\n", 
            'parent' => $end->{'args'}->[0]});
-  my $new_menu = {'cmdname' => 'menu', 'parent' => $parent,
+  my $new_block = {'cmdname' => $command_name, 'parent' => $parent,
                   'extra'=>{'end_command' => $end}};
-  $end->{'extra'}->{'command'} = $new_menu;
-  $new_menu->{'contents'} = [{'extra' => 
-                                     {'command' => $new_menu},
+  $end->{'extra'}->{'command'} = $new_block;
+  $new_block->{'contents'} = [{'extra' => 
+                                     {'command' => $new_block},
                               'type' => 'empty_line_after_command',
                               'text' => "\n"},
-                              @$menu_entries, $end];
-  foreach my $content (@{$new_menu->{'contents'}}) {
-    $content->{'parent'} = $new_menu;
+                              @$block_contents, $end];
+  foreach my $content (@{$new_block->{'contents'}}) {
+    $content->{'parent'} = $new_block;
   }
-  return $new_menu;
+  return $new_block;
 }
 
 sub complete_node_menu($$)
@@ -1504,7 +1505,7 @@ sub complete_node_menu($$)
     if (scalar(@pending)) {
       if (!$current_menu) {
         my $section = $node->{'extra'}->{'associated_section'};
-        $current_menu = _new_menu (\@pending, $section);
+        $current_menu = _new_block_command (\@pending, $section, 'menu');
         push @{$section->{'contents'}}, $current_menu;
       } else {
         foreach my $entry (@pending) {
@@ -1541,6 +1542,75 @@ sub complete_tree_nodes_menus($$)
       complete_node_menu($self, $content);
     }
   }
+}
+
+sub do_master_menu($;$)
+{
+  my $self = shift;
+  my $labels = shift;
+  $labels = $self->labels_information() if (!defined($labels));
+  my $top_node = $labels->{'Top'};
+  return undef if (!defined($top_node));
+
+  my @first_level_nodes;
+  if ($top_node->{'menus'} and scalar(@{$top_node->{'menus'}})) {
+    foreach my $menu (@{$top_node->{'menus'}}) {
+      foreach my $entry (@{$menu->{'contents'}}) {
+        if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
+          my $entry_node = $entry->{'extra'}->{'menu_entry_node'};
+          if (! $entry_node->{'manual_content'}
+              and defined($entry_node->{'normalized'})) {
+            push @first_level_nodes, $entry_node->{'normalized'};
+          }
+        }
+      }
+    }
+  }
+
+  my @master_menu_contents;
+  foreach my $normalized_node (@first_level_nodes) {
+    my $node = $labels->{$normalized_node};
+    next if (!defined($node) or !$node->{'extra'});
+    my $node_title_contents;
+    if ($node->{'extra'}->{'associated_section'}
+        and $node->{'extra'}->{'associated_section'}->{'extra'}
+        and $node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'}) {
+      $node_title_contents
+        = dclone($node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'});
+    } else {
+      $node_title_contents = dclone($node->{'extra'}->{'node_content'});
+    }
+    my $menu_comment = {'type' => 'menu_comment'};
+    $menu_comment->{'contents'}->[0] = {'type' => 'preformatted',
+                                        'parent' => $menu_comment};
+    
+    $menu_comment->{'contents'}->[0]->{'contents'}
+      = [{'text' => "\n", 'type' => 'empty_line'}, @$node_title_contents,
+         {'text' => "\n", 'type' => 'empty_line'},
+         {'text' => "\n", 'type' => 'empty_line'}];
+    foreach my $content (@{$menu_comment->{'contents'}->[0]->{'contents'}}) {
+      $content->{'parent'} = $menu_comment->{'contents'}->[0];
+    }
+    push @master_menu_contents, $menu_comment;
+    if ($node->{'menus'}) {
+      foreach my $menu (@{$node->{'menus'}}) {
+        foreach my $entry (@{$menu->{'contents'}}) {
+          if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
+            push @master_menu_contents, dclone($entry);
+          }
+        }
+      }
+    }
+  }
+  my $first_preformatted = $master_menu_contents[0]->{'contents'}->[0];
+  my $master_menu_title = $self->gdt(' --- The Detailed Node Listing ---');
+  my @master_menu_title_contents;
+  foreach my $content (@{$master_menu_title->{'contents'}}, {'text' => "\n"}) {
+    $content->{'parent'} = $first_preformatted;
+    push @master_menu_title_contents, $content;
+  }
+  unshift @{$first_preformatted->{'contents'}}, @master_menu_title_contents;
+  return _new_block_command(\@master_menu_contents, undef, 'detailmenu');
 }
 
 sub _sort_string($$)
