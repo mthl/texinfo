@@ -49,9 +49,11 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   elements_file_directions
   insert_nodes_for_sectioning_commands
   merge_indices
+  new_master_menu
   nodes_tree
   number_floats
   menu_to_simple_menu
+  regenerate_master_menu
   sectioning_structure
   set_menus_to_simple_menu
   sort_indices
@@ -1544,7 +1546,7 @@ sub complete_tree_nodes_menus($$)
   }
 }
 
-sub do_master_menu($;$)
+sub new_master_menu($;$)
 {
   my $self = shift;
   my $labels = shift;
@@ -1611,6 +1613,45 @@ sub do_master_menu($;$)
   }
   unshift @{$first_preformatted->{'contents'}}, @master_menu_title_contents;
   return _new_block_command(\@master_menu_contents, undef, 'detailmenu');
+}
+
+sub regenerate_master_menu($;$)
+{
+  my $self = shift;
+  my $labels = shift;
+  $labels = $self->labels_information() if (!defined($labels));
+  my $top_node = $labels->{'Top'};
+  return undef if (!defined($top_node));
+
+  my $new_master_menu = new_master_menu($self, $labels);
+  return undef if (!defined($new_master_menu) or !$top_node->{'menus'}
+                   or !scalar(@{$top_node->{'menus'}}));
+
+  foreach my $menu (@{$top_node->{'menus'}}) {
+    my $detailmenu_index = 0;
+    foreach my $entry (@{$menu->{'contents'}}) {
+      if ($entry->{'cmdname'} and $entry->{'cmdname'} eq 'detailmenu') {
+        # replace existing detailmenu by the master menu
+        $new_master_menu->{'parent'} = $menu;
+        splice (@{$menu->{'contents'}}, $detailmenu_index, 1, 
+                $new_master_menu);
+        return 1;
+      }
+      $detailmenu_index++;
+    }
+  }
+
+  my $last_menu = $top_node->{'menus'}->[-1];
+  my $index = scalar(@{$last_menu->{'contents'}});
+  if (scalar(@{$last_menu->{'contents'}})
+      and $last_menu->{'contents'}->[-1]->{'cmdname'}
+      and $last_menu->{'contents'}->[-1]->{'cmdname'} eq 'end') {
+    $index --;
+  }
+  $new_master_menu->{'parent'} = $last_menu;
+  splice (@{$last_menu->{'contents'}}, $index, 0, $new_master_menu);
+
+  return 1;
 }
 
 sub _sort_string($$)
@@ -2196,6 +2237,15 @@ Insert nodes for sectioning commands without node in C<$tree>.
 Add menu entries or whole menus for nodes associated with sections,
 based on the sectioning tree.  This function should therefore be
 called after L<sectioning_structure>.
+
+=item $detailmenu = new_master_menu ($parser)
+
+Returns a detailmenu tree element formatted as a master node.
+
+=item regenerate_master_menu ($parser)
+
+Regenerate the Top node master menu, replacing the first detailmenu
+in Top node menus or appending at the end of the Top node menu.
 
 =back
 

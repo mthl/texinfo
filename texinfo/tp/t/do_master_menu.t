@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 1 };
+BEGIN { plan tests => 5 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -14,9 +14,11 @@ use Data::Dumper;
 
 ok(1);
 
-sub _get_in($)
+sub _get_in($;$)
 {
   my $fragment = shift;
+  my $other_fragment = shift;
+  $other_fragment = '' if (!defined($other_fragment));
 
   my $in = '@node Top
 @top top
@@ -33,7 +35,8 @@ sub _get_in($)
 
 @menu
 * unnumbered1::
-@end menu
+'.$other_fragment.
+'@end menu
 
 @node chap1
 @chapter chap
@@ -110,11 +113,16 @@ return $in;
 
 my $in_detailmenu = _get_in('@detailmenu
 * sec1::
-@end detailmenu');
+@end detailmenu
+');
+my $no_detailmenu = _get_in('');
+#print STDERR $no_detailmenu;
+#print STDERR "GGG\n";
+#print STDERR $in_detailmenu;
 
 my $parser = Texinfo::Parser::parser();
 my $tree = $parser->parse_texi_text($in_detailmenu);
-my $master_menu = Texinfo::Structuring::do_master_menu($parser);
+my $master_menu = Texinfo::Structuring::new_master_menu($parser);
 my $out = Texinfo::Convert::Texinfo::convert($master_menu);
 
 my $reference = '@detailmenu
@@ -145,7 +153,27 @@ unnumbered1
 @end detailmenu
 ';
 #print STDERR $out;
-is ($reference, $out, 'master menu');
+is ($out, $reference, 'master menu');
+
+$parser = Texinfo::Parser::parser();
+$tree = $parser->parse_texi_text($no_detailmenu);
+$master_menu = Texinfo::Structuring::new_master_menu($parser);
+$out = Texinfo::Convert::Texinfo::convert($master_menu);
+is ($out, $reference, 'master menu no detailmenu');
+
+$parser = Texinfo::Parser::parser();
+$tree = $parser->parse_texi_text($in_detailmenu);
+Texinfo::Structuring::regenerate_master_menu($parser);
+$out = Texinfo::Convert::Texinfo::convert($tree);
+
+is ($out, _get_in($reference), 'regenerate with existing detailmenu');
+#print STDERR "$out";
 
 
+$parser = Texinfo::Parser::parser();
+$tree = $parser->parse_texi_text($no_detailmenu);
+Texinfo::Structuring::regenerate_master_menu($parser);
+$out = Texinfo::Convert::Texinfo::convert($tree);
+
+is ($out, _get_in('',$reference), 'regenerate with no detailmenu');
 
