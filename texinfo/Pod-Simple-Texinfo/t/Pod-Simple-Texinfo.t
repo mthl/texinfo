@@ -107,7 +107,6 @@ run_test('=over
 ', '@table @asis
 @item @ref{somewhere}
 
-
 @end table
 
 ', 'ref in item');
@@ -132,7 +131,6 @@ new line
 
 run_test('=head1 L</somewhere>
 ', '@chapter somewhere
-
 
 ', 'ref in section');
 

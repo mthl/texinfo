@@ -72,6 +72,7 @@ manuals are standalone (the default).
 
 Options:
     --base-level=NUM|NAME   level of the head1 commands.
+    --section-nodes         add nodes for sections instead of anchors.
     --output=NAME           output to <NAME> for the first or the main manual
                             instead of standard out.
     --subdir=NAME           put files included in the main manual in <NAME>.
@@ -85,6 +86,7 @@ my $unnumbered_sections = 0;
 my $output = '-';
 my $top = 'top';
 my $subdir;
+my $section_nodes = 0;
 
 my $result_options = Getopt::Long::GetOptions (
   'help|h' => sub { print pod2texi_help(); exit 0; },
@@ -108,6 +110,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
   'output|o=s' => \$output,
   'subdir=s' => \$subdir,
   'top=s' => \$top,
+  'section-nodes!' => \$section_nodes,
 );
 
 exit 1 if (!$result_options);
@@ -209,6 +212,9 @@ foreach my $file (@processed_files) {
   binmode($fh, ':encoding(utf8)');
   $new->output_fh($fh);
   $new->texinfo_sectioning_base_level($base_level);
+  if ($section_nodes) {
+    $new->texinfo_section_nodes(1);
+  }
   if ($unnumbered_sections) {
     $new->texinfo_sectioning_style('unnumbered');
   }
@@ -334,6 +340,10 @@ use C<section> as the base level.
 
 Name for the first manual, or the main manual if there is a main manual.
 Default is output on standard out.
+
+=item B<--section-nodes>
+
+Add a node for each section instead of an anchor.
 
 =item B<--subdir>=I<NAME>
 

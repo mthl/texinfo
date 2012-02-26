@@ -68,6 +68,7 @@ __PACKAGE__->_accessorize(
   'texinfo_man_url_prefix',
   'texinfo_sectioning_style',
   'texinfo_add_upper_sectioning_command',
+  'texinfo_section_nodes',
   'texinfo_internal_pod_manuals',
 );
 
@@ -82,6 +83,7 @@ sub new
   my $new = $class->SUPER::new(@_);
   $new->accept_targets(@raw_formats);
   $new->preserve_whitespace(1);
+  $new->texinfo_section_nodes(0);
   $new->texinfo_sectioning_base_level ($sectioning_base_level);
   $new->texinfo_man_url_prefix ($man_url_prefix);
   $new->texinfo_sectioning_style ($sectioning_style);
@@ -192,8 +194,20 @@ sub _preamble($)
   } elsif (defined($self->texinfo_short_title)
            and $self->texinfo_add_upper_sectioning_command) {
       my $level = $self->texinfo_sectioning_base_level() - 1;
-      print $fh "\@$self->{'texinfo_sectioning_commands'}->[$level] "
-         ._protect_text($self->texinfo_short_title, 1)."\n\n";
+      my $name = _protect_text($self->texinfo_short_title, 1);
+      my $node_name = _prepare_anchor($self, $name);
+
+      my $anchor = '';
+      my $node = '';
+      if ($node_name =~ /\S/) {
+        if (!$self->texinfo_section_nodes) {
+          $anchor = "\@anchor{$node_name}\n";
+        } else {
+          $node = "\@node $node_name\n";
+        }
+      }
+      print $fh "$node\@$self->{'texinfo_sectioning_commands'}->[$level] "
+         ._protect_text($self->texinfo_short_title, 1)."\n$anchor\n";
   }
 }
 
@@ -317,7 +331,7 @@ sub _normalize_texinfo_name($$)
   return $result;
 }
 
-sub _prepare_anchor($$)
+sub _node_name($$)
 {
   my $self = shift;
   my $texinfo_node_name = shift;
@@ -327,6 +341,13 @@ sub _prepare_anchor($$)
      = $self->_section_manual_to_node_name($self->texinfo_short_title,
                                           $texinfo_node_name,
                                           $self->texinfo_sectioning_base_level);
+  return $texinfo_node_name;
+}
+
+sub _prepare_anchor($$)
+{
+  my $self = shift;
+  my $texinfo_node_name = shift;
 
   my $node = _normalize_texinfo_name($texinfo_node_name, 'anchor');
 
@@ -549,7 +570,7 @@ sub _convert_pod($)
         $text = _protect_text($token->text());
         if (@format_stack and !ref($format_stack[-1])
             and ($self->{'texinfo_raw_format_commands'}->{$format_stack[-1]})) {
-          $text =~ s/^(\s*)#(\s*(line)? (\d+)( "([^"]+)")?(\s+\d+)*\s*)$/$1\@hashchar{}$2/mg;
+          $text =~ s/^(\s*)#(\s*(line)? (\d+)(( "([^"]+)")(\s+\d+)*)?\s*)$/$1\@hashchar{}$2/mg;
         }
       }
       _output($fh, \@accumulated_output, $text);
@@ -557,6 +578,7 @@ sub _convert_pod($)
       my $tagname = $token->tagname();
       if ($context_tags{$tagname}) {
         my ($result, $out) = _end_context(\@accumulated_output);
+        my $texinfo_node = '';
         if ($line_commands{$tagname}) {
 
           my ($command, $command_argument);
@@ -580,20 +602,21 @@ sub _convert_pod($)
               $command_argument = _protect_text($converter->convert_tree($tree));
             }
 
-            my $node_name = _prepare_anchor ($self, $result);
-            #print $fh "\@node $node_name\n";
-            my $anchor;
+            my $anchor = '';
+            my $node_name = _prepare_anchor ($self, _node_name($self,$result));
             if ($node_name =~ /\S/) {
-              $anchor = "\@anchor{$node_name}";
-            } else {
-              $anchor = '';
+              if ($tagname eq 'item-text' or !$self->texinfo_section_nodes) {
+                $anchor = "\n\@anchor{$node_name}";
+              } else {
+                $texinfo_node = "\@node $node_name\n";
+              }
             }
-            $command_argument .= "\n$anchor";
+            $command_argument .= $anchor;
           } else {
             $command_argument = $result;
           }
           _output($fh, \@accumulated_output, 
-                  "\@$command $command_argument\n$out\n");
+                  "$texinfo_node\@$command $command_argument\n$out\n");
         } elsif ($tagname eq 'Para') {
           _output($fh, \@accumulated_output, $out.
                                    _protect_hashchar($result)."\n\n");
@@ -746,6 +769,10 @@ above the level set by L<texinfo_sectioning_base_level>.  So there will be
 a C<@part> if the level is equal to 1, a C<@chapter> if the level is equal
 to 2 and so on and so forth.  If the base level is 0, a C<@top> command is 
 output instead.
+
+=item texinfo_section_nodes
+
+If set, add C<@node> and not C<@anchor> for each sectioning command.
 
 =back
 
