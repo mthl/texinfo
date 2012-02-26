@@ -1509,6 +1509,7 @@ sub complete_node_menu($$)
         my $section = $node->{'extra'}->{'associated_section'};
         $current_menu = _new_block_command (\@pending, $section, 'menu');
         push @{$section->{'contents'}}, $current_menu;
+        push @{$node->{'menus'}}, $current_menu;
       } else {
         foreach my $entry (@pending) {
           $entry->{'parent'} = $current_menu;

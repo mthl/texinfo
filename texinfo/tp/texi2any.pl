@@ -1077,6 +1077,9 @@ while(@input_files)
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
     Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
   }
+  if ($tree_transformations{'regenerate_master_menu'}) {
+    Texinfo::Structuring::regenerate_master_menu($parser);
+  }
 
   # this can be done for every format, since information is already gathered
   my $floats = $parser->floats_information();
