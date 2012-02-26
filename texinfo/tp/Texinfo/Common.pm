@@ -228,7 +228,9 @@ sub obsolete_option($)
 
 my %valid_tree_transformations;
 foreach my $valid_transformation ('simple_menus', 
-    'fill_gaps_in_sectioning', 'move_index_entries_after_items') {
+    'fill_gaps_in_sectioning', 'move_index_entries_after_items',
+    'insert_nodes_for_sectioning_commands',
+    'complete_tree_nodes_menus') {
   $valid_tree_transformations{$valid_transformation} = 1;
 }
 

@@ -1,3 +1,9 @@
+2012-02-26  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Configuration Variables), tp/Texinfo/Common.pm,
+	tp/texi2any.pl: new transformations insert_nodes_for_sectioning_commands
+	and complete_tree_nodes_menus.
+
 2012-02-23  Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, tp/t/test_utils.pl, tp/README: use Storable::dclone 

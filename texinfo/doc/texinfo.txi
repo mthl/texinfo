@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.427 2012-02-23 19:04:56 karl Exp $
+@c $Id: texinfo.txi,v 1.428 2012-02-26 01:45:39 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17662,6 +17662,13 @@ In @code{@@enumerate} and @code{@@itemize} move index entries
 appearing just before @code{@@item} after the @code{@@item}.  Comment lines 
 between index entries are moved too.  Always done for HTML and DocBook outputs.
 
+@item insert_nodes_for_sectioning_commands
+Insert nodes for sectioning commands without node.
+
+@item complete_tree_nodes_menus
+Add menu entries or whole menus for nodes associated with sections,
+based on the sectioning tree.
+
 @end table
 
 @item USE_ACCESSKEY
@@ -21785,7 +21792,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.427 2012-02-23 19:04:56 karl Exp $
+$Id: texinfo.txi,v 1.428 2012-02-26 01:45:39 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

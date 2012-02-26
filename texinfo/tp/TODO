@@ -7,6 +7,8 @@ Before next release
 
 Document TEXTCONTENT_COMMENT.
 
+protect leading ( when adding nodes.
+
 
 Bugs
 ====

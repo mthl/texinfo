@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.2 2012-02-12 23:06:06 pertusus Exp $
+# $Id: Makefile.am,v 1.3 2012-02-26 01:45:40 pertusus Exp $
 # Makefile.am for texinfo/doc/tp_api.
 #
 # Copyright 2012
@@ -38,9 +38,9 @@ tp_api_main.texi: $(top_srcdir)/tp/Texinfo/Common.pm $(top_srcdir)/tp/Texinfo/Pa
   $(top_srcdir)/tp/Texinfo/Convert/XML.pm \
   $(top_srcdir)/tp/Texinfo/Convert/Plaintext.pm \
   $(top_srcdir)/tp/Texinfo/Convert/HTML.pm
-	$(PERL) -I $(top_srcdir)/Pod-Simple-Texinfo/lib/ -I $(top_srcdir)/tp/ -I $(top_srcdir)/tp/maintain/lib/Text-Unidecode/lib/ -I $(top_srcdir)/tp/maintain/lib/libintl-perl/lib/ -I $(top_srcdir)/tp/maintain/lib/Unicode-EastAsianWidth/lib/ $(top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl --base-level=section --top 'Texinfo perl module' --subdir=api_includes -o $@ $^
+	$(PERL) -I $(top_srcdir)/Pod-Simple-Texinfo/lib/ -I $(top_srcdir)/tp/ -I $(top_srcdir)/tp/maintain/lib/Text-Unidecode/lib/ -I $(top_srcdir)/tp/maintain/lib/libintl-perl/lib/ -I $(top_srcdir)/tp/maintain/lib/Unicode-EastAsianWidth/lib/ $(top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl --base-level=section --top 'Texinfo perl module' --subdir=api_includes --section-nodes -o $@ $^
 
 tp_api.texi: tp_api_main.texi
-	$(PERL) -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl --set-init-var PLAINTEXINFO --set-init-var TREE_TRANSFORMATIONS=fill_gaps_in_sectioning $< > $@
+	$(PERL) -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl --set-init-var PLAINTEXINFO --set-init-var TREE_TRANSFORMATIONS=complete_tree_nodes_menus,fill_gaps_in_sectioning $< > $@
 
 EXTRA_DIST = api_includes tp_api_main.texi tp_api.texi

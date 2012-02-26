@@ -1064,11 +1064,20 @@ while(@input_files)
     Texinfo::Common::move_index_entries_after_items_in_tree($tree);
   }
 
+  if ($tree_transformations{'insert_nodes_for_sectioning_commands'}) {
+    Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+  }
+
   Texinfo::Structuring::associate_internal_references($parser);
   # every format needs the sectioning structure
   # FIXME this adjusts the level of sectioning commands.  Maybe should be
   # done before dumping the tree?
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
+
+  if ($tree_transformations{'complete_tree_nodes_menus'}) {
+    Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
+  }
+
   # this can be done for every format, since information is already gathered
   my $floats = $parser->floats_information();
 

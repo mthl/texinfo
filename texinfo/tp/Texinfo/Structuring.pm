@@ -1536,7 +1536,7 @@ sub complete_tree_nodes_menus($$)
         and $content->{'extra'} 
         and $content->{'extra'}->{'associated_section'}
         and $content->{'extra'}->{'associated_section'}->{'section_childs'}
-        and @{$content->{'extra'}->{'associated_section'}->{'section_childs'}}) {
+        and scalar(@{$content->{'extra'}->{'associated_section'}->{'section_childs'}})) {
       complete_node_menu($self, $content);
     }
   }
