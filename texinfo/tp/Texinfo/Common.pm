@@ -1706,6 +1706,7 @@ sub protect_hashchar_at_line_beginning($$)
 sub protect_first_parenthesis($)
 {
   my $contents = shift;
+  return undef if (!defined ($contents));
   my @contents = @$contents;
   my $brace;
   if ($contents[0] and $contents->[0]{'text'} and $contents[0]->{'text'} =~ /^\(/) {

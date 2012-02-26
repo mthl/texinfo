@@ -1246,13 +1246,14 @@ sub number_floats($)
 }
 
 # prepare a new node and register it
-# FIXME protect punctuation?
 sub _new_node($$)
 {
   my $self = shift;
   my $node_tree = shift;
 
   $node_tree = Texinfo::Common::protect_comma_in_tree($node_tree);
+  $node_tree->{'contents'} 
+     = Texinfo::Common::protect_first_parenthesis($node_tree->{'contents'});
 
   return undef if (!$node_tree->{'contents'} 
                    or !scalar(@{$node_tree->{'contents'}}));

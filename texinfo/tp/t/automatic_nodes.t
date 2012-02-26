@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 15 };
+BEGIN { plan tests => 18 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -45,6 +45,9 @@ test_new_node ('a node @code{in code} @c comment
 test_new_node ('a ,, node @code{a,b,}', 'a-_002c_002c-node-a_002cb_002c',
 '@node a @comma{}@comma{} node @code{a@comma{}b@comma{}}
 ', 'with comma');
+test_new_node ('(in paren(too  aaa', '_0028in-paren_0028too-aaa',
+'@node @asis{(}in paren(too  aaa
+', 'with parenthesis');
 
 my $parser = Texinfo::Parser::parser();
 my $tree = $parser->parse_texi_text('@node a node
