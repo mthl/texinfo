@@ -72,16 +72,15 @@ T
 ';
 
 my $tree = Texinfo::Parser::parse_texi_text(undef, $text);
-
+my $reference_associations = {};
 my $copy = Texinfo::Common::copy_tree($tree, undef);
 
 my $texi_tree = Texinfo::Convert::Texinfo::convert($tree);
 
 is ($text, $texi_tree, "tree to texi and original match");
 
-#print STDERR diff(\$text, \$texi_tree);
-
 my $texi_copy = Texinfo::Convert::Texinfo::convert($copy);
+is ($texi_copy, $texi_tree, "tree and copy to texi match");
 
 #{
 #  local $Data::Dumper::Purity = 1;
@@ -89,9 +88,5 @@ my $texi_copy = Texinfo::Convert::Texinfo::convert($copy);
 #  print STDERR Data::Dumper->Dump([$copy]);
 #}
 
-
-is ($texi_copy, $texi_tree, "tree and copy to texi match");
-
-#print STDERR diff(\$texi_copy, \$texi_tree);
 
 1;

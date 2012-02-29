@@ -1444,37 +1444,193 @@ sub count_bytes($$)
 # extra->def_arg
 
 
-sub copy_tree($$);
-sub copy_tree($$)
+sub _copy_tree($$$);
+sub _copy_tree($$$)
 {
   my $current = shift;
   my $parent = shift;
+  my $reference_associations = shift;
   my $new = {};
+  $reference_associations->{$current} = $new;
   $new->{'parent'} = $parent if ($parent);
   foreach my $key ('type', 'cmdname', 'text') {
     $new->{$key} = $current->{$key} if (exists($current->{$key}));
   }
   foreach my $key ('args', 'contents') {
     if ($current->{$key}) {
+      if (ref($current->{$key}) ne 'ARRAY') {
+        my $command_or_type = '';
+        if ($new->{'cmdname'}) {
+          $command_or_type = '@'.$new->{'cmdname'};
+        } elsif ($new->{'type'}) {
+          $command_or_type = $new->{'type'};
+        }
+        print STDERR "Not an array [$command_or_type] $key ".ref($current->{$key})."\n";
+      }
       $new->{$key} = [];
+      $reference_associations->{$current->{$key}} = $new->{$key};
       foreach my $child (@{$current->{$key}}) {
-        push @{$new->{$key}}, copy_tree($child, $new);
+        push @{$new->{$key}}, _copy_tree($child, $new, $reference_associations);
       }
     }
   }
   if ($current->{'extra'}) {
     $new->{'extra'} = {};
     foreach my $key (keys %{$current->{'extra'}}) {
-      if (!ref($current->{'extra'}->{$key})) {
+      if ($current->{'cmdname'} and $current->{'cmdname'} eq 'multitable'
+          and $key eq 'prototypes') {
+        $new->{'extra'}->{$key} = [];
+        $reference_associations->{$current->{'extra'}->{$key}} = $new->{$key};
+        foreach my $child (@{$current->{'extra'}->{$key}}) {
+          push @{$new->{'extra'}->{$key}}, 
+                  _copy_tree($child, $new, $reference_associations);
+        }
+      } elsif (!ref($current->{'extra'}->{$key})) {
         $new->{'extra'}->{$key} = $current->{'extra'}->{$key};
       }
     }
-    if ($current->{'extra'}->{'end_command'}) {
-      # FIXME this should be a ref to the end command instead...
-      $new->{'extra'}->{'end_command'} = 1;
-    }
   }
   return $new;
+}
+
+# Not used.
+sub _collect_references($$);
+sub _collect_references($$)
+{
+  my $current = shift;
+  my $references = shift;
+  foreach my $key ('args', 'contents') {
+    if ($current->{$key}) {
+      $references->{$current->{$key}} = $current->{$key};
+      foreach my $child (@{$current->{$key}}) {
+        $references->{$child} = $child;
+        _collect_references($child, $references);
+      }
+    }
+  }
+}
+
+sub _substitute_references_in_array($$$);
+sub _substitute_references_in_array($$$)
+{
+  my $array = shift;
+  my $reference_associations = shift;
+  my $context = shift;
+
+  my $result = [];
+  my $index = 0;
+  foreach my $item (@{$array}) {
+    if (!ref($item)) {
+      push @{$result}, $item;
+    } elsif ($reference_associations->{$item}) {
+      push @{$result}, $reference_associations->{$item};
+    } elsif (ref($item) eq 'ARRAY') {
+      push @$result, 
+        _substitute_references_in_array($item, $reference_associations,
+                                        "$context [$index]");
+    } elsif (defined($item->{'text'})) {
+      my $new_text = _copy_tree($item, undef, $reference_associations);
+      substitute_references($item, $new_text, $reference_associations);
+      push @{$result}, $new_text;
+    } else {
+      print STDERR "Trouble with $context [$index] (".ref($item).")\n";
+      push @{$result}, undef;
+    }
+    $index++;
+  }
+  return $result;
+}
+
+sub substitute_references($$$);
+sub substitute_references($$$)
+{
+  my $current = shift;
+  my $new = shift;
+  my $reference_associations = shift;
+  
+  foreach my $key ('args', 'contents') {
+    if ($new->{$key}) {
+      my $index = 0;
+      foreach my $child (@{$new->{$key}}) {
+        substitute_references($child, $current->{$key}->[$index],
+                              $reference_associations);
+        $index++;
+      }
+    }
+  }
+  if ($current->{'extra'}) {
+    foreach my $key (keys %{$current->{'extra'}}) {
+      if (ref($current->{'extra'}->{$key})) {
+        my $command_or_type = '';
+        if ($new->{'cmdname'}) {
+          $command_or_type = '@'.$new->{'cmdname'};
+        } elsif ($new->{'type'}) {
+          $command_or_type = $new->{'type'};
+        }
+        
+        if ($current->{'cmdname'} and $current->{'cmdname'} eq 'multitable'
+            and $key eq 'prototypes') {
+          my $index = 0;
+          foreach my $child (@{$new->{'extra'}->{$key}}) {
+            substitute_references($child, $current->{'extra'}->{$key}->[$index],
+                                  $reference_associations);
+            $index++;
+          }
+        } elsif ($reference_associations->{$current->{'extra'}->{$key}}) {
+          $new->{'extra'}->{$key} 
+            = $reference_associations->{$current->{'extra'}->{$key}};
+          #print STDERR "Done [$command_or_type]: $key\n";
+        } else {
+          if (ref($current->{'extra'}->{$key}) eq 'ARRAY') {
+            
+            #print STDERR "Array $command_or_type -> $key\n";
+            $new->{'extra'}->{$key} = _substitute_references_in_array(
+              $current->{'extra'}->{$key}, $reference_associations,
+              "[$command_or_type]{$key}");
+          } else {
+            if (($current->{'cmdname'} 
+                 and ($current->{'cmdname'} eq 'listoffloats'
+                     or $current->{'cmdname'} eq 'float') 
+                 and $key eq 'type')
+                 or ($key eq 'index_entry')
+                 or ($current->{'type'} 
+                     and $current->{'type'} eq 'menu_entry'
+                     and $key eq 'menu_entry_node')) {
+              foreach my $type_key (keys(%{$current->{'extra'}->{$key}})) {
+                if (!ref($current->{'extra'}->{$key}->{$type_key})) {
+                  $new->{'extra'}->{$key}->{$type_key} 
+                    = $current->{'extra'}->{$key}->{$type_key};
+                } elsif ($reference_associations->{$current->{'extra'}->{$key}->{$type_key}}) {
+                  $new->{'extra'}->{$key}->{$type_key}
+                    = $reference_associations->{$current->{'extra'}->{$key}->{$type_key}};
+                } elsif (ref($current->{'extra'}->{$key}->{$type_key}) eq 'ARRAY') {
+                  $new->{'extra'}->{$key}->{$type_key}
+                    = _substitute_references_in_array(
+                      $current->{'extra'}->{$key}->{$type_key}, 
+                      $reference_associations,
+                      "[$command_or_type]{$key}{$type_key}");
+                } else {
+                  print STDERR "Not substituting [$command_or_type]{$key}: $type_key\n";
+                }
+              }
+            } else {
+              print STDERR "Not substituting [$command_or_type]: $key ($current->{'extra'}->{$key})\n";
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+sub copy_tree($;$)
+{
+  my $current = shift;
+  my $parent = shift;
+  my $reference_associations = {};
+  my $copy = _copy_tree($current, $parent, $reference_associations);
+  substitute_references($current, $copy, $reference_associations);
+  return $copy;
 }
 
 sub modify_tree($$$;$);

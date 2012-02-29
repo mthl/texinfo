@@ -29,7 +29,7 @@ use Texinfo::Convert::Text;
 # for error messages 
 use Texinfo::Convert::Texinfo;
 
-use Storable qw(dclone);
+use Carp qw(cluck);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -430,6 +430,8 @@ sub fill_gaps_in_sectioning($)
         if (@correct_level_offset_commands) {
           push @{$contents[-1]->{'contents'}}, @correct_level_offset_commands;
         }
+        #print STDERR "* $current_section_level "._print_root_command_texi($current_section)."\n";
+        #print STDERR "  $next_section_level "._print_root_command_texi($next_section)."\n";
         while ($next_section_level - $current_section_level > 1) {
           $current_section_level++;
           my $new_section = {'cmdname' =>
@@ -457,6 +459,7 @@ sub fill_gaps_in_sectioning($)
                  'contents' => [],
                  'parent' => $new_section->{'args'}->[0]->{'contents'}->[1]}];
           push @contents, $new_section;
+          #print STDERR "  -> "._print_root_command_texi($new_section)."\n";
         }
         my @set_level_offset_commands = _correct_level($next_section,
                                                        $contents[-1], -1);
@@ -1365,7 +1368,7 @@ sub insert_nodes_for_sectioning_commands($$)
       if ($content->{'cmdname'} eq 'top') {
         $new_node_tree = {'contents' => [{'text' => 'Top'}]};
       } else {
-        $new_node_tree = dclone({'contents' 
+        $new_node_tree = Texinfo::Common::copy_tree({'contents' 
           => $content->{'extra'}->{'misc_content'}});
       }
       my $new_node = _new_node ($self, $new_node_tree);
@@ -1386,6 +1389,17 @@ sub insert_nodes_for_sectioning_commands($$)
   return \@contents;
 }
 
+sub _copy_contents($)
+{
+  my $contents = shift;
+  if (ref($contents) ne 'ARRAY') {
+    cluck "$contents not an array";
+    return undef;
+  }
+  my $copy = Texinfo::Common::copy_tree({'contents' => $contents});
+  return $copy->{'contents'};
+}
+
 sub _new_node_menu_entry($$)
 {
   my $self = shift;
@@ -1395,7 +1409,8 @@ sub _new_node_menu_entry($$)
 
   my $menu_entry_node = {'type' => 'menu_entry_node'};
   $menu_entry_node->{'contents'}
-    = dclone ($node_contents);
+    = _copy_contents ($node_contents);
+
   foreach my $content (@{$menu_entry_node->{'contents'}}) {
     $content->{'parent'} = $menu_entry_node;
   }
@@ -1579,9 +1594,9 @@ sub new_master_menu($;$)
         and $node->{'extra'}->{'associated_section'}->{'extra'}
         and $node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'}) {
       $node_title_contents
-        = dclone($node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'});
+        = _copy_contents($node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'});
     } else {
-      $node_title_contents = dclone($node->{'extra'}->{'node_content'});
+      $node_title_contents = _copy_contents($node->{'extra'}->{'node_content'});
     }
     my $menu_comment = {'type' => 'menu_comment'};
     $menu_comment->{'contents'}->[0] = {'type' => 'preformatted',
@@ -1599,7 +1614,7 @@ sub new_master_menu($;$)
       foreach my $menu (@{$node->{'menus'}}) {
         foreach my $entry (@{$menu->{'contents'}}) {
           if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
-            push @master_menu_contents, dclone($entry);
+            push @master_menu_contents, Texinfo::Common::copy_tree($entry);
           }
         }
       }
