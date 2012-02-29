@@ -38,6 +38,8 @@ BEGIN
 }
 use Pod::Simple::Texinfo;
 use Texinfo::Common;
+use Texinfo::Parser;
+use Texinfo::Structuring;
 
 {
 # A fake package to be able to use Pod::Simple::PullParser without generating
@@ -72,7 +74,8 @@ manuals are standalone (the default).
 
 Options:
     --base-level=NUM|NAME   level of the head1 commands.
-    --section-nodes         add nodes for sections instead of anchors.
+    --no-fill-section-gaps  do not fill sectioning gaps.
+    --no-section-nodes      use anchors for sections instead of nodes.
     --output=NAME           output to <NAME> for the first or the main manual
                             instead of standard out.
     --subdir=NAME           put files included in the main manual in <NAME>.
@@ -86,7 +89,8 @@ my $unnumbered_sections = 0;
 my $output = '-';
 my $top = 'top';
 my $subdir;
-my $section_nodes = 0;
+my $section_nodes = 1;
+my $fill_sectioning_gaps = 1;
 
 my $result_options = Getopt::Long::GetOptions (
   'help|h' => sub { print pod2texi_help(); exit 0; },
@@ -111,6 +115,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
   'subdir=s' => \$subdir,
   'top=s' => \$top,
   'section-nodes!' => \$section_nodes,
+  'fill-section-gaps!' => \$fill_sectioning_gaps,
 );
 
 exit 1 if (!$result_options);
@@ -171,9 +176,51 @@ if ($base_level > 0) {
   @processed_files = @input_files;
 }
 
+sub _fix_texinfo_tree($$$;$)
+{
+  my $manual_texi = shift;
+  my $section_nodes = shift;
+  my $fill_gaps_in_sectioning = shift;
+  my $do_master_menu = shift;
+  my $parser = Texinfo::Parser::parser();
+  my $tree = $parser->parse_texi_text($manual_texi);
+  my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
+  $tree->{'contents'} 
+    = Texinfo::Structuring::fill_gaps_in_sectioning($tree) 
+      if ($fill_gaps_in_sectioning);
+  Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree) 
+    if ($section_nodes);
+  Texinfo::Structuring::regenerate_master_menu($parser) if ($do_master_menu);
+  return ($parser, $tree);
+}
+
+sub _fix_texinfo_manual($$$;$)
+{
+  my $manual_texi = shift;
+  my $section_nodes = shift;
+  my $fill_gaps_in_sectioning = shift;
+  my $do_master_menu = shift;
+  my ($parser, $tree) = _fix_texinfo_tree($manual_texi, $section_nodes, 
+                                    $fill_gaps_in_sectioning, $do_master_menu);
+  return Texinfo::Convert::Texinfo::convert($tree);
+}
+
+sub _do_top_node_menu($)
+{
+  my $manual_texi = shift;
+  my ($parser, $tree) = _fix_texinfo_tree($manual_texi, 1, 0, 1); 
+  my $labels = $parser->labels_information();
+  my $top_node_menu = $labels->{'Top'}->{'menus'}->[0];
+  if ($top_node_menu) {
+    return Texinfo::Convert::Texinfo::convert($top_node_menu);
+  }
+}
+
 my $file_nr = 0;
+my $full_manual = '';
 my @included;
 foreach my $file (@processed_files) {
+  my $manual_texi = '';
   my $outfile;
   my $name = shift @all_manual_names;
   if ($base_level == 0 and !$file_nr) {
@@ -210,7 +257,9 @@ foreach my $file (@processed_files) {
   }
   # FIXME should use =encoding
   binmode($fh, ':encoding(utf8)');
-  $new->output_fh($fh);
+
+  $new->output_string(\$manual_texi);
+
   $new->texinfo_sectioning_base_level($base_level);
   if ($section_nodes) {
     $new->texinfo_section_nodes(1);
@@ -223,6 +272,14 @@ foreach my $file (@processed_files) {
   }
   
   $new->parse_file($file);
+
+  if ($section_nodes or $fill_sectioning_gaps) {
+    $manual_texi = _fix_texinfo_manual($manual_texi, $section_nodes, 
+                                       $fill_sectioning_gaps);
+    $full_manual .= $manual_texi if ($section_nodes);
+  }
+  print $fh $manual_texi;
+
   if ($outfile ne '-') {
     close($fh) or die sprintf (__("%s: Close %s: %s.\n"), 
                                $real_command_name, $outfile, $!);
@@ -268,21 +325,31 @@ if ($base_level > 0) {
     $fh = *STDOUT;
   }
   my $outfile_name = $output;
+
   $outfile_name = $STDOUT_DOCU_NAME if ($outfile_name eq '-');
   $outfile_name =~ s/\.te?x(i|info)?$//;
   $outfile_name .= '.info';
-  print $fh '\input texinfo'."\n";
-  print $fh '@setfilename '
-    .Pod::Simple::Texinfo::_protect_text ($outfile_name)."\n\n";
-  print $fh '@documentencoding utf-8'."\n\n";
-  print $fh "\@settitle $top\n\n";
-  print $fh "\@shorttitlepage $top\n\n";
-  print $fh "\@contents\n\n";
-  print $fh "\@ifnottex\n\n";
-  print $fh "\@node Top\n";
-  # not escaped on purpose, user may want to use @-commands
-  print $fh "\@top $top\n\n";
-  print $fh "\@end ifnottex\n\n";
+
+  my $preamble = '@setfilename '
+    .Pod::Simple::Texinfo::_protect_text ($outfile_name)."\n\n".
+"\@documentencoding utf-8
+
+\@settitle $top
+
+\@shorttitlepage $top
+
+\@contents
+
+\@ifnottex
+\@node Top
+\@top $top
+\@end ifnottex\n\n";
+
+  print $fh '\input texinfo'."\n" . $preamble;
+  if ($section_nodes) {
+    my $menu = _do_top_node_menu("\@node Top\n\@top top\n".$full_manual);
+    print $fh $menu."\n";
+  }
   foreach my $include (@included) {
     my $file = $include->[1];
     print $fh "\@include ".Pod::Simple::Texinfo::_protect_text ($file)."\n";
@@ -341,9 +408,13 @@ use C<section> as the base level.
 Name for the first manual, or the main manual if there is a main manual.
 Default is output on standard out.
 
-=item B<--section-nodes>
+=item B<--no-section-nodes>
 
-Add a node for each section instead of an anchor.
+Add a anchors for each section instead of nodes.
+
+=item B<--no-fill-section-gaps>
+
+Do not fill sectioning gaps with empty C<@unnumbered>.
 
 =item B<--subdir>=I<NAME>
 
