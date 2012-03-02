@@ -44,8 +44,6 @@ BEGIN
         and $texinfolibdir ne '@' .'datadir@/@PACKAGE'.'@');
 }
 
-use Texinfo::Convert::Texinfo;
-
 my $real_command_name = $0;
 $real_command_name =~ s/.*\///;
 $real_command_name =~ s/\.pl$//;
@@ -112,6 +110,14 @@ sub __p($$) {
 }
 
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
+
+if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
+     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
+  unshift @INC, $srcdir;
+}
+
+require Texinfo::Convert::Texinfo;
+
 my $libsrcdir = "$srcdir/maintain";
 if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
@@ -934,6 +940,8 @@ foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
     if (defined(get_conf($parser_settable_option)));
 }
 
+# this is very wrong, but a way to avoid a spurious warning.
+no warnings 'once';
 foreach my $parser_option (@Texinfo::Common::parser_options) {
   $parser_default_options->{lc($parser_option)} = get_conf($parser_option)
     if (defined(get_conf($parser_option)));

@@ -52,9 +52,11 @@ t/60macro.t
 t/70value_and_macro.t
 t/80include.t
 t/accents.t
+t/automatic_menus.t
 t/automatic_nodes.t
 t/converters_tests.t
 t/docbook_tests.t
+t/do_master_menu.t
 texi2any
 Texinfo/Common.pm
 Texinfo/Convert/Converter.pm
