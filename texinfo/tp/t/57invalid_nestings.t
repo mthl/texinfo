@@ -6,6 +6,12 @@ my @test_cases = (
 ['on_section_line',
 '@section @noindent Text @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 '],
+['on_node_line',
+'@node @ref{a, b, c, filename}, (@pxref{(somemanual)Top}) @anchor{in anchor}@footnote{footnote} @exdent exdent
+'],
+['on_subheading_line',
+'@subheading @noindent Text @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
+'],
 ['on_block_command_line',
 '@multitable {@anchor{in anchor}} @titlefont{in titlefont}
 @item @titlefont{in titlefont}

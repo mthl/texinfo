@@ -478,6 +478,10 @@ $top_in_ref_text
 @section (@pxref{,,, file name}) no node but file name
 
 @section @inforef{a, b, c}
+
+@heading @ref{node, cross ref name in heading}
+
+@subheading @ref{@code{node},,, file name}
 '],
 ['unknown_value',
 '@value{unknown}'],
