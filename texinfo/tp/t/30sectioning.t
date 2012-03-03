@@ -423,6 +423,14 @@ $section_in_unnumbered_text
 '@unnumbered
 @unnumbered
 '],
+['no_argument_and_contents',
+'@contents
+
+@top for example
+
+@chapter @asis{}
+
+'],
 ['node_up_external_node',
 '@node Top
 

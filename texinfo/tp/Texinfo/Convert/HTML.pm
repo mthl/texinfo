@@ -4911,7 +4911,8 @@ sub _new_sectioning_command_target($$)
     $target 
      = $self->{'targets'}->{$command->{'extra'}->{'associated_node'}}->{'id'};
   }
-    
+
+  # These are undefined if the $id is set to ''.
   my $target_contents;
   my $id_contents;
   my $target_shortcontents;
@@ -4981,17 +4982,25 @@ sub _new_sectioning_command_target($$)
   if (defined($id_contents)) {
     $self->{'targets'}->{$command}->{'contents_id'} = $id_contents;
     $self->{'ids'}->{$id_contents} = $command;
+  } else {
+    $self->{'targets'}->{$command}->{'contents_id'} = '';
   }
   if (defined($target_contents)) {
     $self->{'targets'}->{$command}->{'contents_target'} = $target_contents;
+  } else {
+    $self->{'targets'}->{$command}->{'contents_target'} = '';
   }
   if (defined($id_shortcontents)) {
     $self->{'targets'}->{$command}->{'shortcontents_id'} = $id_shortcontents;
     $self->{'ids'}->{$id_shortcontents} = $command;
+  } else {
+    $self->{'targets'}->{$command}->{'shortcontents_id'} = '';
   }
   if (defined($target_shortcontents)) {
     $self->{'targets'}->{$command}->{'shortcontents_target'} 
        = $target_shortcontents;
+  } else {
+    $self->{'targets'}->{$command}->{'shortcontents_target'} = '';
   }
   return $self->{'targets'}->{$command};
 }
