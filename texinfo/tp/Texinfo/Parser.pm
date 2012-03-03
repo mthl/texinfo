@@ -401,23 +401,33 @@ foreach my $not_in_full_line_commands('noindent', 'indent') {
   delete $in_full_line_commands{$not_in_full_line_commands};
 }
 
+# commands that may happen on sectioning commands 
+my %in_sectioning_command_line_commands = %in_full_line_commands;
+foreach my $not_in_sectioning_command_line_commands ('titlefont', 
+                                                 'anchor', 'footnote') {
+  delete $in_sectioning_command_line_commands{$not_in_sectioning_command_line_commands};
+}
+
 # commands that may happen in simple text arguments
-my %in_simple_text_commands = %in_full_line_commands;
-foreach my $not_in_simple_text_command('titlefont', 'anchor', 'footnote',
-                                       'xref','ref','pxref', 'inforef') {
+my %in_simple_text_commands = %in_sectioning_command_line_commands;
+foreach my $not_in_simple_text_command('xref','ref','pxref', 'inforef') {
   delete $in_simple_text_commands{$not_in_simple_text_command};
 }
 
 # commands that only accept simple text as argument in any context.
 # index entry commands are dynamically added.
+# root_commands are not in because they have contents and are treated 
+# separately in the condition.
 my %simple_text_commands;
 foreach my $misc_command(keys(%misc_commands)) {
   if ($misc_commands{$misc_command} =~ /^\d+$/ 
-      or ($misc_commands{$misc_command} eq 'line' and !$root_commands{$misc_command})
+      or ($misc_commands{$misc_command} eq 'line' 
+          and (!$sectioning_commands{$misc_command} and $misc_command ne 'node'))
       or $misc_commands{$misc_command} eq 'text') {
     $simple_text_commands{$misc_command} = 1;
   }
 }
+
 delete $simple_text_commands{'center'};
 delete $simple_text_commands{'exdent'};
 foreach my $command ('titlefont', 'anchor', 'xref','ref','pxref', 
@@ -3952,7 +3962,13 @@ sub _parse_texi($;$)
                                and $current->{'type'} eq 'block_line_arg')
                            or ($current->{'type'} 
                                and $current->{'type'} eq 'misc_line_arg'
-                               and ($root_commands{$current->{'parent'}->{'cmdname'}}))))
+                               #and ($root_commands{$current->{'parent'}->{'cmdname'}}))))
+                               and ($current->{'parent'}->{'cmdname'} eq 'node'))))
+                     or (!$in_sectioning_command_line_commands{$command}
+                         and $sectioning_commands{$current->{'parent'}->{'cmdname'}}
+                         and (!$root_commands{$current->{'parent'}->{'cmdname'}}
+                              or ($current->{'type'} 
+                                  and $current->{'type'} eq 'misc_line_arg')))
                      or (($full_line_commands{$current->{'parent'}->{'cmdname'}}
                           or ($current->{'type'}
                               and $current->{'type'} eq 'misc_line_arg'

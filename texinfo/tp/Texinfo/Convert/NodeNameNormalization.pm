@@ -69,8 +69,8 @@ $normalize_node_no_brace_commands{'*'} = ' ';
 my %accent_commands = %Texinfo::Common::accent_commands;
 
 my %ignored_brace_commands;
-foreach my $ignored_brace_command ('xref','ref','pxref','inforef','anchor',
-   'footnote', 'shortcaption', 'caption', 'hyphenation') {
+foreach my $ignored_brace_command (#'xref','ref', 'pxref', 'inforef', 
+   'anchor', 'footnote', 'shortcaption', 'caption', 'hyphenation') {
   $ignored_brace_commands{$ignored_brace_command} = 1;
 }
 
@@ -259,6 +259,20 @@ sub _convert($;$)
       }
     } elsif ($root->{'cmdname'} eq 'image') {
       return _convert($root->{'args'}->[0]);
+    } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
+      my @args_try_order;
+      if ($root->{'cmdname'} eq 'inforef') {
+        @args_try_order = (0, 1, 2);
+      } else {
+        @args_try_order = (0, 1, 2, 4, 3);
+      }
+      foreach my $index (@args_try_order) {
+        if (defined($root->{'args'}->[$index])) {
+          my $text = _convert($root->{'args'}->[$index]);
+          return $text if (defined($text) and $text =~ /\S/);
+        }
+      }
+      return '';
     } elsif ($root->{'cmdname'} eq 'email') {
       my $mail = _convert($root->{'args'}->[0]);
       my $text;

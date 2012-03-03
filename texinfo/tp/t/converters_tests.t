@@ -448,6 +448,37 @@ $top_in_ref_text
 @code{@@inforef@{node, cross ref name@}} @inforef{node, cross ref name}
 @code{@@inforef@{node,,file name@}} @inforef{node,,file name}
 '],
+['ref_in_sectioning',
+'@contents
+
+@node Top
+@top for example @ref{node} (@pxref{node}) (@pxref{Top,,, file, manual})
+
+@menu
+* node::
+* chap::
+@end menu
+
+@node node
+@chapter @xref{node,,title, file name, manual}.
+
+@node chap
+@chapter @ref{node}
+
+@section @ref{node, cross ref name}
+
+@section @ref{@code{node},, @samp{title}}
+
+@section @ref{@code{node},,, file name}
+
+@section @ref{node,,,, manual}
+
+@section @ref{,,,, manual} no node but manual
+
+@section (@pxref{,,, file name}) no node but file name
+
+@section @inforef{a, b, c}
+'],
 ['unknown_value',
 '@value{unknown}'],
 ['test_sp',

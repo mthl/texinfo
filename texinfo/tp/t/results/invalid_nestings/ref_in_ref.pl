@@ -97,11 +97,12 @@ $result_trees{'ref_in_ref'} = {
                     {}
                   ]
                 ],
+                'label' => {},
                 'node_argument' => {
                   'node_content' => [
                     {}
                   ],
-                  'normalized' => ''
+                  'normalized' => 'Top'
                 }
               },
               'line_nr' => {},
@@ -148,6 +149,7 @@ $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}
 $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0];
 $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ref_in_ref'}{'contents'}[1];
 $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0];
@@ -199,15 +201,6 @@ $result_errors{'ref_in_ref'} = [
     'macro' => '',
     'text' => '@ref should not appear in @ref',
     'type' => 'warning'
-  },
-  {
-    'error_line' => ':2: @ref reference to nonexistent node `@ref{Top}\'
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@ref reference to nonexistent node `@ref{Top}\'',
-    'type' => 'error'
   }
 ];
 

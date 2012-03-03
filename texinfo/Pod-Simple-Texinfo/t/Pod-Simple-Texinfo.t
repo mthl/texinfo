@@ -130,7 +130,7 @@ new line
 ', 'head with new line');
 
 run_test('=head1 L</somewhere>
-', '@chapter somewhere
+', '@chapter @ref{somewhere}
 
 ', 'ref in section');
 

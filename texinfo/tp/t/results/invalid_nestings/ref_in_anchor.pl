@@ -104,7 +104,7 @@ $result_trees{'ref_in_anchor'} = {
               {},
               {}
             ],
-            'normalized' => 'TOP-'
+            'normalized' => 'TOP-Top'
           },
           'line_nr' => {},
           'parent' => {}
