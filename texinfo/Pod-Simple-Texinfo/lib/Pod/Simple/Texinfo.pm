@@ -265,14 +265,16 @@ sub _pod_title_to_file_name($)
   return $name;
 }
 
-sub _protect_comma($) {
+sub _protect_comma($)
+{
   my $texinfo = shift;
   my $tree = parse_texi_line(undef, $texinfo);
   $tree = protect_comma_in_tree($tree);
   return Texinfo::Convert::Texinfo::convert($tree);
 }
 
-sub _protect_hashchar($) {
+sub _protect_hashchar($)
+{
   my $texinfo = shift;
   # protect # first in line
   if ($texinfo =~ /#/) {
@@ -283,6 +285,15 @@ sub _protect_hashchar($) {
     return $texinfo;
   }
 }
+
+sub _reference_to_text_in_texi($)
+{
+  my $texinfo = shift;
+  my $tree = parse_texi_text(undef, $texinfo);
+  Texinfo::Structuring::reference_to_text_in_tree(undef, $tree);
+  return Texinfo::Convert::Texinfo::convert($tree);
+}  
+
 sub _section_manual_to_node_name($$$)
 {
   my $self = shift;
@@ -341,7 +352,8 @@ sub _node_name($$)
      = $self->_section_manual_to_node_name($self->texinfo_short_title,
                                           $texinfo_node_name,
                                           $self->texinfo_sectioning_base_level);
-  return $texinfo_node_name;
+  # also change refs to text
+  return _reference_to_text_in_texi($texinfo_node_name);
 }
 
 sub _prepare_anchor($$)
@@ -603,7 +615,7 @@ sub _convert_pod($)
             }
 
             my $anchor = '';
-            my $node_name = _prepare_anchor ($self, _node_name($self,$result));
+            my $node_name = _prepare_anchor($self, _node_name($self, $result));
             if ($node_name =~ /\S/) {
               if ($tagname eq 'item-text' or !$self->texinfo_section_nodes) {
                 $anchor = "\n\@anchor{$node_name}";

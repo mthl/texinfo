@@ -106,6 +106,7 @@ run_test('=over
 =item L</somewhere>
 ', '@table @asis
 @item @ref{somewhere}
+@anchor{somewhere}
 
 @end table
 
@@ -131,6 +132,7 @@ new line
 
 run_test('=head1 L</somewhere>
 ', '@chapter @ref{somewhere}
+@anchor{somewhere}
 
 ', 'ref in section');
 
@@ -142,10 +144,10 @@ run_test('=over
 
 ', '@table @asis
 @item a @ref{, pod2text,, pod2text}
-@anchor{a }
+@anchor{a pod2text}
 
 @item a @ref{, pod2latex,, pod2latex}
-@anchor{a  1}
+@anchor{a pod2latex}
 
 @end table
 
