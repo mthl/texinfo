@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 21 };
+BEGIN { plan tests => 23 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -24,12 +24,16 @@ sub test_new_node($$$$)
   my $parser = Texinfo::Parser::parser();
   my $line = $parser->parse_texi_line ($in);
   my $node = Texinfo::Structuring::_new_node($parser, $line);
-  my $texi_result = Texinfo::Convert::Texinfo::convert($node);
-  my $normalized = $node->{'extra'}->{'normalized'};
-  my $labels = $parser->labels_information();
-  my @labels = keys(%$labels);
-  ok ((scalar(@labels) == 1 and $labels[0] eq $normalized), "$name label");
-  if (!defined($normalized_ref)) {
+  
+  my ($texi_result, $normalized);
+  if (defined($node)) {
+    $texi_result = Texinfo::Convert::Texinfo::convert($node);
+    $normalized = $node->{'extra'}->{'normalized'};
+    my $labels = $parser->labels_information();
+    my @labels = keys(%$labels);
+    ok ((scalar(@labels) == 1 and $labels[0] eq $normalized), "$name label");
+  }
+  if (!defined($normalized_ref) and defined($normalized)) {
     print STDERR " --> $name($normalized): $texi_result";
   } else {
     is ($normalized_ref, $normalized, "$name normalized");
@@ -53,6 +57,7 @@ test_new_node ('changed @ref{ @code{node}} and (@pxref{ ,, , @samp{file}})',
 '@node changed @code{node} and (@samp{file})
 ', 
 'ref in new node');
+test_new_node ('@asis{}', undef, undef, 'empty node');
 
 my $parser = Texinfo::Parser::parser();
 my $tree = $parser->parse_texi_text('@node a node
