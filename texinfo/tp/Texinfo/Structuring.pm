@@ -1250,6 +1250,49 @@ sub number_floats($)
   }
 }
 
+sub _reference_to_text($$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $current = shift;
+
+  if ($current->{'cmdname'} and 
+      $Texinfo::Common::ref_commands{$current->{'cmdname'}}
+      and $current->{'extra'} 
+      and $current->{'extra'}->{'brace_command_contents'}) {
+    my @args_try_order;
+    if ($current->{'cmdname'} eq 'inforef') {
+      @args_try_order = (0, 1, 2);
+    } else {
+      @args_try_order = (0, 1, 2, 4, 3);
+    }
+    foreach my $index (@args_try_order) {
+      if (defined($current->{'args'}->[$index]) 
+          and defined($current->{'extra'}->{'brace_command_contents'}->[$index])) {
+        # This a double checking that there is some content.
+        # Not sure that it is useful.
+        my $text = Texinfo::Convert::Text::convert($current->{'args'}->[$index]);
+        if (defined($text) and $text =~ /\S/) {
+          my $result = {'contents' => 
+                $current->{'extra'}->{'brace_command_contents'}->[$index],
+                        'parent' => $current->{'parent'}};
+          return ($result);
+        }
+      }
+    }
+    return {'text' => '', 'parent' => $current->{'parent'}};
+  } else {
+    return ($current);
+  }
+}
+
+sub reference_to_text_in_tree($$)
+{
+  my $self = shift;
+  my $tree = shift;
+  return Texinfo::Common::modify_tree($self, $tree, \&_reference_to_text);
+}
+
 # prepare a new node and register it
 sub _new_node($$)
 {
@@ -1259,6 +1302,7 @@ sub _new_node($$)
   $node_tree = Texinfo::Common::protect_comma_in_tree($node_tree);
   $node_tree->{'contents'} 
      = Texinfo::Common::protect_first_parenthesis($node_tree->{'contents'});
+  $node_tree = reference_to_text_in_tree($self, $node_tree);
 
   return undef if (!$node_tree->{'contents'} 
                    or !scalar(@{$node_tree->{'contents'}}));

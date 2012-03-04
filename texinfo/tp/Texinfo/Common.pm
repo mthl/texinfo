@@ -1645,8 +1645,8 @@ sub modify_tree($$$;$)
   if ($tree->{'args'}) {
     my @args = @{$tree->{'args'}};
     for (my $i = 0; $i <= $#args; $i++) {
-      modify_tree($self, $args[$i], $operation, $argument);
       my @new_args = &$operation($self, 'arg', $args[$i], $argument);
+      modify_tree($self, $args[$i], $operation, $argument);
       # this puts the new args at the place of the old arg using the 
       # offset from the end of the array
       splice (@{$tree->{'args'}}, $i - $#args -1, 1, @new_args);
@@ -1658,8 +1658,8 @@ sub modify_tree($$$;$)
   if ($tree->{'contents'}) {
     my @contents = @{$tree->{'contents'}};
     for (my $i = 0; $i <= $#contents; $i++) {
-      modify_tree($self, $contents[$i], $operation, $argument);
       my @new_contents = &$operation($self, 'content', $contents[$i], $argument);
+      modify_tree($self, $contents[$i], $operation, $argument);
       # this puts the new contents at the place of the old content using the 
       # offset from the end of the array
       splice (@{$tree->{'contents'}}, $i - $#contents -1, 1, @new_contents);
