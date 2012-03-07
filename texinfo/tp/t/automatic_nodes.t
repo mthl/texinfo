@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 23 };
+BEGIN { plan tests => 24 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -57,7 +57,8 @@ test_new_node ('changed @ref{ @code{node}} and (@pxref{ ,, , @samp{file}})',
 '@node changed @code{node} and (@samp{file})
 ', 
 'ref in new node');
-test_new_node ('@asis{}', undef, undef, 'empty node');
+test_new_node ('@asis{}', '-1', '@node @asis{} 1
+', 'empty node');
 
 my $parser = Texinfo::Parser::parser();
 my $tree = $parser->parse_texi_text('@node a node
@@ -92,6 +93,8 @@ Text.
 
 @unnumbered
 
+@section @asis{}
+
 @bye';
 
 my $reference = 
@@ -122,7 +125,11 @@ Text.
 @node section 1
 @section section
 
+@node  1
 @unnumbered
+
+@node @asis{} 2
+@section @asis{}
 
 @bye
 ';

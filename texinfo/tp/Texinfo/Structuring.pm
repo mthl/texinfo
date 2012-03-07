@@ -1304,8 +1304,12 @@ sub _new_node($$)
      = Texinfo::Common::protect_first_parenthesis($node_tree->{'contents'});
   $node_tree = reference_to_text_in_tree($self, $node_tree);
 
-  return undef if (!$node_tree->{'contents'} 
-                   or !scalar(@{$node_tree->{'contents'}}));
+  my $empty_node = 0;
+  if (!$node_tree->{'contents'} 
+      or !scalar(@{$node_tree->{'contents'}})) {
+    $node_tree->{'contents'} = [{'text' => ''}];
+    $empty_node = 1;
+  }
 
   unless (($node_tree->{'contents'}->[-1]->{'cmdname'}
        and ($node_tree->{'contents'}->[-1]->{'cmdname'} eq 'c'
@@ -1316,7 +1320,7 @@ sub _new_node($$)
            {'type' => 'spaces_at_end', 'text' => "\n"};
   }
 
-  my $appended_number = 0;
+  my $appended_number = 0 +$empty_node;
   my ($node, $parsed_node);
 
   while (!defined($node) 
@@ -1338,8 +1342,14 @@ sub _new_node($$)
       $content->{'parent'} = $node_arg;
     }
     $parsed_node = Texinfo::Parser::_parse_node_manual($node_arg);
-    return undef if (!defined($parsed_node) or !$parsed_node->{'node_content'}
-                     or $parsed_node->{'normalized'} !~ /[^-]/);
+    if (!defined($parsed_node) or !$parsed_node->{'node_content'}
+        or $parsed_node->{'normalized'} !~ /[^-]/) {
+      if ($appended_number) {
+        return undef;
+      } else {
+        $node = undef;
+      }
+    }
     $appended_number++;
   }
 
@@ -1415,7 +1425,7 @@ sub insert_nodes_for_sectioning_commands($$)
         $new_node_tree = Texinfo::Common::copy_tree({'contents' 
           => $content->{'extra'}->{'misc_content'}});
       }
-      my $new_node = _new_node ($self, $new_node_tree);
+      my $new_node = _new_node($self, $new_node_tree);
       if (defined($new_node)) {
         push @contents, $new_node;
         $new_node->{'extra'}->{'associated_section'} = $content;
