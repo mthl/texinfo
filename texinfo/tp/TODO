@@ -58,9 +58,6 @@ Missing tests
 
 Unit test of end_line_count for Texinfo/Convert/Paragraph.pm .... containers.
 
-Test no empty line before and after a sectioning command.  With text, but
-also commands.
-
 In html test empty @top for title, with different cases for 
 setcontentsaftertit* and for anchors.
 

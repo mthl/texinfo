@@ -474,6 +474,25 @@ bbbbbbbbb1 bbbbbbbbbbb2 bbbbbbbbbb3 bbbbbbbbbbbbbb4.
 
            aaa b 7
 '],
+['no_empty_line_after_section',
+'Text
+@top top
+Other text
+
+@chapter chap
+@c comment
+
+Para
+@comment c
+@section sec
+@uref{url} A.
+
+@sp 3
+@section after sp
+@indent
+Para indented.
+
+'],
 );
 
 my $insert_copying_and_paragraph = 
