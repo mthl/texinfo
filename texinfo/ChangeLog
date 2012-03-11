@@ -1,3 +1,10 @@
+2012-03-11  Samuel Bronson  <naesten@gmail.com>  (tiny change)
+
+	* doc/texinfo.tex (\getfilename): \edef the argument first
+	so @value can be expanded.
+	(\xrefX): call \makevalueexpandable.
+	#35793, bug-texinfo 11 Mar 2012 21:17:45.
+
 2012-02-28  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\center): use \centersub rather than \next.
