@@ -184,10 +184,13 @@ sub _fix_texinfo_tree($$$;$)
   my $do_master_menu = shift;
   my $parser = Texinfo::Parser::parser();
   my $tree = $parser->parse_texi_text($manual_texi);
+  if ($fill_gaps_in_sectioning) {
+    $tree->{'contents'} 
+      = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+    $tree->{'contents'}
+      = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+  }
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
-  $tree->{'contents'} 
-    = Texinfo::Structuring::fill_gaps_in_sectioning($tree) 
-      if ($fill_gaps_in_sectioning);
   Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree) 
     if ($section_nodes);
   Texinfo::Structuring::regenerate_master_menu($parser) if ($do_master_menu);
