@@ -37,7 +37,12 @@ while [ z"$1" != 'z' ]; do
   [ -d "$dir" ] || mkdir $dir
   (export srcdir_test=$dir; cd "$dir" && ../"$srcdir"/"$command" -dir $dir $arg)
   result=$?
-  echo "$dir: $result"
+  if [ "z$result" = 'z0' ]; then
+    result_text=ok
+  else
+    result_text=fail
+  fi
+  echo "$dir: $result_text"
   [ $result != 0 ] && failed=1
 done
 
