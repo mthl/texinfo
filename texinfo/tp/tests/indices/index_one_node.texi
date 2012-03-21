@@ -12,7 +12,7 @@ Top node
 anchor ref @anchor{ref}.
 
 @menu
-* (gcc):: ref to gcc
+* (some_manual_name_with_gcc):: ref to gcc
 @end menu
 
 
