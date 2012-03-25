@@ -15,6 +15,12 @@ Bugs
 Delayed bugs
 ============
 
+@-commands in index entries are transliterated when sorting, they should
+certainly be converted to unicode instead.
+
+Sorting of index entries should be locale dependent and sort properly
+unicode sorting.
+
 Punctuation and spaces before @image do not lead to a doubling of space.
 In fact @image is completly formatted outside of usual formatting containers.
 Not sure what should be the right way?

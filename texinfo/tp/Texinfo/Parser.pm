@@ -453,11 +453,13 @@ my %full_line_commands;
 $full_line_commands{'center'} = 1;
 $full_line_commands{'exdent'} = 1;
 
+
 my @preformatted_contexts = ('preformatted', 'rawpreformatted');
 my %preformatted_contexts;
 foreach my $preformatted_context (@preformatted_contexts) {
   $preformatted_contexts{$preformatted_context} = 1;
 }
+
 # contexts on the context_stack stack where empty line don't trigger
 # paragraph
 my %no_paragraph_contexts;

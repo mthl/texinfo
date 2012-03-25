@@ -976,17 +976,25 @@ sub run_all($$;$$$)
   my $debug = shift;
 
   my $test = new_test($name, $generate, $debug);
-  my $ran_tests = $test_cases;
+  my $ran_tests;
   if (defined($test_case_name)) {
     if ($test_case_name =~ /^\d+$/) {
       $ran_tests = [ $test_cases->[$test_case_name-1] ];
     } else {
       foreach my $test_case (@$test_cases) {
-        $ran_tests = [ $test_case ] if ($test_case->[0] eq $test_case_name);
+        if ($test_case->[0] eq $test_case_name) {
+          $ran_tests = [ $test_case ];
+          last;
+        }
       }
     }
+  } else {
+    $ran_tests = $test_cases;
   }
 
+  if (!defined($ran_tests)) {
+    die "No test\n";
+  }
   my $test_nrs = 0;
 
   foreach my $test_case (@$ran_tests) {
@@ -1009,6 +1017,7 @@ sub output_texi_file($)
   my $test_case = shift;
   my $test_name = shift @$test_case;
   my $test_text = shift @$test_case;
+  my $test_options = shift @$test_case;
 
   my $dir = "texi/$self->{'name'}/";
   mkdir "texi/" or die 
@@ -1017,31 +1026,55 @@ sub output_texi_file($)
      unless (-d $dir);
   my $file = "${dir}$test_name.texi";
   open (OUTFILE, ">$file") or die ("Open $file: $!\n");
+
+  my $first_line = "\\input texinfo \@c -*-texinfo-*-";
+  if (!defined($test_text)) {
+    my $test_file;
+    if ($test_options and $test_options->{'test_file'}) {
+      $test_file = $input_files_dir . $test_options->{'test_file'};
+      if (open (INFILE, $test_file)) {
+        my $holdTerminator = $/;
+        undef $/;
+        $test_text = <INFILE>;
+        $/ = $holdTerminator;
+      } else {
+        die "Open $test_file: $!\n";
+      }
+      if ($test_text =~ /^\\input texinfo *\@/m
+          or $test_text =~ /^\\input texinfo *$/m) {
+        $first_line = "";
+      }
+    }
+  }
   my $setfilename;
-  if ($test_text =~ /^\@setfilename/) {
+  if ($test_text =~ /^\@setfilename/m) {
     $setfilename = ''
   } else {
     $setfilename = "\@setfilename $test_name.info\n";
   }
   my $node_top;
   my $top = '';
-  if ($test_text =~ /^\@node +top *\@/i or $test_text =~ /^\@node +top *$/i) {
+  if ($test_text =~ /^\@node +top *\@/mi or $test_text =~ /^\@node +top *$/mi) {
     $node_top = "\@node Top\n";
-    unless ($test_text =~ /^\@top *\@/ or $test_text =~ /^\@top *$/) {
+    unless ($test_text =~ /^\@top *\@/m or $test_text =~ /^\@top *$/m) {
       $node_top .= "\@top $test_name\n";
     }
   } else {
     $node_top = '';
   }
-  print OUTFILE "\\input texinfo \@c -*-texinfo-*-
+  my $bye = '';
+  if ($test_text !~ /^\@bye *$/m) {
+    $bye = '@bye';
+  }
+  print OUTFILE "$first_line
 
 $setfilename
 $node_top
 
 $test_text
 
-\@bye\n";
-  close (OUTFILE);
+$bye\n";
+  close (OUTFILE) or die "Close $file: $!\n";
 }
 
 1;
