@@ -364,7 +364,7 @@ foreach my $no_close_preformatted('sp') {
 #}
 
 # commands that may appear in accents
-my %in_accent_commands = (%accent_commands);
+my %in_accent_commands = %accent_commands;
 foreach my $brace_command(keys(%brace_commands)) {
   $in_accent_commands{$brace_command} = 1 if (!$brace_commands{$brace_command});
 }
@@ -415,14 +415,11 @@ foreach my $not_in_simple_text_command('xref','ref','pxref', 'inforef') {
 }
 
 # commands that only accept simple text as argument in any context.
-# index entry commands are dynamically added.
-# root_commands are not in because they have contents and are treated 
-# separately in the condition.
 my %simple_text_commands;
 foreach my $misc_command(keys(%misc_commands)) {
   if ($misc_commands{$misc_command} =~ /^\d+$/ 
       or ($misc_commands{$misc_command} eq 'line' 
-          and (!$sectioning_commands{$misc_command} and $misc_command ne 'node'))
+          and !$sectioning_commands{$misc_command})
       or $misc_commands{$misc_command} eq 'text') {
     $simple_text_commands{$misc_command} = 1;
   }
@@ -442,7 +439,8 @@ my %full_text_commands;
 foreach my $brace_command (keys (%brace_commands)) {  
   if ($brace_commands{$brace_command} == 1 
       and !$simple_text_commands{$brace_command} 
-      and !$context_brace_commands{$brace_command}) {
+      and !$context_brace_commands{$brace_command}
+      and !$accent_commands{$brace_command}) {
     $full_text_commands{$brace_command} = 1;
   }
 }
@@ -452,6 +450,39 @@ foreach my $brace_command (keys (%brace_commands)) {
 my %full_line_commands;
 $full_line_commands{'center'} = 1;
 $full_line_commands{'exdent'} = 1;
+$full_line_commands{'item'} = 1;
+$full_line_commands{'itemx'} = 1;
+
+# Fill the valid nestings hash.  All commands not in that hash 
+# are considered to accept anything within.  There are additional
+# context tests, to make sure, for instance that we are testing
+# @-commands on the block, misc or node @-command line and not
+# in the content.
+# index entry commands are dynamically set to in_simple_text_commands
+my %default_valid_nestings;
+
+foreach my $command (keys(%accent_commands)) {
+  $default_valid_nestings{$command} = \%in_accent_commands;
+}
+foreach my $command (keys(%full_text_commands)) {
+  $default_valid_nestings{$command} = \%in_full_text_commands;
+}
+foreach my $command (keys(%simple_text_commands)) {
+  $default_valid_nestings{$command} = \%in_simple_text_commands;
+}
+foreach my $command (keys(%full_line_commands)) {
+  $default_valid_nestings{$command} = \%in_full_line_commands;
+}
+foreach my $command (keys(%sectioning_commands)) {
+  $default_valid_nestings{$command} = \%in_sectioning_command_line_commands;
+}
+# Only for block commands with line arguments
+foreach my $command (keys(%block_commands)) {
+  if ($block_commands{$command} and $block_commands{$command} ne 'raw'
+      and $block_commands{$command} ne 'conditional') {
+    $default_valid_nestings{$command} = \%in_simple_text_commands;
+  }
+}
 
 
 my @preformatted_contexts = ('preformatted', 'rawpreformatted');
@@ -488,7 +519,7 @@ sub _register_index_commands ($$)
   foreach my $prefix (keys (%{$self->{'index_names'}->{$index_name}})) {
     $self->{'misc_commands'}->{$prefix.'index'} = 'line';
     $self->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
-    $self->{'simple_text_commands'}->{$prefix.'index'} = 1;
+    $self->{'valid_nestings'}->{$prefix.'index'} = \%in_simple_text_commands;
     $self->{'command_index_prefix'}->{$prefix.'index'} = $prefix;
     $self->{'prefix_to_index_name'}->{$prefix} = $index_name;
   }
@@ -565,7 +596,7 @@ sub parser(;$$)
   # Now initialize command hash that are dynamically modified, notably
   # those for index commands, and lists, based on defaults and user provided.
   $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
-  $parser->{'simple_text_commands'} = _deep_copy (\%simple_text_commands);
+  $parser->{'valid_nestings'} = _deep_copy (\%default_valid_nestings);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   $parser->{'index_names'} = _deep_copy (\%index_names);
   $parser->{'command_index_prefix'} = {%command_index_prefix};
@@ -3952,44 +3983,35 @@ sub _parse_texi($;$)
         # block command on line command, @xref in @anchor or node...
         if ($current->{'parent'}) { 
           if ($current->{'parent'}->{'cmdname'}) {
-            if ($accent_commands{$current->{'parent'}->{'cmdname'}}                            
-                and !$in_accent_commands{$command}) {
-              $invalid_parent = $current->{'parent'}->{'cmdname'};
-            } elsif ((!$in_simple_text_commands{$command}
-                      and ($self->{'simple_text_commands'}->{$current->{'parent'}->{'cmdname'}}
-                           # following conditions arise because we distinguish
-                           # the line arg which are restricted, and the 
-                           # contents where any command may happen.
-                           or ($current->{'type'}
-                               and $current->{'type'} eq 'block_line_arg')
-                           or ($current->{'type'} 
-                               and $current->{'type'} eq 'misc_line_arg'
-                               #and ($root_commands{$current->{'parent'}->{'cmdname'}}))))
-                               and ($current->{'parent'}->{'cmdname'} eq 'node'))))
-                     or (!$in_sectioning_command_line_commands{$command}
-                         and $sectioning_commands{$current->{'parent'}->{'cmdname'}}
-                         and (!$root_commands{$current->{'parent'}->{'cmdname'}}
-                              or ($current->{'type'} 
-                                  and $current->{'type'} eq 'misc_line_arg')))
-                     or (($full_line_commands{$current->{'parent'}->{'cmdname'}}
-                          or ($current->{'type'}
-                              and $current->{'type'} eq 'misc_line_arg'
-                              and ($current->{'parent'}->{'cmdname'} eq 'itemx'
-                                   or $current->{'parent'}->{'cmdname'} eq 'item')))
-                      and !$in_full_line_commands{$command})
-                     or ($full_text_commands{$current->{'parent'}->{'cmdname'}}
-                      and !$in_full_text_commands{$command})) {
+            if (defined($self->{'valid_nestings'}->{$current->{'parent'}->{'cmdname'}})
+                and !$self->{'valid_nestings'}->{$current->{'parent'}->{'cmdname'}}->{$command}
+                # we make sure that we are on a root @-command line and 
+                # not in contents
+                and (!$root_commands{$current->{'parent'}->{'cmdname'}}
+                     or ($current->{'type'}
+                         and $current->{'type'} eq 'misc_line_arg'))
+                # we make sure that we are on a block @-command line and 
+                # not in contents
+                and (!($block_commands{$current->{'parent'}->{'cmdname'}})
+                     or ($current->{'type'} 
+                          and $current->{'type'} eq 'block_line_arg'))
+                # we make sure that we are on an @item/@itemx line and
+                # not in an @enumerate, @multitable or @itemize @item.
+                and (($current->{'parent'}->{'cmdname'} ne 'itemx'
+                     and $current->{'parent'}->{'cmdname'} ne 'item')
+                     or ($current->{'type'}
+                              and $current->{'type'} eq 'misc_line_arg'))) {
               $invalid_parent = $current->{'parent'}->{'cmdname'};
             }
           } elsif ($self->{'context_stack'}->[-1] eq 'def'
                    and !$in_simple_text_commands{$command}) {
-              my $def_block = $current;
-              while ($def_block->{'parent'} and (!$def_block->{'parent'}->{'type'} 
-                                   or $def_block->{'parent'}->{'type'} ne 'def_line')) {
-                $def_block = $def_block->{'parent'};
-              }
- 
-              $invalid_parent = $def_block->{'parent'}->{'parent'}->{'cmdname'};
+            my $def_block = $current;
+            while ($def_block->{'parent'} and (!$def_block->{'parent'}->{'type'} 
+                                 or $def_block->{'parent'}->{'type'} ne 'def_line')) {
+              $def_block = $def_block->{'parent'};
+            }
+
+            $invalid_parent = $def_block->{'parent'}->{'parent'}->{'cmdname'};
           }
         }
 
