@@ -1,5 +1,7 @@
 2012-03-31  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\commondummiesnofonts): add \inforef.
+
 	* README.dev: more about running texi2any.pl from development.
 
 2012-03-30  Karl Berry  <karl@gnu.org>
