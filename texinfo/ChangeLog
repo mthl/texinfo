@@ -1,8 +1,12 @@
+2012-03-31  Karl Berry  <karl@gnu.org>
+
+	* README.dev: more about running texi2any.pl from development.
+
 2012-03-30  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (\indexnofonts): sort keys for @lbracechar
 	and @rbracechar.
-	(\commondummies): handle \lbracechar, \rbracechar, \abbr, \image.
+	(\commondummies): handle @lbracechar @rbracechar @abbr @image.
 	All found by Patrice, tests 5, 6, 22, 24, 26.
 
 2012-03-11  Samuel Bronson  <naesten@gmail.com>  (tiny change)
