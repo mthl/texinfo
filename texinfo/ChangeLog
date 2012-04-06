@@ -1,3 +1,11 @@
+2012-04-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\crossmanualxref): new macro.
+	(\xrefX): call it, to handle cross-manual xrefs, whether with a
+	printed manual name (arg 5) or just an info filename (arg 4).
+	(\infofilenamebox, \infofilename): new macros.
+	(\toprefbox): rename from \topbox.
+
 2012-03-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\commondummiesnofonts): add \inforef.
