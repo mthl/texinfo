@@ -1,3 +1,8 @@
+2012-04-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (node): explain further that TeX requires both a
+	@node line and a sectioning command to make cross references.
+
 2012-04-06  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\crossmanualxref): new macro.
