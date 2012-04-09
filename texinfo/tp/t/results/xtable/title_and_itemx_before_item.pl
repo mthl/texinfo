@@ -208,13 +208,13 @@ in itemx
 
 $result_errors{'title_and_itemx_before_item'} = [
   {
-    'error_line' => ':3: @itemx should not begin @table
+    'error_line' => ':3: warning: @itemx should not begin @table
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
     'text' => '@itemx should not begin @table',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

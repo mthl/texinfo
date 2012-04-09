@@ -196,6 +196,12 @@ Double quotation
 @end quotation
 @end quotation
 '],
+['comment_and_itemx_before_item',
+'@table @code
+@c comment
+@itemx in itemx
+@end table
+'],
 );
 
 my @test_invalid = (
@@ -245,12 +251,6 @@ text
 ['title_and_itemx_before_item',
 '@table @emph
 Title
-@itemx in itemx
-@end table
-'],
-['comment_and_itemx_before_item',
-'@table @code
-@c comment
 @itemx in itemx
 @end table
 '],

@@ -208,15 +208,32 @@ $result_texts{'comment_and_itemx_before_item'} = 'in itemx
 
 $result_errors{'comment_and_itemx_before_item'} = [
   {
-    'error_line' => ':3: @itemx should not begin @table
+    'error_line' => ':3: warning: @itemx should not begin @table
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
     'text' => '@itemx should not begin @table',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 
+
+
+$result_converted{'plaintext'}->{'comment_and_itemx_before_item'} = '\'in itemx\'
+';
+
+
+$result_converted{'html_text'}->{'comment_and_itemx_before_item'} = '<dl compact="compact">
+<dt><code>in itemx</code></dt>
+</dl>
+';
+
+
+$result_converted{'xml'}->{'comment_and_itemx_before_item'} = '<table commandarg="code">
+<beforefirstitem><!-- comment -->
+</beforefirstitem><tableentry><tableterm><itemx><itemformat command="code">in itemx</itemformat></itemx>
+</tableterm></tableentry></table>
+';
 
 1;
