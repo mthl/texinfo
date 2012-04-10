@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.430 2012-04-08 17:02:23 karl Exp $
+@c $Id: texinfo.txi,v 1.431 2012-04-10 18:08:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -615,11 +615,11 @@ Formatting and Printing Hardcopy
 
 Generic Translator texi2any
 
-* Invoking texi2any::           How to run @command{texi2any} and @command{makeinfo} 
-                                from a shell.
-* Pointer Validation::          How to check that pointers point somewhere.
-* Configuration Variables::     Configuring @command{texi2any}.
-* texi2html::                   Ancestor of @command{texi2any}.
+* Reference Implementation:: @command{texi2any}: the reference implementation.
+* Invoking texi2any::        Running the translator from a shell.
+* Pointer Validation::       How to check that pointers point somewhere.
+* Configuration Variables::  Configuring @command{texi2any}.
+* texi2html::                An ancestor of @command{texi2any}.
 
 Configuration Variables
 
@@ -676,6 +676,7 @@ texi2any Output Customization
 @@-Command List
 
 * Command Syntax::    General syntax for varieties of @@-commands.
+* Command Contexts::  Guidelines for which commands can be used where.
 
 Sample Texinfo Files
 
@@ -1748,9 +1749,9 @@ patches beyond counting.  Fran@,{c}ois Pinard and David@tie{}D. Zuhn,
 tirelessly recorded and reported mistakes and obscurities.  Zack
 Weinberg did the impossible by implementing the macro syntax in
 @file{texinfo.tex}.  Thanks to Melissa Weisshaus for her frequent
-reviews of nearly similar editions.  Dozens of others have contributed patches and
-suggestions, they are gratefully acknowledged in the @file{ChangeLog}
-file.  Our mistakes are our own.
+reviews of nearly similar editions.  Dozens of others have contributed
+patches and suggestions, they are gratefully acknowledged in the
+@file{ChangeLog} file.  Our mistakes are our own.
 
 @cindex Scribe
 @cindex Reid, Brian
@@ -1778,23 +1779,32 @@ as printed hard copy.
 
 Moving forward, the original translator to create Info was written
 (primarily by RMS and Bob Chassell) in Emacs Lisp, namely the
-@code{texinfo-format-buffer} and other functions.  After several
-years, Brian Fox reimplemented the conversion program in C, now called
+@code{texinfo-format-buffer} and other functions.  In the early 1990s,
+Brian Fox reimplemented the conversion program in C, now called
 @command{makeinfo}.
 
 @cindex Cons, Lionel
 @cindex Dumas, Patrice
 In 2012, the C @command{makeinfo} was itself replaced by a Perl
-implementation generically called @command{texi2any}, based on
+implementation generically called @command{texi2any}.  This version
+supports the same level of output customization as
 @command{texi2html}, an independent program originally written by
 Lionel Cons, later with substantial work by many others.  The many
 additional features needed to make @command{texi2html} a replacement
-for @command{makeinfo} were implemented by Patrice Dumas.
+for @command{makeinfo} were implemented by Patrice Dumas.  The first
+never-released version of @command{texi2any} was based on the
+@command{texi2html} code.  That implementation, however, was abandoned
+in favor of the current program, which parses the Texinfo input into a
+tree for processing.  It still supports nearly all the features of
+@command{texi2html}.
 
-The new Perl program is much, much slower than the old C program.  We
-hope the speed gap will close in the future, but it may not ever be
-entirely comparable.  So why did we switch?  There were several
-important reasons.
+The new Perl program is much slower than the old C program.  We hope
+the speed gap will close in the future, but it may not ever be
+entirely comparable.  So why did we switch?  In short, we intend and
+hope that the present program will be much easier than the previous C
+implementation of @command{makeinfo} to extend to different output
+styles, back-end output formats, and all other customizations.  
+In more detail:
 
 @itemize @bullet
 @item HTML customization.  Many GNU and other free software packages
@@ -1813,18 +1823,20 @@ much of that comes essentially for free.
 
 @item Additional back-ends.  The @command{makeinfo} code had grown
 convoluted to the point where adding a new back-end was quite complex,
-requiring unfortunate interactions with existing back-ends.  In
-contrast, our Perl implementation can provide a clean tree-based
-structure for all back-ends to work from.  People have requested
-numerous different back-ends (@LaTeX{}, the latest (X)HTML, @dots{}),
-and they will now be much more feasible to implement.  Which leads to
-the last item:
+requiring complex interactions with existing back-ends.  In contrast,
+our Perl implementation provides a clean tree-based representation for
+all back-ends to work from.  People have requested numerous different
+back-ends (@LaTeX{}, the latest (X)HTML, @dots{}), and they will now
+be much more feasible to implement.  Which leads to the last item:
 
 @item Making contributions easier.  In general, due to the cleaner
 structure, the Perl program should be considerably easier than the C
 for anyone to read and contribute to, with the resulting obvious
 benefits.
 @end itemize
+
+@xref{Reference Implementation}, for more on the rationale for and
+role of @command{texi2any}.
 
 
 @node Texinfo Mode
@@ -16484,7 +16496,7 @@ and PostScript) for Texinfo manuals.  TeX is freely redistributable,
 and you can get it over the Internet or on physical media.  See
 @url{http://tug.org/texlive}.
 
-@c let's try to keep that text in sync with www.gnu.org/prep/FTP
+@c please keep that text in sync with www.gnu.org/prep/FTP
 
 
 @node Generic Translator texi2any
@@ -16518,28 +16530,59 @@ Initialization files are written in Perl, like the main program, and
 anything which may be specified on the command line may also be
 specified within a initialization file.
 
-We call it ``the'' translator for Texinfo instead of just ``a''
-translator, even though of course it's technically and legally
-possible for other implementations to be written.  The reason is that
-alternative implementations are highly likely to have subtle (or
-not-so-subtle) differences in the language, and thus Texinfo documents
-become dependent on the processor, which is bad for everyone.  Indeed,
-it was the existence of the @command{texi2html} implementation which
-spawned the merging back into the one program we have now.  We
-now consider @command{texi2any} as the reference implementation.
-
-We intend and hope that the present program should be easier than the
-previous C implementation of @command{makeinfo} to extend to different
-output styles, back-end output formats, and all other customizations.
-
-The rest of this chapter gives the rest of the details.
+The rest of this chapter goes into the details.
 
 @menu
-* Invoking texi2any::           How to run @command{texi2any} from a shell.
-* Pointer Validation::          How to check that pointers point somewhere.
-* Configuration Variables::     Configuring @command{texi2any}.
-* texi2html::                   Ancestor of @command{texi2any}.
+* Reference Implementation:: @command{texi2any}: the reference implementation.
+* Invoking texi2any::        Running the translator from a shell.
+* Pointer Validation::       How to check that pointers point somewhere.
+* Configuration Variables::  Configuring @command{texi2any}.
+* texi2html::                An ancestor of @command{texi2any}.
 @end menu
+
+
+@node Reference Implementation
+@section @command{texi2any}: A Reference Implementation
+
+@cindex @command{texi2any}, as reference implementation
+@cindex Reference implementation
+@cindex Implementation, @command{texi2any} as reference
+
+Above, we called @command{texi2any} ``the'' translator for Texinfo
+instead of just ``a'' translator, even though of course it's
+technically and legally possible for other implementations to be
+written.  The reason is that alternative implementations are highly
+likely to have subtle (or not-so-subtle) differences in behavior, and
+thus Texinfo documents would become dependent on the processor.
+Therefore, it is important to have a reference implementation that
+defines parts of the language not fully specified by the manual (often
+intentionally so).  It is equally important to have consistent
+command-line options and other behavior for processors.
+
+@cindex Tree representation of documents
+@cindex Syntax tree representation of documents
+@cindex Abstract syntax tree representation of documents
+For this reason, the once-independent @command{texi2html} Perl Texinfo
+processor was made compatible with the C implementation of
+@command{makeinfo}, to avoid continuing with two different
+implementations (@pxref{History}).  The current reference
+implementation, @command{texi2any}, inherited the design of
+customization and other features from @command{texi2html} (for more on
+@command{texi2html} compatibility, @pxref{texi2html}).  However,
+@code{texi2any} is a full reimplementation: it constructs a tree-based
+representation of the input document for all back-ends to work from.
+
+@cindex Texinfo language tests
+@cindex Tests, of Texinfo language
+Extensive tests of the language were developed at the same time as
+@command{texi2any}; we plead with anyone thinking of writing a program
+to parse Texinfo input to at least make use of these tests.  
+
+With the release of @command{texi2any} as the reference
+implementation, development of both the C implementation of
+@command{makeinfo} and @command{texi2html} has been halted.  Going
+forward, we ask authors of Texinfo documents to use only
+@command{texi2any}.
 
 
 @node Invoking texi2any
@@ -19874,6 +19917,7 @@ given in the section below.
 
 @menu
 * Command Syntax::    General syntax for varieties of @@-commands.
+* Command Contexts::  Guidelines for which commands can be used where.
 @end menu
 
 @sp 1
@@ -21259,6 +21303,51 @@ a line.  It is also no longer needed, since all formatters now refill
 paragraphs automatically.
 
 
+@node Command Contexts
+@section @@-Command Contexts
+
+@cindex Contexts, of @@-commands
+
+Here we describe approximately which @@-commands can be used in which
+contexts.  It merely gives the general idea and is not exhaustive or
+meant to be a complete reference.  Discrepancies between the
+information here and the @code{makeinfo} or @TeX{} implementations
+are most likely to be resolved in favor of the implementation.
+
+By @dfn{general text} below, we mean anything except sectioning and
+other such outer-level document commands, such as @code{@@section},
+@code{@@node}, and @code{@@setfilename}.
+
+@code{@@c}, @code{@@comment} and @code{@@if ... @@end if} conditional
+commands may appear anywhere (except the conditionals must still be on
+lines by themselves).  @code{@@caption} and @code{@@shortcaption} may
+only appear in @code{@@float} but may contain general text.
+@code{@@footnote} content likewise.
+
+@@-commands with braces marking text (such as @code{@@strong},
+@code{@@sc}, @code{@@asis}) may contain raw formatter commands such as
+@code{@@html} but no other block commands (other commands terminated
+by @code{@@end}) and may not be split across paragraphs, but may
+otherwise contain general text.
+
+In addition to the block command restriction, on @code{@@center},
+@code{@@exdent} and @code{@@item} in @code{@@table} lines, @@-commands
+that makes only sense in a paragraph are not accepted, such as
+@code{@@indent}.
+
+In addition to the above, sectioning commands cannot contain
+@code{@@anchor} or @code{@@footnote}.
+
+In the addition to the above, remaining commands (@code{@@node},
+@code{@@anchor}, @code{@@printindex}, @code{@@ref}, @code{@@math},
+@code{@@cindex}, @code{@@url}, @code{@@image}, and so on) cannot
+contain cross reference commands (@code{@@ref}, @code{@@xref},
+@code{@@pxref} and @code{@@inforef}).
+
+For precise and complete information, we suggest looking into the test
+suites in the sources, which exhaustively try the combinations.
+
+
 @node Tips
 @appendix Tips and Hints
 
@@ -21800,7 +21889,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.430 2012-04-08 17:02:23 karl Exp $
+$Id: texinfo.txi,v 1.431 2012-04-10 18:08:18 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

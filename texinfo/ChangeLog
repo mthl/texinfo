@@ -1,3 +1,11 @@
+2012-04-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (History): amend texi2any description per Patrice.
+	(Reference Implementation): new node with the rationale/role text.
+
+	* doc/texinfo.txi (Command Contexts): new node, giving a guide
+	(essentially from Patrice) as to which commands can be used where.
+
 2012-04-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (node): explain further that TeX requires both a
