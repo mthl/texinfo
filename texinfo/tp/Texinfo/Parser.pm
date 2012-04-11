@@ -921,7 +921,7 @@ sub labels_information ($)
 
 # Following are the internal subroutines.  The most important are
 # _parse_texi:  the main parser loop.
-# _end_line:    called at an end of line.  Opening if @include lines is 
+# _end_line:    called at an end of line.  Handling of @include lines is 
 #               done here.
 # _next_text:   present the next text fragment, from pending text or line,
 #               as described above.
@@ -1555,7 +1555,7 @@ sub _close_current($$$;$$)
   my $interrupting_command = shift;
 
   if ($current->{'cmdname'}) {
-    print STDERR "CLOSING \@$current->{'cmdname'}\n" if ($self->{'DEBUG'});
+    print STDERR "CLOSING(_close_current) \@$current->{'cmdname'}\n" if ($self->{'DEBUG'});
     if (exists($brace_commands{$current->{'cmdname'}})) {
       pop @{$self->{'context_stack'}}
          if (exists $context_brace_commands{$current->{'cmdname'}});
@@ -1581,6 +1581,11 @@ sub _close_current($$$;$$)
            or $menu_commands{$current->{'cmdname'}});
       pop @{$self->{'regions_stack'}} 
          if ($region_commands{$current->{'cmdname'}});
+      #if ($current->{'args'}
+      #    and $current->{'args'}->[0] and $current->{'args'}->[0]->{'type'}
+      #    and $current->{'args'}->[0]->{'type'} eq 'block_line_arg') {
+      #  print STDERR "LLLL $current->{'cmdname'}\n";
+      #}
       $current = $current->{'parent'};
     } else {
       # There @item and @tab commands are closed, and also line commands
@@ -1643,7 +1648,7 @@ sub _close_commands($$$;$$)
          and $current->{'parent'}
      # stop if in a root command 
      # or in a context_brace_commands and searching for a specific 
-     # end block command.  
+     # end block command (with $closed_command set).  
      # This second condition means that a footnote is not closed when 
      # looking for the end of a block command, but is closed when 
      # completly closing the stack.
@@ -2978,7 +2983,6 @@ sub _end_line($$$)
               binmode($filehandle, ":encoding($self->{'perl_encoding'})")
                 if (defined($self->{'perl_encoding'}));
               print STDERR "Included $file($filehandle)\n" if ($self->{'DEBUG'});
-              $included_file = 1;
               unshift @{$self->{'input'}}, { 
                 'name' => $file,
                 'line_nr' => 0,
@@ -3083,7 +3087,7 @@ sub _end_line($$$)
     }
     $current = $current->{'parent'};
     if ($end_command) {
-      print STDERR "END COMMAND $end_command\n" if ($self->{'debug'});
+      print STDERR "END COMMAND $end_command\n" if ($self->{'DEBUG'});
       my $end = pop @{$current->{'contents'}};
       if ($block_commands{$end_command} ne 'conditional') {
         my $closed_command;
@@ -3114,7 +3118,7 @@ sub _end_line($$$)
                     'extra' => {'macrobody' => $body}
             };
             $inline_copying = 1;
-            print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'debug'});
+            print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'DEBUG'});
           }
           push @{$closed_command->{'contents'}}, $end;
 
@@ -3129,6 +3133,8 @@ sub _end_line($$$)
             $current = $current->{'contents'}->[-1];
             push @{$self->{'context_stack'}}, 'preformatted';
           }
+        } else {
+          #print STDERR "LLLLLLLLLLLL Cannot be here...\n";
         }
         $current = $self->_begin_preformatted($current)
           if ($close_preformatted_commands{$end_command});
@@ -3141,7 +3147,7 @@ sub _end_line($$$)
     # Also ignore @setfilename in included file, as said in the manual.
     if ($included_file or ($command eq 'setfilename'
                            and scalar(@{$self->{'input'}}) > 1)) {
-      # keep the information with sourcemark
+      # TODO keep the information with sourcemark
       pop @{$current->{'contents'}};
     # columnfractions 
     } elsif ($command eq 'setfilename'
@@ -3265,14 +3271,12 @@ sub _end_line($$$)
         print STDERR "$indent"._print_current($current);
       }
       #cluck "Problem with opened line command $self->{'context_stack'}->[-1]";
-      die "BUG: did not go up (infinite loop)\n" 
+      die "BUG: did not go up (infinite loop). Context_stack: (@{$self->{'context_stack'}})\n" 
     }
 
-    my $other_included_file = 0;
-    ($current, $other_included_file) = $self->_end_line($current, $line_nr);
-    $included_file = $included_file + $other_included_file;
+    $current = $self->_end_line($current, $line_nr);
   }
-  return ($current, $included_file);
+  return $current;
 }
 
 sub _start_empty_line_after_command($$$) {
@@ -3608,7 +3612,7 @@ sub _parse_texi($;$)
         }
       # in @verb. type should be 'brace_command_arg'
       } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
-             and $current->{'parent'}->{'cmdname'} eq 'verb') { 
+             and $current->{'parent'}->{'cmdname'} eq 'verb') {
         # collect the first character if not already done
         if (!defined($current->{'parent'}->{'type'})) {
           if ($line =~ /^$/) {
@@ -3642,11 +3646,11 @@ sub _parse_texi($;$)
           if ($self->{'DEBUG'});
         ($line, $line_nr) = _next_text($self, $line_nr, $current);
         if (!defined($line)) {
-          # end of the file
-          my $included_file;
-          ($current, $included_file) = 
-            _end_line ($self, $current, $line_nr);
-          if (!$included_file) {
+          # end of the file.  It may happen that there is an included file
+          # not followed by EOL, so @{$self->{'input'}} has to be checked.
+          # FIXME is there a corresponding test case?
+          $current = _end_line ($self, $current, $line_nr);
+          if (scalar(@{$self->{'input'}}) == 0) {
             $current = _close_commands($self, $current, $line_nr);
             return $root;
           }
@@ -4109,9 +4113,7 @@ sub _parse_texi($;$)
                 { 'type' => 'misc_arg', 'text' => $arg, 
                   'parent' => $current->{'contents'}->[-1] };
             }
-            my $included_file;
-            ($current, $included_file) = 
-              _end_line ($self, $current, $line_nr);
+            $current = _end_line ($self, $current, $line_nr);
             if ($command eq 'raisesections') {
               $self->{'sections_level'}++;
             } elsif ($command eq 'lowersections') {
@@ -4498,9 +4500,7 @@ sub _parse_texi($;$)
                                         $command), $line_nr);
           }
           if ($command eq "\n") {
-            my $included_file;
-            ($current, $included_file) = 
-              _end_line ($self, $current, $line_nr);
+            $current = _end_line ($self, $current, $line_nr);
             last;
           }
         } else {
@@ -4650,7 +4650,7 @@ sub _parse_texi($;$)
               _remove_empty_content_arguments($current);
             }
             my $closed_command = $current->{'parent'}->{'cmdname'};
-            print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
+            print STDERR "CLOSING(brace) \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
             delete $current->{'parent'}->{'remaining_args'};
             if (defined($brace_commands{$closed_command}) 
                  and $brace_commands{$closed_command} == 0
@@ -4788,7 +4788,7 @@ sub _parse_texi($;$)
               my $context_command = pop @{$self->{'context_stack'}};
               die "BUG: def_context $context_command "._print_current($current) 
                 if ($context_command ne $current->{'parent'}->{'cmdname'});
-              print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
+              print STDERR "CLOSING(context command) \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
               my $closed_command = $current->{'parent'}->{'cmdname'};
               $self->_register_global_command($current->{'parent'}->{'cmdname'},
                                               $current->{'parent'}, $line_nr);
@@ -4855,9 +4855,7 @@ sub _parse_texi($;$)
           die "BUG: text remaining and `$line'\n" if (scalar(@{$self->{'input'}}));
         }
         #print STDERR "END LINE AFTER MERGE END OF LINE: ". _print_current($current)."\n";
-        my $included_file;
-        ($current, $included_file) = 
-            _end_line ($self, $current, $line_nr);
+        $current = _end_line ($self, $current, $line_nr);
         last;
       }
     }
