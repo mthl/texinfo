@@ -3497,7 +3497,6 @@ sub _parse_texi($;$)
                                         'parent' => $current };
     }
 
-
     while (1) {
       # in a raw or ignored conditional block command
       if ($current->{'cmdname'} and 
@@ -3641,19 +3640,17 @@ sub _parse_texi($;$)
       # this mostly happens in the following cases:
       #   after expansion of user defined macro that doesn't end with EOL
       #   after a protection of @\n in @def* line
+      #   at the end of an expanded Texinfo fragment
       while ($line eq '') {
-        print STDERR "END OF TEXT not at end of line\n"
+        print STDERR "EMPTY TEXT\n"
           if ($self->{'DEBUG'});
         ($line, $line_nr) = _next_text($self, $line_nr, $current);
         if (!defined($line)) {
-          # end of the file.  It may happen that there is an included file
-          # not followed by EOL, so @{$self->{'input'}} has to be checked.
-          # FIXME is there a corresponding test case?
+          # end of the file or of a text fragment.
           $current = _end_line ($self, $current, $line_nr);
-          if (scalar(@{$self->{'input'}}) == 0) {
-            $current = _close_commands($self, $current, $line_nr);
-            return $root;
-          }
+          # It may happen that there is an @include file on the line, it 
+          # will be picked up at NEXT_LINE
+          next NEXT_LINE;
         }
       }
 

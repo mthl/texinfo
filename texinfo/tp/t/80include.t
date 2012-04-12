@@ -6,6 +6,9 @@ my @test_cases = (
 [ 'simple',
 '@include inc_file.texi
 '],
+['simple_no_eol',
+'@include inc_file.texi'
+],
 ['macro_definition_in_include',
 '@include macro_included.texi
 
