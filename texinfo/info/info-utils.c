@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.17 2011-11-17 10:04:59 gray Exp $
+   $Id: info-utils.c,v 1.18 2012-04-12 10:38:28 gray Exp $
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011
    Free Software Foundation, Inc.
@@ -41,6 +41,9 @@ char *info_parsed_nodename = NULL;
    calling info_parse_xxx (). */
 int info_parsed_line_number = 0;
 
+static void save_string (char *string, char **string_p, int *string_size_p);
+static void saven_string (char *string, int len, char **string_p,
+    int *string_size_p);
 /* Functions to remember a filename or nodename for later return. */
 static void save_filename (char *filename);
 static void saven_filename (char *filename, int len);
@@ -53,11 +56,16 @@ static REFERENCE **info_references_internal (char *label,
 
 /* Parse the filename and nodename out of STRING.  If STRING doesn't
    contain a filename (i.e., it is NOT (FILENAME)NODENAME) then set
-   INFO_PARSED_FILENAME to NULL.  If second argument NEWLINES_OKAY is
-   non-zero, it says to allow the nodename specification to cross a
-   newline boundary (i.e., only `,', `.', or `TAB' can end the spec). */
+   INFO_PARSED_FILENAME to NULL.  The second argument is one of
+   the PARSE_NODE_* constants.  It specifies how to parse the node name:
+
+   PARSE_NODE_DFLT             Node name stops at LF, `,', `.', or `TAB'
+   PARSE_NODE_SKIP_NEWLINES    Node name stops at `,', `.', or `TAB'
+   PARSE_NODE_VERBATIM         Don't parse nodename
+*/ 
+   
 void
-info_parse_node (char *string, int newlines_okay)
+info_parse_node (char *string, int flag)
 {
   register int i = 0;
 
@@ -113,7 +121,7 @@ info_parse_node (char *string, int newlines_okay)
     }
 
   /* Parse out nodename. */
-  i = skip_node_characters (string, newlines_okay);
+  i = skip_node_characters (string, flag);
   saven_nodename (string, i);
   canonicalize_whitespace (info_parsed_nodename);
   if (info_parsed_nodename && !*info_parsed_nodename)
@@ -177,7 +185,7 @@ info_parse_label (char *label, NODE *node)
 
   nodeline += i;
   nodeline += skip_whitespace (nodeline);
-  info_parse_node (nodeline, DONT_SKIP_NEWLINES);
+  info_parse_node (nodeline, PARSE_NODE_DFLT);
 }
 
 /* **************************************************************** */
@@ -329,9 +337,9 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
           refdef += skip_whitespace_and_newlines (refdef);
 
           if (searching_for_menu_items)
-            info_parse_node (refdef, DONT_SKIP_NEWLINES);
+            info_parse_node (refdef, PARSE_NODE_DFLT);
           else
-            info_parse_node (refdef, SKIP_NEWLINES);
+            info_parse_node (refdef, PARSE_NODE_SKIP_NEWLINES);
 
           if (info_parsed_filename)
             entry->filename = xstrdup (info_parsed_filename);
@@ -594,10 +602,6 @@ static int parsed_filename_size = 0;
 /* Amount of space allocated to INFO_PARSED_NODENAME via xmalloc (). */
 static int parsed_nodename_size = 0;
 
-static void save_string (char *string, char **string_p, int *string_size_p);
-static void saven_string (char *string, int len, char **string_p,
-    int *string_size_p);
-
 /* Remember FILENAME in PARSED_FILENAME.  An empty FILENAME is translated
    to a NULL pointer in PARSED_FILENAME. */
 static void
@@ -644,13 +648,18 @@ save_string (char *string, char **string_p, int *string_size_p)
       *string_p = NULL;
       *string_size_p = 0;
     }
-  else
+  else if (string_size_p)
     {
       if (strlen (string) >= (unsigned int) *string_size_p)
-        *string_p = xrealloc
-          (*string_p, (*string_size_p = 1 + strlen (string)));
+        *string_p = xrealloc (*string_p,
+			      (*string_size_p = 1 + strlen (string)));
 
       strcpy (*string_p, string);
+    }
+  else
+    {
+      free (*string_p);
+      *string_p = xstrdup (string);
     }
 }
 
@@ -666,11 +675,18 @@ saven_string (char *string, int len, char **string_p, int *string_size_p)
       *string_p = NULL;
       *string_size_p = 0;
     }
-  else
+  else 
     {
-      if (len >= *string_size_p)
-        *string_p = xrealloc (*string_p, (*string_size_p = 1 + len));
-
+      if (string_size_p)
+	{
+	  if (len >= *string_size_p)
+	    *string_p = xrealloc (*string_p, (*string_size_p = 1 + len));
+	}
+      else
+	{
+	  free (*string_p);
+	  *string_p = xmalloc (1 + len);
+	}
       strncpy (*string_p, string, len);
       (*string_p)[len] = '\0';
     }

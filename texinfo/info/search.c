@@ -1,5 +1,5 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.13 2011-10-18 18:47:21 karl Exp $
+   $Id: search.c,v 1.14 2012-04-12 10:38:29 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011
    Free Software Foundation, Inc.
@@ -491,35 +491,51 @@ skip_non_whitespace (char *string)
   return i;
 }
 
-/* Return the index of the first non-node character in STRING.  Note that
-   this function contains quite a bit of hair to ignore periods in some
-   special cases.  This is because we here at GNU ship some info files which
-   contain nodenames that contain periods.  No such nodename can start with
-   a period, or continue with whitespace, newline, or ')' immediately following
-   the period.  If second argument NEWLINES_OKAY is non-zero, newlines should
+/* Return the index of the first non-node character in STRING.
+
+   The second argument instructs how to parse the node name:
+
+   PARSE_NODE_DFLT             Node name stops at LF, `,', `.', or `TAB'
+   PARSE_NODE_SKIP_NEWLINES    Node name stops at `,', `.', or `TAB'
+   PARSE_NODE_VERBATIM         Don't parse nodename
+   PARSE_NODE_START            The STRING argument is retrieved from a node
+                               start line, and therefore ends in `,' only.
+   
+   Note that if FLAG is PARSE_NODE_DFLT or PARSE_NODE_SKIP_NEWLINES, this
+   function contains quite a bit of hair to ignore periods in some special
+   cases.  This is because we here at GNU ship some info files which contain
+   nodenames that contain periods.  No such nodename can start with a period,
+   or continue with whitespace, newline, or ')' immediately following the
+   period.  If second argument NEWLINES_OKAY is non-zero, newlines should
    be skipped while parsing out the nodename specification. */
 int
-skip_node_characters (char *string, int newlines_okay)
+skip_node_characters (char *string, int flag)
 {
   register int c, i = 0;
   int paren_seen = 0;
   int paren = 0;
 
+  if (!string)
+    return 0;
+
+  if (flag == PARSE_NODE_VERBATIM)
+    return strlen (string);
+  
   /* Handle special case.  This is when another function has parsed out the
      filename component of the node name, and we just want to parse out the
      nodename proper.  In that case, a period at the start of the nodename
      indicates an empty nodename. */
-  if (string && *string == '.')
+  if (*string == '.')
     return 0;
 
-  if (string && *string == '(')
+  if (*string == '(')
     {
       paren++;
       paren_seen++;
       i++;
     }
 
-  for (; string && (c = string[i]); i++)
+  for (; (c = string[i]); i++)
     {
       if (paren)
         {
@@ -530,25 +546,26 @@ skip_node_characters (char *string, int newlines_okay)
 
           continue;
         }
-      
+
       /* If the character following the close paren is a space or period,
          then this node name has no more characters associated with it. */
       if (c == '\t' ||
           c == ','  ||
           c == INFO_TAGSEP ||
-          ((!newlines_okay) && (c == '\n')) ||
+          (!(flag == PARSE_NODE_SKIP_NEWLINES) && (c == '\n')) ||
           ((paren_seen && string[i - 1] == ')') &&
            (c == ' ' || c == '.')) ||
-          (c == '.' &&
-           (
+	  (flag != PARSE_NODE_START &&
+	   (c == '.' &&
+	    (
 #if 0
 /* This test causes a node name ending in a period, like `This.', not to
    be found.  The trailing . is stripped.  This occurs in the jargon
    file (`I see no X here.' is a node name).  */
            (!string[i + 1]) ||
 #endif
-            (whitespace_or_newline (string[i + 1])) ||
-            (string[i + 1] == ')'))))
+	   (whitespace_or_newline (string[i + 1])) ||
+	   (string[i + 1] == ')')))))
         break;
     }
   return i;
@@ -685,7 +702,7 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
       tmp_search.start += offset;
       tmp_search.start += skip_whitespace (tmp_search.buffer + tmp_search.start);
       offset = skip_node_characters
-        (tmp_search.buffer + tmp_search.start, DONT_SKIP_NEWLINES);
+        (tmp_search.buffer + tmp_search.start, PARSE_NODE_DFLT);
 
       /* Notice that this is an exact match.  You cannot grovel through
          the buffer with this function looking for random nodes. */

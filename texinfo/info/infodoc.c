@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.30 2011-12-27 19:34:17 karl Exp $
+   $Id: infodoc.c,v 1.31 2012-04-12 10:38:29 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008, 2011
@@ -515,7 +515,7 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node `(info)Help'")
     nodename = "Help";
 
   /* Try to get the info file for Info. */
-  node = info_get_node ("Info", nodename);
+  node = info_get_node ("Info", nodename, PARSE_NODE_DFLT);
 
   if (!node)
     {

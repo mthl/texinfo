@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.18 2012-01-14 17:58:31 gray Exp $
+   $Id: nodes.c,v 1.19 2012-04-12 10:38:29 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009, 2011 Free Software Foundation, Inc.
@@ -75,16 +75,19 @@ extern void maybe_build_dir_node (char *dirname);
 
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
    If FILENAME is NULL, `dir' is used.
-   IF NODENAME is NULL, `Top' is used.
+   If NODENAME is NULL, `Top' is used.
+   The FLAG argument (one of the PARSE_NODE_* constants) instructs how to
+   parse NODENAME.
+   
    If the node cannot be found, return NULL. */
 NODE *
-info_get_node (char *filename, char *nodename)
+info_get_node (char *filename, char *nodename, int flag)
 {
   NODE *node;
   FILE_BUFFER *file_buffer = NULL;
 
   info_recent_file_error = NULL;
-  info_parse_node (nodename, DONT_SKIP_NEWLINES);
+  info_parse_node (nodename, flag);
   nodename = NULL;
 
   if (info_parsed_filename)
@@ -555,7 +558,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
 
       /* Find the end of the nodename. */
       end = start +
-        skip_node_characters (nodeline + start, DONT_SKIP_NEWLINES);
+        skip_node_characters (nodeline + start, PARSE_NODE_DFLT);
 
       /* Okay, we have isolated the node name, and we know where the
          node starts.  Remember this information. */
@@ -1254,7 +1257,7 @@ adjust_nodestart (NODE *node, int min, int max)
             {
               nodedef += offset;
               nodedef += skip_whitespace (nodedef);
-              offset = skip_node_characters (nodedef, DONT_SKIP_NEWLINES);
+              offset = skip_node_characters (nodedef, PARSE_NODE_START);
               if (((unsigned int) offset == strlen (node->nodename)) &&
                   (strncmp (node->nodename, nodedef, offset) == 0))
                 {

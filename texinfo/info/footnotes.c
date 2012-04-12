@@ -1,5 +1,5 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
-   $Id: footnotes.c,v 1.12 2012-01-14 17:58:32 gray Exp $
+   $Id: footnotes.c,v 1.13 2012-04-12 10:38:28 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -95,7 +95,7 @@ make_footnotes_node (NODE *node)
                 if (!filename)
                   filename = node->filename;
 
-                fn_node = info_get_node (filename, refname);
+                fn_node = info_get_node (filename, refname, PARSE_NODE_DFLT);
 
                 if (fn_node)
                   fn_start = 0;

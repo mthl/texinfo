@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.19 2012-01-14 17:58:32 gray Exp $
+   $Id: indices.c,v 1.20 2012-04-12 10:38:28 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
@@ -138,7 +138,8 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
               REFERENCE **menu;
 
               /* Found one.  Get its menu. */
-              node = info_get_node (tag->filename, tag->nodename);
+              node = info_get_node (tag->filename, tag->nodename, 
+                                    PARSE_NODE_VERBATIM);
               if (!node)
                 continue;
 
@@ -237,7 +238,8 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
               NODE *node;
 
               node = info_get_node (initial_index_filename,
-                                    initial_index_nodename);
+                                    initial_index_nodename,
+                                    PARSE_NODE_DFLT);
               set_remembered_pagetop_and_point (window);
               window_set_node_of_window (window, node);
               remember_window_and_node (window, node);
@@ -486,7 +488,8 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   }
 
   /* Select the node corresponding to this index entry. */
-  node = info_get_node (index_index[i]->filename, index_index[i]->nodename);
+  node = info_get_node (index_index[i]->filename, index_index[i]->nodename,
+                        PARSE_NODE_DFLT);
 
   if (!node)
     {
@@ -537,7 +540,7 @@ apropos_in_all_indices (char *search_string, int inform)
   REFERENCE **dir_menu = NULL;
   NODE *dir_node;
 
-  dir_node = info_get_node ("dir", "Top");
+  dir_node = info_get_node ("dir", "Top", PARSE_NODE_DFLT);
   if (dir_node)
     dir_menu = info_menu_of_node (dir_node);
 
@@ -567,11 +570,12 @@ apropos_in_all_indices (char *search_string, int inform)
 
       /* Find this node.  If we cannot find it, try using the label of the
          entry as a file (i.e., "(LABEL)Top"). */
-      this_node = info_get_node (this_item->filename, this_item->nodename);
+      this_node = info_get_node (this_item->filename, this_item->nodename,
+                                 PARSE_NODE_VERBATIM);
 
       if (!this_node && this_item->nodename &&
           (strcmp (this_item->label, this_item->nodename) == 0))
-        this_node = info_get_node (this_item->label, "Top");
+        this_node = info_get_node (this_item->label, "Top", PARSE_NODE_DFLT);
 
       if (!this_node)
 	{

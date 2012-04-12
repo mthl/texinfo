@@ -1,5 +1,5 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.18 2011-10-18 18:47:21 karl Exp $
+    $Id: man.c,v 1.19 2012-04-12 10:38:29 gray Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
    2007, 2008, 2009, 2011 Free Software Foundation, Inc.
@@ -60,7 +60,8 @@ static char *get_manpage_contents (char *pagename);
 NODE *
 make_manpage_node (char *pagename)
 {
-  return info_get_node (MANPAGE_FILE_BUFFER_NAME, pagename);
+  return info_get_node (MANPAGE_FILE_BUFFER_NAME, pagename,
+                        PARSE_NODE_VERBATIM);
 }
 
 NODE *

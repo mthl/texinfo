@@ -1,5 +1,5 @@
 /* info-utils.h -- Exported functions and variables from info-utils.c.
-   $Id: info-utils.h,v 1.11 2011-11-17 10:04:59 gray Exp $   
+   $Id: info-utils.h,v 1.12 2012-04-12 10:38:29 gray Exp $   
 
    Copyright (C) 1993, 1996, 1998, 2002, 2003, 2004, 2007, 2011
    Free Software Foundation, Inc.
@@ -49,12 +49,23 @@ extern char *info_parsed_filename;
    calling info_parse_xxx (). */
 extern char *info_parsed_nodename;
 
+#define PARSE_NODE_DFLT          0
+#define PARSE_NODE_SKIP_NEWLINES 1
+#define PARSE_NODE_VERBATIM      2
+#define PARSE_NODE_START         3
+
 /* Parse the filename and nodename out of STRING.  If STRING doesn't
    contain a filename (i.e., it is NOT (FILENAME)NODENAME) then set
-   INFO_PARSED_FILENAME to NULL.  If second argument NEWLINES_OKAY is
-   non-zero, it says to allow the nodename specification to cross a
-   newline boundary (i.e., only `,', `.', or `TAB' can end the spec). */
-void info_parse_node (char *string, int newlines_okay);
+   INFO_PARSED_FILENAME to NULL.  The second argument is one of
+   the PARSE_NODE_* constants.  It specifies how to parse the node name:
+   
+   PARSE_NODE_DFLT             Node name stops at LF, `,', `.', or `TAB'
+   PARSE_NODE_SKIP_NEWLINES    Node name stops at `,', `.', or `TAB'
+   PARSE_NODE_VERBATIM         Don't parse nodename
+   PARSE_NODE_START            The STRING argument is retrieved from a node
+                               start line, and therefore ends in `,' only.
+*/ 
+void info_parse_node (char *string, int flag);
 
 /* Return a NULL terminated array of REFERENCE * which represents the menu
    found in NODE.  If there is no menu in NODE, just return a NULL pointer. */

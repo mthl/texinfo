@@ -1,5 +1,5 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h,v 1.8 2011-10-18 18:47:21 karl Exp $
+   $Id: nodes.h,v 1.9 2012-04-12 10:38:29 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2011
    Free Software Foundation, Inc.
@@ -134,8 +134,12 @@ extern FILE_BUFFER *info_load_file (char *filename);
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
    FILENAME can be passed as NULL, in which case the filename of "dir" is used.
    NODENAME can be passed as NULL, in which case the nodename of "Top" is used.
+
+   The FLAG argument (one of the PARSE_NODE_* constants) instructs how to
+   parse NODENAME.
+   
    If the node cannot be found, return a NULL pointer. */
-extern NODE *info_get_node (char *filename, char *nodename);
+extern NODE *info_get_node (char *filename, char *nodename, int flag);
 
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the

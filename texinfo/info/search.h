@@ -1,5 +1,5 @@
 /* search.h -- Structure used to search large bodies of text, with bounds.
-   $Id: search.h,v 1.11 2011-10-18 18:47:21 karl Exp $
+   $Id: search.h,v 1.12 2012-04-12 10:38:30 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2009, 2011
    Free Software Foundation, Inc.
@@ -79,9 +79,6 @@ extern int skip_whitespace_and_newlines (char *string);
 extern int skip_line (char *string);
 extern int skip_node_characters (char *string, int newlines_okay);
 extern int skip_node_separator (char *body);
-
-#define DONT_SKIP_NEWLINES 0
-#define SKIP_NEWLINES 1
 
 extern long find_node_separator (SEARCH_BINDING *binding);
 extern long find_tags_table (SEARCH_BINDING *binding);

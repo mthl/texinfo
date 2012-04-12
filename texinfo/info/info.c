@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.39 2012-01-01 17:09:11 karl Exp $
+   $Id: info.c,v 1.40 2012-04-12 10:38:29 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012
@@ -364,7 +364,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   /* Get the initial Info node.  It is either "(dir)Top", or what the user
      specifed with values in user_filename and user_nodenames. */
   initial_node = info_get_node (user_filename,
-                                user_nodenames ? user_nodenames[0] : 0);
+                                user_nodenames ? user_nodenames[0] : 0,
+                                PARSE_NODE_DFLT);
 
   /* If we couldn't get the initial node, this user is in trouble. */
   if (!initial_node)

@@ -1,3 +1,26 @@
+2012-04-12  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	info: improve parsing of node names containing dots.
+
+	References to node names containing dots are followed correctly,
+	if they appear in menus or in single-argument xrefs (which produce
+	references followed by double-column).
+
+	* info-utils.h (PARSE_NODE_DFLT, PARSE_NODE_SKIP_NEWLINES)
+	(PARSE_NODE_VERBATIM, PARSE_NODE_START): New constants.
+	* info/info-utils.c (info_parse_node): Change the meaning of the
+	second argument.  All uses updated.
+	(save_string, saven_string): Allow for string_size_p==NULL.
+	* info/nodes.c (info_get_node): Take three arguments, the last
+	one instructing how to parse the node name.
+	All uses updated.
+	* info/nodes.h (info_get_node): Change signature.
+	* info/search.c (skip_node_characters): Second argument controls
+	what characters can end the node name.
+	All uses updated.
+	* info/search.h (DONT_SKIP_NEWLINES,SKIP_NEWLINES): Removed.
+	All uses changed.
+
 2012-04-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (History): amend texi2any description per Patrice.
