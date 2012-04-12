@@ -349,6 +349,10 @@ some verbatim @
 ['inline_missing_first_arg',
 '@inlinefmt{ , aaa}. @inlineraw{, bbb}.
 '],
+['beginning_and_end_on_line',
+'
+@tex in tex @end tex
+'],
 );
 
 my %html_tests = (

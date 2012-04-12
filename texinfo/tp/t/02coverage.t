@@ -739,6 +739,9 @@ before first multitable
 '],
 ['delcomment', undef, {'test_file' => 'delcomment.texi'}
 ],
+['group_beginning_and_end_on_line',
+'@group within @end group
+'],
 );
 
 foreach my $test (@test_cases) {

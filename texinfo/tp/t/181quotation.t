@@ -72,6 +72,9 @@ In quotation
 In quotation
 @end quotation
 '],
+['quotation_beginning_and_end_on_line',
+'@quotation in quotation @end quotation
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

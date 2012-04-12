@@ -1581,22 +1581,10 @@ sub _close_current($$$;$$)
            or $menu_commands{$current->{'cmdname'}});
       pop @{$self->{'regions_stack'}} 
          if ($region_commands{$current->{'cmdname'}});
-      #if ($current->{'args'}
-      #    and $current->{'args'}->[0] and $current->{'args'}->[0]->{'type'}
-      #    and $current->{'args'}->[0]->{'type'} eq 'block_line_arg') {
-      #  print STDERR "LLLL $current->{'cmdname'}\n";
-      #}
       $current = $current->{'parent'};
     } else {
       # There @item and @tab commands are closed, and also line commands
       # with invalid content
-      if ($current->{'cmdname'} and $current->{'args'}
-          and $current->{'args'}->[0] and $current->{'args'}->[0]->{'type'}
-          and $current->{'args'}->[0]->{'type'} eq 'misc_line_arg') {
-        my $context = pop @{$self->{'context_stack'}};
-        die "BUG: _close_current, command with misc_line_arg, context: $context\n" 
-          if ($context ne 'line' and $context ne 'def');
-      }
       $current = $current->{'parent'};
     }
   } elsif ($current->{'type'}) {
@@ -1604,22 +1592,22 @@ sub _close_current($$$;$$)
     if ($current->{'type'} eq 'bracketed') {
       $self->_command_error($current, $line_nr, 
                             $self->__("Misplaced %c"), ord('{'));
-      $current = $current->{'parent'};
-    } else {
-      if ($current->{'type'} eq 'menu_comment' 
+    } elsif ($current->{'type'} eq 'menu_comment' 
           or $current->{'type'} eq 'menu_entry_description') {
-        print STDERR "Closing MENU COMMENT/ENTRY_DESCRIPTION ($current->{'type'}) when closing\n"
-          if ($self->{'DEBUG'});
-        my $context = pop @{$self->{'context_stack'}};
-        warn "BUG: not preformatted on context stack $context (close $current->{'type'})" 
-           if ($context ne 'preformatted');
-        # close empty menu_comment
-        if (!@{$current->{'contents'}}) {
-          pop @{$current->{'parent'}->{'contents'}};
-        }
+      my $context = pop @{$self->{'context_stack'}};
+      warn "BUG: not preformatted on context stack $context (close $current->{'type'})" 
+         if ($context ne 'preformatted');
+      # close empty menu_comment
+      if (!@{$current->{'contents'}}) {
+        pop @{$current->{'parent'}->{'contents'}};
       }
-      $current = $current->{'parent'};
+    } elsif ($current->{'type'} eq 'misc_line_arg'
+             or $current->{'type'} eq 'block_line_arg') {
+      my $context = pop @{$self->{'context_stack'}};
+      die "BUG: _close_current, command with misc_line_arg, context: $context\n" 
+        if ($context ne 'line' and $context ne 'def');
     }
+    $current = $current->{'parent'};
   } else { # Should never go here.
     $current = $current->{'parent'} if ($current->{'parent'});
     print STDERR "BUG: Where am I? "._print_current($current);
@@ -3271,7 +3259,7 @@ sub _end_line($$$)
         print STDERR "$indent"._print_current($current);
       }
       #cluck "Problem with opened line command $self->{'context_stack'}->[-1]";
-      die "BUG: did not go up (infinite loop). Context_stack: (@{$self->{'context_stack'}})\n" 
+      die "BUG: did not go up (infinite loop). Context_stack: (@{$self->{'context_stack'}})\n";
     }
 
     $current = $self->_end_line($current, $line_nr);
@@ -3649,7 +3637,7 @@ sub _parse_texi($;$)
           # end of the file or of a text fragment.
           $current = _end_line ($self, $current, $line_nr);
           # It may happen that there is an @include file on the line, it 
-          # will be picked up at NEXT_LINE
+          # will be picked up at NEXT_LINE, beginning a new line
           next NEXT_LINE;
         }
       }
@@ -4110,7 +4098,6 @@ sub _parse_texi($;$)
                 { 'type' => 'misc_arg', 'text' => $arg, 
                   'parent' => $current->{'contents'}->[-1] };
             }
-            $current = _end_line ($self, $current, $line_nr);
             if ($command eq 'raisesections') {
               $self->{'sections_level'}++;
             } elsif ($command eq 'lowersections') {
@@ -4121,6 +4108,7 @@ sub _parse_texi($;$)
             $self->_register_and_warn_invalid($command, $invalid_parent,
                                               $line_nr, $misc);
             $self->_register_global_command($command, $misc, $line_nr);
+            $current = _end_line ($self, $current, $line_nr);
 
             last NEXT_LINE if ($command eq 'bye');
             last;
