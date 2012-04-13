@@ -7,9 +7,6 @@ Before next release
 
 Document TEXTCONTENT_COMMENT.
 
-Better BUG: messages, with context (line nr) more debugging informations
-and a better message.
-
 
 Bugs
 ====

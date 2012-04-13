@@ -501,6 +501,35 @@ foreach my $no_paragraph_context ('math', 'menu', @preformatted_contexts,
 
 
 
+# Format a bug message
+sub _bug_message($$;$$)
+{
+  my $self = shift;
+  my $message = shift;
+  my $line_number = shift;
+  my $current = shift;
+
+  my $line_message = '';
+  if ($line_number) {
+    my $file = $line_number->{'file_name'};
+    $line_message 
+      = "last location: $line_number->{'file_name'}:$line_number->{'line_nr'}";
+    if ($line_number->{'macro'} ne '') {
+      $line_message .= " (possibly involving $line_number->{'macro'})";
+    }
+    $line_message .= "\n";
+  }
+  my $message_context_stack = "context_stack: (@{$self->{'context_stack'}})\n";
+  my $current_element_message = '';
+  if ($current) {
+    $current_element_message = "current: ". _print_current($current);
+  }
+  warn "You found a bug: $message\n\n".
+       "Additional informations:\n".
+       $line_message.$message_context_stack.$current_element_message;
+  
+}
+
 # simple deep copy of a structure
 sub _deep_copy ($)
 {
@@ -1072,15 +1101,18 @@ sub _parse_macro_command_line($$$$$;$)
 }
 
 # start a paragraph if in a context where paragraphs are to be started.
-sub _begin_paragraph ($$)
+sub _begin_paragraph ($$;$)
 {
   my $self = shift;
   my $current = shift;
+  my $line_nr = shift;
 
   if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
       and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
-    die "BUG: contents undef "._print_current($current) 
-       if (!defined($current->{'contents'}));
+    if (!defined($current->{'contents'})) {
+      $self->_bug_message("contents undef", $line_nr, $current);
+      die;
+    }
 
     # find whether an @indent precedes the paragraph
     my $indent;
@@ -1342,8 +1374,8 @@ sub _gather_previous_item($$;$$)
                     or $item_content->{'cmdname'} eq 'item'))
                or ($item_content->{'type'} 
                    and $item_content->{'type'} eq 'inter_item'))) {
-          print STDERR "BUG: wrong element in table term: "
-             ._print_current($item_content);
+          $self->_bug_message("wrong element in table term", $line_nr, 
+                              $item_content);
         }
       }
     }
@@ -1448,27 +1480,16 @@ sub _close_command_cleanup($$$) {
   # put everything after the last @def*x command in a def_item type container.
   if ($def_commands{$current->{'cmdname'}}) {
     # At this point the end command hasn't been added to the command contents.
-    #my $end;
-    #if ($current->{'extra'}->{'end_command'}) {
-    #  $end = pop @{$current->{'contents'}};
-    #  die "BUG $current->{'cmdname'}: end don't match end_command "._print_current($current) ."end: "._print_current($end) ."end_command "._print_current($current->{'extra'}->{'end_command'})
-    #    if ($end ne $current->{'extra'}->{'end_command'});
-    #}
+    # so checks cannot be done at this point.
     _gather_def_item($current);
   }
 
   if ($item_line_commands{$current->{'cmdname'}}) {
-    # no end at this point
-    #my $end;
-    #if ($current->{'extra'}->{'end_command'}) {
-    #  $end = pop @{$current->{'contents'}};
-    #  die "Not end at end of format $current->{'cmdname'}" 
-    #    if (!$end->{'cmdname'} or $end->{'cmdname'} ne 'end');
-    #}
+    # At this point the end command hasn't been added to the command contents.
+    # so checks cannot be done at this point.
     if (@{$current->{'contents'}}) {
       $self->_gather_previous_item($current);
     }
-    #push @{$current->{'contents'}}, $end if ($end);
   }
   
   # put end out of before_item, and replace it at the end of the parent.
@@ -1595,8 +1616,10 @@ sub _close_current($$$;$$)
     } elsif ($current->{'type'} eq 'menu_comment' 
           or $current->{'type'} eq 'menu_entry_description') {
       my $context = pop @{$self->{'context_stack'}};
-      warn "BUG: not preformatted on context stack $context (close $current->{'type'})" 
-         if ($context ne 'preformatted');
+      if ($context ne 'preformatted') {
+        $self->_bug_message("context $context instead of preformatted", 
+                            $line_nr, $current);
+      }
       # close empty menu_comment
       if (!@{$current->{'contents'}}) {
         pop @{$current->{'parent'}->{'contents'}};
@@ -1604,13 +1627,17 @@ sub _close_current($$$;$$)
     } elsif ($current->{'type'} eq 'misc_line_arg'
              or $current->{'type'} eq 'block_line_arg') {
       my $context = pop @{$self->{'context_stack'}};
-      die "BUG: _close_current, command with misc_line_arg, context: $context\n" 
-        if ($context ne 'line' and $context ne 'def');
+      if ($context ne 'line' and $context ne 'def') {
+        $self->_bug_message("context $context instead of line or def", 
+                            $line_nr, $current);
+        die;
+      }
     }
     $current = $current->{'parent'};
   } else { # Should never go here.
     $current = $current->{'parent'} if ($current->{'parent'});
-    print STDERR "BUG: Where am I? "._print_current($current);
+    $self->_bug_message("No type nor cmdname when closing", 
+                        $line_nr, $current);
   }
   return $current;
 }
@@ -1651,20 +1678,26 @@ sub _close_commands($$$;$$)
 
   my $closed_element;
   if ($closed_command and $current->{'cmdname'} 
-    and $current->{'cmdname'} eq $closed_command) {
+      and $current->{'cmdname'} eq $closed_command) {
     if ($preformatted_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
-      warn "BUG: closing preformatted_command $closed_command wrong context $context"
-        if ($context ne 'preformatted');
+      if ($context ne 'preformatted') {
+        $self->_bug_message("context $context instead of preformatted for $closed_command", 
+                            $line_nr, $current);
+      }
     } elsif ($format_raw_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
-      warn "BUG: closing preformatted_command $closed_command wrong context $context"
-        if ($context ne 'rawpreformatted');
+      if ($context ne 'rawpreformatted') {
+        $self->_bug_message("context $context instead of rawpreformatted for $closed_command", 
+                            $line_nr, $current);
+      }
     } elsif ($menu_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
       # may be in menu, but context is preformatted if in a preformatted too.
-      warn "BUG: closing menu command $closed_command wrong context $context"
-        if ($context ne 'menu' and $context ne 'preformatted');
+      if ($context ne 'menu' and $context ne 'preformatted') {
+        $self->_bug_message("context $context instead of preformatted or menu for $closed_command", 
+                            $line_nr, $current);
+      }
     }
     #print STDERR "close context $context for $current->{'cmdname'}\n"
     #  if ($self->{'DEBUG'});
@@ -1711,8 +1744,12 @@ sub _merge_text ($$$)
     $current = $paragraph if ($paragraph);
   }
 
-  die "BUG: No contents in _merge_text "._print_current($current) 
-          if (!defined($current->{'contents'}));
+  if (!defined($current->{'contents'})) {
+    $self->_bug_message("No contents in _merge_text", 
+                            undef, $current);
+    die;
+  }
+
   if (@{$current->{'contents'}} 
       and exists($current->{'contents'}->[-1]->{'text'}) 
       and $current->{'contents'}->[-1]->{'text'} !~ /\n/
@@ -2469,8 +2506,10 @@ sub _end_line($$$)
         pop @{$current->{'contents'}} if ($empty_preformatted);
       }
       my $context = pop @{$self->{'context_stack'}};
-      warn "BUG: empty line after menu_entry_description bad context: $context"
-        if ($context ne 'preformatted');
+      if ($context ne 'preformatted') {
+        $self->_bug_message("context $context instead of preformatted in empty line after menu_entry_description", 
+                            $line_nr, $current);
+      }
       
       # first parent is menu_entry
       $current = $current->{'parent'}->{'parent'};
@@ -2535,7 +2574,8 @@ sub _end_line($$$)
           $description_or_menu_comment = $description;
         } else {
           # Normally this cannot happen
-          warn "BUG: No description in menu_entry";
+          $self->_bug_message("No description in menu_entry", 
+                               $line_nr, $current);
           push @{$entry->{'args'}}, {'type' => 'menu_entry_description',
                                      'parent' => $entry,
                                      'contents' => [] };
@@ -2552,7 +2592,8 @@ sub _end_line($$$)
           $current = $current->{'contents'}->[-1];
         } else {
           # this should not happen
-          warn "BUG: description or menu comment not in preformatted";
+          $self->_bug_message("description or menu comment not in preformatted", 
+                               $line_nr, $current);
           push @{$current->{'contents'}}, {'type' => 'preformatted',
                                     'parent' => $current,
                                     'contents' => [] };
@@ -2560,7 +2601,6 @@ sub _end_line($$$)
         }
         push @{$self->{'context_stack'}}, 'preformatted';
       } else {
-        #warn "BUG: no menu_comment nor menu_entry in menu";
         push @{$menu->{'contents'}}, {'type' => 'menu_comment',
                                     'parent' => $menu,
                                     'contents' => [] };
@@ -2607,8 +2647,11 @@ sub _end_line($$$)
             and $current->{'parent'}->{'type'}
             and $current->{'parent'}->{'type'} eq 'def_line') {
     my $def_context = pop @{$self->{'context_stack'}};
-    die "BUG: def_context $def_context "._print_current($current) 
-      if ($def_context ne 'def');
+    if ($def_context ne 'def') {
+      $self->_bug_message("context $def_context instead of def", 
+                          $line_nr, $current);
+      die; 
+    }
     my $def_command = $current->{'parent'}->{'extra'}->{'def_command'};
     my $arguments = $self->_parse_def($def_command, 
                                       $current->{'contents'});
@@ -2698,8 +2741,10 @@ sub _end_line($$$)
             and $current->{'type'} eq 'block_line_arg') {
     my $empty_text;
     my $context = pop @{$self->{'context_stack'}};
-    warn "BUG: $context in block_line_arg ne line\n" 
-       if ($context ne 'line');
+    if ($context ne 'line') {
+      $self->_bug_message("context $context instead of line in block_line_arg", 
+                          $line_nr, $current);
+    }
     # @multitable args
     if ($current->{'parent'}->{'cmdname'}
                and $current->{'parent'}->{'cmdname'} eq 'multitable') {
@@ -2901,8 +2946,10 @@ sub _end_line($$$)
   } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
     my $context = pop @{$self->{'context_stack'}};
-    print STDERR "BUG: $context in misc_line_arg ne line\n" 
-       if ($context ne 'line');
+    if ($context ne 'line') {
+      $self->_bug_message("context $context instead of line in misc_line_arg", 
+                          $line_nr, $current);
+    }
     $self->_isolate_last_space($current);
 
     # first parent is the @command, second is the parent
@@ -3152,8 +3199,10 @@ sub _end_line($$$)
       } else {
         # This is the multitable block_line_arg line context
         my $context = pop @{$self->{'context_stack'}};
-        print STDERR "BUG: $context in misc_line_arg ne line\n" 
-          if ($context ne 'line');
+        if ($context ne 'line') {
+          $self->_bug_message("context $context instead of line for multitable", 
+                               $line_nr, $current);
+        }
         $current = $current->{'parent'};
         $current->{'extra'}->{'max_columns'} = 0;
         if (defined($misc_cmd->{'extra'}->{'misc_args'})) {
@@ -3252,14 +3301,15 @@ sub _end_line($$$)
     # check for infinite loop bugs...
     if ($current eq $current_old) {
       my $indent = '- ';
-      print STDERR "$indent"._print_current($current);
+      my $tree_msg = $indent . _print_current($current);
       while ($current->{'parent'}) {
         $indent = '-'.$indent;
         $current = $current->{'parent'};
-        print STDERR "$indent"._print_current($current);
+        $tree_msg .= $indent . _print_current($current);
       }
-      #cluck "Problem with opened line command $self->{'context_stack'}->[-1]";
-      die "BUG: did not go up (infinite loop). Context_stack: (@{$self->{'context_stack'}})\n";
+      $self->_bug_message("Nothing closed while a line context remains\n$tree_msg",
+                           $line_nr);
+      die;
     }
 
     $current = $self->_end_line($current, $line_nr);
@@ -3570,9 +3620,12 @@ sub _parse_texi($;$)
           if ($block_commands{$end_command} eq 'conditional') {
             # don't store ignored @if*
             my $conditional = pop @{$current->{'contents'}};
-            die "BUG: not a conditional ".print_current($conditional)
-              if (!defined($conditional->{'cmdname'}
-                  or $conditional->{'cmdname'} ne $end_command));
+            if (!defined($conditional->{'cmdname'}
+                or $conditional->{'cmdname'} ne $end_command)) {
+              $self->_bug_message("Ignored command is not the conditional $end_command", 
+                                   $line_nr, $conditional);
+              die;
+            }
             # Ignore until end of line
             if ($line !~ /\n/) {
               ($line, $line_nr) = _new_line($self, $line_nr, $conditional);
@@ -3836,13 +3889,16 @@ sub _parse_texi($;$)
               or $current->{'parent'}->{'type'} ne 'menu_entry_description'
               or $current->{'parent'}->{'parent'}->{'type'} ne 'menu_entry'
               or !$menu_commands{$current->{'parent'}->{'parent'}->{'parent'}->{'cmdname'}}) {
-            warn "BUG: not in menu description";
+            $self->_bug_message("Not in menu comment nor description", 
+                                 $line_nr, $current);
           }
           $current = $current->{'parent'}->{'parent'}->{'parent'};
         }
         my $context = pop @{$self->{'context_stack'}};
-        warn "BUG: not preformatted on context stack $context (after menu leading star)"
-          if ($context ne 'preformatted');
+        if ($context ne 'preformatted') {
+          $self->_bug_message("context $context instead of preformatted after menu leading star", 
+                              $line_nr, $current);
+        }
         push @{$current->{'contents'}}, { 'type' => 'menu_entry',
                                           'parent' => $current,
                                         };
@@ -4009,7 +4065,7 @@ sub _parse_texi($;$)
         last if ($self->{'context_stack'}->[-1] eq 'def' and $command eq "\n");
 
         unless ($self->{'no_paragraph_commands'}->{$command}) {
-          my $paragraph = _begin_paragraph($self, $current);
+          my $paragraph = _begin_paragraph($self, $current, $line_nr);
           $current = $paragraph if ($paragraph);
         }
 
@@ -4354,8 +4410,10 @@ sub _parse_texi($;$)
                 if (!@{$current->{'contents'}});
 
               my $context = pop @{$self->{'context_stack'}};
-              warn "BUG: not preformatted on context stack $context (new menu)" 
-                if ($context ne 'preformatted');
+              if ($context ne 'preformatted') {
+                $self->_bug_message("context $context instead of preformatted in new menu", 
+                                   $line_nr, $current);
+              }
               
               if ($menu->{'type'} and $menu->{'type'} eq 'menu_entry') {
                 $menu = $menu->{'parent'};
@@ -4618,8 +4676,11 @@ sub _parse_texi($;$)
             # for math and footnote out of paragraph
             if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
               my $context_command = pop @{$self->{'context_stack'}};
-              die "BUG: def_context $context_command "._print_current($current) 
-                if ($context_command ne $current->{'parent'}->{'cmdname'});
+              if ($context_command ne $current->{'parent'}->{'cmdname'}) {
+                $self->_bug_message("context $context_command instead of brace command $current->{'parent'}->{'cmdname'}", 
+                                   $line_nr, $current);
+                die;
+              }
             }
             # first is the arg.
             
@@ -4701,8 +4762,11 @@ sub _parse_texi($;$)
               my $current_command = $current->{'parent'};
               if ($current_command->{'cmdname'} eq 'inlineraw') {
                 my $context_command = pop @{$self->{'context_stack'}};
-                die "BUG: def_context $context_command "._print_current($current) 
-                  if ($context_command ne $current_command->{'cmdname'});
+                if ($context_command ne $current_command->{'cmdname'}) {
+                  $self->_bug_message("context $context_command instead of inlineraw $current_command->{'cmdname'}", 
+                                   $line_nr, $current);
+                  die;
+                }
               }
               if (!@{$current_command->{'args'}} 
                   or !@{$current_command->{'extra'}->{'brace_command_contents'}}
@@ -4771,8 +4835,11 @@ sub _parse_texi($;$)
                    and $context_brace_commands{$current->{'parent'}->{'cmdname'}}
                    and $context_brace_commands{$current->{'parent'}->{'cmdname'}} eq $self->{'context_stack'}->[-1]) {
               my $context_command = pop @{$self->{'context_stack'}};
-              die "BUG: def_context $context_command "._print_current($current) 
-                if ($context_command ne $current->{'parent'}->{'cmdname'});
+              if ($context_command ne $current->{'parent'}->{'cmdname'}) {
+                $self->_bug_message("context $context_command instead of brace isolated $current->{'parent'}->{'cmdname'}", 
+                                   $line_nr, $current);
+                die;
+              }
               print STDERR "CLOSING(context command) \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
               my $closed_command = $current->{'parent'}->{'cmdname'};
               $self->_register_global_command($current->{'parent'}->{'cmdname'},
@@ -4837,7 +4904,11 @@ sub _parse_texi($;$)
         if ($line =~ s/^(\n)//) {
           $current = _merge_text ($self, $current, $1);
         } else {
-          die "BUG: text remaining and `$line'\n" if (scalar(@{$self->{'input'}}));
+          if (scalar(@{$self->{'input'}})) {
+            $self->_bug_message("Text remaining without normal text but `$line'", 
+                                $line_nr, $current);
+            die;
+          }
         }
         #print STDERR "END LINE AFTER MERGE END OF LINE: ". _print_current($current)."\n";
         $current = _end_line ($self, $current, $line_nr);
