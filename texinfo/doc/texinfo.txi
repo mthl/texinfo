@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.431 2012-04-10 18:08:18 karl Exp $
+@c $Id: texinfo.txi,v 1.432 2012-04-13 22:51:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -21320,9 +21320,9 @@ other such outer-level document commands, such as @code{@@section},
 
 @code{@@c}, @code{@@comment} and @code{@@if ... @@end if} conditional
 commands may appear anywhere (except the conditionals must still be on
-lines by themselves).  @code{@@caption} and @code{@@shortcaption} may
-only appear in @code{@@float} but may contain general text.
-@code{@@footnote} content likewise.
+lines by themselves).  @code{@@caption} may only appear in
+@code{@@float} but may contain general text.  @code{@@footnote}
+content likewise.
 
 @@-commands with braces marking text (such as @code{@@strong},
 @code{@@sc}, @code{@@asis}) may contain raw formatter commands such as
@@ -21338,14 +21338,16 @@ that makes only sense in a paragraph are not accepted, such as
 In addition to the above, sectioning commands cannot contain
 @code{@@anchor} or @code{@@footnote}.
 
-In the addition to the above, remaining commands (@code{@@node},
+In addition to the above, remaining commands (@code{@@node},
 @code{@@anchor}, @code{@@printindex}, @code{@@ref}, @code{@@math},
 @code{@@cindex}, @code{@@url}, @code{@@image}, and so on) cannot
 contain cross reference commands (@code{@@ref}, @code{@@xref},
-@code{@@pxref} and @code{@@inforef}).
+@code{@@pxref} and @code{@@inforef}).  In one last addition,
+@code{@@shortcaption} may only appear inside @code{@@float}.
 
-For precise and complete information, we suggest looking into the test
-suites in the sources, which exhaustively try the combinations.
+For precise and complete information, we suggest looking into the
+extensive test suite in the sources, which exhaustively try
+combinations.
 
 
 @node Tips
@@ -21889,7 +21891,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.431 2012-04-10 18:08:18 karl Exp $
+$Id: texinfo.txi,v 1.432 2012-04-13 22:51:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

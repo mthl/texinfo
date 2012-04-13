@@ -1,5 +1,7 @@
 2012-04-13  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Command Contexts): clarify @shortcaption, etc.
+
 	* tp/texi2any.pl (configured_version): add +dev to distinguish
 	from installed.
 
