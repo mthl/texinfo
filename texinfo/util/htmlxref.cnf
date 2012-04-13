@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2012-01-24.00; # UTC
+htmlxrefversion=2012-04-12.23; # UTC
 
 # Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 # 
@@ -114,7 +114,7 @@ ed		mono	${GS}/ed/manual/ed_manual.html
 
 EMACS = ${GS}/emacs/manual
 emacs		mono	${EMACS}/html_mono/emacs.html
-emacs		node	${EMACS}/html_node/
+emacs		node	${EMACS}/html_node/emacs/
  #
  ada-mode	mono	${EMACS}/html_mono/ada-mode.html
  ada-mode	node	${EMACS}/html_node/ada-mode/
@@ -381,6 +381,9 @@ libextractor	mono	${GS}/libextractor/extractor.html
 
 libidn		mono	${GS}/libidn/manual/libidn.html
 libidn		node	${GS}/libidn/manual/html_node/
+
+librejs		mono	${GS}/librejs/manual/librejs.html
+librejs		node	${GS}/librejs/manual/html_node/
 
 libmatheval	mono	${GS}/libmatheval/manual/libmatheval.html
 

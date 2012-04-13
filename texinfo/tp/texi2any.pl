@@ -221,7 +221,7 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
     if (open (CONFIGURE, "$srcdir/../configure.ac")) {
       while (<CONFIGURE>) {
         if (/^AC_INIT\(\[[^\]]+\]\s*,\s*\[([^\]]+)\]\s*,/) {
-          $configured_version = $1;
+          $configured_version = "$1+dev"; # +dev to distinguish from installed
           last;
         }
       }

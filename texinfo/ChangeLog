@@ -1,3 +1,8 @@
+2012-04-13  Karl Berry  <karl@gnu.org>
+
+	* tp/texi2any.pl (configured_version): add +dev to distinguish
+	from installed.
+
 2012-04-12  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	info: improve parsing of node names containing dots.

@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.90 2012-01-03 18:26:27 karl Exp $
+$Id: dir-example,v 1.91 2012-04-13 16:56:53 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -275,8 +275,8 @@ System administration
 * GSRC: (gsrc).                 Building the GNU Source Release Collection.
 
 TeX
-* DVI-to-PNG: (dvipng).         DVI to Portable Network Graphics (PNG).
-* DVI-to-PostScript: (dvips).   Translating TeX DVI files to PostScript.
+* Dvipng: (dvipng).             DVI to Portable Network Graphics (PNG).
+* Dvips: (dvips).               Translating TeX DVI files to PostScript.
 * Eplain: (eplain).             Expanding on plain TeX.
 * EpsPDF: (epspdf).             Portable GUI&cmdline EPS-to-PDF conversion.
 * Kpathsea: (kpathsea).         File lookup along search paths.
@@ -363,7 +363,6 @@ Individual utilities
 * dmp: (web2c)Dmp invocation.                   Troff->MPX (MetaPost pictures).
 * du: (coreutils)du invocation.                 Report on disk usage.
 * dvicopy: (web2c)DVIcopy invocation.           Virtual font expansion
-* dvipng: (dvipng)Invoking dvipng.              A DVI-to-PNG translator.
 * dvitomp: (web2c)DVItoMP invocation.           DVI to MPX (MetaPost pictures).
 * dvitype: (web2c)DVItype invocation.           DVI to human-readable text.
 * echo: (coreutils)echo invocation.             Print a line of text.
@@ -467,11 +466,12 @@ Individual utilities
 * pwd: (coreutils)pwd invocation.               Print working directory.
 * query-pr: (gnats)Invoking query-pr.           Bug searching/reporting.
 * queue-pr: (gnats)queue-pr.                    Handling incoming traffic.
-* ranlib: (binutils)ranlib.     Generate index to archive contents.
-* rcp: (inetutils)rcp invocation.               Remote copy
-* readelf: (binutils)readelf.	Display the contents of ELF format files.
+* ranlib: (binutils)ranlib.                     Index archive contents.
+* rcp: (inetutils)rcp invocation.               Remote copy.
+* readelf: (binutils)readelf.	                Display contents of ELF file.
 * readlink: (coreutils)readlink invocation.     Print referent of a symlink.
 * readmsg: (mailutils)readmsg.                  Extract messages from a folder.
+* realpath: (coreutils)readpath invocation.     Print resolved file names.
 * rexec: (inetutils)rexec invocation.           Remote execution client.
 * rexecd: (inetutils)rexecd invocation.         Remote execution server.
 * rlogin: (inetutils)rlogin invocation.         Remote login.

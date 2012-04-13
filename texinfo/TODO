@@ -1,9 +1,9 @@
-$Id: TODO,v 1.63 2012-02-26 22:01:47 pertusus Exp $
+$Id: TODO,v 1.64 2012-04-13 16:56:52 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2003, 
-  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011
+  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011, 2012
   Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
@@ -41,7 +41,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Or even multibyte languages like Japanese, see msg:
     http://lists.gnu.org/archive/html/bug-texinfo/2005-03/msg00000.html
   - Support general reference card creation.
-  - Allow @end (and other?) commands to be indented in the source.
   - Add a program that turns Texinfo XML back to Texinfo code.
 
 * Language:
@@ -53,6 +52,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - @xindexterm [def] primary [,secondary [,tertiary]]  or some such?
   - Allow subitems and `see' and `see also' in indices.
   - generalize @vtable/@htable to any defined index.
+  - generalize @deffn/etc. with variants that don't make index entries.
   - multicolumn * width to take up `the rest'.
   - Allow @hsep/@vsep at @item, instead of just in template.
   - another table command to take N succeeding items and split them
