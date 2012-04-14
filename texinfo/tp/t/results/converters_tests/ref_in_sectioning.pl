@@ -259,7 +259,7 @@ $result_trees{'ref_in_sectioning'} = {
                     },
                     {
                       'parent' => {},
-                      'text' => 'manual'
+                      'text' => 'Manual'
                     }
                   ],
                   'parent' => {},
@@ -576,7 +576,7 @@ $result_trees{'ref_in_sectioning'} = {
                     },
                     {
                       'parent' => {},
-                      'text' => 'manual'
+                      'text' => 'Manual'
                     }
                   ],
                   'parent' => {},
@@ -748,6 +748,10 @@ $result_trees{'ref_in_sectioning'} = {
             },
             {
               'parent' => {},
+              'text' => ' just node'
+            },
+            {
+              'parent' => {},
               'text' => '
 ',
               'type' => 'spaces_at_end'
@@ -768,6 +772,7 @@ $result_trees{'ref_in_sectioning'} = {
       ],
       'extra' => {
         'misc_content' => [
+          {},
           {}
         ]
       },
@@ -843,6 +848,10 @@ $result_trees{'ref_in_sectioning'} = {
             },
             {
               'parent' => {},
+              'text' => '  node, crossref arg2'
+            },
+            {
+              'parent' => {},
               'text' => '
 ',
               'type' => 'spaces_at_end'
@@ -863,6 +872,7 @@ $result_trees{'ref_in_sectioning'} = {
       ],
       'extra' => {
         'misc_content' => [
+          {},
           {}
         ]
       },
@@ -972,6 +982,10 @@ $result_trees{'ref_in_sectioning'} = {
             },
             {
               'parent' => {},
+              'text' => '  code node, samptitle arg3'
+            },
+            {
+              'parent' => {},
               'text' => '
 ',
               'type' => 'spaces_at_end'
@@ -992,6 +1006,7 @@ $result_trees{'ref_in_sectioning'} = {
       ],
       'extra' => {
         'misc_content' => [
+          {},
           {}
         ]
       },
@@ -1092,6 +1107,10 @@ $result_trees{'ref_in_sectioning'} = {
             },
             {
               'parent' => {},
+              'text' => ' code node, file name'
+            },
+            {
+              'parent' => {},
               'text' => '
 ',
               'type' => 'spaces_at_end'
@@ -1112,6 +1131,7 @@ $result_trees{'ref_in_sectioning'} = {
       ],
       'extra' => {
         'misc_content' => [
+          {},
           {}
         ]
       },
@@ -1167,7 +1187,12 @@ $result_trees{'ref_in_sectioning'} = {
                     },
                     {
                       'parent' => {},
-                      'text' => 'manual'
+                      'text' => 'Manual'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'spaces_at_end'
                     }
                   ],
                   'parent' => {},
@@ -1204,6 +1229,10 @@ $result_trees{'ref_in_sectioning'} = {
             },
             {
               'parent' => {},
+              'text' => ' node and manual'
+            },
+            {
+              'parent' => {},
               'text' => '
 ',
               'type' => 'spaces_at_end'
@@ -1224,6 +1253,7 @@ $result_trees{'ref_in_sectioning'} = {
       ],
       'extra' => {
         'misc_content' => [
+          {},
           {}
         ]
       },
@@ -1247,7 +1277,12 @@ $result_trees{'ref_in_sectioning'} = {
             {
               'args' => [
                 {
-                  'contents' => [],
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'Top'
+                    }
+                  ],
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 },
@@ -1274,7 +1309,12 @@ $result_trees{'ref_in_sectioning'} = {
                     },
                     {
                       'parent' => {},
-                      'text' => 'manual'
+                      'text' => 'Manual'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'spaces_at_end'
                     }
                   ],
                   'parent' => {},
@@ -1285,14 +1325,22 @@ $result_trees{'ref_in_sectioning'} = {
               'contents' => [],
               'extra' => {
                 'brace_command_contents' => [
-                  undef,
+                  [
+                    {}
+                  ],
                   undef,
                   undef,
                   undef,
                   [
                     {}
                   ]
-                ]
+                ],
+                'node_argument' => {
+                  'node_content' => [
+                    {}
+                  ],
+                  'normalized' => 'Top'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1303,7 +1351,7 @@ $result_trees{'ref_in_sectioning'} = {
             },
             {
               'parent' => {},
-              'text' => ' no node but manual'
+              'text' => ' Top and manual'
             },
             {
               'parent' => {},
@@ -1349,8 +1397,113 @@ $result_trees{'ref_in_sectioning'} = {
               'type' => 'empty_spaces_after_command'
             },
             {
+              'args' => [
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => ' ',
+                      'type' => 'empty_spaces_before_argument'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'Manual'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'ref',
+              'contents' => [],
+              'extra' => {
+                'brace_command_contents' => [
+                  undef,
+                  undef,
+                  undef,
+                  undef,
+                  [
+                    {}
+                  ]
+                ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
               'parent' => {},
-              'text' => '('
+              'text' => ' no node just manual'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'section',
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {
+        'misc_content' => [
+          {},
+          {}
+        ]
+      },
+      'level' => 2,
+      'line_nr' => {},
+      'number' => '2.6',
+      'parent' => {}
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'args' => [
@@ -1384,7 +1537,7 @@ $result_trees{'ref_in_sectioning'} = {
                   'type' => 'brace_command_arg'
                 }
               ],
-              'cmdname' => 'pxref',
+              'cmdname' => 'ref',
               'contents' => [],
               'extra' => {
                 'brace_command_contents' => [
@@ -1398,14 +1551,14 @@ $result_trees{'ref_in_sectioning'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 27,
+                'line_nr' => 29,
                 'macro' => ''
               },
               'parent' => {}
             },
             {
               'parent' => {},
-              'text' => ') no node but file name'
+              'text' => ' no node just file name'
             },
             {
               'parent' => {},
@@ -1430,13 +1583,12 @@ $result_trees{'ref_in_sectioning'} = {
       'extra' => {
         'misc_content' => [
           {},
-          {},
           {}
         ]
       },
       'level' => 2,
       'line_nr' => {},
-      'number' => '2.6',
+      'number' => '2.7',
       'parent' => {}
     },
     {
@@ -1515,10 +1667,143 @@ $result_trees{'ref_in_sectioning'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 29,
+                'line_nr' => 31,
                 'macro' => ''
               },
               'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => ' inforef a b c'
+            },
+            {
+              'parent' => {},
+              'text' => ' 
+',
+              'type' => 'spaces_at_end'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'section',
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {
+        'misc_content' => [
+          {},
+          {}
+        ]
+      },
+      'level' => 2,
+      'line_nr' => {},
+      'number' => '2.8',
+      'parent' => {}
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => '('
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => ' ',
+                      'type' => 'empty_spaces_before_argument'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'Top'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => ' ',
+                      'type' => 'empty_spaces_before_argument'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'file name'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'pxref',
+              'contents' => [],
+              'extra' => {
+                'brace_command_contents' => [
+                  [
+                    {}
+                  ],
+                  undef,
+                  undef,
+                  [
+                    {}
+                  ]
+                ],
+                'node_argument' => {
+                  'node_content' => [
+                    {}
+                  ],
+                  'normalized' => 'Top'
+                }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 33,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => ') pxref Top file name, spaces'
             },
             {
               'parent' => {},
@@ -1538,219 +1823,327 @@ $result_trees{'ref_in_sectioning'} = {
           'text' => '
 ',
           'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'node'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    },
-                    {
-                      'contents' => [
-                        {
-                          'text' => ' ',
-                          'type' => 'empty_spaces_before_argument'
-                        },
-                        {
-                          'parent' => {},
-                          'text' => 'cross ref name in heading'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'ref',
-                  'contents' => [],
-                  'extra' => {
-                    'brace_command_contents' => [
-                      [
-                        {}
-                      ],
-                      [
-                        {}
-                      ]
-                    ],
-                    'label' => {},
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'node'
-                    }
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 31,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
-              ],
-              'parent' => {},
-              'type' => 'misc_line_arg'
-            }
-          ],
-          'cmdname' => 'heading',
-          'extra' => {
-            'misc_content' => [
-              {}
-            ]
-          },
-          'level' => 2,
-          'line_nr' => {},
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'args' => [
-                            {
-                              'contents' => [
-                                {
-                                  'parent' => {},
-                                  'text' => 'node'
-                                }
-                              ],
-                              'parent' => {},
-                              'type' => 'brace_command_arg'
-                            }
-                          ],
-                          'cmdname' => 'code',
-                          'contents' => [],
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 33,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    },
-                    {
-                      'contents' => [],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    },
-                    {
-                      'contents' => [],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    },
-                    {
-                      'contents' => [
-                        {
-                          'text' => ' ',
-                          'type' => 'empty_spaces_before_argument'
-                        },
-                        {
-                          'parent' => {},
-                          'text' => 'file name'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'ref',
-                  'contents' => [],
-                  'extra' => {
-                    'brace_command_contents' => [
-                      [
-                        {}
-                      ],
-                      undef,
-                      undef,
-                      [
-                        {}
-                      ]
-                    ],
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'node'
-                    }
-                  },
-                  'line_nr' => {},
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
-              ],
-              'parent' => {},
-              'type' => 'misc_line_arg'
-            }
-          ],
-          'cmdname' => 'subheading',
-          'extra' => {
-            'misc_content' => [
-              {}
-            ]
-          },
-          'level' => 3,
-          'line_nr' => {},
-          'parent' => {}
         }
       ],
       'extra' => {
         'misc_content' => [
+          {},
+          {},
           {}
         ]
       },
       'level' => 2,
       'line_nr' => {},
-      'number' => '2.7',
+      'number' => '2.9',
+      'parent' => {}
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => '('
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => ' ',
+                      'type' => 'empty_spaces_before_argument'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'file name'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'pxref',
+              'contents' => [],
+              'extra' => {
+                'brace_command_contents' => [
+                  undef,
+                  undef,
+                  undef,
+                  [
+                    {}
+                  ]
+                ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 35,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => ') pxref file name only, spaces'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'section',
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {
+        'misc_content' => [
+          {},
+          {},
+          {}
+        ]
+      },
+      'level' => 2,
+      'line_nr' => {},
+      'number' => '2.10',
+      'parent' => {}
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'Top'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'filename'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'xref',
+              'contents' => [],
+              'extra' => {
+                'brace_command_contents' => [
+                  [
+                    {}
+                  ],
+                  undef,
+                  undef,
+                  [
+                    {}
+                  ]
+                ],
+                'node_argument' => {
+                  'node_content' => [
+                    {}
+                  ],
+                  'normalized' => 'Top'
+                }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 37,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => ', xref Top filename only, no spaces'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'section',
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {
+        'misc_content' => [
+          {},
+          {}
+        ]
+      },
+      'level' => 2,
+      'line_nr' => {},
+      'number' => '2.11',
+      'parent' => {}
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'filename'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'xref',
+              'contents' => [],
+              'extra' => {
+                'brace_command_contents' => [
+                  undef,
+                  undef,
+                  undef,
+                  [
+                    {}
+                  ]
+                ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 39,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '. xref filename only, no spaces'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'section',
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {
+        'misc_content' => [
+          {},
+          {}
+        ]
+      },
+      'level' => 2,
+      'line_nr' => {},
+      'number' => '2.12',
       'parent' => {}
     }
   ],
@@ -1894,9 +2287,11 @@ $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'ext
 $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[6];
 $result_trees{'ref_in_sectioning'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[6];
 $result_trees{'ref_in_sectioning'}{'contents'}[6]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[6]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[2];
 $result_trees{'ref_in_sectioning'}{'contents'}[6]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[6]{'parent'} = $result_trees{'ref_in_sectioning'};
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[7];
@@ -1911,9 +2306,11 @@ $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'ext
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[7];
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[7];
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[7]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[2];
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[7]{'parent'} = $result_trees{'ref_in_sectioning'};
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[8];
@@ -1935,9 +2332,11 @@ $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[1]{'ext
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[8];
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[8];
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[8]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[2];
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[8]{'parent'} = $result_trees{'ref_in_sectioning'};
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[9];
@@ -1956,9 +2355,11 @@ $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'ext
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[9];
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[9];
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[9]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[2];
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[9]{'parent'} = $result_trees{'ref_in_sectioning'};
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[10];
@@ -1969,26 +2370,33 @@ $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'ar
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[4];
+$result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[4];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[4]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[10];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[10]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[2];
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[10]{'parent'} = $result_trees{'ref_in_sectioning'};
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[11];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[4];
+$result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[4];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[4]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0];
@@ -2000,84 +2408,147 @@ $result_trees{'ref_in_sectioning'}{'contents'}[11]{'line_nr'} = $result_trees{'r
 $result_trees{'ref_in_sectioning'}{'contents'}[11]{'parent'} = $result_trees{'ref_in_sectioning'};
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[12];
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[4];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[4];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[4]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'args'}[4]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'args'}[3];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12];
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[12];
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'extra'}{'misc_content'}[2] = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[3];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[2]{'line_nr'};
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[12]{'parent'} = $result_trees{'ref_in_sectioning'};
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[13];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[2];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[2]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'label'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'extra'}{'label'};
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[3];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
-$result_trees{'ref_in_sectioning'}{'contents'}[13]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[13];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[13]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[2];
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ref_in_sectioning'}{'contents'}[13]{'parent'} = $result_trees{'ref_in_sectioning'};
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[14];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[2]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[14];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'ref_in_sectioning'}{'contents'}[14]{'parent'} = $result_trees{'ref_in_sectioning'};
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[15];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[15];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'extra'}{'misc_content'}[2] = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'line_nr'};
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'parent'} = $result_trees{'ref_in_sectioning'};
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[16];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[16];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'extra'}{'misc_content'}[2] = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[2]{'line_nr'};
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'parent'} = $result_trees{'ref_in_sectioning'};
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[17];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[17];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'ref_in_sectioning'}{'contents'}[17]{'parent'} = $result_trees{'ref_in_sectioning'};
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_sectioning'}{'contents'}[18];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'args'}[3];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'contents'}[0]{'parent'} = $result_trees{'ref_in_sectioning'}{'contents'}[18];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'extra'}{'misc_content'}[1] = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'line_nr'} = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'parent'} = $result_trees{'ref_in_sectioning'};
 
 $result_texis{'ref_in_sectioning'} = '@contents
 
 @node Top
-@top for example @ref{node} (@pxref{node}) (@pxref{Top,,, file, manual})
+@top for example @ref{node} (@pxref{node}) (@pxref{Top,,, file, Manual})
 
 @menu
 * node::
@@ -2085,28 +2556,35 @@ $result_texis{'ref_in_sectioning'} = '@contents
 @end menu
 
 @node node
-@chapter @xref{node,,title, file name, manual}.
+@chapter @xref{node,,title, file name, Manual}.
 
 @node chap
-@chapter @ref{node}
+@chapter @ref{node} just node
 
-@section @ref{node, cross ref name}
+@section @ref{node, cross ref name}  node, crossref arg2
 
-@section @ref{@code{node},, @samp{title}}
+@section @ref{@code{node},, @samp{title}}  code node, samptitle arg3
 
-@section @ref{@code{node},,, file name}
+@section @ref{@code{node},,, file name} code node, file name
 
-@section @ref{node,,,, manual}
+@section @ref{node,,,, Manual } node and manual
 
-@section @ref{,,,, manual} no node but manual
+@section @ref{Top,,,, Manual } Top and manual
 
-@section (@pxref{,,, file name}) no node but file name
+@section @ref{,,,, Manual } no node just manual
 
-@section @inforef{a, b, c}
+@section @ref{,,, file name} no node just file name
 
-@heading @ref{node, cross ref name in heading}
+@section @inforef{a, b, c} inforef a b c 
 
-@subheading @ref{@code{node},,, file name}
+@section (@pxref{ Top ,,, file name }) pxref Top file name, spaces
+
+@section (@pxref{,,, file name }) pxref file name only, spaces
+
+@section @xref{Top,,,filename}, xref Top filename only, no spaces
+
+@section @xref{,,,filename}. xref filename only, no spaces
+
 ';
 
 
@@ -2120,30 +2598,44 @@ for example  () ()
 1 .
 ***
 
-2 
-**
+2  just node
+************
 
-2.1 
-====
+2.1   node, crossref arg2
+=========================
 
-2.2 
-====
+2.2   code node, samptitle arg3
+===============================
 
-2.3 
-====
+2.3  code node, file name
+=========================
 
-2.4 
-====
+2.4  node and manual
+====================
 
-2.5  no node but manual
-=======================
+2.5  Top and manual
+===================
 
-2.6 () no node but file name
-============================
+2.6  no node just manual
+========================
 
-2.7 
-====
+2.7  no node just file name
+===========================
 
+2.8  inforef a b c
+==================
+
+2.9 () pxref Top file name, spaces
+==================================
+
+2.10 () pxref file name only, spaces
+====================================
+
+2.11 , xref Top filename only, no spaces
+========================================
+
+2.12 . xref filename only, no spaces
+====================================
 
 ';
 
@@ -2245,6 +2737,46 @@ $result_sectioning{'ref_in_sectioning'} = {
               'number' => '2.7',
               'section_prev' => {},
               'section_up' => {}
+            },
+            {
+              'cmdname' => 'section',
+              'extra' => {},
+              'level' => 2,
+              'number' => '2.8',
+              'section_prev' => {},
+              'section_up' => {}
+            },
+            {
+              'cmdname' => 'section',
+              'extra' => {},
+              'level' => 2,
+              'number' => '2.9',
+              'section_prev' => {},
+              'section_up' => {}
+            },
+            {
+              'cmdname' => 'section',
+              'extra' => {},
+              'level' => 2,
+              'number' => '2.10',
+              'section_prev' => {},
+              'section_up' => {}
+            },
+            {
+              'cmdname' => 'section',
+              'extra' => {},
+              'level' => 2,
+              'number' => '2.11',
+              'section_prev' => {},
+              'section_up' => {}
+            },
+            {
+              'cmdname' => 'section',
+              'extra' => {},
+              'level' => 2,
+              'number' => '2.12',
+              'section_prev' => {},
+              'section_up' => {}
             }
           ],
           'section_prev' => {},
@@ -2273,6 +2805,16 @@ $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1
 $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[5]{'section_up'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1];
 $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[6]{'section_prev'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[5];
 $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[6]{'section_up'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[7]{'section_prev'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[6];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[7]{'section_up'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[8]{'section_prev'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[7];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[8]{'section_up'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[9]{'section_prev'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[8];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[9]{'section_up'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[10]{'section_prev'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[9];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[10]{'section_up'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[11]{'section_prev'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[10];
+$result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_childs'}[11]{'section_up'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1];
 $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[0];
 $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0];
 $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'ref_in_sectioning'}{'section_childs'}[0]{'section_childs'}[0];
@@ -2390,14 +2932,19 @@ $result_errors{'ref_in_sectioning'} = [];
 
 $result_converted{'plaintext'}->{'ref_in_sectioning'} = 'for example *note node:: (*note node::) (*note (file)Top::)
 1 *Note title: (file name)node.
-2 *note node::
-  2.1 *note cross ref name: node.
-  2.2 *note \'title\': node.
-  2.3 *note (file name)\'node\'::
-  2.4 *note ()node::
-  2.5 *note ():: no node but manual
-  2.6 (*note (file name)::) no node but file name
-  2.7 *note b: (c)a.
+2 *note node:: just node
+  2.1 *note cross ref name: node. node, crossref arg2
+  2.2 *note \'title\': node. code node, samptitle arg3
+  2.3 *note (file name)\'node\':: code node, file name
+  2.4 *note ()node:: node and manual
+  2.5 *note ()Top:: Top and manual
+  2.6 *note ():: no node just manual
+  2.7 *note (file name):: no node just file name
+  2.8 *note b: (c)a. inforef a b c
+  2.9 (*note (file name)Top::) pxref Top file name, spaces
+  2.10 (*note (file name)::) pxref file name only, spaces
+  2.11 *Note (filename)Top::, xref Top filename only, no spaces
+  2.12 *Note (filename)::. xref filename only, no spaces
 for example *note node:: (*note node::) (*note (file)Top::)
 ***********************************************************
 
@@ -2409,35 +2956,44 @@ for example *note node:: (*note node::) (*note (file)Top::)
 1 *Note title: (file name)node.
 *******************************
 
-2 *note node::
-**************
+2 *note node:: just node
+************************
 
-2.1 *note cross ref name: node.
-===============================
+2.1 *note cross ref name: node. node, crossref arg2
+===================================================
 
-2.2 *note \'title\': node.
-========================
+2.2 *note \'title\': node. code node, samptitle arg3
+==================================================
 
-2.3 *note (file name)\'node\'::
-=============================
+2.3 *note (file name)\'node\':: code node, file name
+==================================================
 
-2.4 *note ()node::
-==================
+2.4 *note ()node:: node and manual
+==================================
 
-2.5 *note ():: no node but manual
-=================================
+2.5 *note ()Top:: Top and manual
+================================
 
-2.6 (*note (file name)::) no node but file name
-===============================================
+2.6 *note ():: no node just manual
+==================================
 
-2.7 *note b: (c)a.
-==================
+2.7 *note (file name):: no node just file name
+==============================================
 
-*note cross ref name in heading: node.
-======================================
+2.8 *note b: (c)a. inforef a b c
+================================
 
-*note (file name)\'node\'::
--------------------------
+2.9 (*note (file name)Top::) pxref Top file name, spaces
+========================================================
+
+2.10 (*note (file name)::) pxref file name only, spaces
+=======================================================
+
+2.11 *Note (filename)Top::, xref Top filename only, no spaces
+=============================================================
+
+2.12 *Note (filename)::. xref filename only, no spaces
+======================================================
 
 ';
 
@@ -2447,16 +3003,21 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 <div class="contents">
 
 <ul class="no-bullet">
-  <li><a name="toc-node_002e" href="#node">1 See <a href="file name.html#node">title</a> in <cite>manual</cite>.</a></li>
-  <li><a name="toc-node-1" href="#chap">2 <a href="#node">node</a></a>
+  <li><a name="toc-node_002e" href="#node">1 See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</a></li>
+  <li><a name="toc-node-just-node" href="#chap">2 <a href="#node">node</a> just node</a>
   <ul class="no-bullet">
-    <li><a name="toc-node-2" href="#node-2">2.1 <a href="#node">cross ref name</a></a></li>
-    <li><a name="toc-node-3" href="#node-3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a></a></li>
-    <li><a name="toc-node-4" href="#node-4">2.3 <a href="file name.html#node">(file name)<code>node</code></a></a></li>
-    <li><a name="toc-node-5" href="#node-5">2.4 &lsquo;node&rsquo; in <cite>manual</cite></a></li>
-    <li><a name="toc-manual-no-node-but-manual" href="#manual-no-node-but-manual">2.5 <cite>manual</cite> no node but manual</a></li>
-    <li><a name="toc-_0028file-name_0029-no-node-but-file-name" href="#g_t_0028file-name_0029-no-node-but-file-name">2.6 (see <a href="file name.html#Top">(file name)</a>) no node but file name</a></li>
-    <li><a name="toc-a" href="#a">2.7 See <a href="c.html#a">(c)b</a></a></li>
+    <li><a name="toc-node-node_002c-crossref-arg2" href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+    <li><a name="toc-node-code-node_002c-samptitle-arg3" href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+    <li><a name="toc-node-code-node_002c-file-name" href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+    <li><a name="toc-node-node-and-manual" href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+    <li><a name="toc-Top-Top-and-manual" href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+    <li><a name="toc-Manual-no-node-just-manual" href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+    <li><a name="toc-file-name-no-node-just-file-name" href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+    <li><a name="toc-a-inforef-a-b-c" href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+    <li><a name="toc-_0028Top_0029-pxref-Top-file-name_002c-spaces" href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+    <li><a name="toc-_0028file-name_0029-pxref-file-name-only_002c-spaces" href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+    <li><a name="toc-Top_002c-xref-Top-filename-only_002c-no-spaces" href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+    <li><a name="toc-filename_002e-xref-filename-only_002c-no-spaces" href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
   </ul></li>
 </ul>
 </div>
@@ -2468,7 +3029,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
  &nbsp; </p>
 </div>
 <a name="for-example-node-_0028node_0029-_0028Top_0029"></a>
-<h1 class="top">for example <a href="#node">node</a> (see <a href="#node">node</a>) (see <cite><a href="file.html#Top">manual</a></cite>)</h1>
+<h1 class="top">for example <a href="#node">node</a> (see <a href="#node">node</a>) (see <cite><a href="file.html#Top">Manual</a></cite>)</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#node" accesskey="1">node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -2484,7 +3045,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
  &nbsp; </p>
 </div>
 <a name="node_002e"></a>
-<h2 class="chapter">1 See <a href="file name.html#node">title</a> in <cite>manual</cite>.</h2>
+<h2 class="chapter">1 See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</h2>
 
 <hr>
 <a name="chap"></a>
@@ -2492,35 +3053,45 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 <p>
  &nbsp; </p>
 </div>
-<a name="node-1"></a>
-<h2 class="chapter">2 <a href="#node">node</a></h2>
+<a name="node-just-node"></a>
+<h2 class="chapter">2 <a href="#node">node</a> just node</h2>
 
-<a name="node-2"></a>
-<h3 class="section">2.1 <a href="#node">cross ref name</a></h3>
+<a name="node-node_002c-crossref-arg2"></a>
+<h3 class="section">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</h3>
 
-<a name="node-3"></a>
-<h3 class="section">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a></h3>
+<a name="node-code-node_002c-samptitle-arg3"></a>
+<h3 class="section">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</h3>
 
-<a name="node-4"></a>
-<h3 class="section">2.3 <a href="file name.html#node">(file name)<code>node</code></a></h3>
+<a name="node-code-node_002c-file-name"></a>
+<h3 class="section">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</h3>
 
-<a name="node-5"></a>
-<h3 class="section">2.4 &lsquo;node&rsquo; in <cite>manual</cite></h3>
+<a name="node-node-and-manual"></a>
+<h3 class="section">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</h3>
 
-<a name="manual-no-node-but-manual"></a>
-<h3 class="section">2.5 <cite>manual</cite> no node but manual</h3>
+<a name="Top-Top-and-manual"></a>
+<h3 class="section">2.5 <cite>Manual</cite> Top and manual</h3>
 
-<a name="g_t_0028file-name_0029-no-node-but-file-name"></a>
-<h3 class="section">2.6 (see <a href="file name.html#Top">(file name)</a>) no node but file name</h3>
+<a name="Manual-no-node-just-manual"></a>
+<h3 class="section">2.6 <cite>Manual</cite> no node just manual</h3>
 
-<a name="a"></a>
-<h3 class="section">2.7 See <a href="c.html#a">(c)b</a></h3>
+<a name="file-name-no-node-just-file-name"></a>
+<h3 class="section">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</h3>
 
-<a name="node-6"></a>
-<h3 class="heading"><a href="#node">cross ref name in heading</a></h3>
+<a name="a-inforef-a-b-c"></a>
+<h3 class="section">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</h3>
 
-<a name="node-7"></a>
-<h4 class="subheading"><a href="file name.html#node">(file name)<code>node</code></a></h4>
+<a name="g_t_0028Top_0029-pxref-Top-file-name_002c-spaces"></a>
+<h3 class="section">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</h3>
+
+<a name="g_t_0028file-name_0029-pxref-file-name-only_002c-spaces"></a>
+<h3 class="section">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</h3>
+
+<a name="Top_002c-xref-Top-filename-only_002c-no-spaces"></a>
+<h3 class="section">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</h3>
+
+<a name="filename_002e-xref-filename-only_002c-no-spaces"></a>
+<h3 class="section">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</h3>
+
 <hr>
 ';
 
@@ -2528,7 +3099,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 $result_converted{'xml'}->{'ref_in_sectioning'} = '<contents></contents>
 
 <node name="Top"><nodename>Top</nodename><nodenext automatic="on">node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>for example <ref><xrefnodename>node</xrefnodename></ref> (<pxref><xrefnodename>node</xrefnodename></pxref>) (<pxref><xrefnodename>Top</xrefnodename><xrefinfofile>file</xrefinfofile><xrefprintedname>manual</xrefprintedname></pxref>)</sectiontitle>
+<top><sectiontitle>for example <ref><xrefnodename>node</xrefnodename></ref> (<pxref><xrefnodename>node</xrefnodename></pxref>) (<pxref><xrefnodename>Top</xrefnodename><xrefinfofile>file</xrefinfofile><xrefprintedname>Manual</xrefprintedname></pxref>)</sectiontitle>
 
 <menu>
 <menuentry><menunode>node</menunode><menudescription><pre xml:space="preserve">
@@ -2537,35 +3108,47 @@ $result_converted{'xml'}->{'ref_in_sectioning'} = '<contents></contents>
 
 </top>
 <node name="node"><nodename>node</nodename><nodenext automatic="on">chap</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle><xref><xrefnodename>node</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></xref>.</sectiontitle>
+<chapter><sectiontitle><xref><xrefnodename>node</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>Manual</xrefprintedname></xref>.</sectiontitle>
 
 </chapter>
 <node name="chap"><nodename>chap</nodename><nodeprev automatic="on">node</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle><ref><xrefnodename>node</xrefnodename></ref></sectiontitle>
+<chapter><sectiontitle><ref><xrefnodename>node</xrefnodename></ref> just node</sectiontitle>
 
-<section><sectiontitle><ref><xrefnodename>node</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref></sectiontitle>
-
-</section>
-<section><sectiontitle><ref><xrefnodename><code>node</code></xrefnodename><xrefprinteddesc><samp>title</samp></xrefprinteddesc></ref></sectiontitle>
+<section><sectiontitle><ref><xrefnodename>node</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>  node, crossref arg2</sectiontitle>
 
 </section>
-<section><sectiontitle><ref><xrefnodename><code>node</code></xrefnodename><xrefinfofile>file name</xrefinfofile></ref></sectiontitle>
+<section><sectiontitle><ref><xrefnodename><code>node</code></xrefnodename><xrefprinteddesc><samp>title</samp></xrefprinteddesc></ref>  code node, samptitle arg3</sectiontitle>
 
 </section>
-<section><sectiontitle><ref><xrefnodename>node</xrefnodename><xrefprintedname>manual</xrefprintedname></ref></sectiontitle>
+<section><sectiontitle><ref><xrefnodename><code>node</code></xrefnodename><xrefinfofile>file name</xrefinfofile></ref> code node, file name</sectiontitle>
 
 </section>
-<section><sectiontitle><ref><xrefprintedname>manual</xrefprintedname></ref> no node but manual</sectiontitle>
+<section><sectiontitle><ref><xrefnodename>node</xrefnodename><xrefprintedname>Manual </xrefprintedname></ref> node and manual</sectiontitle>
 
 </section>
-<section><sectiontitle>(<pxref><xrefinfofile>file name</xrefinfofile></pxref>) no node but file name</sectiontitle>
+<section><sectiontitle><ref><xrefnodename>Top</xrefnodename><xrefprintedname>Manual </xrefprintedname></ref> Top and manual</sectiontitle>
 
 </section>
-<section><sectiontitle><inforef><inforefnodename>a</inforefnodename><inforefrefname>b</inforefrefname><inforefinfoname>c</inforefinfoname></inforef></sectiontitle>
+<section><sectiontitle><ref><xrefprintedname>Manual </xrefprintedname></ref> no node just manual</sectiontitle>
 
-<heading><ref><xrefnodename>node</xrefnodename><xrefinfoname>cross ref name in heading</xrefinfoname></ref></heading>
+</section>
+<section><sectiontitle><ref><xrefinfofile>file name</xrefinfofile></ref> no node just file name</sectiontitle>
 
-<subheading><ref><xrefnodename><code>node</code></xrefnodename><xrefinfofile>file name</xrefinfofile></ref></subheading>
+</section>
+<section><sectiontitle><inforef><inforefnodename>a</inforefnodename><inforefrefname>b</inforefrefname><inforefinfoname>c</inforefinfoname></inforef> inforef a b c </sectiontitle>
+
+</section>
+<section><sectiontitle>(<pxref><xrefnodename>Top </xrefnodename><xrefinfofile>file name </xrefinfofile></pxref>) pxref Top file name, spaces</sectiontitle>
+
+</section>
+<section><sectiontitle>(<pxref><xrefinfofile>file name </xrefinfofile></pxref>) pxref file name only, spaces</sectiontitle>
+
+</section>
+<section><sectiontitle><xref><xrefnodename>Top</xrefnodename><xrefinfofile>filename</xrefinfofile></xref>, xref Top filename only, no spaces</sectiontitle>
+
+</section>
+<section><sectiontitle><xref><xrefinfofile>filename</xrefinfofile></xref>. xref filename only, no spaces</sectiontitle>
+
 </section>
 </chapter>
 ';
@@ -2573,47 +3156,64 @@ $result_converted{'xml'}->{'ref_in_sectioning'} = '<contents></contents>
 
 $result_converted{'docbook'}->{'ref_in_sectioning'} = '
 <chapter label="" id="Top">
-<title>for example <link linkend="node">node</link> (see <link linkend="node">node</link>) (see <citetitle>manual</citetitle>)</title>
+<title>for example <link linkend="node">node</link> (see <link linkend="node">node</link>) (see <citetitle>Manual</citetitle>)</title>
 
 
 </chapter>
 <chapter label="1" id="node">
-<title>See section &#8220;title&#8221; in <citetitle>manual</citetitle>.</title>
+<title>See section &#8220;title&#8221; in <citetitle>Manual</citetitle>.</title>
 
 </chapter>
 <chapter label="2" id="chap">
-<title><link linkend="node">node</link></title>
+<title><link linkend="node">node</link> just node</title>
 
 <sect1 label="2.1">
-<title><link linkend="node">cross ref name</link></title>
+<title><link linkend="node">cross ref name</link>  node, crossref arg2</title>
 
 </sect1>
 <sect1 label="2.2">
-<title><link linkend="node">&#8216;<literal>title</literal>&#8217;</link></title>
+<title><link linkend="node">&#8216;<literal>title</literal>&#8217;</link>  code node, samptitle arg3</title>
 
 </sect1>
 <sect1 label="2.3">
-<title></title>
+<title> code node, file name</title>
 
 </sect1>
 <sect1 label="2.4">
-<title>section &#8220;node&#8221; in <citetitle>manual</citetitle></title>
+<title>section &#8220;node&#8221; in <citetitle>Manual</citetitle> node and manual</title>
 
 </sect1>
 <sect1 label="2.5">
-<title><citetitle>manual</citetitle> no node but manual</title>
+<title><citetitle>Manual</citetitle> Top and manual</title>
 
 </sect1>
 <sect1 label="2.6">
-<title>() no node but file name</title>
+<title><citetitle>Manual</citetitle> no node just manual</title>
 
 </sect1>
 <sect1 label="2.7">
-<title>See Info file <filename>c</filename>, node &#8216;<literal>a</literal>&#8217;</title>
+<title> no node just file name</title>
 
-<bridgehead renderas="sect1"><link linkend="node">cross ref name in heading</link></bridgehead>
+</sect1>
+<sect1 label="2.8">
+<title>See Info file <filename>c</filename>, node &#8216;<literal>a</literal>&#8217; inforef a b c</title>
 
-<bridgehead renderas="sect2"></bridgehead>
+</sect1>
+<sect1 label="2.9">
+<title>() pxref Top file name, spaces</title>
+
+</sect1>
+<sect1 label="2.10">
+<title>() pxref file name only, spaces</title>
+
+</sect1>
+<sect1 label="2.11">
+<title>, xref Top filename only, no spaces</title>
+
+</sect1>
+<sect1 label="2.12">
+<title>. xref filename only, no spaces</title>
+
 </sect1>
 </chapter>
 ';

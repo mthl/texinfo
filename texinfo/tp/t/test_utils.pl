@@ -1054,13 +1054,13 @@ sub output_texi_file($)
   }
   my $node_top;
   my $top = '';
-  if ($test_text =~ /^\@node +top *\@/mi or $test_text =~ /^\@node +top *$/mi) {
+  if ($test_text =~ /^\@node +top\s/mi or $test_text =~ /^\@node +top *$/mi) {
+    $node_top = '';
+  } else {
     $node_top = "\@node Top\n";
-    unless ($test_text =~ /^\@top *\@/m or $test_text =~ /^\@top *$/m) {
+    unless ($test_text =~ /^\@top\s/m or $test_text =~ /^\@top *$/m) {
       $node_top .= "\@top $test_name\n";
     }
-  } else {
-    $node_top = '';
   }
   my $bye = '';
   if ($test_text !~ /^\@bye *$/m) {

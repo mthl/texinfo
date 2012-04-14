@@ -458,7 +458,7 @@ $full_line_commands{'itemx'} = 1;
 # context tests, to make sure, for instance that we are testing
 # @-commands on the block, misc or node @-command line and not
 # in the content.
-# index entry commands are dynamically set to in_simple_text_commands
+# index entry commands are dynamically set as in_simple_text_commands
 my %default_valid_nestings;
 
 foreach my $command (keys(%accent_commands)) {
@@ -3184,11 +3184,11 @@ sub _end_line($$$)
                            and scalar(@{$self->{'input'}}) > 1)) {
       # TODO keep the information with sourcemark
       pop @{$current->{'contents'}};
-    # columnfractions 
     } elsif ($command eq 'setfilename'
              and ($self->{'current_node'} or $self->{'current_section'})) {
       $self->_command_warn($misc_cmd, $line_nr,
                $self->__("\@%s after the first element"), $command);
+    # columnfractions 
     } elsif ($command eq 'columnfractions') {
       # in a multitable, we are in a block_line_arg
       if (!$current->{'parent'} or !$current->{'parent'}->{'cmdname'} 

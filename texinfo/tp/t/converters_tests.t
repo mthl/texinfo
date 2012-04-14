@@ -452,7 +452,7 @@ $top_in_ref_text
 '@contents
 
 @node Top
-@top for example @ref{node} (@pxref{node}) (@pxref{Top,,, file, manual})
+@top for example @ref{node} (@pxref{node}) (@pxref{Top,,, file, Manual})
 
 @menu
 * node::
@@ -460,28 +460,35 @@ $top_in_ref_text
 @end menu
 
 @node node
-@chapter @xref{node,,title, file name, manual}.
+@chapter @xref{node,,title, file name, Manual}.
 
 @node chap
-@chapter @ref{node}
+@chapter @ref{node} just node
 
-@section @ref{node, cross ref name}
+@section @ref{node, cross ref name}  node, crossref arg2
 
-@section @ref{@code{node},, @samp{title}}
+@section @ref{@code{node},, @samp{title}}  code node, samptitle arg3
 
-@section @ref{@code{node},,, file name}
+@section @ref{@code{node},,, file name} code node, file name
 
-@section @ref{node,,,, manual}
+@section @ref{node,,,, Manual } node and manual
 
-@section @ref{,,,, manual} no node but manual
+@section @ref{Top,,,, Manual } Top and manual
 
-@section (@pxref{,,, file name}) no node but file name
+@section @ref{,,,, Manual } no node just manual
 
-@section @inforef{a, b, c}
+@section @ref{,,, file name} no node just file name
 
-@heading @ref{node, cross ref name in heading}
+@section @inforef{a, b, c} inforef a b c 
 
-@subheading @ref{@code{node},,, file name}
+@section (@pxref{ Top ,,, file name }) pxref Top file name, spaces
+
+@section (@pxref{,,, file name }) pxref file name only, spaces
+
+@section @xref{Top,,,filename}, xref Top filename only, no spaces
+
+@section @xref{,,,filename}. xref filename only, no spaces
+
 '],
 ['unknown_value',
 '@value{unknown}'],
