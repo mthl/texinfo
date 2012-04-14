@@ -1,6 +1,8 @@
 2012-04-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Command Contexts): clarify @shortcaption, etc.
+	(Top Node Naming): revisit whole-manual xref text.
+	(Other Configuration Variables) [KEEP_TOP_EXTERNAL_REF]: Englishing.
 
 	* tp/texi2any.pl (configured_version): add +dev to distinguish
 	from installed.

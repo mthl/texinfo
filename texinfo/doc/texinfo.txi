@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.432 2012-04-13 22:51:17 karl Exp $
+@c $Id: texinfo.txi,v 1.433 2012-04-14 00:21:06 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6456,14 +6456,15 @@ whole.  See the next section.
 @cindex Manual, referring to as a whole
 @cindex Referring to an entire manual
 
-Ordinarily, you must always name a node in a cross reference.  It's
-not unusual to want to refer to another manual as a whole, rather than
-a particular section within it.  In this case, giving any section name
-would just be a distraction.
+Ordinarily, you must always name a node in a cross reference.
+However, it's not unusual to want to refer to another manual as a
+whole, rather than a particular section within it.  In this case,
+giving any section name is just a distraction.
 
-So, if the first argument is either @samp{Top} (capitalized just that
-way) or omitted entirely, and the third argument is omitted, the
-printed output includes no node or section name.  (The Info output
+So, with cross references to other manuals (@pxref{Four and Five
+Arguments}), if the first argument is either @samp{Top} (capitalized
+just that way) or omitted entirely, and the third argument is omitted,
+the printed output includes no node or section name.  (The Info output
 includes @samp{Top} if it was given.)  For example,
 
 @example
@@ -17484,8 +17485,8 @@ content (@pxref{copying,, @code{@@copying}}) as if
 @code{@@insertcopying} were a user-defined macro.
 
 @item KEEP_TOP_EXTERNAL_REF
-For HTML@.  If set, do not ignore @samp{Top} node as first 
-argument for an external ref to a manual, (the default case).
+For HTML@.  If set, do not ignore @samp{Top} as the first 
+argument for an external ref to a manual, as is done by default.
 @xref{Top Node Naming}.
 
 @item L2H
@@ -21891,7 +21892,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.432 2012-04-13 22:51:17 karl Exp $
+$Id: texinfo.txi,v 1.433 2012-04-14 00:21:06 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
