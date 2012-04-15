@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 24 };
+BEGIN { plan tests => 25 };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
@@ -68,7 +68,6 @@ my $node = Texinfo::Structuring::_new_node($parser, $line_tree);
 is ('@node a node 1
 ',  Texinfo::Convert::Texinfo::convert($node), 'duplicate node added');
 #print STDERR Texinfo::Convert::Texinfo::convert($node);
-
 
 my $sections_text = 
 '@top top section
@@ -173,4 +172,22 @@ is ($labels->{'chap'}, $index_entries->{'cp'}->[0]->{'node'},
   'index entry reassociated');
 #print STDERR Texinfo::Convert::Texinfo::convert($tree);
 
+$parser = Texinfo::Parser::parser();
+my $text_duplicate_nodes = 
+'@node NAME
+@section DESCRIPTION
+
+@node NAME
+@section SEE ALSO
+
+@cindex entry
+';
+$tree = $parser->parse_texi_text ($text_duplicate_nodes);
+# In fact, here we also check that there is no debugging message...
+$new_content
+   = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+($index_names, $merged_indices, $index_entries) = $parser->indices_information();
+$labels = $parser->labels_information();
+is ($labels->{'SEE-ALSO'}, $index_entries->{'cp'}->[0]->{'node'},
+  'index entry reassociated duplicate node ignored');
 

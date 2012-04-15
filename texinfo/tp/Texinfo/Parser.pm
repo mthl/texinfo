@@ -410,7 +410,7 @@ foreach my $not_in_sectioning_command_line_commands ('titlefont',
 
 # commands that may happen in simple text arguments
 my %in_simple_text_commands = %in_sectioning_command_line_commands;
-foreach my $not_in_simple_text_command('xref','ref','pxref', 'inforef') {
+foreach my $not_in_simple_text_command('xref', 'ref', 'pxref', 'inforef') {
   delete $in_simple_text_commands{$not_in_simple_text_command};
 }
 

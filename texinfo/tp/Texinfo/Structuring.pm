@@ -1125,6 +1125,8 @@ sub _print_root_command_texi($)
     } elsif ($sectioning_commands{$command->{'cmdname'}}) {
       $tree = $command->{'extra'}->{'misc_content'};
     }
+  } else {
+    return "Not a root command";
   }
   return '@'.$command->{'cmdname'}. ' '
        .Texinfo::Convert::Texinfo::convert ({'contents' => $tree})
@@ -1354,7 +1356,9 @@ sub _new_node($$)
   }
 
   push @{$node->{'extra'}->{'nodes_manuals'}}, $parsed_node;
-  Texinfo::Parser::_register_label($self, $node, $parsed_node, undef);
+  if (!Texinfo::Parser::_register_label($self, $node, $parsed_node, undef)) {
+    print STDERR "BUG: node unique, register failed:  $parsed_node->{'normalized'}\n";
+  }
   push @{$self->{'nodes'}}, $node;
   return $node;
 }
@@ -1366,8 +1370,7 @@ sub _reassociate_to_node($$$$)
   my $type = shift;
   my $current = shift;
   my $nodes = shift;
-  my $new_node = $nodes->[0];
-  my $previous_node = $nodes->[1];
+  my ($new_node, $previous_node) = @{$nodes};
 
   if ($current->{'cmdname'} and $current->{'cmdname'} eq 'menu') {
     if ($previous_node) {
@@ -1395,7 +1398,16 @@ sub _reassociate_to_node($$$$)
     if ($previous_node 
         and (!$current->{'extra'}->{'index_entry'}->{'node'}
              or $current->{'extra'}->{'index_entry'}->{'node'} ne $previous_node)) {
-      print STDERR "Bug: index entry $current not in previous node $previous_node\n";
+      print STDERR "Bug: index entry $current (".
+        Texinfo::Convert::Texinfo::convert ({'contents' => $current->{'extra'}->{'index_entry'}->{'content'}})
+         .") not in previous node $previous_node\n";
+      print STDERR "  previous node: "._print_root_command_texi($previous_node)."\n";
+      if ($current->{'extra'}->{'index_entry'}->{'node'}) {
+        print STDERR "  current node: ".
+         _print_root_command_texi($current->{'extra'}->{'index_entry'}->{'node'})."\n";
+      } else {
+        print STDERR "  current node not set\n";
+      }
     }
     $current->{'extra'}->{'index_entry'}->{'node'} = $new_node;
   }
@@ -1436,8 +1448,11 @@ sub insert_nodes_for_sectioning_commands($$)
                                      [$new_node, $previous_node]);
       }
     }
+    # check normalized to avoid erroneous nodes, such as duplicates
     $previous_node = $content 
-      if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node');
+      if ($content->{'cmdname'} 
+          and $content->{'cmdname'} eq 'node'
+          and $content->{'extra'}->{'normalized'});
     push @contents, $content;
   }
   return \@contents;
