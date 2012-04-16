@@ -6,7 +6,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 16 };
+BEGIN { plan tests => 17 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
@@ -58,6 +58,23 @@ X<aaa>
 @cindex aaa
 
 ', 'index in head node', 1, 2);
+
+run_test ('=head1 NAME
+
+T@c
+
+=head1 @{}
+',
+'@node T@@c NAME
+@section NAME
+
+T@@c
+
+@node T@@c @@@{@}
+@section @@@{@}
+
+', 'protected characters', 1, 2);
+
 
 run_test ('=head1 T
 
