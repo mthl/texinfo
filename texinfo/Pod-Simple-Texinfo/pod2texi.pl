@@ -74,6 +74,7 @@ manuals are standalone (the default).
 
 Options:
     --base-level=NUM|NAME   level of the head1 commands.
+    --debug=NUM             set debugging level
     --no-fill-section-gaps  do not fill sectioning gaps.
     --no-section-nodes      use anchors for sections instead of nodes.
     --output=NAME           output to <NAME> for the first or the main manual
@@ -91,6 +92,7 @@ my $top = 'top';
 my $subdir;
 my $section_nodes = 1;
 my $fill_sectioning_gaps = 1;
+my $debug = 0;
 
 my $result_options = Getopt::Long::GetOptions (
   'help|h' => sub { print pod2texi_help(); exit 0; },
@@ -116,6 +118,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
   'top=s' => \$top,
   'section-nodes!' => \$section_nodes,
   'fill-section-gaps!' => \$fill_sectioning_gaps,
+  'debug=i' => \$debug,
 );
 
 exit 1 if (!$result_options);
@@ -182,13 +185,16 @@ sub _fix_texinfo_tree($$$;$)
   my $section_nodes = shift;
   my $fill_gaps_in_sectioning = shift;
   my $do_master_menu = shift;
+
   my $parser = Texinfo::Parser::parser();
   my $tree = $parser->parse_texi_text($manual_texi);
+
   if ($fill_gaps_in_sectioning) {
     $tree->{'contents'} 
       = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
     $tree->{'contents'}
-      = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+      = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree)
+        if ($section_nodes);
   }
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
   Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree) 
@@ -220,6 +226,7 @@ sub _do_top_node_menu($)
 }
 
 my $file_nr = 0;
+# Full manual is collected to generate the top node menu.
 my $full_manual = '';
 my @included;
 foreach my $file (@processed_files) {
@@ -274,9 +281,18 @@ foreach my $file (@processed_files) {
     $new->texinfo_internal_pod_manuals(\@manuals);
   }
   
+  print STDERR "processing $file -> $outfile ($name)\n" if ($debug);
   $new->parse_file($file);
 
   if ($section_nodes or $fill_sectioning_gaps) {
+    if ($debug > 4) {
+      # print to a file
+      open (DBGFILE, ">$outfile-dbg") or die sprintf(__("%s: Open %s: %s.\n"), 
+                                      $real_command_name, "$outfile-dbg", $!);
+      binmode(DBGFILE, ':encoding(utf8)');
+      print DBGFILE $manual_texi;
+      
+    }
     $manual_texi = _fix_texinfo_manual($manual_texi, $section_nodes, 
                                        $fill_sectioning_gaps);
     $full_manual .= $manual_texi if ($section_nodes);
@@ -327,6 +343,10 @@ if ($base_level > 0) {
   } else {
     $fh = *STDOUT;
   }
+
+  # FIXME should use =encoding
+  binmode($fh, ':encoding(utf8)');
+
   my $outfile_name = $output;
 
   $outfile_name = $STDOUT_DOCU_NAME if ($outfile_name eq '-');
@@ -405,6 +425,10 @@ Texinfo manual.  In that case, each pod file has an additional sectioning
 command one level above the head1 commands level added for the whole
 file.  Therefore if you want to have each pod file as a chapter, you should
 use C<section> as the base level.
+
+=item B<--debug>=I<NUM>
+
+Set debugging level to I<NUM>.
 
 =item B<--output>=I<NAME>
 

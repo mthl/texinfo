@@ -302,7 +302,7 @@ sub _section_manual_to_node_name($$$)
   my $base_level = shift;
 
   if (defined($manual) and $base_level > 0) {
-    return "$manual $section";
+    return _protect_text($manual, 1). " $section";
   } else {
     return $section;
   }

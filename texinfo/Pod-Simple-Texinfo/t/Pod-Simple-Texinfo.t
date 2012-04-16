@@ -6,20 +6,29 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test::More;
-BEGIN { plan tests => 15 };
+BEGIN { plan tests => 16 };
 use Pod::Simple::Texinfo;
 ok(1); # If we made it this far, we're ok.
 
 #########################
 
-sub run_test($$$)
+sub run_test($$$;$$)
 {
   my $in = shift;
   my $out = shift;
   my $name = shift;
+  my $test_nodes = shift;
+  my $sectioning_base_level = shift;
 
   my $parser = Pod::Simple::Texinfo->new();
   $parser->set_source(\$in);
+  $parser->texinfo_section_nodes(1)
+    if ($test_nodes);
+  if (defined($sectioning_base_level)) {
+    $parser->texinfo_sectioning_base_level($sectioning_base_level);
+    my $short_title = $parser->get_short_title();
+    $parser->texinfo_short_title($short_title);
+  }
   my $result;
   $parser->output_string(\$result);
   $parser->bare_output(1);
@@ -40,6 +49,15 @@ X<aaa>
 @cindex aaa
 
 ', 'index in head');
+
+run_test ('=head1 NAME
+X<aaa>
+',
+'@node NAME aaa NAME
+@section NAME
+@cindex aaa
+
+', 'index in head node', 1, 2);
 
 run_test ('=head1 T
 
