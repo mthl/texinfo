@@ -45,6 +45,7 @@ test('@node Top
 @menu
 * chap::
 @end menu
+
 @node chap
 @chapter chap
 ', 'simple');

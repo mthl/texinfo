@@ -1593,6 +1593,9 @@ sub complete_node_menu($$)
         my $section = $node->{'extra'}->{'associated_section'};
         $current_menu = _new_block_command (\@pending, $section, 'menu');
         push @{$section->{'contents'}}, $current_menu;
+        push @{$section->{'contents'}}, {'type' => 'empty_line',
+                                         'text' => "\n", 
+                                         'parent' => $section};
         push @{$node->{'menus'}}, $current_menu;
       } else {
         foreach my $entry (@pending) {
@@ -1728,12 +1731,33 @@ sub regenerate_master_menu($;$)
 
   my $last_menu = $top_node->{'menus'}->[-1];
   my $index = scalar(@{$last_menu->{'contents'}});
-  if (scalar(@{$last_menu->{'contents'}})
-      and $last_menu->{'contents'}->[-1]->{'cmdname'}
-      and $last_menu->{'contents'}->[-1]->{'cmdname'} eq 'end') {
+  if ($index
+      and $last_menu->{'contents'}->[$index-1]->{'cmdname'}
+      and $last_menu->{'contents'}->[$index-1]->{'cmdname'} eq 'end') {
     $index --;
   }
   $new_master_menu->{'parent'} = $last_menu;
+  if ($index
+      and $last_menu->{'contents'}->[$index-1]->{'type'}
+      and $last_menu->{'contents'}->[$index-1]->{'type'} eq 'menu_comment'
+      and $last_menu->{'contents'}->[$index-1]->{'contents'}->[-1]->{'type'}
+      and $last_menu->{'contents'}->[$index-1]->{'contents'}->[-1]->{'type'}
+             eq 'preformatted') {
+    my $empty_line = {'type' => 'empty_line', 'text' => "\n", 'parent' =>
+               $last_menu->{'contents'}->[$index-1]->{'contents'}->[-1]};
+    push @{$last_menu->{'contents'}->[$index-1]->{'contents'}}, $empty_line;
+  } elsif ($index
+           and $last_menu->{'contents'}->[$index-1]->{'type'}
+           and $last_menu->{'contents'}->[$index-1]->{'type'} eq 'menu_entry') {
+    my $menu_comment = {'type' => 'menu_comment', 'parent' => $last_menu};
+    splice (@{$last_menu->{'contents'}}, $index, 0, $menu_comment);
+    $index++;
+    my $preformatted = {'type' => 'preformatted', 'parent' => $menu_comment};
+    push @{$menu_comment->{'contents'}}, $preformatted;
+    my $empty_line = {'type' => 'after_description_line', 'text' => "\n",
+                      'parent' => $preformatted};
+    push @{$preformatted->{'contents'}}, $empty_line;
+  }
   splice (@{$last_menu->{'contents'}}, $index, 0, $new_master_menu);
 
   return 1;

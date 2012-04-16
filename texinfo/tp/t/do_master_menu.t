@@ -175,5 +175,5 @@ $tree = $parser->parse_texi_text($no_detailmenu);
 Texinfo::Structuring::regenerate_master_menu($parser);
 $out = Texinfo::Convert::Texinfo::convert($tree);
 
-is ($out, _get_in('',$reference), 'regenerate with no detailmenu');
+is ($out, _get_in('',"\n".$reference), 'regenerate with no detailmenu');
 
