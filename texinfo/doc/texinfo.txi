@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.433 2012-04-14 00:21:06 karl Exp $
+@c $Id: texinfo.txi,v 1.434 2012-04-17 18:23:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1753,13 +1753,15 @@ reviews of nearly similar editions.  Dozens of others have contributed
 patches and suggestions, they are gratefully acknowledged in the
 @file{ChangeLog} file.  Our mistakes are our own.
 
-@cindex Scribe
-@cindex Reid, Brian
 @cindex History of Texinfo
 @cindex Texinfo history
-A bit of history: in the 1970's at CMU, Brian Reid developed a program
-and format named Scribe to mark up documents for printing.  It used the
-@code{@@} character to introduce commands, as Texinfo does.  Much more
+@subheading Beginnings
+
+@cindex Scribe
+@cindex Reid, Brian
+In the 1970's at CMU, Brian Reid developed a program and format named
+Scribe to mark up documents for printing.  It used the @code{@@}
+character to introduce commands, as Texinfo does.  Much more
 consequentially, it strove to describe document contents rather than
 formatting, an idea wholeheartedly adopted by Texinfo.
 
@@ -1782,6 +1784,8 @@ Moving forward, the original translator to create Info was written
 @code{texinfo-format-buffer} and other functions.  In the early 1990s,
 Brian Fox reimplemented the conversion program in C, now called
 @command{makeinfo}.
+
+@subheading Reimplementing in Perl
 
 @cindex Cons, Lionel
 @cindex Dumas, Patrice
@@ -5230,8 +5234,8 @@ Info.
 
 @item
 By convention, node names are capitalized just as they would be for
-section or chapter titles---initial and significant words are
-capitalized; others are not.
+section or chapter titles.  In this manual, initial and significant
+words are capitalized; others are not.
 @end itemize
 
 
@@ -6776,11 +6780,12 @@ It takes one mandatory argument, the url, and two optional arguments
 which control the text that is displayed.  In HTML output, @code{@@uref}
 produces a link you can follow.
 
-@code{@@url} is a synonym for @code{@@uref}.  Originally, @code{@@url}
+@anchor{url}
+@code{@@url} is a synonym for @code{@@uref}.  (Originally, @code{@@url}
 had the meaning of @code{@@indicateurl}
 (@pxref{indicateurl,,@code{@@indicateurl}}), but in actual practice it
 was misused the vast majority of the time.  So we've changed the
-meaning.
+meaning.)
 
 The second argument, if specified, is the text to display (the default
 is the url itself); in Info and DVI output, but not in HTML output, the
@@ -6793,6 +6798,7 @@ text is already sufficiently referential, as in a man page.  If the
 third argument is given, the second argument is ignored.
 
 @cindex Line breaking, and urls
+@cindex Breakpoints within urls
 @TeX{} allows line breaking within urls at only a few characters
 (which are special in urls): @samp{&}, @samp{.}, @samp{#}, @samp{?},
 and @samp{/} (but not between @samp{/} characters).  A tiny amount of
@@ -16579,6 +16585,17 @@ Extensive tests of the language were developed at the same time as
 @command{texi2any}; we plead with anyone thinking of writing a program
 to parse Texinfo input to at least make use of these tests.  
 
+@cindex Examples of using @command{texi2any}
+@findex Texinfo::Parser module
+The @command{texi2html} wrapper script (@pxref{texi2html}) provides a
+simple example of calling @command{texi2any} from a shell script; it's
+in @file{util/texi2html} in the Texinfo sources.  More
+consequentially, @command{texi-elements-by-size} is an example Perl
+script using the @code{Texinfo::Parser} module interface; it's in
+@file{util/texi-elements-by-size}.  (Its functionality may also be
+useful to authors; @pxref{texi-elements-by-size}.)
+
+@cindex Future of Texinfo implementations
 With the release of @command{texi2any} as the reference
 implementation, development of both the C implementation of
 @command{makeinfo} and @command{texi2html} has been halted.  Going
@@ -17819,8 +17836,8 @@ for the previous @command{texi2html}.  Here are the biggest differences:
 
 @itemize @bullet
 @item Most blatantly, the command line options of @command{texi2html}
-are mostly now configuration variables.  A table of approximate
-equivalents is given below.
+are now configuration variables, for the most part.  A table of
+approximate equivalents is given below.
 
 @item The program-level customization API is very different in
 @command{texi2any}.
@@ -21354,7 +21371,7 @@ combinations.
 @node Tips
 @appendix Tips and Hints
 
-Here are some tips for writing Texinfo documentation:@refill
+Here are some tips for writing Texinfo documentation:
 
 @cindex Tips
 @cindex Usage tips
@@ -21374,6 +21391,7 @@ Use 70 or 72 as your fill column.  Longer lines are hard to read.
 Include a copyright notice and copying permissions.
 @end itemize
 
+
 @subsubheading Index, Index, Index!
 
 Write many index entries, in different ways.
@@ -21385,7 +21403,7 @@ case, write an entry before the paragraph to which it applies.  This
 way, an index entry points to the first page of a paragraph that is
 split across pages.
 
-Here are more hints we have found valuable:
+Here are more index-related hints we have found valuable:
 
 @itemize @bullet
 @item
@@ -21439,6 +21457,7 @@ written in different ways---@samp{Lazy dog}, and @samp{Dog, lazy}---so
 readers can look up the concept in different ways.)
 @end itemize
 
+
 @subsubheading Blank Lines
 
 @itemize @bullet
@@ -21446,13 +21465,12 @@ readers can look up the concept in different ways.)
 Insert a blank line between a sectioning command and the first following
 sentence or paragraph, or between the indexing commands associated with
 the sectioning command and the first following sentence or paragraph, as
-shown in the tip on indexing.  Otherwise, a formatter may fold title and
-paragraph together.
+shown in the tip on indexing.  It makes the source easier to read.
 
 @item
 Always insert a blank line before an @code{@@table} command and after an
 @code{@@end table} command; but never insert a blank line after an
-@code{@@table} command or before an @code{@@end table} command.
+@code{@@table} command.
 
 @need 1000
 For example,
@@ -21483,6 +21501,7 @@ itemize} and @code{@@enumerate} @dots{} @code{@@end enumerate} in the
 same way.
 @end itemize
 
+
 @subsubheading Complete Phrases
 
 Complete phrases are easier to read than @dots{}
@@ -21498,6 +21517,7 @@ Write the prefatory sentence or phrase for a multi-item list or table as
 a complete expression.  Do not write ``You can set:''; instead, write
 ``You can set these variables:''.  The former expression sounds cut off.
 @end itemize
+
 
 @subsubheading Editions, Dates and Versions
 
@@ -21516,7 +21536,7 @@ and @ref{GNU Sample Texts}.
 
 Definition commands are @code{@@deffn}, @code{@@defun},
 @code{@@defmac}, and the like, and enable you to write descriptions in
-a uniform format.@refill
+a uniform format.
 
 @itemize @bullet
 @item
@@ -21529,6 +21549,7 @@ Use @code{@@table} @dots{} @code{@@end table} in an appendix that
 contains a summary of functions, not @code{@@deffn} or other definition
 commands.
 @end itemize
+
 
 @subsubheading Capitalization
 
@@ -21544,8 +21565,9 @@ Capitalize ``Info''; it is a name.
 Write @TeX{} using the @code{@@TeX@{@}} command.  Note the uppercase
 @samp{T} and @samp{X}.  This command causes the formatters to
 typeset the name according to the wishes of Donald Knuth, who wrote
-@TeX{}.
+@TeX{}.  (Likewise @code{@@LaTeX@{@}} for @LaTeX{}.)
 @end itemize
+
 
 @subsubheading Spaces
 
@@ -21615,11 +21637,12 @@ typesets these as a long dash and the Info formatters reduce three
 hyphens to two.
 @end itemize
 
+
 @subsubheading Periods Outside of Quotes
 
 Place periods and other punctuation marks @emph{outside} of quotations,
 unless the punctuation is part of the quotation.  This practice goes
-against publishing conventions in the United States, but enables the
+against some publishing conventions in the United States, but enables the
 reader to distinguish between the contents of the quotation and the
 whole passage.
 
@@ -21633,6 +21656,7 @@ Evidently, @samp{au} is an abbreviation for ``author''.
 @noindent
 since @samp{au} does @emph{not} serve as an  abbreviation for
 @samp{author.} (with a period following the word).
+
 
 @subsubheading Introducing New Terms
 
@@ -21657,24 +21681,8 @@ that the reader should not expect to know the meaning already, and
 should expect to learn the meaning from this passage.
 @end itemize
 
-@subsubheading @@pxref
 
-@c !!! maybe include this in the tips on pxref
-@ignore
-By the way, it is okay to use pxref with something else in front of
-it within the parens, as long as the pxref is followed by the close
-paren, and the material inside the parens is not part of a larger
-sentence.  Also, you can use xref inside parens as part of a complete
-sentence so long as you terminate the cross reference with punctuation.
-@end ignore
-Absolutely never use @code{@@pxref} except in the special context for
-which it is designed: inside parentheses, with the closing parenthesis
-following immediately after the closing brace.  One formatter
-automatically inserts closing punctuation and the other does not.  This
-means that the output looks right both in printed output and in an Info
-file, but only when the command is used inside parentheses.
-
-@subsubheading Invoking from a Shell
+@subsubheading Program Invocation Nodes
 
 You can invoke programs such as Emacs, GCC, and @code{gawk} from a
 shell.  The documentation for each program should contain a section that
@@ -21689,7 +21697,7 @@ find the section easily.
 @subsubheading ANSI C Syntax
 
 When you use @code{@@example} to describe a C function's calling
-conventions, use the ANSI C syntax, like this:@refill
+conventions, use the ANSI C syntax, like this:
 
 @example
 void dld_init (char *@@var@{path@});
@@ -21698,16 +21706,16 @@ void dld_init (char *@@var@{path@});
 @noindent
 And in the subsequent discussion, refer to the argument values by
 writing the same argument names, again highlighted with
-@code{@@var}.@refill
+@code{@@var}.
 
 @need 800
-Avoid the obsolete style that looks like this:@refill
+Avoid the obsolete style that looks like this:
 
 @example
 #include <dld.h>
 
 dld_init (path)
-char *path;
+  char *path;
 @end example
 
 Also, it is best to avoid writing @code{#include} above the
@@ -21716,7 +21724,23 @@ header file.  The practice may give the misimpression that the
 @code{#include} belongs near the declaration of the function.  Either
 state explicitly which header file holds the declaration or, better
 yet, name the header file used for a group of functions at the
-beginning of the section that describes the functions.@refill
+beginning of the section that describes the functions.
+
+@anchor{texi-elements-by-size}
+@subsubheading Node Length
+
+Keep nodes (sections) to a reasonable length, whatever reasonable
+might be in the given context.  Don't hesitate break up long nodes
+into subnodes and have an extensive tree structure; that's what it's
+there for.  Many times, readers will probably try to find a single
+specific point in the manual, using search, indexing, or just plain
+guessing, rather than reading the whole thing from beginning to end.
+
+You can use the @command{texi-elements-by-size} utility to see a list
+of all nodes (or sections) in the document, sorted by size (either
+lines or words), to find candidates for splitting.  It's in the
+@file{util/} subdirectory of the Texinfo sources.
+
 
 @subsubheading Bad Examples
 
@@ -21745,6 +21769,7 @@ And in this example, you should specify what `it' refers to:
 If you are working with other people, it assists in coordinating
 everyone's changes so they do not step on each other.
 @end quotation
+
 
 @subsubheading And Finally @dots{}
 
@@ -21892,7 +21917,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.433 2012-04-14 00:21:06 karl Exp $
+$Id: texinfo.txi,v 1.434 2012-04-17 18:23:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22169,12 +22194,12 @@ on one side of each sheet of paper, and the other for manuals printed
 on both sides of the paper.
 
 By default, nothing is specified for the footing of a Texinfo file,
-so the footing remains blank.@refill
+so the footing remains blank.
 
 The standard format for single-sided printing consists of a header
 line in which the left-hand part contains the name of the chapter, the
 central part is blank, and the right-hand part contains the page
-number.@refill
+number.
 
 @need 950
 A single-sided page looks like this:

@@ -1,3 +1,10 @@
+2012-04-17  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Tips): mention texi-elements-by-size (for usage).
+	(Reference Implementation): likewise (for an example); also texi2html.
+	* util/texi-elements-by-size: allow invocation from anywhere.
+	{ on same line as sub?
+
 2012-04-16  Karl Berry  <karl@gnu.org>
 
 	* util/texi-elements-by-size: renamed from
