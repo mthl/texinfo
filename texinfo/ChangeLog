@@ -1,3 +1,8 @@
+2012-04-16  Karl Berry  <karl@gnu.org>
+
+	* util/texi-elements-by-size: renamed from
+	texi_sort_elements_count.pl and texinfo configure variables removed.
+
 2012-04-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Command Contexts): clarify @shortcaption, etc.

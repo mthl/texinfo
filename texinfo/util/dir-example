@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.91 2012-04-13 16:56:53 karl Exp $
+$Id: dir-example,v 1.92 2012-04-17 00:39:34 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -33,7 +33,7 @@ Basics
 * DC: (dc).                     Postfix desk calculator.
 * Date input formats: (coreutils)Date input formats.
 * Ed: (ed).                     The GNU line editor
-* File permissions:  (coreutils)File permissions.   Access modes.
+* File permissions: (coreutils)File permissions.   Access modes.
 * Finding files: (find).        Operating on files matching certain criteria.
 * Gcal: (gcal).                 GNU calendar program.
 * Hello: (hello).               Hello, GNU world.
@@ -304,7 +304,8 @@ GNU organization
 * Standards: (standards).       GNU coding standards.
 
 Individual utilities
-* aclocal: (automake)Invoking aclocal.          Generating aclocal.m4.
+* aclocal-invocation: (automake)aclocal Invocation.
+                                                Generating aclocal.m4.
 * afm2tfm: (dvips)Invoking afm2tfm.             Adobe to TeX font metrics.
 * addr2line: (binutils)addr2line.    Convert addresses to file and line.
 * ar: (binutils)ar.                  Create, modify, and extract from archives.
@@ -318,7 +319,8 @@ Individual utilities
                                                   templates
 * autom4te: (autoconf)autom4te Invocation.      The Autoconf executables 
                                                   backbone
-* automake: (automake)Invoking Automake.        Generating Makefile.in.
+* automake-invocation: (automake)automake Invocation.
+                                                Generating Makefile.in.
 * autoreconf: (autoconf)autoreconf Invocation.  Remaking multiple `configure' 
                                                   scripts
 * autoscan: (autoconf)autoscan Invocation.      Semi-automatic `configure.ac' 

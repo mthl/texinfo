@@ -1,5 +1,7 @@
 #! /usr/bin/env perl
 # texi-elements-by-size -- dump list of elements based on words or line counts.
+# Also serve as an example of using the Texinfo::Parser module,
+# including the usual per-format options.
 #
 # Copyright 2012 Free Software Foundation, Inc.
 # 
@@ -26,11 +28,16 @@ Getopt::Long::Configure("gnu_getopt");
 
 BEGIN
 {
-  my $texinfolibdir = "../tp";
-  unshift @INC, ($texinfolibdir);
+  # The purpose of these includes is to make it possible to run the
+  # script from a Texinfo source checkout.  If that's not relevant,
+  # probably best to simply assume all the needed packages are in the
+  # Perl include path.
   #
-  require Texinfo::Init;
-  Texinfo::Init::init();
+  my $txi_libdir = "../tp";
+  unshift @INC, ($txi_libdir);
+  #
+  my @txi_maint_dirs = qw(Text-Unidecode Unicode-EastAsianWidth libintl-perl);
+  unshift (@INC, map { "$txi_libdir/maintain/lib/$_/lib" } @txi_maint_dirs );
 }
 
 use Texinfo::Parser;
@@ -59,11 +66,13 @@ sub __($)
   return $_[0];
 }
 
-my $format = 'info';
+my $format = 'info';  # make our counts from the Info output
 # this is the format associated with the output format, which is replaced
 # when the output format changes.  It may also be removed if there is the
 # corresponding --no-ifformat.
 #my $default_expanded_format = [ $format ];
+
+# directories specified on the command line.
 my @include_dirs = ();
 my @prepend_dirs = ();
 
@@ -203,11 +212,11 @@ if ($input_file_name =~ /(.*\/)/) {
 
 my $parser_options = { %$parser_default_options };
 $parser_options->{'include_directories'} = [@include_dirs];
-my @prependended_include_directories = ('.');
-push @prependended_include_directories, $input_directory
+my @prepended_include_directories = ('.');
+push @prepended_include_directories, $input_directory
     if ($input_directory ne '.');
 unshift @{$parser_options->{'include_directories'}},
-   @prependended_include_directories;
+   @prepended_include_directories;
 unshift @{$parser_options->{'include_directories'}}, @prepend_dirs;
 
 my $error_count = 0;
