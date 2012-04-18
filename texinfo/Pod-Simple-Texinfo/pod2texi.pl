@@ -21,19 +21,31 @@
 
 use strict;
 use Getopt::Long qw(GetOptions);
+# for dirname.
+use File::Basename;
 
 Getopt::Long::Configure("gnu_getopt");
 
 BEGIN
 {
+  my $dir;
   if ('@datadir@' ne '@' . 'datadir@') {
     my $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
     my $datadir = eval '"@datadir@"';
-    unshift @INC, ("$pkgdatadir/Pod-Simple-Texinfo",
-        "$pkgdatadir",
-        "$pkgdatadir/lib/libintl-perl/lib", 
-        "$pkgdatadir/lib/Unicode-EastAsianWidth/lib",
-        "$pkgdatadir/lib/Text-Unidecode/lib");
+    $dir = $pkgdatadir;
+    unshift @INC, ("$dir/Pod-Simple-Texinfo", $dir);
+  } elsif (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
+     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
+    my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
+    my $tpdir = "$srcdir/../tp";
+    $dir = "$tpdir/maintain";
+    unshift @INC, ("$srcdir/lib", $tpdir);
+  }
+  if (defined($dir)) {
+    unshift @INC, (
+        "$dir/lib/libintl-perl/lib", 
+        "$dir/lib/Unicode-EastAsianWidth/lib",
+        "$dir/lib/Text-Unidecode/lib");
   }
 }
 use Pod::Simple::Texinfo;
@@ -179,8 +191,9 @@ if ($base_level > 0) {
   @processed_files = @input_files;
 }
 
-sub _fix_texinfo_tree($$$;$)
+sub _fix_texinfo_tree($$$$;$)
 {
+  my $self = shift;
   my $manual_texi = shift;
   my $section_nodes = shift;
   my $fill_gaps_in_sectioning = shift;
@@ -190,11 +203,47 @@ sub _fix_texinfo_tree($$$;$)
   my $tree = $parser->parse_texi_text($manual_texi);
 
   if ($fill_gaps_in_sectioning) {
-    $tree->{'contents'} 
+    my ($added_sections, $added_nodes);
+    ($tree->{'contents'}, $added_sections)
       = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
-    $tree->{'contents'}
-      = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree)
-        if ($section_nodes);
+    if ($section_nodes) {
+      ($tree->{'contents'}, $added_nodes)
+        = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+      if ($self and $self->texinfo_sectioning_base_level > 0) {
+        # prepend the manual name
+        foreach my $node (@$added_nodes) {
+          # First remove the old normalized entry
+          delete $parser->{'labels'}->{$node->{'extra'}->{'normalized'}};
+          # now get the number
+          my $node_texi = Texinfo::Convert::Texinfo::convert(
+                {'contents' => $node->{'extra'}->{'node_content'}});
+          # We could have kept the asis, too, it is kept when !section_nodes
+          $node_texi =~ s/^\s*(\@asis\{\})?\s*//;
+          # complete with manual name
+          my $complete_node_name = $self->_node_name($node_texi);
+          # now recreate node arg, similar with Texinfo::Structuring::_new_node
+          my $tree = Texinfo::Parser::parse_texi_text(undef, $complete_node_name);
+          my $node_arg = $node->{'args'}->[0];
+          $node_arg->{'contents'} = $tree->{'contents'};
+          push @{$node_arg->{'contents'}}, 
+              {'type' => 'spaces_at_end', 'text' => "\n"};
+          unshift @{$node_arg->{'contents'}},
+                  {'extra' => {'command' => $node},
+                   'text' => ' ',
+                   'type' => 'empty_spaces_after_command'};
+          foreach my $content (@{$node_arg->{'contents'}}) {
+            $content->{'parent'} = $node_arg;
+          }
+          # Last parse and register node
+          my $parsed_node = Texinfo::Parser::_parse_node_manual($node_arg);
+          #push @{$node->{'extra'}->{'nodes_manuals'}}, $parsed_node;
+          @{$node->{'extra'}->{'nodes_manuals'}} = ($parsed_node);
+          if (!Texinfo::Parser::_register_label($parser, $node, $parsed_node, undef)) {
+            print STDERR "BUG: node not unique, register failed:  $parsed_node->{'normalized'}\n";
+          }
+        }
+      }
+    }
   }
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
   Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree) 
@@ -203,13 +252,14 @@ sub _fix_texinfo_tree($$$;$)
   return ($parser, $tree);
 }
 
-sub _fix_texinfo_manual($$$;$)
+sub _fix_texinfo_manual($$$$;$)
 {
+  my $self = shift;
   my $manual_texi = shift;
   my $section_nodes = shift;
   my $fill_gaps_in_sectioning = shift;
   my $do_master_menu = shift;
-  my ($parser, $tree) = _fix_texinfo_tree($manual_texi, $section_nodes, 
+  my ($parser, $tree) = _fix_texinfo_tree($self, $manual_texi, $section_nodes, 
                                     $fill_gaps_in_sectioning, $do_master_menu);
   return Texinfo::Convert::Texinfo::convert($tree);
 }
@@ -217,7 +267,7 @@ sub _fix_texinfo_manual($$$;$)
 sub _do_top_node_menu($)
 {
   my $manual_texi = shift;
-  my ($parser, $tree) = _fix_texinfo_tree($manual_texi, 1, 0, 1); 
+  my ($parser, $tree) = _fix_texinfo_tree(undef, $manual_texi, 1, 0, 1); 
   my $labels = $parser->labels_information();
   my $top_node_menu = $labels->{'Top'}->{'menus'}->[0];
   if ($top_node_menu) {
@@ -293,8 +343,8 @@ foreach my $file (@processed_files) {
       print DBGFILE $manual_texi;
       
     }
-    $manual_texi = _fix_texinfo_manual($manual_texi, $section_nodes, 
-                                       $fill_sectioning_gaps);
+    $manual_texi = _fix_texinfo_manual($new, $manual_texi, $section_nodes, 
+                                             $fill_sectioning_gaps);
     $full_manual .= $manual_texi if ($section_nodes);
   }
   print $fh $manual_texi;

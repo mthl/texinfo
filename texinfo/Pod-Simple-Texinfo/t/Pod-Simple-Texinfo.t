@@ -75,7 +75,6 @@ T@@c
 
 ', 'protected characters', 1, 2);
 
-
 run_test ('=head1 T
 
 Para X<bb>

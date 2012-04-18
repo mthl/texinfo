@@ -134,12 +134,9 @@ sub run
   if ($self->bare_output()) {
     $self->_convert_pod();
   } else {
-    #my $string = '';
-    #$self->output_string( \$string );
     $self->_preamble();
     $self->_convert_pod();
     $self->_postamble(); 
-    #print STDERR $string;
   }
 }
 
