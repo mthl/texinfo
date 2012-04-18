@@ -1022,7 +1022,8 @@ while(@input_files)
   }
 
   if ($tree_transformations{'fill_gaps_in_sectioning'}) {
-    my $filled_contents = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+    my ($filled_contents, $added_sections) 
+      = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
     if (!defined($filled_contents)) {
       document_warn (__("fill_gaps_in_sectioning transformation return no result. No section?"));
     } else {
@@ -1073,7 +1074,13 @@ while(@input_files)
   }
 
   if ($tree_transformations{'insert_nodes_for_sectioning_commands'}) {
-    Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+    my ($modified_contents, $added_nodes)
+     = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+    if (!defined($modified_contents)) {
+      document_warn (__("insert_nodes_for_sectioning_commands transformation return no result. No section?"));
+    } else {
+      $tree->{'contents'} = $modified_contents;
+    }
   }
 
   Texinfo::Structuring::associate_internal_references($parser);

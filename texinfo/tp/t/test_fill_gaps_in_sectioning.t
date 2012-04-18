@@ -42,7 +42,8 @@ sub test_correction($$$)
   my $out = shift;
   my $name = shift;
   my $tree = parse_texi_text(undef, $in);
-  my $corrected_content = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+  my ($corrected_content, $added_sections) 
+      = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
   $tree->{'contents'} = $corrected_content;
   {
   local $Data::Dumper::Purity = 1;
@@ -62,6 +63,7 @@ test_correction('@chapter chap
 @subsection sub
 ','@chapter chap
 @unnumberedsec @asis{}
+
 @subsection sub
 ', 'simple completed tree');
 
@@ -89,6 +91,7 @@ test_correction('@raisesections
 @raisesection
 @raisesection
 @unnumberedsec @asis{}
+
 @lowersection
 @lowersection
 @chapter chap

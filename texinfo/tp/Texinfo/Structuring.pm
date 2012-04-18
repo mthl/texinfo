@@ -216,11 +216,7 @@ sub sectioning_structure($$)
         and $content->{'cmdname'} ne 'bye') {
       push @sections_list, $content;
       if ($content->{'cmdname'} eq 'top') {
-        if ($section_top) {
-      #    already warned as a unique command.
-      #    $self->line_error($self->__("\@top already exists"), 
-      #                                 $content->{'line_nr'});
-        } else {
+        if (! $section_top) {
           $section_top = $content;
         }
       }
@@ -321,7 +317,6 @@ sub sectioning_structure($$)
       }
       if (!$unnumbered_commands{$content->{'cmdname'}}) {
         # construct the number, if not below an unnumbered
-        #if ($command_numbers[$number_top_level]) {
         if (!$command_unnumbered[$number_top_level]) {
           $content->{'number'} = $command_numbers[$number_top_level];
           for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
@@ -362,6 +357,17 @@ sub sectioning_structure($$)
   $self->{'structuring'}->{'sectioning_root'} = $sec_root;
   $self->{'structuring'}->{'sections_list'} = \@sections_list;
   return $sec_root;
+}
+
+sub _print_sectioning_tree($);
+sub _print_sectioning_tree($)
+{
+  my $current = shift;
+  my $result = ' ' x $current->{'level'} . _print_root_command_texi($current)."\n";
+  foreach my $child (@{$current->{'section_childs'}}) {
+    $result .= _print_sectioning_tree($child);
+  }
+  return $result;
 }
 
 
@@ -409,8 +415,9 @@ sub fill_gaps_in_sectioning($)
     }
   }
 
-  return undef if (!scalar(@sections_list));
+  return (undef, undef) if (!scalar(@sections_list));
 
+  my @added_sections;
   my @contents;
   my $previous_section;
   foreach my $content(@{$root->{'contents'}}) {
@@ -436,9 +443,11 @@ sub fill_gaps_in_sectioning($)
           $current_section_level++;
           my $new_section = {'cmdname' =>
             $Texinfo::Common::level_to_structuring_command{'unnumbered'}->[$current_section_level],
-            'contents' => [],
             'parent' => $root,
           };
+          $new_section->{'contents'} = [{'type' => 'empty_line', 
+                                         'text' => "\n",
+                                         'parent' => $new_section}];
           $new_section->{'args'} = [{'type' => 'misc_line_arg',
                                      'parent' => $new_section}];
           $new_section->{'args'}->[0]->{'contents'} = [
@@ -454,11 +463,15 @@ sub fill_gaps_in_sectioning($)
               'text' => "\n",
               'parent' => $new_section->{'args'}->[0]
              }];
-           $new_section->{'args'}->[0]->{'contents'}->[1]->{'args'}
+          $new_section->{'args'}->[0]->{'contents'}->[1]->{'args'}
              = [{'type' => 'brace_command_arg',
                  'contents' => [],
                  'parent' => $new_section->{'args'}->[0]->{'contents'}->[1]}];
+          my @misc_contents = @{$new_section->{'args'}->[0]->{'contents'}};
+          Texinfo::Common::trim_spaces_comment_from_content(\@misc_contents);
+          $new_section->{'extra'}->{'misc_content'} = \@misc_contents;
           push @contents, $new_section;
+          push @added_sections, $new_section;
           #print STDERR "  -> "._print_root_command_texi($new_section)."\n";
         }
         my @set_level_offset_commands = _correct_level($next_section,
@@ -469,7 +482,7 @@ sub fill_gaps_in_sectioning($)
       }
     }
   }
-  return \@contents;
+  return (\@contents, \@added_sections);
 }
 
 my @node_directions = ('next', 'prev', 'up');
@@ -1420,8 +1433,9 @@ sub insert_nodes_for_sectioning_commands($$)
   my $root = shift;
   if (!$root->{'type'} or $root->{'type'} ne 'document_root'
       or !$root->{'contents'}) {
-    return undef;
+    return (undef, undef);
   }
+  my @added_nodes;
   my @contents;
   my $previous_node;
   foreach my $content (@{$root->{'contents'}}) {
@@ -1440,6 +1454,7 @@ sub insert_nodes_for_sectioning_commands($$)
       my $new_node = _new_node($self, $new_node_tree);
       if (defined($new_node)) {
         push @contents, $new_node;
+        push @added_nodes, $new_node;
         $new_node->{'extra'}->{'associated_section'} = $content;
         $content->{'extra'}->{'associated_node'} = $new_node;
         $new_node->{'parent'} = $content->{'parent'};
@@ -1455,7 +1470,7 @@ sub insert_nodes_for_sectioning_commands($$)
           and $content->{'extra'}->{'normalized'});
     push @contents, $content;
   }
-  return \@contents;
+  return (\@contents, \@added_nodes);
 }
 
 sub _copy_contents($)
@@ -2313,13 +2328,14 @@ reference of sorted index entries beginning with the letter.
 When simply sorting, the array of the sorted indes entries is associated
 with the index name.
 
-=item $root_content = fill_gaps_in_sectioning ($root)
+=item ($root_content, $added_sections) = fill_gaps_in_sectioning ($root)
 
 This function adds empty C<@unnumbered> and similar commands in a tree
 to fill gaps in sectioning.  This may be used, for example, when converting 
 from a format that can handle gaps in sectioning.  I<$root> is the tree
 root.  An array reference is returned, containing the root contents
-with added sectioning commands.
+with added sectioning commands, as well as an array reference containing 
+the added sectioning commands.
 
 If the sectioning commands are lowered or raised (with C<@raisesections>,
 C<@lowersection>) the tree may be modified with C<@raisesections> or
@@ -2337,9 +2353,12 @@ A simple menu has no I<menu_comment>, I<menu_entry> or I<menu_entry_description>
 container anymore, their content are merged directly in the menu in 
 I<preformatted> container.
 
-=item insert_nodes_for_sectioning_commands ($parser, $tree)
+=item ($root_content, $added_nodes) = insert_nodes_for_sectioning_commands ($parser, $tree)
 
 Insert nodes for sectioning commands without node in C<$tree>.
+An array reference is returned, containing the root contents
+with added nodes, as well as an array reference containing the 
+added nodes.
 
 =item complete_tree_nodes_menus ($parser, $tree)
 

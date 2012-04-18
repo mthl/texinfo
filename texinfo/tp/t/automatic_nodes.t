@@ -135,7 +135,7 @@ Text.
 
   $parser = Texinfo::Parser::parser();
   $tree = $parser->parse_texi_text ($sections_text);
-  my $new_content 
+  my ($new_content, $added_nodes)
    = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
   $tree->{'contents'} = $new_content;
   my $result = Texinfo::Convert::Texinfo::convert($tree);
@@ -154,7 +154,7 @@ $tree = $parser->parse_texi_text ('@node Top
 * (some_manual)::
 @end menu
 ');
-$new_content
+($new_content, $added_nodes)
    = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
 $tree->{'contents'} = $new_content;
 my ($index_names, $merged_indices, $index_entries) = $parser->indices_information();
@@ -184,7 +184,7 @@ my $text_duplicate_nodes =
 ';
 $tree = $parser->parse_texi_text ($text_duplicate_nodes);
 # In fact, here we also check that there is no debugging message...
-$new_content
+($new_content, $added_nodes)
    = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
 ($index_names, $merged_indices, $index_entries) = $parser->indices_information();
 $labels = $parser->labels_information();
