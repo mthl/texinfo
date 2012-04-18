@@ -1,3 +1,8 @@
+2012-04-18  Karl Berry  <karl@gnu.org>
+
+	* install-info/README: Debian now uses our install-info,
+	per Norbert Preining.  Yay!
+
 2012-04-17  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Tips): mention texi-elements-by-size (for usage).
