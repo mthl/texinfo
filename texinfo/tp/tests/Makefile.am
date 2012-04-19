@@ -1,7 +1,7 @@
 base_tests = \
  formatting htmlxref htmlxref-only_mono htmlxref-only_split
 long_tests = \
- sectioning coverage indices nested_formats contents layout
+ tex_html sectioning coverage indices nested_formats contents layout
 
 DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests)
 SUBDIRS = . many_input_files

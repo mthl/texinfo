@@ -149,6 +149,7 @@ t/paragraph.t
 t/plaintext_tests.t
 t/protect_character_in_texinfo.t
 t/README
+t/reference_to_text_in_tree.t
 t/results/alias/alias_table_command.pl
 t/results/alias/bad_line.pl
 t/results/alias/block_command_alias.pl
@@ -297,6 +298,7 @@ t/results/converters_tests/no_documentencoding_and_insertions.pl
 t/results/converters_tests/raw_block_commands_expand_tex.pl
 t/results/converters_tests/raw_block_commands.pl
 t/results/converters_tests/ref_error_formatting.pl
+t/results/converters_tests/ref_in_sectioning.pl
 t/results/converters_tests/refs_formatting.pl
 t/results/converters_tests/sample_utf8.pl
 t/results/converters_tests/sample_utf8/res_html/DiYiZhang_0028First-Chapter_0029.html
@@ -395,6 +397,7 @@ t/results/coverage/flushright_not_closed.pl
 t/results/coverage/formats_only_title_comments.pl
 t/results/coverage/formats_only_titles.pl
 t/results/coverage/formats_titles.pl
+t/results/coverage/group_beginning_and_end_on_line.pl
 t/results/coverage/group_not_closed.pl
 t/results/coverage/hyphenation.pl
 t/results/coverage/indicateurl_end_lines.pl
@@ -506,6 +509,7 @@ t/results/include/include_with_setfilename.pl
 t/results/include/macro_and_commands_in_early_commands.pl
 t/results/include/macro_definition_in_include.pl
 t/results/include/macro_in_early_commands.pl
+t/results/include/simple_no_eol.pl
 t/results/include/simple.pl
 t/results/include/test_include_directories.pl
 t/results/include/test_paths.pl
@@ -635,7 +639,9 @@ t/results/invalid_nestings/on_block_command_line.pl
 t/results/invalid_nestings/on_def_line.pl
 t/results/invalid_nestings/on_index_entry_line.pl
 t/results/invalid_nestings/on_itemize_line.pl
+t/results/invalid_nestings/on_node_line.pl
 t/results/invalid_nestings/on_section_line.pl
+t/results/invalid_nestings/on_subheading_line.pl
 t/results/invalid_nestings/quotation_in_ref.pl
 t/results/invalid_nestings/quotation_in_style_command.pl
 t/results/invalid_nestings/recursive_copying.pl
@@ -894,6 +900,7 @@ t/results/plaintext_tests/long_line.pl
 t/results/plaintext_tests/long_uref_after_item.pl
 t/results/plaintext_tests/multitable.pl
 t/results/plaintext_tests/nested_multitable.pl
+t/results/plaintext_tests/no_empty_line_after_section.pl
 t/results/plaintext_tests/no_punctuation_commands_frenchspacing.pl
 t/results/plaintext_tests/no_punctuation_commands.pl
 t/results/plaintext_tests/paragraphindent.pl
@@ -934,8 +941,10 @@ t/results/quotation/comment_on_quotation_line.pl
 t/results/quotation/empty_quotation.pl
 t/results/quotation/only_comment_on_quotation_line.pl
 t/results/quotation/quotation_and_author.pl
+t/results/quotation/quotation_beginning_and_end_on_line.pl
 t/results/quotation/space_at_commands_end_quotation_line.pl
 t/results/quotation/standard_quotations.pl
+t/results/raw/beginning_and_end_on_line.pl
 t/results/raw/braces_in_tex.pl
 t/results/raw/inlinefmt.pl
 t/results/raw/inlinefmt_with_empty_line.pl
@@ -1014,6 +1023,7 @@ t/results/sectioning/menutextorder.pl
 t/results/sectioning/more_sections_than_nodes.pl
 t/results/sectioning/next_in_menu_is_below.pl
 t/results/sectioning/next_no_prev_to_node.pl
+t/results/sectioning/no_argument_and_contents.pl
 t/results/sectioning/node_empty_direction.pl
 t/results/sectioning/nodename_parentheses.pl
 t/results/sectioning/node_nested_parentheses.pl
