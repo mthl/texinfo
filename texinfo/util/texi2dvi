@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.171 2012-01-13 00:26:17 karl Exp $
+# $Id: texi2dvi,v 1.172 2012-04-20 18:41:24 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002,
 # 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
@@ -34,7 +34,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.171 $'
+rcs_revision='$Revision: 1.172 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -222,7 +222,7 @@ ensure_dir ()
 
 # error EXIT_STATUS LINE1 LINE2...
 # --------------------------------
-# Report an error and exit with failure if EXIT_STATUS is non null.
+# Report an error and exit with failure if EXIT_STATUS is non-null.
 error ()
 {
   local s="$1"
@@ -326,6 +326,15 @@ General options:
   -v, --version       display version information and exit successfully
   -V, --verbose       report on what is done
 
+Output format:
+      --dvi     output a DVI file [default]
+      --dvipdf  output a PDF file via DVI (using a dvi-to-pdf program)
+      --html    output an HTML file; run HeVeA for LaTeX files
+      --info    output an Info file; run HeVeA for LaTeX files
+  -p, --pdf     use pdftex or pdflatex for processing
+      --ps      output a PostScript file via DVI (using dvips)
+      --text    output a plain text file from LaTeX, using HeVeA
+
 TeX tuning:
   -@                         use @input instead of \input for preloaded Texinfo
   -e, -E, --expand           force macro expansion using makeinfo
@@ -339,15 +348,6 @@ TeX tuning:
   -t, --command=CMD          insert CMD in copy of input file
    or --texinfo=CMD          multiple values accumulate
       --translate-file=FILE  use given charset translation file for TeX
-
-Output format:
-      --dvi     output a DVI file [default]
-      --dvipdf  output a PDF file via DVI (using dvipdf)
-      --html    output an HTML file; run HeVeA for LaTeX files
-      --info    output an Info file; run HeVeA for LaTeX files
-  -p, --pdf     use pdftex or pdflatex for processing
-      --ps      output a PostScript file via DVI (using dvips)
-      --text    output a plain text file.  Use HeVeA for LaTeX files
 
 Build modes:
   --build=MODE         specify the treatment of auxiliary files [$build_mode]
@@ -378,7 +378,7 @@ Using the \`tidy' mode brings several advantages:
     directories are stored there.
   - clutter can be reduced to zero using, e.g., --build-dir=/tmp/\$USER.t2d
     or --build-dir=\$HOME/.t2d.
-  - the output file is updated after every succesful TeX run, for
+  - the output file is updated after every successful TeX run, for
     sake of concurrent visualization of the output.  In a \`local' build
     the viewer stops during the whole TeX run.
   - if the compilation fails, the previous state of the output file
@@ -394,6 +394,11 @@ directories to consider.
 The values of the BIBTEX, DVIPDF, DVIPS, HEVEA, LATEX, MAKEINDEX,
 MAKEINFO, PDFLATEX, PDFTEX, T4HT, TEX, TEX4HT, TEXINDEX, and THUMBPDF
 environment variables are used to run those commands, if they are set.
+
+Regarding --dvipdf, if DVIPDF is not set in the environment, the
+following programs are looked for (in this order): dvipdfmx dvipdfm
+dvipdf dvi2pdf dvitopdf.
+
 Any CMD strings are added after @setfilename for Texinfo input, or in
 the first line for LaTeX input.
 
@@ -419,7 +424,7 @@ verbose ()
 
 # version
 # -------
-# Display version info and exit succesfully.
+# Display version info and exit successfully.
 version ()
 {
   cat <<EOF
@@ -1206,8 +1211,7 @@ run_dvipdf ()
 {
   # Find which dvi->pdf program is available.
   if test -z "$dvipdf"; then
-    for i in "$DVIPDF" dvipdfmx dvipdfm dvipdf dvi2pdf dvitopdf;
-    do
+    for i in "$DVIPDF" dvipdfmx dvipdfm dvipdf dvi2pdf dvitopdf; do
       if findprog $i; then
         dvipdf=$i
       fi
@@ -1289,7 +1293,7 @@ run_tex_suite ()
 
 
 # A sed script that preprocesses Texinfo sources in order to keep the
-# iftex sections only.  We want to remove non TeX sections, and comment
+# iftex sections only.  We want to remove non-TeX sections, and comment
 # (with `@c _texi2dvi') TeX sections so that makeinfo does not try to
 # parse them.  Nevertheless, while commenting TeX sections, don't
 # comment @macro/@end macro so that makeinfo does propagate them.
