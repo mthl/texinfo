@@ -553,7 +553,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
       --html                  output HTML rather than Info.
       --plaintext             output plain text rather than Info.
       --xml                   output Texinfo XML rather than Info.
-      --dvi, --ps, --pdf      call texi2dvi to generate specified output.\n")
+      --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output.\n")
 
 ."\n";
   $makeinfo_help .= __("General output options:
@@ -635,6 +635,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
   Also, for the --no-ifFORMAT options, do process \@ifnotFORMAT text.\n")
 ."\n";
   $makeinfo_help .= __("  The defaults for the \@if... conditionals depend on the output format:
+  if generating Docbook, --ifdocbook is on and the others are off;
   if generating HTML, --ifhtml is on and the others are off;
   if generating Info, --ifinfo is on and the others are off;
   if generating plain text, --ifplaintext is on and the others are off;
@@ -646,6 +647,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
   makeinfo --xml foo.texi                write Texinfo XML to \@setfilename
   makeinfo --docbook foo.texi            write Docbook XML to \@setfilename
   makeinfo --no-headers foo.texi         write plain text to standard output
+  makeinfo --dvi foo.texi                write PDF using texi2dvi
 
   makeinfo --html --no-headers foo.texi  write html without node lines, menus
   makeinfo --number-sections foo.texi    write Info with numbered sections
@@ -804,6 +806,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
                    set_from_cmdline('SHOW_MENU', 0)},
  'xml' => sub {$format = set_format($_[0]);},
  'dvi' => sub {$format = set_texi2dvi_format($_[0]);},
+ 'dvipdf' => sub {$format = set_texi2dvi_format($_[0]);},
  'ps' => sub {$format = set_texi2dvi_format($_[0]);},
  'pdf' => sub {$format = set_texi2dvi_format($_[0]);},
  'debug=i' => sub {set_from_cmdline('DEBUG', $_[1]); 
@@ -864,6 +867,9 @@ my %formats_table = (
              'texi2dvi_format' => 1,
            },
   'dvi' => {
+             'texi2dvi_format' => 1,
+           },
+  'dvipdf' => {
              'texi2dvi_format' => 1,
            },
   'debugcount' => {

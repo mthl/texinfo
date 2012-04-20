@@ -1,9 +1,12 @@
 2012-04-20  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: more doc on --dvipdf, spelling.
+	* tp/texi2any.pl: new option --dvipdf.
 
 	* doc/texinfo.txi (Invoking texi2any) <--macro-expand>:
 	mention that it implies passing -E to texi2dvi, when requested.
+	(Invoking texi2any): sync with current --help, except for texi2dvi
+	options.
 
 2012-04-19  Patrice Dumas  <pertusus@free.fr>
 

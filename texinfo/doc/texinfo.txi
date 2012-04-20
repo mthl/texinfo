@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.434 2012-04-17 18:23:25 karl Exp $
+@c $Id: texinfo.txi,v 1.435 2012-04-20 18:52:47 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15134,8 +15134,8 @@ As mentioned, @command{makeinfo} recognizes the @samp{#line}
 directives described in the previous section.  However,
 @file{texinfo.tex} does not and cannot.  Therefore, such a line will
 be incorrectly typeset verbatim if @TeX{} sees it.  The solution is to
-use the (@command{makeinfo}) macro expansion options before running
-@TeX{}.  There are three approaches.
+use @command{makeinfo}'s macro expansion options before running
+@TeX{}.  There are three approaches:
 
 @itemize @bullet
 @item
@@ -15146,8 +15146,8 @@ and eliminate @samp{#line}.
 
 @item
 If you run @command{makeinfo} or its variants (@pxref{Generic
-Translator texi2any,, @command{texi2any}: The Generic Translator}), you
-can specify @option{--no-ifinfo --iftex -E somefile.out}, you can then
+Translator texi2any,, @command{texi2any}: The Generic Translator}),
+you can specify @option{--no-ifinfo --iftex -E somefile.out}, and then
 give @file{somefile.out} to @code{texi2dvi} in a separate command.
 
 @item
@@ -15162,7 +15162,7 @@ directives are not recognized, the line numbers emitted by the
 @code{@@errormsg@{@}} command (@pxref{Conditional Commands}), or by
 @TeX{} itself, are the (incorrect) line numbers from the derived file
 which @TeX{} is reading, rather than the preprocessor-specified line
-numbers.  This is another instance of why we recommend running
+numbers.  This is another example of why we recommend running
 @command{makeinfo} for the best diagnostics (@pxref{makeinfo
 advantages,, @code{makeinfo} Advantages}).
 
@@ -16534,7 +16534,7 @@ Beside these default formats, command line options to
 that, initialization files provide even more control over the final
 output---nearly anything not specified in the Texinfo input file.
 Initialization files are written in Perl, like the main program, and
-anything which may be specified on the command line may also be
+anything which can be specified on the command line can also be
 specified within a initialization file.
 
 The rest of this chapter goes into the details.
@@ -16556,10 +16556,10 @@ The rest of this chapter goes into the details.
 @cindex Implementation, @command{texi2any} as reference
 
 Above, we called @command{texi2any} ``the'' translator for Texinfo
-instead of just ``a'' translator, even though of course it's
+instead of just ``a'' translator, even though (of course) it's
 technically and legally possible for other implementations to be
 written.  The reason is that alternative implementations are highly
-likely to have subtle (or not-so-subtle) differences in behavior, and
+likely to have subtle, or not-so-subtle, differences in behavior, and
 thus Texinfo documents would become dependent on the processor.
 Therefore, it is important to have a reference implementation that
 defines parts of the language not fully specified by the manual (often
@@ -16575,9 +16575,10 @@ processor was made compatible with the C implementation of
 implementations (@pxref{History}).  The current reference
 implementation, @command{texi2any}, inherited the design of
 customization and other features from @command{texi2html} (for more on
-@command{texi2html} compatibility, @pxref{texi2html}).  However,
-@code{texi2any} is a full reimplementation: it constructs a tree-based
-representation of the input document for all back-ends to work from.
+@command{texi2html} compatibility, @pxref{texi2html,,
+@command{texi2html}}).  However, @code{texi2any} is a full
+reimplementation: it constructs a tree-based representation of the
+input document for all back-ends to work from.
 
 @cindex Texinfo language tests
 @cindex Tests, of Texinfo language
@@ -16604,24 +16605,24 @@ forward, we ask authors of Texinfo documents to use only
 
 
 @node Invoking texi2any
-@section Running @command{texi2any}/@code{makeinfo} from a Shell
+@section Invoking @command{texi2any}/@code{makeinfo} from a Shell
 @anchor{Invoking makeinfo}
 @pindex makeinfo
 @pindex texi2any
 
 To process a Texinfo file, invoke @command{texi2any} or
-@command{makeinfo} followed by the name of the Texinfo file.  Also
-select the format you want to output with the appropriate command line
-option (default is Info).  Thus, to create the Info file for Bison, 
-type the following to the shell:
+@command{makeinfo} (the two names are synonyms for the same program;
+we'll use the names interchangeably) followed by the name of the
+Texinfo file.  Also select the format you want to output with the
+appropriate command line option (default is Info).  Thus, to create
+the Info file for Bison, type the following to the shell:
 
 @example
 texi2any --info bison.texinfo
 @end example
 
 You can specify more than one input file name; each is processed in
-turn.  If an input file name is @samp{-}, or no input file names at
-all are given, standard input is read.
+turn.  If an input file name is @samp{-}, standard input is read.
 
 @anchor{makeinfo Options}
 @cindex @code{makeinfo} options
@@ -16638,9 +16639,9 @@ Each command line option is either a long name preceded by @samp{--}
 or a single letter preceded by @samp{-}.  You can use abbreviations
 for the long option names as long as they are unique.
 
-For example, you could use the following shell command to create an Info
-file for @file{bison.texinfo} in which each line is filled to only 68
-columns:
+For example, you could use the following shell command to create an
+Info file for @file{bison.texinfo} in which lines are filled to only
+68 columns:
 
 @example
 texi2any --fill-column=68 bison.texinfo
@@ -16653,13 +16654,12 @@ texi2any --no-split --fill-column=70 @dots{}
 @end example
 
 @noindent
-This would keep the Info file together as one possibly very long
-file and would also set the fill column to 70.
+(This would keep the Info file together as one possibly very long
+file and would also set the fill column to 70.)
 
-The options are:
+The options are (approximately in alphabetical order):
 
 @table @code
-
 @item --commands-in-node-names
 @opindex --commands-in-node-names
 This option now does nothing, but remains for compatibility.  (It used
@@ -16670,10 +16670,10 @@ document, especially @code{@@value}.  This is now done by default.)
 @opindex --conf-dir=@var{path}
 Prepend @var{path} to the directory search list for finding
 customization files that may be loaded with @option{--init-file} (see
-below).  @var{path} can be a single directory, or a list of several
-directories separated by the usual path separator character (@samp{:}
-on GNU and Unix systems, @samp{;} on MS-DOS/MS-Windows).
-@xref{Loading Init Files}.
+below).  The @var{path} value can be a single directory, or a list of
+several directories separated by the usual path separator character
+(@samp{:} on Unix-like systems, @samp{;} on Windows).  @xref{Loading
+Init Files}.
 
 @item --css-include=@var{file}
 @opindex --css-include
@@ -16707,7 +16707,7 @@ Accents}.
 
 @item --docbook
 @opindex --docbook
-Generate Docbook output.
+Generate Docbook output (rather than Info).
 
 @item --document-language=@var{lang}
 @opindex --document-language
@@ -16720,8 +16720,8 @@ output document.  The default is the locale specified by the
 @itemx -e @var{limit}
 @opindex --error-limit=@var{limit}
 @opindex -e @var{limit}
-Specify the maximum number of errors to report before aborting (on the
-assumption that continuing would be useless); default 100.
+Report @var{LIMIT} errors before aborting (on the assumption that
+continuing would be useless); default 100.
 
 @item --fill-column=@var{width}
 @itemx -f @var{width}
@@ -16765,24 +16765,25 @@ created.  With this option, they are preserved.
 @itemx -h
 @opindex --help@r{, for @command{texi2any}}
 @opindex -h
-Print a usage message listing available options, then exit successfully.
+Print a message with available options and basic usage, then exit
+successfully.
 
 @item --html
 @opindex --html
-Generate HTML output.  By default, the HTML output is split into one
-output file per Texinfo source node, and the split output is written
-into a subdirectory based on the name of the top-level Info file.
-@xref{Generating HTML}.
+Generate HTML output (rather than Info).  By default, the HTML output
+is split into one output file per Texinfo source node, and the split
+output is written into a subdirectory based on the name of the
+top-level Info file.  @xref{Generating HTML}.
 
-@item -I @var{dir}
-@opindex -I @var{dir}
-Append @var{dir} to the directory search list for finding files that
+@item -I @var{path}
+@opindex -I @var{path}
+Append @var{path} to the directory search list for finding files that
 are included using the @code{@@include} command.  By default,
-@code{makeinfo} searches only the current directory.  If @var{dir} is
-not given, the current directory @file{.} is appended.  Note that
-@var{dir} can actually be a list of several directories separated by the
-usual path separator character (@samp{:} on Unix, @samp{;} on
-MS-DOS/MS-Windows).
+@code{texi2any} searches only the current directory.  If @var{path} is
+not given, the current directory is appended.  The @var{path} value
+can be a single directory or a list of several directories separated
+by the usual path separator character (@samp{:} on Unix-like systems,
+@samp{;} on Windows).
 
 @item --ifdocbook
 @opindex --ifdocbook
@@ -16798,47 +16799,52 @@ MS-DOS/MS-Windows).
 @opindex --ifxml
 For the given format, process @samp{@@if@var{format}} and
 @samp{@@@var{format}} commands, and do not process
-@samp{@@ifnot@var{format}}, even if not generating the given output
-format.  For instance, if @option{--iftex} is specified, then
-@samp{@@iftex} and @samp{@@tex} blocks will be read, and
-@samp{@@ifnottex} blocks will be ignored, even if @TeX{} is not being
-run.
+@samp{@@ifnot@var{format}}, regardless of the format being output.
+For instance, if @option{--iftex} is given, then @samp{@@iftex} and
+@samp{@@tex} blocks will be read, and @samp{@@ifnottex} blocks will be
+ignored.
 
 @item --info
 @opindex --info
 Generate Info output.  By default, if the output file contains more
-than about 300,000 bytes, it is split into shorter @dfn{indirect}
-subfiles of about that size.  The name of the output file and of the
-indirect subfiles is determined by @code{@@setfilename}
-(@pxref{setfilename}).  @xref{Tag and Split Files}.
+than about 300,000 bytes, it is split into shorter subfiles of about
+that size.  The name of the output file and any subfiles is determined
+by @code{@@setfilename} (@pxref{setfilename}).  @xref{Tag and Split
+Files}.
 
 @item --init-file=@var{file}
 @opindex --init-file=@var{file}
 Load @var{file} as code to modify the behavior and output of the
-generated manual.  It is customary to use the @code{.pm} or 
-the @code{.init} extensions
-for these customization files, but that is not enforced by anything;
-the @var{file} name is taken literally.  @option{--conf-dir} (see
-above) may be used to add to the list of directories in which these
-customization files are searched for.  @xref{Loading Init Files}.
+generated manual.  It is customary to use the @code{.pm} or the
+@code{.init} extensions for these customization files, but that is not
+enforced; the @var{file} name can be anything.  The
+@option{--conf-dir} option (see above) can be used to add to the list
+of directories in which these customization files are searched for.
+@xref{Loading Init Files}.
 
 @item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
+@cindex Internal links, of HTML
 In HTML mode, output a tab-separated file containing three columns:
 the internal link to an indexed item or item in the table of contents,
 the name of the index (or table of contents) in which it occurs, and
 the term which was indexed or entered.  The items are in the natural
-sorting order for the given element.  This can be useful for
+sorting order for the given element.  This dump can be useful for
 post-processors.
 
 @item --macro-expand=@var{file}
 @itemx -E @var{file}
 @opindex --macro-expand=@var{file}
 @opindex -E @var{file}
-Output the Texinfo source with all the macros expanded to the named
-file.  Normally, the results of macro expansion are used internally by
-@code{makeinfo} and then discarded.  This option can be used by
-@command{texi2dvi}.
+Output the Texinfo source, with all Texinfo macros expanded, to
+@var{file}.  Normally, the result of macro expansion is used
+internally by @code{makeinfo} and then discarded.
+
+When the output format being produced requires calling
+@command{texi2dvi}, this option implies passing @code{-E}, with no
+argument (@pxref{Format with texi2dvi,, Format with @code{texi2dvi}}).
+If you don't need the macro-expanded output file, you can use
+@code{--Xopt -E} (see @code{--Xopt} below).
 
 @item --no-headers
 @opindex --no-headers
@@ -16873,10 +16879,27 @@ not include navigation links at the top of each node at all.
 @opindex --no-ifxml
 For the given format, do not process @samp{@@if@var{format}} and
 @samp{@@@var{format}} commands, and do process
-@samp{@@ifnot@var{format}}, even if generating the given format.  For
-instance, if @option{--no-ifhtml} is specified, then @samp{@@ifhtml}
+@samp{@@ifnot@var{format}}, regardless of the format being output.
+For instance, if @option{--no-ifhtml} is given, then @samp{@@ifhtml}
 and @samp{@@html} blocks will not be read, and @samp{@@ifnothtml}
 blocks will be.
+
+@item --no-node-files
+@itemx --node-files
+@opindex --no-node-files
+@opindex --node-files
+When generating HTML, create redirection files for anchors and any
+nodes not already output with the file name corresponding to the node
+name (@pxref{HTML Xref Node Name Expansion}).  This makes it possible
+for section- and chapter-level cross-manual references to succeed
+(@pxref{HTML Xref Configuration}).
+
+If the output is split, this is enabled by default.  If the output is
+not split, @option{--node-files} enables the creation of the
+redirection files, in addition to the monolithic main output file.
+@option{--no-node-files} suppresses the creation of redirection files
+in any case.  This option has no effect with any output format other
+than HTML@.  @xref{Generating HTML}.
 
 @item --no-number-footnotes
 @opindex --no-number-footnotes
@@ -16900,30 +16923,13 @@ with hierarchically-structured manuals.  You should specify
 @cindex Pointer validation, suppressing from command line
 Suppress the pointer-validation phase of @code{makeinfo}---a dangerous
 thing to do.  This can also be done with the @code{@@novalidate}
-command (@pxref{Use TeX,,Use @TeX{}}).  Normally, after a Texinfo file
-is processed, some consistency checks are made to ensure that cross
-references can be resolved, etc.  @xref{Pointer Validation}.
+command (@pxref{Use TeX,,Use @TeX{}}).  Normally, consistency checks
+are made to ensure that cross references can be resolved, etc.
+@xref{Pointer Validation}.
 
 @item --no-warn
 @opindex --no-warn
 Suppress warning messages (but not error messages).
-
-@item --node-files
-@itemx --no-node-files
-@opindex --node-files
-@opindex --no-node-files
-When generating HTML, create redirection files for anchors and for any
-nodes that are not already output with the name corresponding to the
-node name (@pxref{HTML Xref Node Name Expansion}).  This option makes
-it possible for section- and chapter-level cross-manual references to
-succeed (@pxref{HTML Xref Configuration}).
-
-This is set by default if the output is split.  If the output is not
-split, @option{--node-files} enables the creation of the redirection
-files, in addition to the monolithic main output file.
-@option{--no-node-files} suppresses the creation of redirection files
-in any case.  This option has no effect with any output format other
-than HTML@.  @xref{Generating HTML}.
 
 @item --output=@var{file}
 @itemx -o @var{file}
@@ -16939,22 +16945,27 @@ If @var{file} is @samp{-}, output goes to standard output and
 @samp{--no-split} is implied.
 
 If @var{file} is a directory or ends with a @samp{/} the usual rules
-are used to determine the actual output file name (use
-@code{@@setfilename} or the input file name) but these files are
-written to the @var{file} directory.  For example, @samp{makeinfo -o
-bar/ foo.texi}, with or without @option{--no-split}, will write
-@file{bar/foo.info}, and possibly other files under @file{bar/}.
+are used to determine the output file name (namely, use
+@code{@@setfilename} or the input file name) but the files are written
+to the @var{file} directory.  For example, @samp{makeinfo -o bar/
+foo.texi}, with or without @option{--no-split}, will write
+@file{bar/foo.info}, and possibly other files, under @file{bar/}.
 
-When generating HTML, if output is split, @var{file} is used as the
+When generating HTML and output is split, @var{file} is used as the
 name for the directory into which all files are written.  For example,
-@samp{makeinfo -o bar --html foo.texi} will write 
+@samp{makeinfo -o bar --html foo.texi} will write
 @file{bar/index.html}, among other files.
 
-@item -P @var{dir}
-@opindex -P @var{dir}
-Prepend @var{dir} to the directory search list for @code{@@include}.
-If @var{dir} is not given, the current directory @file{.} is prepended.
-See @samp{-I} for more details.
+@item --output-indent=@var{val}
+@opindex --outputindent
+This option now does nothing, but remains for compatibility.  (It used
+to alter indentation in XML/Docbook output.)
+
+@item -P @var{path}
+@opindex -P @var{path}
+Prepend @var{path} to the directory search list for @code{@@include}.
+If @var{path} is not given, the current directory is prepended.  See
+@samp{-I} above.
 
 @item --paragraph-indent=@var{indent}
 @itemx -p @var{indent}
@@ -16962,12 +16973,14 @@ See @samp{-I} for more details.
 @opindex -p @var{indent}
 Set the paragraph indentation style to @var{indent}.  The value set by
 this option overrides the value set in a Texinfo file by an
-@code{@@paragraphindent} command (@pxref{paragraphindent}).  The value
-of @var{indent} is interpreted as follows:
+@code{@@paragraphindent} command (@pxref{paragraphindent,,
+@code{@@paragraphindent}}).  The value of @var{indent} is interpreted
+as follows:
 
 @table @asis
 @item @samp{asis}
-Preserve any existing indentation at the starts of paragraphs.
+Preserve any existing indentation (or lack thereof) at the beginnings
+of paragraphs.
 
 @item @samp{0} or @samp{none}
 Delete any existing indentation.
@@ -16975,6 +16988,9 @@ Delete any existing indentation.
 @item @var{num}
 Indent each paragraph by @var{num} spaces.
 @end table
+
+The default is to indent by two spaces, except for paragraphs
+following a section heading, which are not indented.
 
 @item --plaintext
 @opindex --plaintext
@@ -16984,20 +17000,24 @@ Indent each paragraph by @var{num} spaces.
 @cindex Node separators, omitting with @option{--plaintext}
 @cindex Menus, omitting with @option{--plaintext}
 @cindex @file{INSTALL} file, generating
-Output a plain text file: do not include menus or node separator lines
-in the output.  This results in a straightforward plain text file that
-you can (for example) send in email without complications, or include
-in a distribution (for example, an @file{INSTALL} file).
+Output a plain text file (rather than Info): do not include menus or
+node separator lines in the output.  This results in a straightforward
+plain text file that you can (for example) send in email without
+complications, or include in a distribution (for example, an
+@file{INSTALL} file).
 
 With this option, @code{@@setfilename} is ignored and the output goes
 to standard output by default; this can be overridden with @option{-o}.
 
 @item --set-init-variable @var{var}=@var{value}
 @opindex --set-init-variable @var{var}=@var{value}
-Set the configuration variable @var{var} to @var{value}.  Many aspects
-of the behavior and output may be modified by modifying configuration
-variables, beyond what can be set in the document by @@-commands and
-with other command line switches.  @xref{Configuration Variables}.
+Set the configuration variable @var{var} to @var{value}.  The @code{=}
+is optional, but both @var{var} and @var{value} must be quoted to the
+shell as necessary so the result is a single word.  Many aspects of
+@command{texi2any} behavior and output may be controlled by
+configuration variables, beyond what can be set in the document by
+@@-commands and with other command line switches.  @xref{Configuration
+Variables}.
 
 @item --split=@var{how}
 @itemx --no-split
@@ -17012,8 +17032,8 @@ smaller subfiles, of approximately 300k bytes.  When generating HTML,
 by default each output file contains one node (@pxref{Generating
 HTML}).  @option{--no-split} suppresses this splitting of the output.
 
-On the other hand, @option{--split=@var{how}} may be used to specify
-at which level the resulting document should be split.  The possible
+Alternatively, @option{--split=@var{how}} may be used to specify at
+which level the resulting document should be split.  The possible
 values for @var{how} are:
 
 @table @samp
@@ -17022,8 +17042,7 @@ The output is split at @code{@@chapter} and other sectioning
 @@-commands at this level (@code{@@appendix}, etc.).
 
 @item section
-The output is split at @code{@@section} and other sectioning
-@@-commands at this level.
+The output is split at @code{@@section} and similar.
 
 @item node
 The output is split at every node.  This is the default.
@@ -17031,7 +17050,9 @@ The output is split at every node.  This is the default.
 
 @item --split-size=@var{num}
 @opindex --split-size=@var{num}
-Keep Info files to at most @var{num} characters; default is 300,000.
+Keep Info files to at most @var{num} characters if possible; default
+is 300,000.  (However, a single node will never be split across Info
+files.)
 
 @item --transliterate-file-names
 @opindex --transliterate-file-names
@@ -17056,7 +17077,7 @@ Print the version number, then exit successfully.
 
 @item --xml
 @opindex --xml
-Generate XML output rather than Info.
+Generate Texinfo XML output (rather than Info).
 
 @end table
 
@@ -17064,13 +17085,13 @@ Generate XML output rather than Info.
 @cindex Environment variable @code{TEXINFO_OUTPUT_FORMAT}
 @command{makeinfo} also reads the environment variable
 @env{TEXINFO_OUTPUT_FORMAT} to determine the output format, if not
-overridden by a command line option.  The possible values are:
+overridden by a command line option.  The value should be one of:
 
 @example
-docbook  html  info  plaintext  xml
+docbook  dvi  dvipdf  html  info  plaintext  ps  pdf  xml
 @end example
 
-If not set, Info output is the default.
+If not set or otherwise specified, Info output is the default.
 
 
 @node Pointer Validation
@@ -17182,8 +17203,8 @@ Instead of generating a regular output format, output a text representation
 of the tree obtained by parsing the input texinfo document.
 
 @item PLAINTEXINFO
-Output the Texinfo source with all the macros, @code{@@include} and 
-@code{@@value@{@}} expanded.  This is similar with setting 
+Output the Texinfo source with all the macros, @code{@@include} and
+@code{@@value@{@}} expanded.  This is similar to setting
 @option{--macro-expand}, but instead of being output in addition to
 the normal conversion, output of Texinfo is the main output.
 
@@ -17395,9 +17416,9 @@ retrieve the entity, and identifies the canonical DTD for the
 document.
 
 @item DUMP_TEXI
-For debugging.  If set, there is no conversion done, only parsing and 
-macros expansion.   If @option{--macro-expand} is set the Texinfo source
-is also expanded to the corresponding file.
+For debugging.  If set, there is no conversion done, only parsing and
+macros expansion.  If @option{--macro-expand} is set, the Texinfo
+source is also expanded to the corresponding file.
 
 @item DUMP_TREE
 For debugging.  If set, the tree constructed upon parsing a Texinfo
@@ -21917,7 +21938,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.434 2012-04-17 18:23:25 karl Exp $
+$Id: texinfo.txi,v 1.435 2012-04-20 18:52:47 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
