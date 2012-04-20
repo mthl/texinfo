@@ -1,6 +1,7 @@
-# DebugCount.pm: gather information on byes and lines count for debugging purposes
+# DebugTexinfo::DebugCount.pm: gather information on bytes and lines
+# count for debugging purposes.
 #
-# Copyright 2011 Free Software Foundation, Inc.
+# Copyright 2011, 2012 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
