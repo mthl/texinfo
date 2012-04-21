@@ -1,6 +1,6 @@
 #! /usr/bin/perl -w
 
-# pod2texi: Convert Pod to Texinfo
+# pod2texi -- convert Pod to Texinfo.
 #
 # Copyright 2012 Free Software Foundation, Inc.
 # 
@@ -80,17 +80,19 @@ sub pod2texi_help()
 {
   return __("Usage: pod2texi [OPTION]... POD-FILE...
 
-Translate Pod to Texinfo.  If the base level is higher than 0, 
-a main manual including all the files is done otherwise all
+Translate Pod to Texinfo.  If --base-level is higher than 0, 
+a main manual including all the files is done; otherwise, all
 manuals are standalone (the default).
 
 Options:
     --base-level=NUM|NAME   level of the head1 commands.
     --debug=NUM             set debugging level
+    --help                  display this help and exit.
     --no-fill-section-gaps  do not fill sectioning gaps.
     --no-section-nodes      use anchors for sections instead of nodes.
     --output=NAME           output to <NAME> for the first or the main manual
                             instead of standard out.
+    --preamble=STR          insert STR as beginning boilerplate.
     --subdir=NAME           put files included in the main manual in <NAME>.
     --top                   top for the main manual.
     --unnumbered-sections   use unumbered sections.
@@ -101,6 +103,7 @@ my $base_level = 0;
 my $unnumbered_sections = 0;
 my $output = '-';
 my $top = 'top';
+my $preamble = undef;
 my $subdir;
 my $section_nodes = 1;
 my $fill_sectioning_gaps = 1;
@@ -126,6 +129,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
    },
   'unnumbered-sections!' => \$unnumbered_sections,
   'output|o=s' => \$output,
+  'preamble=s' => \$preamble,
   'subdir=s' => \$subdir,
   'top=s' => \$top,
   'section-nodes!' => \$section_nodes,
@@ -403,22 +407,23 @@ if ($base_level > 0) {
   $outfile_name =~ s/\.te?x(i|info)?$//;
   $outfile_name .= '.info';
 
-  my $preamble = '@setfilename '
-    .Pod::Simple::Texinfo::_protect_text ($outfile_name)."\n\n".
-"\@documentencoding utf-8
+  if (! defined ($preamble)) {
+    $preamble = '\input texinfo
+@setfilename ' . Pod::Simple::Texinfo::_protect_text ($outfile_name) . "
+\@documentencoding utf-8
 
 \@settitle $top
 
-\@shorttitlepage $top
-
+\@shortcontents
 \@contents
 
 \@ifnottex
 \@node Top
 \@top $top
 \@end ifnottex\n\n";
-
-  print $fh '\input texinfo'."\n" . $preamble;
+  }
+  
+  print $fh $preamble;
   if ($section_nodes) {
     my $menu = _do_top_node_menu("\@node Top\n\@top top\n".$full_manual);
     print $fh $menu."\n";
@@ -454,9 +459,9 @@ pod2texi - convert Pod files to a Texinfo
 
 =head1 DESCRIPTION
 
-Translate Pod to Texinfo.  If the base level is higher than 0, 
-a main manual including all the files is done otherwise all
-manuals are standalone (the default).
+Translate Pod to Texinfo.  If the C<--base-level> is higher than 0, a
+main manual including all the files is done otherwise all manuals are
+standalone (the default).
 
 =head1 OPTIONS
 
@@ -480,6 +485,10 @@ use C<section> as the base level.
 
 Set debugging level to I<NUM>.
 
+=item B<--help>
+
+Display help and exit.
+
 =item B<--output>=I<NAME>
 
 Name for the first manual, or the main manual if there is a main manual.
@@ -487,11 +496,18 @@ Default is output on standard out.
 
 =item B<--no-section-nodes>
 
-Add a anchors for each section instead of nodes.
+Use anchors for sections instead of nodes.
 
 =item B<--no-fill-section-gaps>
 
 Do not fill sectioning gaps with empty C<@unnumbered>.
+
+=item B<--preamble>=I<STR>
+
+Insert I<STR> as top boilerplate before includes.  The default is fairly
+minimal, and sets @documentencoding to C<utf-8>.  For example, you can
+set this to the empty string and then write your own top-level
+boilerplate which uses @include to incorporate the generated one.
 
 =item B<--subdir>=I<NAME>
 
