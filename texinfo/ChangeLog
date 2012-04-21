@@ -1,3 +1,16 @@
+2012-04-21  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Other Configuration Variables): add
+	BASEFILENAME_LENGTH.
+	(HTML Xref Link Basics): explain that file names 
+	are truncated.
+	* tp/Texinfo/Common.pm, tp/Texinfo/Convert/Converter.pm,
+	tp/Texinfo/Convert/HTML.pm (_id_to_filename): add
+	IBASEFILENAME_LENGTH and use it to truncate base
+	filenames.
+	* tp/Texinfo/Parser.pm tp/t/*: @verb is not accepted in 
+	simple text commands and sectioning commands.
+
 2012-04-20  Julian Gilbey  <julian@d-and-j.net>  (tiny change)
 
 	* info/footnotes.c,

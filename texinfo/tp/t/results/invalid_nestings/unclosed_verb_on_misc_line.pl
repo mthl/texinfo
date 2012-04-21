@@ -39,6 +39,9 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -75,6 +78,15 @@ $result_texis{'unclosed_verb_on_misc_line'} = '@setfilename name @verb{file.texi
 $result_texts{'unclosed_verb_on_misc_line'} = '';
 
 $result_errors{'unclosed_verb_on_misc_line'} = [
+  {
+    'error_line' => ':1: warning: @verb should not appear in @setfilename
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@verb should not appear in @setfilename',
+    'type' => 'warning'
+  },
   {
     'error_line' => ':1: @verb missing closing delimiter sequence: f}
 ',

@@ -4834,6 +4834,13 @@ sub _prepare_css($)
   $self->{'css_rule_lines'} = \@css_rule_lines;
 }
 
+sub _id_to_filename($$)
+{
+  my $self = shift;
+  my $id = shift;
+  return substr($id, 0, $self->get_conf('BASEFILENAME_LENGTH'));
+}
+
 sub _node_id_file($$)
 {
   my $self = shift;
@@ -4870,7 +4877,7 @@ sub _node_id_file($$)
   } else {
     $filename = '';
   }
-  return ($filename, $target, $id);
+  return ($self->_id_to_filename($filename), $target, $id);
 }
 
 sub _new_sectioning_command_target($$)
@@ -4887,6 +4894,7 @@ sub _new_sectioning_command_target($$)
                 $no_unidecode);
 
   my $target_base = _normalized_to_id($filename);
+  $filename = $self->_id_to_filename($filename);
   $filename .= '.'.$self->get_conf('EXTENSION') 
     if (defined($self->get_conf('EXTENSION')) 
       and $self->get_conf('EXTENSION') ne '');

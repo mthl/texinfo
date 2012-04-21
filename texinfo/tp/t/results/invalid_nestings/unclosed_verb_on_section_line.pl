@@ -57,6 +57,9 @@ $result_trees{'unclosed_verb_on_section_line'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -118,6 +121,15 @@ $result_sectioning{'unclosed_verb_on_section_line'} = {
 $result_sectioning{'unclosed_verb_on_section_line'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'unclosed_verb_on_section_line'};
 
 $result_errors{'unclosed_verb_on_section_line'} = [
+  {
+    'error_line' => ':1: warning: @verb should not appear in @section
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@verb should not appear in @section',
+    'type' => 'warning'
+  },
   {
     'error_line' => ':1: @verb missing closing delimiter sequence: T}
 ',

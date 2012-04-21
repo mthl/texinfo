@@ -170,6 +170,9 @@ $result_trees{'setfilename'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -280,6 +283,15 @@ $result_errors{'setfilename'} = [
     'line_nr' => 4,
     'macro' => '',
     'text' => 'Multiple @setfilename',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: @verb should not appear in @setfilename
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@verb should not appear in @setfilename',
     'type' => 'warning'
   }
 ];

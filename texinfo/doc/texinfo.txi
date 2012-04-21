@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.435 2012-04-20 18:52:47 karl Exp $
+@c $Id: texinfo.txi,v 1.436 2012-04-21 17:44:46 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17342,6 +17342,8 @@ short table of contents for @code{AFTER_OVERVIEW} and after
 the table of contents for @code{AFTER_TOC_LINES}, otherwise a
 default string is used.
 
+@item BASEFILENAME_LENGTH
+For HTML@.  The maximum length of the base filenames.
 
 @item BEFORE_OVERVIEW
 @itemx BEFORE_TOC_LINES
@@ -19090,6 +19092,11 @@ One exception: the algorithm for node name expansion prefixes the
 string @samp{g_t} when the node name begins with a non-letter.  This
 kludge (due to XHTML rules) is not necessary for filenames, and is
 therefore omitted.
+
+Another rule, that only holds for filenames, is that base filenames 
+are truncated to 245 characters, to allow for an extension to be 
+prepended and still comply with a 255 characters limit which is 
+common to most filesystems.
 
 Any directory part in the filename argument of the source cross
 reference command is ignored.  Thus, @code{@@xref@{,,,../foo@}} and
@@ -21938,7 +21945,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.435 2012-04-20 18:52:47 karl Exp $
+$Id: texinfo.txi,v 1.436 2012-04-21 17:44:46 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

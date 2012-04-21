@@ -404,7 +404,7 @@ foreach my $not_in_full_line_commands('noindent', 'indent') {
 # commands that may happen on sectioning commands 
 my %in_sectioning_command_line_commands = %in_full_line_commands;
 foreach my $not_in_sectioning_command_line_commands ('titlefont', 
-                                                 'anchor', 'footnote') {
+                                   'anchor', 'footnote', 'verb') {
   delete $in_sectioning_command_line_commands{$not_in_sectioning_command_line_commands};
 }
 

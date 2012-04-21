@@ -10230,6 +10230,9 @@ $result_trees{'at_commands_in_refs_latin1'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 97,
@@ -10294,6 +10297,9 @@ $result_trees{'at_commands_in_refs_latin1'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 99,
@@ -15153,6 +15159,9 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                       ],
                       'cmdname' => 'verb',
                       'contents' => [],
+                      'extra' => {
+                        'invalid_nesting' => 1
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 145,
@@ -21715,7 +21724,35 @@ $result_menus{'at_commands_in_refs_latin1'}{'menu_child'}{'menu_next'}{'menu_pre
 $result_menus{'at_commands_in_refs_latin1'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'at_commands_in_refs_latin1'};
 $result_menus{'at_commands_in_refs_latin1'}{'menu_child'}{'menu_up'} = $result_menus{'at_commands_in_refs_latin1'};
 
-$result_errors{'at_commands_in_refs_latin1'} = [];
+$result_errors{'at_commands_in_refs_latin1'} = [
+  {
+    'error_line' => ':97: warning: @verb should not appear in @node
+',
+    'file_name' => '',
+    'line_nr' => 97,
+    'macro' => '',
+    'text' => '@verb should not appear in @node',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':99: warning: @verb should not appear in @chapter
+',
+    'file_name' => '',
+    'line_nr' => 99,
+    'macro' => '',
+    'text' => '@verb should not appear in @chapter',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':145: warning: @verb should not appear in @ref
+',
+    'file_name' => '',
+    'line_nr' => 145,
+    'macro' => '',
+    'text' => '@verb should not appear in @ref',
+    'type' => 'warning'
+  }
+];
 
 
 $result_converted_errors{'file_html'}->{'at_commands_in_refs_latin1'} = [
@@ -21767,6 +21804,15 @@ $result_converted_errors{'file_info'}->{'at_commands_in_refs_latin1'} = [
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 26
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':27: warning: Node expansion ` @ {} .\' in menu differs from normal node expansion `\'
+',
+    'text' => 'Node expansion ` @ {} .\' in menu differs from normal node expansion `\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 27
   },
   {
     'file_name' => '',

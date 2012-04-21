@@ -152,6 +152,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 9,
@@ -242,6 +245,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {},
                           'parent' => {},
                           'type' => ':'
@@ -370,6 +376,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 9,
@@ -515,6 +524,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {},
                           'parent' => {},
                           'type' => ':'
@@ -586,6 +598,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {},
                           'parent' => {},
                           'type' => ':'
@@ -810,6 +825,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                   ],
                   'cmdname' => 'verb',
                   'contents' => [],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 14,
@@ -900,6 +918,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                   ],
                   'cmdname' => 'verb',
                   'contents' => [],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'line_nr' => {},
                   'parent' => {},
                   'type' => ':'
@@ -1024,6 +1045,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                       ],
                       'cmdname' => 'verb',
                       'contents' => [],
+                      'extra' => {
+                        'invalid_nesting' => 1
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 14,
@@ -1169,6 +1193,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                       ],
                       'cmdname' => 'verb',
                       'contents' => [],
+                      'extra' => {
+                        'invalid_nesting' => 1
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => ':'
@@ -1240,6 +1267,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                       ],
                       'cmdname' => 'verb',
                       'contents' => [],
+                      'extra' => {
+                        'invalid_nesting' => 1
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => ':'
@@ -1419,6 +1449,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 20,
@@ -1509,6 +1542,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {},
                           'parent' => {},
                           'type' => ':'
@@ -1631,6 +1667,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 20,
@@ -1776,6 +1815,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {},
                           'parent' => {},
                           'type' => ':'
@@ -1847,6 +1889,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {},
                           'parent' => {},
                           'type' => ':'
@@ -2075,6 +2120,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                       ],
                       'cmdname' => 'verb',
                       'contents' => [],
+                      'extra' => {
+                        'invalid_nesting' => 1
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 24,
@@ -2165,6 +2213,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                       ],
                       'cmdname' => 'verb',
                       'contents' => [],
+                      'extra' => {
+                        'invalid_nesting' => 1
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => ':'
@@ -2289,6 +2340,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 24,
@@ -2434,6 +2488,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {},
                           'parent' => {},
                           'type' => ':'
@@ -2505,6 +2562,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'invalid_nesting' => 1
+                          },
                           'line_nr' => {},
                           'parent' => {},
                           'type' => ':'
@@ -2643,6 +2703,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                               ],
                               'cmdname' => 'verb',
                               'contents' => [],
+                              'extra' => {
+                                'invalid_nesting' => 1
+                              },
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 26,
@@ -2733,6 +2796,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                               ],
                               'cmdname' => 'verb',
                               'contents' => [],
+                              'extra' => {
+                                'invalid_nesting' => 1
+                              },
                               'line_nr' => {},
                               'parent' => {},
                               'type' => ':'
@@ -2857,6 +2923,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                   ],
                                   'cmdname' => 'verb',
                                   'contents' => [],
+                                  'extra' => {
+                                    'invalid_nesting' => 1
+                                  },
                                   'line_nr' => {
                                     'file_name' => '',
                                     'line_nr' => 26,
@@ -3002,6 +3071,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                   ],
                                   'cmdname' => 'verb',
                                   'contents' => [],
+                                  'extra' => {
+                                    'invalid_nesting' => 1
+                                  },
                                   'line_nr' => {},
                                   'parent' => {},
                                   'type' => ':'
@@ -3073,6 +3145,9 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                   ],
                                   'cmdname' => 'verb',
                                   'contents' => [],
+                                  'extra' => {
+                                    'invalid_nesting' => 1
+                                  },
                                   'line_nr' => {},
                                   'parent' => {},
                                   'type' => ':'
@@ -4263,7 +4338,233 @@ $result_menus{'test_image'} = {
   }
 };
 
-$result_errors{'test_image'} = [];
+$result_errors{'test_image'} = [
+  {
+    'error_line' => ':9: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':14: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':14: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':14: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':14: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':14: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':20: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':20: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':20: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':20: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':20: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':24: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 24,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':24: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 24,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':24: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 24,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':24: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 24,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':24: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 24,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':26: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 26,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':26: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 26,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':26: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 26,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':26: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 26,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':26: warning: @verb should not appear in @image (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 26,
+    'macro' => 'files-char',
+    'text' => '@verb should not appear in @image',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'test_image'} = {
@@ -4359,39 +4660,39 @@ ul.no-bullet {list-style: none}
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@">.
 </p>
 <p>Insertcopying
 </p><p>Text in copying.
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 </p>
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@">.
 </p>
 
 <div class="example">
 <pre class="example">[ f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot;  ]
 
 In text [ alt <b>&icirc;--le..</b>  a
-&lt;&quot;%@<tt>  &lt; &amp; @ % &quot; </tt> ].
+&lt;&quot;%@ ].
 </pre></div>
 
 <div class="float"><a name="Image-with-commands"></a>
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@">.
 </p>
 
 </div><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p><strong>Image 1: </strong>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p>
+&lt;&quot;%@">.</p>
 <dl class="listoffloats">
 <dt><a href="#Image-with-commands">Image 1</a></dt><dd><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></dd>
+&lt;&quot;%@">.</p></dd>
 </dl>
 
 <hr>
@@ -4599,39 +4900,39 @@ $result_converted{'html_text'}->{'test_image'} = '
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@">.
 </p>
 <p>Insertcopying
 </p><p>Text in copying.
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 </p>
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@">.
 </p>
 
 <div class="example">
 <pre class="example">[ f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot;  ]
 
 In text [ alt <b>&icirc;--le..</b>  a
-&lt;&quot;%@<tt>  &lt; &amp; @ % &quot; </tt> ].
+&lt;&quot;%@ ].
 </pre></div>
 
 <div class="float"><a name="Image-with-commands"></a>
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@">.
 </p>
 
 </div><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p><strong>Image 1: </strong>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p>
+&lt;&quot;%@">.</p>
 <dl class="listoffloats">
 <dt><a href="#Image-with-commands">Image 1</a></dt><dd><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></dd>
+&lt;&quot;%@">.</p></dd>
 </dl>
 
 <hr>

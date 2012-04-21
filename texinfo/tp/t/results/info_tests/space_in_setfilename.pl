@@ -41,6 +41,9 @@ $result_trees{'space_in_setfilename'} = {
                   ],
                   'cmdname' => 'verb',
                   'contents' => [],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 1,
@@ -191,7 +194,17 @@ $result_menus{'space_in_setfilename'} = {
   }
 };
 
-$result_errors{'space_in_setfilename'} = [];
+$result_errors{'space_in_setfilename'} = [
+  {
+    'error_line' => ':1: warning: @verb should not appear in @setfilename
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@verb should not appear in @setfilename',
+    'type' => 'warning'
+  }
+];
 
 
 

@@ -83,6 +83,7 @@ our %all_converters_defaults = (
   'allowcodebreaks'      => 'true',
   'footnotestyle'        => 'end',
   'deftypefnnewline'     => 'off',
+  'BASEFILENAME_LENGTH'  => 255 - 10,
 # This is not used much as converters do their best to give a sane output
   'FIX_TEXINFO'          => 1,
 # This is the default, mainly for tests; the caller should set them.  These
