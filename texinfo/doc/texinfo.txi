@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.436 2012-04-21 17:44:46 pertusus Exp $
+@c $Id: texinfo.txi,v 1.437 2012-04-21 23:19:47 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16840,12 +16840,6 @@ Output the Texinfo source, with all Texinfo macros expanded, to
 @var{file}.  Normally, the result of macro expansion is used
 internally by @code{makeinfo} and then discarded.
 
-When the output format being produced requires calling
-@command{texi2dvi}, this option implies passing @code{-E}, with no
-argument (@pxref{Format with texi2dvi,, Format with @code{texi2dvi}}).
-If you don't need the macro-expanded output file, you can use
-@code{--Xopt -E} (see @code{--Xopt} below).
-
 @item --no-headers
 @opindex --no-headers
 @cindex Node separators, omitting with @option{--no-headers}
@@ -17343,7 +17337,9 @@ the table of contents for @code{AFTER_TOC_LINES}, otherwise a
 default string is used.
 
 @item BASEFILENAME_LENGTH
-For HTML@.  The maximum length of the base filenames.
+For HTML@.  The maximum length of the base filenames.  Default 245.
+Changing this would make cross-manual references to such long node
+names invalid (@pxref{HTML Xref Link Basics}).
 
 @item BEFORE_OVERVIEW
 @itemx BEFORE_TOC_LINES
@@ -19093,10 +19089,14 @@ string @samp{g_t} when the node name begins with a non-letter.  This
 kludge (due to XHTML rules) is not necessary for filenames, and is
 therefore omitted.
 
-Another rule, that only holds for filenames, is that base filenames 
-are truncated to 245 characters, to allow for an extension to be 
-prepended and still comply with a 255 characters limit which is 
-common to most filesystems.
+@vindex BASEFILENAME_LENGTH
+Another rule, that only holds for filenames, is that base filenames
+are truncated to 245 characters, to allow for an extension to be
+appended and still comply with the 255-character limit which is common
+to many filesystems.  Although technically this can be changed with
+the @code{BASEFILENAME_LENGTH} configuration variable (@pxref{Other
+Configuration Variables}), doing so would make cross-manual references
+to such nodes invalid.
 
 Any directory part in the filename argument of the source cross
 reference command is ignored.  Thus, @code{@@xref@{,,,../foo@}} and
@@ -21945,7 +21945,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.436 2012-04-21 17:44:46 pertusus Exp $
+$Id: texinfo.txi,v 1.437 2012-04-21 23:19:47 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
