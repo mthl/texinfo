@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.24 2011-11-17 10:04:59 gray Exp $
+   $Id: infomap.c,v 1.25 2012-04-21 00:38:04 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
    2008, 2011 Free Software Foundation, Inc.
@@ -939,7 +939,7 @@ fetch_user_maps (void)
         {
                 if (filename && errno != ENOENT)
                 {
-                        info_error(filesys_error_string(filename, errno));
+                        info_error("%s", filesys_error_string(filename, errno));
                         free(filename);
                 }
                 return 0;
@@ -1169,7 +1169,7 @@ section_to_keymaps(Keymap map, unsigned char *table, unsigned int len)
                 }
         }
         if (state != getseq)
-                info_error(_("Bad data in infokey file -- some key bindings ignored"));
+                info_error("%s", _("Bad data in infokey file -- some key bindings ignored"));
         return !stop;
 }
 
@@ -1218,7 +1218,7 @@ section_to_vars(unsigned char *table, unsigned int len)
               }
           }
       if (state != getvar)
-        info_error(_("Bad data in infokey file -- some var settings ignored"));
+        info_error("%s", _("Bad data in infokey file -- some var settings ignored"));
 }
 
 void

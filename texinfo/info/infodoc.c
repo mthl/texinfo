@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.31 2012-04-12 10:38:29 gray Exp $
+   $Id: infodoc.c,v 1.32 2012-04-21 00:38:03 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008, 2011
@@ -478,7 +478,7 @@ DECLARE_INFO_COMMAND (info_get_help_window, _("Display help message"))
     }
   else
     {
-      info_error (msg_cant_make_help);
+      info_error ("%s", msg_cant_make_help);
     }
 }
 
@@ -520,7 +520,7 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node `(info)Help'")
   if (!node)
     {
       if (info_recent_file_error)
-        info_error (info_recent_file_error);
+        info_error ("%s", info_recent_file_error);
       else
         info_error (msg_cant_file_node, "Info", nodename);
     }

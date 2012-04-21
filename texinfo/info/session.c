@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.54 2012-04-12 10:38:30 gray Exp $
+   $Id: session.c,v 1.55 2012-04-21 00:38:06 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009, 2011 Free Software Foundation, Inc.
@@ -115,7 +115,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames)
           if (!largest)
             {
               display_update_display (windows);
-              info_error (msg_cant_find_window);
+              info_error ("%s", msg_cant_find_window);
               info_session ();
               xexit (0);
             }
@@ -130,7 +130,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames)
           else
             {
               display_update_display (windows);
-              info_error (msg_win_too_small);
+              info_error ("%s", msg_win_too_small);
               info_session ();
               xexit (0);
             }
@@ -597,7 +597,7 @@ move_to_new_line (int old, int new, WINDOW *window)
 {
   if (old == -1)
     {
-      info_error (msg_cant_find_point);
+      info_error ("%s", msg_cant_find_point);
     }
   else
     {
@@ -1145,7 +1145,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
   switch (behaviour)
     {
     case IS_PageOnly:
-      info_error (msg_at_node_bottom);
+      info_error ("%s", msg_at_node_bottom);
       return 1;
 
     case IS_NextOnly:
@@ -1168,7 +1168,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 	    switch (scroll_last_node)
 	      {
 	      case SLN_Stop:
-		info_error (_("No more nodes within this document."));
+		info_error ("%s", _("No more nodes within this document."));
 		return 1;
 		
 	      case SLN_Scroll:
@@ -1292,7 +1292,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                   window->point = info_win->points[old_current];
                   recalculate_line_starts (window);
                   window->flags |= W_UpdateWindow;
-                  info_error (_("No more nodes within this document."));
+                  info_error ("%s", _("No more nodes within this document."));
                   return 1;
                 }
             }
@@ -1310,14 +1310,14 @@ backward_move_node_structure (WINDOW *window, int behaviour)
   switch (behaviour)
     {
     case IS_PageOnly:
-      info_error (msg_at_node_top);
+      info_error ("%s", msg_at_node_top);
       return 1;
 
     case IS_NextOnly:
       info_prev_label_of_node (window->node);
       if (!info_parsed_nodename && !info_parsed_filename)
         {
-          info_error (_("No `Prev' for this node."));
+          info_error ("%s", _("No `Prev' for this node."));
           return 1;
         }
       else
@@ -1336,7 +1336,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
           if (!info_parsed_nodename && (!info_parsed_filename
                                         || is_dir_name (info_parsed_filename)))
             {
-              info_error (
+              info_error ("%s", 
                     _("No `Prev' or `Up' for this node within this document."));
               return 1;
             }
@@ -1695,7 +1695,7 @@ DECLARE_INFO_COMMAND (info_next_window, _("Select the next window"))
   /* If no other window, error now. */
   if (!windows->next && !echo_area_is_active)
     {
-      info_error (msg_one_window);
+      info_error ("%s", msg_one_window);
       return;
     }
 
@@ -1735,7 +1735,7 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
 
   if (!windows->next && !echo_area_is_active)
     {
-      info_error (msg_one_window);
+      info_error ("%s", msg_one_window);
       return;
     }
 
@@ -1791,7 +1791,7 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
 
   if (!split)
     {
-      info_error (msg_win_too_small);
+      info_error ("%s", msg_win_too_small);
     }
   else
     {
@@ -1860,11 +1860,11 @@ DECLARE_INFO_COMMAND (info_delete_window, _("Delete the current window"))
 {
   if (!windows->next)
     {
-      info_error (msg_cant_kill_last);
+      info_error ("%s", msg_cant_kill_last);
     }
   else if (window->flags & W_WindowIsPerm)
     {
-      info_error (_("Cannot delete a permanent window"));
+      info_error ("%s", _("Cannot delete a permanent window"));
     }
   else
     {
@@ -1949,7 +1949,7 @@ DECLARE_INFO_COMMAND (info_scroll_other_window, _("Scroll the other window"))
   /* If only one window, give up. */
   if (!windows->next)
     {
-      info_error (msg_one_window);
+      info_error ("%s", msg_one_window);
       return;
     }
 
@@ -2077,7 +2077,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   if (!node)
     {
       if (file_system_error)
-        info_error (file_system_error);
+        info_error ("%s", file_system_error);
       else
         info_error (msg_cant_find_node, nodename);
     }
@@ -2153,7 +2153,7 @@ info_handle_pointer (char *label, WINDOW *window)
       else
         {
           if (info_recent_file_error)
-            info_error (info_recent_file_error);
+            info_error ("%s", info_recent_file_error);
           else
             info_error (msg_cant_file_node, filename, nodename);
         }
@@ -2220,7 +2220,7 @@ DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
     }
 
   if (!node)
-    info_error (_("This window has no additional nodes"));
+    info_error ("%s", _("This window has no additional nodes"));
   else
     info_set_node_of_window (1, window, node);
 }
@@ -2254,7 +2254,7 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
     }
 
   if (!node)
-    info_error (_("This window has no additional nodes"));
+    info_error ("%s", _("This window has no additional nodes"));
   else
     info_set_node_of_window (1, window, node);
 }
@@ -2276,7 +2276,7 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
 
   if (!menu)
     {
-      info_error (msg_no_menu_node);
+      info_error ("%s", msg_no_menu_node);
       return;
     }
 
@@ -2391,9 +2391,9 @@ info_menu_or_ref_item (WINDOW *window, int count,
   if (!menu)
     {
       if (builder == info_menu_of_node)
-        info_error (msg_no_menu_node);
+        info_error ("%s", msg_no_menu_node);
       else
-        info_error (msg_no_xref_node);
+        info_error ("%s", msg_no_xref_node);
       return;
     }
 
@@ -2669,7 +2669,7 @@ DECLARE_INFO_COMMAND (info_find_menu, _("Move to the start of this node's menu")
       window->flags |= W_UpdateWindow;
     }
   else
-    info_error (msg_no_menu_node);
+    info_error ("%s", msg_no_menu_node);
 }
 
 /* Visit as many menu items as is possible, each in a separate window. */
@@ -2682,7 +2682,7 @@ DECLARE_INFO_COMMAND (info_visit_menu,
   menu = info_menu_of_node (window->node);
 
   if (!menu)
-    info_error (msg_no_menu_node);
+    info_error ("%s", msg_no_menu_node);
 
   for (i = 0; (!info_error_was_printed) && (entry = menu[i]); i++)
     {
@@ -2692,7 +2692,7 @@ DECLARE_INFO_COMMAND (info_visit_menu,
       window_tile_windows (TILE_INTERNALS);
 
       if (!new)
-        info_error (msg_win_too_small);
+        info_error ("%s", msg_win_too_small);
       else
         {
           active_window = new;
@@ -3313,7 +3313,7 @@ kill_node (WINDOW *window, char *nodename)
   /* If there are no more nodes left anywhere to view, complain and exit. */
   if (info_windows_index == 1 && info_windows[0]->nodes_index == 1)
     {
-      info_error (_("Cannot kill the last node"));
+      info_error ("%s", _("Cannot kill the last node"));
       return;
     }
 
@@ -3432,7 +3432,7 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
       if (!node)
         {
           if (info_recent_file_error)
-            info_error (info_recent_file_error);
+            info_error ("%s", info_recent_file_error);
           else
             info_error (_("Cannot find `%s'."), line);
         }
@@ -3490,7 +3490,7 @@ dump_nodes_to_file (char *filename, char **nodenames,
     fclose (output_stream);
 
 #if defined (VERBOSE_NODE_DUMPING)
-  info_error (_("Done."));
+  info_error ("%s", _("Done."));
 #endif /* VERBOSE_NODE_DUMPING */
 }
 
@@ -3520,7 +3520,7 @@ dump_node_to_stream (char *filename, char *nodename,
   if (!node)
     {
       if (info_recent_file_error)
-        info_error (info_recent_file_error);
+        info_error ("%s", info_recent_file_error);
       else
         {
           if (filename && *nodename != '(')
@@ -3611,7 +3611,7 @@ dump_node_to_file (NODE *node, char *filename, int dump_subnodes)
     fclose (output_stream);
 
 #if defined (VERBOSE_NODE_DUMPING)
-  info_error (_("Done."));
+  info_error ("%s", _("Done."));
 #endif /* VERBOSE_NODE_DUMPING */
 }
 
@@ -3671,7 +3671,7 @@ print_node (NODE *node)
     fclose (printer_pipe);
 
 #if defined (VERBOSE_NODE_DUMPING)
-  info_error (_("Done."));
+  info_error ("%s", _("Done."));
 #endif /* VERBOSE_NODE_DUMPING */
 }
 
@@ -3994,7 +3994,7 @@ info_search_internal (char *string, WINDOW *window,
               if (!echo_area_is_active)
                 {
                   if (info_recent_file_error)
-                    info_error (info_recent_file_error);
+                    info_error ("%s", info_recent_file_error);
                   else
                     info_error (msg_cant_file_node,
                                 filename_non_directory (file_buffer->filename),
@@ -4124,7 +4124,7 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
 
   if (mbslen (search_string) < min_search_length)
     {
-      info_error (_("Search string too short"));
+      info_error ("%s", _("Search string too short"));
       return;
     }
 
@@ -4145,7 +4145,7 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
 				   NULL);
 
   if (result != 0 && !info_error_was_printed)
-    info_error (_("Search failed."));
+    info_error ("%s", _("Search failed."));
   else if (old_pagetop != active_window->pagetop)
     {
       int new_pagetop;
@@ -4166,7 +4166,7 @@ DECLARE_INFO_COMMAND (info_search_next,
                       _("Repeat last search in the same direction"))
 {
   if (!last_search_direction)
-    info_error (_("No previous search string"));
+    info_error ("%s", _("No previous search string"));
   else
     info_search_1 (window, last_search_direction * count,
                    key, last_search_case_sensitive, 0);
@@ -4176,7 +4176,7 @@ DECLARE_INFO_COMMAND (info_search_previous,
                       _("Repeat last search in the reverse direction"))
 {
   if (!last_search_direction)
-    info_error (_("No previous search string"));
+    info_error ("%s", _("No previous search string"));
   else
     info_search_1 (window, -last_search_direction * count,
                    key, last_search_case_sensitive, 0);
@@ -4719,7 +4719,7 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
   if (firstmenu == -1 && firstxref == -1)
     {
       if (!cursor_movement_scrolls_p)
-        info_error (msg_no_xref_node);
+        info_error ("%s", msg_no_xref_node);
       return cursor_movement_scrolls_p;
     }
 
@@ -4862,7 +4862,7 @@ DECLARE_INFO_COMMAND (info_abort_key, _("Cancel current operation"))
      do it. */
   if (!info_error_rings_bell_p)
     terminal_ring_bell ();
-  info_error (_("Quit"));
+  info_error ("%s", _("Quit"));
 
   info_initialize_numeric_arg ();
   info_clear_pending_input ();
