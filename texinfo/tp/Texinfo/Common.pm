@@ -126,7 +126,7 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'NO_WARN', 'VERBOSE',
   'TRANSLITERATE_FILE_NAMES', 'ERROR_LIMIT', 'ENABLE_ENCODING',
   'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR', 'OUT',
-  'BATCH', 'SILENT'
+  'SILENT'
 );
 
 # documented in the Texinfo::Parser pod section

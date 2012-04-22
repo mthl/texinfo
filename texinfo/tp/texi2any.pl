@@ -792,8 +792,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
  'output-indent=i' => sub { ;},
  'reference-limit=i' => sub { ;},
  'Xopt=s' => \@texi2dvi_args,
- 'batch' => sub {set_from_cmdline('BATCH', $_[1]); 
-                 push @texi2dvi_args, '--'.$_[0];},
  'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
                          push @texi2dvi_args, '--'.$_[0];},
    
