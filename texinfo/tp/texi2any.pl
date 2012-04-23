@@ -659,6 +659,7 @@ Texinfo home page: http://www.gnu.org/software/texinfo/") ."\n";
   return $makeinfo_help;
 }
 
+my $Xopt_arg_nr = 0;
 my $latex2html_file = 'latex2html.pm';
 
 my $result_options = Getopt::Long::GetOptions (
@@ -791,7 +792,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
  'commands-in-node-names' => sub { ;},
  'output-indent=i' => sub { ;},
  'reference-limit=i' => sub { ;},
- 'Xopt=s' => \@texi2dvi_args,
+ 'Xopt=s' => sub {push @texi2dvi_args, $_[1]; $Xopt_arg_nr++},
  'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
                          push @texi2dvi_args, '--'.$_[0];},
    
@@ -909,7 +910,10 @@ if ($call_texi2dvi) {
     die sprintf(__('when generating %s, only one input FILE may be specified with -o'),
                 $format);
   }
+} elsif($Xopt_arg_nr) {
+  document_warn (__('--Xopt option without printed output')); 
 }
+
 my %tree_transformations;
 if (get_conf('TREE_TRANSFORMATIONS')) {
   my @transformations = split /,/, get_conf('TREE_TRANSFORMATIONS');
