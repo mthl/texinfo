@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.437 2012-04-21 23:19:47 karl Exp $
+@c $Id: texinfo.txi,v 1.438 2012-04-23 18:22:47 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -900,7 +900,7 @@ Texinfo.
 
 @table @asis
 @item Info
-@cindex Info output
+@cindex Info output, overview
 (Generated via @command{makeinfo}.)  This format is essentially a
 plain text transliteration of the Texinfo source.  It adds a few
 control characters to separate nodes and provide navigational
@@ -933,7 +933,7 @@ details of the HTML language and much related information, see
 @uref{http://www.w3.org/MarkUp/}.  @xref{Generating HTML}.
 
 @item DVI
-@cindex DVI output
+@cindex DVI output, overview
 @pindex dvips
 @pindex xdvi
 (Generated via @command{texi2dvi}.)  This DeVIce Independent binary
@@ -950,6 +950,15 @@ For more information on @TeX{} in general, please see the book
 @cite{@TeX{} for the Impatient}, available from
 @uref{http://savannah.gnu.org/projects/teximpatient}.
 
+@item PostScript
+@cindex PostScript output, overview
+(Generated via @command{texi2dvi --ps}.)  This was a page description
+language that became widely used around 1985 and is still in use
+today.  @uref{http://en.wikipedia.org/wiki/PostScript} gives a basic
+description and more preferences.
+Texinfo uses the @command{dvips} program to convert @TeX{}'s DVI output
+to PostScript.  @xref{Invoking Dvips,,, dvips, Dvips}.
+
 @item PDF
 @cindex PDF output, overview
 @cindex Beebe, Nelson
@@ -959,22 +968,25 @@ interchange, based on their previous PostScript language.  It can
 represent the exact appearance of a document, including fonts and
 graphics, and supporting arbitrary scaling.  It is intended to be
 platform-independent and easily viewable, among other design goals;
-@uref{http://tug.org/TUGboat/tb22-3/tb72beebe-pdf.pdf} has some
+@uref{http://en.wikipedia.org/wiki/Portable_Document_Format} and
+@uref{http://tug.org/TUGboat/tb22-3/tb72beebe-pdf.pdf} have some
 background.  Texinfo uses the @command{pdftex} program, a variant of
 @TeX{}, to output PDF; see @uref{http://tug.org/applications/pdftex}.
 @xref{PDF Output}.
 
 @item Docbook
-@cindex Docbook output
+@cindex Docbook output, overview
+@cindex XML Docbook output, overview
 (Generated via @command{makeinfo --docbook}.)  This is an XML-based
 format developed some years ago, primarily for technical
 documentation.  It therefore bears some resemblance, in broad
-outlines, to Texinfo.  See @uref{http://www.docbook.org}.  If you want
+outline, to Texinfo.  See @uref{http://www.docbook.org}.  If you want
 to convert from Docbook @emph{to} Texinfo, please see
 @uref{http://docbook2X.sourceforge.net}.
 
 @item XML
-@cindex XML output
+@cindex XML Texinfo output, overview
+@cindex Texinfo XML output, overview
 @cindex DTD, for Texinfo XML
 @pindex texinfo.dtd
 (Generated via @command{makeinfo --xml}.)  XML is a generic syntax
@@ -15719,13 +15731,31 @@ formats, such as @code{@@smallbook} (@pxref{smallbook}),
 @pxref{Preparing for TeX,,Preparing for @TeX{}}).
 
 @opindex --pdf@r{, for @command{texi2dvi}}
+@pindex pdftexi2dvi
 With the @option{--pdf} option, @command{texi2dvi} produces PDF output
 instead of DVI (@pxref{PDF Output}), by running @command{pdftex}
 instead of @command{tex}.  Alternatively, the command
 @command{texi2pdf} is an abbreviation for running @samp{texi2dvi
 --pdf}.  The command @command{pdftexi2dvi} is also supported as a
-convenience to AUC-@TeX{} users, since the latter merely prepends
-@samp{pdf} to DVI producing tools to have PDF producing tools.
+convenience to AUC-@TeX{} users (@pxref{,,,auctex, AUC-@TeX{}}, since
+that program merely prepends @samp{pdf} to DVI producing tools to have
+PDF producing tools.
+
+@opindex --dvipdf@r{, for @command{texi2dvi}}
+@pindex dvipdfmx
+With the @option{--dvipdf} option, @command{texi2dvi} produces PDF
+output by running @TeX{} and then a DVI-to-PDF program: if the
+@env{DVIPDF} environment variable is set, that value is used, else
+the first extant among @code{dvipdfmx}, @code{dvipdfm}, @code{dvipdf},
+@code{dvi2pdf}, @code{dvitopdf}.  This method can support CJK
+typesetting better than @command{pdftex}.
+
+@opindex --ps@r{, for @command{texi2dvi}}
+@pindex dvips
+With the @option{--ps} option, @command{texi2dvi} produces PostScript
+instead of DVI, by running @command{tex} and then @command{dvips}
+(@pxref{,,,dvips, Dvips}).  (Or the value of the @env{DVIPS}
+environment variable, if set.)
 
 @cindex @LaTeX{}, processing with @command{texi2dvi}
 @command{texi2dvi} can also be used to process @LaTeX{} files; simply
@@ -15775,10 +15805,11 @@ a warning and continues, using the unmodified input file.
 
 The option @option{-E} (equivalently, @option{-e} and
 @option{--expand}) does Texinfo macro expansion using
-@command{makeinfo} instead of the @TeX{} implementation.  Each
-implementation has its own limitations and advantages.  If this option
-is used, the string @code{@@c@tie{}_texi2dvi} must not appear at the
-beginning of a line in the source file.
+@command{makeinfo} instead of the @TeX{} implementation (@pxref{Macro
+Details}).  Each implementation has its own limitations and
+advantages.  If this option is used, the string
+@code{@@c@tie{}_texi2dvi} must not appear at the beginning of a line
+in the source file.
 
 For the list of all options, run @samp{texi2dvi --help}.
 
@@ -16542,6 +16573,7 @@ The rest of this chapter goes into the details.
 @menu
 * Reference Implementation:: @command{texi2any}: the reference implementation.
 * Invoking texi2any::        Running the translator from a shell.
+* texi2any Printed Output:: Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
 * Configuration Variables::  Configuring @command{texi2any}.
 * texi2html::                An ancestor of @command{texi2any}.
@@ -16715,6 +16747,16 @@ Use @var{lang} to translate Texinfo keywords which end up in the
 output document.  The default is the locale specified by the
 @code{@@documentlanguage} command if there is one, otherwise English
 (@pxref{documentlanguage}).
+
+@item --dvi
+@opindex --dvi
+Generate a TeX DVI file using @command{texi2dvi}, rather than Info
+(@pxref{texi2any Printed Output}).
+
+@item --dvipdf
+@opindex --dvipdf
+Generate a PDF file using @command{texi2dvi --dvipdf}, rather than
+Info (@pxref{texi2any Printed Output}).
 
 @item --error-limit=@var{limit}
 @itemx -e @var{limit}
@@ -16986,6 +17028,11 @@ Indent each paragraph by @var{num} spaces.
 The default is to indent by two spaces, except for paragraphs
 following a section heading, which are not indented.
 
+@item --pdf
+@opindex --pdf
+Generate a PDF file using @command{texi2dvi --pdf}, rather than Info
+(@pxref{texi2any Printed Output}).
+
 @item --plaintext
 @opindex --plaintext
 @cindex Plain text output with @option{--plaintext}
@@ -17002,6 +17049,11 @@ complications, or include in a distribution (for example, an
 
 With this option, @code{@@setfilename} is ignored and the output goes
 to standard output by default; this can be overridden with @option{-o}.
+
+@item --ps
+@opindex --ps
+Generate a PostScript file using @command{texi2dvi --ps}, rather
+than Info (@pxref{texi2any Printed Output}).
 
 @item --set-init-variable @var{var}=@var{value}
 @opindex --set-init-variable @var{var}=@var{value}
@@ -17069,6 +17121,11 @@ warnings.
 @opindex -V
 Print the version number, then exit successfully.
 
+@item --Xopt @var{str}
+@opindex --Xopt @var{str}
+Pass @var{str} (a single shell word) to @command{texi2dvi}; may be
+repeated (@pxref{texi2any Printed Output}).
+
 @item --xml
 @opindex --xml
 Generate Texinfo XML output (rather than Info).
@@ -17082,10 +17139,58 @@ Generate Texinfo XML output (rather than Info).
 overridden by a command line option.  The value should be one of:
 
 @example
-docbook  dvi  dvipdf  html  info  plaintext  ps  pdf  xml
+docbook  dvi  dvipdf  html  info  pdf  plaintext  ps  xml
 @end example
 
 If not set or otherwise specified, Info output is the default.
+
+
+@node texi2any Printed Output
+@section @command{texi2any} Printed Output
+@cindex Printed output, through @command{texi2any}
+@cindex Output, printed through @command{texi2any}
+
+To justify the name Texinfo-to-@emph{any}, @command{texi2any} has
+basic support for creating printed output in the various formats:
+@TeX{} DVI, PDF, and PostScript.  This is done via the simple method
+of executing the @command{texi2dvi} program when those outputs are
+requested.
+
+The output format options for this are @option{--dvi},
+@option{--dvipdf}, @option{--pdf}, and @option{--pdf}.  @xref{Format
+with texi2dvi}, for more details on @command{texi2dvi} operation.  In
+addition, the @option{--verbose}, @option{--silent}, and
+@option{--quiet} options are passed on if specified; the @option{-I}
+and @option{-o} options are likewise passed on with their arguments,
+and @option{--debug} without its argument.
+
+The only option remaining that is related to the @command{texi2dvi}
+invocation is @option{--Xopt}.  Here, just the argument is passed on
+and multiple @option{--Xopt} options accumulate, providing a way to
+construct an arbitrary command line for @command{texi2dvi}.  For
+example, running
+
+@example
+texi2any --Xopt -t --Xopt @@a4paper --pdf foo.texi
+@end example
+
+@noindent is equivalent to running
+
+@example
+texi2dvi -t @@a4paper --pdf foo.texi
+@end example
+
+Although one might wish that other options to @command{texi2any} would
+take effect, they don't.  For example, running @samp{texi2any
+--no-number-sections --dvi foo.texi} still results in a DVI file with
+numbered sections.  (Perhaps this could be improved in the future, if
+requests are received.)  @command{texi2any} also does not generate
+Info output or perform any other actions when it invokes
+@command{texi2dvi}.
+
+The actual name of the command that is invoked is specified by the
+@code{TEXI2HTML} configuration variable (@pxref{Other Configuration
+Variables}).  As you might guess, the default is @samp{texi2dvi}.
 
 
 @node Pointer Validation
@@ -17690,7 +17795,8 @@ are set to fixed and given values.  This is useful to compare the
 output to a reference file, as is done for the tests.
 
 @item TEXI2DVI
-Name of the command used to produce PDF and DVI.
+Name of the command used to produce PostScript, PDF, and DVI; default
+is @samp{texi2dvi}.  @xref{texi2any Printed Output}.
 
 @item TEXI2HTML
 @cindex compatibility, with @command{texi2html}
@@ -21945,7 +22051,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.437 2012-04-21 23:19:47 karl Exp $
+$Id: texinfo.txi,v 1.438 2012-04-23 18:22:47 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

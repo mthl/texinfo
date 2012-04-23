@@ -1,3 +1,14 @@
+2012-04-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Output Formats): add PostScript item.
+	(Invoking texi2any): add options passed to texi2dvi.
+	(texi2any Printed Output): new node.
+	(Format with texi2dvi): mention --ps and --dvipdf.
+
+2012-04-22  Karl Berry  <karl@gnu.org>
+
+	* README-hacking: rename from README.dev, for more consistency.
+
 2012-04-21  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Other Configuration Variables): add
