@@ -1,4 +1,4 @@
-$Id: README,v 1.21 2012-04-23 00:00:47 karl Exp $
+$Id: README,v 1.22 2012-04-23 23:20:20 karl Exp $
 This is the README file for the GNU Texinfo distribution.  Texinfo is
 the preferred documentation format for GNU software.
 
@@ -39,11 +39,12 @@ Bug reports:
 Patches are most welcome; if possible, please make them with diff -c and
 include ChangeLog entries.
 
-See README-dev for information on the Texinfo development environment --
-any interested parties are welcome.  If you're a programmer and wish to
-contribute, this should get you started.  If you're not a programmer,
-you can still make significant contributions by writing test cases,
-checking the documentation against the implementation, etc.
+See README-hacking for information on the Texinfo development
+environment -- any interested parties are welcome.  If you're a
+programmer and wish to contribute, this should get you started.  If
+you're not a programmer, you can still make significant contributions by
+writing test cases, checking the documentation against the
+implementation, etc.
 
 This distribution includes the following files, among others:
     README                 This file.

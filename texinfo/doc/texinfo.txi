@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.438 2012-04-23 18:22:47 karl Exp $
+@c $Id: texinfo.txi,v 1.439 2012-04-23 23:20:20 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17189,7 +17189,7 @@ Info output or perform any other actions when it invokes
 @command{texi2dvi}.
 
 The actual name of the command that is invoked is specified by the
-@code{TEXI2HTML} configuration variable (@pxref{Other Configuration
+@code{TEXI2DVI} configuration variable (@pxref{Other Configuration
 Variables}).  As you might guess, the default is @samp{texi2dvi}.
 
 
@@ -22051,7 +22051,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.438 2012-04-23 18:22:47 karl Exp $
+$Id: texinfo.txi,v 1.439 2012-04-23 23:20:20 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
