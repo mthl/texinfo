@@ -1,8 +1,8 @@
-# $Id: Makefile.am,v 1.34 2012-01-19 20:38:10 pertusus Exp $
+# $Id: Makefile.am,v 1.35 2012-04-23 00:00:13 karl Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -17,7 +17,8 @@
 ACLOCAL_AMFLAGS = -I gnulib/m4
 
 # Additional files to distribute.
-EXTRA_DIST = ChangeLog.46 INSTALL.generic INTRODUCTION README.dev system.h \
+EXTRA_DIST = ChangeLog.46 INSTALL.generic INTRODUCTION README-hacking \
+  system.h \
   djgpp/README djgpp/config.bat djgpp/config.sed djgpp/config.site \
   gnulib/m4/gnulib-cache.m4
 
