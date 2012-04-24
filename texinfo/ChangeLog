@@ -2,6 +2,8 @@
 
 	* doc/Makefile.am (TXI_XLATE): add txi-nn.tex.
 
+	* doc/refcard/txirefcard.tex: node pointers are optional.
+
 	* doc/texinfo.txi (#line and TeX, Use TeX, Obtaining TeX,
 	Preparing for TeX, Debugging with TeX): use @TeX{} in node names
 	and thus simplify cross references.  Does not change Info node names,

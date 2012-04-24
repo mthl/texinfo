@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.25 2012-01-03 18:26:58 karl Exp $
+% $Id: txirefcard.tex,v 1.26 2012-04-24 18:10:59 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -58,6 +58,7 @@
 \centerline{Copyright \copyright\ \year\ Free Software Foundation, Inc.}
 \centerline{for Texinfo version \versionTexinfo, \versionyear}
 \centerline{by Robert D. Solimeno}
+\centerline{and the Texinfo maintainers}
 
 \smallskip
   Copying and distribution of this material, with or without modification,
@@ -65,9 +66,9 @@
   notice and this notice are preserved.
 
 \smallskip
-For printed copies of the Texinfo manual, visit {\tt http://gnupress.org} or
-write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth
-Floor, Boston, MA 02110-1301 USA.
+For printed copies of the Texinfo manual, visit {\tt
+http://www.gnupress.org} or write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 \endgroup}
 
@@ -282,7 +283,7 @@ Floor, Boston, MA 02110-1301 USA.
 \def\txicmdx#1{\txicmd{#1\rmbrack[x]}}
 
 % Enclose argument in roman brackets.
-\def\rmbrack[#1]{{\small[}#1{\small{]}\thinspace}}
+\def\rmbrack[#1]{{\small[}#1\/{\small{]}\thinspace}}
 
 % Enclose argument in typewriter braces.
 \def\ttbraced#1{\lbracechar#1\rbracechar}
@@ -401,7 +402,7 @@ begin with lines like this:
 \code{@setfilename {\sl info-file-name}}\hfil\break
 \code{@settitle {\sl name-of-manual}}}
 
-\dots the contents of the Texinfo document follow,
+\dots the contents of the Texinfo document,
 ending with:\hfil\break
 \code{@bye}
 
@@ -457,7 +458,7 @@ which they conventionally appear.
 
 \section{Nodes}
 
-\txicmd{@node}{name, next, previous, up}{Begin a new node.  The \var{next}, \var{previous}, and \var{up} pointers are usually omitted in a normally-structured document.}
+\txicmd{@node}{name\rmbrack[, next, previous, up]}{Begin a new node.  The \var{next}, \var{previous}, and \var{up} pointers are usually omitted in a normally-structured document.}
 \txicmd{@top}{title}{Mark the topmost \code{@node} in the file, which must be defined on the line immediately preceding \code{@top}. The \var{title} is formatted as a chapter-level heading.  The entire top node, including the \code{@node} and \code{@top} lines, are normally enclosed with \code{@ifnottex ... @end ifnottex}.}
 \txicmd{@anchor}{\ttbraced{\var{name}}}{Define \var{name} as the current location, for use as a cross-reference target.}
 \txicmd{@novalidate}{}{Suppress validation of node references and omit creation of auxiliary files with \TeX. Use before \code{@setfilename}.}
