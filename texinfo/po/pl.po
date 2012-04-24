@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-04-18 23:29+0200\n"
+"POT-Creation-Date: 2012-04-24 10:59-0700\n"
 "PO-Revision-Date: 2008-08-16 22:12+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -323,7 +323,7 @@ msgid "Try --help for more information.\n"
 msgstr "Wiêcej informacji mo¿na uzyskaæ przez --help.\n"
 
 #: info/info.c:299 info/infokey.c:145 install-info/install-info.c:2133
-#: util/texindex.c:296 tp/texi2any.pl:665
+#: tp/texi2any.pl:668 util/texindex.c:296
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -1135,12 +1135,10 @@ msgstr ""
 "B³êdny plik infokey `%s' (z³y kod sekcji) - mo¿na go uaktualniæ przez infokey"
 
 #: info/infomap.c:1172
-#, c-format
 msgid "Bad data in infokey file -- some key bindings ignored"
 msgstr "B³êdne dane w pliku infokey - czê¶æ przypisañ klawiszy zignorowana"
 
 #: info/infomap.c:1221
-#, c-format
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr "B³êdne dane w pliku infokey - czê¶æ ustawieñ zmiennych zignorowana"
 
@@ -1262,17 +1260,14 @@ msgid "Next"
 msgstr "Nastêpny"
 
 #: info/session.c:1171 info/session.c:1295
-#, c-format
 msgid "No more nodes within this document."
 msgstr "Nie ma wiêcej wêz³ów w tym dokumencie."
 
 #: info/session.c:1320
-#, c-format
 msgid "No `Prev' for this node."
 msgstr "Nie ma wêz³a `Poprzedni' dla tego wêz³a."
 
 #: info/session.c:1340
-#, c-format
 msgid "No `Prev' or `Up' for this node within this document."
 msgstr ""
 "Nie ma wêz³ów `Poprzedni' ani `W górê' dla tego wêz³a w tym dokumencie."
@@ -1364,7 +1359,6 @@ msgid "Delete the current window"
 msgstr "Usuniêcie aktualnego okna"
 
 #: info/session.c:1867
-#, c-format
 msgid "Cannot delete a permanent window"
 msgstr "Nie mo¿na usun±æ sta³ego okna"
 
@@ -1423,7 +1417,6 @@ msgid "Select the last node in this file"
 msgstr "Wybranie ostatniego wêz³a w tym pliku"
 
 #: info/session.c:2223 info/session.c:2257
-#, c-format
 msgid "This window has no additional nodes"
 msgstr "To okno nie ma dodatkowych wêz³ów"
 
@@ -1547,7 +1540,6 @@ msgid "Cannot kill node `%s'"
 msgstr "Nie mo¿na zabiæ wêz³a `%s'"
 
 #: info/session.c:3316
-#, c-format
 msgid "Cannot kill the last node"
 msgstr "Nie mo¿na zabiæ ostatniego wêz³a"
 
@@ -1578,7 +1570,6 @@ msgid "Could not create output file `%s'."
 msgstr "Nie mo¿na utworzyæ pliku wyj¶ciowego `%s'."
 
 #: info/session.c:3493 info/session.c:3614 info/session.c:3674
-#, c-format
 msgid "Done."
 msgstr "Gotowe."
 
@@ -1648,7 +1639,6 @@ msgid "Search"
 msgstr "Szukanie"
 
 #: info/session.c:4148
-#, c-format
 msgid "Search failed."
 msgstr "Wyszukiwanie nie powiod³o siê."
 
@@ -1657,7 +1647,6 @@ msgid "Repeat last search in the same direction"
 msgstr "Powtórzenie ostatniego poszukiwania w tym samym kierunku"
 
 #: info/session.c:4169 info/session.c:4179
-#, c-format
 msgid "No previous search string"
 msgstr "Brak poprzedniego szukanego ³añcucha"
 
@@ -1706,7 +1695,6 @@ msgid "Cancel current operation"
 msgstr "Anulowanie bie¿±cej operacji"
 
 #: info/session.c:4865
-#, c-format
 msgid "Quit"
 msgstr "Wyj¶cie"
 
@@ -2002,7 +1990,7 @@ msgstr ""
 " --test               pominiêcie uaktualniania PLIKU-KATALOGU.\n"
 " --version            wy¶wietlenie informacji o wersji i zakoñczenie."
 
-#: install-info/install-info.c:589 tp/texi2any.pl:654
+#: install-info/install-info.c:589 tp/texi2any.pl:656
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2121,461 +2109,16 @@ msgstr "ferror dla standardowego wyj¶cia\n"
 msgid "fflush error on stdout\n"
 msgstr "b³±d fflush dla standardowego wyj¶cia\n"
 
-#: util/texindex.c:224
-msgid "display this help and exit"
-msgstr "wy¶wietlenie tego opisu i zakoñczenie"
-
-#: util/texindex.c:226
-msgid "send output to FILE"
-msgstr "zapisanie wyj¶cia do PLIKU"
-
-#: util/texindex.c:228
-msgid "display version information and exit"
-msgstr "wy¶wietlenie informacji o wersji i zakoñczenie"
-
-#: util/texindex.c:238
-#, c-format
-msgid "Usage: %s [OPTION]... FILE...\n"
-msgstr "Sk³adnia: %s [OPCJA]... PLIK...\n"
-
-#: util/texindex.c:239
-#, c-format
-msgid "Generate a sorted index for each TeX output FILE.\n"
-msgstr ""
-"Generowanie posortowanego indeksu dla ka¿dego PLIKU wyj¶ciowego w TeXu.\n"
-
-#: util/texindex.c:242
-#, c-format
-msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-msgstr ""
-"Zazwyczaj PLIK... podaje siê jako `foo.%c%c' dla dokumentu `foo.texi'.\n"
-
-#: util/texindex.c:244
-#, c-format
-msgid ""
-"\n"
-"Options:\n"
-msgstr ""
-"\n"
-"Opcje:\n"
-
-#: util/texindex.c:744
-#, c-format
-msgid "failure reopening %s"
-msgstr "b³±d podczas ponownego otwierania %s"
-
-#: util/texindex.c:759 util/texindex.c:787
-#, c-format
-msgid "%s: not a texinfo index file"
-msgstr "%s: nie jest plikiem indeksu texinfo"
-
-#: util/texindex.c:994
-#, c-format
-msgid "No page number in %s"
-msgstr "Brak numeru strony w %s"
-
-#: util/texindex.c:1067
-#, c-format
-msgid "entry %s follows an entry with a secondary name"
-msgstr "wpis %s wyst±pi³ po wpisie z dodatkow± nazw±"
-
-#: tp/texi2any.pl:311
+#: tp/DebugTexinfo/DebugTree.pm:57 tp/Texinfo/Convert/Converter.pm:518
+#: tp/Texinfo/Convert/DocBook.pm:311 tp/Texinfo/Convert/HTML.pm:6421
+#: tp/Texinfo/Convert/HTML.pm:6445 tp/Texinfo/Convert/HTML.pm:6812
+#: tp/Texinfo/Convert/HTML.pm:6869 tp/Texinfo/Convert/HTML.pm:6945
+#: tp/Texinfo/Convert/HTML.pm:7012 tp/Texinfo/Convert/Info.pm:82
+#: tp/Texinfo/Convert/Info.pm:166 tp/Texinfo/Convert/Info.pm:189
+#: tp/Texinfo/Convert/Plaintext.pm:434 tp/Texinfo/Convert/XML.pm:276
 #, fuzzy, perl-format
-msgid "error loading %s: %s\n"
-msgstr "b³±d podczas zapisu do `%s'"
-
-#: tp/texi2any.pl:320
-#, fuzzy, perl-format
-msgid "Unknown variable %s"
-msgstr "Nieznane polecenie `%s'"
-
-#: tp/texi2any.pl:323 tp/texi2any.pl:340 tp/Texinfo/Convert/Converter.pm:373
-#: tp/Texinfo/Convert/Converter.pm:392
-#, fuzzy, perl-format
-msgid "Obsolete variable %s\n"
-msgstr "Ustawienie zmiennej: "
-
-#: tp/texi2any.pl:337
-#, fuzzy, perl-format
-msgid "Unknown variable %s\n"
-msgstr "Nieznane polecenie `%s'"
-
-#: tp/texi2any.pl:402
-#, fuzzy, perl-format
-msgid "Can't read init file %s"
-msgstr "nie mo¿na otworzyæ pliku wej¶ciowego `%s'"
-
-#: tp/texi2any.pl:531
-#, fuzzy
-msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
-msgstr "Sk³adnia: %s [OPCJA]... PLIK-TEXINFO...\n"
-
-#: tp/texi2any.pl:532
-#, fuzzy
-msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
-msgstr "Sk³adnia: %s [OPCJA]... PLIK-TEXINFO...\n"
-
-#: tp/texi2any.pl:534
-msgid ""
-"Translate Texinfo source documentation to various other formats, by default\n"
-"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
-msgstr ""
-"T³umaczenie ¼ród³owej dokumentacji Texinfo do ró¿nych innych formatów,\n"
-"domy¶lnie plików Info nadaj±cych siê do czytania pod Emacsem lub "
-"samodzielnym\n"
-"GNU Info.\n"
-
-#: tp/texi2any.pl:537
-#, fuzzy, perl-format
-msgid ""
-"General options:\n"
-"      --document-language=STR locale to use in translating Texinfo keywords\n"
-"                                for the output document (default C).\n"
-"      --error-limit=NUM       quit after NUM errors (default %d).\n"
-"      --force                 preserve output even if errors.\n"
-"      --help                  display this help and exit.\n"
-"      --no-validate           suppress node cross-reference validation.\n"
-"      --no-warn               suppress warnings (but not errors).\n"
-"      --conf-dir=DIR          search also for initialization files in DIR.\n"
-"      --init-file=FILE        load FILE to modify the default behavior.\n"
-"      --set-init-variable VAR=VAL  set configuration variable VAR to VAL.\n"
-"  -v, --verbose               explain what is being done.\n"
-"      --version               display version information and exit.\n"
-msgstr ""
-"Opcje ogólne:\n"
-"      --error-limit=ILE       zakoñczenie po ILU b³êdach (domy¶lnie %d).\n"
-"      --document-language=£AÑC lokalizacja u¿ywana przy t³umaczeniu s³ów\n"
-"                                kluczowych Texinfo dla dokumentu "
-"wyj¶ciowego\n"
-"                                (domy¶lnie C).\n"
-"      --force                 zachowanie wyj¶cia nawet w przypadku b³êdów.\n"
-"      --help                  wy¶wietlenie tego opisu i zakoñczenie.\n"
-"      --no-validate           pominiêcie kontroli odsy³aczy miêdzy wêz³ami.\n"
-"      --no-warn               pominiêcie ostrze¿eñ (ale nie b³êdów).\n"
-"  -v, --verbose               wyja¶nianie co siê dzieje.\n"
-"      --version               wy¶wietlenie informacji o wersji i "
-"zakoñczenie.\n"
-
-#: tp/texi2any.pl:551
-#, fuzzy
-msgid ""
-"Output format selection (default is to produce Info):\n"
-"      --docbook               output Docbook XML rather than Info.\n"
-"      --html                  output HTML rather than Info.\n"
-"      --plaintext             output plain text rather than Info.\n"
-"      --xml                   output Texinfo XML rather than Info.\n"
-"      --dvi, --ps, --pdf      call texi2dvi to generate specified output.\n"
-msgstr ""
-"Wybór formatu wyj¶ciowego (domy¶lnym jest info):\n"
-"      --docbook               wyprodukowanie DocBook XML zamiast Info.\n"
-"      --html                  wyprodukowanie HTML zamiast Info.\n"
-"      --xml                   wyprodukowanie Texinfo XML zamiast Info.\n"
-"      --plaintext             wyprodukowanie czystego tekstu zamiast Info.\n"
-
-#: tp/texi2any.pl:559
-#, fuzzy
-msgid ""
-"General output options:\n"
-"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
-"                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output).\n"
-"                                Also, if producing Info, write to\n"
-"                                standard output by default \n"
-"      --no-split              suppress any splitting of the output;\n"
-"                                generate only one output file.\n"
-"      --[no-]number-sections  output chapter and sectioning numbers;\n"
-"                                default is on.\n"
-"  -o, --output=DEST           output to DEST.\n"
-"                                With split output, create DEST as a "
-"directory\n"
-"                                 and put the output files there.\n"
-"                                With non-split output, if DEST is already\n"
-"                                 a directory or ends with a /,\n"
-"                                 put the output file there.\n"
-"                                Otherwise, DEST names the output file.\n"
-msgstr ""
-"Ogólne opcje dotycz±ce wyj¶cia:\n"
-"  -E, --macro-expand=PLIK     zapis ¼róde³ z rozwiniêtymi makrami do PLIKU.\n"
-"      --no-headers            pominiêcie separatorów wêz³ów, linii Node "
-"oraz\n"
-"                                menu z wyj¶cia Info (zapisanie czystego "
-"tekstu)\n"
-"                                lub z HTML (zapisanie krótszego pliku);\n"
-"                                tak¿e pisanie domy¶lnie na standardowe "
-"wyj¶cie.\n"
-"      --no-split              pominiêcie dzielenia Info lub HTML, "
-"generowanie\n"
-"                                tylko jednego pliku wyj¶ciowego.\n"
-"      --number-sections       zapisywanie numerów rozdzia³ów i sekcji.\n"
-"  -o, --output=PLIK           zapisanie do PLIKU (lub katalogu w przypadku\n"
-"                                dzielonego HTML),\n"
-
-#: tp/texi2any.pl:579
-#, perl-format
-msgid ""
-"Options for Info and plain text:\n"
-"      --disable-encoding      do not output accented and special characters\n"
-"                                in Info output based on @documentencoding.\n"
-"      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default "
-"%d).\n"
-"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
-"                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
-"%d).\n"
-"                                If VAL is `none', do not indent; if VAL is\n"
-"                                `asis', preserve existing indentation.\n"
-"      --split-size=NUM        split Info files at size NUM (default %d).\n"
-msgstr ""
-"Opcje dla Info i czystego tekstu:\n"
-"      --disable-encoding      bez zapisu znaków z akcentami i specjalnych "
-"do\n"
-"                                pliku Info w zale¿no¶ci od "
-"@documentencoding.\n"
-"      --fill-column=ILE       ³amanie linii Info po ILU znakach (domy¶lnie "
-"%d).\n"
-"      --footnote-style=STYL   zapis stopek w Info zgodnie ze STYLEM:\n"
-"                                `separate' - umieszczenie ich we w³asnym "
-"wê¼le;\n"
-"                                `end' - umieszczenie na koñcu wêz³a, w "
-"którym\n"
-"                                  zosta³y zdefiniowane (domy¶lne).\n"
-"      --paragraph-indent=ILE  wciêcia akapitów Info o ILE spacji (domy¶lnie "
-"%d).\n"
-"                                Je¶li ILE to `none' lub `brak', bez wciêæ;\n"
-"                                je¶li ILE to `asis' lub `zachowaj', "
-"zachowanie\n"
-"                                istniej±cych wciêæ.\n"
-"      --split-size=ROZMIAR    podzia³ Info na pliki o ROZMIARZE (domy¶lnie "
-"%d).\n"
-
-#: tp/texi2any.pl:596
-#, fuzzy
-msgid ""
-"Options for HTML:\n"
-"      --css-include=FILE      include FILE in HTML <style> output;\n"
-"                                read stdin if FILE is -.\n"
-"      --css-ref=URL           generate CSS reference to URL.\n"
-"      --internal-links=FILE   produce list of internal links in FILE.\n"
-"      --split=SPLIT           split at SPLIT, where SPLIT may be `chapter',\n"
-"                                `section' or `node'.\n"
-"      --transliterate-file-names  use file names in ASCII transliteration.\n"
-"      --node-files            produce redirection files for nodes and \n"
-"                                anchors; default is set only if split.\n"
-msgstr ""
-"Opcje dla HTML:\n"
-"      --css-include=PLIK      do³±czenie PLIKU w wyj¶ciu HTML <style>;\n"
-"                                je¶li PLIK to -, czytane jest standardowe\n"
-"                                wej¶cie\n"
-"      --css-ref=URL           wygenerowanie odniesienia do pliku CSS.\n"
-"      --internal-links=PLIK   zapisanie listy wewnêtrznych odno¶ników do "
-"PLIKU.\n"
-"      --transliterate-file-names\n"
-"                              tworzenie nazw plików w transliteracji ASCII.\n"
-
-#: tp/texi2any.pl:607
-msgid ""
-"Options for XML and Docbook:\n"
-"      --output-indent=VAL     does nothing, retained for compatibility.\n"
-msgstr ""
-
-#: tp/texi2any.pl:610
-msgid ""
-"Options for DVI/PS/PDF:\n"
-"      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
-msgstr ""
-
-#: tp/texi2any.pl:613
-#, fuzzy
-msgid ""
-"Input file options:\n"
-"      --commands-in-node-names  does nothing, retained for compatibility.\n"
-"  -D VAR                        define the variable VAR, as with @set.\n"
-"  -I DIR                        append DIR to the @include search path.\n"
-"  -P DIR                        prepend DIR to the @include search path.\n"
-"  -U VAR                        undefine the variable VAR, as with @clear.\n"
-msgstr ""
-"Opcje dla pliku wej¶ciowego:\n"
-"      --commands-in-node-names  dopuszczenie poleceñ @ w nazwach wêz³ów.\n"
-"  -D ZMIENNA                    zdefiniowanie ZMIENNEJ, tak jak przez @set.\n"
-"  -I KATALOG                    do³±czenie KATALOGU na pocz±tku ¶cie¿ki\n"
-"                                  poszukiwañ dla @include.\n"
-"  -P KATALOG                    do³±czenie KATALOGU na koñcu ¶cie¿ki\n"
-"                                  poszukiwañ dla @include.\n"
-"  -U ZMIENNA                    usuniêcie definicji ZMIENNEJ, tak jak "
-"@clear.\n"
-
-#: tp/texi2any.pl:620
-#, fuzzy
-msgid ""
-"Conditional processing in input:\n"
-"  --ifdocbook       process @ifdocbook and @docbook even if\n"
-"                      not generating Docbook.\n"
-"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
-"  --ifinfo          process @ifinfo even if not generating Info.\n"
-"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
-"  --iftex           process @iftex and @tex.\n"
-"  --ifxml           process @ifxml and @xml.\n"
-"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
-"  --no-ifhtml       do not process @ifhtml and @html text.\n"
-"  --no-ifinfo       do not process @ifinfo text.\n"
-"  --no-ifplaintext  do not process @ifplaintext text.\n"
-"  --no-iftex        do not process @iftex and @tex text.\n"
-"  --no-ifxml        do not process @ifxml and @xml text.\n"
-"\n"
-"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
-msgstr ""
-"Warunkowe przetwarzanie wej¶cia:\n"
-"  --ifdocbook       przetwarzanie @ifdocbook i @docbook nawet je¶li nie "
-"jest\n"
-"                      generowany Docbook.\n"
-"  --ifhtml          przetwarzanie @ifhtml i @html nawet je¶li nie jest\n"
-"                      generowany HTML.\n"
-"  --ifinfo          przetwarzanie @ifinfo nawet je¶li nie jest generowane "
-"Info.\n"
-"  --ifplaintext     przetwarzanie @ifplaintext nawet je¶li nie jest "
-"generowany\n"
-"                      czysty tekst.\n"
-"  --iftex           przetwarzanie @iftex i @tex; wymusza --no-split.\n"
-"  --ifxml           przetwarzanie @ifxml i @xml.\n"
-"  --no-ifdocbook    nie przetwarzanie tekstu @ifdocbook i @docbook.\n"
-"  --no-ifhtml       nie przetwarzanie tekstu @ifhtml i @html.\n"
-"  --no-ifinfo       nie przetwarzanie tekstu @ifinfo.\n"
-"  --no-ifplaintext  nie przetwarzanie tekstu @ifplaintext.\n"
-"  --no-iftex        nie przetwarzanie tekstu @iftex i @tex.\n"
-"  --no-ifxml        nie przetwarzanie tekstu @ifxml i @xml.\n"
-"\n"
-"  Ponadto opcje --no-ifFORMAT powoduj± przetwarzanie tekstu @ifnotFORMAT.\n"
-
-#: tp/texi2any.pl:637
-msgid ""
-"  The defaults for the @if... conditionals depend on the output format:\n"
-"  if generating HTML, --ifhtml is on and the others are off;\n"
-"  if generating Info, --ifinfo is on and the others are off;\n"
-"  if generating plain text, --ifplaintext is on and the others are off;\n"
-"  if generating XML, --ifxml is on and the others are off.\n"
-msgstr ""
-"  Domy¶lne opcje dla warunków @if... zale¿± od formatu wyj¶ciowego:\n"
-"  je¶li generowany jest HTML, --ifhtml jest w³±czone, a reszta wy³±czona;\n"
-"  je¶li generowane jest Info, --ifinfo jest w³±czone, a reszta wy³±czona;\n"
-"  je¶li generowany jest tekst, --ifplaintext jest w³±czony, a inne "
-"wy³±czone;\n"
-"  je¶li generowany jest XML, --ifxml jest w³±czone, a reszta wy³±czona.\n"
-
-#: tp/texi2any.pl:643
-#, fuzzy
-msgid ""
-"Examples:\n"
-"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
-"  makeinfo --html foo.texi               write HTML to @setfilename\n"
-"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
-"  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard "
-"output\n"
-"\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
-"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
-"  makeinfo --no-split foo.texi           write one Info file however big\n"
-msgstr ""
-"Przyk³ady:\n"
-"  makeinfo foo.texi                       zapisanie Info do @setfilename z "
-"foo\n"
-"  makeinfo --html foo.texi                zapisanie HTML do @setfilename\n"
-"  makeinfo --xml foo.texi                 zapisanie Texinfo XML do "
-"@setfilename\n"
-"  makeinfo --docbook foo.texi             zapisanie DocBook XML do "
-"@setfilename\n"
-"  makeinfo --no-headers foo.texi          zapisanie czystego tekstu na\n"
-"                                            standardowe wyj¶cie\n"
-"\n"
-"  makeinfo --html --no-headers foo.texi   zapisanie HTML bez linii wêz³ów i "
-"menu\n"
-"  makeinfo --number-sections foo.texi     zapisanie Info z numerowanymi "
-"sekcjami\n"
-"  makeinfo --no-split foo.texi            zapisanie jednego wielkiego pliku "
-"Info\n"
-
-#: tp/texi2any.pl:688
-#, perl-format
-msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s: argumentem --footnote-style musi byæ `separate' lub `end', a nie `%s'.\n"
-
-#: tp/texi2any.pl:778
-#, perl-format
-msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: argument --paragraph-indent musi byæ liczb±/`none'/`asis', a nie `%s'.\n"
-
-#: tp/texi2any.pl:892
-#, perl-format
-msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
-msgstr "%s: Zignorowano nierozpoznan± warto¶æ TEXINFO_OUTPUT_FORMAT `%s'.\n"
-
-#: tp/texi2any.pl:905
-#, perl-format
-msgid "when generating %s, only one input FILE may be specified with -o"
-msgstr ""
-
-#: tp/texi2any.pl:916
-#, fuzzy, perl-format
-msgid "Unknown tree transformation %s"
-msgstr "Nieznane polecenie `%s'"
-
-#: tp/texi2any.pl:923
-#, perl-format
-msgid "Ignoring splitting for format %s"
-msgstr ""
-
-#: tp/texi2any.pl:956
-#, perl-format
-msgid "%s: missing file argument.\n"
-msgstr "%s: brakuj±cy argument plikowy.\n"
-
-#: tp/texi2any.pl:957
-#, perl-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "Polecenie `%s --help' poda wiêcej informacji.\n"
-
-#: tp/texi2any.pl:1028
-msgid "fill_gaps_in_sectioning transformation return no result. No section?"
-msgstr ""
-
-#: tp/texi2any.pl:1050
-#, fuzzy, perl-format
-msgid "Error on closing macro expand file %s: %s\n"
-msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
-
-#: tp/texi2any.pl:1056 tp/texi2any.pl:1166 tp/texi2any.pl:1200
-#, fuzzy, perl-format
-msgid "Could not open %s for writing: %s\n"
+msgid "Could not open %s for writing: %s"
 msgstr "%s: nie mo¿na otworzyæ pliku css: %s"
-
-#: tp/texi2any.pl:1080
-msgid ""
-"insert_nodes_for_sectioning_commands transformation return no result. No "
-"section?"
-msgstr ""
-
-#: tp/texi2any.pl:1137 tp/texi2any.pl:1213
-#, fuzzy, perl-format
-msgid "Error on closing %s: %s\n"
-msgstr "b³±d podczas zapisu do `%s'"
-
-#: tp/texi2any.pl:1160 tp/texi2any.pl:1194
-#, perl-format
-msgid "Error on closing internal links file %s: %s\n"
-msgstr ""
 
 #: tp/Texinfo/Common.pm:721
 msgid "recursion is always allowed"
@@ -2653,6 +2196,198 @@ msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
 #: tp/Texinfo/Common.pm:1833
 #, perl-format
 msgid "protect_hashchar_at_line_beginning cannot protect in @%s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Converter.pm:374 tp/Texinfo/Convert/Converter.pm:393
+#: tp/texi2any.pl:323 tp/texi2any.pl:340
+#, fuzzy, perl-format
+msgid "Obsolete variable %s\n"
+msgstr "Ustawienie zmiennej: "
+
+#: tp/Texinfo/Convert/Converter.pm:568
+#, fuzzy, perl-format
+msgid "Can't create directories `%s' or `%s': %s"
+msgstr "Nie mo¿na utworzyæ katalogu `%s': %s"
+
+#: tp/Texinfo/Convert/Converter.pm:576
+#, fuzzy, perl-format
+msgid "Can't create directories `%s': %s"
+msgstr "Nie mo¿na utworzyæ katalogu `%s': %s"
+
+#: tp/Texinfo/Convert/DocBook.pm:341 tp/Texinfo/Convert/HTML.pm:6837
+#: tp/Texinfo/Convert/HTML.pm:6895 tp/Texinfo/Convert/Info.pm:133
+#: tp/Texinfo/Convert/Info.pm:155 tp/Texinfo/Convert/Info.pm:182
+#: tp/Texinfo/Convert/Info.pm:245 tp/Texinfo/Convert/XML.pm:299
+#: tp/Texinfo/Parser.pm:1866 tp/init/chm.pm:263 tp/init/chm.pm:334
+#: tp/init/chm.pm:395
+#, fuzzy, perl-format
+msgid "Error on closing %s: %s"
+msgstr "b³±d podczas zapisu do `%s'"
+
+#: tp/Texinfo/Convert/DocBook.pm:896
+#, fuzzy, perl-format
+msgid "@image file `%s' not found, using `%s'"
+msgstr "Plik @image `%s' nieczytelny: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:1646
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "Plik @image `%s' (dla HTML) nieczytelny: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:2299
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4766
+#, perl-format
+msgid "%s:%d: string not closed in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4768
+#, fuzzy, perl-format
+msgid "%s:%d: --css-include ended in comment"
+msgstr "%s:%d: plik css zakoñczy³ siê wewn±trz komentarza"
+
+#: tp/Texinfo/Convert/HTML.pm:4770
+#, perl-format
+msgid "%s:%d @import not finished in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4796
+#, fuzzy, perl-format
+msgid "css file %s not found"
+msgstr "nie znaleziono makra %cend"
+
+#: tp/Texinfo/Convert/HTML.pm:4802
+#, fuzzy, perl-format
+msgid "could not open --include-file %s: %s"
+msgstr "%s: nie mo¿na otworzyæ pliku css: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:4812
+#, fuzzy, perl-format
+msgid "Error on closing CSS file %s: %s"
+msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:6416
+#, fuzzy, perl-format
+msgid "Error on closing frame file %s: %s"
+msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:6440
+#, fuzzy, perl-format
+msgid "Error on closing TOC frame file %s: %s"
+msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:6555
+#, perl-format
+msgid "Handler %s of stage %s priority %s failed"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6758
+msgid "Must specify a title with a title command or @top"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6951
+#, perl-format
+msgid "Error on closing redirection node file %s: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6975
+#, fuzzy, perl-format
+msgid "Node `%s' that is to be renamed exists"
+msgstr "Indeks `%s' ju¿ istnieje"
+
+#: tp/Texinfo/Convert/HTML.pm:6979
+#, fuzzy, perl-format
+msgid "File empty for renamed node `%s'"
+msgstr "nie wskazywany wêze³ `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:6991
+#, perl-format
+msgid "Node to be renamed as, `%s' not found"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7018
+#, fuzzy, perl-format
+msgid "Error on closing renamed node file %s: %s"
+msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
+
+#: tp/Texinfo/Convert/HTML.pm:7056
+#, fuzzy
+msgid "Empty node name"
+msgstr "nie znaleziono wpisów w indeksie dla `%s'\n"
+
+#: tp/Texinfo/Convert/HTML.pm:7058 tp/Texinfo/Parser.pm:3359
+#, perl-format
+msgid "Syntax for an external node used for `%s'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:91
+#, fuzzy
+msgid "Document without nodes."
+msgstr "Brak menu w tym wê¼le."
+
+#: tp/Texinfo/Convert/Info.pm:103
+msgid "Document without Top node."
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:139
+#, perl-format
+msgid "Rename %s failed: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:214
+#, perl-format
+msgid "@%s `%s' output more than once"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:447 tp/Texinfo/Parser.pm:2446
+#, perl-format
+msgid "Entry for index `%s' outside of any node"
+msgstr "Wpis dla indeksu `%s' poza jakimkolwiek wêz³em"
+
+#: tp/Texinfo/Convert/Info.pm:492
+#, fuzzy, perl-format
+msgid "@%s outside of any node"
+msgstr "(poza jakimkolwiek wêz³em)"
+
+#: tp/Texinfo/Convert/Plaintext.pm:996
+#, fuzzy, perl-format
+msgid "Error on closing image text file %s: %s"
+msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1001
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "Plik @image `%s' nieczytelny: %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1029
+#, fuzzy, perl-format
+msgid "Cannot find @image file `%s.txt' nor alternate text"
+msgstr "Nie mo¿na znale¼æ wêz³a `%s'."
+
+#: tp/Texinfo/Convert/Plaintext.pm:1365
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"@string{Note...} tworzy nieprawdziwe odniesienia w Info; nale¿y "
+"przeredagowaæ aby zapobiec temu"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1582
+#, fuzzy, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr "Po @%s musi wyst±piæ `.' lub `,', a nie `%c'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1584
+#, fuzzy
+msgid "`.' or `,' must follow @xref"
+msgstr "Po @%s musi wyst±piæ `.' lub `,', a nie `%c'"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2400
+#, perl-format
+msgid "Node expansion `%s' in menu differs from normal node expansion `%s'"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:797
@@ -2737,15 +2472,6 @@ msgstr "¬le umieszczone %c"
 msgid "Unmatched `%c%s'"
 msgstr "Niedopasowane `%c%s'"
 
-#: tp/Texinfo/Parser.pm:1866 tp/Texinfo/Convert/DocBook.pm:341
-#: tp/Texinfo/Convert/HTML.pm:6829 tp/Texinfo/Convert/HTML.pm:6887
-#: tp/Texinfo/Convert/Info.pm:133 tp/Texinfo/Convert/Info.pm:155
-#: tp/Texinfo/Convert/Info.pm:182 tp/Texinfo/Convert/Info.pm:245
-#: tp/Texinfo/Convert/XML.pm:299
-#, fuzzy, perl-format
-msgid "Error on closing %s: %s"
-msgstr "b³±d podczas zapisu do `%s'"
-
 #: tp/Texinfo/Parser.pm:1940
 #, fuzzy, perl-format
 msgid "Macro `%s' called with too many args"
@@ -2775,11 +2501,6 @@ msgstr "makro `%s' ju¿ zosta³o zdefiniowane"
 #, fuzzy, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "oto poprzednia definicja `%s'"
-
-#: tp/Texinfo/Parser.pm:2446 tp/Texinfo/Convert/Info.pm:447
-#, perl-format
-msgid "Entry for index `%s' outside of any node"
-msgstr "Wpis dla indeksu `%s' poza jakimkolwiek wêz³em"
 
 #: tp/Texinfo/Parser.pm:2728
 #, fuzzy, perl-format
@@ -2888,11 +2609,6 @@ msgstr "Z³y argument dla @%s"
 #: tp/Texinfo/Parser.pm:3343
 #, perl-format
 msgid "Empty node name after expansion `%s'"
-msgstr ""
-
-#: tp/Texinfo/Parser.pm:3359 tp/Texinfo/Convert/HTML.pm:7050
-#, perl-format
-msgid "Syntax for an external node used for `%s'"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:3387
@@ -3345,182 +3061,492 @@ msgstr ""
 msgid "Empty index key in @%s"
 msgstr "nie znaleziono wpisów w indeksie dla `%s'\n"
 
-#: tp/Texinfo/Convert/Converter.pm:517 tp/Texinfo/Convert/DocBook.pm:311
-#: tp/Texinfo/Convert/HTML.pm:6413 tp/Texinfo/Convert/HTML.pm:6437
-#: tp/Texinfo/Convert/HTML.pm:6804 tp/Texinfo/Convert/HTML.pm:6861
-#: tp/Texinfo/Convert/HTML.pm:6937 tp/Texinfo/Convert/HTML.pm:7004
-#: tp/Texinfo/Convert/Info.pm:82 tp/Texinfo/Convert/Info.pm:166
-#: tp/Texinfo/Convert/Info.pm:189 tp/Texinfo/Convert/Plaintext.pm:434
-#: tp/Texinfo/Convert/XML.pm:276
+#: tp/init/chm.pm:217 tp/init/chm.pm:273 tp/init/chm.pm:344
 #, fuzzy, perl-format
-msgid "Could not open %s for writing: %s"
+msgid "Can't open %s for writing: %s\n"
 msgstr "%s: nie mo¿na otworzyæ pliku css: %s"
 
-#: tp/Texinfo/Convert/Converter.pm:567
+#: tp/init/tex4ht.pm:121
 #, fuzzy, perl-format
-msgid "Can't create directories `%s' or `%s': %s"
-msgstr "Nie mo¿na utworzyæ katalogu `%s': %s"
+msgid "tex4ht error opening %s: %s"
+msgstr "b³±d podczas zapisu do `%s'"
 
-#: tp/Texinfo/Convert/Converter.pm:575
-#, fuzzy, perl-format
-msgid "Can't create directories `%s': %s"
-msgstr "Nie mo¿na utworzyæ katalogu `%s': %s"
-
-#: tp/Texinfo/Convert/DocBook.pm:896
-#, fuzzy, perl-format
-msgid "@image file `%s' not found, using `%s'"
-msgstr "Plik @image `%s' nieczytelny: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:1646
-#, fuzzy, perl-format
-msgid "@image file `%s' (for HTML) not found, using `%s'"
-msgstr "Plik @image `%s' (dla HTML) nieczytelny: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:2299
+#: tp/init/tex4ht.pm:217
 #, perl-format
-msgid "Raw format %s is not converted"
+msgid "chdir to %s failed"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4766
+#: tp/init/tex4ht.pm:241
 #, perl-format
-msgid "%s:%d: string not closed in css file"
+msgid "tex4ht output %s missing"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4768
-#, fuzzy, perl-format
-msgid "%s:%d: --css-include ended in comment"
-msgstr "%s:%d: plik css zakoñczy³ siê wewn±trz komentarza"
-
-#: tp/Texinfo/Convert/HTML.pm:4770
+#: tp/init/tex4ht.pm:293
 #, perl-format
-msgid "%s:%d @import not finished in css file"
+msgid "tex4ht output got %d for %d items entered"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:4796
-#, fuzzy, perl-format
-msgid "css file %s not found"
-msgstr "nie znaleziono makra %cend"
-
-#: tp/Texinfo/Convert/HTML.pm:4802
-#, fuzzy, perl-format
-msgid "could not open --include-file %s: %s"
-msgstr "%s: nie mo¿na otworzyæ pliku css: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:4812
-#, fuzzy, perl-format
-msgid "Error on closing CSS file %s: %s"
-msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
-
-#: tp/Texinfo/Convert/HTML.pm:6408
-#, fuzzy, perl-format
-msgid "Error on closing frame file %s: %s"
-msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
-
-#: tp/Texinfo/Convert/HTML.pm:6432
-#, fuzzy, perl-format
-msgid "Error on closing TOC frame file %s: %s"
-msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
-
-#: tp/Texinfo/Convert/HTML.pm:6547
+#: tp/init/tex4ht.pm:311
 #, perl-format
-msgid "Handler %s of stage %s priority %s failed"
+msgid "tex4ht output no text for @%s %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6750
-msgid "Must specify a title with a title command or @top"
-msgstr ""
-
-#: tp/Texinfo/Convert/HTML.pm:6943
-#, perl-format
-msgid "Error on closing redirection node file %s: %s"
-msgstr ""
-
-#: tp/Texinfo/Convert/HTML.pm:6967
+#: tp/texi2any.pl:311
 #, fuzzy, perl-format
-msgid "Node `%s' that is to be renamed exists"
-msgstr "Indeks `%s' ju¿ istnieje"
+msgid "error loading %s: %s\n"
+msgstr "b³±d podczas zapisu do `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:6971
+#: tp/texi2any.pl:320
 #, fuzzy, perl-format
-msgid "File empty for renamed node `%s'"
-msgstr "nie wskazywany wêze³ `%s'"
+msgid "Unknown variable %s"
+msgstr "Nieznane polecenie `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:6983
-#, perl-format
-msgid "Node to be renamed as, `%s' not found"
-msgstr ""
-
-#: tp/Texinfo/Convert/HTML.pm:7010
+#: tp/texi2any.pl:337
 #, fuzzy, perl-format
-msgid "Error on closing renamed node file %s: %s"
-msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
+msgid "Unknown variable %s\n"
+msgstr "Nieznane polecenie `%s'"
 
-#: tp/Texinfo/Convert/HTML.pm:7048
+#: tp/texi2any.pl:402
+#, fuzzy, perl-format
+msgid "Can't read init file %s"
+msgstr "nie mo¿na otworzyæ pliku wej¶ciowego `%s'"
+
+#: tp/texi2any.pl:531
 #, fuzzy
-msgid "Empty node name"
-msgstr "nie znaleziono wpisów w indeksie dla `%s'\n"
+msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
+msgstr "Sk³adnia: %s [OPCJA]... PLIK-TEXINFO...\n"
 
-#: tp/Texinfo/Convert/Info.pm:91
+#: tp/texi2any.pl:532
 #, fuzzy
-msgid "Document without nodes."
-msgstr "Brak menu w tym wê¼le."
+msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
+msgstr "Sk³adnia: %s [OPCJA]... PLIK-TEXINFO...\n"
 
-#: tp/Texinfo/Convert/Info.pm:103
-msgid "Document without Top node."
-msgstr ""
-
-#: tp/Texinfo/Convert/Info.pm:139
-#, perl-format
-msgid "Rename %s failed: %s"
-msgstr ""
-
-#: tp/Texinfo/Convert/Info.pm:214
-#, perl-format
-msgid "@%s `%s' output more than once"
-msgstr ""
-
-#: tp/Texinfo/Convert/Info.pm:492
-#, fuzzy, perl-format
-msgid "@%s outside of any node"
-msgstr "(poza jakimkolwiek wêz³em)"
-
-#: tp/Texinfo/Convert/Plaintext.pm:996
-#, fuzzy, perl-format
-msgid "Error on closing image text file %s: %s"
-msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
-
-#: tp/Texinfo/Convert/Plaintext.pm:1001
-#, perl-format
-msgid "@image file `%s' unreadable: %s"
-msgstr "Plik @image `%s' nieczytelny: %s"
-
-#: tp/Texinfo/Convert/Plaintext.pm:1029
-#, fuzzy, perl-format
-msgid "Cannot find @image file `%s.txt' nor alternate text"
-msgstr "Nie mo¿na znale¼æ wêz³a `%s'."
-
-#: tp/Texinfo/Convert/Plaintext.pm:1365
+#: tp/texi2any.pl:534
 msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgstr ""
-"@string{Note...} tworzy nieprawdziwe odniesienia w Info; nale¿y "
-"przeredagowaæ aby zapobiec temu"
+"T³umaczenie ¼ród³owej dokumentacji Texinfo do ró¿nych innych formatów,\n"
+"domy¶lnie plików Info nadaj±cych siê do czytania pod Emacsem lub "
+"samodzielnym\n"
+"GNU Info.\n"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1582
+#: tp/texi2any.pl:537
 #, fuzzy, perl-format
-msgid "`.' or `,' must follow @xref, not %s"
-msgstr "Po @%s musi wyst±piæ `.' lub `,', a nie `%c'"
-
-#: tp/Texinfo/Convert/Plaintext.pm:1584
-#, fuzzy
-msgid "`.' or `,' must follow @xref"
-msgstr "Po @%s musi wyst±piæ `.' lub `,', a nie `%c'"
-
-#: tp/Texinfo/Convert/Plaintext.pm:2400
-#, perl-format
-msgid "Node expansion `%s' in menu differs from normal node expansion `%s'"
+msgid ""
+"General options:\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"      --conf-dir=DIR          search also for initialization files in DIR.\n"
+"      --init-file=FILE        load FILE to modify the default behavior.\n"
+"      --set-init-variable VAR=VAL  set configuration variable VAR to VAL.\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
 msgstr ""
+"Opcje ogólne:\n"
+"      --error-limit=ILE       zakoñczenie po ILU b³êdach (domy¶lnie %d).\n"
+"      --document-language=£AÑC lokalizacja u¿ywana przy t³umaczeniu s³ów\n"
+"                                kluczowych Texinfo dla dokumentu "
+"wyj¶ciowego\n"
+"                                (domy¶lnie C).\n"
+"      --force                 zachowanie wyj¶cia nawet w przypadku b³êdów.\n"
+"      --help                  wy¶wietlenie tego opisu i zakoñczenie.\n"
+"      --no-validate           pominiêcie kontroli odsy³aczy miêdzy wêz³ami.\n"
+"      --no-warn               pominiêcie ostrze¿eñ (ale nie b³êdów).\n"
+"  -v, --verbose               wyja¶nianie co siê dzieje.\n"
+"      --version               wy¶wietlenie informacji o wersji i "
+"zakoñczenie.\n"
+
+#: tp/texi2any.pl:551
+#, fuzzy
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output.\n"
+msgstr ""
+"Wybór formatu wyj¶ciowego (domy¶lnym jest info):\n"
+"      --docbook               wyprodukowanie DocBook XML zamiast Info.\n"
+"      --html                  wyprodukowanie HTML zamiast Info.\n"
+"      --xml                   wyprodukowanie Texinfo XML zamiast Info.\n"
+"      --plaintext             wyprodukowanie czystego tekstu zamiast Info.\n"
+
+#: tp/texi2any.pl:559
+#, fuzzy
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output).\n"
+"                                Also, if producing Info, write to\n"
+"                                standard output by default \n"
+"      --no-split              suppress any splitting of the output;\n"
+"                                generate only one output file.\n"
+"      --[no-]number-sections  output chapter and sectioning numbers;\n"
+"                                default is on.\n"
+"  -o, --output=DEST           output to DEST.\n"
+"                                With split output, create DEST as a "
+"directory\n"
+"                                 and put the output files there.\n"
+"                                With non-split output, if DEST is already\n"
+"                                 a directory or ends with a /,\n"
+"                                 put the output file there.\n"
+"                                Otherwise, DEST names the output file.\n"
+msgstr ""
+"Ogólne opcje dotycz±ce wyj¶cia:\n"
+"  -E, --macro-expand=PLIK     zapis ¼róde³ z rozwiniêtymi makrami do PLIKU.\n"
+"      --no-headers            pominiêcie separatorów wêz³ów, linii Node "
+"oraz\n"
+"                                menu z wyj¶cia Info (zapisanie czystego "
+"tekstu)\n"
+"                                lub z HTML (zapisanie krótszego pliku);\n"
+"                                tak¿e pisanie domy¶lnie na standardowe "
+"wyj¶cie.\n"
+"      --no-split              pominiêcie dzielenia Info lub HTML, "
+"generowanie\n"
+"                                tylko jednego pliku wyj¶ciowego.\n"
+"      --number-sections       zapisywanie numerów rozdzia³ów i sekcji.\n"
+"  -o, --output=PLIK           zapisanie do PLIKU (lub katalogu w przypadku\n"
+"                                dzielonego HTML),\n"
+
+#: tp/texi2any.pl:579
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+"Opcje dla Info i czystego tekstu:\n"
+"      --disable-encoding      bez zapisu znaków z akcentami i specjalnych "
+"do\n"
+"                                pliku Info w zale¿no¶ci od "
+"@documentencoding.\n"
+"      --fill-column=ILE       ³amanie linii Info po ILU znakach (domy¶lnie "
+"%d).\n"
+"      --footnote-style=STYL   zapis stopek w Info zgodnie ze STYLEM:\n"
+"                                `separate' - umieszczenie ich we w³asnym "
+"wê¼le;\n"
+"                                `end' - umieszczenie na koñcu wêz³a, w "
+"którym\n"
+"                                  zosta³y zdefiniowane (domy¶lne).\n"
+"      --paragraph-indent=ILE  wciêcia akapitów Info o ILE spacji (domy¶lnie "
+"%d).\n"
+"                                Je¶li ILE to `none' lub `brak', bez wciêæ;\n"
+"                                je¶li ILE to `asis' lub `zachowaj', "
+"zachowanie\n"
+"                                istniej±cych wciêæ.\n"
+"      --split-size=ROZMIAR    podzia³ Info na pliki o ROZMIARZE (domy¶lnie "
+"%d).\n"
+
+#: tp/texi2any.pl:596
+#, fuzzy
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate CSS reference to URL.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --split=SPLIT           split at SPLIT, where SPLIT may be `chapter',\n"
+"                                `section' or `node'.\n"
+"      --transliterate-file-names  use file names in ASCII transliteration.\n"
+"      --node-files            produce redirection files for nodes and \n"
+"                                anchors; default is set only if split.\n"
+msgstr ""
+"Opcje dla HTML:\n"
+"      --css-include=PLIK      do³±czenie PLIKU w wyj¶ciu HTML <style>;\n"
+"                                je¶li PLIK to -, czytane jest standardowe\n"
+"                                wej¶cie\n"
+"      --css-ref=URL           wygenerowanie odniesienia do pliku CSS.\n"
+"      --internal-links=PLIK   zapisanie listy wewnêtrznych odno¶ników do "
+"PLIKU.\n"
+"      --transliterate-file-names\n"
+"                              tworzenie nazw plików w transliteracji ASCII.\n"
+
+#: tp/texi2any.pl:607
+msgid ""
+"Options for XML and Docbook:\n"
+"      --output-indent=VAL     does nothing, retained for compatibility.\n"
+msgstr ""
+
+#: tp/texi2any.pl:610
+msgid ""
+"Options for DVI/PS/PDF:\n"
+"      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
+msgstr ""
+
+#: tp/texi2any.pl:613
+#, fuzzy
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  does nothing, retained for compatibility.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+"Opcje dla pliku wej¶ciowego:\n"
+"      --commands-in-node-names  dopuszczenie poleceñ @ w nazwach wêz³ów.\n"
+"  -D ZMIENNA                    zdefiniowanie ZMIENNEJ, tak jak przez @set.\n"
+"  -I KATALOG                    do³±czenie KATALOGU na pocz±tku ¶cie¿ki\n"
+"                                  poszukiwañ dla @include.\n"
+"  -P KATALOG                    do³±czenie KATALOGU na koñcu ¶cie¿ki\n"
+"                                  poszukiwañ dla @include.\n"
+"  -U ZMIENNA                    usuniêcie definicji ZMIENNEJ, tak jak "
+"@clear.\n"
+
+#: tp/texi2any.pl:620
+#, fuzzy
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+"Warunkowe przetwarzanie wej¶cia:\n"
+"  --ifdocbook       przetwarzanie @ifdocbook i @docbook nawet je¶li nie "
+"jest\n"
+"                      generowany Docbook.\n"
+"  --ifhtml          przetwarzanie @ifhtml i @html nawet je¶li nie jest\n"
+"                      generowany HTML.\n"
+"  --ifinfo          przetwarzanie @ifinfo nawet je¶li nie jest generowane "
+"Info.\n"
+"  --ifplaintext     przetwarzanie @ifplaintext nawet je¶li nie jest "
+"generowany\n"
+"                      czysty tekst.\n"
+"  --iftex           przetwarzanie @iftex i @tex; wymusza --no-split.\n"
+"  --ifxml           przetwarzanie @ifxml i @xml.\n"
+"  --no-ifdocbook    nie przetwarzanie tekstu @ifdocbook i @docbook.\n"
+"  --no-ifhtml       nie przetwarzanie tekstu @ifhtml i @html.\n"
+"  --no-ifinfo       nie przetwarzanie tekstu @ifinfo.\n"
+"  --no-ifplaintext  nie przetwarzanie tekstu @ifplaintext.\n"
+"  --no-iftex        nie przetwarzanie tekstu @iftex i @tex.\n"
+"  --no-ifxml        nie przetwarzanie tekstu @ifxml i @xml.\n"
+"\n"
+"  Ponadto opcje --no-ifFORMAT powoduj± przetwarzanie tekstu @ifnotFORMAT.\n"
+
+#: tp/texi2any.pl:637
+#, fuzzy
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating Docbook, --ifdocbook is on and the others are off;\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+"  Domy¶lne opcje dla warunków @if... zale¿± od formatu wyj¶ciowego:\n"
+"  je¶li generowany jest HTML, --ifhtml jest w³±czone, a reszta wy³±czona;\n"
+"  je¶li generowane jest Info, --ifinfo jest w³±czone, a reszta wy³±czona;\n"
+"  je¶li generowany jest tekst, --ifplaintext jest w³±czony, a inne "
+"wy³±czone;\n"
+"  je¶li generowany jest XML, --ifxml jest w³±czone, a reszta wy³±czona.\n"
+
+#: tp/texi2any.pl:644
+#, fuzzy
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
+"  makeinfo --no-headers foo.texi         write plain text to standard "
+"output\n"
+"  makeinfo --dvi foo.texi                write PDF using texi2dvi\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+"Przyk³ady:\n"
+"  makeinfo foo.texi                       zapisanie Info do @setfilename z "
+"foo\n"
+"  makeinfo --html foo.texi                zapisanie HTML do @setfilename\n"
+"  makeinfo --xml foo.texi                 zapisanie Texinfo XML do "
+"@setfilename\n"
+"  makeinfo --docbook foo.texi             zapisanie DocBook XML do "
+"@setfilename\n"
+"  makeinfo --no-headers foo.texi          zapisanie czystego tekstu na\n"
+"                                            standardowe wyj¶cie\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi   zapisanie HTML bez linii wêz³ów i "
+"menu\n"
+"  makeinfo --number-sections foo.texi     zapisanie Info z numerowanymi "
+"sekcjami\n"
+"  makeinfo --no-split foo.texi            zapisanie jednego wielkiego pliku "
+"Info\n"
+
+#: tp/texi2any.pl:691
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+"%s: argumentem --footnote-style musi byæ `separate' lub `end', a nie `%s'.\n"
+
+#: tp/texi2any.pl:781
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: argument --paragraph-indent musi byæ liczb±/`none'/`asis', a nie `%s'.\n"
+
+#: tp/texi2any.pl:897
+#, perl-format
+msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
+msgstr "%s: Zignorowano nierozpoznan± warto¶æ TEXINFO_OUTPUT_FORMAT `%s'.\n"
+
+#: tp/texi2any.pl:910
+#, perl-format
+msgid "when generating %s, only one input FILE may be specified with -o"
+msgstr ""
+
+#: tp/texi2any.pl:914
+msgid "--Xopt option without printed output"
+msgstr ""
+
+#: tp/texi2any.pl:924
+#, fuzzy, perl-format
+msgid "Unknown tree transformation %s"
+msgstr "Nieznane polecenie `%s'"
+
+#: tp/texi2any.pl:931
+#, perl-format
+msgid "Ignoring splitting for format %s"
+msgstr ""
+
+#: tp/texi2any.pl:964
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: brakuj±cy argument plikowy.\n"
+
+#: tp/texi2any.pl:965
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "Polecenie `%s --help' poda wiêcej informacji.\n"
+
+#: tp/texi2any.pl:1036
+msgid "fill_gaps_in_sectioning transformation return no result. No section?"
+msgstr ""
+
+#: tp/texi2any.pl:1058
+#, fuzzy, perl-format
+msgid "Error on closing macro expand file %s: %s\n"
+msgstr "b³±d podczas zamykania pliku wyj¶ciowego `%s'"
+
+#: tp/texi2any.pl:1064 tp/texi2any.pl:1174 tp/texi2any.pl:1208
+#, fuzzy, perl-format
+msgid "Could not open %s for writing: %s\n"
+msgstr "%s: nie mo¿na otworzyæ pliku css: %s"
+
+#: tp/texi2any.pl:1088
+msgid ""
+"insert_nodes_for_sectioning_commands transformation return no result. No "
+"section?"
+msgstr ""
+
+#: tp/texi2any.pl:1145 tp/texi2any.pl:1221
+#, fuzzy, perl-format
+msgid "Error on closing %s: %s\n"
+msgstr "b³±d podczas zapisu do `%s'"
+
+#: tp/texi2any.pl:1168 tp/texi2any.pl:1202
+#, perl-format
+msgid "Error on closing internal links file %s: %s\n"
+msgstr ""
+
+#: util/texindex.c:224
+msgid "display this help and exit"
+msgstr "wy¶wietlenie tego opisu i zakoñczenie"
+
+#: util/texindex.c:226
+msgid "send output to FILE"
+msgstr "zapisanie wyj¶cia do PLIKU"
+
+#: util/texindex.c:228
+msgid "display version information and exit"
+msgstr "wy¶wietlenie informacji o wersji i zakoñczenie"
+
+#: util/texindex.c:238
+#, c-format
+msgid "Usage: %s [OPTION]... FILE...\n"
+msgstr "Sk³adnia: %s [OPCJA]... PLIK...\n"
+
+#: util/texindex.c:239
+#, c-format
+msgid "Generate a sorted index for each TeX output FILE.\n"
+msgstr ""
+"Generowanie posortowanego indeksu dla ka¿dego PLIKU wyj¶ciowego w TeXu.\n"
+
+#: util/texindex.c:242
+#, c-format
+msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+msgstr ""
+"Zazwyczaj PLIK... podaje siê jako `foo.%c%c' dla dokumentu `foo.texi'.\n"
+
+#: util/texindex.c:244
+#, c-format
+msgid ""
+"\n"
+"Options:\n"
+msgstr ""
+"\n"
+"Opcje:\n"
+
+#: util/texindex.c:744
+#, c-format
+msgid "failure reopening %s"
+msgstr "b³±d podczas ponownego otwierania %s"
+
+#: util/texindex.c:759 util/texindex.c:787
+#, c-format
+msgid "%s: not a texinfo index file"
+msgstr "%s: nie jest plikiem indeksu texinfo"
+
+#: util/texindex.c:994
+#, c-format
+msgid "No page number in %s"
+msgstr "Brak numeru strony w %s"
+
+#: util/texindex.c:1067
+#, c-format
+msgid "entry %s follows an entry with a secondary name"
+msgstr "wpis %s wyst±pi³ po wpisie z dodatkow± nazw±"
 
 #~ msgid "arguments to @%s ignored"
 #~ msgstr "zignorowano argumenty dla @%s"
