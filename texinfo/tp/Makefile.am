@@ -1,7 +1,7 @@
-# $Id: Makefile.am,v 1.41 2012-02-17 22:53:47 pertusus Exp $
+# $Id: Makefile.am,v 1.42 2012-04-24 17:31:54 karl Exp $
 # Makefile.am for texinfo/tp.
 #
-# Copyright 2011 Free Software Foundation, Inc.
+# Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -20,8 +20,11 @@ include $(srcdir)/Makefile.documents_strings_mo_files
 $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 	cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl
 
-$(srcdir)/Makefile.documents_strings_mo_files: maintain/regenerate_document_strings_make_rules.sh $(srcdir)/../po_document/LINGUAS
-	cd $(srcdir) && $(SHELL) ./maintain/regenerate_document_strings_make_rules.sh
+$(srcdir)/Makefile.documents_strings_mo_files: \
+  maintain/regenerate_document_strings_make_rules.sh \
+  $(srcdir)/../po_document/LINGUAS
+	cd $(srcdir) \
+	&& $(SHELL) ./maintain/regenerate_document_strings_make_rules.sh
 
 SUBDIRS = . tests
 
@@ -150,7 +153,8 @@ document_domain = $(PACKAGE)_document
 
 # $(document_strings_mo_files) and $(test_copied_include_files) come from
 # generated makefiles, Makefile.tres and Makefile.documents_strings_mo_files
-all-local: maintain/catalog.xml $(document_strings_mo_files) $(test_copied_include_files)
+all-local: maintain/catalog.xml $(document_strings_mo_files) \
+           $(test_copied_include_files) 
 
 tp_tests = prove.sh
 
