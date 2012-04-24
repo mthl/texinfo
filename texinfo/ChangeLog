@@ -4,6 +4,9 @@
 
 	* doc/refcard/txirefcard.tex: node pointers are optional.
 
+	* doc/texinfo.txi (Node Line Requirements): don't use the non-word
+	"nodename".  Internal whitespace is collapsed.
+	
 	* doc/texinfo.txi (#line and TeX, Use TeX, Obtaining TeX,
 	Preparing for TeX, Debugging with TeX): use @TeX{} in node names
 	and thus simplify cross references.  Does not change Info node names,

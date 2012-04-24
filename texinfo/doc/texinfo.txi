@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.441 2012-04-24 17:41:33 karl Exp $
+@c $Id: texinfo.txi,v 1.442 2012-04-24 18:19:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5132,7 +5132,7 @@ References}.
 * Node Names::                  How to choose node and pointer names.
 * Writing a Node::              How to write an @code{@@node} line.
 * Node Line Tips::              Keep names short.
-* Node Line Requirements::      Keep names unique, without @@-commands.
+* Node Line Requirements::      Keep names unique.
 * First Node::                  How to write a `Top' node.
 * makeinfo top command::        How to use the @code{@@top} command.
 @end menu
@@ -5142,9 +5142,9 @@ References}.
 @subsection Choosing Node and Pointer Names
 
 @cindex Node names, choosing
-The name of a node identifies the node (for details of node names,
-@pxref{Node Line Requirements}).  The pointers enable you to reach
-other nodes and consist simply of the names of those nodes.
+The name of a node identifies the node (for details, @pxref{Node Line
+Requirements}).  The pointers enable you to reach other nodes and
+consist simply of the names of those nodes.
 
 Normally, a node's `Up' pointer contains the name of the node whose
 menu mentions that node.  The node's `Next' pointer contains the name
@@ -5256,30 +5256,30 @@ words are capitalized; others are not.
 
 @cindex Node line requirements
 @cindex Restrictions on node names
-Here are several requirements for @code{@@node} lines:
+Names used with @code{@@node} have several requirements:
 
 @itemize @bullet
-@cindex Unique nodename requirement
-@cindex Node name must be unique
+@cindex Unique node names requirement
+@cindex Node names must be unique
 @item
-All the node names for a single Info file must be unique.
+All the node names in a single Texinfo file must be unique.
 
-Duplicates confuse the Info movement commands.  This means, for
-example, that if you end every chapter with a summary, you must name
-each summary node differently.  You cannot just call each one
-``Summary''.  You may, however, duplicate the titles of chapters, sections,
-and the like.  Thus you can end each chapter in a book with a section
-called ``Summary'', so long as the node names for those sections are all
-different.
+This means, for example, that if you end every chapter with a summary,
+you must name each summary node differently.  You cannot just call
+each one ``Summary''.  You may, however, duplicate the titles of
+chapters, sections, and the like.  Thus you can end each chapter in a
+book with a section called ``Summary'', so long as the node names for
+those sections are all different.
 
 @item
 A pointer name must be the name of a node.
 
 The node to which a pointer points may come before or after the
-node containing the pointer.
+node containing the pointer.  It's recommended to leave out the node
+pointer names (@pxref{makeinfo Pointer Creation}).
 
 @item
-@cindex @@-commands in nodename
+@cindex @@-commands in node name
 @cindex Node name, should not contain @@-commands
 @@-commands in node names are not allowed.  This includes punctuation
 characters that are escaped with an @samp{@@}, such as @code{@@} and
@@ -5287,18 +5287,19 @@ characters that are escaped with an @samp{@@}, such as @code{@@} and
 limitation will be removed some day.
 
 @item
-@cindex Colon in nodename
-@cindex Comma in nodename
-@cindex Parentheses in nodename
-@cindex Period in nodename
+@cindex Colon in node name
+@cindex Comma in node name
+@cindex Parentheses in node name
+@cindex Period in node name
 @cindex Characters, invalid in node name
 @cindex Invalid characters in node names
 @cindex Node names, invalid characters in
-Unfortunately, you cannot use periods, commas, or colons within a node
-name; these confuse the Texinfo processors.  Also, a node name may not
-start with a left parenthesis and contain a right parenthesis, as in
-@code{(not)allowed}; this specifies an external manual in Info.
-Perhaps these limitations will be removed some day, too.
+Unfortunately, you cannot reliably use periods, commas, or colons
+within a node name; these confuse the Texinfo processors.  Also, a
+node name may not start with a left parenthesis and contain a right
+parenthesis, as in @code{(not)allowed}; this specifies an external
+manual in Info.  Perhaps these limitations will be removed some day,
+too.
 
 @need 700
 For example, the following is a section title in this manual:
@@ -5320,18 +5321,20 @@ Case is significant in node names.
 
 @cindex White space in node name
 @cindex Spaces in node name
-Spaces before and after names on the @samp{@@node} line are ignored,
-but spaces ``inside'' a name are significant.  For example:
+Spaces before and after names on the @samp{@@node} line are ignored.
+Multiple whitespace characters ``inside'' a name are collapsed to a
+single space.  For example:
 
 @example
 @@node  foo bar,
 @@node foo bar ,
-@@node  foo bar ,
+@@node foo  bar,
+@@node  foo  bar ,
 @end example
 
-@noindent all define the same node, @samp{foo bar}.  References to the
+@noindent all define the same node, namely @samp{foo bar}.  References to the
 node should all use that name, without the leading or trailing spaces,
-but with the internal spaces.
+but with the internal space.
 @end itemize
 
 
@@ -5348,7 +5351,6 @@ Node}, for more information on the Top node contents and examples.
 Here is a description of the node pointers to be used in the Top node:
 
 @itemize @bullet
-
 @item
 @cindex Up node of Top node
 @cindex (dir) as Up node of Top node
@@ -19308,15 +19310,12 @@ Notice in particular:
 @end itemize
 
 On case-folding computer systems, nodes differing only by case will be
-mapped to the same file.
-
-In particular, as mentioned above, Top always maps to the file
-@file{index.html}.  Thus, on a case-folding system, Top and a node
-named `Index' will both be written to @file{index.html}.
-
-Fortunately, the targets serve to distinguish these cases, since HTML
-target names are always case-sensitive, independent of operating
-system.
+mapped to the same file.  In particular, as mentioned above, Top
+always maps to the file @file{index.html}.  Thus, on a case-folding
+system, Top and a node named `Index' will both be written to
+@file{index.html}.  Fortunately, the targets serve to distinguish
+these cases, since HTML target names are always case-sensitive,
+independent of operating system.
 
 
 @node HTML Xref Command Expansion
@@ -22051,7 +22050,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.441 2012-04-24 17:41:33 karl Exp $
+$Id: texinfo.txi,v 1.442 2012-04-24 18:19:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
