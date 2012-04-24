@@ -1,5 +1,9 @@
 2012-04-24  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (#line and TeX, Use TeX, Obtaining TeX,
+	Preparing for TeX, Debugging with TeX): use @TeX{} in node names
+	and thus simplify cross references.  Does not change Info node names.
+	
 	* doc/texinfo.txi: update master menu.
 
 2012-04-23  Karl Berry  <karl@gnu.org>

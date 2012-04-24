@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.440 2012-04-24 17:05:41 karl Exp $
+@c $Id: texinfo.txi,v 1.441 2012-04-24 17:41:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -570,7 +570,7 @@ Defining New Texinfo Commands
 External Macro Processors: Line Directives
 
 * #line Directive::
-* TeX: #line and TeX.
+* TeX: #line and @TeX{}.
 * Syntax: #line Syntax Details.
 
 Include Files
@@ -586,7 +586,7 @@ Include Files
 
 Formatting and Printing Hardcopy
 
-* Use TeX::                     Use @TeX{} to format for hardcopy.
+* Use @TeX{}::                     Use @TeX{} to format for hardcopy.
 * Format with tex/texindex::    How to format with explicit shell commands.
 * Format with texi2dvi::        A simpler way to format.
 * Print with lpr::              How to print.
@@ -594,7 +594,7 @@ Formatting and Printing Hardcopy
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
 * Compile-Command::             How to print using Emacs's compile command.
 * Requirements Summary::        @TeX{} formatting requirements summary.
-* Preparing for TeX::           What to do before you use @TeX{}.
+* Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
 * smallbook::                   How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
@@ -602,7 +602,7 @@ Formatting and Printing Hardcopy
 * Cropmarks and Magnification:: How to print marks to indicate the size
                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
-* Obtaining TeX::               How to Obtain @TeX{}.
+* Obtaining @TeX{}::               How to obtain @TeX{}.
 
 @command{texi2any}: The Generic Translator for Texinfo
 
@@ -695,12 +695,12 @@ Page Headings
 
 Catching Mistakes
 
-* makeinfo Preferred::          @code{makeinfo} finds errors.
-* Debugging with Info::         How to catch errors with Info formatting.
-* Debugging with TeX::          How to catch errors with @TeX{} formatting.
-* Using texinfo-show-structure::  How to use @code{texinfo-show-structure}.
-* Using occur::                 How to list all lines containing a pattern.
-* Running Info-Validate::       How to find badly referenced nodes.
+* makeinfo Preferred::           @code{makeinfo} finds errors.
+* Debugging with Info::          How to catch errors with Info formatting.
+* Debugging with @TeX{}::           How to catch errors with @TeX{} formatting.
+* Using texinfo-show-structure:: How to use @code{texinfo-show-structure}.
+* Using occur::                  How to list all lines containing a pattern.
+* Running Info-Validate::        How to find badly referenced nodes.
 
 Finding Badly Referenced Nodes
 
@@ -1214,8 +1214,7 @@ Texinfo file must be able to present information both on a
 character-only terminal in Info form and in a typeset book, the
 formatting commands that Texinfo supports are necessarily limited.
 
-To get a copy of @TeX{}, see
-@ref{Obtaining TeX, , How to Obtain @TeX{}}.
+@xref{Obtaining @TeX{}}, for information on acquiring @TeX{}.
 
 
 @node Formatting Commands
@@ -3076,7 +3075,7 @@ The @code{@@setfilename} line produces no output when you typeset a
 manual with @TeX{}, but it is nevertheless essential: it opens the
 index and other auxiliary files used by Texinfo, and also reads
 @file{texinfo.cnf} if that file is present on your system
-(@pxref{Preparing for TeX,, Preparing for @TeX{}}).
+(@pxref{Preparing for @TeX{}}).
 
 If there is no @code{@@setfilename} line, @code{makeinfo} uses the
 input file name to determine the output name: first, any of the
@@ -15085,7 +15084,7 @@ may be.  There's a well-known mechanism for this: the so-called
 
 @menu
 * #line Directive::
-* TeX: #line and TeX.
+* TeX: #line and @TeX{}.
 * Syntax: #line Syntax Details.
 @end menu
 
@@ -15138,7 +15137,7 @@ of @code{@@example}.  As mentioned above, @code{#line}-recognition is
 disabled inside verbatim blocks.
 
 
-@node #line and TeX
+@node #line and @TeX{}
 @subsection @samp{#line} and @TeX{}
 @cindex @TeX{} and @samp{#line} directives
 @cindex @samp{#line} directives, not processing with @TeX{}
@@ -15532,7 +15531,7 @@ offers key bindings for commands to recenter the output buffer, show the
 print queue, and delete a job from the print queue.
 
 @menu
-* Use TeX::                     Use @TeX{} to format for hardcopy.
+* Use @TeX{}::                     Use @TeX{} to format for hardcopy.
 * Format with tex/texindex::    How to format with explicit shell commands.
 * Format with texi2dvi::        A simpler way to format.
 * Print with lpr::              How to print.
@@ -15540,7 +15539,7 @@ print queue, and delete a job from the print queue.
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
 * Compile-Command::             How to print using Emacs's compile command.
 * Requirements Summary::        @TeX{} formatting requirements summary.
-* Preparing for TeX::           What to do before you use @TeX{}.
+* Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
 * smallbook::                   How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
@@ -15548,16 +15547,16 @@ print queue, and delete a job from the print queue.
 * Cropmarks and Magnification:: How to print marks to indicate the size
                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
-* Obtaining TeX::               How to Obtain @TeX{}.
+* Obtaining @TeX{}::               How to obtain @TeX{}.
 @end menu
 
-@node Use TeX
+@node Use @TeX{}
 @section Use @TeX{}
 
 The typesetting program called @TeX{} is used for formatting a Texinfo
-file.  @TeX{} is a very powerful typesetting program and, if used correctly,
-does an exceptionally good job.  (@xref{Obtaining TeX, , How to Obtain
-@TeX{}}, for information on how to obtain @TeX{}.)
+file.  @TeX{} is a very powerful typesetting program and, if used
+correctly, does an exceptionally good job.  (@xref{Obtaining @TeX{}},
+for information on how to obtain @TeX{}.)
 
 The standalone @code{makeinfo} program and Emacs functions
 @code{texinfo-format-region} and @code{texinfo-format-buffer} commands
@@ -15729,7 +15728,7 @@ formats, such as @code{@@smallbook} (@pxref{smallbook}),
 @code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
 (@pxref{pagesizes}), without actually changing the document source.
 (You can also do this on a site-wide basis with @file{texinfo.cnf};
-@pxref{Preparing for TeX,,Preparing for @TeX{}}).
+@pxref{Preparing for @TeX{}}).
 
 @opindex --pdf@r{, for @command{texi2dvi}}
 @pindex pdftexi2dvi
@@ -16104,7 +16103,7 @@ For more information, see:
 @end itemize
 
 
-@node Preparing for TeX
+@node Preparing for @TeX{}
 @section Preparing for @TeX{}
 @cindex Preparing for @TeX{}
 @cindex @TeX{} input initialization
@@ -16258,7 +16257,7 @@ Overfull @@hbox (20.76302pt too wide)
 @TeX{} also provides the line number in the Texinfo source file and
 the text of the offending line, which is marked at all the places that
 @TeX{} considered hyphenation.
-@xref{Debugging with TeX, , Catching Errors with @TeX{} Formatting},
+@xref{Debugging with @TeX{}},
 for more information about typesetting errors.
 
 If the Texinfo file has an overfull hbox, you can rewrite the sentence
@@ -16336,9 +16335,9 @@ region in ``small'' book size (@pxref{Start of Header}).@refill
 @xref{small}, for information about
 commands that make it easier to produce examples for a smaller manual.
 
-@xref{Format with texi2dvi}, and @ref{Preparing for TeX,,Preparing for
-@TeX{}}, for other ways to format with @code{@@smallbook} that do not
-require changing the source file.
+@xref{Format with texi2dvi}, and @ref{Preparing for @TeX{}}, for other
+ways to format with @code{@@smallbook} that do not require changing
+the source file.
 
 
 @node A4 Paper
@@ -16366,9 +16365,9 @@ would write the header for this manual:
 @end group
 @end example
 
-@xref{Format with texi2dvi}, and @ref{Preparing for TeX,,Preparing for
-@TeX{}}, for other ways to format for different paper sizes that do not
-require changing the source file.
+@xref{Format with texi2dvi}, and @ref{Preparing for @TeX{}}, for other
+ways to format for different paper sizes that do not require changing
+the source file.
 
 @findex afourlatex
 @findex afourwide
@@ -16409,12 +16408,12 @@ the paper (which is 250@dmn{mm} by 177@dmn{mm} for B5, 14@dmn{in} by
 
 @cindex Margins on page, not controllable
 To make more elaborate changes, such as changing any of the page
-margins, you must define a new command in @file{texinfo.tex} (or
-@file{texinfo.cnf}, @pxref{Preparing for TeX,,Preparing for @TeX{}}).
+margins, you must define a new command in @file{texinfo.tex} or
+@file{texinfo.cnf}.
 
-@xref{Format with texi2dvi}, and @ref{Preparing for TeX,,Preparing for
-@TeX{}}, for other ways to specify @code{@@pagesizes} that do not
-require changing the source file.
+@xref{Format with texi2dvi}, and @ref{Preparing for @TeX{}}, for other
+ways to specify @code{@@pagesizes} that do not require changing the
+source file.
 
 @code{@@pagesizes} is ignored by @code{makeinfo}.
 
@@ -16524,8 +16523,8 @@ Nevertheless, a PDF file does define an actual typeset document in a
 self-contained file, so it has its place.
 
 
-@node Obtaining TeX
-@section How to Obtain @TeX{}
+@node Obtaining @TeX{}
+@section Obtaining @TeX{}
 @cindex Obtaining @TeX{}
 @cindex @TeX{}, how to obtain
 
@@ -16960,9 +16959,9 @@ with hierarchically-structured manuals.  You should specify
 @cindex Pointer validation, suppressing from command line
 Suppress the pointer-validation phase of @code{makeinfo}---a dangerous
 thing to do.  This can also be done with the @code{@@novalidate}
-command (@pxref{Use TeX,,Use @TeX{}}).  Normally, consistency checks
-are made to ensure that cross references can be resolved, etc.
-@xref{Pointer Validation}.
+command (@pxref{Use TeX}).  Normally, consistency checks are made to
+ensure that cross references can be resolved, etc.  @xref{Pointer
+Validation}.
 
 @item --no-warn
 @opindex --no-warn
@@ -22052,7 +22051,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.440 2012-04-24 17:05:41 karl Exp $
+$Id: texinfo.txi,v 1.441 2012-04-24 17:41:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22643,7 +22642,7 @@ command and you can use the @kbd{M-x Info-validate} command.@refill
 @menu
 * makeinfo Preferred::          @code{makeinfo} finds errors.
 * Debugging with Info::         How to catch errors with Info formatting.
-* Debugging with TeX::          How to catch errors with @TeX{} formatting.
+* Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
 * Using texinfo-show-structure::  How to use @code{texinfo-show-structure}.
 * Using occur::                 How to list all lines containing a pattern.
 * Running Info-Validate::       How to find badly referenced nodes.
@@ -22854,8 +22853,8 @@ not find the missing right-hand brace.@refill
 Manual}, for more information.@refill
 @end ignore
 
-@node Debugging with TeX
-@section Catching Errors with @TeX{} Formatting
+@node Debugging with @TeX{}
+@section Debugging with @TeX{}
 @cindex Catching errors with @TeX{} formatting
 @cindex Debugging with @TeX{} formatting
 
