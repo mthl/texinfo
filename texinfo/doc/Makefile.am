@@ -1,7 +1,7 @@
-# $Id: Makefile.am,v 1.47 2012-02-17 18:54:30 pertusus Exp $
+# $Id: Makefile.am,v 1.48 2012-04-24 18:02:42 karl Exp $
 # Makefile.am for texinfo/doc.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -29,8 +29,9 @@ MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tplibdi
 # INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
 TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
-	    txi-is.tex txi-it.tex txi-nl.tex txi-nb.tex txi-pl.tex \
-	    txi-pt.tex txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
+	    txi-is.tex txi-it.tex txi-nb.txi tex-nl.tex txi-nn.tex \
+            txi-pl.tex txi-pt.tex txi-ru.tex txi-sr.tex txi-tr.tex \
+            txi-uk.tex
 
 refcard_files = refcard/Makefile refcard/txicmdcheck \
                 refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \

@@ -1,8 +1,11 @@
 2012-04-24  Karl Berry  <karl@gnu.org>
 
+	* doc/Makefile.am (TXI_XLATE): add txi-nn.tex.
+
 	* doc/texinfo.txi (#line and TeX, Use TeX, Obtaining TeX,
 	Preparing for TeX, Debugging with TeX): use @TeX{} in node names
-	and thus simplify cross references.  Does not change Info node names.
+	and thus simplify cross references.  Does not change Info node names,
+	hence no need to leave @anchors behind.
 	
 	* doc/texinfo.txi: update master menu.
 
