@@ -1,3 +1,7 @@
+2012-04-24  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: update master menu.
+
 2012-04-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Output Formats): add PostScript item.

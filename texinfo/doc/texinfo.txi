@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.439 2012-04-23 23:20:20 karl Exp $
+@c $Id: texinfo.txi,v 1.440 2012-04-24 17:05:41 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -349,8 +349,8 @@ Indicating Definitions, Commands, etc.
 * code::                        Indicating program code.
 * kbd::                         Showing keyboard input.
 * key::                         Specifying keys.
-* samp::                        A literal sequence of characters.
-* verb::                        A verbatim sequence of characters.
+* samp::                        Indicating a literal sequence of characters.
+* verb::                        Indicating a verbatim sequence of characters.
 * var::                         Indicating metasyntactic variables.
 * env::                         Indicating environment variables.
 * file::                        Indicating file names.
@@ -359,7 +359,7 @@ Indicating Definitions, Commands, etc.
 * dfn::                         Specifying definitions.
 * abbr::                        Indicating abbreviations.
 * acronym::                     Indicating acronyms.
-* indicateurl::                 Indicating a World Wide Web reference.
+* indicateurl::                 Indicating an example URL.
 * email::                       Indicating an electronic mail address.
 
 Emphasizing Text
@@ -464,7 +464,7 @@ Special Insertions
 * Glyphs::                      How to indicate results of evaluation,
                                  expansion of macros, errors, etc.
 
-Special Characters
+Special Characters: Inserting @@ @{@} , \ #
 
 * Inserting an Atsign::    @code{@@}, @code{@@atchar@{@}}.
 * Inserting Braces::       @code{@@@{ @@@}}, @code{@@l rbracechar@{@}}.
@@ -500,15 +500,6 @@ Glyphs for Examples
 * Error Glyph::                 How to indicate an error message.
 * Equivalence::                 How to indicate equivalence.
 * Point Glyph::                 How to indicate the location of point.
-
-Glyphs Summary
-
-* result::
-* expansion::
-* Print Glyph::
-* Error Glyph::
-* Equivalence::
-* Point Glyph::
 
 Forcing and Preventing Breaks
 
@@ -576,11 +567,11 @@ Defining New Texinfo Commands
 * definfoenclose::              Customized highlighting.
 * External Macro Processors::   @code{#line} directives.
 
-External Macro Processors
+External Macro Processors: Line Directives
 
 * #line Directive::
-* #line and TeX::
-* #line Syntax Details::
+* TeX: #line and TeX.
+* Syntax: #line Syntax Details.
 
 Include Files
 
@@ -613,20 +604,21 @@ Formatting and Printing Hardcopy
 * PDF Output::                  Portable Document Format output.
 * Obtaining TeX::               How to Obtain @TeX{}.
 
-Generic Translator texi2any
+@command{texi2any}: The Generic Translator for Texinfo
 
 * Reference Implementation:: @command{texi2any}: the reference implementation.
 * Invoking texi2any::        Running the translator from a shell.
+* texi2any Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
 * Configuration Variables::  Configuring @command{texi2any}.
 * texi2html::                An ancestor of @command{texi2any}.
 
 Configuration Variables
 
-* Configuration Variables for Program Behavior::
-* Configuration Variables for @@-Commands::
-* Configuration Variables and Options::
-* Other Configuration Variables::
+* Behavior: Configuration Variables for Program Behavior.
+* Commands: Configuration Variables for @@-Commands.
+* Options:  Configuration Variables and Options.
+* Other:    Other Configuration Variables.
 
 Creating and Installing Info Files
 
@@ -661,7 +653,7 @@ Generating HTML
 * HTML CSS::               Influencing HTML output with Cascading Style Sheets.
 * HTML Xref::              Cross references in HTML output.
 
-HTML Cross references
+HTML Cross References
 
 * Link Basics:       HTML Xref Link Basics.
 * Node Expansion:    HTML Xref Node Name Expansion.
@@ -671,7 +663,16 @@ HTML Cross references
 * Configuration:     HTML Xref Configuration.      htmlxref.cnf.
 * Preserving links:  HTML Xref Link Preservation.  MANUAL-noderename.cnf.
 
-texi2any Output Customization
+@command{texi2any} Output Customization
+
+* Loading Init Files::               Finding and writing initialization files.
+* Init File Basics::                 What init files can contain and do.
+
+Init File Basics
+
+* Init File Namespaces:: @code{Texinfo::Config}.
+* Setting and Getting Configuration Variables::
+* Internationalization of Strings::
 
 @@-Command List
 
@@ -724,10 +725,10 @@ Info Format General Layout
 
 Info Format Text Constructs
 
-* Menu: Info Format Menu.
+* Menu:  Info Format Menu.
 * Image: Info Format Image.
 * Printindex: Info Format Printindex.
-* Xref: Info Format Cross Reference.
+* Xref:  Info Format Cross Reference.
 
 @end detailmenu
 @end menu
@@ -16573,7 +16574,7 @@ The rest of this chapter goes into the details.
 @menu
 * Reference Implementation:: @command{texi2any}: the reference implementation.
 * Invoking texi2any::        Running the translator from a shell.
-* texi2any Printed Output:: Calling @command{texi2dvi}.
+* texi2any Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
 * Configuration Variables::  Configuring @command{texi2any}.
 * texi2html::                An ancestor of @command{texi2any}.
@@ -19810,9 +19811,9 @@ Init files are written in Perl, and by convention have extension
 @menu
 * Init File Namespaces:: @code{Texinfo::Config}.
 * Setting and Getting Configuration Variables::
-@c * Init File Expansion Contexts::     Normal, preformatted, string, math.
 * Internationalization of Strings::
 @end menu
+@c * Init File Expansion Contexts::     Normal, preformatted, string, math.
 
 
 @node Init File Namespaces
@@ -22051,7 +22052,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.439 2012-04-23 23:20:20 karl Exp $
+$Id: texinfo.txi,v 1.440 2012-04-24 17:05:41 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
