@@ -1020,7 +1020,8 @@ while(@input_files)
     next;
   }
 
-  if (defined(get_conf('DUMP_TREE'))) {
+  if (defined(get_conf('DUMP_TREE')) 
+      or (get_conf('DEBUG') and get_conf('DEBUG') >= 10)) {
     # this is very wrong, but a way to avoid a spurious warning.
     no warnings 'once';
     local $Data::Dumper::Purity = 1;

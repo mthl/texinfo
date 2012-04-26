@@ -101,7 +101,8 @@ sub __($$)
 # initialized to values given by the user.
 our %default_configuration = (
   'TEST' => 0,
-  'DEBUG' => 0,
+  'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
+                    # If >= 100 tree is printed every line.
   'SHOW_MENU' => 1,             # if false no menu error related.
   'gettext' => sub {return $_[0];},
   'expanded_formats' => [],
@@ -3506,9 +3507,11 @@ sub _parse_texi($;$)
 
     if ($self->{'DEBUG'}) {
       $current->{'HERE !!!!'} = 1; # marks where we are in the tree
-      local $Data::Dumper::Indent = 1;
-      local $Data::Dumper::Purity = 1;
-      print STDERR "".Data::Dumper->Dump([$root], ['$root']);
+      if ($self->{'DEBUG'} >= 100) {
+        local $Data::Dumper::Indent = 1;
+        local $Data::Dumper::Purity = 1;
+        print STDERR "".Data::Dumper->Dump([$root], ['$root']);
+      }
       my $line_text = '';
       $line_text = "$line_nr->{'line_nr'}.$line_nr->{'macro'}" if ($line_nr);
       print STDERR "NEW LINE(".join('|', @{$self->{'context_stack'}}).":@{$self->{'conditionals_stack'}}:$line_text): $line";
