@@ -1460,9 +1460,15 @@ sub string_width($)
     if ($character =~ /\p{Unicode::EastAsianWidth::InFullwidth}/) {
       $width += 2;
     } elsif ($character =~ /\pM/) {
-      # a mark, consider it to be of lenght 0.
-    } elsif ($character =~ /\p{IsPrint}/) {
+      # a mark set at length 0
+    } elsif ($character =~ /\p{IsPrint}/ or $character =~ /\p{IsSpace}/) {
+      # newlines are not {IsPrint} in v5.14.2
       $width += 1;
+    } elsif ($character =~ /\p{IsControl}/) {
+      # Control chars may be added, for instance, as part of @image formatting
+    #} elsif ($character eq '') { # could that happen?
+    } else {
+      #print STDERR "unknown char`$character'\n";
     }
   }
   return $width;

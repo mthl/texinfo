@@ -663,7 +663,7 @@ sub _convert($$;$)
         } else {
           return '';
         }
-      } elsif ($type eq 'special') {
+      } elsif ($type eq 'special' or $type eq 'skipspace') {
         return '';
       } elsif ($type eq 'lineraw') {
         if ($root->{'cmdname'} eq 'c' or $root->{'cmdname'} eq 'comment') {
@@ -672,7 +672,8 @@ sub _convert($$;$)
           return "";
         }
       } else {
-        print STDERR "BUG: unknown misc_command style $type" if ($type !~ /^\d$/);
+        $self->_bug_message("unknown misc_command style $type", $root)
+          if ($type !~ /^\d$/);
         if ($root->{'cmdname'} eq 'printindex') {
           if (defined($root->{'extra'})
               and defined($root->{'extra'}->{'misc_args'})) {

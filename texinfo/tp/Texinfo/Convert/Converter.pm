@@ -503,6 +503,38 @@ sub _set_outfile($$$)
   $self->{'output_file'} = $outfile;
 }
 
+sub _bug_message($$;$)
+{
+  my $self = shift;
+  my $message = shift;
+  my $current = shift;
+
+  my $line_message = '';
+  my $current_element_message = '';
+  if ($current) {
+    if ($current->{'line_nr'}) {
+      my $line_number = $current->{'line_nr'};
+      my $file = $line_number->{'file_name'};
+      $line_message
+        = "in: $line_number->{'file_name'}:$line_number->{'line_nr'}";
+      if ($line_number->{'macro'} ne '') {
+        $line_message .= " (possibly involving $line_number->{'macro'})";
+      }
+      $line_message .= "\n";
+    }
+    if ($current) {
+      $current_element_message = "current: ". 
+        Texinfo::Parser::_print_current($current);
+    }
+  }
+  my $additional_information = '';
+  if ($line_message.$current_element_message ne '') {
+    $additional_information = "Additional informations:\n".
+       $line_message.$current_element_message;
+  }
+  warn "You found a bug: $message\n\n".$additional_information;
+}
+
 sub output($$)
 {
   my $self = shift;
