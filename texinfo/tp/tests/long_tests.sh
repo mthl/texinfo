@@ -15,4 +15,4 @@ if test "z$LONG_TESTS" != z'yes' -a "z$ALL_TESTS" != z'yes'; then
 fi
 
 "$srcdir"/parser_tests.sh "$@" \
- tex_html sectioning coverage indices nested_formats contents layout
+ sectioning coverage indices nested_formats contents layout

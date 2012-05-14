@@ -21807,15 +21807,6 @@ $result_converted_errors{'file_info'}->{'at_commands_in_refs_latin1'} = [
   },
   {
     'file_name' => '',
-    'error_line' => ':27: warning: Node expansion ` @ {} .\' in menu differs from normal node expansion `\'
-',
-    'text' => 'Node expansion ` @ {} .\' in menu differs from normal node expansion `\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 27
-  },
-  {
-    'file_name' => '',
     'error_line' => ':92: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
 ',
     'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',

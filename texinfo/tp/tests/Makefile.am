@@ -1,9 +1,11 @@
 base_tests = \
  formatting htmlxref htmlxref-only_mono htmlxref-only_split
 long_tests = \
- tex_html sectioning coverage indices nested_formats contents layout
+ sectioning coverage indices nested_formats contents layout
+tex_tests = \
+ tex_html
 
-DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests)
+DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests) $(tex_tests)
 SUBDIRS = . many_input_files
 
 copy-tests: copy-base copy-long
@@ -15,8 +17,11 @@ copy-base:
 copy-long:
 	$(srcdir)/parser_tests.sh -copy $(long_tests)
 
+copy-tex:
+	$(srcdir)/parser_tests.sh -copy $(tex_tests)
+
 clean-tests:
-	$(srcdir)/parser_tests.sh -clean $(base_tests) $(long_tests)
+	$(srcdir)/parser_tests.sh -clean $(base_tests) $(long_tests) $(tex_tests)
 
 TESTS = parser_base_tests long_tests.sh
 

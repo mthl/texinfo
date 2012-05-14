@@ -254,14 +254,20 @@ $result_errors{'verb_in_xref'} = [
 
 
 
-$result_converted{'plaintext'}->{'verb_in_xref'} = '*Note : Top.
+$result_converted{'plaintext'}->{'verb_in_xref'} = '*Notewith
+verb
+
+ggg : Top.
 ';
 
 
 $result_converted{'html_text'}->{'verb_in_xref'} = '<a name="Top"></a>
 <h1 class="node-heading">Top</h1>
 
-<p>See <a href="#Top">Top</a>.
+<p>See <a href="#Top"><tt>with
+verb
+
+ggg </tt></a>.
 </p><hr>
 ';
 

@@ -21746,8 +21746,8 @@ $result_converted{'plaintext'}->{'at_commands_in_refs'} = 'Top
 19 [f--ile1] [Image description""\\.]
 ************************************
 
-20 
-***
+20  @ {} . 
+***********
 
 21 \'cite asis\' in @w b in r SC *str* t VAR "dfn" i
 **************************************************
@@ -21780,10 +21780,10 @@ ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
 e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note i E=` C\',:: *note `` \'\' ` \'
 ,, ,:: *note << >> << >> < >:: *note `` \'\' --- -- ` \':: *note AAA (fff)
 AAA BBB:: *note CCC (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1] [Image description""\\.]:: *note :: *note \'cite asis\' in @w b in r
-SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\' \'command\'
-\'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted:: *note
-<indicateurl>:: *note \'http://somewhere_aaa\' text (url) ls::
+<no_explain@there>:: *note [f--ile1] [Image description""\\.]:: *note  @ {} . :: *note \'cite asis\' in @w b
+in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
+\'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
+*note <indicateurl>:: *note \'http://somewhere_aaa\' text (url) ls::
 
 ';
 
@@ -21796,15 +21796,6 @@ $result_converted_errors{'plaintext'}->{'at_commands_in_refs'} = [
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 23
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':24: warning: Node expansion ` @ {} .\' in menu differs from normal node expansion `\'
-',
-    'text' => 'Node expansion ` @ {} .\' in menu differs from normal node expansion `\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 24
   },
   {
     'file_name' => '',
@@ -22100,7 +22091,7 @@ Next: <a href="#f_002d_002dile1-f_002d_002dile" accesskey="n" rel="next"><img sr
 <a name="f_002d_002dile1-f_002d_002dile"></a>
 <div class="header">
 <p>
-Previous: <a href="#the-someone-no_005fexplain_0040there" accesskey="p" rel="previous"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#-_0040-_007b_007d-_002e-" accesskey="n" rel="next"><tt> @ {} . </tt></a>, Previous: <a href="#the-someone-no_005fexplain_0040there" accesskey="p" rel="previous"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="f_002d_002dile1-f_002d_002dile-1"></a>
 <h2 class="chapter">19 <img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></h2>
@@ -22112,13 +22103,13 @@ Previous: <a href="#the-someone-no_005fexplain_0040there" accesskey="p" rel="pre
 Next: <a href="#cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i" accesskey="n" rel="next"><cite>cite asis</cite> in&nbsp;@w&nbsp;<b>b</b><!-- /@w --> <span class="roman">in r</span> <small>SC</small> <strong>str</strong> <tt>t</tt> <var>var</var> <em>dfn</em> <i>i</i></a>, Previous: <a href="#f_002d_002dile1-f_002d_002dile" accesskey="p" rel="previous"><img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="-_0040-_007b_007d-_002e--1"></a>
-<h2 class="chapter">20 </h2>
+<h2 class="chapter">20 <tt> @ {} . </tt></h2>
 
 <hr>
 <a name="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"></a>
 <div class="header">
 <p>
-Next: <a href="#env-code-option-samp-command-file-C_002dx-ESC" accesskey="n" rel="next"><code>env</code> <code>code</code> &lsquo;<samp>option</samp>&rsquo; &lsquo;<samp>samp</samp>&rsquo; <code>command</code> &lsquo;<tt>file</tt>&rsquo; <kbd>C-x &lt;ESC&gt;</kbd></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#env-code-option-samp-command-file-C_002dx-ESC" accesskey="n" rel="next"><code>env</code> <code>code</code> &lsquo;<samp>option</samp>&rsquo; &lsquo;<samp>samp</samp>&rsquo; <code>command</code> &lsquo;<tt>file</tt>&rsquo; <kbd>C-x &lt;ESC&gt;</kbd></a>, Previous: <a href="#-_0040-_007b_007d-_002e-" accesskey="p" rel="previous"><tt> @ {} . </tt></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i-1"></a>
 <h2 class="chapter">21 <cite>cite asis</cite> in&nbsp;@w&nbsp;<b>b</b><!-- /@w --> <span class="roman">in r</span> <small>SC</small> <strong>str</strong> <tt>t</tt> <var>var</var> <em>dfn</em> <i>i</i></h2>
@@ -22190,7 +22181,7 @@ Previous: <a href="#indicateurl" accesskey="p" rel="previous">&lt;<code>indicate
 <a href="#CCC-CCC-DDD"><abbr title="rrr">CCC</abbr> (rrr) <abbr title="rrr">CCC</abbr> <abbr>DDD</abbr></a>
 <a href="#the-someone-no_005fexplain_0040there"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>
 <a href="#f_002d_002dile1-f_002d_002dile"><img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></a>
-<a href="#-_0040-_007b_007d-_002e-"></a>
+<a href="#-_0040-_007b_007d-_002e-"><tt> @ {} . </tt></a>
 <a href="#cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><cite>cite asis</cite> in&nbsp;@w&nbsp;<b>b</b><!-- /@w --> <span class="roman">in r</span> <small>SC</small> <strong>str</strong> <tt>t</tt> <var>var</var> <em>dfn</em> <i>i</i></a>
 <a href="#env-code-option-samp-command-file-C_002dx-ESC"><code>env</code> <code>code</code> &lsquo;<samp>option</samp>&rsquo; &lsquo;<samp>samp</samp>&rsquo; <code>command</code> &lsquo;<tt>file</tt>&rsquo; <kbd>C-x &lt;ESC&gt;</kbd></a>
 <a href="#g_t8_002e27in">8.27in</a>
@@ -22735,20 +22726,20 @@ File: ,  Node: the someone <someone@somewher> <no_explain@there>,  Next: [f--ile
 ****************************************************
 
 
-File: ,  Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Next: ,  Prev: the someone <someone@somewher> <no_explain@there>,  Up: Top
+File: ,  Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Next:  @ {} . ,  Prev: the someone <someone@somewher> <no_explain@there>,  Up: Top
 
 
 19 [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
 *********************************************************************************
 
 
-File: ,  Node: ,  Next: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
+File: ,  Node:  @ {} . ,  Next: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
 
-20 
-***
+20  @ {} . 
+***********
 
 
-File: ,  Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Next: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Prev: ,  Up: Top
+File: ,  Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Next: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\',  Prev:  @ {} . ,  Up: Top
 
 21 \'cite asis\' in @w b in r SC *str* t VAR "dfn" i
 **************************************************
@@ -22796,10 +22787,10 @@ ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
 e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note i E=` C\',:: *note `` \'\' ` \'
 ,, ,:: *note << >> << >> < >:: *note `` \'\' --- -- ` \':: *note AAA (fff)
 AAA BBB:: *note CCC (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]:: *note :: *note \'cite asis\' in @w b in r
-SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\' \'command\'
-\'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted:: *note
-<indicateurl>:: *note \'http://somewhere_aaa\' text (url) ls::
+<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]:: *note  @ {} . :: *note \'cite asis\' in @w b
+in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
+\'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
+*note <indicateurl>:: *note \'http://somewhere_aaa\' text (url) ls::
 
 
 
@@ -22825,13 +22816,13 @@ Node: AAA (fff) AAA BBB3014
 Node: CCC (rrr) CCC DDD3154
 Node: the someone <someone@somewher> <no_explain@there>3327
 Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3629
-Node: 3977
-Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4162
-Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4416
-Node: 8.27in4696
-Node: sansserif slanted4844
-Node: <indicateurl>4970
-Node: \'http://somewhere_aaa\' text (url) ls5118
+Node:  @ {} . 3985
+Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4194
+Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4456
+Node: 8.27in4736
+Node: sansserif slanted4884
+Node: <indicateurl>5010
+Node: \'http://somewhere_aaa\' text (url) ls5158
 
 End Tag Table
 ';
@@ -22845,15 +22836,6 @@ $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 23
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':24: warning: Node expansion ` @ {} .\' in menu differs from normal node expansion `\'
-',
-    'text' => 'Node expansion ` @ {} .\' in menu differs from normal node expansion `\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 24
   },
   {
     'file_name' => '',

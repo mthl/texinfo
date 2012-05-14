@@ -1,4 +1,4 @@
-$Id: README,v 1.1 2012-01-30 00:06:28 pertusus Exp $
+$Id: README,v 1.2 2012-05-14 23:56:12 pertusus Exp $
 texinfo/tp/tests/README
 
   Copyright (C) 2010, 2012 Free Software Foundation, Inc.
@@ -14,14 +14,16 @@ copyright notice are hereby placed in the public domain.
 
 Prerequisites
 =============
-To run this testsuite, sed (with -i), awk, diff, mktemp are used. To 
-find the same results, tex4ht and latex2HTML have to be installed with their 
-dependencies).  It is possible that some test results involving 
-latex2HTML or tex4ht depend on the setup and version of these tools, so 
-you may get false negative.  If tex4ht or latex2HTML are not found, the 
-corresponding tests are skipped.
+To run this testsuite, sed (with -i), awk, diff, mktemp are used. 
 
 Some tests may also require a case insensitive filesystem.
+
+
+TeX4ht and LaTeX2HTML tests
+===========================
+The tex4ht and latex2HTML related tests are not run automatically, as
+some test results involving latex2HTML or tex4ht depend on the setup and 
+version of these tools.
 
 
 Running the testsuite
@@ -42,6 +44,10 @@ $ cd formatting
 $ ../run_parser_all.sh cond
 (see below for info on how test names are specified).
 
+To run the tex4ht and latex2HTML related tests, do to tex_html, like
+$ cd tex_html
+$ ../run_parser_all.sh
+
 The test results are in the out_parser directories; the reference results are
 in res_parser directories; there are one or two out and res directories, 
 out_parser/ and res_parser/ for the html results in the texi2html style, 
@@ -58,8 +64,8 @@ is printed. If there are no reference to compare with,
 is printed.
 
 If a whole directory check run using './parser_tests.sh' had no failure, 
-the directory name is printed followed by a 0; it is followed 
-by a 1 if there was a failure.
+the directory name is printed followed by a fail; it is followed 
+by a ok if there was a failure.
 
 The test results are in a directory below the out directories. This 
 directory name can be considered as the test name. Let's call it a_test

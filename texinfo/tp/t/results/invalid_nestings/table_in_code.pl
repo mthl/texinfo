@@ -291,6 +291,8 @@ $result_errors{'table_in_code'} = [
 
 
 $result_converted{'plaintext'}->{'table_in_code'} = '\' in code \'
+_line_
+     text
 ';
 
 1;

@@ -1158,10 +1158,11 @@ sub _convert($$)
   }
 
   if ($root->{'extra'}) {
-    if ($root->{'extra'}->{'invalid_nesting'}) {
-      print STDERR "INVALID_NESTING\n" if ($self->get_conf('DEBUG'));
-      return '';
-    } elsif ($root->{'extra'}->{'missing_argument'} 
+    #if ($root->{'extra'}->{'invalid_nesting'}) {
+    #  print STDERR "INVALID_NESTING\n" if ($self->get_conf('DEBUG'));
+    #  return '';
+    #} elsif ($root->{'extra'}->{'missing_argument'} 
+    if ($root->{'extra'}->{'missing_argument'} 
              and (!$root->{'contents'} or !@{$root->{'contents'}})) {
       print STDERR "MISSING_ARGUMENT\n" if ($self->get_conf('DEBUG'));
       return '';
