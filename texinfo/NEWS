@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.212 2012-04-23 00:00:21 karl Exp $
+$Id: NEWS,v 1.213 2012-05-15 04:22:24 wl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -70,6 +70,7 @@ one of the relevant sections:
     engine does (for instance, etex/pdfetex from TeX Live 2008 or
     later).  Words with accented letters are still not handled properly.
   . new Icelandic translation: txi-is.tex.
+  . new Hungarian translation: txi-hu.tex.
   . official updates between full package releases available at
     http://ftpmirror.gnu.org/texinfo/texinfo.tex.
 

@@ -5,6 +5,8 @@
 
 	* doc/Makefile.am (TXI_XLATE): add txi-hu.tex.
 
+	* NEWS: Mention it.
+
 2012-04-24  Karl Berry  <karl@gnu.org>
 
 	* doc/Makefile.am (TXI_XLATE): add txi-nn.tex.
