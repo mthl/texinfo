@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2011 Free Software Foundation, Inc.
+# Copyright (C) 2002-2012 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -109,6 +109,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module strstr-simple:
   # Code from module sys_stat:
   # Code from module sys_time:
+  # Code from module sys_types:
   # Code from module tempname:
   # Code from module time:
   # Code from module unistd:
@@ -161,14 +162,20 @@ if test $REPLACE_GETOPT = 1; then
   AC_LIBOBJ([getopt])
   AC_LIBOBJ([getopt1])
   gl_PREREQ_GETOPT
+  dnl Arrange for unistd.h to include getopt.h.
+  GNULIB_GL_UNISTD_H_GETOPT=1
 fi
+AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
 gl_MODULE_INDICATOR_FOR_TESTS([getopt-gnu])
 gl_FUNC_GETOPT_POSIX
 if test $REPLACE_GETOPT = 1; then
   AC_LIBOBJ([getopt])
   AC_LIBOBJ([getopt1])
   gl_PREREQ_GETOPT
+  dnl Arrange for unistd.h to include getopt.h.
+  GNULIB_GL_UNISTD_H_GETOPT=1
 fi
+AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
 dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
 AM_GNU_GETTEXT_VERSION([0.18.1])
 AC_SUBST([LIBINTL])
@@ -189,8 +196,9 @@ else
   fi
 fi
 gl_WCTYPE_MODULE_INDICATOR([iswblank])
+AC_REQUIRE([gl_LARGEFILE])
 gl_LOCALCHARSET
-LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(top_builddir)/$gl_source_base\""
+LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(abs_top_builddir)/$gl_source_base\""
 AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
 gl_FUNC_LSTAT
 if test $REPLACE_LSTAT = 1; then
@@ -322,6 +330,8 @@ gl_STRING_MODULE_INDICATOR([strstr])
 gl_HEADER_SYS_STAT_H
 AC_PROG_MKDIR_P
 gl_HEADER_SYS_TIME_H
+AC_PROG_MKDIR_P
+gl_SYS_TYPES_H
 AC_PROG_MKDIR_P
 gl_FUNC_GEN_TEMPNAME
 gl_HEADER_TIME_H
@@ -554,6 +564,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strstr.c
   lib/sys_stat.in.h
   lib/sys_time.in.h
+  lib/sys_types.in.h
   lib/tempname.c
   lib/tempname.h
   lib/time.in.h
@@ -630,6 +641,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/multiarch.m4
   m4/nls.m4
   m4/nocrash.m4
+  m4/off_t.m4
   m4/onceonly.m4
   m4/pathmax.m4
   m4/po.m4
@@ -653,6 +665,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/sys_socket_h.m4
   m4/sys_stat_h.m4
   m4/sys_time_h.m4
+  m4/sys_types_h.m4
   m4/tempname.m4
   m4/threadlib.m4
   m4/time_h.m4
