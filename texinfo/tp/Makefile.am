@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.42 2012-04-24 17:31:54 karl Exp $
+# $Id: Makefile.am,v 1.43 2012-05-15 23:24:25 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -196,7 +196,7 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_files_generated_list) " \
 	"texi2any $(maintainance_files) README TODO COPYING " \
 	"$(perl_specific_files)" \
-	 | sed 's/ \+/\n/g' | sort | cat - $< > $@
+	 | sed 's/ \+/\n/g' | cat - $< | sort > $@
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
 	$(MKDIR_P) maintain
