@@ -3,6 +3,8 @@
 	* doc/txi-hu.tex: Hungarian translation for texinfo.tex.
 	Taken from LilyPond documentation.
 
+	* doc/Makefile.am (TXI_XLATE): add txi-hu.tex.
+
 2012-04-24  Karl Berry  <karl@gnu.org>
 
 	* doc/Makefile.am (TXI_XLATE): add txi-nn.tex.
