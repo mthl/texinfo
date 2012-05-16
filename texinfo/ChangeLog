@@ -1,3 +1,8 @@
+2012-05-16  Andreas Schwab  <schwab@linux-m68k.org>
+
+	* doc/texinfo.tex (\skipspaces): Remove reference to undefined
+	macro \p.
+
 2012-05-15  Werner Lemberg  <wl@gnu.org>
 
 	* doc/txi-hu.tex: Hungarian translation for texinfo.tex.

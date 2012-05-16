@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2012-04-25.10}
+\def\texinfoversion{2012-05-16.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1367,9 +1367,8 @@ output) for that.)}
   \def\skipspaces#1{\def\PP{#1}\def\D{|}%
     \ifx\PP\D\let\nextsp\relax
     \else\let\nextsp\skipspaces
-      \ifx\p\space\else\addtokens{\filename}{\PP}%
-        \advance\filenamelength by 1
-      \fi
+      \addtokens{\filename}{\PP}%
+      \advance\filenamelength by 1
     \fi
     \nextsp}
   \def\getfilename#1{%
