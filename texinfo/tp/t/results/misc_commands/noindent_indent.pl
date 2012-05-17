@@ -242,4 +242,16 @@ qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
 <p>unneeded indent
 </p>';
 
+
+$result_converted{'docbook'}->{'noindent_indent'} = '
+<para>First para
+</para>
+<para>qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+</para>
+<para>noindent in para.
+</para>
+<para>unneeded indent
+</para>';
+
 1;

@@ -299,4 +299,17 @@ $result_converted{'html_text'}->{'no_empty_line_between_headings'} = '<a name="T
 <hr>
 ';
 
+
+$result_converted{'docbook'}->{'no_empty_line_between_headings'} = '<chapter label="">
+<title>Top</title>
+<bridgehead renderas="sect2">Subheading</bridgehead>
+</chapter>
+<chapter label="1">
+<title>Chapter</title>
+<sect1 label="1.1">
+<title>Section</title>
+</sect1>
+</chapter>
+';
+
 1;

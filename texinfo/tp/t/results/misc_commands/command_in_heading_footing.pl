@@ -112,4 +112,9 @@ $result_converted{'html_text'}->{'command_in_heading_footing'} = '
 <p>In text   text.
 </p>';
 
+
+$result_converted{'docbook'}->{'command_in_heading_footing'} = '
+<para>In text   text.
+</para>';
+
 1;

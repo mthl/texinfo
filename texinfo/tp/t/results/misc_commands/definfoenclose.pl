@@ -465,4 +465,18 @@ $result_converted{'html_text'}->{'definfoenclose'} = '
 <p>(strong: is it really strong? :)
 </p>';
 
+
+$result_converted{'docbook'}->{'definfoenclose'} = '
+<para>definfoenclose phoo,//,\\  </para>
+<para>//bar\\
+</para>
+<para>definfoenclose phi,:,:  </para>
+<para>:bar:
+</para>
+<para><emphasis role="bold">very strong</emphasis>
+</para>
+
+<para>(strong: is it really strong? :)
+</para>';
+
 1;

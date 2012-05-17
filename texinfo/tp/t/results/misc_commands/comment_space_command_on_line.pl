@@ -951,6 +951,26 @@ $result_converted{'html_text'}->{'comment_space_command_on_line'} = '
 ';
 
 
+$result_converted{'docbook'}->{'comment_space_command_on_line'} = '<title>Settitle &#160;</title><!-- settittle -->
+
+<chapter label="" id="Top">
+<title>top element&#160;</title><!-- @top -->
+
+
+<indexterm role="cp"><primary>index entry &#160;</primary></indexterm><!-- index entry -->
+
+<bridgehead renderas="sect1">Heading &#160;</bridgehead><!-- heading -->
+
+<index role="cp"></index>
+
+<anchor id="label"/>
+<para>float
+</para>
+
+</chapter>
+';
+
+
 $result_converted{'info'}->{'comment_space_command_on_line'} = 'This is , produced by tp version from .
 
 

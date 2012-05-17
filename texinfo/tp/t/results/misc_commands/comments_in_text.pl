@@ -173,4 +173,16 @@ $result_converted{'html_text'}->{'comments_in_text'} = '
 </p>
 <p>Comment at the end of the line </p>';
 
+
+$result_converted{'docbook'}->{'comments_in_text'} = '
+<!-- lone comment -->
+
+<para>Text line followed by a comment on the same line and another below <!-- comment -->
+<!-- comment -->
+Text line after the comment followed by a comment <!-- c -->
+Text line after the text line followed by the comment.
+</para>
+<para>Comment at the end of the line <!-- comment -->
+</para>';
+
 1;

@@ -358,4 +358,13 @@ $result_converted{'html_text'}->{'ref_in_center'} = '<a name="Top"></a>
 </p><hr>
 ';
 
+
+$result_converted{'docbook'}->{'ref_in_center'} = '<anchor id="Top"/>
+
+<link linkend="Top">Top</link>
+
+<link>Top</link>
+<para>very long
+</para>';
+
 1;

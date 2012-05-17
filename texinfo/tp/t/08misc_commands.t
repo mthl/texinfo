@@ -465,13 +465,31 @@ my %xml_tests = (
   'definfoenclose_with_empty_arg' => 1,
 );
 
+my %docbook_tests = (
+  'setfilename' => 1,
+  'definfoenclose' => 1,
+  'no_empty_line_between_headings' => 1,
+  'comments_in_text' => 1,
+  'noindent_indent' => 1,
+  'empty_center' => 1,
+  'ref_in_center' => 1,
+  'footnote_in_center' => 1,
+  'codequoteundirected_codequotebacktick' => 1,
+  'comment_space_command_on_line' => 1,
+  'command_in_heading_footing' => 1,
+);
+
 foreach my $test (@converted_test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
+  if ($docbook_tests{$test->[0]}) {
+    push @{$test->[2]->{'test_formats'}}, 'docbook';
+  }
   if ($info_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'info';
     push @{$test->[2]->{'test_formats'}}, 'xml';
-  } elsif ($xml_tests{$test->[0]}) {
+  } 
+  if ($xml_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'xml';
   }
 }

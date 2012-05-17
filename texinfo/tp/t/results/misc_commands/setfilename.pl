@@ -305,6 +305,10 @@ $result_converted{'html_text'}->{'setfilename'} = '
 ';
 
 
+$result_converted{'docbook'}->{'setfilename'} = '
+';
+
+
 $result_converted{'info'}->{'setfilename'} = 'This is file_comment, produced by tp version from .
 
 

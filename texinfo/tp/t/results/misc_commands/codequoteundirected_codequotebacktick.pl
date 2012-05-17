@@ -5415,4 +5415,187 @@ samp: &lsquo;<samp>``simple-double--three---four----\'\' `simple\' quotedblleft:
 <hr>
 ';
 
+
+$result_converted{'docbook'}->{'codequoteundirected_codequotebacktick'} = '
+
+<bookinfo><legalnotice><para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para>
+<screen>@codequoteundirected on
+@codequotebacktick on
+</screen><para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para>
+<screen>@codequoteundirected off
+@codequotebacktick off
+</screen><para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para></legalnotice></bookinfo><para>Titlepage
+</para><para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para>
+<screen>@codequoteundirected on
+@codequotebacktick on
+</screen><para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para>
+<screen>@codequoteundirected off
+@codequotebacktick off
+</screen><para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para>
+
+
+<chapter label="" id="Top">
+<title>test quotes</title>
+
+<para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para>
+<screen>@codequoteundirected on
+@codequotebacktick on
+</screen><para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para>
+<screen>@codequoteundirected off
+@codequotebacktick off
+</screen><para>&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: &#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">&#8220;simple-double&#8211;three&#8212;four&#8212;-&#8221; &#8216;simple&#8217; quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</para>
+<screen>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+
+</screen><screen>@codequoteundirected on
+@codequotebacktick on
+</screen><screen>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+
+</screen><screen>@codequoteundirected off
+@codequotebacktick off
+</screen><screen>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220; 
+
+code: <literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal> 
+
+asis: ``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220; 
+
+strong: <emphasis role="bold">``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</emphasis> 
+
+kbd: <userinput>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</userinput> 
+
+samp: &#8216;<literal>``simple-double--three---four----\'\' `simple\' quotedblleft: &#8220;</literal>&#8217; 
+
+</screen>
+</chapter>
+';
+
 1;
