@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.50 2012-05-15 04:13:56 wl Exp $
+# $Id: Makefile.am,v 1.51 2012-05-17 14:04:46 pertusus Exp $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
@@ -29,7 +29,7 @@ MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tplibdi
 # INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
 TXI_XLATE = txi-cs.tex txi-de.tex txi-en.tex txi-es.tex txi-fr.tex \
-            txi-hu.tex txi-is.tex txi-it.tex txi-nb.tex tex-nl.tex \
+            txi-hu.tex txi-is.tex txi-it.tex txi-nb.tex txi-nl.tex \
             txi-nn.tex txi-pl.tex txi-pt.tex txi-ru.tex txi-sr.tex \
             txi-tr.tex txi-uk.tex
 

@@ -1,3 +1,8 @@
+2012-05-17  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/Makefile.am (TXI_XLATE): correct txi-nl.tex name that was
+	wrongly set to tex-nl.tex.
+
 2012-05-16  Andreas Schwab  <schwab@linux-m68k.org>
 
 	* doc/texinfo.tex (\skipspaces): Remove reference to undefined
