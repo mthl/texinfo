@@ -1,4 +1,4 @@
-$Id: README,v 1.2 2012-05-14 23:56:12 pertusus Exp $
+$Id: README,v 1.3 2012-05-18 17:44:48 pertusus Exp $
 texinfo/tp/tests/README
 
   Copyright (C) 2010, 2012 Free Software Foundation, Inc.
@@ -11,19 +11,11 @@ Files anywhere within the tests/ subdirectory which have no other
 copyright notice are hereby placed in the public domain.
 
 
-
 Prerequisites
 =============
 To run this testsuite, sed (with -i), awk, diff, mktemp are used. 
 
 Some tests may also require a case insensitive filesystem.
-
-
-TeX4ht and LaTeX2HTML tests
-===========================
-The tex4ht and latex2HTML related tests are not run automatically, as
-some test results involving latex2HTML or tex4ht depend on the setup and 
-version of these tools.
 
 
 Running the testsuite
@@ -43,10 +35,6 @@ $ ../run_parser_all.sh
 $ cd formatting
 $ ../run_parser_all.sh cond
 (see below for info on how test names are specified).
-
-To run the tex4ht and latex2HTML related tests, do to tex_html, like
-$ cd tex_html
-$ ../run_parser_all.sh
 
 The test results are in the out_parser directories; the reference results are
 in res_parser directories; there are one or two out and res directories, 
@@ -76,6 +64,21 @@ All the commands called are output in tests.log.
 giving -copy in argument to parser_tests.sh or ../run_parser_all.sh will 
 cause the references to be regenerated. This can also be achieved with 
 the copy-tests make target.
+
+
+TeX4ht and LaTeX2HTML tests
+===========================
+The tex4ht and latex2HTML related tests are not run automatically, as
+some test results involving latex2HTML or tex4ht depend on the setup and 
+version of these tools.
+
+To run the tex4ht and latex2HTML related tests, cd to tex_html, like
+$ cd tex_html
+$ ../run_parser_all.sh
+
+For the tests that use latex2html, to avoid the test failing if there is 
+a dot in the cwd, mktemp is used to create a temporary directory, hopefully
+in /tmp, and the directory is passed through on the command line.
 
 
 Tests specification
@@ -113,17 +116,11 @@ results in the following: in the directory out_parser/texi_manual the file
 manual.texi will have macros expanded and ignored regions removed.
 
 
-LaTeX2html
-==========
-For the tests that use latex2html, to avoid the test failing if there is 
-a dot in the cwd, mktemp is used to create a temporary directory, hopefully
-in /tmp, and the directory is passed through on the command line.
-
-
 Common .texi
 ============
 A common .texi file should be in the top-level directory (there is such an
 example with coverage_macro.texi).
+
 
 Init files
 ==========
