@@ -24,6 +24,7 @@ my @test_cases = (
 );
 
 our $arg_generate;
+our $arg_complete;
 our $arg_test_case;
 our $arg_debug;
 our $nr_comparisons;
@@ -36,11 +37,15 @@ my @done_tests;
 
 foreach my $test_case (@test_cases) {
   next if ($arg_test_case and $arg_test_case ne $test_case->[0]);
-  $test->test($test_case);
-  push @done_tests, $test_case;
+  if ($arg_complete) {
+    $test->output_texi_file($test_case);
+  } else {
+    $test->test($test_case);
+    push @done_tests, $test_case;
+  }
 }
 
-if ($arg_generate) {
+if ($arg_generate or $arg_complete) {
   plan tests => 2;
 }
 else {

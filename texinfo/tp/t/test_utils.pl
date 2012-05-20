@@ -61,6 +61,8 @@ if (! defined($localesdir)) {
 }
 Locale::Messages::bindtextdomain ('texinfo_document', $localesdir);
 
+my $generated_texis_dir = 't_texis';
+
 my $input_files_dir = $srcdir."t/input_files/";
 
 our $output_files_dir = 't/output_files/';
@@ -999,7 +1001,7 @@ sub run_all($$;$$$)
 
   foreach my $test_case (@$ran_tests) {
     if ($arg_complete) {
-      $test->output_texi_file($test_case)
+      $test->output_texi_file($test_case);
     } else {
       $test_nrs += $test->test($test_case);
     }
@@ -1019,9 +1021,9 @@ sub output_texi_file($)
   my $test_text = shift @$test_case;
   my $test_options = shift @$test_case;
 
-  my $dir = "texi/$self->{'name'}/";
-  mkdir "texi/" or die 
-     unless (-d "texi/");
+  my $dir = "$generated_texis_dir/$self->{'name'}/";
+  mkdir "$generated_texis_dir/" or die 
+     unless (-d "$generated_texis_dir/");
   mkdir $dir or die 
      unless (-d $dir);
   my $file = "${dir}$test_name.texi";
