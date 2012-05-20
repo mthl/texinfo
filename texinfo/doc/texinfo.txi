@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.442 2012-04-24 18:19:28 karl Exp $
+@c $Id: texinfo.txi,v 1.443 2012-05-20 18:54:46 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17557,7 +17557,7 @@ Configuration}) and avoid this variable.
 For HTML, additional text appearing within @code{<head>}.
 
 @item FIX_TEXINFO
-For plain Teixonfo (with @code{PLAINTEXINFO}).  If set to false, 
+For plain Texinfo (with @code{PLAINTEXINFO}).  If set to false, 
 the resulting Texinfo is not corrected of all errors, like missing
 @samp{@@end}.
 
@@ -22050,7 +22050,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.442 2012-04-24 18:19:28 karl Exp $
+$Id: texinfo.txi,v 1.443 2012-05-20 18:54:46 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
