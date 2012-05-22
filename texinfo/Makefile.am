@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.35 2012-04-23 00:00:13 karl Exp $
+# $Id: Makefile.am,v 1.36 2012-05-22 15:48:00 karl Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -17,7 +17,7 @@
 ACLOCAL_AMFLAGS = -I gnulib/m4
 
 # Additional files to distribute.
-EXTRA_DIST = ChangeLog.46 INSTALL.generic INTRODUCTION README-hacking \
+EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
   system.h \
   djgpp/README djgpp/config.bat djgpp/config.sed djgpp/config.site \
   gnulib/m4/gnulib-cache.m4

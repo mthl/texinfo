@@ -1,9 +1,9 @@
-$Id: README,v 1.22 2012-04-23 23:20:20 karl Exp $
+$Id: README,v 1.23 2012-05-22 15:47:59 karl Exp $
 This is the README file for the GNU Texinfo distribution.  Texinfo is
 the preferred documentation format for GNU software.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
-  2002, 2003, 2004, 2009, 2010, 2011
+  2002, 2003, 2004, 2009, 2010, 2011, 2012
   Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
@@ -60,21 +60,14 @@ Texinfo documentation files (in ./doc):
     texinfo.txi            Describes the Texinfo language and many
                            of the associated tools.  It tells how to use
                            Texinfo to write documentation, how to use
-                           Texinfo mode in GNU Emacs, TeX, makeinfo, and
-                           the Emacs Lisp Texinfo formatting commands.
+                           Texinfo mode in GNU Emacs, TeX,
+                           texi2any/makeinfo, and much else.
 
-    info.texi              This manual tells you how to read manuals
-                           in Info.  This document also comes as part of
-                           GNU Emacs.  If you do not have Emacs, you can
-                           format this Texinfo source file with makeinfo
-                           or TeX and then read the resulting Info file
-                           with the standalone Info reader that is part
-                           of this distribution.
+    info.texi              Describes how to read manuals in Info.
+                           This document also comes as part of GNU Emacs.
 
-    info-stnd.texi         This manual tells you how to use
-                           the standalone GNU Info reader that is
-                           included in this distribution as C
-                           source (./info).
+    info-stnd.texi         How to use the standalone GNU Info reader that is
+                           included in this distribution (./info).
 
 Printing-related files:
     doc/texinfo.tex        This implements Texinfo in TeX, to typeset a
@@ -95,8 +88,7 @@ Source directories:
   gnulib/                  Support files from Gnulib.
   info/                    Standalone Info reader.
   install-info/            Maintain the Info dir file.
-  lib/                     Support files.
-  tp/                      Texinfo Parser, includes makeinfo and texi2any.
+  tp/                      Texinfo Parser in Perl, includes texi2any/makeinfo.
 
 Translation support:
   po                       Strings of the programs.
@@ -106,7 +98,7 @@ Installation support:
   Makefile.am              Read by Automake to create a Makefile.in.
   Makefile.in              Read by configure to make a Makefile,
                              created by Automake.
-  configure.ac		   Read by Autoconf to create `configure'.
+  configure.ac             Read by Autoconf to create `configure'.
   configure                Configuration script for local conditions,
                              created by Autoconf.
   build-aux/               Common files.
