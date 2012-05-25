@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.443 2012-05-20 18:54:46 pertusus Exp $
+@c $Id: texinfo.txi,v 1.444 2012-05-25 18:07:14 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10587,12 +10587,11 @@ user-defined macros (@pxref{Defining Macros}).
 
 Due to the vagaries of macro argument parsing, it is more reliable to
 pass an alphabetic command that produces a backslash instead of using
-a literal \.  Hence @code{@@backslashchar@{@}}.  Here is an example:
+a literal \.  Hence @code{@@backslashchar@{@}}.  Here is an example
+macro call:
 
 @example
-@@acronym@{ABC, A Bizarre @@comma@{@}@}
-@@xref@{Comma,, The @@comma@{@} symbol@}
-@@mymac@{One argument@@comma@{@} containing a comma@}
+@@mymac@{One argument@@backslashchar@{@} with a backslash@}
 @end example
 
 Texinfo documents may also use \ as a command character inside
@@ -10602,7 +10601,7 @@ symbol font), while @code{@@backslashchar@{@}} produces a typewriter
 backslash as usual.
 
 Although @samp{@@backslashchar@{@}} can be used nearly anywhere, there
-is no need for it anywhere except these unusual cases.
+is no need for it except in these unusual cases.
 
 
 @node Inserting a Hashsign
@@ -22050,7 +22049,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.443 2012-05-20 18:54:46 pertusus Exp $
+$Id: texinfo.txi,v 1.444 2012-05-25 18:07:14 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
