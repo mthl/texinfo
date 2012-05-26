@@ -538,11 +538,6 @@ our %block_commands;
 # commands that have a possible content before an item
 our %block_item_commands;
 
-# commands that forces closing an opened paragraph.
-our %close_paragraph_commands;
-
-$close_paragraph_commands{'exdent'} = 1;
-
 sub gdt($)
 {
   return $_[0];
@@ -686,6 +681,9 @@ foreach my $block_command_one_arg('table', 'ftable', 'vtable',
 
 $block_commands{'float'} = 2;
 
+# commands that forces closing an opened paragraph.
+our %close_paragraph_commands;
+
 foreach my $block_command (keys(%block_commands)) {
   $close_paragraph_commands{$block_command} = 1
      unless ($block_commands{$block_command} eq 'raw' or
@@ -699,7 +697,7 @@ foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   'verbatiminclude', 'page', 'item', 'itemx', 'tab', 'headitem',
   'printindex', 'listoffloats', 'center', 'dircategory', 'contents',
   'shortcontents', 'summarycontents', 'caption', 'shortcaption',
-  'setfilename') {
+  'setfilename', 'exdent') {
   $close_paragraph_commands{$close_paragraph_command} = 1;
 }
 

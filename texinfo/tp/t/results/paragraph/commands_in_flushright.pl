@@ -1914,8 +1914,8 @@ $result_converted{'html_text'}->{'commands_in_flushright'} = '
 
 <p align="left">in flushleft
 </p>
-<p align="center">in center
-</p>
+<div align="center">in center
+</div>
 ';
 
 1;

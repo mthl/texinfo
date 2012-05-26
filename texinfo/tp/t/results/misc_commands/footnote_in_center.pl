@@ -400,8 +400,8 @@ $result_converted{'plaintext'}->{'footnote_in_center'} = '     Centered text wit
 ';
 
 
-$result_converted{'html_text'}->{'footnote_in_center'} = '<p align="center">Centered text with a footnote<a name="DOCF1" href="#FOOT1">(1)</a> and text after the footnote.
-</p><div class="footnote">
+$result_converted{'html_text'}->{'footnote_in_center'} = '<div align="center">Centered text with a footnote<a name="DOCF1" href="#FOOT1">(1)</a> and text after the footnote.
+</div><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 

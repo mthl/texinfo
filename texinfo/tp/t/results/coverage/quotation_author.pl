@@ -284,9 +284,9 @@ $result_converted{'html_text'}->{'quotation_author'} = '<blockquote>
 quotation continues.
 </p>
 </blockquote>
-<p align="center">&mdash; <em>First Author</em>
-</p><p align="center">&mdash; <em>S&#7869;cond author</em>
-</p>';
+<div align="center">&mdash; <em>First Author</em>
+</div><div align="center">&mdash; <em>S&#7869;cond author</em>
+</div>';
 
 
 $result_converted{'xml'}->{'quotation_author'} = '<quotation>

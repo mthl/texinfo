@@ -173,8 +173,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<p align="center">centered
-</p>
+<div align="center">centered
+</div>
 <p>Some text.
 </p>
 

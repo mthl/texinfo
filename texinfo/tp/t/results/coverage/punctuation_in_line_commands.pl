@@ -1486,8 +1486,8 @@ $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '
 
 <h1 class="titlefont">titlefont! After punc</h1>
 
-<p align="center">center! After punc
-</p>
+<div align="center">center! After punc
+</div>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
  &nbsp; 
 </td></tr></table>

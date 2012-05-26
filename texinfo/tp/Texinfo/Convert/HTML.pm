@@ -2470,9 +2470,9 @@ sub _convert_center_command($$$$)
 
   if ($self->in_preformatted() or $self->in_string()) {
     return $self->_convert_preformatted_type($cmdname, $command, 
-                                             $args->[0]->{'normal'} ."\n");
+                                             $args->[0]->{'normal'}."\n");
   } else {
-    return "<p align=\"center\">".$args->[0]->{'normal'} ."\n</p>";
+    return "<div align=\"center\">".$args->[0]->{'normal'}."\n</div>";
   }
 }
 
