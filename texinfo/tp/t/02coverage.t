@@ -366,6 +366,10 @@ flush then example
 @center  in center @code{in code}
 
 '],
+['titlefont_in_center',
+'
+@center @titlefont{A manual}
+'],
 ['exdent_and_formats',
 '@example
  Example   Hoho. @TeX{} . @* @@.

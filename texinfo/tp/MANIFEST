@@ -453,6 +453,7 @@ t/results/coverage/table_command_comment.pl
 t/results/coverage/test_errormsg.pl
 t/results/coverage/test_tie.pl
 t/results/coverage/test_today.pl
+t/results/coverage/titlefont_in_center.pl
 t/results/coverage/unknown_accents.pl
 t/results/coverage/unknown_commands.pl
 t/results/coverage/verbatiminclude.pl
