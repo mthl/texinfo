@@ -1,7 +1,7 @@
 #! /bin/sh
 
-if test "z$LONG_TESTS" != z'yes' -a "z$ALL_TESTS" != z'yes'; then
-  echo "Skipping long tests that take a lot of time to run"
+if test "z$TEX_HTML_TESTS" != z'yes'; then
+  echo "Skipping HTML TeX tests that are not easily reproducible"
   exit 77
 fi
 

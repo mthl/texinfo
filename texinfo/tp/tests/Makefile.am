@@ -2,10 +2,10 @@ base_tests = \
  formatting htmlxref htmlxref-only_mono htmlxref-only_split
 long_tests = \
  sectioning coverage indices nested_formats contents layout
-tex_tests = \
+tex_html_tests = \
  tex_html
 
-DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests) $(tex_tests)
+DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests) $(tex_html_tests)
 SUBDIRS = . many_input_files
 
 copy-tests: copy-base copy-long
@@ -17,19 +17,23 @@ copy-base:
 copy-long:
 	$(srcdir)/parser_tests.sh -copy $(long_tests)
 
-copy-tex:
-	$(srcdir)/parser_tests.sh -copy $(tex_tests)
+copy-tex-html:
+	$(srcdir)/parser_tests.sh -copy $(tex_html_tests)
+	cd many_input_files && $(MAKE) copy-tex-html
 
 clean-tests:
-	$(srcdir)/parser_tests.sh -clean $(base_tests) $(long_tests) $(tex_tests)
+	$(srcdir)/parser_tests.sh -clean $(base_tests) $(long_tests) $(tex_html_tests)
 
-TESTS = parser_base_tests long_tests.sh
+TESTS = parser_base_tests long_tests.sh tex_html_tests.sh
 
-long-check: all
+long-checks: all
 	$(MAKE) $(AM_MAKEFLAGS) check LONG_TESTS=yes
 
 all-checks: all
 	$(MAKE) $(AM_MAKEFLAGS) check ALL_TESTS=yes
+
+tex-html-checks: all
+	$(MAKE) $(AM_MAKEFLAGS) check TEX_HTML_TESTS=yes LONG_TESTS=yes
 
 # this is in order to have the htmlxref.cnf files in the build dir.
 # This is done in this directory to be sure that the files are there
@@ -58,4 +62,4 @@ sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 	${INSTALL_DATA} $< $@
 
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
- $(TESTS) $(long_TESTS) coverage_macro.texi
+ $(TESTS) coverage_macro.texi

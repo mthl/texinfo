@@ -1,4 +1,4 @@
-$Id: README,v 1.3 2012-05-18 17:44:48 pertusus Exp $
+$Id: README,v 1.4 2012-05-26 10:45:03 pertusus Exp $
 texinfo/tp/tests/README
 
   Copyright (C) 2010, 2012 Free Software Foundation, Inc.
@@ -22,7 +22,7 @@ Running the testsuite
 =====================
 This testsuite can be run 
 
-* using the makefile rules: check for the base tests, long-check for 
+* using the makefile rules: check for the base tests, long-checks for 
   the long tests, or all-checks for both.
 
 * using ./parser_tests.sh with the list of directories in argument one 
@@ -72,9 +72,8 @@ The tex4ht and latex2HTML related tests are not run automatically, as
 some test results involving latex2HTML or tex4ht depend on the setup and 
 version of these tools.
 
-To run the tex4ht and latex2HTML related tests, cd to tex_html, like
-$ cd tex_html
-$ ../run_parser_all.sh
+These tests may be run by
+  make tex-html-checks
 
 For the tests that use latex2html, to avoid the test failing if there is 
 a dot in the cwd, mktemp is used to create a temporary directory, hopefully
