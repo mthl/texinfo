@@ -1,4 +1,4 @@
-$Id: README,v 1.23 2012-05-22 15:47:59 karl Exp $
+$Id: README,v 1.24 2012-05-26 18:30:31 karl Exp $
 This is the README file for the GNU Texinfo distribution.  Texinfo is
 the preferred documentation format for GNU software.
 
@@ -10,16 +10,38 @@ the preferred documentation format for GNU software.
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-See ./INSTALL* for installation instructions.
+Home page: http://www.gnu.org/software/texinfo/
+  This page includes links to other Texinfo-related programs.
 
 Primary distribution point: ftp://ftp.gnu.org/gnu/texinfo/
   automatic mirror redirection: http://ftpmirror.gnu.org/texinfo/
                    mirror list: http://www.gnu.org/prep/ftp.html
 
-Home page: http://www.gnu.org/software/texinfo/
-  This page includes links to other Texinfo-related programs.
+Texinfo is a documentation system that uses a single source to produce
+many forms of output:
+- a PDF or DVI document (via the TeX typesetting system) with the normal
+  features of a book, including sectioning, cross references, indices, etc.
+- an Info file with analogous features to make documentation browsing easy.
+- a plain text (ASCII) file.
+- an HTML output file suitable for use with a web browser.
+- a Docbook file.
+- a XML file transliterating the source with a Texinfo DTD.
 
-Mailing lists and archives:
+See ./INSTALL* for installation instructions.
+
+To get started with Texinfo, best is to read the Texinfo manual.
+It is online at http://www.gnu.org/software/texinfo/manual/texinfo.
+If you don't have Internet access, you can read it locally:
+- first, build the distribution.
+- then, for HTML, run: make -C doc html
+  and you can start reading at doc/texinfo.html/index.html.
+- for PDF, if you have a working TeX, run: make -C doc pdf
+- for Info, you can read about the Info reader itself with:
+ ./info/ginfo doc/info
+  and then read the Texinfo manual:
+ ./info/ginfo doc/texinfo
+
+Texinfo mailing lists and archives:
 - http://lists.gnu.org/mailman/listinfo/bug-texinfo
   for bug reports, enhancement suggestions, technical discussion.
 - http://lists.gnu.org/mailman/listinfo/help-texinfo
@@ -27,8 +49,8 @@ Mailing lists and archives:
 There are no corresponding newsgroups.
 
 Bug reports:
- Please include enough information for the maintainers to reproduce the
- problem.  Generally speaking, that means:
+Please include enough information for the maintainers to reproduce the
+problem.  Generally speaking, that means:
 - the contents of all input files necessary to reproduce the bug (crucial!).
 - a statement of the problem and any samples of the erroneous output.
 - the version number of Texinfo and the program(s) involved (use --version).
