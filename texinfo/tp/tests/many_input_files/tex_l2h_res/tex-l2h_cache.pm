@@ -16,7 +16,7 @@ tex <SPAN CLASS="logo-TeX">T<SMALL>E</SMALL>X</SPAN>|;
 
 $l2h_cache_key = q/$a @\ b$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="100" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
  SRC="tex_3.png"
  ALT="$a @\ b$"></SPAN>|;
 

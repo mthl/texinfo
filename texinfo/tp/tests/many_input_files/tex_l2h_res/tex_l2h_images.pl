@@ -18,7 +18,7 @@ $cached_env_img{$key} = q|<IMG
 
 $key = q/a@b;MSF=1.5;AAT/;
 $cached_env_img{$key} = q|<IMG
- WIDTH="100" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="100" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
  SRC="|."$dir".q|tex_l2h_img3.png"
  ALT="$a @ b$">|; 
 
