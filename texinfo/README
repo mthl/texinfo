@@ -1,4 +1,4 @@
-$Id: README,v 1.24 2012-05-26 18:30:31 karl Exp $
+$Id: README,v 1.25 2012-05-27 08:36:26 pertusus Exp $
 This is the README file for the GNU Texinfo distribution.  Texinfo is
 the preferred documentation format for GNU software.
 
@@ -74,9 +74,6 @@ This distribution includes the following files, among others:
 
     INSTALL                Texinfo-specific installation notes.
     NEWS                   Summary of new features by release.
-    INTRODUCTION           Brief introduction to the system, and
-                           how to create readable files from the
-                           Texinfo source files in this distribution.
 
 Texinfo documentation files (in ./doc):
     texinfo.txi            Describes the Texinfo language and many
