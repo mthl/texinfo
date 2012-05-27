@@ -559,14 +559,14 @@ $result_converted{'plaintext'}->{'syncodeindex_to_plain'} = 'cp index.
 
 * Menu:
 
-* --k1:                                  Top.                   (line 3)
-* -c:                                    Top.                   (line 3)
+* --k1:                                  Top.                   (line 0)
+* -c:                                    Top.                   (line 0)
 
    vr index.
 
 * Menu:
 
-* --v:                                   Top.                   (line 3)
+* --v:                                   Top.                   (line 0)
 
 ';
 

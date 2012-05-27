@@ -536,8 +536,8 @@ $result_converted{'plaintext'}->{'syncode_index_print_both'} = 'Print fn
 
 * Menu:
 
-* c--oncept:                             Top.                   (line 3)
-* f---un:                                Top.                   (line 3)
+* c--oncept:                             Top.                   (line 0)
+* f---un:                                Top.                   (line 0)
 
 ';
 

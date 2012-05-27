@@ -1001,9 +1001,11 @@ sub _printindex_formatted($$;$)
     $entry_nodes{$entry} = $node;
     if (!defined($node)) {
       $line_nr = 0;
-    } else {
+    } elsif($in_info) {
       $line_nr = 3 if (defined($line_nr) and $line_nr < 3);
       $line_nr = 4 if (!defined($line_nr));
+    } else {
+      $line_nr = 0 if (!defined($line_nr));
     }
     my $index_line_nr_string_length = 
       Texinfo::Convert::Unicode::string_width($line_nr);

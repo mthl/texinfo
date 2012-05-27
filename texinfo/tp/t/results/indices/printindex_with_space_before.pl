@@ -283,7 +283,7 @@ $result_converted{'plaintext'}->{'printindex_with_space_before'} = 'Text.
 
 * Menu:
 
-* index:                                 Top.                   (line 3)
+* index:                                 Top.                   (line 0)
 
 ';
 

@@ -623,9 +623,9 @@ $result_converted{'plaintext'}->{'index_entries_locations'} = 'Initial paragraph
 
 * Menu:
 
-* entry at end of paragraph.:            Top.                   (line 3)
+* entry at end of paragraph.:            Top.                   (line 2)
 * Entry before paragraph:                Top.                   (line 6)
-* entry in paragraph:                    Top.                   (line 3)
+* entry in paragraph:                    Top.                   (line 2)
 * lone entry:                            Top.                   (line 8)
 
 ';

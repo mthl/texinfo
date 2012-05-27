@@ -1110,9 +1110,9 @@ _var3_
 * Menu:
 
 * fun3:                                  Top.                  (line  3)
-* function1:                             Top.                  (line  3)
+* function1:                             Top.                  (line  0)
 * function1 <1>:                         Top.                  (line 10)
-* function2x:                            Top.                  (line  3)
+* function2x:                            Top.                  (line  1)
 
 * Menu:
 

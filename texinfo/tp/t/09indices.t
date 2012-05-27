@@ -73,6 +73,27 @@ eee
 '],
 );
 
+my $index_in_footnote_text = '@node Top
+
+@menu
+* First::
+@end menu
+
+Top node@footnote{in footnote
+@cindex index entry in footnote
+
+Blah
+
+Blih
+
+@cindex counting entry
+}
+
+@node First
+
+@printindex cp
+';
+
 my @test_formatted = (
 ['double_index_entry',
 '@node Top
@@ -320,26 +341,11 @@ Top node@footnote{in footnote
 '],
 ['index_entry_in_footnote_separate',
 '@footnotestyle separate
-@node Top
-
-@menu
-* First::
-@end menu
-
-Top node@footnote{in footnote
-@cindex index entry in footnote
-
-Blah
-
-Blih
-
-@cindex counting entry
-}
-
-@node First
-
-@printindex cp
-'],
+'.$index_in_footnote_text
+],
+['index_entry_in_footnote_different_node_end',
+$index_in_footnote_text
+],
 ['printindex_index_entry_in_copying_in_footnote',
 '@copying
 

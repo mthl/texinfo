@@ -2066,10 +2066,10 @@ $result_converted{'plaintext'}->{'def_syn_indices'} = 'definedx truc after
 
 * Menu:
 
-* abc index entry:                       Top.                   (line 3)
-* defg index entry:                      Top.                   (line 3)
-* pindex codeidx:                        Top.                   (line 3)
-* truc kindex:                           Top.                   (line 3)
+* abc index entry:                       Top.                   (line 2)
+* defg index entry:                      Top.                   (line 2)
+* pindex codeidx:                        Top.                   (line 2)
+* truc kindex:                           Top.                   (line 2)
 
    ky
 
@@ -2089,8 +2089,8 @@ $result_converted{'plaintext'}->{'def_syn_indices'} = 'definedx truc after
 
 * Menu:
 
-* cindex entry:                          Top.                   (line 3)
-* index truc:                            Top.                   (line 3)
+* cindex entry:                          Top.                   (line 2)
+* index truc:                            Top.                   (line 2)
 
 ';
 

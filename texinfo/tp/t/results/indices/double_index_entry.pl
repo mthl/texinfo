@@ -749,8 +749,8 @@ $result_converted{'plaintext'}->{'double_index_entry'} = 'Text
 
 * Menu:
 
-* aaa:                                   Top.                   (line 3)
-* aaa <1>:                               Top.                   (line 3)
+* aaa:                                   Top.                   (line 0)
+* aaa <1>:                               Top.                   (line 2)
 * aaa <2>:                               other node.            (line 6)
 
 ';

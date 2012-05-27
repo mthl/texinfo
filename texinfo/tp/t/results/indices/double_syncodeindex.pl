@@ -501,8 +501,8 @@ End Tag Table
 
 $result_converted{'plaintext'}->{'double_syncodeindex'} = '* Menu:
 
-* cindex entry:                          Top.                   (line 3)
-* findex entry:                          Top.                   (line 3)
+* cindex entry:                          Top.                   (line 0)
+* findex entry:                          Top.                   (line 0)
 
 ';
 

@@ -327,7 +327,7 @@ $result_converted{'plaintext'}->{'index_entry_in_footnote'} = 'Top node(1)
 
 * Menu:
 
-* index entry in footnote:               Top.                   (line 4)
+* index entry in footnote:               Top.                   (line 0)
 
    ---------- Footnotes ----------
 
