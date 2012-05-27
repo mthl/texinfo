@@ -695,7 +695,6 @@ sub _footnotes($;$)
       };
       $result .= $self->_node($footnotes_node);
       $self->{'node'} = $footnotes_node;
-      $self->{'count_context'}->[-1]->{'lines'} = 3;
     }
     while (@{$self->{'pending_footnotes'}}) {
       my $footnote = shift (@{$self->{'pending_footnotes'}});
@@ -854,7 +853,7 @@ sub _contents($$$)
   foreach my $top_section (@{$section_root->{'section_childs'}}) {
     my $section = $top_section;
  SECTION:
-    while ($section) {# and $section ne $section_root) {
+    while ($section) {
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
       my $section_title_tree;
       if (defined($section->{'number'}) 
