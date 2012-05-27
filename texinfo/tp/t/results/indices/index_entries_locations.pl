@@ -611,6 +611,26 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'index_entries_locations'} = 'Initial paragraph.
+
+   Paragraph end paragraph.
+
+   New paragraph.
+
+   Another paragraph.
+
+   Last paragraph.
+
+* Menu:
+
+* entry at end of paragraph.:            Top.                   (line 3)
+* Entry before paragraph:                Top.                   (line 6)
+* entry in paragraph:                    Top.                   (line 3)
+* lone entry:                            Top.                   (line 8)
+
+';
+
+
 $result_converted{'html_text'}->{'index_entries_locations'} = '
 <a name="Top"></a>
 <h1 class="node-heading">Top</h1>

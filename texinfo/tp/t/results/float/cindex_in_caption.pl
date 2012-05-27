@@ -556,6 +556,10 @@ In float.
 
 fl 1: in caption
 
+* Menu:
+
+* index entry:                           Top.                   (line 6)
+
 ';
 
 

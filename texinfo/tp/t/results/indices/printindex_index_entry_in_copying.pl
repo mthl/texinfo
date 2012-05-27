@@ -1516,6 +1516,59 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'printindex_index_entry_in_copying'} = 'top
+***
+
+Top.
+
+ -- Function: fun arg
+ -- Function: xf arg
+     Defun
+
+ftable item
+xftable xitem
+
+* Menu:
+
+* Copying this document:                 Top.                  (line  5)
+* ftable item:                           Top.                  (line  9)
+* fun:                                   Top.                  (line  5)
+* xf:                                    Top.                  (line  6)
+* xftable xitem:                         Top.                  (line 10)
+
+* Menu:
+
+* chapter::
+
+1 Chapter
+*********
+
+ -- Function: fun arg
+ -- Function: xf arg
+     Defun
+
+ftable item
+xftable xitem
+
+* Menu:
+
+* Copying this document:                 chapter.              (line 27)
+* ftable item:                           chapter.              (line 31)
+* fun:                                   chapter.              (line 27)
+* xf:                                    chapter.              (line 28)
+* xftable xitem:                         chapter.              (line 32)
+
+* Menu:
+
+* Copying this document:                 chapter.              (line 27)
+* ftable item:                           chapter.              (line 31)
+* fun:                                   chapter.              (line 27)
+* xf:                                    chapter.              (line 28)
+* xftable xitem:                         chapter.              (line 32)
+
+';
+
+
 $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 <a name="Top"></a>
 <div class="header">

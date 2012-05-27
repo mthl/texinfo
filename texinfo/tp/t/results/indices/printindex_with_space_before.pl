@@ -279,6 +279,15 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'printindex_with_space_before'} = 'Text.
+
+* Menu:
+
+* index:                                 Top.                   (line 3)
+
+';
+
+
 $result_converted{'html_text'}->{'printindex_with_space_before'} = '<a name="Top"></a>
 <h1 class="node-heading">Top</h1>
 

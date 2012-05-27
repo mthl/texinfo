@@ -323,6 +323,19 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'index_entry_in_footnote'} = 'Top node(1)
+
+* Menu:
+
+* index entry in footnote:               Top.                   (line 4)
+
+   ---------- Footnotes ----------
+
+   (1) in footnote
+
+';
+
+
 $result_converted{'html_text'}->{'index_entry_in_footnote'} = '<a name="Top"></a>
 <h1 class="node-heading">Top</h1>
 

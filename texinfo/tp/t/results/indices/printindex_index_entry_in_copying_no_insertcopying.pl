@@ -1443,6 +1443,24 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'printindex_index_entry_in_copying_no_insertcopying'} = 'top
+***
+
+Top.
+
+* Menu:
+
+* chapter::
+
+1 Chapter
+*********
+
+* Menu:
+
+
+';
+
+
 $result_converted{'html_text'}->{'printindex_index_entry_in_copying_no_insertcopying'} = '
 <a name="Top"></a>
 <div class="header">

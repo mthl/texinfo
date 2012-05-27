@@ -2060,6 +2060,41 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'def_syn_indices'} = 'definedx truc after
+
+   pg
+
+* Menu:
+
+* abc index entry:                       Top.                   (line 3)
+* defg index entry:                      Top.                   (line 3)
+* pindex codeidx:                        Top.                   (line 3)
+* truc kindex:                           Top.                   (line 3)
+
+   ky
+
+   truc
+
+   value truc
+
+   cp
+
+   value cp
+
+   defg
+
+   abc
+
+   fn
+
+* Menu:
+
+* cindex entry:                          Top.                   (line 3)
+* index truc:                            Top.                   (line 3)
+
+';
+
+
 $result_converted{'html_text'}->{'def_syn_indices'} = '
 
 <a name="Top"></a>

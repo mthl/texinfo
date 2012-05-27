@@ -293,6 +293,26 @@ $result_converted_errors{'info'}->{'index_entry_before_first_node'} = [
 
 
 
+$result_converted{'plaintext'}->{'index_entry_before_first_node'} = '* Menu:
+
+* before nodes:                          (outside of any node). (line 0)
+
+';
+
+$result_converted_errors{'plaintext'}->{'index_entry_before_first_node'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':2: warning: Entry for index `cp\' outside of any node
+',
+    'text' => 'Entry for index `cp\' outside of any node',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 2
+  }
+];
+
+
+
 $result_converted{'html_text'}->{'index_entry_before_first_node'} = '
 <a name="index-before-nodes"></a>
 

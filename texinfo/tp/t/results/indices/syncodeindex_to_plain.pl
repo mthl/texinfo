@@ -555,6 +555,22 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'syncodeindex_to_plain'} = 'cp index.
+
+* Menu:
+
+* --k1:                                  Top.                   (line 3)
+* -c:                                    Top.                   (line 3)
+
+   vr index.
+
+* Menu:
+
+* --v:                                   Top.                   (line 3)
+
+';
+
+
 $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
 <a name="Top"></a>
 <h1 class="node-heading">Top</h1>

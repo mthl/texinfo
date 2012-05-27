@@ -499,6 +499,14 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'double_syncodeindex'} = '* Menu:
+
+* cindex entry:                          Top.                   (line 3)
+* findex entry:                          Top.                   (line 3)
+
+';
+
+
 $result_converted{'html_text'}->{'double_syncodeindex'} = '
 <a name="Top"></a>
 <h1 class="node-heading">Top</h1>

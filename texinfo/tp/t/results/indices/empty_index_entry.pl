@@ -366,6 +366,11 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'empty_index_entry'} = ' -- :
+
+';
+
+
 $result_converted{'html_text'}->{'empty_index_entry'} = '<a name="Top"></a>
 <h1 class="node-heading">Top</h1>
 

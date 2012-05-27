@@ -319,6 +319,20 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'image_text_lines_count'} = 'aaaa
+bbb
+cc
+
+ff
+
+
+* Menu:
+
+* index entry:                           Top.                   (line 7)
+
+';
+
+
 $result_converted{'html_text'}->{'image_text_lines_count'} = '<a name="Top"></a>
 <h1 class="node-heading">Top</h1>
 

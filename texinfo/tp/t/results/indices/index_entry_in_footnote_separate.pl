@@ -764,6 +764,26 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'index_entry_in_footnote_separate'} = '* Menu:
+
+* First::
+
+Top node(1) (*note Top-Footnote-1::)
+
+   (1) in footnote
+
+   Blah
+
+   Blih
+
+* Menu:
+
+* counting entry:                        Top-Footnotes.        (line 11)
+* index entry in footnote:               Top-Footnotes.        (line  6)
+
+';
+
+
 $result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<a name="Top"></a>
 <div class="header">
 <p>

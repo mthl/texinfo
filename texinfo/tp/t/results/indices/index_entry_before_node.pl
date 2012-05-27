@@ -810,6 +810,20 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'index_entry_before_node'} = '* Menu:
+
+* first::
+* second::
+
+Para.
+
+* Menu:
+
+* lone entry:                            first.                 (line 6)
+
+';
+
+
 $result_converted{'html_text'}->{'index_entry_before_node'} = '<a name="Top"></a>
 <div class="header">
 <p>

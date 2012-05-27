@@ -741,6 +741,21 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'double_index_entry'} = 'Text
+
+* Menu:
+
+* other node::
+
+* Menu:
+
+* aaa:                                   Top.                   (line 3)
+* aaa <1>:                               Top.                   (line 3)
+* aaa <2>:                               other node.            (line 6)
+
+';
+
+
 $result_converted{'html_text'}->{'double_index_entry'} = '<a name="Top"></a>
 <div class="header">
 <p>

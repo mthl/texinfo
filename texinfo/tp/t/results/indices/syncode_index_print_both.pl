@@ -530,6 +530,18 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'syncode_index_print_both'} = 'Print fn
+
+   Print vr
+
+* Menu:
+
+* c--oncept:                             Top.                   (line 3)
+* f---un:                                Top.                   (line 3)
+
+';
+
+
 $result_converted{'html_text'}->{'syncode_index_print_both'} = '
 <a name="Top"></a>
 <h1 class="node-heading">Top</h1>

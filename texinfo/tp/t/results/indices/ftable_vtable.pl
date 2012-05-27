@@ -1097,6 +1097,32 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'ftable_vtable'} = '_function1_
+_function2x_
+     Text
+_fun3_
+
+_var1 error->_
+_varx2_
+     Text
+_var3_
+
+* Menu:
+
+* fun3:                                  Top.                  (line  3)
+* function1:                             Top.                  (line  3)
+* function1 <1>:                         Top.                  (line 10)
+* function2x:                            Top.                  (line  3)
+
+* Menu:
+
+* var1 error->:                          Top.                   (line 5)
+* var3:                                  Top.                   (line 8)
+* varx2:                                 Top.                   (line 6)
+
+';
+
+
 $result_converted{'html_text'}->{'ftable_vtable'} = '
 <a name="Top"></a>
 <h1 class="node-heading">Top</h1>

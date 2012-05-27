@@ -1643,6 +1643,16 @@ Copyright notice 1: The Public Domain notice(2)
 
 * Copyright notice 1: public domain.     The Public Domain notice(2)
 
+* Menu:
+
+* indexed caption:                       Copying and floats.   (line 31)
+* indexed caption copying footnote:      Top.                  (line 16)
+
+* Menu:
+
+* indexed caption function:              Copying and floats.   (line 31)
+* public domain function:                Top.                  (line 16)
+
    ---------- Footnotes ----------
 
    (1) The caption copying footnote

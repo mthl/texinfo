@@ -960,6 +960,40 @@ End Tag Table
 ';
 
 
+$result_converted{'plaintext'}->{'printindex_index_entry_in_copying_in_footnote'} = 'top
+***
+
+Top.
+
+   Copying(1).
+
+* Menu:
+
+
+* Menu:
+
+* chapter::
+
+   ---------- Footnotes ----------
+
+   (1) In footnote
+
+1 Chapter
+*********
+
+Copying(1).
+
+* Menu:
+
+* Copying this document:                 Top.                  (line 16)
+
+   ---------- Footnotes ----------
+
+   (1) In footnote
+
+';
+
+
 $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'} = '
 <a name="Top"></a>
 <div class="header">

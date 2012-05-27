@@ -571,11 +571,13 @@ my @file_tests = (
 
 foreach my $test (@test_formatted) {
   push @{$test->[2]->{'test_formats'}}, 'info';
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
 foreach my $test (@file_tests) {
   push @{$test->[2]->{'test_formats'}}, 'file_html';
+  push @{$test->[2]->{'test_formats'}}, 'file_plaintext';
   push @{$test->[2]->{'test_formats'}}, 'file_info';
 }
 
