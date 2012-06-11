@@ -1,8 +1,8 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.55 2012-04-21 00:38:06 karl Exp $
+   $Id: session.c,v 1.56 2012-06-11 17:54:26 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2007, 2008, 2009, 2011 Free Software Foundation, Inc.
+   2004, 2007, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -117,7 +117,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames)
               display_update_display (windows);
               info_error ("%s", msg_cant_find_window);
               info_session ();
-              xexit (0);
+              exit (EXIT_SUCCESS);
             }
 
           active_window = largest;
@@ -132,7 +132,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames)
               display_update_display (windows);
               info_error ("%s", msg_win_too_small);
               info_session ();
-              xexit (0);
+              exit (EXIT_SUCCESS);
             }
         }
     }
@@ -261,7 +261,7 @@ initialize_info_session (NODE *node, int clear_screen)
         term_name = "dumb";
 
       info_error (msg_term_too_dumb, term_name);
-      xexit (1);
+      exit (EXIT_FAILURE);
     }
 
   if (clear_screen)
@@ -5504,7 +5504,7 @@ info_get_input_char (void)
             {
               terminal_unprep_terminal ();
               close_dribble_file ();
-              xexit (0);
+              exit (EXIT_SUCCESS);
             }
         }
     }

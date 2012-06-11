@@ -1,3 +1,12 @@
+2012-06-11  Karl Berry  <karl@gnu.org>
+
+	* info/*.c,
+	* util/texindex.c,
+	* install-info/install-info.c: use exit with EXIT_SUCCESS or
+	EXIT_FAILURE instead of xexit.
+	* lib: no longer need this directory.
+	* */Makefile.am, Makefile, configure.ac: do not refer to it.
+
 2012-06-05  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\txiescapepdf): check \pdfescapestring

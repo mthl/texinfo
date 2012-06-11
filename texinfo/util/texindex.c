@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.27 2012-01-01 17:09:11 karl Exp $
+   $Id: texindex.c,v 1.28 2012-06-11 17:54:28 karl Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
@@ -200,13 +200,12 @@ main (int argc, char *argv[])
 	{
 	  fprintf (stderr, "%s: %s: file too large\n", program_name,
 		   infiles[i]);
-	  xexit (1);
+	  exit (EXIT_FAILURE);
 	}
       sort_in_core (infiles[i], (int)ptr, outfile);
     }
 
-  xexit (0);
-  return 0; /* Avoid bogus warnings.  */
+  exit (EXIT_SUCCESS);
 }
 
 typedef struct
@@ -263,7 +262,7 @@ general questions and discussion to help-texinfo@gnu.org.\n\
 Texinfo home page: http://www.gnu.org/software/texinfo/"), f);
   fputs ("\n", f);
 
-  xexit (result_value);
+  exit (result_value);
 }
 
 /* Decode the command line arguments to set the parameter variables
@@ -298,7 +297,7 @@ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
 	      "2012");
-              xexit (0);
+              exit (EXIT_SUCCESS);
             }
           else if ((strcmp (arg, "--keep") == 0) ||
                    (strcmp (arg, "-k") == 0))
@@ -308,7 +307,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
           else if ((strcmp (arg, "--help") == 0) ||
                    (strcmp (arg, "-h") == 0))
             {
-              usage (0);
+              usage (EXIT_SUCCESS);
             }
           else if ((strcmp (arg, "--output") == 0) ||
                    (strcmp (arg, "-o") == 0))
@@ -320,10 +319,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                     *(op - 1) = argv[arg_index];
                 }
               else
-                usage (1);
+                usage (EXIT_FAILURE);
             }
           else
-            usage (1);
+            usage (EXIT_FAILURE);
         }
       else
         {
@@ -336,7 +335,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   num_infiles = ip - infiles;
   *ip = (char *)NULL;
   if (num_infiles == 0)
-    usage (1);
+    usage (EXIT_FAILURE);
 }
 
 /* Compare LINE1 and LINE2 according to the specified set of keyfields. */
@@ -1174,7 +1173,7 @@ fatal (const char *fmt, ...)
   va_start (ap, fmt);
   vdiag (fmt, NULL, ap);
   va_end (ap);
-  xexit (1);
+  exit (EXIT_FAILURE);
 }
 
 void
@@ -1188,7 +1187,7 @@ void
 pfatal_with_name (const char *name)
 {
   perror_with_name (name);
-  xexit (1);
+  exit (EXIT_FAILURE);
 }
 
 

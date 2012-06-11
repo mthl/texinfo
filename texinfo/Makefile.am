@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.36 2012-05-22 15:48:00 karl Exp $
+# $Id: Makefile.am,v 1.37 2012-06-11 17:54:26 karl Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -28,13 +28,13 @@ TEXINFO_TEX = doc/texinfo.tex
 
 if TOOLS_ONLY
   # Build native tools only.
-  SUBDIRS = lib info install-info tp util
+  SUBDIRS = info install-info tp util
 else
   # All subdirectories.
   # Do libs first since the C programs depend on it.
   # Do doc and man last so makeinfo will be built when we get there.
   # Others are alphabetical.
-  SUBDIRS = $(native_tools) gnulib/lib lib \
+  SUBDIRS = $(native_tools) gnulib/lib \
             install-info info po po_document tp Pod-Simple-Texinfo util \
 	    doc man
 endif

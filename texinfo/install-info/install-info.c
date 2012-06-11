@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.18 2012-01-01 17:09:11 karl Exp $
+   $Id: install-info.c,v 1.19 2012-06-11 17:54:27 karl Exp $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
@@ -244,7 +244,7 @@ fatal (const char *fmt, ...)
   va_start (ap, fmt);
   vdiag (fmt, NULL, ap);
   va_end (ap);
-  xexit (1);
+  exit (EXIT_FAILURE);
 }
 
 /* Return a newly-allocated string
@@ -518,7 +518,7 @@ suggest_asking_for_help (void)
 {
   fprintf (stderr, _("\tTry `%s --help' for a complete list of options.\n"),
            progname);
-  xexit (1);
+  exit (EXIT_FAILURE);
 }
 
 void
@@ -896,7 +896,7 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
   if (!output)
     {
       perror (dirfile);
-      xexit (1);
+      exit (EXIT_FAILURE);
     }
 
   for (i = 0; i <= dir_nlines; i++)
@@ -2060,7 +2060,7 @@ main (int argc, char *argv[])
         case 'h':
         case 'H':
           print_help ();
-          xexit (0);
+          exit (EXIT_SUCCESS);
 
         case 'i':
           if (infile)
@@ -2135,7 +2135,7 @@ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
               "2012");
-          xexit (0);
+          exit (EXIT_SUCCESS);
 
         case 'W':
           {
@@ -2317,7 +2317,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
              subsequent parts of `make install' to fail.  */
           if (!quiet_flag)
             warning (_("no info dir entry in `%s'"), infile);
-          xexit (0);
+          exit (EXIT_SUCCESS);
         }
 
       /* If the entries came from the command-line arguments, their
@@ -2575,8 +2575,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                     n_entries_to_add, entries_to_add,
                     input_sections, compression_program);
 
-  xexit (0);
-  return 0; /* Avoid bogus warnings.  */
+  exit (EXIT_SUCCESS);
 }
 
 /* Divide the text at DATA (of SIZE bytes) into lines.

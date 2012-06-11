@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.40 2012-04-12 10:38:29 gray Exp $
+   $Id: info.c,v 1.41 2012-06-11 17:54:26 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012
@@ -278,7 +278,7 @@ main (int argc, char *argv[])
 
         default:
           fprintf (stderr, _("Try --help for more information.\n"));
-          xexit (1);
+          exit (EXIT_FAILURE);
         }
     }
 
@@ -301,14 +301,14 @@ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
 	      "2012");
-      xexit (0);
+      exit (EXIT_SUCCESS);
     }
 
   /* If the `--help' option was present, show the help and exit. */
   if (print_help_p)
     {
       info_short_help ();
-      xexit (0);
+      exit (EXIT_SUCCESS);
     }
 
   /* If the user hasn't specified a path for Info files, default it.
@@ -358,7 +358,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (apropos_p)
     {
       info_apropos (apropos_search_string);
-      xexit (0);
+      exit (EXIT_SUCCESS);
     }
 
   /* Get the initial Info node.  It is either "(dir)Top", or what the user
@@ -375,7 +375,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       else
         info_error (msg_cant_find_node,
                     user_nodenames ? user_nodenames[0] : "Top");
-      xexit (1);
+      exit (EXIT_FAILURE);
     }
 
   /* Special cases for when the user specifies multiple nodes.  If we
@@ -394,7 +394,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       else
         begin_multiple_window_info_session (user_filename, user_nodenames);
 
-      xexit (0);
+      exit (EXIT_SUCCESS);
     }
 
   /* If there are arguments remaining, they are the names of menu items
@@ -424,8 +424,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
             && !is_dir_name (filename_non_directory (initial_node->filename)))
           printf ("%s\n", initial_node->filename);
         else
-          xexit (1);
-        xexit (0);
+          exit (EXIT_FAILURE);
+        exit (EXIT_SUCCESS);
       }
 
     /* If the user specified that this node should be output, then do that
@@ -453,7 +453,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
            corresponding to what they want. */
         else if (index_search_p || goto_invocation_p)
           {
-            int status = 0;
+            int status = EXIT_SUCCESS;
 
             initialize_info_session (initial_node, 0);
 
@@ -512,17 +512,17 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
               {
                 fprintf (stderr, _("no index entries found for `%s'\n"),
                          index_search_string);
-                status = 2;
+                status = EXIT_FAILURE;
               }
 
             close_dribble_file ();
-            xexit (status);
+            exit (status);
           }
         else
           begin_info_session (initial_node);
       }
 
-    xexit (0);
+    exit (EXIT_SUCCESS);
   }
 
   return 0; /* Avoid bogus warnings.  */
@@ -686,7 +686,7 @@ Email bug reports to bug-texinfo@gnu.org,\n\
 general questions and discussion to help-texinfo@gnu.org.\n\
 Texinfo home page: http://www.gnu.org/software/texinfo/"));
 
-  xexit (0);
+  exit (EXIT_SUCCESS);
 }
 
 

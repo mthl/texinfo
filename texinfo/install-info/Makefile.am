@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.2 2010-06-24 00:17:01 karl Exp $
+# $Id: Makefile.am,v 1.3 2012-06-11 17:54:27 karl Exp $
 # Makefile.am for texinfo/install-info.
 #
 # Copyright 2008, 2009, 2010 Free Software Foundation, Inc.
@@ -29,4 +29,4 @@ AM_CPPFLAGS = 					\
   -I$(top_srcdir)/gnulib/lib			\
   -I$(top_builddir)/gnulib/lib			\
   -DLOCALEDIR=\"$(localedir)\"
-LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
+LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)

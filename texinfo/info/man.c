@@ -1,8 +1,8 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.19 2012-04-12 10:38:29 gray Exp $
+    $Id: man.c,v 1.20 2012-06-11 17:54:26 karl Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
-   2007, 2008, 2009, 2011 Free Software Foundation, Inc.
+   2007, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -333,7 +333,7 @@ get_manpage_contents (char *pagename)
       /* If we get here, we couldn't exec, so close out the pipe and
          exit. */
       close (pipes[1]);
-      xexit (0);
+      exit (EXIT_SUCCESS);
     }
 #else  /* !PIPE_USE_FORK */
   /* Cannot fork/exec, but can popen/pclose.  */

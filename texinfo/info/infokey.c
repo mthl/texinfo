@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.21 2012-01-01 17:09:11 karl Exp $
+   $Id: infokey.c,v 1.22 2012-06-11 17:54:26 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009,
    2010, 2011, 2012
@@ -133,7 +133,7 @@ main (int argc, char **argv)
 
 	default:
 	  suggest_help ();
-	  xexit (1);
+	  exit (EXIT_FAILURE);
 	}
     }
 
@@ -147,14 +147,14 @@ License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
 	      "2012");
-      xexit (0);
+      exit (EXIT_SUCCESS);
     }
 
   /* If the `--help' option was present, show the help and exit. */
   if (print_help_p)
     {
       short_help ();
-      xexit (0);
+      exit (EXIT_SUCCESS);
     }
 
   /* If there is one argument remaining, it is the name of the input
@@ -169,7 +169,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     {
       error_message (0, _("incorrect number of arguments"));
       suggest_help ();
-      xexit (1);
+      exit (EXIT_FAILURE);
     }
 
   /* Use default filenames where none given. */
@@ -199,7 +199,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       {
 	error_message (errno, _("cannot open input file `%s'"),
 		       input_filename);
-	xexit (1);
+	exit (EXIT_FAILURE);
       }
 
     /* Compile the input file to its verious sections, then write the
@@ -213,7 +213,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 	  {
 	    error_message (errno, _("cannot create output file `%s'"),
 			   output_filename);
-	    xexit (1);
+	    exit (EXIT_FAILURE);
 	  }
 
 	/* Write the contents of the output file and close it.  If there is
@@ -235,7 +235,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 	if (write_error)
 	  {
 	    unlink (output_filename);
-	    xexit (1);
+	    exit (EXIT_FAILURE);
 	  }
       }
 
@@ -914,5 +914,5 @@ Email bug reports to bug-texinfo@gnu.org,\n\
 general questions and discussion to help-texinfo@gnu.org.\n\
 Texinfo home page: http://www.gnu.org/software/texinfo/"));
 
-  xexit (0);
+  exit (EXIT_SUCCESS);
 }
