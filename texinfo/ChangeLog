@@ -1,5 +1,8 @@
 2012-06-11  Karl Berry  <karl@gnu.org>
 
+	* util/htmlxref.cnf (libcdio, cd-text, sharutils): add.
+	Found by Trevis Rothwell.
+
 	* info/*.c,
 	* util/texindex.c,
 	* install-info/install-info.c: use exit with EXIT_SUCCESS or

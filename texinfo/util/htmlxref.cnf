@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2012-04-12.23; # UTC
+htmlxrefversion=2012-06-11.23; # UTC
 
 # Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 # 
@@ -377,6 +377,10 @@ jwhois		node	${GS}/jwhois/manual/html_node/
 libc		mono	${GS}/libc/manual/html_mono/libc.html
 libc		node	${GS}/libc/manual/html_node/
 
+LIBCDIO = http://www.gnu.org/software/libcdio/
+ libcdio	mono	${LIBCDIO}/libcdio.html
+ cd-text	mono	${LIBCDIO}/cd-text.html
+
 libextractor	mono	${GS}/libextractor/extractor.html
 
 libidn		mono	${GS}/libidn/manual/libidn.html
@@ -504,6 +508,10 @@ screen		node	${GS}/screen/manual/html_node/
 
 sed		mono	${GS}/sed/manual/sed.html
 sed		node	${GS}/sed/manual/html_node/
+
+sharutils	mono	${GS}/sharutils/manual/html_mono/sharutils.html
+sharutils	chapter	${GS}/sharutils/manual/html_chapter/
+sharutils	node	${GS}/sharutils/manual/html_node/
 
 # can't use mono files since they have generic names
 SMALLTALK = ${GS}/smalltalk/
