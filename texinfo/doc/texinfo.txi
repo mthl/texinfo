@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.446 2012-06-15 18:31:38 karl Exp $
+@c $Id: texinfo.txi,v 1.447 2012-06-15 18:34:19 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7117,10 +7117,6 @@ Indicate an example (that is, nonfunctional) uniform resource locator.
 Indicate an electronic mail address.
 @xref{email,,@code{@@email}}.
 
-@ignore
-@item @@ctrl@{@var{ctrl-char}@}
-Use for an ASCII control character.
-@end ignore
 @end table
 
 
@@ -7683,54 +7679,6 @@ As a general rule, a sentence containing the defining occurrence of a
 term should be a definition of the term.  The sentence does not need
 to say explicitly that it is a definition, but it should contain the
 information of a definition---it should make the meaning clear.
-
-@ignore
-@c node ctrl, , cite, Indicating
-@c subsection @code{@@ctrl}@{@var{ctrl-char}@}
-@findex ctrl
-
-The @code{@@ctrl} command is seldom used.  It describes an ASCII
-control character by inserting the actual character into the Info
-file.
-
-Usually, in Texinfo, you talk what you type as keyboard entry by
-describing it with @code{@@kbd}: thus, @samp{@@kbd@{C-a@}} for
-@kbd{C-a}.  Use @code{@@kbd} in this way when talking about a control
-character that is typed on the keyboard by the user.  When talking
-about a control character appearing in a file or a string, do not use
-@code{@@kbd} since the control character is not typed.  Also, do not
-use @samp{C-} but spell out @code{control-}, as in @samp{control-a},
-to make it easier for a reader to understand.@refill
-
-@code{@@ctrl} is an idea from the beginnings of Texinfo which may not
-really fit in to the scheme of things.  But there may be times when
-you want to use the command.  The pattern is
-@code{@@ctrl@{@var{ch}@}}, where @var{ch} is an ASCII character
-whose control-equivalent is wanted.  For example, to specify
-@samp{control-f}, you would enter@refill
-
-@example
-@@ctrl@{f@}
-@end example
-
-@noindent
-produces
-
-@quotation
-@ctrl{f}
-@end quotation
-
-In the Info file, this generates the specified control character, output
-literally into the file.  This is done so a user can copy the specified
-control character (along with whatever else he or she wants) into another
-Emacs buffer and use it.  Since the `control-h',`control-i', and
-`control-j' characters are formatting characters, they should not be
-indicated with @code{@@ctrl}.@refill
-
-In a printed manual, @code{@@ctrl} generates text to describe or
-identify that control character: an uparrow followed by the character
-@var{ch}.@refill
-@end ignore
 
 
 @node abbr
@@ -12340,45 +12288,6 @@ example,
 generates two blank lines.
 
 The @code{@@sp} command is most often used in the title page.
-
-@ignore
-@c node br, page, sp, Breaks
-@c section @code{@@br}: Generate Paragraph Breaks
-@findex br @r{(paragraph breaks)}
-@cindex Paragraph breaks
-@cindex Breaks in a paragraph
-
-The @code{@@br} command forces a paragraph break.  It inserts a blank
-line.  You can use the command within or at the end of a line.  If
-used within a line, the @code{@@br@{@}} command must be followed by
-left and right braces (as shown here) to mark the end of the
-command.
-
-@need 700
-For example,
-
-@example
-@group
-This line @@br@{@}contains and is ended by paragraph breaks@@br
-and is followed by another line.
-@end group
-@end example
-
-@noindent
-produces
-
-@example
-@group
-This line
-
-contains and is ended by paragraph breaks
-
-and is followed by another line.
-@end group
-@end example
-
-The @code{@@br} command is seldom used.
-@end ignore
 
 
 @node page
@@ -20269,12 +20178,6 @@ Commands}.
 @item @@b@{@var{text}@}
 Set @var{text} in a @b{bold} font.  No effect in Info.  @xref{Fonts}.
 
-@ignore
-@item @@br
-Force a paragraph break.  If used within a line, follow @code{@@br}
-with braces.  @xref{br, , @code{@@br}}.
-@end ignore
-
 @item @@bullet@{@}
 Generate a large round dot, @bullet{} (@samp{*} in Info).  Often used
 with @code{@@table}.  @xref{bullet, , @code{@@bullet}}.
@@ -20377,12 +20280,6 @@ with @code{@@end cartouche}.  @xref{copying,, @code{@@copying}}.
 @item @@copyright@{@}
 Generate the copyright symbol @copyright{}.  @xref{copyright symbol,,
 @code{@@copyright@{@}}}.
-
-@ignore
-@item @@ctrl@{@var{ctrl-char}@}
-Describe an ASCII control character.  Insert actual control character
-into Info file.  @xref{ctrl, , @code{@@ctrl}}.
-@end ignore
 
 @item @@defcodeindex @var{index-name}
 Define a new index and its indexing command.  Print entries in an
@@ -22096,7 +21993,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.446 2012-06-15 18:31:38 karl Exp $
+$Id: texinfo.txi,v 1.447 2012-06-15 18:34:19 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22815,88 +22712,6 @@ you to the `Catching Mistakes' node.  (If you try this, you can return
 from the `Catching Mistakes' node by typing @kbd{l}
 (@code{Info-last}).)
 
-@c !!! section on using Elisp debugger ignored.
-@ignore
-Sometimes @code{texinfo-format-region} will stop long after the
-original error; this is because it does not discover the problem until
-then.  In this case, you will need to backtrack.
-
-@c menu
-@c * Using the Emacs Lisp Debugger::  How to use the Emacs Lisp debugger.
-@c end menu
-
-@c node Using the Emacs Lisp Debugger
-@c appendixsubsec Using the Emacs Lisp Debugger
-@c index Using the Emacs Lisp debugger
-@c index Emacs Lisp debugger
-@c index Debugger, using the Emacs Lisp
-
-If an error is especially elusive, you can turn on the Emacs Lisp
-debugger and look at the backtrace; this tells you where in the
-@code{texinfo-format-region} function the problem occurred.  You can
-turn on the debugger with the command:
-
-@example
-M-x set-variable @key{RET} debug-on-error @key{RET} t @key{RET}
-@end example
-
-@noindent
-and turn it off with
-
-@example
-M-x set-variable @key{RET} debug-on-error @key{RET} nil @key{RET}
-@end example
-
-Often, when you are using the debugger, it is easier to follow what is
-going on if you use the Emacs Lisp files that are not byte-compiled.
-The byte-compiled sources send octal numbers to the debugger that may
-look mysterious.  To use the uncompiled source files, load
-@file{texinfmt.el} and @file{texinfo.el} with the @kbd{M-x load-file}
-command.
-
-The debugger will not catch an error if @code{texinfo-format-region}
-does not detect one.  In the example shown above,
-@code{texinfo-format-region} did not find the error when the whole
-list was formatted, but only when part of the list was formatted.
-When @code{texinfo-format-region} did not find an error, the debugger
-did not find one either.
-
-However, when @code{texinfo-format-region} did report an error, it
-invoked the debugger.  This is the backtrace it produced:
-
-@example
----------- Buffer: *Backtrace* ----------
-Signalling: (search-failed "[@},]")
- re-search-forward("[@},]")
- (while ...)
- (let ...)
- texinfo-format-parse-args()
- (let ...)
- texinfo-format-xref()
- funcall(texinfo-format-xref)
- (if ...)
- (let ...)
- (if ...)
- (while ...)
- texinfo-format-scan()
- (save-excursion ...)
- (let ...)
- texinfo-format-region(103370 103631)
-* call-interactively(texinfo-format-region)
----------- Buffer: *Backtrace* ----------
-@end example
-
-The backtrace is read from the bottom up.
-@code{texinfo-format-region} was called interactively; and it, in
-turn, called various functions, including @code{texinfo-format-scan},
-@code{texinfo-format-xref} and @code{texinfo-format-parse-args}.
-Inside the function @code{texinfo-format-parse-args}, the function
-@code{re-search-forward} was called; it was this function that could
-not find the missing right-hand brace.
-
-@xref{Lisp Debug, , Debugging Emacs Lisp, emacs, The GNU Emacs
-Manual}, for more information.
-@end ignore
 
 @node Debugging with @TeX{}
 @section Debugging with @TeX{}
@@ -23318,13 +23133,6 @@ automatically by the formatting command; you only need to create a tag
 table yourself if you are doing the job manually.  Most likely, you
 will do this for a large, unsplit file on which you have run
 @code{Info-validate}.)
-
-@c Info-split is autoloaded in `loaddefs.el' in Emacs 18.51
-@ignore
-Before running @code{Info-split}, you need to load the @code{info} library
-into Emacs by giving the command @kbd{M-x load-library @key{RET} info
-@key{RET}}.
-@end ignore
 
 Visit the Info file you wish to tagify and split and type the two
 commands:
