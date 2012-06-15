@@ -2944,6 +2944,7 @@ sub _end_line($$$)
            and $current->{'contents'}->[-1]->{'extra'}->{'command'}->{'cmdname'} eq 'verbatim') {
     $current = $self->_begin_preformatted($current);
   # misc command line arguments
+  # Never go here if skipline/noarg/...
   } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
     my $context = pop @{$self->{'context_stack'}};
@@ -4133,6 +4134,9 @@ sub _parse_texi($;$)
             $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
             $self->_register_global_command($command, $misc, $line_nr);
 
+            $current = $self->_begin_preformatted($current)
+              if ($close_preformatted_commands{$command});
+
           # all the cases using the raw line
           } elsif ($arg_spec eq 'skipline' or $arg_spec eq 'lineraw'
                    or $arg_spec eq 'special') {
@@ -4170,6 +4174,9 @@ sub _parse_texi($;$)
             $current = _end_line ($self, $current, $line_nr);
 
             last NEXT_LINE if ($command eq 'bye');
+            # This is not done in _end_line is there is no misc_line_arg
+            $current = $self->_begin_preformatted($current)
+              if ($close_preformatted_commands{$command});
             last;
           } else {
             # $arg_spec is text, line, skipspace or a number

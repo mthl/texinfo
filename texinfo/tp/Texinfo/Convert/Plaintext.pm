@@ -1331,7 +1331,7 @@ sub _convert($$)
       return $root->{'text'};
     # ignore text outside of any format, but warn if ignored text not empty
     } elsif ($root->{'text'} =~ /\S/) {
-      warn "BUG: ignored text not empty `$root->{'text'}'\n";
+      $self->_bug_message("ignored text not empty `$root->{'text'}'", $root);
       return '';
     }
   }

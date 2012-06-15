@@ -145,6 +145,18 @@ no comment, no blank after
 @end example
 Para.
 '],
+['page_in_example',
+'@example
+@page
+text
+@end example
+'],
+['insertcopying_in_example',
+'@example
+@insertcopying
+text
+@end example
+'],
 );
 
 my @test_invalid = (

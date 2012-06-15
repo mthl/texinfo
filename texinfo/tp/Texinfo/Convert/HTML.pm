@@ -4634,7 +4634,6 @@ sub converter_initialize($)
       and $self->get_conf('SPLIT') ne 'node') {
     $self->force_conf('SPLIT', 'node');
   }
-  #$self->_translate_names();
 
   return $self;
 }
@@ -6790,6 +6789,12 @@ sub output($$)
     return undef if (!$status);
   }
 
+  # FIXME here call _unset_global_multiple_commands?  Problem is
+  # that some conversion, for instance for page header requires
+  # that the correct language is set, for instance.  The @-command
+  # will necessarily appear later on -- even if it appears a the
+  # beginning of the file.
+  #
   # Now do the output
   my $fh;
   my $output = '';
