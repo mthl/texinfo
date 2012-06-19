@@ -1,7 +1,13 @@
+2012-06-19  Patrice Dumas  <pertusus@free.fr>
+        and Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Menus): general updates throughout
+	the chapter.
+
 2012-06-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: remove all now-unnecessary @refill's
-	and @ignore blocks relating to the long-gone @ctrl and @br,
+	and @ignore blocks relating to the long-gone @ctrl, @br, etc.,
 	for source clarity.
 
 2012-06-14  Patrice Dumas  <pertusus@free.fr>

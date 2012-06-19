@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.447 2012-06-15 18:34:19 karl Exp $
+@c $Id: texinfo.txi,v 1.448 2012-06-19 23:16:42 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5530,13 +5530,13 @@ the two approaches.
 you use menus to go to such nodes.  Menus have no effect in printed
 manuals and do not appear in them.
 
-A node with a menu should not contain much text.  If you find yourself
-writing a lot of text before a menu, we generally recommend moving
-most of the text into a new subnode---all but a paragraph or two.
+It's usually best if a node with a menu does not contain much text.
+If you find yourself with a lot of text before a menu, we generally
+recommend moving all but a couple of paragraphs into a new subnode.
 Otherwise, it is easy for readers to miss the menu.
 
 @menu
-* Menu Location::               Menus go at the ends of short nodes.
+* Menu Location::               Menus go at the ends of nodes.
 * Writing a Menu::              What is a menu?
 * Menu Parts::                  A menu entry has three parts.
 * Less Cluttered Menu Entry::   Two part menu entry.
@@ -5579,7 +5579,7 @@ of making the printed output look better, because there was no very
 short text between two headings on the page.  But this also does not
 work with @command{makeinfo}'s implicit pointer creation, and it also
 makes the XML output incorrect, since it does not reflect the true
-document structure.  So, regrettably, we can no longer recommend this.
+document structure.  So, we no longer recommend this.
 
 
 @node Writing a Menu
@@ -5661,9 +5661,10 @@ The third part of a menu entry is a descriptive phrase or sentence.
 Menu entry names and node names are often short; the description
 explains to the reader what the node is about.  A useful description
 complements the node name rather than repeats it.  The description,
-which is optional, can spread over two or more lines; if it does, some
-authors prefer to indent the second line while others prefer to align it
-with the first (and all others).  It's up to you.
+which is optional, can spread over multiple lines; if it does, some
+authors prefer to indent the second line while others prefer to align
+it with the first (and all others).  It's up to you.  An empty line,
+or the next menu entry, ends a description.
 
 
 @node Less Cluttered Menu Entry
@@ -5776,24 +5777,19 @@ Since no file name is specified with either @samp{Files} or
 
 You can create a menu entry that enables a reader in Info to go to a
 node in another Info file by writing the file name in parentheses just
-before the node name.  In this case, you should use the three-part menu
-entry format, which saves the reader from having to type the file
-name.
-
-@need 800
-The format looks like this:
+before the node name.  Some examples:
 
 @example
 @group
 @@menu
 * @var{first-entry-name}:(@var{filename})@var{nodename}.     @var{description}
-* @var{second-entry-name}:(@var{filename})@var{second-node}. @var{description}
+* (@var{filename})@var{second-node}::                  @var{description}
 @@end menu
 @end group
 @end example
 
 For example, to refer directly to the @samp{Outlining} and
-@samp{Rebinding} nodes in the @cite{Emacs Manual}, you would write a
+@samp{Rebinding} nodes in the @cite{Emacs Manual}, you could write a
 menu like this:
 
 @example
@@ -5801,34 +5797,22 @@ menu like this:
 @@menu
 * Outlining: (emacs)Outline Mode. The major mode for
                                    editing outlines.
-* Rebinding: (emacs)Rebinding.    How to redefine the
+* (emacs)Rebinding::              How to redefine the
                                    meaning of a key.
 @@end menu
 @end group
 @end example
 
 If you do not list the node name, but only name the file, then Info
-presumes that you are referring to the `Top' node.
-
-The @file{dir} file that contains the main menu for Info has menu
-entries that list only file names.  These take you directly to the `Top'
-nodes of each Info document.  (@xref{Installing an Info File}.)
-
-@need 700
-For example:
+presumes that you are referring to the `Top' node.  Examples:
 
 @example
 @group
 * Info: (info).         Documentation browsing system.
-* Emacs: (emacs).       The extensible, self-documenting
-                       text editor.
+* (emacs)::             The extensible, self-documenting
+                         text editor.
 @end group
 @end example
-
-@noindent
-(The @file{dir} top level directory for the Info system is an Info file,
-not a Texinfo file, but a menu entry looks the same in both types of
-file.)
 
 The GNU Emacs Texinfo mode menu updating commands only work with nodes
 within the current buffer, so you cannot use them to create menus that
@@ -21993,7 +21977,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.447 2012-06-15 18:34:19 karl Exp $
+$Id: texinfo.txi,v 1.448 2012-06-19 23:16:42 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
