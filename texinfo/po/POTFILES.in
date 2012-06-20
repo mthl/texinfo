@@ -26,7 +26,6 @@ info/tilde.c
 info/variables.c
 info/window.c
 install-info/install-info.c
-lib/xexit.c
 tp/DebugTexinfo/DebugTree.pm
 tp/Texinfo/Common.pm
 tp/Texinfo/Convert/Converter.pm
