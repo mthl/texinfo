@@ -309,13 +309,13 @@ $result_texts{'empty_deftypeop_name'} = 'Command on com: Windowint expose exp
 
 $result_errors{'empty_deftypeop_name'} = [
   {
-    'error_line' => ':1: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

@@ -285,13 +285,13 @@ $result_sectioning{'section_on_defx_line'}{'section_childs'}[0]{'section_up'} = 
 
 $result_errors{'section_on_defx_line'} = [
   {
-    'error_line' => ':1: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':2: warning: @section should only appear at a line beginning

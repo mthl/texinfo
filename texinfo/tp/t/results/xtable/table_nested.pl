@@ -3018,112 +3018,112 @@ After table.
 
 $result_errors{'table_nested'} = [
   {
-    'error_line' => ':27: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':27: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 27,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':27: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':27: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 27,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':27: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':27: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 27,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':27: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':27: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 27,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':32: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':32: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':32: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':32: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':32: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':32: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':32: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':32: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':38: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':38: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 38,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':38: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':38: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 38,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':38: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':38: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 38,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':38: Entry for index `vr\' outside of any node (possibly involving @myvtable)
+    'error_line' => ':38: warning: Entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
     'file_name' => '',
     'line_nr' => 38,
     'macro' => 'myvtable',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

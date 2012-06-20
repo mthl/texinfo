@@ -467,13 +467,13 @@ in item before end table
 
 $result_errors{'empty_item_itemx'} = [
   {
-    'error_line' => ':5: Entry for index `vr\' outside of any node
+    'error_line' => ':5: warning: Entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':6: warning: @itemx missing argument
@@ -485,13 +485,13 @@ $result_errors{'empty_item_itemx'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: Entry for index `vr\' outside of any node
+    'error_line' => ':7: warning: Entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':8: warning: @item missing argument
@@ -503,13 +503,13 @@ $result_errors{'empty_item_itemx'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: Entry for index `vr\' outside of any node
+    'error_line' => ':9: warning: Entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

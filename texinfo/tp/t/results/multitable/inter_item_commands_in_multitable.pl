@@ -1173,31 +1173,31 @@ thing
 
 $result_errors{'inter_item_commands_in_multitable'} = [
   {
-    'error_line' => ':6: Entry for index `cp\' outside of any node
+    'error_line' => ':6: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':17: Entry for index `cp\' outside of any node
+    'error_line' => ':17: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':23: Entry for index `cp\' outside of any node
+    'error_line' => ':23: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

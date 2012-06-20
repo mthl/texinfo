@@ -1625,13 +1625,13 @@ $result_errors{'things_before_setfilename'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => 'things_before_setfilename.texi:38: Entry for index `cp\' outside of any node
+    'error_line' => 'things_before_setfilename.texi:38: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => 'things_before_setfilename.texi',
     'line_nr' => 38,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => 'things_before_setfilename.texi:40: warning: Printindex before document beginning: @printindex cp

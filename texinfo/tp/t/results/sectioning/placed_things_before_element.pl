@@ -1090,13 +1090,13 @@ $result_errors{'placed_things_before_element'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':28: Entry for index `cp\' outside of any node
+    'error_line' => ':28: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 28,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

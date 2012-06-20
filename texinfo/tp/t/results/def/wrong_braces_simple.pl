@@ -1674,13 +1674,13 @@ $result_errors{'wrong_braces_simple'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':4: Misplaced }
@@ -1692,13 +1692,13 @@ $result_errors{'wrong_braces_simple'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Entry for index `fn\' outside of any node
+    'error_line' => ':4: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':7: Misplaced {
@@ -1710,13 +1710,13 @@ $result_errors{'wrong_braces_simple'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: Entry for index `fn\' outside of any node
+    'error_line' => ':7: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':10: Misplaced {
@@ -1728,22 +1728,22 @@ $result_errors{'wrong_braces_simple'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':10: Entry for index `fn\' outside of any node
+    'error_line' => ':10: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':13: Entry for index `fn\' outside of any node
+    'error_line' => ':13: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':14: Misplaced }
@@ -1755,13 +1755,13 @@ $result_errors{'wrong_braces_simple'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':14: Entry for index `fn\' outside of any node
+    'error_line' => ':14: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':15: Misplaced }
@@ -1773,13 +1773,13 @@ $result_errors{'wrong_braces_simple'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: Entry for index `fn\' outside of any node
+    'error_line' => ':15: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':16: Misplaced {
@@ -1791,13 +1791,13 @@ $result_errors{'wrong_braces_simple'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':16: Entry for index `fn\' outside of any node
+    'error_line' => ':16: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':17: Misplaced {
@@ -1809,13 +1809,13 @@ $result_errors{'wrong_braces_simple'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':17: Entry for index `fn\' outside of any node
+    'error_line' => ':17: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

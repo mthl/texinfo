@@ -361,13 +361,13 @@ truc: bidulr machin...
 
 $result_errors{'defx_after_paragraph_end'} = [
   {
-    'error_line' => ':1: Entry for index `fn\' outside of any node
+    'error_line' => ':1: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':4: Must be after `@deffn\' to use `@deffnx\'
@@ -379,13 +379,13 @@ $result_errors{'defx_after_paragraph_end'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: Entry for index `fn\' outside of any node
+    'error_line' => ':4: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

@@ -1685,94 +1685,94 @@ abb
 
 $result_errors{'inter_item_commands_in_table'} = [
   {
-    'error_line' => ':3: Entry for index `vr\' outside of any node
+    'error_line' => ':3: warning: Entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':8: Entry for index `vr\' outside of any node
+    'error_line' => ':8: warning: Entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':10: Entry for index `vr\' outside of any node
+    'error_line' => ':10: warning: Entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':15: Entry for index `fn\' outside of any node
+    'error_line' => ':15: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':16: Entry for index `cp\' outside of any node
+    'error_line' => ':16: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':19: Entry for index `fn\' outside of any node
+    'error_line' => ':19: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':21: Entry for index `fn\' outside of any node
+    'error_line' => ':21: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 21,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':25: Entry for index `fn\' outside of any node
+    'error_line' => ':25: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 25,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':31: Entry for index `cp\' outside of any node
+    'error_line' => ':31: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 31,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':38: Entry for index `cp\' outside of any node
+    'error_line' => ':38: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 38,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

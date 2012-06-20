@@ -249,13 +249,13 @@ $result_menus{'index_entry_before_first_node'} = {
 
 $result_errors{'index_entry_before_first_node'} = [
   {
-    'error_line' => ':2: Entry for index `cp\' outside of any node
+    'error_line' => ':2: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

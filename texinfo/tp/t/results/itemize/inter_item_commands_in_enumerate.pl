@@ -378,13 +378,13 @@ Title
 
 $result_errors{'inter_item_commands_in_enumerate'} = [
   {
-    'error_line' => ':9: Entry for index `cp\' outside of any node
+    'error_line' => ':9: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

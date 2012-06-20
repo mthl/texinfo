@@ -211,22 +211,22 @@ $result_texts{'index_entries'} = '
 
 $result_errors{'index_entries'} = [
   {
-    'error_line' => ':1: Entry for index `cp\' outside of any node
+    'error_line' => ':1: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':5: Entry for index `truc\' outside of any node
+    'error_line' => ':5: warning: Entry for index `truc\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
     'text' => 'Entry for index `truc\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

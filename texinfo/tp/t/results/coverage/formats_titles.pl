@@ -982,13 +982,13 @@ item multit tab multit
 
 $result_errors{'formats_titles'} = [
   {
-    'error_line' => ':18: Entry for index `vr\' outside of any node
+    'error_line' => ':18: warning: Entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 18,
     'macro' => '',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

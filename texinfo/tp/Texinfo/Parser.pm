@@ -2444,7 +2444,7 @@ sub _enter_index_entry($$$$$$$)
   } elsif ($self->{'current_node'}) {
     $index_entry->{'node'} = $self->{'current_node'};
   } elsif (!$self->{'current_section'}) {
-    $self->line_error (sprintf($self->__("Entry for index `%s' outside of any node"), 
+    $self->line_warn (sprintf($self->__("Entry for index `%s' outside of any node"), 
                                $index_name), $line_nr);
   }
   #print STDERR "INDEX ENTRY \@$command->{'cmdname'} $index_name($number)\n";

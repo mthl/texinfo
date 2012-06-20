@@ -612,13 +612,13 @@ $result_errors{'no_category_or_no_name'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: Entry for index `fn\' outside of any node
+    'error_line' => ':9: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':10: warning: Missing name for @deffnx

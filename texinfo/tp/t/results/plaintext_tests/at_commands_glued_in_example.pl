@@ -756,13 +756,13 @@ $result_errors{'at_commands_glued_in_example'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: Entry for index `cp\' outside of any node
+    'error_line' => ':15: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':8: @ref reference to nonexistent node `Top\'

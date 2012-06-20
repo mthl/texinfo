@@ -1119,13 +1119,13 @@ $result_menus{'before_node_and_section'}{'menu_child'}{'menu_up'} = $result_menu
 
 $result_errors{'before_node_and_section'} = [
   {
-    'error_line' => ':3: Entry for index `cp\' outside of any node
+    'error_line' => ':3: warning: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
     'text' => 'Entry for index `cp\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':7: @menu seen before first @node

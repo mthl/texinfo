@@ -434,13 +434,13 @@ in table in format
 
 $result_errors{'preformatted'} = [
   {
-    'error_line' => ':10: Entry for index `vr\' outside of any node
+    'error_line' => ':10: warning: Entry for index `vr\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
     'text' => 'Entry for index `vr\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

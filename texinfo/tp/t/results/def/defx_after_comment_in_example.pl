@@ -442,22 +442,22 @@ truc: bidulr machin...
 
 $result_errors{'defx_after_comment_in_example'} = [
   {
-    'error_line' => ':2: Entry for index `fn\' outside of any node
+    'error_line' => ':2: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
-    'error_line' => ':4: Entry for index `fn\' outside of any node
+    'error_line' => ':4: warning: Entry for index `fn\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
     'text' => 'Entry for index `fn\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

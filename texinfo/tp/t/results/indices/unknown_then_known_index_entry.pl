@@ -153,13 +153,13 @@ $result_errors{'unknown_then_known_index_entry'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: Entry for index `some\' outside of any node
+    'error_line' => ':3: warning: Entry for index `some\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
     'text' => 'Entry for index `some\' outside of any node',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 
