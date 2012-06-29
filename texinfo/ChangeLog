@@ -1,3 +1,10 @@
+2012-06-29  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (top command): new node, merging the
+	mostly-redundant information from the nodes:
+	(makeinfo top command, makeinfo top): remove these.
+	Leave anchors with the old node names behind.
+
 2012-06-19  Patrice Dumas  <pertusus@free.fr>
         and Karl Berry  <karl@gnu.org>
 

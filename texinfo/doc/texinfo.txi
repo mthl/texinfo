@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.450 2012-06-28 00:00:28 karl Exp $
+@c $Id: texinfo.txi,v 1.451 2012-06-29 17:48:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -278,7 +278,6 @@ Chapter Structuring
 
 * Tree Structuring::            A manual is like an upside down tree @dots{}
 * Structuring Command Types::   How to divide a manual into parts.
-* makeinfo top::                The @code{@@top} command for the `Top' node.
 * chapter::
 * unnumbered & appendix::
 * majorheading & chapheading::
@@ -306,7 +305,7 @@ The @code{@@node} Command
 * Node Line Tips::              Keep names short.
 * Node Line Requirements::      Keep names unique, without @@-commands.
 * First Node::                  How to write a `Top' node.
-* makeinfo top command::        How to use the @code{@@top} command.
+* top command::                 How to use the @code{@@top} command.
 
 Menus
 
@@ -3802,8 +3801,8 @@ information you feel a reader would find helpful.
 @findex top
 It is conventional and desirable to write an @code{@@top} sectioning
 command line containing the title of the document immediately after
-the @code{@@node Top} line (@pxref{makeinfo top command, , The
-@code{@@top} Sectioning Command}).
+the @code{@@node Top} line (@pxref{top command,, The @code{@@top}
+Sectioning Command}).
 
 The contents of the `Top' node should appear only in the online output;
 none of it should appear in printed output, so enclose it between
@@ -4368,7 +4367,6 @@ or other formats.
 @menu
 * Tree Structuring::            A manual is like an upside down tree @dots{}
 * Structuring Command Types::   How to divide a manual into parts.
-* makeinfo top::                The @code{@@top} command for the `Top' node.
 * chapter::
 * unnumbered & appendix::
 * majorheading & chapheading::
@@ -4463,8 +4461,9 @@ table of contents.
 The @code{@@unnumbered} series of commands produce unnumbered entries
 both in the body of a document and in its table of contents.  The
 @code{@@top} command, which has a special use, is a member of this
-series (@pxref{makeinfo top, , @code{@@top}}).  An @code{@@unnumbered}
-section is a normal part of the document structure.
+series (@pxref{top command,, The @code{@@top} Sectioning Command}).
+An @code{@@unnumbered} section is a normal part of the document
+structure.
 
 @item
 The @code{@@heading} series of commands produce simple unnumbered
@@ -4497,29 +4496,6 @@ Here is a summary:
 @tex
 {\globaldefs=1 \textfonts \rm}
 @end tex
-
-
-@c FIXXME more or less a duplicate of 'makeinfo top'
-@node makeinfo top
-@section @code{@@top}
-
-The @code{@@top} command is a special sectioning command that you
-should only use after an @samp{@@node Top} line at the beginning of a
-Texinfo file.  The @code{@@top} command tells the @code{makeinfo}
-formatter which node is to be used as the root of the node tree (if
-your manual uses implicit node pointers).  It produces the same sort
-of output as @code{@@unnumbered} (@pxref{unnumbered & appendix,,
-@code{@@unnumbered} and @code{@@appendix}}).  For detailed
-information, see @ref{makeinfo top command, , The @code{@@top}
-Command}.
-
-The @code{@@top} node is conventionally wrapped in an
-@code{@@ifnottex} conditional so that it will not appear in @TeX{}
-output.
-
-@code{@@top} is ignored when raising or lowering sections
-(@pxref{Raise/lower sections}).  That is, it is never lowered and
-nothing can be raised to it.
 
 
 @node chapter
@@ -5165,7 +5141,7 @@ References}.
 * Node Line Tips::              Keep names short.
 * Node Line Requirements::      Keep names unique.
 * First Node::                  How to write a `Top' node.
-* makeinfo top command::        How to use the @code{@@top} command.
+* top command::                 How to use the @code{@@top} command.
 @end menu
 
 
@@ -5414,29 +5390,26 @@ tools implicitly define them, with this simple result:
 @end example
 
 
-@node makeinfo top command
+@node top command
 @subsection The @code{@@top} Sectioning Command
 @findex top
 
-A special sectioning command, @code{@@top} should be used after the
-@code{@@node Top} line.  The @code{@@top} sectioning command tells
-@code{makeinfo} that it marks the top-level node in the file.  It provides
-the information that @code{makeinfo} needs to insert node pointers
-automatically.  Write the @code{@@top} command at the beginning of the
-line immediately following the @code{@@node Top} line, followed by the
-text of the title (on the same line).
+@anchor{makeinfo top}@c name of an older node with this info
+@anchor{makeinfo top command}@c another name
 
-In Info, the @code{@@top} sectioning command causes the title to appear
-on a line by itself, with a line of asterisks inserted underneath, as
-other sectioning commands do.
+The @code{@@top} command is a special sectioning command that you
+should only use after an @samp{@@node Top} line at the beginning of a
+Texinfo file.  The @code{@@top} command tells the @code{makeinfo}
+formatter which node is to be used as the root of the node tree
+(needed if your manual uses implicit node pointers).
 
-In @TeX{} and @code{texinfo-format-buffer}, the @code{@@top}
-sectioning command is merely a synonym for @code{@@unnumbered}.
-Neither of these formatters require an @code{@@top} command, and do
-nothing special with it.  Indeed, it's conventional for the `Top' node
-to be delimited by @code{@@ifnottex}, so that @TeX{} will not see it
-(@pxref{Conditionals}).
+It produces the same sort of output as @code{@@unnumbered}
+(@pxref{unnumbered & appendix,, @code{@@unnumbered} and
+@code{@@appendix}}).
 
+The @code{@@top} node is conventionally wrapped in an
+@code{@@ifnottex} conditional so that it will not appear in @TeX{}
+output (@pxref{Conditionals}).
 Thus, in practice, a Top node usually looks like this:
 
 @example
@@ -5446,8 +5419,11 @@ Thus, in practice, a Top node usually looks like this:
 
 @var{very-high-level-summary}
 @@end ifnottex
-
 @end example
+
+@code{@@top} is ignored when raising or lowering sections.  That is,
+it is never lowered and nothing can be raised to it
+(@pxref{Raise/lower sections}).
 
 
 @node makeinfo Pointer Creation
@@ -5468,7 +5444,7 @@ or @code{@@section}, on the line immediately following each truncated
 
 In addition, you must follow the `Top' @code{@@node} line with a line
 beginning with @code{@@top} to mark the top-level node in the
-file.  @xref{makeinfo top, , @code{@@top}}.
+file.  @xref{top command,, The @code{@@top} Sectioning Command}.
 
 Finally, you must write the name of each node (except for the `Top'
 node) in a menu that is one or more hierarchical levels above the
@@ -22006,7 +21982,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.450 2012-06-28 00:00:28 karl Exp $
+$Id: texinfo.txi,v 1.451 2012-06-29 17:48:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
