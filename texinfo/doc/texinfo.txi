@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.451 2012-06-29 17:48:27 karl Exp $
+@c $Id: texinfo.txi,v 1.452 2012-07-03 22:38:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -37,7 +37,7 @@
 @copying
 This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
 a documentation system that can produce both online information and a
-printed manual from a single source.
+printed manual from a single source using semantic markup.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
 1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
@@ -129,7 +129,7 @@ Cover art by Etienne Suvasa.
 
 This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
 a documentation system that can produce both online information and a
-printed manual from a single source.
+printed manual from a single source using semantic markup.
 
 The first part of this master menu lists the major nodes in this Info
 document, including the @@-command and concept indices.  The rest of
@@ -185,6 +185,8 @@ Overview of Texinfo
 * Reporting Bugs::              Submitting effective bug reports.
 * Using Texinfo::               Create printed or online output.
 * Output Formats::              Overview of the supported output formats.
+* Adding Output Formats::       Man pages and implementing new formats.
+* Texinfo Document Structure::  How Texinfo manuals are usually arranged.
 * Info Files::                  What is an Info file?
 * Printed Books::               Characteristics of a printed book or manual.
 * Formatting Commands::         @@-commands are used for formatting.
@@ -728,7 +730,6 @@ Info Format Text Constructs
 * Image: Info Format Image.
 * Printindex: Info Format Printindex.
 * Xref:  Info Format Cross Reference.
-
 @end detailmenu
 @end menu
 
@@ -787,27 +788,49 @@ License}).
 @cindex Overview of Texinfo
 @cindex Texinfo overview
 
-@dfn{Texinfo}@footnote{The first syllable of ``Texinfo'' is pronounced
-like ``speck'', not ``hex''.  This odd pronunciation is derived from,
-but is not the same as, the pronunciation of @TeX{}.  In the word
-@TeX{}, the @samp{X} is actually the Greek letter ``chi'' rather than
-the English letter ``ex''.  Pronounce @TeX{} as if the @samp{X} were the
-last sound in the name `Bach'; but pronounce Texinfo as if the @samp{x}
-were a `k'.  Spell ``Texinfo'' with a capital ``T'' and the other
-letters in lower case.}  is a documentation system that uses a single
-source file to produce both online information and printed output.  This
-means that instead of writing two different documents, one for the
-online information and the other for a printed work, you need write only
-one document.  Therefore, when the work is revised, you need revise only
+@dfn{Texinfo} is a documentation system that uses a single source file
+to produce both online information and printed output.  This means
+that instead of writing two different documents, one for the online
+information and the other for a printed work, you need write only one
+document.  Therefore, when the work is revised, you need revise only
 that one document.
 
+@cindex Semantic markup
+Texinfo's markup commands are almost entirely @dfn{semantic}; that is,
+they specify the intended meaning of text in the document, rather than
+physical formatting instructions.
+
+@cindex Limited scope of Texinfo
+Texinfo was devised for the purpose of writing software documentation
+and manuals.  It is not, and was never intended to be, a
+general-purpose formatting program.  If you need to lay out a
+newspaper, devise a glossy magazine ad, or follow the exact formatting
+requirements of a publishing house, Texinfo is not the simplest tool.
+On the other hand, if you want to write a good manual for your
+program, Texinfo has many features that will make your job easier.
+Overall, it's intended to let you concentrate on the content, and thus
+provides almost no commands for controlling the final formatting.
+
+@cindex Pronounciation of Texinfo
+@cindex Spelling of Texinfo
+The first syllable of ``Texinfo'' is pronounced like ``speck'', not
+``hex''.  This odd pronunciation is derived from, but is not the same
+as, the pronunciation of @TeX{}.  In the word @TeX{}, the @samp{X} is
+actually the Greek letter ``chi'' rather than the English letter
+``ex''.  Pronounce @TeX{} as if the @samp{X} were the last sound in
+the name `Bach'; but pronounce Texinfo as if the @samp{x} were a `k'.
+Spell ``Texinfo'' with a capital ``T'' and the other letters in lower
+case.
+
 Manuals for most GNU packages are written in Texinfo, and available
-online at @url{http://www.gnu.org/doc}.
+online at @url{http://www.gnu.org/doc}.  The Texinfo 
 
 @menu
 * Reporting Bugs::              Submitting effective bug reports.
 * Using Texinfo::               Create printed or online output.
 * Output Formats::              Overview of the supported output formats.
+* Adding Output Formats::       Man pages and implementing new formats.
+* Texinfo Document Structure::  How Texinfo manuals are usually arranged.
 * Info Files::                  What is an Info file?
 * Printed Books::               Characteristics of a printed book or manual.
 * Formatting Commands::         @@-commands are used for formatting.
@@ -826,10 +849,10 @@ online at @url{http://www.gnu.org/doc}.
 @cindex Bugs, reporting
 @cindex Suggestions for Texinfo, making
 @cindex Reporting bugs
-We welcome bug reports and suggestions for any aspect of the Texinfo system,
-programs, documentation, installation, anything.  Please email them to
-@email{bug-texinfo@@gnu.org}.  You can get the latest version of Texinfo
-from @uref{http://ftp.gnu.org/gnu/texinfo/} and its mirrors worldwide.
+We welcome bug reports and suggestions for any aspect of the Texinfo
+system: programs, documentation, installation, etc.  Please email them
+to @email{bug-texinfo@@gnu.org}.  You can get the latest version of
+Texinfo via its home page, @uref{http://www.gnu.org/software/texinfo}.
 
 @cindex Checklist for bug reports
 For bug reports, please include enough information for the maintainers
@@ -837,10 +860,10 @@ to reproduce the problem.  Generally speaking, that means:
 
 @itemize @bullet
 @item the version number of Texinfo and the program(s) or manual(s) involved.
-@item hardware and operating system names and versions.
-@item the contents of any input files necessary to reproduce the bug.
+@item the contents of any input files necessary to reproduce the bug,
+and precisely how you ran any program(s) involved.
 @item a description of the problem and samples of any erroneous output.
-@item any unusual options you gave to @command{configure}.
+@item hardware and operating system names and versions.
 @item anything else that you think would be helpful.
 @end itemize
 
@@ -849,9 +872,9 @@ better to include too much than to leave out something important.
 
 @cindex Patches, contributing
 Patches are most welcome; if possible, please make them with
-@samp{@w{diff -c}} (@pxref{Top,, Overview, diff, Comparing and Merging
-Files}) and include @file{ChangeLog} entries (@pxref{Change Log,,,
-emacs, The GNU Emacs Manual}), and follow the existing coding style.
+@samp{@w{diff -c}} (@pxref{Top,,, diff, Comparing and Merging Files})
+and include @file{ChangeLog} entries (@pxref{Change Log,,, emacs, The
+GNU Emacs Manual}), and follow the existing coding style.
 
 
 @node Using Texinfo
@@ -868,24 +891,22 @@ file, you can create an Info file with special features to make
 documentation browsing easy.  You can also create from that same
 source file an HTML output file suitable for use with a web browser,
 or an XML file.  See the next section (@pxref{Output Formats}) for
-details and the exact commands to generate output from the source.
+details and sample commands to generate output from the source.
 
-@TeX{} works with virtually all printers; Info works with virtually all
-computer terminals; the HTML output works with virtually all web
-browsers.  Thus Texinfo can be used by almost any computer user.
+@TeX{} works with virtually all printers; Info works with virtually
+all computer terminals; the HTML output works with virtually all web
+browsers.  Thus Texinfo and its output can be used by almost any
+computer user.
 
 @cindex Source file format
 A Texinfo source file is a plain ASCII file containing text
 interspersed with @dfn{@@-commands} (words preceded by an @samp{@@})
-that tell the typesetting and formatting programs what to do.  You can
-edit a Texinfo file with any text editor, but it is especially
-convenient to use GNU Emacs since that editor has a special mode,
-called Texinfo mode, that provides various Texinfo-related features.
-(@xref{Texinfo Mode}.)
+that tell the Texinfo processors what to do.  You can edit a Texinfo
+file with any text editor, but it is especially convenient to use GNU
+Emacs since that editor has a special mode, called Texinfo mode, that
+provides various Texinfo-related features.  (@xref{Texinfo Mode}.)
 
-You can use Texinfo to create both online help and printed manuals;
-moreover, Texinfo is freely redistributable.  For these reasons, Texinfo
-is the official documentation format of the GNU project.  More
+Texinfo is the official documentation format of the GNU project.  More
 information is available at the @uref{http://www.gnu.org/doc/, GNU
 documentation web page}.
 
@@ -901,21 +922,20 @@ Texinfo.
 @table @asis
 @item Info
 @cindex Info output, overview
-(Generated via @command{makeinfo}.)  This format is essentially a
-plain text transliteration of the Texinfo source.  It adds a few
-control characters to separate nodes and provide navigational
-information for menus, cross references, indices, and so on.  See the
-next section (@pxref{Info Files}) for more details on this format.
-The Emacs Info subsystem (@pxref{Top,, Getting Started, info, Info}),
-and the standalone @command{info} program (@pxref{Top,, Info
-Standalone, info-stnd, GNU Info}), among others, can read these files.
-@xref{Creating and Installing Info Files}.
+(Generated via @command{makeinfo}.)  Info format is mostly a plain
+text transliteration of the Texinfo source.  It adds a few control
+characters to separate nodes and provide navigational information for
+menus, cross references, indices, and so on.  The Emacs Info subsystem
+(@pxref{Top,,, info, Info}), and the standalone @command{info} program
+(@pxref{Top,,, info-stnd, GNU Info}), among others, can read these
+files.  @xref{Info Files}, and @ref{Creating and Installing Info
+Files}.
 
 @item Plain text
 @cindex Plain text output, overview
 (Generated via @command{makeinfo --plaintext}.)  This is almost the
-same as Info output, except the navigational control characters are
-omitted.  Also, standard output is used by default.
+same as Info output with the navigational control characters are
+omitted.
 
 @item HTML
 @cindex HTML output, overview
@@ -923,12 +943,12 @@ omitted.  Also, standard output is used by default.
 @cindex Mozilla
 @cindex Lynx
 @cindex Emacs-W3
-(Generated via @command{makeinfo --html}.)  This is the Hyper Text
-Markup Language that has become the most commonly used language for
+(Generated via @command{makeinfo --html}.)  HTML, standing for Hyper
+Text Markup Language, has become the most commonly used language for
 writing documents on the World Wide Web.  Web browsers, such as
 Mozilla, Lynx, and Emacs-W3, can render this language online.  There
-are many versions of HTML; @command{makeinfo} tries to use a subset
-of the language that can be interpreted by any common browser.  For
+are many versions of HTML; @command{makeinfo} tries to use a subset of
+the language that can be interpreted by any common browser.  For
 details of the HTML language and much related information, see
 @uref{http://www.w3.org/MarkUp/}.  @xref{Generating HTML}.
 
@@ -936,28 +956,26 @@ details of the HTML language and much related information, see
 @cindex DVI output, overview
 @pindex dvips
 @pindex xdvi
-(Generated via @command{texi2dvi}.)  This DeVIce Independent binary
+(Generated via @command{texi2dvi}.)  The DeVIce Independent binary
 format is output by the @TeX{} typesetting program
 (@uref{http://tug.org}).  This is then read by a DVI `driver', which
-writes the actual device-specific commands that can be viewed or
+knows the actual device-specific commands that can be viewed or
 printed, notably Dvips for translation to PostScript (@pxref{Top,,,
 dvips, Dvips}) and Xdvi for viewing on an X display
 (@uref{http://sourceforge.net/projects/xdvi/}).  @xref{Hardcopy}.
 
 Be aware that the Texinfo language is very different from and much
-stricter than @TeX{}'s usual languages, plain @TeX{} and @LaTeX{}.
-For more information on @TeX{} in general, please see the book
-@cite{@TeX{} for the Impatient}, available from
-@uref{http://savannah.gnu.org/projects/teximpatient}.
+stricter than @TeX{}'s usual languages: plain @TeX{}, @LaTeX{},
+Con@TeX{}t, etc.
 
 @item PostScript
 @cindex PostScript output, overview
-(Generated via @command{texi2dvi --ps}.)  This was a page description
-language that became widely used around 1985 and is still in use
-today.  @uref{http://en.wikipedia.org/wiki/PostScript} gives a basic
-description and more preferences.
-Texinfo uses the @command{dvips} program to convert @TeX{}'s DVI output
-to PostScript.  @xref{Invoking Dvips,,, dvips, Dvips}.
+(Generated via @command{texi2dvi --ps}.)  PostScript is a page
+description language that became widely used around 1985 and is still
+used today.  @uref{http://en.wikipedia.org/wiki/PostScript} gives a
+basic description and more preferences.  By default, Texinfo uses the
+@command{dvips} program to convert @TeX{}'s DVI output to PostScript.
+@xref{Top,,, dvips, Dvips}.
 
 @item PDF
 @cindex PDF output, overview
@@ -970,9 +988,9 @@ graphics, and supporting arbitrary scaling.  It is intended to be
 platform-independent and easily viewable, among other design goals;
 @uref{http://en.wikipedia.org/wiki/Portable_Document_Format} and
 @uref{http://tug.org/TUGboat/tb22-3/tb72beebe-pdf.pdf} have some
-background.  Texinfo uses the @command{pdftex} program, a variant of
-@TeX{}, to output PDF; see @uref{http://tug.org/applications/pdftex}.
-@xref{PDF Output}.
+background.  By default, Texinfo uses the @command{pdftex} program, a
+variant of @TeX{}, to output PDF; see
+@uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
 
 @item Docbook
 @cindex Docbook output, overview
@@ -980,9 +998,9 @@ background.  Texinfo uses the @command{pdftex} program, a variant of
 (Generated via @command{makeinfo --docbook}.)  This is an XML-based
 format developed some years ago, primarily for technical
 documentation.  It therefore bears some resemblance, in broad
-outline, to Texinfo.  See @uref{http://www.docbook.org}.  If you want
-to convert from Docbook @emph{to} Texinfo, please see
-@uref{http://docbook2X.sourceforge.net}.
+outline, to Texinfo.  See @uref{http://www.docbook.org}.  Various
+converters from Docbook @emph{to} Texinfo have also been developed;
+see the Texinfo web pages.
 
 @item XML
 @cindex XML Texinfo output, overview
@@ -993,41 +1011,47 @@ to convert from Docbook @emph{to} Texinfo, please see
 specification usable for any sort of content (see, for example,
 @uref{http://www.w3.org/XML}).  The @command{makeinfo} XML output,
 unlike all the other output formats, interprets very little of the
-Texinfo source.  Essentially, it translates the Texinfo markup
-commands into XML syntax, for processing by further XML tools.  The
-details of the output are defined in an XML DTD as usual, contained in
-a file @file{texinfo.dtd} included in the Texinfo source distribution
+Texinfo source.  Rather, it translates the Texinfo markup commands
+into XML syntax, for processing by further XML tools.  The details of
+the output are defined in an XML DTD as usual, which is contained in a
+file @file{texinfo.dtd} included in the Texinfo source distribution
 and available via the Texinfo web pages.
-
 @end table
+
+
+@node Adding Output Formats
+@section Adding Output Formats
+@cindex Additional output formats
+
+The output formats in the previous section handle a wide variety of
+usage, but of course there is always room for more.
 
 @cindex Man page output, not supported
 From time to time, proposals are made to generate traditional Unix man
 pages from Texinfo source.  However, because man pages have a strict
-conventional format, generating a good man page requires a completely
+conventional format, creating a good man page requires a completely
 different source than the typical Texinfo applications of writing a
 good user tutorial and/or a good reference manual.  This makes
 generating man pages incompatible with the Texinfo design goal of not
 having to document the same information in different ways for
-different output formats.  You might as well just write the man page
+different output formats.  You might as well write the man page
 directly.
 
 @pindex help2man
 @cindex O'Dea, Brendan
-Man pages are still used on today's systems, and if you wish to
-support them, you may find the program @command{help2man} to be
-useful; it generates a traditional man page from the @samp{--help}
-output of a program.  In fact, the man pages for the programs in the
-Texinfo distribution are generated with this.  It is GNU software
-written by Brendan O'Dea, available from
-@uref{http://ftpmirror.gnu.org/help2man}.
+As an alternative way to support man pages, you may find the program
+@command{help2man} to be useful.  It generates a traditional man page
+from the @samp{--help} output of a program.  In fact, the man pages
+for the programs in the Texinfo distribution are generated with this.
+It is GNU software written by Brendan O'Dea, available from
+@uref{http://www.gnu.org/software/help2man}.
 
 @cindex Output formats, supporting more
 @cindex SGML-tools output format
 If you are a programmer and would like to contribute to the GNU
 project by implementing additional output formats for Texinfo, that
-would be excellent.  Probably the way to do this that is most useful
-is to write a new back-end for @command{texi2any}, the reference
+would be excellent.  The way to do this that would be most useful is
+to write a new back-end for @command{texi2any}, our reference
 implementation of a Texinfo parser; it creates a tree representation
 of the Texinfo input that you can use for the conversion.
 @xref{Generic Translator texi2any,, @command{texi2any}: The Generic
@@ -1042,72 +1066,83 @@ peculiarities, as described above.
 If you still cannot resist the temptation of writing a new program
 that reads the Texinfo source directly, let us give some more caveats:
 please do not underestimate the amount of work required.  Texinfo is
-by no mean a simple language to parse correctly, and is still being
-enhanced, so you would be committing to an ongoing task.  At a
+by no means a simple language to parse correctly, and remains under
+development, so you would be committing to an ongoing task.  At a
 minimum, please check that the extensive tests of the language that
 come with @command{texi2any} give correct results with your new
 program.
+
+
+@node Texinfo Document Structure
+@section Texinfo Document Structure
+@cindex Texinfo document structure
+@cindex Document structure, of Texinfo
+@cindex Structure, of Texinfo documents
+@cindex Double structure, of Texinfo documents
+
+Texinfo documents most usefully have a double structure, reflecting
+the double purposes of printed and online output.  For printed output
+(DVI, PDF, @dots{}), with physical pages, there are chapters,
+sections, subsections, etc.  For online output (Info, HTML, @dots{}),
+with interactive navigation and no physical pages, there are so-called
+``nodes''.
+
+Typically, the chapter structure and the node structure are completely
+parallel, with one node for each chapter, section, etc., and with the
+nodes following the same hierarchical arrangement as the sectioning.
+Thus, if a node is at the logical level of a chapter, its child nodes
+are at the level of sections; similarly, the child nodes of sections
+are at the level of subsections.
+
+Each @dfn{node} has a name, and contains the discussion of one topic.
+Along with the text for the user to read, each node also has pointers
+to other nodes, identified in turn by their own names.  Info readers
+display one node at a time, and provide commands for the user to move
+to related nodes.  The HTML output can be similarly navigated.
+
+The names of child nodes are listed in a @dfn{menu} within the parent
+node; for example, a node corresponding to a chapter would have a menu
+of the sections in that chapter.  The menus allow the user to move to
+the child nodes in a natural way in the online output.
+
+In addition, nodes at the same level are formed into a chain with
+`Next' and `Previous' pointers.  As you might imagine, the `Next'
+pointer links to the next node (section), and the `Previous' pointer
+links to the previous node (section).  Thus, for example, all the
+nodes that are at the level of sections within a chapter are linked
+together, and the order in this chain is the same as the order of the
+children in the menu of parent chapter.  Each child node records the
+parent node name as its `Up' pointer.  The last child has no `Next'
+pointer, and the first child has the parent both as its `Previous' and
+as its `Up' pointer.
+
+In addition to menus and `Next', `Previous', and `Up' pointers,
+Texinfo provides pointers of another kind for cross references, that
+can be sprinkled throughout the text.  This is usually the best way to
+represent links that do not fit a hierarchical structure.
+
+Although it is technically possible to create Texinfo documents with
+only one structure or the other, or for the two structures not to be
+parallel, or for the sectioning/node hierarchy to be abnormally
+formed, this is @emph{not at all recommended}.  To the best of our
+knowledge, all the Texinfo manuals currently in general use do follow
+the conventional double structure.
 
 
 @node Info Files
 @section Info Files
 @cindex Info files
 
-An Info file is a Texinfo file formatted so that the Info documentation
-reading program can operate on it.  (@code{makeinfo}
-and @code{texinfo-format-buffer} are two commands that convert a Texinfo file
-into an Info file.)
+As mentioned above, Info format is mostly a plain text transliteration
+of the Texinfo source, with the addition of a few control characters
+to separate nodes and provide navigational information, so that
+Info-reading programs can operate on it.
 
-Info files are divided into pieces called @dfn{nodes}, each of which
-contains the discussion of one topic.  Each node has a name, and
-contains both text for the user to read and pointers to other nodes,
-which are identified by their names.  The Info program displays one node
-at a time, and provides commands with which the user can move to other
-related nodes.
-
-@xref{Top,,, info, GNU Info}, for more information about using Info.
-
-Each node of an Info file may have any number of child nodes that
-describe subtopics of the node's topic.  The names of child
-nodes are listed in a @dfn{menu} within the parent node; this
-allows you to use certain Info commands to move to one of the child
-nodes.  Generally, an Info file is organized like a book.  If a node
-is at the logical level of a chapter, its child nodes are at the level
-of sections; likewise, the child nodes of sections are at the level
-of subsections.
-
-All the children of any one parent are linked together in a
-bidirectional chain of `Next' and `Previous' pointers.  The `Next'
-pointer provides a link to the next section, and the `Previous' pointer
-provides a link to the previous section.  This means that all the nodes
-that are at the level of sections within a chapter are linked together.
-Normally the order in this chain is the same as the order of the
-children in the parent's menu.  Each child node records the parent node
-name as its `Up' pointer.  The last child has no `Next' pointer, and the
-first child has the parent both as its `Previous' and as its `Up'
-pointer.@footnote{In some documents, the first child has no `Previous'
-pointer.  Occasionally, the last child has the node name of the next
-following higher level node as its `Next' pointer.}
-
-The book-like structuring of an Info file into nodes that correspond
-to chapters, sections, and the like is a matter of convention, not a
-requirement.  The `Up', `Previous', and `Next' pointers of a node can
-point to any other nodes, and a menu can contain any other nodes.
-Thus, the node structure can be any directed graph.  But it is usually
-more comprehensible to follow a structure that corresponds to the
-structure of chapters and sections in a printed book or report.
-
-In addition to menus and to `Next', `Previous', and `Up' pointers, Info
-provides pointers of another kind, called references, that can be
-sprinkled throughout the text.  This is usually the best way to
-represent links that do not fit a hierarchical structure.
-
-Usually, you will design a document so that its nodes match the
-structure of chapters and sections in the printed output.  But
-occasionally there are times when this is not right for the material
-being discussed.  Therefore, Texinfo uses separate commands to specify
-the node structure for the Info file and the section structure for the
-printed output.
+Info files are nearly always created by processing a Texinfo source
+document.  @command{makeinfo}, also known as @command{texi2any}, is
+the principal command that converts a Texinfo file into an Info file;
+@pxref{Generic Translator texi2any,, @command{texi2any}: The Generic
+Translator}.
 
 Generally, you enter an Info file through a node that by convention is
 named `Top'.  This node normally contains just a brief summary of the
@@ -1124,23 +1159,17 @@ printed manual, you can hit @key{SPC} repeatedly, or you get the whole
 file with the advanced Info command @kbd{g *}.  (@xref{Advanced,,
 Advanced Info commands, info, Info}.)
 
-@c !!! dir file may be located in one of many places:
-@c     /usr/local/emacs/info            mentioned in info.c DEFAULT_INFOPATH
-@c     /usr/local/lib/emacs/info        mentioned in info.c DEFAULT_INFOPATH
-@c     /usr/gnu/info                    mentioned in info.c DEFAULT_INFOPATH
-@c     /usr/local/info
-@c     /usr/local/lib/info
 The @file{dir} file in the @file{info} directory serves as the
 departure point for the whole Info system.  From it, you can reach the
 `Top' nodes of each of the documents in a complete Info system.
 
 @cindex URI syntax for Info
-If you wish to refer to an Info file in a URI, you can use the
-(unofficial) syntax exemplified in the following.  This works with
+If you wish to refer to an Info file via a URI, you can use the
+(unofficial) syntax exemplified by the following.  This works with
 Emacs/W3, for example:
 @example
-info:///usr/info/emacs#Dissociated%20Press
 info:emacs#Dissociated%20Press
+info:///usr/info/emacs#Dissociated%20Press
 info://localhost/usr/info/emacs#Dissociated%20Press
 @end example
 
@@ -1156,26 +1185,14 @@ The @command{info} program itself does not follow URIs of any kind.
 @cindex Characteristics, printed books or manuals
 
 @cindex Knuth, Donald
-A Texinfo file can be formatted and typeset as a printed book or manual.
-To do this, you need @TeX{}, a powerful, sophisticated typesetting
-program written by Donald Knuth.@footnote{You can also use the
-@pindex texi2roff@r{, unsupported software}
-@uref{ftp://tug.org/texi2roff.tar.gz, @code{texi2roff}} program if you
-do not have @TeX{}; since Texinfo is designed for use with @TeX{},
-@code{texi2roff} is not described here.  @code{texi2roff} is not part of
-the standard GNU distribution and is not maintained or up-to-date with
-all the Texinfo features described in this manual.}
+A Texinfo file can be formatted and typeset as a printed book or
+manual.  To do this, you need @TeX{}, a sophisticated typesetting
+program written by Donald Knuth of Stanford University.
 
 A Texinfo-based book is similar to any other typeset, printed work: it
 can have a title page, copyright page, table of contents, and preface,
 as well as chapters, numbered or unnumbered sections and subsections,
 page headers, cross references, footnotes, and indices.
-
-You can use Texinfo to write a book without ever having the intention
-of converting it into online information.  You can use Texinfo for
-writing a printed novel, and even to write a printed memo, although
-this latter application is not recommended since electronic mail is so
-much easier.
 
 @TeX{} is a general purpose typesetting program.  Texinfo provides a
 file @file{texinfo.tex} that contains information (definitions or
@@ -1186,34 +1203,26 @@ document.)  @file{texinfo.tex} contains the specifications for printing
 a document.  You can get the latest version of @file{texinfo.tex} from
 the Texinfo home page, @uref{http://www.gnu.org/software/texinfo/}.
 
-In the United States, documents are most often printed on 8.5 inch by 11
-inch pages (216@dmn{mm} by 280@dmn{mm}); this is the default size.  But
-you can also print for 7 inch by 9.25 inch pages (178@dmn{mm} by
+In the United States, documents are most often printed on 8.5 inch by
+11 inch pages (216@dmn{mm} by 280@dmn{mm}); this is the default size.
+But you can also print for 7 inch by 9.25 inch pages (178@dmn{mm} by
 235@dmn{mm}, the @code{@@smallbook} size; or on A4 or A5 size paper
-(@code{@@afourpaper}, @code{@@afivepaper}).  (@xref{smallbook, ,
-Printing ``Small'' Books}.  Also, see @ref{A4 Paper, ,Printing on A4
-Paper}.)
+(@code{@@afourpaper}, @code{@@afivepaper}).  @xref{smallbook,,
+Printing ``Small'' Books}, and @ref{A4 Paper,, Printing on A4 Paper}.
 
-By changing the parameters in @file{texinfo.tex}, you can change the
-size of the printed document.  In addition, you can change the style in
-which the printed document is formatted; for example, you can change the
-sizes and fonts used, the amount of indentation for each paragraph, the
-degree to which words are hyphenated, and the like.  By changing the
-specifications, you can make a book look dignified, old and serious, or
-light-hearted, young and cheery.
-
+@cindex Literate programming
 @TeX{} is freely distributable.  It is written in a superset of Pascal
-called WEB and can be compiled either in Pascal or (by using a
-conversion program that comes with the @TeX{} distribution) in C.
-(@xref{TeX Mode, ,@TeX{} Mode, emacs, The GNU Emacs Manual}, for information
-about @TeX{}.)
+for literate programming called WEB and can be compiled either in
+Pascal or (by using a conversion program that comes with the @TeX{}
+distribution) in C.
 
 @TeX{} is very powerful and has a great many features.  Because a
 Texinfo file must be able to present information both on a
 character-only terminal in Info form and in a typeset book, the
 formatting commands that Texinfo supports are necessarily limited.
 
-@xref{Obtaining @TeX{}}, for information on acquiring @TeX{}.
+@xref{Obtaining @TeX{}}, for information on acquiring @TeX{}.  It is
+not part of the Texinfo distribution.
 
 
 @node Formatting Commands
@@ -1221,23 +1230,17 @@ formatting commands that Texinfo supports are necessarily limited.
 @cindex @@-commands
 @cindex Formatting commands
 
-In a Texinfo file, the commands that tell @TeX{} how to typeset the
-printed manual and tell @code{makeinfo} and
-@code{texinfo-format-buffer} how to create an Info file are preceded
-by @samp{@@}; they are called @dfn{@@-commands}.  For example,
-@code{@@node} is the command to indicate a node and @code{@@chapter}
-is the command to indicate the start of a chapter.
+In a Texinfo file, the commands you write to describe the contents of
+the manual are preceded by an @samp{@@} character; they are called
+@dfn{@@-commands}.  For example, @code{@@node} is the command to
+indicate a node and @code{@@chapter} is the command to indicate the
+start of a chapter.  Almost all @@ command names are entirely lower
+case.
 
-@quotation Note
-Almost all @@ command names are entirely lower case.
-@end quotation
-
-The Texinfo @@-commands are a strictly limited set of constructs.  The
-strict limits make it possible for Texinfo files to be understood both
-by @TeX{} and by the code that converts them into Info files.  You can
-display Info files on any terminal that displays alphabetic and
-numeric characters.  Similarly, you can print the output generated by
-@TeX{} on a wide variety of printers.
+Texinfo's @@-commands are a strictly limited set of constructs.  The
+strict limits are primarily intended to ``force'' you, the author, to
+concentrate on the writing and the content of your manual, rather than
+the details of the formatting.
 
 Depending on what they do or what arguments@footnote{The word
 @dfn{argument} comes from the way it is used in mathematics and does not
@@ -1254,42 +1257,34 @@ sentences:
 
 @itemize @bullet
 @item
-Write a command such as @code{@@quotation} at the beginning of a line as
-the only text on the line.  (@code{@@quotation} begins an indented
-environment.)
+Some commands are written at the start of a line and the rest of the
+line comprises the argument text, such as @code{@@chapter} (which
+creates chapter titles).
 
 @item
-Write a command such as @code{@@chapter} at the beginning of a line
-followed by the command's arguments, in this case the chapter title, on
-the rest of the line.  (@code{@@chapter} creates chapter titles.)
+Some commands can appear anywhere, generally within a sentence, and
+are followed by empty braces, such as @code{@@dots@{@}} (which creates
+an ellipsis @dots{}).
 
 @item
-Write a command such as @code{@@dots@{@}} wherever you wish but usually
-within a sentence. (@code{@@dots@{@}} creates an ellipsis @dots{})
+Some commands can appear anywhere, generally within a sentence, and
+are followed by the argument text in braces, such as
+@code{@@code@{a+1@}} (which marks text as being code, @code{a+1} being
+the argument in this case).
 
 @item
-Write a command such as @code{@@code@{@var{sample-code}@}} wherever you
-wish (but usually within a sentence) with its argument,
-@var{sample-code} in this example, between the braces.  (@code{@@code}
-marks text as being code.)
-
-@item
-Write a command such as @code{@@example} on a line of its own; write the
-body-text on following lines; and write the matching @code{@@end}
-command, @code{@@end example} in this case, on a line of its own
-after the body-text. (@code{@@example} @dots{} @code{@@end example}
-indents and typesets body-text as an example.)  It's usually ok to
-indent environment commands like this, but in complicated and
-hard-to-define circumstances the extra spaces cause extra space to
-appear in the output, so beware.
+Some commands are written at the start of a line, with general text on
+following lines, terminated by a matching @code{@@end} command on a
+line of its own.  For example, @code{@@example}, then the lines of a
+coding example, then @code{@@end example}.
 @end itemize
 
 @noindent
 @cindex Braces, when to use
 As a general rule, a command requires braces if it mingles among other
-text; but it does not need braces if it starts a line of its own.  The
-non-alphabetic commands, such as @code{@@:}, are exceptions to the rule;
-they do not need braces.
+text; but it does not need braces if it is on a line of its own.  The
+non-alphabetic commands, such as @code{@@:}, are exceptions to the
+rule; they do not need braces.
 
 As you gain experience with Texinfo, you will rapidly learn how to
 write the different commands: the different ways to write commands
@@ -1330,9 +1325,8 @@ in other cases as well; you can use the @code{@@noindent} to inhibit
 paragraph indentation if required (@pxref{noindent,,@code{@@noindent}}).
 
 @item
-Texinfo supports the usual quotation marks used in English, and
-quotation marks used in other languages, please see @ref{Inserting
-Quotation Marks}.
+Texinfo supports the usual quotation marks used in English and in
+other languages; see @ref{Inserting Quotation Marks}.
 
 @item
 @cindex Multiple dashes in source
@@ -1352,21 +1346,20 @@ contexts, such as @code{@@code} and @code{@@example}.
 
 @item
 @cindex Tabs; don't use!
-@strong{Caution:} Last, do not use tab characters in a Texinfo file
-(except in verbatim modes)!  @TeX{} uses variable-width fonts, which
-means that it is impractical at best to define a tab to work in all
-circumstances.  Consequently, @TeX{} treats tabs like single spaces,
-and that is not what they look like in the source.  Furthermore,
-@code{makeinfo} does nothing special with tabs, and thus a tab
-character in your input file will usually appear differently in the
-output.
+@strong{Caution:} Last, do not use tab characters in a Texinfo file!
+(Except perhaps in verbatim modes.)  @TeX{} uses variable-width fonts,
+which means that it is impractical at best to define a tab to work in
+all circumstances.  Consequently, @TeX{} treats tabs like single
+spaces, and that is not what they look like in the source.
+Furthermore, @code{makeinfo} does nothing special with tabs, and thus
+a tab character in your input file will usually have a different
+appearance in the output.
 
 @noindent
 To avoid this problem, Texinfo mode in GNU Emacs inserts
 multiple spaces when you press the @key{TAB} key.  Also, you can run
 @code{untabify} in Emacs to convert tabs in a region to multiple
 spaces, or use the @code{unexpand} command from the shell.
-
 @end itemize
 
 
@@ -1377,22 +1370,21 @@ spaces, or use the @code{unexpand} command from the shell.
 @findex comment
 @findex c @r{(comment)}
 
-You can write comments in a Texinfo file that will not appear in
-either the Info file or the printed manual by using the
-@code{@@comment} command (which may be abbreviated to @code{@@c}).
-Such comments are for the person who revises the Texinfo file.  All the
-text on a line that follows either @code{@@comment} or @code{@@c} is a
-comment; the rest of the line does not appear in either the Info file
-or the printed manual.
+You can write comments in a Texinfo file by using the @code{@@comment}
+command, which may be abbreviated to @code{@@c}.  Such comments are
+for a person looking at the Texinfo source file.  All the text on a
+line that follows either @code{@@comment} or @code{@@c} is a comment;
+the rest of the line does not appear in the visible output.
 
-Often, you can write the @code{@@comment} or @code{@@c} in the middle of
-a line, and only the text that follows after the @code{@@comment} or
-@code{@@c} command does not appear; but some commands, such as
+Often, you can write the @code{@@comment} or @code{@@c} in the middle
+of a line, and only the text that follows after the @code{@@comment}
+or @code{@@c} command does not appear; but some commands, such as
 @code{@@settitle} and @code{@@setfilename}, work on a whole line.  You
-cannot use @code{@@comment} or @code{@@c} in a line beginning with such
-a command.
+cannot use @code{@@comment} or @code{@@c} within a line beginning with
+such a command.
 
-@findex DEL @r{(comment)}
+@findex DEL @r{(comment character)}
+@cindex Catcode for comments in @TeX{}
 In cases of nested command invocations, complicated macro definitions,
 etc., @code{@@c} and @code{@@comment} may provoke an error when
 processing with @TeX{}.  Therefore, you can also use the @kbd{DEL}
@@ -1403,20 +1395,14 @@ the line after the @kbd{DEL} will be ignored.
 @cindex Ignored text
 @cindex Unprocessed text
 @findex ignore
-You can write long stretches of text that will not appear in either
-the Info file or the printed manual by using the @code{@@ignore} and
-@code{@@end ignore} commands.  Write each of these commands on a line
-of its own, starting each command at the beginning of the line.  Text
-between these two commands does not appear in the processed output.
-You can use @code{@@ignore} and @code{@@end ignore} for writing
-comments.
-
-Text enclosed by @code{@@ignore} or by failing @code{@@ifset} or
-@code{@@ifclear} conditions is ignored in the sense that it will not
-contribute to the formatted output.  However, @TeX{} and makeinfo must
-still parse the ignored text, in order to understand when to @emph{stop}
-ignoring text from the source file; that means that you may still get
-error messages if you have invalid Texinfo commands within ignored text.
+You can also have long stretches of text to be ignored by the Texinfo
+processors with the @code{@@ignore} and @code{@@end ignore} commands.
+Write each of these commands on a line of its own, starting each
+command at the beginning of the line.  Text between these two commands
+does not appear in the processed output.  You can use @code{@@ignore}
+and @code{@@end ignore} for writing comments.  (For some technical
+caveats regarding nesting of such commands, @pxref{Conditional
+Nesting}.)
 
 
 @node Minimum
@@ -21982,7 +21968,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.451 2012-06-29 17:48:27 karl Exp $
+$Id: texinfo.txi,v 1.452 2012-07-03 22:38:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
