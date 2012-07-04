@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.452 2012-07-03 22:38:33 karl Exp $
+@c $Id: texinfo.txi,v 1.453 2012-07-04 18:13:37 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -227,8 +227,6 @@ Beginning a Texinfo File
 * Contents::                    How to create a table of contents.
 * The Top Node::                Creating the `Top' node and master menu.
 * Global Document Commands::    Affecting formatting throughout.
-* Software Copying Permissions::  Ensure that you and others continue to
-                                   have the right to use and share software.
 
 Texinfo File Header
 
@@ -776,10 +774,10 @@ their recipients to know that what they have is not what we distributed,
 so that any problems introduced by others will not reflect on our
 reputation.
 
-The precise conditions of the licenses for the programs currently being
-distributed that relate to Texinfo are found in the General Public
-Licenses that accompany them.  This manual specifically is covered by
-the GNU Free Documentation License (@pxref{GNU Free Documentation
+The precise conditions of the licenses for the programs currently
+being distributed that relate to Texinfo are found in the General
+Public Licenses that accompany them.  This manual is covered by the
+GNU Free Documentation License (@pxref{GNU Free Documentation
 License}).
 
 
@@ -2813,8 +2811,6 @@ readers, and so on.
 * Contents::                    How to create a table of contents.
 * The Top Node::                Creating the `Top' node and master menu.
 * Global Document Commands::    Affecting formatting throughout.
-* Software Copying Permissions::  Ensure that you and others continue to
-                                   have the right to use and share software.
 @end menu
 
 
@@ -3154,6 +3150,15 @@ Therefore, Texinfo provides a command (@code{@@copying}) to declare
 this text once, and another command (@code{@@insertcopying}) to
 insert the text at appropriate points.
 
+@anchor{Software Copying Permissions}@c old node name
+This section is about the license of the Texinfo document.  If the
+document is a software manual, the software is typically under a
+different license---for GNU (and many other free software) packages,
+software is usually released under the GNU GPL, and manuals are
+released under the GNU FDL.  It is helpful to state the license of the
+software of the manual, but actually giving the text of the software
+license is not necessary.
+
 @menu
 * copying::                     Declare the document's copying permissions.
 * insertcopying::               Where to insert the permissions.
@@ -3266,7 +3271,7 @@ beginning of each HTML output file, as an HTML comment.  Again, this
 text is not visible (unless the reader views the HTML source).
 
 The permissions text defined by @code{@@copying} also appears
-automatically at the beginning of the XML output file.
+automatically at the beginning of the XML and Docbook output files.
 
 
 @node Titlepage & Copyright Page
@@ -4162,31 +4167,6 @@ formatting commands indent paragraphs as specified.  @xref{Start of
 Header}.
 
 
-@node Software Copying Permissions
-@section Software Copying Permissions
-@cindex Software copying permissions
-@cindex Copying software
-@cindex Distribution
-@cindex License agreement
-
-If the Texinfo file has a section containing the ``General Public
-License'' and the distribution information and a warranty disclaimer for
-the software that is documented, we recommend placing this right after
-the `Top' node.  The General Public License is very important to Project
-GNU software.  It ensures that you and others will continue to have a
-right to use and share the software.
-
-The copying and distribution information and the disclaimer are followed
-by an introduction or else by the first chapter of the manual.
-
-@cindex Introduction, as part of file
-Although an introduction is not a required part of a Texinfo file, it
-is very helpful.  Ideally, it should state clearly and concisely what
-the file is about and who would be interested in reading it.  In
-general, an introduction would follow the licensing and distribution
-information, although sometimes people put it earlier in the document.
-
-
 @node Ending a File
 @chapter Ending a Texinfo File
 @cindex Ending a Texinfo file
@@ -4196,7 +4176,6 @@ information, although sometimes people put it earlier in the document.
 
 The end of a Texinfo file should include commands to create indices,
 and the @code{@@bye} command to mark the last line to be processed.
-
 For example:
 
 @example
@@ -21968,7 +21947,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.452 2012-07-03 22:38:33 karl Exp $
+$Id: texinfo.txi,v 1.453 2012-07-04 18:13:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

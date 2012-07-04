@@ -1,3 +1,9 @@
+2012-07-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Software Copying Permissions): remove node.
+	(Document Permissions): add replacement text.
+	Suggestion from Patrice.
+
 2012-07-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Overview): general updates
