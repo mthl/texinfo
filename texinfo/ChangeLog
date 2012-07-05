@@ -1,3 +1,9 @@
+2012-06-19  Patrice Dumas  <pertusus@free.fr>
+        and Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Beginning a File): general updates
+	throughout the chapter.
+
 2012-07-04  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Software Copying Permissions): remove node.

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.453 2012-07-04 18:13:37 karl Exp $
+@c $Id: texinfo.txi,v 1.454 2012-07-05 00:40:39 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -252,8 +252,6 @@ Title and Copyright Pages
                                  include copying permissions.
 * end titlepage::               Turn on page headings after the title and
                                  copyright pages.
-* headings on off::             An option for turning headings on and off
-                                 and double or single sided printing.
 
 The `Top' Node and Master Menu
 
@@ -264,6 +262,8 @@ Global Document Commands
 
 * documentdescription::         Document summary for the HTML output.
 * setchapternewpage::           Start chapters on right-hand pages.
+* headings on off::             An option for turning headings on and off
+                                 and double or single sided printing.
 * paragraphindent::             Specify paragraph indentation.
 * firstparagraphindent::        Suppress indentation of the first paragraph.
 * exampleindent::               Specify environment indentation.
@@ -857,16 +857,22 @@ For bug reports, please include enough information for the maintainers
 to reproduce the problem.  Generally speaking, that means:
 
 @itemize @bullet
-@item the version number of Texinfo and the program(s) or manual(s) involved.
-@item the contents of any input files necessary to reproduce the bug,
-and precisely how you ran any program(s) involved.
-@item a description of the problem and samples of any erroneous output.
-@item hardware and operating system names and versions.
-@item anything else that you think would be helpful.
+@item The version number of Texinfo and the program(s) or manual(s) involved.
+@item The contents of any input files necessary to reproduce the bug.
+@item Precisely how you ran any program(s) involved.
+@item A description of the problem and samples of any erroneous output.
+@item Hardware and operating system names and versions.
+@item Anything else that you think would be helpful.
 @end itemize
 
 When in doubt whether something is needed or not, include it.  It's
 better to include too much than to leave out something important.
+
+It is critical to send an actual input file that reproduces the
+problem.  What's not critical is to ``narrow down'' the example to the
+smallest possible input---the actual input with which you discovered
+the bug will suffice.  (Of course, if you do do experiments, the
+smaller the input file, the better.)
 
 @cindex Patches, contributing
 Patches are most welcome; if possible, please make them with
@@ -883,7 +889,7 @@ GNU Emacs Manual}), and follow the existing coding style.
 @cindex Introduction to Texinfo
 
 Using Texinfo, you can create a printed document (via the @TeX{}
-typesetting system) the normal features of a book, including chapters,
+typesetting system) with the normal features of a book, including chapters,
 sections, cross references, and indices.  From the same Texinfo source
 file, you can create an Info file with special features to make
 documentation browsing easy.  You can also create from that same
@@ -1417,8 +1423,8 @@ they describe more clearly to a human reader the nature of the file.
 The shorter extensions are for operating systems that cannot handle long
 file names.
 
-In order to be made into a printed manual and an Info file, a Texinfo
-file @strong{must} begin with lines like this:
+In order to be made into a good printed manual and other output
+formats, a Texinfo file @emph{must} begin with lines like this:
 
 @example
 @group
@@ -1430,7 +1436,7 @@ file @strong{must} begin with lines like this:
 
 @noindent
 The contents of the file follow this beginning, and then you
-@strong{must} end a Texinfo file with a line like this:
+@emph{must} end the Texinfo source with a line like this:
 
 @example
 @@bye
@@ -1461,12 +1467,11 @@ is optional---if you don't mind your document being titled `Untitled'.
 @item
 The @code{@@bye} line at the end of the file on a line of its own tells
 the formatters that the file is ended and to stop formatting.
-
 @end itemize
 
-Typically, you will not use quite such a spare format, but will include
-mode setting and start-of-header and end-of-header lines at the
-beginning of a Texinfo file, like this:
+If you use Emacs, it is also useful to include mode setting and
+start-of-header and end-of-header lines at the beginning of a Texinfo
+file, like this:
 
 @example
 @group
@@ -1482,9 +1487,10 @@ beginning of a Texinfo file, like this:
 In the first line, @samp{-*-texinfo-*-} causes Emacs to switch into
 Texinfo mode when you edit the file.
 
-The @code{@@c} lines which surround the @code{@@setfilename} and
-@code{@@settitle} lines are optional, but you need them in order to
-run @TeX{} or Info on just part of the file.  (@xref{Start of Header}.)
+The @code{@@c ...header} lines above which surround the
+@code{@@setfilename} and @code{@@settitle} lines allow you to process,
+within Emacs, just part of the Texinfo source.  (@xref{Start of
+Header}.)
 
 Furthermore, you will usually provide a Texinfo file with a title page,
 indices, and the like, all of which are explained in this manual.  But
@@ -2800,8 +2806,8 @@ commands for handling the traditional frontmatter items in Texinfo.
 @cindex Frontmatter, text in
 Straight text outside of any command before the Top node should be
 avoided.  Such text is treated differently in the different output
-formats: visible in @TeX{} and HTML, by default not shown in Info
-readers, and so on.
+formats: at the time of writing, it is visible in @TeX{} and HTML, by
+default not shown in Info readers, and so on.
 
 @menu
 * Sample Beginning::            A sample beginning for a Texinfo file.
@@ -2899,22 +2905,24 @@ This manual is for @var{program}, version @var{version}.
 @cindex Header for Texinfo files
 @cindex Texinfo file header
 
-Texinfo files start with at least three lines that provide Info and
-@TeX{} with necessary information.  These are the @code{\input texinfo}
-line, the @code{@@settitle} line, and the @code{@@setfilename} line.
+Texinfo files start with at least three lines that provide Texinfo
+translators with necessary information.  These are the @code{\input
+texinfo} line, the @code{@@settitle} line, and the
+@code{@@setfilename} line.
 
-Also, if you want to format just part of the Texinfo file, you must
-write the @code{@@settitle} and @code{@@setfilename} lines between
-start-of-header and end-of-header lines.  The start- and end-of-header
-lines are optional, but they do no harm, so you might as well always
-include them.
+Also, if you want to format just part of the Texinfo file in Emacs,
+you must write the @code{@@settitle} and @code{@@setfilename} lines
+between start-of-header and end-of-header lines.  These start- and
+end-of-header lines are optional, but they do no harm, so you might as
+well always include them.
 
 Any command that affects document formatting as a whole makes sense to
-include in the header.  @code{@@synindex} (@pxref{synindex}), for
-instance, is another command often included in the header.  @xref{GNU
-Sample Texts}, for complete sample texts.
+include in the header.  @code{@@synindex} (@pxref{synindex,,
+@code{synindex}}), for instance, is another command often included in
+the header.
 
-Thus, the beginning of a Texinfo file generally looks like this:
+Thus, the beginning of a Texinfo file generally looks approximately
+like this:
 
 @example
 @group
@@ -2925,6 +2933,8 @@ Thus, the beginning of a Texinfo file generally looks like this:
 @@c %**end of header
 @end group
 @end example
+
+(@xref{GNU Sample Texts}, for complete sample texts.)
 
 @menu
 * First Line::                  The first line of a Texinfo file.
@@ -3000,33 +3010,33 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 @findex setfilename
 @cindex Texinfo requires @code{@@setfilename}
 
-In order to serve as the primary input file for either @code{makeinfo}
-or @TeX{}, a Texinfo file should contain a line that looks like this:
+The first Texinfo command (that is, after the @code{\input texinfo})
+in a document is generally @code{@@setfilename}:
 
 @example
 @@setfilename @var{info-file-name}
 @end example
 
-It is required for @TeX{}, and very strongly recommended for
+This command is required for @TeX{}, and very strongly recommended for
 @code{makeinfo}.
 
 Write the @code{@@setfilename} command at the beginning of a line and
-follow it on the same line by the Info file name.  Do not write anything
-else on the line; anything on the line after the command is considered
-part of the file name, including what would otherwise be a
-comment.
+follow it on the same line by the Info file name.  Do not write
+anything else on the line.
 
 @cindex Ignored before @code{@@setfilename}
 @cindex @samp{\input} source line ignored
-The Info formatting commands ignore everything written before the
-@code{@@setfilename} line, which is why the very first line of
-the file (the @code{\input} line) does not show up in the output.
+When a @code{@@setfilename} line is present, the Texinfo processors
+ignore everything written before the @code{@@setfilename} line.  This
+is why the very first line of the file (the @code{\input} line) does
+not show up in the output.
 
 The @code{@@setfilename} line specifies the name of the output file to
-be generated.  This name must be different from the name of the Texinfo
-file.  There are two conventions for choosing the name: you can either
-remove the extension (such as @samp{.texi}) entirely from the input file
-name, or, preferably, replace it with the @samp{.info} extension.
+be generated.  This name must be different from the name of the
+Texinfo file.  There are two conventions for choosing the name: you
+can either remove the extension (such as @samp{.texi}) entirely from
+the input file name, or (recommended) replace it with the @samp{.info}
+extension.
 
 @cindex Length of file names
 @cindex File name collision
@@ -3038,17 +3048,18 @@ This occurs because the Info formatters split a long Info file into
 short indirect subfiles, and name them by appending @samp{-1},
 @samp{-2}, @dots{}, @samp{-10}, @samp{-11}, and so on, to the original
 file name.  (@xref{Tag and Split Files}.)  The subfile name
-@file{texinfo.info-10}, for example, is too long for old systems with a
-14-character limit on filenames; so the Info file name for this document
-is @file{texinfo} rather than @file{texinfo.info}.  When @code{makeinfo}
-is running on operating systems such as MS-DOS which impose severe
-limits on file names, it may remove some characters from the original
-file name to leave enough space for the subfile suffix, thus producing
-files named @file{texin-10}, @file{gcc.i12}, etc.
+@file{texinfo.info-10}, for example, is too long for old systems with
+a 14-character limit on filenames; so the Info file name for this
+document is @file{texinfo} rather than @file{texinfo.info}.  When
+@code{makeinfo} is running on operating systems such as MS-DOS which
+impose severe limits on file names, it may remove some characters from
+the original file name to leave enough space for the subfile suffix,
+thus producing files named @file{texin-10}, @file{gcc.i12}, etc.
 
-When producing HTML output, @code{makeinfo} will replace any extension
-with @samp{html}, or add @samp{.html} if the given name has no
-extension.
+When producing another output format, @code{makeinfo} will replace any
+final extension with the output format-specific extension (@samp{html}
+when generating HTML, for example), or add a dot followed by the
+extension (@samp{.html} for HTML) if the given name has no extension.
 
 @pindex texinfo.cnf
 The @code{@@setfilename} line produces no output when you typeset a
@@ -3062,11 +3073,8 @@ input file name to determine the output name: first, any of the
 extensions @code{.texi}, @code{.tex}, @code{.txi} or @code{.texinfo}
 is removed from the input file name; then, the output format specific
 extension is added---@code{.html} when generating HTML, @code{.info}
-when generating Info, @enddots{}
-
-@TeX{} determines the output file name similarly in the absence of
-@code{@@setfilename}, but you should not attempt to process a Texinfo
-file without @code{@@setfilename} with @TeX{}, as just described.
+when generating Info, etc.  The @code{\input} line is still ignored in
+this processing, as well as leading blank lines.
 
 See also the @option{--output} option in @ref{Invoking texi2any}.
 
@@ -3075,54 +3083,35 @@ See also the @option{--output} option in @ref{Invoking texi2any}.
 @subsection @code{@@settitle}: Set the Document Title
 @findex settitle
 
-In order to be made into a printed manual, a Texinfo file must contain
-a line that looks like this:
+A Texinfo file should contain a line that looks like this:
 
 @example
 @@settitle @var{title}
 @end example
 
 Write the @code{@@settitle} command at the beginning of a line and
-follow it on the same line by the title.  This tells @TeX{} the title to
-use in a header or footer.  Do not write anything else on the line;
-anything on the line after the command is considered part of the title,
-including what would otherwise be a comment.
+follow it on the same line by the title.  Do not write anything else
+on the line.  The @code{@@settitle} command should precede everything
+that generates actual output.  The best place for it is right after
+the @code{@@setfilename} command (described in the previous section).
 
-The @code{@@settitle} command should precede everything that generates
-actual output.  The best place for it is right after the
-@code{@@setfilename} command (see the previous section).
+This command tells @TeX{} the title to use in a header or footer 
+for double-sided output, in case such headings are output.  For 
+more on headings for @TeX{}, see @ref{end titlepage}.
 
 @cindex @code{<title>} HTML tag
 In the HTML file produced by @command{makeinfo}, @var{title} serves as
 the document @samp{<title>}.  It also becomes the default document
 description in the @samp{<head>} part (@pxref{documentdescription}).
 
-The title in the @code{@@settitle} command does not affect the title as
-it appears on the title page.  Thus, the two do not need not match
-exactly.  A practice we recommend is to include the version or edition
-number of the manual in the @code{@@settitle} title; on the title page,
-the version number generally appears as an @code{@@subtitle} so it would
-be omitted from the @code{@@title}.  @xref{titlepage,, @code{@@titlepage}}.
-
-Conventionally, when @TeX{} formats a Texinfo file for double-sided
-output, the title is printed in the left-hand (even-numbered) page
-headings and the current chapter title is printed in the right-hand
-(odd-numbered) page headings.  (@TeX{} learns the title of each chapter
-from each @code{@@chapter} command.)  By default, no page footer is
-printed.
-
-Even if you are printing in a single-sided style, @TeX{} looks for an
-@code{@@settitle} command line, in case you include the manual title
-in the heading.
-
-@TeX{} prints page headings only for that text that comes after the
-@code{@@end titlepage} command in the Texinfo file, or that comes
-after an @code{@@headings} command that turns on headings.
-(@xref{headings on off, , The @code{@@headings} Command}, for more
-information.)
-
-You may, if you wish, create your own, customized headings and footings.
-@xref{Headings}, for a detailed discussion of this.
+When the title page is used in the output, the title in the
+@code{@@settitle} command does not affect the title as it appears on
+the title page.  Thus, the two do not need not match exactly.  A
+practice we recommend is to include the version or edition number of
+the manual in the @code{@@settitle} title; on the title page, the
+version number generally appears as an @code{@@subtitle} so it would
+be omitted from the @code{@@title}.  @xref{titlepage,,
+@code{@@titlepage}}.
 
 
 @node End of Header
@@ -3192,11 +3181,6 @@ Permission is granted to @dots{}
 The @code{@@quotation} has no legal significance; it's there to improve
 readability in some contexts.
 
-@xref{GNU Sample Texts}, for the full text to be used in GNU manuals.
-@xref{GNU Free Documentation License}, for the license itself under
-which GNU and other free manuals are distributed.  You need to include
-the license as an appendix to your document.
-
 The text of @code{@@copying} is output as a comment at the beginning of
 Info, HTML, and XML output files.  It is @emph{not} output implicitly in
 plain text or @TeX{}; it's up to you to use @code{@@insertcopying} to
@@ -3204,9 +3188,12 @@ emit the copying information.  See the next section for details.
 
 @findex copyright
 The @code{@@copyright@{@}} command generates a @samp{c} inside a
-circle in output formats that support this (print and HTML).  In other
-formats (Info and plain text), it generates @samp{(C)}.  The copyright
-notice itself has the following legally defined sequence:
+circle when the output format supports this glyph (print and HTML
+always do, for instance).  When the glyph is not supported in the
+output, it generates the three-character sequence @samp{(C)}.
+
+The copyright notice itself has the following legally-prescribed
+form:
 
 @example
 Copyright @copyright{} @var{years} @var{copyright-owner}.
@@ -3219,8 +3206,8 @@ international law.
 
 @cindex Years, in copyright line
 The list of years should include all years in which a version was
-completed (even if it was released in a subsequent year).  Ranges are
-not allowed; each year must be written out individually and in full,
+completed (even if it was released in a subsequent year).  It is
+simplest for each year to be written out individually and in full,
 separated by commas.
 
 @cindex Copyright holder for FSF works
@@ -3237,7 +3224,10 @@ publication.  If you do use several lines, do not indent any of them
 (or anything else in the @code{@@copying} block) in the source file.
 
 @xref{Copyright Notices,,, maintain, GNU Maintainer Information}, for
-additional information.
+additional information.  @xref{GNU Sample Texts}, for the full text to
+be used in GNU manuals.  @xref{GNU Free Documentation License}, for
+the license itself under which GNU and other free manuals are
+distributed.
 
 
 @node insertcopying
@@ -3281,19 +3271,12 @@ In hard copy output, the manual's name and author are usually printed on
 a title page.  Copyright information is usually printed on the back of
 the title page.
 
-The title and copyright pages appear in the printed manual, but not in
-the Info file.  Because of this, it is possible to use several slightly
-obscure @TeX{} typesetting commands that cannot be used in an Info file.
-In addition, this part of the beginning of a Texinfo file contains the
-text of the copying permissions that appears in the printed manual.
-
-@cindex Title page, for plain text
-@cindex Copyright page, for plain text
-You may wish to include titlepage-like information for plain text
-output.  Simply place any such leading material between
-@code{@@ifplaintext} and @code{@@end ifplaintext}; @command{makeinfo}
-includes this when generating plain text (@samp{--plaintext}), along with
-an @code{@@insertcopying}.
+The title and copyright pages appear in printed manuals, but not in
+most other output formats.  Because of this, it is possible to use
+several slightly obscure typesetting commands that are not to be used
+in the main text.  In addition, this part of the beginning of a
+Texinfo file contains the text of the copying permissions that appears
+in the printed manual.
 
 @menu
 * titlepage::                   Create a title for the printed document.
@@ -3305,8 +3288,6 @@ an @code{@@insertcopying}.
                                  include copying permissions.
 * end titlepage::               Turn on page headings after the title and
                                  copyright pages.
-* headings on off::             An option for turning headings on and off
-                                 and double or single sided printing.
 @end menu
 
 
@@ -3320,12 +3301,11 @@ with @code{@@titlepage} on a line by itself and end it with
 @code{@@end titlepage} on a line by itself.
 
 The @code{@@end titlepage} command starts a new page and turns on page
-numbering.  (@xref{Headings, , Page Headings}, for details about how to
-generate page headings.)  All the material that you want to appear on
-unnumbered pages should be put between the @code{@@titlepage} and
-@code{@@end titlepage} commands.  You can force the table of contents to
-appear there with the @code{@@setcontentsaftertitlepage} command
-(@pxref{Contents}).
+numbering (@pxref{end titlepage, , Heading Generation}).  All the
+material that you want to appear on unnumbered pages should be put
+between the @code{@@titlepage} and @code{@@end titlepage} commands.
+You can force the table of contents to appear there with the
+@code{@@setcontentsaftertitlepage} command (@pxref{Contents}).
 
 @findex page@r{, within @code{@@titlepage}}
 By using the @code{@@page} command you can force a page break within the
@@ -3456,8 +3436,10 @@ needed to adjust vertical spacing.
 
 Write the @code{@@title}, @code{@@subtitle}, or @code{@@author}
 commands at the beginning of a line followed by the title, subtitle,
-or author.  These commands are only effective in @TeX{} output; it's
-an error to use them anywhere except within @code{@@titlepage}.
+or author.  The @code{@@author} command may be used for a quotation in
+a @code{@@quotation} block (@pxref{quotation,, @code{@@quotation}});
+except for that, it is an error to use any of these commands outside
+of @code{@@titlepage}.
 
 The @code{@@title} command produces a line in which the title is set
 flush to the left-hand side of the page in a larger than normal font.
@@ -3559,11 +3541,11 @@ bottom of the page, use the following incantation after @code{@@page}:
 @end example
 
 @noindent
-This is a @TeX{} command that is not supported by the Info formatting
-commands.  The @code{@@vskip} command inserts whitespace.  The @samp{0pt
-plus 1filll} means to put in zero points of mandatory whitespace, and as
-much optional whitespace as needed to push the following text to the
-bottom of the page.  Note the use of three @samp{l}s in the word
+The @code{@@vskip} command inserts whitespace in the @TeX{} output; it
+is ignored in all other output formats.  The @samp{0pt plus 1filll}
+means to put in zero points of mandatory whitespace, and as much
+optional whitespace as needed to push the following text to the bottom
+of the page.  Note the use of three @samp{l}s in the word
 @samp{filll}; this is correct.
 
 To insert the copyright text itself, write @code{@@insertcopying}
@@ -3591,6 +3573,21 @@ Cover art by @dots{}
 @@end titlepage
 @end example
 
+We have one more special case to consider: for plain text output, you
+must insert the copyright information explicitly if you want it to
+appear.  For instance, you could have the following after the copyright
+page:
+
+@example
+@@ifplaintext
+@@insertcopying
+@@end ifplaintext
+@end example
+
+You could include other title-like information for the plain text
+output in the same place.
+
+
 
 @node end titlepage
 @subsection Heading Generation
@@ -3599,100 +3596,45 @@ Cover art by @dots{}
 @cindex Titlepage end starts headings
 @cindex End titlepage starts headings
 
-Like all @code{@@end} commands (@pxref{Quotations and Examples}), the @code{@@end titlepage} command
-must be written at the beginning of a line by itself, with only one
-space between the @code{@@end} and the @code{titlepage}.  It not only
-marks the end of the title and copyright pages, but also causes @TeX{}
-to start generating page headings and page numbers.
+Like all @code{@@end} commands (@pxref{Quotations and Examples}), the
+@code{@@end titlepage} command must be written at the beginning of a
+line by itself, with only one space between the @code{@@end} and the
+@code{titlepage}.  It not only marks the end of the title and
+copyright pages, but also causes @TeX{} to start generating page
+headings and page numbers.
 
-To repeat what is said elsewhere,  Texinfo has two standard page heading
-formats, one for documents which are printed on one side of each sheet of paper
-(single-sided printing), and the other for documents which are printed on both
-sides of each sheet (double-sided printing).
-You can specify these formats in different ways:
+Texinfo has two standard page heading formats, one for documents
+printed on one side of each sheet of paper (single-sided printing),
+and the other for documents printed on both sides of each sheet
+(double-sided printing).
+
+In all generality, you can control the headings in different ways:
 
 @itemize @bullet
 @item
 The conventional way is to write an @code{@@setchapternewpage} command
-before the title page commands, and then have the @code{@@end
-titlepage} command start generating page headings in the manner desired.
-(@xref{setchapternewpage}.)
+before the title page commands, if required, and then have the
+@code{@@end titlepage} command start generating page headings in the
+manner desired.
+
+Most documents are formatted with the standard single-sided or
+double-sided headings, (sometimes) using @code{@@setchapternewpage
+odd} for double-sided printing and (almost always) no
+@code{@@setchapternewpage} command for single-sided printing
+(@pxref{setchapternewpage,, @code{@@setchapternewpage}}).
 
 @item
-Alternatively, you can use the @code{@@headings} command to prevent page
-headings from being generated or to start them for either single or
-double-sided printing.  (Write an @code{@@headings} command immediately
-after the @code{@@end titlepage} command.  @xref{headings on off, , The
-@code{@@headings} Command}, for more information.)
+Alternatively, you can use the @code{@@headings} command to prevent
+page headings from being generated or to start them for either single
+or double-sided printing.  Write an @code{@@headings} command
+immediately after the @code{@@end titlepage} command.  To turn off
+headings, write @code{@@headings off}.  @xref{headings on off,, The
+@code{@@headings} Command}.
 
 @item
 Or, you may specify your own page heading and footing format.
-@xref{Headings, , Page Headings}, for detailed
-information about page headings and footings.
+@xref{Headings, , Page Headings}.
 @end itemize
-
-Most documents are formatted with the standard single-sided or
-double-sided format, using @code{@@setchapternewpage odd} for
-double-sided printing and no @code{@@setchapternewpage} command for
-single-sided printing.
-
-
-@node headings on off
-@subsection The @code{@@headings} Command
-@findex headings
-
-The @code{@@headings} command is rarely used.  It specifies what kind of
-page headings and footings to print on each page.  Usually, this is
-controlled by the @code{@@setchapternewpage} command.  You need the
-@code{@@headings} command only if the @code{@@setchapternewpage} command
-does not do what you want, or if you want to turn off predefined page
-headings prior to defining your own.  Write an @code{@@headings} command
-immediately after the @code{@@end titlepage} command.
-
-You can use @code{@@headings} as follows:
-
-@table @code
-@item @@headings off
-Turn off printing of page headings.
-
-@item @@headings single
-Turn on page headings appropriate for single-sided printing.
-
-@item @@headings double
-Turn on page headings appropriate for double-sided printing.
-
-@item @@headings singleafter
-@itemx @@headings doubleafter
-Turn on @code{single} or @code{double} headings, respectively, after the
-current page is output.
-
-@item @@headings on
-Turn on page headings: @code{single} if @samp{@@setchapternewpage
-on}, @code{double} otherwise.
-@end table
-
-For example, suppose you write @code{@@setchapternewpage off} before the
-@code{@@titlepage} command to tell @TeX{} to start a new chapter on the
-same page as the end of the last chapter.  This command also causes
-@TeX{} to typeset page headers for single-sided printing.  To cause
-@TeX{} to typeset for double sided printing, write @code{@@headings
-double} after the @code{@@end titlepage} command.
-
-You can stop @TeX{} from generating any page headings at all by
-writing @code{@@headings off} on a line of its own immediately after the
-line containing the @code{@@end titlepage} command, like this:
-
-@example
-@@end titlepage
-@@headings off
-@end example
-
-@noindent
-The @code{@@headings off} command overrides the @code{@@end titlepage}
-command, which would otherwise cause @TeX{} to print page headings.
-
-You can also specify your own style of page heading and footing.
-@xref{Headings, , Page Headings}, for more information.
 
 
 @node Contents
@@ -3738,10 +3680,9 @@ so don't include any sectioning command such as @code{@@unnumbered}
 before them.
 
 Since an Info file uses menus instead of tables of contents, the Info
-formatting commands ignore the contents commands.  But the contents are
-included in plain text output (generated by @code{makeinfo
---plaintext}), unless @code{makeinfo} is writing its output to standard
-output.
+formatting commands ignore the contents commands.  But the contents
+are included in plain text output and in other output formats, such as
+HTML.
 
 When @code{makeinfo} writes a short table of contents while producing
 HTML output, the links in the short table of contents point to
@@ -3765,17 +3706,24 @@ title page.  You can do this by specifying
 @code{@@setshortcontentsaftertitlepage}.  The first prints only the
 main contents after the @code{@@end titlepage}; the second prints both
 the short contents and the main contents.  In either case, any
-subsequent @code{@@contents} or @code{@@shortcontents} is ignored
-(unless, erroneously, no @code{@@end titlepage} is ever encountered).
+subsequent @code{@@contents} or @code{@@shortcontents} is ignored.
 
 You need to include the @code{@@set@dots{}contentsaftertitlepage}
 commands early in the document (just after @code{@@setfilename}, for
 example).  We recommend using @command{texi2dvi} (@pxref{Format with
-texi2dvi}) to specify this without altering the source file at all.  For
-example:
+texi2dvi}) to specify this without altering the source file at all.
+For example:
+
 @example
 texi2dvi --texinfo=@@setcontentsaftertitlepage foo.texi
 @end example
+
+An alternative invocation, using @command{texi2any}:
+
+@example
+texi2any --dvi --Xopt --texinfo=@@setcontentsaftertitlepage foo.texi
+@end example
+
 
 
 @node The Top Node
@@ -3845,11 +3793,11 @@ Additional general information.
 @cindex Menu, master
 @cindex Parts of a master menu
 
-A @dfn{master menu} is a detailed main menu listing all the nodes in a
-file.
+A @dfn{master menu} is the main menu.  It is customary to include a
+detailed menu listing all the nodes in the document in this menu.
 
-A master menu is enclosed in @code{@@menu} and @code{@@end menu}
-commands and does not appear in the printed document.
+Like any other menu, a master menu is enclosed in @code{@@menu} and
+@code{@@end menu} and does not appear in the printed output.
 
 Generally, a master menu is divided into parts.
 
@@ -3926,6 +3874,8 @@ generally all given before the Top node, if they are given at all.
 @menu
 * documentdescription::         Document summary for the HTML output.
 * setchapternewpage::           Start chapters on right-hand pages.
+* headings on off::             An option for turning headings on and off
+                                 and double or single sided printing.
 * paragraphindent::             Specify paragraph indentation.
 * firstparagraphindent::        Suppress indentation of the first paragraph.
 * exampleindent::               Specify environment indentation.
@@ -4027,15 +3977,73 @@ example, the title and copyright pages of a book are not numbered.  By
 convention, table of contents and frontmatter pages are numbered with
 roman numerals and not in sequence with the rest of the document.
 
-Since an Info file does not have pages, the @code{@@setchapternewpage}
-command has no effect on it.
+The @code{@@setchapternewpage} has no effect in output formats that do
+not have pages, such as Info and HTML.
 
 We recommend not including any @code{@@setchapternewpage} command in
-your manual sources at all, since the desired output is not intrinsic to
-the document.  For a particular hard copy run, if you don't want the
-default option (no blank pages, same headers on all pages) use the
-@option{--texinfo} option to @command{texi2dvi} to specify the output
-you want.
+your document source at all, since such desired pagination is not
+intrinsic to the document.  For a particular hard copy run, if you
+don't want the default output (no blank pages, same headers on all
+pages) use the @option{--texinfo} option to @command{texi2dvi} to
+specify the output you want.
+
+
+@node headings on off
+@subsection The @code{@@headings} Command
+@findex headings
+
+The @code{@@headings} command is rarely used.  It specifies what kind of
+page headings and footings to print on each page.  Usually, this is
+controlled by the @code{@@setchapternewpage} command.  You need the
+@code{@@headings} command only if the @code{@@setchapternewpage} command
+does not do what you want, or if you want to turn off predefined page
+headings prior to defining your own.  Write an @code{@@headings} command
+immediately after the @code{@@end titlepage} command.
+
+You can use @code{@@headings} as follows:
+
+@table @code
+@item @@headings off
+Turn off printing of page headings.
+
+@item @@headings single
+Turn on page headings appropriate for single-sided printing.
+
+@item @@headings double
+Turn on page headings appropriate for double-sided printing.
+
+@item @@headings singleafter
+@itemx @@headings doubleafter
+Turn on @code{single} or @code{double} headings, respectively, after the
+current page is output.
+
+@item @@headings on
+Turn on page headings: @code{single} if @samp{@@setchapternewpage
+on}, @code{double} otherwise.
+@end table
+
+For example, suppose you write @code{@@setchapternewpage off} before the
+@code{@@titlepage} command to tell @TeX{} to start a new chapter on the
+same page as the end of the last chapter.  This command also causes
+@TeX{} to typeset page headers for single-sided printing.  To cause
+@TeX{} to typeset for double sided printing, write @code{@@headings
+double} after the @code{@@end titlepage} command.
+
+You can stop @TeX{} from generating any page headings at all by
+writing @code{@@headings off} on a line of its own immediately after the
+line containing the @code{@@end titlepage} command, like this:
+
+@example
+@@end titlepage
+@@headings off
+@end example
+
+@noindent
+The @code{@@headings off} command overrides the @code{@@end titlepage}
+command, which would otherwise cause @TeX{} to print page headings.
+
+You can also specify your own style of page heading and footing.
+@xref{Headings, , Page Headings}, for more information.
 
 
 @node paragraphindent
@@ -4117,8 +4125,7 @@ indentation set by an @code{@@paragraphindent} command
 (@pxref{paragraphindent}).
 @end table
 
-For HTML and XML output, the @code{@@firstparagraphindent} setting is
-ignored.
+@code{@@firstparagraphindent} is ignored for HTML and Docbook output.
 
 It is best to write the @code{@@firstparagraphindent} command before the
 end-of-header line at the beginning of a Texinfo file, so the region
@@ -8134,8 +8141,8 @@ Examples}.
 @cindex Quotations
 @findex quotation
 
-The text of a quotation is processed normally (regular font, text is
-filled) except that:
+The text of a quotation is processed like normal text (regular font,
+text is filled) except that:
 
 @itemize @bullet
 @item
@@ -8143,8 +8150,11 @@ the margins are closer to the center of the page, so the whole of the
 quotation is indented;
 
 @item
-and the first lines of paragraphs are indented no more than other lines.
+the first lines of paragraphs are indented no more than other lines; and
 
+@item
+an @code{@@author} command may be given to specify the author of the
+quotation.
 @end itemize
 
 @quotation
@@ -8191,6 +8201,31 @@ Caution  Important  Note  Tip  Warning
 @noindent then the Docbook output uses corresponding special tags
 (@code{<note>}, etc.) instead of the default @code{<blockquote>}.
 HTML output always uses @code{<blockquote>}.
+
+If the author of the quotation is specified in the @code{@@quotation}
+block with the @code{@@author} command, a line with the author name is
+displayed after the quotation:
+
+@example
+@@quotation
+People sometimes ask me if it is a sin in the Church of Emacs to use 
+vi.  Using a free version of vi is not a sin; it is a penance.  So happy 
+hacking.
+
+@@author Richard Stallman 
+@@end quotation
+@end example
+
+@noindent
+produces
+
+@quotation
+People sometimes ask me if it is a sin in the Church of Emacs to use 
+vi.  Using a free version of vi is not a sin; it is a penance.  So happy 
+hacking.
+
+@author Richard Stallman 
+@end quotation
 
 @findex smallquotation
 Texinfo also provides a command @code{@@smallquotation}, which is just
@@ -10219,7 +10254,7 @@ would need to enclose every one of them between the braces of
 
 
 @node syncodeindex
-@subsection @code{@@syncodeindex}
+@subsection @code{@@syncodeindex}: Combining indices using @code{@@code}
 @findex syncodeindex
 
 When you want to combine functions and concepts into one index, you
@@ -10289,14 +10324,14 @@ index into a concept index, all the function names are printed in the
 
 
 @node synindex
-@subsection @code{@@synindex}
+@subsection @code{@@synindex}: Combining indices
 @findex synindex
 
 The @code{@@synindex} command is nearly the same as the
-@code{@@syncodeindex} command, except that it does not put the
-`from' index  entries into the @code{@@code} font; rather it puts
-them in the roman font.  Thus, you use @code{@@synindex} when you
-merge a concept index into a function index.
+@code{@@syncodeindex} command, except that it does not put the `from'
+index entries into the @code{@@code} font; rather it puts them in the
+roman font.  Thus, you use @code{@@synindex} when you merge a concept
+index into a function index.
 
 @xref{Printing Indices & Menus}, for information about printing an index
 at the end of a book or creating an index menu in an Info file.
@@ -14552,11 +14587,11 @@ are quoted by default.  For example:
 
 @example
 @group
-@@macro FIXME@{text@}
-@@strong@{FIXME: \text\@}
+@@macro TRYME@{text@}
+@@strong@{TRYME: \text\@}
 @@end macro
 
-@@FIXME@{A nice feature, though it can be dangerous.@}
+@@TRYME@{A nice feature, though it can be dangerous.@}
 @end group
 @end example
 
@@ -14564,7 +14599,7 @@ are quoted by default.  For example:
 will produce the following output
 
 @example
-@strong{FIXME: A nice feature, though it can be dangerous.}
+@strong{TRYME: A nice feature, though it can be dangerous.}
 @end example
 
 And indeed, it can.  Namely, @command{makeinfo} does not control the
@@ -21947,7 +21982,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.453 2012-07-04 18:13:37 karl Exp $
+$Id: texinfo.txi,v 1.454 2012-07-05 00:40:39 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
