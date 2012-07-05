@@ -24,6 +24,12 @@
 # ./texi2any.pl --set DEBUGTREE --set USE_NODES=1 file.texi
 # no elements
 # ./texi2any.pl --set DEBUGTREE file.texi
+# 
+# Some unofficial info about the --debug command line option ... with
+# --debug=1, the tree is not printed,
+# --debug=10 (or more), the tree is printed at the end of the run,
+# --debug=100 (or more), the tree is printed at each newline.
+
 
 use Texinfo::Convert::Converter;
 
