@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-06-11 16:21-0700\n"
+"POT-Creation-Date: 2012-07-06 16:25-0700\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Federico Bruni <brunology@gmx.com>\n"
 "Language-Team: Unknown\n"
@@ -828,7 +828,7 @@ msgstr "{name} di {class}"
 msgid "{category} of {class}: @emph{{type}} @strong{{name}}"
 msgstr "{name} di {class}"
 
-#: tp/Texinfo/Convert/HTML.pm:6024
+#: tp/Texinfo/Convert/HTML.pm:6023
 #, fuzzy, perl-brace-format
 msgid ""
 "This document was generated on @emph{@today{}} using @uref"
@@ -837,37 +837,37 @@ msgstr ""
 "Questo documento è stato generato il @i{{date}} con @uref"
 "{{program_homepage}, @i{{program}}}."
 
-#: tp/Texinfo/Convert/HTML.pm:6064
+#: tp/Texinfo/Convert/HTML.pm:6063
 #, perl-brace-format
 msgid "{title}: {element_text}"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6209
+#: tp/Texinfo/Convert/HTML.pm:6208
 #, perl-brace-format
 msgid "The node you are looking for is at {href}."
 msgstr "Il nodo che stai cercando è {href}"
 
-#: tp/Texinfo/Convert/HTML.pm:6279
+#: tp/Texinfo/Convert/HTML.pm:6278
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr "  I bottoni nei pannelli di navigazione hanno il seguente significato:"
 
-#: tp/Texinfo/Convert/HTML.pm:6285
+#: tp/Texinfo/Convert/HTML.pm:6284
 msgid "Button"
 msgstr "Bottone"
 
-#: tp/Texinfo/Convert/HTML.pm:6286
+#: tp/Texinfo/Convert/HTML.pm:6285
 msgid "Name"
 msgstr "Nome"
 
-#: tp/Texinfo/Convert/HTML.pm:6287
+#: tp/Texinfo/Convert/HTML.pm:6286
 msgid "Go to"
 msgstr "Vai a"
 
-#: tp/Texinfo/Convert/HTML.pm:6288
+#: tp/Texinfo/Convert/HTML.pm:6287
 msgid "From 1.2.3 go to"
 msgstr "Da 1.2.3 vai a"
 
-#: tp/Texinfo/Convert/HTML.pm:6314
+#: tp/Texinfo/Convert/HTML.pm:6313
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -877,47 +877,47 @@ msgstr ""
 "{ Sottosottosezione Uno-Due-Tre } di un documento che ha la seguente "
 "struttura:"
 
-#: tp/Texinfo/Convert/HTML.pm:6324
+#: tp/Texinfo/Convert/HTML.pm:6323
 msgid "Section One"
 msgstr "Sezione uno"
 
-#: tp/Texinfo/Convert/HTML.pm:6326
+#: tp/Texinfo/Convert/HTML.pm:6325
 msgid "Subsection One-One"
 msgstr "Sottosezione Uno-Uno"
 
-#: tp/Texinfo/Convert/HTML.pm:6333
+#: tp/Texinfo/Convert/HTML.pm:6332
 msgid "Subsection One-Two"
 msgstr "Sottosezione Uno-Due"
 
-#: tp/Texinfo/Convert/HTML.pm:6335
+#: tp/Texinfo/Convert/HTML.pm:6334
 msgid "Subsubsection One-Two-One"
 msgstr "Sottosottosezione Uno-Due-Uno"
 
-#: tp/Texinfo/Convert/HTML.pm:6336
+#: tp/Texinfo/Convert/HTML.pm:6335
 msgid "Subsubsection One-Two-Two"
 msgstr "Sottosottosezione Uno-Due-Due"
 
-#: tp/Texinfo/Convert/HTML.pm:6337
+#: tp/Texinfo/Convert/HTML.pm:6336
 msgid "Subsubsection One-Two-Three"
 msgstr "Sottosottosezione Uno-Due-Tre"
 
-#: tp/Texinfo/Convert/HTML.pm:6339
+#: tp/Texinfo/Convert/HTML.pm:6338
 msgid "Current Position"
 msgstr "Posizione Attuale"
 
-#: tp/Texinfo/Convert/HTML.pm:6340
+#: tp/Texinfo/Convert/HTML.pm:6339
 msgid "Subsubsection One-Two-Four"
 msgstr "Sottosottosezione Uno-Due-Quattro"
 
-#: tp/Texinfo/Convert/HTML.pm:6343
+#: tp/Texinfo/Convert/HTML.pm:6342
 msgid "Subsection One-Three"
 msgstr "Sottosezione Uno-Tre"
 
-#: tp/Texinfo/Convert/HTML.pm:6350
+#: tp/Texinfo/Convert/HTML.pm:6349
 msgid "Subsection One-Four"
 msgstr "Sottosezione Uno-Quattro"
 
-#: tp/Texinfo/Convert/HTML.pm:6751
+#: tp/Texinfo/Convert/HTML.pm:6750
 msgid "Untitled Document"
 msgstr "Documento senza titolo"
 

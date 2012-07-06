@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-06-11 16:21-0700\n"
+"POT-Creation-Date: 2012-07-06 16:25-0700\n"
 "PO-Revision-Date: 2007-02-05\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -821,7 +821,7 @@ msgstr ""
 msgid "{category} of {class}: @emph{{type}} @strong{{name}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6024
+#: tp/Texinfo/Convert/HTML.pm:6023
 #, fuzzy, perl-brace-format
 msgid ""
 "This document was generated on @emph{@today{}} using @uref"
@@ -830,37 +830,37 @@ msgstr ""
 "この文書は@emph{{date}}に@uref{{program_homepage}, @emph{{program}}}を用いて"
 "生成されました。"
 
-#: tp/Texinfo/Convert/HTML.pm:6064
+#: tp/Texinfo/Convert/HTML.pm:6063
 #, perl-brace-format
 msgid "{title}: {element_text}"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6209
+#: tp/Texinfo/Convert/HTML.pm:6208
 #, perl-brace-format
 msgid "The node you are looking for is at {href}."
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6279
+#: tp/Texinfo/Convert/HTML.pm:6278
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr "ナビゲーションパネル中のボタンには以下の意味があります。"
 
-#: tp/Texinfo/Convert/HTML.pm:6285
+#: tp/Texinfo/Convert/HTML.pm:6284
 msgid "Button"
 msgstr "ボタン"
 
-#: tp/Texinfo/Convert/HTML.pm:6286
+#: tp/Texinfo/Convert/HTML.pm:6285
 msgid "Name"
 msgstr "名称"
 
-#: tp/Texinfo/Convert/HTML.pm:6287
+#: tp/Texinfo/Convert/HTML.pm:6286
 msgid "Go to"
 msgstr "移動先"
 
-#: tp/Texinfo/Convert/HTML.pm:6288
+#: tp/Texinfo/Convert/HTML.pm:6287
 msgid "From 1.2.3 go to"
 msgstr "1.2.3項からの移動先"
 
-#: tp/Texinfo/Convert/HTML.pm:6314
+#: tp/Texinfo/Convert/HTML.pm:6313
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -869,47 +869,47 @@ msgstr ""
 "@strong{例}では、以下に示す構造を持つ文書の@strong{1.2.3項}を現在位置に仮定し"
 "ています。"
 
-#: tp/Texinfo/Convert/HTML.pm:6324
+#: tp/Texinfo/Convert/HTML.pm:6323
 msgid "Section One"
 msgstr "第1項"
 
-#: tp/Texinfo/Convert/HTML.pm:6326
+#: tp/Texinfo/Convert/HTML.pm:6325
 msgid "Subsection One-One"
 msgstr "第1.1項"
 
-#: tp/Texinfo/Convert/HTML.pm:6333
+#: tp/Texinfo/Convert/HTML.pm:6332
 msgid "Subsection One-Two"
 msgstr "第1.2項"
 
-#: tp/Texinfo/Convert/HTML.pm:6335
+#: tp/Texinfo/Convert/HTML.pm:6334
 msgid "Subsubsection One-Two-One"
 msgstr "第1.2.1項"
 
-#: tp/Texinfo/Convert/HTML.pm:6336
+#: tp/Texinfo/Convert/HTML.pm:6335
 msgid "Subsubsection One-Two-Two"
 msgstr "第1.2.2項"
 
-#: tp/Texinfo/Convert/HTML.pm:6337
+#: tp/Texinfo/Convert/HTML.pm:6336
 msgid "Subsubsection One-Two-Three"
 msgstr "第1.2.3項"
 
-#: tp/Texinfo/Convert/HTML.pm:6339
+#: tp/Texinfo/Convert/HTML.pm:6338
 msgid "Current Position"
 msgstr "現在位置"
 
-#: tp/Texinfo/Convert/HTML.pm:6340
+#: tp/Texinfo/Convert/HTML.pm:6339
 msgid "Subsubsection One-Two-Four"
 msgstr "第1.2.4項"
 
-#: tp/Texinfo/Convert/HTML.pm:6343
+#: tp/Texinfo/Convert/HTML.pm:6342
 msgid "Subsection One-Three"
 msgstr "第1.3項"
 
-#: tp/Texinfo/Convert/HTML.pm:6350
+#: tp/Texinfo/Convert/HTML.pm:6349
 msgid "Subsection One-Four"
 msgstr "第1.4項"
 
-#: tp/Texinfo/Convert/HTML.pm:6751
+#: tp/Texinfo/Convert/HTML.pm:6750
 msgid "Untitled Document"
 msgstr "無題の文書"
 

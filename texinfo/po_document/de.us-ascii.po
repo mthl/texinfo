@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-06-11 16:21-0700\n"
+"POT-Creation-Date: 2012-07-06 16:25-0700\n"
 "PO-Revision-Date: 2008-03-19\n"
 "Last-Translator: Reinhold Kainhofer <reinhold@kainhofer.com>\n"
 "Language-Team: Unknown\n"
@@ -828,7 +828,7 @@ msgstr ""
 msgid "{category} of {class}: @emph{{type}} @strong{{name}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6024
+#: tp/Texinfo/Convert/HTML.pm:6023
 #, fuzzy, perl-brace-format
 msgid ""
 "This document was generated on @emph{@today{}} using @uref"
@@ -837,37 +837,37 @@ msgstr ""
 "Dieses Dokument wurde erzeugt am @i{{date}} durch @uref{{program_homepage}, "
 "@i{{program}}}."
 
-#: tp/Texinfo/Convert/HTML.pm:6064
+#: tp/Texinfo/Convert/HTML.pm:6063
 #, perl-brace-format
 msgid "{title}: {element_text}"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6209
+#: tp/Texinfo/Convert/HTML.pm:6208
 #, perl-brace-format
 msgid "The node you are looking for is at {href}."
 msgstr "Der Knoten, den Sie sehen, befindet sich bei {href}"
 
-#: tp/Texinfo/Convert/HTML.pm:6279
+#: tp/Texinfo/Convert/HTML.pm:6278
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr " Die Links in der Navigationsleiste haben die folgende Bedeutung: "
 
-#: tp/Texinfo/Convert/HTML.pm:6285
+#: tp/Texinfo/Convert/HTML.pm:6284
 msgid "Button"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6286
+#: tp/Texinfo/Convert/HTML.pm:6285
 msgid "Name"
 msgstr "Name"
 
-#: tp/Texinfo/Convert/HTML.pm:6287
+#: tp/Texinfo/Convert/HTML.pm:6286
 msgid "Go to"
 msgstr "Gehe zu"
 
-#: tp/Texinfo/Convert/HTML.pm:6288
+#: tp/Texinfo/Convert/HTML.pm:6287
 msgid "From 1.2.3 go to"
 msgstr "Von 1.2.3 gehe zu"
 
-#: tp/Texinfo/Convert/HTML.pm:6314
+#: tp/Texinfo/Convert/HTML.pm:6313
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -877,47 +877,47 @@ msgstr ""
 "@strong{ Unterabschnitt 1-2-3 } in einem Dokument mit folgender Struktur "
 "liegt:"
 
-#: tp/Texinfo/Convert/HTML.pm:6324
+#: tp/Texinfo/Convert/HTML.pm:6323
 msgid "Section One"
 msgstr "Abschnitt 1"
 
-#: tp/Texinfo/Convert/HTML.pm:6326
+#: tp/Texinfo/Convert/HTML.pm:6325
 msgid "Subsection One-One"
 msgstr "Unterabschnitt 1-1"
 
-#: tp/Texinfo/Convert/HTML.pm:6333
+#: tp/Texinfo/Convert/HTML.pm:6332
 msgid "Subsection One-Two"
 msgstr "Unterabschnitt 1-2"
 
-#: tp/Texinfo/Convert/HTML.pm:6335
+#: tp/Texinfo/Convert/HTML.pm:6334
 msgid "Subsubsection One-Two-One"
 msgstr "Unterabschnitt 1-2-1"
 
-#: tp/Texinfo/Convert/HTML.pm:6336
+#: tp/Texinfo/Convert/HTML.pm:6335
 msgid "Subsubsection One-Two-Two"
 msgstr "Unterabschnitt 1-2-2"
 
-#: tp/Texinfo/Convert/HTML.pm:6337
+#: tp/Texinfo/Convert/HTML.pm:6336
 msgid "Subsubsection One-Two-Three"
 msgstr "Unterabschnitt 1-2-3"
 
-#: tp/Texinfo/Convert/HTML.pm:6339
+#: tp/Texinfo/Convert/HTML.pm:6338
 msgid "Current Position"
 msgstr "Aktuelle Position"
 
-#: tp/Texinfo/Convert/HTML.pm:6340
+#: tp/Texinfo/Convert/HTML.pm:6339
 msgid "Subsubsection One-Two-Four"
 msgstr "Unterabschnitt 1-2-4"
 
-#: tp/Texinfo/Convert/HTML.pm:6343
+#: tp/Texinfo/Convert/HTML.pm:6342
 msgid "Subsection One-Three"
 msgstr "Unterabschnitt 1-3"
 
-#: tp/Texinfo/Convert/HTML.pm:6350
+#: tp/Texinfo/Convert/HTML.pm:6349
 msgid "Subsection One-Four"
 msgstr "Unterabschnitt 1-4"
 
-#: tp/Texinfo/Convert/HTML.pm:6751
+#: tp/Texinfo/Convert/HTML.pm:6750
 msgid "Untitled Document"
 msgstr "Unbenanntes Dokumen"
 

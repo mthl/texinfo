@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-06-11 16:21-0700\n"
+"POT-Creation-Date: 2012-07-06 16:25-0700\n"
 "PO-Revision-Date: 2006-01-09\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin01@solar.com.br>\n"
 "Language-Team: Unknown\n"
@@ -829,7 +829,7 @@ msgstr "@tie{ }-- {category} da {class}: {type} {name}"
 msgid "{category} of {class}: @emph{{type}} @strong{{name}}"
 msgstr "@tie{ }-- {category} da {class}: {type} {name}"
 
-#: tp/Texinfo/Convert/HTML.pm:6024
+#: tp/Texinfo/Convert/HTML.pm:6023
 #, fuzzy, perl-brace-format
 msgid ""
 "This document was generated on @emph{@today{}} using @uref"
@@ -838,39 +838,39 @@ msgstr ""
 "Esse documento foi gerado em @i{{date}} usando @uref{{program_homepage}, @i"
 "{{program}}}."
 
-#: tp/Texinfo/Convert/HTML.pm:6064
+#: tp/Texinfo/Convert/HTML.pm:6063
 #, perl-brace-format
 msgid "{title}: {element_text}"
 msgstr ""
 
-#: tp/Texinfo/Convert/HTML.pm:6209
+#: tp/Texinfo/Convert/HTML.pm:6208
 #, perl-brace-format
 msgid "The node you are looking for is at {href}."
 msgstr "O nodo que vo@^e est@'a olhando est@'a em {href}."
 
-#: tp/Texinfo/Convert/HTML.pm:6279
+#: tp/Texinfo/Convert/HTML.pm:6278
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr ""
 "  Os bot@~oes nos pain@'eis de navega@,{c}@~ao possuem os seguintes "
 "significados:"
 
-#: tp/Texinfo/Convert/HTML.pm:6285
+#: tp/Texinfo/Convert/HTML.pm:6284
 msgid "Button"
 msgstr "Bot@~ao"
 
-#: tp/Texinfo/Convert/HTML.pm:6286
+#: tp/Texinfo/Convert/HTML.pm:6285
 msgid "Name"
 msgstr "Nome"
 
-#: tp/Texinfo/Convert/HTML.pm:6287
+#: tp/Texinfo/Convert/HTML.pm:6286
 msgid "Go to"
 msgstr "V@'a para"
 
-#: tp/Texinfo/Convert/HTML.pm:6288
+#: tp/Texinfo/Convert/HTML.pm:6287
 msgid "From 1.2.3 go to"
 msgstr "De 1.2.3 v@'a para"
 
-#: tp/Texinfo/Convert/HTML.pm:6314
+#: tp/Texinfo/Convert/HTML.pm:6313
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -880,47 +880,47 @@ msgstr ""
 "@strong{ Subsub@,{c}@~ao Um-Dois-Tr@^es } de um documento com a seguinte "
 "estrutura:"
 
-#: tp/Texinfo/Convert/HTML.pm:6324
+#: tp/Texinfo/Convert/HTML.pm:6323
 msgid "Section One"
 msgstr "Se@,{c}@~ao Um"
 
-#: tp/Texinfo/Convert/HTML.pm:6326
+#: tp/Texinfo/Convert/HTML.pm:6325
 msgid "Subsection One-One"
 msgstr "Subse@,{c}@~ao Um-Um"
 
-#: tp/Texinfo/Convert/HTML.pm:6333
+#: tp/Texinfo/Convert/HTML.pm:6332
 msgid "Subsection One-Two"
 msgstr "Subse@,{c}@~ao Um-Dois"
 
-#: tp/Texinfo/Convert/HTML.pm:6335
+#: tp/Texinfo/Convert/HTML.pm:6334
 msgid "Subsubsection One-Two-One"
 msgstr "Subse@,{c}@~ao Um-Dois-Um"
 
-#: tp/Texinfo/Convert/HTML.pm:6336
+#: tp/Texinfo/Convert/HTML.pm:6335
 msgid "Subsubsection One-Two-Two"
 msgstr "Subse@,{c}@~ao Um-Dois-Dois"
 
-#: tp/Texinfo/Convert/HTML.pm:6337
+#: tp/Texinfo/Convert/HTML.pm:6336
 msgid "Subsubsection One-Two-Three"
 msgstr "Subse@,{c}@~ao Um-Dois-Tr@^es"
 
-#: tp/Texinfo/Convert/HTML.pm:6339
+#: tp/Texinfo/Convert/HTML.pm:6338
 msgid "Current Position"
 msgstr "Posi@,{c}@~ao Atual"
 
-#: tp/Texinfo/Convert/HTML.pm:6340
+#: tp/Texinfo/Convert/HTML.pm:6339
 msgid "Subsubsection One-Two-Four"
 msgstr "Subse@,{c}@~ao Um-Dois-Quatro"
 
-#: tp/Texinfo/Convert/HTML.pm:6343
+#: tp/Texinfo/Convert/HTML.pm:6342
 msgid "Subsection One-Three"
 msgstr "Subse@,{c}@~ao Um-Tr@^es"
 
-#: tp/Texinfo/Convert/HTML.pm:6350
+#: tp/Texinfo/Convert/HTML.pm:6349
 msgid "Subsection One-Four"
 msgstr "Subse@,{c}@~ao Um-Quatro"
 
-#: tp/Texinfo/Convert/HTML.pm:6751
+#: tp/Texinfo/Convert/HTML.pm:6750
 msgid "Untitled Document"
 msgstr "Documento Sem Nome"
 
