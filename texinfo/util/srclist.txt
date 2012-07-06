@@ -34,7 +34,6 @@ $GNULIBSRC/build-aux/config.sub		build-aux
 $GNULIBSRC/build-aux/depcomp		build-aux
 $GNULIBSRC/build-aux/install-sh		build-aux
 $GNULIBSRC/build-aux/mdate-sh		build-aux
-$GNULIBSRC/build-aux/missing		build-aux
 #
 $GNULIBSRC/doc/COPYINGv3		./COPYING
 $GNULIBSRC/doc/INSTALL			./INSTALL.generic
