@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.22 2012-06-11 17:54:26 karl Exp $
+   $Id: infokey.c,v 1.23 2012-07-06 23:55:32 karl Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009,
    2010, 2011, 2012
@@ -418,7 +418,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
       octal,
       special_key
     }
-  seqstate;		/* used if state == get_keyseq */
+  seqstate = normal;	/* used if state == get_keyseq */
   char meta = 0;
   char ocnt = 0;	/* used if state == get_keyseq && seqstate == octal */
 

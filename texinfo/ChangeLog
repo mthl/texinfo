@@ -1,5 +1,12 @@
 2012-07-06  Karl Berry  <karl@gnu.org>
 
+	Avoid "used uninitialized" warnings from gcc.
+	* info/infokey.c (compile): initialize seqstate.
+	* info/window.c (process_node_text): initialize carried_over_len,
+	carried_over_count, replen.
+	(Not sure if they actually can be used uninitialized, but seems
+	harmless to initialize them and avoid the warnings, anyway.)
+
 	* doc/texinfo.tex (@ifcommanddefined, @ifcommandnotdefined): new
 	prospective conditionals, not confirmed
 	(txicommandconditionals): implicitly @set this variable.

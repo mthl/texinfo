@@ -1,8 +1,8 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.24 2011-11-17 10:04:59 gray Exp $
+   $Id: window.c,v 1.25 2012-07-06 23:55:32 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008, 2011
-   Free Software Foundation, Inc.
+   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
+   2011, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1476,10 +1476,11 @@ process_node_text (WINDOW *win, char *start,
        mbi_advance (iter))
     {
       const char *carried_over_ptr;
-      size_t carried_over_len, carried_over_count;
+      size_t carried_over_len = 0;
+      size_t carried_over_count = 0;
       const char *cur_ptr = mbi_cur_ptr (iter);
       size_t cur_len = mb_len (mbi_cur (iter));
-      size_t replen;
+      size_t replen = 0;
       int delim = 0;
       int rc;
 
