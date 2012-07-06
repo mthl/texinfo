@@ -1,5 +1,9 @@
 2012-07-06  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (@ifcommanddefined, @ifcommandnotdefined): new
+	prospective conditionals, not confirmed
+	(txicommandconditionals): implicitly @set this variable.
+
 	* doc/texinfo.txi (Node Line Requirements): discuss commands in
 	node names.
 	(Two Paths): merge into Texinfo Document Structure, with @anchor.
