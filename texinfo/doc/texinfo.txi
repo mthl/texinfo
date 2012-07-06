@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.454 2012-07-05 00:40:39 karl Exp $
+@c $Id: texinfo.txi,v 1.455 2012-07-06 18:34:59 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -291,18 +291,15 @@ Chapter Structuring
 
 Nodes
 
-* Two Paths::                   Different commands to structure
-                                 Info output and printed output.
-* Node Menu Illustration::      A diagram, and sample nodes and menus.
 * node::                        Creating nodes, in detail.
 * makeinfo Pointer Creation::   Letting makeinfo determine node pointers.
 * anchor::                      Defining arbitrary cross reference targets.
+* Node Menu Illustration::      A diagram, and sample nodes and menus.
 
 The @code{@@node} Command
 
 * Node Names::                  How to choose node and pointer names.
 * Writing a Node::              How to write an @code{@@node} line.
-* Node Line Tips::              Keep names short.
 * Node Line Requirements::      Keep names unique, without @@-commands.
 * First Node::                  How to write a `Top' node.
 * top command::                 How to use the @code{@@top} command.
@@ -1084,6 +1081,7 @@ program.
 @cindex Structure, of Texinfo documents
 @cindex Double structure, of Texinfo documents
 
+@anchor{Two Paths}@c node name
 Texinfo documents most usefully have a double structure, reflecting
 the double purposes of printed and online output.  For printed output
 (DVI, PDF, @dots{}), with physical pages, there are chapters,
@@ -4871,10 +4869,11 @@ node listed in a menu.
 
 Node pointers and menus provide structure for Info files just as
 chapters, sections, subsections, and the like provide structure for
-printed books.  The two structures are theoretically distinct.  
-In general, however, the tree structure of printed books is also 
-used for the node and menu structure, as it is convenient and leads 
-to a document easy to understand by the reader.
+printed books.  The two structures are theoretically distinct.  In
+practice, however, the tree structure of printed books is essentially
+always used for the node and menu structure also, as this leads to a
+document which is easiest to follow.  @xref{Texinfo Document
+Structure}.
 
 Because node names are used in cross references, it is not desirable
 to casually change them once published.  Such name changes invalidate
@@ -4882,217 +4881,51 @@ references from other manuals, from mail archives, and so on.
 @xref{HTML Xref Link Preservation}.
 
 @menu
-* Two Paths::                   Different commands to structure
-                                 Info output and printed output.
-* Node Menu Illustration::      A diagram, and sample nodes and menus.
 * node::                        Creating nodes, in detail.
 * makeinfo Pointer Creation::   Letting makeinfo determine node pointers.
 * anchor::                      Defining arbitrary cross reference targets.
+* Node Menu Illustration::      A diagram, and sample nodes and menus.
 @end menu
-
-
-@node Two Paths
-@section Two Paths
-
-The node and menu commands and the chapter structuring commands are
-technically independent of each other:
-
-@itemize @bullet
-@item
-In Info, node and menu commands provide structure.  The chapter
-structuring commands generate headings with different kinds of
-underlining---asterisks for chapters, hyphens for sections, and so on;
-they do nothing else.  In HTML, by default, the situation is similar.
-
-@item
-In @TeX{} and Docbook, the chapter structuring commands generate 
-chapter and section numbers and tables of contents.  The node and 
-menu commands provide information for cross references; they do 
-nothing else.  In HTML this structure is also used in the
-generation of the tables of contents.
-@end itemize
-
-You can use node pointers and menus to structure an Info file any way
-you want; and you can write a Texinfo file so that its Info output has a
-different structure than its printed output.  However, virtually all
-Texinfo files are written such that the structure for the Info output
-corresponds to the structure for the printed output.  It is neither
-convenient nor understandable to the reader to do otherwise.
-
-Generally, printed output is structured in a tree-like hierarchy in
-which the chapters are the major limbs from which the sections branch
-out.  Similarly, node pointers and menus are organized to create a
-matching structure in the Info output.
-
-
-@node Node Menu Illustration
-@section Node and Menu Illustration
-
-Here is a copy of the diagram shown earlier that illustrates a Texinfo
-file with three chapters, each of which contains two sections.
-
-The ``root'' is at the top of the diagram and the ``leaves'' are at
-the bottom.  This is how such a diagram is drawn conventionally; it
-illustrates an upside-down tree.  For this reason, the root node is
-called the `Top' node, and `Up' node pointers carry you closer to the
-root.
-
-@example
-@group
-                         Top
-                          |
-        -------------------------------------
-       |                  |                  |
-    Chapter 1          Chapter 2          Chapter 3
-       |                  |                  |
-    --------           --------           --------
-   |        |         |        |         |        |
-Section  Section   Section  Section   Section  Section
-  1.1      1.2       2.1      2.2       3.1      3.2
-@end group
-@end example
-
-Using explicit pointers (not recommended, but for shown for purposes
-of the example), the fully-written command to start Chapter@tie{}2
-would be this:
-
-@example
-@group
-@@node     Chapter 2,  Chapter 3, Chapter 1, Top
-@@comment  node-name,  next,      previous,  up
-@end group
-@end example
-
-@noindent
-This @code{@@node} line says that the name of this node is
-``Chapter@tie{}2'', the name of the `Next' node is ``Chapter 3'', the
-name of the `Previous' node is ``Chapter@tie{}1'', and the name of the
-`Up' node is ``Top''.  You can (and should) omit writing out these
-node names if your document is hierarchically organized
-(@pxref{makeinfo Pointer Creation}), but the pointer relationships
-still obtain.
-
-@quotation Note
-`Next' and `Previous' refer to nodes at the @emph{same hierarchical
-level} in the manual, not necessarily to the next node within the
-Texinfo file.  In the Texinfo file, the subsequent node may be at a
-lower level---a section-level node most often follows a chapter-level
-node, for example.  (The `Top' node contains the exception to this
-rule.  Since the `Top' node is the only node at that level, `Next'
-refers to the first following node, which is almost always a chapter
-or chapter-level node.)
-@end quotation
-
-To go to Sections 2.1 and 2.2 using Info, you need a menu inside
-Chapter 2.  (@xref{Menus}.)  You would write the menu just before the
-beginning of Section 2.1, like this:
-
-@example
-@group
-   @@menu
-   * Sect. 2.1::    Description of this section.
-   * Sect. 2.2::    Description.
-   @@end menu
-@end group
-@end example
-
-Using explicit pointers, the node for Sect.@: 2.1 is written like this:
-
-@example
-@group
-@@node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
-@@comment  node-name, next,      previous,  up
-@end group
-@end example
-
-In Info format, the `Next' and `Previous' pointers of a node usually
-lead to other nodes at the same level---from chapter to chapter or
-from section to section (sometimes, as shown, the `Previous' pointer
-points up); an `Up' pointer usually leads to a node at the level above
-(closer to the `Top' node); and a `Menu' leads to nodes at a level
-below (closer to `leaves').  (A cross reference can point to a node at
-any level; see @ref{Cross References}.)
-
-Usually, an @code{@@node} command and a chapter structuring command
-are conventionally used together, in that order, often followed by
-indexing commands.  (As shown in the example above, you may follow the
-@code{@@node} line with a comment line, e.g., to show which pointer is
-which if explicit pointers are used.)  The Texinfo processors use this
-construct to determine the relationships between nodes and sectioning
-commands.
-
-Here is the beginning of the chapter in this manual called ``Ending a
-Texinfo File''.  This shows an @code{@@node} line followed by an
-@code{@@chapter} line, and then by indexing lines.  The manual uses
-implictly determined node pointers; therefore, nothing else is needed
-on the @code{@@node} line.
-
-@example
-@group
-@@node Ending a File
-@@chapter Ending a Texinfo File
-@@cindex Ending a Texinfo file
-@@cindex Texinfo file ending
-@@cindex File ending
-@end group
-@end example
-
-An earlier version of the manual used explicit node pointes.  Here is
-the beginning of the same chapter for that case.  This shows an
-@code{@@node} line followed by a comment line, an @code{@@chapter}
-line, and then by indexing lines.
-
-@example
-@group
-@@node    Ending a File, Structuring, Beginning a File, Top
-@@comment node-name,     next,        previous,         up
-@@chapter Ending a Texinfo File
-@@cindex Ending a Texinfo file
-@dots{}
-@end group
-@end example
 
 
 @node node
 @section The @code{@@node} Command
-
 @cindex Node, defined
 @findex node
 
-A @dfn{node} is a segment of text that begins at an @code{@@node}
+A @dfn{node} is a stretch of text that begins at an @code{@@node}
 command and continues until the next @code{@@node} command.  The
 definition of node is different from that for chapter or section.  A
-chapter may contain sections and a section may contain subsections;
-but a node cannot contain subnodes; the text of a node continues only
+chapter may contain sections and a section may contain subsections,
+but a node cannot contain subnodes: the text of a node continues only
 until the next @code{@@node} command in the file.  A node usually
 contains only one chapter structuring command, immediately following
-the @code{@@node} line.  Correspondingly, a chapter usually contains
-several nodes, one for each section, subsection, and subsubsection.
+the @code{@@node} line.  
 
 To specify a node, write an @code{@@node} command at the beginning of
 a line, and follow it with up to four arguments, separated by commas,
 on the rest of the same line.  The first argument is required; it is
 the name of this node (for details of node names, @pxref{Node Line
-Requirements}).  The subsequent arguments are optional---the names of
-the `Next', `Previous', and `Up' pointers, in that order.  We
-recommend omitting them if your Texinfo document is hierarchically
-organized, as virtually all are (@pxref{makeinfo Pointer Creation}).
-You may insert spaces before or after each name on the @code{@@node}
-line if you wish; the spaces are ignored.
+Requirements}).  The subsequent arguments are optional---they are the
+names of the `Next', `Previous', and `Up' pointers, in that order.  We
+strongly recommend omitting them if your Texinfo document is
+hierarchically organized, as virtually all are (@pxref{makeinfo
+Pointer Creation}).  You may insert spaces before or after each name
+on the @code{@@node} line if you wish; such spaces are ignored.
 
 @opindex accesskey@r{, in HTML output of nodes}
 Whether the node pointers are specified implicitly or explicitly, the
-HTML output from @command{makeinfo} for each node includes links to
-the `Next', `Previous', and `Up' nodes.  The HTML also uses the
-@code{accesskey} attribute with the values @samp{n}, @samp{p}, and
+Info and HTML output from @command{makeinfo} for each node includes
+links to the `Next', `Previous', and `Up' nodes.  The HTML also uses
+the @code{accesskey} attribute with the values @samp{n}, @samp{p}, and
 @samp{u} respectively.  This allows people using web browsers to
 follow the navigation using (typically) @kbd{M-@var{letter}}, e.g.,
 @kbd{M-n} for the `Next' node, from anywhere within the node.
 
 Usually, you write one of the chapter-structuring command lines
 immediately after an @code{@@node} line---for example, an
-@code{@@section} or @code{@@subsection} line.  (@xref{Structuring
-Command Types}.)
+@code{@@section} or @code{@@subsection} line.  @xref{Structuring
+Command Types}.
 
 @TeX{} uses both @code{@@node} names and chapter-structuring names in
 the output for cross references.  For this reason, you must write
@@ -5110,7 +4943,6 @@ References}.
 @menu
 * Node Names::                  How to choose node and pointer names.
 * Writing a Node::              How to write an @code{@@node} line.
-* Node Line Tips::              Keep names short.
 * Node Line Requirements::      Keep names unique.
 * First Node::                  How to write a `Top' node.
 * top command::                 How to use the @code{@@top} command.
@@ -5121,9 +4953,35 @@ References}.
 @subsection Choosing Node and Pointer Names
 
 @cindex Node names, choosing
-The name of a node identifies the node (for details, @pxref{Node Line
-Requirements}).  The pointers enable you to reach other nodes and
-consist simply of the names of those nodes.
+The name of a node identifies the node.  For all the details of node
+names, @pxref{Node Line Requirements}).
+
+@anchor{Node Line Tips}@c previous node name
+Here are some suggestions for node names:
+
+@itemize @bullet
+@item
+Try to pick node names that are informative but short.
+
+In the Info file, the file name, node name, and pointer names are all
+inserted on one line, which may run into the right edge of the window.
+(This does not cause a problem with Info, but is ugly.)
+
+@item
+Try to pick node names that differ from each other near the beginnings
+of their names.  This way, it is easy to use automatic name completion in
+Info.
+
+@item
+By convention, node names are capitalized just as they would be for
+section or chapter titles.  In this manual, initial and significant
+words are capitalized; others are not.
+@end itemize
+
+The pointers from a given node enable you to reach other nodes and
+consist simply of the names of those nodes.  The pointers are usually
+not specified explicitly, as @command{makeinfo} can determine them
+(@pxref{makeinfo Pointer Creation}).
 
 Normally, a node's `Up' pointer contains the name of the node whose
 menu mentions that node.  The node's `Next' pointer contains the name
@@ -5135,18 +4993,6 @@ node, both pointers name the same node.
 Usually, the first node of a Texinfo file is the `Top' node, and its
 `Up' pointer points to the @file{dir} file, which contains the main menu 
 for all of Info.
-
-The `Top' node itself contains the main or master menu for the manual.
-Also, it is helpful to include a brief description of the manual in the
-`Top' node.  @xref{First Node}, for information on how to write the
-first node of a Texinfo file.
-
-Even when you explicitly specify all pointers, you cannot write the
-nodes in the Texinfo source file in an arbitrary order!  Because
-formatters must process the file sequentially, irrespective of node
-pointers, you must write the nodes in the order you wish them to
-appear in the output.  For the Info format the order may not matter,
-but it matters for the other formats.
 
 
 @node Writing a Node
@@ -5164,10 +5010,10 @@ the node, like this:
 @end example
 
 If you are using GNU Emacs, you can use the update node commands
-provided by Texinfo mode to insert the names of the pointers; or you
-can leave the pointers out of the Texinfo file and let @code{makeinfo}
-insert node pointers into the Info file it creates.  (@xref{Texinfo
-Mode}, and @ref{makeinfo Pointer Creation}.)
+provided by Texinfo mode to insert the names of the pointers; or
+(recommended), you can leave the pointers out of the Texinfo file and
+let @code{makeinfo} insert node pointers into the Info file it
+creates.  (@xref{Texinfo Mode}, and @ref{makeinfo Pointer Creation}.)
 
 Alternatively, you can insert the `Next', `Previous', and `Up'
 pointers yourself.  If you do this, you may find it helpful to use the
@@ -5190,12 +5036,12 @@ commas as needed, as in: @samp{@@node mynode,,,uppernode}.  However,
 we recommend leaving off all the pointers and letting @code{makeinfo}
 determine them, as described above.
 
-If you wish, you can ignore @code{@@node} lines altogether in your first
-draft and then use the @code{texinfo-insert-node-lines} command to
-create @code{@@node} lines for you.  However, we do not recommend this
-practice.  It is better to name the node itself at the same time that
-you write a segment so you can easily make cross references.  A large
-number of cross references are an especially important feature of a good
+It's, you can ignore @code{@@node} lines altogether in your
+first draft and then use the @code{texinfo-insert-node-lines} command
+to create @code{@@node} lines for you.  However, we do not recommend
+this practice.  It is better to name the node itself at the same time
+that you write a segment so you can easily make cross references.
+Useful cross references are an especially important feature of a good
 Texinfo manual.
 
 After you have inserted an @code{@@node} line, you should immediately
@@ -5205,30 +5051,12 @@ you will find at least two and often as many as four or five ways of
 referring to the node in the index.  Use them all.  This will make it
 much easier for people to find the node.
 
-
-@node Node Line Tips
-@subsection @code{@@node} Line Tips
-
-Here are three suggestions:
-
-@itemize @bullet
-@item
-Try to pick node names that are informative but short.
-
-In the Info file, the file name, node name, and pointer names are all
-inserted on one line, which may run into the right edge of the window.
-(This does not cause a problem with Info, but is ugly.)
-
-@item
-Try to pick node names that differ from each other near the beginnings
-of their names.  This way, it is easy to use automatic name completion in
-Info.
-
-@item
-By convention, node names are capitalized just as they would be for
-section or chapter titles.  In this manual, initial and significant
-words are capitalized; others are not.
-@end itemize
+Even when you explicitly specify all pointers, you cannot write the
+nodes in the Texinfo source file in an arbitrary order!  Because
+formatters must process the file sequentially, irrespective of node
+pointers, you must write the nodes in the order you wish them to
+appear in the output.  For Info format one can imagine that the order
+may not matter, but it matters for the other formats.
 
 
 @node Node Line Requirements
@@ -5236,12 +5064,13 @@ words are capitalized; others are not.
 
 @cindex Node line requirements
 @cindex Restrictions on node names
+
 Names used with @code{@@node} have several requirements:
 
 @itemize @bullet
+@item
 @cindex Unique node names requirement
 @cindex Node names must be unique
-@item
 All the node names in a single Texinfo file must be unique.
 
 This means, for example, that if you end every chapter with a summary,
@@ -5254,7 +5083,37 @@ sections are all different.
 @item
 The next/previous/up pointers on @code{@@node} lines must be the names
 of nodes.  (It's recommended to leave out these explicit node pointer
-names; @pxref{makeinfo Pointer Creation}.)
+names, which automatically avoids any problem here; @pxref{makeinfo
+Pointer Creation}.)
+
+@item
+@cindex Commands in node names
+@cindex @@-commands in node names
+Node names can contain @@-commands.  The output is generally the
+natural result of the command; for example, using @code{@@TeX@{@}} in a
+node name results in the @TeX{} logo being output, as it would be in
+normal text.  Cross references should use @code{@@TeX@{@}} just as the
+node name does.
+
+For Info and HTML output, especially, it is necessary to expand
+commands to some sequence of characters; for instance,
+@code{@@TeX@{@}} expands to the three letters @samp{TeX} in the Info
+node name.  (However, cross references to the node should not take the
+``shortcut'' of using @samp{TeX}; stick to the actual node name,
+commands and all.)
+
+Some commands do not make sense in node names; for instance,
+environments (e.g., @code{@@quotation}), commands that read a whole
+line as their argument (e.g., @code{@@sp}), and plenty of others.
+
+For the complete list of commands that are allowed, and their
+expansion for HTML identifiers and file names, @pxref{HTML Xref
+Command Expansion}.  The expansions for Info are generally given with
+main the description of the command.
+
+This feature was supported before the Texinfo 5 release in 2012 in an
+ad hoc way (the @option{--commands-in-node-names} option to
+@command{makeinfo}).  Now it is part of the language.
 
 @item
 @cindex Colon in node name
@@ -5267,11 +5126,11 @@ names; @pxref{makeinfo Pointer Creation}.)
 Unfortunately, you cannot reliably use periods, commas, or colons
 within a node name; these confuse the Info reader.  Also, a node name
 may not start with a left parenthesis preceding a right parenthesis,
-as in @code{(not)allowed}; this syntax is used to specify an external
-manual.  Perhaps these limitations will be removed some day.
+as in @code{(not)allowed}, since this syntax is used to specify an
+external manual.  (Perhaps these limitations will be removed some day.)
 
 If you insist on using these characters in node names, accepting the
-substandard results in Info, , in order not to confuse the Texinfo
+resulting substandard Info output, in order not to confuse the Texinfo
 processors, you must still escape those characters, by using either
 special insertions (@pxref{Inserting a Comma}) or @code{@@asis}
 (@pxref{@@asis}).  For example:
@@ -5312,9 +5171,9 @@ single space.  For example:
 @@node  foo  bar ,
 @end example
 
-@noindent all define the same node, namely @samp{foo bar}.  References to the
-node should all use that name, without the leading or trailing spaces,
-but with the internal space.
+@noindent all define the same node, namely @samp{foo bar}.  References
+to the node should all use that name, with no leading or trailing
+spaces a single internal space.
 @end itemize
 
 
@@ -5494,6 +5353,134 @@ web pages, will still work.  You can also do this with the
 @file{RENAMED_NODES_FILE} feature of @command{makeinfo} (@pxref{HTML
 Xref Link Preservation}).  There is no effective difference between
 the two approaches.
+
+
+@node Node Menu Illustration
+@section Node and Menu Illustration
+
+Here is a copy of the diagram shown earlier that illustrates a Texinfo
+file with three chapters, each of which contains two sections.
+
+The ``root'' is at the top of the diagram and the ``leaves'' are at
+the bottom.  This is how such a diagram is drawn conventionally; it
+illustrates an upside-down tree.  For this reason, the root node is
+called the `Top' node, and `Up' node pointers carry you closer to the
+root.
+
+@example
+@group
+                         Top
+                          |
+        -------------------------------------
+       |                  |                  |
+    Chapter 1          Chapter 2          Chapter 3
+       |                  |                  |
+    --------           --------           --------
+   |        |         |        |         |        |
+Section  Section   Section  Section   Section  Section
+  1.1      1.2       2.1      2.2       3.1      3.2
+@end group
+@end example
+
+Using explicit pointers (not recommended, but for shown for purposes
+of the example), the fully-written command to start Chapter@tie{}2
+would be this:
+
+@example
+@group
+@@node     Chapter 2,  Chapter 3, Chapter 1, Top
+@@comment  node-name,  next,      previous,  up
+@end group
+@end example
+
+@noindent
+This @code{@@node} line says that the name of this node is
+``Chapter@tie{}2'', the name of the `Next' node is ``Chapter 3'', the
+name of the `Previous' node is ``Chapter@tie{}1'', and the name of the
+`Up' node is ``Top''.  You can (and should) omit writing out these
+node names if your document is hierarchically organized
+(@pxref{makeinfo Pointer Creation}), but the pointer relationships
+still obtain.
+
+@quotation Note
+`Next' and `Previous' refer to nodes at the @emph{same hierarchical
+level} in the manual, not necessarily to the next node within the
+Texinfo file.  In the Texinfo file, the subsequent node may be at a
+lower level---a section-level node most often follows a chapter-level
+node, for example.  (The `Top' node contains the exception to this
+rule.  Since the `Top' node is the only node at that level, `Next'
+refers to the first following node, which is almost always a chapter
+or chapter-level node.)
+@end quotation
+
+To go to Sections 2.1 and 2.2 using Info, you need a menu inside
+Chapter 2.  (@xref{Menus}.)  You would write the menu just before the
+beginning of Section 2.1, like this:
+
+@example
+@group
+   @@menu
+   * Sect. 2.1::    Description of this section.
+   * Sect. 2.2::    Description.
+   @@end menu
+@end group
+@end example
+
+Using explicit pointers, the node for Sect.@: 2.1 is written like this:
+
+@example
+@group
+@@node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
+@@comment  node-name, next,      previous,  up
+@end group
+@end example
+
+In Info format, the `Next' and `Previous' pointers of a node usually
+lead to other nodes at the same level---from chapter to chapter or
+from section to section (sometimes, as shown, the `Previous' pointer
+points up); an `Up' pointer usually leads to a node at the level above
+(closer to the `Top' node); and a `Menu' leads to nodes at a level
+below (closer to `leaves').  (A cross reference can point to a node at
+any level; see @ref{Cross References}.)
+
+Usually, an @code{@@node} command and a chapter structuring command
+are conventionally used together, in that order, often followed by
+indexing commands.  (As shown in the example above, you may follow the
+@code{@@node} line with a comment line, e.g., to show which pointer is
+which if explicit pointers are used.)  The Texinfo processors use this
+construct to determine the relationships between nodes and sectioning
+commands.
+
+Here is the beginning of the chapter in this manual called ``Ending a
+Texinfo File''.  This shows an @code{@@node} line followed by an
+@code{@@chapter} line, and then by indexing lines.  The manual uses
+implictly determined node pointers; therefore, nothing else is needed
+on the @code{@@node} line.
+
+@example
+@group
+@@node Ending a File
+@@chapter Ending a Texinfo File
+@@cindex Ending a Texinfo file
+@@cindex Texinfo file ending
+@@cindex File ending
+@end group
+@end example
+
+An earlier version of the manual used explicit node pointers.  Here is
+the beginning of the same chapter for that case.  This shows an
+@code{@@node} line followed by a comment line, an @code{@@chapter}
+line, and then by indexing lines.
+
+@example
+@group
+@@node    Ending a File, Structuring, Beginning a File, Top
+@@comment node-name,     next,        previous,         up
+@@chapter Ending a Texinfo File
+@@cindex Ending a Texinfo file
+@dots{}
+@end group
+@end example
 
 
 @node Menus
@@ -19190,9 +19177,6 @@ Cross references in Texinfo can refer either to nodes or anchors
 in this context, so we'll continue to say ``node'' names for
 simplicity.
 
-@@-commands and 8-bit characters are not presently handled by
-@command{makeinfo} for HTML cross references.  See the next section.
-
 A special exception: the Top node (@pxref{The Top Node}) is always
 mapped to the file @file{index.html}, to match web server software.
 However, the HTML @emph{target} is @samp{Top}.  Thus (in the split case):
@@ -19205,7 +19189,7 @@ However, the HTML @emph{target} is @samp{Top}.  Thus (in the split case):
 @enumerate
 @item
 The standard ASCII letters (a-z and A-Z) are not modified.  All other
-characters are changed as specified below.
+characters may be changed as specified below.
 
 @item
 The standard ASCII numbers (0-9) are not modified except when a number
@@ -19266,11 +19250,8 @@ independent of operating system.
 @subsection HTML Cross Reference Command Expansion
 @cindex HTML cross reference command expansion
 
-In standard Texinfo, node names may not contain @@-commands. xxx
-@command{makeinfo} supports @@-commands in node names, but @TeX{}
-might not. Therefore, even if @command{makeinfo} implements this part
-of the HTML cross reference algorithm, you should still avoid using
-@@-commands in node names.
+Node names may contain @@-commands (@pxref{Node Line Requirements}).
+This section describes how they are handled.
 
 First, comments are removed.
 
@@ -19278,7 +19259,8 @@ Next, any @code{@@value} commands (@pxref{set value}) and macro
 invocations (@pxref{Invoking Macros}) are fully expanded.
 
 Then, for the following commands, the command name and braces are removed,
-the text of the argument is recursively transformed:
+and the text of the argument is recursively transformed:
+
 @example
 @@asis @@b @@cite @@code @@command @@dfn @@dmn @@dotless
 @@emph @@env @@file @@i @@indicateurl @@kbd @@key
@@ -19287,14 +19269,15 @@ the text of the argument is recursively transformed:
 
 @noindent For @code{@@sc}, any letters are capitalized.
 
-The following commands are replaced by constant text, as shown.  If
-any of these commands have non-empty arguments, as in
+In addition, the following commands are replaced by constant text, as
+shown below.  If any of these commands have non-empty arguments, as in
 @code{@@TeX@{bad@}}, it is an error, and the result is unspecified.
-`(space)' means a space character, `(nothing)' means the empty string,
-etc.  The notation `U+@var{xxxx}' means Unicode code point @var{xxxx}
-(in hex, as usual).  There are further transformations of many of
-these expansions for the final file or target name, such as space
-characters to @samp{-}, etc., according to the other rules.
+In this table, `(space)' means a space character and `(nothing)' means
+the empty string.  The notation `U+@var{hhhh}' means Unicode code
+point @var{hhhh} (in hex, as usual).  There are further
+transformations of many of these expansions for the final file or
+target name, such as space characters to @samp{-}, etc., according to
+the other rules.
 
 @multitable @columnfractions .3 .5
 @item @code{@@(newline)}        @tab (space)
@@ -19373,7 +19356,7 @@ holds when that code point is @code{0xffff} or less, as it almost
 always is.
 
 These will then be further transformed by the rules above into the
-string @samp{_@var{xxxx}}, where @var{xxxx} is the code point in hex.
+string @samp{_@var{hhhh}}, where @var{hhhh} is the code point in hex.
 
 For example, combining this rule and the previous section:
 
@@ -19399,14 +19382,15 @@ This method works fine if the node name consists mostly of ASCII
 characters and contains only few 8-bit ones. If the document is
 written in a language whose script is not based on the Latin alphabet
 (such as, e.g. Ukrainian), it will create file names consisting
-entirely of @samp{_@var{xxxx}} notations, which is inconvenient.
+entirely of @samp{_@var{xxxx}} notations, which is inconvenient and
+all but unreadable.
 
 To handle such cases, @command{makeinfo} offers
 @option{--transliterate-file-names} command line option. This option
 enables @dfn{transliteration} of node names into ASCII characters for
 the purposes of file name creation and referencing. The
 transliteration is based on phonetic principle, which makes the
-produced file names easily readable.
+file names generated more easily understanable.
 
 @cindex Normalization Form C, Unicode
 For the definition of Unicode Normalization Form@tie{}C, see Unicode
@@ -19423,8 +19407,8 @@ web.
 As mentioned earlier (@pxref{HTML Xref Link Basics}), the generating
 software has to guess whether a given manual being cross referenced is
 available in split or monolithic form---and, inevitably, it might
-guess wrong.  However, when the referent manual is generated, it is
-possible to handle at least some mismatches.
+guess wrong.  However, when the @emph{referent} manual is generated,
+it is possible to handle at least some mismatches.
 
 In the case where we assume the referent is split, but it is actually
 available in mono, the only recourse would be to generate a
@@ -19571,8 +19555,8 @@ only when the target manual was created using @option{--node-files};
 this is the default for split output.
 
 If you have additions or corrections to the @file{htmlxref.cnf}
-distributed with Texinfo, please email @email{bug-texinfo@@gnu.org}.
-You can get the latest version from
+distributed with Texinfo, please email @email{bug-texinfo@@gnu.org} as
+usual.  You can get the latest version from
 @url{http://ftpmirror.gnu.org/@/texinfo/@/htmlxref.cnf}.
 
 
@@ -21982,7 +21966,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.454 2012-07-05 00:40:39 karl Exp $
+$Id: texinfo.txi,v 1.455 2012-07-06 18:34:59 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
