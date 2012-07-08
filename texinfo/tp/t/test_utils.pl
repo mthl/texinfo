@@ -698,6 +698,8 @@ sub test($$)
       my $format_converter_options = {%$converter_options};
       my $format_type = $format;
       if ($format_type =~ s/^file_//) {
+        # the information that the results is a file is passed
+        # through $format_converter_options->{'SUBDIR'} being defined
         my $base = "t/results/$self->{'name'}/$test_name/";
         my $test_out_dir;
         if ($self->{'generate'}) {

@@ -317,6 +317,9 @@ after noindent2.
 ['empty_center',
 '@center 
 '],
+['empty_center_with_arg',
+'@center @w{}
+'],
 ['ref_in_center',
 '@node Top
 

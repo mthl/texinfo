@@ -90,7 +90,11 @@ sub output($)
   if (!defined($elements) or $elements->[0]->{'extra'}->{'no_node'}) {
     $self->document_warn($self->__("Document without nodes."));
     my $output = $header.$self->_convert($root);
+    $self->_count_context_bug_message('no element ');
+
     my $footnotes = $self->_footnotes();
+    $self->_count_context_bug_message('no element footnotes ');
+
     $output .= $footnotes;
     if ($fh) {
       print $fh $output;

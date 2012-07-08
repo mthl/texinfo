@@ -370,6 +370,25 @@ sub converter_initialize($)
   return $self;
 }
 
+sub _count_context_bug_message($$$)
+{
+  my $self = shift;
+  my $precision = shift; 
+  my $element = shift;
+
+  my $element_text;
+  if ($element) {
+    $element_text = Texinfo::Structuring::_print_element_command_texi($element);
+  } else {
+    $element_text = '';
+  }
+  if (scalar(@{$self->{'count_context'}}) != 1) {
+    $self->_bug_message("Too much count_context ${precision}(".
+      scalar(@{$self->{'count_context'}}). "): ". $element_text, $element);
+    die;
+  }
+}
+
 sub _convert_node($$)
 {
   my $self = shift;
@@ -378,13 +397,16 @@ sub _convert_node($$)
   my $result = '';
 
   print STDERR "NEW NODE\n" if ($self->get_conf('DEBUG'));
-  die "Too much count_context\n" if (scalar(@{$self->{'count_context'}}) != 1);
 
   $result .= $self->_convert($element);
+
+  $self->_count_context_bug_message('', $element);
 
   print STDERR "END NODE ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->get_conf('DEBUG'));
 
   $result .= $self->_footnotes($element);
+
+  $self->_count_context_bug_message('footnotes ', $element);
 
   print STDERR "AFTER FOOTNOTES ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->get_conf('DEBUG'));
 
@@ -402,7 +424,9 @@ sub convert($$)
   $self->{'empty_lines_count'} = 1;
   if (!defined($elements)) {
     $result = $self->_convert($root);
+    $self->_count_context_bug_message('no element ');
     my $footnotes = $self->_footnotes();
+    $self->_count_context_bug_message('no element footnotes ');
     $result .= $footnotes;
   } else {
     foreach my $node (@$elements) {
@@ -2123,6 +2147,9 @@ sub _convert($$)
         $result = $self->_align_environment ($result, 
              $self->{'text_element_context'}->[-1]->{'max'}, 'center'); 
         $self->{'empty_lines_count'} = 0;
+      } else {
+        # it has to be done here, as it is done in _align_environment above
+        pop @{$self->{'count_context'}};
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
       return $result;

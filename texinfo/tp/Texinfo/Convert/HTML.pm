@@ -5242,7 +5242,7 @@ sub _set_pages_files($$)
           }
           if (!defined($file_element->{'filename'})) {
             # use section to do the file name if there is no node
-            my $command = $self->element_command($file_element);;
+            my $command = $self->element_command($file_element);
             if ($command) {
               if ($command->{'cmdname'} eq 'top' and !$node_top
                   and defined($top_node_filename)) {
