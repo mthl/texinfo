@@ -376,17 +376,7 @@ $result_menus{'contents_in_document'} = {
   }
 };
 
-$result_errors{'contents_in_document'} = [
-  {
-    'error_line' => 'contents_in_document.texi:8: warning: @contents should only appear at beginning or end of document
-',
-    'file_name' => 'contents_in_document.texi',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@contents should only appear at beginning or end of document',
-    'type' => 'warning'
-  }
-];
+$result_errors{'contents_in_document'} = [];
 
 
 1;

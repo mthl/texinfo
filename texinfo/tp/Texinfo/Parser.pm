@@ -762,6 +762,8 @@ sub parse_texi_text($$;$$$$)
   return $tree;
 }
 
+# Not used for now, as a @contents after the first sectioning command
+# is correct if not using TeX.
 sub _check_contents_location($$)
 {
   my $self = shift;
@@ -877,7 +879,7 @@ sub parse_texi_file ($$)
     unshift (@{$text_root->{'contents'}}, $before_setfilename)
       if (@{$before_setfilename->{'contents'}});
   }
-  $self->_check_contents_location($tree);
+  #$self->_check_contents_location($tree);
 
   return $tree;
 }
