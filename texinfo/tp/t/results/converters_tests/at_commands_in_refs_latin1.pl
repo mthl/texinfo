@@ -3090,7 +3090,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                     {},
                     {}
                   ],
-                  'normalized' => 'the-someone-no_005fexplain_0040there'
+                  'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
                 }
               },
               'line_nr' => {},
@@ -9749,10 +9749,10 @@ $result_trees{'at_commands_in_refs_latin1'} = {
         'nodes_manuals' => [
           {
             'node_content' => [],
-            'normalized' => 'the-someone-no_005fexplain_0040there'
+            'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
           }
         ],
-        'normalized' => 'the-someone-no_005fexplain_0040there'
+        'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
       },
       'line_nr' => {},
       'parent' => {}
@@ -14981,7 +14981,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                     {},
                     {}
                   ],
-                  'normalized' => 'the-someone-no_005fexplain_0040there'
+                  'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
                 }
               },
               'line_nr' => {},
@@ -20666,7 +20666,7 @@ $result_sectioning{'at_commands_in_refs_latin1'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => 'the-someone-no_005fexplain_0040there'
+                'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
               }
             }
           },
@@ -21129,7 +21129,7 @@ $result_nodes{'at_commands_in_refs_latin1'} = {
                                           'level' => 1,
                                           'number' => 18
                                         },
-                                        'normalized' => 'the-someone-no_005fexplain_0040there'
+                                        'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
                                       },
                                       'node_next' => {
                                         'cmdname' => 'node',
@@ -21474,7 +21474,7 @@ $result_menus{'at_commands_in_refs_latin1'} = {
                                     'menu_next' => {
                                       'cmdname' => 'node',
                                       'extra' => {
-                                        'normalized' => 'the-someone-no_005fexplain_0040there'
+                                        'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
                                       },
                                       'menu_next' => {
                                         'cmdname' => 'node',

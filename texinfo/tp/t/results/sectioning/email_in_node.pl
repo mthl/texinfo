@@ -181,10 +181,10 @@ $result_trees{'email_in_node'} = {
         'nodes_manuals' => [
           {
             'node_content' => [],
-            'normalized' => 'a-d-e'
+            'normalized' => 'a-c-'
           }
         ],
-        'normalized' => 'a-d-e'
+        'normalized' => 'a-c-'
       },
       'line_nr' => {},
       'parent' => {}
@@ -239,14 +239,14 @@ $result_sectioning{'email_in_node'} = {};
 $result_nodes{'email_in_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'a-d-e'
+    'normalized' => 'a-c-'
   }
 };
 
 $result_menus{'email_in_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'a-d-e'
+    'normalized' => 'a-c-'
   }
 };
 

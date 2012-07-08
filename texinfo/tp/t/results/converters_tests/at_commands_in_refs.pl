@@ -3005,7 +3005,7 @@ $result_trees{'at_commands_in_refs'} = {
                     {},
                     {}
                   ],
-                  'normalized' => 'the-someone-no_005fexplain_0040there'
+                  'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
                 }
               },
               'line_nr' => {},
@@ -9664,10 +9664,10 @@ $result_trees{'at_commands_in_refs'} = {
         'nodes_manuals' => [
           {
             'node_content' => [],
-            'normalized' => 'the-someone-no_005fexplain_0040there'
+            'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
           }
         ],
-        'normalized' => 'the-someone-no_005fexplain_0040there'
+        'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
       },
       'line_nr' => {},
       'parent' => {}
@@ -14896,7 +14896,7 @@ $result_trees{'at_commands_in_refs'} = {
                     {},
                     {}
                   ],
-                  'normalized' => 'the-someone-no_005fexplain_0040there'
+                  'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
                 }
               },
               'line_nr' => {},
@@ -20564,7 +20564,7 @@ $result_sectioning{'at_commands_in_refs'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => 'the-someone-no_005fexplain_0040there'
+                'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
               }
             }
           },
@@ -21027,7 +21027,7 @@ $result_nodes{'at_commands_in_refs'} = {
                                           'level' => 1,
                                           'number' => 18
                                         },
-                                        'normalized' => 'the-someone-no_005fexplain_0040there'
+                                        'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
                                       },
                                       'node_next' => {
                                         'cmdname' => 'node',
@@ -21372,7 +21372,7 @@ $result_menus{'at_commands_in_refs'} = {
                                     'menu_next' => {
                                       'cmdname' => 'node',
                                       'extra' => {
-                                        'normalized' => 'the-someone-no_005fexplain_0040there'
+                                        'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
                                       },
                                       'menu_next' => {
                                         'cmdname' => 'node',
@@ -21905,7 +21905,7 @@ Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a>, Up: <a href="di
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#CCC-CCC-DDD"><abbr title="rrr">CCC</abbr> (rrr) <abbr title="rrr">CCC</abbr> <abbr>DDD</abbr></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#the-someone-no_005fexplain_0040there"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#someone_0040somewher-no_005fexplain_0040there"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#f_002d_002dile1-f_002d_002dile"><img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -22073,25 +22073,25 @@ Next: <a href="#CCC-CCC-DDD" accesskey="n" rel="next"><abbr title="rrr">CCC</abb
 <a name="CCC-CCC-DDD"></a>
 <div class="header">
 <p>
-Next: <a href="#the-someone-no_005fexplain_0040there" accesskey="n" rel="next"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>, Previous: <a href="#AAA-AAA-BBB" accesskey="p" rel="previous"><acronym title="fff">AAA</acronym> (fff) <acronym title="fff">AAA</acronym> <acronym>BBB</acronym></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#someone_0040somewher-no_005fexplain_0040there" accesskey="n" rel="next"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>, Previous: <a href="#AAA-AAA-BBB" accesskey="p" rel="previous"><acronym title="fff">AAA</acronym> (fff) <acronym title="fff">AAA</acronym> <acronym>BBB</acronym></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="CCC-CCC-DDD-1"></a>
 <h2 class="chapter">17 <abbr title="rrr">CCC</abbr> (rrr) <abbr title="rrr">CCC</abbr> <abbr>DDD</abbr></h2>
 
 <hr>
-<a name="the-someone-no_005fexplain_0040there"></a>
+<a name="someone_0040somewher-no_005fexplain_0040there"></a>
 <div class="header">
 <p>
 Next: <a href="#f_002d_002dile1-f_002d_002dile" accesskey="n" rel="next"><img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></a>, Previous: <a href="#CCC-CCC-DDD" accesskey="p" rel="previous"><abbr title="rrr">CCC</abbr> (rrr) <abbr title="rrr">CCC</abbr> <abbr>DDD</abbr></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="the-someone-no_005fexplain_0040there-1"></a>
+<a name="someone_0040somewher-no_005fexplain_0040there-1"></a>
 <h2 class="chapter">18 <a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></h2>
 
 <hr>
 <a name="f_002d_002dile1-f_002d_002dile"></a>
 <div class="header">
 <p>
-Next: <a href="#-_0040-_007b_007d-_002e-" accesskey="n" rel="next"><tt> @ {} . </tt></a>, Previous: <a href="#the-someone-no_005fexplain_0040there" accesskey="p" rel="previous"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#-_0040-_007b_007d-_002e-" accesskey="n" rel="next"><tt> @ {} . </tt></a>, Previous: <a href="#someone_0040somewher-no_005fexplain_0040there" accesskey="p" rel="previous"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="f_002d_002dile1-f_002d_002dile-1"></a>
 <h2 class="chapter">19 <img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></h2>
@@ -22179,7 +22179,7 @@ Previous: <a href="#indicateurl" accesskey="p" rel="previous">&lt;<code>indicate
 <a href="#g_t_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d-_0060-_0027">`` \'\' --- -- ` \'</a>
 <a href="#AAA-AAA-BBB"><acronym title="fff">AAA</acronym> (fff) <acronym title="fff">AAA</acronym> <acronym>BBB</acronym></a>
 <a href="#CCC-CCC-DDD"><abbr title="rrr">CCC</abbr> (rrr) <abbr title="rrr">CCC</abbr> <abbr>DDD</abbr></a>
-<a href="#the-someone-no_005fexplain_0040there"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>
+<a href="#someone_0040somewher-no_005fexplain_0040there"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a>
 <a href="#f_002d_002dile1-f_002d_002dile"><img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></a>
 <a href="#-_0040-_007b_007d-_002e-"><tt> @ {} . </tt></a>
 <a href="#cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><cite>cite asis</cite> in&nbsp;@w&nbsp;<b>b</b><!-- /@w --> <span class="roman">in r</span> <small>SC</small> <strong>str</strong> <tt>t</tt> <var>var</var> <em>dfn</em> <i>i</i></a>
@@ -22339,7 +22339,7 @@ $result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top"><nodename>
 <chapter><sectiontitle><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></sectiontitle>
 
 </chapter>
-<node name="the-someone-no_005fexplain_0040there"><nodename><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></nodename><nodenext automatic="on"><image where="inline"><imagefile>f--ile1</imagefile></image>  <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image></nodenext><nodeprev automatic="on"><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="someone_0040somewher-no_005fexplain_0040there"><nodename><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></nodename><nodenext automatic="on"><image where="inline"><imagefile>f--ile1</imagefile></image>  <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image></nodenext><nodeprev automatic="on"><abbr><abbrword>CCC</abbrword><abbrdesc>rrr</abbrdesc></abbr> <abbr><abbrword>CCC</abbrword></abbr> <abbr><abbrword>DDD</abbrword></abbr></nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter><sectiontitle><email><emailaddress>someone&arobase;somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain&arobase;there</emailaddress></email></sectiontitle>
 
 </chapter>
@@ -22483,7 +22483,7 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 <title><abbrev>CCC</abbrev> (rrr) <abbrev>CCC</abbrev> <abbrev>DDD</abbrev></title>
 
 </chapter>
-<chapter label="18" id="the-someone-no_005fexplain_0040there">
+<chapter label="18" id="someone_0040somewher-no_005fexplain_0040there">
 <title><ulink url="mailto:someone@somewher">the someone</ulink> <email>no_explain@there</email></title>
 
 </chapter>
@@ -22539,7 +22539,7 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 <link linkend="_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d-_0060-_0027">&#8220; &#8221; &#8212; &#8211; &#8216; &#8217;</link>
 <link linkend="AAA-AAA-BBB"><acronym>AAA</acronym> (fff) <acronym>AAA</acronym> <acronym>BBB</acronym></link>
 <link linkend="CCC-CCC-DDD"><abbrev>CCC</abbrev> (rrr) <abbrev>CCC</abbrev> <abbrev>DDD</abbrev></link>
-<link linkend="the-someone-no_005fexplain_0040there"><ulink url="mailto:someone@somewher">the someone</ulink> <email>no_explain@there</email></link>
+<link linkend="someone_0040somewher-no_005fexplain_0040there"><ulink url="mailto:someone@somewher">the someone</ulink> <email>no_explain@there</email></link>
 <link linkend="f_002d_002dile1-f_002d_002dile"><inlinemediaobject><imageobject><imagedata fileref="f--ile1.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>  <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject></link>
 <link linkend="-_0040-_007b_007d-_002e-"><literal> @ {} . </literal></link>
 <link linkend="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><citetitle>cite asis</citetitle> in @w <emphasis role="bold">b</emphasis><!-- /@w --> <lineannotation>in r</lineannotation> sc <emphasis role="bold">str</emphasis> <literal>t</literal> <replaceable>var</replaceable> <firstterm>dfn</firstterm> <emphasis>i</emphasis></link>
