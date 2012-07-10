@@ -287,12 +287,12 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                       'text' => ' '
                     },
                     {
-                      'cmdname' => ' ',
+                      'cmdname' => '	',
                       'parent' => {}
                     },
                     {
                       'parent' => {},
-                      'text' => '  '
+                      'text' => ' '
                     },
                     {
                       'cmdname' => '!',
@@ -4533,12 +4533,12 @@ $result_trees{'at_commands_in_refs_utf8'} = {
               'text' => ' '
             },
             {
-              'cmdname' => ' ',
+              'cmdname' => '	',
               'parent' => {}
             },
             {
               'parent' => {},
-              'text' => '      '
+              'text' => ' '
             },
             {
               'cmdname' => '!',
@@ -4661,12 +4661,12 @@ $result_trees{'at_commands_in_refs_utf8'} = {
               'text' => ' '
             },
             {
-              'cmdname' => ' ',
+              'cmdname' => '	',
               'parent' => {}
             },
             {
               'parent' => {},
-              'text' => '   '
+              'text' => ' '
             },
             {
               'cmdname' => '!',
@@ -12263,12 +12263,12 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                       'text' => ' '
                     },
                     {
-                      'cmdname' => ' ',
+                      'cmdname' => '	',
                       'parent' => {}
                     },
                     {
                       'parent' => {},
-                      'text' => '       '
+                      'text' => ' '
                     },
                     {
                       'cmdname' => '!',
@@ -20075,7 +20075,7 @@ $result_texis{'at_commands_in_refs_utf8'} = '@setfilename at_commands_in_refs_ut
 
 @menu
 * @- @{ @}::
-* @  @   @! @* @. @: .@: @? @@::
+* @  @	 @! @* @. @: .@: @? @@::
 * @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}::
 * @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}::
 * @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}::
@@ -20105,8 +20105,8 @@ $result_texis{'at_commands_in_refs_utf8'} = '@setfilename at_commands_in_refs_ut
 @node @- @{ @}
 @chapter @- @{ @}
 
-@node @  @       @! @* @. @: .@: @? @@
-@chapter @  @    @! @* @. @: .@: @? @@
+@node @  @	 @! @* @. @: .@: @? @@
+@chapter @  @	 @! @* @. @: .@: @? @@
 
 @node @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}
 @chapter @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}
@@ -20182,7 +20182,7 @@ $result_texis{'at_commands_in_refs_utf8'} = '@setfilename at_commands_in_refs_ut
 
 @ref{@- @{ @}}
 
-@ref{@  @        @! @* @. @: .@: @? @@}
+@ref{@  @	 @! @* @. @: .@: @? @@}
 @ref{@atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}}
 @ref{@LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}}
 @ref{@equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}}
@@ -20219,7 +20219,7 @@ Top
 ***
 
 *  { }::
-*      ! 
+*     ! 
  .  . ? @::
 * @ { } \\ #::
 * LaTeX TeX * , (C) ... ...::
@@ -20249,9 +20249,9 @@ Top
 1  { }
 ******
 
-2       ! 
+2     ! 
  .  . ? @
-********************
+******************
 
 3 @ { } \\ #
 ***********

@@ -202,12 +202,12 @@ $result_trees{'at_commands_in_refs'} = {
                       'text' => ' '
                     },
                     {
-                      'cmdname' => ' ',
+                      'cmdname' => '	',
                       'parent' => {}
                     },
                     {
                       'parent' => {},
-                      'text' => '  '
+                      'text' => ' '
                     },
                     {
                       'cmdname' => '!',
@@ -4448,12 +4448,12 @@ $result_trees{'at_commands_in_refs'} = {
               'text' => ' '
             },
             {
-              'cmdname' => ' ',
+              'cmdname' => '	',
               'parent' => {}
             },
             {
               'parent' => {},
-              'text' => '      '
+              'text' => ' '
             },
             {
               'cmdname' => '!',
@@ -4576,12 +4576,12 @@ $result_trees{'at_commands_in_refs'} = {
               'text' => ' '
             },
             {
-              'cmdname' => ' ',
+              'cmdname' => '	',
               'parent' => {}
             },
             {
               'parent' => {},
-              'text' => '   '
+              'text' => ' '
             },
             {
               'cmdname' => '!',
@@ -12178,12 +12178,12 @@ $result_trees{'at_commands_in_refs'} = {
                       'text' => ' '
                     },
                     {
-                      'cmdname' => ' ',
+                      'cmdname' => '	',
                       'parent' => {}
                     },
                     {
                       'parent' => {},
-                      'text' => '       '
+                      'text' => ' '
                     },
                     {
                       'cmdname' => '!',
@@ -19974,7 +19974,7 @@ $result_texis{'at_commands_in_refs'} = '@node Top
 
 @menu
 * @- @{ @}::
-* @  @   @! @* @. @: .@: @? @@::
+* @  @	 @! @* @. @: .@: @? @@::
 * @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}::
 * @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}::
 * @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}::
@@ -20004,8 +20004,8 @@ $result_texis{'at_commands_in_refs'} = '@node Top
 @node @- @{ @}
 @chapter @- @{ @}
 
-@node @  @       @! @* @. @: .@: @? @@
-@chapter @  @    @! @* @. @: .@: @? @@
+@node @  @	 @! @* @. @: .@: @? @@
+@chapter @  @	 @! @* @. @: .@: @? @@
 
 @node @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}
 @chapter @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}
@@ -20081,7 +20081,7 @@ $result_texis{'at_commands_in_refs'} = '@node Top
 
 @ref{@- @{ @}}
 
-@ref{@  @        @! @* @. @: .@: @? @@}
+@ref{@  @	 @! @* @. @: .@: @? @@}
 @ref{@atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}}
 @ref{@LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}}
 @ref{@equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}}
@@ -20117,7 +20117,7 @@ $result_texts{'at_commands_in_refs'} = 'Top
 ***
 
 *  { }::
-*      ! 
+*     ! 
  .  . ? @::
 * @ { } \\ #::
 * LaTeX TeX * , (C) ... ...::
@@ -20147,9 +20147,9 @@ $result_texts{'at_commands_in_refs'} = 'Top
 1  { }
 ******
 
-2       ! 
+2     ! 
  .  . ? @
-********************
+******************
 
 3 @ { } \\ #
 ***********
@@ -21660,7 +21660,7 @@ $result_converted{'plaintext'}->{'at_commands_in_refs'} = 'Top
 * Menu:
 
 *  { }::
-*      ! 
+*     ! 
  .  . ? @::
 * @ { } \\ #::
 * LaTeX TeX * , (C) ... ...::
@@ -21873,7 +21873,7 @@ Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a>, Up: <a href="di
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#-_007b-_007d" accesskey="1">{ }</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="2">&nbsp; &nbsp;  ! <br> .  . ? @</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="2">&nbsp; &nbsp; ! <br> .  . ? @</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#g_t_0040-_007b-_007d-_005c-_0023" accesskey="3">@ { } \\ #</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -21929,7 +21929,7 @@ Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a>, Up: <a href="di
 <a name="-_007b-_007d"></a>
 <div class="header">
 <p>
-Next: <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="n" rel="next">&nbsp; &nbsp;      ! <br> .  . ? @</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="n" rel="next">&nbsp; &nbsp; ! <br> .  . ? @</a>, Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="-_007b-_007d-1"></a>
 <h2 class="chapter">1  { }</h2>
@@ -21941,13 +21941,13 @@ Next: <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="n" rel="next">&
 Next: <a href="#g_t_0040-_007b-_007d-_005c-_0023" accesskey="n" rel="next">@ { } \\ #</a>, Previous: <a href="#-_007b-_007d" accesskey="p" rel="previous"> { }</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="----_0021---_002e--_002e-_003f-_0040-1"></a>
-<h2 class="chapter">2 &nbsp; &nbsp;   ! <br> .  . ? @</h2>
+<h2 class="chapter">2 &nbsp; &nbsp; ! <br> .  . ? @</h2>
 
 <hr>
 <a name="g_t_0040-_007b-_007d-_005c-_0023"></a>
 <div class="header">
 <p>
-Next: <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="n" rel="next">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>, Previous: <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="p" rel="previous">&nbsp; &nbsp;      ! <br> .  . ? @</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="n" rel="next">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>, Previous: <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="p" rel="previous">&nbsp; &nbsp; ! <br> .  . ? @</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="g_t_0040-_007b-_007d-_005c-_0023-1"></a>
 <h2 class="chapter">3 @ { } \\ #</h2>
@@ -22161,7 +22161,7 @@ Previous: <a href="#indicateurl" accesskey="p" rel="previous">&lt;<code>indicate
 
 <p><a href="#-_007b-_007d"> { }</a>
 </p>
-<p><a href="#----_0021---_002e--_002e-_003f-_0040">&nbsp; &nbsp;       ! <br> .  . ? @</a>
+<p><a href="#----_0021---_002e--_002e-_003f-_0040">&nbsp; &nbsp; ! <br> .  . ? @</a>
 <a href="#g_t_0040-_007b-_007d-_005c-_0023">@ { } \\ #</a>
 <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>
 <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>
@@ -22243,7 +22243,7 @@ $result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top"><nodename>
 
 <menu>
 <menuentry><menunode>&hyphenbreak; &lbrace; &rbrace;</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode><spacecmd type="spc"/> <spacecmd type="spc"/>  &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menunode><spacecmd type="spc"/> <spacecmd type="tab"/> &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry><menunode>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry><menunode>&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry><menunode>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</menunode><menudescription><pre xml:space="preserve">
@@ -22271,15 +22271,15 @@ $result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top"><nodename>
 </pre></menudescription></menuentry></menu>
 
 </top>
-<node name="-_007b-_007d"><nodename>&hyphenbreak; &lbrace; &rbrace;</nodename><nodenext automatic="on"><spacecmd type="spc"/> <spacecmd type="spc"/>      &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="-_007b-_007d"><nodename>&hyphenbreak; &lbrace; &rbrace;</nodename><nodenext automatic="on"><spacecmd type="spc"/> <spacecmd type="tab"/> &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter><sectiontitle>&hyphenbreak; &lbrace; &rbrace;</sectiontitle>
 
 </chapter>
-<node name="----_0021---_002e--_002e-_003f-_0040"><nodename><spacecmd type="spc"/> <spacecmd type="spc"/>      &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodename><nodenext automatic="on">&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</nodenext><nodeprev automatic="on">&hyphenbreak; &lbrace; &rbrace;</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle><spacecmd type="spc"/> <spacecmd type="spc"/>   &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</sectiontitle>
+<node name="----_0021---_002e--_002e-_003f-_0040"><nodename><spacecmd type="spc"/> <spacecmd type="tab"/> &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodename><nodenext automatic="on">&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</nodenext><nodeprev automatic="on">&hyphenbreak; &lbrace; &rbrace;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter><sectiontitle><spacecmd type="spc"/> <spacecmd type="tab"/> &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</sectiontitle>
 
 </chapter>
-<node name="_0040-_007b-_007d-_005c-_0023"><nodename>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</nodename><nodenext automatic="on">&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</nodenext><nodeprev automatic="on"><spacecmd type="spc"/> <spacecmd type="spc"/>      &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="_0040-_007b-_007d-_005c-_0023"><nodename>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</nodename><nodenext automatic="on">&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</nodenext><nodeprev automatic="on"><spacecmd type="spc"/> <spacecmd type="tab"/> &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter><sectiontitle>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</sectiontitle>
 
 </chapter>
@@ -22376,7 +22376,7 @@ $result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top"><nodename>
 
 <para><ref><xrefnodename>&hyphenbreak; &lbrace; &rbrace;</xrefnodename></ref>
 </para>
-<para><ref><xrefnodename><spacecmd type="spc"/> <spacecmd type="spc"/>       &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</xrefnodename></ref>
+<para><ref><xrefnodename><spacecmd type="spc"/> <spacecmd type="tab"/> &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</xrefnodename></ref>
 <ref><xrefnodename>&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</xrefnodename></ref>
 <ref><xrefnodename>&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</xrefnodename></ref>
 <ref><xrefnodename>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</xrefnodename></ref>
@@ -22419,7 +22419,7 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 
 </chapter>
 <chapter label="2" id="----_0021---_002e--_002e-_003f-_0040">
-<title>&#160; &#160;   ! 
+<title>&#160; &#160; ! 
  .  . ? @</title>
 
 </chapter>
@@ -22520,7 +22520,7 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 
 <para><link linkend="-_007b-_007d"> { }</link>
 </para>
-<para><link linkend="----_0021---_002e--_002e-_003f-_0040">&#160; &#160;       ! 
+<para><link linkend="----_0021---_002e--_002e-_003f-_0040">&#160; &#160; ! 
  .  . ? @</link>
 <link linkend="_0040-_007b-_007d-_005c-_0023">&#64; &#123; &#125; &#92; &#35;</link>
 <link linkend="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e">&latex; &tex; &#8226; &#44; &#169; &#8230; ...</link>
@@ -22586,7 +22586,7 @@ Top
 * Menu:
 
 *  { }::
-*      ! 
+*     ! 
  .  . ? @::
 * @ { } \\ #::
 * LaTeX TeX * , (C) ... ...::
@@ -22796,33 +22796,33 @@ in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 
 Tag Table:
 Node: Top41
-Node: { }859
+Node: { }858
 Node:     !
-. . ? @938
-Node: @ { } \\ #1043
-Node: LaTeX TeX * , (C) ... ...1162
-Node: == error-> Euro ! ==> -1323
-Node: >= <= ->1479
-Node: a o -!- # -| ? (R)1598
-Node: => o a b a sunny day aa1737
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1917
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2144
-Node: e. e( e_ .e e< j ee[2358
-Node: i E=` C\',2516
-Node: `` \'\' ` \' ,, ,2633
-Node: << >> << >> < >2755
-Node: `` \'\' --- -- ` \'2886
-Node: AAA (fff) AAA BBB3014
-Node: CCC (rrr) CCC DDD3154
-Node: the someone <someone@somewher> <no_explain@there>3327
-Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3629
-Node:  @ {} . 3985
-Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4194
-Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4456
-Node: 8.27in4736
-Node: sansserif slanted4884
-Node: <indicateurl>5010
-Node: \'http://somewhere_aaa\' text (url) ls5158
+. . ? @937
+Node: @ { } \\ #1042
+Node: LaTeX TeX * , (C) ... ...1161
+Node: == error-> Euro ! ==> -1322
+Node: >= <= ->1478
+Node: a o -!- # -| ? (R)1597
+Node: => o a b a sunny day aa1736
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1916
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2143
+Node: e. e( e_ .e e< j ee[2357
+Node: i E=` C\',2515
+Node: `` \'\' ` \' ,, ,2632
+Node: << >> << >> < >2754
+Node: `` \'\' --- -- ` \'2885
+Node: AAA (fff) AAA BBB3013
+Node: CCC (rrr) CCC DDD3153
+Node: the someone <someone@somewher> <no_explain@there>3326
+Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3628
+Node:  @ {} . 3984
+Node: \'cite asis\' in @w b in r SC *str* t VAR "dfn" i4193
+Node: \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'4455
+Node: 8.27in4735
+Node: sansserif slanted4883
+Node: <indicateurl>5009
+Node: \'http://somewhere_aaa\' text (url) ls5157
 
 End Tag Table
 ';

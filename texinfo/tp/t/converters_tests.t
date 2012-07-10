@@ -179,7 +179,7 @@ my $at_commands_in_refs_text = '@node Top
 
 @menu
 * @- @{ @}::
-* @  @   @! @* @. @: .@: @? @@::
+* @  @	 @! @* @. @: .@: @? @@::
 * @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}::
 * @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}::
 * @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}::
@@ -209,8 +209,8 @@ my $at_commands_in_refs_text = '@node Top
 @node @- @{ @}
 @chapter @- @{ @}
 
-@node @  @       @! @* @. @: .@: @? @@
-@chapter @  @    @! @* @. @: .@: @? @@
+@node @  @	 @! @* @. @: .@: @? @@
+@chapter @  @	 @! @* @. @: .@: @? @@
 
 @node @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}
 @chapter @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}
@@ -292,7 +292,7 @@ my $at_commands_in_refs_text = '@node Top
 
 @ref{@- @{ @}}
 
-@ref{@  @        @! @* @. @: .@: @? @@}
+@ref{@  @	 @! @* @. @: .@: @? @@}
 @ref{@atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}}
 @ref{@LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}}
 @ref{@equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}}
