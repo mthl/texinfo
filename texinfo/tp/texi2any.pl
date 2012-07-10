@@ -435,7 +435,8 @@ my @include_dirs = ();
 my @prepend_dirs = ();
 
 # options for all the files
-my $parser_default_options = {'expanded_formats' => [], 'values' => {},
+my $parser_default_options = {'expanded_formats' => [], 
+                              'values' => {'txicommandconditionals' => 1},
                               'gettext' => \&__};
 
 Texinfo::Config::_load_config($converter_default_options, $cmdline_options);

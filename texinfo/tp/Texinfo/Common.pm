@@ -671,6 +671,9 @@ foreach my $command (keys(%format_raw_commands), 'info', 'plaintext') {
 $block_commands{'ifset'} = 'conditional';
 $block_commands{'ifclear'} = 'conditional';
 
+$block_commands{'ifcommanddefined'} = 'conditional';
+$block_commands{'ifcommandnotdefined'} = 'conditional';
+
 # 'macro' ?
 foreach my $block_command_one_arg('table', 'ftable', 'vtable',
   'itemize', 'enumerate', 'quotation', 'smallquotation') {

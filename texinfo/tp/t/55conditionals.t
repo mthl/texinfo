@@ -347,7 +347,33 @@ in ifhtml
 '@ifhtml
 inhtml
   @end ifhtml
-']
+'],
+['command_conditionals',
+'@ifset txicommandconditionals
+Good, the txicommandconditionals variable was set.
+@end ifset
+
+@ifcommanddefined nodexyz
+Bad, @@nodexyz is defined.
+@end ifcommanddefined
+@ifcommandnotdefined nodexyz
+Good, @@nodexyz is not defined.
+@end ifcommandnotdefined
+
+@ifcommanddefined node
+Good, @@node is defined.
+@end ifcommanddefined
+@ifcommandnotdefined node
+Bad, @@node is not defined.
+@end ifcommandnotdefined
+
+@ifcommanddefined mathcode
+Unfortunately, @@mathcode is defined.
+@end ifcommanddefined
+@ifcommandnotdefined mathcode
+Happily, @@mathcode is not defined.
+@end ifcommandnotdefined
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

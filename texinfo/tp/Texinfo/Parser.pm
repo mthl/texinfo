@@ -117,7 +117,8 @@ our %default_configuration = (
   'indices' => [],
   # the following are dynamically modified during the document parsing.
   'aliases' => {},            # key is a command name value is the alias
-  'values' => {},             # the key is the name, the value the @set name 
+  'values' => {'txicommandconditionals' => 1}, 
+                              # the key is the name, the value the @set name 
                               # argument.  A Texinfo tree may also be used.
   'macros' => {},             # the key is the user-defined macro name.  The 
                               # value is the reference on a macro element 
@@ -3560,7 +3561,9 @@ sub _parse_texi($;$)
           last;
         # ifclear/ifset may be nested
         } elsif (($current->{'cmdname'} eq 'ifclear' 
-                  or $current->{'cmdname'} eq 'ifset')
+                  or $current->{'cmdname'} eq 'ifset'
+                  or $current->{'cmdname'} eq 'ifcommanddefined'
+                  or $current->{'cmdname'} eq 'ifcommandnotdefined')
                 and $line =~ /^\s*\@$current->{'cmdname'}/) {
           $line =~ s/\s*\@($current->{'cmdname'})//;
           push @{$current->{'contents'}}, { 'cmdname' => $1,
@@ -4375,6 +4378,22 @@ sub _parse_texi($;$)
                 if ((exists($self->{'values'}->{$name}) and $command eq 'ifset')
                     or (!exists($self->{'values'}->{$name}) 
                          and $command eq 'ifclear')) {
+                  $ifvalue_true = 1;
+                }
+                print STDERR "CONDITIONAL \@$command $name: $ifvalue_true\n" if ($self->{'DEBUG'});
+              } else {
+                $self->line_error (sprintf($self->__("%c%s requires a name"), 
+                                           ord('@'), $command), $line_nr);
+              }
+            } elsif ($command eq 'ifcommanddefined' 
+                     or $command eq 'ifcommandnotdefined') {
+              # REMACRO
+              if ($line =~ /^\s+([[:alnum:]][[:alnum:]\-]*)/) {
+                my $name = $1;
+                if ((exists($Texinfo::Common::all_commands{$name}) 
+                     and $command eq 'ifcommanddefined')
+                    or (!exists($Texinfo::Common::all_commands{$name})
+                         and $command eq 'ifcommandnotdefined')) {
                   $ifvalue_true = 1;
                 }
                 print STDERR "CONDITIONAL \@$command $name: $ifvalue_true\n" if ($self->{'DEBUG'});
