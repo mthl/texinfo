@@ -492,12 +492,39 @@ $result_menus{'top_node_no_menu_direction'}{'menu_up'} = $result_menus{'top_node
 
 $result_errors{'top_node_no_menu_direction'} = [
   {
+    'error_line' => ':5: warning: Menu entry node name `TOP\' different from main name `Top\'
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Menu entry node name `TOP\' different from main name `Top\'',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':1: warning: For `Top\', up in menu `Top\' and up `(dir)\' don\'t match
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'For `Top\', up in menu `Top\' and up `(dir)\' don\'t match',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':8: warning: Node direction Prev `top\' different from main name `Top\'
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => 'Node direction Prev `top\' different from main name `Top\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':8: warning: Node direction Up `TOP\' different from main name `Top\'
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => 'Node direction Up `TOP\' different from main name `Top\'',
     'type' => 'warning'
   }
 ];

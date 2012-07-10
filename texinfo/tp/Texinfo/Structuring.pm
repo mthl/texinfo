@@ -157,7 +157,7 @@ $unnumbered_commands{'part'} = 1;
 my $min_level = $command_structuring_level{'chapter'};
 my $max_level = $command_structuring_level{'subsubsection'};
 
-sub _section_level ($)
+sub _section_level($)
 {
   my $section = shift;
   my $level = $command_structuring_level{$section->{'cmdname'}};
@@ -372,7 +372,7 @@ sub _print_sectioning_tree($)
 
 
 # Add raise/lowersections to be back at the normal level
-sub _correct_level ($$;$)
+sub _correct_level($$;$)
 {
   my $section = shift;
   my $parent = shift;
@@ -485,6 +485,35 @@ sub fill_gaps_in_sectioning($)
   return (\@contents, \@added_sections);
 }
 
+sub _check_node_same_texinfo_code($$)
+{
+  my $reference_node = shift;
+  my $node_extra = shift;
+
+  my $reference_node_texi;
+  if ($reference_node->{'extra'}->{'node_content'}) {
+    $reference_node_texi = Texinfo::Convert::Texinfo::convert (
+        {'contents' => $reference_node->{'extra'}->{'node_content'}});
+    $reference_node_texi =~ s/\s+/ /g;
+  } else {
+    $reference_node_texi = '';
+  }
+
+  my $node_texi;
+  if ($node_extra and $node_extra->{'node_content'}) {
+    my @contents_node = @{$node_extra->{'node_content'}};
+    pop @contents_node if ($contents_node[-1]->{'type'} 
+               and $contents_node[-1]->{'type'} eq 'space_at_end_menu_node');
+    $node_texi = Texinfo::Convert::Texinfo::convert (
+      {'contents' => \@contents_node});
+    $node_texi =~ s/\s+/ /g;
+  } else {
+    $node_texi = '';
+  }
+  return ($reference_node_texi eq $node_texi);
+}
+
+
 my @node_directions = ('next', 'prev', 'up');
 # No translation of those special Info keywords.
 my %direction_texts = (
@@ -545,6 +574,15 @@ sub nodes_tree ($)
                 my $normalized_menu_node
                   = $menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'};
                 $menu_node = $self->{'labels'}->{$normalized_menu_node};
+                if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code($menu_node, 
+                    $menu_content->{'extra'}->{'menu_entry_node'})) {
+                  $self->line_warn(sprintf($self->
+                   __("Menu entry node name `%s' different from main name `%s'"), 
+                     Texinfo::Parser::_node_extra_to_texi(
+                             $menu_content->{'extra'}->{'menu_entry_node'}),
+                     Texinfo::Parser::_node_extra_to_texi($menu_node->{'extra'})),
+                    $menu_content->{'line_nr'});
+                }
                 $menu_node->{'menu_up'} = $node;
                 $menu_node->{'menu_up_hash'}->{$node->{'extra'}->{'normalized'}} = 1;
               }
@@ -694,6 +732,18 @@ sub nodes_tree ($)
           if ($self->{'labels'}->{$node_direction->{'normalized'}}) {
             $node->{'node_'.$direction} 
               = $self->{'labels'}->{$node_direction->{'normalized'}};
+            if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code(
+                $self->{'labels'}->{$node_direction->{'normalized'}}, 
+                $node_direction)) {
+              $self->line_warn(sprintf($self->
+                __("Node direction %s `%s' different from main name `%s'"), 
+                  $direction_texts{$direction},
+                  Texinfo::Parser::_node_extra_to_texi(
+                        $node_direction),
+                  Texinfo::Parser::_node_extra_to_texi(
+         $self->{'labels'}->{$node_direction->{'normalized'}}->{'extra'})),
+                $node->{'line_nr'});
+            }
           } else {
             if ($self->{'novalidate'}) {
               $node->{'node_'.$direction} = { 'extra' => $node_direction };
@@ -1230,6 +1280,18 @@ sub associate_internal_references($;$$)
     } else {
       $ref->{'extra'}->{'label'} 
         = $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}};
+      if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code(
+          $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}}, 
+          $ref->{'extra'}->{'node_argument'})) {
+        $self->line_warn(sprintf($self->
+           __("\@%s reference `%s' different from main name `%s'"), 
+           $ref->{'cmdname'},
+           Texinfo::Parser::_node_extra_to_texi(
+              $ref->{'extra'}->{'node_argument'}),
+           Texinfo::Parser::_node_extra_to_texi(
+    $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}}->{'extra'})),
+          $ref->{'line_nr'});
+      }
     }
   }
 }
@@ -1265,7 +1327,7 @@ sub number_floats($)
   }
 }
 
-sub _reference_to_text($$$)
+sub _reference_to_arg($$$)
 {
   my $self = shift;
   my $type = shift;
@@ -1301,11 +1363,11 @@ sub _reference_to_text($$$)
   }
 }
 
-sub reference_to_text_in_tree($$)
+sub reference_to_arg_in_tree($$)
 {
   my $self = shift;
   my $tree = shift;
-  return Texinfo::Common::modify_tree($self, $tree, \&_reference_to_text);
+  return Texinfo::Common::modify_tree($self, $tree, \&_reference_to_arg);
 }
 
 # prepare a new node and register it
@@ -1317,7 +1379,7 @@ sub _new_node($$)
   $node_tree = Texinfo::Common::protect_comma_in_tree($node_tree);
   $node_tree->{'contents'} 
      = Texinfo::Common::protect_first_parenthesis($node_tree->{'contents'});
-  $node_tree = reference_to_text_in_tree($self, $node_tree);
+  $node_tree = reference_to_arg_in_tree($self, $node_tree);
 
   my $empty_node = 0;
   if (!$node_tree->{'contents'} 

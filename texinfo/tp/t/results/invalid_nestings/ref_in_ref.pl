@@ -201,6 +201,15 @@ $result_errors{'ref_in_ref'} = [
     'macro' => '',
     'text' => '@ref should not appear in @ref',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: warning: @ref reference `@ref{Top}\' different from main name `Top\'
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@ref reference `@ref{Top}\' different from main name `Top\'',
+    'type' => 'warning'
   }
 ];
 

@@ -22,7 +22,7 @@ sub run_test($$$)
   my $tree = parse_texi_text($parser, $in);
 
   my $corrected_tree 
-    = Texinfo::Structuring::reference_to_text_in_tree($parser, $tree);
+    = Texinfo::Structuring::reference_to_arg_in_tree($parser, $tree);
   my $texi_result = Texinfo::Convert::Texinfo::convert($corrected_tree);
 
   if (!defined($out)) {

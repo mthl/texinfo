@@ -494,7 +494,35 @@ $result_menus{'equivalent_nodes'} = {
 };
 $result_menus{'equivalent_nodes'}{'menu_child'}{'menu_up'} = $result_menus{'equivalent_nodes'};
 
-$result_errors{'equivalent_nodes'} = [];
+$result_errors{'equivalent_nodes'} = [
+  {
+    'error_line' => ':9: warning: @xref reference `node\' different from main name `@samp{node}\'
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@xref reference `node\' different from main name `@samp{node}\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: Menu entry node name `@strong{node}\' different from main name `@samp{node}\'
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Menu entry node name `@strong{node}\' different from main name `@samp{node}\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: warning: Node direction Next `@emph{node}\' different from main name `@samp{node}\'
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Node direction Next `@emph{node}\' different from main name `@samp{node}\'',
+    'type' => 'warning'
+  }
+];
 
 
 
