@@ -287,7 +287,7 @@ sub _reference_to_text_in_texi($)
 {
   my $texinfo = shift;
   my $tree = parse_texi_text(undef, $texinfo);
-  Texinfo::Structuring::reference_to_text_in_tree(undef, $tree);
+  Texinfo::Structuring::reference_to_arg_in_tree(undef, $tree);
   return Texinfo::Convert::Texinfo::convert($tree);
 }  
 
