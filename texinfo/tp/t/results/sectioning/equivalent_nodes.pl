@@ -496,30 +496,30 @@ $result_menus{'equivalent_nodes'}{'menu_child'}{'menu_up'} = $result_menus{'equi
 
 $result_errors{'equivalent_nodes'} = [
   {
-    'error_line' => ':9: warning: @xref reference `node\' different from main name `@samp{node}\'
+    'error_line' => ':9: warning: @xref to `node\', different from node name `@samp{node}\'
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => '@xref reference `node\' different from main name `@samp{node}\'',
+    'text' => '@xref to `node\', different from node name `@samp{node}\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Menu entry node name `@strong{node}\' different from main name `@samp{node}\'
+    'error_line' => ':4: warning: Menu entry node name `@strong{node}\' different from node name `@samp{node}\'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Menu entry node name `@strong{node}\' different from main name `@samp{node}\'',
+    'text' => 'Menu entry node name `@strong{node}\' different from node name `@samp{node}\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: Node direction Next `@emph{node}\' different from main name `@samp{node}\'
+    'error_line' => ':1: warning: Node direction Next `@emph{node}\' different from node name `@samp{node}\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Node direction Next `@emph{node}\' different from main name `@samp{node}\'',
+    'text' => 'Node direction Next `@emph{node}\' different from node name `@samp{node}\'',
     'type' => 'warning'
   }
 ];
@@ -547,19 +547,6 @@ Node: \'node\'99
 
 End Tag Table
 ';
-
-$result_converted_errors{'info'}->{'equivalent_nodes'} = [
-  {
-    'file_name' => '',
-    'error_line' => ':4: warning: Node expansion `*node*\' in menu differs from normal node expansion `\'node\'\'
-',
-    'text' => 'Node expansion `*node*\' in menu differs from normal node expansion `\'node\'\'',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 4
-  }
-];
-
 
 
 $result_converted{'html'}->{'equivalent_nodes'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

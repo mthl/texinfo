@@ -403,30 +403,30 @@ $result_menus{'top_node_normalization'}{'menu_up'} = $result_menus{'top_node_nor
 
 $result_errors{'top_node_normalization'} = [
   {
-    'error_line' => ':3: warning: @xref reference `TOP\' different from main name `ToP\'
+    'error_line' => ':3: warning: @xref to `TOP\', different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@xref reference `TOP\' different from main name `ToP\'',
+    'text' => '@xref to `TOP\', different from node name `ToP\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: @xref reference `tOP\' different from main name `ToP\'
+    'error_line' => ':3: warning: @xref to `tOP\', different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@xref reference `tOP\' different from main name `ToP\'',
+    'text' => '@xref to `tOP\', different from node name `ToP\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Menu entry node name `tOP\' different from main name `ToP\'
+    'error_line' => ':6: warning: Menu entry node name `tOP\' different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Menu entry node name `tOP\' different from main name `ToP\'',
+    'text' => 'Menu entry node name `tOP\' different from node name `ToP\'',
     'type' => 'warning'
   },
   {

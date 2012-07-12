@@ -2928,12 +2928,12 @@ $result_menus{'ref_in_sectioning'}{'menu_child'}{'menu_up'} = $result_menus{'ref
 
 $result_errors{'ref_in_sectioning'} = [
   {
-    'error_line' => ':19: warning: @ref reference `@code{node}\' different from main name `node\'
+    'error_line' => ':19: warning: @ref to `@code{node}\', different from node name `node\'
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => '@ref reference `@code{node}\' different from main name `node\'',
+    'text' => '@ref to `@code{node}\', different from node name `node\'',
     'type' => 'warning'
   }
 ];

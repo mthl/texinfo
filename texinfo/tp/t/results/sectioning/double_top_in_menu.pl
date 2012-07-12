@@ -532,30 +532,30 @@ $result_errors{'double_top_in_menu'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':5: warning: Menu entry node name `top\' different from main name `ToP\'
+    'error_line' => ':5: warning: Menu entry node name `top\' different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Menu entry node name `top\' different from main name `ToP\'',
+    'text' => 'Menu entry node name `top\' different from node name `ToP\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: Menu entry node name `TOP\' different from main name `ToP\'
+    'error_line' => ':6: warning: Menu entry node name `TOP\' different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Menu entry node name `TOP\' different from main name `ToP\'',
+    'text' => 'Menu entry node name `TOP\' different from node name `ToP\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: Node direction Next `top\' different from main name `ToP\'
+    'error_line' => ':1: warning: Node direction Next `top\' different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Node direction Next `top\' different from main name `ToP\'',
+    'text' => 'Node direction Next `top\' different from node name `ToP\'',
     'type' => 'warning'
   }
 ];

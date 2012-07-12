@@ -577,9 +577,10 @@ sub nodes_tree ($)
                 if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code($menu_node, 
                     $menu_content->{'extra'}->{'menu_entry_node'})) {
                   $self->line_warn(sprintf($self->
-                   __("Menu entry node name `%s' different from main name `%s'"), 
+                   __("Menu entry node name `%s' different from %s name `%s'"), 
                      Texinfo::Parser::_node_extra_to_texi(
                              $menu_content->{'extra'}->{'menu_entry_node'}),
+                     $menu_node->{'cmdname'},
                      Texinfo::Parser::_node_extra_to_texi($menu_node->{'extra'})),
                     $menu_content->{'line_nr'});
                 }
@@ -730,18 +731,21 @@ sub nodes_tree ($)
           }
         } else {
           if ($self->{'labels'}->{$node_direction->{'normalized'}}) {
-            $node->{'node_'.$direction} 
-              = $self->{'labels'}->{$node_direction->{'normalized'}};
+            my $node_target 
+               = $self->{'labels'}->{$node_direction->{'normalized'}};
+            $node->{'node_'.$direction} = $node_target;
+
             if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code(
-                $self->{'labels'}->{$node_direction->{'normalized'}}, 
-                $node_direction)) {
+                $node_target, $node_direction)) {
+              
               $self->line_warn(sprintf($self->
-                __("Node direction %s `%s' different from main name `%s'"), 
+                __("Node direction %s `%s' different from %s name `%s'"), 
                   $direction_texts{$direction},
                   Texinfo::Parser::_node_extra_to_texi(
                         $node_direction),
+                  $node_target->{'cmdname'},
                   Texinfo::Parser::_node_extra_to_texi(
-         $self->{'labels'}->{$node_direction->{'normalized'}}->{'extra'})),
+                        $node_target->{'extra'})),
                 $node->{'line_nr'});
             }
           } else {
@@ -1278,18 +1282,19 @@ sub associate_internal_references($;$$)
                                 $ref->{'extra'}->{'node_argument'})), 
                         $ref->{'line_nr'})
     } else {
-      $ref->{'extra'}->{'label'} 
+      my $node_target 
         = $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}};
+      $ref->{'extra'}->{'label'} = $node_target;
       if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code(
-          $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}}, 
-          $ref->{'extra'}->{'node_argument'})) {
+          $node_target, $ref->{'extra'}->{'node_argument'})) {
         $self->line_warn(sprintf($self->
-           __("\@%s reference `%s' different from main name `%s'"), 
+           __("\@%s to `%s', different from %s name `%s'"), 
            $ref->{'cmdname'},
            Texinfo::Parser::_node_extra_to_texi(
               $ref->{'extra'}->{'node_argument'}),
+           $node_target->{'cmdname'},
            Texinfo::Parser::_node_extra_to_texi(
-    $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}}->{'extra'})),
+                        $node_target->{'extra'})),
           $ref->{'line_nr'});
       }
     }

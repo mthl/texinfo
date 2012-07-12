@@ -2577,41 +2577,6 @@ sub _convert($$)
       }
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
-          if ($menu_entry_internal_node) {
-            if ($self->get_conf('DEBUG')) {
-              print STDERR "\n  ------------- BEGIN ignored 2 node formatting for error report -------------\n";
-            }
-            # check that after space collapse the info reader will find the
-            # node.  But always expand what the user provided for the 
-            # menu entry, to keep the user defined spacing.
-            my $saved_error_nrs = $self->{'error_nrs'};
-            my $saved_error_errors_warnings = $self->{'errors_warnings'};
-            $self->{'errors_warnings'} = [];
-            push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-            my $internal_node = Texinfo::Common::normalize_top_node_name(
-                 $self->convert_line({'type' => 'code',
-                 'contents' 
-                  => $menu_entry_internal_node->{'extra'}->{'node_content'}}));
-            my $menu_node = Texinfo::Common::normalize_top_node_name(
-                 $self->convert_line({'type' => 'code',
-                 'contents' 
-                  => $arg->{'contents'}}));
-            $self->{'error_nrs'} = $saved_error_nrs;
-            $self->{'errors_warnings'} = $saved_error_errors_warnings;
-            # trailing spaces for node in menu are not very predictable.
-            # therefore they are ignored, and they are ignored in both
-            # case, in case there where protected spaces at the end of a node.
-            $internal_node =~ s/\s*$//;
-            $menu_node =~ s/\s*$//;
-            if ($internal_node ne $menu_node) {
-              $self->line_warn(sprintf($self->__("Node expansion `%s' in menu differs from normal node expansion `%s'"), 
-                       $menu_node, $internal_node), $root->{'line_nr'});
-            }
-            pop @{$self->{'count_context'}};
-            if ($self->get_conf('DEBUG')) {
-              print STDERR "  ------------- END ignored 2 node formatting for error report -------------\n\n";
-            }
-          }
           $result .= $self->_convert({'type' => 'code',
                                       'contents' => $arg->{'contents'}});
         } else {

@@ -611,6 +611,20 @@ my @tests_info = (
 
 @xref{node}.
 '],
+['equivalent_labels',
+'@node Top
+
+@anchor{@samp{anch}}.
+
+@float truc, floa
+In float
+@end float
+
+@menu
+* anch::
+* @code{floa}::
+@end menu
+'],
 ['anchor_in_footnote',
 $anchor_in_footnote_text
 ],

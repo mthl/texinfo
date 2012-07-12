@@ -261,12 +261,12 @@ $result_menus{'ref_to_top'} = {
 
 $result_errors{'ref_to_top'} = [
   {
-    'error_line' => ':5: warning: @xref reference `TOP\' different from main name `ToP\'
+    'error_line' => ':5: warning: @xref to `TOP\', different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@xref reference `TOP\' different from main name `ToP\'',
+    'text' => '@xref to `TOP\', different from node name `ToP\'',
     'type' => 'warning'
   }
 ];
