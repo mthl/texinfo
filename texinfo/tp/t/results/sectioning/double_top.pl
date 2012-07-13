@@ -325,12 +325,12 @@ $result_errors{'double_top'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':1: warning: Node direction Next `top\' different from node name `ToP\'
+    'error_line' => ':1: warning: Next pointer `top\' (for node `ToP\') different from node name `ToP\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Node direction Next `top\' different from node name `ToP\'',
+    'text' => 'Next pointer `top\' (for node `ToP\') different from node name `ToP\'',
     'type' => 'warning'
   }
 ];

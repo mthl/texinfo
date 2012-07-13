@@ -514,12 +514,12 @@ $result_errors{'equivalent_nodes'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: Node direction Next `@emph{node}\' different from node name `@samp{node}\'
+    'error_line' => ':1: warning: Next pointer `@emph{node}\' (for node `Top\') different from node name `@samp{node}\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Node direction Next `@emph{node}\' different from node name `@samp{node}\'',
+    'text' => 'Next pointer `@emph{node}\' (for node `Top\') different from node name `@samp{node}\'',
     'type' => 'warning'
   }
 ];

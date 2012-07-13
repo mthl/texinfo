@@ -737,12 +737,13 @@ sub nodes_tree ($)
 
             if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code(
                 $node_target, $node_direction)) {
-              
               $self->line_warn(sprintf($self->
-                __("Node direction %s `%s' different from %s name `%s'"), 
+                __("%s pointer `%s' (for node `%s') different from %s name `%s'"),
                   $direction_texts{$direction},
                   Texinfo::Parser::_node_extra_to_texi(
                         $node_direction),
+                  Texinfo::Parser::_node_extra_to_texi(
+                        $node->{'extra'}),
                   $node_target->{'cmdname'},
                   Texinfo::Parser::_node_extra_to_texi(
                         $node_target->{'extra'})),

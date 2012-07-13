@@ -510,21 +510,21 @@ $result_errors{'top_node_no_menu_direction'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: Node direction Prev `top\' different from node name `Top\'
+    'error_line' => ':8: warning: Prev pointer `top\' (for node `second node\') different from node name `Top\'
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Node direction Prev `top\' different from node name `Top\'',
+    'text' => 'Prev pointer `top\' (for node `second node\') different from node name `Top\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: Node direction Up `TOP\' different from node name `Top\'
+    'error_line' => ':8: warning: Up pointer `TOP\' (for node `second node\') different from node name `Top\'
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'Node direction Up `TOP\' different from node name `Top\'',
+    'text' => 'Up pointer `TOP\' (for node `second node\') different from node name `Top\'',
     'type' => 'warning'
   }
 ];
