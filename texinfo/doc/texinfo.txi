@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.455 2012-07-06 18:34:59 karl Exp $
+@c $Id: texinfo.txi,v 1.456 2012-07-13 17:36:11 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19264,7 +19264,7 @@ and the text of the argument is recursively transformed:
 @example
 @@asis @@b @@cite @@code @@command @@dfn @@dmn @@dotless
 @@emph @@env @@file @@i @@indicateurl @@kbd @@key
-@@samp @@sansserif @@sc @@slanted @@strong @@t @@var @@w
+@@samp @@sansserif @@sc @@slanted @@strong @@t @@var @@verb @@w
 @end example
 
 @noindent For @code{@@sc}, any letters are capitalized.
@@ -19320,23 +19320,15 @@ the other rules.
 @item @code{@@tie}              @tab (space)
 @end multitable
 
-Quotation mark commands (@code{@@quotedblright@{@}} and the like), are
-likewise replaced by their Unicode values.  Normal quotation
-@emph{characters} (` and ') are not altered.  @xref{Inserting
-Quotation Marks}.
+Quotation mark @@-commands (@code{@@quotedblright@{@}} and the like),
+are likewise replaced by their Unicode values.  Normal quotation
+@emph{characters} (e.g., ASCII ` and ') are not altered.
+@xref{Inserting Quotation Marks}.
 
-An @code{@@acronym} or @code{@@abbr} command is replaced by the first
-argument, followed by the second argument in parentheses, if present.
-@xref{acronym}.
-
-An @code{@@email} command is replaced by the @var{text} argument if
-present, else the address.  @xref{email}.
-
-An @code{@@image} command is replaced by the filename (first)
-argument.  @xref{Images}.
-
-An @code{@@verb} command is replaced by its transformed argument.
-@xref{verb}.
+Any @code{@@acronym}, @code{@@abbr}, @code{@@email}, and
+@code{@@image} commands are replaced by their first argument.  (For
+these commands, all subsequent arguments are optional, and ignored
+here.)  @xref{acronym}, and @ref{email}, and @ref{Images}.
 
 Any other command is an error, and the result is unspecified.
 
@@ -21966,7 +21958,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.455 2012-07-06 18:34:59 karl Exp $
+$Id: texinfo.txi,v 1.456 2012-07-13 17:36:11 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

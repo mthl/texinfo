@@ -1,6 +1,12 @@
+2012-07-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Xref Command Expansion): Clarify/unify
+	treatment of @acronym, @abbr, @email, @image.
+	(texinfo-devel 8 Jul 2012 09:38:25)
+
 2012-07-06  Karl Berry  <karl@gnu.org>
 
-	Avoid "used uninitialized" warnings from gcc.
+	Avoid "may be used uninitialized" warnings from gcc.
 	* info/infokey.c (compile): initialize seqstate.
 	* info/window.c (process_node_text): initialize carried_over_len,
 	carried_over_count, replen.
