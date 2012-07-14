@@ -280,10 +280,8 @@ foreach my $command ('var', 'cite', 'dmn', keys(%code_style_commands)) {
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
-# this default is for Info, but also when doing Texinfo fragments.  So this 
-# has to be explicitly set to 0 when doing real plaintext.
-  'SHOW_MENU'            => 1,
-# not used for plaintext, since default is '-' for plaintext.
+  'SHOW_MENU'            => 0,
+# not used for plaintext, since default is '-', and always set, for plaintext.
   'EXTENSION'            => 'info',
   'USE_SETFILENAME_EXTENSION' => 1,
 

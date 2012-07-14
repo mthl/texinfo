@@ -21657,36 +21657,6 @@ $result_errors{'at_commands_in_refs'} = [
 $result_converted{'plaintext'}->{'at_commands_in_refs'} = 'Top
 ***
 
-* Menu:
-
-*  { }::
-*     ! 
- .  . ? @::
-* @ { } \\ #::
-* LaTeX TeX * , (C) ... ...::
-* == error-> Euro ! ==> -::
-* >= <= ->::
-* a o -!- # -| ? (R)::
-* => o a b a sunny day aa::
-* AA ae oe AE OE /o /O ss /l /L D d TH th::
-* a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
-* e. e( e_ .e e< j ee[::
-* i E=` C\',::
-* `` \'\' ` \' ,, ,::
-* << >> << >> < >::
-* `` \'\' --- -- ` \'::
-* AAA (fff) AAA BBB::
-* CCC (rrr) CCC DDD::
-* the someone <someone@somewher> <no_explain@there>::
-* [f--ile1]  [Image description""\\.]::
-*  @ {} . ::
-* \'cite asis\' in @w b in r SC *str* t VAR "dfn" i::
-* \'env\' \'code\' \'option\' \'samp\' \'command\' \'file\' \'C-x <ESC>\'::
-* 8.27in::
-* sansserif slanted::
-* <indicateurl>::
-* \'http://somewhere_aaa\' text (url) ls::
-
 1 { }
 *****
 
@@ -21788,15 +21758,6 @@ in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 ';
 
 $result_converted_errors{'plaintext'}->{'at_commands_in_refs'} = [
-  {
-    'file_name' => '',
-    'error_line' => ':23: warning: Cannot find @image file `f--ile1.txt\' nor alternate text
-',
-    'text' => 'Cannot find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 23
-  },
   {
     'file_name' => '',
     'error_line' => ':91: warning: Cannot find @image file `f--ile1.txt\' nor alternate text

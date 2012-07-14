@@ -810,16 +810,11 @@ End Tag Table
 ';
 
 
-$result_converted{'plaintext'}->{'index_entry_before_node'} = '* Menu:
-
-* first::
-* second::
-
-Para.
+$result_converted{'plaintext'}->{'index_entry_before_node'} = 'Para.
 
 * Menu:
 
-* lone entry:                            first.                 (line 6)
+* lone entry:                            first.                 (line 1)
 
 ';
 

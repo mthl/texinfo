@@ -104,7 +104,7 @@ if (0) {
   $self->gdt('error@arrow{}');
 }
 
-sub converter_defaults($)
+sub converter_defaults($$)
 {
   return %defaults;
 }

@@ -1616,10 +1616,6 @@ abandon his copyright.
 
 Copyright notice 1: The Public Domain notice(1)
 
-* Menu:
-
-* Copying and floats::
-
    ---------- Footnotes ----------
 
    (1) The caption copying footnote
@@ -1645,13 +1641,13 @@ Copyright notice 1: The Public Domain notice(2)
 
 * Menu:
 
-* indexed caption:                       Copying and floats.   (line 31)
-* indexed caption copying footnote:      Top.                  (line 16)
+* indexed caption:                       Copying and floats.   (line 27)
+* indexed caption copying footnote:      Top.                  (line 12)
 
 * Menu:
 
-* indexed caption function:              Copying and floats.   (line 31)
-* public domain function:                Top.                  (line 16)
+* indexed caption function:              Copying and floats.   (line 27)
+* public domain function:                Top.                  (line 12)
 
    ---------- Footnotes ----------
 

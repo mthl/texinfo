@@ -1448,10 +1448,6 @@ $result_converted{'plaintext'}->{'printindex_index_entry_in_copying_no_insertcop
 
 Top.
 
-* Menu:
-
-* chapter::
-
 1 Chapter
 *********
 

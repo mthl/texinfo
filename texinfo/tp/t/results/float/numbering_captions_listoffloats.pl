@@ -9116,14 +9116,6 @@ A warning
 
 Warning 1: C A warning
 
-* Menu:
-
-* chapter::
-* Unnumbered::
-* Chapter with unnumbsubsec::
-* Appendix for float::
-* list of floats::
-
 1 A chapter
 ***********
 
@@ -9145,10 +9137,6 @@ A warning
 
 Warning 1.1: C A warning in chapter
 
-* Menu:
-
-* section::
-
 1.1 A section
 =============
 
@@ -9158,10 +9146,6 @@ Text 1.3
 
 Unnumbered
 **********
-
-* Menu:
-
-* Section within unnumbered::
 
 unnum
 
@@ -9180,10 +9164,6 @@ Text 6: C Section within unnumbered
 
 2 Chapter with unnumbsubsec
 ***************************
-
-* Menu:
-
-* unnumbered sec::
 
 Chap
 

@@ -3501,9 +3501,6 @@ $result_converted{'plaintext'}->{'line_passed_and_formats'} = '     special: Quo
           In nested
 
    menu
-* Menu:
-
-* (manual)node::
    end menu
 ';
 

@@ -963,16 +963,8 @@ Top
 
 Top node.
 
-* Menu:
-
-* Unn::
-
 Unn
 ***
-
-* Menu:
-
-* Sec::
 
 Sec
 ===

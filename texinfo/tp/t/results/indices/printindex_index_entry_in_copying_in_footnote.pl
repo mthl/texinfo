@@ -970,10 +970,6 @@ Top.
 * Menu:
 
 
-* Menu:
-
-* chapter::
-
    ---------- Footnotes ----------
 
    (1) In footnote
@@ -985,7 +981,7 @@ Copying(1).
 
 * Menu:
 
-* Copying this document:                 Top.                  (line 16)
+* Copying this document:                 Top.                  (line 12)
 
    ---------- Footnotes ----------
 

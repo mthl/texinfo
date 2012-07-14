@@ -797,13 +797,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
  'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
                          push @texi2dvi_args, '--'.$_[0];},
    
- 'plaintext' => sub {$format = $_[0]; 
-                     set_from_cmdline('SHOW_MENU', 0);
- },
+ 'plaintext' => sub {$format = $_[0];},
  'html' => sub {$format = set_format($_[0]);},
  'info' => sub {$format = set_format($_[0]);},
- 'docbook' => sub {$format = set_format($_[0]);
-                   set_from_cmdline('SHOW_MENU', 0)},
+ 'docbook' => sub {$format = set_format($_[0]);},
  'xml' => sub {$format = set_format($_[0]);},
  'dvi' => sub {$format = set_texi2dvi_format($_[0]);},
  'dvipdf' => sub {$format = set_texi2dvi_format($_[0]);},
@@ -892,6 +889,7 @@ my %formats_table = (
            },
 );
 
+
 if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 
     and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '') {
   if (!$formats_table{$ENV{'TEXINFO_OUTPUT_FORMAT'}}) {
@@ -938,6 +936,10 @@ foreach my $format (@{$default_expanded_format}) {
     unless (grep {$_ eq $format} @{$parser_default_options->{'expanded_formats'}});
 }
 
+# This gets the class right, even though there is a sub...
+my $converter_class = ref(&{$formats_table{$format}->{'converter'}});
+my %converter_defaults = $converter_class->converter_defaults();
+
 # FIXME should this be set when the --set is set too?  The corresponding
 # code is ready above, but commented out.
 foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
@@ -945,8 +947,13 @@ foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
                                     'IGNORE_BEFORE_SETFILENAME', 'TEST',
                                     'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES',
                                     'USE_UP_NODE_FOR_ELEMENT_UP') {
-  $parser_default_options->{$parser_settable_option} = get_conf($parser_settable_option) 
-    if (defined(get_conf($parser_settable_option)));
+  if (defined(get_conf($parser_settable_option))) {
+    $parser_default_options->{$parser_settable_option} 
+       = get_conf($parser_settable_option);
+  } elsif (defined($converter_defaults{$parser_settable_option})) {
+    $parser_default_options->{$parser_settable_option} 
+       = $converter_defaults{$parser_settable_option};
+  }
 }
 
 # this is very wrong, but a way to avoid a spurious warning.

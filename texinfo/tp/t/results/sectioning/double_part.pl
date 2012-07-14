@@ -872,10 +872,6 @@ element: @chapter chapter after 2 parts
 $result_converted{'plaintext'}->{'double_part'} = 'top
 ***
 
-* Menu:
-
-* node chapter::
-
 Text part first.
 Text part second.
 

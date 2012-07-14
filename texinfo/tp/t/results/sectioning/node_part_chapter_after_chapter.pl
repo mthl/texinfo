@@ -1109,11 +1109,6 @@ element: @chapter chapter with part node
 $result_converted{'plaintext'}->{'node_part_chapter_after_chapter'} = 'top
 ***
 
-* Menu:
-
-* chapter node::
-* part chapter node::
-
 1 chapter node
 **************
 

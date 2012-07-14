@@ -3,11 +3,6 @@ GNU LilyPond — 学習マニュアル
 
 これは GNU LilyPond バージョン
 
-* Menu:
-
-* Preface::
-* Introduction::                   LilyPond とは何なのか、なぜ LilyPond を使うのか、どうやって LilyPond を使うのか
-
 1 Preface
 *********
 

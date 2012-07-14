@@ -551,6 +551,8 @@ sub nodes_tree ($)
       # Remark: since the @menu are only checked if they are in @node, 
       # menu entry before the first node may be treated slightly differently.
       # at least, there are no error messages for them
+
+      my $check_menu_entries = (!$self->{'novalidate'} and $self->{'SHOW_MENU'});
       foreach my $menu (@{$node->{'menus'}}) {
         my $previous_node;
         foreach my $menu_content (@{$menu->{'contents'}}) {
@@ -560,7 +562,7 @@ sub nodes_tree ($)
             my $external_node;
             if (!$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
               if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
-                if (!$self->{'novalidate'}) {
+                if ($check_menu_entries) {
                   $self->line_error (sprintf($self->
                    __("Menu reference to nonexistent node `%s'"), 
                      Texinfo::Parser::_node_extra_to_texi(
@@ -574,7 +576,7 @@ sub nodes_tree ($)
                 my $normalized_menu_node
                   = $menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'};
                 $menu_node = $self->{'labels'}->{$normalized_menu_node};
-                if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code($menu_node, 
+                if ($check_menu_entries and ! _check_node_same_texinfo_code($menu_node, 
                     $menu_content->{'extra'}->{'menu_entry_node'})) {
                   $self->line_warn(sprintf($self->
                    __("Menu entry node name `%s' different from %s name `%s'"), 

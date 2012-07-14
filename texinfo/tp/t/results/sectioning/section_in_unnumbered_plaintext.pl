@@ -8805,20 +8805,8 @@ Test section in unnumbered
 
 Menu:
 
-* Menu:
-
-* chapter::
-* unnumbered::
-* chapter 2::
-* chapter 3::
-* unnumbered 4::
-
 1 chapter
 *********
-
-* Menu:
-
-* section in chapter::
 
 1.1 section in chapter
 ======================
@@ -8826,30 +8814,14 @@ Menu:
 unnumbered
 **********
 
-* Menu:
-
-* section in unnumbered::
-
 section in unnumbered
 =====================
 
 2 chapter 2
 ***********
 
-* Menu:
-
-* unnumberedsec 2::
-* unnumberedsec 2-1::
-
 unnumbered section 2
 ====================
-
-* Menu:
-
-* unnumbered sub 2::
-* numbered sub 2::
-* unnumbered sub2 2::
-* numbered sub2 2::
 
 unnumbered subsection 2
 -----------------------
@@ -8866,33 +8838,14 @@ numbered subsection2 2
 unnumberedsec 2-1
 =================
 
-* Menu:
-
-* numbered sub 2-1::
-
 numbered subsection 2-1
 -----------------------
 
 3 chapter 3
 ***********
 
-* Menu:
-
-* unnumberedsec 3::
-* section 3-1::
-* unnumberedsec 3-2::
-* section 3-3::
-* unnumberedsec 3-4::
-
 unnumbered section 3
 ====================
-
-* Menu:
-
-* unnumbered sub 3::
-* numbered sub 3::
-* unnumbered sub2 3::
-* numbered sub2 3::
 
 unnumbered subsection 3
 -----------------------
@@ -8912,19 +8865,11 @@ numbered subsection2 3
 unnumberedsec 3-2
 =================
 
-* Menu:
-
-* numbered sub 3-2::
-
 numbered subsection 3-2
 -----------------------
 
 3.2 section 3-3
 ===============
-
-* Menu:
-
-* subsection 3-3::
 
 3.2.1 subsection 3-3
 --------------------
@@ -8932,29 +8877,14 @@ numbered subsection 3-2
 unnumberedsec 3-4
 =================
 
-* Menu:
-
-* numbered sub 3-4::
-
 numbered subsection 3-4
 -----------------------
 
 unnumbered 4
 ************
 
-* Menu:
-
-* unnumberedsec 4::
-
 unnumbered section 4
 ====================
-
-* Menu:
-
-* unnumbered sub 4::
-* numbered sub 4::
-* unnumbered sub2 4::
-* numbered sub2 4::
 
 unnumbered subsection 4
 -----------------------

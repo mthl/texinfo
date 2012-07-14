@@ -764,11 +764,7 @@ End Tag Table
 ';
 
 
-$result_converted{'plaintext'}->{'index_entry_in_footnote_separate'} = '* Menu:
-
-* First::
-
-Top node(1) (*note Top-Footnote-1::)
+$result_converted{'plaintext'}->{'index_entry_in_footnote_separate'} = 'Top node(1) (*note Top-Footnote-1::)
 
    (1) in footnote
 
@@ -778,8 +774,8 @@ Top node(1) (*note Top-Footnote-1::)
 
 * Menu:
 
-* counting entry:                        Top-Footnotes.        (line 11)
-* index entry in footnote:               Top-Footnotes.        (line  6)
+* counting entry:                        Top-Footnotes.         (line 7)
+* index entry in footnote:               Top-Footnotes.         (line 2)
 
 ';
 

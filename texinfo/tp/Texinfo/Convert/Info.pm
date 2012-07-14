@@ -49,6 +49,14 @@ $VERSION = '5.00';
 
 my $STDIN_DOCU_NAME = 'stdin';
 
+my %defaults = Texinfo::Convert::Plaintext::converter_defaults(undef, undef);
+$defaults{'SHOW_MENU'} = 1;
+
+sub converter_defaults($$)
+{
+  return %defaults;
+}
+
 sub output($)
 {
   my $self = shift;

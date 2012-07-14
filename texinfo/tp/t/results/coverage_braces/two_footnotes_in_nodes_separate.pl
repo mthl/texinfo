@@ -1069,10 +1069,6 @@ A(1) (*note Top-Footnote-1::)
 
    B(2) (*note Top-Footnote-2::)
 
-* Menu:
-
-* chapter::
-
    (1) Footnote Top/1
 
    para2

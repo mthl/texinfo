@@ -445,6 +445,7 @@ my @test_invalid = (
 );
 
 foreach my $test (@test_cases) {
+  $test->[3]->{'SHOW_MENU'} = 1 if (!defined($test->[3]->{'SHOW_MENU'}));
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html';
   push @{$test->[2]->{'test_formats'}}, 'xml';

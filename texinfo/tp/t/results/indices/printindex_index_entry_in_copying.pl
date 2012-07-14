@@ -1536,10 +1536,6 @@ xftable xitem
 * xf:                                    Top.                  (line  6)
 * xftable xitem:                         Top.                  (line 10)
 
-* Menu:
-
-* chapter::
-
 1 Chapter
 *********
 
@@ -1552,19 +1548,19 @@ xftable xitem
 
 * Menu:
 
-* Copying this document:                 chapter.              (line 27)
-* ftable item:                           chapter.              (line 31)
-* fun:                                   chapter.              (line 27)
-* xf:                                    chapter.              (line 28)
-* xftable xitem:                         chapter.              (line 32)
+* Copying this document:                 chapter.              (line 23)
+* ftable item:                           chapter.              (line 27)
+* fun:                                   chapter.              (line 23)
+* xf:                                    chapter.              (line 24)
+* xftable xitem:                         chapter.              (line 28)
 
 * Menu:
 
-* Copying this document:                 chapter.              (line 27)
-* ftable item:                           chapter.              (line 31)
-* fun:                                   chapter.              (line 27)
-* xf:                                    chapter.              (line 28)
-* xftable xitem:                         chapter.              (line 32)
+* Copying this document:                 chapter.              (line 23)
+* ftable item:                           chapter.              (line 27)
+* fun:                                   chapter.              (line 23)
+* xf:                                    chapter.              (line 24)
+* xftable xitem:                         chapter.              (line 28)
 
 ';
 

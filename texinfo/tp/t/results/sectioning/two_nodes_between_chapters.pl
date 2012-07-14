@@ -1235,12 +1235,6 @@ element: @chapter chapter c2
 $result_converted{'plaintext'}->{'two_nodes_between_chapters'} = 'top
 ***
 
-* Menu:
-
-* chapter 1::
-* node between chapters::
-* chapter 2::
-
 1 chapter c1
 ************
 

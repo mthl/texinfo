@@ -1038,10 +1038,6 @@ A(1)
 
    B(2)
 
-* Menu:
-
-* chapter::
-
    ---------- Footnotes ----------
 
    (1) Footnote Top/1

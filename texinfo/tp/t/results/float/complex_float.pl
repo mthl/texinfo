@@ -5275,9 +5275,6 @@ A list of floats at the beginning.
                                          An example of float ...
 
    After the listoffloats.
-* Menu:
-
-* chapter::
 
 An example of float ...
 

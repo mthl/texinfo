@@ -2958,11 +2958,6 @@ $result_converted{'plaintext'}->{'ref_in_sectioning'} = 'for example *note node:
 for example *note node:: (*note node::) (*note (file)Top::)
 ***********************************************************
 
-* Menu:
-
-* node::
-* chap::
-
 1 *Note title: (file name)node.
 *******************************
 
