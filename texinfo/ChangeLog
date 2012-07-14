@@ -1,3 +1,9 @@
+2012-07-14  Andreas Schwab  <schwab@linux-m68k.org>
+
+	* info/info-utils.c (text_buffer_vprintf): Create a copy of `ap' in
+	the loop to avoid use after destruction.
+	Report from Patrice, 13 Jul 2012 23:31:10.
+
 2012-07-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (HTML Xref Command Expansion): Clarify/unify

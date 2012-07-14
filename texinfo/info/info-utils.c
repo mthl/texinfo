@@ -1,7 +1,7 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.18 2012-04-12 10:38:28 gray Exp $
+   $Id: info-utils.c,v 1.19 2012-07-14 22:41:02 karl Exp $
 
-   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011
+   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -782,7 +782,8 @@ size_t
 text_buffer_vprintf (struct text_buffer *buf, const char *format, va_list ap)
 {
   ssize_t n;
-  
+  va_list ap_copy;
+
   if (!buf->base)
     {
       if (buf->size == 0)
@@ -793,8 +794,10 @@ text_buffer_vprintf (struct text_buffer *buf, const char *format, va_list ap)
   
   for (;;)
     {
+      va_copy (ap_copy, ap);
       n = vsnprintf (buf->base + buf->off, buf->size - buf->off,
-		     format, ap);
+		     format, ap_copy);
+      va_end (ap_copy);
       if (n < 0 || buf->off + n >= buf->size ||
 	  !memchr (buf->base + buf->off, '\0', buf->size - buf->off + 1))
 	{
