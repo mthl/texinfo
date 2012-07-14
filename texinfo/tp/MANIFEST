@@ -248,6 +248,7 @@ t/results/columnfractions/something_before_columnfractions.pl
 t/results/columnfractions/wrong_command.pl
 t/results/conditionals/additional_space_in_end_conditional.pl
 t/results/conditionals/additional_space_in_end_conditional_expanded.pl
+t/results/conditionals/command_conditionals.pl
 t/results/conditionals/commands_in_ifset.pl
 t/results/conditionals/conditional_not_closed.pl
 t/results/conditionals/consecutive_conditionals.pl
@@ -311,7 +312,7 @@ t/results/converters_tests/at_commands_in_refs_latin1/res_html/i-E-C.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/index.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/indicateurl.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_html/sansserif-slanted.html
-t/results/converters_tests/at_commands_in_refs_latin1/res_html/the-someone-no_005fexplain_0040there.html
+t/results/converters_tests/at_commands_in_refs_latin1/res_html/someone_0040somewher-no_005fexplain_0040there.html
 t/results/converters_tests/at_commands_in_refs_latin1/res_info/at_commands_in_refs_latin1.info
 t/results/converters_tests/at_commands_in_refs_utf8.pl
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/----_0021---_002e--_002e-_003f-_0040.html
@@ -340,7 +341,7 @@ t/results/converters_tests/at_commands_in_refs_utf8/res_html/i-E-C.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/index.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/indicateurl.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/sansserif-slanted.html
-t/results/converters_tests/at_commands_in_refs_utf8/res_html/the-someone-no_005fexplain_0040there.html
+t/results/converters_tests/at_commands_in_refs_utf8/res_html/someone_0040somewher-no_005fexplain_0040there.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_info/at_commands_in_refs_utf8.info
 t/results/converters_tests/char_latin1_latin1_in_refs.pl
 t/results/converters_tests/char_latin1_latin1_in_refs/res_html/a-e-i-o-u-A-E-I-O-U.html
@@ -907,6 +908,7 @@ t/results/misc_commands/definfoenclose.pl
 t/results/misc_commands/definfoenclose_with_empty_arg.pl
 t/results/misc_commands/double_exdent.pl
 t/results/misc_commands/empty_center.pl
+t/results/misc_commands/empty_center_with_arg.pl
 t/results/misc_commands/empty_documentencoding.pl
 t/results/misc_commands/footnote_in_center.pl
 t/results/misc_commands/indent_in_quotation.pl
@@ -1022,8 +1024,10 @@ t/results/preformatted/comments_in_example.pl
 t/results/preformatted/def_in_example.pl
 t/results/preformatted/empty_line.pl
 t/results/preformatted/empty_line_style_command.pl
+t/results/preformatted/insertcopying_in_example.pl
 t/results/preformatted/nested_example_and_comment.pl
 t/results/preformatted/nested_formats.pl
+t/results/preformatted/page_in_example.pl
 t/results/preformatted/quote_dash_in_display.pl
 t/results/preformatted/quote_dash_in_example.pl
 t/results/preformatted/text_on_command_line.pl
@@ -1102,6 +1106,7 @@ t/results/sectioning/empty_node.pl
 t/results/sectioning/empty_nodes_with_commands.pl
 t/results/sectioning/empty_refs.pl
 t/results/sectioning/empty_top_node_up.pl
+t/results/sectioning/equivalent_labels.pl
 t/results/sectioning/equivalent_nodes.pl
 t/results/sectioning/explicit_node_directions.pl
 t/results/sectioning/hole_in_sectioning.pl
