@@ -1126,4 +1126,38 @@ $result_converted_errors{'html'}->{'double_node_anchor_float'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'double_node_anchor_float'} = '<node name="node1"><nodename>node1</nodename></node>
+
+<node name=""><nodename></nodename></node>
+
+<anchor name="">node1</anchor>
+<anchor name="anchor1">anchor1</anchor>
+<node name=""><nodename></nodename></node>
+
+<float type="Text"><floattype>Text</floattype><floatname>node1</floatname>
+</float>
+
+<float type="Text"><floattype>Text</floattype><floatname>anchor1</floatname>
+</float>
+
+<float name="float1" type="Text"><floattype>Text</floattype><floatname>float1</floatname>
+</float>
+
+<node name=""><nodename></nodename></node>
+';
+
+
+$result_converted{'docbook'}->{'double_node_anchor_float'} = '<anchor id="node1"/>
+
+
+
+<anchor id="anchor1"/>
+
+
+
+<anchor id="float1"/>
+
+';
+
 1;

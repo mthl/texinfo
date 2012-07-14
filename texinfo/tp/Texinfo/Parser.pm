@@ -3388,8 +3388,10 @@ sub _register_extra_menu_entry_information($$;$)
     } elsif ($arg->{'type'} eq 'menu_entry_node') {
       $self->_isolate_last_space($arg, 'space_at_end_menu_node');
       my $parsed_entry_node = _parse_node_manual($arg);
-      if (! defined($parsed_entry_node) and $self->{'SHOW_MENU'}) {
-        $self->line_error ($self->__("Empty node in menu entry"), $line_nr);
+      if (! defined($parsed_entry_node)) {
+        if ($self->{'SHOW_MENU'}) {
+          $self->line_error ($self->__("Empty node in menu entry"), $line_nr);
+        }
       } else {
         $current->{'extra'}->{'menu_entry_node'} = $parsed_entry_node;
       }
@@ -4501,17 +4503,21 @@ sub _parse_texi($;$)
                 push @{$self->{'info'}->{'dircategory_direntry'}}, $block
                   if ($command eq 'direntry');
                 if ($self->{'current_node'}) {
-                  if ($command eq 'direntry' and $self->{'SHOW_MENU'}) {
-                    $self->line_warn ($self->__("\@direntry after first node"),
-                              $line_nr);
+                  if ($command eq 'direntry') {
+                    if ($self->{'SHOW_MENU'}) {
+                      $self->line_warn ($self->__("\@direntry after first node"),
+                                $line_nr);
+                    }
                   } elsif ($command eq 'menu') {
                     push @{$self->{'current_node'}->{'menus'}}, $current;
                   }
-                } elsif ($command ne 'direntry' and $self->{'SHOW_MENU'}) {
-                  $self->line_error (sprintf($self->__("\@%s seen before first \@node"), 
-                                              $command), $line_nr);
-                  $self->line_error ($self->__("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), 
-                                $line_nr, 1);
+                } elsif ($command ne 'direntry') {
+                  if ($self->{'SHOW_MENU'}) {
+                    $self->line_error (sprintf($self->__("\@%s seen before first \@node"), 
+                                                $command), $line_nr);
+                    $self->line_error ($self->__("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), 
+                                  $line_nr, 1);
+                  }
                   if ($command eq 'menu') {
                     push @{$self->{'info'}->{'unassociated_menus'}}, $current;
                   }

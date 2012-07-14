@@ -5253,9 +5253,14 @@ sub _set_pages_files($$)
               }
             } else {
               # when everything else has failed
-              my $filename = $self->{'document_name'} . "_$file_nr";
-              $filename .= $extension;
-              $self->_set_element_file($element, $filename);
+              if ($file_nr == 0 and !$node_top 
+                  and defined($top_node_filename)) {
+                $self->_set_element_file($file_element, $top_node_filename);
+              } else {
+                my $filename = $self->{'document_name'} . "_$file_nr";
+                $filename .= $extension;
+                $self->_set_element_file($element, $filename);
+              }
               $file_nr++;
             }
           }

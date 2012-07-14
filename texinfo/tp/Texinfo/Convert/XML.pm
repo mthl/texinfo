@@ -534,7 +534,13 @@ sub _convert($$;$)
         return "<$command${attribute}>$arg</$command>$end_line";
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
-          $result .= "<node name=\"$root->{'extra'}->{'normalized'}\">";
+          my $nodename;
+          if (defined($root->{'extra'}->{'normalized'})) {
+            $nodename = $root->{'extra'}->{'normalized'};
+          } else {
+            $nodename = '';
+          }
+          $result .= "<node name=\"$nodename\">";
           $self->{'document_context'}->[-1]->{'code'}++;
           $result .= "<nodename>".
              $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
@@ -720,8 +726,14 @@ sub _convert($$;$)
         $attribute = " delimiter=\"".$self->xml_protect_text($root->{'type'})
                        ."\"";
       } elsif ($root->{'cmdname'} eq 'anchor') {
-        $attribute = " name=\"$root->{'extra'}->{'normalized'}\"";
-      };
+        my $anchor_name;
+        if (defined($root->{'extra'}->{'normalized'})) {
+          $anchor_name = $root->{'extra'}->{'normalized'};
+        } else {
+          $anchor_name = '';
+        }
+        $attribute = " name=\"$anchor_name\"";
+      }
       my $arg_index = 0;
       foreach my $element (@elements) {
         if (defined($root->{'args'}->[$arg_index])) {

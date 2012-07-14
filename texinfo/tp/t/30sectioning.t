@@ -1867,13 +1867,18 @@ my @xml_tests_info_tests = ('part_chapter_after_top',
   'more_nodes_than_sections', 'part_node_chapter_appendix',
   'part_node_part_appendix', 'part_node_chapter_node_appendix',
   'part_node_part_node_appendix', 'part_node_node_part_appendix',
-  'explicit_node_directions', 'nodes_after_top_before_chapter_nodes');
+  'explicit_node_directions', 'nodes_after_top_before_chapter_nodes',
+  'double_node_anchor_float');
+
+my @docbook_tests_info_tests = ('double_node_anchor_float');
 
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';
   push @{$test->[2]->{'test_formats'}}, 'html';
   push @{$test->[2]->{'test_formats'}}, 'xml' 
     if (grep {$_ eq $test->[0]} @xml_tests_info_tests);
+  push @{$test->[2]->{'test_formats'}}, 'docbook'
+    if (grep {$_ eq $test->[0]} @docbook_tests_info_tests);
 }
 
 my @xml_tests_cases_tests = ('part_before_section', 

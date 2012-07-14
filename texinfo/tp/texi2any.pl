@@ -707,7 +707,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
  'headers!' => sub { set_from_cmdline('HEADERS', $_[1]);
                      set_from_cmdline('SHOW_MENU', $_[1]);
                      $format = 'plaintext' if (!$_[1] and $format eq 'info'); },
- 'output|out|o=s' => sub { 
+ 'output|out|o=s' => sub {
     my $var = 'OUTFILE';
     if ($_[1] =~ m:/$: or -d $_[1]) {
       $var = 'SUBDIR';

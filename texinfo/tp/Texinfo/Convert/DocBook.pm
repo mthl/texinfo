@@ -599,11 +599,16 @@ sub _convert($$;$)
         }
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
-          if (!$root->{'extra'} or !$root->{'extra'}->{'associated_section'}) {
+          if ($root->{'extra'} and !$root->{'extra'}->{'associated_section'}
+              and defined($root->{'extra'}->{'normalized'})) {
             $result .= "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>\n";
           }
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
           my $attribute;
+          # FIXME it is not clear that a label should be set for
+          # @appendix* or @chapter/@*section as the formatter should be
+          # able to figure it out.  For @unnumbered or if ! NUMBER_SECTIONS
+          # having a label (empty) is important.
           my $label = '';
           if (defined($root->{'number'})
             and ($self->get_conf('NUMBER_SECTIONS')
@@ -732,7 +737,11 @@ sub _convert($$;$)
         }
         return $result;
       } elsif ($root->{'cmdname'} eq 'anchor') {
-        return "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>";
+        if ($root->{'extra'} and defined($root->{'extra'}->{'normalized'})) {
+          return "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>";
+        } else {
+          return '';
+        }
       } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
         if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
           if ($root->{'cmdname'} eq 'inforef') {
