@@ -82,7 +82,7 @@ $result_trees{'bad_formal_arg'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'bad-space',
+          'text' => 'badspace',
           'type' => 'macro_name'
         },
         {
@@ -111,7 +111,7 @@ $result_trees{'bad_formal_arg'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' bad-space{first, in 2arg}
+        'arg_line' => ' badspace{first, in 2arg}
 ',
         'args_index' => {
           'first' => 0,
@@ -147,7 +147,7 @@ $result_trees{'bad_formal_arg'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'bar',
+          'text' => 'abar',
           'type' => 'macro_name'
         },
         {
@@ -196,7 +196,7 @@ $result_trees{'bad_formal_arg'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' bar {:::}
+        'arg_line' => ' abar {:::}
 ',
         'args_index' => {
           ':::' => 0
@@ -263,11 +263,11 @@ $result_texis{'bad_formal_arg'} = '
 in bad macro
 @end macro
 
-@macro bad-space{first, in 2arg}
+@macro badspace{first, in 2arg}
 bad space
 @end macro
 
-@macro bar {:::}
+@macro abar {:::}
 in bar
 @macro foo {? aaa}
 in macro foo

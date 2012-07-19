@@ -8,7 +8,7 @@ my @test_cases = (
 in foo
 @end macro
 
-@macro bar
+@macro abar
 in bar
 @end macro'],
 ['text_before_after',
@@ -17,12 +17,12 @@ in macro
 @end macro after
 '],
 ['no_macrobody',
-'@macro no-macrobody {arg}
+'@macro nomacrobody {arg}
 @end macro
 
-@no-macrobody line arg
+@nomacrobody line arg
 
-@no-macrobody{arg brace}.
+@nomacrobody{arg brace}.
 '],
 ['empty_macro_no_arg',
 '@macro foo
@@ -38,10 +38,10 @@ in macro
 
  This.@texnl  It.
 
-@macro texnl2
+@macro texnltwo
 @end macro
 
-This 2 see.@texnl2  A.
+This 2 see.@texnltwo  A.
 '],
 ['empty_end','@macro foo {aaa, }
 in foo
@@ -50,11 +50,11 @@ in foo
 in macro
 @end macro
 
-@rmacro bar aaa
+@rmacro abar aaa
 in
 @end rmacro
 
-@macro after-name {ggg} more
+@macro aftername {ggg} more
 in macro
 @end macro
 '],
@@ -63,17 +63,35 @@ in macro
 In macro
 @end macro
 '],
+['macro_name_with_hyphen',
+'@macro macro-one {arg-one, arg2}
+This \arg-one\ and that \arg2\.
+@end macro
+
+@macro-one{blah, @code{bli-bli}}
+'],
+['macro_name_with_digit',
+'@macro macro1
+macro1
+@end macro
+
+@macro macro11 {arg}
+expand \arg\
+@end macro
+
+@macro11 some thing @macro1{}
+'],
 ['bad_formal_arg',
 '
 @macro bad  { , not_empty}
 in bad macro
 @end macro
 
-@macro bad-space{first, in 2arg}
+@macro badspace{first, in 2arg}
 bad space
 @end macro
 
-@macro bar {:::}
+@macro abar {:::}
 in bar
 @macro foo {? aaa}
 in macro foo
@@ -88,25 +106,25 @@ in macro foo
 @end macro
 '],
 ['macro_no_arg_expansion',
-'@macro test1
+'@macro testone
 res1
 @end macro
 
-@test1{} abc
+@testone{} abc
 '],
 ['macro_no_arg_bad_expansion',
-'@macro test1
+'@macro testone
 res1
 @end macro
 
-@test1 abc
+@testone abc
 '],
 ['macro_one_arg_end_of_file',
-'@macro one-arg{arg}
+'@macro onearg{arg}
 Arg \arg\.
 @end macro
 
-@one-arg'],
+@onearg'],
 ['too_much_args',
 '@macro twoargs {first, second}
 first arg: \first\
@@ -116,24 +134,24 @@ second arg: \second\
 @twoargs{one, two, three}.
 '],
 ['macro_expansion','
-@macro macro1 {arg1, arg2 }
+@macro macroone {arg1, arg2 }
 result of a macro with \arg1\ and 
 @verbatim
 \arg2\
 @end verbatim
 @end macro
 
-2 simple args. @macro1 {first arg, second arg}.
+2 simple args. @macroone {first arg, second arg}.
 
-comma in command. @macro1{aaa @samp{a macro , } bbb}.
+comma in command. @macroone{aaa @samp{a macro , } bbb}.
 
-call on the line. @macro1 my arg.
+call on the line. @macroone my arg.
 
-recursive call. @macro1{first arg, @macro1{nested second arg}}.
+recursive call. @macroone{first arg, @macroone{nested second arg}}.
 
-protect stuff. @macro1{first \, arg, \{\} \\\\ }.
+protect stuff. @macroone{first \, arg, \{\} \\\\ }.
 
-multi-line arg. @macro1{arg 1
+multi-line arg. @macroone{arg 1
 
 now, arg3
 
@@ -167,16 +185,16 @@ in macro
 ['macro_no_argument',
 '@macro'],
 ['expand_two_same',
-'@macro macro2 { arg }
+'@macro macrotwo { arg }
 With a doubles arg \arg\ and re \arg\
 
 @end macro
 Call macro2
-@macro2 { a simple @code{
+@macrotwo { a simple @code{
 arg}
 }
 Call macro2 with 2 args
-@macro2 { arg with comma , here }
+@macrotwo { arg with comma , here }
 '],
 ['macro_zero',
 '@macro zero
@@ -187,25 +205,25 @@ Macro
 @zero{}
 '],
 ['protect_in_body',
-'@macro macro1 { arg1 , arg2 }
+'@macro macroone { arg1 , arg2 }
 result: @emph{\arg1\} protected \\\\ -> \\\\arg1\\\\ @emph{\arg2\}
 @end macro
 
-the @macro1 { @samp{f\irst arg}, second arg } after macro.
+the @macroone { @samp{f\irst arg}, second arg } after macro.
 '],
 ['protect_in_body_one_arg',
-'@macro macro1 { arg1 , arg2 }
+'@macro macroone { arg1 , arg2 }
 result: @emph{\arg1\} protected \\\\ -> \\\\arg1\\\\ @emph{\arg2\}
 @end macro
 
-@macro1 { @samp{f\irst arg}}
+@macroone { @samp{f\irst arg}}
 '],
 ['protect_in_body_line_arg',
-'@macro macro1 { arg1 , arg2 }
+'@macro macroone { arg1 , arg2 }
 result: @emph{\arg1\} protected \\\\ -> \\\\arg1\\\\ @emph{\arg2\}
 @end macro
 
-@macro1 @samp{f\irst arg}, second arg
+@macroone @samp{f\irst arg}, second arg
 '],
 ['backslash_in_arg',
 '@node Top
@@ -221,20 +239,20 @@ result: @emph{\arg1\} protected \\\\ -> \\\\arg1\\\\ @emph{\arg2\}
 @printindex fn
 '],
 ['protect_comma_macro_line',
-'@macro macro2 { arg }
+'@macro macrotwo { arg }
 we get \arg\ and another \arg\
 and another one on another line \arg\
 
 and a last in another paragraph
 @end macro
 
-@macro2  arg,  comma \,
+@macrotwo  arg,  comma \,
 '],
 ['paragraph_and_macro',
-'@macro empty
+'@macro aempty
 @end macro
 
-@macro space
+@macro aspace
    
 @end macro
 
@@ -242,41 +260,41 @@ and a last in another paragraph
 a word
 @end macro
 
-@empty{}
+@aempty{}
 
-  @empty{}  
+  @aempty{}  
 
-@empty{} text after empty.
+@aempty{} text after empty.
 
-@space{}
+@aspace{}
 
-  @space{}  
+  @aspace{}  
 
-@space{} text after space.
+@aspace{} text after space.
 '],
 ['macro_in_end_argument',
-'@macro a-cartouche
+'@macro acartouche
 cartouche
 @end macro
 
 @cartouche
-@end @a-cartouche{}
+@end @acartouche{}
 '],
 ['macro_for_end',
-'@macro my-end
+'@macro myend
 @end
 @end macro
 
 @cartouche
-@my-end{} cartouche
+@myend{} cartouche
 '],
 ['complete_macro_for_end',
-'@macro the-end
+'@macro theend
 @end cartouche
 @end macro
 
 @cartouche
-@the-end{}'],
+@theend{}'],
 ['space_macro_after_end',
 '@macro spaces
   
@@ -295,11 +313,11 @@ in verbatim
 @end verbatim @spaces{}'],
 ['macro_in_menu',
 '
-@macro star
+@macro astar
 *
 @end macro
 
-@macro star-spaces
+@macro starspaces
 * 
 @end macro
 
@@ -307,50 +325,50 @@ in verbatim
   
 @end macro
 
-@macro space
+@macro aspace
  
 @end macro
 
-@macro two-colon
+@macro twocolon
 ::
 @end macro
 
-@macro colon
+@macro acolon
 :
 @end macro
 
 @menu
-@star-spaces{}menu entry@two-colon{} description
+@starspaces{}menu entry@twocolon{} description
 @spaces{}
 menu comment
-@star{} node::
-@star{}@space{}other node::
-* node colon macro@colon{}@colon{}@space{}description
-* 3rd node: entry.@space{}description
+@astar{} node::
+@astar{}@aspace{}other node::
+* node colon macro@acolon{}@acolon{}@aspace{}description
+* 3rd node: entry.@aspace{}description
 @end menu
 '],
 ['macro_in_accent',
-'@macro a-letter
+'@macro aletter
 a
 @end macro
 
-@macro space
+@macro aspace
   
 @end macro
 
-@ringaccent @a-letter{}.
-@ringaccent@a-letter{}.
-@~@a-letter{}.
-@~{@a-letter{}}.
+@ringaccent @aletter{}.
+@ringaccent@aletter{}.
+@~@aletter{}.
+@~{@aletter{}}.
 
-@ringaccent@space{}@a-letter{}.
+@ringaccent@aspace{}@aletter{}.
 '],
 ['macro_for_ignored_line_command',
-'@macro page-macro
+'@macro pagemacro
 @page
 @end macro
 
-@page-macro{} on the line
+@pagemacro{} on the line
 '],
 ['nested_macro_call',
 '@macro machin{}
@@ -369,7 +387,7 @@ Before @truc{} after truc.
 in mymacro
 @end macro
 
-@macro mymacro-with-args{arg}
+@macro mymacrowithargs{arg}
 in with args
 now the arg \arg\
 after
@@ -386,7 +404,7 @@ after
 @mymacro{} @mymacro
 
 with args
-@mymacro-with-args {an
+@mymacrowithargs {an
 arg
 
 in macro} @mymacro{}
@@ -404,89 +422,89 @@ bidule.
 @bidule{}
 '],
 ['macro_in_macro_arg','
-@macro macro1
-a, @macro2
+@macro macroone
+a, @macrotwo
 @end macro
 
-@macro macro2{arg}
+@macro macrotwo{arg}
 hello \arg\ after arg
 @end macro
 
-@macro macro3{text, arg}
+@macro macrothree{text, arg}
 \text\
 &&&& \arg\
 @end macro
 
-@macro3{@macro1{}text for macro2}
+@macrothree{@macroone{}text for macro2}
 '],
 ['macro_in_macro_arg_simpler',
-'@macro macro11
+'@macro macrooneone
 a, macro2
 @end macro
 
-@macro macro3{text, arg}
+@macro macrothree{text, arg}
 \text\
 &&&& \arg\
 @end macro
 
-@macro3{@macro11{}text for macro2}
+@macrothree{@macrooneone{}text for macro2}
 '],
 ['macro_in_brace_command',
 '@macro foo
 foo-expansion
 @end macro
 
-@macro bar
+@macro abar
 bar-expansion
 @end macro
 
 @itemize @bullet
-@item @email{@foo{}@@@bar{}},
+@item @email{@foo{}@@@abar{}},
   also helped.
 @end itemize
 '],
 ['complex_argument',
-'@macro macro2{arg}
+'@macro macrotwo{arg}
 coucou \arg\ after arg
 @end macro
 
-@macro macro4 {}
+@macro macrofour {}
 1
 2
 3
 4
 @end macro
 
-@macro macro3{text, arg}
+@macro macrothree{text, arg}
 \text\
 &&&& \arg\
 @end macro
 
-@macro3{@verb{% @macro2 %}
-@c @macro4
-@pagesizes 4 @macro4{}
-@headings doubleafter @macro4{}
+@macrothree{@verb{% @macrotwo %}
+@c @macrofour
+@pagesizes 4 @macrofour{}
+@headings doubleafter @macrofour{}
 @verbatim
-@macro2
+@macrotwo
 @end verbatim
 @ignore
-@macro4
+@macrofour
 @end ignore
-@macro macro7 {truc}
+@macro macroseven {truc}
 @emph{\\\\truc\\\\}
 @end macro
-macro7 defined
+macroseven defined
 @ifinfo
-@macro4
+@macrofour
 @end ifinfo
 @iftex
-@macro2{aa\,bb}
+@macrotwo{aa\,bb}
 @end iftex
-@macro4{}
+@macrofour{}
 }
 
-Call macro7
-@macro7{aaa}
+Call macroseven
+@macroseven{aaa}
 
 '],
 ['expansion_order',
@@ -513,22 +531,22 @@ arg
 }
 '],
 ['macro_in_ifset',
-'@macro macro1 {arg}
+'@macro macroone {arg}
 @end ifset
 @end macro
 
 @ifset a
-@macro1
+@macroone
 in ifset
 @end ifset
 '],
 ['macro_in_ifset_end_in_arg',
-'@macro macro1 {arg}
+'@macro macroone {arg}
 @end ifset
 @end macro
 
 @ifset a
-@macro1{
+@macroone{
 @end ifset
 }
 in ifset
@@ -594,12 +612,12 @@ cp
 @macro fn 
 fn
 @end macro
-@macro syncodeindex-command 
+@macro syncodeindexcommand 
 @syncodeindex
 @end macro
 
 @syncodeindex @cp{} @fn{}
-@syncodeindex-command{} cp fn
+@syncodeindexcommand{} cp fn
 
 @macro truc 
 truc
@@ -609,7 +627,7 @@ definedx truc
 @defindex @truc{}
 after
 
-@macro trucindex-command 
+@macro trucindexcommand 
 @trucindex
 @end macro
 
@@ -619,15 +637,15 @@ codeidx
 
 @defcodeindex @codeidx{}
 
-@macro defcodeindex-entry 
+@macro defcodeindexentry 
 a @var{index entry} t@\'e @^{@dotless{i}}
 @end macro
 
 @node Top
 
-@trucindex-command{} index truc
+@trucindexcommand{} index truc
 
-@codeidxindex @defcodeindex-entry{}
+@codeidxindex @defcodeindexentry{}
 
 @kindex @truc{} kindex
 @pindex pindex @codeidx{}
@@ -664,75 +682,75 @@ Text line followed by a comment on the same line and another below @c comment @t
 @macro en 
 en
 @end macro
-@macro documentlanguage-command 
+@macro documentlanguagecommand 
 @documentlanguage
 @end macro
 
 documentlanguage @documentlanguage  @en{}
 
 documentlanguage on its line
-@documentlanguage-command{}  en
+@documentlanguagecommand{}  en
 line following documentlanguage
 
-@macro pagesizes-arg
+@macro pagesizesarg
 200mm,150mm
 @end macro
 
-@macro afourpaper-macro 
+@macro afourpapermacro 
 @afourpaper
 @end macro
 
-@pagesizes @pagesizes-arg{}
-@afourpaper-macro{}
+@pagesizes @pagesizesarg{}
+@afourpapermacro{}
 @headings on line following headings @text{}
 @oddfooting some text ignored @text{}
 @everyheading on line following everyheading @text{}
 
-@macro need-arg
+@macro needarg
 0.1
 @end macro
 
-@need @need-arg{}
+@need @needarg{}
 
-@macro raisesections-macro 
+@macro raisesectionsmacro 
 @raisesections
 @end macro
-@raisesections-macro{}
-@macro lowersections-macro 
+@raisesectionsmacro{}
+@macro lowersectionsmacro 
 @lowersections
 @end macro
-@lowersections-macro{}
+@lowersectionsmacro{}
 
 @@definfoenclose phoo,//,\\\\  @definfoenclose phoo,//,\\\\
 
 @phoo{bar}
 
-@macro definfoenclose-name 
+@macro definfoenclosename 
 phi
 @end macro
-@definfoenclose @definfoenclose-name{},:,:
+@definfoenclose @definfoenclosename{},:,:
 
 @phi{bar}
 
-@macro strong-macro 
+@macro strongmacro 
 @strong
 @end macro
-@macro strong-name 
+@macro strongname 
 strong
 @end macro
 
-@strong-macro{}{very strong}
+@strongmacro{}{very strong}
 
-@definfoenclose @strong-name{},(@strong-name{}:,:)
+@definfoenclose @strongname{},(@strongname{}:,:)
 
-@strong-macro{}{ is it really strong? }
+@strongmacro{}{ is it really strong? }
 
 @kbd{something before kbdinputstyle}
 
-@macro kbdinputstyle-arg 
+@macro kbdinputstylearg 
 code
 @end macro
-@kbdinputstyle @kbdinputstyle-arg{}
+@kbdinputstyle @kbdinputstylearg{}
 
 @kbd{truc}
 
@@ -740,13 +758,13 @@ code
 @kbd{example}
 @end example
 
-@macro asis-arg 
+@macro asisarg 
 asis
 @end macro
 @macro zero 
 0
 @end macro
-@macro none-arg 
+@macro nonearg 
 none
 @end macro
 @macro four 
@@ -756,30 +774,30 @@ none
 6
 @end macro
 
-@paragraphindent @asis-arg{}
+@paragraphindent @asisarg{}
 @paragraphindent @zero{}
-@paragraphindent @none-arg{}
+@paragraphindent @nonearg{}
 @paragraphindent @four{}
-@firstparagraphindent @none-arg{}
+@firstparagraphindent @nonearg{}
 @exampleindent @six{}
 
-@macro end-arg 
+@macro endarg 
 end
 @end macro
-@macro separate-arg 
+@macro separatearg 
 separate 
 @end macro
-@footnotestyle @end-arg{}
-@footnotestyle @separate-arg{}
+@footnotestyle @endarg{}
+@footnotestyle @separatearg{}
 
-@macro on-arg 
+@macro onarg 
 on
 @end macro
-@macro off-arg 
+@macro offarg 
 off
 @end macro
-@frenchspacing @on-arg{}
-@frenchspacing @off-arg{}
+@frenchspacing @onarg{}
+@frenchspacing @offarg{}
 
 @c accepts 10 or 11
 @macro ten 
@@ -787,67 +805,67 @@ off
 @end macro
 @fonttextsize @ten{}
 @c accept false or true
-@macro false-arg 
+@macro falsearg 
 false
 @end macro
-@macro true-arg
+@macro truearg
 true
 @end macro
-@allowcodebreaks @false-arg{}
+@allowcodebreaks @falsearg{}
 
-@allowcodebreaks @true-arg{}
+@allowcodebreaks @truearg{}
 
-@macro page-macro 
+@macro pagemacro 
 @page
 @end macro
-@macro noindent-macro 
+@macro noindentmacro 
 @noindent
 @end macro
-@macro refill-macro 
+@macro refillmacro 
 @refill
 @end macro
 
-@@page @page-macro{} on page line
-@@noindent @noindent-macro{} @@refill @refill-macro{} something
+@@page @pagemacro{} on page line
+@@noindent @noindentmacro{} @@refill @refillmacro{} something
 
-@noindent-macro{}     noindent at beginning of line
-@noindent-macro{}
+@noindentmacro{}     noindent at beginning of line
+@noindentmacro{}
 noindent on the preceding line
-  @noindent-macro{}    noindent after space at beginning of line
-@page-macro{}         page at beginning of line
-@page-macro{}
+  @noindentmacro{}    noindent after space at beginning of line
+@pagemacro{}         page at beginning of line
+@pagemacro{}
 After page on its own line.
 
-@@page @page-macro{}
-two spaces   @@noindent @noindent-macro{}    @@refill @refill-macro{}
+@@page @pagemacro{}
+two spaces   @@noindent @noindentmacro{}    @@refill @refillmacro{}
 
-@macro contents-macro 
+@macro contentsmacro 
 @contents
 @end macro
-@contents-macro{}
+@contentsmacro{}
 
 @vskip @atext{}
 
-@macro cropmarks-macro
+@macro cropmarksmacro
 @cropmarks
 @end macro
-@cropmarks-macro{}
+@cropmarksmacro{}
 
-@macro exdent-macro 
+@macro exdentmacro 
 @exdent
 @end macro
-@exdent-macro{} line after exdent
+@exdentmacro{} line after exdent
 
 @macro two 
 2
 @end macro
 @sp @two{}
 
-@macro result-macro 
+@macro resultmacro 
 @result
 @end macro
 
-@clickstyle @result-macro{}
+@clickstyle @resultmacro{}
 
 @menu
 * node @text{}::
@@ -856,45 +874,45 @@ two spaces   @@noindent @noindent-macro{}    @@refill @refill-macro{}
 @node node @text{}
 @chapter chapter
 
-@contents-macro{}
+@contentsmacro{}
 
-@macro shortcontents-macro 
+@macro shortcontentsmacro 
 @shortcontents
 @end macro
-@shortcontents-macro{}
+@shortcontentsmacro{}
 
-@macro bye-macro
+@macro byemacro
 @bye
 @end macro
 
-@bye-macro{}
+@byemacro{}
 '],
 # this does not lead to a recursive call with the current implementation
 ['recursive_call_in_argument',
-'@macro norecurse{arg}
+'@macro anorecurse{arg}
 a
 @end macro
 
-@norecurse{@norecurse{}}
+@anorecurse{@anorecurse{}}
 '],
 ['recursive_call_in_macro',
-'@macro norecurse{arg}
-@norecurse{arg}
+'@macro anorecurse{arg}
+@anorecurse{arg}
 @end macro
 
-@norecurse{}
+@anorecurse{}
 '],
 ['double_recursive_macro_call',
 '
-@macro mac1 {arg}
-@mac2{}
+@macro macone {arg}
+@mactwo{}
 @end macro
 
-@macro mac2{arg}
-@mac1{}
+@macro mactwo{arg}
+@macone{}
 @end macro
 
-@mac2{}
+@mactwo{}
 '],
 ['unknown_macro_on_line_command',
 '@setfilename @begin{}file'

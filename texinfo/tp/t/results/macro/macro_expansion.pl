@@ -17,7 +17,7 @@ $result_trees{'macro_expansion'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro1',
+          'text' => 'macroone',
           'type' => 'macro_name'
         },
         {
@@ -64,7 +64,7 @@ $result_trees{'macro_expansion'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro1 {arg1, arg2 }
+        'arg_line' => ' macroone {arg1, arg2 }
 ',
         'args_index' => {
           'arg1' => 0,
@@ -131,7 +131,7 @@ $result_trees{'macro_expansion'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 9,
-        'macro' => 'macro1'
+        'macro' => 'macroone'
       },
       'parent' => {}
     },
@@ -176,7 +176,7 @@ $result_trees{'macro_expansion'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 11,
-            'macro' => 'macro1'
+            'macro' => 'macroone'
           },
           'parent' => {}
         },
@@ -211,7 +211,7 @@ $result_trees{'macro_expansion'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 11,
-        'macro' => 'macro1'
+        'macro' => 'macroone'
       },
       'parent' => {}
     },
@@ -265,7 +265,7 @@ $result_trees{'macro_expansion'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 13,
-        'macro' => 'macro1'
+        'macro' => 'macroone'
       },
       'parent' => {}
     },
@@ -319,7 +319,7 @@ $result_trees{'macro_expansion'} = {
         },
         {
           'parent' => {},
-          'text' => '@macro1{nested second arg}
+          'text' => '@macroone{nested second arg}
 ',
           'type' => 'raw'
         }
@@ -327,7 +327,7 @@ $result_trees{'macro_expansion'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 15,
-        'macro' => 'macro1'
+        'macro' => 'macroone'
       },
       'parent' => {}
     },
@@ -381,7 +381,7 @@ $result_trees{'macro_expansion'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 17,
-        'macro' => 'macro1'
+        'macro' => 'macroone'
       },
       'parent' => {}
     },
@@ -464,7 +464,7 @@ $result_trees{'macro_expansion'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 23,
-        'macro' => 'macro1'
+        'macro' => 'macroone'
       },
       'parent' => {}
     },
@@ -560,7 +560,7 @@ $result_trees{'macro_expansion'}{'contents'}[29]{'contents'}[0]{'parent'} = $res
 $result_trees{'macro_expansion'}{'contents'}[29]{'parent'} = $result_trees{'macro_expansion'};
 
 $result_texis{'macro_expansion'} = '
-@macro macro1 {arg1, arg2 }
+@macro macroone {arg1, arg2 }
 result of a macro with \\arg1\\ and 
 @verbatim
 \\arg2\\
@@ -584,7 +584,7 @@ call on the line. result of a macro with  and
 
 recursive call. result of a macro with first arg and 
 @verbatim
-@macro1{nested second arg}
+@macroone{nested second arg}
 @end verbatim.
 
 protect stuff. result of a macro with first , arg and 
@@ -617,7 +617,7 @@ call on the line. result of a macro with  and
 my arg.
 
 recursive call. result of a macro with first arg and 
-@macro1{nested second arg}
+@macroone{nested second arg}
 .
 
 protect stuff. result of a macro with first , arg and 
@@ -634,12 +634,12 @@ arg3
 
 $result_errors{'macro_expansion'} = [
   {
-    'error_line' => ':13: warning: @macro1 defined with zero or more than one argument should be invoked with {}
+    'error_line' => ':13: warning: @macroone defined with zero or more than one argument should be invoked with {}
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => '@macro1 defined with zero or more than one argument should be invoked with {}',
+    'text' => '@macroone defined with zero or more than one argument should be invoked with {}',
     'type' => 'warning'
   }
 ];

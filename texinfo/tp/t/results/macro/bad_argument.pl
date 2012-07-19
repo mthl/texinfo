@@ -55,7 +55,7 @@ $result_trees{'bad_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'bar',
+          'text' => 'abar',
           'type' => 'macro_name'
         }
       ],
@@ -74,7 +74,7 @@ $result_trees{'bad_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' bar aaa
+        'arg_line' => ' abar aaa
 ',
         'invalid_syntax' => 1,
         'macrobody' => 'in
@@ -106,7 +106,7 @@ $result_trees{'bad_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'after-name',
+          'text' => 'aftername',
           'type' => 'macro_name'
         },
         {
@@ -130,7 +130,7 @@ $result_trees{'bad_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' after-name {ggg} more
+        'arg_line' => ' aftername {ggg} more
 ',
         'args_index' => {
           'ggg' => 0
@@ -183,11 +183,11 @@ $result_texis{'bad_argument'} = '@macro
 in macro
 @end macro
 
-@rmacro bar aaa
+@rmacro abar aaa
 in
 @end rmacro
 
-@macro after-name {ggg} more
+@macro aftername {ggg} more
 in macro
 @end macro
 ';

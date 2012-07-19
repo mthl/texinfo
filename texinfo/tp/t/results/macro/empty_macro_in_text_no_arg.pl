@@ -70,14 +70,14 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'texnl2',
+          'text' => 'texnltwo',
           'type' => 'macro_name'
         }
       ],
       'cmdname' => 'macro',
       'contents' => [],
       'extra' => {
-        'arg_line' => ' texnl2
+        'arg_line' => ' texnltwo
 ',
         'macrobody' => ''
       },
@@ -139,7 +139,7 @@ $result_texis{'empty_macro_in_text_no_arg'} = '@macro texnl{}
 
  This.  It.
 
-@macro texnl2
+@macro texnltwo
 @end macro
 
 This 2 see.  A.

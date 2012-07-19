@@ -61,7 +61,7 @@ $result_trees{'zero_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'bar',
+          'text' => 'abar',
           'type' => 'macro_name'
         }
       ],
@@ -80,7 +80,7 @@ $result_trees{'zero_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' bar
+        'arg_line' => ' abar
 ',
         'macrobody' => 'in bar
 '
@@ -121,7 +121,7 @@ $result_texis{'zero_argument'} = '@macro foo {}
 in foo
 @end macro
 
-@macro bar
+@macro abar
 in bar
 @end macro';
 

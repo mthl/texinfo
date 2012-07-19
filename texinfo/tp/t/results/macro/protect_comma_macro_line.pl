@@ -11,7 +11,7 @@ $result_trees{'protect_comma_macro_line'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro2',
+          'text' => 'macrotwo',
           'type' => 'macro_name'
         },
         {
@@ -53,7 +53,7 @@ $result_trees{'protect_comma_macro_line'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro2 { arg }
+        'arg_line' => ' macrotwo { arg }
 ',
         'args_index' => {
           'arg' => 0
@@ -140,7 +140,7 @@ $result_trees{'protect_comma_macro_line'}{'contents'}[4]{'parent'} = $result_tre
 $result_trees{'protect_comma_macro_line'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[5];
 $result_trees{'protect_comma_macro_line'}{'contents'}[5]{'parent'} = $result_trees{'protect_comma_macro_line'};
 
-$result_texis{'protect_comma_macro_line'} = '@macro macro2 { arg }
+$result_texis{'protect_comma_macro_line'} = '@macro macrotwo { arg }
 we get \\arg\\ and another \\arg\\
 and another one on another line \\arg\\
 

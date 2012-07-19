@@ -17,7 +17,7 @@ $result_trees{'double_recursive_macro_call'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'mac1',
+          'text' => 'macone',
           'type' => 'macro_name'
         },
         {
@@ -30,7 +30,7 @@ $result_trees{'double_recursive_macro_call'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '@mac2{}',
+          'text' => '@mactwo{}',
           'type' => 'raw'
         },
         {
@@ -41,12 +41,12 @@ $result_trees{'double_recursive_macro_call'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' mac1 {arg}
+        'arg_line' => ' macone {arg}
 ',
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@mac2{}
+        'macrobody' => '@mactwo{}
 '
       },
       'line_nr' => {
@@ -75,7 +75,7 @@ $result_trees{'double_recursive_macro_call'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'mac2',
+          'text' => 'mactwo',
           'type' => 'macro_name'
         },
         {
@@ -88,7 +88,7 @@ $result_trees{'double_recursive_macro_call'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '@mac1{}',
+          'text' => '@macone{}',
           'type' => 'raw'
         },
         {
@@ -99,12 +99,12 @@ $result_trees{'double_recursive_macro_call'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' mac2{arg}
+        'arg_line' => ' mactwo{arg}
 ',
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@mac1{}
+        'macrobody' => '@macone{}
 '
       },
       'line_nr' => {
@@ -158,12 +158,12 @@ $result_trees{'double_recursive_macro_call'}{'contents'}[6]{'parent'} = $result_
 $result_trees{'double_recursive_macro_call'}{'contents'}[7]{'parent'} = $result_trees{'double_recursive_macro_call'};
 
 $result_texis{'double_recursive_macro_call'} = '
-@macro mac1 {arg}
-@mac2{}
+@macro macone {arg}
+@mactwo{}
 @end macro
 
-@macro mac2{arg}
-@mac1{}
+@macro mactwo{arg}
+@macone{}
 @end macro
 
 
@@ -178,12 +178,12 @@ $result_texts{'double_recursive_macro_call'} = '
 
 $result_errors{'double_recursive_macro_call'} = [
   {
-    'error_line' => ':10: Recursive call of macro mac2 is not allowed; use @rmacro if needed (possibly involving @mac1)
+    'error_line' => ':10: Recursive call of macro mactwo is not allowed; use @rmacro if needed (possibly involving @macone)
 ',
     'file_name' => '',
     'line_nr' => 10,
-    'macro' => 'mac1',
-    'text' => 'Recursive call of macro mac2 is not allowed; use @rmacro if needed',
+    'macro' => 'macone',
+    'text' => 'Recursive call of macro mactwo is not allowed; use @rmacro if needed',
     'type' => 'error'
   }
 ];

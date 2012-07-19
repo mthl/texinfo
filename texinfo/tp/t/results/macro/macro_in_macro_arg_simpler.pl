@@ -11,7 +11,7 @@ $result_trees{'macro_in_macro_arg_simpler'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro11',
+          'text' => 'macrooneone',
           'type' => 'macro_name'
         }
       ],
@@ -30,7 +30,7 @@ $result_trees{'macro_in_macro_arg_simpler'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro11
+        'arg_line' => ' macrooneone
 ',
         'macrobody' => 'a, macro2
 '
@@ -61,7 +61,7 @@ $result_trees{'macro_in_macro_arg_simpler'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro3',
+          'text' => 'macrothree',
           'type' => 'macro_name'
         },
         {
@@ -96,7 +96,7 @@ $result_trees{'macro_in_macro_arg_simpler'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro3{text, arg}
+        'arg_line' => ' macrothree{text, arg}
 ',
         'args_index' => {
           'arg' => 1,
@@ -168,11 +168,11 @@ $result_trees{'macro_in_macro_arg_simpler'}{'contents'}[6]{'contents'}[0]{'paren
 $result_trees{'macro_in_macro_arg_simpler'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'macro_in_macro_arg_simpler'}{'contents'}[6];
 $result_trees{'macro_in_macro_arg_simpler'}{'contents'}[6]{'parent'} = $result_trees{'macro_in_macro_arg_simpler'};
 
-$result_texis{'macro_in_macro_arg_simpler'} = '@macro macro11
+$result_texis{'macro_in_macro_arg_simpler'} = '@macro macrooneone
 a, macro2
 @end macro
 
-@macro macro3{text, arg}
+@macro macrothree{text, arg}
 \\text\\
 &&&& \\arg\\
 @end macro

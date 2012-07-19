@@ -11,7 +11,7 @@ $result_trees{'expand_two_same'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro2',
+          'text' => 'macrotwo',
           'type' => 'macro_name'
         },
         {
@@ -41,7 +41,7 @@ $result_trees{'expand_two_same'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro2 { arg }
+        'arg_line' => ' macrotwo { arg }
 ',
         'args_index' => {
           'arg' => 0
@@ -100,7 +100,7 @@ $result_trees{'expand_two_same'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 8,
-            'macro' => 'macro2'
+            'macro' => 'macrotwo'
           },
           'parent' => {}
         },
@@ -136,7 +136,7 @@ $result_trees{'expand_two_same'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 8,
-            'macro' => 'macro2'
+            'macro' => 'macrotwo'
           },
           'parent' => {}
         },
@@ -215,7 +215,7 @@ $result_trees{'expand_two_same'}{'contents'}[5]{'contents'}[1]{'parent'} = $resu
 $result_trees{'expand_two_same'}{'contents'}[5]{'parent'} = $result_trees{'expand_two_same'};
 $result_trees{'expand_two_same'}{'contents'}[6]{'parent'} = $result_trees{'expand_two_same'};
 
-$result_texis{'expand_two_same'} = '@macro macro2 { arg }
+$result_texis{'expand_two_same'} = '@macro macrotwo { arg }
 With a doubles arg \\arg\\ and re \\arg\\
 
 @end macro

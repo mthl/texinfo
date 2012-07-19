@@ -11,7 +11,7 @@ $result_trees{'protect_in_body_line_arg'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro1',
+          'text' => 'macroone',
           'type' => 'macro_name'
         },
         {
@@ -40,7 +40,7 @@ $result_trees{'protect_in_body_line_arg'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro1 { arg1 , arg2 }
+        'arg_line' => ' macroone { arg1 , arg2 }
 ',
         'args_index' => {
           'arg1' => 0,
@@ -90,7 +90,7 @@ $result_trees{'protect_in_body_line_arg'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 5,
-            'macro' => 'macro1'
+            'macro' => 'macroone'
           },
           'parent' => {}
         },
@@ -172,7 +172,7 @@ $result_trees{'protect_in_body_line_arg'}{'contents'}[3]{'contents'}[5]{'parent'
 $result_trees{'protect_in_body_line_arg'}{'contents'}[3]{'contents'}[6]{'parent'} = $result_trees{'protect_in_body_line_arg'}{'contents'}[3];
 $result_trees{'protect_in_body_line_arg'}{'contents'}[3]{'parent'} = $result_trees{'protect_in_body_line_arg'};
 
-$result_texis{'protect_in_body_line_arg'} = '@macro macro1 { arg1 , arg2 }
+$result_texis{'protect_in_body_line_arg'} = '@macro macroone { arg1 , arg2 }
 result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 @end macro
 
@@ -186,12 +186,12 @@ result:  protected \\ -> \\arg1\\  f\\irst arg, second arg
 
 $result_errors{'protect_in_body_line_arg'} = [
   {
-    'error_line' => ':5: warning: @macro1 defined with zero or more than one argument should be invoked with {}
+    'error_line' => ':5: warning: @macroone defined with zero or more than one argument should be invoked with {}
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@macro1 defined with zero or more than one argument should be invoked with {}',
+    'text' => '@macroone defined with zero or more than one argument should be invoked with {}',
     'type' => 'warning'
   }
 ];

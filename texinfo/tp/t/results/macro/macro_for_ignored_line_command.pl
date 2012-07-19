@@ -11,7 +11,7 @@ $result_trees{'macro_for_ignored_line_command'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'page-macro',
+          'text' => 'pagemacro',
           'type' => 'macro_name'
         }
       ],
@@ -30,7 +30,7 @@ $result_trees{'macro_for_ignored_line_command'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' page-macro
+        'arg_line' => ' pagemacro
 ',
         'macrobody' => '@page
 '
@@ -73,7 +73,7 @@ $result_trees{'macro_for_ignored_line_command'}{'contents'}[1]{'parent'} = $resu
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[2]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[3]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 
-$result_texis{'macro_for_ignored_line_command'} = '@macro page-macro
+$result_texis{'macro_for_ignored_line_command'} = '@macro pagemacro
 @page
 @end macro
 

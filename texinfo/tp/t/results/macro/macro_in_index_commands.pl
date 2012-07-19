@@ -101,7 +101,7 @@ $result_trees{'macro_in_index_commands'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'syncodeindex-command',
+              'text' => 'syncodeindexcommand',
               'type' => 'macro_name'
             }
           ],
@@ -120,7 +120,7 @@ $result_trees{'macro_in_index_commands'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' syncodeindex-command 
+            'arg_line' => ' syncodeindexcommand 
 ',
             'macrobody' => '@syncodeindex
 '
@@ -225,7 +225,7 @@ $result_trees{'macro_in_index_commands'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 12,
-            'macro' => 'syncodeindex-command'
+            'macro' => 'syncodeindexcommand'
           },
           'parent' => {}
         },
@@ -351,7 +351,7 @@ $result_trees{'macro_in_index_commands'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'trucindex-command',
+              'text' => 'trucindexcommand',
               'type' => 'macro_name'
             }
           ],
@@ -370,7 +370,7 @@ $result_trees{'macro_in_index_commands'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' trucindex-command 
+            'arg_line' => ' trucindexcommand 
 ',
             'macrobody' => '@trucindex
 '
@@ -497,7 +497,7 @@ $result_trees{'macro_in_index_commands'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'defcodeindex-entry',
+              'text' => 'defcodeindexentry',
               'type' => 'macro_name'
             }
           ],
@@ -516,7 +516,7 @@ $result_trees{'macro_in_index_commands'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' defcodeindex-entry 
+            'arg_line' => ' defcodeindexentry 
 ',
             'macrobody' => 'a @var{index entry} t@\'e @^{@dotless{i}}
 '
@@ -631,7 +631,7 @@ $result_trees{'macro_in_index_commands'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 38,
-            'macro' => 'trucindex-command'
+            'macro' => 'trucindexcommand'
           },
           'parent' => {},
           'type' => 'index_entry_command'
@@ -676,7 +676,7 @@ $result_trees{'macro_in_index_commands'} = {
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 40,
-                    'macro' => 'defcodeindex-entry'
+                    'macro' => 'defcodeindexentry'
                   },
                   'parent' => {}
                 },
@@ -1215,7 +1215,7 @@ cp
 @macro fn 
 fn
 @end macro
-@macro syncodeindex-command 
+@macro syncodeindexcommand 
 @syncodeindex
 @end macro
 
@@ -1230,7 +1230,7 @@ definedx truc
 @defindex truc
 after
 
-@macro trucindex-command 
+@macro trucindexcommand 
 @trucindex
 @end macro
 
@@ -1240,7 +1240,7 @@ codeidx
 
 @defcodeindex codeidx
 
-@macro defcodeindex-entry 
+@macro defcodeindexentry 
 a @var{index entry} t@\'e @^{@dotless{i}}
 @end macro
 

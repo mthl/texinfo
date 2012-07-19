@@ -11,7 +11,7 @@ $result_trees{'macro_in_end_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'a-cartouche',
+          'text' => 'acartouche',
           'type' => 'macro_name'
         }
       ],
@@ -30,7 +30,7 @@ $result_trees{'macro_in_end_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' a-cartouche
+        'arg_line' => ' acartouche
 ',
         'macrobody' => 'cartouche
 '
@@ -142,7 +142,7 @@ $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'parent'} =
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_end_argument'};
 
-$result_texis{'macro_in_end_argument'} = '@macro a-cartouche
+$result_texis{'macro_in_end_argument'} = '@macro acartouche
 cartouche
 @end macro
 

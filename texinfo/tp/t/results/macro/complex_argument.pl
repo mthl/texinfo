@@ -11,7 +11,7 @@ $result_trees{'complex_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro2',
+          'text' => 'macrotwo',
           'type' => 'macro_name'
         },
         {
@@ -35,7 +35,7 @@ $result_trees{'complex_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro2{arg}
+        'arg_line' => ' macrotwo{arg}
 ',
         'args_index' => {
           'arg' => 0
@@ -69,7 +69,7 @@ $result_trees{'complex_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro4',
+          'text' => 'macrofour',
           'type' => 'macro_name'
         }
       ],
@@ -106,7 +106,7 @@ $result_trees{'complex_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro4 {}
+        'arg_line' => ' macrofour {}
 ',
         'macrobody' => '1
 2
@@ -140,7 +140,7 @@ $result_trees{'complex_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro3',
+          'text' => 'macrothree',
           'type' => 'macro_name'
         },
         {
@@ -175,7 +175,7 @@ $result_trees{'complex_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro3{text, arg}
+        'arg_line' => ' macrothree{text, arg}
 ',
         'args_index' => {
           'arg' => 1,
@@ -215,7 +215,7 @@ $result_trees{'complex_argument'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' @macro2 ',
+                  'text' => ' @macrotwo ',
                   'type' => 'raw'
                 }
               ],
@@ -228,7 +228,7 @@ $result_trees{'complex_argument'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 38,
-            'macro' => 'macro3'
+            'macro' => 'macrothree'
           },
           'parent' => {},
           'type' => '%'
@@ -242,7 +242,7 @@ $result_trees{'complex_argument'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => ' @macro4
+              'text' => ' @macrofour
 ',
               'type' => 'misc_arg'
             }
@@ -286,7 +286,7 @@ $result_trees{'complex_argument'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 38,
-            'macro' => 'macro3'
+            'macro' => 'macrothree'
           },
           'parent' => {}
         },
@@ -336,7 +336,7 @@ $result_trees{'complex_argument'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 38,
-            'macro' => 'macro3'
+            'macro' => 'macrothree'
           },
           'parent' => {}
         },
@@ -373,7 +373,7 @@ $result_trees{'complex_argument'} = {
         },
         {
           'parent' => {},
-          'text' => '@macro2
+          'text' => '@macrotwo
 ',
           'type' => 'raw'
         }
@@ -381,7 +381,7 @@ $result_trees{'complex_argument'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 38,
-        'macro' => 'macro3'
+        'macro' => 'macrothree'
       },
       'parent' => {}
     },
@@ -408,7 +408,7 @@ $result_trees{'complex_argument'} = {
         },
         {
           'parent' => {},
-          'text' => '@macro4',
+          'text' => '@macrofour',
           'type' => 'raw'
         },
         {
@@ -421,7 +421,7 @@ $result_trees{'complex_argument'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 38,
-        'macro' => 'macro3'
+        'macro' => 'macrothree'
       },
       'parent' => {}
     },
@@ -438,7 +438,7 @@ $result_trees{'complex_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro7',
+          'text' => 'macroseven',
           'type' => 'macro_name'
         },
         {
@@ -462,7 +462,7 @@ $result_trees{'complex_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro7 {truc}
+        'arg_line' => ' macroseven {truc}
 ',
         'args_index' => {
           'truc' => 0
@@ -473,7 +473,7 @@ $result_trees{'complex_argument'} = {
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 38,
-        'macro' => 'macro3'
+        'macro' => 'macrothree'
       },
       'parent' => {}
     },
@@ -490,7 +490,7 @@ $result_trees{'complex_argument'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'macro7 defined
+          'text' => 'macroseven defined
 '
         },
         {
@@ -544,7 +544,7 @@ $result_trees{'complex_argument'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'Call macro7
+          'text' => 'Call macroseven
 '
         },
         {
@@ -565,7 +565,7 @@ $result_trees{'complex_argument'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 41,
-            'macro' => 'macro7'
+            'macro' => 'macroseven'
           },
           'parent' => {}
         },
@@ -679,24 +679,24 @@ $result_trees{'complex_argument'}{'contents'}[20]{'contents'}[2]{'parent'} = $re
 $result_trees{'complex_argument'}{'contents'}[20]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[21]{'parent'} = $result_trees{'complex_argument'};
 
-$result_texis{'complex_argument'} = '@macro macro2{arg}
+$result_texis{'complex_argument'} = '@macro macrotwo{arg}
 coucou \\arg\\ after arg
 @end macro
 
-@macro macro4 {}
+@macro macrofour {}
 1
 2
 3
 4
 @end macro
 
-@macro macro3{text, arg}
+@macro macrothree{text, arg}
 \\text\\
 &&&& \\arg\\
 @end macro
 
-@verb{% @macro2 %}
-@c @macro4
+@verb{% @macrotwo %}
+@c @macrofour
 @pagesizes 4 1
 2
 3
@@ -706,15 +706,15 @@ coucou \\arg\\ after arg
 3
 4
 @verbatim
-@macro2
+@macrotwo
 @end verbatim
 @ignore
-@macro4
+@macrofour
 @end ignore
-@macro macro7 {truc}
+@macro macroseven {truc}
 @emph{\\truc\\}
 @end macro
-macro7 defined
+macroseven defined
 1
 2
 3
@@ -722,7 +722,7 @@ macro7 defined
 
 &&&& 
 
-Call macro7
+Call macroseven
 @emph{aaa}
 
 ';
@@ -731,15 +731,15 @@ Call macro7
 $result_texts{'complex_argument'} = '
 
 
- @macro2 
+ @macrotwo 
 2
 3
 4
 2
 3
 4
-@macro2
-macro7 defined
+@macrotwo
+macroseven defined
 1
 2
 3
@@ -747,18 +747,18 @@ macro7 defined
 
 &&&& 
 
-Call macro7
+Call macroseven
 aaa
 
 ';
 
 $result_errors{'complex_argument'} = [
   {
-    'error_line' => ':38: Bad argument to @headings: doubleafter 1 (possibly involving @macro4)
+    'error_line' => ':38: Bad argument to @headings: doubleafter 1 (possibly involving @macrofour)
 ',
     'file_name' => '',
     'line_nr' => 38,
-    'macro' => 'macro4',
+    'macro' => 'macrofour',
     'text' => 'Bad argument to @headings: doubleafter 1',
     'type' => 'error'
   }

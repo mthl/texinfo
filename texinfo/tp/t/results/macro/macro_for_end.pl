@@ -11,7 +11,7 @@ $result_trees{'macro_for_end'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'my-end',
+          'text' => 'myend',
           'type' => 'macro_name'
         }
       ],
@@ -30,7 +30,7 @@ $result_trees{'macro_for_end'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' my-end
+        'arg_line' => ' myend
 ',
         'macrobody' => '@end
 '
@@ -105,7 +105,7 @@ $result_trees{'macro_for_end'} = {
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 6,
-            'macro' => 'my-end'
+            'macro' => 'myend'
           },
           'parent' => {}
         }
@@ -142,7 +142,7 @@ $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'parent'} = $result
 $result_trees{'macro_for_end'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1];
 $result_trees{'macro_for_end'}{'contents'}[3]{'parent'} = $result_trees{'macro_for_end'};
 
-$result_texis{'macro_for_end'} = '@macro my-end
+$result_texis{'macro_for_end'} = '@macro myend
 @end
 @end macro
 

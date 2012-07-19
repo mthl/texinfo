@@ -17,7 +17,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro1',
+          'text' => 'macroone',
           'type' => 'macro_name'
         }
       ],
@@ -25,7 +25,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'a, @macro2',
+          'text' => 'a, @macrotwo',
           'type' => 'raw'
         },
         {
@@ -36,9 +36,9 @@ $result_trees{'macro_in_macro_arg'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro1
+        'arg_line' => ' macroone
 ',
-        'macrobody' => 'a, @macro2
+        'macrobody' => 'a, @macrotwo
 '
       },
       'line_nr' => {
@@ -67,7 +67,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro2',
+          'text' => 'macrotwo',
           'type' => 'macro_name'
         },
         {
@@ -91,7 +91,7 @@ $result_trees{'macro_in_macro_arg'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro2{arg}
+        'arg_line' => ' macrotwo{arg}
 ',
         'args_index' => {
           'arg' => 0
@@ -125,7 +125,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro3',
+          'text' => 'macrothree',
           'type' => 'macro_name'
         },
         {
@@ -160,7 +160,7 @@ $result_trees{'macro_in_macro_arg'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro3{text, arg}
+        'arg_line' => ' macrothree{text, arg}
 ',
         'args_index' => {
           'arg' => 1,
@@ -242,15 +242,15 @@ $result_trees{'macro_in_macro_arg'}{'contents'}[10]{'contents'}[1]{'parent'} = $
 $result_trees{'macro_in_macro_arg'}{'contents'}[10]{'parent'} = $result_trees{'macro_in_macro_arg'};
 
 $result_texis{'macro_in_macro_arg'} = '
-@macro macro1
-a, @macro2
+@macro macroone
+a, @macrotwo
 @end macro
 
-@macro macro2{arg}
+@macro macrotwo{arg}
 hello \\arg\\ after arg
 @end macro
 
-@macro macro3{text, arg}
+@macro macrothree{text, arg}
 \\text\\
 &&&& \\arg\\
 @end macro

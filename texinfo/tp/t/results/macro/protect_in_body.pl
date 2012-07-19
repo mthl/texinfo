@@ -11,7 +11,7 @@ $result_trees{'protect_in_body'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro1',
+          'text' => 'macroone',
           'type' => 'macro_name'
         },
         {
@@ -40,7 +40,7 @@ $result_trees{'protect_in_body'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro1 { arg1 , arg2 }
+        'arg_line' => ' macroone { arg1 , arg2 }
 ',
         'args_index' => {
           'arg1' => 0,
@@ -99,7 +99,7 @@ $result_trees{'protect_in_body'} = {
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 5,
-                    'macro' => 'macro1'
+                    'macro' => 'macroone'
                   },
                   'parent' => {}
                 }
@@ -171,7 +171,7 @@ $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'parent'} = $resu
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[4]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
 $result_trees{'protect_in_body'}{'contents'}[3]{'parent'} = $result_trees{'protect_in_body'};
 
-$result_texis{'protect_in_body'} = '@macro macro1 { arg1 , arg2 }
+$result_texis{'protect_in_body'} = '@macro macroone { arg1 , arg2 }
 result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 @end macro
 

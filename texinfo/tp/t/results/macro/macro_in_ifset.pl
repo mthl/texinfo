@@ -11,7 +11,7 @@ $result_trees{'macro_in_ifset'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'macro1',
+          'text' => 'macroone',
           'type' => 'macro_name'
         },
         {
@@ -35,7 +35,7 @@ $result_trees{'macro_in_ifset'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' macro1 {arg}
+        'arg_line' => ' macroone {arg}
 ',
         'args_index' => {
           'arg' => 0
@@ -77,7 +77,7 @@ $result_trees{'macro_in_ifset'}{'contents'}[1]{'extra'}{'command'} = $result_tre
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset'};
 $result_trees{'macro_in_ifset'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_ifset'};
 
-$result_texis{'macro_in_ifset'} = '@macro macro1 {arg}
+$result_texis{'macro_in_ifset'} = '@macro macroone {arg}
 @end ifset
 @end macro
 

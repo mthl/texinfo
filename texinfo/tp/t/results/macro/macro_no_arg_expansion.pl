@@ -11,7 +11,7 @@ $result_trees{'macro_no_arg_expansion'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'test1',
+          'text' => 'testone',
           'type' => 'macro_name'
         }
       ],
@@ -30,7 +30,7 @@ $result_trees{'macro_no_arg_expansion'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' test1
+        'arg_line' => ' testone
 ',
         'macrobody' => 'res1
 '
@@ -81,7 +81,7 @@ $result_trees{'macro_no_arg_expansion'}{'contents'}[2]{'parent'} = $result_trees
 $result_trees{'macro_no_arg_expansion'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_no_arg_expansion'}{'contents'}[3];
 $result_trees{'macro_no_arg_expansion'}{'contents'}[3]{'parent'} = $result_trees{'macro_no_arg_expansion'};
 
-$result_texis{'macro_no_arg_expansion'} = '@macro test1
+$result_texis{'macro_no_arg_expansion'} = '@macro testone
 res1
 @end macro
 

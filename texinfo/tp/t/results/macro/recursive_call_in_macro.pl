@@ -11,7 +11,7 @@ $result_trees{'recursive_call_in_macro'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'norecurse',
+          'text' => 'anorecurse',
           'type' => 'macro_name'
         },
         {
@@ -24,7 +24,7 @@ $result_trees{'recursive_call_in_macro'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '@norecurse{arg}',
+          'text' => '@anorecurse{arg}',
           'type' => 'raw'
         },
         {
@@ -35,12 +35,12 @@ $result_trees{'recursive_call_in_macro'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' norecurse{arg}
+        'arg_line' => ' anorecurse{arg}
 ',
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@norecurse{arg}
+        'macrobody' => '@anorecurse{arg}
 '
       },
       'line_nr' => {
@@ -84,8 +84,8 @@ $result_trees{'recursive_call_in_macro'}{'contents'}[1]{'parent'} = $result_tree
 $result_trees{'recursive_call_in_macro'}{'contents'}[2]{'parent'} = $result_trees{'recursive_call_in_macro'};
 $result_trees{'recursive_call_in_macro'}{'contents'}[3]{'parent'} = $result_trees{'recursive_call_in_macro'};
 
-$result_texis{'recursive_call_in_macro'} = '@macro norecurse{arg}
-@norecurse{arg}
+$result_texis{'recursive_call_in_macro'} = '@macro anorecurse{arg}
+@anorecurse{arg}
 @end macro
 
 
@@ -98,12 +98,12 @@ $result_texts{'recursive_call_in_macro'} = '
 
 $result_errors{'recursive_call_in_macro'} = [
   {
-    'error_line' => ':5: Recursive call of macro norecurse is not allowed; use @rmacro if needed (possibly involving @norecurse)
+    'error_line' => ':5: Recursive call of macro anorecurse is not allowed; use @rmacro if needed (possibly involving @anorecurse)
 ',
     'file_name' => '',
     'line_nr' => 5,
-    'macro' => 'norecurse',
-    'text' => 'Recursive call of macro norecurse is not allowed; use @rmacro if needed',
+    'macro' => 'anorecurse',
+    'text' => 'Recursive call of macro anorecurse is not allowed; use @rmacro if needed',
     'type' => 'error'
   }
 ];

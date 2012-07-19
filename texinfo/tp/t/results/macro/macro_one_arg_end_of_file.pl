@@ -11,7 +11,7 @@ $result_trees{'macro_one_arg_end_of_file'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'one-arg',
+          'text' => 'onearg',
           'type' => 'macro_name'
         },
         {
@@ -35,7 +35,7 @@ $result_trees{'macro_one_arg_end_of_file'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' one-arg{arg}
+        'arg_line' => ' onearg{arg}
 ',
         'args_index' => {
           'arg' => 0
@@ -89,7 +89,7 @@ $result_trees{'macro_one_arg_end_of_file'}{'contents'}[2]{'parent'} = $result_tr
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3];
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3]{'parent'} = $result_trees{'macro_one_arg_end_of_file'};
 
-$result_texis{'macro_one_arg_end_of_file'} = '@macro one-arg{arg}
+$result_texis{'macro_one_arg_end_of_file'} = '@macro onearg{arg}
 Arg \\arg\\.
 @end macro
 

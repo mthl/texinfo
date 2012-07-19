@@ -11,7 +11,7 @@ $result_trees{'recursive_call_in_argument'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'norecurse',
+          'text' => 'anorecurse',
           'type' => 'macro_name'
         },
         {
@@ -35,7 +35,7 @@ $result_trees{'recursive_call_in_argument'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' norecurse{arg}
+        'arg_line' => ' anorecurse{arg}
 ',
         'args_index' => {
           'arg' => 0
@@ -90,7 +90,7 @@ $result_trees{'recursive_call_in_argument'}{'contents'}[2]{'parent'} = $result_t
 $result_trees{'recursive_call_in_argument'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_argument'}{'contents'}[3];
 $result_trees{'recursive_call_in_argument'}{'contents'}[3]{'parent'} = $result_trees{'recursive_call_in_argument'};
 
-$result_texis{'recursive_call_in_argument'} = '@macro norecurse{arg}
+$result_texis{'recursive_call_in_argument'} = '@macro anorecurse{arg}
 a
 @end macro
 

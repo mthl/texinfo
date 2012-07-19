@@ -61,7 +61,7 @@ $result_trees{'macro_in_brace_command'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'bar',
+          'text' => 'abar',
           'type' => 'macro_name'
         }
       ],
@@ -80,7 +80,7 @@ $result_trees{'macro_in_brace_command'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' bar
+        'arg_line' => ' abar
 ',
         'macrobody' => 'bar-expansion
 '
@@ -320,7 +320,7 @@ $result_texis{'macro_in_brace_command'} = '@macro foo
 foo-expansion
 @end macro
 
-@macro bar
+@macro abar
 bar-expansion
 @end macro
 

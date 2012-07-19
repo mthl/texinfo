@@ -11,14 +11,14 @@ $result_trees{'paragraph_and_macro'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'empty',
+          'text' => 'aempty',
           'type' => 'macro_name'
         }
       ],
       'cmdname' => 'macro',
       'contents' => [],
       'extra' => {
-        'arg_line' => ' empty
+        'arg_line' => ' aempty
 ',
         'macrobody' => ''
       },
@@ -48,7 +48,7 @@ $result_trees{'paragraph_and_macro'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'space',
+          'text' => 'aspace',
           'type' => 'macro_name'
         }
       ],
@@ -67,7 +67,7 @@ $result_trees{'paragraph_and_macro'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' space
+        'arg_line' => ' aspace
 ',
         'macrobody' => '   
 '
@@ -268,10 +268,10 @@ $result_trees{'paragraph_and_macro'}{'contents'}[20]{'parent'} = $result_trees{'
 $result_trees{'paragraph_and_macro'}{'contents'}[21]{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[21];
 $result_trees{'paragraph_and_macro'}{'contents'}[21]{'parent'} = $result_trees{'paragraph_and_macro'};
 
-$result_texis{'paragraph_and_macro'} = '@macro empty
+$result_texis{'paragraph_and_macro'} = '@macro aempty
 @end macro
 
-@macro space
+@macro aspace
    
 @end macro
 

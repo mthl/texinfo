@@ -17,7 +17,7 @@ $result_trees{'macro_in_menu'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'star',
+          'text' => 'astar',
           'type' => 'macro_name'
         }
       ],
@@ -36,7 +36,7 @@ $result_trees{'macro_in_menu'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' star
+        'arg_line' => ' astar
 ',
         'macrobody' => '*
 '
@@ -67,7 +67,7 @@ $result_trees{'macro_in_menu'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'star-spaces',
+          'text' => 'starspaces',
           'type' => 'macro_name'
         }
       ],
@@ -86,7 +86,7 @@ $result_trees{'macro_in_menu'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' star-spaces
+        'arg_line' => ' starspaces
 ',
         'macrobody' => '* 
 '
@@ -167,7 +167,7 @@ $result_trees{'macro_in_menu'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'space',
+          'text' => 'aspace',
           'type' => 'macro_name'
         }
       ],
@@ -186,7 +186,7 @@ $result_trees{'macro_in_menu'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' space
+        'arg_line' => ' aspace
 ',
         'macrobody' => ' 
 '
@@ -217,7 +217,7 @@ $result_trees{'macro_in_menu'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'two-colon',
+          'text' => 'twocolon',
           'type' => 'macro_name'
         }
       ],
@@ -236,7 +236,7 @@ $result_trees{'macro_in_menu'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' two-colon
+        'arg_line' => ' twocolon
 ',
         'macrobody' => '::
 '
@@ -267,7 +267,7 @@ $result_trees{'macro_in_menu'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'colon',
+          'text' => 'acolon',
           'type' => 'macro_name'
         }
       ],
@@ -286,7 +286,7 @@ $result_trees{'macro_in_menu'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' colon
+        'arg_line' => ' acolon
 ',
         'macrobody' => ':
 '
@@ -817,11 +817,11 @@ $result_trees{'macro_in_menu'}{'contents'}[19]{'extra'}{'end_command'} = $result
 $result_trees{'macro_in_menu'}{'contents'}[19]{'parent'} = $result_trees{'macro_in_menu'};
 
 $result_texis{'macro_in_menu'} = '
-@macro star
+@macro astar
 *
 @end macro
 
-@macro star-spaces
+@macro starspaces
 * 
 @end macro
 
@@ -829,15 +829,15 @@ $result_texis{'macro_in_menu'} = '
   
 @end macro
 
-@macro space
+@macro aspace
  
 @end macro
 
-@macro two-colon
+@macro twocolon
 ::
 @end macro
 
-@macro colon
+@macro acolon
 :
 @end macro
 

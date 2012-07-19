@@ -11,7 +11,7 @@ $result_trees{'macro_in_accent'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'a-letter',
+          'text' => 'aletter',
           'type' => 'macro_name'
         }
       ],
@@ -30,7 +30,7 @@ $result_trees{'macro_in_accent'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' a-letter
+        'arg_line' => ' aletter
 ',
         'macrobody' => 'a
 '
@@ -61,7 +61,7 @@ $result_trees{'macro_in_accent'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'space',
+          'text' => 'aspace',
           'type' => 'macro_name'
         }
       ],
@@ -80,7 +80,7 @@ $result_trees{'macro_in_accent'} = {
         }
       ],
       'extra' => {
-        'arg_line' => ' space
+        'arg_line' => ' aspace
 ',
         'macrobody' => '  
 '
@@ -283,11 +283,11 @@ $result_trees{'macro_in_accent'}{'contents'}[8]{'contents'}[0]{'parent'} = $resu
 $result_trees{'macro_in_accent'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'macro_in_accent'}{'contents'}[8];
 $result_trees{'macro_in_accent'}{'contents'}[8]{'parent'} = $result_trees{'macro_in_accent'};
 
-$result_texis{'macro_in_accent'} = '@macro a-letter
+$result_texis{'macro_in_accent'} = '@macro aletter
 a
 @end macro
 
-@macro space
+@macro aspace
   
 @end macro
 
