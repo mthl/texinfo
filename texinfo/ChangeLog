@@ -1,3 +1,8 @@
+2012-07-22  Per Bothner  <per@bothner.com>
+
+	* tp/Texinfo/Convert/DocBook.pm: Add phrase element around category,
+	for easier processing of the output.
+
 2012-07-14  Andreas Schwab  <schwab@linux-m68k.org>
 
 	* info/info-utils.c (text_buffer_vprintf): Create a copy of `ap' in

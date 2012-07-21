@@ -1178,7 +1178,7 @@ sub _convert($$;$)
           if ($type eq 'spaces' or $type eq 'delimiter') {
             $result .= $content;
           } elsif ($type eq 'category') {
-            $result .= "<emphasis role=\"bold\">$content</emphasis>:";
+            $result .= "<phrase role=\"category\"><emphasis role=\"bold\">$content</emphasis>:</phrase>";
           } elsif ($type eq 'name') {
             $result .= "<$defcommand_name_type{$main_command}>$content</$defcommand_name_type{$main_command}>";
           } else {
