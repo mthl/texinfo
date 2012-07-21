@@ -1,4 +1,4 @@
-$Id: TODO,v 1.64 2012-04-13 16:56:52 karl Exp $
+$Id: TODO,v 1.65 2012-07-21 10:30:50 pertusus Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -66,6 +66,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Add support for other Latin 9 (and Latin 2 and Latin 1) characters.
 
 * Makeinfo:
+  - add a switch to _pretend_ it's on a case-insensitive filesystem
   - Improve the HTML customization API.
   - HTML: support thumbnails.
   - HTML: have a library of different CSS styles.
@@ -104,6 +105,13 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
 * Doc:
   - Improve the manuals.
+  - location of text before the information required to understand them:
+    * 2 Using Texinfo Mode: before the Texinfo language description
+    * 4.1 Printing Indices and Menus: before @node, @unnumbered and indices
+  - htmlxref.cnf is still not taken into account at the beginning of 
+    HTML Xref nodes
+  - The Cross References node is very long and maybe should
+    start with the most general uses and proceed to special cases.
   - new section on doing dedication pages. See gawk.texi
     for an example of doing it in both the tex and info versions.
   - use an improved pod2texi to generate documentation of the perl modules
