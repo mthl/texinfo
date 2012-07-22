@@ -293,100 +293,100 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
-<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><emphasis role="bold">cate--gory</emphasis>: <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
+<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><phrase role="category"><emphasis role="bold">cate--gory</emphasis>:</phrase> <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
 </replaceable> <replaceable>even</replaceable> <replaceable>more</replaceable> <replaceable>so</replaceable></synopsis>
 <blockquote><para>def&#8211;fn
 </para></blockquote> 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap1</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap2</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><emphasis role="bold">cmde</emphasis>: <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><emphasis role="bold">cmde2</emphasis>: <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
-<synopsis><emphasis role="bold">aaa</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><emphasis role="bold"></emphasis>:</synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>bidule machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>machin</function></synopsis>
-<synopsis><emphasis role="bold">truc</emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>bidule machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
 <!-- comment -->
-<synopsis><emphasis role="bold">truc</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>a</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>a</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
 <!-- comment between deffn and deffnx -->
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffnx</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffnx</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <blockquote><!-- comment -->
 <para>text in def item for second def item
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <varname>d--efvr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <varname>d--efvr_name</varname></synopsis>
 <blockquote><para>d&#8211;efvr
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypeop
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevr
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
 <blockquote><para>d&#8211;efcv
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efop
 </para></blockquote>
-<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
+<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
 <blockquote><para>d&#8211;eftp
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efun
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><emphasis role="bold">Macro</emphasis>: <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><phrase role="category"><emphasis role="bold">Macro</emphasis>:</phrase> <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmac
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><emphasis role="bold">Special Form</emphasis>: <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><phrase role="category"><emphasis role="bold">Special Form</emphasis>:</phrase> <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efspec
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
 <blockquote><para>d&#8211;efvar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><emphasis role="bold">User Option</emphasis>: <varname>d--efopt_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><phrase role="category"><emphasis role="bold">User Option</emphasis>:</phrase> <varname>d--efopt_name</varname></synopsis>
 <blockquote><para>d&#8211;efopt
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefun
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
 <blockquote><para>d&#8211;efivar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
 <blockquote><para>d&#8211;eftypeivar
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmethod
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypemethod
 </para></blockquote>
 <para><literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section &#8220;t&#8212;itle@&#8221; in <citetitle>ma&#8212;nual@</citetitle>.
@@ -790,100 +790,100 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
-<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><emphasis role="bold">cate--gory</emphasis>: <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
+<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><phrase role="category"><emphasis role="bold">cate--gory</emphasis>:</phrase> <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
 </replaceable> <replaceable>even</replaceable> <replaceable>more</replaceable> <replaceable>so</replaceable></synopsis>
 <blockquote><para>def&#8211;fn
 </para></blockquote> 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap1</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap2</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><emphasis role="bold">cmde</emphasis>: <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><emphasis role="bold">cmde2</emphasis>: <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
-<synopsis><emphasis role="bold">aaa</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><emphasis role="bold"></emphasis>:</synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>bidule machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>machin</function></synopsis>
-<synopsis><emphasis role="bold">truc</emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>bidule machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
 <!-- comment -->
-<synopsis><emphasis role="bold">truc</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>a</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>a</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
 <!-- comment between deffn and deffnx -->
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffnx</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffnx</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <blockquote><!-- comment -->
 <para>text in def item for second def item
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <varname>d--efvr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <varname>d--efvr_name</varname></synopsis>
 <blockquote><para>d&#8211;efvr
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypeop
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevr
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
 <blockquote><para>d&#8211;efcv
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efop
 </para></blockquote>
-<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
+<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
 <blockquote><para>d&#8211;eftp
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efun
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><emphasis role="bold">Macro</emphasis>: <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><phrase role="category"><emphasis role="bold">Macro</emphasis>:</phrase> <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmac
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><emphasis role="bold">Special Form</emphasis>: <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><phrase role="category"><emphasis role="bold">Special Form</emphasis>:</phrase> <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efspec
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
 <blockquote><para>d&#8211;efvar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><emphasis role="bold">User Option</emphasis>: <varname>d--efopt_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><phrase role="category"><emphasis role="bold">User Option</emphasis>:</phrase> <varname>d--efopt_name</varname></synopsis>
 <blockquote><para>d&#8211;efopt
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefun
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
 <blockquote><para>d&#8211;efivar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
 <blockquote><para>d&#8211;eftypeivar
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmethod
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypemethod
 </para></blockquote>
 <para><literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section &#8220;t&#8212;itle@&#8221; in <citetitle>ma&#8212;nual@</citetitle>.
@@ -1288,100 +1288,100 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
-<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><emphasis role="bold">cate--gory</emphasis>: <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
+<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><phrase role="category"><emphasis role="bold">cate--gory</emphasis>:</phrase> <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
 </replaceable> <replaceable>even</replaceable> <replaceable>more</replaceable> <replaceable>so</replaceable></synopsis>
 <blockquote><para>def&#8211;fn
 </para></blockquote> 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap1</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap2</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><emphasis role="bold">cmde</emphasis>: <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><emphasis role="bold">cmde2</emphasis>: <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
-<synopsis><emphasis role="bold">aaa</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><emphasis role="bold"></emphasis>:</synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>bidule machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>machin</function></synopsis>
-<synopsis><emphasis role="bold">truc</emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>bidule machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
 <!-- comment -->
-<synopsis><emphasis role="bold">truc</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>a</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>a</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
 <!-- comment between deffn and deffnx -->
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffnx</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffnx</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <blockquote><!-- comment -->
 <para>text in def item for second def item
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <varname>d--efvr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <varname>d--efvr_name</varname></synopsis>
 <blockquote><para>d&#8211;efvr
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypeop
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevr
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
 <blockquote><para>d&#8211;efcv
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efop
 </para></blockquote>
-<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
+<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
 <blockquote><para>d&#8211;eftp
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efun
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><emphasis role="bold">Macro</emphasis>: <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><phrase role="category"><emphasis role="bold">Macro</emphasis>:</phrase> <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmac
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><emphasis role="bold">Special Form</emphasis>: <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><phrase role="category"><emphasis role="bold">Special Form</emphasis>:</phrase> <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efspec
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
 <blockquote><para>d&#8211;efvar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><emphasis role="bold">User Option</emphasis>: <varname>d--efopt_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><phrase role="category"><emphasis role="bold">User Option</emphasis>:</phrase> <varname>d--efopt_name</varname></synopsis>
 <blockquote><para>d&#8211;efopt
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefun
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
 <blockquote><para>d&#8211;efivar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
 <blockquote><para>d&#8211;eftypeivar
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmethod
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypemethod
 </para></blockquote>
 <para><literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section &#8220;t&#8212;itle@&#8221; in <citetitle>ma&#8212;nual@</citetitle>.
@@ -1787,100 +1787,100 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
-<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><emphasis role="bold">cate--gory</emphasis>: <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
+<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><phrase role="category"><emphasis role="bold">cate--gory</emphasis>:</phrase> <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
 </replaceable> <replaceable>even</replaceable> <replaceable>more</replaceable> <replaceable>so</replaceable></synopsis>
 <blockquote><para>def&#8211;fn
 </para></blockquote> 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap1</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap2</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><emphasis role="bold">cmde</emphasis>: <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><emphasis role="bold">cmde2</emphasis>: <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
-<synopsis><emphasis role="bold">aaa</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><emphasis role="bold"></emphasis>:</synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>bidule machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>machin</function></synopsis>
-<synopsis><emphasis role="bold">truc</emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>bidule machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
 <!-- comment -->
-<synopsis><emphasis role="bold">truc</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>a</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>a</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
 <!-- comment between deffn and deffnx -->
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffnx</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffnx</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <blockquote><!-- comment -->
 <para>text in def item for second def item
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <varname>d--efvr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <varname>d--efvr_name</varname></synopsis>
 <blockquote><para>d&#8211;efvr
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypeop
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevr
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
 <blockquote><para>d&#8211;efcv
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efop
 </para></blockquote>
-<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
+<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
 <blockquote><para>d&#8211;eftp
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efun
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><emphasis role="bold">Macro</emphasis>: <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><phrase role="category"><emphasis role="bold">Macro</emphasis>:</phrase> <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmac
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><emphasis role="bold">Special Form</emphasis>: <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><phrase role="category"><emphasis role="bold">Special Form</emphasis>:</phrase> <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efspec
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
 <blockquote><para>d&#8211;efvar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><emphasis role="bold">User Option</emphasis>: <varname>d--efopt_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><phrase role="category"><emphasis role="bold">User Option</emphasis>:</phrase> <varname>d--efopt_name</varname></synopsis>
 <blockquote><para>d&#8211;efopt
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefun
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
 <blockquote><para>d&#8211;efivar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
 <blockquote><para>d&#8211;eftypeivar
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmethod
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypemethod
 </para></blockquote>
 <para><literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section &#8220;t&#8212;itle@&#8221; in <citetitle>ma&#8212;nual@</citetitle>.
@@ -2285,100 +2285,100 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
-<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><emphasis role="bold">cate--gory</emphasis>: <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
+<synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><phrase role="category"><emphasis role="bold">cate--gory</emphasis>:</phrase> <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
 </replaceable> <replaceable>even</replaceable> <replaceable>more</replaceable> <replaceable>so</replaceable></synopsis>
 <blockquote><para>def&#8211;fn
 </para></blockquote> 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap1</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap2</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><emphasis role="bold">cmde</emphasis>: <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><emphasis role="bold">cmde2</emphasis>: <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
-<synopsis><emphasis role="bold">aaa</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><emphasis role="bold"></emphasis>:</synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>bidule machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>machin</function></synopsis>
-<synopsis><emphasis role="bold">truc</emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>bidule machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
 <!-- comment -->
-<synopsis><emphasis role="bold">truc</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>a</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>a</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
 <!-- comment between deffn and deffnx -->
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffnx</function></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffnx</function></synopsis>
 
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <blockquote><!-- comment -->
 <para>text in def item for second def item
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <varname>d--efvr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <varname>d--efvr_name</varname></synopsis>
 <blockquote><para>d&#8211;efvr
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypeop
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevr
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
 <blockquote><para>d&#8211;efcv
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efop
 </para></blockquote>
-<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
+<synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
 <blockquote><para>d&#8211;eftp
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efun
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><emphasis role="bold">Macro</emphasis>: <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><phrase role="category"><emphasis role="bold">Macro</emphasis>:</phrase> <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmac
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><emphasis role="bold">Special Form</emphasis>: <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><phrase role="category"><emphasis role="bold">Special Form</emphasis>:</phrase> <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efspec
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
 <blockquote><para>d&#8211;efvar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><emphasis role="bold">User Option</emphasis>: <varname>d--efopt_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><phrase role="category"><emphasis role="bold">User Option</emphasis>:</phrase> <varname>d--efopt_name</varname></synopsis>
 <blockquote><para>d&#8211;efopt
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypefun
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
 <blockquote><para>d&#8211;eftypevar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
 <blockquote><para>d&#8211;efivar
 </para></blockquote>
-<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
+<synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
 <blockquote><para>d&#8211;eftypeivar
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;efmethod
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><para>d&#8211;eftypemethod
 </para></blockquote>
 <para><literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section &#8220;t&#8212;itle@&#8221; in <citetitle>ma&#8212;nual@</citetitle>.
@@ -2782,100 +2782,100 @@ i--tem 1
 </abstract><screen>
 </screen><screen>s--mallformat
 </screen><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><screen>d--effn
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><emphasis role="bold">cate--gory</emphasis>: <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
+</screen><synopsis><indexterm role="fn"><primary>de&#8211;ffn_name</primary></indexterm><phrase role="category"><emphasis role="bold">cate--gory</emphasis>:</phrase> <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
 </replaceable> <replaceable>even</replaceable> <replaceable>more</replaceable> <replaceable>so</replaceable></synopsis>
 <blockquote><screen>def--fn
 </screen></blockquote><screen> 
-</screen><synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <screen><indexterm role="cp"><primary>index entry within deffn</primary></indexterm>
-</screen><synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap1</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap2</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><emphasis role="bold">cmde</emphasis>: <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><emphasis role="bold">cmde2</emphasis>: <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</synopsis>
+</screen><synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></emphasis>:</phrase></synopsis>
 <synopsis></synopsis>
-<synopsis><emphasis role="bold">aaa</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><emphasis role="bold"></emphasis>:</synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>bidule machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>machin</function></synopsis>
-<synopsis><emphasis role="bold">truc</emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">aaa</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>bidule machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
 <screen><!-- comment -->
-</screen><synopsis><emphasis role="bold">truc</emphasis>:</synopsis>
-<synopsis><emphasis role="bold"></emphasis>: <function></function></synopsis>
-<synopsis><indexterm role="fn"><primary>a</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
+</screen><synopsis><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase></synopsis>
+<synopsis><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function></function></synopsis>
+<synopsis><indexterm role="fn"><primary>a</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>a</function> <replaceable>b</replaceable> <replaceable>c</replaceable> <replaceable>d</replaceable> <replaceable>e</replaceable> <replaceable><emphasis role="bold">f g</emphasis></replaceable> <replaceable>h i</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 <screen>
-</screen><synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function></synopsis>
 <screen>
-</screen><synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>deffn</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffn</function> <replaceable>with</replaceable> <replaceable>deffnx</replaceable></synopsis>
 <screen><!-- comment between deffn and deffnx -->
-</screen><synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">empty</emphasis>: <function>deffnx</function></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">empty</emphasis>:</phrase> <function>deffnx</function></synopsis>
 <screen>
-</screen><synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <blockquote><screen><!-- comment -->
 text in def item for second def item
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <varname>d--efvr_name</varname></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>d&#8211;efvr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <varname>d--efvr_name</varname></synopsis>
 <blockquote><screen>d--efvr
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;eftypefn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefn_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><screen>d--eftypefn
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;eftypeop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypeop_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><screen>d--eftypeop
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>d&#8211;eftypevr_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevr_name</varname></synopsis>
 <blockquote><screen>d--eftypevr
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>d&#8211;efcv_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efcv_name</property></synopsis>
 <blockquote><screen>d--efcv
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;efop_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efop_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><screen>d--efop
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
+</screen><synopsis><indexterm role="tp"><primary>d&#8211;eftp_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <structname>d--eftp_name</structname> <type>a--ttributes...</type></synopsis>
 <blockquote><screen>d--eftp
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;efun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>d--efun_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><screen>d--efun
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><emphasis role="bold">Macro</emphasis>: <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;efmac_name</primary></indexterm><phrase role="category"><emphasis role="bold">Macro</emphasis>:</phrase> <function>d--efmac_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><screen>d--efmac
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><emphasis role="bold">Special Form</emphasis>: <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;efspec_name</primary></indexterm><phrase role="category"><emphasis role="bold">Special Form</emphasis>:</phrase> <function>d--efspec_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><screen>d--efspec
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>d&#8211;efvar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <varname>d--efvar_name</varname> <replaceable>argvar</replaceable> <replaceable>argvar1</replaceable></synopsis>
 <blockquote><screen>d--efvar
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><emphasis role="bold">User Option</emphasis>: <varname>d--efopt_name</varname></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>d&#8211;efopt_name</primary></indexterm><phrase role="category"><emphasis role="bold">User Option</emphasis>:</phrase> <varname>d--efopt_name</varname></synopsis>
 <blockquote><screen>d--efopt
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;eftypefun_name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <function>d--eftypefun_name</function> <type>a--rguments...</type></synopsis>
 <blockquote><screen>d--eftypefun
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><emphasis role="bold">Variable</emphasis>: <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>d&#8211;eftypevar_name</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <returnvalue>t--ype</returnvalue> <varname>d--eftypevar_name</varname></synopsis>
 <blockquote><screen>d--eftypevar
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>d&#8211;efivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <property>d--efivar_name</property></synopsis>
 <blockquote><screen>d--efivar
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><emphasis role="bold">Instance Variable</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>d&#8211;eftypeivar_name of c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Instance Variable</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <property>d--eftypeivar_name</property></synopsis>
 <blockquote><screen>d--eftypeivar
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;efmethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <methodname>d--efmethod_name</methodname> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><screen>d--efmethod
 </screen></blockquote><screen>
-</screen><synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><emphasis role="bold">Method</emphasis>: <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>d&#8211;eftypemethod_name on c&#8211;lass</primary></indexterm><phrase role="category"><emphasis role="bold">Method</emphasis>:</phrase> <ooclass><classname>c--lass</classname></ooclass> <returnvalue>t--ype</returnvalue> <methodname>d--eftypemethod_name</methodname> <type>a--rguments...</type></synopsis>
 <blockquote><screen>d--eftypemethod
 </screen></blockquote><screen>
 <literal>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</literal> See section ``t---itle@'' in <citetitle>ma---nual@</citetitle>.

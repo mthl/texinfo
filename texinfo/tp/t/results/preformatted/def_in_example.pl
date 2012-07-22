@@ -303,7 +303,7 @@ $result_converted{'html_text'}->{'def_in_example'} = '<div class="example">
 ';
 
 
-$result_converted{'docbook'}->{'def_in_example'} = '<synopsis><indexterm role="fn"><primary>name</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>name</function> <replaceable>arg</replaceable></synopsis>
+$result_converted{'docbook'}->{'def_in_example'} = '<synopsis><indexterm role="fn"><primary>name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>name</function> <replaceable>arg</replaceable></synopsis>
 <blockquote><screen>in defun
 </screen></blockquote>';
 

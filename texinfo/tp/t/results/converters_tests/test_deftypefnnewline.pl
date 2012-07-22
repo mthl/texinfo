@@ -1076,17 +1076,17 @@ $result_converted{'xml'}->{'test_deftypefnnewline'} = '
 $result_converted{'docbook'}->{'test_deftypefnnewline'} = '
 
 <anchor id="Top"/>
-<synopsis><indexterm role="fn"><primary>name</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>data-type</returnvalue> <function>name</function> <type>arguments...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>name</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <returnvalue>data-type</returnvalue> <function>name</function> <type>arguments...</type></synopsis>
 <blockquote><para>aaa
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>arg</primary></indexterm><emphasis role="bold">fun</emphasis>: <function>arg</function></synopsis>
+<synopsis><indexterm role="fn"><primary>arg</primary></indexterm><phrase role="category"><emphasis role="bold">fun</emphasis>:</phrase> <function>arg</function></synopsis>
 <blockquote><para>fff
 </para></blockquote>
 
-<synopsis><indexterm role="fn"><primary>name2</primary></indexterm><emphasis role="bold">Function</emphasis>: <returnvalue>data-type2</returnvalue> <function>name2</function> <type>arguments2...</type></synopsis>
+<synopsis><indexterm role="fn"><primary>name2</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <returnvalue>data-type2</returnvalue> <function>name2</function> <type>arguments2...</type></synopsis>
 <blockquote><para>aaa2
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>arg2</primary></indexterm><emphasis role="bold">fun2</emphasis>: <function>arg2</function></synopsis>
+<synopsis><indexterm role="fn"><primary>arg2</primary></indexterm><phrase role="category"><emphasis role="bold">fun2</emphasis>:</phrase> <function>arg2</function></synopsis>
 <blockquote><para>fff2
 </para></blockquote>';
 

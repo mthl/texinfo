@@ -1618,12 +1618,12 @@ explanation
 $result_converted{'docbook'}->{'complex_nestings'} = '<anchor id="Top"/>
 
 <screen>deffs
-</screen><synopsis><indexterm role="fn"><primary>my def</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>my def</function> <replaceable>args</replaceable> <replaceable><replaceable>arg</replaceable></replaceable> <replaceable>&#8230;</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>other def</primary></indexterm><emphasis role="bold">Function</emphasis>: <function>other def</function> <replaceable>no</replaceable> <replaceable>args</replaceable></synopsis>
-<blockquote><synopsis><indexterm role="fn"><primary>name</primary></indexterm><emphasis role="bold">type</emphasis>: <function>name</function> <replaceable>and</replaceable> <replaceable>now</replaceable> <replaceable>the</replaceable> <replaceable>args</replaceable></synopsis>
-<blockquote><synopsis><indexterm role="vr"><primary>variables</primary></indexterm><emphasis role="bold">Variable</emphasis>: <varname>variables</varname> <replaceable>variable-name</replaceable></synopsis>
+</screen><synopsis><indexterm role="fn"><primary>my def</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>my def</function> <replaceable>args</replaceable> <replaceable><replaceable>arg</replaceable></replaceable> <replaceable>&#8230;</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>other def</primary></indexterm><phrase role="category"><emphasis role="bold">Function</emphasis>:</phrase> <function>other def</function> <replaceable>no</replaceable> <replaceable>args</replaceable></synopsis>
+<blockquote><synopsis><indexterm role="fn"><primary>name</primary></indexterm><phrase role="category"><emphasis role="bold">type</emphasis>:</phrase> <function>name</function> <replaceable>and</replaceable> <replaceable>now</replaceable> <replaceable>the</replaceable> <replaceable>args</replaceable></synopsis>
+<blockquote><synopsis><indexterm role="vr"><primary>variables</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <varname>variables</varname> <replaceable>variable-name</replaceable></synopsis>
 <screen>
-</screen><synopsis><indexterm role="vr"><primary>variables too</primary></indexterm><emphasis role="bold">Variable</emphasis>: <varname>variables too</varname> <replaceable>other-variable</replaceable></synopsis>
+</screen><synopsis><indexterm role="vr"><primary>variables too</primary></indexterm><phrase role="category"><emphasis role="bold">Variable</emphasis>:</phrase> <varname>variables too</varname> <replaceable>other-variable</replaceable></synopsis>
 <blockquote><screen>THis is the defvar
 
 A table within the def

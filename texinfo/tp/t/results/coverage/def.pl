@@ -2589,28 +2589,28 @@ $result_converted{'xml'}->{'def'} = '
 
 
 $result_converted{'docbook'}->{'def'} = '
-<synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><emphasis role="bold">c--ategory</emphasis>: <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary>de--ffn_name</primary></indexterm><emphasis role="bold">cate--gory</emphasis>: <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
+<synopsis><indexterm role="fn"><primary>de--ffn_name</primary></indexterm><phrase role="category"><emphasis role="bold">cate--gory</emphasis>:</phrase> <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
 </replaceable> <replaceable>even</replaceable> <replaceable>more</replaceable> <replaceable>so</replaceable></synopsis>
 <blockquote><para>def&#8211;fn
 </para></blockquote>
-<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><emphasis role="bold">fset</emphasis>: <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><emphasis role="bold">cmde</emphasis>: <function>truc</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap1</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><emphasis role="bold">Command</emphasis>: <function>log trap2</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><emphasis role="bold">cmde</emphasis>: <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><emphasis role="bold">cmde2</emphasis>: <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><emphasis role="bold"></emphasis>: <function>bidule machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>machin</function></synopsis>
-<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>bidule machin</primary></indexterm><phrase role="category"><emphasis role="bold"></emphasis>:</phrase> <function>bidule machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
 <!-- comment -->
-<synopsis><indexterm role="fn"><primary>after</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>after</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
 <!-- comment -->
-<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><emphasis role="bold">truc</emphasis>: <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>deffnx</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>deffnx</function> <replaceable>before</replaceable> <replaceable>end</replaceable> <replaceable>deffn</replaceable></synopsis>
 <blockquote><para>Various deff lines
 </para></blockquote>';
 
