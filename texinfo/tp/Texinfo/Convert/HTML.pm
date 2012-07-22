@@ -5070,6 +5070,17 @@ sub _set_element_file($$$)
   if (!defined($filename)) {
     cluck("_set_element_file: filename not defined\n");
   }
+  if ($self->get_conf('CASE_INSENSITIVE_FILENAMES')) {
+    if (exists($self->{'filenames'}->{lc($filename)})) {
+      if ($self->get_conf('DEBUG')) {
+        print STDERR "Reusing ".$self->{'filenames'}->{lc($filename)}
+                     ." for $filename\n";
+      }
+      $filename = $self->{'filenames'}->{lc($filename)};
+    } else {
+      $self->{'filenames'}->{lc($filename)} = $filename;
+    }
+  }
   $element->{'filename'} = $filename;
   if (defined($self->{'destination_directory'})) {
     $element->{'out_filename'} = $self->{'destination_directory'} . $filename;

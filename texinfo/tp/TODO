@@ -75,6 +75,8 @@ enable encoding and entities.
 in html test footnotestyle separate.  There are such tests in tp/tests,
 maybe they are sufficient, but they are only done for long checks.
 
+Test of CASE_INSENSITIVE_FILENAMES.
+
 
 Future features
 ===============
@@ -144,7 +146,7 @@ DocBook
 =======
 
 * Instead of synopsis may use specialized synopsis, funcsynopsis/funcprototype
-  for deftype*, funcdef for defffn, ooclass for object oriented.
+  for deftype*, funcdef for deffn, ooclass for object oriented.
   deffn:
   <funcsynopsis><funcprototype><funcdef role=...><function>d--effn_name</function></funcdef><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
   defvr, deftypevr: varname, and type and not returnvalue
