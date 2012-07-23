@@ -1,3 +1,7 @@
+2012-07-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Xref 8-bit Character Expansion): English.
+
 2012-07-22  Per Bothner  <per@bothner.com>
 
 	* tp/Texinfo/Convert/DocBook.pm: Add phrase element around category,

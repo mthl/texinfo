@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.456 2012-07-13 17:36:11 karl Exp $
+@c $Id: texinfo.txi,v 1.457 2012-07-23 00:03:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19377,12 +19377,12 @@ written in a language whose script is not based on the Latin alphabet
 entirely of @samp{_@var{xxxx}} notations, which is inconvenient and
 all but unreadable.
 
-To handle such cases, @command{makeinfo} offers
-@option{--transliterate-file-names} command line option. This option
+To handle such cases, @command{makeinfo} offers the
+@option{--transliterate-file-names} command line option.  This option
 enables @dfn{transliteration} of node names into ASCII characters for
-the purposes of file name creation and referencing. The
-transliteration is based on phonetic principle, which makes the
-file names generated more easily understanable.
+the purposes of file name creation and referencing.  The
+transliteration is based on phonetic principles, which makes the
+generated file names more easily understanable.
 
 @cindex Normalization Form C, Unicode
 For the definition of Unicode Normalization Form@tie{}C, see Unicode
@@ -21958,7 +21958,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.456 2012-07-13 17:36:11 karl Exp $
+$Id: texinfo.txi,v 1.457 2012-07-23 00:03:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
