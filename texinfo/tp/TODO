@@ -75,7 +75,7 @@ enable encoding and entities.
 in html test footnotestyle separate.  There are such tests in tp/tests,
 maybe they are sufficient, but they are only done for long checks.
 
-Test of CASE_INSENSITIVE_FILENAMES.
+Test and documentation of CASE_INSENSITIVE_FILENAMES.
 
 
 Future features
@@ -145,20 +145,62 @@ Labels in Info (which also means index entries)
 DocBook
 =======
 
-* Instead of synopsis may use specialized synopsis, funcsynopsis/funcprototype
-  for deftype*, funcdef for deffn, ooclass for object oriented.
-  deffn:
-  <funcsynopsis><funcprototype><funcdef role=...><function>d--effn_name</function></funcdef><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
-  defvr, deftypevr: varname, and type and not returnvalue
-  deftypefn:
-  <funcsynopsis><funcprototype><funcdef role=...>type <function>d--eftypefn_name</function></funcdef><paramdef>a type<parameter>in var..</parameter></paramdef></funcprototype></funcsynopsis>
-  deftp: structname/structfield. Both contains a replaceable. Problem with
-  structfield is that there should be one by field.
-  defcv: classname + property, and category in synopsis
-  deftypecv: classname + type + property, and category in synopsis
-    fieldsynopsis?
-  defop: <classsynopsis><classsynopsisinfo>category</classsynopsisinfo><ooclass><classname>class<><><methodsynopsis><methodname><replaceable><></methodname><methodparam><parameter>...<><><>
-  deftypeop: same with type in methodparam.
+Instead of synopsis it might seem to be relevant to use specialized synopsis, 
+funcsynopsis/funcprototype for deftype* and some def*, and other for object 
+oriented.  There are many issues such that this possibility do not appear
+appealing at all.
+
+1) there is no possibility to have a category.  So the category must be 
+   added somewhere as a role= or in the *synopsisinfo, or this should only
+   be used for specialized @def, like @defun.
+
+2) @defmethod and @deftypemethod cannot really be mapped to methodsynopsis
+   as the class name is not associated with the method as in Texinfo, but 
+   instead  the method should be in a class in docbook.
+
+3) From the docbook reference for funcsynopsis
+  "For the most part, the processing application is expected to
+  generate all of the parentheses, semicolons, commas, and so on
+  required in the rendered synopsis. The exception to this rule is
+  that the spacing and other punctuation inside a parameter that is a
+  pointer to a function must be provided in the source markup."
+
+  So this mean it is language specific (C, as said in the docbook doc)
+  and one have to remove the parentheses, semicolons, commas.
+
+  See also the mails from Per Bothner bug-texinfo, Sun, 22 Jul 2012 01:45:54.
+
+specialized @def, without a need for category:
+@defun and @deftypefun 
+<funcsynopsis><funcprototype><funcdef>TYPE <function>NAME</function><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
+
+specialized @def, without a need for category, but without DocBook synopsis
+because of missing class:
+@defmethod, @deftypemethod: methodsynopsis cannot be used since the class
+is not available
+@defivar and @deftypeivar: fieldsynopsis cannot be used since the class
+is not available
+
+Generic @def with a need for a category
+For deffn deftypefn (and defmac?, defspec?), the possibilities of 
+funcsynopsis, with a category added could be used:
+  <funcsynopsis><funcprototype><funcdef role=...>TYPE <function>NAME</function></funcdef><paramdef>PARAMTYPE <parameter>PARAM</parameter></paramdef></funcprototype></funcsynopsis>
+
+Alternatively, use funcsynopsisinfo for the category.
+
+Generic @def with a need for a category, but without DocBook synopsis because
+of missing class:
+@defop and @deftypeop: methodsynopsis cannot be used since the class
+is not available
+defcv, deftypecv: fieldsynopsis cannot be used since the class
+is not available
+
+Remaining @def without DocBook synopsis because there is no equivalent, 
+and requires a category
+defvr (defvar, defopt), deftypevr (deftypevar)
+deftp
+
+  deftypevr, deftypecv: use type and not returnvalue for the type
 
   also informalfigure in @float
 
@@ -260,12 +302,12 @@ indices/index_test.init
 
 
 
-Missing test outputs  in t/
-===========================
+Missing test outputs as files in t/
+===================================
 
 output files split (node or not split) could be interesting +texi2html 
 style for
-sectioning/
+t/30sectioning.t
  chapter_between_nodes (more_nodes_than_sections renamed)
  more_sections_than_nodes
  two_nodes_between_chapters
@@ -274,7 +316,7 @@ sectioning/
  character_and_spaces_in_node
  some_at_commands_in_ref_nodes
  at_commands_in_refs  
- character_and_spaces_in_refs <- split/mono (chapter/node+node-files+USE_NODES/docbook?)
+ character_and_spaces_in_refs <- mono/chapter
  rec_nodes (with USE_NODES and without)
  loop_nodes?
  nodes_before_top?
@@ -293,36 +335,6 @@ sectioning/
  one_node_explicit_directions_anchor (with USE_NODES and without) Really useful?
  top_without_node_sections
 
-info_tests
+t/info_tests.t
  space_in_setfilename
-
-
-Tests in tests and missing tests in t/
-======================================
-
---> following changed when element_next for special elements became
-set.  Nothing tests that in the t/ test suite, notably because nothing tests
-the texi2html output.  All are in tests/sectioning/
-  node_footnote_use_node
-  no_node_chapter_split
-  nodes_after_top_before_section_use_nodes_chapter
-  nodes_after_top_before_chapter_use_nodes_chapter
-
-equivalent_nodes mainly for equivalent_nodes-noderename.cnf parsing and renamed
-nodes handling.
-
-HTML command:
-sectioning/test_refs.texi with USE_NODES and split at nodes for testing 
-nodes without sectioning commands below a chapter.
-
-NO_MONOLITHIC
-in layout/no_monolithic
-          no_monolithic_only_toc_out
-   layout/navigation_*
-
-partly done:
-indices/index_special_region.texi  (in HTML, split output test.)
-
-split_nocopying.texi      this requires not using the test suite in t/ since 
-                          the test suite inhibits splitting
 

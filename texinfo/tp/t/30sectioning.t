@@ -496,28 +496,7 @@ $section_in_unnumbered_text
 '],
 );
 
-my @tests_info = (
-['anchor_zero',
-'@node Top
-
-@anchor{0}.
-
-@xref{0}.
-'],
-['top_no_argument_and_node',
-'@node start
-@top
-'],
-['top_no_argument_and_top_node',
-'@node Top
-@top
-'],
-['one_subsection_and_node',
-'@node one node
-@subsection The subsection
-'],
-['character_and_spaces_in_refs',
-'@node Top
+my $character_and_spaces_in_refs_text = '@node Top
 @top Test refs
 
 @menu
@@ -555,7 +534,30 @@ my @tests_info = (
 @node  local   node,,/;<=>?[\\]^_`|~,other nodes
 
 @bye
+';
+
+my @tests_info = (
+['anchor_zero',
+'@node Top
+
+@anchor{0}.
+
+@xref{0}.
 '],
+['top_no_argument_and_node',
+'@node start
+@top
+'],
+['top_no_argument_and_top_node',
+'@node Top
+@top
+'],
+['one_subsection_and_node',
+'@node one node
+@subsection The subsection
+'],
+['character_and_spaces_in_refs',
+$character_and_spaces_in_refs_text],
 ['character_and_spaces_in_node',
 '
 @node Top
@@ -1839,6 +1841,9 @@ my @test_out_files = (
 
 @node @^a
 ', {'test_split' => 'node'}],
+['character_and_spaces_in_refs_out',
+$character_and_spaces_in_refs_text,
+{'test_split' => 'node'}]
 );
 
 foreach my $test (@test_out_files) {
