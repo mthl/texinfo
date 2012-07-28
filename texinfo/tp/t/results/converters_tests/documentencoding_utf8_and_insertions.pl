@@ -301,7 +301,7 @@ $result_errors{'documentencoding_utf8_and_insertions'} = [];
 
 $result_converted{'plaintext'}->{'documentencoding_utf8_and_insertions'} = '– — ” “ ‘ ’ ‘in code’.  ẽ.
 
-     -- --- \'\' `` ` \' ‘in code’. ẽ.
+     -- --- \'\' `` ` \' in code. ẽ.
 ';
 
 

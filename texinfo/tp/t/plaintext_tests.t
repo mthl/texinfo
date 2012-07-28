@@ -493,6 +493,39 @@ Para
 Para indented.
 
 '],
+['nested_code_commands',
+'@code{aA @kbd{fg}}.
+@code{cc @code{gg}}.
+@command{in command @kbd{fg}}
+@code{in code @command{in command}}
+@samp{in samp @code{in code}}
+@code{in code @samp{in samp}}
+@var{in var @code{in code}}
+@code{in code @var{in var}}
+
+@example
+@code{in code}
+@code{aA @kbd{fg}}
+@kbd{hh}
+@command{in command @kbd{fg}}
+@code{in code @command{in command}}
+@samp{in samp @code{in code}}
+@code{in code @samp{in samp}}
+@var{in var @code{in code}}
+@code{in code @var{in var}}
+@end example
+
+@display
+@kbd{in disp}
+@code{aA @kbd{fg}}
+@command{in command @kbd{fg}}
+@code{in code @command{in command}}
+@samp{in samp @code{in code}}
+@code{in code @samp{in samp}}
+@var{in var @code{in code}}
+@code{in code @var{in var}}
+@end display
+'],
 );
 
 my $insert_copying_and_paragraph = 

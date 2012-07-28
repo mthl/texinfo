@@ -779,7 +779,7 @@ $result_errors{'at_commands_glued_in_example'} = [
 
 $result_converted{'plaintext'}->{'at_commands_glued_in_example'} = '     at@.
      TeXTeXTeX.
-     code\'in code\'code.
+     codein codecode.
      acronymABC (aaa bb cc)acronym.
      acronym2ABCacronym.
      emailmali <somebody>email.

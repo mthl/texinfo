@@ -261,12 +261,19 @@ foreach my $asis_command (@asis_commands) {
 my @quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
   'option', 'samp');
 
+# %quoted_code_commands have no quote when in code command contexts
+my %quoted_code_commands;
+
 # Quotes are reset in converter_initialize and unicode quotes are used 
 # if @documentencoding utf-8 is used.
 foreach my $quoted_command (@quoted_commands) {
   #$style_map{$quoted_command} = ['`', "'"];
   $style_map{$quoted_command} = ["'", "'"];
+  $quoted_code_commands{$quoted_command} = 1;
 }
+
+delete $quoted_code_commands{'cite'};
+delete $quoted_code_commands{'samp'};
 
 $style_map{'key'} = ['<', '>'];
 $style_map{'indicateurl'} = ['<', '>'];
@@ -562,7 +569,7 @@ sub new_formatter($$;$)
   }
 
   my $formatter = {'container' => $container, 'upper_case' => 0,
-                   'code' => 0, 'w' => 0, 'type' => $type,
+                   'code' => 0, 'code_command'=> 0, 'w' => 0, 'type' => $type,
                    'frenchspacing_stack' => [$self->get_conf('frenchspacing')]};
 
   if ($type eq 'unfilled') {
@@ -572,6 +579,7 @@ sub new_formatter($$;$)
       } elsif ($preformatted_code_commands{$context}
                or $format_raw_commands{$context}) {
         $formatter->{'code'} = 1;
+        $formatter->{'code_command'} = 1 if ($preformatted_code_commands{$context});
         last;
       }
     }
@@ -1527,8 +1535,9 @@ sub _convert($$)
       return $result;
     } elsif ($self->{'style_map'}->{$command} 
          or ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command')) {
-      $formatter->{'code'}++
-        if ($code_style_commands{$command});
+      if ($code_style_commands{$command}) {
+        $formatter->{'code'}++;
+      }
       if ($no_punctation_munging_commands{$command}) {
         push @{$formatter->{'frenchspacing_stack'}}, 'on';
         $formatter->{'container'}->set_space_protection(undef,
@@ -1549,8 +1558,18 @@ sub _convert($$)
         $text_before = $root->{'extra'}->{'begin'};
         $text_after = $root->{'extra'}->{'end'};
       } else {
-        $text_before = $self->{'style_map'}->{$command}->[0];
-        $text_after = $self->{'style_map'}->{$command}->[1];
+        if ($quoted_code_commands{$command} and $formatter->{'code_command'}) {
+          $text_before = '';
+          $text_after = '';
+        } else {
+          $text_before = $self->{'style_map'}->{$command}->[0];
+          $text_after = $self->{'style_map'}->{$command}->[1];
+        }
+      }
+      # do this after determining $text_before/$text_after such that it
+      # doesn't impact the current command, but only commands nested within
+      if ($quoted_code_commands{$command}) {
+        $formatter->{'code_command'}++;
       }
       $result .= $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_next($text_before, 
@@ -1579,6 +1598,9 @@ sub _convert($$)
       }
       if ($code_style_commands{$command}) {
         $formatter->{'code'}--;
+      }
+      if ($quoted_code_commands{$command}) {
+        $formatter->{'code_command'}--;
       }
       if ($no_punctation_munging_commands{$command}) {
         pop @{$formatter->{'frenchspacing_stack'}};

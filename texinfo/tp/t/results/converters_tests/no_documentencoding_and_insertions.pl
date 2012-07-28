@@ -254,7 +254,7 @@ $result_errors{'no_documentencoding_and_insertions'} = [];
 
 $result_converted{'plaintext'}->{'no_documentencoding_and_insertions'} = '- -- " " \' \' \'in code\'.  e~.
 
-     -- --- \'\' `` ` \' \'in code\'. e~.
+     -- --- \'\' `` ` \' in code. e~.
 ';
 
 

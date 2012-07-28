@@ -2728,23 +2728,23 @@ $result_converted{'plaintext'}->{'test_allowcodebreaks'} = 'Before first allowco
 \'-3bbb\' \'4aaa-bbb\' \' 5aaa-bb\' \'6aaa-bb \' \'ccc 7aaa-bbb\' \'ccc 8aaa-bbb
 ddd\' \'9aaa-bbb rrr_vv\' \'fff-- --- minus-b aa-tte\'ff_gg aar-oman anc-hor\'
 
-     \'in-example\'
+     in-example
 
    After false Out of code -- out-of-code.  \'1aaa\' \'2aaa-\' \'-3bbb\'
 \'4aaa-bbb\' \' 5aaa-bb\' \'6aaa-bb \' \'ccc 7aaa-bbb\' \'ccc 8aaa-bbb ddd\'
 \'9aaa-bbb rrr_vv\' \'fff-- --- minus-b aa-tte\'ff_gg aar-oman anc-hor\'
 
-     \'in-example\'
+     in-example
 
    In w: Out of code -- out-of-code.  \'1aaa\' \'2aaa-\' \'-3bbb\' \'4aaa-bbb\'  \' 5aaa-bb\' \'6aaa-bb \' \'ccc 7aaa-bbb\' \'ccc 8aaa-bbb ddd\' \'9aaa-bbb rrr_vv\' \'fff-- --- minus-b aa-tte\'ff_gg aar-oman  anc-hor\' 
 
-     \'in-example\'
+     in-example
 
    After true Out of code -- out-of-code.  \'1aaa\' \'2aaa-\' \'-3bbb\'
 \'4aaa-bbb\' \' 5aaa-bb\' \'6aaa-bb \' \'ccc 7aaa-bbb\' \'ccc 8aaa-bbb ddd\'
 \'9aaa-bbb rrr_vv\' \'fff-- --- minus-b aa-tte\'ff_gg aar-oman anc-hor\'
 
-     \'in-example\'
+     in-example
 ';
 
 
