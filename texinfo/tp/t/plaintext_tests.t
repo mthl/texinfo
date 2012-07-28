@@ -526,6 +526,10 @@ Para indented.
 @code{in code @var{in var}}
 @end display
 '],
+['multiline_verb_after_space',
+'AA @verb{*aa
+bb*}.
+'],
 );
 
 my $insert_copying_and_paragraph = 

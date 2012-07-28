@@ -41,6 +41,7 @@ Following should be an error:
 @example
 @heading A heading
 @end example
+Example in heading/heading_in_example.
 
 Image on sectioning command line haven't their length ignored correctly.
 Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
@@ -52,9 +53,6 @@ listoffloats;  Line numbers are right, though, so maybe this is not
 an issue.
 
 warn nested footnotes.
-
-coverage_braces/verb_in_xref there should certainly be an error
-message, and the *Note is stuck with the following word.
 
 converters_tests/things_before_setfilename there is no error
 for anchor and footnote before setfilename.  It is not completly
@@ -145,61 +143,6 @@ Labels in Info (which also means index entries)
 DocBook
 =======
 
-Instead of synopsis it might seem to be relevant to use specialized synopsis, 
-funcsynopsis/funcprototype for deftype* and some def*, and other for object 
-oriented.  There are many issues such that this possibility do not appear
-appealing at all.
-
-1) there is no possibility to have a category.  So the category must be 
-   added somewhere as a role= or in the *synopsisinfo, or this should only
-   be used for specialized @def, like @defun.
-
-2) @defmethod and @deftypemethod cannot really be mapped to methodsynopsis
-   as the class name is not associated with the method as in Texinfo, but 
-   instead  the method should be in a class in docbook.
-
-3) From the docbook reference for funcsynopsis
-  "For the most part, the processing application is expected to
-  generate all of the parentheses, semicolons, commas, and so on
-  required in the rendered synopsis. The exception to this rule is
-  that the spacing and other punctuation inside a parameter that is a
-  pointer to a function must be provided in the source markup."
-
-  So this mean it is language specific (C, as said in the docbook doc)
-  and one have to remove the parentheses, semicolons, commas.
-
-  See also the mails from Per Bothner bug-texinfo, Sun, 22 Jul 2012 01:45:54.
-
-specialized @def, without a need for category:
-@defun and @deftypefun 
-<funcsynopsis><funcprototype><funcdef>TYPE <function>NAME</function><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
-
-specialized @def, without a need for category, but without DocBook synopsis
-because of missing class:
-@defmethod, @deftypemethod: methodsynopsis cannot be used since the class
-is not available
-@defivar and @deftypeivar: fieldsynopsis cannot be used since the class
-is not available
-
-Generic @def with a need for a category
-For deffn deftypefn (and defmac?, defspec?), the possibilities of 
-funcsynopsis, with a category added could be used:
-  <funcsynopsis><funcprototype><funcdef role=...>TYPE <function>NAME</function></funcdef><paramdef>PARAMTYPE <parameter>PARAM</parameter></paramdef></funcprototype></funcsynopsis>
-
-Alternatively, use funcsynopsisinfo for the category.
-
-Generic @def with a need for a category, but without DocBook synopsis because
-of missing class:
-@defop and @deftypeop: methodsynopsis cannot be used since the class
-is not available
-defcv, deftypecv: fieldsynopsis cannot be used since the class
-is not available
-
-Remaining @def without DocBook synopsis because there is no equivalent, 
-and requires a category
-defvr (defvar, defopt), deftypevr (deftypevar)
-deftp
-
   deftypevr, deftypecv: use type and not returnvalue for the type
 
   also informalfigure in @float
@@ -211,7 +154,7 @@ deftp
   what about @titlefont in docbook?
 
   maybe use simpara instead of para. Indeed, simpara is for paragraph without
-  block elent within, and it should be that way in generated output.
+  block element within, and it should be that way in generated output.
 
   put <title> in <articleinfo>?
 
@@ -300,13 +243,74 @@ Add @value to the corresponding commands categories?
 tests .init file not relevant since indices cannot be split anymore
 indices/index_test.init     
 
+Use of specialized synopsis in DocBook is not a priority and it is not even 
+obvious that it is interesting to do so.  The following notes explain the
+possibilities and issues extensively.
+
+Instead of synopsis it might seem to be relevant to use specialized synopsis, 
+funcsynopsis/funcprototype for deftype* and some def*, and other for object 
+oriented.  There are many issues such that this possibility do not appear
+appealing at all.
+
+1) there is no possibility to have a category.  So the category must be 
+   added somewhere as a role= or in the *synopsisinfo, or this should only
+   be used for specialized @def, like @defun.
+
+2) @defmethod and @deftypemethod cannot really be mapped to methodsynopsis
+   as the class name is not associated with the method as in Texinfo, but 
+   instead  the method should be in a class in docbook.
+
+3) From the docbook reference for funcsynopsis
+  "For the most part, the processing application is expected to
+  generate all of the parentheses, semicolons, commas, and so on
+  required in the rendered synopsis. The exception to this rule is
+  that the spacing and other punctuation inside a parameter that is a
+  pointer to a function must be provided in the source markup."
+
+  So this mean it is language specific (C, as said in the docbook doc)
+  and one have to remove the parentheses, semicolons, commas.
+
+  See also the mails from Per Bothner bug-texinfo, Sun, 22 Jul 2012 01:45:54.
+
+specialized @def, without a need for category:
+@defun and @deftypefun 
+<funcsynopsis><funcprototype><funcdef>TYPE <function>NAME</function><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
+
+specialized @def, without a need for category, but without DocBook synopsis
+because of missing class:
+@defmethod, @deftypemethod: methodsynopsis cannot be used since the class
+is not available
+@defivar and @deftypeivar: fieldsynopsis cannot be used since the class
+is not available
+
+Generic @def with a need for a category
+For deffn deftypefn (and defmac?, defspec?), the possibilities of 
+funcsynopsis, with a category added could be used:
+  <funcsynopsis><funcprototype><funcdef role=...>TYPE <function>NAME</function></funcdef><paramdef>PARAMTYPE <parameter>PARAM</parameter></paramdef></funcprototype></funcsynopsis>
+
+Alternatively, use funcsynopsisinfo for the category.
+
+Generic @def with a need for a category, but without DocBook synopsis because
+of missing class:
+@defop and @deftypeop: methodsynopsis cannot be used since the class
+is not available
+defcv, deftypecv: fieldsynopsis cannot be used since the class
+is not available
+
+Remaining @def without DocBook synopsis because there is no equivalent, 
+and requires a category
+defvr (defvar, defopt), deftypevr (deftypevar)
+deftp
+
 
 
 Missing test outputs as files in t/
 ===================================
 
 output files split (node or not split) could be interesting +texi2html 
-style for
+style for some tests.  However, the test suite is already too long to
+run so such additions should be done with caution.
+
 t/30sectioning.t
  chapter_between_nodes (more_nodes_than_sections renamed)
  more_sections_than_nodes

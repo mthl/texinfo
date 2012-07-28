@@ -254,7 +254,7 @@ $result_errors{'verb_in_xref'} = [
 
 
 
-$result_converted{'plaintext'}->{'verb_in_xref'} = '*Notewith
+$result_converted{'plaintext'}->{'verb_in_xref'} = '*Note with
 verb
 
 ggg : Top.

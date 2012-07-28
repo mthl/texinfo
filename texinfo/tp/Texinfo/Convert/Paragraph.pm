@@ -212,6 +212,8 @@ sub _add_next($;$$$$$)
     $paragraph->{'word'} .= $word;
     $paragraph->{'underlying_word'} .= $underlying_word unless($transparent);
     if ($word =~ /\n/) {
+      $result .= $paragraph->{'space'};
+      $paragraph->{'space'} = '';
       $result .= $paragraph->{'word'};
       $paragraph->_end_line();
       $paragraph->{'word_counter'} = 0;
@@ -221,8 +223,17 @@ sub _add_next($;$$$$$)
       $paragraph->{'word_counter'} += length($word);
     }
     if ($paragraph->{'DEBUG'}) {
-      print STDERR "WORD+ $word -> $paragraph->{'word'}\n";
-      print STDERR "UNDERLYING_WORD+ $underlying_word -> $paragraph->{'underlying_word'}\n";
+      my $para_word = 'UNDEF';;
+      if (defined($paragraph->{'word'})) {
+        $para_word = $paragraph->{'word'};
+      }
+      my $para_underlying_word = 'UNDEF';;
+      if (defined($paragraph->{'underlying_word'})) {
+        $para_underlying_word = $paragraph->{'word'};
+      }
+
+      print STDERR "WORD+ $word -> $para_word\n";
+      print STDERR "UNDERLYING_WORD+ $underlying_word -> $para_underlying_word\n";
     }
     # The $paragraph->{'counter'} != 0 is here to avoid having an
     # additional line output when the text is longer than the max.
@@ -319,7 +330,7 @@ sub add_text($$;$)
     if ($text =~ s/^(\s+)//) {
       my $spaces = $1;
       $underlying_text =~ s/^(\s+)//;
-      print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'DEBUG'});
+      print STDERR "SPACES($paragraph->{'counter'}) `$spaces'\n" if ($paragraph->{'DEBUG'});
       #my $added_word = $paragraph->{'word'};
       if ($paragraph->{'protect_spaces'}) {
         $paragraph->{'word'} .= $spaces;
