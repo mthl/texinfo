@@ -1,0 +1,167 @@
+texi def_cmds.texi
+texi menus.texi
+texi test_menuentry.texi
+texi quotation.texi
+texi float_with_at_commands.texi
+texi float_copying.texi
+texi macro_in_menu.texi
+texi ref_in_anchor.texi
+texi tex.texi --set-init-var 'L2H 1' --iftex
+texi block_EOL.texi
+texi detailmenus.texi
+texi commands_in_ifset.texi
+texi simplest.texi
+texi punctuation.texi
+texi punctuation_frenchspacing.texi
+texi simple_punctuation.texi
+texi def_end_of_line.texi
+texi def_end_of_line_footnote.texi
+texi center.texi
+texi tables.texi
+texi multitables.texi
+texi formats_in_menu.texi
+texi heading.texi
+texi quotes.texi
+texi indicateurl_paragraph.texi
+texi complex_command_in_simple_command.texi
+texi symbol_after_block.texi
+texi symbol_after_command.texi
+texi html-extrali.texi
+texi html-para.texi
+texi html-title.texi
+texi images.texi --docbook
+texi index_in_item_line_table.texi
+texi index_in_item_line_vtable.texi
+texi index_in_item_line_table_in_code.texi
+texi index_in_item_line_vtable_printindex.texi
+texi table_in_table_item.texi
+texi nested_formats.texi
+texi inter_item_commands.texi
+texi double_style_paragraph.texi
+texi at_command_glued.texi
+texi test_sp.texi
+texi kbdinputstyle.texi
+texi simple_table.texi
+texi empty_item.texi
+texi direntry_dircategory.texi
+texi nested_table.texi
+texi paragraph_in_samp.texi
+texi formats_only_titles.texi
+texi line_commands_comments_spaces.texi
+texi lightweight_markups.texi
+texi punctuation_in_command.texi
+texi test_w.texi
+texi empty_deftype.texi
+texi allowcodebreaks.texi
+texi format_in_titlepage.texi
+texi no_colon_in_menu.texi
+texi menu_title_before_entries.texi
+texi warn_characters_in_var.texi
+texi itemize_w.texi
+# for makeinfo
+texi ../coverage/formatting.texi -U texi2html
+def_cmds def_cmds.texi
+def_cmds_info def_cmds.texi --info
+menus menus.texi
+menus_simple menus.texi --set-init-var 'SIMPLE_MENU 1'
+test_menuentry test_menuentry.texi
+quotation quotation.texi
+float_with_at_commands float_with_at_commands.texi
+float_copying float_copying.texi --split chapter
+macro_in_menu macro_in_menu.texi
+ref_in_anchor ref_in_anchor.texi
+tex tex.texi --set-init-var 'L2H 1' --iftex
+tex_notex tex.texi
+tex_httex tex.texi --init tex4ht.pm --iftex
+#tex_mediawiki tex.texi --init mediawiki.pm --iftex
+tex_httex_mediawiki tex.texi --html --init tex4ht.pm --init mediawiki.pm --iftex
+tex_l2h_mediawiki tex.texi --html --set-init-var 'L2H 1' --iftex --init mediawiki.pm
+block_EOL block_EOL.texi
+block_EOL_tex block_EOL.texi --set-init-var 'L2H 1' --iftex
+detailmenus detailmenus.texi
+detailmenus_simple detailmenus.texi --set-init-var 'SIMPLE_MENU 1'
+commands_in_ifset commands_in_ifset.texi
+#simplest_test_prefix simplest.texi --set-init-var 'PREFIX truc'
+#simplest_test_prefix_info simplest.texi --info --set-init-var 'PREFIX truc'
+simplest_test_css simplest.texi --css-include file.css
+simplest_test_date_in_header simplest.texi --set-init-var 'DATE_IN_HEADER 1'
+punctuation punctuation.texi
+punctuation_frenchspacing punctuation_frenchspacing.texi
+simple_punctuation simple_punctuation.texi
+def_end_of_line def_end_of_line.texi
+def_end_of_line_footnote def_end_of_line_footnote.texi
+center center.texi
+tables tables.texi
+multitables multitables.texi
+formats_in_menu formats_in_menu.texi
+heading heading.texi
+quotes quotes.texi
+indicateurl_paragraph indicateurl_paragraph.texi
+complex_command_in_simple_command complex_command_in_simple_command.texi
+symbol_after_block symbol_after_block.texi
+symbol_after_command symbol_after_command.texi
+formatting_weird_quotes ../coverage/formatting.texi --set-init-var 'OPEN_QUOTE_SYMBOL @' --set-init-var "CLOSE_QUOTE_SYMBOL '&lsquo;"
+comments_redefine_need ../coverage/comments.texi --init redefine_need.init
+simplest_httex simplest.texi --init tex4ht.pm --iftex
+#html-extrali html-extrali.texi --init makeinfo.pm
+html-para html-para.texi
+html-title html-title.texi
+images images.texi
+images_docbook images.texi --docbook
+float_docbook ../coverage/float.texi --docbook -U texi2html
+formatting_docbook ../coverage/formatting.texi --docbook -U texi2html
+formatting_xml ../coverage/formatting.texi --xml -U texi2html
+index_in_item_line_table index_in_item_line_table.texi 
+index_in_item_line_vtable index_in_item_line_vtable.texi
+index_in_item_line_table_in_code index_in_item_line_table_in_code.texi
+index_in_item_line_vtable_printindex index_in_item_line_vtable_printindex.texi
+table_in_table_item table_in_table_item.texi
+menus_xml menus.texi --xml
+menus_xml_makeinfo menus.texi --xml -U texi2html
+float_xml ../coverage/float.texi --xml
+nested_formats nested_formats.texi
+inter_item_commands inter_item_commands.texi
+inter_item_commands_xml inter_item_commands.texi --xml
+inter_item_commands_docbook inter_item_commands.texi --docbook
+double_style_paragraph double_style_paragraph.texi
+at_command_glued at_command_glued.texi
+test_sp test_sp.texi
+kbdinputstyle kbdinputstyle.texi
+simple_table simple_table.texi
+empty_item empty_item.texi
+direntry_dircategory direntry_dircategory.texi
+nested_table nested_table.texi 
+paragraph_in_samp paragraph_in_samp.texi
+simple_images simple_images.texi
+html-extrali_plain html-extrali.texi
+formats_only_titles formats_only_titles.texi
+line_commands_comments_spaces line_commands_comments_spaces.texi
+punctuation_in_command punctuation_in_command.texi
+test_w test_w.texi
+empty_deftype empty_deftype.texi
+no_colon_in_menu no_colon_in_menu.texi
+warn_characters_in_var warn_characters_in_var.texi
+itemize_w itemize_w.texi
+
+#lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.pm
+quotation_docbook quotation.texi --docbook
+at_command_glued_info at_command_glued.texi --info
+test_sp_info test_sp.texi --info
+kbdinputstyle_info kbdinputstyle.texi --info
+simple_images_info simple_images.texi --info
+nested_formats_info nested_formats.texi --info
+formatting_html ../coverage/formatting.texi --html --no-split
+formatting_html_nodes ../coverage/formatting.texi --html --split node --node-files --set-init-var 'TOP_FILE index.html'
+formatting_info ../coverage/formatting.texi --info -U texi2html
+formatting_plaintext ../coverage/formatting.texi --plaintext -U texi2html
+#formatting_mediawiki ../coverage/formatting.texi --init mediawiki.pm
+direntry_dircategory_info direntry_dircategory.texi --info
+direntry_dircategory_info_split direntry_dircategory.texi --info --split-size 1
+direntry_dircategory_xml direntry_dircategory.texi --xml
+heading_info heading.texi --info
+nested_table_info nested_table.texi --info
+simple_table_info simple_table.texi --info
+allowcodebreaks allowcodebreaks.texi
+format_in_titlepage format_in_titlepage.texi
+menu_title_before_entries menu_title_before_entries.texi
+menu_title_before_entries_xml menu_title_before_entries.texi --xml

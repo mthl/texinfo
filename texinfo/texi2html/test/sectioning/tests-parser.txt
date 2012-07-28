@@ -1,0 +1,120 @@
+# formats :_xml :_docbook :_html
+texi html-top.texi
+texi empty_nodes.texi
+top top.texi
+sectioning sectioning.texi
+#--debug 1
+sectioning_directions sectioning.texi --init test_directions.init
+novalidate novalidate.texi
+#makeinfo_novalidate_split novalidate.texi --init makeinfo.pm --no-node-file
+# --debug 255
+#makeinfo_novalidate_unsplit novalidate.texi --init makeinfo.pm --split no --no-node-file
+#makeinfo_novalidate_unsplit_node_file novalidate.texi --init makeinfo.pm --split no
+# in docbook, the @top 'chapter' is closed before the section, makeinfo
+# closes it after the section. 
+# also text before first chapter is not allowed in docbook.
+first_section_no_node first_section_no_node.texi
+nodes_before_top nodes_before_top.texi
+nodes_after_top nodes_after_top.texi --set-init-var 'USE_NODES 1'
+nodes_after_top_no_node nodes_after_top.texi
+section_nodes_before_top section_nodes_before_top.texi
+nodes_after_top_before_chapter nodes_after_top_before_chapter.texi
+nodes_after_top_before_section nodes_after_top_before_section.texi --split chapter
+nodes_after_top_before_section_use_nodes nodes_after_top_before_section.texi --set-init-var 'USE_NODES 1'
+nodes_after_top_before_section_use_nodes_chapter nodes_after_top_before_section.texi --set-init-var 'USE_NODES 1' --split chapter
+nodes_after_top_before_chapter_use_nodes_chapter nodes_after_top_before_chapter.texi --set-init-var 'USE_NODES 1' --split chapter
+# --debug 255
+nodes_test nodes_test.texi
+no_section_no_node no_section.texi
+no_section no_section.texi --set-init-var 'USE_NODES 1'
+no_section_directions no_section.texi --init test_directions.init --set-init-var 'USE_NODES 1'
+no_section_directions_no_node no_section.texi --init test_directions.init
+no_node no_node.texi
+no_node_directions no_node.texi --init test_directions.init
+no_node_chapter_split no_node.texi --split chapter
+no_node_no_top no_node_no_top.texi
+no_section_no_top no_section_no_top.texi --set-init-var 'USE_NODES 1'
+no_section_no_top_no_node no_section_no_top.texi
+one_section one_section.texi
+one_node_no_node one_node.texi
+one_node one_node.texi --set-init-var 'USE_NODES 1'
+one_node_and_section one_node_and_section.texi
+first_section_and_nodes first_section_and_nodes.texi
+double_top double_top.texi
+rec_nodes rec_nodes.texi --set-init-var 'USE_NODES 1'
+rec_nodes_no_node rec_nodes.texi
+#makeinfo_rec_nodes rec_nodes.texi --init makeinfo.pm --no-node-files
+lower_subsub lower_subsub.texi
+raiselowersections raiselowersections.texi
+top_without_node top_without_node.texi
+before_node_and_section before_node_and_section.texi
+section_before_chapter section_before_chapter.texi
+node_footnote_end node_footnote.texi --footnote-style=end
+# --debug 255
+node_footnote_use_node node_footnote.texi --set-init-var 'USE_NODES 1' --node-files --footnote-style=end --split node
+test_refs test_refs.texi
+test_refs_chapter test_refs.texi --split chapter
+test_refs_nodes test_refs.texi --split node --node-files --set-init-var 'USE_NODES 1'
+at_commands_in_refs at_commands_in_refs.texi
+other_at_comands_in_nodes_refs other_at_comands_in_nodes_refs.texi
+equivalent_nodes equivalent_nodes.texi --set-init-var 'USE_NODES 1'
+equivalent_nodes_no_node equivalent_nodes.texi
+equivalent_nodes_test_renamed_nodes equivalent_nodes.texi --init test_renamed_nodes.init
+html-top_no_Top_node html-top.texi
+menu-whitespace_plain menu-whitespace.texi
+#menu-whitespace menu-whitespace.texi --init makeinfo.pm
+menu-whitespace_xml menu-whitespace.texi --xml
+node-whitespace_plain node-whitespace.texi
+#node-whitespace node-whitespace.texi --init makeinfo.pm
+nodename_parentheses nodename_parentheses.texi
+nodes_id_docbook nodes_id.texi --docbook
+two_footnotes_in_nodes_plain two_footnotes_in_nodes.texi
+#two_footnotes_in_nodes two_footnotes_in_nodes.texi --init makeinfo.pm
+section_in_unnumbered section_in_unnumbered.texi
+#more_nodes_than_sections more_nodes_than_sections.texi --init makeinfo.pm
+more_sections_than_nodes more_sections_than_nodes.texi
+no_element no_element.texi 
+one_element one_element.texi
+#--debug 255
+placed_things_before_element placed_things_before_element.texi
+menutextorder menutextorder.texi
+semi_auto semi_auto.texi
+anchor_in_footnote anchor_in_footnote.texi
+test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros
+only_documentencoding only_documentencoding.texi
+weird_at_commands_in_nodes weird_at_commands_in_nodes.texi
+double_node_anchor_float double_node_anchor_float.texi
+empty_nodes empty_nodes.texi
+section_before_part section_before_part.texi
+part_before_section part_before_section.texi
+chapter_before_part chapter_before_part.texi
+part_before_chapter part_before_chapter.texi
+hole_in_sectioning hole_in_sectioning.texi
+section_before_top section_before_top.texi
+section_before_top_no_node section_before_top_no_node.texi
+part_chapter_after_top part_chapter_after_top.texi
+part_node_chapter_after_top part_node_chapter_after_top.texi
+node_part_chapter_after_top node_part_chapter_after_top.texi
+node_part_chapter_after_chapter node_part_chapter_after_chapter.texi
+part_node_before_top part_node_before_top.texi
+part_node_after_top part_node_after_top.texi
+section_chapter_before_top section_chapter_before_top.texi
+section_chapter_before_top_nodes section_chapter_before_top_nodes.texi
+part_node_appendix part_node_appendix.texi
+part_appendix part_appendix.texi
+part_node_part_appendix part_node_part_appendix.texi
+part_node_part_node_appendix part_node_part_node_appendix.texi
+part_node_node_part_appendix part_node_node_part_appendix.texi
+empty_top_node_up menu-whitespace.texi --set-init-var TOP_NODE_UP
+text_before_line_command text_before_line_command.texi
+loop_nodes loop_nodes.texi
+
+test_refs_docbook test_refs.texi --docbook
+at_commands_in_refs_info at_commands_in_refs.texi --info
+two_footnotes_in_nodes_info two_footnotes_in_nodes.texi --info
+two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi --info --footnote-style=separate
+node_footnote_info node_footnote.texi --info
+node_footnote_separated_info node_footnote.texi --info --footnote-style=separate
+anchor_in_footnote_info anchor_in_footnote.texi --info
+anchor_in_footnote_separated_info anchor_in_footnote.texi --info --footnote-style=separate
+novalidate_info novalidate.texi --info

@@ -1,0 +1,79 @@
+texi test_include.texi
+texi test_include_with_setfilename.texi
+texi macros.texi
+texi macro_zero.texi
+texi simple_macro.texi
+texi nested_macro_calls.texi
+texi two_macros_on_a_line.texi
+texi glossary.texi
+texi imbricated_macros.texi
+texi expansion_order.texi
+texi ifclear_in_macro.texi
+texi macro_call_in_ifset.texi
+texi ifset_in_macro.texi
+texi_ifset_defined ifset_in_macro.texi -D notes --macro-expand=@OUT_DIR@/ifset_in_macro.texi
+dumptexi_ifset_defined ifset_in_macro.texi -D notes --set-init-var 'DUMP_TEXI 1'
+texi not_ifset_text.texi
+texi bib-example.texi
+texi quote-args.texi
+texi macro-at.texi
+texi alias.texi
+texi nested_ignore.texi
+texi include_macro.texi
+texi node-expand.texi
+texi node-value.texi
+texi value_in_pass0_macros.texi
+texi macros_in_pass0_macros.texi
+texi include-value.texi
+texi value_in_misc_valid.texi
+texi macro_in_misc.texi
+texi macro_in_pass_texi_commands.texi
+texi macro_commands_in_pass_texi_commands.texi
+texi no_arg_macro.texi
+texi empty_macro.texi
+texi test_paths.texi
+texi cond.texi --ifhtml --ifinfo --no-iftex
+test_include test_include.texi
+texi simple_imbricated_macro.texi
+texi setfilename_comment.texi
+texi bad_setfilename.texi
+texi double_setfilename.texi
+texi space_end_setfilename.texi
+texi setfilename_space_comment.texi
+texi space_in_setfilename.texi
+# in the texinfo test suite, the default is info, and there is also a 
+# test with --html which doesn't make much sense here, replaced with --xml
+# though it is not the same
+cond cond.texi
+cond_xml cond.texi --xml
+cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
+cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
+cond_info cond.texi --info
+defcondx_Dbar defxcond.texi -D bar
+# --debug 1
+defcondx_Ubar defxcond.texi -U bar
+macro-at macro-at.texi
+# --debug 1
+value_in_pass0_macros_plain value_in_pass0_macros.texi --macro-expand=@OUT_DIR@/value_in_pass0_macros-expanded.texi
+macros_in_pass0_macros_plain macros_in_pass0_macros.texi --macro-expand=@OUT_DIR@/macros_in_pass0_macros-expanded.texi
+macro-at_info macro-at.texi --info
+#value_in_pass0_macros value_in_pass0_macros.texi --init makeinfo.pm
+#macros_in_pass0_macros macros_in_pass0_macros.texi --init makeinfo.pm
+node-expand_plain node-expand.texi
+#node-expand node-expand.texi --init makeinfo.pm
+node-expand_xml node-expand.texi --xml
+node-expand_info node-expand.texi --info
+include-value include-value.texi
+value_in_misc value_in_misc_valid.texi --iftex
+macro_in_misc macro_in_misc.texi
+macro_commands_in_pass_texi_commands macro_commands_in_pass_texi_commands.texi
+test_include_with_setfilename_info test_include_with_setfilename.texi --info
+no_arg_macro_info no_arg_macro.texi --info
+simple_imbricated_macro simple_imbricated_macro.texi
+test_paths test_paths.texi
+setfilename_comment setfilename_comment.texi
+bad_setfilename bad_setfilename.texi
+double_setfilename double_setfilename.texi
+space_end_setfilename space_end_setfilename.texi
+setfilename_space_comment setfilename_space_comment.texi
+space_in_setfilename space_in_setfilename.texi

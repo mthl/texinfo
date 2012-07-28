@@ -1,0 +1,5 @@
+texi singular.texi
+singular_plain singular.texi --split chapter
+singular singular.texi --init-file t2h_singular.init --set-init-var 'L2H 1' --set-init-var 'SHORTEXTN 1' --set-init-var 'PREFIX sing' --set-init-var 'TOP_FILE index.htm' --no-verbose
+singular_httex singular.texi --init-file t2h_singular.init --init tex4ht.pm --set-init-var 'SHORTEXTN 1' --set-init-var 'PREFIX sing' --set-init-var 'TOP_FILE index.htm' --no-verbose
+#singular_html singular.texi --init-file t2h_singular.init --no-verbose --html

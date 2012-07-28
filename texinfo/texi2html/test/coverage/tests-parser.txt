@@ -1,0 +1,18 @@
+texi comments.texi
+texi formatting.texi
+texi pass0_macros.texi
+texi float.texi
+texi imbrications.texi
+texi formats_titles.texi
+texi delcomment.texi
+#texi line_commands_comment.texi
+comments comments.texi
+formatting formatting.texi --internal-links=@OUT_DIR@internal_links_formatting.txt
+pass0_macros pass0_macros.texi
+float float.texi
+imbrications imbrications.texi
+formats_titles formats_titles.texi
+# -debug 255
+comments_info comments.texi --info -U texi2html
+delcomment delcomment.texi
+#line_commands_comment line_commands_comment.texi

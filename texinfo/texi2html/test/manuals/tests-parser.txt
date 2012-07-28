@@ -1,0 +1,22 @@
+texi info-stnd.texi
+texi texinfo.texi --ifinfo
+texi cvs.texi
+texi mini_ker.texi
+texi hello.texi
+hello hello.texi
+hello_nodes hello.texi --split node --node-files hello.texi
+info-stnd info-stnd.texi --split chapter --node-files 
+texinfo texinfo.texi --split chapter --ifinfo --internal-links=@OUT_DIR@internal_links_texinfo.txt
+# FIXME /dev/null not portable
+texinfo_info_dev_null texinfo.texi --info -o /dev/null
+texinfo_nodes texinfo.texi --split node --node-files --ifinfo
+ccvs cvs.texi --split chapter --init cvs.init
+#ccvs_mediawiki cvs.texi --init mediawiki.pm --split chapter
+#ccvs_mediawiki_nosplit cvs.texi --init mediawiki.pm --init cvs.init
+ccvs_info cvs.texi --info
+mini_ker mini_ker.texi --init book.pm --split section --node-files --set-init-var 'USE_NODES 1' --iftex --init mini_ker_t2h.init --init tex4ht.pm
+texinfo_xml texinfo.texi --xml
+texinfo_html texinfo.texi --html
+texinfo_html_nosplit texinfo.texi --html --no-split
+hello_html hello.texi --html
+hello_html_nosplit hello.texi --html --no-split
