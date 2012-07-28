@@ -193,7 +193,7 @@ do
       if [ "z$format" != 'z' ]; then
         format_option="--$format"
       else
-        format_option="--set-init-variable=TEXI2HTML"
+        format_option="--set-customization-variable=TEXI2HTML"
       fi
     fi
     command_run=
@@ -225,8 +225,8 @@ do
       # @setfilename
       echo "$command $dir" >> $logfile
       #echo "$dir($format)"
-      echo "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init --error-limit=1000 --set-init-var TEST=1 --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init --error-limit=1000 --set-init-var TEST=1 --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2"
+      echo "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init --error-limit=1000 --set-customization-variable TEST=1 --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init --error-limit=1000 --set-customization-variable TEST=1 --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2"
       ret=$?
     else
       one_test_done=yes
@@ -246,7 +246,7 @@ do
           continue 2
         fi
         use_latex2html=yes
-        l2h_tmp_dir="--set-init-var 'L2H_TMP $tmp_dir'"
+        l2h_tmp_dir="--set-customization-variable 'L2H_TMP $tmp_dir'"
       elif echo "$remaining" | grep -qs -- '-init tex4ht.pm'; then
         if [ "$no_tex4ht" = 'yes' ]; then
           echo "S: (no tex4ht) $current"
@@ -268,8 +268,8 @@ do
       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       echo "$command $dir" >> $logfile
       #echo "$dir($format)"
-      echo "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var L2H_FILE=$testdir/$srcdir_test/../../t/init/l2h.init --error-limit=1000 --set-init-var TEST=1 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var L2H_FILE=$testdir/$srcdir_test/../../t/init/l2h.init --error-limit=1000 --set-init-var TEST=1 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+      echo "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-customization-variable L2H_FILE=$testdir/$srcdir_test/../../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-customization-variable L2H_FILE=$testdir/$srcdir_test/../../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       ret=$?
       rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
         ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \

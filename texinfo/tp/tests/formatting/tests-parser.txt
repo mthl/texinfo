@@ -26,10 +26,10 @@ split_nocopying split_nocopying.texi --info
 split_nocopying_split split_nocopying.texi --info --split-size 10
 # FIXME /dev/null not portable
 split_nocopying_split_dev_null split_nocopying.texi --info --split-size 1 -o /dev/null
-simplest_test_prefix simplest.texi --set-init-var 'PREFIX truc'
-simplest_test_prefix_info simplest.texi --info --set-init-var 'PREFIX truc'
+simplest_test_prefix simplest.texi --set-customization-variable 'PREFIX truc'
+simplest_test_prefix_info simplest.texi --info --set-customization-variable 'PREFIX truc'
 simplest_test_css simplest.texi --css-include file.css
-simplest_test_date_in_header simplest.texi --set-init-var 'DATE_IN_HEADER 1'
+simplest_test_date_in_header simplest.texi --set-customization-variable 'DATE_IN_HEADER 1'
 documentlanguage_set_option documentlanguage_set.texi --document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
 documentlanguage_set_option_info documentlanguage_set.texi --info --document-language fr
