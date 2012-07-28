@@ -704,6 +704,48 @@ undef, {'test_file' => 'things_before_setfilename.texi'}
 ['things_before_setfilename_no_element',
 undef, {'test_file' => 'things_before_setfilename_no_element.texi'}
 ],
+['spaces_in_node_names',
+'@node Top
+
+@menu
+* a@ @ ::
+* b@verb{:  :}::
+* c@ ::
+@end menu
+
+@node a@ @ 
+
+@node b@verb{:  :}
+
+@node c@w{  }
+
+@ref{a@ @ }
+
+@ref{b@verb{:  :}}
+
+@ref{c@w{  }}
+'],
+['spaces_in_empty_node_names',
+'@node Top
+
+@menu
+* @ @ ::
+* @verb{:  :}::
+* @ ::
+@end menu
+
+@node @ @ 
+
+@node @verb{:  :}
+
+@node @w{  }
+
+@ref{@ @ }
+
+@ref{@verb{:  :}}
+
+@ref{@w{  }}
+'],
 );
 
 my @html_text_cases = (
@@ -761,6 +803,8 @@ my %info_tests = (
  'at_commands_in_refs' => 1,
  'things_before_setfilename' => 1,
  'things_before_setfilename_no_element' => 1,
+ 'spaces_in_node_names' => 1,
+ 'spaces_in_empty_node_names' => 1,
 );
 
 my %html_tests = (
