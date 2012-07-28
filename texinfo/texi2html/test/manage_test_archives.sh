@@ -13,9 +13,9 @@ if [ z"$VERSION" = 'z' ]; then
   exit 1
 fi
 
-texi2html_tests_name=t2h_tests_results-$VERSION
 tp_tests_name=tp_tests_results-$VERSION
-manuals=t2h_tests_big_manuals-$VERSION
+texi2html_tests_name=t2h_tests_results
+manuals=t2h_tests_big_manuals
 
 if [ $command = 'pack' ]; then
   rm -f $texi2html_tests_name.tar.gz $tp_tests_name.tar.gz $manuals.tar.gz
