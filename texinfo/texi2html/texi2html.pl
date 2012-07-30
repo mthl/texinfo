@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.439 2011-08-20 14:38:02 pertusus Exp $
+# $Id: texi2html.pl,v 1.440 2012-07-30 22:46:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -2689,7 +2689,12 @@ sub gdt($;$$)
     my $state = shift;
 
     # FIXME this should be done only once, for @documentencoding
-    my $encoding = lc(get_conf('documentencoding'));
+    my $encoding;
+    my $input_encoding = get_conf('documentencoding');
+    if (defined($input_encoding))
+    {
+      $encoding = lc($input_encoding);
+    }
     if (defined($encoding) and $encoding ne '' and exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
     {
        $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};

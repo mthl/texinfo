@@ -49,6 +49,7 @@ elif [ $command = 'get' ]; then :
 elif [ $command = 'clean' ]; then
   rm -rf download-mirror.savannah.gnu.org
   rm -f $texi2html_tests_name.tar.gz $tp_tests_name.tar.gz
+  rm -f ../$texi2html_tests_name.tar.gz ../$tp_tests_name.tar.gz
 elif [ $command = 'unpack' ]; then
   (
   cd ..

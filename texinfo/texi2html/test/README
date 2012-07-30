@@ -1,4 +1,4 @@
-$Id: README,v 1.10 2011-02-21 01:08:33 pertusus Exp $
+$Id: README,v 1.11 2012-07-30 22:46:05 pertusus Exp $
 texinfo/texi2html/tests/README
 
   Copyright (C) 2010 Free Software Foundation, Inc.
@@ -10,6 +10,18 @@ texinfo/texi2html/tests/README
 Files anywhere within the test/ subdirectory which have no other
 copyright notice are hereby placed in the public domain.
 
+
+Test results are not in CVS.  To download them, you need wget.  To get the
+archives, and then unpack them, run
+  ./manage_test_archives.sh get
+  ./manage_test_archives.sh unpack
+
+To clean up archives and download directory, run
+  ./manage_test_archives.sh clean
+
+To run the tests, it should be necessary to configure and build texi2html.
+To do that, in the texi2html directory, run
+  autoreconf && ./configure && make
 
 
 Prerequisites
