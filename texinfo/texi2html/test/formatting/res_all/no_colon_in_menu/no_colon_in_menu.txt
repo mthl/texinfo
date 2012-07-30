@@ -1,5 +1,0 @@
-menu entry without colon
-************************
-
-* a
-
