@@ -1,8 +1,0 @@
-Top
-***
-
-This is a very simple texi manual.
-In included file.
-
-After inclusion.
-

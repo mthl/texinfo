@@ -1,7 +1,0 @@
-Test command not closed on table line
-*************************************
-
-first item
-line
-line in code in item
-

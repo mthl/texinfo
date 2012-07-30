@@ -1,9 +1,0 @@
-Element
-*******
-
-Begin para
-after noindent.
-
-Begin para2
-after noindent2.
-

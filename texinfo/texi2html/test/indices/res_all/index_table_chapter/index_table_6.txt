@@ -1,5 +1,0 @@
-2 node with printindex: Z
-*************************
-* Index:
-* zoncept: 3 Indices refs.
-

@@ -1,8 +1,0 @@
-split indices
-*************
-
-Text in top.
-
-
-* first::
-

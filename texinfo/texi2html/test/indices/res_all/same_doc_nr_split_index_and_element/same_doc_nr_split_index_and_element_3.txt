@@ -1,8 +1,0 @@
-Appendix A Indices: T - W
-*************************
-* Index:
-* t entry: top element.
-* u entry: top element.
-* v entry: top element.
-* w entry: top element.
-

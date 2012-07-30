@@ -1,8 +1,0 @@
-Top
-***
-
-texte
-
-
-This is some \LaTeX{}
-

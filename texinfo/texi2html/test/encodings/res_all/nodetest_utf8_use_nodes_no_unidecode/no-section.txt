@@ -1,3 +1,0 @@
-no section
-----------
-This is a node without sectioning command.

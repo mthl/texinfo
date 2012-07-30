@@ -1,6 +1,0 @@
-unnumbered: U
-*************
-* Index:
-* unnumbered: unnumbered.
-* unnumbered after text: unnumbered.
-

@@ -1,4 +1,0 @@
-direntry direcategory after first node
-**************************************
-
-

@@ -1,5 +1,0 @@
-Test command not closed in cartouche
-************************************
-
-cartouche in code 
-

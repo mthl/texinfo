@@ -1,4 +1,0 @@
-File used for navigation testing
-********************************
-
-

@@ -1,1 +1,0 @@
-* <http://foo.org/some/long/url/which/goes/past/eighty/columns/and/has/no/alternative/text.html>
