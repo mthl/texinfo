@@ -1,3 +1,9 @@
+2012-07-29  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\file, \option): \let to \code, not \samp.
+	(\indicateurl): \let to \samp, not \code.
+	* doc/texinfo.txi (env, file, option): document this.
+
 2012-07-22  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (HTML Xref 8-bit Character Expansion): English.

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.457 2012-07-23 00:03:28 karl Exp $
+@c $Id: texinfo.txi,v 1.458 2012-07-30 00:13:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6791,8 +6791,7 @@ produces a link you can follow.
 @code{@@url} is a synonym for @code{@@uref}.  (Originally, @code{@@url}
 had the meaning of @code{@@indicateurl}
 (@pxref{indicateurl,,@code{@@indicateurl}}), but in actual practice it
-was misused the vast majority of the time.  So we've changed the
-meaning.)
+was almost always misused.  So we've changed the meaning.)
 
 The second argument, if specified, is the text to display (the default
 is the url itself); in Info and DVI output, but not in HTML output, the
@@ -6891,9 +6890,6 @@ The @uref{/man.cgi/1/ls,,ls} program @dots{}
 The <a href="/man.cgi/1/ls">ls</a> program @dots{}
 @end example
 
-To merely indicate a url without creating a link people can follow, use
-@code{@@indicateurl} (@pxref{indicateurl, @code{@@indicateurl}}).
-
 Some people prefer to display urls in the unambiguous format:
 
 @display
@@ -6906,6 +6902,9 @@ You can use this form in the input file if you wish.  We feel it's not
 necessary to include the @samp{<URL:} and @samp{>} in the output,
 since any software that tries to detect urls in text already has to
 detect them without the @samp{<URL:} to be useful.
+
+To merely indicate a url without creating a link people can follow, use
+@code{@@indicateurl} (@pxref{indicateurl, @code{@@indicateurl}}).
 
 
 @node cite
@@ -7505,10 +7504,10 @@ to output the @code{<@dots{}>} format if you wish.)
 @subsection @code{@@env}@{@var{environment-variable}@}
 @findex env
 
-Use the @code{@@env} command to indicate environment variables, as used
-by many operating systems, including GNU@.  Do not use it for
-metasyntactic variables; use @code{@@var} instead (see the previous
-section).
+Use the @code{@@env} command to indicate environment variables, as
+used by many operating systems, including GNU@.  Do not use it for
+@emph{meta}syntactic variables; use @code{@@var} for those (see the
+previous section).
 
 @code{@@env} is equivalent to @code{@@code} in its effects.
 For example:
@@ -7531,8 +7530,8 @@ file, buffer, or directory, or is the name of a node in Info.  You can
 also use the command for file name suffixes.  Do not use @code{@@file}
 for symbols in a programming language; use @code{@@code}.
 
-Currently, @code{@@file} is equivalent to @code{@@samp} in its effects.
-For example,
+@code{@@file} is equivalent to @code{code} in its effects.  For
+example,
 
 @example
 The @@file@{.el@} files are in
@@ -7584,7 +7583,7 @@ Use the @code{@@option} command to indicate a command-line option; for
 example, @option{-l} or @option{--version} or
 @option{--output=@var{filename}}.
 
-@code{@@option} is equivalent to @code{@@samp} in its effects.
+@code{@@option} is equivalent to @code{@@code} in its effects.
 For example:
 
 @example
@@ -7595,8 +7594,6 @@ The option @@option@{-l@} produces a long listing.
 The option @option{-l} produces a long listing.
 @end quotation
 
-In tables, putting options inside @code{@@code} produces a
-more pleasing effect.
 
 @node dfn
 @subsection @code{@@dfn}@{@var{term}@}
@@ -7813,6 +7810,7 @@ the @code{@@r} command, has any regular use.
 * Smallcaps::                   How to use the small caps font.
 * Fonts::                       Various font commands for printed output.
 @end menu
+
 
 @node emph & strong
 @subsection @code{@@emph}@{@var{text}@} and @code{@@strong}@{@var{text}@}
@@ -21958,7 +21956,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.457 2012-07-23 00:03:28 karl Exp $
+$Id: texinfo.txi,v 1.458 2012-07-30 00:13:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
