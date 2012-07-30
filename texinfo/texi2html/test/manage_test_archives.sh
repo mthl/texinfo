@@ -43,7 +43,7 @@ elif [ $command = 'get' ]; then :
   wget -N -r -np -A '*.tar.gz*' http://$download_dir/ || exit 1
   for file in $texi2html_tests_name $tp_tests_name; do
     if [ -f  $download_dir/$file.tar.gz ]; then
-      cp -a $download_dir/$file.tar.gz .
+      cp -a $download_dir/$file.tar.gz ..
     fi
   done
 elif [ $command = 'clean' ]; then
@@ -53,19 +53,19 @@ elif [ $command = 'unpack' ]; then
   (
   cd ..
   for file in $texi2html_tests_name $tp_tests_name; do
-    if [ -f test/$file.tar.gz ]; then
-      tar x -z -f test/$file.tar.gz
+    if [ -f $file.tar.gz ]; then
+      tar x -z -f $file.tar.gz
     fi
   done
   #tar x -z -f test/$manuals.tar.gz
   )
 elif [ $command = 'upload' ]; then
-  mkdir -p upload
+  mkdir -p ../upload
   #cp -a $texi2html_tests_name.tar.gz upload
   #gpg -b --use-agent upload/$texi2html_tests_name.tar.gz
-  cp -a $tp_tests_name.tar.gz upload
-  gpg -b --use-agent upload/$tp_tests_name.tar.gz
-  rsync -a --delete -essh upload/ $user@dl.sv.gnu.org:/releases/texinfo/
+  cp -a $tp_tests_name.tar.gz ../upload
+  gpg -b --use-agent ../upload/$tp_tests_name.tar.gz
+  rsync -a -essh ../upload/ $user@dl.sv.gnu.org:/releases/texinfo/
 else
   echo "Unknown command (pack/packt2h/unpack/get/clean/upload)"
   exit 1

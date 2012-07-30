@@ -4,7 +4,7 @@ texi cvs.texi
 texi mini_ker.texi
 texi hello.texi
 hello hello.texi
-hello_nodes hello.texi --split node --node-files hello.texi
+hello_nodes hello.texi --split node --node-files
 info-stnd info-stnd.texi --split chapter --node-files 
 texinfo texinfo.texi --split chapter --ifinfo --set-init-var 'IDX_SUMMARY 1' --internal-links=@OUT_DIR@internal_links_texinfo.txt
 # FIXME /dev/null not portable
