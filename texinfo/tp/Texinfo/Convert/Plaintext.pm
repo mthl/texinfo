@@ -259,7 +259,7 @@ foreach my $asis_command (@asis_commands) {
 }
 
 my @quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
-  'option', 'samp');
+  'option', 'samp', 'indicateurl');
 
 # %quoted_code_commands have no quote when in code command contexts
 my %quoted_code_commands;
@@ -274,9 +274,9 @@ foreach my $quoted_command (@quoted_commands) {
 
 delete $quoted_code_commands{'cite'};
 delete $quoted_code_commands{'samp'};
+delete $quoted_code_commands{'indicateurl'};
 
 $style_map{'key'} = ['<', '>'];
-$style_map{'indicateurl'} = ['<', '>'];
 
 # in those commands, there is no addition of double space after a dot.
 # math is special
@@ -1640,10 +1640,10 @@ sub _convert($$)
         }
         my $prepended;
         if ($name and $email) {
-          $prepended = $self->gdt('{name} @indicateurl{{email}}', 
+          $prepended = $self->gdt('{name} @url{{email}}', 
                            {'name' => $name, 'email' => $email});
         } elsif ($email) {
-          $prepended = $self->gdt('@indicateurl{{email}}', 
+          $prepended = $self->gdt('@url{{email}}', 
                            {'email' => $email});
         } elsif ($name) {
           $prepended = {'contents' => $name};
@@ -1670,7 +1670,7 @@ sub _convert($$)
                   'url' => $url });
             unshift @{$self->{'current_contents'}->[-1]}, $prepended;
           } else {
-            my $prepended = $self->gdt('@code{{url}}', 
+            my $prepended = $self->gdt('@t{<{url}>}', 
                                         {'url' => $url});
             unshift @{$self->{'current_contents'}->[-1]}, $prepended
           }
