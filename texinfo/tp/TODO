@@ -11,6 +11,10 @@ Document TEXTCONTENT_COMMENT.
 Bugs
 ====
 
+@example
+in example @r{in r now @code{in code}}
+@end example
+
 
 Delayed bugs
 ============

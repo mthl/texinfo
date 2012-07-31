@@ -1258,7 +1258,7 @@ $default_commands_conversion{'today'} = \&_convert_today_command;
 # style commands
 
 my %quoted_style_commands;
-foreach my $quoted_command ('file', 'option', 'samp') {
+foreach my $quoted_command ('samp') {
   $quoted_style_commands{$quoted_command} = 1;
 }
 
@@ -1271,7 +1271,7 @@ $style_attribute_commands{'normal'} = {
       'dfn'         => 'em',
       'emph'        => 'em',
       'env'         => 'code',
-      'file'        => 'tt',
+      'file'        => 'samp',
       'headitemfont' => 'b', # not really that, in fact it is 
                              # in <th> rather than <td>
       'i'           => 'i',
@@ -1714,6 +1714,11 @@ sub _convert_key_command($$$$)
     return '';
   }
   return $self->protect_text('<') .$text .$self->protect_text('>');
+  #if (!$self->in_code()) {
+  #  return '<tt>'.$text .'</tt>';
+  #} else {
+  #  return $text;
+  #}
 }
 
 $default_commands_conversion{'key'} = \&_convert_key_command;
@@ -1733,10 +1738,11 @@ sub _convert_indicateurl_command($$$$)
     return '';
   }
   if (!$self->in_string()) {
-    return $self->protect_text('<').'<code>' .$text 
-                    .'</code>'.$self->protect_text('>');
+    return $self->get_conf('OPEN_QUOTE_SYMBOL').'<code>' .$text 
+                .'</code>'.$self->get_conf('CLOSE_QUOTE_SYMBOL');
   } else {
-    return $self->protect_text('<').$text.$self->protect_text('>');
+    return $self->get_conf('OPEN_QUOTE_SYMBOL').$text.
+              $self->get_conf('CLOSE_QUOTE_SYMBOL');
   }
 }
 
@@ -7352,10 +7358,11 @@ sub _convert($$;$)
         }
         if (!defined($self->{'commands_conversion'}->{$command_name})) {
           print STDERR "No command_conversion for $command_name\n";
-          return '';
+          $result = '';
+        } else {
+          $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
+                 $command_name, $root, $args_formatted, $content_formatted);
         }
-        $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
-                $command_name, $root, $args_formatted, $content_formatted);
       } else {
         $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
                 $command_name, $root, $content_formatted);
@@ -7391,6 +7398,18 @@ sub _convert($$;$)
       if (exists($context_brace_commands{$command_name})) {
         pop @{$self->{'document_context'}};
       }
+      #if ($args_formatted) {
+      #  if (!defined($self->{'commands_conversion'}->{$command_name})) {
+      #    print STDERR "No command_conversion for $command_name\n";
+      #    $result = '';
+      #  } else {
+      #    $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
+      #            $command_name, $root, $args_formatted, $content_formatted);
+      #  }
+      #} else {
+      #  $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
+      #          $command_name, $root, $content_formatted);
+      #}
       return $result;
     } else {
       print STDERR "Unknown command `$command_name'\n"
