@@ -14,6 +14,14 @@ A quot---ation
 A Note
 @end quotation
 '],
+['quotation_author_in_example',
+'@example
+@quotation 
+@author Some One
+A quot---ation
+@end quotation
+@end example
+'],
 ['space_at_commands_end_quotation_line',
 '
 @quotation @@ at the end of line @

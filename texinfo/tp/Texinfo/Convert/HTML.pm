@@ -2474,7 +2474,7 @@ sub _convert_center_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  if ($self->in_preformatted() or $self->in_string()) {
+  if ($self->in_string()) {
     return $self->_convert_preformatted_type($cmdname, $command, 
                                              $args->[0]->{'normal'}."\n");
   } else {
@@ -2656,13 +2656,17 @@ sub _convert_float_command($$$$$)
   my $prepended_text;
   if ($self->in_string()) {
     if ($prepended) {
+      $self->_new_document_context('float prepended');
       $prepended_text = $self->convert_tree ($prepended);
+      pop @{$self->{'document_context'}};
     } else {
       $prepended_text = '';
     }
     if ($caption) {
+      $self->_new_document_context('float caption');
       $caption_text = $self->convert_tree ({'contents' 
                        => $caption->{'args'}->[0]->{'contents'}});
+      pop @{$self->{'document_context'}};
     }
     return $prepended.$content.$caption_text;
   }
@@ -2696,12 +2700,16 @@ sub _convert_float_command($$$$$)
       }
       push @caption_contents, @caption_original_contents;
       if ($new_paragraph) {
+        $self->_new_document_context('float caption');
         $caption_text = $self->convert_tree ({'contents' => \@caption_contents});
+        pop @{$self->{'document_context'}};
         $prepended_text = '';
       }
     }
     if (!$caption_text) {
+      $self->_new_document_context('float prepended');
       $prepended_text = $self->convert_tree ($prepended);
+      pop @{$self->{'document_context'}};
       if ($prepended_text ne '') {
         $prepended_text = '<p><strong>'.$prepended_text.'</strong></p>';
       }
@@ -2713,7 +2721,9 @@ sub _convert_float_command($$$$$)
   #  Texinfo::Parser::_print_current ($caption)."\n";
   
   if ($caption and !$caption_text) {
+    $self->_new_document_context('float caption');
     $caption_text = $self->convert_tree ($caption->{'args'}->[0]);
+    pop @{$self->{'document_context'}};
   }
   return $self->_attribute_class('div','float'). '>' .$label."\n".$content.
      '</div>' . $prepended_text.$caption_text;
@@ -4434,6 +4444,7 @@ sub _new_document_context($$)
 {
   my $self = shift;
   my $cmdname = shift;
+
   push @{$self->{'document_context'}},
           {'cmdname' => $cmdname,
            'formatting_context' => [{'cmdname' => $cmdname}],
@@ -7263,8 +7274,6 @@ sub _convert($$;$)
       $self->{'current_root_command'} = $root;
     }
     if (exists($self->{'commands_conversion'}->{$command_name})) {
-      my $result;
-      my $content_formatted;
       if (exists($context_brace_commands{$command_name})) {
         $self->_new_document_context($command_name);
       }
@@ -7299,6 +7308,7 @@ sub _convert($$;$)
       } elsif ($command_name eq 'w') {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'space_protected'}++;
       }
+      my $content_formatted;
       if ($root->{'contents'}) {
         $content_formatted = $self->_convert_contents($root, $command_type);
       }
@@ -7356,16 +7366,6 @@ sub _convert($$;$)
             $arg_idx++;
           }
         }
-        if (!defined($self->{'commands_conversion'}->{$command_name})) {
-          print STDERR "No command_conversion for $command_name\n";
-          $result = '';
-        } else {
-          $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
-                 $command_name, $root, $args_formatted, $content_formatted);
-        }
-      } else {
-        $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
-                $command_name, $root, $content_formatted);
       }
       if (exists ($composition_context_commands{$command_name})) {
         pop @{$self->{'document_context'}->[-1]->{'composition_context'}};
@@ -7398,18 +7398,21 @@ sub _convert($$;$)
       if (exists($context_brace_commands{$command_name})) {
         pop @{$self->{'document_context'}};
       }
-      #if ($args_formatted) {
-      #  if (!defined($self->{'commands_conversion'}->{$command_name})) {
-      #    print STDERR "No command_conversion for $command_name\n";
-      #    $result = '';
-      #  } else {
-      #    $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
-      #            $command_name, $root, $args_formatted, $content_formatted);
-      #  }
-      #} else {
-      #  $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
-      #          $command_name, $root, $content_formatted);
-      #}
+
+      # args are formatted, now format the command itself
+      my $result;
+      if ($args_formatted) {
+        if (!defined($self->{'commands_conversion'}->{$command_name})) {
+          print STDERR "No command_conversion for $command_name\n";
+          $result = '';
+        } else {
+          $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
+                  $command_name, $root, $args_formatted, $content_formatted);
+        }
+      } else {
+        $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
+                $command_name, $root, $content_formatted);
+      }
       return $result;
     } else {
       print STDERR "Unknown command `$command_name'\n"
