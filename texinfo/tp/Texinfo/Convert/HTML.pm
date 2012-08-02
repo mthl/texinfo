@@ -464,9 +464,8 @@ sub command_text($$$)
         $tree = {'type' => '_string',
                  'contents' => [$tree]};
       }
-      $self->_new_document_context($command->{'cmdname'});
-      my $result = $self->_convert($tree, 'external manual');
-      pop @{$self->{'document_context'}};
+      my $result = $self->convert_tree_new_formatting_context(
+            $tree, $command->{'cmdname'});
       return $result;
     }
   }
@@ -542,16 +541,12 @@ sub command_text($$$)
     }
     
     print STDERR "DO $target->{'id'}($type)\n" if ($self->get_conf('DEBUG'));
-    #$self->{'ignore_notice'}++ if ($type ne 'text');
-    $self->{'ignore_notice'}++;
     if ($type =~ /^(.*)_nonumber$/) {
       $tree = $target->{'tree_nonumber'} 
         if (defined($target->{'tree_nonumber'}));
-      $target->{$type} = $self->_convert($tree, $explanation);
-    } else {
-      $target->{$type} = $self->_convert($tree, $explanation);
     }
-    #$self->{'ignore_notice'}-- if ($type ne 'text');
+    $self->{'ignore_notice'}++;
+    $target->{$type} = $self->_convert($tree, $explanation);
     $self->{'ignore_notice'}--;
 
     pop @{$self->{'document_context'}};
@@ -613,6 +608,26 @@ sub get_value($$)
   } else {
     return undef;
   }
+}
+
+sub convert_tree_new_formatting_context($$$;$)
+{
+  my $self = shift;
+  my $tree = shift;
+  my $context_string = shift;
+  my $multiple_pass = shift;
+  $self->_new_document_context($context_string);
+  if ($multiple_pass) {
+    $self->{'ignore_notice'}++;
+    push @{$self->{'multiple_pass'}}, $multiple_pass;
+  }
+  my $result = $self->convert_tree($tree);
+  pop @{$self->{'document_context'}};
+  if ($multiple_pass) {
+    $self->{'ignore_notice'}--;
+    pop @{$self->{'multiple_pass'}};
+  }
+  return $result;
 }
 
 # see http://www.w3.org/TR/REC-html40/types.html#type-links
@@ -808,9 +823,8 @@ sub _translate_names($)
   foreach my $hash (\%BUTTONS_TEXT, \%BUTTONS_GOTO, \%BUTTONS_NAME) {
     foreach my $button (keys (%$hash)) {
       if (ref($hash->{$button})) {
-        $self->_new_document_context("button $button");
-        $hash->{$button} = $self->convert_tree($hash->{$button});
-        pop @{$self->{'document_context'}};
+        $hash->{$button} = $self->convert_tree_new_formatting_context(
+                                       $hash->{$button}, "button $button");
       }
     }
   }
@@ -821,14 +835,9 @@ sub _translate_names($)
         $translated_commands{$command} = 1; 
         delete $self->{'commands_formatting'}->{$context}->{$command};
         if (defined($self->{'commands_translation'}->{$context}->{$command})) {
-          $self->_new_document_context("translated command $command");
-          #my $command_tree 
           $self->{'commands_formatting'}->{$context}->{$command} 
            = $self->gdt($self->{'commands_translation'}->{$context}->{$command},
                         undef, 'translated_text');
-          #$self->{'commands_formatting'}->{$context}->{$command} 
-          #  = $self->convert_tree($command_tree);
-          pop @{$self->{'document_context'}};
         }
       }
     }
@@ -1403,8 +1412,8 @@ sub _convert_value_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  return $self->convert_tree ($self->gdt('@{No value for `{value}\'@}',
-                                        {'value' => $command->{'type'}}));
+  return $self->convert_tree($self->gdt('@{No value for `{value}\'@}',
+                                       {'value' => $command->{'type'}}));
 }
 
 $default_commands_conversion{'value'} = \&_convert_value_command;
@@ -1454,12 +1463,10 @@ sub _convert_explained_command($$$$)
     $explanation_string = $args->[1]->{'string'};
   }
   if ($command->{'extra'}->{'explanation_contents'}) {
-    $self->{'ignore_notice'}++;
-    $self->_new_document_context($cmdname);
-    $explanation_string = $self->convert_tree({'type' => '_string',
-          'contents' => $command->{'extra'}->{'explanation_contents'}});
-    pop @{$self->{'document_context'}};
-    $self->{'ignore_notice'}--;
+    $explanation_string = $self->convert_tree_new_formatting_context(
+      {'type' => '_string', 
+       'contents' => $command->{'extra'}->{'explanation_contents'}},
+      $cmdname, $cmdname);
   }
   my $result = $args->[0]->{'normal'};
   if (!$self->in_string()) {
@@ -1471,7 +1478,7 @@ sub _convert_explained_command($$$$)
     $result .= "</$cmdname>";
   }
   if ($with_explanation) {
-    $result = $self->convert_tree ($self->gdt('{explained_string} ({explanation})',
+    $result = $self->convert_tree($self->gdt('{explained_string} ({explanation})',
           {'explained_string' => {'type' => '_converted',
                    'text' => $result},
            'explanation' => $args->[1]->{'tree'} }));
@@ -1491,7 +1498,7 @@ sub _convert_anchor_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  my $id = $self->command_id ($command);
+  my $id = $self->command_id($command);
   if (defined($id) and $id ne '' and !@{$self->{'multiple_pass'}}
       and !$self->in_string()) {
     return "<a name=\"$id\"></a>";
@@ -2583,13 +2590,8 @@ sub _convert_listoffloats_command($$$$)
 
      my $caption_text;
      if ($caption) {
-       $self->{'ignore_notice'}++;
-       $self->_new_document_context($cmdname);
-       push @{$self->{'multiple_pass'}}, 'listoffloats';
-       $caption_text = $self->convert_tree($caption->{'args'}->[0]);
-       pop @{$self->{'multiple_pass'}};
-       pop @{$self->{'document_context'}};
-       $self->{'ignore_notice'}--;
+       $caption_text = $self->convert_tree_new_formatting_context(
+         $caption->{'args'}->[0], $cmdname, 'listoffloats');
      } else {
        $caption_text = '';
      }
@@ -2656,17 +2658,15 @@ sub _convert_float_command($$$$$)
   my $prepended_text;
   if ($self->in_string()) {
     if ($prepended) {
-      $self->_new_document_context('float prepended');
-      $prepended_text = $self->convert_tree ($prepended);
-      pop @{$self->{'document_context'}};
+      $prepended_text = $self->convert_tree_new_formatting_context(
+        $prepended, 'float prepended');
     } else {
       $prepended_text = '';
     }
     if ($caption) {
-      $self->_new_document_context('float caption');
-      $caption_text = $self->convert_tree ({'contents' 
-                       => $caption->{'args'}->[0]->{'contents'}});
-      pop @{$self->{'document_context'}};
+      $caption_text = $self->convert_tree_new_formatting_context(
+        {'contents' => $caption->{'args'}->[0]->{'contents'}}, 
+        'float caption');
     }
     return $prepended.$content.$caption_text;
   }
@@ -2700,16 +2700,14 @@ sub _convert_float_command($$$$$)
       }
       push @caption_contents, @caption_original_contents;
       if ($new_paragraph) {
-        $self->_new_document_context('float caption');
-        $caption_text = $self->convert_tree ({'contents' => \@caption_contents});
-        pop @{$self->{'document_context'}};
+        $caption_text = $self->convert_tree_new_formatting_context(
+         {'contents' => \@caption_contents}, 'float caption');
         $prepended_text = '';
       }
     }
     if (!$caption_text) {
-      $self->_new_document_context('float prepended');
-      $prepended_text = $self->convert_tree ($prepended);
-      pop @{$self->{'document_context'}};
+      $prepended_text = $self->convert_tree_new_formatting_context(
+        $prepended, 'float prepended');
       if ($prepended_text ne '') {
         $prepended_text = '<p><strong>'.$prepended_text.'</strong></p>';
       }
@@ -2721,9 +2719,8 @@ sub _convert_float_command($$$$$)
   #  Texinfo::Parser::_print_current ($caption)."\n";
   
   if ($caption and !$caption_text) {
-    $self->_new_document_context('float caption');
-    $caption_text = $self->convert_tree ($caption->{'args'}->[0]);
-    pop @{$self->{'document_context'}};
+    $caption_text = $self->convert_tree_new_formatting_context(
+      $caption->{'args'}->[0], 'float caption');
   }
   return $self->_attribute_class('div','float'). '>' .$label."\n".$content.
      '</div>' . $prepended_text.$caption_text;
@@ -2873,13 +2870,11 @@ sub _convert_item_command($$$$)
        and $itemize->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
       $prepend = '';
     } else {
-      $self->{'ignore_notice'}++;
-      # This should not be needed, only in case of invalid constructs
-      push @{$self->{'multiple_pass'}}, 'item_prepended';
-      $prepend = $self->convert_tree(
-         {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}->[0]});
-      pop @{$self->{'multiple_pass'}};
-      $self->{'ignore_notice'}--;
+      # Setting multiple expansion should not be needed, except in 
+      # case of invalid constructs
+      $prepend = $self->convert_tree_new_formatting_context(
+        {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}->[0]},
+        $command->{'cmdname'}, 'item_prepended');
     }
     if ($content =~ /\S/) {
       return '<li>' . $prepend .' '. $content . '</li>';
@@ -3085,7 +3080,7 @@ sub _convert_xref_commands($$$$)
         = $root->{'extra'}->{'node_argument'}->{'manual_content'};
       my $file_with_node_tree = {'type' => '_code', 
                                   'contents' => [@{$node_entry->{'manual_content'}}]};
-      $file = $self->_convert($file_with_node_tree, 'node file in ref');
+      $file = $self->convert_tree($file_with_node_tree, 'node file in ref');
     }
     my $href = $self->command_href($node_entry);
 
@@ -3099,7 +3094,7 @@ sub _convert_xref_commands($$$$)
     } elsif (!defined($name) and $node_entry->{'node_content'}) {
       my $node_no_file_tree = {'type' => '_code',
                                'contents' => [@{$node_entry->{'node_content'}}]};
-      my $node_name = $self->_convert($node_no_file_tree, 'node in ref');
+      my $node_name = $self->convert_tree($node_no_file_tree, 'node in ref');
       if (defined($node_name) and ($self->get_conf('KEEP_TOP_EXTERNAL_REF')
                                    or $node_name ne 'Top')) {
         $name = $node_name;
@@ -3212,7 +3207,7 @@ sub _convert_index_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  my $index_id = $self->command_id ($command);
+  my $index_id = $self->command_id($command);
   if (defined($index_id) and $index_id ne '' 
       and !@{$self->{'multiple_pass'}} 
       and !$self->in_string()) {
@@ -3302,7 +3297,7 @@ sub _convert_printindex_command($$$$)
   }
   # format the summary
   my $summary = "<table><tr><th valign=\"top\">" 
-    . $self->_convert($self->gdt('Jump to')) .": &nbsp; </th><td>" .
+    . $self->convert_tree($self->gdt('Jump to')) .": &nbsp; </th><td>" .
     $non_alpha_text . $join . $alpha_text . "</td></tr></table>\n";
 
   $result .= $summary;
@@ -3342,7 +3337,7 @@ sub _convert_printindex_command($$$$)
 
       next if ($entry !~ /\S/);
       $entry = '<code>' .$entry .'</code>' if ($index_entry_ref->{'in_code'});
-      my $entry_href = $self->command_href ($index_entry_ref->{'command'});
+      my $entry_href = $self->command_href($index_entry_ref->{'command'});
       my $associated_command;
       if ($self->get_conf('NODE_NAME_IN_INDEX')) {
         $associated_command = $index_entry_ref->{'node'};
@@ -4229,9 +4224,8 @@ sub _default_titlepage($)
     $titlepage_text = $self->convert_tree({'contents' 
                => $self->{'extra'}->{'titlepage'}->{'contents'}});
   } elsif ($self->{'simpletitle_tree'}) {
-    $self->_new_document_context('simpletitle_string');
-    my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
-    pop @{$self->{'document_context'}};
+    my $title_text = $self->convert_tree_new_formatting_context(
+                   $self->{'simpletitle_tree'}, 'simpletitle_string');
     $titlepage_text = &{$self->{'format_heading_text'}}($self, 'settitle', $title_text, 
                                             0, {'cmdname' => 'settitle',
                      'contents' => $self->{'simpletitle_tree'}->{'contents'}});
@@ -4253,9 +4247,8 @@ sub _print_title($)
       $result .= &{$self->{'format_titlepage'}}($self);
     } else {
       if ($self->{'simpletitle_tree'}) {
-       $self->_new_document_context('simpletitle_string');
-        my $title_text = $self->convert_tree($self->{'simpletitle_tree'});
-        pop @{$self->{'document_context'}};
+        my $title_text = $self->convert_tree_new_formatting_context(
+                   $self->{'simpletitle_tree'}, 'simpletitle_string');
         $result .= &{$self->{'format_heading_text'}}($self, 'settitle', $title_text, 
                                             0, {'cmdname' => 'settitle',
                      'contents' => $self->{'simpletitle_tree'}->{'contents'}});
@@ -6096,12 +6089,9 @@ sub _file_header_informations($$)
       my $title_tree = $self->gdt('{title}: {element_text}', 
                    { 'title' => $self->{'title_tree'}, 
                    'element_text' => $self->command_text($command, 'tree')});
-      $self->{'ignore_notice'}++;
-      $self->_new_document_context($command->{'cmdname'});
-      $title = $self->_convert({'type' => '_string',
-                                'contents' => [$title_tree]});
-      pop @{$self->{'document_context'}};
-      $self->{'ignore_notice'}--;
+      $title = $self->convert_tree_new_formatting_context(
+          {'type' => '_string', 'contents' => [$title_tree]}, 
+          $command->{'cmdname'}, 'element_title');
     }
   }
   $title = $self->{'title_string'} if (!defined($title));
@@ -6123,9 +6113,8 @@ sub _file_header_informations($$)
 
   my $date = '';
   if ($self->get_conf('DATE_IN_HEADER')) {
-    $self->_new_document_context('DATE_IN_HEADER');
-    my $today = $self->convert_tree({'cmdname' => 'today'});
-    pop @{$self->{'document_context'}};
+    my $today = $self->convert_tree_new_formatting_context(
+            {'cmdname' => 'today'}, 'DATE_IN_HEADER');
     $date = "\n<meta name=\"date\" content=\"$today\">";
   }
 
@@ -6774,18 +6763,16 @@ sub output($$)
   if ($fulltitle) {
     $self->{'title_tree'} = $fulltitle;
     print STDERR "DO fulltitle_string\n" if ($self->get_conf('DEBUG'));
-    $self->_new_document_context('title_string');
-    $html_title_string = $self->_convert({'type' => '_string',
-                                         'contents' => [$self->{'title_tree'}]});
-    pop @{$self->{'document_context'}};
+    $html_title_string = $self->convert_tree_new_formatting_context(
+          {'type' => '_string', 'contents' => [$self->{'title_tree'}]}, 
+          'title_string');
   }
   if (!defined($html_title_string) or $html_title_string !~ /\S/) {
     my $default_title = $self->gdt('Untitled Document');
     $self->{'title_tree'} = $default_title;
-    $self->_new_document_context('title_string');
-    $self->{'title_string'} = $self->_convert({'type' => '_string',
-                                         'contents' => [$self->{'title_tree'}]});
-    pop @{$self->{'document_context'}};
+    $self->{'title_string'} = $self->convert_tree_new_formatting_context(
+          {'type' => '_string', 'contents' => [$self->{'title_tree'}]}, 
+          'title_string');
     $self->document_warn($self->__(
                          "Must specify a title with a title command or \@top"));
   } else {
@@ -6806,12 +6793,12 @@ sub output($$)
   # documentdescription
   if ($self->{'extra'}->{'documentdescription'}) {
     print STDERR "DO documentdescription\n" if ($self->get_conf('DEBUG'));
-    $self->_new_document_context('documentdescription');
-    $self->{'documentdescription_string'} = $self->_convert(
-      {'type' => '_string',
-       'contents' => $self->{'extra'}->{'documentdescription'}->{'contents'}});
+    $self->{'documentdescription_string'} 
+      = $self->convert_tree_new_formatting_context(
+       {'type' => '_string',
+        'contents' => $self->{'extra'}->{'documentdescription'}->{'contents'}},
+       'documentdescription');
     chomp($self->{'documentdescription_string'});
-    pop @{$self->{'document_context'}};
   }
 
   my $init_status = $self->run_stage_handlers('init');
