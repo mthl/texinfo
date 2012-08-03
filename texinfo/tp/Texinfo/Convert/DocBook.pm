@@ -546,7 +546,7 @@ sub _convert($$;$)
         $in_code = 1
           if ($format_item_command 
               and defined($default_args_code_style{$format_item_command})
-              and defined($default_args_code_style{$format_item_command}->[0]));
+              and $default_args_code_style{$format_item_command}->[0]);
         $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
         $result .= $self->_convert($arg_tree);
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
@@ -697,7 +697,7 @@ sub _convert($$;$)
       my $in_code;
       $in_code = 1
         if (defined($default_args_code_style{$root->{'cmdname'}})
-            and defined($default_args_code_style{$root->{'cmdname'}}->[0]));
+            and $default_args_code_style{$root->{'cmdname'}}->[0]);
       $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
       my $arg = $self->_convert($root->{'args'}->[0]);
       $result .= $self->xml_protect_text($root->{'extra'}->{'begin'}).$arg
@@ -713,7 +713,7 @@ sub _convert($$;$)
         my $in_code;
         $in_code = 1
           if (defined($default_args_code_style{$root->{'cmdname'}})
-              and defined($default_args_code_style{$root->{'cmdname'}}->[0]));
+              and $default_args_code_style{$root->{'cmdname'}}->[0]);
         $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
         my ($style, $attribute_text) = _parse_attribute($formatting->{'attribute'});
         my $result = $self->_convert($root->{'args'}->[0]);

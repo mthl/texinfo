@@ -827,22 +827,22 @@ sub _in_inline($$)
 }
 
 our %default_args_code_style = (
-  'email' => ['code'],
-  'anchor' => ['code'],
-  'uref' => ['code'],
-  'url' => ['code'],
-  'math' => ['code'],
-  'inforef' => ['code',undef,'code'],
-  'image' => ['code', 'code', 'code', undef, 'code'],
+  'email' => [1],
+  'anchor' => [1],
+  'uref' => [1],
+  'url' => [1],
+  'math' => [1],
+  'inforef' => [1,undef,1],
+  'image' => [1, 1, 1, undef, 1],
 # and type?
-  'float' => ['code'],
+  'float' => [1],
 );
 
 foreach my $code_style_command (keys(%Texinfo::Common::code_style_commands)) {
-  $default_args_code_style{$code_style_command} = ['code'];
+  $default_args_code_style{$code_style_command} = [1];
 }
 foreach my $ref_cmd ('pxref', 'xref', 'ref') {
-  $default_args_code_style{$ref_cmd} = ['code', undef, undef, 'code'];
+  $default_args_code_style{$ref_cmd} = [1, undef, undef, 1];
 }
 
 sub xml_protect_text($$)

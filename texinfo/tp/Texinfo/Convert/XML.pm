@@ -476,7 +476,7 @@ sub _convert($$;$)
         $in_code = 1
           if ($format_item_command 
               and defined($default_args_code_style{$format_item_command})
-              and defined($default_args_code_style{$format_item_command}->[0]));
+              and $default_args_code_style{$format_item_command}->[0]);
         $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
         $result .= $self->_convert($root->{'args'}->[0]);
         $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
@@ -687,7 +687,7 @@ sub _convert($$;$)
       my $in_code;
       $in_code = 1
         if (defined($default_args_code_style{$root->{'cmdname'}})
-            and defined($default_args_code_style{$root->{'cmdname'}}->[0]));
+            and $default_args_code_style{$root->{'cmdname'}}->[0]);
       $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
       my $arg = $self->_convert($root->{'args'}->[0]);
       $result .= "<infoenclose command=\"$root->{'cmdname'}\""
@@ -740,7 +740,7 @@ sub _convert($$;$)
           my $in_code;
           $in_code = 1
             if (defined($default_args_code_style{$root->{'cmdname'}})
-              and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
+              and $default_args_code_style{$root->{'cmdname'}}->[$arg_index]);
           $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
           my $arg = $self->_convert($root->{'args'}->[$arg_index]);
           if (!defined($command) or $arg ne '') {
@@ -825,7 +825,7 @@ sub _convert($$;$)
                 my $in_code;
                  $in_code = 1
                   if (defined($default_args_code_style{$root->{'cmdname'}})
-                    and defined($default_args_code_style{$root->{'cmdname'}}->[$arg_index]));
+                    and $default_args_code_style{$root->{'cmdname'}}->[$arg_index]);
                 $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
                 my $arg;
                 if ($arg_index+1 eq scalar(@{$root->{'args'}})) {
