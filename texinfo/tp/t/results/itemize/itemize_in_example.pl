@@ -779,7 +779,7 @@ more.
 </pre></li></ul>
 <pre class="example">
 </pre><ul class="no-bullet">
-<li>&bull; a--n itemize line <pre class="example">in an itemize line
+<li>&bull; a&ndash;n itemize line <pre class="example">in an itemize line
 </pre></li></ul>
 </div>
 ';

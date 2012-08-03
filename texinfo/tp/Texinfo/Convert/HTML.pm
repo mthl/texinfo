@@ -610,19 +610,23 @@ sub get_value($$)
   }
 }
 
-sub convert_tree_new_formatting_context($$$;$)
+sub convert_tree_new_formatting_context($$;$$)
 {
   my $self = shift;
   my $tree = shift;
   my $context_string = shift;
   my $multiple_pass = shift;
-  $self->_new_document_context($context_string);
+  if (defined($context_string)) {
+    $self->_new_document_context($context_string);
+  }
   if ($multiple_pass) {
     $self->{'ignore_notice'}++;
     push @{$self->{'multiple_pass'}}, $multiple_pass;
   }
   my $result = $self->convert_tree($tree);
-  pop @{$self->{'document_context'}};
+  if (defined($context_string)) {
+    pop @{$self->{'document_context'}};
+  }
   if ($multiple_pass) {
     $self->{'ignore_notice'}--;
     pop @{$self->{'multiple_pass'}};
@@ -1082,19 +1086,19 @@ my %default_code_types = (
 
 # default specification of arguments formatting
 my %default_commands_args = (
-  'email' => [['code', 'codestring'], ['normal']],
-  'anchor' => [['codestring']],
-  'uref' => [['codestring'], ['normal'], ['normal']],
-  'url' => [['codestring'], ['normal'], ['normal']],
+  'email' => [['monospace', 'monospacestring'], ['normal']],
+  'anchor' => [['monospacestring']],
+  'uref' => [['monospacestring'], ['normal'], ['normal']],
+  'url' => [['monospacestring'], ['normal'], ['normal']],
   'printindex' => [[]],
   'sp' => [[]],
-  'inforef' => [['code'],['normal'],['codetext']],
-  'xref' => [['code'],['normal'],['normal'],['codetext'],['normal']],
-  'pxref' => [['code'],['normal'],['normal'],['codetext'],['normal']],
-  'ref' => [['code'],['normal'],['normal'],['codetext'],['normal']],
-  'image' => [['codetext'],['codetext'],['codetext'],['string', 'normal'],['codetext']],
-  'inlinefmt' => [['codetext'],['normal']],
-  'inlineraw' => [['codetext'],['raw']],
+  'inforef' => [['monospace'],['normal'],['monospacetext']],
+  'xref' => [['monospace'],['normal'],['normal'],['monospacetext'],['normal']],
+  'pxref' => [['monospace'],['normal'],['normal'],['monospacetext'],['normal']],
+  'ref' => [['monospace'],['normal'],['normal'],['monospacetext'],['normal']],
+  'image' => [['monospacetext'],['monospacetext'],['monospacetext'],['string', 'normal'],['monospacetext']],
+  'inlinefmt' => [['monospacetext'],['normal']],
+  'inlineraw' => [['monospacetext'],['raw']],
   'item' => [[]],
   'itemx' => [[]],
 );
@@ -1430,8 +1434,8 @@ sub _convert_email_command($$$$)
   my $mail = '';
   my $mail_string = '';
   if (defined($mail_arg)) {
-    $mail = $mail_arg->{'code'};
-    $mail_string = $mail_arg->{'codestring'};
+    $mail = $mail_arg->{'monospace'};
+    $mail_string = $mail_arg->{'monospacestring'};
   }
   my $text = '';
   if (defined($text_arg)) {
@@ -1602,7 +1606,7 @@ sub _convert_uref_command($$$$)
   my $replacement_arg = shift @args;
 
   my ($url, $text, $replacement);
-  $url = $url_arg->{'codestring'} if defined($url_arg);
+  $url = $url_arg->{'monospacestring'} if defined($url_arg);
   $text = $text_arg->{'normal'} if defined($text_arg);
   $replacement = $replacement_arg->{'normal'} if defined($replacement_arg);
 
@@ -1626,12 +1630,12 @@ sub _convert_image_command($$$$)
 
   my @extensions = @image_files_extensions;
 
-  if (defined($args->[0]->{'codetext'}) and $args->[0]->{'codetext'} ne '') {
-    my $basefile = $args->[0]->{'codetext'};
+  if (defined($args->[0]->{'monospacetext'}) and $args->[0]->{'monospacetext'} ne '') {
+    my $basefile = $args->[0]->{'monospacetext'};
     return $basefile if ($self->in_string());
     my $extension;
-    if (defined($args->[4]) and defined($args->[4]->{'codetext'})) {
-      $extension = $args->[4]->{'codetext'};
+    if (defined($args->[4]) and defined($args->[4]->{'monospacetext'})) {
+      $extension = $args->[4]->{'monospacetext'};
       unshift @extensions, ("$extension", ".$extension");
     }
     my $image_file;
@@ -2330,7 +2334,7 @@ sub _convert_inline_command($$$$)
 
   my $format;
   if (defined($format_arg)) {
-    $format = $format_arg->{'codetext'};
+    $format = $format_arg->{'monospacetext'};
   }
   return '' if (!defined($format) or $format eq '');
   
@@ -2994,10 +2998,10 @@ sub _convert_xref_commands($$$$)
 
   my $file_arg_tree;
   my $file = '';
-  if (defined($args->[3]->{'codetext'}) 
-              and $args->[3]->{'codetext'} ne '') {
+  if (defined($args->[3]->{'monospacetext'}) 
+              and $args->[3]->{'monospacetext'} ne '') {
     $file_arg_tree = $args->[3]->{'tree'};
-    $file = $args->[3]->{'codetext'};
+    $file = $args->[3]->{'monospacetext'};
   }
 
   my $book = '';
@@ -3028,8 +3032,8 @@ sub _convert_xref_commands($$$$)
       } elsif (!$self->get_conf('SHORT_REF')) {
         $name = $self->command_text($command, 'text_nonumber');
         #die "$command $command->{'normalized'}" if (!defined($name));
-      } elsif (defined($args->[0]->{'code'})) {
-        $name = $args->[0]->{'code'};
+      } elsif (defined($args->[0]->{'monospace'})) {
+        $name = $args->[0]->{'monospace'};
       } else {
         $name = '';
       }
@@ -3102,11 +3106,11 @@ sub _convert_xref_commands($$$$)
     }
 
     # not exactly sure when it happens.  Something like @ref{(file),,,Manual}?
-    $name = $args->[0]->{'code'} 
+    $name = $args->[0]->{'monospace'} 
        if (!defined($name)
            # FIXME could it really be Top?
            and ($self->get_conf('KEEP_TOP_EXTERNAL_REF')
-                or $args->[0]->{'code'} ne 'Top'));
+                or $args->[0]->{'monospace'} ne 'Top'));
       
     $name = '' if (!defined($name));
     my $reference = $name;
@@ -7323,7 +7327,7 @@ sub _convert($$;$)
               my $explanation = "$command_type \[$arg_idx\]$arg_type";
               if ($arg_type eq 'normal') {
                 $arg_formatted->{'normal'} = $self->_convert($arg, $explanation);
-              } elsif ($arg_type eq 'code') {
+              } elsif ($arg_type eq 'monospace') {
                 $self->{'document_context'}->[-1]->{'code'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 $self->{'document_context'}->[-1]->{'code'}--;
@@ -7332,13 +7336,13 @@ sub _convert($$;$)
                 $self->{'document_context'}->[-1]->{'string'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 pop @{$self->{'document_context'}};
-              } elsif ($arg_type eq 'codestring') {
+              } elsif ($arg_type eq 'monospacestring') {
                 $self->_new_document_context($command_type);
                 $self->{'document_context'}->[-1]->{'code'}++;
                 $self->{'document_context'}->[-1]->{'string'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 pop @{$self->{'document_context'}};
-              } elsif ($arg_type eq 'codetext') {
+              } elsif ($arg_type eq 'monospacetext') {
                 $arg_formatted->{$arg_type} 
                   = Texinfo::Convert::Text::convert($arg, {'code' => 1,
                             Texinfo::Common::_convert_text_options($self)});
