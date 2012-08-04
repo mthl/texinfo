@@ -235,7 +235,7 @@ sub output($)
       $prefix = 'Ref';
     }
     push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-    my $label_text = _normalize_top_node($self->convert_line({'type' => 'code',
+    my $label_text = _normalize_top_node($self->convert_line({'type' => '_code',
       'contents' => $label->{'root'}->{'extra'}->{'node_content'}}));
     pop @{$self->{'count_context'}};
     $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
@@ -373,7 +373,7 @@ sub _node($$)
   my $node_begin = "\x{1F}\nFile: $output_filename,  Node: ";
   $result .= $node_begin;
   $self->_add_text_count($node_begin);
-  my $node_text = _normalize_top_node($self->convert_line({'type' => 'code',
+  my $node_text = _normalize_top_node($self->convert_line({'type' => '_code',
                            'contents' => $node->{'extra'}->{'node_content'}}));
   $result .= $node_text;
   foreach my $direction(@directions) {
@@ -383,13 +383,13 @@ sub _node($$)
       $self->_add_text_count($text);
       $result .= $text;
       if ($node_direction->{'extra'}->{'manual_content'}) {
-        $result .= $self->convert_line({'type' => 'code',
+        $result .= $self->convert_line({'type' => '_code',
                           'contents' => [{'text' => '('},
                              @{$node_direction->{'extra'}->{'manual_content'}},
                                           {'text' => ')'}]});
       }
       if ($node_direction->{'extra'}->{'node_content'}) {
-        $result .= _normalize_top_node($self->convert_line({'type' => 'code',
+        $result .= _normalize_top_node($self->convert_line({'type' => '_code',
                  'contents' => $node_direction->{'extra'}->{'node_content'}}));
       }
     }

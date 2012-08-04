@@ -136,7 +136,7 @@ foreach my $def_command (keys(%def_commands)) {
 # in container
 # 'upper_case'
 # 'var'
-# 'code'
+# 'font_type_stack'
 # 
 # paragraph number incremented with paragraphs, center, listoffloats
 # and block commands except: html and such, group, raggedright, menu*, float
@@ -267,7 +267,6 @@ my %quoted_code_commands;
 # Quotes are reset in converter_initialize and unicode quotes are used 
 # if @documentencoding utf-8 is used.
 foreach my $quoted_command (@quoted_commands) {
-  #$style_map{$quoted_command} = ['`', "'"];
   $style_map{$quoted_command} = ["'", "'"];
   $quoted_code_commands{$quoted_command} = 1;
 }
@@ -489,18 +488,25 @@ sub _process_text($$$)
     $text = uc($text);
   }
   # Even if in upper case, in code style or @var always end a sentence.
-  if ($context->{'code'} or $context->{'var'}) {
+  if (#$context->{'code'} 
+      $context->{'font_type_stack'}->[-1]->{'monospace'}
+      or $context->{'var'}) {
     $lower_case_text = lc($text);
   }
   if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'} 
       and $self->{'encoding_name'} eq 'utf-8') {
     if (defined($lower_case_text)) {
       $lower_case_text 
-        = Texinfo::Convert::Unicode::unicode_text($lower_case_text, $context->{'code'});
+        = Texinfo::Convert::Unicode::unicode_text($lower_case_text, 
+          #$context->{'code'});
+          $context->{'font_type_stack'}->[-1]->{'monospace'});
     }
-    return (Texinfo::Convert::Unicode::unicode_text($text, $context->{'code'}),
+    return (Texinfo::Convert::Unicode::unicode_text($text, 
+            $context->{'font_type_stack'}->[-1]->{'monospace'}),
+            #$context->{'code'}),
             $lower_case_text);
-  } elsif (!$context->{'code'}) {
+  #} elsif (!$context->{'code'}) {
+  } elsif (!$context->{'font_type_stack'}->[-1]->{'monospace'}) {
     $text =~ s/---/\x{1F}/g;
     $text =~ s/--/-/g;
     $text =~ s/\x{1F}/--/g;
@@ -535,8 +541,9 @@ sub new_formatter($$;$)
   };
   $container_conf->{'frenchspacing'} = 1 
     if ($self->get_conf('frenchspacing') eq 'on');
-  $container_conf->{'counter'} = $self->{'text_element_context'}->[-1]->{'counter'}
-    if (defined($self->{'text_element_context'}->[-1]->{'counter'}));
+  $container_conf->{'counter'} 
+    = $self->{'text_element_context'}->[-1]->{'counter'}
+      if (defined($self->{'text_element_context'}->[-1]->{'counter'}));
   $container_conf->{'DEBUG'} = 1 if ($self->get_conf('DEBUG'));
   if ($conf) {
     foreach my $key (keys(%$conf)) {
@@ -569,7 +576,9 @@ sub new_formatter($$;$)
   }
 
   my $formatter = {'container' => $container, 'upper_case' => 0,
-                   'code' => 0, 'code_command'=> 0, 'w' => 0, 'type' => $type,
+                   #'code' => 0, 'code_command'=> 0,
+                   'font_type_stack' => [{}],
+                   'w' => 0, 'type' => $type,
                    'frenchspacing_stack' => [$self->get_conf('frenchspacing')]};
 
   if ($type eq 'unfilled') {
@@ -578,8 +587,9 @@ sub new_formatter($$;$)
         last;
       } elsif ($preformatted_code_commands{$context}
                or $format_raw_commands{$context}) {
-        $formatter->{'code'} = 1;
-        $formatter->{'code_command'} = 1 if ($preformatted_code_commands{$context});
+        $formatter->{'font_type_stack'}->[-1]->{'monospace'} = 1;
+        $formatter->{'font_type_stack'}->[-1]->{'code_command'} = 1 
+          if ($preformatted_code_commands{$context});
         last;
       }
     }
@@ -608,7 +618,8 @@ sub convert_unfilled($$;$)
   my $converted = shift;
   my $conf = shift;
   my $formatter = $self->new_formatter('unfilled', $conf);
-  $formatter->{'code'} = 1;
+  #$formatter->{'code'} = 1;
+  $formatter->{'font_type_stack'}->[-1]->{'monospace'} = 1;
   push @{$self->{'formatters'}}, $formatter;
   my $result = $self->_convert($converted);
   $result .= $self->_count_added($formatter->{'container'},
@@ -1053,7 +1064,7 @@ sub _printindex_formatted($$;$)
     next if ($ignored_entries{$entry});
     my $entry_tree = {'contents' => $entry->{'content'}};
     if ($entry->{'in_code'}) {
-      $entry_tree->{'type'} = 'code';
+      $entry_tree->{'type'} = '_code';
     } else {
       $entry_tree->{'type'} = 'frenchspacing';
     }
@@ -1100,7 +1111,7 @@ sub _printindex_formatted($$;$)
         $self->{'index_entries_no_node'}->{$entry} = 1;
       }
     } else {
-      $node_text = {'type' => 'code',
+      $node_text = {'type' => '_code',
                 'contents' => $node->{'extra'}->{'node_content'}};
     }
     $entry_line .= $self->convert_line($node_text);
@@ -1299,7 +1310,7 @@ sub _convert($$)
     #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
     if ($formatter) {
-      print STDERR "  Container:($formatter->{'code'},$formatter->{'upper_case'},$formatter->{'frenchspacing_stack'}->[-1]) ";
+      print STDERR "  Container:($formatter->{'font_type_stack'}->[-1]->{'monospace'},$formatter->{'upper_case'},$formatter->{'frenchspacing_stack'}->[-1]) ";
       $formatter->{'container'}->dump();
     }
   }
@@ -1466,7 +1477,8 @@ sub _convert($$)
                              'sc' => $formatter->{'upper_case'}});
       my $lower_case_text;
       # always double spacing, so set underlying text lower case.
-      if ($formatter->{'var'} or $formatter->{'code'}) {
+      if ($formatter->{'var'} 
+          or $formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
         $lower_case_text = Texinfo::Convert::Text::brace_no_arg_command($root,
                              {%text_options,
                               'lc' => 1});
@@ -1517,7 +1529,8 @@ sub _convert($$)
       my $accented_text 
          = Texinfo::Convert::Text::text_accents($root, $encoding, $sc);
       my $accented_text_lower_case;
-      if ($formatter->{'var'} or $formatter->{'code'}) {
+      if ($formatter->{'var'} 
+          or $formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
         $accented_text_lower_case
          = Texinfo::Convert::Text::text_accents($root, $encoding, -1);
       } elsif ($formatter->{'upper_case'}) {
@@ -1536,7 +1549,12 @@ sub _convert($$)
     } elsif ($self->{'style_map'}->{$command} 
          or ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command')) {
       if ($code_style_commands{$command}) {
-        $formatter->{'code'}++;
+        if (!$formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
+          push @{$formatter->{'font_type_stack'}}, {'monospace' => 1};
+        } else {
+          $formatter->{'font_type_stack'}->[-1]->{'monospace'}++;
+        }
+        #$formatter->{'code'}++;
       }
       if ($no_punctation_munging_commands{$command}) {
         push @{$formatter->{'frenchspacing_stack'}}, 'on';
@@ -1558,7 +1576,8 @@ sub _convert($$)
         $text_before = $root->{'extra'}->{'begin'};
         $text_after = $root->{'extra'}->{'end'};
       } else {
-        if ($quoted_code_commands{$command} and $formatter->{'code_command'}) {
+        if ($quoted_code_commands{$command} 
+            and $formatter->{'font_type_stack'}->[-1]->{'code_command'}) {
           $text_before = '';
           $text_after = '';
         } else {
@@ -1569,7 +1588,7 @@ sub _convert($$)
       # do this after determining $text_before/$text_after such that it
       # doesn't impact the current command, but only commands nested within
       if ($quoted_code_commands{$command}) {
-        $formatter->{'code_command'}++;
+        $formatter->{'font_type_stack'}->[-1]->{'code_command'}++;
       }
       $result .= $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_next($text_before, 
@@ -1597,10 +1616,14 @@ sub _convert($$)
           if ($formatter->{'w'} == 0);
       }
       if ($code_style_commands{$command}) {
-        $formatter->{'code'}--;
+        #$formatter->{'code'}--;
+        $formatter->{'font_type_stack'}->[-1]->{'monospace'}--;
+        pop @{$formatter->{'font_type_stack'}}
+          if !$formatter->{'font_type_stack'}->[-1]->{'monospace'};
       }
       if ($quoted_code_commands{$command}) {
-        $formatter->{'code_command'}--;
+        #$formatter->{'code_command'}--;
+        $formatter->{'font_type_stack'}->[-1]->{'code_command'}--;
       }
       if ($no_punctation_munging_commands{$command}) {
         pop @{$formatter->{'frenchspacing_stack'}};
@@ -1661,7 +1684,7 @@ sub _convert($$)
             {'contents' => $root->{'extra'}->{'brace_command_contents'}->[2]};
         } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
           # no mangling of --- and similar in url.
-          my $url = {'type' => 'code',
+          my $url = {'type' => '_code',
               'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]};
           if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 2
              and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
@@ -1762,7 +1785,7 @@ sub _convert($$)
         my $file;
         if (defined($args[3])) {
           $file = [{'text' => '('},
-                   {'type' => 'code',
+                   {'type' => '_code',
                     'contents' => $args[3]},
                    {'text' => ')'},];
         } elsif (defined($args[4])) {
@@ -1777,13 +1800,13 @@ sub _convert($$)
             push @contents, @$file;
           }
           # node name
-          push @contents, ({'type' => 'code',
+          push @contents, ({'type' => '_code',
                             'contents' => $node_content});
         } else {
           if ($file) {
             push @contents, @$file;
           }
-          push @contents, ({'type' => 'code',
+          push @contents, ({'type' => '_code',
                             'contents' => [@{$node_content}, {'text' => '::'}]});
         }
         $result = $self->_convert({'contents' => \@contents});
@@ -1851,7 +1874,7 @@ sub _convert($$)
          and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
         my $argument;
         if ($command eq 'inlineraw') {
-          $argument->{'type'} = 'code';
+          $argument->{'type'} = '_code';
         }
         $argument->{'contents'} 
             = $root->{'extra'}->{'brace_command_contents'}->[-1];
@@ -1862,7 +1885,7 @@ sub _convert($$)
       push @{$self->{'context'}}, 'math';
       if ($root->{'args'}) {
         $result .= $self->_convert({'type' => 'frenchspacing',
-             'contents' => [{'type' => 'code',
+             'contents' => [{'type' => '_code',
                             'contents' => [$root->{'args'}->[0]]}]});
       }
       my $old_context = pop @{$self->{'context'}};
@@ -2576,7 +2599,7 @@ sub _convert($$)
            'indent_length_next' => (1+$self->{'format_context'}->[-1]->{'indent_level'})*$indent_length});
         push @{$self->{'formatters'}}, $def_paragraph;
 
-        $result .= $self->_convert({'type' => 'code', 'contents' => [$tree]});
+        $result .= $self->_convert({'type' => '_code', 'contents' => [$tree]});
         $result .= $self->_count_added($def_paragraph->{'container'},
                                       $def_paragraph->{'container'}->end());
 
@@ -2597,7 +2620,7 @@ sub _convert($$)
       }
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
-          $result .= $self->_convert({'type' => 'code',
+          $result .= $self->_convert({'type' => '_code',
                                       'contents' => $arg->{'contents'}});
         } else {
           $result .= $self->_convert($arg);
@@ -2610,8 +2633,13 @@ sub _convert($$)
       push @{$formatter->{'frenchspacing_stack'}}, 'on';
       $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
-    } elsif ($root->{'type'} eq 'code') {
-      $formatter->{'code'}++;
+    } elsif ($root->{'type'} eq '_code') {
+      #$formatter->{'code'}++;
+      if (!$formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
+        push @{$formatter->{'font_type_stack'}}, {'monospace' => 1};
+      } else {
+        $formatter->{'font_type_stack'}->[-1]->{'monospace'}++;
+      }
       push @{$formatter->{'frenchspacing_stack'}}, 'on';
       $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
@@ -2645,8 +2673,11 @@ sub _convert($$)
       $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
       $formatter->{'container'}->set_space_protection(undef,
         undef, undef, $frenchspacing);
-    } elsif ($root->{'type'} eq 'code') {
-      $formatter->{'code'}--;
+    } elsif ($root->{'type'} eq '_code') {
+      #$formatter->{'code'}--;
+      $formatter->{'font_type_stack'}->[-1]->{'monospace'}--;
+      pop @{$formatter->{'font_type_stack'}}
+        if !$formatter->{'font_type_stack'}->[-1]->{'monospace'};
       pop @{$formatter->{'frenchspacing_stack'}};
       my $frenchspacing = 0;
       $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');

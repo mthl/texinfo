@@ -270,7 +270,7 @@ sub converter_initialize($)
 {
   my $self = shift;
 
-  $self->{'document_context'} = [{}];
+  $self->{'document_context'} = [{'monospace' => [0]}];
   $self->{'context_block_commands'} = {%default_context_block_commands};
   foreach my $raw (keys (%Texinfo::Common::format_raw_commands)) {
     $self->{'context_block_commands'}->{$raw} = 1
@@ -382,8 +382,8 @@ sub _index_entry($$)
     my $index_entry = $root->{'extra'}->{'index_entry'};
     # FIXME DocBook 5 role->type
     my $result = "<indexterm role=\"$index_entry->{'index_name'}\"><primary>";
-    push @{$self->{'document_context'}}, {};
-    $self->{'document_context'}->[-1]->{'code'}++ 
+    push @{$self->{'document_context'}}, {'monospace' => [0]};
+    $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1
       if ($index_entry->{'in_code'});
     $result .= $self->_convert({'contents' => $index_entry->{'content'}});
     pop @{$self->{'document_context'}};
@@ -455,7 +455,7 @@ sub _convert($$;$)
     }
     $result = $self->xml_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
-      if (!$self->{'document_context'}->[-1]->{'code'}) {
+      if (!$self->{'document_context'}->[-1]->{'monospace'}->[-1]) {
         $result =~ s/``/$ldquo/g;
         $result =~ s/\'\'/$rdquo/g;
         $result =~ s/`/$lsquo/g;
@@ -547,9 +547,11 @@ sub _convert($$;$)
           if ($format_item_command 
               and defined($default_args_code_style{$format_item_command})
               and $default_args_code_style{$format_item_command}->[0]);
-        $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
+          if ($in_code);
         $result .= $self->_convert($arg_tree);
-        $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+        pop @{$self->{'document_context'}->[-1]->{'monospace'}}
+          if ($in_code);
         chomp ($result);
         $result .= "\n";
         $result .= "</term>";
@@ -698,23 +700,26 @@ sub _convert($$;$)
       $in_code = 1
         if (defined($default_args_code_style{$root->{'cmdname'}})
             and $default_args_code_style{$root->{'cmdname'}}->[0]);
-      $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+      push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
+        if ($in_code);
       my $arg = $self->_convert($root->{'args'}->[0]);
       $result .= $self->xml_protect_text($root->{'extra'}->{'begin'}).$arg
                 .$self->xml_protect_text($root->{'extra'}->{'end'});
-      $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+      pop @{$self->{'document_context'}->[-1]->{'monospace'}}
+        if ($in_code);
     } elsif ($root->{'args'}
              and exists($Texinfo::Common::brace_commands{$root->{'cmdname'}})) {
       if ($style_commands_formatting{$root->{'cmdname'}}) {
         if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
-          push @{$self->{'document_context'}}, {};
+          push @{$self->{'document_context'}}, {'monospace' => [0]};
         }
         my $formatting = $style_commands_formatting{$root->{'cmdname'}};
         my $in_code;
         $in_code = 1
           if (defined($default_args_code_style{$root->{'cmdname'}})
               and $default_args_code_style{$root->{'cmdname'}}->[0]);
-        $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
+          if ($in_code);
         my ($style, $attribute_text) = _parse_attribute($formatting->{'attribute'});
         my $result = $self->_convert($root->{'args'}->[0]);
         if ($style ne '' and (!$self->{'document_context'}->[-1]->{'inline'}
@@ -728,7 +733,8 @@ sub _convert($$;$)
           $result = $self->get_conf('OPEN_QUOTE_SYMBOL') . $result
                    . $self->get_conf('CLOSE_QUOTE_SYMBOL');
         }
-        $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+        pop @{$self->{'document_context'}->[-1]->{'monospace'}}
+          if ($in_code);
         if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
           pop @{$self->{'document_context'}};
         }
@@ -1011,7 +1017,7 @@ sub _convert($$;$)
                and $root->{'extra'} and $root->{'extra'}->{'format'}
                and $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
         if ($root->{'cmdname'} eq 'inlineraw') {
-          push @{$self->{'document_context'}}, {};
+          push @{$self->{'document_context'}}, {'monospace' => [0]};
           $self->{'document_context'}->[-1]->{'raw'} = 1;
         }
         if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
@@ -1032,7 +1038,7 @@ sub _convert($$;$)
       return $w_command_mark;
     } elsif (exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
       if ($self->{'context_block_commands'}->{$root->{'cmdname'}}) {
-        push @{$self->{'document_context'}}, {};
+        push @{$self->{'document_context'}}, {'monospace' => [0]};
       }
       my @attributes;
       my $appended = '';
@@ -1162,8 +1168,7 @@ sub _convert($$;$)
     } elsif ($root->{'type'} eq 'def_line') {
       $result .= "<synopsis>";
       $result .= $self->_index_entry($root);
-      push @{$self->{'document_context'}}, {};
-      $self->{'document_context'}->[-1]->{'code'}++;
+      push @{$self->{'document_context'}}, {'monospace' => [1]};
       $self->{'document_context'}->[-1]->{'inline'}++;
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}) {
         my $main_command;
@@ -1205,7 +1210,8 @@ sub _convert($$;$)
         and $Texinfo::Common::preformatted_code_commands{$root->{'cmdname'}}) {
       $in_code = 1;
     }
-    $self->{'document_context'}->[-1]->{'code'}++ if ($in_code);
+    push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
+      if ($in_code);
     if (ref($root->{'contents'}) ne 'ARRAY') {
       cluck "contents not an array($root->{'contents'}).";
     }
@@ -1216,7 +1222,8 @@ sub _convert($$;$)
     foreach my $content (@{$root->{'contents'}}) {
       $result .= $self->_convert($content);
     }
-    $self->{'document_context'}->[-1]->{'code'}-- if ($in_code);
+    pop @{$self->{'document_context'}->[-1]->{'monospace'}}
+      if ($in_code);
   }
   if ($root->{'type'}) {
     if (defined($type_elements{$root->{'type'}})) {

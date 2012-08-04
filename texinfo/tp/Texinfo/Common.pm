@@ -462,13 +462,20 @@ foreach my $accent_command ('"','~','^','`',"'",',','=',
 }
 
 our %style_commands;
-foreach my $style_command ('asis','b','cite','clicksequence',
+foreach my $style_command ('asis','cite','clicksequence',
   'dfn', 'emph',
-  'i', 'sc', 't', 'r', 'slanted', 'sansserif', 'var',
+  'sc', 't', 'var',
   'headitemfont', 'code', 'command', 'env', 'file', 'kbd',
   'option', 'samp', 'strong') {
   $brace_commands{$style_command} = 1;
   $style_commands{$style_command} = 1;
+}
+
+our %regular_font_style_commands;
+foreach my $command ('r', 'i', 'b', 'sansserif', 'slanted') {
+  $regular_font_style_commands{$command} = 1;
+  $brace_commands{$command} = 1;
+  $style_commands{$command} = 1;
 }
 
 foreach my $one_arg_command (
@@ -2141,6 +2148,11 @@ C<@cite>, C<@code> or C<@asis>.
 
 I<style_commands> that have their argument in code style, like 
 C<@code>.
+
+=item %regular_font_style_commands
+
+I<style_commands> that have their argument in regular font, like
+C<@r> or C<@slanted>.
 
 =item %context_brace_commands
 
