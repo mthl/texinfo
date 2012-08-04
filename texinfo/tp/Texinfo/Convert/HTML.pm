@@ -137,7 +137,7 @@ sub in_space_protected($)
 sub in_code($)
 {
   my $self = shift;
-  return $self->{'document_context'}->[-1]->{'code'};
+  return $self->{'document_context'}->[-1]->{'monospace'}->[-1];
 }
 
 sub in_string($)
@@ -4447,6 +4447,7 @@ sub _new_document_context($$)
            'formatting_context' => [{'cmdname' => $cmdname}],
            'composition_context' => ['raggedright'],
            'formats' => [],
+           'monospace' => [0],
           };
 }
 
@@ -7291,7 +7292,7 @@ sub _convert($$;$)
       } 
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
-        $self->{'document_context'}->[-1]->{'code'}++;
+        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
       } elsif ($upper_case_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'}++;
       } elsif ($command_name eq 'math') {
@@ -7328,9 +7329,11 @@ sub _convert($$;$)
               if ($arg_type eq 'normal') {
                 $arg_formatted->{'normal'} = $self->_convert($arg, $explanation);
               } elsif ($arg_type eq 'monospace') {
-                $self->{'document_context'}->[-1]->{'code'}++;
+                push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
+                #$self->{'document_context'}->[-1]->{'code'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
-                $self->{'document_context'}->[-1]->{'code'}--;
+                #$self->{'document_context'}->[-1]->{'code'}--;
+                pop @{$self->{'document_context'}->[-1]->{'monospace'}};
               } elsif ($arg_type eq 'string') {
                 $self->_new_document_context($command_type);
                 $self->{'document_context'}->[-1]->{'string'}++;
@@ -7338,7 +7341,7 @@ sub _convert($$;$)
                 pop @{$self->{'document_context'}};
               } elsif ($arg_type eq 'monospacestring') {
                 $self->_new_document_context($command_type);
-                $self->{'document_context'}->[-1]->{'code'}++;
+                $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1;
                 $self->{'document_context'}->[-1]->{'string'}++;
                 $arg_formatted->{$arg_type} = $self->_convert($arg, $explanation);
                 pop @{$self->{'document_context'}};
@@ -7366,7 +7369,8 @@ sub _convert($$;$)
       }
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
-        $self->{'document_context'}->[-1]->{'code'}--;
+        #$self->{'document_context'}->[-1]->{'code'}--;
+        pop @{$self->{'document_context'}->[-1]->{'monospace'}};
       } elsif ($upper_case_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'}--;
       } elsif ($command_name eq 'math') {
@@ -7432,7 +7436,8 @@ sub _convert($$;$)
         $root->{'type'};
     }
     if ($self->{'code_types'}->{$root->{'type'}}) {
-      $self->{'document_context'}->[-1]->{'code'}++;
+      #$self->{'document_context'}->[-1]->{'code'}++;
+      push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
     }
     if ($root->{'type'} eq '_string') {
       $self->{'document_context'}->[-1]->{'string'}++;
@@ -7456,7 +7461,8 @@ sub _convert($$;$)
       $result = $content_formatted;
     }
     if ($self->{'code_types'}->{$root->{'type'}}) {
-      $self->{'document_context'}->[-1]->{'code'}--;
+      #$self->{'document_context'}->[-1]->{'code'}--;
+      pop @{$self->{'document_context'}->[-1]->{'monospace'}};
     } 
     if ($root->{'type'} eq '_string') {
       $self->{'document_context'}->[-1]->{'string'}--;
