@@ -4673,7 +4673,7 @@ ul.no-bullet {list-style: none}
 <div class="example">
 <pre class="example">[ f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot;  ]
 
-In text [ alt <b>&icirc;--le..</b>  a
+In text [ alt <b>&icirc;&ndash;le..</b>  a
 &lt;&quot;%@<tt>  &lt; &amp; @ % &quot; </tt> ].
 </pre></div>
 
@@ -4913,7 +4913,7 @@ $result_converted{'html_text'}->{'test_image'} = '
 <div class="example">
 <pre class="example">[ f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot;  ]
 
-In text [ alt <b>&icirc;--le..</b>  a
+In text [ alt <b>&icirc;&ndash;le..</b>  a
 &lt;&quot;%@<tt>  &lt; &amp; @ % &quot; </tt> ].
 </pre></div>
 

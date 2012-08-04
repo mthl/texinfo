@@ -91,6 +91,7 @@ my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
 my %format_raw_commands = %Texinfo::Common::format_raw_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
+my %regular_font_style_commands = %Texinfo::Common::regular_font_style_commands;
 my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 my %default_index_commands = %Texinfo::Common::default_index_commands;
 my %letter_no_arg_commands = %Texinfo::Common::letter_no_arg_commands;
@@ -1555,6 +1556,13 @@ sub _convert($$)
           $formatter->{'font_type_stack'}->[-1]->{'monospace'}++;
         }
         #$formatter->{'code'}++;
+      } elsif ($regular_font_style_commands{$command}) {
+        if ($formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
+          push @{$formatter->{'font_type_stack'}}, {'monospace' => 0, 
+                                                    'normal' => 1};
+        } elsif ($formatter->{'font_type_stack'}->[-1]->{'normal'}) {
+          $formatter->{'font_type_stack'}->[-1]->{'normal'}++;
+        }
       }
       if ($no_punctation_munging_commands{$command}) {
         push @{$formatter->{'frenchspacing_stack'}}, 'on';
@@ -1620,6 +1628,12 @@ sub _convert($$)
         $formatter->{'font_type_stack'}->[-1]->{'monospace'}--;
         pop @{$formatter->{'font_type_stack'}}
           if !$formatter->{'font_type_stack'}->[-1]->{'monospace'};
+      } elsif ($regular_font_style_commands{$command}) {
+        if ($formatter->{'font_type_stack'}->[-1]->{'normal'}) {
+          $formatter->{'font_type_stack'}->[-1]->{'normal'}--;
+          pop @{$formatter->{'font_type_stack'}}
+            if !$formatter->{'font_type_stack'}->[-1]->{'normal'};
+        }
       }
       if ($quoted_code_commands{$command}) {
         #$formatter->{'code_command'}--;

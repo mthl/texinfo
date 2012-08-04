@@ -746,6 +746,13 @@ undef, {'test_file' => 'things_before_setfilename_no_element.texi'}
 
 @ref{@w{  }}
 '],
+['normal_font_in_monospace',
+'@example
+in example @r{in r---now @code{in co---de}}
+@end example
+
+@command{in command---c @r{in r---r @file{in file---}}}.
+'],
 );
 
 my @html_text_cases = (

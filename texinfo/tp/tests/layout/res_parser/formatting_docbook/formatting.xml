@@ -2628,7 +2628,7 @@ but , ,
 <literal>@abbr{@'E--. @comma{}A., @'Etude Autonome }</literal> <abbrev>&#201;--. &#44;A.</abbrev> (&#201;tude Autonome)
 <literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&#201;--. &#44;A.</abbrev>
 <literal>@asis{--a}</literal> --a
-<literal>@b{--a}</literal> <emphasis role="bold">--a</emphasis>
+<literal>@b{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
 <literal>@cite{--a}</literal> <citetitle>--a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
@@ -2641,18 +2641,18 @@ but , ,
 <literal>@emph{--a}</literal> <emphasis>--a</emphasis>
 <literal>@env{--a}</literal> <envar>--a</envar>
 <literal>@file{--a}</literal> <filename>--a</filename>
-<literal>@i{--a}</literal> <emphasis>--a</emphasis>
+<literal>@i{--a}</literal> <emphasis>&#8211;a</emphasis>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>--a</lineannotation>
+<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> --a
 <literal>@strong{--a}</literal> <emphasis role="bold">--a</emphasis>
 <literal>@t{--a}</literal> <literal>--a</literal>
-<literal>@sansserif{--a}</literal> --a
-<literal>@slanted{--a}</literal> --a
+<literal>@sansserif{--a}</literal> &#8211;a
+<literal>@slanted{--a}</literal> &#8211;a
 <literal>@titlefont{--a}</literal> </screen>--a<screen>
 <literal>@indicateurl{--a}</literal> <literal>--a</literal>
 <literal>@uref{--a,--b}</literal> <ulink url="--a">--b</ulink>

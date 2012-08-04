@@ -195,6 +195,7 @@ sub converter_global_commands($)
 
 my %default_args_code_style 
   = %Texinfo::Convert::Converter::default_args_code_style;
+my %regular_font_style_commands = %Texinfo::Common::regular_font_style_commands;
 
 my %defcommand_name_type = (
  'deffn'     => 'function',
@@ -542,16 +543,20 @@ sub _convert($$;$)
         }
         $result .= "<term>";
         $result .= $self->_index_entry($root);
-        my $in_code;
-        $in_code = 1
-          if ($format_item_command 
-              and defined($default_args_code_style{$format_item_command})
-              and $default_args_code_style{$format_item_command}->[0]);
-        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
-          if ($in_code);
+        my $in_monospace_not_normal;
+        if ($format_item_command) {
+          if (defined($default_args_code_style{$format_item_command})
+              and $default_args_code_style{$format_item_command}->[0]) {
+            $in_monospace_not_normal = 1;
+          } elsif ($regular_font_style_commands{$format_item_command}) {
+            $in_monospace_not_normal = 0;
+          }
+        }
+        push @{$self->{'document_context'}->[-1]->{'monospace'}}, $in_monospace_not_normal
+          if (defined($in_monospace_not_normal));
         $result .= $self->_convert($arg_tree);
         pop @{$self->{'document_context'}->[-1]->{'monospace'}}
-          if ($in_code);
+          if (defined($in_monospace_not_normal));
         chomp ($result);
         $result .= "\n";
         $result .= "</term>";
@@ -696,17 +701,22 @@ sub _convert($$;$)
       }
     } elsif ($root->{'type'}
              and $root->{'type'} eq 'definfoenclose_command') {
-      my $in_code;
-      $in_code = 1
-        if (defined($default_args_code_style{$root->{'cmdname'}})
-            and $default_args_code_style{$root->{'cmdname'}}->[0]);
-      push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
-        if ($in_code);
+
+      my $in_monospace_not_normal;
+      if (defined($default_args_code_style{$root->{'cmdname'}})
+          and $default_args_code_style{$root->{'cmdname'}}->[0]) {
+         $in_monospace_not_normal = 1;
+      } elsif ($regular_font_style_commands{$root->{'cmdname'}}) {
+        $in_monospace_not_normal = 0;
+      }
+      push @{$self->{'document_context'}->[-1]->{'monospace'}}, 
+        $in_monospace_not_normal
+          if (defined($in_monospace_not_normal));
       my $arg = $self->_convert($root->{'args'}->[0]);
       $result .= $self->xml_protect_text($root->{'extra'}->{'begin'}).$arg
                 .$self->xml_protect_text($root->{'extra'}->{'end'});
       pop @{$self->{'document_context'}->[-1]->{'monospace'}}
-        if ($in_code);
+        if (defined($in_monospace_not_normal));
     } elsif ($root->{'args'}
              and exists($Texinfo::Common::brace_commands{$root->{'cmdname'}})) {
       if ($style_commands_formatting{$root->{'cmdname'}}) {
@@ -714,12 +724,18 @@ sub _convert($$;$)
           push @{$self->{'document_context'}}, {'monospace' => [0]};
         }
         my $formatting = $style_commands_formatting{$root->{'cmdname'}};
-        my $in_code;
-        $in_code = 1
-          if (defined($default_args_code_style{$root->{'cmdname'}})
-              and $default_args_code_style{$root->{'cmdname'}}->[0]);
-        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
-          if ($in_code);
+
+        my $in_monospace_not_normal;
+        if (defined($default_args_code_style{$root->{'cmdname'}})
+            and $default_args_code_style{$root->{'cmdname'}}->[0]) {
+           $in_monospace_not_normal = 1;
+        } elsif ($regular_font_style_commands{$root->{'cmdname'}}) {
+          $in_monospace_not_normal = 0;
+        }
+        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 
+          $in_monospace_not_normal
+            if (defined($in_monospace_not_normal));
+
         my ($style, $attribute_text) = _parse_attribute($formatting->{'attribute'});
         my $result = $self->_convert($root->{'args'}->[0]);
         if ($style ne '' and (!$self->{'document_context'}->[-1]->{'inline'}
@@ -734,7 +750,7 @@ sub _convert($$;$)
                    . $self->get_conf('CLOSE_QUOTE_SYMBOL');
         }
         pop @{$self->{'document_context'}->[-1]->{'monospace'}}
-          if ($in_code);
+          if (defined($in_monospace_not_normal));
         if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
           pop @{$self->{'document_context'}};
         }

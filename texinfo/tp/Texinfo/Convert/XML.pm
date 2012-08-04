@@ -158,6 +158,7 @@ foreach my $command ('item', 'headitem', 'itemx', 'tab',
 
 my %default_args_code_style
   = %Texinfo::Convert::Converter::default_args_code_style;
+my %regular_font_style_commands = %Texinfo::Common::regular_font_style_commands;
 
 my %commands_args_elements = (
   'email' => ['emailaddress', 'emailname'],
@@ -477,10 +478,22 @@ sub _convert($$;$)
           if ($format_item_command 
               and defined($default_args_code_style{$format_item_command})
               and $default_args_code_style{$format_item_command}->[0]);
-        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1 
-          if ($in_code);
+        my $in_monospace_not_normal;
+        if ($format_item_command) {
+          if (defined($default_args_code_style{$format_item_command})
+              and $default_args_code_style{$format_item_command}->[0]) {
+            $in_monospace_not_normal = 1;
+          } elsif ($regular_font_style_commands{$format_item_command}) {
+            $in_monospace_not_normal = 0;
+          }
+        }
+        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 
+          $in_monospace_not_normal
+            if (defined($in_monospace_not_normal));
+
         $result .= $self->_convert($root->{'args'}->[0]);
-        pop @{$self->{'document_context'}->[-1]->{'monospace'}} if ($in_code);
+        pop @{$self->{'document_context'}->[-1]->{'monospace'}} 
+          if (defined($in_monospace_not_normal));
         chomp ($result);
         if ($format_item_command) {
           $result .= "</itemformat>";
@@ -685,17 +698,22 @@ sub _convert($$;$)
       }
     } elsif ($root->{'type'}
              and $root->{'type'} eq 'definfoenclose_command') {
-      my $in_code;
-      $in_code = 1
-        if (defined($default_args_code_style{$root->{'cmdname'}})
-            and $default_args_code_style{$root->{'cmdname'}}->[0]);
-      push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
-        if ($in_code);
+      my $in_monospace_not_normal;
+      if (defined($default_args_code_style{$root->{'cmdname'}})
+          and $default_args_code_style{$root->{'cmdname'}}->[0]) {
+        $in_monospace_not_normal = 1;
+      } elsif ($regular_font_style_commands{$root->{'cmdname'}}) {
+        $in_monospace_not_normal = 0;
+      }
+      push @{$self->{'document_context'}->[-1]->{'monospace'}}, 
+        $in_monospace_not_normal
+          if (defined($in_monospace_not_normal));
       my $arg = $self->_convert($root->{'args'}->[0]);
       $result .= "<infoenclose command=\"$root->{'cmdname'}\""
          . $self->_infoenclose_attribute($root)
         .">$arg</infoenclose>";
-      pop @{$self->{'document_context'}->[-1]->{'monospace'}} if ($in_code);
+      pop @{$self->{'document_context'}->[-1]->{'monospace'}}
+        if (defined($in_monospace_not_normal));
     } elsif ($root->{'args'}
              and exists($Texinfo::Common::brace_commands{$root->{'cmdname'}})) {
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
@@ -739,18 +757,23 @@ sub _convert($$;$)
       my $arg_index = 0;
       foreach my $element (@elements) {
         if (defined($root->{'args'}->[$arg_index])) {
-          my $in_code;
-          $in_code = 1
-            if (defined($default_args_code_style{$root->{'cmdname'}})
-              and $default_args_code_style{$root->{'cmdname'}}->[$arg_index]);
-          push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1 
-            if ($in_code);
+          my $in_monospace_not_normal;
+          if (defined($default_args_code_style{$root->{'cmdname'}})
+              and $default_args_code_style{$root->{'cmdname'}}->[$arg_index]) {
+            $in_monospace_not_normal = 1;
+          } elsif ($regular_font_style_commands{$root->{'cmdname'}}) {
+            $in_monospace_not_normal = 0;
+          }
+          push @{$self->{'document_context'}->[-1]->{'monospace'}},
+            $in_monospace_not_normal
+              if (defined($in_monospace_not_normal));
           my $arg = $self->_convert($root->{'args'}->[$arg_index]);
           if (!defined($command) or $arg ne '') {
             # ${attribute} is only set for @verb
             $result .= "<$element${attribute}>$arg</$element>";
           }
-          pop @{$self->{'document_context'}->[-1]->{'monospace'}} if ($in_code);
+          pop @{$self->{'document_context'}->[-1]->{'monospace'}}
+            if (defined($in_monospace_not_normal));
         } else {
           last;
         }

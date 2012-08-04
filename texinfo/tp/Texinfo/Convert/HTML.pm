@@ -74,6 +74,7 @@ my %raw_commands = %Texinfo::Common::raw_commands;
 my %format_raw_commands = %Texinfo::Common::format_raw_commands;
 my %inline_format_commands = %Texinfo::Common::inline_format_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
+my %regular_font_style_commands = %Texinfo::Common::regular_font_style_commands;
 my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 my %default_index_commands = %Texinfo::Common::default_index_commands;
 my %style_commands = %Texinfo::Common::style_commands;
@@ -7293,6 +7294,8 @@ sub _convert($$;$)
       if ($code_style_commands{$command_name} or 
           $preformatted_code_commands{$command_name}) {
         push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
+      } elsif ($regular_font_style_commands{$command_name}) {
+        push @{$self->{'document_context'}->[-1]->{'monospace'}}, 0;
       } elsif ($upper_case_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'}++;
       } elsif ($command_name eq 'math') {
@@ -7367,8 +7370,9 @@ sub _convert($$;$)
       if ($pre_class_commands{$command_name}) {
         pop @{$self->{'document_context'}->[-1]->{'preformatted_classes'}};
       }
-      if ($code_style_commands{$command_name} or 
-          $preformatted_code_commands{$command_name}) {
+      if ($code_style_commands{$command_name} 
+          or $preformatted_code_commands{$command_name}
+          or $regular_font_style_commands{$command_name}) {
         #$self->{'document_context'}->[-1]->{'code'}--;
         pop @{$self->{'document_context'}->[-1]->{'monospace'}};
       } elsif ($upper_case_commands{$command_name}) {

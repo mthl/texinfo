@@ -2665,7 +2665,7 @@ but , ,&noeos;
 <code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>--. &comma;A.</abbrword><abbrdesc><accent type="acute">E</accent>tude Autonome </abbrdesc></abbr>
 <code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>--. &comma;A.</abbrword></abbr>
 <code>&arobase;asis&lbrace;--a&rbrace;</code> <asis>--a</asis>
-<code>&arobase;b&lbrace;--a&rbrace;</code> <b>--a</b>
+<code>&arobase;b&lbrace;--a&rbrace;</code> <b>&textndash;a</b>
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>--a</cite>
 <code>&arobase;code&lbrace;--a&rbrace;</code> <code>--a</code>
 <code>&arobase;command&lbrace;--a&rbrace;</code> <command>--a</command>
@@ -2678,18 +2678,18 @@ but , ,&noeos;
 <code>&arobase;emph&lbrace;--a&rbrace;</code> <emph>--a</emph>
 <code>&arobase;env&lbrace;--a&rbrace;</code> <env>--a</env>
 <code>&arobase;file&lbrace;--a&rbrace;</code> <file>--a</file>
-<code>&arobase;i&lbrace;--a&rbrace;</code> <i>--a</i>
+<code>&arobase;i&lbrace;--a&rbrace;</code> <i>&textndash;a</i>
 <code>&arobase;kbd&lbrace;--a&rbrace;</code> <kbd>--a</kbd>
 <code>&arobase;key&lbrace;--a&rbrace;</code> <key>--a</key>
 <code>&arobase;math&lbrace;--a &lbrace;\frac&lbrace;1&rbrace;&lbrace;2&rbrace;&rbrace; &arobase;minus&lbrace;&rbrace;&rbrace;</code> <math>--a {\frac{1}{2}} &minus;</math>
 <code>&arobase;option&lbrace;--a&rbrace;</code> <option>--a</option>
-<code>&arobase;r&lbrace;--a&rbrace;</code> <r>--a</r>
+<code>&arobase;r&lbrace;--a&rbrace;</code> <r>&textndash;a</r>
 <code>&arobase;samp&lbrace;--a&rbrace;</code> <samp>--a</samp>
 <code>&arobase;sc&lbrace;--a&rbrace;</code> <sc>--a</sc>
 <code>&arobase;strong&lbrace;--a&rbrace;</code> <strong>--a</strong>
 <code>&arobase;t&lbrace;--a&rbrace;</code> <t>--a</t>
-<code>&arobase;sansserif&lbrace;--a&rbrace;</code> <sansserif>--a</sansserif>
-<code>&arobase;slanted&lbrace;--a&rbrace;</code> <slanted>--a</slanted>
+<code>&arobase;sansserif&lbrace;--a&rbrace;</code> <sansserif>&textndash;a</sansserif>
+<code>&arobase;slanted&lbrace;--a&rbrace;</code> <slanted>&textndash;a</slanted>
 <code>&arobase;titlefont&lbrace;--a&rbrace;</code> </pre><titlefont>--a</titlefont><pre xml:space="preserve">
 <code>&arobase;indicateurl&lbrace;--a&rbrace;</code> <indicateurl>--a</indicateurl>
 <code>&arobase;uref&lbrace;--a,--b&rbrace;</code> <uref><urefurl>--a</urefurl><urefdesc>--b</urefdesc></uref>
