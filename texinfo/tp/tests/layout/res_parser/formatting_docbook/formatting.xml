@@ -161,7 +161,7 @@ but , ,
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
-<literal>@t{--a}</literal> <literal>&#8211;a</literal>
+<literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
 <literal>@slanted{--a}</literal> &#8211;a
 <literal>@titlefont{--a}</literal> </para>&#8211;a
@@ -658,7 +658,7 @@ but , ,
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
-<literal>@t{--a}</literal> <literal>&#8211;a</literal>
+<literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
 <literal>@slanted{--a}</literal> &#8211;a
 <literal>@titlefont{--a}</literal> </para>&#8211;a
@@ -1156,7 +1156,7 @@ but , ,
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
-<literal>@t{--a}</literal> <literal>&#8211;a</literal>
+<literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
 <literal>@slanted{--a}</literal> &#8211;a
 <literal>@titlefont{--a}</literal> </para>&#8211;a
@@ -1655,7 +1655,7 @@ but , ,
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
-<literal>@t{--a}</literal> <literal>&#8211;a</literal>
+<literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
 <literal>@slanted{--a}</literal> &#8211;a
 <literal>@titlefont{--a}</literal> </para>&#8211;a
@@ -2153,7 +2153,7 @@ but , ,
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
-<literal>@t{--a}</literal> <literal>&#8211;a</literal>
+<literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> &#8211;a
 <literal>@slanted{--a}</literal> &#8211;a
 <literal>@titlefont{--a}</literal> </para>&#8211;a

@@ -486,7 +486,7 @@ foreach my $one_arg_command (
 
 our %code_style_commands;
 foreach my $command ('code', 'command', 'env', 'file', 'kbd', 'key', 'option',
-   'samp', 'indicateurl', 'verb') {
+   'samp', 'indicateurl', 'verb', 't') {
   $code_style_commands{$command} = 1;
   $brace_commands{$command} = 1;
 }

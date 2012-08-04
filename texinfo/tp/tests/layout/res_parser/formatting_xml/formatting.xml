@@ -887,7 +887,7 @@ but , ,&noeos;
 <code>&arobase;samp&lbrace;--a&rbrace;</code> <samp>--a</samp>
 <code>&arobase;sc&lbrace;--a&rbrace;</code> <sc>&textndash;a</sc>
 <code>&arobase;strong&lbrace;--a&rbrace;</code> <strong>&textndash;a</strong>
-<code>&arobase;t&lbrace;--a&rbrace;</code> <t>&textndash;a</t>
+<code>&arobase;t&lbrace;--a&rbrace;</code> <t>--a</t>
 <code>&arobase;sansserif&lbrace;--a&rbrace;</code> <sansserif>&textndash;a</sansserif>
 <code>&arobase;slanted&lbrace;--a&rbrace;</code> <slanted>&textndash;a</slanted>
 <code>&arobase;titlefont&lbrace;--a&rbrace;</code> </para><titlefont>&textndash;a</titlefont>
@@ -1489,7 +1489,7 @@ but , ,&noeos;
 <code>&arobase;samp&lbrace;--a&rbrace;</code> <samp>--a</samp>
 <code>&arobase;sc&lbrace;--a&rbrace;</code> <sc>&textndash;a</sc>
 <code>&arobase;strong&lbrace;--a&rbrace;</code> <strong>&textndash;a</strong>
-<code>&arobase;t&lbrace;--a&rbrace;</code> <t>&textndash;a</t>
+<code>&arobase;t&lbrace;--a&rbrace;</code> <t>--a</t>
 <code>&arobase;sansserif&lbrace;--a&rbrace;</code> <sansserif>&textndash;a</sansserif>
 <code>&arobase;slanted&lbrace;--a&rbrace;</code> <slanted>&textndash;a</slanted>
 <code>&arobase;titlefont&lbrace;--a&rbrace;</code> </para><titlefont>&textndash;a</titlefont>
@@ -2091,7 +2091,7 @@ but , ,&noeos;
 <code>&arobase;samp&lbrace;--a&rbrace;</code> <samp>--a</samp>
 <code>&arobase;sc&lbrace;--a&rbrace;</code> <sc>&textndash;a</sc>
 <code>&arobase;strong&lbrace;--a&rbrace;</code> <strong>&textndash;a</strong>
-<code>&arobase;t&lbrace;--a&rbrace;</code> <t>&textndash;a</t>
+<code>&arobase;t&lbrace;--a&rbrace;</code> <t>--a</t>
 <code>&arobase;sansserif&lbrace;--a&rbrace;</code> <sansserif>&textndash;a</sansserif>
 <code>&arobase;slanted&lbrace;--a&rbrace;</code> <slanted>&textndash;a</slanted>
 <code>&arobase;titlefont&lbrace;--a&rbrace;</code> </para><titlefont>&textndash;a</titlefont>
