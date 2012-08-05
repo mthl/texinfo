@@ -262,19 +262,20 @@ foreach my $asis_command (@asis_commands) {
 my @quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
   'option', 'samp', 'indicateurl');
 
-# %quoted_code_commands have no quote when in code command contexts
-my %quoted_code_commands;
+# %non_quoted_commands_when_nested have no quote when in code command contexts
+my %non_quoted_commands_when_nested;
 
 # Quotes are reset in converter_initialize and unicode quotes are used 
 # if @documentencoding utf-8 is used.
 foreach my $quoted_command (@quoted_commands) {
   $style_map{$quoted_command} = ["'", "'"];
-  $quoted_code_commands{$quoted_command} = 1;
+  if ($code_style_commands{$quoted_command}) {
+    $non_quoted_commands_when_nested{$quoted_command} = 1;
+  }
 }
-
-delete $quoted_code_commands{'cite'};
-delete $quoted_code_commands{'samp'};
-delete $quoted_code_commands{'indicateurl'};
+# always quoted even when nested
+delete $non_quoted_commands_when_nested{'samp'};
+delete $non_quoted_commands_when_nested{'indicateurl'};
 
 $style_map{'key'} = ['<', '>'];
 
@@ -1584,7 +1585,7 @@ sub _convert($$)
         $text_before = $root->{'extra'}->{'begin'};
         $text_after = $root->{'extra'}->{'end'};
       } else {
-        if ($quoted_code_commands{$command} 
+        if ($non_quoted_commands_when_nested{$command} 
             and $formatter->{'font_type_stack'}->[-1]->{'code_command'}) {
           $text_before = '';
           $text_after = '';
@@ -1595,7 +1596,7 @@ sub _convert($$)
       }
       # do this after determining $text_before/$text_after such that it
       # doesn't impact the current command, but only commands nested within
-      if ($quoted_code_commands{$command}) {
+      if ($non_quoted_commands_when_nested{$command}) {
         $formatter->{'font_type_stack'}->[-1]->{'code_command'}++;
       }
       $result .= $self->_count_added($formatter->{'container'},
@@ -1635,7 +1636,7 @@ sub _convert($$)
             if !$formatter->{'font_type_stack'}->[-1]->{'normal'};
         }
       }
-      if ($quoted_code_commands{$command}) {
+      if ($non_quoted_commands_when_nested{$command}) {
         #$formatter->{'code_command'}--;
         $formatter->{'font_type_stack'}->[-1]->{'code_command'}--;
       }
