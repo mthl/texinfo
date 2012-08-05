@@ -51,7 +51,7 @@ $result_trees{'note_in_strong'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'One '
+              'text' => '3 One '
             },
             {
               'args' => [
@@ -94,7 +94,7 @@ $result_trees{'note_in_strong'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '3 '
+              'text' => '5 '
             },
             {
               'args' => [
@@ -149,7 +149,7 @@ $result_trees{'note_in_strong'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '2 '
+              'text' => '9 '
             },
             {
               'args' => [
@@ -192,7 +192,7 @@ $result_trees{'note_in_strong'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '4 '
+              'text' => '11 '
             },
             {
               'args' => [
@@ -235,7 +235,7 @@ $result_trees{'note_in_strong'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '6 '
+              'text' => '13 '
             },
             {
               'args' => [
@@ -255,6 +255,49 @@ $result_trees{'note_in_strong'} = {
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 13,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '.
+'
+            }
+          ],
+          'parent' => {},
+          'type' => 'paragraph'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => '15 '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'note-bbb'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'strong',
+              'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 15,
                 'macro' => ''
               },
               'parent' => {}
@@ -334,38 +377,49 @@ $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'a
 $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[11];
 $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[11]{'contents'}[2]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[11];
 $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1];
+$result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1];
+$result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13];
+$result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'contents'}[1]{'args'}[0];
+$result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'contents'}[1];
+$result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13];
+$result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'contents'}[2]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13];
+$result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1];
 $result_trees{'note_in_strong'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'note_in_strong'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'note_in_strong'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'note_in_strong'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'note_in_strong'}{'contents'}[1]{'parent'} = $result_trees{'note_in_strong'};
 
 $result_texis{'note_in_strong'} = '@node Top
 
-One @strong{Note}.
+3 One @strong{Note}.
 
-3 @strong{Note a}.
+5 @strong{Note a}.
 
 
 
-2 @strong{note}.
+9 @strong{note}.
 
-4 @strong{note b}.
+11 @strong{note b}.
 
-6 @strong{ note}.
+13 @strong{ note}.
+
+15 @strong{note-bbb}.
 ';
 
 
 $result_texts{'note_in_strong'} = '
-One Note.
+3 One Note.
 
-3 Note a.
+5 Note a.
 
 
 
-2 note.
+9 note.
 
-4 note b.
+11 note b.
 
-6  note.
+13  note.
+
+15 note-bbb.
 ';
 
 $result_sectioning{'note_in_strong'} = {};
@@ -405,15 +459,17 @@ $result_converted{'info'}->{'note_in_strong'} = 'This is , produced by tp versio
 
 File: ,  Node: Top,  Up: (dir)
 
-One *Note*.
+3 One *Note*.
 
-   3 *Note a*.
+   5 *Note a*.
 
-   2 *note*.
+   9 *note*.
 
-   4 *note b*.
+   11 *note b*.
 
-   6 * note*.
+   13 * note*.
+
+   15 *note-bbb*.
 
 
 Tag Table:
@@ -425,30 +481,12 @@ End Tag Table
 $result_converted_errors{'info'}->{'note_in_strong'} = [
   {
     'file_name' => '',
-    'error_line' => ':3: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
-',
-    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 3
-  },
-  {
-    'file_name' => '',
     'error_line' => ':5: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
     'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 5
-  },
-  {
-    'file_name' => '',
-    'error_line' => ':9: warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
-',
-    'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
-    'type' => 'warning',
-    'macro' => '',
-    'line_nr' => 9
   },
   {
     'file_name' => '',

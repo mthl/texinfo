@@ -1608,7 +1608,7 @@ sub _convert($$)
         if ($root->{'cmdname'} eq 'strong' 
              and scalar (@{$root->{'args'}->[0]->{'contents'}})
              and $root->{'args'}->[0]->{'contents'}->[0]->{'text'}
-             and $root->{'args'}->[0]->{'contents'}->[0]->{'text'} =~ /^Note\b/i
+             and $root->{'args'}->[0]->{'contents'}->[0]->{'text'} =~ /^Note\s/i
              and $self->{'output_format'}
              and $self->{'output_format'} eq 'info') {
           $self->line_warn($self->__("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"), $root->{'line_nr'});

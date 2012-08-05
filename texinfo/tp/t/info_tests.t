@@ -273,17 +273,19 @@ CTTTTTT
 ['note_in_strong',
 '@node Top
 
-One @strong{Note}.
+3 One @strong{Note}.
 
-3 @strong{Note a}.
+5 @strong{Note a}.
 
 
 
-2 @strong{note}.
+9 @strong{note}.
 
-4 @strong{note b}.
+11 @strong{note b}.
 
-6 @strong{ note}.
+13 @strong{ note}.
+
+15 @strong{note-bbb}.
 '],
 ['nested_multitable_anchor_index',
 '@node Top
