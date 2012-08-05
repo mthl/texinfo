@@ -287,6 +287,14 @@ CTTTTTT
 
 15 @strong{note-bbb}.
 '],
+['note_in_strong_end_of_line',
+'@node Top
+
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb vvvvvvvvvvvvvvvv @strong{note a}
+
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb vvvvvvvvvvvvvvvv @strong{note
+a}
+'],
 ['nested_multitable_anchor_index',
 '@node Top
 
