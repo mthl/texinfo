@@ -362,9 +362,9 @@ Just before an image @image{this_is_a_long_unknown_file} text after the image, a
 Float text1
 
 @caption{Caption. @TeX. 
-In caption @strong{note}.  
+In caption @strong{note caption}.  
 Now footnote@footnote{@LaTeX. 
-and strong @strong{Note}.}}
+and strong @strong{Note footnote}.}}
 @end float
 
 @listoffloats Text

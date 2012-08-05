@@ -150,7 +150,7 @@ $result_trees{'error_in_footnote'} = {
                               'contents' => [
                                 {
                                   'parent' => {},
-                                  'text' => 'note'
+                                  'text' => 'note caption'
                                 }
                               ],
                               'parent' => {},
@@ -201,7 +201,7 @@ $result_trees{'error_in_footnote'} = {
                                           'contents' => [
                                             {
                                               'parent' => {},
-                                              'text' => 'Note'
+                                              'text' => 'Note footnote'
                                             }
                                           ],
                                           'parent' => {},
@@ -542,9 +542,9 @@ $result_texis{'error_in_footnote'} = '
 Float text1
 
 @caption{Caption. @TeX. 
-In caption @strong{note}.  
+In caption @strong{note caption}.  
 Now footnote@footnote{@LaTeX. 
-and strong @strong{Note}.}}
+and strong @strong{Note footnote}.}}
 @end float
 
 @listoffloats Text
@@ -659,7 +659,7 @@ File: ,  Node: Top,  Up: (dir)
 
 Float text1
 
-Text 1: Caption.  TeX.  In caption *note*.  Now footnote(1)
+Text 1: Caption.  TeX.  In caption *note caption*.  Now footnote(1)
 
 * Menu:
 
@@ -671,14 +671,14 @@ Text 1: Caption.  TeX.  In caption *note*.  Now footnote(1)
 
    ---------- Footnotes ----------
 
-   (1) LaTeX.  and strong *Note*.
+   (1) LaTeX.  and strong *Note footnote*.
 
 
 
 Tag Table:
 Node: Top41
 Ref: label75
-Ref: Top-Footnote-1349
+Ref: Top-Footnote-1357
 
 End Tag Table
 ';
