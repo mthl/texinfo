@@ -554,9 +554,9 @@ $result_converted{'html_text'}->{'block_commands'} = '
 </p>
 
 
-</div><p><strong>a float 1: </strong>in caption
+<div class="float-caption"><p><strong>a float 1: </strong>in caption
 </p>
-<p>in caption</p>';
+<p>in caption</p></div></div>';
 
 
 $result_converted{'xml'}->{'block_commands'} = '

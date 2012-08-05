@@ -1899,7 +1899,7 @@ $result_converted{'html_text'}->{'commands_in_flushright'} = '
 <p>in float
 </p>
 
-</div><p><strong>label 1: </strong>in caption</p>
+<div class="float-caption"><p><strong>label 1: </strong>in caption</p></div></div>
 <p align="right">Sp:
 </p><br>
 <br>

@@ -2686,6 +2686,7 @@ sub _convert_float_command($$$$$)
 
   if ($prepended) {
     if ($caption) {
+      # prepend the prepended tree to the first paragraph
       my @caption_original_contents = @{$caption->{'args'}->[0]->{'contents'}};
       my @caption_contents;
       my $new_paragraph;
@@ -2710,7 +2711,7 @@ sub _convert_float_command($$$$$)
         $prepended_text = '';
       }
     }
-    if (!$caption_text) {
+    if ($caption_text eq '') {
       $prepended_text = $self->convert_tree_new_formatting_context(
         $prepended, 'float prepended');
       if ($prepended_text ne '') {
@@ -2723,12 +2724,17 @@ sub _convert_float_command($$$$$)
   #print STDERR "Float $prepended_text: caption $caption ".
   #  Texinfo::Parser::_print_current ($caption)."\n";
   
-  if ($caption and !$caption_text) {
+  if ($caption and $caption_text eq '') {
     $caption_text = $self->convert_tree_new_formatting_context(
       $caption->{'args'}->[0], 'float caption');
   }
+  if ($prepended_text.$caption_text ne '') {
+    $prepended_text = $self->_attribute_class('div','float-caption'). '>'
+        . $prepended_text;
+    $caption_text .= '</div>';
+  }
   return $self->_attribute_class('div','float'). '>' .$label."\n".$content.
-     '</div>' . $prepended_text.$caption_text;
+     $prepended_text.$caption_text . '</div>';
 }
 $default_commands_conversion{'float'} = \&_convert_float_command;
 

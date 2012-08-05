@@ -820,19 +820,19 @@ ul.no-bullet {list-style: none}
 
 <div class="float"><a name="label1"></a>
 <p>Label no caption.
-</p></div><p><strong>1
-</strong></p>
+</p><div class="float-caption"><p><strong>1
+</strong></p></div></div>
 <div class="float"><a name="label2"></a>
 <p>Label and caption.
 </p>
-</div><p><strong>2: </strong>caption with label</p>
+<div class="float-caption"><p><strong>2: </strong>caption with label</p></div></div>
 <div class="float">
 <p>no label no caption
 </p></div>
 <div class="float">
 <p>no label caption
 </p>
-</div><p>caption no label</p>
+<div class="float-caption"><p>caption no label</p></div></div>
 <dl class="listoffloats">
 <dt><a href="#label1">1</a></dt><dd></dd>
 <dt><a href="#label2">2</a></dt><dd><p>caption with label</p></dd>

@@ -646,9 +646,9 @@ ul.no-bullet {list-style: none}
 <div class="float"><a name="label"></a>
 <p>In float.
 </p>
-</div><p><strong>fl 1: </strong>in caption
+<div class="float-caption"><p><strong>fl 1: </strong>in caption
 <a name="index-index-entry"></a>
-</p>
+</p></div></div>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_cp_letter-I"><b>I</b></a>
  &nbsp; 
 </td></tr></table>

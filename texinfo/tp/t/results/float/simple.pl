@@ -307,7 +307,7 @@ ul.no-bullet {list-style: none}
 
 <p>In float.
 </p>
-</div><p><strong>Type 1: </strong>Caption.</p>
+<div class="float-caption"><p><strong>Type 1: </strong>Caption.</p></div></div>
 
 
 </body>

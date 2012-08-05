@@ -486,8 +486,8 @@ ul.no-bullet {list-style: none}
 
 <div class="float"><a name="label--"></a>
 <p>Float
-</p></div><p><strong>Text &nbsp; 1
-</strong></p>
+</p><div class="float-caption"><p><strong>Text &nbsp; 1
+</strong></p></div></div>
 <dl class="listoffloats">
 <dt><a href="#label--">Text &nbsp; 1</a></dt><dd></dd>
 </dl>

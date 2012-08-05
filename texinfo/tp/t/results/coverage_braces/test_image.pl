@@ -4684,10 +4684,10 @@ In text [ alt <b>&icirc;&ndash;le..</b>  a
 &lt;&quot;%@  &lt; &amp; @ % &quot; ">.
 </p>
 
-</div><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+<div class="float-caption"><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p><strong>Image 1: </strong>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p>
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></div></div>
 <dl class="listoffloats">
 <dt><a href="#Image-with-commands">Image 1</a></dt><dd><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
@@ -4924,10 +4924,10 @@ In text [ alt <b>&icirc;&ndash;le..</b>  a
 &lt;&quot;%@  &lt; &amp; @ % &quot; ">.
 </p>
 
-</div><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+<div class="float-caption"><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p><strong>Image 1: </strong>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p>
+&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></div></div>
 <dl class="listoffloats">
 <dt><a href="#Image-with-commands">Image 1</a></dt><dd><img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 

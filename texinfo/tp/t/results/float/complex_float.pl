@@ -5479,7 +5479,7 @@ A footnote.
 
 
 
-</div><p><strong>Text 1: </strong>An example of float caption<small class="enddots">...</small>
+<div class="float-caption"><p><strong>Text 1: </strong>An example of float caption<small class="enddots">...</small>
 An example.
 </p><div class="example">
 <pre class="example">example
@@ -5513,7 +5513,7 @@ A footnote.
 <a name="DOCF2" href="#FOOT2">(3)</a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
-</p>
+</p></div></div>
 <hr>
 <a name="chapter"></a>
 <div class="header">
@@ -5529,7 +5529,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 </p>
 
 
-</div><p><strong>Text 1.1: </strong>An example of float caption<small class="enddots">...</small> 2
+<div class="float-caption"><p><strong>Text 1.1: </strong>An example of float caption<small class="enddots">...</small> 2
 An example 2.
 </p><div class="example">
 <pre class="example">example 2
@@ -5563,7 +5563,7 @@ A footnote 2.
 <a name="DOCF3" href="#FOOT3">(4)</a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
-</p>
+</p></div></div>
 <p>See <a href="#text-with-a-lot-of-features">text with a lot of features</a>.
 </p>
 <div class="footnote">

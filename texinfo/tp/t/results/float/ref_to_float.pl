@@ -560,12 +560,12 @@ ul.no-bullet {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <div class="float"><a name="Label1"></a>
 <p>Float
-</p></div><p><strong>Text 1
-</strong></p>
+</p><div class="float-caption"><p><strong>Text 1
+</strong></p></div></div>
 <div class="float"><a name="Label2"></a>
 <p>In foat 2.
-</p></div><p><strong>1
-</strong></p>
+</p><div class="float-caption"><p><strong>1
+</strong></p></div></div>
 <p><a href="#Label1">Label1</a>
 </p>
 <p><a href="#Label2">Label2</a>

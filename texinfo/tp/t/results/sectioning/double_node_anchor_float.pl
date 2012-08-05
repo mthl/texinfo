@@ -1095,14 +1095,14 @@ ul.no-bullet {list-style: none}
 </div>
 
 <div class="float">
-</div><p><strong>Text
-</strong></p>
+<div class="float-caption"><p><strong>Text
+</strong></p></div></div>
 <div class="float">
-</div><p><strong>Text
-</strong></p>
+<div class="float-caption"><p><strong>Text
+</strong></p></div></div>
 <div class="float"><a name="float1"></a>
-</div><p><strong>Text 1
-</strong></p>
+<div class="float-caption"><p><strong>Text 1
+</strong></p></div></div>
 <hr>
 <div class="header">
 <p>
