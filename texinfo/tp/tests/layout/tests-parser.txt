@@ -29,7 +29,7 @@ formatting_plaintext ../coverage/formatting.texi --plaintext -U texi2html
 #formatting_mediawiki ../coverage/formatting.texi --init mediawiki.pm
 formatting_html32 ../coverage/formatting.texi --init html32.pm
 formatting_regions formatting_regions.texi
-formatting_exotic ../coverage/formatting.texi --split section --no-header --no-number-sections --set-customization-variable 'TOC_LINKS 1' --set-customization-variable 'DEF_TABLE 1' --set-customization-variable 'SHORT_REF 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null --set-customization-variable 'USE_TITLEPAGE_FOR_TITLE 0'
+formatting_exotic ../coverage/formatting.texi --split section --no-header --no-number-sections --set-customization-variable 'TOC_LINKS 1' --set-customization-variable 'DEF_TABLE 1' --set-customization-variable 'ALWAYS_NODE_ARG_IN_XREF 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null --set-customization-variable 'USE_TITLEPAGE_FOR_TITLE 0'
 formatting_fr_icons ../coverage/formatting.texi --document-language fr --init icons.init
 formatting_singular ../coverage/formatting.texi --init-file t2h_singular.init --set-customization-variable 'L2H 1' --set-customization-variable 'SHORTEXTN 1' --set-customization-variable 'PREFIX sing' --set-customization-variable 'TOP_FILE index.htm' --no-verbose
 #formatting_makeinfo ../coverage/formatting.texi --init makeinfo.pm --no-warn

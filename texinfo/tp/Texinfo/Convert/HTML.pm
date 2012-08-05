@@ -432,7 +432,7 @@ sub command_contents_href($$$$)
   return $href;
 }
 
-sub command_text($$$)
+sub command_text($$;$)
 {
   my $self = shift;
   my $command = shift;
@@ -945,7 +945,8 @@ my %defaults = (
   'USE_REL_REV'          => 1,
   'NODE_NAME_IN_MENU'    => 1,
   'NODE_NAME_IN_INDEX'   => 1,
-  'SHORT_REF'            => 1,
+  'ALWAYS_NODE_ARG_IN_XREF' => 1,
+  'FLOAT_NAME_IN_XREF'   => 0,
   'OVERVIEW_LINK_TO_TOC' => 1,
   'COMPLEX_FORMAT_IN_TABLE' => 0,
   'WORDS_IN_PAGE'        => 300,
@@ -3036,7 +3037,18 @@ sub _convert_xref_commands($$$$)
          and $node->{'extra'}->{'associated_section'}) {
         $command = $node->{'extra'}->{'associated_section'};
         $name = $self->command_text($command, 'text_nonumber');
-      } elsif (!$self->get_conf('SHORT_REF')) {
+      } elsif ($node->{'cmdname'} eq 'float') {
+        if ($self->get_conf('FLOAT_NAME_IN_XREF')) {
+          $name = $self->command_text($command);
+        }
+        if (!defined($name) or $name eq '') {
+          if (defined($args->[0]->{'monospace'})) {
+            $name = $args->[0]->{'monospace'};
+          } else {
+            $name = '';
+          }
+        }
+      } elsif (!$self->get_conf('ALWAYS_NODE_ARG_IN_XREF')) { 
         $name = $self->command_text($command, 'text_nonumber');
         #die "$command $command->{'normalized'}" if (!defined($name));
       } elsif (defined($args->[0]->{'monospace'})) {
@@ -3074,6 +3086,7 @@ sub _convert_xref_commands($$$$)
          { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
     }
   } else {
+    # external reference
     my $node_entry = {};
     $node_entry->{'node_content'} = $root->{'extra'}->{'node_argument'}->{'node_content'}
       if ($root->{'extra'}->{'node_argument'}
@@ -7535,7 +7548,8 @@ sub _set_variables_texi2html()
   ['SPLIT_INDEX', 100],
   ['PROGRAM_NAME_IN_FOOTER', 1],
   ['HEADER_IN_TABLE', 1],
-  ['SHORT_REF', 0],
+  ['ALWAYS_NODE_ARG_IN_XREF', 0],
+  ['FLOAT_NAME_IN_XREF', 1],
   ['USE_TITLEPAGE_FOR_TITLE', 1],
   ['MENU_ENTRY_COLON', ''],
   ['INDEX_ENTRY_COLON', ''],

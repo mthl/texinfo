@@ -1778,7 +1778,7 @@ sub _convert($$)
             and $root->{'extra'}->{'label'}->{'cmdname'} eq 'float') {
           my $float = $root->{'extra'}->{'label'};
 
-          my $name = $self->_float_type_number($float);;
+          my $name = $self->_float_type_number($float);
           $args[1] = $name->{'contents'};
         }
         if ($command eq 'inforef' and scalar(@args) == 3) {
