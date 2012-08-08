@@ -88,6 +88,6 @@ $result_converted{'plaintext'}->{'nested'} = 'type the characters \'l o g o u t 
 ';
 
 
-$result_converted{'html_text'}->{'nested'} = '<p>type the characters <kbd>l o g o u t &lt;RET&gt;</kbd>.</p>';
+$result_converted{'html_text'}->{'nested'} = '<p>type the characters <kbd>l o g o u t <span class="key">RET</span></kbd>.</p>';
 
 1;

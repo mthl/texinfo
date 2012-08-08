@@ -1382,8 +1382,13 @@ sub _convert_style_command($$$$)
     if (defined($attribute_hash->{$cmdname}->{'attribute'})) {
       my ($style, $class, $attribute_text)
         = _parse_attribute ($attribute_hash->{$cmdname}->{'attribute'});
-      $text = $self->_attribute_class($style, $class) . "$attribute_text>" 
+      my $open = $self->_attribute_class($style, $class);
+      if ($open ne '') {
+        $text = $open . "$attribute_text>" 
               . $text . "</$style>";
+      } elsif ($attribute_text ne '') {
+        $text = "<$style $attribute_text>". $text . "</$style>";
+      }
     }
     if (defined($attribute_hash->{$cmdname}->{'quote'})) {
       $text = $self->get_conf('OPEN_QUOTE_SYMBOL') . $text
@@ -1726,12 +1731,21 @@ sub _convert_key_command($$$$)
     #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
-  return $self->protect_text('<') .$text .$self->protect_text('>');
-  #if (!$self->in_code()) {
-  #  return '<tt>'.$text .'</tt>';
-  #} else {
-  #  return $text;
-  #}
+  if ($self->in_string()) {
+    return $text;
+  }
+  #return $self->protect_text('<') .$text .$self->protect_text('>');
+  my $class = $cmdname;
+  if (!$self->in_code()) {
+    return $self->_attribute_class('tt', $class).'>'.$text .'</tt>';;
+  } else {
+    my $open = $self->_attribute_class('span', $class);
+    if ($open ne '') {
+      return $open.'>'.$text.'</span>';
+    } else {
+      return $text;
+    }
+  }
 }
 
 $default_commands_conversion{'key'} = \&_convert_key_command;
@@ -7147,8 +7161,13 @@ sub _attribute_class($$$)
   my $element = shift;
   my $class = shift;
 
-  return "<$element" if (!defined($class) or $class eq '' 
-                         or $self->get_conf('NO_CSS'));
+  if (!defined($class) or $class eq '' or $self->get_conf('NO_CSS')) {
+    if ($element eq 'span') {
+      return '';
+    } else {
+      return "<$element";
+    }
+  }
 
   my $style = '';
 
@@ -7174,11 +7193,14 @@ sub _protect_space_codebreak($$)
     my $class = 'nolinebreak';
     $class = 'nocodebreak' if ($self->in_code() 
                            and $self->get_conf('allowcodebreaks') eq 'false');
-    my $open = $self->_attribute_class('span', $class).'>';
-    # protect spaces in the html leading attribute in case we are in 'w'
-    $open =~ s/ /\x{1F}/g if ($in_w);
-    # special span to avoid breaking at _-
-    $text =~ s/(\S*[_-]\S*)/${open}$1<\/span>/g;
+    my $open = $self->_attribute_class('span', $class);
+    if ($open ne '') {
+      $open .= '>';
+      # protect spaces in the html leading attribute in case we are in 'w'
+      $open =~ s/ /\x{1F}/g if ($in_w);
+      # special span to avoid breaking at _-
+      $text =~ s/(\S*[_-]\S*)/${open}$1<\/span>/g;
+    }
   }
   if ($in_w) {
     $text .= '&nbsp;' if (chomp($text));
