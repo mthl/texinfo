@@ -1055,7 +1055,8 @@ my %css_map = (
      'span.sansserif'         => 'font-family:sans-serif; font-weight:normal',
      'span.roman'         => 'font-family:serif; font-weight:normal',
      'span.nocodebreak'   => 'white-space:pre',
-     'span.nolinebreak'   => 'white-space:pre'
+     'span.nolinebreak'   => 'white-space:pre',
+     'kbd'                => 'font-style:oblique',
 );
 
 $css_map{'pre.format'} = $css_map{'pre.display'};
