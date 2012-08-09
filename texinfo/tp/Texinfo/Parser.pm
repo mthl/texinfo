@@ -4773,6 +4773,26 @@ sub _parse_texi($;$)
                     push @{$self->{'internal_references'}}, $ref;
                   }
                 }
+                if (defined($args[1])) {
+                  my $normalized_label = 
+                    Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $args[1]});
+                  if ($normalized_label !~ /[^-]/) {
+                    $self->line_warn(sprintf($self->__("In \@%s empty cross reference name after expansion `%s'"),
+                          $closed_command,
+                          Texinfo::Convert::Texinfo::convert({'contents' => $args[1]})), 
+                            $line_nr);
+                  }
+                }
+                if ($closed_command ne 'inforef' and defined($args[2])) {
+                  my $normalized_title =
+                    Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $args[2]});
+                  if ($normalized_title !~ /[^-]/) {
+                    $self->line_warn(sprintf($self->__("In \@%s empty cross reference title after expansion `%s'"),
+                          $closed_command,
+                          Texinfo::Convert::Texinfo::convert({'contents' => $args[2]})), 
+                            $line_nr);
+                  }
+                }
               }
             } elsif ($current->{'parent'}->{'cmdname'} eq 'image') {
               my $image = $current->{'parent'};

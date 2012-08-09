@@ -1813,6 +1813,20 @@ $top_chapter_sections_text,
 
 @appendix appendix
 '],
+['empty_ref_arg',
+'@node Top
+
+@ref{Top, @ }
+@ref{Top, , @ }
+@ref{Top, @ , @:}
+@ref{Top, @c aaa
+ @ 
+@c ggg
+, @c fff
+@c
+}
+'
+],
 ['contents_at_document_begin',
 undef, {'test_file' => 'contents_at_document_begin.texi'}],
 ['contents_at_end_document_after_node',
