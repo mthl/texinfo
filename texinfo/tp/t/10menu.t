@@ -442,6 +442,16 @@ my @test_invalid = (
 * (b)b::
 @end menu
 '],
+['empty_menu_entry_name',
+'@node Top
+
+@menu
+* : (vvv). fff
+* :aaa,
+@end menu
+
+@node aaa
+']
 );
 
 foreach my $test (@test_cases) {

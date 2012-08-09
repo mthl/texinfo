@@ -3385,6 +3385,12 @@ sub _register_extra_menu_entry_information($$;$)
   foreach my $arg (@{$current->{'args'}}) {
     if ($arg->{'type'} eq 'menu_entry_name') {
       $current->{'extra'}->{'menu_entry_name'} = $arg;
+      my $normalized_menu_entry_name = 
+        Texinfo::Convert::NodeNameNormalization::normalize_node($arg);
+      if ($normalized_menu_entry_name !~ /[^-]/) {
+        $self->line_warn(sprintf($self->__("Empty menu entry name in `%s'"),
+          Texinfo::Convert::Texinfo::convert($current)), $line_nr);
+      }
     } elsif ($arg->{'type'} eq 'menu_entry_node') {
       $self->_isolate_last_space($arg, 'space_at_end_menu_node');
       my $parsed_entry_node = _parse_node_manual($arg);
@@ -4774,9 +4780,9 @@ sub _parse_texi($;$)
                   }
                 }
                 if (defined($args[1])) {
-                  my $normalized_label = 
+                  my $normalized_cross_ref_name = 
                     Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $args[1]});
-                  if ($normalized_label !~ /[^-]/) {
+                  if ($normalized_cross_ref_name !~ /[^-]/) {
                     $self->line_warn(sprintf($self->__("In \@%s empty cross reference name after expansion `%s'"),
                           $closed_command,
                           Texinfo::Convert::Texinfo::convert({'contents' => $args[1]})), 
@@ -4784,9 +4790,9 @@ sub _parse_texi($;$)
                   }
                 }
                 if ($closed_command ne 'inforef' and defined($args[2])) {
-                  my $normalized_title =
+                  my $normalized_cross_ref_title =
                     Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $args[2]});
-                  if ($normalized_title !~ /[^-]/) {
+                  if ($normalized_cross_ref_title !~ /[^-]/) {
                     $self->line_warn(sprintf($self->__("In \@%s empty cross reference title after expansion `%s'"),
                           $closed_command,
                           Texinfo::Convert::Texinfo::convert({'contents' => $args[2]})), 
