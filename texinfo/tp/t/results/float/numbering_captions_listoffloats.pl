@@ -9490,9 +9490,9 @@ Previous: <a href="#Appendix-for-float" accesskey="p" rel="previous">Appendix fo
 <a name="list-of-floats-1"></a>
 <h2 class="unnumbered">list of floats</h2>
 
-<p>See <a href="#text-in-section">text in section</a>.
-And (see <a href="#text-in-chapter">text in chapter</a>).
-See <a href="#text-with-a-lot-of-features">text with a lot of features</a>.
+<p>See <a href="#text-in-section">Text 1.3</a>.
+And (see <a href="#text-in-chapter">Text 1.1</a>).
+See <a href="#text-with-a-lot-of-features">Text 1</a>.
 </p>
 <p>And now a ref (without manual or printed manual)
 <a href="#text-with-a-lot-of-features">title</a>.
@@ -9503,7 +9503,7 @@ See <a href="#text-with-a-lot-of-features">text with a lot of features</a>.
 <p>And now a ref (without manual with a printed manual)
 &lsquo;title&rsquo; in <cite>printed manual title</cite>.
 </p>
-<p>A ref to float without type <a href="#label-but-no-type">label but no type</a>.
+<p>A ref to float without type <a href="#label-but-no-type">1</a>.
 </p>
 <dl class="listoffloats">
 <dt><a href="#text-with-a-lot-of-features">Text 1</a></dt><dd><p>TeX and someething</p></dd>

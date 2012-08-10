@@ -613,7 +613,7 @@ Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">&lsquo;<samp>node</samp>&rsquo;</h4>
 
-<p>See <a href="#node">node</a>.
+<p>See <a href="#node">&lsquo;<samp>node</samp>&rsquo;</a>.
 </p><hr>
 
 

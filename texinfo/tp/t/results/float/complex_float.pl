@@ -5565,7 +5565,7 @@ A footnote 2.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></div></div>
-<p>See <a href="#text-with-a-lot-of-features">text with a lot of features</a>.
+<p>See <a href="#text-with-a-lot-of-features">Text 1</a>.
 </p>
 <div class="footnote">
 <hr>

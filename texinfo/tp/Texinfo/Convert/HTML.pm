@@ -945,8 +945,8 @@ my %defaults = (
   'USE_REL_REV'          => 1,
   'NODE_NAME_IN_MENU'    => 1,
   'NODE_NAME_IN_INDEX'   => 1,
-  'ALWAYS_NODE_ARG_IN_XREF' => 1,
-  'FLOAT_NAME_IN_XREF'   => 0,
+  'XREF_USE_NODE_NAME_ARG' => 0,
+  'XREF_USE_FLOAT_LABEL'   => 1,
   'OVERVIEW_LINK_TO_TOC' => 1,
   'COMPLEX_FORMAT_IN_TABLE' => 0,
   'WORDS_IN_PAGE'        => 300,
@@ -3053,7 +3053,7 @@ sub _convert_xref_commands($$$$)
         $command = $node->{'extra'}->{'associated_section'};
         $name = $self->command_text($command, 'text_nonumber');
       } elsif ($node->{'cmdname'} eq 'float') {
-        if ($self->get_conf('FLOAT_NAME_IN_XREF')) {
+        if ($self->get_conf('XREF_USE_FLOAT_LABEL')) {
           $name = $self->command_text($command);
         }
         if (!defined($name) or $name eq '') {
@@ -3063,7 +3063,7 @@ sub _convert_xref_commands($$$$)
             $name = '';
           }
         }
-      } elsif (!$self->get_conf('ALWAYS_NODE_ARG_IN_XREF')) { 
+      } elsif (!$self->get_conf('XREF_USE_NODE_NAME_ARG')) { 
         $name = $self->command_text($command, 'text_nonumber');
         #die "$command $command->{'normalized'}" if (!defined($name));
       } elsif (defined($args->[0]->{'monospace'})) {
@@ -7571,8 +7571,6 @@ sub _set_variables_texi2html()
   ['SPLIT_INDEX', 100],
   ['PROGRAM_NAME_IN_FOOTER', 1],
   ['HEADER_IN_TABLE', 1],
-  ['ALWAYS_NODE_ARG_IN_XREF', 0],
-  ['FLOAT_NAME_IN_XREF', 1],
   ['USE_TITLEPAGE_FOR_TITLE', 1],
   ['MENU_ENTRY_COLON', ''],
   ['INDEX_ENTRY_COLON', ''],

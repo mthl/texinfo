@@ -317,7 +317,7 @@ sub set_from_init_file($$) {
   my $var = shift;
   my $value = shift;
   if (!Texinfo::Common::valid_option($var)) {
-    warn (sprintf(__('Unknown variable %s'), $var));
+    warn (sprintf(main::__("Unknown variable %s\n"), $var));
     return 0;
   } elsif (Texinfo::Common::obsolete_option($var)) {
     warn (sprintf(main::__("Obsolete variable %s\n"), $var));

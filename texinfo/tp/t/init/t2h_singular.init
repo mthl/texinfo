@@ -24,7 +24,7 @@ set_from_init_file('EXPANDED_FORMATS', ['html', 'tex']);
 set_from_init_file('SPLIT', 'node');
 
 #if set cross-references use the xref node name argument
-set_from_init_file('ALWAYS_NODE_ARG_IN_XREF', 1);
+set_from_init_file('XREF_USE_NODE_NAME_ARG', 1);
 
 # if set, chatter about what we are doing
 set_from_init_file('VERBOSE', 1);

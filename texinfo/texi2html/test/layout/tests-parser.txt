@@ -26,7 +26,7 @@ navigation_section_no_header_vertical navigation.texi --set-customization-variab
 navigation_node_no_header_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1' --split node --set-customization-variable HEADERS=0
 navigation_test_misc_file_collision navigation.texi --split node --init misc_file_collision.init
 formatting_regions formatting_regions.texi
-formatting_exotic ../coverage/formatting.texi --split section --no-header --no-number-sections --set-customization-variable 'TOC_LINKS 1' --set-customization-variable 'DEF_TABLE 1' --set-customization-variable 'ALWAYS_NODE_ARG_IN_XREF 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null --set-customization-variable 'USE_TITLEPAGE_FOR_TITLE 0'
+formatting_exotic ../coverage/formatting.texi --split section --no-header --no-number-sections --set-customization-variable 'TOC_LINKS 1' --set-customization-variable 'DEF_TABLE 1' --set-customization-variable 'XREF_USE_NODE_NAME_ARG 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null --set-customization-variable 'USE_TITLEPAGE_FOR_TITLE 0'
 #formatting_makeinfo ../coverage/formatting.texi --init makeinfo.pm --no-warn
 formatting_chm ../coverage/formatting.texi --init chm.pm
 #formatting_program_texi2any ../coverage/formatting.texi --program texi2any

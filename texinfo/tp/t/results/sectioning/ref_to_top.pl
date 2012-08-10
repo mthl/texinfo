@@ -340,7 +340,7 @@ ul.no-bullet {list-style: none}
 <a name="top"></a>
 <h1 class="top">top</h1>
 
-<p>See <a href="#Top">TOP</a>.
+<p>See <a href="#Top">ToP</a>.
 </p><hr>
 
 

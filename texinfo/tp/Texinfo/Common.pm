@@ -187,7 +187,7 @@ my @variable_string_settables = (
   'TEXI2HTML', 'IMAGE_LINK_PREFIX', 'FIX_TEXINFO',
   'TREE_TRANSFORMATIONS', 'BASEFILENAME_LENGTH',
 # FIXME document
-  'TEXTCONTENT_COMMENT', 'FLOAT_NAME_IN_XREF', 'ALWAYS_NODE_ARG_IN_XREF',
+  'TEXTCONTENT_COMMENT', 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG',
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?
