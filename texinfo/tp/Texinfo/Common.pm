@@ -146,7 +146,7 @@ my @formats_settable = (
   'DEBUGCOUNT', 'DEBUGTREE', 'RAWTEXT', 'TEXTCONTENT', 'PLAINTEXINFO'
 );
 
-my @variable_settables = (
+my @variable_string_settables = (
   'DEBUG', 'FRAMES', 'FRAMESET_DOCTYPE', 'DOCTYPE', 'TEST', 'DUMP_TEXI',
   'TOP_FILE', 'SHOW_MENU', 'USE_NODES', 'TOC_LINKS', 'SHORTEXTN',
   'PREFIX', 'DEF_TABLE', 'L2H', 'MONOLITHIC',
@@ -188,7 +188,10 @@ my @variable_settables = (
   'TREE_TRANSFORMATIONS', 'BASEFILENAME_LENGTH',
 # FIXME document
   'TEXTCONTENT_COMMENT', 'FLOAT_NAME_IN_XREF', 'ALWAYS_NODE_ARG_IN_XREF',
-# FIXME Not strings. To be documented.
+);
+# Not strings. 
+# FIXME To be documented somewhere, but where?
+my @variable_other_settables = (
   'LINKS_BUTTONS', 'TOP_BUTTONS', 'SECTION_BUTTONS', 'BUTTONS_TEXT',
   'BUTTONS_ACCESSKEY', 'BUTTONS_REL', 'BUTTONS_GOTO',
   'CHAPTER_FOOTER_BUTTONS', 'SECTION_FOOTER_BUTTONS',
@@ -203,7 +206,8 @@ my @variable_settables = (
 my %valid_options;
 foreach my $var (@document_settable_at_commands, 
          @document_settable_unique_at_commands,
-         @command_line_settables, @variable_settables, @parser_options,
+         @command_line_settables, @variable_string_settables, 
+         @variable_other_settables, @parser_options,
          @formats_settable,
          @obsolete_variables, @variable_settables_not_used) {
   $valid_options{$var} = 1;

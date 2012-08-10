@@ -6,6 +6,7 @@ Before next release
 ===================
 
 Document TEXTCONTENT_COMMENT, 'FLOAT_NAME_IN_XREF', 'ALWAYS_NODE_ARG_IN_XREF'
+DEBUGCOUNT
 
 
 Bugs
