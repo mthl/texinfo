@@ -233,7 +233,7 @@ BBB
 ';
 
 
-$result_converted{'html_text'}->{'heading_in_footnote'} = '<p>T<a name="DOCF1" href="#FOOT1">(1)</a>
+$result_converted{'html_text'}->{'heading_in_footnote'} = '<p>T<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>

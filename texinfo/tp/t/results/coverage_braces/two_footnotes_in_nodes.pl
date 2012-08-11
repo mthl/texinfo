@@ -920,9 +920,9 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 <a name="g_t2-footnotes-in-2-nodes"></a>
 <h1 class="top">2 footnotes in 2 nodes</h1>
 
-<p>A<a name="DOCF1" href="#FOOT1">(1)</a>
+<p>A<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
-<p>B<a name="DOCF2" href="#FOOT2">(2)</a>
+<p>B<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -938,9 +938,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <a name="chapter-1"></a>
 <h2 class="chapter">1 chapter</h2>
 
-<p>C<a name="DOCF3" href="#FOOT3">(3)</a>
+<p>C<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>
 </p>
-<p>D<a name="DOCF4" href="#FOOT4">(4)</a>
+<p>D<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>
 </p>
 <div class="footnote">
 <hr>
@@ -1077,9 +1077,9 @@ $result_converted{'html_text'}->{'two_footnotes_in_nodes'} = '<a name="Top"></a>
 <a name="g_t2-footnotes-in-2-nodes"></a>
 <h1 class="top">2 footnotes in 2 nodes</h1>
 
-<p>A<a name="DOCF1" href="#FOOT1">(1)</a>
+<p>A<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
-<p>B<a name="DOCF2" href="#FOOT2">(2)</a>
+<p>B<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1095,9 +1095,9 @@ $result_converted{'html_text'}->{'two_footnotes_in_nodes'} = '<a name="Top"></a>
 <a name="chapter-1"></a>
 <h2 class="chapter">1 chapter</h2>
 
-<p>C<a name="DOCF3" href="#FOOT3">(3)</a>
+<p>C<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>
 </p>
-<p>D<a name="DOCF4" href="#FOOT4">(4)</a>
+<p>D<a name="DOCF4" href="#FOOT4"><sup>4</sup></a>
 </p>
 <div class="footnote">
 <hr>

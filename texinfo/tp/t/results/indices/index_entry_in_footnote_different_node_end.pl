@@ -744,7 +744,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_different_node_end'} =
 </td></tr>
 </table>
 
-<p>Top node<a name="DOCF1" href="#FOOT1">(1)</a>
+<p>Top node<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <hr>
 <a name="First"></a>

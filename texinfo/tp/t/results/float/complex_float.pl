@@ -5437,7 +5437,7 @@ line
 <p>A ref 2.
 See <a href="#Top">xref Text with features caption</a>.
 A footnote 2.
-<a name="t_hlistoffloats_DOCF3_1" href="#t_hlistoffloats_FOOT3_1">(1)</a>.
+<a name="t_hlistoffloats_DOCF3_1" href="#t_hlistoffloats_FOOT3_1"><sup>1</sup></a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></dd>
@@ -5472,7 +5472,7 @@ line
 <p>A ref.
 See <a href="#Top">xref Text with features</a>.
 A footnote.
-<a name="DOCF1" href="#FOOT1">(2)</a>.
+<a name="DOCF1" href="#FOOT1"><sup>2</sup></a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p>
@@ -5511,7 +5511,7 @@ line
 <p>A ref.
 See <a href="#Top">xref Text with features caption</a>.
 A footnote.
-<a name="DOCF2" href="#FOOT2">(3)</a>.
+<a name="DOCF2" href="#FOOT2"><sup>3</sup></a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></div></div>
@@ -5561,7 +5561,7 @@ line
 <p>A ref 2.
 See <a href="#Top">xref Text with features caption</a>.
 A footnote 2.
-<a name="DOCF3" href="#FOOT3">(4)</a>.
+<a name="DOCF3" href="#FOOT3"><sup>4</sup></a>.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></div></div>

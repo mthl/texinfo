@@ -317,7 +317,7 @@ foreach my $name(keys(%index_names)) {
 }
 
 foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
-   'log','aux','dvi','texi','txi','texinfo','tex','bib') {
+   'html', 'log','aux','dvi','texi','txi','texinfo','tex','bib') {
   $forbidden_index_name{$other_forbidden_index_name} = 1;
 }
 

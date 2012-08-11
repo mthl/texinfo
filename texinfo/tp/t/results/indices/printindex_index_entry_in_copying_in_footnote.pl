@@ -1001,7 +1001,7 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 
 <p>Top.
 </p>
-<p>Copying<a name="DOCF1" href="#FOOT1">(1)</a>.
+<p>Copying<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-C"><b>C</b></a>
  &nbsp; 
@@ -1034,7 +1034,7 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 <h2 class="chapter">1 Chapter</h2>
 
 
-<p>Copying<a name="DOCF1_2" href="#FOOT1_2">(2)</a>.
+<p>Copying<a name="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>.
 </p>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-C"><b>C</b></a>
  &nbsp; 

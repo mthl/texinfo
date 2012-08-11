@@ -89,7 +89,7 @@ $result_converted{'plaintext'}->{'footnote_ending_on_empty_line'} = 'text(1)
 ';
 
 
-$result_converted{'html_text'}->{'footnote_ending_on_empty_line'} = '<p>text<a name="DOCF1" href="#FOOT1">(1)</a></p><div class="footnote">
+$result_converted{'html_text'}->{'footnote_ending_on_empty_line'} = '<p>text<a name="DOCF1" href="#FOOT1"><sup>1</sup></a></p><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 

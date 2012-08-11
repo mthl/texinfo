@@ -552,12 +552,12 @@ ul.no-bullet {list-style: none}
 <h1 class="node-heading">Top</h1>
 
 
-<p>Copying<a name="DOCF1" href="#FOOT1">(1)</a>.
+<p>Copying<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
 
 
 
-<p>Copying<a name="DOCF1_2" href="#FOOT1_2">(2)</a>.
+<p>Copying<a name="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>.
 </p>
 
 

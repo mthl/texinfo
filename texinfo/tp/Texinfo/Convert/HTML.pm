@@ -1597,7 +1597,13 @@ sub _convert_footnote_command($$$$)
    "<a name=\"$footid\" href=\"$document_filename#$docid\">($number_in_doc)</a></h3>\n"
    . $footnote_text;
 
-  return "<a name=\"$docid\" href=\"$footnote_filename#$footid\">($number_in_doc)</a>";
+  my $footnote_number_text;
+  if ($self->in_preformatted()) {
+    $footnote_number_text = "($number_in_doc)";
+  } else {
+    $footnote_number_text = "<sup>$number_in_doc</sup>";
+  }
+  return "<a name=\"$docid\" href=\"$footnote_filename#$footid\">$footnote_number_text</a>";
 }
 $default_commands_conversion{'footnote'} = \&_convert_footnote_command;
 

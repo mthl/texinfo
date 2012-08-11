@@ -9,6 +9,27 @@ Document TEXTCONTENT_COMMENT, 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG'
 DEBUGCOUNT
 
 
+-------
+I wonder if we should do something to check the consistency of the
+manual and the code wrt conf variables, as we do (sort of) wrt the
+command list.  (util/txicmdlist and doc/refcard/txicmdcheck)
+
+Would it be feasible to dump out a list of all the conf vars?  Or all
+that should be documented, if that's different?
+
+I think it would be easiest to work with a list that looks like (one
+variable per line):
+
+VARIABLE_NAME\tVARIABLE_GROUP
+
+omitting the obsolete and internal variables as you suggest.  Then I can
+try to write something that compares that against the lists in the
+manual.
+
+I'm not sure if the group info will turn out to be needed, but why not ...
+--------
+
+
 Bugs
 ====
 

@@ -1878,7 +1878,7 @@ Next: <a href="#Copying-and-floats" accesskey="n" rel="next">Copying and floats<
 <p>Public domain is not really a licence, as it means than
 the author abandon his copyright.
 </p>
-<div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1" href="#FOOT1">(1)</a>
+<div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
 <a name="index-copying-indexed-caption-function"></a>
@@ -1904,7 +1904,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 <p>Public domain is not really a licence, as it means than
 the author abandon his copyright.
 </p>
-<div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1_2" href="#FOOT1_2">(2)</a>
+<div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>
 </p>
 <a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
 <a name="index-copying-indexed-caption-function"></a>
@@ -1915,14 +1915,14 @@ the author abandon his copyright.
 <p>Public domain is not really a licence, as it means than
 the author abandon his copyright.
 </p>
-<div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1_3" href="#FOOT1_3">(3)</a>
+<div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1_3" href="#FOOT1_3"><sup>3</sup></a>
 </p>
 <a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
 <a name="index-copying-indexed-caption-function"></a>
 </div></div>
 
 <dl class="listoffloats">
-<dt><a href="#public-domain">Copyright notice 1</a></dt><dd><p>The Public Domain notice<a name="t_hlistoffloats_DOCF1_4" href="#t_hlistoffloats_FOOT1_4">(4)</a>
+<dt><a href="#public-domain">Copyright notice 1</a></dt><dd><p>The Public Domain notice<a name="t_hlistoffloats_DOCF1_4" href="#t_hlistoffloats_FOOT1_4"><sup>4</sup></a>
 </p>
 </dd>
 </dl>

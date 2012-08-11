@@ -1349,7 +1349,7 @@ ul.no-bullet {list-style: none}
 <p>Ref to the anchor in footnote:
 <a href="#Anchor-in-footnote">Anchor in footnote</a>.
 </p>
-<p><a name="DOCF1" href="#FOOT1">(1)</a>
+<p><a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <div class="float"><a name="float-anchor"></a>
 <p>In float

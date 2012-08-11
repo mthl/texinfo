@@ -304,9 +304,9 @@ $result_converted{'plaintext'}->{'format_on_first_footnote_line'} = 'Texte(1).
 ';
 
 
-$result_converted{'html_text'}->{'format_on_first_footnote_line'} = '<p>Texte<a name="DOCF1" href="#FOOT1">(1)</a>.
+$result_converted{'html_text'}->{'format_on_first_footnote_line'} = '<p>Texte<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
-<p>Last text <a name="DOCF2" href="#FOOT2">(2)</a>
+<p>Last text <a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>

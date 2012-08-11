@@ -127,7 +127,7 @@ $result_converted{'plaintext'}->{'footnote'} = 'text(1) after footnote.
 ';
 
 
-$result_converted{'html_text'}->{'footnote'} = '<p>text<a name="DOCF1" href="#FOOT1">(1)</a> after footnote.</p><div class="footnote">
+$result_converted{'html_text'}->{'footnote'} = '<p>text<a name="DOCF1" href="#FOOT1"><sup>1</sup></a> after footnote.</p><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
