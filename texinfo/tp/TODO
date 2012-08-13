@@ -8,6 +8,9 @@ Before next release
 Document TEXTCONTENT_COMMENT, 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG'
 DEBUGCOUNT
 
+For XREF_USE_NODE_NAME_ARG, the values may be 1 (always), 0 (never) or 
+undef (only if in preformatted).
+
 
 -------
 I wonder if we should do something to check the consistency of the

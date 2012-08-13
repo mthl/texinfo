@@ -261,7 +261,20 @@ AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1, 'USE_ISO' => 0,
 
 AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1,
                                  'USE_ISO' => 0}],
+['ref_in_preformatted',
+'@node Top
 
+@menu
+* nnn the node name::
+@end menu
+
+@example
+Now @ref{nnn the
+node name}
+@end example
+
+@node nnn the node name
+']
 );
 
 # problem is that the result is code with accented letters,

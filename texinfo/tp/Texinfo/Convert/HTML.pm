@@ -945,7 +945,7 @@ my %defaults = (
   'USE_REL_REV'          => 1,
   'NODE_NAME_IN_MENU'    => 1,
   'NODE_NAME_IN_INDEX'   => 1,
-  'XREF_USE_NODE_NAME_ARG' => 0,
+  'XREF_USE_NODE_NAME_ARG' => undef,
   'XREF_USE_FLOAT_LABEL'   => 1,
   'OVERVIEW_LINK_TO_TOC' => 1,
   'COMPLEX_FORMAT_IN_TABLE' => 0,
@@ -3069,7 +3069,9 @@ sub _convert_xref_commands($$$$)
             $name = '';
           }
         }
-      } elsif (!$self->get_conf('XREF_USE_NODE_NAME_ARG')) { 
+      } elsif (!$self->get_conf('XREF_USE_NODE_NAME_ARG')
+               and (defined($self->get_conf('XREF_USE_NODE_NAME_ARG'))
+                    or !$self->in_preformatted())) {
         $name = $self->command_text($command, 'text_nonumber');
         #die "$command $command->{'normalized'}" if (!defined($name));
       } elsif (defined($args->[0]->{'monospace'})) {
