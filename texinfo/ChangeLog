@@ -1,3 +1,8 @@
+2012-08-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Xref Command Expansion): U+21A6
+	for @expansion{}.  Other unrelated text tweaks.
+
 2012-07-29  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\file, \option): \let to \code, not \samp.

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.458 2012-07-30 00:13:40 karl Exp $
+@c $Id: texinfo.txi,v 1.459 2012-08-13 21:35:51 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1065,7 +1065,7 @@ peculiarities, as described above.
 
 @cindex Texinfo parsers, discouraging more
 If you still cannot resist the temptation of writing a new program
-that reads the Texinfo source directly, let us give some more caveats:
+that reads Texinfo source directly, let us give some more caveats:
 please do not underestimate the amount of work required.  Texinfo is
 by no means a simple language to parse correctly, and remains under
 development, so you would be committing to an ongoing task.  At a
@@ -9479,10 +9479,10 @@ To produce floating material, enclose the material you want to be
 displayed separate between @code{@@float} and @code{@@end float}
 commands, on lines by themselves.
 
-Floating material uses @code{@@image} to display an already-existing
-graphic (@pxref{Images}), or @code{@@multitable} to display a table
-(@pxref{Multi-column Tables}).  However, the contents of the float can
-be anything.  Here's an example with simple text:
+Floating material often uses @code{@@image} to display an
+already-existing graphic (@pxref{Images}), or @code{@@multitable} to
+display a table (@pxref{Multi-column Tables}).  However, the contents
+of the float can be anything.  Here's an example with simple text:
 
 @example
 @@float Figure,fig:ex1
@@ -9518,18 +9518,18 @@ not be numbered and consequently will not appear in the
 @code{@@listoffloats} output or be cross-referenceable.
 @end table
 
-@noindent Normally, you specify both @var{type} and @var{label}, to get a
+@noindent Ordinarily, you specify both @var{type} and @var{label}, to get a
 labeled and numbered float.
 
 @cindex Floats, numbering of
 @cindex Numbering of floats
-In Texinfo, all floats are numbered the same way: with the chapter
+In Texinfo, all floats are numbered in the same way: with the chapter
 number (or appendix letter), a period, and the float number, which
 simply counts 1, 2, 3, @dots{}, and is reset at each chapter.  Each
 float type is counted independently.
 
-Floats within an @code{@@unnumbered} are numbered, or outside of any
-chapter, are simply numbered consecutively from 1.
+Floats within an @code{@@unnumbered}, or outside of any chapter, are
+simply numbered consecutively from 1.
 
 These numbering conventions are not, at present, changeable.
 
@@ -9898,9 +9898,9 @@ with the footnote number between them, like this: @samp{(1)}.  The
 reference mark is followed by a cross reference link to the footnote's
 text.
 
-In the HTML output, footnote references are marked with a small,
-superscripted number which is rendered as a hypertext link to the
-footnote text.
+In the HTML output, footnote references are generally marked with a
+small, superscripted number which is rendered as a hypertext link to
+the footnote text.
 
 By the way, footnotes in the argument of an @code{@@item} command for
 an @code{@@table} must be on the same line as the @code{@@item} (as
@@ -19302,7 +19302,7 @@ the other rules.
 @item @code{@@error}            @tab @samp{error-->}
 @item @code{@@euro}             @tab U+20AC
 @item @code{@@exclamdown}       @tab U+00A1
-@item @code{@@expansion}        @tab U+2192
+@item @code{@@expansion}        @tab U+21A6
 @item @code{@@geq}              @tab U+2265
 @item @code{@@leq}              @tab U+2264
 @item @code{@@minus}            @tab U+2212
@@ -21956,7 +21956,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.458 2012-07-30 00:13:40 karl Exp $
+$Id: texinfo.txi,v 1.459 2012-08-13 21:35:51 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
