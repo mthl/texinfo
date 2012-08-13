@@ -860,7 +860,7 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                     {},
                     {}
                   ],
-                  'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+                  'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
                 }
               },
               'line_nr' => {
@@ -5492,10 +5492,10 @@ $result_trees{'at_commands_in_refs_utf8'} = {
         'nodes_manuals' => [
           {
             'node_content' => [],
-            'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+            'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
           }
         ],
-        'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+        'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
       },
       'line_nr' => {
         'file_name' => '',
@@ -12819,7 +12819,7 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                     {},
                     {}
                   ],
-                  'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+                  'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
                 }
               },
               'line_nr' => {
@@ -20445,7 +20445,7 @@ $result_sectioning{'at_commands_in_refs_utf8'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+                'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
               }
             }
           },
@@ -20986,7 +20986,7 @@ $result_nodes{'at_commands_in_refs_utf8'} = {
                 'level' => 1,
                 'number' => 5
               },
-              'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+              'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
             },
             'node_next' => {
               'cmdname' => 'node',
@@ -21409,7 +21409,7 @@ $result_menus{'at_commands_in_refs_utf8'} = {
           'menu_next' => {
             'cmdname' => 'node',
             'extra' => {
-              'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+              'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
             },
             'menu_next' => {
               'cmdname' => 'node',

@@ -775,7 +775,7 @@ $result_trees{'at_commands_in_refs'} = {
                     {},
                     {}
                   ],
-                  'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+                  'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
                 }
               },
               'line_nr' => {
@@ -5407,10 +5407,10 @@ $result_trees{'at_commands_in_refs'} = {
         'nodes_manuals' => [
           {
             'node_content' => [],
-            'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+            'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
           }
         ],
-        'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+        'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
       },
       'line_nr' => {
         'file_name' => '',
@@ -12734,7 +12734,7 @@ $result_trees{'at_commands_in_refs'} = {
                     {},
                     {}
                   ],
-                  'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+                  'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
                 }
               },
               'line_nr' => {
@@ -20343,7 +20343,7 @@ $result_sectioning{'at_commands_in_refs'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
-                'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+                'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
               }
             }
           },
@@ -20884,7 +20884,7 @@ $result_nodes{'at_commands_in_refs'} = {
                 'level' => 1,
                 'number' => 5
               },
-              'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+              'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
             },
             'node_next' => {
               'cmdname' => 'node',
@@ -21307,7 +21307,7 @@ $result_menus{'at_commands_in_refs'} = {
           'menu_next' => {
             'cmdname' => 'node',
             'extra' => {
-              'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+              'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
             },
             'menu_next' => {
               'cmdname' => 'node',
@@ -21841,7 +21841,7 @@ Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a>, Up: <a href="di
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="4">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="5">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212" accesskey="5">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#g_t_2265-_2264-_2192" accesskey="6">&ge; &le; &rarr;</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -21918,25 +21918,25 @@ Next: <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="n"
 <a name="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e"></a>
 <div class="header">
 <p>
-Next: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="n" rel="next">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>, Previous: <a href="#g_t_0040-_007b-_007d-_005c-_0023" accesskey="p" rel="previous">@ { } \\ #</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212" accesskey="n" rel="next">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>, Previous: <a href="#g_t_0040-_007b-_007d-_005c-_0023" accesskey="p" rel="previous">@ { } \\ #</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e-1"></a>
 <h2 class="chapter">4 LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></h2>
 
 <hr>
-<a name="g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212"></a>
+<a name="g_t_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212"></a>
 <div class="header">
 <p>
 Next: <a href="#g_t_2265-_2264-_2192" accesskey="n" rel="next">&ge; &le; &rarr;</a>, Previous: <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="p" rel="previous">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212-1"></a>
+<a name="g_t_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212-1"></a>
 <h2 class="chapter">5 &equiv; error&rarr; &euro; &iexcl; &rarr; -</h2>
 
 <hr>
 <a name="g_t_2265-_2264-_2192"></a>
 <div class="header">
 <p>
-Next: <a href="#g_t_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae" accesskey="n" rel="next">&ordf; &ordm; &lowast; &pound; -| &iquest; &reg;</a>, Previous: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212" accesskey="p" rel="previous">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#g_t_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae" accesskey="n" rel="next">&ordf; &ordm; &lowast; &pound; -| &iquest; &reg;</a>, Previous: <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212" accesskey="p" rel="previous">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <a name="g_t_2265-_2264-_2192-1"></a>
 <h2 class="chapter">6 &ge; &le; &rarr;</h2>
@@ -22126,7 +22126,7 @@ Previous: <a href="#indicateurl" accesskey="p" rel="previous">&lsquo;<code>indic
 <p><a href="#----_0021---_002e--_002e-_003f-_0040">&nbsp; &nbsp; ! <br> .  . ? @</a>
 <a href="#g_t_0040-_007b-_007d-_005c-_0023">@ { } \\ #</a>
 <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a>
-<a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>
+<a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a>
 </p>
 <p><a href="#g_t_2265-_2264-_2192">&ge; &le; &rarr;</a>
 </p>
@@ -22249,7 +22249,7 @@ $result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top"><nodename>
 <chapter><sectiontitle>&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</sectiontitle>
 
 </chapter>
-<node name="_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212"><nodename>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</nodename><nodenext automatic="on">&ge; &le; &rarr;</nodenext><nodeprev automatic="on">&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212"><nodename>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</nodename><nodenext automatic="on">&ge; &le; &rarr;</nodenext><nodeprev automatic="on">&latex; &tex; &bullet; &comma; &copyright; &dots; &enddots;</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter><sectiontitle>&equiv; &errorglyph; &euro; &iexcl; &expansion; &minus;</sectiontitle>
 
 </chapter>
@@ -22393,8 +22393,8 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 <title>&latex; &tex; &#8226; &#44; &#169; &#8230; ...</title>
 
 </chapter>
-<chapter label="5" id="_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212">
-<title>&#8801; error&#8594; &#8364; &#161; &#8594; &#8722;</title>
+<chapter label="5" id="_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212">
+<title>&#8801; error&#8594; &#8364; &#161; &#8614; &#8722;</title>
 
 </chapter>
 <chapter label="6" id="_2265-_2264-_2192">
@@ -22486,7 +22486,7 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
  .  . ? @</link>
 <link linkend="_0040-_007b-_007d-_005c-_0023">&#64; &#123; &#125; &#92; &#35;</link>
 <link linkend="LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e">&latex; &tex; &#8226; &#44; &#169; &#8230; ...</link>
-<link linkend="_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212">&#8801; error&#8594; &#8364; &#161; &#8594; &#8722;</link>
+<link linkend="_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212">&#8801; error&#8594; &#8364; &#161; &#8614; &#8722;</link>
 </para>
 <para><link linkend="_2265-_2264-_2192">&#8805; &#8804; &#8594;</link>
 </para>
