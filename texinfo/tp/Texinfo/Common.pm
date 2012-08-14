@@ -230,6 +230,35 @@ sub obsolete_option($)
   return $obsolete_options{$option};
 }
 
+my %customization_variable_classes = (
+  'document_settable_at_commands' => \@document_settable_at_commands,
+  'document_settable_unique_at_commands' => \@document_settable_unique_at_commands,
+  'command_line_settables' => \@command_line_settables,
+  'variable_string_settables' => \@variable_string_settables,
+  'variable_other_settables' => \@variable_other_settables,
+  'parser_options' => \@parser_options,
+  'formats_settable' => \@formats_settable,
+  'obsolete_variables' => \@obsolete_variables,
+  'variable_settables_not_used' => \@variable_settables_not_used,
+);
+
+my @secondary_customization_variables = (
+  'obsolete_variables', 'variable_settables_not_used'
+);
+sub _customization_variable_classes(;$)
+{
+  my $print_all = shift;
+  my $result = '';
+  foreach my $type (sort(keys(%customization_variable_classes))) {
+    next if (!$print_all 
+             and grep {$_ eq $type} @secondary_customization_variables);
+    foreach my $variable (@{$customization_variable_classes{$type}}) {
+      $result .= "$variable\t$type\n";
+    }
+  }
+  return $result;
+}
+
 my %valid_tree_transformations;
 foreach my $valid_transformation ('simple_menus', 
     'fill_gaps_in_sectioning', 'move_index_entries_after_items',
