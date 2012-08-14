@@ -1054,8 +1054,8 @@ my %css_map = (
      'pre.smallexample'       => 'font-size: smaller',
      'span.sansserif'         => 'font-family:sans-serif; font-weight:normal',
      'span.roman'         => 'font-family:serif; font-weight:normal',
-     'span.nocodebreak'   => 'white-space:pre',
-     'span.nolinebreak'   => 'white-space:pre',
+     'span.nocodebreak'   => 'white-space:nowrap',
+     'span.nolinebreak'   => 'white-space:nowrap',
      'kbd'                => 'font-style:oblique',
 );
 
