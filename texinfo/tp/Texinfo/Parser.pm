@@ -109,6 +109,7 @@ our %default_configuration = (
   'include_directories' => [ '.' ],
   'INLINE_INSERTCOPYING' => 0,
   'IGNORE_BEFORE_SETFILENAME' => 1,
+  'IGNORE_LEADING_SPACE_IN_MACRO_BODY' => 0,
   # this is the initial context.  It is put at the bottom of the 
   # 'context_stack'
   'context' => '_root',
@@ -2477,6 +2478,16 @@ sub _remove_empty_content_arguments($)
   }
 }
 
+sub _strip_macrobody_leading_space($$)
+{
+  my $self = shift;
+  my $text = shift;
+  if ($self->{'IGNORE_LEADING_SPACE_IN_MACRO_BODY'}) {
+    $text =~ s/^\s*//mg;
+  }
+  return $text;
+}
+
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
 sub _end_line($$$)
@@ -3155,7 +3166,8 @@ sub _end_line($$$)
             $self->{'macros'}->{'insertcopying'} = {
                     'args' => [{'text' => 'insertcopying', 'type' => 'macro_name'}],
                     'cmdname' => 'macro',
-                    'extra' => {'macrobody' => $body}
+                    'extra' => {'macrobody' => 
+                                 $self->_strip_macrobody_leading_space($body)}
             };
             $inline_copying = 1;
             print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'DEBUG'});
@@ -3615,8 +3627,9 @@ sub _parse_texi($;$)
                     or ($current->{'parent'}->{'cmdname'} ne 'macro'
                         and $current->{'parent'}->{'cmdname'} ne 'rmacro'))) {
             $current->{'extra'}->{'macrobody'} = 
+             $self->_strip_macrobody_leading_space(
                Texinfo::Convert::Texinfo::convert({ 'contents' 
-                                             => $current->{'contents'} });
+                                             => $current->{'contents'} }));
             if ($current->{'args'} and $current->{'args'}->[0]) {
               my $name = $current->{'args'}->[0]->{'text'};
               if (exists($self->{'macros'}->{$name})) {
@@ -5435,6 +5448,10 @@ considered to be a simple @-command and kept as is in the tree.
 If set, and C<@setfilename> exists, everything before C<@setfilename>
 is put in a special container type, @C<preamble_before_setfilename>.
 This option is set in the default case.
+
+=item IGNORE_LEADING_SPACE_IN_MACRO_BODY
+
+If set, leading spaces are stripped from user defined macro bodies.
 
 =item MAX_MACRO_CALL_NESTING
 

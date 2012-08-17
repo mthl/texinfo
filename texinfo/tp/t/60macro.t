@@ -931,6 +931,22 @@ a
 
 @code{code}
 '],
+['leading_spaces_no_ignore',
+'@macro mymacro
+  Some  here
+  text
+@end macro
+
+@mymacro{}
+'],
+['leading_spaces_ignore',
+'@macro mymacro
+  Some  here
+  text
+@end macro
+
+@mymacro{}
+', {'IGNORE_LEADING_SPACE_IN_MACRO_BODY' => 1}],
 );
 
 my @todo =(

@@ -188,6 +188,7 @@ my @variable_string_settables = (
   'TREE_TRANSFORMATIONS', 'BASEFILENAME_LENGTH',
 # FIXME document
   'TEXTCONTENT_COMMENT', 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG',
+  'IGNORE_LEADING_SPACE_IN_MACRO_BODY'
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?
