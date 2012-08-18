@@ -109,7 +109,7 @@ our %default_configuration = (
   'include_directories' => [ '.' ],
   'INLINE_INSERTCOPYING' => 0,
   'IGNORE_BEFORE_SETFILENAME' => 1,
-  'IGNORE_LEADING_SPACE_IN_MACRO_BODY' => 0,
+  'MACRO_BODY_IGNORES_LEADING_SPACE' => 0,
   # this is the initial context.  It is put at the bottom of the 
   # 'context_stack'
   'context' => '_root',
@@ -2482,7 +2482,7 @@ sub _strip_macrobody_leading_space($$)
 {
   my $self = shift;
   my $text = shift;
-  if ($self->{'IGNORE_LEADING_SPACE_IN_MACRO_BODY'}) {
+  if ($self->{'MACRO_BODY_IGNORES_LEADING_SPACE'}) {
     $text =~ s/^\s*//mg;
   }
   return $text;
@@ -5449,7 +5449,7 @@ If set, and C<@setfilename> exists, everything before C<@setfilename>
 is put in a special container type, @C<preamble_before_setfilename>.
 This option is set in the default case.
 
-=item IGNORE_LEADING_SPACE_IN_MACRO_BODY
+=item MACRO_BODY_IGNORES_LEADING_SPACE
 
 If set, leading spaces are stripped from user defined macro bodies.
 

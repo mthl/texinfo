@@ -952,7 +952,7 @@ foreach my $parser_settable_option (
        'TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING', 'INLINE_INSERTCOPYING', 
        'SHOW_MENU', 'IGNORE_BEFORE_SETFILENAME', 'TEST', 
        'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES', 
-       'IGNORE_LEADING_SPACE_IN_MACRO_BODY', 'USE_UP_NODE_FOR_ELEMENT_UP') {
+       'MACRO_BODY_IGNORES_LEADING_SPACE', 'USE_UP_NODE_FOR_ELEMENT_UP') {
   if (defined(get_conf($parser_settable_option))) {
     $parser_default_options->{$parser_settable_option} 
        = get_conf($parser_settable_option);

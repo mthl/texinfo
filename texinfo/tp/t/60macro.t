@@ -946,7 +946,7 @@ a
 @end macro
 
 @mymacro{}
-', {'IGNORE_LEADING_SPACE_IN_MACRO_BODY' => 1}],
+', {'MACRO_BODY_IGNORES_LEADING_SPACE' => 1}],
 );
 
 my @todo =(
