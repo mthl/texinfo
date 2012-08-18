@@ -777,7 +777,7 @@ sub nodes_tree ($)
       }
     }
     # it may happen (rarely) that the node_up is a manual entry
-    # and therefore $node->{'node_up'}->{'extra'}->{'manual_content'}
+    # and therefore $node->{'node_up'}->{'extra'}->{'manual_content'}.
     # The node_up should always be different from the menu_up, therefore
     # if in a menu, the second condition/error message applies.
     if ($node->{'node_up'} and ($node->{'node_up'}->{'extra'}->{'manual_content'}

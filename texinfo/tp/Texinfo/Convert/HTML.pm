@@ -946,7 +946,7 @@ my %defaults = (
   'NODE_NAME_IN_MENU'    => 1,
   'NODE_NAME_IN_INDEX'   => 1,
   'XREF_USE_NODE_NAME_ARG' => undef,
-  'XREF_USE_FLOAT_LABEL'   => 1,
+  'XREF_USE_FLOAT_LABEL'   => 0,
   'OVERVIEW_LINK_TO_TOC' => 1,
   'COMPLEX_FORMAT_IN_TABLE' => 0,
   'WORDS_IN_PAGE'        => 300,
@@ -3059,7 +3059,7 @@ sub _convert_xref_commands($$$$)
         $command = $node->{'extra'}->{'associated_section'};
         $name = $self->command_text($command, 'text_nonumber');
       } elsif ($node->{'cmdname'} eq 'float') {
-        if ($self->get_conf('XREF_USE_FLOAT_LABEL')) {
+        if (!$self->get_conf('XREF_USE_FLOAT_LABEL')) {
           $name = $self->command_text($command);
         }
         if (!defined($name) or $name eq '') {
