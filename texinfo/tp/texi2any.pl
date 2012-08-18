@@ -545,7 +545,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
       --no-warn               suppress warnings (but not errors).
       --conf-dir=DIR          search also for initialization files in DIR.
       --init-file=FILE        load FILE to modify the default behavior.
-      --set-customization-variable VAR=VAL  set configuration variable VAR 
+      --set-customization-variable VAR=VAL  set customization variable VAR 
                                 to VAL.
   -v, --verbose               explain what is being done.
       --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
@@ -937,21 +937,27 @@ foreach my $format (@{$default_expanded_format}) {
     unless (grep {$_ eq $format} @{$parser_default_options->{'expanded_formats'}});
 }
 
+my $converter_class;
+my %converter_defaults;
 # This gets the class right, even though there is a sub...
-my $converter_class = ref(&{$formats_table{$format}->{'converter'}});
-my %converter_defaults = $converter_class->converter_defaults();
+if (defined($formats_table{$format}->{'converter'})) {
+  $converter_class = ref(&{$formats_table{$format}->{'converter'}});
+  %converter_defaults = $converter_class->converter_defaults();
+}
 
 # FIXME should this be set when the --set is set too?  The corresponding
 # code is ready above, but commented out.
-foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
-                                    'INLINE_INSERTCOPYING', 'SHOW_MENU',
-                                    'IGNORE_BEFORE_SETFILENAME', 'TEST',
-                                    'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES',
-                                    'USE_UP_NODE_FOR_ELEMENT_UP') {
+# FIXME should the list come from Texinfo::Common
+foreach my $parser_settable_option (
+       'TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING', 'INLINE_INSERTCOPYING', 
+       'SHOW_MENU', 'IGNORE_BEFORE_SETFILENAME', 'TEST', 
+       'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES', 
+       'IGNORE_LEADING_SPACE_IN_MACRO_BODY', 'USE_UP_NODE_FOR_ELEMENT_UP') {
   if (defined(get_conf($parser_settable_option))) {
     $parser_default_options->{$parser_settable_option} 
        = get_conf($parser_settable_option);
-  } elsif (defined($converter_defaults{$parser_settable_option})) {
+  } elsif (defined($converter_class) 
+           and defined($converter_defaults{$parser_settable_option})) {
     $parser_default_options->{$parser_settable_option} 
        = $converter_defaults{$parser_settable_option};
   }

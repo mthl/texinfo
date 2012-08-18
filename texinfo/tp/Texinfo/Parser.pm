@@ -618,7 +618,7 @@ sub parser(;$$)
           $parser->{'set'}->{$key} = $parser->{$key};
         }
       } else {
-        warn "$key not a possible configuration in Texinfo::Parser::parser\n";
+        warn "$key not a possible customization in Texinfo::Parser::parser\n";
       }
     }
   }

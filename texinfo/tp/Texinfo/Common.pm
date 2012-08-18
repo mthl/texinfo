@@ -94,7 +94,7 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
 # FIXME maybe this should better be set as texinfo passed to texi2any as
 # texi2dvi --command 
 
-# configuration options
+# customization options
 our @document_settable_at_commands =
        (
         'allowcodebreaks', 'clickstyle', 'codequotebacktick',
