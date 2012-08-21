@@ -688,6 +688,11 @@ sub converter_opened_files()
   return ();
 }
 
+sub converter_defaults()
+{
+  return ();
+}
+
 1;
 
 __END__

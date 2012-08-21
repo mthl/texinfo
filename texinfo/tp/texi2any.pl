@@ -248,7 +248,7 @@ $configured_url = 'http://www.gnu.org/software/texinfo/'
 # defaults for options relevant in the main program, not undef, and also
 # defaults for all the converters.
 # Other relevant options (undef) are NO_WARN FORCE OUTFILE
-# Others are set in the converters.
+# Others are set in the converters (SHOW_MENU).
 my $converter_default_options = { 
     'ERROR_LIMIT' => 100,
     'TEXI2DVI' => 'texi2dvi',

@@ -7,8 +7,6 @@ Before next release
 
 Document that makeinfo do not strip leading spaces from macro bodies.
 
-Pb with default parser options method not def for all the formats (RAWTEXT)
-
 
 Bugs
 ====
@@ -103,6 +101,8 @@ Functions to document for HTML API (many more are missing!):
 sectioning_command_target_name
 node_target_name
 
+Implement what is proposed in HTML Cross Reference Mismatch.
+
 Protection of punctuation in nodes.
 in @ref. First : is searched.  if followed by a : the node name is found
 and there is no label. When parsing a node a filename with ( is searched for.
@@ -183,9 +183,6 @@ This is certainly only an issue for @footnote and similar not a general issue.
 There is no forward looking code anymore, so maybe a lex/yacc parser
 could be used for the main loop.  More simply, a binary tokenizer, at 
 least, could make for a notable speedup.
-
-@ protecting end of lines in @def* is not kept in any way in the tree.
-Maybe it could be possible to have it as a 'type'?
 
 def/end_of_lines_protected_in_footnote.pl the footnote is
    (1)  -- category: deffn_name arguments arg2 more args with end of line
