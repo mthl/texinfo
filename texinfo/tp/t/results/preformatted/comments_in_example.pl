@@ -314,13 +314,13 @@ second line <!-- comment -->
 
 $result_converted{'xml'}->{'comments_in_example'} = '<para>Example with comments 2 lines
 </para><example> 
-<pre xml:space="preserve">line <!-- comment -->
-second line <!-- comment -->
+<pre xml:space="preserve">line <!-- c comment -->
+second line <!-- c comment -->
 </pre></example>
 
 <para>Example with comments 1 line
 </para><example>
-<pre xml:space="preserve">line <!-- comment -->
+<pre xml:space="preserve">line <!-- c comment -->
 </pre></example>
 ';
 

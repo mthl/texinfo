@@ -22,6 +22,9 @@ certainly be converted to unicode instead.
 
 Sorting of index entries should be locale dependent and sort properly
 unicode sorting.
+my $collator = Unicode::Collate::Locale->new('locale' => $locale_name, 'normalization' => 'NFKD')
+@sorted = $collator->sort(@not_sorted);
+
 
 Punctuation and spaces before @image do not lead to a doubling of space.
 In fact @image is completly formatted outside of usual formatting containers.

@@ -155,7 +155,7 @@ $result_converted{'plaintext'}->{'prototype_brace_no_brace_comment'} = '';
 $result_converted{'html_text'}->{'prototype_brace_no_brace_comment'} = '';
 
 
-$result_converted{'xml'}->{'prototype_brace_no_brace_comment'} = '<multitable><columnprototypes><columnprototype>aa</columnprototype><columnprototype>bb</columnprototype></columnprototypes><!-- cc -->
+$result_converted{'xml'}->{'prototype_brace_no_brace_comment'} = '<multitable><columnprototypes><columnprototype>aa</columnprototype><columnprototype>bb</columnprototype></columnprototypes><!-- comment cc -->
 </multitable>
 ';
 

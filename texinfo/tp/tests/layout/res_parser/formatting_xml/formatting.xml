@@ -1021,7 +1021,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize><itemprepend><emph>after emph</emph></itemprepend>
-<beforefirstitem><!-- comment in itemize -->
+<beforefirstitem><!-- c comment in itemize -->
 </beforefirstitem><listitem><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
@@ -1038,7 +1038,7 @@ After clickstyle &result;
 <multitable><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
-<!-- comment in multitable -->
+<!-- c comment in multitable -->
 </para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
@@ -1107,7 +1107,7 @@ After clickstyle &result;
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory>truc</defcategory> <deffunction></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
-<!-- comment -->
+<!-- c comment -->
 <deffnx><definitionterm><defcategory>truc</defcategory></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam>h i</defparam></definitionterm></deffnx>
@@ -1118,13 +1118,13 @@ After clickstyle &result;
 </deffn>
 
 <deffn><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
-<!-- comment between deffn and deffnx -->
+<!-- c comment between deffn and deffnx -->
 <deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
 <deffn><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<definitionitem><!-- comment -->
+<definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
 
@@ -1264,14 +1264,14 @@ ref</inforefrefname><inforefinfoname>a comma&comma; in file</inforefinfoname></i
 </para>
 
 <table commandarg="asis">
-<beforefirstitem><!-- comment in table -->
+<beforefirstitem><!-- c comment in table -->
 </beforefirstitem><tableentry><tableterm><item><itemformat command="asis">a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis">
 <tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
-<!-- comment between item and itemx -->
+<!-- c comment between item and itemx -->
 <itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
@@ -1332,10 +1332,10 @@ docbook &textrdquo;
 
 <subsubheading>subsubheading</subsubheading>
 
-<!-- makeinfo cannot handle that -->
+<!-- c makeinfo cannot handle that -->
 
 
-<!-- invalid texinfo -->
+<!-- c invalid texinfo -->
 
 </copying>
 
@@ -1623,7 +1623,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize><itemprepend><emph>after emph</emph></itemprepend>
-<beforefirstitem><!-- comment in itemize -->
+<beforefirstitem><!-- c comment in itemize -->
 </beforefirstitem><listitem><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
@@ -1640,7 +1640,7 @@ After clickstyle &result;
 <multitable><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
-<!-- comment in multitable -->
+<!-- c comment in multitable -->
 </para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
@@ -1709,7 +1709,7 @@ After clickstyle &result;
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory>truc</defcategory> <deffunction></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
-<!-- comment -->
+<!-- c comment -->
 <deffnx><definitionterm><defcategory>truc</defcategory></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam>h i</defparam></definitionterm></deffnx>
@@ -1720,13 +1720,13 @@ After clickstyle &result;
 </deffn>
 
 <deffn><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
-<!-- comment between deffn and deffnx -->
+<!-- c comment between deffn and deffnx -->
 <deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
 <deffn><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<definitionitem><!-- comment -->
+<definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
 
@@ -1866,14 +1866,14 @@ ref</inforefrefname><inforefinfoname>a comma&comma; in file</inforefinfoname></i
 </para>
 
 <table commandarg="asis">
-<beforefirstitem><!-- comment in table -->
+<beforefirstitem><!-- c comment in table -->
 </beforefirstitem><tableentry><tableterm><item><itemformat command="asis">a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis">
 <tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
-<!-- comment between item and itemx -->
+<!-- c comment between item and itemx -->
 <itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
@@ -1934,10 +1934,10 @@ docbook &textrdquo;
 
 <subsubheading>subsubheading</subsubheading>
 
-<!-- makeinfo cannot handle that -->
+<!-- c makeinfo cannot handle that -->
 
 
-<!-- invalid texinfo -->
+<!-- c invalid texinfo -->
 
 
 <para>Insercopying in titlepage
@@ -2225,7 +2225,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize><itemprepend><emph>after emph</emph></itemprepend>
-<beforefirstitem><!-- comment in itemize -->
+<beforefirstitem><!-- c comment in itemize -->
 </beforefirstitem><listitem><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
@@ -2242,7 +2242,7 @@ After clickstyle &result;
 <multitable><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
-<!-- comment in multitable -->
+<!-- c comment in multitable -->
 </para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
@@ -2311,7 +2311,7 @@ After clickstyle &result;
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory>truc</defcategory> <deffunction></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
-<!-- comment -->
+<!-- c comment -->
 <deffnx><definitionterm><defcategory>truc</defcategory></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam>h i</defparam></definitionterm></deffnx>
@@ -2322,13 +2322,13 @@ After clickstyle &result;
 </deffn>
 
 <deffn><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
-<!-- comment between deffn and deffnx -->
+<!-- c comment between deffn and deffnx -->
 <deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
 <deffn><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<definitionitem><!-- comment -->
+<definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
 
@@ -2468,14 +2468,14 @@ ref</inforefrefname><inforefinfoname>a comma&comma; in file</inforefinfoname></i
 </para>
 
 <table commandarg="asis">
-<beforefirstitem><!-- comment in table -->
+<beforefirstitem><!-- c comment in table -->
 </beforefirstitem><tableentry><tableterm><item><itemformat command="asis">a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis">
 <tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
-<!-- comment between item and itemx -->
+<!-- c comment between item and itemx -->
 <itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
@@ -2536,10 +2536,10 @@ docbook &textrdquo;
 
 <subsubheading>subsubheading</subsubheading>
 
-<!-- makeinfo cannot handle that -->
+<!-- c makeinfo cannot handle that -->
 
 
-<!-- invalid texinfo -->
+<!-- c invalid texinfo -->
 
 
 <para>In example.
@@ -2821,7 +2821,7 @@ After clickstyle &result;
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize><itemprepend><emph>after emph</emph></itemprepend>
-<beforefirstitem><pre xml:space="preserve"><!-- comment in itemize -->
+<beforefirstitem><pre xml:space="preserve"><!-- c comment in itemize -->
 </pre></beforefirstitem><listitem><prepend><emph>after emph</emph></prepend><pre xml:space="preserve">e--mph item
 </pre></listitem></itemize>
 <pre xml:space="preserve">
@@ -2838,7 +2838,7 @@ After clickstyle &result;
 </pre><multitable><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><pre xml:space="preserve">mu--ltitable headitem </pre></entry><entry command="tab"><pre xml:space="preserve">another tab
 </pre></entry></row></thead><tbody><row><entry command="item"><pre xml:space="preserve">mu--ltitable item </pre></entry><entry command="tab"><pre xml:space="preserve">multitable tab
-<!-- comment in multitable -->
+<!-- c comment in multitable -->
 </pre></entry></row><row><entry command="item"><pre xml:space="preserve">mu--ltitable item 2 </pre></entry><entry command="tab"><pre xml:space="preserve">multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </pre></entry></row><row><entry command="item"><pre xml:space="preserve">lone mu--ltitable item
@@ -2907,7 +2907,7 @@ After clickstyle &result;
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory>truc</defcategory> <deffunction></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
-<pre xml:space="preserve"><!-- comment -->
+<pre xml:space="preserve"><!-- c comment -->
 </pre><deffnx><definitionterm><defcategory>truc</defcategory></definitionterm></deffnx>
 <deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam>h i</defparam></definitionterm></deffnx>
@@ -2918,13 +2918,13 @@ After clickstyle &result;
 </deffn>
 <pre xml:space="preserve">
 </pre><deffn><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
-<pre xml:space="preserve"><!-- comment between deffn and deffnx -->
+<pre xml:space="preserve"><!-- c comment between deffn and deffnx -->
 </pre><deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 <pre xml:space="preserve">
 </pre><deffn><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<definitionitem><pre xml:space="preserve"><!-- comment -->
+<definitionitem><pre xml:space="preserve"><!-- c comment -->
 text in def item for second def item
 </pre></definitionitem></deffn>
 <pre xml:space="preserve">
@@ -3064,14 +3064,14 @@ ref</inforefrefname><inforefinfoname>a comma&comma; in file</inforefinfoname></i
 
 
 </pre><table commandarg="asis">
-<beforefirstitem><pre xml:space="preserve"><!-- comment in table -->
+<beforefirstitem><pre xml:space="preserve"><!-- c comment in table -->
 </pre></beforefirstitem><tableentry><tableterm><item><itemformat command="asis">a</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
 </pre></tableitem></tableentry></table>
 <pre xml:space="preserve">
 </pre><vtable commandarg="asis">
 <tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
-<pre xml:space="preserve"><!-- comment between item and itemx -->
+<pre xml:space="preserve"><!-- c comment between item and itemx -->
 </pre><itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
 </pre></tableitem></tableentry></vtable>
@@ -3132,10 +3132,10 @@ docbook ''
 <pre xml:space="preserve">
 </pre><subsubheading>subsubheading</subsubheading>
 <pre xml:space="preserve">
-<!-- makeinfo cannot handle that -->
+<!-- c makeinfo cannot handle that -->
 
 
-<!-- invalid texinfo -->
+<!-- c invalid texinfo -->
 
 </pre></example>
 

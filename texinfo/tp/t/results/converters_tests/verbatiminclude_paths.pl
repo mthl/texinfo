@@ -432,9 +432,9 @@ $result_converted{'xml'}->{'verbatiminclude_paths'} = '
 <para>&arobase;verbatiminclude dot full parent path
 </para><verbatiminclude file="./tp/t/include_dir/inc_file.texi">./tp/t/include_dir/inc_file.texi</verbatiminclude>
 
-<!-- does not work in the standalone perl module -->
-<!-- @@verbatiminclude full parent path -->
-<!-- @verbatiminclude tp/t/include_dir/inc_file.texi -->
+<!-- c does not work in the standalone perl module -->
+<!-- c @@verbatiminclude full parent path -->
+<!-- c @verbatiminclude tp/t/include_dir/inc_file.texi -->
 ';
 
 

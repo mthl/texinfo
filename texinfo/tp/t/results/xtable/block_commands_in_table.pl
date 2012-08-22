@@ -2214,7 +2214,7 @@ end example.
 
 <vtable commandarg="strong">
 <tableentry><tableterm><item><itemformat command="strong"><indexterm index="vr">item before ignored lines</indexterm>item before ignored lines</itemformat></item>
-<!-- comment -->
+<!-- c comment -->
 <vindex index="vr"><indexterm index="vr">vindex</indexterm></vindex>
 <itemx><itemformat command="strong"><indexterm index="vr">itemx now</indexterm>itemx now</itemformat></itemx>
 </tableterm><tableitem>

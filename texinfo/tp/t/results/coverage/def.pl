@@ -2579,9 +2579,9 @@ $result_converted{'xml'}->{'def'} = '
 <deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory> <deffunction>bidule machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
-<!-- comment -->
+<!-- c comment -->
 <deffnx><definitionterm><indexterm index="fn">after</indexterm><defcategory>truc</defcategory> <deffunction>after</deffunction> <defparam>a</defparam> <defparam>deff</defparam> <defparam>item</defparam></definitionterm></deffnx>
-<!-- comment -->
+<!-- c comment -->
 <deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 <definitionitem><para>Various deff lines
 </para></definitionitem></deffn>

@@ -617,8 +617,8 @@ $result_converted{'xml'}->{'inter_item_commands_in_table_in_example'} = '<exampl
 <table commandarg="var">
 <tableentry><tableterm><item><itemformat command="var">a</itemformat></item>
 <pre xml:space="preserve"><cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-<!-- and a comment -->
-<!-- and another comment -->
+<!-- c and a comment -->
+<!-- comment and another comment -->
 </pre><itemx><itemformat command="var">b</itemformat></itemx>
 <pre xml:space="preserve">
 </pre><itemx><itemformat command="var">c</itemformat></itemx>

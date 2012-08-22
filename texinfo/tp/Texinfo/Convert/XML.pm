@@ -111,7 +111,7 @@ my %specific_xml_commands_formatting = (
            'hashchar'      => '&hashchar;',
 );
 
-my %xml_commands_formatting
+our %xml_commands_formatting
   = %{$Texinfo::Convert::Converter::default_xml_commands_formatting{'normal'}};
 
 foreach my $command (keys(%specific_xml_commands_formatting)) {
@@ -659,7 +659,7 @@ sub _convert($$;$)
         }
       } elsif ($type eq 'lineraw') {
         if ($root->{'cmdname'} eq 'c' or $root->{'cmdname'} eq 'comment') {
-          return $self->xml_comment($root->{'args'}->[0]->{'text'})
+          return $self->xml_comment(" $root->{'cmdname'}".$root->{'args'}->[0]->{'text'})
         } else {
           my $value = '';
           if ($root->{'args'} and $root->{'args'}->[0]

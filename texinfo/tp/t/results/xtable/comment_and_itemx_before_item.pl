@@ -231,7 +231,7 @@ $result_converted{'html_text'}->{'comment_and_itemx_before_item'} = '<dl compact
 
 
 $result_converted{'xml'}->{'comment_and_itemx_before_item'} = '<table commandarg="code">
-<beforefirstitem><!-- comment -->
+<beforefirstitem><!-- c comment -->
 </beforefirstitem><tableentry><tableterm><itemx><itemformat command="code">in itemx</itemformat></itemx>
 </tableterm></tableentry></table>
 ';

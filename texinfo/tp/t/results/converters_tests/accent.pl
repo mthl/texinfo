@@ -3189,7 +3189,7 @@ $result_converted{'xml'}->{'accent'} = '<node name="Top"><nodename>Top</nodename
 </para>
 <para>pounds sterling: &pound;
 </para>
-<!-- arg is command - @dotless{i} is special-cased for HTML -->
+<!-- c arg is command - @dotless{i} is special-cased for HTML -->
 <para>should be dotless i&textlsquo;: <accent type="grave"><dotless>i</dotless></accent>
 </para>
 <para>should be dotless i&textrsquo;: <accent type="acute"><dotless>i</dotless></accent>
@@ -3198,7 +3198,7 @@ $result_converted{'xml'}->{'accent'} = '<node name="Top"><nodename>Top</nodename
 </para>
 <para>should be dotless i&quot;: <accent type="uml"><dotless>i</dotless></accent>
 </para>
-<!-- arg is command - @dotless{j} -->
+<!-- c arg is command - @dotless{j} -->
 <para>should be dotless j&textlsquo;: <accent type="grave"><dotless>j</dotless></accent>
 </para>
 <para>should be dotless j&textrsquo;: <accent type="acute"><dotless>j</dotless></accent>
