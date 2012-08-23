@@ -159,7 +159,8 @@ $result_trees{'verb_in_xref'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -197,6 +198,7 @@ $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'pare
 $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'parent'} = $result_trees{'verb_in_xref'};
 
 $result_texis{'verb_in_xref'} = '@node Top

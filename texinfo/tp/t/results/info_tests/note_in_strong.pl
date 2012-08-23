@@ -322,7 +322,8 @@ $result_trees{'note_in_strong'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -386,6 +387,7 @@ $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'contents'}[2]{'p
 $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1];
 $result_trees{'note_in_strong'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'note_in_strong'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'note_in_strong'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'note_in_strong'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'note_in_strong'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'note_in_strong'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'note_in_strong'}{'contents'}[1]{'parent'} = $result_trees{'note_in_strong'};
 
 $result_texis{'note_in_strong'} = '@node Top

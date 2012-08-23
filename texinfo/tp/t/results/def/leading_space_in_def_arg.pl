@@ -150,6 +150,7 @@ $result_trees{'leading_space_in_def_arg'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'deffn',
+            'spaces_after_command' => {},
             'text_arg' => 'deffn'
           },
           'line_nr' => {
@@ -161,7 +162,8 @@ $result_trees{'leading_space_in_def_arg'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {},
       'parent' => {}
@@ -191,8 +193,10 @@ $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1]{'args'}[
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0];
+$result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[1];
+$result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'line_nr'} = $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'leading_space_in_def_arg'}{'contents'}[0]{'parent'} = $result_trees{'leading_space_in_def_arg'};
 

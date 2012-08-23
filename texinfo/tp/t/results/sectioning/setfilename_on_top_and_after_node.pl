@@ -51,7 +51,8 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -111,6 +112,7 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
               'cmdname' => 'setfilename',
               'extra' => {
                 'invalid_nesting' => 1,
+                'spaces_after_command' => {},
                 'text_arg' => 'very badly placed setfilename'
               },
               'line_nr' => {
@@ -162,6 +164,7 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
           ],
           'cmdname' => 'setfilename',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => 'a bit too late'
           },
           'line_nr' => {
@@ -177,7 +180,8 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
           {},
           {},
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {},
@@ -194,6 +198,7 @@ $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'args'}[0]{'co
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'};
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0];
@@ -204,6 +209,7 @@ $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'co
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2];
@@ -212,10 +218,12 @@ $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1];
+$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'extra'}{'misc_content'}[1] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'extra'}{'misc_content'}[2] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'line_nr'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'line_nr'};
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'};
 

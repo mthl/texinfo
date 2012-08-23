@@ -245,6 +245,7 @@ $result_trees{'documentdescription'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'documentdescription',
+                'spaces_after_command' => {},
                 'text_arg' => 'documentdescription'
               },
               'line_nr' => {
@@ -256,7 +257,8 @@ $result_trees{'documentdescription'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -307,7 +309,8 @@ $result_trees{'documentdescription'} = {
       'extra' => {
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {
@@ -367,8 +370,10 @@ $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0];
+$result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
+$result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0];
 $result_trees{'documentdescription'}{'contents'}[0]{'parent'} = $result_trees{'documentdescription'};
@@ -378,6 +383,7 @@ $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'p
 $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0];
 $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'documentdescription'}{'contents'}[1];
 $result_trees{'documentdescription'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'documentdescription'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'documentdescription'}{'contents'}[1]{'parent'} = $result_trees{'documentdescription'};
 
 $result_texis{'documentdescription'} = '@documentdescription

@@ -58,6 +58,17 @@ $result_trees{'empty_ifset_in_ifset_set'} = {
           'type' => 'raw'
         }
       ],
+      'extra' => {
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 5,
@@ -65,15 +76,7 @@ $result_trees{'empty_ifset_in_ifset_set'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    }
+    {}
   ],
   'type' => 'text_root'
 };
@@ -85,9 +88,10 @@ $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[2]{'parent'} = $result_tre
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
+$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
+$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};
-$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
-$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[4]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};
+$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[4] = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command'};
 
 $result_texis{'empty_ifset_in_ifset_set'} = '
 @set notset

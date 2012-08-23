@@ -161,6 +161,7 @@ $result_trees{'dash_in_menu'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'menu',
+            'spaces_after_command' => {},
             'text_arg' => 'menu'
           },
           'line_nr' => {
@@ -172,7 +173,8 @@ $result_trees{'dash_in_menu'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -212,8 +214,10 @@ $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents
 $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3];
 $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'extra'}{'command'} = $result_trees{'dash_in_menu'}{'contents'}[1];
+$result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'dash_in_menu'}{'contents'}[1];
 $result_trees{'dash_in_menu'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3];
+$result_trees{'dash_in_menu'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[0];
 $result_trees{'dash_in_menu'}{'contents'}[1]{'parent'} = $result_trees{'dash_in_menu'};
 
 $result_texis{'dash_in_menu'} = '

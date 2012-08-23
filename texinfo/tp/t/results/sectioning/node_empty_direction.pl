@@ -56,7 +56,8 @@ $result_trees{'node_empty_direction'} = {
           },
           undef
         ],
-        'normalized' => 'name'
+        'normalized' => 'name',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -76,6 +77,7 @@ $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'parent'} = $res
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'parent'} = $result_trees{'node_empty_direction'};
 
 $result_texis{'node_empty_direction'} = '@node name, ';

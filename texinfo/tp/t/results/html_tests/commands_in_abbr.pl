@@ -210,6 +210,7 @@ $result_trees{'commands_in_abbr'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'example',
+            'spaces_after_command' => {},
             'text_arg' => 'example'
           },
           'line_nr' => {
@@ -221,7 +222,8 @@ $result_trees{'commands_in_abbr'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -270,8 +272,10 @@ $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'cont
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'commands_in_abbr'}{'contents'}[2];
+$result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[2];
+$result_trees{'commands_in_abbr'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[0];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'parent'} = $result_trees{'commands_in_abbr'};
 
 $result_texis{'commands_in_abbr'} = '@abbr{A, @b{abbr} -- b}.

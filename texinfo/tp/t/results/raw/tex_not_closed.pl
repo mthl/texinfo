@@ -43,6 +43,9 @@ $result_trees{'tex_not_closed'} = {
           'type' => 'rawpreformatted'
         }
       ],
+      'extra' => {
+        'spaces_after_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -58,6 +61,7 @@ $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $resul
 $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'tex_not_closed'}{'contents'}[0];
+$result_trees{'tex_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'tex_not_closed'}{'contents'}[0]{'contents'}[0];
 $result_trees{'tex_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'tex_not_closed'};
 
 $result_texis{'tex_not_closed'} = '@tex

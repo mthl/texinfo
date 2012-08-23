@@ -83,7 +83,8 @@ $result_trees{'multitable_not_closed_item'} = {
                     }
                   ],
                   'extra' => {
-                    'cell_number' => 1
+                    'cell_number' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -117,7 +118,8 @@ $result_trees{'multitable_not_closed_item'} = {
             'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           }
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -142,6 +144,7 @@ $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'conte
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0];
@@ -149,6 +152,7 @@ $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0];
+$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'};
 
 $result_texis{'multitable_not_closed_item'} = '@multitable {r} {t}

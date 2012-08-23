@@ -105,7 +105,8 @@ $result_trees{'close_paragraph_command'} = {
       'extra' => {
         'misc_args' => [
           '4'
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -143,6 +144,7 @@ $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0]{'contents'}[0
 $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0];
 $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0];
 $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[5];
+$result_trees{'close_paragraph_command'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'close_paragraph_command'}{'contents'}[5]{'parent'} = $result_trees{'close_paragraph_command'};
 $result_trees{'close_paragraph_command'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[6];
 $result_trees{'close_paragraph_command'}{'contents'}[6]{'parent'} = $result_trees{'close_paragraph_command'};

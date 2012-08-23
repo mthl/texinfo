@@ -75,6 +75,7 @@ $result_trees{'today_in_copying'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'copying',
+                'spaces_after_command' => {},
                 'text_arg' => 'copying'
               },
               'line_nr' => {
@@ -86,7 +87,8 @@ $result_trees{'today_in_copying'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -144,7 +146,8 @@ $result_trees{'today_in_copying'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -206,7 +209,8 @@ $result_trees{'today_in_copying'} = {
       'extra' => {
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {
@@ -231,8 +235,10 @@ $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'
 $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0];
+$result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
+$result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[0];
 $result_trees{'today_in_copying'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[0];
 $result_trees{'today_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'today_in_copying'};
@@ -243,6 +249,7 @@ $result_trees{'today_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'pare
 $result_trees{'today_in_copying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[1];
 $result_trees{'today_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'today_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'today_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'today_in_copying'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'today_in_copying'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'today_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'today_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'today_in_copying'};
 $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'today_in_copying'}{'contents'}[2];
 $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0];
@@ -253,6 +260,7 @@ $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[0]{'parent'} = $res
 $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
 $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
 $result_trees{'today_in_copying'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'today_in_copying'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'today_in_copying'}{'contents'}[2]{'parent'} = $result_trees{'today_in_copying'};
 
 $result_texis{'today_in_copying'} = '@copying

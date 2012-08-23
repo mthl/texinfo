@@ -81,7 +81,8 @@ $result_trees{'headitem_itemx_in_itemize'} = {
             }
           ],
           'extra' => {
-            'item_number' => 1
+            'item_number' => 1,
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -121,6 +122,7 @@ $result_trees{'headitem_itemx_in_itemize'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'itemize',
+            'spaces_after_command' => {},
             'text_arg' => 'itemize'
           },
           'line_nr' => {
@@ -142,7 +144,8 @@ $result_trees{'headitem_itemx_in_itemize'} = {
           ]
         ],
         'command_as_argument' => {},
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -166,6 +169,7 @@ $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'conten
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[5];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0];
@@ -173,10 +177,12 @@ $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'};
 
 $result_texis{'headitem_itemx_in_itemize'} = '@itemize

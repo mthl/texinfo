@@ -44,6 +44,7 @@ $result_trees{'unknown_encoding'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => 'ggg'
           },
           'line_nr' => {
@@ -109,7 +110,8 @@ $result_trees{'unknown_encoding'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -127,6 +129,7 @@ $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'cont
 $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1];
+$result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_encoding'}{'contents'}[0];
 $result_trees{'unknown_encoding'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_encoding'}{'contents'}[0];
 $result_trees{'unknown_encoding'}{'contents'}[0]{'parent'} = $result_trees{'unknown_encoding'};
@@ -138,6 +141,7 @@ $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'parent'} = $result_
 $result_trees{'unknown_encoding'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unknown_encoding'}{'contents'}[1];
 $result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_encoding'}{'contents'}[1]{'parent'} = $result_trees{'unknown_encoding'};
 
 $result_texis{'unknown_encoding'} = '

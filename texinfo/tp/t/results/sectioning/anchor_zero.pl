@@ -155,7 +155,8 @@ $result_trees{'anchor_zero'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -192,6 +193,7 @@ $result_trees{'anchor_zero'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'paren
 $result_trees{'anchor_zero'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'anchor_zero'}{'contents'}[1];
 $result_trees{'anchor_zero'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_zero'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'anchor_zero'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'anchor_zero'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'anchor_zero'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'anchor_zero'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_zero'}{'contents'}[1]{'parent'} = $result_trees{'anchor_zero'};
 
 $result_texis{'anchor_zero'} = '@node Top

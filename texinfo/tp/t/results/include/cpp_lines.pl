@@ -55,6 +55,7 @@ $result_trees{'cpp_lines'} = {
           ],
           'cmdname' => 'setfilename',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => 'cpp_lines.info'
           },
           'line_nr' => {
@@ -208,6 +209,17 @@ $result_trees{'cpp_lines'} = {
               'type' => 'raw'
             }
           ],
+          'extra' => {
+            'spaces_after_command' => {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            }
+          },
           'line_nr' => {
             'file_name' => 'g_f',
             'line_nr' => '48',
@@ -215,15 +227,7 @@ $result_trees{'cpp_lines'} = {
           },
           'parent' => {}
         },
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
+        {},
         {
           'parent' => {},
           'text' => '
@@ -256,7 +260,16 @@ $result_trees{'cpp_lines'} = {
             'arg_line' => ' macr
 ',
             'macrobody' => '# line 7 "k"
-'
+',
+            'spaces_after_command' => {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            }
           },
           'line_nr' => {
             'file_name' => 'g_f',
@@ -265,15 +278,7 @@ $result_trees{'cpp_lines'} = {
           },
           'parent' => {}
         },
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
+        {},
         {
           'parent' => {},
           'text' => '
@@ -598,7 +603,8 @@ $result_trees{'cpp_lines'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => 'g_f',
@@ -621,6 +627,7 @@ $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1];
+$result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0];
@@ -646,16 +653,18 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3];
+$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3];
+$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[4]{'extra'}{'command'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
+$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[4] = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'};
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6];
+$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6];
+$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[7]{'extra'}{'command'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
+$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[7] = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[6]{'extra'}{'spaces_after_command'};
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0];
@@ -706,6 +715,7 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'parent'} = $result_tr
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[24]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'cpp_lines'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'cpp_lines'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'};
 $result_trees{'cpp_lines'}{'contents'}[2]{'parent'} = $result_trees{'cpp_lines'};
 

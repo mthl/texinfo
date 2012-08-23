@@ -62,7 +62,8 @@ $result_trees{'sp_with_text_before_in_example'} = {
               'extra' => {
                 'misc_args' => [
                   '4'
-                ]
+                ],
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -111,6 +112,7 @@ $result_trees{'sp_with_text_before_in_example'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'example',
+            'spaces_after_command' => {},
             'text_arg' => 'example'
           },
           'line_nr' => {
@@ -122,7 +124,8 @@ $result_trees{'sp_with_text_before_in_example'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -143,6 +146,7 @@ $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'c
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
+$result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1];
@@ -152,8 +156,10 @@ $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2]{'a
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1];
+$result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[2];
+$result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'contents'}[0];
 $result_trees{'sp_with_text_before_in_example'}{'contents'}[1]{'parent'} = $result_trees{'sp_with_text_before_in_example'};
 
 $result_texis{'sp_with_text_before_in_example'} = '

@@ -42,6 +42,7 @@ $result_trees{'verbatiminclude'} = {
       ],
       'cmdname' => 'verbatiminclude',
       'extra' => {
+        'spaces_after_command' => {},
         'text_arg' => 'incl-incl.txi'
       },
       'line_nr' => {
@@ -60,6 +61,7 @@ $result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'paren
 $result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0];
 $result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0];
 $result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude'}{'contents'}[1];
+$result_trees{'verbatiminclude'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'verbatiminclude'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatiminclude'}{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude'};
 
 $result_texis{'verbatiminclude'} = '

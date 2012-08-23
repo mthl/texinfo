@@ -3343,6 +3343,7 @@ sub _start_empty_line_after_command($$$) {
                                     'text' => $1,
                                     'parent' => $current,
                                     'extra' => {'command' => $command} };
+  $command->{'extra'}->{'spaces_after_command'} = $current->{'contents'}->[-1];
   return $line;
 }
 

@@ -288,7 +288,8 @@ $result_trees{'pxref_test'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -347,6 +348,7 @@ $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'parent
 $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1];
 $result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'pxref_test'}{'contents'}[1]{'parent'} = $result_trees{'pxref_test'};
 
 $result_texis{'pxref_test'} = '@node Top

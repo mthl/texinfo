@@ -74,7 +74,8 @@ $result_trees{'section_in_table'} = {
                       'extra' => {
                         'misc_content' => [
                           {}
-                        ]
+                        ],
+                        'spaces_after_command' => {}
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -110,7 +111,8 @@ $result_trees{'section_in_table'} = {
                 {}
               ]
             ],
-            'command_as_argument' => {}
+            'command_as_argument' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -187,7 +189,8 @@ $result_trees{'section_in_table'} = {
       'extra' => {
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 2,
       'line_nr' => {
@@ -212,6 +215,7 @@ $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
@@ -219,6 +223,7 @@ $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_table'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_table'}{'contents'}[0];
 $result_trees{'section_in_table'}{'contents'}[0]{'parent'} = $result_trees{'section_in_table'};
 $result_trees{'section_in_table'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_table'}{'contents'}[1];
@@ -232,6 +237,7 @@ $result_trees{'section_in_table'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'
 $result_trees{'section_in_table'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'section_in_table'}{'contents'}[1];
 $result_trees{'section_in_table'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'section_in_table'}{'contents'}[1];
 $result_trees{'section_in_table'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_table'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'section_in_table'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_table'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_table'}{'contents'}[1]{'parent'} = $result_trees{'section_in_table'};
 
 $result_texis{'section_in_table'} = '@table @asis

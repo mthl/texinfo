@@ -866,6 +866,7 @@ $result_trees{'menu_entry_name'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'menu',
+            'spaces_after_command' => {},
             'text_arg' => 'menu'
           },
           'line_nr' => {
@@ -877,7 +878,8 @@ $result_trees{'menu_entry_name'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -1047,8 +1049,10 @@ $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'cont
 $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11]{'args'}[0];
 $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11];
 $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11]{'extra'}{'command'} = $result_trees{'menu_entry_name'}{'contents'}[0];
+$result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11]{'extra'}{'spaces_after_command'} = $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'contents'}[0];
 $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'menu_entry_name'}{'contents'}[0];
 $result_trees{'menu_entry_name'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[11];
+$result_trees{'menu_entry_name'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'menu_entry_name'}{'contents'}[0]{'contents'}[0];
 $result_trees{'menu_entry_name'}{'contents'}[0]{'parent'} = $result_trees{'menu_entry_name'};
 
 $result_texis{'menu_entry_name'} = '@menu

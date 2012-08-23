@@ -76,6 +76,7 @@ $result_trees{'listoffloats_with_commands'} = {
       ],
       'cmdname' => 'listoffloats',
       'extra' => {
+        'spaces_after_command' => {},
         'type' => {
           'content' => [
             {},
@@ -110,6 +111,7 @@ $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0];
+$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'}[1] = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'}[2] = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[3];

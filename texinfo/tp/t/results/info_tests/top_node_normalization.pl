@@ -236,6 +236,7 @@ $result_trees{'top_node_normalization'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'menu',
+                'spaces_after_command' => {},
                 'text_arg' => 'menu'
               },
               'line_nr' => {
@@ -247,7 +248,8 @@ $result_trees{'top_node_normalization'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -267,7 +269,8 @@ $result_trees{'top_node_normalization'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -321,11 +324,14 @@ $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'
 $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
 $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3];
+$result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
+$result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[0];
 $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'top_node_normalization'}{'contents'}[1];
 $result_trees{'top_node_normalization'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_node_normalization'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'top_node_normalization'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'top_node_normalization'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'top_node_normalization'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_node_normalization'}{'contents'}[1]{'parent'} = $result_trees{'top_node_normalization'};
 
 $result_texis{'top_node_normalization'} = '@node ToP

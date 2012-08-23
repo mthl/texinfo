@@ -70,7 +70,16 @@ asis: @asis{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
 strong: @strong{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
 kbd: @kbd{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
 samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
-'
+',
+            'spaces_after_command' => {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -79,15 +88,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
           },
           'parent' => {}
         },
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
+        {},
         {
           'parent' => {},
           'text' => '
@@ -232,7 +233,16 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
 @codequoteundirected off
 @codequotebacktick off
 @quotes{}
-'
+',
+            'spaces_after_command' => {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -241,15 +251,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
           },
           'parent' => {}
         },
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
+        {},
         {
           'parent' => {},
           'text' => '
@@ -631,6 +633,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                   'extra' => {
                     'command' => {},
                     'command_argument' => 'example',
+                    'spaces_after_command' => {},
                     'text_arg' => 'example'
                   },
                   'line_nr' => {
@@ -642,7 +645,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                 }
               ],
               'extra' => {
-                'end_command' => {}
+                'end_command' => {},
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -671,7 +675,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               ],
               'cmdname' => 'codequoteundirected',
               'extra' => {
-                'missing_argument' => 1
+                'missing_argument' => 1,
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -700,7 +705,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               ],
               'cmdname' => 'codequotebacktick',
               'extra' => {
-                'missing_argument' => 1
+                'missing_argument' => 1,
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1072,6 +1078,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                   'extra' => {
                     'command' => {},
                     'command_argument' => 'example',
+                    'spaces_after_command' => {},
                     'text_arg' => 'example'
                   },
                   'line_nr' => {
@@ -1083,7 +1090,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                 }
               ],
               'extra' => {
-                'end_command' => {}
+                'end_command' => {},
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1123,7 +1131,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               'extra' => {
                 'misc_args' => [
                   'off'
-                ]
+                ],
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1163,7 +1172,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               'extra' => {
                 'misc_args' => [
                   'off'
-                ]
+                ],
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1493,6 +1503,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               'extra' => {
                 'command' => {},
                 'command_argument' => 'copying',
+                'spaces_after_command' => {},
                 'text_arg' => 'copying'
               },
               'line_nr' => {
@@ -1504,7 +1515,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -1581,6 +1593,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               'extra' => {
                 'command' => {},
                 'command_argument' => 'titlepage',
+                'spaces_after_command' => {},
                 'text_arg' => 'titlepage'
               },
               'line_nr' => {
@@ -1592,7 +1605,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -1656,7 +1670,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -2063,6 +2078,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               'extra' => {
                 'command' => {},
                 'command_argument' => 'example',
+                'spaces_after_command' => {},
                 'text_arg' => 'example'
               },
               'line_nr' => {
@@ -2074,7 +2090,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -2103,7 +2120,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
           ],
           'cmdname' => 'codequoteundirected',
           'extra' => {
-            'missing_argument' => 1
+            'missing_argument' => 1,
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -2132,7 +2150,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
           ],
           'cmdname' => 'codequotebacktick',
           'extra' => {
-            'missing_argument' => 1
+            'missing_argument' => 1,
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -2504,6 +2523,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               'extra' => {
                 'command' => {},
                 'command_argument' => 'example',
+                'spaces_after_command' => {},
                 'text_arg' => 'example'
               },
               'line_nr' => {
@@ -2515,7 +2535,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -2555,7 +2576,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
           'extra' => {
             'misc_args' => [
               'off'
-            ]
+            ],
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -2595,7 +2617,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
           'extra' => {
             'misc_args' => [
               'off'
-            ]
+            ],
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -3275,6 +3298,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                   'extra' => {
                     'command' => {},
                     'command_argument' => 'example',
+                    'spaces_after_command' => {},
                     'text_arg' => 'example'
                   },
                   'line_nr' => {
@@ -3286,7 +3310,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                 }
               ],
               'extra' => {
-                'end_command' => {}
+                'end_command' => {},
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -3317,7 +3342,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                   ],
                   'cmdname' => 'codequoteundirected',
                   'extra' => {
-                    'missing_argument' => 1
+                    'missing_argument' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -3346,7 +3372,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                   ],
                   'cmdname' => 'codequotebacktick',
                   'extra' => {
-                    'missing_argument' => 1
+                    'missing_argument' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -3716,6 +3743,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                   'extra' => {
                     'command' => {},
                     'command_argument' => 'example',
+                    'spaces_after_command' => {},
                     'text_arg' => 'example'
                   },
                   'line_nr' => {
@@ -3727,7 +3755,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                 }
               ],
               'extra' => {
-                'end_command' => {}
+                'end_command' => {},
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -3769,7 +3798,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                   'extra' => {
                     'misc_args' => [
                       'off'
-                    ]
+                    ],
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -3809,7 +3839,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
                   'extra' => {
                     'misc_args' => [
                       'off'
-                    ]
+                    ],
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -4137,6 +4168,7 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
               'extra' => {
                 'command' => {},
                 'command_argument' => 'example',
+                'spaces_after_command' => {},
                 'text_arg' => 'example'
               },
               'line_nr' => {
@@ -4148,7 +4180,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -4167,7 +4200,8 @@ samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quote
       'extra' => {
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {
@@ -4188,9 +4222,10 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
-$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0];
-$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[1] = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'};
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
@@ -4211,9 +4246,10 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'contents'}[15]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'contents'}[16]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'contents'}[17]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
-$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[4]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3];
-$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[4] = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'};
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
@@ -4283,16 +4319,20 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[2];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[4]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[5]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[6]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[6]{'contents'}[1];
@@ -4360,20 +4400,24 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[2];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[8]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[9]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[10]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[11];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[11]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[11]{'contents'}[1];
@@ -4433,8 +4477,10 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[12];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7];
@@ -4448,8 +4494,10 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[4];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[0];
@@ -4461,6 +4509,7 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'args'}[0]
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'};
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'args'}[0];
@@ -4534,16 +4583,20 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[6]{'contents'}[1];
@@ -4611,20 +4664,24 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[2];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[8]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[9]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[10]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[11];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[11]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[11]{'contents'}[1];
@@ -4747,16 +4804,20 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[2];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[3]{'contents'}[3];
@@ -4824,20 +4885,24 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[2];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[4]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[5]{'contents'}[3];
@@ -4897,11 +4962,14 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'args'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'extra'}{'command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[14]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'};
 
 $result_texis{'codequoteundirected_codequotebacktick'} = '@macro quotes

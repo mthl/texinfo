@@ -44,6 +44,9 @@ $result_trees{'end_of_line_end_file'} = {
           'type' => 'def_line'
         }
       ],
+      'extra' => {
+        'spaces_after_command' => {}
+      },
       'line_nr' => {},
       'parent' => {}
     }
@@ -55,6 +58,7 @@ $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0];
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_end_file'}{'contents'}[0];
+$result_trees{'end_of_line_end_file'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'line_nr'} = $result_trees{'end_of_line_end_file'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'end_of_line_end_file'}{'contents'}[0]{'parent'} = $result_trees{'end_of_line_end_file'};
 

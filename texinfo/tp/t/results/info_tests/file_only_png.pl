@@ -131,7 +131,8 @@ $result_trees{'file_only_png'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -165,6 +166,7 @@ $result_trees{'file_only_png'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'par
 $result_trees{'file_only_png'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'file_only_png'}{'contents'}[1];
 $result_trees{'file_only_png'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'file_only_png'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'file_only_png'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'file_only_png'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'file_only_png'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'file_only_png'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'file_only_png'}{'contents'}[1]{'parent'} = $result_trees{'file_only_png'};
 
 $result_texis{'file_only_png'} = '@node Top

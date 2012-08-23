@@ -110,7 +110,8 @@ $result_trees{'ref_in_center'} = {
           'extra' => {
             'misc_content' => [
               {}
-            ]
+            ],
+            'spaces_after_command' => {}
           },
           'line_nr' => {},
           'parent' => {}
@@ -194,7 +195,8 @@ $result_trees{'ref_in_center'} = {
           'extra' => {
             'misc_content' => [
               {}
-            ]
+            ],
+            'spaces_after_command' => {}
           },
           'line_nr' => {},
           'parent' => {}
@@ -221,7 +223,8 @@ $result_trees{'ref_in_center'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -251,6 +254,7 @@ $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'content
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1];
@@ -265,12 +269,14 @@ $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'content
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'line_nr'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[4];
 $result_trees{'ref_in_center'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'ref_in_center'}{'contents'}[1];
 $result_trees{'ref_in_center'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_in_center'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ref_in_center'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'ref_in_center'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ref_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_center'}{'contents'}[1]{'parent'} = $result_trees{'ref_in_center'};
 
 $result_texis{'ref_in_center'} = '@node Top

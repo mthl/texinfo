@@ -33,7 +33,16 @@ $result_trees{'macro_for_end'} = {
         'arg_line' => ' myend
 ',
         'macrobody' => '@end
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -42,15 +51,7 @@ $result_trees{'macro_for_end'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
+    {},
     {
       'parent' => {},
       'text' => '
@@ -100,6 +101,7 @@ $result_trees{'macro_for_end'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'cartouche',
+            'spaces_after_command' => {},
             'text_arg' => 'cartouche'
           },
           'line_nr' => {
@@ -111,7 +113,8 @@ $result_trees{'macro_for_end'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -126,9 +129,10 @@ $result_trees{'macro_for_end'} = {
 $result_trees{'macro_for_end'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[0];
 $result_trees{'macro_for_end'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[0];
 $result_trees{'macro_for_end'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[0];
+$result_trees{'macro_for_end'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'macro_for_end'}{'contents'}[0];
+$result_trees{'macro_for_end'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_for_end'};
 $result_trees{'macro_for_end'}{'contents'}[0]{'parent'} = $result_trees{'macro_for_end'};
-$result_trees{'macro_for_end'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_for_end'}{'contents'}[0];
-$result_trees{'macro_for_end'}{'contents'}[1]{'parent'} = $result_trees{'macro_for_end'};
+$result_trees{'macro_for_end'}{'contents'}[1] = $result_trees{'macro_for_end'}{'contents'}[0]{'extra'}{'spaces_after_command'};
 $result_trees{'macro_for_end'}{'contents'}[2]{'parent'} = $result_trees{'macro_for_end'};
 $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'macro_for_end'}{'contents'}[3];
 $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[3];
@@ -138,8 +142,10 @@ $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'content
 $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1];
 $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_for_end'}{'contents'}[3];
+$result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[3];
 $result_trees{'macro_for_end'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[1];
+$result_trees{'macro_for_end'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'macro_for_end'}{'contents'}[3]{'contents'}[0];
 $result_trees{'macro_for_end'}{'contents'}[3]{'parent'} = $result_trees{'macro_for_end'};
 
 $result_texis{'macro_for_end'} = '@macro myend

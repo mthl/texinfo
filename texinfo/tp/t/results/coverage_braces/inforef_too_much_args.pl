@@ -138,7 +138,8 @@ $result_trees{'inforef_too_much_args'} = {
             'normalized' => 'chapter'
           }
         ],
-        'normalized' => 'chapter'
+        'normalized' => 'chapter',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -172,6 +173,7 @@ $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'};
 
 $result_texis{'inforef_too_much_args'} = '@node chapter

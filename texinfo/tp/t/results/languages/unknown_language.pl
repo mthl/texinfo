@@ -38,6 +38,7 @@ $result_trees{'unknown_language'} = {
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => 'unknown'
           },
           'line_nr' => {
@@ -96,7 +97,8 @@ $result_trees{'unknown_language'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -226,6 +228,7 @@ $result_trees{'unknown_language'} = {
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => 'another_UNKNOWN'
           },
           'line_nr' => {
@@ -296,7 +299,8 @@ $result_trees{'unknown_language'} = {
       'extra' => {
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {
@@ -314,6 +318,7 @@ $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'cont
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0];
+$result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'parent'} = $result_trees{'unknown_language'};
@@ -324,6 +329,7 @@ $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'pare
 $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[1];
 $result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[1]{'parent'} = $result_trees{'unknown_language'};
 $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0];
@@ -346,6 +352,7 @@ $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'cont
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3];
+$result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[5];
@@ -358,6 +365,7 @@ $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[5];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'unknown_language'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[2]{'parent'} = $result_trees{'unknown_language'};
 
 $result_texis{'unknown_language'} = '@documentlanguage unknown

@@ -73,6 +73,7 @@ $result_trees{'expanded_tex'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'tex',
+                'spaces_after_command' => {},
                 'text_arg' => 'tex'
               },
               'line_nr' => {
@@ -84,7 +85,8 @@ $result_trees{'expanded_tex'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -185,6 +187,7 @@ $result_trees{'expanded_tex'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'tex',
+                'spaces_after_command' => {},
                 'text_arg' => 'tex'
               },
               'line_nr' => {
@@ -201,7 +204,8 @@ $result_trees{'expanded_tex'} = {
                 {}
               ]
             ],
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -234,8 +238,10 @@ $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args
 $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1];
+$result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1];
 $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
+$result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[0];
 $result_trees{'expanded_tex'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[0];
 $result_trees{'expanded_tex'}{'contents'}[0]{'parent'} = $result_trees{'expanded_tex'};
@@ -254,9 +260,11 @@ $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'command'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1];
+$result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2];
 $result_trees{'expanded_tex'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'}{'contents'}[2];
 $result_trees{'expanded_tex'}{'contents'}[2]{'parent'} = $result_trees{'expanded_tex'};

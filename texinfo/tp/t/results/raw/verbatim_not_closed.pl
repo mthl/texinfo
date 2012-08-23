@@ -50,6 +50,9 @@ $result_trees{'verbatim_not_closed'} = {
           'type' => 'raw'
         }
       ],
+      'extra' => {
+        'spaces_after_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -67,6 +70,7 @@ $result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $
 $result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
 $result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
 $result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
+$result_trees{'verbatim_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[0];
 $result_trees{'verbatim_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'verbatim_not_closed'};
 
 $result_texis{'verbatim_not_closed'} = '@verbatim

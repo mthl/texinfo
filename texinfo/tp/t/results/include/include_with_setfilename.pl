@@ -53,6 +53,7 @@ $result_trees{'include_with_setfilename'} = {
       ],
       'cmdname' => 'setfilename',
       'extra' => {
+        'spaces_after_command' => {},
         'text_arg' => 'main_file.info'
       },
       'line_nr' => {
@@ -73,6 +74,7 @@ $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[
 $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0];
 $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0];
 $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'include_with_setfilename'}{'contents'}[2];
+$result_trees{'include_with_setfilename'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'include_with_setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'include_with_setfilename'}{'contents'}[2]{'parent'} = $result_trees{'include_with_setfilename'};
 
 $result_texis{'include_with_setfilename'} = '

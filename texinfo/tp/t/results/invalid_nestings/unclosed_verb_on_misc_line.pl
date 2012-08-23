@@ -56,6 +56,9 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
         }
       ],
       'cmdname' => 'setfilename',
+      'extra' => {
+        'spaces_after_command' => {}
+      },
       'line_nr' => {},
       'parent' => {}
     }
@@ -69,6 +72,7 @@ $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0];
+$result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'line_nr'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'};
 

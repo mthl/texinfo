@@ -62,6 +62,7 @@ $result_trees{'quotation_beginning_and_end_on_line'} = {
             'command' => {},
             'command_argument' => 'quotation',
             'invalid_nesting' => 1,
+            'spaces_after_command' => {},
             'text_arg' => 'quotation'
           },
           'line_nr' => {
@@ -73,7 +74,8 @@ $result_trees{'quotation_beginning_and_end_on_line'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {},
       'parent' => {}
@@ -91,8 +93,10 @@ $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0];
+$result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0];
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0];
+$result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'line_nr'} = $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'quotation_beginning_and_end_on_line'}{'contents'}[0]{'parent'} = $result_trees{'quotation_beginning_and_end_on_line'};
 

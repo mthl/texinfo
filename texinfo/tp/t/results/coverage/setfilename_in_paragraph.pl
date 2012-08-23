@@ -47,6 +47,7 @@ $result_trees{'setfilename_in_paragraph'} = {
       ],
       'cmdname' => 'setfilename',
       'extra' => {
+        'spaces_after_command' => {},
         'text_arg' => 'filename.info'
       },
       'line_nr' => {
@@ -66,6 +67,7 @@ $result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'args'}[0]{'contents'}[
 $result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'args'}[0];
 $result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'args'}[0];
 $result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'setfilename_in_paragraph'}{'contents'}[1];
+$result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'setfilename_in_paragraph'}{'contents'}[1]{'parent'} = $result_trees{'setfilename_in_paragraph'};
 
 $result_texis{'setfilename_in_paragraph'} = 'Some text

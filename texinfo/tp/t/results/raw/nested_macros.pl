@@ -50,37 +50,39 @@ $result_trees{'nested_macros'} = {
           ],
           'extra' => {
             'arg_line' => ' othermacro 
-'
+',
+            'spaces_after_command' => {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            }
           },
           'parent' => {}
         },
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
+        {},
         {
           'cmdname' => 'macro',
           'contents' => [],
           'extra' => {
             'arg_line' => '
-'
+',
+            'spaces_after_command' => {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            }
           },
           'parent' => {}
         },
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        {}
       ],
       'extra' => {
         'arg_line' => ' truc   { arg,  ex}
@@ -95,7 +97,16 @@ other macro
 @end macro
 @macro
 @end macro
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -104,15 +115,7 @@ other macro
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    }
+    {}
   ],
   'type' => 'text_root'
 };
@@ -122,15 +125,18 @@ $result_trees{'nested_macros'}{'contents'}[0]{'args'}[2]{'parent'} = $result_tre
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
+$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
+$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
-$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
-$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
+$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[2] = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'};
+$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[3];
+$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
-$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[4]{'extra'}{'command'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[3];
-$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
+$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[4] = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'};
+$result_trees{'nested_macros'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'nested_macros'}{'contents'}[0];
+$result_trees{'nested_macros'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'nested_macros'};
 $result_trees{'nested_macros'}{'contents'}[0]{'parent'} = $result_trees{'nested_macros'};
-$result_trees{'nested_macros'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'nested_macros'}{'contents'}[0];
-$result_trees{'nested_macros'}{'contents'}[1]{'parent'} = $result_trees{'nested_macros'};
+$result_trees{'nested_macros'}{'contents'}[1] = $result_trees{'nested_macros'}{'contents'}[0]{'extra'}{'spaces_after_command'};
 
 $result_texis{'nested_macros'} = '@macro truc   { arg,  ex}
 in macro \\arg\\

@@ -84,6 +84,7 @@ $result_trees{'style_not_closed_in_block_command'} = {
             'command' => {},
             'command_argument' => 'cartouche',
             'invalid_nesting' => 1,
+            'spaces_after_command' => {},
             'text_arg' => 'cartouche'
           },
           'line_nr' => {
@@ -95,7 +96,8 @@ $result_trees{'style_not_closed_in_block_command'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -120,8 +122,10 @@ $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2]
 $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2];
 $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0];
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0];
 $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[2];
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[0];
 $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_block_command'};
 
 $result_texis{'style_not_closed_in_block_command'} = '@cartouche

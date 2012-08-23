@@ -52,7 +52,8 @@ $result_trees{'definfoenclose'} = {
               'phoo',
               '//',
               '\\'
-            ]
+            ],
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -149,7 +150,8 @@ $result_trees{'definfoenclose'} = {
               'phi',
               ':',
               ':'
-            ]
+            ],
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -279,7 +281,8 @@ $result_trees{'definfoenclose'} = {
           'strong',
           '(strong:',
           ':)'
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -342,6 +345,7 @@ $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'conten
 $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1];
+$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1];
 $result_trees{'definfoenclose'}{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'};
 $result_trees{'definfoenclose'}{'contents'}[2]{'parent'} = $result_trees{'definfoenclose'};
@@ -357,6 +361,7 @@ $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'conten
 $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1];
+$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5];
 $result_trees{'definfoenclose'}{'contents'}[5]{'parent'} = $result_trees{'definfoenclose'};
 $result_trees{'definfoenclose'}{'contents'}[6]{'parent'} = $result_trees{'definfoenclose'};
@@ -377,6 +382,7 @@ $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'paren
 $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0];
 $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0];
 $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[11];
+$result_trees{'definfoenclose'}{'contents'}[11]{'extra'}{'spaces_after_command'} = $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'contents'}[0];
 $result_trees{'definfoenclose'}{'contents'}[11]{'parent'} = $result_trees{'definfoenclose'};
 $result_trees{'definfoenclose'}{'contents'}[12]{'parent'} = $result_trees{'definfoenclose'};
 $result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'args'}[0];

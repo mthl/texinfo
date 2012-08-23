@@ -78,6 +78,7 @@ $result_trees{'recursive_copying'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'copying',
+            'spaces_after_command' => {},
             'text_arg' => 'copying'
           },
           'line_nr' => {
@@ -89,7 +90,8 @@ $result_trees{'recursive_copying'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -134,8 +136,10 @@ $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'con
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'extra'}{'command'} = $result_trees{'recursive_copying'}{'contents'}[0];
+$result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5];
+$result_trees{'recursive_copying'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'parent'} = $result_trees{'recursive_copying'};
 $result_trees{'recursive_copying'}{'contents'}[1]{'parent'} = $result_trees{'recursive_copying'};
 $result_trees{'recursive_copying'}{'contents'}[2]{'parent'} = $result_trees{'recursive_copying'};

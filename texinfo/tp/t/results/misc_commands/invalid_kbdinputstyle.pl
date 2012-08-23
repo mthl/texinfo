@@ -41,6 +41,9 @@ $result_trees{'invalid_kbdinputstyle'} = {
             }
           ],
           'cmdname' => 'kbdinputstyle',
+          'extra' => {
+            'spaces_after_command' => {}
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -61,6 +64,7 @@ $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{
 $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1];
+$result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0];
 $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'parent'} = $result_trees{'invalid_kbdinputstyle'};
 

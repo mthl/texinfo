@@ -38,6 +38,7 @@ $result_trees{'utf8_no_use_entity'} = {
       'extra' => {
         'encoding_name' => 'utf-8',
         'perl_encoding' => 'utf-8-strict',
+        'spaces_after_command' => {},
         'text_arg' => 'utf-8'
       },
       'line_nr' => {
@@ -91,6 +92,7 @@ $result_trees{'utf8_no_use_entity'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'pa
 $result_trees{'utf8_no_use_entity'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'utf8_no_use_entity'}{'contents'}[0]{'args'}[0];
 $result_trees{'utf8_no_use_entity'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'utf8_no_use_entity'}{'contents'}[0]{'args'}[0];
 $result_trees{'utf8_no_use_entity'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'utf8_no_use_entity'}{'contents'}[0];
+$result_trees{'utf8_no_use_entity'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'utf8_no_use_entity'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'utf8_no_use_entity'}{'contents'}[0]{'parent'} = $result_trees{'utf8_no_use_entity'};
 $result_trees{'utf8_no_use_entity'}{'contents'}[1]{'parent'} = $result_trees{'utf8_no_use_entity'};
 $result_trees{'utf8_no_use_entity'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'utf8_no_use_entity'}{'contents'}[2];

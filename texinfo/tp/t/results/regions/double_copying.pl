@@ -96,6 +96,7 @@ $result_trees{'double_copying'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'copying',
+                'spaces_after_command' => {},
                 'text_arg' => 'copying'
               },
               'line_nr' => {
@@ -107,7 +108,8 @@ $result_trees{'double_copying'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -147,6 +149,7 @@ $result_trees{'double_copying'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'copying',
+            'spaces_after_command' => {},
             'text_arg' => 'copying'
           },
           'line_nr' => {
@@ -158,7 +161,8 @@ $result_trees{'double_copying'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -186,8 +190,10 @@ $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'ar
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'extra'}{'command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4];
+$result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
+$result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'double_copying'}{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0];
@@ -195,8 +201,10 @@ $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'conten
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'extra'}{'command'} = $result_trees{'double_copying'}{'contents'}[0];
+$result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'double_copying'}{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5];
+$result_trees{'double_copying'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'parent'} = $result_trees{'double_copying'};
 
 $result_texis{'double_copying'} = '@copying

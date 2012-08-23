@@ -35,6 +35,9 @@ $result_trees{'synindex_too_much_args'} = {
         }
       ],
       'cmdname' => 'syncodeindex',
+      'extra' => {
+        'spaces_after_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -50,6 +53,7 @@ $result_trees{'synindex_too_much_args'}{'contents'}[0]{'args'}[0]{'contents'}[0]
 $result_trees{'synindex_too_much_args'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'synindex_too_much_args'}{'contents'}[0]{'args'}[0];
 $result_trees{'synindex_too_much_args'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'synindex_too_much_args'}{'contents'}[0]{'args'}[0];
 $result_trees{'synindex_too_much_args'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'synindex_too_much_args'}{'contents'}[0];
+$result_trees{'synindex_too_much_args'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'synindex_too_much_args'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'synindex_too_much_args'}{'contents'}[0]{'parent'} = $result_trees{'synindex_too_much_args'};
 
 $result_texis{'synindex_too_much_args'} = '@syncodeindex cp fn    truc

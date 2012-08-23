@@ -364,7 +364,8 @@ $result_trees{'commands'} = {
           'key' => 'index entry "in text" LaTeX',
           'number' => 1
         },
-        'misc_content' => []
+        'misc_content' => [],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -434,7 +435,8 @@ $result_trees{'commands'} = {
         'misc_content' => [
           {},
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 1,
       'line_nr' => {},
@@ -509,6 +511,7 @@ $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] =
 $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'}[1] = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'};
 $result_trees{'commands'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'};
+$result_trees{'commands'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'commands'}{'contents'}[2]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[3]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[4];
@@ -521,6 +524,7 @@ $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[3]{'parent'} = $
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4];
 $result_trees{'commands'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[4]{'extra'}{'misc_content'}[1] = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[2];
+$result_trees{'commands'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'commands'}{'contents'}[4]{'line_nr'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'commands'}{'contents'}[4]{'parent'} = $result_trees{'commands'};
 

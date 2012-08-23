@@ -41,7 +41,8 @@ $result_trees{'print_merged_index'} = {
             'misc_args' => [
               'fn',
               'cp'
-            ]
+            ],
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -108,7 +109,8 @@ $result_trees{'print_merged_index'} = {
           'extra' => {
             'misc_args' => [
               'fn'
-            ]
+            ],
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -128,7 +130,8 @@ $result_trees{'print_merged_index'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -145,6 +148,7 @@ $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'co
 $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0];
+$result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'print_merged_index'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[0];
 $result_trees{'print_merged_index'}{'contents'}[0]{'parent'} = $result_trees{'print_merged_index'};
 $result_trees{'print_merged_index'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'print_merged_index'}{'contents'}[1];
@@ -156,9 +160,11 @@ $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'co
 $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0];
+$result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'print_merged_index'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'print_merged_index'}{'contents'}[1];
 $result_trees{'print_merged_index'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'print_merged_index'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'print_merged_index'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'print_merged_index'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'print_merged_index'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'print_merged_index'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'print_merged_index'}{'contents'}[1]{'parent'} = $result_trees{'print_merged_index'};
 
 $result_texis{'print_merged_index'} = '@syncodeindex fn cp

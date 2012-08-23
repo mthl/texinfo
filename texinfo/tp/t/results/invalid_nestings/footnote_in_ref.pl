@@ -156,7 +156,8 @@ $result_trees{'footnote_in_ref'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -193,6 +194,7 @@ $result_trees{'footnote_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'p
 $result_trees{'footnote_in_ref'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_ref'}{'contents'}[1];
 $result_trees{'footnote_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'footnote_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'footnote_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'footnote_in_ref'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'footnote_in_ref'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'footnote_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'footnote_in_ref'}{'contents'}[1]{'parent'} = $result_trees{'footnote_in_ref'};
 
 $result_texis{'footnote_in_ref'} = '@node Top

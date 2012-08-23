@@ -80,6 +80,7 @@ $result_trees{'only_comment_on_quotation_line'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'quotation',
+            'spaces_after_command' => {},
             'text_arg' => 'quotation'
           },
           'line_nr' => {
@@ -91,7 +92,8 @@ $result_trees{'only_comment_on_quotation_line'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -116,8 +118,10 @@ $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'a
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0];
+$result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'};
 
 $result_texis{'only_comment_on_quotation_line'} = '@quotation @c comment

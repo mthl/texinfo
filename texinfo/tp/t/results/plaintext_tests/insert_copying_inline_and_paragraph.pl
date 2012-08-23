@@ -61,6 +61,7 @@ $result_trees{'insert_copying_inline_and_paragraph'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'copying',
+            'spaces_after_command' => {},
             'text_arg' => 'copying'
           },
           'line_nr' => {
@@ -72,7 +73,8 @@ $result_trees{'insert_copying_inline_and_paragraph'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -116,8 +118,10 @@ $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2];
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0];
+$result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0];
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[2];
+$result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'contents'}[0];
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'};
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[1]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'};
 $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'insert_copying_inline_and_paragraph'}{'contents'}[2];

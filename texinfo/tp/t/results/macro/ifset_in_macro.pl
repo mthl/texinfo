@@ -55,7 +55,16 @@ $result_trees{'ifset_in_macro'} = {
         'macrobody' => '@ifset notes 
 \\arg\\
 @end ifset
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -64,15 +73,7 @@ $result_trees{'ifset_in_macro'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
+    {},
     {
       'parent' => {},
       'text' => '
@@ -88,9 +89,10 @@ $result_trees{'ifset_in_macro'}{'contents'}[0]{'contents'}[0]{'parent'} = $resul
 $result_trees{'ifset_in_macro'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ifset_in_macro'}{'contents'}[0];
 $result_trees{'ifset_in_macro'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ifset_in_macro'}{'contents'}[0];
 $result_trees{'ifset_in_macro'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'ifset_in_macro'}{'contents'}[0];
+$result_trees{'ifset_in_macro'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'ifset_in_macro'}{'contents'}[0];
+$result_trees{'ifset_in_macro'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'ifset_in_macro'};
 $result_trees{'ifset_in_macro'}{'contents'}[0]{'parent'} = $result_trees{'ifset_in_macro'};
-$result_trees{'ifset_in_macro'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'ifset_in_macro'}{'contents'}[0];
-$result_trees{'ifset_in_macro'}{'contents'}[1]{'parent'} = $result_trees{'ifset_in_macro'};
+$result_trees{'ifset_in_macro'}{'contents'}[1] = $result_trees{'ifset_in_macro'}{'contents'}[0]{'extra'}{'spaces_after_command'};
 $result_trees{'ifset_in_macro'}{'contents'}[2]{'parent'} = $result_trees{'ifset_in_macro'};
 
 $result_texis{'ifset_in_macro'} = '@macro note {arg}

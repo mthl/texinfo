@@ -60,6 +60,7 @@ $result_trees{'contents_no_section'} = {
           ],
           'cmdname' => 'setfilename',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => 'contents_no_section.info'
           },
           'line_nr' => {
@@ -140,7 +141,8 @@ $result_trees{'contents_no_section'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => 'contents_no_section.texi',
@@ -163,6 +165,7 @@ $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'c
 $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1];
+$result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[0];
 $result_trees{'contents_no_section'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[0];
 $result_trees{'contents_no_section'}{'contents'}[0]{'parent'} = $result_trees{'contents_no_section'};
@@ -176,6 +179,7 @@ $result_trees{'contents_no_section'}{'contents'}[1]{'contents'}[1]{'parent'} = $
 $result_trees{'contents_no_section'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[1];
 $result_trees{'contents_no_section'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'contents_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'contents_no_section'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'contents_no_section'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'contents_no_section'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'contents_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_no_section'}{'contents'}[1]{'parent'} = $result_trees{'contents_no_section'};
 $result_trees{'contents_no_section'}{'contents'}[2]{'parent'} = $result_trees{'contents_no_section'};
 

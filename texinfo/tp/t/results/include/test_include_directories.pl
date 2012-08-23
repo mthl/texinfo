@@ -79,6 +79,7 @@ $result_trees{'test_include_directories'} = {
           ],
           'cmdname' => 'include',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => '../include_dir/inc_file.texi'
           },
           'line_nr' => {
@@ -138,6 +139,7 @@ $result_trees{'test_include_directories'} = {
           ],
           'cmdname' => 'include',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => './tp/t/include_dir/inc_file.texi'
           },
           'line_nr' => {
@@ -209,6 +211,7 @@ $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'args'}[
 $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2];
+$result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'test_include_directories'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'test_include_directories'}{'contents'}[3];
 $result_trees{'test_include_directories'}{'contents'}[3]{'parent'} = $result_trees{'test_include_directories'};
 $result_trees{'test_include_directories'}{'contents'}[4]{'parent'} = $result_trees{'test_include_directories'};
@@ -219,6 +222,7 @@ $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'args'}[
 $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'args'}[0];
 $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'args'}[0];
 $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2];
+$result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'test_include_directories'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'test_include_directories'}{'contents'}[5];
 $result_trees{'test_include_directories'}{'contents'}[5]{'parent'} = $result_trees{'test_include_directories'};
 $result_trees{'test_include_directories'}{'contents'}[6]{'parent'} = $result_trees{'test_include_directories'};

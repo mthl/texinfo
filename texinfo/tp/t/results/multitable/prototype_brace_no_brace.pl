@@ -72,6 +72,7 @@ $result_trees{'prototype_brace_no_brace'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'multitable',
+            'spaces_after_command' => {},
             'text_arg' => 'multitable'
           },
           'line_nr' => {
@@ -95,7 +96,8 @@ $result_trees{'prototype_brace_no_brace'} = {
             'text' => 'bb',
             'type' => 'row_prototype'
           }
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -119,10 +121,12 @@ $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'args'}[
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0];
+$result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'args'}[0];
+$result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace'};
 
 $result_texis{'prototype_brace_no_brace'} = '@multitable {aa} bb

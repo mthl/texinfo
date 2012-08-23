@@ -175,6 +175,7 @@ $result_trees{'def_in_style_command'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'defun',
+            'spaces_after_command' => {},
             'text_arg' => 'defun'
           },
           'line_nr' => {
@@ -187,7 +188,8 @@ $result_trees{'def_in_style_command'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'invalid_nesting' => 1
+        'invalid_nesting' => 1,
+        'spaces_after_command' => {}
       },
       'line_nr' => {},
       'parent' => {}
@@ -218,8 +220,10 @@ $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'def_in_style_command'}{'contents'}[1];
+$result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'def_in_style_command'}{'contents'}[1];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[2];
+$result_trees{'def_in_style_command'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'def_in_style_command'}{'contents'}[1]{'line_nr'} = $result_trees{'def_in_style_command'}{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'def_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'def_in_style_command'};
 

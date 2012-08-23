@@ -43,6 +43,7 @@ $result_trees{'command_line_in_paragraph'} = {
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => 'en'
           },
           'line_nr' => {
@@ -70,6 +71,7 @@ $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1];
+$result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0];
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0];
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'command_line_in_paragraph'};

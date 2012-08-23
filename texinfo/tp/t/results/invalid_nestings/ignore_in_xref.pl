@@ -93,7 +93,16 @@ $result_trees{'ignore_in_xref'} = {
                         }
                       ],
                       'extra' => {
-                        'invalid_nesting' => 1
+                        'invalid_nesting' => 1,
+                        'spaces_after_command' => {
+                          'extra' => {
+                            'command' => {}
+                          },
+                          'parent' => {},
+                          'text' => '
+',
+                          'type' => 'empty_line_after_command'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -102,15 +111,7 @@ $result_trees{'ignore_in_xref'} = {
                       },
                       'parent' => {}
                     },
-                    {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line_after_command'
-                    }
+                    {}
                   ],
                   'parent' => {},
                   'type' => 'brace_command_arg'
@@ -163,7 +164,8 @@ $result_trees{'ignore_in_xref'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -188,13 +190,14 @@ $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'ar
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1];
+$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1];
+$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1];
-$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1];
+$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[2] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'};
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][1] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[2];
+$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][1] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'};
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ignore_in_xref'}{'contents'}[1];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1];
@@ -202,6 +205,7 @@ $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'pa
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ignore_in_xref'}{'contents'}[1];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ignore_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ignore_in_xref'}{'contents'}[1]{'parent'} = $result_trees{'ignore_in_xref'};
 
 $result_texis{'ignore_in_xref'} = '@node Top

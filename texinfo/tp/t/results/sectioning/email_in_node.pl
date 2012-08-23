@@ -184,7 +184,8 @@ $result_trees{'email_in_node'} = {
             'normalized' => 'a-c-'
           }
         ],
-        'normalized' => 'a-c-'
+        'normalized' => 'a-c-',
+        'spaces_after_command' => {}
       },
       'line_nr' => {},
       'parent' => {}
@@ -225,6 +226,7 @@ $result_trees{'email_in_node'}{'contents'}[1]{'extra'}{'node_content'}[2] = $res
 $result_trees{'email_in_node'}{'contents'}[1]{'extra'}{'node_content'}[3] = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[4];
 $result_trees{'email_in_node'}{'contents'}[1]{'extra'}{'node_content'}[4] = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5];
 $result_trees{'email_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'email_in_node'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'email_in_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'email_in_node'}{'contents'}[1]{'line_nr'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'email_in_node'}{'contents'}[1]{'parent'} = $result_trees{'email_in_node'};
 

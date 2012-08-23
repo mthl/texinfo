@@ -38,7 +38,8 @@ $result_trees{'punctuation_frenchspacing'} = {
       'extra' => {
         'misc_args' => [
           'on'
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -212,6 +213,7 @@ $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}
 $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0];
 $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0];
 $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0];
+$result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'punctuation_frenchspacing'}{'contents'}[0]{'parent'} = $result_trees{'punctuation_frenchspacing'};
 $result_trees{'punctuation_frenchspacing'}{'contents'}[1]{'parent'} = $result_trees{'punctuation_frenchspacing'};
 $result_trees{'punctuation_frenchspacing'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'punctuation_frenchspacing'}{'contents'}[2];

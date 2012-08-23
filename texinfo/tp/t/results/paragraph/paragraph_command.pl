@@ -185,7 +185,8 @@ $result_trees{'paragraph_command'} = {
           'foo',
           '\\',
           '//'
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -313,6 +314,7 @@ $result_trees{'paragraph_command'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'par
 $result_trees{'paragraph_command'}{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[8]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[8]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[8]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[8];
+$result_trees{'paragraph_command'}{'contents'}[8]{'extra'}{'spaces_after_command'} = $result_trees{'paragraph_command'}{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraph_command'}{'contents'}[8]{'parent'} = $result_trees{'paragraph_command'};
 $result_trees{'paragraph_command'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[9]{'contents'}[0]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[9]{'contents'}[0]{'args'}[0];

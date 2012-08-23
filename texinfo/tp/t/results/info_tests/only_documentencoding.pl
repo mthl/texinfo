@@ -32,6 +32,7 @@ $result_trees{'only_documentencoding'} = {
       'extra' => {
         'encoding_name' => 'iso-8859-1',
         'perl_encoding' => 'iso-8859-1',
+        'spaces_after_command' => {},
         'text_arg' => 'ISO-8859-1'
       },
       'line_nr' => {
@@ -48,6 +49,7 @@ $result_trees{'only_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{
 $result_trees{'only_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'only_documentencoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'only_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'only_documentencoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'only_documentencoding'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'only_documentencoding'}{'contents'}[0];
+$result_trees{'only_documentencoding'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'only_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'only_documentencoding'}{'contents'}[0]{'parent'} = $result_trees{'only_documentencoding'};
 
 $result_texis{'only_documentencoding'} = '@documentencoding ISO-8859-1';

@@ -97,7 +97,8 @@ $result_trees{'double_exdent'} = {
                         'invalid_nesting' => 1,
                         'misc_content' => [
                           {}
-                        ]
+                        ],
+                        'spaces_after_command' => {}
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -115,7 +116,8 @@ $result_trees{'double_exdent'} = {
               'extra' => {
                 'misc_content' => [
                   {}
-                ]
+                ],
+                'spaces_after_command' => {}
               },
               'line_nr' => {},
               'parent' => {}
@@ -151,6 +153,7 @@ $result_trees{'double_exdent'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'example',
+                'spaces_after_command' => {},
                 'text_arg' => 'example'
               },
               'line_nr' => {
@@ -162,7 +165,8 @@ $result_trees{'double_exdent'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -202,6 +206,7 @@ $result_trees{'double_exdent'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'example',
+            'spaces_after_command' => {},
             'text_arg' => 'example'
           },
           'line_nr' => {
@@ -213,7 +218,8 @@ $result_trees{'double_exdent'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -241,9 +247,11 @@ $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'arg
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'line_nr'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3];
@@ -252,8 +260,10 @@ $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'arg
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'extra'}{'command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2];
+$result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[3];
+$result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'args'}[0];
@@ -261,8 +271,10 @@ $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'content
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'extra'}{'command'} = $result_trees{'double_exdent'}{'contents'}[0];
+$result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[3];
+$result_trees{'double_exdent'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'parent'} = $result_trees{'double_exdent'};
 
 $result_texis{'double_exdent'} = '@example

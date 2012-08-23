@@ -85,6 +85,7 @@ $result_trees{'nested_formats'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'example',
+                'spaces_after_command' => {},
                 'text_arg' => 'example'
               },
               'line_nr' => {
@@ -96,7 +97,8 @@ $result_trees{'nested_formats'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -136,6 +138,7 @@ $result_trees{'nested_formats'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'format',
+            'spaces_after_command' => {},
             'text_arg' => 'format'
           },
           'line_nr' => {
@@ -147,7 +150,8 @@ $result_trees{'nested_formats'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -240,6 +244,7 @@ $result_trees{'nested_formats'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'format',
+                'spaces_after_command' => {},
                 'text_arg' => 'format'
               },
               'line_nr' => {
@@ -251,7 +256,8 @@ $result_trees{'nested_formats'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -291,6 +297,7 @@ $result_trees{'nested_formats'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'example',
+            'spaces_after_command' => {},
             'text_arg' => 'example'
           },
           'line_nr' => {
@@ -302,7 +309,8 @@ $result_trees{'nested_formats'} = {
         }
       ],
       'extra' => {
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -328,8 +336,10 @@ $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'ar
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1];
+$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
+$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0];
@@ -337,8 +347,10 @@ $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'conten
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[0];
+$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2];
+$result_trees{'nested_formats'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[0]{'parent'} = $result_trees{'nested_formats'};
 $result_trees{'nested_formats'}{'contents'}[1]{'parent'} = $result_trees{'nested_formats'};
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[2];
@@ -355,8 +367,10 @@ $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'ar
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1];
+$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
+$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0];
@@ -364,8 +378,10 @@ $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'conten
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[2];
+$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2];
 $result_trees{'nested_formats'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2];
+$result_trees{'nested_formats'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[0];
 $result_trees{'nested_formats'}{'contents'}[2]{'parent'} = $result_trees{'nested_formats'};
 
 $result_texis{'nested_formats'} = '@format

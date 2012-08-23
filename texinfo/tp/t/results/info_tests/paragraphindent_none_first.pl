@@ -88,7 +88,8 @@ $result_trees{'paragraphindent_none_first'} = {
       'extra' => {
         'misc_args' => [
           'none'
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -136,6 +137,7 @@ $result_trees{'paragraphindent_none_first'}{'contents'}[7]{'args'}[0]{'contents'
 $result_trees{'paragraphindent_none_first'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_none_first'}{'contents'}[7]{'args'}[0];
 $result_trees{'paragraphindent_none_first'}{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_none_first'}{'contents'}[7]{'args'}[0];
 $result_trees{'paragraphindent_none_first'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_none_first'}{'contents'}[7];
+$result_trees{'paragraphindent_none_first'}{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'paragraphindent_none_first'}{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraphindent_none_first'}{'contents'}[7]{'parent'} = $result_trees{'paragraphindent_none_first'};
 $result_trees{'paragraphindent_none_first'}{'contents'}[8]{'parent'} = $result_trees{'paragraphindent_none_first'};
 $result_trees{'paragraphindent_none_first'}{'contents'}[9]{'parent'} = $result_trees{'paragraphindent_none_first'};

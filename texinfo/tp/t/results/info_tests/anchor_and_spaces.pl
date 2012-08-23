@@ -51,7 +51,8 @@ $result_trees{'anchor_and_spaces'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -239,7 +240,8 @@ $result_trees{'anchor_and_spaces'} = {
       'extra' => {
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {
@@ -260,6 +262,7 @@ $result_trees{'anchor_and_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'par
 $result_trees{'anchor_and_spaces'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[1];
 $result_trees{'anchor_and_spaces'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_and_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'anchor_and_spaces'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'anchor_and_spaces'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'anchor_and_spaces'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'anchor_and_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[1]{'parent'} = $result_trees{'anchor_and_spaces'};
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'anchor_and_spaces'}{'contents'}[2];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'args'}[0];
@@ -290,6 +293,7 @@ $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'anchor_and_spaces'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'parent'} = $result_trees{'anchor_and_spaces'};
 
 $result_texis{'anchor_and_spaces'} = '@node Top

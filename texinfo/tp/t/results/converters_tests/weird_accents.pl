@@ -40,6 +40,7 @@ $result_trees{'weird_accents'} = {
           'extra' => {
             'encoding_name' => 'iso-8859-1',
             'perl_encoding' => 'iso-8859-1',
+            'spaces_after_command' => {},
             'text_arg' => 'ISO-8859-1'
           },
           'line_nr' => {
@@ -98,7 +99,8 @@ $result_trees{'weird_accents'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -459,7 +461,8 @@ $result_trees{'weird_accents'} = {
       'extra' => {
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {
@@ -477,6 +480,7 @@ $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'content
 $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0];
+$result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[0];
 $result_trees{'weird_accents'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'weird_accents'}{'contents'}[0];
 $result_trees{'weird_accents'}{'contents'}[0]{'parent'} = $result_trees{'weird_accents'};
@@ -487,6 +491,7 @@ $result_trees{'weird_accents'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'
 $result_trees{'weird_accents'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[1];
 $result_trees{'weird_accents'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'weird_accents'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'weird_accents'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'weird_accents'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'weird_accents'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'weird_accents'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'weird_accents'}{'contents'}[1]{'parent'} = $result_trees{'weird_accents'};
 $result_trees{'weird_accents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'weird_accents'}{'contents'}[2];
 $result_trees{'weird_accents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'args'}[0];
@@ -550,6 +555,7 @@ $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'par
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9];
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2];
 $result_trees{'weird_accents'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'weird_accents'}{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'weird_accents'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'weird_accents'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'weird_accents'}{'contents'}[2]{'parent'} = $result_trees{'weird_accents'};
 
 $result_texis{'weird_accents'} = '@documentencoding ISO-8859-1

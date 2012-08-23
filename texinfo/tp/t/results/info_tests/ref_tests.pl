@@ -534,7 +534,8 @@ $result_trees{'ref_tests'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -628,6 +629,7 @@ $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_tre
 $result_trees{'ref_tests'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'ref_tests'}{'contents'}[1];
 $result_trees{'ref_tests'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_tests'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'ref_tests'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ref_tests'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'ref_tests'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ref_tests'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_tests'}{'contents'}[1]{'parent'} = $result_trees{'ref_tests'};
 
 $result_texis{'ref_tests'} = '

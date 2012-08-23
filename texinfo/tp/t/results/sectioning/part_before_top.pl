@@ -52,7 +52,8 @@ $result_trees{'part_before_top'} = [
         'extra' => {
           'misc_content' => [
             {}
-          ]
+          ],
+          'spaces_after_command' => {}
         },
         'level' => 0,
         'line_nr' => {
@@ -103,7 +104,8 @@ $result_trees{'part_before_top'} = [
         'extra' => {
           'misc_content' => [
             {}
-          ]
+          ],
+          'spaces_after_command' => {}
         },
         'level' => 0,
         'line_nr' => {
@@ -130,6 +132,7 @@ $result_trees{'part_before_top'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'pa
 $result_trees{'part_before_top'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'part_before_top'}[0]{'contents'}[1];
 $result_trees{'part_before_top'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'part_before_top'}[0]{'contents'}[1];
 $result_trees{'part_before_top'}[0]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'part_before_top'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'part_before_top'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'part_before_top'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'part_before_top'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_before_top'}[0];
 $result_trees{'part_before_top'}[0]{'extra'}{'element_command'} = $result_trees{'part_before_top'}[0]{'contents'}[1];
 $result_trees{'part_before_top'}[0]{'extra'}{'section'} = $result_trees{'part_before_top'}[0]{'contents'}[1];
@@ -139,6 +142,7 @@ $result_trees{'part_before_top'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'pa
 $result_trees{'part_before_top'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'part_before_top'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'part_before_top'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'part_before_top'}[1]{'contents'}[0];
 $result_trees{'part_before_top'}[1]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'part_before_top'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'part_before_top'}[1]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'part_before_top'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'part_before_top'}[1]{'contents'}[0]{'parent'} = $result_trees{'part_before_top'}[1];
 $result_trees{'part_before_top'}[1]{'element_prev'} = $result_trees{'part_before_top'}[0];
 $result_trees{'part_before_top'}[1]{'extra'}{'element_command'} = $result_trees{'part_before_top'}[1]{'contents'}[0];

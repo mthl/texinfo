@@ -67,7 +67,8 @@ $result_trees{'center'} = {
         'misc_content' => [
           {},
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {},
       'parent' => {}
@@ -92,6 +93,7 @@ $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $re
 $result_trees{'center'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[1];
 $result_trees{'center'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[1]{'extra'}{'misc_content'}[1] = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'center'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'center'}{'contents'}[1]{'line_nr'} = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'center'}{'contents'}[1]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[2]{'parent'} = $result_trees{'center'};

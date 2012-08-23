@@ -107,6 +107,7 @@ $result_trees{'empty_multitable_in_itemize'} = {
                   'extra' => {
                     'command' => {},
                     'command_argument' => 'multitable',
+                    'spaces_after_command' => {},
                     'text_arg' => 'multitable'
                   },
                   'line_nr' => {
@@ -120,7 +121,8 @@ $result_trees{'empty_multitable_in_itemize'} = {
               'extra' => {
                 'end_command' => {},
                 'max_columns' => 0,
-                'prototypes' => []
+                'prototypes' => [],
+                'spaces_after_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -137,7 +139,8 @@ $result_trees{'empty_multitable_in_itemize'} = {
             }
           ],
           'extra' => {
-            'item_number' => 1
+            'item_number' => 1,
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -177,6 +180,7 @@ $result_trees{'empty_multitable_in_itemize'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'itemize',
+            'spaces_after_command' => {},
             'text_arg' => 'itemize'
           },
           'line_nr' => {
@@ -193,7 +197,8 @@ $result_trees{'empty_multitable_in_itemize'} = {
             {}
           ]
         ],
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -223,10 +228,13 @@ $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'cont
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0];
@@ -234,9 +242,11 @@ $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'};
 
 $result_texis{'empty_multitable_in_itemize'} = '@itemize a--n itemize line

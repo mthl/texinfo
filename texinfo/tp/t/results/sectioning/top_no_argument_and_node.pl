@@ -51,7 +51,8 @@ $result_trees{'top_no_argument_and_node'} = {
             'normalized' => 'start'
           }
         ],
-        'normalized' => 'start'
+        'normalized' => 'start',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -81,7 +82,8 @@ $result_trees{'top_no_argument_and_node'} = {
       'cmdname' => 'top',
       'contents' => [],
       'extra' => {
-        'misc_content' => []
+        'misc_content' => [],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {
@@ -102,10 +104,12 @@ $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[
 $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'top_no_argument_and_node'}{'contents'}[1];
 $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'top_no_argument_and_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'parent'} = $result_trees{'top_no_argument_and_node'};
 $result_trees{'top_no_argument_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'top_no_argument_and_node'}{'contents'}[2];
 $result_trees{'top_no_argument_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'top_no_argument_and_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'top_no_argument_and_node'}{'contents'}[2];
+$result_trees{'top_no_argument_and_node'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'top_no_argument_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'top_no_argument_and_node'}{'contents'}[2]{'parent'} = $result_trees{'top_no_argument_and_node'};
 
 $result_texis{'top_no_argument_and_node'} = '@node start

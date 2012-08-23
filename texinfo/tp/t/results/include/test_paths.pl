@@ -81,6 +81,7 @@ $result_trees{'test_paths'} = {
           ],
           'cmdname' => 'include',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => './inc_file.texi'
           },
           'line_nr' => {
@@ -110,6 +111,7 @@ $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2];
+$result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'test_paths'}{'contents'}[4];
 $result_trees{'test_paths'}{'contents'}[4]{'parent'} = $result_trees{'test_paths'};
 

@@ -34,6 +34,9 @@ $result_trees{'ignored_text'} = {
         }
       ],
       'cmdname' => 'node',
+      'extra' => {
+        'spaces_after_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -50,6 +53,7 @@ $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{
 $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0];
 $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0];
 $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ignored_text'}{'contents'}[1];
+$result_trees{'ignored_text'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ignored_text'}{'contents'}[1]{'parent'} = $result_trees{'ignored_text'};
 
 $result_texis{'ignored_text'} = '@node before ignore ';

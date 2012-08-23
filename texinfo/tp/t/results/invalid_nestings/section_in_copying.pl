@@ -45,6 +45,9 @@ $result_trees{'section_in_copying'} = {
               'type' => 'empty_line'
             }
           ],
+          'extra' => {
+            'spaces_after_command' => {}
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -88,7 +91,8 @@ $result_trees{'section_in_copying'} = {
       'extra' => {
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 2,
       'line_nr' => {
@@ -108,6 +112,7 @@ $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0];
+$result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'};
 $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_copying'}{'contents'}[1];
@@ -116,6 +121,7 @@ $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'pa
 $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1];
 $result_trees{'section_in_copying'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'section_in_copying'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'section_in_copying'};
 
 $result_texis{'section_in_copying'} = '@copying

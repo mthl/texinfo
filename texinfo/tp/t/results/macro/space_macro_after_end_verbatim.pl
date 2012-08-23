@@ -33,7 +33,16 @@ $result_trees{'space_macro_after_end_verbatim'} = {
         'arg_line' => ' spaces
 ',
         'macrobody' => '
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -42,15 +51,7 @@ $result_trees{'space_macro_after_end_verbatim'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
+    {},
     {
       'parent' => {},
       'text' => '
@@ -76,6 +77,16 @@ $result_trees{'space_macro_after_end_verbatim'} = {
           'type' => 'raw'
         }
       ],
+      'extra' => {
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => ' ',
+          'type' => 'empty_line_after_command'
+        }
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 5,
@@ -83,30 +94,25 @@ $result_trees{'space_macro_after_end_verbatim'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => ' ',
-      'type' => 'empty_line_after_command'
-    }
+    {}
   ],
   'type' => 'text_root'
 };
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0];
+$result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0];
+$result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
-$result_trees{'space_macro_after_end_verbatim'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0];
-$result_trees{'space_macro_after_end_verbatim'}{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
+$result_trees{'space_macro_after_end_verbatim'}{'contents'}[1] = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'extra'}{'spaces_after_command'};
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[2]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
+$result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
+$result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
-$result_trees{'space_macro_after_end_verbatim'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
-$result_trees{'space_macro_after_end_verbatim'}{'contents'}[4]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
+$result_trees{'space_macro_after_end_verbatim'}{'contents'}[4] = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'extra'}{'spaces_after_command'};
 
 $result_texis{'space_macro_after_end_verbatim'} = '@macro spaces
 

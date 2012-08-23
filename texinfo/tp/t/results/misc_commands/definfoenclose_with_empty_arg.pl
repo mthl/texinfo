@@ -46,7 +46,8 @@ $result_trees{'definfoenclose_with_empty_arg'} = {
           'headword',
           '',
           ':'
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -113,6 +114,7 @@ $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'conten
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0];
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0];
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1];
+$result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'};
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[2]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'};
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[3];

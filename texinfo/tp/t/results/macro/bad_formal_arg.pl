@@ -54,7 +54,16 @@ $result_trees{'bad_formal_arg'} = {
         },
         'invalid_syntax' => 1,
         'macrobody' => 'in bad macro
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -63,15 +72,7 @@ $result_trees{'bad_formal_arg'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
+    {},
     {
       'parent' => {},
       'text' => '
@@ -119,7 +120,16 @@ $result_trees{'bad_formal_arg'} = {
         },
         'invalid_syntax' => 1,
         'macrobody' => 'bad space
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -128,15 +138,7 @@ $result_trees{'bad_formal_arg'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
+    {},
     {
       'parent' => {},
       'text' => '
@@ -181,19 +183,20 @@ $result_trees{'bad_formal_arg'} = {
           ],
           'extra' => {
             'arg_line' => ' foo {? aaa}
-'
+',
+            'spaces_after_command' => {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            }
           },
           'parent' => {}
         },
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        {}
       ],
       'extra' => {
         'arg_line' => ' abar {:::}
@@ -206,7 +209,16 @@ $result_trees{'bad_formal_arg'} = {
 @macro foo {? aaa}
 in macro foo
 @end macro
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -215,15 +227,7 @@ in macro foo
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    }
+    {}
   ],
   'type' => 'text_root'
 };
@@ -233,30 +237,34 @@ $result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[1]{'parent'} = $result_tr
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
+$result_trees{'bad_formal_arg'}{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
+$result_trees{'bad_formal_arg'}{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[2]{'parent'} = $result_trees{'bad_formal_arg'};
+$result_trees{'bad_formal_arg'}{'contents'}[2] = $result_trees{'bad_formal_arg'}{'contents'}[1]{'extra'}{'spaces_after_command'};
 $result_trees{'bad_formal_arg'}{'contents'}[3]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'args'}[2]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
+$result_trees{'bad_formal_arg'}{'contents'}[4]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
+$result_trees{'bad_formal_arg'}{'contents'}[4]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[4]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[5]{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[4];
-$result_trees{'bad_formal_arg'}{'contents'}[5]{'parent'} = $result_trees{'bad_formal_arg'};
+$result_trees{'bad_formal_arg'}{'contents'}[5] = $result_trees{'bad_formal_arg'}{'contents'}[4]{'extra'}{'spaces_after_command'};
 $result_trees{'bad_formal_arg'}{'contents'}[6]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
+$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
+$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[2]{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
+$result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[2] = $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[1]{'extra'}{'spaces_after_command'};
+$result_trees{'bad_formal_arg'}{'contents'}[7]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
+$result_trees{'bad_formal_arg'}{'contents'}[7]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'parent'} = $result_trees{'bad_formal_arg'};
-$result_trees{'bad_formal_arg'}{'contents'}[8]{'extra'}{'command'} = $result_trees{'bad_formal_arg'}{'contents'}[7];
-$result_trees{'bad_formal_arg'}{'contents'}[8]{'parent'} = $result_trees{'bad_formal_arg'};
+$result_trees{'bad_formal_arg'}{'contents'}[8] = $result_trees{'bad_formal_arg'}{'contents'}[7]{'extra'}{'spaces_after_command'};
 
 $result_texis{'bad_formal_arg'} = '
 @macro bad  { , not_empty}

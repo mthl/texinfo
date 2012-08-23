@@ -3773,7 +3773,8 @@ $result_trees{'top_in_ref_keep_top'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -4517,6 +4518,7 @@ $result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'contents'}[5]{'contents'}[1
 $result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'top_in_ref_keep_top'}{'contents'}[1];
 $result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_in_ref_keep_top'}{'contents'}[1]{'parent'} = $result_trees{'top_in_ref_keep_top'};
 
 $result_texis{'top_in_ref_keep_top'} = '@node Top

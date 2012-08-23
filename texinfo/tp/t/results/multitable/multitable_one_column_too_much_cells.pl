@@ -123,7 +123,8 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                     }
                   ],
                   'extra' => {
-                    'cell_number' => 1
+                    'cell_number' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -165,7 +166,8 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                     }
                   ],
                   'extra' => {
-                    'cell_number' => 1
+                    'cell_number' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -261,7 +263,8 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                     }
                   ],
                   'extra' => {
-                    'cell_number' => 1
+                    'cell_number' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -321,7 +324,8 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                     }
                   ],
                   'extra' => {
-                    'cell_number' => 1
+                    'cell_number' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -372,6 +376,7 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'multitable',
+            'spaces_after_command' => {},
             'text_arg' => 'multitable'
           },
           'line_nr' => {
@@ -391,7 +396,8 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
             'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           }
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -422,12 +428,14 @@ $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[7];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0];
@@ -443,6 +451,7 @@ $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[7];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0];
@@ -452,6 +461,7 @@ $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[3];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0];
@@ -461,10 +471,12 @@ $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'args'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'};
 
 $result_texis{'multitable_one_column_too_much_cells'} = '@multitable {a}

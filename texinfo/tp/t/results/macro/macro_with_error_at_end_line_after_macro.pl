@@ -41,7 +41,16 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
           'string' => 0
         },
         'macrobody' => '@center
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -50,15 +59,7 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
+    {},
     {
       'parent' => {},
       'text' => '
@@ -85,7 +86,8 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
       ],
       'cmdname' => 'center',
       'extra' => {
-        'missing_argument' => 1
+        'missing_argument' => 1,
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -101,13 +103,15 @@ $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'args'}
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0];
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0];
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0];
+$result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0];
+$result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
-$result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0];
-$result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[1]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
+$result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[1] = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'extra'}{'spaces_after_command'};
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[2]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3];
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0];
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3];
+$result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
 
 $result_texis{'macro_with_error_at_end_line_after_macro'} = '@macro witherror{string}

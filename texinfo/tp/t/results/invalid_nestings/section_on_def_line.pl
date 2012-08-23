@@ -46,6 +46,9 @@ $result_trees{'section_on_def_line'} = {
               'type' => 'def_line'
             }
           ],
+          'extra' => {
+            'spaces_after_command' => {}
+          },
           'line_nr' => {},
           'parent' => {}
         }
@@ -110,7 +113,8 @@ $result_trees{'section_on_def_line'} = {
         'invalid_nesting' => 1,
         'misc_content' => [
           {}
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'level' => 2,
       'line_nr' => {},
@@ -125,6 +129,7 @@ $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0];
+$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[0]{'parent'} = $result_trees{'section_on_def_line'};
@@ -138,6 +143,7 @@ $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0
 $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'section_on_def_line'}{'contents'}[1];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'section_on_def_line'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_on_def_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_on_def_line'}{'contents'}[1]{'line_nr'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'section_on_def_line'}{'contents'}[1]{'parent'} = $result_trees{'section_on_def_line'};
 

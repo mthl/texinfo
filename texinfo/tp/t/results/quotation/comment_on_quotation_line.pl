@@ -88,6 +88,7 @@ $result_trees{'comment_on_quotation_line'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'quotation',
+            'spaces_after_command' => {},
             'text_arg' => 'quotation'
           },
           'line_nr' => {
@@ -105,7 +106,8 @@ $result_trees{'comment_on_quotation_line'} = {
             {}
           ]
         ],
-        'end_command' => {}
+        'end_command' => {},
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -132,10 +134,12 @@ $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0];
+$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][1] = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'};
 
 $result_texis{'comment_on_quotation_line'} = '@quotation truc@ @c quotation 

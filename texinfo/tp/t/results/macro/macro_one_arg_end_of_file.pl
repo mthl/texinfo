@@ -41,7 +41,16 @@ $result_trees{'macro_one_arg_end_of_file'} = {
           'arg' => 0
         },
         'macrobody' => 'Arg \\arg\\.
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -50,15 +59,7 @@ $result_trees{'macro_one_arg_end_of_file'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
+    {},
     {
       'parent' => {},
       'text' => '
@@ -82,9 +83,10 @@ $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0]{'args'}[0]{'parent'} =
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0];
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0];
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0];
+$result_trees{'macro_one_arg_end_of_file'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0];
+$result_trees{'macro_one_arg_end_of_file'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_one_arg_end_of_file'};
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0]{'parent'} = $result_trees{'macro_one_arg_end_of_file'};
-$result_trees{'macro_one_arg_end_of_file'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0];
-$result_trees{'macro_one_arg_end_of_file'}{'contents'}[1]{'parent'} = $result_trees{'macro_one_arg_end_of_file'};
+$result_trees{'macro_one_arg_end_of_file'}{'contents'}[1] = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[0]{'extra'}{'spaces_after_command'};
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[2]{'parent'} = $result_trees{'macro_one_arg_end_of_file'};
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3];
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3]{'parent'} = $result_trees{'macro_one_arg_end_of_file'};

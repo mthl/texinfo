@@ -74,6 +74,9 @@ $result_trees{'unclosed_verb_on_section_line'} = {
         }
       ],
       'cmdname' => 'section',
+      'extra' => {
+        'spaces_after_command' => {}
+      },
       'level' => 2,
       'line_nr' => {},
       'number' => 1,
@@ -92,6 +95,7 @@ $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'conten
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2];
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1];
+$result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'line_nr'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'parent'} = $result_trees{'unclosed_verb_on_section_line'};
 
@@ -112,6 +116,7 @@ $result_sectioning{'unclosed_verb_on_section_line'} = {
   'section_childs' => [
     {
       'cmdname' => 'section',
+      'extra' => {},
       'level' => 2,
       'number' => 1,
       'section_up' => {}

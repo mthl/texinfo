@@ -51,7 +51,8 @@ $result_trees{'top_no_argument_and_content'} = {
         }
       ],
       'extra' => {
-        'misc_content' => []
+        'misc_content' => [],
+        'spaces_after_command' => {}
       },
       'level' => 0,
       'line_nr' => {
@@ -71,6 +72,7 @@ $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'args'}[0]{'parent'}
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1];
+$result_trees{'top_no_argument_and_content'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'parent'} = $result_trees{'top_no_argument_and_content'};
 
 $result_texis{'top_no_argument_and_content'} = '@top

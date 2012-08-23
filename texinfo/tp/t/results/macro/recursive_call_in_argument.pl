@@ -41,7 +41,16 @@ $result_trees{'recursive_call_in_argument'} = {
           'arg' => 0
         },
         'macrobody' => 'a
-'
+',
+        'spaces_after_command' => {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -50,15 +59,7 @@ $result_trees{'recursive_call_in_argument'} = {
       },
       'parent' => {}
     },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
+    {},
     {
       'parent' => {},
       'text' => '
@@ -83,9 +84,10 @@ $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'args'}[0]{'parent'} 
 $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'recursive_call_in_argument'}{'contents'}[0];
 $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_argument'}{'contents'}[0];
 $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'recursive_call_in_argument'}{'contents'}[0];
+$result_trees{'recursive_call_in_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'recursive_call_in_argument'}{'contents'}[0];
+$result_trees{'recursive_call_in_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'recursive_call_in_argument'};
 $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_argument'};
-$result_trees{'recursive_call_in_argument'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'recursive_call_in_argument'}{'contents'}[0];
-$result_trees{'recursive_call_in_argument'}{'contents'}[1]{'parent'} = $result_trees{'recursive_call_in_argument'};
+$result_trees{'recursive_call_in_argument'}{'contents'}[1] = $result_trees{'recursive_call_in_argument'}{'contents'}[0]{'extra'}{'spaces_after_command'};
 $result_trees{'recursive_call_in_argument'}{'contents'}[2]{'parent'} = $result_trees{'recursive_call_in_argument'};
 $result_trees{'recursive_call_in_argument'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'recursive_call_in_argument'}{'contents'}[3];
 $result_trees{'recursive_call_in_argument'}{'contents'}[3]{'parent'} = $result_trees{'recursive_call_in_argument'};

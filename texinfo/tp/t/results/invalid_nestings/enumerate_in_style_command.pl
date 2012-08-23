@@ -89,7 +89,8 @@ $result_trees{'enumerate_in_style_command'} = {
             }
           ],
           'extra' => {
-            'item_number' => 1
+            'item_number' => 1,
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -129,6 +130,7 @@ $result_trees{'enumerate_in_style_command'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'enumerate',
+            'spaces_after_command' => {},
             'text_arg' => 'enumerate'
           },
           'line_nr' => {
@@ -147,7 +149,8 @@ $result_trees{'enumerate_in_style_command'} = {
         ],
         'end_command' => {},
         'enumerate_specification' => '1',
-        'invalid_nesting' => 1
+        'invalid_nesting' => 1,
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -172,6 +175,7 @@ $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'conte
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[1];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0];
+$result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0];
@@ -179,9 +183,11 @@ $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'extra'}{'command'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1];
+$result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1];
+$result_trees{'enumerate_in_style_command'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_style_command'};
 
 $result_texis{'enumerate_in_style_command'} = '@code{

@@ -100,7 +100,8 @@ $result_trees{'bad_tab_nesting'} = {
                     }
                   ],
                   'extra' => {
-                    'cell_number' => 1
+                    'cell_number' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -134,7 +135,8 @@ $result_trees{'bad_tab_nesting'} = {
                   ],
                   'extra' => {
                     'cell_number' => 2,
-                    'invalid_nesting' => 1
+                    'invalid_nesting' => 1,
+                    'spaces_after_command' => {}
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -181,6 +183,7 @@ $result_trees{'bad_tab_nesting'} = {
           'extra' => {
             'command' => {},
             'command_argument' => 'multitable',
+            'spaces_after_command' => {},
             'text_arg' => 'multitable'
           },
           'line_nr' => {
@@ -205,7 +208,8 @@ $result_trees{'bad_tab_nesting'} = {
             'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           }
-        ]
+        ],
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -232,11 +236,13 @@ $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'c
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[0];
@@ -247,12 +253,14 @@ $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'conte
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0];
+$result_trees{'bad_tab_nesting'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'bad_tab_nesting'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'bad_tab_nesting'}{'contents'}[0]{'parent'} = $result_trees{'bad_tab_nesting'};
 
 $result_texis{'bad_tab_nesting'} = '@multitable {truc} {bidule}

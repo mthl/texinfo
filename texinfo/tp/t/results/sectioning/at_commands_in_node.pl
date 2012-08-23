@@ -236,7 +236,8 @@ $result_trees{'at_commands_in_node'} = {
             'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
           }
         ],
-        'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+        'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1',
+        'spaces_after_command' => {}
       },
       'line_nr' => {},
       'parent' => {}
@@ -299,6 +300,7 @@ $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'node_content'}[11]
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'node_content'}[12] = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[13];
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'node_content'}[13] = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[14];
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'line_nr'} = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'parent'} = $result_trees{'at_commands_in_node'};
 

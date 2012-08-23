@@ -51,7 +51,8 @@ $result_trees{'node_no_section'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -71,6 +72,7 @@ $result_trees{'node_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'paren
 $result_trees{'node_no_section'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_no_section'}{'contents'}[1];
 $result_trees{'node_no_section'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'node_no_section'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_no_section'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'node_no_section'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'node_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_no_section'}{'contents'}[1]{'parent'} = $result_trees{'node_no_section'};
 
 $result_texis{'node_no_section'} = '@node Top

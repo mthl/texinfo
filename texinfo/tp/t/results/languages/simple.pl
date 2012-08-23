@@ -38,6 +38,7 @@ $result_trees{'simple'} = {
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
+            'spaces_after_command' => {},
             'text_arg' => 'fr'
           },
           'line_nr' => {
@@ -253,6 +254,7 @@ $result_trees{'simple'} = {
               'extra' => {
                 'command' => {},
                 'command_argument' => 'defivar',
+                'spaces_after_command' => {},
                 'text_arg' => 'defivar'
               },
               'line_nr' => {
@@ -264,7 +266,8 @@ $result_trees{'simple'} = {
             }
           ],
           'extra' => {
-            'end_command' => {}
+            'end_command' => {},
+            'spaces_after_command' => {}
           },
           'line_nr' => {},
           'parent' => {}
@@ -280,7 +283,8 @@ $result_trees{'simple'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -297,6 +301,7 @@ $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{
 $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[0];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
@@ -328,12 +333,15 @@ $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'command'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1];
+$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
+$result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'simple'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[1];
 $result_trees{'simple'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'simple'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'simple'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'simple'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[1]{'parent'} = $result_trees{'simple'};
 
 $result_texis{'simple'} = '@documentlanguage fr

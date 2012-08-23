@@ -86,7 +86,8 @@ $result_trees{'image_not_found'} = {
             'normalized' => 'Top'
           }
         ],
-        'normalized' => 'Top'
+        'normalized' => 'Top',
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -111,6 +112,7 @@ $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[0]{'parent'} = $resu
 $result_trees{'image_not_found'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_not_found'}{'contents'}[1];
 $result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'image_not_found'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'image_not_found'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_not_found'}{'contents'}[1]{'parent'} = $result_trees{'image_not_found'};
 
 $result_texis{'image_not_found'} = '@node Top
