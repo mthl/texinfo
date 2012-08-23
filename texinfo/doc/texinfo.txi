@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.459 2012-08-13 21:35:51 karl Exp $
+@c $Id: texinfo.txi,v 1.460 2012-08-23 18:53:24 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17996,19 +17996,15 @@ For information on installing the Info file in the Info system,
 @subsection @code{makeinfo} Advantages
 
 The @code{makeinfo} utility creates an Info file from a Texinfo source
-file more quickly than either of the Emacs formatting commands and
-provides better error messages.  We recommend it.  @code{makeinfo} is a
-C program that is independent of Emacs.  You do not need to run Emacs to
-use @code{makeinfo}, which means you can use @code{makeinfo} on machines
-that are too small to run Emacs.  You can run @code{makeinfo} in any one
-of three ways: from an operating system shell, from a shell inside
-Emacs, or by typing the @kbd{C-c C-m C-r} or the @kbd{C-c C-m C-b}
-command in Texinfo mode in Emacs.
+providing better error messages than either of the Emacs formatting
+commands.  We recommend it.  The @code{makeinfo} program is
+independent of Emacs.  You can run @code{makeinfo} in any of three
+ways: from an operating system shell, from a shell inside Emacs, or by
+typing the @kbd{C-c C-m C-r} or the @kbd{C-c C-m C-b} command in
+Texinfo mode in Emacs.
 
 The @code{texinfo-format-region} and the @code{texinfo-format-buffer}
-commands are useful if you cannot run @code{makeinfo}.  Also, in some
-circumstances, they format short regions or buffers more quickly than
-@code{makeinfo}.
+commands may be useful if you cannot run @code{makeinfo}.
 
 
 @node makeinfo in Emacs
@@ -18139,8 +18135,9 @@ The @code{texinfo-format-region} and @code{texinfo-format-buffer}
 commands provide you with some error checking, and other functions can
 provide you with further help in finding formatting errors.  These
 procedures are described in an appendix; see @ref{Catching Mistakes}.
-However, the @code{makeinfo} program is often faster and
-provides better error checking (@pxref{makeinfo in Emacs}).
+However, the @code{makeinfo} program provides better error checking
+(@pxref{makeinfo in Emacs}).
+
 
 @node Batch Formatting
 @subsection Batch Formatting
@@ -18246,11 +18243,11 @@ after the line that says @samp{Indirect:}.  The tag table is listed after
 the line that says @samp{Tag table:}.
 
 In the list of indirect files, the number following the file name
-records the cumulative number of bytes in the preceding indirect files,
-not counting the file list itself, the tag table, or the permissions
-text in each file.  In the tag table, the number following the node name
-records the location of the beginning of the node, in bytes from the
-beginning of the (unsplit) output.
+records the cumulative number of bytes in the preceding indirect
+files, not counting the file list itself, the tag table, or any
+permissions text in the first file.  In the tag table, the number
+following the node name records the location of the beginning of the
+node, in bytes from the beginning of the (unsplit) output.
 
 If you are using @code{texinfo-format-buffer} to create Info files,
 you may want to run the @code{Info-validate} command.  (The
@@ -18865,7 +18862,9 @@ generated for the @code{@@multitable} command (@pxref{Multi-column
 Tables}), but they should degrade reasonably in browsers without table
 support; 2)@tie{}The HTML@tie{}4 @samp{lang} attribute on the
 @samp{<html>} attribute is used; 3)@tie{} Entities that are not in the
-HTML@tie{}3.2 standard are also used.
+HTML@tie{}3.2 standard are also used. 4)@tie{} CSS is used
+(@pxref{HTML CSS}). 5)@tie{} A few HTML@tie{}4 elements are used
+(@code{thead}, @code{abbr}, @code{acronym}).
 
 Using @samp{--init-file=html32.pm} produces strict HTML@tie{}3.2
 output (@pxref{Invoking texi2any}).
@@ -18880,17 +18879,21 @@ has browser portability problems as a bug (@pxref{Reporting Bugs}).
 @cindex HTML output, split
 
 When splitting output at nodes (which is the default),
-@command{makeinfo} writes HTML output into essentially one output file
+@command{makeinfo} writes HTML output into (basically) one output file
 per Texinfo source @code{@@node}.
 
-The output file name is the node name with special characters replaced
-by @samp{-}'s, so that it can work as a filename.  In the unusual case
-of two different nodes having the same name after this treatment, they
-are written consecutively to the same file, with HTML anchors so each
-can be referred to independently.  If @command{makeinfo} is run on a
-system which does not distinguish case in filenames, nodes which are
-the same except for case (e.g., @samp{index} and @samp{Index}) will
-also be folded into the same output file with anchors.
+Each output file name is the node name with spaces replaced by
+@samp{-}'s and special characters changed to @samp{_} followed by
+their code point in hex (@pxref{HTML Xref}).  This is to make it
+portable and easy to use as a filename.  In the unusual case of two
+different nodes having the same name after this treatment, they are
+written consecutively to the same file, with HTML anchors so each can
+be referred to independently.
+
+If @command{makeinfo} is run on a system which does not distinguish
+case in file names, nodes which are the same except for case (e.g.,
+@samp{index} and @samp{Index}) will also be folded into the same
+output file with anchors.  You can also pretend xxxx.
 
 It is also possible to split at chapters or sections with
 @option{--split} (@pxref{Invoking texi2any}).  In that case, the file
@@ -18942,8 +18945,8 @@ influencing the display of HTML documents: see
 @uref{http://www.w3.org/Style/CSS/}.
 
 By default, @command{makeinfo} includes a few simple CSS commands to
-better implement the appearance of some of the environments.  Here
-are two of them, as an example:
+better implement the appearance of some of the environments.  Here are
+two of them, as an example:
 
 @example
 pre.display @{ font-family:inherit @}
@@ -18953,9 +18956,9 @@ pre.smalldisplay @{ font-family:inherit; font-size:smaller @}
 A full explanation of CSS is (far) beyond this manual; please see the
 reference above.  In brief, however, the above tells the web browser
 to use a `smaller' font size for @code{@@smalldisplay} text, and to
-use the `inherited' font (generally a regular roman typeface) for both
-@code{@@smalldisplay} and @code{@@display}.  By default, the HTML
-@samp{<pre>} command uses a monospaced font.
+use the same font as the main document for both @code{@@smalldisplay}
+and @code{@@display}.  By default, the HTML @samp{<pre>} command uses
+a monospaced font.
 
 You can influence the CSS in the HTML output with two
 @command{makeinfo} options: @option{--css-include=@var{file}} and
@@ -19081,9 +19084,8 @@ http://@var{host}/@var{dir}/@var{file}.html#@var{target}
 
 The information to construct a link comes from the node name and
 manual name in the cross reference command in the Texinfo source
-(@pxref{Cross References}), and from @dfn{external information}, which
-is currently simply hardwired.  In the future, it may come from an
-external data file.
+(@pxref{Cross References}), and from @dfn{external information}
+(@pxref{HTML Xref Configuration}).
 
 We now consider each part in turn.
 
@@ -19121,11 +19123,6 @@ the directory is @file{./} (or just the empty string), and the file is
 
 @end itemize
 
-One exception: the algorithm for node name expansion prefixes the
-string @samp{g_t} when the node name begins with a non-letter.  This
-kludge (due to XHTML rules) is not necessary for filenames, and is
-therefore omitted.
-
 @vindex BASEFILENAME_LENGTH
 Another rule, that only holds for filenames, is that base filenames
 are truncated to 245 characters, to allow for an extension to be
@@ -19147,13 +19144,14 @@ Whether the present manual is split or mono is determined by user
 option; @command{makeinfo} defaults to split, with the
 @option{--no-split} option overriding this.
 
-Whether the referent manual is split or mono is another bit of the
-external information.  For now, @command{makeinfo} simply assumes the
-referent manual is the same as the present manual.
+Whether the referent manual is split or mono, however, is another bit
+of the external information (@pxref{HTML Xref Configuration}).  By
+default, @command{makeinfo} uses the same form of the referent manual
+as the present manual.
 
-There can be a mismatch between the format of the referent manual that
-the generating software assumes, and the format it's actually present
-in.  @xref{HTML Xref Mismatch}.
+Thus, there can be a mismatch between the format of the referent
+manual that the generating software assumes, and the format it's
+actually present in.  @xref{HTML Xref Mismatch}.
 
 
 @node HTML Xref Node Name Expansion
@@ -19395,10 +19393,10 @@ web.
 @cindex Mismatched HTML cross reference source and target
 
 As mentioned earlier (@pxref{HTML Xref Link Basics}), the generating
-software has to guess whether a given manual being cross referenced is
-available in split or monolithic form---and, inevitably, it might
-guess wrong.  However, when the @emph{referent} manual is generated,
-it is possible to handle at least some mismatches.
+software may need to guess whether a given manual being cross
+referenced is available in split or monolithic form---and, inevitably,
+it might guess wrong.  However, when the @emph{referent} manual is
+generated, it is possible to handle at least some mismatches.
 
 In the case where we assume the referent is split, but it is actually
 available in mono, the only recourse would be to generate a
@@ -19536,7 +19534,7 @@ order for each style:
 node    @result{} node,    section, chapter, mono
 section @result{} section, chapter, node,    mono
 chapter @result{} chapter, section, node,    mono
-mono    @result{} mono,    chapter, section, split
+mono    @result{} mono,    chapter, section, node
 @end smallexample
 
 @opindex --node-files@r{, and HTML cross references}
@@ -19606,28 +19604,34 @@ difference between the two approaches.
 @node texi2any Output Customization
 @chapter @command{texi2any} Output Customization
 
-This chapter describes how to customize 
-@c many 
-some aspects of the
+@cartouche
+@quotation Warning
+The information displayed here is likely to change in the future.
+In particular, the functions and their behavior may change in any
+Texinfo release. 
+@end quotation
+@end cartouche
+
+This chapter describes how to customize aspects of the
 @command{texi2any} HTML output.  Although some of the features here
 can technically be used with other output formats, it's not especially
 useful to do so, so we'll write the documentation as if HTML were the
-target format.  Besides, most of the customizations are only available 
-for HTML.
+target format.  Most of the customizations are only available for
+HTML.
 
 This part of the manual and the corresponding interfaces are being
-stabilized, and the only parts described are those that should not 
-change in the future.  Many other aspects of the formatted HTML may already
-be customized, but the interfaces will change and will be documented
-as soon as they are stable.
+stabilized, and the only parts described are those that should not
+change in the future.  Many other aspects of the formatted HTML may
+already be customized, but the interfaces will change and will be
+documented as soon as they are stable.
 
-The HTML converter uses a Texinfo perl tree as input and converts
-it to HTML@.  The Texinfo perl tree describes a Texinfo document in a
-structured way which makes easy going through the tree and format
-@@-commands and other containers.  The code that is used to go 
-through the tree cannot be customized, but the conversion of tree
-elements can be fully customized.  The tree structure and the customization
-of Texinfo perl tree elements will be described in future versions of the
+The HTML converter takes a Texinfo Perl tree as input and transforms
+it to HTML@.  The Texinfo Perl tree describes a Texinfo document in a
+structured way which makes it easy to go through the tree and format
+@@-commands and other containers.  The code that is used to go through
+the tree cannot be customized, but the conversion of tree elements can
+be fully customized.  The tree structure and the customization of
+Texinfo Perl tree elements will be described in future versions of the
 manual.
 
 @menu
@@ -19754,8 +19758,8 @@ name clash.
 The basic operations on configuration variables are to set and
 retrieve their values.
 
-To set the value of a configuration variable from an initialization file,
-you should use @code{set_from_init_file}:
+To set the value of a configuration variable from an initialization
+file, you should use @code{set_from_init_file}:
 
 @defun set_from_init_file ($variable_name, $variable_value)
 @var{$variable_name} is a string containing the name of the variable
@@ -19810,47 +19814,48 @@ variables associated with command line options, see @ref{Configuration
 Variables and Options}.
 
 
-@ignore
-The following is still true, but right now nothing uses these contexts
-in init files.
-
-@node Init File Expansion Contexts
-@subsection Init File Expansion Contexts: Normal, Preformatted, String, Math
-
-@cindex Init file expansion contexts
-@cindex Expansion contexts, for init files
-@cindex Contexts for expansion in init files
-
-There are four expansion contexts of interest:
-
-@table @emph 
-@item normal context
-@cindex Normal expansion context
-Paragraphs, index entries, tables, @enddots{}
-
-@item preformatted context
-@cindex Preformatted expansion context
-When spaces between words are kept.  For example, within the
-@code{@@display} (@pxref{display,, @code{@@display}}) and
-@code{@@example} environments (@pxref{example,, @code{@@example}}), and
-in menu comments.  The preformatted regions
-are usually rendered using @code{<pre>} elements in HTML.
-
-@c oldapi (@pxref{Menu formatting})
-
-@item string context
-@cindex String expansion context
-When rendering strings without formatting elements, for example in
-comments (@pxref{Comments}) and titles.  In the string context, there
-is limited formatting, typically without any element when producing HTML,
-so the value can be used in an attribute.
-
-@item math context
-@cindex Math expansion context
-Math (@pxref{math,, @code{@@math}}).
-
-@end table
+ @ignore
+@c The following is still true, but right now nothing uses these contexts
+@c in init files.
+@c 
+@c @node Init File Expansion Contexts
+@c @subsection Init File Expansion Contexts: Normal, Preformatted, String, Math
+@c 
+@c @cindex Init file expansion contexts
+@c @cindex Expansion contexts, for init files
+@c @cindex Contexts for expansion in init files
+@c 
+@c There are four expansion contexts of interest:
+@c 
+@c @table @emph 
+@c @item normal context
+@c @cindex Normal expansion context
+@c Paragraphs, index entries, tables, @enddots{}
+@c 
+@c @item preformatted context
+@c @cindex Preformatted expansion context
+@c When spaces between words are kept.  For example, within the
+@c @code{@@display} (@pxref{display,, @code{@@display}}) and
+@c @code{@@example} environments (@pxref{example,, @code{@@example}}), and
+@c in menu comments.  The preformatted regions
+@c are usually rendered using @code{<pre>} elements in HTML.
+@c 
+@c @c oldapi (@pxref{Menu formatting})
+@c 
+@c @item string context
+@c @cindex String expansion context
+@c When rendering strings without formatting elements, for example in
+@c comments (@pxref{Comments}) and titles.  In the string context, there
+@c is limited formatting, typically without any element when producing HTML,
+@c so the value can be used in an attribute.
+@c 
+@c @item math context
+@c @cindex Math expansion context
+@c Math (@pxref{math,, @code{@@math}}).
+@c 
+@c @end table
 @end ignore
+
 
 @node Internationalization of Strings
 @subsection Internationalization of Strings in the Output Document
@@ -21956,7 +21961,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.459 2012-08-13 21:35:51 karl Exp $
+$Id: texinfo.txi,v 1.460 2012-08-23 18:53:24 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
