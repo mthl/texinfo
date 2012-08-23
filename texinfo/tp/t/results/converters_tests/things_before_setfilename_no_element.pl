@@ -1605,6 +1605,7 @@ $result_converted_errors{'html'}->{'things_before_setfilename_no_element'} = [
 $result_converted{'xml'}->{'things_before_setfilename_no_element'} = '<preamble>\\input texinfo
 
 </preamble><anchor name="An-anchor">An anchor</anchor>
+
 <para>Ref to the anchor:
 <ref><xrefnodename>An anchor</xrefnodename></ref>
 </para>
@@ -1614,6 +1615,7 @@ $result_converted{'xml'}->{'things_before_setfilename_no_element'} = '<preamble>
 <para><footnote><para>In footnote.
 </para>
 <anchor name="Anchor-in-footnote">Anchor in footnote</anchor>
+
 <para>Ref to main text anchor
 <ref><xrefnodename>An anchor</xrefnodename></ref>
 </para></footnote>

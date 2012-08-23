@@ -500,7 +500,7 @@ $result_converted{'xml'}->{'item_container'} = '
 
 <itemize commandarg="bullet"><itemprepend>&bullet;</itemprepend>
 <listitem><prepend>&bullet;</prepend>
-<para>b&textndash;ullet
+ <para>b&textndash;ullet
 </para></listitem></itemize>
 
 <itemize commandarg="bullet">

@@ -1312,7 +1312,9 @@ sub _convert($$)
     #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
     if ($formatter) {
-      print STDERR "  Container:($formatter->{'font_type_stack'}->[-1]->{'monospace'},$formatter->{'upper_case'},$formatter->{'frenchspacing_stack'}->[-1]) ";
+      my $monospace = $formatter->{'font_type_stack'}->[-1]->{'monospace'};
+      $monospace = 'UNDEF' if (!defined($monospace));
+      print STDERR "  Container:($monospace,$formatter->{'upper_case'},$formatter->{'frenchspacing_stack'}->[-1]) ";
       $formatter->{'container'}->dump();
     }
   }

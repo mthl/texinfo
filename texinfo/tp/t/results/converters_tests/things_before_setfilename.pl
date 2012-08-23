@@ -1782,6 +1782,7 @@ ul.no-bullet {list-style: none}
 $result_converted{'xml'}->{'things_before_setfilename'} = '<preamble>\\input texinfo
 
 </preamble><anchor name="An-anchor">An anchor</anchor>
+
 <para>Ref to the anchor:
 <ref><xrefnodename>An anchor</xrefnodename></ref>
 </para>
@@ -1791,6 +1792,7 @@ $result_converted{'xml'}->{'things_before_setfilename'} = '<preamble>\\input tex
 <para><footnote><para>In footnote.
 </para>
 <anchor name="Anchor-in-footnote">Anchor in footnote</anchor>
+
 <para>Ref to main text anchor
 <ref><xrefnodename>An anchor</xrefnodename></ref>
 </para></footnote>

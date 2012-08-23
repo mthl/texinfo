@@ -3210,6 +3210,7 @@ Menu comment
 </pre></menudescription></menuentry></menu>
 
 <anchor name="anchor">anchor</anchor>
+
 <node name="subsubsection-_0060_0060simple_002ddouble_002d_002d"><nodename>subsubsection ``simple-double--</nodename><nodenext automatic="on">subsubsection three---four----''</nodenext><nodeup automatic="on">subsection</nodeup></node>
 <subsubsection><sectiontitle>subsubsection &textldquo;simple-double&textndash;</sectiontitle>
 

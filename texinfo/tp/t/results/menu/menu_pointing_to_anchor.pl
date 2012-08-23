@@ -550,6 +550,7 @@ $result_converted{'xml'}->{'menu_pointing_to_anchor'} = '<node name="Top"><noden
 <para>Text
 </para>
 <anchor name="An-anchor">An anchor</anchor>
+
 <menu>
 <menuentry><menunode>An anchor</menunode><menudescription><pre xml:space="preserve">menu entry pointing to the anchor.
 </pre></menudescription></menuentry></menu>

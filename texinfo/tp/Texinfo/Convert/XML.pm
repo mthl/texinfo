@@ -209,13 +209,14 @@ my %defcommand_name_type = (
  'deftp'     => 'datatype',
 );
 
+# FIXME none should be ignored
 my %ignored_types;
 foreach my $type (#'empty_line_after_command',
             'empty_spaces_after_command', 
-            'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
-            'empty_spaces_after_close_brace', 
+            'empty_spaces_before_argument', 
+            #'empty_spaces_before_paragraph',
+            #'empty_spaces_after_close_brace', 
             'empty_space_at_end_def_bracketed',
-            # FIXME keep those? Information is lost...
             'menu_entry_separator',
             'menu_entry_leading_text',
   ) {
