@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.460 2012-08-23 18:53:24 karl Exp $
+@c $Id: texinfo.txi,v 1.461 2012-08-24 18:17:47 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -606,15 +606,15 @@ Formatting and Printing Hardcopy
 * Invoking texi2any::        Running the translator from a shell.
 * texi2any Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
-* Configuration Variables::  Configuring @command{texi2any}.
+* Customization Variables::  Configuring @command{texi2any}.
 * texi2html::                An ancestor of @command{texi2any}.
 
-Configuration Variables
+Customization Variables
 
-* Behavior: Configuration Variables for Program Behavior.
-* Commands: Configuration Variables for @@-Commands.
-* Options:  Configuration Variables and Options.
-* Other:    Other Configuration Variables.
+* Behavior: Customization Variables for Program Behavior.
+* Commands: Customization Variables for @@-Commands.
+* Options:  Customization Variables and Options.
+* Other:    Other Customization Variables.
 
 Creating and Installing Info Files
 
@@ -667,7 +667,7 @@ HTML Cross References
 Init File Basics
 
 * Init File Namespaces:: @code{Texinfo::Config}.
-* Setting and Getting Configuration Variables::
+* Setting and Getting Customization Variables::
 * Internationalization of Strings::
 
 @@-Command List
@@ -15040,7 +15040,7 @@ such lines.
 The @command{makeinfo} program recognizes these lines by default,
 except within @code{@@verbatim} blocks (@pxref{verbatim,,
 @code{@@verbatim}}.  Their recognition can be turned off completely
-with @code{CPP_LINE_DIRECTIVES} (@pxref{Other Configuration
+with @code{CPP_LINE_DIRECTIVES} (@pxref{Other Customization
 Variables}), though there is normally no reason to do so.
 
 For those few programs (M4, CPP, Texinfo) which need to document
@@ -16505,7 +16505,7 @@ The rest of this chapter goes into the details.
 * Invoking texi2any::        Running the translator from a shell.
 * texi2any Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
-* Configuration Variables::  Configuring @command{texi2any}.
+* Customization Variables::  Configuring @command{texi2any}.
 * texi2html::                An ancestor of @command{texi2any}.
 @end menu
 
@@ -16985,14 +16985,14 @@ to standard output by default; this can be overridden with @option{-o}.
 Generate a PostScript file using @command{texi2dvi --ps}, rather
 than Info (@pxref{texi2any Printed Output}).
 
-@item --set-init-variable @var{var}=@var{value}
-@opindex --set-init-variable @var{var}=@var{value}
-Set the configuration variable @var{var} to @var{value}.  The @code{=}
+@item --set-customization-variable @var{var}=@var{value}
+@opindex --set-customization-variable @var{var}=@var{value}
+Set the customization variable @var{var} to @var{value}.  The @code{=}
 is optional, but both @var{var} and @var{value} must be quoted to the
 shell as necessary so the result is a single word.  Many aspects of
 @command{texi2any} behavior and output may be controlled by
-configuration variables, beyond what can be set in the document by
-@@-commands and with other command line switches.  @xref{Configuration
+customization variables, beyond what can be set in the document by
+@@-commands and with other command line switches.  @xref{Customization
 Variables}.
 
 @item --split=@var{how}
@@ -17009,8 +17009,8 @@ by default each output file contains one node (@pxref{Generating
 HTML}).  @option{--no-split} suppresses this splitting of the output.
 
 Alternatively, @option{--split=@var{how}} may be used to specify at
-which level the resulting document should be split.  The possible
-values for @var{how} are:
+which level the HTML output should be split.  The possible values for
+@var{how} are:
 
 @table @samp
 @item chapter
@@ -17088,16 +17088,16 @@ requested.
 
 The output format options for this are @option{--dvi},
 @option{--dvipdf}, @option{--pdf}, and @option{--pdf}.  @xref{Format
-with texi2dvi}, for more details on @command{texi2dvi} operation.  In
-addition, the @option{--verbose}, @option{--silent}, and
-@option{--quiet} options are passed on if specified; the @option{-I}
-and @option{-o} options are likewise passed on with their arguments,
-and @option{--debug} without its argument.
+with texi2dvi}, for more details on these options and general
+@command{texi2dvi} operation.  In addition, the @option{--verbose},
+@option{--silent}, and @option{--quiet} options are passed on if
+specified; the @option{-I} and @option{-o} options are likewise passed
+on with their arguments, and @option{--debug} without its argument.
 
 The only option remaining that is related to the @command{texi2dvi}
 invocation is @option{--Xopt}.  Here, just the argument is passed on
-and multiple @option{--Xopt} options accumulate, providing a way to
-construct an arbitrary command line for @command{texi2dvi}.  For
+and multiple @option{--Xopt} options accumulate.  This provides a way
+to construct an arbitrary command line for @command{texi2dvi}.  For
 example, running
 
 @example
@@ -17114,13 +17114,14 @@ Although one might wish that other options to @command{texi2any} would
 take effect, they don't.  For example, running @samp{texi2any
 --no-number-sections --dvi foo.texi} still results in a DVI file with
 numbered sections.  (Perhaps this could be improved in the future, if
-requests are received.)  @command{texi2any} also does not generate
-Info output or perform any other actions when it invokes
-@command{texi2dvi}.
+requests are received.)
 
 The actual name of the command that is invoked is specified by the
-@code{TEXI2DVI} configuration variable (@pxref{Other Configuration
+@code{TEXI2DVI} customization variable (@pxref{Other Customization
 Variables}).  As you might guess, the default is @samp{texi2dvi}.
+
+@command{texi2any} itself does not generate any output when it invokes
+@command{texi2dvi}.
 
 
 @node Pointer Validation
@@ -17131,9 +17132,11 @@ Variables}).  As you might guess, the default is @samp{texi2dvi}.
 If you do not suppress pointer validation with the
 @samp{--no-validate} option or the @code{@@novalidate} command in the
 source file (@pxref{Use @TeX{}}), @code{makeinfo} will check the
-validity of the Texinfo file.  Mostly, this means ensuring that nodes
-you have referenced really exist.  Here is a complete list of what is
-checked:
+validity of the Texinfo file.
+
+Most validation checks are different depending on whether node
+pointers are explicitly or implicitly determined.  With explicit node
+pointers, here is the list of what is checked:
 
 @enumerate
 @item
@@ -17142,53 +17145,48 @@ node in the current file and is not an external reference such as to
 @file{(dir)}, then the referenced node must exist.
 
 @item
-In every node, if the `Previous' node is different from the `Up' node,
-then the node pointed to by the `Previous' field must have a `Next'
-field which points back to this node.
-
-@item
 Every node except the `Top' node must have an `Up' pointer.
 
 @item
-The node referenced by an `Up' pointer must itself reference the current
-node through a menu item, unless the node referenced by `Up'
-has the form `(@var{file})'.
-
-@item
-If the `Next' reference of a node is not the same as the `Next' reference
-of the `Up' reference, then the node referenced by the `Next' pointer
-must have a `Previous' pointer that points back to the current node.
-This rule allows the last node in a section to point to the first node
-of the next chapter.
-
-@item
-Every node except `Top' should be referenced by at least one other
-node, either via the `Previous' or `Next' links, or via a menu or a
-cross reference.
+The node referenced by an `Up' pointer must itself reference the
+current node through a menu item, unless the node referenced by `Up'
+has the form @samp{(@var{file})}.
 @end enumerate
 
+With implicit node pointers, the above error cannot occur, as such.
+(Which is a major reason why we recommend using this feature of
+@code{makeinfo}, and not specifying any node pointers yourself.)
 
-@node Configuration Variables
-@section Configuration Variables
+Instead, @code{makeinfo} checks that the tree constructed from the
+document's menus matches the tree constructed from the sectioning
+commands.  For example, if a chapter-level menu mentions nodes
+@var{n1} and @var{n2}, in that order, nodes @var{n1} and @var{n2} must
+be associated with @code{@@section} commands in the chapter.
 
-@cartouche
+Finally, with both explicit and implicit node pointers,
+@code{makeinfo} checks that every node except the `Top' node is
+referenced in a menu.
+
+
+@node Customization Variables
+@section Customization Variables
+
 @quotation Warning
-These configuration variable names and meanings may change in any
-Texinfo release.  We try to avoid incompatible changes, but we cannot
-promise.
+These customization variable names and meanings may change in any
+Texinfo release.  We always try to avoid incompatible changes, but we
+cannot absolutely promise, since needs change.
 @end quotation
-@end cartouche
 
 Many aspects of the behavior and output of @command{texi2any} may be
-modified by modifying so-called @dfn{configuration variables}.  These
+modified by modifying so-called @dfn{customization variables}.  These
 fall into four general categories:
 
 @itemize @bullet
 @item
-Those changing fundamental program behavior; for example,
-@code{TEXTCONTENT} to output the text content only, stripped of commands.
-As these variables sets the expanded format, they will only have an effect
-when set on the command line.
+Those changing fundamental program behavior; for example, set
+@code{TEXTCONTENT} to output the text content only, stripped of
+commands.  As these variables set the expanded format, they will only
+have an effect when set on the command line.
 
 @item
 Those associated with @@-commands; for example,
@@ -17196,36 +17194,40 @@ Those associated with @@-commands; for example,
 
 @item
 Those associated with command-line options; for example, the
-configuration variable @code{SPLIT} is associated with the
+customization variable @code{SPLIT} is associated with the
 @option{--split} command-line option.
 
 @item
 Other ad hoc variables.
 @end itemize
 
-Configuration variables may set on the command line using
-@code{--set-init-variable '@var{var} @var{value}'} (quoting the
-variable/value pair) or @code{--set-init-variable
-@var{var}=@var{value}} (using @code{=}).  A special @var{value} is
-@samp{undef}, which sets the variable to this special ``undefined''
-Perl value.
+Customization variables may set on the command line using
+@code{--set-customization-variable '@var{var} @var{value}'} (quoting
+the variable/value pair to the shell) or
+@code{--set-customization-variable @var{var}=@var{value}} (using
+@code{=}).  A special @var{value} is @samp{undef}, which sets the
+variable to this special ``undefined'' Perl value.
 
 The sections below give the details for each of these.
 
 @menu
-* Behavior: Configuration Variables for Program Behavior.
-* Commands: Configuration Variables for @@-Commands.
-* Options:  Configuration Variables and Options.
-* Other:    Other Configuration Variables.
+* Behavior: Customization Variables for Program Behavior.
+* Commands: Customization Variables for @@-Commands.
+* Options:  Customization Variables and Options.
+* Other:    Other Customization Variables.
 @end menu
 
 
-@node Configuration Variables for Program Behavior
-@subsection Configuration Variables for Program Behavior
-@cindex Configuration variables for program behavior
-@cindex Program behavior, configuration variables for
+@node Customization Variables for Program Behavior
+@subsection Customization Variables for Program Behavior
+@cindex Customization variables for program behavior
+@cindex Program behavior, customization variables for
 
 @vtable @code
+@item DEBUGCOUNT
+Instead of generating a regular output format, output the count of
+bytes and lines obtained when converting to Info, and other information.
+
 @item DEBUGTREE
 @cindex tree representation, for debugging
 @cindex debugging document, with tree representation
@@ -17251,22 +17253,22 @@ for file names and copyright text in HTML comments, for example.
 @cindex stripping Texinfo commands
 Output the text content only, stripped of commands; this is useful for
 spell checking or word counting, for example.  The trivial
-@code{detexinfo} script setting this is in the @file{util}
-directory of the Texinfo source as an example.  It's one line:
+@code{detexinfo} script setting this is in the @file{util} directory
+of the Texinfo source as an example.  It's one line:
 
 @example
-exec texi2any --set-init-variable TEXTCONTENT=1 "$@@"
+exec texi2any --set-customization-variable TEXTCONTENT=1 "$@@"
 @end example
 @end vtable
 
 
-@node Configuration Variables for @@-Commands
-@subsection Configuration Variables for @@-Commands
+@node Customization Variables for @@-Commands
+@subsection Customization Variables for @@-Commands
 
-@cindex Configuration variables for @@-commands
-@cindex @@-commands, configuration variables for
+@cindex Customization variables for @@-commands
+@cindex @@-commands, customization variables for
 
-Each of the following @@-commands has an associated configuration
+Each of the following @@-commands has an associated customization
 variable with the same name (minus the leading @code{@@}):
 
 @smallexample
@@ -17284,17 +17286,17 @@ variable with the same name (minus the leading @code{@@}):
 @end smallexample
 @c @@setfilename
 
-Setting such a configuration variable to a value @samp{foo} is
+Setting such a customization variable to a value @samp{foo} is
 essentially the same as executing @code{@@@var{cmd} foo}.
 
 
-@node Configuration Variables and Options
-@subsection Configuration Variables and Options
+@node Customization Variables and Options
+@subsection Customization Variables and Options
 
-@cindex Configuration variables for options
-@cindex Options, configuration variables for
+@cindex Customization variables for options
+@cindex Options, customization variables for
 
-The following table gives the configuration variables associated
+The following table gives the customization variables associated
 with some command line options.  @xref{Invoking
 texi2any}, for the meaning of the options.
 
@@ -17344,33 +17346,33 @@ texi2any}, for the meaning of the options.
 @item @option{--verbose}           @tab @code{VERBOSE}
 @end multitable
 
-Setting such a configuration variable to a value @samp{foo} is
+Setting such a customization variable to a value @samp{foo} is
 essentially the same as specifying the @code{--@var{opt}=foo} if the
 option takes an argument, or @code{--@var{opt}} if not.
 
 
-@node Other Configuration Variables
-@subsection Other Configuration Variables
+@node Other Customization Variables
+@subsection Other Customization Variables
 
 @vtable @code
 @item AVOID_MENU_REDUNDANCY
-If set, and the menu entry and menu description are the same, then do
-not print the menu description.
+For HTML@.  If set, and the menu entry and menu description are the
+same, then do not print the menu description.
 
 @item AFTER_BODY_OPEN
-For HTML@.  If set, the corresponding text will appear at the beginning of
-each HTML file.
+For HTML@.  If set, the corresponding text will appear at the
+beginning of each HTML file.
 
 @item AFTER_ABOUT
-For HTML, in case an About element is output. If set, the corresponding 
-text will appear at the end of the About element. 
+For HTML, when an About'element is output.  If set, the corresponding
+text will appear at the end of the About element.
 
 @item AFTER_OVERVIEW
 @itemx AFTER_TOC_LINES
-For HTML@.  If set, the corresponding text is output after the 
-short table of contents for @code{AFTER_OVERVIEW} and after
-the table of contents for @code{AFTER_TOC_LINES}, otherwise a
-default string is used.
+For HTML@.  If set, the corresponding text is output after the short
+table of contents for @code{AFTER_OVERVIEW} and after the table of
+contents for @code{AFTER_TOC_LINES}, otherwise a default string is
+used.
 
 @item BASEFILENAME_LENGTH
 For HTML@.  The maximum length of the base filenames.  Default 245.
@@ -17593,21 +17595,25 @@ temporary files. None of the file name components in this directory
 name may start with @samp{.}; otherwise, @command{latex2html} will
 fail (because of @command{dvips}).
 
+@item MACRO_BODY_IGNORES_LEADING_SPACE
+Ignore white space at the beginning of user defined macro body line,
+mimicking a @TeX{} limitation (@pxref{Macro Details}).  Default off.
+
 @item MAX_MACRO_CALL_NESTING
 The maximal number of recursive calls of @@-commands defined
 through @code{@@rmacro}.  The purpose of this variable is to avoid
 infinite recursions.
 
 @item MAX_HEADER_LEVEL
-For HTML@.  Maximum header formatting level used (higher header formatting 
-level correspond to lower level in sectioning).
+For HTML@.  Maximum header formatting level used (higher header
+formatting level correspond to lower level in sectioning).
 
 @item MENU_ENTRY_COLON
 Symbol used between the menu entry and the description.
 
 @item MENU_SYMBOL
-Symbol used in front of menu entries when nodes names are used for 
-menu entries formatting.
+Symbol used in front of menu entries when node names are used for menu
+entries formatting.
 
 @item MONOLITHIC
 For HTML@.  Output only one file including the table of contents.  This
@@ -17665,7 +17671,7 @@ each HTML file.
 The output file prefix, which is prepended to some output files.  By
 default it is set by @code{@@setfilename} or from the input file
 (@pxref{setfilename}).  How this value is used depends on the value of
-other configuration variables or command line options, such as split output
+other customization variables or command line options, such as split output
 and @code{NODE_FILENAMES}.
 
 @item PROGRAM
@@ -17683,10 +17689,6 @@ set, the file is @file{<input_file_basename>-noderename.cnf}.
 
 @item RENAMED_NODES_REDIRECTIONS
 If set, do redirection files for renamed nodes.  Set for HTML by default.
-
-@item SHORT_REF
-For HTML@.  If this is set, internal cross references are given without
-the sectioning word, even if the target of the reference is a section.
 
 @item SHORTEXTN
 For HTML@.  If this is set, use @samp{.htm} as extension.
@@ -17734,6 +17736,10 @@ is @samp{texi2dvi}.  @xref{texi2any Printed Output}.
 Generate HTML and try to be as compatible as possible with
 @command{texi2html}.
 
+@item TEXTCONTENT_COMMENT
+For stripped text content output (i.e., when @code{TEXTCONTENT} is
+set).  If set, also output comments.  Default off.
+
 @item TOC_FILE
 @vindex INLINE_CONTENTS
 This file name is used for the table of contents.  The extension is
@@ -17751,7 +17757,7 @@ and is, in general, only taken into account when output is split, and
 for HTML@.
 
 @item TOP_NODE_UP
-Up node for the Top node; default is @samp{(dir)}.
+Up node for the Top node; default @samp{(dir)}.
 
 @item TOP_NODE_FILE
 File used for the Top node, if @code{NODE_FILENAMES} is set.
@@ -17767,8 +17773,8 @@ transformations are currently supported:
 @table @samp
 @item fill_gaps_in_sectioning
 Adds empty @code{@@unnumbered} in a tree to fill gaps in sectioning.
-For example, an @code{@@unnumberedsec} will be inserted if a @code{@@chapter}
-is followed by a @code{subsection}.
+For example, an @code{@@unnumberedsec} will be inserted if a
+@code{@@chapter} is followed by a @code{@@subsection}.
 
 @item simple_menu
 Does the same as @code{SIMPLE_MENU}: use a simple preformatted style for the 
@@ -17794,7 +17800,7 @@ in Top node menu or appending at the end of the Top node menu.
 @end table
 
 @item USE_ACCESSKEY
-@cindex @code{accesskey}, configuration variable for
+@cindex @code{accesskey}, customization variable for
 For HTML@.  Use @code{accesskey} in cross references.
 
 @item USE_ISO
@@ -17844,18 +17850,33 @@ Use the full @code{@@titlepage} as the title, not a simple title string.
 @item USE_UNIDECODE
 @pindex Text::Unidecode
 If set to false, do not use the @code{Text::Unidecode} Perl module to 
-transliterate more characters.
+transliterate more characters.  Default on.
 
 @item VERTICAL_HEAD_NAVIGATION
-For HTML@.  If set to true, a vertical navigation panel is used.
+For HTML@.  If set, a vertical navigation panel is used.  Default off.
 
 @item WORDS_IN_PAGE
 @cindex Navigation panel, bottom of page
 For HTML, with output split at nodes.  Specifies the approximate
 minimum page length at which a navigation panel is placed at the
 bottom of a page.  To avoid ever having the navigation buttons at the
-bottom of a page, set this to a sufficiently large number.  The
-default is 300.
+bottom of a page, set this to a sufficiently large number.  Default
+300.
+
+@item XREF_USE_FLOAT_LABEL
+For HTML@.  If set, for the float name in cross references, use the
+float label instead of the type followed by the float number
+(@pxref{float}).  Default off.
+
+@item XREF_USE_NODE_NAME_ARG
+For HTML@.  Only relevant for cross reference commands with no cross
+reference name (second argument).  If set to@tie{}1, use the node name
+(first) argument in cross reference @@-commands for the text displayed
+as the hyperlink.  If set to@tie{}0, use the node name if
+@code{USE_NODES} is set, or section name if @code{USE_NODES} is unset.
+If @code{undef}, use the first argument in preformatted environments,
+otherwise use the node name or section name depending on
+@code{USE_NODES}.  Default @code{undef}.
 
 @end vtable
 
@@ -17884,7 +17905,7 @@ invocation like this (available as @file{util/texi2html} in the
 Texinfo source):
 
 @example
-texi2any --set-init-variable TEXI2HTML=1 ...
+texi2any --set-customization-variable TEXI2HTML=1 ...
 @end example
 
 @noindent but, to emphasize, this is @emph{not} a drop-in replacement
@@ -17892,7 +17913,7 @@ for the previous @command{texi2html}.  Here are the biggest differences:
 
 @itemize @bullet
 @item Most blatantly, the command line options of @command{texi2html}
-are now configuration variables, for the most part.  A table of
+are now customization variables, for the most part.  A table of
 approximate equivalents is given below.
 
 @item The program-level customization API is very different in
@@ -17915,7 +17936,7 @@ intend to make further releases.
 @cindex Options of @command{texi2html}
 @cindex Command-line options of @command{texi2html}
 Here is the table showing @command{texi2html} options and
-corresponding @command{texi2any} configuration variables
+corresponding @command{texi2any} customization variables
 (@pxref{texi2any Output Customization,, @command{texi2any} Output
 Customization}).
 
@@ -19128,8 +19149,8 @@ Another rule, that only holds for filenames, is that base filenames
 are truncated to 245 characters, to allow for an extension to be
 appended and still comply with the 255-character limit which is common
 to many filesystems.  Although technically this can be changed with
-the @code{BASEFILENAME_LENGTH} configuration variable (@pxref{Other
-Configuration Variables}), doing so would make cross-manual references
+the @code{BASEFILENAME_LENGTH} customization variable (@pxref{Other
+Customization Variables}), doing so would make cross-manual references
 to such nodes invalid.
 
 Any directory part in the filename argument of the source cross
@@ -19573,8 +19594,8 @@ redirected, via the file @var{manual}@file{-noderename.cnf}, where
 @var{manual} is the base name of the manual.  For example, the manual
 @file{texinfo.txi} would be supplemented by a file
 @file{texinfo-noderename}.cnf.  (This name can be overridden by
-setting the @file{RENAMED_NODES_FILE} configuration variable;
-@pxref{Configuration Variables}).
+setting the @file{RENAMED_NODES_FILE} customization variable;
+@pxref{Customization Variables}).
 
 The file is read in pairs of lines, as follows:
 
@@ -19730,7 +19751,7 @@ Init files are written in Perl, and by convention have extension
 
 @menu
 * Init File Namespaces:: @code{Texinfo::Config}.
-* Setting and Getting Configuration Variables::
+* Setting and Getting Customization Variables::
 * Internationalization of Strings::
 @end menu
 @c * Init File Expansion Contexts::     Normal, preformatted, string, math.
@@ -19750,15 +19771,15 @@ means that the namespace of the main program and the namespace of
 initialization files are distinct, which minimizes the chance of a
 name clash.  
 
-@node Setting and Getting Configuration Variables
-@subsection Setting and Getting Configuration Variables
+@node Setting and Getting Customization Variables
+@subsection Setting and Getting Customization Variables
 
-@cindex Configuration variables, setting and getting
+@cindex Customization variables, setting and getting
 
-The basic operations on configuration variables are to set and
+The basic operations on customization variables are to set and
 retrieve their values.
 
-To set the value of a configuration variable from an initialization
+To set the value of a customization variable from an initialization
 file, you should use @code{set_from_init_file}:
 
 @defun set_from_init_file ($variable_name, $variable_value)
@@ -19793,7 +19814,7 @@ set_from_init_file('NO_CSS', 1);
 @end example
 
 @noindent overrides the default value for @code{NO_CSS}.  It would be
-overridden by @code{--set-init-variable NO_CSS=1} on the command line.
+overridden by @code{--set-customization-variable NO_CSS=1} on the command line.
 
 To get the value of a variable, the function is @code{get_conf}:
 
@@ -19808,9 +19829,9 @@ For example:
 if (get_conf('footnotestyle') eq 'separate') @{ ... @}
 @end example
 
-For the configuration variables associated with @@-commands, see
-@ref{Configuration Variables for @@-Commands}.  For the configuration
-variables associated with command line options, see @ref{Configuration
+For the customization variables associated with @@-commands, see
+@ref{Customization Variables for @@-Commands}.  For the customization
+variables associated with command line options, see @ref{Customization
 Variables and Options}.
 
 
@@ -19864,11 +19885,11 @@ Variables and Options}.
 @cindex Internationalization of strings in the output document
 @cindex Output documentation, internationalization of
 
-@vindex documentlanguage @r{configuration variable}
+@vindex documentlanguage @r{customization variable}
 @command{texi2any} writes some fixed strings in the generated document
 at various places: for cross references, in page footers, on the help
 page, alternate text for images, and so on.  The string chosen depends
-on the value of the configuration variable @code{documentlanguage} at
+on the value of the customization variable @code{documentlanguage} at
 the time of the string being output (@pxref{documentlanguage}, for the
 Texinfo command interface).
 
@@ -21961,7 +21982,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.460 2012-08-23 18:53:24 karl Exp $
+$Id: texinfo.txi,v 1.461 2012-08-24 18:17:47 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
