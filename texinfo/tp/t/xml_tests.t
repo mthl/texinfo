@@ -140,7 +140,16 @@ Para
 
 @macro bad { ggg"@@^_ ff, nnn_b, ccc v}
 @end macro
-']
+'],
+['commands_and_spaces',
+'@set  foo   some @value
+
+@unmacro  ggg
+
+@clickstyle  @arrow
+
+@cropmarks  after  cropmarks.
+'],
 );
 
 foreach my $test (@test_cases) {

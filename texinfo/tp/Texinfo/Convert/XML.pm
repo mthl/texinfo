@@ -378,6 +378,20 @@ sub _leading_spaces($)
   }
 }
 
+sub _arg_line($)
+{
+  my $self = shift;
+  my $root = shift;
+  if ($root->{'extra'} and defined($root->{'extra'}->{'arg_line'})) {
+    my $line = $root->{'extra'}->{'arg_line'};
+    chomp($line);
+    if ($line ne '') {
+      return " line=\"".$self->xml_protect_text($line)."\"";
+    }
+  } 
+  return '';
+}
+
 my @node_directions = ('Next', 'Prev', 'Up');
 
 sub _convert($$;$);
@@ -641,7 +655,17 @@ sub _convert($$;$)
           $self->{'pending_bye'} = "<$command></$command>\n";
           return '';
         }
-        return "<$command></$command>\n";
+        my $line;
+        if ($root->{'args'} and $root->{'args'}->[0] 
+            and defined($root->{'args'}->[0]->{'text'})) {
+          $line = $root->{'args'}->[0]->{'text'};
+          chomp($line);
+          $line = " line=\"".$self->xml_protect_text($line)."\""
+             if ($line ne '');
+        } else {
+          $line = '';
+        }
+        return "<$command${line}></$command>\n";
       } elsif ($type eq 'noarg' or $type eq 'skipspace') {
         return "<$command></$command>";
       } elsif ($type eq 'special') {
@@ -657,7 +681,8 @@ sub _convert($$;$)
               and defined($root->{'args'}->[1]->{'text'})) {
             $value = $self->xml_protect_text($root->{'args'}->[1]->{'text'});
           }
-          return "<${command}value${attribute}>$value</${command}value>\n";
+          return "<${command}${attribute}".$self->_arg_line($root)
+                                        .">$value</${command}>\n";
         } elsif ($root->{'cmdname'} eq 'clickstyle') {
           my $attribute = '';
           my $value = '';
@@ -668,7 +693,8 @@ sub _convert($$;$)
             $attribute = " command=\"".$self->xml_protect_text($click_command)."\"";
             $value = $self->xml_protect_text($root->{'args'}->[0]->{'text'});
           };
-          return "<${command}${attribute}>$value</${command}>\n";
+          return "<${command}${attribute}".$self->_arg_line($root).
+                                         ">$value</${command}>\n";
         }
       } elsif ($type eq 'lineraw') {
         if ($root->{'cmdname'} eq 'c' or $root->{'cmdname'} eq 'comment') {
@@ -845,12 +871,8 @@ sub _convert($$;$)
             $prepended_elements .= "<formalarg>".
                 $self->xml_protect_text($formal_arg->{'text'})."</formalarg>";
           }
-          if ($root->{'extra'} and defined($root->{'extra'}->{'arg_line'})) {
-            my $line = $root->{'extra'}->{'arg_line'};
-            chomp($line);
-            $attribute .= " line=\"".$self->xml_protect_text($line)."\"";
-          }
         }
+        $attribute .= $self->_arg_line($root);
       }
       if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}) {
         $self->{'document_context'}->[-1]->{'raw'} = 1;

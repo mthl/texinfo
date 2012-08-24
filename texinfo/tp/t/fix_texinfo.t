@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 3 };
+BEGIN { plan tests => 4 };
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
 use lib 'maintain/lib/Text-Unidecode/lib/';
@@ -37,3 +37,7 @@ run_test ('A@code{
 
 run_test ('@anchor{@ref{Somewhere}}', '@anchor{}', 'ref in anchor');
 
+run_test ('@page on page line
+', 
+'@page
+', 'garbage on page line');
