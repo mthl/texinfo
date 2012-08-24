@@ -1,4 +1,4 @@
-<!-- $Id: texinfo.dtd,v 1.30 2012-01-24 22:17:09 pertusus Exp $
+<!-- $Id: texinfo.dtd,v 1.31 2012-08-24 23:05:38 pertusus Exp $
   Document Type Definition for Texinfo XML output (the '-'-xml option).
 
   Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -19,7 +19,7 @@
                             | hyphenation
                             | documentdescription 
                             | shorttitlepage">
-<!ENTITY % variable.cmds "setvalue | clearvalue">
+<!ENTITY % variable.cmds "set | clear">
 
 <!-- Unique options -->
 <!ENTITY % unique.option.cmds "novalidate | setcontentsaftertitlepage 
@@ -189,11 +189,11 @@
 <!ELEMENT shorttitlepage  (#PCDATA | %Inline.line;)*>
 <!ELEMENT dircategory     (#PCDATA | %Inline.line;)*>
 
-<!ELEMENT setvalue    (#PCDATA)>
-<!ELEMENT clearvalue  EMPTY>
-<!ATTLIST setvalue
+<!ELEMENT set    (#PCDATA)>
+<!ELEMENT clear  EMPTY>
+<!ATTLIST set
                 name CDATA #REQUIRED>
-<!ATTLIST clearvalue
+<!ATTLIST clear
                 name CDATA #REQUIRED>
 <!ELEMENT definfoenclose EMPTY>
 <!ATTLIST definfoenclose 
