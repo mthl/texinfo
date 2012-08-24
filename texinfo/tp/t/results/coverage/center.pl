@@ -125,7 +125,7 @@ $result_converted{'html_text'}->{'center'} = '
 
 
 $result_converted{'xml'}->{'center'} = '
-<center>in center <code>in code</code></center>
+<center spaces="  ">in center <code>in code</code></center>
 
 ';
 

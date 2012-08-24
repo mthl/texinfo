@@ -678,10 +678,10 @@ $result_converted{'html_text'}->{'weird_accents'} = '
 ';
 
 
-$result_converted{'xml'}->{'weird_accents'} = '<documentencoding encoding="ISO-8859-1">ISO-8859-1</documentencoding>
+$result_converted{'xml'}->{'weird_accents'} = '<documentencoding encoding="ISO-8859-1" spaces=" ">ISO-8859-1</documentencoding>
 
-<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para><accent type="macr"><accent type="tilde"><dotless>i</dotless></accent></accent>
 </para>

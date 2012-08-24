@@ -268,7 +268,7 @@ $result_converted{'html_text'}->{'footnote_no_number'} = '<a name="Top"></a>
 ';
 
 
-$result_converted{'xml'}->{'footnote_no_number'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'footnote_no_number'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <para>Para<footnote><para>Footnote 1.</para></footnote>.
 </para>

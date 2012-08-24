@@ -813,12 +813,12 @@ Next: <a href="#part-node-before-top" accesskey="n" rel="next">part node before 
 ';
 
 
-$result_converted{'xml'}->{'part_node_before_top'} = '<node name="part-node-before-top"><nodename>part node before top</nodename><nodenext>Top</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
-<part><sectiontitle>part</sectiontitle>
+$result_converted{'xml'}->{'part_node_before_top'} = '<node name="part-node-before-top" spaces=" "><nodename>part node before top</nodename><nodenext>Top</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
+<part spaces=" "><sectiontitle>part</sectiontitle>
 
 </part>
-<node name="Top"><nodename>Top</nodename><nodenext automatic="on">part node before top</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">part node before top</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>part node before top</menunode><menudescription><pre xml:space="preserve">

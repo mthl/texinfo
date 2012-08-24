@@ -457,6 +457,9 @@ float
 
 In text @thispage @thischapternum text.
 '],
+['vskip',
+'@vskip 0pt plus 1filll
+']
 );
 
 my %info_tests = (
@@ -466,6 +469,7 @@ my %info_tests = (
 
 my %xml_tests = (
   'definfoenclose_with_empty_arg' => 1,
+  'vskip' => 1,
 );
 
 my %docbook_tests = (

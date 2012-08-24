@@ -1767,16 +1767,16 @@ $result_converted{'html_text'}->{'some_at_commands_in_ref_nodes'} = '
 
 
 $result_converted{'xml'}->{'some_at_commands_in_ref_nodes'} = '
-<node name="Top"><nodename>Top</nodename><nodenext automatic="on">A <sc>sc <accent type="tilde">n</accent> &aring; &tex;</sc> node <accent type="uml">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute">C</accent></accent> &iexcl;</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>Top</sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">A <sc>sc <accent type="tilde">n</accent> &aring; &tex;</sc> node <accent type="uml">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute">C</accent></accent> &iexcl;</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>Top</sectiontitle>
 
 <menu>
 <menuentry><menunode>A <sc>sc <accent type="tilde">n</accent> &aring; &tex;</sc> node <accent type="uml">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute">C</accent></accent> &iexcl;</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 </top>
-<node name="A-SC-_00d1-_00c5-TeX-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1"><nodename>A <sc>sc <accent type="tilde">n</accent> &aring; &tex;</sc> node <accent type="uml">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute">C</accent></accent> &iexcl;</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle>A <sc>sc</sc> node <accent type="uml">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute">C</accent></accent> &iexcl;</sectiontitle>
+<node name="A-SC-_00d1-_00c5-TeX-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1" spaces=" "><nodename>A <sc>sc <accent type="tilde">n</accent> &aring; &tex;</sc> node <accent type="uml">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute">C</accent></accent> &iexcl;</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces="  "><sectiontitle>A <sc>sc</sc> node <accent type="uml">i</accent> <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr">E</accent></accent> &lslash; <accent type="cedil"><accent type="acute">C</accent></accent> &iexcl;</sectiontitle>
 
 <para>see <ref><xrefnodename>a <strong>strong</strong> ref with <sc>sc</sc>&comma; a i trema <accent type="uml">i</accent>&comma; a dotless i trema <accent type="uml"><dotless>i</dotless></accent> <accent type="grave"><accent type="macr">E</accent></accent> and exclamdown &iexcl;</xrefnodename><xrefinfofile>manual</xrefinfofile></ref>.
 </para></chapter>

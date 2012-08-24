@@ -1212,11 +1212,11 @@ $result_converted_errors{'html'}->{'formats_in_menu'} = [
 
 
 
-$result_converted{'xml'}->{'formats_in_menu'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">(gcc)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'formats_in_menu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(gcc)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
 <menu>
 <menuentry><menunode>(gcc)</menunode><menudescription><pre xml:space="preserve">text
-</pre><table commandarg="asis">
+</pre><table commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis">item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">* table line::
 </pre></tableitem></tableentry></table>

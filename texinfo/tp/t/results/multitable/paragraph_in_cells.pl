@@ -423,7 +423,7 @@ $result_converted{'html_text'}->{'paragraph_in_cells'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'paragraph_in_cells'} = '<multitable><columnprototypes><columnprototype>AAA</columnprototype><columnprototype>BBB</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'paragraph_in_cells'} = '<multitable spaces=" "><columnprototypes><columnprototype>AAA</columnprototype><columnprototype>BBB</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
 </para></entry></row><row><entry command="item"><para>begin item
 </para>

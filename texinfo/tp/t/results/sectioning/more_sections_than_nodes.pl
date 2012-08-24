@@ -2086,8 +2086,8 @@ $result_errors{'more_sections_than_nodes'} = [];
 
 
 
-$result_converted{'xml'}->{'more_sections_than_nodes'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">n c2</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'more_sections_than_nodes'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">n c2</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>n c2</menunode><menudescription><pre xml:space="preserve">
@@ -2096,48 +2096,48 @@ $result_converted{'xml'}->{'more_sections_than_nodes'} = '<node name="Top"><node
 </pre></menudescription></menuentry></menu>
 
 </top>
-<chapter><sectiontitle>c1</sectiontitle>
+<chapter spaces=" "><sectiontitle>c1</sectiontitle>
 
 </chapter>
-<node name="n-c2"><nodename>n c2</nodename><nodenext automatic="on">n c3</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle>c2</sectiontitle>
+<node name="n-c2" spaces=" "><nodename>n c2</nodename><nodenext automatic="on">n c3</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>c2</sectiontitle>
 
-<section><sectiontitle>s1</sectiontitle>
+<section spaces=" "><sectiontitle>s1</sectiontitle>
 
 </section>
 </chapter>
-<node name="n-c3"><nodename>n c3</nodename><nodenext>n c3 s1 s2</nodenext><nodeprev>n c2</nodeprev><nodeup>Top</nodeup></node>
-<chapter><sectiontitle>c3</sectiontitle>
+<node name="n-c3" spaces=" "><nodename>n c3</nodename><nodenext>n c3 s1 s2</nodenext><nodeprev>n c2</nodeprev><nodeup>Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>c3</sectiontitle>
 
 <menu> 
 <menuentry><menunode>n c3 s 2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<section><sectiontitle>C3 s1</sectiontitle>
+<section spaces=" "><sectiontitle>C3 s1</sectiontitle>
 
 </section>
-<node name="n-c3-s-2"><nodename>n c3 s 2</nodename><nodeup automatic="on">n c3</nodeup></node>
-<section><sectiontitle>c3 s2</sectiontitle>
+<node name="n-c3-s-2" spaces=" "><nodename>n c3 s 2</nodename><nodeup automatic="on">n c3</nodeup></node>
+<section spaces=" "><sectiontitle>c3 s2</sectiontitle>
 
 </section>
-<section><sectiontitle>c3 s3</sectiontitle>
+<section spaces=" "><sectiontitle>c3 s3</sectiontitle>
 
-</section>
-</chapter>
-<chapter><sectiontitle>c4</sectiontitle>
-
-<section><sectiontitle>c3 s1</sectiontitle>
-
-<subsection><sectiontitle>c3 s1 s1</sectiontitle>
-
-</subsection>
-<node name="n-c3-s1-s2"><nodename>n c3 s1 s2</nodename><nodeprev>n c3</nodeprev><nodeup>Top</nodeup></node>
-<subsection><sectiontitle>c3 s1 s2</sectiontitle>
-
-</subsection>
 </section>
 </chapter>
-<appendix><sectiontitle>appendix</sectiontitle>
+<chapter spaces=" "><sectiontitle>c4</sectiontitle>
+
+<section spaces=" "><sectiontitle>c3 s1</sectiontitle>
+
+<subsection spaces=" "><sectiontitle>c3 s1 s1</sectiontitle>
+
+</subsection>
+<node name="n-c3-s1-s2" spaces=" "><nodename>n c3 s1 s2</nodename><nodeprev>n c3</nodeprev><nodeup>Top</nodeup></node>
+<subsection spaces=" "><sectiontitle>c3 s1 s2</sectiontitle>
+
+</subsection>
+</section>
+</chapter>
+<appendix spaces=" "><sectiontitle>appendix</sectiontitle>
 </appendix>
 ';
 

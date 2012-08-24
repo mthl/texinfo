@@ -876,8 +876,8 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 
 
 $result_converted{'xml'}->{'chapter_between_nodes'} = '
-<node name="Top"><nodename>Top</nodename><nodenext automatic="on">section node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top section</sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">section node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top section</sectiontitle>
 <para>Top node
 </para>
 <menu>
@@ -885,12 +885,12 @@ $result_converted{'xml'}->{'chapter_between_nodes'} = '
 </pre></menudescription></menuentry></menu>
 
 </top>
-<chapter><sectiontitle>Chapter</sectiontitle>
+<chapter spaces=" "><sectiontitle>Chapter</sectiontitle>
 
 <para>In chapter
 </para>
-<node name="section-node"><nodename>section node</nodename><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
-<section><sectiontitle>section</sectiontitle>
+<node name="section-node" spaces=" "><nodename>section node</nodename><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
+<section spaces=" "><sectiontitle>section</sectiontitle>
 
 <para>section.
 </para>

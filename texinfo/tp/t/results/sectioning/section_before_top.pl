@@ -681,12 +681,12 @@ Next: <a href="#section-node" accesskey="n" rel="next">section node</a>, Up: <a 
 ';
 
 
-$result_converted{'xml'}->{'section_before_top'} = '<node name="section-node"><nodename>section node</nodename><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
-<section><sectiontitle>section </sectiontitle>
+$result_converted{'xml'}->{'section_before_top'} = '<node name="section-node" spaces=" "><nodename>section node</nodename><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
+<section spaces=" "><sectiontitle>section </sectiontitle>
 
 </section>
-<node name="Top"><nodename>Top</nodename><nodenext automatic="on">section node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<unnumberedsec originalcommand="top"><sectiontitle>top</sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">section node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<unnumberedsec originalcommand="top" spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>section node</menunode><menudescription><pre xml:space="preserve">

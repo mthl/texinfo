@@ -1301,8 +1301,8 @@ Previous: <a href="#chapter-node" accesskey="p" rel="previous">chapter node</a>,
 ';
 
 
-$result_converted{'xml'}->{'part_node_part_node_appendix'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">chapter node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'part_node_part_node_appendix'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>chapter node</menunode><menudescription><pre xml:space="preserve">
@@ -1310,17 +1310,17 @@ $result_converted{'xml'}->{'part_node_part_node_appendix'} = '<node name="Top"><
 </pre></menudescription></menuentry></menu>
 
 </top>
-<part><sectiontitle>Part 1</sectiontitle>
+<part spaces=" "><sectiontitle>Part 1</sectiontitle>
 
-<node name="chapter-node"><nodename>chapter node</nodename><nodenext automatic="on">appendix node</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle>chapter</sectiontitle>
+<node name="chapter-node" spaces=" "><nodename>chapter node</nodename><nodenext automatic="on">appendix node</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
 </chapter>
 </part>
-<part><sectiontitle>Part Appendix</sectiontitle>
+<part spaces=" "><sectiontitle>Part Appendix</sectiontitle>
 
-<node name="appendix-node"><nodename>appendix node</nodename><nodeprev automatic="on">chapter node</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<appendix><sectiontitle>Appendix</sectiontitle>
+<node name="appendix-node" spaces=" "><nodename>appendix node</nodename><nodeprev automatic="on">chapter node</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<appendix spaces=" "><sectiontitle>Appendix</sectiontitle>
 </appendix>
 </part>
 ';

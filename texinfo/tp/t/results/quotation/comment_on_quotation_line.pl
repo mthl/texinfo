@@ -166,7 +166,7 @@ $result_converted{'html_text'}->{'comment_on_quotation_line'} = '<blockquote>
 ';
 
 
-$result_converted{'xml'}->{'comment_on_quotation_line'} = '<quotation><quotationtype>truc<spacecmd type="spc"/></quotationtype><!-- c quotation  -->
+$result_converted{'xml'}->{'comment_on_quotation_line'} = '<quotation spaces=" "><quotationtype>truc<spacecmd type="spc"/></quotationtype><!-- c quotation  -->
 <para>In quotation
 </para></quotation>
 ';

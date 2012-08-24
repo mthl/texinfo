@@ -182,10 +182,10 @@ $result_errors{'section_before_chapter'} = [
 
 
 
-$result_converted{'xml'}->{'section_before_chapter'} = '<section><sectiontitle>section </sectiontitle>
+$result_converted{'xml'}->{'section_before_chapter'} = '<section spaces=" "><sectiontitle>section </sectiontitle>
 
 </section>
-<section originalcommand="chapter"><sectiontitle>chapter</sectiontitle>
+<section originalcommand="chapter" spaces=" "><sectiontitle>chapter</sectiontitle>
 </section>
 ';
 

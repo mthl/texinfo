@@ -299,9 +299,9 @@ quotation continues.
 
 $result_converted{'xml'}->{'quotation_author'} = '<quotation>
 
-<author>First Author</author>
+<author spaces=" ">First Author</author>
 <para>quotation
-<author>S<accent type="tilde">e</accent>cond author</author>
+<author spaces=" ">S<accent type="tilde">e</accent>cond author</author>
 quotation continues.
 </para>
 </quotation>

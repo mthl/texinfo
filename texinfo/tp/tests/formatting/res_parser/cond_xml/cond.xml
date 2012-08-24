@@ -3,9 +3,9 @@
 <texinfo xml:lang="en">
 <filename file="cond.xml"></filename>
 <preamble>\input texinfo
-</preamble><setfilename file="cond.info">cond.info</setfilename>
+</preamble><setfilename file="cond.info" spaces=" ">cond.info</setfilename>
 
-<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <html>
 This is html text.

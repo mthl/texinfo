@@ -4783,8 +4783,8 @@ $result_converted{'html_text'}->{'refs_formatting'} = '<a name="chapter"></a>
 ';
 
 
-$result_converted{'xml'}->{'refs_formatting'} = '<node name="chapter"><nodename>chapter</nodename></node>
-<chapter><sectiontitle>chapter</sectiontitle>
+$result_converted{'xml'}->{'refs_formatting'} = '<node name="chapter" spaces=" "><nodename>chapter</nodename></node>
+<chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
 <para><code>&arobase;ref&lbrace;chapter,cross ref name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
 <code>&arobase;ref&lbrace;chapter,,title&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></ref>

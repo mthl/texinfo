@@ -844,14 +844,14 @@ $result_converted{'html_text'}->{'table'} = '
 
 
 $result_converted{'xml'}->{'table'} = '
-<table commandarg="asis">
+<table commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis">table item</itemformat></item>
 <itemx><itemformat command="asis">table itemx</itemformat></itemx>
 </tableterm><tableitem>
 <para>In table
 </para></tableitem></tableentry></table>
 
-<vtable commandarg="samp"><!-- c samp -->
+<vtable commandarg="samp" spaces=" "><!-- c samp -->
 <beforefirstitem><!-- c after vtable -->
 <cindex index="cp"><indexterm index="cp">index entry</indexterm></cindex>
 

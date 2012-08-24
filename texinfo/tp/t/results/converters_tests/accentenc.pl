@@ -3192,10 +3192,10 @@ $result_converted{'html_text'}->{'accentenc'} = '
 ';
 
 
-$result_converted{'xml'}->{'accentenc'} = '<documentencoding encoding="ISO-8859-1">ISO-8859-1</documentencoding>
+$result_converted{'xml'}->{'accentenc'} = '<documentencoding encoding="ISO-8859-1" spaces=" ">ISO-8859-1</documentencoding>
 
-<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave">e</accent>
 </para>

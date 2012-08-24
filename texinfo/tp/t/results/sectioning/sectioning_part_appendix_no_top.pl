@@ -1201,33 +1201,33 @@ element: @appendixsec appendixsec
 ';
 
 
-$result_converted{'xml'}->{'sectioning_part_appendix_no_top'} = '<chapter><sectiontitle>chapter</sectiontitle>
+$result_converted{'xml'}->{'sectioning_part_appendix_no_top'} = '<chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
-<section><sectiontitle>section</sectiontitle>
+<section spaces=" "><sectiontitle>section</sectiontitle>
 
-<subsection><sectiontitle>subsection</sectiontitle>
+<subsection spaces=" "><sectiontitle>subsection</sectiontitle>
 
-<subsubsection><sectiontitle>subsubsection</sectiontitle>
+<subsubsection spaces=" "><sectiontitle>subsubsection</sectiontitle>
 
 </subsubsection>
 </subsection>
 </section>
 </chapter>
-<part><sectiontitle>part</sectiontitle>
+<part spaces=" "><sectiontitle>part</sectiontitle>
 
-<chapter><sectiontitle>chapter in part</sectiontitle>
-
-</chapter>
-<chapter><sectiontitle>second chapter in part</sectiontitle>
+<chapter spaces=" "><sectiontitle>chapter in part</sectiontitle>
 
 </chapter>
-<unnumbered><sectiontitle>unnumbered</sectiontitle>
+<chapter spaces=" "><sectiontitle>second chapter in part</sectiontitle>
+
+</chapter>
+<unnumbered spaces=" "><sectiontitle>unnumbered</sectiontitle>
 
 </unnumbered>
 </part>
-<appendix><sectiontitle>appendix</sectiontitle>
+<appendix spaces=" "><sectiontitle>appendix</sectiontitle>
 
-<appendixsec><sectiontitle>appendixsec</sectiontitle>
+<appendixsec spaces=" "><sectiontitle>appendixsec</sectiontitle>
 </appendixsec>
 </appendix>
 ';

@@ -339,12 +339,12 @@ element: @chapter chapter
 ';
 
 
-$result_converted{'xml'}->{'top_part_chapter'} = '<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'top_part_chapter'} = '<top spaces=" "><sectiontitle>top</sectiontitle>
 
 </top>
-<part><sectiontitle>part</sectiontitle>
+<part spaces=" "><sectiontitle>part</sectiontitle>
 
-<chapter><sectiontitle>chapter </sectiontitle>
+<chapter spaces=" "><sectiontitle>chapter </sectiontitle>
 </chapter>
 </part>
 ';

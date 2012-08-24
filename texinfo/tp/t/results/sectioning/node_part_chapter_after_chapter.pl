@@ -1285,8 +1285,8 @@ Previous: <a href="#chapter-node" accesskey="p" rel="previous">chapter node</a>,
 ';
 
 
-$result_converted{'xml'}->{'node_part_chapter_after_chapter'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">chapter node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'node_part_chapter_after_chapter'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>chapter node</menunode><menudescription><pre xml:space="preserve">
@@ -1294,15 +1294,15 @@ $result_converted{'xml'}->{'node_part_chapter_after_chapter'} = '<node name="Top
 </pre></menudescription></menuentry></menu>
 
 </top>
-<node name="chapter-node"><nodename>chapter node</nodename><nodenext automatic="on">part chapter node</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="chapter-node" spaces=" "><nodename>chapter node</nodename><nodenext automatic="on">part chapter node</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 
-<chapter><sectiontitle>chapter node</sectiontitle>
+<chapter spaces=" "><sectiontitle>chapter node</sectiontitle>
 
 </chapter>
-<node name="part-chapter-node"><nodename>part chapter node</nodename><nodeprev automatic="on">chapter node</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<part><sectiontitle>part</sectiontitle>
+<node name="part-chapter-node" spaces=" "><nodename>part chapter node</nodename><nodeprev automatic="on">chapter node</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<part spaces=" "><sectiontitle>part</sectiontitle>
 
-<chapter><sectiontitle>chapter with part node</sectiontitle>
+<chapter spaces=" "><sectiontitle>chapter with part node</sectiontitle>
 
 <contents></contents>
 </chapter>

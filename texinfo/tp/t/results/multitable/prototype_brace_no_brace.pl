@@ -146,7 +146,7 @@ $result_converted{'plaintext'}->{'prototype_brace_no_brace'} = '';
 $result_converted{'html_text'}->{'prototype_brace_no_brace'} = '';
 
 
-$result_converted{'xml'}->{'prototype_brace_no_brace'} = '<multitable><columnprototypes><columnprototype>aa</columnprototype><columnprototype>bb</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'prototype_brace_no_brace'} = '<multitable spaces=" "><columnprototypes><columnprototype>aa</columnprototype><columnprototype>bb</columnprototype></columnprototypes>
 </multitable>
 ';
 

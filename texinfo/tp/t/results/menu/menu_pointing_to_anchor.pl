@@ -552,8 +552,8 @@ ul.no-bullet {list-style: none}
 ';
 
 
-$result_converted{'xml'}->{'menu_pointing_to_anchor'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">An anchor</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'menu_pointing_to_anchor'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">An anchor</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para>Text
 </para>

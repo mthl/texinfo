@@ -429,16 +429,16 @@ $result_converted_errors{'html_text'}->{'verbatiminclude_paths'} = [
 
 
 $result_converted{'xml'}->{'verbatiminclude_paths'} = '
-<verbatiminclude file="inc_file.texi">inc_file.texi</verbatiminclude>
+<verbatiminclude file="inc_file.texi" spaces=" ">inc_file.texi</verbatiminclude>
 
 <para>&arobase;verbatiminclude dot full path.
-</para><verbatiminclude file="./t/include_dir/inc_file.texi">./t/include_dir/inc_file.texi</verbatiminclude>
+</para><verbatiminclude file="./t/include_dir/inc_file.texi" spaces=" ">./t/include_dir/inc_file.texi</verbatiminclude>
 
 <para>&arobase;verbatiminclude parent
-</para><verbatiminclude file="../include_dir/inc_file.texi">../include_dir/inc_file.texi</verbatiminclude>
+</para><verbatiminclude file="../include_dir/inc_file.texi" spaces=" ">../include_dir/inc_file.texi</verbatiminclude>
 
 <para>&arobase;verbatiminclude dot full parent path
-</para><verbatiminclude file="./tp/t/include_dir/inc_file.texi">./tp/t/include_dir/inc_file.texi</verbatiminclude>
+</para><verbatiminclude file="./tp/t/include_dir/inc_file.texi" spaces=" ">./tp/t/include_dir/inc_file.texi</verbatiminclude>
 
 <!-- c does not work in the standalone perl module -->
 <!-- c @@verbatiminclude full parent path -->

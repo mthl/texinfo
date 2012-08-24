@@ -580,15 +580,15 @@ $result_converted{'html_text'}->{'exdent_and_commands'} = '<blockquote>
 
 $result_converted{'xml'}->{'exdent_and_commands'} = '<quotation>
 <para>quotation1
-</para><exdent>in exdented protected eol <spacecmd type="nl"/></exdent><para>following
-</para><exdent>in exdented a &arobase;* &linebreak; and following</exdent>
+</para><exdent spaces=" ">in exdented protected eol <spacecmd type="nl"/></exdent><para>following
+</para><exdent spaces=" ">in exdented a &arobase;* &linebreak; and following</exdent>
 <para>after exdented
 </para></quotation>
 
 <example>
 <pre xml:space="preserve">example
-</pre><exdent>in exdented protected eol <spacecmd type="nl"/></exdent><pre xml:space="preserve">following
-</pre><exdent>in exdented a &arobase;* &linebreak; and following</exdent>
+</pre><exdent spaces=" ">in exdented protected eol <spacecmd type="nl"/></exdent><pre xml:space="preserve">following
+</pre><exdent spaces=" ">in exdented a &arobase;* &linebreak; and following</exdent>
 <pre xml:space="preserve">after exdented
 </pre></example>
 ';

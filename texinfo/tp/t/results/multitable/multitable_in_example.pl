@@ -486,7 +486,7 @@ new paragraph in tab. example</pre></td></tr>
 
 
 $result_converted{'xml'}->{'multitable_in_example'} = '<example>
-<multitable><columnprototypes><columnprototype>AAA</columnprototype><columnprototype>BBB</columnprototype></columnprototypes>
+<multitable spaces=" "><columnprototypes><columnprototype>AAA</columnprototype><columnprototype>BBB</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><pre xml:space="preserve">truc </pre></entry><entry command="tab"><pre xml:space="preserve">bidule example
 </pre></entry></row><row><entry command="item"><pre xml:space="preserve">begin item example
 

@@ -592,7 +592,7 @@ $result_converted{'xml'}->{'commands'} = '<para>&arobase; &tex; <spacecmd type="
 </para>
 <cindex index="cp"><indexterm index="cp">index entry &textldquo;in text&textrdquo; &latex;</indexterm></cindex>
 
-<majorheading>majorheading <b>in b</b></majorheading>
+<majorheading spaces=" ">majorheading <b>in b</b></majorheading>
 ';
 
 

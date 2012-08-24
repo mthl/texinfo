@@ -1087,7 +1087,7 @@ $result_converted{'html_text'}->{'spaces_in_empty_node_names'} = '<a name="Top">
 ';
 
 
-$result_converted{'xml'}->{'spaces_in_empty_node_names'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'spaces_in_empty_node_names'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <menu>
 <menuentry><menunode><spacecmd type="spc"/><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
@@ -1095,11 +1095,11 @@ $result_converted{'xml'}->{'spaces_in_empty_node_names'} = '<node name="Top"><no
 </pre></menudescription></menuentry><menuentry><menunode><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<node name=""><nodename></nodename></node>
+<node name="" spaces=" "><nodename></nodename></node>
 
-<node name=""><nodename></nodename></node>
+<node name="" spaces=" "><nodename></nodename></node>
 
-<node name=""><nodename></nodename></node>
+<node name="" spaces=" "><nodename></nodename></node>
 
 <para><ref><xrefnodename><spacecmd type="spc"/><spacecmd type="spc"/></xrefnodename></ref>
 </para>

@@ -382,11 +382,11 @@ $result_converted_errors{'html'}->{'section_node_before_part'} = [
 
 
 $result_converted{'xml'}->{'section_node_before_part'} = '
-<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
-<section><sectiontitle>section </sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<section spaces=" "><sectiontitle>section </sectiontitle>
 
 </section>
-<part><sectiontitle>part</sectiontitle>
+<part spaces=" "><sectiontitle>part</sectiontitle>
 </part>
 ';
 

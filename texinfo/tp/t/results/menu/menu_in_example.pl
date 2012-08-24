@@ -890,7 +890,7 @@ $result_converted_errors{'html'}->{'menu_in_example'} = [
 
 
 
-$result_converted{'xml'}->{'menu_in_example'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">(entry)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'menu_in_example'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(entry)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
 <example>
 <menu>

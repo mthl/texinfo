@@ -1052,8 +1052,8 @@ Text.
 ';
 
 
-$result_converted{'xml'}->{'block_commands_in_menu_description'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">(manual)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'block_commands_in_menu_description'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(manual)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>(manual)</menunode><menudescription><pre xml:space="preserve">
@@ -1062,7 +1062,7 @@ $result_converted{'xml'}->{'block_commands_in_menu_description'} = '<node name="
 </pre></beforefirstitem><listitem><prepend>&bullet;</prepend><pre xml:space="preserve">in item
 
 </pre></listitem></itemize>
-<table commandarg="asis">
+<table commandarg="asis" spaces=" ">
 <beforefirstitem><pre xml:space="preserve">
 </pre></beforefirstitem><tableentry><tableterm><item><itemformat command="asis">table item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">

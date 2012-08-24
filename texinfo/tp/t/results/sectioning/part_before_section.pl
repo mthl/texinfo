@@ -236,9 +236,9 @@ $result_converted{'html_text'}->{'part_before_section'} = '<a name="part"></a>
 ';
 
 
-$result_converted{'xml'}->{'part_before_section'} = '<part><sectiontitle>part</sectiontitle>
+$result_converted{'xml'}->{'part_before_section'} = '<part spaces=" "><sectiontitle>part</sectiontitle>
 
-<chapter originalcommand="section"><sectiontitle>section </sectiontitle>
+<chapter originalcommand="section" spaces=" "><sectiontitle>section </sectiontitle>
 </chapter>
 </part>
 ';

@@ -116,7 +116,7 @@ $result_converted{'html_text'}->{'titlefont_in_center'} = '
 
 
 $result_converted{'xml'}->{'titlefont_in_center'} = '
-<center><titlefont>A manual</titlefont></center>
+<center spaces=" "><titlefont>A manual</titlefont></center>
 ';
 
 

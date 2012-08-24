@@ -1025,24 +1025,24 @@ End Tag Table
 ';
 
 
-$result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle>Settitle <spacecmd type="spc"/></settitle><!-- c settittle -->
+$result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle spaces=" ">Settitle <spacecmd type="spc"/></settitle><!-- c settittle -->
 
-<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node><!-- comment @node Top -->
-<top><sectiontitle>top element<spacecmd type="spc"/> </sectiontitle><!-- comment @top -->
+<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node><!-- comment @node Top -->
+<top spaces=" "><sectiontitle>top element<spacecmd type="spc"/> </sectiontitle><!-- comment @top -->
 
 <frenchspacing value="on"></frenchspacing><!-- c comment frenchspacing -->
 
 <cindex index="cp"><indexterm index="cp">index entry <spacecmd type="spc"/></indexterm></cindex><!-- c index entry -->
 
-<heading>Heading <spacecmd type="spc"/>    </heading><!-- c heading -->
+<heading spaces=" ">Heading <spacecmd type="spc"/>    </heading><!-- c heading -->
 
 <printindex value="cp"></printindex><!-- c printindex  -->
 
-<float name="label" type="Text"><floattype>Text</floattype><floatname>label</floatname>
+<float name="label" type="Text" spaces=" "><floattype>Text</floattype><floatname>label</floatname>
 <para>float
 </para></float><!-- c end -->
 
-<listoffloats type="Text--">Text <spacecmd type="spc"/></listoffloats><!-- c listoffloats -->
+<listoffloats type="Text--" spaces=" ">Text <spacecmd type="spc"/></listoffloats><!-- c listoffloats -->
 
 </top>
 <bye></bye>

@@ -455,12 +455,12 @@ $result_converted_errors{'html'}->{'chapter_before_and_after_part'} = [
 
 
 
-$result_converted{'xml'}->{'chapter_before_and_after_part'} = '<chapter><sectiontitle>chapter</sectiontitle>
+$result_converted{'xml'}->{'chapter_before_and_after_part'} = '<chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
 </chapter>
-<part><sectiontitle>part</sectiontitle>
+<part spaces=" "><sectiontitle>part</sectiontitle>
 
-<chapter><sectiontitle>chapter 2</sectiontitle>
+<chapter spaces=" "><sectiontitle>chapter 2</sectiontitle>
 
 <contents></contents>
 </chapter>

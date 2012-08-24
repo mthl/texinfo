@@ -1139,31 +1139,31 @@ element: @chapter Chapter 2
 ';
 
 
-$result_converted{'xml'}->{'top_chapter_sections'} = '<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'top_chapter_sections'} = '<top spaces=" "><sectiontitle>top</sectiontitle>
 
 </top>
-<unnumbered><sectiontitle>unnumbered</sectiontitle>
+<unnumbered spaces=" "><sectiontitle>unnumbered</sectiontitle>
 
 </unnumbered>
-<chapter><sectiontitle>First chapter</sectiontitle>
+<chapter spaces=" "><sectiontitle>First chapter</sectiontitle>
 
-<section><sectiontitle>second</sectiontitle>
+<section spaces=" "><sectiontitle>second</sectiontitle>
 
 </section>
 </chapter>
-<chapter><sectiontitle>Chapter</sectiontitle>
+<chapter spaces=" "><sectiontitle>Chapter</sectiontitle>
 
-<section><sectiontitle>Section of chapter</sectiontitle>
+<section spaces=" "><sectiontitle>Section of chapter</sectiontitle>
 
-<subsection><sectiontitle>subsection 1</sectiontitle>
+<subsection spaces=" "><sectiontitle>subsection 1</sectiontitle>
 
 </subsection>
-<subsection><sectiontitle>subsection 2</sectiontitle>
+<subsection spaces=" "><sectiontitle>subsection 2</sectiontitle>
 
 </subsection>
 </section>
 </chapter>
-<chapter><sectiontitle>Chapter 2</sectiontitle>
+<chapter spaces=" "><sectiontitle>Chapter 2</sectiontitle>
 </chapter>
 ';
 

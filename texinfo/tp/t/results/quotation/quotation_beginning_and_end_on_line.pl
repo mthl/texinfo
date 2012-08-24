@@ -138,7 +138,7 @@ $result_converted{'html_text'}->{'quotation_beginning_and_end_on_line'} = '<bloc
 ';
 
 
-$result_converted{'xml'}->{'quotation_beginning_and_end_on_line'} = '<quotation><quotationtype>in quotation </quotationtype></quotation>
+$result_converted{'xml'}->{'quotation_beginning_and_end_on_line'} = '<quotation spaces=" "><quotationtype>in quotation </quotationtype></quotation>
 ';
 
 

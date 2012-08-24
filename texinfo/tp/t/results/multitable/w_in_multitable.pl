@@ -301,7 +301,7 @@ $result_converted{'html_text'}->{'w_in_multitable'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'w_in_multitable'} = '<multitable><columnprototypes><columnprototype>aaaaaaaaa</columnprototype><columnprototype>bbbbbbbbbbb</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'w_in_multitable'} = '<multitable spaces=" "><columnprototypes><columnprototype>aaaaaaaaa</columnprototype><columnprototype>bbbbbbbbbbb</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><para><w>aaaaaaaa
 bbbbbbbbbb</w>
 </para></entry><entry command="tab"><para>gg

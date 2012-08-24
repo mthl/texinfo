@@ -379,12 +379,12 @@ $result_converted{'html_text'}->{'quotation_and_author'} = '<blockquote>
 
 
 $result_converted{'xml'}->{'quotation_and_author'} = '<quotation> 
-<author>Some One</author>
+<author spaces=" ">Some One</author>
 <para>A quot&textmdash;ation
 </para></quotation>
 
-<quotation><quotationtype>Note</quotationtype>
-<author>Some Notifier</author>
+<quotation spaces=" "><quotationtype>Note</quotationtype>
+<author spaces=" ">Some Notifier</author>
 <para>A Note
 </para></quotation>
 ';

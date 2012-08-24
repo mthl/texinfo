@@ -480,13 +480,13 @@ $result_converted{'html_text'}->{'empty_quotation'} = '<blockquote>
 $result_converted{'xml'}->{'empty_quotation'} = '<quotation>
 </quotation>
 
-<quotation><quotationtype>Empty</quotationtype>
+<quotation spaces=" "><quotationtype>Empty</quotationtype>
 </quotation>
 
-<quotation><quotationtype><asis></asis></quotationtype>
+<quotation spaces=" "><quotationtype><asis></asis></quotationtype>
 </quotation>
 
-<quotation><quotationtype>&linebreak;</quotationtype>
+<quotation spaces=" "><quotationtype>&linebreak;</quotationtype>
 </quotation>
 ';
 

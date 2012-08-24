@@ -574,14 +574,14 @@ $result_converted_errors{'html'}->{'comment_on_menu_line'} = [
 
 
 
-$result_converted{'xml'}->{'comment_on_menu_line'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">first</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'comment_on_menu_line'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">first</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
-<menu><!-- c -->
+<menu spaces="  "><!-- c -->
 <menuentry><menunode>first</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<chapter><sectiontitle>first</sectiontitle>
-<node name="first"><nodename>first</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>first</sectiontitle>
+<node name="first" spaces=" "><nodename>first</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 </chapter>
 ';
 

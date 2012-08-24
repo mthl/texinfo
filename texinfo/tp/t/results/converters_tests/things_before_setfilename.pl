@@ -1821,14 +1821,14 @@ $result_converted{'xml'}->{'things_before_setfilename'} = '<preamble>\\input tex
 <ref><xrefnodename>An anchor</xrefnodename></ref>
 </para></footnote>
 </para>
-<float name="float-anchor" type=""><floatname>float anchor</floatname>
+<float name="float-anchor" type="" spaces=" "><floatname>float anchor</floatname>
 <para>In float
 </para></float>
 
 <para>Ref to float
 <ref><xrefnodename>float anchor</xrefnodename></ref>.
 </para>
-<float name="ta" type="Text"><floattype>Text</floattype><floatname>ta</floatname>
+<float name="ta" type="Text" spaces=" "><floattype>Text</floattype><floatname>ta</floatname>
 <para>In float
 </para>
 <caption><para>ta caption</para></caption>
@@ -1844,12 +1844,12 @@ $result_converted{'xml'}->{'things_before_setfilename'} = '<preamble>\\input tex
 
 <printindex value="cp"></printindex>
 
-<listoffloats type="Text">Text</listoffloats>
+<listoffloats type="Text" spaces=" ">Text</listoffloats>
 
-<setfilename file="things_before_setfilename.info">things_before_setfilename.info </setfilename>
+<setfilename file="things_before_setfilename.info" spaces=" ">things_before_setfilename.info </setfilename>
 
-<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top section</sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top section</sectiontitle>
 
 <para>Ref to anchor
 <ref><xrefnodename>An anchor</xrefnodename></ref>

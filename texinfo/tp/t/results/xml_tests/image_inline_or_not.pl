@@ -2322,8 +2322,8 @@ $result_converted{'xml'}->{'image_inline_or_not'} = '<image><imagefile>A</imagef
 
 <para>Para <image where="inline"><imagefile>hh</imagefile></image>.
 </para>
-<node name="Top"><nodename>Top</nodename><nodenext automatic="on"><image where="inline"><imagefile>node_image</imagefile></image></nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on"><image where="inline"><imagefile>node_image</imagefile></image></nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <image><imagefile>B</imagefile></image>
 
@@ -2337,11 +2337,11 @@ T
 <image where="inline"><imagefile>in example after text</imagefile></image>
 </pre></example>
 
-<quotation><quotationtype><image where="inline"><imagefile>in_quotation_arg</imagefile></image></quotationtype>
+<quotation spaces=" "><quotationtype><image where="inline"><imagefile>in_quotation_arg</imagefile></image></quotationtype>
 <image><imagefile>in_quotation_content</imagefile></image>
 </quotation>
 
-<table commandarg="asis">
+<table commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis"><image where="inline"><imagefile>in_table_item</imagefile></image></itemformat></item>
 </tableterm><tableitem>
 <image><imagefile>in_table_def</imagefile></image>
@@ -2359,14 +2359,14 @@ T
 </pre></menucomment></menu>
 
 </top>
-<node name="node_005fimage"><nodename><image where="inline"><imagefile>node_image</imagefile></image></nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile></image></sectiontitle>
+<node name="node_005fimage" spaces=" "><nodename><image where="inline"><imagefile>node_image</imagefile></image></nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile></image></sectiontitle>
 
 
 <para>T<footnote><image where="inline"><imagefile>in_footnote</imagefile></image>
 </footnote>
 </para>
-<float name="g" type="F"><floattype>F</floattype><floatname>g</floatname>
+<float name="g" type="F" spaces=" "><floattype>F</floattype><floatname>g</floatname>
 
 <image><imagefile>in_float</imagefile></image>
 

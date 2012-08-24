@@ -1061,19 +1061,19 @@ $result_converted_errors{'html'}->{'nodes_after_top_before_chapter_nodes'} = [
 
 
 
-$result_converted{'xml'}->{'nodes_after_top_before_chapter_nodes'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">second node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'nodes_after_top_before_chapter_nodes'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">second node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <para>Top node
 </para><menu>
 <menuentry><menunode>second node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry><menunode>third node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<node name="second-node"><nodename>second node</nodename><nodenext>third node</nodenext><nodeprev>Top</nodeprev><nodeup>Top</nodeup></node>
+<node name="second-node" spaces=" "><nodename>second node</nodename><nodenext>third node</nodenext><nodeprev>Top</nodeprev><nodeup>Top</nodeup></node>
 
 <para>second node
 </para>
-<node name="third-node"><nodename>third node</nodename><nodeprev>second node</nodeprev><nodeup>Top</nodeup></node>
-<chapter><sectiontitle>chapter</sectiontitle>
+<node name="third-node" spaces=" "><nodename>third node</nodename><nodeprev>second node</nodeprev><nodeup>Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 </chapter>
 ';
 

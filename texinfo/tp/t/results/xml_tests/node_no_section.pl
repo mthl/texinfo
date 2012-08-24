@@ -113,7 +113,7 @@ $result_errors{'node_no_section'} = [];
 
 
 
-$result_converted{'xml'}->{'node_no_section'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'node_no_section'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 ';
 
 1;

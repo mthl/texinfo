@@ -1546,37 +1546,37 @@ $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '
 
 
 $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
-<node name="node_0021-After-punc"><nodename>node! After punc</nodename></node>
-<top><sectiontitle>top! After punc</sectiontitle>
+<node name="node_0021-After-punc" spaces=" "><nodename>node! After punc</nodename></node>
+<top spaces=" "><sectiontitle>top! After punc</sectiontitle>
 
-<table commandarg="asis">
+<table commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis">item! After punc</itemformat></item>
 </tableterm></tableentry></table>
 
-<quotation><quotationtype>quotation arg! After punc</quotationtype>
+<quotation spaces=" "><quotationtype>quotation arg! After punc</quotationtype>
 <para>In quotation
-</para><exdent>exdent quotation! After punc</exdent>
+</para><exdent spaces=" ">exdent quotation! After punc</exdent>
 </quotation>
 
-<float name="float-label_0021-After-punc" type="float-type_0021-After-punc"><floattype>float type! After punc</floattype><floatname>float label! After punc</floatname>
+<float name="float-label_0021-After-punc" type="float-type_0021-After-punc" spaces=" "><floattype>float type! After punc</floattype><floatname>float label! After punc</floatname>
 <para>In float
 </para><shortcaption><para>shortcaption! After punc</para></shortcaption>
 </float>
 
-<float name="label-with-caption" type="float-type_0021-After-punc"><floattype>float type! After punc</floattype><floatname>label with caption</floatname>
+<float name="label-with-caption" type="float-type_0021-After-punc" spaces=" "><floattype>float type! After punc</floattype><floatname>label with caption</floatname>
 <para>In float with caption.
 </para><caption><para>caption! After punc</para></caption>
 </float>
 
-<listoffloats type="float-type_0021-After-punc">float type! After punc</listoffloats>
+<listoffloats type="float-type_0021-After-punc" spaces=" ">float type! After punc</listoffloats>
 
 <cindex index="cp"><indexterm index="cp">index! After punc</indexterm></cindex>
 
-<heading>heading! After punc</heading>
+<heading spaces=" ">heading! After punc</heading>
 
 <titlefont>titlefont! After punc</titlefont>
 
-<center>center! After punc</center>
+<center spaces=" ">center! After punc</center>
 
 <printindex value="cp"></printindex>
 

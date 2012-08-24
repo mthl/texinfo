@@ -492,14 +492,14 @@ $result_converted_errors{'html'}->{'menu_title_before_entries'} = [
 
 
 
-$result_converted{'xml'}->{'menu_title_before_entries'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">subnode</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'menu_title_before_entries'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">subnode</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
 <menu>
 <menucomment><pre xml:space="preserve">Horizontal space
 </pre></menucomment><menuentry><menunode>subnode</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<node name="subnode"><nodename>subnode</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="subnode" spaces=" "><nodename>subnode</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 ';
 
 1;

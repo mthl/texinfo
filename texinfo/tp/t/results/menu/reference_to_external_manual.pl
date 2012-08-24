@@ -398,7 +398,7 @@ $result_converted_errors{'html'}->{'reference_to_external_manual'} = [
 
 
 $result_converted{'xml'}->{'reference_to_external_manual'} = '
-<node name="Top"><nodename>Top</nodename><nodenext automatic="on">(info)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(info)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
 <menu>
 <menuentry><menunode>(info)</menunode><menudescription><pre xml:space="preserve">

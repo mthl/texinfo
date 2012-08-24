@@ -1357,8 +1357,8 @@ Previous: <a href="#chapter-1" accesskey="p" rel="previous">chapter 1</a>, Up: <
 ';
 
 
-$result_converted{'xml'}->{'two_nodes_between_chapters'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">chapter 1</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'two_nodes_between_chapters'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter 1</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
 <menuentry><menunode>chapter 1</menunode><menudescription><pre xml:space="preserve">
@@ -1367,14 +1367,14 @@ $result_converted{'xml'}->{'two_nodes_between_chapters'} = '<node name="Top"><no
 </pre></menudescription></menuentry></menu>
 
 </top>
-<node name="chapter-1"><nodename>chapter 1</nodename><nodenext>Top</nodenext><nodeprev>node between chapters</nodeprev><nodeup>Top</nodeup></node>
-<chapter><sectiontitle>chapter c1</sectiontitle>
+<node name="chapter-1" spaces=" "><nodename>chapter 1</nodename><nodenext>Top</nodenext><nodeprev>node between chapters</nodeprev><nodeup>Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>chapter c1</sectiontitle>
 
-<node name="node-between-chapters"><nodename>node between chapters</nodename><nodenext automatic="on">chapter 2</nodenext><nodeprev automatic="on">chapter 1</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="node-between-chapters" spaces=" "><nodename>node between chapters</nodename><nodenext automatic="on">chapter 2</nodenext><nodeprev automatic="on">chapter 1</nodeprev><nodeup automatic="on">Top</nodeup></node>
 
 </chapter>
-<node name="chapter-2"><nodename>chapter 2</nodename><nodeprev automatic="on">chapter 1</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter><sectiontitle>chapter c2</sectiontitle>
+<node name="chapter-2" spaces=" "><nodename>chapter 2</nodename><nodeprev automatic="on">chapter 1</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>chapter c2</sectiontitle>
 </chapter>
 ';
 

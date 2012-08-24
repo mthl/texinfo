@@ -267,7 +267,7 @@ $result_converted{'html_text'}->{'quotation_author_in_example'} = '<div class="e
 
 $result_converted{'xml'}->{'quotation_author_in_example'} = '<example>
 <quotation> 
-<pre xml:space="preserve"><author>Some One</author>
+<pre xml:space="preserve"><author spaces=" ">Some One</author>
 A quot---ation
 </pre></quotation>
 </example>

@@ -3132,8 +3132,8 @@ $result_converted{'html_text'}->{'accent'} = '<a name="Top"></a>
 ';
 
 
-$result_converted{'xml'}->{'accent'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>top</sectiontitle>
+$result_converted{'xml'}->{'accent'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave">e</accent>
 </para>

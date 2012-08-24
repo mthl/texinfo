@@ -1615,20 +1615,20 @@ explanation
 ';
 
 
-$result_converted{'xml'}->{'complex_nestings'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'complex_nestings'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <example>
 <pre xml:space="preserve">deffs
-</pre><defun><definitionterm><indexterm index="fn">my def</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>my def</deffunction> <defparam>args</defparam> <defparam><var>arg</var></defparam> <defparam>&dots;</defparam></definitionterm>
+</pre><defun spaces=" "><definitionterm><indexterm index="fn">my def</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>my def</deffunction> <defparam>args</defparam> <defparam><var>arg</var></defparam> <defparam>&dots;</defparam></definitionterm>
 <defunx><definitionterm><indexterm index="fn">other def</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>other def</deffunction> <defparam>no</defparam> <defparam>args</defparam></definitionterm></defunx>
-<definitionitem><deffn><definitionterm><indexterm index="fn">name</indexterm><defcategory>type</defcategory> <deffunction>name</deffunction> <defparam>and</defparam> <defparam>now</defparam> <defparam>the</defparam> <defparam>args</defparam></definitionterm>
-<definitionitem><defvar><definitionterm><indexterm index="vr">variables</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>variables</defvariable> <defparam>variable-name</defparam></definitionterm>
+<definitionitem><deffn spaces=" "><definitionterm><indexterm index="fn">name</indexterm><defcategory>type</defcategory> <deffunction>name</deffunction> <defparam>and</defparam> <defparam>now</defparam> <defparam>the</defparam> <defparam>args</defparam></definitionterm>
+<definitionitem><defvar spaces=" "><definitionterm><indexterm index="vr">variables</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>variables</defvariable> <defparam>variable-name</defparam></definitionterm>
 <pre xml:space="preserve">
 </pre><defvarx><definitionterm><indexterm index="vr">variables too</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>variables too</defvariable> <defparam>other-variable</defparam></definitionterm></defvarx>
 <definitionitem><pre xml:space="preserve">THis is the defvar
 
 A table within the def
-</pre><table commandarg="asis">
+</pre><table commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis">item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">text
 

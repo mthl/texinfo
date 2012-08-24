@@ -2240,10 +2240,10 @@ end example.
 ';
 
 
-$result_converted{'xml'}->{'block_commands_in_table'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
-<top><sectiontitle>Element</sectiontitle>
+$result_converted{'xml'}->{'block_commands_in_table'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+<top spaces=" "><sectiontitle>Element</sectiontitle>
 
-<table commandarg="emph">
+<table commandarg="emph" spaces=" ">
 <tableentry><tableterm><item><itemformat command="emph">first item</itemformat></item>
 <itemx><itemformat command="emph">second itemx</itemformat></itemx>
 </tableterm><tableitem>
@@ -2270,7 +2270,7 @@ end example.
 </para></quotation>
 </tableitem></tableentry></table>
 
-<vtable commandarg="strong">
+<vtable commandarg="strong" spaces=" ">
 <tableentry><tableterm><item><itemformat command="strong"><indexterm index="vr">item before ignored lines</indexterm>item before ignored lines</itemformat></item>
 <!-- c comment -->
 <vindex index="vr"><indexterm index="vr">vindex</indexterm></vindex>
@@ -2278,7 +2278,7 @@ end example.
 </tableterm><tableitem>
 <para>Description
 </para></tableitem></tableentry></vtable>
-<vtable commandarg="r">
+<vtable commandarg="r" spaces=" ">
 <tableentry><tableterm><item><itemformat command="r"><indexterm index="vr">item</indexterm>item</itemformat></item>
 
 <itemx><itemformat command="r"><indexterm index="vr">itemx after an empty line</indexterm>itemx after an empty line</itemformat></itemx>
@@ -2288,7 +2288,7 @@ end example.
 </tableitem></tableentry></vtable>
 
 <para>Something.
-</para><table commandarg="emph">
+</para><table commandarg="emph" spaces=" ">
 <tableentry><tableterm><item><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line
 </para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">second item</itemformat></item>

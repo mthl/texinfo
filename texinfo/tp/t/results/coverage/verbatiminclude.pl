@@ -86,7 +86,7 @@ $result_converted{'html_text'}->{'verbatiminclude'} = '
 
 
 $result_converted{'xml'}->{'verbatiminclude'} = '
-<verbatiminclude file="incl-incl.txi">incl-incl.txi</verbatiminclude>
+<verbatiminclude file="incl-incl.txi" spaces=" ">incl-incl.txi</verbatiminclude>
 ';
 
 

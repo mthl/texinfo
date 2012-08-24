@@ -337,10 +337,10 @@ $result_converted_errors{'info'}->{'setfilename'} = [
 
 
 
-$result_converted{'xml'}->{'setfilename'} = '<setfilename file="file_comment">file_comment</setfilename><!-- c comment -->
-<setfilename file="file_and_spaces">file_and_spaces   </setfilename>
-<setfilename file="file_space_comment">file_space_comment </setfilename><!-- c comment -->
-<setfilename file="  name  "><spacecmd type="spc"/><verb delimiter=":"> name </verb><spacecmd type="spc"/></setfilename>
+$result_converted{'xml'}->{'setfilename'} = '<setfilename file="file_comment" spaces=" ">file_comment</setfilename><!-- c comment -->
+<setfilename file="file_and_spaces" spaces=" ">file_and_spaces   </setfilename>
+<setfilename file="file_space_comment" spaces=" ">file_space_comment </setfilename><!-- c comment -->
+<setfilename file="  name  " spaces=" "><spacecmd type="spc"/><verb delimiter=":"> name </verb><spacecmd type="spc"/></setfilename>
 
 ';
 

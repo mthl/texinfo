@@ -1640,14 +1640,14 @@ $result_converted{'xml'}->{'things_before_setfilename_no_element'} = '<preamble>
 <ref><xrefnodename>An anchor</xrefnodename></ref>
 </para></footnote>
 </para>
-<float name="float-anchor" type=""><floatname>float anchor</floatname>
+<float name="float-anchor" type="" spaces=" "><floatname>float anchor</floatname>
 <para>In float
 </para></float>
 
 <para>Ref to float
 <ref><xrefnodename>float anchor</xrefnodename></ref>.
 </para>
-<float name="ta" type="Text"><floattype>Text</floattype><floatname>ta</floatname>
+<float name="ta" type="Text" spaces=" "><floattype>Text</floattype><floatname>ta</floatname>
 <para>In float
 </para>
 <caption><para>ta caption</para></caption>
@@ -1663,9 +1663,9 @@ $result_converted{'xml'}->{'things_before_setfilename_no_element'} = '<preamble>
 
 <printindex value="cp"></printindex>
 
-<listoffloats type="Text">Text</listoffloats>
+<listoffloats type="Text" spaces=" ">Text</listoffloats>
 
-<setfilename file="things_before_setfilename_no_element.info">things_before_setfilename_no_element.info </setfilename>
+<setfilename file="things_before_setfilename_no_element.info" spaces=" ">things_before_setfilename_no_element.info </setfilename>
 
 <para>Ref to anchor
 <ref><xrefnodename>An anchor</xrefnodename></ref>

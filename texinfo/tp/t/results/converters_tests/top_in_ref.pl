@@ -4708,7 +4708,7 @@ $result_converted{'html_text'}->{'top_in_ref'} = '<a name="Top"></a>
 ';
 
 
-$result_converted{'xml'}->{'top_in_ref'} = '<node name="Top"><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'top_in_ref'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <para><code>&arobase;ref&lbrace;Top,cross ref name&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
 <code>&arobase;ref&lbrace;Top,,title&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></ref>

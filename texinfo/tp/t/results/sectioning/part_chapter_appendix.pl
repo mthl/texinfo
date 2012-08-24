@@ -264,13 +264,13 @@ $result_errors{'part_chapter_appendix'} = [];
 
 
 $result_converted{'xml'}->{'part_chapter_appendix'} = '
-<part><sectiontitle>Part 1</sectiontitle>
+<part spaces=" "><sectiontitle>Part 1</sectiontitle>
 
-<chapter><sectiontitle>chapter</sectiontitle>
+<chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
 </chapter>
 </part>
-<appendix><sectiontitle>Appendix</sectiontitle>
+<appendix spaces=" "><sectiontitle>Appendix</sectiontitle>
 </appendix>
 ';
 

@@ -367,6 +367,17 @@ sub convert_tree($$)
   return $self->_convert($root);
 }
 
+sub _leading_spaces($)
+{
+  my $root = shift;
+  if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_command'}
+      and $root->{'extra'}->{'spaces_after_command'}->{'type'} eq 'empty_spaces_after_command') {
+    return " spaces=\"$root->{'extra'}->{'spaces_after_command'}->{'text'}\"";
+  } else {
+    return '';
+  }
+}
+
 my @node_directions = ('Next', 'Prev', 'Up');
 
 sub _convert($$;$);
@@ -546,7 +557,8 @@ sub _convert($$;$)
         }
         my ($arg, $end_line)
             = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
-        return "<$command${attribute}>$arg</$command>$end_line";
+        return "<$command${attribute}"._leading_spaces($root).
+                                          ">$arg</$command>$end_line";
       } elsif ($type eq 'line') {
         if ($root->{'cmdname'} eq 'node') {
           my $nodename;
@@ -555,7 +567,7 @@ sub _convert($$;$)
           } else {
             $nodename = '';
           }
-          $result .= "<node name=\"$nodename\">";
+          $result .= "<node name=\"$nodename\""._leading_spaces($root).">";
           push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
           $result .= "<nodename>".
              $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
@@ -602,7 +614,7 @@ sub _convert($$;$)
           } else {
             $attribute = '';
           }
-          $result .= "<$command${attribute}>";
+          $result .= "<$command${attribute}"._leading_spaces($root).">";
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
               = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
@@ -617,7 +629,7 @@ sub _convert($$;$)
           }
           my ($arg, $end_line)
             = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
-          return "<$command${attribute}>$arg</$command>$end_line";
+          return "<$command${attribute}"._leading_spaces($root).">$arg</$command>$end_line";
         }
       } elsif ($type eq 'skipline') {
         # the command associated with an element is closed at the end of the
@@ -667,6 +679,7 @@ sub _convert($$;$)
               and defined($root->{'args'}->[0]->{'text'})) {
             $value = $self->xml_protect_text($root->{'args'}->[0]->{'text'});
           }
+          chomp ($value);
           return "<${command}>$value</${command}>\n";
         }
       } else {
@@ -842,7 +855,7 @@ sub _convert($$;$)
       if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}) {
         $self->{'document_context'}->[-1]->{'raw'} = 1;
       } else {
-        $result .= "<$root->{'cmdname'}${attribute}>${prepended_elements}";
+        $result .= "<$root->{'cmdname'}${attribute}"._leading_spaces($root).">${prepended_elements}";
         my $end_line = '';
         if ($root->{'args'}) {
           if ($commands_args_elements{$root->{'cmdname'}}) {

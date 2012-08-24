@@ -3408,7 +3408,7 @@ After table.
 
 <para>Quotation
 </para><quotation>
-<vtable commandarg="asis">
+<vtable commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
 <itemx><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem>
@@ -3422,7 +3422,7 @@ After table.
 </tableterm></tableentry></vtable>
 
 <para>Something.
-</para><table commandarg="emph">
+</para><table commandarg="emph" spaces=" ">
 <tableentry><tableterm><item><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line
 </para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">second item</itemformat></item>
@@ -3433,7 +3433,7 @@ After table.
 
 <para>Example
 </para><example>
-<vtable commandarg="asis">
+<vtable commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
 <itemx><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">
@@ -3447,7 +3447,7 @@ Text 2
 </tableterm></tableentry></vtable>
 <pre xml:space="preserve">
 Something.
-</pre><table commandarg="emph">
+</pre><table commandarg="emph" spaces=" ">
 <tableentry><tableterm><item><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">Text without blank line
 </pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">second item</itemformat></item>
@@ -3459,7 +3459,7 @@ Something.
 <para>Double quotation
 </para><quotation>
 <quotation>
-<vtable commandarg="asis">
+<vtable commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
 <itemx><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem>
@@ -3473,7 +3473,7 @@ Something.
 </tableterm></tableentry></vtable>
 
 <para>Something.
-</para><table commandarg="emph">
+</para><table commandarg="emph" spaces=" ">
 <tableentry><tableterm><item><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line
 </para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">second item</itemformat></item>

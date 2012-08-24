@@ -320,7 +320,7 @@ $result_converted{'html_text'}->{'documentencoding_utf8_and_insertions'} = '
 ';
 
 
-$result_converted{'xml'}->{'documentencoding_utf8_and_insertions'} = '<documentencoding encoding="utf-8">utf-8</documentencoding>
+$result_converted{'xml'}->{'documentencoding_utf8_and_insertions'} = '<documentencoding encoding="utf-8" spaces=" ">utf-8</documentencoding>
 
 <para>&textndash; &textmdash; &textrdquo; &textldquo; &textlsquo; &textrsquo; <code>in code</code>. <accent type="tilde">e</accent>.
 </para>

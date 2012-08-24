@@ -706,14 +706,14 @@ $result_converted_errors{'html'}->{'nodes_no_node_top_explicit_directions'} = [
 
 
 
-$result_converted{'xml'}->{'nodes_no_node_top_explicit_directions'} = '<node name="first"><nodename>first</nodename><nodeup>(dir)</nodeup></node>
+$result_converted{'xml'}->{'nodes_no_node_top_explicit_directions'} = '<node name="first" spaces=" "><nodename>first</nodename><nodeup>(dir)</nodeup></node>
 <para>first node
 </para>
 <menu>
 <menuentry><menunode>second node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<node name="second-node"><nodename>second node</nodename><nodeprev>first</nodeprev><nodeup>first</nodeup></node>
+<node name="second-node" spaces=" "><nodename>second node</nodename><nodeprev>first</nodeprev><nodeup>first</nodeup></node>
 <para>second node
 </para>';
 

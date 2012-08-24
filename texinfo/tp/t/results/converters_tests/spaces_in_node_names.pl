@@ -1174,7 +1174,7 @@ $result_converted{'html_text'}->{'spaces_in_node_names'} = '<a name="Top"></a>
 ';
 
 
-$result_converted{'xml'}->{'spaces_in_node_names'} = '<node name="Top"><nodename>Top</nodename><nodenext automatic="on">a<spacecmd type="spc"/><spacecmd type="spc"/></nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'spaces_in_node_names'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">a<spacecmd type="spc"/><spacecmd type="spc"/></nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
 <menu>
 <menuentry><menunode>a<spacecmd type="spc"/><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
@@ -1182,11 +1182,11 @@ $result_converted{'xml'}->{'spaces_in_node_names'} = '<node name="Top"><nodename
 </pre></menudescription></menuentry><menuentry><menunode>c<spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<node name="a--"><nodename>a<spacecmd type="spc"/><spacecmd type="spc"/></nodename><nodenext automatic="on">b<verb delimiter=":">  </verb></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="a--" spaces=" "><nodename>a<spacecmd type="spc"/><spacecmd type="spc"/></nodename><nodenext automatic="on">b<verb delimiter=":">  </verb></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 
-<node name="b-"><nodename>b<verb delimiter=":">  </verb></nodename><nodenext automatic="on">c<w>  </w></nodenext><nodeprev automatic="on">a<spacecmd type="spc"/><spacecmd type="spc"/></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="b-" spaces=" "><nodename>b<verb delimiter=":">  </verb></nodename><nodenext automatic="on">c<w>  </w></nodenext><nodeprev automatic="on">a<spacecmd type="spc"/><spacecmd type="spc"/></nodeprev><nodeup automatic="on">Top</nodeup></node>
 
-<node name="c-"><nodename>c<w>  </w></nodename><nodeprev automatic="on">b<verb delimiter=":">  </verb></nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="c-" spaces=" "><nodename>c<w>  </w></nodename><nodeprev automatic="on">b<verb delimiter=":">  </verb></nodeprev><nodeup automatic="on">Top</nodeup></node>
 
 <para><ref><xrefnodename>a<spacecmd type="spc"/><spacecmd type="spc"/></xrefnodename></ref>
 </para>

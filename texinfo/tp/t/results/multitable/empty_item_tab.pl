@@ -1066,7 +1066,7 @@ $result_converted{'html_text'}->{'empty_item_tab'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'empty_item_tab'} = '<multitable><columnfractions><columnfraction value="1.0"></columnfraction></columnfractions>
+$result_converted{'xml'}->{'empty_item_tab'} = '<multitable spaces=" "><columnfractions><columnfraction value="1.0"></columnfraction></columnfractions>
 <tbody><row><entry command="item">
 
 </entry></row><row><entry command="item">
@@ -1074,7 +1074,7 @@ $result_converted{'xml'}->{'empty_item_tab'} = '<multitable><columnfractions><co
 </para></entry></row><row><entry command="item">
 </entry></row></tbody></multitable>
 
-<multitable><columnfractions><columnfraction value="0.5"></columnfraction><columnfraction value="0.5"></columnfraction></columnfractions>
+<multitable spaces=" "><columnfractions><columnfraction value="0.5"></columnfraction><columnfraction value="0.5"></columnfraction></columnfractions>
 <tbody><row><entry command="item">
 
 </entry></row><row><entry command="item">

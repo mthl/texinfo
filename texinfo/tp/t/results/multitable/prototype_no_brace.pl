@@ -164,7 +164,7 @@ $result_converted{'plaintext'}->{'prototype_no_brace'} = '';
 $result_converted{'html_text'}->{'prototype_no_brace'} = '';
 
 
-$result_converted{'xml'}->{'prototype_no_brace'} = '<multitable><columnprototypes><columnprototype>aa</columnprototype><columnprototype><var>FF</var></columnprototype><columnprototype>b</columnprototype><columnprototype>cc</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'prototype_no_brace'} = '<multitable spaces=" "><columnprototypes><columnprototype>aa</columnprototype><columnprototype><var>FF</var></columnprototype><columnprototype>b</columnprototype><columnprototype>cc</columnprototype></columnprototypes>
 </multitable>
 ';
 

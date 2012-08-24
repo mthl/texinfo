@@ -91,7 +91,7 @@ $result_converted{'html_text'}->{'setfilename_in_paragraph'} = '<p>Some text
 
 
 $result_converted{'xml'}->{'setfilename_in_paragraph'} = '<para>Some text
-</para><setfilename file="filename.info">filename.info</setfilename>
+</para><setfilename file="filename.info" spaces=" ">filename.info</setfilename>
 ';
 
 
