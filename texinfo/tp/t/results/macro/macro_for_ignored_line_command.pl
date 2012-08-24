@@ -59,6 +59,14 @@ $result_trees{'macro_for_ignored_line_command'} = {
       'type' => 'empty_line'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => ' on the line
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'page',
       'parent' => {}
     }
@@ -73,13 +81,14 @@ $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'extra'}{'spaces_
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[1] = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'extra'}{'spaces_after_command'};
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[2]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
+$result_trees{'macro_for_ignored_line_command'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[3];
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[3]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 
 $result_texis{'macro_for_ignored_line_command'} = '@macro pagemacro
 @page
 @end macro
 
-@page
+@page on the line
 ';
 
 

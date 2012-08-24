@@ -8,6 +8,14 @@ use utf8;
 $result_trees{'lone_contents'} = {
   'contents' => [
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'contents',
       'line_nr' => {
         'file_name' => '',
@@ -19,6 +27,7 @@ $result_trees{'lone_contents'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'lone_contents'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'lone_contents'}{'contents'}[0];
 $result_trees{'lone_contents'}{'contents'}[0]{'parent'} = $result_trees{'lone_contents'};
 
 $result_texis{'lone_contents'} = '@contents

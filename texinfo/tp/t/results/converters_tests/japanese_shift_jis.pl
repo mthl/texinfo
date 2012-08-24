@@ -941,6 +941,14 @@ $result_trees{'japanese_shift_jis'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -1114,6 +1122,7 @@ $result_trees{'japanese_shift_jis'}{'contents'}[6]{'contents'}[2]{'parent'} = $r
 $result_trees{'japanese_shift_jis'}{'contents'}[6]{'extra'}{'misc_content'}[0] = $result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[6]{'parent'} = $result_trees{'japanese_shift_jis'};
+$result_trees{'japanese_shift_jis'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[7];
 $result_trees{'japanese_shift_jis'}{'contents'}[7]{'parent'} = $result_trees{'japanese_shift_jis'};
 
 $result_texis{'japanese_shift_jis'} = '\\input texinfo @c -*- coding: utf-8; mode: texinfo; -*-

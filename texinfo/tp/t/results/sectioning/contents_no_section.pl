@@ -116,6 +116,14 @@ $result_trees{'contents_no_section'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => 'contents_no_section.texi',
@@ -152,6 +160,14 @@ $result_trees{'contents_no_section'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -175,12 +191,14 @@ $result_trees{'contents_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'p
 $result_trees{'contents_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[1]{'args'}[0];
 $result_trees{'contents_no_section'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[1];
 $result_trees{'contents_no_section'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[1];
+$result_trees{'contents_no_section'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[1]{'contents'}[1];
 $result_trees{'contents_no_section'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[1];
 $result_trees{'contents_no_section'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[1];
 $result_trees{'contents_no_section'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'contents_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'contents_no_section'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'contents_no_section'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'contents_no_section'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'contents_no_section'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_no_section'}{'contents'}[1]{'parent'} = $result_trees{'contents_no_section'};
+$result_trees{'contents_no_section'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'contents_no_section'}{'contents'}[2];
 $result_trees{'contents_no_section'}{'contents'}[2]{'parent'} = $result_trees{'contents_no_section'};
 
 $result_texis{'contents_no_section'} = '\\input texinfo @c -*-texinfo-*-

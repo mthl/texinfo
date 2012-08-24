@@ -130,8 +130,7 @@ Text.
 @node @asis{} 2
 @section @asis{}
 
-@bye
-';
+@bye';
 
   $parser = Texinfo::Parser::parser();
   $tree = $parser->parse_texi_text ($sections_text);

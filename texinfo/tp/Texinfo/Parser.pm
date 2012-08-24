@@ -4176,7 +4176,7 @@ sub _parse_texi($;$)
                      'parent' => $current};
             push @{$current->{'contents'}}, $misc;
             my $args = [];
-            if ($arg_spec eq 'lineraw') {
+            if ($arg_spec eq 'lineraw' or $arg_spec eq 'skipline') {
               $args = [ $line ];
             } elsif ($arg_spec eq 'special') {
               $args 

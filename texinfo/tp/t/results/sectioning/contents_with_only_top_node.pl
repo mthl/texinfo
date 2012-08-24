@@ -55,6 +55,14 @@ $result_trees{'contents_with_only_top_node'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => '',
@@ -95,6 +103,7 @@ $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0]{'contents
 $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1];
 $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1];
+$result_trees{'contents_with_only_top_node'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'contents'}[1];
 $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1];
 $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'contents_with_only_top_node'}{'contents'}[1]{'extra'}{'node_content'};

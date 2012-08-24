@@ -335,6 +335,14 @@ $result_trees{'sample_utf8'} = {
               'parent' => {}
             },
             {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'misc_arg'
+                }
+              ],
               'cmdname' => 'page',
               'parent' => {}
             },
@@ -447,6 +455,14 @@ $result_trees{'sample_utf8'} = {
           'parent' => {}
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => 'sample_utf8.texi',
@@ -1617,6 +1633,14 @@ $result_trees{'sample_utf8'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -1682,6 +1706,7 @@ $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[1]{'args'
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8];
+$result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[2];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[3];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'contents'}[3]{'contents'}[1];
@@ -1703,6 +1728,7 @@ $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_t
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[10];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0];
+$result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[11];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'};
@@ -1922,6 +1948,7 @@ $result_trees{'sample_utf8'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_t
 $result_trees{'sample_utf8'}{'contents'}[8]{'extra'}{'misc_content'}[0] = $result_trees{'sample_utf8'}{'contents'}[8]{'args'}[0]{'contents'}[1];
 $result_trees{'sample_utf8'}{'contents'}[8]{'extra'}{'spaces_after_command'} = $result_trees{'sample_utf8'}{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[8]{'parent'} = $result_trees{'sample_utf8'};
+$result_trees{'sample_utf8'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[9];
 $result_trees{'sample_utf8'}{'contents'}[9]{'parent'} = $result_trees{'sample_utf8'};
 
 $result_texis{'sample_utf8'} = '\\input texinfo   @c -*-texinfo-*-

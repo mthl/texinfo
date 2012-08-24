@@ -215,6 +215,14 @@ $result_trees{'contents_at_end_document'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => 'contents_at_end_document.texi',
@@ -246,6 +254,14 @@ $result_trees{'contents_at_end_document'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -287,11 +303,13 @@ $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3];
+$result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[1];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'parent'} = $result_trees{'contents_at_end_document'};
+$result_trees{'contents_at_end_document'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[4];
 $result_trees{'contents_at_end_document'}{'contents'}[4]{'parent'} = $result_trees{'contents_at_end_document'};
 
 $result_texis{'contents_at_end_document'} = '\\input texinfo @c -*-texinfo-*-

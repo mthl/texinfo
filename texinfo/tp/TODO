@@ -7,6 +7,8 @@ Before next release
 
 Document that makeinfo do not strip leading spaces from macro bodies.
 
+"._leading_spaces($root)."
+
 
 Bugs
 ====

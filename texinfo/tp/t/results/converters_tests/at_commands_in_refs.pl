@@ -16107,6 +16107,14 @@ $result_trees{'at_commands_in_refs'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -20079,6 +20087,7 @@ $result_trees{'at_commands_in_refs'}{'contents'}[54]{'extra'}{'misc_content'}[4]
 $result_trees{'at_commands_in_refs'}{'contents'}[54]{'extra'}{'spaces_after_command'} = $result_trees{'at_commands_in_refs'}{'contents'}[54]{'args'}[0]{'contents'}[0];
 $result_trees{'at_commands_in_refs'}{'contents'}[54]{'line_nr'} = $result_trees{'at_commands_in_refs'}{'contents'}[54]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'at_commands_in_refs'}{'contents'}[54]{'parent'} = $result_trees{'at_commands_in_refs'};
+$result_trees{'at_commands_in_refs'}{'contents'}[55]{'args'}[0]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[55];
 $result_trees{'at_commands_in_refs'}{'contents'}[55]{'parent'} = $result_trees{'at_commands_in_refs'};
 
 $result_texis{'at_commands_in_refs'} = '@node Top

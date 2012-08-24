@@ -18,6 +18,14 @@ $result_trees{'text_before_and_after_bye'} = {
       'type' => 'paragraph'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => ' on bye line
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -26,9 +34,10 @@ $result_trees{'text_before_and_after_bye'} = {
 };
 $result_trees{'text_before_and_after_bye'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_and_after_bye'}{'contents'}[0];
 $result_trees{'text_before_and_after_bye'}{'contents'}[0]{'parent'} = $result_trees{'text_before_and_after_bye'};
+$result_trees{'text_before_and_after_bye'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_before_and_after_bye'}{'contents'}[1];
 $result_trees{'text_before_and_after_bye'}{'contents'}[1]{'parent'} = $result_trees{'text_before_and_after_bye'};
 
-$result_texis{'text_before_and_after_bye'} = 'Before bye @bye
+$result_texis{'text_before_and_after_bye'} = 'Before bye @bye on bye line
 ';
 
 

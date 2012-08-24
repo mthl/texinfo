@@ -10,6 +10,14 @@ $result_trees{'setcontentsaftertitlepage'} = {
     {
       'contents' => [
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'setcontentsaftertitlepage',
           'line_nr' => {
             'file_name' => '',
@@ -566,6 +574,14 @@ $result_trees{'setcontentsaftertitlepage'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => '',
@@ -593,6 +609,7 @@ $result_trees{'setcontentsaftertitlepage'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'setcontentsaftertitlepage'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[0]{'contents'}[0];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[0];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'};
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[1];
@@ -692,6 +709,7 @@ $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'args'}[0]{'contents'
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'args'}[0];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[11];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[11];
+$result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'contents'}[1];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[11];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'extra'}{'misc_content'}[0] = $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'args'}[0]{'contents'}[1];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'extra'}{'spaces_after_command'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[11]{'args'}[0]{'contents'}[0];

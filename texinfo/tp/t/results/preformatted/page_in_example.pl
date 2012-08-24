@@ -20,6 +20,14 @@ $result_trees{'page_in_example'} = {
           'type' => 'empty_line_after_command'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'page',
           'parent' => {}
         },
@@ -92,6 +100,7 @@ $result_trees{'page_in_example'} = {
 };
 $result_trees{'page_in_example'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'page_in_example'}{'contents'}[0];
 $result_trees{'page_in_example'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'page_in_example'}{'contents'}[0];
+$result_trees{'page_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'page_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'page_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'page_in_example'}{'contents'}[0];
 $result_trees{'page_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'page_in_example'}{'contents'}[0]{'contents'}[2];
 $result_trees{'page_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'page_in_example'}{'contents'}[0];

@@ -16,6 +16,14 @@ $result_trees{'contents_setcontentsaftertitlepage_before_node'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => '',
@@ -25,6 +33,14 @@ $result_trees{'contents_setcontentsaftertitlepage_before_node'} = {
           'parent' => {}
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'setcontentsaftertitlepage',
           'line_nr' => {
             'file_name' => '',
@@ -139,7 +155,9 @@ $result_trees{'contents_setcontentsaftertitlepage_before_node'} = {
   'type' => 'document_root'
 };
 $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0];
+$result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'contents'}[1];
 $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0];
+$result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'contents'}[2];
 $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0];
 $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0];
 $result_trees{'contents_setcontentsaftertitlepage_before_node'}{'contents'}[0]{'parent'} = $result_trees{'contents_setcontentsaftertitlepage_before_node'};

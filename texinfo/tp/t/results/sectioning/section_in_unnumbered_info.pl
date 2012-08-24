@@ -16,6 +16,14 @@ $result_trees{'section_in_unnumbered_info'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'setcontentsaftertitlepage',
           'line_nr' => {
             'file_name' => '',
@@ -119,6 +127,14 @@ $result_trees{'section_in_unnumbered_info'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => '',
@@ -5934,6 +5950,7 @@ $result_trees{'section_in_unnumbered_info'} = {
   'type' => 'document_root'
 };
 $result_trees{'section_in_unnumbered_info'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[0];
+$result_trees{'section_in_unnumbered_info'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[0]{'contents'}[1];
 $result_trees{'section_in_unnumbered_info'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[0];
 $result_trees{'section_in_unnumbered_info'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[0];
 $result_trees{'section_in_unnumbered_info'}{'contents'}[0]{'parent'} = $result_trees{'section_in_unnumbered_info'};
@@ -5952,6 +5969,7 @@ $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'args'}[0]{'contents'
 $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[2];
 $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[2];
+$result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'contents'}[1];
 $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[2];
 $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[2];
 $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'section_in_unnumbered_info'}{'contents'}[2]{'contents'}[3];

@@ -1054,6 +1054,14 @@ $result_trees{'lowered_subsubsection'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'lowersections',
           'parent' => {}
         }
@@ -1381,6 +1389,14 @@ $result_trees{'lowered_subsubsection'} = {
       'cmdname' => 'subsubsection',
       'contents' => [
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'raisesections',
           'parent' => {}
         },
@@ -1391,6 +1407,14 @@ $result_trees{'lowered_subsubsection'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => '',
@@ -1417,6 +1441,14 @@ $result_trees{'lowered_subsubsection'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -1614,6 +1646,7 @@ $result_trees{'lowered_subsubsection'}{'contents'}[10]{'args'}[0]{'contents'}[1]
 $result_trees{'lowered_subsubsection'}{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[10]{'args'}[0];
 $result_trees{'lowered_subsubsection'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[10];
 $result_trees{'lowered_subsubsection'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[10];
+$result_trees{'lowered_subsubsection'}{'contents'}[10]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[10]{'contents'}[1];
 $result_trees{'lowered_subsubsection'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[10];
 $result_trees{'lowered_subsubsection'}{'contents'}[10]{'extra'}{'misc_content'}[0] = $result_trees{'lowered_subsubsection'}{'contents'}[10]{'args'}[0]{'contents'}[1];
 $result_trees{'lowered_subsubsection'}{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'lowered_subsubsection'}{'contents'}[10]{'args'}[0]{'contents'}[0];
@@ -1674,12 +1707,15 @@ $result_trees{'lowered_subsubsection'}{'contents'}[14]{'args'}[0]{'contents'}[0]
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[14]{'args'}[0];
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[14]{'args'}[0];
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[14];
+$result_trees{'lowered_subsubsection'}{'contents'}[14]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[14]{'contents'}[0];
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'contents'}[0]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[14];
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'contents'}[1]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[14];
+$result_trees{'lowered_subsubsection'}{'contents'}[14]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[14]{'contents'}[2];
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'contents'}[2]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[14];
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'extra'}{'misc_content'}[0] = $result_trees{'lowered_subsubsection'}{'contents'}[14]{'args'}[0]{'contents'}[1];
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'extra'}{'spaces_after_command'} = $result_trees{'lowered_subsubsection'}{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'lowered_subsubsection'}{'contents'}[14]{'parent'} = $result_trees{'lowered_subsubsection'};
+$result_trees{'lowered_subsubsection'}{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'lowered_subsubsection'}{'contents'}[15];
 $result_trees{'lowered_subsubsection'}{'contents'}[15]{'parent'} = $result_trees{'lowered_subsubsection'};
 
 $result_texis{'lowered_subsubsection'} = '@node Top

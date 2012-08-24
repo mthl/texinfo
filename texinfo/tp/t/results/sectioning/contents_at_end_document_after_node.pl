@@ -414,6 +414,14 @@ $result_trees{'contents_at_end_document_after_node'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => 'contents_at_end_document_after_node.texi',
@@ -458,6 +466,14 @@ $result_trees{'contents_at_end_document_after_node'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -536,6 +552,7 @@ $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'args'}[3]{'
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'args'}[3];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'args'}[3]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4];
+$result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'contents'}[1];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'args'}[0]{'contents'}[1];
@@ -543,6 +560,7 @@ $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'extra'}{'no
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'args'}[3]{'contents'}[0];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[4]{'parent'} = $result_trees{'contents_at_end_document_after_node'};
+$result_trees{'contents_at_end_document_after_node'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document_after_node'}{'contents'}[5];
 $result_trees{'contents_at_end_document_after_node'}{'contents'}[5]{'parent'} = $result_trees{'contents_at_end_document_after_node'};
 
 $result_texis{'contents_at_end_document_after_node'} = '\\input texinfo @c -*-texinfo-*-

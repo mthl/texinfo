@@ -16,6 +16,14 @@ $result_trees{'section_below_unnumbered'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => '',
@@ -628,6 +636,14 @@ $result_trees{'section_below_unnumbered'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -635,6 +651,7 @@ $result_trees{'section_below_unnumbered'} = {
   'type' => 'document_root'
 };
 $result_trees{'section_below_unnumbered'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_below_unnumbered'}{'contents'}[0];
+$result_trees{'section_below_unnumbered'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_below_unnumbered'}{'contents'}[0]{'contents'}[1];
 $result_trees{'section_below_unnumbered'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_below_unnumbered'}{'contents'}[0];
 $result_trees{'section_below_unnumbered'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_below_unnumbered'}{'contents'}[0];
 $result_trees{'section_below_unnumbered'}{'contents'}[0]{'parent'} = $result_trees{'section_below_unnumbered'};
@@ -747,6 +764,7 @@ $result_trees{'section_below_unnumbered'}{'contents'}[6]{'contents'}[2]{'parent'
 $result_trees{'section_below_unnumbered'}{'contents'}[6]{'extra'}{'misc_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[6]{'args'}[0]{'contents'}[1];
 $result_trees{'section_below_unnumbered'}{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'section_below_unnumbered'}{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'section_below_unnumbered'}{'contents'}[6]{'parent'} = $result_trees{'section_below_unnumbered'};
+$result_trees{'section_below_unnumbered'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'section_below_unnumbered'}{'contents'}[7];
 $result_trees{'section_below_unnumbered'}{'contents'}[7]{'parent'} = $result_trees{'section_below_unnumbered'};
 
 $result_texis{'section_below_unnumbered'} = '

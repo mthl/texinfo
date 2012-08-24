@@ -320,6 +320,14 @@ $result_trees{'paragraphindent_and_preamble'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -385,6 +393,7 @@ $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'extra'}{'misc_cont
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'extra'}{'misc_content'}[2] = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0]{'contents'}[3];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_and_preamble'};
+$result_trees{'paragraphindent_and_preamble'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[3];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[3]{'parent'} = $result_trees{'paragraphindent_and_preamble'};
 
 $result_texis{'paragraphindent_and_preamble'} = '@copying

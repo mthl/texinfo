@@ -10,6 +10,14 @@ $result_trees{'no_argument_and_contents'} = {
     {
       'contents' => [
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'contents',
           'line_nr' => {
             'file_name' => '',
@@ -141,6 +149,7 @@ $result_trees{'no_argument_and_contents'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'no_argument_and_contents'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[0]{'contents'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'};

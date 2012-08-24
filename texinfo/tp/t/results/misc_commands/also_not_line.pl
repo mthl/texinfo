@@ -30,6 +30,14 @@ $result_trees{'also_not_line'} = {
       'type' => 'paragraph'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => ' 
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'page',
       'parent' => {}
     },
@@ -172,10 +180,26 @@ $result_trees{'also_not_line'} = {
       'type' => 'paragraph'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '         page at beginning of line
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'page',
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'page',
       'parent' => {}
     },
@@ -207,6 +231,14 @@ $result_trees{'also_not_line'} = {
       'type' => 'paragraph'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '   
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'page',
       'parent' => {}
     },
@@ -254,6 +286,14 @@ $result_trees{'also_not_line'} = {
           'text' => 'novalidate '
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => ' something
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'novalidate',
           'line_nr' => {
             'file_name' => '',
@@ -348,6 +388,14 @@ $result_trees{'also_not_line'} = {
           'text' => 'cropmarks '
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'cropmarks',
           'parent' => {}
         }
@@ -419,6 +467,7 @@ $result_trees{'also_not_line'}{'contents'}[0]{'parent'} = $result_trees{'also_no
 $result_trees{'also_not_line'}{'contents'}[1]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[2];
 $result_trees{'also_not_line'}{'contents'}[2]{'parent'} = $result_trees{'also_not_line'};
+$result_trees{'also_not_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[3];
 $result_trees{'also_not_line'}{'contents'}[3]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[4];
 $result_trees{'also_not_line'}{'contents'}[4]{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'also_not_line'}{'contents'}[4]{'contents'}[1];
@@ -447,13 +496,16 @@ $result_trees{'also_not_line'}{'contents'}[8]{'contents'}[5]{'parent'} = $result
 $result_trees{'also_not_line'}{'contents'}[8]{'contents'}[6] = $result_trees{'also_not_line'}{'contents'}[8]{'contents'}[5]{'extra'}{'spaces_after_command'};
 $result_trees{'also_not_line'}{'contents'}[8]{'contents'}[7]{'parent'} = $result_trees{'also_not_line'}{'contents'}[8];
 $result_trees{'also_not_line'}{'contents'}[8]{'parent'} = $result_trees{'also_not_line'};
+$result_trees{'also_not_line'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[9];
 $result_trees{'also_not_line'}{'contents'}[9]{'parent'} = $result_trees{'also_not_line'};
+$result_trees{'also_not_line'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[10];
 $result_trees{'also_not_line'}{'contents'}[10]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[11];
 $result_trees{'also_not_line'}{'contents'}[11]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[12]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[13];
 $result_trees{'also_not_line'}{'contents'}[13]{'parent'} = $result_trees{'also_not_line'};
+$result_trees{'also_not_line'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[14];
 $result_trees{'also_not_line'}{'contents'}[14]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[15];
 $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[1]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[1];
@@ -464,6 +516,7 @@ $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[3]{'parent'} = $resul
 $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[4]{'parent'} = $result_trees{'also_not_line'}{'contents'}[15];
 $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[5]{'parent'} = $result_trees{'also_not_line'}{'contents'}[15];
 $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[6]{'parent'} = $result_trees{'also_not_line'}{'contents'}[15];
+$result_trees{'also_not_line'}{'contents'}[15]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[7];
 $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[7]{'parent'} = $result_trees{'also_not_line'}{'contents'}[15];
 $result_trees{'also_not_line'}{'contents'}[15]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[16]{'parent'} = $result_trees{'also_not_line'};
@@ -481,6 +534,7 @@ $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[1]{'parent'} = $resul
 $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[2];
 $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[2]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19];
 $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[3]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19];
+$result_trees{'also_not_line'}{'contents'}[19]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[4];
 $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[4]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19];
 $result_trees{'also_not_line'}{'contents'}[19]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[20]{'parent'} = $result_trees{'also_not_line'};
@@ -497,20 +551,20 @@ $result_trees{'also_not_line'}{'contents'}[22]{'parent'} = $result_trees{'also_n
 
 $result_texis{'also_not_line'} = '
 
-page @page
+page @page 
 noindent @noindent refill @refill something
 
 @noindent     noindent at beginning of line
 @noindent  
 noindent on the preceding line
   @noindent    noindent after space at beginning of line
-@page
+@page         page at beginning of line
 @page
 After page on its own line.
 
-page @page
+page @page   
 noindent @noindent    refill @refill 
-novalidate @novalidate
+novalidate @novalidate something
 
 @subheading special
 

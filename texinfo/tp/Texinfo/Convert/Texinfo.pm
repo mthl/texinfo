@@ -141,6 +141,9 @@ sub _expand_cmd_args_to_texi ($;$) {
        $result .= convert ($arg, $fix) . ',';
     }
     $result =~ s/,$//;
+  } elsif ($fix and $misc_commands{$cmdname}
+      and $misc_commands{$cmdname} eq 'skipline') {
+    $result .="\n";
   } elsif (defined($cmd->{'args'})) {
     my $braces;
     $braces = 1 if ($cmd->{'args'}->[0]->{'type'} 
@@ -165,10 +168,6 @@ sub _expand_cmd_args_to_texi ($;$) {
     }
     #die "Shouldn't have args: $cmdname\n";
     $result .= '}' if ($braces);
-  }
-  if ($misc_commands{$cmdname}
-      and $misc_commands{$cmdname} eq 'skipline') {
-    $result .="\n";
   }
   $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
   #print STDERR "Result: $result\n";

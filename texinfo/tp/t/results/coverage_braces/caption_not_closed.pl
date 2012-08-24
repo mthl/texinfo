@@ -190,6 +190,14 @@ $result_trees{'caption_not_closed'} = {
       'type' => 'empty_line'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -231,6 +239,7 @@ $result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_comman
 $result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'caption_not_closed'};
 $result_trees{'caption_not_closed'}{'contents'}[1]{'parent'} = $result_trees{'caption_not_closed'};
+$result_trees{'caption_not_closed'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[2];
 $result_trees{'caption_not_closed'}{'contents'}[2]{'parent'} = $result_trees{'caption_not_closed'};
 
 $result_texis{'caption_not_closed'} = '@float Text

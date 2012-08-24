@@ -410,6 +410,14 @@ $result_trees{'style_not_closed_root_commands'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -487,6 +495,7 @@ $result_trees{'style_not_closed_root_commands'}{'contents'}[4]{'contents'}[1]{'p
 $result_trees{'style_not_closed_root_commands'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'style_not_closed_root_commands'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'style_not_closed_root_commands'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'style_not_closed_root_commands'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'style_not_closed_root_commands'}{'contents'}[4]{'parent'} = $result_trees{'style_not_closed_root_commands'};
+$result_trees{'style_not_closed_root_commands'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'style_not_closed_root_commands'}{'contents'}[5];
 $result_trees{'style_not_closed_root_commands'}{'contents'}[5]{'parent'} = $result_trees{'style_not_closed_root_commands'};
 
 $result_texis{'style_not_closed_root_commands'} = '@node Top

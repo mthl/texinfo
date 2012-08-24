@@ -16194,6 +16194,14 @@ $result_trees{'at_commands_in_refs_utf8'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -20181,6 +20189,7 @@ $result_trees{'at_commands_in_refs_utf8'}{'contents'}[54]{'extra'}{'misc_content
 $result_trees{'at_commands_in_refs_utf8'}{'contents'}[54]{'extra'}{'spaces_after_command'} = $result_trees{'at_commands_in_refs_utf8'}{'contents'}[54]{'args'}[0]{'contents'}[0];
 $result_trees{'at_commands_in_refs_utf8'}{'contents'}[54]{'line_nr'} = $result_trees{'at_commands_in_refs_utf8'}{'contents'}[54]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'at_commands_in_refs_utf8'}{'contents'}[54]{'parent'} = $result_trees{'at_commands_in_refs_utf8'};
+$result_trees{'at_commands_in_refs_utf8'}{'contents'}[55]{'args'}[0]{'parent'} = $result_trees{'at_commands_in_refs_utf8'}{'contents'}[55];
 $result_trees{'at_commands_in_refs_utf8'}{'contents'}[55]{'parent'} = $result_trees{'at_commands_in_refs_utf8'};
 
 $result_texis{'at_commands_in_refs_utf8'} = '@setfilename at_commands_in_refs_utf8.info

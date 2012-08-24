@@ -16,6 +16,14 @@ $result_trees{'novalidate_empty_refs'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'novalidate',
           'line_nr' => {
             'file_name' => '',
@@ -352,6 +360,7 @@ $result_trees{'novalidate_empty_refs'} = {
   'type' => 'document_root'
 };
 $result_trees{'novalidate_empty_refs'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'novalidate_empty_refs'}{'contents'}[0];
+$result_trees{'novalidate_empty_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'novalidate_empty_refs'}{'contents'}[0]{'contents'}[1];
 $result_trees{'novalidate_empty_refs'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'novalidate_empty_refs'}{'contents'}[0];
 $result_trees{'novalidate_empty_refs'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'novalidate_empty_refs'}{'contents'}[0];
 $result_trees{'novalidate_empty_refs'}{'contents'}[0]{'parent'} = $result_trees{'novalidate_empty_refs'};

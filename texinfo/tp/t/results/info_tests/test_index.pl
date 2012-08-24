@@ -3738,6 +3738,14 @@ $result_trees{'test_index'} = {
     },
     {},
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -4431,6 +4439,7 @@ $result_trees{'test_index'}{'contents'}[10]{'extra'}{'misc_content'}[0] = $resul
 $result_trees{'test_index'}{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'test_index'}{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'test_index'}{'contents'}[10]{'parent'} = $result_trees{'test_index'};
 $result_trees{'test_index'}{'contents'}[11] = $result_trees{'test_index'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'};
+$result_trees{'test_index'}{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'test_index'}{'contents'}[12];
 $result_trees{'test_index'}{'contents'}[12]{'parent'} = $result_trees{'test_index'};
 
 $result_texis{'test_index'} = '@node Top

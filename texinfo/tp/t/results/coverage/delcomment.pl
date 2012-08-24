@@ -123,6 +123,14 @@ $result_trees{'delcomment'} = {
       'type' => 'empty_line'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -148,6 +156,7 @@ $result_trees{'delcomment'}{'contents'}[6]{'parent'} = $result_trees{'delcomment
 $result_trees{'delcomment'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[7];
 $result_trees{'delcomment'}{'contents'}[7]{'parent'} = $result_trees{'delcomment'};
 $result_trees{'delcomment'}{'contents'}[8]{'parent'} = $result_trees{'delcomment'};
+$result_trees{'delcomment'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[9];
 $result_trees{'delcomment'}{'contents'}[9]{'parent'} = $result_trees{'delcomment'};
 
 $result_texis{'delcomment'} = '\\input texinfo

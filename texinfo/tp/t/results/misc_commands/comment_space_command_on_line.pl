@@ -660,6 +660,14 @@ $result_trees{'comment_space_command_on_line'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => ' @c bye
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -793,6 +801,7 @@ $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'extra'}{'misc_con
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'extra'}{'misc_content'}[1] = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'parent'} = $result_trees{'comment_space_command_on_line'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[3];
 $result_trees{'comment_space_command_on_line'}{'contents'}[3]{'parent'} = $result_trees{'comment_space_command_on_line'};
 
 $result_texis{'comment_space_command_on_line'} = '@settitle Settitle @ @c settittle
@@ -814,7 +823,7 @@ float
 
 @listoffloats Text @ @c listoffloats
 
-@bye
+@bye @c bye
 ';
 
 

@@ -1683,6 +1683,14 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -1998,6 +2006,7 @@ $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[12]{'contents'}[9]{'parent
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[12]{'extra'}{'misc_content'}[0] = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[12]{'args'}[0]{'contents'}[1];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[12]{'extra'}{'spaces_after_command'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[12]{'args'}[0]{'contents'}[0];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[12]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'};
+$result_trees{'char_latin1_utf8_in_refs'}{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[13];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[13]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'};
 
 $result_texis{'char_latin1_utf8_in_refs'} = '\\input texinfo

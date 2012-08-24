@@ -2946,6 +2946,14 @@ $result_trees{'complex'} = [
             'type' => 'empty_line'
           },
           {
+            'args' => [
+              {
+                'parent' => {},
+                'text' => '
+',
+                'type' => 'misc_arg'
+              }
+            ],
             'cmdname' => 'contents',
             'line_nr' => {
               'file_name' => '',
@@ -2989,6 +2997,14 @@ $result_trees{'complex'} = [
         'parent' => {}
       },
       {
+        'args' => [
+          {
+            'parent' => {},
+            'text' => '
+',
+            'type' => 'misc_arg'
+          }
+        ],
         'cmdname' => 'bye',
         'parent' => {}
       }
@@ -3554,6 +3570,7 @@ $result_trees{'complex'}[12]{'contents'}[2]{'args'}[3]{'contents'}[0]{'parent'} 
 $result_trees{'complex'}[12]{'contents'}[2]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'complex'}[12]{'contents'}[2]{'args'}[3];
 $result_trees{'complex'}[12]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'complex'}[12]{'contents'}[2];
 $result_trees{'complex'}[12]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'complex'}[12]{'contents'}[2];
+$result_trees{'complex'}[12]{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'complex'}[12]{'contents'}[2]{'contents'}[1];
 $result_trees{'complex'}[12]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'complex'}[12]{'contents'}[2];
 $result_trees{'complex'}[12]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'complex'}[12]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'complex'}[12]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'complex'}[12]{'contents'}[2]{'extra'}{'node_content'};
@@ -3561,6 +3578,7 @@ $result_trees{'complex'}[12]{'contents'}[2]{'extra'}{'nodes_manuals'}[2]{'node_c
 $result_trees{'complex'}[12]{'contents'}[2]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'complex'}[12]{'contents'}[2]{'args'}[3]{'contents'}[0];
 $result_trees{'complex'}[12]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'complex'}[12]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'complex'}[12]{'contents'}[2]{'parent'} = $result_trees{'complex'}[12];
+$result_trees{'complex'}[12]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'complex'}[12]{'contents'}[3];
 $result_trees{'complex'}[12]{'contents'}[3]{'parent'} = $result_trees{'complex'}[12];
 $result_trees{'complex'}[12]{'element_prev'} = $result_trees{'complex'}[11];
 $result_trees{'complex'}[12]{'extra'}{'element_command'} = $result_trees{'complex'}[12]{'contents'}[1];

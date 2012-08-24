@@ -431,6 +431,14 @@ $result_trees{'split_no_copying'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -514,6 +522,7 @@ $result_trees{'split_no_copying'}{'contents'}[4]{'contents'}[2]{'parent'} = $res
 $result_trees{'split_no_copying'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'split_no_copying'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'split_no_copying'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'split_no_copying'}{'contents'}[4]{'parent'} = $result_trees{'split_no_copying'};
+$result_trees{'split_no_copying'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'split_no_copying'}{'contents'}[5];
 $result_trees{'split_no_copying'}{'contents'}[5]{'parent'} = $result_trees{'split_no_copying'};
 
 $result_texis{'split_no_copying'} = '\\input texinfo

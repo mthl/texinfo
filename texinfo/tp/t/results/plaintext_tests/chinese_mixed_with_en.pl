@@ -401,6 +401,14 @@ $result_trees{'chinese_mixed_with_en'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -477,6 +485,7 @@ $result_trees{'chinese_mixed_with_en'}{'contents'}[1]{'extra'}{'node_content'}[0
 $result_trees{'chinese_mixed_with_en'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'chinese_mixed_with_en'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'chinese_mixed_with_en'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'chinese_mixed_with_en'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'chinese_mixed_with_en'}{'contents'}[1]{'parent'} = $result_trees{'chinese_mixed_with_en'};
+$result_trees{'chinese_mixed_with_en'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'chinese_mixed_with_en'}{'contents'}[2];
 $result_trees{'chinese_mixed_with_en'}{'contents'}[2]{'parent'} = $result_trees{'chinese_mixed_with_en'};
 
 $result_texis{'chinese_mixed_with_en'} = '\\input texinfo

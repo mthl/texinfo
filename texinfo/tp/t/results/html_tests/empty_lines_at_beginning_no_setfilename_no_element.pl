@@ -92,6 +92,14 @@ $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'} = {
       'type' => 'empty_line'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'bye',
       'parent' => {}
     }
@@ -110,6 +118,7 @@ $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[3];
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[3]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'};
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[4]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'};
+$result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[5];
 $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'}{'contents'}[5]{'parent'} = $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'};
 
 $result_texis{'empty_lines_at_beginning_no_setfilename_no_element'} = '\\input texinfo

@@ -2967,6 +2967,14 @@ $result_trees{'complex_split_at_node'} = [
             'type' => 'empty_line'
           },
           {
+            'args' => [
+              {
+                'parent' => {},
+                'text' => '
+',
+                'type' => 'misc_arg'
+              }
+            ],
             'cmdname' => 'contents',
             'line_nr' => {
               'file_name' => '',
@@ -3010,6 +3018,14 @@ $result_trees{'complex_split_at_node'} = [
         'parent' => {}
       },
       {
+        'args' => [
+          {
+            'parent' => {},
+            'text' => '
+',
+            'type' => 'misc_arg'
+          }
+        ],
         'cmdname' => 'bye',
         'parent' => {}
       }
@@ -3581,6 +3597,7 @@ $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'args'}[3]{'contents'}
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'args'}[3];
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[0];
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[0];
+$result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'contents'}[1];
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[0];
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'extra'}{'node_content'};
@@ -3588,6 +3605,7 @@ $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'extra'}{'nodes_manual
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'args'}[3]{'contents'}[0];
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_split_at_node'}[14]{'contents'}[0]{'parent'} = $result_trees{'complex_split_at_node'}[14];
+$result_trees{'complex_split_at_node'}[14]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[1];
 $result_trees{'complex_split_at_node'}[14]{'contents'}[1]{'parent'} = $result_trees{'complex_split_at_node'}[14];
 $result_trees{'complex_split_at_node'}[14]{'element_prev'} = $result_trees{'complex_split_at_node'}[13];
 $result_trees{'complex_split_at_node'}[14]{'extra'}{'element_command'} = $result_trees{'complex_split_at_node'}[14]{'contents'}[0];
