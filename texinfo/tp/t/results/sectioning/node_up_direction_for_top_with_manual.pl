@@ -192,13 +192,13 @@ div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
 div.smalllisp {margin-left: 3.2em}
 kbd {font-style:oblique}
-pre.display {font-family: serif}
-pre.format {font-family: serif}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
 pre.menu-preformatted {font-family: serif}
-pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
-pre.smallformat {font-family: serif; font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:nowrap}
 span.nolinebreak {white-space:nowrap}
