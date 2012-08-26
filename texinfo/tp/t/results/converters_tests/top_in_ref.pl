@@ -4719,10 +4719,10 @@ $result_converted{'xml'}->{'top_in_ref'} = '<node name="Top" spaces=" "><nodenam
 <code>&arobase;ref&lbrace;Top,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;Top,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;Top,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;Top,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;Top,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;Top,,title,file name&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;Top,,title,,manual&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;Top,,title, file name, manual&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;Top,,title, file name, manual&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;Top,,,file name,manual&rbrace;</code> <ref><xrefnodename>Top</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 </para>
 <para><code>&arobase;ref&lbrace;(pman)Top,cross ref name&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
@@ -4734,15 +4734,15 @@ $result_converted{'xml'}->{'top_in_ref'} = '<node name="Top" spaces=" "><nodenam
 <code>&arobase;ref&lbrace;(pman)Top,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)Top,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)Top,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)Top,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)Top,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)Top,,title,file name&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)Top,,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)Top,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)Top,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)Top,,,file name,manual&rbrace;</code> <ref><xrefnodename>(pman)Top</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 </para>
-<para><code>&arobase;inforef&lbrace;Top, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>Top</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<para><code>&arobase;inforef&lbrace;Top, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>Top</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;Top&rbrace;</code> <inforef><inforefnodename>Top</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;Top, cross ref name&rbrace;</code> <inforef><inforefnodename>Top</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;Top, cross ref name&rbrace;</code> <inforef><inforefnodename>Top</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;Top,,file name&rbrace;</code> <inforef><inforefnodename>Top</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
 </para>';
 

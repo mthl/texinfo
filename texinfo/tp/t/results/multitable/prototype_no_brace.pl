@@ -117,6 +117,38 @@ $result_trees{'prototype_no_brace'} = {
             'type' => 'row_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {
+            'text' => 'aa',
+            'type' => 'row_prototype'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {
+            'text' => 'b',
+            'type' => 'row_prototype'
+          },
+          {
+            'text' => '    ',
+            'type' => 'prototype_space'
+          },
+          {
+            'text' => 'cc',
+            'type' => 'row_prototype'
+          },
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {},
@@ -143,6 +175,7 @@ $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0]{'extra'}{'spac
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'prototype_no_brace'}{'contents'}[0];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'prototypes'}[1] = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'prototypes_line'}[2] = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'line_nr'} = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'parent'} = $result_trees{'prototype_no_brace'};
@@ -164,7 +197,7 @@ $result_converted{'plaintext'}->{'prototype_no_brace'} = '';
 $result_converted{'html_text'}->{'prototype_no_brace'} = '';
 
 
-$result_converted{'xml'}->{'prototype_no_brace'} = '<multitable spaces=" "><columnprototypes><columnprototype>aa</columnprototype><columnprototype><var>FF</var></columnprototype><columnprototype>b</columnprototype><columnprototype>cc</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'prototype_no_brace'} = '<multitable spaces=" "><columnprototypes><columnprototype>aa</columnprototype><columnprototype><var>FF</var></columnprototype> <columnprototype>b</columnprototype>    <columnprototype>cc</columnprototype></columnprototypes>
 </multitable>
 ';
 

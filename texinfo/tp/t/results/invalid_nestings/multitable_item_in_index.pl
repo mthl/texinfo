@@ -181,6 +181,23 @@ $result_trees{'multitable_item_in_index'} = {
             'type' => 'bracketed_multitable_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -229,6 +246,8 @@ $result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0];
+$result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'prototypes_line'}[3] = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_item_in_index'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_item_in_index'}{'contents'}[0]{'parent'} = $result_trees{'multitable_item_in_index'};
 

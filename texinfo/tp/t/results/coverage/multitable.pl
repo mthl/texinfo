@@ -651,6 +651,23 @@ $result_trees{'multitable'} = {
             'type' => 'bracketed_multitable_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -789,6 +806,8 @@ $result_trees{'multitable'}{'contents'}[3]{'extra'}{'prototypes'}[0]{'contents'}
 $result_trees{'multitable'}{'contents'}[3]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[3]{'args'}[0];
 $result_trees{'multitable'}{'contents'}[3]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'multitable'}{'contents'}[3]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[3]{'args'}[0];
+$result_trees{'multitable'}{'contents'}[3]{'extra'}{'prototypes_line'}[1] = $result_trees{'multitable'}{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable'}{'contents'}[3]{'extra'}{'prototypes_line'}[3] = $result_trees{'multitable'}{'contents'}[3]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'multitable'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[3]{'parent'} = $result_trees{'multitable'};
 
@@ -857,7 +876,7 @@ $result_converted{'html_text'}->{'multitable'} = '
 
 
 $result_converted{'xml'}->{'multitable'} = '
-<multitable spaces=" "><columnfractions><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
+<multitable spaces=" "><columnfractions line=" 0.6 0.4"><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
 <!-- c comment in multitable -->
@@ -866,7 +885,7 @@ $result_converted{'xml'}->{'multitable'} = '
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnprototypes><columnprototype>truc</columnprototype><columnprototype>bidule</columnprototype></columnprototypes>
+<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
 </para></entry></row></tbody></multitable>
 ';

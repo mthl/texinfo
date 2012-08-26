@@ -689,7 +689,7 @@ $result_converted{'xml'}->{'weird_accents'} = '<documentencoding encoding="ISO-8
 </para>
 <para><accent type="macr"><accent type="ubaraccent">a</accent></accent>
 </para>
-<para><accent type="circ"><accent type="udotaccent"><accent type="grave">r</accent></accent></accent>
+<para><accent type="circ"><accent type="udotaccent"><accent type="grave" bracketed="off">r</accent></accent></accent>
 </para>
 <para><accent type="macr"><accent type="acute"><accent type="grave">r</accent></accent></accent>
 </para></top>

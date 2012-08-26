@@ -149,6 +149,29 @@ Para
 @clickstyle  @arrow
 
 @cropmarks  after  cropmarks.
+
+@node a ,(b),(c) , (d)   
+
+@image{ a ,b,c , d,e }
+
+@image{ a ,b 
+,c , d,e }
+
+@quotation  Note  
+Q
+@end quotation
+
+@float  ff , b   
+f
+@caption{ In caption }j.
+@shortcaption{Short}  g.
+
+@multitable  @columnfractions  0.4  0.6  
+@end multitable
+
+@multitable  {aa b}  @var{cmd}gg hh j 
+@end multitable
+
 '],
 );
 

@@ -287,6 +287,18 @@ $result_trees{'inter_item_commands_in_multitable'} = {
             'type' => 'bracketed_multitable_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -963,6 +975,18 @@ $result_trees{'inter_item_commands_in_multitable'} = {
             'type' => 'bracketed_multitable_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -1032,6 +1056,7 @@ $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'contents'}[2]
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'contents'}[2];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'args'}[0];
+$result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_multitable'};
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_multitable'};
@@ -1162,6 +1187,7 @@ $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'contents'}[2]
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'contents'}[2];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'args'}[0];
+$result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'extra'}{'prototypes_line'}[1] = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[4]{'parent'} = $result_trees{'inter_item_commands_in_multitable'};
 $result_trees{'inter_item_commands_in_multitable'}{'contents'}[5]{'parent'} = $result_trees{'inter_item_commands_in_multitable'};
@@ -1283,7 +1309,7 @@ $result_converted{'html_text'}->{'inter_item_commands_in_multitable'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable spaces=" "><columnprototypes><columnprototype>truc</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype></columnprototypes>
 <beforefirstitem><!-- c comment before first item -->
 
 </beforefirstitem><tbody><row><entry command="item"><para>truc
@@ -1294,7 +1320,7 @@ $result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable s
 <!-- c last comment -->
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnfractions><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
+<multitable spaces=" "><columnfractions line=" 0.6 0.4"><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
 <!-- c comment in multitable -->
@@ -1303,7 +1329,7 @@ $result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable s
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnprototypes><columnprototype>thing</columnprototype></columnprototypes>
+<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">thing</columnprototype></columnprototypes>
 <beforefirstitem><para>Title
 <cindex index="cp"><indexterm index="cp">cindex</indexterm></cindex>
 </para></beforefirstitem><tbody><row><entry command="item"><para>thing

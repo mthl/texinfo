@@ -2106,7 +2106,7 @@ $result_converted{'xml'}->{'more_sections_than_nodes'} = '<node name="Top" space
 
 </section>
 </chapter>
-<node name="n-c3" spaces=" "><nodename>n c3</nodename><nodenext>n c3 s1 s2</nodenext><nodeprev>n c2</nodeprev><nodeup>Top</nodeup></node>
+<node name="n-c3" spaces=" "><nodename>n c3</nodename><nodenext spaces=" ">n c3 s1 s2</nodenext><nodeprev spaces=" ">n c2</nodeprev><nodeup spaces=" ">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>c3</sectiontitle>
 
 <menu> 

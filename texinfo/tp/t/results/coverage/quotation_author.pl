@@ -301,7 +301,7 @@ $result_converted{'xml'}->{'quotation_author'} = '<quotation>
 
 <author spaces=" ">First Author</author>
 <para>quotation
-<author spaces=" ">S<accent type="tilde">e</accent>cond author</author>
+<author spaces=" ">S<accent type="tilde" bracketed="off">e</accent>cond author</author>
 quotation continues.
 </para>
 </quotation>

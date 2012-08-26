@@ -1830,14 +1830,14 @@ $result_converted{'xml'}->{'things_before_setfilename'} = '<preamble>\\input tex
 <ref><xrefnodename>An anchor</xrefnodename></ref>
 </para></footnote>
 </para>
-<float name="float-anchor" type="" spaces=" "><floatname>float anchor</floatname>
+<float name="float-anchor" type="" spaces=" "><floatname spaces=" ">float anchor</floatname>
 <para>In float
 </para></float>
 
 <para>Ref to float
 <ref><xrefnodename>float anchor</xrefnodename></ref>.
 </para>
-<float name="ta" type="Text" spaces=" "><floattype>Text</floattype><floatname>ta</floatname>
+<float name="ta" type="Text" spaces=" "><floattype>Text</floattype><floatname spaces=" ">ta</floatname>
 <para>In float
 </para>
 <caption><para>ta caption</para></caption>
@@ -1851,7 +1851,7 @@ $result_converted{'xml'}->{'things_before_setfilename'} = '<preamble>\\input tex
 
 <cindex index="cp"><indexterm index="cp">index entry</indexterm></cindex>
 
-<printindex value="cp"></printindex>
+<printindex value="cp" line=" cp"></printindex>
 
 <listoffloats type="Text" spaces=" ">Text</listoffloats>
 

@@ -1072,7 +1072,7 @@ $result_converted{'html_text'}->{'test_deftypefnnewline'} = '
 
 
 $result_converted{'xml'}->{'test_deftypefnnewline'} = '
-<deftypefnnewline value="on"></deftypefnnewline>
+<deftypefnnewline value="on" line=" on"></deftypefnnewline>
 
 <node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 <deftypefun spaces=" "><definitionterm><indexterm index="fn">name</indexterm><defcategory automatic="on">Function</defcategory> <deftype>data-type</deftype> <deffunction>name</deffunction> <defparamtype>arguments...</defparamtype></definitionterm>
@@ -1083,7 +1083,7 @@ $result_converted{'xml'}->{'test_deftypefnnewline'} = '
 <definitionitem><para>fff
 </para></definitionitem></deffn>
 
-<deftypefnnewline value="off"></deftypefnnewline>
+<deftypefnnewline value="off" line=" off"></deftypefnnewline>
 
 <deftypefun spaces=" "><definitionterm><indexterm index="fn">name2</indexterm><defcategory automatic="on">Function</defcategory> <deftype>data-type2</deftype> <deffunction>name2</deffunction> <defparamtype>arguments2...</defparamtype></definitionterm>
 <definitionitem><para>aaa2

@@ -1661,6 +1661,22 @@ $result_trees{'comments_on_block_command_lines'} = {
             'type' => 'bracketed_multitable_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -2337,6 +2353,8 @@ $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'proto
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0];
+$result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'prototypes_line'}[1] = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0]{'contents'}[1];
+$result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'prototypes_line'}[3] = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0]{'contents'}[3];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'spaces_after_command'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'parent'} = $result_trees{'comments_on_block_command_lines'};
 $result_trees{'comments_on_block_command_lines'}{'contents'}[23]{'parent'} = $result_trees{'comments_on_block_command_lines'};
@@ -2577,11 +2595,11 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 <pre xml:space="preserve">in ex
 </pre></example>
 
-<multitable spaces=" "><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions><!-- c comm -->
+<multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions><!-- c comm -->
 <tbody><row><entry command="item"><para>a </para></entry><entry command="tab"><para>b
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnprototypes><columnprototype>aaa</columnprototype><columnprototype>bbb</columnprototype></columnprototypes><!-- c c -->
+<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">aaa</columnprototype> <columnprototype bracketed="on">bbb</columnprototype> </columnprototypes><!-- c c -->
 <tbody><row><entry command="item"><para>aaa </para></entry><entry command="tab"><para>bbb
 </para></entry></row></tbody></multitable>
 

@@ -3153,7 +3153,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 $result_converted{'xml'}->{'ref_in_sectioning'} = '<contents></contents>
 
 <node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
-<top spaces=" "><sectiontitle>for example <ref><xrefnodename>node</xrefnodename></ref> (<pxref><xrefnodename>node</xrefnodename></pxref>) (<pxref><xrefnodename>Top</xrefnodename><xrefinfofile>file</xrefinfofile><xrefprintedname>Manual</xrefprintedname></pxref>)</sectiontitle>
+<top spaces=" "><sectiontitle>for example <ref><xrefnodename>node</xrefnodename></ref> (<pxref><xrefnodename>node</xrefnodename></pxref>) (<pxref><xrefnodename>Top</xrefnodename><xrefinfofile spaces=" ">file</xrefinfofile><xrefprintedname spaces=" ">Manual</xrefprintedname></pxref>)</sectiontitle>
 
 <menu>
 <menuentry><menunode>node</menunode><menudescription><pre xml:space="preserve">
@@ -3162,40 +3162,40 @@ $result_converted{'xml'}->{'ref_in_sectioning'} = '<contents></contents>
 
 </top>
 <node name="node" spaces=" "><nodename>node</nodename><nodenext automatic="on">chap</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter spaces=" "><sectiontitle><xref><xrefnodename>node</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>Manual</xrefprintedname></xref>.</sectiontitle>
+<chapter spaces=" "><sectiontitle><xref><xrefnodename>node</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">Manual</xrefprintedname></xref>.</sectiontitle>
 
 </chapter>
 <node name="chap" spaces=" "><nodename>chap</nodename><nodeprev automatic="on">node</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle><ref><xrefnodename>node</xrefnodename></ref> just node</sectiontitle>
 
-<section spaces=" "><sectiontitle><ref><xrefnodename>node</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>  node, crossref arg2</sectiontitle>
+<section spaces=" "><sectiontitle><ref><xrefnodename>node</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname></ref>  node, crossref arg2</sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle><ref><xrefnodename><code>node</code></xrefnodename><xrefprinteddesc><samp>title</samp></xrefprinteddesc></ref>  code node, samptitle arg3</sectiontitle>
+<section spaces=" "><sectiontitle><ref><xrefnodename><code>node</code></xrefnodename><xrefprinteddesc spaces=" "><samp>title</samp></xrefprinteddesc></ref>  code node, samptitle arg3</sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle><ref><xrefnodename><code>node</code></xrefnodename><xrefinfofile>file name</xrefinfofile></ref> code node, file name</sectiontitle>
+<section spaces=" "><sectiontitle><ref><xrefnodename><code>node</code></xrefnodename><xrefinfofile spaces=" ">file name</xrefinfofile></ref> code node, file name</sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle><ref><xrefnodename>node</xrefnodename><xrefprintedname>Manual </xrefprintedname></ref> node and manual</sectiontitle>
+<section spaces=" "><sectiontitle><ref><xrefnodename>node</xrefnodename><xrefprintedname spaces=" ">Manual </xrefprintedname></ref> node and manual</sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle><ref><xrefnodename>Top</xrefnodename><xrefprintedname>Manual </xrefprintedname></ref> Top and manual</sectiontitle>
+<section spaces=" "><sectiontitle><ref><xrefnodename>Top</xrefnodename><xrefprintedname spaces=" ">Manual </xrefprintedname></ref> Top and manual</sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle><ref><xrefprintedname>Manual </xrefprintedname></ref> no node just manual</sectiontitle>
+<section spaces=" "><sectiontitle><ref><xrefprintedname spaces=" ">Manual </xrefprintedname></ref> no node just manual</sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle><ref><xrefinfofile>file name</xrefinfofile></ref> no node just file name</sectiontitle>
+<section spaces=" "><sectiontitle><ref><xrefinfofile spaces=" ">file name</xrefinfofile></ref> no node just file name</sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle><inforef><inforefnodename>a</inforefnodename><inforefrefname>b</inforefrefname><inforefinfoname>c</inforefinfoname></inforef> inforef a b c </sectiontitle>
+<section spaces=" "><sectiontitle><inforef><inforefnodename>a</inforefnodename><inforefrefname spaces=" ">b</inforefrefname><inforefinfoname spaces=" ">c</inforefinfoname></inforef> inforef a b c </sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle>(<pxref><xrefnodename>Top </xrefnodename><xrefinfofile>file name </xrefinfofile></pxref>) pxref Top file name, spaces</sectiontitle>
+<section spaces=" "><sectiontitle>(<pxref><xrefnodename>Top </xrefnodename><xrefinfofile spaces=" ">file name </xrefinfofile></pxref>) pxref Top file name, spaces</sectiontitle>
 
 </section>
-<section spaces=" "><sectiontitle>(<pxref><xrefinfofile>file name </xrefinfofile></pxref>) pxref file name only, spaces</sectiontitle>
+<section spaces=" "><sectiontitle>(<pxref><xrefinfofile spaces=" ">file name </xrefinfofile></pxref>) pxref file name only, spaces</sectiontitle>
 
 </section>
 <section spaces=" "><sectiontitle><xref><xrefnodename>Top</xrefnodename><xrefinfofile>filename</xrefinfofile></xref>, xref Top filename only, no spaces</sectiontitle>

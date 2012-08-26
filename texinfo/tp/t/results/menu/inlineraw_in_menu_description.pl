@@ -572,7 +572,7 @@ $result_converted{'xml'}->{'inlineraw_in_menu_description'} = '<node name="Top" 
 
 <menu>
 <menuentry><menunode>(manual)</menunode><menudescription><pre xml:space="preserve">
-<inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent>in inline raw
+<inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent spaces=" ">in inline raw
 
 end inlineraw</inlinerawcontent></inlineraw>
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">

@@ -218,6 +218,23 @@ $result_trees{'w_in_multitable'} = {
             'type' => 'bracketed_multitable_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -271,6 +288,8 @@ $result_trees{'w_in_multitable'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'conte
 $result_trees{'w_in_multitable'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'w_in_multitable'}{'contents'}[0]{'args'}[0];
 $result_trees{'w_in_multitable'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'w_in_multitable'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'w_in_multitable'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'w_in_multitable'}{'contents'}[0]{'args'}[0];
+$result_trees{'w_in_multitable'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'w_in_multitable'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'w_in_multitable'}{'contents'}[0]{'extra'}{'prototypes_line'}[3] = $result_trees{'w_in_multitable'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'w_in_multitable'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'w_in_multitable'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'w_in_multitable'}{'contents'}[0]{'parent'} = $result_trees{'w_in_multitable'};
 
@@ -301,7 +320,7 @@ $result_converted{'html_text'}->{'w_in_multitable'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'w_in_multitable'} = '<multitable spaces=" "><columnprototypes><columnprototype>aaaaaaaaa</columnprototype><columnprototype>bbbbbbbbbbb</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'w_in_multitable'} = '<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">aaaaaaaaa</columnprototype> <columnprototype bracketed="on">bbbbbbbbbbb</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><para><w>aaaaaaaa
 bbbbbbbbbb</w>
 </para></entry><entry command="tab"><para>gg

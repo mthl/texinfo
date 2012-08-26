@@ -765,22 +765,22 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 <findex index="fn"><indexterm index="fn">&textldquo;</indexterm></findex>
 <findex index="fn"><indexterm index="fn">&textndash;foption</indexterm></findex>
 
-<para>&arobase;&quot;u <accent type="uml">u</accent> 
+<para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
-&arobase;~n <accent type="tilde">n</accent>
-&arobase;^a <accent type="circ">a</accent>
-&arobase;&textrsquo;e <accent type="acute">e</accent>
-&arobase;=o <accent type="macr">o</accent>
-&arobase;&textlsquo;i <accent type="grave">i</accent>
+&arobase;~n <accent type="tilde" bracketed="off">n</accent>
+&arobase;^a <accent type="circ" bracketed="off">a</accent>
+&arobase;&textrsquo;e <accent type="acute" bracketed="off">e</accent>
+&arobase;=o <accent type="macr" bracketed="off">o</accent>
+&arobase;&textlsquo;i <accent type="grave" bracketed="off">i</accent>
 &arobase;&textrsquo;&lbrace;e&rbrace; <accent type="acute">e</accent>
 &arobase;&textrsquo;&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
 &arobase;dotless&lbrace;i&rbrace; <dotless>i</dotless>
 &arobase;dotless&lbrace;j&rbrace; <dotless>j</dotless>
-&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
+&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr" bracketed="off">E</accent></accent> 
 &arobase;l&lbrace;&rbrace; &lslash;
-&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
-&arobase;,c <accent type="cedil">c</accent>
-&arobase;,c&arobase;&quot;u <accent type="cedil">c</accent><accent type="uml">u</accent> &linebreak;
+&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent>
+&arobase;,c <accent type="cedil" bracketed="off">c</accent>
+&arobase;,c&arobase;&quot;u <accent type="cedil" bracketed="off">c</accent><accent type="uml" bracketed="off">u</accent> &linebreak;
 </para>
 <para>&arobase;* &linebreak;
 &arobase; followed by a space
@@ -862,8 +862,8 @@ but , ,&noeos;
 </para>
 <para><code>&arobase;acronym&lbrace;--a,an accronym&rbrace;</code> <acronym><acronymword>&textndash;a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
 <code>&arobase;acronym&lbrace;--a&rbrace;</code> <acronym><acronymword>&textndash;a</acronymword></acronym>
-<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>&textndash;. &comma;A.</abbrword><abbrdesc><accent type="acute">E</accent>tude Autonome </abbrdesc></abbr>
-<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>&textndash;. &comma;A.</abbrword></abbr>
+<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute" bracketed="off">E</accent>&textndash;. &comma;A.</abbrword><abbrdesc spaces=" "><accent type="acute" bracketed="off">E</accent>tude Autonome </abbrdesc></abbr>
+<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute" bracketed="off">E</accent>&textndash;. &comma;A.</abbrword></abbr>
 <code>&arobase;asis&lbrace;--a&rbrace;</code> <asis>&textndash;a</asis>
 <code>&arobase;b&lbrace;--a&rbrace;</code> <b>&textndash;a</b>
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>&textndash;a</cite>
@@ -936,13 +936,13 @@ but , ,&noeos;
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a&textndash;lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 </para>
-<sp value="2"></sp>
+<sp value="2" line=" 2"></sp>
 
 <para><code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="arrow"/> A</clicksequence>
-<clickstyle command="result">@result</clickstyle>
+<clickstyle command="result" line=" @result">@result</clickstyle>
 After clickstyle &result;
 <code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="result"/> A</clicksequence>
-<clickstyle command="arrow">@arrow</clickstyle>
+<clickstyle command="arrow" line=" @arrow">@arrow</clickstyle>
 </para>
 <quotation> 
 <para>A quot&textmdash;ation
@@ -972,8 +972,8 @@ After clickstyle &result;
 <para>a Warning.
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>something <accent type="acute">e</accent> &tex;</quotationtype>
-<para>The something <accent type="acute">e</accent> &tex; is here.
+<quotation spaces=" "><quotationtype>something <accent type="acute" bracketed="off">e</accent> &tex;</quotationtype>
+<para>The something <accent type="acute" bracketed="off">e</accent> &tex; is here.
 </para></quotation>
 
 <quotation spaces=" "><quotationtype>&arobase; at the end of line <spacecmd type="nl"/></quotationtype><para>A &arobase; at the end of the &arobase;quotation line.
@@ -1035,7 +1035,7 @@ After clickstyle &result;
 <listitem><para>e&textndash;numerate
 </para></listitem></enumerate>
 
-<multitable spaces=" "><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+<multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
 <!-- c comment in multitable -->
@@ -1044,7 +1044,7 @@ After clickstyle &result;
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnprototypes><columnprototype>truc</columnprototype><columnprototype>bidule</columnprototype></columnprototypes>
+<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
 </para></entry></row></tbody></multitable>
 
@@ -1091,27 +1091,27 @@ After clickstyle &result;
  
 <deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <cindex index="cp"><indexterm index="cp">index entry within deffn</indexterm></cindex>
-<deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction>log trap</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction>log trap1</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap2</indexterm><defcategory>Command</defcategory> <deffunction>log trap2</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory> <deffunction>bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory>truc</defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on"></defcategory></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
-<deffnx><definitionterm><defcategory>truc</defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam>h i</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 </deffn>
 
 <deffn spaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
@@ -1119,11 +1119,11 @@ After clickstyle &result;
 
 <deffn spaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
 <!-- c comment between deffn and deffnx -->
-<deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
 <deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
@@ -1164,7 +1164,7 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;efmac
 </para></definitionitem></defmac>
 
-<defspec spaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defspec spaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efspec
 </para></definitionitem></defspec>
 
@@ -1172,7 +1172,7 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;efvar
 </para></definitionitem></defvar>
 
-<defopt spaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
+<defopt spaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efopt
 </para></definitionitem></defopt>
 
@@ -1184,11 +1184,11 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;eftypevar
 </para></definitionitem></deftypevar>
 
-<defivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
+<defivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efivar
 </para></definitionitem></defivar>
 
-<deftypeivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<deftypeivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;eftypeivar
 </para></definitionitem></deftypeivar>
 
@@ -1200,10 +1200,10 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;eftypemethod
 </para></definitionitem></deftypemethod>
 
-<para><code>&arobase;xref&lbrace;c---hapter&arobase;&arobase;, cross r---ef name&arobase;&arobase;, t---itle&arobase;&arobase;, file n---ame&arobase;&arobase;, ma---nual&arobase;&arobase;&rbrace;</code> <xref><xrefnodename>c---hapter&arobase;</xrefnodename><xrefinfoname>cross r&textmdash;ef name&arobase;</xrefinfoname><xrefprinteddesc>t&textmdash;itle&arobase;</xrefprinteddesc><xrefinfofile>file n---ame&arobase;</xrefinfofile><xrefprintedname>ma&textmdash;nual&arobase;</xrefprintedname></xref>.
-<code>&arobase;ref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;pxref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <pxref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></pxref>
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<para><code>&arobase;xref&lbrace;c---hapter&arobase;&arobase;, cross r---ef name&arobase;&arobase;, t---itle&arobase;&arobase;, file n---ame&arobase;&arobase;, ma---nual&arobase;&arobase;&rbrace;</code> <xref><xrefnodename>c---hapter&arobase;</xrefnodename><xrefinfoname spaces=" ">cross r&textmdash;ef name&arobase;</xrefinfoname><xrefprinteddesc spaces=" ">t&textmdash;itle&arobase;</xrefprinteddesc><xrefinfofile spaces=" ">file n---ame&arobase;</xrefinfofile><xrefprintedname spaces=" ">ma&textmdash;nual&arobase;</xrefprintedname></xref>.
+<code>&arobase;ref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname><xrefprinteddesc spaces=" ">title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
+<code>&arobase;pxref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <pxref><xrefnodename>chapter</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname><xrefprinteddesc spaces=" ">title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></pxref>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 </para>
 <para><code>&arobase;ref&lbrace;chapter&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename></ref>
 <code>&arobase;xref&lbrace;chapter&rbrace;</code> <xref><xrefnodename>chapter</xrefnodename></xref>.
@@ -1212,8 +1212,8 @@ After clickstyle &result;
 </para>
 <para><code>&arobase;ref&lbrace;s--ect&arobase;comma&lbrace;&rbrace;ion, a &arobase;comma&lbrace;&rbrace; in cross
 ref, a comma&arobase;comma&lbrace;&rbrace; in title, a comma&arobase;comma&lbrace;&rbrace; in file, a &arobase;comma&lbrace;&rbrace; in manual name &rbrace;</code>
-<ref><xrefnodename>s--ect&comma;ion</xrefnodename><xrefinfoname>a &comma; in cross
-ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xrefinfofile>a comma&comma; in file</xrefinfofile><xrefprintedname>a &comma; in manual name </xrefprintedname></ref>
+<ref><xrefnodename>s--ect&comma;ion</xrefnodename><xrefinfoname spaces=" ">a &comma; in cross
+ref</xrefinfoname><xrefprinteddesc spaces=" ">a comma&comma; in title</xrefprinteddesc><xrefinfofile spaces=" ">a comma&comma; in file</xrefinfofile><xrefprintedname spaces=" ">a &comma; in manual name </xrefprintedname></ref>
 </para>
 <para><code>&arobase;ref&lbrace;chapter,cross ref name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
 <code>&arobase;ref&lbrace;chapter,,title&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></ref>
@@ -1224,10 +1224,10 @@ ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xre
 <code>&arobase;ref&lbrace;chapter,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;chapter,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;chapter,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;chapter,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,,title,file name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;chapter,,title,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;chapter,,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;chapter,,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,,,file name,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 </para>
 
@@ -1240,27 +1240,27 @@ ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xre
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)anode,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)anode,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,title,file name&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)anode,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)anode,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,,file name,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 </para>
 
-<para><code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<para><code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;chapter&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;chapter, cross ref name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;chapter,,file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
-<code>&arobase;inforef&lbrace;node, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;node, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;node&rbrace;</code> <inforef><inforefnodename>node</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;node, cross ref name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;node, cross ref name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;node,,file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name, spurious arg&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name, spurious arg&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name, spurious arg</inforefinfoname></inforef>
 </para>
 <para><code>&arobase;inforef&lbrace;s--ect&arobase;comma&lbrace;&rbrace;ion, a &arobase;comma&lbrace;&rbrace; in cross
 ref, a comma&arobase;comma&lbrace;&rbrace; in file&rbrace;</code>
-<inforef><inforefnodename>s--ect&comma;ion</inforefnodename><inforefrefname>a &comma; in cross
-ref</inforefrefname><inforefinfoname>a comma&comma; in file</inforefinfoname></inforef>
+<inforef><inforefnodename>s--ect&comma;ion</inforefnodename><inforefrefname spaces=" ">a &comma; in cross
+ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefinfoname></inforef>
 </para>
 
 <table commandarg="asis" spaces=" ">
@@ -1343,7 +1343,7 @@ docbook &textrdquo;
 <title spaces=" ">title &textndash;a</title>
 <subtitle spaces=" ">formatting subtitle &textndash;a</subtitle>
 <subtitle spaces=" ">subtitle 2 &textndash;a</subtitle>
-<author spaces=" ">author1 &textndash;a with accents in name T<accent type="acute">e</accent><accent type="cedil">c</accent>a</author>
+<author spaces=" ">author1 &textndash;a with accents in name T<accent type="acute" bracketed="off">e</accent><accent type="cedil" bracketed="off">c</accent>a</author>
 <author spaces=" ">author2 &textndash;a</author>
 <para>In titlepage
 </para>
@@ -1367,22 +1367,22 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 <findex index="fn"><indexterm index="fn">&textldquo;</indexterm></findex>
 <findex index="fn"><indexterm index="fn">&textndash;foption</indexterm></findex>
 
-<para>&arobase;&quot;u <accent type="uml">u</accent> 
+<para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
-&arobase;~n <accent type="tilde">n</accent>
-&arobase;^a <accent type="circ">a</accent>
-&arobase;&textrsquo;e <accent type="acute">e</accent>
-&arobase;=o <accent type="macr">o</accent>
-&arobase;&textlsquo;i <accent type="grave">i</accent>
+&arobase;~n <accent type="tilde" bracketed="off">n</accent>
+&arobase;^a <accent type="circ" bracketed="off">a</accent>
+&arobase;&textrsquo;e <accent type="acute" bracketed="off">e</accent>
+&arobase;=o <accent type="macr" bracketed="off">o</accent>
+&arobase;&textlsquo;i <accent type="grave" bracketed="off">i</accent>
 &arobase;&textrsquo;&lbrace;e&rbrace; <accent type="acute">e</accent>
 &arobase;&textrsquo;&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
 &arobase;dotless&lbrace;i&rbrace; <dotless>i</dotless>
 &arobase;dotless&lbrace;j&rbrace; <dotless>j</dotless>
-&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
+&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr" bracketed="off">E</accent></accent> 
 &arobase;l&lbrace;&rbrace; &lslash;
-&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
-&arobase;,c <accent type="cedil">c</accent>
-&arobase;,c&arobase;&quot;u <accent type="cedil">c</accent><accent type="uml">u</accent> &linebreak;
+&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent>
+&arobase;,c <accent type="cedil" bracketed="off">c</accent>
+&arobase;,c&arobase;&quot;u <accent type="cedil" bracketed="off">c</accent><accent type="uml" bracketed="off">u</accent> &linebreak;
 </para>
 <para>&arobase;* &linebreak;
 &arobase; followed by a space
@@ -1464,8 +1464,8 @@ but , ,&noeos;
 </para>
 <para><code>&arobase;acronym&lbrace;--a,an accronym&rbrace;</code> <acronym><acronymword>&textndash;a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
 <code>&arobase;acronym&lbrace;--a&rbrace;</code> <acronym><acronymword>&textndash;a</acronymword></acronym>
-<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>&textndash;. &comma;A.</abbrword><abbrdesc><accent type="acute">E</accent>tude Autonome </abbrdesc></abbr>
-<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>&textndash;. &comma;A.</abbrword></abbr>
+<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute" bracketed="off">E</accent>&textndash;. &comma;A.</abbrword><abbrdesc spaces=" "><accent type="acute" bracketed="off">E</accent>tude Autonome </abbrdesc></abbr>
+<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute" bracketed="off">E</accent>&textndash;. &comma;A.</abbrword></abbr>
 <code>&arobase;asis&lbrace;--a&rbrace;</code> <asis>&textndash;a</asis>
 <code>&arobase;b&lbrace;--a&rbrace;</code> <b>&textndash;a</b>
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>&textndash;a</cite>
@@ -1538,13 +1538,13 @@ but , ,&noeos;
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a&textndash;lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 </para>
-<sp value="2"></sp>
+<sp value="2" line=" 2"></sp>
 
 <para><code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="arrow"/> A</clicksequence>
-<clickstyle command="result">@result</clickstyle>
+<clickstyle command="result" line=" @result">@result</clickstyle>
 After clickstyle &result;
 <code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="result"/> A</clicksequence>
-<clickstyle command="arrow">@arrow</clickstyle>
+<clickstyle command="arrow" line=" @arrow">@arrow</clickstyle>
 </para>
 <quotation> 
 <para>A quot&textmdash;ation
@@ -1574,8 +1574,8 @@ After clickstyle &result;
 <para>a Warning.
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>something <accent type="acute">e</accent> &tex;</quotationtype>
-<para>The something <accent type="acute">e</accent> &tex; is here.
+<quotation spaces=" "><quotationtype>something <accent type="acute" bracketed="off">e</accent> &tex;</quotationtype>
+<para>The something <accent type="acute" bracketed="off">e</accent> &tex; is here.
 </para></quotation>
 
 <quotation spaces=" "><quotationtype>&arobase; at the end of line <spacecmd type="nl"/></quotationtype><para>A &arobase; at the end of the &arobase;quotation line.
@@ -1637,7 +1637,7 @@ After clickstyle &result;
 <listitem><para>e&textndash;numerate
 </para></listitem></enumerate>
 
-<multitable spaces=" "><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+<multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
 <!-- c comment in multitable -->
@@ -1646,7 +1646,7 @@ After clickstyle &result;
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnprototypes><columnprototype>truc</columnprototype><columnprototype>bidule</columnprototype></columnprototypes>
+<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
 </para></entry></row></tbody></multitable>
 
@@ -1693,27 +1693,27 @@ After clickstyle &result;
  
 <deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <cindex index="cp"><indexterm index="cp">index entry within deffn</indexterm></cindex>
-<deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction>log trap</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction>log trap1</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap2</indexterm><defcategory>Command</defcategory> <deffunction>log trap2</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory> <deffunction>bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory>truc</defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on"></defcategory></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
-<deffnx><definitionterm><defcategory>truc</defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam>h i</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 </deffn>
 
 <deffn spaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
@@ -1721,11 +1721,11 @@ After clickstyle &result;
 
 <deffn spaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
 <!-- c comment between deffn and deffnx -->
-<deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
 <deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
@@ -1766,7 +1766,7 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;efmac
 </para></definitionitem></defmac>
 
-<defspec spaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defspec spaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efspec
 </para></definitionitem></defspec>
 
@@ -1774,7 +1774,7 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;efvar
 </para></definitionitem></defvar>
 
-<defopt spaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
+<defopt spaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efopt
 </para></definitionitem></defopt>
 
@@ -1786,11 +1786,11 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;eftypevar
 </para></definitionitem></deftypevar>
 
-<defivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
+<defivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efivar
 </para></definitionitem></defivar>
 
-<deftypeivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<deftypeivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;eftypeivar
 </para></definitionitem></deftypeivar>
 
@@ -1802,10 +1802,10 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;eftypemethod
 </para></definitionitem></deftypemethod>
 
-<para><code>&arobase;xref&lbrace;c---hapter&arobase;&arobase;, cross r---ef name&arobase;&arobase;, t---itle&arobase;&arobase;, file n---ame&arobase;&arobase;, ma---nual&arobase;&arobase;&rbrace;</code> <xref><xrefnodename>c---hapter&arobase;</xrefnodename><xrefinfoname>cross r&textmdash;ef name&arobase;</xrefinfoname><xrefprinteddesc>t&textmdash;itle&arobase;</xrefprinteddesc><xrefinfofile>file n---ame&arobase;</xrefinfofile><xrefprintedname>ma&textmdash;nual&arobase;</xrefprintedname></xref>.
-<code>&arobase;ref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;pxref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <pxref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></pxref>
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<para><code>&arobase;xref&lbrace;c---hapter&arobase;&arobase;, cross r---ef name&arobase;&arobase;, t---itle&arobase;&arobase;, file n---ame&arobase;&arobase;, ma---nual&arobase;&arobase;&rbrace;</code> <xref><xrefnodename>c---hapter&arobase;</xrefnodename><xrefinfoname spaces=" ">cross r&textmdash;ef name&arobase;</xrefinfoname><xrefprinteddesc spaces=" ">t&textmdash;itle&arobase;</xrefprinteddesc><xrefinfofile spaces=" ">file n---ame&arobase;</xrefinfofile><xrefprintedname spaces=" ">ma&textmdash;nual&arobase;</xrefprintedname></xref>.
+<code>&arobase;ref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname><xrefprinteddesc spaces=" ">title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
+<code>&arobase;pxref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <pxref><xrefnodename>chapter</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname><xrefprinteddesc spaces=" ">title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></pxref>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 </para>
 <para><code>&arobase;ref&lbrace;chapter&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename></ref>
 <code>&arobase;xref&lbrace;chapter&rbrace;</code> <xref><xrefnodename>chapter</xrefnodename></xref>.
@@ -1814,8 +1814,8 @@ After clickstyle &result;
 </para>
 <para><code>&arobase;ref&lbrace;s--ect&arobase;comma&lbrace;&rbrace;ion, a &arobase;comma&lbrace;&rbrace; in cross
 ref, a comma&arobase;comma&lbrace;&rbrace; in title, a comma&arobase;comma&lbrace;&rbrace; in file, a &arobase;comma&lbrace;&rbrace; in manual name &rbrace;</code>
-<ref><xrefnodename>s--ect&comma;ion</xrefnodename><xrefinfoname>a &comma; in cross
-ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xrefinfofile>a comma&comma; in file</xrefinfofile><xrefprintedname>a &comma; in manual name </xrefprintedname></ref>
+<ref><xrefnodename>s--ect&comma;ion</xrefnodename><xrefinfoname spaces=" ">a &comma; in cross
+ref</xrefinfoname><xrefprinteddesc spaces=" ">a comma&comma; in title</xrefprinteddesc><xrefinfofile spaces=" ">a comma&comma; in file</xrefinfofile><xrefprintedname spaces=" ">a &comma; in manual name </xrefprintedname></ref>
 </para>
 <para><code>&arobase;ref&lbrace;chapter,cross ref name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
 <code>&arobase;ref&lbrace;chapter,,title&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></ref>
@@ -1826,10 +1826,10 @@ ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xre
 <code>&arobase;ref&lbrace;chapter,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;chapter,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;chapter,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;chapter,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,,title,file name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;chapter,,title,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;chapter,,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;chapter,,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,,,file name,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 </para>
 
@@ -1842,27 +1842,27 @@ ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xre
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)anode,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)anode,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,title,file name&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)anode,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)anode,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,,file name,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 </para>
 
-<para><code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<para><code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;chapter&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;chapter, cross ref name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;chapter,,file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
-<code>&arobase;inforef&lbrace;node, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;node, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;node&rbrace;</code> <inforef><inforefnodename>node</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;node, cross ref name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;node, cross ref name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;node,,file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name, spurious arg&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name, spurious arg&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name, spurious arg</inforefinfoname></inforef>
 </para>
 <para><code>&arobase;inforef&lbrace;s--ect&arobase;comma&lbrace;&rbrace;ion, a &arobase;comma&lbrace;&rbrace; in cross
 ref, a comma&arobase;comma&lbrace;&rbrace; in file&rbrace;</code>
-<inforef><inforefnodename>s--ect&comma;ion</inforefnodename><inforefrefname>a &comma; in cross
-ref</inforefrefname><inforefinfoname>a comma&comma; in file</inforefinfoname></inforef>
+<inforef><inforefnodename>s--ect&comma;ion</inforefnodename><inforefrefname spaces=" ">a &comma; in cross
+ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefinfoname></inforef>
 </para>
 
 <table commandarg="asis" spaces=" ">
@@ -1969,22 +1969,22 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 <findex index="fn"><indexterm index="fn">&textldquo;</indexterm></findex>
 <findex index="fn"><indexterm index="fn">&textndash;foption</indexterm></findex>
 
-<para>&arobase;&quot;u <accent type="uml">u</accent> 
+<para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
-&arobase;~n <accent type="tilde">n</accent>
-&arobase;^a <accent type="circ">a</accent>
-&arobase;&textrsquo;e <accent type="acute">e</accent>
-&arobase;=o <accent type="macr">o</accent>
-&arobase;&textlsquo;i <accent type="grave">i</accent>
+&arobase;~n <accent type="tilde" bracketed="off">n</accent>
+&arobase;^a <accent type="circ" bracketed="off">a</accent>
+&arobase;&textrsquo;e <accent type="acute" bracketed="off">e</accent>
+&arobase;=o <accent type="macr" bracketed="off">o</accent>
+&arobase;&textlsquo;i <accent type="grave" bracketed="off">i</accent>
 &arobase;&textrsquo;&lbrace;e&rbrace; <accent type="acute">e</accent>
 &arobase;&textrsquo;&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
 &arobase;dotless&lbrace;i&rbrace; <dotless>i</dotless>
 &arobase;dotless&lbrace;j&rbrace; <dotless>j</dotless>
-&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
+&arobase;&textlsquo;&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr" bracketed="off">E</accent></accent> 
 &arobase;l&lbrace;&rbrace; &lslash;
-&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
-&arobase;,c <accent type="cedil">c</accent>
-&arobase;,c&arobase;&quot;u <accent type="cedil">c</accent><accent type="uml">u</accent> &linebreak;
+&arobase;,&lbrace;&arobase;&textrsquo;C&rbrace; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent>
+&arobase;,c <accent type="cedil" bracketed="off">c</accent>
+&arobase;,c&arobase;&quot;u <accent type="cedil" bracketed="off">c</accent><accent type="uml" bracketed="off">u</accent> &linebreak;
 </para>
 <para>&arobase;* &linebreak;
 &arobase; followed by a space
@@ -2066,8 +2066,8 @@ but , ,&noeos;
 </para>
 <para><code>&arobase;acronym&lbrace;--a,an accronym&rbrace;</code> <acronym><acronymword>&textndash;a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
 <code>&arobase;acronym&lbrace;--a&rbrace;</code> <acronym><acronymword>&textndash;a</acronymword></acronym>
-<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>&textndash;. &comma;A.</abbrword><abbrdesc><accent type="acute">E</accent>tude Autonome </abbrdesc></abbr>
-<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>&textndash;. &comma;A.</abbrword></abbr>
+<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute" bracketed="off">E</accent>&textndash;. &comma;A.</abbrword><abbrdesc spaces=" "><accent type="acute" bracketed="off">E</accent>tude Autonome </abbrdesc></abbr>
+<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute" bracketed="off">E</accent>&textndash;. &comma;A.</abbrword></abbr>
 <code>&arobase;asis&lbrace;--a&rbrace;</code> <asis>&textndash;a</asis>
 <code>&arobase;b&lbrace;--a&rbrace;</code> <b>&textndash;a</b>
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>&textndash;a</cite>
@@ -2140,13 +2140,13 @@ but , ,&noeos;
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a&textndash;lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 </para>
-<sp value="2"></sp>
+<sp value="2" line=" 2"></sp>
 
 <para><code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="arrow"/> A</clicksequence>
-<clickstyle command="result">@result</clickstyle>
+<clickstyle command="result" line=" @result">@result</clickstyle>
 After clickstyle &result;
 <code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="result"/> A</clicksequence>
-<clickstyle command="arrow">@arrow</clickstyle>
+<clickstyle command="arrow" line=" @arrow">@arrow</clickstyle>
 </para>
 <quotation> 
 <para>A quot&textmdash;ation
@@ -2176,8 +2176,8 @@ After clickstyle &result;
 <para>a Warning.
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>something <accent type="acute">e</accent> &tex;</quotationtype>
-<para>The something <accent type="acute">e</accent> &tex; is here.
+<quotation spaces=" "><quotationtype>something <accent type="acute" bracketed="off">e</accent> &tex;</quotationtype>
+<para>The something <accent type="acute" bracketed="off">e</accent> &tex; is here.
 </para></quotation>
 
 <quotation spaces=" "><quotationtype>&arobase; at the end of line <spacecmd type="nl"/></quotationtype><para>A &arobase; at the end of the &arobase;quotation line.
@@ -2239,7 +2239,7 @@ After clickstyle &result;
 <listitem><para>e&textndash;numerate
 </para></listitem></enumerate>
 
-<multitable spaces=" "><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+<multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
 <!-- c comment in multitable -->
@@ -2248,7 +2248,7 @@ After clickstyle &result;
 </para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnprototypes><columnprototype>truc</columnprototype><columnprototype>bidule</columnprototype></columnprototypes>
+<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
 </para></entry></row></tbody></multitable>
 
@@ -2295,27 +2295,27 @@ After clickstyle &result;
  
 <deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <cindex index="cp"><indexterm index="cp">index entry within deffn</indexterm></cindex>
-<deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction>log trap</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction>log trap1</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap2</indexterm><defcategory>Command</defcategory> <deffunction>log trap2</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory> <deffunction>bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory>truc</defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on"></defcategory></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
-<deffnx><definitionterm><defcategory>truc</defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam>h i</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 </deffn>
 
 <deffn spaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
@@ -2323,11 +2323,11 @@ After clickstyle &result;
 
 <deffn spaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
 <!-- c comment between deffn and deffnx -->
-<deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 
 <deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <definitionitem><!-- c comment -->
 <para>text in def item for second def item
 </para></definitionitem></deffn>
@@ -2368,7 +2368,7 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;efmac
 </para></definitionitem></defmac>
 
-<defspec spaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<defspec spaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;efspec
 </para></definitionitem></defspec>
 
@@ -2376,7 +2376,7 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;efvar
 </para></definitionitem></defvar>
 
-<defopt spaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
+<defopt spaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><para>d&textndash;efopt
 </para></definitionitem></defopt>
 
@@ -2388,11 +2388,11 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;eftypevar
 </para></definitionitem></deftypevar>
 
-<defivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
+<defivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;efivar
 </para></definitionitem></defivar>
 
-<deftypeivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+<deftypeivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><para>d&textndash;eftypeivar
 </para></definitionitem></deftypeivar>
 
@@ -2404,10 +2404,10 @@ After clickstyle &result;
 <definitionitem><para>d&textndash;eftypemethod
 </para></definitionitem></deftypemethod>
 
-<para><code>&arobase;xref&lbrace;c---hapter&arobase;&arobase;, cross r---ef name&arobase;&arobase;, t---itle&arobase;&arobase;, file n---ame&arobase;&arobase;, ma---nual&arobase;&arobase;&rbrace;</code> <xref><xrefnodename>c---hapter&arobase;</xrefnodename><xrefinfoname>cross r&textmdash;ef name&arobase;</xrefinfoname><xrefprinteddesc>t&textmdash;itle&arobase;</xrefprinteddesc><xrefinfofile>file n---ame&arobase;</xrefinfofile><xrefprintedname>ma&textmdash;nual&arobase;</xrefprintedname></xref>.
-<code>&arobase;ref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;pxref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <pxref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></pxref>
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<para><code>&arobase;xref&lbrace;c---hapter&arobase;&arobase;, cross r---ef name&arobase;&arobase;, t---itle&arobase;&arobase;, file n---ame&arobase;&arobase;, ma---nual&arobase;&arobase;&rbrace;</code> <xref><xrefnodename>c---hapter&arobase;</xrefnodename><xrefinfoname spaces=" ">cross r&textmdash;ef name&arobase;</xrefinfoname><xrefprinteddesc spaces=" ">t&textmdash;itle&arobase;</xrefprinteddesc><xrefinfofile spaces=" ">file n---ame&arobase;</xrefinfofile><xrefprintedname spaces=" ">ma&textmdash;nual&arobase;</xrefprintedname></xref>.
+<code>&arobase;ref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname><xrefprinteddesc spaces=" ">title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
+<code>&arobase;pxref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <pxref><xrefnodename>chapter</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname><xrefprinteddesc spaces=" ">title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></pxref>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 </para>
 <para><code>&arobase;ref&lbrace;chapter&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename></ref>
 <code>&arobase;xref&lbrace;chapter&rbrace;</code> <xref><xrefnodename>chapter</xrefnodename></xref>.
@@ -2416,8 +2416,8 @@ After clickstyle &result;
 </para>
 <para><code>&arobase;ref&lbrace;s--ect&arobase;comma&lbrace;&rbrace;ion, a &arobase;comma&lbrace;&rbrace; in cross
 ref, a comma&arobase;comma&lbrace;&rbrace; in title, a comma&arobase;comma&lbrace;&rbrace; in file, a &arobase;comma&lbrace;&rbrace; in manual name &rbrace;</code>
-<ref><xrefnodename>s--ect&comma;ion</xrefnodename><xrefinfoname>a &comma; in cross
-ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xrefinfofile>a comma&comma; in file</xrefinfofile><xrefprintedname>a &comma; in manual name </xrefprintedname></ref>
+<ref><xrefnodename>s--ect&comma;ion</xrefnodename><xrefinfoname spaces=" ">a &comma; in cross
+ref</xrefinfoname><xrefprinteddesc spaces=" ">a comma&comma; in title</xrefprinteddesc><xrefinfofile spaces=" ">a comma&comma; in file</xrefinfofile><xrefprintedname spaces=" ">a &comma; in manual name </xrefprintedname></ref>
 </para>
 <para><code>&arobase;ref&lbrace;chapter,cross ref name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
 <code>&arobase;ref&lbrace;chapter,,title&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></ref>
@@ -2428,10 +2428,10 @@ ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xre
 <code>&arobase;ref&lbrace;chapter,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;chapter,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;chapter,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;chapter,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,,title,file name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;chapter,,title,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;chapter,,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;chapter,,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,,,file name,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 </para>
 
@@ -2444,27 +2444,27 @@ ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xre
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)anode,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)anode,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,title,file name&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)anode,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)anode,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,,file name,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 </para>
 
-<para><code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<para><code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;chapter&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;chapter, cross ref name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;chapter,,file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
-<code>&arobase;inforef&lbrace;node, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;node, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;node&rbrace;</code> <inforef><inforefnodename>node</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;node, cross ref name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;node, cross ref name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;node,,file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name, spurious arg&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name, spurious arg&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name, spurious arg</inforefinfoname></inforef>
 </para>
 <para><code>&arobase;inforef&lbrace;s--ect&arobase;comma&lbrace;&rbrace;ion, a &arobase;comma&lbrace;&rbrace; in cross
 ref, a comma&arobase;comma&lbrace;&rbrace; in file&rbrace;</code>
-<inforef><inforefnodename>s--ect&comma;ion</inforefnodename><inforefrefname>a &comma; in cross
-ref</inforefrefname><inforefinfoname>a comma&comma; in file</inforefinfoname></inforef>
+<inforef><inforefnodename>s--ect&comma;ion</inforefnodename><inforefrefname spaces=" ">a &comma; in cross
+ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefinfoname></inforef>
 </para>
 
 <table commandarg="asis" spaces=" ">
@@ -2565,22 +2565,22 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 <findex index="fn"><indexterm index="fn">&textldquo;</indexterm></findex>
 <findex index="fn"><indexterm index="fn">&textndash;foption</indexterm></findex>
 
-&arobase;&quot;u <accent type="uml">u</accent> 
+&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
-&arobase;~n <accent type="tilde">n</accent>
-&arobase;^a <accent type="circ">a</accent>
-&arobase;'e <accent type="acute">e</accent>
-&arobase;=o <accent type="macr">o</accent>
-&arobase;`i <accent type="grave">i</accent>
+&arobase;~n <accent type="tilde" bracketed="off">n</accent>
+&arobase;^a <accent type="circ" bracketed="off">a</accent>
+&arobase;'e <accent type="acute" bracketed="off">e</accent>
+&arobase;=o <accent type="macr" bracketed="off">o</accent>
+&arobase;`i <accent type="grave" bracketed="off">i</accent>
 &arobase;'&lbrace;e&rbrace; <accent type="acute">e</accent>
 &arobase;'&lbrace;&arobase;dotless&lbrace;i&rbrace;&rbrace; <accent type="acute"><dotless>i</dotless></accent> 
 &arobase;dotless&lbrace;i&rbrace; <dotless>i</dotless>
 &arobase;dotless&lbrace;j&rbrace; <dotless>j</dotless>
-&arobase;`&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr">E</accent></accent> 
+&arobase;`&lbrace;&arobase;=E&rbrace; <accent type="grave"><accent type="macr" bracketed="off">E</accent></accent> 
 &arobase;l&lbrace;&rbrace; &lslash;
-&arobase;,&lbrace;&arobase;'C&rbrace; <accent type="cedil"><accent type="acute">C</accent></accent>
-&arobase;,c <accent type="cedil">c</accent>
-&arobase;,c&arobase;&quot;u <accent type="cedil">c</accent><accent type="uml">u</accent> &linebreak;
+&arobase;,&lbrace;&arobase;'C&rbrace; <accent type="cedil"><accent type="acute" bracketed="off">C</accent></accent>
+&arobase;,c <accent type="cedil" bracketed="off">c</accent>
+&arobase;,c&arobase;&quot;u <accent type="cedil" bracketed="off">c</accent><accent type="uml" bracketed="off">u</accent> &linebreak;
 
 &arobase;* &linebreak;
 &arobase; followed by a space
@@ -2662,8 +2662,8 @@ but , ,&noeos;
 
 <code>&arobase;acronym&lbrace;--a,an accronym&rbrace;</code> <acronym><acronymword>--a</acronymword><acronymdesc>an accronym</acronymdesc></acronym>
 <code>&arobase;acronym&lbrace;--a&rbrace;</code> <acronym><acronymword>--a</acronymword></acronym>
-<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>--. &comma;A.</abbrword><abbrdesc><accent type="acute">E</accent>tude Autonome </abbrdesc></abbr>
-<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute">E</accent>--. &comma;A.</abbrword></abbr>
+<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A., &arobase;'Etude Autonome &rbrace;</code> <abbr><abbrword><accent type="acute" bracketed="off">E</accent>--. &comma;A.</abbrword><abbrdesc spaces=" "><accent type="acute" bracketed="off">E</accent>tude Autonome </abbrdesc></abbr>
+<code>&arobase;abbr&lbrace;&arobase;'E--. &arobase;comma&lbrace;&rbrace;A.&rbrace;</code> <abbr><abbrword><accent type="acute" bracketed="off">E</accent>--. &comma;A.</abbrword></abbr>
 <code>&arobase;asis&lbrace;--a&rbrace;</code> <asis>--a</asis>
 <code>&arobase;b&lbrace;--a&rbrace;</code> <b>&textndash;a</b>
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>--a</cite>
@@ -2736,13 +2736,13 @@ but , ,&noeos;
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a--lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 
-<sp value="2"></sp>
+<sp value="2" line=" 2"></sp>
 
 <code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="arrow"/> A</clicksequence>
-<clickstyle command="result">@result</clickstyle>
+<clickstyle command="result" line=" @result">@result</clickstyle>
 After clickstyle &result;
 <code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="result"/> A</clicksequence>
-<clickstyle command="arrow">@arrow</clickstyle>
+<clickstyle command="arrow" line=" @arrow">@arrow</clickstyle>
 
 </pre><quotation> 
 <pre xml:space="preserve">A quot---ation
@@ -2772,8 +2772,8 @@ After clickstyle &result;
 <pre xml:space="preserve">a Warning.
 </pre></quotation>
 <pre xml:space="preserve">
-</pre><quotation spaces=" "><quotationtype>something <accent type="acute">e</accent> &tex;</quotationtype>
-<pre xml:space="preserve">The something <accent type="acute">e</accent> &tex; is here.
+</pre><quotation spaces=" "><quotationtype>something <accent type="acute" bracketed="off">e</accent> &tex;</quotationtype>
+<pre xml:space="preserve">The something <accent type="acute" bracketed="off">e</accent> &tex; is here.
 </pre></quotation>
 <pre xml:space="preserve">
 </pre><quotation spaces=" "><quotationtype>&arobase; at the end of line <spacecmd type="nl"/></quotationtype><pre xml:space="preserve">A &arobase; at the end of the &arobase;quotation line.
@@ -2835,7 +2835,7 @@ After clickstyle &result;
 <listitem><pre xml:space="preserve">e--numerate
 </pre></listitem></enumerate>
 <pre xml:space="preserve">
-</pre><multitable spaces=" "><columnfractions><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+</pre><multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem"><pre xml:space="preserve">mu--ltitable headitem </pre></entry><entry command="tab"><pre xml:space="preserve">another tab
 </pre></entry></row></thead><tbody><row><entry command="item"><pre xml:space="preserve">mu--ltitable item </pre></entry><entry command="tab"><pre xml:space="preserve">multitable tab
 <!-- c comment in multitable -->
@@ -2844,7 +2844,7 @@ After clickstyle &result;
 </pre></entry></row><row><entry command="item"><pre xml:space="preserve">lone mu--ltitable item
 </pre></entry></row></tbody></multitable>
 <pre xml:space="preserve">
-</pre><multitable spaces=" "><columnprototypes><columnprototype>truc</columnprototype><columnprototype>bidule</columnprototype></columnprototypes>
+</pre><multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><pre xml:space="preserve">truc </pre></entry><entry command="tab"><pre xml:space="preserve">bidule
 </pre></entry></row></tbody></multitable>
 <pre xml:space="preserve">
@@ -2891,27 +2891,27 @@ After clickstyle &result;
 <pre xml:space="preserve"> 
 </pre><deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <pre xml:space="preserve"><cindex index="cp"><indexterm index="cp">index entry within deffn</indexterm></cindex>
-</pre><deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction>log trap</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction>log trap1</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap2</indexterm><defcategory>Command</defcategory> <deffunction>log trap2</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
+</pre><deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory><b>id <samp>i</samp> ule</b></defcategory></definitionterm></deffnx>
 <deffnx><definitionterm></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory> <deffunction>bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory>truc</defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory>aaa</defcategory></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on"></defcategory></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <pre xml:space="preserve"><!-- c comment -->
-</pre><deffnx><definitionterm><defcategory>truc</defcategory></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory></defcategory> <deffunction></deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">a</indexterm><defcategory>truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam>h i</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+</pre><deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">a</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>a</deffunction> <defparam>b</defparam> <defparam>c</defparam> <defparam>d</defparam> <defparam>e</defparam> <defparam><b>f g</b></defparam> <defparam bracketed="on">h i</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 </deffn>
 <pre xml:space="preserve">
 </pre><deffn spaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction></definitionterm>
@@ -2919,11 +2919,11 @@ After clickstyle &result;
 <pre xml:space="preserve">
 </pre><deffn spaces=" "><definitionterm><indexterm index="fn">deffn</indexterm><defcategory>empty</defcategory> <deffunction>deffn</deffunction> <defparam>with</defparam> <defparam>deffnx</defparam></definitionterm>
 <pre xml:space="preserve"><!-- c comment between deffn and deffnx -->
-</pre><deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
+</pre><deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>empty</defcategory> <deffunction>deffnx</deffunction></definitionterm></deffnx>
 </deffn>
 <pre xml:space="preserve">
 </pre><deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <definitionitem><pre xml:space="preserve"><!-- c comment -->
 text in def item for second def item
 </pre></definitionitem></deffn>
@@ -2964,7 +2964,7 @@ text in def item for second def item
 <definitionitem><pre xml:space="preserve">d--efmac
 </pre></definitionitem></defmac>
 <pre xml:space="preserve">
-</pre><defspec spaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+</pre><defspec spaces=" "><definitionterm><indexterm index="fn">d&textndash;efspec_name</indexterm><defcategory automatic="on" bracketed="on">Special Form</defcategory> <deffunction>d--efspec_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efspec
 </pre></definitionitem></defspec>
 <pre xml:space="preserve">
@@ -2972,7 +2972,7 @@ text in def item for second def item
 <definitionitem><pre xml:space="preserve">d--efvar
 </pre></definitionitem></defvar>
 <pre xml:space="preserve">
-</pre><defopt spaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
+</pre><defopt spaces=" "><definitionterm><indexterm index="vr">d&textndash;efopt_name</indexterm><defcategory automatic="on" bracketed="on">User Option</defcategory> <defvariable>d--efopt_name</defvariable></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efopt
 </pre></definitionitem></defopt>
 <pre xml:space="preserve">
@@ -2984,11 +2984,11 @@ text in def item for second def item
 <definitionitem><pre xml:space="preserve">d--eftypevar
 </pre></definitionitem></deftypevar>
 <pre xml:space="preserve">
-</pre><defivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
+</pre><defivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;efivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <defclassvar>d--efivar_name</defclassvar></definitionterm>
 <definitionitem><pre xml:space="preserve">d--efivar
 </pre></definitionitem></defivar>
 <pre xml:space="preserve">
-</pre><deftypeivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
+</pre><deftypeivar spaces=" "><definitionterm><indexterm index="vr">d&textndash;eftypeivar_name of c&textndash;lass</indexterm><defcategory automatic="on" bracketed="on">Instance Variable</defcategory> <defclass>c--lass</defclass> <deftype>t--ype</deftype> <defclassvar>d--eftypeivar_name</defclassvar></definitionterm>
 <definitionitem><pre xml:space="preserve">d--eftypeivar
 </pre></definitionitem></deftypeivar>
 <pre xml:space="preserve">
@@ -3000,10 +3000,10 @@ text in def item for second def item
 <definitionitem><pre xml:space="preserve">d--eftypemethod
 </pre></definitionitem></deftypemethod>
 <pre xml:space="preserve">
-<code>&arobase;xref&lbrace;c---hapter&arobase;&arobase;, cross r---ef name&arobase;&arobase;, t---itle&arobase;&arobase;, file n---ame&arobase;&arobase;, ma---nual&arobase;&arobase;&rbrace;</code> <xref><xrefnodename>c---hapter&arobase;</xrefnodename><xrefinfoname>cross r---ef name&arobase;</xrefinfoname><xrefprinteddesc>t---itle&arobase;</xrefprinteddesc><xrefinfofile>file n---ame&arobase;</xrefinfofile><xrefprintedname>ma---nual&arobase;</xrefprintedname></xref>.
-<code>&arobase;ref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;pxref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <pxref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></pxref>
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>&arobase;xref&lbrace;c---hapter&arobase;&arobase;, cross r---ef name&arobase;&arobase;, t---itle&arobase;&arobase;, file n---ame&arobase;&arobase;, ma---nual&arobase;&arobase;&rbrace;</code> <xref><xrefnodename>c---hapter&arobase;</xrefnodename><xrefinfoname spaces=" ">cross r---ef name&arobase;</xrefinfoname><xrefprinteddesc spaces=" ">t---itle&arobase;</xrefprinteddesc><xrefinfofile spaces=" ">file n---ame&arobase;</xrefinfofile><xrefprintedname spaces=" ">ma---nual&arobase;</xrefprintedname></xref>.
+<code>&arobase;ref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname><xrefprinteddesc spaces=" ">title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
+<code>&arobase;pxref&lbrace;chapter, cross ref name, title, file name, manual&rbrace;</code> <pxref><xrefnodename>chapter</xrefnodename><xrefinfoname spaces=" ">cross ref name</xrefinfoname><xrefprinteddesc spaces=" ">title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></pxref>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 
 <code>&arobase;ref&lbrace;chapter&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename></ref>
 <code>&arobase;xref&lbrace;chapter&rbrace;</code> <xref><xrefnodename>chapter</xrefnodename></xref>.
@@ -3012,8 +3012,8 @@ text in def item for second def item
 
 <code>&arobase;ref&lbrace;s--ect&arobase;comma&lbrace;&rbrace;ion, a &arobase;comma&lbrace;&rbrace; in cross
 ref, a comma&arobase;comma&lbrace;&rbrace; in title, a comma&arobase;comma&lbrace;&rbrace; in file, a &arobase;comma&lbrace;&rbrace; in manual name &rbrace;</code>
-<ref><xrefnodename>s--ect&comma;ion</xrefnodename><xrefinfoname>a &comma; in cross
-ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xrefinfofile>a comma&comma; in file</xrefinfofile><xrefprintedname>a &comma; in manual name </xrefprintedname></ref>
+<ref><xrefnodename>s--ect&comma;ion</xrefnodename><xrefinfoname spaces=" ">a &comma; in cross
+ref</xrefinfoname><xrefprinteddesc spaces=" ">a comma&comma; in title</xrefprinteddesc><xrefinfofile spaces=" ">a comma&comma; in file</xrefinfofile><xrefprintedname spaces=" ">a &comma; in manual name </xrefprintedname></ref>
 
 <code>&arobase;ref&lbrace;chapter,cross ref name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
 <code>&arobase;ref&lbrace;chapter,,title&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></ref>
@@ -3024,10 +3024,10 @@ ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xre
 <code>&arobase;ref&lbrace;chapter,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;chapter,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;chapter,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;chapter,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,,title,file name&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;chapter,,title,,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;chapter,,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;chapter,,title, file name, manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;chapter,,,file name,manual&rbrace;</code> <ref><xrefnodename>chapter</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 
 
@@ -3040,27 +3040,27 @@ ref</xrefinfoname><xrefprinteddesc>a comma&comma; in title</xrefprinteddesc><xre
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprintedname>manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,title,file name&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)anode,cross ref name,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)anode,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)anode,cross ref name,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfoname>cross ref name</xrefinfoname><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,title,file name&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,title,,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefprintedname>manual</xrefprintedname></ref>
-<code>&arobase;ref&lbrace;(pman)anode,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
+<code>&arobase;ref&lbrace;(pman)anode,,title, file name, manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefprinteddesc>title</xrefprinteddesc><xrefinfofile spaces=" ">file name</xrefinfofile><xrefprintedname spaces=" ">manual</xrefprintedname></ref>
 <code>&arobase;ref&lbrace;(pman)anode,,,file name,manual&rbrace;</code> <ref><xrefnodename>(pman)anode</xrefnodename><xrefinfofile>file name</xrefinfofile><xrefprintedname>manual</xrefprintedname></ref>
 
 
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;chapter&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;chapter, cross ref name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;chapter,,file name&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
-<code>&arobase;inforef&lbrace;node, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;node, cross ref name, file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name</inforefinfoname></inforef>
 <code>&arobase;inforef&lbrace;node&rbrace;</code> <inforef><inforefnodename>node</inforefnodename></inforef>
-<code>&arobase;inforef&lbrace;node, cross ref name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname>cross ref name</inforefrefname></inforef>
+<code>&arobase;inforef&lbrace;node, cross ref name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname></inforef>
 <code>&arobase;inforef&lbrace;node,,file name&rbrace;</code> <inforef><inforefnodename>node</inforefnodename><inforefinfoname>file name</inforefinfoname></inforef>
-<code>&arobase;inforef&lbrace;chapter, cross ref name, file name, spurious arg&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname>cross ref name</inforefrefname><inforefinfoname>file name, spurious arg</inforefinfoname></inforef>
+<code>&arobase;inforef&lbrace;chapter, cross ref name, file name, spurious arg&rbrace;</code> <inforef><inforefnodename>chapter</inforefnodename><inforefrefname spaces=" ">cross ref name</inforefrefname><inforefinfoname spaces=" ">file name, spurious arg</inforefinfoname></inforef>
 
 <code>&arobase;inforef&lbrace;s--ect&arobase;comma&lbrace;&rbrace;ion, a &arobase;comma&lbrace;&rbrace; in cross
 ref, a comma&arobase;comma&lbrace;&rbrace; in file&rbrace;</code>
-<inforef><inforefnodename>s--ect&comma;ion</inforefnodename><inforefrefname>a &comma; in cross
-ref</inforefrefname><inforefinfoname>a comma&comma; in file</inforefinfoname></inforef>
+<inforef><inforefnodename>s--ect&comma;ion</inforefnodename><inforefrefname spaces=" ">a &comma; in cross
+ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefinfoname></inforef>
 
 
 </pre><table commandarg="asis" spaces=" ">
@@ -3152,22 +3152,22 @@ docbook ''
 
 
 <para>cp
-</para><printindex value="cp"></printindex>
+</para><printindex value="cp" line=" cp"></printindex>
 
 <para>fn
-</para><printindex value="fn"></printindex>
+</para><printindex value="fn" line=" fn"></printindex>
 
 <para>vr
-</para><printindex value="vr"></printindex>
+</para><printindex value="vr" line=" vr"></printindex>
 
 <para>ky
-</para><printindex value="ky"></printindex>
+</para><printindex value="ky" line=" ky"></printindex>
 
 <para>pg
-</para><printindex value="pg"></printindex>
+</para><printindex value="pg" line=" pg"></printindex>
 
 <para>tp
-</para><printindex value="tp"></printindex>
+</para><printindex value="tp" line=" tp"></printindex>
 
 
 
@@ -3225,8 +3225,8 @@ Menu comment
 <node name="chapter2" spaces=" "><nodename>chapter2</nodename><nodeprev automatic="on">chapter</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <centerchap spaces=" "><sectiontitle>chapter 2</sectiontitle>
 
-<printindex value="cp"></printindex>
-<printindex value="fn"></printindex>
+<printindex value="cp" line=" cp"></printindex>
+<printindex value="fn" line=" fn"></printindex>
 
 <contents></contents>
 <shortcontents></shortcontents>

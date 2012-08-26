@@ -1567,12 +1567,12 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 </para><exdent spaces=" ">exdent quotation! After punc</exdent>
 </quotation>
 
-<float name="float-label_0021-After-punc" type="float-type_0021-After-punc" spaces=" "><floattype>float type! After punc</floattype><floatname>float label! After punc</floatname>
+<float name="float-label_0021-After-punc" type="float-type_0021-After-punc" spaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">float label! After punc</floatname>
 <para>In float
 </para><shortcaption><para>shortcaption! After punc</para></shortcaption>
 </float>
 
-<float name="label-with-caption" type="float-type_0021-After-punc" spaces=" "><floattype>float type! After punc</floattype><floatname>label with caption</floatname>
+<float name="label-with-caption" type="float-type_0021-After-punc" spaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">label with caption</floatname>
 <para>In float with caption.
 </para><caption><para>caption! After punc</para></caption>
 </float>
@@ -1587,7 +1587,7 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 
 <center spaces=" ">center! After punc</center>
 
-<printindex value="cp"></printindex>
+<printindex value="cp" line=" cp"></printindex>
 
 <contents></contents>
 

@@ -770,19 +770,19 @@ $result_converted{'html_text'}->{'unknown_accents'} = '<p>&#7820; &#7821; Q" &#3
 </p>';
 
 
-$result_converted{'xml'}->{'unknown_accents'} = '<para><accent type="uml">X</accent> <accent type="uml">x</accent> <accent type="uml">Q</accent> <accent type="uml">Y</accent>
+$result_converted{'xml'}->{'unknown_accents'} = '<para><accent type="uml" bracketed="off">X</accent> <accent type="uml" bracketed="off">x</accent> <accent type="uml" bracketed="off">Q</accent> <accent type="uml" bracketed="off">Y</accent>
 </para>
-<para><accent type="acute">z</accent> <accent type="acute">q</accent> <accent type="acute">r</accent>
-<accent type="acute">Z</accent> <accent type="acute">Q</accent> <accent type="acute">R</accent>
+<para><accent type="acute" bracketed="off">z</accent> <accent type="acute" bracketed="off">q</accent> <accent type="acute" bracketed="off">r</accent>
+<accent type="acute" bracketed="off">Z</accent> <accent type="acute" bracketed="off">Q</accent> <accent type="acute" bracketed="off">R</accent>
 </para>
 <para><accent type="cedil">H</accent> <accent type="cedil">h</accent>
 </para>
-<para><accent type="circ">z</accent> <accent type="circ">r</accent> <accent type="circ">t</accent> <accent type="circ">k</accent>
-<accent type="circ">Z</accent> <accent type="circ">R</accent> <accent type="circ">T</accent> <accent type="circ">K</accent>
+<para><accent type="circ" bracketed="off">z</accent> <accent type="circ" bracketed="off">r</accent> <accent type="circ" bracketed="off">t</accent> <accent type="circ" bracketed="off">k</accent>
+<accent type="circ" bracketed="off">Z</accent> <accent type="circ" bracketed="off">R</accent> <accent type="circ" bracketed="off">T</accent> <accent type="circ" bracketed="off">K</accent>
 </para>
-<para><accent type="grave">z</accent> <accent type="grave">m</accent> <accent type="grave">p</accent>
+<para><accent type="grave" bracketed="off">z</accent> <accent type="grave" bracketed="off">m</accent> <accent type="grave" bracketed="off">p</accent>
 </para>
-<para><accent type="tilde">Z</accent> <accent type="tilde">s</accent>
+<para><accent type="tilde" bracketed="off">Z</accent> <accent type="tilde" bracketed="off">s</accent>
 </para>';
 
 

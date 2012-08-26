@@ -813,7 +813,7 @@ Next: <a href="#part-node-before-top" accesskey="n" rel="next">part node before 
 ';
 
 
-$result_converted{'xml'}->{'part_node_before_top'} = '<node name="part-node-before-top" spaces=" "><nodename>part node before top</nodename><nodenext>Top</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
+$result_converted{'xml'}->{'part_node_before_top'} = '<node name="part-node-before-top" spaces=" "><nodename>part node before top</nodename><nodenext spaces=" ">Top</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
 <part spaces=" "><sectiontitle>part</sectiontitle>
 
 </part>

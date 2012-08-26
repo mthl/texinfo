@@ -272,10 +272,10 @@ $result_converted{'html_text'}->{'no_documentencoding_and_insertions'} = '
 
 
 $result_converted{'xml'}->{'no_documentencoding_and_insertions'} = '
-<para>&textndash; &textmdash; &textrdquo; &textldquo; &textlsquo; &textrsquo; <code>in code</code>. <accent type="tilde">e</accent>.
+<para>&textndash; &textmdash; &textrdquo; &textldquo; &textlsquo; &textrsquo; <code>in code</code>. <accent type="tilde" bracketed="off">e</accent>.
 </para>
 <example>
-<pre xml:space="preserve">-- --- \'\' `` ` \' <code>in code</code>. <accent type="tilde">e</accent>.
+<pre xml:space="preserve">-- --- \'\' `` ` \' <code>in code</code>. <accent type="tilde" bracketed="off">e</accent>.
 </pre></example>
 ';
 

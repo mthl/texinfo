@@ -367,6 +367,28 @@ $result_trees{'multitable'} = {
             'type' => 'bracketed_multitable_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -450,6 +472,9 @@ $result_trees{'multitable'}{'contents'}[1]{'extra'}{'prototypes'}[1]{'contents'}
 $result_trees{'multitable'}{'contents'}[1]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'extra'}{'prototypes'}[2]{'contents'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'contents'};
 $result_trees{'multitable'}{'contents'}[1]{'extra'}{'prototypes'}[2]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0];
+$result_trees{'multitable'}{'contents'}[1]{'extra'}{'prototypes_line'}[1] = $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable'}{'contents'}[1]{'extra'}{'prototypes_line'}[3] = $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'multitable'}{'contents'}[1]{'extra'}{'prototypes_line'}[5] = $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[5];
 $result_trees{'multitable'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'parent'} = $result_trees{'multitable'};
 

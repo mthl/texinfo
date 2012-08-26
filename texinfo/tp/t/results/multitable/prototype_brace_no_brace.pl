@@ -97,6 +97,26 @@ $result_trees{'prototype_brace_no_brace'} = {
             'type' => 'row_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {
+            'text' => 'bb',
+            'type' => 'row_prototype'
+          },
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -126,6 +146,7 @@ $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0]{'parent'
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'args'}[0];
+$result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace'}{'contents'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace'};
 
@@ -146,7 +167,7 @@ $result_converted{'plaintext'}->{'prototype_brace_no_brace'} = '';
 $result_converted{'html_text'}->{'prototype_brace_no_brace'} = '';
 
 
-$result_converted{'xml'}->{'prototype_brace_no_brace'} = '<multitable spaces=" "><columnprototypes><columnprototype>aa</columnprototype><columnprototype>bb</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'prototype_brace_no_brace'} = '<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">aa</columnprototype> <columnprototype>bb</columnprototype></columnprototypes>
 </multitable>
 ';
 

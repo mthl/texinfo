@@ -148,7 +148,7 @@ $result_converted{'html_text'}->{'test_errormsg'} = '<p>Some text
 
 
 $result_converted{'xml'}->{'test_errormsg'} = '<para>Some text
-<errormsg>Text <accent type="tilde">e</accent> <code>code</code></errormsg>
+<errormsg>Text <accent type="tilde" bracketed="off">e</accent> <code>code</code></errormsg>
 </para>';
 
 

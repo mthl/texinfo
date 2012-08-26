@@ -307,6 +307,23 @@ $result_trees{'multitable_in_example'} = {
                 'type' => 'bracketed_multitable_prototype'
               }
             ],
+            'prototypes_line' => [
+              {
+                'text' => ' ',
+                'type' => 'prototype_space'
+              },
+              {},
+              {
+                'text' => '  ',
+                'type' => 'prototype_space'
+              },
+              {},
+              {
+                'text' => '
+',
+                'type' => 'prototype_space'
+              }
+            ],
             'spaces_after_command' => {}
           },
           'line_nr' => {
@@ -423,6 +440,8 @@ $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'p
 $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes_line'}[1] = $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes_line'}[3] = $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_in_example'}{'contents'}[0];
 $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_in_example'}{'contents'}[0]{'contents'}[2];
@@ -486,7 +505,7 @@ new paragraph in tab. example</pre></td></tr>
 
 
 $result_converted{'xml'}->{'multitable_in_example'} = '<example>
-<multitable spaces=" "><columnprototypes><columnprototype>AAA</columnprototype><columnprototype>BBB</columnprototype></columnprototypes>
+<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">AAA</columnprototype>  <columnprototype bracketed="on">BBB</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><pre xml:space="preserve">truc </pre></entry><entry command="tab"><pre xml:space="preserve">bidule example
 </pre></entry></row><row><entry command="item"><pre xml:space="preserve">begin item example
 

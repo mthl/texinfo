@@ -824,17 +824,17 @@ raw $\\underline{a < b <code>tex \\hbox{ code }</code>}$ ``
 
 
 $result_converted{'xml'}->{'inline_expand_tex'} = '
-<para><inlinefmt><inlinefmtformat>html</inlinefmtformat><inlinefmtcontent>&lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
-<inlinefmt><inlinefmtformat>plaintext</inlinefmtformat><inlinefmtcontent>plaintext &textldquo;</inlinefmtcontent></inlinefmt>, 
-<inlinefmt><inlinefmtformat>xml</inlinefmtformat><inlinefmtcontent>&lt;para&gt;xml&lt;/para&gt; &textldquo;</inlinefmtcontent></inlinefmt>,
-<inlinefmt><inlinefmtformat>docbook</inlinefmtformat><inlinefmtcontent>&lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
+<para><inlinefmt><inlinefmtformat>html</inlinefmtformat><inlinefmtcontent spaces=" ">&lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
+<inlinefmt><inlinefmtformat>plaintext</inlinefmtformat><inlinefmtcontent spaces=" ">plaintext &textldquo;</inlinefmtcontent></inlinefmt>, 
+<inlinefmt><inlinefmtformat>xml</inlinefmtformat><inlinefmtcontent spaces=" ">&lt;para&gt;xml&lt;/para&gt; &textldquo;</inlinefmtcontent></inlinefmt>,
+<inlinefmt><inlinefmtformat>docbook</inlinefmtformat><inlinefmtcontent spaces=" ">&lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
 $\\underlinea &lt; b <code>tex \\hbox code </code>$ &textldquo;
 </para>
 
-<para><inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent>raw &lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinerawcontent></inlineraw>, 
-<inlineraw><inlinerawformat>plaintext</inlinerawformat><inlinerawcontent>raw plaintext &textldquo;</inlinerawcontent></inlineraw>, 
-<inlineraw><inlinerawformat>xml</inlinerawformat><inlinerawcontent>raw &lt;para&gt;xml&lt;/para&gt; &textldquo;</inlinerawcontent></inlineraw>,
-<inlineraw><inlinerawformat>docbook</inlinerawformat><inlinerawcontent>raw &lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinerawcontent></inlineraw>, 
+<para><inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent spaces=" ">raw &lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinerawcontent></inlineraw>, 
+<inlineraw><inlinerawformat>plaintext</inlinerawformat><inlinerawcontent spaces=" ">raw plaintext &textldquo;</inlinerawcontent></inlineraw>, 
+<inlineraw><inlinerawformat>xml</inlinerawformat><inlinerawcontent spaces=" ">raw &lt;para&gt;xml&lt;/para&gt; &textldquo;</inlinerawcontent></inlineraw>,
+<inlineraw><inlinerawformat>docbook</inlinerawformat><inlinerawcontent spaces=" ">raw &lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinerawcontent></inlineraw>, 
 raw $\\underline{a < b <code>tex \\hbox{ code }</code>}$ ``
 </para>';
 

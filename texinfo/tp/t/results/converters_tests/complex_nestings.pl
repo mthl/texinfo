@@ -1619,12 +1619,12 @@ $result_converted{'xml'}->{'complex_nestings'} = '<node name="Top" spaces=" "><n
 
 <example>
 <pre xml:space="preserve">deffs
-</pre><defun spaces=" "><definitionterm><indexterm index="fn">my def</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>my def</deffunction> <defparam>args</defparam> <defparam><var>arg</var></defparam> <defparam>&dots;</defparam></definitionterm>
-<defunx><definitionterm><indexterm index="fn">other def</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>other def</deffunction> <defparam>no</defparam> <defparam>args</defparam></definitionterm></defunx>
-<definitionitem><deffn spaces=" "><definitionterm><indexterm index="fn">name</indexterm><defcategory>type</defcategory> <deffunction>name</deffunction> <defparam>and</defparam> <defparam>now</defparam> <defparam>the</defparam> <defparam>args</defparam></definitionterm>
-<definitionitem><defvar spaces=" "><definitionterm><indexterm index="vr">variables</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>variables</defvariable> <defparam>variable-name</defparam></definitionterm>
+</pre><defun spaces=" "><definitionterm><indexterm index="fn">my def</indexterm><defcategory automatic="on">Function</defcategory> <deffunction bracketed="on">my def</deffunction> <defparam>args</defparam> <defparam><var>arg</var></defparam> <defparam>&dots;</defparam></definitionterm>
+<defunx spaces=" "><definitionterm><indexterm index="fn">other def</indexterm><defcategory automatic="on">Function</defcategory> <deffunction bracketed="on">other def</deffunction> <defparam>no</defparam> <defparam>args</defparam></definitionterm></defunx>
+<definitionitem><deffn spaces=" "><definitionterm><indexterm index="fn">name</indexterm><defcategory bracketed="on">type</defcategory> <deffunction bracketed="on">name</deffunction> <defparam>and</defparam> <defparam>now</defparam> <defparam>the</defparam> <defparam>args</defparam></definitionterm>
+<definitionitem><defvar spaces=" "><definitionterm><indexterm index="vr">variables</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable bracketed="on">variables</defvariable> <defparam>variable-name</defparam></definitionterm>
 <pre xml:space="preserve">
-</pre><defvarx><definitionterm><indexterm index="vr">variables too</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable>variables too</defvariable> <defparam>other-variable</defparam></definitionterm></defvarx>
+</pre><defvarx spaces=" "><definitionterm><indexterm index="vr">variables too</indexterm><defcategory automatic="on">Variable</defcategory> <defvariable bracketed="on">variables too</defvariable> <defparam>other-variable</defparam></definitionterm></defvarx>
 <definitionitem><pre xml:space="preserve">THis is the defvar
 
 A table within the def

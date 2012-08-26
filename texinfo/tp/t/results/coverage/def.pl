@@ -2620,7 +2620,7 @@ $result_converted{'html_text'}->{'def'} = '
 
 
 $result_converted{'xml'}->{'def'} = '
-<deffn spaces=" "><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<deffn spaces=" "><definitionterm><indexterm index="fn">d--effn_name</indexterm><defcategory bracketed="on">c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;effn
 </para></definitionitem></deffn>
 
@@ -2629,20 +2629,20 @@ $result_converted{'xml'}->{'def'} = '
 </para></definitionitem></deffn>
 
 <deffn spaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<deffnx><definitionterm><indexterm index="fn">truc</indexterm><defcategory>cmde</defcategory> <deffunction>truc</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction>log trap</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction>log trap1</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">log trap2</indexterm><defcategory>Command</defcategory> <deffunction>log trap2</deffunction> <defparam></defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory></defcategory> <deffunction>bidule machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory>truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory>truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
-<deffnx><definitionterm><indexterm index="fn">after</indexterm><defcategory>truc</defcategory> <deffunction>after</deffunction> <defparam>a</defparam> <defparam>deff</defparam> <defparam>item</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">after</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>after</deffunction> <defparam>a</defparam> <defparam>deff</defparam> <defparam>item</defparam></definitionterm></deffnx>
 <!-- c comment -->
-<deffnx><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory>truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">deffnx</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>deffnx</deffunction> <defparam>before</defparam> <defparam>end</defparam> <defparam>deffn</defparam></definitionterm></deffnx>
 <definitionitem><para>Various deff lines
 </para></definitionitem></deffn>
 ';

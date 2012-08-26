@@ -50,7 +50,7 @@ foreach my $entry (@{$sorted_index_entries->{'cp'}}) {
   push @entries, $entry->{'key'};
 }
 
-# e is before E because they are equal and e appears before E in the document 
+# e is before E because they are equal and e appears before E in the document 
 my @entries_ref = ('!', '"', 'aaaaaaaaaaaa', 'e', 'E', 'e~', 'l');
 
 cmp_deeply (\@entries, \@entries_ref, 'sorted index entries');

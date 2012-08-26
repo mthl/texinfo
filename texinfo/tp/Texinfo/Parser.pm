@@ -2765,19 +2765,32 @@ sub _end_line($$$)
                and $current->{'parent'}->{'cmdname'} eq 'multitable') {
       # parse the prototypes and put them in a special arg
       my @prototype_row;
+      # do the same but keeping spaces information
+      my @prototype_line;
       foreach my $content (@{$current->{'contents'}}) {
         if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
           push @prototype_row, { 'contents' => $content->{'contents'},
                                  'parent' => $content->{'parent'},
                                  'type' => 'bracketed_multitable_prototype'};
+          push @prototype_line, $content;
         } elsif ($content->{'text'}) {
           if ($content->{'text'} =~ /\S/) {
-            foreach my $prototype(split /\s+/, $content->{'text'}) {
+            foreach my $prototype (split /\s+/, $content->{'text'}) {
               push @prototype_row, { 'text' => $prototype, 
                             'type' => 'row_prototype' } unless ($prototype eq '');
             }
           }
+          foreach my $prototype_or_space (split /\b/, $content->{'text'}) {
+            if ($prototype_or_space =~ /\S/) {
+              push @prototype_line, {'text' => $prototype_or_space,
+                                     'type' => 'row_prototype' };
+            } elsif ($prototype_or_space =~ /\s/) {
+              push @prototype_line, {'text' => $prototype_or_space,
+                                     'type' => 'prototype_space' };
+            }
+          }
         } else {
+          # FIXME could this happen?  Should be a debug message?
           if (!$content->{'cmdname'}) { 
             $self->_command_warn($current, $line_nr, 
                 $self->__("Unexpected argument on \@%s line: %s"),
@@ -2787,6 +2800,7 @@ sub _end_line($$$)
                    or $content->{'cmdname'} eq 'comment') {
           } else {
             push @prototype_row, $content;
+            push @prototype_line, $content;
           }
         }
       }
@@ -2798,6 +2812,7 @@ sub _end_line($$$)
                              $self->__("empty multitable"));
       }
       $multitable->{'extra'}->{'prototypes'} = \@prototype_row;
+      $multitable->{'extra'}->{'prototypes_line'} = \@prototype_line;
 
     } else {
       $self->_isolate_last_space($current, 'space_at_end_block_command');
@@ -6321,6 +6336,11 @@ An array holding strings, the arguments of @-commands taking simple
 textual arguments as arguments, like C<@everyheadingmarks>, 
 C<@frenchspacing>, C<@alias>, C<@synindex>, C<@columnfractions>.
 
+=item spaces_after_command
+
+For @-commands followed by spaces, a reference to the corresponding
+text element.
+
 =item spaces
 
 For accent commands consisting in letter only, like C<@ringaccent>
@@ -6440,8 +6460,10 @@ of the definition, and as value the corresponding content tree.
 
 The key I<max_columns> holds the maximal number of columns.  If there
 are prototypes on the line they are in the array associated with 
-I<prototypes>.  If there is a C<@columnfractions> as argument, then 
-the I<columnfractions> key is associated with the array of columnfractions
+I<prototypes>.  In that case, I<prototypes_line> also holds this 
+information, and, in addition, keeps spaces with type C<prototype_space>.  
+If there is a C<@columnfractions> as argument, then the 
+I<columnfractions> key is associated with the array of columnfractions
 arguments, holding all the column fractions.
 
 =item C<@enumerate>

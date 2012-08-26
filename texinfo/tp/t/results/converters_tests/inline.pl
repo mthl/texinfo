@@ -824,18 +824,18 @@ $ &ldquo;
 
 
 $result_converted{'xml'}->{'inline'} = '
-<para><inlinefmt><inlinefmtformat>html</inlinefmtformat><inlinefmtcontent>&lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
-<inlinefmt><inlinefmtformat>plaintext</inlinefmtformat><inlinefmtcontent>plaintext &textldquo;</inlinefmtcontent></inlinefmt>, 
+<para><inlinefmt><inlinefmtformat>html</inlinefmtformat><inlinefmtcontent spaces=" ">&lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
+<inlinefmt><inlinefmtformat>plaintext</inlinefmtformat><inlinefmtcontent spaces=" ">plaintext &textldquo;</inlinefmtcontent></inlinefmt>, 
 &lt;para&gt;xml&lt;/para&gt; &textldquo;,
-<inlinefmt><inlinefmtformat>docbook</inlinefmtformat><inlinefmtcontent>&lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
-<inlinefmt><inlinefmtformat>tex</inlinefmtformat><inlinefmtcontent>$\\underlinea &lt; b <code>tex \\hbox code </code></inlinefmtcontent></inlinefmt>$ &textldquo;
+<inlinefmt><inlinefmtformat>docbook</inlinefmtformat><inlinefmtcontent spaces=" ">&lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
+<inlinefmt><inlinefmtformat>tex</inlinefmtformat><inlinefmtcontent spaces=" ">$\\underlinea &lt; b <code>tex \\hbox code </code></inlinefmtcontent></inlinefmt>$ &textldquo;
 </para>
 
-<para><inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent>raw &lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinerawcontent></inlineraw>, 
-<inlineraw><inlinerawformat>plaintext</inlinerawformat><inlinerawcontent>raw plaintext &textldquo;</inlinerawcontent></inlineraw>, 
+<para><inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent spaces=" ">raw &lt;blink&gt;html&lt;/blink&gt; &textldquo;</inlinerawcontent></inlineraw>, 
+<inlineraw><inlinerawformat>plaintext</inlinerawformat><inlinerawcontent spaces=" ">raw plaintext &textldquo;</inlinerawcontent></inlineraw>, 
 raw <para>xml</para> ``,
-<inlineraw><inlinerawformat>docbook</inlinerawformat><inlinerawcontent>raw &lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinerawcontent></inlineraw>, 
-<inlineraw><inlinerawformat>tex</inlinerawformat><inlinerawcontent>raw $\\underline{a &lt; b <code>tex \\hbox{ code }</code>}$ &textldquo;</inlinerawcontent></inlineraw>
+<inlineraw><inlinerawformat>docbook</inlinerawformat><inlinerawcontent spaces=" ">raw &lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinerawcontent></inlineraw>, 
+<inlineraw><inlinerawformat>tex</inlinerawformat><inlinerawcontent spaces=" ">raw $\\underline{a &lt; b <code>tex \\hbox{ code }</code>}$ &textldquo;</inlinerawcontent></inlineraw>
 </para>';
 
 

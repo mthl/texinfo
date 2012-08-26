@@ -301,6 +301,23 @@ $result_trees{'paragraph_in_cells'} = {
             'type' => 'bracketed_multitable_prototype'
           }
         ],
+        'prototypes_line' => [
+          {
+            'text' => ' ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => '  ',
+            'type' => 'prototype_space'
+          },
+          {},
+          {
+            'text' => '
+',
+            'type' => 'prototype_space'
+          }
+        ],
         'spaces_after_command' => {}
       },
       'line_nr' => {
@@ -369,6 +386,8 @@ $result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'co
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0];
+$result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'prototypes_line'}[3] = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'paragraph_in_cells'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraph_in_cells'}{'contents'}[0]{'parent'} = $result_trees{'paragraph_in_cells'};
 
@@ -423,7 +442,7 @@ $result_converted{'html_text'}->{'paragraph_in_cells'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'paragraph_in_cells'} = '<multitable spaces=" "><columnprototypes><columnprototype>AAA</columnprototype><columnprototype>BBB</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'paragraph_in_cells'} = '<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">AAA</columnprototype>  <columnprototype bracketed="on">BBB</columnprototype></columnprototypes>
 <tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
 </para></entry></row><row><entry command="item"><para>begin item
 </para>

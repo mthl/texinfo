@@ -3135,47 +3135,47 @@ $result_converted{'html_text'}->{'accent'} = '<a name="Top"></a>
 $result_converted{'xml'}->{'accent'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave">e</accent>
+<para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave" bracketed="off">e</accent>
 </para>
-<para>should be e&textrsquo;: <accent type="acute">e</accent> <accent type="acute">e</accent>
+<para>should be e&textrsquo;: <accent type="acute">e</accent> <accent type="acute" bracketed="off">e</accent>
 </para>
-<para>should be e^: <accent type="circ">e</accent> <accent type="circ">e</accent>
+<para>should be e^: <accent type="circ">e</accent> <accent type="circ" bracketed="off">e</accent>
 </para>
-<para>should be u&quot;: <accent type="uml">u</accent> <accent type="uml">u</accent>
+<para>should be u&quot;: <accent type="uml">u</accent> <accent type="uml" bracketed="off">u</accent>
 </para>
-<para>should be i&textlsquo;: <accent type="grave">i</accent> <accent type="grave">i</accent>
+<para>should be i&textlsquo;: <accent type="grave">i</accent> <accent type="grave" bracketed="off">i</accent>
 </para>
-<para>should be i&textrsquo;: <accent type="acute">i</accent> <accent type="acute">i</accent>
+<para>should be i&textrsquo;: <accent type="acute">i</accent> <accent type="acute" bracketed="off">i</accent>
 </para>
-<para>should be i^: <accent type="circ">i</accent> <accent type="circ">i</accent>
+<para>should be i^: <accent type="circ">i</accent> <accent type="circ" bracketed="off">i</accent>
 </para>
-<para>should be u&quot;: <accent type="uml">u</accent> <accent type="uml">u</accent>
+<para>should be u&quot;: <accent type="uml">u</accent> <accent type="uml" bracketed="off">u</accent>
 </para>
-<para>should be c,: <accent type="cedil">c</accent> <accent type="cedil">c</accent>
+<para>should be c,: <accent type="cedil">c</accent> <accent type="cedil" bracketed="off">c</accent>
 </para>
-<para>should be n~: <accent type="tilde">n</accent> <accent type="tilde">n</accent>
+<para>should be n~: <accent type="tilde">n</accent> <accent type="tilde" bracketed="off">n</accent>
 </para>
-<para>should be e=: <accent type="macr">e</accent> <accent type="macr">e</accent>
+<para>should be e=: <accent type="macr">e</accent> <accent type="macr" bracketed="off">e</accent>
 </para>
-<para>should be e<w>&textrsquo;</w>&textrsquo;: <accent type="doubleacute">e</accent> <accent type="doubleacute">e</accent>
+<para>should be e<w>&textrsquo;</w>&textrsquo;: <accent type="doubleacute">e</accent> <accent type="doubleacute" spaces=" ">e</accent>
 </para>
-<para>should be e.: <accent type="dotaccent">e</accent> <accent type="dotaccent">e</accent>
+<para>should be e.: <accent type="dotaccent">e</accent> <accent type="dotaccent" spaces=" ">e</accent>
 </para>
-<para>should be e*: <accent type="ring">e</accent> <accent type="ring">e</accent>
+<para>should be e*: <accent type="ring">e</accent> <accent type="ring" spaces=" ">e</accent>
 </para>
 <para>should be ee[: <accent type="tieaccent">ee</accent>
 </para>
-<para>should be e(: <accent type="breve">e</accent> <accent type="breve">e</accent>
+<para>should be e(: <accent type="breve">e</accent> <accent type="breve" spaces=" ">e</accent>
 </para>
-<para>should be e_: <accent type="ubaraccent">e</accent> <accent type="ubaraccent">e</accent>
+<para>should be e_: <accent type="ubaraccent">e</accent> <accent type="ubaraccent" spaces=" ">e</accent>
 </para>
-<para>should be .e: <accent type="udotaccent">e</accent> <accent type="udotaccent">e</accent>
+<para>should be .e: <accent type="udotaccent">e</accent> <accent type="udotaccent" spaces=" ">e</accent>
 </para>
-<para>should be e&lt;: <accent type="caron">e</accent> <accent type="caron">e</accent>
+<para>should be e&lt;: <accent type="caron">e</accent> <accent type="caron" spaces=" ">e</accent>
 </para>
-<para>should be a; : <accent type="ogon">a</accent> <accent type="ogon">a</accent>
+<para>should be a; : <accent type="ogon">a</accent> <accent type="ogon" spaces=" ">a</accent>
 </para>
-<para>should be e; : <accent type="ogon">e</accent> <accent type="ogon">e</accent>
+<para>should be e; : <accent type="ogon">e</accent> <accent type="ogon" spaces=" ">e</accent>
 </para>
 <para>upside down: &iquest; &iexcl;
 </para>

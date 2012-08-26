@@ -507,21 +507,21 @@ sp after para
 
 $result_converted{'xml'}->{'sp_in_example'} = '<example>
 <pre xml:space="preserve">Para
-<sp value="1"></sp>
+<sp value="1" line=" 1"></sp>
 other para
 Now lone &arobase;sp:
 
-<sp value="1"></sp>
+<sp value="1" line=" 1"></sp>
 
-<sp value="2"></sp>
+<sp value="2" line=" 2"></sp>
 Para after sp
 
 A
-<sp value="2"></sp>
+<sp value="2" line=" 2"></sp>
 B
 
 sp after para
-<sp value="1"></sp>
+<sp value="1" line=" 1"></sp>
 </pre></example>
 ';
 

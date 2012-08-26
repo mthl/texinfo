@@ -216,7 +216,7 @@ foreach my $type (#'empty_line_after_command',
             'empty_spaces_before_argument', 
             #'empty_spaces_before_paragraph',
             #'empty_spaces_after_close_brace', 
-            'empty_space_at_end_def_bracketed',
+            #'empty_space_at_end_def_bracketed',
             'menu_entry_separator',
             'menu_entry_leading_text',
   ) {
@@ -338,13 +338,15 @@ sub _infoenclose_attribute($$) {
   return $attribute;
 }
 
-sub _texinfo_xml_accent($$;$)
+sub _texinfo_xml_accent($$;$$)
 {
   my $text = shift;
   my $root = shift;
   my $in_upper_case = shift;
+  my $attributes = shift;
+  $attributes = '' if (!defined($attributes));
 
-  my $result = "<accent type=\"$xml_accent_types{$root->{'cmdname'}}\">";
+  my $result = "<accent type=\"$xml_accent_types{$root->{'cmdname'}}\"${attributes}>";
   $result .= $text;
   $result .= '</accent>';
   return $result;
@@ -390,6 +392,69 @@ sub _arg_line($)
     }
   } 
   return '';
+}
+
+sub _trailing_spaces_arg($$)
+{
+  my $self = shift;
+  my $root = shift;
+  
+  my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
+  if (defined($spaces[1])) {
+    chomp($spaces[1]);
+    if ($spaces[1] ne '') {
+      return " trailingspaces=\"$spaces[1]\"";
+    }
+  }
+  return '';
+}
+
+sub _leading_spaces_arg($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $result = '';
+  my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
+  if (defined($spaces[0]) and $spaces[0] ne '') {
+    $result .= " spaces=\"$spaces[0]\"";
+  }
+  return $result;
+}
+
+sub _leading_trailing_spaces_arg($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $result = '';
+  my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
+  if (defined($spaces[0]) and $spaces[0] ne '') {
+    $result .= " spaces=\"$spaces[0]\"";
+  }
+  if (defined($spaces[1])) {
+    chomp($spaces[1]);
+    if ($spaces[1] ne '') {
+      $result .= " trailingspaces=\"$spaces[1]\"";
+    }
+  }
+  return $result;
+}
+
+sub _texinfo_line($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my ($comment, $tree) = Texinfo::Convert::Converter::_tree_without_comment(
+                                                                        $root);
+  my $line = Texinfo::Convert::Texinfo::convert($tree);
+  chomp($line);
+  if ($line ne '') {
+    return ' line="'.$self->xml_protect_text($line).'"';
+  } else {
+    return '';
+  }
 }
 
 my @node_directions = ('Next', 'Prev', 'Up');
@@ -457,12 +522,19 @@ sub _convert($$;$)
       if ($self->get_conf('ENABLE_ENCODING')) {
         return $self->convert_accents($root, \&_texinfo_xml_accent);
       } else {
+        my $attributes = '';
         if (!$root->{'args'}) {
           $result = '';
         } else {
           $result = $self->_convert($root->{'args'}->[0]);
+          if ($root->{'extra'} and $root->{'extra'}->{'spaces'}) {
+            $attributes .= " spaces=\"$root->{'extra'}->{'spaces'}\"";
+          }
+          if ($root->{'args'}->[0]->{'type'} eq 'following_arg') {
+             $attributes .= ' bracketed="off"';
+          }
         }
-        return _texinfo_xml_accent($result, $root);
+        return _texinfo_xml_accent($result, $root,  undef, $attributes);
       }
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
@@ -581,7 +653,8 @@ sub _convert($$;$)
           } else {
             $nodename = '';
           }
-          $result .= "<node name=\"$nodename\""._leading_spaces($root).">";
+          $result .= "<node name=\"$nodename\""._leading_spaces($root)
+                      .$self->_trailing_spaces_arg($root->{'args'}->[0]).">";
           push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
           $result .= "<nodename>".
              $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
@@ -596,6 +669,10 @@ sub _convert($$;$)
               my $attribute = '';
               if (! defined($root->{'extra'}->{'nodes_manuals'}->[$direction_index])) {
                 $attribute = ' automatic="on"';
+              }
+              if ($root->{'args'}->[$direction_index]) {
+                $attribute .= $self->_leading_trailing_spaces_arg(
+                                 $root->{'args'}->[$direction_index]);
               }
               if ($node_direction->{'extra'}->{'manual_content'}) {
                 $node_name .= $self->_convert({
@@ -730,7 +807,9 @@ sub _convert($$;$)
         }
         my $end_line;
         if ($root->{'args'}->[0]) {
-          $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'})
+          $end_line = $self->_end_line_or_comment(
+                                         $root->{'args'}->[0]->{'contents'});
+          $attribute .= $self->_texinfo_line($root->{'args'}->[0]);
         } else {
           $end_line = "\n";
         }
@@ -808,10 +887,15 @@ sub _convert($$;$)
             $in_monospace_not_normal
               if (defined($in_monospace_not_normal));
           my $arg = $self->_convert($root->{'args'}->[$arg_index]);
-          if (!defined($command) or $arg ne '') {
+          if ($arg_index > 0) {
+            $attribute .= 
+              $self->_leading_spaces_arg($root->{'args'}->[$arg_index]);
+          }
+          if (!defined($command) or $arg ne '' or $attribute ne '') {
             # ${attribute} is only set for @verb
             $result .= "<$element${attribute}>$arg</$element>";
           }
+          $attribute = '';
           pop @{$self->{'document_context'}->[-1]->{'monospace'}}
             if (defined($in_monospace_not_normal));
         } else {
@@ -877,7 +961,8 @@ sub _convert($$;$)
       if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}) {
         $self->{'document_context'}->[-1]->{'raw'} = 1;
       } else {
-        $result .= "<$root->{'cmdname'}${attribute}"._leading_spaces($root).">${prepended_elements}";
+        $result .= "<$root->{'cmdname'}${attribute}"._leading_spaces($root)
+                                              .">${prepended_elements}";
         my $end_line = '';
         if ($root->{'args'}) {
           if ($commands_args_elements{$root->{'cmdname'}}) {
@@ -898,8 +983,13 @@ sub _convert($$;$)
                 } else {
                   $arg = $self->_convert($root->{'args'}->[$arg_index]);
                 }
-                if ($arg ne '') {
-                  $result .= "<$element>$arg</$element>";
+                my $spaces = '';
+                if ($arg_index != 0) {
+                  $spaces = $self->_leading_spaces_arg(
+                                              $root->{'args'}->[$arg_index]);
+                }
+                if ($arg ne '' or $spaces ne '') {
+                  $result .= "<$element${spaces}>$arg</$element>";
                 }
                 pop @{$self->{'document_context'}->[-1]->{'monospace'}} 
                   if ($in_code);
@@ -911,17 +1001,43 @@ sub _convert($$;$)
           } else {
             my $contents_possible_comment;
             if ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
-              if ($root->{'extra'}->{'prototypes'}) {
+              if ($root->{'extra'}->{'prototypes_line'}) {
                 $result .= "<columnprototypes>";
-                foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
-                  $result .= "<columnprototype>".$self->_convert($prototype)
-                             ."</columnprototype>";
+                my $first_proto = 1;
+                foreach my $prototype (@{$root->{'extra'}->{'prototypes_line'}}) {
+                  if ($prototype->{'text'} and $prototype->{'text'} !~ /\S/) {
+                    if (!$first_proto) {
+                      my $spaces = $prototype->{'text'};
+                      chomp($spaces);
+                      $result .= $spaces;
+                    }
+                  } else {
+                    my $attribute;
+                    if ($prototype->{'type'} 
+                        and $prototype->{'type'} eq 'bracketed') {
+                      $attribute = ' bracketed="on"';
+                    } else {
+                      $attribute = '';
+                    }
+                    $result .= "<columnprototype${attribute}>".
+                           $self->_convert($prototype)."</columnprototype>";
+                  }
+                  $first_proto = 0;
                 }
                 $result .= "</columnprototypes>";
                 $contents_possible_comment 
                   = $root->{'args'}->[-1]->{'contents'};
               } elsif ($root->{'extra'}->{'columnfractions'}) {
-                $result .= "<columnfractions>";
+                my $cmd;
+                foreach my $content (@{$root->{'args'}->[0]->{'contents'}}) {
+                  if ($content->{'cmdname'}
+                      and $content->{'cmdname'} eq 'columnfractions') {
+                    $cmd = $content;
+                    last;
+                  }
+                }
+                my $attribute = $self->_texinfo_line($cmd->{'args'}->[0]);
+                $result .= "<columnfractions${attribute}>";
                 foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
                   $result .= "<columnfraction value=\"$fraction\"></columnfraction>";
                 }
@@ -941,8 +1057,6 @@ sub _convert($$;$)
           }
         }
         $result .= $end_line;
-        #chomp($result);
-        #$result .= "\n";
         unshift @close_elements, $root->{'cmdname'};
       }
     }
@@ -959,7 +1073,7 @@ sub _convert($$;$)
     }
     if ($root->{'type'} eq 'def_line') {
       if ($root->{'cmdname'}) {
-        $result .= "<$root->{'cmdname'}>";
+        $result .= "<$root->{'cmdname'}"._leading_spaces($root).">";
       }
       $result .= "<definitionterm>";
       $result .= $self->_index_entry($root);
@@ -995,6 +1109,10 @@ sub _convert($$;$)
               $element = 'paramtype';
             } else {
               $element = $type;
+            }
+            if ($arg->[1]->{'type'}
+                and $arg->[1]->{'type'} eq 'bracketed_def_content') {
+              $attribute .= ' bracketed="on"';
             }
             $result .= "<def$element${attribute}>$content</def$element>";
           }

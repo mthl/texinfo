@@ -535,33 +535,6 @@ sub _bug_message($$;$)
   warn "You found a bug: $message\n\n".$additional_information;
 }
 
-sub output($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  $self->_set_outfile();
-  return undef unless $self->_create_destination_directory();
-  
-  my $fh;
-  if (! $self->{'output_file'} eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
-    if (!$fh) {
-      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                    $self->{'output_file'}, $!));
-      return undef;
-    }
-  }
-
-  $self->_set_global_multiple_commands(-1);
-
-  if ($self->get_conf('USE_NODES')) {
-    return $self->convert_document_nodes($root, $fh);
-  } else {
-    return $self->convert_document_sections($root, $fh);
-  }
-}
-
 # This is not used as code, but used to mark months as strings to be
 # translated
 if (0) {
@@ -681,6 +654,7 @@ sub _tree_without_comment($)
     my @contents = @{$contents_possible_comment->{'contents'}};
     $comment = pop @contents;
     $tree = {'contents' => \@contents};
+    # FIXME why this selection, and not everything?
     foreach my $key ('extra', 'type', 'cmdname', 'parent', 'line_nr') {
       $tree->{$key} = $contents_possible_comment->{$key}
         if (exists($contents_possible_comment->{$key}));
@@ -711,6 +685,40 @@ sub _convert_argument_and_end_line($$)
   return ($converted, $end_line);
 }
 
+sub _collect_leading_trailing_spaces_arg($$)
+{
+  my $self = shift;
+  my $arg = shift;
+  #print STDERR "$arg->{'type'}: @{$arg->{'contents'}}\n";
+  my @result;
+  if ($arg->{'contents'} and $arg->{'contents'}->[0] 
+      and defined($arg->{'contents'}->[0]->{'text'})
+      and $arg->{'contents'}->[0]->{'text'} !~ /\S/
+      and defined($arg->{'contents'}->[0]->{'type'})) {
+    #print STDERR "$arg->{'contents'}->[0]->{'type'}\n";
+    warn "Unknown leading space type $arg->{'contents'}->[0]->{'type'}\n"
+      if ($arg->{'contents'}->[0]->{'type'} ne 'empty_spaces_after_command'
+          and $arg->{'contents'}->[0]->{'type'} ne 'empty_spaces_before_argument'
+          # FIXME should we really catch this too?
+          and $arg->{'contents'}->[0]->{'type'} ne 'empty_line_after_command'
+         );
+    $result[0] = $arg->{'contents'}->[0]->{'text'};
+    return @result if (scalar(@{$arg->{'contents'}}) == 1);
+  }
+  if ($arg->{'contents'} and  $arg->{'contents'}->[-1] 
+      and defined($arg->{'contents'}->[-1]->{'text'})
+      and $arg->{'contents'}->[-1]->{'text'} !~ /\S/
+      and defined($arg->{'contents'}->[-1]->{'type'})) {
+    #print STDERR "$arg->{'contents'}->[-1]->{'type'}\n";
+    warn "Unknown trailing space type $arg->{'contents'}->[-1]->{'type'}\n"
+      if ($arg->{'contents'}->[-1]->{'type'} ne 'spaces_at_end'
+          and $arg->{'contents'}->[-1]->{'type'} ne 'space_at_end_block_command'
+         );
+    $result[1] = $arg->{'contents'}->[-1]->{'text'};
+  }
+  return @result;
+}
+
 sub _level_corrected_section($$)
 {
   my $self = shift;
@@ -724,6 +732,34 @@ sub _level_corrected_section($$)
     $command = $root->{'cmdname'};
   }
   return $command;
+}
+
+# generic output method
+sub output($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  $self->_set_outfile();
+  return undef unless $self->_create_destination_directory();
+  
+  my $fh;
+  if (! $self->{'output_file'} eq '') {
+    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
+    if (!$fh) {
+      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                    $self->{'output_file'}, $!));
+      return undef;
+    }
+  }
+
+  $self->_set_global_multiple_commands(-1);
+
+  if ($self->get_conf('USE_NODES')) {
+    return $self->convert_document_nodes($root, $fh);
+  } else {
+    return $self->convert_document_sections($root, $fh);
+  }
 }
 
 # output fo $fh if defined, otherwise return the text.
@@ -778,7 +814,7 @@ sub convert_document_nodes($$;$)
   return $self->_convert_document_elements($root, $elements, $fh);
 }
 
-
+# if in this container, we are 'inline', within a running text
 my @inline_types = ('def_line', 'paragraph', 'preformatted',
   'misc_command_arg', 'misc_line_arg', 'block_line_arg',
   'menu_entry_name', 'menu_entry_node');
@@ -791,6 +827,8 @@ foreach my $type (@inline_types) {
 my %not_inline_commands = (%Texinfo::Common::root_commands, 
   %Texinfo::Common::block_commands, %Texinfo::Common::context_brace_command);
 
+# Return 1 if inline in a running text, 0 if right in top-level or block
+# environment, and undef otherwise.
 sub _inline_or_block($$)
 {
   my $self = shift;
@@ -798,13 +836,14 @@ sub _inline_or_block($$)
   if ($current->{'type'} and $inline_types{$current->{'type'}}) {
     return 1;
   } elsif ($current->{'cmdname'} 
-           and $not_inline_commands{$current->{'cmdname'}}) {
+           and exists($not_inline_commands{$current->{'cmdname'}})) {
     return 0;
   } else {
     return undef;
   }
 }
 
+# return true if in running text context
 sub _is_inline($$)
 {
   my $self = shift;
@@ -817,6 +856,7 @@ sub _is_inline($$)
   return 0;
 }
 
+# return true if container or parent may hold running text
 sub _in_inline($$)
 {
   my $self = shift;
@@ -845,6 +885,103 @@ foreach my $ref_cmd ('pxref', 'xref', 'ref') {
   $default_args_code_style{$ref_cmd} = [1, undef, undef, 1];
 }
 
+sub convert_accents($$$;$)
+{
+  my $self = shift;
+  my $accent = shift;
+  my $format_accents = shift;
+  my $in_upper_case = shift;
+
+  my ($contents, $stack)
+      = Texinfo::Common::find_innermost_accent_contents($accent);
+  my $result = $self->convert_tree({'contents' => $contents});  
+
+  my $encoded;
+  if ($self->get_conf('ENABLE_ENCODING')) {
+    $encoded = Texinfo::Convert::Unicode::encoded_accents($result, $stack,
+                                                  $self->{'encoding_name'},
+                                                  $format_accents,
+                                                  $in_upper_case);
+  }
+  if (!defined($encoded)) {
+    foreach my $accent_command (reverse(@$stack)) {
+      $result = &$format_accents ($result, $accent_command, 
+                                  $in_upper_case);
+    }
+    return $result;
+  } else {
+    return $encoded;
+  }
+}
+
+# This method allows to count words in elements and returns an array
+# and a text already formatted.
+sub sort_element_counts($$;$$)
+{
+  my $converter =  shift;
+  my $tree = shift;
+  my $use_sections = shift;
+  my $count_words = shift;
+
+  my $elements;
+  if ($use_sections) {
+    $elements = Texinfo::Structuring::split_by_section($tree);
+  } else {
+    $elements = Texinfo::Structuring::split_by_node($tree);
+  }
+
+  if (!$elements) {
+    @$elements = ($tree);
+  } elsif (scalar(@$elements) >= 1 
+           and (!$elements->[0]->{'extra'}->{'node'}
+                and !$elements->[0]->{'extra'}->{'section'})) {
+    shift @$elements;
+  }
+
+  my $max_count = 0;
+  my @name_counts_array;
+  foreach my $element (@$elements) {
+    my $name = 'UNNAMED element';
+    if ($element->{'extra'} 
+        and ($element->{'extra'}->{'node'} or $element->{'extra'}->{'section'})) {
+      my $command = $element->{'extra'}->{'element_command'};
+      if ($command->{'cmdname'} eq 'node') {
+        $name = Texinfo::Convert::Texinfo::convert({'contents' 
+          => $command->{'extra'}->{'nodes_manuals'}->[0]->{'node_content'}});
+      } else {
+        $name = "\@$command->{'cmdname'}"
+          .Texinfo::Convert::Texinfo::convert($command->{'args'}->[0]);
+      }
+    }
+    chomp($name);
+    my $count;
+    my $element_content = $converter->convert_tree($element);
+    if ($count_words) {
+      my @res = split /\W+/, $element_content;
+      $count = scalar(@res);
+    } else {
+      my @res = split /^/, $element_content;
+      $count = scalar(@res);
+    }
+    push @name_counts_array, [$count, $name];
+    if ($count > $max_count) {
+      $max_count = $count;
+    }
+  }
+
+  my @sorted_name_counts_array = sort {$a->[0] <=> $b->[0]} @name_counts_array;
+  @sorted_name_counts_array = reverse(@sorted_name_counts_array);
+
+  my $max_length = length($max_count);
+  my $result = '';
+  foreach my $sorted_count (@sorted_name_counts_array) {
+    $result .=  sprintf("%${max_length}d  $sorted_count->[1]\n", $sorted_count->[0]);
+  }
+  return (\@sorted_name_counts_array, $result);
+}
+
+# XML related methods and variables that may be used in different
+# XML Converters.
 sub xml_protect_text($$)
 {
   my $self = shift;
@@ -1012,99 +1149,6 @@ sub xml_accents($$;$)
   }
   
   return $self->convert_accents($accent, $format_accents, $in_upper_case);
-}
-
-sub convert_accents($$$;$)
-{
-  my $self = shift;
-  my $accent = shift;
-  my $format_accents = shift;
-  my $in_upper_case = shift;
-
-  my ($contents, $stack)
-      = Texinfo::Common::find_innermost_accent_contents($accent);
-  my $result = $self->convert_tree({'contents' => $contents});  
-
-  my $encoded;
-  if ($self->get_conf('ENABLE_ENCODING')) {
-    $encoded = Texinfo::Convert::Unicode::encoded_accents($result, $stack,
-                                                  $self->{'encoding_name'},
-                                                  $format_accents,
-                                                  $in_upper_case);
-  }
-  if (!defined($encoded)) {
-    foreach my $accent_command (reverse(@$stack)) {
-      $result = &$format_accents ($result, $accent_command, 
-                                  $in_upper_case);
-    }
-    return $result;
-  } else {
-    return $encoded;
-  }
-}
-
-sub sort_element_counts($$;$$)
-{
-  my $converter =  shift;
-  my $tree = shift;
-  my $use_sections = shift;
-  my $count_words = shift;
-
-  my $elements;
-  if ($use_sections) {
-    $elements = Texinfo::Structuring::split_by_section($tree);
-  } else {
-    $elements = Texinfo::Structuring::split_by_node($tree);
-  }
-
-  if (!$elements) {
-    @$elements = ($tree);
-  } elsif (scalar(@$elements) >= 1 
-           and (!$elements->[0]->{'extra'}->{'node'}
-                and !$elements->[0]->{'extra'}->{'section'})) {
-    shift @$elements;
-  }
-
-  my $max_count = 0;
-  my @name_counts_array;
-  foreach my $element (@$elements) {
-    my $name = 'UNNAMED element';
-    if ($element->{'extra'} 
-        and ($element->{'extra'}->{'node'} or $element->{'extra'}->{'section'})) {
-      my $command = $element->{'extra'}->{'element_command'};
-      if ($command->{'cmdname'} eq 'node') {
-        $name = Texinfo::Convert::Texinfo::convert({'contents' 
-          => $command->{'extra'}->{'nodes_manuals'}->[0]->{'node_content'}});
-      } else {
-        $name = "\@$command->{'cmdname'}"
-          .Texinfo::Convert::Texinfo::convert($command->{'args'}->[0]);
-      }
-    }
-    chomp($name);
-    my $count;
-    my $element_content = $converter->convert_tree($element);
-    if ($count_words) {
-      my @res = split /\W+/, $element_content;
-      $count = scalar(@res);
-    } else {
-      my @res = split /^/, $element_content;
-      $count = scalar(@res);
-    }
-    push @name_counts_array, [$count, $name];
-    if ($count > $max_count) {
-      $max_count = $count;
-    }
-  }
-
-  my @sorted_name_counts_array = sort {$a->[0] <=> $b->[0]} @name_counts_array;
-  @sorted_name_counts_array = reverse(@sorted_name_counts_array);
-
-  my $max_length = length($max_count);
-  my $result = '';
-  foreach my $sorted_count (@sorted_name_counts_array) {
-    $result .=  sprintf("%${max_length}d  $sorted_count->[1]\n", $sorted_count->[0]);
-  }
-  return (\@sorted_name_counts_array, $result);
 }
 
 1;

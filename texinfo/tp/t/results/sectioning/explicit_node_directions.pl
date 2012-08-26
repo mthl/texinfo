@@ -976,7 +976,7 @@ $result_converted{'xml'}->{'explicit_node_directions'} = '<node name="Top" space
 </pre></menudescription></menuentry><menuentry><menunode>third node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<node name="second-node" spaces=" "><nodename>second node</nodename><nodenext>third node</nodenext><nodeprev>Top</nodeprev><nodeup>Top</nodeup></node>
+<node name="second-node" spaces=" "><nodename>second node</nodename><nodenext spaces=" ">third node</nodenext><nodeprev>Top</nodeprev><nodeup>Top</nodeup></node>
 
 <para>second node
 </para>
