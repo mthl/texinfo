@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.462 2012-08-25 23:34:04 karl Exp $
+@c $Id: texinfo.txi,v 1.463 2012-08-26 16:12:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13630,14 +13630,12 @@ This is the commonly used encoding for the Ukrainian language.
 
 Specifying an encoding @var{enc} has the following effects:
 
-@opindex --enable-encoding@r{, and Local Variables}
 @cindex Local Variables section, for encoding
 @cindex Info output, and encoding
-In Info output, unless the option @option{--disable-encoding} is given
-to @command{makeinfo}, a so-called `Local Variables' section
-(@pxref{File Variables,,,emacs, The GNU Emacs Manual}) is output
-including @var{enc}.  This allows Info readers to set the encoding
-appropriately.
+In Info output, a so-called `Local Variables' section (@pxref{File
+Variables,,,emacs, The GNU Emacs Manual}) is output including
+@var{enc}.  This allows Info readers to set the encoding
+appropriately.  It looks like this:
 
 @example
 Local Variables:
@@ -13645,10 +13643,11 @@ coding: @var{enc}
 End:
 @end example
 
-Also, in Info and plain text output (barring
-@option{--disable-encoding}), accent constructs and special
-characters, such as @code{@@'e}, are output as the actual 8-bit
-character in the given encoding.
+Also, in Info and plain text output, unless the option
+@option{--disable-encoding} is given to @command{makeinfo}, accent
+constructs and special characters, such as @code{@@'e}, are output as
+the actual 8-bit or UTF-8 character in the given encoding where
+possible.
 
 @cindex HTML output, and encodings
 @cindex @code{http-equiv}, and charset specification
@@ -13656,26 +13655,31 @@ character in the given encoding.
 In HTML output, a @samp{<meta>} tag is output, in the @samp{<head>}
 section of the HTML, that specifies @var{enc}.  Web servers and
 browsers cooperate to use this information so the correct encoding is
-used to display the page, if supported by the system.
+used to display the page, if supported by the system.  That looks like
+this:
 
 @example
 <meta http-equiv="Content-Type" content="text/html;
      charset=@var{enc}">
 @end example
 
-In split HTML output, if @option{--transliterate-file-names} is
-given (@pxref{HTML Xref 8-bit Character Expansion}), the names of HTML
-files are formed by transliteration of the corresponding node names,
-using the specified encoding.
+In XML and Docbook output, UTF-8 is always used for the output file,
+since all the XML processors are supposed to be able to process that
+encoding.
 
-In XML and Docbook output, the given document encoding is written in
-the output file as usual with those formats.
-
+@cindex Computer Modern fonts
 In @TeX{} output, the characters which are supported in the standard
 Computer Modern fonts are output accordingly.  (For example, this
 means using constructed accents rather than precomposed glyphs.)
 Using a missing character generates a warning message, as does
 specifying an unimplemented encoding.
+
+Although modern @TeX{} systems support nearly every script in use in
+the world, this wide-ranging support is not available in
+@file{texinfo.tex}, and it's not feasible to duplicate or incorporate
+all that effort.  Our plan to support other scripts is to create a
+@LaTeX{} backend to @command{texi2any}, where the support is already
+present.
 
 
 @node Conditionals
@@ -21977,7 +21981,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.462 2012-08-25 23:34:04 karl Exp $
+$Id: texinfo.txi,v 1.463 2012-08-26 16:12:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
