@@ -986,7 +986,7 @@ $result_converted{'xml'}->{'double_part'} = '<node name="Top" spaces=" "><nodena
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>node chapter</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">node chapter</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 </top>

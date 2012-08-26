@@ -1056,7 +1056,7 @@ $result_converted{'xml'}->{'block_commands_in_menu_description'} = '<node name="
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>(manual)</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">(manual)</menunode><menudescription><pre xml:space="preserve">
 </pre><itemize commandarg="bullet">
 <beforefirstitem><pre xml:space="preserve">
 </pre></beforefirstitem><listitem><prepend>&bullet;</prepend><pre xml:space="preserve">in item

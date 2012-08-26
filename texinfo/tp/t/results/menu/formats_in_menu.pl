@@ -1215,25 +1215,25 @@ $result_converted_errors{'html'}->{'formats_in_menu'} = [
 $result_converted{'xml'}->{'formats_in_menu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(gcc)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
 <menu>
-<menuentry><menunode>(gcc)</menunode><menudescription><pre xml:space="preserve">text
+<menuentry leadingtext="* "><menunode separator=":: ">(gcc)</menunode><menudescription><pre xml:space="preserve">text
 </pre><table commandarg="asis" spaces=" ">
 <tableentry><tableterm><item><itemformat command="asis">item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">* table line::
 </pre></tableitem></tableentry></table>
 </menudescription></menuentry><menucomment><pre xml:space="preserve">
-</pre></menucomment><menuentry><menunode>(info)</menunode><menudescription><pre xml:space="preserve">
+</pre></menucomment><menuentry leadingtext="* "><menunode separator="::">(info)</menunode><menudescription><pre xml:space="preserve">
 </pre><verbatim xml:space="preserve">
 some @ verb{x atim
 * texinfo:: in @ verbatim
 </verbatim>
 
-<pre xml:space="preserve"></pre></menudescription></menuentry><menuentry><menunode>(manual2)</menunode><menudescription><pre xml:space="preserve">%
+<pre xml:space="preserve"></pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">(manual2)</menunode><menudescription><pre xml:space="preserve">%
 <html>
 
 &lt;i&gt;&lt;/i&gt;
 </html>
 Log$
-</pre></menudescription></menuentry><menuentry><menunode>(truc)</menunode><menudescription><pre xml:space="preserve"><acronym><acronymword>description
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">(truc)</menunode><menudescription><pre xml:space="preserve"><acronym><acronymword>description
 * acronym::</acronymword></acronym>
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 </pre><example>

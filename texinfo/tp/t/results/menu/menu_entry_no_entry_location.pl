@@ -450,13 +450,13 @@ $result_converted_errors{'html'}->{'menu_entry_no_entry_location'} = [
 
 
 $result_converted{'xml'}->{'menu_entry_no_entry_location'} = '<menu>
-<menuentry><menunode>(manual)</menunode><menudescription><pre xml:space="preserve">begin description
+<menuentry leadingtext="* "><menunode separator=":: ">(manual)</menunode><menudescription><pre xml:space="preserve">begin description
 * not an entry ?
-</pre></menudescription></menuentry><menuentry><menunode>(manual)</menunode><menudescription><pre xml:space="preserve">an entry
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">(manual)</menunode><menudescription><pre xml:space="preserve">an entry
   in description
 * and here ?
 with text.
-</pre></menudescription></menuentry><menuentry><menunode>(last manual)</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">(last manual)</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 ';
 

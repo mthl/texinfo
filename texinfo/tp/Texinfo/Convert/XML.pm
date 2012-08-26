@@ -209,16 +209,11 @@ my %defcommand_name_type = (
  'deftp'     => 'datatype',
 );
 
-# FIXME none should be ignored
 my %ignored_types;
-foreach my $type (#'empty_line_after_command',
-            'empty_spaces_after_command', 
-            'empty_spaces_before_argument', 
-            #'empty_spaces_before_paragraph',
-            #'empty_spaces_after_close_brace', 
-            #'empty_space_at_end_def_bracketed',
-            'menu_entry_separator',
-            'menu_entry_leading_text',
+foreach my $type (
+            # those are put as spaces in the corresponding @-command
+            'empty_spaces_after_command',
+            'empty_spaces_before_argument',
   ) {
   $ignored_types{$type} = 1;
 }
@@ -1063,11 +1058,18 @@ sub _convert($$;$)
   }
   if ($root->{'type'}) {
     if (defined($type_elements{$root->{'type'}})) {
-      my $attribute;
+      my $attribute = '';
       if ($root->{'type'} eq 'preformatted') {
         $attribute = ' xml:space="preserve"';
-      } else {
-        $attribute = '';
+      } elsif ($root->{'type'} eq 'menu_entry') {
+        $attribute .= ' leadingtext="'.$self->xml_protect_text(
+                              $self->_convert($root->{'args'}->[0])).'"';
+      } elsif (($root->{'type'} eq 'menu_entry_node' 
+                or $root->{'type'} eq 'menu_entry_name')
+               and $self->{'pending_menu_entry_separator'}) {
+        $attribute .= ' separator="'.$self->xml_protect_text(
+               $self->_convert($self->{'pending_menu_entry_separator'})).'"';
+        delete $self->{'pending_menu_entry_separator'};
       }
       $result .= "<$type_elements{$root->{'type'}}${attribute}>";
     }
@@ -1144,8 +1146,20 @@ sub _convert($$;$)
     pop @{$self->{'document_context'}->[-1]->{'monospace'}}
       if ($in_code);
   }
+  my $arg_nr = -1;
   if ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
     foreach my $arg (@{$root->{'args'}}) {
+      $arg_nr++;
+      # menu_entry_leading_text is added as attribute leadingtext of menu_entry
+      # menu_entry_separator is recorded here and then added ass attribute
+      # separator
+      next if ($arg->{'type'} eq 'menu_entry_leading_text'
+               or $arg->{'type'} eq 'menu_entry_separator');
+      if ($root->{'args'}->[$arg_nr +1]
+          and $root->{'args'}->[$arg_nr +1]->{'type'}
+          and $root->{'args'}->[$arg_nr +1]->{'type'} eq 'menu_entry_separator') {
+        $self->{'pending_menu_entry_separator'} = $root->{'args'}->[$arg_nr +1];
+      }
       my $in_code;
       if ($arg->{'type'} eq 'menu_entry_node') {
         $in_code = 1;

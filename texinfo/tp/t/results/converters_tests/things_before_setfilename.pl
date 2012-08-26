@@ -1846,7 +1846,7 @@ $result_converted{'xml'}->{'things_before_setfilename'} = '<preamble>\\input tex
 <contents></contents>
 
 <menu>
-<menuentry><menunode>An anchor</menunode><menudescription><pre xml:space="preserve">menu entry pointing to the anchor.
+<menuentry leadingtext="* "><menunode separator="::                ">An anchor</menunode><menudescription><pre xml:space="preserve">menu entry pointing to the anchor.
 </pre></menudescription></menuentry></menu>
 
 <cindex index="cp"><indexterm index="cp">index entry</indexterm></cindex>

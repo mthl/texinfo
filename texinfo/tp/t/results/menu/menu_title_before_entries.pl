@@ -496,7 +496,7 @@ $result_converted{'xml'}->{'menu_title_before_entries'} = '<node name="Top" spac
 
 <menu>
 <menucomment><pre xml:space="preserve">Horizontal space
-</pre></menucomment><menuentry><menunode>subnode</menunode><menudescription><pre xml:space="preserve">
+</pre></menucomment><menuentry leadingtext="* "><menunode separator="::">subnode</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <node name="subnode" spaces=" "><nodename>subnode</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>

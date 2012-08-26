@@ -1203,8 +1203,8 @@ $result_converted{'xml'}->{'part_node_chapter_after_top'} = '<node name="Top" sp
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>a node after part</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode>chapter</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">a node after part</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">chapter</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 </top>

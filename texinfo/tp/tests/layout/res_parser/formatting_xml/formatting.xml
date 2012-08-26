@@ -8,11 +8,11 @@
 <top spaces=" "><sectiontitle>Top section</sectiontitle>
 
 <menu>
-<menuentry><menunode>chapter</menunode><menudescription><pre xml:space="preserve">chapter
+<menuentry leadingtext="* "><menunode separator="::               ">chapter</menunode><menudescription><pre xml:space="preserve">chapter
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 Menu comment
 
-</pre></menucomment><menuentry><menutitle>description</menutitle><menunode>chapter2</menunode><menudescription><pre xml:space="preserve">Chapter 2
+</pre></menucomment><menuentry leadingtext="* "><menutitle separator=":">description</menutitle><menunode separator=".   ">chapter2</menunode><menudescription><pre xml:space="preserve">Chapter 2
 </pre></menudescription></menuentry></menu>
 
 <macro name="mymacro" line=" mymacro">
@@ -3179,7 +3179,7 @@ docbook ''
 </para>
 <format>
 <menu> 
-<menuentry><menunode>s--ect&comma;ion</menunode><menudescription><pre xml:space="preserve">s&textndash;ect&comma;ion
+<menuentry leadingtext="* "><menunode separator=":: ">s--ect&comma;ion</menunode><menudescription><pre xml:space="preserve">s&textndash;ect&comma;ion
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 Menu comment
 &textldquo;simple-double&textndash;three&textmdash;four&textmdash;-&textrdquo;&linebreak;
@@ -3191,13 +3191,13 @@ Menu comment
 <section spaces=" "><sectiontitle>A section</sectiontitle>
 
 <menu>
-<menuentry><menunode>subsection</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator=":: ">subsection</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 </pre></menucomment><detailmenu>
 <menucomment><pre xml:space="preserve">In detailmenu
 
-</pre></menucomment><menuentry><menunode>subsubsection ``simple-double--</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode>subsubsection three---four----''</menunode><menudescription><pre xml:space="preserve">
+</pre></menucomment><menuentry leadingtext="* "><menunode separator="::">subsubsection ``simple-double--</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">subsubsection three---four----''</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 </menu>
 
@@ -3205,8 +3205,8 @@ Menu comment
 <subsection spaces=" "><sectiontitle>subsection</sectiontitle>
 
 <menu>
-<menuentry><menunode>subsubsection ``simple-double--</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode>subsubsection three---four----''</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">subsubsection ``simple-double--</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">subsubsection three---four----''</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <anchor name="anchor">anchor</anchor>

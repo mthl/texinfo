@@ -821,7 +821,7 @@ $result_converted{'xml'}->{'part_node_before_top'} = '<node name="part-node-befo
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>part node before top</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">part node before top</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 </top>
 ';

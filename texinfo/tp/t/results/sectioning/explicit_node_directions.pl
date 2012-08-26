@@ -972,8 +972,8 @@ $result_converted_errors{'html'}->{'explicit_node_directions'} = [
 $result_converted{'xml'}->{'explicit_node_directions'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">second node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <para>Top node
 </para><menu>
-<menuentry><menunode>second node</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode>third node</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">second node</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">third node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <node name="second-node" spaces=" "><nodename>second node</nodename><nodenext spaces=" ">third node</nodenext><nodeprev>Top</nodeprev><nodeup>Top</nodeup></node>

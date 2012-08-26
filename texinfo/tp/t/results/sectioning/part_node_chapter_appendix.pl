@@ -1003,7 +1003,7 @@ $result_converted{'xml'}->{'part_node_chapter_appendix'} = '<node name="Top" spa
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>chapter node</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">chapter node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 </top>

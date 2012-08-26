@@ -1090,9 +1090,9 @@ $result_converted{'html_text'}->{'spaces_in_empty_node_names'} = '<a name="Top">
 $result_converted{'xml'}->{'spaces_in_empty_node_names'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
 <menu>
-<menuentry><menunode><spacecmd type="spc"/><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode><verb delimiter=":">  </verb></menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::"><spacecmd type="spc"/><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::"><verb delimiter=":">  </verb></menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::"><spacecmd type="spc"/></menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <node name="" spaces=" "><nodename></nodename></node>

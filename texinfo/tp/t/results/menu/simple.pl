@@ -745,15 +745,15 @@ $result_converted{'xml'}->{'simple'} = '
 </para>
 <menu>
 <menucomment><pre xml:space="preserve">comment
-</pre></menucomment><menuentry><menutitle>menu entry name </menutitle><menunode>node</menunode><menudescription><pre xml:space="preserve">description
-</pre></menudescription></menuentry><menuentry><menunode>node name</menunode><menudescription><pre xml:space="preserve">description new
-</pre></menudescription></menuentry><menuentry><menutitle>other entry</menutitle><menunode>node</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode>last</menunode><menudescription><pre xml:space="preserve">
+</pre></menucomment><menuentry leadingtext="* "><menutitle separator=": ">menu entry name </menutitle><menunode separator=".    ">node</menunode><menudescription><pre xml:space="preserve">description
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::                ">node name</menunode><menudescription><pre xml:space="preserve">description new
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": ">other entry</menutitle><menunode separator=",    ">node</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">last</menunode><menudescription><pre xml:space="preserve">
                  description next line
                  still description
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 new comment
-</pre></menucomment><menuentry><menunode>last node entry </menunode><menudescription><pre xml:space="preserve">
+</pre></menucomment><menuentry leadingtext="* "><menunode separator="::">last node entry </menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <para>After menu.

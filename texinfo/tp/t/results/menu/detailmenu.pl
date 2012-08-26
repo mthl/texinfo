@@ -466,10 +466,10 @@ $result_converted_errors{'html'}->{'detailmenu'} = [
 
 $result_converted{'xml'}->{'detailmenu'} = '
 <menu>
-<menuentry><menunode>Copying Conditions</menunode><menudescription><pre xml:space="preserve">Your rights.
+<menuentry leadingtext="* "><menunode separator="::          ">Copying Conditions</menunode><menudescription><pre xml:space="preserve">Your rights.
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 </pre></menucomment><detailmenu>
-<menuentry><menunode>detailmenu</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">detailmenu</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 </menu>
 ';

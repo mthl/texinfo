@@ -2321,18 +2321,18 @@ $result_converted{'xml'}->{'detailmenu_on_subnodes'} = '<node name="Top" spaces=
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>chapter</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode>chapter 2</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">chapter</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">chapter 2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 </pre></menucomment><detailmenu>
-<menuentry><menunode>section</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">section</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 <menucomment><pre xml:space="preserve">
 </pre></menucomment><detailmenu>
 <menucomment><pre xml:space="preserve">Chap 2
 
-</pre></menucomment><menuentry><menunode>section chap 2</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode>unnumberedsec</menunode><menudescription><pre xml:space="preserve">
+</pre></menucomment><menuentry leadingtext="* "><menunode separator="::">section chap 2</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumberedsec</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 </menu>
 
@@ -2341,7 +2341,7 @@ $result_converted{'xml'}->{'detailmenu_on_subnodes'} = '<node name="Top" spaces=
 <chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
 <menu>
-<menuentry><menunode>section</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">section</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <node name="section" spaces=" "><nodename>section</nodename><nodeup automatic="on">chapter</nodeup></node>
@@ -2353,8 +2353,8 @@ $result_converted{'xml'}->{'detailmenu_on_subnodes'} = '<node name="Top" spaces=
 <chapter spaces=" "><sectiontitle>chapter 2</sectiontitle>
 
 <menu>
-<menuentry><menunode>section chap 2</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry><menunode>unnumberedsec</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">section chap 2</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumberedsec</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <node name="section-chap-2" spaces=" "><nodename>section chap 2</nodename><nodenext automatic="on">unnumberedsec</nodenext><nodeup automatic="on">chapter 2</nodeup></node>

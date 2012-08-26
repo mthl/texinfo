@@ -894,7 +894,7 @@ $result_converted{'xml'}->{'menu_in_example'} = '<node name="Top" spaces=" "><no
 
 <example>
 <menu>
-<menuentry><menunode>(entry)</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">(entry)</menunode><menudescription><pre xml:space="preserve">
 </pre><cartouche>
 <pre xml:space="preserve">in cartouche in description in menu in example
 </pre></cartouche>
@@ -903,8 +903,8 @@ $result_converted{'xml'}->{'menu_in_example'} = '<node name="Top" spaces=" "><no
 <pre xml:space="preserve">in cartouche in menu comment in menu in example
 </pre></cartouche>
 <pre xml:space="preserve">
-</pre></menucomment><menuentry><menunode>(node) menu</menunode><menudescription><pre xml:space="preserve">a node in menu
-</pre></menudescription></menuentry><menuentry><menutitle>a menu name</menutitle><menunode>(other) node</menunode><menudescription><pre xml:space="preserve">
+</pre></menucomment><menuentry leadingtext="* "><menunode separator="::      ">(node) menu</menunode><menudescription><pre xml:space="preserve">a node in menu
+</pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=":">a menu name</menutitle><menunode separator=". ">(other) node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 </example>
 ';

@@ -710,7 +710,7 @@ $result_converted{'xml'}->{'nodes_no_node_top_explicit_directions'} = '<node nam
 <para>first node
 </para>
 <menu>
-<menuentry><menunode>second node</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">second node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <node name="second-node" spaces=" "><nodename>second node</nodename><nodeprev>first</nodeprev><nodeup>first</nodeup></node>

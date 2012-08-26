@@ -539,7 +539,7 @@ $result_converted{'xml'}->{'verb_in_menu_description'} = '<node name="Top" space
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu>
-<menuentry><menunode>(manual)</menunode><menudescription><pre xml:space="preserve">
+<menuentry leadingtext="* "><menunode separator="::">(manual)</menunode><menudescription><pre xml:space="preserve">
 <verb delimiter=":"> in verb
 
 </verb>
