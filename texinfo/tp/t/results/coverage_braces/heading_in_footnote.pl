@@ -148,6 +148,9 @@ $result_trees{'heading_in_footnote'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -193,6 +196,7 @@ $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'c
 $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[4];
 $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1];
+$result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'heading_in_footnote'}{'contents'}[0];
 $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'heading_in_footnote'}{'contents'}[0];
 $result_trees{'heading_in_footnote'}{'contents'}[0]{'parent'} = $result_trees{'heading_in_footnote'};

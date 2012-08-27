@@ -64,7 +64,11 @@ $result_trees{'uref_in_ref'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -120,7 +124,11 @@ $result_trees{'uref_in_ref'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -172,7 +180,11 @@ $result_trees{'uref_in_ref'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -224,7 +236,11 @@ $result_trees{'uref_in_ref'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -272,6 +288,10 @@ $result_trees{'uref_in_ref'} = {
                 }
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},

@@ -88,6 +88,10 @@ $result_trees{'pxref_test'} = {
                     }
                   ],
                   'normalized' => 'in-pxref'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -153,6 +157,10 @@ $result_trees{'pxref_test'} = {
                     }
                   ],
                   'normalized' => 'in-pxref'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -198,6 +206,10 @@ $result_trees{'pxref_test'} = {
                     }
                   ],
                   'normalized' => 'n'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -263,6 +275,10 @@ $result_trees{'pxref_test'} = {
                     }
                   ],
                   'normalized' => 'n'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},

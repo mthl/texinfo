@@ -137,7 +137,11 @@ $result_trees{'anchor_in_footnote'} = {
                             'node_content' => [
                               {}
                             ],
-                            'normalized' => 'Anchor-in-footnote'
+                            'normalized' => 'Anchor-in-footnote',
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {
                             'file_name' => '',
@@ -162,6 +166,13 @@ $result_trees{'anchor_in_footnote'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
+              'extra' => {
+                'spaces_before_argument' => {
+                  'parent' => {},
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -440,6 +451,10 @@ $result_trees{'anchor_in_footnote'} = {
                     {}
                   ],
                   'normalized' => 'Anchor-in-footnote'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -503,6 +518,7 @@ $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2];

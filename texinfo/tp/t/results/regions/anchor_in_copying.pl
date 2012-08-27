@@ -67,7 +67,11 @@ $result_trees{'anchor_in_copying'} = {
                     'node_content' => [
                       {}
                     ],
-                    'normalized' => 'Copying-information'
+                    'normalized' => 'Copying-information',
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -258,6 +262,10 @@ $result_trees{'anchor_in_copying'} = {
                     {}
                   ],
                   'normalized' => 'Copying-information'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

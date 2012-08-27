@@ -164,7 +164,11 @@ $result_trees{'center_flush'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'anchor-in-flushleft'
+                'normalized' => 'anchor-in-flushleft',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -356,7 +360,11 @@ $result_trees{'center_flush'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'anchor-in-flushright'
+                'normalized' => 'anchor-in-flushright',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -403,7 +411,11 @@ $result_trees{'center_flush'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'second-anchor-in-flushright'
+                'normalized' => 'second-anchor-in-flushright',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',

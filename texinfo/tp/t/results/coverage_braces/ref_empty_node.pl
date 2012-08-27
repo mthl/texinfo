@@ -53,7 +53,11 @@ $result_trees{'ref_empty_node'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -119,7 +123,11 @@ $result_trees{'ref_empty_node'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -160,7 +168,11 @@ $result_trees{'ref_empty_node'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -256,7 +268,8 @@ $result_trees{'ref_empty_node'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -317,6 +330,7 @@ $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'extra'}{'brace_co
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[2]{'contents'}[1];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[3]{'contents'}[1];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[4]{'contents'}[1];
+$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'extra'}{'spaces_before_argument'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
 $result_trees{'ref_empty_node'}{'contents'}[1]{'parent'} = $result_trees{'ref_empty_node'};

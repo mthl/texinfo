@@ -1235,6 +1235,10 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                     {}
                   ],
                   'normalized' => 'a-strong-ref-with-SC_002c-a-i-trema-_00ef_002c-a-dotless-i-trema-_00ef-_1e14-and-exclamdown-_00a1'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},

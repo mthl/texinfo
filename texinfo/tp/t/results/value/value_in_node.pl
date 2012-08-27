@@ -741,6 +741,10 @@ $result_trees{'value_in_node'} = {
                     {}
                   ],
                   'normalized' => 'Node-1'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

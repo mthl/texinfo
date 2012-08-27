@@ -108,7 +108,11 @@ $result_trees{'one_node_explicit_directions_anchor'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'ref'
+                'normalized' => 'ref',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -165,6 +169,10 @@ $result_trees{'one_node_explicit_directions_anchor'} = {
                     {}
                   ],
                   'normalized' => 'ref'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

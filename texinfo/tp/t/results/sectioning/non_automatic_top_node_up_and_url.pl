@@ -92,7 +92,11 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                               {}
                             ]
                           ],
-                          'normalized' => 'GNU'
+                          'normalized' => 'GNU',
+                          'spaces_before_argument' => {
+                            'text' => '',
+                            'type' => 'empty_spaces_before_argument'
+                          }
                         },
                         'line_nr' => {
                           'file_name' => '',
@@ -122,7 +126,11 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                       {}
                     ]
                   ],
-                  'normalized' => 'GNU'
+                  'normalized' => 'GNU',
+                  'spaces_before_argument' => {
+                    'text' => '',
+                    'type' => 'empty_spaces_before_argument'
+                  }
                 },
                 'line_nr' => {},
                 'parent' => {}
@@ -181,7 +189,11 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                             ]
                           ],
                           'explanation_contents' => [],
-                          'normalized' => 'GNU'
+                          'normalized' => 'GNU',
+                          'spaces_before_argument' => {
+                            'text' => '',
+                            'type' => 'empty_spaces_before_argument'
+                          }
                         },
                         'line_nr' => {},
                         'parent' => {}
@@ -207,7 +219,11 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                       {}
                     ]
                   ],
-                  'normalized' => 'GNU'
+                  'normalized' => 'GNU',
+                  'spaces_before_argument' => {
+                    'text' => '',
+                    'type' => 'empty_spaces_before_argument'
+                  }
                 },
                 'line_nr' => {},
                 'parent' => {}
@@ -544,7 +560,11 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                             ]
                           ],
                           'explanation_contents' => [],
-                          'normalized' => 'GNU'
+                          'normalized' => 'GNU',
+                          'spaces_before_argument' => {
+                            'text' => '',
+                            'type' => 'empty_spaces_before_argument'
+                          }
                         },
                         'line_nr' => {
                           'file_name' => '',
@@ -574,7 +594,11 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                       {}
                     ]
                   ],
-                  'normalized' => 'GNU'
+                  'normalized' => 'GNU',
+                  'spaces_before_argument' => {
+                    'text' => '',
+                    'type' => 'empty_spaces_before_argument'
+                  }
                 },
                 'line_nr' => {},
                 'parent' => {}

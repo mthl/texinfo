@@ -53,7 +53,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'html'
+            'format' => 'html',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -105,7 +109,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'plaintext'
+            'format' => 'plaintext',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -157,7 +165,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'xml'
+            'format' => 'xml',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -209,7 +221,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'docbook'
+            'format' => 'docbook',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -284,7 +300,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'tex'
+            'format' => 'tex',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -350,7 +370,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'html'
+            'format' => 'html',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -402,7 +426,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'plaintext'
+            'format' => 'plaintext',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -454,7 +482,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'xml'
+            'format' => 'xml',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -506,7 +538,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'docbook'
+            'format' => 'docbook',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -608,7 +644,11 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
-            'format' => 'tex'
+            'format' => 'tex',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}

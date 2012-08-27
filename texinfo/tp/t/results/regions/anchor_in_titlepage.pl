@@ -54,7 +54,11 @@ $result_trees{'anchor_in_titlepage'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'in-titlepage'
+                'normalized' => 'in-titlepage',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -238,6 +242,10 @@ $result_trees{'anchor_in_titlepage'} = {
                     {}
                   ],
                   'normalized' => 'in-titlepage'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

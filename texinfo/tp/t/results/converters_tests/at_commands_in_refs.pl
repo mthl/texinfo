@@ -2592,7 +2592,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'AAA'
+                        'normalized' => 'AAA',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -2627,7 +2631,11 @@ $result_trees{'at_commands_in_refs'} = {
                           ]
                         ],
                         'explanation_contents' => [],
-                        'normalized' => 'AAA'
+                        'normalized' => 'AAA',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2657,7 +2665,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'BBB'
+                        'normalized' => 'BBB',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2753,7 +2765,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'CCC'
+                        'normalized' => 'CCC',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -2788,7 +2804,11 @@ $result_trees{'at_commands_in_refs'} = {
                           ]
                         ],
                         'explanation_contents' => [],
-                        'normalized' => 'CCC'
+                        'normalized' => 'CCC',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2818,7 +2838,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'DDD'
+                        'normalized' => 'DDD',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2923,7 +2947,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -2966,7 +2994,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {},
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -3042,7 +3074,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -3127,7 +3163,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -3820,7 +3860,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -3994,7 +4038,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -4072,7 +4120,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -4122,7 +4174,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -4170,7 +4226,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -9007,7 +9067,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'AAA'
+                'normalized' => 'AAA',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9042,7 +9106,11 @@ $result_trees{'at_commands_in_refs'} = {
                   ]
                 ],
                 'explanation_contents' => [],
-                'normalized' => 'AAA'
+                'normalized' => 'AAA',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9072,7 +9140,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'BBB'
+                'normalized' => 'BBB',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9160,7 +9232,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'AAA'
+                'normalized' => 'AAA',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9195,7 +9271,11 @@ $result_trees{'at_commands_in_refs'} = {
                   ]
                 ],
                 'explanation_contents' => [],
-                'normalized' => 'AAA'
+                'normalized' => 'AAA',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9225,7 +9305,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'BBB'
+                'normalized' => 'BBB',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9315,7 +9399,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'CCC'
+                'normalized' => 'CCC',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9350,7 +9438,11 @@ $result_trees{'at_commands_in_refs'} = {
                   ]
                 ],
                 'explanation_contents' => [],
-                'normalized' => 'CCC'
+                'normalized' => 'CCC',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9380,7 +9472,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'DDD'
+                'normalized' => 'DDD',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9468,7 +9564,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'CCC'
+                'normalized' => 'CCC',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9503,7 +9603,11 @@ $result_trees{'at_commands_in_refs'} = {
                   ]
                 ],
                 'explanation_contents' => [],
-                'normalized' => 'CCC'
+                'normalized' => 'CCC',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9533,7 +9637,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'DDD'
+                'normalized' => 'DDD',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9632,7 +9740,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9675,7 +9787,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {},
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9770,7 +9886,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9813,7 +9933,11 @@ $result_trees{'at_commands_in_refs'} = {
                     {},
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -9883,7 +10007,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9968,7 +10096,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -10036,7 +10168,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -10121,7 +10257,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -11385,7 +11525,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -11460,7 +11604,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -11709,7 +11857,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -11779,7 +11931,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -11851,7 +12007,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -11901,7 +12061,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -11949,7 +12113,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -12019,7 +12187,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -12069,7 +12241,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -12117,7 +12293,11 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -12194,6 +12374,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '-_007b-_007d'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -12343,6 +12527,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '----_0021---_002e--_002e-_003f-_0040'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -12472,6 +12660,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_0040-_007b-_007d-_005c-_0023'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -12641,6 +12833,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -12790,6 +12986,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -12891,6 +13091,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_2265-_2264-_2192'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -13072,6 +13276,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -13201,6 +13409,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_21d2-_00b0-a-b--_00e5'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -13510,6 +13722,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -13841,6 +14057,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -14052,6 +14272,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -14183,6 +14407,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_0131-_1e14-_1e08'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -14328,6 +14556,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_201c-_201d-_2018-_2019-_201e-_201a'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -14477,6 +14709,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_00ab-_00bb-_00ab-_00bb-_2039-_203a'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -14518,6 +14754,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d-_0060-_0027'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -14574,7 +14814,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'AAA'
+                        'normalized' => 'AAA',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -14609,7 +14853,11 @@ $result_trees{'at_commands_in_refs'} = {
                           ]
                         ],
                         'explanation_contents' => [],
-                        'normalized' => 'AAA'
+                        'normalized' => 'AAA',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -14639,7 +14887,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'BBB'
+                        'normalized' => 'BBB',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -14671,6 +14923,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'AAA-AAA-BBB'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -14723,7 +14979,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'CCC'
+                        'normalized' => 'CCC',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -14758,7 +15018,11 @@ $result_trees{'at_commands_in_refs'} = {
                           ]
                         ],
                         'explanation_contents' => [],
-                        'normalized' => 'CCC'
+                        'normalized' => 'CCC',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -14788,7 +15052,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'DDD'
+                        'normalized' => 'DDD',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -14820,6 +15088,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'CCC-CCC-DDD'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -14881,7 +15153,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -14924,7 +15200,11 @@ $result_trees{'at_commands_in_refs'} = {
                             {},
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -14952,6 +15232,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'someone_0040somewher-no_005fexplain_0040there'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -14986,7 +15270,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -15071,7 +15359,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -15099,6 +15391,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'f_002d_002dile1-f_002d_002dile'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -15159,6 +15455,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '-_0040-_007b_007d-_002e-'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -15466,6 +15766,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -15695,6 +15999,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'env-code-option-samp-command-file-C_002dx-ESC'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -15733,7 +16041,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -15763,6 +16075,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => '8_002e27in'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -15844,6 +16160,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'sansserif-slanted'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -15878,7 +16198,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -15906,6 +16230,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'indicateurl'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -15940,7 +16268,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -15990,7 +16322,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -16038,7 +16374,11 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -16070,6 +16410,10 @@ $result_trees{'at_commands_in_refs'} = {
                     {}
                   ],
                   'normalized' => 'http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},

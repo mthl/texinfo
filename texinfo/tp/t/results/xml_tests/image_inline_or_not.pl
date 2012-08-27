@@ -29,7 +29,11 @@ $result_trees{'image_inline_or_not'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -75,7 +79,11 @@ $result_trees{'image_inline_or_not'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -207,7 +215,11 @@ $result_trees{'image_inline_or_not'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -253,7 +265,11 @@ $result_trees{'image_inline_or_not'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -317,7 +333,11 @@ $result_trees{'image_inline_or_not'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -362,7 +382,11 @@ $result_trees{'image_inline_or_not'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -471,7 +495,11 @@ $result_trees{'image_inline_or_not'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -513,7 +541,11 @@ $result_trees{'image_inline_or_not'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -653,7 +685,11 @@ $result_trees{'image_inline_or_not'} = {
                                   [
                                     {}
                                   ]
-                                ]
+                                ],
+                                'spaces_before_argument' => {
+                                  'text' => '',
+                                  'type' => 'empty_spaces_before_argument'
+                                }
                               },
                               'line_nr' => {
                                 'file_name' => '',
@@ -715,7 +751,11 @@ $result_trees{'image_inline_or_not'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -761,7 +801,11 @@ $result_trees{'image_inline_or_not'} = {
                               [
                                 {}
                               ]
-                            ]
+                            ],
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {
                             'file_name' => '',
@@ -805,7 +849,11 @@ $result_trees{'image_inline_or_not'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -933,7 +981,11 @@ $result_trees{'image_inline_or_not'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -975,7 +1027,11 @@ $result_trees{'image_inline_or_not'} = {
                               [
                                 {}
                               ]
-                            ]
+                            ],
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {},
                           'parent' => {}
@@ -1036,7 +1092,11 @@ $result_trees{'image_inline_or_not'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -1080,7 +1140,11 @@ $result_trees{'image_inline_or_not'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -1162,7 +1226,11 @@ $result_trees{'image_inline_or_not'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -1290,7 +1358,11 @@ $result_trees{'image_inline_or_not'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1360,7 +1432,11 @@ $result_trees{'image_inline_or_not'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1430,7 +1506,11 @@ $result_trees{'image_inline_or_not'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -1451,6 +1531,9 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 45,
@@ -1538,7 +1621,11 @@ $result_trees{'image_inline_or_not'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -1582,7 +1669,11 @@ $result_trees{'image_inline_or_not'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -1617,7 +1708,11 @@ $result_trees{'image_inline_or_not'} = {
                               [
                                 {}
                               ]
-                            ]
+                            ],
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {},
                           'parent' => {}
@@ -1634,7 +1729,12 @@ $result_trees{'image_inline_or_not'} = {
               'cmdname' => 'caption',
               'contents' => [],
               'extra' => {
-                'float' => {}
+                'float' => {},
+                'spaces_before_argument' => {
+                  'parent' => {},
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -1985,6 +2085,7 @@ $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1];
+$result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4];
@@ -2016,6 +2117,7 @@ $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'args'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'extra'}{'float'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4];
+$result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'args'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'line_nr'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4];
@@ -2282,7 +2384,11 @@ $result_floats{'image_inline_or_not'} = {
         'caption' => {
           'cmdname' => 'caption',
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           }
         },
         'end_command' => {
@@ -2363,7 +2469,8 @@ T
 <chapter spaces=" "><sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile></image></sectiontitle>
 
 
-<para>T<footnote><image where="inline"><imagefile>in_footnote</imagefile></image>
+<para>T<footnote spaces="
+"><image where="inline"><imagefile>in_footnote</imagefile></image>
 </footnote>
 </para>
 <float name="g" type="F" spaces=" "><floattype>F</floattype><floatname>g</floatname>

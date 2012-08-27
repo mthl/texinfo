@@ -29,6 +29,12 @@ $result_trees{'anchor_not_closed'} = {
       ],
       'cmdname' => 'anchor',
       'contents' => [],
+      'extra' => {
+        'spaces_before_argument' => {
+          'text' => '',
+          'type' => 'empty_spaces_before_argument'
+        }
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,

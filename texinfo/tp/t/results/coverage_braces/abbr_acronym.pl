@@ -43,7 +43,11 @@ $result_trees{'abbr_acronym'} = {
                 {}
               ]
             ],
-            'normalized' => '_002d_002da'
+            'normalized' => '_002d_002da',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -79,7 +83,11 @@ $result_trees{'abbr_acronym'} = {
               ]
             ],
             'explanation_contents' => [],
-            'normalized' => '_002d_002da'
+            'normalized' => '_002d_002da',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -158,7 +166,11 @@ $result_trees{'abbr_acronym'} = {
                 {}
               ]
             ],
-            'normalized' => '_002d_002da'
+            'normalized' => '_002d_002da',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -308,7 +320,11 @@ $result_trees{'abbr_acronym'} = {
                 {}
               ]
             ],
-            'normalized' => '_00c9_002d_002da_002e-_002cA_002e'
+            'normalized' => '_00c9_002d_002da_002e-_002cA_002e',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -375,7 +391,11 @@ $result_trees{'abbr_acronym'} = {
               ]
             ],
             'explanation_contents' => [],
-            'normalized' => '_00c9_002d_002da_002e-_002cA_002e'
+            'normalized' => '_00c9_002d_002da_002e-_002cA_002e',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',

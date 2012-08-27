@@ -53,7 +53,11 @@ $result_trees{'long_uref_after_item'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',

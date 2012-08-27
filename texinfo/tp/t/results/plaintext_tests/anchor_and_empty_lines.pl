@@ -48,7 +48,11 @@ $result_trees{'anchor_and_empty_lines'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'in-anchor'
+        'normalized' => 'in-anchor',
+        'spaces_before_argument' => {
+          'text' => '',
+          'type' => 'empty_spaces_before_argument'
+        }
       },
       'line_nr' => {
         'file_name' => '',

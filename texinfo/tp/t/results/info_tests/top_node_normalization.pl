@@ -76,6 +76,10 @@ $result_trees{'top_node_normalization'} = {
                     {}
                   ],
                   'normalized' => 'Top'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -116,6 +120,10 @@ $result_trees{'top_node_normalization'} = {
                     {}
                   ],
                   'normalized' => 'Top'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},

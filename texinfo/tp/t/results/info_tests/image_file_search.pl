@@ -108,7 +108,11 @@ $result_trees{'image_file_search'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -163,7 +167,11 @@ $result_trees{'image_file_search'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',

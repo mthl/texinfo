@@ -283,6 +283,10 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
                     {}
                   ],
                   'normalized' => '_0104-_0105-_02db-_0118-_0119'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

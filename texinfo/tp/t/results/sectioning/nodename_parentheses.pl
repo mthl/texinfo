@@ -596,6 +596,10 @@ $result_trees{'nodename_parentheses'} = {
                     {}
                   ],
                   'normalized' => 'Node-_0028with-parentheses_0029'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -661,6 +665,10 @@ $result_trees{'nodename_parentheses'} = {
                     }
                   ],
                   'normalized' => 'node'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -838,7 +846,11 @@ $result_trees{'nodename_parentheses'} = {
                 'text' => 'anchor'
               }
             ],
-            'normalized' => 'anchor'
+            'normalized' => 'anchor',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',

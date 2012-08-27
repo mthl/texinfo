@@ -4687,14 +4687,19 @@ sub _parse_texi($;$)
               push @{$current->{'contents'}}, { 'type' => 'empty_spaces_before_argument', 
                                         'text' => $1,
                                         'parent' => $current };
+              $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
+                 = $current->{'contents'}->[-1];
             } else {
               $current->{'type'} = 'brace_command_arg';
-              push @{$current->{'contents'}}, 
-                 {'type' => 'empty_spaces_before_argument',
-                  'text' => '' } 
-                   if ($brace_commands{$command}
-                     and ($brace_commands{$command} > 1
-                        or $simple_text_commands{$command}));
+              if ($brace_commands{$command}
+                  and ($brace_commands{$command} > 1
+                       or $simple_text_commands{$command})) {
+                push @{$current->{'contents'}}, 
+                  {'type' => 'empty_spaces_before_argument',
+                   'text' => '' };
+                $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
+                   = $current->{'contents'}->[-1];
+              }
               push @{$self->{'context_stack'}}, $command
                 if ($command eq 'inlineraw');
             }
@@ -6344,6 +6349,11 @@ C<@frenchspacing>, C<@alias>, C<@synindex>, C<@columnfractions>.
 
 For @-commands followed by spaces, a reference to the corresponding
 text element.
+
+=item spaces_before_argument
+
+For @-commands with opening brace followed by spaces held in a 
+C<empty_spaces_before_argument> element, a reference to that element.
 
 =item spaces
 

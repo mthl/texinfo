@@ -397,7 +397,11 @@ $result_trees{'printindex'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'a-counting-anchor'
+            'normalized' => 'a-counting-anchor',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',

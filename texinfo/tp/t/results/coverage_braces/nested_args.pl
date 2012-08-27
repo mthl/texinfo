@@ -178,6 +178,10 @@ $result_trees{'nested_args'} = {
                 {}
               ],
               'normalized' => '_0040-in-samp'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},

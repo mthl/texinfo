@@ -36,7 +36,11 @@ $result_trees{'no_paragraph_commands'} = {
           [
             {}
           ]
-        ]
+        ],
+        'spaces_before_argument' => {
+          'text' => '',
+          'type' => 'empty_spaces_before_argument'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -122,7 +126,11 @@ $result_trees{'no_paragraph_commands'} = {
           [
             {}
           ]
-        ]
+        ],
+        'spaces_before_argument' => {
+          'text' => '',
+          'type' => 'empty_spaces_before_argument'
+        }
       },
       'line_nr' => {
         'file_name' => '',

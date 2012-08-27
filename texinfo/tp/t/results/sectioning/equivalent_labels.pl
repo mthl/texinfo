@@ -89,7 +89,11 @@ $result_trees{'equivalent_labels'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'anch'
+            'normalized' => 'anch',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -586,7 +590,11 @@ $result_nodes{'equivalent_labels'} = {
           }
         ]
       ],
-      'normalized' => 'anch'
+      'normalized' => 'anch',
+      'spaces_before_argument' => {
+        'text' => '',
+        'type' => 'empty_spaces_before_argument'
+      }
     },
     'node_prev' => {}
   },
@@ -638,7 +646,11 @@ $result_menus{'equivalent_labels'} = {
           }
         ]
       ],
-      'normalized' => 'anch'
+      'normalized' => 'anch',
+      'spaces_before_argument' => {
+        'text' => '',
+        'type' => 'empty_spaces_before_argument'
+      }
     },
     'menu_next' => {
       'cmdname' => 'float',

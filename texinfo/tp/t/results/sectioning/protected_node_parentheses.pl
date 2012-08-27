@@ -370,7 +370,11 @@ $result_trees{'protected_node_parentheses'} = {
               {},
               {}
             ],
-            'normalized' => '_0028manual2_0029-name2'
+            'normalized' => '_0028manual2_0029-name2',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -439,6 +443,10 @@ $result_trees{'protected_node_parentheses'} = {
                     {}
                   ],
                   'normalized' => '_0028manual2_0029-name2'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},

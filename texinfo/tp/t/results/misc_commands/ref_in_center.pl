@@ -86,6 +86,10 @@ $result_trees{'ref_in_center'} = {
                         {}
                       ],
                       'normalized' => 'Top'
+                    },
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
                     }
                   },
                   'line_nr' => {
@@ -176,7 +180,11 @@ $result_trees{'ref_in_center'} = {
                         {}
                       ],
                       undef
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',

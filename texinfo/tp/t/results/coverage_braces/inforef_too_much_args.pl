@@ -109,6 +109,10 @@ $result_trees{'inforef_too_much_args'} = {
                     {}
                   ],
                   'normalized' => 'chapter'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

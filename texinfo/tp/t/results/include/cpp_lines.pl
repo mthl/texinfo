@@ -99,7 +99,11 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -307,7 +311,11 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -370,7 +378,11 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -428,7 +440,11 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => 'inc',
@@ -474,7 +490,11 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -568,7 +588,11 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => 'g_f',

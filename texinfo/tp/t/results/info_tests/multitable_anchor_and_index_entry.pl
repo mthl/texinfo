@@ -404,7 +404,11 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                                 'node_content' => [
                                   {}
                                 ],
-                                'normalized' => 'anchor-in-multitable'
+                                'normalized' => 'anchor-in-multitable',
+                                'spaces_before_argument' => {
+                                  'text' => '',
+                                  'type' => 'empty_spaces_before_argument'
+                                }
                               },
                               'line_nr' => {
                                 'file_name' => '',
@@ -880,7 +884,11 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                                 'node_content' => [
                                   {}
                                 ],
-                                'normalized' => 'mark'
+                                'normalized' => 'mark',
+                                'spaces_before_argument' => {
+                                  'text' => '',
+                                  'type' => 'empty_spaces_before_argument'
+                                }
                               },
                               'line_nr' => {
                                 'file_name' => '',
@@ -1103,6 +1111,10 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                     {}
                   ],
                   'normalized' => 'mark'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -1144,6 +1156,10 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                     {}
                   ],
                   'normalized' => 'anchor-in-multitable'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

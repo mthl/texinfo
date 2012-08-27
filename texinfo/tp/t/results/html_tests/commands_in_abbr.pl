@@ -70,7 +70,11 @@ $result_trees{'commands_in_abbr'} = {
                 {}
               ]
             ],
-            'normalized' => 'A'
+            'normalized' => 'A',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -165,7 +169,11 @@ $result_trees{'commands_in_abbr'} = {
                     {}
                   ]
                 ],
-                'normalized' => 'A'
+                'normalized' => 'A',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}

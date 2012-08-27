@@ -69,7 +69,11 @@ $result_trees{'inlinefmt'} = {
                 {}
               ]
             ],
-            'format' => 'plaintext'
+            'format' => 'plaintext',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -126,7 +130,11 @@ $result_trees{'inlinefmt'} = {
                         {}
                       ]
                     ],
-                    'normalized' => 'HTML'
+                    'normalized' => 'HTML',
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -157,7 +165,11 @@ $result_trees{'inlinefmt'} = {
                 {}
               ]
             ],
-            'format' => 'html'
+            'format' => 'html',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}

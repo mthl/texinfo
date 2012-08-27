@@ -114,7 +114,11 @@ $result_trees{'anchor_and_spaces'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'anchor-0'
+            'normalized' => 'anchor-0',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -164,7 +168,11 @@ $result_trees{'anchor_and_spaces'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'anchor1'
+                'normalized' => 'anchor1',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -218,7 +226,11 @@ $result_trees{'anchor_and_spaces'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'anchor2'
+                'normalized' => 'anchor2',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',

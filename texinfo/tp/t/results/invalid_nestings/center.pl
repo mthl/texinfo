@@ -60,7 +60,11 @@ $result_trees{'center'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -93,7 +97,11 @@ $result_trees{'center'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'in-anchor'
+                'normalized' => 'in-anchor',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -119,6 +127,13 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
+              'extra' => {
+                'spaces_before_argument' => {
+                  'parent' => {},
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -1778,6 +1793,7 @@ $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $re
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0];
 $result_trees{'center'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'center'}{'contents'}[0]{'args'}[0];

@@ -70,7 +70,11 @@ $result_trees{'on_section_line'} = {
                     {}
                   ]
                 ],
-                'invalid_nesting' => 1
+                'invalid_nesting' => 1,
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -104,7 +108,11 @@ $result_trees{'on_section_line'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'in-anchor'
+                'normalized' => 'in-anchor',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -131,7 +139,12 @@ $result_trees{'on_section_line'} = {
               'cmdname' => 'footnote',
               'contents' => [],
               'extra' => {
-                'invalid_nesting' => 1
+                'invalid_nesting' => 1,
+                'spaces_before_argument' => {
+                  'parent' => {},
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -231,6 +244,7 @@ $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'paren
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7];
+$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];

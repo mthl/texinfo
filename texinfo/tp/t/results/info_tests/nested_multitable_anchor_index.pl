@@ -237,7 +237,11 @@ $result_trees{'nested_multitable_anchor_index'} = {
                                                 'node_content' => [
                                                   {}
                                                 ],
-                                                'normalized' => 'mark-inside'
+                                                'normalized' => 'mark-inside',
+                                                'spaces_before_argument' => {
+                                                  'text' => '',
+                                                  'type' => 'empty_spaces_before_argument'
+                                                }
                                               },
                                               'line_nr' => {},
                                               'parent' => {}
@@ -542,7 +546,11 @@ $result_trees{'nested_multitable_anchor_index'} = {
                                 'node_content' => [
                                   {}
                                 ],
-                                'normalized' => 'mark'
+                                'normalized' => 'mark',
+                                'spaces_before_argument' => {
+                                  'text' => '',
+                                  'type' => 'empty_spaces_before_argument'
+                                }
                               },
                               'line_nr' => {},
                               'parent' => {}
@@ -795,6 +803,10 @@ $result_trees{'nested_multitable_anchor_index'} = {
                     {}
                   ],
                   'normalized' => 'mark'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -836,6 +848,10 @@ $result_trees{'nested_multitable_anchor_index'} = {
                     {}
                   ],
                   'normalized' => 'mark-inside'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

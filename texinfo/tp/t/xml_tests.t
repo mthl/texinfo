@@ -172,6 +172,29 @@ f
 @multitable  {aa b}  @var{cmd}gg hh j 
 @end multitable
 
+T@footnote{  a}.
+
+Math @math{ \\underline{ a, b} }.
+
+'],
+['brace_commands_spaces_end_of_lines',
+'@image{
+a}
+
+@image{ 
+a}
+
+@image{a,
+b}
+
+@image{a, 
+b}
+
+@image{a,
+ b}
+
+@image{a, 
+ b}
 '],
 );
 

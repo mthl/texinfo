@@ -190,7 +190,11 @@ $result_trees{'inlineraw_in_menu_description'} = {
                                 {}
                               ]
                             ],
-                            'format' => 'html'
+                            'format' => 'html',
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {
                             'file_name' => '',

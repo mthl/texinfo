@@ -52,7 +52,11 @@ $result_trees{'space_command_in_image'} = {
           [
             {}
           ]
-        ]
+        ],
+        'spaces_before_argument' => {
+          'text' => '',
+          'type' => 'empty_spaces_before_argument'
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -110,7 +114,11 @@ $result_trees{'space_command_in_image'} = {
           [
             {}
           ]
-        ]
+        ],
+        'spaces_before_argument' => {
+          'text' => '',
+          'type' => 'empty_spaces_before_argument'
+        }
       },
       'line_nr' => {},
       'parent' => {}

@@ -152,7 +152,11 @@ $result_trees{'float_copying'} = {
                                             'node_content' => [
                                               {}
                                             ],
-                                            'normalized' => 'caption-copying-footnote-anchor'
+                                            'normalized' => 'caption-copying-footnote-anchor',
+                                            'spaces_before_argument' => {
+                                              'text' => '',
+                                              'type' => 'empty_spaces_before_argument'
+                                            }
                                           },
                                           'line_nr' => {
                                             'file_name' => '',
@@ -373,6 +377,10 @@ $result_trees{'float_copying'} = {
                                                 {}
                                               ],
                                               'normalized' => 'Copying-and-floats'
+                                            },
+                                            'spaces_before_argument' => {
+                                              'text' => '',
+                                              'type' => 'empty_spaces_before_argument'
                                             }
                                           },
                                           'line_nr' => {
@@ -404,6 +412,9 @@ $result_trees{'float_copying'} = {
                               ],
                               'cmdname' => 'footnote',
                               'contents' => [],
+                              'extra' => {
+                                'spaces_before_argument' => {}
+                              },
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 8,
@@ -453,7 +464,11 @@ $result_trees{'float_copying'} = {
                             'node_content' => [
                               {}
                             ],
-                            'normalized' => 'public-domain-anchor'
+                            'normalized' => 'public-domain-anchor',
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {
                             'file_name' => '',
@@ -585,7 +600,12 @@ $result_trees{'float_copying'} = {
                   'cmdname' => 'caption',
                   'contents' => [],
                   'extra' => {
-                    'float' => {}
+                    'float' => {},
+                    'spaces_before_argument' => {
+                      'parent' => {},
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1269,6 +1289,7 @@ $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'con
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0];
@@ -1305,6 +1326,7 @@ $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'con
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'extra'}{'float'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
+$result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'line_nr'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'float_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[5];
@@ -1612,7 +1634,11 @@ $result_floats{'float_copying'} = {
         'caption' => {
           'cmdname' => 'caption',
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           }
         },
         'end_command' => {

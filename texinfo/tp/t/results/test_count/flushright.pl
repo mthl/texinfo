@@ -60,7 +60,11 @@ $result_trees{'flushright'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'rrr'
+                'normalized' => 'rrr',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -106,7 +110,11 @@ $result_trees{'flushright'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'a1'
+                'normalized' => 'a1',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -147,7 +155,11 @@ $result_trees{'flushright'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'a2'
+                'normalized' => 'a2',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -217,7 +229,11 @@ $result_trees{'flushright'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'alone'
+            'normalized' => 'alone',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',

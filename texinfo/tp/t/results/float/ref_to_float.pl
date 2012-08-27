@@ -291,6 +291,10 @@ $result_trees{'ref_to_float'} = {
                 {}
               ],
               'normalized' => 'Label1'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {
@@ -344,6 +348,10 @@ $result_trees{'ref_to_float'} = {
                 {}
               ],
               'normalized' => 'Label2'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {

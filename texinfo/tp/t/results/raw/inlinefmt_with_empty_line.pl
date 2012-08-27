@@ -54,7 +54,11 @@ $result_trees{'inlinefmt_with_empty_line'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -128,7 +132,11 @@ $result_trees{'inlinefmt_with_empty_line'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -169,7 +177,11 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                 {}
               ]
             ],
-            'normalized' => 'HTML'
+            'normalized' => 'HTML',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',

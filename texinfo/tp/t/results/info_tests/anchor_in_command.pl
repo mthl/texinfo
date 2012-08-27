@@ -148,7 +148,11 @@ $result_trees{'anchor_in_command'} = {
                                 'node_content' => [
                                   {}
                                 ],
-                                'normalized' => 'anchor-in-emph'
+                                'normalized' => 'anchor-in-emph',
+                                'spaces_before_argument' => {
+                                  'text' => '',
+                                  'type' => 'empty_spaces_before_argument'
+                                }
                               },
                               'line_nr' => {
                                 'file_name' => '',

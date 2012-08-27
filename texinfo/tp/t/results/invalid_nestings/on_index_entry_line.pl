@@ -61,7 +61,11 @@ $result_trees{'on_index_entry_line'} = {
                     {}
                   ]
                 ],
-                'invalid_nesting' => 1
+                'invalid_nesting' => 1,
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -95,7 +99,11 @@ $result_trees{'on_index_entry_line'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'in-anchor'
+                'normalized' => 'in-anchor',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -122,7 +130,12 @@ $result_trees{'on_index_entry_line'} = {
               'cmdname' => 'footnote',
               'contents' => [],
               'extra' => {
-                'invalid_nesting' => 1
+                'invalid_nesting' => 1,
+                'spaces_before_argument' => {
+                  'parent' => {},
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -230,6 +243,7 @@ $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[5]{'p
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];

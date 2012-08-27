@@ -38,7 +38,11 @@ $result_trees{'end_line_in_anchor'} = {
           {},
           {}
         ],
-        'normalized' => 'an-anchor'
+        'normalized' => 'an-anchor',
+        'spaces_before_argument' => {
+          'text' => '',
+          'type' => 'empty_spaces_before_argument'
+        }
       },
       'line_nr' => {
         'file_name' => '',

@@ -537,7 +537,11 @@ anc-hor@anchor{A node\\nr\\}}
                         'node_content' => [
                           {}
                         ],
-                        'normalized' => 'A-node0'
+                        'normalized' => 'A-node0',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -1040,7 +1044,11 @@ anc-hor@anchor{A node\\nr\\}}
                         'node_content' => [
                           {}
                         ],
-                        'normalized' => 'A-node1'
+                        'normalized' => 'A-node1',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -1506,7 +1514,11 @@ anc-hor@anchor{A node\\nr\\}}
                                 'node_content' => [
                                   {}
                                 ],
-                                'normalized' => 'A-nodew'
+                                'normalized' => 'A-nodew',
+                                'spaces_before_argument' => {
+                                  'text' => '',
+                                  'type' => 'empty_spaces_before_argument'
+                                }
                               },
                               'line_nr' => {
                                 'file_name' => '',
@@ -2042,7 +2054,11 @@ anc-hor@anchor{A node\\nr\\}}
                         'node_content' => [
                           {}
                         ],
-                        'normalized' => 'A-node2'
+                        'normalized' => 'A-node2',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',

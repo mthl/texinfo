@@ -208,7 +208,12 @@ $result_trees{'empty_listoffloats_with_floats'} = {
           'cmdname' => 'caption',
           'contents' => [],
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'parent' => {},
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -427,7 +432,12 @@ $result_trees{'empty_listoffloats_with_floats'} = {
           'cmdname' => 'caption',
           'contents' => [],
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'parent' => {},
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -575,6 +585,7 @@ $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'a
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
+$result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[3]{'contents'}[3];
@@ -616,6 +627,7 @@ $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'a
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'extra'}{'float'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
+$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'args'}[0];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4];
@@ -704,7 +716,11 @@ $result_floats{'empty_listoffloats_with_floats'} = {
         'caption' => {
           'cmdname' => 'caption',
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           }
         },
         'end_command' => {
@@ -744,7 +760,11 @@ $result_floats{'empty_listoffloats_with_floats'} = {
         'caption' => {
           'cmdname' => 'caption',
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           }
         },
         'end_command' => {

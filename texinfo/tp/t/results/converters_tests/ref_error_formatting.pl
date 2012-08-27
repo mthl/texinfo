@@ -83,6 +83,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -173,7 +177,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -257,7 +265,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -347,7 +359,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -443,7 +459,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -534,6 +554,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -631,6 +655,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -734,6 +762,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -843,6 +875,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -953,6 +989,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -1063,6 +1103,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -1179,6 +1223,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -1296,6 +1344,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -1419,6 +1471,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -1557,6 +1613,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -1667,6 +1727,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -1783,6 +1847,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -1914,6 +1982,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -2030,6 +2102,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -2127,7 +2203,11 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               undef
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -2224,7 +2304,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -2327,7 +2411,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -2431,7 +2519,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -2541,7 +2633,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -2666,7 +2762,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -2763,7 +2863,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -2866,7 +2970,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -2984,7 +3092,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -3087,7 +3199,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -3182,7 +3298,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -3266,7 +3386,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -3361,7 +3485,11 @@ $result_trees{'ref_error_formatting'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -3422,7 +3550,11 @@ $result_trees{'ref_error_formatting'} = {
           'extra' => {
             'brace_command_contents' => [
               undef
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -3546,6 +3678,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -3624,6 +3760,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -3719,6 +3859,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},
@@ -3816,6 +3960,10 @@ $result_trees{'ref_error_formatting'} = {
                 {}
               ],
               'normalized' => 'node'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {},

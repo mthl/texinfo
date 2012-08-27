@@ -602,7 +602,11 @@ $result_trees{'formats_in_menu'} = {
                                 {}
                               ]
                             ],
-                            'normalized' => 'description-_002a-acronym_003a_003a'
+                            'normalized' => 'description-_002a-acronym_003a_003a',
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {
                             'file_name' => '',

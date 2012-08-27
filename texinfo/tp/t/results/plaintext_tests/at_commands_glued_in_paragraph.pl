@@ -116,7 +116,11 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
                 {}
               ]
             ],
-            'normalized' => 'ABC'
+            'normalized' => 'ABC',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -156,7 +160,11 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
               ]
             ],
             'explanation_contents' => [],
-            'normalized' => 'ABC'
+            'normalized' => 'ABC',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -211,7 +219,11 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -255,6 +267,10 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
                 {}
               ],
               'normalized' => 'Top'
+            },
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
             }
           },
           'line_nr' => {
@@ -294,6 +310,13 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
+          'extra' => {
+            'spaces_before_argument' => {
+              'parent' => {},
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 8,
@@ -472,7 +495,11 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'anchor'
+            'normalized' => 'anchor',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -599,6 +626,7 @@ $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[21]{'
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22]{'args'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22]{'args'}[0]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22];
+$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22]{'args'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[22]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[23]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[24]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];

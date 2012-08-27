@@ -153,7 +153,11 @@ $result_trees{'multitable'} = {
                             'node_content' => [
                               {}
                             ],
-                            'normalized' => 'anch-1'
+                            'normalized' => 'anch-1',
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {},
                           'parent' => {}
@@ -276,7 +280,11 @@ $result_trees{'multitable'} = {
                         'node_content' => [
                           {}
                         ],
-                        'normalized' => 'anch2'
+                        'normalized' => 'anch2',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}

@@ -91,6 +91,10 @@ $result_trees{'ref_tests'} = {
                     }
                   ],
                   'normalized' => 'in-ref-followed-by-comma'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -140,6 +144,10 @@ $result_trees{'ref_tests'} = {
                     }
                   ],
                   'normalized' => 'in-ref-not-followed-by-comma'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -193,6 +201,10 @@ $result_trees{'ref_tests'} = {
                             }
                           ],
                           'normalized' => 'in-ref-followed-by-end-command'
+                        },
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
                         }
                       },
                       'line_nr' => {
@@ -287,6 +299,10 @@ $result_trees{'ref_tests'} = {
                     }
                   ],
                   'normalized' => 'in-ref-followed-by-comma'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -353,6 +369,10 @@ $result_trees{'ref_tests'} = {
                     }
                   ],
                   'normalized' => 'in-ref-not-followed-by-comma'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -423,6 +443,10 @@ $result_trees{'ref_tests'} = {
                             }
                           ],
                           'normalized' => 'in-ref-followed-by-end-command'
+                        },
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
                         }
                       },
                       'line_nr' => {
@@ -499,6 +523,10 @@ $result_trees{'ref_tests'} = {
                     }
                   ],
                   'normalized' => 'in-ref-ending-with-a-dot_002e'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

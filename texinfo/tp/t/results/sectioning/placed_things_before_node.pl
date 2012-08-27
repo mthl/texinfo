@@ -33,7 +33,11 @@ $result_trees{'placed_things_before_node'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'An-anchor'
+            'normalized' => 'An-anchor',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -87,6 +91,10 @@ $result_trees{'placed_things_before_node'} = {
                     {}
                   ],
                   'normalized' => 'An-anchor'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -163,7 +171,11 @@ $result_trees{'placed_things_before_node'} = {
                     'node_content' => [
                       {}
                     ],
-                    'normalized' => 'Anchor-in-footnote'
+                    'normalized' => 'Anchor-in-footnote',
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -235,6 +247,10 @@ $result_trees{'placed_things_before_node'} = {
                                   {}
                                 ],
                                 'normalized' => 'An-anchor'
+                              },
+                              'spaces_before_argument' => {
+                                'text' => '',
+                                'type' => 'empty_spaces_before_argument'
                               }
                             },
                             'line_nr' => {
@@ -260,6 +276,13 @@ $result_trees{'placed_things_before_node'} = {
                       ],
                       'cmdname' => 'footnote',
                       'contents' => [],
+                      'extra' => {
+                        'spaces_before_argument' => {
+                          'parent' => {},
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 9,
@@ -286,6 +309,10 @@ $result_trees{'placed_things_before_node'} = {
                     {}
                   ],
                   'normalized' => 'Anchor-in-footnote'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -474,6 +501,10 @@ $result_trees{'placed_things_before_node'} = {
                     {}
                   ],
                   'normalized' => 'float-anchor'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -808,6 +839,10 @@ $result_trees{'placed_things_before_node'} = {
                     {}
                   ],
                   'normalized' => 'An-anchor'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -866,6 +901,10 @@ $result_trees{'placed_things_before_node'} = {
                     {}
                   ],
                   'normalized' => 'Anchor-in-footnote'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -941,6 +980,7 @@ $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'conten
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5];
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'contents'}[5]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'};
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'parent'}{'args'}[0] = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'};
+$result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'parent'}{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'};
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'parent'}{'parent'}{'contents'}[0] = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'parent'};
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'parent'}{'parent'}{'contents'}[1]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'parent'}{'parent'};
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'}{'parent'}{'parent'}{'parent'}{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0];

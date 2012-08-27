@@ -94,7 +94,11 @@ $result_trees{'inline_in_example'} = {
                     {}
                   ]
                 ],
-                'format' => 'plaintext'
+                'format' => 'plaintext',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -146,7 +150,11 @@ $result_trees{'inline_in_example'} = {
                     {}
                   ]
                 ],
-                'format' => 'plaintext'
+                'format' => 'plaintext',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -221,7 +229,11 @@ $result_trees{'inline_in_example'} = {
                             {}
                           ]
                         ],
-                        'normalized' => 'HTML'
+                        'normalized' => 'HTML',
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -253,7 +265,11 @@ $result_trees{'inline_in_example'} = {
                     {}
                   ]
                 ],
-                'format' => 'html'
+                'format' => 'html',
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',

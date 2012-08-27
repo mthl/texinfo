@@ -291,7 +291,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                         {},
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -656,7 +660,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                         {},
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -966,7 +974,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                 {},
                 {}
               ]
-            ]
+            ],
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {},
           'parent' => {}
@@ -1327,7 +1339,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                     {},
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -1590,7 +1606,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                         {},
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1949,7 +1969,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                         {},
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -2263,7 +2287,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                     {},
                     {}
                   ]
-                ]
+                ],
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {},
               'parent' => {}
@@ -2624,7 +2652,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                         {},
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -2846,7 +2878,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                             {},
                             {}
                           ]
-                        ]
+                        ],
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -3207,7 +3243,11 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                 {},
                                 {}
                               ]
-                            ]
+                            ],
+                            'spaces_before_argument' => {
+                              'text' => '',
+                              'type' => 'empty_spaces_before_argument'
+                            }
                           },
                           'line_nr' => {},
                           'parent' => {}
@@ -3228,7 +3268,12 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
               'cmdname' => 'caption',
               'contents' => [],
               'extra' => {
-                'float' => {}
+                'float' => {},
+                'spaces_before_argument' => {
+                  'parent' => {},
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -4228,6 +4273,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'extra'}{'float'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[6]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[7]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[7];
@@ -4593,7 +4639,11 @@ $result_floats{'test_image'} = {
         'caption' => {
           'cmdname' => 'caption',
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           }
         },
         'end_command' => {

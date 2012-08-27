@@ -91,6 +91,10 @@ $result_trees{'xref_test'} = {
                     }
                   ],
                   'normalized' => 'in-xref'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -139,6 +143,10 @@ $result_trees{'xref_test'} = {
                     }
                   ],
                   'normalized' => 'bad-xref'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -188,6 +196,10 @@ $result_trees{'xref_test'} = {
                             }
                           ],
                           'normalized' => 'bad-nested-xref'
+                        },
+                        'spaces_before_argument' => {
+                          'text' => '',
+                          'type' => 'empty_spaces_before_argument'
                         }
                       },
                       'line_nr' => {
@@ -264,6 +276,10 @@ $result_trees{'xref_test'} = {
                     }
                   ],
                   'normalized' => 'in-ref-ending-with-a-dot_002e'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {
@@ -313,6 +329,10 @@ $result_trees{'xref_test'} = {
                     }
                   ],
                   'normalized' => 'in-ref-followed-by-symbol'
+                },
+                'spaces_before_argument' => {
+                  'text' => '',
+                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {

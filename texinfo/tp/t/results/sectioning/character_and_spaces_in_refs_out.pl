@@ -339,7 +339,8 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       {}
                     ],
                     'normalized' => 'a-node'
-                  }
+                  },
+                  'spaces_before_argument' => {}
                 },
                 'line_nr' => {
                   'file_name' => '',
@@ -404,6 +405,10 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       {}
                     ],
                     'normalized' => '_003a'
+                  },
+                  'spaces_before_argument' => {
+                    'text' => '',
+                    'type' => 'empty_spaces_before_argument'
                   }
                 },
                 'line_nr' => {
@@ -482,7 +487,8 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       {}
                     ],
                     'normalized' => 'Top'
-                  }
+                  },
+                  'spaces_before_argument' => {}
                 },
                 'line_nr' => {
                   'file_name' => '',
@@ -531,6 +537,10 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       }
                     ],
                     'normalized' => 'Cross-References'
+                  },
+                  'spaces_before_argument' => {
+                    'text' => '',
+                    'type' => 'empty_spaces_before_argument'
                   }
                 },
                 'line_nr' => {
@@ -600,6 +610,10 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       {}
                     ],
                     'normalized' => 'node'
+                  },
+                  'spaces_before_argument' => {
+                    'text' => '',
+                    'type' => 'empty_spaces_before_argument'
                   }
                 },
                 'line_nr' => {
@@ -1238,6 +1252,10 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       {}
                     ],
                     'normalized' => '_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e'
+                  },
+                  'spaces_before_argument' => {
+                    'text' => '',
+                    'type' => 'empty_spaces_before_argument'
                   }
                 },
                 'line_nr' => {
@@ -1396,6 +1414,10 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       {}
                     ],
                     'normalized' => '_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e'
+                  },
+                  'spaces_before_argument' => {
+                    'text' => '',
+                    'type' => 'empty_spaces_before_argument'
                   }
                 },
                 'line_nr' => {
@@ -1441,7 +1463,8 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       {}
                     ],
                     'normalized' => 'Top'
-                  }
+                  },
+                  'spaces_before_argument' => {}
                 },
                 'line_nr' => {
                   'file_name' => '',
@@ -1601,7 +1624,8 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                       {}
                     ],
                     'normalized' => 'local-node'
-                  }
+                  },
+                  'spaces_before_argument' => {}
                 },
                 'line_nr' => {
                   'file_name' => '',
@@ -1712,6 +1736,7 @@ $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[3]{'contents'}[1];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0];
@@ -1735,6 +1760,7 @@ $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'args'}[3]{'contents'}[1];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'extra'}{'spaces_before_argument'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[4]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[5]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[6]{'args'}[0];
@@ -1901,6 +1927,7 @@ $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[4]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[4]{'extra'}{'label'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[1];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[4]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[4]{'extra'}{'spaces_before_argument'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[4]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[5]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'args'}[0];
@@ -1929,6 +1956,7 @@ $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'extra'}{'label'}{'parent'}{'extra'}{'element_command'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'extra'}{'label'};
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'extra'}{'label'}{'parent'}{'extra'}{'node'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'extra'}{'label'};
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'args'}[0]{'contents'}[1];
+$result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'extra'}{'spaces_before_argument'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[6]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'contents'}[7]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9];
 $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2]{'contents'}[9]{'parent'} = $result_trees{'character_and_spaces_in_refs_out'}[0]{'contents'}[2];

@@ -137,7 +137,11 @@ $result_trees{'menu_pointing_to_anchor'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'An-anchor'
+            'normalized' => 'An-anchor',
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -411,7 +415,11 @@ $result_nodes{'menu_pointing_to_anchor'} = {
           }
         ]
       ],
-      'normalized' => 'An-anchor'
+      'normalized' => 'An-anchor',
+      'spaces_before_argument' => {
+        'text' => '',
+        'type' => 'empty_spaces_before_argument'
+      }
     },
     'node_prev' => {}
   },
@@ -463,7 +471,11 @@ $result_menus{'menu_pointing_to_anchor'} = {
           }
         ]
       ],
-      'normalized' => 'An-anchor'
+      'normalized' => 'An-anchor',
+      'spaces_before_argument' => {
+        'text' => '',
+        'type' => 'empty_spaces_before_argument'
+      }
     },
     'menu_up' => {},
     'menu_up_hash' => {

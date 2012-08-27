@@ -112,7 +112,12 @@ $result_trees{'float_in_style_command'} = {
           'cmdname' => 'caption',
           'contents' => [],
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'parent' => {},
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -220,6 +225,7 @@ $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'extra'}{'float'} = $result_trees{'float_in_style_command'}{'contents'}[1];
+$result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3];
@@ -292,7 +298,11 @@ $result_floats{'float_in_style_command'} = {
         'caption' => {
           'cmdname' => 'caption',
           'extra' => {
-            'float' => {}
+            'float' => {},
+            'spaces_before_argument' => {
+              'text' => '',
+              'type' => 'empty_spaces_before_argument'
+            }
           }
         },
         'end_command' => {

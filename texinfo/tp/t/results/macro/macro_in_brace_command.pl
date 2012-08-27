@@ -182,7 +182,11 @@ $result_trees{'macro_in_brace_command'} = {
                         {},
                         {}
                       ]
-                    ]
+                    ],
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {
                     'file_name' => '',

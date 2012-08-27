@@ -375,6 +375,19 @@ sub _leading_spaces($)
   }
 }
 
+sub _leading_spaces_before_argument($)
+{
+  my $root = shift;
+  if ($root->{'extra'} and $root->{'extra'}->{'spaces_before_argument'}
+      and $root->{'extra'}->{'spaces_before_argument'}->{'type'} eq 'empty_spaces_before_argument'
+      and $root->{'extra'}->{'spaces_before_argument'}->{'text'} ne '') {
+    return " spaces=\"$root->{'extra'}->{'spaces_before_argument'}->{'text'}\"";
+  } else {
+    return '';
+  }
+}
+
+
 sub _arg_line($)
 {
   my $self = shift;
@@ -889,6 +902,8 @@ sub _convert($$;$)
           }
           if (!defined($command) or $arg ne '' or $attribute ne '') {
             # ${attribute} is only set for @verb
+            $attribute .= _leading_spaces_before_argument($root)
+               if (!defined($command));
             $result .= "<$element${attribute}>$arg</$element>";
           }
           $attribute = '';
@@ -906,6 +921,7 @@ sub _convert($$;$)
         }
       }
       if (defined($command)) {
+        $attribute .= _leading_spaces_before_argument($root);
         $result = "<$command${attribute}>$result</$command>";
       }
       if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {

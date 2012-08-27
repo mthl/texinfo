@@ -48,6 +48,10 @@ $result_trees{'ref_in_style_command'} = {
                         }
                       ],
                       'normalized' => 'other-node'
+                    },
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
                     }
                   },
                   'line_nr' => {

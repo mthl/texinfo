@@ -160,7 +160,11 @@ $result_trees{'accents'} = {
                     'node_content' => [
                       {}
                     ],
-                    'normalized' => 'truc'
+                    'normalized' => 'truc',
+                    'spaces_before_argument' => {
+                      'text' => '',
+                      'type' => 'empty_spaces_before_argument'
+                    }
                   },
                   'line_nr' => {},
                   'parent' => {}
