@@ -165,6 +165,7 @@ Q
 f
 @caption{ In caption }j.
 @shortcaption{Short}  g.
+@end float
 
 @multitable  @columnfractions  0.4  0.6  
 @end multitable
@@ -175,6 +176,8 @@ f
 T@footnote{  a}.
 
 Math @math{ \\underline{ a, b} }.
+
+@indicateurl{ http://ggg }
 
 '],
 ['brace_commands_spaces_end_of_lines',
