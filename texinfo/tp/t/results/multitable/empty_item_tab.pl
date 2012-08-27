@@ -1070,7 +1070,7 @@ $result_converted{'xml'}->{'empty_item_tab'} = '<multitable spaces=" "><columnfr
 <tbody><row><entry command="item">
 
 </entry></row><row><entry command="item">
-</entry></row><row><entry command="item"><para>text
+</entry></row><row><entry command="item" spaces=" "><para>text
 </para></entry></row><row><entry command="item">
 </entry></row></tbody></multitable>
 
@@ -1078,17 +1078,17 @@ $result_converted{'xml'}->{'empty_item_tab'} = '<multitable spaces=" "><columnfr
 <tbody><row><entry command="item">
 
 </entry></row><row><entry command="item">
-</entry></row><row><entry command="item"><para>only item
+</entry></row><row><entry command="item" spaces=" "><para>only item
 </para>
-</entry></row><row><entry command="item"><para>item text </para></entry><entry command="tab">
-</entry></row><row><entry command="item"><para>item new line
+</entry></row><row><entry command="item" spaces=" "><para>item text </para></entry><entry command="tab">
+</entry></row><row><entry command="item" spaces=" "><para>item new line
 </para></entry><entry command="tab">
 
-</entry></row><row><entry command="item"></entry><entry command="tab">
+</entry></row><row><entry command="item" spaces=" "></entry><entry command="tab">
 </entry></row><row><entry command="item">
 </entry><entry command="tab">
 
-</entry></row><row><entry command="item"><para>not empty </para></entry><entry command="tab"><para>tab not empty
+</entry></row><row><entry command="item" spaces=" "><para>not empty </para></entry><entry command="tab" spaces=" "><para>tab not empty
 </para></entry></row></tbody></multitable>
 ';
 

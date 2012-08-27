@@ -633,15 +633,15 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table_in_example'} = '<
 
 $result_converted{'xml'}->{'inter_item_commands_in_table_in_example'} = '<example>
 <table commandarg="var" spaces=" ">
-<tableentry><tableterm><item><itemformat command="var">a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="var">a</itemformat></item>
 <pre xml:space="preserve"><cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
 <!-- c and a comment -->
 <!-- comment and another comment -->
-</pre><itemx><itemformat command="var">b</itemformat></itemx>
+</pre><itemx spaces=" "><itemformat command="var">b</itemformat></itemx>
 <pre xml:space="preserve">
-</pre><itemx><itemformat command="var">c</itemformat></itemx>
+</pre><itemx spaces=" "><itemformat command="var">c</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
-</pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="var">d</itemformat></item>
+</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="var">d</itemformat></item>
 </tableterm></tableentry></table>
 </example>
 ';

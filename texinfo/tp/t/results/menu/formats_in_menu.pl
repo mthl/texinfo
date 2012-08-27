@@ -1217,7 +1217,7 @@ $result_converted{'xml'}->{'formats_in_menu'} = '<node name="Top" spaces=" "><no
 <menu>
 <menuentry leadingtext="* "><menunode separator=":: ">(gcc)</menunode><menudescription><pre xml:space="preserve">text
 </pre><table commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis">item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis">item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">* table line::
 </pre></tableitem></tableentry></table>
 </menudescription></menuentry><menucomment><pre xml:space="preserve">

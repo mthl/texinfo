@@ -1001,51 +1001,51 @@ After clickstyle &result;
 
 
 <itemize commandarg="bullet">
-<listitem><prepend>&bullet;</prepend><para>i&textndash;temize
+<listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend>+</itemprepend>
-<listitem><prepend>+</prepend><para>i&textndash;tem +
+<listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
 <itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
-<listitem><prepend>&bullet;</prepend><para>b&textndash;ullet
+<listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
 <itemize commandarg="minus" spaces=" "><itemprepend>&minus;</itemprepend>
-<listitem><prepend>&minus;</prepend><para>minu&textndash;s
+<listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
 <itemize commandarg="emph" spaces=" ">
-<listitem><prepend></prepend><para>e&textndash;mph item
+<listitem spaces=" "><prepend></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend><emph>after emph</emph></itemprepend>
 <beforefirstitem><!-- c comment in itemize -->
-</beforefirstitem><listitem><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
+</beforefirstitem><listitem spaces=" "><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
 <beforefirstitem><cindex index="cp"><indexterm index="cp">index entry within itemize</indexterm></cindex>
-</beforefirstitem><listitem><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
-</para></listitem><listitem><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
+</beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
+</para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
 
 <enumerate first="1">
-<listitem><para>e&textndash;numerate
+<listitem spaces=" "><para>e&textndash;numerate
 </para></listitem></enumerate>
 
 <multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
-<thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
-</para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
+<thead><row><entry command="headitem" spaces=" "><para>mu&textndash;ltitable headitem </para></entry><entry command="tab" spaces=" "><para>another tab
+</para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
-</para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
+</para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
-</para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
+</para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
 <multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
-<tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
+<tbody><row><entry command="item" spaces=" "><para>truc </para></entry><entry command="tab" spaces=" "><para>bidule
 </para></entry></row></tbody></multitable>
 
 <example>
@@ -1265,21 +1265,21 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 
 <table commandarg="asis" spaces=" ">
 <beforefirstitem><!-- c comment in table -->
-</beforefirstitem><tableentry><tableterm><item><itemformat command="asis">a</itemformat></item>
+</beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="asis">a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
 <!-- c comment between item and itemx -->
-<itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
 <ftable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
 <cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-<itemx><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
 
@@ -1603,51 +1603,51 @@ After clickstyle &result;
 
 
 <itemize commandarg="bullet">
-<listitem><prepend>&bullet;</prepend><para>i&textndash;temize
+<listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend>+</itemprepend>
-<listitem><prepend>+</prepend><para>i&textndash;tem +
+<listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
 <itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
-<listitem><prepend>&bullet;</prepend><para>b&textndash;ullet
+<listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
 <itemize commandarg="minus" spaces=" "><itemprepend>&minus;</itemprepend>
-<listitem><prepend>&minus;</prepend><para>minu&textndash;s
+<listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
 <itemize commandarg="emph" spaces=" ">
-<listitem><prepend></prepend><para>e&textndash;mph item
+<listitem spaces=" "><prepend></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend><emph>after emph</emph></itemprepend>
 <beforefirstitem><!-- c comment in itemize -->
-</beforefirstitem><listitem><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
+</beforefirstitem><listitem spaces=" "><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
 <beforefirstitem><cindex index="cp"><indexterm index="cp">index entry within itemize</indexterm></cindex>
-</beforefirstitem><listitem><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
-</para></listitem><listitem><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
+</beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
+</para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
 
 <enumerate first="1">
-<listitem><para>e&textndash;numerate
+<listitem spaces=" "><para>e&textndash;numerate
 </para></listitem></enumerate>
 
 <multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
-<thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
-</para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
+<thead><row><entry command="headitem" spaces=" "><para>mu&textndash;ltitable headitem </para></entry><entry command="tab" spaces=" "><para>another tab
+</para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
-</para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
+</para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
-</para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
+</para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
 <multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
-<tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
+<tbody><row><entry command="item" spaces=" "><para>truc </para></entry><entry command="tab" spaces=" "><para>bidule
 </para></entry></row></tbody></multitable>
 
 <example>
@@ -1867,21 +1867,21 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 
 <table commandarg="asis" spaces=" ">
 <beforefirstitem><!-- c comment in table -->
-</beforefirstitem><tableentry><tableterm><item><itemformat command="asis">a</itemformat></item>
+</beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="asis">a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
 <!-- c comment between item and itemx -->
-<itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
 <ftable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
 <cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-<itemx><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
 
@@ -2205,51 +2205,51 @@ After clickstyle &result;
 
 
 <itemize commandarg="bullet">
-<listitem><prepend>&bullet;</prepend><para>i&textndash;temize
+<listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend>+</itemprepend>
-<listitem><prepend>+</prepend><para>i&textndash;tem +
+<listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
 <itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
-<listitem><prepend>&bullet;</prepend><para>b&textndash;ullet
+<listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
 <itemize commandarg="minus" spaces=" "><itemprepend>&minus;</itemprepend>
-<listitem><prepend>&minus;</prepend><para>minu&textndash;s
+<listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
 <itemize commandarg="emph" spaces=" ">
-<listitem><prepend></prepend><para>e&textndash;mph item
+<listitem spaces=" "><prepend></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend><emph>after emph</emph></itemprepend>
 <beforefirstitem><!-- c comment in itemize -->
-</beforefirstitem><listitem><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
+</beforefirstitem><listitem spaces=" "><prepend><emph>after emph</emph></prepend><para>e&textndash;mph item
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
 <beforefirstitem><cindex index="cp"><indexterm index="cp">index entry within itemize</indexterm></cindex>
-</beforefirstitem><listitem><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
-</para></listitem><listitem><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
+</beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
+</para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
 
 <enumerate first="1">
-<listitem><para>e&textndash;numerate
+<listitem spaces=" "><para>e&textndash;numerate
 </para></listitem></enumerate>
 
 <multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
-<thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
-</para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
+<thead><row><entry command="headitem" spaces=" "><para>mu&textndash;ltitable headitem </para></entry><entry command="tab" spaces=" "><para>another tab
+</para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
-</para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
+</para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
-</para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
+</para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
 <multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
-<tbody><row><entry command="item"><para>truc </para></entry><entry command="tab"><para>bidule
+<tbody><row><entry command="item" spaces=" "><para>truc </para></entry><entry command="tab" spaces=" "><para>bidule
 </para></entry></row></tbody></multitable>
 
 <example>
@@ -2469,21 +2469,21 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 
 <table commandarg="asis" spaces=" ">
 <beforefirstitem><!-- c comment in table -->
-</beforefirstitem><tableentry><tableterm><item><itemformat command="asis">a</itemformat></item>
+</beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="asis">a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
 <vtable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
 <!-- c comment between item and itemx -->
-<itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
 <ftable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
 <cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-<itemx><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
 
@@ -2801,51 +2801,51 @@ After clickstyle &result;
 <pre xml:space="preserve">
 
 </pre><itemize commandarg="bullet">
-<listitem><prepend>&bullet;</prepend><pre xml:space="preserve">i--temize
+<listitem spaces=" "><prepend>&bullet;</prepend><pre xml:space="preserve">i--temize
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize spaces=" "><itemprepend>+</itemprepend>
-<listitem><prepend>+</prepend><pre xml:space="preserve">i--tem +
+<listitem spaces=" "><prepend>+</prepend><pre xml:space="preserve">i--tem +
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
-<listitem><prepend>&bullet;</prepend><pre xml:space="preserve">b--ullet
+<listitem spaces=" "><prepend>&bullet;</prepend><pre xml:space="preserve">b--ullet
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize commandarg="minus" spaces=" "><itemprepend>&minus;</itemprepend>
-<listitem><prepend>&minus;</prepend><pre xml:space="preserve">minu--s
+<listitem spaces=" "><prepend>&minus;</prepend><pre xml:space="preserve">minu--s
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize commandarg="emph" spaces=" ">
-<listitem><prepend></prepend><pre xml:space="preserve">e--mph item
+<listitem spaces=" "><prepend></prepend><pre xml:space="preserve">e--mph item
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize spaces=" "><itemprepend><emph>after emph</emph></itemprepend>
 <beforefirstitem><pre xml:space="preserve"><!-- c comment in itemize -->
-</pre></beforefirstitem><listitem><prepend><emph>after emph</emph></prepend><pre xml:space="preserve">e--mph item
+</pre></beforefirstitem><listitem spaces=" "><prepend><emph>after emph</emph></prepend><pre xml:space="preserve">e--mph item
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize spaces=" "><itemprepend>&bullet; a--n itemize line</itemprepend>
 <beforefirstitem><pre xml:space="preserve"><cindex index="cp"><indexterm index="cp">index entry within itemize</indexterm></cindex>
-</pre></beforefirstitem><listitem><prepend>&bullet; a--n itemize line</prepend><pre xml:space="preserve">i--tem 1
-</pre></listitem><listitem><prepend>&bullet; a--n itemize line</prepend><pre xml:space="preserve">i--tem 2
+</pre></beforefirstitem><listitem spaces=" "><prepend>&bullet; a--n itemize line</prepend><pre xml:space="preserve">i--tem 1
+</pre></listitem><listitem spaces=" "><prepend>&bullet; a--n itemize line</prepend><pre xml:space="preserve">i--tem 2
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><enumerate first="1">
-<listitem><pre xml:space="preserve">e--numerate
+<listitem spaces=" "><pre xml:space="preserve">e--numerate
 </pre></listitem></enumerate>
 <pre xml:space="preserve">
 </pre><multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
-<thead><row><entry command="headitem"><pre xml:space="preserve">mu--ltitable headitem </pre></entry><entry command="tab"><pre xml:space="preserve">another tab
-</pre></entry></row></thead><tbody><row><entry command="item"><pre xml:space="preserve">mu--ltitable item </pre></entry><entry command="tab"><pre xml:space="preserve">multitable tab
+<thead><row><entry command="headitem" spaces=" "><pre xml:space="preserve">mu--ltitable headitem </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">another tab
+</pre></entry></row></thead><tbody><row><entry command="item" spaces=" "><pre xml:space="preserve">mu--ltitable item </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">multitable tab
 <!-- c comment in multitable -->
-</pre></entry></row><row><entry command="item"><pre xml:space="preserve">mu--ltitable item 2 </pre></entry><entry command="tab"><pre xml:space="preserve">multitable tab 2
+</pre></entry></row><row><entry command="item" spaces=" "><pre xml:space="preserve">mu--ltitable item 2 </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
-</pre></entry></row><row><entry command="item"><pre xml:space="preserve">lone mu--ltitable item
+</pre></entry></row><row><entry command="item" spaces=" "><pre xml:space="preserve">lone mu--ltitable item
 </pre></entry></row></tbody></multitable>
 <pre xml:space="preserve">
 </pre><multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
-<tbody><row><entry command="item"><pre xml:space="preserve">truc </pre></entry><entry command="tab"><pre xml:space="preserve">bidule
+<tbody><row><entry command="item" spaces=" "><pre xml:space="preserve">truc </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">bidule
 </pre></entry></row></tbody></multitable>
 <pre xml:space="preserve">
 </pre><example>
@@ -3065,21 +3065,21 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 
 </pre><table commandarg="asis" spaces=" ">
 <beforefirstitem><pre xml:space="preserve"><!-- c comment in table -->
-</pre></beforefirstitem><tableentry><tableterm><item><itemformat command="asis">a</itemformat></item>
+</pre></beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="asis">a</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
 </pre></tableitem></tableentry></table>
 <pre xml:space="preserve">
 </pre><vtable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
 <pre xml:space="preserve"><!-- c comment between item and itemx -->
-</pre><itemx><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
+</pre><itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
 </pre></tableitem></tableentry></vtable>
 <pre xml:space="preserve">
 </pre><ftable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
 <pre xml:space="preserve"><cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
-</pre><itemx><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
+</pre><itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
 </pre></tableitem></tableentry></ftable>
 <pre xml:space="preserve">

@@ -2244,26 +2244,26 @@ $result_converted{'xml'}->{'block_commands_in_table'} = '<node name="Top" spaces
 <top spaces=" "><sectiontitle>Element</sectiontitle>
 
 <table commandarg="emph" spaces=" ">
-<tableentry><tableterm><item><itemformat command="emph">first item</itemformat></item>
-<itemx><itemformat command="emph">second itemx</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">first item</itemformat></item>
+<itemx spaces=" "><itemformat command="emph">second itemx</itemformat></itemx>
 </tableterm><tableitem>
 <para>Text.
 </para>
-</tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">example</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">example</itemformat></item>
 </tableterm><tableitem><example>
 <pre xml:space="preserve">In example
 
 end example.
 </pre></example>
-</tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">empty line</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">empty line</itemformat></item>
 </tableterm><tableitem>
 <para>empty line.
-</para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">quotation</itemformat></item>
+</para></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">quotation</itemformat></item>
 </tableterm><tableitem><quotation>
 <para>Quotation
 </para></quotation>
 
-</tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">quotation after a blank line</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">quotation after a blank line</itemformat></item>
 </tableterm><tableitem>
 <quotation>
 <para>quotation after a blank line
@@ -2271,17 +2271,17 @@ end example.
 </tableitem></tableentry></table>
 
 <vtable commandarg="strong" spaces=" ">
-<tableentry><tableterm><item><itemformat command="strong"><indexterm index="vr">item before ignored lines</indexterm>item before ignored lines</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="strong"><indexterm index="vr">item before ignored lines</indexterm>item before ignored lines</itemformat></item>
 <!-- c comment -->
 <vindex index="vr"><indexterm index="vr">vindex</indexterm></vindex>
-<itemx><itemformat command="strong"><indexterm index="vr">itemx now</indexterm>itemx now</itemformat></itemx>
+<itemx spaces=" "><itemformat command="strong"><indexterm index="vr">itemx now</indexterm>itemx now</itemformat></itemx>
 </tableterm><tableitem>
 <para>Description
 </para></tableitem></tableentry></vtable>
 <vtable commandarg="r" spaces=" ">
-<tableentry><tableterm><item><itemformat command="r"><indexterm index="vr">item</indexterm>item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="r"><indexterm index="vr">item</indexterm>item</itemformat></item>
 
-<itemx><itemformat command="r"><indexterm index="vr">itemx after an empty line</indexterm>itemx after an empty line</itemformat></itemx>
+<itemx spaces=" "><itemformat command="r"><indexterm index="vr">itemx after an empty line</indexterm>itemx after an empty line</itemformat></itemx>
 </tableterm><tableitem>
 <para>Description.
 </para>
@@ -2289,9 +2289,9 @@ end example.
 
 <para>Something.
 </para><table commandarg="emph" spaces=" ">
-<tableentry><tableterm><item><itemformat command="emph">in item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line
-</para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">second item</itemformat></item>
+</para></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">second item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line 2
 </para></tableitem></tableentry></table>
 <para>After table.

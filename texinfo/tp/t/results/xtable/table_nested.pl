@@ -3409,23 +3409,23 @@ After table.
 <para>Quotation
 </para><quotation>
 <vtable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
-<itemx><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem>
 <para>Text.
 </para>
-</tableitem></tableentry><tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
 </tableterm><tableitem>
 <para>Text 2
 </para>
-</tableitem></tableentry><tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
 </tableterm></tableentry></vtable>
 
 <para>Something.
 </para><table commandarg="emph" spaces=" ">
-<tableentry><tableterm><item><itemformat command="emph">in item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line
-</para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">second item</itemformat></item>
+</para></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">second item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line 2
 </para></tableitem></tableentry></table>
 <para>After table.
@@ -3434,23 +3434,23 @@ After table.
 <para>Example
 </para><example>
 <vtable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
-<itemx><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">
 Text.
 
-</pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">
 Text 2
 
-</pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
 </tableterm></tableentry></vtable>
 <pre xml:space="preserve">
 Something.
 </pre><table commandarg="emph" spaces=" ">
-<tableentry><tableterm><item><itemformat command="emph">in item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">Text without blank line
-</pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">second item</itemformat></item>
+</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">second item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">Text without blank line 2
 </pre></tableitem></tableentry></table>
 <pre xml:space="preserve">After table.
@@ -3460,23 +3460,23 @@ Something.
 </para><quotation>
 <quotation>
 <vtable commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
-<itemx><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem>
 <para>Text.
 </para>
-</tableitem></tableentry><tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">second item</indexterm>second item</itemformat></item>
 </tableterm><tableitem>
 <para>Text 2
 </para>
-</tableitem></tableentry><tableentry><tableterm><item><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
+</tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">last</indexterm>last</itemformat></item>
 </tableterm></tableentry></vtable>
 
 <para>Something.
 </para><table commandarg="emph" spaces=" ">
-<tableentry><tableterm><item><itemformat command="emph">in item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line
-</para></tableitem></tableentry><tableentry><tableterm><item><itemformat command="emph">second item</itemformat></item>
+</para></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">second item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line 2
 </para></tableitem></tableentry></table>
 <para>After table.

@@ -1059,12 +1059,12 @@ $result_converted{'xml'}->{'block_commands_in_menu_description'} = '<node name="
 <menuentry leadingtext="* "><menunode separator="::">(manual)</menunode><menudescription><pre xml:space="preserve">
 </pre><itemize commandarg="bullet">
 <beforefirstitem><pre xml:space="preserve">
-</pre></beforefirstitem><listitem><prepend>&bullet;</prepend><pre xml:space="preserve">in item
+</pre></beforefirstitem><listitem spaces=" "><prepend>&bullet;</prepend><pre xml:space="preserve">in item
 
 </pre></listitem></itemize>
 <table commandarg="asis" spaces=" ">
 <beforefirstitem><pre xml:space="preserve">
-</pre></beforefirstitem><tableentry><tableterm><item><itemformat command="asis">table item</itemformat></item>
+</pre></beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="asis">table item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">
 Text.
 

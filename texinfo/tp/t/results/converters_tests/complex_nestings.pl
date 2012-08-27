@@ -1629,11 +1629,11 @@ $result_converted{'xml'}->{'complex_nestings'} = '<node name="Top" spaces=" "><n
 
 A table within the def
 </pre><table commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis">item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis">item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">text
 
 more text
-</pre></tableitem></tableentry><tableentry><tableterm><item><itemformat command="asis">second item</itemformat></item>
+</pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis">second item</itemformat></item>
 </tableterm></tableentry></table>
 <pre xml:space="preserve">
 explanation

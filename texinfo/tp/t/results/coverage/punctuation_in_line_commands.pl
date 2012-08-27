@@ -1559,7 +1559,7 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 <top spaces=" "><sectiontitle>top! After punc</sectiontitle>
 
 <table commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis">item! After punc</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis">item! After punc</itemformat></item>
 </tableterm></tableentry></table>
 
 <quotation spaces=" "><quotationtype>quotation arg! After punc</quotationtype>

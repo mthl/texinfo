@@ -2556,27 +2556,27 @@ $result_floats{'comments_on_block_command_lines'}{'f'}[0]{'extra'}{'end_command'
 
 
 $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet" spaces=" "><!-- c comm -->
-<listitem><prepend>&bullet;</prepend><para>itemize it
+<listitem spaces=" "><prepend>&bullet;</prepend><para>itemize it
 </para></listitem></itemize>
 
 <itemize spaces=" "><itemprepend>x </itemprepend><!-- c comm -->
-<listitem><prepend>x</prepend><para>itemize xit
+<listitem spaces=" "><prepend>x</prepend><para>itemize xit
 </para></listitem></itemize>
 
 <itemize commandarg="bullet" spaces=" "><itemprepend>&bullet; </itemprepend><!-- c comm -->
-<listitem><prepend>&bullet;</prepend><para>itemize bulletit
+<listitem spaces=" "><prepend>&bullet;</prepend><para>itemize bulletit
 </para></listitem></itemize>
 
 <enumerate first="1" spaces=" "><!-- c comm -->
-<listitem><para>en
+<listitem spaces=" "><para>en
 </para></listitem></enumerate>
 
 <enumerate first="a" spaces=" "><enumeratefirst>a </enumeratefirst><!-- c comm -->
-<listitem><para>aen
+<listitem spaces=" "><para>aen
 </para></listitem></enumerate>
 
 <table commandarg="asis" spaces=" "><!-- c table -->
-<tableentry><tableterm><item><itemformat command="asis">it</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis">it</itemformat></item>
 </tableterm></tableentry></table>
 
 <quotation spaces=" "><!-- c quot no arg -->
@@ -2596,11 +2596,11 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 </pre></example>
 
 <multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions><!-- c comm -->
-<tbody><row><entry command="item"><para>a </para></entry><entry command="tab"><para>b
+<tbody><row><entry command="item" spaces=" "><para>a </para></entry><entry command="tab" spaces=" "><para>b
 </para></entry></row></tbody></multitable>
 
 <multitable spaces=" "><columnprototypes><columnprototype bracketed="on">aaa</columnprototype> <columnprototype bracketed="on">bbb</columnprototype> </columnprototypes><!-- c c -->
-<tbody><row><entry command="item"><para>aaa </para></entry><entry command="tab"><para>bbb
+<tbody><row><entry command="item" spaces=" "><para>aaa </para></entry><entry command="tab" spaces=" "><para>bbb
 </para></entry></row></tbody></multitable>
 
 <float name="g" type="f" spaces=" "><floattype>f</floattype><floatname>g </floatname><!-- c comm -->

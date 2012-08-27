@@ -1312,27 +1312,27 @@ $result_converted{'html_text'}->{'inter_item_commands_in_multitable'} = '<table>
 $result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype></columnprototypes>
 <beforefirstitem><!-- c comment before first item -->
 
-</beforefirstitem><tbody><row><entry command="item"><para>truc
+</beforefirstitem><tbody><row><entry command="item" spaces=" "><para>truc
 </para>
 <cindex index="cp"><indexterm index="cp">index entry between empty lines</indexterm></cindex>
 
-</entry></row><row><entry command="item"><para>trouc
+</entry></row><row><entry command="item" spaces=" "><para>trouc
 <!-- c last comment -->
 </para></entry></row></tbody></multitable>
 
 <multitable spaces=" "><columnfractions line=" 0.6 0.4"><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
-<thead><row><entry command="headitem"><para>mu&textndash;ltitable headitem </para></entry><entry command="tab"><para>another tab
-</para></entry></row></thead><tbody><row><entry command="item"><para>mu&textndash;ltitable item </para></entry><entry command="tab"><para>multitable tab
+<thead><row><entry command="headitem" spaces=" "><para>mu&textndash;ltitable headitem </para></entry><entry command="tab" spaces=" "><para>another tab
+</para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
-</para></entry></row><row><entry command="item"><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab"><para>multitable tab 2
+</para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
 <cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
-</para></entry></row><row><entry command="item"><para>lone mu&textndash;ltitable item
+</para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
 <multitable spaces=" "><columnprototypes><columnprototype bracketed="on">thing</columnprototype></columnprototypes>
 <beforefirstitem><para>Title
 <cindex index="cp"><indexterm index="cp">cindex</indexterm></cindex>
-</para></beforefirstitem><tbody><row><entry command="item"><para>thing
+</para></beforefirstitem><tbody><row><entry command="item" spaces=" "><para>thing
 </para></entry></row></tbody></multitable>
 
 ';

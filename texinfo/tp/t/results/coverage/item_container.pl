@@ -513,7 +513,7 @@ $result_converted{'html_text'}->{'item_container'} = '
 
 $result_converted{'xml'}->{'item_container'} = '
 <itemize spaces=" "><itemprepend>+</itemprepend>
-<listitem><prepend>+</prepend><para>i&textndash;tem +
+<listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
 <itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
@@ -522,7 +522,7 @@ $result_converted{'xml'}->{'item_container'} = '
 </para></listitem></itemize>
 
 <itemize commandarg="bullet">
-<listitem><prepend>&bullet;</prepend><para>no itemize argument
+<listitem spaces=" "><prepend>&bullet;</prepend><para>no itemize argument
 </para></listitem></itemize>
 ';
 

@@ -396,7 +396,7 @@ $result_converted{'html_text'}->{'table_in_display_in_example'} = '<div class="e
 $result_converted{'xml'}->{'table_in_display_in_example'} = '<example>
 <display>
 <table commandarg="asis" spaces=" ">
-<tableentry><tableterm><item><itemformat command="asis">item</itemformat></item>
+<tableentry><tableterm><item spaces=" "><itemformat command="asis">item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">Line
 </pre></tableitem></tableentry></table>
 </display>

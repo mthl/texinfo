@@ -537,7 +537,7 @@ sub _convert($$;$)
           and $root->{'parent'}->{'cmdname'}
           and ($root->{'parent'}->{'cmdname'} eq 'itemize'
                or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
-        $result .= "<listitem>";
+        $result .= "<listitem"._leading_spaces($root).">";
         if ($root->{'parent'}->{'cmdname'} eq 'itemize'
             and $root->{'parent'}->{'extra'} 
             and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}
@@ -561,7 +561,7 @@ sub _convert($$;$)
           $attribute 
            = $self->_infoenclose_attribute($table_command->{'extra'}->{'command_as_argument'});
         }
-        $result .= "<$root->{'cmdname'}>";
+        $result .= "<$root->{'cmdname'}"._leading_spaces($root).">";
         if ($format_item_command) {
           $result .= "<itemformat command=\"$format_item_command\"${attribute}>";
         }
@@ -602,7 +602,8 @@ sub _convert($$;$)
             .Texinfo::Parser::_print_current($root);
         }
         
-        $result .= "<entry command=\"$root->{'cmdname'}\">";
+        $result .= "<entry command=\"$root->{'cmdname'}\""
+                                  ._leading_spaces($root).">";
         unshift @close_elements, 'entry';
       }
     } elsif ($root->{'type'} and $root->{'type'} eq 'index_entry_command') {

@@ -2780,7 +2780,11 @@ sub _end_line($$$)
                             'type' => 'row_prototype' } unless ($prototype eq '');
             }
           }
-          foreach my $prototype_or_space (split /\b/, $content->{'text'}) {
+          # The regexp breaks between characters, with a non space followed
+          # by a space or a space followed by non space.  It is like \b, but
+          # for \s \S, and not \w \W.
+          foreach my $prototype_or_space (split /(?<=\S)(?=\s)|(?=\S)(?<=\s)/, 
+                                                          $content->{'text'}) {
             if ($prototype_or_space =~ /\S/) {
               push @prototype_line, {'text' => $prototype_or_space,
                                      'type' => 'row_prototype' };

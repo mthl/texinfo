@@ -3,6 +3,11 @@ use strict;
 require 't/test_utils.pl';
 
 my @test_cases = (
+['not_letters_in_prototype',
+'@multitable  1.3  5-6
+@item 1.3 @tab 5-6
+@end multitable
+'],
 ['paragraph_in_cells',
 '@multitable {AAA}  {BBB}
 @item truc @tab bidule
