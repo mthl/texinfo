@@ -1,4 +1,9 @@
-2012-08-25  Patrice Dumas  <pertusus@free.fr>
+2012-08-28  Patrice Dumas  <pertusus@free.fr>
+        and Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Definition Commands): general updates.
+
+2012-08-26  Patrice Dumas  <pertusus@free.fr>
         and Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Internationalization): general updates.

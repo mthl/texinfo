@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.463 2012-08-26 16:12:16 karl Exp $
+@c $Id: texinfo.txi,v 1.464 2012-08-28 16:10:21 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -12489,10 +12489,6 @@ particular kinds of variables.
 function definition, including the use of @code{@@example} inside the
 definition.
 
-@cindex Macros in definition commands
-Unfortunately, due to implementation difficulties, macros are not expanded
-in @code{@@deffn} and all the other definition commands.
-
 
 @node Def Cmd Continuation Lines
 @section Definition Command Continuation Lines
@@ -12527,15 +12523,10 @@ Although this example only shows a one-line continuation,
 continuations may extend over any number of lines, in the same way;
 put an @code{@@} at the end of each line to be continued.
 
-Technically, the @code{@@} character does not have to be the last
-character on the physical line: whitespace is allowed (and ignored)
-afterwards.
-
 @cindex Whitespace, collapsed around continuations
 @cindex Collapsing whitespace around continuations
-In general, any number of spaces or tabs around the @code{@@}
-continuation character, both on the line with the @code{@@} and on the
-continued line, are collapsed into a single space.  There is one
+In general, any number of spaces or tabs before the @code{@@}
+continuation character are collapsed into a single space.  There is one
 exception: the Texinfo processors will not fully collapse whitespace
 around a continuation inside braces.  For example:
 
@@ -12545,8 +12536,8 @@ around a continuation inside braces.  For example:
 @end example
 
 @noindent The output (not shown) has excess space between `Category'
-and `Name'.  In this case, simply elide the unwanted whitespace in
-your input, or put the continuation @code{@@} outside braces.
+and `Name'.  To avoid this, elide the unwanted whitespace in your
+input, or put the continuation @code{@@} outside braces.
 
 @code{@@} does not function as a continuation character in @emph{any}
 other context.  Ordinarily, @samp{@@} followed by a whitespace
@@ -12562,31 +12553,26 @@ character (space, tab, newline) produces a normal interword space
 @cindex Syntax, optional & repeated arguments
 @cindex Meta-syntactic chars for arguments
 
-Some entities take optional or repeated arguments, which may be
-specified by a distinctive glyph that uses square brackets and
-ellipses.  For @w{example}, a special form often breaks its argument list
-into separate arguments in more complicated ways than a
-straightforward function.
+@c This is consistent with the Emacs Lisp Reference Manual.
+Some entities take optional or repeated arguments, conventionally
+specified by using square brackets and ellipses: an argument enclosed
+within square brackets is optional, and an argument followed by an
+ellipsis is optional and may be repeated more than once.
 
-@c This is consistent with Emacs Lisp Reference manual
-An argument enclosed within square brackets is optional.
-Thus, [@var{optional-arg}] means that @var{optional-arg} is optional.
-An argument followed by an ellipsis is optional
-and may be repeated more than once.
-@c This is consistent with Emacs Lisp Reference manual
-Thus, @var{repeated-args}@samp{@dots{}} stands for zero or more
+Thus, [@var{optional-arg}] means that @var{optional-arg} is optional
+and @var{repeated-args}@samp{@dots{}} stands for zero or more
 arguments.  Parentheses are used when several arguments are grouped
 into additional levels of list structure in Lisp.
 
 Here is the @code{@@defspec} line of an example of an imaginary
-special form:
+(complicated) special form:
 
 @quotation
 @defspec foobar (@var{var} [@var{from} @var{to} [@var{inc}]]) @var{body}@dots{}
 @end defspec
-@tex
-\vskip \parskip
-@end tex
+@c tex
+@c \vskip \parskip
+@c end tex
 @end quotation
 
 @noindent
@@ -12598,12 +12584,11 @@ from @var{body}, which includes all remaining elements of the
 form.
 
 In a Texinfo source file, this @code{@@defspec} line is written like
-this (except it would not be split over two lines, as it is in this
-example).
+this, including a continuation to avoid a long source line.
 
 @example
 @group
-@@defspec foobar (@@var@{var@} [@@var@{from@} @@var@{to@}
+@@defspec foobar (@@var@{var@} [@@var@{from@} @@var@{to@} @@
     [@@var@{inc@}]]) @@var@{body@}@@dots@{@}
 @end group
 @end example
@@ -12784,10 +12769,10 @@ Write the @code{@@defvr} command at the beginning of a line and
 follow it on the same line by the category of the entity and the
 name of the entity.
 
-Capitalize the category name like a title.  If the name of the category
-contains spaces, as in the name ``User Option'', enclose it in braces.
-Otherwise, the second word will be mistaken for the name of the entity.
-For example,
+We recommend capitalizing the category name like a title.  If the name
+of the category contains spaces, as in the name ``User Option'',
+enclose it in braces.  Otherwise, the second word will be mistaken for
+the name of the entity.  For example,
 
 @example
 @group
@@ -12882,35 +12867,21 @@ For example,
 
 @example
 @group
-@@deftypefn @{Library Function@} int foobar
+@@deftypefn @{Library Function@} int foobar @@
   (int @@var@{foo@}, float @@var@{bar@})
 @dots{}
 @@end deftypefn
 @end group
 @end example
 
-@need 1000
-@noindent
-(where the text before the ``@dots{}'', shown above as two lines, would
-normally be a single line in a real Texinfo file) produces the following
-in Info:
-
-@smallexample
-@group
--- Library Function: int foobar (int FOO, float BAR)
-@dots{}
-@end group
-@end smallexample
-@iftex
-
-In a printed manual, it produces:
+produces:
 
 @quotation
-@deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})
+@deftypefn {Library Function} int foobar @
+ (int @var{foo}, float @var{bar})
 @dots{}
 @end deftypefn
 @end quotation
-@end iftex
 
 This means that @code{foobar} is a ``library function'' that returns an
 @code{int}, and its arguments are @var{foo} (an @code{int}) and
@@ -12955,9 +12926,9 @@ paragraphs.  For example:
 @end example
 
 @noindent
-(Here the @code{@@deftypefn} arguments are shown using continuations
-(@pxref{Def Cmd Continuation Lines}), but could be on a single line in
-a real Texinfo file.)
+(In these examples the @code{@@deftypefn} arguments are shown using
+continuations (@pxref{Def Cmd Continuation Lines}), but could be on a
+single line.)
 
 In this instance, the procedure is classified as belonging to the
 package @code{stacks} rather than classified as a `procedure' and its
@@ -13041,25 +13012,13 @@ For example:
 @end example
 
 @noindent
-produces the following in Info:
-
-@example
-@group
--- Global Flag: int enable
-@dots{}
-@end group
-@end example
-@iftex
-
-@noindent
-and the following in a printed manual:
+produces the following:
 
 @quotation
 @deftypevr {Global Flag} int enable
 @dots{}
 @end deftypevr
 @end quotation
-@end iftex
 
 @need 800
 The template is:
@@ -13086,6 +13045,7 @@ to @samp{@@deftypevr Variable @dots{}}.  The template is:
 @end table
 
 These commands create entries in the index of variables.
+
 
 @node Data Types
 @subsection Data Types
@@ -13147,7 +13107,7 @@ instance has its own value.
 
 @menu
 * Variables: Object-Oriented Variables.
-* Methods: Object-Oriented Methods.
+* Methods:   Object-Oriented Methods.
 @end menu
 
 
@@ -21981,7 +21941,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.463 2012-08-26 16:12:16 karl Exp $
+$Id: texinfo.txi,v 1.464 2012-08-28 16:10:21 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
