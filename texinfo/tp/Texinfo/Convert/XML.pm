@@ -364,12 +364,20 @@ sub convert_tree($$)
   return $self->_convert($root);
 }
 
+sub _protect_end_of_lines($)
+{
+  my $text = shift;
+  $text =~ s/\n/\\n/g;
+  return $text;
+}
+
 sub _leading_spaces($)
 {
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_command'}
       and $root->{'extra'}->{'spaces_after_command'}->{'type'} eq 'empty_spaces_after_command') {
-    return " spaces=\"$root->{'extra'}->{'spaces_after_command'}->{'text'}\"";
+    return " spaces=\""._protect_end_of_lines(
+         $root->{'extra'}->{'spaces_after_command'}->{'text'})."\"";
   } else {
     return '';
   }
@@ -381,7 +389,8 @@ sub _leading_spaces_before_argument($)
   if ($root->{'extra'} and $root->{'extra'}->{'spaces_before_argument'}
       and $root->{'extra'}->{'spaces_before_argument'}->{'type'} eq 'empty_spaces_before_argument'
       and $root->{'extra'}->{'spaces_before_argument'}->{'text'} ne '') {
-    return " spaces=\"$root->{'extra'}->{'spaces_before_argument'}->{'text'}\"";
+    return " spaces=\""._protect_end_of_lines(
+                 $root->{'extra'}->{'spaces_before_argument'}->{'text'})."\"";
   } else {
     return '';
   }
@@ -425,7 +434,7 @@ sub _leading_spaces_arg($$)
   my $result = '';
   my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
   if (defined($spaces[0]) and $spaces[0] ne '') {
-    $result .= " spaces=\"$spaces[0]\"";
+    $result .= " spaces=\""._protect_end_of_lines($spaces[0])."\"";
   }
   return $result;
 }
@@ -438,7 +447,7 @@ sub _leading_trailing_spaces_arg($$)
   my $result = '';
   my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
   if (defined($spaces[0]) and $spaces[0] ne '') {
-    $result .= " spaces=\"$spaces[0]\"";
+    $result .= " spaces=\""._protect_end_of_lines($spaces[0])."\"";
   }
   if (defined($spaces[1])) {
     chomp($spaces[1]);

@@ -2469,8 +2469,7 @@ T
 <chapter spaces=" "><sectiontitle><image where="inline"><imagefile>in_chapter_arg</imagefile></image></sectiontitle>
 
 
-<para>T<footnote spaces="
-"><image where="inline"><imagefile>in_footnote</imagefile></image>
+<para>T<footnote spaces="\\n"><image where="inline"><imagefile>in_footnote</imagefile></image>
 </footnote>
 </para>
 <float name="g" type="F" spaces=" "><floattype>F</floattype><floatname>g</floatname>

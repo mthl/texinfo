@@ -431,23 +431,17 @@ $result_errors{'brace_commands_spaces_end_of_lines'} = [];
 
 
 
-$result_converted{'xml'}->{'brace_commands_spaces_end_of_lines'} = '<image spaces="
-"><imagefile>a</imagefile></image>
+$result_converted{'xml'}->{'brace_commands_spaces_end_of_lines'} = '<image spaces="\\n"><imagefile>a</imagefile></image>
 
-<image spaces=" 
-"><imagefile>a</imagefile></image>
+<image spaces=" \\n"><imagefile>a</imagefile></image>
 
-<image><imagefile>a</imagefile><imagewidth spaces="
-">b</imagewidth></image>
+<image><imagefile>a</imagefile><imagewidth spaces="\\n">b</imagewidth></image>
 
-<image><imagefile>a</imagefile><imagewidth spaces=" 
-">b</imagewidth></image>
+<image><imagefile>a</imagefile><imagewidth spaces=" \\n">b</imagewidth></image>
 
-<image><imagefile>a</imagefile><imagewidth spaces="
-"> b</imagewidth></image>
+<image><imagefile>a</imagefile><imagewidth spaces="\\n"> b</imagewidth></image>
 
-<image><imagefile>a</imagefile><imagewidth spaces=" 
-"> b</imagewidth></image>
+<image><imagefile>a</imagefile><imagewidth spaces=" \\n"> b</imagewidth></image>
 ';
 
 1;
