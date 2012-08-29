@@ -534,6 +534,11 @@ sub _convert($$;$)
           and defined($root->{'extra'}->{'clickstyle'})) {
         return "<click command=\"$root->{'extra'}->{'clickstyle'}\"/>";
       }
+      if ($self->{'itemize_line'} and $root->{'type'} 
+          and $root->{'type'} eq 'command_as_argument'
+          and !$root->{'args'}) {
+        return "<formattingcommand command=\"$root->{'cmdname'}\" />";
+      }
       return $xml_commands_formatting{$root->{'cmdname'}};
     } elsif ($xml_accent_types{$root->{'cmdname'}}) {
       if ($self->get_conf('ENABLE_ENCODING')) {
@@ -762,7 +767,11 @@ sub _convert($$;$)
         }
         return "<$command${line}></$command>\n";
       } elsif ($type eq 'noarg' or $type eq 'skipspace') {
-        return "<$command></$command>";
+        my $spaces = '';
+        $spaces = $root->{'extra'}->{'spaces_after_command'}->{'text'}
+          if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_command'}
+              and $root->{'extra'}->{'spaces_after_command'}->{'type'} eq 'empty_spaces_after_command');
+        return "<$command></$command>$spaces";
       } elsif ($type eq 'special') {
         if ($root->{'cmdname'} eq 'clear' or $root->{'cmdname'} eq 'set') {
           my $attribute = '';
@@ -942,6 +951,7 @@ sub _convert($$;$)
       }
       my $prepended_elements = '';
       my $attribute = '';
+      $self->{'itemize_line'} = 1 if ($root->{'cmdname'} eq 'itemize');
       if ($root->{'extra'} and $root->{'extra'}->{'command_as_argument'}) {
         my $command_as_arg = $root->{'extra'}->{'command_as_argument'};
         $attribute 
@@ -982,8 +992,14 @@ sub _convert($$;$)
       if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}) {
         $self->{'document_context'}->[-1]->{'raw'} = 1;
       } else {
+        my $end_command = $root->{'extra'}->{'end_command'};
+        my $end_command_space = '';
+      #  my $end_command_space = _leading_spaces($end_command);
+        if ($end_command_space ne '') {
+      #    $end_command_space =~ s/ spaces=/ endspaces=/;
+        }
         $result .= "<$root->{'cmdname'}${attribute}"._leading_spaces($root)
-                                              .">${prepended_elements}";
+                             ."$end_command_space>${prepended_elements}";
         my $end_line = '';
         if ($root->{'args'}) {
           if ($commands_args_elements{$root->{'cmdname'}}) {
@@ -1021,6 +1037,8 @@ sub _convert($$;$)
             }
           } else {
             my $contents_possible_comment;
+            # in that case the end of line is in the columnfractions line
+            # or in the <columnprototypes>.  
             if ($root->{'cmdname'} eq 'multitable' and $root->{'extra'}) {
               if ($root->{'extra'}->{'prototypes_line'}) {
                 $result .= "<columnprototypes>";
@@ -1073,13 +1091,13 @@ sub _convert($$;$)
               $contents_possible_comment = $root->{'args'}->[-1]->{'contents'}
                 if ($root->{'args'}->[-1]->{'contents'});
             }
-            
-            $end_line = $self->_end_line_or_comment($contents_possible_comment);
+            $end_line .= $self->_end_line_or_comment($contents_possible_comment);
           }
         }
         $result .= $end_line;
         unshift @close_elements, $root->{'cmdname'};
       }
+      delete $self->{'itemize_line'} if ($self->{'itemize_line'});
     }
   }
   if ($root->{'type'}) {

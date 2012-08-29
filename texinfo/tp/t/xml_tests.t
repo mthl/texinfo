@@ -72,6 +72,10 @@ T@footnote{
 @item itemize bulletit
 @end itemize
 
+@itemize @bullet{} @c comm
+@item itemize bullet with braces
+@end itemize
+
 @enumerate @c comm
 @item en
 @end enumerate
@@ -144,6 +148,8 @@ Para
 ['commands_and_spaces',
 '@set  foo   some @value
 
+@setfilename  setfilename name  
+
 @unmacro  ggg
 
 @clickstyle  @arrow
@@ -151,6 +157,16 @@ Para
 @cropmarks  after  cropmarks.
 
 @node a ,(b),(c) , (d)   
+
+@center  centered  
+
+@indent  after indent.
+
+@indent
+line after indent
+
+@indent  
+endof line with spaces line after indent
 
 @image{ a ,b,c , d,e }
 
@@ -172,6 +188,22 @@ f
 
 @multitable  {aa b}  @var{cmd}gg hh j 
 @end multitable
+
+@verbatim  
+in verbatim @g 
+@end  verbatim 
+
+@tex  
+in tex
+@end  tex  
+
+@example  
+in example
+@end  example  
+
+@table  @strong  
+@item  in item 
+@end   table   
 
 T@footnote{  a}.
 

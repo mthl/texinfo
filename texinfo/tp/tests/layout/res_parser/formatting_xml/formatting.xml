@@ -1008,11 +1008,11 @@ After clickstyle &result;
 <listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
+<itemize commandarg="bullet" spaces=" "><itemprepend><formattingcommand command="bullet" /></itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
-<itemize commandarg="minus" spaces=" "><itemprepend>&minus;</itemprepend>
+<itemize commandarg="minus" spaces=" "><itemprepend><formattingcommand command="minus" /></itemprepend>
 <listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
@@ -1610,11 +1610,11 @@ After clickstyle &result;
 <listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
+<itemize commandarg="bullet" spaces=" "><itemprepend><formattingcommand command="bullet" /></itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
-<itemize commandarg="minus" spaces=" "><itemprepend>&minus;</itemprepend>
+<itemize commandarg="minus" spaces=" "><itemprepend><formattingcommand command="minus" /></itemprepend>
 <listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
@@ -2212,11 +2212,11 @@ After clickstyle &result;
 <listitem spaces=" "><prepend>+</prepend><para>i&textndash;tem +
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
+<itemize commandarg="bullet" spaces=" "><itemprepend><formattingcommand command="bullet" /></itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>b&textndash;ullet
 </para></listitem></itemize>
 
-<itemize commandarg="minus" spaces=" "><itemprepend>&minus;</itemprepend>
+<itemize commandarg="minus" spaces=" "><itemprepend><formattingcommand command="minus" /></itemprepend>
 <listitem spaces=" "><prepend>&minus;</prepend><para>minu&textndash;s
 </para></listitem></itemize>
 
@@ -2808,11 +2808,11 @@ After clickstyle &result;
 <listitem spaces=" "><prepend>+</prepend><pre xml:space="preserve">i--tem +
 </pre></listitem></itemize>
 <pre xml:space="preserve">
-</pre><itemize commandarg="bullet" spaces=" "><itemprepend>&bullet;</itemprepend>
+</pre><itemize commandarg="bullet" spaces=" "><itemprepend><formattingcommand command="bullet" /></itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><pre xml:space="preserve">b--ullet
 </pre></listitem></itemize>
 <pre xml:space="preserve">
-</pre><itemize commandarg="minus" spaces=" "><itemprepend>&minus;</itemprepend>
+</pre><itemize commandarg="minus" spaces=" "><itemprepend><formattingcommand command="minus" /></itemprepend>
 <listitem spaces=" "><prepend>&minus;</prepend><pre xml:space="preserve">minu--s
 </pre></listitem></itemize>
 <pre xml:space="preserve">
