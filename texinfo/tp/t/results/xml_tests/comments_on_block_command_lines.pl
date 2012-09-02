@@ -2761,7 +2761,7 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 <listitem spaces=" "><para>aen
 </para></listitem></enumerate>
 
-<table commandarg="asis" spaces=" "><!-- c table -->
+<table commandarg="asis" spaces=" "> <!-- c table -->
 <tableentry><tableterm><item spaces=" "><itemformat command="asis">it</itemformat></item>
 </tableterm></tableentry></table>
 

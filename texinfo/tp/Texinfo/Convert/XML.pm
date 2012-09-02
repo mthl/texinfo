@@ -1088,6 +1088,28 @@ sub _convert($$;$)
                         and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'});
               }
             } else {
+              if ($root->{'args'}->[-1]->{'contents'}) {
+                # get end of lines from @*table.
+                my $index = -1;
+                if ($root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'}
+                    and ($root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'} eq 'c' 
+                         or $root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
+                  $index = -2;
+                }
+                if ($root->{'args'}->[-1]->{'contents'}->[$index]
+                    and $root->{'args'}->[-1]->{'contents'}->[$index]->{'type'}
+                    and $root->{'args'}->[-1]->{'contents'}->[$index]->{'type'} eq 'space_at_end_block_command'
+                    and defined($root->{'args'}->[-1]->{'contents'}->[$index]->{'text'})
+                    and $root->{'args'}->[-1]->{'contents'}->[$index]->{'text'} !~ /\S/) {
+                  my $end_spaces = $root->{'args'}->[-1]->{'contents'}->[$index]->{'text'};
+                  chomp $end_spaces;
+                  $end_line .= $end_spaces;
+                  # This also catches block @-commands with no argument that
+                  # have a bogus argument, such as text on @example line
+                  #print STDERR "NOT xtable: $root->{'cmdname'}\n" 
+                  #  if (!$Texinfo::Common::item_line_commands{$root->{'cmdname'}});
+                }
+              }
               $contents_possible_comment = $root->{'args'}->[-1]->{'contents'}
                 if ($root->{'args'}->[-1]->{'contents'});
             }

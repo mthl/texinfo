@@ -705,7 +705,7 @@ sub _collect_leading_trailing_spaces_arg($$)
     $result[0] = $arg->{'contents'}->[0]->{'text'};
     return @result if (scalar(@{$arg->{'contents'}}) == 1);
   }
-  if ($arg->{'contents'} and  $arg->{'contents'}->[-1] 
+  if ($arg->{'contents'} and $arg->{'contents'}->[-1] 
       and defined($arg->{'contents'}->[-1]->{'text'})
       and $arg->{'contents'}->[-1]->{'text'} !~ /\S/
       and defined($arg->{'contents'}->[-1]->{'type'})) {

@@ -201,6 +201,10 @@ in tex
 in example
 @end  example  
 
+@example  text on example line 
+in bad example
+@end  example 
+
 @table  @strong  
 @item  in item 
 @end   table   
