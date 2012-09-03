@@ -1202,7 +1202,7 @@ Next: <a href="#a-node-after-part" accesskey="n" rel="next">a node after part</a
 $result_converted{'xml'}->{'part_node_chapter_after_top'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">a node after part</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">a node after part</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">chapter</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>

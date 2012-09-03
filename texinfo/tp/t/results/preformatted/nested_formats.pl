@@ -452,16 +452,16 @@ in -- example/format
 </abstract>';
 
 
-$result_converted{'xml'}->{'nested_formats'} = '<format>
-<example>
+$result_converted{'xml'}->{'nested_formats'} = '<format endspaces=" ">
+<example endspaces=" ">
 <pre xml:space="preserve">
 in -- format/example
 
 </pre></example>
 </format>
 
-<example>
-<format>
+<example endspaces=" ">
+<format endspaces=" ">
 <pre xml:space="preserve">
 in -- example/format
 

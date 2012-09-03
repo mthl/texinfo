@@ -324,7 +324,7 @@ $result_converted{'xml'}->{'documentencoding_utf8_and_insertions'} = '<documente
 
 <para>&textndash; &textmdash; &textrdquo; &textldquo; &textlsquo; &textrsquo; <code>in code</code>. <accent type="tilde" bracketed="off">e</accent>.
 </para>
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">-- --- \'\' `` ` \' <code>in code</code>. <accent type="tilde" bracketed="off">e</accent>.
 </pre></example>
 ';

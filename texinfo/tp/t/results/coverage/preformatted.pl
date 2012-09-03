@@ -491,14 +491,14 @@ in table in format
 
 
 $result_converted{'xml'}->{'preformatted'} = '
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">e--xample  some  
 
    text
 </pre></example>
 
-<format>
-<vtable commandarg="code" spaces=" ">
+<format endspaces=" ">
+<vtable commandarg="code" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="code"><indexterm index="vr">item in table in format</indexterm>item in table in format</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">
 in table in format

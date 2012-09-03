@@ -152,7 +152,7 @@ after empty line
 </screen>';
 
 
-$result_converted{'xml'}->{'empty_line'} = '<example>
+$result_converted{'xml'}->{'empty_line'} = '<example endspaces=" ">
 <pre xml:space="preserve">example
 
 after empty line

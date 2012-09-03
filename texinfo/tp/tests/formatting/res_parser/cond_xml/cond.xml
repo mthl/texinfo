@@ -7,7 +7,7 @@
 
 <node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
 
-<html>
+<html endspaces=" ">
 This is html text.
 </html>
 
@@ -19,7 +19,7 @@ This is html text.
 <para>This is ifnotinfo text.
 </para>
 
-<tex>
+<tex endspaces=" ">
 This is tex text.
 </tex>
 

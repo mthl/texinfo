@@ -765,7 +765,7 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 $result_converted{'xml'}->{'part_node_after_top'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">part node after top</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">part node after top</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 

@@ -232,7 +232,7 @@ $result_errors{'raw'} = [];
 
 
 
-$result_converted{'xml'}->{'raw'} = '<tex>
+$result_converted{'xml'}->{'raw'} = '<tex endspaces=" ">
 in &lt;tex&gt;
 </tex>
 

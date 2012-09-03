@@ -3221,7 +3221,7 @@ $result_converted{'xml'}->{'ref_in_sectioning'} = '<contents></contents>
 <node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>for example <ref><xrefnodename>node</xrefnodename></ref> (<pxref><xrefnodename>node</xrefnodename></pxref>) (<pxref><xrefnodename>Top</xrefnodename><xrefinfofile spaces=" ">file</xrefinfofile><xrefprintedname spaces=" ">Manual</xrefprintedname></pxref>)</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">chap</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>

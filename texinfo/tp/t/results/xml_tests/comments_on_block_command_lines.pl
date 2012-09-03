@@ -2737,67 +2737,67 @@ $result_floats{'comments_on_block_command_lines'}{'f'}[0]{'extra'}{'end_command'
 
 
 
-$result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet" spaces=" "><!-- c comm -->
+$result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet" spaces=" " endspaces=" "><!-- c comm -->
 <listitem spaces=" "><prepend>&bullet;</prepend><para>itemize it
 </para></listitem></itemize>
 
-<itemize spaces=" "><itemprepend>x </itemprepend><!-- c comm -->
+<itemize spaces=" " endspaces=" "><itemprepend>x </itemprepend><!-- c comm -->
 <listitem spaces=" "><prepend>x</prepend><para>itemize xit
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" "><itemprepend><formattingcommand command="bullet" /> </itemprepend><!-- c comm -->
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" /> </itemprepend><!-- c comm -->
 <listitem spaces=" "><prepend>&bullet;</prepend><para>itemize bulletit
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" "><itemprepend>&bullet; </itemprepend><!-- c comm -->
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend>&bullet; </itemprepend><!-- c comm -->
 <listitem spaces=" "><prepend>&bullet;</prepend><para>itemize bullet with braces
 </para></listitem></itemize>
 
-<enumerate first="1" spaces=" "><!-- c comm -->
+<enumerate first="1" spaces=" " endspaces=" "><!-- c comm -->
 <listitem spaces=" "><para>en
 </para></listitem></enumerate>
 
-<enumerate first="a" spaces=" "><enumeratefirst>a </enumeratefirst><!-- c comm -->
+<enumerate first="a" spaces=" " endspaces=" "><enumeratefirst>a </enumeratefirst><!-- c comm -->
 <listitem spaces=" "><para>aen
 </para></listitem></enumerate>
 
-<table commandarg="asis" spaces=" "> <!-- c table -->
+<table commandarg="asis" spaces=" " endspaces=" "> <!-- c table -->
 <tableentry><tableterm><item spaces=" "><itemformat command="asis">it</itemformat></item>
 </tableterm></tableentry></table>
 
-<quotation spaces=" "><!-- c quot no arg -->
+<quotation spaces=" " endspaces=" "><!-- c quot no arg -->
 <para>Quot no arg
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>quotarg </quotationtype><!-- c quot arg -->
+<quotation spaces=" " endspaces=" "><quotationtype>quotarg </quotationtype><!-- c quot arg -->
 <para>Quot arg
 </para></quotation>
 
-<group spaces=" "><!-- c comm -->
+<group spaces=" " endspaces=" "><!-- c comm -->
 <para>in gr
 </para></group>
 
-<example spaces=" "><!-- c comm -->
+<example spaces=" " endspaces=" "><!-- c comm -->
 <pre xml:space="preserve">in ex
 </pre></example>
 
-<multitable spaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions><!-- c comm -->
+<multitable spaces=" " endspaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions><!-- c comm -->
 <tbody><row><entry command="item" spaces=" "><para>a </para></entry><entry command="tab" spaces=" "><para>b
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">aaa</columnprototype> <columnprototype bracketed="on">bbb</columnprototype> </columnprototypes><!-- c c -->
+<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">aaa</columnprototype> <columnprototype bracketed="on">bbb</columnprototype> </columnprototypes><!-- c c -->
 <tbody><row><entry command="item" spaces=" "><para>aaa </para></entry><entry command="tab" spaces=" "><para>bbb
 </para></entry></row></tbody></multitable>
 
-<float name="g" type="f" spaces=" "><floattype>f</floattype><floatname>g </floatname><!-- c comm -->
+<float name="g" type="f" spaces=" " endspaces=" "><floattype>f</floattype><floatname>g </floatname><!-- c comm -->
 <para>In f
 </para></float>
 
-<flushright spaces=" "><!-- c comm -->
+<flushright spaces=" " endspaces=" "><!-- c comm -->
 <para>flushright
 </para></flushright>
 
-<raggedright spaces=" "><!-- c comm -->
+<raggedright spaces=" " endspaces=" "><!-- c comm -->
 <para>raggedright
 </para></raggedright>
 

@@ -1047,9 +1047,9 @@ $result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle spaces=
 
 <printindex value="cp" line=" cp "></printindex><!-- c printindex  -->
 
-<float name="label" type="Text" spaces=" "><floattype>Text</floattype><floatname spaces=" ">label</floatname>
+<float name="label" type="Text" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">label</floatname>
 <para>float
-</para></float><!-- c end -->
+</para></float> <!-- c end -->
 
 <listoffloats type="Text--" spaces=" ">Text <spacecmd type="spc"/></listoffloats><!-- c listoffloats -->
 

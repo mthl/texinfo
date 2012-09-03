@@ -1582,21 +1582,21 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 <node name="node_0021-After-punc" spaces=" "><nodename>node! After punc</nodename></node>
 <top spaces=" "><sectiontitle>top! After punc</sectiontitle>
 
-<table commandarg="asis" spaces=" ">
+<table commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis">item! After punc</itemformat></item>
 </tableterm></tableentry></table>
 
-<quotation spaces=" "><quotationtype>quotation arg! After punc</quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype>quotation arg! After punc</quotationtype>
 <para>In quotation
 </para><exdent spaces=" ">exdent quotation! After punc</exdent>
 </quotation>
 
-<float name="float-label_0021-After-punc" type="float-type_0021-After-punc" spaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">float label! After punc</floatname>
+<float name="float-label_0021-After-punc" type="float-type_0021-After-punc" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">float label! After punc</floatname>
 <para>In float
 </para><shortcaption><para>shortcaption! After punc</para></shortcaption>
 </float>
 
-<float name="label-with-caption" type="float-type_0021-After-punc" spaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">label with caption</floatname>
+<float name="label-with-caption" type="float-type_0021-After-punc" spaces=" " endspaces=" "><floattype>float type! After punc</floattype><floatname spaces=" ">label with caption</floatname>
 <para>In float with caption.
 </para><caption><para>caption! After punc</para></caption>
 </float>

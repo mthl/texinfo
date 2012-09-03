@@ -374,10 +374,10 @@ $result_converted{'html_text'}->{'space_at_commands_end_quotation_line'} = '
 
 
 $result_converted{'xml'}->{'space_at_commands_end_quotation_line'} = '
-<quotation spaces=" "><quotationtype>&arobase; at the end of line <spacecmd type="nl"/></quotationtype><para>A &arobase; at the end of the &arobase;quotation line.
+<quotation spaces=" " endspaces=" "><quotationtype>&arobase; at the end of line <spacecmd type="nl"/></quotationtype><para>A &arobase; at the end of the &arobase;quotation line.
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>&arobase;<spacecmd type="spc"/> at the end of line <spacecmd type="spc"/></quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype>&arobase;<spacecmd type="spc"/> at the end of line <spacecmd type="spc"/></quotationtype>
 <para>A &arobase;<spacecmd type="spc"/> at the end of the &arobase;quotation line.
 </para></quotation>
 ';

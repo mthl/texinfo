@@ -399,7 +399,7 @@ $result_converted{'html_text'}->{'multitable_with_empty_item_tab'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'multitable_with_empty_item_tab'} = '<multitable spaces=" "><columnfractions line=" 0.3 0.7"><columnfraction value="0.3"></columnfraction><columnfraction value="0.7"></columnfraction></columnfractions>
+$result_converted{'xml'}->{'multitable_with_empty_item_tab'} = '<multitable spaces=" " endspaces=" "><columnfractions line=" 0.3 0.7"><columnfraction value="0.3"></columnfraction><columnfraction value="0.7"></columnfraction></columnfractions>
 <tbody><row><entry command="item" spaces=" "><para>1-1 </para></entry><entry command="tab" spaces=" "><para>1-2 </para></entry></row><row><entry command="item"></entry><entry command="tab"></entry></row><row><entry command="item" spaces=" "><para>3-1 </para></entry><entry command="tab" spaces=" "><para>3-2
 </para></entry></row></tbody></multitable>
 ';

@@ -297,7 +297,7 @@ quotation continues.
 </div>';
 
 
-$result_converted{'xml'}->{'quotation_author'} = '<quotation>
+$result_converted{'xml'}->{'quotation_author'} = '<quotation endspaces=" ">
 
 <author spaces=" ">First Author</author>
 <para>quotation

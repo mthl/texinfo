@@ -147,7 +147,7 @@ $result_converted{'html_text'}->{'comment_on_cartouche_line'} = '<table class="c
 ';
 
 
-$result_converted{'xml'}->{'comment_on_cartouche_line'} = '<cartouche spaces=" "><!-- c comment -->
+$result_converted{'xml'}->{'comment_on_cartouche_line'} = '<cartouche spaces=" " endspaces=" "><!-- c comment -->
 <para>in cartouche.
 </para></cartouche>
 ';

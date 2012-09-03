@@ -396,6 +396,30 @@ sub _leading_spaces_before_argument($)
   }
 }
 
+sub _end_line_spaces($$)
+{
+  my $root = shift;
+  my $type = shift;
+
+  my $end_spaces = undef;
+  if ($root->{'args'}->[-1]->{'contents'}) {
+    my $index = -1;
+    if ($root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'}
+        and ($root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'} eq 'c' 
+             or $root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
+      $index = -2;
+    }
+    if ($root->{'args'}->[-1]->{'contents'}->[$index]
+        and $root->{'args'}->[-1]->{'contents'}->[$index]->{'type'}
+        and $root->{'args'}->[-1]->{'contents'}->[$index]->{'type'} eq $type
+        and defined($root->{'args'}->[-1]->{'contents'}->[$index]->{'text'})
+        and $root->{'args'}->[-1]->{'contents'}->[$index]->{'text'} !~ /\S/) {
+      $end_spaces = $root->{'args'}->[-1]->{'contents'}->[$index]->{'text'};
+      chomp $end_spaces;
+    }
+  }
+  return $end_spaces;
+}
 
 sub _arg_line($)
 {
@@ -993,10 +1017,9 @@ sub _convert($$;$)
         $self->{'document_context'}->[-1]->{'raw'} = 1;
       } else {
         my $end_command = $root->{'extra'}->{'end_command'};
-        my $end_command_space = '';
-      #  my $end_command_space = _leading_spaces($end_command);
+        my $end_command_space = _leading_spaces($end_command);
         if ($end_command_space ne '') {
-      #    $end_command_space =~ s/ spaces=/ endspaces=/;
+          $end_command_space =~ s/ spaces=/ endspaces=/;
         }
         $result .= "<$root->{'cmdname'}${attribute}"._leading_spaces($root)
                              ."$end_command_space>${prepended_elements}";
@@ -1088,27 +1111,15 @@ sub _convert($$;$)
                         and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'});
               }
             } else {
-              if ($root->{'args'}->[-1]->{'contents'}) {
-                # get end of lines from @*table.
-                my $index = -1;
-                if ($root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'}
-                    and ($root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'} eq 'c' 
-                         or $root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
-                  $index = -2;
-                }
-                if ($root->{'args'}->[-1]->{'contents'}->[$index]
-                    and $root->{'args'}->[-1]->{'contents'}->[$index]->{'type'}
-                    and $root->{'args'}->[-1]->{'contents'}->[$index]->{'type'} eq 'space_at_end_block_command'
-                    and defined($root->{'args'}->[-1]->{'contents'}->[$index]->{'text'})
-                    and $root->{'args'}->[-1]->{'contents'}->[$index]->{'text'} !~ /\S/) {
-                  my $end_spaces = $root->{'args'}->[-1]->{'contents'}->[$index]->{'text'};
-                  chomp $end_spaces;
-                  $end_line .= $end_spaces;
-                  # This also catches block @-commands with no argument that
-                  # have a bogus argument, such as text on @example line
-                  #print STDERR "NOT xtable: $root->{'cmdname'}\n" 
-                  #  if (!$Texinfo::Common::item_line_commands{$root->{'cmdname'}});
-                }
+              # get end of lines from @*table.
+              my $end_spaces = _end_line_spaces($root, 
+                                           'space_at_end_block_command');
+              if (defined($end_spaces)) {
+                $end_line .= $end_spaces 
+                # This also catches block @-commands with no argument that
+                # have a bogus argument, such as text on @example line
+                #print STDERR "NOT xtable: $root->{'cmdname'}\n" 
+                #  if (!$Texinfo::Common::item_line_commands{$root->{'cmdname'}});
               }
               $contents_possible_comment = $root->{'args'}->[-1]->{'contents'}
                 if ($root->{'args'}->[-1]->{'contents'});
@@ -1255,10 +1266,12 @@ sub _convert($$;$)
     my $end_command = $root->{'extra'}->{'end_command'}; 
     if ($self->{'expanded_formats_hash'}->{$root->{'cmdname'}}) {
     } else {
-      my $end_line;
+      my $end_line = '';
       if ($end_command) {
+        my $end_spaces = _end_line_spaces($end_command, 'spaces_at_end');
+        $end_line .= $end_spaces if (defined($end_spaces));
         $end_line 
-         = $self->_end_line_or_comment($end_command->{'args'}->[0]->{'contents'})
+         .= $self->_end_line_or_comment($end_command->{'args'}->[0]->{'contents'})
            if ($end_command->{'args'}->[0]
                and $end_command->{'args'}->[0]->{'contents'});
       } else {

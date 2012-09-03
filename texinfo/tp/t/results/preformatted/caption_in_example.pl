@@ -403,9 +403,9 @@ After caption
 </screen>';
 
 
-$result_converted{'xml'}->{'caption_in_example'} = '<float type="float" spaces=" "><floattype>float</floattype>
+$result_converted{'xml'}->{'caption_in_example'} = '<float type="float" spaces=" " endspaces=" "><floattype>float</floattype>
 
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">in example 
 
 </pre><caption><para>caption</para></caption><pre xml:space="preserve">

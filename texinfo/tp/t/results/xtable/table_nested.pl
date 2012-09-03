@@ -3407,8 +3407,8 @@ After table.
 
 
 <para>Quotation
-</para><quotation>
-<vtable commandarg="asis" spaces=" ">
+</para><quotation endspaces=" ">
+<vtable commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
 <itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem>
@@ -3422,7 +3422,7 @@ After table.
 </tableterm></tableentry></vtable>
 
 <para>Something.
-</para><table commandarg="emph" spaces=" ">
+</para><table commandarg="emph" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line
 </para></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">second item</itemformat></item>
@@ -3432,8 +3432,8 @@ After table.
 </para></quotation>
 
 <para>Example
-</para><example>
-<vtable commandarg="asis" spaces=" ">
+</para><example endspaces=" ">
+<vtable commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
 <itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">
@@ -3447,7 +3447,7 @@ Text 2
 </tableterm></tableentry></vtable>
 <pre xml:space="preserve">
 Something.
-</pre><table commandarg="emph" spaces=" ">
+</pre><table commandarg="emph" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">Text without blank line
 </pre></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">second item</itemformat></item>
@@ -3457,9 +3457,9 @@ Something.
 </pre></example>
 
 <para>Double quotation
-</para><quotation>
-<quotation>
-<vtable commandarg="asis" spaces=" ">
+</para><quotation endspaces=" ">
+<quotation endspaces=" ">
+<vtable commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">first item</indexterm>first item</itemformat></item>
 <itemx spaces=" "><itemformat command="asis"><indexterm index="vr">second itemx</indexterm>second itemx</itemformat></itemx>
 </tableterm><tableitem>
@@ -3473,7 +3473,7 @@ Something.
 </tableterm></tableentry></vtable>
 
 <para>Something.
-</para><table commandarg="emph" spaces=" ">
+</para><table commandarg="emph" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="emph">in item</itemformat></item>
 </tableterm><tableitem><para>Text without blank line
 </para></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="emph">second item</itemformat></item>

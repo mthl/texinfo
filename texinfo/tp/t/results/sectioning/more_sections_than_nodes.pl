@@ -2089,7 +2089,7 @@ $result_errors{'more_sections_than_nodes'} = [];
 $result_converted{'xml'}->{'more_sections_than_nodes'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">n c2</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">n c2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">n c3</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">n c3 s1 s2</menunode><menudescription><pre xml:space="preserve">
@@ -2109,7 +2109,7 @@ $result_converted{'xml'}->{'more_sections_than_nodes'} = '<node name="Top" space
 <node name="n-c3" spaces=" "><nodename>n c3</nodename><nodenext spaces=" ">n c3 s1 s2</nodenext><nodeprev spaces=" ">n c2</nodeprev><nodeup spaces=" ">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>c3</sectiontitle>
 
-<menu> 
+<menu endspaces=" "> 
 <menuentry leadingtext="* "><menunode separator="::">n c3 s 2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 

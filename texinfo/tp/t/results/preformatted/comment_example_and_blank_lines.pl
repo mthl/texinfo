@@ -615,24 +615,24 @@ $result_converted{'docbook'}->{'comment_example_and_blank_lines'} = '<para>Para.
 
 $result_converted{'xml'}->{'comment_example_and_blank_lines'} = '<para>Para.
 </para>
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">comment, blank after <!-- c comment -->
 </pre></example>
 
 <para>Para.
 </para>
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">comment, no blank after <!-- c comment -->
 </pre></example>
 <para>Para.
 </para>
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">no comment, blank after
 </pre></example>
 
 <para>Para.
 </para>
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">no comment, no blank after
 </pre></example>
 <para>Para.

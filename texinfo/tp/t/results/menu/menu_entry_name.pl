@@ -1202,7 +1202,7 @@ $result_converted_errors{'html'}->{'menu_entry_name'} = [
 
 
 
-$result_converted{'xml'}->{'menu_entry_name'} = '<menu>
+$result_converted{'xml'}->{'menu_entry_name'} = '<menu endspaces=" ">
 <menuentry leadingtext="* "><menutitle separator=": ">a</menutitle><menunode>(f)b
 </menunode><menudescription><pre xml:space="preserve"></pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": ">a</menutitle><menunode separator=",">(f)b1.c</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": ">a</menutitle><menunode separator=",     ">(f)b2.c</menunode><menudescription><pre xml:space="preserve">

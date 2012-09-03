@@ -2320,15 +2320,15 @@ Previous: <a href="#section-chap-2" accesskey="p" rel="previous">section chap 2<
 $result_converted{'xml'}->{'detailmenu_on_subnodes'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">chapter</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">chapter 2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
-</pre></menucomment><detailmenu>
+</pre></menucomment><detailmenu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">section</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 <menucomment><pre xml:space="preserve">
-</pre></menucomment><detailmenu>
+</pre></menucomment><detailmenu endspaces=" ">
 <menucomment><pre xml:space="preserve">Chap 2
 
 </pre></menucomment><menuentry leadingtext="* "><menunode separator="::">section chap 2</menunode><menudescription><pre xml:space="preserve">
@@ -2340,7 +2340,7 @@ $result_converted{'xml'}->{'detailmenu_on_subnodes'} = '<node name="Top" spaces=
 <node name="chapter" spaces=" "><nodename>chapter</nodename><nodenext automatic="on">chapter 2</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">section</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
@@ -2352,7 +2352,7 @@ $result_converted{'xml'}->{'detailmenu_on_subnodes'} = '<node name="Top" spaces=
 <node name="chapter-2" spaces=" "><nodename>chapter 2</nodename><nodeprev automatic="on">chapter</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>chapter 2</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">section chap 2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumberedsec</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>

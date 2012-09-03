@@ -575,19 +575,19 @@ $result_converted{'docbook'}->{'text_on_command_line'} = '
 ';
 
 
-$result_converted{'xml'}->{'text_on_command_line'} = '<example spaces=" ">
+$result_converted{'xml'}->{'text_on_command_line'} = '<example spaces=" " endspaces=" ">
 </example>
 
-<example spaces=" ">
+<example spaces=" " endspaces=" ">
 <pre xml:space="preserve">normal text
 </pre></example>
 
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">in example
 </pre></example>
 
-<example>
-<example>
+<example endspaces=" ">
+<example endspaces=" ">
 </example>
 </example>
 ';

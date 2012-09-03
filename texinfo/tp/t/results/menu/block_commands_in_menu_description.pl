@@ -1055,21 +1055,21 @@ Text.
 $result_converted{'xml'}->{'block_commands_in_menu_description'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(manual)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">(manual)</menunode><menudescription><pre xml:space="preserve">
-</pre><itemize commandarg="bullet">
+</pre><itemize commandarg="bullet" endspaces=" ">
 <beforefirstitem><pre xml:space="preserve">
 </pre></beforefirstitem><listitem spaces=" "><prepend>&bullet;</prepend><pre xml:space="preserve">in item
 
 </pre></listitem></itemize>
-<table commandarg="asis" spaces=" ">
+<table commandarg="asis" spaces=" " endspaces=" ">
 <beforefirstitem><pre xml:space="preserve">
 </pre></beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="asis">table item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">
 Text.
 
 </pre></tableitem></tableentry></table>
-<pre xml:space="preserve"><html>
+<pre xml:space="preserve"><html endspaces=" ">
 
 &lt;b&gt; in html &lt;/b&gt;
 

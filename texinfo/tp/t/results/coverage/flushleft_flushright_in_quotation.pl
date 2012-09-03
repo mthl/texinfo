@@ -336,12 +336,12 @@ $result_converted{'html_text'}->{'flushleft_flushright_in_quotation'} = '
 
 
 $result_converted{'xml'}->{'flushleft_flushright_in_quotation'} = '
-<quotation>
-<flushleft>
+<quotation endspaces=" ">
+<flushleft endspaces=" ">
    <para>f l
 </para></flushleft>
 
-<flushright>
+<flushright endspaces=" ">
   <para>f r
 </para></flushright>
 </quotation>

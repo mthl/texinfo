@@ -179,7 +179,7 @@ Text.
 </screen>';
 
 
-$result_converted{'xml'}->{'titlefont_in_example'} = '<example>
+$result_converted{'xml'}->{'titlefont_in_example'} = '<example endspaces=" ">
 <titlefont>Title</titlefont><pre xml:space="preserve">
 Text.
 </pre></example>

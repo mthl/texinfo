@@ -144,7 +144,7 @@ $result_converted{'docbook'}->{'page_in_example'} = '<screen>text
 </screen>';
 
 
-$result_converted{'xml'}->{'page_in_example'} = '<example>
+$result_converted{'xml'}->{'page_in_example'} = '<example endspaces=" ">
 <page></page>
 <pre xml:space="preserve">text
 </pre></example>

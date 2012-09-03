@@ -733,7 +733,7 @@ $result_converted_errors{'html'}->{'menu_entry_name_comment'} = [
 
 
 
-$result_converted{'xml'}->{'menu_entry_name_comment'} = '<menu>
+$result_converted{'xml'}->{'menu_entry_name_comment'} = '<menu endspaces=" ">
 <menuentry leadingtext="* "><menutitle separator=": ">a</menutitle><menunode>(f)b</menunode><menudescription><pre xml:space="preserve"><!-- c c -->
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": ">a</menutitle><menunode>(f)b </menunode><menudescription><pre xml:space="preserve"><!-- c c -->
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": ">a</menutitle><menunode separator=",">(f)b1c.c</menunode><menudescription><pre xml:space="preserve"><!-- c c -->

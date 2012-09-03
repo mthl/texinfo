@@ -773,25 +773,25 @@ $result_converted{'docbook'}->{'nested_example_and_comment'} = '<screen>First li
 </screen>';
 
 
-$result_converted{'xml'}->{'nested_example_and_comment'} = '<example>
+$result_converted{'xml'}->{'nested_example_and_comment'} = '<example endspaces=" ">
 <pre xml:space="preserve">First line 0 <!-- c -->
-</pre><example>
+</pre><example endspaces=" ">
 <pre xml:space="preserve">Nested example
 </pre></example>
 <pre xml:space="preserve">In first one
 </pre></example>
 
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">First line 1 <!-- c -->
-</pre><example>
+</pre><example endspaces=" ">
 <pre xml:space="preserve">Nested example <!-- c -->
 </pre></example>
 <pre xml:space="preserve">In first one
 </pre></example>
 
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">First line 2 <!-- c -->
-</pre><example>
+</pre><example endspaces=" ">
 <pre xml:space="preserve">Nested example <!-- c -->
 </pre></example>
 <pre xml:space="preserve">In first one <!-- c -->

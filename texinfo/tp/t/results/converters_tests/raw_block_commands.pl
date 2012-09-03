@@ -500,17 +500,17 @@ $result_converted{'html_text'}->{'raw_block_commands'} = '
 
 
 $result_converted{'xml'}->{'raw_block_commands'} = '
-<html>
+<html endspaces=" ">
 &lt;blink&gt;html&lt;/blink&gt; &textldquo;}
 </html>
 
 <para>xml</para> ``}
 
-<docbook>
+<docbook endspaces=" ">
 &lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;}
 </docbook>
 
-<tex>
+<tex endspaces=" ">
 $\\underline{a &lt; b <code>tex \\hbox{ code }</code>}$ &textldquo;}
 </tex>
 ';

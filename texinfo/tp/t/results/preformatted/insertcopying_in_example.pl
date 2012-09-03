@@ -150,7 +150,7 @@ text
 </screen>';
 
 
-$result_converted{'xml'}->{'insertcopying_in_example'} = '<example>
+$result_converted{'xml'}->{'insertcopying_in_example'} = '<example endspaces=" ">
 <insertcopying></insertcopying><pre xml:space="preserve">
 text
 </pre></example>

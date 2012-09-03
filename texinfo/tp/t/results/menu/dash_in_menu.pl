@@ -335,7 +335,7 @@ $result_converted_errors{'html'}->{'dash_in_menu'} = [
 
 
 $result_converted{'xml'}->{'dash_in_menu'} = '
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menutitle separator=": ">entry&textmdash;in</menutitle><menunode separator=".         ">(manual)n---ode</menunode><menudescription><pre xml:space="preserve">description &textmdash; in.
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 comment &textmdash; in.

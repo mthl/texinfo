@@ -1006,8 +1006,8 @@ $result_converted_errors{'html'}->{'entry_after_detailmenu'} = [
 
 $result_converted{'xml'}->{'entry_after_detailmenu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">first</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
-<menu>
-<detailmenu>
+<menu endspaces=" ">
+<detailmenu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">second</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 <menucomment><pre xml:space="preserve">
@@ -1015,7 +1015,7 @@ Menu comment
 
 </pre></menucomment><menuentry leadingtext="* "><menunode separator="::">first</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
-</pre></menucomment><detailmenu>
+</pre></menucomment><detailmenu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">second</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 <menuentry leadingtext="* "><menunode separator="::">second</menunode><menudescription><pre xml:space="preserve">

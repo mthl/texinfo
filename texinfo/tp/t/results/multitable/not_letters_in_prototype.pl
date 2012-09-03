@@ -253,7 +253,7 @@ $result_converted{'html_text'}->{'not_letters_in_prototype'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'not_letters_in_prototype'} = '<multitable spaces="  "><columnprototypes><columnprototype>1.3</columnprototype>  <columnprototype>5-6</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'not_letters_in_prototype'} = '<multitable spaces="  " endspaces=" "><columnprototypes><columnprototype>1.3</columnprototype>  <columnprototype>5-6</columnprototype></columnprototypes>
 <tbody><row><entry command="item" spaces=" "><para>1.3 </para></entry><entry command="tab" spaces=" "><para>5-6
 </para></entry></row></tbody></multitable>
 ';

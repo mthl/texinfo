@@ -1309,7 +1309,7 @@ $result_converted{'html_text'}->{'inter_item_commands_in_multitable'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype></columnprototypes>
 <beforefirstitem><!-- c comment before first item -->
 
 </beforefirstitem><tbody><row><entry command="item" spaces=" "><para>truc
@@ -1320,7 +1320,7 @@ $result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable s
 <!-- c last comment -->
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnfractions line=" 0.6 0.4"><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
+<multitable spaces=" " endspaces=" "><columnfractions line=" 0.6 0.4"><columnfraction value="0.6"></columnfraction><columnfraction value="0.4"></columnfraction></columnfractions>
 <thead><row><entry command="headitem" spaces=" "><para>mu&textndash;ltitable headitem </para></entry><entry command="tab" spaces=" "><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
@@ -1329,7 +1329,7 @@ $result_converted{'xml'}->{'inter_item_commands_in_multitable'} = '<multitable s
 </para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">thing</columnprototype></columnprototypes>
+<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">thing</columnprototype></columnprototypes>
 <beforefirstitem><para>Title
 <cindex index="cp"><indexterm index="cp">cindex</indexterm></cindex>
 </para></beforefirstitem><tbody><row><entry command="item" spaces=" "><para>thing

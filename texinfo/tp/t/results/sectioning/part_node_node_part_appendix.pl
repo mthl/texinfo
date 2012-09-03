@@ -1314,7 +1314,7 @@ Previous: <a href="#chapter-node" accesskey="p" rel="previous">chapter node</a>,
 $result_converted{'xml'}->{'part_node_node_part_appendix'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter node</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">chapter node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">appendix part</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>

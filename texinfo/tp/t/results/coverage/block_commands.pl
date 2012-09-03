@@ -582,15 +582,15 @@ $result_converted{'html_text'}->{'block_commands'} = '
 
 
 $result_converted{'xml'}->{'block_commands'} = '
-<group>
+<group endspaces=" ">
 <para>in group
 </para></group>
 
-<quotation spaces=" "><quotationtype>warning</quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype>warning</quotationtype>
 <para>in quotation
 </para></quotation>
 
-<float name="b-float" type="a-float" spaces=" "><floattype>a float</floattype><floatname spaces=" ">b float</floatname>
+<float name="b-float" type="a-float" spaces=" " endspaces=" "><floattype>a float</floattype><floatname spaces=" ">b float</floatname>
 <para>In float
 </para>
 

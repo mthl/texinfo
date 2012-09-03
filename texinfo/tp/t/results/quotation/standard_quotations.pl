@@ -837,27 +837,27 @@ $result_converted{'html_text'}->{'standard_quotations'} = '<blockquote>
 ';
 
 
-$result_converted{'xml'}->{'standard_quotations'} = '<quotation spaces=" "><quotationtype>Note</quotationtype>
+$result_converted{'xml'}->{'standard_quotations'} = '<quotation spaces=" " endspaces=" "><quotationtype>Note</quotationtype>
 <para>A Note
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>note</quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype>note</quotationtype>
 <para>A note
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>Caution</quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype>Caution</quotationtype>
 <para>Caution
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>Important</quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype>Important</quotationtype>
 <para>Important
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>Tip</quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype>Tip</quotationtype>
 <para>a Tip
 </para></quotation>
 
-<quotation spaces=" "><quotationtype>Warning</quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype>Warning</quotationtype>
 <para>a Warning.
 </para></quotation>
 ';

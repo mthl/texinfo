@@ -555,7 +555,7 @@ $result_converted{'html_text'}->{'empty_item_itemx'} = '<dl compact="compact">
 ';
 
 
-$result_converted{'xml'}->{'empty_item_itemx'} = '<vtable commandarg="asis" spaces=" ">
+$result_converted{'xml'}->{'empty_item_itemx'} = '<vtable commandarg="asis" spaces=" " endspaces=" ">
 <beforefirstitem>
 <para>VTable
 </para>

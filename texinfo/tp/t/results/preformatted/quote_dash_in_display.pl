@@ -153,7 +153,7 @@ $result_converted{'docbook'}->{'quote_dash_in_display'} = '
 
 
 $result_converted{'xml'}->{'quote_dash_in_display'} = '
-<display>
+<display endspaces=" ">
 <pre xml:space="preserve">and now &textndash; yes&textmdash;now and &textldquo;so&textrdquo;.
 
 </pre></display>

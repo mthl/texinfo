@@ -293,7 +293,7 @@ $result_converted{'html_text'}->{'long_item'} = '<dl compact="compact">
 ';
 
 
-$result_converted{'xml'}->{'long_item'} = '<table commandarg="emph" spaces=" ">
+$result_converted{'xml'}->{'long_item'} = '<table commandarg="emph" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="emph">first item      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa</itemformat></item>
 <itemx spaces=" "><itemformat command="emph">second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b</itemformat></itemx>
 </tableterm><tableitem>

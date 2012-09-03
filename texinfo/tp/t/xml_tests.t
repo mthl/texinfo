@@ -125,6 +125,58 @@ raggedright
 @end raggedright
 
 '],
+['comments_end_lines',
+'@itemize
+@item itemize it
+@end itemize  @c comment itemize
+
+@enumerate
+@end enumerate @c comm
+
+@table @asis
+@item it
+@end table @c table
+
+@quotation
+Quot no arg
+@end quotation @c quot no arg
+
+@group
+in gr
+@end group @c comm
+
+@example
+in ex
+@end example @c comm
+
+@multitable @columnfractions 0.4 0.6
+@item a @tab b
+@end multitable @c comm
+
+@float f,g
+In f
+@end float  @c comm
+
+@flushright
+flushright
+@end flushright @c comm
+
+@raggedright
+raggedright
+@end raggedright @c comm
+'],
+['comments_on_misc_command_line',
+'@setfilename  setfilename name  @c setfilename (text)
+@definfoenclose phoo,;,:  @c definfoenclose (number)
+@firstparagraphindent none @c c (number)
+@raisesections @c raisesections (skipline)
+@insertcopying  @comment  (noarg)
+@pagesizes 200mm @c pagesizes  (line)
+@everyheading @thispage @| aaa @c everyheading (lineraw)
+
+@indent @c indent (skipspace)
+Para.
+'],
 ['raw',
 '@tex
 in <tex>
@@ -134,6 +186,16 @@ Para
 @xml
 <in>
 @end xml
+'],
+['raw_and_comments',
+'@tex  @c comment
+in <tex>
+@end tex  @comment other comment
+
+Para
+@xml @c in xml comment
+<in>
+@end xml  @comment end xml comment
 '],
 ['node_no_section',
 '@node Top

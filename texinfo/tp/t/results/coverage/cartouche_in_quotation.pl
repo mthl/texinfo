@@ -241,9 +241,9 @@ $result_converted{'html_text'}->{'cartouche_in_quotation'} = '<blockquote>
 ';
 
 
-$result_converted{'xml'}->{'cartouche_in_quotation'} = '<quotation>
+$result_converted{'xml'}->{'cartouche_in_quotation'} = '<quotation endspaces=" ">
 <para>In quotation
-</para><cartouche>
+</para><cartouche endspaces=" ">
 <para>In cartouche in quotation
 </para></cartouche>
 <para>end quotation

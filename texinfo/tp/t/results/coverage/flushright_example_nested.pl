@@ -426,15 +426,15 @@ flush then example
 ';
 
 
-$result_converted{'xml'}->{'flushright_example_nested'} = '<example>
-<flushright>
+$result_converted{'xml'}->{'flushright_example_nested'} = '<example endspaces=" ">
+<flushright endspaces=" ">
 <pre xml:space="preserve">in   --- flushright
 
 </pre></flushright>
 </example>
 
-<flushright>
-<example>
+<flushright endspaces=" ">
+<example endspaces=" ">
 <pre xml:space="preserve">in   --- example
 
 flush then example

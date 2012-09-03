@@ -449,7 +449,7 @@ $result_converted_errors{'html'}->{'menu_entry_no_entry_location'} = [
 
 
 
-$result_converted{'xml'}->{'menu_entry_no_entry_location'} = '<menu>
+$result_converted{'xml'}->{'menu_entry_no_entry_location'} = '<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator=":: ">(manual)</menunode><menudescription><pre xml:space="preserve">begin description
 * not an entry ?
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">(manual)</menunode><menudescription><pre xml:space="preserve">an entry

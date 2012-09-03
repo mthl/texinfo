@@ -1899,20 +1899,20 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table'} = '<dl compact=
 ';
 
 
-$result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg="code" spaces=" ">
+$result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg="code" spaces=" " endspaces=" ">
 <beforefirstitem><!-- c comment in table -->
 </beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="code"><indexterm index="vr">a</indexterm>a</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
-<vtable commandarg="asis" spaces=" ">
+<vtable commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr">a</indexterm>a</itemformat></item>
 <!-- c comment between item and itemx -->
 <itemx spaces=" "><itemformat command="asis"><indexterm index="vr">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></vtable>
 
-<ftable commandarg="var" spaces=" ">
+<ftable commandarg="var" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="var"><indexterm index="fn">a</indexterm>a</itemformat></item>
 <cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
 <!-- c and a comment -->
@@ -1928,14 +1928,14 @@ $result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg
 <!-- c comment at end -->
 </tableitem></tableentry></ftable>
 
-<table commandarg="code" spaces=" ">
+<table commandarg="code" spaces=" " endspaces=" ">
 <beforefirstitem><cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
 <!-- c comment in table -->
 </beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="code">abb</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
-<table commandarg="code" spaces=" ">
+<table commandarg="code" spaces=" " endspaces=" ">
 <beforefirstitem><cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
 <para>Texte before first item.
 </para></beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="code">abb</itemformat></item>

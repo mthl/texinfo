@@ -709,7 +709,7 @@ $result_converted_errors{'html'}->{'nodes_no_node_top_explicit_directions'} = [
 $result_converted{'xml'}->{'nodes_no_node_top_explicit_directions'} = '<node name="first" spaces=" "><nodename>first</nodename><nodeup>(dir)</nodeup></node>
 <para>first node
 </para>
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">second node</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 

@@ -515,15 +515,15 @@ $result_converted_errors{'html_text'}->{'raw_block_commands_expand_tex'} = [
 
 
 $result_converted{'xml'}->{'raw_block_commands_expand_tex'} = '
-<html>
+<html endspaces=" ">
 &lt;blink&gt;html&lt;/blink&gt; &textldquo;}
 </html>
 
-<xml>
+<xml endspaces=" ">
 &lt;para&gt;xml&lt;/para&gt; &textldquo;}
 </xml>
 
-<docbook>
+<docbook endspaces=" ">
 &lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;}
 </docbook>
 

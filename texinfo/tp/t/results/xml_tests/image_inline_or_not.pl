@@ -2435,7 +2435,7 @@ $result_converted{'xml'}->{'image_inline_or_not'} = '<image><imagefile>A</imagef
 
 <para>Para <image where="inline"><imagefile>jj</imagefile></image>.
 </para>
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">
 <image where="inline"><imagefile>in_example</imagefile></image>
 
@@ -2443,11 +2443,11 @@ T
 <image where="inline"><imagefile>in example after text</imagefile></image>
 </pre></example>
 
-<quotation spaces=" "><quotationtype><image where="inline"><imagefile>in_quotation_arg</imagefile></image></quotationtype>
+<quotation spaces=" " endspaces=" "><quotationtype><image where="inline"><imagefile>in_quotation_arg</imagefile></image></quotationtype>
 <image><imagefile>in_quotation_content</imagefile></image>
 </quotation>
 
-<table commandarg="asis" spaces=" ">
+<table commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><image where="inline"><imagefile>in_table_item</imagefile></image></itemformat></item>
 </tableterm><tableitem>
 <image><imagefile>in_table_def</imagefile></image>
@@ -2457,7 +2457,7 @@ T
 <image><imagefile>in_table_def_after</imagefile></image>
 </tableitem></tableentry></table>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator=":: "><image where="inline"><imagefile>node_image</imagefile></image></menunode><menudescription><pre xml:space="preserve"><image where="inline"><imagefile>image_in_description</imagefile></image>
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": "><image where="inline"><imagefile>in_menu_entry_name</imagefile></image></menutitle><menunode separator=".">(somewhere)<image where="inline"><imagefile>extnode</imagefile></image></menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
@@ -2472,7 +2472,7 @@ T
 <para>T<footnote spaces="\\n"><image where="inline"><imagefile>in_footnote</imagefile></image>
 </footnote>
 </para>
-<float name="g" type="F" spaces=" "><floattype>F</floattype><floatname>g</floatname>
+<float name="g" type="F" spaces=" " endspaces=" "><floattype>F</floattype><floatname>g</floatname>
 
 <image><imagefile>in_float</imagefile></image>
 

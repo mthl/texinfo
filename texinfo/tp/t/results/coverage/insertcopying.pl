@@ -287,10 +287,10 @@ $result_converted{'html_text'}->{'insertcopying'} = '
 ';
 
 
-$result_converted{'xml'}->{'insertcopying'} = '<copying>
+$result_converted{'xml'}->{'insertcopying'} = '<copying endspaces=" ">
 <para>License.
 </para>
-<quotation> 
+<quotation endspaces=" "> 
 <para>You are not allowed.
 </para></quotation>
 </copying>

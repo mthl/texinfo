@@ -1218,9 +1218,9 @@ $result_converted_errors{'html'}->{'formats_in_menu'} = [
 
 $result_converted{'xml'}->{'formats_in_menu'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(gcc)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator=":: ">(gcc)</menunode><menudescription><pre xml:space="preserve">text
-</pre><table commandarg="asis" spaces=" ">
+</pre><table commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis">item</itemformat></item>
 </tableterm><tableitem><pre xml:space="preserve">* table line::
 </pre></tableitem></tableentry></table>
@@ -1232,7 +1232,7 @@ some @ verb{x atim
 </verbatim>
 
 <pre xml:space="preserve"></pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">(manual2)</menunode><menudescription><pre xml:space="preserve">%
-<html>
+<html endspaces=" ">
 
 &lt;i&gt;&lt;/i&gt;
 </html>
@@ -1240,7 +1240,7 @@ Log$
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">(truc)</menunode><menudescription><pre xml:space="preserve"><acronym><acronymword>description
 * acronym::</acronymword></acronym>
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
-</pre><example>
+</pre><example endspaces=" ">
 <pre xml:space="preserve">* subsubsection::
 Menu comment
 </pre></example>

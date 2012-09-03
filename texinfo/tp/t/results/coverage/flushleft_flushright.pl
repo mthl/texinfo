@@ -338,7 +338,7 @@ ldskf dsflj
 
 
 $result_converted{'xml'}->{'flushleft_flushright'} = '
-<flushleft>
+<flushleft endspaces=" ">
 <para>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
 ldskf dsflj
      lklsdlv l    lll. Bbb.
@@ -346,7 +346,7 @@ ldskf dsflj
 <para>lhds
 </para></flushleft>
 
-<flushright>
+<flushright endspaces=" ">
 <para>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
 ldskf dsflj
      lklsdlv l    lll. Bbb.

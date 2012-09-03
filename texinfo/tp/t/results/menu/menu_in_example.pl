@@ -892,14 +892,14 @@ $result_converted_errors{'html'}->{'menu_in_example'} = [
 
 $result_converted{'xml'}->{'menu_in_example'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(entry)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
-<example>
-<menu>
+<example endspaces=" ">
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">(entry)</menunode><menudescription><pre xml:space="preserve">
-</pre><cartouche>
+</pre><cartouche endspaces=" ">
 <pre xml:space="preserve">in cartouche in description in menu in example
 </pre></cartouche>
 </menudescription></menuentry><menucomment><pre xml:space="preserve">
-</pre><cartouche>
+</pre><cartouche endspaces=" ">
 <pre xml:space="preserve">in cartouche in menu comment in menu in example
 </pre></cartouche>
 <pre xml:space="preserve">

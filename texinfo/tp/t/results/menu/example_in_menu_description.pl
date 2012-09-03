@@ -605,9 +605,9 @@ example
 $result_converted{'xml'}->{'example_in_menu_description'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">(manual)</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">(manual)</menunode><menudescription><pre xml:space="preserve">
-</pre><example>
+</pre><example endspaces=" ">
 <pre xml:space="preserve">in 
 
 example

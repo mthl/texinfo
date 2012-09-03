@@ -531,7 +531,7 @@ $result_converted_errors{'html'}->{'menu_entry_node'} = [
 
 
 
-$result_converted{'xml'}->{'menu_entry_node'} = '<menu>
+$result_converted{'xml'}->{'menu_entry_node'} = '<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">(f)a1</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::  ">(f)a2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::         ">(f)a3</menunode><menudescription><pre xml:space="preserve">d

@@ -494,7 +494,7 @@ $result_converted_errors{'html'}->{'menu_title_before_entries'} = [
 
 $result_converted{'xml'}->{'menu_title_before_entries'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">subnode</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 
-<menu>
+<menu endspaces=" ">
 <menucomment><pre xml:space="preserve">Horizontal space
 </pre></menucomment><menuentry leadingtext="* "><menunode separator="::">subnode</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>

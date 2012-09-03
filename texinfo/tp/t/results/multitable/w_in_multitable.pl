@@ -320,7 +320,7 @@ $result_converted{'html_text'}->{'w_in_multitable'} = '<table>
 ';
 
 
-$result_converted{'xml'}->{'w_in_multitable'} = '<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">aaaaaaaaa</columnprototype> <columnprototype bracketed="on">bbbbbbbbbbb</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'w_in_multitable'} = '<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">aaaaaaaaa</columnprototype> <columnprototype bracketed="on">bbbbbbbbbbb</columnprototype></columnprototypes>
 <tbody><row><entry command="item" spaces=" "><para><w>aaaaaaaa
 bbbbbbbbbb</w>
 </para></entry><entry command="tab" spaces=" "><para>gg

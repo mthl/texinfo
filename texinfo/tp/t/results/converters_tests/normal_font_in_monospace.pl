@@ -274,7 +274,7 @@ $result_converted{'html_text'}->{'normal_font_in_monospace'} = '<div class="exam
 </p>';
 
 
-$result_converted{'xml'}->{'normal_font_in_monospace'} = '<example>
+$result_converted{'xml'}->{'normal_font_in_monospace'} = '<example endspaces=" ">
 <pre xml:space="preserve">in example <r>in r&textmdash;now <code>in co---de</code></r>
 </pre></example>
 

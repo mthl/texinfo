@@ -22668,7 +22668,7 @@ $result_converted_errors{'html'}->{'at_commands_in_refs'} = [
 $result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">&hyphenbreak; &lbrace; &rbrace;</nodenext><nodeup automatic="on">(dir)</nodeup></node>
 <top spaces=" "><sectiontitle>Top</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">&hyphenbreak; &lbrace; &rbrace;</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::"><spacecmd type="spc"/> <spacecmd type="tab"/> &eosexcl; &linebreak; &eosperiod; &noeos; .&noeos; &eosquest; &arobase;</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">&atchar; &lbracechar; &rbracechar; &backslashchar; &hashchar;</menunode><menudescription><pre xml:space="preserve">

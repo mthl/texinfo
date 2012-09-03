@@ -505,7 +505,7 @@ sp after para
 ';
 
 
-$result_converted{'xml'}->{'sp_in_example'} = '<example>
+$result_converted{'xml'}->{'sp_in_example'} = '<example endspaces=" ">
 <pre xml:space="preserve">Para
 <sp value="1" line=" 1"></sp>
 other para

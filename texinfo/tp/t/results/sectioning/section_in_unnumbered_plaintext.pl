@@ -9621,7 +9621,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 
 <para>Menu:
 </para>
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">chapter</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumbered</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">chapter 2</menunode><menudescription><pre xml:space="preserve">
@@ -9633,7 +9633,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="chapter" spaces=" "><nodename>chapter</nodename><nodenext automatic="on">unnumbered</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">section in chapter</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
@@ -9645,7 +9645,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="unnumbered" spaces=" "><nodename>unnumbered</nodename><nodenext automatic="on">chapter 2</nodenext><nodeprev automatic="on">chapter</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <unnumbered spaces=" "><sectiontitle>unnumbered</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">section in unnumbered</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
@@ -9657,7 +9657,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="chapter-2" spaces=" "><nodename>chapter 2</nodename><nodenext automatic="on">chapter 3</nodenext><nodeprev automatic="on">unnumbered</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>chapter 2</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">unnumberedsec 2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumberedsec 2-1</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
@@ -9665,7 +9665,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="unnumberedsec-2" spaces=" "><nodename>unnumberedsec 2</nodename><nodenext automatic="on">unnumberedsec 2-1</nodenext><nodeup automatic="on">chapter 2</nodeup></node>
 <unnumberedsec spaces=" "><sectiontitle>unnumbered section 2</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">unnumbered sub 2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">numbered sub 2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumbered sub2 2</menunode><menudescription><pre xml:space="preserve">
@@ -9692,7 +9692,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="unnumberedsec-2_002d1" spaces=" "><nodename>unnumberedsec 2-1</nodename><nodeprev automatic="on">unnumberedsec 2</nodeprev><nodeup automatic="on">chapter 2</nodeup></node>
 <unnumberedsec spaces=" "><sectiontitle>unnumberedsec 2-1</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">numbered sub 2-1</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
@@ -9706,7 +9706,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="chapter-3" spaces=" "><nodename>chapter 3</nodename><nodenext automatic="on">unnumbered 4</nodenext><nodeprev automatic="on">chapter 2</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>chapter 3</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">unnumberedsec 3</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">section 3-1</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumberedsec 3-2</menunode><menudescription><pre xml:space="preserve">
@@ -9717,7 +9717,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="unnumberedsec-3" spaces=" "><nodename>unnumberedsec 3</nodename><nodenext automatic="on">section 3-1</nodenext><nodeup automatic="on">chapter 3</nodeup></node>
 <unnumberedsec spaces=" "><sectiontitle>unnumbered section 3</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">unnumbered sub 3</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">numbered sub 3</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumbered sub2 3</menunode><menudescription><pre xml:space="preserve">
@@ -9748,7 +9748,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="unnumberedsec-3_002d2" spaces=" "><nodename>unnumberedsec 3-2</nodename><nodenext automatic="on">section 3-3</nodenext><nodeprev automatic="on">section 3-1</nodeprev><nodeup automatic="on">chapter 3</nodeup></node>
 <unnumberedsec spaces=" "><sectiontitle>unnumberedsec 3-2</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">numbered sub 3-2</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
@@ -9760,7 +9760,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="section-3_002d3" spaces=" "><nodename>section 3-3</nodename><nodenext automatic="on">unnumberedsec 3-4</nodenext><nodeprev automatic="on">unnumberedsec 3-2</nodeprev><nodeup automatic="on">chapter 3</nodeup></node>
 <section spaces=" "><sectiontitle>section 3-3</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">subsection 3-3</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
@@ -9772,7 +9772,7 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="unnumberedsec-3_002d4" spaces=" "><nodename>unnumberedsec 3-4</nodename><nodeprev automatic="on">section 3-3</nodeprev><nodeup automatic="on">chapter 3</nodeup></node>
 <unnumberedsec spaces=" "><sectiontitle>unnumberedsec 3-4</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">numbered sub 3-4</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
@@ -9785,14 +9785,14 @@ $result_converted{'xml'}->{'section_in_unnumbered_plaintext'} = '
 <node name="unnumbered-4" spaces=" "><nodename>unnumbered 4</nodename><nodeprev automatic="on">chapter 3</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <unnumbered spaces=" "><sectiontitle>unnumbered  4</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">unnumberedsec 4</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <node name="unnumberedsec-4" spaces=" "><nodename>unnumberedsec 4</nodename><nodeup automatic="on">unnumbered 4</nodeup></node>
 <unnumberedsec spaces=" "><sectiontitle>unnumbered section 4</sectiontitle>
 
-<menu>
+<menu endspaces=" ">
 <menuentry leadingtext="* "><menunode separator="::">unnumbered sub 4</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">numbered sub 4</menunode><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">unnumbered sub2 4</menunode><menudescription><pre xml:space="preserve">

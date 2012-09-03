@@ -504,8 +504,8 @@ new paragraph in tab. example</pre></td></tr>
 ';
 
 
-$result_converted{'xml'}->{'multitable_in_example'} = '<example>
-<multitable spaces=" "><columnprototypes><columnprototype bracketed="on">AAA</columnprototype>  <columnprototype bracketed="on">BBB</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'multitable_in_example'} = '<example endspaces=" ">
+<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">AAA</columnprototype>  <columnprototype bracketed="on">BBB</columnprototype></columnprototypes>
 <tbody><row><entry command="item" spaces=" "><pre xml:space="preserve">truc </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">bidule example
 </pre></entry></row><row><entry command="item" spaces=" "><pre xml:space="preserve">begin item example
 

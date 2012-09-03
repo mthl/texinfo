@@ -694,7 +694,7 @@ $result_converted_errors{'html'}->{'simple_no_menu'} = [
 $result_converted{'xml'}->{'simple_no_menu'} = '
 <para>Before menu.
 </para>
-<menu>
+<menu endspaces=" ">
 <menucomment><pre xml:space="preserve">comment
 </pre></menucomment><menuentry leadingtext="* "><menutitle separator=": ">menu entry name </menutitle><menunode separator=".    ">node</menunode><menudescription><pre xml:space="preserve">description
 </pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::                ">node name</menunode><menudescription><pre xml:space="preserve">description new

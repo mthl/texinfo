@@ -2550,20 +2550,20 @@ $result_converted{'xml'}->{'commands_and_spaces'} = '<set name="foo" line="  foo
 <image spaces=" "><imagefile>a </imagefile><imagewidth>b 
 </imagewidth><imageheight>c </imageheight><alttext spaces=" ">d</alttext><imageextension>e </imageextension></image>
 
-<quotation spaces="  "><quotationtype>Note  </quotationtype>
+<quotation spaces="  " endspaces=" "><quotationtype>Note  </quotationtype>
 <para>Q
 </para></quotation>
 
-<float name="b" type="ff" spaces="  "><floattype>ff </floattype><floatname spaces=" ">b   </floatname>
+<float name="b" type="ff" spaces="  " endspaces=" "><floattype>ff </floattype><floatname spaces=" ">b   </floatname>
 <para>f
 </para><caption spaces=" "><para>In caption </para></caption><para>j.
 </para><shortcaption><para>Short</para></shortcaption><para>  g.
 </para></float>
 
-<multitable spaces="  "><columnfractions line="  0.4  0.6  "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+<multitable spaces="  " endspaces=" "><columnfractions line="  0.4  0.6  "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 </multitable>
 
-<multitable spaces="  "><columnprototypes><columnprototype bracketed="on">aa b</columnprototype>  <columnprototype><var>cmd</var></columnprototype><columnprototype>gg</columnprototype> <columnprototype>hh</columnprototype> <columnprototype>j</columnprototype> </columnprototypes>
+<multitable spaces="  " endspaces=" "><columnprototypes><columnprototype bracketed="on">aa b</columnprototype>  <columnprototype><var>cmd</var></columnprototype><columnprototype>gg</columnprototype> <columnprototype>hh</columnprototype> <columnprototype>j</columnprototype> </columnprototypes>
 </multitable>
 
 <verbatim xml:space="preserve">  
@@ -2571,21 +2571,21 @@ in verbatim @g
 </verbatim>
  
 
-<tex>  
+<tex endspaces="  ">  
 in tex
-</tex>
+</tex>  
 
-<example>  
+<example endspaces="  ">  
 <pre xml:space="preserve">in example
-</pre></example>
+</pre></example>  
 
-<example spaces="  "> 
+<example spaces="  " endspaces="  "> 
 <pre xml:space="preserve">in bad example
-</pre></example>
+</pre></example> 
 
-<table commandarg="strong" spaces="  ">  
+<table commandarg="strong" spaces="  " endspaces="   ">  
 <tableentry><tableterm><item spaces="  "><itemformat command="strong">in item </itemformat></item>
-</tableterm></tableentry></table>
+</tableterm></tableentry></table>   
 
 <para>T<footnote spaces="  "><para>a</para></footnote>.
 </para>

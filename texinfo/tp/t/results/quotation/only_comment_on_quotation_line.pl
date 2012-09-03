@@ -147,7 +147,7 @@ $result_converted{'html_text'}->{'only_comment_on_quotation_line'} = '<blockquot
 ';
 
 
-$result_converted{'xml'}->{'only_comment_on_quotation_line'} = '<quotation spaces=" "><!-- c comment -->
+$result_converted{'xml'}->{'only_comment_on_quotation_line'} = '<quotation spaces=" " endspaces=" "><!-- c comment -->
 <para>In quotation
 </para></quotation>
 ';

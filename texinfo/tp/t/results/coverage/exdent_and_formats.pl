@@ -2475,7 +2475,7 @@ quotation2
 ';
 
 
-$result_converted{'xml'}->{'exdent_and_formats'} = '<example>
+$result_converted{'xml'}->{'exdent_and_formats'} = '<example endspaces=" ">
 <pre xml:space="preserve"> Example   Hoho. &tex; . &linebreak; &arobase;.
 
 </pre><exdent spaces=" ">Other line</exdent>
@@ -2483,7 +2483,7 @@ $result_converted{'xml'}->{'exdent_and_formats'} = '<example>
 </pre></example>
 
 
-<example>
+<example endspaces=" ">
 <exdent spaces=" ">exdented  and dash --- in example</exdent>
 <pre xml:space="preserve">Not exdented
 </pre><exdent spaces=" ">exdented</exdent>
@@ -2492,7 +2492,7 @@ $result_converted{'xml'}->{'exdent_and_formats'} = '<example>
 
 <para>Para1.
 </para>
-<quotation>
+<quotation endspaces=" ">
 <para>qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
 qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
 </para></quotation>
@@ -2503,55 +2503,55 @@ qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
 </para>
 <para>Last para.
 </para>
-<quotation>
+<quotation endspaces=" ">
 <para>quotation1
 quotation2
 </para></quotation>
 
-<quotation>
+<quotation endspaces=" ">
 <para>quotation para 1
 </para>
 <para>quotation para 2
 </para></quotation>
 
-<example>
+<example endspaces=" ">
 <pre xml:space="preserve">Example   Hoho.
-</pre><example>
+</pre><example endspaces=" ">
 <pre xml:space="preserve">Nested Other line
 </pre><exdent spaces=" ">exdented nested other line</exdent>
 </example>
 </example>
 
-<quotation>
+<quotation endspaces=" ">
 <exdent spaces=" ">exdented quotation line   and dash &textmdash; in quotation</exdent>
 </quotation>
 
-<quotation>
+<quotation endspaces=" ">
 <para>Not exdented followed by exdented
 </para><exdent spaces="  ">exdented quotation line</exdent>
 </quotation>
 
-<quotation>
+<quotation endspaces=" ">
 <exdent spaces="  ">exdented quotation line</exdent>
 <para>Followed by not exdented 
 </para></quotation>
 
-<quotation>
+<quotation endspaces=" ">
 <exdent spaces=" ">exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az</exdent>
 <exdent spaces=" ">azeaz az az az az</exdent>
 </quotation>
 
-<quotation>
+<quotation endspaces=" ">
 <exdent spaces=" ">exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line</exdent>
 <exdent spaces=" ">az az az az</exdent>
 </quotation>
 
-<quotation>
+<quotation endspaces=" ">
 <para>quotation line oidfjslsd aez a aze azaz aeae za eaz az zelef  aaa
 </para><exdent spaces=" ">ezkfjklezf </exdent>
 </quotation>
 
-<quotation>
+<quotation endspaces=" ">
 <exdent spaces=" ">very loooooooooooooooooooooooooooooooooong exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line</exdent>
 <exdent spaces=" ">az az az az</exdent>
 </quotation>
