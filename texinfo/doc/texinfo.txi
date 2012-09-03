@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.464 2012-08-28 16:10:21 karl Exp $
+@c $Id: texinfo.txi,v 1.465 2012-09-03 17:51:37 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -11960,26 +11960,25 @@ This is the changed @@point@{@}contents of foo.
 
 @node Breaks
 @chapter Forcing and Preventing Breaks
+
 @cindex Forcing line and page breaks
 @cindex Making line and page breaks
 @cindex Preventing line and page breaks
-
-@cindex Line breaks
-Usually, a Texinfo file is processed both by @TeX{} and by one of the
-Info formatting commands.  Line, paragraph, or page breaks sometimes
-occur in the `wrong' place in one or other form of output.  You must
-ensure that text looks right both in the printed manual and in the
-Info file.
-
-@cindex White space, excessive
+@cindex Line breaks, awkward
 @cindex Page breaks, awkward
+
+Line and page breaks can sometimes occur in the `wrong' place in one
+or another form of output.  It's up to you to ensure that text looks
+right in all the output formats.
+
 For example, in a printed manual, page breaks may occur awkwardly in
 the middle of an example; to prevent this, you can hold text together
 using a grouping command that keeps the text from being split across
 two pages.  Conversely, you may want to force a page break where none
-would occur normally.  Fortunately, problems like these do not often
-arise.  When they do, use the break, break prevention, or pagination
-commands.
+would occur normally.
+
+You can use the break, break prevention, or pagination commands to fix
+problematic line and page breaks.
 
 @menu
 * Break Commands::              Summary of break-related commands.
@@ -12019,25 +12018,23 @@ These commands hold text together on a single line:
 @table @code
 @item @@w@{@var{text}@}
 Prevent @var{text} from being split and hyphenated across two lines.
+
 @item @@tie@{@}
 Insert a normal interword space at which a line break may not occur.
 @end table
-@iftex
-@sp 1
-@end iftex
 
-The pagination commands apply only to printed output, since Info
-files do not have pages.
+The pagination commands apply only to printed output, since other
+output formats do not have pages.
 
 @table @code
 @item @@page
-Start a new page in the printed manual.
+Start a new page.
 
 @item @@group
-Hold text together that must appear on one printed page.
+Hold text together that must appear on one page.
 
 @item @@need @var{mils}
-Start a new printed page if not enough space on this one.
+Start a new page if not enough space on this one.
 @end table
 
 
@@ -12051,26 +12048,25 @@ Start a new printed page if not enough space on this one.
 @cindex Force line break
 @cindex Allow line break
 
-The @code{@@*} command forces a line break in both the printed manual and
-in Info.  The @code{@@/} command allows a line break (printed manual only).
+The @code{@@*} command forces a line break in all output formats.
+The @code{@@/} command allows a line break (printed manual only).
 
 Here is an example with @code{@@*}:
 
 @example
-This line @@* is broken @@*in two places.
+This sentence is broken @@*into two lines.
 @end example
 
 @noindent produces
 
 @example
 @group
-This line
-is broken
-in two places.
+This sentence is broken
+into two lines.
 @end group
 @end example
 
-The @code{@@/} command can be useful within a url
+The @code{@@/} command can often be useful within urls
 (@pxref{uref,,@code{@@uref}}), which tend to be long and are otherwise
 unbreakable.  For example:
 
@@ -12081,13 +12077,13 @@ The official Texinfo home page is on the GNU web site:
 
 @noindent produces
 
-@display
+@quotation
 The official Texinfo home page is on the GNU web site:
 @uref{http://www.gnu.org/@/software/@/gnu/@/texinfo}.
-@end display
+@end quotation
 
 @noindent Without the @code{@@/} commands, @TeX{} would have nowhere to
-break the line.  @code{@@/} has no effect in the online output.
+break the url.  @code{@@/} has no effect in other output formats.
 
 
 @node - and hyphenation
@@ -12137,16 +12133,16 @@ these commands have any effect there.
 @cindex _, breakpoint within @code{@@code}
 @cindex Underscore, breakpoint within @code{@@code}
 
-Ordinarily, @TeX{} will consider breaking lines at @samp{-} and
-@samp{_} characters within @code{@@code} and related commands
+Ordinarily, @TeX{} considers breaking lines at @samp{-} and @samp{_}
+characters within @code{@@code} and related commands
 (@pxref{code,,@code{@@code}}), more or less as if they were ``empty''
 hyphenation points.
 
-This is necessary as many manuals, especially for Lisp-family
+This is necessary since many manuals, especially for Lisp-family
 languages, must document very long identifiers.  On the other hand,
-other manuals don't have this problems, and you may not wish to allow
-a line break at the underscore in, for example, @code{SIZE_MAX}, or
-even worse, after any of the four underscores in @code{__typeof__}.
+some manuals don't have this problems, and you may not wish to allow a
+line break at the underscore in, for example, @code{SIZE_MAX}, or even
+worse, after any of the four underscores in @code{__typeof__}.
 
 So Texinfo provides this command:
 
@@ -12154,7 +12150,7 @@ So Texinfo provides this command:
 @@allowcodebreaks false
 @end example
 
-@noindent to prevent @TeX{} from breaking at @samp{-} or @samp{_} within
+@noindent to prevent from breaking at @samp{-} or @samp{_} within
 @code{@@code}.  You can go back to allowing such breaks with
 @code{@@allowcodebreaks true}.  Write these commands on lines by
 themselves.
@@ -12163,16 +12159,17 @@ These commands can be given anywhere in the document.  For example,
 you may have just one problematic paragraph where you need to turn off
 the breaks, but want them in general, or vice versa.
 
-This command has no effect in Info, HTML, and other non-@TeX{} output.
+This command has no effect except in HTML and @TeX{} output.
 
 
 @node w
 @section @code{@@w}@{@var{text}@}: Prevent Line Breaks
+
 @findex w @r{(prevent line break)}
 @cindex Line breaks, preventing
 
-@code{@@w@{@var{text}@}} outputs @var{text} and prohibits line breaks
-within @var{text}, for both @TeX{} and @command{makeinfo}.
+@code{@@w@{@var{text}@}} outputs @var{text}, while prohibiting line
+breaks within @var{text}.
 
 @cindex Non-breakable space, fixed
 @cindex Unbreakable space, fixed
@@ -12193,7 +12190,7 @@ The space from @code{@@w@{@w{ }@}}, as well as being non-breakable,
 also will not stretch or shrink.  Sometimes that is what you want, for
 instance if you're doing manual indenting.  However, usually you want
 a normal interword space that does stretch and shrink (in the printed
-output); see the @code{@@tie} command in the next section.
+output); for that, see the @code{@@tie} command in the next section.
 
 @cindex Hyphenation, preventing
 You can also use the @code{@@w} command to prevent @TeX{} from
@@ -12206,7 +12203,8 @@ words.
 @cindex $Id expansion, preventing
 You can also use @code{@@w} to avoid unwanted keyword expansion in
 source control systems.  For example, to literally write @t{@w{$}Id$}
-in your document, use @code{@@w@{$@}Id$}.
+in your document, use @code{@@w@{$@}Id$}.  This trick isn't effective
+in Info or plain text output, though.
 
 
 @node tie
@@ -12338,16 +12336,19 @@ considerable text.  It is a good rule of thumb to look for a missing
 @code{@@end group} if you get incomprehensible error messages in
 @TeX{}.
 
+
 @node need
 @section @code{@@need @var{mils}}: Prevent Page Breaks
-@cindex Need space at page bottom
-@findex need
 
-A line containing only @code{@@need @var{n}} starts
-a new page in a printed manual if fewer than @var{n} mils (thousandths
-of an inch) remain on the current page.  Do not use
-braces around the argument @var{n}.  The @code{@@need} command has no
-effect on Info files since they are not paginated.
+@findex need
+@cindex Need space at page bottom
+@cindex Mils, argument to @code{@@need}
+
+A line containing only @code{@@need @var{n}} starts a new page in a
+printed manual if fewer than @var{n} mils (thousandths of an inch)
+remain on the current page.  Do not use braces around the argument
+@var{n}.  The @code{@@need} command has no effect on other output
+formats since they are not paginated.
 
 @need 800
 This paragraph is preceded by an @code{@@need} command that tells
@@ -12361,8 +12362,9 @@ This paragraph is preceded by @dots{}
 @end group
 @end example
 
-The @code{@@need} command is useful for preventing orphans (single
-lines at the bottoms of printed pages).
+@cindex Orphans, preventing
+The @code{@@need} command is useful for preventing orphans: single
+lines at the bottoms of printed pages.
 
 
 @node Definition Commands
@@ -21941,7 +21943,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.464 2012-08-28 16:10:21 karl Exp $
+$Id: texinfo.txi,v 1.465 2012-09-03 17:51:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
