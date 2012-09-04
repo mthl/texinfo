@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.465 2012-09-03 17:51:37 karl Exp $
+@c $Id: texinfo.txi,v 1.466 2012-09-04 00:27:31 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10341,7 +10341,7 @@ used like this:
 @@defindex @var{name}
 @end example
 
-The name of an index should be a two-letter word, such as @samp{au}.
+New index names are usually two-letter words, such as @samp{au}.
 For example:
 
 @example
@@ -10366,10 +10366,9 @@ entry and two @samp{au} index entries.
 @noindent
 (Evidently, @samp{au} serves here as an abbreviation for ``author''.)
 
-In general, Texinfo constructs the new indexing command by
-concatenating the name of the index with @samp{index}; thus, defining
-an @samp{xy} index leads to the automatic creation of an
-@code{@@xyindex} command.
+Texinfo constructs the new indexing command by concatenating the name
+of the index with @samp{index}; thus, defining an @samp{xy} index
+leads to the automatic creation of an @code{@@xyindex} command.
 
 Use the @code{@@printindex} command to print the index, as you do with
 the predefined indices.  For example:
@@ -10715,8 +10714,8 @@ right brackets and right quotes (both single and double).
 For example,
 
 @example
-foo vs.@@: (this?)@@: bar
-foo vs. (this?) bar
+foo vs.@@: bar (or?)@@: baz
+foo vs. bar (or?) baz
 @end example
 
 @noindent
@@ -10725,32 +10724,26 @@ produces
 @end ifnottex
 @iftex
 produces the following.  If you look carefully at this printed output,
-you will see a little extraneous space after the @samp{vs.}@: and
+you will see a bit of extraneous space after the @samp{vs.}@: and
 @samp{(or?)}@: in the second line.
 @end iftex
 
 @quotation
 foo vs.@: bar (or?)@: baz@*
-foo vs. bar (or?) baz@*
+foo vs. bar (or?) baz
 @end quotation
 
 @noindent
-@code{@@:} has no effect on the Info and HTML output.  In Docbook and
-XML, the previous punctuation character (.?!:) is output as an entity
-instead of as the normal character: @samp{&period; &quest; &excl;
-&colon;}.  This gives further processors a chance to notice and not
-add the usual extra space.
+@code{@@:} has no effect on the HTML or Docbook output.
 
 Do not put braces after @code{@@:} (or any non-alphabetic command).
 
 A few Texinfo commands force normal interword spacing, so that you
-don't have to insert @code{@@:} or @code{@@.} and companions (see next
-section) where you otherwise would.  These are the code-like
-highlighting commands, @code{@@var}, @code{@@abbr}, @code{@@acronym}
-(@pxref{Useful Highlighting}), and @code{@@TeX}.  For example, that
-sentence ended with @samp{@@code@{@@@@TeX@}.}; @code{@@.} was not
-needed.  Another example: in @samp{@@code@{foo. bar@}} the period is
-not considered the end of a sentence, and no extra space is inserted.
+don't have to insert @code{@@:} where you otherwise would.  These are
+the code-like highlighting commands, @code{@@var}, @code{@@abbr}, and
+@code{@@acronym} (@pxref{Useful Highlighting}).  For example, in
+@samp{@@code@{foo. bar@}} the period is not considered the end of a
+sentence, and no extra space is inserted.
 
 
 @node Ending a Sentence
@@ -10765,7 +10758,7 @@ not considered the end of a sentence, and no extra space is inserted.
 @cindex Spacing, at ends of sentences
 Use @code{@@.}@: instead of a period, @code{@@!}@: instead of an
 exclamation point, and @code{@@?}@: instead of a question mark at the end
-of a sentence that ends with a capital letter.  Otherwise, @TeX{}
+of a sentence that ends with a capital letter.  Otherwise, the formatter
 will think the letter is an abbreviation and will not insert the correct
 end-of-sentence spacing.  Here is an example:
 
@@ -10775,21 +10768,15 @@ Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 @end example
 
 @noindent
-@ifnottex
-produces
-@end ifnottex
-@iftex
-produces the following.  If you look carefully at this printed output,
-you will see a little more whitespace after the @samp{W} in the first
-line.
-@end iftex
+The output follows.  In printed output and Info, you can see the
+desired extra whitespace after the @samp{W} in the first line.
 
 @quotation
 Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.@*
 Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 @end quotation
 
-In the Info file output, @code{@@.}@: is equivalent to a simple
+In the HTML file output, @code{@@.}@: is equivalent to a simple
 @samp{.}; likewise for @code{@@!}@: and @code{@@?}@:.
 
 The meanings of @code{@@:} and @code{@@.}@: in Texinfo are designed to
@@ -10798,8 +10785,14 @@ emacs, The GNU Emacs Manual}).
 
 Do not put braces after any of these commands.
 
-See the end of the previous section for a few commands which
-special-case following spacing.
+A few Texinfo commands are not considered as being an abbreviation,
+even though they may end with a capital letter when expanded, so that
+you don't have to insert @code{@@.} and companions. This is the case
+for code-like highlighting commands, @code{@@var} arguments ending
+with a capital letter, and @code{@@TeX}.  For example, that sentence
+ended with @samp{@@code@{@@@@TeX@}.}; @code{@@.} was not needed.  Also
+in @code{... @@var@{VARIABLE@}. Text} the period ends the sentence,
+there is no need to insert @code{@@.}.
 
 
 @node Multiple Spaces
@@ -10812,22 +10805,19 @@ special-case following spacing.
 @findex <tab>
 @findex <newline>
 
-Ordinarily, @TeX{} collapses multiple whitespace characters (space, tab,
-and newline) into a single space.  Info output, on the other hand,
-preserves whitespace as you type it, except for changing a newline into
-a space; this is why it is important to put two spaces at the end of
-sentences in Texinfo documents.
+Ordinarily, multiple whitespace characters (space, tab, and newline)
+are collapsed into a single space.
 
-Occasionally, you may want to actually insert several consecutive
-spaces, either for purposes of example (what your program does with
+Occasionally, you may want to produce several consecutive spaces,
+either for purposes of example (e.g., what your program does with
 multiple spaces as input), or merely for purposes of appearance in
 headings or lists.  Texinfo supports three commands:
-@code{@@@kbd{SPACE}}, @code{@@@kbd{TAB}}, and @code{@@@kbd{NL}}, all of
-which insert a single space into the output.  (Here,
+@code{@@@kbd{SPACE}}, @code{@@@kbd{TAB}}, and @code{@@@kbd{NL}}, all
+of which insert a single space into the output.  (Here,
 @code{@@@kbd{SPACE}} represents an @samp{@@} character followed by a
-space, i.e., @samp{@@ }, and @kbd{TAB} and @kbd{NL} represent the tab
-character and end-of-line, i.e., when @samp{@@} is the last character on
-a line.)
+space, i.e., @samp{@@ }, @kbd{TAB} represents an actual tab character,
+and @kbd{NL} represent the tab character and end-of-line, i.e., when
+@samp{@@} is the last character on a line.)
 
 For example,
 @example
@@ -10858,9 +10848,10 @@ To produce a non-breakable space, see @ref{tie, @code{@@tie}}.
 @cindex Space, after sentences
 
 In American typography, it is traditional and correct to put extra
-space at the end of a sentence.  This is the default in Texinfo.  In
-French typography (and many others), this extra space is wrong; all
-spaces are uniform.
+space at the end of a sentence.  This is the default in Texinfo
+(implemented in Info and printed output; for HTML, we don't try to
+override the browser).  In French typography (and others), this extra
+space is wrong; all spaces are uniform.
 
 Therefore Texinfo provides the @code{@@frenchspacing} command to
 control the spacing after punctuation.  It reads the rest of the line
@@ -10876,7 +10867,7 @@ This is text. Two sentences. Three sentences. French spacing.
 This is text. Two sentences. Three sentences. Non-French spacing.
 @end example
 
-@noindent produces (there will be no difference in Info):
+@noindent produces:
 
 @frenchspacing on
 This is text. Two sentences. Three sentences. French spacing.
@@ -10884,34 +10875,8 @@ This is text. Two sentences. Three sentences. French spacing.
 @frenchspacing off
 This is text. Two sentences. Three sentences. Non-French spacing.
 
-@code{@@frenchspacing} mainly affects the printed output, including
-the output after @code{@@.}, @code{@@!}, and @code{@@?} (@pxref{Ending
-a Sentence}).
-
-In Info, usually space characters in the input are written unaltered
-to the output, and @code{@@frenchspacing} does not change this.  It
-does change the one case where @command{makeinfo} outputs a space on
-its own: when a sentence ends at a newline in the source.  Here's an
-example:
-
-@example
-Some sentence.
-Next sentence.
-@end example
-
-@noindent produces in Info output, with @code{@@frenchspacing off}
-(the default), two spaces between the sentences:
-
-@example
-Some sentence.  Next sentence.
-@end example
-
-@noindent With @code{@@frenchspacing on}, @command{makeinfo} outputs
-only a single space:
-
-@example
-Some sentence. Next sentence.
-@end example
+@code{@@frenchspacing} also affects the output after @code{@@.},
+@code{@@!}, and @code{@@?} (@pxref{Ending a Sentence}).
 
 @code{@@frenchspacing} has no effect on the HTML or Docbook output;
 for XML, it outputs a transliteration of itself (@pxref{Output
@@ -10925,12 +10890,11 @@ Formats}).
 @cindex Format a dimension
 @findex dmn
 
-At times, you may want to write @samp{12@dmn{pt}} or
-@samp{8.5@dmn{in}} with little or no space between the number and the
-abbreviation for the dimension.  You can use the @code{@@dmn} command
-to do this.  On seeing the command, @TeX{} inserts just enough space
-for proper typesetting; the Info formatting commands insert no space
-at all, since the Info file does not require it.
+You can use the @code{@@dmn} command to format a dimension with a
+little extra space in the printed output.  That is, on seeing
+@code{@@dmn}, @TeX{} inserts just enough space for proper typesetting;
+in other output formats, the formatting commands insert no space at
+all.
 
 To use the @code{@@dmn} command, write the number and then follow it
 immediately, with no intervening space, by @code{@@dmn}, and then by
@@ -10947,13 +10911,14 @@ produces
 A4 paper is 8.27@dmn{in} wide.
 @end quotation
 
-Not everyone uses this style.  Some people prefer @w{@samp{8.27 in.@@:}}
-or @w{@samp{8.27 inches}} to @samp{8.27@@dmn@{in@}} in the Texinfo file.
-In these cases, however, the formatters may insert a line break between
-the number and the dimension, so use @code{@@w} (@pxref{w}).  Also, if
-you write a period after an abbreviation within a sentence, you should
-write @samp{@@:} after the period to prevent @TeX{} from inserting extra
-whitespace, as shown here.  @xref{Not Ending a Sentence}.
+Not everyone uses this style.  Some people prefer `8.27@tie{}in.'@: or
+`8.27@tie{}inches'.  In these cases, however, you need to use
+@code{@@tie} (@pxref{tie,,@code{@@tie}}) or @code{@@w}
+(@pxref{w,,@code{@@w}}) so that no line break can occur between the
+number and the dimension.  Also, if you write a period after an
+abbreviation within a sentence (as with the `in.'@: above), you should
+write @samp{@@:} after the period to prevent @TeX{} from inserting
+extra whitespace, as shown here.  @xref{Not Ending a Sentence}.
 
 
 @node Inserting Accents
@@ -11389,24 +11354,22 @@ registered symbol, `@registeredsymbol{}'.  Where possible, this is an
 @cindex Euro symbol
 
 Use the @code{@@euro@{@}} command to generate `@euro{}'.  Where
-possible, this is the symbol for the Euro currency, invented as part
-of the European economic unification.  In plain Info, it is the word
-@samp{Euro }.  A trailing space is included in the text
-transliteration since typically no space is desired after the symbol,
-so it would be inappropriate to have a space in the source document.
+possible, this is the symbol for the Euro currency.  Otherwise, the
+word @samp{Euro} is used.
 
 Texinfo cannot magically synthesize support for the Euro symbol where
-the underlying system (fonts, software, whatever) does not support
-it.  Therefore, in many cases it is preferable to use the word
-``Euro''.  (In banking circles, the abbreviation for the Euro is EUR.)
+the underlying system (fonts, software, whatever) does not support it.
+Therefore, in many cases it is preferable to use the word ``Euro''.
+(In banking contexts, the abbreviation for the Euro is EUR.)
 
 @cindex ISO 8859-15, and Euro
 @cindex Latin 9, and Euro
 In order to get the Euro symbol in encoded Info output, for example,
-it is necessary to specify @code{@@documentencoding ISO-8859-15}.
+it is necessary to specify @code{@@documentencoding ISO-8859-15} or
+@code{@@documentencoding UTF-8}
 (@xref{documentencoding,,@code{@@documentencoding}}.)  The Euro symbol
 is in ISO 8859-15 (aka Latin@tie{}9), and is @emph{not} in the more
-widely-used and supported ISO 8859-1 (Latin@tie{}1).
+widely-used ISO 8859-1 (Latin@tie{}1).
 
 @pindex feymr10
 @cindex Euro font
@@ -11425,8 +11388,8 @@ instructions.
 @cindex Pounds symbol
 
 Use the @code{@@pounds@{@}} command to generate `@pounds{}'.  Where
-possible, this is the symbol for the currency pounds sterling.  In
-Info, it is a @samp{#}.
+possible, this is the symbol for the pounds sterling British currency.
+Otherwise, it is @samp{#}.
 
 
 @node textdegree
@@ -11435,8 +11398,8 @@ Info, it is a @samp{#}.
 @cindex Degree symbol
 
 Use the @code{@@textdegree@{@}} command to generate `@textdegree{}'.
-Where possible, this is the normal symbol for degrees.  In plain text
-and Info output, it is an @samp{o}.
+Where possible, this is the normal symbol for degrees.  Otherwise, 
+it is an @samp{o}.
 
 
 @node minus
@@ -11479,8 +11442,8 @@ an itemized list, you do not need to type the braces
 
 Use the @code{@@geq@{@}} and @code{@@leq@{@}} commands to generate
 greater-than-or-equal and less-than-equal-signs, `@geq{}' and
-`@leq{}'.  In plain text and Info output, these are the ASCII
-sequences @samp{>=} and @samp{<=}.
+`@leq{}'.  When those symbols are not available, the ASCII sequences
+@samp{>=} and @samp{<=} are output.
 
 
 @node math
@@ -11594,9 +11557,9 @@ which produces:
 
 @findex click
 @findex arrow
-The @code{@@click} command produces a simple right arrow (@samp{->} in
-Info) by default; this glyph is also available independently via the
-command @code{@@arrow@{@}}.
+The @code{@@click} command produces a right arrow by default; this
+glyph is also available independently via the command
+@code{@@arrow@{@}}.
 
 @findex clickstyle
 You can change the glyph produced by @code{@@click} with the command
@@ -11629,14 +11592,13 @@ In Texinfo, code is often illustrated in examples that are delimited
 by @code{@@example} and @code{@@end example}, or by @code{@@lisp} and
 @code{@@end lisp}.  In such examples, you can indicate the results of
 evaluation or an expansion using @samp{@result{}} or
-@samp{@expansion{}}.  Likewise, there are commands to insert glyphs
-to indicate
-printed output, error messages, equivalence of expressions, and the
-location of point.
+@samp{@expansion{}}.  Likewise, there are commands to insert glyphs to
+indicate printed output, error messages, equivalence of expressions,
+and the location of point in an editor.
 
-The glyph-insertion commands do not need to be used within an example, but
-most often they are.  Every  glyph-insertion command is followed by a pair of
-left- and right-hand braces.
+The glyph-insertion commands do not need to be used within an example,
+but most often they are.  All glyph-insertion commands are followed by
+empty braces.
 
 @menu
 * Glyphs Summary::
@@ -11652,7 +11614,7 @@ left- and right-hand braces.
 @node Glyphs Summary
 @subsection Glyphs Summary
 
-Here are the different glyph commands:
+Here is a summary of the glyph commands:
 
 @table @asis
 @item @result{}
@@ -11686,14 +11648,9 @@ Here are the different glyph commands:
 Use the @code{@@result@{@}} command to indicate the result of
 evaluating an expression.
 
-@iftex
-The @code{@@result@{@}} command is displayed as @samp{@result{}} in
-the printed output and as @samp{=>} in other formats.
-@end iftex
-@ifnottex
-The @code{@@result@{@}} command is displayed as @samp{@result{}} in
-Info and HTML and as a true double stemmed arrow in the printed output.
-@end ifnottex
+The @code{@@result@{@}} command is displayed as @samp{@result{}},
+either a double stemmed arrow or (when that is not available) the
+ASCII sequence @samp{=>}.
 
 Thus, the following,
 
@@ -11716,15 +11673,9 @@ When an expression is a macro call, it expands into a new expression.
 You can indicate the result of the expansion with the
 @code{@@expansion@{@}} command.
 
-@iftex
-The @code{@@expansion@{@}} command is displayed as @samp{@expansion{}}
-in the printed output and as @samp{==>} in other formats.
-@end iftex
-@ifnottex
-The @code{@@expansion@{@}} command is displayed as @samp{@expansion{}}
-in Info and HTML, and as a long arrow with a flat base in the printed
-output.
-@end ifnottex
+The @code{@@expansion@{@}} command is displayed as
+@samp{@expansion{}}, either a long arrow with a flat base or (when
+that is not available) the ASCII sequence @samp{==>}.
 
 @need 700
 For example, the following
@@ -11771,15 +11722,9 @@ Often, as in this case, an example looks better if the
 Sometimes an expression will print output during its execution.  You
 can indicate the printed output with the @code{@@print@{@}} command.
 
-@iftex
-The @code{@@print@{@}} command is displayed as @samp{-|} in Info and
-HTML and as @samp{@print{}} in the printed output.
-@end iftex
-@ifnottex
-The @code{@@print@{@}} command is displayed as @samp{@print{}} in Info
-and HTML and (similarly) as a horizontal dash butting against a
-vertical bar in the printed output.
-@end ifnottex
+The @code{@@print@{@}} command is displayed as @samp{@print{}}, either
+a horizontal dash butting against a vertical bar or (when that is not
+available) the ASCII sequence @samp{-|}.
 
 In the following example, the printed text is indicated with
 @samp{@print{}}, and the value of the expression follows on the
@@ -11817,14 +11762,10 @@ In a Texinfo source file, this example is written as follows:
 A piece of code may cause an error when you evaluate it.  You can
 designate the error message with the @code{@@error@{@}} command.
 
-@iftex
-The @code{@@error@{@}} command is displayed as @samp{error-->} in Info
-and HTML and as @samp{@error{}} in the printed output.
-@end iftex
-@ifnottex
-The @code{@@error@{@}} command is displayed as @samp{@error{}} in Info
-and HTML and as the word `error' in a box in the printed output.
-@end ifnottex
+The @code{@@error@{@}} command is displayed as @samp{@error{}}, either
+the word `error' in a box in the printed output, the word error
+followed by an arrow in other formats or (when no arrow is available)
+@samp{error-->}.
 
 @need 700
 Thus,
@@ -11860,18 +11801,12 @@ Wrong type argument: integer-or-marker-p, x
 @cindex Equivalence, indicating
 @findex equiv
 
-Sometimes two expressions produce identical results.  You can indicate the
-exact equivalence of two forms with the @code{@@equiv@{@}} command.
-
-@iftex
-The @code{@@equiv@{@}} command is displayed as @samp{==} in Info and
-HTML and as @samp{@equiv{}} in the printed output.
-@end iftex
-@ifnottex
-The @code{@@equiv@{@}} command is displayed as @samp{@equiv{}} in Info
-and HTML and as a standard mathematical equivalence sign (three
-parallel horizontal lines) in the printed output.
-@end ifnottex
+Sometimes two expressions produce identical results.  You can indicate
+the exact equivalence of two forms with the @code{@@equiv@{@}}
+command.  The @code{@@equiv@{@}} command is displayed as
+@samp{@equiv{}}, either a standard mathematical equivalence sign
+(three parallel horizontal lines) or (when that is not available) as
+the ASCII sequence @samp{==}.
 
 Thus,
 
@@ -11903,20 +11838,14 @@ such examples, the convention is to include the entire contents of the
 buffer in question between two lines of dashes containing the buffer
 name.
 
-You can use the @samp{@@point@{@}} command to show the location of point
-in the text in the buffer.  (The symbol for point, of course, is not
-part of the text in the buffer; it indicates the place @emph{between}
-two characters where point is located.)
+You can use the @samp{@@point@{@}} command to show the location of
+point in the text in the buffer.  (The symbol for point, of course, is
+not part of the text in the buffer; it indicates the place
+@emph{between} two characters where point is located.)
 
-@iftex
-The @code{@@point@{@}} command is displayed as @samp{-!-} in Info and
-HTML and as @samp{@point{}} in the printed output.
-@end iftex
-@ifnottex
-The @code{@@point@{@}} command is displayed as @samp{@point{}} in Info
-and HTML and as a small five pointed star in the printed
-output.
-@end ifnottex
+The @code{@@point@{@}} command is displayed as @samp{@point{}}, either
+a pointed star or (when that is not available) the ASCII sequence
+@samp{-!-}.
 
 The following example shows the contents of buffer @file{foo} before
 and after evaluating a Lisp command to insert the word @code{changed}.
@@ -21943,7 +21872,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.465 2012-09-03 17:51:37 karl Exp $
+$Id: texinfo.txi,v 1.466 2012-09-04 00:27:31 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
