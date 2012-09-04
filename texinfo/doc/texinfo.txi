@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.466 2012-09-04 00:27:31 karl Exp $
+@c $Id: texinfo.txi,v 1.467 2012-09-04 17:28:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -380,7 +380,7 @@ Quotations and Examples
 * raggedright::                 Avoiding justification on the right.
 * noindent::                    Preventing paragraph indentation.
 * indent::                      Forcing paragraph indentation.
-* cartouche::                   Drawing rounded rectangles around examples.
+* cartouche::                   Drawing rounded rectangles around text.
 
 Lists and Tables
 
@@ -8025,11 +8025,11 @@ treated differently.  They are usually indented in the output.
 In Texinfo, you always begin a quotation or example by writing an
 @@-command at the beginning of a line by itself, and end it by writing
 an @code{@@end} command that is also at the beginning of a line by
-itself.  For instance, you begin an example by writing @code{@@example}
-by itself at the beginning of a line and end the example by writing
-@code{@@end example} on a line by itself, at the beginning of that
-line, and with only one space between the @code{@@end} and the
-@code{example}.
+itself.  For instance, you begin an example by writing
+@code{@@example} by itself at the beginning of a line and end the
+example by writing @code{@@end example} on a line by itself, at the
+beginning of that line, and with only one space between the
+@code{@@end} and the @code{example}.
 
 @menu
 * Block Enclosing Commands::    Different constructs for different purposes.
@@ -8046,28 +8046,29 @@ line, and with only one space between the @code{@@end} and the
 * raggedright::                 Avoiding justification on the right.
 * noindent::                    Preventing paragraph indentation.
 * indent::                      Forcing paragraph indentation.
-* cartouche::                   Drawing rounded rectangles around examples.
+* cartouche::                   Drawing rounded rectangles around text.
 @end menu
 
 
 @node Block Enclosing Commands
 @section Block Enclosing Commands
 
-Here are commands for quotations and examples, explained further in the
-following sections:
+Here is a summary of commands that enclose blocks of text, also known
+as @dfn{environments}.  They're explained further in the following
+sections.
 
 @table @code
 @item @@quotation
 Indicate text that is quoted. The text is filled, indented (from both
 margins), and printed in a roman font by default.
 
-@item @@smallquotation
-Same as @code{@@quotation}, except that in @TeX{} this command typesets
-text in a smaller font size.
-
 @item @@example
 Illustrate code, commands, and the like. The text is printed
 in a fixed-width font, and indented but not filled.
+
+@item @@lisp
+Like @code{@@example}, but specifically for illustrating Lisp code. The
+text is printed in a fixed-width font, and indented but not filled.
 
 @item @@verbatim
 Mark a piece of text that is to be printed verbatim; no character
@@ -8076,49 +8077,43 @@ substitutions are made and all commands are ignored, until the next
 and not indented or filled.  Extra spaces and blank lines are
 significant, and tabs are expanded.
 
-@item @@smallexample
-Same as @code{@@example}, except that in @TeX{} this command typesets
-text in a smaller font size.
-
-@item @@lisp
-Like @code{@@example}, but specifically for illustrating Lisp code. The
-text is printed in a fixed-width font, and indented but not filled.
-
-@item @@smalllisp
-Is to @code{@@lisp} as @code{@@smallexample} is to @code{@@example}.
-
 @item @@display
 Display illustrative text.  The text is indented but not filled, and
 no font is selected (so, by default, the font is roman).
 
-@item @@smalldisplay
-Is to @code{@@display} as @code{@@smallexample} is to @code{@@example}.
-
 @item @@format
-Like @code{@@display} (the text is not filled and no font is selected),
-but the text is not indented.
+Like @code{@@display} (the text is not filled and no font is
+selected), but the text is not indented.
 
-@item @@smallformat
-Is to @code{@@format} as @code{@@smallexample} is to @code{@@example}.
+@item @@smallquotation
+@itemx @@smallexample
+@itemx @@smalllisp
+@itemx @@smalldisplay
+@itemx @@smallformat
+These @code{@@small...} commands are just like their non-small
+counterparts, except that they output text in a smaller font size,
+where possible.
+
+@item @@flushleft
+@itemx @@flushright
+Text is not filled, but is set flush with the left or right margin,
+respectively.
+
+@item @@raggedright
+Text is filled, but only justified on the left, leaving the right
+margin ragged.
+
+@item @@cartouche
+Highlight text, often an example or quotation, by drawing a box with
+rounded corners around it.
 @end table
 
 The @code{@@exdent} command is used within the above constructs to
 undo the indentation of a line.
 
-The @code{@@flushleft} and @code{@@flushright} commands are used to line
-up the left or right margins of unfilled text.
-
-The @code{@@raggedright} command fills text as usual, but only
-justifies it on the left, leaving the right margin ragged.
-
 The @code{@@noindent} command may be used after one of the above
-constructs to prevent the following text from being indented as a new
-paragraph.
-
-You can use the @code{@@cartouche} environment around one of the above
-constructs to highlight the example or quotation by drawing a box with
-rounded corners around it.  @xref{cartouche, , Drawing Cartouches Around
-Examples}.
+constructs (or anywhere) to prevent the following text from being
+indented as a new paragraph.
 
 
 @node quotation
@@ -8471,13 +8466,10 @@ consistently within a chapter.
 @cindex Display formatting
 @findex display
 
-The @code{@@display} command begins a kind of example, where each line
-of input produces a line of output, and the output is indented.  It is
-thus like the @code{@@example} command except that, in a printed
-manual, @code{@@display} does not select the fixed-width font.  In
-fact, it does not specify the font at all, so that the text appears in
-the same font it would have appeared in without the @code{@@display}
-command.
+The @code{@@display} command begins another kind of environment, where
+the font is left unchanged, not switched to typewriter as with
+@code{@@example}.  Each line of input still produces a line of output,
+and the output is still indented.
 
 @display
 This is an example of text written between an @code{@@display} command
@@ -8486,22 +8478,22 @@ indents the text, but does not fill it.
 @end display
 
 @findex smalldisplay
-Texinfo also provides a command @code{@@smalldisplay}, which is like
-@code{@@display} but uses a smaller font size.  @xref{small}.
+Texinfo also provides the environment @code{@@smalldisplay}, which is
+like @code{@@display} but uses a smaller font size.  @xref{small}.
 
-The @code{@@table} command (@pxref{table}) does not work inside
+The @code{@@table} command (@pxref{table}) is not supported inside
 @code{@@display}.  Since @code{@@display} is line-oriented, it doesn't
 make sense to use them together.  If you want to indent a table, try
-@code{@@quotation} (@pxref{quotation}).
+@code{@@quotation} (@pxref{quotation,,@code{@@quotation}}).
 
 
 @node format
 @section @code{@@format}: Examples Using the Full Line Width
 @findex format
 
-The @code{@@format} command is similar to @code{@@example} except
-that, in the printed manual, @code{@@format} does not select the
-fixed-width font and does not narrow the margins.
+The @code{@@format} command is similar to @code{@@display}, except it
+leaves the text unindented.  Like @code{@@display}, it does not select
+the fixed-width font.
 
 @format
 This is an example of text written between an @code{@@format} command
@@ -8511,8 +8503,8 @@ the @code{@@format} command does not fill the text.
 @end format
 
 @findex smallformat
-Texinfo also provides a command @code{@@smallformat}, which is like
-@code{@@format} but uses a smaller font size.  @xref{small}.
+Texinfo also provides the environment @code{@@smallformat}, which is
+like @code{@@format} but uses a smaller font size.  @xref{small}.
 
 
 @node exdent
@@ -8551,9 +8543,11 @@ The @@end example comes on the next line.
 @end group
 @end example
 
-In practice, the @code{@@exdent} command is rarely used.
-Usually, you un-indent text by ending the example and
-returning the page to its normal width.
+In practice, the @code{@@exdent} command is rarely used.  Usually, you
+un-indent text by ending the example and returning the page to its
+normal width.
+
+@code{@@exdent} has no effect in HTML output.
 
 
 @node flushleft & flushright
@@ -8752,15 +8746,15 @@ paragraphs (@pxref{Command Syntax}).
 
 
 @node cartouche
-@section @code{@@cartouche}: Rounded Rectangles Around Examples
+@section @code{@@cartouche}: Rounded Rectangles
+
 @findex cartouche
 @cindex Box with rounded corners
-@cindex Rounded rectangles, around examples
+@cindex Rounded rectangles, around text
 
 In a printed manual, the @code{@@cartouche} command draws a box with
 rounded corners around its contents.  In HTML, a normal rectangle is
-drawn (that's the best HTML can do).  @code{@@cartouche} has no effect
-in Info output.
+drawn.  @code{@@cartouche} has no effect in Info output.
 
 You can use this command to further highlight an example or quotation.
 For instance, you could write a manual in which one type of example is
@@ -8790,10 +8784,6 @@ Info, you'll see the @code{@@cartouche} had no effect):
 /usr/local/info
 @end example
 @end cartouche
-
-For proper output in HTML, it's necessary to put the
-@code{@@cartouche} around the @code{@@example}, and not the other way
-around.  This limitation of @command{makeinfo} may be removed one day.
 
 @code{@@cartouche} also implies @code{@@group} (@pxref{group}).
 
@@ -8923,8 +8913,8 @@ interline whitespace in either case.)  Except when the entries are
 very brief, these blank lines make the list look better.
 
 Here is an example of the use of @code{@@itemize}, followed by the
-output it produces.  @code{@@bullet} produces an @samp{*} in Info and a
-round dot in @TeX{}.
+output it produces.  @code{@@bullet} produces an @samp{*} in Info and
+a round dot in other output formats.
 
 @example
 @group
@@ -9371,9 +9361,9 @@ input lines in your source file as necessary.
 @cindex @code{<thead>} HTML/XML tag
 You can also use @code{@@headitem} instead of @code{@@item} to produce
 a @dfn{heading row}.  The @TeX{} output for such a row is in bold, and
-the HTML, Docbook, and XML output uses the @code{<thead>} tag.  In
-Info, the heading row is followed by a separator line made of dashes
-(@samp{-} characters).
+the HTML and Docbook output uses the @code{<thead>} tag.  In Info, the
+heading row is followed by a separator line made of dashes (@samp{-}
+characters).
 
 @findex headitemfont
 @cindex Font for multitable heading rows
@@ -9582,9 +9572,11 @@ example:
 @@end float
 @end example
 
-The text for @code{@@caption} and @code{@@shortcaption} may not
-contain comments (@code{@@c}), verbatim text (@code{@@verb}),
-environments such as @code{@@example}, or other complex constructs.
+The text for @code{@@shortcaption} may not contain comments
+(@code{@@c}), verbatim text (@code{@@verb}), environments such as
+@code{@@example}, footnotes (@code{@@footnote}) or other complex
+constructs.  The same constraints apply to @code{@@caption} unless
+there is a @code{@@shortcaption}.
 
 
 @node listoffloats
@@ -9679,21 +9671,38 @@ order).  It also tries uppercase versions of the extensions.  The PDF
 format does not support EPS images, so such must be converted first.
 
 @item
-@code{makeinfo} includes @file{@var{filename}.txt} verbatim for
-Info output (more or less as if it was an @code{@@example}).
+For Info, @code{makeinfo} includes @file{@var{filename}.txt} verbatim
+(more or less as if it were in @code{@@verbatim}).  The Info output
+may also include a reference to @file{@var{filename}.png} or
+@file{@var{filename}.jpg}.  (See below.)
 
 @item
-@code{makeinfo} uses the optional fifth argument @var{extension} to
-@code{@@image} for the filename extension, if it is specified.  Any
-leading period should be included in @var{extension}.  For example:
+For HTML, @code{makeinfo} outputs a reference to
+@file{@var{filename}.png}, @file{@var{filename}.jpg},
+@file{@var{filename}.jpeg} or @file{@var{filename}.gif} (in that
+order).  If none of those exist, it gives an error, and outputs a
+reference to @file{@var{filename}.jpg} anyway.
+
+@item
+@cindex SVG images, used in Docbook
+For DocBook, @code{makeinfo} outputs references to
+@file{@var{filename}.eps}, @file{@var{filename}.gif}
+@file{@var{filename}.jpg}, @file{@var{filename}.pdf},
+@file{@var{filename}.png} and @file{@var{filename}.svg}, for every
+file found.  Als, @file{@var{filename}.txt} is included verbatim, if
+present.
+
+@item
+For Info and HTML output, @code{makeinfo} uses the optional fifth
+argument @var{extension} to @code{@@image} for the filename extension,
+if it is specified and the file is found.  Any leading period should
+be included in @var{extension}.  For example:
 
 @pindex XPM image format
 @example
 @@image@{foo,,,,.xpm@}
 @end example
 
-@noindent
-will cause @code{makeinfo} to look for @file{foo.xpm} before any others.
 @end itemize
 
 If you want to install image files for use by Info readers too, we
@@ -9718,21 +9727,14 @@ For HTML output, @code{makeinfo} sets the @dfn{alt attribute} for
 inline images to the optional @var{alttext} (fourth) argument to
 @code{@@image}, if supplied.  If not supplied, @code{makeinfo} uses
 the full file name of the image being displayed.  The @var{alttext} is
-taken as Texinfo text, so special characters such as @samp{"} and
-@samp{<} and @samp{&} are escaped in the HTML and XML output; also,
-you can get an empty @code{alt} string with @code{@@-} (a command
-that produces no output; @pxref{- and hyphenation}).
+processed as Texinfo text, so special characters such as @samp{"} and
+@samp{<} and @samp{&} are escaped in the HTML output; also, you can
+get an empty @code{alt} string with @code{@@-} (a command that
+produces no output; @pxref{- and hyphenation}).
 
 For Info output, the @code{alt} string is also processed as Texinfo
 text and output.  In this case, @samp{\} is escaped as @samp{\\} and
 @samp{"} as @samp{\"}; no other escapes are done.
-
-@cindex PNG image format
-@cindex JPEG image format
-If you do not supply the optional @var{extension} (fifth) argument,
-@code{makeinfo} first tries @file{@var{filename}.png}; if that does
-not exist, it tries @file{@var{filename}.jpg}.  If that does not exist
-either, it complains.
 
 In Info output, @code{makeinfo} writes a reference to the binary image
 file (trying @var{filename} suffixed with @file{@var{extension}},
@@ -9772,11 +9774,11 @@ literally, which, although not pretty, should not be harmful.
 @cindex Distorting images
 The optional @var{width} and @var{height} arguments to the
 @code{@@image} command (see the previous section) specify the size to
-scale the image to.  They are ignored for Info output.  If neither is
-specified, the image is presented in its natural size (given in the
-file); if only one is specified, the other is scaled proportionately;
-and if both are specified, both are respected, thus possibly distorting
-the original image by changing its aspect ratio.
+which to scale the image.  They are only taken into account in @TeX{}.
+If neither is specified, the image is presented in its natural size
+(given in the file); if only one is specified, the other is scaled
+proportionately; and if both are specified, both are respected, thus
+likely distorting the original image by changing its aspect ratio.
 
 @cindex Dimensions and image sizes
 The @var{width} and @var{height} may be specified using any valid @TeX{}
@@ -9895,8 +9897,8 @@ bottom of the page, below a horizontal line.
 
 In Info, the reference mark for a footnote is a pair of parentheses
 with the footnote number between them, like this: @samp{(1)}.  The
-reference mark is followed by a cross reference link to the footnote's
-text.
+reference mark is followed by a cross reference link to the footnote
+text if footnotes are put in separate nodes (@pxref{Footnote Styles}).
 
 In the HTML output, footnote references are generally marked with a
 small, superscripted number which is rendered as a hypertext link to
@@ -21872,7 +21874,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.466 2012-09-04 00:27:31 karl Exp $
+$Id: texinfo.txi,v 1.467 2012-09-04 17:28:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
