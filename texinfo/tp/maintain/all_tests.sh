@@ -47,6 +47,6 @@ elif [ "$command" = 'texis' ]; then
     perl -w $file -c
   done
 else
-  echo "Unknown command"
+  echo "Unknown command (clean|generate|output|diff|texis)"
   exit 1
 fi

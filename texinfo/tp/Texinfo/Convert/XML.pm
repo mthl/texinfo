@@ -1109,6 +1109,8 @@ sub _convert($$;$)
                     if ($root->{'args'}->[-1]->{'contents'}
                         and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}
                         and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'});
+              } else { # bogus multitable
+                $result .= "\n";
               }
             } else {
               # get end of lines from @*table.

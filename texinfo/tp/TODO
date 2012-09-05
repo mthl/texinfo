@@ -5,8 +5,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-Document that makeinfo do not strip leading spaces from macro bodies.
-
 
 Bugs
 ====

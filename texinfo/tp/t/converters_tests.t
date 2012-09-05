@@ -530,6 +530,26 @@ sp after para
 @sp 1
 @end example
 '],
+['line_breaks',
+'@documentdescription 
+a document @* yes!
+@end documentdescription
+
+@settitle the manual @* new version
+@title AWK As A Major Systems Programming @* Language---Revisited
+
+@center in center @* line break
+
+@table @strong
+@item with break @* after
+@itemx withx breakx @* afterx
+Text
+@end table
+
+@quotation Q@* uotation
+T
+@end quotation
+'],
 ['documentencoding_utf8_and_insertions',
 '@documentencoding utf-8
 
@@ -815,9 +835,10 @@ my %info_tests = (
 );
 
 my %html_tests = (
-  'at_commands_in_refs' => 1,
+ 'at_commands_in_refs' => 1,
  'things_before_setfilename' => 1,
  'things_before_setfilename_no_element' => 1,
+ 'line_breaks' => 1,
 );
 
 foreach my $test (@test_cases) {
