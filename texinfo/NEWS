@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.214 2012-07-06 18:34:57 karl Exp $
+$Id: NEWS,v 1.215 2012-09-05 00:49:41 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -25,24 +25,24 @@ one of the relevant sections:
 
 * Language:
   . Texinfo commands are supported in node names.
+  . #line directives are recognized.
   . new commands @inlinefmt and @inlineraw for brace-delimited conditionals.
   . new command @part for a group of chapters.
   . new environments @raggedright and @smallquotation.
   . new commands @codequoteundirected and @codequotebacktick,
       for a better interface than the @set variables.
+  . new command @xrefautomaticsectiontitle to allow using section titles
+      in cross references by default, instead of node names.
+  . new commands for Texinfo special characters:
+    @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}.
   . new commands @deftypefnnewline to print return types on their own lines.
   . new command @headitemfont for the sake of template rows.
   . new command @urefbreakstyle to control breaking of @url/@uref in TeX.
-  . new command @xrefautomaticsectiontitle to allow using section titles
-      in cross references by default, instead of node names.
   . new diacritic command @ogonek.
   . new commands for Icelandic letters eth and thorn: @DH{} @dh{} @TH{} @th{}.
-  . new commands for Texinfo special characters:
-    @atchar{} @lbracechar{} @rbracechar{} @backslashchar{} @hashchar{}.
   . new command @errormsg to report an error.
   . five-argument xrefs can refer to a whole manual, by omitting the
       section name and either omitting the node name or using "Top".
-  . #line directives are recognized.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
 
 * texi2any is the new generic converter for Texinfo that can produce all
@@ -70,6 +70,7 @@ one of the relevant sections:
   . support some per-language hyphenation, when the underlying TeX
     engine does (for instance, etex/pdfetex from TeX Live 2008 or
     later).  Words with accented letters are still not handled properly.
+  . @title, text will be broken if needed, and @* can be used to override.
   . new Icelandic translation: txi-is.tex.
   . new Hungarian translation: txi-hu.tex.
   . official updates between full package releases available at
@@ -99,6 +100,9 @@ one of the relevant sections:
     are now possible.
 
 * Distribution:
+  . new file htmlxref.cnf is installed to support cross-manual
+    references; official updates between full package releases available at
+    http://ftpmirror.gnu.org/texinfo/htmlxref.cnf.
   . language support for no removed/renamed to nb, per Norwegian translators.
   . new translations: id it.
   . documentation license now GFDLv1.3 or later.

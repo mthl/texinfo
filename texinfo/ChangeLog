@@ -1,4 +1,13 @@
-2012-09-03  Patrice Dumas  <pertusus@free.fr>
+2012-09-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\raggedtitlesettings): new macro.
+	(\title): call it, and typeset the title inside a \vbox,
+	so a long title can be broken with @*
+	(\*): \unskip to remove preceding glue, since we're going
+	to break the line anyway.  Can make a difference especially inside
+	\title.
+
+2012-09-04  Patrice Dumas  <pertusus@free.fr>
         and Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Quotations and Examples): general updates.

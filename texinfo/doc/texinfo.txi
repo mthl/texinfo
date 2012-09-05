@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.467 2012-09-04 17:28:27 karl Exp $
+@c $Id: texinfo.txi,v 1.468 2012-09-05 00:49:41 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3441,21 +3441,19 @@ of @code{@@titlepage}.
 
 The @code{@@title} command produces a line in which the title is set
 flush to the left-hand side of the page in a larger than normal font.
-The title is underlined with a black rule.  Only a single line is
-allowed; the @code{@@*} command may not be used to break the title into
-two lines.  To handle very long titles, you may find it profitable to
-use both @code{@@title} and @code{@@titlefont}; see the final example in
-this section.
+The title is underlined with a black rule.  The title must be given on
+a single line in the source file; it will be broken into multiple
+lines of output is needed.  The @code{@@*} command may be used to
+specify the line breaks in long titles if the automatic breaks do not
+suit.
 
 The @code{@@subtitle} command sets subtitles in a normal-sized font
 flush to the right-hand side of the page.
 
 The @code{@@author} command sets the names of the author or authors in
 a middle-sized font flush to the left-hand side of the page on a line
-near the bottom of the title page.  The names are underlined with a
-black rule that is thinner than the rule that underlines the title.
-(The black rule only occurs if the @code{@@author} command line is
-followed by an @code{@@page} command line.)
+near the bottom of the title page.  The names are followed by a black
+rule that is thinner than the rule that underlines the title.
 
 There are two ways to use the @code{@@author} command: you can write
 the name or names on the remaining part of the line that starts with
@@ -3466,7 +3464,7 @@ an @code{@@author} command:
 @end example
 
 @noindent
-or you can write the names one above each other by using two (or more)
+or you can write the names one above each other by using multiple
 @code{@@author} commands:
 
 @example
@@ -3475,9 +3473,6 @@ or you can write the names one above each other by using two (or more)
 @@author John Doe
 @end group
 @end example
-
-@noindent
-(Only the bottom name is underlined with a black rule.)
 
 @need 950
 A template for this method looks like this:
@@ -3494,25 +3489,6 @@ A template for this method looks like this:
 @@end titlepage
 @end group
 @end example
-
-You may also combine the @code{@@titlefont} method described in the
-previous section and @code{@@title} method described in this one.  This
-may be useful if you have a very long title.  Here is a real-life example:
-
-@example
-@group
-@@titlepage
-@@titlefont@{GNU Software@}
-@@sp 1
-@@title for MS-Windows and MS-DOS
-@@subtitle Edition @@value@{e@} for Release @@value@{cde@}
-@@author by Daniel Hagerty, Melissa Weisshaus
-@@author and Eli Zaretskii
-@end group
-@end example
-
-@noindent
-(The use of @code{@@value} here is explained in @ref{value Example}.
 
 
 @node Copyright
@@ -21874,7 +21850,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.467 2012-09-04 17:28:27 karl Exp $
+$Id: texinfo.txi,v 1.468 2012-09-05 00:49:41 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
