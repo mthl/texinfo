@@ -2,6 +2,7 @@
         and Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: updates throughout.
+	Use @. where needed.
 
 2012-09-05  Karl Berry  <karl@gnu.org>
 

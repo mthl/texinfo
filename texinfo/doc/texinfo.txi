@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.469 2012-09-06 18:13:43 karl Exp $
+@c $Id: texinfo.txi,v 1.470 2012-09-06 18:20:47 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -355,7 +355,7 @@ Indicating Definitions, Commands, etc.
 * dfn::                         Specifying definitions.
 * abbr::                        Indicating abbreviations.
 * acronym::                     Indicating acronyms.
-* indicateurl::                 Indicating an example URL.
+* indicateurl::                 Indicating an example url.
 * email::                       Indicating an electronic mail address.
 
 Emphasizing Text
@@ -3140,11 +3140,11 @@ insert the text at appropriate points.
 @anchor{Software Copying Permissions}@c old node name
 This section is about the license of the Texinfo document.  If the
 document is a software manual, the software is typically under a
-different license---for GNU (and many other free software) packages,
+different license---for GNU and many other free software packages,
 software is usually released under the GNU GPL, and manuals are
-released under the GNU FDL.  It is helpful to state the license of the
-software of the manual, but actually giving the text of the software
-license is not necessary.
+released under the GNU FDL@.  It is helpful to state the license of
+the software of the manual, but giving the complete text of the
+software license is not necessarily required.
 
 @menu
 * copying::                     Declare the document's copying permissions.
@@ -6950,7 +6950,7 @@ not something else that should not be changed.
 * dfn::                         Specifying definitions.
 * abbr::                        Indicating abbreviations.
 * acronym::                     Indicating acronyms.
-* indicateurl::                 Indicating an example URL.
+* indicateurl::                 Indicating an example url.
 * email::                       Indicating an electronic mail address.
 @end menu
 
@@ -13785,7 +13785,7 @@ delimit Texinfo source to be included in HTML output only, and
 @findex xml
 Likewise, you can use @code{@@ifxml @dots{} @@end ifxml} to delimit
 Texinfo source to be included in XML output only, and @code{@@xml
-@dots{} @@end xml} for a region of raw XML.  Regions of raw text in
+@dots{} @@end xml} for a region of raw XML@.  Regions of raw text in
 other formats will also be present in the XML output, but with
 protection of XML characters and within corresponding elements.  For
 example:
@@ -15535,7 +15535,7 @@ information when debugging @file{texinfo.tex}.
 
 @opindex --translate-file@r{, for @command{texi2dvi}}
 Several options are provided for handling documents, written in
-character sets other than ASCII. The
+character sets other than ASCII@.  The
 @option{--translate-file=@var{file}} option instructs
 @command{texi2dvi} to translate input into internal @TeX{} character
 set using @dfn{translation file} @var{file} (@pxref{TCX files, TCX
@@ -17721,7 +17721,7 @@ otherwise use the node name or section name depending on
 Conceptually, the @command{texi2html} program is the parent of today's
 @command{texi2any} program.  @command{texi2html} was developed
 independently, originally by Lionel Cons in 1998; at the time,
-@command{makeinfo} could not generate HTML.  Many other people
+@command{makeinfo} could not generate HTML@.  Many other people
 contributed to @command{texi2html} over the years.
 
 The present @command{texi2any} uses little of the actual code of
@@ -20058,7 +20058,7 @@ and @code{@@end ifset} commands, and preventing
 @xref{set clear value, , @code{@@set} @code{@@clear} @code{@@value}}.
 
 @item @@click@{@}
-Represent a single ``click'' in a GUI.  Used within
+Represent a single ``click'' in a GUI@.  Used within
 @code{@@clicksequence}.  @xref{Click Sequences}.
 
 @item @@clicksequence@{@var{action} @@click@{@} @var{action}@}
@@ -21816,7 +21816,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.469 2012-09-06 18:13:43 karl Exp $
+$Id: texinfo.txi,v 1.470 2012-09-06 18:20:47 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
