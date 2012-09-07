@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.471 2012-09-07 16:24:55 karl Exp $
+@c $Id: texinfo.txi,v 1.472 2012-09-07 17:37:51 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1458,9 +1458,10 @@ tells @TeX{} to open auxiliary files.  @strong{All text before
 
 @item
 The @code{@@settitle} line specifies a title for the page headers (or
-footers) of the printed manual, and the default document description for
-the @samp{<head>} in HTML format.  Strictly speaking, @code{@@settitle}
-is optional---if you don't mind your document being titled `Untitled'.
+footers) of the printed manual, and the default title and document
+description for the @samp{<head>} in HTML.  Strictly speaking,
+@code{@@settitle} is optional---if you don't mind your document being
+titled `Untitled'.
 
 @item
 The @code{@@bye} line at the end of the file on a line of its own tells
@@ -3100,7 +3101,8 @@ more on headings for @TeX{}, see @ref{end titlepage}.
 @cindex @code{<title>} HTML tag
 In the HTML file produced by @command{makeinfo}, @var{title} serves as
 the document @samp{<title>}.  It also becomes the default document
-description in the @samp{<head>} part (@pxref{documentdescription}).
+description in the @samp{<head>} part
+(@pxref{documentdescription,,@code{@@documentdescription}}).
 
 When the title page is used in the output, the title in the
 @code{@@settitle} command does not affect the title as it appears on
@@ -3443,9 +3445,17 @@ The @code{@@title} command produces a line in which the title is set
 flush to the left-hand side of the page in a larger than normal font.
 The title is underlined with a black rule.  The title must be given on
 a single line in the source file; it will be broken into multiple
-lines of output is needed.  The @code{@@*} command may be used to
-specify the line breaks in long titles if the automatic breaks do not
-suit.
+lines of output is needed.
+
+For long titles, the @code{@@*} command may be used to specify the
+line breaks in long titles if the automatic breaks do not suit.  Such
+explicit line breaks are generally reflected in all output formats; if
+you only want to specify them for the printed output, use a
+conditional (@pxref{Conditionals}).  For example:
+
+@example
+@@title This Long Title@@inlinefmt@{tex,@@*@} Is Broken in @@TeX@{@}
+@end example
 
 The @code{@@subtitle} command sets subtitles in a normal-sized font
 flush to the right-hand side of the page.
@@ -20856,7 +20866,7 @@ command even if the @code{@@shortcontents} command is at the end.
 
 @item @@settitle @var{title}
 Specify the title for page headers in a printed manual, and the
-default document description for HTML @samp{<head>}.  @xref{settitle,,
+default document title for HTML @samp{<head>}.  @xref{settitle,,
 @code{@@settitle}}.
 
 @item @@shortcaption
@@ -21816,7 +21826,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.471 2012-09-07 16:24:55 karl Exp $
+$Id: texinfo.txi,v 1.472 2012-09-07 17:37:51 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

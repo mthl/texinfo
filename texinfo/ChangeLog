@@ -1,6 +1,9 @@
 2012-09-07  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.txi: "an @code{@@", not "a", ditto @samp.
+	* doc/texinfo.txi (title subtitle author): @* breaks in the title
+	will be respected in HTML unless conditionalized.
+
+	* doc/texinfo.txi: "an @code{@@", not "a" throughout; ditto @samp.
 
 2012-09-06  Patrice Dumas  <pertusus@free.fr>
         and Karl Berry  <karl@gnu.org>
