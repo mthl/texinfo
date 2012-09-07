@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.470 2012-09-06 18:20:47 karl Exp $
+@c $Id: texinfo.txi,v 1.471 2012-09-07 16:24:55 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3024,7 +3024,7 @@ anything else on the line.
 
 @cindex Ignored before @code{@@setfilename}
 @cindex @samp{\input} source line ignored
-When a @code{@@setfilename} line is present, the Texinfo processors
+When an @code{@@setfilename} line is present, the Texinfo processors
 ignore everything written before the @code{@@setfilename} line.  This
 is why the very first line of the file (the @code{\input} line) does
 not show up in the output.
@@ -3435,7 +3435,7 @@ needed to adjust vertical spacing.
 Write the @code{@@title}, @code{@@subtitle}, or @code{@@author}
 commands at the beginning of a line followed by the title, subtitle,
 or author.  The @code{@@author} command may be used for a quotation in
-a @code{@@quotation} block (@pxref{quotation,, @code{@@quotation}});
+an @code{@@quotation} block (@pxref{quotation,, @code{@@quotation}});
 except for that, it is an error to use any of these commands outside
 of @code{@@titlepage}.
 
@@ -9516,7 +9516,7 @@ The text for @code{@@shortcaption} may not contain comments
 (@code{@@c}), verbatim text (@code{@@verb}), environments such as
 @code{@@example}, footnotes (@code{@@footnote}) or other complex
 constructs.  The same constraints apply to @code{@@caption} unless
-there is a @code{@@shortcaption}.
+there is an @code{@@shortcaption}.
 
 
 @node listoffloats
@@ -14911,7 +14911,7 @@ don't want to rely on it, you can also use @code{@@set} and
 @@value@{hash@}line 1 "example.c"
 @end example
 
-Or, if suitable, a @code{@@verbatim} environment can be used instead
+Or, if suitable, an @code{@@verbatim} environment can be used instead
 of @code{@@example}.  As mentioned above, @code{#line}-recognition is
 disabled inside verbatim blocks.
 
@@ -15995,7 +15995,7 @@ subdirectory @file{web2c} of your @TeX{} installation.
 @node Overfull hboxes
 @section Overfull ``hboxes''
 @cindex Overfull @samp{hboxes}
-@cindex @samp{hboxes}, overfull
+@cindex @samp{hbox}, overfull
 @cindex Final output
 
 @TeX{} is sometimes unable to typeset a line without extending it into
@@ -16011,7 +16011,7 @@ Overfull @@hbox (20.76302pt too wide)
 @findex hbox
 @noindent
 (In @TeX{}, lines are in ``horizontal boxes'', hence the term, ``hbox''.
-@samp{@@hbox} is a @TeX{} primitive not needed in the Texinfo language.)
+@samp{@@hbox} is a @TeX{} primitive not used in the Texinfo language.)
 
 @TeX{} also provides the line number in the Texinfo source file and
 the text of the offending line, which is marked at all the places that
@@ -17605,8 +17605,8 @@ transformations are currently supported:
 @table @samp
 @item fill_gaps_in_sectioning
 Adds empty @code{@@unnumbered} in a tree to fill gaps in sectioning.
-For example, an @code{@@unnumberedsec} will be inserted if a
-@code{@@chapter} is followed by a @code{@@subsection}.
+For example, an @code{@@unnumberedsec} will be inserted if an
+@code{@@chapter} is followed by an @code{@@subsection}.
 
 @item simple_menu
 Does the same as @code{SIMPLE_MENU}: use a simple preformatted style for the 
@@ -19599,7 +19599,7 @@ Init files are written in Perl, and by convention have extension
 @cindex Perl namespaces, for init files
 
 @c when colons are supported ... vindex Texinfo::Config @r{namespace}
-Initialization file are loaded from the main program via a
+Initialization file are loaded from the main program via an
 @code{require} call in the @code{Texinfo::Config} namespace.  This
 means that the namespace of the main program and the namespace of
 initialization files are distinct, which minimizes the chance of a
@@ -19817,7 +19817,7 @@ This approach is admittedly a bit complicated.  Its usefulness is that
 it supports having translations available in different encodings for
 encodings which can be covered by @@-commands, and also specifying how
 the formatting for some commands is done, independently of the output
-format---yet still be language dependent.  For example, a
+format---yet still be language dependent.  For example, an
 @samp{@@pxref} translation string may be:
 
 @example
@@ -21816,7 +21816,7 @@ Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
 Revision Control System}) or other version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.470 2012-09-06 18:20:47 karl Exp $
+$Id: texinfo.txi,v 1.471 2012-09-07 16:24:55 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
