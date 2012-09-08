@@ -648,8 +648,8 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
   makeinfo --html foo.texi               write HTML to \@setfilename
   makeinfo --xml foo.texi                write Texinfo XML to \@setfilename
   makeinfo --docbook foo.texi            write Docbook XML to \@setfilename
-  makeinfo --no-headers foo.texi         write plain text to standard output
-  makeinfo --dvi foo.texi                write PDF using texi2dvi
+  makeinfo --plaintext foo.texi          write plain text to standard output
+  makeinfo --pdf foo.texi                write PDF using texi2dvi
 
   makeinfo --html --no-headers foo.texi  write html without node lines, menus
   makeinfo --number-sections foo.texi    write Info with numbered sections
