@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.472 2012-09-07 17:37:51 karl Exp $
+@c $Id: texinfo.txi,v 1.473 2012-09-08 16:11:29 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19,8 +19,7 @@
 @include version.texi
 @settitle GNU Texinfo @value{VERSION}
 
-@c Define new indices for Texinfo commands and options.
-@defcodeindex txicmd
+@c Define a new index for command-line options.
 @defcodeindex op
 
 @c Put everything except function (command, in this case) names in one
@@ -6426,7 +6425,7 @@ whole.  See the next section.
 @node Top Node Naming
 @section Naming a `Top' Node
 @cindex Naming a `Top' Node in references
-@cindex @samp{@r{Top}} node naming for references
+@cindex `Top' node naming for references
 
 @cindex Manual, referring to as a whole
 @cindex Referring to an entire manual
@@ -6434,7 +6433,7 @@ whole.  See the next section.
 Ordinarily, you must always name a node in a cross reference.
 However, it's not unusual to want to refer to another manual as a
 whole, rather than a particular section within it.  In this case,
-giving any section name is just a distraction.
+giving any section name is an unnecessary distraction.
 
 So, with cross references to other manuals (@pxref{Four and Five
 Arguments}), if the first argument is either @samp{Top} (capitalized
@@ -6446,8 +6445,7 @@ includes @samp{Top} if it was given.)  For example,
 @@xref@{Top,,, make, The GNU Make Manual@}.
 @end example
 
-@noindent
-produces
+@noindent produces
 
 @example
 @group
@@ -6455,8 +6453,7 @@ produces
 @end group
 @end example
 
-@noindent
-and
+@noindent and
 
 @quotation
 See @cite{The GNU Make Manual}.
@@ -6466,13 +6463,13 @@ See @cite{The GNU Make Manual}.
 Info readers will go to the Top node of the manual whether
 or not the `Top' node is explicitly specified.
 
-It's also acceptable (and is historical practice) to refer to a whole
+It's also possible (and is historical practice) to refer to a whole
 manual by specifying the `Top' node and an appropriate entry for the
 third argument to the @code{@@xref} command.  Using this idiom, to
 make a cross reference to @cite{The GNU Make Manual}, you would write:
 
 @example
-@@xref@{Top, , Overview, make, The GNU Make Manual@}.
+@@xref@{Top,, Overview, make, The GNU Make Manual@}.
 @end example
 
 @noindent
@@ -6493,9 +6490,11 @@ See section ``Overview'' in @cite{The GNU Make Manual}.
 in a printed manual.
 
 In this example, @samp{Top} is the name of the first node, and
-@samp{Overview} is the name of the first section of the manual.
-(There is no widely-used convention for naming the first section in a
-printed manual, this is just what the Make manual happens to use.)
+@samp{Overview} is the name of the first section of the manual.  There
+is no widely-used convention for naming the first section in a printed
+manual, this is just what the Make manual happens to use.  This
+arbitrariness of the first name is a principal reason why omitting the
+third argument in whole-manual cross references is preferable.
 
 
 @node ref
@@ -6795,7 +6794,7 @@ line breaking within displayed urls.  If you need to allow breaks at
 other characters you can insert @code{@@/} as needed (@pxref{Line
 Breaks}).
 
-@txicmdindex @@urefbreakstyle
+@findex urefbreakstyle
 By default, any such breaks at special characters will occur after the
 character.  Some people prefer such breaks to happen after the special
 character.  This can be controlled with the @code{@@urefbreakstyle}
@@ -13368,7 +13367,7 @@ multilingual document, the intent is to be able to use this command
 multiple times, to declare each language change.  If the command is
 not used at all, the default is @code{en_US} for US English.
 
-As with GNU Gettext (@pxref{Top,,,gettext, Gettext}), if the country
+As with GNU Gettext (@pxref{Top,,, gettext, Gettext}), if the country
 code is omitted, the main dialect is assumed where possible.  For
 example, @code{de} is equivalent to @code{de_DE} (German as spoken in
 Germany).
@@ -14095,8 +14094,7 @@ places you need to change when you record an update to a manual.
 @xref{GNU Sample Texts}, for the full text of an example of using this
 to work with Automake distributions.
 
-This example is adapted from @ref{Top,, Overview, make, The GNU Make
-Manual}.
+This example is adapted from @ref{Top,,, make, The GNU Make Manual}.
 
 @enumerate
 @item
@@ -14853,8 +14851,8 @@ Texinfo macros (and its other text substitution facilities) work fine
 in straightforward cases.  If your document needs unusually complex
 processing, however, their fragility and limitations can be a problem.
 In this case, you may want to use a different macro processor
-altogether, such as M4 (@pxref{Top,, Preliminaries, m4, M4}) or CPP
-(@pxref{Top,, Overview, cpp, The C Preprocessor}).
+altogether, such as M4 (@pxref{Top,,, m4, M4}) or CPP (@pxref{Top,,,
+cpp, The C Preprocessor}).
 
 With one exception, Texinfo does not need to know whether its input is
 ``original'' source or preprocessed from some other source file.
@@ -15506,7 +15504,7 @@ instead of DVI (@pxref{PDF Output}), by running @command{pdftex}
 instead of @command{tex}.  Alternatively, the command
 @command{texi2pdf} is an abbreviation for running @samp{texi2dvi
 --pdf}.  The command @command{pdftexi2dvi} is also supported as a
-convenience to AUC-@TeX{} users (@pxref{,,,auctex, AUC-@TeX{}}, since
+convenience to AUC-@TeX{} users (@pxref{Top,,, auctex, AUC-@TeX{}}, since
 that program merely prepends @samp{pdf} to DVI producing tools to have
 PDF producing tools.
 
@@ -15523,7 +15521,7 @@ typesetting better than @command{pdftex}.
 @pindex dvips
 With the @option{--ps} option, @command{texi2dvi} produces PostScript
 instead of DVI, by running @command{tex} and then @command{dvips}
-(@pxref{,,,dvips, Dvips}).  (Or the value of the @env{DVIPS}
+(@pxref{Top,,, dvips, Dvips}).  (Or the value of the @env{DVIPS}
 environment variable, if set.)
 
 @cindex @LaTeX{}, processing with @command{texi2dvi}
@@ -18129,8 +18127,8 @@ validate the structure of the nodes, see @ref{Using Info-validate}.
 
 Info files are usually kept in the @file{info} directory.  You can
 read Info files using the standalone Info program or the Info reader
-built into Emacs.  (@xref{Top,, Getting Started, info, Info}, for an
-introduction to Info.)
+built into Emacs.  (@xref{Top,,, info, Info}, for an introduction to
+Info.)
 
 @menu
 * Directory File::              The top level menu for all Info files.
@@ -19043,7 +19041,7 @@ mapped to the file @file{index.html}, to match web server software.
 However, the HTML @emph{target} is @samp{Top}.  Thus (in the split case):
 
 @example
-@@xref@{Top, Introduction,, emacs, The GNU Emacs Manual@}.
+@@xref@{Top,,, emacs, The GNU Emacs Manual@}.
 @result{} <a href="emacs/index.html#Top">
 @end example
 
@@ -21821,12 +21819,12 @@ Here are some notes on the example:
 @cindex RCS $Id
 @cindex Documentation identification
 @cindex Identification of documentation
-The @samp{$Id:} comment is for the CVS (@pxref{Top,, Overview, cvs,
-Concurrent Versions System}) or RCS (@pxref{Top,, Overview, rcs,
-Revision Control System}) or other version control systems, which
-expand it into a string such as:
+The @samp{$Id:} comment is for the CVS (@pxref{Top,,, cvs, Concurrent
+Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
+or other version control systems, which expand it into a string such
+as:
 @example
-$Id: texinfo.txi,v 1.472 2012-09-07 17:37:51 karl Exp $
+$Id: texinfo.txi,v 1.473 2012-09-08 16:11:29 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21843,11 +21841,11 @@ plain text output, where it's not clear what should be done.
 @vindex VERSION @r{Automake variable}
 @pindex time-stamp.el
 The @file{version.texi} in the @code{@@include} command is maintained
-automatically by Automake (@pxref{Top,, Introduction, automake, GNU
-Automake}).  It sets the @samp{VERSION} and @samp{UPDATED} values used
-elsewhere.  If your distribution doesn't use Automake, but you do use
-Emacs, you may find the time-stamp.el package helpful (@pxref{Time
-Stamps,,, emacs, The GNU Emacs Manual}).
+automatically by Automake (@pxref{Top,,, automake, GNU Automake}).  It
+sets the @samp{VERSION} and @samp{UPDATED} values used elsewhere.  If
+your distribution doesn't use Automake, but you do use Emacs, you may
+find the time-stamp.el package helpful (@pxref{Time Stamps,,, emacs,
+The GNU Emacs Manual}).
 
 @item
 The @code{@@syncodeindex} command reflects the recommendation to use

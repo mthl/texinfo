@@ -1,3 +1,10 @@
+2012-09-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (txicmd): skip putting @-commands in a new
+	index, just keep using fn and put up with the @def... example
+	identifiers showing up there.
+	(throughout): consistently use whole-manual cross references.
+
 2012-09-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (title subtitle author): @* breaks in the title
