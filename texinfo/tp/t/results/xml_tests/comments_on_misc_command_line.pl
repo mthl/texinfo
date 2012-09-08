@@ -21,7 +21,7 @@ $result_trees{'comments_on_misc_command_line'} = {
             },
             {
               'parent' => {},
-              'text' => 'setfilename name'
+              'text' => 'comments_on_misc_command_line.info'
             },
             {
               'parent' => {},
@@ -48,7 +48,7 @@ $result_trees{'comments_on_misc_command_line'} = {
       'cmdname' => 'setfilename',
       'extra' => {
         'spaces_after_command' => {},
-        'text_arg' => 'setfilename name'
+        'text_arg' => 'comments_on_misc_command_line.info'
       },
       'line_nr' => {
         'file_name' => '',
@@ -374,7 +374,7 @@ $result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'parent'} = $resu
 $result_trees{'comments_on_misc_command_line'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[13];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[13]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 
-$result_texis{'comments_on_misc_command_line'} = '@setfilename  setfilename name  @c setfilename (text)
+$result_texis{'comments_on_misc_command_line'} = '@setfilename  comments_on_misc_command_line.info  @c setfilename (text)
 @definfoenclose phoo,;,:  @c definfoenclose (number)
 @firstparagraphindent none @c c (number)
 @raisesections @c raisesections (skipline)
@@ -395,7 +395,7 @@ $result_errors{'comments_on_misc_command_line'} = [];
 
 
 
-$result_converted{'xml'}->{'comments_on_misc_command_line'} = '<setfilename file="setfilename name" spaces="  ">setfilename name  </setfilename><!-- c setfilename (text) -->
+$result_converted{'xml'}->{'comments_on_misc_command_line'} = '<setfilename file="comments_on_misc_command_line.info" spaces="  ">comments_on_misc_command_line.info  </setfilename><!-- c setfilename (text) -->
 <definfoenclose command="phoo" open=";" close=":" line=" phoo,;,:  "></definfoenclose><!-- c definfoenclose (number) -->
 <firstparagraphindent value="none" line=" none "></firstparagraphindent><!-- c c (number) -->
 <raisesections line=" @c raisesections (skipline)"></raisesections>

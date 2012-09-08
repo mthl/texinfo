@@ -741,7 +741,6 @@ Various deff lines
 
 </macro>
 
-
 <copying endspaces=" ">
 <para>In copying
 </para>
@@ -760,10 +759,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
 <para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
-<cindex index="cp"><indexterm index="cp">&textndash;option</indexterm></cindex>
-<cindex index="cp"><indexterm index="cp">&textldquo;</indexterm></cindex>
-<findex index="fn"><indexterm index="fn">&textldquo;</indexterm></findex>
-<findex index="fn"><indexterm index="fn">&textndash;foption</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp">&textndash;option</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">&textldquo;</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn">&textldquo;</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn">&textndash;foption</indexterm></findex>
 
 <para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
@@ -1026,7 +1025,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize spaces=" " endspaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
-<beforefirstitem><cindex index="cp"><indexterm index="cp">index entry within itemize</indexterm></cindex>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp">index entry within itemize</indexterm></cindex>
 </beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
 </para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
@@ -1040,7 +1039,7 @@ After clickstyle &result;
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
 </para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
-<cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
@@ -1090,10 +1089,10 @@ After clickstyle &result;
 </para></definitionitem></deffn>
  
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<cindex index="cp"><indexterm index="cp">index entry within deffn</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry within deffn</indexterm></cindex>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
@@ -1105,7 +1104,7 @@ After clickstyle &result;
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on" spaces=" "></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
@@ -1278,7 +1277,7 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 
 <ftable commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
 <itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
@@ -1306,7 +1305,6 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 <verbatim xml:space="preserve">
 in verbatim ''
 </verbatim>
-
 
 <para> xml para </para> ''
 
@@ -1362,10 +1360,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
 <para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
-<cindex index="cp"><indexterm index="cp">&textndash;option</indexterm></cindex>
-<cindex index="cp"><indexterm index="cp">&textldquo;</indexterm></cindex>
-<findex index="fn"><indexterm index="fn">&textldquo;</indexterm></findex>
-<findex index="fn"><indexterm index="fn">&textndash;foption</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp">&textndash;option</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">&textldquo;</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn">&textldquo;</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn">&textndash;foption</indexterm></findex>
 
 <para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
@@ -1628,7 +1626,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize spaces=" " endspaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
-<beforefirstitem><cindex index="cp"><indexterm index="cp">index entry within itemize</indexterm></cindex>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp">index entry within itemize</indexterm></cindex>
 </beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
 </para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
@@ -1642,7 +1640,7 @@ After clickstyle &result;
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
 </para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
-<cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
@@ -1692,10 +1690,10 @@ After clickstyle &result;
 </para></definitionitem></deffn>
  
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<cindex index="cp"><indexterm index="cp">index entry within deffn</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry within deffn</indexterm></cindex>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
@@ -1707,7 +1705,7 @@ After clickstyle &result;
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on" spaces=" "></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
@@ -1880,7 +1878,7 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 
 <ftable commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
 <itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
@@ -1908,7 +1906,6 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 <verbatim xml:space="preserve">
 in verbatim ''
 </verbatim>
-
 
 <para> xml para </para> ''
 
@@ -1964,10 +1961,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 </para>
 <para>&textlsquo;<w></w>&textlsquo;simple-double-<w></w>-three&textmdash;four&textmdash;-&textrsquo;<w></w>&textrsquo;&linebreak;
 </para>
-<cindex index="cp"><indexterm index="cp">&textndash;option</indexterm></cindex>
-<cindex index="cp"><indexterm index="cp">&textldquo;</indexterm></cindex>
-<findex index="fn"><indexterm index="fn">&textldquo;</indexterm></findex>
-<findex index="fn"><indexterm index="fn">&textndash;foption</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp">&textndash;option</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">&textldquo;</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn">&textldquo;</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn">&textndash;foption</indexterm></findex>
 
 <para>&arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
@@ -2230,7 +2227,7 @@ After clickstyle &result;
 </para></listitem></itemize>
 
 <itemize spaces=" " endspaces=" "><itemprepend>&bullet; a&textndash;n itemize line</itemprepend>
-<beforefirstitem><cindex index="cp"><indexterm index="cp">index entry within itemize</indexterm></cindex>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp">index entry within itemize</indexterm></cindex>
 </beforefirstitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 1
 </para></listitem><listitem spaces=" "><prepend>&bullet; a&textndash;n itemize line</prepend><para>i&textndash;tem 2
 </para></listitem></itemize>
@@ -2244,7 +2241,7 @@ After clickstyle &result;
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
 </para></entry></row><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item 2 </para></entry><entry command="tab" spaces=" "><para>multitable tab 2
-<cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </para></entry></row><row><entry command="item" spaces=" "><para>lone mu&textndash;ltitable item
 </para></entry></row></tbody></multitable>
 
@@ -2294,10 +2291,10 @@ After clickstyle &result;
 </para></definitionitem></deffn>
  
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<cindex index="cp"><indexterm index="cp">index entry within deffn</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry within deffn</indexterm></cindex>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
@@ -2309,7 +2306,7 @@ After clickstyle &result;
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on" spaces=" "></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <!-- c comment -->
 <deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
@@ -2482,7 +2479,7 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 
 <ftable commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
 <itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></ftable>
@@ -2510,7 +2507,6 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 <verbatim xml:space="preserve">
 in verbatim ''
 </verbatim>
-
 
 <para> xml para </para> ''
 
@@ -2560,10 +2556,10 @@ kbd: <kbd>``simple-double--three---four----''</kbd> &linebreak;
 
 `<w></w>`simple-double-<w></w>-three---four----'<w></w>'&linebreak;
 
-<cindex index="cp"><indexterm index="cp">&textndash;option</indexterm></cindex>
-<cindex index="cp"><indexterm index="cp">&textldquo;</indexterm></cindex>
-<findex index="fn"><indexterm index="fn">&textldquo;</indexterm></findex>
-<findex index="fn"><indexterm index="fn">&textndash;foption</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp">&textndash;option</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">&textldquo;</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn">&textldquo;</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn">&textndash;foption</indexterm></findex>
 
 &arobase;&quot;u <accent type="uml" bracketed="off">u</accent> 
 &arobase;&quot;&lbrace;U&rbrace; <accent type="uml">U</accent> 
@@ -2826,7 +2822,7 @@ After clickstyle &result;
 </pre></listitem></itemize>
 <pre xml:space="preserve">
 </pre><itemize spaces=" " endspaces=" "><itemprepend>&bullet; a--n itemize line</itemprepend>
-<beforefirstitem><pre xml:space="preserve"><cindex index="cp"><indexterm index="cp">index entry within itemize</indexterm></cindex>
+<beforefirstitem><pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp">index entry within itemize</indexterm></cindex>
 </pre></beforefirstitem><listitem spaces=" "><prepend>&bullet; a--n itemize line</prepend><pre xml:space="preserve">i--tem 1
 </pre></listitem><listitem spaces=" "><prepend>&bullet; a--n itemize line</prepend><pre xml:space="preserve">i--tem 2
 </pre></listitem></itemize>
@@ -2840,7 +2836,7 @@ After clickstyle &result;
 </pre></entry></row></thead><tbody><row><entry command="item" spaces=" "><pre xml:space="preserve">mu--ltitable item </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">multitable tab
 <!-- c comment in multitable -->
 </pre></entry></row><row><entry command="item" spaces=" "><pre xml:space="preserve">mu--ltitable item 2 </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">multitable tab 2
-<cindex index="cp"><indexterm index="cp">index entry within multitable</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry within multitable</indexterm></cindex>
 </pre></entry></row><row><entry command="item" spaces=" "><pre xml:space="preserve">lone mu--ltitable item
 </pre></entry></row></tbody></multitable>
 <pre xml:space="preserve">
@@ -2890,10 +2886,10 @@ After clickstyle &result;
 </pre></definitionitem></deffn>
 <pre xml:space="preserve"> 
 </pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
-<pre xml:space="preserve"><cindex index="cp"><indexterm index="cp">index entry within deffn</indexterm></cindex>
+<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp">index entry within deffn</indexterm></cindex>
 </pre><deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
@@ -2905,7 +2901,7 @@ After clickstyle &result;
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">bidule machin</indexterm><defcategory bracketed="on"></defcategory> <deffunction bracketed="on">bidule machin</deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">machin</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>machin</deffunction></definitionterm></deffnx>
-<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on"></deffunction></definitionterm></deffnx>
+<deffnx><definitionterm><defcategory bracketed="on">truc</defcategory> <deffunction bracketed="on" spaces=" "></deffunction></definitionterm></deffnx>
 <deffnx><definitionterm><indexterm index="fn">followed</indexterm><defcategory bracketed="on">truc</defcategory> <deffunction>followed</deffunction> <defparam>by</defparam> <defparam>a</defparam> <defparam>comment</defparam></definitionterm></deffnx>
 <pre xml:space="preserve"><!-- c comment -->
 </pre><deffnx><definitionterm><defcategory bracketed="on">truc</defcategory></definitionterm></deffnx>
@@ -3078,7 +3074,7 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 <pre xml:space="preserve">
 </pre><ftable commandarg="asis" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<pre xml:space="preserve"><cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
+<pre xml:space="preserve"><cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
 </pre><itemx spaces=" "><itemformat command="asis"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
 </tableterm><tableitem><pre xml:space="preserve">l--ine
 </pre></tableitem></tableentry></ftable>
@@ -3106,7 +3102,6 @@ ref</inforefrefname><inforefinfoname spaces=" ">a comma&comma; in file</inforefi
 </pre><verbatim xml:space="preserve">
 in verbatim ''
 </verbatim>
-
 <pre xml:space="preserve">
 <para> xml para </para> ''
 
@@ -3139,16 +3134,16 @@ docbook ''
 
 </pre></example>
 
-<cindex index="cp"><indexterm index="cp">t&textndash;ruc</indexterm></cindex>
-<cindex index="cp"><indexterm index="cp">T&textndash;ruc</indexterm></cindex>
-<cindex index="cp"><indexterm index="cp">.</indexterm></cindex>
-<cindex index="cp"><indexterm index="cp">?</indexterm></cindex>
-<cindex index="cp"><indexterm index="cp">a</indexterm></cindex>
-<findex index="fn"><indexterm index="fn">t&textndash;ruc</indexterm></findex>
-<findex index="fn"><indexterm index="fn">T&textndash;ruc</indexterm></findex>
-<findex index="fn"><indexterm index="fn">.</indexterm></findex>
-<findex index="fn"><indexterm index="fn">?</indexterm></findex>
-<findex index="fn"><indexterm index="fn">a</indexterm></findex>
+<cindex index="cp" spaces=" "><indexterm index="cp">t&textndash;ruc</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">T&textndash;ruc</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">.</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">?</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">a</indexterm></cindex>
+<findex index="fn" spaces=" "><indexterm index="fn">t&textndash;ruc</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn">T&textndash;ruc</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn">.</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn">?</indexterm></findex>
+<findex index="fn" spaces=" "><indexterm index="fn">a</indexterm></findex>
 
 
 <para>cp

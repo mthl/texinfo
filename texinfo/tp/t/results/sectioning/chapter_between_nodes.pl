@@ -898,7 +898,7 @@ $result_converted{'xml'}->{'chapter_between_nodes'} = '
 
 <para>In chapter
 </para>
-<node name="section-node" spaces=" "><nodename>section node</nodename><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
+<node name="section-node" spaces=" "><nodename>section node</nodename><nodenext></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
 <section spaces=" "><sectiontitle>section</sectiontitle>
 
 <para>section.

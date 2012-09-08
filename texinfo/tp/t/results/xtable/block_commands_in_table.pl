@@ -2273,7 +2273,7 @@ end example.
 <vtable commandarg="strong" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="strong"><indexterm index="vr">item before ignored lines</indexterm>item before ignored lines</itemformat></item>
 <!-- c comment -->
-<vindex index="vr"><indexterm index="vr">vindex</indexterm></vindex>
+<vindex index="vr" spaces=" "><indexterm index="vr">vindex</indexterm></vindex>
 <itemx spaces=" "><itemformat command="strong"><indexterm index="vr">itemx now</indexterm>itemx now</itemformat></itemx>
 </tableterm><tableitem>
 <para>Description

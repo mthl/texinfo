@@ -980,7 +980,7 @@ $result_converted{'xml'}->{'explicit_node_directions'} = '<node name="Top" space
 
 <para>second node
 </para>
-<node name="third-node" spaces=" "><nodename>third node</nodename><nodeprev>second node</nodeprev><nodeup>Top</nodeup></node>
+<node name="third-node" spaces=" "><nodename>third node</nodename><nodenext></nodenext><nodeprev>second node</nodeprev><nodeup>Top</nodeup></node>
 ';
 
 1;

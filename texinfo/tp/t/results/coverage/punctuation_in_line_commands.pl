@@ -1603,7 +1603,7 @@ $result_converted{'xml'}->{'punctuation_in_line_commands'} = '
 
 <listoffloats type="float-type_0021-After-punc" spaces=" ">float type! After punc</listoffloats>
 
-<cindex index="cp"><indexterm index="cp">index! After punc</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index! After punc</indexterm></cindex>
 
 <heading spaces=" ">heading! After punc</heading>
 

@@ -1077,7 +1077,6 @@ Text.
 </pre><verbatim xml:space="preserve">
 
 </verbatim>
-
 </menudescription></menuentry></menu>
 </top>
 ';

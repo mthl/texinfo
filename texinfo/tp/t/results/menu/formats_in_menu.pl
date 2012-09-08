@@ -1230,7 +1230,6 @@ $result_converted{'xml'}->{'formats_in_menu'} = '<node name="Top" spaces=" "><no
 some @ verb{x atim
 * texinfo:: in @ verbatim
 </verbatim>
-
 <pre xml:space="preserve"></pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">(manual2)</menunode><menudescription><pre xml:space="preserve">%
 <html endspaces=" ">
 

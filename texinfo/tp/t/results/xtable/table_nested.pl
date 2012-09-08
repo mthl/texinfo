@@ -3405,7 +3405,6 @@ Text without blank line 2
 After table.
 </macro>
 
-
 <para>Quotation
 </para><quotation endspaces=" ">
 <vtable commandarg="asis" spaces=" " endspaces=" ">

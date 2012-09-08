@@ -2036,6 +2036,13 @@ sub _abort_empty_line($$;$)
     print STDERR "ABORT EMPTY additional text |$additional_text|, current |$current->{'contents'}->[-1]->{'text'}|\n" if ($self->{'DEBUG'});
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
+      if ($current->{'extra'} 
+          and $current->{'extra'}->{'spaces_before_argument'}
+          and $current->{'extra'}->{'spaces_before_argument'} 
+                eq $current->{'contents'}->[-1]) {
+        delete ($current->{'extra'}->{'spaces_before_argument'});
+        delete ($current->{'extra'}) if !(keys(%{$current->{'extra'}}));
+      }
       pop @{$current->{'contents'}} 
     } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
       # exactly the same condition than to begin a paragraph
@@ -2251,9 +2258,14 @@ sub _next_bracketed_or_word($$)
     #print STDERR "Return bracketed\n";
     my $bracketed = shift @{$contents};
     $self->_isolate_last_space($bracketed, 'empty_space_at_end_def_bracketed');
-    return ($spaces, { 'contents' => $bracketed->{'contents'},
-                       'parent' => $bracketed->{'parent'},
-                       'type' => 'bracketed_def_content', });
+    my $bracketed_def_content = { 'contents' => $bracketed->{'contents'},
+                                  'parent' => $bracketed->{'parent'},
+                                  'type' => 'bracketed_def_content', };
+    if ($bracketed->{'extra'} and $bracketed->{'extra'}->{'spaces_before_argument'}) {
+      $bracketed_def_content->{'extra'}->{'spaces_before_argument'}
+        = $bracketed->{'extra'}->{'spaces_before_argument'};
+    }
+    return ($spaces, $bracketed_def_content);
   } elsif ($contents->[0]->{'cmdname'}) {
     #print STDERR "Return command $contents->[0]->{'cmdname'}\n";
     return ($spaces, shift @{$contents});
@@ -4724,6 +4736,8 @@ sub _parse_texi($;$)
                 {'type' => 'empty_spaces_before_argument',
                  'text' => '' };
             print STDERR "BRACKETED in def/multitable\n" if ($self->{'DEBUG'});
+            $current->{'extra'}->{'spaces_before_argument'}
+               = $current->{'contents'}->[-1];
 
           # lone braces accepted right in a rawpreformatted
           } elsif ($current->{'type'} 

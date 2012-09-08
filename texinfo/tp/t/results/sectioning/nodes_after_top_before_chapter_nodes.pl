@@ -1072,7 +1072,7 @@ $result_converted{'xml'}->{'nodes_after_top_before_chapter_nodes'} = '<node name
 
 <para>second node
 </para>
-<node name="third-node" spaces=" "><nodename>third node</nodename><nodeprev>second node</nodeprev><nodeup>Top</nodeup></node>
+<node name="third-node" spaces=" "><nodename>third node</nodename><nodenext></nodenext><nodeprev>second node</nodeprev><nodeup>Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>chapter</sectiontitle>
 </chapter>
 ';

@@ -1041,7 +1041,7 @@ $result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle spaces=
 
 <frenchspacing value="on" line=" on "></frenchspacing><!-- c comment frenchspacing -->
 
-<cindex index="cp"><indexterm index="cp">index entry <spacecmd type="spc"/></indexterm></cindex><!-- c index entry -->
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry <spacecmd type="spc"/></indexterm></cindex><!-- c index entry -->
 
 <heading spaces=" ">Heading <spacecmd type="spc"/>    </heading><!-- c heading -->
 

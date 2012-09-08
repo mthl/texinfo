@@ -1914,7 +1914,7 @@ $result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg
 
 <ftable commandarg="var" spaces=" " endspaces=" ">
 <tableentry><tableterm><item spaces=" "><itemformat command="var"><indexterm index="fn">a</indexterm>a</itemformat></item>
-<cindex index="cp"><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp">index entry between item and itemx</indexterm></cindex>
 <!-- c and a comment -->
 <!-- comment and another comment -->
 <itemx spaces=" "><itemformat command="var"><indexterm index="fn">b</indexterm>b</itemformat></itemx>
@@ -1929,14 +1929,14 @@ $result_converted{'xml'}->{'inter_item_commands_in_table'} = '<vtable commandarg
 </tableitem></tableentry></ftable>
 
 <table commandarg="code" spaces=" " endspaces=" ">
-<beforefirstitem><cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp">cindex in table</indexterm></cindex>
 <!-- c comment in table -->
 </beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="code">abb</itemformat></item>
 </tableterm><tableitem><para>l&textndash;ine
 </para></tableitem></tableentry></table>
 
 <table commandarg="code" spaces=" " endspaces=" ">
-<beforefirstitem><cindex index="cp"><indexterm index="cp">cindex in table</indexterm></cindex>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp">cindex in table</indexterm></cindex>
 <para>Texte before first item.
 </para></beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="code">abb</itemformat></item>
 </tableterm></tableentry></table>

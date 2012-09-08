@@ -1213,7 +1213,7 @@ $result_converted{'xml'}->{'part_node_chapter_after_top'} = '<node name="Top" sp
 <node name="a-node-after-part" spaces=" "><nodename>a node after part</nodename><nodenext spaces=" ">chapter</nodenext><nodeprev spaces=" ">Top</nodeprev><nodeup spaces=" ">Top</nodeup></node>
 <para>After a node after part
 </para>
-<node name="chapter" spaces=" "><nodename>chapter</nodename><nodenext spaces=" ">a node after part</nodenext><nodeup spaces=" ">Top</nodeup></node>
+<node name="chapter" spaces=" "><nodename>chapter</nodename><nodenext spaces=" ">a node after part</nodenext><nodeprev></nodeprev><nodeup spaces=" ">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>chapter </sectiontitle>
 </chapter>
 </part>

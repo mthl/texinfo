@@ -166,7 +166,7 @@ raggedright
 @end raggedright @c comm
 '],
 ['comments_on_misc_command_line',
-'@setfilename  setfilename name  @c setfilename (text)
+'@setfilename  comments_on_misc_command_line.info  @c setfilename (text)
 @definfoenclose phoo,;,:  @c definfoenclose (number)
 @firstparagraphindent none @c c (number)
 @raisesections @c raisesections (skipline)
@@ -184,7 +184,7 @@ in <tex>
 
 Para
 @xml
-<in>
+<in />
 @end xml
 '],
 ['raw_and_comments',
@@ -194,7 +194,7 @@ in <tex>
 
 Para
 @xml @c in xml comment
-<in>
+<in />
 @end xml  @comment end xml comment
 '],
 ['node_no_section',
@@ -210,7 +210,7 @@ Para
 ['commands_and_spaces',
 '@set  foo   some @value
 
-@setfilename  setfilename name  
+@setfilename  commands_and_spaces.info  
 
 @unmacro  ggg
 
@@ -248,7 +248,7 @@ f
 @multitable  @columnfractions  0.4  0.6  
 @end multitable
 
-@multitable  {aa b}  @var{cmd}gg hh j 
+@multitable  {aa b}  { r }  @var{cmd}gg hh j 
 @end multitable
 
 @verbatim  
@@ -276,6 +276,10 @@ T@footnote{  a}.
 Math @math{ \\underline{ a, b} }.
 
 @indicateurl{ http://ggg }
+
+@deffn { truc } { machin }  { bidule }  {  chose } {  arg }
+T
+@end deffn
 
 '],
 ['brace_commands_spaces_end_of_lines',

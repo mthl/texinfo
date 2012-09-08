@@ -112,7 +112,7 @@ $result_trees{'raw'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '<in>
+                  'text' => '<in />
 '
                 }
               ],
@@ -219,7 +219,7 @@ in <tex>
 
 Para
 @xml
-<in>
+<in />
 @end xml
 ';
 
@@ -237,7 +237,7 @@ in &lt;tex&gt;
 </tex>
 
 <para>Para
-<in>
+<in />
 </para>';
 
 1;

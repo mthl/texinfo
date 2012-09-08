@@ -161,7 +161,7 @@ $result_trees{'raw_and_comments'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '<in>
+                  'text' => '<in />
 '
                 }
               ],
@@ -289,7 +289,7 @@ in <tex>
 
 Para
 @xml @c in xml comment
-<in>
+<in />
 @end xml  @comment end xml comment
 ';
 
@@ -307,7 +307,7 @@ in &lt;tex&gt;
 </tex>  <!-- comment other comment -->
 
 <para>Para
-<in>
+<in />
 </para>';
 
 1;

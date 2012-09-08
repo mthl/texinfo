@@ -111,6 +111,7 @@ my %specific_xml_commands_formatting = (
            'hashchar'      => '&hashchar;',
 );
 
+# our because it is used in the xml to texi translator
 our %xml_commands_formatting
   = %{$Texinfo::Convert::Converter::default_xml_commands_formatting{'normal'}};
 
@@ -127,7 +128,7 @@ my %xml_accents = (
  'v' => 'caron',
 );
 
-my %xml_accent_types = (%Texinfo::Convert::Converter::xml_accent_entities, %xml_accents);
+our %xml_accent_types = (%Texinfo::Convert::Converter::xml_accent_entities, %xml_accents);
 
 # no entity
 my @other_accents = ('dotaccent', 'tieaccent', 'ubaraccent', 'udotaccent');
@@ -160,7 +161,8 @@ my %default_args_code_style
   = %Texinfo::Convert::Converter::default_args_code_style;
 my %regular_font_style_commands = %Texinfo::Common::regular_font_style_commands;
 
-my %commands_args_elements = (
+# our because it is used in the xml to texi translator
+our %commands_args_elements = (
   'email' => ['emailaddress', 'emailname'],
   'uref' => ['urefurl', 'urefdesc', 'urefreplacement'],
   'url' => ['urefurl', 'urefdesc', 'urefreplacement'],
@@ -500,6 +502,13 @@ sub _texinfo_line($$)
 
 my @node_directions = ('Next', 'Prev', 'Up');
 
+# not used here, but it is consistent and may be used 
+# by XML to Texinfo converters
+$commands_args_elements{'node'} = ['nodename'];
+foreach my $direction (@node_directions) {
+  push @{$commands_args_elements{'node'}}, 'node'.lc($direction);
+}
+
 sub _convert($$;$);
 
 sub _convert($$;$)
@@ -668,6 +677,7 @@ sub _convert($$;$)
         $attribute = " command=\"$root->{'cmdname'}\"";
       }
       $attribute .= " index=\"$root->{'extra'}->{'index_entry'}->{'index_name'}\"";
+      $attribute .= _leading_spaces($root);
       my $end_line;
       if ($root->{'args'}->[0]) {
         $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
@@ -700,18 +710,18 @@ sub _convert($$;$)
           } else {
             $nodename = '';
           }
-          $result .= "<node name=\"$nodename\""._leading_spaces($root)
-                      .$self->_trailing_spaces_arg($root->{'args'}->[0]).">";
+          $result .= "<node name=\"$nodename\""._leading_spaces($root).">";
           push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
-          $result .= "<nodename>".
+          $result .= "<nodename".$self->_trailing_spaces_arg($root->{'args'}->[0]).">".
              $self->_convert({'contents' => $root->{'extra'}->{'node_content'}})
              ."</nodename>";
           # first arg is the node name.
           my $direction_index = 1;
+          my $pending_empty_directions = '';
           foreach my $direction(@node_directions) {
+            my $element = 'node'.lc($direction);
             if ($root->{'node_'.lc($direction)}) {
               my $node_direction = $root->{'node_'.lc($direction)};
-              my $element = 'node'.lc($direction);
               my $node_name = '';
               my $attribute = '';
               if (! defined($root->{'extra'}->{'nodes_manuals'}->[$direction_index])) {
@@ -731,7 +741,15 @@ sub _convert($$;$)
                 $node_name .= Texinfo::Common::normalize_top_node_name($self->_convert({
                   'contents' => $node_direction->{'extra'}->{'node_content'}}));
               }
-              $result .= "<$element${attribute}>$node_name</$element>";
+              $result .= "$pending_empty_directions<$element${attribute}>$node_name</$element>";
+              $pending_empty_directions = '';
+            } else {
+              if ($root->{'args'}->[$direction_index]) {
+                my $spaces_attribute = $self->_leading_trailing_spaces_arg(
+                                 $root->{'args'}->[$direction_index]);
+                $pending_empty_directions .= "<$element${spaces_attribute}>".
+                                             "</$element>";
+              }
             }
             $direction_index++;
           }
@@ -1078,6 +1096,7 @@ sub _convert($$;$)
                     if ($prototype->{'type'} 
                         and $prototype->{'type'} eq 'bracketed') {
                       $attribute = ' bracketed="on"';
+                      $attribute .= _leading_spaces_before_argument($prototype);
                     } else {
                       $attribute = '';
                     }
@@ -1194,6 +1213,7 @@ sub _convert($$;$)
             if ($arg->[1]->{'type'}
                 and $arg->[1]->{'type'} eq 'bracketed_def_content') {
               $attribute .= ' bracketed="on"';
+              $attribute .= _leading_spaces_before_argument($arg->[1]);
             }
             $result .= "<def$element${attribute}>$content</def$element>";
           }
@@ -1277,7 +1297,7 @@ sub _convert($$;$)
            if ($end_command->{'args'}->[0]
                and $end_command->{'args'}->[0]->{'contents'});
       } else {
-        $end_line = "\n";
+        #$end_line = "\n";
       }
       $result .= $end_line;
     }
