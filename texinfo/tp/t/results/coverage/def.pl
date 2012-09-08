@@ -893,6 +893,13 @@ $result_trees{'def'} = {
                   'parent' => {},
                   'type' => 'bracketed_def_content'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '  ',
+                  'type' => 'spaces'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -2420,7 +2427,7 @@ def-fn
 fset: i a g
 cmde: truc 
 Command: log trap 
-Command: log trap1 
+Command: log trap1   
 Command: log trap2 
 cmde: id ule truc
 cmde2: id i ule truc
@@ -2612,7 +2619,7 @@ $result_converted{'html_text'}->{'def'} = '
 <dt><a name="index-i"></a>fset: <strong><var>i</var></strong> <em>a g</em></dt>
 <dt><a name="index-truc"></a>cmde: <strong>truc</strong> <em></em></dt>
 <dt><a name="index-log-trap"></a>Command: <strong>log trap</strong> <em></em></dt>
-<dt><a name="index-log-trap1"></a>Command: <strong>log trap1</strong> <em></em></dt>
+<dt><a name="index-log-trap1"></a>Command: <strong>log trap1</strong> <em>  </em></dt>
 <dt><a name="index-log-trap2"></a>Command: <strong>log trap2</strong> <em></em></dt>
 <dt><a name="index-id-ule"></a>cmde: <strong><b>id ule</b></strong> <em>truc</em></dt>
 <dt><a name="index-id-i-ule"></a>cmde2: <strong><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></strong> <em>truc</em></dt>
@@ -2639,7 +2646,7 @@ $result_converted{'xml'}->{'def'} = '
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn"><var>i</var></indexterm><defcategory>fset</defcategory> <deffunction><var>i</var></deffunction> <defparam>a</defparam> <defparam>g</defparam></definitionterm>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">truc</indexterm><defcategory bracketed="on">cmde</defcategory> <deffunction>truc</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
-<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
+<deffnx spaces=" "><definitionterm><indexterm index="fn">log trap1</indexterm><defcategory>Command</defcategory> <deffunction bracketed="on" spaces=" ">log trap1</deffunction> <defparam bracketed="on"></defparam>  </definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn">log trap2 </indexterm><defcategory>Command</defcategory> <deffunction bracketed="on">log trap2 </deffunction> <defparam bracketed="on"></defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id ule</b></indexterm><defcategory>cmde</defcategory> <deffunction><b>id ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
 <deffnx spaces=" "><definitionterm><indexterm index="fn"><b>id <samp>i</samp> ule</b></indexterm><defcategory>cmde2</defcategory> <deffunction><b>id <samp>i</samp> ule</b></deffunction> <defparam>truc</defparam></definitionterm></deffnx>
@@ -2667,7 +2674,7 @@ $result_converted{'docbook'}->{'def'} = '
 <synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>

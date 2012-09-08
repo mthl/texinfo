@@ -254,6 +254,13 @@ $result_trees{'inter_item_commands_in_def'} = {
                   'parent' => {},
                   'type' => 'bracketed_def_content'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '  ',
+                  'type' => 'spaces'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -726,7 +733,7 @@ In deff item.
 
 $result_texts{'inter_item_commands_in_def'} = 'fset: i a g
 
-Command: log trap1 
+Command: log trap1   
 cmde2: id i ule truc
 
 In deff item.

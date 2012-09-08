@@ -91,6 +91,13 @@ $result_trees{'wrong_braces_simple'} = {
                 {
                   'text' => 'and'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -980,6 +987,13 @@ $result_trees{'wrong_braces_simple'} = {
                 {
                   'text' => 'and'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -1708,7 +1722,7 @@ $result_texis{'wrong_braces_simple'} = '@deffn truc machin bidule chose and
 ';
 
 
-$result_texts{'wrong_braces_simple'} = 'truc: machin bidule chose and
+$result_texts{'wrong_braces_simple'} = 'truc: machin bidule chose and 
 
 truc: machin bidule chose and  after
 
@@ -1717,7 +1731,7 @@ truc: machin bidule chose and
 truc: machin bidule chose and and after
 
 a: b c d e
-truc: machin bidule chose and
+truc: machin bidule chose and 
 truc: machin bidule chose and  after
 truc: machin bidule chose and 
 truc: machin bidule chose and and after

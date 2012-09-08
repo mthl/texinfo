@@ -2249,9 +2249,12 @@ sub _next_bracketed_or_word($$)
   my $spaces;
   $spaces = shift @{$contents} if (defined($contents->[0]->{'text'}) and 
                                      $contents->[0]->{'text'} !~ /\S/);
-  $spaces = undef if (!$spaces->{'text'});
-  $spaces->{'type'} = 'spaces' if (defined($spaces));
-  return undef if (!scalar(@{$contents}));
+  if (defined($spaces)) {
+    $spaces->{'type'} = 'spaces';
+    chomp $spaces->{'text'};
+    $spaces = undef if ($spaces->{'text'} eq '');
+  }
+  return ($spaces, undef) if (!scalar(@{$contents}));
 
   #print STDERR "BEFORE PROCESSING ".Texinfo::Convert::Texinfo::convert({'contents' => $contents});
   if ($contents->[0]->{'type'} and $contents->[0]->{'type'} eq 'bracketed') {
