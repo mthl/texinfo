@@ -127,7 +127,7 @@ sub _expand_cmd_args_to_texi ($;$) {
               or $block_commands{$cmdname} eq 'multitable')
          and $cmd->{'args'}) {
      foreach my $arg (@{$cmd->{'args'}}) {
-        $result .= convert ($arg, $fix);
+        $result .= convert($arg, $fix);
     }
   # for misc_commands with type special
   } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
@@ -138,7 +138,7 @@ sub _expand_cmd_args_to_texi ($;$) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
       if (ref($cmd->{'args'}) ne 'ARRAY');
     foreach my $arg (@{$cmd->{'args'}}) {
-       $result .= convert ($arg, $fix) . ',';
+       $result .= convert($arg, $fix) . ',';
     }
     $result =~ s/,$//;
   } elsif ($fix and $misc_commands{$cmdname}
@@ -161,7 +161,7 @@ sub _expand_cmd_args_to_texi ($;$) {
         $result .= ',' if ($arg_nr);
         $arg_nr++;
       }
-      $result .= convert ($arg, $fix);
+      $result .= convert($arg, $fix);
     }
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};
