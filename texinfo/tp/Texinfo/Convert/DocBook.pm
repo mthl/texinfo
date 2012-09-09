@@ -317,6 +317,11 @@ sub output($$)
 
   $self->_set_global_multiple_commands(-1);
 
+  my $encoding = '';
+  if ($self->{'encoding_name'} and $self->{'encoding_name'} ne 'utf-8') {
+    $encoding = " encoding=\"$self->{'encoding_name'}\" ";
+  }
+
   my $id;
   if ($self->{'output_file'} ne '') {
     my $output_filename = $self->{'output_filename'};
@@ -325,7 +330,7 @@ sub output($$)
     $id = '';
   }
 
-  my $header = '<?xml version="1.0"?>
+  my $header =  "<?xml version=\"1.0\"${encoding}?>".'
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
   <!ENTITY tex "TeX">
   <!ENTITY latex "LaTeX">

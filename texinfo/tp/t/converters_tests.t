@@ -841,6 +841,10 @@ my %html_tests = (
  'line_breaks' => 1,
 );
 
+my %xml_file_tests = (
+ 'char_latin1_latin1_in_refs' => 1,
+);
+
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   if ($html_tests{$test->[0]}) {
@@ -861,6 +865,9 @@ foreach my $test (@html_text_cases) {
 foreach my $test (@file_tests) {
   push @{$test->[2]->{'test_formats'}}, 'file_html';
   push @{$test->[2]->{'test_formats'}}, 'file_info';
+  if ($xml_file_tests{$test->[0]}) {
+    push @{$test->[2]->{'test_formats'}}, ('file_xml', 'file_docbook');
+  }
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

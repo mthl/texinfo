@@ -99,7 +99,9 @@ our %formats = (
   'file_html' => \&convert_to_html,
   'html_text' => \&convert_to_html,
   'xml' => \&convert_to_xml,
+  'file_xml' => \&convert_to_xml,
   'docbook' => \&convert_to_docbook,
+  'file_docbook' => \&convert_to_docbook,
   'debugcount' => \&debugcount,
 );
 
@@ -530,11 +532,17 @@ sub convert_to_xml($$$$$$;$)
   my $converter =
      Texinfo::Convert::XML->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
-                                         'OUTFILE' => '',
                                          'output_format' => 'xml',
                                           %$converter_options });
-  my $result = $converter->convert($tree);
-  die if (!defined($result));
+
+  my $result;
+  if (defined($converter_options->{'OUTFILE'}) 
+      and $converter_options->{'OUTFILE'} eq '') {
+    $result = $converter->convert($tree);
+  } else {
+    $result = $converter->output($tree);
+    $result = undef if (defined($result and $result eq ''));
+  }
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }
@@ -555,11 +563,16 @@ sub convert_to_docbook($$$$$$;$)
   my $converter =
      Texinfo::Convert::DocBook->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
-                                         'OUTFILE' => '',
                                          'output_format' => 'docbook',
                                           %$converter_options });
-  my $result = $converter->convert($tree);
-  die if (!defined($result));
+  my $result;
+  if (defined($converter_options->{'OUTFILE'}) 
+      and $converter_options->{'OUTFILE'} eq '') {
+    $result = $converter->convert($tree);
+  } else {
+    $result = $converter->output($tree);
+    $result = undef if (defined($result and $result eq ''));
+  }
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }

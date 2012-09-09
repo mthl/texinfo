@@ -270,7 +270,7 @@ sub output($$)
 
   my $fh;
   if (! $self->{'output_file'} eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
+    $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
@@ -279,7 +279,13 @@ sub output($$)
   }
 
   $self->_set_global_multiple_commands(-1);
-  my $header =  '<?xml version="1.0"?>
+
+  my $encoding = '';
+  if ($self->{'encoding_name'} and $self->{'encoding_name'} ne 'utf-8') {
+    $encoding = " encoding=\"$self->{'encoding_name'}\" ";
+  }
+
+  my $header =  "<?xml version=\"1.0\"${encoding}?>".'
 <!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
 <texinfo xml:lang="' . $self->get_conf('documentlanguage') ."\">\n";
   if ($self->{'output_file'} ne '') {
