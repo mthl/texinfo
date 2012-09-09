@@ -1,3 +1,8 @@
+2012-09-10  Patrice Dumas  <pertusus@free.fr>
+
+	* util/Makefile.am, util/txixml2texi.pl, TODO: add a new script,
+	txixml2texi that convert Texinfo XML to Texinfo code.
+
 2012-09-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (acronym): mention likely desirability

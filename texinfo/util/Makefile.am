@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.45 2012-06-11 17:54:28 karl Exp $
+# $Id: Makefile.am,v 1.46 2012-09-09 22:46:00 pertusus Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -15,10 +15,16 @@
 
 bin_PROGRAMS = texindex
 bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
+nodist_noinst_SCRIPTS = txixml2texi
 
 # for auctex.
 pdftexi2dvi: texi2pdf
 	cp -f $(srcdir)/texi2pdf $@
+
+txixml2texi: txixml2texi.pl Makefile
+	sed -e 's,[@]datadir[@],$(datadir),g' \
+	-e 's,[@]PACKAGE[@],$(PACKAGE),g' $(srcdir)/$< >$@
+	chmod a+x $@
 
 localedir = $(datadir)/locale
 AM_CPPFLAGS = 					\
@@ -43,8 +49,9 @@ EXTRA_DIST = README deref.c detexinfo dir-example fix-info-dir fixfonts \
   install-info-html outline.gawk pdftexi2dvi \
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi texi2pdf txitextest \
   $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
-  texi2html
+  texi2html txixml2texi.pl
 
+DISTCLEANFILES = txixml2texi
 
 # We must not stress people's TeX installations.
 # In Automake 1.11, we'll have a switchable maintainer mode.

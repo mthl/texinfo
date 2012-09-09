@@ -1,4 +1,4 @@
-$Id: TODO,v 1.66 2012-07-22 22:32:43 pertusus Exp $
+$Id: TODO,v 1.67 2012-09-09 22:46:00 pertusus Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -41,7 +41,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Or even multibyte languages like Japanese, see msg:
     http://lists.gnu.org/archive/html/bug-texinfo/2005-03/msg00000.html
   - Support general reference card creation.
-  - Add a program that turns Texinfo XML back to Texinfo code.
 
 * Language:
   - Allow : in node names for info files, for names like
@@ -50,6 +49,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     solution, although this is an incompatible change to Info format.
   - @else for the @if... conditionals.
   - @xindexterm [def] primary [,secondary [,tertiary]]  or some such?
+  - Add a @sortkey command for indices like @findex @sortkey{command} @@command
   - Allow subitems and `see' and `see also' in indices.
   - generalize @vtable/@htable to any defined index.
   - generalize @deffn/etc. with variants that don't make index entries.
@@ -107,10 +107,14 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - location of text before the information required to understand them:
     * 2 Using Texinfo Mode: before the Texinfo language description
     * 4.1 Printing Indices and Menus: before @node, @unnumbered and indices
-  - htmlxref.cnf is still not taken into account at the beginning of 
-    HTML Xref nodes
   - The Cross References node is very long and maybe should
     start with the most general uses and proceed to special cases.
+  - Strange sentence in @node key:
+     As a convention in GNU manuals, @code{@@key} should not be used in
+     index entries.
+  - codequoteundirected/codequotebacktick. Is the following correct?
+     These settings affect @code, @example, @samp, verb, and @verbatim; 
+     they do not affect @kbd.
   - new section on doing dedication pages. See gawk.texi
     for an example of doing it in both the tex and info versions.
   - use an improved pod2texi to generate documentation of the perl modules

@@ -155,6 +155,7 @@ t/README
 t/accents.t
 t/automatic_menus.t
 t/automatic_nodes.t
+t/collect_spaces.t
 t/converters_tests.t
 t/do_master_menu.t
 t/docbook_tests.t
@@ -344,6 +345,7 @@ t/results/converters_tests/at_commands_in_refs_utf8/res_html/sansserif-slanted.h
 t/results/converters_tests/at_commands_in_refs_utf8/res_html/someone_0040somewher-no_005fexplain_0040there.html
 t/results/converters_tests/at_commands_in_refs_utf8/res_info/at_commands_in_refs_utf8.info
 t/results/converters_tests/char_latin1_latin1_in_refs.pl
+t/results/converters_tests/char_latin1_latin1_in_refs/res_docbook/char_latin1_utf8_in_refs.xml
 t/results/converters_tests/char_latin1_latin1_in_refs/res_html/a-e-i-o-u-A-E-I-O-U.html
 t/results/converters_tests/char_latin1_latin1_in_refs/res_html/a-e-i-o-u-y-A-E-I-O-U.html
 t/results/converters_tests/char_latin1_latin1_in_refs/res_html/a-e-u.html
@@ -351,6 +353,7 @@ t/results/converters_tests/char_latin1_latin1_in_refs/res_html/c.html
 t/results/converters_tests/char_latin1_latin1_in_refs/res_html/e.html
 t/results/converters_tests/char_latin1_latin1_in_refs/res_html/index.html
 t/results/converters_tests/char_latin1_latin1_in_refs/res_info/char_latin1_utf8_in_refs.info
+t/results/converters_tests/char_latin1_latin1_in_refs/res_xml/char_latin1_utf8_in_refs.xml
 t/results/converters_tests/char_latin1_utf8_in_refs.pl
 t/results/converters_tests/char_latin1_utf8_in_refs/res_html/a-e-i-o-u-A-E-I-O-U.html
 t/results/converters_tests/char_latin1_utf8_in_refs/res_html/a-e-i-o-u-y-A-E-I-O-U.html
@@ -378,6 +381,7 @@ t/results/converters_tests/japanese_shift_jis/res_html/Introduction.html
 t/results/converters_tests/japanese_shift_jis/res_html/Preface.html
 t/results/converters_tests/japanese_shift_jis/res_html/index.html
 t/results/converters_tests/japanese_shift_jis/res_info/japanese_shift_jis.info
+t/results/converters_tests/line_breaks.pl
 t/results/converters_tests/no_documentencoding_and_insertions.pl
 t/results/converters_tests/normal_font_in_monospace.pl
 t/results/converters_tests/raw_block_commands.pl
@@ -940,6 +944,7 @@ t/results/misc_commands/synindex_too_much_args.pl
 t/results/misc_commands/test_allowcodebreaks.pl
 t/results/misc_commands/text_before_and_after_bye.pl
 t/results/misc_commands/text_before_line_command.pl
+t/results/misc_commands/vskip.pl
 t/results/multitable/empty_item_tab.pl
 t/results/multitable/empty_multitable_with_cells.pl
 t/results/multitable/inter_item_commands_in_multitable.pl
@@ -951,6 +956,7 @@ t/results/multitable/multitable_not_closed_item_tab.pl
 t/results/multitable/multitable_one_column_too_much_cells.pl
 t/results/multitable/multitable_two_columns_too_much_cells.pl
 t/results/multitable/multitable_with_empty_item_tab.pl
+t/results/multitable/not_letters_in_prototype.pl
 t/results/multitable/paragraph_in_cells.pl
 t/results/multitable/prototype_brace_no_brace.pl
 t/results/multitable/prototype_brace_no_brace_comment.pl
@@ -1207,6 +1213,7 @@ t/results/sectioning/top_no_argument_and_content.pl
 t/results/sectioning/top_no_argument_and_node.pl
 t/results/sectioning/top_no_argument_and_top_node.pl
 t/results/sectioning/top_node_no_menu_direction.pl
+t/results/sectioning/top_node_part_top.pl
 t/results/sectioning/top_node_up_url.pl
 t/results/sectioning/top_part_chapter.pl
 t/results/sectioning/top_without_node_nodes.pl
@@ -1254,11 +1261,19 @@ t/results/verb/verb_and_char_end_of_line_not_closed.pl
 t/results/verb/verb_at_end_of_line_not_closed.pl
 t/results/verb/verb_not_closed.pl
 t/results/verb/verb_not_closed_with_char.pl
+t/results/xml_tests/brace_commands_spaces_end_of_lines.pl
+t/results/xml_tests/commands_and_spaces.pl
+t/results/xml_tests/comments_end_lines.pl
 t/results/xml_tests/comments_on_block_command_lines.pl
+t/results/xml_tests/comments_on_misc_command_line.pl
 t/results/xml_tests/image_inline_or_not.pl
+t/results/xml_tests/lone_bye.pl
 t/results/xml_tests/macro_and_args.pl
+t/results/xml_tests/node_and_bye.pl
 t/results/xml_tests/node_no_section.pl
 t/results/xml_tests/raw.pl
+t/results/xml_tests/raw_and_comments.pl
+t/results/xml_tests/spaces_info_lost.pl
 t/results/xtable/accent_on_table_line.pl
 t/results/xtable/block_commands_in_table.pl
 t/results/xtable/comment_and_itemx_before_item.pl
