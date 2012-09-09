@@ -517,7 +517,7 @@ sub _convert($$;$)
   my $root = shift;
 
   if (0) {
-  #if (1) {
+  #if (1) { #}
     print STDERR "root\n";
     print STDERR "  Command: $root->{'cmdname'}\n" if ($root->{'cmdname'});
     print STDERR "  Type: $root->{'type'}\n" if ($root->{'type'});
@@ -793,7 +793,10 @@ sub _convert($$;$)
         # the comand closing.  So we delay the output of @bye, and store it.
         if ($root->{'cmdname'} eq 'bye' and $root->{'parent'}
             and $root->{'parent'}->{'type'}
-            and $root->{'parent'}->{'type'} eq 'element') {
+            and $root->{'parent'}->{'type'} eq 'element'
+            and !($root->{'parent'}->{'extra'} 
+                  and $root->{'parent'}->{'extra'}->{'no_section'})) {
+          #print STDERR "$root->{'parent'} $root->{'parent'}->{'type'}\n";
           $self->{'pending_bye'} = "<$command></$command>\n";
           return '';
         }

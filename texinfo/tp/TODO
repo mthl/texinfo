@@ -9,9 +9,6 @@ Before next release
 Bugs
 ====
 
-In texi file generated from xml_tests.t node_no_section, translation
-to XML, @bye lost.
-
 
 Delayed bugs
 ============

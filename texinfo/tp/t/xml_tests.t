@@ -301,6 +301,14 @@ b}
 @image{a, 
  b}
 '],
+['node_and_bye',
+'@node Top
+
+@bye
+', {'test_split' => 'section'}],
+['lone_bye',
+'@bye
+'],
 );
 
 foreach my $test (@test_cases) {
