@@ -1048,6 +1048,13 @@ Top node
 
 @part part
 '],
+['top_node_part_top',
+'@node Top
+
+@part part
+
+@top top
+', {'test_split' => 'section'}],
 ['chapter_node_before_and_after_part',
 '
 @node Top
@@ -1882,7 +1889,8 @@ my @xml_tests_info_tests = ('part_chapter_after_top',
   'chapter_between_nodes', 'nodes_no_node_top_explicit_directions',
   'part_node_chapter_after_top', 'node_part_chapter_after_top',
   'node_part_chapter_after_chapter', 'section_before_top', 
-  'section_node_before_part', 'chapter_node_before_and_after_part',
+  'section_node_before_part', 'top_node_part_top',
+  'chapter_node_before_and_after_part',
   'more_nodes_than_sections', 'part_node_chapter_appendix',
   'part_node_part_appendix', 'part_node_chapter_node_appendix',
   'part_node_part_node_appendix', 'part_node_node_part_appendix',

@@ -277,7 +277,8 @@ sub sectioning_structure($$)
             $up = $up->{'section_up'};
           }
           if ($new_upper_element) {
-            # In that case the root has to be updated because the first 'part' just appeared
+            # In that case the root has to be updated because the first 
+            # 'part' just appeared
             $content->{'section_up'} = $sec_root;
             $sec_root->{'level'} = $level - 1;
             push @{$sec_root->{'section_childs'}}, $content;
@@ -860,7 +861,6 @@ sub split_by_section($)
     return undef;
   }
   my $elements;
-  my @pending_parts = ();
   my $current = { 'type' => 'element', 'extra' => {'no_section' => 1}};
   push @$elements, $current; 
   foreach my $content (@{$root->{'contents'}}) {

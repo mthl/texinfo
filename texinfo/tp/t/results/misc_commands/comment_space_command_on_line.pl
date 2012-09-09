@@ -1036,7 +1036,7 @@ End Tag Table
 
 $result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle spaces=" ">Settitle <spacecmd type="spc"/></settitle><!-- c settittle -->
 
-<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node><!-- comment @node Top -->
+<node name="Top" spaces=" "><nodename trailingspaces="  ">Top</nodename><nodeup automatic="on">(dir)</nodeup></node><!-- comment @node Top -->
 <top spaces=" "><sectiontitle>top element<spacecmd type="spc"/> </sectiontitle><!-- comment @top -->
 
 <frenchspacing value="on" line=" on "></frenchspacing><!-- c comment frenchspacing -->

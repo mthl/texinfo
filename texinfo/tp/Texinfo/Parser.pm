@@ -3277,11 +3277,13 @@ sub _end_line($$$)
           $current->{'extra'}->{'associated_node'} = $self->{'current_node'};
         }
         if ($self->{'current_parts'}) {
-          # no @part associated with @top, but to other sectioning commands
-          if ($current->{'cmdname'} ne 'top') {
-            $current->{'extra'}->{'associated_part'} = $self->{'current_parts'}->[-1];
-            foreach my $part (@{$self->{'current_parts'}}) {
-              $part->{'extra'}->{'part_associated_section'} = $current;
+          $current->{'extra'}->{'associated_part'} = $self->{'current_parts'}->[-1];
+          foreach my $part (@{$self->{'current_parts'}}) {
+            $part->{'extra'}->{'part_associated_section'} = $current;
+            if ($current->{'cmdname'} eq 'top') {
+              $self->line_warn(sprintf($self->__(
+                  "\@%s should not be associated with \@top"),
+                   $part->{'cmdname'}), $part->{'line_nr'});
             }
           }
           delete $self->{'current_parts'};
