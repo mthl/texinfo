@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.473 2012-09-08 16:11:29 karl Exp $
+@c $Id: texinfo.txi,v 1.474 2012-09-09 19:07:09 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5113,7 +5113,7 @@ If you insist on using these characters in node names, accepting the
 resulting substandard Info output, in order not to confuse the Texinfo
 processors, you must still escape those characters, by using either
 special insertions (@pxref{Inserting a Comma}) or @code{@@asis}
-(@pxref{@@asis}).  For example:
+(@pxref{@code{@@asis}}).  For example:
 
 @example
 @@node foo@@asis@{::@}bar
@@ -9075,8 +9075,8 @@ exhibits, and command-line option summaries.
 
 @cindex Definition lists, typesetting
 Use the @code{@@table} command to produce two-column tables.  It is
-usually listed for ``definition lists'' of various sorts, where you
-have a list of terms and a brief text with each one.
+typically used when you have a list of items and a brief text with
+each one, such as ``definition lists''.
 
 Write the @code{@@table} command at the beginning of a line, after a
 blank line, and follow it on the same line with an argument that is a
@@ -9086,9 +9086,10 @@ Texinfo ``indicating'' command such as @code{@@code}, @code{@@samp},
 This command will be applied to the text that goes into the first
 column of each item and thus determines how it will be highlighted.
 For example, @code{@@table @@code} will cause the text in the first
-column to be output as if it @code{@@code} command.
+column to be output as if it had been the argument to an @code{@@code}
+command.
 
-@anchor{@@asis}
+@anchor{@code{@@asis}}
 @findex asis
 You may also use the @code{@@asis} command as an argument to
 @code{@@table}.  @code{@@asis} is a command that does nothing; if you
@@ -9096,10 +9097,11 @@ use this command after @code{@@table}, the first column entries are
 output without added highlighting (``as is'').
 
 The @code{@@table} command works with other commands besides those
-explicitly mentioned here.  However, you can only use commands that
-normally take arguments in braces.  (In this case, however, you use
-the command name without an argument, because the subsequent
-@code{@@item}'s will supply the argument.)
+explicitly mentioned here.  However, you can only use predefined
+Texinfo commands that normally take an argument in braces.  You cannot
+reliably use a new command defined with @code{@@macro}, but an
+@code{@@alias} (for a suitable predefined command) is acceptable.
+@xref{Defining New Texinfo Commands}.
 
 @findex item
 Begin each table entry with an @code{@@item} command at the beginning
@@ -9111,9 +9113,9 @@ write as many lines of supporting text as you wish, even several
 paragraphs.  But only the text on the same line as the @code{@@item}
 will be placed in the first column (including any footnotes).
 
-Normally, you should put a blank line before an @code{@@item} line.
-This puts a blank line in the Info file.  Except when the entries are
-very brief, a blank line looks better.
+Normally, you should put a blank line before an @code{@@item} line
+(except the first one).  This puts a blank line in the Info file.
+Except when the entries are very brief, a blank line looks better.
 
 End the table with a line consisting of @code{@@end table}, followed
 by a blank line.  @TeX{} will always start a new paragraph after the
@@ -19999,7 +20001,7 @@ for @code{@@click}.  @xref{Click Sequences}.
 @item @@asis
 Used following @code{@@table}, @code{@@ftable}, and @code{@@vtable} to
 print the table's first column without highlighting (``as is'').
-@xref{@@asis}.
+@xref{@code{@@asis}}.
 
 @item @@author @var{author}
 Typeset @var{author} flushleft and underline it.  @xref{title
@@ -21824,7 +21826,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.473 2012-09-08 16:11:29 karl Exp $
+$Id: texinfo.txi,v 1.474 2012-09-09 19:07:09 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

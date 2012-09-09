@@ -1,3 +1,8 @@
+2012-09-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (table): new commands defined with @macro
+	don't usually work as the argument to @table.
+
 2012-09-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (txicmd): skip putting @-commands in a new
