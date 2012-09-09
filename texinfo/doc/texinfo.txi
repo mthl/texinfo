@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.474 2012-09-09 19:07:09 karl Exp $
+@c $Id: texinfo.txi,v 1.475 2012-09-09 19:16:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7635,11 +7635,12 @@ more on the usage of these two commands.
 
 @cindex NASA, as acronym
 @cindex Acronyms, tagging
-Use the @code{@@acronym} command for abbreviations written in all
-capital letters, such as `@acronym{NASA}'.  The abbreviation is given as
-the single argument in braces, as in @samp{@@acronym@{NASA@}}.  As
-a matter of style, or for particular acronyms, you may prefer to
-use periods, as in @samp{@@acronym@{N.A.S.A.@}}.
+You can use the @code{@@acronym} command for abbreviations written in
+all capital letters, such as `@acronym{NASA}'.  The abbreviation is
+given as the single argument in braces, as in
+@samp{@@acronym@{NASA@}}.  As a matter of style, or for particular
+acronyms, you may prefer to use periods, as in
+@samp{@@acronym@{N.A.S.A.@}}.
 
 @code{@@acronym} accepts an optional second argument, intended to be
 used for the meaning of the acronym.
@@ -7679,8 +7680,8 @@ commands, please bear the following in mind.
 
 @itemize @minus
 @item
-In standard English usage, acronyms are a subset of abbreviations:
-they include pronounceable words like `@acronym{NATO}', `radar', and
+In common English usage, acronyms are a subset of abbreviations: they
+include pronounceable words like `@acronym{NATO}', `radar', and
 `snafu', and some sources also include syllable acronyms like
 `Usenet', hybrids like `@acronym{SIGGRAPH}', and unpronounceable
 initialisms like `@acronym{FBI}'.
@@ -7698,7 +7699,16 @@ Some browsers place a dotted bottom border under abbreviations but not
 acronyms.
 
 @item
-It's not essential to use either of these commands for all
+It often turns out to be quite difficult and/or time-consuming to
+consistently use @code{@@acronym} for all sequences of uppercase
+letters.  Unfortunately, it looks strange for some acronyms to be in
+the normal font size and others to be smaller.  So it may be better to
+simply not use @code{@@acronym} and typeset everything as normal text:
+@samp{GNU}, producing `GNU'.  This is in fact what we recommend for
+GNU manuals.
+
+@item
+In general, it's not essential to use either of these commands for all
 abbreviations; use your judgment.  Text is perfectly readable without
 them.
 
@@ -21826,7 +21836,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.474 2012-09-09 19:07:09 karl Exp $
+$Id: texinfo.txi,v 1.475 2012-09-09 19:16:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
