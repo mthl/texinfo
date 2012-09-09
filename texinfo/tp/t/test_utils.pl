@@ -1071,7 +1071,7 @@ sub output_texi_file($)
   }
   my $node_top;
   my $top = '';
-  if ($test_text =~ /^\@node +top\s/mi or $test_text =~ /^\@node +top *$/mi) {
+  if ($test_text =~ /^\@node +top[\s,]/mi or $test_text =~ /^\@node +top *$/mi) {
     $node_top = '';
   } else {
     $node_top = "\@node Top\n";

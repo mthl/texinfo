@@ -705,16 +705,25 @@ sub _collect_leading_trailing_spaces_arg($$)
     $result[0] = $arg->{'contents'}->[0]->{'text'};
     return @result if (scalar(@{$arg->{'contents'}}) == 1);
   }
-  if ($arg->{'contents'} and $arg->{'contents'}->[-1] 
-      and defined($arg->{'contents'}->[-1]->{'text'})
-      and $arg->{'contents'}->[-1]->{'text'} !~ /\S/
-      and defined($arg->{'contents'}->[-1]->{'type'})) {
-    #print STDERR "$arg->{'contents'}->[-1]->{'type'}\n";
-    warn "Unknown trailing space type $arg->{'contents'}->[-1]->{'type'}\n"
-      if ($arg->{'contents'}->[-1]->{'type'} ne 'spaces_at_end'
-          and $arg->{'contents'}->[-1]->{'type'} ne 'space_at_end_block_command'
-         );
-    $result[1] = $arg->{'contents'}->[-1]->{'text'};
+  if ($arg->{'contents'}) {
+    my $index = -1;
+    $index-- if ($arg->{'contents'}->[-1] 
+                 and $arg->{'contents'}->[-1]->{'cmdname'}
+                 and ($arg->{'contents'}->[-1]->{'cmdname'} eq 'c'
+                      or $arg->{'contents'}->[-1]->{'cmdname'} eq 'comment'));
+    if (scalar(@{$arg->{'contents'}}) + $index > 0) {
+      if ($arg->{'contents'}->[$index] 
+          and defined($arg->{'contents'}->[$index]->{'text'})
+          and $arg->{'contents'}->[$index]->{'text'} !~ /\S/
+          and defined($arg->{'contents'}->[$index]->{'type'})) {
+      #print STDERR "$arg->{'contents'}->[$index]->{'type'}\n";
+        warn "Unknown trailing space type $arg->{'contents'}->[$index]->{'type'}\n"
+          if ($arg->{'contents'}->[$index]->{'type'} ne 'spaces_at_end'
+              and $arg->{'contents'}->[$index]->{'type'} ne 'space_at_end_block_command'
+             );
+        $result[1] = $arg->{'contents'}->[$index]->{'text'};
+      }
+    }
   }
   return @result;
 }
