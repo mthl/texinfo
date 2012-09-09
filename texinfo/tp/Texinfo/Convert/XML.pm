@@ -844,6 +844,16 @@ sub _convert($$;$)
           };
           return "<${command}${attribute}".$self->_arg_line($root).
                                          ">$value</${command}>\n";
+        } else {
+          # should only be unmacro
+          my $attribute = '';
+          if ($root->{'args'} and $root->{'args'}->[0]
+              and defined($root->{'args'}->[0]->{'text'})) {
+            $attribute = " name=\"".
+                $self->xml_protect_text($root->{'args'}->[0]->{'text'})."\"";
+          }
+          return "<${command}${attribute}".
+                      $self->_arg_line($root)."></${command}>\n";
         }
       } elsif ($type eq 'lineraw') {
         if ($root->{'cmdname'} eq 'c' or $root->{'cmdname'} eq 'comment') {

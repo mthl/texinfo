@@ -253,7 +253,7 @@ f
 
 @verbatim  
 in verbatim @g 
-@end  verbatim 
+@end verbatim 
 
 @tex  
 in tex
@@ -262,10 +262,6 @@ in tex
 @example  
 in example
 @end  example  
-
-@example  text on example line 
-in bad example
-@end  example 
 
 @table  @strong  
 @item  in item 
@@ -281,6 +277,15 @@ Math @math{ \\underline{ a, b} }.
 T
 @end deffn
 
+'],
+['spaces_info_lost',
+'@example  text on example line 
+in bad example
+@end  example 
+
+@verbatim  
+in verbatim @g 
+@end  verbatim 
 '],
 ['brace_commands_spaces_end_of_lines',
 '@image{
