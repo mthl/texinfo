@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.476 2012-09-10 18:45:44 karl Exp $
+@c $Id: texinfo.txi,v 1.477 2012-09-10 23:24:12 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -885,13 +885,14 @@ GNU Emacs Manual}), and follow the existing coding style.
 @cindex Introduction to Texinfo
 
 Using Texinfo, you can create a printed document (via the @TeX{}
-typesetting system) with the normal features of a book, including chapters,
-sections, cross references, and indices.  From the same Texinfo source
-file, you can create an Info file with special features to make
-documentation browsing easy.  You can also create from that same
-source file an HTML output file suitable for use with a web browser,
-or an XML file.  See the next section (@pxref{Output Formats}) for
-details and sample commands to generate output from the source.
+typesetting system) with the normal features of a book, including
+chapters, sections, cross references, and indices.  From the same
+Texinfo source file, you can create an Info file with special features
+to make documentation browsing easy.  You can also create from that
+same source file an HTML output file suitable for use with a web
+browser, a Docbook file, or a transliteration in XML format.  See the
+next section (@pxref{Output Formats}) for details and sample commands
+to generate output from the source.
 
 @TeX{} works with virtually all printers; Info works with virtually
 all computer terminals; the HTML output works with virtually all web
@@ -963,10 +964,9 @@ knows the actual device-specific commands that can be viewed or
 printed, notably Dvips for translation to PostScript (@pxref{Top,,,
 dvips, Dvips}) and Xdvi for viewing on an X display
 (@uref{http://sourceforge.net/projects/xdvi/}).  @xref{Hardcopy}.
-
-Be aware that the Texinfo language is very different from and much
+(Be aware that the Texinfo language is very different from and much
 stricter than @TeX{}'s usual languages: plain @TeX{}, @LaTeX{},
-Con@TeX{}t, etc.
+Con@TeX{}t, etc.)
 
 @item PostScript
 @cindex PostScript output, overview
@@ -1007,15 +1007,19 @@ see the Texinfo web pages.
 @cindex Texinfo XML output, overview
 @cindex DTD, for Texinfo XML
 @pindex texinfo.dtd
+@pindex txixml2texi
 (Generated via @command{makeinfo --xml}.)  XML is a generic syntax
-specification usable for any sort of content (see, for example,
+specification usable for any sort of content (a reference is at
 @uref{http://www.w3.org/XML}).  The @command{makeinfo} XML output,
-unlike all the other output formats, interprets very little of the
-Texinfo source.  Rather, it translates the Texinfo markup commands
-into XML syntax, for processing by further XML tools.  The details of
-the output are defined in an XML DTD as usual, which is contained in a
-file @file{texinfo.dtd} included in the Texinfo source distribution
-and available via the Texinfo web pages.
+unlike all the other output formats, is a transliteration of the
+Texinfo source rather than processed output.  That is, it translates
+the Texinfo markup commands into XML syntax, for further processing by
+XML tools.  The details of the output are defined in an XML DTD as
+usual, which is contained in a file @file{texinfo.dtd} included in the
+Texinfo source distribution and available via the Texinfo web pages.
+The XML contains enough information to (nearly) recreate the original
+source, and the Texinfo sources include a utility script
+@file{txixml2texi} to do just that.
 @end table
 
 
@@ -21836,7 +21840,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.476 2012-09-10 18:45:44 karl Exp $
+$Id: texinfo.txi,v 1.477 2012-09-10 23:24:12 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
