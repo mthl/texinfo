@@ -32,6 +32,7 @@ BEGIN {
     my $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
     my $datadir = eval '"@datadir@"';
     $dir = $pkgdatadir;
+    unshift @INC, ($dir);
   } elsif (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
     my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
