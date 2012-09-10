@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.475 2012-09-09 19:16:49 karl Exp $
+@c $Id: texinfo.txi,v 1.476 2012-09-10 18:45:44 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -12596,12 +12596,12 @@ Within the text of the description, however, write an argument name
 explicitly with @code{@@var} to refer to the value of the argument.
 In the example above, we used @samp{@@var@{nchars@}} in this way.
 
-In the unusual case when an argument name contains @samp{--}, or
-another character sequence which is treated specially
-(@pxref{Conventions}), use @code{@@var} around the argument.  This
-causes the name to be printed in slanted typewriter, instead of the
-regular slanted font, exactly as input.
-@c except for ?` and !`, but we won't explain that.
+In the extremely unusual case when an argument name contains
+@samp{--}, or another character sequence which is treated specially
+(@pxref{Conventions}), use @code{@@code} around the special
+characters.  This avoids the conversion to typographic en-dashes and
+em-dashes.
+@c @var also works; that's what we used to recommend.
 
 The template for @code{@@deffn} is:
 
@@ -21836,7 +21836,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.475 2012-09-09 19:16:49 karl Exp $
+$Id: texinfo.txi,v 1.476 2012-09-10 18:45:44 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

@@ -1,3 +1,9 @@
+2012-09-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Functions Commands): recommend @code rather
+	than @var to avoid en-dashes and em-dashes (and Spanish ligatures)
+	in formal parameter names containing 2+ hyphens.
+
 2012-09-10  Patrice Dumas  <pertusus@free.fr>
 
 	* util/Makefile.am, util/txixml2texi.pl, TODO: add a new script,
