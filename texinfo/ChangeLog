@@ -11,6 +11,7 @@
 
 	* doc/texinfo.txi (table): new commands defined with @macro
 	don't usually work as the argument to @table.
+	(@@asis): Use @code{@@asis} for anchor name.
 
 2012-09-08  Karl Berry  <karl@gnu.org>
 
