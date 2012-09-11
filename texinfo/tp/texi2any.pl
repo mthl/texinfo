@@ -29,7 +29,7 @@ use strict;
 use File::Spec;
 # to determine the path separator and null file
 use Config;
-# for dirname.
+# for dirname and fileparse
 use File::Basename;
 #use Cwd;
 use Getopt::Long qw(GetOptions);
@@ -44,8 +44,8 @@ BEGIN
         and $texinfolibdir ne '@' .'datadir@/@PACKAGE'.'@');
 }
 
-my $real_command_name = $0;
-$real_command_name =~ s/.*\///;
+my ($filename, $directories, $suffix) = fileparse($0);
+my $real_command_name = $filename;
 $real_command_name =~ s/\.pl$//;
 
 # this associates the command line options to the arrays set during
@@ -84,8 +84,8 @@ if ('@datarootdir@' ne '@' . 'datarootdir@') {
   $datarootdir = '/usr/local/share';
 }
 if ('@datadir@' ne '@' . 'datadir@') {
-  $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
   $datadir = eval '"@datadir@"';
+  $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
 } else {
   $pkgdatadir = '/usr/local/share/texinfo';
   $datadir = '/usr/local/share';

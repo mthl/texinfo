@@ -859,8 +859,29 @@ sub locate_include_file($$)
   my $text = shift;
   my $file;
 
+  my $ignore_include_directories = 0;
+
+  my ($volume, $directories, $filename) = File::Spec->splitpath($text);
+  my @directories = File::Spec->splitdir($directories);
+
   #print STDERR "$self $text @{$self->{'include_directories'}}\n";
-  if ($text =~ m,^(/|\./|\.\./),) {
+  # If the path is absolute or begins with . or .., do not search in
+  # include directories.
+  if (File::Spec->file_name_is_absolute($text)) {
+    $ignore_include_directories = 1;
+  } else {
+    foreach my $dir (@directories) {
+      if ($dir eq File::Spec->updir() or $dir eq File::Spec->curdir()) {
+        $ignore_include_directories = 1;
+        last;
+      } elsif ($dir ne '') {
+        last;
+      }
+    }
+  }
+
+  #if ($text =~ m,^(/|\./|\.\./),) {
+  if ($ignore_include_directories) {
     $file = $text if (-e $text and -r $text);
   } else {
     my @dirs;
@@ -870,8 +891,15 @@ sub locate_include_file($$)
       # no object with directory list and not an absolute path, never succeed
       return undef;
     }
-    foreach my $dir (@{$self->{'include_directories'}}) {
-      $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
+    foreach my $include_dir (@{$self->{'include_directories'}}) {
+      my ($include_volume, $include_directories, $include_filename) 
+         = File::Spec->splitpath($include_dir, 1);
+      
+      my $possible_file = File::Spec->catpath($include_volume, 
+        File::Spec->catdir(File::Spec->splitdir($include_directories), 
+                           @directories), $filename);
+      #$file = "$include_dir/$text" if (-e "$include_dir/$text" and -r "$include_dir/$text");
+      $file = "$possible_file" if (-e "$possible_file" and -r "$possible_file");
       last if (defined($file));
     }
   }
