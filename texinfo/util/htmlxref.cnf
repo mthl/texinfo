@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2012-06-11.23; # UTC
+htmlxrefversion=2012-09-11.17; # UTC
 
 # Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 # 
@@ -41,6 +41,9 @@ GS = ${G}/software
 
 3dldf		mono	${GS}/3dldf/manual/user_ref/3DLDF.html
 3dldf		node	${GS}/3dldf/manual/user_ref/
+
+alive		mono	${GS}/alive/manual/alive.html
+alive		node	${GS}/alive/manual/html_node/
 
 anubis		chapter	${GS}/anubis/manual/html_chapter/
 anubis		section	${GS}/anubis/manual/html_section/
@@ -403,6 +406,17 @@ libtool		node	${GS}/libtool/manual/html_node/
 
 lightning	mono	${GS}/lightning/manual/lightning.html
 lightning	node	${GS}/lightning/manual/html_node/
+
+# The stable/ url redirects immediately, but that's ok.
+# The .html extension is omitted on their web site, but it works if given.
+LILYPOND = http://lilypond.org/doc/stable/Documentation/
+ lilypond-internals	node ${LILYPOND}/internals/
+ lilypond-learning	node ${LILYPOND}/learning/
+ lilypond-notation 	node ${LILYPOND}/notation/
+ lilypond-snippets 	node ${LILYPOND}/snippets/
+ lilypond-usage		node ${LILYPOND}/usage/
+ lilypond-web		node ${LILYPOND}/web/
+ music-glossary		node ${LILYPOND}/music-glossary/
 
 liquidwar6	mono	${GS}/liquidwar6/manual/liquidwar6.html
 liquidwar6	node	${GS}/liquidwar6/manual/html_node/

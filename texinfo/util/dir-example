@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.95 2012-09-10 13:43:35 karl Exp $
+$Id: dir-example,v 1.96 2012-09-11 17:33:25 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -254,17 +254,21 @@ C++ libraries
 * Iostream: (iostream).         C++ input/output.
 * autosprintf: (autosprintf).   Support for printf format strings in C++.
 
-GNU music project
-* LilyPond: (lilypond).                        The GNU music typesetter.
-* LilyPond internals: (lilypond-internals).    LilyPond internals.
-* ly2dvi: (lilypond)Invoking ly2dvi::          Titling LilyPond scores.
-* convert-ly: (lilypond)Invoking convert-ly::  Older LilyPond versions.
-* midi2ly: (lilypond)Invoking midi2ly::        Importing MIDI.
-* etf2ly: (lilypond)Invoking etf2ly::          Importing Finale.
-* abc2ly: (lilypond)Invoking abc2ly::          Importing ABC.
-* pmx2ly: (lilypond)Invoking pmx2ly::          Importing PMX.
-* musedata2ly: (lilypond)Invoking musedata2ly::Importing Musedata.
-* mup2ly: (lilypond)Invoking mup2ly::          Importing MUP.
+GNU LilyPond--the music typesetter
+* LilyPond Learning Manual: (lilypond-learning).  Start here.
+* Music Glossary: (music-glossary).               For non-English users.
+* LilyPond: (lilypond-notation).                  LilyPond Notation Reference.
+* LilyPond Snippets: (lilypond-snippets).         Short tricks, tips, and examples.
+* LilyPond Internals Reference: (lilypond-internals).  Definitions for tweaking.
+* LilyPond Application Usage: (lilypond-usage). Installing and running applications.
+* LilyPond Website: (lilypond-web).             Preview of new website.
+* lilypond: (lilypond-usage)Running lilypond.   Invoking the LilyPond program.
+* abc2ly: (lilypond-usage)Invoking abc2ly.      Importing ABC.
+* convert-ly: (lilypond-usage)Updating files with convert-ly. Older LilyPond versions.
+* etf2ly: (lilypond-usage)Invoking etf2ly.      Importing Finale.
+* lilypond-book: (lilypond-usage)lilypond-book. Integrating text and music.
+* midi2ly: (lilypond-usage)Invoking midi2ly.          Importing MIDI.
+* musicxml2ly: (lilypond-usage)Invoking musicxml2ly.  Importing MusicXML.
 
 Science
 * Asymptote: (asymptote).       Vector graphics language.
