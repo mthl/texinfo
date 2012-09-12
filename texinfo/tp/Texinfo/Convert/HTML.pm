@@ -4773,7 +4773,7 @@ sub _process_css_file ($$$)
           push @$imports, $text . $line;
           last;
         }
-      } elsif (!$in_string and $line =~ s/^\///) { # what do '\' do here ?
+      } elsif (!$in_string and $line =~ s/^\///) {
         if ($line =~ s/^\*//) {
           $text .= '/*';
           $in_comment = 1;
@@ -5138,8 +5138,10 @@ sub _set_element_file($$$)
     }
   }
   $element->{'filename'} = $filename;
-  if (defined($self->{'destination_directory'})) {
-    $element->{'out_filename'} = $self->{'destination_directory'} . $filename;
+  if (defined($self->{'destination_directory'}) 
+      and $self->{'destination_directory'} ne '') {
+    $element->{'out_filename'} = 
+      File::Spec->catfile($self->{'destination_directory'}, $filename);
   } else {
     $element->{'out_filename'} = $filename;
   }
@@ -6444,16 +6446,20 @@ sub _default_frame_files($)
 
   my $frame_file = $self->{'frame_pages_filenames'}->{'Frame'};
   my $frame_outfile;
-  if (defined($self->{'destination_directory'})) {
-    $frame_outfile = $self->{'destination_directory'} . $frame_file;
+  if (defined($self->{'destination_directory'}) 
+      and $self->{'destination_directory'} ne '') {
+    $frame_outfile = File::Spec->catfile($self->{'destination_directory'}, 
+                                         $frame_file);
   } else {
     $frame_outfile = $frame_file;
   }
   
   my $toc_frame_file = $self->{'frame_pages_filenames'}->{'Toc_Frame'};
   my $toc_frame_outfile;
-  if (defined($self->{'destination_directory'})) {
-    $toc_frame_outfile = $self->{'destination_directory'} . $toc_frame_file;
+  if (defined($self->{'destination_directory'}) 
+      and $self->{'destination_directory'} ne '') {
+    $toc_frame_outfile = File::Spec->catfile($self->{'destination_directory'}, 
+                                             $toc_frame_file);
   } else {
     $toc_frame_outfile = $toc_frame_file;
   }
@@ -6870,8 +6876,10 @@ sub output($$)
     if ($self->{'output_file'} ne '') {
       if ($self->get_conf('SPLIT')) {
         $outfile = $self->_top_node_filename();
-        if (defined($self->{'destination_directory'})) {
-          $outfile = $self->{'destination_directory'} . $outfile;
+        if (defined($self->{'destination_directory'}) 
+            and $self->{'destination_directory'} ne '') {
+          $outfile = File::Spec->catfile($self->{'destination_directory'}, 
+                                         $outfile);
         }
       } else {
         $outfile = $self->{'output_file'};
@@ -7005,9 +7013,10 @@ sub output($$)
         my $redirection_page 
           = &{$self->{'format_node_redirection_page'}}($self, $node);
         my $out_filename;
-        if (defined($self->{'destination_directory'})) {
-          $out_filename = $self->{'destination_directory'} 
-               .$node_filename;
+        if (defined($self->{'destination_directory'}) 
+            and $self->{'destination_directory'} ne '') {
+          $out_filename = File::Spec->catfile($self->{'destination_directory'}, 
+                                              $node_filename);
         } else {
           $out_filename = $node_filename;
         }
@@ -7072,9 +7081,10 @@ sub output($$)
           = &{$self->{'format_node_redirection_page'}}($self, 
                        $self->label_command($parsed_new_node->{'normalized'}));
         my $out_filename;
-        if (defined($self->{'destination_directory'})) {
-          $out_filename = $self->{'destination_directory'} 
-               .$filename;
+        if (defined($self->{'destination_directory'}) 
+            and $self->{'destination_directory'} ne '') {
+          $out_filename = File::Spec->catfile($self->{'destination_directory'}, 
+                                              $filename);
         } else {
           $out_filename = $filename;
         }

@@ -22,6 +22,11 @@ package Texinfo::Convert::Converter;
 use 5.00405;
 use strict;
 
+# for fileparse
+use File::Basename;
+# for file names portability
+use File::Spec;
+
 use Texinfo::Report;
 use Texinfo::Common;
 use Texinfo::Convert::Text;
@@ -405,12 +410,13 @@ sub _set_outfile($$$)
   # determine input file base name
   my $input_basename;
   if (defined($self->{'info'}->{'input_file_name'})) {
-    $input_basename = $self->{'info'}->{'input_file_name'};
+    my ($directories, $suffix);
+    ($input_basename, $directories, $suffix) 
+       = fileparse($self->{'info'}->{'input_file_name'});
   } else {
     # This could happen if called on a piece of texinfo
     $input_basename = '';
   }
-  $input_basename =~ s/^.*\///;
   $self->{'input_basename'} = $input_basename;
   $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
   $input_basename =~ s/\.te?x(i|info)?$//;
@@ -454,10 +460,8 @@ sub _set_outfile($$$)
       $document_name = $outfile;
     }
     if (defined($self->get_conf('SUBDIR')) and $outfile ne '') {
-      my $dir = $self->get_conf('SUBDIR');
-      $dir =~ s/\/*$//;
-      $dir .= '/';
-      $outfile = $dir.$outfile;
+      my $dir = File::Spec->canonpath($self->get_conf('SUBDIR'));
+      $outfile = File::Spec->catfile($dir, $outfile);
     }
     #$self->set_conf('OUTFILE', $outfile);
   } else {
@@ -476,9 +480,14 @@ sub _set_outfile($$$)
     $document_name = $setfilename;
     $document_name =~ s/\.[^\.]*$//;
   }
-  $document_name =~ s/^.*\///;
+  my ($directories, $suffix);
+  # We may be handling setfilename there, so it is not obvious that we
+  # want to use fileparse and not consider unixish separators.  However, 
+  # if this is setfilename, it should be a simple file name, so it 
+  # should hopefully be harmless to use fileparse
+  ($document_name, $directories, $suffix) = fileparse($document_name);
   $self->{'document_name'} = $document_name;
-  $output_filename =~ s/^.*\///;
+  ($output_filename, $directories, $suffix) = fileparse($output_filename);
   $self->{'output_filename'} = $output_filename;
   if ($self->get_conf('SPLIT')) {
     if (defined($self->get_conf('OUTFILE'))) {
@@ -489,16 +498,15 @@ sub _set_outfile($$$)
       $self->{'destination_directory'} = $document_name;
     }
   } else {
-    my $output_dir = $outfile;
-    $output_dir =~ s|[^/]*$||;
+    my ($out_filename, $output_dir, $suffix) = fileparse($outfile);
     if ($output_dir ne '') {
       $self->{'destination_directory'} = $output_dir;
     }
   }
   if (defined($self->{'destination_directory'}) 
       and $self->{'destination_directory'} ne '') {
-    $self->{'destination_directory'} =~ s/\/*$//;
-    $self->{'destination_directory'} .= '/';
+    $self->{'destination_directory'} 
+      = File::Spec->canonpath($self->{'destination_directory'});
   }
   $self->{'output_file'} = $outfile;
 }
@@ -564,9 +572,10 @@ sub _create_destination_directory($)
       if ($self->get_conf('SPLIT') 
           and $self->get_conf('EXTENSION') 
           and $self->get_conf('EXTENSION') ne '') {
-        my $new_directory = $self->{'destination_directory'};
-        $new_directory =~ s/\/*$//;
-        $new_directory .= '.' . $self->get_conf('EXTENSION') . '/';
+        my ($volume, $directories, $file) 
+           = File::Spec->splitpath($self->{'destination_directory'}, 1);
+        my $new_directory = catpath($volume, 
+                 $directories . '.' . $self->get_conf('EXTENSION'), $file);
         if (! -d $new_directory) {
           if (!mkdir($new_directory, oct(755))) {
             $self->document_error(sprintf($self->__(

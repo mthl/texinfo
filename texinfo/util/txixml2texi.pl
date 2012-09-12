@@ -23,28 +23,31 @@ use strict;
 use Getopt::Long qw(GetOptions);
 # for dirname.
 use File::Basename;
+use File::Spec;
 
 Getopt::Long::Configure("gnu_getopt");
 
 BEGIN {
   my $dir;
   if ('@datadir@' ne '@' . 'datadir@') {
-    my $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
+    my $package = '@PACKAGE@';
     my $datadir = eval '"@datadir@"';
-    $dir = $pkgdatadir;
-    unshift @INC, ($dir);
+    if ($datadir ne '') {
+      $dir = File::Spec->catdir($datadir, $package);
+      unshift @INC, ($dir);
+    }
   } elsif (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
     my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
-    my $tpdir = "$srcdir/../tp";
-    $dir = "$tpdir/maintain";
+    my $tpdir = File::Spec->catdir($srcdir, File::Spec->updir(), 'tp');
+    $dir = File::Spec->catdir($tpdir, 'maintain');
     unshift @INC, $tpdir;
   }
   if (defined($dir)) {
     unshift @INC, (
-        "$dir/lib/libintl-perl/lib",
-        "$dir/lib/Unicode-EastAsianWidth/lib",
-        "$dir/lib/Text-Unidecode/lib");
+        File::Spec->catdir($dir, 'lib', 'libintl-perl', 'lib'),
+        File::Spec->catdir($dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
+        File::Spec->catdir($dir, 'lib', 'Text-Unidecode', 'lib'));
   }
 }
 

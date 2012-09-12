@@ -25,7 +25,7 @@ require 5.00405;
 
 use strict;
 
-# for file_name_is_absolute
+# for file names portability
 use File::Spec;
 # to determine the path separator and null file
 use Config;
@@ -38,14 +38,16 @@ Getopt::Long::Configure("gnu_getopt");
 
 BEGIN
 {
-  my $texinfolibdir = '@datadir@/@PACKAGE@';
-  unshift @INC, ($texinfolibdir) 
-    if ($texinfolibdir ne '' 
-        and $texinfolibdir ne '@' .'datadir@/@PACKAGE'.'@');
+  my $datadir = '@datadir@';
+  my $package = '@PACKAGE@';
+  if ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
+      and $datadir ne '') {
+    my $texinfolibdir = File::Spec->catdir($datadir, $package);
+    unshift @INC, ($texinfolibdir);
+  }
 }
 
-my ($filename, $directories, $suffix) = fileparse($0);
-my $real_command_name = $filename;
+my ($real_command_name, $directories, $suffix) = fileparse($0);
 $real_command_name =~ s/\.pl$//;
 
 # this associates the command line options to the arrays set during
@@ -61,13 +63,18 @@ $path_separator = ':' if (!defined($path_separator));
 my $quoted_path_separator = quotemeta($path_separator);
 
 # Paths and file names
+my $curdir = File::Spec->curdir();
+my $updir = File::Spec->updir();
 
 # set by configure, prefix for the sysconfdir and so on
+# This could be used in the eval
 my $prefix = '@prefix@';
-my $datarootdir;# = '@datarootdir@';
+my $datarootdir;
 my $sysconfdir;
 my $pkgdatadir;
 my $datadir;
+
+my $fallback_prefix = File::Spec->catdir(File::Spec->rootdir(), 'usr', 'local');
 
 # We need to eval as $prefix has to be expanded. However when we haven't
 # run configure @sysconfdir will be expanded as an array, thus we verify
@@ -75,20 +82,22 @@ my $datadir;
 if ('@sysconfdir@' ne '@' . 'sysconfdir@') {
   $sysconfdir = eval '"@sysconfdir@"';
 } else {
-  $sysconfdir = '/usr/local/etc';
+  $sysconfdir = File::Spec->catdir($fallback_prefix, 'etc');
 }
 
 if ('@datarootdir@' ne '@' . 'datarootdir@') {
   $datarootdir = eval '"@datarootdir@"';
 } else {
-  $datarootdir = '/usr/local/share';
+  $datarootdir = File::Spec->catdir($fallback_prefix, 'share');
 }
-if ('@datadir@' ne '@' . 'datadir@') {
+
+if ('@datadir@' ne '@' . 'datadir@' and '@PACKAGE@' ne '@' . 'PACKAGE@') {
   $datadir = eval '"@datadir@"';
-  $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
+  my $package = '@PACKAGE@';
+  $pkgdatadir = File::Spec->catdir($datadir, $package);
 } else {
-  $pkgdatadir = '/usr/local/share/texinfo';
-  $datadir = '/usr/local/share';
+  $datadir = File::Spec->catdir($fallback_prefix, 'share');
+  $pkgdatadir = File::Spec->catdir($datadir, 'texinfo');
 }
 
 #my $messages_textdomain = 'texinfo';
@@ -118,17 +127,17 @@ if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
 
 require Texinfo::Convert::Texinfo;
 
-my $libsrcdir = "$srcdir/maintain";
+my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-  unshift @INC, "$libsrcdir/lib/libintl-perl/lib";
+  unshift @INC, File::Spec->catdir($libsrcdir, 'lib', 'libintl-perl', 'lib');
 } elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes'
-         and -d "$pkgdatadir/lib/libintl-perl/lib") {
-  unshift @INC, "$pkgdatadir/lib/libintl-perl/lib";
+         and -d File::Spec->catdir($pkgdatadir, 'lib', 'libintl-perl', 'lib')) {
+  unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'libintl-perl', 'lib');
 } else {
   eval { require Locale::Messages; };
-  if ($@ and -d "$pkgdatadir/lib/libintl-perl/lib") {
-    unshift @INC, "$pkgdatadir/lib/libintl-perl/lib";
+  if ($@ and -d File::Spec->catdir($pkgdatadir, 'lib', 'libintl-perl', 'lib')) {
+    unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'libintl-perl', 'lib');
   }
 }
 
@@ -145,8 +154,10 @@ if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
   # in case of build from the source directory, out of source build, 
   # this helps to locate the locales.
   my $locales_dir_found = 0;
-  foreach my $locales_dir ("$libsrcdir/../LocaleData", "./LocaleData", 
-       "../../../tp/LocaleData") {
+  foreach my $locales_dir (
+    File::Spec->catdir($libsrcdir, $updir, 'LocaleData'),
+    File::Spec->catdir($curdir, 'LocaleData'), 
+    File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData')) {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       $locales_dir_found = 1;
@@ -157,35 +168,38 @@ if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
     warn "Locales dir for document strings not found\n";
   }
 } else {
-  Locale::Messages::bindtextdomain ($strings_textdomain, "$datadir/locale");
+  Locale::Messages::bindtextdomain ($strings_textdomain, 
+                                    File::Spec->catdir($datadir, 'locale'));
 }
 
-Locale::Messages::bindtextdomain ($messages_textdomain, "$datadir/locale");
+Locale::Messages::bindtextdomain ($messages_textdomain, 
+                                  File::Spec->catdir($datadir, 'locale'));
 
 if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-  unshift @INC, "$libsrcdir/lib/Unicode-EastAsianWidth/lib";
+  unshift @INC, 
+    File::Spec->catdir($libsrcdir, 'lib', 'Unicode-EastAsianWidth', 'lib');
 } elsif ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes'
-         and -d "$pkgdatadir/lib/Unicode-EastAsianWidth/lib") {
-  unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
+         and -d File::Spec->catdir($pkgdatadir, 'lib', 'Unicode-EastAsianWidth', 'lib')) {
+  unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'Unicode-EastAsianWidth', 'lib');
 } else {
   eval { require Unicode::EastAsianWidth; };
-  if ($@ and -d "$pkgdatadir/lib/Unicode-EastAsianWidth/lib") {
-    unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
+  if ($@ and -d File::Spec->catdir($pkgdatadir, 'lib', 'Unicode-EastAsianWidth', 'lib')) {
+    unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'Unicode-EastAsianWidth', 'lib');
   }
 }
 require Unicode::EastAsianWidth;
 
 if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-  unshift @INC, "$libsrcdir/lib/Text-Unidecode/lib";
+  unshift @INC, File::Spec->catdir($libsrcdir, 'lib', 'Text-Unidecode', 'lib');
 } elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes'
-          and "$pkgdatadir/lib/Text-Unidecode/lib") {
-  unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
+          and -d File::Spec->catdir($pkgdatadir, 'lib', 'Text-Unidecode', 'lib')) {
+  unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'Text-Unidecode', 'lib');
 } else {
   eval { require Text::Unidecode; };
-  if ($@ and -d "$pkgdatadir/lib/Text-Unidecode/lib") {
-    unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
+  if ($@ and -d File::Spec->catdir($pkgdatadir, 'lib', 'Text-Unidecode', 'lib')) {
+    unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'Text-Unidecode', 'lib');
   }
 }
 require Text::Unidecode;
@@ -218,7 +232,8 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
   # if not configured, and $hardcoded_version is set search for the version 
   # in configure.ac
   if (defined($hardcoded_version)) {
-    if (open (CONFIGURE, "$srcdir/../configure.ac")) {
+    if (open (CONFIGURE, 
+              "< ".File::Spec->catfile($srcdir, $updir, 'configure.ac'))) {
       while (<CONFIGURE>) {
         if (/^AC_INIT\(\[[^\]]+\]\s*,\s*\[([^\]]+)\]\s*,/) {
           $configured_version = "$1+dev"; # +dev to distinguish from installed
@@ -266,25 +281,30 @@ my $conf_file_name = 'Config' ;
 my $texinfo_htmlxref = 'htmlxref.cnf';
 
 # directories for texinfo configuration files
-my @language_config_dirs = ('./.texinfo');
-push @language_config_dirs, "$ENV{'HOME'}/.texinfo" if (defined($ENV{'HOME'}));
-push @language_config_dirs, "$sysconfdir/texinfo" if (defined($sysconfdir));
-push @language_config_dirs, "$datadir/texinfo" if (defined($datadir));
-my @texinfo_config_dirs = ('.', @language_config_dirs);
+my @language_config_dirs = File::Spec->catdir($curdir, '.texinfo');
+push @language_config_dirs, File::Spec->catdir($ENV{'HOME'}, '.texinfo') 
+                                if (defined($ENV{'HOME'}));
+push @language_config_dirs, File::Spec->catdir($sysconfdir, 'texinfo') 
+                               if (defined($sysconfdir));
+push @language_config_dirs, File::Spec->catdir($datadir, 'texinfo') 
+                               if (defined($datadir));
+my @texinfo_config_dirs = ($curdir, @language_config_dirs);
 
 my @program_config_dirs;
 my @program_init_dirs;
 
 my $program_name = 'texi2any';
-@program_config_dirs = ('.', "./.$program_name");
-push @program_config_dirs, "$ENV{'HOME'}/.$program_name" 
+@program_config_dirs = ($curdir, File::Spec->catdir($curdir, ".$program_name"));
+push @program_config_dirs, File::Spec->catdir($ENV{'HOME'}, ".$program_name")
        if (defined($ENV{'HOME'}));
-push @program_config_dirs, "$sysconfdir/$program_name" if (defined($sysconfdir));
-push @program_config_dirs, "$datadir/$program_name" if (defined($datadir));
+push @program_config_dirs, File::Spec->catdir($sysconfdir, $program_name) 
+       if (defined($sysconfdir));
+push @program_config_dirs, File::Spec->catdir($datadir, $program_name) 
+  if (defined($datadir));
 
 @program_init_dirs = @program_config_dirs;
 foreach my $texinfo_config_dir (@language_config_dirs) {
-  push @program_init_dirs, "${texinfo_config_dir}/init";
+  push @program_init_dirs, File::Spec->catdir($texinfo_config_dir, 'init');
 }
 
 # Namespace for configuration
@@ -378,11 +398,13 @@ sub locate_init_file($$$)
   } else {
     my @files;
     foreach my $dir (@$directories) {
-      next unless (-d "$dir");
+      next unless (-d $dir);
+      my $possible_file = File::Spec->catfile($dir, $file);
       if ($all_files) {
-        push (@files, "$dir/$file") if (-e "$dir/$file" and -r "$dir/$file");
+        push (@files, $possible_file) 
+          if (-e $possible_file and -r $possible_file);
       } else {
-        return "$dir/$file" if (-e "$dir/$file" and -r "$dir/$file");
+        return $possible_file if (-e $possible_file and -r $possible_file);
       }
     }
     return @files if ($all_files);
@@ -1001,9 +1023,9 @@ while(@input_files)
   # in case no file was found, still set the file name
   $input_file_name = $input_file_arg if (!defined($input_file_name));
 
-  my $input_directory = '.';
-  if ($input_file_name =~ /(.*\/)/) {
-    $input_directory = $1;
+  my ($input_filename, $input_directory, $suffix) = fileparse($input_file_name);
+  if (!defined($input_directory) or $input_directory eq '') {
+    $input_directory = $curdir;
   }
 
   my $input_file_base = $input_file_name;

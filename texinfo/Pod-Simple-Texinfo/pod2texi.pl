@@ -23,6 +23,7 @@ use strict;
 use Getopt::Long qw(GetOptions);
 # for dirname.
 use File::Basename;
+use File::Spec;
 
 Getopt::Long::Configure("gnu_getopt");
 
@@ -30,22 +31,24 @@ BEGIN
 {
   my $dir;
   if ('@datadir@' ne '@' . 'datadir@') {
-    my $pkgdatadir = eval '"@datadir@/@PACKAGE@"';
+    my $package = '@PACKAGE@';
     my $datadir = eval '"@datadir@"';
-    $dir = $pkgdatadir;
-    unshift @INC, ("$dir/Pod-Simple-Texinfo", $dir);
+    if ($datadir ne '') {
+      $dir = File::Spec->catdir($datadir, $package);
+      unshift @INC, (File::Spec->catdir($dir, 'Pod-Simple-Texinfo'), $dir);
+    }
   } elsif (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
     my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
-    my $tpdir = "$srcdir/../tp";
-    $dir = "$tpdir/maintain";
-    unshift @INC, ("$srcdir/lib", $tpdir);
+    my $tpdir = File::Spec->catdir($srcdir, File::Spec->updir(), 'tp');
+    $dir = File::Spec->catdir($tpdir, 'maintain');
+    unshift @INC, (File::Spec->catdir($srcdir, 'lib'), $tpdir);
   }
   if (defined($dir)) {
     unshift @INC, (
-        "$dir/lib/libintl-perl/lib", 
-        "$dir/lib/Unicode-EastAsianWidth/lib",
-        "$dir/lib/Text-Unidecode/lib");
+        File::Spec->catdir($dir, 'lib', 'libintl-perl', 'lib'), 
+        File::Spec->catdir($dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
+        File::Spec->catdir($dir, 'lib', 'Text-Unidecode', 'lib'));
   }
 }
 use Pod::Simple::Texinfo;
@@ -67,8 +70,7 @@ sub new
 sub run(){};
 }
 
-my $real_command_name = $0;
-$real_command_name =~ s/.*\///;
+my ($real_command_name, $directories, $suffix) = fileparse($0);
 
 # placeholder for string translations, not used for now
 sub __($)
@@ -138,10 +140,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
 );
 
 exit 1 if (!$result_options);
-
-if (defined($subdir) and ($subdir ne '/')) {
-  $subdir =~ s:/*$:/:;
-}
 
 if (defined($subdir)) {
   if (! -d $subdir) {
@@ -305,7 +303,8 @@ foreach my $file (@processed_files) {
         $outfile .= '.texi';
       }
     }
-    $outfile = $subdir . $outfile if (defined($subdir));
+    $outfile = File::Spec->catfile($subdir, $outfile) 
+      if (defined($subdir));
   }
 
   my $new = Pod::Simple::Texinfo->new();
@@ -374,7 +373,8 @@ foreach my $file (@processed_files) {
         my $new_outfile 
          = Pod::Simple::Texinfo::_pod_title_to_file_name($short_title);
         $new_outfile .= '.texi';
-        $new_outfile = $subdir . $new_outfile if (defined($subdir));
+        $new_outfile = File::Spec->catfile($subdir, $new_outfile) 
+           if (defined($subdir));
         if ($new_outfile ne $outfile) {
           unless (rename ($outfile, $new_outfile)) {
             die sprintf(__("%s: Rename %s failed: %s\n"), 

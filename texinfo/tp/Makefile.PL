@@ -13,6 +13,7 @@ WriteMakefile(
                           "Carp" => 0,
                           "Unicode::Normalize" => 0,
                           "File::Basename" => 0,
+                          "File::Copy" => 0,
                           "Getopt::Long" => 0,
                           "Unicode::EastAsianWidth" => 0,
                           "Text::Unidecode" => 0,

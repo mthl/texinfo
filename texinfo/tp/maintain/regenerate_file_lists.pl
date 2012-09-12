@@ -15,11 +15,13 @@
 use strict;
 use File::Find;
 use File::Basename;
+use File::Spec;
 
 my %files;
 
-(my $mydir = $0) =~ s,/[^/]+$,,;
-chdir("$mydir/..") || die "chdir $mydir/..: $!";
+my ($command, $mydir, $suffix) = fileparse($0);
+my $parent = File::Spec->catdir($mydir, File::Spec->updir());
+chdir($parent) || die "chdir $parent: $!";
 -d "t" || (die "goodbye, no t directory in " . `pwd`);
 
 find (\&wanted, ('t'));

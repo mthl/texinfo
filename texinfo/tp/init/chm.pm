@@ -25,6 +25,8 @@
 
 use strict;
 
+use File::Spec;
+
 main::set_format('html');
 
 set_from_init_file('TOP_NODE_FILE', undef);
@@ -208,9 +210,11 @@ sub chm_init($)
   return if (defined($self->get_conf('OUTFILE'))
         and $Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')});
   my $document_name = $self->{'document_name'};
+  my $outdir = $self->{'destination_directory'};
+  $outdir = File::Spec->curdir() if ($outdir eq '');
 
   my $hhk_filename = $document_name . ".hhk";
-  my $hhk_file = $self->{'destination_directory'} . $hhk_filename;
+  my $hhk_file = File::Spec->catfile($outdir, $hhk_filename);
   my $hhk_fh = Texinfo::Common::open_out($self, $hhk_file);
   # Not sure $! is still valid
   if (!defined($hhk_fh)) {
@@ -266,7 +270,7 @@ sub chm_init($)
   }
 
   my $hhc_filename = $document_name . ".hhc";
-  my $hhc_file = $self->{'destination_directory'} . $hhc_filename;
+  my $hhc_file = File::Spec->catfile($outdir, $hhc_filename);
   my $hhc_fh = Texinfo::Common::open_out($self, $hhc_file);
   # Not sure $! is still valid
   if (!defined($hhc_fh)) {
@@ -337,7 +341,7 @@ sub chm_init($)
   }
 
   my $hhp_filename = $document_name . ".hhp";
-  my $hhp_file = $self->{'destination_directory'} . $hhp_filename;
+  my $hhp_file = File::Spec->catfile($outdir, $hhp_filename);
   my $hhp_fh = Texinfo::Common::open_out($self, $hhp_file);
   # Not sure $! is still valid
   if (!defined($hhp_fh)) {

@@ -43,6 +43,9 @@ package Texinfo::Report;
 use 5.00405;
 use strict;
 
+# for fileparse
+use File::Basename;
+
 use Locale::Messages;
 # to be able to load a parser if none was given to gdt.
 use Texinfo::Parser;
@@ -81,7 +84,9 @@ sub line_warn($$$)
   return if (!defined($line_number) or $self->{'ignore_notice'});
   my $file = $line_number->{'file_name'};
   # otherwise out of source build fail since the file names are different
-  $file =~ s/^.*\/// if ($self->get_conf('TEST'));
+  my ($directories, $suffix);
+  ($file, $directories, $suffix) = fileparse($file)
+    if ($self->get_conf('TEST'));
   my $warn_line;
   if ($line_number->{'macro'} ne '') {
     $warn_line = sprintf($self->__(
@@ -108,7 +113,9 @@ sub line_error($$$;$)
   return if ($self->{'ignore_notice'});
   if (defined($line_number)) {
     my $file = $line_number->{'file_name'};
-    $file =~ s/^.*\/// if ($self->get_conf('TEST'));
+    my ($directories, $suffix);
+    ($file, $directories, $suffix) = fileparse($file)
+       if ($self->get_conf('TEST'));
     my $macro_text = '';
     $macro_text = " (possibly involving \@$line_number->{'macro'})"
        if ($line_number->{'macro'} ne '');

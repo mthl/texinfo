@@ -39,6 +39,9 @@ use Data::Dumper;
 # to detect if an encoding may be used to open the files
 use Encode;
 
+# for fileparse
+use File::Basename;
+
 #use POSIX qw(setlocale LC_ALL LC_CTYPE LC_MESSAGES);
 
 # commands definitions
@@ -842,8 +845,9 @@ sub parse_texi_file ($$)
                                      'type' => 'preamble_text' };
     }
   }
-
-  $file_name =~ s/^.*\/// if ($self->{'TEST'});
+  my ($directories, $suffix);
+  ($file_name, $directories, $suffix) = fileparse($file_name)
+            if ($self->{'TEST'});
   $self = parser() if (!defined($self));
   $self->{'input'} = [{
        'pending' => [],

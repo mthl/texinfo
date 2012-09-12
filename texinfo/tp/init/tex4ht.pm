@@ -92,7 +92,7 @@ sub tex4ht_prepare($)
 
   $tex4ht_initial_dir = Cwd::abs_path;
   $tex4ht_out_dir = $self->{'destination_directory'};
-  $tex4ht_out_dir = './'
+  $tex4ht_out_dir = File::Spec->curdir()
     if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/);
 
   my $document_name = $self->{'document_name'};
@@ -111,7 +111,8 @@ sub tex4ht_prepare($)
     $suffix = '.texi' if ($style eq 'texi');
     $commands{$command}->{'basefile'} = $commands{$command}->{'basename'} . $suffix;
     $commands{$command}->{'html_file'} = $commands{$command}->{'basename'} . '.html';
-    $commands{$command}->{'rfile'} = $tex4ht_out_dir . $commands{$command}->{'basefile'};
+    $commands{$command}->{'rfile'} = File::Spec->catfile($tex4ht_out_dir, 
+                                          $commands{$command}->{'basefile'});
     my $rfile = $commands{$command}->{'rfile'};
     $commands{$command}->{'counter'} = 0;
 
@@ -201,7 +202,7 @@ sub tex4ht_prepare($)
         print $fh "\n\@bye\n";
       }
       close ($fh);
-      # this have to be done during the 'process' phase, in 'output' it is 
+      # this has to be done during the 'process' phase, in 'output' it is 
       # too late.
       push @{$self->{'css_import_lines'}}, 
          "\@import \"$commands{$command}->{'basename'}.css\";\n";

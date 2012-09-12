@@ -621,12 +621,13 @@ sub output($$)
   #print STDERR "OUTPUT\n";
   my $input_basename;
   if (defined($self->{'info'}->{'input_file_name'})) {
-    $input_basename = $self->{'info'}->{'input_file_name'};
+    my ($directories, $suffix);
+    ($input_basename, $directories, $suffix)
+       = fileparse($self->{'info'}->{'input_file_name'});
   } else {
     # This could happen if called on a piece of texinfo
     $input_basename = '';
   }
-  $input_basename =~ s/^.*\///;
   $self->{'input_basename'} = $input_basename;
   $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
   $input_basename =~ s/\.te?x(i|info)?$//;
