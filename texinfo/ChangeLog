@@ -1,11 +1,29 @@
 2012-09-13  Patrice Dumas  <pertusus@free.fr>
 
-	* doc/refcard/txivarcheck(read_tp): filter out customization 
+	* doc/refcard/txivarcheck (read_tp): filter out customization 
 	variables that are internal for the Parser and documented
 	in the Parser, and variables that may only be set in
 	init files as they are arrays or hashes.
 
 2012-09-12  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\markupsetuplqkbd, \markupsetuprqkbd):
+	use \markupsetcodequoteleft and right, like all the others.
+        (\markupsetnoligaturesquoteleft): no longer needed.
+        (\kbdsub): rename from \kbdfoo, reformat.
+        Other doc tweaks.
+	* doc/texinfo.txi (Inserting Quote Characters): @kbd now also
+	respects @codequote*.
+	Suggestion from Patrice, texinfo-devel 14 Aug 2012 00:03:54.
+
+	* doc/texinfo.tex (\markupsetuplqkbd, \markupsetuprqkbd):
+	use \markupsetcodequoteleft and right, like all the others.
+        (\markupsetnoligaturesquoteleft): no longer needed.
+        (\kbdsub): rename from \kbdfoo, reformat.
+        Other doc tweaks.
+	* doc/texinfo.txi (Inserting Quote Characters): @kbd now also
+	respects @codequote*.
+	Suggestion from Patrice, texinfo-devel 14 Aug 2012 00:03:54.
 
 	* doc/texinfo.txi (verb): make example input match output.
 	Report from christophe.jarry, 12 Sep 2012 13:49:27.

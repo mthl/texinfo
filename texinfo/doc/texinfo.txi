@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.479 2012-09-12 21:52:58 karl Exp $
+@c $Id: texinfo.txi,v 1.480 2012-09-12 23:35:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10626,9 +10626,9 @@ If you want these settings for only part of the document,
 @code{@@codequote... off} will restore the normal behavior, as in
 @code{@@codequoteundirected off}.
 
-These settings affect @code{@@code}, @code{@@example}, @code{@@samp},
-@code{verb}, and @code{@@verbatim}; they do not affect @code{@@kbd}.
-@xref{Useful Highlighting}.
+These settings affect @code{@@code}, @code{@@example}, @code{@@kbd},
+@code{@@samp}, @code{@@verb}, and @code{@@verbatim}.  @xref{Useful
+Highlighting}.
 
 This feature used to be controlled by @code{@@set} variable names;
 they are still supported, but the command interface is preferred.
@@ -21841,7 +21841,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.479 2012-09-12 21:52:58 karl Exp $
+$Id: texinfo.txi,v 1.480 2012-09-12 23:35:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
