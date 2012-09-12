@@ -1,5 +1,8 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.116 2012-06-11 17:54:26 karl Exp $
+# $Id: configure.ac,v 1.117 2012-09-12 01:12:25 karl Exp $
+#
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+# Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

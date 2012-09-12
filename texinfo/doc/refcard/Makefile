@@ -1,6 +1,8 @@
-# $Id: Makefile,v 1.1 2008-09-07 22:47:47 karl Exp $
+# $Id: Makefile,v 1.2 2012-09-12 01:12:26 karl Exp $
 # Makefile for texinfo/doc/refcard.
 # This is not hooked into Automake, just here for those working on the refcard.
+#
+# Copyright 2008, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -26,10 +28,16 @@ txirefcard-a4.pdf: $(doc).tex
 	dvips -t landscape -t a4 $(doc) -o
 	ps2pdf $(doc).ps $@
 
-check:
+check: ccheck vcheck
+
+ccheck:
 	txicmdcheck
+
+vcheck:
+	txivarcheck
 
 clean:
 	rm -f $(doc)*.dvi $(doc)*.log $(doc)*.ps
+
 distclean: clean
 	rm -f $(doc)*.pdf

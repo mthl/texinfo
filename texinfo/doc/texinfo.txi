@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.477 2012-09-10 23:24:12 karl Exp $
+@c $Id: texinfo.txi,v 1.478 2012-09-12 01:12:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1017,9 +1017,10 @@ the Texinfo markup commands into XML syntax, for further processing by
 XML tools.  The details of the output are defined in an XML DTD as
 usual, which is contained in a file @file{texinfo.dtd} included in the
 Texinfo source distribution and available via the Texinfo web pages.
-The XML contains enough information to (nearly) recreate the original
-source, and the Texinfo sources include a utility script
-@file{txixml2texi} to do just that.
+The XML contains enough information to recreate the original content,
+except for syntactic constructs such as Texinfo macros and
+conditionals.  The Texinfo source distribution includes a utility script
+@file{txixml2texi} to do that backward transformation.
 @end table
 
 
@@ -21840,7 +21841,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.477 2012-09-10 23:24:12 karl Exp $
+$Id: texinfo.txi,v 1.478 2012-09-12 01:12:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
