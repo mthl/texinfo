@@ -1,5 +1,8 @@
 2012-09-12  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (verb): make example input match output.
+	Report from christophe.jarry, 12 Sep 2012 13:49:27.
+
 	* doc/refcard/txivarcheck: new script to check customization
 	variables implemented vs. documented, similar to txicmdcheck.
 

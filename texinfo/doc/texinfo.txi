@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.478 2012-09-12 01:12:25 karl Exp $
+@c $Id: texinfo.txi,v 1.479 2012-09-12 21:52:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7344,7 +7344,7 @@ In English, the vowels are @samp{a}, @samp{e},
 
 
 @node verb
-@subsection @code{@@verb}@{<char>@var{text}<char>@}
+@subsection @code{@@verb}@{@var{char}@var{text}@var{char}@}
 @findex verb
 @cindex Verbatim in-line text
 
@@ -7358,7 +7358,7 @@ delimiters, in braces.  Text is printed in a fixed-width font:
 
 @example
 How many @@verb@{|@@|@}-escapes does one need to print this
-@@verb@{.@@a @@b.@@c.@} string or @@verb@{+@@'e@?`@!`@{@}\+@} this?
+@@verb@{.@@a @@b.@@c.@} string or @@verb@{+@@'e?`@{@}!`\+@} this?
 @end example
 
 @noindent
@@ -17027,7 +17027,7 @@ referenced in a menu.
 @quotation Warning
 These customization variable names and meanings may change in any
 Texinfo release.  We always try to avoid incompatible changes, but we
-cannot absolutely promise, since needs change.
+cannot absolutely promise, since needs change over time.
 @end quotation
 
 Many aspects of the behavior and output of @command{texi2any} may be
@@ -17126,7 +17126,7 @@ variable with the same name (minus the leading @code{@@}):
 
 @smallexample
 @@allowcodebreaks @@clickstyle @@codequotebacktick 
-@@codequoteundirected @@contents @@deftypefnnewline @c @@documentdescription
+@@codequoteundirected @@contents @@deftypefnnewline
 @@documentencoding @@documentlanguage
 @@evenfootingmarks @@evenheadingmarks @@everyfootingmarks 
 @@everyheadingmarks @@exampleindent @@firstparagraphindent
@@ -21841,7 +21841,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.478 2012-09-12 01:12:25 karl Exp $
+$Id: texinfo.txi,v 1.479 2012-09-12 21:52:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
