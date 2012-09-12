@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.2 2012-09-12 01:12:26 karl Exp $
+# $Id: Makefile,v 1.3 2012-09-12 18:15:43 karl Exp $
 # Makefile for texinfo/doc/refcard.
 # This is not hooked into Automake, just here for those working on the refcard.
 #
@@ -15,15 +15,15 @@
 doc = txirefcard
 
 # parallel makes, etc., will fail.
-all: txirefcard.pdf txirefcard-a4.pdf
+all: $(doc).pdf $(doc)-a4.pdf
 
 # trying to get it work with pdftex isn't worth the trouble.
-txirefcard.pdf: $(doc).tex
+$(doc).pdf: $(doc).tex
 	tex '\nonstopmode \input $(doc)'
 	dvips -t landscape -t letter $(doc) -o
 	ps2pdf $(doc).ps
 
-txirefcard-a4.pdf: $(doc).tex
+$(doc)-a4.pdf: $(doc).tex
 	tex '\nonstopmode \let\afour=1 \input $(doc)'
 	dvips -t landscape -t a4 $(doc) -o
 	ps2pdf $(doc).ps $@

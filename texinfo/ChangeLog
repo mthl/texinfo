@@ -1,3 +1,8 @@
+2012-09-12  Karl Berry  <karl@gnu.org>
+
+	* doc/refcard/txivarcheck: new script to check customization
+	variables implemented vs. documented, similar to txicmdcheck.
+
 2012-09-10  Patrice Dumas  <pertusus@free.fr>
 
 	* util/texinfo.dtd: update.
