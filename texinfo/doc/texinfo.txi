@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.480 2012-09-12 23:35:58 karl Exp $
+@c $Id: texinfo.txi,v 1.481 2012-09-13 18:02:57 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14384,8 +14384,8 @@ For example:
 @cindex Running macros
 @cindex Macro invocation
 
-After a macro is defined (see the previous section), you can use
-(@dfn{invoke}) it in your document like this:
+After a macro is defined (see the previous section), you can
+@dfn{invoke} (use) it in your document like this:
 
 @example
 @@@var{macroname} @{@var{arg1}, @var{arg2}, @dots{}@}
@@ -14410,7 +14410,7 @@ Together: a & b.
 @cindex Backslash, and macros
 Thus, the arguments and parameters are separated by commas and
 delimited by braces; any whitespace after (but not before) a comma is
-ignored.  The braces are required in the invocation, even when the
+ignored.  The braces are required in the invocation even when the
 macro takes no arguments, consistent with other Texinfo commands.  For
 example:
 
@@ -14428,17 +14428,17 @@ No arguments here.
 @end display
 
 @cindex Comma, in macro arguments
-Passing strings containing commas as macro arguments requires special
-care, since they should be properly @dfn{quoted} to prevent
-@command{makeinfo} from confusing them with argument separators.  To
-manually quote a comma, the most reliable method is to use the
-@code{@@comma@{@}} command.  For @code{makeinfo}, you can also prepend
-a backslash character, as in @samp{\,}, but this does not work with
-@TeX{}.
+Passing macro arguments containing commas requires special care, since
+commas also separate the arguments.  To include a comma character in
+an argument, the most reliable method is to use the @code{@@comma@{@}}
+command.  For @code{makeinfo}, you can also prepend a backslash
+character, as in @samp{\,}, but this does not work with @TeX{}.
 
-It's not always necessary to quote commas.  To facilitate use of
-macros, @command{makeinfo} implements a set of rules called
-@dfn{automatic quoting}:
+@cindex Automatic quoting of commas for some macros
+@cindex Quoting, automatic for some macros
+It's not always necessary to worry about commas.  To facilitate use of
+macros, @command{makeinfo} implements two rules for @dfn{automatic
+quoting} in some circumstances:
 
 @enumerate 1
 @item If a macro takes only one argument, all commas in its invocation
@@ -14508,14 +14508,14 @@ will pass the (almost certainly error-producing) argument
 
 Unfortunately, this has not been reliably implemented in @TeX{}.  When
 macros are used in the argument to other commands, for example, errors
-or incorrect output (the @samp{\} ``escape'' being included
-literally) are likely to result.
+or incorrect output (the @samp{\} ``escape'' being included literally)
+are likely to result.
 
-If the macro is defined to take exactly one argument, and is invoked
-without any braces, the entire rest of the line after the macro name
-is supplied as the argument.  (It's an error to specify the argument
-without braces if the macro takes either zero or more than one
-argument.)  For example:
+If a macro is defined to take exactly one argument, it can (but need
+not) be invoked without any braces; then the entire rest of the line
+after the macro name is used as the argument.  (Braces around the
+argument(s) are required in all other cases, i.e., if the macro takes
+either zero or more than one argument.)  For example:
 
 @example
 @@macro bar @{p@}
@@ -14526,14 +14526,13 @@ Twice: \p\ & \p\.
 
 @noindent produces:
 
-@c Sorry for cheating, but let's not require macros to process the manual.
 @display
 Twice: aah & aah.
 @end display
 
-If the macro is defined to take exactly one argument, and is invoked
-with braces, the braced text is passed as the argument, regardless of
-commas.  For example:
+Likewise, if a macro is defined to take exactly one argument, and is
+invoked with braces, the braced text is passed as the argument, also
+regardless of commas.  For example:
 
 @example
 @@macro bar @{p@}
@@ -14589,7 +14588,7 @@ in @command{makeinfo}:
 @item @code{@@end} lines.
 @end itemize
 
-@noindent @TeX{} may or may not do some expansion in these situations,
+@noindent Unfortunately, @TeX{} may do some expansion in these situations,
 possibly yielding errors.
 
 Also, due to unavoidable limitations, quite a few macro-related
@@ -14606,19 +14605,44 @@ Processors}).
 As mentioned earlier, macro names must consist entirely of letters.
 
 @item
-Macros may take at most nine arguments.
-
-@item
 It is not advisable to redefine any @TeX{} primitive, plain, or
-Texinfo command name as a macro. Unfortunately this is a very large
-set of names, and the possible resulting errors are unpredictable.
+Texinfo command name as a macro. Unfortunately this is a large and
+open-ended set of names, and the possible resulting errors are
+unpredictable.
 
 @item
 All macros are expanded inside at least one @TeX{} group.
 
 @item
-Commas in macro arguments, even if escaped by a backslash, don't
-always work.
+The backslash escape for commas in macro arguments does not work;
+@code{@@comma@{@}} must be used.
+
+@item
+As a consequence, if a macro takes two or more arguments, and you want
+to pass an argument with the Texinfo command @code{@@,} (for a
+cedilla, @pxref{Inserting Accents}), you have to use @code{@@value} or
+another work-around.  Otherwise, @TeX{} takes the comma as separating
+the arguments.  Example:
+
+@example
+@@macro mactwo@{argfirst, argsecond@}
+\argfirst\+\argsecond\.
+@@end macro
+@@set fc Fran@@,cois
+@@mactwo@{@@value@{fc@}@}
+@end example
+
+@noindent produces:
+
+@display
+Fran@,cois+.
+@end display
+
+The natural-seeming @code{@@mactwo@{Fran@@,cois@}} passes the two
+arguments @samp{Fran@@} and @samp{cois} to the macro, and nothing good
+results.  And, as just mentioned, although the comma can be escaped
+with a backslash for @code{makeinfo} (@samp{@@\,}), that doesn't work
+in @TeX{}, so there is no other solution.
 
 @item
 Macro arguments cannot cross lines.
@@ -14637,15 +14661,15 @@ macros containing line-oriented commands or text, such as
 White space is ignored at the beginnings of lines.
 
 @item
-It is (usually) best to avoid comments inside macro definitions, but
+It is usually best to avoid comments inside macro definitions, but
 see the next item.
 
 @item
 In general, the interaction of newlines in the macro definitions and
-invocations depends on the precise commands and context, despite the
-previous statements.  You may be able to work around some problems
-with judicious use of @code{@@c}.  Suppose you define a macro that is
-intended to always be used on a line by itself:
+invocations depends on the precise commands and context,
+notwithstanding the previous statements.  You may be able to work
+around some problems with judicious use of @code{@@c}.  Suppose you
+define a macro that is always used on a line by itself:
 
 @example
 @@macro linemac
@@ -14657,10 +14681,10 @@ foo
 bar
 @end example
 
-Without the @code{@@c}, there will be an unwanted blank line between
+Without the @code{@@c}, there will be a unwanted blank line between
 the @samp{@@cindex whatever} and the @samp{bar} (one newline comes
-from the macro definition, one from after the invocation), causing a
-paragraph break.
+from the macro definition, one from after the invocation), causing an
+unwanted paragraph break.
 
 On the other hand, you wouldn't want the @code{@@c} if the macro was
 sometimes invoked in the middle of a line (the text after the
@@ -14702,7 +14726,6 @@ something involving \arg\ somehow
 \gdef\ctorx#1,#2,@{\def#1@{something involving #2 somehow@}@}
 @@end tex
 @end example
-
 @end itemize
 
 The @command{makeinfo} implementation also has the following
@@ -14717,10 +14740,10 @@ may not work, for that matter.
 
 @item
 Macros that completely define macros are ok, but it's not possible to
-have incorrectly nested macro definitions.  That is, @code{@@macro}
+have incompletely nested macro definitions.  That is, @code{@@macro}
 and @code{@@end macro} (likewise for @code{@@rmacro}) must be
 correctly paired.  For example, you cannot start a macro definition
-within a macro, and then end the nested definition outside the macro.
+within a macro, and then end that nested definition outside the macro.
 
 @end itemize
 
@@ -21841,7 +21864,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.480 2012-09-12 23:35:58 karl Exp $
+$Id: texinfo.txi,v 1.481 2012-09-13 18:02:57 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
