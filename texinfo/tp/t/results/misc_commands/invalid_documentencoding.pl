@@ -65,8 +65,8 @@ $result_trees{'invalid_documentencoding'} = {
       ],
       'cmdname' => 'documentencoding',
       'extra' => {
-        'encoding_name' => 'us-ascii',
-        'perl_encoding' => 'ascii',
+        'input_encoding_name' => 'us-ascii',
+        'input_perl_encoding' => 'ascii',
         'spaces_after_command' => {},
         'text_arg' => 'us-ascii'
       },

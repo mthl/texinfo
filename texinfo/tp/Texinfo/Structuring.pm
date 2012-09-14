@@ -1891,8 +1891,9 @@ sub _do_index_keys($$$)
   my $index_names = shift;
 
   my $options = {'sort_string' => 1};
-  if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'}) {
-    $options->{'enabled_encoding'} = $self->{'encoding_name'};
+  if ($self->get_conf('ENABLE_ENCODING') 
+      and $self->get_conf('INPUT_ENCODING_NAME')) {
+    $options->{'enabled_encoding'} = $self->get_conf('INPUT_ENCODING_NAME');
   }
   foreach my $index_name (keys(%$index_entries)) {
     foreach my $entry (@{$index_entries->{$index_name}}) {

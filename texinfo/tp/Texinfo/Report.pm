@@ -217,12 +217,25 @@ sub gdt($$;$$)
 
   # FIXME do that only once when encoding is seen (or at beginning)
   # instead of here, each time that gdt is called?
-  my $encoding = $self->{'encoding_name'};
+  my $encoding;
+  if ($self->get_conf('OUTPUT_ENCODING_NAME')) {
+    $encoding = $self->get_conf('OUTPUT_ENCODING_NAME');
+  } elsif ($self->get_conf('INPUT_ENCODING_NAME')) {
+    $encoding = $self->get_conf('INPUT_ENCODING_NAME');
+  }
   Locale::Messages::bind_textdomain_codeset($strings_textdomain, $encoding)
     if ($encoding and $encoding ne 'us-ascii');
-  if (!($encoding and $encoding eq 'us-ascii') and $self->{'perl_encoding'}) {
-    Locale::Messages::bind_textdomain_filter($strings_textdomain,
-      \&_encode_i18n_string, $self->{'perl_encoding'});
+  if (!($encoding and $encoding eq 'us-ascii')) {
+    my $perl_encoding;
+    if ($self->get_conf('OUTPUT_PERL_ENCODING')) {
+      $perl_encoding = $self->get_conf('OUTPUT_PERL_ENCODING');
+    } elsif ($self->get_conf('INPUT_PERL_ENCODING')) {
+      $perl_encoding = $self->get_conf('INPUT_PERL_ENCODING');
+    }
+    if ($perl_encoding) {
+      Locale::Messages::bind_textdomain_filter($strings_textdomain,
+        \&_encode_i18n_string, $perl_encoding);
+    }
   }
 
   # FIXME do that once when @documentlanguage changes (or at beginning)

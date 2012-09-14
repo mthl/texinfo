@@ -141,9 +141,11 @@ our %default_configuration = (
                               # in the `HTML Xref' node.  Value should be
                               # a node/anchor or float in the tree.
   'novalidate' => 0,          # same as setting @novalidate.
-  'perl_encoding' => undef,   # perl encoding name, set from @documentencoding
-  'encoding_name' => undef,   # Current encoding set by @documentencoding
-                              # and normalized
+  'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
+                              # @documentencoding in the default case
+  'INPUT_ENCODING_NAME' => undef, # encoding name normalized as preferred
+                              # IANA, set from @documentencoding in the default
+                              # case
   'documentlanguage' => undef, 
                               # Current documentlanguage set by 
                               # @documentlanguage
@@ -168,7 +170,7 @@ foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels'
 # The commands in initialization_overrides are not set in the document if
 # set at the parser initialization.
 my %initialization_overrides = (
-  'encoding_name' => 1,
+  'INPUT_ENCODING_NAME' => 1,
   'documentlanguage' => 1,
 );
 
@@ -832,7 +834,8 @@ sub parse_texi_file ($$)
       $line_nr++;
     } else {
       # put the line back in the filehandle
-      seek($filehandle, -Texinfo::Common::count_bytes($self, $line), 1);
+      seek($filehandle, -Texinfo::Common::count_bytes($self, 
+                       $line, $self->{'INPUT_PERL_ENCODING'}), 1);
       last;
     }
   }
@@ -943,7 +946,7 @@ sub global_commands_information ($)
 # @ dircategory_direntry
 # @ unassociated_menus
 # perl_encoding
-# encoding_name
+# input_encoding_name
 # input_file_name
 sub global_informations ($)
 {
@@ -3069,8 +3072,8 @@ sub _end_line($$$)
             my $filehandle = do { local *FH };
             if (open ($filehandle, $file)) {
               $included_file = 1;
-              binmode($filehandle, ":encoding($self->{'perl_encoding'})")
-                if (defined($self->{'perl_encoding'}));
+              binmode($filehandle, ":encoding($self->{'INPUT_PERL_ENCODING'})")
+                if (defined($self->{'INPUT_PERL_ENCODING'}));
               print STDERR "Included $file($filehandle)\n" if ($self->{'DEBUG'});
               unshift @{$self->{'input'}}, { 
                 'name' => $file,
@@ -3088,7 +3091,7 @@ sub _end_line($$$)
                               $command, $text);
           }
         } elsif ($command eq 'documentencoding') {
-          my ($texinfo_encoding, $perl_encoding, $output_encoding)
+          my ($texinfo_encoding, $perl_encoding, $input_encoding)
             = Texinfo::Encoding::encoding_alias($text);
           $self->_command_warn($current, $line_nr,
                  $self->__("Encoding `%s' is not a canonical texinfo encoding"),
@@ -3098,16 +3101,18 @@ sub _end_line($$$)
             $self->_command_warn($current, $line_nr,
                  $self->__("unrecognized encoding name `%s'"), $text);
           } else {
-            if ($output_encoding) {
-              $current->{'extra'}->{'encoding_name'} = $output_encoding;
+            if ($input_encoding) {
+              $current->{'extra'}->{'input_encoding_name'} = $input_encoding;
+              if (!$self->{'set'}->{'INPUT_ENCODING_NAME'}) {
+                $self->{'INPUT_ENCODING_NAME'} = $input_encoding;
+                $self->{'info'}->{'input_encoding_name'} = $input_encoding;
+              }
             }
-            $current->{'extra'}->{'perl_encoding'} = $perl_encoding;
+            $current->{'extra'}->{'input_perl_encoding'} = $perl_encoding;
 
-            if (!$self->{'set'}->{'perl_encoding'}) {
-              $self->{'perl_encoding'} = $perl_encoding;
-              $self->{'info'}->{'perl_encoding'} = $perl_encoding;
-              $self->{'info'}->{'encoding_name'} = $output_encoding;
-              print STDERR "Using encoding $perl_encoding\n" if ($self->{'DEBUG'});
+            if (!$self->{'set'}->{'INPUT_PERL_ENCODING'}) {
+              $self->{'INPUT_PERL_ENCODING'} = $perl_encoding;
+              $self->{'info'}->{'input_perl_encoding'} = $perl_encoding;
               foreach my $input (@{$self->{'input'}}) {
                 binmode($input->{'fh'}, ":encoding($perl_encoding)") if ($input->{'fh'});
               }
@@ -5615,12 +5620,13 @@ The I<$info> returned is a hash reference.  The possible keys are
 
 The name of the main Texinfo input file.
 
-=item encoding_name
+=item input_encoding_name
 
-=item perl_encoding
+=item input_perl_encoding
 
-C<encoding_name> string is the encoding name use for the Texinfo code.
-C<perl_encoding> string is a corresponding perl encoding name.
+C<input_encoding_name> string is the encoding name used for the 
+Texinfo code.
+C<input_perl_encoding> string is a corresponding perl encoding name.
 
 =item dircategory_direntry
 
@@ -5814,13 +5820,14 @@ is the same as having the following texinfo code in the document:
 
   @acronym{EU, European Union}
 
-=item encoding_name
+=item INPUT_ENCODING_NAME
 
-=item perl_encoding
+=item INPUT_PERL_ENCODING
 
-C<encoding_name> string is the encoding name as set by C<@documentencoding>.
-C<perl_encoding> string is a corresponding perl encoding name.  In general
-those two strings should be set simultaneously.
+C<INPUT_ENCODING_NAME> string is the encoding name as set 
+by C<@documentencoding>.
+C<INPUT_PERL_ENCODING> string is a corresponding perl encoding name.  
+In general those two strings should be set simultaneously.
 
 =item indices
 
@@ -6560,8 +6567,8 @@ The corresponding @-command is in I<command>.
 
 =item @documentencoding
 
-The argument, normalized is in I<encoding_name> if it is recognized.
-The correpsonding perl encoding name is in I<perl_encoding>.
+The argument, normalized is in I<input_encoding_name> if it is recognized.
+The corresponding perl encoding name is in I<input_perl_encoding>.
 
 =item @click
 

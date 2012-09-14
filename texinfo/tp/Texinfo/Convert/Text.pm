@@ -584,9 +584,11 @@ sub converter($)
         my $root = $converter->{'extra'}->{$global_command}->[0];
         if ($global_command eq 'documentencoding'
             and defined($root->{'extra'})
-            and defined($root->{'extra'}->{'perl_encoding'})) {
-          $converter->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
-          $converter->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
+            and defined($root->{'extra'}->{'input_perl_encoding'})) {
+          $converter->{'OUTPUT_ENCODING_NAME'} 
+             = $root->{'extra'}->{'input_encoding_name'};
+          $converter->{'OUTPUT_PERL_ENCODING'} 
+             = $root->{'extra'}->{'input_perl_encoding'};
         }
       }
     }

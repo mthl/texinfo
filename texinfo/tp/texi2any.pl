@@ -974,6 +974,7 @@ foreach my $parser_settable_option (
        'TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING', 'INLINE_INSERTCOPYING', 
        'SHOW_MENU', 'IGNORE_BEFORE_SETFILENAME', 'TEST', 
        'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES', 
+       'INPUT_ENCODING_NAME', 'INPUT_PERL_ENCODING', 
        'MACRO_BODY_IGNORES_LEADING_SPACE', 'USE_UP_NODE_FOR_ELEMENT_UP') {
   if (defined(get_conf($parser_settable_option))) {
     $parser_default_options->{$parser_settable_option} 
@@ -1087,7 +1088,7 @@ while(@input_files)
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
     my $macro_expand_fh = Texinfo::Common::open_out($parser, 
-                                                    $macro_expand_file);
+                        $macro_expand_file, $parser->{'INPUT_PERL_ENCODING'});
 
     my $error_macro_expand_file;
     if (defined ($macro_expand_fh)) {

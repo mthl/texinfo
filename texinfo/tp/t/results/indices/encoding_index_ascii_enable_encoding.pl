@@ -83,8 +83,8 @@ $result_trees{'encoding_index_ascii_enable_encoding'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'encoding_name' => 'us-ascii',
-            'perl_encoding' => 'ascii',
+            'input_encoding_name' => 'us-ascii',
+            'input_perl_encoding' => 'ascii',
             'spaces_after_command' => {},
             'text_arg' => 'us-ascii'
           },

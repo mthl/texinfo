@@ -720,7 +720,7 @@ my (%BUTTONS_TEXT, %BUTTONS_GOTO, %BUTTONS_NAME, %SPECIAL_ELEMENTS_NAME);
 sub _translate_names($)
 {
   my $self = shift;
-  #print STDERR "encoding_name: $self->{'encoding_name'} documentlanguage: ".$self->get_conf('documentlanguage')."\n";
+  #print STDERR "encoding_name: ".$self->get_conf('OUTPUT_ENCODING_NAME')." documentlanguage: ".$self->get_conf('documentlanguage')."\n";
 
 
   %BUTTONS_TEXT = (
@@ -910,8 +910,7 @@ my %PASSIVE_ICONS = (
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 1,
-  'perl_encoding'        => 'utf8',
-  'encoding_name'        => 'utf-8',
+  'OUTPUT_ENCODING_NAME'  => 'utf-8',
   #'encoding_name'        => undef,
   #'perl_encoding'        => undef,
   'OUTFILE'              => undef,
@@ -3691,7 +3690,8 @@ sub _convert_text($$$)
   $text = $self->protect_text($text);
   if ($self->get_conf('ENABLE_ENCODING') and 
       !$self->get_conf('ENABLE_ENCODING_USE_ENTITY')
-      and $self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
+      and $self->get_conf('OUTPUT_ENCODING_NAME') 
+      and $self->get_conf('OUTPUT_ENCODING_NAME') eq 'utf-8') {
     $text = Texinfo::Convert::Unicode::unicode_text($text,
                                         ($self->in_code() or $self->in_math()));
   } elsif (!$self->in_code() and !$self->in_math()) { 
@@ -4612,11 +4612,11 @@ sub converter_initialize($)
         if (defined($default_commands_formatting{$context}->{$command})) {
           if ($self->get_conf('ENABLE_ENCODING') 
               and Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
-                             $command, $self->{'encoding_name'})
+                             $command, $self->get_conf('OUTPUT_ENCODING_NAME'))
               and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
             $self->{'commands_formatting'}->{$context}->{$command}
               = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
-                             $command, $self->{'encoding_name'})
+                             $command, $self->get_conf('OUTPUT_ENCODING_NAME'))
           } else {
             $self->{'commands_formatting'}->{$context}->{$command} 
               = $default_commands_formatting{$context}->{$command};
@@ -6155,9 +6155,9 @@ sub _file_header_informations($$)
   my $encoding = '';
   $encoding 
      = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".
-       $self->{'encoding_name'}."\">" 
-    if (defined($self->{'encoding_name'}) 
-        and ($self->{'encoding_name'} ne ''));
+       $self->get_conf('OUTPUT_ENCODING_NAME')."\">" 
+    if (defined($self->get_conf('OUTPUT_ENCODING_NAME')) 
+        and ($self->get_conf('OUTPUT_ENCODING_NAME') ne ''));
 
   my $date = '';
   if ($self->get_conf('DATE_IN_HEADER')) {

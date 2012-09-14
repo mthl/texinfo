@@ -67,8 +67,7 @@ my %defaults = (
   #'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 0,
   'EXTENSION'            => 'xml', # dbk?
-  'perl_encoding'        => 'utf8',
-  'encoding_name'        => 'utf-8',
+  'OUTPUT_ENCODING_NAME' => 'utf-8',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'output_format'        => 'docbook',
@@ -318,8 +317,9 @@ sub output($$)
   $self->_set_global_multiple_commands(-1);
 
   my $encoding = '';
-  if ($self->{'encoding_name'} and $self->{'encoding_name'} ne 'utf-8') {
-    $encoding = " encoding=\"$self->{'encoding_name'}\" ";
+  if ($self->get_conf('OUTPUT_ENCODING_NAME') 
+      and $self->get_conf('OUTPUT_ENCODING_NAME') ne 'utf-8') {
+    $encoding = " encoding=\"".$self->get_conf('OUTPUT_ENCODING_NAME')."\" ";
   }
 
   my $id;

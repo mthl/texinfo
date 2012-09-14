@@ -77,8 +77,8 @@ $result_trees{'at_commands_in_refs_latin1'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'encoding_name' => 'iso-8859-15',
-            'perl_encoding' => 'iso-8859-15',
+            'input_encoding_name' => 'iso-8859-15',
+            'input_perl_encoding' => 'iso-8859-15',
             'spaces_after_command' => {},
             'text_arg' => 'ISO-8859-15'
           },

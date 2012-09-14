@@ -26,6 +26,7 @@ use strict;
 use File::Basename;
 # for file names portability
 use File::Spec;
+use Encode;
 
 use Texinfo::Report;
 use Texinfo::Common;
@@ -62,8 +63,6 @@ $VERSION = '5.00';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
-#  'perl_encoding'        => 'ascii',
-#  'encoding_name'      => 'us-ascii',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
@@ -147,10 +146,10 @@ sub _informative_command($$)
     $self->set_conf($cmdname, 1);
   } elsif (exists($root->{'extra'}->{'text_arg'})) {
     $self->set_conf($cmdname, $root->{'extra'}->{'text_arg'});
-    if ($cmdname eq 'documentencoding'
-        and defined($root->{'extra'})
-        and defined($root->{'extra'}->{'perl_encoding'})
-       ){
+    #if ($cmdname eq 'documentencoding'
+    #    and defined($root->{'extra'})
+    #    and defined($root->{'extra'}->{'perl_encoding'})
+    #   ){
       # the following does not work with shifijs.  The encoding
       # has to be set only once by open_out. 
       #if (defined($self->{'fh'})) {
@@ -163,9 +162,9 @@ sub _informative_command($$)
       #  }
       #  binmode($filehandle, ":encoding($encoding)");
       #}
-      $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
-      $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
-    }
+    #  $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
+    #  $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
+    #}
   } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
            and exists($root->{'extra'}->{'misc_args'}->[0])) {
     $self->set_conf($cmdname, $root->{'extra'}->{'misc_args'}->[0]);
@@ -222,9 +221,17 @@ sub converter(;$)
       $converter->{'extra'} 
          = $converter->{'parser'}->global_commands_information();
       $converter->{'info'} = $converter->{'parser'}->global_informations();
-      if ($converter->{'info'} and $converter->{'info'}->{'perl_encoding'}) {
-        $converter->{'perl_encoding'} = $converter->{'info'}->{'perl_encoding'};
-        $converter->{'encoding_name'} = $converter->{'info'}->{'encoding_name'};
+      if ($converter->{'info'} 
+          and $converter->{'info'}->{'input_perl_encoding'}
+          and !defined($conf->{'INPUT_PERL_ENCODING'})) {
+        $conf->{'INPUT_PERL_ENCODING'}
+              = $converter->{'info'}->{'input_perl_encoding'};
+      }
+      if ($converter->{'info'} 
+          and $converter->{'info'}->{'input_encoding_name'}
+          and !defined($conf->{'INPUT_ENCODING_NAME'})) {
+        $conf->{'INPUT_ENCODING_NAME'} 
+             = $converter->{'info'}->{'input_encoding_name'};
       }
       my $floats = $converter->{'parser'}->floats_information();
       my $labels = $converter->{'parser'}->labels_information();
@@ -263,6 +270,17 @@ sub converter(;$)
         $converter->{$key} = $conf->{$key};
       }
       $converter->{'set'}->{$key} = 1;
+    }
+  }
+  $converter->set_conf('OUTPUT_ENCODING_NAME', 
+                       $converter->get_conf('INPUT_ENCODING_NAME'))
+     if ($converter->get_conf('INPUT_ENCODING_NAME'));
+  if (!$converter->get_conf('OUTPUT_PERL_ENCODING')
+       and $converter->get_conf('OUTPUT_ENCODING_NAME')) {
+    my $perl_encoding 
+      = Encode::resolve_alias($converter->get_conf('OUTPUT_ENCODING_NAME'));
+    if ($perl_encoding) {
+      $converter->set_conf('OUTPUT_PERL_ENCODING', $perl_encoding);
     }
   }
   if (!defined($converter->{'expanded_formats'})) {
@@ -917,9 +935,9 @@ sub convert_accents($$$;$)
   my $encoded;
   if ($self->get_conf('ENABLE_ENCODING')) {
     $encoded = Texinfo::Convert::Unicode::encoded_accents($result, $stack,
-                                                  $self->{'encoding_name'},
-                                                  $format_accents,
-                                                  $in_upper_case);
+                                       $self->get_conf('OUTPUT_ENCODING_NAME'),
+                                       $format_accents,
+                                       $in_upper_case);
   }
   if (!defined($encoded)) {
     foreach my $accent_command (reverse(@$stack)) {

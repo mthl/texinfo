@@ -130,17 +130,21 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
 );
 
 # documented in the Texinfo::Parser pod section
+# all are lower cased in texi2any.pl
 our @parser_options = ('EXPANDED_FORMATS', 'GETTEXT', 'INCLUDE_DIRECTORIES',
   'ALIASES', 'CLICKSTYLE', 'DOCUMENTLANGUAGE', 'EXPLAINED_COMMANDS',
-  'ENCODING_NAME', 'PERL_ENCODING', 'INDICES', 'KBDINPUTSTYLE', 'LABELS',
+  'INDICES', 'KBDINPUTSTYLE', 'LABELS',
   'MACROS', 'NOVALIDATE', 'SECTIONS_LEVEL', 'VALUES');
 
 my @obsolete_variables = ('TOP_HEADING_AT_BEGINNING', 'USE_SECTIONS',
   'IDX_SUMMARY', 'I18N_PERL_HASH', 'USE_UNICODE', 'USE_NLS',
   'USE_UP_FOR_ADJACENT_NODES', 'SEPARATE_DESCRIPTION', 
-  'NEW_CROSSREF_STYLE', 'SHORT_REF');
+  'NEW_CROSSREF_STYLE', 'SHORT_REF', 'IGNORE_PREAMBLE_TEXT',
+  'OUT_ENCODING', 
+  'IN_ENCODING', 'DEFAULT_ENCODING');
 
-my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE');
+my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE',
+  'SPLIT_INDEX');
 
 my @formats_settable = (
   'DEBUGCOUNT', 'DEBUGTREE', 'RAWTEXT', 'TEXTCONTENT', 'PLAINTEXINFO'
@@ -151,8 +155,7 @@ my @variable_string_settables = (
   'TOP_FILE', 'SHOW_MENU', 'USE_NODES', 'TOC_LINKS', 'SHORTEXTN',
   'PREFIX', 'DEF_TABLE', 'L2H', 'MONOLITHIC',
   'L2H_L2H', 'L2H_SKIP', 'L2H_TMP', 'L2H_FILE', 'L2H_CLEAN',
-  'L2H_HTML_VERSION', 'IGNORE_PREAMBLE_TEXT', 'EXTERNAL_DIR', 'USE_ISO',
-  'SPLIT_INDEX', 'IN_ENCODING',
+  'L2H_HTML_VERSION', 'EXTERNAL_DIR', 'USE_ISO',
   'VERTICAL_HEAD_NAVIGATION', 'INLINE_CONTENTS', 'NODE_FILE_EXTENSION',
   'NO_CSS', 'INLINE_CSS_STYLE', 'USE_TITLEPAGE_FOR_TITLE',
   'SIMPLE_MENU', 'EXTENSION', 'INLINE_INSERTCOPYING', 'USE_NUMERIC_ENTITY',
@@ -166,11 +169,13 @@ my @variable_string_settables = (
   'COMPLEX_FORMAT_IN_TABLE',
   'IGNORE_BEFORE_SETFILENAME',
   'USE_NODE_TARGET',
-  'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
-  'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
+  'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES',
+  'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
   'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
   'CPP_LINE_DIRECTIVES',
   'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING',
+  'INPUT_ENCODING_NAME', 'INPUT_PERL_ENCODING', 
+  'OUTPUT_ENCODING_NAME', 'OUTPUT_PERL_ENCODING', 
   'PACKAGE_VERSION',
   'PACKAGE_AND_VERSION', 'PACKAGE_URL', 'PACKAGE', 'PACKAGE_NAME', 'PROGRAM',
   'PRE_BODY_CLOSE', 'AFTER_BODY_OPEN', 'PRE_ABOUT', 'AFTER_ABOUT',
@@ -912,8 +917,9 @@ sub open_out($$;$)
   my $file = shift;
   my $encoding = shift;
 
-  if (!defined($encoding) and $self and defined($self->{'perl_encoding'})) {
-    $encoding = $self->{'perl_encoding'};
+  if (!defined($encoding) and $self 
+      and defined($self->get_conf('OUTPUT_PERL_ENCODING'))) {
+    $encoding = $self->get_conf('OUTPUT_PERL_ENCODING');
   }
 
   if ($file eq '-') {
@@ -1008,8 +1014,9 @@ sub expand_verbatiminclude($$)
                             $current->{'line_nr'});
       }
     } else {
-      if ($self and defined($self->{'perl_encoding'})) {
-        binmode(VERBINCLUDE, ":encoding($self->{'perl_encoding'})");
+      if ($self and defined($self->get_conf('INPUT_PERL_ENCODING'))) {
+        binmode(VERBINCLUDE, ":encoding(".
+                            $self->get_conf('INPUT_PERL_ENCODING').")");
       }
       $verbatiminclude = { 'cmdname' => 'verbatim',
                            'parent' => $current->{'parent'},
@@ -1388,8 +1395,9 @@ sub parse_renamed_nodes_file($$;$$)
   my $renamed_nodes_lines = shift;
 
   if (open(RENAMEDFILE, "<$renamed_nodes_file")) {
-    if ($self->{'info'} and $self->{'info'}->{'perl_encoding'}) {
-      binmode(RENAMEDFILE, ":encoding($self->{'info'}->{'perl_encoding'})");
+    if ($self->get_conf('INPUT_PERL_ENCODING')) {
+      binmode(RENAMEDFILE, ":encoding(".
+                       $self->get_conf('INPUT_PERL_ENCODING').")");
     }
     my $renamed_nodes_line_nr = 0;
     my @old_names = ();
@@ -1466,9 +1474,12 @@ sub _convert_text_options($)
 {
   my $self = shift;
   my %options;
-  if ($self->get_conf('ENABLE_ENCODING')
-       and $self->{'encoding_name'}) {
-    $options{'enabled_encoding'} = $self->{'encoding_name'};
+  if ($self->get_conf('ENABLE_ENCODING')) {
+    if ($self->get_conf('OUTPUT_ENCODING_NAME')) {
+      $options{'enabled_encoding'} = $self->get_conf('OUTPUT_ENCODING_NAME');
+    } elsif ($self->get_conf('INPUT_ENCODING_NAME')) {
+      $options{'enabled_encoding'} = $self->get_conf('INPUT_ENCODING_NAME');
+    }
   }
   $options{'TEST'} = 1 if ($self->get_conf('TEST'));
   $options{'NUMBER_SECTIONS'} = $self->get_conf('NUMBER_SECTIONS');
@@ -1477,14 +1488,18 @@ sub _convert_text_options($)
   return %options;
 }
 
-sub count_bytes($$) 
+sub count_bytes($$;$) 
 {
   my $self = shift;
   my $string = shift;
+  my $encoding = shift;
 
-  if ($self and $self->{'perl_encoding'} 
-      and $self->{'perl_encoding'} ne 'ascii') {
-    return length(Encode::encode($self->{'perl_encoding'}, $string));
+  if (!defined($encoding) and $self and $self->get_conf('OUTPUT_PERL_ENCODING')) {
+    $encoding = $self->get_conf('OUTPUT_PERL_ENCODING');
+  }
+
+  if ($encoding and $encoding ne 'ascii') {
+    return length(Encode::encode($encoding, $string));
   } else {
     return length($string);
   }

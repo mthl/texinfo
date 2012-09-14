@@ -1,5 +1,5 @@
 EXTRA_DIST = \
- block_EOL.texi \
+ block_EOL.texi tex_accents.texi \
  tex_complex.texi \
  tex_in_copying.texi \
  math_not_closed.texi       tex_not_closed.texi \

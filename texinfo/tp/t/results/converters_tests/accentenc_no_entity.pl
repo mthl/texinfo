@@ -38,8 +38,8 @@ $result_trees{'accentenc_no_entity'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'encoding_name' => 'iso-8859-1',
-            'perl_encoding' => 'iso-8859-1',
+            'input_encoding_name' => 'iso-8859-1',
+            'input_perl_encoding' => 'iso-8859-1',
             'spaces_after_command' => {},
             'text_arg' => 'ISO-8859-1'
           },

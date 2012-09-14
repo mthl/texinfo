@@ -293,8 +293,6 @@ my %defaults = (
   'EXTENSION'            => 'info',
   'USE_SETFILENAME_EXTENSION' => 1,
 
-  'encoding_name'        => undef,
-  'perl_encoding'        => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
@@ -366,8 +364,8 @@ sub converter_initialize($)
   }
 
   %{$self->{'style_map'}} = %style_map;
-  if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'} 
-      and $self->{'encoding_name'} eq 'utf-8') {
+  if ($self->get_conf('ENABLE_ENCODING') and $self->get_conf('OUTPUT_ENCODING_NAME')
+      and $self->get_conf('OUTPUT_ENCODING_NAME') eq 'utf-8') {
     foreach my $quoted_command (@quoted_commands) {
       $self->{'style_map'}->{$quoted_command} = ["\x{2018}", "\x{2019}"];
     }
@@ -495,8 +493,8 @@ sub _process_text($$$)
       or $context->{'var'}) {
     $lower_case_text = lc($text);
   }
-  if ($self->get_conf('ENABLE_ENCODING') and $self->{'encoding_name'} 
-      and $self->{'encoding_name'} eq 'utf-8') {
+  if ($self->get_conf('ENABLE_ENCODING') and $self->get_conf('OUTPUT_ENCODING_NAME') 
+      and $self->get_conf('OUTPUT_ENCODING_NAME') eq 'utf-8') {
     if (defined($lower_case_text)) {
       $lower_case_text 
         = Texinfo::Convert::Unicode::unicode_text($lower_case_text, 
@@ -1206,8 +1204,9 @@ sub _image_text($$$)
   } else {
     my $filehandle = do { local *FH };
     if (open ($filehandle, $txt_file)) {
-      binmode($filehandle, ":encoding($self->{'perl_encoding'})")
-                if (defined($self->{'perl_encoding'}));
+      binmode($filehandle, ":encoding("
+                         .$self->get_conf('INPUT_PERL_ENCODING').")")
+                if (defined($self->get_conf('INPUT_PERL_ENCODING')));
       my $result = '';
       while (<$filehandle>) {
         $result .= $_;
@@ -1524,7 +1523,7 @@ sub _convert($$)
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       my $encoding;
       if ($self->get_conf('ENABLE_ENCODING')) {
-        $encoding = $self->{'encoding_name'};
+        $encoding = $self->get_conf('OUTPUT_ENCODING_NAME');
       }
       my $sc;
       if ($formatter->{'upper_case'}) {

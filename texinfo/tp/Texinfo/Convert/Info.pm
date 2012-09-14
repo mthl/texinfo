@@ -241,7 +241,7 @@ sub output($)
     $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
   }
   $tag_text .=  "\x{1F}\nEnd Tag Table\n";
-  my $coding = $self->{'encoding_name'};
+  my $coding = $self->get_conf('OUTPUT_ENCODING_NAME');
   if ($coding) {
     $tag_text .= "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
   }

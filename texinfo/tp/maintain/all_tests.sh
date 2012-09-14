@@ -27,19 +27,19 @@ elif [ "$command" = 'output' ]; then
 elif [ "$command" = 'diff' ]; then
   if [ z"$test_name" = 'z' ]; then
     for result in t/results/*/*.pl; do
-      diff -U 3 $result $result.new
+      diff -a -U 3 $result $result.new
     done
     for result in t/results/*/*/res*/; do
       out=`echo $result | sed 's;res\([^/]*/\)$;out\1;'`
-      diff -u --exclude=CVS -r $result $out
+      diff -a -u --exclude=CVS -r $result $out
     done
   else
     for result in t/results/$test_name/*.pl; do
-      diff -u $result $result.new
+      diff -a -u $result $result.new
     done
     for result in t/results/$test_name/*/res*/; do
       out=`echo $result | sed 's;res\([^/]*/\)$;out\1;'`
-      diff -u --exclude=CVS -r $result $out
+      diff -a -u --exclude=CVS -r $result $out
     done
   fi 
 elif [ "$command" = 'texis' ]; then
