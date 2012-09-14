@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.215 2012-09-05 00:49:41 karl Exp $
+$Id: NEWS,v 1.216 2012-09-14 18:18:06 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -27,10 +27,12 @@ one of the relevant sections:
   . Texinfo commands are supported in node names.
   . #line directives are recognized.
   . new commands @inlinefmt and @inlineraw for brace-delimited conditionals.
+  . new conditionals @ifcommanddefined and @ifcommandnotdefined to test
+    if a Texinfo command is available.
   . new command @part for a group of chapters.
   . new environments @raggedright and @smallquotation.
   . new commands @codequoteundirected and @codequotebacktick,
-      for a better interface than the @set variables.
+      for a better interface than the @set variables; now respected by @kbd.
   . new command @xrefautomaticsectiontitle to allow using section titles
       in cross references by default, instead of node names.
   . new commands for Texinfo special characters:

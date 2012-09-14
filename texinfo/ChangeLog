@@ -1,3 +1,13 @@
+2012-09-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Inline Conditionals): rename from Inline
+	Conditional Commands.
+	(Testing for Texinfo Commands): new node describing
+	@ifcommanddefined, @ifcommandnotdefined, txicommandconditionals.
+	* doc/refcard/txicmdcheck: handle checking for them.
+	* doc/refcard/txirefcard.tex: list them.
+	* NEWS: likewise.
+
 2012-09-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Macro Details): yet more sticky points

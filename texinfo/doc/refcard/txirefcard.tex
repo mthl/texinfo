@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.26 2012-04-24 18:10:59 karl Exp $
+% $Id: txirefcard.tex,v 1.27 2012-09-14 18:18:06 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -220,6 +220,9 @@ http://www.gnupress.org} or write to the Free Software Foundation, Inc.,
 % inserted.  Using \paralign instead of \halign solves this problem.
 \def\paralign{\vskip\parskip\halign}
 
+% forced line break.
+\def\linebreak{\hfil\break}
+
 % code, samp - typewriter, without or with surrounding quotes.
 \def\code#1{{\tt#1}\null}	%\null so not an abbrev even if period follows
 \def\samp#1{`\code{#1}'}
@@ -398,12 +401,12 @@ Texinfo source files are plain text; standard extensions are
 begin with lines like this:
 
 {\advance\baselineskip by -3pt
-\code{\bschar input texinfo}\hfil\break
-\code{@setfilename {\sl info-file-name}}\hfil\break
+\code{\bschar input texinfo}\linebreak
+\code{@setfilename {\sl info-file-name}}\linebreak
 \code{@settitle {\sl name-of-manual}}}
 
 \dots the contents of the Texinfo document,
-ending with:\hfil\break
+ending with:\linebreak
 \code{@bye}
 
 
@@ -628,7 +631,7 @@ margins and normal text font.  Pair with \code{@end format}.}
 
 \section{Floating displays}
 
-\txicmd{@float}{}{Environment within which floating material is defined. Pair with \code{@end float}.}
+\txicmd{@float}{}{Environment enclosing material which can float. Pair with \code{@end float}.}
 \txicmd{@listoffloats}{}{Generate a list of floats for a given float type.}
 \txicmd{@caption}{}{Define the full caption for a \code{@float} anywhere in the float environment.}
 \txicmd{@shortcaption}{}{Define the short caption for a \code{@float}, used in the list of floats.}
@@ -838,6 +841,12 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \txicmd{@ifset}{name \dots\code{@end ifset}}{If the Texinfo variable \var{name} is set, format the enclosed text.}
 \txicmd{@ifclear}{flag \dots\code{@end ifclear}}{If the Texinfo variable \var{name} is not set, format the enclosed text.}
 
+\subsection{Testing for commands}
+
+\txicmd{@ifcommanddefined}{\var{cmd} \dots\code{@end ifcommanddefined}}{\linebreak Text to appear only if \code{@}\var{cmd} is defined \dots}
+\txicmd{@ifcommandnotdefined}{\var{cmd} \dots\code{@end ifcommandnotdefined}}{\linebreak\dots\ or not defined.}
+\txicmd{txicommandconditionals}{}{Texinfo variable predefined to true.}
+
 
 \section{Defining new Texinfo commands}
 
@@ -1015,7 +1024,7 @@ are from standalone Info, but most work in Emacs Info as well.
 \infokey C-g         Cancel the current operation.\cr
 \endinfokeys
 
-The Texinfo reference manual is available via \code{info texinfo}\hfil\break
+The Texinfo reference manual is available via \code{info texinfo}\linebreak
 (and at \code{http://www.gnu.org/software/texinfo/manual}).
 
 \copyrightnotice

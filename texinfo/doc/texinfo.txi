@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.481 2012-09-13 18:02:57 karl Exp $
+@c $Id: texinfo.txi,v 1.482 2012-09-14 18:18:06 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -543,7 +543,7 @@ Conditionally Visible Text
 * Conditional Commands::        Text for a given format.
 * Conditional Not Commands::    Text for any format other than a given one.
 * Raw Formatter Commands::      Using raw formatter commands.
-* Inline Conditional Commands:: Brace-delimited conditional text.
+* Inline Conditionals::         Brace-delimited conditional text.
 * set clear value::             Variable tests and substitutions.
 * Conditional Nesting::         Using conditionals inside conditionals.
 
@@ -7727,11 +7727,11 @@ them.
 @cindex URL, indicating
 
 Use the @code{@@indicateurl} command to indicate a uniform resource
-locator on the World Wide Web.  This is analogous to @code{@@file},
-@code{@@var}, etc., and is purely for markup purposes.  It does not
-produce a link you can follow in HTML output (use the @code{@@uref}
-command for that, @pxref{uref,, @code{@@uref}}).  It is useful for
-urls which do not actually exist.  For example:
+locator on the World Wide Web.  This is purely for markup purposes and
+does not produce a link you can follow (use the @code{@@url} or
+@code{@@uref} command for that, @pxref{uref,,@code{@@uref}}).
+@code{@@indicateurl} is useful for urls which do not actually exist.
+For example:
 
 @example
 For example, the url might be @@indicateurl@{http://example.org/path@}.
@@ -7743,6 +7743,8 @@ For example, the url might be @@indicateurl@{http://example.org/path@}.
 For example, the url might be @indicateurl{http://example.org/path}.
 @end display
 
+The output from @code{@@indicateurl} is more or less like that of
+@code{@@samp} (@pxref{samp,,@code{@@samp}}).
 
 @node email
 @subsection @code{@@email}@{@var{email-address}[, @var{displayed-text}]@}
@@ -10457,9 +10459,9 @@ not put braces after an @code{@@@@} command.
 
 @code{@@atchar@{@}} also produces a single @samp{@@} character in the
 output.  It does need following braces, as usual for alphabetic
-commands.  In inline conditionals (@pxref{Inline Conditional
-Commands}), it can be necessary to avoid using the literal @samp{@@}
-character in the source (and may be clearer in other contexts).
+commands.  In inline conditionals (@pxref{Inline Conditionals}), it
+can be necessary to avoid using the literal @samp{@@} character in the
+source (and may be clearer in other contexts).
 
 
 @node Inserting Braces
@@ -10477,7 +10479,7 @@ produces a single @samp{@}}.  Do not put braces after either an
 @code{@@lbracechar@{@}} and @code{@@rbracechar@{@}} also produce
 single @samp{@{} and @samp{@}} characters in the output.  They do need
 following braces, as usual for alphabetic commands.  In inline
-conditionals (@pxref{Inline Conditional Commands}), it can be
+conditionals (@pxref{Inline Conditionals}), it can be
 necessary to avoid using literal brace characters in the source (and
 may be clearer in other contexts).
 
@@ -13577,8 +13579,9 @@ is set or clear.
 * Conditional Commands::        Text for a given format.
 * Conditional Not Commands::    Text for any format other than a given one.
 * Raw Formatter Commands::      Using raw formatter commands.
-* Inline Conditional Commands:: Brace-delimited conditional text.
+* Inline Conditionals::         Brace-delimited conditional text.
 * set clear value::             Variable tests and substitutions.
+* Testing for Texinfo Commands:: Testing if a Texinfo command is available.
 * Conditional Nesting::         Using conditionals inside conditionals.
 @end menu
 
@@ -13848,11 +13851,11 @@ In all cases, in raw processing, @code{@@} retains the same meaning as
 in the remainder of the document.
 
 
-@node Inline Conditional Commands
-@section Inline Conditional Commands: @code{@@inline}, @code{@@inlineraw}
+@node Inline Conditionals
+@section Inline Conditionals: @code{@@inline}, @code{@@inlineraw}
 @findex inlinefmt
 @findex inlineraw
-@cindex Inline conditional commands
+@cindex Inline conditionals
 @cindex Conditional commands, inline
 @cindex Brace-delimited conditional text
 @cindex Newlines, avoiding in conditionals
@@ -14193,6 +14196,72 @@ of `The GNU Make Manual', for `make', Version 3.63 Beta.
 
 When you update the manual, you change only the values of the flags; you
 do not need to edit the three sections.
+
+
+@node Testing for Texinfo Commands
+@section Testing for Texinfo Commands: @code{@@ifcommanddefined}, @code{@@ifcommandnotdefined}
+
+@cindex Testing for Texinfo commands
+@cindex Checking for Texinfo commands
+@cindex Texinfo commands, testing for
+@cindex Commands, testing for Texinfo
+@cindex Versions of Texinfo, adapting to
+@cindex Features of Texinfo, adapting to
+
+Occasionally, you may want to arrange for your manual to test if a
+given Texinfo command is available and (presumably) do some sort of
+fallback formatting if not.  There are conditionals
+@code{@@ifcommanddefined} and @code{@@ifcommandnotdefined} to do this.
+For example:
+
+@example
+@@ifcommanddefined node
+Good, @@samp@{@@@@node@} is defined.
+@@end ifcommanddefined
+@end example
+
+@noindent will output the expected `Good, @samp{@@node} is defined.'.
+Caveat: the @TeX{} implementation will report internal @TeX{}
+commands, not just Texinfo commands as being ``defined''; the
+@code{makeinfo} implementation is reliable in this regard, however.
+
+@pindex @file{NEWS} file for Texinfo
+You can check the @file{NEWS} file in the Texinfo source distribution
+and linked from the Texinfo home page
+(@url{http://www.gnu.org/software/texinfo}) to see when a particular
+command was added.
+
+These command-checking conditionals themselves were added in
+Texinfo@tie{}5.0, released in 2012---decades after Texinfo's
+inception.  In order to test if they themselves are available, 
+the predefined flag @code{txicommandconditionals} can be tested, like
+this:
+
+@example
+@@ifset txicommandconditionals
+@@ifcommandnotdefined foobarnode
+(Good, @@foobarnode is not defined.)
+@@end ifcommandnotdefined
+@@end ifset
+@end example
+
+Since flags (see the previous section) were added early in the
+existence of Texinfo, there is no problem with assuming they are
+available.
+
+We recommend avoiding these tests whenever possible---which is usually
+the case.  For many software packages, it is reasonable for all
+developers to have a given version of Texinfo (or newer) installed,
+and thus no reason to worry about older versions.  (It is simple to
+download and install the Texinfo source; it does not have any
+problematic dependencies.)
+
+The issue of Texinfo versions does not generally arise for end-users.
+With properly distributed packages, users need not process the Texinfo
+manual simply to build and install the package; they can use
+preformatted Info (or other) output files.  This is desirable in
+general, to avoid unnecessary dependencies between packages
+(@pxref{Releases,,, standard, GNU Coding Standards}).
 
 
 @node Conditional Nesting
@@ -17272,8 +17341,8 @@ For HTML, the text appearing in @code{<body>}.  By default, set
 automatically taking into account the document language.
 
 @item CASE_INSENSITIVE_FILENAMES
-For HTML@.  Construct file names as if the filesystem was case
-insensitive (@pxref{HTML Splitting}).
+For HTML@.  Construct output file names as if the filesystem were case
+insensitive (@pxref{HTML Splitting}). 
 
 @item CHAPTER_HEADER_LEVEL
 For HTML@.  Header formatting level used for chapter level sectioning
@@ -18943,8 +19012,8 @@ output.
 @cindex HTML cross references
 @cindex Cross references, in HTML output
 
-Cross references between Texinfo manuals in HTML format amount, in the
-end, to a standard HTML @code{<a>} link, but the details are
+Cross references between Texinfo manuals in HTML format become, in the
+end, a standard HTML @code{<a>} link, but the details are
 unfortunately complex.  This section describes the algorithm used in
 detail, so that Texinfo can cooperate with other programs, such as
 @command{texi2html}, by writing mutually compatible HTML files.
@@ -18959,8 +19028,7 @@ entirely contained in one file, and a @dfn{split} manual has a file
 for each node.  (@xref{HTML Splitting}.)
 
 @cindex Dumas, Patrice
-Acknowledgement: this algorithm was primarily devised by Patrice Dumas
-in 2003--04.
+The algorithm was primarily devised by Patrice Dumas in 2003--04.
 
 @menu
 * Link Basics:       HTML Xref Link Basics.
@@ -20549,6 +20617,12 @@ If the Texinfo variable @var{txivar} is not set, format the following
 text.  Pair with @code{@@end ifclear}.  @xref{set clear value, ,
 @code{@@set} @code{@@clear} @code{@@value}}.
 
+@item @@ifcommanddefined @var{txicmd}
+@itemx @@ifcommandnotdefined @var{txicmd}
+If the Texinfo code @samp{@@@var{txicmd}} is (not) defined, format the
+follow text.  Pair with the corresponding @code{@@end ifcommand...}.
+@xref{Testing for Texinfo Commands}.
+
 @item @@ifdocbook
 @itemx @@ifhtml
 @itemx @@ifinfo
@@ -20616,7 +20690,7 @@ manual.  @xref{inforef,, Cross references using @code{@@inforef}}.
 @item @@inlinefmt@{@var{fmt}, @var{text}@}
 @itemx @@inlineraw@{@var{fmt}, @var{raw-text}@}
 Insert (raw) @var{text} only if the output format is @var{fmt}.
-@xref{Inline Conditional Commands}.
+@xref{Inline Conditionals}.
 
 @item \input @var{macro-definitions-file}
 Use the specified macro definitions file.  This command is used only
@@ -21864,7 +21938,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.481 2012-09-13 18:02:57 karl Exp $
+$Id: texinfo.txi,v 1.482 2012-09-14 18:18:06 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

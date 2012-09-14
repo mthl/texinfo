@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: txicmdcheck,v 1.5 2012-01-03 18:26:58 karl Exp $
+# $Id: txicmdcheck,v 1.6 2012-09-14 18:18:06 karl Exp $
 # Copyright 2008, 2011, 2012 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -89,6 +89,7 @@ sub read_refcard {
     for my $c (@cmds) {
 #warn "refcard $c\n";
 #warn "refcard $c{x}\n" if $xcmd;
+      next if $c eq "txicommandconditionals"; # variable not separate in manual
       if ($c eq '@\tildechar') { # TeX specialties, forcibly make them match
         $c = '@~';
       } elsif ($c eq '@\var{whitespace}') {
