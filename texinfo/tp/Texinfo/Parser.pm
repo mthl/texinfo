@@ -4429,9 +4429,16 @@ sub _parse_texi($;$)
               # REMACRO
               if ($line =~ /^\s+([[:alnum:]][[:alnum:]\-]*)/) {
                 my $name = $1;
-                if ((exists($Texinfo::Common::all_commands{$name}) 
+                my $command_is_defined = (
+                  exists($Texinfo::Common::all_commands{$name})
+                  or $self->{'macros'}->{$name}
+                  or $self->{'definfoenclose'}->{$name}
+                  or $self->{'aliases'}->{$name}
+                  or $self->{'command_index_prefix'}->{$name}
+                );
+                if (($command_is_defined
                      and $command eq 'ifcommanddefined')
-                    or (!exists($Texinfo::Common::all_commands{$name})
+                    or (! $command_is_defined
                          and $command eq 'ifcommandnotdefined')) {
                   $ifvalue_true = 1;
                 }

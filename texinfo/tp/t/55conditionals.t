@@ -374,6 +374,45 @@ Unfortunately, @@mathcode is defined.
 Happily, @@mathcode is not defined.
 @end ifcommandnotdefined
 '],
+['command_conditionals_user_defined',
+'@macro truc
+machin
+@end macro
+
+@defindex auth
+
+@definfoenclose infoencl, :,:
+
+@alias strongalias = strong
+
+@ifcommanddefined truc
+@@macro truc is defined.
+@end ifcommanddefined
+@ifcommandnotdefined truc
+@@macro truc is wrongly not defined
+@end ifcommandnotdefined
+
+@ifcommanddefined authindex
+index command @@authindex is defined.
+@end ifcommanddefined
+@ifcommandnotdefined authindex
+index command @@authindex is wrongly not defined
+@end ifcommandnotdefined
+
+@ifcommanddefined infoencl
+definfoenclose @@infoencl is defined.
+@end ifcommanddefined
+@ifcommandnotdefined infoencl
+definfoenclose @@infoencl is wrongly not defined
+@end ifcommandnotdefined
+
+@ifcommanddefined strongalias
+strongalias @@alias is defined.
+@end ifcommanddefined
+@ifcommandnotdefined strongalias
+strongalias @@alias is wrongly not defined
+@end ifcommandnotdefined
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

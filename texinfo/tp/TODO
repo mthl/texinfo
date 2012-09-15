@@ -104,6 +104,11 @@ node_target_name
 
 Implement what is proposed in HTML Cross Reference Mismatch.
 
+add an option like --check-htmlxref (or a customization variable?)
+which would check that every cross-manual xref is included in
+htmlxref.cnf?  That would give a way for people to know if their HTML is
+going to have broken links.  Use warnings.
+
 Protection of punctuation in nodes.
 in @ref. First : is searched.  if followed by a : the node name is found
 and there is no label. When parsing a node a filename with ( is searched for.
