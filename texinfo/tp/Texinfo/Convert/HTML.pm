@@ -6291,7 +6291,7 @@ $description
 <meta name=\"Generator\" content=\"$program\">$date
 $encoding
 $css_lines
-<meta http-equiv=\"Refresh\" content=\"2; url=$href\">
+<meta http-equiv=\"Refresh\" content=\"0; url=$href\">
 $extra_head
 </head>
 
