@@ -440,10 +440,13 @@ sub _set_outfile($$$)
   $input_basename =~ s/\.te?x(i|info)?$//;
 
   my $setfilename;
-  $setfilename = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}
-    if ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
-        and $self->{'extra'}->{'setfilename'}->{'extra'}
-        and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
+  if (defined($self->get_conf('setfilename'))) {
+    $setfilename = $self->get_conf('setfilename');
+  } elsif ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
+          and $self->{'extra'}->{'setfilename'}->{'extra'}
+          and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'})) {
+     $setfilename = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}
+  }
 
   # PREFIX overrides both setfilename and the input file base name
   if (defined($self->get_conf('PREFIX'))) {
