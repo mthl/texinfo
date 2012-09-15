@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.482 2012-09-14 18:18:06 karl Exp $
+@c $Id: texinfo.txi,v 1.483 2012-09-15 15:53:07 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -582,9 +582,9 @@ Include Files
 Formatting and Printing Hardcopy
 
 * Use @TeX{}::                     Use @TeX{} to format for hardcopy.
-* Format with tex/texindex::    How to format with explicit shell commands.
-* Format with texi2dvi::        A simpler way to format.
-* Print with lpr::              How to print.
+* Format with @code{tex}/@code{texindex}:: How to format with explicit shell commands.
+* Format with @code{texi2dvi}::      A simpler way to format.
+* Print with @code{lpr}::            How to print.
 * Within Emacs::                How to format and print from an Emacs shell.
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
 * Compile-Command::             How to print using Emacs's compile command.
@@ -593,7 +593,7 @@ Formatting and Printing Hardcopy
 * Overfull hboxes::             What are and what to do with overfull hboxes.
 * smallbook::                   How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
-* pagesizes::                   How to print with customized page sizes.
+* @code{@@pagesizes}::                How to print with customized page sizes.
 * Cropmarks and Magnification:: How to print marks to indicate the size
                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
@@ -2555,13 +2555,14 @@ include a line that has @code{@@setfilename} in its header.
 @cindex Buffer formatting and printing
 @cindex Part of file formatting and printing
 
-Typesetting and printing a Texinfo file is a multi-step process in which
-you first create a file for printing (called a DVI file), and then
-print the file.  Optionally, you may also create indices.  To do this,
-you must run the @code{texindex} command after first running the
+Typesetting and printing a Texinfo file is a multi-step process in
+which you first create a file for printing (called a DVI file), and
+then print the file.  Optionally, you may also create indices.  To do
+this, you must run the @code{texindex} command after first running the
 @code{tex} typesetting command; and then you must run the @code{tex}
 command again.  Or else run the @code{texi2dvi} command which
-automatically creates indices as needed (@pxref{Format with texi2dvi}).
+automatically creates indices as needed (@pxref{Format with
+@code{texi2dvi}}).
 
 Often, when you are writing a document, you want to typeset and print
 only part of a file to see what it will look like.  You can use the
@@ -3699,8 +3700,8 @@ subsequent @code{@@contents} or @code{@@shortcontents} is ignored.
 You need to include the @code{@@set@dots{}contentsaftertitlepage}
 commands early in the document (just after @code{@@setfilename}, for
 example).  We recommend using @command{texi2dvi} (@pxref{Format with
-texi2dvi}) to specify this without altering the source file at all.
-For example:
+@code{texi2dvi}}) to specify this without altering the source file at
+all.  For example:
 
 @example
 texi2dvi --texinfo=@@setcontentsaftertitlepage foo.texi
@@ -13420,8 +13421,8 @@ included.  This will generally not be the case for @command{tex}
 itself, but will often be the case for recent distributions of
 extended @TeX{} programs @command{etex} (DVI output) and
 @command{pdftex} (PDF output), such as @TeX{} Live 2008.
-@command{texi2dvi} will use the extended @TeX{}s if they are
-available (@pxref{Format with texi2dvi}).
+@command{texi2dvi} will use the extended @TeX{}s if they are available
+(@pxref{Format with @code{texi2dvi}}).
 
 In September 2006, the W3C Internationalization Activity released a
 new recommendation for specifying languages:
@@ -14665,9 +14666,9 @@ constructs cause problems with @TeX{}, as follows.  If you get
 macro-related errors when producing the printed version of a manual,
 you might try expanding the macros with @command{makeinfo} by invoking
 @command{texi2dvi} with the @samp{-E} option (@pxref{Format with
-texi2dvi}).  Or eschew Texinfo macros altogether and use a language
-designed for macro processing, such as M4 (@pxref{External Macro
-Processors}).
+@code{texi2dvi}}).  Or eschew Texinfo macros altogether and use a
+language designed for macro processing, such as M4 (@pxref{External
+Macro Processors}).
 
 @itemize @bullet
 @item
@@ -15048,9 +15049,9 @@ use @command{makeinfo}'s macro expansion options before running
 @itemize @bullet
 @item
 If you run @command{texi2dvi} or its variants (@pxref{Format with
-texi2dvi,, Format with @code{texi2dvi}}), you can pass @option{-E} and
-@command{texi2dvi} will run @command{makeinfo} first to expand macros
-and eliminate @samp{#line}.
+@code{texi2dvi}}), you can pass @option{-E} and @command{texi2dvi}
+will run @command{makeinfo} first to expand macros and eliminate
+@samp{#line}.
 
 @item
 If you run @command{makeinfo} or its variants (@pxref{Generic
@@ -15410,9 +15411,9 @@ Details are in the following sections.
 
 @menu
 * Use @TeX{}::                     Use @TeX{} to format for hardcopy.
-* Format with tex/texindex::    How to format with explicit shell commands.
-* Format with texi2dvi::        A simpler way to format.
-* Print with lpr::              How to print.
+* Format with @code{tex}/@code{texindex}:: How to format with explicit shell commands.
+* Format with @code{texi2dvi}::      A simpler way to format.
+* Print with @code{lpr}::            How to print.
 * Within Emacs::                How to format and print from an Emacs shell.
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
 * Compile-Command::             How to print using Emacs's compile command.
@@ -15421,7 +15422,7 @@ Details are in the following sections.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
 * smallbook::                   How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
-* pagesizes::                   How to print with customized page sizes.
+* @code{@@pagesizes}::                How to print with customized page sizes.
 * Cropmarks and Magnification:: How to print marks to indicate the size
                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
@@ -15440,7 +15441,7 @@ is not included in the Texinfo package, being a vast suite of software
 itself.
 
 
-@node Format with tex/texindex
+@node Format with @code{tex}/@code{texindex}
 @section Format with @code{tex} and @code{texindex}
 @cindex Shell formatting with @code{tex} and @code{texindex}
 @cindex Formatting with @code{tex} and @code{texindex}
@@ -15539,7 +15540,7 @@ written for the cross references.
 
 @pindex texi2dvi
 Alternatively, it's a one-step process: run @code{texi2dvi}
-(@pxref{Format with texi2dvi}).
+(@pxref{Format with @code{texi2dvi}}).
 
 You need not run @code{texindex} each time after you run @code{tex}.  If
 you do not, on the next run, the @code{tex} formatting command will use
@@ -15571,7 +15572,7 @@ your file would look approximately like this:
 (@pxref{Pointer Validation}).
 
 
-@node Format with texi2dvi
+@node Format with @code{texi2dvi}
 @section Format with @code{texi2dvi}
 @pindex texi2dvi @r{(shell script)}
 
@@ -15602,9 +15603,9 @@ This inserts @var{cmd} on a line by itself after the
 running @TeX{}.  With this, you can specify different printing
 formats, such as @code{@@smallbook} (@pxref{smallbook}),
 @code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
-(@pxref{pagesizes}), without actually changing the document source.
-(You can also do this on a site-wide basis with @file{texinfo.cnf};
-@pxref{Preparing for @TeX{}}).
+(@pxref{@code{@@pagesizes}}), without actually changing the document
+source.  (You can also do this on a site-wide basis with
+@file{texinfo.cnf}; @pxref{Preparing for @TeX{}}).
 
 @opindex --pdf@r{, for @command{texi2dvi}}
 @pindex pdftexi2dvi
@@ -15690,8 +15691,8 @@ in the source file.
 For the list of all options, run @samp{texi2dvi --help}.
 
 
-@node Print with lpr
-@section Shell Print Using @code{lpr -d}
+@node Print with @code{lpr}
+@section Print With @code{lpr -d} From Shell
 @pindex lpr @r{(DVI print command)}
 
 The precise command to print a DVI file depends on your system
@@ -16211,9 +16212,9 @@ region in ``small'' book size (@pxref{Start of Header}).
 @xref{small}, for information about
 commands that make it easier to produce examples for a smaller manual.
 
-@xref{Format with texi2dvi}, and @ref{Preparing for @TeX{}}, for other
-ways to format with @code{@@smallbook} that do not require changing
-the source file.
+@xref{Format with @code{texi2dvi}}, and @ref{Preparing for @TeX{}},
+for other ways to format with @code{@@smallbook} that do not require
+changing the source file.
 
 
 @node A4 Paper
@@ -16241,9 +16242,9 @@ would write the header for this manual:
 @end group
 @end example
 
-@xref{Format with texi2dvi}, and @ref{Preparing for @TeX{}}, for other
-ways to format for different paper sizes that do not require changing
-the source file.
+@xref{Format with @code{texi2dvi}}, and @ref{Preparing for @TeX{}},
+for other ways to format for different paper sizes that do not require
+changing the source file.
 
 @findex afourlatex
 @findex afourwide
@@ -16251,8 +16252,11 @@ You may or may not prefer the formatting that results from the command
 @code{@@afourlatex}.  There's also @code{@@afourwide} for A4 paper in
 wide format.
 
-@node pagesizes
+
+@node @code{@@pagesizes}
 @section @code{@@pagesizes} [@var{width}][, @var{height}]: Custom Page Sizes
+
+@anchor{pagesizes}@c old node name
 @findex pagesizes
 @cindex Custom page sizes
 @cindex Page sizes, customized
@@ -16287,9 +16291,9 @@ To make more elaborate changes, such as changing any of the page
 margins, you must define a new command in @file{texinfo.tex} or
 @file{texinfo.cnf}.
 
-@xref{Format with texi2dvi}, and @ref{Preparing for @TeX{}}, for other
-ways to specify @code{@@pagesizes} that do not require changing the
-source file.
+@xref{Format with @code{texi2dvi}}, and @ref{Preparing for @TeX{}},
+for other ways to specify @code{@@pagesizes} that do not require
+changing the source file.
 
 @code{@@pagesizes} is ignored by @code{makeinfo}.
 
@@ -16363,10 +16367,10 @@ magnifications.  Be prepared to experiment.
 The simplest way to generate PDF output from Texinfo source is to run
 the convenience script @command{texi2pdf} (or @command{pdftexi2dvi});
 this executes the @command{texi2dvi} script with the @option{--pdf}
-option (@pxref{Format with texi2dvi}).  If for some reason you want to
-process the document by hand, you can run the @command{pdftex} program
-instead of plain @command{tex}.  That is, run @samp{pdftex foo.texi}
-instead of @samp{tex foo.texi}.
+option (@pxref{Format with @code{texi2dvi}}).  If for some reason you
+want to process the document by hand, you can run the @command{pdftex}
+program instead of plain @command{tex}.  That is, run @samp{pdftex
+foo.texi} instead of @samp{tex foo.texi}.
 
 @dfn{PDF} stands for `Portable Document Format'. It was invented by
 Adobe Systems some years ago for document interchange, based on their
@@ -17033,7 +17037,7 @@ requested.
 
 The output format options for this are @option{--dvi},
 @option{--dvipdf}, @option{--pdf}, and @option{--pdf}.  @xref{Format
-with texi2dvi}, for more details on these options and general
+with @code{texi2dvi}}, for more details on these options and general
 @command{texi2dvi} operation.  In addition, the @option{--verbose},
 @option{--silent}, and @option{--quiet} options are passed on if
 specified; the @option{-I} and @option{-o} options are likewise passed
@@ -21938,7 +21942,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.482 2012-09-14 18:18:06 karl Exp $
+$Id: texinfo.txi,v 1.483 2012-09-15 15:53:07 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

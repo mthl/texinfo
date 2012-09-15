@@ -1,3 +1,9 @@
+2012-09-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Print with @code{lpr}),
+	(Format with @code{texi2dvi}),
+	(@code{@@pagesizes}): use @code in node names.
+
 2012-09-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Inline Conditionals): rename from Inline
