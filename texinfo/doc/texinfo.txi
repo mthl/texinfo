@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.484 2012-09-15 16:00:56 karl Exp $
+@c $Id: texinfo.txi,v 1.485 2012-09-15 18:06:52 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -164,7 +164,7 @@ the menu lists all the lower level nodes in the document.
 * Generic Translator texi2any::   @command{texi2any}, an all-purpose converter.
 * Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
-* texi2any Output Customization:: Fine tuning with initialization files.
+@c * texi2any Output Customization:: Fine tuning with initialization files.
 
 * Command List::                  All the Texinfo @@-commands.
 * Tips::                          Hints on how to write a Texinfo document.
@@ -16588,8 +16588,8 @@ Prepend @var{path} to the directory search list for finding
 customization files that may be loaded with @option{--init-file} (see
 below).  The @var{path} value can be a single directory, or a list of
 several directories separated by the usual path separator character
-(@samp{:} on Unix-like systems, @samp{;} on Windows).  @xref{Loading
-Init Files}.
+(@samp{:} on Unix-like systems, @samp{;} on Windows). @c @xref{Loading
+@c Init Files}.
 
 @item --css-include=@var{file}
 @opindex --css-include
@@ -16746,7 +16746,7 @@ generated manual.  It is customary to use the @code{.pm} or the
 enforced; the @var{file} name can be anything.  The
 @option{--conf-dir} option (see above) can be used to add to the list
 of directories in which these customization files are searched for.
-@xref{Loading Init Files}.
+@c @xref{Loading Init Files}.
 
 @item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
@@ -17894,9 +17894,9 @@ intend to make further releases.
 @cindex Options of @command{texi2html}
 @cindex Command-line options of @command{texi2html}
 Here is the table showing @command{texi2html} options and
-corresponding @command{texi2any} customization variables
-(@pxref{texi2any Output Customization,, @command{texi2any} Output
-Customization}).
+corresponding @command{texi2any} customization variables.
+@c (@pxref{texi2any Output Customization,, @command{texi2any} Output
+@c Customization}).
 
 @multitable {@option{--ignore-preamble-text}} {@code{IGNORE_PREAMBLE_TEXT}}
 @item @option{--toc-links}            @tab @code{TOC_LINKS}
@@ -19579,380 +19579,6 @@ preceded by whitespace.
 Another approach to preserving links to deleted or renamed nodes is to
 use anchors (@pxref{anchor,, @code{anchor}}).  There is no effective
 difference between the two approaches.
-
-
-@node texi2any Output Customization
-@chapter @command{texi2any} Output Customization
-
-@cartouche
-@quotation Warning
-The information displayed here is likely to change in the future.
-In particular, the functions and their behavior may change in any
-Texinfo release. 
-@end quotation
-@end cartouche
-
-This chapter describes how to customize aspects of the
-@command{texi2any} HTML output.  Although some of the features here
-can technically be used with other output formats, it's not especially
-useful to do so, so we'll write the documentation as if HTML were the
-target format.  Most of the customizations are only available for
-HTML.
-
-This part of the manual and the corresponding interfaces are being
-stabilized, and the only parts described are those that should not
-change in the future.  Many other aspects of the formatted HTML may
-already be customized, but the interfaces will change and will be
-documented as soon as they are stable.
-
-The HTML converter takes a Texinfo Perl tree as input and transforms
-it to HTML@.  The Texinfo Perl tree describes a Texinfo document in a
-structured way which makes it easy to go through the tree and format
-@@-commands and other containers.  The code that is used to go through
-the tree cannot be customized, but the conversion of tree elements can
-be fully customized.  The tree structure and the customization of
-Texinfo Perl tree elements will be described in future versions of the
-manual.
-
-@menu
-* Loading Init Files::               Finding and writing initialization files.
-* Init File Basics::                 What init files can contain and do.
-@end menu
-
-
-@node Loading Init Files
-@section Loading Initialization Files and Search Paths
-
-@cindex Loading init files
-@cindex Initialization files, loading
-@cindex Search paths, for initialization files
-
-@pindex Config @r{init files loaded}
-
-You can write so-called @dfn{initialization files}, or @dfn{init
-files} for short, to modify almost every aspect of output formatting.
-The program loads init files named @file{Config} each time it is run.
-Those files are looked for in the following directories:
-
-@table @file
-@item @var{datadir}/texi2any/
-(where @var{datadir} is the system data directory specified at
-compile-time, e.g., @file{/usr/local/share})
-
-@item @var{sysconfdir}/texi2any/
-(likewise specified at compile time, e.g., @file{/usr/local/etc})
-
-@item ~/.texi2any/
-(where @code{~} is the current user's home directory)
-
-@item ./.texi2any/
-(under the current directory)
-
-@item ./
-(the current directory)
-@end table
-
-All @file{Config} files found are loaded, in the above order.  Thus,
-@file{./Config} can override entries in, say,
-@file{/usr/local/share/makeinfo/Config}.
-
-@opindex --init-file
-However, the most common way to load an initialization file is with
-the @option{--init-file} option, explicitly specifying the file to be
-loaded.  By default the following directories are searched, in the
-following order.
-@c  where @var{prog} is the name of the program invoked
-@c on the command line (@command{makeinfo}, @command{texi2any}, etc.).
-Only the first file found is used:
-
-@enumerate
-@item The current directory @file{./};
-
-@item @file{./.texi2any/} under the current directory;
-
-@item @file{~/.texi2any/}
-where @code{~} is the current user's home directory;
-
-@item @file{@var{sysconfdir}/texi2any/}
-where @var{sysconfdir} is the system configuration directory
-specified at compile-time, e.g., @file{/usr/local/etc};
-
-@item @file{@var{datadir}/texi2any/}
-Where @var{datadir} is the system data directory likewise specified at
-compile time, e.g., @file{/usr/local/share};
-
-@item @file{./.texinfo/init/} under the current directory;
-
-@item @file{~/.texinfo/init/} under the current home directory;
-
-@item @file{@var{sysconfdir}/texinfo/init/} with @var{sysconfdir} as above;
-
-@item @file{@var{datadir}/texinfo/init/} with @var{datadir} as above.
-@end enumerate
-
-Additional directories may be prepended to the list with the
-@option{--conf-dir} option (@pxref{Invoking texi2any}).
-
-
-@node Init File Basics
-@section Init File Basics
-
-@cindex Init file basics
-@cindex Perl, language for init files
-
-Init files are written in Perl, and by convention have extension
-@file{.init} or @file{.pm}.  
-@c Several init files are included in the Texinfo
-@c distribution (some are crucial components of the program), and can
-@c serve as a good model for writing your own. 
-@c  Smaller examples include @file{utf8.pm},
-@c @file{html32.pm}, and plenty more.
-
-@menu
-* Init File Namespaces:: @code{Texinfo::Config}.
-* Setting and Getting Customization Variables::
-* Internationalization of Strings::
-@end menu
-@c * Init File Expansion Contexts::     Normal, preformatted, string, math.
-
-
-@node Init File Namespaces
-@subsection Init File Namespaces
-
-@cindex Init file namespaces
-@cindex Namespaces, for init files
-@cindex Perl namespaces, for init files
-
-@c when colons are supported ... vindex Texinfo::Config @r{namespace}
-Initialization file are loaded from the main program via an
-@code{require} call in the @code{Texinfo::Config} namespace.  This
-means that the namespace of the main program and the namespace of
-initialization files are distinct, which minimizes the chance of a
-name clash.  
-
-@node Setting and Getting Customization Variables
-@subsection Setting and Getting Customization Variables
-
-@cindex Customization variables, setting and getting
-
-The basic operations on customization variables are to set and
-retrieve their values.
-
-To set the value of a customization variable from an initialization
-file, you should use @code{set_from_init_file}:
-
-@defun set_from_init_file ($variable_name, $variable_value)
-@var{$variable_name} is a string containing the name of the variable
-you want to set, and @var{$variable_value} is the value to which you
-want to set it.  @var{$variable_value} may be @samp{undef}.
-@end defun
-
-For example,
-
-@example
-set_from_init_file('documentlanguage', 'fr');
-@end example
-
-@noindent overrides the @code{@@documentlanguage} from the
-document.  It would be overridden by @option{--document-language} on
-the command line.
-
-Another example:
-
-@example
-set_from_init_file('SPLIT', 'chapter');
-@end example
-
-@noindent overrides the default splitting of the document.  It would be
-overridden by @option{--split} on the command line.
-
-A final example:
-
-@example
-set_from_init_file('NO_CSS', 1);
-@end example
-
-@noindent overrides the default value for @code{NO_CSS}.  It would be
-overridden by @code{--set-customization-variable NO_CSS=1} on the command line.
-
-To get the value of a variable, the function is @code{get_conf}:
-
-@defun get_conf ($variable_name)
-@var{$variable_name} is the name of the variable; its value (possibly
-@code{undef}) is returned.
-@end defun
-
-For example:
-
-@example
-if (get_conf('footnotestyle') eq 'separate') @{ ... @}
-@end example
-
-For the customization variables associated with @@-commands, see
-@ref{Customization Variables for @@-Commands}.  For the customization
-variables associated with command line options, see @ref{Customization
-Variables and Options}.
-
-
- @ignore
-@c The following is still true, but right now nothing uses these contexts
-@c in init files.
-@c 
-@c @node Init File Expansion Contexts
-@c @subsection Init File Expansion Contexts: Normal, Preformatted, String, Math
-@c 
-@c @cindex Init file expansion contexts
-@c @cindex Expansion contexts, for init files
-@c @cindex Contexts for expansion in init files
-@c 
-@c There are four expansion contexts of interest:
-@c 
-@c @table @emph 
-@c @item normal context
-@c @cindex Normal expansion context
-@c Paragraphs, index entries, tables, @enddots{}
-@c 
-@c @item preformatted context
-@c @cindex Preformatted expansion context
-@c When spaces between words are kept.  For example, within the
-@c @code{@@display} (@pxref{display,, @code{@@display}}) and
-@c @code{@@example} environments (@pxref{example,, @code{@@example}}), and
-@c in menu comments.  The preformatted regions
-@c are usually rendered using @code{<pre>} elements in HTML.
-@c 
-@c @c oldapi (@pxref{Menu formatting})
-@c 
-@c @item string context
-@c @cindex String expansion context
-@c When rendering strings without formatting elements, for example in
-@c comments (@pxref{Comments}) and titles.  In the string context, there
-@c is limited formatting, typically without any element when producing HTML,
-@c so the value can be used in an attribute.
-@c 
-@c @item math context
-@c @cindex Math expansion context
-@c Math (@pxref{math,, @code{@@math}}).
-@c 
-@c @end table
-@end ignore
-
-
-@node Internationalization of Strings
-@subsection Internationalization of Strings in the Output Document
-
-@cindex I18n
-@cindex Internationalization of strings in the output document
-@cindex Output documentation, internationalization of
-
-@vindex documentlanguage @r{customization variable}
-@command{texi2any} writes some fixed strings in the generated document
-at various places: for cross references, in page footers, on the help
-page, alternate text for images, and so on.  The string chosen depends
-on the value of the customization variable @code{documentlanguage} at
-the time of the string being output (@pxref{documentlanguage}, for the
-Texinfo command interface).
-
-@pindex libintl-perl @r{Gettext implementation}
-The Gettext framework is used for those strings (@pxref{Top,,,
-gettext, Gettext}).  The @code{libintl-perl} package is used as
-the @code{gettext} implementation; more specifically, the pure Perl
-implementation is used, so Texinfo can support consistent behavior
-across all platforms and installations, which would not otherwise be
-possible.  @code{libintl-perl} is included in the Texinfo distribution
-and always installed, to be sure that it is available if needed.  It
-is also possible to use the system @code{gettext} (currently decided
-at build-time).  
-
-@vindex texinfo_document @r{Gettext domain}
-The Gettext domain @samp{texinfo_document} is used for the strings,
-and the subroutine @code{gdt} is used for translated
-strings:
-
-@defun gdt (\%converter, $string, \%variables_hash)
-@var{$string} is the string to be translated, @var{\%variables_hash}
-is a hash reference holding the variable parts of the translated
-string, and @var{\%converter} is an object which holds the informations
-about the context.  The result returned is a perl Texinfo tree.
-@end defun
-
-@cindex Perl format strings for translation
-Translated strings are written as Texinfo, and may include
-@@-commands.  In translated strings, the varying parts of the string
-are not usually denoted by @code{%s} and the like, but by
-@samp{@{arg_name@}}.  (This convention is common for @code{gettext} in
-Perl and is fully supported in GNU Gettext; @pxref{perl-format,, Perl
-Format Strings, gettext, GNU Gettext}.)  For example, in the
-following, @samp{@{section@}} will be replaced by the section name:
-
-@example
-see @{section@}
-@end example
-
-These Perl-style brace format strings are used for two reasons: first,
-changing the order of @code{printf} arguments is only available since
-Perl@tie{}5.8.0; second, and more importantly, the order of the
-argument is unpredictable, since @@-command expansion may lead to
-different orders depending on the output format.  The expansion of
-a translation string is done like this:
-
-@enumerate
-@item First, the string is translated.  The locale 
-is @var{@@documentlanguage}@code{.}@var{@@documentencoding}.
-
-@cindex @code{us-ascii} encoding, and translations
-If the @var{@@documentlanguage} has the form @var{ll_CC}, @var{ll_CC}
-is tried first, and then @var{ll}.  If that does not exist, and the
-encoding is not @code{us-ascii}, then @code{us-ascii} is tried.  The
-idea is that if there is a @code{us-ascii} encoding, it means that all
-the characters in the charset may be expressed as @@-commands.  For
-example, there is a @code{fr.us-ascii} locale that can accommodate any
-encoding, since all the Latin@tie{}1 characters have associated
-@@-commands.  On the other hand, Japanese has only a translation
-@code{ja.utf-8}, since there are no @@-commands for Japanese
-characters.
-
-@item Next, the string is expanded as Texinfo, and converted to a
-Texinfo tree in perl.
-The arguments are substituted; for example, @samp{@{arg_name@}} is 
-replaced by the corresponding actual argument, which should be 
-Texinfo perl trees or Texinfo perl tree contents arrays.
-
-@end enumerate
-
-In the following example, @samp{@{date@}}, @samp{@{program_homepage@}}
-and @samp{@{program@}} are the arguments of the string.  Since they
-are used in @code{@@uref}, their order is not predictable.
-@samp{@{date@}}, @samp{@{program_homepage@}} and @samp{@{program@}} are 
-substituted after the expansion, which means that they should already be
-Texinfo perl trees or Texinfo perl tree contents:
-
-@example
-gdt('Generated on @@emph@{@{date@}@} using
-     @@uref@{@{program_homepage@}, @@emph@{@{program@}@}@}.',
-    @{
-     'date' => expand_today(\%converter),
-     'program_homepage' 
-         => @{'text' => $Texi2HTML::THISDOC@{'program_homepage'@}@},
-     'program' 
-         => @{'text' => $Texi2HTML::THISDOC@{'program_and_version'@}@} @},
-   );
-@end example
-
-This approach is admittedly a bit complicated.  Its usefulness is that
-it supports having translations available in different encodings for
-encodings which can be covered by @@-commands, and also specifying how
-the formatting for some commands is done, independently of the output
-format---yet still be language dependent.  For example, an
-@samp{@@pxref} translation string may be:
-
-@example
-see @{node_file_href@} section `@{section@}\' in @@cite@{@{book@}@}
-@end example
-
-@noindent
-which allows specifying a string independently of the output format,
-but with rich formatting that may be translated appropriately in many
-languages.
 
 
 @node Command List
@@ -21947,7 +21573,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.484 2012-09-15 16:00:56 karl Exp $
+$Id: texinfo.txi,v 1.485 2012-09-15 18:06:52 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
