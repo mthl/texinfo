@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.483 2012-09-15 15:53:07 karl Exp $
+@c $Id: texinfo.txi,v 1.484 2012-09-15 16:00:56 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14222,9 +14222,14 @@ Good, @@samp@{@@@@node@} is defined.
 @end example
 
 @noindent will output the expected `Good, @samp{@@node} is defined.'.
-Caveat: the @TeX{} implementation will report internal @TeX{}
-commands, not just Texinfo commands as being ``defined''; the
-@code{makeinfo} implementation is reliable in this regard, however.
+
+This conditional will also consider true any new commands defined by
+the document via @code{@@macro}, @code{@@alias},
+@code{@@definfoenclose}, and @code{@@def@r{(}code@r{)}index}
+(@pxref{Defining New Texinfo Commands}).  Caveat: the @TeX{}
+implementation reports internal @TeX{} commands, in addition to all
+the Texinfo commands, as being ``defined''; the @code{makeinfo}
+implementation is reliable in this regard, however.
 
 @pindex @file{NEWS} file for Texinfo
 You can check the @file{NEWS} file in the Texinfo source distribution
@@ -21942,7 +21947,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.483 2012-09-15 15:53:07 karl Exp $
+$Id: texinfo.txi,v 1.484 2012-09-15 16:00:56 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
