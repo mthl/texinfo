@@ -149,7 +149,9 @@ our @document_settable_at_commands =
 
 # those should be unique
 our @document_settable_unique_at_commands = (
-        'documentdescription', # FIXME this does not work
+        # when passed through a configuration variable, this should be
+        # already formatted for HTML
+        'documentdescription',
         'evenfootingmarks', 'evenheadingmarks',
         'everyfootingmarks', 'everyheadingmarks',
         'fonttextsize', 'footnotestyle', 'novalidate',

@@ -6843,7 +6843,10 @@ sub output($$)
   }
 
   # documentdescription
-  if ($self->{'extra'}->{'documentdescription'}) {
+  if (defined($self->get_conf('documentdescription'))) {
+    $self->{'documentdescription_string'} 
+      = $self->get_conf('documentdescription');
+  } elsif ($self->{'extra'}->{'documentdescription'}) {
     print STDERR "DO documentdescription\n" if ($self->get_conf('DEBUG'));
     $self->{'documentdescription_string'} 
       = $self->convert_tree_new_formatting_context(
