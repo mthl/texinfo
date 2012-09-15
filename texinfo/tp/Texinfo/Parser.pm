@@ -100,79 +100,36 @@ sub __($$)
   return &{$self->{'gettext'}}(@_);
 }
 
-# these are the default values for the parser state that may be 
-# initialized to values given by the user.
-our %default_configuration = (
+# Customization variables obeyed by the Parser, and the default values.
+our %default_customization_values = (
   'TEST' => 0,
   'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
                     # If >= 100 tree is printed every line.
   'SHOW_MENU' => 1,             # if false no menu error related.
-  'gettext' => sub {return $_[0];},
-  'expanded_formats' => [],
-  'include_directories' => [ '.' ],
   'INLINE_INSERTCOPYING' => 0,
   'IGNORE_BEFORE_SETFILENAME' => 1,
   'MACRO_BODY_IGNORES_LEADING_SPACE' => 0,
-  # this is the initial context.  It is put at the bottom of the 
-  # 'context_stack'
-  'context' => '_root',
-  # these are the user-added indices.  May be an array reference on names
-  # or an hash reference in the same format than %index_names below
-  'indices' => [],
-  # the following are dynamically modified during the document parsing.
-  'aliases' => {},            # key is a command name value is the alias
-  'values' => {'txicommandconditionals' => 1}, 
-                              # the key is the name, the value the @set name 
-                              # argument.  A Texinfo tree may also be used.
-  'macros' => {},             # the key is the user-defined macro name.  The 
-                              # value is the reference on a macro element 
-                              # as obtained by parsing the @macro
-  'explained_commands' => {}, # the key is a command name, either acronym
-                              # or abbr, the value is a hash.  The key hash 
-                              # is a normalized first argument of the 
-                              # corresponding command, the value is the 
-                              # contents array of the previous command with
-                              # this first arg and a second arg.
-  'clickstyle' => 'arrow',
-  'kbdinputstyle' => 'distinct',
-  'sections_level' => 0,      # modified by raise/lowersections
-  'merged_indices' => {},     # the key is merged in the value
-  'labels'          => {},    # keys are normalized label names, as described
-                              # in the `HTML Xref' node.  Value should be
-                              # a node/anchor or float in the tree.
-  'novalidate' => 0,          # same as setting @novalidate.
   'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
                               # @documentencoding in the default case
   'INPUT_ENCODING_NAME' => undef, # encoding name normalized as preferred
                               # IANA, set from @documentencoding in the default
                               # case
-  'documentlanguage' => undef, 
-                              # Current documentlanguage set by 
-                              # @documentlanguage
+  'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
+  'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
+  'GLOBAL_COMMANDS' => [],    # list of commands registered 
   # This is not used directly, but passed to Convert::Text through 
   # Texinfo::Common::_convert_text_options
   'ENABLE_ENCODING' => 1,     # output accented and special characters
                               # based on @documentencoding
-  'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
-  'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
+  # following are used in Texinfo::Structuring
   'TOP_NODE_UP' => '(dir)',   # up node of Top node
-  'SIMPLE_MENU' => 0,         # currently not used in the parser for now, 
-                              # but relevant for structuring
-  'GLOBAL_COMMANDS' => [],    # list of commands registered 
+  'SIMPLE_MENU' => 0,         # not used in the parser but in structuring
+  'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 
+                                     # section up.
 );
 
-# content is not copied but reference is copied when duplicating a parser.
-my %tree_informations;
-foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels') {
-  $tree_informations{$tree_information} = 1;
-}
-
-# The commands in initialization_overrides are not set in the document if
-# set at the parser initialization.
-my %initialization_overrides = (
-  'INPUT_ENCODING_NAME' => 1,
-  'documentlanguage' => 1,
-);
+my %parser_default_configuration = (%Texinfo::Common::default_parser_state_configuration,
+                                    %default_customization_values);
 
 # the other possible keys for the parser state are:
 #
@@ -230,7 +187,7 @@ my %initialization_overrides = (
 #
 # A text fragment information is a 2 element array reference, the first is the
 # text fragment, the second is the line information.
-#
+
 # The input structure is an array, the first is the most recently included
 # file.  The last element may be a file if the parsing is done on a file, 
 # with parse_texi_file, or simply pending text, if called as parse_texi_text.
@@ -241,6 +198,18 @@ my %initialization_overrides = (
 # line_nr    current line number in the file
 # fh         filehandle for the file
 
+# content is not copied but reference is copied when duplicating a parser.
+my %tree_informations;
+foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels') {
+  $tree_informations{$tree_information} = 1;
+}
+
+# The commands in initialization_overrides are not set in the document if
+# set at the parser initialization.
+my %initialization_overrides = (
+  'INPUT_ENCODING_NAME' => 1,
+  'documentlanguage' => 1,
+);
 
 my %no_brace_commands         = %Texinfo::Common::no_brace_commands;
 my %misc_commands             = %Texinfo::Common::misc_commands;
@@ -564,7 +533,7 @@ sub _register_index_commands ($$)
 
 # initialization entry point.  Set up a parser.
 # The last argument, optional, is a hash provided by the user to change
-# the default values for what is present in %default_configuration.
+# the default values for what is present in %parser_default_configuration.
 # The exact arguments of the function depend on how it was called,
 # in a object oriented way or not.
 sub parser(;$$)
@@ -572,9 +541,9 @@ sub parser(;$$)
   my $class = shift;
   my $conf;
 
-  my $parser = _deep_copy(\%default_configuration);
+  my $parser = _deep_copy(\%parser_default_configuration);
   # _deep_copy doesn't handle subs
-  $parser->{'gettext'} = $default_configuration{'gettext'};
+  $parser->{'gettext'} = $parser_default_configuration{'gettext'};
 
   # called not object-oriented
   if (ref($class) eq 'HASH') {
@@ -586,7 +555,7 @@ sub parser(;$$)
     # called on an existing parser, interpreted as a duplication
     my $old_parser = $class;
     $class = ref($class);
-    foreach my $key (keys(%default_configuration)) {
+    foreach my $key (keys(%parser_default_configuration)) {
       if ($tree_informations{$key}) {
         if (defined($old_parser->{$key})) {
           foreach my $info_key (keys(%{$old_parser->{$key}})) {
@@ -613,7 +582,7 @@ sub parser(;$$)
 
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
-      if (exists($default_configuration{$key})) {
+      if (exists($parser_default_configuration{$key})) {
         if (ref($conf->{$key}) ne 'CODE' and $key ne 'values') {
           $parser->{$key} = _deep_copy($conf->{$key});
         } else {
@@ -663,6 +632,8 @@ sub parser(;$$)
   $parser->{'context_stack'} = [ $parser->{'context'} ];
   $parser->{'regions_stack'} = [];
   $parser->{'macro_stack'} = [];
+  $parser->{'conditionals_stack'} = [];
+
   # turn the array to a hash for speed.  Not sure it really matters for such
   # a small array.
   foreach my $expanded_format(@{$parser->{'expanded_formats'}}) {
@@ -3097,18 +3068,21 @@ sub _end_line($$$)
                  $self->__("Encoding `%s' is not a canonical texinfo encoding"),
                                $text)
             if (!$texinfo_encoding or $texinfo_encoding ne lc($text));
+          if ($input_encoding) {
+            $current->{'extra'}->{'input_encoding_name'} = $input_encoding;
+          }
           if (!$perl_encoding) {
             $self->_command_warn($current, $line_nr,
                  $self->__("unrecognized encoding name `%s'"), $text);
           } else {
+            $current->{'extra'}->{'input_perl_encoding'} = $perl_encoding;
+
             if ($input_encoding) {
-              $current->{'extra'}->{'input_encoding_name'} = $input_encoding;
               if (!$self->{'set'}->{'INPUT_ENCODING_NAME'}) {
                 $self->{'INPUT_ENCODING_NAME'} = $input_encoding;
                 $self->{'info'}->{'input_encoding_name'} = $input_encoding;
               }
             }
-            $current->{'extra'}->{'input_perl_encoding'} = $perl_encoding;
 
             if (!$self->{'set'}->{'INPUT_PERL_ENCODING'}) {
               $self->{'INPUT_PERL_ENCODING'} = $perl_encoding;
@@ -3564,8 +3538,6 @@ sub _parse_texi($;$)
 
   $root = { 'contents' => [], 'type' => 'text_root' } if (!defined($root));
   my $current = $root;
-
-  $self->{'conditionals_stack'} = [];
 
   my $line_nr;
   
@@ -5870,6 +5842,11 @@ Is associated to a macro definition element
    'contents' => [{'text' => "coucou \arg\ after arg\n", 'type' => 'raw'}],
    'extra' => {'arg_line' => " mymacro{arg}\n",
                'macrobody' => "coucou \arg\ after arg\n"}}
+
+= item merged_indices
+
+The associated hash reference holds merged indices information, each key 
+is merged in the value.  Same as setting C<@synindex> of C<syncodeindex>.
 
 =item novalidate
 

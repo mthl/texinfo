@@ -969,13 +969,10 @@ if (defined($formats_table{$format}->{'converter'})) {
 
 # FIXME should this be set when the --set is set too?  The corresponding
 # code is ready above, but commented out.
-# FIXME should the list come from Texinfo::Common
+# using no warnings is wrong, but a way to avoid a spurious warning.
+no warnings 'once';
 foreach my $parser_settable_option (
-       'TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING', 'INLINE_INSERTCOPYING', 
-       'SHOW_MENU', 'IGNORE_BEFORE_SETFILENAME', 'TEST', 
-       'GLOBAL_COMMANDS', 'CPP_LINE_DIRECTIVES', 
-       'INPUT_ENCODING_NAME', 'INPUT_PERL_ENCODING', 
-       'MACRO_BODY_IGNORES_LEADING_SPACE', 'USE_UP_NODE_FOR_ELEMENT_UP') {
+                keys(%Texinfo::Parser::default_customization_values)) {
   if (defined(get_conf($parser_settable_option))) {
     $parser_default_options->{$parser_settable_option} 
        = get_conf($parser_settable_option);
@@ -986,9 +983,12 @@ foreach my $parser_settable_option (
   }
 }
 
-# this is very wrong, but a way to avoid a spurious warning.
-no warnings 'once';
-foreach my $parser_option (@Texinfo::Common::parser_options) {
+## using no warnings is wrong, but a way to avoid a spurious warning.
+#no warnings 'once';
+# The configuration options are upper-cased when considered as 
+# customization variables, and lower-cased when passed to the Parser
+foreach my $parser_option (map {uc($_)} 
+                  (keys (%Texinfo::Common::default_parser_state_configuration))) {
   $parser_default_options->{lc($parser_option)} = get_conf($parser_option)
     if (defined(get_conf($parser_option)));
 }
@@ -1008,8 +1008,7 @@ my @opened_files = ();
 my %unclosed_files;
 my $error_count = 0;
 # main processing
-while(@input_files)
-{
+while(@input_files) {
   $file_number++;
   my $input_file_arg = shift(@input_files);
   my $input_file_name;

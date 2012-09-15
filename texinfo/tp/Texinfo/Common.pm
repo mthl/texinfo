@@ -86,6 +86,48 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
   $null_device_file{'NUL'} = 1;
 }
 
+# these are the default values for the parser state that may be 
+# initialized to values given by the user.
+# They are defined here, because they are used below and we 
+# don't want Texinfo::Common to use Texinfo::Parser.
+our %default_parser_state_configuration = (
+  # this is the initial context.  It is put at the bottom of the 
+  # 'context_stack'.  It is not clear if this is really useful to be
+  # able to customize that value.
+  'context' => '_root',
+  'expanded_formats' => [],
+  'gettext' => sub {return $_[0];},
+  'include_directories' => [ '.' ],
+  # these are the user-added indices.  May be an array reference on names
+  # or an hash reference in the same format than %index_names below
+  'indices' => [],
+  # the following are dynamically modified during the document parsing.
+  'aliases' => {},            # key is a command name value is the alias
+  'clickstyle' => 'arrow',
+  'documentlanguage' => undef,
+                              # Current documentlanguage set by 
+                              # @documentlanguage
+  'explained_commands' => {}, # the key is a command name, either acronym
+                              # or abbr, the value is a hash.  The key hash 
+                              # is a normalized first argument of the 
+                              # corresponding command, the value is the 
+                              # contents array of the previous command with
+                              # this first arg and a second arg.
+  'kbdinputstyle' => 'distinct',
+  'labels'          => {},    # keys are normalized label names, as described
+                              # in the `HTML Xref' node.  Value should be
+                              # a node/anchor or float in the tree.
+  'macros' => {},             # the key is the user-defined macro name.  The 
+                              # value is the reference on a macro element 
+                              # as obtained by parsing the @macro
+  'merged_indices' => {},     # the key is merged in the value
+  'novalidate' => 0,          # same as setting @novalidate.
+  'sections_level' => 0,      # modified by raise/lowersections
+  'values' => {'txicommandconditionals' => 1},
+                              # the key is the name, the value the @set name 
+                              # argument.  A Texinfo tree may also be used.
+);
+
 # command-line options
 #my @command_line_settable_at_commands = ('footnotestyle', 'novalidate',
 #  'documentlanguage', 'paragraphindent');
@@ -114,7 +156,7 @@ our @document_settable_unique_at_commands = (
         'oddfootingmarks','oddheadingmarks',
         'pagesizes', 'setchapternewpage',
         'setcontentsaftertitlepage',
-        'setfilename', # FIXME this does not work
+        'setfilename',
         'setshortcontentsaftertitlepage',
         );
 
@@ -131,10 +173,7 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
 
 # documented in the Texinfo::Parser pod section
 # all are lower cased in texi2any.pl
-our @parser_options = ('EXPANDED_FORMATS', 'GETTEXT', 'INCLUDE_DIRECTORIES',
-  'ALIASES', 'CLICKSTYLE', 'DOCUMENTLANGUAGE', 'EXPLAINED_COMMANDS',
-  'INDICES', 'KBDINPUTSTYLE', 'LABELS',
-  'MACROS', 'NOVALIDATE', 'SECTIONS_LEVEL', 'VALUES');
+my @parser_options = map {uc($_)} (keys(%default_parser_state_configuration));
 
 my @obsolete_variables = ('TOP_HEADING_AT_BEGINNING', 'USE_SECTIONS',
   'IDX_SUMMARY', 'I18N_PERL_HASH', 'USE_UNICODE', 'USE_NLS',
