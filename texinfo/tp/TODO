@@ -23,6 +23,28 @@ unicode sorting.
 my $collator = Unicode::Collate::Locale->new('locale' => $locale_name, 'normalization' => 'NFKD')
 @sorted = $collator->sort(@not_sorted);
 
+Currently there is an error for something like 
+
+  @chapter @code{@anchor{TTO}}
+
+just like there is an error for 
+
+  @chapter @anchor{TTez}
+
+This would certainly imply adding, on top of the 'context_stack', a 
+stack of opened @-commands (although maybe not every @-commands?).  This 
+would allow to catch many other dubious nesting, such as @table in @menu, 
+@caption in @caption and also would certainly allow to handle the 2 cases 
+below.  This should, however, slow down the computation even more.
+
+warn nested footnotes.
+
+Following should be an error:
+@example
+@heading A heading
+@end example
+Example in heading/heading_in_example.
+
 
 Punctuation and spaces before @image do not lead to a doubling of space.
 In fact @image is completly formatted outside of usual formatting containers.
@@ -32,17 +54,15 @@ test in info_test/image_and_punctuation
 Instead of _set_global_multiple_commands and _unset_global_multiple_commands
 have a better granularity and do something per command, with the possibility
 to really revert everything, including things that are not set by set_conf.
-(There is a FIXME in the code).
+(There is a FIXME in the code).  This is not that important, now that the 
+actual case that was problematic (setting encodings as a side effect of 
+setting @documentencoding) is not supported anymore.  (Now the encoding is
+set at the initialization of the converter and should be changed by setting
+the correct customization variable, in general OUTPUT_ENCODING_NAME).
 
 There should be a warning for something like
 @example text
 ...
-
-Following should be an error:
-@example
-@heading A heading
-@end example
-Example in heading/heading_in_example.
 
 Image on sectioning command line haven't their length ignored correctly.
 Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
@@ -52,8 +72,6 @@ warn when a @noindent/@indent appears within a paragraph.
 in info_tests/error_in_footnote there is an error message for each 
 listoffloats;  Line numbers are right, though, so maybe this is not
 an issue.
-
-warn nested footnotes.
 
 converters_tests/things_before_setfilename there is no error
 for anchor and footnote before setfilename.  It is not completly
