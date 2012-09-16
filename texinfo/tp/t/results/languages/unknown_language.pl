@@ -393,10 +393,10 @@ $result_texts{'unknown_language'} = '
 unknkown language
 *****************
 
-Unknown language. .
+Unknown language. Top.
 
 
-Another unknown language. .
+Another unknown language. Top.
 ';
 
 $result_sectioning{'unknown_language'} = {

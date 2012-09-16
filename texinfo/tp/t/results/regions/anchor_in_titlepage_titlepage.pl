@@ -353,7 +353,7 @@ $result_texts{'anchor_in_titlepage_titlepage'} = '
 top
 ***
 
-.
+in titlepage.
 ';
 
 $result_sectioning{'anchor_in_titlepage_titlepage'} = {

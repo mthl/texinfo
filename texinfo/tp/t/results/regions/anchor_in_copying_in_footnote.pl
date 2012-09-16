@@ -434,7 +434,7 @@ $result_texts{'anchor_in_copying_in_footnote'} = '
 
 
 
-.
+Copying footnote.
 
 ';
 

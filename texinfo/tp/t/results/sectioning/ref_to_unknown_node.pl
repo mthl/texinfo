@@ -70,7 +70,7 @@ $result_trees{'ref_to_unknown_node'}{'contents'}[0]{'parent'} = $result_trees{'r
 $result_texis{'ref_to_unknown_node'} = '@xref{unknown node}.';
 
 
-$result_texts{'ref_to_unknown_node'} = '.';
+$result_texts{'ref_to_unknown_node'} = 'unknown node.';
 
 $result_errors{'ref_to_unknown_node'} = [
   {

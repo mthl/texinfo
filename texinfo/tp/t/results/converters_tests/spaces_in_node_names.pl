@@ -977,11 +977,11 @@ $result_texts{'spaces_in_node_names'} = '
 
 
 
+a  
 
+b  
 
-
-
-
+c  
 ';
 
 $result_sectioning{'spaces_in_node_names'} = {};

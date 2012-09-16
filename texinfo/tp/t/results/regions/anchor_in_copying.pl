@@ -392,7 +392,7 @@ $result_texts{'anchor_in_copying'} = '
 
 
 
-.
+Copying information.
 
 ';
 

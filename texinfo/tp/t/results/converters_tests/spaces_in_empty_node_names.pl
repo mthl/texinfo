@@ -893,11 +893,11 @@ $result_texts{'spaces_in_empty_node_names'} = '
 
 
 
+  
 
+  
 
-
-
-
+  
 ';
 
 $result_sectioning{'spaces_in_empty_node_names'} = {};

@@ -97,7 +97,7 @@ $result_trees{'ref_in_style_command'}{'contents'}[0]{'parent'} = $result_trees{'
 $result_texis{'ref_in_style_command'} = '@samp{@ref{(manula)other node}}.';
 
 
-$result_texts{'ref_in_style_command'} = '.';
+$result_texts{'ref_in_style_command'} = '(manula)other node.';
 
 $result_errors{'ref_in_style_command'} = [];
 

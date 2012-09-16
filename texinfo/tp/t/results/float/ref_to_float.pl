@@ -458,9 +458,9 @@ Float
 Label2
 In foat 2.
 
+Label1
 
-
-
+Label2
 ';
 
 $result_errors{'ref_to_float'} = [];

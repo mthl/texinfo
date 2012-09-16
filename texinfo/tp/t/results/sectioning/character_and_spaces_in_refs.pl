@@ -1957,19 +1957,19 @@ $result_texts{'character_and_spaces_in_refs'} = 'Test refs
 Testing distant nodes
 ---------------------
 
-
-
-
-
-
+a  node
+:
+top
+(texinfo)Cross References
+node
 
 Testing local nodes
 -------------------
 
-
-
-
-
+!_"#$%&\'()*+-.
+/;<=>?[\\]^_`|~
+Top
+local   node
 
 1 Chapter with nodes
 ********************

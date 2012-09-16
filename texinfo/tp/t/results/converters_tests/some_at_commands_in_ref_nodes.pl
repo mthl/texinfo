@@ -1607,7 +1607,7 @@ Top
 1 A SC node i" i" E=` /l C\', !
 ******************************
 
-see .
+see a strong ref with SC, a i trema i", a dotless i trema i" E=` and exclamdown !.
 ';
 
 $result_sectioning{'some_at_commands_in_ref_nodes'} = {

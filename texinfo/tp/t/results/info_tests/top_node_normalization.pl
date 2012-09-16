@@ -353,7 +353,7 @@ $result_texis{'top_node_normalization'} = '@node ToP
 
 
 $result_texts{'top_node_normalization'} = '
-. .
+TOP. tOP.
 
 * tOP::
 ';

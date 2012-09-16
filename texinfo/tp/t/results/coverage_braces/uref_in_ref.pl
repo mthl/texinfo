@@ -370,7 +370,7 @@ $result_texis{'uref_in_ref'} = '@ref{(file)node, cross ref with uref @uref{href:
 ';
 
 
-$result_texts{'uref_in_ref'} = '
+$result_texts{'uref_in_ref'} = '(file)node
 ';
 
 $result_errors{'uref_in_ref'} = [];

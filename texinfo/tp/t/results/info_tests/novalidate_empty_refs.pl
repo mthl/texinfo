@@ -444,7 +444,7 @@ $result_texts{'novalidate_empty_refs'} = '
 
 
 .
-.
+ .
 
 ';
 

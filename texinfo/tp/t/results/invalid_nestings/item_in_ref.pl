@@ -354,7 +354,7 @@ First item text
 $result_texts{'item_in_ref'} = 'first item
 First item text
 
-second item
+Topsecond item
 ';
 
 $result_errors{'item_in_ref'} = [

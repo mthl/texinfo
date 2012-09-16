@@ -368,7 +368,7 @@ $result_texts{'novalidate'} = '
 
 * not a node::
 
-.
+unknown ref.
 ';
 
 $result_sectioning{'novalidate'} = {};

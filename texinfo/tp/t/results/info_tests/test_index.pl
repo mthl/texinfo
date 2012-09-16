@@ -4691,7 +4691,7 @@ Functions index
 $result_texts{'test_index'} = 'Element top
 ***********
 
-.
+a counting anchor.
 
 before menu.
 

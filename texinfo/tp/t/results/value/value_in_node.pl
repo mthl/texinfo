@@ -975,7 +975,7 @@ Expansion in Node Names
 * Section 1.1::
 
 
-.
+Node 1.
 ';
 
 $result_sectioning{'value_in_node'} = {

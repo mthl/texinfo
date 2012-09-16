@@ -223,7 +223,7 @@ ignore me
 
 
 $result_texts{'ignore_in_xref'} = '
-.
+Top.
 ';
 
 $result_sectioning{'ignore_in_xref'} = {};

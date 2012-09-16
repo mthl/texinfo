@@ -275,7 +275,7 @@ $result_texts{'one_node_explicit_directions_anchor'} = 'Top node
 
 anchor ref .
 
-ref to ref .
+ref to ref ref.
 ';
 
 $result_sectioning{'one_node_explicit_directions_anchor'} = {};

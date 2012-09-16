@@ -20794,35 +20794,36 @@ Top
 26 http://somewhere_aaa url (text) ls
 *************************************
 
+ { }
 
+    ! 
+ .  . ? @
+@ { } \\ #
+LaTeX TeX * , (C) ... ...
+== error--> Euro ! ==> -
 
+>= <= ->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+a o -!- # -| ? (R)
+=> o a b a sunny day aa
+AA ae oe AE OE /o /O ss /l /L D d TH th
+a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
+e. e( e_ .e e< j ee[
+i E=` C\',
+`` \'\' ` \' ,, ,
+<< >> << >> < >
+" " -- - ` \'
+AAA (fff) AAA BBB
+CCC (rrr) CCC DDD
+the someone no_explain@there
+f--ile1  f--ile
+ @ {} . 
+cite asis in @w b in r SC str t var dfn i
+env code option samp command file C-x ESC
+8.27in
+sansserif slanted
+indicateurl
+http://somewhere_aaa url (text) ls
 
 ';
 

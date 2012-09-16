@@ -450,7 +450,7 @@ $result_texts{'equivalent_nodes'} = '
 * node::
 
 
-.
+node.
 ';
 
 $result_sectioning{'equivalent_nodes'} = {};

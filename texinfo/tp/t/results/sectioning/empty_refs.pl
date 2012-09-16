@@ -141,7 +141,7 @@ $result_texis{'empty_refs'} = '@xref{@:}.
 
 
 $result_texts{'empty_refs'} = '.
-.
+ .
 ';
 
 $result_errors{'empty_refs'} = [

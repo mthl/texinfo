@@ -216,7 +216,7 @@ verbat text
 
 
 $result_texts{'verbatim_in_ref'} = '
-verbat text
+Topverbat text
 .';
 
 $result_sectioning{'verbatim_in_ref'} = {};

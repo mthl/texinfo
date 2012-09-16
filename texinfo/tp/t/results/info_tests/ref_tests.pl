@@ -678,15 +678,15 @@ $result_texis{'ref_tests'} = '
 
 $result_texts{'ref_tests'} = '
 
-, 
- after ref.
-.
+(m)in ref followed by comma, 
+(m)in ref not followed by comma after ref.
+(m)in ref followed by end command.
 
 
-,
- after ref.
-.
- after ref.
+(m)in ref followed by comma,
+(m)in ref not followed by comma after ref.
+(m)in ref followed by end command.
+(m)in ref ending with a dot. after ref.
 
 ';
 

@@ -8164,20 +8164,20 @@ Appendix
 list of floats
 **************
 
-See .
-And ().
-.
+See text in section.
+And (text in chapter).
+text with a lot of features.
 
 And now a ref (without manual or printed manual)
-.
+text with a lot of features.
 
 And now a ref (with manual without printed manual)
-.
+text with a lot of features.
 
 And now a ref (without manual with a printed manual)
-.
+text with a lot of features.
 
-A ref to float without type .
+A ref to float without type label but no type.
 
 
 ';

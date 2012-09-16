@@ -187,7 +187,7 @@ $result_texis{'inforef_too_much_args'} = '@node chapter
 
 
 $result_texts{'inforef_too_much_args'} = '
-
+chapter
 ';
 
 $result_sectioning{'inforef_too_much_args'} = {};

@@ -4744,40 +4744,40 @@ $result_texis{'refs_formatting'} = '@node chapter
 $result_texts{'refs_formatting'} = '1 chapter
 *********
 
-@ref{chapter,cross ref name} 
-@ref{chapter,,title} 
-@ref{chapter,,,file name} 
-@ref{chapter,,,,manual} 
-@ref{chapter,cross ref name,title,} 
-@ref{chapter,cross ref name,,file name} 
-@ref{chapter,cross ref name,,,manual} 
-@ref{chapter,cross ref name,title,file name} 
-@ref{chapter,cross ref name,title,,manual} 
-@ref{chapter,cross ref name,title, file name, manual} 
-@ref{chapter,,title,file name} 
-@ref{chapter,,title,,manual} 
-@ref{chapter,,title, file name, manual} 
-@ref{chapter,,,file name,manual} 
+@ref{chapter,cross ref name} chapter
+@ref{chapter,,title} chapter
+@ref{chapter,,,file name} chapter
+@ref{chapter,,,,manual} chapter
+@ref{chapter,cross ref name,title,} chapter
+@ref{chapter,cross ref name,,file name} chapter
+@ref{chapter,cross ref name,,,manual} chapter
+@ref{chapter,cross ref name,title,file name} chapter
+@ref{chapter,cross ref name,title,,manual} chapter
+@ref{chapter,cross ref name,title, file name, manual} chapter
+@ref{chapter,,title,file name} chapter
+@ref{chapter,,title,,manual} chapter
+@ref{chapter,,title, file name, manual} chapter
+@ref{chapter,,,file name,manual} chapter
 
-@ref{(pman)anode,cross ref name} 
-@ref{(pman)anode,,title} 
-@ref{(pman)anode,,,file name} 
-@ref{(pman)anode,,,,manual} 
-@ref{(pman)anode,cross ref name,title,} 
-@ref{(pman)anode,cross ref name,,file name} 
-@ref{(pman)anode,cross ref name,,,manual} 
-@ref{(pman)anode,cross ref name,title,file name} 
-@ref{(pman)anode,cross ref name,title,,manual} 
-@ref{(pman)anode,cross ref name,title, file name, manual} 
-@ref{(pman)anode,,title,file name} 
-@ref{(pman)anode,,title,,manual} 
-@ref{(pman)anode,,title, file name, manual} 
-@ref{(pman)anode,,,file name,manual} 
+@ref{(pman)anode,cross ref name} (pman)anode
+@ref{(pman)anode,,title} (pman)anode
+@ref{(pman)anode,,,file name} (pman)anode
+@ref{(pman)anode,,,,manual} (pman)anode
+@ref{(pman)anode,cross ref name,title,} (pman)anode
+@ref{(pman)anode,cross ref name,,file name} (pman)anode
+@ref{(pman)anode,cross ref name,,,manual} (pman)anode
+@ref{(pman)anode,cross ref name,title,file name} (pman)anode
+@ref{(pman)anode,cross ref name,title,,manual} (pman)anode
+@ref{(pman)anode,cross ref name,title, file name, manual} (pman)anode
+@ref{(pman)anode,,title,file name} (pman)anode
+@ref{(pman)anode,,title,,manual} (pman)anode
+@ref{(pman)anode,,title, file name, manual} (pman)anode
+@ref{(pman)anode,,,file name,manual} (pman)anode
 
-@inforef{chapter, cross ref name, file name} 
-@inforef{chapter} 
-@inforef{chapter, cross ref name} 
-@inforef{chapter,,file name} 
+@inforef{chapter, cross ref name, file name} chapter
+@inforef{chapter} chapter
+@inforef{chapter, cross ref name} chapter
+@inforef{chapter,,file name} chapter
 ';
 
 $result_sectioning{'refs_formatting'} = {

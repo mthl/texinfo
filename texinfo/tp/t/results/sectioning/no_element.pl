@@ -980,10 +980,10 @@ $result_texts{'no_element'} = '
 
 
 Ref to the anchor:
-
+An anchor
 
 Ref to the anchor in footnote:
-.
+Anchor in footnote.
 
 
 
@@ -991,7 +991,7 @@ float anchor
 In float
 
 Ref to float
-.
+float anchor.
 
 * An anchor::                menu entry pointing to the anchor.
 

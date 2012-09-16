@@ -297,9 +297,9 @@ $result_texis{'ref_in_center'} = '@node Top
 
 
 $result_texts{'ref_in_center'} = '
+Top
 
-
-
+Top
 very long
 ';
 

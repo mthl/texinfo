@@ -2704,32 +2704,32 @@ $result_texis{'ref_in_sectioning'} = '@contents
 
 
 $result_texts{'ref_in_sectioning'} = '
-for example  () ()
-******************
+for example node (node) (Top)
+*****************************
 
 * node::
 * chap::
 
-1 .
-***
+1 node.
+*******
 
-2  just node
-************
+2 node just node
+****************
 
-2.1   node, crossref arg2
-=========================
+2.1 node  node, crossref arg2
+=============================
 
-2.2   code node, samptitle arg3
-===============================
+2.2 node  code node, samptitle arg3
+===================================
 
-2.3  code node, file name
-=========================
+2.3 node code node, file name
+=============================
 
-2.4  node and manual
-====================
+2.4 node node and manual
+========================
 
-2.5  Top and manual
-===================
+2.5 Top Top and manual
+======================
 
 2.6  no node just manual
 ========================
@@ -2737,17 +2737,17 @@ for example  () ()
 2.7  no node just file name
 ===========================
 
-2.8  inforef a b c
-==================
+2.8 a inforef a b c
+===================
 
-2.9 () pxref Top file name, spaces
-==================================
+2.9 (Top) pxref Top file name, spaces
+=====================================
 
 2.10 () pxref file name only, spaces
 ====================================
 
-2.11 , xref Top filename only, no spaces
-========================================
+2.11 Top, xref Top filename only, no spaces
+===========================================
 
 2.12 . xref filename only, no spaces
 ====================================

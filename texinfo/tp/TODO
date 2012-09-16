@@ -5,7 +5,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-Handle @*ref* in Texinfo::Convert::Text.
 
 Bugs
 ====

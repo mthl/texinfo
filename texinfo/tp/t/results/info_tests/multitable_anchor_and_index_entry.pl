@@ -1475,8 +1475,8 @@ BTTTTTTt
 CTTTTTT
 
 
-
-
+mark
+anchor in multitable
 ';
 
 $result_sectioning{'multitable_anchor_and_index_entry'} = {};

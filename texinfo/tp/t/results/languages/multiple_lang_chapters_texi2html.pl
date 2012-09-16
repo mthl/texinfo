@@ -2372,13 +2372,13 @@ Multi language file
 1 ja
 ****
 
-In japanese. .
+In japanese. Top.
 Instance Variable of AAA: BBB CCC
 
 2 en
 ****
 
-In english. .
+In english. Top.
 Instance Variable of AAA: BBB CCC
 
 3 fr_FR
@@ -2392,7 +2392,7 @@ Instance Variable of AAA: BBB CCC
 5 pt_bR
 *******
 
-In brazilian. .
+In brazilian. Top.
 ';
 
 $result_sectioning{'multiple_lang_chapters_texi2html'} = {

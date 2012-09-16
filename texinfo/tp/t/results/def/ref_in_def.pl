@@ -395,7 +395,7 @@ $result_trees{'ref_in_def'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'index_type_command' => 'deffn',
-                  'key' => '',
+                  'key' => 'myanchor',
                   'node' => {},
                   'number' => 1
                 },
@@ -708,7 +708,7 @@ $result_trees{'ref_in_def'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'index_type_command' => 'deffn',
-                  'key' => '',
+                  'key' => 'myanchor',
                   'node' => {},
                   'number' => 2
                 },
@@ -986,8 +986,8 @@ T
 
 $result_texts{'ref_in_def'} = '
 
-:    
-:    
+myanchor: myanchor myanchor myanchor myanchor
+myanchor: myanchor myanchor myanchor myanchor
 T
 
 ';
@@ -1020,26 +1020,7 @@ $result_menus{'ref_in_def'} = {
   }
 };
 
-$result_errors{'ref_in_def'} = [
-  {
-    'error_line' => ':4: warning: Empty index key in @deffn
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'Empty index key in @deffn',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':5: warning: Empty index key in @deffnx
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => 'Empty index key in @deffnx',
-    'type' => 'warning'
-  }
-];
+$result_errors{'ref_in_def'} = [];
 
 
 

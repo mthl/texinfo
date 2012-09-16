@@ -1608,7 +1608,7 @@ $result_texts{'in_table'} = '
 
 in titlefont exdent
 in item
-
+Top
 long title
 centered text in item
 

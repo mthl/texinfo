@@ -759,7 +759,7 @@ End Tag Table
 
 $result_converted{'html'}->{'ref_in_copying'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!--  -->
+<!-- GFDL -->
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>top</title>

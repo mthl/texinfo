@@ -213,7 +213,7 @@ $result_texts{'ref_to_top'} = '
 top
 ***
 
-.
+TOP.
 ';
 
 $result_sectioning{'ref_to_top'} = {

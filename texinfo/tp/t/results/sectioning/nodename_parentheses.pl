@@ -1095,9 +1095,9 @@ Dummy section
 2 Section (nodename without parentheses)
 ****************************************
 
-Dummy link to .
+Dummy link to Node (with parentheses).
 
-Dummy link to .
+Dummy link to (manual)node.
 
 3 (manual)node
 **************

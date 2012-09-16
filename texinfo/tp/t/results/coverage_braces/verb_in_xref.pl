@@ -215,7 +215,7 @@ ggg *}}.
 
 
 $result_texts{'verb_in_xref'} = '
-.
+Top.
 ';
 
 $result_sectioning{'verb_in_xref'} = {};

@@ -470,7 +470,8 @@ node name}
 $result_texts{'ref_in_preformatted'} = '
 * nnn the node name::
 
-Now 
+Now nnn the
+node name
 
 ';
 

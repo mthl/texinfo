@@ -605,7 +605,7 @@ In top node
 1 Chap
 ******
 
-.
+Anchor in footnote.
 ';
 
 $result_sectioning{'anchor_in_footnote'} = {

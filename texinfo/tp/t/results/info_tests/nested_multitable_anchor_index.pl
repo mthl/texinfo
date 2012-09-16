@@ -1084,8 +1084,8 @@ $result_texts{'nested_multitable_anchor_index'} = '
 AAAA machin bidule
 other item in tab 
 
-.
-.
+mark.
+mark inside.
 ';
 
 $result_sectioning{'nested_multitable_anchor_index'} = {};

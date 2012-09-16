@@ -4689,40 +4689,40 @@ $result_texis{'top_in_ref_keep_top'} = '@node Top
 
 
 $result_texts{'top_in_ref_keep_top'} = '
-@ref{Top,cross ref name} 
-@ref{Top,,title} 
-@ref{Top,,,file name} 
-@ref{Top,,,,manual} 
-@ref{Top,cross ref name,title,} 
-@ref{Top,cross ref name,,file name} 
-@ref{Top,cross ref name,,,manual} 
-@ref{Top,cross ref name,title,file name} 
-@ref{Top,cross ref name,title,,manual} 
-@ref{Top,cross ref name,title, file name, manual} 
-@ref{Top,,title,file name} 
-@ref{Top,,title,,manual} 
-@ref{Top,,title, file name, manual} 
-@ref{Top,,,file name,manual} 
+@ref{Top,cross ref name} Top
+@ref{Top,,title} Top
+@ref{Top,,,file name} Top
+@ref{Top,,,,manual} Top
+@ref{Top,cross ref name,title,} Top
+@ref{Top,cross ref name,,file name} Top
+@ref{Top,cross ref name,,,manual} Top
+@ref{Top,cross ref name,title,file name} Top
+@ref{Top,cross ref name,title,,manual} Top
+@ref{Top,cross ref name,title, file name, manual} Top
+@ref{Top,,title,file name} Top
+@ref{Top,,title,,manual} Top
+@ref{Top,,title, file name, manual} Top
+@ref{Top,,,file name,manual} Top
 
-@ref{(pman)Top,cross ref name} 
-@ref{(pman)Top,,title} 
-@ref{(pman)Top,,,file name} 
-@ref{(pman)Top,,,,manual} 
-@ref{(pman)Top,cross ref name,title,} 
-@ref{(pman)Top,cross ref name,,file name} 
-@ref{(pman)Top,cross ref name,,,manual} 
-@ref{(pman)Top,cross ref name,title,file name} 
-@ref{(pman)Top,cross ref name,title,,manual} 
-@ref{(pman)Top,cross ref name,title, file name, manual} 
-@ref{(pman)Top,,title,file name} 
-@ref{(pman)Top,,title,,manual} 
-@ref{(pman)Top,,title, file name, manual} 
-@ref{(pman)Top,,,file name,manual} 
+@ref{(pman)Top,cross ref name} (pman)Top
+@ref{(pman)Top,,title} (pman)Top
+@ref{(pman)Top,,,file name} (pman)Top
+@ref{(pman)Top,,,,manual} (pman)Top
+@ref{(pman)Top,cross ref name,title,} (pman)Top
+@ref{(pman)Top,cross ref name,,file name} (pman)Top
+@ref{(pman)Top,cross ref name,,,manual} (pman)Top
+@ref{(pman)Top,cross ref name,title,file name} (pman)Top
+@ref{(pman)Top,cross ref name,title,,manual} (pman)Top
+@ref{(pman)Top,cross ref name,title, file name, manual} (pman)Top
+@ref{(pman)Top,,title,file name} (pman)Top
+@ref{(pman)Top,,title,,manual} (pman)Top
+@ref{(pman)Top,,title, file name, manual} (pman)Top
+@ref{(pman)Top,,,file name,manual} (pman)Top
 
-@inforef{Top, cross ref name, file name} 
-@inforef{Top} 
-@inforef{Top, cross ref name} 
-@inforef{Top,,file name} 
+@inforef{Top, cross ref name, file name} Top
+@inforef{Top} Top
+@inforef{Top, cross ref name} Top
+@inforef{Top,,file name} Top
 ';
 
 $result_sectioning{'top_in_ref_keep_top'} = {};

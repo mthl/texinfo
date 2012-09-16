@@ -668,10 +668,10 @@ $result_texts{'test_xrefautomaticsectiontitle'} = 'top
 *********
 
 
-.
+chap.
 
 
-.
+chap.
 ';
 
 $result_sectioning{'test_xrefautomaticsectiontitle'} = {

@@ -1029,7 +1029,7 @@ ref to anchor1@footnote{another footnote}, which is before @@node Top: @ref{anch
 
 
 $result_texts{'before_node_and_section'} = 'Garbage
-ref to Top .
+ref to Top Top.
 Hey.
 An anchor .
 
@@ -1039,7 +1039,7 @@ top @top section
 ****************
 Node top
 
-ref to anchor1, which is before @node Top: .
+ref to anchor1, which is before @node Top: anchor1.
 * node1::
 
 1 node1 chapter

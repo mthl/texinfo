@@ -4770,26 +4770,26 @@ $result_texis{'ref_error_formatting'} = '
 
 
 $result_texts{'ref_error_formatting'} = '
-@ref{node} 
+@ref{node} node
 
 @ref{,cross ref name} 
 @ref{,,title} 
 @ref{,,,file name} 
 @ref{,,,,manual} 
-@ref{node,cross ref name} 
-@ref{node,,title} 
-@ref{node,,,file name} 
-@ref{node,,,,manual} 
-@ref{node,cross ref name,title,} 
-@ref{node,cross ref name,,file name} 
-@ref{node,cross ref name,,,manual} 
-@ref{node,cross ref name,title,file name} 
-@ref{node,cross ref name,title,,manual} 
-@ref{node,cross ref name,title, file name, manual} 
-@ref{node,,title,file name} 
-@ref{node,,title,,manual} 
-@ref{node,,title, file name, manual} 
-@ref{node,,,file name,manual} 
+@ref{node,cross ref name} node
+@ref{node,,title} node
+@ref{node,,,file name} node
+@ref{node,,,,manual} node
+@ref{node,cross ref name,title,} node
+@ref{node,cross ref name,,file name} node
+@ref{node,cross ref name,,,manual} node
+@ref{node,cross ref name,title,file name} node
+@ref{node,cross ref name,title,,manual} node
+@ref{node,cross ref name,title, file name, manual} node
+@ref{node,,title,file name} node
+@ref{node,,title,,manual} node
+@ref{node,,title, file name, manual} node
+@ref{node,,,file name,manual} node
 @ref{,cross ref name,title,} 
 @ref{,cross ref name,,file name} 
 @ref{,cross ref name,,,manual} 
@@ -4806,10 +4806,10 @@ $result_texts{'ref_error_formatting'} = '
 @inforef{,cross ref name, file name} 
 @inforef{} 
 
-@inforef{node, cross ref name, file name} 
-@inforef{node} 
-@inforef{node, cross ref name} 
-@inforef{node,,file name} 
+@inforef{node, cross ref name, file name} node
+@inforef{node} node
+@inforef{node, cross ref name} node
+@inforef{node,,file name} node
 ';
 
 $result_errors{'ref_error_formatting'} = [

@@ -1082,10 +1082,10 @@ Ref to footnote anchor
 
 $result_texts{'placed_things_before_element'} = '
 Ref to the anchor:
-
+An anchor
 
 Ref to the anchor in footnote:
-.
+Anchor in footnote.
 
 
 
@@ -1093,7 +1093,7 @@ float anchor
 In float
 
 Ref to float
-.
+float anchor.
 
 * An anchor::                menu entry pointing to the anchor.
 
@@ -1102,10 +1102,10 @@ Ref to float
 =========
 
 Ref to anchor
-
+An anchor
 
 Ref to footnote anchor
-
+Anchor in footnote
 ';
 
 $result_sectioning{'placed_things_before_element'} = {

@@ -443,10 +443,10 @@ $result_texis{'xref_test'} = '
 
 $result_texts{'xref_test'} = '
 
-.  after xref.
-.
- ! after xref and dot inside.
-# g.
+(m)in xref. (m)bad xref after xref.
+(m)bad nested xref.
+(m)in ref ending with a dot. ! after xref and dot inside.
+(m)in ref followed by symbol# g.
 ';
 
 $result_sectioning{'xref_test'} = {};

@@ -597,7 +597,7 @@ top
 
 
 
-.
+(manual2) name2.
 ';
 
 $result_sectioning{'protected_node_parentheses'} = {

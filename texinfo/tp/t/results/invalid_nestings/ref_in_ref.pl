@@ -172,7 +172,7 @@ $result_texis{'ref_in_ref'} = '@node Top
 @ref{@ref{Top}}';
 
 
-$result_texts{'ref_in_ref'} = '';
+$result_texts{'ref_in_ref'} = 'Top';
 
 $result_sectioning{'ref_in_ref'} = {};
 

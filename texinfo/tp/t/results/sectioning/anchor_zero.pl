@@ -215,7 +215,7 @@ $result_texis{'anchor_zero'} = '@node Top
 $result_texts{'anchor_zero'} = '
 .
 
-.
+0.
 ';
 
 $result_sectioning{'anchor_zero'} = {};

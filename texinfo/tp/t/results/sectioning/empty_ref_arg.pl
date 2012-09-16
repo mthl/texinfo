@@ -509,10 +509,10 @@ $result_texis{'empty_ref_arg'} = '@node Top
 
 
 $result_texts{'empty_ref_arg'} = '
-
-
-
-
+Top
+Top
+Top
+Top
 ';
 
 $result_sectioning{'empty_ref_arg'} = {};

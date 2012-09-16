@@ -242,7 +242,7 @@ $result_texis{'nested_args'} = '@xref{@@ @samp{in samp}, descr @b{in b}, S@~{e}c
 @cite{manual}}.';
 
 
-$result_texts{'nested_args'} = '.';
+$result_texts{'nested_args'} = '@ in samp.';
 
 $result_errors{'nested_args'} = [];
 

@@ -786,7 +786,7 @@ $result_texts{'char_latin2_latin2_in_refs'} = '
 top
 ***
 
-.
+Ą ą ˛ Ę ę.
 
 
 * Ą ą ˛ Ę ę::

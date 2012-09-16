@@ -5239,7 +5239,7 @@ truc
 line
 
 A ref.
-.
+Top.
 A footnote.
 .
 
@@ -5260,7 +5260,7 @@ Float text of a float with a lot of features.
 
 
 
-.
+text with a lot of features.
 
 ';
 
