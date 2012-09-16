@@ -324,6 +324,17 @@ deffn
 '@deffn c @{
 @end deffn
 '],
+['ref_in_def',
+'
+@node Top
+
+@deffn @ref{myanchor} @ref{myanchor} {@pxref{myanchor}} @pxref{myanchor} @pxref{myanchor}
+@deffnx @ref{myanchor} @ref{myanchor} {@pxref{myanchor}} @pxref{myanchor} @pxref{myanchor}
+T
+@end deffn
+
+@anchor{myanchor}
+'],
 );
 
 my @test_info = (

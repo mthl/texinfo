@@ -154,8 +154,8 @@ my %parser_default_configuration = (%Texinfo::Common::default_parser_state_confi
 # input                   a stack, with last at bottom.  Holds the opened files
 #                         or text.  Pending macro expansion or text expansion
 #                         is also in that structure.
-# misc_commands           the same than %misc_commands below, but with index
-#                         entry commands dynamically added
+# misc_commands           the same than %misc_commands in Texinfo::Common, 
+#                         but with index entry commands dynamically added
 # close_paragraph_commands      same than %close_paragraph_commands, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
 # close_preformatted_commands   same than %close_preformatted_commands, but with
@@ -379,14 +379,14 @@ foreach my $not_in_full_line_commands('noindent', 'indent') {
 }
 
 # commands that may happen on sectioning commands 
-my %in_sectioning_command_line_commands = %in_full_line_commands;
-foreach my $not_in_sectioning_command_line_commands ('titlefont', 
+my %in_full_line_commands_no_refs = %in_full_line_commands;
+foreach my $not_in_full_line_commands_no_refs ('titlefont', 
                                    'anchor', 'footnote', 'verb') {
-  delete $in_sectioning_command_line_commands{$not_in_sectioning_command_line_commands};
+  delete $in_full_line_commands_no_refs{$not_in_full_line_commands_no_refs};
 }
 
 # commands that may happen in simple text arguments
-my %in_simple_text_commands = %in_sectioning_command_line_commands;
+my %in_simple_text_commands = %in_full_line_commands_no_refs;
 foreach my $not_in_simple_text_command('xref', 'ref', 'pxref', 'inforef') {
   delete $in_simple_text_commands{$not_in_simple_text_command};
 }
@@ -396,11 +396,15 @@ my %simple_text_commands;
 foreach my $misc_command(keys(%misc_commands)) {
   if ($misc_commands{$misc_command} =~ /^\d+$/ 
       or ($misc_commands{$misc_command} eq 'line' 
-          and !$sectioning_commands{$misc_command})
+          and !($sectioning_commands{$misc_command}
+                or $def_commands{$misc_command}))
       or $misc_commands{$misc_command} eq 'text') {
     $simple_text_commands{$misc_command} = 1;
   }
 }
+
+my %full_line_commands_no_refs = (%sectioning_commands,
+                                  %def_commands);
 
 delete $simple_text_commands{'center'};
 delete $simple_text_commands{'exdent'};
@@ -450,13 +454,14 @@ foreach my $command (keys(%simple_text_commands)) {
 foreach my $command (keys(%full_line_commands)) {
   $default_valid_nestings{$command} = \%in_full_line_commands;
 }
-foreach my $command (keys(%sectioning_commands)) {
-  $default_valid_nestings{$command} = \%in_sectioning_command_line_commands;
+foreach my $command (keys(%full_line_commands_no_refs)) {
+  $default_valid_nestings{$command} = \%in_full_line_commands_no_refs;
 }
 # Only for block commands with line arguments
 foreach my $command (keys(%block_commands)) {
   if ($block_commands{$command} and $block_commands{$command} ne 'raw'
-      and $block_commands{$command} ne 'conditional') {
+      and $block_commands{$command} ne 'conditional'
+      and !$def_commands{$command}) {
     $default_valid_nestings{$command} = \%in_simple_text_commands;
   }
 }
@@ -4097,7 +4102,9 @@ sub _parse_texi($;$)
               $invalid_parent = $current->{'parent'}->{'cmdname'};
             }
           } elsif ($self->{'context_stack'}->[-1] eq 'def'
-                   and !$in_simple_text_commands{$command}) {
+            # FIXME instead of hardcoding in_full_line_commands_no_refs
+            # it would be better to use the parent command valid_nesting.
+                   and !$in_full_line_commands_no_refs{$command}) {
             my $def_block = $current;
             while ($def_block->{'parent'} and (!$def_block->{'parent'}->{'type'} 
                                  or $def_block->{'parent'}->{'type'} ne 'def_line')) {
@@ -4938,10 +4945,9 @@ sub _parse_texi($;$)
              # closing the context under broader situations
              $current = _end_paragraph($self, $current, $line_nr);
              if ($current->{'parent'}
-                   and $current->{'parent'}->{'cmdname'}
-                   and $brace_commands{$current->{'parent'}->{'cmdname'}}
-                   and $context_brace_commands{$current->{'parent'}->{'cmdname'}}
-                   and $context_brace_commands{$current->{'parent'}->{'cmdname'}} eq $self->{'context_stack'}->[-1]) {
+                 and $current->{'parent'}->{'cmdname'}
+                 and $context_brace_commands{$current->{'parent'}->{'cmdname'}}
+                 and $current->{'parent'}->{'cmdname'} eq $self->{'context_stack'}->[-1]) {
               my $context_command = pop @{$self->{'context_stack'}};
               if ($context_command ne $current->{'parent'}->{'cmdname'}) {
                 $self->_bug_message("context $context_command instead of brace isolated $current->{'parent'}->{'cmdname'}", 

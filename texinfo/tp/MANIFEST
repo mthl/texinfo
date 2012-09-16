@@ -250,6 +250,7 @@ t/results/columnfractions/wrong_command.pl
 t/results/conditionals/additional_space_in_end_conditional.pl
 t/results/conditionals/additional_space_in_end_conditional_expanded.pl
 t/results/conditionals/command_conditionals.pl
+t/results/conditionals/command_conditionals_user_defined.pl
 t/results/conditionals/commands_in_ifset.pl
 t/results/conditionals/conditional_not_closed.pl
 t/results/conditionals/consecutive_conditionals.pl
