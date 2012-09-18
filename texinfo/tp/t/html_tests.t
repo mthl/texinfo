@@ -222,6 +222,21 @@ undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename.texi'}
 ['empty_lines_at_beginning_no_setfilename_no_element',
 undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename_no_element.texi'}
 ],
+['check_htmlxref',
+'
+@node Top, (../there/no_existing_no_manual_direction), first, (dir)
+@top top
+
+@ref{a, b, c, no_existing_no_manual.info}
+@ref{a, b, c, no_existing_no_manual.info}
+
+@menu
+* first::
+* (other_no_existing_no_manual)::
+@end menu
+
+@node first
+', {}, {'CHECK_HTMLXREF' => 1}],
 );
 
 my @test_cases_text = (
@@ -274,7 +289,7 @@ node name}
 @end example
 
 @node nnn the node name
-']
+'],
 );
 
 # problem is that the result is code with accented letters,

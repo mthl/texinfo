@@ -23,11 +23,13 @@ unicode sorting.
 my $collator = Unicode::Collate::Locale->new('locale' => $locale_name, 'normalization' => 'NFKD')
 @sorted = $collator->sort(@not_sorted);
 
-Currently there is an error for something like 
+In HTML.pm with CHECK_HTMLXREF, it would be nice to have the line number.
+
+Currently there is no error for something like 
 
   @chapter @code{@anchor{TTO}}
 
-just like there is an error for 
+there should be an error as for the following construct:
 
   @chapter @anchor{TTez}
 
@@ -92,7 +94,7 @@ enable encoding and entities.
 in html test footnotestyle separate.  There are such tests in tp/tests,
 maybe they are sufficient, but they are only done for long checks.
 
-Test and documentation of CASE_INSENSITIVE_FILENAMES.
+Test of CASE_INSENSITIVE_FILENAMES.
 
 
 Future features
@@ -121,11 +123,6 @@ sectioning_command_target_name
 node_target_name
 
 Implement what is proposed in HTML Cross Reference Mismatch.
-
-add an option like --check-htmlxref (or a customization variable?)
-which would check that every cross-manual xref is included in
-htmlxref.cnf?  That would give a way for people to know if their HTML is
-going to have broken links.  Use warnings.
 
 Protection of punctuation in nodes.
 in @ref. First : is searched.  if followed by a : the node name is found

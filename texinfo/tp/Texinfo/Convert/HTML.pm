@@ -5806,6 +5806,16 @@ sub _external_node_href($$;$)
       $target_split = 1 unless ($split_found eq 'mono');
     } else { # nothing specified for that manual, use default
       $target_split = $default_target_split;
+      if ($self->get_conf('CHECK_HTMLXREF')
+          and !$external_node->{'top_node_up'}
+          and !$self->{'check_htmlxref_already_warned'}->{$manual_name}) {
+        #$self->line_warn(sprintf($self->__(
+        $self->document_warn(sprintf($self->__(
+              "No htmlxref.cnf entry found for `%s'"), $manual_name),
+              );
+              #$external_node->{'line_nr'});
+        $self->{'check_htmlxref_already_warned'}->{$manual_name} = 1;
+      }
     }
 
     if ($target_split) {
