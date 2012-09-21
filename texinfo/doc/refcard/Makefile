@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.3 2012-09-12 18:15:43 karl Exp $
+# $Id: Makefile,v 1.4 2012-09-21 17:40:44 karl Exp $
 # Makefile for texinfo/doc/refcard.
 # This is not hooked into Automake, just here for those working on the refcard.
 #
@@ -31,10 +31,10 @@ $(doc)-a4.pdf: $(doc).tex
 check: ccheck vcheck
 
 ccheck:
-	txicmdcheck
+	txicmdcheck $(txi_check_args)
 
 vcheck:
-	txivarcheck
+	txivarcheck $(txi_check_args)
 
 clean:
 	rm -f $(doc)*.dvi $(doc)*.log $(doc)*.ps

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.485 2012-09-15 18:06:52 pertusus Exp $
+@c $Id: texinfo.txi,v 1.486 2012-09-21 17:40:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17228,6 +17228,7 @@ variable with the same name (minus the leading @code{@@}):
 @smallexample
 @@allowcodebreaks @@clickstyle @@codequotebacktick 
 @@codequoteundirected @@contents @@deftypefnnewline
+@@documentdescription
 @@documentencoding @@documentlanguage
 @@evenfootingmarks @@evenheadingmarks @@everyfootingmarks 
 @@everyheadingmarks @@exampleindent @@firstparagraphindent
@@ -17235,13 +17236,17 @@ variable with the same name (minus the leading @code{@@}):
 @@kbdinputstyle @@novalidate @@oddfootingmarks
 @@oddheadingmarks @@pagesizes @@paragraphindent
 @@setchapternewpage @@setcontentsaftertitlepage
+@@setfilename
 @@setshortcontentsaftertitlepage @@shortcontents
 @@urefbreakstyle @@xrefautomaticsectiontitle
 @end smallexample
-@c @@setfilename
 
-Setting such a customization variable to a value @samp{foo} is
-essentially the same as executing @code{@@@var{cmd} foo}.
+Setting such a customization variable to a value @samp{foo} is similar
+to executing @code{@@@var{cmd} foo}.  It is not exactly the same,
+though, since any side effects of parsing the Texinfo source are not
+redone.  Also, some variables do not take Texinfo code when generating
+particular formats, but an argument that is already formatted.  This
+is the case, for example, for HTML for @code{documentdescription}.
 
 
 @node Customization Variables and Options
@@ -17292,10 +17297,14 @@ texi2any}, for the meaning of the options.
                                         @code{SUBDIR}
 @vindex paragraphindent
 @item @option{--paragraph-indent}  @tab @code{paragraphindent}
+@vindex SILENT
+@item @option{--silent}            @tab @code{SILENT}
 @vindex SPLIT
 @item @option{--split}             @tab @code{SPLIT}
 @vindex SPLIT_SIZE
 @item @option{--split-size}        @tab @code{SPLIT_SIZE}
+@vindex TRANSLITERATE_FILE_NAMES
+@item @option{--transliterate-file-names} @tab @code{TRANSLITERATE_FILE_NAMES}
 @vindex VERBOSE
 @item @option{--verbose}           @tab @code{VERBOSE}
 @end multitable
@@ -17329,7 +17338,7 @@ contents for @code{AFTER_TOC_LINES}, otherwise a default string is
 used.
 
 @item BASEFILENAME_LENGTH
-For HTML@.  The maximum length of the base filenames.  Default 245.
+For HTML@.  The maximum length of the base filenames; default 245.
 Changing this would make cross-manual references to such long node
 names invalid (@pxref{HTML Xref Link Basics}).
 
@@ -17351,14 +17360,19 @@ automatically taking into account the document language.
 
 @item CASE_INSENSITIVE_FILENAMES
 For HTML@.  Construct output file names as if the filesystem were case
-insensitive (@pxref{HTML Splitting}). 
+insensitive (@pxref{HTML Splitting}); default false.
 
 @item CHAPTER_HEADER_LEVEL
 For HTML@.  Header formatting level used for chapter level sectioning
 commands.
 
+@item CHECK_HTMLXREF
+For HTML@.  Check that manuals which are the target of external
+cross references (@pxref{Four and Five Arguments}) are present in
+@file{htmlxref.cnf} (@pxref{HTML Xref Configuration}); on by default.
+
 @item CLOSE_QUOTE_SYMBOL
-When a closing quote is needed, use the corresponding character.
+When a closing quote is needed, use this character.
 
 @c @item COMPLETE_IMAGE_PATHS
 @c If set, the image files are computed to be relative from the document
@@ -17369,17 +17383,16 @@ For HTML@.  If set, use tables for indentation of complex formats.
 
 @item CPP_LINE_DIRECTIVES
 Recognize @code{#line} directives in a ``preprocessing'' pass
-(@pxref{External Macro Processors}).
+(@pxref{External Macro Processors}); on by default;
 
 @item CSS_LINES
-CSS output, automatically determined in the default case
-(@pxref{HTML CSS}).
+For HTML@.  CSS output, automatically determined by default (@pxref{HTML CSS}).
 
 @item DATE_IN_HEADER
-For HTML@.  Put the document generation date in the header.
+For HTML@.  Put the document generation date in the header; off by default.
 
 @item DEBUG
-If set, debugging output is generated.
+If set, debugging output is generated; default is off (zero).
 @c The integer value specifies what kinds of debugging output are
 @c generated.  It is a bitmask.  Setting it to 255 ensures having all
 @c available debugging output.
@@ -17393,14 +17406,10 @@ For HTML@.  If this is set a @code{<table>} construction for
 For HTML@.  Rule used between element, except after and before the 
 top element, or before special elements, and for footers and headers.
 
-@c not used for now
-@c @item DEFAULT_ENCODING
-@c The default output file encoding.  Currently @samp{utf8} or
-@c @samp{ascii} for Info.
-
 @item DO_ABOUT
 If set to 0 never do an About special element.
-If set to 1 always do an About special element. @c @xref{Output Elements Defined}.
+If set to 1 always do an About special element.
+@c @xref{Output Elements Defined}.
 
 @item DOCTYPE
 @vindex SystemLiteral
@@ -17422,11 +17431,6 @@ document is output on standard error.
 For HTML, XML@.  If @option{--enable-encoding} is set, and there is an
 entity corresponding with the letter or the symbol being output,
 prefer the entity.
-
-@c @item ENCODING_NAME
-@c Output document encoding name. By default, it is set automatically
-@c based on @code{@@documentencoding}.  This encoding name is the
-@c classical charset name in HTML.
 
 @item EXTERNAL_CROSSREF_SPLIT
 For cross references to other manuals, this determines if the other
@@ -17498,9 +17502,6 @@ links.
 @item INDEX_ENTRY_COLON
 Symbol used between the index entry and the associated node or section.
 
-@c @item IN_ENCODING
-@c Set the input file encoding (@pxref{documentencoding,,
-@c @code{@@documentencoding}}) using Perl encoding names.
 
 @item INLINE_CONTENTS
 If set, output the contents where the @code{@@contents} and similar
@@ -17515,6 +17516,17 @@ beginning of the output.
 If set, @code{@@insertcopying} is replaced by the @code{@@copying}
 content (@pxref{copying,, @code{@@copying}}) as if
 @code{@@insertcopying} were a user-defined macro.
+
+@item INPUT_ENCODING_NAME
+Normalized encoding name suitable for output.  Should be a usable
+charset name in HTML, typically one of the preferred IANA encoding
+names.  You should not need to use this variable, since it is set by
+@code{@@documentencoding} (@pxref{documentencoding}).
+
+@item INPUT_PERL_ENCODING
+Perl encoding used to process the Texinfo source.  You should not need
+to use that variable, since it is set by @code{@@documentencoding}
+(@pxref{documentencoding}).
 
 @item KEEP_TOP_EXTERNAL_REF
 For HTML@.  If set, do not ignore @samp{Top} as the first 
@@ -17597,9 +17609,23 @@ If set, use node names in menu entries, otherwise prefer section names.
 @item OPEN_QUOTE_SYMBOL
 When an opening quote is needed, use the corresponding character.
 
-@item OUT_ENCODING
-Output files encoding using the Perl encoding name.  By default,
-this is set automatically based on @code{@@documentencoding}.
+@c item OUTPUT_PERL_ENCODING
+@c Perl encoding name used for the output files. By default, this is set
+@c automatically based on @code{@@documentencoding} or
+@c ode{OUTPUT_ENCODING_NAME}.  You should never need to set this
+@c ustomization variable, instead, you should set
+@c ode{OUTPUT_ENCODING_NAME}.
+
+@item OUTPUT_ENCODING_NAME
+Normalized encoding name used for output files.  Should be a usable
+charset name in HTML, typically one of the preferred IANA encoding
+names.  By default, if an input encoding is set, typically through
+@code{@@documentencoding} or @code{INPUT_ENCODING_NAME}, this
+information is used to set the output encoding name.  If no input
+encoding is specified, the default output encoding name may be set by
+the output format.  In particular, the XML-based formats use
+@code{utf-8} for @code{OUTPUT_ENCODING_NAME} if the encoding is not
+otherwise specified.
 
 @item OVERVIEW_LINK_TO_TOC
 If set, the cross references in the Overview link to the corresponding
@@ -17716,6 +17742,10 @@ for HTML@.
 
 @item TOP_NODE_UP
 Up node for the Top node; default @samp{(dir)}.
+
+@item TOP_NODE_UP_URL
+Url used for the up node of the Top node for HTML; default
+@code{undef}, so no link is generated.
 
 @item TOP_NODE_FILE
 File used for the Top node, if @code{NODE_FILENAMES} is set.
@@ -21573,7 +21603,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.485 2012-09-15 18:06:52 pertusus Exp $
+$Id: texinfo.txi,v 1.486 2012-09-21 17:40:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

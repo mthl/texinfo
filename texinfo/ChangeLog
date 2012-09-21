@@ -1,3 +1,13 @@
+2012-09-21  Karl Berry  <karl@gnu.org>
+
+	* doc/refcard/Makefile (ccheck, vcheck): pass txi_check_args
+	(from environment), for my cron.
+	* doc/refcard/ccheck: recognize --no-common to output only problems.
+	* doc/refcard/vcheck: likewise, and omit OUTPUT_PERL_ENCODING from
+	check.
+	* doc/texinfo.txi (Other Customization Variables): document
+	remaining variables.
+
 2012-09-15  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (texi2any Output Customization): remove 
