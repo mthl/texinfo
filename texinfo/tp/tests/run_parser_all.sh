@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (C) 2010 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -9,7 +9,7 @@
 
 #echo "SRCDIR $srcdir srcdir_test $srcdir_test"
 
-export LANG=C
+LANG=C; export LANG
 
 prepended_command=
 #prepended_command=time

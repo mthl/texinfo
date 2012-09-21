@@ -1,5 +1,5 @@
 #! /bin/sh
-# Copyright (C) 2010 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -35,7 +35,7 @@ while [ z"$1" != 'z' ]; do
   dir=$1
   shift
   [ -d "$dir" ] || mkdir $dir
-  (export srcdir_test=$dir; cd "$dir" && ../"$srcdir"/"$command" -dir $dir $arg)
+  (srcdir_test=$dir; export srcdir_test; cd "$dir" && ../"$srcdir"/"$command" -dir $dir $arg)
   result=$?
   if [ "z$result" = 'z0' ]; then
     result_text=ok

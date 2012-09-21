@@ -1,5 +1,10 @@
 2012-09-21  Karl Berry  <karl@gnu.org>
 
+	* tp/tests/parser_tests.sh,
+	* tp/tests/run_parser_all.sh: export var=val not portable.
+
+2012-09-21  Karl Berry  <karl@gnu.org>
+
 	* doc/refcard/Makefile (ccheck, vcheck): pass txi_check_args
 	(from environment), for my cron.
 	* doc/refcard/ccheck: recognize --no-common to output only problems.
