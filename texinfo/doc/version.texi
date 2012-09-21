@@ -1,4 +1,4 @@
-@set UPDATED 6 July 2012
-@set UPDATED-MONTH July 2012
+@set UPDATED 21 September 2012
+@set UPDATED-MONTH September 2012
 @set EDITION 4.13.90
 @set VERSION 4.13.90
