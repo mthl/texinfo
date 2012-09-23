@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.486 2012-09-21 17:40:40 karl Exp $
+@c $Id: texinfo.txi,v 1.487 2012-09-23 18:09:47 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17364,12 +17364,12 @@ insensitive (@pxref{HTML Splitting}); default false.
 
 @item CHAPTER_HEADER_LEVEL
 For HTML@.  Header formatting level used for chapter level sectioning
-commands.
+commands; default @samp{2}.
 
 @item CHECK_HTMLXREF
 For HTML@.  Check that manuals which are the target of external
 cross references (@pxref{Four and Five Arguments}) are present in
-@file{htmlxref.cnf} (@pxref{HTML Xref Configuration}); on by default.
+@file{htmlxref.cnf} (@pxref{HTML Xref Configuration}); default false.
 
 @item CLOSE_QUOTE_SYMBOL
 When a closing quote is needed, use this character.
@@ -17586,8 +17586,8 @@ Symbol used in front of menu entries when node names are used for menu
 entries formatting.
 
 @item MONOLITHIC
-For HTML@.  Output only one file including the table of contents.  This
-only makes sense when the output is not split.  It is set by default.
+For HTML@.  Output only one file including the table of contents.  Set
+by default, but it is only considered when the output is not split.
 
 @item NO_CSS
 For HTML@.  Do not use CSS (@pxref{HTML CSS}).
@@ -17608,13 +17608,6 @@ If set, use node names in menu entries, otherwise prefer section names.
 
 @item OPEN_QUOTE_SYMBOL
 When an opening quote is needed, use the corresponding character.
-
-@c item OUTPUT_PERL_ENCODING
-@c Perl encoding name used for the output files. By default, this is set
-@c automatically based on @code{@@documentencoding} or
-@c ode{OUTPUT_ENCODING_NAME}.  You should never need to set this
-@c ustomization variable, instead, you should set
-@c ode{OUTPUT_ENCODING_NAME}.
 
 @item OUTPUT_ENCODING_NAME
 Normalized encoding name used for output files.  Should be a usable
@@ -17672,15 +17665,16 @@ set, the file is @file{<input_file_basename>-noderename.cnf}.
 @xref{HTML Xref Link Preservation}.
 
 @item RENAMED_NODES_REDIRECTIONS
-If set, do redirection files for renamed nodes.  Set for HTML by default.
+If set, do redirection files for renamed nodes.  Set by default when
+generating HTML@.
 
 @item SHORTEXTN
 For HTML@.  If this is set, use @samp{.htm} as extension.
 
 @item SHOW_MENU
 @opindex --no-headers
-If set, the Texinfo menus are shown.  By default, it is only unset
-when generating Docbook or if @option{--no-headers} is specified.
+If set, Texinfo menus are output.  By default, it is set unless
+generating Docbook or if @option{--no-headers} is specified.
 
 @item SHOW_TITLE
 For HTML@.  If set, output the title at the beginning of the document.
@@ -21603,7 +21597,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.486 2012-09-21 17:40:40 karl Exp $
+$Id: texinfo.txi,v 1.487 2012-09-23 18:09:47 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

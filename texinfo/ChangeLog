@@ -1,3 +1,8 @@
+2012-09-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Customization Variables): CHECK_HTMLXREF
+	not set by default; other tweaks.
+
 2012-09-21  Karl Berry  <karl@gnu.org>
 
 	* tp/tests/parser_tests.sh,
