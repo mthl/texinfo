@@ -306,9 +306,9 @@ sub add_text($$;$)
           }
         }
       }
-    } elsif ($text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//) {
+    } elsif ($text =~ s/^([^\s\p{InFullwidth}]+)//) {
       my $added_word = $1;
-      $underlying_text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//;
+      $underlying_text =~ s/^([^\s\p{InFullwidth}]+)//;
       my $underlying_added_word = $1;
 
       $result .= $line->_add_next($added_word, $underlying_added_word);
@@ -332,9 +332,9 @@ sub add_text($$;$)
     } elsif ($text =~ s/^\n//) {
       $underlying_text =~ s/^\n//;
       $result .= $line->_end_line();
-    } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
+    } elsif ($text =~ s/^(\p{InFullwidth})//) {
       my $added = $1;
-      $underlying_text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//;
+      $underlying_text =~ s/^(\p{InFullwidth})//;
       my $underlying_added = $1;
       print STDERR "EAST_ASIAN.L\n" if ($line->{'DEBUG'});
       if (!defined($line->{'word'})) {

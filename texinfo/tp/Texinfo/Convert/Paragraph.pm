@@ -383,9 +383,9 @@ sub add_text($$;$)
       if ($spaces =~ /\n/ and $paragraph->{'keep_end_lines'}) {
         $result .= $paragraph->_end_line();
       }
-    } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
+    } elsif ($text =~ s/^(\p{InFullwidth})//) {
       my $added = $1;
-      $underlying_text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//;
+      $underlying_text =~ s/^(\p{InFullwidth})//;
       my $underlying_added = $1;
       
       print STDERR "EAST_ASIAN\n" if ($paragraph->{'DEBUG'});
@@ -404,9 +404,9 @@ sub add_text($$;$)
       $result .= $paragraph->_add_pending_word();
       delete $paragraph->{'end_sentence'};
       $paragraph->{'space'} = '';
-    } elsif ($text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//) {
+    } elsif ($text =~ s/^([^\s\p{InFullwidth}]+)//) {
       my $added_word = $1;
-      $underlying_text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//;
+      $underlying_text =~ s/^([^\s\p{InFullwidth}]+)//;
       my $underlying_added_word = $1;
 
       $result .= $paragraph->_add_next($added_word, $underlying_added_word);

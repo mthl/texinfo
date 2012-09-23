@@ -362,16 +362,17 @@ sub command_node($$)
   return undef;
 }
 
-sub command_href($$$)
+sub command_href($$;$$)
 {
   my $self = shift;
   my $command = shift;
   my $filename = shift;
+  my $link_command = shift;
 
   $filename = $self->{'current_filename'} if (!defined($filename));
 
   if ($command->{'manual_content'} or $command->{'top_node_up'}) {
-    return $self->_external_node_href($command, $filename);
+    return $self->_external_node_href($command, $filename, $link_command);
   }
 
   my $target = $self->command_target($command);
@@ -3048,7 +3049,7 @@ sub _convert_xref_commands($$$$)
     $command = $node if (!$node->{'extra'}->{'associated_section'}
                          or $node->{'extra'}->{'associated_section'} ne $command);
 
-    my $href = $self->command_href($command);
+    my $href = $self->command_href($command, undef, $root);
 
     if (!defined($name)) {
       if ($self->get_conf('xrefautomaticsectiontitle') eq 'on'
@@ -3126,7 +3127,7 @@ sub _convert_xref_commands($$$$)
                                   'contents' => [@{$node_entry->{'manual_content'}}]};
       $file = $self->convert_tree($file_with_node_tree, 'node file in ref');
     }
-    my $href = $self->command_href($node_entry);
+    my $href = $self->command_href($node_entry, undef, $root);
 
     if ($book eq '') {
       if (!defined($name)) {
@@ -3756,7 +3757,7 @@ sub _convert_menu_entry_type($$$)
   # external node
   my $external_node;
   if ($node_entry->{'manual_content'}) {
-    $href = $self->command_href($node_entry); 
+    $href = $self->command_href($node_entry, undef, $command); 
     $external_node = 1;
   } else {
     $node = $self->label_command($node_entry->{'normalized'});
@@ -3766,9 +3767,9 @@ sub _convert_menu_entry_type($$$)
       and !$self->get_conf('NODE_NAME_IN_MENU')
       and !($self->command_element_command($node) eq $node)) {
       $section = $node->{'extra'}->{'associated_section'};
-      $href = $self->command_href($section);
+      $href = $self->command_href($section, undef, $command);
     } else {
-      $href = $self->command_href($node);
+      $href = $self->command_href($node, undef, $command);
     }
   }
 
@@ -5755,11 +5756,12 @@ sub _htmlxref($$)
 
 my %htmlxref_entries = %Texinfo::Common::htmlxref_entries;
 
-sub _external_node_href($$;$)
+sub _external_node_href($$$$)
 {
   my $self = shift;
   my $external_node = shift;
   my $filename = shift;
+  my $link_command = shift;
   
   if ($external_node->{'top_node_up'} 
       and defined($self->get_conf('TOP_NODE_UP_URL'))) {
@@ -5807,13 +5809,16 @@ sub _external_node_href($$;$)
     } else { # nothing specified for that manual, use default
       $target_split = $default_target_split;
       if ($self->get_conf('CHECK_HTMLXREF')
-          and !$external_node->{'top_node_up'}
-          and !$self->{'check_htmlxref_already_warned'}->{$manual_name}) {
-        #$self->line_warn(sprintf($self->__(
-        $self->document_warn(sprintf($self->__(
+          and !$external_node->{'top_node_up'}) {
+        if (defined($link_command) and $link_command->{'line_nr'}) {
+          $self->line_warn(sprintf($self->__(
               "No htmlxref.cnf entry found for `%s'"), $manual_name),
-              );
-              #$external_node->{'line_nr'});
+            $link_command->{'line_nr'});
+        } elsif (!$self->{'check_htmlxref_already_warned'}->{$manual_name}) {
+          $self->document_warn(sprintf($self->__(
+            "No htmlxref.cnf entry found for `%s'"), $manual_name),
+            );
+        }
         $self->{'check_htmlxref_already_warned'}->{$manual_name} = 1;
       }
     }

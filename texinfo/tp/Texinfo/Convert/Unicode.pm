@@ -1457,7 +1457,7 @@ sub string_width($)
   }
   my $width = 0;
   foreach my $character(split '', $string) {
-    if ($character =~ /\p{Unicode::EastAsianWidth::InFullwidth}/) {
+    if ($character =~ /\p{InFullwidth}/) {
       $width += 2;
     } elsif ($character =~ /\pM/) {
       # a mark set at length 0

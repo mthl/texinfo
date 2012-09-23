@@ -587,6 +587,20 @@ $result_trees{'check_htmlxref'} = {
             {
               'parent' => {},
               'text' => 'first'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        },
+        {
+          'contents' => [
+            {
+              'text' => ' ',
+              'type' => 'empty_spaces_before_argument'
+            },
+            {
+              'parent' => {},
+              'text' => '(no_existing_no_manual.info)'
             },
             {
               'parent' => {},
@@ -609,6 +623,14 @@ $result_trees{'check_htmlxref'} = {
           {
             'node_content' => [],
             'normalized' => 'first'
+          },
+          {
+            'manual_content' => [
+              {
+                'parent' => {},
+                'text' => 'no_existing_no_manual.info'
+              }
+            ]
           }
         ],
         'normalized' => 'first',
@@ -723,10 +745,13 @@ $result_trees{'check_htmlxref'}{'contents'}[2]{'parent'} = $result_trees{'check_
 $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'check_htmlxref'}{'contents'}[3];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0];
-$result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3];
+$result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1];
+$result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1];
+$result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'check_htmlxref'}{'contents'}[3]{'extra'}{'nodes_manuals'}[1]{'manual_content'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'parent'} = $result_trees{'check_htmlxref'};
 
@@ -742,7 +767,7 @@ $result_texis{'check_htmlxref'} = '
 * (other_no_existing_no_manual)::
 @end menu
 
-@node first
+@node first, (no_existing_no_manual.info)
 ';
 
 
@@ -793,7 +818,15 @@ $result_nodes{'check_htmlxref'} = {
     'extra' => {
       'normalized' => 'first'
     },
-    'node_up' => {}
+    'node_next' => {
+      'extra' => {
+        'manual_content' => [
+          {
+            'text' => 'no_existing_no_manual.info'
+          }
+        ]
+      }
+    }
   },
   'menus' => [
     {
@@ -831,7 +864,6 @@ $result_nodes{'check_htmlxref'} = {
     }
   }
 };
-$result_nodes{'check_htmlxref'}{'menu_child'}{'node_up'} = $result_nodes{'check_htmlxref'};
 $result_nodes{'check_htmlxref'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'check_htmlxref'}{'menus'}[0];
 $result_nodes{'check_htmlxref'}{'node_prev'} = $result_nodes{'check_htmlxref'}{'menu_child'};
 $result_nodes{'check_htmlxref'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'check_htmlxref'};
@@ -934,7 +966,7 @@ Next: <a href="..html#Top" accesskey="n" rel="next">(../there/no_existing_no_man
 <a name="first"></a>
 <div class="header">
 <p>
-Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="no_existing_no_manual.html#Top" accesskey="n" rel="next">(no_existing_no_manual.info)</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">first</h4>
 <hr>
@@ -953,16 +985,31 @@ $result_converted_errors{'html'}->{'check_htmlxref'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: No htmlxref.cnf entry found for `no_existing_no_manual.info\'
+    'file_name' => '',
+    'error_line' => ':5: warning: No htmlxref.cnf entry found for `no_existing_no_manual.info\'
 ',
     'text' => 'No htmlxref.cnf entry found for `no_existing_no_manual.info\'',
-    'type' => 'warning'
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 5
   },
   {
-    'error_line' => 'warning: No htmlxref.cnf entry found for `other_no_existing_no_manual\'
+    'file_name' => '',
+    'error_line' => ':6: warning: No htmlxref.cnf entry found for `no_existing_no_manual.info\'
+',
+    'text' => 'No htmlxref.cnf entry found for `no_existing_no_manual.info\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 6
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':10: warning: No htmlxref.cnf entry found for `other_no_existing_no_manual\'
 ',
     'text' => 'No htmlxref.cnf entry found for `other_no_existing_no_manual\'',
-    'type' => 'warning'
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 10
   }
 ];
 

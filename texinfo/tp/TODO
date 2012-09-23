@@ -23,8 +23,6 @@ unicode sorting.
 my $collator = Unicode::Collate::Locale->new('locale' => $locale_name, 'normalization' => 'NFKD')
 @sorted = $collator->sort(@not_sorted);
 
-In HTML.pm with CHECK_HTMLXREF, it would be nice to have the line number.
-
 Currently there is no error for something like 
 
   @chapter @code{@anchor{TTO}}

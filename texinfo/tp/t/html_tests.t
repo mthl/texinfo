@@ -235,7 +235,7 @@ undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename_no_element.texi'
 * (other_no_existing_no_manual)::
 @end menu
 
-@node first
+@node first, (no_existing_no_manual.info)
 ', {}, {'CHECK_HTMLXREF' => 1}],
 );
 
