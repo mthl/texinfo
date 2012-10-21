@@ -64,15 +64,6 @@
 	respects @codequote*.
 	Suggestion from Patrice, texinfo-devel 14 Aug 2012 00:03:54.
 
-	* doc/texinfo.tex (\markupsetuplqkbd, \markupsetuprqkbd):
-	use \markupsetcodequoteleft and right, like all the others.
-        (\markupsetnoligaturesquoteleft): no longer needed.
-        (\kbdsub): rename from \kbdfoo, reformat.
-        Other doc tweaks.
-	* doc/texinfo.txi (Inserting Quote Characters): @kbd now also
-	respects @codequote*.
-	Suggestion from Patrice, texinfo-devel 14 Aug 2012 00:03:54.
-
 	* doc/texinfo.txi (verb): make example input match output.
 	Report from christophe.jarry, 12 Sep 2012 13:49:27.
 
