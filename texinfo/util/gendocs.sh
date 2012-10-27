@@ -35,7 +35,6 @@ scriptversion=2012-10-27.11
 #   makeinfo.  But it should be simple enough to adjust.
 # - images are not imported in the source tarball.  All the needed
 #   formats (PDF, PNG, etc.) should be included.
-# - remove PS support (including in the doc templates)
 
 prog=`basename "$0"`
 srcdir=`pwd`
@@ -46,10 +45,8 @@ templateurl="http://savannah.gnu.org/cgi-bin/viewcvs/~checkout~/texinfo/texinfo/
 : ${SETLANG="env LANG= LC_MESSAGES= LC_ALL= LANGUAGE="}
 : ${MAKEINFO="makeinfo"}
 : ${TEXI2DVI="texi2dvi -t @finalout"}
-: ${DVIPS="dvips"}
 : ${DOCBOOK2HTML="docbook2html"}
 : ${DOCBOOK2PDF="docbook2pdf"}
-: ${DOCBOOK2PS="docbook2ps"}
 : ${DOCBOOK2TXT="docbook2txt"}
 : ${GENDOCS_TEMPLATE_DIR="."}
 : ${PERL='perl'}
@@ -76,7 +73,7 @@ Options:
   -o OUTDIR   write files into OUTDIR, instead of manual/.
   -I DIR      append DIR to the Texinfo search path.
   --email ADR use ADR as contact in generated web pages.
-  --docbook   convert to DocBook too (xml, txt, html, pdf and ps).
+  --docbook   convert through DocBook too (xml, txt, html, pdf).
   --html ARG  pass indicated ARG to makeinfo or texi2html for HTML targets.
   --info ARG  pass indicated ARG to makeinfo for Info, instead of --no-split.
   --texi2html use texi2html to generate HTML targets.
@@ -117,10 +114,10 @@ As implied above, by default monolithic Info files are generated.
 If you want split Info, or other Info options, use --info to override.
 
 You can set the environment variables MAKEINFO, TEXI2DVI, TEXI2HTML,
-DVIPS, and PERL to control the programs that get executed, and
+and PERL to control the programs that get executed, and
 GENDOCS_TEMPLATE_DIR to control where the gendocs_template file is
 looked for.  With --docbook, the environment variables DOCBOOK2HTML,
-DOCBOOK2PDF, DOCBOOK2PS, and DOCBOOK2TXT are also respected.
+DOCBOOK2PDF, and DOCBOOK2TXT are also respected.
 
 By default, makeinfo and texi2dvi are run in the default (English)
 locale, since that's the language of most Texinfo manuals.  If you
@@ -265,13 +262,6 @@ cmd="$SETLANG $TEXI2DVI $commonarg \"$srcfile\""
 echo "Generating dvi ... ($cmd)"
 eval "$cmd"
 
-# now, before we compress dvi:
-echo "Generating postscript..."
-$DVIPS $PACKAGE -o
-gzip -f -9 $PACKAGE.ps
-ps_gz_size=`calcsize $PACKAGE.ps.gz`
-mv $PACKAGE.ps.gz "$outdir/"
-
 # compress/finish dvi:
 gzip -f -9 $PACKAGE.dvi
 dvi_gz_size=`calcsize $PACKAGE.dvi.gz`
@@ -363,7 +353,7 @@ texi_tgz_size=`calcsize "$outdir/$PACKAGE.texi.tar.gz"`
 
 if test -n "$docbook"; then
   opt="-o - --docbook $commonarg"
-  cmd="$SETLANG $MAKEINFO $opt \"$srcfile\" > ${srcdir}/$PACKAGE-db.xml"
+  cmd="$SETLANG $MAKEINFO $opt \"$srcfile\" >${srcdir}/$PACKAGE-db.xml"
   echo "Generating docbook XML... ($cmd)"
   eval "$cmd"
   docbook_xml_size=`calcsize $PACKAGE-db.xml`
@@ -392,13 +382,6 @@ if test -n "$docbook"; then
   docbook_ascii_size=`calcsize $PACKAGE-db.txt`
   mv $PACKAGE-db.txt "$outdir/"
 
-  cmd="$DOCBOOK2PS \"${outdir}/$PACKAGE-db.xml\""
-  echo "Generating docbook PS... ($cmd)"
-  eval "$cmd"
-  gzip -f -9 -c $PACKAGE-db.ps >"$outdir/$PACKAGE-db.ps.gz"
-  docbook_ps_gz_size=`calcsize "$outdir/$PACKAGE-db.ps.gz"`
-  mv $PACKAGE-db.ps "$outdir/"
-
   cmd="$DOCBOOK2PDF \"${outdir}/$PACKAGE-db.xml\""
   echo "Generating docbook PDF... ($cmd)"
   eval "$cmd"
@@ -413,6 +396,7 @@ if test -z "$use_texi2html"; then
 else
    CONDS="/%%ENDIF.*%%/d;/%%IF  *HTML_SECTION%%/d;/%%IF  *HTML_CHAPTER%%/d"
 fi
+
 curdate=`$SETLANG date '+%B %d, %Y'`
 sed \
    -e "s!%%TITLE%%!$MANUAL_TITLE!g" \
@@ -427,13 +411,11 @@ sed \
    -e "s!%%INFO_TGZ_SIZE%%!$info_tgz_size!g" \
    -e "s!%%DVI_GZ_SIZE%%!$dvi_gz_size!g" \
    -e "s!%%PDF_SIZE%%!$pdf_size!g" \
-   -e "s!%%PS_GZ_SIZE%%!$ps_gz_size!g" \
    -e "s!%%ASCII_SIZE%%!$ascii_size!g" \
    -e "s!%%ASCII_GZ_SIZE%%!$ascii_gz_size!g" \
    -e "s!%%TEXI_TGZ_SIZE%%!$texi_tgz_size!g" \
    -e "s!%%DOCBOOK_HTML_NODE_TGZ_SIZE%%!$html_node_db_tgz_size!g" \
    -e "s!%%DOCBOOK_ASCII_SIZE%%!$docbook_ascii_size!g" \
-   -e "s!%%DOCBOOK_PS_GZ_SIZE%%!$docbook_ps_gz_size!g" \
    -e "s!%%DOCBOOK_PDF_SIZE%%!$docbook_pdf_size!g" \
    -e "s!%%DOCBOOK_XML_SIZE%%!$docbook_xml_size!g" \
    -e "s!%%DOCBOOK_XML_GZ_SIZE%%!$docbook_xml_gz_size!g" \

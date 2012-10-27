@@ -1,3 +1,10 @@
+2012-10-27  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh: remove PostScript generation, redundant with 
+	(and worse than) pdf, these days.
+	* util/gendocs_template,
+	* util/gendocs_template_min,
+
 2012-10-27  Akim Demaille  <akim@lrde.epita.fr>
         and Karl Berry  <karl@gnu.org>
 
