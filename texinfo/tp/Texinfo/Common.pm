@@ -710,7 +710,7 @@ foreach my $align_command('raggedright', 'flushleft', 'flushright') {
 $align_commands{'center'} = 1;
 
 foreach my $block_command(
-    'cartouche', 'group') {
+    'cartouche', 'group', 'indentedblock') {
   $block_commands{$block_command} = 0;
 }
 

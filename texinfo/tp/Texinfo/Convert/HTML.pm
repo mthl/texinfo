@@ -1071,13 +1071,18 @@ foreach my $preformatted_command (keys(%preformatted_commands_context)) {
 $pre_class_commands{'menu'} = 'menu-preformatted';
 $pre_class_types{'menu_comment'} = 'menu-comment';
 
-my %indented_preformatted_commands;
+my %indented_block_commands;
 foreach my $indented_format ('example', 'display', 'lisp') {
-  $indented_preformatted_commands{$indented_format} = 1;
-  $indented_preformatted_commands{"small$indented_format"} = 1;
+  $indented_block_commands{$indented_format} = 1;
+  $indented_block_commands{"small$indented_format"} = 1;
 
   $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
+}
+
+foreach my $indented_format ('indentedblock') {
+  $indented_block_commands{$indented_format} = 1;
+  $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
 }
 
 # types that are in code style in the default case
@@ -2377,7 +2382,7 @@ foreach my $command (keys(%inline_format_commands)) {
 }
 
 my $html_menu_entry_index = 0;
-sub _convert_preformatted_commands($$$$)
+sub _convert_preformatted_or_indented_commands($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -2390,7 +2395,7 @@ sub _convert_preformatted_commands($$$$)
 
   if ($content ne '' and !$self->in_string()) {
     if ($self->get_conf('COMPLEX_FORMAT_IN_TABLE')) {
-      if ($indented_preformatted_commands{$cmdname}) {
+      if ($indented_block_commands{$cmdname}) {
         return '<table><tr><td>&nbsp;</td><td>'.$content."</td></tr></table>\n";
       } else {
         return $content."\n";
@@ -2403,9 +2408,9 @@ sub _convert_preformatted_commands($$$$)
   }
 }
 
-foreach my $preformatted_command (keys(%preformatted_commands)) {
-  $default_commands_conversion{$preformatted_command} 
-  = \&_convert_preformatted_commands;
+foreach my $preformatted_or_indented_command (keys(%preformatted_commands), 'indentedblock') {
+  $default_commands_conversion{$preformatted_or_indented_command} 
+  = \&_convert_preformatted_or_indented_commands;
 }
 
 sub _convert_verbatim_command($$$$)

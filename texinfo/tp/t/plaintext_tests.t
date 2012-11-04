@@ -263,6 +263,21 @@ menu
 @end menu
 end menu
 '],
+['nested_indentedblock',
+'@example
+in example
+@indentedblock
+   f  f  f``g
+@end indentedblock
+@end example
+
+@indentedblock
+   v  v  v``a
+@example
+in example
+@end example
+@end indentedblock
+'],
 ['multitable',
 '@multitable {truc}    {bidule}
 @item truc @tab bidule

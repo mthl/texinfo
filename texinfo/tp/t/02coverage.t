@@ -264,6 +264,13 @@ After quotation sp b a
 '@cartouche
 in cartouche.
 @end cartouche'],
+['indentedblock',
+'@indentedblock
+  indented block
+
+Text
+@end indentedblock
+'],
 ['comment_on_cartouche_line',
 '@cartouche @c comment
 in cartouche.
