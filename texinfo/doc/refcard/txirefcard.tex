@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.27 2012-09-14 18:18:06 karl Exp $
+% $Id: txirefcard.tex,v 1.28 2012-11-07 19:49:49 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -580,31 +580,43 @@ which they conventionally appear.
 \txicmd{@t}{\ttbraced{text}}{Set \var{text} in a fixed-width, typewriter-like font.}
 
 
-\section{Quotation and example environments}
+\section{Block environments}
 
-`Environments' in Texinfo begin with an \code{@\var{envname}} on a line
-of its own and continue through the following lines of input until a
+`Environments' in Texinfo begin with \code{@\var{envname}} on a line of
+its own and continue through the following lines of input until the
 corresponding \code{@end \var{envname}} is seen.
 
 \txicmd{@noindent}{}{Omit the normal indentation when starting a new paragraph; often used after environments.}
 \txicmd{@indent}{}{Insert normal paragraph indentation.}
 \txicmd{@exdent}{line-of-text}{Output \var{line-of-text} without any indentation.}
-\txicmd{@cartouche}{}{Highlight an example or quotation by drawing a box with rounded corners around it. Pair with \code{@end cartouche}. No effect in Info.}
+\txicmd{@cartouche}{}{Highlight a block of text by drawing a box with rounded corners around it. Pair with \code{@end cartouche}. No effect in Info.}
 
-\subsection{Displays using regular text fonts}
+\subsection{Normally-filled displays using regular text fonts}
 
-\txicmd{@format}{}{Begin formatted text: do not fill text; retain normal
-margins and normal text font.  Pair with \code{@end format}.}
-\txicmd{@smallformat}{}{Like \code{@format}, but select a smaller (text) font where possible.  Pair with \code{@end smallformat}.}
-\txicmd{@display}{}{Begin displayed text: do not fill, and indent text; retain normal text font. Pair with \code{@end display}.}
-\txicmd{@smalldisplay}{}{Like \code{@display}, but select a smaller (text) font where possible.  Pair with \code{@end smalldisplay}.}
-\txicmd{@flushleft}{}{Left justify lines: do not fill text, retain normal margins and normal text font. Pair with \code{@end flushleft}.}
-\txicmd{@flushright}{}{Right justify lines, leaving the left end ragged: do not fill text, retain normal margins and normal text font. Pair with \code{@end flushright}.}
-\txicmd{@raggedright}{}{Left justify lines, leaving the right end ragged: fill text, retain normal text font. Pair with \code{@end raggedright}.}
-\txicmd{@quotation}{}{Narrow both margins to indicate text that is quoted from another work; do normal line breaking and retain normal font. Takes optional argument of prefix text. Pair with \code{@end quotation}.}
+In these environments, the input is automatically rebroken into lines of
+output as usual.
+
+\txicmd{@quotation}{}{Fill text, indent on both left and right, retain
+normal text font.  Often used for quoting text.  Pair with \code{@end quotation}.}
 \txicmd{@smallquotation}{}{Like \code{@quotation}, but select a smaller (text) font where possible.  Pair with \code{@end quotation}.}
+\txicmd{@indentedblock}{}{Fill text, indent on left (but not right), retain normal text font.  Pair with \code{@end indentedblock}.}
+\txicmd{@smallindentedblock}{}{Like \code{@indentedblock}, but select a smaller (text) font where possible.  Pair with \code{@end smallindentedblock}.}
+\txicmd{@raggedright}{}{Leave right end ragged, but otherwise fill text; retain normal text font. Pair with \code{@end raggedright}.}
+
+\subsection{Line-for-line displays using regular text fonts}
+
+In these environments, each line of input is a line of output.
+
+\txicmd{@format}{}{Begin formatted text: do not fill, retain normal margins and normal text font.  Pair with \code{@end format}.}
+\txicmd{@smallformat}{}{Like \code{@format}, but select a smaller (text) font where possible.  Pair with \code{@end smallformat}.}
+\txicmd{@display}{}{Begin displayed text: do not fill, but indent text on left; retain normal text font. Pair with \code{@end display}.}
+\txicmd{@smalldisplay}{}{Like \code{@display}, but select a smaller (text) font where possible.  Pair with \code{@end smalldisplay}.}
+\txicmd{@flushleft}{}{Left justify lines, leaving the right end ragged: do not fill text, retain normal margins and normal text font. Pair with \code{@end flushleft}.}
+\txicmd{@flushright}{}{Right justify lines, leaving the left end ragged: do not fill text, retain normal margins and normal text font. Pair with \code{@end flushright}.}
 
 \subsection{Displays using fixed-width fonts}
+
+In these environments also, each line of input is a line of output.
 
 \txicmd{@example}{}{Begin an example. Indent text, do not fill, and select fixed-width font. Pair with \code{@end example}.}
 \txicmd{@smallexample}{}{Like \code{@example}, but where possible, print text in a smaller font. Pair with \code{@end smallexample}.}
