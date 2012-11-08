@@ -172,7 +172,7 @@ my $indent_length = 5;
 my %indented_commands;
 foreach my $indented_command (keys(%item_indent_format_length), 
            keys(%preformatted_commands), 'quotation', 'smallquotation', 
-           'indentedblock',
+           'indentedblock', 'smallindentedblock',
            keys(%def_commands)) {
   $indented_commands{$indented_command} = 1 
     if exists($block_commands{$indented_command});

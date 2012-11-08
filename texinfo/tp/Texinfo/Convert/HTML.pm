@@ -1072,17 +1072,12 @@ $pre_class_commands{'menu'} = 'menu-preformatted';
 $pre_class_types{'menu_comment'} = 'menu-comment';
 
 my %indented_block_commands;
-foreach my $indented_format ('example', 'display', 'lisp') {
+foreach my $indented_format ('example', 'display', 'lisp', 'indentedblock') {
   $indented_block_commands{$indented_format} = 1;
   $indented_block_commands{"small$indented_format"} = 1;
 
   $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
-}
-
-foreach my $indented_format ('indentedblock') {
-  $indented_block_commands{$indented_format} = 1;
-  $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
 }
 
 # types that are in code style in the default case
@@ -2408,7 +2403,8 @@ sub _convert_preformatted_or_indented_commands($$$$)
   }
 }
 
-foreach my $preformatted_or_indented_command (keys(%preformatted_commands), 'indentedblock') {
+foreach my $preformatted_or_indented_command (keys(%preformatted_commands), 
+                                      'indentedblock', 'smallindentedblock') {
   $default_commands_conversion{$preformatted_or_indented_command} 
   = \&_convert_preformatted_or_indented_commands;
 }
