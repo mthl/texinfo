@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.216 2012-09-14 18:18:06 karl Exp $
+$Id: NEWS,v 1.217 2012-11-08 23:08:43 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -30,7 +30,8 @@ one of the relevant sections:
   . new conditionals @ifcommanddefined and @ifcommandnotdefined to test
     if a Texinfo command is available.
   . new command @part for a group of chapters.
-  . new environments @raggedright and @smallquotation.
+  . new environments @raggedright, @smallquotation,
+      @indentedblock, and @smallindentedblock.
   . new commands @codequoteundirected and @codequotebacktick,
       for a better interface than the @set variables; now respected by @kbd.
   . new command @xrefautomaticsectiontitle to allow using section titles

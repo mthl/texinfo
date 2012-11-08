@@ -1,3 +1,14 @@
+2012-11-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (@indentedblock): new node for new command.
+	(Quotations and Examples, small): mention @smallindentedblock.
+	(Command List): include these two new commands.
+	* doc/refcard/txirefcard.tex: likewise.
+	* NEWS: likewise.
+	* doc/texinfo.tex (\indentedblockstart, \Eindentedblock,
+	\Esmallindentedblock): new macros to implement them.
+	(\quotationstart): can call \indentedblockstart now.
+
 2012-10-27  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs.sh: remove PostScript generation, redundant with 

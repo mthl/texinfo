@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.487 2012-09-23 18:09:47 karl Exp $
+@c $Id: texinfo.txi,v 1.488 2012-11-08 23:08:44 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -367,6 +367,7 @@ Quotations and Examples
 
 * Block Enclosing Commands::    Different constructs for different purposes.
 * quotation::                   Writing a quotation.
+* @code{@@indentedblock}::               Block of text indented on left.
 * example::                     Writing an example in a fixed-width font.
 * verbatim::                    Writing a verbatim example.
 * verbatiminclude::             Including a file verbatim.
@@ -8001,6 +8002,7 @@ beginning of that line, and with only one space between the
 @menu
 * Block Enclosing Commands::    Different constructs for different purposes.
 * quotation::                   Writing a quotation.
+* @code{@@indentedblock}::               Block of text indented on left.
 * example::                     Writing an example in a fixed-width font.
 * verbatim::                    Writing a verbatim example.
 * verbatiminclude::             Including a file verbatim.
@@ -8029,6 +8031,9 @@ sections.
 Indicate text that is quoted. The text is filled, indented (from both
 margins), and printed in a roman font by default.
 
+@item @@indentedblock
+Like @code{@@quotation}, but the text is indented only on the left.
+
 @item @@example
 Illustrate code, commands, and the like. The text is printed
 in a fixed-width font, and indented but not filled.
@@ -8053,6 +8058,7 @@ Like @code{@@display} (the text is not filled and no font is
 selected), but the text is not indented.
 
 @item @@smallquotation
+@itemx @@smallindentedblock
 @itemx @@smallexample
 @itemx @@smalllisp
 @itemx @@smalldisplay
@@ -8093,8 +8099,8 @@ text is filled) except that:
 
 @itemize @bullet
 @item
-the margins are closer to the center of the page, so the whole of the
-quotation is indented;
+both the left and right margins are closer to the center of the page,
+so the whole of the quotation is indented;
 
 @item
 the first lines of paragraphs are indented no more than other lines; and
@@ -8176,7 +8182,40 @@ hacking.
 
 @findex smallquotation
 Texinfo also provides a command @code{@@smallquotation}, which is just
-like @code{@@quotation} but uses a smaller font size.  @xref{small}.
+like @code{@@quotation} but uses a smaller font size where possible.
+@xref{small}.
+
+
+@node @code{@@indentedblock}
+@section @code{@@indentedblock}: Indented text blocks
+@cindex Indented text block
+@findex indentedblock
+
+The @code{@@indentedblock} environment is similar to
+@code{@@quotation}, except that text is only indented on the left (and
+there is no optional argument for an author).  Thus, the text font
+remains unchanged, and text is gathered and filled as usual, but the
+left margin is increased.  For example:
+
+@indentedblock
+This is an example of text written between an @code{@@indentedblock}
+command and an @code{@@end indentedblock} command.  The
+@code{@@indentedblock} environment can contain any text or other
+commands desired.
+@end indentedblock
+
+This is written in the Texinfo source as:
+
+@example
+@@indentedblock
+This is an example ...
+@@end indentedblock
+@end example
+
+@findex smallindentedblock
+Texinfo also provides a command @code{@@smallindentedblock}, which is
+just like @code{@@indentedblock} but uses a smaller font size where
+possible.  @xref{small}.
 
 
 @node example
@@ -8390,16 +8429,20 @@ itself.
 
 In addition to the regular @code{@@example} and similar commands,
 Texinfo has ``small'' example-style commands.  These are
-@code{@@smallquotation}, @code{@@smalldisplay}, @code{@@smallexample},
-@code{@@smallformat}, and @code{@@smalllisp}.
+@code{@@smallquotation}, @code{@@smallindentedblock},
+@code{@@smalldisplay}, @code{@@smallexample}, @code{@@smallformat},
+and @code{@@smalllisp}.
 
 In Info output, the @code{@@small@dots{}} commands are equivalent to
 their non-small companion commands.
 
 In @TeX{}, however, the @code{@@small@dots{}} commands typeset text in
-a smaller font than the non-small example commands.  Consequently,
-many examples containing long lines fit on a page without needing to
-be shortened.  A smaller font size is also requested in HTML output.
+a smaller font than the non-small example commands.  Thus, for
+instance, code examples can contain longer lines and still fit on a
+page without needing to be rewritten.
+
+A smaller font size is also requested in HTML output, and (as usual)
+retained in the Texinfo XML transliteration.
 
 Mark the end of an @code{@@small@dots{}} block with a corresponding
 @code{@@end small@dots{}}.  For example, pair @code{@@smallexample} with
@@ -8451,7 +8494,8 @@ like @code{@@display} but uses a smaller font size.  @xref{small}.
 The @code{@@table} command (@pxref{table}) is not supported inside
 @code{@@display}.  Since @code{@@display} is line-oriented, it doesn't
 make sense to use them together.  If you want to indent a table, try
-@code{@@quotation} (@pxref{quotation,,@code{@@quotation}}).
+@code{@@quotation} (@pxref{quotation,,@code{@@quotation}})
+or @code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
 
 
 @node format
@@ -20338,6 +20382,10 @@ Read the contents of Texinfo source file @var{filename}.  @xref{Include Files}.
 @item @@indent
 Insert paragraph indentation.  @xref{indent,, @code{indent}}.
 
+@item @@indentedblock
+Indent a block of arbitary text on the left.  Pair with @code{@@end
+indentedblock}.  @xref{@code{@@indentedblock}}.
+
 @item @@indicateurl@{@var{indicateurl}@}
 Indicate text that is a uniform resource locator for the World Wide
 Web.  @xref{indicateurl, , @code{@@indicateurl}}.
@@ -20540,8 +20588,9 @@ Generate an upside-down question mark.  @xref{Inserting Accents}.
 
 @item @@quotation
 Narrow the margins to indicate text that is quoted from another work.
-Takes optional argument of prefix text.  Pair with @code{@@end
-quotation}.  @xref{quotation, , @code{@@quotation}}.
+Takes optional argument specifying prefix text, e.g., an author name.
+Pair with @code{@@end quotation}.  @xref{quotation, ,
+@code{@@quotation}}.
 
 @item @@quotedblleft@{@}
 @itemx @@quotedblright@{@}
@@ -20674,14 +20723,17 @@ Begin a kind of example.  Like @code{@@format}, but use a smaller font
 size where possible.  Pair with @code{@@end smallformat}.
 @xref{small}.
 
+@item @@smallindentedblock
+Like @code{@@indentedblock}, but use a smaller font size where
+possible.  Pair with @code{@@end smallindentedblock}.  @xref{small}.
+
 @item @@smalllisp
 Begin an example of Lisp code.  Same as @code{@@smallexample}.  Pair
 with @code{@@end smalllisp}.  @xref{small}.
 
 @item @@smallquotation
-Begin a kind of example.  Like @code{@@quotation}, but use a smaller
-font size where possible.  Pair with @code{@@end smallquotation}.
-@xref{small}.
+Like @code{@@quotation}, but use a smaller font size where possible.
+Pair with @code{@@end smallquotation}.  @xref{small}.
 
 @item @@sp @var{n}
 Skip @var{n} blank lines.  @xref{sp, , @code{@@sp}}.
@@ -21597,7 +21649,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.487 2012-09-23 18:09:47 karl Exp $
+$Id: texinfo.txi,v 1.488 2012-11-08 23:08:44 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
