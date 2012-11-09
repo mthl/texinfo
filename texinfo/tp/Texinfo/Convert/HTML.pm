@@ -1072,12 +1072,20 @@ $pre_class_commands{'menu'} = 'menu-preformatted';
 $pre_class_types{'menu_comment'} = 'menu-comment';
 
 my %indented_block_commands;
-foreach my $indented_format ('example', 'display', 'lisp', 'indentedblock') {
+foreach my $indented_format ('example', 'display', 'lisp') {
   $indented_block_commands{$indented_format} = 1;
   $indented_block_commands{"small$indented_format"} = 1;
 
   $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
+}
+
+foreach my $indented_format ('indentedblock') {
+  $indented_block_commands{$indented_format} = 1;
+  $indented_block_commands{"small$indented_format"} = 1;
+
+  $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
+  $css_map{"div.small$indented_format"} = 'margin-left: 3.2em; font-size: smaller';
 }
 
 # types that are in code style in the default case
