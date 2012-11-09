@@ -443,6 +443,7 @@ t/results/coverage/formats_titles.pl
 t/results/coverage/group_beginning_and_end_on_line.pl
 t/results/coverage/group_not_closed.pl
 t/results/coverage/hyphenation.pl
+t/results/coverage/indentedblock.pl
 t/results/coverage/indicateurl_end_lines.pl
 t/results/coverage/insertcopying.pl
 t/results/coverage/item_container.pl
@@ -544,6 +545,7 @@ t/results/def/leading_space_in_def_arg.pl
 t/results/def/no_category_or_no_name.pl
 t/results/def/not_closed.pl
 t/results/def/protected_brace.pl
+t/results/def/ref_in_def.pl
 t/results/def/space_in_def_for_index.pl
 t/results/def/wrong_braces_simple.pl
 t/results/def/wrong_braces_with_end_of_lines.pl
@@ -566,6 +568,7 @@ t/results/heading/heading_in_copying.pl
 t/results/heading/heading_in_example.pl
 t/results/heading/heading_in_quotation.pl
 t/results/html_tests/character_number_leading_toc_stoc.pl
+t/results/html_tests/check_htmlxref.pl
 t/results/html_tests/commands_in_abbr.pl
 t/results/html_tests/commands_in_alt.pl
 t/results/html_tests/commands_in_email.pl
@@ -1011,6 +1014,7 @@ t/results/plaintext_tests/long_uref_after_item.pl
 t/results/plaintext_tests/multiline_verb_after_space.pl
 t/results/plaintext_tests/multitable.pl
 t/results/plaintext_tests/nested_code_commands.pl
+t/results/plaintext_tests/nested_indentedblock.pl
 t/results/plaintext_tests/nested_multitable.pl
 t/results/plaintext_tests/no_empty_line_after_section.pl
 t/results/plaintext_tests/no_punctuation_commands.pl
