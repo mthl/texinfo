@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.97 2012-09-21 18:00:02 karl Exp $
+$Id: dir-example,v 1.98 2012-11-09 16:34:20 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -90,7 +90,7 @@ Printing
 * PreScript: (a2ps) PreScript.     Input language for a2ps
 * a2ps: (a2ps).                    PostScript Generating Utility
 * card: (a2ps) card.               Print Reference Cards
-* enscript (enscript).
+* enscript (enscript).             Text to PostScript.
 * fixnt: (a2ps) fixnt.             Fixing Microsoft NT PostScript Files
 * fixps: (a2ps) fixps.             Fixing Some Ill Designed PostScript Files
 * ogonkify: (ogonkify).            Ogonkify
