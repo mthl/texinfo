@@ -1,4 +1,4 @@
-$Id: README,v 1.4 2012-05-26 10:45:03 pertusus Exp $
+$Id: README,v 1.5 2012-11-09 23:52:59 pertusus Exp $
 texinfo/tp/tests/README
 
   Copyright (C) 2010, 2012 Free Software Foundation, Inc.
@@ -76,8 +76,8 @@ These tests may be run by
   make tex-html-checks
 
 For the tests that use latex2html, to avoid the test failing if there is 
-a dot in the cwd, mktemp is used to create a temporary directory, hopefully
-in /tmp, and the directory is passed through on the command line.
+a dot in the cwd, mktemp is used to create a temporary directory, and 
+the directory is passed through on the command line.
 
 
 Tests specification

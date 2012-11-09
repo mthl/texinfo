@@ -23,7 +23,7 @@ fi
 echo "$basename" > $logfile
 : > $stdout_file
 
-if tmp_dir=`mktemp -p /tmp -d l2h_t2h_XXXXXXXX`; then
+if tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`; then
   :
 else
   exit 1
