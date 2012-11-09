@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.45 2012-05-17 11:11:23 pertusus Exp $
+# $Id: Makefile.am,v 1.46 2012-11-09 16:36:13 karl Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -200,14 +200,14 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	 | sed 's/ \+/\n/g' | cat - $< | sort > $@
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
-	$(MKDIR_P) maintain
+	$(mkdir_p) maintain
 	sed -e 's|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|' $< > $@
 
 
 libsrcdir = $(srcdir)/maintain/lib
 
 install-data-local:
-	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
+	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
 	$(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/*.pm \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale
@@ -215,10 +215,10 @@ install-data-local:
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode
 	$(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/RecodeData/*.pm \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
-	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
+	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
 	$(INSTALL_DATA) $(libsrcdir)/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
 	 $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
-	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
+	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
 	$(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode.pm \
 	  $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text
 	$(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode/*.pm \

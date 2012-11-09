@@ -195,7 +195,7 @@ $(po_document_dir)/po_document/$(PACKAGE)_document.pot:
 # xgettext to change it), and msgexec doesn't like it and don't do anything.
 # msgexec: present charset "CHARSET" is not a portable encoding name
 i18n/en.thl i18n/: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
-	$(MKDIR_P) i18n
+	$(mkdir_p) i18n
 	if test '$(USE_NLS)' = 'yes'; then \
 	  for file in "$(srcdir)/$(po_document_dir)/po_document/"*".po"; do lang=`basename "$$file" .po | sed 's/\..*//'`; \
 		test "$$lang" = 'en' && continue; \
@@ -207,7 +207,7 @@ i18n/en.thl i18n/: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
 	fi
 
 i18n_ref:
-	$(MKDIR_P) i18n_ref
+	$(mkdir_p) i18n_ref
 
 # Should be done manually, otherwise it is left after make distclean
 # in a out of source build directory.
@@ -217,7 +217,7 @@ regenerate_i18n_ref: i18n i18n_ref
 	fi
 
 #i18n/en: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
-#	$(MKDIR_P) i18n
+#	$(mkdir_p) i18n
 #	msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > $@
 
 translations.pl: i18n/en.thl
@@ -234,7 +234,7 @@ check-local: makeinfo.pl texi2any.pl
 	rm -rf locales
 	for file in "$(srcdir)/$(po_document_dir)/po_document/"*.po; do \
 	  basename=`basename "$$file" .po` ; \
-	  $(MKDIR_P) "locales/$$basename/LC_MESSAGES/" ; \
+	  $(mkdir_p) "locales/$$basename/LC_MESSAGES/" ; \
 	  if test '$(USE_NLS)' = 'yes'; then \
 	    $(MSGFMT) "$$file" -o "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
 	  else \
@@ -254,9 +254,9 @@ distclean-local:
 	-rm -rf locales i18n
 
 install-data-local: i18n
-	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/i18n
+	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/i18n
 	$(INSTALL_DATA) i18n/*.thl  $(DESTDIR)$(pkgdatadir)/i18n
-	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
+	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
 	$(INSTALL_DATA) $(srcdir)/lib/libintl-perl/lib/Locale/*.pm \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale
@@ -264,10 +264,10 @@ install-data-local: i18n
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode
 	$(INSTALL_DATA) $(srcdir)/lib/libintl-perl/lib/Locale/RecodeData/*.pm \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
-	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
+	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
 	$(INSTALL_DATA) $(srcdir)/lib/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
 	 $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
-	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
+	$(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
 	$(INSTALL_DATA) $(srcdir)/lib/Text-Unidecode/lib/Text/Unidecode.pm \
 	  $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text
 	$(INSTALL_DATA) $(srcdir)/lib/Text-Unidecode/lib/Text/Unidecode/*.pm \

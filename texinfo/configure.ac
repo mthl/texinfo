@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.117 2012-09-12 01:12:25 karl Exp $
+# $Id: configure.ac,v 1.118 2012-11-09 16:36:11 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -53,13 +53,7 @@ AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
 AC_PROG_LN_S
-AM_PROG_MKDIR_P
-
-# Happens with some automake version
-if test z"$MKDIR_P" = 'z'; then
-  MKDIR_P=$mkdir_p
-  AC_SUBST([MKDIR_P])
-fi
+AC_PROG_MKDIR_P
 
 dnl gettext Makefiles may need MKINSTALLDIRS
 MKINSTALLDIRS="\$(top_srcdir)/build-aux/install-sh -d"

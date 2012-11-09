@@ -1,3 +1,11 @@
+2012-11-09  Karl Berry  <karl@gnu.org>
+
+	* configure.ac: remove MKDIR_P fallback.
+	* texi2html/Makefile.am,
+	* tp/Makefile.am: consistently use $(mkdir_p) rather than $(MKDIR_P).
+	
+	* Run gnulib-tool --import, srclist.txi.
+
 2012-11-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (@indentedblock): new node for new command.

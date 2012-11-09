@@ -424,7 +424,7 @@ EXTRA_DIST += mbchar.h
 
 ## begin gnulib module mbiter
 
-libgnu_a_SOURCES += mbiter.h
+libgnu_a_SOURCES += mbiter.h mbiter.c
 
 ## end   gnulib module mbiter
 
@@ -486,7 +486,7 @@ libgnu_a_SOURCES += mbswidth.h mbswidth.c
 
 ## begin gnulib module mbuiter
 
-libgnu_a_SOURCES += mbuiter.h
+libgnu_a_SOURCES += mbuiter.h mbuiter.c
 
 ## end   gnulib module mbuiter
 
@@ -823,6 +823,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''REPLACE_MALLOC''@|$(REPLACE_MALLOC)|g' \
 	      -e 's|@''REPLACE_MBTOWC''@|$(REPLACE_MBTOWC)|g' \
 	      -e 's|@''REPLACE_MKSTEMP''@|$(REPLACE_MKSTEMP)|g' \
+	      -e 's|@''REPLACE_PTSNAME''@|$(REPLACE_PTSNAME)|g' \
 	      -e 's|@''REPLACE_PTSNAME_R''@|$(REPLACE_PTSNAME_R)|g' \
 	      -e 's|@''REPLACE_PUTENV''@|$(REPLACE_PUTENV)|g' \
 	      -e 's|@''REPLACE_RANDOM_R''@|$(REPLACE_RANDOM_R)|g' \

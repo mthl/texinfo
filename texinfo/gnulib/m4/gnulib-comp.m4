@@ -48,6 +48,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module exitfail:
   # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
+  # Code from module extern-inline:
   # Code from module fcntl-h:
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
@@ -156,6 +157,7 @@ AC_DEFUN([gl_INIT],
   m4_ifdef([AM_XGETTEXT_OPTION],
     [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
      AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
+  AC_REQUIRE([gl_EXTERN_INLINE])
   gl_FCNTL_H
   gl_FUNC_GETOPT_GNU
   if test $REPLACE_GETOPT = 1; then
@@ -520,6 +522,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/malloca.valgrind
   lib/mbchar.c
   lib/mbchar.h
+  lib/mbiter.c
   lib/mbiter.h
   lib/mbrtowc.c
   lib/mbscasecmp.c
@@ -530,6 +533,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbsstr.c
   lib/mbswidth.c
   lib/mbswidth.h
+  lib/mbuiter.c
   lib/mbuiter.h
   lib/memchr.c
   lib/memchr.valgrind
@@ -590,6 +594,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
+  m4/extern-inline.m4
   m4/fcntl-o.m4
   m4/fcntl_h.m4
   m4/getopt.m4
