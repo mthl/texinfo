@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.118 2012-11-09 16:36:11 karl Exp $
+# $Id: configure.ac,v 1.119 2012-11-10 16:59:02 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -16,8 +16,9 @@ AC_INIT([GNU Texinfo], [4.13.90], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
-dnl tar-ustar because we have long filenames for some test files
-AM_INIT_AUTOMAKE([1.10.1 readme-alpha dist-xz tar-ustar])
+dnl tar-ustar because we have long filenames for some test files.
+dnl parallel-tests as recommended by stefano.
+AM_INIT_AUTOMAKE([1.12 tar-ustar parallel-tests readme-alpha dist-xz])
 
 # Minimum Autoconf version required.
 AC_PREREQ(2.59)

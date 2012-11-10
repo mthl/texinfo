@@ -1,3 +1,9 @@
+2012-11-10  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AM_INIT_AUTOMAKE): use parallel-tests,
+	as recommended by Stefano Lattarini.  Require automake 1.12.
+	* build-aux/test-driver: new file to support it.
+
 2012-11-09  Karl Berry  <karl@gnu.org>
 
 	* configure.ac: remove MKDIR_P fallback.
