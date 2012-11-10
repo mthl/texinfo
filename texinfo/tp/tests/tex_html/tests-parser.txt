@@ -15,4 +15,4 @@ tex_complex_l2h tex_complex.texi --set-customization-variable 'L2H 1' --iftex
 math_not_closed math_not_closed.texi --set-customization-variable 'L2H 1' --iftex
 tex_not_closed tex_not_closed.texi --set-customization-variable 'L2H 1' --iftex
 tex_in_copying tex_in_copying.texi --set-customization-variable 'L2H 1' --iftex
-
+formatting_singular ../coverage/formatting.texi --init-file t2h_singular.init --set-customization-variable 'L2H 1' --set-customization-variable 'SHORTEXTN 1' --set-customization-variable 'PREFIX sing' --set-customization-variable 'TOP_FILE index.htm' --no-verbose
