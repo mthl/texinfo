@@ -27,6 +27,7 @@ LocaleData/pt.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/ro/LC_MESSAGES/texinfo.mo
 LocaleData/ru/LC_MESSAGES/texinfo.mo
 LocaleData/rw/LC_MESSAGES/texinfo.mo
+LocaleData/sl/LC_MESSAGES/texinfo.mo
 LocaleData/sv/LC_MESSAGES/texinfo.mo
 LocaleData/tr/LC_MESSAGES/texinfo.mo
 LocaleData/uk/LC_MESSAGES/texinfo.mo
@@ -69,6 +70,7 @@ po/POTFILES.in
 po/ro.po
 po/ru.po
 po/rw.po
+po/sl.po
 po/sv.po
 po/texinfo.pot
 po/tr.po

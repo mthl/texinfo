@@ -16,6 +16,8 @@ prepended_command=
 
 res_dir=res_parser
 out_dir=out_parser
+# used for tex4ht and latex2html results to keep their raw output
+raw_out_dir=raw_out_parser
 #res_dir_ref=res
 #command=texi2html.pl
 diffs_dir=diffs
@@ -126,7 +128,9 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
       for command_dir in $commands; do
         dir_suffix=`echo $command_dir | cut -d':' -f2`
         outdir="${out_dir}${dir_suffix}/"
+        raw_outdir="${raw_out_dir}${dir_suffix}/"
         [ -d "${outdir}$dir" ] && rm -rf "${outdir}$dir"
+        [ -d "${raw_outdir}$dir" ] && rm -rf "${raw_outdir}$dir"
       done
     else
       for command_dir in $commands; do
@@ -141,7 +145,6 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
              mkdir "${resdir}$dir/"
           fi
           cp -r "${outdir}$dir/"* "${resdir}$dir/"
-          rm -f "${resdir}$dir/"*.png "${resdir}$dir/"*_l2h.css "${resdir}$dir/"*_2 "${resdir}$dir/"*_1
         else
           echo "No dir ${outdir}$dir" 1>&2
         fi
@@ -153,7 +156,15 @@ fi
 
 . ../path_separator || exit 1
 
-[ -d "$diffs_dir" ] || mkdir "$diffs_dir"
+[ -d $diffs_dir ] || mkdir $diffs_dir
+staging_dir_res=$diffs_dir/staging_res/
+#rm -rf $staging_dir $staging_dir_res
+if [ z"$clean" = 'zyes' ]; then
+  rm -rf $staging_dir_res
+else
+  [ -d $staging_dir_res ] || mkdir $staging_dir_res
+fi
+
 for command_dir in $commands; do
   dir_suffix=`echo $command_dir | cut -d':' -f2`
   outdir="${out_dir}${dir_suffix}/"
@@ -271,55 +282,73 @@ do
       echo "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-customization-variable L2H_FILE=$testdir/$srcdir_test/../../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
       eval "$prepended_command perl -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-customization-variable L2H_FILE=$testdir/$srcdir_test/../../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       ret=$?
-      rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
-        ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
-        ${outdir}$dir/*_l2h.html.* \
-        ${outdir}$dir/*_tex4ht_tex.html*
+      #rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
+      #  ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
+      #  ${outdir}$dir/*_l2h.html.* \
+      #  ${outdir}$dir/*_tex4ht_tex.html*
     fi
     if [ $ret = 0 ]; then
       diff_base="${dir}${dir_suffix}"
-      sed -i -e 's/^texexpand.*/texexpand /' "${outdir}$dir/$basename.2"
-      sed -i '/is no longer supported at.*line/d' "${outdir}$dir/$basename.2"
-      if [ "$use_latex2html" = 'yes' ]; then
-        # in case the output format is not html there won't be "*"_l2h.html files
-        for file in "${outdir}$dir/"*"_l2h.html"; do
-         if [ -f "$file" ]; then
-          sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
-            's/with LaTeX2HTML.*/with LaTeX2HTML/' "$file"
-          fi
-        done
-        # "*"_images.pl" files are not guaranteed to be present
-        for file in "${outdir}$dir/"*"_images.pl" "${outdir}$dir/"*"_labels.pl"; do
-         if [ -f "$file" ]; then
-          sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file"
-         fi
-        done
-        for file in "${outdir}$dir/"*.htm* "${outdir}$dir/"*-l2h_cache.pm "${outdir}$dir/"*_l2h_images.pl; do
-         if [ -f "$file" ]; then
-         # different rounding on different computers !
-          sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="\10"/' "$file"
-         fi
-        done
-        rm -f "${outdir}$dir/"*".aux"  "${outdir}$dir/"*"_images.out"
-      fi
-      if [ "$use_latex2html" = 'yes' -o "$use_tex4ht" = 'yes' ]; then
-        # to keep the files but avoid them being copyied or diffed
-        mv "${outdir}$dir/$basename.1" "${outdir}$dir/${basename}_1"
-      fi
-      if [ "$use_tex4ht" = 'yes' ]; then
-        # tex4ht may be customized to use dvipng or dvips, both being
-        # verbose, so there can not be reproducible tests on stderr either
-        # with tex4ht.
-        mv "${outdir}$dir/$basename.2" "${outdir}$dir/${basename}_2"
-      fi
-      res_dir_used=
       if [ -d "$results_dir/$dir" ]; then
         res_dir_used="$results_dir/$dir"
-      #elif [ -d "$results_dir_ref/$dir" ]; then
-      #  res_dir_used="$results_dir_ref/$dir"
       fi
       if [ "z$res_dir_used" != 'z' ]; then
-        diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' --exclude='*_1' --exclude='*_2' -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
+        # use a staging dir to be able to remove CVS directory
+        rm -rf $staging_dir_res/$dir
+        cp -pr "$res_dir_used" $staging_dir_res
+        rm -rf $staging_dir_res$dir/CVS
+
+        # with latex2html or tex4ht output is stored in raw_outdir, and files
+        # are removed or modified from the output directory used for comparisons
+        if [ "$use_latex2html" = 'yes' -o "$use_tex4ht" = 'yes' ]; then
+
+          # store raw output
+          raw_outdir="${raw_out_dir}${dir_suffix}/"
+          [ -d "${raw_outdir}" ] || mkdir "${raw_outdir}"
+          rm -rf "${raw_outdir}$dir"
+          cp -pr ${outdir}$dir/ "${raw_outdir}"
+
+          # remove files that are not reproducible
+          rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png \
+                ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
+                ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
+                ${outdir}$dir/*_l2h.html.* \
+                ${outdir}$dir/*_tex4ht_tex.html*
+        fi
+        if [ "$use_tex4ht" = 'yes' ]; then
+          # tex4ht may be customized to use dvipng or dvips, both being
+          # verbose, so there can not be reproducible tests on stderr either
+          # with tex4ht.
+          rm "${outdir}$dir/$basename.2"
+        elif [ "$use_latex2html" = 'yes' ]; then
+          sed -e 's/^texexpand.*/texexpand /' \
+              -e '/is no longer supported at.*line/d' \
+              $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
+          # "*"_images.pl" files are not guaranteed to be present
+          for file in "${raw_outdir}$dir/"*"_labels.pl"; do
+           if [ -f "$file" ]; then
+            filename=`basename "$file"`
+            sed -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
+           fi
+          done
+          for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm "${raw_outdir}$dir/"*_l2h_images.pl; do
+           if [ -f "$file" ]; then
+           # width and height changed because of different rounding on 
+           # different computers.  Also remove version information.
+            filename=`basename "$file"`
+            sed -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' \
+                -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="\10"/' \
+                -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' \
+                -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' \
+                -e 's/with LaTeX2HTML.*/with LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
+           fi
+          done
+          rm -f ${outdir}$dir/*.aux ${outdir}$dir/*_images.out \
+                ${outdir}$dir/*_l2h.css
+        fi
+
+        #diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' --exclude='*_1' --exclude='*_2' -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
+        diff -a -u -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
           echo "D: ${mydir}$diffs_dir/$diff_base.diff"

@@ -14,7 +14,7 @@ VERSION=`grep '^VERSION = ' Makefile | sed 's/^VERSION = *//'`
 rm -f Texinfo-$VERSION.tar.gz
 cp -p ../COPYING .
 make && make dist
-rm COPYING
+rm COPYING MYMETA.yml
 tar xzvf Texinfo-$VERSION.tar.gz
 (cd Texinfo-$VERSION/ && perl Makefile.PL && make && make test && \
                  ./maintain/all_tests.sh clean && make distcheck) || exit 1

@@ -13,6 +13,8 @@ stdout_file=$basename.out
 [ "z$srcdir" = 'z' ] && srcdir=.
 
 [ -d $diffs_dir ] || mkdir $diffs_dir
+staging_dir=$diffs_dir/staging
+[ -d $staging_dir ] || mkdir $staging_dir
 
 echo "$basename" > $logfile
 : > $stdout_file
@@ -31,14 +33,18 @@ fi
 
 return_code=0
 for dir in ${basename} index_split; do
-  if [ -d $srcdir/${dir}_res ]; then
-    diff -u --exclude=CVS --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"
+  if [ -d "$srcdir/${dir}_res" ]; then
+    # use a staging directory to rm files/directory giving spurious differences
+    rm -rf $staging_dir/${dir}_res
+    cp -pr "$srcdir/${dir}_res" $staging_dir
+    rm -rf $staging_dir/${dir}_res/CVS
+    diff -u -r $staging_dir/${dir}_res ${dir} 2>>$logfile > $diffs_dir/$dir.diff
     dif_ret=$?
     if [ $dif_ret != 0 ]; then
       echo "D: $diffs_dir/$dir.diff"
       return_code=1
     else
-      rm "$diffs_dir/$dir.diff"
+      rm $diffs_dir/$dir.diff
     fi
   else
     echo "no res: ${dir}_res"

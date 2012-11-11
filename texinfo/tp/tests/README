@@ -1,4 +1,4 @@
-$Id: README,v 1.5 2012-11-09 23:52:59 pertusus Exp $
+$Id: README,v 1.6 2012-11-11 16:25:07 pertusus Exp $
 texinfo/tp/tests/README
 
   Copyright (C) 2010, 2012 Free Software Foundation, Inc.
@@ -13,7 +13,7 @@ copyright notice are hereby placed in the public domain.
 
 Prerequisites
 =============
-To run this testsuite, sed (with -i), awk, diff, mktemp are used. 
+To run this testsuite, sed, awk, diff (with -u), mktemp are used. 
 
 Some tests may also require a case insensitive filesystem.
 
