@@ -5,8 +5,8 @@
 # This file should be run when maintain/template.pod is modified.
 
 for format in HTML XML DocBook Info Plaintext; do
-  sed -e '/^__END__/q' Texinfo/Convert/$format.pm > Texinfo/Convert/$format.pm.$$.tmp
+  sed -e '/^__END__/q' Texinfo/Convert/$format.pm > Texinfo/Convert/$format.pm.$$.tmp || exit 1
   sed "s/OUTFORMAT/$format/g" maintain/template.pod > maintain/$format.pod
-  sed -e "/^__END__/r maintain/$format.pod" Texinfo/Convert/$format.pm.$$.tmp > Texinfo/Convert/$format.pm
+  sed -e "/^__END__/r maintain/$format.pod" Texinfo/Convert/$format.pm.$$.tmp > Texinfo/Convert/$format.pm || exit 1
   rm -f maintain/$format.pod Texinfo/Convert/$format.pm.$$.tmp
 done
