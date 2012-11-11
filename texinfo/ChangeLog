@@ -1,5 +1,8 @@
 2012-11-10  Karl Berry  <karl@gnu.org>
 
+	* */Makefile.am: laboriously+manually+redundantly expand $< in
+	non-suffix rule.
+
 	* install-info/tests/defs.in: set CDPATH before unsetting,
 	to placate BSD sh.  From Stefano.
 	* install-info/tests/ii-0053-test: avoid -e.

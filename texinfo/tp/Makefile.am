@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.46 2012-11-09 16:36:13 karl Exp $
+# $Id: Makefile.am,v 1.47 2012-11-11 00:44:37 karl Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -44,7 +44,7 @@ do_subst = sed \
   -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g'
 
 texi2any: texi2any.pl $(top_builddir)/config.status
-	$(do_subst) $(srcdir)/$< >$@
+	$(do_subst) $(srcdir)/texi2any.pl >$@
 	chmod a+x $@
 
 makeinfo: texi2any
@@ -197,11 +197,13 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_files_generated_list) " \
 	"texi2any $(maintainance_files) README TODO COPYING " \
 	"$(perl_specific_files)" \
-	 | sed 's/ \+/\n/g' | cat - $< | sort > $@
+	 | sed 's/ \+/\n/g' | cat - maintain/MANIFEST_generated_files \
+	 | sort >$@
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
 	$(mkdir_p) maintain
-	sed -e 's|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|' $< > $@
+	sed -e 's|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|' \
+	  maintain/catalog.xml.in >$@
 
 
 libsrcdir = $(srcdir)/maintain/lib

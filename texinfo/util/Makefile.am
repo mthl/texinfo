@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.46 2012-09-09 22:46:00 pertusus Exp $
+# $Id: Makefile.am,v 1.47 2012-11-11 00:44:37 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -23,7 +23,7 @@ pdftexi2dvi: texi2pdf
 
 txixml2texi: txixml2texi.pl Makefile
 	sed -e 's,[@]datadir[@],$(datadir),g' \
-	-e 's,[@]PACKAGE[@],$(PACKAGE),g' $(srcdir)/$< >$@
+	    -e 's,[@]PACKAGE[@],$(PACKAGE),g' $(srcdir)/txixml2texi.pl >$@
 	chmod a+x $@
 
 localedir = $(datadir)/locale
