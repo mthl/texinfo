@@ -1,3 +1,13 @@
+2012-11-10  Patrice Dumas  <pertusus@free.fr>
+
+	* */Makefile.am: add $(srcdir) for out of source build when
+	needed.
+	* tp/.cvsignore: ignore *.trs and *.log.
+	* TODO: update
+	* tp/tests/*/*.sh, tp/tests/run_parser_all.sh: do a chmod on 
+	files copied from the source directory, for instance to have
+	them removed by clean targets.
+
 2012-11-10  Karl Berry  <karl@gnu.org>
 
 	* */Makefile.am: laboriously+manually+redundantly expand $< in

@@ -37,6 +37,7 @@ for dir in ${basename} index_split; do
     # use a staging directory to rm files/directory giving spurious differences
     rm -rf $staging_dir/${dir}_res
     cp -pr "$srcdir/${dir}_res" $staging_dir
+    chmod -R u+w "$staging_dir/${dir}_res"
     rm -rf $staging_dir/${dir}_res/CVS
     diff -u -r $staging_dir/${dir}_res ${dir} 2>>$logfile > $diffs_dir/$dir.diff
     dif_ret=$?

@@ -158,7 +158,6 @@ fi
 
 [ -d $diffs_dir ] || mkdir $diffs_dir
 staging_dir_res=$diffs_dir/staging_res/
-#rm -rf $staging_dir $staging_dir_res
 if [ z"$clean" = 'zyes' ]; then
   rm -rf $staging_dir_res
 else
@@ -296,6 +295,7 @@ do
         # use a staging dir to be able to remove CVS directory
         rm -rf $staging_dir_res/$dir
         cp -pr "$res_dir_used" $staging_dir_res
+        chmod -R u+w "$staging_dir_res/$dir"
         rm -rf $staging_dir_res$dir/CVS
 
         # with latex2html or tex4ht output is stored in raw_outdir, and files

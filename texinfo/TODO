@@ -1,4 +1,4 @@
-$Id: TODO,v 1.67 2012-09-09 22:46:00 pertusus Exp $
+$Id: TODO,v 1.68 2012-11-11 19:53:19 pertusus Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -72,9 +72,9 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     http://mail.gnu.org/archive/html/bug-texinfo/2004-01/msg00025.html
   - XML: cannot be loaded directly in a browser; browsers are supposed to
     be able to look up the DTD and do something.
-  - add --output-encoding.  Design better the encoding handling.
+  - add --output-encoding, to set OUTPUT_ENCODING_NAME.
   - Support output formats retaining the tree structure of Texinfo documents
-    as parsed by the Parser.  A lisp-like format for GUILE, and maybe JSON.
+    as parsed by the Parser.  A lisp-like format for GUILE? Maybe JSON?
   - Support LaTeX as a backend.
   - Support the epub output format, http://en.wikipedia.org/wiki/OEBPS.
     Suggested by Sean Young, 30 Nov 2008 20:13:11.
@@ -112,13 +112,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Strange sentence in @node key:
      As a convention in GNU manuals, @code{@@key} should not be used in
      index entries.
-  - codequoteundirected/codequotebacktick. Is the following correct?
-     These settings affect @code, @example, @samp, verb, and @verbatim; 
-     they do not affect @kbd.
   - new section on doing dedication pages. See gawk.texi
     for an example of doing it in both the tex and info versions.
-  - use an improved pod2texi to generate documentation of the perl modules
-    in tp and have it as texinfo.
+  - use/distribute pod2texi generated documentation of the perl modules in 
+    tp generated in doc/tp_api.
   - Documentation of the HTML customization is missing.
 
 * Info:

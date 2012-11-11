@@ -56,6 +56,7 @@ else
   if [ -d $srcdir/${dir}_res ]; then
     rm -rf $staging_dir/${dir}_res
     cp -pr "$srcdir/${dir}_res" $staging_dir
+    chmod -R u+w "$staging_dir/${dir}_res"
     rm -rf $staging_dir/${dir}_res/CVS
     #diff -u --exclude=CVS --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"
     diff -u -r "$staging_dir/${dir}_res" "${outdir}" 2>>$logfile > "$diffs_dir/$dir.diff"

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.10 2012-11-11 00:44:37 karl Exp $
+# $Id: Makefile.am,v 1.11 2012-11-11 19:53:19 pertusus Exp $
 # Makefile.am for texinfo/tp/tests.
 # Copyright 2012 Free Software Foundation, Inc.
 #
@@ -55,23 +55,23 @@ all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
  sectioning/equivalent_nodes-noderename.cnf
 
 htmlxref/htmlxref.cnf: htmlxref/htmlxref.cnf-ref
-	${INSTALL_DATA} htmlxref/htmlxref.cnf-ref $@
+	${INSTALL_DATA} $(srcdir)/htmlxref/htmlxref.cnf-ref $@
 
 htmlxref-only_mono/htmlxref.cnf: htmlxref-only_mono/htmlxref.cnf-ref
-	${INSTALL_DATA} htmlxref-only_mono/htmlxref.cnf-ref $@
+	${INSTALL_DATA} $(srcdir)/htmlxref-only_mono/htmlxref.cnf-ref $@
 
 htmlxref-only_split/htmlxref.cnf: htmlxref-only_split/htmlxref.cnf-ref
-	${INSTALL_DATA} htmlxref-only_split/htmlxref.cnf-ref $@
+	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-ref $@
 
 htmlxref-only_split/.texinfo/htmlxref.cnf: \
  htmlxref-only_split/htmlxref.cnf-texinfo htmlxref-only_split/.texinfo
-	${INSTALL_DATA} htmlxref-only_split/htmlxref.cnf-texinfo $@
+	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-texinfo $@
 
 htmlxref-only_split/.texinfo:
 	$(mkdir_p) $@
 
 sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
-	${INSTALL_DATA} sectioning/renamednodes.cnf-ref $@
+	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@
 
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
  $(TESTS) coverage_macro.texi

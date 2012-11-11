@@ -179,7 +179,7 @@ texi2any: texi2html.temp $(texi2html_formats)
 texi2html.spec: texi2html.spec.in $(top_builddir)/configure
 	@echo Generating $@...
 	@sed -e "s/[@]PACKAGE_VERSION[@]/$(PACKAGE_VERSION)/" \
-	    texi2html.spec.in >texi2html.tmp
+	    $(srcdir)/texi2html.spec.in >texi2html.tmp
 	@cp texi2html.tmp texi2html.spec
 	-@rm texi2html.tmp
 
