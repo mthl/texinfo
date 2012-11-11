@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2012-11-04.17; # UTC
+htmlxrefversion=2012-11-11.14; # UTC
 
 # Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 # 
@@ -384,8 +384,8 @@ LIBCDIO = http://www.gnu.org/software/libcdio/
  libcdio	mono	${LIBCDIO}/libcdio.html
  cd-text	mono	${LIBCDIO}/cd-text.html
 
-libextractor	mono	${GS}/libextractor/libextractor.html
-libextractor	node	${GS}/libextractor/html_node/
+libextractor	mono	${GS}/libextractor/manual/libextractor.html
+libextractor	node	${GS}/libextractor/manual/html_node/
 
 libidn		mono	${GS}/libidn/manual/libidn.html
 libidn		node	${GS}/libidn/manual/html_node/
