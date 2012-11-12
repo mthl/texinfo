@@ -2,6 +2,8 @@
 
 	* */Makefile.am: add $(srcdir) for out of source build when
 	needed.
+	* doc/tp_api/Makefile.am: use a variable instead of $^ which is
+	not portable.
 	* tp/.cvsignore: ignore *.trs and *.log.
 	* TODO: update
 	* tp/tests/*/*.sh, tp/tests/run_parser_all.sh: do a chmod on 

@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.5 2012-03-03 15:15:38 pertusus Exp $
+# $Id: Makefile.am,v 1.6 2012-11-12 01:24:39 pertusus Exp $
 # Makefile.am for texinfo/doc/tp_api.
 #
 # Copyright 2012
@@ -25,7 +25,7 @@ BUILT_SOURCES = tp_api.texi
 
 #DISTCLEANFILES = tp_api.info
 
-tp_api.texi: \
+tp_api_dependencies = \
   $(top_srcdir)/tp/Texinfo/Common.pm $(top_srcdir)/tp/Texinfo/Parser.pm \
   $(top_srcdir)/tp/Texinfo/Structuring.pm $(top_srcdir)/tp/Texinfo/Report.pm \
   $(top_srcdir)/tp/Texinfo/Encoding.pm \
@@ -39,6 +39,8 @@ tp_api.texi: \
   $(top_srcdir)/tp/Texinfo/Convert/XML.pm \
   $(top_srcdir)/tp/Texinfo/Convert/Plaintext.pm \
   $(top_srcdir)/tp/Texinfo/Convert/HTML.pm
-	$(PERL) -I $(top_srcdir)/Pod-Simple-Texinfo/lib/ -I $(top_srcdir)/tp/ -I $(top_srcdir)/tp/maintain/lib/Text-Unidecode/lib/ -I $(top_srcdir)/tp/maintain/lib/libintl-perl/lib/ -I $(top_srcdir)/tp/maintain/lib/Unicode-EastAsianWidth/lib/ $(top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl --base-level=section --top 'Texinfo perl module' --subdir=api_includes -o $@ $^
+
+tp_api.texi: $(tp_api_dependencies)
+	$(PERL) -I $(top_srcdir)/Pod-Simple-Texinfo/lib/ -I $(top_srcdir)/tp/ -I $(top_srcdir)/tp/maintain/lib/Text-Unidecode/lib/ -I $(top_srcdir)/tp/maintain/lib/libintl-perl/lib/ -I $(top_srcdir)/tp/maintain/lib/Unicode-EastAsianWidth/lib/ $(top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl --base-level=section --top 'Texinfo perl module' --subdir=api_includes -o $@ $(tp_api_dependencies)
 
 EXTRA_DIST = api_includes tp_api.texi
