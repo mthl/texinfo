@@ -1,11 +1,12 @@
 #! /bin/sh
+# $Id: tex_html_tests.sh,v 1.3 2012-11-13 18:30:39 karl Exp $
 # Copyright 2010, 2012 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
 # notice and this notice are preserved.
 
-if [ z"$srcdir" = 'z' ]; then
+if test z"$srcdir" = 'z'; then
   srcdir=.
 fi
 

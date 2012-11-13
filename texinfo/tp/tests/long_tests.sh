@@ -1,4 +1,5 @@
 #! /bin/sh
+# $Id: long_tests.sh,v 1.7 2012-11-13 18:30:38 karl Exp $
 # Copyright 2010, 2012 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
@@ -9,7 +10,7 @@ if [ z"$srcdir" = 'z' ]; then
   srcdir=.
 fi
 
-if test "z$LONG_TESTS" != z'yes' -a "z$ALL_TESTS" != z'yes'; then
+if test "z$LONG_TESTS" != z'yes' && "z$ALL_TESTS" != z'yes'; then
   echo "Skipping long tests that take a lot of time to run"
   exit 77
 fi

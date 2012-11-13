@@ -1,3 +1,10 @@
+2012-11-13  Karl Berry  <karl@gnu.org>
+
+	* tp/tests/tex_html_tests.sh, long_tests.sh, parser_base_tests:
+	avoid [ ... ] and test ... -a ...
+	* install-info/tests/*.test: use -x for better logging.
+	Suggestion from Stefano, texinfo-devel 11 Nov 2012 10:43:02.
+
 2012-11-10  Patrice Dumas  <pertusus@free.fr>
 
 	* */Makefile.am: add $(srcdir) for out of source build when
