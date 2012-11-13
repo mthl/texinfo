@@ -1,5 +1,5 @@
 #! /usr/bin/perl -w
-#
+# $Id: regenerate_file_lists.pl,v 1.9 2012-11-13 23:46:32 karl Exp $
 # Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -52,14 +52,14 @@ foreach my $file (sort(keys(%files)), sort(keys(%include_files))) {
 print INCLUDE "\n\n";
 
 print INCLUDE "t/include_dir:\n".
-   "\t".'$(MKDIR_P) $@'."\n\n";
+   "\t".'$(mkdir_p) $@'."\n\n";
 my $test_copied_include_files = 'test_copied_include_files =';
 foreach my $include_file (keys(%include_files)) {
   my $bfile = basename($include_file);
   $test_copied_include_files .= " t/include_dir/$bfile";
 
   print INCLUDE "t/include_dir/$bfile: $include_file t/include_dir\n"
-     ."\t".'$(INSTALL_DATA) $< $@'."\n\n";
+     ."\t".'$(INSTALL_DATA) $include_file $@'."\n\n";
 }
 
 print INCLUDE $test_copied_include_files ."\n\n";
