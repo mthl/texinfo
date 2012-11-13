@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.488 2012-11-08 23:08:44 karl Exp $
+@c $Id: texinfo.txi,v 1.489 2012-11-13 18:56:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16584,7 +16584,7 @@ texi2any --info bison.texinfo
 You can specify more than one input file name; each is processed in
 turn.  If an input file name is @samp{-}, standard input is read.
 
-@anchor{makeinfo Options}
+@anchor{makeinfo options}
 @cindex @code{makeinfo} options
 @cindex Options for @code{makeinfo}
 @anchor{texi2any Options}
@@ -21649,7 +21649,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.488 2012-11-08 23:08:44 karl Exp $
+$Id: texinfo.txi,v 1.489 2012-11-13 18:56:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

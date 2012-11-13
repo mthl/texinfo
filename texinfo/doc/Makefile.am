@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.51 2012-05-17 14:04:46 pertusus Exp $
+# $Id: Makefile.am,v 1.52 2012-11-13 18:56:17 karl Exp $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
@@ -71,3 +71,40 @@ install-tex:
 
 # Do not create info files for distribution.
 dist-info:
+
+# Rules for updating the online web pages for the documentation
+# using the gendocs.sh script; see
+# http://www.gnu.org/prep/maintain/html_node/Invoking-gendocs_002esh.html
+#
+gnulib = $(HOME)/gnu/src/gnulib
+gendocs = $(gnulib)/build-aux/gendocs.sh
+gendocs_templates = $(gnulib)/doc
+gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates)
+gendocs_email = bug-texinfo@gnu.org
+gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email)
+#
+manual1 = info
+manual1_title = "GNU Info manual"
+#
+manual2 = info-stnd
+manual2_title = "GNU standalone info manual"
+#
+manual3 = texinfo
+manual3_title = "GNU Texinfo manual"
+#
+doctemp = wwwtemp
+www_target = $(HOME)/gnu/www/texinfo/manual
+#
+wwwdoc-build:
+	rm -rf $(doctemp) && mkdir $(doctemp)
+	cd $(doctemp) \
+	&& ln -s ../*.texi ../*.txi . \
+	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
+	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
+	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title)
+	@echo "Manuals for web distribution under: $(doctemp)/"
+wwwdoc-install:
+	cp -arf $(doctemp)/$(manual1) $(doctemp)/$(manual2) \
+	  $(doctemp)/$(manual3) $(www_target)
+	ls -ltu $(www_target)/*/html_node | tail  # cvs rm -f obsolete files
+# followed by cvs add of new files and cvs commit.
