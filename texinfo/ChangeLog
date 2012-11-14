@@ -1,7 +1,7 @@
 2012-11-13  Karl Berry  <karl@gnu.org>
 
 	* tp/maintain/regenerate_file_list.pl,
-	* maintain/regenerate_document_strings_make_rules.sh: do not
+	* tp/maintain/regenerate_document_strings_make_rules.sh: do not
 	generate rules using $<.
 
 	* doc/Makefile.am (wwwdoc-build, wwwdoc-install): new targets

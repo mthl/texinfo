@@ -38,3 +38,6 @@ $GNULIBSRC/build-aux/mdate-sh		build-aux
 $GNULIBSRC/doc/COPYINGv3		./COPYING
 $GNULIBSRC/doc/INSTALL			./INSTALL.generic
 $GNULIBSRC/doc/fdl.texi			doc
+#
+# Should only update at releases.  
+$AUTOMAKE/test-driver			build-aux
