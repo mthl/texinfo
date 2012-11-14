@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.52 2012-11-13 18:56:17 karl Exp $
+# $Id: Makefile.am,v 1.53 2012-11-14 00:32:57 karl Exp $
 # Makefile.am for texinfo/doc.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
@@ -40,7 +40,7 @@ refcard_files = refcard/Makefile refcard/txicmdcheck \
 # Include our texinfo.tex, not Automake's.
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
-	     $(man_MANS) $(TXI_XLATE)
+	     $(man_MANS) $(TXI_XLATE) \
 	     $(refcard_files)
 
 if INSTALL_WARNINGS

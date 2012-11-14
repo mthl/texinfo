@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.119 2012-11-10 16:59:02 karl Exp $
+# $Id: configure.ac,v 1.120 2012-11-14 00:32:57 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -30,9 +30,21 @@ AC_CONFIG_SRCDIR([info/info.c])
 # Conditional texi2html support.
 AM_CONDITIONAL([TEXI2HTML],[false])
 
-# Misc variable settings
+# Package date.
 PACKAGE_DATE=`${SHELL} "$srcdir"/build-aux/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
+
+# We need Perl
+AC_PATH_PROG([PERL], [perl])
+if test -z "$PERL"; then
+   AC_MSG_ERROR(
+[perl not found; Texinfo requires Perl.
+If you have perl installed somewhere not in PATH,
+specify where it is using
+  ./configure PERL=/path/to/perl
+])
+
+fi
 
 # Checks for programs.
 AC_PROG_CC
@@ -42,9 +54,8 @@ AC_PROG_CC
 # keep everything together.
 gl_EARLY
 
-dnl Rest of Gnulib.
+# Rest of Gnulib.
 gl_INIT
-
 
 # Since we make a helper library.
 AC_PROG_RANLIB
