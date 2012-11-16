@@ -1,8 +1,8 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c,v 1.10 2012-11-16 23:33:28 karl Exp $
+   $Id: dir.c,v 1.11 2012-11-16 23:34:51 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2004, 2007, 
-   2008, 2009 Free Software Foundation, Inc.
+   2008, 2009, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

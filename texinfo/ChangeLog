@@ -48,7 +48,7 @@
 
 	* info/man.c [__MINGW32__]: Don't include sys/ioctl.h.
 
-	Fix a crash in vewing man pages.
+	Fix a crash in viewing man pages.
 
 	* info/man.c (get_manpage_contents) [!PIPE_USE_FORK]: Fix a
 	crasher due to addition of "-a" to the man command line arguments.

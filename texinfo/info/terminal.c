@@ -1,8 +1,8 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c,v 1.8 2012-11-16 23:33:29 karl Exp $
+   $Id: terminal.c,v 1.9 2012-11-16 23:34:51 karl Exp $
 
    Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
-   1999, 2001, 2002, 2004, 2007, 2008 Free Software Foundation, Inc.
+   1999, 2001, 2002, 2004, 2007, 2008, 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
