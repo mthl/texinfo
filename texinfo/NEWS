@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.217 2012-11-08 23:08:43 karl Exp $
+$Id: NEWS,v 1.218 2012-11-16 23:31:16 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -133,7 +133,7 @@ one of the relevant sections:
   . bug fix: support names with embedded periods (e.g., config.status) again.
 
 * Distribution:
-  . autoconf 2.63.
+  . autoconf 2.69, automake 1.12.4, gettext 0.18.1.1, 
 
 
 4.12 (20 April 2008)

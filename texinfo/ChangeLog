@@ -1,5 +1,7 @@
 2012-11-16  Karl Berry  <karl@gnu.org>
 
+	* pretest 4.13.90.
+	
 	* tp/Makefile.am,
 	* tp/maintain/regenerate_document_strings_make_rules.sh,
 	* tp/tests/run_parser_all.sh: avoid \+ with sed, not
