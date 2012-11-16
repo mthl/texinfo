@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.48 2012-11-11 19:53:19 pertusus Exp $
+# $Id: Makefile.am,v 1.49 2012-11-16 18:33:03 karl Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -162,7 +162,7 @@ if TP_TESTS
 TESTS = $(tp_tests)
 endif
 
-maintainance_files = \
+maintenance_files = \
   maintain/all_tests.sh \
   maintain/change_perl_modules_version.sh \
   maintain/language-subtag-registry \
@@ -187,17 +187,19 @@ EXTRA_DIST = \
   $(test_files_generated_list) \
   $(test_files) \
   $(tp_tests) \
-  $(maintainance_files) \
+  $(maintenance_files) \
   $(perl_specific_files) \
   maintain/lib
 
 MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	LC_ALL=C; export LC_ALL; LANGUAGE=C; export LANGUAGE; \
-	echo "$(dist_modules_DATA) $(dist_converters_DATA) $(dist_debugmodules_DATA) " \
-	"$(dist_init_DATA) $(test_files) $(tp_tests) $(test_files_generated_list) " \
-	"texi2any $(maintainance_files) README TODO COPYING " \
-	"$(perl_specific_files)" \
-	 | sed 's/ \+/\n/g' | cat - $(srcdir)/maintain/MANIFEST_generated_files \
+	echo "$(dist_modules_DATA) $(dist_converters_DATA)" \
+	"$(dist_debugmodules_DATA) $(dist_init_DATA)" \
+	"$(test_files) $(tp_tests) $(test_files_generated_list)" \
+	"texi2any README TODO COPYING" \
+	"$(maintenance_files) $(perl_specific_files)" \
+	 | sed 's/  */\n/g' \
+	 | cat - $(srcdir)/maintain/MANIFEST_generated_files \
 	 | sort >$@
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
@@ -234,7 +236,6 @@ dist-hook:
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
-
 
 distclean-local:
 	rm -rf LocaleData

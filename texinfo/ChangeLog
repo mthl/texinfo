@@ -1,3 +1,10 @@
+2012-11-16  Karl Berry  <karl@gnu.org>
+
+	* tp/Makefile.am,
+	* tp/maintain/regenerate_document_strings_make_rules.sh,
+	* tp/tests/run_parser_all.sh: avoid \+ with sed, not
+	supported by BSD sed.
+
 2012-11-16  Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, tp/defs.in, tp/maintain/all_tests.sh, 
@@ -10,6 +17,12 @@
 	generate_all_texi.pl.
 
 2012-11-13  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (PERL): check for it up front.
+	Will anyone want to build Texinfo without makeinfo?  We'll see.
+	
+	* doc/Makefile.am (EXTRA_DIST): missed \ at end of variable list.
+	Why wasn't this an error with GNU make?  Didn't investigate.
 
 	* tp/maintain/regenerate_file_list.pl,
 	* tp/maintain/regenerate_document_strings_make_rules.sh: do not

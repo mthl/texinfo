@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: regenerate_document_strings_make_rules.sh,v 1.2 2012-11-13 23:46:32 karl Exp $
+# $Id: regenerate_document_strings_make_rules.sh,v 1.3 2012-11-16 18:33:03 karl Exp $
 # Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -12,7 +12,7 @@
 #
 # Originally written by Patrice Dumas.
 
-dir=`echo $0 | sed 's,/[^/]\+$,,'`
+dir=`echo $0 | sed 's,/[^/]*$,,'`
 outfile=Makefile.documents_strings_mo_files
 
 (
