@@ -1,5 +1,5 @@
 /* infomap.c -- keymaps for Info.
-   $Id: infomap.c,v 1.25 2012-04-21 00:38:04 karl Exp $
+   $Id: infomap.c,v 1.26 2012-11-16 23:33:28 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
    2008, 2011 Free Software Foundation, Inc.
@@ -930,7 +930,7 @@ fetch_user_maps (void)
                 strcat(filename, "/");
                 strcat(filename, INFOKEY_FILE);
         }
-#ifdef __MSDOS__
+#if defined(__MSDOS__) || defined(__MINGW32__)
         /* Poor baby, she doesn't have a HOME...  */
         else
                 filename = xstrdup(INFOKEY_FILE); /* try current directory */

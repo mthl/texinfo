@@ -1,5 +1,5 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c,v 1.9 2009-01-23 09:37:40 gray Exp $
+   $Id: dir.c,v 1.10 2012-11-16 23:33:28 karl Exp $
 
    Copyright (C) 1993, 1997, 1998, 2004, 2007, 
    2008, 2009 Free Software Foundation, Inc.
@@ -40,7 +40,7 @@ static char *dirs_to_add[] = {
 
 
 /* Return zero if the file represented in the stat structure TEST has
-   already been seen, nonzero else.  */
+   already been seen, nonzero otherwise.  */
 
 typedef struct
 {
@@ -59,7 +59,10 @@ new_dir_file_p (struct stat *test)
     {
       dir_file_list_entry_type entry;
       entry = dir_file_list[i];
-      if (entry.device == test->st_dev && entry.inode == test->st_ino)
+      if (entry.device == test->st_dev && entry.inode == test->st_ino
+	  /* On MS-Windows, `stat' returns zero as the inode, so we
+	     effectively disable this optimization for that OS.  */
+	  && entry.inode != 0)
         return 0;
     }
   
