@@ -1,3 +1,14 @@
+2012-11-16  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac, tp/defs.in, tp/maintain/all_tests.sh, 
+	tp/tests/run_parser_all.sh, tp/tests/many_input_files/indices.sh,
+	tp/tests/many_input_files/tex_l2h.sh, tp/tests/many_input_files/tex_t4ht.sh:
+	Use PERL from configure, with the value put in tp/defs.in by configure
+	instead of tp/tests/path_separator.in.
+	* tp/tests/path_separator.in: remove.
+	* tp/tests/nested_formats/Makefile.am: do not distribute 
+	generate_all_texi.pl.
+
 2012-11-13  Karl Berry  <karl@gnu.org>
 
 	* tp/maintain/regenerate_file_list.pl,

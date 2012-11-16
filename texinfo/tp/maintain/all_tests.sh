@@ -13,16 +13,18 @@ if [ z"$command" = 'z' ]; then
   exit 1
 fi
 
+. ./defs || exit 1
+
 if [ "$command" = 'clean' ]; then
   rm -f t/results/*/*.pl.new
   rm -rf t/results/*/*/out_*/
 elif [ "$command" = 'generate' ]; then
   for file in t/*.t; do
-    perl -w $file -g
+    $PERL -w $file -g
   done
 elif [ "$command" = 'output' ]; then
   for file in t/*.t; do
-    perl -w $file -o
+    $PERL -w $file -o
   done
 elif [ "$command" = 'diff' ]; then
   if [ z"$test_name" = 'z' ]; then
@@ -44,7 +46,7 @@ elif [ "$command" = 'diff' ]; then
   fi 
 elif [ "$command" = 'texis' ]; then
   for file in t/*.t; do
-    perl -w $file -c
+    $PERL -w $file -c
   done
 else
   echo "Unknown command (clean|generate|output|diff|texis)"

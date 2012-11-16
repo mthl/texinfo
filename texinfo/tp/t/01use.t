@@ -3,11 +3,8 @@
 
 #########################
 
-# change 'tests => 1' to 'tests => last_test_to_print';
-
 use strict;
 
-#use Test;
 use Test::More;
 BEGIN { plan tests => 2 };
 use Texinfo::Convert::Texinfo;

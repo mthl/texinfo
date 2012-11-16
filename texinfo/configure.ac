@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.120 2012-11-14 00:32:57 karl Exp $
+# $Id: configure.ac,v 1.121 2012-11-16 01:26:27 pertusus Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -340,7 +340,7 @@ AC_CONFIG_FILES([\
   tp/tests/nested_formats/Makefile
   tp/tests/layout/Makefile
   tp/tests/tex_html/Makefile
-  tp/tests/path_separator
+  tp/defs
   Pod-Simple-Texinfo/Makefile
 ])
 
