@@ -47,8 +47,8 @@ BEGIN
   }
 }
 
-my ($real_command_name, $directories, $suffix) = fileparse($0);
-$real_command_name =~ s/\.pl$//;
+my ($real_command_name, $command_directory, $command_suffix) 
+   = fileparse($0, '.pl');
 
 # this associates the command line options to the arrays set during
 # command line parsing.
@@ -118,17 +118,20 @@ sub __p($$) {
   return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
 }
 
-my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
+my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
 
-if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
+if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
   unshift @INC, $srcdir;
 }
 
 require Texinfo::Convert::Texinfo;
 
+#sub add_module_path_to_INC($$$)
+
 my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
-if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
+
+if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
   unshift @INC, File::Spec->catdir($libsrcdir, 'lib', 'libintl-perl', 'lib');
 } elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes'
@@ -149,7 +152,7 @@ Locale::Messages->select_package ('gettext_pp');
 #my @search_locale_dirs = ("$datadir/locale", (map $_ . '/LocaleData', @INC),
 #  qw (/usr/share/locale /usr/local/share/locale));
 
-if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
+if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
   # in case of build from the source directory, out of source build, 
   # this helps to locate the locales.
@@ -175,7 +178,7 @@ if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
 Locale::Messages::bindtextdomain ($messages_textdomain, 
                                   File::Spec->catdir($datadir, 'locale'));
 
-if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
+if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
   unshift @INC, 
     File::Spec->catdir($libsrcdir, 'lib', 'Unicode-EastAsianWidth', 'lib');
@@ -190,7 +193,7 @@ if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
 }
 require Unicode::EastAsianWidth;
 
-if (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
+if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
   unshift @INC, File::Spec->catdir($libsrcdir, 'lib', 'Text-Unidecode', 'lib');
 } elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes'
