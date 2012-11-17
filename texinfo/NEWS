@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.218 2012-11-16 23:31:16 karl Exp $
+$Id: NEWS,v 1.219 2012-11-17 17:16:18 gray Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -93,6 +93,8 @@ one of the relevant sections:
     value is 1.  It can be changed by setting the variable min-search-length,
     either by `M-x set-variable', or using infokey.
   . xz compression supported.
+  . Fix bug #37686: use the text attribute to represent "image" tags on
+    output.
 
 * install-info:
   . xz compression supported.

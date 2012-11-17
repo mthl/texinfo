@@ -1,3 +1,36 @@
+2012-11-17  Sergey Poznyakoff  <gray@gnu.org>
+
+	Use the text attribute to represent "image" tag.
+	Provide a general-purpose solution, so new tags can be easily
+	added.
+
+	This fixes bug #37686.
+
+	* info/tag.c: New file
+	* info/tag.h: New file
+	* info/Makefile.am: Add new files.
+	* info/dir.c: Use size_t instead of long to represent file size.
+	* info/display.c (handle_tag)
+	(handle_tag_start,handle_tag_end): Remove.
+	* info/display.h (handle_tag): Remove.
+	* info/filesys.c (filesys_read_info_file): Use size_t instead of
+	long to represent file sizes and offsets.
+	Call tags_expand to expand info tags.
+	(filesys_read_compressed): Do not call convert_eols, leave that
+	for filesys_read_info_file.
+	* info/filesys.h (filesys_read_info_file)
+	(filesys_read_compressed): Use size_t instead of
+        long to represent file sizes and offsets.
+	* info/info-utils.c (text_buffer_alloc): New function.
+	* info/info-utils.h (MIN_TEXT_BUF_ALLOC): New define.
+	(text_buffer_alloc): New proto.
+	(text_buffer_reset,text_buffer_base)
+	(text_buffer_off): New macros.
+	* info/nodes.c: Use size_t instead of long to represent file sizes
+	and offsets.
+	* info/nodes.h (FILE_BUFFER) <filesize>: Change type to size_t.
+	* NEWS: Update.
+	
 2012-11-16  Eli Zaretskii  <eliz@gnu.org>
 
 	Support for MS-Windows screen and keyboard in Info.

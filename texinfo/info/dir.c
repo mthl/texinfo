@@ -1,5 +1,5 @@
 /* dir.c -- how to build a special "dir" node from "localdir" files.
-   $Id: dir.c,v 1.11 2012-11-16 23:34:51 karl Exp $
+   $Id: dir.c,v 1.12 2012-11-17 17:16:18 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2004, 2007, 
    2008, 2009, 2012 Free Software Foundation, Inc.
@@ -28,8 +28,8 @@
    with the addition of the menus of every file named in the array
    dirs_to_add which are found in INFOPATH. */
 
-static void add_menu_to_file_buffer (char *contents, long int size,
-    FILE_BUFFER *fb);
+static void add_menu_to_file_buffer (char *contents, size_t size,
+				     FILE_BUFFER *fb);
 static void insert_text_into_fb_at_binding (FILE_BUFFER *fb,
     SEARCH_BINDING *binding, char *text, int textlen);
 void maybe_build_dir_node (char *dirname);
@@ -139,7 +139,7 @@ maybe_build_dir_node (char *dirname)
           /* Only add this file if we have not seen it before.  */
           if (statable && S_ISREG (finfo.st_mode) && new_dir_file_p (&finfo))
             {
-              long filesize;
+              size_t filesize;
 	      int compressed;
               char *contents = filesys_read_info_file (fullpath, &filesize,
                                                        &finfo, &compressed);
@@ -167,7 +167,7 @@ maybe_build_dir_node (char *dirname)
    to the menu found in FB->contents.  Second argument SIZE is the total
    size of CONTENTS. */
 static void
-add_menu_to_file_buffer (char *contents, long int size, FILE_BUFFER *fb)
+add_menu_to_file_buffer (char *contents, size_t size, FILE_BUFFER *fb)
 {
   SEARCH_BINDING contents_binding, fb_binding;
   long contents_offset, fb_offset;
