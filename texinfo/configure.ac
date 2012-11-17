@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.121 2012-11-16 01:26:27 pertusus Exp $
+# $Id: configure.ac,v 1.122 2012-11-17 19:13:37 pertusus Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -312,6 +312,53 @@ AC_ARG_ENABLE([tp-tests],
 AC_MSG_CHECKING([parser tests requirements])
 AC_MSG_RESULT([$tp_tests])
 AM_CONDITIONAL([TP_TESTS], [test "z$tp_tests" = 'zyes'])
+
+build_perl_api_texi='no'
+AC_ARG_ENABLE([perl-api-texi-build],
+    AC_HELP_STRING([--enable-perl-api-texi-build],
+        [build the perl api texinfo files (default: detected)]),
+    [if test $enableval = 'no'; then
+       build_perl_api_texi='no'
+     else
+       build_perl_api_texi='yes'
+     fi],
+    [
+     if $PERL -e "use 5.006; use Encode; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     then
+       build_perl_api_texi='yes'
+     else  
+       build_perl_api_texi='no'
+     fi
+    ])
+
+AC_MSG_CHECKING([Perl Texinfo API texinfo documentation build requirements])
+AC_MSG_RESULT([$build_perl_api_texi])
+AM_CONDITIONAL([BUILD_PERL_API_TEXI], [test "z$build_perl_api_texi" = 'zyes'])
+
+pod_simple_texinfo_tests='no'
+AC_ARG_ENABLE([pod-simple-texinfo-tests],
+    AC_HELP_STRING([--enable-pod-simple-texinfo-tests],
+        [run the parser and converters testsuite (default: detected)]),
+    [if test $enableval = 'no'; then
+       pod_simple_texinfo_tests='no'
+     else
+       pod_simple_texinfo_tests='yes'
+     fi],
+    [
+     if test "z$PROVE" = 'z' ; then
+       pod_simple_texinfo_tests='no'
+     elif $PERL -e "use 5.006; use Encode; use Test::More; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     then
+       pod_simple_texinfo_tests='yes'
+     else
+       pod_simple_texinfo_tests='no'
+     fi
+    ])
+
+AC_MSG_CHECKING([Pod::Simple::Texinfo tests requirements])
+AC_MSG_RESULT([$pod_simple_texinfo_tests])
+AM_CONDITIONAL([POD_SIMPLE_TEXINFO_TESTS], [test "z$pod_simple_texinfo_tests" = 'zyes'])
+
 
 dnl The bulk config files.
 AC_CONFIG_FILES([\
