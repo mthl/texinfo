@@ -40,10 +40,22 @@ BEGIN
 {
   my $datadir = '@datadir@';
   my $package = '@PACKAGE@';
+  my $updir = File::Spec->updir();
+  my ($real_command_name, $command_directory, $command_suffix) 
+     = fileparse($0, '.pl');
+
+  my $texinfolibdir;
   if ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
       and $datadir ne '') {
-    my $texinfolibdir = File::Spec->catdir($datadir, $package);
+    $texinfolibdir = File::Spec->catdir($datadir, $package);
     unshift @INC, ($texinfolibdir);
+  }
+  # try to make package relocatable, will only work if standard relative paths
+  # are used
+  if ((!defined($texinfolibdir)
+       or ! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm'))
+      and -f File::Spec->catfile($command_directory, $updir, 'share', 'texinfo', 'Texinfo', 'Parser.pm')) {
+    unshift @INC, (File::Spec->catdir($command_directory, $updir, 'share', 'texinfo'));
   }
 }
 
@@ -149,6 +161,13 @@ sub add_module_path_to_INC($$$$$$@)
     if ($@ and -d File::Spec->catdir($pkgdatadir, @directories)) {
       unshift @INC, File::Spec->catdir($pkgdatadir, @directories);
     }
+  }
+  # try to make the script relocatable
+  eval "require $module_name; ";
+  if ($@ and -d File::Spec->catdir($command_directory, $updir, 
+                                  'share', 'texinfo', @directories)) {
+    unshift @INC, (File::Spec->catdir($command_directory, $updir, 'share', 
+                                      'texinfo', @directories));
   }
 }
 
