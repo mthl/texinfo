@@ -127,22 +127,36 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
 
 require Texinfo::Convert::Texinfo;
 
-#sub add_module_path_to_INC($$$)
+# find module location either in source, in pkgdatadir or in the perl paths.
+sub add_module_path_to_INC($$$$$$@)
+{
+  my $module_name = shift;
+  my $command_suffix = shift;
+  my $dev_source_environment = shift;
+  my $libsrcdir = shift;
+  my $pkgdatadir = shift;
+  my $command_directory = shift;
+  my @directories = @_;
+
+  if (($command_suffix eq '.pl' and !(defined($dev_source_environment)
+     and $dev_source_environment eq 0)) or $dev_source_environment) {
+    unshift @INC, File::Spec->catdir($libsrcdir, @directories);
+  } elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes'
+         and -d File::Spec->catdir($pkgdatadir, @directories)) {
+    unshift @INC, File::Spec->catdir($pkgdatadir, @directories);
+  } else {
+    eval "require $module_name; ";
+    if ($@ and -d File::Spec->catdir($pkgdatadir, @directories)) {
+      unshift @INC, File::Spec->catdir($pkgdatadir, @directories);
+    }
+  }
+}
 
 my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 
-if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
-     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-  unshift @INC, File::Spec->catdir($libsrcdir, 'lib', 'libintl-perl', 'lib');
-} elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes'
-         and -d File::Spec->catdir($pkgdatadir, 'lib', 'libintl-perl', 'lib')) {
-  unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'libintl-perl', 'lib');
-} else {
-  eval { require Locale::Messages; };
-  if ($@ and -d File::Spec->catdir($pkgdatadir, 'lib', 'libintl-perl', 'lib')) {
-    unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'libintl-perl', 'lib');
-  }
-}
+add_module_path_to_INC("Locale::Messages", $command_suffix, 
+   $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $pkgdatadir, $command_directory,
+   'lib', 'libintl-perl', 'lib');
 
 require Locale::Messages;
 # we want a reliable way to switch locale, so we don't use the system
@@ -178,33 +192,16 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
 Locale::Messages::bindtextdomain ($messages_textdomain, 
                                   File::Spec->catdir($datadir, 'locale'));
 
-if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
-     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-  unshift @INC, 
-    File::Spec->catdir($libsrcdir, 'lib', 'Unicode-EastAsianWidth', 'lib');
-} elsif ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes'
-         and -d File::Spec->catdir($pkgdatadir, 'lib', 'Unicode-EastAsianWidth', 'lib')) {
-  unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'Unicode-EastAsianWidth', 'lib');
-} else {
-  eval { require Unicode::EastAsianWidth; };
-  if ($@ and -d File::Spec->catdir($pkgdatadir, 'lib', 'Unicode-EastAsianWidth', 'lib')) {
-    unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'Unicode-EastAsianWidth', 'lib');
-  }
-}
+add_module_path_to_INC("Unicode::EastAsianWidth", $command_suffix, 
+   $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $pkgdatadir, $command_directory,
+   'lib', 'Unicode-EastAsianWidth', 'lib');
+
 require Unicode::EastAsianWidth;
 
-if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
-     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-  unshift @INC, File::Spec->catdir($libsrcdir, 'lib', 'Text-Unidecode', 'lib');
-} elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes'
-          and -d File::Spec->catdir($pkgdatadir, 'lib', 'Text-Unidecode', 'lib')) {
-  unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'Text-Unidecode', 'lib');
-} else {
-  eval { require Text::Unidecode; };
-  if ($@ and -d File::Spec->catdir($pkgdatadir, 'lib', 'Text-Unidecode', 'lib')) {
-    unshift @INC, File::Spec->catdir($pkgdatadir, 'lib', 'Text-Unidecode', 'lib');
-  }
-}
+add_module_path_to_INC("Text::Unidecode", $command_suffix, 
+   $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $pkgdatadir, $command_directory,
+   'lib', 'Text-Unidecode', 'lib');
+
 require Text::Unidecode;
 
 # This is done at runtime because the modules above are also found at runtime.
