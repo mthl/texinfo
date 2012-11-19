@@ -36,19 +36,34 @@ use Getopt::Long qw(GetOptions);
 
 Getopt::Long::Configure("gnu_getopt");
 
+# This big BEGIN block deals with finding modules and 
+# some dependencies that we ship 
+# * in source or
+# * installed or
+# * installed relative to the script
 BEGIN
 {
+  my ($real_command_name, $command_directory, $command_suffix) 
+     = fileparse($0, '.pl');
+
   my $datadir = '@datadir@';
   my $package = '@PACKAGE@';
   my $updir = File::Spec->updir();
-  my ($real_command_name, $command_directory, $command_suffix) 
-     = fileparse($0, '.pl');
+
+  my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
+  my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 
   my $texinfolibdir;
   if ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
       and $datadir ne '') {
     $texinfolibdir = File::Spec->catdir($datadir, $package);
     unshift @INC, ($texinfolibdir);
+  }
+  # in-source run
+  if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
+       and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
+    $texinfolibdir = $srcdir;
+    unshift @INC, $texinfolibdir;
   }
   # try to make package relocatable, will only work if standard relative paths
   # are used
@@ -57,7 +72,68 @@ BEGIN
       and -f File::Spec->catfile($command_directory, $updir, 'share', 'texinfo', 'Texinfo', 'Parser.pm')) {
     unshift @INC, (File::Spec->catdir($command_directory, $updir, 'share', 'texinfo'));
   }
+
+# find module location either in source, in pkgdatadir or in the perl paths.
+sub add_module_path_to_INC($$$$$$$@)
+{
+  my $module_name = shift;
+  my $configure_string = shift;
+  my $command_suffix = shift;
+  my $dev_source_environment = shift;
+  my $libsrcdir = shift;
+  my $texinfolibdir = shift;
+  my $command_directory = shift;
+  my @directories = @_;
+
+  if (($command_suffix eq '.pl' and !(defined($dev_source_environment)
+     and $dev_source_environment eq 0)) or $dev_source_environment) {
+    unshift @INC, File::Spec->catdir($libsrcdir, @directories);
+  } elsif ($configure_string ne 'yes' and defined($texinfolibdir)
+         and -d File::Spec->catdir($texinfolibdir, @directories)) {
+    unshift @INC, File::Spec->catdir($texinfolibdir, @directories);
+  } elsif (defined($texinfolibdir)) {
+    eval "require $module_name; ";
+    if ($@ and -d File::Spec->catdir($texinfolibdir, @directories)) {
+      unshift @INC, File::Spec->catdir($texinfolibdir, @directories);
+    }
+  }
+  # try to make the script relocatable
+  if (!defined($texinfolibdir) and $configure_string ne 'yes') {
+    eval "require $module_name; ";
+    if ($@ and -d File::Spec->catdir($command_directory, $updir, 
+                                    'share', 'texinfo', @directories)) {
+      unshift @INC, (File::Spec->catdir($command_directory, $updir, 'share', 
+                                        'texinfo', @directories));
+    }
+  }
 }
+
+  # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
+  # makefile using values from configure
+  add_module_path_to_INC("Locale::Messages", '@USE_EXTERNAL_LIBINTL@', $command_suffix, 
+   $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $texinfolibdir, $command_directory,
+   'lib', 'libintl-perl', 'lib');
+
+  add_module_path_to_INC("Unicode::EastAsianWidth", '@USE_EXTERNAL_EASTASIANWIDTH@',
+   $command_suffix, $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $texinfolibdir, 
+   $command_directory, 'lib', 'Unicode-EastAsianWidth', 'lib');
+
+  add_module_path_to_INC("Text::Unidecode", '@USE_EXTERNAL_UNIDECODE@',
+   $command_suffix, $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $texinfolibdir, 
+   $command_directory, 'lib', 'Text-Unidecode', 'lib');
+}
+
+use Texinfo::Convert::Texinfo;
+use Texinfo::Parser;
+use Texinfo::Structuring;
+use Texinfo::Convert::Info;
+use Texinfo::Convert::HTML;
+use Texinfo::Convert::XML;
+use Texinfo::Convert::DocBook;
+use Texinfo::Convert::TextContent;
+use Texinfo::Convert::PlainTexinfo;
+use DebugTexinfo::DebugCount;
+use DebugTexinfo::DebugTree;
 
 my ($real_command_name, $command_directory, $command_suffix) 
    = fileparse($0, '.pl');
@@ -132,52 +208,9 @@ sub __p($$) {
 
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
 
-if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
-     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-  unshift @INC, $srcdir;
-}
-
-require Texinfo::Convert::Texinfo;
-
-# find module location either in source, in pkgdatadir or in the perl paths.
-sub add_module_path_to_INC($$$$$$@)
-{
-  my $module_name = shift;
-  my $command_suffix = shift;
-  my $dev_source_environment = shift;
-  my $libsrcdir = shift;
-  my $pkgdatadir = shift;
-  my $command_directory = shift;
-  my @directories = @_;
-
-  if (($command_suffix eq '.pl' and !(defined($dev_source_environment)
-     and $dev_source_environment eq 0)) or $dev_source_environment) {
-    unshift @INC, File::Spec->catdir($libsrcdir, @directories);
-  } elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes'
-         and -d File::Spec->catdir($pkgdatadir, @directories)) {
-    unshift @INC, File::Spec->catdir($pkgdatadir, @directories);
-  } else {
-    eval "require $module_name; ";
-    if ($@ and -d File::Spec->catdir($pkgdatadir, @directories)) {
-      unshift @INC, File::Spec->catdir($pkgdatadir, @directories);
-    }
-  }
-  # try to make the script relocatable
-  eval "require $module_name; ";
-  if ($@ and -d File::Spec->catdir($command_directory, $updir, 
-                                  'share', 'texinfo', @directories)) {
-    unshift @INC, (File::Spec->catdir($command_directory, $updir, 'share', 
-                                      'texinfo', @directories));
-  }
-}
-
 my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 
-add_module_path_to_INC("Locale::Messages", $command_suffix, 
-   $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $pkgdatadir, $command_directory,
-   'lib', 'libintl-perl', 'lib');
 
-require Locale::Messages;
 # we want a reliable way to switch locale, so we don't use the system
 # gettext.
 Locale::Messages->select_package ('gettext_pp');
@@ -211,29 +244,6 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
 Locale::Messages::bindtextdomain ($messages_textdomain, 
                                   File::Spec->catdir($datadir, 'locale'));
 
-add_module_path_to_INC("Unicode::EastAsianWidth", $command_suffix, 
-   $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $pkgdatadir, $command_directory,
-   'lib', 'Unicode-EastAsianWidth', 'lib');
-
-require Unicode::EastAsianWidth;
-
-add_module_path_to_INC("Text::Unidecode", $command_suffix, 
-   $ENV{'TEXINFO_DEV_SOURCE'}, $libsrcdir, $pkgdatadir, $command_directory,
-   'lib', 'Text-Unidecode', 'lib');
-
-require Text::Unidecode;
-
-# This is done at runtime because the modules above are also found at runtime.
-require Texinfo::Parser;
-require Texinfo::Structuring;
-require Texinfo::Convert::Info;
-require Texinfo::Convert::HTML;
-require Texinfo::Convert::XML;
-require Texinfo::Convert::DocBook;
-require Texinfo::Convert::TextContent;
-require Texinfo::Convert::PlainTexinfo;
-require DebugTexinfo::DebugCount;
-require DebugTexinfo::DebugTree;
 
 # Version setting is complicated, because we cope with 
 # * script with configure values substituted or not
