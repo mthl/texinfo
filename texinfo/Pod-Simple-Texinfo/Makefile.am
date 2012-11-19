@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.6 2012-11-17 19:13:37 pertusus Exp $
+# $Id: Makefile.am,v 1.7 2012-11-19 23:54:09 pertusus Exp $
 # Makefile.am for texinfo/Pod-Simple_Texinfo.
 # Copyright 2012 Free Software Foundation, Inc.
 #
@@ -28,7 +28,11 @@ dist_modules_DATA = \
 
 pod2texi: pod2texi.pl Makefile
 	sed -e 's,[@]datadir[@],$(datadir),g' \
-	-e 's,[@]PACKAGE[@],$(PACKAGE),g' $(srcdir)/pod2texi.pl >$@
+	-e 's,[@]PACKAGE[@],$(PACKAGE),g' \
+	-e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
+	-e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \
+	-e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g' \
+	   $(srcdir)/pod2texi.pl >$@
 	chmod a+x $@
 
 if POD_SIMPLE_TEXINFO_TESTS

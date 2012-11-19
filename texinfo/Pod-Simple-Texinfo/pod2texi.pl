@@ -45,10 +45,16 @@ BEGIN
     unshift @INC, (File::Spec->catdir($srcdir, 'lib'), $tpdir);
   }
   if (defined($dir)) {
-    unshift @INC, (
-        File::Spec->catdir($dir, 'lib', 'libintl-perl', 'lib'), 
-        File::Spec->catdir($dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
-        File::Spec->catdir($dir, 'lib', 'Text-Unidecode', 'lib'));
+    if ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
+      unshift @INC, File::Spec->catdir($dir, 'lib', 'libintl-perl', 'lib');
+    }
+    if ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
+      unshift @INC, File::Spec->catdir($dir, 'lib', 
+                                            'Unicode-EastAsianWidth', 'lib');
+    }
+    if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
+      unshift @INC, File::Spec->catdir($dir, 'lib', 'Text-Unidecode', 'lib');
+    }
   }
 }
 use Pod::Simple::Texinfo;
