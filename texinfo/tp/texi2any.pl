@@ -67,8 +67,8 @@ BEGIN
   }
   # try to make package relocatable, will only work if standard relative paths
   # are used
-  if ((!defined($texinfolibdir)
-       or ! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm'))
+  if ((defined($texinfolibdir)
+       and ! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm'))
       and -f File::Spec->catfile($command_directory, $updir, 'share', 'texinfo', 'Texinfo', 'Parser.pm')) {
     unshift @INC, (File::Spec->catdir($command_directory, $updir, 'share', 'texinfo'));
   }
@@ -98,7 +98,7 @@ sub add_module_path_to_INC($$$$$$$@)
     }
   }
   # try to make the script relocatable
-  if (!defined($texinfolibdir) and $configure_string ne 'yes') {
+  if (defined($texinfolibdir) and $configure_string ne 'yes') {
     eval "require $module_name; ";
     if ($@ and -d File::Spec->catdir($command_directory, $updir, 
                                     'share', 'texinfo', @directories)) {

@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.122 2012-11-17 19:13:37 pertusus Exp $
+# $Id: configure.ac,v 1.123 2012-11-20 02:33:42 pertusus Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -244,7 +244,7 @@ AM_CONDITIONAL(INSTALL_WARNINGS,
 USE_EXTERNAL_EASTASIANWIDTH=no
 AC_ARG_WITH([external-Unicode-EastAsianWidth],
    AC_HELP_STRING([--with-external-Unicode-EastAsianWidth],
-      [use external Unicode-EastAsianWidth if found (default: no)]),
+      [use external Unicode-EastAsianWidth (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_EASTASIANWIDTH=yes
    fi]
@@ -255,7 +255,7 @@ AC_SUBST([USE_EXTERNAL_EASTASIANWIDTH])
 USE_EXTERNAL_UNIDECODE=no
 AC_ARG_WITH([external-Text-Unidecode],
     AC_HELP_STRING([--with-external-Text-Unidecode],
-           [use external Text::Unidecode if found (default: no)]),
+           [use external Text::Unidecode (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_UNIDECODE=yes
    fi]
@@ -273,7 +273,7 @@ AM_GNU_GETTEXT([external])
 USE_EXTERNAL_LIBINTL=no
 AC_ARG_WITH([external-libintl-perl],
    AC_HELP_STRING([--with-external-libintl-perl],
-      [use external libintl-perl if found (default: no)]),
+      [use external libintl-perl (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_LIBINTL=yes
    fi]
