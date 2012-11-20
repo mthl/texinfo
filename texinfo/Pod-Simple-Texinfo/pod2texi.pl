@@ -29,34 +29,48 @@ Getopt::Long::Configure("gnu_getopt");
 
 BEGIN
 {
-  my $dir;
+  my $updir = File::Spec->updir();
+  my ($real_command_name, $command_directory, $command_suffix)
+     = fileparse($0, '.pl');
+
+  my $maintain_dir;
+  my $modules_dir;
   if ('@datadir@' ne '@' . 'datadir@') {
     my $package = '@PACKAGE@';
     my $datadir = eval '"@datadir@"';
     if ($datadir ne '') {
-      $dir = File::Spec->catdir($datadir, $package);
-      unshift @INC, (File::Spec->catdir($dir, 'Pod-Simple-Texinfo'), $dir);
+      # try to find modules in directories relative to the script
+      $modules_dir = File::Spec->catdir($datadir, $package);
+      if (! -f File::Spec->catfile($modules_dir, 'Texinfo', 'Parser.pm')
+          and -f File::Spec->catfile($command_directory, $updir, 'share', 
+                                     'texinfo', 'Texinfo', 'Parser.pm')) {
+        $modules_dir = File::Spec->catdir($command_directory, 
+                                          $updir, 'share', 'texinfo');
+      }
+      $maintain_dir = $modules_dir;
+      unshift @INC, (File::Spec->catdir($modules_dir, 'Pod-Simple-Texinfo'), $modules_dir);
     }
   } elsif (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-    my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
-    my $tpdir = File::Spec->catdir($srcdir, File::Spec->updir(), 'tp');
-    $dir = File::Spec->catdir($tpdir, 'maintain');
-    unshift @INC, (File::Spec->catdir($srcdir, 'lib'), $tpdir);
+    my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
+    $modules_dir = File::Spec->catdir($srcdir, File::Spec->updir(), 'tp');
+    $maintain_dir = File::Spec->catdir($modules_dir, 'maintain');
+    unshift @INC, (File::Spec->catdir($srcdir, 'lib'), $modules_dir);
   }
-  if (defined($dir)) {
+  if (defined($maintain_dir)) {
     if ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
-      unshift @INC, File::Spec->catdir($dir, 'lib', 'libintl-perl', 'lib');
+      unshift @INC, File::Spec->catdir($maintain_dir, 'lib', 'libintl-perl', 'lib');
     }
     if ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
-      unshift @INC, File::Spec->catdir($dir, 'lib', 
+      unshift @INC, File::Spec->catdir($maintain_dir, 'lib', 
                                             'Unicode-EastAsianWidth', 'lib');
     }
     if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
-      unshift @INC, File::Spec->catdir($dir, 'lib', 'Text-Unidecode', 'lib');
+      unshift @INC, File::Spec->catdir($maintain_dir, 'lib', 'Text-Unidecode', 'lib');
     }
   }
 }
+
 use Pod::Simple::Texinfo;
 use Texinfo::Common;
 use Texinfo::Parser;
