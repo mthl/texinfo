@@ -29,44 +29,49 @@ Getopt::Long::Configure("gnu_getopt");
 
 BEGIN
 {
-  my $updir = File::Spec->updir();
-  my ($real_command_name, $command_directory, $command_suffix)
+  my ($real_command_name, $command_directory, $command_suffix) 
      = fileparse($0, '.pl');
 
-  my $maintain_dir;
-  my $modules_dir;
-  if ('@datadir@' ne '@' . 'datadir@') {
-    my $package = '@PACKAGE@';
-    my $datadir = eval '"@datadir@"';
-    if ($datadir ne '') {
-      # try to find modules in directories relative to the script
-      $modules_dir = File::Spec->catdir($datadir, $package);
-      if (! -f File::Spec->catfile($modules_dir, 'Texinfo', 'Parser.pm')
-          and -f File::Spec->catfile($command_directory, $updir, 'share', 
-                                     'texinfo', 'Texinfo', 'Parser.pm')) {
-        $modules_dir = File::Spec->catdir($command_directory, 
-                                          $updir, 'share', 'texinfo');
-      }
-      $maintain_dir = $modules_dir;
-      unshift @INC, $modules_dir;
-    }
-  } elsif (($0 =~ /\.pl$/ and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
-     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
+  my $datadir = '@datadir@';
+  my $package = '@PACKAGE@';
+  my $updir = File::Spec->updir();
+
+  my $texinfolibdir;
+  my $lib_dir;
+
+  # in-source run
+  if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
+       and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
     my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
-    $modules_dir = File::Spec->catdir($srcdir, File::Spec->updir(), 'tp');
-    $maintain_dir = File::Spec->catdir($modules_dir, 'maintain');
-    unshift @INC, $modules_dir;
+    $texinfolibdir = File::Spec->catdir($srcdir, $updir, 'tp');
+    $lib_dir = File::Spec->catdir($texinfolibdir, 'maintain');
+    unshift @INC, $texinfolibdir;
+  } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
+           and $datadir ne '') {
+    $texinfolibdir = File::Spec->catdir($datadir, $package);
+    # try to make package relocatable, will only work if standard relative paths
+    # are used
+    if (! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm')
+        and -f File::Spec->catfile($command_directory, $updir, 'share', 
+                                   'texinfo', 'Texinfo', 'Parser.pm')) {
+      $texinfolibdir = File::Spec->catdir($command_directory, $updir, 
+                                          'share', 'texinfo');
+    }
+    $lib_dir = $texinfolibdir;
+    unshift @INC, $texinfolibdir;
   }
-  if (defined($maintain_dir)) {
+
+  # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
+  # makefile using values from configure
+  if (defined($texinfolibdir)) {
     if ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
-      unshift @INC, File::Spec->catdir($maintain_dir, 'lib', 'libintl-perl', 'lib');
+      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'));
     }
     if ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
-      unshift @INC, File::Spec->catdir($maintain_dir, 'lib', 
-                                            'Unicode-EastAsianWidth', 'lib');
+      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'));
     }
     if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
-      unshift @INC, File::Spec->catdir($maintain_dir, 'lib', 'Text-Unidecode', 'lib');
+      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
     }
   }
 }
