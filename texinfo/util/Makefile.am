@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.48 2012-11-19 23:54:09 pertusus Exp $
+# $Id: Makefile.am,v 1.49 2012-11-20 00:16:54 pertusus Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -22,7 +22,6 @@ pdftexi2dvi: texi2pdf
 	cp -f $(srcdir)/texi2pdf $@
 
 txixml2texi: txixml2texi.pl Makefile
-	sed -e 's,[@]datadir[@],$(datadir),g' \
 	sed -e 's,[@]datadir[@],$(datadir),g' \
 	-e 's,[@]PACKAGE[@],$(PACKAGE),g' \
 	-e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
