@@ -154,6 +154,15 @@ if ('@datadir@' ne '@' . 'datadir@' and '@PACKAGE@' ne '@' . 'PACKAGE@') {
   $pkgdatadir = File::Spec->catdir($datadir, 'texinfo');
 }
 
+# work-around in case libintl-perl do not do it itself
+# see http://www.gnu.org/software/gettext/manual/html_node/The-LANGUAGE-variable.html#The-LANGUAGE-variable
+
+if ((defined($ENV{"LC_ALL"}) and $ENV{"LC_ALL"} =~ /^(C|POSIX)$/)
+     or (defined($ENV{"LANG"}) and $ENV{"LANG"} =~ /^(C|POSIX)$/)) {
+  delete $ENV{"LANGUAGE"} if defined($ENV{"LANGUAGE"});
+}
+
+
 #my $messages_textdomain = 'texinfo';
 my $messages_textdomain = '@PACKAGE@';
 $messages_textdomain = 'texinfo' if ($messages_textdomain eq '@'.'PACKAGE@');
