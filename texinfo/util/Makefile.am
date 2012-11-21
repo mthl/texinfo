@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.49 2012-11-20 00:16:54 pertusus Exp $
+# $Id: Makefile.am,v 1.50 2012-11-21 22:48:47 pertusus Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -27,6 +27,7 @@ txixml2texi: txixml2texi.pl Makefile
 	-e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
 	-e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \
 	-e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g' \
+	-e '1 s,/usr/bin/env perl,$(PERL),g' \
 	   $(srcdir)/txixml2texi.pl >$@
 	chmod a+x $@
 

@@ -1,4 +1,4 @@
-#! /usr/bin/perl -w
+#! /usr/bin/env perl
 
 # pod2texi -- convert Pod to Texinfo.
 #
@@ -29,6 +29,8 @@ Getopt::Long::Configure("gnu_getopt");
 
 BEGIN
 {
+  # emulate -w
+  $^W = 1;
   my ($real_command_name, $command_directory, $command_suffix)
      = fileparse($0, '.pl');
 

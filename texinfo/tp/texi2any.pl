@@ -1,4 +1,4 @@
-#! /usr/bin/perl -w
+#! /usr/bin/env perl 
 
 # texi2any: Texinfo converter.
 #
@@ -43,6 +43,8 @@ Getopt::Long::Configure("gnu_getopt");
 # * installed relative to the script
 BEGIN
 {
+  # emulate -w
+  $^W = 1;
   my ($real_command_name, $command_directory, $command_suffix) 
      = fileparse($0, '.pl');
 

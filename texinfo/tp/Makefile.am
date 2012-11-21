@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.50 2012-11-20 02:33:42 pertusus Exp $
+# $Id: Makefile.am,v 1.51 2012-11-21 22:48:48 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -41,7 +41,8 @@ do_subst = sed \
   -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
   -e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
   -e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \
-  -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g'
+  -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g' \
+  -e '1 s,/usr/bin/env perl,$(PERL),g'
 
 texi2any: texi2any.pl $(top_builddir)/config.status
 	$(do_subst) $(srcdir)/texi2any.pl >$@

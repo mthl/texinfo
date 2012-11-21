@@ -1,4 +1,4 @@
-#! /usr/bin/perl -w
+#! /usr/bin/env perl
 # expand the manuals with nested formats using texi2any and test
 # with makeinfo on these expanded manuals (it is likely that makeinfo 
 # cannot expand those manuals in some cases).
@@ -7,6 +7,12 @@
 # makeinfo in C.  It is certainly obsolete now.
 
 use strict;
+
+# emulates -w
+BEGIN
+{
+  $^W = 1;
+}
 
 open (TXT, 'tests-parser.txt') or die "Cannot open tests-parser.txt: $!\n";
 
