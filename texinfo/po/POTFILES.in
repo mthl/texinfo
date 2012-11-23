@@ -20,6 +20,7 @@ info/infomap.c
 info/m-x.c
 info/makedoc.c
 info/nodemenu.c
+info/pcterm.c
 info/search.c
 info/session.c
 info/tilde.c

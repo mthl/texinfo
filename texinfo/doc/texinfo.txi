@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.491 2012-11-20 01:49:28 pertusus Exp $
+@c $Id: texinfo.txi,v 1.492 2012-11-23 23:10:42 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17540,8 +17540,8 @@ If set, begin outputting at @code{@@setfilename}, if
 @code{@@setfilename} is present.
 
 @item IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME
-If set, spaces after an @@-commande name that take braces are ignored.
-Default on.
+If set, spaces are ignored after an @@-command that takes braces.
+Default on, matching the @TeX{} behavior.
 
 @item IMAGE_LINK_PREFIX
 For HTML@.  If set, the associated value is prepended to the image file 
@@ -17549,7 +17549,6 @@ links.
 
 @item INDEX_ENTRY_COLON
 Symbol used between the index entry and the associated node or section.
-
 
 @item INLINE_CONTENTS
 If set, output the contents where the @code{@@contents} and similar
@@ -21653,7 +21652,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.491 2012-11-20 01:49:28 pertusus Exp $
+$Id: texinfo.txi,v 1.492 2012-11-23 23:10:42 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

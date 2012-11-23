@@ -1,3 +1,7 @@
+2012-11-23  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.91.
+
 2012-11-22  Patrice Dumas  <pertusus@free.fr>
 
 	* */*.pl */Makefile.am: use #! /usr/bin/env perl for shebangs in case
