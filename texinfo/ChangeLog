@@ -2,6 +2,10 @@
 
 	* pretest 4.13.91.
 
+	* doc/texinfo.txi (makeinfo Pointer Creation): be more
+	explicit about what to do.  Suggestion from Richard Jackson,
+	help-texinfo 18 Feb 2003 23:54:07.
+
 2012-11-22  Patrice Dumas  <pertusus@free.fr>
 
 	* */*.pl */Makefile.am: use #! /usr/bin/env perl for shebangs in case

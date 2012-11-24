@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.492 2012-11-23 23:10:42 karl Exp $
+@c $Id: texinfo.txi,v 1.493 2012-11-24 00:45:19 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5249,24 +5249,38 @@ it is never lowered and nothing can be raised to it
 @cindex Creating pointers with @code{makeinfo}
 @cindex Pointer creation with @code{makeinfo}
 @cindex Automatic pointer creation with @code{makeinfo}
+@cindex Implicit pointer creation with @code{makeinfo}
 
-The @code{makeinfo} program has a feature for automatically
-determining node pointers for a hierarchically organized document.  We
-highly recommend using it.
+The @code{makeinfo} program can automatically determine node pointers
+for a hierarchically organized document.  This implicit node pointer
+creation feature in @code{makeinfo} relieves you from the need to
+update menus and pointers manually or with Texinfo mode commands.
+(@xref{Updating Nodes and Menus}.)  We highly recommend taking
+advantage of this.
 
-When you take advantage of this feature, you do not need to write the
-`Next', `Previous', and `Up' pointers after the name of a node.
-However, you must write a sectioning command, such as @code{@@chapter}
+To do so, write your @code{@@node} lines with just the name of the
+node:
+
+@example
+@@node My Node
+@end example
+
+@noindent
+You do not need to write out the `Next', `Previous', and `Up'
+pointers.
+
+Then, you must write a sectioning command, such as @code{@@chapter}
 or @code{@@section}, on the line immediately following each truncated
-@code{@@node} line (except that comment lines may intervene).
+@code{@@node} line (except that comment lines may intervene).  This is
+where it normally goes.
 
-In addition, you must follow the `Top' @code{@@node} line with a line
-beginning with @code{@@top} to mark the top-level node in the
-file.  @xref{top command,, The @code{@@top} Sectioning Command}.
+Also, you must write the name of each node (except for the `Top' node)
+in a menu that is one or more hierarchical levels above the node's
+level.
 
-Finally, you must write the name of each node (except for the `Top'
-node) in a menu that is one or more hierarchical levels above the
-node's hierarchical level.
+Finally, you must follow the `Top' @code{@@node} line with a line
+beginning with @code{@@top} to mark the top-level node in the file.
+@xref{top command,, The @code{@@top} Sectioning Command}.
 
 @cindex Detail menu
 @findex detailmenu
@@ -5275,15 +5289,12 @@ Parts}), mark it with the @code{@@detailmenu @dots{} @@end
 detailmenu} environment, or @command{makeinfo} will get confused,
 typically about the last and/or first node in the document.
 
-This implicit node pointer creation feature in @code{makeinfo}
-relieves you from the need to update menus and pointers manually or
-with Texinfo mode commands.  (@xref{Updating Nodes and Menus}.)
-
 In most cases, you will want to take advantage of this feature and not
-redundantly specify node pointers.  However, Texinfo documents are not
-required to be organized hierarchically or in fact to contain
-sectioning commands at all (for example, if you never intend the
-document to be printed).  
+redundantly specify node pointers that the programs can determine.
+However, Texinfo documents are not required to be organized
+hierarchically or in fact to contain sectioning commands at all (for
+example, if you never intend the document to be printed), so node
+pointers may still be specified explicitly, in full generality.
 
 
 @node anchor
@@ -21652,7 +21663,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.492 2012-11-23 23:10:42 karl Exp $
+$Id: texinfo.txi,v 1.493 2012-11-24 00:45:19 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
