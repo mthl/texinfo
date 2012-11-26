@@ -1,5 +1,5 @@
 /* terminal.c -- how to handle the physical terminal for Info.
-   $Id: terminal.c,v 1.9 2012-11-16 23:34:51 karl Exp $
+   $Id: terminal.c,v 1.10 2012-11-26 01:32:03 karl Exp $
 
    Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
    1999, 2001, 2002, 2004, 2007, 2008, 2012 Free Software Foundation, Inc.
@@ -43,7 +43,7 @@ char PC;      /* Pad character */
 short ospeed; /* Terminal output baud rate */
 extern int tgetnum (), tgetflag (), tgetent ();
 extern char *tgetstr (), *tgoto ();
-extern void tputs ();
+extern int tputs ();
 #endif /* not HAVE_TERMCAP_H */
 #endif /* not HAVE_NCURSES_TERMCAP_H */
 

@@ -1,6 +1,22 @@
-2012-11-23  Karl Berry  <karl@gnu.org>
+2012-11-26  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.13.91.
+
+2012-11-25  Karl Berry  <karl@gnu.org>
+
+	* system.h (const): do not #undef around gettext.h.
+	Suggested by Eli.  We'll see.
+
+2012-11-16  Eli Zaretskii  <eliz@gnu.org>
+	
+	* info/pcterm.c (gettextinfo): exit rather than xexit.
+	(tputs, tgoto, tgetent): use const.
+	* info/session.c [!FIONREAD]: require F_GETFL and F_SETFL as well
+	as O_NDELAY for this branch.
+	* info/terminal.c (tputs) [! HAVE_TERMCAP_H]: declare puts as
+	returning int.
+
+2012-11-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (makeinfo Pointer Creation): be more
 	explicit about what to do.  Suggestion from Richard Jackson,

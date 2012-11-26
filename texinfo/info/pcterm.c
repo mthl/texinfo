@@ -1,5 +1,5 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
-   $Id: pcterm.c,v 1.10 2012-11-16 23:33:28 karl Exp $
+   $Id: pcterm.c,v 1.11 2012-11-26 01:32:03 karl Exp $
 
    Copyright (C) 1998, 1999, 2003, 2004, 2007, 2008, 2012
    Free Software Foundation, Inc.
@@ -178,7 +178,7 @@ gettextinfo (struct text_info *ti)
 	sprintf (errbuf, "w32 error %u", error_no);
       CloseHandle (hinfo);
       info_error (_("Terminal cannot be initialized: %s\n"), errbuf, NULL);
-      xexit (1);
+      exit (1);
     }
 }
 
@@ -1301,14 +1301,14 @@ kill (pid_t pid, int sig)
 
 /* These should never be called, but they make the linker happy.  */
 
-void       tputs (char *a, int b, int (*c)())
+int       tputs (const char *a, int b, int (*c)(int))
 {
-  perror ("tputs");
+  perror ("tputs"); return 0; /* here and below, added dummy retvals */
 }
 
-char*     tgoto (char*a, int b, int c)
+char*     tgoto (const char *a, int b, int c)
 {
-  perror ("tgoto"); return 0; /* here and below, added dummy retvals */
+  perror ("tgoto"); return 0;
 }
 
 int       tgetnum (char*a)
@@ -1326,7 +1326,7 @@ char*     tgetstr (char *a, char **b)
   perror ("tgetstr"); return 0;
 }
 
-int       tgetent (char*a, char*b)
+int       tgetent (char *a, const char *b)
 {
   perror ("tgetent"); return 0;
 }
