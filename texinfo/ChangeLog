@@ -1,6 +1,9 @@
 2012-11-26  Karl Berry  <karl@gnu.org>
 
-	* pretest 4.13.91.
+	* install-info/defs.in (findprog): new fn, from texi2dvi.
+	* install-info/tests/ii-0050-test,
+	* install-info/tests/ii-0041-test: use it to check for zdiff
+	(not available on bare Solaris) and skip tests if needed.
 
 2012-11-25  Karl Berry  <karl@gnu.org>
 
