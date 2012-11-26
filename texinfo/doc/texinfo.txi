@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.494 2012-11-26 01:46:07 karl Exp $
+@c $Id: texinfo.txi,v 1.495 2012-11-26 18:42:30 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -470,9 +470,9 @@ Special Characters: Inserting @@ @{@} , \ #
 
 Inserting Space
 
+* Multiple Spaces::             Inserting multiple spaces.
 * Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
 * Ending a Sentence::           Sometimes it does.
-* Multiple Spaces::             Inserting multiple spaces.
 * frenchspacing::               Specifying end-of-sentence spacing.
 * dmn::                         How to format a dimension.
 
@@ -10701,12 +10701,57 @@ The following sections describe commands that control spacing of various
 kinds within and after sentences.
 
 @menu
+* Multiple Spaces::             Inserting multiple spaces.
 * Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
 * Ending a Sentence::           Sometimes it does.
-* Multiple Spaces::             Inserting multiple spaces.
 * frenchspacing::               Specifying end-of-sentence spacing.
 * dmn::                         How to format a dimension.
 @end menu
+
+
+@node Multiple Spaces
+@subsection Multiple Spaces
+
+@cindex Multiple spaces
+@cindex Whitespace, inserting
+@cindex Space, inserting horizontal
+@findex <space>
+@findex <tab>
+@findex <newline>
+
+Ordinarily, multiple whitespace characters (space, tab, and newline)
+are collapsed into a single space.
+
+Occasionally, you may want to produce several consecutive spaces,
+either for purposes of example (e.g., what your program does with
+multiple spaces as input), or merely for purposes of appearance in
+headings or lists.  Texinfo supports three commands:
+@code{@@@kbd{SPACE}}, @code{@@@kbd{TAB}}, and @code{@@@kbd{NL}}, all
+of which insert a single space into the output.  (Here,
+@code{@@@kbd{SPACE}} represents an @samp{@@} character followed by a
+space, i.e., @samp{@@ }, @kbd{TAB} represents an actual tab character,
+and @kbd{NL} represent the tab character and end-of-line, i.e., when
+@samp{@@} is the last character on a line.)
+
+For example,
+@example
+Spacey@@ @@ @@ @@
+example.
+@end example
+
+@noindent produces
+
+@example
+Spacey@ @ @ @
+example.
+@end example
+
+Other possible uses of @code{@@@kbd{SPACE}} have been subsumed by
+@code{@@multitable} (@pxref{Multi-column Tables}).
+
+Do not follow any of these commands with braces.
+
+To produce a non-breakable space, see @ref{tie, @code{@@tie}}.
 
 
 @node Not Ending a Sentence
@@ -10729,8 +10774,8 @@ exclamation mark that ends a sentence.
 @findex <colon> @r{(suppress end-of-sentence space)}
 Use the @code{@@:}@: command after a period, question mark,
 exclamation mark, or colon that should not be followed by extra space.
-For example, use @code{@@:}@: after periods that end abbreviations
-which are not at the ends of sentences.
+For example, use @code{@@:}@: after periods that end (lowercase)
+abbreviations which are not at the ends of sentences.
 
 Also, when a parenthetical remark in the middle of a sentence (like
 this one!)@: ends with a period, exclamation point, or question mark,
@@ -10782,11 +10827,15 @@ sentence, and no extra space is inserted.
 @findex ! @r{(end of sentence)}
 @findex ? @r{(end of sentence)}
 @cindex Spacing, at ends of sentences
+As mentioned above, Texinfo normally inserts additional space after
+the end of a sentence.  It uses a simple heuristic for this: a
+sentence ends with a period, exclamation point, or question mark
+followed by optional closing punctuation and then whitespace, and
+@emph{not} preceded by a capital letter.
+
 Use @code{@@.}@: instead of a period, @code{@@!}@: instead of an
-exclamation point, and @code{@@?}@: instead of a question mark at the end
-of a sentence that ends with a capital letter.  Otherwise, the formatter
-will think the letter is an abbreviation and will not insert the correct
-end-of-sentence spacing.  Here is an example:
+exclamation point, and @code{@@?}@: instead of a question mark at the
+end of a sentence that does end with a capital letter.  For example:
 
 @example
 Give it to M.I.B. and to M.E.W@@.  Also, give it to R.J.C@@.
@@ -10802,68 +10851,23 @@ Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.@*
 Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
 @end quotation
 
-In the HTML file output, @code{@@.}@: is equivalent to a simple
-@samp{.}; likewise for @code{@@!}@: and @code{@@?}@:.
+In the HTML output, @code{@@.}@: is equivalent to a simple @samp{.};
+likewise for @code{@@!}@: and @code{@@?}@:.
 
-The meanings of @code{@@:} and @code{@@.}@: in Texinfo are designed to
-work well with the Emacs sentence motion commands (@pxref{Sentences,,,
-emacs, The GNU Emacs Manual}).
+The meanings of @code{@@:} and @code{@@.}, etc.@: in Texinfo are
+designed to work well with the Emacs sentence motion commands
+(@pxref{Sentences,,, emacs, The GNU Emacs Manual}).
 
 Do not put braces after any of these commands.
 
 A few Texinfo commands are not considered as being an abbreviation,
 even though they may end with a capital letter when expanded, so that
-you don't have to insert @code{@@.} and companions. This is the case
+you don't have to insert @code{@@.} and companions.  This is the case
 for code-like highlighting commands, @code{@@var} arguments ending
 with a capital letter, and @code{@@TeX}.  For example, that sentence
 ended with @samp{@@code@{@@@@TeX@}.}; @code{@@.} was not needed.  Also
-in @code{... @@var@{VARIABLE@}. Text} the period ends the sentence,
-there is no need to insert @code{@@.}.
-
-
-@node Multiple Spaces
-@subsection Multiple Spaces
-
-@cindex Multiple spaces
-@cindex Whitespace, inserting
-@cindex Space, inserting horizontal
-@findex <space>
-@findex <tab>
-@findex <newline>
-
-Ordinarily, multiple whitespace characters (space, tab, and newline)
-are collapsed into a single space.
-
-Occasionally, you may want to produce several consecutive spaces,
-either for purposes of example (e.g., what your program does with
-multiple spaces as input), or merely for purposes of appearance in
-headings or lists.  Texinfo supports three commands:
-@code{@@@kbd{SPACE}}, @code{@@@kbd{TAB}}, and @code{@@@kbd{NL}}, all
-of which insert a single space into the output.  (Here,
-@code{@@@kbd{SPACE}} represents an @samp{@@} character followed by a
-space, i.e., @samp{@@ }, @kbd{TAB} represents an actual tab character,
-and @kbd{NL} represent the tab character and end-of-line, i.e., when
-@samp{@@} is the last character on a line.)
-
-For example,
-@example
-Spacey@@ @@ @@ @@
-example.
-@end example
-
-@noindent produces
-
-@example
-Spacey@ @ @ @
-example.
-@end example
-
-Other possible uses of @code{@@@kbd{SPACE}} have been subsumed by
-@code{@@multitable} (@pxref{Multi-column Tables}).
-
-Do not follow any of these commands with braces.
-
-To produce a non-breakable space, see @ref{tie, @code{@@tie}}.
+in @code{... @@var@{VARNAME@}. Text} the period after @var{VARNAME}
+ends the sentence; there is no need to use @code{@@.}.
 
 
 @node frenchspacing
@@ -21663,7 +21667,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.494 2012-11-26 01:46:07 karl Exp $
+$Id: texinfo.txi,v 1.495 2012-11-26 18:42:30 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}

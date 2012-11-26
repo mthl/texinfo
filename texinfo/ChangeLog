@@ -1,5 +1,10 @@
 2012-11-26  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Not Ending a Sentence): Attempt
+	to document the sentence-ending heuristic more clearly.
+	Suggestion from Eli Zaretskii in <http://bugs.gnu.org/12973#14>,
+	draft from Paul Eggert in bug-texinfo 24 Nov 2012 18:02:27.
+
 	* install-info/defs.in (findprog): new fn, from texi2dvi.
 	* install-info/tests/ii-0050-test,
 	* install-info/tests/ii-0041-test: use it to check for zdiff
