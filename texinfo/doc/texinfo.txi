@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.493 2012-11-24 00:45:19 karl Exp $
+@c $Id: texinfo.txi,v 1.494 2012-11-26 01:46:07 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -814,8 +814,8 @@ as, the pronunciation of @TeX{}.  In the word @TeX{}, the @samp{X} is
 actually the Greek letter ``chi'' rather than the English letter
 ``ex''.  Pronounce @TeX{} as if the @samp{X} were the last sound in
 the name `Bach'; but pronounce Texinfo as if the @samp{x} were a `k'.
-Spell ``Texinfo'' with a capital ``T'' and the other letters in lower
-case.
+Spell ``Texinfo'' with a capital ``T'' and the other letters in
+lowercase.
 
 Manuals for most GNU packages are written in Texinfo, and available
 online at @url{http://www.gnu.org/doc}.  The Texinfo 
@@ -1241,8 +1241,8 @@ In a Texinfo file, the commands you write to describe the contents of
 the manual are preceded by an @samp{@@} character; they are called
 @dfn{@@-commands}.  For example, @code{@@node} is the command to
 indicate a node and @code{@@chapter} is the command to indicate the
-start of a chapter.  Almost all @@ command names are entirely lower
-case.
+start of a chapter.  Almost all @@ command names are entirely
+lowercase.
 
 Texinfo's @@-commands are a strictly limited set of constructs.  The
 strict limits are primarily intended to ``force'' you, the author, to
@@ -3802,14 +3802,14 @@ The second part contains nodes for the indices.
 @item
 @findex detailmenu
 @cindex Detailed menu
-The third and subsequent parts contain a listing of the other, lower
-level nodes, often ordered by chapter.  This way, rather than go
+The third and subsequent parts contain a listing of the other,
+lower-level nodes, often ordered by chapter.  This way, rather than go
 through an intermediary menu, an inquirer can go directly to a
 particular node when searching for specific information.  These menu
-items are not required; add them if you think they are a
-convenience.  If you do use them, put @code{@@detailmenu} before the
-first one, and @code{@@end detailmenu} after the last; otherwise,
-@code{makeinfo} will get confused.
+items are not required; add them if you think they are a convenience.
+If you do use them, put @code{@@detailmenu} before the first one, and
+@code{@@end detailmenu} after the last; otherwise, @code{makeinfo}
+will get confused.
 @end itemize
 
 Each section in the menu can be introduced by a descriptive line.  So
@@ -5861,8 +5861,8 @@ the reference in the printed manual and in HTML without the preceding
 
 @item @@pxref
 Used within parentheses, at the end of a sentence, or otherwise before
-punctuation, to make a reference.  Its output starts with a lower case
-`see' in the printed manual and in HTML, and a lower case @samp{*note}
+punctuation, to make a reference.  Its output starts with a lowercase
+`see' in the printed manual and in HTML, and a lowercase @samp{*note}
 in Info.  (@samp{p} is for `parenthesis'.)
 
 @item @@inforef
@@ -6216,7 +6216,7 @@ comma, and then by the clause, which is followed by a period.)
 A third argument replaces the node name in the @TeX{} output.  The third
 argument should be the name of the section in the printed output, or
 else state the topic discussed by that section.  Often, you will want to
-use initial upper case letters so it will be easier to read when the
+use initial uppercase letters so it will be easier to read when the
 reference is printed.  Use a third argument when the node name is
 unsuitable because of syntax or meaning.
 
@@ -6595,8 +6595,8 @@ in two ways:
 
 @enumerate
 @item
-@TeX{} typesets the reference for the printed manual with a lower case
-`see' rather than an upper case `See'.
+@TeX{} typesets the reference for the printed manual with a lowercase
+`see' rather than an uppercase `See'.
 
 @item
 The Info formatting commands automatically end the reference with a
@@ -7084,7 +7084,7 @@ different from the identifier @code{printf}, and most likely is a
 misspelling of it.  Even in languages which are not case sensitive, it
 is confusing to a human reader to see identifiers spelled in different
 ways.  Pick one spelling and always use that.  If you do not want to
-start a sentence with a command name written all in lower case, you
+start a sentence with a command name written all in lowercase, you
 should rearrange the sentence.
 
 In the Info output, @code{@@code} results in single quotation marks
@@ -7418,7 +7418,7 @@ Do not use @code{@@var} for environment variables either; @code{@@env}
 is correct for them (see the next section).
 
 The effect of @code{@@var} in the Info file is to change the case of
-the argument to all upper case.  In the printed manual and HTML
+the argument to all uppercase.  In the printed manual and HTML
 output, the argument is output in slanted type.
 
 @need 700
@@ -7440,7 +7440,7 @@ To delete file @var{filename}, type @samp{rm @var{filename}}.
 (Note that @code{@@var} may appear inside @code{@@code},
 @code{@@samp}, @code{@@file}, etc.)
 
-Write a metasyntactic variable all in lower case without spaces, and
+Write a metasyntactic variable all in lowercase without spaces, and
 use hyphens to make it more readable.  Thus, the Texinfo source for
 the illustration of how to begin a Texinfo manual looks like
 this:
@@ -7853,7 +7853,7 @@ there.
 
 Use the @samp{@@sc} command to set text in @sc{a small caps font}
 (where possible).  Write the text you want to be in small caps between
-braces in lower case, like this:
+braces in lowercase, like this:
 
 @example
 Richard @@sc@{Stallman@} founded @@acronym@{GNU@}.
@@ -7880,7 +7880,7 @@ also as shown here.
 @TeX{} typesets any uppercase letters between the braces of an
 @code{@@sc} command in full-size capitals; only lowercase letters are
 printed in the small caps font.  In the Info output, the argument to
-@code{@@sc} is printed in all upper case.  In HTML, the argument is
+@code{@@sc} is printed in all uppercase.  In HTML, the argument is
 uppercased and the output marked with the @code{<small>} tag to reduce
 the font size.
 
@@ -9023,8 +9023,8 @@ Write the @code{@@enumerate} command at the beginning of a line.  The
 command does not require an argument, but accepts either a number or a
 letter as an option.  Without an argument, @code{@@enumerate} starts the
 list with the number @samp{1}.  With a numeric argument, such as
-@samp{3}, the command starts the list with that number.  With an upper
-or lower case letter, such as @samp{a} or @samp{A}, the command starts
+@samp{3}, the command starts the list with that number.  With an upper-
+or lowercase letter, such as @samp{a} or @samp{A}, the command starts
 the list with that letter.
 
 Write the text of the enumerated list in the same way as an itemized
@@ -9112,16 +9112,16 @@ other text.
 @item
 @code{@@enumerate @var{upper-case-letter}}
 
-With an upper case letter as argument, start a list
+With an uppercase letter as argument, start a list
 in which each item is marked
-by a letter, beginning with that upper case letter.
+by a letter, beginning with that uppercase letter.
 
 @item
 @code{@@enumerate @var{lower-case-letter}}
 
-With a lower case letter as argument, start a list
+With a lowercase letter as argument, start a list
 in which each item is marked by
-a letter, beginning with that lower case letter.
+a letter, beginning with that lowercase letter.
 @end enumerate
 
 You can also nest enumerated lists, as in an outline.
@@ -9278,8 +9278,8 @@ For example,
 @@item upcase
 @@itemx downcase
 These two functions accept a character or a string as
-argument, and return the corresponding upper case (lower
-case) character or string.
+argument, and return the corresponding uppercase (lowercase)
+character or string.
 @@end table
 @end group
 @end example
@@ -9291,8 +9291,8 @@ This produces:
 @item upcase
 @itemx downcase
 These two functions accept a character or a string as
-argument, and return the corresponding upper case (lower
-case) character or string.
+argument, and return the corresponding uppercase (lowercase)
+character or string.
 @end table
 
 @noindent
@@ -10182,7 +10182,7 @@ Concept index entries consist of text.  The best way to write an index
 is to devise entries which are terse yet clear.  If you can do this,
 the index usually looks better if the entries are written just as they
 would appear in the middle of a sentence, that is, capitalizing only
-proper names and acronyms that always call for upper case letters.
+proper names and acronyms that always call for uppercase letters.
 This is the case convention we use in most GNU manuals' indices.
 
 If you don't see how to make an entry terse yet clear, make it longer
@@ -10195,7 +10195,7 @@ In any event, do not ever capitalize a case-sensitive name such as a C
 or Lisp function name or a shell command; that would be a spelling
 error.  Entries in indices other than the concept index are symbol
 names in programming languages, or program names; these names are
-usually case-sensitive, so likewise use upper and lower case as
+usually case-sensitive, so likewise use upper- and lowercase as
 required.
 
 @cindex Unique index entries
@@ -18386,8 +18386,8 @@ File: emacs  Node: Top, Up: (DIR), Next: Distrib
 @end example
 
 @noindent
-In this case, the @file{dir} file name is written in upper case
-letters---it can be written in either upper or lower case.  This is not
+In this case, the @file{dir} file name is written in uppercase
+letters---it can be written in either upper- or lowercase.  This is not
 true in general, it is a special case for @file{dir}.
 
 
@@ -20593,7 +20593,7 @@ Generate the alphabetized index for @var{index-name} (using two columns in a pri
 manual).  @xref{Printing Indices & Menus}.
 
 @item @@pxref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
-Make a reference that starts with a lower case `see' in a printed
+Make a reference that starts with a lowercase `see' in a printed
 manual.  Use within parentheses only.  Only the first argument is
 mandatory.  @xref{pxref, , @code{@@pxref}}.
 
@@ -21164,13 +21164,13 @@ information will certainly not find it in that chapter.
 
 @item
 Consistently capitalize the first word of every concept index entry,
-or else consistently use lower case.  Terse entries often call for
-lower case; longer entries for capitalization.  Whichever case
+or else consistently use lowercase.  Terse entries often call for
+lowercase; longer entries for capitalization.  Whichever case
 convention you use, please use one or the other consistently!  Mixing
 the two styles looks bad.
 
 @item
-Always capitalize or use upper case for those words in an index for
+Always capitalize or use uppercase for those words in an index for
 which this is proper, such as names of countries or acronyms.  Always
 use the appropriate case for case-sensitive names, such as those in C or
 Lisp.
@@ -21302,7 +21302,7 @@ commands.
 @itemize @bullet
 @item
 Capitalize ``Texinfo''; it is a name.  Do not write the @samp{x} or
-@samp{i} in upper case.
+@samp{i} in uppercase.
 
 @item
 Capitalize ``Info''; it is a name.
@@ -21663,7 +21663,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.493 2012-11-24 00:45:19 karl Exp $
+$Id: texinfo.txi,v 1.494 2012-11-26 01:46:07 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22664,7 +22664,7 @@ M-x Info-validate
 @end example
 
 @noindent
-Note that the @code{Info-validate} command requires an upper case
+Note that the @code{Info-validate} command requires an uppercase
 `I'@.  You may also need to create a tag table before running
 @code{Info-validate}.  @xref{Tagifying}.
 
@@ -22755,7 +22755,7 @@ M-x Info-tagify
 @end example
 
 @noindent
-(Note the upper case @samp{I} in @code{Info-tagify}.)  This creates an
+(Note the uppercase @samp{I} in @code{Info-tagify}.)  This creates an
 Info file with a tag table that you can validate.
 
 The third step is to validate the Info file:
@@ -22765,7 +22765,7 @@ M-x Info-validate
 @end example
 
 @noindent
-(Note the upper case @samp{I} in @code{Info-validate}.)
+(Note the uppercase @samp{I} in @code{Info-validate}.)
 In brief, the steps are:
 
 @example
@@ -22813,7 +22813,7 @@ M-x Info-split
 @end example
 
 @noindent
-(Note that the @samp{I} in @samp{Info} is upper case.)
+(Note that the @samp{I} in @samp{Info} is uppercase.)
 
 When you use the @code{Info-split} command, the buffer is modified into a
 (small) Info file which lists the indirect subfiles.  This file should be

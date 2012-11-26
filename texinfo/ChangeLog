@@ -4,6 +4,9 @@
 
 2012-11-25  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi: consistently use "uppercase" and "lowercase",
+	rather than with spaces or dashes.
+	
 	* system.h (const): do not #undef around gettext.h.
 	Suggested by Eli.  We'll see.
 
