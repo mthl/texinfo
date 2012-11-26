@@ -17,7 +17,7 @@
 2012-11-20  Patrice Dumas  <pertusus@free.fr>
 
 	* Texinfo/Common.pm, Texinfo/Parser.pm, 
-	doc/texinfo.txi(Other Customization Variables): if 
+	doc/texinfo.txi (Other Customization Variables): if 
 	IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME is set (the default case),
 	spaces after an @-command name that take braces are ignored.
 	Report from John Darrington.
