@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -76,6 +76,90 @@ msgstr "%s：选项“-W %s”不接受参数\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s：选项“%s”需要一个参数\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "正则表达式“%s”中存在错误: %s"
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "无效的编码字符“%s”"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "@var 中不可靠的字符 %c"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "不匹配的 }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "不匹配的 }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "不匹配的 }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "虚拟内存耗尽"
+
+#: gnulib/lib/regcomp.c:169
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "正则表达式“%s”中存在错误: %s"
+
+#: gnulib/lib/regcomp.c:172
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "正则表达式“%s”中存在错误: %s"
+
+#: gnulib/lib/regcomp.c:175
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "使用正则表达式来查寻"
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "不匹配的 }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "没有上次搜索字符串"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3524,9 +3608,6 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 #~ msgid "December"
 #~ msgstr "十二月"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "@var 中不可靠的字符 %c"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "@sc 的参数全部为大写，因此无效"
 
@@ -3680,9 +3761,6 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "抱歉，不支持编码“%s”"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "无效的编码字符“%s”"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "%c%s 的参数应为“i”或“j”，而不是“%c”"
@@ -3910,9 +3988,6 @@ msgstr "条目 %s 出现在具有次要名称的条目之后"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s 需要花括号"
-
-#~ msgid "Unmatched }"
-#~ msgstr "不匹配的 }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "无名字！"

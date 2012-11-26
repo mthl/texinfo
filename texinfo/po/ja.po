@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2011-10-23 11:59+0900\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -81,6 +81,78 @@ msgstr "%s: オプション '-W %s' は引数を取ることができません\n
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: オプション '--%s' は引数が必要です\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr "成功です"
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr "一致しません"
+
+#: gnulib/lib/regcomp.c:136
+msgid "Invalid regular expression"
+msgstr "無効な正規表現です"
+
+#: gnulib/lib/regcomp.c:139
+msgid "Invalid collation character"
+msgstr "無効な照合文字です"
+
+#: gnulib/lib/regcomp.c:142
+msgid "Invalid character class name"
+msgstr "無効な文字クラス名です"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr "終端のバックスラッシュ"
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr "無効な前方参照です"
+
+#: gnulib/lib/regcomp.c:151
+msgid "Unmatched [ or [^"
+msgstr "[ または [^ が不一致です"
+
+#: gnulib/lib/regcomp.c:154
+msgid "Unmatched ( or \\("
+msgstr "( または \\( が不一致です"
+
+#: gnulib/lib/regcomp.c:157
+msgid "Unmatched \\{"
+msgstr "\\{ が不一致です"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr "\\{\\} の中身が無効です"
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr "無効な範囲終了です"
+
+#: gnulib/lib/regcomp.c:166
+msgid "Memory exhausted"
+msgstr "メモリを使い果たしました"
+
+#: gnulib/lib/regcomp.c:169
+msgid "Invalid preceding regular expression"
+msgstr "無効な前方正規表現です"
+
+#: gnulib/lib/regcomp.c:172
+msgid "Premature end of regular expression"
+msgstr "正規表現が途中で終了しました"
+
+#: gnulib/lib/regcomp.c:175
+msgid "Regular expression too big"
+msgstr "正規表現が大きすぎます"
+
+#: gnulib/lib/regcomp.c:178
+msgid "Unmatched ) or \\)"
+msgstr ") または \\) が不一致です"
+
+#: gnulib/lib/regcomp.c:703
+msgid "No previous regular expression"
+msgstr "以前に正規表現がありません"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -4276,60 +4348,6 @@ msgstr "%s 項目に二つ目の項目名が続いています"
 
 #~ msgid "'"
 #~ msgstr "'"
-
-#~ msgid "Success"
-#~ msgstr "成功です"
-
-#~ msgid "No match"
-#~ msgstr "一致しません"
-
-#~ msgid "Invalid regular expression"
-#~ msgstr "無効な正規表現です"
-
-#~ msgid "Invalid collation character"
-#~ msgstr "無効な照合文字です"
-
-#~ msgid "Invalid character class name"
-#~ msgstr "無効な文字クラス名です"
-
-#~ msgid "Trailing backslash"
-#~ msgstr "終端のバックスラッシュ"
-
-#~ msgid "Invalid back reference"
-#~ msgstr "無効な前方参照です"
-
-#~ msgid "Unmatched [ or [^"
-#~ msgstr "[ または [^ が不一致です"
-
-#~ msgid "Unmatched ( or \\("
-#~ msgstr "( または \\( が不一致です"
-
-#~ msgid "Unmatched \\{"
-#~ msgstr "\\{ が不一致です"
-
-#~ msgid "Invalid content of \\{\\}"
-#~ msgstr "\\{\\} の中身が無効です"
-
-#~ msgid "Invalid range end"
-#~ msgstr "無効な範囲終了です"
-
-#~ msgid "Memory exhausted"
-#~ msgstr "メモリを使い果たしました"
-
-#~ msgid "Invalid preceding regular expression"
-#~ msgstr "無効な前方正規表現です"
-
-#~ msgid "Premature end of regular expression"
-#~ msgstr "正規表現が途中で終了しました"
-
-#~ msgid "Regular expression too big"
-#~ msgstr "正規表現が大きすぎます"
-
-#~ msgid "Unmatched ) or \\)"
-#~ msgstr ") または \\) が不一致です"
-
-#~ msgid "No previous regular expression"
-#~ msgstr "以前に正規表現がありません"
 
 #~ msgid "^[yY]"
 #~ msgstr "^[yY]"

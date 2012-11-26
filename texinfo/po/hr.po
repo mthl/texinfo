@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2012-04-16 17:03+0200\n"
 "Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -79,6 +79,90 @@ msgstr "%s: opcija „-W %s” ne dozvoljava argument\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: opcija „%s” zahtijeva argument\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "Greška u regularnom izrazu „%s”: %s"
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "neispravno kodirani znak „%s”"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "malo vjerojatan znak %c u @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Nesparena }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Nesparena }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Nesparena }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "memorija iscrpljena"
+
+#: gnulib/lib/regcomp.c:169
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "Greška u regularnom izrazu „%s”: %s"
+
+#: gnulib/lib/regcomp.c:172
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Greška u regularnom izrazu „%s”: %s"
+
+#: gnulib/lib/regcomp.c:175
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "Koristim regularne izraze za pretrage."
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Nesparena }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Nema prethodnog traženog niza"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3614,9 +3698,6 @@ msgstr "stavka %s slijedi nakon stavke sa sekundarnim imenom"
 #~ msgid "December"
 #~ msgstr "Prosinac"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "malo vjerojatan znak %c u @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "@sc argument ima sva velika slova, zbog čega nema utjecaja"
 
@@ -3737,9 +3818,6 @@ msgstr "stavka %s slijedi nakon stavke sa sekundarnim imenom"
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "žao mi je, kodiranje „%s” nije podržano"
 
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "neispravno kodirani znak „%s”"
-
 #~ msgid "%c%s expects a single character `i' or `j' as argument"
 #~ msgstr "%c%s očekuje jedan znak „i” ili „j” kao argument"
 
@@ -3810,9 +3888,6 @@ msgstr "stavka %s slijedi nakon stavke sa sekundarnim imenom"
 #~ msgstr ""
 #~ "%s: Uklanjam izlaznu datoteku internih veza „%s” zbog grešaka; koristite "
 #~ "--force za čuvanje.\n"
-
-#~ msgid "Unmatched }"
-#~ msgstr "Nesparena }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "NEMA_IMENA!"

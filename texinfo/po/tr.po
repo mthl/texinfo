@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2008-08-25 21:25-0500\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -76,6 +76,90 @@ msgstr "%s: `-W %s' seçeneði argümansýz kullanýlýr\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: `%s' seçeneði bir argümanla kullanýlýr\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "Düzenli ifadede hata `%s': %s"
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "geçersiz kodlanmýþ karakter `%s'"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "@var içinde düþük olasýlýklý karakter %c"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Eþleþmemiþ }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Eþleþmemiþ }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Eþleþmemiþ }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "bellek tükendi"
+
+#: gnulib/lib/regcomp.c:169
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "Düzenli ifadede hata `%s': %s"
+
+#: gnulib/lib/regcomp.c:172
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Düzenli ifadede hata `%s': %s"
+
+#: gnulib/lib/regcomp.c:175
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "Aramalarda düzenli ifade kullanýlýyor."
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Eþleþmemiþ }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Daha önceden arama dizgesi yok"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3617,9 +3701,6 @@ msgstr "%s girdisi, ikincil isimli bir girdiyi takip ediyor"
 #~ msgid "December"
 #~ msgstr "Aralýk"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "@var içinde düþük olasýlýklý karakter %c"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "@sc argümaný tamamen büyükharf(le yazýlmýþ), etkisiz"
 
@@ -3772,9 +3853,6 @@ msgstr "%s girdisi, ikincil isimli bir girdiyi takip ediyor"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "üzgünüm, `%s' kodlamasý desteklenmiyor"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "geçersiz kodlanmýþ karakter `%s'"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "%c%s argüman olarak `i' ya da `j' gerektirir, %c deðil"
@@ -4035,9 +4113,6 @@ msgstr "%s girdisi, ikincil isimli bir girdiyi takip ediyor"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s küme parantezi bekledi"
-
-#~ msgid "Unmatched }"
-#~ msgstr "Eþleþmemiþ }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "ÝSÝMSÝZ!"

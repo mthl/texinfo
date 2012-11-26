@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -74,6 +74,86 @@ msgstr "%s תינכת רובע טנמוגרא לבקמ וניא `-W %s' ןייפאמ\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s תינכת רובע טנמוגרא בייחמ `%s' ןייפאמ\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+msgid "Invalid regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "`%s' יוגש דדוקמ ות"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "@var ךותב %c ריבס-יתלב ות"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "גוז-ןב ול ןיאש }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "גוז-ןב ול ןיאש }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "גוז-ןב ול ןיאש }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "ילאטריוה ןורכזה רמגנ"
+
+#: gnulib/lib/regcomp.c:169
+msgid "Invalid preceding regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:172
+msgid "Premature end of regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:175
+msgid "Regular expression too big"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "גוז-ןב ול ןיאש }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "ןורחא שופיחמ תזורחמ ןיא"
 
 #: gnulib/lib/xalloc-die.c:34
 #, fuzzy
@@ -3476,9 +3556,6 @@ msgstr "ינשמ םש לעב טירפ תובקעב אב %s טירפ"
 #~ msgid "December"
 #~ msgstr "רבמצד"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "@var ךותב %c ריבס-יתלב ות"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "טקפא לכ @sc-ל ןיא ןכל ,תולודג תויתואב ולוכ @sc לש טנמוגרא"
 
@@ -3600,9 +3677,6 @@ msgstr "ינשמ םש לעב טירפ תובקעב אב %s טירפ"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "ךמתנ וניא `%s' דודיק ,םירעטצמ"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "`%s' יוגש דדוקמ ות"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "`j' וא `i' תויהל בייח רשא ,%c%s לש טנמוגרא תויהל םיאתמ וניא `%c'"
@@ -3807,9 +3881,6 @@ msgstr "ינשמ םש לעב טירפ תובקעב אב %s טירפ"
 #, fuzzy
 #~ msgid "%c%s expected braces"
 #~ msgstr "`{...}'-ל הפיצ %c%s"
-
-#~ msgid "Unmatched }"
-#~ msgstr "גוז-ןב ול ןיאש }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "NO_NAME!"

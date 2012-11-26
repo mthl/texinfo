@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2004-12-05 15:37+0100\n"
 "Last-Translator: Trond Endrestøl <Trond.Endrestol@gtf.ol.no>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -89,6 +89,85 @@ msgstr "%s: valget «-W %s» tillater ikke et argument\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: valget «%s» krever et argument\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+msgid "Invalid regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "Ugyldig kodet tegn «%s»"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "usannsynlig tegn %c i @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Umatchet }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Umatchet }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Umatchet }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+msgid "Memory exhausted"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:169
+msgid "Invalid preceding regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:172
+msgid "Premature end of regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:175
+msgid "Regular expression too big"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Umatchet }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Ingen tidligere søkestreng"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3536,9 +3615,6 @@ msgstr "oppføring %s følger en oppføring med et annet navn"
 #~ msgid "December"
 #~ msgstr "desember"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "usannsynlig tegn %c i @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "@sc-argument med store bokstaver, dermed ingen effekt"
 
@@ -3685,9 +3761,6 @@ msgstr "oppføring %s følger en oppføring med et annet navn"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "beklager, kodingen «%s» er ikke støttet"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "Ugyldig kodet tegn «%s»"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "%c%s forventer «i» eller «j» som argument, ikke «%c»"
@@ -3936,9 +4009,6 @@ msgstr "oppføring %s følger en oppføring med et annet navn"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s forventet krøllparanteser"
-
-#~ msgid "Unmatched }"
-#~ msgstr "Umatchet }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "INTET_NAVN!"

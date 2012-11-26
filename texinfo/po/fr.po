@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2011-06-20 23:11+0200\n"
 "Last-Translator: Jean-Philippe Guérard <jean-philippe.guerard@corbeaunoir."
 "org>\n"
@@ -84,6 +84,90 @@ msgstr "%s : l'option « -W %s » n'autorise pas d'argument\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s : l'option « %s » a besoin d'un argument\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "Expression rationnelle « %s » incorrecte : %s"
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "caractère codé invalide « %s »"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "caractère %c improbable dans @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "« } » sans correspondance"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "« } » sans correspondance"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "« } » sans correspondance"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "mémoire épuisée"
+
+#: gnulib/lib/regcomp.c:169
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "Expression rationnelle « %s » incorrecte : %s"
+
+#: gnulib/lib/regcomp.c:172
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Expression rationnelle « %s » incorrecte : %s"
+
+#: gnulib/lib/regcomp.c:175
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "La recherche utilise des expressions rationnelles."
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "« } » sans correspondance"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Aucune chaîne de recherche antérieure"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3652,9 +3736,6 @@ msgstr "l'entrée %s suit une entrée ayant un nom secondaire"
 #~ msgid "December"
 #~ msgstr "décembre"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "caractère %c improbable dans @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "l'argument de @sc est en majuscules, aucun effet"
 
@@ -3808,9 +3889,6 @@ msgstr "l'entrée %s suit une entrée ayant un nom secondaire"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "désolé, le codage « %s » n'est pas pris en charge"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "caractère codé invalide « %s »"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "%c%s attend l'argument « i » ou « j », et non « %c »"
@@ -4085,9 +4163,6 @@ msgstr "l'entrée %s suit une entrée ayant un nom secondaire"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s accolades attendues"
-
-#~ msgid "Unmatched }"
-#~ msgstr "« } » sans correspondance"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "AUCUN_NOM_!"

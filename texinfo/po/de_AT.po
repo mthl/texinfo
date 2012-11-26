@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 3.12d\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 1999-02-16 21:14+01:00\n"
 "Last-Translator: Karl Eichwalder <ke@suse.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -76,6 +76,78 @@ msgstr ""
 #: gnulib/lib/getopt.c:1013 gnulib/lib/getopt.c:1031
 #, c-format
 msgid "%s: option '-W %s' requires an argument\n"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+msgid "Invalid regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:139
+msgid "Invalid collation character"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:142
+msgid "Invalid character class name"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+msgid "Unmatched [ or [^"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:154
+msgid "Unmatched ( or \\("
+msgstr ""
+
+#: gnulib/lib/regcomp.c:157
+msgid "Unmatched \\{"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+msgid "Memory exhausted"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:169
+msgid "Invalid preceding regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:172
+msgid "Premature end of regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:175
+msgid "Regular expression too big"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:178
+msgid "Unmatched ) or \\)"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:703
+msgid "No previous regular expression"
 msgstr ""
 
 #: gnulib/lib/xalloc-die.c:34

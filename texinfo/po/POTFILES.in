@@ -8,6 +8,7 @@
 
 gnulib/lib/error.c
 gnulib/lib/getopt.c
+gnulib/lib/regcomp.c
 gnulib/lib/xalloc-die.c
 info/echo-area.c
 info/footnotes.c

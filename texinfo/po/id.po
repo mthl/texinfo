@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2008-11-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -75,6 +75,90 @@ msgstr "%s: opsi `-W %s' tidak mengijinkan sebuah argumen\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: opsi `%s' membutuhkan sebuah argumen\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "Error dalam ekspresi regular `%s': %s"
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "karakter terkode tidak valid `%s'"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "tidak seperti karakter %c dalam @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Tidak cocok }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Tidak cocok }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Tidak cocok }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "kehabisan memori"
+
+#: gnulib/lib/regcomp.c:169
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "Error dalam ekspresi regular `%s': %s"
+
+#: gnulib/lib/regcomp.c:172
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Error dalam ekspresi regular `%s': %s"
+
+#: gnulib/lib/regcomp.c:175
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "Menggunakan ekspresi regular untuk pencarian."
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Tidak cocok }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Tidak ada string pencarian sebelumnya"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3638,9 +3722,6 @@ msgstr "masukan %s mengikuti sebuah masukan dengan nama cadangan"
 #~ msgid "December"
 #~ msgstr "Desember"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "tidak seperti karakter %c dalam @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "@sc argumen semuanya huruf besar, jadi tidak ada efek"
 
@@ -3793,9 +3874,6 @@ msgstr "masukan %s mengikuti sebuah masukan dengan nama cadangan"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "maaf, pengkodean `%s' tidak didukung"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "karakter terkode tidak valid `%s'"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "%c%s diduga `i' atau `j' sebagai sebuah argumen, bukan `%c'"
@@ -4054,9 +4132,6 @@ msgstr "masukan %s mengikuti sebuah masukan dengan nama cadangan"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s diduga kurung"
-
-#~ msgid "Unmatched }"
-#~ msgstr "Tidak cocok }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "NO_NAME!"

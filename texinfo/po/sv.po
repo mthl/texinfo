@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2008-03-09 20:35+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -74,6 +74,90 @@ msgstr "%s: flaggan \"-W %s\" tillåter inget argument\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: flaggan \"%s\" kräver ett argument\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "Fel i reguljära uttrycket \"%s\": %s"
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "ogiltigt kodat tecken \"%s\""
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "osannolikt tecken %c i @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Ensam }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Ensam }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Ensam }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "minne slut"
+
+#: gnulib/lib/regcomp.c:169
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "Fel i reguljära uttrycket \"%s\": %s"
+
+#: gnulib/lib/regcomp.c:172
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Fel i reguljära uttrycket \"%s\": %s"
+
+#: gnulib/lib/regcomp.c:175
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "Använder reguljära uttryck i sökningar."
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Ensam }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Ingen tidigare söksträng"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3646,9 +3730,6 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 #~ msgid "December"
 #~ msgstr "december"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "osannolikt tecken %c i @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr ""
 #~ "@sc-argumentet är enbart med stora bokstäver, därför har det ingen effekt"
@@ -3803,9 +3884,6 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "tyvärr, kodningen \"%s\" stöds inte"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "ogiltigt kodat tecken \"%s\""
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "%c%s förväntar \"i\" eller \"j\" som argument, inte \"%c\""
@@ -4067,9 +4145,6 @@ msgstr "posten %s följer på en post med ett sekundärt namn"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s förväntade klamrar"
-
-#~ msgid "Unmatched }"
-#~ msgstr "Ensam }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "INGET_NAMN!"

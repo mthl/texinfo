@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -76,6 +76,86 @@ msgstr "%s: pøepínaè `-W %s' musí být zadán bez argumentu\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: pøepínaè `%s' vy¾aduje argument\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+msgid "Invalid regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "Vlo¾ení tohoto znaku"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "nepravdìpodobný znak %c ve @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Nepárová }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Nepárová }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Nepárová }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "virtuální pamì» vyèerpána"
+
+#: gnulib/lib/regcomp.c:169
+msgid "Invalid preceding regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:172
+msgid "Premature end of regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:175
+msgid "Regular expression too big"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Nepárová }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Není pøedchozí hledaný øetìzec"
 
 #: gnulib/lib/xalloc-die.c:34
 #, fuzzy
@@ -3414,9 +3494,6 @@ msgstr "polo¾ka %s následuje za polo¾kou se sekundárním jménem"
 #~ msgid "December"
 #~ msgstr "Prosinec"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "nepravdìpodobný znak %c ve @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "@sc argument je celý velkými písmeny, zbyteènì"
 
@@ -3609,9 +3686,6 @@ msgstr "polo¾ka %s následuje za polo¾kou se sekundárním jménem"
 #, fuzzy
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s oèekáváno `{...}'"
-
-#~ msgid "Unmatched }"
-#~ msgstr "Nepárová }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "Funkce neexistuje!"

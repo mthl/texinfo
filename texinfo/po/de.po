@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2012-11-23 21:05+0100\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -103,6 +103,90 @@ msgstr "%s: Option „-W %s“ erlaubt kein Argument\n"
 #, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: Option „-W %s“ benötigt ein Argument\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "Fehler in regulärem Ausdruck „%s“: %s"
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "Ungültiges kodiertes Zeichen: „%s“"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "wahrscheinlich falsches Zeichen „%c“ in @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Nicht übereinstimmende }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Nicht übereinstimmende }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Nicht übereinstimmende }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "kein Speicher mehr"
+
+#: gnulib/lib/regcomp.c:169
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "Fehler in regulärem Ausdruck „%s“: %s"
+
+#: gnulib/lib/regcomp.c:172
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Fehler in regulärem Ausdruck „%s“: %s"
+
+#: gnulib/lib/regcomp.c:175
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "Für Suchen werden reguläre Ausdrücke benutzt"
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Nicht übereinstimmende }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Keine vorherige Such-Zeichenkette."
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3703,9 +3787,6 @@ msgstr "Eintrag „%s“ direkt nach einem Untereintrag"
 #~ msgid "December"
 #~ msgstr "Dezember"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "wahrscheinlich falsches Zeichen „%c“ in @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr ""
 #~ "Argument von @sc besteht nur aus Großbuchstaben, somit keine Wirkung"
@@ -3832,9 +3913,6 @@ msgstr "Eintrag „%s“ direkt nach einem Untereintrag"
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "Kodierung „%s“ wird leider nicht unterstützt."
 
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "Ungültiges kodiertes Zeichen: „%s“"
-
 #~ msgid "%c%s expects a single character `i' or `j' as argument"
 #~ msgstr "%c%s erwartet einen einzelnen Buchstaben „i“ oder „j“ als Argument"
 
@@ -3907,9 +3985,6 @@ msgstr "Eintrag „%s“ direkt nach einem Untereintrag"
 #~ msgstr ""
 #~ "%s: Entferne Ausgabedatei für interne Verweise „%s“ wegen Fehler; --force "
 #~ "benutzen, um diese beizubehalten.\n"
-
-#~ msgid "Unmatched }"
-#~ msgstr "Nicht übereinstimmende }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "Kein_NAME!"

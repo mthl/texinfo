@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2005-02-07 09:27+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -74,6 +74,85 @@ msgstr "%s: ключ `-W %s' должен использоваться без аргумента\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: ключ `%s' должен использоваться c аргументом\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+msgid "Invalid regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "неправильно закодированный знак `%s'"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "маловероятный знак %c в @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Непарная }"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Непарная }"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Непарная }"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+msgid "Memory exhausted"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:169
+msgid "Invalid preceding regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:172
+msgid "Premature end of regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:175
+msgid "Regular expression too big"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Непарная }"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Нет строки предыдущего поиска"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3543,9 +3622,6 @@ msgstr "за вхождением %s следует вхождение с вторичным именем"
 #~ msgid "December"
 #~ msgstr "декабря"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "маловероятный знак %c в @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "весь аргумент @sc набран заглавными буквами, результата не будет"
 
@@ -3696,9 +3772,6 @@ msgstr "за вхождением %s следует вхождение с вторичным именем"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "извините, кодировка `%s' не поддерживается"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "неправильно закодированный знак `%s'"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "%c%s ожидает в качестве аргумента `i' или `j', а не `%c'"
@@ -3959,9 +4032,6 @@ msgstr "за вхождением %s следует вхождение с вторичным именем"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s подразумевает фигурные скобки"
-
-#~ msgid "Unmatched }"
-#~ msgstr "Непарная }"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "БЕЗ_ИМЕНИ!"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -77,6 +77,85 @@ msgstr "%s: opþiunea `-W %s' nu permite un argument\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: opþiunea `%s' necesitã un argument\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+msgid "Invalid regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "caracter codat invalid `%s'"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "caracter neverosimil %c în @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "} fãrã pereche"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "} fãrã pereche"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "} fãrã pereche"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+msgid "Memory exhausted"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:169
+msgid "Invalid preceding regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:172
+msgid "Premature end of regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:175
+msgid "Regular expression too big"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "} fãrã pereche"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Nici un ºir cãutat anterior"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3546,9 +3625,6 @@ msgstr "intrarea %s urmeazã o intrare cu nume secundar"
 #~ msgid "December"
 #~ msgstr "Decembrie"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "caracter neverosimil %c în @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr "argumentul @sc în litere mari, prin urmare fãrã efect"
 
@@ -3695,9 +3771,6 @@ msgstr "intrarea %s urmeazã o intrare cu nume secundar"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "ne pare rãu, codarea `%s' nu este suportatã"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "caracter codat invalid `%s'"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr "%c%s aºteaptã `i' sau `j' ca argument, nu `%c'"
@@ -3945,9 +4018,6 @@ msgstr "intrarea %s urmeazã o intrare cu nume secundar"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s am aºteptat paranteze"
-
-#~ msgid "Unmatched }"
-#~ msgstr "} fãrã pereche"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "NICI_UN_NUME!"

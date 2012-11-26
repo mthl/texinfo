@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2012-11-23 14:58-0800\n"
+"POT-Creation-Date: 2012-11-26 11:42-0800\n"
 "PO-Revision-Date: 2008-09-04 23:50+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -76,6 +76,90 @@ msgstr "%s: la opción `-W %s' no permite argumento alguno\n"
 #, fuzzy, c-format
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: la opción `%s' requiere un argumento\n"
+
+#: gnulib/lib/regcomp.c:130
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:133
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:136
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "Error en la expresión regular `%s': %s"
+
+#: gnulib/lib/regcomp.c:139
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "carácter codificado no válido `%s'"
+
+#: gnulib/lib/regcomp.c:142
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "carácter extraño %c en @var"
+
+#: gnulib/lib/regcomp.c:145
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:148
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:151
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "`}' desemparejada"
+
+#: gnulib/lib/regcomp.c:154
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "`}' desemparejada"
+
+#: gnulib/lib/regcomp.c:157
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "`}' desemparejada"
+
+#: gnulib/lib/regcomp.c:160
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:163
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:166
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "no más memoria disponible"
+
+#: gnulib/lib/regcomp.c:169
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "Error en la expresión regular `%s': %s"
+
+#: gnulib/lib/regcomp.c:172
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Error en la expresión regular `%s': %s"
+
+#: gnulib/lib/regcomp.c:175
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "Usando expresiones regulares durante búsquedas."
+
+#: gnulib/lib/regcomp.c:178
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "`}' desemparejada"
+
+#: gnulib/lib/regcomp.c:703
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "No existe constancia de búsqueda anterior"
 
 #: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
@@ -3801,9 +3885,6 @@ msgstr "la entrada %s sigue un elemento con nombre secundario"
 #~ msgid "December"
 #~ msgstr "Diciembre"
 
-#~ msgid "unlikely character %c in @var"
-#~ msgstr "carácter extraño %c en @var"
-
 #~ msgid "@sc argument all uppercase, thus no effect"
 #~ msgstr ""
 #~ "Todos los argumentos dados a la primitiva `@sc' están en mayúsculas. No "
@@ -3971,9 +4052,6 @@ msgstr "la entrada %s sigue un elemento con nombre secundario"
 
 #~ msgid "sorry, encoding `%s' not supported"
 #~ msgstr "lo sentimos, el tipo de codificación `%s' no está soportado"
-
-#~ msgid "invalid encoded character `%s'"
-#~ msgstr "carácter codificado no válido `%s'"
 
 #~ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 #~ msgstr ""
@@ -4286,9 +4364,6 @@ msgstr "la entrada %s sigue un elemento con nombre secundario"
 
 #~ msgid "%c%s expected braces"
 #~ msgstr "%c%s se esperaban llaves"
-
-#~ msgid "Unmatched }"
-#~ msgstr "`}' desemparejada"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "NO SE ENCONTRO FUNCIÓN!"
