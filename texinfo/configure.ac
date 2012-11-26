@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.124 2012-11-23 23:10:42 karl Exp $
+# $Id: configure.ac,v 1.125 2012-11-26 19:27:08 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -57,8 +57,14 @@ gl_EARLY
 # Rest of Gnulib.
 gl_INIT
 
-# Since we make a helper library.
-AC_PROG_RANLIB
+# Regex from Gnulib if needed.
+gl_REGEX
+if test $ac_use_included_regex = yes; then
+  AC_LIBOBJ([regex])
+  gl_PREREQ_REGEX
+fi 
+
+# help2man to generate man pages.
 AM_MISSING_PROG(HELP2MAN, help2man)
 
 AC_PROG_INSTALL
@@ -359,8 +365,7 @@ AC_MSG_CHECKING([Pod::Simple::Texinfo tests requirements])
 AC_MSG_RESULT([$pod_simple_texinfo_tests])
 AM_CONDITIONAL([POD_SIMPLE_TEXINFO_TESTS], [test "z$pod_simple_texinfo_tests" = 'zyes'])
 
-
-dnl The bulk config files.
+# The config files to generate.
 AC_CONFIG_FILES([\
   Makefile
   doc/Makefile

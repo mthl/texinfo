@@ -1,7 +1,11 @@
 2012-11-26  Karl Berry  <karl@gnu.org>
 
+	* configure.ac: invoke gl_REGEX, after
+	gnulib-tool --add-import regex.  This will now be used on
+	all systems except recent-enough libc.
+
 	* doc/texinfo.txi (Command Syntax): Explicitly mention
-	whitespace after command names being (usually) ignored.
+	whitespace after @-command names being (usually) ignored.
 
 	* doc/texinfo.txi (Not Ending a Sentence): Attempt
 	to document the sentence-ending heuristic more clearly.
