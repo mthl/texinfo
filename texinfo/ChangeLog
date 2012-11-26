@@ -1,5 +1,8 @@
 2012-11-26  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Command Syntax): Explicitly mention
+	whitespace after command names being (usually) ignored.
+
 	* doc/texinfo.txi (Not Ending a Sentence): Attempt
 	to document the sentence-ending heuristic more clearly.
 	Suggestion from Eli Zaretskii in <http://bugs.gnu.org/12973#14>,
