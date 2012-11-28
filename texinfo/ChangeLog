@@ -1,4 +1,11 @@
+2012-11-28  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/defs.in (path_spec, EGREP): need these
+	for findprog.
+
 2012-11-26  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.91.
 
 	* configure.ac: invoke gl_REGEX, after
 	gnulib-tool --add-import regex.  This will now be used on

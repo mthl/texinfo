@@ -1,5 +1,5 @@
 # @configure_input@
-# $Id: defs.in,v 1.3 2012-11-26 18:30:49 karl Exp $
+# $Id: defs.in,v 1.4 2012-11-28 17:37:23 karl Exp $
 # 
 # Copyright 2008, 2012 Free Software Foundation, Inc.
 #
@@ -36,6 +36,19 @@ if test -z "$srcdir"; then
    # compute $srcdir.
    srcdir=`echo "$0" | sed -e 's,/[^\\/]*$,,'`
    test $srcdir = $0 && srcdir=.
+fi
+
+# In case someone pedantic insists on using grep -E.
+: ${EGREP=egrep}
+
+# Systems which define $COMSPEC or $ComSpec use semicolons to separate
+# directories in TEXINPUTS -- except for Cygwin et al., where COMSPEC
+# might be inherited, but : is used.
+if test -n "$COMSPEC$ComSpec" \
+   && uname | $EGREP -iv 'cygwin|mingw|djgpp' >/dev/null; then
+  path_sep=";"
+else
+  path_sep=":"
 fi
 
 # Return true if PROG is somewhere in PATH, else false.
