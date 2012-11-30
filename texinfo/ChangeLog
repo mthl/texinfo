@@ -1,3 +1,27 @@
+2012-12-01  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix cursor positioning after index searches (bug #37823).
+
+	* info/window.h (WINDOW): Use size_t instead of int.
+	(log_line_no): New member.
+	(process_node_text): Change signature.
+	* info/window.c (window_new_screen_size,recalculate_line_starts)
+	(window_toggle_wrap,window_delete_window): Handle the
+	log_line_no array.
+	(calc_closure_expand): New static function.
+	(_calc_line_starts): Update log_line_no. Use calc_closure_expand
+	instead of the add_pointer_to_array macro.
+	(calculate_line_starts): Fill in log_line_no.
+	(window_log_to_phys_line): New function.
+	(process_node_text): Keep track of logical line numbers.
+	* info/display.c (display_node_text): Change signature.
+	* info/indices.c (info_next_index_match): Convert logical line
+	number to physical line.
+
+	* info/tag.c (tags_expand): Remove unused variables.
+	(handle_tag): Fix return type.
+	* info/tag.h (handle_tag): Fix return type.
+
 2012-11-30  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Invoking texi2any), tp/texi2any.pl: add -c as an
