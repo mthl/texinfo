@@ -573,7 +573,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
       --no-warn               suppress warnings (but not errors).
       --conf-dir=DIR          search also for initialization files in DIR.
       --init-file=FILE        load FILE to modify the default behavior.
-      --set-customization-variable VAR=VAL  set customization variable VAR 
+  -c, --set-customization-variable VAR=VAL  set customization variable VAR 
                                 to VAL.
   -v, --verbose               explain what is being done.
       --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
@@ -766,7 +766,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2012';
  'init-file=s' => sub {
     locate_and_load_init_file($_[1], [ @conf_dirs, @program_init_dirs ]);
  },
- 'set-customization-variable=s' => sub {
+ 'set-customization-variable|c=s' => sub {
    my $var_val = $_[1];
    if ($var_val =~ s/^(\w+)\s*=?\s*//) {
      my $var = $1;

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.496 2012-11-26 18:52:10 karl Exp $
+@c $Id: texinfo.txi,v 1.497 2012-11-30 18:32:30 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16999,7 +16999,9 @@ Generate a PostScript file using @command{texi2dvi --ps}, rather
 than Info (@pxref{texi2any Printed Output}).
 
 @item --set-customization-variable @var{var}=@var{value}
+@itemx -c @var{var}=@var{value}
 @opindex --set-customization-variable @var{var}=@var{value}
+@opindex -c @var{var}=@var{value}
 Set the customization variable @var{var} to @var{value}.  The @code{=}
 is optional, but both @var{var} and @var{value} must be quoted to the
 shell as necessary so the result is a single word.  Many aspects of
@@ -21671,7 +21673,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.496 2012-11-26 18:52:10 karl Exp $
+$Id: texinfo.txi,v 1.497 2012-11-30 18:32:30 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
