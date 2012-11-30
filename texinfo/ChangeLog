@@ -1,3 +1,9 @@
+2012-11-30  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/defs.in (mktemp): define minimal
+	replacement if not found in PATH.  It is lacking on AIX 6 (Ineiev)
+	and mingw (Eli).
+
 2012-11-28  Karl Berry  <karl@gnu.org>
 
 	* install-info/tests/defs.in (path_spec, EGREP): need these
