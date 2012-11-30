@@ -2,6 +2,8 @@
 
 	* doc/texinfo.txi (Invoking texi2any), tp/texi2any.pl: add -c as an
 	alias for --set-customization-variable (Karl idea).
+	* doc/texinfo.txi (Other Customization Variables): explain default 
+	values for customization variables.
 
 2012-11-30  Karl Berry  <karl@gnu.org>
 
