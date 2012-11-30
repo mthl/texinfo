@@ -1,4 +1,4 @@
-$Id: README,v 1.9 2012-11-16 18:33:03 karl Exp $
+$Id: README,v 1.10 2012-11-30 18:31:30 pertusus Exp $
 texinfo/tp/README
 
   Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -21,8 +21,10 @@ For these, internal versions are included, and are installed and used as
 part of Texinfo (not disturbing the Perl installation at all).
 
 To run the tests you also need:
-  Data::Compare, Test::Deep
-On Debian-based distros, the corresponding packages are named:
+  Test::More, Data::Compare, Test::Deep
+On Debian-based distros, Test::More is part of perl-modules and thus 
+installed with perl, the packages corresponding to the other modules
+are named:
   libdata-compare-perl libtest-deep-perl
 
 
