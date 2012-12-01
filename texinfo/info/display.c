@@ -1,5 +1,5 @@
 /* display.c -- How to display Info windows.
-   $Id: display.c,v 1.19 2012-11-30 23:58:20 gray Exp $
+   $Id: display.c,v 1.20 2012-12-01 15:15:44 gray Exp $
 
    Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012
    Free Software Foundation, Inc.
@@ -324,7 +324,7 @@ display_scroll_display (int start, int end, int amount)
       last = end + amount;
 
       /* Shift the lines to scroll right into place. */
-      for (i = 0; i < (end - start); i++)
+      for (i = 1; i <= (end - start); i++)
         {
           temp = the_display[last - i];
           the_display[last - i] = the_display[end - i];
@@ -340,8 +340,7 @@ display_scroll_display (int start, int end, int amount)
           the_display[i]->inverse = 0;
         }
     }
-
-  if (amount < 0)
+  else
     {
       last = start + amount;
       for (i = 0; i < (end - start); i++)

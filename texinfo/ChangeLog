@@ -1,5 +1,13 @@
 2012-12-01  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	Fix bug #37822 (incomplete redraw of screen).
+
+	* info/display.c (display_scroll_display): Fix a "fencepost"
+	error when scrolling down.
+	* info/terminal.c: Improve conditional.
+
+2012-12-01  Sergey Poznyakoff  <gray@gnu.org.ua>
+
 	Fix cursor positioning after index searches (bug #37823).
 
 	* info/window.h (WINDOW): Use size_t instead of int.
