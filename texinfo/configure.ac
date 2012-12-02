@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.125 2012-11-26 19:27:08 karl Exp $
+# $Id: configure.ac,v 1.126 2012-12-02 18:09:32 pertusus Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -35,6 +35,9 @@ PACKAGE_DATE=`${SHELL} "$srcdir"/build-aux/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
 
 # We need Perl
+AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
+dnl AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
+
 AC_PATH_PROG([PERL], [perl])
 if test -z "$PERL"; then
    AC_MSG_ERROR(
@@ -43,7 +46,18 @@ If you have perl installed somewhere not in PATH,
 specify where it is using
   ./configure PERL=/path/to/perl
 ])
+fi
 
+
+AC_MSG_CHECKING([Perl version and Encode module])
+if $PERL -e "use 5.007_003; use Encode;" > /dev/null 2>&1; then
+  perl_version_requirement='yes'
+else
+  perl_version_requirement='no'
+fi
+AC_MSG_RESULT($perl_version_requirement)
+if test z"$perl_version_requirement" = 'zno' ; then
+  AC_MSG_ERROR([perl >= 5.7.3 with Encode required by Texinfo.])
 fi
 
 # Checks for programs.
@@ -57,13 +71,6 @@ gl_EARLY
 # Rest of Gnulib.
 gl_INIT
 
-# Regex from Gnulib if needed.
-gl_REGEX
-if test $ac_use_included_regex = yes; then
-  AC_LIBOBJ([regex])
-  gl_PREREQ_REGEX
-fi 
-
 # help2man to generate man pages.
 AM_MISSING_PROG(HELP2MAN, help2man)
 
@@ -76,9 +83,6 @@ AC_PROG_MKDIR_P
 dnl gettext Makefiles may need MKINSTALLDIRS
 MKINSTALLDIRS="\$(top_srcdir)/build-aux/install-sh -d"
 AC_SUBST([MKINSTALLDIRS])
-
-AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
-AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
 
 # Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
 AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
@@ -307,7 +311,7 @@ AC_ARG_ENABLE([tp-tests],
     [
      if test "z$PROVE" = 'z'; then
        tp_tests='no'
-     elif $PERL -e "use 5.006; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
+     elif $PERL -e "use 5.007_003; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
      then
        tp_tests='yes'
      else  
@@ -329,7 +333,7 @@ AC_ARG_ENABLE([perl-api-texi-build],
        build_perl_api_texi='yes'
      fi],
     [
-     if $PERL -e "use 5.006; use Encode; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     if $PERL -e "use 5.007_003; use Encode; use Pod::Simple::PullParser;" > /dev/null 2>&1;
      then
        build_perl_api_texi='yes'
      else  
@@ -353,7 +357,7 @@ AC_ARG_ENABLE([pod-simple-texinfo-tests],
     [
      if test "z$PROVE" = 'z' ; then
        pod_simple_texinfo_tests='no'
-     elif $PERL -e "use 5.006; use Encode; use Test::More; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     elif $PERL -e "use 5.007_003; use Encode; use Test::More; use Pod::Simple::PullParser;" > /dev/null 2>&1;
      then
        pod_simple_texinfo_tests='yes'
      else
