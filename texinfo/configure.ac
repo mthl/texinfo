@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.126 2012-12-02 18:09:32 pertusus Exp $
+# $Id: configure.ac,v 1.127 2012-12-03 00:01:50 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -168,7 +168,7 @@ AM_CONDITIONAL(TOOLS_ONLY, [[test "x$tools_only" = x1]])
 # rather ncurses.  So we check for it.
 TERMLIBS=
 # Check for termlib before termcap because Solaris termcap needs libucb.
-TERMLIB_VARIANTS="ncurses curses termlib termcap terminfo"
+TERMLIB_VARIANTS="tinfo ncurses curses termlib termcap terminfo"
 for termlib in ${TERMLIB_VARIANTS}; do
   AC_CHECK_LIB(${termlib}, tgetent,
      [TERMLIBS="${TERMLIBS} -l${termlib}"; break])
