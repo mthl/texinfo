@@ -582,6 +582,9 @@ sub _convert($$;$)
       my $end_line;
       if ($root->{'args'}->[0]) {
         $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
+        if ($self->{'document_context'}->[-1]->{'in_preformatted'}) {
+          chomp($end_line);
+        }
       } else {
         # May that happen?
         $end_line = '';
@@ -1186,6 +1189,7 @@ sub _convert($$;$)
       $result .= "<$type_elements{$root->{'type'}}>";
     } elsif ($root->{'type'} eq 'preformatted') {
       $result .= "<$self->{'document_context'}->[-1]->{'preformatted_stack'}->[-1]>";
+      $self->{'document_context'}->[-1]->{'in_preformatted'} = 1;
     } elsif ($root->{'type'} eq 'def_line') {
       $result .= "<synopsis>";
       $result .= $self->_index_entry($root);
@@ -1251,6 +1255,7 @@ sub _convert($$;$)
       $result .= "</$type_elements{$root->{'type'}}>";
     } elsif ($root->{'type'} eq 'preformatted') {
       $result .= "</$self->{'document_context'}->[-1]->{'preformatted_stack'}->[-1]>";
+      delete $self->{'document_context'}->[-1]->{'in_preformatted'};
     }
   }
   $result = '{'.$result.'}' 

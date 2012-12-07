@@ -773,6 +773,18 @@ in example @r{in r---now @code{in co---de}}
 
 @command{in command---c @r{in r---r @file{in file---}}}.
 '],
+['index_entry_in_preformatted',
+'@node Top
+
+@example
+@cindex first
+text
+
+@cindex other @c comment
+text2
+@cindex last
+@end example
+'],
 );
 
 my @html_text_cases = (
