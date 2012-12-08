@@ -377,6 +377,7 @@ t/results/converters_tests/footnote_no_number_separate.pl
 t/results/converters_tests/image_extension.pl
 t/results/converters_tests/image_formatting.pl
 t/results/converters_tests/image_with_spaces.pl
+t/results/converters_tests/index_entry_in_preformatted.pl
 t/results/converters_tests/inline.pl
 t/results/converters_tests/inline_expand_tex.pl
 t/results/converters_tests/japanese_shift_jis.pl
