@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.498 2012-11-30 20:48:38 pertusus Exp $
+@c $Id: texinfo.txi,v 1.499 2012-12-08 11:41:51 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -21144,7 +21144,7 @@ that makes only sense in a paragraph are not accepted, such as
 @code{@@indent}.
 
 In addition to the above, sectioning commands cannot contain
-@code{@@anchor} or @code{@@footnote}.
+@code{@@anchor}, @code{@@footnote} or @code{@@verb}.
 
 In addition to the above, remaining commands (@code{@@node},
 @code{@@anchor}, @code{@@printindex}, @code{@@ref}, @code{@@math},
@@ -21707,7 +21707,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.498 2012-11-30 20:48:38 pertusus Exp $
+$Id: texinfo.txi,v 1.499 2012-12-08 11:41:51 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
