@@ -266,6 +266,27 @@ my $configured_url = '@PACKAGE_URL@';
 $configured_url = 'http://www.gnu.org/software/texinfo/'
   if ($configured_url eq '@' .'PACKAGE_URL@');
 
+my $texinfo_dtd_version = '@TEXINFO_DTD_VERSION@';
+# $hardcoded_version is undef for a standalone perl module
+if ($texinfo_dtd_version eq '@' . 'TEXINFO_DTD_VERSION@') {
+  $texinfo_dtd_version = undef;
+  if (defined($hardcoded_version)) {
+    if (open (CONFIGURE, 
+            "< ".File::Spec->catfile($srcdir, $updir, 'configure.ac'))) {
+      while (<CONFIGURE>) {
+        if (/^TEXINFO_DTD_VERSION=([0-9]\S*)/) {
+          $texinfo_dtd_version = "$1";
+          last;
+        }
+      }
+      close (CONFIGURE);
+    }
+  }
+}
+# Used in case it is not hardcoded in configure and for standalone perl module
+$texinfo_dtd_version = $configured_version
+  if (!defined($texinfo_dtd_version));
+
 # defaults for options relevant in the main program, not undef, and also
 # defaults for all the converters.
 # Other relevant options (undef) are NO_WARN FORCE OUTFILE
@@ -279,6 +300,7 @@ my $converter_default_options = {
     'PACKAGE_AND_VERSION' => $configured_name_version,
     'PACKAGE_URL' => $configured_url,
     'PROGRAM' => $real_command_name, 
+    'TEXINFO_DTD_VERSION' => $texinfo_dtd_version,
 };
 
 # determine configuration directories.

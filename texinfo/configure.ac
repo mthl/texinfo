@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.127 2012-12-03 00:01:50 karl Exp $
+# $Id: configure.ac,v 1.128 2012-12-10 01:34:12 pertusus Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -26,6 +26,12 @@ AC_PREREQ(2.59)
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([info/info.c])
+
+# version for the dtd.  In between releases, PACKAGE_VERSION is not set
+# to a value that corresponds to actual files on the internet.
+# TEXINFO_DTD_VERSION=$PACKAGE_VERSION
+TEXINFO_DTD_VERSION=5.00
+AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Conditional texi2html support.
 AM_CONDITIONAL([TEXI2HTML],[false])

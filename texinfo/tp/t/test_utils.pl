@@ -121,7 +121,7 @@ my %outfile_preamble = (
 ]>
 '. "<book lang=\"en\">\n", "</book>\n"],
   'xml' => ['<?xml version="1.0"?>
-<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.00//EN" "http://www.gnu.org/software/texinfo/dtd/5.00/texinfo.dtd">
 <texinfo xml:lang="en">
 ', "</texinfo>\n"],
  'html_text' => ['<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

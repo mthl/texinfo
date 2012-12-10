@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.499 2012-12-08 11:41:51 pertusus Exp $
+@c $Id: texinfo.txi,v 1.500 2012-12-10 01:34:13 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17806,6 +17806,10 @@ is @samp{texi2dvi}.  @xref{texi2any Printed Output}.
 Generate HTML and try to be as compatible as possible with
 @command{texi2html}; default false.
 
+@item TEXINFO_DTD_VERSION
+For XML@.  Version of the dtd used in the XML output preamble.  Default
+is set based on a configure.ac variable.
+
 @item TEXTCONTENT_COMMENT
 For stripped text content output (i.e., when @code{TEXTCONTENT} is
 set).  If set, also output comments.  Default off.
@@ -21707,7 +21711,7 @@ Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
 or other version control systems, which expand it into a string such
 as:
 @example
-$Id: texinfo.txi,v 1.499 2012-12-08 11:41:51 pertusus Exp $
+$Id: texinfo.txi,v 1.500 2012-12-10 01:34:13 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
