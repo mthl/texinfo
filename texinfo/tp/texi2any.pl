@@ -58,7 +58,11 @@ BEGIN
   # in-source run
   if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
        and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-    $texinfolibdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
+    if (defined($ENV{'top_srcdir'})) {
+      $texinfolibdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
+    } else {
+      $texinfolibdir = $command_directory;
+    }
     $lib_dir = File::Spec->catdir($texinfolibdir, 'maintain');
     unshift @INC, $texinfolibdir;
   } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
@@ -183,7 +187,12 @@ sub __p($$) {
   return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
 }
 
-my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
+my $srcdir;
+if (defined($ENV{'top_srcdir'})) {
+  $srcdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
+} else {
+  $srcdir = $command_directory;
+}
 
 my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 
