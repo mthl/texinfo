@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2012-12-11.19; # UTC
+htmlxrefversion=2012-12-11.22; # UTC
 
 # Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
 # 
@@ -76,7 +76,7 @@ binutils	node	${BINUTILS}/binutils/
  gprof		node	${BINUTILS}/gprof/
  ld		node	${BINUTILS}/ld/
 
-Pbison		mono	${GS}/bison/manual/bison.html
+bison		mono	${GS}/bison/manual/bison.html
 bison		node	${GS}/bison/manual/html_node/
 
 bpel2owfn	mono	http://www.gnu.org/software/bpel2owfn/manual/2.0.x/bpel2owfn.html
