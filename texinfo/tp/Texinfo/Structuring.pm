@@ -1898,7 +1898,7 @@ sub _do_index_keys($$$)
   foreach my $index_name (keys(%$index_entries)) {
     foreach my $entry (@{$index_entries->{$index_name}}) {
       $entry->{'in_code'} 
-         = $index_names->{$index_name}->{$entry->{'index_name'}};
+         = $index_names->{$index_name}->{$entry->{'index_prefix'}};
       $options->{'code'} = $entry->{'in_code'};
       $entry->{'key'} = Texinfo::Convert::Text::convert(
                               {'contents' => $entry->{'content'}},
