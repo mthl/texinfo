@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.128 2012-12-10 01:34:12 pertusus Exp $
+# $Id: configure.ac,v 1.129 2012-12-14 19:36:53 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -179,10 +179,12 @@ for termlib in ${TERMLIB_VARIANTS}; do
   AC_CHECK_LIB(${termlib}, tgetent,
      [TERMLIBS="${TERMLIBS} -l${termlib}"; break])
 done
+have_termlib=yes
 # don't bother warning on djgpp, it doesn't have a term library, it
 # ports each termcap-needing program separately according to its needs.
 if test -z "$TERMLIBS" && echo "$build" | grep -v djgpp >/dev/null; then
-  AC_MSG_WARN([probably need a terminal library, one of: ${TERMLIB_VARIANTS}])
+  AC_MSG_WARN([info needs a terminal library, one of: ${TERMLIB_VARIANTS}])
+  have_termlib=no
 fi
 
 # Checks for variables.
@@ -225,6 +227,7 @@ if test -n "$ac_cv_var_ospeed" \
   TERMLIBS="${TERMLIBS} -l${ac_cv_var_ospeed}"
 fi
 AC_SUBST(TERMLIBS)#
+AM_CONDITIONAL(HAVE_TERMLIBS, [[test "x$TERMLIBS" != x]])
 
 # Do not use <ncurses/termcap.h> unless we're linking with ncurses.
 # Must come after the termlib tests.
@@ -407,3 +410,9 @@ AC_CONFIG_FILES([\
 ])
 
 AC_OUTPUT
+
+# Summarize warnings to make them more visible.
+if test $have_termlib = no; then
+  AC_MSG_WARN([Could not find a terminal library among ${TERMLIB_VARIANTS}])
+  AC_MSG_WARN([The programs from \`info' directory will not be built.])
+fi
