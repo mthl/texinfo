@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.129 2012-12-14 19:36:53 karl Exp $
+# $Id: configure.ac,v 1.130 2012-12-14 19:49:18 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -377,6 +377,12 @@ AC_ARG_ENABLE([pod-simple-texinfo-tests],
 AC_MSG_CHECKING([Pod::Simple::Texinfo tests requirements])
 AC_MSG_RESULT([$pod_simple_texinfo_tests])
 AM_CONDITIONAL([POD_SIMPLE_TEXINFO_TESTS], [test "z$pod_simple_texinfo_tests" = 'zyes'])
+
+tgt_is_windows=no
+case "$target" in
+   *-mingw32 | *-mingw64 | *-msdosdjgpp )  tgt_is_windows=yes ;;
+esac     
+AM_CONDITIONAL([TGT_IS_WINDOWS], [test "x$tgt_is_windows" = "xyes"])
 
 # The config files to generate.
 AC_CONFIG_FILES([\
