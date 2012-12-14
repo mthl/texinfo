@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.501 2012-12-14 18:38:25 karl Exp $
+@c $Id: texinfo.txi,v 1.502 2012-12-14 18:57:42 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6300,6 +6300,7 @@ just the first argument if the node name and the section title are the
 same (or nearly so), and with the first and third arguments only if the
 node name and title are different.
 
+@findex xrefautomaticsectiontitle
 If you want the section title to be used by default instead of
 node names in cross references (an explicitly specified third argument
 still takes precedence), Texinfo can do this automatically:
@@ -21723,7 +21724,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.501 2012-12-14 18:38:25 karl Exp $
+$Id: texinfo.txi,v 1.502 2012-12-14 18:57:42 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,

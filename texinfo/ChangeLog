@@ -1,3 +1,8 @@
+2012-12-14  Thien-Thi Nguyen  <ttn@gnuvola.org>  (tiny change)
+
+	* doc/texinfo.txi (Three Arguments):
+	Add @findex xrefautomaticsectiontitle.
+
 2012-12-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Other Customization Variables): edit
