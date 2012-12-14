@@ -1,7 +1,13 @@
+2012-12-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Customization Variables): edit
+	wording of defaults, etc.
+
 2012-12-10  Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, tp/Makefile.am, tp/texi2any.pl, tp/Texinfo/Common.pm, 
-	tp/Texinfo/Convert/XML.pm, tp/maintain/catalog.xml.in, tp/t/test_utils.pl,
+	tp/Texinfo/Convert/XML.pm, tp/maintain/catalog.xml.in,
+	tp/t/test_utils.pl,
 	doc/texinfo.txi (Other Customization Variables):
 	Add a new configure variable TEXINFO_DTD_VERSION that holds the version
 	of the dtd.  Add the corresponding customization variable in tp/.
