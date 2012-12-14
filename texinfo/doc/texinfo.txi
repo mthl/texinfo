@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.502 2012-12-14 18:57:42 karl Exp $
+@c $Id: texinfo.txi,v 1.503 2012-12-14 22:40:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17744,7 +17744,7 @@ HTML file; default unset.
 The output file prefix, which is prepended to some output file names.
 By default it is set by @code{@@setfilename} or from the input file
 (@pxref{setfilename}).  How this value is used depends on the value of
-other customization variables or command line options, such as wheter 
+other customization variables or command line options, such as whether 
 the output is split and @code{NODE_FILENAMES}.  The default is unset.
 
 @item PROGRAM
@@ -17870,7 +17870,7 @@ For example, an @code{@@unnumberedsec} will be inserted if an
 
 @item simple_menu
 Does the same as @code{SIMPLE_MENU}: use a simple preformatted style
-for the menu.  It differs from setting @code{SIMPLE_MENU} in tat
+for the menu.  It differs from setting @code{SIMPLE_MENU} in that
 @code{SIMPLE_MENU} only has an effect in HTML output.
 
 @item move_index_entries_after_items
@@ -21724,7 +21724,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.502 2012-12-14 18:57:42 karl Exp $
+$Id: texinfo.txi,v 1.503 2012-12-14 22:40:49 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
