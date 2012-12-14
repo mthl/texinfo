@@ -1152,7 +1152,7 @@ while(@input_files) {
   }
 
   if ($formats_table{$format}->{'move_index_entries_after_items'}
-      or $tree_transformations{'simple_menus'}) {
+      or $tree_transformations{'move_index_entries_after_items'}) {
     Texinfo::Common::move_index_entries_after_items_in_tree($tree);
   }
 
