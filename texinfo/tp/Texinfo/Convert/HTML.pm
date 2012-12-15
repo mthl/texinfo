@@ -5676,20 +5676,19 @@ sub _prepare_index_entries($)
     $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE'))
                           and !$self->get_conf('USE_UNIDECODE'));
 
-    my ($index_names, $merged_indices, $index_entries)
+    my ($index_names, $merged_indices)
        = $self->{'parser'}->indices_information();
     $self->{'index_names'} = $index_names;
     #print STDERR "IIII ($index_names, $merged_indices, $index_entries)\n";
     my $merged_index_entries 
-        = Texinfo::Structuring::merge_indices($index_names, $merged_indices,
-                                              $index_entries);
+        = Texinfo::Structuring::merge_indices($index_names);
     $self->{'index_entries_by_letter'}
       = $self->Texinfo::Structuring::sort_indices_by_letter($merged_index_entries,
                                                             $index_names);
     $self->{'index_entries'} = $merged_index_entries;
 
-    foreach my $index_name (sort(keys(%$index_entries))) {
-      foreach my $index_entry (@{$index_entries->{$index_name}}) {
+    foreach my $index_name (sort(keys(%$index_names))) {
+      foreach my $index_entry (@{$index_names->{$index_name}->{'index_entries'}}) {
         my $region = '';
         $region = "$index_entry->{'region'}->{'cmdname'}-" 
           if (defined($index_entry->{'region'}));

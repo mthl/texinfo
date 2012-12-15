@@ -490,19 +490,33 @@ our %misc_commands = (
 # key is index name, keys of the reference value are the prefixes.
 # value associated with the prefix is 0 if the prefix is not a code-like
 # prefix, 1 if it is a code-like prefix (set by defcodeindex/syncodeindex).
+#our %index_names = (
+# 'cp' => {'cp' => 0, 'c' => 0},
+# 'fn' => {'fn' => 1, 'f' => 1},
+# 'vr' => {'vr' => 1, 'v' => 1},
+# 'ky' => {'ky' => 1, 'k' => 1},
+# 'pg' => {'pg' => 1, 'p' => 1},
+# 'tp' => {'tp' => 1, 't' => 1}
+#);
+
 our %index_names = (
- 'cp' => {'cp' => 0, 'c' => 0},
- 'fn' => {'fn' => 1, 'f' => 1},
- 'vr' => {'vr' => 1, 'v' => 1},
- 'ky' => {'ky' => 1, 'k' => 1},
- 'pg' => {'pg' => 1, 'p' => 1},
- 'tp' => {'tp' => 1, 't' => 1}
+ 'cp' => {'prefix' => ['c'], 'in_code' => 0},
+ 'fn' => {'prefix' => ['f'], 'in_code' => 1},
+ 'vr' => {'prefix' => ['v'], 'in_code' => 1},
+ 'ky' => {'prefix' => ['k'], 'in_code' => 1},
+ 'pg' => {'prefix' => ['p'], 'in_code' => 1},
+ 'tp' => {'prefix' => ['t'], 'in_code' => 1},
 );
+
+foreach my $index(keys(%index_names)) {
+  $index_names{$index}->{'name'} = $index;
+  push @{$index_names{$index}->{'prefix'}}, $index;
+}
 
 our %default_index_commands;
 # all the commands are readded dynamically in the Parser.
 foreach my $index_name (keys (%index_names)) {
-  foreach my $index_prefix (keys (%{$index_names{$index_name}})) {
+  foreach my $index_prefix (@{$index_names{$index_name}->{'prefix'}}) {
     next if ($index_prefix eq $index_name);
     # only put the one letter versions in the hash.
     $misc_commands{$index_prefix.'index'} = 'line';

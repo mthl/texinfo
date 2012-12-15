@@ -259,6 +259,11 @@ sub converter_initialize($)
     $self->{'context_block_commands'}->{$raw} = 1
          if $self->{'expanded_formats_hash'}->{$raw};
   } 
+  if ($self->{'parser'}) {
+    my ($index_names, $merged_indices)
+       = $self->{'parser'}->indices_information();
+    $self->{'index_names'} = $index_names;
+  }
 }
 
 sub output($$)
@@ -321,7 +326,17 @@ sub _index_entry($$)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $index_entry = $root->{'extra'}->{'index_entry'};
-    my $result = "<indexterm index=\"$index_entry->{'index_name'}\">";
+    my $attribute = '';
+    # in case the index is not a default index, or the style of the
+    # entry (in code or not) is not the default for this index
+    if ($self->{'index_names'}) {
+      my $in_code = $self->{'index_names'}->{$index_entry->{'index_name'}}->{'in_code'};
+      if (!$Texinfo::Common::index_names{$index_entry->{'index_name'}}
+          or $in_code != $Texinfo::Common::index_names{$index_entry->{'index_name'}}->{'in_code'}) {
+        $attribute .= " incode=\"$in_code\"";
+      }
+    }
+    my $result = "<indexterm index=\"$index_entry->{'index_name'}\"${attribute}>";
     push @{$self->{'document_context'}}, {'monospace' => [0]};
     $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1
       if ($index_entry->{'in_code'});

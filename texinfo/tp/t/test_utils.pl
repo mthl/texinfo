@@ -658,7 +658,7 @@ sub test($$)
   my ($initial_index_names, $initial_merged_indices) 
     = $parser->indices_information();
   # do a copy to compare the values and not the references
-  $initial_index_names = { %{$initial_index_names} };
+  $initial_index_names = dclone($initial_index_names);
   $initial_merged_indices = { %{$initial_merged_indices} };
   print STDERR "  TEST $test_name\n" if ($self->{'DEBUG'});
   my $result;
@@ -680,20 +680,23 @@ sub test($$)
   my $top_node = Texinfo::Structuring::nodes_tree($parser);
 
   my ($errors, $error_nrs) = $parser->errors();
-  my ($index_names, $merged_indices, $index_entries) 
+  my ($index_names, $merged_indices) 
        = $parser->indices_information();
   # FIXME maybe it would be good to compare $merged_index_entries?
   my $merged_index_entries 
-     = Texinfo::Structuring::merge_indices($index_names, $merged_indices, $index_entries);
+     = Texinfo::Structuring::merge_indices($index_names);
   
+  # only print indices information if it differs from the default
+  # indices
   my $indices;
-  $indices->{'index_names'} = $index_names
-    unless (Data::Compare::Compare($index_names, $initial_index_names));
+  my $trimmed_index_names = remove_keys($index_names, ['index_entries']);
+  $indices->{'index_names'} = $trimmed_index_names
+    unless (Data::Compare::Compare($trimmed_index_names, $initial_index_names));
   $indices->{'merged_indices'} = $merged_indices
     unless (Data::Compare::Compare($merged_indices, $initial_merged_indices));
 
   my $sorted_index_entries;
-  if ($index_entries) {
+  if ($merged_index_entries) {
     $sorted_index_entries 
       = Texinfo::Structuring::sort_indices_by_letter($parser, 
                                                      $merged_index_entries,

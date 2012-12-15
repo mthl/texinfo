@@ -785,6 +785,33 @@ text2
 @cindex last
 @end example
 '],
+['printindex_merged_indices_code_style',
+'@node Top
+
+@synindex cp fn
+
+@synindex vr fn
+
+@cindex c``b
+
+@vindex v``j
+
+@findex f``g
+
+@defcodeindex cdi
+
+@synindex cdi fn
+
+@cdiindex cdi``h
+
+@defindex ddi
+
+@syncodeindex ddi cp
+
+@ddiindex ddi``g
+
+@printindex fn
+'],
 );
 
 my @html_text_cases = (
