@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.504 2012-12-15 17:27:33 karl Exp $
+@c $Id: texinfo.txi,v 1.505 2012-12-15 23:21:02 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17859,33 +17859,36 @@ The url used for the Up pointer of the Top node for HTML; default
 @code{undef}, meaning no link is generated.
 
 @item TREE_TRANSFORMATIONS
-The associated value is a comma separated list of transformations
-applied to the Texinfo tree prior to outputting the result.  The
-following transformations are currently supported:
+The associated value is a comma separated list of transformations that
+can be applied to the Texinfo tree prior to outputting the result.
+The only one executed by default is
+@samp{move_index_entries_after_items} for HTML and Docbook output.
+
+The following transformations are currently supported:
 
 @table @samp
+@item complete_tree_nodes_menus
+Add menu entries or whole menus for nodes associated with sections,
+based on the sectioning tree.
+
 @item fill_gaps_in_sectioning
 Adds empty @code{@@unnumbered} in a tree to fill gaps in sectioning.
 For example, an @code{@@unnumberedsec} will be inserted if an
 @code{@@chapter} is followed by an @code{@@subsection}.
 
+@item insert_nodes_for_sectioning_commands
+Insert nodes for sectioning commands without node.
+
+@item move_index_entries_after_items
+In @code{@@enumerate} and @code{@@itemize}, move index entries
+appearing just before an @code{@@item} to just after the
+@code{@@item}.  Comment lines between index entries are moved too.  As
+mentioned above, this is always done for HTML and Docbook output.
+
 @item simple_menu
 Does the same as @code{SIMPLE_MENU}: use a simple preformatted style
 for the menu.  It differs from setting @code{SIMPLE_MENU} in that
 @code{SIMPLE_MENU} only has an effect in HTML output.
-
-@item move_index_entries_after_items
-In @code{@@enumerate} and @code{@@itemize}, move index entries
-appearing just before @code{@@item} after the @code{@@item}.  Comment
-lines between index entries are moved too.  Always done for HTML and
-Docbook outputs.
-
-@item insert_nodes_for_sectioning_commands
-Insert nodes for sectioning commands without node.
-
-@item complete_tree_nodes_menus
-Add menu entries or whole menus for nodes associated with sections,
-based on the sectioning tree.
 
 @item regenerate_master_menu
 Regenerate the Top node master menu, replacing the first @code{@@detailmenu}
@@ -21725,7 +21728,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.504 2012-12-15 17:27:33 karl Exp $
+$Id: texinfo.txi,v 1.505 2012-12-15 23:21:02 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,

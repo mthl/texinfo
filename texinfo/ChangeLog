@@ -2,6 +2,8 @@
 
 	* doc/texinfo.txi: use "sectioning" as the general term
 	in a few places.
+	(Other Customization Variables) <TREE_TRANSFORMATIONS>: more
+	on default.
 
 2012-12-11  Eli Zaretskii  <eliz@gnu.org>
 
