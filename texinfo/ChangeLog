@@ -1,3 +1,8 @@
+2012-12-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: use "sectioning" as the general term
+	in a few places.
+
 2012-12-11  Eli Zaretskii  <eliz@gnu.org>
 
 	* configure.ac (TGT_IS_WINDOWS): New conditional.

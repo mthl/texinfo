@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.503 2012-12-14 22:40:49 karl Exp $
+@c $Id: texinfo.txi,v 1.504 2012-12-15 17:27:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1094,12 +1094,12 @@ sections, subsections, etc.  For online output (Info, HTML, @dots{}),
 with interactive navigation and no physical pages, there are so-called
 ``nodes''.
 
-Typically, the chapter structure and the node structure are completely
-parallel, with one node for each chapter, section, etc., and with the
-nodes following the same hierarchical arrangement as the sectioning.
-Thus, if a node is at the logical level of a chapter, its child nodes
-are at the level of sections; similarly, the child nodes of sections
-are at the level of subsections.
+Typically, the sectioning structure and the node structure are
+completely parallel, with one node for each chapter, section, etc.,
+and with the nodes following the same hierarchical arrangement as the
+sectioning.  Thus, if a node is at the logical level of a chapter, its
+child nodes are at the level of sections; similarly, the child nodes
+of sections are at the level of subsections.
 
 Each @dfn{node} has a name, and contains the discussion of one topic.
 Along with the text for the user to read, each node also has pointers
@@ -1130,10 +1130,10 @@ represent links that do not fit a hierarchical structure.
 
 Although it is technically possible to create Texinfo documents with
 only one structure or the other, or for the two structures not to be
-parallel, or for the sectioning/node hierarchy to be abnormally
-formed, this is @emph{not at all recommended}.  To the best of our
-knowledge, all the Texinfo manuals currently in general use do follow
-the conventional double structure.
+parallel, or for either the sectioning or node structure to be
+abnormally formed, etc., this is @emph{not at all recommended}.  To
+the best of our knowledge, all the Texinfo manuals currently in
+general use do follow the conventional parallel structure.
 
 
 @node Info Files
@@ -2097,23 +2097,22 @@ the same words as a node name but a useful description uses different
 words.
 
 @node Showing the Structure
-@section Showing the Section Structure of a File
-@cindex Showing the section structure of a file
-@cindex Section structure of a file, showing it
-@cindex Structure of a file, showing it
-@cindex Outline of file structure, showing it
+@section Showing the Sectioning Structure of a File
+@cindex Showing the sectioning structure of a file
+@cindex Sectioning structure of a file, showing
+@cindex Structure of a file, showing
+@cindex Outline of file structure, showing
 @cindex Contents-like outline of file structure
-@cindex File section structure, showing it
-@cindex Texinfo file section structure, showing it
+@cindex File sectioning structure, showing
+@cindex Texinfo file sectioning structure, showing
 
-You can show the section structure of a Texinfo file by using the
+You can show the sectioning structure of a Texinfo file by using the
 @kbd{C-c C-s} command (@code{texinfo-show-structure}).  This command
-shows the section structure of a Texinfo file by listing the lines
-that begin with the @@-commands for @code{@@chapter},
-@code{@@section}, and the like.  It constructs what amounts
-to a table of contents.  These lines are displayed in another buffer
-called the @samp{*Occur*} buffer.  In that buffer, you can position
-the cursor over one of the lines and use the @kbd{C-c C-c} command
+lists the lines that begin with the @@-commands for @code{@@chapter},
+@code{@@section}, and the like.  It constructs what amounts to a table
+of contents.  These lines are displayed in another buffer called the
+@samp{*Occur*} buffer.  In that buffer, you can position the cursor
+over one of the lines and use the @kbd{C-c C-c} command
 (@code{occur-mode-goto-occurrence}), to jump to the corresponding spot
 in the Texinfo file.
 
@@ -4303,13 +4302,15 @@ variables list for Emacs, most typically a @samp{compile-command}
 @chapter Chapter Structuring
 @cindex Chapter structuring
 @cindex Structuring of chapters
+@cindex Sectioning
 
-Texinfo's @dfn{chapter structuring} commands divide a document into a
-hierarchy of chapters, sections, subsections, and subsubsections.
-These commands generate large headings in the text, like the one
-above.  They also provide information for generating the table of
-contents (@pxref{Contents,, Generating a Table of Contents}), and for
-implicitly determining node pointers, as is recommended
+Texinfo's @dfn{chapter structuring} commands (could more generally be
+called @dfn{sectioning structuring}, but that is awkward) divide a
+document into a hierarchy of chapters, sections, subsections, and
+subsubsections.  These commands generate large headings in the text,
+like the one above.  They also provide information for generating the
+table of contents (@pxref{Contents,, Generating a Table of Contents}),
+and for implicitly determining node pointers, as is recommended
 (@pxref{makeinfo Pointer Creation,, Creating Pointers with
 @code{makeinfo}}).
 
@@ -21724,7 +21725,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.503 2012-12-14 22:40:49 karl Exp $
+$Id: texinfo.txi,v 1.504 2012-12-15 17:27:33 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
