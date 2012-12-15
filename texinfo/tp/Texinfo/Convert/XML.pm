@@ -335,6 +335,9 @@ sub _index_entry($$)
           or $in_code != $Texinfo::Common::index_names{$index_entry->{'index_name'}}->{'in_code'}) {
         $attribute .= " incode=\"$in_code\"";
       }
+      if ($self->{'index_names'}->{$index_entry->{'index_name'}}->{'merged_in'}) {
+        $attribute .= " mergedindex=\"$self->{'index_names'}->{$index_entry->{'index_name'}}->{'merged_in'}\"";
+      }
     }
     my $result = "<indexterm index=\"$index_entry->{'index_name'}\"${attribute}>";
     push @{$self->{'document_context'}}, {'monospace' => [0]};
