@@ -215,6 +215,9 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
     File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData')) {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
+      # the messages in this domain are not regenerated automatically, 
+      # only when calling ./maintain/regenerate_perl_module_files.sh
+      Locale::Messages::bindtextdomain ($messages_textdomain, $locales_dir);
       $locales_dir_found = 1;
       last;
     }
@@ -225,10 +228,12 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
 } else {
   Locale::Messages::bindtextdomain ($strings_textdomain, 
                                     File::Spec->catdir($datadir, 'locale'));
+  Locale::Messages::bindtextdomain ($messages_textdomain,
+                                    File::Spec->catdir($datadir, 'locale'));
 }
 
-Locale::Messages::bindtextdomain ($messages_textdomain, 
-                                  File::Spec->catdir($datadir, 'locale'));
+#Locale::Messages::bindtextdomain ($messages_textdomain, 
+#                                  File::Spec->catdir($datadir, 'locale'));
 
 
 # Version setting is complicated, because we cope with 
@@ -496,7 +501,8 @@ my @prepend_dirs = ();
 # options for all the files
 my $parser_default_options = {'expanded_formats' => [], 
                               'values' => {'txicommandconditionals' => 1},
-                              'gettext' => \&__};
+                              'gettext' => \&__,
+                              'pgettext' => \&__p,};
 
 Texinfo::Config::_load_config($converter_default_options, $cmdline_options);
 

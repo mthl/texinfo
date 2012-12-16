@@ -97,6 +97,7 @@ our %default_parser_state_configuration = (
   'context' => '_root',
   'expanded_formats' => [],
   'gettext' => sub {return $_[0];},
+  'pgettext' => sub {return $_[1];},
   'include_directories' => [ '.' ],
   # these are the user-added indices.  May be an array reference on names
   # or an hash reference in the same format than %index_names below

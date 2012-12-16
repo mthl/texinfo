@@ -94,11 +94,11 @@ sub N__($)
   return $_[0];
 }
 
-sub __($$)
-{
-  my $self = shift;
-  return &{$self->{'gettext'}}(@_);
-}
+#sub __($$)
+#{
+#  my $self = shift;
+#  return &{$self->{'gettext'}}(@_);
+#}
 
 # Customization variables obeyed by the Parser, and the default values.
 our %default_customization_values = (
@@ -554,6 +554,7 @@ sub parser(;$$)
   my $parser = _deep_copy(\%parser_default_configuration);
   # _deep_copy doesn't handle subs
   $parser->{'gettext'} = $parser_default_configuration{'gettext'};
+  $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
 
   # called not object-oriented
   if (ref($class) eq 'HASH') {
@@ -579,6 +580,7 @@ sub parser(;$$)
     }
     #$parser = _deep_copy($old_parser);
     $parser->{'gettext'} = $old_parser->{'gettext'};
+    $parser->{'pgettext'} = $old_parser->{'pgettext'};
     bless $parser, $class;
     $conf = shift;
 
