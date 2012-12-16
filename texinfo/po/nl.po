@@ -1,4 +1,4 @@
-# Dutch translations for GNU texinfo.
+# Dutch translations for GNU Texinfo.
 # Copyright (C) 2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: texinfo-4.13.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2012-11-26 11:42-0800\n"
-"PO-Revision-Date: 2012-12-05 11:01+0100\n"
+"PO-Revision-Date: 2012-12-15 21:34+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -3069,7 +3069,7 @@ msgstr ""
 #: tp/Texinfo/Structuring.pm:798
 #, perl-format
 msgid "For `%s', up in menu `%s' and up `%s' don't match"
-msgstr "Voor '%s' komen 'Up' in menu '%s' in 'Up %s' niet overeen"
+msgstr "Bij '%s' komen 'Up' in menu '%s' en 'Up %s' niet overeen"
 
 #: tp/Texinfo/Structuring.pm:1282
 #, perl-format
@@ -3278,12 +3278,14 @@ msgstr ""
 "      --css-include=BESTAND   dit bestand in de uitvoer opnemen;\n"
 "                                als BESTAND '-' is, dan standaardinvoer lezen\n"
 "      --css-ref=URL           een referentie naar een CSS-bestand genereren\n"
-"      --internal-links=BSTAND tabel met interne verwijzingen hierin opslaan\n"
+"      --internal-links=BSTND  tabel met interne verwijzingen hierin opslaan\n"
 "      --split=NIVEAU          in bestanden opsplitsen op aangegeven niveau;\n"
 "                                NIVEAU kan zijn: 'chapter' (hoofdstuk),\n"
 "                               'section' (sectie), of 'node' (pagina)\n"
 "      --transliterate-file-names\n"
 "                              bestandsnamen met alleen ASCII-tekens produceren\n"
+"      --node-files            doorverwijzingsbestanden produceren voor pagina's\n"
+"                                en ankers; is standaard alleen bij opsplitsen\n"
 
 #: tp/texi2any.pl:637
 msgid ""
