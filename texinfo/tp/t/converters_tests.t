@@ -812,6 +812,12 @@ text2
 
 @printindex fn
 '],
+['email_table_command_as_argument',
+'@table @email
+@item www-discuss@@gnu.org
+discussion
+@end table
+'],
 );
 
 my @html_text_cases = (

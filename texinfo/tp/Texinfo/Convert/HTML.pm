@@ -2930,6 +2930,7 @@ sub _convert_item_command($$$$)
     }
   } elsif ($command->{'parent'}->{'type'}
            and $command->{'parent'}->{'type'} eq 'table_term') {
+    # FIXME instead use the code of Plaintext or DocBook.
     my $args = $content;
     if ($args->[0]) {
       my $tree = $args->[0]->{'tree'};
