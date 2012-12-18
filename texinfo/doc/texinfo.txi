@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.505 2012-12-15 23:21:02 karl Exp $
+@c $Id: texinfo.txi,v 1.506 2012-12-18 01:31:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15509,7 +15509,7 @@ itself.
 
 
 @node Format with @code{tex}/@code{texindex}
-@section Format with @code{tex} and @code{texindex}
+@section Format with @code{tex}/@code{texindex}
 @cindex Shell formatting with @code{tex} and @code{texindex}
 @cindex Formatting with @code{tex} and @code{texindex}
 @cindex DVI file
@@ -16322,8 +16322,8 @@ wide format.
 
 @node @code{@@pagesizes}
 @section @code{@@pagesizes} [@var{width}][, @var{height}]: Custom Page Sizes
-
 @anchor{pagesizes}@c old node name
+
 @findex pagesizes
 @cindex Custom page sizes
 @cindex Page sizes, customized
@@ -21728,7 +21728,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.505 2012-12-15 23:21:02 karl Exp $
+$Id: texinfo.txi,v 1.506 2012-12-18 01:31:18 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
