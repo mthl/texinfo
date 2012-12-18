@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.131 2012-12-18 01:36:12 karl Exp $
+# $Id: configure.ac,v 1.132 2012-12-18 23:38:29 pertusus Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -27,10 +27,17 @@ AC_PREREQ(2.59)
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([info/info.c])
 
-# version for the dtd.  In between releases, PACKAGE_VERSION is not set
-# to a value that corresponds to actual files on the internet.
+# version for the dtd.  It is manually set to the next version number 
+# rather than $PACKAGE_VERSION as soon as the DTD is modified.  There 
+# are 3 reasons for that:
+# 1. to avoid using a DTD from internet that wouldn't be in sync;
+# 2. to avoid unnnecessary changes in XML output file headers, in
+#    test results for instance.  Otherwise after a release the 
+#    devel version and the pretest versions would be used;
+# 3. it may be kept as is in case there were no change in the DTD
+#    between releases.  This is highly improbable, but who knows.
 # TEXINFO_DTD_VERSION=$PACKAGE_VERSION
-TEXINFO_DTD_VERSION=5.00
+TEXINFO_DTD_VERSION=5.0
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Conditional texi2html support.

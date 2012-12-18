@@ -1,3 +1,8 @@
+2012-12-19  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac, tp/Texinfo/*, tp/t/*: use the correct next version 
+	number for DTD and in other places.
+
 2012-12-17  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.13.92.

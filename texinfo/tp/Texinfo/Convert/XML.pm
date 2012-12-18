@@ -52,7 +52,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.00';
+$VERSION = '5.0';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
@@ -60,7 +60,7 @@ my %defaults = (
   'EXTENSION'            => 'xml',
   #'output_perl_encoding' => 'utf8',
   'OUTPUT_ENCODING_NAME' => 'utf-8',
-  'TEXINFO_DTD_VERSION'  => '5.00',
+  'TEXINFO_DTD_VERSION'  => '5.0',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'output_format'        => 'xml',
