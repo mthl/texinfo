@@ -3299,8 +3299,9 @@ sub _end_line($$$)
         push @{$self->{'current_parts'}}, $current;
         if ($self->{'current_node'}
            and !$self->{'current_node'}->{'extra'}->{'associated_section'}) {
-          $self->line_warn (sprintf($self->__("\@node precedes \@%s, but part are not associated with nodes"), 
-              $command), $line_nr);
+          $self->line_warn (sprintf($self->__(
+           "\@node precedes \@%s, but parts may not be associated with nodes"), 
+                                    $command), $line_nr);
         }
       }
     }
@@ -5260,9 +5261,11 @@ sub _parse_line_command_args($$$)
     if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s+([[:alnum:]][[:alnum:]\-]*)$/) {
       my $index_from = $1;
       my $index_to = $2;
-      $self->line_error (sprintf($self->__("Unknown from index `%s' in \@%s"), $index_from, $command), $line_nr)
+      $self->line_error (sprintf($self->__("Unknown source index in \@%s: %s"),
+                                  $command, $index_from), $line_nr)
         unless $self->{'index_names'}->{$index_from};
-      $self->line_error (sprintf($self->__("Unknown to index name `%s' in \@%s"), $index_to, $command), $line_nr)
+      $self->line_error (sprintf($self->__("Unknown destination index in \@%s: %s"), 
+                                 $command, $index_to), $line_nr)
         unless $self->{'index_names'}->{$index_to};
       if ($self->{'index_names'}->{$index_from} 
            and $self->{'index_names'}->{$index_to}) {

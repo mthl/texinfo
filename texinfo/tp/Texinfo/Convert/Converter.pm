@@ -437,8 +437,12 @@ sub _set_outfile($$$)
     $input_basename = '';
   }
   $self->{'input_basename'} = $input_basename;
-  $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
-  $input_basename =~ s/\.te?x(i|info)?$//;
+  if ($input_basename eq '-') {
+    $input_basename = $STDIN_DOCU_NAME 
+  } else {
+    $input_basename =~ s/\.te?x(i|info)?$//;
+  }
+  $self->{'input_basename_name'} = $input_basename;
 
   my $setfilename;
   if (defined($self->get_conf('setfilename'))) {

@@ -1467,8 +1467,8 @@ sub parse_renamed_nodes_file($$;$$)
         if (scalar(@old_names)) {
           foreach my $old_node_name (@old_names) {
             $renamed_nodes->{$old_node_name} = $_;
-            $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
           }
+          $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
           @old_names = ();
         } else {
           warn (sprintf($self->__("%s:%d: no node to be renamed\n"), 
@@ -1486,7 +1486,9 @@ sub parse_renamed_nodes_file($$;$$)
              $renamed_nodes_file, $renamed_nodes_line_nr));
     }
     if (!close(RENAMEDFILE)) {
-      $self->document_warn(sprintf($self->__("Error on closing renamed nodes file %s: %s"), 
+      $self->document_warn(sprintf($self->__p(
+          "see HTML Xref Link Preservation in the Texinfo manual for context",
+          "Error on closing node-renaming configuration file %s: %s"), 
                             $renamed_nodes_file, $!));
     }
   } else {

@@ -6748,7 +6748,7 @@ sub output($$)
   # collect renamed nodes
   ($self->{'renamed_nodes'}, $self->{'renamed_nodes_lines'}, 
        $self->{'renamed_nodes_file'})
-    = Texinfo::Common::collect_renamed_nodes($self, $self->{'document_name'},
+    = Texinfo::Common::collect_renamed_nodes($self, $self->{'input_basename_name'},
                                              $self->{'renamed_nodes'});
 
   # This should return undef if called on a tree without node or sections.
@@ -7071,6 +7071,7 @@ sub output($$)
     if ($self->{'parser'}) {
       $parser_for_renamed_nodes = $self->{'parser'}->parser();
     }
+    my %warned_new_node;
     foreach my $old_node_name (keys(%{$self->{'renamed_nodes'}})) {
       my $parsed_old_node = $self->_parse_node_and_warn_external(
          $old_node_name, $parser_for_renamed_nodes,
@@ -7079,7 +7080,7 @@ sub output($$)
       if ($parsed_old_node) {
         if ($self->label_command($parsed_old_node->{'normalized'})) {
           $self->document_error(sprintf($self->__(
-               "Node `%s' that is to be renamed exists"), $old_node_name));
+               "Old name for `%s' is a node of the document"), $old_node_name));
           $parsed_old_node = undef;
         } elsif ($parsed_old_node->{'normalized'} !~ /[^-]/) {
           $self->document_error(sprintf($self->__(
@@ -7092,12 +7093,15 @@ sub output($$)
          $new_node_name, $parser_for_renamed_nodes,
          $self->{'renamed_nodes_lines'}->{$new_node_name},
          $self->{'renamed_nodes_file'});
-      if ($parsed_new_node) {
-        if (!$self->label_command($parsed_new_node->{'normalized'})) {
-             $self->document_error(sprintf($self->__(
-              "Node to be renamed as, `%s' not found"), $new_node_name));
-          $parsed_new_node = undef;
+      if (!$self->label_command($parsed_new_node->{'normalized'})) {
+        if (!$warned_new_node{$new_node_name}) {
+           $self->file_line_warn(sprintf($self->__(
+            "Target node (new name for `%s') not in document: %s"), 
+             $old_node_name, $new_node_name), $self->{'renamed_nodes_file'},
+             $self->{'renamed_nodes_lines'}->{$new_node_name});
+          $warned_new_node{$new_node_name} = 1;
         }
+        $parsed_new_node = undef;
       }
       if ($parsed_new_node and $parsed_old_node) {
         my ($filename, $target, $id) = $self->_node_id_file($parsed_old_node);
@@ -7123,7 +7127,8 @@ sub output($$)
           print $file_fh $redirection_page;
           $self->register_close_file($out_filename);
           if (!close ($file_fh)) {
-            $self->document_error(sprintf($self->__("Error on closing renamed node file %s: %s"),
+            $self->document_error(sprintf($self->__(
+                   "Error on closing renamed node redirection file %s: %s"),
                                     $out_filename, $!));
             return undef;
           }
