@@ -2933,26 +2933,8 @@ sub _convert_item_command($$$$)
     # FIXME instead use the code of Plaintext or DocBook.
     my $args = $content;
     if ($args->[0]) {
-      my $tree = $args->[0]->{'tree'};
-      my $table_command = $command->{'parent'}->{'parent'}->{'parent'};
-      if ($table_command->{'extra'} 
-          and $table_command->{'extra'}->{'command_as_argument'}) {
-        my $command_as_argument 
-          = $table_command->{'extra'}->{'command_as_argument'};
-        if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
-          $tree = {'cmdname' => $command_as_argument->{'cmdname'},
-                   'args' => [{'type' => 'brace_command_arg',
-                              'contents' => [$tree]}]
-          };
-        } else {
-          $tree = {'cmdname' => $command_as_argument->{'cmdname'},
-                        'type' => $command_as_argument->{'type'},
-                        'extra' => $command_as_argument->{'extra'},
-                   'args' => [{'type' => 'brace_command_arg',
-                              'contents' => [$tree]}]
-          };
-        }
-      }
+      my $tree = $self->_table_item_content_tree($command,
+                                                [$args->[0]->{'tree'}]);
       my $result = $self->convert_tree ($tree);
       foreach my $command_name (reverse($self->commands_stack())) {
         if ($preformatted_code_commands{$command_name}) {
