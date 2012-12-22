@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.51 2012-12-14 19:49:18 karl Exp $
+# $Id: Makefile.am,v 1.52 2012-12-22 22:25:53 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -15,10 +15,12 @@
 
 bin_PROGRAMS = texindex
 bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
-if TGT_IS_WINDOWS
- bin_SCRIPTS += makeinfo.bat pod2texi.bat texi2any.bat
-endif
 nodist_noinst_SCRIPTS = txixml2texi
+
+w32_bat = makeinfo.bat pod2texi.bat texi2any.bat
+if TGT_IS_WINDOWS
+ bin_SCRIPTS += $(w32_bat)
+endif
 
 # for auctex.
 pdftexi2dvi: texi2pdf
@@ -57,7 +59,7 @@ EXTRA_DIST = README deref.c detexinfo dir-example fix-info-dir fixfonts \
   install-info-html outline.gawk pdftexi2dvi \
   prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi texi2pdf txitextest \
   $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
-  texi2html txixml2texi.pl
+  texi2html txixml2texi.pl $(w32_bat)
 
 DISTCLEANFILES = txixml2texi
 
