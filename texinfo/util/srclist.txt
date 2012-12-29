@@ -41,3 +41,4 @@ $GNULIBSRC/doc/fdl.texi			doc
 #
 # Should only update at releases.  
 $AUTOMAKE/test-driver			build-aux
+$AUTOMAKE/missing			build-aux
