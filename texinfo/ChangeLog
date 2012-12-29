@@ -1,5 +1,7 @@
 2012-12-29  Karl Berry  <karl@gnu.org>
 
+	* util/htmlxref.cnf (gmp): use up-to-date version on gmplib.org.
+
 	* util/srclist.txt (missing): sync from $AUTOMAKE.
 	
 2012-12-29  gettextize  <bug-gnu-gettext@gnu.org>
