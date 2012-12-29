@@ -4815,7 +4815,7 @@ sub _process_css_file ($$$)
                 $file, $line_nr)) if ($in_string);
   warn (sprintf($self->__("%s:%d: --css-include ended in comment"), 
                 $file, $line_nr)) if ($in_comment);
-  warn (sprintf($self->__("%s:%d \@import not finished in css file"), 
+  warn (sprintf($self->__("%s:%d: \@import not finished in css file"), 
         $file, $line_nr)) 
     if ($in_import and !$in_comment and !$in_string);
   return ($imports, $rules);
