@@ -1,3 +1,7 @@
+2012-12-29  Patrice Dumas  <pertusus@free.fr>
+	* util/Makefile.am (texinfo.cat): use $(TEXINFO_DTD_VERSION) instead
+	of @VERSION@.  Report from Thien-Thi Nguyen.
+
 2012-12-22  Karl Berry  <karl@gnu.org>
 
 	* util/Makefile.am (EXTRA_DIST): add *.bat.  Report from Eli,
