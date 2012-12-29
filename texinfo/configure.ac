@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.132 2012-12-18 23:38:29 pertusus Exp $
+# $Id: configure.ac,v 1.133 2012-12-29 17:06:06 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -293,7 +293,7 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f -c
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.18.1])
+AM_GNU_GETTEXT_VERSION([0.18.2])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
