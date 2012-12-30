@@ -216,7 +216,7 @@ sub tex4ht_convert($)
 {
   my $self = shift;
   unless (chdir $tex4ht_out_dir) {
-    $self->document_warn(sprintf($self->__("tex4ht.pm: chdir to %s failed: %s"),
+    $self->document_warn(sprintf($self->__("tex4ht.pm:%s: chdir failed: %s"),
                          $tex4ht_out_dir, $!));
     return 0;
   }
@@ -229,7 +229,7 @@ sub tex4ht_convert($)
   }
   unless (chdir $tex4ht_initial_dir) {
     $self->document_warn(sprintf($self->__(
-          "tex4ht.pm: Unable to return to the initial dir: %s"), $!));
+          "tex4ht.pm: Unable to return to initial directory: %s"), $!));
     return 0;
   }
   return 1;
@@ -257,7 +257,7 @@ sub tex4ht_process_command($$) {
   print STDERR "tex4ht command: $cmd\n" if ($self->get_conf('VERBOSE'));
   if (system($cmd)) {
     $self->document_warn (sprintf(__(
-                         "tex4ht.pm: Command `%s' failed"), $cmd));
+                         "tex4ht.pm: Command failed: %s"), $cmd));
     return 1;
   }
 
