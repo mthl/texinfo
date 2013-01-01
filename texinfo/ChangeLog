@@ -1,5 +1,20 @@
 2013-01-01  Karl Berry  <karl@gnu.org>
 
+	* Pod-Simple-Texinfo/pod2texi.pl,
+	* doc/texinfo.txi,
+	* doc/refcard/txirefcard.tex,
+	* info/info.c,
+	* info/infokey.c,
+	* install-info/install-info.c,
+	* tp/texi2any.pl,
+	* util/texi-elements-by-size,
+	* util/texindex.c,
+	* util/texi2dvi,
+	* util/gendocs_template,
+	* util/gendocs_template_min: 2013.
+
+2013-01-01  Karl Berry  <karl@gnu.org>
+
 	* doc/texinfo.tex: received official GPLv3 exception text for
 	texinfo.tex (RT licensing #502113).
         Same wording / no change in permissions.
@@ -1204,7 +1219,7 @@
 2011-12-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi,
-	* doc/tefcard/txirefcard.tex,
+	* doc/refcard/txirefcard.tex,
 	* install-info/install-info.c,
 	* info/info.c,
 	* info/infokey.c,
@@ -11775,7 +11790,7 @@
 	* version 4.6.
 
 
-Copyright 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+Copyright 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013
 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,

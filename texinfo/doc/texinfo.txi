@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.506 2012-12-18 01:31:18 karl Exp $
+@c $Id: texinfo.txi,v 1.507 2013-01-01 19:31:56 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -40,7 +40,7 @@ printed manual from a single source using semantic markup.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
 1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-2010, 2011, 2012 Free Software Foundation, Inc.
+2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -1590,7 +1590,7 @@ which it is distributed.  @xref{GNU Sample Texts}.
 @@copying
 This is a short example of a complete Texinfo file, version 1.0.
 
-Copyright @@copyright@{@} 2012 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2013 Free Software Foundation, Inc.
 @@end copying
 @end group
 @end example
@@ -5099,8 +5099,8 @@ expansion for HTML identifiers and file names, @pxref{HTML Xref
 Command Expansion}.  The expansions for Info are generally given with
 main the description of the command.
 
-This feature was supported before the Texinfo 5 release in 2012 in an
-ad hoc way (the @option{--commands-in-node-names} option to
+Prior to the Texinfo 5 release in 2013, this feature was supported in
+an ad hoc way (the @option{--commands-in-node-names} option to
 @command{makeinfo}).  Now it is part of the language.
 
 @item
@@ -14300,7 +14300,7 @@ and linked from the Texinfo home page
 command was added.
 
 These command-checking conditionals themselves were added in
-Texinfo@tie{}5.0, released in 2012---decades after Texinfo's
+Texinfo@tie{}5.0, released in 2013---decades after Texinfo's
 inception.  In order to test if they themselves are available, 
 the predefined flag @code{txicommandconditionals} can be tested, like
 this:
@@ -15087,7 +15087,7 @@ like this in the source for this manual:
 @@hashchar@{@}line 100 "foo.ptexi"
 @end example
 
-The @code{@@hashchar} command was added to Texinfo in 2012.  If you
+The @code{@@hashchar} command was added to Texinfo in 2013.  If you
 don't want to rely on it, you can also use @code{@@set} and
 @code{@@value} to insert the literal @samp{#}:
 
@@ -21637,7 +21637,7 @@ it for a printed manual.
 @@copying
 This is a short example of a complete Texinfo file.
 
-Copyright @@copyright@{@} 2012 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2013 Free Software Foundation, Inc.
 @@end copying
 
 @@titlepage
@@ -21728,7 +21728,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.506 2012-12-18 01:31:18 karl Exp $
+$Id: texinfo.txi,v 1.507 2013-01-01 19:31:56 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
@@ -21811,7 +21811,7 @@ Here is the sample document:
 This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @copyright{} 2012 Free Software Foundation, Inc.
+Copyright @copyright{} 2013 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -21901,7 +21901,7 @@ see the previous sections.
 @copying
 This document is a sample for allowing verbatim copying only.
 
-Copyright @copyright{} 2012 Free Software Foundation, Inc.
+Copyright @copyright{} 2013 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to make and distribute verbatim copies
@@ -21932,7 +21932,7 @@ the license text itself.  For a complete sample document, see the
 previous sections.
 
 @example
-Copyright @@copyright@{@} 2012 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2013 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
