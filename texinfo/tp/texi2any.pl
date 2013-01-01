@@ -166,6 +166,7 @@ if ('@datadir@' ne '@' . 'datadir@' and '@PACKAGE@' ne '@' . 'PACKAGE@') {
 if ((defined($ENV{"LC_ALL"}) and $ENV{"LC_ALL"} =~ /^(C|POSIX)$/)
      or (defined($ENV{"LANG"}) and $ENV{"LANG"} =~ /^(C|POSIX)$/)) {
   delete $ENV{"LANGUAGE"} if defined($ENV{"LANGUAGE"});
+  # FIXME set the other variable if only one is set?
 }
 
 
