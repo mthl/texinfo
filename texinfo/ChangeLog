@@ -1,5 +1,8 @@
 2013-01-01  Karl Berry  <karl@gnu.org>
 
+	* util/tests: move the TeX-related tests (all unused) here
+	from util/.
+
 	* contrib: new directory; move contributed files from util/ there.
 
 	* Pod-Simple-Texinfo/pod2texi.pl,
