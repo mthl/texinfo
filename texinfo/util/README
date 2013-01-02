@@ -1,4 +1,4 @@
-$Id: README,v 1.10 2013-01-02 01:32:54 karl Exp $
+$Id: README,v 1.11 2013-01-02 01:35:15 karl Exp $
 texinfo/util/README
 
   Copyright 2002, 2008, 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -17,8 +17,8 @@ These scripts actually get installed:
 
 These are examples of wrapping makeinfo invocation to achieve their
 various jobs:
-  detexinfo texi2html
-  txicmdlist txicustomvars texi-elements-by-size txixml2texi
+  detexinfo texi2html texi-elements-by-size 
+  txicmdlist txicustomvars txixml2texi
 
 The srclist.txt file specifies common source files to keep in sync; see
 the srclist-update script in gnulib.
