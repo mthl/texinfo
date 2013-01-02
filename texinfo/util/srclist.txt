@@ -11,7 +11,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-$EMACSSRC/doc/misc/info.texi		doc
+$EMACSSRC/doc/misc/info.texi			doc
 
 
 $GETTEXT/gettext-runtime/ABOUT-NLS		.
@@ -42,3 +42,5 @@ $GNULIBSRC/doc/fdl.texi			doc
 # Should only update at releases.  
 $AUTOMAKE/test-driver			build-aux
 $AUTOMAKE/missing			build-aux
+#
+$GSASL/doc/gdoc 			contrib

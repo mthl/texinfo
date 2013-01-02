@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.54 2012-12-31 00:22:22 karl Exp $
+# $Id: Makefile.am,v 1.55 2013-01-02 01:00:34 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -52,10 +52,10 @@ texinfo.cat: texinfo-cat.in Makefile
 # Most of these are for fun.  The only official/installed ones are the
 # *texi2* scripts.
 #
-EXTRA_DIST = README deref.c detexinfo dir-example fix-info-dir fixfonts \
-  fixref.gawk gdoc gen-dir-node gendocs.sh gendocs_template infosrch \
-  install-info-html outline.gawk pdftexi2dvi \
-  prepinfo.awk tex3patch texi-docstring-magic.el texi2dvi texi2pdf txitextest \
+EXTRA_DIST = README detexinfo dir-example \
+  gendocs.sh gendocs_template \
+  pdftexi2dvi \
+  texi2dvi texi2pdf txitextest \
   $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
   texi2html txixml2texi.pl $(w32_bat)
 

@@ -1,5 +1,7 @@
 2013-01-01  Karl Berry  <karl@gnu.org>
 
+	* contrib: new directory; move contributed files from util/ there.
+
 	* Pod-Simple-Texinfo/pod2texi.pl,
 	* doc/texinfo.txi,
 	* doc/refcard/txirefcard.tex,
