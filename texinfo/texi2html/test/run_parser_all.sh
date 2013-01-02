@@ -9,7 +9,7 @@
 
 #echo "SRCDIR $srcdir srcdir_test $srcdir_test"
 
-export LANG=C
+LC_ALL=C; export LC_ALL
 
 
 res_dir=res_parser
