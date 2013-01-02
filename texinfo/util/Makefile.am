@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.56 2013-01-02 01:22:17 karl Exp $
+# $Id: Makefile.am,v 1.57 2013-01-02 02:47:35 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -44,10 +44,15 @@ AM_CPPFLAGS = 					\
   -DLOCALEDIR=\"$(localedir)\"
 LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
-dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd texinfo.cat
+dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd #texinfo.cat
 
-texinfo.cat: texinfo-cat.in Makefile
-	sed 's/__VERSION__/$(TEXINFO_DTD_VERSION)/g' $(srcdir)/texinfo-cat.in >$@
+# This fails distcheck:
+#texinfo.cat: texinfo-cat.in Makefile
+#	sed 's/__VERSION__/$(TEXINFO_DTD_VERSION)/g' $(srcdir)/texinfo-cat.in >$@
+# used to be:
+#texinfo.cat: texinfo-cat.in $(top_srcdir)/doc/version.texi
+#	sed 's/__VERSION__/@VERSION@/g' $(srcdir)/texinfo-cat.in >$@
+# Let's try just getting rid of it; not aware of its being used.
 
 # Most of these are for fun.  The only official/installed ones are the
 # *texi2* scripts.
@@ -58,6 +63,6 @@ EXTRA_DIST = README detexinfo dir-example \
   texi2dvi texi2pdf \
   $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
   texi2html txixml2texi.pl $(w32_bat) \
-tests  
+  tests  
 
 DISTCLEANFILES = txixml2texi

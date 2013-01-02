@@ -1,5 +1,10 @@
 2013-01-01  Karl Berry  <karl@gnu.org>
 
+	* pretest 4.13.92.
+
+	* util/Makefile.am (texinfo.cat): remove rule and references;
+	not aware of anything using it, current rule fails distcheck.
+
 	* util/tests: move the TeX-related tests (all unused) here
 	from util/.
 
