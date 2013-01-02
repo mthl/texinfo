@@ -1,7 +1,7 @@
-$Id: README,v 1.8 2013-01-02 01:00:35 karl Exp $
+$Id: README,v 1.9 2013-01-02 01:22:17 karl Exp $
 texinfo/util/README
 
-  Copyright 2002, 2008, 2011, 2012 Free Software Foundation, Inc.
+  Copyright 2002, 2008, 2011, 2012, 2013 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -17,10 +17,13 @@ These scripts actually get installed:
 
 These are examples of wrapping makeinfo invocation to achieve their
 various jobs:
-  detexinfo texi-elements-by-size texi2html
-  txicmdlist txicustomvars txixml2texi
+  detexinfo texi2html
+  txicmdlist txicustomvars txieltsbysize txixml2texi
 
+The srclist.txt file specifies common source files to keep in sync; see
+the srclist-update script in gnulib.
 
-For more information about using the gendocs script and templates (which
-are not installed), see the GNU Maintainers Information:
+Finally, the gendocs script and templates (which are not installed) are
+about creating all the usual output formats to be put on web pages.
+For more, see the GNU Maintainers Information:
 http://www.gnu.org/prep/maintain/html_node/Invoking-gendocs_002esh.html

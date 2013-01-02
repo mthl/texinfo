@@ -1,8 +1,8 @@
-# $Id: Makefile.am,v 1.55 2013-01-02 01:00:34 karl Exp $
+# $Id: Makefile.am,v 1.56 2013-01-02 01:22:17 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
-# Copyright 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
+# Copyright 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -44,7 +44,7 @@ AM_CPPFLAGS = 					\
   -DLOCALEDIR=\"$(localedir)\"
 LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
-dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd texinfo.xsl texinfo.cat
+dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd texinfo.cat
 
 texinfo.cat: texinfo-cat.in Makefile
 	sed 's/__VERSION__/$(TEXINFO_DTD_VERSION)/g' $(srcdir)/texinfo-cat.in >$@
@@ -55,28 +55,9 @@ texinfo.cat: texinfo-cat.in Makefile
 EXTRA_DIST = README detexinfo dir-example \
   gendocs.sh gendocs_template \
   pdftexi2dvi \
-  texi2dvi texi2pdf txitextest \
+  texi2dvi texi2pdf \
   $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
-  texi2html txixml2texi.pl $(w32_bat)
+  texi2html txixml2texi.pl $(w32_bat) \
+tests  
 
 DISTCLEANFILES = txixml2texi
-
-# We must not stress people's TeX installations.
-# In Automake 1.11, we'll have a switchable maintainer mode.
-# Until then, just comment these out.
-## if MAINTAINER_MODE
-## TESTS =						\
-## bibtex.test					\
-## dvipdf.test					\
-## latex2html.test					\
-## local.test					\
-## texi2dvi.test
-## 
-## EXTRA_DIST += $(TESTS)
-## 
-## # Each test case depends on defs.
-## check_SCRIPTS = defs
-## distclean-local:
-## 	-rm -rf testSubDir
-## endif
- 

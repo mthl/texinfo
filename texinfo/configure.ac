@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.134 2012-12-31 19:03:12 karl Exp $
+# $Id: configure.ac,v 1.135 2013-01-02 01:22:17 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation, Inc.
@@ -308,12 +308,14 @@ AC_ARG_WITH([external-libintl-perl],
 AC_SUBST([USE_EXTERNAL_LIBINTL])
 
 
-# The test suite.
+# Tests.
 AC_CONFIG_FILES([install-info/tests/defs])
-AC_CONFIG_FILES([util/defs])
-AC_CHECK_PROGS([HEVEA], [hevea], [])
-AC_CHECK_PROGS([TEX], [tex], [])
-AC_CHECK_PROGS([PROVE], [prove], [])
+dnl Except we cannot enable the TeX-related tests,
+dnl so don't waste time configuring them.  See util/tests/README.
+dnl AC_CONFIG_FILES([util/tests/defs])
+dnl AC_CHECK_PROGS([HEVEA], [hevea], [])
+dnl AC_CHECK_PROGS([TEX], [tex], [])
+dnl AC_CHECK_PROGS([PROVE], [prove], [])
 
 tp_tests='no'
 AC_ARG_ENABLE([tp-tests],
