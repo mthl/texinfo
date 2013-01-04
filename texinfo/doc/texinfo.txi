@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.508 2013-01-04 00:27:45 karl Exp $
+@c $Id: texinfo.txi,v 1.509 2013-01-04 01:29:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -434,7 +434,7 @@ Combining Indices
 * syncodeindex::                How to merge two indices, using @code{@@code}
                                  font for the merged-from index.
 * synindex::                    How to merge two indices, using the
-                                 default font of the merged-to index.
+                                 roman font for the merged-from index.
 
 Special Insertions
 
@@ -10278,7 +10278,7 @@ would need to enclose every one of them between the braces of
 * syncodeindex::                How to merge two indices, using @code{@@code}
                                  font for the merged-from index.
 * synindex::                    How to merge two indices, using the
-                                 default font of the merged-to index.
+                                 roman font for the merged-from index.
 @end menu
 
 
@@ -21740,7 +21740,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.508 2013-01-04 00:27:45 karl Exp $
+$Id: texinfo.txi,v 1.509 2013-01-04 01:29:58 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
