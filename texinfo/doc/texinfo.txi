@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.509 2013-01-04 01:29:58 karl Exp $
+@c $Id: texinfo.txi,v 1.510 2013-01-04 18:09:23 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -246,7 +246,7 @@ Title and Copyright Pages
                                  and @code{@@author} commands.
 * Copyright::                   How to write the copyright notice and
                                  include copying permissions.
-* end titlepage::               Turn on page headings after the title and
+* Heading Generation::          Turn on page headings after the title and
                                  copyright pages.
 
 The `Top' Node and Master Menu
@@ -256,13 +256,13 @@ The `Top' Node and Master Menu
 
 Global Document Commands
 
-* @code{@@documentdescription}::         Document summary for the HTML output.
-* setchapternewpage::           Start chapters on right-hand pages.
-* headings on off::             An option for turning headings on and off
-                                 and double or single sided printing.
-* paragraphindent::             Specify paragraph indentation.
-* firstparagraphindent::        Suppress indentation of the first paragraph.
-* exampleindent::               Specify environment indentation.
+* @code{@@documentdescription}::      Document summary for the HTML output.
+* @code{@@setchapternewpage}::        Start chapters on right-hand pages.
+* @code{@@headings}::                 An option for turning headings on and off
+                                        and double or single sided printing.
+* @code{@@paragraphindent}::          Specify paragraph indentation.
+* @code{@@firstparagraphindent}::     Suppressing first paragraph indentation.
+* @code{@@exampleindent}::            Specify environment indentation.
 
 Ending a Texinfo File
 
@@ -3104,7 +3104,7 @@ the @code{@@setfilename} command (described in the previous section).
 
 This command tells @TeX{} the title to use in a header or footer 
 for double-sided output, in case such headings are output.  For 
-more on headings for @TeX{}, see @ref{end titlepage}.
+more on headings for @TeX{}, see @ref{Heading Generation}.
 
 @cindex @code{<title>} HTML tag
 In the HTML file produced by @command{makeinfo}, @var{title} serves as
@@ -3297,7 +3297,7 @@ in the printed manual.
                                  and @code{@@author} commands.
 * Copyright::                   How to write the copyright notice and
                                  include copying permissions.
-* end titlepage::               Turn on page headings after the title and
+* Heading Generation::          Turn on page headings after the title and
                                  copyright pages.
 @end menu
 
@@ -3314,7 +3314,7 @@ with @code{@@titlepage} on a line by itself and end it with
 @code{@@end titlepage} on a line by itself.
 
 The @code{@@end titlepage} command starts a new page and turns on page
-numbering (@pxref{end titlepage, , Heading Generation}).  All the
+numbering (@pxref{Heading Generation}).  All the
 material that you want to appear on unnumbered pages should be put
 between the @code{@@titlepage} and @code{@@end titlepage} commands.
 You can force the table of contents to appear there with the
@@ -3590,12 +3590,14 @@ output in the same place.
 
 
 
-@node end titlepage
+@node Heading Generation
 @subsection Heading Generation
-@findex end titlepage
+
+@anchor{end titlepage}@c old name
 @cindex Headings, page, begin to appear
 @cindex Titlepage end starts headings
 @cindex End titlepage starts headings
+@cindex Generating page headings
 
 Like all @code{@@end} commands (@pxref{Quotations and Examples}), the
 @code{@@end titlepage} command must be written at the beginning of a
@@ -3609,7 +3611,7 @@ printed on one side of each sheet of paper (single-sided printing),
 and the other for documents printed on both sides of each sheet
 (double-sided printing).
 
-In all generality, you can control the headings in different ways:
+In full generality, you can control the headings in different ways:
 
 @itemize @bullet
 @item
@@ -3622,19 +3624,18 @@ Most documents are formatted with the standard single-sided or
 double-sided headings, (sometimes) using @code{@@setchapternewpage
 odd} for double-sided printing and (almost always) no
 @code{@@setchapternewpage} command for single-sided printing
-(@pxref{setchapternewpage,, @code{@@setchapternewpage}}).
+(@pxref{@code{@@setchapternewpage}}).
 
 @item
 Alternatively, you can use the @code{@@headings} command to prevent
 page headings from being generated or to start them for either single
 or double-sided printing.  Write an @code{@@headings} command
 immediately after the @code{@@end titlepage} command.  To turn off
-headings, write @code{@@headings off}.  @xref{headings on off,, The
-@code{@@headings} Command}.
+headings, write @code{@@headings off}.  @xref{@code{@@headings}}.
 
 @item
 Or, you may specify your own page heading and footing format.
-@xref{Headings, , Page Headings}.
+@xref{Headings}.
 @end itemize
 
 
@@ -3873,13 +3874,13 @@ additional commands which affect the document as a whole.  They are
 generally all given before the Top node, if they are given at all.
 
 @menu
-* @code{@@documentdescription}::         Document summary for the HTML output.
-* setchapternewpage::           Start chapters on right-hand pages.
-* headings on off::             An option for turning headings on and off
-                                 and double or single sided printing.
-* paragraphindent::             Specify paragraph indentation.
-* firstparagraphindent::        Suppress indentation of the first paragraph.
-* exampleindent::               Specify environment indentation.
+* @code{@@documentdescription}::      Document summary for the HTML output.
+* @code{@@setchapternewpage}::        Start chapters on right-hand pages.
+* @code{@@headings}::                 An option for turning headings on and off
+                                        and double or single sided printing.
+* @code{@@paragraphindent}::          Specify paragraph indentation.
+* @code{@@firstparagraphindent}::     Suppressing first paragraph indentation.
+* @code{@@exampleindent}::            Specify environment indentation.
 @end menu
 
 
@@ -3918,11 +3919,13 @@ This will produce the following output in the @samp{<head>} of the HTML:
 the document.
 
 
-@node setchapternewpage
-@subsection @code{@@setchapternewpage}:
+@node @code{@@setchapternewpage}
+@subsection @code{@@setchapternewpage}: Blank Pages Before Chapters
+
+@anchor{setchapternewpage}@c old name
+@findex setchapternewpage
 @cindex Starting chapters
 @cindex Pages, starting odd
-@findex setchapternewpage
 
 In an officially bound book, text is usually printed on both sides of
 the paper, chapters start on right-hand pages, and right-hand pages have
@@ -3973,7 +3976,7 @@ an even-numbered page.
 
 If you don't like the default headers that @code{@@setchapternewpage}
 sets, you can explicit control them with the @code{@@headings} command.
-@xref{headings on off, , The @code{@@headings} Command}.
+@xref{@code{@@headings}}.
 
 At the beginning of a manual or book, pages are not numbered---for
 example, the title and copyright pages of a book are not numbered.  By
@@ -3991,8 +3994,10 @@ pages) use the @option{--texinfo} option to @command{texi2dvi} to
 specify the output you want.
 
 
-@node headings on off
+@node @code{@@headings}
 @subsection The @code{@@headings} Command
+
+@anchor{headings on off}@c old name
 @findex headings
 
 The @code{@@headings} command is rarely used.  It specifies what kind of
@@ -4049,11 +4054,13 @@ You can also specify your own style of page heading and footing.
 @xref{Headings, , Page Headings}, for more information.
 
 
-@node paragraphindent
-@subsection @code{@@paragraphindent}: Paragraph Indenting
+@node @code{@@paragraphindent}
+@subsection @code{@@paragraphindent}: Controlling Paragraph Indentation
+
+@anchor{paragraphindent}@c old name
+@findex paragraphindent
 @cindex Indenting paragraphs, control of
 @cindex Paragraph indentation control
-@findex paragraphindent
 
 The Texinfo processors may insert whitespace at the beginning of the
 first line of each paragraph, thereby indenting that paragraph.  You can
@@ -4094,14 +4101,16 @@ A peculiarity of the @code{texinfo-format-buffer} and
 fill) paragraphs that contain @code{@@w} or @code{@@*} commands.
 
 
-@node firstparagraphindent
+@node @code{@@firstparagraphindent}
 @subsection @code{@@firstparagraphindent}: Indenting After Headings
+
+@anchor{firstparagraphindent}@c old name
+@findex firstparagraphindent
 @cindex First paragraph, suppressing indentation of
 @cindex Suppressing first paragraph indentation
 @cindex Preventing first paragraph indentation
 @cindex Indenting, suppressing of first paragraph
 @cindex Headings, indentation after
-@findex firstparagraphindent
 
 As you can see in the present manual, the first paragraph in any
 section is not indented by default.  Typographically, indentation is a
@@ -4125,7 +4134,7 @@ This option is ignored by @command{makeinfo} if
 @item @code{insert}
 Include normal paragraph indentation.  This respects the paragraph
 indentation set by an @code{@@paragraphindent} command
-(@pxref{paragraphindent}).
+(@pxref{@code{@@paragraphindent}}).
 @end table
 
 @code{@@firstparagraphindent} is ignored for HTML and Docbook output.
@@ -4136,12 +4145,14 @@ formatting commands indent paragraphs as specified.  @xref{Start of
 Header}.
 
 
-@node exampleindent
+@node @code{@@exampleindent}
 @subsection @code{@@exampleindent}: Environment Indenting
+
+@anchor{exampleindent}@c old name
+@findex exampleindent
 @cindex Indenting environments
 @cindex Environment indentation
 @cindex Example indentation
-@findex exampleindent
 
 The Texinfo processors indent each line of @code{@@example} and similar
 environments.  You can use the @code{@@exampleindent} command to specify
@@ -4447,7 +4458,7 @@ never start a new page.
 When an @code{@@setchapternewpage} command says to do so, the
 @code{@@chapter}, @code{@@unnumbered}, and @code{@@appendix} commands
 start new pages in the printed manual; the @code{@@heading} commands
-do not.  @xref{setchapternewpage,, @code{@@setchapternewpage}}.
+do not.  @xref{@code{@@setchapternewpage}}.
 
 Here is a summary:
 
@@ -4786,7 +4797,7 @@ page'' is output in the body of the document, with just the
 line break on the part page (but is replaced with a space in the
 tables of contents).  This part page is always forced to be on an odd
 (right-hand) page, regardless of the chapter pagination
-(@pxref{setchapternewpage,, @code{@@setchapternewpage}}).
+(@pxref{@code{@@setchapternewpage}}).
 
 In the HTML output, the @code{@@part} text is similarly included in
 the tables of contents, and a heading is included in the main document
@@ -8705,7 +8716,7 @@ Ordinarily, the formatters indent text that follows an example as a new
 paragraph.  You can prevent this on a case-by-case basis by writing
 @code{@@noindent} at the beginning of a line, preceding the continuation
 text.  You can also disable indentation for all paragraphs globally with
-@code{@@paragraphindent} (@pxref{paragraphindent, Paragraph Indenting}).
+@code{@@paragraphindent} (@pxref{@code{@@paragraphindent}}).
 
 It is best to write @code{@@noindent} on a line by itself, since in most
 environments, spaces following the command will not be ignored.  It's ok
@@ -8770,7 +8781,7 @@ section), Texinfo provides the @code{@@indent} command that forces a
 paragraph to be indented.  This paragraph, for instance, is indented
 using an @code{@@indent} command.  The first paragraph of a section is
 the most likely place to use @code{@@indent}, to override the normal
-behavior of no indentation there (@pxref{paragraphindent}).
+behavior of no indentation there (@pxref{@code{@@paragraphindent}}).
 
 It is best to write @code{@@indent} on a line by itself, since in most
 environments, spaces following the command will not be ignored.  The
@@ -14858,8 +14869,8 @@ off
 
 @noindent
 This looks equivalent to @code{@@headings off}, but for @TeX{}nical
-reasons, it fails with a mysterious error message (@code{Paragraph
-ended before @@headings was complete}).
+reasons, it fails with a mysterious error message (namely,
+@samp{Paragraph ended before @@headings was complete}).
 
 @item
 Macros cannot define macros in the natural way.  To do this, you must
@@ -16054,7 +16065,7 @@ For more information, see:
 
 @itemize @bullet
 @item @ref{@code{@@settitle}}.
-@item @ref{setchapternewpage, , @code{@@setchapternewpage}}.
+@item @ref{@code{@@setchapternewpage}}.
 @item @ref{Headings}.
 @item @ref{Titlepage & Copyright Page}.
 @item @ref{Printing Indices & Menus}.
@@ -16971,9 +16982,8 @@ If @var{path} is not given, the current directory is prepended.  See
 @opindex -p @var{indent}
 Set the paragraph indentation style to @var{indent}.  The value set by
 this option overrides the value set in a Texinfo file by an
-@code{@@paragraphindent} command (@pxref{paragraphindent,,
-@code{@@paragraphindent}}).  The value of @var{indent} is interpreted
-as follows:
+@code{@@paragraphindent} command (@pxref{@code{@@paragraphindent}}).
+The value of @var{indent} is interpreted as follows:
 
 @table @asis
 @item @samp{asis}
@@ -20277,7 +20287,7 @@ font.  Pair with @code{@@end example}.  @xref{example,, @code{@@example}}.
 
 @item @@exampleindent @var{indent}
 Indent example-like environments by @var{indent} number of spaces
-(perhaps 0).  @xref{exampleindent,, Paragraph Indenting}.
+(perhaps 0).  @xref{@code{@@exampleindent}}.
 
 @item @@exclamdown@{@}
 Generate an upside-down exclamation point.  @xref{Inserting Accents}.
@@ -20306,7 +20316,7 @@ Defining the Entries of an Index}.
 @item @@firstparagraphindent @var{word}
 Control indentation of the first paragraph after section headers
 according to @var{word}, one of `none' or `insert'.
-@xref{firstparagraphindent, @code{@@firstparagraphindent}}.
+@xref{@code{@@firstparagraphindent}}.
 
 @item @@float
 Environment to define floating material.  Pair with @code{@@end float}.
@@ -20639,7 +20649,7 @@ Change page dimensions.  @xref{pagesizes}.
 @item @@paragraphindent @var{indent}
 Indent paragraphs by @var{indent} number of spaces (perhaps 0); preserve
 source file indentation if @var{indent} is @code{asis}.
-@xref{paragraphindent,, Paragraph Indenting}.
+@xref{@code{@@paragraphindent}}.
 
 @item @@part @var{title}
 Begin a group of chapters or appendixes; included in the tables of
@@ -20756,8 +20766,7 @@ Define the Texinfo variable @var{txivar}, optionally to the value
 
 @item @@setchapternewpage @var{on-off-odd}
 Specify whether chapters start on new pages, and if so, whether on
-odd-numbered (right-hand) new pages.  @xref{setchapternewpage, ,
-@code{@@setchapternewpage}}.
+odd-numbered (right-hand) new pages.  @xref{@code{@@setchapternewpage}}.
 
 @item @@setcontentsaftertitlepage
 Put the table of contents after the @samp{@@end titlepage} even if the
@@ -21740,7 +21749,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.509 2013-01-04 01:29:58 karl Exp $
+$Id: texinfo.txi,v 1.510 2013-01-04 18:09:23 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
