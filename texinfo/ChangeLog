@@ -1,3 +1,10 @@
+2013-01-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (setfilename, settitle, copying, insertcopying,
+	titlepage, titlefont center sp, title subtitle author,
+	documentdescription, quotation, setfilename, settitle): continue
+	conversion to node names with @.
+
 2013-01-01  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.13.92.

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.507 2013-01-01 19:31:56 karl Exp $
+@c $Id: texinfo.txi,v 1.508 2013-01-04 00:27:45 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -81,9 +81,6 @@ developing GNU and promoting software freedom.''
 
 @c If you like blank pages, add through texi2dvi -t.
 @c setchapternewpage odd
-
-@c Currently undocumented command, 5 December 1993:
-@c nwnode          (Same as node, but no warnings; for `makeinfo'.)
 
 
 @shorttitlepage GNU Texinfo
@@ -231,21 +228,21 @@ Texinfo File Header
 
 * First Line::                  The first line of a Texinfo file.
 * Start of Header::             Formatting a region requires this.
-* setfilename::                 Tell Info the name of the Info file.
-* settitle::                    Create a title for the printed work.
+* @code{@@setfilename}::                 Tell Info the name of the Info file.
+* @code{@@settitle}::                    Create a title for the printed work.
 * End of Header::               Formatting a region requires this.
 
 Document Permissions
 
-* copying::                     Declare the document's copying permissions.
-* insertcopying::               Where to insert the permissions.
+* @code{@@copying}::                     Declare the document's copying permissions.
+* @code{@@insertcopying}::               Where to insert the permissions.
 
 Title and Copyright Pages
 
-* titlepage::                   Create a title for the printed document.
-* titlefont center sp::         The @code{@@titlefont}, @code{@@center},
+* @code{@@titlepage}::                   Create a title for the printed document.
+* @code{@@titlefont @@center @@sp}::         The @code{@@titlefont}, @code{@@center},
                                  and @code{@@sp} commands.
-* title subtitle author::       The @code{@@title}, @code{@@subtitle},
+* @code{@@title @@subtitle @@author}::       The @code{@@title}, @code{@@subtitle},
                                  and @code{@@author} commands.
 * Copyright::                   How to write the copyright notice and
                                  include copying permissions.
@@ -259,7 +256,7 @@ The `Top' Node and Master Menu
 
 Global Document Commands
 
-* documentdescription::         Document summary for the HTML output.
+* @code{@@documentdescription}::         Document summary for the HTML output.
 * setchapternewpage::           Start chapters on right-hand pages.
 * headings on off::             An option for turning headings on and off
                                  and double or single sided printing.
@@ -366,7 +363,7 @@ Emphasizing Text
 Quotations and Examples
 
 * Block Enclosing Commands::    Different constructs for different purposes.
-* quotation::                   Writing a quotation.
+* @code{@@quotation}::                   Writing a quotation.
 * @code{@@indentedblock}::               Block of text indented on left.
 * example::                     Writing an example in a fixed-width font.
 * verbatim::                    Writing a verbatim example.
@@ -2943,8 +2940,8 @@ like this:
 @menu
 * First Line::                  The first line of a Texinfo file.
 * Start of Header::             Formatting a region requires this.
-* setfilename::                 Tell Info the name of the Info file.
-* settitle::                    Create a title for the printed work.
+* @code{@@setfilename}::                 Tell Info the name of the Info file.
+* @code{@@settitle}::                    Create a title for the printed work.
 * End of Header::               Formatting a region requires this.
 @end menu
 
@@ -3009,10 +3006,13 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 @code{tex-end-of-header} Emacs variables.  @xref{Texinfo Mode Printing}.
 
 
-@node setfilename
+@node @code{@@setfilename}
 @subsection @code{@@setfilename}: Set the Output File Name
+
+@anchor{setfilename}@c old name
 @findex setfilename
 @cindex Texinfo requires @code{@@setfilename}
+@cindex Output file name, required
 
 The first Texinfo command (that is, after the @code{\input texinfo})
 in a document is generally @code{@@setfilename}:
@@ -3083,9 +3083,12 @@ this processing, as well as leading blank lines.
 See also the @option{--output} option in @ref{Invoking texi2any}.
 
 
-@node settitle
+@node @code{@@settitle}
 @subsection @code{@@settitle}: Set the Document Title
+
+@anchor{settitle}@c old name
 @findex settitle
+@cindex Document title, specifying
 
 A Texinfo file should contain a line that looks like this:
 
@@ -3107,7 +3110,7 @@ more on headings for @TeX{}, see @ref{end titlepage}.
 In the HTML file produced by @command{makeinfo}, @var{title} serves as
 the document @samp{<title>}.  It also becomes the default document
 description in the @samp{<head>} part
-(@pxref{documentdescription,,@code{@@documentdescription}}).
+(@pxref{@code{@@documentdescription}}).
 
 When the title page is used in the output, the title in the
 @code{@@settitle} command does not affect the title as it appears on
@@ -3115,8 +3118,7 @@ the title page.  Thus, the two do not need not match exactly.  A
 practice we recommend is to include the version or edition number of
 the manual in the @code{@@settitle} title; on the title page, the
 version number generally appears as an @code{@@subtitle} so it would
-be omitted from the @code{@@title}.  @xref{titlepage,,
-@code{@@titlepage}}.
+be omitted from the @code{@@title}.  @xref{@code{@@titlepage}}.
 
 
 @node End of Header
@@ -3154,13 +3156,15 @@ the software of the manual, but giving the complete text of the
 software license is not necessarily required.
 
 @menu
-* copying::                     Declare the document's copying permissions.
-* insertcopying::               Where to insert the permissions.
+* @code{@@copying}::                     Declare the document's copying permissions.
+* @code{@@insertcopying}::               Where to insert the permissions.
 @end menu
 
 
-@node copying
+@node @code{@@copying}
 @subsection @code{@@copying}: Declare Copying Permissions
+
+@anchor{copying}@c old name
 @findex copying
 
 The @code{@@copying} command should be given very early in the document;
@@ -3235,8 +3239,10 @@ the license itself under which GNU and other free manuals are
 distributed.
 
 
-@node insertcopying
+@node @code{@@insertcopying}
 @subsection @code{@@insertcopying}: Include Permissions Text
+
+@anchor{insertcopying}@c old name
 @findex insertcopying
 @cindex Copying text, including
 @cindex Permissions text, including
@@ -3284,10 +3290,10 @@ Texinfo file contains the text of the copying permissions that appears
 in the printed manual.
 
 @menu
-* titlepage::                   Create a title for the printed document.
-* titlefont center sp::         The @code{@@titlefont}, @code{@@center},
+* @code{@@titlepage}::                   Create a title for the printed document.
+* @code{@@titlefont @@center @@sp}::         The @code{@@titlefont}, @code{@@center},
                                  and @code{@@sp} commands.
-* title subtitle author::       The @code{@@title}, @code{@@subtitle},
+* @code{@@title @@subtitle @@author}::       The @code{@@title}, @code{@@subtitle},
                                  and @code{@@author} commands.
 * Copyright::                   How to write the copyright notice and
                                  include copying permissions.
@@ -3296,8 +3302,10 @@ in the printed manual.
 @end menu
 
 
-@node titlepage
+@node @code{@@titlepage}
 @subsection @code{@@titlepage}
+
+@anchor{titlepage}@c old name
 @cindex Title page
 @findex titlepage
 
@@ -3350,15 +3358,17 @@ the sections below.
 @findex shorttitlepage
 @cindex Bastard title page
 @cindex Title page, bastard
-For extremely simple documents, and for the bastard title page in
+For sufficiently simple documents, and for the bastard title page in
 traditional book frontmatter, Texinfo also provides a command
 @code{@@shorttitlepage} which takes the rest of the line as the title.
 The argument is typeset on a page by itself and followed by a blank
 page.
 
 
-@node titlefont center sp
+@node @code{@@titlefont @@center @@sp}
 @subsection @code{@@titlefont}, @code{@@center}, and @code{@@sp}
+
+@anchor{titlefont center sp}@c old name
 @findex titlefont
 @findex center
 @findex sp @r{(titlepage line spacing)}
@@ -3427,8 +3437,10 @@ You can in fact use these commands anywhere, not just on a title page,
 but since they are not logical markup commands, we don't recommend
 them.
 
-@node title subtitle author
+@node @code{@@title @@subtitle @@author}
 @subsection @code{@@title}, @code{@@subtitle}, and @code{@@author}
+
+@anchor{title subtitle author}@c old name
 @findex title
 @findex subtitle
 @findex author
@@ -3442,7 +3454,7 @@ needed to adjust vertical spacing.
 Write the @code{@@title}, @code{@@subtitle}, or @code{@@author}
 commands at the beginning of a line followed by the title, subtitle,
 or author.  The @code{@@author} command may be used for a quotation in
-an @code{@@quotation} block (@pxref{quotation,, @code{@@quotation}});
+an @code{@@quotation} block (@pxref{@code{@@quotation}});
 except for that, it is an error to use any of these commands outside
 of @code{@@titlepage}.
 
@@ -3662,11 +3674,11 @@ table of contents in addition to the full table of contents.
 
 Both contents commands should be written on a line by themselves, and
 placed near the beginning of the file, after the @code{@@end
-titlepage} (@pxref{titlepage,,@code{@@titlepage}}), before any
-sectioning command.  The contents commands automatically generate a
-chapter-like heading at the top of the first table of contents page,
-so don't include any sectioning command such as @code{@@unnumbered}
-before them.
+titlepage} (@pxref{@code{@@titlepage}}), before any sectioning
+command.  The contents commands automatically generate a chapter-like
+heading at the top of the first table of contents page, so don't
+include any sectioning command such as @code{@@unnumbered} before
+them.
 
 Since an Info file uses menus instead of tables of contents, the Info
 formatting commands ignore the contents commands.  But the contents
@@ -3861,7 +3873,7 @@ additional commands which affect the document as a whole.  They are
 generally all given before the Top node, if they are given at all.
 
 @menu
-* documentdescription::         Document summary for the HTML output.
+* @code{@@documentdescription}::         Document summary for the HTML output.
 * setchapternewpage::           Start chapters on right-hand pages.
 * headings on off::             An option for turning headings on and off
                                  and double or single sided printing.
@@ -3871,8 +3883,10 @@ generally all given before the Top node, if they are given at all.
 @end menu
 
 
-@node documentdescription
+@node @code{@@documentdescription}
 @subsection @code{@@documentdescription}: Summary Text
+@anchor{documentdescription}@c old name
+
 @cindex Document description
 @cindex Description of document
 @cindex Summary of document
@@ -8014,7 +8028,7 @@ beginning of that line, and with only one space between the
 
 @menu
 * Block Enclosing Commands::    Different constructs for different purposes.
-* quotation::                   Writing a quotation.
+* @code{@@quotation}::                   Writing a quotation.
 * @code{@@indentedblock}::               Block of text indented on left.
 * example::                     Writing an example in a fixed-width font.
 * verbatim::                    Writing a verbatim example.
@@ -8102,8 +8116,10 @@ constructs (or anywhere) to prevent the following text from being
 indented as a new paragraph.
 
 
-@node quotation
+@node @code{@@quotation}
 @section @code{@@quotation}: Block Quotations
+@anchor{quotation}@c old name
+
 @cindex Quotations
 @findex quotation
 
@@ -8507,7 +8523,7 @@ like @code{@@display} but uses a smaller font size.  @xref{small}.
 The @code{@@table} command (@pxref{table}) is not supported inside
 @code{@@display}.  Since @code{@@display} is line-oriented, it doesn't
 make sense to use them together.  If you want to indent a table, try
-@code{@@quotation} (@pxref{quotation,,@code{@@quotation}})
+@code{@@quotation} (@pxref{@code{@@quotation}})
 or @code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
 
 
@@ -9744,7 +9760,7 @@ For @TeX{} output, if an image is the only thing in a paragraph it
 will ordinarily be displayed on a line by itself, respecting the
 current environment indentation, but without the normal paragraph
 indentation.  If you want it centered, use @code{@@center}
-(@pxref{titlefont center sp,,@code{@@titlefont @@center @@sp}}).
+(@pxref{@code{@@titlefont @@center @@sp}}).
 
 @cindex Alt attribute for images
 @cindex Images, alternate text for
@@ -13434,9 +13450,8 @@ supports, see @ref{Inserting Accents}.
 @cindex Document language, declaring
 
 The @code{@@documentlanguage} command declares the current document
-locale.  Write it on a line by itself, near the beginning of the
-file, but after @code{@@setfilename}
-(@pxref{setfilename,,@code{@@setfilename}}):
+locale.  Write it on a line by itself, near the beginning of the file,
+but after @code{@@setfilename} (@pxref{@code{@@setfilename}}):
 
 @example
 @@documentlanguage @var{ll}[_@var{cc}]
@@ -13515,7 +13530,7 @@ the official web site for ISO@tie{}3166 can be found via
 The @code{@@documentencoding} command declares the input document
 encoding.  Write it on a line by itself, with a valid encoding
 specification following, near the beginning of the file but after
-@code{@@setfilename} (@pxref{setfilename,,@code{@@setfilename}}):
+@code{@@setfilename} (@pxref{@code{@@setfilename}}):
 
 @example
 @@documentencoding @var{enc}
@@ -14193,7 +14208,7 @@ Set the flags:
 @end example
 
 @item
-Write text for the @code{@@copying} section (@pxref{copying}):
+Write text for the @code{@@copying} section (@pxref{@code{@@copying}}):
 
 @example
 @group
@@ -15624,8 +15639,8 @@ the usual auxiliary files that @TeX{} creates and warnings @TeX{}
 gives when cross references are not satisfied are just nuisances.  You
 can avoid them with the @code{@@novalidate} command, which you must
 give @emph{before} the @code{@@setfilename} command
-(@pxref{setfilename,,@code{@@setfilename}}).  Thus, the beginning of
-your file would look approximately like this:
+(@pxref{@code{@@setfilename}}).  Thus, the beginning of your file
+would look approximately like this:
 
 @example
 \input texinfo
@@ -16038,9 +16053,9 @@ contents.  (And of course most manuals contain a body of text as well.)
 For more information, see:
 
 @itemize @bullet
-@item @ref{settitle, , @code{@@settitle}}.
+@item @ref{@code{@@settitle}}.
 @item @ref{setchapternewpage, , @code{@@setchapternewpage}}.
-@item @ref{Headings, ,Page Headings}.
+@item @ref{Headings}.
 @item @ref{Titlepage & Copyright Page}.
 @item @ref{Printing Indices & Menus}.
 @item @ref{Contents}.
@@ -16094,15 +16109,16 @@ Euro font, if it is not already installed.  @xref{euro}.
 @pindex texinfo.cnf @r{installation}
 @cindex Customizing of @TeX{} for Texinfo
 @cindex Site-wide Texinfo configuration file
-Optionally, you may create an additional @file{texinfo.cnf}, and install
-it as well.  This file is read by @TeX{} when the @code{@@setfilename}
-command is executed (@pxref{setfilename,, @code{@@setfilename}}).  You can put any
-commands you like there, according to local site-wide conventions.  They
-will be read by @TeX{} when processing any Texinfo document.  For
-example, if @file{texinfo.cnf} contains the line @samp{@@afourpaper}
-(@pxref{A4 Paper}), then all Texinfo documents will be processed with
-that page size in effect.  If you have nothing to put in
-@file{texinfo.cnf}, you do not need to create it.
+Optionally, you may create an additional @file{texinfo.cnf}, and
+install it as well.  This file is read by @TeX{} when the
+@code{@@setfilename} command is executed
+(@pxref{@code{@@setfilename}}).  You can put any commands you like
+there, according to local site-wide conventions.  They will be read by
+@TeX{} when processing any Texinfo document.  For example, if
+@file{texinfo.cnf} contains the line @samp{@@afourpaper} (@pxref{A4
+Paper}), then all Texinfo documents will be processed with that page
+size in effect.  If you have nothing to put in @file{texinfo.cnf}, you
+do not need to create it.
 
 @cindex Environment variable @code{TEXINPUTS}
 @vindex TEXINPUTS
@@ -16921,7 +16937,7 @@ Specify that the output should be directed to @var{file}.  This
 overrides any file name specified in an @code{@@setfilename} command
 found in the Texinfo source.  If neither @code{@@setfilename} nor this
 option are specified, the input file name is used to determine the
-output name.  @xref{setfilename,,@code{@@setfilename}}.
+output name.  @xref{@code{@@setfilename}}.
 
 If @var{file} is @samp{-}, output goes to standard output and
 @samp{--no-split} is implied.
@@ -17600,8 +17616,8 @@ beginning of the output; default false.
 
 @item INLINE_INSERTCOPYING
 If set, @code{@@insertcopying} is replaced by the @code{@@copying}
-content (@pxref{copying,, @code{@@copying}}) as if
-@code{@@insertcopying} were a user-defined macro; default false.
+content (@pxref{@code{@@copying}}) as if @code{@@insertcopying} were a
+user-defined macro; default false.
 
 @item INPUT_ENCODING_NAME
 Normalized encoding name suitable for output.  Should be a usable
@@ -19917,7 +19933,7 @@ Info.  @xref{cartouche, , Drawing Cartouches Around Examples}.
 
 @item @@center @var{line-of-text}
 Center the line of text following the command.
-@xref{titlefont center sp, , @code{@@center}}.
+@xref{@code{@@titlefont @@center @@sp}}.
 
 @item @@centerchap @var{line-of-text}
 Like @code{@@chapter}, but centers the chapter title.  @xref{chapter,,
@@ -19991,7 +20007,7 @@ menus instead.  @xref{Contents, , Generating a Table of Contents}.
 
 @item @@copying
 Specify copyright holders and copying conditions for the document Pair
-with @code{@@end cartouche}.  @xref{copying,, @code{@@copying}}.
+with @code{@@end cartouche}.  @xref{@code{@@copying}}.
 
 @item @@copyright@{@}
 Generate the copyright symbol @copyright{}.  @xref{copyright symbol,,
@@ -20179,8 +20195,7 @@ Formatter Commands}.
 
 @item @@documentdescription
 Set the document description text, included in the HTML output.  Pair
-with @code{@@end documentdescription}.  @xref{documentdescription,,
-@code{@@documentdescription}}.
+with @code{@@end documentdescription}.  @xref{@code{@@documentdescription}}.
 
 @item @@documentencoding @var{enc}
 Declare the input encoding to be @var{enc}.
@@ -20483,7 +20498,7 @@ File Header}.
 
 @item @@insertcopying
 Insert the text previously defined with the @code{@@copying}
-environment.  @xref{insertcopying,, @code{@@insertcopying}}.
+environment.  @xref{@code{@@insertcopying}}.
 
 @item @@item
 Indicate the beginning of a marked paragraph for @code{@@itemize} and
@@ -20751,7 +20766,7 @@ Put the table of contents after the @samp{@@end titlepage} even if the
 @item @@setfilename @var{info-file-name}
 Provide a name to be used for the output files.  This command is essential
 for @TeX{} formatting as well, even though it produces no output of
-its own.  @xref{setfilename, , @code{@@setfilename}}.
+its own.  @xref{@code{@@setfilename}}.
 
 @item @@setshortcontentsaftertitlepage
 Place the short table of contents after the @samp{@@end titlepage}
@@ -20760,8 +20775,8 @@ command even if the @code{@@shortcontents} command is at the end.
 
 @item @@settitle @var{title}
 Specify the title for page headers in a printed manual, and the
-default document title for HTML @samp{<head>}.  @xref{settitle,,
-@code{@@settitle}}.
+default document title for HTML @samp{<head>}.
+@xref{@code{@@settitle}}.
 
 @item @@shortcaption
 Define the short caption for an @code{@@float}.  @xref{caption shortcaption}.
@@ -20772,7 +20787,7 @@ relevant to Info, which uses menus rather than tables of contents.
 @xref{Contents, , Generating a Table of Contents}.
 
 @item @@shorttitlepage @var{title}
-Generate a minimal title page.  @xref{titlepage,,@code{@@titlepage}}.
+Generate a minimal title page.  @xref{@code{@@titlepage}}.
 
 @item @@slanted@{@var{text}@}
 Set @var{text} in a @slanted{slanted} font if possible.  No effect
@@ -20848,8 +20863,7 @@ with periods.  Same context-dependent numbering as @code{@@section}.
 @item @@subtitle @var{title}
 In a printed manual, set a subtitle in a normal sized font flush to
 the right-hand side of the page.  Not relevant to Info, which does not
-have title pages.  @xref{title subtitle author, , @code{@@title}
-@code{@@subtitle} and @code{@@author} Commands}.
+have title pages.  @xref{@code{@@title @@subtitle @@author}}.
 
 @item @@summarycontents
 Print a short table of contents.  Synonym for @code{@@shortcontents}.
@@ -20858,7 +20872,7 @@ Print a short table of contents.  Synonym for @code{@@shortcontents}.
 @item @@syncodeindex @var{from-index} @var{to-index}
 Merge the index named in the first argument into the index named in
 the second argument, formatting the entries from the first index with
-@code{@@code} .  @xref{Combining Indices}.
+@code{@@code}.  @xref{Combining Indices}.
 
 @item @@synindex @var{from-index} @var{to-index}
 Merge the index named in the first argument into the index named in
@@ -20931,14 +20945,12 @@ subtitle author, , The @code{@@title} @code{@@subtitle} and
 
 @item @@titlefont@{@var{text}@}
 In a printed manual, print @var{text} in a larger than normal font.
-@xref{titlefont center sp, , The @code{@@titlefont} @code{@@center}
-and @code{@@sp} Commands}.
+@xref{@code{@@titlefont @@center @@sp}}.
 
 @item @@titlepage
 Begin the title page.  Write the command on a line of its own, paired
 with @code{@@end titlepage}.  Nothing between @code{@@titlepage} and
-@code{@@end titlepage} appears in Info.  @xref{titlepage, ,
-@code{@@titlepage}}.
+@code{@@end titlepage} appears in Info.  @xref{@code{@@titlepage}}.
 
 @item @@today@{@}
 Insert the current date, in `1 Jan 1900' style.  @xref{Custom
@@ -21728,7 +21740,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.507 2013-01-01 19:31:56 karl Exp $
+$Id: texinfo.txi,v 1.508 2013-01-04 00:27:45 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
@@ -23010,7 +23022,7 @@ line.
 
 @item <copying text>
 The expansion of an @code{@@copying} environment, if the manual has
-one (@pxref{copying}).
+one (@pxref{@code{@@copying}}).
 
 @item <dir entries>
 The result of any @code{@@dircategory} and @code{@@direntry}
