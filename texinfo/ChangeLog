@@ -7,6 +7,10 @@
 	* doc/texinfo.txi (Chapter Structuring): node names with @
 	throughout chapter.
 
+2013-01-05  Patrice Dumas  <pertusus@free.fr>
+
+	* util/*.bat: remove spurious +, reported by Eli Z.
+
 2013-01-04  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (end titlepage, setchapternewpage,
