@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.510 2013-01-04 18:09:23 karl Exp $
+@c $Id: texinfo.txi,v 1.511 2013-01-05 17:02:09 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -138,7 +138,7 @@ the menu lists all the lower level nodes in the document.
 * Texinfo Mode::                  Using the GNU Emacs Texinfo mode.
 * Beginning a File::              What is at the beginning of a Texinfo file?
 * Ending a File::                 What is at the end of a Texinfo file?
-* Structuring::                   Creating chapters, sections, appendices, etc.
+* Chapter Structuring::           Creating chapters, sections, appendices, etc.
 * Nodes::                         Writing nodes, the basic unit of Texinfo.
 * Menus::                         Writing menus.
 * Cross References::              Writing cross references.
@@ -274,15 +274,15 @@ Chapter Structuring
 
 * Tree Structuring::            A manual is like an upside down tree @dots{}
 * Structuring Command Types::   How to divide a manual into parts.
-* chapter::
-* unnumbered & appendix::
-* majorheading & chapheading::
-* section::
-* unnumberedsec appendixsec heading::
-* subsection::
-* unnumberedsubsec appendixsubsec subheading::
-* subsubsection::               Commands for the lowest level sections.
-* part::                        Collections of chapters.
+* @code{@@chapter}::            Chapter structuring.
+* @code{@@unnumbered @@appendix}::
+* @code{@@majorheading @@chapheading}::
+* @code{@@section}::
+* @code{@@unnumberedsec @@appendixsec @@heading}::
+* @code{@@subsection}::
+* @code{@@unnumberedsubsec @@appendixsubsec @@subheading}::
+* @code{@@subsubsection}::               Commands for the lowest level sections.
+* @code{@@part}::                        Collections of chapters.
 * Raise/lower sections::        How to change commands' hierarchical level.
 
 Nodes
@@ -3649,7 +3649,7 @@ Or, you may specify your own page heading and footing format.
 @findex shortcontents
 
 The @code{@@chapter}, @code{@@section}, and other structuring commands
-(@pxref{Structuring}) supply the information to make up a
+(@pxref{Chapter Structuring}) supply the information to make up a
 table of contents, but they do not cause an actual table to appear in
 the manual.  To do this, you must use the @code{@@contents} and/or
 @code{@@summarycontents} command(s).
@@ -4323,8 +4323,9 @@ variables list for Emacs, most typically a @samp{compile-command}
 (@pxref{Compile-Command,, Using the Local Variables List}).
 
 
-@node Structuring
+@node Chapter Structuring
 @chapter Chapter Structuring
+@anchor{Structuring}@c old name
 @cindex Chapter structuring
 @cindex Structuring of chapters
 @cindex Sectioning
@@ -4350,15 +4351,15 @@ or other formats.
 @menu
 * Tree Structuring::            A manual is like an upside down tree @dots{}
 * Structuring Command Types::   How to divide a manual into parts.
-* chapter::
-* unnumbered & appendix::
-* majorheading & chapheading::
-* section::
-* unnumberedsec appendixsec heading::
-* subsection::
-* unnumberedsubsec appendixsubsec subheading::
-* subsubsection::               Commands for the lowest level sections.
-* part::                        Collections of chapters.
+* @code{@@chapter}::            Chapter structuring.
+* @code{@@unnumbered @@appendix}::
+* @code{@@majorheading @@chapheading}::
+* @code{@@section}::
+* @code{@@unnumberedsec @@appendixsec @@heading}::
+* @code{@@subsection}::
+* @code{@@unnumberedsubsec @@appendixsubsec @@subheading}::
+* @code{@@subsubsection}::               Commands for the lowest level sections.
+* @code{@@part}::                        Collections of chapters.
 * Raise/lower sections::        How to change commands' hierarchical level.
 @end menu
 
@@ -4481,19 +4482,24 @@ Here is a summary:
 @end tex
 
 
-@node chapter
-@section @code{@@chapter}
+@node @code{@@chapter}
+@section @code{@@chapter}: Chapter Structuring
+
+@anchor{chapter}@c old name
 @findex chapter
 
-@code{@@chapter} identifies a chapter in the document.  Write the
-command at the beginning of a line and follow it on the same line by
-the title of the chapter.  The chapter is numbered automatically.
+@code{@@chapter} identifies a chapter in the document--the highest
+level of the normal document structuring hierarchy.  Write the command
+at the beginning of a line and follow it on the same line by the title
+of the chapter.  The chapter is numbered automatically, starting
+from@tie{}1.
 
-For example, the present chapter in this manual is entitled ``Chapter
-Structuring''; the @code{@@chapter} line looks like this:
+For example, the present chapter in this manual is entitled
+``@code{@@chapter}: Chapter Structuring''; the @code{@@chapter} line
+looks like this:
 
 @example
-@@chapter Chapter Structuring
+@@chapter @@code@{@@@@chapter@}: Chapter Structuring
 @end example
 
 In @TeX{}, the @code{@@chapter} command produces a chapter heading in
@@ -4506,44 +4512,51 @@ underneath.  So, the above example produces the following output:
 @example
 @group
 5 Chapter Structuring
-*******************
+*********************
 @end group
 @end example
 
-In HTML, the @code{@@chapter} command produces an @code{<h...>}-level
-header.  In the XML and Docbook output, a @code{<chapter>} element is
-produced that includes all the following sections, up to the next
-chapter.
+In HTML, the @code{@@chapter} command produces an @code{<h2>}-level
+header by default (controlled by the @code{CHAPTER_HEADER_LEVEL}
+customization variable, @pxref{Other Customization Variables}).
+
+In the XML and Docbook output, a @code{<chapter>} element is produced
+that includes all the following sections, up to the next chapter.
 
 
-@node unnumbered & appendix
-@section @code{@@unnumbered} and @code{@@appendix}
+@node @code{@@unnumbered @@appendix}
+@section @code{@@unnumbered}, @code{@@appendix}: Chapters with Other Labeling
+
+@anchor{unnumbered & appendix}@c old name
 @findex unnumbered
 @findex appendix
 
-Use the @code{@@unnumbered} command to create a chapter that appears
-in a printed manual without chapter numbers of any kind.  Use the
-@code{@@appendix} command to create an appendix in a printed manual
-that is labeled by letter (`A', `B', @dots{}) instead of by number.
+Use the @code{@@unnumbered} command to start a chapter-level element
+that appears without chapter numbers of any kind.  Use the
+@code{@@appendix} command to start an appendix that is labeled by
+letter (`A', `B', @dots{}) instead of by number; appendices are also
+at the chapter level of structuring.
 
 Write an @code{@@appendix} or @code{@@unnumbered} command at the
-beginning of a line and follow it on the same line by the title, as
-you would if you were creating a chapter.
+beginning of a line and follow it on the same line by the title, 
+just as with @code{@@chapter}.
 
 @findex centerchap
 Texinfo also provides a command @code{@@centerchap}, which is analogous
 to @code{@@unnumbered}, but centers its argument in the printed and HTML 
 outputs.  This kind of stylistic choice is not usually offered by 
 Texinfo.
-@c but the Hacker's Dictionary wanted it ...
+@c but the Hacker's Dictionary wanted it, before they quit Texinfo.
 
 
-@node majorheading & chapheading
-@section @code{@@majorheading}, @code{@@chapheading}
+@node @code{@@majorheading @@chapheading}
+@section @code{@@majorheading}, @code{@@chapheading}: Chapter-level Headings
+
+@anchor{majorheading & chapheading}@c old name
 @findex majorheading
 @findex chapheading
 
-The @code{@@majorheading} and @code{@@chapheading} commands put
+The @code{@@majorheading} and @code{@@chapheading} commands produce
 chapter-like headings in the body of a document.
 
 However, neither command produces an entry in the table of contents,
@@ -4557,13 +4570,15 @@ is otherwise the same.
 In Info and plain text, the @code{@@majorheading} and
 @code{@@chapheading} commands produce the same output as
 @code{@@chapter}: the title is printed on a line by itself with a line
-of asterisks underneath.  The only difference is the lack of numbering
-and the lack of any association with nodes.  (@xref{chapter,,
-@code{@@chapter}}.)
+of asterisks underneath.  Similarly for HTML.  The only difference is
+the lack of numbering and the lack of any association with nodes.
+@xref{@code{@@chapter}}.
 
 
-@node section
-@section @code{@@section}
+@node @code{@@section}
+@section @code{@@section}: Sections Below Chapters
+
+@anchor{section}@c old name
 @findex section
 
 An @code{@@section} command identifies a section within a chapter
@@ -4575,7 +4590,7 @@ sections are numbered `1.1', `1.2', etc.; within an @code{@@appendix}
 within an @code{@@unnumbered} chapter, the section gets no number.
 The output is underlined with @samp{=} in Info and plain text.
 
-To create a section, write the @code{@@section} command at the
+To make a section, write the @code{@@section} command at the
 beginning of a line and follow it on the same line by the section
 title.  For example,
 
@@ -4596,12 +4611,13 @@ might produce the following in Info:
 Section titles are listed in the table of contents.
 
 The @TeX{}, HTML, Docbook, and XML output is all analogous to the
-chapter-level output, just ``one level down''; @pxref{chapter,,
-@code{@@chapter}}.
+chapter-level output, just ``one level down''; @pxref{@code{@@chapter}}.
 
 
-@node unnumberedsec appendixsec heading
+@node @code{@@unnumberedsec @@appendixsec @@heading}
 @section @code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
+
+@anchor{unnumberedsec appendixsec heading}@c old name
 @findex unnumberedsec
 @findex appendixsec
 @findex heading
@@ -4638,13 +4654,15 @@ section-style heading that will not appear in the table of contents.
 @end table
 
 
-@node subsection
-@section The @code{@@subsection} Command
+@node @code{@@subsection}
+@section @code{@@subsection}: Subsections Below Sections
+
+@anchor{subsection}@c old name
 @findex subsection
 
-Subsections are to sections as sections are to chapters.
-(@xref{section, , @code{@@section}}.)  In Info and plain text,
-subsection titles are underlined with @samp{-}.  For example,
+Subsections are to sections as sections are to chapters;
+@pxref{@code{@@section}}.  In Info and plain text, subsection titles
+are underlined with @samp{-}.  For example,
 
 @example
 @@subsection This is a subsection
@@ -4663,26 +4681,28 @@ might produce
 Subsection titles are listed in the table of contents.
 
 The @TeX{}, HTML, Docbook, and XML output is all analogous to the
-chapter-level output, just ``two levels down''; @pxref{chapter,,
-@code{@@chapter}}.
+chapter-level output, just ``two levels down'';
+@pxref{@code{@@chapter}}.
 
 
-@node unnumberedsubsec appendixsubsec subheading
+@node @code{@@unnumberedsubsec @@appendixsubsec @@subheading}
 @section The @code{@@subsection}-like Commands
-@cindex Subsection-like commands
+
+@anchor{unnumberedsubsec appendixsubsec subheading}@c old name
 @findex unnumberedsubsec
 @findex appendixsubsec
 @findex subheading
+@cindex Subsection-like commands
 
 The @code{@@unnumberedsubsec}, @code{@@appendixsubsec}, and
 @code{@@subheading} commands are, respectively, the unnumbered,
 appendix-like, and heading-like equivalents of the @code{@@subsection}
-command.  (@xref{subsection, , @code{@@subsection}}.)
+command.  (@xref{@code{@@subsection}}.)
 
 @code{@@unnumberedsubsec} and @code{@@appendixsubsec} do not need to
 be used in ordinary circumstances, because @code{@@subsection} may
 also be used within sections of @code{@@unnumbered} and
-@code{@@appendix} chapters (@pxref{section,,@code{section}}).
+@code{@@appendix} chapters (@pxref{@code{@@section}}).
 
 An @code{@@subheading} command produces a heading like that of a
 subsection except that it is not numbered and does not appear in the
@@ -4695,13 +4715,15 @@ text, the @code{@@subsection}-like commands generate a title
 underlined with hyphens.
 
 
-@node subsubsection
-@section The `subsub' Commands
-@cindex Subsub commands
+@node @code{@@subsubsection}
+@section @code{@@subsection} and Other Subsub Commands
+
+@anchor{subsubsection}@c old name
 @findex subsubsection
 @findex unnumberedsubsubsec
 @findex appendixsubsubsec
 @findex subsubheading
+@cindex Subsub sectioning commands
 
 The fourth and lowest level sectioning commands in Texinfo are the
 `subsub' commands.  They are:
@@ -4709,8 +4731,8 @@ The fourth and lowest level sectioning commands in Texinfo are the
 @table @code
 @item @@subsubsection
 Subsubsections are to subsections as subsections are to sections.
-(@xref{subsection, , @code{@@subsection}}.)  Subsubsection titles 
-appear in the table of contents.
+(@xref{@code{@@subsection}}.)  Subsubsection titles appear in the
+table of contents.
 
 @item @@unnumberedsubsubsec
 Unnumbered subsubsection titles appear in the table of contents, 
@@ -4750,11 +4772,10 @@ might produce
 @end example
 
 The @TeX{}, HTML, Docbook, and XML output is all analogous to the
-chapter-level output, just ``three levels down''; @pxref{chapter,,
-@code{@@chapter}}.
+chapter-level output, just ``three levels down''; @pxref{@code{@@chapter}}.
 
 
-@node part
+@node @code{@@part}
 @section @code{@@part}: Groups of Chapters
 @findex part
 @cindex Part pages
@@ -4814,7 +4835,7 @@ section).  That is, it is never lowered and nothing can be raised to it.
 
 
 @node Raise/lower sections
-@section @code{@@raisesections} and @code{@@lowersections}
+@section Raise/lower Sections: @code{@@raisesections} and @code{@@lowersections}
 @findex raisesections
 @findex lowersections
 @cindex Raising and lowering sections
@@ -4843,7 +4864,7 @@ included file (@pxref{Include Files}).  Typical usage looks like this:
 @end example
 
 @noindent (Without the @code{@@raisesections}, all the subsequent
-sections would also be lowered.)
+sections in the main file would also be lowered.)
 
 If the included file being lowered has an @code{@@top} node, you'll
 need to conditionalize its inclusion with a flag (@pxref{set value}).
@@ -4854,9 +4875,9 @@ pointers.  Since @command{makeinfo} must assume a hierarchically
 organized document to determine the pointers, you cannot just
 arbitrarily sprinkle @code{@@raisesections} and @code{@@lowersections}
 commands throughout the document.  The final result has to have menus
-that take the raising and lowering into account.  Therefore, as a
-practical matter, you generally only want to raise or lower large
-chunks, usually in external files as shown above.
+that take the raising and lowering into account.  So, as a practical
+matter, you generally only want to raise or lower large chunks,
+usually in external files as shown above.
 
 Repeated use of the commands continues to raise or lower the
 hierarchical level a step at a time.  An attempt to raise above
@@ -4864,7 +4885,7 @@ hierarchical level a step at a time.  An attempt to raise above
 `subsubsection' reproduces subsubsection commands.  Also, lowered
 subsubsections and raised chapters will not work with
 @command{makeinfo}'s feature of implicitly determining node pointers,
-since the menu structure cannot be correct.
+since the menu structure cannot be represented correctly.
 
 Write each @code{@@raisesections} and @code{@@lowersections} command
 on a line of its own.
@@ -5248,8 +5269,7 @@ formatter which node is to be used as the root of the node tree
 (needed if your manual uses implicit node pointers).
 
 It produces the same sort of output as @code{@@unnumbered}
-(@pxref{unnumbered & appendix,, @code{@@unnumbered} and
-@code{@@appendix}}).
+(@pxref{@code{@@unnumbered @@appendix}}).
 
 The @code{@@top} node is conventionally wrapped in an
 @code{@@ifnottex} conditional so that it will not appear in @TeX{}
@@ -19881,27 +19901,26 @@ target.  @xref{anchor,, @code{@@anchor}}.
 
 @item @@appendix @var{title}
 Begin an appendix.  The title appears in the table of contents.  In
-Info, the title is underlined with asterisks.  @xref{unnumbered &
-appendix, , The @code{@@unnumbered} and @code{@@appendix} Commands}.
+Info, the title is underlined with asterisks.
+@xref{@code{@@unnumbered @@appendix}}.
 
 @item @@appendixsec @var{title}
 @itemx @@appendixsection @var{title}
 Begin an appendix section within an appendix.  The section title
 appears in the table of contents.  In Info, the title is underlined
 with equal signs.  @code{@@appendixsection} is a longer spelling of
-the @code{@@appendixsec} command.  @xref{unnumberedsec appendixsec
-heading, , Section Commands}.
+the @code{@@appendixsec} command.  @xref{@code{@@unnumberedsec
+@@appendixsec @@heading}}.
 
 @item @@appendixsubsec @var{title}
 Begin an appendix subsection.  The title appears in the table of
 contents.  In Info, the title is underlined with hyphens.
-@xref{unnumberedsubsec appendixsubsec subheading, , Subsection
-Commands}.
+@xref{@code{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
 
 @item @@appendixsubsubsec @var{title}
 Begin an appendix subsubsection.  The title appears in the table of
 contents.  In Info, the title is underlined with periods.
-@xref{subsubsection,, The `subsub' Commands}.
+@xref{@code{@@subsubsection}}.
 
 @item @@arrow@{@}
 Generate a right arrow glyph: @samp{@arrow{}}.  Used by default
@@ -19946,19 +19965,17 @@ Center the line of text following the command.
 @xref{@code{@@titlefont @@center @@sp}}.
 
 @item @@centerchap @var{line-of-text}
-Like @code{@@chapter}, but centers the chapter title.  @xref{chapter,,
-@code{@@chapter}}.
+Like @code{@@chapter}, but centers the chapter title.  @xref{@code{@@chapter}}.
 
 @item @@chapheading @var{title}
 Print an unnumbered chapter-like heading, but omit from the table of
 contents.  In Info, the title is underlined with asterisks.
-@xref{majorheading & chapheading, , @code{@@majorheading} and
-@code{@@chapheading}}.
+@xref{@code{@@majorheading @@chapheading}}.
 
 @item @@chapter @var{title}
 Begin a numbered chapter.  The chapter title appears in the table of
 contents.  In Info, the title is underlined with asterisks.
-@xref{chapter, , @code{@@chapter}}.
+@xref{@code{@@chapter}}.
 
 @item @@cindex @var{entry}
 Add @var{entry} to the index of concepts.  @xref{Index Entries, ,
@@ -20389,7 +20406,7 @@ introduce @code{#line} directive.  @xref{Inserting a Hashsign}, and
 @item @@heading @var{title}
 Print an unnumbered section-like heading, but omit from the table of
 contents.  In Info, the title is underlined with equal signs.
-@xref{unnumberedsec appendixsec heading, , Section Commands}.
+@xref{@code{@@unnumberedsec @@appendixsec @@heading}}.
 
 @item @@headings @var{on-off-single-double}
 Turn page headings on or off, and/or specify single-sided or double-sided
@@ -20572,10 +20589,10 @@ Define a new Texinfo command @code{@@@var{macroname}@{@var{params}@}}.
 Pair with @code{@@end macro}.  @xref{Defining Macros}.
 
 @item @@majorheading @var{title}
-Print an unnumbered chapter-like heading, but omit from
-the table of contents.  This generates more vertical whitespace before
-the heading than the @code{@@chapheading} command.  @xref{majorheading
-& chapheading, , @code{@@majorheading} and @code{@@chapheading}}.
+Print an unnumbered chapter-like heading, but omit from the table of
+contents.  This generates more vertical whitespace before the heading
+than the @code{@@chapheading} command.  @xref{@code{@@majorheading
+@@chapheading}}.
 
 @item @@math@{@var{mathematical-expression}@}
 Format a mathematical expression.
@@ -20654,7 +20671,7 @@ source file indentation if @var{indent} is @code{asis}.
 @item @@part @var{title}
 Begin a group of chapters or appendixes; included in the tables of
 contents and produces a page of its own in printed output.
-@xref{part,, @code{@@part}}.
+@xref{@code{@@part}}.
 
 @item @@pindex @var{entry}
 Add @var{entry} to the index of programs.  @xref{Index Entries, , Defining
@@ -20713,8 +20730,7 @@ Info.
 
 @item @@raisesections
 Change subsequent sections to chapters, subsections to sections, and so
-on.  @xref{Raise/lower sections, , @code{@@raisesections} and
-@code{@@lowersections}}.
+on.  @xref{Raise/lower sections}.
 
 @item @@ref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
 Make a plain reference that does not start with any special text.
@@ -20847,27 +20863,24 @@ Emphasize @var{text} more strongly than @code{@@emph}, by using
 @item @@subheading @var{title}
 Print an unnumbered subsection-like heading, but omit from the table
 of contents of a printed manual.  In Info, the title is underlined
-with hyphens.  @xref{unnumberedsubsec appendixsubsec subheading, ,
-@code{@@unnumberedsubsec} @code{@@appendixsubsec}
-@code{@@subheading}}.
+with hyphens.  @xref{@code{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
 
 @item @@subsection @var{title}
 Begin a subsection within a section.  The subsection title appears in
 the table of contents.  In Info, the title is underlined with hyphens.
-Same context-dependent numbering as @code{@@section}.  @xref{subsection, ,
-@code{@@subsection}}.
+Same context-dependent numbering as @code{@@section}.
+@xref{@code{@@subsection}}.
 
 @item @@subsubheading @var{title}
 Print an unnumbered subsubsection-like heading, but omit from the
 table of contents of a printed manual.  In Info, the title is
-underlined with periods.  @xref{subsubsection, , The `subsub'
-Commands}.
+underlined with periods.  @xref{@code{@@subsubsection}}.
 
 @item @@subsubsection @var{title}
 Begin a subsubsection within a subsection.  The subsubsection title
 appears in the table of contents.  In Info, the title is underlined
 with periods.  Same context-dependent numbering as @code{@@section}.
-@xref{subsubsection, , The `subsub' Commands}.
+@xref{@code{@@subsubsection}}.
 
 @item @@subtitle @var{title}
 In a printed manual, set a subtitle in a normal sized font flush to
@@ -20989,26 +21002,23 @@ Undefine the macro @code{@@@var{macroname}} if it has been defined.
 @item @@unnumbered @var{title}
 Begin a chapter that appears without chapter numbers of any kind.  The
 title appears in the table of contents.  In Info, the title is
-underlined with asterisks.  @xref{unnumbered & appendix, ,
-@code{@@unnumbered} and @code{@@appendix}}.
+underlined with asterisks.  @xref{@code{@@unnumbered @@appendix}}.
 
 @item @@unnumberedsec @var{title}
 Begin a section that appears without section numbers of any kind.  The
 title appears in the table of contents of a printed manual.  In Info,
-the title is underlined with equal signs.  @xref{unnumberedsec
-appendixsec heading, , Section Commands}.
+the title is underlined with equal signs.  @xref{@code{@@unnumberedsec
+@@appendixsec @@heading}}.
 
 @item @@unnumberedsubsec @var{title}
 Begin an unnumbered subsection.  The title appears in the table of
 contents.  In Info, the title is underlined with hyphens.
-@xref{unnumberedsubsec appendixsubsec subheading, ,
-@code{@@unnumberedsubsec} @code{@@appendixsubsec}
-@code{@@subheading}}.
+@xref{@code{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
 
 @item @@unnumberedsubsubsec @var{title}
 Begin an unnumbered subsubsection.  The title appears in the table of
 contents.  In Info, the title is underlined with periods.
-@xref{subsubsection, , The `subsub' Commands}.
+@xref{@code{@@subsubsection}}.
 
 @item @@uref@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
 @itemx @@url@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
@@ -21749,7 +21759,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.510 2013-01-04 18:09:23 karl Exp $
+$Id: texinfo.txi,v 1.511 2013-01-05 17:02:09 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
