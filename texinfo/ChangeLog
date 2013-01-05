@@ -1,5 +1,9 @@
 2013-01-05  Karl Berry  <karl@gnu.org>
 
+	* install-info/install-info.c (open_possibly_compressed_file):
+	free the original in the .gz and (found by Andreas Schwab, 05 Jan
+	2013 12:28:05) .xz cases too.  Reindent other parts of fn correctly.
+
 	* doc/texinfo.txi (Chapter Structuring): node names with @
 	throughout chapter.
 
@@ -9,7 +13,7 @@
 	headings on off, paragraphindent, exampleindent): continue
 	conversion to node names with @.
 
-2013-01-02  Thien-Thi Nguyen  <ttn@gnuvola.org>  (tiny change)
+2013-01-03  Thien-Thi Nguyen  <ttn@gnuvola.org>  (tiny change)
 
 	* doc/texinfo.txi (Combining Indices):
 	@synindex uses the "roman font for merged-from". 

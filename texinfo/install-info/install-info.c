@@ -1,5 +1,5 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c,v 1.21 2013-01-01 19:31:57 karl Exp $
+   $Id: install-info.c,v 1.22 2013-01-05 23:46:38 karl Exp $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013
@@ -683,11 +683,13 @@ open_possibly_compressed_file (char *filename,
   f = fopen (*opened_filename, FOPEN_RBIN);
   if (!f)
     {
+      free (*opened_filename);
       *opened_filename = concat (filename, ".gz", "");
       f = fopen (*opened_filename, FOPEN_RBIN);
     }
   if (!f)
     {
+      free (*opened_filename);
       *opened_filename = concat (filename, ".xz", "");
       f = fopen (*opened_filename, FOPEN_RBIN);
     }
@@ -704,35 +706,35 @@ open_possibly_compressed_file (char *filename,
      f = fopen (*opened_filename, FOPEN_RBIN);
     }
 #ifdef __MSDOS__
-      if (!f)
-        {
-          free (*opened_filename);
-          *opened_filename = concat (filename, ".igz", "");
-          f = fopen (*opened_filename, FOPEN_RBIN);
-        }
-      if (!f)
-        {
-          free (*opened_filename);
-          *opened_filename = concat (filename, ".inz", "");
-          f = fopen (*opened_filename, FOPEN_RBIN);
-        }
-#endif
-      if (!f)
-        {
-          if (create_callback)
-            { /* That didn't work either.  Create the file if we can.  */
-              (*create_callback) (filename);
+  if (!f)
+    {
+      free (*opened_filename);
+      *opened_filename = concat (filename, ".igz", "");
+      f = fopen (*opened_filename, FOPEN_RBIN);
+    }
+  if (!f)
+    {
+      free (*opened_filename);
+      *opened_filename = concat (filename, ".inz", "");
+      f = fopen (*opened_filename, FOPEN_RBIN);
+    }
+#endif /* __MSDOS__ */
+   if (!f)
+     {
+       if (create_callback)
+         { /* That didn't work either.  Create the file if we can.  */
+           (*create_callback) (filename);
 
-              /* And try opening it again.  */
-              free (*opened_filename);
-              *opened_filename = filename;
-              f = fopen (*opened_filename, FOPEN_RBIN);
-              if (!f)
-                pfatal_with_name (filename);
-            }
-          else
-            pfatal_with_name (filename);
-        }
+           /* And try opening it again.  */
+           free (*opened_filename);
+           *opened_filename = filename;
+           f = fopen (*opened_filename, FOPEN_RBIN);
+           if (!f)
+             pfatal_with_name (filename);
+         }
+       else
+         pfatal_with_name (filename);
+     }
 
   /* Read first few bytes of file rather than relying on the filename.
      If the file is shorter than this it can't be usable anyway.  */
