@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.512 2013-01-06 19:09:12 karl Exp $
+@c $Id: texinfo.txi,v 1.513 2013-01-06 22:57:57 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7772,8 +7772,8 @@ acronyms.
 It usually turns out to be quite difficult and/or time-consuming to
 consistently use @code{@@acronym} for all sequences of uppercase
 letters.  Furthermore, it looks strange for some acronyms to be in the
-normal font size and others to be smaller.  Thus, one approach
-(recommended for GNU manuals) is to avoid @code{@@acronym} and typeset
+normal font size and others to be smaller.  Thus, a simpler approach
+you may wish to consider is to avoid @code{@@acronym} and just typeset
 everything as normal text in all capitals: @samp{GNU}, producing the
 output `GNU'.
 
@@ -7918,9 +7918,9 @@ Richard @sc{Stallman} commenc@'{e} GNU.
 @end display
 
 As shown here, we recommend reserving @code{@@sc} for special cases
-where you want small caps; family names are one such, especially in
-languages other than English, though there are no hard-and-fast rules
-about such things.
+where you want typographic small caps; family names are one such,
+especially in languages other than English, though there are no
+hard-and-fast rules about such things.
 
 @cindex @code{<small>} tag
 @TeX{} typesets any uppercase letters between the braces of an
@@ -21758,7 +21758,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.512 2013-01-06 19:09:12 karl Exp $
+$Id: texinfo.txi,v 1.513 2013-01-06 22:57:57 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
