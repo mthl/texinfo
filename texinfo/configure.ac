@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.136 2013-01-02 02:58:26 karl Exp $
+# $Id: configure.ac,v 1.137 2013-01-06 12:34:55 pertusus Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013 Free Software Foundation, Inc.
@@ -315,7 +315,8 @@ dnl so don't waste time configuring them.  See util/tests/README.
 dnl AC_CONFIG_FILES([util/tests/defs])
 dnl AC_CHECK_PROGS([HEVEA], [hevea], [])
 dnl AC_CHECK_PROGS([TEX], [tex], [])
-dnl AC_CHECK_PROGS([PROVE], [prove], [])
+
+AC_CHECK_PROGS([PROVE], [prove], [])
 
 tp_tests='no'
 AC_ARG_ENABLE([tp-tests],
