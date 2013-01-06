@@ -1,7 +1,9 @@
 2013-01-06  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.txi (Nodes): node names with @
-	throughout chapter.
+	* install-info/install-info.c (open_possibly_compressed_file):
+	free in .gz case is wrong.
+
+	* doc/texinfo.txi (Nodes): node names with @ throughout chapter.
 
 	* doc/texinfo.txi (acronyn, Smallcaps): more about the problems of
 	using them, and not recommending them.

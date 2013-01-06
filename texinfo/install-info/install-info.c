@@ -1,5 +1,5 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c,v 1.22 2013-01-05 23:46:38 karl Exp $
+   $Id: install-info.c,v 1.23 2013-01-06 23:18:56 karl Exp $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013
@@ -662,7 +662,8 @@ The first time you invoke Info you start off looking at this node.\n\
    If we do open it, return the actual name of the file opened in
    OPENED_FILENAME and the compress program to use to (de)compress it in
    COMPRESSION_PROGRAM.  The compression program is determined by the
-   magic number, not the filename.  */
+   
+   MAGIC number, not the filename.  */
 
 FILE *
 open_possibly_compressed_file (char *filename,
@@ -683,7 +684,6 @@ open_possibly_compressed_file (char *filename,
   f = fopen (*opened_filename, FOPEN_RBIN);
   if (!f)
     {
-      free (*opened_filename);
       *opened_filename = concat (filename, ".gz", "");
       f = fopen (*opened_filename, FOPEN_RBIN);
     }
