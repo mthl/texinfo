@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.513 2013-01-06 22:57:57 karl Exp $
+@c $Id: texinfo.txi,v 1.514 2013-01-07 18:36:39 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -314,13 +314,13 @@ Cross References
 * References::                  What cross references are for.
 * Cross Reference Commands::    A summary of the different commands.
 * Cross Reference Parts::       A cross reference has several parts.
-* xref::                        Begin a reference with `See' @dots{}
+* @code{@@xref}::                       Begin a reference with `See' @dots{}
 * Top Node Naming::             How to refer to the beginning of another file.
-* ref::                         A reference for the last part of a sentence.
-* pxref::                       How to write a parenthetical cross reference.
-* inforef::                     How to refer to an Info-only file.
-* uref::                        How to refer to a uniform resource locator.
-* cite::                        How to refer to books not in the Info system.
+* @code{@@ref}::                        A reference for the last part of a sentence.
+* @code{@@pxref}::                      How to write a parenthetical cross reference.
+* @code{@@inforef}::                    How to refer to an Info-only file.
+* @code{@@url}::                        How to refer to a uniform resource locator.
+* @code{@@cite}::                       How to refer to books not in the Info system.
 
 @code{@@xref}
 
@@ -5395,13 +5395,15 @@ Also like node names, anchor names cannot include some characters
 (@pxref{Node Line Requirements}).
 
 @cindex Nodes, deleting or renaming
-Because of this duality, when you delete or rename a node, it can be
-useful to retain an @code{@@anchor} with the old name.  That way, any
-links to the old node, whether from other Texinfo manuals or general
-web pages, will still work.  You can also do this with the
-@file{RENAMED_NODES_FILE} feature of @command{makeinfo} (@pxref{HTML
-Xref Link Preservation}).  There is no effective difference between
-the two approaches.
+Because of this duality, when you delete or rename a node, it is
+usually a good idea to define an @code{@@anchor} with the old name.
+That way, any links to the old node, whether from other Texinfo
+manuals or general web pages, keep working.  You can also do this with
+the @file{RENAMED_NODES_FILE} feature of @command{makeinfo}
+(@pxref{HTML Xref Link Preservation}).  Both methods keep links
+on the web working; the only substantive difference is that defining
+anchors also makes the old node names available when reading the
+document in Info.
 
 
 @node Node Menu Illustration
@@ -5844,13 +5846,13 @@ places to which cross references can refer.
 * References::                  What cross references are for.
 * Cross Reference Commands::    A summary of the different commands.
 * Cross Reference Parts::       A cross reference has several parts.
-* xref::                        Begin a reference with `See' @dots{}
+* @code{@@xref}::                       Begin a reference with `See' @dots{}
 * Top Node Naming::             How to refer to the beginning of another file.
-* ref::                         A reference for the last part of a sentence.
-* pxref::                       How to write a parenthetical cross reference.
-* inforef::                     How to refer to an Info-only file.
-* uref::                        How to refer to a uniform resource locator.
-* cite::                        How to refer to books not in the Info system.
+* @code{@@ref}::                        A reference for the last part of a sentence.
+* @code{@@pxref}::                      How to write a parenthetical cross reference.
+* @code{@@inforef}::                    How to refer to an Info-only file.
+* @code{@@url}::                        How to refer to a uniform resource locator.
+* @code{@@cite}::                       How to refer to books not in the Info system.
 @end menu
 
 @node References
@@ -5924,7 +5926,7 @@ manual.
 @noindent
 The @code{@@cite} command is used to make references to books and
 manuals for which there is no corresponding Info file and, therefore,
-no node to which to point.   @xref{cite, , @code{@@cite}}.
+no node to which to point.  @xref{@code{@@cite}}.
 
 
 @node Cross Reference Parts
@@ -6040,8 +6042,10 @@ the @code{@@node} line, including the same capitalization; otherwise, the
 formatters may not find the reference.
 
 
-@node xref
+@node @code{@@xref}
 @section @code{@@xref}
+
+@anchor{xref}@c old name
 @findex xref
 @cindex Cross references using @code{@@xref}
 @cindex References using @code{@@xref}
@@ -6096,7 +6100,7 @@ The @code{@@xref} command does not generate a period or comma to end
 the cross reference automatically.  You must write that period or
 comma yourself; otherwise, Info will not recognize the end of the
 reference.  (The @code{@@pxref} command works differently;
-@pxref{pxref,,@code{@@pxref}}.)
+@pxref{@code{@@pxref}}.)
 
 @quotation Caution
 A period or comma @emph{must} follow the closing brace of an
@@ -6567,11 +6571,13 @@ arbitrariness of the first name is a principal reason why omitting the
 third argument in whole-manual cross references is preferable.
 
 
-@node ref
+@node @code{@@ref}
 @section @code{@@ref}
+
+@anchor{ref}@c old name
+@findex ref
 @cindex Cross references using @code{@@ref}
 @cindex References using @code{@@ref}
-@findex ref
 
 @code{@@ref} is nearly the same as @code{@@xref} except that it does
 not generate a `See' in the printed output, just the reference itself.
@@ -6634,11 +6640,13 @@ word other than ``see'' to precede the reference.  When ``see'' (or
 ``See'') is ok, @code{@@xref} and @code{@@pxref} are preferable.
 
 
-@node pxref
+@node @code{@@pxref}
 @section @code{@@pxref}
+
+@anchor{pxref}@c old name
+@findex pxref
 @cindex Cross references using @code{@@pxref}
 @cindex References using @code{@@pxref}
-@findex pxref
 
 The parenthetical reference command, @code{@@pxref}, is nearly the
 same as @code{@@xref}, but it is best used at the end of a sentence or
@@ -6717,7 +6725,7 @@ in Info and
 in a printed manual.
 
 @code{@@pxref} can be used with up to five arguments, just like
-@code{@@xref} (@pxref{xref, , @code{@@xref}}).
+@code{@@xref} (@pxref{@code{@@xref}}).
 
 In past versions of Texinfo, it was not allowed to write punctuation
 after an @code{@@pxref}, so it could be used @emph{only} before a
@@ -6747,11 +6755,13 @@ sentences.  Although it technically works in the middle of a sentence,
 that location breaks up the flow of reading.
 
 
-@node inforef
-@section @code{@@inforef}
+@node @code{@@inforef}
+@section @code{@@inforef}: Cross References to Info-only Material
+
+@anchor{inforef}@c old name
+@findex inforef
 @cindex Cross references using @code{@@inforef}
 @cindex References using @code{@@inforef}
-@findex inforef
 
 @code{@@inforef} is used for making cross references to Info
 documents---even from a printed manual.  This might be because you
@@ -6821,12 +6831,14 @@ written in Texinfo, so all formats are available.  In fact, we don't
 know of any extant Info-only manuals.)
 
 The converse of @code{@@inforef} is @code{@@cite}, which is used to
-refer to printed works for which no Info form exists.  @xref{cite, ,
-@code{@@cite}}.
+refer to printed works for which no Info form exists.
+@xref{@code{@@cite}}.
 
 
-@node uref
+@node @code{@@url}
 @section @code{@@url}, @code{@@uref@{@var{url}[, @var{text}][, @var{replacement}]@}}
+
+@anchor{uref}@c old name
 @findex uref
 @cindex Uniform resource locator, referring to
 @cindex URL, referring to
@@ -6957,8 +6969,10 @@ To merely indicate a url without creating a link people can follow, use
 @code{@@indicateurl} (@pxref{indicateurl, @code{@@indicateurl}}).
 
 
-@node cite
+@node @code{@@cite}
 @section @code{@@cite}@{@var{reference}@}
+
+@anchor{cite}@c old name
 @findex cite
 
 Use the @code{@@cite} command for the name of a book that lacks a
@@ -6967,7 +6981,7 @@ manual, and quotation marks in the Info file.
 
 If a book is written in Texinfo, it is better to use a cross reference
 command since a reader can easily follow such a reference in Info.
-@xref{xref, , @code{@@xref}}.
+@xref{@code{@@xref}}.
 
 
 @node Marking Text
@@ -7085,8 +7099,7 @@ Indicate the introductory or defining use of a term.
 @xref{dfn,,@code{@@dfn}}.
 
 @item @@cite@{@var{reference}@}
-Indicate the name of a book.
-@xref{cite,,@code{@@cite}}.
+Indicate the name of a book.  @xref{@code{@@cite}}.
 
 @item @@abbr@{@var{abbreviation}@}
 Indicate an abbreviation, such as `Comput.'.
@@ -7098,7 +7111,7 @@ Indicate an acronym.
 @item @@indicateurl@{@var{uniform-resource-locator}@}
 Indicate an example (that is, nonfunctional) uniform resource locator.
 @xref{indicateurl,,@code{@@indicateurl}}.  (Use @code{@@url}
-(@pxref{uref,,@code{@@url}}) for live urls.)
+(@pxref{@code{@@url}}) for live urls.)
 
 @item @@email@{@var{email-address}[, @var{displayed-text}]@}
 Indicate an electronic mail address.
@@ -7793,7 +7806,7 @@ them.
 Use the @code{@@indicateurl} command to indicate a uniform resource
 locator on the World Wide Web.  This is purely for markup purposes and
 does not produce a link you can follow (use the @code{@@url} or
-@code{@@uref} command for that, @pxref{uref,,@code{@@uref}}).
+@code{@@uref} command for that, @pxref{@code{@@url}}).
 @code{@@indicateurl} is useful for urls which do not actually exist.
 For example:
 
@@ -12075,7 +12088,7 @@ into two lines.
 @end example
 
 The @code{@@/} command can often be useful within urls
-(@pxref{uref,,@code{@@uref}}), which tend to be long and are otherwise
+(@pxref{@code{@@url}}), which tend to be long and are otherwise
 unbreakable.  For example:
 
 @example
@@ -19983,7 +19996,7 @@ Defining the Entries of an Index}.
 
 @item @@cite@{@var{reference}@}
 Highlight the name of a book or other reference that has no companion
-Info file.  @xref{cite, , @code{@@cite}}.
+Info file.  @xref{@code{@@cite}}.
 
 @item @@clear @var{flag}
 Unset @var{flag}, preventing the Texinfo formatting commands from
@@ -20508,7 +20521,7 @@ Web.  @xref{indicateurl, , @code{@@indicateurl}}.
 
 @item @@inforef@{@var{node-name}, [@var{entry-name}], @var{info-file-name}@}
 Make a cross reference to an Info file for which there is no printed
-manual.  @xref{inforef,, Cross references using @code{@@inforef}}.
+manual.  @xref{@code{@@inforef}}.
 
 @item @@inlinefmt@{@var{fmt}, @var{text}@}
 @itemx @@inlineraw@{@var{fmt}, @var{raw-text}@}
@@ -20697,7 +20710,7 @@ manual).  @xref{Printing Indices & Menus}.
 @item @@pxref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
 Make a reference that starts with a lowercase `see' in a printed
 manual.  Use within parentheses only.  Only the first argument is
-mandatory.  @xref{pxref, , @code{@@pxref}}.
+mandatory.  @xref{@code{@@pxref}}.
 
 @item @@questiondown@{@}
 Generate an upside-down question mark.  @xref{Inserting Accents}.
@@ -20735,7 +20748,7 @@ on.  @xref{Raise/lower sections}.
 @item @@ref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
 Make a plain reference that does not start with any special text.
 Follow command with a punctuation mark.  Only the first argument is
-mandatory.  @xref{ref, , @code{@@ref}}.
+mandatory.  @xref{@code{@@ref}}.
 
 @item @@refill
 @findex refill
@@ -21022,12 +21035,12 @@ contents.  In Info, the title is underlined with periods.
 @item @@uref@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
 @itemx @@url@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
 Define a cross reference to an external uniform resource locator,
-e.g., for the World Wide Web.  @xref{uref, , @code{@@uref}}.
+e.g., for the World Wide Web.  @xref{@code{@@url}}.
 
 @item @@urefbreakstyle @var{style}
 Specify how @code{@@uref}/@code{@@url} should break at special
 characters: @code{after}, @code{before}, @code{none}.
-@xref{uref,, @code{@@uref}}.
+@xref{@code{@@url}}.
 
 @item @@v@{@var{c}@}
 Generate check accent over the character @var{c}, as in @v{o}.
@@ -21084,7 +21097,7 @@ Formatter Commands}.
 @item @@xref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
 Make a reference that starts with `See' in a printed manual.  Follow
 command with a punctuation mark.  Only the first argument is
-mandatory.  @xref{xref, , @code{@@xref}}.
+mandatory.  @xref{@code{@@xref}}.
 
 @item @@xrefautomaticsectiontitle @var{on-off}
 By default, use the section title instead of the node name in cross
@@ -21758,7 +21771,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.513 2013-01-06 22:57:57 karl Exp $
+$Id: texinfo.txi,v 1.514 2013-01-07 18:36:39 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
