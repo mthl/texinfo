@@ -4295,6 +4295,8 @@ sub _parse_texi($;$)
                   $self->_gather_previous_item($current, $command, $line_nr);
                   $misc = { 'cmdname' => $command, 'parent' => $current };
                   push @{$current->{'contents'}}, $misc;
+                  # since in the %misc_commands hash the entry for those 
+                  # commands is 'skipspace' we set $line_arg here.
                   $line_arg = 1;
                 } else {
                   $self->line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);

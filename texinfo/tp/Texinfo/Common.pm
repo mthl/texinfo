@@ -1304,8 +1304,6 @@ sub float_name_caption($$)
 
   my $prepended;
   if ($type) {
-  #print STDERR "AAAAAAA $root->{'extra'}->{'type'} "
-  #   .Data::Dumper->Dump([$root->{'extra'}->{'type'}]);
     if ($caption) {
       if (defined($root->{'number'})) {
         $prepended = $self->gdt('{float_type} {float_number}: ',
