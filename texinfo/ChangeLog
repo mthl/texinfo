@@ -1,7 +1,7 @@
 2013-01-07  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.txi (Cross References): node names with @
-	throughout chapter.
+	* doc/texinfo.txi (Cross References, Quotations and Examples):
+	node names with @ throughout chapter.
 
 2013-01-06  Karl Berry  <karl@gnu.org>
 

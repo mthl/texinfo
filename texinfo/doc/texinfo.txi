@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.514 2013-01-07 18:36:39 karl Exp $
+@c $Id: texinfo.txi,v 1.515 2013-01-08 00:19:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -365,19 +365,19 @@ Quotations and Examples
 * Block Enclosing Commands::    Different constructs for different purposes.
 * @code{@@quotation}::                   Writing a quotation.
 * @code{@@indentedblock}::               Block of text indented on left.
-* example::                     Writing an example in a fixed-width font.
-* verbatim::                    Writing a verbatim example.
-* verbatiminclude::             Including a file verbatim.
-* lisp::                        Illustrating Lisp code.
-* small::                       Examples in a smaller font.
-* display::                     Writing an example in the current font.
-* format::                      Writing an example without narrowed margins.
-* exdent::                      Undo indentation on a line.
-* flushleft & flushright::      Pushing text flush left or flush right.
-* raggedright::                 Avoiding justification on the right.
-* noindent::                    Preventing paragraph indentation.
-* indent::                      Forcing paragraph indentation.
-* cartouche::                   Drawing rounded rectangles around text.
+* @code{@@example}::                    Writing an example in a fixed-width font.
+* @code{@@verbatim}::                   Writing a verbatim example.
+* @code{@@verbatiminclude}::            Including a file verbatim.
+* @code{@@lisp}::                       Illustrating Lisp code.
+* @code{@@small@dots{}}::                   Examples in a smaller font.
+* @code{@@display}::                    Writing an example in the current font.
+* @code{@@format}::                     Writing an example without narrowed margins.
+* @code{@@exdent}::                     Undo indentation on a line.
+* @code{@@flushleft @@flushright}::     Pushing text flush left or flush right.
+* @code{@@raggedright}::                Avoiding justification on the right.
+* @code{@@noindent}::                   Preventing paragraph indentation.
+* @code{@@indent}::                     Forcing paragraph indentation.
+* @code{@@cartouche}::                  Drawing rounded rectangles around text.
 
 Lists and Tables
 
@@ -1326,7 +1326,7 @@ only recognizes newline characters as end of line, not the CRLF
 sequence used on some systems; so a @dfn{blank line} means exactly two
 consecutive newlines.  Sometimes blank lines are useful or convenient
 in other cases as well; you can use the @code{@@noindent} to inhibit
-paragraph indentation if required (@pxref{noindent,,@code{@@noindent}}).
+paragraph indentation if required (@pxref{@code{@@noindent}}).
 
 @item
 Texinfo supports the usual quotation marks used in English and in
@@ -8072,21 +8072,21 @@ beginning of that line, and with only one space between the
 
 @menu
 * Block Enclosing Commands::    Different constructs for different purposes.
-* @code{@@quotation}::                   Writing a quotation.
-* @code{@@indentedblock}::               Block of text indented on left.
-* example::                     Writing an example in a fixed-width font.
-* verbatim::                    Writing a verbatim example.
-* verbatiminclude::             Including a file verbatim.
-* lisp::                        Illustrating Lisp code.
-* small::                       Examples in a smaller font.
-* display::                     Writing an example in the current font.
-* format::                      Writing an example without narrowed margins.
-* exdent::                      Undo indentation on a line.
-* flushleft & flushright::      Pushing text flush left or flush right.
-* raggedright::                 Avoiding justification on the right.
-* noindent::                    Preventing paragraph indentation.
-* indent::                      Forcing paragraph indentation.
-* cartouche::                   Drawing rounded rectangles around text.
+* @code{@@quotation}::                  Writing a quotation.
+* @code{@@indentedblock}::              Block of text indented on left.
+* @code{@@example}::                    Writing an example in a fixed-width font.
+* @code{@@verbatim}::                   Writing a verbatim example.
+* @code{@@verbatiminclude}::            Including a file verbatim.
+* @code{@@lisp}::                       Illustrating Lisp code.
+* @code{@@small@dots{}}::                   Examples in a smaller font.
+* @code{@@display}::                    Writing an example in the current font.
+* @code{@@format}::                     Writing an example without narrowed margins.
+* @code{@@exdent}::                     Undo indentation on a line.
+* @code{@@flushleft @@flushright}::     Pushing text flush left or flush right.
+* @code{@@raggedright}::                Avoiding justification on the right.
+* @code{@@noindent}::                   Preventing paragraph indentation.
+* @code{@@indent}::                     Forcing paragraph indentation.
+* @code{@@cartouche}::                  Drawing rounded rectangles around text.
 @end menu
 
 
@@ -8291,11 +8291,13 @@ just like @code{@@indentedblock} but uses a smaller font size where
 possible.  @xref{small}.
 
 
-@node example
+@node @code{@@example}
 @section @code{@@example}: Example Text
+
+@anchor{example}@c old name
+@findex example
 @cindex Examples, formatting them
 @cindex Formatting examples
-@findex example
 
 The @code{@@example} environment is used to indicate an example that
 is not part of the running text, such as computer input or output.
@@ -8313,7 +8315,7 @@ the source text is not filled as it normally is.
 @item The output uses a fixed-width font.
 @item Texinfo commands @emph{are} expanded; if you want the output to
 be the input verbatim, use the @code{@@verbatim} environment instead
-(@pxref{verbatim,,@code{@@verbatim}}).
+(@pxref{@code{@@verbatim}}).
 @end itemize
 
 For example,
@@ -8351,7 +8353,7 @@ Examples are often, logically speaking, ``in the middle'' of a
 paragraph, and the text that continues afterwards should not be
 indented, as in the example above.  The @code{@@noindent} command
 prevents a piece of text from being indented as if it were a new
-paragraph (@pxref{noindent,,@code{@@noindent}}.
+paragraph (@pxref{@code{@@noindent}}.
 
 If you want to embed code fragments within sentences, instead of
 displaying them, use the @code{@@code} command or its relatives
@@ -8361,8 +8363,10 @@ If you wish to write a ``comment'' on a line of an example in the
 normal roman font, you can use the @code{@@r} command (@pxref{Fonts}).
 
 
-@node verbatim
+@node @code{@@verbatim}
 @section @code{@@verbatim}: Literal Text
+
+@anchor{verbatim}@c old name
 @findex verbatim
 @cindex Verbatim environment
 
@@ -8429,11 +8433,13 @@ Finally, a word of warning: it is not reliable to use
 @code{@@verbatim} inside other Texinfo constructs.
 
 
-@node verbatiminclude
+@node @code{@@verbatiminclude}
 @section @code{@@verbatiminclude} @var{file}: Include a File Verbatim
+
+@anchor{verbatiminclude}@c old name
+@findex verbatiminclude
 @cindex Verbatim, include file
 @cindex Including a file verbatim
-@findex verbatiminclude
 
 You can include the exact contents of a file in the document with the
 @code{@@verbatiminclude} command:
@@ -8465,8 +8471,10 @@ For a method on printing the file contents in a smaller font size, see
 the end of the previous section on @code{@@verbatim}.
 
 
-@node lisp
+@node @code{@@lisp}
 @section @code{@@lisp}: Marking a Lisp Example
+
+@anchor{lisp}@c old name
 @findex lisp
 @cindex Lisp example
 
@@ -8489,16 +8497,18 @@ Mark the end of @code{@@lisp} with @code{@@end lisp} on a line by
 itself.
 
 
-@node small
+@node @code{@@small@dots{}}
 @section @code{@@small@dots{}} Block Commands
+
+@anchor{small}@c old name
+@findex smallexample
+@findex smallformat
+@findex smalllisp
+@findex smallquotation
 @cindex Small examples
 @cindex Examples in smaller fonts
 @cindex Quotations in smaller fonts
 @cindex Lisp examples in smaller fonts
-@findex smallquotation
-@findex smallexample
-@findex smallformat
-@findex smalllisp
 
 In addition to the regular @code{@@example} and similar commands,
 Texinfo has ``small'' example-style commands.  These are
@@ -8544,10 +8554,12 @@ of (for instance) @code{@@example} or @code{@@smallexample}
 consistently within a chapter.
 
 
-@node display
+@node @code{@@display}
 @section @code{@@display}: Examples Using the Text Font
-@cindex Display formatting
+
+@anchor{display}@c old name
 @findex display
+@cindex Display formatting
 
 The @code{@@display} command begins another kind of environment, where
 the font is left unchanged, not switched to typewriter as with
@@ -8562,7 +8574,8 @@ indents the text, but does not fill it.
 
 @findex smalldisplay
 Texinfo also provides the environment @code{@@smalldisplay}, which is
-like @code{@@display} but uses a smaller font size.  @xref{small}.
+like @code{@@display} but uses a smaller font size.
+@xref{@code{@@small@dots{}}}.
 
 The @code{@@table} command (@pxref{table}) is not supported inside
 @code{@@display}.  Since @code{@@display} is line-oriented, it doesn't
@@ -8571,8 +8584,10 @@ make sense to use them together.  If you want to indent a table, try
 or @code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
 
 
-@node format
+@node @code{@@format}
 @section @code{@@format}: Examples Using the Full Line Width
+
+@anchor{format}@c old name
 @findex format
 
 The @code{@@format} command is similar to @code{@@display}, except it
@@ -8591,10 +8606,12 @@ Texinfo also provides the environment @code{@@smallformat}, which is
 like @code{@@format} but uses a smaller font size.  @xref{small}.
 
 
-@node exdent
+@node @code{@@exdent}
 @section @code{@@exdent}: Undoing a Line's Indentation
-@cindex Indentation undoing
+
+@anchor{exdent}@c old name
 @findex exdent
+@cindex Indentation undoing
 
 The @code{@@exdent} command removes any indentation a line might have.
 The command is written at the beginning of a line and applies only to
@@ -8634,8 +8651,10 @@ normal width.
 @code{@@exdent} has no effect in HTML output.
 
 
-@node flushleft & flushright
+@node @code{@@flushleft @@flushright}
 @section @code{@@flushleft} and @code{@@flushright}
+
+@anchor{flushleft & flushright}@c old name
 @findex flushleft
 @findex flushright
 @cindex Ragged right, without filling
@@ -8696,8 +8715,10 @@ left end ragged.
 @end flushright
 
 
-@node raggedright
-@section @code{@@raggedright}
+@node @code{@@raggedright}
+@section @code{@@raggedright}: Ragged Right Text 
+
+@anchor{raggedright}@c old name
 @findex raggedright
 @cindex Ragged right, with filling
 
@@ -8737,12 +8758,14 @@ Commands for double and single angle quotation marks:
 @end raggedright
 
 
-@node noindent
+@node @code{@@noindent}
 @section @code{@@noindent}: Omitting Indentation
+
+@anchor{noindent}@c old name
+@findex noindent
 @cindex Omitting indentation
 @cindex Suppressing indentation
 @cindex Indentation, omitting
-@findex noindent
 
 An example or other inclusion can break a paragraph into segments.
 Ordinarily, the formatters indent text that follows an example as a new
@@ -8801,12 +8824,14 @@ necessary, since @code{@@noindent} is a command used outside of
 paragraphs (@pxref{Command Syntax}).
 
 
-@node indent
+@node @code{@@indent}
 @section @code{@@indent}: Forcing Indentation
+
+@anchor{indent}@c old name
+@findex indent
 @cindex Forcing indentation
 @cindex Inserting indentation
 @cindex Indentation, forcing
-@findex indent
 
 @indent
 To complement the @code{@@noindent} command (see the previous
@@ -8829,9 +8854,10 @@ necessary, since @code{@@indent} is a command used outside of
 paragraphs (@pxref{Command Syntax}).
 
 
-@node cartouche
+@node @code{@@cartouche}
 @section @code{@@cartouche}: Rounded Rectangles
 
+@anchor{cartouche}@c old name
 @findex cartouche
 @cindex Box with rounded corners
 @cindex Rounded rectangles, around text
@@ -8870,6 +8896,7 @@ Info, you'll see the @code{@@cartouche} had no effect):
 @end cartouche
 
 @code{@@cartouche} also implies @code{@@group} (@pxref{group}).
+
 
 @node Lists and Tables
 @chapter Lists and Tables
@@ -14930,9 +14957,9 @@ limitations (by design):
 @itemize
 @item
 @code{@@verbatim} and macros do not mix; for instance, you can't start
-a verbatim block inside a macro and end it outside (@pxref{verbatim}).
-Starting any environment inside a macro and ending it outside may or
-may not work, for that matter.
+a verbatim block inside a macro and end it outside
+(@pxref{@code{@@verbatim}}).  Starting any environment inside a macro
+and ending it outside may or may not work, for that matter.
 
 @item
 Macros that completely define macros are ok, but it's not possible to
@@ -15131,10 +15158,10 @@ such lines.
 
 @vindex CPP_LINE_DIRECTIVES
 The @command{makeinfo} program recognizes these lines by default,
-except within @code{@@verbatim} blocks (@pxref{verbatim,,
-@code{@@verbatim}}.  Their recognition can be turned off completely
-with @code{CPP_LINE_DIRECTIVES} (@pxref{Other Customization
-Variables}), though there is normally no reason to do so.
+except within @code{@@verbatim} blocks (@pxref{@code{@@verbatim}}.
+Their recognition can be turned off completely with
+@code{CPP_LINE_DIRECTIVES} (@pxref{Other Customization Variables}),
+though there is normally no reason to do so.
 
 For those few programs (M4, CPP, Texinfo) which need to document
 @samp{#line} directives and therefore have examples which would
@@ -19971,7 +19998,7 @@ Define the full caption for an @code{@@float}.  @xref{caption shortcaption}.
 @item @@cartouche
 Highlight an example or quotation by drawing a box with rounded
 corners around it.  Pair with @code{@@end cartouche}.  No effect in
-Info.  @xref{cartouche, , Drawing Cartouches Around Examples}.
+Info.  @xref{@code{@@cartouche}}.
 
 @item @@center @var{line-of-text}
 Center the line of text following the command.
@@ -20222,7 +20249,7 @@ Begin the Info directory menu entry for this file.  Pair with
 @item @@display
 Begin a kind of example.  Like @code{@@example} (indent text, do not
 fill), but do not select a new font.  Pair with @code{@@end display}.
-@xref{display, , @code{@@display}}.
+@xref{@code{@@display}}.
 
 @item @@dmn@{@var{dimension}@}
 Format a unit of measure, as in 12@dmn{pt}.  Causes @TeX{} to insert a
@@ -20323,8 +20350,7 @@ Indent example-like environments by @var{indent} number of spaces
 Generate an upside-down exclamation point.  @xref{Inserting Accents}.
 
 @item @@exdent @var{line-of-text}
-Remove any indentation a line might have.  @xref{exdent, ,
-Undoing the Indentation of a Line}.
+Remove any indentation a line might have.  @xref{@code{@@exdent}}.
 
 @item @@expansion@{@}
 Indicate the result of a macro expansion to the reader with a special
@@ -20356,9 +20382,8 @@ Environment to define floating material.  Pair with @code{@@end float}.
 @itemx @@flushright
 Do not fill text; left (right) justify every line while leaving the
 right (left) end ragged.  Leave font as is.  Pair with @code{@@end
-flushleft} (@code{@@end flushright}).
-@xref{flushleft & flushright, , @code{@@flushleft} and
-@code{@@flushright}}.
+flushleft} (@code{@@end flushright}).  @xref{@code{@@flushleft
+@@flushright}}.
 
 @item @@fonttextsize @var{10-11}
 Change the size of the main body font in the @TeX{} output.
@@ -20509,7 +20534,7 @@ Include graphics image in external @var{filename} scaled to the given
 Read the contents of Texinfo source file @var{filename}.  @xref{Include Files}.
 
 @item @@indent
-Insert paragraph indentation.  @xref{indent,, @code{indent}}.
+Insert paragraph indentation.  @xref{@code{@@indent}}.
 
 @item @@indentedblock
 Indent a block of arbitary text on the left.  Pair with @code{@@end
@@ -20586,7 +20611,7 @@ Generate a less-than-or-equal sign, `@leq{}'.  @xref{geq leq}.
 
 @item @@lisp
 Begin an example of Lisp code.  Indent text, do not fill, and select
-fixed-width font.  Pair with @code{@@end lisp}.  @xref{lisp, , @code{@@lisp}}.
+fixed-width font.  Pair with @code{@@end lisp}.  @xref{@code{@@lisp}}.
 
 @item @@listoffloats
 Produce a table-of-contents-like listing of @code{@@float}s.
@@ -20633,7 +20658,7 @@ Begin a new node.  @xref{@code{@@node}}.
 
 @item @@noindent
 Prevent text from being indented as if it were a new paragraph.
-@xref{noindent, , @code{@@noindent}}.
+@xref{@code{@@noindent}}.
 
 @item @@novalidate
 Suppress validation of node references and omit creation of auxiliary
@@ -20738,8 +20763,7 @@ Set @var{text} in the regular @r{roman} font.  No effect in Info.
 @item @@raggedright
 Fill text; left justify every line while leaving the right end ragged.
 Leave font as is.  Pair with @code{@@end raggedright}.  No effect in
-Info.
-@xref{raggedright, , @code{@@raggedright}}.
+Info.  @xref{@code{@@raggedright}}.
 
 @item @@raisesections
 Change subsequent sections to chapters, subsections to sections, and so
@@ -21063,11 +21087,11 @@ Texinfo special characters.  @xref{verb,,@code{verb}}.
 
 @item @@verbatim
 Output the text of the environment exactly as is (in the fixed-width
-font).  Pair with @code{@@end verbatim}.  @xref{verbatim,,@code{verbatim}}.
+font).  Pair with @code{@@end verbatim}.  @xref{@code{@@verbatim}}.
 
 @item @@verbatiminclude @var{filename}
-Output the contents of @var{filename} exactly as is (in the fixed-width font).
-@xref{verbatiminclude,,@code{verbatiminclude}}.
+Output the contents of @var{filename} exactly as is (in the
+fixed-width font).  @xref{@code{@@verbatiminclude}}.
 
 @item @@vindex @var{entry}
 Add @var{entry} to the index of variables.  @xref{Index Entries, ,
@@ -21771,7 +21795,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.514 2013-01-07 18:36:39 karl Exp $
+$Id: texinfo.txi,v 1.515 2013-01-08 00:19:18 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
