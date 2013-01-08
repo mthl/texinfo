@@ -2,6 +2,10 @@
 
 	* po_document/fr.us-ascii.po: update by Jean-Charles Malahieude,
 	with additional edits.
+	* doc/texinfo.txi (Internationalization of Strings), doc/draft_api.texi
+	(Internationalization of Strings Function): re-add the text about
+	translated strings in the manual keeping only the perl api information
+	in draft_api.texi.
 
 2013-01-08  Karl Berry  <karl@gnu.org>
 
