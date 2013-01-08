@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.515 2013-01-08 00:19:18 karl Exp $
+@c $Id: texinfo.txi,v 1.516 2013-01-08 16:20:43 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -382,16 +382,16 @@ Quotations and Examples
 Lists and Tables
 
 * Introducing Lists::           Texinfo formats lists for you.
-* itemize::                     How to construct a simple list.
-* enumerate::                   How to construct a numbered list.
+* @code{@@itemize}::                    How to construct a simple list.
+* @code{@@enumerate}::                   How to construct a numbered list.
 * Two-column Tables::           How to construct a two-column table.
 * Multi-column Tables::         How to construct generalized tables.
 
 Making a Two-column Table
 
-* table::                       How to construct a two-column table.
-* ftable vtable::               Automatic indexing for two-column tables.
-* itemx::                       How to put more entries in the first column.
+* @code{@@table}::                       How to construct a two-column table.
+* @code{@@ftable @@vtable}::               Automatic indexing for two-column tables.
+* @code{@@itemx}::                       How to put more entries in the first column.
 
 @code{@@multitable}: Multi-column Tables
 
@@ -406,9 +406,9 @@ Special Displays
 
 Floats
 
-* float::                       Producing floating material.
-* caption shortcaption::        Specifying descriptions for floats.
-* listoffloats::                A table of contents for floats.
+* @code{@@float}::                       Producing floating material.
+* @code{@@caption @@shortcaption}::       Specifying descriptions for floats.
+* @code{@@listoffloats}::                A table of contents for floats.
 
 Inserting Images
 
@@ -8577,11 +8577,11 @@ Texinfo also provides the environment @code{@@smalldisplay}, which is
 like @code{@@display} but uses a smaller font size.
 @xref{@code{@@small@dots{}}}.
 
-The @code{@@table} command (@pxref{table}) is not supported inside
-@code{@@display}.  Since @code{@@display} is line-oriented, it doesn't
-make sense to use them together.  If you want to indent a table, try
-@code{@@quotation} (@pxref{@code{@@quotation}})
-or @code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
+The @code{@@table} command (@pxref{@code{@@table}}) is not supported
+inside @code{@@display}.  Since @code{@@display} is line-oriented, it
+doesn't make sense to use them together.  If you want to indent a
+table, try @code{@@quotation} (@pxref{@code{@@quotation}}) or
+@code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
 
 
 @node @code{@@format}
@@ -8910,8 +8910,8 @@ the first column; multi-column tables are also supported.
 
 @menu
 * Introducing Lists::           Texinfo formats lists for you.
-* itemize::                     How to construct a simple list.
-* enumerate::                   How to construct a numbered list.
+* @code{@@itemize}::                     How to construct a simple list.
+* @code{@@enumerate}::                   How to construct a numbered list.
 * Two-column Tables::           How to construct a two-column table.
 * Multi-column Tables::         How to construct generalized tables.
 @end menu
@@ -8988,10 +8988,12 @@ Two-column tables, optionally with indexing.
 @end table
 
 
-@node itemize
+@node @code{@@itemize}
 @section @code{@@itemize}: Making an Itemized List
-@cindex Itemization
+
+@anchor{itemize}@c old name
 @findex itemize
+@cindex Itemization
 
 The @code{@@itemize} command produces sequences of indented
 paragraphs, with a bullet or other mark inside the left margin
@@ -9099,10 +9101,12 @@ Second outer item.
 @end quotation
 
 
-@node enumerate
+@node @code{@@enumerate}
 @section @code{@@enumerate}: Making a Numbered or Lettered List
-@cindex Enumeration
+
+@anchor{enumerate}@c old name
 @findex enumerate
+@cindex Enumeration
 
 @code{@@enumerate} is like @code{@@itemize} (@pxref{itemize,,
 @code{@@itemize}}), except that the labels on the items are
@@ -9188,8 +9192,8 @@ using @code{@@enumerate} with an argument of @kbd{a}.
 @item
 @code{@@enumerate}
 
-Without an argument, produce a numbered list, starting with the number
-1.
+Without an argument, produce a numbered list, starting with the
+number@tie{}1.
 
 @item
 @code{@@enumerate @var{positive-integer}}
@@ -9215,8 +9219,10 @@ a letter, beginning with that lowercase letter.
 
 You can also nest enumerated lists, as in an outline.
 
+
 @node Two-column Tables
 @section Making a Two-column Table
+
 @cindex Tables, making two-column
 @findex table
 
@@ -9227,13 +9233,15 @@ tables, and is especially useful for glossaries, explanatory
 exhibits, and command-line option summaries.
 
 @menu
-* table::                       How to construct a two-column table.
-* ftable vtable::               Automatic indexing for two-column tables.
-* itemx::                       How to put more entries in the first column.
+* @code{@@table}::                       How to construct a two-column table.
+* @code{@@ftable @@vtable}::              Automatic indexing for two-column tables.
+* @code{@@itemx}::                       How to put more entries in the first column.
 @end menu
 
-@node table
+@node @code{@@table}
 @subsection Using the @code{@@table} Command
+
+@anchor{table}@c old name
 
 @cindex Definition lists, typesetting
 Use the @code{@@table} command to produce two-column tables.  It is
@@ -9251,7 +9259,7 @@ For example, @code{@@table @@code} will cause the text in the first
 column to be output as if it had been the argument to an @code{@@code}
 command.
 
-@anchor{@code{@@asis}}
+@anchor{@code{@@asis}}@c command name with @, for consistency
 @findex asis
 You may also use the @code{@@asis} command as an argument to
 @code{@@table}.  @code{@@asis} is a command that does nothing; if you
@@ -9312,15 +9320,17 @@ Text for @samp{bar}.
 @end table
 
 If you want to list two or more named items with a single block of
-text, use the @code{@@itemx} command.  (@xref{itemx,,@code{@@itemx}}.)
+text, use the @code{@@itemx} command.  (@xref{@code{@@itemx}}.)
 
 
-@node ftable vtable
+@node @code{@@ftable @@vtable}
 @subsection @code{@@ftable} and @code{@@vtable}
-@cindex Tables with indexing
-@cindex Indexing table entries automatically
+
+@anchor{ftable vtable}@c old name
 @findex ftable
 @findex vtable
+@cindex Tables with indexing
+@cindex Indexing table entries automatically
 
 The @code{@@ftable} and @code{@@vtable} commands are the same as the
 @code{@@table} command except that @code{@@ftable} automatically enters
@@ -9341,8 +9351,11 @@ itself.
 
 See the example for @code{@@table} in the previous section.
 
-@node itemx
-@subsection @code{@@itemx}
+
+@node @code{@@itemx}
+@subsection @code{@@itemx}: Second and Subsequent Items
+
+@anchor{itemx}@c old name
 @cindex Two named items for @code{@@table}
 @findex itemx
 
@@ -9391,8 +9404,9 @@ a two-column table.)
 
 @node Multi-column Tables
 @section @code{@@multitable}: Multi-column Tables
-@cindex Tables, making multi-column
+
 @findex multitable
+@cindex Tables, making multi-column
 
 @code{@@multitable} allows you to construct tables with any number of
 columns, with each column having any width you like.
@@ -9458,6 +9472,7 @@ particularly likely to be useful.
 
 @node Multitable Rows
 @subsection Multitable Rows
+
 @cindex Multitable rows
 @cindex Rows, of a multitable
 
@@ -9567,14 +9582,16 @@ is simply output at the current location, more or less as if it were
 an @code{@@group} (@pxref{group,,@code{@@group}}).
 
 @menu
-* float::                       Producing floating material.
-* caption shortcaption::        Specifying descriptions for floats.
-* listoffloats::                A table of contents for floats.
+* @code{@@float}::                       Producing floating material.
+* @code{@@caption @@shortcaption}::       Specifying descriptions for floats.
+* @code{@@listoffloats}::                A table of contents for floats.
 @end menu
 
 
-@node float
+@node @code{@@float}
 @subsection @code{@@float} [@var{type}][,@var{label}]: Floating Material
+
+@anchor{float}@c old name
 @findex float
 @cindex Float environment
 
@@ -9611,8 +9628,8 @@ any cross referencing will simply use a bare number.
 @item label
 Specifies a cross reference label for this float.  If given, this
 float is automatically given a number, and will appear in any
-@code{@@listoffloats} output (@pxref{listoffloats}).  Cross references
-to @var{label} are allowed.
+@code{@@listoffloats} output (@pxref{@code{@@listoffloats}}).  Cross
+references to @var{label} are allowed.
 
 @cindex Floats, making unnumbered
 @cindex Unnumbered float, creating
@@ -9637,8 +9654,10 @@ simply numbered consecutively from 1.
 These numbering conventions are not, at present, changeable.
 
 
-@node caption shortcaption
+@node @code{@@caption @@shortcaption}
 @subsection @code{@@caption} & @code{@@shortcaption}
+
+@anchor{caption shortcaption}@c old name
 @findex caption
 @findex shortcaption
 @cindex Captions, for floats
@@ -9692,17 +9711,19 @@ constructs.  The same constraints apply to @code{@@caption} unless
 there is an @code{@@shortcaption}.
 
 
-@node listoffloats
+@node @code{@@listoffloats}
 @subsection @code{@@listoffloats}: Tables of Contents for Floats
+
+@anchor{listoffloats}@c old name
 @findex listoffloats
 @cindex List of floats
 @cindex Floats, list of
 @cindex Table of contents, for floats
 
 You can write an @code{@@listoffloats} command to generate a list of
-floats for a given float type (@pxref{float}), analogous to the
-document's overall table of contents.  Typically, it is written in its
-own @code{@@unnumbered} node to provide a heading and structure,
+floats for a given float type (@pxref{@code{@@float}}), analogous to
+the document's overall table of contents.  Typically, it is written in
+its own @code{@@unnumbered} node to provide a heading and structure,
 rather like @code{@@printindex} (@pxref{Printing Indices & Menus}).
 
 @code{@@listoffloats} takes one optional argument, the float type.
@@ -9720,9 +9741,9 @@ Here's an example:
 @listoffloats Figure
 @end display
 
-Without any argument, @code{@@listoffloats} generates a list of
-floats for which no float type was specified, i.e., no first argument
-to the @code{@@float} command (@pxref{float}).
+Without any argument, @code{@@listoffloats} generates a list of floats
+for which no float type was specified, i.e., no first argument to the
+@code{@@float} command (@pxref{@code{@@float}}).
 
 Each line in the list of floats contains the float type (if any),
 the float number, and the caption, if any---the @code{@@shortcaption}
@@ -11405,7 +11426,7 @@ Here is a bullet: @bullet{}
 
 When you use @code{@@bullet} in @code{@@itemize}, you do not need to
 type the braces, because @code{@@itemize} supplies them.
-(@pxref{itemize, , @code{@@itemize}}).
+(@pxref{@code{@@itemize}}).
 
 
 @node TeX and copyright
@@ -11549,9 +11570,9 @@ You should not use @code{@@minus@{@}} inside @code{@@code} or
 @code{@@example} because the width distinction is not made in the
 fixed-width font they use.
 
-When you use @code{@@minus} to specify the mark beginning each entry in
-an itemized list, you do not need to type the braces
-(@pxref{itemize, , @code{@@itemize}}).
+When you use @code{@@minus} to specify the mark beginning each entry
+in an itemized list, you do not need to type the braces
+(@pxref{@code{@@itemize}}).
 
 
 @node geq leq
@@ -11684,9 +11705,8 @@ glyph is also available independently via the command
 You can change the glyph produced by @code{@@click} with the command
 @code{@@clickstyle}, which takes a command name as its single argument
 on the rest of the line, much like @code{@@itemize} and friends
-(@pxref{itemize,,@code{@@itemize}}).  The command should produce a
-glyph, and the usual empty braces @samp{@{@}} are omitted.  Here's an
-example:
+(@pxref{@code{@@itemize}}).  The command should produce a glyph, and
+the usual empty braces @samp{@{@}} are omitted.  Here's an example:
 
 @example
 @@clickstyle @@result
@@ -12684,7 +12704,8 @@ These two search commands are similar except @dots{}
 Each definition command has an `x' form: @code{@@defunx},
 @code{@@defvrx}, @code{@@deftypefunx}, etc.
 
-The `x' forms work similarly to @code{@@itemx} (@pxref{itemx}).
+The `x' forms work similarly to @code{@@itemx}
+(@pxref{@code{@@itemx}}).
 
 
 @node Def Cmds in Detail
@@ -18052,7 +18073,7 @@ default is 300.
 @item XREF_USE_FLOAT_LABEL
 For HTML@.  If set, for the float name in cross references, use the
 float label instead of the type followed by the float number
-(@pxref{float}).  The default is off.
+(@pxref{@code{@@float}}).  The default is off.
 
 @item XREF_USE_NODE_NAME_ARG
 For HTML@.  Only relevant for cross reference commands with no cross
@@ -19993,7 +20014,8 @@ any output.  A synonym for @code{@@comment}.  @kbd{DEL} also
 starts a comment.  @xref{Comments}.
 
 @item @@caption
-Define the full caption for an @code{@@float}.  @xref{caption shortcaption}.
+Define the full caption for an @code{@@float}.  @xref{@code{@@caption
+@@shortcaption}}.
 
 @item @@cartouche
 Highlight an example or quotation by drawing a box with rounded
@@ -20303,8 +20325,7 @@ Generate an end-of-sentence ellipsis, like this: @enddots{}
 @item @@enumerate [@var{number-or-letter}]
 Begin a numbered list, using @code{@@item} for each entry.
 Optionally, start list with @var{number-or-letter}.  Pair with
-@code{@@end enumerate}.  @xref{enumerate, ,
-@code{@@enumerate}}.
+@code{@@end enumerate}.  @xref{@code{@@enumerate}}.
 
 @item @@env@{@var{environment-variable}@}
 Indicate an environment variable name, such as @env{PATH}.
@@ -20411,8 +20432,7 @@ Control spacing after punctuation.  @xref{frenchspacing,,
 Begin a two-column table, using @code{@@item} for each entry.
 Automatically enter each of the items in the first column into the
 index of functions.  Pair with @code{@@end ftable}.  The same as
-@code{@@table}, except for indexing.  @xref{ftable vtable, ,
-@code{@@ftable} and @code{@@vtable}}.
+@code{@@table}, except for indexing.  @xref{@code{@@ftable @@vtable}}.
 
 @item @@geq@{@}
 Generate a greater-than-or-equal sign, `@geq{}'.  @xref{geq leq}.
@@ -20573,15 +20593,14 @@ entry for @code{@@table}, @code{@@ftable}, and @code{@@vtable}.
 
 @item @@itemize @var{mark-generating-character-or-command}
 Begin an unordered list: indented paragraphs with a mark, such as
-@code{@@bullet}, inside the left margin at the beginning of each
-item.  Pair with @code{@@end itemize}.  @xref{itemize, ,
-@code{@@itemize}}.
+@code{@@bullet}, inside the left margin at the beginning of each item.
+Pair with @code{@@end itemize}.  @xref{@code{@@itemize}}.
 
 @item @@itemx
 Like @code{@@item} but do not generate extra vertical space above the
 item text.  Thus, when several items have the same description, use
 @code{@@item} for the first and @code{@@itemx} for the others.
-@xref{itemx, , @code{@@itemx}}.
+@xref{@code{@@itemx}}.
 
 @item @@kbd@{@var{keyboard-characters}@}
 Indicate characters of input to be typed by users.  @xref{kbd,, @code{@@kbd}}.
@@ -20615,7 +20634,7 @@ fixed-width font.  Pair with @code{@@end lisp}.  @xref{@code{@@lisp}}.
 
 @item @@listoffloats
 Produce a table-of-contents-like listing of @code{@@float}s.
-@xref{listoffloats}.
+@xref{@code{@@listoffloats}}.
 
 @item @@lowersections
 Change subsequent chapters to sections, sections to subsections, and so
@@ -20841,7 +20860,8 @@ default document title for HTML @samp{<head>}.
 @xref{@code{@@settitle}}.
 
 @item @@shortcaption
-Define the short caption for an @code{@@float}.  @xref{caption shortcaption}.
+Define the short caption for an @code{@@float}.  @xref{@code{@@caption
+@@shortcaption}}.
 
 @item @@shortcontents
 Print a short table of contents, with chapter-level entries only.  Not
@@ -20951,8 +20971,7 @@ each entry.  Write each first column entry on the same line as
 @code{@@item}.  First column entries are printed in the font resulting
 from @var{formatting-command}.  Pair with @code{@@end table}.
 @xref{Two-column Tables, , Making a Two-column Table}.  Also see
-@ref{ftable vtable, , @code{@@ftable} and @code{@@vtable}}, and
-@ref{itemx, , @code{@@itemx}}.
+@ref{@code{@@ftable @@vtable}}, and @ref{@code{@@itemx}}.
 
 @item @@TeX@{@}
 Generate the @TeX{} logo.  @xref{tex, , @TeX{} and @LaTeX{}}.
@@ -21108,8 +21127,7 @@ only in contexts ignored for Info.  @xref{Copyright}.
 Begin a two-column table, using @code{@@item} for each entry.
 Automatically enter each of the items in the first column into the
 index of variables.  Pair with @code{@@end vtable}.  The same as
-@code{@@table}, except for indexing.  @xref{ftable vtable, ,
-@code{@@ftable} and @code{@@vtable}}.
+@code{@@table}, except for indexing.  @xref{@code{@@ftable @@vtable}}.
 
 @item @@w@{@var{text}@}
 Disallow line breaks within @var{text}.  @xref{w, , @code{@@w}}.
@@ -21795,7 +21813,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.515 2013-01-08 00:19:18 karl Exp $
+$Id: texinfo.txi,v 1.516 2013-01-08 16:20:43 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,

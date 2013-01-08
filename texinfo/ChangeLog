@@ -1,3 +1,7 @@
+2013-01-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Lists and Tables, Floats): node names with @.
+
 2013-01-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Cross References, Quotations and Examples):
