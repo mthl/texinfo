@@ -1,13 +1,13 @@
 # Italian translations of resulting document strings.
 # Copyright (C) 2009 Free Software Foundation, Inc.
-# This file is distributed under the same license as the texi2html package.
+# This file is distributed under the same license as the texinfo package.
 # Federico Bruni <brunology@gmx.com>.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texi2html 1.83\n"
+"Project-Id-Version: texinfo 5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-01-01 17:34-0800\n"
+"POT-Creation-Date: 2013-01-07 22:38+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Federico Bruni <brunology@gmx.com>\n"
 "Language-Team: Unknown\n"
@@ -73,32 +73,32 @@ msgstr ""
 msgid "{number} {section_title}"
 msgstr "{style}: {caption_first_line}"
 
-#: tp/Texinfo/Common.pm:1311
+#: tp/Texinfo/Common.pm:1309
 #, fuzzy, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1315
+#: tp/Texinfo/Common.pm:1313
 #, fuzzy, perl-brace-format
 msgid "{float_type}: "
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1320
+#: tp/Texinfo/Common.pm:1318
 #, fuzzy, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1324
+#: tp/Texinfo/Common.pm:1322
 #, fuzzy, perl-brace-format
 msgid "{float_type}\n"
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1330
+#: tp/Texinfo/Common.pm:1328
 #, fuzzy, perl-brace-format
 msgid "{float_number}: "
 msgstr "{style} {number}"
 
-#: tp/Texinfo/Common.pm:1333
+#: tp/Texinfo/Common.pm:1331
 #, fuzzy, perl-brace-format
 msgid "{float_number}\n"
 msgstr "{style} {number}"
@@ -280,117 +280,97 @@ msgstr ""
 msgid "@{No value for `{value}'@}"
 msgstr "@{Nessun valore per `{value}'@}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2248
-#, perl-brace-format
-msgid "* {float_type} {float_number}: {float_label}."
-msgstr ""
-
-#: tp/Texinfo/Convert/Plaintext.pm:2253
-#, perl-brace-format
-msgid "* {float_type}: {float_label}."
-msgstr ""
-
-#: tp/Texinfo/Convert/Plaintext.pm:2261
-#, perl-brace-format
-msgid "*  {float_number}: {float_label}."
-msgstr ""
-
-#: tp/Texinfo/Convert/Plaintext.pm:2265
-#, perl-brace-format
-msgid "* : {float_label}."
-msgstr ""
-
-#: tp/Texinfo/Convert/Plaintext.pm:2462
+#: tp/Texinfo/Convert/Plaintext.pm:2444
 #, perl-brace-format
 msgid "@tie{ }-- {category}: {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2467
+#: tp/Texinfo/Convert/Plaintext.pm:2449
 #, perl-brace-format
 msgid "@tie{ }-- {category}: {name}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2480
+#: tp/Texinfo/Convert/Plaintext.pm:2462
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category}:@*{type}@*{name} {arguments}"
 msgstr "{name} in {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2483
+#: tp/Texinfo/Convert/Plaintext.pm:2465
 #, perl-brace-format
 msgid "@tie{ }-- {category}: {type} {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2492
+#: tp/Texinfo/Convert/Plaintext.pm:2474
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category}:@*{type}@*{name}"
 msgstr "{name} in {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2495
+#: tp/Texinfo/Convert/Plaintext.pm:2477
 #, perl-brace-format
 msgid "@tie{ }-- {category}: {type} {name}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2503
+#: tp/Texinfo/Convert/Plaintext.pm:2485
 #, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2509
+#: tp/Texinfo/Convert/Plaintext.pm:2491
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {name}"
 msgstr "{name} di {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2518
+#: tp/Texinfo/Convert/Plaintext.pm:2500
 #, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2524
+#: tp/Texinfo/Convert/Plaintext.pm:2506
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {name}"
 msgstr "{name} in {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2539
+#: tp/Texinfo/Convert/Plaintext.pm:2521
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} on {class}:@*{type}@*{name} {arguments}"
 msgstr "{name} in {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2543
+#: tp/Texinfo/Convert/Plaintext.pm:2525
 #, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {type} {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2554
+#: tp/Texinfo/Convert/Plaintext.pm:2536
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} on {class}:@*{type}@*{name}"
 msgstr "{name} in {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2558
+#: tp/Texinfo/Convert/Plaintext.pm:2540
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {type} {name}"
 msgstr "{name} in {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2572
+#: tp/Texinfo/Convert/Plaintext.pm:2554
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} of {class}:@*{type}@*{name} {arguments}"
 msgstr "{name} di {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2576
+#: tp/Texinfo/Convert/Plaintext.pm:2558
 #, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {type} {name} {arguments}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2587
+#: tp/Texinfo/Convert/Plaintext.pm:2569
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} of {class}:@*{type}@*{name}"
 msgstr "{name} di {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2591
+#: tp/Texinfo/Convert/Plaintext.pm:2573
 #, fuzzy, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {type} {name}"
 msgstr "{name} di {class}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2872 tp/Texinfo/Convert/HTML.pm:2784
+#: tp/Texinfo/Convert/Plaintext.pm:2854 tp/Texinfo/Convert/HTML.pm:2784
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -831,11 +811,11 @@ msgstr "{name} di {class}"
 #: tp/Texinfo/Convert/HTML.pm:6103
 #, fuzzy, perl-brace-format
 msgid ""
-"This document was generated on @emph{@today{}} using "
-"@uref{{program_homepage}, @emph{{program}}}."
+"This document was generated on @emph{@today{}} using @uref"
+"{{program_homepage}, @emph{{program}}}."
 msgstr ""
-"Questo documento è stato generato il @i{{date}} con "
-"@uref{{program_homepage}, @i{{program}}}."
+"Questo documento è stato generato il @i{{date}} con @uref"
+"{{program_homepage}, @i{{program}}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6143
 #, perl-brace-format
@@ -873,8 +853,8 @@ msgid ""
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
 "structure:"
 msgstr ""
-"  dove @strong{ Esempio } assume che l'attuale posizione è alla "
-"@strong{ Sottosottosezione Uno-Due-Tre } di un documento che ha la seguente "
+"  dove @strong{ Esempio } assume che l'attuale posizione è alla @strong"
+"{ Sottosottosezione Uno-Due-Tre } di un documento che ha la seguente "
 "struttura:"
 
 #: tp/Texinfo/Convert/HTML.pm:6399
@@ -935,18 +915,18 @@ msgstr "Documento senza titolo"
 
 #, fuzzy
 #~ msgid ""
-#~ "This document was generated on @emph{{date}} using "
-#~ "@uref{{program_homepage}, @emph{{program}}}."
+#~ "This document was generated on @emph{{date}} using @uref"
+#~ "{{program_homepage}, @emph{{program}}}."
 #~ msgstr ""
-#~ "Questo documento è stato generato il @i{{date}} con "
-#~ "@uref{{program_homepage}, @i{{program}}}."
+#~ "Questo documento è stato generato il @i{{date}} con @uref"
+#~ "{{program_homepage}, @i{{program}}}."
 
 #~ msgid ""
-#~ "This document was generated using @uref{{program_homepage}, "
-#~ "@emph{{program}}}."
+#~ "This document was generated using @uref{{program_homepage}, @emph"
+#~ "{{program}}}."
 #~ msgstr ""
-#~ "Questo documento è stato generato con @uref{{program_homepage}, "
-#~ "@emph{{program}}}."
+#~ "Questo documento è stato generato con @uref{{program_homepage}, @emph"
+#~ "{{program}}}."
 
 #~ msgid "{style} {number}"
 #~ msgstr "{style} {number}"
