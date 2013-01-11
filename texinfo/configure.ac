@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.137 2013-01-06 12:34:55 pertusus Exp $
+# $Id: configure.ac,v 1.138 2013-01-11 22:45:18 karl Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013 Free Software Foundation, Inc.
@@ -19,9 +19,6 @@ AC_CONFIG_AUX_DIR([build-aux])
 dnl tar-ustar because we have long filenames for some test files.
 dnl parallel-tests as recommended by stefano.
 AM_INIT_AUTOMAKE([1.12 tar-ustar parallel-tests readme-alpha dist-xz])
-
-# Minimum Autoconf version required.
-AC_PREREQ(2.59)
 
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.

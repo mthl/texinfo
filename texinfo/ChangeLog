@@ -1,5 +1,9 @@
 2013-01-11  Karl Berry  <karl@gnu.org>
 
+	* configure.ac (AC_PREREQ): remove, better to rely on
+	AM_INIT_AUTOMAKE's implicit prereq.
+	Suggestion from Stefano, 11 Jan 2013 12:12:53.
+
 	* tp/tests/Makefile.am (long-check, all-check, tex-html-check):
 	aliases for the names with s.
 
