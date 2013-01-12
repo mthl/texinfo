@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.517 2013-01-08 21:57:03 pertusus Exp $
+@c $Id: texinfo.txi,v 1.518 2013-01-12 16:56:41 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -603,8 +603,8 @@ Formatting and Printing Hardcopy
 * Invoking texi2any::        Running the translator from a shell.
 * texi2any Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
-* Internationalization of Strings::
 * Customization Variables::  Configuring @command{texi2any}.
+* Internationalization of Document Strings:: Translating program-inserted text.
 * texi2html::                An ancestor of @command{texi2any}.
 
 Customization Variables
@@ -13511,7 +13511,9 @@ that for functions except that variables do not take arguments.
 
 @cindex Internationalization
 Texinfo has some support for writing in languages other than English,
-although this area still needs considerable work.
+although this area still needs considerable work.  (If you are
+yourself helping to translate the fixed strings written to documents,
+@pxref{Internationalization of Document Strings}.)
 
 For a list of the various accented and special characters Texinfo
 supports, see @ref{Inserting Accents}.
@@ -16619,8 +16621,8 @@ The rest of this chapter goes into the details.
 * Invoking texi2any::        Running the translator from a shell.
 * texi2any Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
-* Internationalization of Strings::
 * Customization Variables::  Configuring @command{texi2any}.
+* Internationalization of Document Strings:: Translating program-inserted text.
 * texi2html::                An ancestor of @command{texi2any}.
 @end menu
 
@@ -17283,102 +17285,6 @@ Finally, with both explicit and implicit node pointers,
 @code{makeinfo} checks that every node except the `Top' node is
 referenced in a menu.
 
-@node Internationalization of Strings
-@section Internationalization of Strings in the Output Document
-
-@cindex I18n
-@cindex Internationalization of strings in the output document
-@cindex Output documentation, internationalization of
-
-@vindex documentlanguage @r{customization variable}
-@command{texi2any} writes some fixed strings in the generated document
-at various places: for cross references, in page footers, on the help
-page, alternate text for images, and so on.  The string chosen depends
-on the value of the @code{documentlanguage} at the time of the string 
-being output (@pxref{@code{@@documentlanguage}}, for the Texinfo command 
-interface).
-
-@pindex libintl-perl @r{Gettext implementation}
-The Gettext framework is used for those strings (@pxref{,,,
-gettext, Gettext}).  The @code{libintl-perl} package is used as
-the @code{gettext} implementation; more specifically, the pure Perl
-implementation is used, so Texinfo can support consistent behavior
-across all platforms and installations, which would not otherwise be
-possible.  @code{libintl-perl} is included in the Texinfo distribution
-and always installed, to be sure that it is available if needed.  It
-is also possible to use the system @code{gettext} (currently decided
-at build-time).  
-
-@vindex texinfo_document @r{Gettext domain}
-@cindex Perl format strings for translation
-The Gettext domain @samp{texinfo_document} is used for the strings.
-Translated strings are written as Texinfo, and may include
-@@-commands.  In translated strings, the varying parts of the string
-are not usually denoted by @code{%s} and the like, but by
-@samp{@{arg_name@}}.  (This convention is common for @code{gettext} in
-Perl and is fully supported in GNU Gettext; @pxref{perl-format,, Perl
-Format Strings, gettext, GNU Gettext}.)  For example, in the
-following, @samp{@{section@}} will be replaced by the section name:
-
-@example
-see @{section@}
-@end example
-
-These Perl-style brace format strings are used for two reasons: first,
-changing the order of @code{printf} arguments is only available since
-Perl@tie{}5.8.0; second, and more importantly, the order of the
-argument is unpredictable, since @@-command expansion may lead to
-different orders depending on the output format.  The expansion of
-a translation string is done like this:
-
-@enumerate
-@item First, the string is translated.  The locale 
-is @var{@@documentlanguage}@code{.}@var{@@documentencoding}.
-
-@cindex @code{us-ascii} encoding, and translations
-If the @var{@@documentlanguage} has the form @var{ll_CC}, @var{ll_CC}
-is tried first, and then @var{ll}.  If that does not exist, and the
-encoding is not @code{us-ascii}, then @code{us-ascii} is tried.  The
-idea is that if there is a @code{us-ascii} encoding, it means that all
-the characters in the charset may be expressed as @@-commands.  For
-example, there is a @code{fr.us-ascii} locale that can accommodate any
-encoding, since all the Latin@tie{}1 characters have associated
-@@-commands.  On the other hand, Japanese has only a translation
-@code{ja.utf-8}, since there are no @@-commands for Japanese
-characters.
-
-@item Next, the string is expanded as Texinfo, and converted.
-The arguments are substituted; for example, @samp{@{arg_name@}} is 
-replaced by the corresponding actual argument.
-
-@end enumerate
-
-In the following example, @samp{@{date@}}, @samp{@{program_homepage@}}
-and @samp{@{program@}} are the arguments of the string.  Since they
-are used in @code{@@uref}, their order is not predictable.
-@samp{@{date@}}, @samp{@{program_homepage@}} and @samp{@{program@}} are 
-substituted after the expansion:
-
-@example
-Generated on @@emph@{@{date@}@} using
-@@uref@{@{program_homepage@}, @@emph@{@{program@}@}@}.
-@end example
-
-This approach is admittedly a bit complicated.  Its usefulness is that
-it supports having translations available in different encodings for
-encodings which can be covered by @@-commands, and also specifying how
-the formatting for some commands is done, independently of the output
-format---yet still be language dependent.  For example, an
-@samp{@@pxref} translation string may be:
-
-@example
-see @{node_file_href@} section `@{section@}\' in @@cite@{@{book@}@}
-@end example
-
-@noindent
-which allows specifying a string independently of the output format,
-but with rich formatting that may be translated appropriately in many
-languages.
 
 @node Customization Variables
 @section Customization Variables
@@ -18173,6 +18079,108 @@ otherwise use the node name or section name depending on
 @code{USE_NODES}.  The default is @samp{undef}.
 
 @end vtable
+
+
+@node Internationalization of Document Strings
+@section Internationalization of Document Strings
+
+@cindex I18n, of document strings
+@cindex Internationalization of document strings
+@cindex Document strings, internationalization of
+@cindex Output document strings, internationalization of
+@cindex Translating strings in output documents
+
+@vindex documentlanguage @r{customization variable}
+@command{texi2any} writes fixed strings into the output document at
+various places: cross references, page footers, the help page,
+alternate text for images, and so on.  The string chosen depends on
+the value of the @code{documentlanguage} at the time of the string
+being output (@pxref{@code{@@documentlanguage}}, for the Texinfo
+command interface).
+
+@pindex libintl-perl @r{Gettext implementation}
+The Gettext framework is used for those strings (@pxref{Top,,,
+gettext, Gettext}).  The @code{libintl-perl} package is used as the
+@code{gettext} implementation; more specifically, the pure Perl
+implementation is used, so Texinfo can support consistent behavior
+across all platforms and installations, which would not otherwise be
+possible.  @code{libintl-perl} is included in the Texinfo distribution
+and always installed, to ensure that it is available if needed.  It is
+also possible to use the system @code{gettext} (the choice can be made
+at build-time).
+
+@vindex texinfo_document @r{Gettext domain}
+@cindex Perl format strings for translation
+The Gettext domain @samp{texinfo_document} is used for the strings.
+Translated strings are written as Texinfo, and may include
+@@-commands.  In translated strings, the varying parts of the string
+are not usually denoted by @code{%s} and the like, but by
+@samp{@{arg_name@}}.  (This convention is common for @code{gettext} in
+Perl and is fully supported in GNU Gettext; @pxref{perl-format,, Perl
+Format Strings, gettext, GNU Gettext}.)  For example, in the
+following, @samp{@{section@}} will be replaced by the section name:
+
+@example
+see @{section@}
+@end example
+
+These Perl-style brace format strings are used for two reasons: first,
+changing the order of @code{printf} arguments is only available since
+Perl@tie{}5.8.0; second, and more importantly, the order of arguments
+is unpredictable, since @@-command expansion may lead to different
+orders depending on the output format.
+
+The expansion of a translation string is done like this:
+
+@enumerate
+@item First, the string is translated.  The locale 
+is @var{@@documentlanguage}@code{.}@var{@@documentencoding}.
+
+@cindex @code{us-ascii} encoding, and translations
+If the @var{@@documentlanguage} has the form @samp{ll_CC}, that is
+tried first, and then just @samp{ll}.  If that does not exist, and the
+encoding is not @code{us-ascii}, then @code{us-ascii} is tried.
+
+The idea is that if there is a @code{us-ascii} encoding, it means that
+all the characters in the charset may be expressed as @@-commands.
+For example, there is a @code{fr.us-ascii} locale that can accommodate
+any encoding, since all the Latin@tie{}1 characters have associated
+@@-commands.  On the other hand, Japanese has only a translation
+@code{ja.utf-8}, since there are no @@-commands for Japanese
+characters.
+
+@item Next, the string is expanded as Texinfo, and converted.
+The arguments are substituted; for example, @samp{@{arg_name@}} is 
+replaced by the corresponding actual argument.
+
+@end enumerate
+
+In the following example, @samp{@{date@}}, @samp{@{program_homepage@}}
+and @samp{@{program@}} are the arguments of the string.  Since they
+are used in @code{@@uref}, their order is not predictable.
+@samp{@{date@}}, @samp{@{program_homepage@}} and @samp{@{program@}} are 
+substituted after the expansion:
+
+@example
+Generated on @@emph@{@{date@}@} using
+@@uref@{@{program_homepage@}, @@emph@{@{program@}@}@}.
+@end example
+
+This approach is admittedly a bit complicated.  Its usefulness is that
+it supports having translations available in different encodings for
+encodings which can be covered by @@-commands, and also specifying how
+the formatting for some commands is done, independently of the output
+format---yet still be language-dependent.  For example, the
+@samp{@@pxref} translation string can be like this:
+
+@example
+see @{node_file_href@} section `@{section@}\' in @@cite@{@{book@}@}
+@end example
+
+@noindent
+which allows for specifying a string independently of the output
+format, while nevertheless with rich formatting it may be translated
+appropriately in many languages.
 
 
 @node texi2html
@@ -21900,7 +21908,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.517 2013-01-08 21:57:03 pertusus Exp $
+$Id: texinfo.txi,v 1.518 2013-01-12 16:56:41 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
