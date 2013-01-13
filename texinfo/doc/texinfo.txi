@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.518 2013-01-12 16:56:41 karl Exp $
+@c $Id: texinfo.txi,v 1.519 2013-01-13 19:13:19 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -431,30 +431,21 @@ Indices
 
 Combining Indices
 
-* syncodeindex::                How to merge two indices, using @code{@@code}
+* @code{@@syncodeindex}::               How to merge two indices, using @code{@@code}
                                  font for the merged-from index.
-* synindex::                    How to merge two indices, using the
+* @code{@@synindex}::                   How to merge two indices, using the
                                  roman font for the merged-from index.
 
 Special Insertions
 
-* Special Characters::          Inserting @@ @{@} , \ #.
+* Special Characters::          Inserting @@ @{@} , \ #
 * Inserting Quote Characters::  Inserting left and right quotes, in code.
-* Inserting Space::             How to insert the right amount of space
-                                 within a sentence.
-* Inserting Accents::           How to insert accents and special characters.
-* Inserting Quotation Marks::   How to insert quotation marks.
-* Dots Bullets::                How to insert dots and bullets.
-* TeX and copyright::           How to insert the @TeX{} logo
-                                 and the copyright symbol.
-* euro::                        How to insert the Euro currency symbol.
-* pounds::                      How to insert the pounds currency symbol.
-* textdegree::                  How to insert the degrees symbol.
-* minus::                       How to insert a minus sign.
-* geq leq::                     How to insert greater/less-than-or-equal signs.
-* math::                        How to format a mathematical expression.
-* Click Sequences::             Inserting GUI usage sequences.
-* Glyphs::                      How to indicate results of evaluation,
+* Inserting Space::             Inserting the right amount of whitespace.
+* Inserting Accents::           Inserting accents and special characters.
+* Inserting Quotation Marks::   Inserting quotation marks.
+* Inserting Math::              Formatting mathematical expressions.
+* Glyphs for Text::             Inserting Dots, bullets, currencies, etc.
+* Glyphs for Programming::      Indicating results of evaluation,
                                  expansion of macros, errors, etc.
 
 Special Characters: Inserting @@ @{@} , \ #
@@ -470,29 +461,31 @@ Inserting Space
 * Multiple Spaces::             Inserting multiple spaces.
 * Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
 * Ending a Sentence::           Sometimes it does.
-* frenchspacing::               Specifying end-of-sentence spacing.
-* dmn::                         How to format a dimension.
+* @code{@@frenchspacing}::              Specifying end-of-sentence spacing.
+* @code{@@dmn}::                        Formatting a dimension.
 
-Inserting Ellipsis and Bullets
+Glyphs for Text
 
-* dots::                        How to insert dots @dots{}
-* bullet::                      How to insert a bullet.
+* @code{@@tex}::                  The @TeX{} logos.
+* @code{@@copyright}::            The copyright symbol (c in a circle).
+* @code{@@registered}::           The registered symbol (R in a circle).
+* @code{@@dots}::                 How to insert ellipses: @dots{} and @enddots{}
+* @code{@@bullet}::               How to insert a bullet: @bullet{}
+* @code{@@pounds}::               How to insert the pounds currency symbol.
+* @code{@@textdegree}::           How to insert the degrees symbol.
+* @code{@@minus}::                How to insert a minus sign.
+* @code{@@geq @@leq}::            How to insert greater/less-than-or-equal signs.
 
-Inserting @TeX{} and Legal Symbols: @copyright{}, @registeredsymbol{}
-
-* tex::                         The @TeX{} logos.
-* copyright symbol::            The copyright symbol (c in a circle).
-* registered symbol::           The registered symbol (R in a circle).
-
-Glyphs for Examples
+Glyphs for Programming
 
 * Glyphs Summary::
-* result::                      How to show the result of expression.
-* expansion::                   How to indicate an expansion.
-* Print Glyph::                 How to indicate printed output.
-* Error Glyph::                 How to indicate an error message.
-* Equivalence::                 How to indicate equivalence.
-* Point Glyph::                 How to indicate the location of point.
+* @code{@@result}::         How to show the result of expression.
+* @code{@@expansion}::      How to indicate an expansion.
+* @code{@@print}::          How to indicate generated output.
+* @code{@@error}::          How to indicate an error message.
+* @code{@@equiv}::          How to indicate equivalence.
+* @code{@@point}::          How to indicate the location of point.
+* Click Sequences::             Inserting GUI usage sequences.
 
 Forcing and Preventing Breaks
 
@@ -2908,9 +2901,8 @@ end-of-header lines are optional, but they do no harm, so you might as
 well always include them.
 
 Any command that affects document formatting as a whole makes sense to
-include in the header.  @code{@@synindex} (@pxref{synindex,,
-@code{synindex}}), for instance, is another command often included in
-the header.
+include in the header.  @code{@@synindex} (@pxref{@code{@@synindex}}),
+for instance, is another command often included in the header.
 
 Thus, the beginning of a Texinfo file generally looks approximately
 like this:
@@ -10357,14 +10349,14 @@ would need to enclose every one of them between the braces of
 @code{@@code}.
 
 @menu
-* syncodeindex::                How to merge two indices, using @code{@@code}
+* @code{@@syncodeindex}::               How to merge two indices, using @code{@@code}
                                  font for the merged-from index.
-* synindex::                    How to merge two indices, using the
+* @code{@@synindex}::                   How to merge two indices, using the
                                  roman font for the merged-from index.
 @end menu
 
 
-@node syncodeindex
+@node @code{@@syncodeindex}
 @subsection @code{@@syncodeindex}: Combining indices using @code{@@code}
 @findex syncodeindex
 
@@ -10434,7 +10426,7 @@ index into a concept index, all the function names are printed in the
 @code{@@code} font as you would expect.
 
 
-@node synindex
+@node @code{@@synindex}
 @subsection @code{@@synindex}: Combining indices
 @findex synindex
 
@@ -10551,30 +10543,20 @@ These are:
 @item The degrees symbol.
 @item The minus sign.
 @item Mathematical expressions.
-@item Glyphs for evaluation, macros, errors, etc.
+@item Glyphs for examples of programming: evaluation, macros, errors, etc.
 @item Footnotes.
-@item Images.
 @end itemize
 @end iftex
 
 @menu
-* Special Characters::          Inserting @@ @{@} , \ #.
+* Special Characters::          Inserting @@ @{@} , \ #
 * Inserting Quote Characters::  Inserting left and right quotes, in code.
-* Inserting Space::             How to insert the right amount of space
-                                 within a sentence.
-* Inserting Accents::           How to insert accents and special characters.
-* Inserting Quotation Marks::   How to insert quotation marks.
-* Dots Bullets::                How to insert dots and bullets.
-* TeX and copyright::           How to insert the @TeX{} logo
-                                 and the copyright symbol.
-* euro::                        How to insert the Euro currency symbol.
-* pounds::                      How to insert the pounds currency symbol.
-* textdegree::                  How to insert the degrees symbol.
-* minus::                       How to insert a minus sign.
-* geq leq::                     How to insert greater/less-than-or-equal signs.
-* math::                        How to format a mathematical expression.
-* Click Sequences::             Inserting GUI usage sequences.
-* Glyphs::                      How to indicate results of evaluation,
+* Inserting Space::             Inserting the right amount of whitespace.
+* Inserting Accents::           Inserting accents and special characters.
+* Inserting Quotation Marks::   Inserting quotation marks.
+* Inserting Math::              Formatting mathematical expressions.
+* Glyphs for Text::             Inserting Dots, bullets, currencies, etc.
+* Glyphs for Programming::      Indicating results of evaluation,
                                  expansion of macros, errors, etc.
 @end menu
 
@@ -10622,11 +10604,12 @@ source (and may be clearer in other contexts).
 
 @node Inserting Braces
 @subsection Inserting `@{ `@}' with @code{@@@{ @@@}} and @code{@@l rbracechar@{@}}
-@cindex Braces, inserting
+
 @findex @{ @r{(literal @samp{@{})}
 @findex @} @r{(literal @samp{@}})}
 @findex @@lbracechar@{@} @r{(literal @samp{@{})}
 @findex @@rbracechar@{@} @r{(literal @samp{@}})}
+@cindex Braces, inserting
 
 @code{@@@{} produces a single @samp{@{} in the output, and @code{@@@}}
 produces a single @samp{@}}.  Do not put braces after either an
@@ -10642,8 +10625,9 @@ may be clearer in other contexts).
 
 @node Inserting a Comma
 @subsection Inserting `,' with @code{@@comma@{@}}
-@cindex Comma, inserting
+
 @findex comma
+@cindex Comma, inserting
 
 Ordinarily, a comma `,' is a normal character that can be simply typed
 in your input where you need it.
@@ -10674,8 +10658,9 @@ important enough to define a synonym.)
 
 @node Inserting a Backslash
 @subsection Inserting `\' with @code{@@backslashchar@{@}}
-@cindex Backslash, inserting
+
 @findex backslash
+@cindex Backslash, inserting
 
 Ordinarily, a backslash `\' is a normal character in Texinfo that can
 be simply typed in your input where you need it.  The result is to
@@ -10695,9 +10680,9 @@ macro call:
 @end example
 
 Texinfo documents may also use \ as a command character inside
-@code{@@math} (@xref{math},, @code{@@math}).  In this case, @code{@@\}
-or @code{\backslash} produces a ``math'' backslash (from the math
-symbol font), while @code{@@backslashchar@{@}} produces a typewriter
+@code{@@math} (@pxref{Inserting Math}).  In this case, @code{@@\} or
+@code{\backslash} produces a ``math'' backslash (from the math symbol
+font), while @code{@@backslashchar@{@}} produces a typewriter
 backslash as usual.
 
 Although @samp{@@backslashchar@{@}} can be used nearly anywhere, there
@@ -10706,6 +10691,7 @@ is no need for it except in these unusual cases.
 
 @node Inserting a Hashsign
 @subsection Inserting `#' with @code{@@hashchar@{@}}
+
 @findex @@hashchar@{@} @r{(literal @samp{#})}
 @cindex Inserting #
 @cindex Hash sign, inserting
@@ -10804,8 +10790,8 @@ kinds within and after sentences.
 * Multiple Spaces::             Inserting multiple spaces.
 * Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
 * Ending a Sentence::           Sometimes it does.
-* frenchspacing::               Specifying end-of-sentence spacing.
-* dmn::                         How to format a dimension.
+* @code{@@frenchspacing}::              Specifying end-of-sentence spacing.
+* @code{@@dmn}::                        Formatting a dimension.
 @end menu
 
 
@@ -10970,8 +10956,10 @@ in @code{... @@var@{VARNAME@}. Text} the period after @var{VARNAME}
 ends the sentence; there is no need to use @code{@@.}.
 
 
-@node frenchspacing
+@node @code{@@frenchspacing}
 @subsection @code{@@frenchspacing} @var{val}: Control Sentence Spacing
+
+@anchor{frenchspacing}@c old name
 @findex frenchspacing
 @cindex French spacing
 @cindex Sentences, spacing after
@@ -11013,8 +11001,10 @@ for XML, it outputs a transliteration of itself (@pxref{Output
 Formats}).
 
 
-@node dmn
+@node @code{@@dmn}
 @subsection @code{@@dmn}@{@var{dimension}@}: Format a Dimension
+
+@anchor{dmn}@c old name
 @cindex Thin space between number, dimension
 @cindex Dimension formatting
 @cindex Format a dimension
@@ -11355,229 +11345,10 @@ convenient:
 @end example
 
 
-@node Dots Bullets
-@section Inserting Ellipsis and Bullets
-@cindex Typesetting ellipses and bullets
-
-An @dfn{ellipsis} (a line of dots) would be spaced wrong when typeset
-as a string of periods, so a special command is used for ellipsis in
-Texinfo.  The @code{@@bullet} command is special, too.
-
-Each of these commands is followed by a pair of braces, @samp{@{@}},
-without any whitespace between the name of the command and the braces.
-(You need to use braces with these commands because you can use them
-next to other text; without the braces, the formatters would be
-confused.  @xref{Command Syntax, , @@-Command Syntax}.)
-
-@menu
-* dots::                        How to insert dots @dots{}
-* bullet::                      How to insert a bullet.
-@end menu
-
-
-@node dots
-@subsection @code{@@dots}@{@} (@dots{}) and @code{@@enddots}@{@} (@enddots{})
-
-@findex dots
-@findex enddots
-@cindex Inserting dots
-@cindex Inserting ellipsis
-@cindex Dots, inserting
-@cindex Ellipsis, inserting
-
-Use the @code{@@dots@{@}} command to generate an ellipsis, which is
-three dots in a row, appropriately spaced @dots{} like so.  Do
-not simply write three periods in the input file; that would work for
-the Info file output, but would produce the wrong amount of space
-between the periods in the printed manual.
-
-Similarly, the @code{@@enddots@{@}} command generates an
-end-of-sentence ellipsis, which has different spacing afterwards,
-@enddots{}  Look closely to see the difference.
-
-@iftex
-Here is an ellipsis: @dots{}
-Here are three periods in a row: ...
-
-In printed output, the three periods in a row are much closer together than
-the dots in the ellipsis.
-@end iftex
-
-
-@node bullet
-@subsection @code{@@bullet}@{@} (@bullet{})
-
-@findex bullet
-
-Use the @code{@@bullet@{@}} command to generate a large round dot, or
-the closest possible thing to one.  In Info, an asterisk is used.
-
-Here is a bullet: @bullet{}
-
-When you use @code{@@bullet} in @code{@@itemize}, you do not need to
-type the braces, because @code{@@itemize} supplies them.
-(@pxref{@code{@@itemize}}).
-
-
-@node TeX and copyright
-@section Inserting @TeX{} and Legal Symbols: @copyright{}, @registeredsymbol{}
-
-The logo `@TeX{}' is typeset in a special fashion and it needs an
-@@-command.  The copyright and registered symbols, `@copyright{}' and
-`@registeredsymbol{}', is also special.  Each of these commands is
-followed by a pair of braces, @samp{@{@}}, without any whitespace
-between the name of the command and the braces.
-
-@menu
-* tex::                         The @TeX{} logos.
-* copyright symbol::            The copyright symbol (c in a circle).
-* registered symbol::           The registered symbol (R in a circle).
-@end menu
-
-
-@node tex
-@subsection @code{@@TeX}@{@} (@TeX{}) and @code{@@LaTeX}@{@} (@LaTeX{})
-@findex TeX
-@findex LaTeX
-@cindex Logos, @TeX{}
-@cindex @TeX{} logo
-@cindex @LaTeX{} logo
-
-Use the @code{@@TeX@{@}} command to generate `@TeX{}'.  In a printed
-manual, this is a special logo that is different from three ordinary
-letters.  In Info, it just looks like @samp{TeX}.
-
-Similarly, use the @code{@@LaTeX@{@}} command to generate `@LaTeX{}',
-which is even more special in printed manuals (and different from the
-incorrect @code{La@@TeX@{@}}.  In Info, the result is just
-@samp{LaTeX}.  (@LaTeX{} is another macro package built on top of
-@TeX{}, very loosely analogous to Texinfo in that it emphasizes
-logical structure, but much (much) larger.)
-
-The spelling of these commands are unusual among Texinfo commands in
-that they use both uppercase and lowercase letters.
-
-
-@node copyright symbol
-@subsection @code{@@copyright@{@}} (@copyright{})
-@findex copyright
-@cindex Copyright symbol
-
-Use the @code{@@copyright@{@}} command to generate the copyright
-symbol, `@copyright{}'.  Where possible, this is a @samp{c}
-inside a circle; in Info, this is @samp{(C)}.
-
-
-@node registered symbol
-@subsection @code{@@registeredsymbol@{@}} (@registeredsymbol{})
-@findex registeredsymbol
-@cindex Registered symbol
-
-Use the @code{@@registeredsymbol@{@}} command to generate the
-registered symbol, `@registeredsymbol{}'.  Where possible, this is an
-@samp{R} inside a circle; in Info, this is @samp{(R)}.
-
-
-@node euro
-@section @code{@@euro}@{@} (@euro{}): Euro Currency Symbol
-@findex euro
-@cindex Euro symbol
-
-Use the @code{@@euro@{@}} command to generate `@euro{}'.  Where
-possible, this is the symbol for the Euro currency.  Otherwise, the
-word @samp{Euro} is used.
-
-Texinfo cannot magically synthesize support for the Euro symbol where
-the underlying system (fonts, software, whatever) does not support it.
-Therefore, in many cases it is preferable to use the word ``Euro''.
-(In banking contexts, the abbreviation for the Euro is EUR.)
-
-@cindex ISO 8859-15, and Euro
-@cindex Latin 9, and Euro
-In order to get the Euro symbol in encoded Info output, for example,
-it is necessary to specify @code{@@documentencoding ISO-8859-15} or
-@code{@@documentencoding UTF-8}
-(@xref{documentencoding,,@code{@@documentencoding}}.)  The Euro symbol
-is in ISO 8859-15 (aka Latin@tie{}9), and is @emph{not} in the more
-widely-used ISO 8859-1 (Latin@tie{}1).
-
-@pindex feymr10
-@cindex Euro font
-The Euro symbol does not exist in the standard @TeX{} fonts (which
-were designed before the Euro was legislated into existence).
-Therefore, @TeX{} uses an additional font, named @code{feymr10} (along
-with other variables).  It is freely available, of course; you can
-download it from @url{http://www.ctan.org/tex-archive/fonts/eurosym},
-among other places.  The distribution includes installation
-instructions.
-
-
-@node pounds
-@section @code{@@pounds}@{@} (@pounds{}): Pounds Sterling
-@findex pounds
-@cindex Pounds symbol
-
-Use the @code{@@pounds@{@}} command to generate `@pounds{}'.  Where
-possible, this is the symbol for the pounds sterling British currency.
-Otherwise, it is @samp{#}.
-
-
-@node textdegree
-@section @code{@@textdegree}@{@} (@textdegree{}): Degrees Symbol
-@findex textdegree
-@cindex Degree symbol
-
-Use the @code{@@textdegree@{@}} command to generate `@textdegree{}'.
-Where possible, this is the normal symbol for degrees.  Otherwise, 
-it is an @samp{o}.
-
-
-@node minus
-@section @code{@@minus}@{@} (@minus{}): Inserting a Minus Sign
-@findex minus
-@cindex Minus sign
-
-@cindex Em dash, compared to minus sign
-@cindex Hyphen, compared to minus
-Use the @code{@@minus@{@}} command to generate a minus sign.  In a
-fixed-width font, this is a single hyphen, but in a proportional font,
-the symbol is the customary length for a minus sign---a little longer
-than a hyphen, shorter than an em-dash:
-
-@display
-@samp{@minus{}} is a minus sign generated with @samp{@@minus@{@}},
-
-`-' is a hyphen generated with the character @samp{-},
-
-`---' is an em-dash for text.
-@end display
-
-@noindent
-In the fixed-width font used by Info, @code{@@minus@{@}} is the same
-as a hyphen.
-
-You should not use @code{@@minus@{@}} inside @code{@@code} or
-@code{@@example} because the width distinction is not made in the
-fixed-width font they use.
-
-When you use @code{@@minus} to specify the mark beginning each entry
-in an itemized list, you do not need to type the braces
-(@pxref{@code{@@itemize}}).
-
-
-@node geq leq
-@section @code{@@geq@{@}} (@geq{}) and @code{@@leq@{@}} (@leq{}): Inserting Relations
-@findex geq
-@findex leq
-
-Use the @code{@@geq@{@}} and @code{@@leq@{@}} commands to generate
-greater-than-or-equal and less-than-equal-signs, `@geq{}' and
-`@leq{}'.  When those symbols are not available, the ASCII sequences
-@samp{>=} and @samp{<=} are output.
-
-
-@node math
+@node Inserting Math
 @section @code{@@math}: Inserting Mathematical Expressions
+
+@anchor{math}@c old name
 @findex math
 @cindex Mathematical expressions, inserting
 @cindex Formulas, mathematical
@@ -11662,60 +11433,244 @@ For displayed equations, you must at present use @TeX{} directly
 (@pxref{Raw Formatter Commands}).
 
 
-@node Click Sequences
-@section Click Sequences
-@cindex Click sequences
-@cindex Sequence of clicks
-@cindex GUI click sequence
+@node Glyphs for Text
+@section Glyphs for Text
 
-@findex clicksequence
-When documenting graphical interfaces, it is necessary to describe
-sequences such as `Click on @samp{File}, then choose @samp{Open}, then
-@dots{}'.  Texinfo offers commands @code{@@clicksequence} and
-@code{click} to represent this, typically used like this:
+@cindex Glyphs for text
+@cindex Textual glyphs
 
-@example
-@dots{} @@clicksequence@{File @@click@{@} Open@} @dots{}
-@end example
+@menu
+* @code{@@TeX @@LaTeX}::          The @TeX{} logos.
+* @code{@@copyright}::            The copyright symbol (c in a circle).
+* @code{@@registered}::           The registered symbol (R in a circle).
+* @code{@@dots}::                 How to insert ellipses: @dots{} and @enddots{}
+* @code{@@bullet}::               How to insert a bullet: @bullet{}
+* @code{@@euro}::                 How to insert the euro currency symbol.
+* @code{@@pounds}::               How to insert the pounds currency symbol.
+* @code{@@textdegree}::           How to insert the degrees symbol.
+* @code{@@minus}::                How to insert a minus sign.
+* @code{@@geq @@leq}::            How to insert greater/less-than-or-equal signs.
+@end menu
 
-@noindent
-which produces:
+
+@node @code{@@TeX @@LaTeX}
+@subsection @code{@@TeX}@{@} (@TeX{}) and @code{@@LaTeX}@{@} (@LaTeX{})
+
+@anchor{tex}@c old name
+@findex TeX
+@findex LaTeX
+@cindex Logos, @TeX{}
+@cindex @TeX{} logo
+@cindex @LaTeX{} logo
+
+Use the @code{@@TeX@{@}} command to generate `@TeX{}'.  In a printed
+manual, this is a special logo that is different from three ordinary
+letters.  In Info, it just looks like @samp{TeX}.
+
+Similarly, use the @code{@@LaTeX@{@}} command to generate `@LaTeX{}',
+which is even more special in printed manuals (and different from the
+incorrect @code{La@@TeX@{@}}.  In Info, the result is just
+@samp{LaTeX}.  (@LaTeX{} is another macro package built on top of
+@TeX{}, very loosely analogous to Texinfo in that it emphasizes
+logical structure, but much (much) larger.)
+
+The spelling of these commands are unusual for Texinfo, in that they
+use both uppercase and lowercase letters.
+
+
+@node @code{@@copyright}
+@subsection @code{@@copyright@{@}} (@copyright{})
+
+@anchor{copyright symbol}@c old name
+@findex copyright
+@cindex Copyright symbol
+
+Use the @code{@@copyright@{@}} command to generate the copyright
+symbol, `@copyright{}'.  Where possible, this is a @samp{c} inside a
+circle; in Info, this is @samp{(C)}.  
+
+Legally, it's not necessary to use the copyright symbol; the English
+word `Copyright' suffices, according to international treaty.
+
+
+@node @code{@@registered}
+@subsection @code{@@registeredsymbol@{@}} (@registeredsymbol{})
+
+@anchor{registered symbol}@c old name
+@findex registeredsymbol
+@cindex Registered symbol
+
+Use the @code{@@registeredsymbol@{@}} command to generate the
+registered symbol, `@registeredsymbol{}'.  Where possible, this is an
+@samp{R} inside a circle; in Info, this is @samp{(R)}.
+
+
+@node @code{@@dots}
+@subsection @code{@@dots} (@dots{}) and @code{@@enddots} (@enddots{})
+
+@anchor{dots}@c old name
+@findex dots
+@findex enddots
+@cindex Inserting dots
+@cindex Inserting ellipsis
+@cindex Dots, inserting
+@cindex Ellipsis, inserting
+
+@anchor{Dots Bullets}@c old name
+
+An @dfn{ellipsis} (a sequence of dots) would be spaced wrong when
+typeset as a string of periods, so a special command is used in
+Texinfo: use the @code{@@dots@{@}} command to generate a normal
+ellipsis, which is three dots in a row, appropriately spaced @dots{}
+like so.  To emphasize: do not simply write three periods in the input
+file; that would work for the Info file output, but would produce the
+wrong amount of space between the periods in the printed manual.
+
+The @code{@@enddots@{@}} command generates an end-of-sentence
+ellipsis, which also has three dots, but with different spacing
+afterwards, @enddots{}  Look closely to see the difference.
+
+Here is an ellipsis: @dots{}
+Here are three periods in a row: ...
+
+In printed (and usually HTML) output, the three periods in a row are
+much closer together than the dots in the ellipsis.
+
+
+@node @code{@@bullet}
+@subsection @code{@@bullet} (@bullet{})
+
+@anchor{bullet}@c old name
+@findex bullet
+
+Use the @code{@@bullet@{@}} command to generate a large round dot, or
+the closest possible thing to one.  In Info, an asterisk is used.
+Here is a bullet: @bullet{}
+
+When you use @code{@@bullet} in @code{@@itemize}, you do not need to
+type the braces, because @code{@@itemize} supplies them.
+(@pxref{@code{@@itemize}}).
+
+
+@node @code{@@euro}
+@subsection @code{@@euro} (@euro{}): Euro Currency Symbol
+
+@anchor{euro}@c old name
+@findex euro
+@cindex Euro symbol
+
+Use the @code{@@euro@{@}} command to generate `@euro{}'.  Where
+possible, this is the symbol for the Euro currency.  Otherwise, the
+word @samp{Euro} is used.
+
+Texinfo cannot magically synthesize support for the Euro symbol where
+the underlying system (fonts, software, whatever) does not support it.
+Therefore, you may find it preferable to use the word ``Euro''.  (In
+banking contexts, the abbreviation for the Euro is EUR.)
+
+@cindex ISO 8859-15, and Euro
+@cindex Latin 9, and Euro
+In order to get the Euro symbol in encoded Info output, for example,
+it is necessary to specify @code{@@documentencoding ISO-8859-15} or
+@code{@@documentencoding UTF-8}
+(@xref{documentencoding,,@code{@@documentencoding}}.)  The Euro symbol
+is in ISO 8859-15 (aka Latin@tie{}9), and is @emph{not} in the more
+widely-used ISO 8859-1 (Latin@tie{}1).
+
+@pindex feymr10
+@cindex Euro font
+The Euro symbol does not exist in the standard @TeX{} fonts (which
+were designed before the Euro was legislated into existence).
+Therefore, @TeX{} uses an additional font, named @code{feymr10} (along
+with other variables).  It is freely available, of course; you can
+download it from @url{http://www.ctan.org/tex-archive/fonts/eurosym},
+among other places.  The distribution includes installation
+instructions.
+
+
+@node @code{@@pounds}
+@subsection @code{@@pounds} (@pounds{}): Pounds Sterling
+
+@anchor{pounds}@c old name
+@findex pounds
+@cindex Pounds symbol
+
+Use the @code{@@pounds@{@}} command to generate `@pounds{}'.  Where
+possible, this is the symbol for the pounds sterling British currency.
+Otherwise, it is @samp{#}.
+
+
+@node @code{@@textdegree}
+@subsection @code{@@textdegree} (@textdegree{}): Degrees Symbol
+
+@anchor{textdegree}@c old name
+@findex textdegree
+@cindex Degree symbol
+
+Use the @code{@@textdegree@{@}} command to generate `@textdegree{}'.
+Where possible, this is the normal symbol for degrees.  Otherwise, 
+it is an @samp{o}.
+
+
+@node @code{@@minus}
+@subsection @code{@@minus} (@minus{}): Inserting a Minus Sign
+
+@anchor{minus}@c old name
+@findex minus
+@cindex Minus sign
+
+@cindex Em dash, compared to minus sign
+@cindex Hyphen, compared to minus
+Use the @code{@@minus@{@}} command to generate a minus sign.  In a
+fixed-width font, this is a single hyphen, but in a proportional font,
+the symbol is the customary length for a minus sign---a little longer
+than a hyphen, shorter than an em-dash:
 
 @display
-@dots{} @clicksequence{File @click{} Open} @dots{}
+@samp{@minus{}} is a minus sign generated with @samp{@@minus@{@}},
+
+`-' is a hyphen generated with the character @samp{-},
+
+`---' is an em-dash for text.
 @end display
-
-@findex click
-@findex arrow
-The @code{@@click} command produces a right arrow by default; this
-glyph is also available independently via the command
-@code{@@arrow@{@}}.
-
-@findex clickstyle
-You can change the glyph produced by @code{@@click} with the command
-@code{@@clickstyle}, which takes a command name as its single argument
-on the rest of the line, much like @code{@@itemize} and friends
-(@pxref{@code{@@itemize}}).  The command should produce a glyph, and
-the usual empty braces @samp{@{@}} are omitted.  Here's an example:
-
-@example
-@@clickstyle @@result
-@dots{} @@clicksequence@{File @@click@{@} Open@} @dots{}
-@end example
 
 @noindent
-now produces:
+In the fixed-width font used by Info, @code{@@minus@{@}} is the same
+as a hyphen.
 
-@display
-@clickstyle @result
-@dots{} @clicksequence{File @click{} Open} @dots{}
-@end display
+You should not use @code{@@minus@{@}} inside @code{@@code} or
+@code{@@example} because the width distinction is not made in the
+fixed-width font they use.
+
+When you use @code{@@minus} to specify the mark beginning each entry
+in an itemized list, you do not need to type the braces
+(@pxref{@code{@@itemize}}).
+
+If you actually want to typeset some math that does a subtraction, it
+is better to use @code{@@math}.  Then the regular @samp{-} character
+produces a minus sign, as in @code{@@math@{a-b@}} (@pxref{Inserting
+Math}).
 
 
-@node Glyphs
-@section Glyphs for Examples
-@cindex Glyphs
+@node @code{@@geq @@leq}
+@subsection @code{@@geq} (@geq{}) and @code{@@leq} (@leq{}): Inserting Relations
+
+@anchor{geq leq}@c old name
+@findex geq
+@findex leq
+
+Use the @code{@@geq@{@}} and @code{@@leq@{@}} commands to generate
+greater-than-or-equal and less-than-equal-signs, `@geq{}' and
+`@leq{}'.  When those symbols are not available, the ASCII sequences
+@samp{>=} and @samp{<=} are output.
+
+
+@node Glyphs for Programming
+@section Glyphs for Programming
+
+@cindex Glyphs for programming
 @cindex Examples, glyphs for
+@cindex Programming, glyphs for
 
 In Texinfo, code is often illustrated in examples that are delimited
 by @code{@@example} and @code{@@end example}, or by @code{@@lisp} and
@@ -11723,7 +11678,7 @@ by @code{@@example} and @code{@@end example}, or by @code{@@lisp} and
 evaluation or an expansion using @samp{@result{}} or
 @samp{@expansion{}}.  Likewise, there are commands to insert glyphs to
 indicate printed output, error messages, equivalence of expressions,
-and the location of point in an editor.
+the location of point in an editor, and GUI operation sequences.
 
 The glyph-insertion commands do not need to be used within an example,
 but most often they are.  All glyph-insertion commands are followed by
@@ -11731,12 +11686,13 @@ empty braces.
 
 @menu
 * Glyphs Summary::
-* result::                      How to show the result of expression.
-* expansion::                   How to indicate an expansion.
-* Print Glyph::                 How to indicate printed output.
-* Error Glyph::                 How to indicate an error message.
-* Equivalence::                 How to indicate equivalence.
-* Point Glyph::                 How to indicate the location of point.
+* @code{@@result}::         How to show the result of expression.
+* @code{@@expansion}::      How to indicate an expansion.
+* @code{@@print}::          How to indicate generated output.
+* @code{@@error}::          How to indicate an error message.
+* @code{@@equiv}::          How to indicate equivalence.
+* @code{@@point}::          How to indicate the location of point.
+* Click Sequences::         Inserting GUI usage sequences.
 @end menu
 
 
@@ -11747,32 +11703,39 @@ Here is a summary of the glyph commands:
 
 @table @asis
 @item @result{}
-@code{@@result@{@}} points to the result of an expression.
+@code{@@result@{@}} indicates the result of an expression.
 
 @item @expansion{}
-@code{@@expansion@{@}} shows the results of a macro expansion.
+@code{@@expansion@{@}} indicates the results of a macro expansion.
 
 @item @print{}
 @code{@@print@{@}} indicates printed output.
 
 @item @error{}
-@code{@@error@{@}} indicates that the following text is an error message.
+@code{@@error@{@}} indicates the following text is an error message.
 
 @item @equiv{}
 @code{@@equiv@{@}} indicates the exact equivalence of two forms.
 
 @item @point{}
 @code{@@point@{@}} shows the location of point.
+
+@item @clicksequence{A @click{} B}
+@code{@@clicksequence@{A @@click@{@} B} indicates a GUI operation
+sequence: first A, then clicking B, or choosing B from a menu, or
+otherwise selecting it.
 @end table
 
 
-@node result
-@subsection @code{@@result@{@}} (@result{}): Indicating Evaluation
+@node @code{@@result}
+@subsection @code{@@result@{@}} (@result{}): Result of an Expression
+
+@anchor{result}@c old name
+@findex result
 @cindex Result of an expression
 @cindex Indicating evaluation
 @cindex Evaluation glyph
 @cindex Value of an expression, indicating
-@findex result
 
 Use the @code{@@result@{@}} command to indicate the result of
 evaluating an expression.
@@ -11792,8 +11755,10 @@ Thus, the following,
 may be read as ``@code{(cdr '(1 2 3))} evaluates to @code{(2 3)}''.
 
 
-@node expansion
+@node @code{@@expansion}
 @subsection @code{@@expansion@{@}} (@expansion{}): Indicating an Expansion
+
+@anchor{expansion}@c old name
 @cindex Expansion, indicating
 @cindex Macro expansion, indicating
 @findex expansion
@@ -11843,13 +11808,16 @@ Often, as in this case, an example looks better if the
 @code{@@expansion@{@}} and @code{@@result@{@}} commands are indented.
 
 
-@node Print Glyph
-@subsection @code{@@print@{@}} (@print{}): Indicating Printed Output
-@cindex Printed output, indicating
-@findex print
+@node @code{@@print}
+@subsection @code{@@print@{@}} (@print{}): Indicating Generated Output
 
-Sometimes an expression will print output during its execution.  You
-can indicate the printed output with the @code{@@print@{@}} command.
+@anchor{Print Glyph}@c old name
+@findex print
+@cindex Printed output, indicating
+
+Sometimes an expression will generate output during its execution.
+You can indicate such displayed output with the @code{@@print@{@}}
+command.
 
 The @code{@@print@{@}} command is displayed as @samp{@print{}}, either
 a horizontal dash butting against a vertical bar or (when that is not
@@ -11883,8 +11851,10 @@ In a Texinfo source file, this example is written as follows:
 @end lisp
 
 
-@node Error Glyph
+@node @code{@@error}
 @subsection @code{@@error@{@}} (@error{}): Indicating an Error Message
+
+@anchor{Error Glyph}@c old name
 @cindex Error message, indicating
 @findex error
 
@@ -11922,11 +11892,13 @@ when you evaluate the expression:
 Wrong type argument: integer-or-marker-p, x
 @end lisp
 
-@samp{@error{}} itself is not part of the error message.
+The word @samp{@error{}} itself is not part of the error message.
 
 
-@node Equivalence
+@node @code{@@equiv}
 @subsection @code{@@equiv@{@}} (@equiv{}): Indicating Equivalence
+
+@anchor{Equivalence}@c oldname
 @cindex Equivalence, indicating
 @findex equiv
 
@@ -11957,8 +11929,10 @@ This indicates that evaluating @code{(make-sparse-keymap)} produces
 identical results to evaluating @code{(list 'keymap)}.
 
 
-@node Point Glyph
+@node @code{@@point}
 @subsection @code{@@point@{@}} (@point{}): Indicating Point in a Buffer
+
+@anchor{Point Glyph}@c old name
 @cindex Point, indicating in a buffer
 @findex point
 
@@ -12014,6 +11988,57 @@ This is the changed @@point@{@}contents of foo.
 ---------- Buffer: foo ----------
 @@end example
 @end example
+
+
+@node Click Sequences
+@subsection Click Sequences
+
+@cindex Click sequences
+@cindex Sequence of clicks
+@cindex GUI click sequence
+
+@findex clicksequence
+When documenting graphical interfaces, it is necessary to describe
+sequences such as `Click on @samp{File}, then choose @samp{Open}, then
+@dots{}'.  Texinfo offers commands @code{@@clicksequence} and
+@code{click} to represent this, typically used like this:
+
+@example
+@dots{} @@clicksequence@{File @@click@{@} Open@} @dots{}
+@end example
+
+@noindent
+which produces:
+
+@display
+@dots{} @clicksequence{File @click{} Open} @dots{}
+@end display
+
+@findex click
+@findex arrow
+The @code{@@click} command produces a right arrow by default; this
+glyph is also available independently via the command
+@code{@@arrow@{@}}.
+
+@findex clickstyle
+You can change the glyph produced by @code{@@click} with the command
+@code{@@clickstyle}, which takes a command name as its single argument
+on the rest of the line, much like @code{@@itemize} and friends
+(@pxref{@code{@@itemize}}).  The command should produce a glyph, and
+the usual empty braces @samp{@{@}} are omitted.  Here's an example:
+
+@example
+@@clickstyle @@result
+@dots{} @@clicksequence@{File @@click@{@} Open@} @dots{}
+@end example
+
+@noindent
+now produces:
+
+@display
+@clickstyle @result
+@dots{} @clicksequence{File @click{} Open} @dots{}
+@end display
 
 
 @node Breaks
@@ -14553,7 +14578,7 @@ special characters.  So, we recommend using only letters.  However,
 @command{makeinfo} will accept anything consisting of alphanumerics,
 and (except as the first character) @samp{-}.  The @samp{_} character
 is excluded so that macros can be called inside @code{@@math} without
-a following space (@pxref{math,,@code{@@math}}).
+a following space (@pxref{Inserting Math}).
 
 If a macro needs no parameters, you can define it either with an empty
 list (@samp{@@macro foo @{@}}) or with no braces at all (@samp{@@macro
@@ -16188,7 +16213,7 @@ Quotation Marks}).
 @pindex feymr10@r{, installing}
 @cindex Euro font, installing
 If you intend to use the @code{@@euro} command, you should install the
-Euro font, if it is not already installed.  @xref{euro}.
+Euro font, if it is not already installed.  @xref{@code{@@euro}}.
 
 @pindex texinfo.cnf @r{installation}
 @cindex Customizing of @TeX{} for Texinfo
@@ -19997,7 +20022,7 @@ Insert an at sign, @samp{@@}.  @xref{Inserting an Atsign}.
 @itemx @@backslashchar@{@}
 Insert a backslash, @samp{\}; @code{@@backslashchar@{@}} works
 anywhere, while @code{@@\} works only inside @code{@@math}.
-@xref{Inserting a Backslash}, and @ref{math,,@code{math}}.
+@xref{Inserting a Backslash}, and @ref{Inserting Math}.
 
 @item @@^
 @itemx @@`
@@ -20097,7 +20122,7 @@ Set @var{text} in a @b{bold} font.  No effect in Info.  @xref{Fonts}.
 
 @item @@bullet@{@}
 Generate a large round dot, @bullet{} (@samp{*} in Info).  Often used
-with @code{@@table}.  @xref{bullet, , @code{@@bullet}}.
+with @code{@@table}.  @xref{@code{@@bullet}}.
 
 @item @@bye
 Stop formatting a file.  The formatters do not see anything in the
@@ -20371,7 +20396,7 @@ fill), but do not select a new font.  Pair with @code{@@end display}.
 @item @@dmn@{@var{dimension}@}
 Format a unit of measure, as in 12@dmn{pt}.  Causes @TeX{} to insert a
 thin space before @var{dimension}.  No effect in Info.
-@xref{dmn, , @code{@@dmn}}.
+@xref{@code{@@dmn}}.
 
 @item @@docbook
 Enter Docbook completely.  Pair with @code{@@end docbook}.  @xref{Raw
@@ -20399,7 +20424,7 @@ Generate dotless i (`@dotless{i}') and dotless j (`@dotless{j}').
 
 @item @@dots@{@}
 Generate an ellipsis, @samp{@dots{}}.
-@xref{dots, , @code{@@dots}}.
+@xref{@code{@@dots}}.
 
 @item @@email@{@var{address}[, @var{displayed-text}]@}
 Indicate an electronic mail address.
@@ -20415,7 +20440,7 @@ Commands,,@@-commands}.
 
 @item @@enddots@{@}
 Generate an end-of-sentence ellipsis, like this: @enddots{}
-@xref{dots,,@code{@@dots@{@}}}.
+@xref{@code{@@dots}}.
 
 @item @@enumerate [@var{number-or-letter}]
 Begin a numbered list, using @code{@@item} for each entry.
@@ -20428,11 +20453,11 @@ Indicate an environment variable name, such as @env{PATH}.
 
 @item @@equiv@{@}
 Indicate to the reader the exact equivalence of two forms with a
-glyph: @samp{@equiv{}}.  @xref{Equivalence}.
+glyph: @samp{@equiv{}}.  @xref{@code{@@equiv}}.
 
 @item @@error@{@}
 Indicate to the reader with a glyph that the following text is
-an error message: @samp{@error{}}.  @xref{Error Glyph}.
+an error message: @samp{@error{}}.  @xref{@code{@@error}}.
 
 @item @@errormsg@{@var{msg}@}
 Report @var{msg} as an error to standard error, and exit unsuccessfully.
@@ -20440,8 +20465,7 @@ Texinfo commands within @var{msg} are expanded to plain text.
 @xref{Conditionals}, and @ref{External Macro Processors}.
 
 @item @@euro@{@}
-Generate the Euro currency sign.
-@xref{euro,,@code{@@euro@{@}}}.
+Generate the Euro currency sign.  @xref{@code{@@euro}}.
 
 @item @@evenfooting [@var{left}] @@| [@var{center}] @@| [@var{right}]
 @itemx @@evenheading [@var{left}] @@| [@var{center}] @@| [@var{right}]
@@ -20470,8 +20494,7 @@ Remove any indentation a line might have.  @xref{@code{@@exdent}}.
 
 @item @@expansion@{@}
 Indicate the result of a macro expansion to the reader with a special
-glyph: @samp{@expansion{}}.
-@xref{expansion, , @expansion{} Indicating an Expansion}.
+glyph: @samp{@expansion{}}.  @xref{@code{@@expansion}}.
 
 @item @@file@{@var{filename}@}
 Highlight the name of a file, buffer, node, directory, etc.  @xref{file, ,
@@ -20520,8 +20543,7 @@ Begin a kind of example.  Like @code{@@display}, but do not indent.
 Pair with @code{@@end format}.  @xref{example,, @code{@@example}}.
 
 @item @@frenchspacing @var{on-off}
-Control spacing after punctuation.  @xref{frenchspacing,,
-@code{@@frenchspacing}}.
+Control spacing after punctuation.  @xref{@code{@@frenchspacing}}.
 
 @item @@ftable @var{formatting-command}
 Begin a two-column table, using @code{@@item} for each entry.
@@ -20530,7 +20552,7 @@ index of functions.  Pair with @code{@@end ftable}.  The same as
 @code{@@table}, except for indexing.  @xref{@code{@@ftable @@vtable}}.
 
 @item @@geq@{@}
-Generate a greater-than-or-equal sign, `@geq{}'.  @xref{geq leq}.
+Generate a greater-than-or-equal sign, `@geq{}'.  @xref{@code{@@geq @@leq}}.
 
 @item @@group
 Disallow page breaks within following text.  Pair with @code{@@end
@@ -20721,7 +20743,7 @@ respectively: @L{}, @l{}.
 Generate the @LaTeX{} logo.  @xref{tex, , @TeX{} and @LaTeX{}}.
 
 @item @@leq@{@}
-Generate a less-than-or-equal sign, `@leq{}'.  @xref{geq leq}.
+Generate a less-than-or-equal sign, `@leq{}'.  @xref{@code{@@geq @@leq}}.
 
 @item @@lisp
 Begin an example of Lisp code.  Indent text, do not fill, and select
@@ -20747,15 +20769,14 @@ than the @code{@@chapheading} command.  @xref{@code{@@majorheading
 @@chapheading}}.
 
 @item @@math@{@var{mathematical-expression}@}
-Format a mathematical expression.
-@xref{math, , @code{@@math}: Inserting Mathematical Expressions}.
+Format a mathematical expression.  @xref{Inserting Math}.
 
 @item @@menu
 Mark the beginning of a menu of nodes.  No effect in a printed manual.
 Pair with @code{@@end menu}.  @xref{Menus}.
 
 @item @@minus@{@}
-Generate a minus sign, `@minus{}'.  @xref{minus, , @code{@@minus}}.
+Generate a minus sign, `@minus{}'.  @xref{@code{@@minus}}.
 
 @item @@multitable @var{column-width-spec}
 Begin a multi-column table.  Begin each row with @code{@@item} or
@@ -20830,21 +20851,20 @@ Add @var{entry} to the index of programs.  @xref{Index Entries, , Defining
 the Entries of an Index}.
 
 @item @@point@{@}
-Indicate the position of point in a buffer to the reader with a
-glyph: @samp{@point{}}.  @xref{Point Glyph, , Indicating
-Point in a Buffer}.
+Indicate the position of point in a buffer to the reader with a glyph:
+@samp{@point{}}.  @xref{@code{@@point}}.
 
 @item @@pounds@{@}
 Generate the pounds sterling currency sign.
-@xref{pounds,,@code{@@pounds@{@}}}.
+@xref{@code{@@pounds}}.
 
 @item @@print@{@}
-Indicate printed output to the reader with a glyph:
-@samp{@print{}}.  @xref{Print Glyph}.
+Indicate printed output to the reader with a glyph: @samp{@print{}}.
+@xref{@code{@@print}}.
 
 @item @@printindex @var{index-name}
-Generate the alphabetized index for @var{index-name} (using two columns in a printed
-manual).  @xref{Printing Indices & Menus}.
+Generate the alphabetized index for @var{index-name} (using two
+columns in a printed manual).  @xref{Printing Indices & Menus}.
 
 @item @@pxref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
 Make a reference that starts with a lowercase `see' in a printed
@@ -20901,7 +20921,7 @@ symbol,, @code{@@registeredsymbol@{@}}}.
 
 @item @@result@{@}
 Indicate the result of an expression to the reader with a special
-glyph: @samp{@result{}}.  @xref{result, , @code{@@result}}.
+glyph: @samp{@result{}}.  @xref{@code{@@result}}.
 
 @item @@ringaccent@{@var{c}@}
 Generate a ring accent over the next character, as in @ringaccent{o}.
@@ -21076,8 +21096,7 @@ Enter @TeX{} completely.  Pair with @code{@@end tex}.  @xref{Raw
 Formatter Commands}.
 
 @item @@textdegree@{@}
-Generate the degree symbol.
-@xref{textdegree,,@code{@@textdegree@{@}}}.
+Generate the degree symbol.  @xref{@code{@@textdegree}}.
 
 @item @@thischapter
 @itemx @@thischaptername
@@ -21908,7 +21927,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.518 2013-01-12 16:56:41 karl Exp $
+$Id: texinfo.txi,v 1.519 2013-01-13 19:13:19 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,

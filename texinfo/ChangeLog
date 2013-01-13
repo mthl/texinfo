@@ -1,3 +1,14 @@
+2013-01-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Special Insertions): node names with @,
+	restructure.
+
+	* po_document/LINGUAS (ja, es.us-ascii): remove.
+	* tp/maintain/regenerate_docstr.sh: shorten name of
+	regenerate_document_strings_make_rules.sh.
+	* tp/Makefile.docstr: shorten name of generated file, too.
+	* tp/Makefile.am: renames.
+
 2013-01-12  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Internationalization of Document Strings):
