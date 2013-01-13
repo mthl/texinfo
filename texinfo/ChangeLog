@@ -1,6 +1,6 @@
 2013-01-13  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.txi (Special Insertions): node names with @,
+	* doc/texinfo.txi (Special Insertions, Breaks): node names with @,
 	restructure.
 
 	* po_document/LINGUAS (ja, es.us-ascii): remove.

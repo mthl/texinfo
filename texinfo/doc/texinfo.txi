@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.519 2013-01-13 19:13:19 karl Exp $
+@c $Id: texinfo.txi,v 1.520 2013-01-13 23:23:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -491,14 +491,14 @@ Forcing and Preventing Breaks
 
 * Break Commands::              Summary of break-related commands.
 * Line Breaks::                 Forcing line breaks.
-* - and hyphenation::           Helping @TeX{} with hyphenation points.
-* allowcodebreaks::             Controlling line breaks within @@code text.
-* w::                           Preventing unwanted line breaks in text.
-* tie::                         Inserting an unbreakable but varying space.
-* sp::                          Inserting blank lines.
-* page::                        Forcing the start of a new page.
-* group::                       Preventing unwanted page breaks.
-* need::                        Another way to prevent unwanted page breaks.
+* @code{@@-  @@hyphenation}::         Helping @TeX{} with hyphenation points.
+* @code{@@allowcodebreaks}::            Controlling line breaks within @@code text.
+* @code{@@w}::                          Preventing unwanted line breaks in text.
+* @code{@@tie}::                        Inserting an unbreakable but varying space.
+* @code{@@sp}::                         Inserting blank lines.
+* @code{@@page}::                       Forcing the start of a new page.
+* @code{@@group}::                      Preventing unwanted page breaks.
+* @code{@@need}::                       Another way to prevent unwanted page breaks.
 
 Definition Commands
 
@@ -3393,8 +3393,8 @@ Use the @code{@@sp} command to insert vertical space.  For example:
 @end example
 
 @noindent
-This inserts two blank lines on the printed page.  (@xref{sp, ,
-@code{@@sp}}, for more information about the @code{@@sp}
+This inserts two blank lines on the printed page.
+(@xref{@code{@@sp}}, for more information about the @code{@@sp}
 command.)
 
 A template for this method looks like this:
@@ -7189,10 +7189,9 @@ of the Emacs Lisp functions that the keystroke commands invoke.
 By default, @TeX{} will consider breaking lines at @samp{-} and
 @samp{_} characters within @code{@@code} and related commands.  This
 can be controlled with @code{@@allowcodebreaks}
-(@pxref{allowcodebreaks,,@code{@@allowcodebreaks}}).  The HTML output
-attempts to respect this for @samp{-}, but ultimately it is up to the
-browser's behavior.  For Info, it seems better never to make such
-breaks.
+(@pxref{@code{@@allowcodebreaks}}).  The HTML output attempts to
+respect this for @samp{-}, but ultimately it is up to the browser's
+behavior.  For Info, it seems better never to make such breaks.
 
 For Info, the quotes are omitted in the output of the @code{@@code}
 command and related commands (e.g., @code{@@kbd}, @code{@@command}),
@@ -8877,7 +8876,7 @@ Info, you'll see the @code{@@cartouche} had no effect):
 @end example
 @end cartouche
 
-@code{@@cartouche} also implies @code{@@group} (@pxref{group}).
+@code{@@cartouche} also implies @code{@@group} (@pxref{@code{@@group}}).
 
 
 @node Lists and Tables
@@ -9561,7 +9560,7 @@ printed output.  (Floating does not make sense in other output
 formats.)  In the present version of Texinfo, however, this floating
 is unfortunately not yet implemented.  Instead, the floating material
 is simply output at the current location, more or less as if it were
-an @code{@@group} (@pxref{group,,@code{@@group}}).
+an @code{@@group} (@pxref{@code{@@group}}).
 
 @menu
 * @code{@@float}::                       Producing floating material.
@@ -9846,7 +9845,7 @@ the full file name of the image being displayed.  The @var{alttext} is
 processed as Texinfo text, so special characters such as @samp{"} and
 @samp{<} and @samp{&} are escaped in the HTML output; also, you can
 get an empty @code{alt} string with @code{@@-} (a command that
-produces no output; @pxref{- and hyphenation}).
+produces no output; @pxref{@code{@@- @@hyphenation}}).
 
 For Info output, the @code{alt} string is also processed as Texinfo
 text and output.  In this case, @samp{\} is escaped as @samp{\\} and
@@ -10837,7 +10836,7 @@ Other possible uses of @code{@@@kbd{SPACE}} have been subsumed by
 
 Do not follow any of these commands with braces.
 
-To produce a non-breakable space, see @ref{tie, @code{@@tie}}.
+To produce a non-breakable space, see @ref{@code{@@tie}}.
 
 
 @node Not Ending a Sentence
@@ -11033,12 +11032,12 @@ A4 paper is 8.27@dmn{in} wide.
 
 Not everyone uses this style.  Some people prefer `8.27@tie{}in.'@: or
 `8.27@tie{}inches'.  In these cases, however, you need to use
-@code{@@tie} (@pxref{tie,,@code{@@tie}}) or @code{@@w}
-(@pxref{w,,@code{@@w}}) so that no line break can occur between the
-number and the dimension.  Also, if you write a period after an
-abbreviation within a sentence (as with the `in.'@: above), you should
-write @samp{@@:} after the period to prevent @TeX{} from inserting
-extra whitespace, as shown here.  @xref{Not Ending a Sentence}.
+@code{@@tie} (@pxref{@code{@@tie}}) or @code{@@w} (@pxref{@code{@@w}})
+so that no line break can occur between the number and the dimension.
+Also, if you write a period after an abbreviation within a sentence
+(as with the `in.'@: above), you should write @samp{@@:} after the
+period to prevent @TeX{} from inserting extra whitespace, as shown
+here.  @xref{Not Ending a Sentence}.
 
 
 @node Inserting Accents
@@ -11438,6 +11437,11 @@ For displayed equations, you must at present use @TeX{} directly
 
 @cindex Glyphs for text
 @cindex Textual glyphs
+
+Texinfo has support for a few additional glyphs that are commonly used
+in printed text but not available in ASCII.  Of course, there are many
+thousands more.  It is possible to use Unicode characters as-is as far
+as @code{makeinfo} is concerned, but @TeX{} is not so lucky.
 
 @menu
 * @code{@@TeX @@LaTeX}::          The @TeX{} logos.
@@ -12066,14 +12070,14 @@ problematic line and page breaks.
 @menu
 * Break Commands::              Summary of break-related commands.
 * Line Breaks::                 Forcing line breaks.
-* - and hyphenation::           Helping @TeX{} with hyphenation points.
-* allowcodebreaks::             Controlling line breaks within @@code text.
-* w::                           Preventing unwanted line breaks in text.
-* tie::                         Inserting an unbreakable but varying space.
-* sp::                          Inserting blank lines.
-* page::                        Forcing the start of a new page.
-* group::                       Preventing unwanted page breaks.
-* need::                        Another way to prevent unwanted page breaks.
+* @code{@@-  @@hyphenation}::         Helping @TeX{} with hyphenation points.
+* @code{@@allowcodebreaks}::            Controlling line breaks within @@code text.
+* @code{@@w}::                          Preventing unwanted line breaks in text.
+* @code{@@tie}::                        Inserting an unbreakable but varying space.
+* @code{@@sp}::                         Inserting blank lines.
+* @code{@@page}::                       Forcing the start of a new page.
+* @code{@@group}::                      Preventing unwanted page breaks.
+* @code{@@need}::                       Another way to prevent unwanted page breaks.
 @end menu
 
 
@@ -12123,6 +12127,7 @@ Start a new page if not enough space on this one.
 
 @node Line Breaks
 @section @code{@@*} and @code{@@/}: Generate and Allow Line Breaks
+
 @findex * @r{(force line break)}
 @findex / @r{(allow line break)}
 @cindex Line breaks, controlling
@@ -12169,9 +12174,10 @@ The official Texinfo home page is on the GNU web site:
 break the url.  @code{@@/} has no effect in other output formats.
 
 
-@node - and hyphenation
+@node @code{@@- @@hyphenation}
 @section @code{@@-} and @code{@@hyphenation}: Helping @TeX{} Hyphenate
 
+@anchor{- and hyphenation}@c old name
 @findex - @r{(discretionary hyphen)}
 @findex hyphenation
 @cindex Hyphenation, helping @TeX{} do
@@ -12205,9 +12211,10 @@ Info, HTML, and other non-@TeX{} output is not hyphenated, so none of
 these commands have any effect there.
 
 
-@node allowcodebreaks
+@node @code{@@allowcodebreaks}
 @section @code{@@allowcodebreaks}: Control Line Breaks in @code{@@code}
 
+@anchor{allowcodebreaks}@c old name
 @findex allowcodebreaks
 @cindex Breaks, within @code{@@code}
 @cindex -, breakpoint within @code{@@code}
@@ -12245,9 +12252,10 @@ the breaks, but want them in general, or vice versa.
 This command has no effect except in HTML and @TeX{} output.
 
 
-@node w
+@node @code{@@w}
 @section @code{@@w}@{@var{text}@}: Prevent Line Breaks
 
+@anchor{w}@c old name
 @findex w @r{(prevent line break)}
 @cindex Line breaks, preventing
 
@@ -12290,8 +12298,10 @@ in your document, use @code{@@w@{$@}Id$}.  This trick isn't effective
 in Info or plain text output, though.
 
 
-@node tie
+@node @code{@@tie}
 @section @code{@@tie@{@}}: Inserting an Unbreakable Space
+
+@anchor{tie}@c old name
 @findex tie @r{(unbreakable interword space)}
 @cindex Tied space
 @cindex Non-breakable space, variable
@@ -12329,8 +12339,10 @@ reasons, namely that it produces an @samp{\hbox}).
 @end itemize
 
 
-@node sp
+@node @code{@@sp}
 @section @code{@@sp} @var{n}: Insert Blank Lines
+
+@anchor{sp}@c old name
 @findex sp @r{(line spacing)}
 @cindex Space, inserting vertical
 @cindex Blank lines
@@ -12351,10 +12363,12 @@ generates two blank lines.
 The @code{@@sp} command is most often used in the title page.
 
 
-@node page
+@node @code{@@page}
 @section @code{@@page}: Start a New Page
-@cindex Page breaks, forcing
+
+@anchor{page}@c old name
 @findex page
+@cindex Page breaks, forcing
 
 A line containing only @code{@@page} starts a new page in a printed
 manual.  In other formats, without the concept of pages, it starts a
@@ -12363,12 +12377,14 @@ new paragraph.  An @code{@@page} command is often used in the
 page.
 
 
-@node group
+@node @code{@@group}
 @section @code{@@group}: Prevent Page Breaks
+
+@anchor{group}@c old name
+@findex group
 @cindex Group (hold text together vertically)
 @cindex Holding text together vertically
 @cindex Vertically holding text together
-@findex group
 
 The @code{@@group} command (on a line by itself) is used inside an
 @code{@@example} or similar construct to begin an unsplittable vertical
@@ -12420,9 +12436,10 @@ considerable text.  It is a good rule of thumb to look for a missing
 @TeX{}.
 
 
-@node need
+@node @code{@@need}
 @section @code{@@need @var{mils}}: Prevent Page Breaks
 
+@anchor{need}@c old name
 @findex need
 @cindex Need space at page bottom
 @cindex Mils, argument to @code{@@need}
@@ -19992,7 +20009,7 @@ Generate a cedilla accent under @var{c}, as in @,{c}.  @xref{Inserting
 Accents}.
 
 @item @@-
-Insert a discretionary hyphenation point.  @xref{- and hyphenation}.
+Insert a discretionary hyphenation point.  @xref{@code{@@- @@hyphenation}}.
 
 @item @@.
 Produce a period that ends a sentence (usually after an
@@ -20074,7 +20091,7 @@ Make the command @samp{@@@var{new}} a synonym for the existing command
 
 @item @@allowcodebreaks @var{true-false}
 Control breaking at @samp{-} and @samp{_} in @TeX{}.
-@xref{allowcodebreaks,, @code{@@allowcodebreaks}}.
+@xref{@code{@@allowcodebreaks}}.
 
 @item @@anchor@{@var{name}@}
 Define @var{name} as the current location for use as a cross reference
@@ -20556,7 +20573,7 @@ Generate a greater-than-or-equal sign, `@geq{}'.  @xref{@code{@@geq @@leq}}.
 
 @item @@group
 Disallow page breaks within following text.  Pair with @code{@@end
-group}.  Ignored in Info.  @xref{group, , @code{@@group}}.
+group}.  Ignored in Info.  @xref{@code{@@group}}.
 
 @item @@guillemetleft@{@}
 @itemx @@guillemetright@{@}
@@ -20600,8 +20617,7 @@ Enter HTML completely.  Pair with @code{@@end html}.  @xref{Raw
 Formatter Commands}.
 
 @item @@hyphenation@{@var{hy-phen-a-ted words}@}
-Explicitly define hyphenation points.  @xref{- and hyphenation,,
-@code{@@-} and @code{@@hyphenation}}.
+Explicitly define hyphenation points.  @xref{@code{@@- @@hyphenation}}.
 
 @item @@i@{@var{text}@}
 Set @var{text} in an @i{italic} font.  No effect in Info.  @xref{Fonts}.
@@ -20785,8 +20801,8 @@ Begin a multi-column table.  Begin each row with @code{@@item} or
 
 @item @@need @var{n}
 Start a new page in a printed manual if fewer than @var{n} mils
-(thousandths of an inch) remain on the current page.  @xref{need, ,
-@code{@@need}}.
+(thousandths of an inch) remain on the current page.
+@xref{@code{@@need}}.
 
 @item @@node @var{name}, @var{next}, @var{previous}, @var{up}
 Begin a new node.  @xref{@code{@@node}}.
@@ -20831,7 +20847,7 @@ Generate the feminine and masculine Spanish ordinals, respectively:
 
 @item @@page
 Start a new page in a printed manual.  No effect in Info.
-@xref{page, , @code{@@page}}.
+@xref{@code{@@page}}.
 
 @item @@pagesizes [@var{width}][, @var{height}]
 Change page dimensions.  @xref{pagesizes}.
@@ -21022,7 +21038,7 @@ Like @code{@@quotation}, but use a smaller font size where possible.
 Pair with @code{@@end smallquotation}.  @xref{small}.
 
 @item @@sp @var{n}
-Skip @var{n} blank lines.  @xref{sp, , @code{@@sp}}.
+Skip @var{n} blank lines.  @xref{@code{@@sp}}.
 
 @item @@ss@{@}
 Generate the German sharp-S es-zet letter, @ss{}.  @xref{Inserting Accents}.
@@ -21117,8 +21133,8 @@ Generate the uppercase and lowercase Icelandic letter thorn, respectively:
 @TH{}, @th{}.  @xref{Inserting Accents}.
 
 @item @@tie@{@}
-Generate a normal interword space at which a line break is not allowed.
-@xref{tie,, @code{@@tie@{@}}}.
+Generate a normal interword space at which a line break is not
+allowed.  @xref{@code{@@tie}}.
 
 @item @@tieaccent@{@var{cc}@}
 Generate a tie-after accent over the next two characters @var{cc}, as in
@@ -21244,7 +21260,7 @@ index of variables.  Pair with @code{@@end vtable}.  The same as
 @code{@@table}, except for indexing.  @xref{@code{@@ftable @@vtable}}.
 
 @item @@w@{@var{text}@}
-Disallow line breaks within @var{text}.  @xref{w, , @code{@@w}}.
+Disallow line breaks within @var{text}.  @xref{@code{@@w}}.
 
 @item @@xml
 Enter XML completely.  Pair with @code{@@end xml}.  @xref{Raw
@@ -21927,7 +21943,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.519 2013-01-13 19:13:19 karl Exp $
+$Id: texinfo.txi,v 1.520 2013-01-13 23:23:16 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
