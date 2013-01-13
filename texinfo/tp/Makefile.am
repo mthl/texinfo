@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.52 2012-12-10 01:34:13 pertusus Exp $
+# $Id: Makefile.am,v 1.53 2013-01-13 18:04:59 karl Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012 Free Software Foundation, Inc.
@@ -15,16 +15,15 @@
 include $(srcdir)/Makefile.tres
 
 # document string locales files and associated rules.
-include $(srcdir)/Makefile.documents_strings_mo_files
+include $(srcdir)/Makefile.docstr
 
 $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 	cd $(srcdir)/ && $(PERL) ./maintain/regenerate_file_lists.pl
 
-$(srcdir)/Makefile.documents_strings_mo_files: \
-  maintain/regenerate_document_strings_make_rules.sh \
-  $(srcdir)/../po_document/LINGUAS
+$(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
+                           $(srcdir)/../po_document/LINGUAS
 	cd $(srcdir) \
-	&& $(SHELL) ./maintain/regenerate_document_strings_make_rules.sh
+	&& $(SHELL) ./maintain/regenerate_docstr.sh "$@"
 
 SUBDIRS = . tests
 
