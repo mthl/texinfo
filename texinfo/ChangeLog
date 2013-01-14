@@ -1,6 +1,8 @@
 2013-01-14  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.txi (Conditionally Visible Text): node names with @.
+	* doc/texinfo.txi (Conditionally Visible Text, Defining New
+	Texinfo Commands): node names with @.
+	Fix more xrefs for new names.
 
 2013-01-13  Karl Berry  <karl@gnu.org>
 
