@@ -1,3 +1,7 @@
+2013-01-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Conditionally Visible Text): node names with @.
+
 2013-01-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Special Insertions, Breaks, deffnx,

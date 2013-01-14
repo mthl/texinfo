@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.521 2013-01-14 00:36:33 karl Exp $
+@c $Id: texinfo.txi,v 1.522 2013-01-14 17:08:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -535,14 +535,14 @@ Conditionally Visible Text
 * Conditional Not Commands::    Text for any format other than a given one.
 * Raw Formatter Commands::      Using raw formatter commands.
 * Inline Conditionals::         Brace-delimited conditional text.
-* set clear value::             Variable tests and substitutions.
+* @code{@@set @@clear @@value}::          Variable tests and substitutions.
 * Conditional Nesting::         Using conditionals inside conditionals.
 
 @code{@@set}, @code{@@clear}, and @code{@@value}
 
-* set value::                   Expand a flag variable to a string.
-* ifset ifclear::               Format a region if a flag is set.
-* value Example::               An easy way to update edition information.
+* @code{@@set @@value}::                 Expand a flag variable to a string.
+* @code{@@ifset @@ifclear}::             Format a region if a flag is set.
+* @code{@@value} Example::              An easy way to update edition information.
 
 Defining New Texinfo Commands
 
@@ -4848,7 +4848,8 @@ included file (@pxref{Include Files}).  Typical usage looks like this:
 sections in the main file would also be lowered.)
 
 If the included file being lowered has an @code{@@top} node, you'll
-need to conditionalize its inclusion with a flag (@pxref{set value}).
+need to conditionalize its inclusion with a flag (@pxref{@code{@@set
+@@value}}).
 
 Another difficulty can arise with documents that use the (recommended)
 feature of @command{makeinfo} for implicitly determining node
@@ -13786,7 +13787,7 @@ is set or clear.
 * Conditional Not Commands::    Text for any format other than a given one.
 * Raw Formatter Commands::      Using raw formatter commands.
 * Inline Conditionals::         Brace-delimited conditional text.
-* set clear value::             Variable tests and substitutions.
+* @code{@@set @@clear @@value}::          Variable tests and substitutions.
 * Testing for Texinfo Commands:: Testing if a Texinfo command is available.
 * Conditional Nesting::         Using conditionals inside conditionals.
 @end menu
@@ -14110,9 +14111,10 @@ exactly two arguments, so a @samp{,} cannot be mistaken for an
 argument separator.)
 
 
-@node set clear value
+@node @code{@@set @@clear @@value}
 @section @code{@@set}, @code{@@clear}, and @code{@@value}
 
+@anchor{set clear value}@c old name
 You can direct the Texinfo formatting commands to format or ignore parts
 of a Texinfo file with the @code{@@set}, @code{@@clear}, @code{@@ifset},
 and @code{@@ifclear} commands.
@@ -14139,14 +14141,16 @@ is ignored.  If @var{flag} is clear, text through the following
 @end table
 
 @menu
-* set value::                   Expand a flag variable to a string.
-* ifset ifclear::               Format a region if a flag is set.
-* value Example::               An easy way to update edition information.
+* @code{@@set @@value}::                 Expand a flag variable to a string.
+* @code{@@ifset @@ifclear}::             Format a region if a flag is set.
+* @code{@@value} Example::              An easy way to update edition information.
 @end menu
 
 
-@node set value
+@node @code{@@set @@value}
 @subsection @code{@@set} and @code{@@value}
+
+@anchor{set value}@c old name
 @findex set
 @findex value
 @findex clear
@@ -14241,10 +14245,12 @@ command (@pxref{Inserting Accents}).  For example, this fails:
 @end example
 
 
-@node ifset ifclear
+@node @code{@@ifset @@ifclear}
 @subsection @code{@@ifset} and @code{@@ifclear}
 
+@anchor{ifset ifclear}@c old name
 @findex ifset
+
 When a @var{flag} is set, the Texinfo formatting commands format text
 between subsequent pairs of @code{@@ifset @var{flag}} and @code{@@end
 ifset} commands.  When the @var{flag} is cleared, the Texinfo formatting
@@ -14312,8 +14318,10 @@ command looks like this:
 @end example
 
 
-@node value Example
+@node @code{@@value} Example
 @subsection @code{@@value} Example
+
+@anchor{value Example}@c old name
 
 You can use the @code{@@value} command to minimize the number of
 places you need to change when you record an update to a manual.
@@ -14524,6 +14532,7 @@ for nesting purposes.
 
 @node Defining New Texinfo Commands
 @chapter Defining New Texinfo Commands
+
 @cindex Macros
 @cindex Defining new Texinfo commands
 @cindex New Texinfo commands, defining
@@ -14558,8 +14567,8 @@ possible to invoke an external macro processor and have Texinfo
 recognize so-called @code{#line} directives for error reporting.
 
 If you want to do simple text substitution, @code{@@set} and
-@code{@@value} is the simplest approach (@pxref{set clear value,,
-@code{@@set}@comma{} @code{@@clear}@comma{} and @code{@@value}}).
+@code{@@value} is the simplest approach (@pxref{@code{@@set @@clear
+@@value}}).
 
 @menu
 * Defining Macros::             Defining and undefining new commands.
@@ -15362,8 +15371,8 @@ the same line by the name of a file to be included.  For example:
 @end example
 
 @@-commands are expanded in file names.  The one most likely to be
-useful is @code{@@value} (@pxref{set value}), and even then only in
-complicated situations.
+useful is @code{@@value} (@pxref{@code{@@set @@value}}), and even then
+only in complicated situations.
 
 An included file should simply be a segment of text that you expect to
 be included as is into the overall or @dfn{outer} Texinfo file; it
@@ -17197,8 +17206,8 @@ Enable transliteration of 8-bit characters in node names for the
 purpose of file name creation.  @xref{HTML Xref 8-bit Character Expansion}.
 
 @item -U @var{var}
-Cause @var{var} to be undefined.  This is equivalent to
-@code{@@clear @var{var}} in the Texinfo file (@pxref{set clear value}).
+Cause @var{var} to be undefined.  This is equivalent to @code{@@clear
+@var{var}} in the Texinfo file (@pxref{@code{@@set @@clear @@value}}).
 
 @item --verbose
 @opindex --verbose
@@ -19618,8 +19627,8 @@ This section describes how they are handled.
 
 First, comments are removed.
 
-Next, any @code{@@value} commands (@pxref{set value}) and macro
-invocations (@pxref{Invoking Macros}) are fully expanded.
+Next, any @code{@@value} commands (@pxref{@code{@@set @@value}}) and
+macro invocations (@pxref{Invoking Macros}) are fully expanded.
 
 Then, for the following commands, the command name and braces are removed,
 and the text of the argument is recursively transformed:
@@ -20190,8 +20199,7 @@ Unset @var{flag}, preventing the Texinfo formatting commands from
 formatting text between subsequent pairs of @code{@@ifset @var{flag}}
 and @code{@@end ifset} commands, and preventing
 @code{@@value@{@var{flag}@}} from expanding to the value to which
-@var{flag} is set.
-@xref{set clear value, , @code{@@set} @code{@@clear} @code{@@value}}.
+@var{flag} is set.  @xref{@code{@@set @@clear @@value}}.
 
 @item @@click@{@}
 Represent a single ``click'' in a GUI@.  Used within
@@ -20616,8 +20624,8 @@ Set @var{text} in an @i{italic} font.  No effect in Info.  @xref{Fonts}.
 
 @item @@ifclear @var{txivar}
 If the Texinfo variable @var{txivar} is not set, format the following
-text.  Pair with @code{@@end ifclear}.  @xref{set clear value, ,
-@code{@@set} @code{@@clear} @code{@@value}}.
+text.  Pair with @code{@@end ifclear}.  @xref{@code{@@set @@clear
+@@value}}.
 
 @item @@ifcommanddefined @var{txicmd}
 @itemx @@ifcommandnotdefined @var{txicmd}
@@ -20655,8 +20663,8 @@ Pair with @code{@@end ifplaintext}.  @xref{Conditionals}.
 
 @item @@ifset @var{txivar}
 If the Texinfo variable @var{txivar} is set, format the following
-text.  Pair with @code{@@end ifset}.  @xref{set clear value, ,
-@code{@@set} @code{@@clear} @code{@@value}}.
+text.  Pair with @code{@@end ifset}.  @xref{@code{@@set @@clear
+@@value}}.
 
 @item @@iftex
 Begin text to appear only in the @TeX{} output.  Pair with @code{@@end
@@ -20956,8 +20964,7 @@ numbered; within @code{@@unnumbered}, the section is unnumbered.
 
 @item @@set @var{txivar} [@var{string}]
 Define the Texinfo variable @var{txivar}, optionally to the value
-@var{string}.  @xref{set clear value, , @code{@@set} @code{@@clear}
-@code{@@value}}.
+@var{string}.  @xref{@code{@@set @@clear @@value}}.
 
 @item @@setchapternewpage @var{on-off-odd}
 Specify whether chapters start on new pages, and if so, whether on
@@ -21213,8 +21220,8 @@ Generate check accent over the character @var{c}, as in @v{o}.
 
 @item @@value@{@var{txivar}@}
 Insert the value, if any, of the Texinfo variable @var{txivar},
-previously defined by @code{@@set}.  @xref{set clear value, ,
-@code{@@set} @code{@@clear} @code{@@value}}.
+previously defined by @code{@@set}.  @xref{@code{@@set @@clear
+@@value}}.
 
 @item @@var@{@var{metasyntactic-variable}@}
 Highlight a metasyntactic variable, which is something that stands for
@@ -21545,8 +21552,8 @@ in the @code{@@titlepage} section for people reading the printed
 output (@pxref{Short Sample}).
 
 It is easiest to handle such version information using @code{@@set}
-and @code{@@value}.  @xref{value Example,, @code{@@value} Example},
-and @ref{GNU Sample Texts}.
+and @code{@@value}.  @xref{@code{@@value} Example}, and @ref{GNU
+Sample Texts}.
 
 
 @subsubheading Definition Commands
@@ -21935,7 +21942,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.521 2013-01-14 00:36:33 karl Exp $
+$Id: texinfo.txi,v 1.522 2013-01-14 17:08:58 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
