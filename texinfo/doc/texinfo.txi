@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.520 2013-01-13 23:23:16 karl Exp $
+@c $Id: texinfo.txi,v 1.521 2013-01-14 00:36:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -505,7 +505,7 @@ Definition Commands
 * Def Cmd Template::            Writing descriptions using definition commands.
 * Def Cmd Continuation Lines::  Continuing the heading over source lines.
 * Optional Arguments::          Handling optional and repeated arguments.
-* deffnx::                      Group two or more `first' lines.
+* @code{@@deffnx}::                     Group two or more `first' lines.
 * Def Cmds in Detail::          Reference for all the definition commands.
 * Def Cmd Conventions::         Conventions for writing definitions.
 * Sample Function Definition::  An example.
@@ -526,8 +526,8 @@ Object-Oriented Programming
 
 Internationalization
 
-* @code{@@documentlanguage}::            Declaring the current language.
-* documentencoding::            Declaring the input encoding.
+* @code{@@documentlanguage}::          Declaring the current language.
+* @code{@@documentencoding}::          Declaring the input encoding.
 
 Conditionally Visible Text
 
@@ -11068,9 +11068,8 @@ braces (since it is two characters instead of one).
 To get the true accented characters output in Info, not just the ASCII
 transliterations, it is necessary to specify @code{@@documentencoding}
 with an encoding which supports the required characters
-(@pxref{documentencoding,,@code{@@documentencoding}}).  In this case,
-you can also use non-ASCII (e.g., pre-accented) characters in the
-source file.
+(@pxref{@code{@@documentencoding}}).  In this case, you can also use
+non-ASCII (e.g., pre-accented) characters in the source file.
 
 @findex " @r{(umlaut accent)}
 @cindex Umlaut accent
@@ -11238,9 +11237,9 @@ inserting quotation marks.
 @cindex Latin 1
 In order to get the symbols for the quotation marks in encoded Info
 output, it is necessary to specify @code{@@documentencoding UTF-8}.
-(@xref{documentencoding,,@code{@@documentencoding}}.)  Double
-guillemets are also present in ISO 8859-1 (aka Latin@tie{}1) and ISO
-8859-15 (aka Latin@tie{}9).
+(@xref{@code{@@documentencoding}}.)  Double guillemets are also
+present in ISO 8859-1 (aka Latin@tie{}1) and ISO 8859-15 (aka
+Latin@tie{}9).
 
 @cindex European Computer Modern fonts
 @cindex EC fonts
@@ -11576,10 +11575,9 @@ banking contexts, the abbreviation for the Euro is EUR.)
 @cindex Latin 9, and Euro
 In order to get the Euro symbol in encoded Info output, for example,
 it is necessary to specify @code{@@documentencoding ISO-8859-15} or
-@code{@@documentencoding UTF-8}
-(@xref{documentencoding,,@code{@@documentencoding}}.)  The Euro symbol
-is in ISO 8859-15 (aka Latin@tie{}9), and is @emph{not} in the more
-widely-used ISO 8859-1 (Latin@tie{}1).
+@code{@@documentencoding UTF-8} (@xref{@code{@@documentencoding}}.)
+The Euro symbol is in ISO 8859-15 (aka Latin@tie{}9), and is
+@emph{not} in the more widely-used ISO 8859-1 (Latin@tie{}1).
 
 @pindex feymr10
 @cindex Euro font
@@ -12496,7 +12494,7 @@ a given name.  An appendix containing a summary should use
 * Def Cmd Template::            Writing descriptions using definition commands.
 * Def Cmd Continuation Lines::  Continuing the heading over source lines.
 * Optional Arguments::          Handling optional and repeated arguments.
-* deffnx::                      Group two or more `first' lines.
+* @code{@@deffnx}::                     Group two or more `first' lines.
 * Def Cmds in Detail::          Reference for all the definition commands.
 * Def Cmd Conventions::         Conventions for writing definitions.
 * Sample Function Definition::  An example.
@@ -12700,18 +12698,20 @@ The function is listed in the Command and Variable Index under
 @samp{foobar}.
 
 
-@node deffnx
-@section Two or More `First' Lines
+@node @code{@@deffnx}
+@section @code{@@deffnx}, et al.: Two or More `First' Lines
+
+@anchor{deffnx}@c old node
+@findex deffnx
 @cindex Two `First' Lines for @code{@@deffn}
 @cindex Grouping two definitions together
 @cindex Definitions grouped together
-@findex deffnx
 
 To create two or more `first' or header lines for a definition, follow
-the first @code{@@deffn} line by a line beginning with @code{@@deffnx}.
-The @code{@@deffnx} command works exactly like @code{@@deffn}
-except that it does not generate extra vertical white space between it
-and the preceding line.
+the first @code{@@deffn} line by a line beginning with
+@code{@@deffnx}.  The @code{@@deffnx} command works exactly like
+@code{@@deffn} except that it does not generate extra vertical white
+space between it and the preceding line.
 
 @need 1000
 For example,
@@ -13321,6 +13321,7 @@ is a programming language construct that should be marked with
 
 @end table
 
+
 @node Object-Oriented Methods
 @subsubsection Object-Oriented Methods
 
@@ -13561,8 +13562,8 @@ For a list of the various accented and special characters Texinfo
 supports, see @ref{Inserting Accents}.
 
 @menu
-* @code{@@documentlanguage}::            Declaring the current language.
-* documentencoding::            Declaring the input encoding.
+* @code{@@documentlanguage}::          Declaring the current language.
+* @code{@@documentencoding}::          Declaring the input encoding.
 @end menu
 
 
@@ -13644,9 +13645,10 @@ the official web site for ISO@tie{}3166 can be found via
 @url{http://en.wikipedia.org/wiki/ISO_3166}.
 
 
-@node documentencoding
+@node @code{@@documentencoding}
 @section @code{@@documentencoding @var{enc}}: Set Input Encoding
 
+@anchor{documentencoding}@c old name
 @findex documentencoding
 @cindex Encoding, declaring
 @cindex Input encoding, declaring
@@ -15873,8 +15875,8 @@ The options @option{--recode} and @option{--recode-from=@var{enc}}
 allow conversion of an input document before running @TeX{}. The
 @option{--recode} option recodes the document from encoding specified
 by @samp{@@documentencoding} command
-(@pxref{documentencoding,,@code{documentencoding}}) to plain 7-bit
-@samp{texinfo} encoding.
+(@pxref{@code{@@documentencoding}}) to plain 7-bit @samp{texinfo}
+encoding.
 
 @opindex --recode-from@r{, for @command{texi2dvi}}
 The option @option{--recode-from=@var{enc}} recodes the document from
@@ -16822,9 +16824,8 @@ clear value}).
 By default, or with @option{--enable-encoding}, output accented and
 special characters in Info and plain text output based on
 @samp{@@documentencoding}.  With @option{--disable-encoding}, 7-bit
-ASCII transliterations are output.
-@xref{documentencoding,,@code{documentencoding}}, and @ref{Inserting
-Accents}.
+ASCII transliterations are output.  @xref{@code{@@documentencoding}},
+and @ref{Inserting Accents}.
 
 @item --docbook
 @opindex --docbook
@@ -17749,12 +17750,12 @@ user-defined macro; default false.
 Normalized encoding name suitable for output.  Should be a usable
 charset name in HTML, typically one of the preferred IANA encoding
 names.  You should not need to use this variable, since it is set by
-@code{@@documentencoding} (@pxref{documentencoding}).
+@code{@@documentencoding} (@pxref{@code{@@documentencoding}}).
 
 @item INPUT_PERL_ENCODING
 Perl encoding used to process the Texinfo source.  You should not need
 to use that variable, since it is set by @code{@@documentencoding}
-(@pxref{documentencoding}).
+(@pxref{@code{@@documentencoding}}).
 
 @item KEEP_TOP_EXTERNAL_REF
 For HTML@.  If set, do not ignore @samp{Top} as the first 
@@ -17856,7 +17857,7 @@ information is used to set the output encoding name.  If no input
 encoding is specified, the default output encoding name may be set by
 the output format.  In particular, the XML-based formats use
 @code{utf-8} for @code{OUTPUT_ENCODING_NAME} if the encoding is not
-otherwise specified.  @xref{documentencoding,, @code{@@documentencoding}}.
+otherwise specified.  @xref{@code{@@documentencoding}}.
 
 @item OVERVIEW_LINK_TO_TOC
 If set, the cross references in the Overview link to the corresponding
@@ -20248,7 +20249,7 @@ Define a new index and its indexing command.  Print entries in an
 Format a description for a variable associated with a class in
 object-oriented programming.  Takes three arguments: the category of
 thing being defined, the class to which it belongs, and its name.
-@xref{Definition Commands}, and @ref{deffnx,, Def Cmds in Detail}.
+@xref{Definition Commands}.
 
 @item @@deffn @var{category} @var{name} @var{arguments}@dots{}
 @itemx @@deffnx @var{category} @var{name} @var{arguments}@dots{}
@@ -20270,20 +20271,18 @@ strings that precede and follow the text.  @xref{definfoenclose}.
 @itemx @@defivarx @var{class} @var{instance-variable-name}
 Format a description for an instance variable in object-oriented
 programming.  The command is equivalent to @samp{@@defcv @{Instance
-Variable@} @dots{}}.  @xref{Definition Commands}, and @ref{deffnx,,
-Def Cmds in Detail}.
+Variable@} @dots{}}.  @xref{Definition Commands}.
 
 @item @@defmac @var{macroname} @var{arguments}@dots{}
 @itemx @@defmacx @var{macroname} @var{arguments}@dots{}
 Format a description for a macro; equivalent to @samp{@@deffn Macro
-@dots{}}.  @xref{Definition Commands}, and @ref{deffnx,, Def Cmds in
-Detail}.
+@dots{}}.  @xref{Definition Commands}.
 
 @item @@defmethod @var{class} @var{method-name} @var{arguments}@dots{}
 @itemx @@defmethodx @var{class} @var{method-name} @var{arguments}@dots{}
 Format a description for a method in object-oriented programming;
 equivalent to @samp{@@defop Method @dots{}}.  @xref{Definition
-Commands}, and @ref{deffnx,, Def Cmds in Detail}.
+Commands}.
 
 @item @@defop @var{category} @var{class} @var{name} @var{arguments}@dots{}
 @itemx @@defopx @var{category} @var{class} @var{name} @var{arguments}@dots{}
@@ -20296,14 +20295,12 @@ operation, and its arguments, if any.  @xref{Definition Commands}, and
 @item @@defopt @var{option-name}
 @itemx @@defoptx @var{option-name}
 Format a description for a user option; equivalent to @samp{@@defvr
-@{User Option@} @dots{}}.  @xref{Definition Commands}, and
-@ref{deffnx,, Def Cmds in Detail}.
+@{User Option@} @dots{}}.  @xref{Definition Commands}.
 
 @item @@defspec @var{special-form-name} @var{arguments}@dots{}
 @itemx @@defspecx @var{special-form-name} @var{arguments}@dots{}
 Format a description for a special form; equivalent to @samp{@@deffn
-@{Special Form@} @dots{}}.  @xref{Definition Commands}, and
-@ref{deffnx,, Def Cmds in Detail}.
+@{Special Form@} @dots{}}.  @xref{Definition Commands}.
 
 @item @@deftp @var{category} @var{name-of-type} @var{attributes}@dots{}
 @itemx @@deftpx @var{category} @var{name-of-type} @var{attributes}@dots{}
@@ -20322,8 +20319,7 @@ Format a description for a typed class variable in object-oriented programming.
 Format a description for a function or similar entity that may take
 arguments and that is typed.  @code{@@deftypefn} takes as arguments the
 category of entity being described, the type, the name of the
-entity, and its arguments, if any.  @xref{Definition Commands}, and
-@ref{deffnx,, Def Cmds in Detail}.
+entity, and its arguments, if any.  @xref{Definition Commands}.
 
 @item @@deftypefnnewline @var{on-off}
 Specifies whether return types for @code{@@deftypefn} and similar are
@@ -20334,7 +20330,7 @@ Functions,, Functions in Typed Languages}.
 @itemx @@deftypefunx @var{data-type} @var{function-name} @var{arguments}@dots{}
 Format a description for a function in a typed language.
 The command is equivalent to @samp{@@deftypefn Function @dots{}}.
-@xref{Definition Commands}, and @ref{deffnx,, Def Cmds in Detail}.
+@xref{Definition Commands}.
 
 @item @@deftypeivar @var{class} @var{data-type} @var{variable-name}
 @itemx @@deftypeivarx @var{class} @var{data-type} @var{variable-name}
@@ -20344,7 +20340,7 @@ programming. @xref{Definition Commands}, and @ref{Abstract Objects}.
 @item @@deftypemethod @var{class} @var{data-type} @var{method-name} @var{arguments}@dots{}
 @itemx @@deftypemethodx @var{class} @var{data-type} @var{method-name} @var{arguments}@dots{}
 Format a description for a typed method in object-oriented programming.
-@xref{Definition Commands}, and @ref{deffnx,, Def Cmds in Detail}.
+@xref{Definition Commands}.
 
 @item @@deftypeop @var{category} @var{class} @var{data-type} @var{name} @var{arguments}@dots{}
 @itemx @@deftypeopx @var{category} @var{class} @var{data-type} @var{name} @var{arguments}@dots{}
@@ -20355,34 +20351,30 @@ Format a description for a typed operation in object-oriented programming.
 @itemx @@deftypevarx @var{data-type} @var{variable-name}
 Format a description for a variable in a typed language.  The command is
 equivalent to @samp{@@deftypevr Variable @dots{}}.  @xref{Definition
-Commands}, and @ref{deffnx,, Def Cmds in Detail}.
+Commands}.
 
 @item @@deftypevr @var{category} @var{data-type} @var{name}
 @itemx @@deftypevrx @var{category} @var{data-type} @var{name}
 Format a description for something like a variable in a typed
 language---an entity that records a value.  Takes as arguments the
 category of entity being described, the type, and the name of the
-entity.  @xref{Definition Commands}, and @ref{deffnx,, Def Cmds in
-Detail}.
+entity.  @xref{Definition Commands}.
 
 @item @@defun @var{function-name} @var{arguments}@dots{}
 @itemx @@defunx @var{function-name} @var{arguments}@dots{}
 Format a description for a function; equivalent to
-@samp{@@deffn Function @dots{}}.  @xref{Definition Commands}, and
-@ref{deffnx,, Def Cmds in Detail}.
+@samp{@@deffn Function @dots{}}.  @xref{Definition Commands}.
 
 @item @@defvar @var{variable-name}
 @itemx @@defvarx @var{variable-name}
 Format a description for a variable; equivalent to @samp{@@defvr
-Variable @dots{}}.  @xref{Definition Commands}, and @ref{deffnx,, Def
-Cmds in Detail}.
+Variable @dots{}}.  @xref{Definition Commands}.
 
 @item @@defvr @var{category} @var{name}
 @itemx @@defvrx @var{category} @var{name}
 Format a description for any kind of variable.  @code{@@defvr} takes
 as arguments the category of the entity and the name of the entity.
-@xref{Definition Commands},
-and @ref{deffnx,, Def Cmds in Detail}.
+@xref{Definition Commands}.
 
 @item @@detailmenu
 Mark the (optional) detailed node listing in a master menu.
@@ -20425,7 +20417,7 @@ with @code{@@end documentdescription}.  @xref{@code{@@documentdescription}}.
 
 @item @@documentencoding @var{enc}
 Declare the input encoding to be @var{enc}.
-@xref{documentencoding,, @code{@@documentencoding}}.
+@xref{@code{@@documentencoding}}.
 
 @item @@documentlanguage @var{CC}
 Declare the document language as the two-character ISO-639 abbreviation
@@ -21943,7 +21935,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.520 2013-01-13 23:23:16 karl Exp $
+$Id: texinfo.txi,v 1.521 2013-01-14 00:36:33 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
@@ -23348,7 +23340,7 @@ coding: <encoding>
 End:
 @end example
 
-@xref{documentencoding,, @code{@@documentencoding}}.
+@xref{@code{@@documentencoding}}.
 
 
 @node Info Format Regular Nodes
