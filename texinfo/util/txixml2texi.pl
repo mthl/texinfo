@@ -122,24 +122,26 @@ my %entity_texts = (
   'textlsquo' => '`',
 );
 
-foreach my $command (keys(%Texinfo::Convert::XML::xml_commands_formatting)) {
-  my $xml_output = $Texinfo::Convert::XML::xml_commands_formatting{$command};
-  if ($xml_output =~ /^&(\w+);$/) {
-    my $entity = $1;
-    $entity_texts{$entity} = command_with_braces($command);
-    #print STDERR "$xml_output $command $1\n";
-  } elsif ($xml_output =~ /^<(\w+)/) {
-    my $element = $1;
+foreach my $command (keys(%Texinfo::Convert::XML::commands_formatting)) {
+  if (!ref($Texinfo::Convert::XML::commands_formatting{$command})) {
+    $entity_texts{$Texinfo::Convert::XML::commands_formatting{$command}}
+      = command_with_braces($command);
+  } else {
+    my $spec = $Texinfo::Convert::XML::commands_formatting{$command};
+    my $element = $spec->[0];
     if ($element eq 'spacecmd') {
-      if ($xml_output =~ /^<(\w+) type="(\w+)"/) {
-        $element_at_commands{$element}->{"type"}->{$2} 
-          = command_with_braces($command); 
+      if ($spec->[1] eq 'type') {
+        $element_at_commands{$element}->{"type"}->{$spec->[2]}
+          = command_with_braces($command);
+      } else {
+        die "BUG, bad spacecmd specification";
       }
     } else {
       $element_at_commands{$element} = command_with_braces($command);
     }
   }
 }
+
 $element_at_commands{'accent'} = 0;
 
 my %arg_elements;
@@ -152,8 +154,8 @@ foreach my $command (keys(%Texinfo::Convert::XML::commands_args_elements)) {
 }
 
 my %accent_type_command;
-foreach my $accent_command (keys(%Texinfo::Convert::XML::xml_accent_types)) {
-  $accent_type_command{$Texinfo::Convert::XML::xml_accent_types{$accent_command}} 
+foreach my $accent_command (keys(%Texinfo::Convert::XML::accent_types)) {
+  $accent_type_command{$Texinfo::Convert::XML::accent_types{$accent_command}} 
     = $accent_command;
 }
 

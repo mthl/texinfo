@@ -70,6 +70,7 @@ my %defaults = (
 );
 
 
+# our because it is used in the xml to texi translator
 our %commands_formatting = (
            '*' => 'linebreak',
            ' ' => ['spacecmd', 'type', 'spc'],
@@ -114,7 +115,7 @@ our %commands_formatting = (
 );
 
 # use default XML formatting to complete the hash, removing XML
-# specific formatting.  This avoids some duplication.
+# specific formatting.  This avoids some code duplication.
 my %default_xml_commands_formatting = 
     %{$Texinfo::Convert::Converter::default_xml_commands_formatting{'normal'}};
 
@@ -256,28 +257,6 @@ sub format_header($)
   return $header;
 }
 
-sub _format_command($$)
-{
-  my $self = shift;
-  my $command = shift;
-
-  if (! ref($commands_formatting{$command})) {
-    return $self->format_atom($command);
-  } else {
-    my @spec = @{$commands_formatting{$command}};
-    my $element_name = shift @spec;
-    return $self->element($element_name, \@spec);
-  }
-}
-
-
-# XML specific hash.  Not used directly here, but available for other modules.
-our %xml_commands_formatting;
-foreach my $command (keys(%commands_formatting)) {
-  $xml_commands_formatting{$command} = Texinfo::Convert::XML->_format_command($command);
-}
-
-
 # following is not format specific.  Some infos are taken from generic XML, but 
 # XML specific formatting is stripped.
 
@@ -289,6 +268,7 @@ my %accents = (
  'v' => 'caron',
 );
 
+# our because it is used in the xml to texi translator
 our %accent_types = (%Texinfo::Convert::Converter::xml_accent_entities, %accents);
 
 # no entity
@@ -296,9 +276,6 @@ my @other_accents = ('dotaccent', 'tieaccent', 'ubaraccent', 'udotaccent');
 foreach my $accent (@other_accents) {
   $accent_types{$accent} = $accent;
 }
-
-# our because it is used in the xml to texi translator
-our %xml_accent_types = %accent_types;
 
 my %misc_command_line_attributes = (
   'setfilename' => 'file',
@@ -462,6 +439,20 @@ sub output($$)
   }
 
   return $result;
+}
+
+sub _format_command($$)
+{
+  my $self = shift;
+  my $command = shift;
+
+  if (! ref($commands_formatting{$command})) {
+    return $self->format_atom($command);
+  } else {
+    my @spec = @{$commands_formatting{$command}};
+    my $element_name = shift @spec;
+    return $self->element($element_name, \@spec);
+  }
 }
 
 sub _index_entry($$)
