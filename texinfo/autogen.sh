@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autogen.sh,v 1.11 2012-02-15 09:56:50 pertusus Exp $
+# $Id: autogen.sh,v 1.12 2013-01-15 01:23:49 pertusus Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then
@@ -17,7 +17,7 @@ echo "  $cmd"
 $chicken eval $cmd || exit 1
 
 # Generates another include file for tp/Makefile.am.
-cmd="./tp/maintain/regenerate_document_strings_make_rules.sh"
+cmd="(cd tp && ./maintain/regenerate_docstr.sh Makefile.docstr)"
 echo "  $cmd"
 $chicken eval $cmd || exit 1
 

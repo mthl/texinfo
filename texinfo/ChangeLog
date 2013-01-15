@@ -1,3 +1,8 @@
+2013-01-15  Patrice Dumas  <pertusus@free.fr>
+
+	* autogen.sh: adapt to shorter regenerate_docstr.sh 
+	and Makefile.docstr names.
+
 2013-01-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Conditionally Visible Text,
