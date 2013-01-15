@@ -1,3 +1,11 @@
+2013-01-15  Karl Berry  <karl@gnu.org>
+
+	* po_document/LINGUAS: es.us-ascii is back, paperwork executed
+	by Francisco Vila <paconet.org@gmail.com>.
+
+	* doc/texinfo.txi: use @t instead of @code in node names,
+	to avoid extraneous quotes.
+
 2013-01-15  Patrice Dumas  <pertusus@free.fr>
 
 	* autogen.sh: adapt to shorter regenerate_docstr.sh 
