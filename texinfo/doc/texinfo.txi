@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.524 2013-01-14 19:45:35 karl Exp $
+@c $Id: texinfo.txi,v 1.525 2013-01-15 00:19:59 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -158,7 +158,7 @@ the menu lists all the lower level nodes in the document.
 * Include Files::                 How to incorporate other Texinfo files.
 
 * Hardcopy::                      Output for paper, with @TeX{}.
-* Generic Translator texi2any::   @command{texi2any}, an all-purpose converter.
+* Generic Translator @code{texi2any}::   @command{texi2any}, an all-purpose converter.
 * Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
 @c * texi2any Output Customization:: Fine tuning with initialization files.
@@ -288,7 +288,7 @@ Chapter Structuring
 Nodes
 
 * @code{@@node}::                        Creating nodes, in detail.
-* @code{@@makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
+* @code{makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
 * @code{@@anchor}::                      Defining arbitrary cross reference targets.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
 
@@ -582,8 +582,8 @@ Formatting and Printing Hardcopy
 * Requirements Summary::        @TeX{} formatting requirements summary.
 * Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
-* smallbook::                   How to print small format books and manuals.
-* A4 Paper::                    How to print on A4 or A5 paper.
+* @code{@@smallbook}::                   How to print small format books and manuals.
+* A4 Paper::                   How to print on A4 or A5 paper.
 * @code{@@pagesizes}::                How to print with customized page sizes.
 * Cropmarks and Magnification:: How to print marks to indicate the size
                                  of pages and how to print scaled up output.
@@ -593,12 +593,12 @@ Formatting and Printing Hardcopy
 @command{texi2any}: The Generic Translator for Texinfo
 
 * Reference Implementation:: @command{texi2any}: the reference implementation.
-* Invoking texi2any::        Running the translator from a shell.
-* texi2any Printed Output::  Calling @command{texi2dvi}.
+* Invoking @code{texi2any}::        Running the translator from a shell.
+* @code{texi2any} Printed Output::  Calling @code{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
-* Customization Variables::  Configuring @command{texi2any}.
+* Customization Variables::  Configuring @code{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
-* texi2html::                An ancestor of @command{texi2any}.
+* @code{texi2html}::                An ancestor of @code{texi2any}.
 
 Customization Variables
 
@@ -614,9 +614,9 @@ Creating and Installing Info Files
 
 Creating an Info File
 
-* makeinfo advantages::         @code{makeinfo} provides better error checking.
-* makeinfo in Emacs::           How to run @code{makeinfo} from Emacs.
-* texinfo-format commands::     Two Info formatting commands written
+* @code{makeinfo} advantages::         @code{makeinfo} provides better error checking.
+* @code{makeinfo} in Emacs::           How to run @code{makeinfo} from Emacs.
+* @code{texinfo-format} commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
                                  to @code{makeinfo}.
 * Batch Formatting::            How to format for Info in Emacs Batch mode.
@@ -671,7 +671,7 @@ Page Headings
 
 Catching Mistakes
 
-* makeinfo Preferred::           @code{makeinfo} finds errors.
+* @code{makeinfo} Preferred::           @code{makeinfo} finds errors.
 * Debugging with Info::          How to catch errors with Info formatting.
 * Debugging with @TeX{}::           How to catch errors with @TeX{} formatting.
 * Using texinfo-show-structure:: How to use @code{texinfo-show-structure}.
@@ -1040,8 +1040,7 @@ would be excellent.  The way to do this that would be most useful is
 to write a new back-end for @command{texi2any}, our reference
 implementation of a Texinfo parser; it creates a tree representation
 of the Texinfo input that you can use for the conversion.
-@xref{Generic Translator texi2any,, @command{texi2any}: The Generic
-Translator}.
+@xref{Generic Translator @code{texi2any}}.
 
 Another viable approach is use the Texinfo XML output from
 @command{texi2any} as your input.  This XML is an essentially complete
@@ -1128,8 +1127,7 @@ Info-reading programs can operate on it.
 Info files are nearly always created by processing a Texinfo source
 document.  @command{makeinfo}, also known as @command{texi2any}, is
 the principal command that converts a Texinfo file into an Info file;
-@pxref{Generic Translator texi2any,, @command{texi2any}: The Generic
-Translator}.
+@pxref{Generic Translator @code{texi2any}}.
 
 Generally, you enter an Info file through a node that by convention is
 named `Top'.  This node normally contains just a brief summary of the
@@ -1194,8 +1192,8 @@ In the United States, documents are most often printed on 8.5 inch by
 11 inch pages (216@dmn{mm} by 280@dmn{mm}); this is the default size.
 But you can also print for 7 inch by 9.25 inch pages (178@dmn{mm} by
 235@dmn{mm}, the @code{@@smallbook} size; or on A4 or A5 size paper
-(@code{@@afourpaper}, @code{@@afivepaper}).  @xref{smallbook,,
-Printing ``Small'' Books}, and @ref{A4 Paper,, Printing on A4 Paper}.
+(@code{@@afourpaper}, @code{@@afivepaper}).
+@xref{@code{@@smallbook}}, and @ref{A4 Paper}.
 
 @cindex Literate programming
 @TeX{} is freely distributable.  It is written in a superset of Pascal
@@ -2980,7 +2978,8 @@ globally affect the document formatting, such as @code{@@synindex} or
 Header}).
 
 The start- and end-of-header lines allow you to format only part of a
-Texinfo file for Info or printing.  @xref{texinfo-format commands}.
+Texinfo file for Info or printing.  @xref{@code{texinfo-format}
+commands}.
 
 The odd string of characters, @samp{%**}, is to ensure that no other
 comment is accidentally taken for a start-of-header line.  You can
@@ -3062,7 +3061,7 @@ extension is added---@code{.html} when generating HTML, @code{.info}
 when generating Info, etc.  The @code{\input} line is still ignored in
 this processing, as well as leading blank lines.
 
-See also the @option{--output} option in @ref{Invoking texi2any}.
+See also the @option{--output} option in @ref{Invoking @code{texi2any}}.
 
 
 @node @code{@@settitle}
@@ -7949,10 +7948,10 @@ example:
 The effect is to reduce the body font to a 10@dmn{pt} size (the
 default is 11@dmn{pt}).  Fonts for other elements, such as sections
 and chapters, are reduced accordingly.  This should only be used in
-conjunction with @code{@@smallbook} (@pxref{smallbook,, Printing
-``Small'' Books}) or similar, since 10@dmn{pt} fonts on standard paper
-(8.5x11 or A4) are too small.  One reason to use this command is to
-save pages, and hence printing cost, for physical books.
+conjunction with @code{@@smallbook} (@pxref{@code{@@smallbook}}) or
+similar, since 10@dmn{pt} fonts on standard paper (8.5x11 or A4) are
+too small.  One reason to use this command is to save pages, and hence
+printing cost, for physical books.
 
 Texinfo does not at present have commands to switch the font family
 to use, or more general size-changing commands.
@@ -15280,9 +15279,9 @@ will run @command{makeinfo} first to expand macros and eliminate
 
 @item
 If you run @command{makeinfo} or its variants (@pxref{Generic
-Translator texi2any,, @command{texi2any}: The Generic Translator}),
-you can specify @option{--no-ifinfo --iftex -E somefile.out}, and then
-give @file{somefile.out} to @code{texi2dvi} in a separate command.
+Translator @code{texi2any}}), you can specify @option{--no-ifinfo
+--iftex -E somefile.out}, and then give @file{somefile.out} to
+@code{texi2dvi} in a separate command.
 
 @item
 Or you can run @option{makeinfo --dvi --Xopt -E}.  (Or @option{--pdf}
@@ -15297,8 +15296,8 @@ directives are not recognized, the line numbers emitted by the
 @TeX{} itself, are the (incorrect) line numbers from the derived file
 which @TeX{} is reading, rather than the preprocessor-specified line
 numbers.  This is another example of why we recommend running
-@command{makeinfo} for the best diagnostics (@pxref{makeinfo
-advantages,, @code{makeinfo} Advantages}).
+@command{makeinfo} for the best diagnostics (@pxref{@code{makeinfo}
+Advantages}).
 
 
 @node #line Syntax Details
@@ -15647,7 +15646,7 @@ Details are in the following sections.
 * Requirements Summary::        @TeX{} formatting requirements summary.
 * Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
-* smallbook::                   How to print small format books and manuals.
+* @code{@@smallbook}::                  How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
 * @code{@@pagesizes}::                How to print with customized page sizes.
 * Cropmarks and Magnification:: How to print marks to indicate the size
@@ -15655,6 +15654,7 @@ Details are in the following sections.
 * PDF Output::                  Portable Document Format output.
 * Obtaining @TeX{}::               How to obtain @TeX{}.
 @end menu
+
 
 @node Use @TeX{}
 @section Use @TeX{}
@@ -15828,7 +15828,7 @@ One useful option to @code{texi2dvi} is @samp{--command=@var{cmd}}.
 This inserts @var{cmd} on a line by itself after the
 @code{@@setfilename} in a temporary copy of the input file before
 running @TeX{}.  With this, you can specify different printing
-formats, such as @code{@@smallbook} (@pxref{smallbook}),
+formats, such as @code{@@smallbook} (@pxref{@code{@@smallbook}}),
 @code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
 (@pxref{@code{@@pagesizes}}), without actually changing the document
 source.  (You can also do this on a site-wide basis with
@@ -16408,8 +16408,10 @@ before the @code{@@titlepage} command:
 @end example
 
 
-@node smallbook
-@section Printing ``Small'' Books
+@node @code{@@smallbook}
+@section @code{@@smallbook}: Printing ``Small'' Books
+
+@anchor{smallbook}@c old name
 @findex smallbook
 @cindex Small book size
 @cindex Book, printing small
@@ -16644,8 +16646,8 @@ and you can get it over the Internet or on physical media.  See
 @c please keep that text in sync with www.gnu.org/prep/FTP
 
 
-@node Generic Translator texi2any
-@chapter @command{texi2any}: The Generic Translator for Texinfo
+@node Generic Translator @code{texi2any}
+@chapter @code{texi2any}: The Generic Translator for Texinfo
 
 @command{texi2any} is the generic translator for Texinfo that can
 produce different output formats and is highly customizable.  It
@@ -16679,12 +16681,12 @@ The rest of this chapter goes into the details.
 
 @menu
 * Reference Implementation:: @command{texi2any}: the reference implementation.
-* Invoking texi2any::        Running the translator from a shell.
-* texi2any Printed Output::  Calling @command{texi2dvi}.
+* Invoking @code{texi2any}::        Running the translator from a shell.
+* @code{texi2any} Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
 * Customization Variables::  Configuring @command{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
-* texi2html::                An ancestor of @command{texi2any}.
+* @code{texi2html}::                An ancestor of @command{texi2any}.
 @end menu
 
 
@@ -16715,10 +16717,10 @@ processor was made compatible with the C implementation of
 implementations (@pxref{History}).  The current reference
 implementation, @command{texi2any}, inherited the design of
 customization and other features from @command{texi2html} (for more on
-@command{texi2html} compatibility, @pxref{texi2html,,
-@command{texi2html}}).  However, @code{texi2any} is a full
-reimplementation: it constructs a tree-based representation of the
-input document for all back-ends to work from.
+@command{texi2html} compatibility, @pxref{@code{texi2html}}).
+However, @code{texi2any} is a full reimplementation: it constructs a
+tree-based representation of the input document for all back-ends to
+work from.
 
 @cindex Texinfo language tests
 @cindex Tests, of Texinfo language
@@ -16728,9 +16730,9 @@ to parse Texinfo input to at least make use of these tests.
 
 @cindex Examples of using @command{texi2any}
 @findex Texinfo::Parser module
-The @command{texi2html} wrapper script (@pxref{texi2html}) provides a
-simple example of calling @command{texi2any} from a shell script; it's
-in @file{util/texi2html} in the Texinfo sources.  More
+The @command{texi2html} wrapper script (@pxref{@code{texi2html}})
+provides a simple example of calling @command{texi2any} from a shell
+script; it's in @file{util/texi2html} in the Texinfo sources.  More
 consequentially, @command{texi-elements-by-size} is an example Perl
 script using the @code{Texinfo::Parser} module interface; it's in
 @file{util/texi-elements-by-size}.  (Its functionality may also be
@@ -16744,8 +16746,9 @@ forward, we ask authors of Texinfo documents to use only
 @command{texi2any}.
 
 
-@node Invoking texi2any
+@node Invoking @code{texi2any}
 @section Invoking @command{texi2any}/@code{makeinfo} from a Shell
+
 @anchor{Invoking makeinfo}
 @pindex makeinfo
 @pindex texi2any
@@ -16764,7 +16767,8 @@ texi2any --info bison.texinfo
 You can specify more than one input file name; each is processed in
 turn.  If an input file name is @samp{-}, standard input is read.
 
-@anchor{makeinfo options}
+@anchor{@code{makeinfo} options}
+@c anchor{makeinfo options}
 @cindex @code{makeinfo} options
 @cindex Options for @code{makeinfo}
 @anchor{texi2any Options}
@@ -16858,12 +16862,12 @@ output document.  The default is the locale specified by the
 @item --dvi
 @opindex --dvi
 Generate a TeX DVI file using @command{texi2dvi}, rather than Info
-(@pxref{texi2any Printed Output}).
+(@pxref{@code{texi2any} Printed Output}).
 
 @item --dvipdf
 @opindex --dvipdf
 Generate a PDF file using @command{texi2dvi --dvipdf}, rather than
-Info (@pxref{texi2any Printed Output}).
+Info (@pxref{@code{texi2any} Printed Output}).
 
 @item --error-limit=@var{limit}
 @itemx -e @var{limit}
@@ -17137,7 +17141,7 @@ following a section heading, which are not indented.
 @item --pdf
 @opindex --pdf
 Generate a PDF file using @command{texi2dvi --pdf}, rather than Info
-(@pxref{texi2any Printed Output}).
+(@pxref{@code{texi2any} Printed Output}).
 
 @item --plaintext
 @opindex --plaintext
@@ -17158,8 +17162,8 @@ to standard output by default; this can be overridden with @option{-o}.
 
 @item --ps
 @opindex --ps
-Generate a PostScript file using @command{texi2dvi --ps}, rather
-than Info (@pxref{texi2any Printed Output}).
+Generate a PostScript file using @command{texi2dvi --ps}, rather than
+Info (@pxref{@code{texi2any} Printed Output}).
 
 @item --set-customization-variable @var{var}=@var{value}
 @itemx -c @var{var}=@var{value}
@@ -17232,7 +17236,7 @@ Print the version number, then exit successfully.
 @item --Xopt @var{str}
 @opindex --Xopt @var{str}
 Pass @var{str} (a single shell word) to @command{texi2dvi}; may be
-repeated (@pxref{texi2any Printed Output}).
+repeated (@pxref{@code{texi2any} Printed Output}).
 
 @item --xml
 @opindex --xml
@@ -17253,8 +17257,9 @@ docbook  dvi  dvipdf  html  info  pdf  plaintext  ps  xml
 If not set or otherwise specified, Info output is the default.
 
 
-@node texi2any Printed Output
+@node @code{texi2any} Printed Output
 @section @command{texi2any} Printed Output
+
 @cindex Printed output, through @command{texi2any}
 @cindex Output, printed through @command{texi2any}
 
@@ -17479,9 +17484,9 @@ is the case, for example, for HTML for @code{documentdescription}.
 @cindex Customization variables for options
 @cindex Options, customization variables for
 
-The following table gives the customization variables associated
-with some command line options.  @xref{Invoking
-texi2any}, for the meaning of the options.
+The following table gives the customization variables associated with
+some command line options.  @xref{Invoking @code{texi2any}}, for the
+meaning of the options.
 
 @multitable @columnfractions 0.5 0.5
 @headitem Option @tab Variable
@@ -17972,7 +17977,7 @@ reference file, as is done for the tests.  The default is false.
 
 @item TEXI2DVI
 Name of the command used to produce PostScript, PDF, and DVI; default
-@samp{texi2dvi}.  @xref{texi2any Printed Output}.
+@samp{texi2dvi}.  @xref{@code{texi2any} Printed Output}.
 
 @item TEXI2HTML
 @cindex compatibility, with @command{texi2html}
@@ -18244,8 +18249,9 @@ format, while nevertheless with rich formatting it may be translated
 appropriately in many languages.
 
 
-@node texi2html
-@section @command{texi2html}: Ancestor of @command{texi2any}
+@node @code{texi2html}
+@section @code{texi2html}: Ancestor of @code{texi2any}
+
 @pindex texi2html
 
 @cindex Cons, Lionel
@@ -18365,9 +18371,9 @@ For information on installing the Info file in the Info system,
 @pxref{Installing an Info File}.
 
 @menu
-* makeinfo advantages::         @code{makeinfo} provides better error checking.
-* makeinfo in Emacs::           How to run @code{makeinfo} from Emacs.
-* texinfo-format commands::     Two Info formatting commands written
+* @code{makeinfo} Advantages::         @code{makeinfo} provides better error checking.
+* @code{makeinfo} in Emacs::           How to run @code{makeinfo} from Emacs.
+* @code{texinfo-format} commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
                                  to @code{makeinfo}.
 * Batch Formatting::            How to format for Info in Emacs Batch mode.
@@ -18376,8 +18382,10 @@ For information on installing the Info file in the Info system,
 @end menu
 
 
-@node makeinfo advantages
+@node @code{makeinfo} Advantages
 @subsection @code{makeinfo} Advantages
+
+@anchor{makeinfo advantages}@c old name
 
 The @code{makeinfo} utility creates an Info file from a Texinfo source
 providing better error messages than either of the Emacs formatting
@@ -18391,8 +18399,10 @@ The @code{texinfo-format-region} and the @code{texinfo-format-buffer}
 commands may be useful if you cannot run @code{makeinfo}.
 
 
-@node makeinfo in Emacs
+@node @code{makeinfo} in Emacs
 @subsection Running @code{makeinfo} Within Emacs
+
+@c anchor{makeinfo in Emacs}@c old name
 @cindex Running @code{makeinfo} in Emacs
 @cindex @code{makeinfo} inside Emacs
 @cindex Shell, running @code{makeinfo} in
@@ -18475,21 +18485,23 @@ For example, you could write the following in your @file{.emacs} file:
 @c Writing these three cross references using xref results in
 @c three references to the same named manual, which looks strange.
 @iftex
-For more information, see @ref{makeinfo options}, as well as ``Easy
-Customization Interface,'' ``Examining and Setting Variables,'' and
-``Init File'' in @cite{The GNU Emacs Manual}.
+For more information, see @ref{@code{makeinfo} options}, as well as
+``Easy Customization Interface,'' ``Examining and Setting Variables,''
+and ``Init File'' in @cite{The GNU Emacs Manual}.
 @end iftex
 @ifnottex
 For more information, see@*
 @ref{Easy Customization, , Easy Customization Interface, emacs, The GNU Emacs Manual},@*
 @ref{Examining, , Examining and Setting Variables, emacs, The GNU Emacs Manual},@*
 @ref{Init File, , , emacs, The GNU Emacs Manual}, and@*
-@ref{makeinfo options}.
+@ref{@code{makeinfo} options}.
 @end ifnottex
 
 
-@node texinfo-format commands
+@node @code{texinfo-format} commands
 @subsection The @code{texinfo-format@dots{}} Commands
+
+@c anchor{texinfo-format commands}@c old name
 
 In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
 file with the @code{texinfo-format-region} command.  This formats the
@@ -18520,7 +18532,7 @@ commands provide you with some error checking, and other functions can
 provide you with further help in finding formatting errors.  These
 procedures are described in an appendix; see @ref{Catching Mistakes}.
 However, the @code{makeinfo} program provides better error checking
-(@pxref{makeinfo in Emacs}).
+(@pxref{@code{makeinfo} in Emacs}).
 
 
 @node Batch Formatting
@@ -19251,7 +19263,7 @@ HTML@tie{}3.2 standard are also used. 4)@tie{} CSS is used
 (@code{thead}, @code{abbr}, @code{acronym}).
 
 Using @samp{--init-file=html32.pm} produces strict HTML@tie{}3.2
-output (@pxref{Invoking texi2any}).
+output (@pxref{Invoking @code{texi2any}}).
 
 Please report output from an error-free run of @code{makeinfo} which
 has browser portability problems as a bug (@pxref{Reporting Bugs}).
@@ -19282,12 +19294,12 @@ insensitive filesystem by setting the customization variable
 @code{CASE_INSENSITIVE_FILENAMES}.
 
 It is also possible to split at chapters or sections with
-@option{--split} (@pxref{Invoking texi2any}).  In that case, the file
-names are constructed after the name of the node associated with the
-relevant sectioning command.  Also, unless @option{--no-node-files} is
-specified, a redirection file is output for every node in order to
-more reliably support cross references to that manual (@pxref{HTML
-Xref}).
+@option{--split} (@pxref{Invoking @code{texi2any}}).  In that case,
+the file names are constructed after the name of the node associated
+with the relevant sectioning command.  Also, unless
+@option{--no-node-files} is specified, a redirection file is output
+for every node in order to more reliably support cross references to
+that manual (@pxref{HTML Xref}).
 
 When splitting, the HTML output files are written into a subdirectory,
 with the name chosen as follows:
@@ -21015,8 +21027,8 @@ in Info.  @xref{Fonts}.
 
 @item @@smallbook
 Cause @TeX{} to produce a printed manual in a 7 by 9.25 inch format
-rather than the regular 8.5 by 11 inch format.  @xref{smallbook, ,
-Printing Small Books}.  Also, see @ref{@code{@@small@dots{}}}.
+rather than the regular 8.5 by 11 inch format.
+@xref{@code{@@smallbook}}.  Also, see @ref{@code{@@small@dots{}}}.
 
 @item @@smalldisplay
 Begin a kind of example.  Like @code{@@display}, but use a smaller
@@ -21951,7 +21963,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.524 2013-01-14 19:45:35 karl Exp $
+$Id: texinfo.txi,v 1.525 2013-01-15 00:19:59 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
@@ -22541,7 +22553,7 @@ For finding problems with the structure of nodes and chapters, you can use
 command and you can use the @kbd{M-x Info-validate} command.
 
 @menu
-* makeinfo Preferred::          @code{makeinfo} finds errors.
+* @code{makeinfo} Preferred::          @code{makeinfo} finds errors.
 * Debugging with Info::         How to catch errors with Info formatting.
 * Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
 * Using texinfo-show-structure::  How to use @code{texinfo-show-structure}.
@@ -22550,8 +22562,10 @@ command and you can use the @kbd{M-x Info-validate} command.
 @end menu
 
 
-@node makeinfo Preferred
+@node @code{makeinfo} Preferred
 @section @code{makeinfo} Preferred
+
+@c anchor{makeinfo Preferred}@c old name
 
 The @code{makeinfo} program does an excellent job of catching errors
 and reporting them---far better than @code{texinfo-format-region} or
