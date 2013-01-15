@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.525 2013-01-15 00:19:59 karl Exp $
+@c $Id: texinfo.txi,v 1.526 2013-01-15 01:19:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -562,7 +562,7 @@ External Macro Processors: Line Directives
 Include Files
 
 * Using Include Files::         How to use the @code{@@include} command.
-* texinfo-multiple-files-update::  How to create and update nodes and
+* @code{texinfo-multiple-files-update}::  How to create and update nodes and
                                      menus when using included files.
 * Include Files Requirements::  @code{texinfo-multiple-files-update} needs.
 * Sample Include File::         A sample outer file with included files
@@ -631,7 +631,7 @@ Installing an Info File
                                  located in other directories.
 * Installing Dir Entries::      How to specify what menu entry to add
                                  to the Info directory.
-* Invoking install-info::       @code{install-info} options.
+* Invoking @code{install-info}::       @code{install-info} options.
 
 Generating HTML
 
@@ -674,13 +674,13 @@ Catching Mistakes
 * @code{makeinfo} Preferred::           @code{makeinfo} finds errors.
 * Debugging with Info::          How to catch errors with Info formatting.
 * Debugging with @TeX{}::           How to catch errors with @TeX{} formatting.
-* Using texinfo-show-structure:: How to use @code{texinfo-show-structure}.
-* Using occur::                  How to list all lines containing a pattern.
-* Running Info-Validate::        How to find badly referenced nodes.
+* Using @code{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
+* Using @code{occur}::                  How to list all lines containing a pattern.
+* Running @code{Info-validate}::        How to find badly referenced nodes.
 
 Finding Badly Referenced Nodes
 
-* Using Info-validate::         How to run @code{Info-validate}.
+* Using @code{Info-validate}::         How to run @code{Info-validate}.
 * Unsplit::                     How to create an unsplit file.
 * Tagifying::                   How to tagify a file.
 * Splitting::                   How to split a file manually.
@@ -2440,7 +2440,7 @@ update all the menus and all the `Next', `Previous', and `Up' pointers
 of all the included files before creating and inserting a master menu in
 the outer file.  The @code{texinfo-multiple-files-update} command is
 described in the appendix on @code{@@include} files.
-@xref{texinfo-multiple-files-update}.
+@xref{@code{texinfo-multiple-files-update}}.
 
 @item M-x texinfo-indent-menu-description
 @findex texinfo-indent-menu-description
@@ -15354,7 +15354,7 @@ collection of conveniently small parts.
 
 @menu
 * Using Include Files::         How to use the @code{@@include} command.
-* texinfo-multiple-files-update::  How to create and update nodes and
+* @code{texinfo-multiple-files-update}::  How to create and update nodes and
                                      menus when using included files.
 * Include Files Requirements::  @code{texinfo-multiple-files-update} needs.
 * Sample Include File::         A sample outer file with included files
@@ -15396,8 +15396,9 @@ longer.  Now, it does not matter whether you write such a line.  If an
 @code{@@setfilename} line exists in an included file, it is ignored.
 
 
-@node texinfo-multiple-files-update
+@node @code{texinfo-multiple-files-update}
 @section @code{texinfo-multiple-files-update}
+
 @findex texinfo-multiple-files-update
 
 GNU Emacs Texinfo mode provides the
@@ -18651,7 +18652,8 @@ you may want to run the @code{Info-validate} command.  (The
 need @code{Info-validate}.)  However, you cannot run the @kbd{M-x
 Info-validate} node-checking command on indirect files.  For
 information on how to prevent files from being split and how to
-validate the structure of the nodes, see @ref{Using Info-validate}.
+validate the structure of the nodes, see @ref{Using
+@code{Info-validate}}.
 
 
 @node Installing an Info File
@@ -18672,7 +18674,7 @@ Info.)
                                  located in other directories.
 * Installing Dir Entries::      How to specify what menu entry to add
                                  to the Info directory.
-* Invoking install-info::       @code{install-info} options.
+* Invoking @code{install-info}::       @code{install-info} options.
 @end menu
 
 
@@ -18943,7 +18945,7 @@ start at column 32, starting at zero (as in
 most others.  Description for individual utilities best start in
 column 48, where possible.  For more information about formatting see
 the @samp{--calign}, @samp{--align}, and @samp{--max-width} options in
-@ref{Invoking install-info}.
+@ref{Invoking @code{install-info}}.
 
 If you use @code{@@dircategory} more than once in the Texinfo source,
 each usage specifies the `current' category; any subsequent
@@ -18978,8 +18980,9 @@ documentation for the different programs they can run, as with the
 traditional @command{man} system.
 
 
-@node Invoking install-info
+@node Invoking @code{install-info}
 @subsection Invoking @command{install-info}
+
 @pindex install-info
 
 @code{install-info} inserts menu entries from an Info file into the
@@ -21963,7 +21966,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.525 2013-01-15 00:19:59 karl Exp $
+$Id: texinfo.txi,v 1.526 2013-01-15 01:19:27 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
@@ -22556,9 +22559,9 @@ command and you can use the @kbd{M-x Info-validate} command.
 * @code{makeinfo} Preferred::          @code{makeinfo} finds errors.
 * Debugging with Info::         How to catch errors with Info formatting.
 * Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
-* Using texinfo-show-structure::  How to use @code{texinfo-show-structure}.
-* Using occur::                 How to list all lines containing a pattern.
-* Running Info-Validate::       How to find badly referenced nodes.
+* Using @code{texinfo-show-structure}::  How to use @code{texinfo-show-structure}.
+* Using @code{occur}::                 How to list all lines containing a pattern.
+* Running @code{Info-validate}::       How to find badly referenced nodes.
 @end menu
 
 
@@ -22624,7 +22627,7 @@ occurs, or not long after it.  The buffer will look like this:
 * Using texinfo-show-structure::  How to use
                                  `texinfo-show-structure'
                                  to catch mistakes.
-* Running Info-Validate::         How to check for
+* Running Info-validate::         How to check for
                                  unreferenced nodes.
 @@end menus
 @point{}
@@ -22814,8 +22817,9 @@ again. (Note the use of the backslash, @samp{\}.  @TeX{} uses @samp{\}
 instead of @samp{@@}; and in this circumstance, you are working
 directly with @TeX{}, not with Texinfo.)
 
-@node Using texinfo-show-structure
+@node Using @code{texinfo-show-structure}
 @section Using @code{texinfo-show-structure}
+
 @cindex Showing the structure of a file
 @findex texinfo-show-structure
 
@@ -22885,8 +22889,9 @@ You can remind yourself of the structure of a Texinfo file by looking at
 the list in the @samp{*Occur*} window; and if you have mis-named a node
 or left out a section, you can correct the mistake.
 
-@node Using occur
+@node Using @code{occur}
 @section Using @code{occur}
+
 @cindex Occurrences, listing with @code{@@occur}
 @findex occur
 
@@ -22924,8 +22929,11 @@ therefore have the same `Up' pointer.
 @xref{Other Repeating Search, , Using Occur, emacs , The GNU Emacs Manual},
 for more information.
 
-@node Running Info-Validate
+
+@node Running @code{Info-validate}
 @section Finding Badly Referenced Nodes
+
+@anchor{Running Info-Validate}@c old name
 @findex Info-validate
 @cindex Nodes, checking for badly referenced
 @cindex Checking for badly referenced nodes
@@ -22947,15 +22955,17 @@ using @code{texinfo-format-region} or @code{texinfo-format-buffer}, or
 if you write an Info file from scratch.
 
 @menu
-* Using Info-validate::         How to run @code{Info-validate}.
+* Using @code{Info-validate}::         How to run @code{Info-validate}.
 * Unsplit::                     How to create an unsplit file.
 * Tagifying::                   How to tagify a file.
 * Splitting::                   How to split a file manually.
 @end menu
 
-@node Using Info-validate
-@subsection Running @code{Info-validate}
-@cindex Running @code{Info-validate}
+
+@node Using @code{Info-validate}
+@subsection Using @code{Info-validate}
+
+@cindex Using @code{Info-validate}
 @cindex Info validating a large file
 @cindex Validating a large file
 
@@ -23100,7 +23110,7 @@ Info files are split to save memory.  With smaller files, Emacs does not
 have make such a large buffer to hold the information.
 
 If an Info file has more than 30 nodes, you should also make a tag
-table for it. @xref{Using Info-validate}, for information
+table for it.  @xref{Using @code{Info-validate}}, for information
 about creating a tag table.  (Again, tag tables are usually created
 automatically by the formatting command; you only need to create a tag
 table yourself if you are doing the job manually.  Most likely, you
