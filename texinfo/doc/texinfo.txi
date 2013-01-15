@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.526 2013-01-15 01:19:27 karl Exp $
+@c $Id: texinfo.txi,v 1.527 2013-01-15 23:12:57 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -158,7 +158,7 @@ the menu lists all the lower level nodes in the document.
 * Include Files::                 How to incorporate other Texinfo files.
 
 * Hardcopy::                      Output for paper, with @TeX{}.
-* Generic Translator @code{texi2any}::   @command{texi2any}, an all-purpose converter.
+* Generic Translator @t{texi2any}::   @command{texi2any}, an all-purpose converter.
 * Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
 @c * texi2any Output Customization:: Fine tuning with initialization files.
@@ -228,21 +228,21 @@ Texinfo File Header
 
 * First Line::                  The first line of a Texinfo file.
 * Start of Header::             Formatting a region requires this.
-* @code{@@setfilename}::                 Tell Info the name of the Info file.
-* @code{@@settitle}::                    Create a title for the printed work.
+* @t{@@setfilename}::                 Tell Info the name of the Info file.
+* @t{@@settitle}::                    Create a title for the printed work.
 * End of Header::               Formatting a region requires this.
 
 Document Permissions
 
-* @code{@@copying}::                     Declare the document's copying permissions.
-* @code{@@insertcopying}::               Where to insert the permissions.
+* @t{@@copying}::                     Declare the document's copying permissions.
+* @t{@@insertcopying}::               Where to insert the permissions.
 
 Title and Copyright Pages
 
-* @code{@@titlepage}::                   Create a title for the printed document.
-* @code{@@titlefont @@center @@sp}::         The @code{@@titlefont}, @code{@@center},
+* @t{@@titlepage}::                   Create a title for the printed document.
+* @t{@@titlefont @@center @@sp}::         The @code{@@titlefont}, @code{@@center},
                                  and @code{@@sp} commands.
-* @code{@@title @@subtitle @@author}::       The @code{@@title}, @code{@@subtitle},
+* @t{@@title @@subtitle @@author}::       The @code{@@title}, @code{@@subtitle},
                                  and @code{@@author} commands.
 * Copyright::                   How to write the copyright notice and
                                  include copying permissions.
@@ -256,13 +256,13 @@ The `Top' Node and Master Menu
 
 Global Document Commands
 
-* @code{@@documentdescription}::      Document summary for the HTML output.
-* @code{@@setchapternewpage}::        Start chapters on right-hand pages.
-* @code{@@headings}::                 An option for turning headings on and off
+* @t{@@documentdescription}::      Document summary for the HTML output.
+* @t{@@setchapternewpage}::        Start chapters on right-hand pages.
+* @t{@@headings}::                 An option for turning headings on and off
                                         and double or single sided printing.
-* @code{@@paragraphindent}::          Specify paragraph indentation.
-* @code{@@firstparagraphindent}::     Suppressing first paragraph indentation.
-* @code{@@exampleindent}::            Specify environment indentation.
+* @t{@@paragraphindent}::          Specify paragraph indentation.
+* @t{@@firstparagraphindent}::     Suppressing first paragraph indentation.
+* @t{@@exampleindent}::            Specify environment indentation.
 
 Ending a Texinfo File
 
@@ -274,22 +274,22 @@ Chapter Structuring
 
 * Tree Structuring::            A manual is like an upside down tree @dots{}
 * Structuring Command Types::   How to divide a manual into parts.
-* @code{@@chapter}::            Chapter structuring.
-* @code{@@unnumbered @@appendix}::
-* @code{@@majorheading @@chapheading}::
-* @code{@@section}::
-* @code{@@unnumberedsec @@appendixsec @@heading}::
-* @code{@@subsection}::
-* @code{@@unnumberedsubsec @@appendixsubsec @@subheading}::
-* @code{@@subsubsection}::               Commands for the lowest level sections.
-* @code{@@part}::                        Collections of chapters.
+* @t{@@chapter}::            Chapter structuring.
+* @t{@@unnumbered @@appendix}::
+* @t{@@majorheading @@chapheading}::
+* @t{@@section}::
+* @t{@@unnumberedsec @@appendixsec @@heading}::
+* @t{@@subsection}::
+* @t{@@unnumberedsubsec @@appendixsubsec @@subheading}::
+* @t{@@subsubsection}::               Commands for the lowest level sections.
+* @t{@@part}::                        Collections of chapters.
 * Raise/lower sections::        How to change commands' hierarchical level.
 
 Nodes
 
-* @code{@@node}::                        Creating nodes, in detail.
-* @code{makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
-* @code{@@anchor}::                      Defining arbitrary cross reference targets.
+* @t{@@node}::                        Creating nodes, in detail.
+* @t{makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
+* @t{@@anchor}::                      Defining arbitrary cross reference targets.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
 
 The @code{@@node} Command
@@ -298,7 +298,7 @@ The @code{@@node} Command
 * Writing a Node::              How to write an @code{@@node} line.
 * Node Line Requirements::      Keep names unique, without @@-commands.
 * First Node::                  How to write a `Top' node.
-* @code{@@top} command::                How to use the @code{@@top} command.
+* @t{@@top} command::                How to use the @code{@@top} command.
 
 Menus
 
@@ -314,13 +314,13 @@ Cross References
 * References::                  What cross references are for.
 * Cross Reference Commands::    A summary of the different commands.
 * Cross Reference Parts::       A cross reference has several parts.
-* @code{@@xref}::                       Begin a reference with `See' @dots{}
+* @t{@@xref}::                       Begin a reference with `See' @dots{}
 * Top Node Naming::             How to refer to the beginning of another file.
-* @code{@@ref}::                        A reference for the last part of a sentence.
-* @code{@@pxref}::                      How to write a parenthetical cross reference.
-* @code{@@inforef}::                    How to refer to an Info-only file.
-* @code{@@url}::                        How to refer to a uniform resource locator.
-* @code{@@cite}::                       How to refer to books not in the Info system.
+* @t{@@ref}::                        A reference for the last part of a sentence.
+* @t{@@pxref}::                      How to write a parenthetical cross reference.
+* @t{@@inforef}::                    How to refer to an Info-only file.
+* @t{@@url}::                        How to refer to a uniform resource locator.
+* @t{@@cite}::                       How to refer to books not in the Info system.
 
 @code{@@xref}
 
@@ -363,35 +363,35 @@ Emphasizing Text
 Quotations and Examples
 
 * Block Enclosing Commands::    Different constructs for different purposes.
-* @code{@@quotation}::                   Writing a quotation.
-* @code{@@indentedblock}::               Block of text indented on left.
-* @code{@@example}::                    Writing an example in a fixed-width font.
-* @code{@@verbatim}::                   Writing a verbatim example.
-* @code{@@verbatiminclude}::            Including a file verbatim.
-* @code{@@lisp}::                       Illustrating Lisp code.
-* @code{@@small@dots{}}::                   Examples in a smaller font.
-* @code{@@display}::                    Writing an example in the current font.
-* @code{@@format}::                     Writing an example without narrowed margins.
-* @code{@@exdent}::                     Undo indentation on a line.
-* @code{@@flushleft @@flushright}::     Pushing text flush left or flush right.
-* @code{@@raggedright}::                Avoiding justification on the right.
-* @code{@@noindent}::                   Preventing paragraph indentation.
-* @code{@@indent}::                     Forcing paragraph indentation.
-* @code{@@cartouche}::                  Drawing rounded rectangles around text.
+* @t{@@quotation}::                   Writing a quotation.
+* @t{@@indentedblock}::               Block of text indented on left.
+* @t{@@example}::                    Writing an example in a fixed-width font.
+* @t{@@verbatim}::                   Writing a verbatim example.
+* @t{@@verbatiminclude}::            Including a file verbatim.
+* @t{@@lisp}::                       Illustrating Lisp code.
+* @t{@@small@dots{}}::                   Examples in a smaller font.
+* @t{@@display}::                    Writing an example in the current font.
+* @t{@@format}::                     Writing an example without narrowed margins.
+* @t{@@exdent}::                     Undo indentation on a line.
+* @t{@@flushleft @@flushright}::     Pushing text flush left or flush right.
+* @t{@@raggedright}::                Avoiding justification on the right.
+* @t{@@noindent}::                   Preventing paragraph indentation.
+* @t{@@indent}::                     Forcing paragraph indentation.
+* @t{@@cartouche}::                  Drawing rounded rectangles around text.
 
 Lists and Tables
 
 * Introducing Lists::           Texinfo formats lists for you.
-* @code{@@itemize}::                    How to construct a simple list.
-* @code{@@enumerate}::                   How to construct a numbered list.
+* @t{@@itemize}::                    How to construct a simple list.
+* @t{@@enumerate}::                   How to construct a numbered list.
 * Two-column Tables::           How to construct a two-column table.
 * Multi-column Tables::         How to construct generalized tables.
 
 Making a Two-column Table
 
-* @code{@@table}::                       How to construct a two-column table.
-* @code{@@ftable @@vtable}::               Automatic indexing for two-column tables.
-* @code{@@itemx}::                       How to put more entries in the first column.
+* @t{@@table}::                       How to construct a two-column table.
+* @t{@@ftable @@vtable}::               Automatic indexing for two-column tables.
+* @t{@@itemx}::                       How to put more entries in the first column.
 
 @code{@@multitable}: Multi-column Tables
 
@@ -406,9 +406,9 @@ Special Displays
 
 Floats
 
-* @code{@@float}::                       Producing floating material.
-* @code{@@caption @@shortcaption}::       Specifying descriptions for floats.
-* @code{@@listoffloats}::                A table of contents for floats.
+* @t{@@float}::                       Producing floating material.
+* @t{@@caption @@shortcaption}::       Specifying descriptions for floats.
+* @t{@@listoffloats}::                A table of contents for floats.
 
 Inserting Images
 
@@ -431,9 +431,9 @@ Indices
 
 Combining Indices
 
-* @code{@@syncodeindex}::               How to merge two indices, using @code{@@code}
+* @t{@@syncodeindex}::               How to merge two indices, using @code{@@code}
                                  font for the merged-from index.
-* @code{@@synindex}::                   How to merge two indices, using the
+* @t{@@synindex}::                   How to merge two indices, using the
                                  roman font for the merged-from index.
 
 Special Insertions
@@ -461,51 +461,51 @@ Inserting Space
 * Multiple Spaces::             Inserting multiple spaces.
 * Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
 * Ending a Sentence::           Sometimes it does.
-* @code{@@frenchspacing}::              Specifying end-of-sentence spacing.
-* @code{@@dmn}::                        Formatting a dimension.
+* @t{@@frenchspacing}::              Specifying end-of-sentence spacing.
+* @t{@@dmn}::                        Formatting a dimension.
 
 Glyphs for Text
 
-* @code{@@tex}::                  The @TeX{} logos.
-* @code{@@copyright}::            The copyright symbol (c in a circle).
-* @code{@@registered}::           The registered symbol (R in a circle).
-* @code{@@dots}::                 How to insert ellipses: @dots{} and @enddots{}
-* @code{@@bullet}::               How to insert a bullet: @bullet{}
-* @code{@@pounds}::               How to insert the pounds currency symbol.
-* @code{@@textdegree}::           How to insert the degrees symbol.
-* @code{@@minus}::                How to insert a minus sign.
-* @code{@@geq @@leq}::            How to insert greater/less-than-or-equal signs.
+* @t{@@tex}::                  The @TeX{} logos.
+* @t{@@copyright}::            The copyright symbol (c in a circle).
+* @t{@@registered}::           The registered symbol (R in a circle).
+* @t{@@dots}::                 How to insert ellipses: @dots{} and @enddots{}
+* @t{@@bullet}::               How to insert a bullet: @bullet{}
+* @t{@@pounds}::               How to insert the pounds currency symbol.
+* @t{@@textdegree}::           How to insert the degrees symbol.
+* @t{@@minus}::                How to insert a minus sign.
+* @t{@@geq @@leq}::            How to insert greater/less-than-or-equal signs.
 
 Glyphs for Programming
 
 * Glyphs Summary::
-* @code{@@result}::         How to show the result of expression.
-* @code{@@expansion}::      How to indicate an expansion.
-* @code{@@print}::          How to indicate generated output.
-* @code{@@error}::          How to indicate an error message.
-* @code{@@equiv}::          How to indicate equivalence.
-* @code{@@point}::          How to indicate the location of point.
+* @t{@@result}::         How to show the result of expression.
+* @t{@@expansion}::      How to indicate an expansion.
+* @t{@@print}::          How to indicate generated output.
+* @t{@@error}::          How to indicate an error message.
+* @t{@@equiv}::          How to indicate equivalence.
+* @t{@@point}::          How to indicate the location of point.
 * Click Sequences::             Inserting GUI usage sequences.
 
 Forcing and Preventing Breaks
 
 * Break Commands::              Summary of break-related commands.
 * Line Breaks::                 Forcing line breaks.
-* @code{@@-  @@hyphenation}::         Helping @TeX{} with hyphenation points.
-* @code{@@allowcodebreaks}::            Controlling line breaks within @@code text.
-* @code{@@w}::                          Preventing unwanted line breaks in text.
-* @code{@@tie}::                        Inserting an unbreakable but varying space.
-* @code{@@sp}::                         Inserting blank lines.
-* @code{@@page}::                       Forcing the start of a new page.
-* @code{@@group}::                      Preventing unwanted page breaks.
-* @code{@@need}::                       Another way to prevent unwanted page breaks.
+* @t{@@-  @@hyphenation}::         Helping @TeX{} with hyphenation points.
+* @t{@@allowcodebreaks}::            Controlling line breaks within @@code text.
+* @t{@@w}::                          Preventing unwanted line breaks in text.
+* @t{@@tie}::                        Inserting an unbreakable but varying space.
+* @t{@@sp}::                         Inserting blank lines.
+* @t{@@page}::                       Forcing the start of a new page.
+* @t{@@group}::                      Preventing unwanted page breaks.
+* @t{@@need}::                       Another way to prevent unwanted page breaks.
 
 Definition Commands
 
 * Def Cmd Template::            Writing descriptions using definition commands.
 * Def Cmd Continuation Lines::  Continuing the heading over source lines.
 * Optional Arguments::          Handling optional and repeated arguments.
-* @code{@@deffnx}::                     Group two or more `first' lines.
+* @t{@@deffnx}::                     Group two or more `first' lines.
 * Def Cmds in Detail::          Reference for all the definition commands.
 * Def Cmd Conventions::         Conventions for writing definitions.
 * Sample Function Definition::  An example.
@@ -526,8 +526,8 @@ Object-Oriented Programming
 
 Internationalization
 
-* @code{@@documentlanguage}::          Declaring the current language.
-* @code{@@documentencoding}::          Declaring the input encoding.
+* @t{@@documentlanguage}::          Declaring the current language.
+* @t{@@documentencoding}::          Declaring the input encoding.
 
 Conditionally Visible Text
 
@@ -535,22 +535,22 @@ Conditionally Visible Text
 * Conditional Not Commands::    Text for any format other than a given one.
 * Raw Formatter Commands::      Using raw formatter commands.
 * Inline Conditionals::         Brace-delimited conditional text.
-* @code{@@set @@clear @@value}::          Variable tests and substitutions.
+* @t{@@set @@clear @@value}::          Variable tests and substitutions.
 * Conditional Nesting::         Using conditionals inside conditionals.
 
 @code{@@set}, @code{@@clear}, and @code{@@value}
 
-* @code{@@set @@value}::                 Expand a flag variable to a string.
-* @code{@@ifset @@ifclear}::             Format a region if a flag is set.
-* @code{@@value} Example::              An easy way to update edition information.
+* @t{@@set @@value}::                 Expand a flag variable to a string.
+* @t{@@ifset @@ifclear}::             Format a region if a flag is set.
+* @t{@@value} Example::              An easy way to update edition information.
 
 Defining New Texinfo Commands
 
 * Defining Macros::             Defining and undefining new commands.
 * Invoking Macros::             Using a macro, once you've defined it.
 * Macro Details::               Limitations of Texinfo macros.
-* @code{@@alias}::                      Command aliases.
-* @code{@@definfoenclose}::             Customized highlighting.
+* @t{@@alias}::                      Command aliases.
+* @t{@@definfoenclose}::             Customized highlighting.
 * External Macro Processors::   @code{#line} directives.
 
 External Macro Processors: Line Directives
@@ -562,7 +562,7 @@ External Macro Processors: Line Directives
 Include Files
 
 * Using Include Files::         How to use the @code{@@include} command.
-* @code{texinfo-multiple-files-update}::  How to create and update nodes and
+* @t{texinfo-multiple-files-update}::  How to create and update nodes and
                                      menus when using included files.
 * Include Files Requirements::  @code{texinfo-multiple-files-update} needs.
 * Sample Include File::         A sample outer file with included files
@@ -573,18 +573,18 @@ Include Files
 Formatting and Printing Hardcopy
 
 * Use @TeX{}::                     Use @TeX{} to format for hardcopy.
-* Format with @code{tex}/@code{texindex}:: How to format with explicit shell commands.
-* Format with @code{texi2dvi}::      A simpler way to format.
-* Print with @code{lpr}::            How to print.
+* Format with @t{tex}/@t{texindex}:: How to format with explicit shell commands.
+* Format with @t{texi2dvi}::      A simpler way to format.
+* Print with @t{lpr}::            How to print.
 * Within Emacs::                How to format and print from an Emacs shell.
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
 * Compile-Command::             How to print using Emacs's compile command.
 * Requirements Summary::        @TeX{} formatting requirements summary.
 * Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
-* @code{@@smallbook}::                   How to print small format books and manuals.
+* @t{@@smallbook}::                   How to print small format books and manuals.
 * A4 Paper::                   How to print on A4 or A5 paper.
-* @code{@@pagesizes}::                How to print with customized page sizes.
+* @t{@@pagesizes}::                How to print with customized page sizes.
 * Cropmarks and Magnification:: How to print marks to indicate the size
                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
@@ -593,12 +593,12 @@ Formatting and Printing Hardcopy
 @command{texi2any}: The Generic Translator for Texinfo
 
 * Reference Implementation:: @command{texi2any}: the reference implementation.
-* Invoking @code{texi2any}::        Running the translator from a shell.
-* @code{texi2any} Printed Output::  Calling @code{texi2dvi}.
+* Invoking @t{texi2any}::        Running the translator from a shell.
+* @t{texi2any} Printed Output::  Calling @code{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
 * Customization Variables::  Configuring @code{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
-* @code{texi2html}::                An ancestor of @code{texi2any}.
+* @t{texi2html}::                An ancestor of @code{texi2any}.
 
 Customization Variables
 
@@ -614,9 +614,9 @@ Creating and Installing Info Files
 
 Creating an Info File
 
-* @code{makeinfo} advantages::         @code{makeinfo} provides better error checking.
-* @code{makeinfo} in Emacs::           How to run @code{makeinfo} from Emacs.
-* @code{texinfo-format} commands::     Two Info formatting commands written
+* @t{makeinfo} advantages::         @code{makeinfo} provides better error checking.
+* @t{makeinfo} in Emacs::           How to run @code{makeinfo} from Emacs.
+* @t{texinfo-format} commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
                                  to @code{makeinfo}.
 * Batch Formatting::            How to format for Info in Emacs Batch mode.
@@ -631,7 +631,7 @@ Installing an Info File
                                  located in other directories.
 * Installing Dir Entries::      How to specify what menu entry to add
                                  to the Info directory.
-* Invoking @code{install-info}::       @code{install-info} options.
+* Invoking @t{install-info}::       @code{install-info} options.
 
 Generating HTML
 
@@ -671,16 +671,16 @@ Page Headings
 
 Catching Mistakes
 
-* @code{makeinfo} Preferred::           @code{makeinfo} finds errors.
+* @t{makeinfo} Preferred::           @code{makeinfo} finds errors.
 * Debugging with Info::          How to catch errors with Info formatting.
 * Debugging with @TeX{}::           How to catch errors with @TeX{} formatting.
-* Using @code{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
-* Using @code{occur}::                  How to list all lines containing a pattern.
-* Running @code{Info-validate}::        How to find badly referenced nodes.
+* Using @t{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
+* Using @t{occur}::                  How to list all lines containing a pattern.
+* Running @t{Info-validate}::        How to find badly referenced nodes.
 
 Finding Badly Referenced Nodes
 
-* Using @code{Info-validate}::         How to run @code{Info-validate}.
+* Using @t{Info-validate}::         How to run @code{Info-validate}.
 * Unsplit::                     How to create an unsplit file.
 * Tagifying::                   How to tagify a file.
 * Splitting::                   How to split a file manually.
@@ -1040,7 +1040,7 @@ would be excellent.  The way to do this that would be most useful is
 to write a new back-end for @command{texi2any}, our reference
 implementation of a Texinfo parser; it creates a tree representation
 of the Texinfo input that you can use for the conversion.
-@xref{Generic Translator @code{texi2any}}.
+@xref{Generic Translator @t{texi2any}}.
 
 Another viable approach is use the Texinfo XML output from
 @command{texi2any} as your input.  This XML is an essentially complete
@@ -1127,7 +1127,7 @@ Info-reading programs can operate on it.
 Info files are nearly always created by processing a Texinfo source
 document.  @command{makeinfo}, also known as @command{texi2any}, is
 the principal command that converts a Texinfo file into an Info file;
-@pxref{Generic Translator @code{texi2any}}.
+@pxref{Generic Translator @t{texi2any}}.
 
 Generally, you enter an Info file through a node that by convention is
 named `Top'.  This node normally contains just a brief summary of the
@@ -1193,7 +1193,7 @@ In the United States, documents are most often printed on 8.5 inch by
 But you can also print for 7 inch by 9.25 inch pages (178@dmn{mm} by
 235@dmn{mm}, the @code{@@smallbook} size; or on A4 or A5 size paper
 (@code{@@afourpaper}, @code{@@afivepaper}).
-@xref{@code{@@smallbook}}, and @ref{A4 Paper}.
+@xref{@t{@@smallbook}}, and @ref{A4 Paper}.
 
 @cindex Literate programming
 @TeX{} is freely distributable.  It is written in a superset of Pascal
@@ -1307,7 +1307,7 @@ only recognizes newline characters as end of line, not the CRLF
 sequence used on some systems; so a @dfn{blank line} means exactly two
 consecutive newlines.  Sometimes blank lines are useful or convenient
 in other cases as well; you can use the @code{@@noindent} to inhibit
-paragraph indentation if required (@pxref{@code{@@noindent}}).
+paragraph indentation if required (@pxref{@t{@@noindent}}).
 
 @item
 Texinfo supports the usual quotation marks used in English and in
@@ -2440,7 +2440,7 @@ update all the menus and all the `Next', `Previous', and `Up' pointers
 of all the included files before creating and inserting a master menu in
 the outer file.  The @code{texinfo-multiple-files-update} command is
 described in the appendix on @code{@@include} files.
-@xref{@code{texinfo-multiple-files-update}}.
+@xref{@t{texinfo-multiple-files-update}}.
 
 @item M-x texinfo-indent-menu-description
 @findex texinfo-indent-menu-description
@@ -2540,7 +2540,7 @@ this, you must run the @code{texindex} command after first running the
 @code{tex} typesetting command; and then you must run the @code{tex}
 command again.  Or else run the @code{texi2dvi} command which
 automatically creates indices as needed (@pxref{Format with
-@code{texi2dvi}}).
+@t{texi2dvi}}).
 
 Often, when you are writing a document, you want to typeset and print
 only part of a file to see what it will look like.  You can use the
@@ -2899,7 +2899,7 @@ end-of-header lines are optional, but they do no harm, so you might as
 well always include them.
 
 Any command that affects document formatting as a whole makes sense to
-include in the header.  @code{@@synindex} (@pxref{@code{@@synindex}}),
+include in the header.  @code{@@synindex} (@pxref{@t{@@synindex}}),
 for instance, is another command often included in the header.
 
 Thus, the beginning of a Texinfo file generally looks approximately
@@ -2920,8 +2920,8 @@ like this:
 @menu
 * First Line::                  The first line of a Texinfo file.
 * Start of Header::             Formatting a region requires this.
-* @code{@@setfilename}::                 Tell Info the name of the Info file.
-* @code{@@settitle}::                    Create a title for the printed work.
+* @t{@@setfilename}::                 Tell Info the name of the Info file.
+* @t{@@settitle}::                    Create a title for the printed work.
 * End of Header::               Formatting a region requires this.
 @end menu
 
@@ -2978,8 +2978,7 @@ globally affect the document formatting, such as @code{@@synindex} or
 Header}).
 
 The start- and end-of-header lines allow you to format only part of a
-Texinfo file for Info or printing.  @xref{@code{texinfo-format}
-commands}.
+Texinfo file for Info or printing.  @xref{@t{texinfo-format} commands}.
 
 The odd string of characters, @samp{%**}, is to ensure that no other
 comment is accidentally taken for a start-of-header line.  You can
@@ -2987,7 +2986,7 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 @code{tex-end-of-header} Emacs variables.  @xref{Texinfo Mode Printing}.
 
 
-@node @code{@@setfilename}
+@node @t{@@setfilename}
 @subsection @code{@@setfilename}: Set the Output File Name
 
 @anchor{setfilename}@c old name
@@ -3061,10 +3060,10 @@ extension is added---@code{.html} when generating HTML, @code{.info}
 when generating Info, etc.  The @code{\input} line is still ignored in
 this processing, as well as leading blank lines.
 
-See also the @option{--output} option in @ref{Invoking @code{texi2any}}.
+See also the @option{--output} option in @ref{Invoking @t{texi2any}}.
 
 
-@node @code{@@settitle}
+@node @t{@@settitle}
 @subsection @code{@@settitle}: Set the Document Title
 
 @anchor{settitle}@c old name
@@ -3091,7 +3090,7 @@ more on headings for @TeX{}, see @ref{Heading Generation}.
 In the HTML file produced by @command{makeinfo}, @var{title} serves as
 the document @samp{<title>}.  It also becomes the default document
 description in the @samp{<head>} part
-(@pxref{@code{@@documentdescription}}).
+(@pxref{@t{@@documentdescription}}).
 
 When the title page is used in the output, the title in the
 @code{@@settitle} command does not affect the title as it appears on
@@ -3099,7 +3098,7 @@ the title page.  Thus, the two do not need not match exactly.  A
 practice we recommend is to include the version or edition number of
 the manual in the @code{@@settitle} title; on the title page, the
 version number generally appears as an @code{@@subtitle} so it would
-be omitted from the @code{@@title}.  @xref{@code{@@titlepage}}.
+be omitted from the @code{@@title}.  @xref{@t{@@titlepage}}.
 
 
 @node End of Header
@@ -3137,12 +3136,12 @@ the software of the manual, but giving the complete text of the
 software license is not necessarily required.
 
 @menu
-* @code{@@copying}::                     Declare the document's copying permissions.
-* @code{@@insertcopying}::               Where to insert the permissions.
+* @t{@@copying}::                     Declare the document's copying permissions.
+* @t{@@insertcopying}::               Where to insert the permissions.
 @end menu
 
 
-@node @code{@@copying}
+@node @t{@@copying}
 @subsection @code{@@copying}: Declare Copying Permissions
 
 @anchor{copying}@c old name
@@ -3220,7 +3219,7 @@ the license itself under which GNU and other free manuals are
 distributed.
 
 
-@node @code{@@insertcopying}
+@node @t{@@insertcopying}
 @subsection @code{@@insertcopying}: Include Permissions Text
 
 @anchor{insertcopying}@c old name
@@ -3271,10 +3270,10 @@ Texinfo file contains the text of the copying permissions that appears
 in the printed manual.
 
 @menu
-* @code{@@titlepage}::                   Create a title for the printed document.
-* @code{@@titlefont @@center @@sp}::         The @code{@@titlefont}, @code{@@center},
+* @t{@@titlepage}::                   Create a title for the printed document.
+* @t{@@titlefont @@center @@sp}::         The @code{@@titlefont}, @code{@@center},
                                  and @code{@@sp} commands.
-* @code{@@title @@subtitle @@author}::       The @code{@@title}, @code{@@subtitle},
+* @t{@@title @@subtitle @@author}::       The @code{@@title}, @code{@@subtitle},
                                  and @code{@@author} commands.
 * Copyright::                   How to write the copyright notice and
                                  include copying permissions.
@@ -3283,7 +3282,7 @@ in the printed manual.
 @end menu
 
 
-@node @code{@@titlepage}
+@node @t{@@titlepage}
 @subsection @code{@@titlepage}
 
 @anchor{titlepage}@c old name
@@ -3346,7 +3345,7 @@ The argument is typeset on a page by itself and followed by a blank
 page.
 
 
-@node @code{@@titlefont @@center @@sp}
+@node @t{@@titlefont @@center @@sp}
 @subsection @code{@@titlefont}, @code{@@center}, and @code{@@sp}
 
 @anchor{titlefont center sp}@c old name
@@ -3365,7 +3364,7 @@ have an especially long title.
 For HTML output, each @code{@@titlefont} command produces an
 @code{<h1>} heading, but the HTML document @code{<title>} is not
 affected.  For that, you must put an @code{@@settitle} command before
-the @code{@@titlefont} command (@pxref{@code{@@settitle}}).
+the @code{@@titlefont} command (@pxref{@t{@@settitle}}).
 
 @need 700
 For example:
@@ -3393,7 +3392,7 @@ Use the @code{@@sp} command to insert vertical space.  For example:
 
 @noindent
 This inserts two blank lines on the printed page.
-(@xref{@code{@@sp}}, for more information about the @code{@@sp}
+(@xref{@t{@@sp}}, for more information about the @code{@@sp}
 command.)
 
 A template for this method looks like this:
@@ -3418,7 +3417,7 @@ You can in fact use these commands anywhere, not just on a title page,
 but since they are not logical markup commands, we don't recommend
 them.
 
-@node @code{@@title @@subtitle @@author}
+@node @t{@@title @@subtitle @@author}
 @subsection @code{@@title}, @code{@@subtitle}, and @code{@@author}
 
 @anchor{title subtitle author}@c old name
@@ -3435,7 +3434,7 @@ needed to adjust vertical spacing.
 Write the @code{@@title}, @code{@@subtitle}, or @code{@@author}
 commands at the beginning of a line followed by the title, subtitle,
 or author.  The @code{@@author} command may be used for a quotation in
-an @code{@@quotation} block (@pxref{@code{@@quotation}});
+an @code{@@quotation} block (@pxref{@t{@@quotation}});
 except for that, it is an error to use any of these commands outside
 of @code{@@titlepage}.
 
@@ -3605,14 +3604,14 @@ Most documents are formatted with the standard single-sided or
 double-sided headings, (sometimes) using @code{@@setchapternewpage
 odd} for double-sided printing and (almost always) no
 @code{@@setchapternewpage} command for single-sided printing
-(@pxref{@code{@@setchapternewpage}}).
+(@pxref{@t{@@setchapternewpage}}).
 
 @item
 Alternatively, you can use the @code{@@headings} command to prevent
 page headings from being generated or to start them for either single
 or double-sided printing.  Write an @code{@@headings} command
 immediately after the @code{@@end titlepage} command.  To turn off
-headings, write @code{@@headings off}.  @xref{@code{@@headings}}.
+headings, write @code{@@headings off}.  @xref{@t{@@headings}}.
 
 @item
 Or, you may specify your own page heading and footing format.
@@ -3656,7 +3655,7 @@ table of contents in addition to the full table of contents.
 
 Both contents commands should be written on a line by themselves, and
 placed near the beginning of the file, after the @code{@@end
-titlepage} (@pxref{@code{@@titlepage}}), before any sectioning
+titlepage} (@pxref{@t{@@titlepage}}), before any sectioning
 command.  The contents commands automatically generate a chapter-like
 heading at the top of the first table of contents page, so don't
 include any sectioning command such as @code{@@unnumbered} before
@@ -3694,7 +3693,7 @@ subsequent @code{@@contents} or @code{@@shortcontents} is ignored.
 You need to include the @code{@@set@dots{}contentsaftertitlepage}
 commands early in the document (just after @code{@@setfilename}, for
 example).  We recommend using @command{texi2dvi} (@pxref{Format with
-@code{texi2dvi}}) to specify this without altering the source file at
+@t{texi2dvi}}) to specify this without altering the source file at
 all.  For example:
 
 @example
@@ -3723,7 +3722,7 @@ information you feel a reader would find helpful.
 @findex top
 It is conventional and desirable to write an @code{@@top} sectioning
 command line containing the title of the document immediately after
-the @code{@@node Top} line (@pxref{@code{@@top} Command}).
+the @code{@@node Top} line (@pxref{@t{@@top} Command}).
 
 The contents of the `Top' node should appear only in the online output;
 none of it should appear in printed output, so enclose it between
@@ -3854,17 +3853,17 @@ additional commands which affect the document as a whole.  They are
 generally all given before the Top node, if they are given at all.
 
 @menu
-* @code{@@documentdescription}::      Document summary for the HTML output.
-* @code{@@setchapternewpage}::        Start chapters on right-hand pages.
-* @code{@@headings}::                 An option for turning headings on and off
+* @t{@@documentdescription}::      Document summary for the HTML output.
+* @t{@@setchapternewpage}::        Start chapters on right-hand pages.
+* @t{@@headings}::                 An option for turning headings on and off
                                         and double or single sided printing.
-* @code{@@paragraphindent}::          Specify paragraph indentation.
-* @code{@@firstparagraphindent}::     Suppressing first paragraph indentation.
-* @code{@@exampleindent}::            Specify environment indentation.
+* @t{@@paragraphindent}::          Specify paragraph indentation.
+* @t{@@firstparagraphindent}::     Suppressing first paragraph indentation.
+* @t{@@exampleindent}::            Specify environment indentation.
 @end menu
 
 
-@node @code{@@documentdescription}
+@node @t{@@documentdescription}
 @subsection @code{@@documentdescription}: Summary Text
 @anchor{documentdescription}@c old name
 
@@ -3879,7 +3878,7 @@ When producing HTML output for a document, @command{makeinfo} writes a
 @samp{<meta>} element in the @samp{<head>} to give some idea of the
 content of the document.  By default, this @dfn{description} is the
 title of the document, taken from the @code{@@settitle} command
-(@pxref{@code{@@settitle}}).  To change this, use the
+(@pxref{@t{@@settitle}}).  To change this, use the
 @code{@@documentdescription} environment, as in:
 
 @example
@@ -3899,7 +3898,7 @@ This will produce the following output in the @samp{<head>} of the HTML:
 the document.
 
 
-@node @code{@@setchapternewpage}
+@node @t{@@setchapternewpage}
 @subsection @code{@@setchapternewpage}: Blank Pages Before Chapters
 
 @anchor{setchapternewpage}@c old name
@@ -3956,7 +3955,7 @@ an even-numbered page.
 
 If you don't like the default headers that @code{@@setchapternewpage}
 sets, you can explicit control them with the @code{@@headings} command.
-@xref{@code{@@headings}}.
+@xref{@t{@@headings}}.
 
 At the beginning of a manual or book, pages are not numbered---for
 example, the title and copyright pages of a book are not numbered.  By
@@ -3974,7 +3973,7 @@ pages) use the @option{--texinfo} option to @command{texi2dvi} to
 specify the output you want.
 
 
-@node @code{@@headings}
+@node @t{@@headings}
 @subsection The @code{@@headings} Command
 
 @anchor{headings on off}@c old name
@@ -4034,7 +4033,7 @@ You can also specify your own style of page heading and footing.
 @xref{Headings, , Page Headings}, for more information.
 
 
-@node @code{@@paragraphindent}
+@node @t{@@paragraphindent}
 @subsection @code{@@paragraphindent}: Controlling Paragraph Indentation
 
 @anchor{paragraphindent}@c old name
@@ -4081,7 +4080,7 @@ A peculiarity of the @code{texinfo-format-buffer} and
 fill) paragraphs that contain @code{@@w} or @code{@@*} commands.
 
 
-@node @code{@@firstparagraphindent}
+@node @t{@@firstparagraphindent}
 @subsection @code{@@firstparagraphindent}: Indenting After Headings
 
 @anchor{firstparagraphindent}@c old name
@@ -4114,7 +4113,7 @@ This option is ignored by @command{makeinfo} if
 @item @code{insert}
 Include normal paragraph indentation.  This respects the paragraph
 indentation set by an @code{@@paragraphindent} command
-(@pxref{@code{@@paragraphindent}}).
+(@pxref{@t{@@paragraphindent}}).
 @end table
 
 @code{@@firstparagraphindent} is ignored for HTML and Docbook output.
@@ -4125,7 +4124,7 @@ formatting commands indent paragraphs as specified.  @xref{Start of
 Header}.
 
 
-@node @code{@@exampleindent}
+@node @t{@@exampleindent}
 @subsection @code{@@exampleindent}: Environment Indenting
 
 @anchor{exampleindent}@c old name
@@ -4317,7 +4316,7 @@ subsubsections.  These commands generate large headings in the text,
 like the one above.  They also provide information for generating the
 table of contents (@pxref{Contents,, Generating a Table of Contents}),
 and for implicitly determining node pointers, as is recommended
-(@pxref{@code{makeinfo} Pointer Creation}).
+(@pxref{@t{makeinfo} Pointer Creation}).
 
 The chapter structuring commands do not create a node structure, so
 normally you put an @code{@@node} command immediately before each
@@ -4330,15 +4329,15 @@ or other formats.
 @menu
 * Tree Structuring::            A manual is like an upside down tree @dots{}
 * Structuring Command Types::   How to divide a manual into parts.
-* @code{@@chapter}::            Chapter structuring.
-* @code{@@unnumbered @@appendix}::
-* @code{@@majorheading @@chapheading}::
-* @code{@@section}::
-* @code{@@unnumberedsec @@appendixsec @@heading}::
-* @code{@@subsection}::
-* @code{@@unnumberedsubsec @@appendixsubsec @@subheading}::
-* @code{@@subsubsection}::               Commands for the lowest level sections.
-* @code{@@part}::                        Collections of chapters.
+* @t{@@chapter}::            Chapter structuring.
+* @t{@@unnumbered @@appendix}::
+* @t{@@majorheading @@chapheading}::
+* @t{@@section}::
+* @t{@@unnumberedsec @@appendixsec @@heading}::
+* @t{@@subsection}::
+* @t{@@unnumberedsubsec @@appendixsubsec @@subheading}::
+* @t{@@subsubsection}::               Commands for the lowest level sections.
+* @t{@@part}::                        Collections of chapters.
 * Raise/lower sections::        How to change commands' hierarchical level.
 @end menu
 
@@ -4424,7 +4423,7 @@ table of contents.
 The @code{@@unnumbered} series of commands produce unnumbered entries
 both in the body of a document and in its table of contents.  The
 @code{@@top} command, which has a special use, is a member of this
-series (@pxref{@code{@@top} Command}).  An @code{@@unnumbered} section
+series (@pxref{@t{@@top} Command}).  An @code{@@unnumbered} section
 is a normal part of the document structure.
 
 @item
@@ -4437,7 +4436,7 @@ never start a new page.
 When an @code{@@setchapternewpage} command says to do so, the
 @code{@@chapter}, @code{@@unnumbered}, and @code{@@appendix} commands
 start new pages in the printed manual; the @code{@@heading} commands
-do not.  @xref{@code{@@setchapternewpage}}.
+do not.  @xref{@t{@@setchapternewpage}}.
 
 Here is a summary:
 
@@ -4460,7 +4459,7 @@ Here is a summary:
 @end tex
 
 
-@node @code{@@chapter}
+@node @t{@@chapter}
 @section @code{@@chapter}: Chapter Structuring
 
 @anchor{chapter}@c old name
@@ -4502,7 +4501,7 @@ In the XML and Docbook output, a @code{<chapter>} element is produced
 that includes all the following sections, up to the next chapter.
 
 
-@node @code{@@unnumbered @@appendix}
+@node @t{@@unnumbered @@appendix}
 @section @code{@@unnumbered}, @code{@@appendix}: Chapters with Other Labeling
 
 @anchor{unnumbered & appendix}@c old name
@@ -4527,7 +4526,7 @@ Texinfo.
 @c but the Hacker's Dictionary wanted it, before they quit Texinfo.
 
 
-@node @code{@@majorheading @@chapheading}
+@node @t{@@majorheading @@chapheading}
 @section @code{@@majorheading}, @code{@@chapheading}: Chapter-level Headings
 
 @anchor{majorheading & chapheading}@c old name
@@ -4550,10 +4549,10 @@ In Info and plain text, the @code{@@majorheading} and
 @code{@@chapter}: the title is printed on a line by itself with a line
 of asterisks underneath.  Similarly for HTML.  The only difference is
 the lack of numbering and the lack of any association with nodes.
-@xref{@code{@@chapter}}.
+@xref{@t{@@chapter}}.
 
 
-@node @code{@@section}
+@node @t{@@section}
 @section @code{@@section}: Sections Below Chapters
 
 @anchor{section}@c old name
@@ -4589,10 +4588,10 @@ might produce the following in Info:
 Section titles are listed in the table of contents.
 
 The @TeX{}, HTML, Docbook, and XML output is all analogous to the
-chapter-level output, just ``one level down''; @pxref{@code{@@chapter}}.
+chapter-level output, just ``one level down''; @pxref{@t{@@chapter}}.
 
 
-@node @code{@@unnumberedsec @@appendixsec @@heading}
+@node @t{@@unnumberedsec @@appendixsec @@heading}
 @section @code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 
 @anchor{unnumberedsec appendixsec heading}@c old name
@@ -4632,14 +4631,14 @@ section-style heading that will not appear in the table of contents.
 @end table
 
 
-@node @code{@@subsection}
+@node @t{@@subsection}
 @section @code{@@subsection}: Subsections Below Sections
 
 @anchor{subsection}@c old name
 @findex subsection
 
 Subsections are to sections as sections are to chapters;
-@pxref{@code{@@section}}.  In Info and plain text, subsection titles
+@pxref{@t{@@section}}.  In Info and plain text, subsection titles
 are underlined with @samp{-}.  For example,
 
 @example
@@ -4660,10 +4659,10 @@ Subsection titles are listed in the table of contents.
 
 The @TeX{}, HTML, Docbook, and XML output is all analogous to the
 chapter-level output, just ``two levels down'';
-@pxref{@code{@@chapter}}.
+@pxref{@t{@@chapter}}.
 
 
-@node @code{@@unnumberedsubsec @@appendixsubsec @@subheading}
+@node @t{@@unnumberedsubsec @@appendixsubsec @@subheading}
 @section The @code{@@subsection}-like Commands
 
 @anchor{unnumberedsubsec appendixsubsec subheading}@c old name
@@ -4675,12 +4674,12 @@ chapter-level output, just ``two levels down'';
 The @code{@@unnumberedsubsec}, @code{@@appendixsubsec}, and
 @code{@@subheading} commands are, respectively, the unnumbered,
 appendix-like, and heading-like equivalents of the @code{@@subsection}
-command.  (@xref{@code{@@subsection}}.)
+command.  (@xref{@t{@@subsection}}.)
 
 @code{@@unnumberedsubsec} and @code{@@appendixsubsec} do not need to
 be used in ordinary circumstances, because @code{@@subsection} may
 also be used within sections of @code{@@unnumbered} and
-@code{@@appendix} chapters (@pxref{@code{@@section}}).
+@code{@@appendix} chapters (@pxref{@t{@@section}}).
 
 An @code{@@subheading} command produces a heading like that of a
 subsection except that it is not numbered and does not appear in the
@@ -4693,7 +4692,7 @@ text, the @code{@@subsection}-like commands generate a title
 underlined with hyphens.
 
 
-@node @code{@@subsubsection}
+@node @t{@@subsubsection}
 @section @code{@@subsection} and Other Subsub Commands
 
 @anchor{subsubsection}@c old name
@@ -4709,7 +4708,7 @@ The fourth and lowest level sectioning commands in Texinfo are the
 @table @code
 @item @@subsubsection
 Subsubsections are to subsections as subsections are to sections.
-(@xref{@code{@@subsection}}.)  Subsubsection titles appear in the
+(@xref{@t{@@subsection}}.)  Subsubsection titles appear in the
 table of contents.
 
 @item @@unnumberedsubsubsec
@@ -4731,7 +4730,7 @@ As with subsections, @code{@@unnumberedsubsubsec} and
 @code{@@appendixsubsubsec} do not need to be used in ordinary
 circumstances, because @code{@@subsubsection} may also be used within
 subsections of @code{@@unnumbered} and @code{@@appendix} chapters
-(@pxref{@code{@@section}}).
+(@pxref{@t{@@section}}).
 
 In Info, `subsub' titles are underlined with periods.  For example,
 
@@ -4750,10 +4749,10 @@ might produce
 @end example
 
 The @TeX{}, HTML, Docbook, and XML output is all analogous to the
-chapter-level output, just ``three levels down''; @pxref{@code{@@chapter}}.
+chapter-level output, just ``three levels down''; @pxref{@t{@@chapter}}.
 
 
-@node @code{@@part}
+@node @t{@@part}
 @section @code{@@part}: Groups of Chapters
 @findex part
 @cindex Part pages
@@ -4796,7 +4795,7 @@ page'' is output in the body of the document, with just the
 line break on the part page (but is replaced with a space in the
 tables of contents).  This part page is always forced to be on an odd
 (right-hand) page, regardless of the chapter pagination
-(@pxref{@code{@@setchapternewpage}}).
+(@pxref{@t{@@setchapternewpage}}).
 
 In the HTML output, the @code{@@part} text is similarly included in
 the tables of contents, and a heading is included in the main document
@@ -4845,7 +4844,7 @@ included file (@pxref{Include Files}).  Typical usage looks like this:
 sections in the main file would also be lowered.)
 
 If the included file being lowered has an @code{@@top} node, you'll
-need to conditionalize its inclusion with a flag (@pxref{@code{@@set
+need to conditionalize its inclusion with a flag (@pxref{@t{@@set
 @@value}}).
 
 Another difficulty can arise with documents that use the (recommended)
@@ -4894,14 +4893,14 @@ references from other manuals, from mail archives, and so on.
 @xref{HTML Xref Link Preservation}.
 
 @menu
-* @code{@@node}::                    Creating nodes, in detail.
-* @code{makeinfo} Pointer Creation:: Letting makeinfo determine node pointers.
-* @code{@@anchor}::                  Defining arbitrary cross reference targets.
+* @t{@@node}::                    Creating nodes, in detail.
+* @t{makeinfo} Pointer Creation:: Letting makeinfo determine node pointers.
+* @t{@@anchor}::                  Defining arbitrary cross reference targets.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
 @end menu
 
 
-@node @code{@@node}
+@node @t{@@node}
 @section The @code{@@node} Command
 
 @anchor{node}@c node
@@ -4924,7 +4923,7 @@ the name of this node (for details of node names, @pxref{Node Line
 Requirements}).  The subsequent arguments are optional---they are the
 names of the `Next', `Previous', and `Up' pointers, in that order.  We
 strongly recommend omitting them if your Texinfo document is
-hierarchically organized, as virtually all are (@pxref{@code{makeinfo}
+hierarchically organized, as virtually all are (@pxref{@t{makeinfo}
 Pointer Creation}).  You may insert spaces before or after each name
 on the @code{@@node} line if you wish; such spaces are ignored.
 
@@ -4948,7 +4947,7 @@ the output for cross references.  For this reason, you must write
 printing, even if you do not intend to format it for Info; and you
 must include a chapter-structuring command after a node for it to be a
 valid cross reference target (to @TeX{}).  You can use @code{@@anchor}
-(@pxref{@code{@@anchor}}) to make cross references to an arbitrary
+(@pxref{@t{@@anchor}}) to make cross references to an arbitrary
 position in a document.
 
 Cross references, such as the one at the end of this sentence, are
@@ -4960,7 +4959,7 @@ References}.
 * Writing a Node::              How to write an @code{@@node} line.
 * Node Line Requirements::      Keep names unique.
 * First Node::                  How to write a `Top' node.
-* @code{@@top} Command::                How to use the @code{@@top} command.
+* @t{@@top} Command::                How to use the @code{@@top} command.
 @end menu
 
 
@@ -4996,7 +4995,7 @@ words are capitalized; others are not.
 The pointers from a given node enable you to reach other nodes and
 consist simply of the names of those nodes.  The pointers are usually
 not specified explicitly, as @command{makeinfo} can determine them
-(@pxref{@code{makeinfo} Pointer Creation}).
+(@pxref{@t{makeinfo} Pointer Creation}).
 
 Normally, a node's `Up' pointer contains the name of the node whose
 menu mentions that node.  The node's `Next' pointer contains the name
@@ -5028,7 +5027,7 @@ If you are using GNU Emacs, you can use the update node commands
 provided by Texinfo mode to insert the names of the pointers; or
 (recommended), you can leave the pointers out of the Texinfo file and
 let @code{makeinfo} insert node pointers into the Info file it
-creates.  (@xref{Texinfo Mode}, and @ref{@code{makeinfo} Pointer
+creates.  (@xref{Texinfo Mode}, and @ref{@t{makeinfo} Pointer
 Creation}.)
 
 Alternatively, you can insert the `Next', `Previous', and `Up'
@@ -5099,7 +5098,7 @@ sections are all different.
 @item
 The next/previous/up pointers on @code{@@node} lines must be the names
 of nodes.  (It's recommended to leave out these explicit node pointer
-names, which automatically avoids any problem here; @pxref{@code{makeinfo}
+names, which automatically avoids any problem here; @pxref{@t{makeinfo}
 Pointer Creation}.)
 
 @item
@@ -5149,7 +5148,7 @@ If you insist on using these characters in node names, accepting the
 resulting substandard Info output, in order not to confuse the Texinfo
 processors, you must still escape those characters, by using either
 special insertions (@pxref{Inserting a Comma}) or @code{@@asis}
-(@pxref{@code{@@asis}}).  For example:
+(@pxref{@t{@@asis}}).  For example:
 
 @example
 @@node foo@@asis@{::@}bar
@@ -5237,7 +5236,7 @@ tools implicitly define them, with this simple result:
 @end example
 
 
-@node @code{@@top} Command
+@node @t{@@top} Command
 @subsection The @code{@@top} Sectioning Command
 
 @anchor{top command}@c old name
@@ -5252,7 +5251,7 @@ formatter which node is to be used as the root of the node tree
 (needed if your manual uses implicit node pointers).
 
 It produces the same sort of output as @code{@@unnumbered}
-(@pxref{@code{@@unnumbered @@appendix}}).
+(@pxref{@t{@@unnumbered @@appendix}}).
 
 The @code{@@top} node is conventionally wrapped in an
 @code{@@ifnottex} conditional so that it will not appear in @TeX{}
@@ -5273,7 +5272,7 @@ it is never lowered and nothing can be raised to it
 (@pxref{Raise/lower sections}).
 
 
-@node @code{makeinfo} Pointer Creation
+@node @t{makeinfo} Pointer Creation
 @section @code{makeinfo} Pointer Creation
 
 @cindex Creating pointers with @code{makeinfo}
@@ -5310,7 +5309,7 @@ level.
 
 Finally, you must follow the `Top' @code{@@node} line with a line
 beginning with @code{@@top} to mark the top-level node in the file.
-@xref{@code{@@top} Command}.
+@xref{@t{@@top} Command}.
 
 @cindex Detail menu
 @findex detailmenu
@@ -5327,7 +5326,7 @@ example, if you never intend the document to be printed), so node
 pointers may still be specified explicitly, in full generality.
 
 
-@node @code{@@anchor}
+@node @t{@@anchor}
 @section @code{@@anchor}: Defining Arbitrary Cross Reference Targets
 
 @anchor{anchor}@c old name
@@ -5430,7 +5429,7 @@ This @code{@@node} line says that the name of this node is
 name of the `Previous' node is ``Chapter@tie{}1'', and the name of the
 `Up' node is ``Top''.  You can (and should) omit writing out these
 node names if your document is hierarchically organized
-(@pxref{@code{makeinfo} Pointer Creation}), but the pointer
+(@pxref{@t{makeinfo} Pointer Creation}), but the pointer
 relationships still obtain.
 
 @quotation Note
@@ -5560,7 +5559,7 @@ Technically, menus can carry you to any node, regardless of the
 structure of the document; even to nodes in a different Info file.
 However, we do not recommend making use of this, because it is hard
 for readers to follow.  Also, the @command{makeinfo} implicit pointer
-creation feature (@pxref{@code{makeinfo} Pointer Creation}) and GNU
+creation feature (@pxref{@t{makeinfo} Pointer Creation}) and GNU
 Emacs Texinfo mode updating commands work only to create menus of
 subordinate nodes in a hierarchically structured document.  It is much
 better to use cross references to refer to arbitrary nodes.
@@ -5826,13 +5825,13 @@ places to which cross references can refer.
 * References::                  What cross references are for.
 * Cross Reference Commands::    A summary of the different commands.
 * Cross Reference Parts::       A cross reference has several parts.
-* @code{@@xref}::                       Begin a reference with `See' @dots{}
+* @t{@@xref}::                       Begin a reference with `See' @dots{}
 * Top Node Naming::             How to refer to the beginning of another file.
-* @code{@@ref}::                        A reference for the last part of a sentence.
-* @code{@@pxref}::                      How to write a parenthetical cross reference.
-* @code{@@inforef}::                    How to refer to an Info-only file.
-* @code{@@url}::                        How to refer to a uniform resource locator.
-* @code{@@cite}::                       How to refer to books not in the Info system.
+* @t{@@ref}::                        A reference for the last part of a sentence.
+* @t{@@pxref}::                      How to write a parenthetical cross reference.
+* @t{@@inforef}::                    How to refer to an Info-only file.
+* @t{@@url}::                        How to refer to a uniform resource locator.
+* @t{@@cite}::                       How to refer to books not in the Info system.
 @end menu
 
 @node References
@@ -5863,7 +5862,7 @@ cross-references, info, Info}.)
 In HTML, a cross reference results in an hyperlink.
 
 The various cross reference commands use nodes (or anchors,
-@pxref{@code{@@anchor}}) to define cross reference locations.  This is
+@pxref{@t{@@anchor}}) to define cross reference locations.  This is
 evident in Info and HTML, in which a cross reference takes you to the
 specified location.
 
@@ -5906,7 +5905,7 @@ manual.
 @noindent
 The @code{@@cite} command is used to make references to books and
 manuals for which there is no corresponding Info file and, therefore,
-no node to which to point.  @xref{@code{@@cite}}.
+no node to which to point.  @xref{@t{@@cite}}.
 
 
 @node Cross Reference Parts
@@ -6022,7 +6021,7 @@ the @code{@@node} line, including the same capitalization; otherwise, the
 formatters may not find the reference.
 
 
-@node @code{@@xref}
+@node @t{@@xref}
 @section @code{@@xref}
 
 @anchor{xref}@c old name
@@ -6080,7 +6079,7 @@ The @code{@@xref} command does not generate a period or comma to end
 the cross reference automatically.  You must write that period or
 comma yourself; otherwise, Info will not recognize the end of the
 reference.  (The @code{@@pxref} command works differently;
-@pxref{@code{@@pxref}}.)
+@pxref{@t{@@pxref}}.)
 
 @quotation Caution
 A period or comma @emph{must} follow the closing brace of an
@@ -6090,7 +6089,7 @@ period or comma will appear in the output.
 
 @code{@@xref} must refer to a node by name.  Use @code{@@node} to
 define the node (@pxref{Writing a Node}), or @code{@@anchor}
-(@pxref{@code{@@anchor}}).
+(@pxref{@t{@@anchor}}).
 
 @code{@@xref} is followed by several arguments inside braces,
 separated by commas.  Whitespace before and after these commas is
@@ -6551,7 +6550,7 @@ arbitrariness of the first name is a principal reason why omitting the
 third argument in whole-manual cross references is preferable.
 
 
-@node @code{@@ref}
+@node @t{@@ref}
 @section @code{@@ref}
 
 @anchor{ref}@c old name
@@ -6620,7 +6619,7 @@ word other than ``see'' to precede the reference.  When ``see'' (or
 ``See'') is ok, @code{@@xref} and @code{@@pxref} are preferable.
 
 
-@node @code{@@pxref}
+@node @t{@@pxref}
 @section @code{@@pxref}
 
 @anchor{pxref}@c old name
@@ -6705,7 +6704,7 @@ in Info and
 in a printed manual.
 
 @code{@@pxref} can be used with up to five arguments, just like
-@code{@@xref} (@pxref{@code{@@xref}}).
+@code{@@xref} (@pxref{@t{@@xref}}).
 
 In past versions of Texinfo, it was not allowed to write punctuation
 after an @code{@@pxref}, so it could be used @emph{only} before a
@@ -6735,7 +6734,7 @@ sentences.  Although it technically works in the middle of a sentence,
 that location breaks up the flow of reading.
 
 
-@node @code{@@inforef}
+@node @t{@@inforef}
 @section @code{@@inforef}: Cross References to Info-only Material
 
 @anchor{inforef}@c old name
@@ -6812,10 +6811,10 @@ know of any extant Info-only manuals.)
 
 The converse of @code{@@inforef} is @code{@@cite}, which is used to
 refer to printed works for which no Info form exists.
-@xref{@code{@@cite}}.
+@xref{@t{@@cite}}.
 
 
-@node @code{@@url}
+@node @t{@@url}
 @section @code{@@url}, @code{@@uref@{@var{url}[, @var{text}][, @var{replacement}]@}}
 
 @anchor{uref}@c old name
@@ -6949,7 +6948,7 @@ To merely indicate a url without creating a link people can follow, use
 @code{@@indicateurl} (@pxref{indicateurl, @code{@@indicateurl}}).
 
 
-@node @code{@@cite}
+@node @t{@@cite}
 @section @code{@@cite}@{@var{reference}@}
 
 @anchor{cite}@c old name
@@ -6961,7 +6960,7 @@ manual, and quotation marks in the Info file.
 
 If a book is written in Texinfo, it is better to use a cross reference
 command since a reader can easily follow such a reference in Info.
-@xref{@code{@@xref}}.
+@xref{@t{@@xref}}.
 
 
 @node Marking Text
@@ -7079,7 +7078,7 @@ Indicate the introductory or defining use of a term.
 @xref{dfn,,@code{@@dfn}}.
 
 @item @@cite@{@var{reference}@}
-Indicate the name of a book.  @xref{@code{@@cite}}.
+Indicate the name of a book.  @xref{@t{@@cite}}.
 
 @item @@abbr@{@var{abbreviation}@}
 Indicate an abbreviation, such as `Comput.'.
@@ -7091,7 +7090,7 @@ Indicate an acronym.
 @item @@indicateurl@{@var{uniform-resource-locator}@}
 Indicate an example (that is, nonfunctional) uniform resource locator.
 @xref{indicateurl,,@code{@@indicateurl}}.  (Use @code{@@url}
-(@pxref{@code{@@url}}) for live urls.)
+(@pxref{@t{@@url}}) for live urls.)
 
 @item @@email@{@var{email-address}[, @var{displayed-text}]@}
 Indicate an electronic mail address.
@@ -7187,14 +7186,14 @@ of the Emacs Lisp functions that the keystroke commands invoke.
 By default, @TeX{} will consider breaking lines at @samp{-} and
 @samp{_} characters within @code{@@code} and related commands.  This
 can be controlled with @code{@@allowcodebreaks}
-(@pxref{@code{@@allowcodebreaks}}).  The HTML output attempts to
+(@pxref{@t{@@allowcodebreaks}}).  The HTML output attempts to
 respect this for @samp{-}, but ultimately it is up to the browser's
 behavior.  For Info, it seems better never to make such breaks.
 
 For Info, the quotes are omitted in the output of the @code{@@code}
 command and related commands (e.g., @code{@@kbd}, @code{@@command}),
 in typewriter-like contexts such as the @code{@@example} environment
-(@pxref{@code{@@example}}) and @code{@@code} itself, etc.
+(@pxref{@t{@@example}}) and @code{@@code} itself, etc.
 
 
 @node kbd
@@ -7785,7 +7784,7 @@ them.
 Use the @code{@@indicateurl} command to indicate a uniform resource
 locator on the World Wide Web.  This is purely for markup purposes and
 does not produce a link you can follow (use the @code{@@url} or
-@code{@@uref} command for that, @pxref{@code{@@url}}).
+@code{@@uref} command for that, @pxref{@t{@@url}}).
 @code{@@indicateurl} is useful for urls which do not actually exist.
 For example:
 
@@ -7948,7 +7947,7 @@ example:
 The effect is to reduce the body font to a 10@dmn{pt} size (the
 default is 11@dmn{pt}).  Fonts for other elements, such as sections
 and chapters, are reduced accordingly.  This should only be used in
-conjunction with @code{@@smallbook} (@pxref{@code{@@smallbook}}) or
+conjunction with @code{@@smallbook} (@pxref{@t{@@smallbook}}) or
 similar, since 10@dmn{pt} fonts on standard paper (8.5x11 or A4) are
 too small.  One reason to use this command is to save pages, and hence
 printing cost, for physical books.
@@ -8004,11 +8003,10 @@ others, at which time it did not seem desirable to use very short
 names for such infrequently needed features.)
 
 @cindex <lineannotation> Docbook tag
-Only the @code{@@r} command has much use: in example-like
-environments, you can use the @code{@@r} command to write comments in
-the standard roman font instead of the fixed-width font.  This looks
-better in printed output, and produces a @code{<lineannotation>} tag
-in Docbook output.
+The @code{@@r} command can be useful in example-like environments, to
+write comments in the standard roman font instead of the fixed-width
+font.  This looks better in printed output, and produces a
+@code{<lineannotation>} tag in Docbook output.
 
 For example,
 
@@ -8027,9 +8025,18 @@ produces
 (+ 2 2)    ; @r{Add two plus two.}
 @end lisp
 
-In general, you should avoid using the other font commands.  Some of
-them are only useful when documenting functionality of specific font
-effects, such as in @TeX{} and related packages.
+The @code{@@t} command can occasionally be useful to produce output in
+a typewriter font where that is supported (e.g., HTML and PDF), but no
+distinction is needed in Info or plain text: @code{@@t@{foo@}}
+produces @t{foo}, cf. @code{@@code@{foo@}} producing @code{foo}.
+
+For example, we use @code{@@t} in the @code{@@node} commands for this
+manual to specify the Texinfo command names, because the quotes which
+@code{@@code} outputs look extraneous in that particular context.
+
+In general, the other font commands are unlikely to be useful; they
+exist primarily to make it possible to document the functionality of
+specific font effects, such as in @TeX{} and related packages.
 
 
 @node Quotations and Examples
@@ -8051,21 +8058,21 @@ beginning of that line, and with only one space between the
 
 @menu
 * Block Enclosing Commands::    Different constructs for different purposes.
-* @code{@@quotation}::                  Writing a quotation.
-* @code{@@indentedblock}::              Block of text indented on left.
-* @code{@@example}::                    Writing an example in a fixed-width font.
-* @code{@@verbatim}::                   Writing a verbatim example.
-* @code{@@verbatiminclude}::            Including a file verbatim.
-* @code{@@lisp}::                       Illustrating Lisp code.
-* @code{@@small@dots{}}::                   Examples in a smaller font.
-* @code{@@display}::                    Writing an example in the current font.
-* @code{@@format}::                     Writing an example without narrowed margins.
-* @code{@@exdent}::                     Undo indentation on a line.
-* @code{@@flushleft @@flushright}::     Pushing text flush left or flush right.
-* @code{@@raggedright}::                Avoiding justification on the right.
-* @code{@@noindent}::                   Preventing paragraph indentation.
-* @code{@@indent}::                     Forcing paragraph indentation.
-* @code{@@cartouche}::                  Drawing rounded rectangles around text.
+* @t{@@quotation}::                  Writing a quotation.
+* @t{@@indentedblock}::              Block of text indented on left.
+* @t{@@example}::                    Writing an example in a fixed-width font.
+* @t{@@verbatim}::                   Writing a verbatim example.
+* @t{@@verbatiminclude}::            Including a file verbatim.
+* @t{@@lisp}::                       Illustrating Lisp code.
+* @t{@@small@dots{}}::                   Examples in a smaller font.
+* @t{@@display}::                    Writing an example in the current font.
+* @t{@@format}::                     Writing an example without narrowed margins.
+* @t{@@exdent}::                     Undo indentation on a line.
+* @t{@@flushleft @@flushright}::     Pushing text flush left or flush right.
+* @t{@@raggedright}::                Avoiding justification on the right.
+* @t{@@noindent}::                   Preventing paragraph indentation.
+* @t{@@indent}::                     Forcing paragraph indentation.
+* @t{@@cartouche}::                  Drawing rounded rectangles around text.
 @end menu
 
 
@@ -8139,7 +8146,7 @@ constructs (or anywhere) to prevent the following text from being
 indented as a new paragraph.
 
 
-@node @code{@@quotation}
+@node @t{@@quotation}
 @section @code{@@quotation}: Block Quotations
 @anchor{quotation}@c old name
 
@@ -8235,10 +8242,10 @@ hacking.
 @findex smallquotation
 Texinfo also provides a command @code{@@smallquotation}, which is just
 like @code{@@quotation} but uses a smaller font size where possible.
-@xref{@code{@@small@dots{}}}.
+@xref{@t{@@small@dots{}}}.
 
 
-@node @code{@@indentedblock}
+@node @t{@@indentedblock}
 @section @code{@@indentedblock}: Indented text blocks
 @cindex Indented text block
 @findex indentedblock
@@ -8267,10 +8274,10 @@ This is an example ...
 @findex smallindentedblock
 Texinfo also provides a command @code{@@smallindentedblock}, which is
 just like @code{@@indentedblock} but uses a smaller font size where
-possible.  @xref{@code{@@small@dots{}}}.
+possible.  @xref{@t{@@small@dots{}}}.
 
 
-@node @code{@@example}
+@node @t{@@example}
 @section @code{@@example}: Example Text
 
 @anchor{example}@c old name
@@ -8294,7 +8301,7 @@ the source text is not filled as it normally is.
 @item The output uses a fixed-width font.
 @item Texinfo commands @emph{are} expanded; if you want the output to
 be the input verbatim, use the @code{@@verbatim} environment instead
-(@pxref{@code{@@verbatim}}).
+(@pxref{@t{@@verbatim}}).
 @end itemize
 
 For example,
@@ -8332,7 +8339,7 @@ Examples are often, logically speaking, ``in the middle'' of a
 paragraph, and the text that continues afterwards should not be
 indented, as in the example above.  The @code{@@noindent} command
 prevents a piece of text from being indented as if it were a new
-paragraph (@pxref{@code{@@noindent}}.
+paragraph (@pxref{@t{@@noindent}}.
 
 If you want to embed code fragments within sentences, instead of
 displaying them, use the @code{@@code} command or its relatives
@@ -8342,7 +8349,7 @@ If you wish to write a ``comment'' on a line of an example in the
 normal roman font, you can use the @code{@@r} command (@pxref{Fonts}).
 
 
-@node @code{@@verbatim}
+@node @t{@@verbatim}
 @section @code{@@verbatim}: Literal Text
 
 @anchor{verbatim}@c old name
@@ -8412,7 +8419,7 @@ Finally, a word of warning: it is not reliable to use
 @code{@@verbatim} inside other Texinfo constructs.
 
 
-@node @code{@@verbatiminclude}
+@node @t{@@verbatiminclude}
 @section @code{@@verbatiminclude} @var{file}: Include a File Verbatim
 
 @anchor{verbatiminclude}@c old name
@@ -8428,11 +8435,11 @@ You can include the exact contents of a file in the document with the
 @end example
 
 The contents of @var{filename} is printed in a verbatim environment
-(@pxref{@code{@@verbatim}}).  Generally, the file is printed exactly
+(@pxref{@t{@@verbatim}}).  Generally, the file is printed exactly
 as it is, with all special characters and white space retained.  No
 indentation is added; if you want indentation, enclose the
 @code{@@verbatiminclude} within @code{@@example}
-(@pxref{@code{@@example}}).
+(@pxref{@t{@@example}}).
 
 The name of the file is taken literally, with a single exception:
 @code{@@value@{@var{var}@}} references are expanded.  This makes it
@@ -8450,7 +8457,7 @@ For a method on printing the file contents in a smaller font size, see
 the end of the previous section on @code{@@verbatim}.
 
 
-@node @code{@@lisp}
+@node @t{@@lisp}
 @section @code{@@lisp}: Marking a Lisp Example
 
 @anchor{lisp}@c old name
@@ -8476,7 +8483,7 @@ Mark the end of @code{@@lisp} with @code{@@end lisp} on a line by
 itself.
 
 
-@node @code{@@small@dots{}}
+@node @t{@@small@dots{}}
 @section @code{@@small@dots{}} Block Commands
 
 @anchor{small}@c old name
@@ -8533,7 +8540,7 @@ of (for instance) @code{@@example} or @code{@@smallexample}
 consistently within a chapter.
 
 
-@node @code{@@display}
+@node @t{@@display}
 @section @code{@@display}: Examples Using the Text Font
 
 @anchor{display}@c old name
@@ -8554,16 +8561,16 @@ indents the text, but does not fill it.
 @findex smalldisplay
 Texinfo also provides the environment @code{@@smalldisplay}, which is
 like @code{@@display} but uses a smaller font size.
-@xref{@code{@@small@dots{}}}.
+@xref{@t{@@small@dots{}}}.
 
-The @code{@@table} command (@pxref{@code{@@table}}) is not supported
+The @code{@@table} command (@pxref{@t{@@table}}) is not supported
 inside @code{@@display}.  Since @code{@@display} is line-oriented, it
 doesn't make sense to use them together.  If you want to indent a
-table, try @code{@@quotation} (@pxref{@code{@@quotation}}) or
-@code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
+table, try @code{@@quotation} (@pxref{@t{@@quotation}}) or
+@code{@@indentedblock} (@pxref{@t{@@indentedblock}}).
 
 
-@node @code{@@format}
+@node @t{@@format}
 @section @code{@@format}: Examples Using the Full Line Width
 
 @anchor{format}@c old name
@@ -8583,10 +8590,10 @@ the @code{@@format} command does not fill the text.
 @findex smallformat
 Texinfo also provides the environment @code{@@smallformat}, which is
 like @code{@@format} but uses a smaller font size.
-@xref{@code{@@small@dots{}}}.
+@xref{@t{@@small@dots{}}}.
 
 
-@node @code{@@exdent}
+@node @t{@@exdent}
 @section @code{@@exdent}: Undoing a Line's Indentation
 
 @anchor{exdent}@c old name
@@ -8631,7 +8638,7 @@ normal width.
 @code{@@exdent} has no effect in HTML output.
 
 
-@node @code{@@flushleft @@flushright}
+@node @t{@@flushleft @@flushright}
 @section @code{@@flushleft} and @code{@@flushright}
 
 @anchor{flushleft & flushright}@c old name
@@ -8695,7 +8702,7 @@ left end ragged.
 @end flushright
 
 
-@node @code{@@raggedright}
+@node @t{@@raggedright}
 @section @code{@@raggedright}: Ragged Right Text 
 
 @anchor{raggedright}@c old name
@@ -8738,7 +8745,7 @@ Commands for double and single angle quotation marks:
 @end raggedright
 
 
-@node @code{@@noindent}
+@node @t{@@noindent}
 @section @code{@@noindent}: Omitting Indentation
 
 @anchor{noindent}@c old name
@@ -8752,7 +8759,7 @@ Ordinarily, the formatters indent text that follows an example as a new
 paragraph.  You can prevent this on a case-by-case basis by writing
 @code{@@noindent} at the beginning of a line, preceding the continuation
 text.  You can also disable indentation for all paragraphs globally with
-@code{@@paragraphindent} (@pxref{@code{@@paragraphindent}}).
+@code{@@paragraphindent} (@pxref{@t{@@paragraphindent}}).
 
 It is best to write @code{@@noindent} on a line by itself, since in most
 environments, spaces following the command will not be ignored.  It's ok
@@ -8804,7 +8811,7 @@ necessary, since @code{@@noindent} is a command used outside of
 paragraphs (@pxref{Command Syntax}).
 
 
-@node @code{@@indent}
+@node @t{@@indent}
 @section @code{@@indent}: Forcing Indentation
 
 @anchor{indent}@c old name
@@ -8819,7 +8826,7 @@ section), Texinfo provides the @code{@@indent} command that forces a
 paragraph to be indented.  This paragraph, for instance, is indented
 using an @code{@@indent} command.  The first paragraph of a section is
 the most likely place to use @code{@@indent}, to override the normal
-behavior of no indentation there (@pxref{@code{@@paragraphindent}}).
+behavior of no indentation there (@pxref{@t{@@paragraphindent}}).
 
 It is best to write @code{@@indent} on a line by itself, since in most
 environments, spaces following the command will not be ignored.  The
@@ -8834,7 +8841,7 @@ necessary, since @code{@@indent} is a command used outside of
 paragraphs (@pxref{Command Syntax}).
 
 
-@node @code{@@cartouche}
+@node @t{@@cartouche}
 @section @code{@@cartouche}: Rounded Rectangles
 
 @anchor{cartouche}@c old name
@@ -8875,7 +8882,7 @@ Info, you'll see the @code{@@cartouche} had no effect):
 @end example
 @end cartouche
 
-@code{@@cartouche} also implies @code{@@group} (@pxref{@code{@@group}}).
+@code{@@cartouche} also implies @code{@@group} (@pxref{@t{@@group}}).
 
 
 @node Lists and Tables
@@ -8890,8 +8897,8 @@ the first column; multi-column tables are also supported.
 
 @menu
 * Introducing Lists::           Texinfo formats lists for you.
-* @code{@@itemize}::                     How to construct a simple list.
-* @code{@@enumerate}::                   How to construct a numbered list.
+* @t{@@itemize}::                     How to construct a simple list.
+* @t{@@enumerate}::                   How to construct a numbered list.
 * Two-column Tables::           How to construct a two-column table.
 * Multi-column Tables::         How to construct generalized tables.
 @end menu
@@ -8968,7 +8975,7 @@ Two-column tables, optionally with indexing.
 @end table
 
 
-@node @code{@@itemize}
+@node @t{@@itemize}
 @section @code{@@itemize}: Making an Itemized List
 
 @anchor{itemize}@c old name
@@ -9081,7 +9088,7 @@ Second outer item.
 @end quotation
 
 
-@node @code{@@enumerate}
+@node @t{@@enumerate}
 @section @code{@@enumerate}: Making a Numbered or Lettered List
 
 @anchor{enumerate}@c old name
@@ -9089,7 +9096,7 @@ Second outer item.
 @cindex Enumeration
 
 @code{@@enumerate} is like @code{@@itemize}
-(@pxref{@code{@@itemize}}), except that the labels on the items are
+(@pxref{@t{@@itemize}}), except that the labels on the items are
 successive integers or letters instead of bullets.
 
 Write the @code{@@enumerate} command at the beginning of a line.  The
@@ -9207,18 +9214,18 @@ You can also nest enumerated lists, as in an outline.
 @findex table
 
 @code{@@table} is similar to @code{@@itemize}
-(@pxref{@code{@@itemize}}), but allows you to specify a name or
+(@pxref{@t{@@itemize}}), but allows you to specify a name or
 heading line for each item.  The @code{@@table} command is used to
 produce two-column tables, and is especially useful for glossaries,
 explanatory exhibits, and command-line option summaries.
 
 @menu
-* @code{@@table}::                       How to construct a two-column table.
-* @code{@@ftable @@vtable}::              Automatic indexing for two-column tables.
-* @code{@@itemx}::                       How to put more entries in the first column.
+* @t{@@table}::                       How to construct a two-column table.
+* @t{@@ftable @@vtable}::              Automatic indexing for two-column tables.
+* @t{@@itemx}::                       How to put more entries in the first column.
 @end menu
 
-@node @code{@@table}
+@node @t{@@table}
 @subsection Using the @code{@@table} Command
 
 @anchor{table}@c old name
@@ -9239,7 +9246,7 @@ For example, @code{@@table @@code} will cause the text in the first
 column to be output as if it had been the argument to an @code{@@code}
 command.
 
-@anchor{@code{@@asis}}@c command name with @, for consistency
+@anchor{@t{@@asis}}@c command name with @, for consistency
 @findex asis
 You may also use the @code{@@asis} command as an argument to
 @code{@@table}.  @code{@@asis} is a command that does nothing; if you
@@ -9300,10 +9307,10 @@ Text for @samp{bar}.
 @end table
 
 If you want to list two or more named items with a single block of
-text, use the @code{@@itemx} command.  (@xref{@code{@@itemx}}.)
+text, use the @code{@@itemx} command.  (@xref{@t{@@itemx}}.)
 
 
-@node @code{@@ftable @@vtable}
+@node @t{@@ftable @@vtable}
 @subsection @code{@@ftable} and @code{@@vtable}
 
 @anchor{ftable vtable}@c old name
@@ -9332,7 +9339,7 @@ itself.
 See the example for @code{@@table} in the previous section.
 
 
-@node @code{@@itemx}
+@node @t{@@itemx}
 @subsection @code{@@itemx}: Second and Subsequent Items
 
 @anchor{itemx}@c old name
@@ -9559,16 +9566,16 @@ printed output.  (Floating does not make sense in other output
 formats.)  In the present version of Texinfo, however, this floating
 is unfortunately not yet implemented.  Instead, the floating material
 is simply output at the current location, more or less as if it were
-an @code{@@group} (@pxref{@code{@@group}}).
+an @code{@@group} (@pxref{@t{@@group}}).
 
 @menu
-* @code{@@float}::                       Producing floating material.
-* @code{@@caption @@shortcaption}::       Specifying descriptions for floats.
-* @code{@@listoffloats}::                A table of contents for floats.
+* @t{@@float}::                       Producing floating material.
+* @t{@@caption @@shortcaption}::       Specifying descriptions for floats.
+* @t{@@listoffloats}::                A table of contents for floats.
 @end menu
 
 
-@node @code{@@float}
+@node @t{@@float}
 @subsection @code{@@float} [@var{type}][,@var{label}]: Floating Material
 
 @anchor{float}@c old name
@@ -9608,7 +9615,7 @@ any cross referencing will simply use a bare number.
 @item label
 Specifies a cross reference label for this float.  If given, this
 float is automatically given a number, and will appear in any
-@code{@@listoffloats} output (@pxref{@code{@@listoffloats}}).  Cross
+@code{@@listoffloats} output (@pxref{@t{@@listoffloats}}).  Cross
 references to @var{label} are allowed.
 
 @cindex Floats, making unnumbered
@@ -9634,7 +9641,7 @@ simply numbered consecutively from 1.
 These numbering conventions are not, at present, changeable.
 
 
-@node @code{@@caption @@shortcaption}
+@node @t{@@caption @@shortcaption}
 @subsection @code{@@caption} & @code{@@shortcaption}
 
 @anchor{caption shortcaption}@c old name
@@ -9691,7 +9698,7 @@ constructs.  The same constraints apply to @code{@@caption} unless
 there is an @code{@@shortcaption}.
 
 
-@node @code{@@listoffloats}
+@node @t{@@listoffloats}
 @subsection @code{@@listoffloats}: Tables of Contents for Floats
 
 @anchor{listoffloats}@c old name
@@ -9701,7 +9708,7 @@ there is an @code{@@shortcaption}.
 @cindex Table of contents, for floats
 
 You can write an @code{@@listoffloats} command to generate a list of
-floats for a given float type (@pxref{@code{@@float}}), analogous to
+floats for a given float type (@pxref{@t{@@float}}), analogous to
 the document's overall table of contents.  Typically, it is written in
 its own @code{@@unnumbered} node to provide a heading and structure,
 rather like @code{@@printindex} (@pxref{Printing Indices & Menus}).
@@ -9723,7 +9730,7 @@ Here's an example:
 
 Without any argument, @code{@@listoffloats} generates a list of floats
 for which no float type was specified, i.e., no first argument to the
-@code{@@float} command (@pxref{@code{@@float}}).
+@code{@@float} command (@pxref{@t{@@float}}).
 
 Each line in the list of floats contains the float type (if any),
 the float number, and the caption, if any---the @code{@@shortcaption}
@@ -9832,7 +9839,7 @@ For @TeX{} output, if an image is the only thing in a paragraph it
 will ordinarily be displayed on a line by itself, respecting the
 current environment indentation, but without the normal paragraph
 indentation.  If you want it centered, use @code{@@center}
-(@pxref{@code{@@titlefont @@center @@sp}}).
+(@pxref{@t{@@titlefont @@center @@sp}}).
 
 @cindex Alt attribute for images
 @cindex Images, alternate text for
@@ -9844,7 +9851,7 @@ the full file name of the image being displayed.  The @var{alttext} is
 processed as Texinfo text, so special characters such as @samp{"} and
 @samp{<} and @samp{&} are escaped in the HTML output; also, you can
 get an empty @code{alt} string with @code{@@-} (a command that
-produces no output; @pxref{@code{@@- @@hyphenation}}).
+produces no output; @pxref{@t{@@- @@hyphenation}}).
 
 For Info output, the @code{alt} string is also processed as Texinfo
 text and output.  In this case, @samp{\} is escaped as @samp{\\} and
@@ -10347,14 +10354,14 @@ would need to enclose every one of them between the braces of
 @code{@@code}.
 
 @menu
-* @code{@@syncodeindex}::               How to merge two indices, using @code{@@code}
+* @t{@@syncodeindex}::               How to merge two indices, using @code{@@code}
                                  font for the merged-from index.
-* @code{@@synindex}::                   How to merge two indices, using the
+* @t{@@synindex}::                   How to merge two indices, using the
                                  roman font for the merged-from index.
 @end menu
 
 
-@node @code{@@syncodeindex}
+@node @t{@@syncodeindex}
 @subsection @code{@@syncodeindex}: Combining indices using @code{@@code}
 @findex syncodeindex
 
@@ -10424,7 +10431,7 @@ index into a concept index, all the function names are printed in the
 @code{@@code} font as you would expect.
 
 
-@node @code{@@synindex}
+@node @t{@@synindex}
 @subsection @code{@@synindex}: Combining indices
 @findex synindex
 
@@ -10788,8 +10795,8 @@ kinds within and after sentences.
 * Multiple Spaces::             Inserting multiple spaces.
 * Not Ending a Sentence::       Sometimes a . doesn't end a sentence.
 * Ending a Sentence::           Sometimes it does.
-* @code{@@frenchspacing}::              Specifying end-of-sentence spacing.
-* @code{@@dmn}::                        Formatting a dimension.
+* @t{@@frenchspacing}::              Specifying end-of-sentence spacing.
+* @t{@@dmn}::                        Formatting a dimension.
 @end menu
 
 
@@ -10835,7 +10842,7 @@ Other possible uses of @code{@@@kbd{SPACE}} have been subsumed by
 
 Do not follow any of these commands with braces.
 
-To produce a non-breakable space, see @ref{@code{@@tie}}.
+To produce a non-breakable space, see @ref{@t{@@tie}}.
 
 
 @node Not Ending a Sentence
@@ -10954,7 +10961,7 @@ in @code{... @@var@{VARNAME@}. Text} the period after @var{VARNAME}
 ends the sentence; there is no need to use @code{@@.}.
 
 
-@node @code{@@frenchspacing}
+@node @t{@@frenchspacing}
 @subsection @code{@@frenchspacing} @var{val}: Control Sentence Spacing
 
 @anchor{frenchspacing}@c old name
@@ -10999,7 +11006,7 @@ for XML, it outputs a transliteration of itself (@pxref{Output
 Formats}).
 
 
-@node @code{@@dmn}
+@node @t{@@dmn}
 @subsection @code{@@dmn}@{@var{dimension}@}: Format a Dimension
 
 @anchor{dmn}@c old name
@@ -11031,7 +11038,7 @@ A4 paper is 8.27@dmn{in} wide.
 
 Not everyone uses this style.  Some people prefer `8.27@tie{}in.'@: or
 `8.27@tie{}inches'.  In these cases, however, you need to use
-@code{@@tie} (@pxref{@code{@@tie}}) or @code{@@w} (@pxref{@code{@@w}})
+@code{@@tie} (@pxref{@t{@@tie}}) or @code{@@w} (@pxref{@t{@@w}})
 so that no line break can occur between the number and the dimension.
 Also, if you write a period after an abbreviation within a sentence
 (as with the `in.'@: above), you should write @samp{@@:} after the
@@ -11067,7 +11074,7 @@ braces (since it is two characters instead of one).
 To get the true accented characters output in Info, not just the ASCII
 transliterations, it is necessary to specify @code{@@documentencoding}
 with an encoding which supports the required characters
-(@pxref{@code{@@documentencoding}}).  In this case, you can also use
+(@pxref{@t{@@documentencoding}}).  In this case, you can also use
 non-ASCII (e.g., pre-accented) characters in the source file.
 
 @findex " @r{(umlaut accent)}
@@ -11236,7 +11243,7 @@ inserting quotation marks.
 @cindex Latin 1
 In order to get the symbols for the quotation marks in encoded Info
 output, it is necessary to specify @code{@@documentencoding UTF-8}.
-(@xref{@code{@@documentencoding}}.)  Double guillemets are also
+(@xref{@t{@@documentencoding}}.)  Double guillemets are also
 present in ISO 8859-1 (aka Latin@tie{}1) and ISO 8859-15 (aka
 Latin@tie{}9).
 
@@ -11330,7 +11337,7 @@ languages
 Texinfo does not provide commands for typesetting quotation marks
 according to the numerous traditions.  Therefore, you have to choose
 the commands appropriate for the language of your manual.  Sometimes
-aliases (@pxref{@code{@@alias}}) can simplify the usage and make the
+aliases (@pxref{@t{@@alias}}) can simplify the usage and make the
 source code more readable.  For example, in German,
 @code{@@quotedblbase} is used for the left double quote, and the right
 double quote is the glyph produced by @code{@@quotedblleft}, which is
@@ -11443,20 +11450,20 @@ thousands more.  It is possible to use Unicode characters as-is as far
 as @code{makeinfo} is concerned, but @TeX{} is not so lucky.
 
 @menu
-* @code{@@TeX @@LaTeX}::          The @TeX{} logos.
-* @code{@@copyright}::            The copyright symbol (c in a circle).
-* @code{@@registeredsymbol}::     The registered symbol (R in a circle).
-* @code{@@dots}::                 How to insert ellipses: @dots{} and @enddots{}
-* @code{@@bullet}::               How to insert a bullet: @bullet{}
-* @code{@@euro}::                 How to insert the euro currency symbol.
-* @code{@@pounds}::               How to insert the pounds currency symbol.
-* @code{@@textdegree}::           How to insert the degrees symbol.
-* @code{@@minus}::                How to insert a minus sign.
-* @code{@@geq @@leq}::            How to insert greater/less-than-or-equal signs.
+* @t{@@TeX @@LaTeX}::          The @TeX{} logos.
+* @t{@@copyright}::            The copyright symbol (c in a circle).
+* @t{@@registeredsymbol}::     The registered symbol (R in a circle).
+* @t{@@dots}::                 How to insert ellipses: @dots{} and @enddots{}
+* @t{@@bullet}::               How to insert a bullet: @bullet{}
+* @t{@@euro}::                 How to insert the euro currency symbol.
+* @t{@@pounds}::               How to insert the pounds currency symbol.
+* @t{@@textdegree}::           How to insert the degrees symbol.
+* @t{@@minus}::                How to insert a minus sign.
+* @t{@@geq @@leq}::            How to insert greater/less-than-or-equal signs.
 @end menu
 
 
-@node @code{@@TeX @@LaTeX}
+@node @t{@@TeX @@LaTeX}
 @subsection @code{@@TeX}@{@} (@TeX{}) and @code{@@LaTeX}@{@} (@LaTeX{})
 
 @anchor{tex}@c old name
@@ -11481,7 +11488,7 @@ The spelling of these commands are unusual for Texinfo, in that they
 use both uppercase and lowercase letters.
 
 
-@node @code{@@copyright}
+@node @t{@@copyright}
 @subsection @code{@@copyright@{@}} (@copyright{})
 
 @anchor{copyright symbol}@c old name
@@ -11496,7 +11503,7 @@ Legally, it's not necessary to use the copyright symbol; the English
 word `Copyright' suffices, according to international treaty.
 
 
-@node @code{@@registeredsymbol}
+@node @t{@@registeredsymbol}
 @subsection @code{@@registeredsymbol@{@}} (@registeredsymbol{})
 
 @anchor{registered symbol}@c old name
@@ -11508,7 +11515,7 @@ registered symbol, `@registeredsymbol{}'.  Where possible, this is an
 @samp{R} inside a circle; in Info, this is @samp{(R)}.
 
 
-@node @code{@@dots}
+@node @t{@@dots}
 @subsection @code{@@dots} (@dots{}) and @code{@@enddots} (@enddots{})
 
 @anchor{dots}@c old name
@@ -11540,7 +11547,7 @@ In printed (and usually HTML) output, the three periods in a row are
 much closer together than the dots in the ellipsis.
 
 
-@node @code{@@bullet}
+@node @t{@@bullet}
 @subsection @code{@@bullet} (@bullet{})
 
 @anchor{bullet}@c old name
@@ -11552,10 +11559,10 @@ Here is a bullet: @bullet{}
 
 When you use @code{@@bullet} in @code{@@itemize}, you do not need to
 type the braces, because @code{@@itemize} supplies them.
-(@pxref{@code{@@itemize}}).
+(@pxref{@t{@@itemize}}).
 
 
-@node @code{@@euro}
+@node @t{@@euro}
 @subsection @code{@@euro} (@euro{}): Euro Currency Symbol
 
 @anchor{euro}@c old name
@@ -11575,7 +11582,7 @@ banking contexts, the abbreviation for the Euro is EUR.)
 @cindex Latin 9, and Euro
 In order to get the Euro symbol in encoded Info output, for example,
 it is necessary to specify @code{@@documentencoding ISO-8859-15} or
-@code{@@documentencoding UTF-8} (@xref{@code{@@documentencoding}}.)
+@code{@@documentencoding UTF-8} (@xref{@t{@@documentencoding}}.)
 The Euro symbol is in ISO 8859-15 (aka Latin@tie{}9), and is
 @emph{not} in the more widely-used ISO 8859-1 (Latin@tie{}1).
 
@@ -11590,7 +11597,7 @@ among other places.  The distribution includes installation
 instructions.
 
 
-@node @code{@@pounds}
+@node @t{@@pounds}
 @subsection @code{@@pounds} (@pounds{}): Pounds Sterling
 
 @anchor{pounds}@c old name
@@ -11602,7 +11609,7 @@ possible, this is the symbol for the pounds sterling British currency.
 Otherwise, it is @samp{#}.
 
 
-@node @code{@@textdegree}
+@node @t{@@textdegree}
 @subsection @code{@@textdegree} (@textdegree{}): Degrees Symbol
 
 @anchor{textdegree}@c old name
@@ -11614,7 +11621,7 @@ Where possible, this is the normal symbol for degrees.  Otherwise,
 it is an @samp{o}.
 
 
-@node @code{@@minus}
+@node @t{@@minus}
 @subsection @code{@@minus} (@minus{}): Inserting a Minus Sign
 
 @anchor{minus}@c old name
@@ -11646,7 +11653,7 @@ fixed-width font they use.
 
 When you use @code{@@minus} to specify the mark beginning each entry
 in an itemized list, you do not need to type the braces
-(@pxref{@code{@@itemize}}).
+(@pxref{@t{@@itemize}}).
 
 If you actually want to typeset some math that does a subtraction, it
 is better to use @code{@@math}.  Then the regular @samp{-} character
@@ -11654,7 +11661,7 @@ produces a minus sign, as in @code{@@math@{a-b@}} (@pxref{Inserting
 Math}).
 
 
-@node @code{@@geq @@leq}
+@node @t{@@geq @@leq}
 @subsection @code{@@geq} (@geq{}) and @code{@@leq} (@leq{}): Inserting Relations
 
 @anchor{geq leq}@c old name
@@ -11688,12 +11695,12 @@ empty braces.
 
 @menu
 * Glyphs Summary::
-* @code{@@result}::         How to show the result of expression.
-* @code{@@expansion}::      How to indicate an expansion.
-* @code{@@print}::          How to indicate generated output.
-* @code{@@error}::          How to indicate an error message.
-* @code{@@equiv}::          How to indicate equivalence.
-* @code{@@point}::          How to indicate the location of point.
+* @t{@@result}::         How to show the result of expression.
+* @t{@@expansion}::      How to indicate an expansion.
+* @t{@@print}::          How to indicate generated output.
+* @t{@@error}::          How to indicate an error message.
+* @t{@@equiv}::          How to indicate equivalence.
+* @t{@@point}::          How to indicate the location of point.
 * Click Sequences::         Inserting GUI usage sequences.
 @end menu
 
@@ -11729,7 +11736,7 @@ otherwise selecting it.
 @end table
 
 
-@node @code{@@result}
+@node @t{@@result}
 @subsection @code{@@result@{@}} (@result{}): Result of an Expression
 
 @anchor{result}@c old name
@@ -11757,7 +11764,7 @@ Thus, the following,
 may be read as ``@code{(cdr '(1 2 3))} evaluates to @code{(2 3)}''.
 
 
-@node @code{@@expansion}
+@node @t{@@expansion}
 @subsection @code{@@expansion@{@}} (@expansion{}): Indicating an Expansion
 
 @anchor{expansion}@c old name
@@ -11810,7 +11817,7 @@ Often, as in this case, an example looks better if the
 @code{@@expansion@{@}} and @code{@@result@{@}} commands are indented.
 
 
-@node @code{@@print}
+@node @t{@@print}
 @subsection @code{@@print@{@}} (@print{}): Indicating Generated Output
 
 @anchor{Print Glyph}@c old name
@@ -11853,7 +11860,7 @@ In a Texinfo source file, this example is written as follows:
 @end lisp
 
 
-@node @code{@@error}
+@node @t{@@error}
 @subsection @code{@@error@{@}} (@error{}): Indicating an Error Message
 
 @anchor{Error Glyph}@c old name
@@ -11897,7 +11904,7 @@ Wrong type argument: integer-or-marker-p, x
 The word @samp{@error{}} itself is not part of the error message.
 
 
-@node @code{@@equiv}
+@node @t{@@equiv}
 @subsection @code{@@equiv@{@}} (@equiv{}): Indicating Equivalence
 
 @anchor{Equivalence}@c oldname
@@ -11931,7 +11938,7 @@ This indicates that evaluating @code{(make-sparse-keymap)} produces
 identical results to evaluating @code{(list 'keymap)}.
 
 
-@node @code{@@point}
+@node @t{@@point}
 @subsection @code{@@point@{@}} (@point{}): Indicating Point in a Buffer
 
 @anchor{Point Glyph}@c old name
@@ -12026,7 +12033,7 @@ glyph is also available independently via the command
 You can change the glyph produced by @code{@@click} with the command
 @code{@@clickstyle}, which takes a command name as its single argument
 on the rest of the line, much like @code{@@itemize} and friends
-(@pxref{@code{@@itemize}}).  The command should produce a glyph, and
+(@pxref{@t{@@itemize}}).  The command should produce a glyph, and
 the usual empty braces @samp{@{@}} are omitted.  Here's an example:
 
 @example
@@ -12068,14 +12075,14 @@ problematic line and page breaks.
 @menu
 * Break Commands::              Summary of break-related commands.
 * Line Breaks::                 Forcing line breaks.
-* @code{@@-  @@hyphenation}::         Helping @TeX{} with hyphenation points.
-* @code{@@allowcodebreaks}::            Controlling line breaks within @@code text.
-* @code{@@w}::                          Preventing unwanted line breaks in text.
-* @code{@@tie}::                        Inserting an unbreakable but varying space.
-* @code{@@sp}::                         Inserting blank lines.
-* @code{@@page}::                       Forcing the start of a new page.
-* @code{@@group}::                      Preventing unwanted page breaks.
-* @code{@@need}::                       Another way to prevent unwanted page breaks.
+* @t{@@-  @@hyphenation}::         Helping @TeX{} with hyphenation points.
+* @t{@@allowcodebreaks}::            Controlling line breaks within @@code text.
+* @t{@@w}::                          Preventing unwanted line breaks in text.
+* @t{@@tie}::                        Inserting an unbreakable but varying space.
+* @t{@@sp}::                         Inserting blank lines.
+* @t{@@page}::                       Forcing the start of a new page.
+* @t{@@group}::                      Preventing unwanted page breaks.
+* @t{@@need}::                       Another way to prevent unwanted page breaks.
 @end menu
 
 
@@ -12153,7 +12160,7 @@ into two lines.
 @end example
 
 The @code{@@/} command can often be useful within urls
-(@pxref{@code{@@url}}), which tend to be long and are otherwise
+(@pxref{@t{@@url}}), which tend to be long and are otherwise
 unbreakable.  For example:
 
 @example
@@ -12172,7 +12179,7 @@ The official Texinfo home page is on the GNU web site:
 break the url.  @code{@@/} has no effect in other output formats.
 
 
-@node @code{@@- @@hyphenation}
+@node @t{@@- @@hyphenation}
 @section @code{@@-} and @code{@@hyphenation}: Helping @TeX{} Hyphenate
 
 @anchor{- and hyphenation}@c old name
@@ -12209,7 +12216,7 @@ Info, HTML, and other non-@TeX{} output is not hyphenated, so none of
 these commands have any effect there.
 
 
-@node @code{@@allowcodebreaks}
+@node @t{@@allowcodebreaks}
 @section @code{@@allowcodebreaks}: Control Line Breaks in @code{@@code}
 
 @anchor{allowcodebreaks}@c old name
@@ -12250,7 +12257,7 @@ the breaks, but want them in general, or vice versa.
 This command has no effect except in HTML and @TeX{} output.
 
 
-@node @code{@@w}
+@node @t{@@w}
 @section @code{@@w}@{@var{text}@}: Prevent Line Breaks
 
 @anchor{w}@c old name
@@ -12296,7 +12303,7 @@ in your document, use @code{@@w@{$@}Id$}.  This trick isn't effective
 in Info or plain text output, though.
 
 
-@node @code{@@tie}
+@node @t{@@tie}
 @section @code{@@tie@{@}}: Inserting an Unbreakable Space
 
 @anchor{tie}@c old name
@@ -12337,7 +12344,7 @@ reasons, namely that it produces an @samp{\hbox}).
 @end itemize
 
 
-@node @code{@@sp}
+@node @t{@@sp}
 @section @code{@@sp} @var{n}: Insert Blank Lines
 
 @anchor{sp}@c old name
@@ -12361,7 +12368,7 @@ generates two blank lines.
 The @code{@@sp} command is most often used in the title page.
 
 
-@node @code{@@page}
+@node @t{@@page}
 @section @code{@@page}: Start a New Page
 
 @anchor{page}@c old name
@@ -12375,7 +12382,7 @@ new paragraph.  An @code{@@page} command is often used in the
 page.
 
 
-@node @code{@@group}
+@node @t{@@group}
 @section @code{@@group}: Prevent Page Breaks
 
 @anchor{group}@c old name
@@ -12434,7 +12441,7 @@ considerable text.  It is a good rule of thumb to look for a missing
 @TeX{}.
 
 
-@node @code{@@need}
+@node @t{@@need}
 @section @code{@@need @var{mils}}: Prevent Page Breaks
 
 @anchor{need}@c old name
@@ -12494,7 +12501,7 @@ a given name.  An appendix containing a summary should use
 * Def Cmd Template::            Writing descriptions using definition commands.
 * Def Cmd Continuation Lines::  Continuing the heading over source lines.
 * Optional Arguments::          Handling optional and repeated arguments.
-* @code{@@deffnx}::                     Group two or more `first' lines.
+* @t{@@deffnx}::                     Group two or more `first' lines.
 * Def Cmds in Detail::          Reference for all the definition commands.
 * Def Cmd Conventions::         Conventions for writing definitions.
 * Sample Function Definition::  An example.
@@ -12698,7 +12705,7 @@ The function is listed in the Command and Variable Index under
 @samp{foobar}.
 
 
-@node @code{@@deffnx}
+@node @t{@@deffnx}
 @section @code{@@deffnx}, et al.: Two or More `First' Lines
 
 @anchor{deffnx}@c old node
@@ -12737,7 +12744,7 @@ Each definition command has an `x' form: @code{@@defunx},
 @code{@@defvrx}, @code{@@deftypefunx}, etc.
 
 The `x' forms work similarly to @code{@@itemx}
-(@pxref{@code{@@itemx}}).
+(@pxref{@t{@@itemx}}).
 
 
 @node Def Cmds in Detail
@@ -13562,12 +13569,12 @@ For a list of the various accented and special characters Texinfo
 supports, see @ref{Inserting Accents}.
 
 @menu
-* @code{@@documentlanguage}::          Declaring the current language.
-* @code{@@documentencoding}::          Declaring the input encoding.
+* @t{@@documentlanguage}::          Declaring the current language.
+* @t{@@documentencoding}::          Declaring the input encoding.
 @end menu
 
 
-@node @code{@@documentlanguage}
+@node @t{@@documentlanguage}
 @section @code{@@documentlanguage @var{ll}[_@var{cc}]}: Set the Document Language
 @anchor{documentlanguage}
 
@@ -13578,7 +13585,7 @@ supports, see @ref{Inserting Accents}.
 
 The @code{@@documentlanguage} command declares the current document
 locale.  Write it on a line by itself, near the beginning of the file,
-but after @code{@@setfilename} (@pxref{@code{@@setfilename}}):
+but after @code{@@setfilename} (@pxref{@t{@@setfilename}}):
 
 @example
 @@documentlanguage @var{ll}[_@var{cc}]
@@ -13626,7 +13633,7 @@ itself, but will often be the case for recent distributions of
 extended @TeX{} programs @command{etex} (DVI output) and
 @command{pdftex} (PDF output), such as @TeX{} Live 2008.
 @command{texi2dvi} will use the extended @TeX{}s if they are available
-(@pxref{Format with @code{texi2dvi}}).
+(@pxref{Format with @t{texi2dvi}}).
 
 In September 2006, the W3C Internationalization Activity released a
 new recommendation for specifying languages:
@@ -13645,7 +13652,7 @@ the official web site for ISO@tie{}3166 can be found via
 @url{http://en.wikipedia.org/wiki/ISO_3166}.
 
 
-@node @code{@@documentencoding}
+@node @t{@@documentencoding}
 @section @code{@@documentencoding @var{enc}}: Set Input Encoding
 
 @anchor{documentencoding}@c old name
@@ -13658,7 +13665,7 @@ the official web site for ISO@tie{}3166 can be found via
 The @code{@@documentencoding} command declares the input document
 encoding.  Write it on a line by itself, with a valid encoding
 specification following, near the beginning of the file but after
-@code{@@setfilename} (@pxref{@code{@@setfilename}}):
+@code{@@setfilename} (@pxref{@t{@@setfilename}}):
 
 @example
 @@documentencoding @var{enc}
@@ -13786,7 +13793,7 @@ is set or clear.
 * Conditional Not Commands::    Text for any format other than a given one.
 * Raw Formatter Commands::      Using raw formatter commands.
 * Inline Conditionals::         Brace-delimited conditional text.
-* @code{@@set @@clear @@value}::          Variable tests and substitutions.
+* @t{@@set @@clear @@value}::          Variable tests and substitutions.
 * Testing for Texinfo Commands:: Testing if a Texinfo command is available.
 * Conditional Nesting::         Using conditionals inside conditionals.
 @end menu
@@ -14110,7 +14117,7 @@ exactly two arguments, so a @samp{,} cannot be mistaken for an
 argument separator.)
 
 
-@node @code{@@set @@clear @@value}
+@node @t{@@set @@clear @@value}
 @section @code{@@set}, @code{@@clear}, and @code{@@value}
 
 @anchor{set clear value}@c old name
@@ -14140,13 +14147,13 @@ is ignored.  If @var{flag} is clear, text through the following
 @end table
 
 @menu
-* @code{@@set @@value}::                 Expand a flag variable to a string.
-* @code{@@ifset @@ifclear}::             Format a region if a flag is set.
-* @code{@@value} Example::              An easy way to update edition information.
+* @t{@@set @@value}::                 Expand a flag variable to a string.
+* @t{@@ifset @@ifclear}::             Format a region if a flag is set.
+* @t{@@value} Example::              An easy way to update edition information.
 @end menu
 
 
-@node @code{@@set @@value}
+@node @t{@@set @@value}
 @subsection @code{@@set} and @code{@@value}
 
 @anchor{set value}@c old name
@@ -14244,7 +14251,7 @@ command (@pxref{Inserting Accents}).  For example, this fails:
 @end example
 
 
-@node @code{@@ifset @@ifclear}
+@node @t{@@ifset @@ifclear}
 @subsection @code{@@ifset} and @code{@@ifclear}
 
 @anchor{ifset ifclear}@c old name
@@ -14317,7 +14324,7 @@ command looks like this:
 @end example
 
 
-@node @code{@@value} Example
+@node @t{@@value} Example
 @subsection @code{@@value} Example
 
 @anchor{value Example}@c old name
@@ -14343,7 +14350,7 @@ Set the flags:
 @end example
 
 @item
-Write text for the @code{@@copying} section (@pxref{@code{@@copying}}):
+Write text for the @code{@@copying} section (@pxref{@t{@@copying}}):
 
 @example
 @group
@@ -14566,15 +14573,15 @@ possible to invoke an external macro processor and have Texinfo
 recognize so-called @code{#line} directives for error reporting.
 
 If you want to do simple text substitution, @code{@@set} and
-@code{@@value} is the simplest approach (@pxref{@code{@@set @@clear
+@code{@@value} is the simplest approach (@pxref{@t{@@set @@clear
 @@value}}).
 
 @menu
 * Defining Macros::             Defining and undefining new commands.
 * Invoking Macros::             Using a macro, once you've defined it.
 * Macro Details::               Limitations of Texinfo macros.
-* @code{@@alias}::                      Command aliases.
-* @code{@@definfoenclose}::             Customized highlighting.
+* @t{@@alias}::                      Command aliases.
+* @t{@@definfoenclose}::             Customized highlighting.
 * External Macro Processors::   @code{#line} directives.
 @end menu
 
@@ -14884,7 +14891,7 @@ constructs cause problems with @TeX{}, as follows.  If you get
 macro-related errors when producing the printed version of a manual,
 you might try expanding the macros with @command{makeinfo} by invoking
 @command{texi2dvi} with the @samp{-E} option (@pxref{Format with
-@code{texi2dvi}}).  Or eschew Texinfo macros altogether and use a
+@t{texi2dvi}}).  Or eschew Texinfo macros altogether and use a
 language designed for macro processing, such as M4 (@pxref{External
 Macro Processors}).
 
@@ -15023,7 +15030,7 @@ limitations (by design):
 @item
 @code{@@verbatim} and macros do not mix; for instance, you can't start
 a verbatim block inside a macro and end it outside
-(@pxref{@code{@@verbatim}}).  Starting any environment inside a macro
+(@pxref{@t{@@verbatim}}).  Starting any environment inside a macro
 and ending it outside may or may not work, for that matter.
 
 @item
@@ -15036,7 +15043,7 @@ within a macro, and then end that nested definition outside the macro.
 @end itemize
 
 
-@node @code{@@alias}
+@node @t{@@alias}
 @section @samp{@@alias @var{new}=@var{existing}}
 
 @anchor{alias}@c old name
@@ -15087,7 +15094,7 @@ does for macro names, that is, alphanumerics and (except as the first
 character) @samp{-}.
 
 
-@node @code{@@definfoenclose}
+@node @t{@@definfoenclose}
 @section @code{@@definfoenclose}: Customized Highlighting
 
 @anchor{definfoenclose}@c old name
@@ -15228,7 +15235,7 @@ such lines.
 
 @vindex CPP_LINE_DIRECTIVES
 The @command{makeinfo} program recognizes these lines by default,
-except within @code{@@verbatim} blocks (@pxref{@code{@@verbatim}}.
+except within @code{@@verbatim} blocks (@pxref{@t{@@verbatim}}.
 Their recognition can be turned off completely with
 @code{CPP_LINE_DIRECTIVES} (@pxref{Other Customization Variables}),
 though there is normally no reason to do so.
@@ -15273,13 +15280,13 @@ use @command{makeinfo}'s macro expansion options before running
 @itemize @bullet
 @item
 If you run @command{texi2dvi} or its variants (@pxref{Format with
-@code{texi2dvi}}), you can pass @option{-E} and @command{texi2dvi}
+@t{texi2dvi}}), you can pass @option{-E} and @command{texi2dvi}
 will run @command{makeinfo} first to expand macros and eliminate
 @samp{#line}.
 
 @item
 If you run @command{makeinfo} or its variants (@pxref{Generic
-Translator @code{texi2any}}), you can specify @option{--no-ifinfo
+Translator @t{texi2any}}), you can specify @option{--no-ifinfo
 --iftex -E somefile.out}, and then give @file{somefile.out} to
 @code{texi2dvi} in a separate command.
 
@@ -15296,7 +15303,7 @@ directives are not recognized, the line numbers emitted by the
 @TeX{} itself, are the (incorrect) line numbers from the derived file
 which @TeX{} is reading, rather than the preprocessor-specified line
 numbers.  This is another example of why we recommend running
-@command{makeinfo} for the best diagnostics (@pxref{@code{makeinfo}
+@command{makeinfo} for the best diagnostics (@pxref{@t{makeinfo}
 Advantages}).
 
 
@@ -15354,7 +15361,7 @@ collection of conveniently small parts.
 
 @menu
 * Using Include Files::         How to use the @code{@@include} command.
-* @code{texinfo-multiple-files-update}::  How to create and update nodes and
+* @t{texinfo-multiple-files-update}::  How to create and update nodes and
                                      menus when using included files.
 * Include Files Requirements::  @code{texinfo-multiple-files-update} needs.
 * Sample Include File::         A sample outer file with included files
@@ -15378,7 +15385,7 @@ the same line by the name of a file to be included.  For example:
 @end example
 
 @@-commands are expanded in file names.  The one most likely to be
-useful is @code{@@value} (@pxref{@code{@@set @@value}}), and even then
+useful is @code{@@value} (@pxref{@t{@@set @@value}}), and even then
 only in complicated situations.
 
 An included file should simply be a segment of text that you expect to
@@ -15396,7 +15403,7 @@ longer.  Now, it does not matter whether you write such a line.  If an
 @code{@@setfilename} line exists in an included file, it is ignored.
 
 
-@node @code{texinfo-multiple-files-update}
+@node @t{texinfo-multiple-files-update}
 @section @code{texinfo-multiple-files-update}
 
 @findex texinfo-multiple-files-update
@@ -15638,18 +15645,18 @@ Details are in the following sections.
 
 @menu
 * Use @TeX{}::                     Use @TeX{} to format for hardcopy.
-* Format with @code{tex}/@code{texindex}:: How to format with explicit shell commands.
-* Format with @code{texi2dvi}::      A simpler way to format.
-* Print with @code{lpr}::            How to print.
+* Format with @t{tex}/@t{texindex}:: How to format with explicit shell commands.
+* Format with @t{texi2dvi}::      A simpler way to format.
+* Print with @t{lpr}::            How to print.
 * Within Emacs::                How to format and print from an Emacs shell.
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
 * Compile-Command::             How to print using Emacs's compile command.
 * Requirements Summary::        @TeX{} formatting requirements summary.
 * Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
-* @code{@@smallbook}::                  How to print small format books and manuals.
+* @t{@@smallbook}::                  How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
-* @code{@@pagesizes}::                How to print with customized page sizes.
+* @t{@@pagesizes}::                How to print with customized page sizes.
 * Cropmarks and Magnification:: How to print marks to indicate the size
                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
@@ -15669,8 +15676,9 @@ is not included in the Texinfo package, being a vast suite of software
 itself.
 
 
-@node Format with @code{tex}/@code{texindex}
+@node Format with @t{tex}/@t{texindex}
 @section Format with @code{tex}/@code{texindex}
+
 @cindex Shell formatting with @code{tex} and @code{texindex}
 @cindex Formatting with @code{tex} and @code{texindex}
 @cindex DVI file
@@ -15768,7 +15776,7 @@ written for the cross references.
 
 @pindex texi2dvi
 Alternatively, it's a one-step process: run @code{texi2dvi}
-(@pxref{Format with @code{texi2dvi}}).
+(@pxref{Format with @t{texi2dvi}}).
 
 You need not run @code{texindex} each time after you run @code{tex}.  If
 you do not, on the next run, the @code{tex} formatting command will use
@@ -15785,7 +15793,7 @@ the usual auxiliary files that @TeX{} creates and warnings @TeX{}
 gives when cross references are not satisfied are just nuisances.  You
 can avoid them with the @code{@@novalidate} command, which you must
 give @emph{before} the @code{@@setfilename} command
-(@pxref{@code{@@setfilename}}).  Thus, the beginning of your file
+(@pxref{@t{@@setfilename}}).  Thus, the beginning of your file
 would look approximately like this:
 
 @example
@@ -15800,8 +15808,9 @@ would look approximately like this:
 (@pxref{Pointer Validation}).
 
 
-@node Format with @code{texi2dvi}
+@node Format with @t{texi2dvi}
 @section Format with @code{texi2dvi}
+
 @pindex texi2dvi @r{(shell script)}
 
 The @code{texi2dvi} command automatically runs both @TeX{} and
@@ -15829,9 +15838,9 @@ One useful option to @code{texi2dvi} is @samp{--command=@var{cmd}}.
 This inserts @var{cmd} on a line by itself after the
 @code{@@setfilename} in a temporary copy of the input file before
 running @TeX{}.  With this, you can specify different printing
-formats, such as @code{@@smallbook} (@pxref{@code{@@smallbook}}),
+formats, such as @code{@@smallbook} (@pxref{@t{@@smallbook}}),
 @code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
-(@pxref{@code{@@pagesizes}}), without actually changing the document
+(@pxref{@t{@@pagesizes}}), without actually changing the document
 source.  (You can also do this on a site-wide basis with
 @file{texinfo.cnf}; @pxref{Preparing for @TeX{}}).
 
@@ -15893,7 +15902,7 @@ The options @option{--recode} and @option{--recode-from=@var{enc}}
 allow conversion of an input document before running @TeX{}. The
 @option{--recode} option recodes the document from encoding specified
 by @samp{@@documentencoding} command
-(@pxref{@code{@@documentencoding}}) to plain 7-bit @samp{texinfo}
+(@pxref{@t{@@documentencoding}}) to plain 7-bit @samp{texinfo}
 encoding.
 
 @opindex --recode-from@r{, for @command{texi2dvi}}
@@ -15919,8 +15928,9 @@ in the source file.
 For the list of all options, run @samp{texi2dvi --help}.
 
 
-@node Print with @code{lpr}
+@node Print with @t{lpr}
 @section Print With @code{lpr -d} From Shell
+
 @pindex lpr @r{(DVI print command)}
 
 The precise command to print a DVI file depends on your system
@@ -16199,8 +16209,8 @@ contents.  (And of course most manuals contain a body of text as well.)
 For more information, see:
 
 @itemize @bullet
-@item @ref{@code{@@settitle}}.
-@item @ref{@code{@@setchapternewpage}}.
+@item @ref{@t{@@settitle}}.
+@item @ref{@t{@@setchapternewpage}}.
 @item @ref{Headings}.
 @item @ref{Titlepage & Copyright Page}.
 @item @ref{Printing Indices & Menus}.
@@ -16250,7 +16260,7 @@ Quotation Marks}).
 @pindex feymr10@r{, installing}
 @cindex Euro font, installing
 If you intend to use the @code{@@euro} command, you should install the
-Euro font, if it is not already installed.  @xref{@code{@@euro}}.
+Euro font, if it is not already installed.  @xref{@t{@@euro}}.
 
 @pindex texinfo.cnf @r{installation}
 @cindex Customizing of @TeX{} for Texinfo
@@ -16258,7 +16268,7 @@ Euro font, if it is not already installed.  @xref{@code{@@euro}}.
 Optionally, you may create an additional @file{texinfo.cnf}, and
 install it as well.  This file is read by @TeX{} when the
 @code{@@setfilename} command is executed
-(@pxref{@code{@@setfilename}}).  You can put any commands you like
+(@pxref{@t{@@setfilename}}).  You can put any commands you like
 there, according to local site-wide conventions.  They will be read by
 @TeX{} when processing any Texinfo document.  For example, if
 @file{texinfo.cnf} contains the line @samp{@@afourpaper} (@pxref{A4
@@ -16409,7 +16419,7 @@ before the @code{@@titlepage} command:
 @end example
 
 
-@node @code{@@smallbook}
+@node @t{@@smallbook}
 @section @code{@@smallbook}: Printing ``Small'' Books
 
 @anchor{smallbook}@c old name
@@ -16440,10 +16450,10 @@ start-of-header and end-of-header lines, the Texinfo mode @TeX{}
 region formatting command, @code{texinfo-tex-region}, will format the
 region in ``small'' book size (@pxref{Start of Header}).
 
-@xref{@code{@@small@dots{}}}, for information about commands that make
+@xref{@t{@@small@dots{}}}, for information about commands that make
 it easier to produce examples for a smaller manual.
 
-@xref{Format with @code{texi2dvi}}, and @ref{Preparing for @TeX{}},
+@xref{Format with @t{texi2dvi}}, and @ref{Preparing for @TeX{}},
 for other ways to format with @code{@@smallbook} that do not require
 changing the source file.
 
@@ -16473,7 +16483,7 @@ would write the header for this manual:
 @end group
 @end example
 
-@xref{Format with @code{texi2dvi}}, and @ref{Preparing for @TeX{}},
+@xref{Format with @t{texi2dvi}}, and @ref{Preparing for @TeX{}},
 for other ways to format for different paper sizes that do not require
 changing the source file.
 
@@ -16484,7 +16494,7 @@ You may or may not prefer the formatting that results from the command
 wide format.
 
 
-@node @code{@@pagesizes}
+@node @t{@@pagesizes}
 @section @code{@@pagesizes} [@var{width}][, @var{height}]: Custom Page Sizes
 @anchor{pagesizes}@c old node name
 
@@ -16522,7 +16532,7 @@ To make more elaborate changes, such as changing any of the page
 margins, you must define a new command in @file{texinfo.tex} or
 @file{texinfo.cnf}.
 
-@xref{Format with @code{texi2dvi}}, and @ref{Preparing for @TeX{}},
+@xref{Format with @t{texi2dvi}}, and @ref{Preparing for @TeX{}},
 for other ways to specify @code{@@pagesizes} that do not require
 changing the source file.
 
@@ -16598,7 +16608,7 @@ magnifications.  Be prepared to experiment.
 The simplest way to generate PDF output from Texinfo source is to run
 the convenience script @command{texi2pdf} (or @command{pdftexi2dvi});
 this executes the @command{texi2dvi} script with the @option{--pdf}
-option (@pxref{Format with @code{texi2dvi}}).  If for some reason you
+option (@pxref{Format with @t{texi2dvi}}).  If for some reason you
 want to process the document by hand, you can run the @command{pdftex}
 program instead of plain @command{tex}.  That is, run @samp{pdftex
 foo.texi} instead of @samp{tex foo.texi}.
@@ -16647,7 +16657,7 @@ and you can get it over the Internet or on physical media.  See
 @c please keep that text in sync with www.gnu.org/prep/FTP
 
 
-@node Generic Translator @code{texi2any}
+@node Generic Translator @t{texi2any}
 @chapter @code{texi2any}: The Generic Translator for Texinfo
 
 @command{texi2any} is the generic translator for Texinfo that can
@@ -16682,12 +16692,12 @@ The rest of this chapter goes into the details.
 
 @menu
 * Reference Implementation:: @command{texi2any}: the reference implementation.
-* Invoking @code{texi2any}::        Running the translator from a shell.
-* @code{texi2any} Printed Output::  Calling @command{texi2dvi}.
+* Invoking @t{texi2any}::        Running the translator from a shell.
+* @t{texi2any} Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
 * Customization Variables::  Configuring @command{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
-* @code{texi2html}::                An ancestor of @command{texi2any}.
+* @t{texi2html}::                An ancestor of @command{texi2any}.
 @end menu
 
 
@@ -16718,7 +16728,7 @@ processor was made compatible with the C implementation of
 implementations (@pxref{History}).  The current reference
 implementation, @command{texi2any}, inherited the design of
 customization and other features from @command{texi2html} (for more on
-@command{texi2html} compatibility, @pxref{@code{texi2html}}).
+@command{texi2html} compatibility, @pxref{@t{texi2html}}).
 However, @code{texi2any} is a full reimplementation: it constructs a
 tree-based representation of the input document for all back-ends to
 work from.
@@ -16731,7 +16741,7 @@ to parse Texinfo input to at least make use of these tests.
 
 @cindex Examples of using @command{texi2any}
 @findex Texinfo::Parser module
-The @command{texi2html} wrapper script (@pxref{@code{texi2html}})
+The @command{texi2html} wrapper script (@pxref{@t{texi2html}})
 provides a simple example of calling @command{texi2any} from a shell
 script; it's in @file{util/texi2html} in the Texinfo sources.  More
 consequentially, @command{texi-elements-by-size} is an example Perl
@@ -16747,7 +16757,7 @@ forward, we ask authors of Texinfo documents to use only
 @command{texi2any}.
 
 
-@node Invoking @code{texi2any}
+@node Invoking @t{texi2any}
 @section Invoking @command{texi2any}/@code{makeinfo} from a Shell
 
 @anchor{Invoking makeinfo}
@@ -16768,8 +16778,8 @@ texi2any --info bison.texinfo
 You can specify more than one input file name; each is processed in
 turn.  If an input file name is @samp{-}, standard input is read.
 
-@anchor{@code{makeinfo} options}
-@c anchor{makeinfo options}
+@anchor{@t{makeinfo} Options}
+@c anchor{makeinfo options}@c prev name
 @cindex @code{makeinfo} options
 @cindex Options for @code{makeinfo}
 @anchor{texi2any Options}
@@ -16837,7 +16847,7 @@ standalone style sheets.
 @opindex -D @var{var}
 Cause the Texinfo variable @var{var} to be defined.  This is
 equivalent to @code{@@set @var{var}} in the Texinfo file
-(@pxref{@code{@@set @@clear @@value}}).
+(@pxref{@t{@@set @@clear @@value}}).
 
 @item --disable-encoding
 @itemx --enable-encoding
@@ -16846,7 +16856,7 @@ equivalent to @code{@@set @var{var}} in the Texinfo file
 By default, or with @option{--enable-encoding}, output accented and
 special characters in Info and plain text output based on
 @samp{@@documentencoding}.  With @option{--disable-encoding}, 7-bit
-ASCII transliterations are output.  @xref{@code{@@documentencoding}},
+ASCII transliterations are output.  @xref{@t{@@documentencoding}},
 and @ref{Inserting Accents}.
 
 @item --docbook
@@ -16858,17 +16868,17 @@ Generate Docbook output (rather than Info).
 Use @var{lang} to translate Texinfo keywords which end up in the
 output document.  The default is the locale specified by the
 @code{@@documentlanguage} command if there is one, otherwise English
-(@pxref{@code{@@documentlanguage}}).
+(@pxref{@t{@@documentlanguage}}).
 
 @item --dvi
 @opindex --dvi
 Generate a TeX DVI file using @command{texi2dvi}, rather than Info
-(@pxref{@code{texi2any} Printed Output}).
+(@pxref{@t{texi2any} Printed Output}).
 
 @item --dvipdf
 @opindex --dvipdf
 Generate a PDF file using @command{texi2dvi --dvipdf}, rather than
-Info (@pxref{@code{texi2any} Printed Output}).
+Info (@pxref{@t{texi2any} Printed Output}).
 
 @item --error-limit=@var{limit}
 @itemx -e @var{limit}
@@ -16963,7 +16973,7 @@ ignored.
 Generate Info output.  By default, if the output file contains more
 than about 300,000 bytes, it is split into shorter subfiles of about
 that size.  The name of the output file and any subfiles is determined
-by @code{@@setfilename} (@pxref{@code{@@setfilename}}).  @xref{Tag and
+by @code{@@setfilename} (@pxref{@t{@@setfilename}}).  @xref{Tag and
 Split Files}.
 
 @item --init-file=@var{file}
@@ -17087,7 +17097,7 @@ Specify that the output should be directed to @var{file}.  This
 overrides any file name specified in an @code{@@setfilename} command
 found in the Texinfo source.  If neither @code{@@setfilename} nor this
 option are specified, the input file name is used to determine the
-output name.  @xref{@code{@@setfilename}}.
+output name.  @xref{@t{@@setfilename}}.
 
 If @var{file} is @samp{-}, output goes to standard output and
 @samp{--no-split} is implied.
@@ -17121,7 +17131,7 @@ If @var{path} is not given, the current directory is prepended.  See
 @opindex -p @var{indent}
 Set the paragraph indentation style to @var{indent}.  The value set by
 this option overrides the value set in a Texinfo file by an
-@code{@@paragraphindent} command (@pxref{@code{@@paragraphindent}}).
+@code{@@paragraphindent} command (@pxref{@t{@@paragraphindent}}).
 The value of @var{indent} is interpreted as follows:
 
 @table @asis
@@ -17142,7 +17152,7 @@ following a section heading, which are not indented.
 @item --pdf
 @opindex --pdf
 Generate a PDF file using @command{texi2dvi --pdf}, rather than Info
-(@pxref{@code{texi2any} Printed Output}).
+(@pxref{@t{texi2any} Printed Output}).
 
 @item --plaintext
 @opindex --plaintext
@@ -17164,7 +17174,7 @@ to standard output by default; this can be overridden with @option{-o}.
 @item --ps
 @opindex --ps
 Generate a PostScript file using @command{texi2dvi --ps}, rather than
-Info (@pxref{@code{texi2any} Printed Output}).
+Info (@pxref{@t{texi2any} Printed Output}).
 
 @item --set-customization-variable @var{var}=@var{value}
 @itemx -c @var{var}=@var{value}
@@ -17220,7 +17230,7 @@ purpose of file name creation.  @xref{HTML Xref 8-bit Character Expansion}.
 
 @item -U @var{var}
 Cause @var{var} to be undefined.  This is equivalent to @code{@@clear
-@var{var}} in the Texinfo file (@pxref{@code{@@set @@clear @@value}}).
+@var{var}} in the Texinfo file (@pxref{@t{@@set @@clear @@value}}).
 
 @item --verbose
 @opindex --verbose
@@ -17237,7 +17247,7 @@ Print the version number, then exit successfully.
 @item --Xopt @var{str}
 @opindex --Xopt @var{str}
 Pass @var{str} (a single shell word) to @command{texi2dvi}; may be
-repeated (@pxref{@code{texi2any} Printed Output}).
+repeated (@pxref{@t{texi2any} Printed Output}).
 
 @item --xml
 @opindex --xml
@@ -17258,7 +17268,7 @@ docbook  dvi  dvipdf  html  info  pdf  plaintext  ps  xml
 If not set or otherwise specified, Info output is the default.
 
 
-@node @code{texi2any} Printed Output
+@node @t{texi2any} Printed Output
 @section @command{texi2any} Printed Output
 
 @cindex Printed output, through @command{texi2any}
@@ -17272,7 +17282,7 @@ requested.
 
 The output format options for this are @option{--dvi},
 @option{--dvipdf}, @option{--pdf}, and @option{--pdf}.  @xref{Format
-with @code{texi2dvi}}, for more details on these options and general
+with @t{texi2dvi}}, for more details on these options and general
 @command{texi2dvi} operation.  In addition, the @option{--verbose},
 @option{--silent}, and @option{--quiet} options are passed on if
 specified; the @option{-I} and @option{-o} options are likewise passed
@@ -17486,7 +17496,7 @@ is the case, for example, for HTML for @code{documentdescription}.
 @cindex Options, customization variables for
 
 The following table gives the customization variables associated with
-some command line options.  @xref{Invoking @code{texi2any}}, for the
+some command line options.  @xref{Invoking @t{texi2any}}, for the
 meaning of the options.
 
 @multitable @columnfractions 0.5 0.5
@@ -17598,7 +17608,7 @@ special elements, but not for footers and headers; default
 @cindex @code{<body>} text, customizing
 For HTML, the text appearing in @code{<body>}.  By default, set
 automatically, taking into account the document language
-(@pxref{@code{@@documentlanguage}}).
+(@pxref{@t{@@documentlanguage}}).
 
 @item CASE_INSENSITIVE_FILENAMES
 For HTML@.  Construct output file names as if the filesystem were case
@@ -17766,19 +17776,19 @@ beginning of the output; default false.
 
 @item INLINE_INSERTCOPYING
 If set, @code{@@insertcopying} is replaced by the @code{@@copying}
-content (@pxref{@code{@@copying}}) as if @code{@@insertcopying} were a
+content (@pxref{@t{@@copying}}) as if @code{@@insertcopying} were a
 user-defined macro; default false.
 
 @item INPUT_ENCODING_NAME
 Normalized encoding name suitable for output.  Should be a usable
 charset name in HTML, typically one of the preferred IANA encoding
 names.  You should not need to use this variable, since it is set by
-@code{@@documentencoding} (@pxref{@code{@@documentencoding}}).
+@code{@@documentencoding} (@pxref{@t{@@documentencoding}}).
 
 @item INPUT_PERL_ENCODING
 Perl encoding used to process the Texinfo source.  You should not need
 to use that variable, since it is set by @code{@@documentencoding}
-(@pxref{@code{@@documentencoding}}).
+(@pxref{@t{@@documentencoding}}).
 
 @item KEEP_TOP_EXTERNAL_REF
 For HTML@.  If set, do not ignore @samp{Top} as the first 
@@ -17880,7 +17890,7 @@ information is used to set the output encoding name.  If no input
 encoding is specified, the default output encoding name may be set by
 the output format.  In particular, the XML-based formats use
 @code{utf-8} for @code{OUTPUT_ENCODING_NAME} if the encoding is not
-otherwise specified.  @xref{@code{@@documentencoding}}.
+otherwise specified.  @xref{@t{@@documentencoding}}.
 
 @item OVERVIEW_LINK_TO_TOC
 If set, the cross references in the Overview link to the corresponding
@@ -17910,7 +17920,7 @@ HTML file; default unset.
 @item PREFIX
 The output file prefix, which is prepended to some output file names.
 By default it is set by @code{@@setfilename} or from the input file
-(@pxref{@code{@@setfilename}}).  How this value is used depends on the
+(@pxref{@t{@@setfilename}}).  How this value is used depends on the
 value of other customization variables or command line options, such
 as whether the output is split and @code{NODE_FILENAMES}.  The default
 is unset.
@@ -17978,7 +17988,7 @@ reference file, as is done for the tests.  The default is false.
 
 @item TEXI2DVI
 Name of the command used to produce PostScript, PDF, and DVI; default
-@samp{texi2dvi}.  @xref{@code{texi2any} Printed Output}.
+@samp{texi2dvi}.  @xref{@t{texi2any} Printed Output}.
 
 @item TEXI2HTML
 @cindex compatibility, with @command{texi2html}
@@ -18133,7 +18143,7 @@ default is 300.
 @item XREF_USE_FLOAT_LABEL
 For HTML@.  If set, for the float name in cross references, use the
 float label instead of the type followed by the float number
-(@pxref{@code{@@float}}).  The default is off.
+(@pxref{@t{@@float}}).  The default is off.
 
 @item XREF_USE_NODE_NAME_ARG
 For HTML@.  Only relevant for cross reference commands with no cross
@@ -18162,7 +18172,7 @@ otherwise use the node name or section name depending on
 various places: cross references, page footers, the help page,
 alternate text for images, and so on.  The string chosen depends on
 the value of the @code{documentlanguage} at the time of the string
-being output (@pxref{@code{@@documentlanguage}}, for the Texinfo
+being output (@pxref{@t{@@documentlanguage}}, for the Texinfo
 command interface).
 
 @pindex libintl-perl @r{Gettext implementation}
@@ -18250,7 +18260,7 @@ format, while nevertheless with rich formatting it may be translated
 appropriately in many languages.
 
 
-@node @code{texi2html}
+@node @t{texi2html}
 @section @code{texi2html}: Ancestor of @code{texi2any}
 
 @pindex texi2html
@@ -18372,9 +18382,9 @@ For information on installing the Info file in the Info system,
 @pxref{Installing an Info File}.
 
 @menu
-* @code{makeinfo} Advantages::         @code{makeinfo} provides better error checking.
-* @code{makeinfo} in Emacs::           How to run @code{makeinfo} from Emacs.
-* @code{texinfo-format} commands::     Two Info formatting commands written
+* @t{makeinfo} Advantages::         @code{makeinfo} provides better error checking.
+* @t{makeinfo} in Emacs::           How to run @code{makeinfo} from Emacs.
+* @t{texinfo-format} commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
                                  to @code{makeinfo}.
 * Batch Formatting::            How to format for Info in Emacs Batch mode.
@@ -18383,7 +18393,7 @@ For information on installing the Info file in the Info system,
 @end menu
 
 
-@node @code{makeinfo} Advantages
+@node @t{makeinfo} Advantages
 @subsection @code{makeinfo} Advantages
 
 @anchor{makeinfo advantages}@c old name
@@ -18400,10 +18410,10 @@ The @code{texinfo-format-region} and the @code{texinfo-format-buffer}
 commands may be useful if you cannot run @code{makeinfo}.
 
 
-@node @code{makeinfo} in Emacs
+@node @t{makeinfo} in Emacs
 @subsection Running @code{makeinfo} Within Emacs
 
-@c anchor{makeinfo in Emacs}@c old name
+@c anchor{makeinfo in Emacs}@c prev name
 @cindex Running @code{makeinfo} in Emacs
 @cindex @code{makeinfo} inside Emacs
 @cindex Shell, running @code{makeinfo} in
@@ -18427,7 +18437,7 @@ Format the current buffer for Info.
 
 When you invoke @code{makeinfo-region} the output goes to a temporary
 buffer.  When you invoke @code{makeinfo-buffer} output goes to the
-file set with @code{@@setfilename} (@pxref{@code{@@setfilename}}).
+file set with @code{@@setfilename} (@pxref{@t{@@setfilename}}).
 
 The Emacs @code{makeinfo-region} and @code{makeinfo-buffer} commands
 run the @code{makeinfo} program in a temporary shell buffer.  If
@@ -18486,7 +18496,7 @@ For example, you could write the following in your @file{.emacs} file:
 @c Writing these three cross references using xref results in
 @c three references to the same named manual, which looks strange.
 @iftex
-For more information, see @ref{@code{makeinfo} options}, as well as
+For more information, see @ref{@t{makeinfo} options}, as well as
 ``Easy Customization Interface,'' ``Examining and Setting Variables,''
 and ``Init File'' in @cite{The GNU Emacs Manual}.
 @end iftex
@@ -18495,14 +18505,14 @@ For more information, see@*
 @ref{Easy Customization, , Easy Customization Interface, emacs, The GNU Emacs Manual},@*
 @ref{Examining, , Examining and Setting Variables, emacs, The GNU Emacs Manual},@*
 @ref{Init File, , , emacs, The GNU Emacs Manual}, and@*
-@ref{@code{makeinfo} options}.
+@ref{@t{makeinfo} Options}.
 @end ifnottex
 
 
-@node @code{texinfo-format} commands
+@node @t{texinfo-format} commands
 @subsection The @code{texinfo-format@dots{}} Commands
 
-@c anchor{texinfo-format commands}@c old name
+@c anchor{texinfo-format commands}@c prev name
 
 In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
 file with the @code{texinfo-format-region} command.  This formats the
@@ -18533,7 +18543,7 @@ commands provide you with some error checking, and other functions can
 provide you with further help in finding formatting errors.  These
 procedures are described in an appendix; see @ref{Catching Mistakes}.
 However, the @code{makeinfo} program provides better error checking
-(@pxref{@code{makeinfo} in Emacs}).
+(@pxref{@t{makeinfo} in Emacs}).
 
 
 @node Batch Formatting
@@ -18653,7 +18663,7 @@ need @code{Info-validate}.)  However, you cannot run the @kbd{M-x
 Info-validate} node-checking command on indirect files.  For
 information on how to prevent files from being split and how to
 validate the structure of the nodes, see @ref{Using
-@code{Info-validate}}.
+@t{Info-validate}}.
 
 
 @node Installing an Info File
@@ -18674,7 +18684,7 @@ Info.)
                                  located in other directories.
 * Installing Dir Entries::      How to specify what menu entry to add
                                  to the Info directory.
-* Invoking @code{install-info}::       @code{install-info} options.
+* Invoking @t{install-info}::       @code{install-info} options.
 @end menu
 
 
@@ -18945,7 +18955,7 @@ start at column 32, starting at zero (as in
 most others.  Description for individual utilities best start in
 column 48, where possible.  For more information about formatting see
 the @samp{--calign}, @samp{--align}, and @samp{--max-width} options in
-@ref{Invoking @code{install-info}}.
+@ref{Invoking @t{install-info}}.
 
 If you use @code{@@dircategory} more than once in the Texinfo source,
 each usage specifies the `current' category; any subsequent
@@ -18980,7 +18990,7 @@ documentation for the different programs they can run, as with the
 traditional @command{man} system.
 
 
-@node Invoking @code{install-info}
+@node Invoking @t{install-info}
 @subsection Invoking @command{install-info}
 
 @pindex install-info
@@ -19266,7 +19276,7 @@ HTML@tie{}3.2 standard are also used. 4)@tie{} CSS is used
 (@code{thead}, @code{abbr}, @code{acronym}).
 
 Using @samp{--init-file=html32.pm} produces strict HTML@tie{}3.2
-output (@pxref{Invoking @code{texi2any}}).
+output (@pxref{Invoking @t{texi2any}}).
 
 Please report output from an error-free run of @code{makeinfo} which
 has browser portability problems as a bug (@pxref{Reporting Bugs}).
@@ -19297,7 +19307,7 @@ insensitive filesystem by setting the customization variable
 @code{CASE_INSENSITIVE_FILENAMES}.
 
 It is also possible to split at chapters or sections with
-@option{--split} (@pxref{Invoking @code{texi2any}}).  In that case,
+@option{--split} (@pxref{Invoking @t{texi2any}}).  In that case,
 the file names are constructed after the name of the node associated
 with the relevant sectioning command.  Also, unless
 @option{--no-node-files} is specified, a redirection file is output
@@ -19333,7 +19343,7 @@ Monolithic output (@code{--no-split}) is named according to
 @code{@@setfilename} (with any @samp{.info} extension is replaced with
 @samp{.html}), @code{--output} (the argument is used literally), or
 based on the input file name as a last resort
-(@pxref{@code{@@setfilename}}).
+(@pxref{@t{@@setfilename}}).
 
 
 @node HTML CSS
@@ -19570,7 +19580,7 @@ the @samp{-} and @samp{_} characters are all that can be used.
 restrictive.)
 
 Cross references in Texinfo can refer either to nodes or anchors
-(@pxref{@code{@@anchor}}).  However, anchors are treated identically
+(@pxref{@t{@@anchor}}).  However, anchors are treated identically
 to nodes in this context, so we'll continue to say ``node'' names for
 simplicity.
 
@@ -19652,7 +19662,7 @@ This section describes how they are handled.
 
 First, comments are removed.
 
-Next, any @code{@@value} commands (@pxref{@code{@@set @@value}}) and
+Next, any @code{@@value} commands (@pxref{@t{@@set @@value}}) and
 macro invocations (@pxref{Invoking Macros}) are fully expanded.
 
 Then, for the following commands, the command name and braces are removed,
@@ -19998,7 +20008,7 @@ indicated with an @samp{@@c} at the beginning of a line, optionally
 preceded by whitespace.
 
 Another approach to preserving links to deleted or renamed nodes is to
-use anchors (@pxref{@code{@@anchor}}).  There is no effective
+use anchors (@pxref{@t{@@anchor}}).  There is no effective
 difference between the two approaches.
 
 
@@ -20044,7 +20054,7 @@ Generate a cedilla accent under @var{c}, as in @,{c}.  @xref{Inserting
 Accents}.
 
 @item @@-
-Insert a discretionary hyphenation point.  @xref{@code{@@- @@hyphenation}}.
+Insert a discretionary hyphenation point.  @xref{@t{@@- @@hyphenation}}.
 
 @item @@.
 Produce a period that ends a sentence (usually after an
@@ -20122,38 +20132,38 @@ Change page dimensions for the A4 paper size.  @xref{A4 Paper}.
 
 @item @@alias @var{new}=@var{existing}
 Make the command @samp{@@@var{new}} a synonym for the existing command
-@samp{@@@var{existing}}.  @xref{@code{@@alias}}.
+@samp{@@@var{existing}}.  @xref{@t{@@alias}}.
 
 @item @@allowcodebreaks @var{true-false}
 Control breaking at @samp{-} and @samp{_} in @TeX{}.
-@xref{@code{@@allowcodebreaks}}.
+@xref{@t{@@allowcodebreaks}}.
 
 @item @@anchor@{@var{name}@}
 Define @var{name} as the current location for use as a cross reference
-target.  @xref{@code{@@anchor}}.
+target.  @xref{@t{@@anchor}}.
 
 @item @@appendix @var{title}
 Begin an appendix.  The title appears in the table of contents.  In
 Info, the title is underlined with asterisks.
-@xref{@code{@@unnumbered @@appendix}}.
+@xref{@t{@@unnumbered @@appendix}}.
 
 @item @@appendixsec @var{title}
 @itemx @@appendixsection @var{title}
 Begin an appendix section within an appendix.  The section title
 appears in the table of contents.  In Info, the title is underlined
 with equal signs.  @code{@@appendixsection} is a longer spelling of
-the @code{@@appendixsec} command.  @xref{@code{@@unnumberedsec
+the @code{@@appendixsec} command.  @xref{@t{@@unnumberedsec
 @@appendixsec @@heading}}.
 
 @item @@appendixsubsec @var{title}
 Begin an appendix subsection.  The title appears in the table of
 contents.  In Info, the title is underlined with hyphens.
-@xref{@code{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
+@xref{@t{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
 
 @item @@appendixsubsubsec @var{title}
 Begin an appendix subsubsection.  The title appears in the table of
 contents.  In Info, the title is underlined with periods.
-@xref{@code{@@subsubsection}}.
+@xref{@t{@@subsubsection}}.
 
 @item @@arrow@{@}
 Generate a right arrow glyph: @samp{@arrow{}}.  Used by default
@@ -20162,10 +20172,10 @@ for @code{@@click}.  @xref{Click Sequences}.
 @item @@asis
 Used following @code{@@table}, @code{@@ftable}, and @code{@@vtable} to
 print the table's first column without highlighting (``as is'').
-@xref{@code{@@asis}}.
+@xref{@t{@@asis}}.
 
 @item @@author @var{author}
-Typeset @var{author} flushleft and underline it.  @xref{@code{@@title
+Typeset @var{author} flushleft and underline it.  @xref{@t{@@title
 @@subtitle @@author}}.
 
 @item @@b@{@var{text}@}
@@ -20173,7 +20183,7 @@ Set @var{text} in a @b{bold} font.  No effect in Info.  @xref{Fonts}.
 
 @item @@bullet@{@}
 Generate a large round dot, @bullet{} (@samp{*} in Info).  Often used
-with @code{@@table}.  @xref{@code{@@bullet}}.
+with @code{@@table}.  @xref{@t{@@bullet}}.
 
 @item @@bye
 Stop formatting a file.  The formatters do not see anything in the
@@ -20185,30 +20195,30 @@ any output.  A synonym for @code{@@comment}.  @kbd{DEL} also
 starts a comment.  @xref{Comments}.
 
 @item @@caption
-Define the full caption for an @code{@@float}.  @xref{@code{@@caption
+Define the full caption for an @code{@@float}.  @xref{@t{@@caption
 @@shortcaption}}.
 
 @item @@cartouche
 Highlight an example or quotation by drawing a box with rounded
 corners around it.  Pair with @code{@@end cartouche}.  No effect in
-Info.  @xref{@code{@@cartouche}}.
+Info.  @xref{@t{@@cartouche}}.
 
 @item @@center @var{line-of-text}
 Center the line of text following the command.
-@xref{@code{@@titlefont @@center @@sp}}.
+@xref{@t{@@titlefont @@center @@sp}}.
 
 @item @@centerchap @var{line-of-text}
-Like @code{@@chapter}, but centers the chapter title.  @xref{@code{@@chapter}}.
+Like @code{@@chapter}, but centers the chapter title.  @xref{@t{@@chapter}}.
 
 @item @@chapheading @var{title}
 Print an unnumbered chapter-like heading, but omit from the table of
 contents.  In Info, the title is underlined with asterisks.
-@xref{@code{@@majorheading @@chapheading}}.
+@xref{@t{@@majorheading @@chapheading}}.
 
 @item @@chapter @var{title}
 Begin a numbered chapter.  The chapter title appears in the table of
 contents.  In Info, the title is underlined with asterisks.
-@xref{@code{@@chapter}}.
+@xref{@t{@@chapter}}.
 
 @item @@cindex @var{entry}
 Add @var{entry} to the index of concepts.  @xref{Index Entries, ,
@@ -20216,14 +20226,14 @@ Defining the Entries of an Index}.
 
 @item @@cite@{@var{reference}@}
 Highlight the name of a book or other reference that has no companion
-Info file.  @xref{@code{@@cite}}.
+Info file.  @xref{@t{@@cite}}.
 
 @item @@clear @var{flag}
 Unset @var{flag}, preventing the Texinfo formatting commands from
 formatting text between subsequent pairs of @code{@@ifset @var{flag}}
 and @code{@@end ifset} commands, and preventing
 @code{@@value@{@var{flag}@}} from expanding to the value to which
-@var{flag} is set.  @xref{@code{@@set @@clear @@value}}.
+@var{flag} is set.  @xref{@t{@@set @@clear @@value}}.
 
 @item @@click@{@}
 Represent a single ``click'' in a GUI@.  Used within
@@ -20266,11 +20276,11 @@ menus instead.  @xref{Contents, , Generating a Table of Contents}.
 
 @item @@copying
 Specify copyright holders and copying conditions for the document Pair
-with @code{@@end cartouche}.  @xref{@code{@@copying}}.
+with @code{@@end cartouche}.  @xref{@t{@@copying}}.
 
 @item @@copyright@{@}
 Generate the copyright symbol @copyright{}.
-@xref{@code{@@copyright}}.
+@xref{@t{@@copyright}}.
 
 @item @@defcodeindex @var{index-name}
 Define a new index and its indexing command.  Print entries in an
@@ -20298,7 +20308,7 @@ font.  @xref{New Indices, , Defining New Indices}.
 Must be used within @code{@@ifinfo}; create a new command
 @code{@@@var{newcmd}} for Info that marks text by enclosing it in
 strings that precede and follow the text.
-@xref{@code{@@definfoenclose}}.
+@xref{@t{@@definfoenclose}}.
 
 @item @@defivar @var{class} @var{instance-variable-name}
 @itemx @@defivarx @var{class} @var{instance-variable-name}
@@ -20433,12 +20443,12 @@ Begin the Info directory menu entry for this file.  Pair with
 @item @@display
 Begin a kind of example.  Like @code{@@example} (indent text, do not
 fill), but do not select a new font.  Pair with @code{@@end display}.
-@xref{@code{@@display}}.
+@xref{@t{@@display}}.
 
 @item @@dmn@{@var{dimension}@}
 Format a unit of measure, as in 12@dmn{pt}.  Causes @TeX{} to insert a
 thin space before @var{dimension}.  No effect in Info.
-@xref{@code{@@dmn}}.
+@xref{@t{@@dmn}}.
 
 @item @@docbook
 Enter Docbook completely.  Pair with @code{@@end docbook}.  @xref{Raw
@@ -20446,15 +20456,15 @@ Formatter Commands}.
 
 @item @@documentdescription
 Set the document description text, included in the HTML output.  Pair
-with @code{@@end documentdescription}.  @xref{@code{@@documentdescription}}.
+with @code{@@end documentdescription}.  @xref{@t{@@documentdescription}}.
 
 @item @@documentencoding @var{enc}
 Declare the input encoding to be @var{enc}.
-@xref{@code{@@documentencoding}}.
+@xref{@t{@@documentencoding}}.
 
 @item @@documentlanguage @var{CC}
 Declare the document language as the two-character ISO-639 abbreviation
-@var{CC}.  @xref{@code{@@documentlanguage}}.
+@var{CC}.  @xref{@t{@@documentlanguage}}.
 
 @item @@dotaccent@{@var{c}@}
 Generate a dot accent over the character @var{c}, as in @dotaccent{o}.
@@ -20466,7 +20476,7 @@ Generate dotless i (`@dotless{i}') and dotless j (`@dotless{j}').
 
 @item @@dots@{@}
 Generate an ellipsis, @samp{@dots{}}.
-@xref{@code{@@dots}}.
+@xref{@t{@@dots}}.
 
 @item @@email@{@var{address}[, @var{displayed-text}]@}
 Indicate an electronic mail address.
@@ -20482,12 +20492,12 @@ Commands,,@@-commands}.
 
 @item @@enddots@{@}
 Generate an end-of-sentence ellipsis, like this: @enddots{}
-@xref{@code{@@dots}}.
+@xref{@t{@@dots}}.
 
 @item @@enumerate [@var{number-or-letter}]
 Begin a numbered list, using @code{@@item} for each entry.
 Optionally, start list with @var{number-or-letter}.  Pair with
-@code{@@end enumerate}.  @xref{@code{@@enumerate}}.
+@code{@@end enumerate}.  @xref{@t{@@enumerate}}.
 
 @item @@env@{@var{environment-variable}@}
 Indicate an environment variable name, such as @env{PATH}.
@@ -20495,11 +20505,11 @@ Indicate an environment variable name, such as @env{PATH}.
 
 @item @@equiv@{@}
 Indicate to the reader the exact equivalence of two forms with a
-glyph: @samp{@equiv{}}.  @xref{@code{@@equiv}}.
+glyph: @samp{@equiv{}}.  @xref{@t{@@equiv}}.
 
 @item @@error@{@}
 Indicate to the reader with a glyph that the following text is
-an error message: @samp{@error{}}.  @xref{@code{@@error}}.
+an error message: @samp{@error{}}.  @xref{@t{@@error}}.
 
 @item @@errormsg@{@var{msg}@}
 Report @var{msg} as an error to standard error, and exit unsuccessfully.
@@ -20507,7 +20517,7 @@ Texinfo commands within @var{msg} are expanded to plain text.
 @xref{Conditionals}, and @ref{External Macro Processors}.
 
 @item @@euro@{@}
-Generate the Euro currency sign.  @xref{@code{@@euro}}.
+Generate the Euro currency sign.  @xref{@t{@@euro}}.
 
 @item @@evenfooting [@var{left}] @@| [@var{center}] @@| [@var{right}]
 @itemx @@evenheading [@var{left}] @@| [@var{center}] @@| [@var{right}]
@@ -20522,21 +20532,21 @@ Info.  @xref{Custom Headings, , How to Make Your Own Headings}.
 
 @item @@example
 Begin an example.  Indent text, do not fill, and select fixed-width
-font.  Pair with @code{@@end example}.  @xref{@code{@@example}}.
+font.  Pair with @code{@@end example}.  @xref{@t{@@example}}.
 
 @item @@exampleindent @var{indent}
 Indent example-like environments by @var{indent} number of spaces
-(perhaps 0).  @xref{@code{@@exampleindent}}.
+(perhaps 0).  @xref{@t{@@exampleindent}}.
 
 @item @@exclamdown@{@}
 Generate an upside-down exclamation point.  @xref{Inserting Accents}.
 
 @item @@exdent @var{line-of-text}
-Remove any indentation a line might have.  @xref{@code{@@exdent}}.
+Remove any indentation a line might have.  @xref{@t{@@exdent}}.
 
 @item @@expansion@{@}
 Indicate the result of a macro expansion to the reader with a special
-glyph: @samp{@expansion{}}.  @xref{@code{@@expansion}}.
+glyph: @samp{@expansion{}}.  @xref{@t{@@expansion}}.
 
 @item @@file@{@var{filename}@}
 Highlight the name of a file, buffer, node, directory, etc.  @xref{file, ,
@@ -20553,7 +20563,7 @@ Defining the Entries of an Index}.
 @item @@firstparagraphindent @var{word}
 Control indentation of the first paragraph after section headers
 according to @var{word}, one of `none' or `insert'.
-@xref{@code{@@firstparagraphindent}}.
+@xref{@t{@@firstparagraphindent}}.
 
 @item @@float
 Environment to define floating material.  Pair with @code{@@end float}.
@@ -20563,7 +20573,7 @@ Environment to define floating material.  Pair with @code{@@end float}.
 @itemx @@flushright
 Do not fill text; left (right) justify every line while leaving the
 right (left) end ragged.  Leave font as is.  Pair with @code{@@end
-flushleft} (@code{@@end flushright}).  @xref{@code{@@flushleft
+flushleft} (@code{@@end flushright}).  @xref{@t{@@flushleft
 @@flushright}}.
 
 @item @@fonttextsize @var{10-11}
@@ -20582,23 +20592,23 @@ node style or @samp{separate} for the separate node style.
 
 @item @@format
 Begin a kind of example.  Like @code{@@display}, but do not indent.
-Pair with @code{@@end format}.  @xref{@code{@@example}}.
+Pair with @code{@@end format}.  @xref{@t{@@example}}.
 
 @item @@frenchspacing @var{on-off}
-Control spacing after punctuation.  @xref{@code{@@frenchspacing}}.
+Control spacing after punctuation.  @xref{@t{@@frenchspacing}}.
 
 @item @@ftable @var{formatting-command}
 Begin a two-column table, using @code{@@item} for each entry.
 Automatically enter each of the items in the first column into the
 index of functions.  Pair with @code{@@end ftable}.  The same as
-@code{@@table}, except for indexing.  @xref{@code{@@ftable @@vtable}}.
+@code{@@table}, except for indexing.  @xref{@t{@@ftable @@vtable}}.
 
 @item @@geq@{@}
-Generate a greater-than-or-equal sign, `@geq{}'.  @xref{@code{@@geq @@leq}}.
+Generate a greater-than-or-equal sign, `@geq{}'.  @xref{@t{@@geq @@leq}}.
 
 @item @@group
 Disallow page breaks within following text.  Pair with @code{@@end
-group}.  Ignored in Info.  @xref{@code{@@group}}.
+group}.  Ignored in Info.  @xref{@t{@@group}}.
 
 @item @@guillemetleft@{@}
 @itemx @@guillemetright@{@}
@@ -20623,11 +20633,11 @@ introduce @code{#line} directive.  @xref{Inserting a Hashsign}, and
 @item @@heading @var{title}
 Print an unnumbered section-like heading, but omit from the table of
 contents.  In Info, the title is underlined with equal signs.
-@xref{@code{@@unnumberedsec @@appendixsec @@heading}}.
+@xref{@t{@@unnumberedsec @@appendixsec @@heading}}.
 
 @item @@headings @var{on-off-single-double}
 Turn page headings on or off, and/or specify single-sided or double-sided
-page headings for printing.  @xref{@code{@@headings}}.
+page headings for printing.  @xref{@t{@@headings}}.
 
 @item @@headitem
 Begin a heading row in a multitable.  @xref{Multitable Rows}.
@@ -20641,14 +20651,14 @@ Enter HTML completely.  Pair with @code{@@end html}.  @xref{Raw
 Formatter Commands}.
 
 @item @@hyphenation@{@var{hy-phen-a-ted words}@}
-Explicitly define hyphenation points.  @xref{@code{@@- @@hyphenation}}.
+Explicitly define hyphenation points.  @xref{@t{@@- @@hyphenation}}.
 
 @item @@i@{@var{text}@}
 Set @var{text} in an @i{italic} font.  No effect in Info.  @xref{Fonts}.
 
 @item @@ifclear @var{txivar}
 If the Texinfo variable @var{txivar} is not set, format the following
-text.  Pair with @code{@@end ifclear}.  @xref{@code{@@set @@clear
+text.  Pair with @code{@@end ifclear}.  @xref{@t{@@set @@clear
 @@value}}.
 
 @item @@ifcommanddefined @var{txicmd}
@@ -20687,7 +20697,7 @@ Pair with @code{@@end ifplaintext}.  @xref{Conditionals}.
 
 @item @@ifset @var{txivar}
 If the Texinfo variable @var{txivar} is set, format the following
-text.  Pair with @code{@@end ifset}.  @xref{@code{@@set @@clear
+text.  Pair with @code{@@end ifset}.  @xref{@t{@@set @@clear
 @@value}}.
 
 @item @@iftex
@@ -20711,11 +20721,11 @@ Include graphics image in external @var{filename} scaled to the given
 Read the contents of Texinfo source file @var{filename}.  @xref{Include Files}.
 
 @item @@indent
-Insert paragraph indentation.  @xref{@code{@@indent}}.
+Insert paragraph indentation.  @xref{@t{@@indent}}.
 
 @item @@indentedblock
 Indent a block of arbitary text on the left.  Pair with @code{@@end
-indentedblock}.  @xref{@code{@@indentedblock}}.
+indentedblock}.  @xref{@t{@@indentedblock}}.
 
 @item @@indicateurl@{@var{indicateurl}@}
 Indicate text that is a uniform resource locator for the World Wide
@@ -20723,7 +20733,7 @@ Web.  @xref{indicateurl, , @code{@@indicateurl}}.
 
 @item @@inforef@{@var{node-name}, [@var{entry-name}], @var{info-file-name}@}
 Make a cross reference to an Info file for which there is no printed
-manual.  @xref{@code{@@inforef}}.
+manual.  @xref{@t{@@inforef}}.
 
 @item @@inlinefmt@{@var{fmt}, @var{text}@}
 @itemx @@inlineraw@{@var{fmt}, @var{raw-text}@}
@@ -20740,7 +20750,7 @@ File Header}.
 
 @item @@insertcopying
 Insert the text previously defined with the @code{@@copying}
-environment.  @xref{@code{@@insertcopying}}.
+environment.  @xref{@t{@@insertcopying}}.
 
 @item @@item
 Indicate the beginning of a marked paragraph for @code{@@itemize} and
@@ -20751,13 +20761,13 @@ entry for @code{@@table}, @code{@@ftable}, and @code{@@vtable}.
 @item @@itemize @var{mark-generating-character-or-command}
 Begin an unordered list: indented paragraphs with a mark, such as
 @code{@@bullet}, inside the left margin at the beginning of each item.
-Pair with @code{@@end itemize}.  @xref{@code{@@itemize}}.
+Pair with @code{@@end itemize}.  @xref{@t{@@itemize}}.
 
 @item @@itemx
 Like @code{@@item} but do not generate extra vertical space above the
 item text.  Thus, when several items have the same description, use
 @code{@@item} for the first and @code{@@itemx} for the others.
-@xref{@code{@@itemx}}.
+@xref{@t{@@itemx}}.
 
 @item @@kbd@{@var{keyboard-characters}@}
 Indicate characters of input to be typed by users.  @xref{kbd,, @code{@@kbd}}.
@@ -20780,18 +20790,18 @@ Generate the uppercase and lowercase Polish suppressed-L letters,
 respectively: @L{}, @l{}.
 
 @item @@LaTeX@{@}
-Generate the @LaTeX{} logo.  @xref{@code{@@TeX @@LaTeX}}.
+Generate the @LaTeX{} logo.  @xref{@t{@@TeX @@LaTeX}}.
 
 @item @@leq@{@}
-Generate a less-than-or-equal sign, `@leq{}'.  @xref{@code{@@geq @@leq}}.
+Generate a less-than-or-equal sign, `@leq{}'.  @xref{@t{@@geq @@leq}}.
 
 @item @@lisp
 Begin an example of Lisp code.  Indent text, do not fill, and select
-fixed-width font.  Pair with @code{@@end lisp}.  @xref{@code{@@lisp}}.
+fixed-width font.  Pair with @code{@@end lisp}.  @xref{@t{@@lisp}}.
 
 @item @@listoffloats
 Produce a table-of-contents-like listing of @code{@@float}s.
-@xref{@code{@@listoffloats}}.
+@xref{@t{@@listoffloats}}.
 
 @item @@lowersections
 Change subsequent chapters to sections, sections to subsections, and so
@@ -20805,7 +20815,7 @@ Pair with @code{@@end macro}.  @xref{Defining Macros}.
 @item @@majorheading @var{title}
 Print an unnumbered chapter-like heading, but omit from the table of
 contents.  This generates more vertical whitespace before the heading
-than the @code{@@chapheading} command.  @xref{@code{@@majorheading
+than the @code{@@chapheading} command.  @xref{@t{@@majorheading
 @@chapheading}}.
 
 @item @@math@{@var{mathematical-expression}@}
@@ -20816,7 +20826,7 @@ Mark the beginning of a menu of nodes.  No effect in a printed manual.
 Pair with @code{@@end menu}.  @xref{Menus}.
 
 @item @@minus@{@}
-Generate a minus sign, `@minus{}'.  @xref{@code{@@minus}}.
+Generate a minus sign, `@minus{}'.  @xref{@t{@@minus}}.
 
 @item @@multitable @var{column-width-spec}
 Begin a multi-column table.  Begin each row with @code{@@item} or
@@ -20826,14 +20836,14 @@ Begin a multi-column table.  Begin each row with @code{@@item} or
 @item @@need @var{n}
 Start a new page in a printed manual if fewer than @var{n} mils
 (thousandths of an inch) remain on the current page.
-@xref{@code{@@need}}.
+@xref{@t{@@need}}.
 
 @item @@node @var{name}, @var{next}, @var{previous}, @var{up}
-Begin a new node.  @xref{@code{@@node}}.
+Begin a new node.  @xref{@t{@@node}}.
 
 @item @@noindent
 Prevent text from being indented as if it were a new paragraph.
-@xref{@code{@@noindent}}.
+@xref{@t{@@noindent}}.
 
 @item @@novalidate
 Suppress validation of node references and omit creation of auxiliary
@@ -20871,7 +20881,7 @@ Generate the feminine and masculine Spanish ordinals, respectively:
 
 @item @@page
 Start a new page in a printed manual.  No effect in Info.
-@xref{@code{@@page}}.
+@xref{@t{@@page}}.
 
 @item @@pagesizes [@var{width}][, @var{height}]
 Change page dimensions.  @xref{pagesizes}.
@@ -20879,12 +20889,12 @@ Change page dimensions.  @xref{pagesizes}.
 @item @@paragraphindent @var{indent}
 Indent paragraphs by @var{indent} number of spaces (perhaps 0); preserve
 source file indentation if @var{indent} is @code{asis}.
-@xref{@code{@@paragraphindent}}.
+@xref{@t{@@paragraphindent}}.
 
 @item @@part @var{title}
 Begin a group of chapters or appendixes; included in the tables of
 contents and produces a page of its own in printed output.
-@xref{@code{@@part}}.
+@xref{@t{@@part}}.
 
 @item @@pindex @var{entry}
 Add @var{entry} to the index of programs.  @xref{Index Entries, , Defining
@@ -20892,15 +20902,15 @@ the Entries of an Index}.
 
 @item @@point@{@}
 Indicate the position of point in a buffer to the reader with a glyph:
-@samp{@point{}}.  @xref{@code{@@point}}.
+@samp{@point{}}.  @xref{@t{@@point}}.
 
 @item @@pounds@{@}
 Generate the pounds sterling currency sign.
-@xref{@code{@@pounds}}.
+@xref{@t{@@pounds}}.
 
 @item @@print@{@}
 Indicate printed output to the reader with a glyph: @samp{@print{}}.
-@xref{@code{@@print}}.
+@xref{@t{@@print}}.
 
 @item @@printindex @var{index-name}
 Generate the alphabetized index for @var{index-name} (using two
@@ -20909,7 +20919,7 @@ columns in a printed manual).  @xref{Printing Indices & Menus}.
 @item @@pxref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
 Make a reference that starts with a lowercase `see' in a printed
 manual.  Use within parentheses only.  Only the first argument is
-mandatory.  @xref{@code{@@pxref}}.
+mandatory.  @xref{@t{@@pxref}}.
 
 @item @@questiondown@{@}
 Generate an upside-down question mark.  @xref{Inserting Accents}.
@@ -20917,7 +20927,7 @@ Generate an upside-down question mark.  @xref{Inserting Accents}.
 @item @@quotation
 Narrow the margins to indicate text that is quoted from another work.
 Takes optional argument specifying prefix text, e.g., an author name.
-Pair with @code{@@end quotation}.  @xref{@code{@@quotation}}.
+Pair with @code{@@end quotation}.  @xref{@t{@@quotation}}.
 
 @item @@quotedblleft@{@}
 @itemx @@quotedblright@{@}
@@ -20936,7 +20946,7 @@ Set @var{text} in the regular @r{roman} font.  No effect in Info.
 @item @@raggedright
 Fill text; left justify every line while leaving the right end ragged.
 Leave font as is.  Pair with @code{@@end raggedright}.  No effect in
-Info.  @xref{@code{@@raggedright}}.
+Info.  @xref{@t{@@raggedright}}.
 
 @item @@raisesections
 Change subsequent sections to chapters, subsections to sections, and so
@@ -20945,7 +20955,7 @@ on.  @xref{Raise/lower sections}.
 @item @@ref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
 Make a plain reference that does not start with any special text.
 Follow command with a punctuation mark.  Only the first argument is
-mandatory.  @xref{@code{@@ref}}.
+mandatory.  @xref{@t{@@ref}}.
 
 @item @@refill
 @findex refill
@@ -20956,11 +20966,11 @@ it in the source to some manuals, as it does no harm.
 
 @item @@registeredsymbol@{@}
 Generate the legal symbol @registeredsymbol{}.
-@xref{@code{@@registeredsymbol}}.
+@xref{@t{@@registeredsymbol}}.
 
 @item @@result@{@}
 Indicate the result of an expression to the reader with a special
-glyph: @samp{@result{}}.  @xref{@code{@@result}}.
+glyph: @samp{@result{}}.  @xref{@t{@@result}}.
 
 @item @@ringaccent@{@var{c}@}
 Generate a ring accent over the next character, as in @ringaccent{o}.
@@ -20983,15 +20993,15 @@ Begin a section within a chapter.  The section title appears in the
 table of contents.  In Info, the title is underlined with equal signs.
 Within @code{@@chapter} and @code{@@appendix}, the section title is
 numbered; within @code{@@unnumbered}, the section is unnumbered.
-@xref{@code{@@section}}.
+@xref{@t{@@section}}.
 
 @item @@set @var{txivar} [@var{string}]
 Define the Texinfo variable @var{txivar}, optionally to the value
-@var{string}.  @xref{@code{@@set @@clear @@value}}.
+@var{string}.  @xref{@t{@@set @@clear @@value}}.
 
 @item @@setchapternewpage @var{on-off-odd}
 Specify whether chapters start on new pages, and if so, whether on
-odd-numbered (right-hand) new pages.  @xref{@code{@@setchapternewpage}}.
+odd-numbered (right-hand) new pages.  @xref{@t{@@setchapternewpage}}.
 
 @item @@setcontentsaftertitlepage
 Put the table of contents after the @samp{@@end titlepage} even if the
@@ -21000,7 +21010,7 @@ Put the table of contents after the @samp{@@end titlepage} even if the
 @item @@setfilename @var{info-file-name}
 Provide a name to be used for the output files.  This command is essential
 for @TeX{} formatting as well, even though it produces no output of
-its own.  @xref{@code{@@setfilename}}.
+its own.  @xref{@t{@@setfilename}}.
 
 @item @@setshortcontentsaftertitlepage
 Place the short table of contents after the @samp{@@end titlepage}
@@ -21010,10 +21020,10 @@ command even if the @code{@@shortcontents} command is at the end.
 @item @@settitle @var{title}
 Specify the title for page headers in a printed manual, and the
 default document title for HTML @samp{<head>}.
-@xref{@code{@@settitle}}.
+@xref{@t{@@settitle}}.
 
 @item @@shortcaption
-Define the short caption for an @code{@@float}.  @xref{@code{@@caption
+Define the short caption for an @code{@@float}.  @xref{@t{@@caption
 @@shortcaption}}.
 
 @item @@shortcontents
@@ -21022,7 +21032,7 @@ relevant to Info, which uses menus rather than tables of contents.
 @xref{Contents, , Generating a Table of Contents}.
 
 @item @@shorttitlepage @var{title}
-Generate a minimal title page.  @xref{@code{@@titlepage}}.
+Generate a minimal title page.  @xref{@t{@@titlepage}}.
 
 @item @@slanted@{@var{text}@}
 Set @var{text} in a @slanted{slanted} font if possible.  No effect
@@ -21031,38 +21041,38 @@ in Info.  @xref{Fonts}.
 @item @@smallbook
 Cause @TeX{} to produce a printed manual in a 7 by 9.25 inch format
 rather than the regular 8.5 by 11 inch format.
-@xref{@code{@@smallbook}}.  Also, see @ref{@code{@@small@dots{}}}.
+@xref{@t{@@smallbook}}.  Also, see @ref{@t{@@small@dots{}}}.
 
 @item @@smalldisplay
 Begin a kind of example.  Like @code{@@display}, but use a smaller
 font size where possible.  Pair with @code{@@end smalldisplay}.
-@xref{@code{@@small@dots{}}}.
+@xref{@t{@@small@dots{}}}.
 
 @item @@smallexample
 Begin an example.  Like @code{@@example}, but use a smaller font size
 where possible.  Pair with @code{@@end smallexample}.
-@xref{@code{@@small@dots{}}}.
+@xref{@t{@@small@dots{}}}.
 
 @item @@smallformat
 Begin a kind of example.  Like @code{@@format}, but use a smaller font
 size where possible.  Pair with @code{@@end smallformat}.
-@xref{@code{@@small@dots{}}}.
+@xref{@t{@@small@dots{}}}.
 
 @item @@smallindentedblock
 Like @code{@@indentedblock}, but use a smaller font size where
 possible.  Pair with @code{@@end smallindentedblock}.
-@xref{@code{@@small@dots{}}}.
+@xref{@t{@@small@dots{}}}.
 
 @item @@smalllisp
 Begin an example of Lisp code.  Same as @code{@@smallexample}.  Pair
-with @code{@@end smalllisp}.  @xref{@code{@@small@dots{}}}.
+with @code{@@end smalllisp}.  @xref{@t{@@small@dots{}}}.
 
 @item @@smallquotation
 Like @code{@@quotation}, but use a smaller font size where possible.
-Pair with @code{@@end smallquotation}.  @xref{@code{@@small@dots{}}}.
+Pair with @code{@@end smallquotation}.  @xref{@t{@@small@dots{}}}.
 
 @item @@sp @var{n}
-Skip @var{n} blank lines.  @xref{@code{@@sp}}.
+Skip @var{n} blank lines.  @xref{@t{@@sp}}.
 
 @item @@ss@{@}
 Generate the German sharp-S es-zet letter, @ss{}.  @xref{Inserting Accents}.
@@ -21075,29 +21085,29 @@ Emphasize @var{text} more strongly than @code{@@emph}, by using
 @item @@subheading @var{title}
 Print an unnumbered subsection-like heading, but omit from the table
 of contents of a printed manual.  In Info, the title is underlined
-with hyphens.  @xref{@code{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
+with hyphens.  @xref{@t{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
 
 @item @@subsection @var{title}
 Begin a subsection within a section.  The subsection title appears in
 the table of contents.  In Info, the title is underlined with hyphens.
 Same context-dependent numbering as @code{@@section}.
-@xref{@code{@@subsection}}.
+@xref{@t{@@subsection}}.
 
 @item @@subsubheading @var{title}
 Print an unnumbered subsubsection-like heading, but omit from the
 table of contents of a printed manual.  In Info, the title is
-underlined with periods.  @xref{@code{@@subsubsection}}.
+underlined with periods.  @xref{@t{@@subsubsection}}.
 
 @item @@subsubsection @var{title}
 Begin a subsubsection within a subsection.  The subsubsection title
 appears in the table of contents.  In Info, the title is underlined
 with periods.  Same context-dependent numbering as @code{@@section}.
-@xref{@code{@@subsubsection}}.
+@xref{@t{@@subsubsection}}.
 
 @item @@subtitle @var{title}
 In a printed manual, set a subtitle in a normal sized font flush to
 the right-hand side of the page.  Not relevant to Info, which does not
-have title pages.  @xref{@code{@@title @@subtitle @@author}}.
+have title pages.  @xref{@t{@@title @@subtitle @@author}}.
 
 @item @@summarycontents
 Print a short table of contents.  Synonym for @code{@@shortcontents}.
@@ -21126,17 +21136,17 @@ each entry.  Write each first column entry on the same line as
 @code{@@item}.  First column entries are printed in the font resulting
 from @var{formatting-command}.  Pair with @code{@@end table}.
 @xref{Two-column Tables, , Making a Two-column Table}.  Also see
-@ref{@code{@@ftable @@vtable}}, and @ref{@code{@@itemx}}.
+@ref{@t{@@ftable @@vtable}}, and @ref{@t{@@itemx}}.
 
 @item @@TeX@{@}
-Generate the @TeX{} logo.  @xref{@code{@@TeX @@LaTeX}}.
+Generate the @TeX{} logo.  @xref{@t{@@TeX @@LaTeX}}.
 
 @item @@tex
 Enter @TeX{} completely.  Pair with @code{@@end tex}.  @xref{Raw
 Formatter Commands}.
 
 @item @@textdegree@{@}
-Generate the degree symbol.  @xref{@code{@@textdegree}}.
+Generate the degree symbol.  @xref{@t{@@textdegree}}.
 
 @item @@thischapter
 @itemx @@thischaptername
@@ -21158,7 +21168,7 @@ Generate the uppercase and lowercase Icelandic letter thorn, respectively:
 
 @item @@tie@{@}
 Generate a normal interword space at which a line break is not
-allowed.  @xref{@code{@@tie}}.
+allowed.  @xref{@t{@@tie}}.
 
 @item @@tieaccent@{@var{cc}@}
 Generate a tie-after accent over the next two characters @var{cc}, as in
@@ -21172,16 +21182,16 @@ Defining the Entries of an Index}.
 In a printed manual, set a title flush to the left-hand side of the
 page in a larger than normal font and underline it with a black rule.
 Not relevant to Info, which does not have title pages.
-@xref{@code{@@title @@subtitle @@author}}.
+@xref{@t{@@title @@subtitle @@author}}.
 
 @item @@titlefont@{@var{text}@}
 In a printed manual, print @var{text} in a larger than normal font.
-@xref{@code{@@titlefont @@center @@sp}}.
+@xref{@t{@@titlefont @@center @@sp}}.
 
 @item @@titlepage
 Begin the title page.  Write the command on a line of its own, paired
 with @code{@@end titlepage}.  Nothing between @code{@@titlepage} and
-@code{@@end titlepage} appears in Info.  @xref{@code{@@titlepage}}.
+@code{@@end titlepage} appears in Info.  @xref{@t{@@titlepage}}.
 
 @item @@today@{@}
 Insert the current date, in `1 Jan 1900' style.  @xref{Custom
@@ -21194,7 +21204,8 @@ formatted as a chapter-level heading.  The entire top node, including
 the @code{@@node} and @code{@@top} lines, are normally enclosed with
 @code{@@ifnottex ... @@end ifnottex}.  In @TeX{} and
 @code{texinfo-format-buffer}, the @code{@@top} command is merely a
-synonym for @code{@@unnumbered}.  @xref{@code{makeinfo} Pointer Creation}.
+synonym for @code{@@unnumbered}.  @xref{@t{makeinfo} Pointer
+Creation}.
 
 @item @@u@{@var{c}@}
 @itemx @@ubaraccent@{@var{c}@}
@@ -21210,33 +21221,33 @@ Undefine the macro @code{@@@var{macroname}} if it has been defined.
 @item @@unnumbered @var{title}
 Begin a chapter that appears without chapter numbers of any kind.  The
 title appears in the table of contents.  In Info, the title is
-underlined with asterisks.  @xref{@code{@@unnumbered @@appendix}}.
+underlined with asterisks.  @xref{@t{@@unnumbered @@appendix}}.
 
 @item @@unnumberedsec @var{title}
 Begin a section that appears without section numbers of any kind.  The
 title appears in the table of contents of a printed manual.  In Info,
-the title is underlined with equal signs.  @xref{@code{@@unnumberedsec
+the title is underlined with equal signs.  @xref{@t{@@unnumberedsec
 @@appendixsec @@heading}}.
 
 @item @@unnumberedsubsec @var{title}
 Begin an unnumbered subsection.  The title appears in the table of
 contents.  In Info, the title is underlined with hyphens.
-@xref{@code{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
+@xref{@t{@@unnumberedsubsec @@appendixsubsec @@subheading}}.
 
 @item @@unnumberedsubsubsec @var{title}
 Begin an unnumbered subsubsection.  The title appears in the table of
 contents.  In Info, the title is underlined with periods.
-@xref{@code{@@subsubsection}}.
+@xref{@t{@@subsubsection}}.
 
 @item @@uref@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
 @itemx @@url@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
 Define a cross reference to an external uniform resource locator,
-e.g., for the World Wide Web.  @xref{@code{@@url}}.
+e.g., for the World Wide Web.  @xref{@t{@@url}}.
 
 @item @@urefbreakstyle @var{style}
 Specify how @code{@@uref}/@code{@@url} should break at special
 characters: @code{after}, @code{before}, @code{none}.
-@xref{@code{@@url}}.
+@xref{@t{@@url}}.
 
 @item @@v@{@var{c}@}
 Generate check accent over the character @var{c}, as in @v{o}.
@@ -21244,7 +21255,7 @@ Generate check accent over the character @var{c}, as in @v{o}.
 
 @item @@value@{@var{txivar}@}
 Insert the value, if any, of the Texinfo variable @var{txivar},
-previously defined by @code{@@set}.  @xref{@code{@@set @@clear
+previously defined by @code{@@set}.  @xref{@t{@@set @@clear
 @@value}}.
 
 @item @@var@{@var{metasyntactic-variable}@}
@@ -21259,11 +21270,11 @@ Texinfo special characters.  @xref{verb,,@code{verb}}.
 
 @item @@verbatim
 Output the text of the environment exactly as is (in the fixed-width
-font).  Pair with @code{@@end verbatim}.  @xref{@code{@@verbatim}}.
+font).  Pair with @code{@@end verbatim}.  @xref{@t{@@verbatim}}.
 
 @item @@verbatiminclude @var{filename}
 Output the contents of @var{filename} exactly as is (in the
-fixed-width font).  @xref{@code{@@verbatiminclude}}.
+fixed-width font).  @xref{@t{@@verbatiminclude}}.
 
 @item @@vindex @var{entry}
 Add @var{entry} to the index of variables.  @xref{Index Entries, ,
@@ -21280,10 +21291,10 @@ only in contexts ignored for Info.  @xref{Copyright}.
 Begin a two-column table, using @code{@@item} for each entry.
 Automatically enter each of the items in the first column into the
 index of variables.  Pair with @code{@@end vtable}.  The same as
-@code{@@table}, except for indexing.  @xref{@code{@@ftable @@vtable}}.
+@code{@@table}, except for indexing.  @xref{@t{@@ftable @@vtable}}.
 
 @item @@w@{@var{text}@}
-Disallow line breaks within @var{text}.  @xref{@code{@@w}}.
+Disallow line breaks within @var{text}.  @xref{@t{@@w}}.
 
 @item @@xml
 Enter XML completely.  Pair with @code{@@end xml}.  @xref{Raw
@@ -21292,7 +21303,7 @@ Formatter Commands}.
 @item @@xref@{@var{node}, [@var{entry}], [@var{node-title}], [@var{info-file}], [@var{manual}]@}
 Make a reference that starts with `See' in a printed manual.  Follow
 command with a punctuation mark.  Only the first argument is
-mandatory.  @xref{@code{@@xref}}.
+mandatory.  @xref{@t{@@xref}}.
 
 @item @@xrefautomaticsectiontitle @var{on-off}
 By default, use the section title instead of the node name in cross
@@ -21576,7 +21587,7 @@ in the @code{@@titlepage} section for people reading the printed
 output (@pxref{Short Sample}).
 
 It is easiest to handle such version information using @code{@@set}
-and @code{@@value}.  @xref{@code{@@value} Example}, and @ref{GNU
+and @code{@@value}.  @xref{@t{@@value} Example}, and @ref{GNU
 Sample Texts}.
 
 
@@ -21966,7 +21977,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.526 2013-01-15 01:19:27 karl Exp $
+$Id: texinfo.txi,v 1.527 2013-01-15 23:12:57 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
@@ -22329,7 +22340,7 @@ Cause @TeX{} to start a new chapter on the same page as the last page
 of the preceding chapter, after skipping some vertical whitespace.
 Also cause @TeX{} to typeset for single-sided printing.  (You can
 override the headers format with the @code{@@headings double} command;
-@pxref{@code{@@headings}}.)
+@pxref{@t{@@headings}}.)
 
 @item @code{@@setchapternewpage odd}
 Specify the double-sided heading format, with chapters on new pages.
@@ -22556,19 +22567,19 @@ For finding problems with the structure of nodes and chapters, you can use
 command and you can use the @kbd{M-x Info-validate} command.
 
 @menu
-* @code{makeinfo} Preferred::          @code{makeinfo} finds errors.
+* @t{makeinfo} Preferred::          @code{makeinfo} finds errors.
 * Debugging with Info::         How to catch errors with Info formatting.
 * Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
-* Using @code{texinfo-show-structure}::  How to use @code{texinfo-show-structure}.
-* Using @code{occur}::                 How to list all lines containing a pattern.
-* Running @code{Info-validate}::       How to find badly referenced nodes.
+* Using @t{texinfo-show-structure}::  How to use @code{texinfo-show-structure}.
+* Using @t{occur}::                 How to list all lines containing a pattern.
+* Running @t{Info-validate}::       How to find badly referenced nodes.
 @end menu
 
 
-@node @code{makeinfo} Preferred
+@node @t{makeinfo} Preferred
 @section @code{makeinfo} Preferred
 
-@c anchor{makeinfo Preferred}@c old name
+@c anchor{makeinfo Preferred}@c prev name
 
 The @code{makeinfo} program does an excellent job of catching errors
 and reporting them---far better than @code{texinfo-format-region} or
@@ -22817,7 +22828,7 @@ again. (Note the use of the backslash, @samp{\}.  @TeX{} uses @samp{\}
 instead of @samp{@@}; and in this circumstance, you are working
 directly with @TeX{}, not with Texinfo.)
 
-@node Using @code{texinfo-show-structure}
+@node Using @t{texinfo-show-structure}
 @section Using @code{texinfo-show-structure}
 
 @cindex Showing the structure of a file
@@ -22889,7 +22900,7 @@ You can remind yourself of the structure of a Texinfo file by looking at
 the list in the @samp{*Occur*} window; and if you have mis-named a node
 or left out a section, you can correct the mistake.
 
-@node Using @code{occur}
+@node Using @t{occur}
 @section Using @code{occur}
 
 @cindex Occurrences, listing with @code{@@occur}
@@ -22930,7 +22941,7 @@ therefore have the same `Up' pointer.
 for more information.
 
 
-@node Running @code{Info-validate}
+@node Running @t{Info-validate}
 @section Finding Badly Referenced Nodes
 
 @anchor{Running Info-Validate}@c old name
@@ -22955,14 +22966,14 @@ using @code{texinfo-format-region} or @code{texinfo-format-buffer}, or
 if you write an Info file from scratch.
 
 @menu
-* Using @code{Info-validate}::         How to run @code{Info-validate}.
+* Using @t{Info-validate}::         How to run @code{Info-validate}.
 * Unsplit::                     How to create an unsplit file.
 * Tagifying::                   How to tagify a file.
 * Splitting::                   How to split a file manually.
 @end menu
 
 
-@node Using @code{Info-validate}
+@node Using @t{Info-validate}
 @subsection Using @code{Info-validate}
 
 @cindex Using @code{Info-validate}
@@ -23110,7 +23121,7 @@ Info files are split to save memory.  With smaller files, Emacs does not
 have make such a large buffer to hold the information.
 
 If an Info file has more than 30 nodes, you should also make a tag
-table for it.  @xref{Using @code{Info-validate}}, for information
+table for it.  @xref{Using @t{Info-validate}}, for information
 about creating a tag table.  (Again, tag tables are usually created
 automatically by the formatting command; you only need to create a tag
 table yourself if you are doing the job manually.  Most likely, you
@@ -23257,7 +23268,7 @@ line.
 
 @item <copying text>
 The expansion of an @code{@@copying} environment, if the manual has
-one (@pxref{@code{@@copying}}).
+one (@pxref{@t{@@copying}}).
 
 @item <dir entries>
 The result of any @code{@@dircategory} and @code{@@direntry}
@@ -23380,7 +23391,7 @@ coding: <encoding>
 End:
 @end example
 
-@xref{@code{@@documentencoding}}.
+@xref{@t{@@documentencoding}}.
 
 
 @node Info Format Regular Nodes
