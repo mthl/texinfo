@@ -172,7 +172,7 @@ sub format_text($$)
       $result =~ s/`/" (textlsquo (@)) "/g;
     }
   }
-  return ' "'.$result.'" ';
+  return '"'.$result.'" ';
 }
 
 # output format specific
