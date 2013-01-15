@@ -25,7 +25,7 @@ use strict;
 use Texinfo::Convert::Converter;
 use Texinfo::Common;
 use Texinfo::Convert::Unicode;
-# for debugging
+# for debugging and adding the original line for some commands
 use Texinfo::Convert::Texinfo;
 use Data::Dumper;
 use Carp qw(cluck);
@@ -365,8 +365,9 @@ sub _infoenclose_attribute($$) {
   return $attribute;
 }
 
-sub _texinfo_xml_accent($$;$$)
+sub _texinfo_xml_accent($$$;$$)
 {
+  my $self = shift;
   my $text = shift;
   my $root = shift;
   my $in_upper_case = shift;
@@ -600,7 +601,7 @@ sub _convert($$;$)
       if ($self->{'itemize_line'} and $root->{'type'} 
           and $root->{'type'} eq 'command_as_argument'
           and !$root->{'args'}) {
-        return "<formattingcommand command=\"$root->{'cmdname'}\" />";
+        return "<formattingcommand command=\"$root->{'cmdname'}\"/>";
       }
       return $xml_commands_formatting{$root->{'cmdname'}};
     } elsif ($xml_accent_types{$root->{'cmdname'}}) {
@@ -619,7 +620,7 @@ sub _convert($$;$)
              $attributes .= ' bracketed="off"';
           }
         }
-        return _texinfo_xml_accent($result, $root,  undef, $attributes);
+        return $self->_texinfo_xml_accent($result, $root,  undef, $attributes);
       }
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {

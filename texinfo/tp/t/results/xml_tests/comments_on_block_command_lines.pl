@@ -2745,7 +2745,7 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 <listitem spaces=" "><prepend>x</prepend><para>itemize xit
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" /> </itemprepend><!-- c comm -->
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/> </itemprepend><!-- c comm -->
 <listitem spaces=" "><prepend>&bullet;</prepend><para>itemize bulletit
 </para></listitem></itemize>
 
