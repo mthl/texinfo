@@ -133,7 +133,6 @@ foreach my $command (keys(%default_xml_commands_formatting)) {
   }
 }
 
-
 # Following are XML specific formatting functions.
 
 # format specific.  Used in few places where plain text is used outside
@@ -428,7 +427,11 @@ sub output($$)
 
   my $result = '';
   $result .= $self->_output_text($self->format_header(), $fh);
-  $result .= $self->convert_document_sections($root, $fh);
+  if ($self->get_conf('USE_NODES')) {
+    $result .= $self->convert_document_nodes($root, $fh);
+  } else {
+    $result .= $self->convert_document_sections($root, $fh);
+  }
   $result .= $self->_output_text($self->close_element('texinfo')."\n", $fh);
   if ($fh and $self->{'output_file'} ne '-') {
     $self->register_close_file($self->{'output_file'});
@@ -924,7 +927,10 @@ sub _convert($$;$)
           } else {
             $end_line = "\n";
           }
-          $result .= $self->close_element('node').${end_line};
+          if (! $self->get_conf('USE_NODES')) {
+            $result .= $self->close_element('node');
+          }
+          $result .= ${end_line};
           pop @{$self->{'document_context'}->[-1]->{'monospace'}};
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
           my $attribute = [_leading_spaces($root)];
@@ -933,11 +939,21 @@ sub _convert($$;$)
             unshift @$attribute, ('originalcommand', $root->{'cmdname'});
           }
           $result .= $self->open_element($command, $attribute);
+          my $closed_section_element;
+          if ($self->get_conf('USE_NODES')) {
+            $closed_section_element = $self->close_element($command);
+          } else {
+            $closed_section_element = '';
+          }
+
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
               = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
             $result .= $self->open_element('sectiontitle').$arg
-                      .$self->close_element('sectiontitle').$end_line;
+                      .$self->close_element('sectiontitle')
+                      .$closed_section_element.$end_line;
+          } else {
+            $result .= $closed_section_element;
           }
         } else {
           my $attribute = [_leading_spaces($root)];
@@ -958,8 +974,9 @@ sub _convert($$;$)
         if ($root->{'cmdname'} eq 'bye' and $root->{'parent'}
             and $root->{'parent'}->{'type'}
             and $root->{'parent'}->{'type'} eq 'element'
-            and !($root->{'parent'}->{'extra'} 
-                  and $root->{'parent'}->{'extra'}->{'no_section'})) {
+            and !($root->{'parent'}->{'extra'}
+                  and ($root->{'parent'}->{'extra'}->{'no_section'}
+                       or $root->{'parent'}->{'extra'}->{'no_node'}))) {
           #print STDERR "$root->{'parent'} $root->{'parent'}->{'type'}\n";
           $self->{'pending_bye'} = $self->open_element($command)
                     .$self->close_element($command)."\n";
@@ -1524,15 +1541,17 @@ sub _convert($$;$)
   # The command is closed either when the corresponding tree element
   # is done, and the command is not associated to an element, or when
   # the element is closed.
-  } elsif (($root->{'type'} and $root->{'type'} eq 'element'
-            and $root->{'extra'} and $root->{'extra'}->{'element_command'})
-           or ($root->{'cmdname'} 
-               and $Texinfo::Common::root_commands{$root->{'cmdname'}}
-               and $root->{'cmdname'} ne 'node'
-               and !($root->{'parent'} and $root->{'parent'}->{'type'}
+  } elsif ((($root->{'type'} and $root->{'type'} eq 'element'
+             and $root->{'extra'} and $root->{'extra'}->{'element_command'})
+            or ($root->{'cmdname'} 
+                and $Texinfo::Common::root_commands{$root->{'cmdname'}}
+                and $root->{'cmdname'} ne 'node'
+                and !($root->{'parent'} and $root->{'parent'}->{'type'}
                      and $root->{'parent'}->{'type'} eq 'element'
                      and $root->{'parent'}->{'extra'} 
-                     and $root->{'parent'}->{'extra'}->{'element_command'} eq $root))) {
+                     and $root->{'parent'}->{'extra'}->{'element_command'}
+                     and $root->{'parent'}->{'extra'}->{'element_command'} eq $root)))
+           and !$self->get_conf('USE_NODES')) {
     if ($root->{'type'} and $root->{'type'} eq 'element') {
       $root = $root->{'extra'}->{'element_command'};
     }
@@ -1551,6 +1570,25 @@ sub _convert($$;$)
         $result .= $self->close_element($self->_level_corrected_section($current)) ."\n";
       }
     }
+    if ($self->{'pending_bye'}) {
+      $result .= $self->{'pending_bye'};
+      delete $self->{'pending_bye'};
+    }
+  } elsif ((($root->{'type'} and $root->{'type'} eq 'element'
+             and $root->{'extra'} and $root->{'extra'}->{'element_command'})
+            or ($root->{'cmdname'} 
+                and $root->{'cmdname'} eq 'node'
+                and !($root->{'parent'} and $root->{'parent'}->{'type'}
+                     and $root->{'parent'}->{'type'} eq 'element'
+                     and $root->{'parent'}->{'extra'} 
+                     and $root->{'parent'}->{'extra'}->{'element_command'}
+                     and $root->{'parent'}->{'extra'}->{'element_command'} eq $root)))
+           and $self->get_conf('USE_NODES')) {
+    #if ($root->{'type'} and $root->{'type'} eq 'element') {
+    #  $root = $root->{'extra'}->{'element_command'};
+    #}
+    $result .= $self->close_element('node');
+    
     if ($self->{'pending_bye'}) {
       $result .= $self->{'pending_bye'};
       delete $self->{'pending_bye'};
