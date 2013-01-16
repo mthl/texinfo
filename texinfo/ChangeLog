@@ -1,3 +1,7 @@
+2013-01-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Marking Text): remaining node names needing @t.
+
 2013-01-15  Karl Berry  <karl@gnu.org>
 
 	* po_document/LINGUAS: es.us-ascii is back, paperwork executed
