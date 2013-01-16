@@ -766,9 +766,11 @@ foreach my $raw_command ('verbatim',
   $raw_commands{$raw_command} = 1;
 }
 
+our %texinfo_output_formats;
 foreach my $command (keys(%format_raw_commands), 'info', 'plaintext') {
   $block_commands{'if' . $command} = 'conditional';
   $block_commands{'ifnot' . $command} = 'conditional';
+  $texinfo_output_formats{$command} = $command;
 }
 
 $block_commands{'ifset'} = 'conditional';
@@ -2306,7 +2308,7 @@ Cross reference @-command referencing nodes, like C<@xref>.
 
 Commands delimiting a block with a closing C<@end>.  The value
 is I<conditional> for C<@if> commands, I<def> for definition
-commandslike C<@deffn>, I<raw> for @-commands that have no expansion
+commands like C<@deffn>, I<raw> for @-commands that have no expansion
 of @-commands in their bodies and I<multitable> for C<@multitable>.  
 Otherwise it is set to the number of arguments separated by commas 
 that may appear on the @-command line. That means 0 in most cases, 
@@ -2321,6 +2323,11 @@ as C<@macro>, C<@verbatim> or C<@ignore>.
 
 @-commands associated with raw output format, like C<@html>, or
 C<@docbook>.
+
+=item %texinfo_output_formats
+
+Cannonical output formats that have associated conditionals.  In
+practice C<%format_raw_commands> plus C<info> and C<plaintext>.
 
 =item %def_commands
 
@@ -2417,8 +2424,8 @@ is C<e>.
 
 =item trim_spaces_comment_from_content($contents)
 
-Remove empty spaces after commands or braces at begina and
-and spaces and comments at end from a content array, modifying it.
+Remove empty spaces after commands or braces at begin and
+spaces and comments at end from a content array, modifying it.
 
 =item $normalized_name = normalize_top_node_name ($node_string)
 

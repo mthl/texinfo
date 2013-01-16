@@ -17,7 +17,7 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 #
-# This is a simple subclass of Texinfo::Convert::XML that overrides
+# This is a simple subclass of Texinfo::Convert::TexinfoXML that overrides
 # format specific functions.
 
 package Texinfo::Convert::TexinfoSXML;
@@ -25,18 +25,18 @@ package Texinfo::Convert::TexinfoSXML;
 use 5.00405;
 use strict;
 
-use Texinfo::Convert::XML;
+use Texinfo::Convert::TexinfoXML;
 use Carp qw(cluck);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter Texinfo::Convert::XML);
+@ISA = qw(Exporter Texinfo::Convert::TexinfoXML);
 
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-# This allows declaration       use Texinfo::Convert::XML ':all';
+# This allows declaration       use Texinfo::Convert::TexinfoXML ':all';
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
@@ -132,7 +132,7 @@ sub close_element($$)
   return $result;
 }
 
-my %commands_formatting = %Texinfo::Convert::XML::commands_formatting;
+my %commands_formatting = %Texinfo::Convert::TexinfoXML::commands_formatting;
 
 # format specific
 sub format_atom($$)

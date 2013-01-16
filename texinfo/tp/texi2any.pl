@@ -100,7 +100,7 @@ use Texinfo::Parser;
 use Texinfo::Structuring;
 use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
-use Texinfo::Convert::XML;
+use Texinfo::Convert::TexinfoXML;
 use Texinfo::Convert::TexinfoSXML;
 use Texinfo::Convert::DocBook;
 use Texinfo::Convert::TextContent;
@@ -523,15 +523,31 @@ sub set_expansion($$) {
 }
 
 my $format_from_command_line = 0;
-sub set_format($;$)
+
+my %format_command_line_names = (
+  'xml' => 'texinfoxml',
+);
+
+sub set_format($)
 {
   my $set_format = shift;
-  my $no_associated_texinfo_format = shift;
-  $default_expanded_format = [$set_format]
-    unless ($no_associated_texinfo_format);
+
+  $default_expanded_format = [$set_format] 
+    if ($Texinfo::Common::texinfo_output_formats{$set_format});
   $format_from_command_line = 1;
-  $format = $set_format;
-  return $set_format;
+  my $format;
+  if ($format_command_line_names{$set_format}) {
+    $format = $format_command_line_names{$set_format};
+  } else {
+    $format = $set_format;
+  }
+  return $format;
+}
+
+sub set_global_format($)
+{
+  my $set_format = shift;
+  $format = set_format($set_format);
 }
 
 my $call_texi2dvi = 0;
@@ -814,20 +830,20 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      }
      # special case, this is a pseudo format for debug
      if ($var eq 'DEBUGCOUNT') {
-       $format = set_format('debugcount', 1);
+       $format = set_format('debugcount');
      } elsif ($var eq 'TEXI2HTML') {
        $format = set_format('html');
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      } elsif ($var eq 'DEBUGTREE') {
-       $format = set_format('debugtree', 1);
+       $format = set_format('debugtree');
      } elsif ($var eq 'PLAINTEXINFO') {
-       $format = set_format('plaintexinfo', 1);
+       $format = set_format('plaintexinfo');
      } elsif ($var eq 'RAWTEXT') {
-       $format = set_format('rawtext', 1);
+       $format = set_format('rawtext');
      } elsif ($var eq 'TEXTCONTENT') {
-       $format = set_format('textcontent', 1);
+       $format = set_format('textcontent');
      } elsif ($var eq 'TEXINFOSXML') {
-       $format = set_format('texinfosxml', 1);
+       $format = set_format('texinfosxml');
      }
      set_from_cmdline ($var, $value);
      # FIXME do that here or when all command line options are processed?
@@ -918,9 +934,9 @@ my %formats_table = (
              'move_index_entries_after_items' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
-  'xml' => {
+  'texinfoxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::XML->converter(@_)},
+             'converter' => sub{Texinfo::Convert::TexinfoXML->converter(@_)},
            },
   'texinfosxml' => {
              'nodes_tree' => 1,

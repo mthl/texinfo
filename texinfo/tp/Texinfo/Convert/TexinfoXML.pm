@@ -1,4 +1,4 @@
-# XML.pm: output tree as elements with attributes, defaulting to XML.
+# TexinfoXML.pm: output tree as Texinfo XML.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -17,7 +17,7 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
-package Texinfo::Convert::XML;
+package Texinfo::Convert::TexinfoXML;
 
 use 5.00405;
 use strict;
@@ -38,7 +38,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-# This allows declaration       use Texinfo::Convert::XML ':all';
+# This allows declaration       use Texinfo::Convert::TexinfoXML ':all';
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
@@ -1604,26 +1604,26 @@ __END__
 
 =head1 NAME
 
-Texinfo::Convert::XML - Convert Texinfo tree to XML
+Texinfo::Convert::TexinfoXML - Convert Texinfo tree to TexinfoXML
 
 =head1 SYNOPSIS
 
   my $converter 
-    = Texinfo::Convert::XML->converter({'parser' => $parser});
+    = Texinfo::Convert::TexinfoXML->converter({'parser' => $parser});
 
   $converter->output($tree);
 
 =head1 DESCRIPTION
 
-Texinfo::Convert::XML converts a Texinfo tree to XML.
+Texinfo::Convert::TexinfoXML converts a Texinfo tree to TexinfoXML.
 
 =head1 METHODS
 
 =over
 
-=item $converter = Texinfo::Convert::XML->converter($options)
+=item $converter = Texinfo::Convert::TexinfoXML->converter($options)
 
-Initialize an XML converter.  
+Initialize an TexinfoXML converter.  
 
 The I<$options> hash reference holds options for the converter.  In
 this option hash reference a parser object may be associated with the 
