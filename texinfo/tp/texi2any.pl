@@ -101,7 +101,7 @@ use Texinfo::Structuring;
 use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
 use Texinfo::Convert::XML;
-use Texinfo::Convert::SXML;
+use Texinfo::Convert::TexinfoSXML;
 use Texinfo::Convert::DocBook;
 use Texinfo::Convert::TextContent;
 use Texinfo::Convert::PlainTexinfo;
@@ -826,8 +826,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
        $format = set_format('rawtext', 1);
      } elsif ($var eq 'TEXTCONTENT') {
        $format = set_format('textcontent', 1);
-     } elsif ($var eq 'SXML') {
-       $format = set_format('sxml', 1);
+     } elsif ($var eq 'TEXINFOSXML') {
+       $format = set_format('texinfosxml', 1);
      }
      set_from_cmdline ($var, $value);
      # FIXME do that here or when all command line options are processed?
@@ -922,9 +922,9 @@ my %formats_table = (
              'nodes_tree' => 1,
              'converter' => sub{Texinfo::Convert::XML->converter(@_)},
            },
-  'sxml' => {
+  'texinfosxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::SXML->converter(@_)},
+             'converter' => sub{Texinfo::Convert::TexinfoSXML->converter(@_)},
            },
   'docbook' => {
              'move_index_entries_after_items' => 1,

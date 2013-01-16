@@ -1,4 +1,4 @@
-# SXML.pm: output tree as SXML.
+# TexinfoSXML.pm: output tree as Texinfo SXML.
 #
 # Copyright 2013 Free Software Foundation, Inc.
 # 
@@ -20,7 +20,7 @@
 # This is a simple subclass of Texinfo::Convert::XML that overrides
 # format specific functions.
 
-package Texinfo::Convert::SXML;
+package Texinfo::Convert::TexinfoSXML;
 
 use 5.00405;
 use strict;
@@ -62,7 +62,7 @@ my %defaults = (
   'TEXINFO_DTD_VERSION'  => '5.0',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
-  'output_format'        => 'sxml',
+  'output_format'        => 'texinfosxml',
   'SPLIT'                => 0,
   'documentlanguage'     => 'en',
 );

@@ -190,7 +190,7 @@ my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE',
 
 my @formats_settable = (
   'DEBUGCOUNT', 'DEBUGTREE', 'RAWTEXT', 'TEXTCONTENT', 'PLAINTEXINFO',
-  'SXML',
+  'TEXINFOSXML',
 );
 
 my @variable_string_settables = (
