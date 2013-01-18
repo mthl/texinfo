@@ -464,7 +464,8 @@ sub _index_entry($$)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $index_entry = $root->{'extra'}->{'index_entry'};
-    my $attribute = ['index', $index_entry->{'index_name'}];
+    my $attribute = ['index', $index_entry->{'index_name'},
+                     'number', $index_entry->{'number'}];
     # in case the index is not a default index, or the style of the
     # entry (in code or not) is not the default for this index
     if ($self->{'index_names'}) {
@@ -1243,6 +1244,9 @@ sub _convert($$;$)
         if ($root->{'extra'}->{'type'} and 
             defined($root->{'extra'}->{'type'}->{'normalized'})) {
           push @$attribute, ('type', $root->{'extra'}->{'type'}->{'normalized'});
+        }
+        if (defined($root->{'number'})) {
+          push @$attribute, ('number', $root->{'number'});
         }
       } elsif ($root->{'cmdname'} eq 'verbatim') {
         push @$attribute, ('xml:space', 'preserve');
