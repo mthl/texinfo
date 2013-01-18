@@ -1,3 +1,7 @@
+2013-01-16  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/TexinfoXML.pm: replace tp/Texinfo/Convert/XML.pm.
+
 2013-01-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Marking Text): remaining node names needing @t.
