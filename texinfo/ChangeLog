@@ -2,6 +2,7 @@
 
 	* doc/texinfo.txi (Customization Variables for Program Behavior)
 	[TEXINFOSXML]: new output format.
+	* tp/Makefile.am (dist_converters_DATA): add TexinfoSXML.pm.
 
 2013-01-16  Patrice Dumas  <pertusus@free.fr>
 
