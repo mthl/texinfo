@@ -1,3 +1,8 @@
+2013-01-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Customization Variables for Program Behavior)
+	[TEXINFOSXML]: new output format.
+
 2013-01-16  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/TexinfoXML.pm: replace tp/Texinfo/Convert/XML.pm.

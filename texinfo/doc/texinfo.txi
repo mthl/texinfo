@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.528 2013-01-16 18:20:47 karl Exp $
+@c $Id: texinfo.txi,v 1.529 2013-01-18 23:23:41 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17469,6 +17469,12 @@ Output raw text, with minimal formatting.  For example, footnotes are
 ignored and there is no paragraph filling.  This is used by the parser
 for file names and copyright text in HTML comments, for example.
 
+@item TEXINFOSXML
+@cindex SXML output
+@cindex S-expressions, output format
+Output the document in TexinfoSXML representation, a syntax for
+writing XML data using Lisp S-expressions.
+
 @item TEXTCONTENT
 @cindex spell checking
 @cindex word counting
@@ -22001,7 +22007,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.528 2013-01-16 18:20:47 karl Exp $
+$Id: texinfo.txi,v 1.529 2013-01-18 23:23:41 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
