@@ -1,0 +1,29 @@
+#!/bin/sh
+# $Id: srclist-txi,v 1.1 2013-01-19 15:54:04 karl Exp $
+# Texinfo's wrapper for the Gnulib script config/srclist-update,
+# to define particular variables our srclist.txt uses.
+# 
+# Copyright 2013 Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# per-user overrides.
+case $LOGNAME in
+karl)
+  : ${EMACSSRC=/usr/local/gnu/src/emacs-24.2};      export EMACSSRC
+  : ${GETTEXT=/usr/local/gnu/src/gettext-0.18.2};   export GETTEXT
+  : ${AUTOMAKE=/usr/local/gnu/share/automake-1.13}; export AUTOMAKE
+  : ${GSASL=$HOME/gnu/src/gsasl};                   export GSASL
+  : ${GNULIB=$HOME/gnu/src/gnulib};                 export GNULIB
+  ;;
+esac
+
+mydir=`dirname $0`
+(cd "$mydir/.." && $GNULIB/config/srclist-update <util/srclist.txt) \
+| sed 's/^## /cp /'

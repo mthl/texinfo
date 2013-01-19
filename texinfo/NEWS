@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.224 2013-01-07 22:18:26 karl Exp $
+$Id: NEWS,v 1.225 2013-01-19 15:54:04 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -58,13 +58,16 @@ one of the relevant sections:
   on the program name.
 
   The new implementation is in Perl (based on the texi2html program, but
-  with a vast array of subsequent changes).  It both replaces and is
-  intended to be (for all practical purposes) upward-compatible with the
-  C makeinfo.  It has many new features not in the C makeinfo.  For
-  example, cross-manual references are now fully supported, and
-  extensive customization of the HTML output is possible.  See the
-  `Generic Translator texi2any' chapter in the manual (among other places)
-  for more about this reimplementation.
+  with a vast array of subsequent changes).  It requires Perl 5.7.3
+  (released in March 2002) and the standard Encode module.
+  
+  The Perl texi2any/makeinfo both replaces and is intended to be (for
+  all practical purposes) upward-compatible with the C makeinfo.  It has
+  many new features not in the C makeinfo.  For example, cross-manual
+  references are now fully supported, and extensive customization of the
+  HTML output is possible.  See the `Generic Translator texi2any'
+  chapter in the manual (among other places) for more about this
+  reimplementation.
   
   The new program is, unfortunately, noticeably slower at present than
   the C program was.  We hope all the many improvements make the new

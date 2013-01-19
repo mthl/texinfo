@@ -1,3 +1,9 @@
+2013-01-19  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.94.
+	
+	* README-hacking: tersely describe release steps.
+
 2013-01-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Customization Variables for Program Behavior)
@@ -128,7 +134,7 @@
 
 2013-01-01  Karl Berry  <karl@gnu.org>
 
-	* pretest 4.13.92.
+	* pretest 4.13.93.
 
 	* util/Makefile.am (texinfo.cat): remove rule and references;
 	not aware of anything using it, current rule fails distcheck.

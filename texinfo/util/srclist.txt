@@ -1,8 +1,11 @@
 # $Id$
 # Files which we keep in sync from other places.
 # This is input for the script config/srclist-update in the gnulib
-# project on savannah.
+# project on savannah, and the wrapper srclist-txi in this directory.
 # 
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2011, 2012, 2013
+# Free Software Foundation, Inc.
+#
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
 # modifications, as long as this notice is preserved.

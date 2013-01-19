@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.529 2013-01-18 23:23:41 karl Exp $
+@c $Id: texinfo.txi,v 1.530 2013-01-19 15:54:04 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18531,7 +18531,7 @@ For example, you could write the following in your @file{.emacs} file:
 @c Writing these three cross references using xref results in
 @c three references to the same named manual, which looks strange.
 @iftex
-For more information, see @ref{@t{makeinfo} options}, as well as
+For more information, see @ref{@t{makeinfo} Options}, as well as
 ``Easy Customization Interface,'' ``Examining and Setting Variables,''
 and ``Init File'' in @cite{The GNU Emacs Manual}.
 @end iftex
@@ -22007,7 +22007,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.529 2013-01-18 23:23:41 karl Exp $
+$Id: texinfo.txi,v 1.530 2013-01-19 15:54:04 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
