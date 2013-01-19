@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-01-16 22:07+0100\n"
+"POT-Creation-Date: 2013-01-18 11:40-0800\n"
 "PO-Revision-Date: 2012-12-20 22:42+0100\n"
 "Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -910,8 +910,8 @@ msgid ""
 "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 msgstr ""
 "  %-10s  Pomakni se na čvor naveden imenom.\n"
-"              Možete također uključiti ime datoteke, kao u (DATOTEKA)"
-"IMEČVORA.\n"
+"              Možete također uključiti ime datoteke, kao u "
+"(DATOTEKA)IMEČVORA.\n"
 
 #: info/infodoc.c:132
 #, c-format
@@ -3573,57 +3573,57 @@ msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent argument mora biti brojčani/„none”/„asis”, ne „%s”.\n"
 
-#: tp/texi2any.pl:985
+#: tp/texi2any.pl:1003
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Zanemarujem neprepoznatu TEXINFO_OUTPUT_FORMAT vrijednost „%s”.\n"
 
-#: tp/texi2any.pl:998
+#: tp/texi2any.pl:1016
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 "pri stvaranju %s, opcijom -o može se navesti samo jedna ulazna DATOTEKA"
 
-#: tp/texi2any.pl:1002
+#: tp/texi2any.pl:1020
 msgid "--Xopt option without printed output"
 msgstr "--Xopt opcija bez ispisanog izlaza"
 
-#: tp/texi2any.pl:1012
+#: tp/texi2any.pl:1030
 #, perl-format
 msgid "Unknown tree transformation %s"
 msgstr "Nepoznata transformacija stabla %s"
 
-#: tp/texi2any.pl:1019
+#: tp/texi2any.pl:1037
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr "Zanemarujem razdvajanje za oblik %s"
 
-#: tp/texi2any.pl:1068
+#: tp/texi2any.pl:1086
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: nedostaje argument datoteke.\n"
 
-#: tp/texi2any.pl:1069
+#: tp/texi2any.pl:1087
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Pokušajte „%s --help” za više informacija.\n"
 
-#: tp/texi2any.pl:1140
+#: tp/texi2any.pl:1158
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "fill_gaps_in_sectioning transformacija ne vraća rezultat. Nema odlomka?"
 
-#: tp/texi2any.pl:1162
+#: tp/texi2any.pl:1180
 #, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "Greška pri zatvaranju makro proširene datoteke %s: %s\n"
 
-#: tp/texi2any.pl:1168 tp/texi2any.pl:1278 tp/texi2any.pl:1312
+#: tp/texi2any.pl:1186 tp/texi2any.pl:1296 tp/texi2any.pl:1330
 #, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "Ne mogu otvoriti %s za pisanje: %s\n"
 
-#: tp/texi2any.pl:1192
+#: tp/texi2any.pl:1210
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3631,12 +3631,12 @@ msgstr ""
 "insert_nodes_for_sectioning_commands transformacija ne vraća rezultat. Nema "
 "odlomka?"
 
-#: tp/texi2any.pl:1249 tp/texi2any.pl:1325
+#: tp/texi2any.pl:1267 tp/texi2any.pl:1343
 #, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "Greška pri zatvaranju %s: %s\n"
 
-#: tp/texi2any.pl:1272 tp/texi2any.pl:1306
+#: tp/texi2any.pl:1290 tp/texi2any.pl:1324
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr "Greška pri zatvaranju datoteke unutarnjih veza %s: %s\n"
@@ -4240,11 +4240,11 @@ msgstr "stavka %s slijedi nakon stavke sa sekundarnim imenom"
 #~ "stavkom.\n"
 
 #~ msgid ""
-#~ "              You may include a filename as well, as in (FILENAME)"
-#~ "NODENAME.\n"
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
 #~ msgstr ""
-#~ "              Možete također uključiti ime datoteke, kao u (DATOTEKA)"
-#~ "IME_ČVORA.\n"
+#~ "              Možete također uključiti ime datoteke, kao u "
+#~ "(DATOTEKA)IME_ČVORA.\n"
 
 #~ msgid ""
 #~ "              and select the node in which the next occurrence is found.\n"
@@ -4331,8 +4331,8 @@ msgstr "stavka %s slijedi nakon stavke sa sekundarnim imenom"
 #~ "              file, and select the node referenced by the first entry "
 #~ "found.\n"
 #~ "  \\%-10[goto-node]  Move to node specified by name.\n"
-#~ "              You may include a filename as well, as in (FILENAME)"
-#~ "NODENAME.\n"
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
 #~ "  \\%-10[search]  Search forward through this Info file for a specified "
 #~ "string,\n"
 #~ "              and select the node in which the next occurrence is found.\n"
@@ -4384,8 +4384,8 @@ msgstr "stavka %s slijedi nakon stavke sa sekundarnim imenom"
 #~ "              datoteke, i selektiraj čvor referenciran prvom nađenom "
 #~ "stavkom.\n"
 #~ "  \\%-10[goto-node]  Idi na čvor zadan imenom.\n"
-#~ "              Možete također uključiti ime datoteke, kao u (DATOTEKA)"
-#~ "IME_ČVORA.\n"
+#~ "              Možete također uključiti ime datoteke, kao u "
+#~ "(DATOTEKA)IME_ČVORA.\n"
 #~ "  \\%-10[search]  Traži zadani niz prema naprijed kroz ovu Info "
 #~ "datoteku,\n"
 #~ "              i selektiraj čvor u kojem je slijedeća pojava niza nađena.\n"

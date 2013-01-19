@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-01-16 22:07+0100\n"
+"POT-Creation-Date: 2013-01-18 11:40-0800\n"
 "PO-Revision-Date: 2008-11-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -3601,66 +3601,66 @@ msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'.\n"
 
-#: tp/texi2any.pl:985
+#: tp/texi2any.pl:1003
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Mengabaikan nilai TEXINFO_OUTPUT_FORMAT tidak dikenal `%s'.\n"
 
-#: tp/texi2any.pl:998
+#: tp/texi2any.pl:1016
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: tp/texi2any.pl:1002
+#: tp/texi2any.pl:1020
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1012
+#: tp/texi2any.pl:1030
 #, fuzzy, perl-format
 msgid "Unknown tree transformation %s"
 msgstr "Perintah `%s' tidak diketahui"
 
-#: tp/texi2any.pl:1019
+#: tp/texi2any.pl:1037
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1068
+#: tp/texi2any.pl:1086
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: hilang argumen berkas.\n"
 
-#: tp/texi2any.pl:1069
+#: tp/texi2any.pl:1087
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Coba `%s --help' untuk informasi lebih lanjut.\n"
 
-#: tp/texi2any.pl:1140
+#: tp/texi2any.pl:1158
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1162
+#: tp/texi2any.pl:1180
 #, fuzzy, perl-format
 msgid "Error on closing macro expand file %s: %s\n"
 msgstr "error menutup berkas keluaran `%s'"
 
-#: tp/texi2any.pl:1168 tp/texi2any.pl:1278 tp/texi2any.pl:1312
+#: tp/texi2any.pl:1186 tp/texi2any.pl:1296 tp/texi2any.pl:1330
 #, fuzzy, perl-format
 msgid "Could not open %s for writing: %s\n"
 msgstr "%s: tidak dapat membuka --css-file: %s"
 
-#: tp/texi2any.pl:1192
+#: tp/texi2any.pl:1210
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1249 tp/texi2any.pl:1325
+#: tp/texi2any.pl:1267 tp/texi2any.pl:1343
 #, fuzzy, perl-format
 msgid "Error on closing %s: %s\n"
 msgstr "error menulis ke `%s'"
 
-#: tp/texi2any.pl:1272 tp/texi2any.pl:1306
+#: tp/texi2any.pl:1290 tp/texi2any.pl:1324
 #, perl-format
 msgid "Error on closing internal links file %s: %s\n"
 msgstr ""

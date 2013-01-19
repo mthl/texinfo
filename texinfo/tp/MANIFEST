@@ -53,6 +53,7 @@ Texinfo/Convert/Paragraph.pm
 Texinfo/Convert/PlainTexinfo.pm
 Texinfo/Convert/Plaintext.pm
 Texinfo/Convert/Texinfo.pm
+Texinfo/Convert/TexinfoSXML.pm
 Texinfo/Convert/TexinfoXML.pm
 Texinfo/Convert/Text.pm
 Texinfo/Convert/TextContent.pm
@@ -76,7 +77,7 @@ maintain/change_perl_modules_version.sh
 maintain/language-subtag-registry
 maintain/prepare_perl_module.sh
 maintain/regenerate_converters_documentation.sh
-maintain/regenerate_document_strings_make_rules.sh
+maintain/regenerate_docstr.sh
 maintain/regenerate_documentlanguages.pl
 maintain/regenerate_file_lists.pl
 maintain/regenerate_perl_module_files.sh
