@@ -818,6 +818,26 @@ text2
 discussion
 @end table
 '],
+['at_commands_in_raw',
+'@html
+<b>in b@footnote{in footnote}.</b>
+@anchor{anchor in html}
+@end html
+@kbd{in kbd before tex}@footnote{second footnote}.
+
+@tex
+@kbdinputstyle code
+in tex
+@anchor{anchor in tex}
+@end tex
+
+@kbd{in kbd after tex}.
+
+@ref{anchor in html}.
+
+@ref{anchor in tex}.
+'
+]
 );
 
 my @html_text_cases = (
