@@ -239,6 +239,14 @@ my %explained_commands        = %Texinfo::Common::explained_commands;
 my %inline_format_commands    = %Texinfo::Common::inline_format_commands;
 my %all_commands              = %Texinfo::Common::all_commands;
 
+# equivalence between a @set flag and an @@-command
+my %set_flag_command_equivalent = (
+  'txicodequoteundirected' => 'codequoteundirected',
+  'txicodequotebacktick'   => 'codequotebacktick',
+#  'txideftypefnnl'         => 'deftypefnnewline',
+);
+
+
 # keep line information for those commands.
 my %keep_line_nr_brace_commands = %context_brace_commands;
 foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
@@ -4234,7 +4242,6 @@ sub _parse_texi($;$)
             }
             $misc = {'cmdname' => $command,
                      'parent' => $current};
-            push @{$current->{'contents'}}, $misc;
             my $args = [];
             if ($arg_spec eq 'lineraw' or $arg_spec eq 'skipline') {
               $args = [ $line ];
@@ -4243,10 +4250,50 @@ sub _parse_texi($;$)
                 = $self->_parse_special_misc_command($line, $command, $line_nr);
               $misc->{'extra'}->{'arg_line'} = $line;
             }
-            foreach my $arg (@$args) {
-              push @{$misc->{'args'}},
-                { 'type' => 'misc_arg', 'text' => $arg, 
-                  'parent' => $current->{'contents'}->[-1] };
+
+            # if using the @set txi* instead of a proper @-command, replace
+            # by the tree obtained with the @-command.  Even though
+            # _end_line is called below, as $current is not misc_line_arg
+            # there should not be anything done in addition than what is
+            # done for @clear or @set.
+            if (($command eq 'set' or $command eq 'clear')
+                 and scalar(@$args) >= 1
+                 and $set_flag_command_equivalent{$args->[0]}) {
+              my $arg; 
+              if ($command eq 'set') {
+                $arg = 'on';
+              } else {
+                $arg = 'off';
+              }
+              $command = $set_flag_command_equivalent{$args->[0]};
+              $misc = {'cmdname' => $command,
+                       'parent' => $current,
+                       'line_nr' => $line_nr,
+                       'extra' => {'misc_args' => [$arg]}};
+              my $misc_line_args = {'type' => 'misc_line_arg',
+                     'parent' => $misc};
+              $misc->{'args'} = [$misc_line_args];
+              my $spaces_after_command 
+                = { 'type' => 'empty_spaces_after_command',
+                    'text' => ' ',
+                    'parent' => $misc_line_args,
+                    'extra' => {'command' => $misc} };
+              $misc->{'extra'}->{'spaces_after_command'} 
+                 = $spaces_after_command;
+              $misc_line_args->{'contents'} = [ $spaces_after_command,
+                { 'text' => $arg,
+                  'parent' => $misc_line_args, },
+                { 'text' => "\n",
+                  'parent' => $misc_line_args,
+                  'type' => 'spaces_at_end', } ];
+              push @{$current->{'contents'}}, $misc;
+            } else {
+              push @{$current->{'contents'}}, $misc;
+              foreach my $arg (@$args) {
+                push @{$misc->{'args'}},
+                  { 'type' => 'misc_arg', 'text' => $arg, 
+                    'parent' => $current->{'contents'}->[-1] };
+              }
             }
             if ($command eq 'raisesections') {
               $self->{'sections_level'}++;
@@ -4258,10 +4305,10 @@ sub _parse_texi($;$)
             $self->_register_and_warn_invalid($command, $invalid_parent,
                                               $line_nr, $misc);
             $self->_register_global_command($command, $misc, $line_nr);
-            $current = _end_line ($self, $current, $line_nr);
+            $current = _end_line($self, $current, $line_nr);
 
             last NEXT_LINE if ($command eq 'bye');
-            # This is not done in _end_line is there is no misc_line_arg
+            # This is not done in _end_line as there is no misc_line_arg
             $current = $self->_begin_preformatted($current)
               if ($close_preformatted_commands{$command});
             last;

@@ -861,11 +861,11 @@ sub _convert_document_elements($$;$$)
   if ($elements) {
     my $result = '';
     foreach my $element (@$elements) {
-      $result .= $self->_output_text ($self->convert_tree($element), $fh);
+      $result .= $self->_output_text($self->convert_tree($element), $fh);
     }
     return $result;
   } else {
-    return $self->_output_text ($self->convert_tree($root), $fh);
+    return $self->_output_text($self->convert_tree($root), $fh);
   }
 }
 
