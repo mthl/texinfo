@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.38 2013-01-20 18:04:48 karl Exp $
+@comment $Id: info-stnd.texi,v 1.39 2013-01-20 18:06:37 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -429,8 +429,8 @@ out how to supply them}.  With a numeric argument, the motion commands
 are simply executed that many times; for example, a numeric argument
 of 4 given to @code{next-line} causes the cursor to move down 4 lines.
 With a negative numeric argument, the motion is reversed; an argument
-of -4 given to the @code{next-line} command would cause the cursor to
-move @emph{up} 4 lines.
+of @minus{}4 given to the @code{next-line} command would cause the
+cursor to move @emph{up} 4 lines.
 
 @table @asis
 @item @kbd{C-n} (@code{next-line})
@@ -1788,10 +1788,10 @@ or
 @cindex negative arguments
 @cindex arguments, negative
 @cindex numeric arguments, negative
-To make a negative argument, type @kbd{-}.  Typing @kbd{-} alone makes a
-negative argument with a value of -1.  If you continue to type digit or
-Meta-digit keys after @kbd{-}, the result is a negative number produced
-by those digits.
+To make a negative argument, type @kbd{-}.  Typing @kbd{-} alone makes
+a negative argument with a value of @minus{}1.  If you continue to
+type digit or Meta-digit keys after @kbd{-}, the result is a negative
+number produced by those digits.
 
 @kbd{-} doesn't work when you type in the echo area, because you need to
 be able to insert the @samp{-} character itself; use @kbd{M--} instead,
