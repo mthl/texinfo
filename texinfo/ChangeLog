@@ -1,5 +1,9 @@
 2013-01-20  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Other Customization Variables)
+	[TREE_TRANSFORMATIONS]: @ftable, text tweaks.
+	(Top): update with texinfo-master-menu.
+
 	* doc/info-stnd.texi: @t in node names, merge footnote text
 	where reasonable.
 

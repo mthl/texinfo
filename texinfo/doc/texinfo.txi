@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.530 2013-01-19 15:54:04 karl Exp $
+@c $Id: texinfo.txi,v 1.531 2013-01-20 18:37:06 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -287,22 +287,22 @@ Chapter Structuring
 
 Nodes
 
-* @t{@@node}::                        Creating nodes, in detail.
-* @t{makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
-* @t{@@anchor}::                      Defining arbitrary cross reference targets.
+* @t{@@node}::                    Creating nodes, in detail.
+* @t{makeinfo} Pointer Creation:: Letting makeinfo determine node pointers.
+* @t{@@anchor}::                  Defining arbitrary cross reference targets.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
 
 The @code{@@node} Command
 
 * Node Names::                  How to choose node and pointer names.
 * Writing a Node::              How to write an @code{@@node} line.
-* Node Line Requirements::      Keep names unique, without @@-commands.
+* Node Line Requirements::      Keep names unique.
 * First Node::                  How to write a `Top' node.
-* @t{@@top} command::                How to use the @code{@@top} command.
+* @t{@@top} Command::                How to use the @code{@@top} command.
 
 Menus
 
-* Menu Location::               Menus go at the ends of short nodes.
+* Menu Location::               Menus go at the ends of nodes.
 * Writing a Menu::              What is a menu?
 * Menu Parts::                  A menu entry has three parts.
 * Less Cluttered Menu Entry::   Two part menu entry.
@@ -322,7 +322,7 @@ Cross References
 * @t{@@url}::                        How to refer to a uniform resource locator.
 * @t{@@cite}::                       How to refer to books not in the Info system.
 
-@t{@@xref}
+@code{@@xref}
 
 * Reference Syntax::            What a reference looks like and requires.
 * One Argument::                @code{@@xref} with one argument.
@@ -363,8 +363,8 @@ Emphasizing Text
 Quotations and Examples
 
 * Block Enclosing Commands::    Different constructs for different purposes.
-* @t{@@quotation}::                   Writing a quotation.
-* @t{@@indentedblock}::               Block of text indented on left.
+* @t{@@quotation}::                  Writing a quotation.
+* @t{@@indentedblock}::              Block of text indented on left.
 * @t{@@example}::                    Writing an example in a fixed-width font.
 * @t{@@verbatim}::                   Writing a verbatim example.
 * @t{@@verbatiminclude}::            Including a file verbatim.
@@ -382,7 +382,7 @@ Quotations and Examples
 Lists and Tables
 
 * Introducing Lists::           Texinfo formats lists for you.
-* @t{@@itemize}::                    How to construct a simple list.
+* @t{@@itemize}::                     How to construct a simple list.
 * @t{@@enumerate}::                   How to construct a numbered list.
 * Two-column Tables::           How to construct a two-column table.
 * Multi-column Tables::         How to construct generalized tables.
@@ -390,7 +390,7 @@ Lists and Tables
 Making a Two-column Table
 
 * @t{@@table}::                       How to construct a two-column table.
-* @t{@@ftable @@vtable}::               Automatic indexing for two-column tables.
+* @t{@@ftable @@vtable}::              Automatic indexing for two-column tables.
 * @t{@@itemx}::                       How to put more entries in the first column.
 
 @code{@@multitable}: Multi-column Tables
@@ -450,7 +450,7 @@ Special Insertions
 
 Special Characters: Inserting @@ @{@} , \ #
 
-* Inserting an Atsign::    @code{@@}, @code{@@atchar@{@}}.
+* Inserting an Atsign::    @code{@@@@}, @code{@@atchar@{@}}.
 * Inserting Braces::       @code{@@@{ @@@}}, @code{@@l rbracechar@{@}}.
 * Inserting a Comma::      , and @code{@@comma@{@}}.
 * Inserting a Backslash::  \ and @code{@@backslashchar@{@}}.
@@ -466,11 +466,12 @@ Inserting Space
 
 Glyphs for Text
 
-* @t{@@tex}::                  The @TeX{} logos.
+* @t{@@TeX @@LaTeX}::          The @TeX{} logos.
 * @t{@@copyright}::            The copyright symbol (c in a circle).
-* @t{@@registered}::           The registered symbol (R in a circle).
+* @t{@@registeredsymbol}::     The registered symbol (R in a circle).
 * @t{@@dots}::                 How to insert ellipses: @dots{} and @enddots{}
 * @t{@@bullet}::               How to insert a bullet: @bullet{}
+* @t{@@euro}::                 How to insert the euro currency symbol.
 * @t{@@pounds}::               How to insert the pounds currency symbol.
 * @t{@@textdegree}::           How to insert the degrees symbol.
 * @t{@@minus}::                How to insert a minus sign.
@@ -485,7 +486,7 @@ Glyphs for Programming
 * @t{@@error}::          How to indicate an error message.
 * @t{@@equiv}::          How to indicate equivalence.
 * @t{@@point}::          How to indicate the location of point.
-* Click Sequences::             Inserting GUI usage sequences.
+* Click Sequences::         Inserting GUI usage sequences.
 
 Forcing and Preventing Breaks
 
@@ -522,7 +523,7 @@ The Definition Commands
 Object-Oriented Programming
 
 * Variables: Object-Oriented Variables.
-* Methods: Object-Oriented Methods.
+* Methods:   Object-Oriented Methods.
 
 Internationalization
 
@@ -536,6 +537,7 @@ Conditionally Visible Text
 * Raw Formatter Commands::      Using raw formatter commands.
 * Inline Conditionals::         Brace-delimited conditional text.
 * @t{@@set @@clear @@value}::          Variable tests and substitutions.
+* Testing for Texinfo Commands:: Testing if a Texinfo command is available.
 * Conditional Nesting::         Using conditionals inside conditionals.
 
 @code{@@set}, @code{@@clear}, and @code{@@value}
@@ -582,23 +584,23 @@ Formatting and Printing Hardcopy
 * Requirements Summary::        @TeX{} formatting requirements summary.
 * Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
-* @t{@@smallbook}::                   How to print small format books and manuals.
-* A4 Paper::                   How to print on A4 or A5 paper.
+* @t{@@smallbook}::                  How to print small format books and manuals.
+* A4 Paper::                    How to print on A4 or A5 paper.
 * @t{@@pagesizes}::                How to print with customized page sizes.
 * Cropmarks and Magnification:: How to print marks to indicate the size
                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 * Obtaining @TeX{}::               How to obtain @TeX{}.
 
-@command{texi2any}: The Generic Translator for Texinfo
+@code{texi2any}: The Generic Translator for Texinfo
 
 * Reference Implementation:: @command{texi2any}: the reference implementation.
 * Invoking @t{texi2any}::        Running the translator from a shell.
-* @t{texi2any} Printed Output::  Calling @code{texi2dvi}.
+* @t{texi2any} Printed Output::  Calling @command{texi2dvi}.
 * Pointer Validation::       How to check that pointers point somewhere.
-* Customization Variables::  Configuring @code{texi2any}.
+* Customization Variables::  Configuring @command{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
-* @t{texi2html}::                An ancestor of @code{texi2any}.
+* @t{texi2html}::                An ancestor of @command{texi2any}.
 
 Customization Variables
 
@@ -614,7 +616,7 @@ Creating and Installing Info Files
 
 Creating an Info File
 
-* @t{makeinfo} advantages::         @code{makeinfo} provides better error checking.
+* @t{makeinfo} Advantages::         @code{makeinfo} provides better error checking.
 * @t{makeinfo} in Emacs::           How to run @code{makeinfo} from Emacs.
 * @t{texinfo-format} commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
@@ -662,6 +664,12 @@ Sample Texinfo Files
 * Verbatim Copying License::
 * All-permissive Copying License::
 
+GNU Sample
+
+* Invoking sample::
+* GNU Free Documentation License::
+* Index::
+
 Page Headings
 
 * Headings Introduced::         Conventions for using page headings.
@@ -671,12 +679,12 @@ Page Headings
 
 Catching Mistakes
 
-* @t{makeinfo} Preferred::           @code{makeinfo} finds errors.
-* Debugging with Info::          How to catch errors with Info formatting.
-* Debugging with @TeX{}::           How to catch errors with @TeX{} formatting.
-* Using @t{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
-* Using @t{occur}::                  How to list all lines containing a pattern.
-* Running @t{Info-validate}::        How to find badly referenced nodes.
+* @t{makeinfo} Preferred::          @code{makeinfo} finds errors.
+* Debugging with Info::         How to catch errors with Info formatting.
+* Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
+* Using @t{texinfo-show-structure}::  How to use @code{texinfo-show-structure}.
+* Using @t{occur}::                 How to list all lines containing a pattern.
+* Running @t{Info-validate}::       How to find badly referenced nodes.
 
 Finding Badly Referenced Nodes
 
@@ -705,6 +713,7 @@ Info Format Text Constructs
 * Image: Info Format Image.
 * Printindex: Info Format Printindex.
 * Xref:  Info Format Cross Reference.
+
 @end detailmenu
 @end menu
 
@@ -10611,7 +10620,7 @@ The other characters (comma, backslash, hash) are special only in
 restricted contexts, as explained in the respective sections.
 
 @menu
-* Inserting an Atsign::    @code{@@}, @code{@@atchar@{@}}.
+* Inserting an Atsign::    @code{@@@@}, @code{@@atchar@{@}}.
 * Inserting Braces::       @code{@@@{ @@@}}, @code{@@l rbracechar@{@}}.
 * Inserting a Comma::      , and @code{@@comma@{@}}.
 * Inserting a Backslash::  \ and @code{@@backslashchar@{@}}.
@@ -18078,10 +18087,10 @@ The only one executed by default is
 
 The following transformations are currently supported:
 
-@table @samp
+@ftable @samp
 @item complete_tree_nodes_menus
-Add menu entries or whole menus for nodes associated with sections,
-based on the sectioning tree.
+Add menu entries or whole menus for nodes associated with sections of
+any level, based on the sectioning tree.
 
 @item fill_gaps_in_sectioning
 Adds empty @code{@@unnumbered} in a tree to fill gaps in sectioning.
@@ -18089,7 +18098,7 @@ For example, an @code{@@unnumberedsec} will be inserted if an
 @code{@@chapter} is followed by an @code{@@subsection}.
 
 @item insert_nodes_for_sectioning_commands
-Insert nodes for sectioning commands without node.
+Insert nodes for sectioning commands lacking a corresponding node.
 
 @item move_index_entries_after_items
 In @code{@@enumerate} and @code{@@itemize}, move index entries
@@ -18103,10 +18112,11 @@ for the menu.  It differs from setting @code{SIMPLE_MENU} in that
 @code{SIMPLE_MENU} only has an effect in HTML output.
 
 @item regenerate_master_menu
-Regenerate the Top node master menu, replacing the first @code{@@detailmenu}
-in Top node menu or appending at the end of the Top node menu.
+Update the Top node master menu, either replacing the (first)
+@code{@@detailmenu} in the Top node menu, or creating it at the end of
+the Top node menu.
 
-@end table
+@end ftable
 
 @item USE_ACCESSKEY
 @cindex @code{accesskey}, customization variable for
@@ -22007,7 +22017,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.530 2013-01-19 15:54:04 karl Exp $
+$Id: texinfo.txi,v 1.531 2013-01-20 18:37:06 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
