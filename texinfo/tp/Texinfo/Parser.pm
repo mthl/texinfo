@@ -272,15 +272,15 @@ my %global_multiple_commands;
 foreach my $global_multiple_command (
   'author', 'footnote', 'hyphenation', 'insertcopying', 'printindex',
   'subtitle','titlefont', 
-  @Texinfo::Common::document_settable_at_commands, ) {
+  keys(%Texinfo::Common::document_settable_at_commands), ) {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
 
 my %global_unique_commands;
 foreach my $global_unique_command (
-  'copying', 'documentdescription', 'settitle', 
+  'copying', 'settitle', 
   'shorttitlepage', 'title', 'titlepage', 'top', 
-  @Texinfo::Common::document_settable_unique_at_commands, ) {
+  keys(%Texinfo::Common::document_settable_unique_at_commands), ) {
   $global_unique_commands{$global_unique_command} = 1;
 }
 

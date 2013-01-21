@@ -138,32 +138,49 @@ our %default_parser_state_configuration = (
 # texi2dvi --command 
 
 # customization options
-our @document_settable_at_commands =
-       (
-        'allowcodebreaks', 'clickstyle', 'codequotebacktick',
-        'codequoteundirected', 'contents', 'deftypefnnewline',
-        'documentencoding', 'documentlanguage', 'exampleindent', 
-        'firstparagraphindent', 'frenchspacing', 'headings',
-        'kbdinputstyle', 'paragraphindent',
-        'shortcontents', 'urefbreakstyle', 'xrefautomaticsectiontitle',
-        );
+our %document_settable_at_commands = (
+  'allowcodebreaks' => 'true',
+  'clickstyle' => '@arrow',
+  'codequotebacktick' => 'off',
+  'codequoteundirected' => 'off',
+  'contents' => 0,
+  'deftypefnnewline' => 'off',
+  'documentencoding' => 'us-ascii',
+  'documentlanguage' => 'en',
+  # is N ems in TeX, 0.4 in.
+  'exampleindent' => 5,
+  'firstparagraphindent' => 'none',
+  'frenchspacing' => 'off',
+  'headings' => 'on',
+  'kbdinputstyle' => 'distinct',
+  'paragraphindent' => 3,
+  'shortcontents' => 0,
+  'urefbreakstyle' => 'after',
+  'xrefautomaticsectiontitle' => 'off',
+);
 
 # those should be unique
-our @document_settable_unique_at_commands = (
-        # when passed through a configuration variable, this should be
-        # already formatted for HTML
-        'documentdescription',
-        'evenfootingmarks', 'evenheadingmarks',
-        'everyfootingmarks', 'everyheadingmarks',
-        'fonttextsize', 'footnotestyle', 'novalidate',
-        'oddfootingmarks','oddheadingmarks',
-        'pagesizes', 'setchapternewpage',
-        'setcontentsaftertitlepage',
-        'setfilename',
-        'setshortcontentsaftertitlepage',
-        );
-
-
+our %document_settable_unique_at_commands = (
+  # when passed through a configuration variable, documentdescription
+  # should be already formatted for HTML
+  'documentdescription' => undef,
+  'evenfootingmarks' => undef,
+  'evenheadingmarks' => undef,
+  'everyfootingmarks' => 'bottom', 
+  'everyheadingmarks' => 'bottom',
+  'fonttextsize' => 11, 
+  'footnotestyle' => 'end', 
+  'novalidate' => 0,
+  'oddfootingmarks' => undef,
+  'oddheadingmarks' => undef,
+  # FIXME not clear here.
+  'pagesizes' => undef,
+  'setchapternewpage' => 'on',
+  'setcontentsaftertitlepage' => 0,
+  'setfilename' => undef,
+  'setshortcontentsaftertitlepage' => 0,
+);
+  
 my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'HEADERS',
   'MACRO_EXPAND', 'NUMBER_SECTIONS',
@@ -253,8 +270,8 @@ my @variable_other_settables = (
 );
 
 my %valid_options;
-foreach my $var (@document_settable_at_commands, 
-         @document_settable_unique_at_commands,
+foreach my $var (keys(%document_settable_at_commands), 
+         keys(%document_settable_unique_at_commands),
          @command_line_settables, @variable_string_settables, 
          @variable_other_settables, @parser_options,
          @formats_settable,
@@ -280,8 +297,8 @@ sub obsolete_option($)
 }
 
 my %customization_variable_classes = (
-  'document_settable_at_commands' => \@document_settable_at_commands,
-  'document_settable_unique_at_commands' => \@document_settable_unique_at_commands,
+  'document_settable_at_commands' => [ sort(keys(%document_settable_at_commands)) ],
+  'document_settable_unique_at_commands' => [ sort(keys(%document_settable_unique_at_commands)) ],
   'command_line_settables' => \@command_line_settables,
   'variable_string_settables' => \@variable_string_settables,
   'variable_other_settables' => \@variable_other_settables,
