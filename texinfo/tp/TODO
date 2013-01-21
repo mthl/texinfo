@@ -14,6 +14,15 @@ Before next release
 ===================
 
 
+New stack for inlineraw and rawpreformatted to now whether currently 
+in an ignored raw format.  Then 
+* entering index entry
+* anchors
+* floats
+* abbrev/acronym
+* misc commands
+should not have an effect if in such cases
+
 Bugs
 ====
 

@@ -145,9 +145,11 @@ my %parser_default_configuration = (%Texinfo::Common::default_parser_state_confi
 #                         'preformatted' is added in block commands 
 #                         where there is no paragraphs and spaces are kept 
 #                         (format, example, display...)
+#                         'rawpreformatted' is added in raw block commands
+#                         (html, xml, docbook...)
 #                         'menu' is added in menu commands
-#                         'math', 'footnote', 'caption', 'shortcaption' are 
-#                         also added when in those commands
+#                         'math', 'footnote', 'caption', 'shortcaption', 
+#                         'inlineraw' are also added when in those commands
 # conditionals_stack      a stack of conditional commands that are expanded.
 # macro_stack             stack of macros being expanded (more recent first)
 # definfoenclose          an hash, key is the command name, value is an array
@@ -4847,7 +4849,7 @@ sub _parse_texi($;$)
           }
 
         } elsif ($separator eq '}') {
-          _abort_empty_line ($self, $current);
+          _abort_empty_line($self, $current);
           #print STDERR "GGGGG". _print_current ($current);
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
             $current = $current->{'parent'};
