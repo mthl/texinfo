@@ -1,3 +1,10 @@
+2013-01-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Raw Formatter Commands): be more emphatic
+	about some processing being done inside raw regions,
+	and the resulting unpredictable effects when Texinfo-level
+	things are done there.
+
 2013-01-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Other Customization Variables)

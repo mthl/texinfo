@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.531 2013-01-20 18:37:06 karl Exp $
+@c $Id: texinfo.txi,v 1.532 2013-01-22 00:46:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13818,7 +13818,7 @@ one (e.g., not Info, not @TeX{}, @dots{}).
 
 @item
 `Raw' formatter text for any output format, passed straight
-through with (almost) no interpretation of @@-commands.
+through with minimal (but not zero) interpretation of @@-commands.
 
 @item
 Format-independent variable substitutions, and testing if a variable
@@ -14003,22 +14003,25 @@ with @code{@@iftex}, not raw formatter source as with @code{@@tex}
 @cindex Commands using raw @TeX{}
 @cindex Plain @TeX{}
 
-Ordinarily, the @code{@@if@dots{}} conditionals just described must be
-used only with normal Texinfo source.  For instance, most features of
-plain @TeX{} will not work within @code{@@iftex}, as they are
-overridden by Texinfo features.  The purpose of @code{@@iftex} is to
-provide conditional processing for the Texinfo source, not provide
-access to underlying formatting features.
+The @code{@@if@dots{}} conditionals just described must be used only
+with normal Texinfo source.  For instance, most features of plain
+@TeX{} will not work within @code{@@iftex}.  The purpose of
+@code{@@if@dots{}} is to provide conditional processing for Texinfo
+source, not provide access to underlying formatting features.  For
+that, Texinfo provides so-called @dfn{raw formatter commands}.  They
+should only be used when truly required (most documents do not need
+them).
 
 @findex tex
 @cindex Category codes, of plain @TeX{}
-You can enter plain @TeX{} completely, and use @samp{\} in the @TeX{}
-commands, by delineating a region with the @code{@@tex} and
-@code{@@end tex} commands.  All plain @TeX{} commands and category
-codes are restored within an @code{@@tex} region.  The sole exception
-is that the @code{@@} character still introduces a command, so that
-@code{@@end tex} can be recognized.  Texinfo processors will ignore
-such a region in their output unless @TeX{} output is being produced.
+The first raw formatter command is @code{@@tex}.  You can enter plain
+@TeX{} completely, and use @samp{\} in the @TeX{} commands, by
+delineating a region with the @code{@@tex} and @code{@@end tex}
+commands.  All plain @TeX{} commands and category codes are restored
+within an @code{@@tex} region.  The sole exception is that the
+@code{@@} character still introduces a command, so that @code{@@end
+tex} can be recognized.  Texinfo processors will not output material
+in such a region, unless @TeX{} output is being produced.
 
 @findex \gdef @r{within @code{@@tex}}
 @findex \globaldefs @r{within @code{@@tex}}
@@ -14068,7 +14071,7 @@ Texinfo source to be included in XML output only, and @code{@@xml
 @dots{} @@end xml} for a region of raw XML@.  Regions of raw text in
 other formats will also be present in the XML output, but with
 protection of XML characters and within corresponding elements.  For
-example:
+example, the raw HTML text:
 
 @example
 @group
@@ -14079,7 +14082,7 @@ example:
 @end example
 
 @noindent
-will be output in XML as
+will be included in the XML output as:
 
 @example
 @group
@@ -14099,7 +14102,19 @@ to delimit Texinfo source to be included in Docbook output only, and
 The behavior of newlines in raw regions is unspecified.
 
 In all cases, in raw processing, @code{@@} retains the same meaning as
-in the remainder of the document.
+in the remainder of the document.  Thus, the Texinfo processors
+recognize and even execute, to some extent, the contents of the raw
+regions, regardless of the final output format.  Therefore, specifying
+changes that globally affect the document inside a raw region leads to
+unpredictable and generally undesirable behavior.  For example,
+giving the @code{@@kbdinputstyle} command inside a raw region.
+
+The remedy is simple: don't do that.  Use the raw formatter commands
+for their intended purpose, of providing material directly in the
+underlying format.  When you simply want to give different Texinfo
+specifications for different output formats, use the
+@code{@@if@dots{}} conditionals and stay in Texinfo syntax.
+
 
 
 @node Inline Conditionals
@@ -22017,7 +22032,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.531 2013-01-20 18:37:06 karl Exp $
+$Id: texinfo.txi,v 1.532 2013-01-22 00:46:35 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
