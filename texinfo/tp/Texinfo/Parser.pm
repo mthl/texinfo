@@ -3534,22 +3534,22 @@ sub _command_with_command_as_argument($)
                                =~ /^[^\S\n]*/)))
 }
 
-# $registered_as_invalid_command  may be undef, if there is no
+# $marked_as_invalid_command may be undef, if there is no
 # tree element because the @-command construct is incorrect, for example
 # wrong @tab.
-sub _register_and_warn_invalid($$$$$)
+sub _mark_and_warn_invalid($$$$$)
 {
   my $self = shift;
   my $command = shift;
   my $invalid_parent = shift;
   my $line_nr = shift;
-  my $registered_as_invalid_command = shift;
+  my $marked_as_invalid_command = shift;
 
   if (defined($invalid_parent)) {
     $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
               $command, $invalid_parent), $line_nr);
-    $registered_as_invalid_command->{'extra'}->{'invalid_nesting'} = 1
-      if (defined($registered_as_invalid_command));
+    $marked_as_invalid_command->{'extra'}->{'invalid_nesting'} = 1
+      if (defined($marked_as_invalid_command));
   }
 }
 # the different types
@@ -4031,7 +4031,7 @@ sub _parse_texi($;$)
         } elsif ($separator eq '.' and $line =~ /^\S/) {
           pop @{$current->{'args'}};
           $current = $current->{'args'}->[-1];
-          $current = _merge_text ($self, $current, $separator);
+          $current = _merge_text($self, $current, $separator);
         # here we collect spaces following separators.
         } elsif ($line =~ s/^([^\S\n]+)//) {
           # FIXME a trailing end of line could be considered to be part
@@ -4084,7 +4084,7 @@ sub _parse_texi($;$)
               } elsif (ref($self->{'values'}->{$value}) eq 'ARRAY') {
                 # we don't know for sure, but if we don't do it here it 
                 # won't be done
-                _abort_empty_line ($self, $current);
+                _abort_empty_line($self, $current);
                 foreach my $content (@{$self->{'values'}->{$value}}) {
                   push @{$current->{'contents'}}, $content;
                 }
@@ -4092,7 +4092,7 @@ sub _parse_texi($;$)
               } elsif (ref($self->{'values'}->{$value}) eq 'HASH') {
                 # we don't know for sure, but if we don't do it here it 
                 # won't be done
-                _abort_empty_line ($self, $current);
+                _abort_empty_line($self, $current);
                 my $content = $self->{'values'}->{$value};
                 push @{$current->{'contents'}}, $content;
                 push @{$current->{'contents'}}, {};
@@ -4102,27 +4102,27 @@ sub _parse_texi($;$)
               # gdt('@{No value for `{value}\'@}', {'value' => $value}, {'keep_texi'=> 1});
               push @{$current->{'contents'}}, { 'cmdname' => 'value',
                                                 'type' => $value };
-              $self->line_warn (
+              $self->line_warn(
                   sprintf($self->__("undefined flag: %s"), $value), $line_nr);
             }
           } else {
-            $self->line_error ($self->__("Bad syntax for \@value"), $line_nr);
+            $self->line_error($self->__("Bad syntax for \@value"), $line_nr);
           }
           next;
         }
 
         if (defined($deprecated_commands{$command})) {
           if ($deprecated_commands{$command} eq '') {
-            $self->line_warn (sprintf($self->__("%c%s is obsolete."), 
+            $self->line_warn(sprintf($self->__("%c%s is obsolete."), 
                                 ord('@'), $command), $line_nr);
           } else {
-            $self->line_warn (sprintf($self->__("%c%s is obsolete; %s"),
+            $self->line_warn(sprintf($self->__("%c%s is obsolete; %s"),
                    ord('@'), $command, 
                    $self->__($deprecated_commands{$command})), $line_nr);
           }
         }
 
-        if (not _abort_empty_line ($self, $current) 
+        if (not _abort_empty_line($self, $current) 
                and $begin_line_commands{$command}) {
           $self->line_warn (sprintf($self->__("\@%s should only appear at a line beginning"), 
                                      $command), $line_nr);
@@ -4188,7 +4188,7 @@ sub _parse_texi($;$)
           if ($root_commands{$command} or $command eq 'bye') {
             $current = _close_commands($self, $current, $line_nr, undef, 
                                        $command);
-            # root_level commands leads to starting setting a new root
+            # root_level commands leads to setting a new root
             # for the whole document and stuffing the preceding text
             # as the first content, this is done only once.
             if ($current->{'type'} and $current->{'type'} eq 'text_root') {
@@ -4228,13 +4228,13 @@ sub _parse_texi($;$)
             }
             if (!$ignored) {
               $misc = {'cmdname' => $command,
-                      'parent' => $current};
+                       'parent' => $current};
               push @{$current->{'contents'}}, $misc;
               # also sets invalid_nesting in that case
               $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
               $self->_register_global_command($command, $misc, $line_nr);
             }
-            $self->_register_and_warn_invalid($command, $invalid_parent,
+            $self->_mark_and_warn_invalid($command, $invalid_parent,
                                               $line_nr, $misc);
             $current = $self->_begin_preformatted($current)
               if ($close_preformatted_commands{$command});
@@ -4309,7 +4309,7 @@ sub _parse_texi($;$)
             } elsif ($command eq 'novalidate') {
               $self->{'novalidate'} = 1;
             }
-            $self->_register_and_warn_invalid($command, $invalid_parent,
+            $self->_mark_and_warn_invalid($command, $invalid_parent,
                                               $line_nr, $misc);
             $self->_register_global_command($command, $misc, $line_nr);
             $current = _end_line($self, $current, $line_nr);
@@ -4368,7 +4368,9 @@ sub _parse_texi($;$)
                     if ($row->{'type'} eq 'before_item') {
                       $self->line_error($self->__("\@tab before \@item"), $line_nr);
                     } elsif ($row->{'cells_count'} >= $parent->{'extra'}->{'max_columns'}) {
-                      $self->line_error (sprintf($self->__("Too many columns in multitable item (max %d)"), $parent->{'extra'}->{'max_columns'}), $line_nr);
+                      $self->line_error(sprintf($self->__(
+                              "Too many columns in multitable item (max %d)"), 
+                             $parent->{'extra'}->{'max_columns'}), $line_nr);
                     } else {
                       $row->{'cells_count'}++;
                       $misc = { 'cmdname' => $command,
@@ -4395,17 +4397,20 @@ sub _parse_texi($;$)
                                'extra' => {'cell_number' => 1}};
                     push @{$row->{'contents'}}, $misc;
                     $current = $row->{'contents'}->[-1];
-                    #$current = $self->_begin_preformatted($current);
                   }
                 } else {
-                  $self->line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+                  $self->line_error (sprintf($self->__(
+                           "\@%s not meaningful inside `\@%s' block"), 
+                               $command, $parent->{'cmdname'}), $line_nr);
                 }
                 $current = $self->_begin_preformatted($current);
               } elsif ($command eq 'tab') {
-                $self->line_error($self->__("ignoring \@tab outside of multitable"), $line_nr);
+                $self->line_error($self->__(
+                           "ignoring \@tab outside of multitable"), $line_nr);
                 $current = $self->_begin_preformatted($current);
               } else {
-                $self->line_error (sprintf($self->__("\@%s outside of table or list"), $command), $line_nr);
+                $self->line_error (sprintf($self->__(
+                   "\@%s outside of table or list"), $command), $line_nr);
                 $current = $self->_begin_preformatted($current);
               }
               $misc->{'line_nr'} = $line_nr if (defined($misc));
@@ -4439,7 +4444,9 @@ sub _parse_texi($;$)
                 if (!$current->{'cmdname'} 
                      or $current->{'cmdname'} ne $base_command
                      or $after_paragraph) {
-                  $self->line_error(sprintf($self->__("Must be after `\@%s' to use `\@%s'"), $base_command, $command), $line_nr);
+                  $self->line_error(sprintf($self->__(
+                                       "Must be after `\@%s' to use `\@%s'"), 
+                                          $base_command, $command), $line_nr);
                   $current->{'contents'}->[-1]->{'extra'}->{'not_after_command'} = 1;
                 }
               }
@@ -4448,9 +4455,9 @@ sub _parse_texi($;$)
             # be the @-command argument
             if ($line_arg) {
               $current = $current->{'contents'}->[-1];
-              $current->{'args'} = [ { 'type' => 'misc_line_arg', 
+              $current->{'args'} = [{ 'type' => 'misc_line_arg', 
                                       'contents' => [], 
-                                      'parent' => $current } ];
+                                      'parent' => $current }];
               # @node is the only misc command with args separated with comma
               # FIXME a 3 lingering here deep into the code may not
               # be very wise...  However having a hash only for one @-command
@@ -4494,7 +4501,7 @@ sub _parse_texi($;$)
             }
             $line = _start_empty_line_after_command($line, $current, $misc);
           }
-          $self->_register_and_warn_invalid($command, $invalid_parent,
+          $self->_mark_and_warn_invalid($command, $invalid_parent,
                                             $line_nr, $misc);
 
           if (!$self->_register_global_command($command, $misc, $line_nr)
@@ -4504,10 +4511,10 @@ sub _parse_texi($;$)
         # @-command with matching @end opening
         } elsif (exists($block_commands{$command})) {
           if ($command eq 'macro' or $command eq 'rmacro') {
-            my $macro = _parse_macro_command_line ($self, $command, $line, 
+            my $macro = _parse_macro_command_line($self, $command, $line, 
                                  $current, $line_nr);
             push @{$current->{'contents'}}, $macro;
-            $self->_register_and_warn_invalid($command, $invalid_parent,
+            $self->_mark_and_warn_invalid($command, $invalid_parent,
                                        $line_nr, $current->{'contents'}->[-1]);
             $current = $current->{'contents'}->[-1];
             last;
@@ -4689,7 +4696,7 @@ sub _parse_texi($;$)
                 unless ($def_commands{$command});
             }
             $block->{'line_nr'} = $line_nr;
-            $self->_register_and_warn_invalid($command, $invalid_parent,
+            $self->_mark_and_warn_invalid($command, $invalid_parent,
                                               $line_nr, $block);
             $self->_register_global_command($command, $block, $line_nr);
 
@@ -4703,7 +4710,7 @@ sub _parse_texi($;$)
                                             'contents' => [] };
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
             if ($keep_line_nr_brace_commands{$command});
-          $self->_register_and_warn_invalid($command, $invalid_parent,
+          $self->_mark_and_warn_invalid($command, $invalid_parent,
                                        $line_nr, $current->{'contents'}->[-1]);
           $current = $current->{'contents'}->[-1];
           if ($command eq 'click') {
@@ -4733,12 +4740,12 @@ sub _parse_texi($;$)
                                         $command), $line_nr);
           }
           if ($command eq "\n") {
-            $current = _end_line ($self, $current, $line_nr);
+            $current = _end_line($self, $current, $line_nr);
             last;
           }
         } else {
-          $self->line_error (sprintf($self->__("Unknown command `%s'"), 
-                                                      $command), $line_nr);
+          $self->line_error(sprintf($self->__("Unknown command `%s'"), 
+                                      $command), $line_nr);
         }
 
       } elsif ($line =~ s/^([{}@,:\t.])//) {
@@ -4749,7 +4756,7 @@ sub _parse_texi($;$)
           # not followed by anything.
           $self->line_error ($self->__("Unexpected \@"), $line_nr);
         } elsif ($separator eq '{') {
-          _abort_empty_line ($self, $current);
+          _abort_empty_line($self, $current);
           if ($current->{'cmdname'} 
                and (defined($brace_commands{$current->{'cmdname'}})
                      or $self->{'definfoenclose'}->{$current->{'cmdname'}})) {
@@ -4858,7 +4865,7 @@ sub _parse_texi($;$)
             $current = $current->{'contents'}->[-1];
             print STDERR "BRACKETED in math\n" if ($self->{'DEBUG'});
           } else {
-            $self->line_error (sprintf($self->__("Misplaced %c"),
+            $self->line_error(sprintf($self->__("Misplaced %c"),
                                              ord('{')), $line_nr);
           }
 
@@ -4896,13 +4903,15 @@ sub _parse_texi($;$)
               _remove_empty_content_arguments($current);
             }
             my $closed_command = $current->{'parent'}->{'cmdname'};
-            print STDERR "CLOSING(brace) \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
+            print STDERR "CLOSING(brace) \@$current->{'parent'}->{'cmdname'}\n" 
+              if ($self->{'DEBUG'});
             delete $current->{'parent'}->{'remaining_args'};
             if (defined($brace_commands{$closed_command}) 
                  and $brace_commands{$closed_command} == 0
                  and @{$current->{'contents'}}) {
-              $self->line_warn (sprintf($self->__("Command \@%s does not accept arguments"), 
-                                        $closed_command), $line_nr);
+              $self->line_warn(sprintf($self->__(
+                                 "Command \@%s does not accept arguments"), 
+                                       $closed_command), $line_nr);
             }
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
               $current->{'parent'}->{'line_nr'} = $line_nr;
@@ -4924,7 +4933,8 @@ sub _parse_texi($;$)
                     or ($closed_command ne 'inforef'
                      and !defined($args[0]) and !defined($args[3])
                      and !defined($args[4]))) {
-                  $self->line_warn (sprintf($self->__("Command \@%s missing a node or external manual argument"),
+                  $self->line_warn (sprintf($self->__(
+                     "Command \@%s missing a node or external manual argument"),
                                         $closed_command), $line_nr);
                 } else {
                   my $parsed_ref_node = _parse_node_manual($ref->{'args'}->[0]);
@@ -4938,9 +4948,11 @@ sub _parse_texi($;$)
                 }
                 if (defined($args[1])) {
                   my $normalized_cross_ref_name = 
-                    Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $args[1]});
+                    Texinfo::Convert::NodeNameNormalization::normalize_node(
+                                                      {'contents' => $args[1]});
                   if ($normalized_cross_ref_name !~ /[^-]/) {
-                    $self->line_warn(sprintf($self->__("In \@%s empty cross reference name after expansion `%s'"),
+                    $self->line_warn(sprintf($self->__(
+                      "In \@%s empty cross reference name after expansion `%s'"),
                           $closed_command,
                           Texinfo::Convert::Texinfo::convert({'contents' => $args[1]})), 
                             $line_nr);
@@ -4950,7 +4962,8 @@ sub _parse_texi($;$)
                   my $normalized_cross_ref_title =
                     Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $args[2]});
                   if ($normalized_cross_ref_title !~ /[^-]/) {
-                    $self->line_warn(sprintf($self->__("In \@%s empty cross reference title after expansion `%s'"),
+                    $self->line_warn(sprintf($self->__(
+                     "In \@%s empty cross reference title after expansion `%s'"),
                           $closed_command,
                           Texinfo::Convert::Texinfo::convert({'contents' => $args[2]})), 
                             $line_nr);
@@ -5124,19 +5137,19 @@ sub _parse_texi($;$)
                                  'text' => $separator,
                                  'parent' => $current };
         } else {
-          $current = _merge_text ($self, $current, $separator);
+          $current = _merge_text($self, $current, $separator);
         }
       # Misc text except end of line
       } elsif ($line =~ s/^([^{}@,:\t.\n]+)//) {
         my $new_text = $1;
-        $current = _merge_text ($self, $current, $new_text);
+        $current = _merge_text($self, $current, $new_text);
       # end of line
       } else {
         if ($self->{'DEBUG'}) {
           print STDERR "END LINE: ". _print_current($current)."\n";
         }
         if ($line =~ s/^(\n)//) {
-          $current = _merge_text ($self, $current, $1);
+          $current = _merge_text($self, $current, $1);
         } else {
           if (scalar(@{$self->{'input'}})) {
             $self->_bug_message("Text remaining without normal text but `$line'", 
@@ -5145,7 +5158,7 @@ sub _parse_texi($;$)
           }
         }
         #print STDERR "END LINE AFTER MERGE END OF LINE: ". _print_current($current)."\n";
-        $current = _end_line ($self, $current, $line_nr);
+        $current = _end_line($self, $current, $line_nr);
         last;
       }
     }
@@ -5164,6 +5177,12 @@ sub _parse_texi($;$)
       print STDERR "CONTEXT_STACK no empty end _parse_texi: ".join('|', @{$self->{'context_stack'}})."\n";
     }
     @{$self->{'context_stack'}} = ($self->{'context'});
+  }
+  if (@{$self->{'raw_formats_stack'}} != 1) {
+    if ($self->{'DEBUG'}) {
+      print STDERR "RAW_FORMATS_STACK no empty end _parse_texi: ".join('|', @{$self->{'raw_formats_stack'}})."\n";
+    }
+    @{$self->{'raw_formats_stack'}} = ($self->{'raw_formats_stack'}->[0]);
   }
   return $root;
 }
