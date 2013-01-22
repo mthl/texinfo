@@ -665,6 +665,7 @@ sub parser(;$$)
   $parser->{'regions_stack'} = [];
   $parser->{'macro_stack'} = [];
   $parser->{'conditionals_stack'} = [];
+  $parser->{'raw_formats_stack'} = [1];
 
   # turn the array to a hash for speed.  Not sure it really matters for such
   # a small array.
@@ -1322,7 +1323,8 @@ sub _check_no_text($)
   return $after_paragraph;
 }
 
-# put everything after the last @item/@itemx in an item_table type container.
+# put everything after the last @item/@itemx in an item_table type container
+# and distinguish table_term and table_entry.
 sub _gather_previous_item($$;$$)
 {
   my $self = shift;
@@ -1411,6 +1413,8 @@ sub _gather_previous_item($$;$$)
   }
 }
 
+# Starting from the end, gather everything util the def_line to put in 
+# a def_item
 sub _gather_def_item($;$)
 {
   my $current = shift;
@@ -1706,6 +1710,7 @@ sub _close_commands($$$;$$)
         $self->_bug_message("context $context instead of rawpreformatted for $closed_command", 
                             $line_nr, $current);
       }
+      pop @{$self->{'raw_formats_stack'}};
     } elsif ($menu_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
       # may be in menu, but context is preformatted if in a preformatted too.
@@ -2863,7 +2868,7 @@ sub _end_line($$$)
             _register_label($self, $float, $float_label, $line_nr);
           }
         }
-        _parse_float_type ($float);
+        _parse_float_type($float);
         $type = $float->{'extra'}->{'type'}->{'normalized'};
       }
       push @{$self->{'floats'}->{$type}}, $float;
@@ -3021,7 +3026,7 @@ sub _end_line($$$)
     my $end_command;
     print STDERR "MISC END \@$command\n" if ($self->{'DEBUG'});
     if ($self->{'misc_commands'}->{$command} =~ /^\d$/) {
-      my $args = _parse_line_command_args ($self, $current, $line_nr);
+      my $args = _parse_line_command_args($self, $current, $line_nr);
       $current->{'extra'}->{'misc_args'} = $args if (defined($args));
     } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
       my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0],
@@ -4419,7 +4424,7 @@ sub _parse_texi($;$)
                 $base_command =~ s/x$//;
                 # check that the def*x is first after @def*, no paragraph
                 # in-between.
-                my $after_paragraph = _check_no_text ($current);
+                my $after_paragraph = _check_no_text($current);
                 push @{$self->{'context_stack'}}, 'def';
                 $current->{'contents'}->[-1]->{'type'} = 'def_line';
                 $current->{'contents'}->[-1]->{'extra'} = 
@@ -4627,6 +4632,12 @@ sub _parse_texi($;$)
                 push @{$self->{'context_stack'}}, 'preformatted';
               } elsif ($format_raw_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'rawpreformatted';
+                if ($self->{'expanded_formats_hash'}->{$command} 
+                    and $self->{'raw_formats_stack'}->[-1]) {
+                  push @{$self->{'raw_formats_stack'}}, 1;
+                } else {
+                  push @{$self->{'raw_formats_stack'}}, 0;
+                }
               }
               if ($region_commands{$command}) {
                 if (@{$self->{'regions_stack'}}) {
@@ -4803,8 +4814,11 @@ sub _parse_texi($;$)
                 $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
                    = $current->{'contents'}->[-1];
               }
-              push @{$self->{'context_stack'}}, $command
-                if ($command eq 'inlineraw');
+              if ($command eq 'inlineraw') {
+                push @{$self->{'context_stack'}}, $command;
+                # this is changed when the first argument is known.
+                push @{$self->{'raw_formats_stack'}}, 0;
+              }
             }
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: "
               .(defined($current->{'parent'}->{'remaining_args'}) ? "remaining: $current->{'parent'}->{'remaining_args'}, " : '')
@@ -4973,6 +4987,7 @@ sub _parse_texi($;$)
                                    $line_nr, $current);
                   die;
                 }
+                pop @{$self->{'raw_formats_stack'}};
               }
               if (!@{$current_command->{'args'}} 
                   or !@{$current_command->{'extra'}->{'brace_command_contents'}}
@@ -5073,6 +5088,20 @@ sub _parse_texi($;$)
           }
           my $type = $current->{'type'};
           $current = $current->{'parent'};
+          if ($current->{'cmdname'} eq 'inlineraw') {
+            # change the top of the raw_formats_stack now that we know the
+            # first arg of the inlineraw
+            my $inlineraw_type
+               = Texinfo::Convert::Text::convert({'contents' =>
+                  $current->{'extra'}->{'brace_command_contents'}->[0]},
+                          {Texinfo::Common::_convert_text_options($self)});
+            if ($self->{'expanded_formats_hash'}->{$inlineraw_type} 
+                and $self->{'raw_formats_stack'}->[-2]) {
+              $self->{'raw_formats_stack'}->[-1] = 1;
+            } else {
+              $self->{'raw_formats_stack'}->[-1] = 0;
+            }
+          }
           $current->{'remaining_args'}--;
           push @{$current->{'args'}},
                { 'type' => $type, 'parent' => $current, 'contents' => [] };
