@@ -464,8 +464,9 @@ sub _index_entry($$)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $index_entry = $root->{'extra'}->{'index_entry'};
-    my $attribute = ['index', $index_entry->{'index_name'},
-                     'number', $index_entry->{'number'}];
+    my $attribute = ['index', $index_entry->{'index_name'}];
+    push @$attribute, ('number', $index_entry->{'number'})
+        if (defined($index_entry->{'number'}));
     # in case the index is not a default index, or the style of the
     # entry (in code or not) is not the default for this index
     if ($self->{'index_names'}) {

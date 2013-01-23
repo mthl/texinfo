@@ -1061,6 +1061,9 @@ sub xml_protect_text($$)
 {
   my $self = shift;
   my $text = shift;
+  if (!defined($text)) {
+    cluck;
+  }
   $text =~ s/&/&amp;/g;
   $text =~ s/</&lt;/g;
   $text =~ s/>/&gt;/g;
