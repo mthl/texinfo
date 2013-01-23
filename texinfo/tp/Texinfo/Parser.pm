@@ -4536,8 +4536,8 @@ sub _parse_texi($;$)
           $self->_mark_and_warn_invalid($command, $invalid_parent,
                                             $line_nr, $misc);
 
-          if (!$self->_register_global_command($command, $misc, $line_nr)
-              and $command eq 'dircategory'
+          $self->_register_global_command($command, $misc, $line_nr);
+          if ($command eq 'dircategory' 
               and ! _ignore_global_commands($self)) {
             push @{$self->{'info'}->{'dircategory_direntry'}}, $misc;
           }
