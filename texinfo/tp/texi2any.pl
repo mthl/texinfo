@@ -1222,6 +1222,10 @@ while(@input_files) {
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
     Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
   }
+  if ($tree_transformations{'indent_menus_descriptions'}) {
+    Texinfo::Convert::Plaintext::indent_menus_descriptions(undef, $parser);
+  }
+
   if ($tree_transformations{'regenerate_master_menu'}) {
     Texinfo::Structuring::regenerate_master_menu($parser);
   }

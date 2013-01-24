@@ -253,7 +253,7 @@ my @variable_string_settables = (
   'TREE_TRANSFORMATIONS', 'BASEFILENAME_LENGTH',
   'TEXTCONTENT_COMMENT', 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG',
   'MACRO_BODY_IGNORES_LEADING_SPACE', 'CHECK_HTMLXREF',
-  'TEXINFO_DTD_VERSION',
+  'TEXINFO_DTD_VERSION', 'TEXINFO_COLUMN_FOR_DESCRIPTION',
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?
@@ -329,7 +329,8 @@ my %valid_tree_transformations;
 foreach my $valid_transformation ('simple_menus', 
     'fill_gaps_in_sectioning', 'move_index_entries_after_items',
     'insert_nodes_for_sectioning_commands',
-    'complete_tree_nodes_menus', 'regenerate_master_menu') {
+    'complete_tree_nodes_menus', 'regenerate_master_menu',
+    'indent_menus_descriptions') {
   $valid_tree_transformations{$valid_transformation} = 1;
 }
 

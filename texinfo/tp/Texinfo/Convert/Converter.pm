@@ -100,6 +100,7 @@ our %all_converters_defaults = (
   'DEBUG'                => 0,
   'TEST'                 => 0,
   'translated_commands'  => {'error' => 'error@arrow{}',},
+  'TEXINFO_COLUMN_FOR_DESCRIPTION' => 32, # same as emacs
 );
 
 # For translation of in document string.

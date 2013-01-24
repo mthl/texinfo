@@ -2073,14 +2073,14 @@ sub set_menus_to_simple_menu($)
 
   if ($self->{'info'} and $self->{'info'}->{'unassociated_menus'}) {
     foreach my $menu (@{$self->{'info'}->{'unassociated_menus'}}) {
-      menu_to_simple_menu ($menu);
+      menu_to_simple_menu($menu);
     }
   }
   if ($self->{'nodes'} and @{$self->{'nodes'}}) {
     foreach my $node (@{$self->{'nodes'}}) {
       if ($node->{'menus'}) {
         foreach my $menu (@{$node->{'menus'}}) {
-          menu_to_simple_menu ($menu);
+          menu_to_simple_menu($menu);
         }
       }
     }
