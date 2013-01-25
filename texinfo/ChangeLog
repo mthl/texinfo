@@ -1,3 +1,10 @@
+2013-01-25  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Customization Variables)
+	<TEXINFO_COLUMN_FOR_DESCRIPTION>: new.
+	<TREE_TRANSFORMATIONS>: add indent_menu_descriptions.
+	Also, use it to re-indent the menus and regenerate_master_menu.
+
 2013-01-21  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Raw Formatter Commands): be more emphatic
