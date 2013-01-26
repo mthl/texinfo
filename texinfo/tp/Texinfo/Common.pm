@@ -212,8 +212,6 @@ my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE',
   'SPLIT_INDEX');
 
 my @formats_settable = (
-  'DEBUGCOUNT', 'DEBUGTREE', 'RAWTEXT', 'TEXTCONTENT', 'PLAINTEXINFO',
-  'TEXINFOSXML',
 );
 
 my @variable_string_settables = (
@@ -310,7 +308,7 @@ my %customization_variable_classes = (
   'variable_string_settables' => \@variable_string_settables,
   'variable_other_settables' => \@variable_other_settables,
   'parser_options' => \@parser_options,
-  'formats_settable' => \@formats_settable,
+  #'formats_settable' => \@formats_settable,
   'obsolete_variables' => \@obsolete_variables,
   'variable_settables_not_used' => \@variable_settables_not_used,
 );

@@ -835,18 +835,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      } elsif ($var eq 'TEXI2HTML') {
        $format = set_format('html');
        $parser_default_options->{'values'}->{'texi2html'} = 1;
-     } elsif ($var eq 'DEBUGCOUNT') {
-       $format = set_format('debugcount');
-     } elsif ($var eq 'DEBUGTREE') {
-       $format = set_format('debugtree');
-     } elsif ($var eq 'PLAINTEXINFO') {
-       $format = set_format('plaintexinfo');
-     } elsif ($var eq 'RAWTEXT') {
-       $format = set_format('rawtext');
-     } elsif ($var eq 'TEXTCONTENT') {
-       $format = set_format('textcontent');
-     } elsif ($var eq 'TEXINFOSXML') {
-       $format = set_format('texinfosxml');
      }
      set_from_cmdline ($var, $value);
      # FIXME do that here or when all command line options are processed?
