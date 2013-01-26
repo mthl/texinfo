@@ -85,6 +85,7 @@ sub ixin_header($)
 
 my %attribute_string_names = (
   'nodeentry' => {'name' => 1},
+  'nodelabel' => {'name' => 1},
   'filename' => {'name' => 1},
   'settingvalue' => {'value' => 1},
   'nodetweakvalue' => {'value' => 1},
@@ -202,6 +203,24 @@ sub _count_bytes($$)
   my $string = shift;
 
   return Texinfo::Common::count_bytes($self, $string);
+}
+
+sub _associated_node_id($$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $node_label_number = shift;
+
+  my ($element, $root_command) = $self->_get_element($command);
+  my $associated_node_id;
+  if (defined($root_command) 
+      and defined($root_command->{'extra'}->{'normalized'})) {
+    $associated_node_id 
+      = $node_label_number->{$root_command->{'extra'}->{'normalized'}};
+  } else {
+    $associated_node_id = -1;
+  }
+  return $associated_node_id;
 }
 
 my @node_directions = ('Next', 'Prev', 'Up');
@@ -410,6 +429,7 @@ sub output_ixin($$)
   my $nodes_index = $self->ixin_open_element('nodesindex');
   foreach my $node (@nodes) {
     my $normalized_node_name = $node->{'extra'}->{'normalized'};
+    # FIXME name should be a renderable sequence
     my @attributes = ('name', $normalized_node_name,
                       'length', $node_byte_sizes{$normalized_node_name});
     foreach my $direction (@node_directions) {
@@ -461,14 +481,8 @@ sub output_ixin($$)
  SECTION:
       while ($section) {
         my ($element, $root_command) = $self->_get_element($section);
-        my $associated_node_id;
-        if (defined($root_command) 
-            and defined($root_command->{'extra'}->{'normalized'})) {
-          $associated_node_id 
-            = $node_label_number{$root_command->{'extra'}->{'normalized'}};
-        } else {
-          $associated_node_id = -1;
-        }
+        my $associated_node_id = $self->_associated_node_id($section, 
+                                                     \%node_label_number);
         my @attributes = ('nodeid', $associated_node_id, 'type', 
               $self->_level_corrected_section($section));
         $sectioning_tree .= $self->ixin_open_element('sectionentry',
@@ -517,6 +531,30 @@ sub output_ixin($$)
 
   # do labels
 
+  my $non_node_labels_text = '';
+  my $labels_nr = 0;
+  if ($self->{'labels'}) {
+    foreach my $label (sort(keys(%{$self->{'labels'}}))) {
+      my $command = $self->{'labels'}->{$label};
+      next if ($command->{'cmdname'} eq 'node');
+      $labels_nr++;
+      my $associated_node_id = $self->_associated_node_id($command, 
+                                                     \%node_label_number);
+      $non_node_labels_text .= $self->ixin_element('label', ['name', $label,
+                                       'nodeid', $associated_node_id,
+                                       'type', $command->{'cmdname'}]);
+    }
+  }
+  
+  my $labels_text = $self->ixin_open_element('labels', ['count', $labels_nr]);
+  foreach my $node (@nodes) {
+    $labels_text .= $self->ixin_list_element('nodelabel', ['name', 
+                                    $node->{'extra'}->{'normalized'}]);
+    $labels_text .= ' ';
+  }
+  $labels_text .= $non_node_labels_text 
+                  . $self->ixin_close_element('labels')."\n";
+  
   # do document-term sets (indices)
 
   # do floats
@@ -525,7 +563,8 @@ sub output_ixin($$)
 
   my @counts_attributes = ('nodeindexlen', $self->_count_bytes($nodes_index),
                     'nodecounts', $node_nr, 
-                    'sectioningtreelen', $self->_count_bytes($sectioning_tree));
+                    'sectioningtreelen', $self->_count_bytes($sectioning_tree),
+                    'labelslen', $self->_count_bytes($labels_text));
 
   my $output = $self->_output_text($result, $fh);
 
@@ -534,6 +573,7 @@ sub output_ixin($$)
 
   $output .= $self->_output_text($nodes_index, $fh);
   $output .= $self->_output_text($sectioning_tree, $fh);
+  $output .= $self->_output_text($labels_text, $fh);
 
   $output .= $self->_output_text($document_output ."\n", $fh);
 
