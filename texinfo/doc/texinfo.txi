@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.533 2013-01-25 18:23:10 karl Exp $
+@c $Id: texinfo.txi,v 1.534 2013-01-26 15:14:38 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18052,7 +18052,7 @@ Name of the command used to produce PostScript, PDF, and DVI; default
 Generate HTML and try to be as compatible as possible with
 @command{texi2html}; default false.
 
-@item TEXINFO_COLUMN_DESCRIPTION
+@item TEXINFO_COLUMN_FOR_DESCRIPTION
 Used with the @code{indent_menu_descriptions} tree transformation,
 described below; default 32 (matching
 @code{texinfo-column-for-description} in Emacs)).
@@ -22052,7 +22052,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.533 2013-01-25 18:23:10 karl Exp $
+$Id: texinfo.txi,v 1.534 2013-01-26 15:14:38 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
