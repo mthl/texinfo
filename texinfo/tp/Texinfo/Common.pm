@@ -179,8 +179,14 @@ our %document_settable_unique_at_commands = (
   'setcontentsaftertitlepage' => 0,
   'setfilename' => undef,
   'setshortcontentsaftertitlepage' => 0,
+  'everyheading'      => undef,
+  'everyfooting'      => undef,
+  'evenheading'       => undef,
+  'evenfooting'       => undef,
+  'oddheading'        => undef,
+  'oddfooting'        => undef,
 );
-  
+
 my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'HEADERS',
   'MACRO_EXPAND', 'NUMBER_SECTIONS',

@@ -4331,6 +4331,8 @@ sub _parse_texi($;$)
                   { 'type' => 'misc_arg', 'text' => $arg, 
                     'parent' => $current->{'contents'}->[-1] };
               }
+              $misc->{'extra'}->{'misc_args'} = $args 
+                 if (scalar(@$args) and $arg_spec ne 'skipline');
             }
             if (! _ignore_global_commands($self)) {
               if ($command eq 'raisesections') {
@@ -5277,9 +5279,13 @@ sub _parse_special_misc_command($$$$)
         unless(_ignore_global_commands($self));
       my $remaining = $line;
       $remaining =~ s/^\s+@([[:alnum:]][[:alnum:]\-]*)({})?\s*//;
-      $self->line_warn (sprintf($self->__("Remaining argument on \@%s line: %s"), $command, $remaining), $line_nr) if ($remaining);
+      $self->line_warn (sprintf($self->__(
+                           "Remaining argument on \@%s line: %s"), 
+                             $command, $remaining), $line_nr) if ($remaining);
     } else {
-      $self->line_error (sprintf($self->__("\@%s should only accept a \@-command as argument, not `%s'"), $command, $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+                 "\@%s should only accept a \@-command as argument, not `%s'"),
+                                 $command, $line), $line_nr);
     }
   } else {
     die "Unknown special command $command\n";
@@ -6600,6 +6606,8 @@ index entry.
 An array holding strings, the arguments of @-commands taking simple
 textual arguments as arguments, like C<@everyheadingmarks>, 
 C<@frenchspacing>, C<@alias>, C<@synindex>, C<@columnfractions>.
+Also filled for C<@set>, C<@clickstyle>, C<@unmacro> or C<@comment>
+arguments.
 
 =item spaces_after_command
 

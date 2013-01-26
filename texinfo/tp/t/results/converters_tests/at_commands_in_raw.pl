@@ -1306,7 +1306,11 @@ $result_trees{'at_commands_in_raw'} = {
                   'cmdname' => 'set',
                   'extra' => {
                     'arg_line' => ' flag soemthing
-'
+',
+                    'misc_args' => [
+                      'flag',
+                      'soemthing'
+                    ]
                   },
                   'parent' => {}
                 },
@@ -1437,7 +1441,10 @@ $result_trees{'at_commands_in_raw'} = {
                   'cmdname' => 'unmacro',
                   'extra' => {
                     'arg_line' => ' othermacro
-'
+',
+                    'misc_args' => [
+                      'othermacro'
+                    ]
                   },
                   'parent' => {}
                 },
