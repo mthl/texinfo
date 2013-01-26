@@ -260,6 +260,7 @@ my @variable_string_settables = (
   'TEXTCONTENT_COMMENT', 'XREF_USE_FLOAT_LABEL', 'XREF_USE_NODE_NAME_ARG',
   'MACRO_BODY_IGNORES_LEADING_SPACE', 'CHECK_HTMLXREF',
   'TEXINFO_DTD_VERSION', 'TEXINFO_COLUMN_FOR_DESCRIPTION',
+  'TEXINFO_OUTPUT_FORMAT',
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?

@@ -1223,7 +1223,7 @@ sub _print_element_command_texi($)
     if ($element->{'extra'}->{'node_content'}) {
       unshift @{$command->{'contents'}}, @{$element->{'extra'}->{'node_content'}};
     }
-    return Texinfo::Convert::Texinfo::convert ($command);
+    return Texinfo::Convert::Texinfo::convert($command);
   }
   
   my $command = $element->{'extra'}->{'element_command'};

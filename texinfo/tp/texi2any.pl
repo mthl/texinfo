@@ -105,6 +105,7 @@ use Texinfo::Convert::TexinfoSXML;
 use Texinfo::Convert::DocBook;
 use Texinfo::Convert::TextContent;
 use Texinfo::Convert::PlainTexinfo;
+use Texinfo::Convert::IXINSXML;
 use DebugTexinfo::DebugCount;
 use DebugTexinfo::DebugTree;
 
@@ -829,11 +830,13 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
        $value = undef;
      }
      # special case, this is a pseudo format for debug
-     if ($var eq 'DEBUGCOUNT') {
-       $format = set_format('debugcount');
+     if ($var eq 'TEXINFO_OUTPUT_FORMAT') {
+       $format = set_format($value);
      } elsif ($var eq 'TEXI2HTML') {
        $format = set_format('html');
        $parser_default_options->{'values'}->{'texi2html'} = 1;
+     } elsif ($var eq 'DEBUGCOUNT') {
+       $format = set_format('debugcount');
      } elsif ($var eq 'DEBUGTREE') {
        $format = set_format('debugtree');
      } elsif ($var eq 'PLAINTEXINFO') {
@@ -941,6 +944,10 @@ my %formats_table = (
   'texinfosxml' => {
              'nodes_tree' => 1,
              'converter' => sub{Texinfo::Convert::TexinfoSXML->converter(@_)},
+           },
+  'ixinsxml' => {
+             'nodes_tree' => 1,
+             'converter' => sub{Texinfo::Convert::IXINSXML->converter(@_)},
            },
   'docbook' => {
              'move_index_entries_after_items' => 1,
