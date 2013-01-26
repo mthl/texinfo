@@ -360,6 +360,15 @@ foreach my $type (
   $ignored_types{$type} = 1;
 }
 
+# this is used in IXIN, to ignore everything before first node.
+sub _set_ignored_type($$)
+{
+  my $self = shift;
+  my $type = shift;
+
+  $ignored_types{$type} = 1;
+}
+
 my %type_elements = (
   'paragraph' => 'para',
   'preformatted' => 'pre',
