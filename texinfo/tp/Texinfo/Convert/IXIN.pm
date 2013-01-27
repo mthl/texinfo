@@ -92,9 +92,12 @@ sub ixin_header($)
 my %attribute_string_names = (
   'nodeentry' => {'name' => 1},
   'nodelabel' => {'name' => 1},
+  'floatentry' => {'name' => 1},
+  'label' => {'name' => 1},
   'filename' => {'name' => 1},
   'settingvalue' => {'value' => 1},
   'nodetweakvalue' => {'value' => 1},
+  'floatindex' => {'type' => 1},
 );
 
 sub _ixin_attributes($$$)
@@ -433,7 +436,7 @@ sub output_ixin($$)
       }
       $node_label_number{$normalized_node_name} = $node_nr;
 
-      my $node_result = $self->convert_tree($node_element);
+      my $node_result = $self->convert_tree($node_element)."\n";
       $document_output .= $node_result;
 
       # get node length.
@@ -566,6 +569,7 @@ sub output_ixin($$)
 
   my $non_node_labels_text = '';
   my $labels_nr = 0;
+  my %floats_associated_node_id;
   if ($self->{'labels'}) {
     foreach my $label (sort(keys(%{$self->{'labels'}}))) {
       my $command = $self->{'labels'}->{$label};
@@ -576,6 +580,11 @@ sub output_ixin($$)
       $non_node_labels_text .= $self->ixin_element('label', ['name', $label,
                                        'nodeid', $associated_node_id,
                                        'type', $command->{'cmdname'}]);
+
+      # register floats to avoid doing it twice for the float specific index
+      if ($command->{'cmdname'} eq 'float') {
+        $floats_associated_node_id{$command} = $associated_node_id;
+      }
     }
   }
   
@@ -590,8 +599,7 @@ sub output_ixin($$)
   
   # do document-term sets (indices counts and indices)
 
-  my $dts_index = '';
-  my $dts_text = $self->ixin_open_element('dtssets');
+  my %dts_information;
 
   if ($self->{'parser'}) {
     my ($index_names, $merged_indices)
@@ -602,7 +610,6 @@ sub output_ixin($$)
       = $self->Texinfo::Structuring::sort_indices($merged_index_entries,
                                                   $index_names);
     # first do the dts_text as the counts are needed for the dts index
-    my %dts_information;
     foreach my $index_name (sort(keys(%$entries))) {
       my $dts_text_result = '';
       my $dts_entries_nr = 0;
@@ -637,50 +644,167 @@ sub output_ixin($$)
              . $self->ixin_close_element('dts') . "\n";
       $dts_information{$index_name}->{'dts_text'} = $dts_text_result;
     }
+  }
 
-    # Gather informations on node id with printindex 
-    my $printindex_commands = $self->{'extra'}->{'printindex'}
-       if ($self->{'extra'}->{'printindex'});
-
-    if ($printindex_commands) {
-      foreach my $command (@$printindex_commands) {
-        my $associated_node_id = $self->_associated_node_id($command, 
-                                                     \%node_label_number);
-        if ($command->{'extra'} and $command->{'extra'}->{'misc_args'}
+  # Gather informations on printindex @-commands associated node id
+  if ($self->{'extra'}->{'printindex'}) {
+    foreach my $command (@{$self->{'extra'}->{'printindex'}}) {
+      my $associated_node_id = $self->_associated_node_id($command, 
+                                                   \%node_label_number);
+      if ($command->{'extra'} and $command->{'extra'}->{'misc_args'}
           and defined($command->{'extra'}->{'misc_args'}->[0])) {
-          my $index_name = $command->{'extra'}->{'misc_args'}->[0];
-          push @{$dts_information{$index_name}->{'node_id'}}, $associated_node_id;
-        }
+        my $index_name = $command->{'extra'}->{'misc_args'}->[0];
+        push @{$dts_information{$index_name}->{'node_id'}}, $associated_node_id;
       }
-    }
-    foreach my $index_name (sort(keys(%dts_information))) {
-      my $dts_len = 0;
-      if (exists($dts_information{$index_name}->{'dts_text'})) {
-        
-        $dts_len = $self->_count_bytes($dts_information{$index_name}->{'dts_text'});
-        $dts_text .= $dts_information{$index_name}->{'dts_text'};
-      }
-      my @attributes = ('name',  $index_name, 'dtslen', $dts_len);
-      
-      $dts_index .= $self->ixin_open_element('dtsindexentry', \@attributes);
-      if ($dts_information{$index_name}->{'node_id'}) {
-        foreach my $node_id (sort(@{$dts_information{$index_name}->{'node_id'}})) {
-          $dts_index .= $self->ixin_list_element('dtsnodeid', ['nodeid', $node_id]);
-          $dts_index .= ' ';
-        }
-      }
-      $dts_index =~ s/ $//;
-      $dts_index .= $self->ixin_close_element('dtsindexentry');
     }
   }
+
+  # now construct dts_index and dts_text
+  my $dts_index = '';
+  my $dts_text = $self->ixin_open_element('dtssets');
+  foreach my $index_name (sort(keys(%dts_information))) {
+    my $dts_len = 0;
+    if (exists($dts_information{$index_name}->{'dts_text'})) {
+      
+      $dts_len = $self->_count_bytes($dts_information{$index_name}->{'dts_text'});
+      $dts_text .= $dts_information{$index_name}->{'dts_text'};
+    }
+    my @attributes = ('name',  $index_name, 'dtslen', $dts_len);
+    $dts_index .= $self->ixin_open_element('dtsindexentry', \@attributes);
+    if ($dts_information{$index_name}->{'node_id'}) {
+      foreach my $node_id (sort(@{$dts_information{$index_name}->{'node_id'}})) {
+        $dts_index .= $self->ixin_list_element('dtsnodeid', ['nodeid', $node_id]);
+        $dts_index .= ' ';
+      }
+    }
+    $dts_index =~ s/ $//;
+    $dts_index .= $self->ixin_close_element('dtsindexentry');
+  }
   $dts_text .= $self->ixin_close_element('dtssets') ."\n";
+
   if ($dts_index ne '') {
     $dts_index = $self->ixin_open_element('dtsindex', ['dtsindexlen', 
                                          $self->_count_bytes($dts_text)])
          . $dts_index . $self->ixin_close_element('dtsindex');
+  } else {
+    $dts_index = $self->ixin_none_element('dtsindex')
   }
 
   # do floats
+
+  my %floats_information;
+
+  # collect all float types corresponding to float commands
+  if ($self->{'floats'}) {
+    foreach my $type (keys(%{$self->{'floats'}})) {
+      $floats_information{$type} = {};
+    }
+  }
+
+  # collect listoffloats information
+  if ($self->{'extra'}->{'listoffloats'}) {
+    foreach my $command (@{$self->{'extra'}->{'listoffloats'}}) {
+      my $associated_node_id = $self->_associated_node_id($command, 
+                                                     \%node_label_number);
+      my $type = $command->{'extra'}->{'type'}->{'normalized'};
+      if ($command->{'extra'}->{'type'}->{'content'}) {
+        $floats_information{$type}->{'type'} 
+          = $self->convert_tree({'contents' 
+                             => $command->{'extra'}->{'type'}->{'content'}});
+      }
+      push @{$floats_information{$type}->{'node_id'}}, $associated_node_id;
+    }
+  }
+
+  # now do the floats sets and the floats index
+  my $floats_text = $self->ixin_open_element('floatsset');
+  my $floats_index = '';
+  foreach my $type (sort(keys(%floats_information))) {
+    my $float_text_len = 0;
+    if ($self->{'floats'}->{$type}) {
+      my $float_nr = 0;
+      my $float_text = '';
+      foreach my $float (@{$self->{'floats'}->{$type}}) {
+        $float_nr++;
+        my $associated_node_id;
+        # associated node already found when collecting labels
+        if (exists($floats_associated_node_id{$float})) {
+          $associated_node_id = $floats_associated_node_id{$float};
+        } else {
+          $associated_node_id = $self->_associated_node_id($float, 
+                                                     \%node_label_number);
+        }
+        my @attribute = ('nodeid', $associated_node_id);
+        $float_text .= $self->ixin_open_element('floatentry', \@attribute);
+        if ($float->{'extra'}->{'normalized'}) {
+          $float_text .= $self->ixin_list_element('floatlabel', 
+                                  ['name', $float->{'extra'}->{'normalized'}]);
+          $float_text .= ' ';
+        } else {
+          $float_text .= $self->ixin_none_element('floatlabel');
+        }
+        if ($float->{'extra'}->{'node_content'}) {
+          $float_text .= $self->ixin_open_element('floatname');
+          $float_text .= $self->convert_tree({'contents' 
+                                 => $float->{'extra'}->{'node_content'}});
+          $float_text .= $self->ixin_close_element('floatname');
+        } else {
+          $float_text .= $self->ixin_none_element('floatname');
+        }
+        if ($float->{'extra'}->{'shortcaption'}) {
+          $float_text .= $self->convert_tree($float->{'extra'}->{'shortcaption'});
+        } elsif ($float->{'extra'}->{'caption'}) {
+          $float_text .= $self->convert_tree($float->{'extra'}->{'caption'});
+        } else {
+          $float_text .= $self->ixin_none_element('caption');
+        }
+        $float_text .= $self->ixin_close_element('floatentry')."\n";
+      }
+      $float_text = $self->ixin_open_element('floatset', ['count', $float_nr])
+              . $float_text .$self->ixin_close_element('floatset')."\n";
+      $float_text_len = $self->_count_bytes($float_text);
+      $floats_text .= $float_text;
+
+      # determine type expandable string from first float if it was not
+      # already determined from listoffloats
+      if (!defined($floats_information{$type}->{'type'})) {
+        my $command = $self->{'floats'}->{$type}->[0];
+        if ($command->{'extra'}->{'type'} 
+            and $command->{'extra'}->{'type'}->{'content'}) {
+          $floats_information{$type}->{'type'} 
+            = $self->convert_tree({'contents' 
+                           => $command->{'extra'}->{'type'}->{'content'}});
+        }
+      }
+    }
+    my @attribute = ('type', $type, 'floatentrylen', $float_text_len);
+    $floats_index .= $self->ixin_open_element('floatindex', \@attribute);
+    if ($floats_information{$type}->{'type'}) {
+      $floats_index .= $self->ixin_open_element('floatindextype');
+      $floats_index .= $floats_information{$type}->{'type'};
+      $floats_index .= $self->ixin_close_element('floatindextype');
+    } else {
+      $floats_index .= $self->ixin_none_element('floatindextype');
+    }
+    if ($floats_information{$type}->{'node_id'}) {
+      foreach my $associated_node_id (@{$floats_information{$type}->{'node_id'}}) {
+        $floats_index .= ' ';
+        $floats_index .= $self->ixin_list_element('floatindexnode', 
+                                            ['nodeid', $associated_node_id]);
+      }
+    }
+    $floats_index .= $self->ixin_close_element('floatindex');
+  }
+  $floats_text .= $self->ixin_close_element('floatsset')."\n";
+
+  if ($floats_index ne '') {
+    $floats_index = $self->ixin_open_element('floatsindex', ['floatsindexlen',
+                                         $self->_count_bytes($floats_text)])
+ 
+       .$floats_index .$self->ixin_close_element('floatsindex');
+  } else {
+    $floats_index = $self->ixin_none_element('floatsindex');
+  }
 
   # do blobs
 
@@ -692,11 +816,8 @@ sub output_ixin($$)
   my $output = $self->_output_text($result, $fh);
 
   my $counts_text = $self->ixin_open_element('counts', \@counts_attributes);
-  if ($dts_index eq '') {
-    $counts_text .= $self->ixin_none_element('dtsindex');
-  } else {
-    $counts_text .= $dts_index;
-  }
+  $counts_text .= $dts_index;
+  $counts_text .= $floats_index;
   $counts_text .= $self->ixin_close_element('counts') . "\n";
   $output .= $self->_output_text($counts_text, $fh);
 
@@ -704,6 +825,7 @@ sub output_ixin($$)
   $output .= $self->_output_text($sectioning_tree, $fh);
   $output .= $self->_output_text($labels_text, $fh);
   $output .= $self->_output_text($dts_text, $fh);
+  $output .= $self->_output_text($floats_text, $fh);
 
   $output .= $self->_output_text($document_output ."\n", $fh);
 
