@@ -552,10 +552,12 @@ my %formats_table = (
   'texinfoxml' => {
              'nodes_tree' => 1,
              'converter' => sub{Texinfo::Convert::TexinfoXML->converter(@_)},
+             'floats' => 1,
            },
   'texinfosxml' => {
              'nodes_tree' => 1,
              'converter' => sub{Texinfo::Convert::TexinfoSXML->converter(@_)},
+             'floats' => 1,
            },
   'ixinsxml' => {
              'nodes_tree' => 1,
@@ -612,7 +614,7 @@ sub set_format($;$)
   } else {
     $new_format = $set_format;
   }
-  my $expanded_format = $new_format;
+  my $expanded_format = $set_format;
   if (!$formats_table{$new_format}) {
     warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
                  $real_command_name, $new_format);
