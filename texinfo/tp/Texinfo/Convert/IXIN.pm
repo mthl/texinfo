@@ -70,7 +70,13 @@ foreach my $command ('pagesizes', 'everyheading', 'everyfooting',
                      'documentencoding', 'documentlanguage', 'clickstyle') {
   $additional_setting_commands{$command} = 1;
 }
-  
+
+# Here are all the commands that are misc_commands with type matching \d
+# and are also global_unique_commands/global_multiple_commands in Parser.pm
+# but are not setting commands.
+my %global_misc_not_setting_commands = (
+  'printindex' => 1,
+);  
 
 # output specific
 sub ixin_header($)
@@ -205,22 +211,49 @@ sub _count_bytes($$)
   return Texinfo::Common::count_bytes($self, $string);
 }
 
-sub _associated_node_id($$$)
+sub _associated_node_id($$$;$)
 {
   my $self = shift;
   my $command = shift;
   my $node_label_number = shift;
+  my $node_command = shift;
 
-  my ($element, $root_command) = $self->_get_element($command);
+  if (!defined($node_command)) {
+    my ($element, $root_command) = $self->_get_element($command);
+
+    if ($root_command) {
+      if (!$root_command->{'cmdname'} or $root_command->{'cmdname'} ne 'node') {
+        if ($element->{'extra'}->{'element_command'}
+            and $element->{'extra'}->{'element_command'} 
+            and $element->{'extra'}->{'element_command'}->{'cmdname'}
+            and $element->{'extra'}->{'element_command'}->{'cmdname'} eq 'node') {
+          $node_command = $element->{'extra'}->{'element_command'};
+        }
+      } else {
+        $node_command = $root_command;
+      }
+    }
+  }
   my $associated_node_id;
-  if (defined($root_command) 
-      and defined($root_command->{'extra'}->{'normalized'})) {
+  if (defined($node_command) 
+      and defined($node_command->{'extra'}->{'normalized'})) {
     $associated_node_id 
-      = $node_label_number->{$root_command->{'extra'}->{'normalized'}};
+      = $node_label_number->{$node_command->{'extra'}->{'normalized'}};
   } else {
     $associated_node_id = -1;
   }
   return $associated_node_id;
+}
+
+sub _index_font_name($$)
+{
+  my $self = shift;
+  my $in_code = shift;
+  if ($in_code) {
+    return 'code';
+  } else {
+    return 'r';
+  }
 }
 
 my @node_directions = ('Next', 'Prev', 'Up');
@@ -300,9 +333,10 @@ sub output_ixin($$)
   my %end_of_nodes_setting_commands;
   my %setting_commands_defaults;
   foreach my $global_command (keys(%{$self->{'extra'}})) {
-    if (($Texinfo::Common::misc_commands{$global_command}
-         and $Texinfo::Common::misc_commands{$global_command} =~ /^\d/)
-        or $additional_setting_commands{$global_command}) {
+    if ((($Texinfo::Common::misc_commands{$global_command}
+          and $Texinfo::Common::misc_commands{$global_command} =~ /^\d/)
+         or $additional_setting_commands{$global_command})
+        and !$global_misc_not_setting_commands{$global_command}) {
       if (ref($self->{'extra'}->{$global_command}) eq 'ARRAY') {
         if (defined($Texinfo::Common::document_settable_at_commands{$global_command})) {
           $setting_commands_defaults{$global_command} 
@@ -480,7 +514,6 @@ sub output_ixin($$)
       my $section = $top_section;
  SECTION:
       while ($section) {
-        my ($element, $root_command) = $self->_get_element($section);
         my $associated_node_id = $self->_associated_node_id($section, 
                                                      \%node_label_number);
         my @attributes = ('nodeid', $associated_node_id, 'type', 
@@ -555,7 +588,97 @@ sub output_ixin($$)
   $labels_text .= $non_node_labels_text 
                   . $self->ixin_close_element('labels')."\n";
   
-  # do document-term sets (indices)
+  # do document-term sets (indices counts and indices)
+
+  my $dts_index = '';
+  my $dts_text = $self->ixin_open_element('dtssets');
+
+  if ($self->{'parser'}) {
+    my ($index_names, $merged_indices)
+       = $self->{'parser'}->indices_information();
+    my $merged_index_entries
+        = Texinfo::Structuring::merge_indices($index_names);
+    my $entries 
+      = $self->Texinfo::Structuring::sort_indices($merged_index_entries,
+                                                  $index_names);
+    # first do the dts_text as the counts are needed for the dts index
+    my %dts_information;
+    foreach my $index_name (sort(keys(%$entries))) {
+      my $dts_text_result = '';
+      my $dts_entries_nr = 0;
+      my $dts_in_code = $index_names->{$index_name}->{'in_code'};
+      foreach my $dts_entry (@{$entries->{$index_name}}) {
+        my $node = $dts_entry->{'node'};
+        my $associated_node_id;
+        if (defined($node)) {
+          $associated_node_id = $self->_associated_node_id(undef,
+                                                    \%node_label_number, $node);
+        } else {
+          $associated_node_id = -1;
+        }
+        my $entry = $self->convert_tree({'contents' => $dts_entry->{'content'}});
+        $dts_text_result .= $self->ixin_open_element('dtsentry', 
+                                                ['nodeid', $associated_node_id]);
+        $dts_text_result .= $self->ixin_open_element('dtsterm');
+        $dts_text_result .= $entry;
+        $dts_text_result .= $self->ixin_close_element('dtsterm');
+        if ($dts_entry->{'in_code'} != $dts_in_code) {
+          my $font_name = $self->_index_font_name($dts_entry->{'in_code'});
+          $dts_text_result .= ' ';
+          $dts_text_result .= $self->ixin_list_element('dtsfont', ['font', 
+                                                                   $font_name]);
+        }
+        $dts_text_result .= $self->ixin_close_element('dtsentry');
+        $dts_entries_nr++;
+      }
+      my $dts_opening = $self->ixin_open_element('dts', ['count', $dts_entries_nr, 
+                                    'font', $self->_index_font_name($dts_in_code)]);
+      $dts_text_result = $dts_opening . $dts_text_result 
+             . $self->ixin_close_element('dts') . "\n";
+      $dts_information{$index_name}->{'dts_text'} = $dts_text_result;
+    }
+
+    # Gather informations on node id with printindex 
+    my $printindex_commands = $self->{'extra'}->{'printindex'}
+       if ($self->{'extra'}->{'printindex'});
+
+    if ($printindex_commands) {
+      foreach my $command (@$printindex_commands) {
+        my $associated_node_id = $self->_associated_node_id($command, 
+                                                     \%node_label_number);
+        if ($command->{'extra'} and $command->{'extra'}->{'misc_args'}
+          and defined($command->{'extra'}->{'misc_args'}->[0])) {
+          my $index_name = $command->{'extra'}->{'misc_args'}->[0];
+          push @{$dts_information{$index_name}->{'node_id'}}, $associated_node_id;
+        }
+      }
+    }
+    foreach my $index_name (sort(keys(%dts_information))) {
+      my $dts_len = 0;
+      if (exists($dts_information{$index_name}->{'dts_text'})) {
+        
+        $dts_len = $self->_count_bytes($dts_information{$index_name}->{'dts_text'});
+        $dts_text .= $dts_information{$index_name}->{'dts_text'};
+      }
+      my @attributes = ('name',  $index_name, 'dtslen', $dts_len);
+      
+      $dts_index .= $self->ixin_open_element('dtsindexentry', \@attributes);
+      if ($dts_information{$index_name}->{'node_id'}) {
+        foreach my $node_id (sort(@{$dts_information{$index_name}->{'node_id'}})) {
+          $dts_index .= $self->ixin_list_element('dtsnodeid', ['nodeid', $node_id]);
+          $dts_index .= ' ';
+        }
+      }
+      $dts_index =~ s/ $//;
+      $dts_index .= $self->ixin_close_element('dtsindexentry');
+    }
+  }
+  $dts_text .= $self->ixin_close_element('dtssets') ."\n";
+  if ($dts_index ne '') {
+    $dts_index = $self->ixin_open_element('dtsindex', ['dtsindexlen', 
+                                         $self->_count_bytes($dts_text)])
+         . $dts_index . $self->ixin_close_element('dtsindex');
+  }
 
   # do floats
 
@@ -568,12 +691,19 @@ sub output_ixin($$)
 
   my $output = $self->_output_text($result, $fh);
 
-  $output .= $self->_output_text(
-               $self->ixin_element('counts', \@counts_attributes) ."\n", $fh);
+  my $counts_text = $self->ixin_open_element('counts', \@counts_attributes);
+  if ($dts_index eq '') {
+    $counts_text .= $self->ixin_none_element('dtsindex');
+  } else {
+    $counts_text .= $dts_index;
+  }
+  $counts_text .= $self->ixin_close_element('counts') . "\n";
+  $output .= $self->_output_text($counts_text, $fh);
 
   $output .= $self->_output_text($nodes_index, $fh);
   $output .= $self->_output_text($sectioning_tree, $fh);
   $output .= $self->_output_text($labels_text, $fh);
+  $output .= $self->_output_text($dts_text, $fh);
 
   $output .= $self->_output_text($document_output ."\n", $fh);
 
