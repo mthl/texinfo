@@ -526,7 +526,7 @@ my %direction_texts = (
 # first go through all the menu and set menu_up, menu_next, menu_prev
 # and warn for unknown nodes.
 # then go through all the nodes and set directions
-sub nodes_tree ($)
+sub nodes_tree($)
 {
   my $self = shift;
   return undef unless ($self->{'nodes'} and @{$self->{'nodes'}});

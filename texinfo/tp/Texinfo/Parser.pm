@@ -5476,14 +5476,16 @@ sub _parse_line_command_args($$$)
       
       } else {
         if ($self->{'merged_indices'}->{$name}) {
-          $self->line_warn (sprintf($self->__("Printing an index `%s' merged in another one `%s'"), 
+          $self->line_warn (sprintf($self->__(
+                       "Printing an index `%s' merged in another one `%s'"), 
                                      $name, $self->{'merged_indices'}->{$name}),
                              $line_nr); 
         }
         if (!defined($self->{'current_node'}) 
             and !defined($self->{'current_section'})
             and !scalar(@{$self->{'regions_stack'}})) {
-          $self->line_warn (sprintf($self->__("Printindex before document beginning: \@printindex %s"), 
+          $self->line_warn (sprintf($self->__(
+                     "Printindex before document beginning: \@printindex %s"), 
                                     $name), $line_nr);
         }
         $args = [$name];
@@ -5498,32 +5500,41 @@ sub _parse_line_command_args($$$)
     if ($line eq 'top' or $line eq 'bottom') {
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("\@%s arg must be `top' or `bottom', not `%s'"), $command, $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+                      "\@%s arg must be `top' or `bottom', not `%s'"), 
+                                 $command, $line), $line_nr);
     }
   } elsif ($command eq 'fonttextsize') {
     if ($line eq '10' or $line eq '11') {
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("Only \@%s 10 or 11 is supported, not `%s'"),$command, $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+                        "Only \@%s 10 or 11 is supported, not `%s'"),
+                                 $command, $line), $line_nr);
     }
   } elsif ($command eq 'footnotestyle') {
     if ($line eq 'separate' or $line eq 'end') {
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("\@%s arg must be `separate' or `end', not `%s'"), $command, $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+                            "\@%s arg must be `separate' or `end', not `%s'"), 
+                                           $command, $line), $line_nr);
     }
   } elsif ($command eq 'setchapternewpage') {
     if ($line eq 'on' or $line eq 'off' or $line eq 'odd') {
       $args = [$1];
     } else {
-      $self->line_error (sprintf($self->__("\@%s arg must be `on', `off' or `odd', not `%s'"), $command, $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+                           "\@%s arg must be `on', `off' or `odd', not `%s'"), 
+                                 $command, $line), $line_nr);
     }
   } elsif ($command eq 'need') { # only a warning
     if (($line =~ /^([0-9]+(\.[0-9]*)?)$/) or
              ($line =~ /^(\.[0-9]+)$/)) {
       $args = [$1];
     } else {
-      $self->line_error (sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+      $self->line_error (sprintf($self->__("Bad argument to \@%s: %s"), 
+                                 $command, $line), $line_nr);
     }
   } elsif ($command eq 'paragraphindent') {
     if ($line =~ /^([\w\-]+)$/) {
@@ -5531,16 +5542,22 @@ sub _parse_line_command_args($$$)
       if ($value =~ /^([0-9]+)$/ or $value eq 'none' or $value eq 'asis') {
         $args = [$1];
       } else {
-        $self->line_error (sprintf($self->__("\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), $value), $line_nr);
+        $self->line_error (sprintf($self->__(
+           "\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), 
+                                             $value), $line_nr);
       } 
     } else {
-      $self->line_error (sprintf($self->__("\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+             "\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), 
+                                           $line), $line_nr);
     }
   } elsif ($command eq 'firstparagraphindent') {
     if ($line eq 'none' or $line eq 'insert') {
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("\@firstparagraphindent arg must be `none' or `insert', not `%s'"), $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+         "\@firstparagraphindent arg must be `none' or `insert', not `%s'"), 
+                                           $line), $line_nr);
     }
   } elsif ($command eq 'exampleindent') {
     if ($line =~ /^([0-9]+)/) {
@@ -5548,7 +5565,9 @@ sub _parse_line_command_args($$$)
     } elsif ($line =~ /^(asis)$/) {
       $args = [$1];
     } else {
-      $self->line_error (sprintf($self->__("\@exampleindent arg must be numeric/`asis', not `%s'"), $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+           "\@exampleindent arg must be numeric/`asis', not `%s'"), 
+                                           $line), $line_nr);
     }
   } elsif ($command eq 'frenchspacing' 
            or $command eq 'xrefautomaticsectiontitle'
@@ -5558,7 +5577,8 @@ sub _parse_line_command_args($$$)
     if ($line eq 'on' or $line eq 'off') {
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("Expected \@%s on or off, not `%s'"), $command, $line), $line_nr);
+      $self->line_error (sprintf($self->__("Expected \@%s on or off, not `%s'"), 
+                                           $command, $line), $line_nr);
     }
   } elsif ($command eq 'kbdinputstyle') {
     if ($line eq 'code' or $line eq 'example' or $line eq 'distinct') {
@@ -5566,26 +5586,33 @@ sub _parse_line_command_args($$$)
           unless (_ignore_global_commands($self));
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("\@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"), $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+      "\@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"), 
+                                           $line), $line_nr);
     }
   } elsif ($command eq 'allowcodebreaks') {
     if ($line eq 'true' or $line eq 'false') {
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("\@allowcodebreaks arg must be `true' or `false', not `%s'"), $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+               "\@allowcodebreaks arg must be `true' or `false', not `%s'"), 
+                                           $line), $line_nr);
     }
   } elsif ($command eq 'urefbreakstyle') {
     if ($line eq 'after' or $line eq 'before' or $line eq 'none') {
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("\@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"), $line), $line_nr);
+      $self->line_error (sprintf($self->__(
+         "\@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"), 
+                                           $line), $line_nr);
     }
   } elsif ($command eq 'headings') {
     if ($line eq 'off' or $line eq 'on' or $line eq 'single' 
        or $line eq 'double' or  $line eq 'singleafter' or $line eq 'doubleafter') {
       $args = [$line];
     } else {
-      $self->line_error (sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+      $self->line_error (sprintf($self->__("Bad argument to \@%s: %s"), 
+                                 $command, $line), $line_nr);
     }
   }
   return $args;
