@@ -1,5 +1,12 @@
 2013-01-27  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (HTML Customization Variables): split node
+	out from Other Cust Var.
+	(Other Customization Variables): new TEXINFO_OUTPUT_FORMAT
+	replaces the individual special-output-format variables.
+	* doc/refcard/txivarcheck: only check uppercase
+	variable names, and do output manual-only names.
+
 	* man/pod2texi.1: new file, made with pod2man.
 	* man/Makefile.am (man_MANS): add it.
 
