@@ -1,3 +1,8 @@
+2013-01-27  Karl Berry  <karl@gnu.org>
+
+	* man/pod2texi.1: new file, made with pod2man.
+	* man/Makefile.am (man_MANS): add it.
+
 2013-01-27  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/texi2any.pl, tp/Texinfo/Common.pm, tp/DebugTexinfo/DebugTree.pm,
