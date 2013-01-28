@@ -28,6 +28,7 @@ package Texinfo::Convert::IXIN;
 use 5.00405;
 use strict;
 
+use MIME::Base64;
 use Texinfo::Convert::TexinfoSXML;
 use Texinfo::Common;
 
@@ -78,6 +79,21 @@ my %global_misc_not_setting_commands = (
   'printindex' => 1,
 );  
 
+my @image_files_extensions = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg',
+                              'txt');
+my %extension_mime_mapping = (
+  'eps' => 'application/postscript',
+  'gif' => 'image/gif', 
+  'jpg' => 'image/jpeg', 
+  'jpeg' => 'image/jpeg',
+  'pdf' => 'application/pdf', 
+  'png' => 'image/png', 
+  'svg' => 'image/svg+xml',
+  'txt' => 'text/plain',
+  'tiff' => 'image/tiff',
+  '' => 'image/unknown', 
+);
+
 # output specific
 sub ixin_header($)
 {
@@ -98,6 +114,7 @@ my %attribute_string_names = (
   'settingvalue' => {'value' => 1},
   'nodetweakvalue' => {'value' => 1},
   'floatindex' => {'type' => 1},
+  'blobentry' => {'mimetype' => 1, 'filename' => 1},
 );
 
 sub _ixin_attributes($$$)
@@ -808,10 +825,71 @@ sub output_ixin($$)
 
   # do blobs
 
+  my $blobs = '';
+  my $blobs_index = '';
+  my $blob_nr = 0;
+  if ($self->{'extra'}->{'image'}) {
+    foreach my $command (@{$self->{'extra'}->{'image'}}) {
+      my @extension;
+      my $basefile;
+      my $extension;
+      if (defined($command->{'extra'}->{'brace_command_contents'}->[0])) {
+        $basefile = Texinfo::Convert::Text::convert(
+          {'contents' => $command->{'extra'}->{'brace_command_contents'}->[0]},
+          {'code' => 1, Texinfo::Common::_convert_text_options($self)});
+      }
+      if (defined($command->{'extra'}->{'brace_command_contents'}->[4])) {
+        $extension = Texinfo::Convert::Text::convert(
+          {'contents' => $command->{'extra'}->{'brace_command_contents'}->[0]},
+          {'code' => 1, Texinfo::Common::_convert_text_options($self)});
+        $extension =~ s/^\.//;
+        @extension = ($extension);
+      }
+      foreach my $extension (@extension, @image_files_extensions) {
+        my $filename = $basefile.'.'.$extension;
+        my $file = $self->Texinfo::Common::locate_include_file($filename);
+        if (defined($file)) {
+          my $filehandle = do { local *FH };
+          if (open ($filehandle, $file)) {
+            $blob_nr++;
+            if ($extension eq 'txt') {
+              binmode($filehandle, ":encoding("
+                         .$self->get_conf('INPUT_PERL_ENCODING').")")
+                if (defined($self->get_conf('INPUT_PERL_ENCODING')));
+            }
+            my $file_content;
+            if (-z $file) {
+              $file_content = '';
+            } else {
+              $file_content = <$filehandle>;
+            }
+            my $encoded_file = encode_base64($file_content);
+            $blobs .= $encoded_file;
+            my $blob_len = $self->_count_bytes($encoded_file);
+            my $mime_type;
+            if ($extension_mime_mapping{lc($extension)}) {
+              $mime_type = $extension_mime_mapping{lc($extension)};
+            } else {
+              $mime_type = $extension_mime_mapping{''};
+            }
+            $blobs_index .= $self->ixin_element('blobentry', 
+             ['bloblen', $blob_len, 'encoding', 'base64',
+              'mimetype', $mime_type, 'filename', $filename]) ."\n";
+          }
+        }
+      }
+      #print STDERR "$basefile\n";
+    }
+  }
+  $blobs_index = $self->ixin_open_element('blobsindex', 
+                                            ['count', $blob_nr])
+              .$blobs_index.$self->ixin_close_element('blobsindex')."\n";
+
   my @counts_attributes = ('nodeindexlen', $self->_count_bytes($nodes_index),
                     'nodecounts', $node_nr, 
                     'sectioningtreelen', $self->_count_bytes($sectioning_tree),
-                    'labelslen', $self->_count_bytes($labels_text));
+                    'labelslen', $self->_count_bytes($labels_text),
+                    'blobsindexlen', $self->_count_bytes($blobs_index));
 
   my $output = $self->_output_text($result, $fh);
 
@@ -826,10 +904,10 @@ sub output_ixin($$)
   $output .= $self->_output_text($labels_text, $fh);
   $output .= $self->_output_text($dts_text, $fh);
   $output .= $self->_output_text($floats_text, $fh);
+  $output .= $self->_output_text($blobs_index, $fh);
 
-  $output .= $self->_output_text($document_output ."\n", $fh);
-
-  # output blobs
+  $output .= $self->_output_text($document_output, $fh);
+  $output .= $self->_output_text($blobs, $fh);
 
   if ($fh and $self->{'output_file'} ne '-') {
     $self->register_close_file($self->{'output_file'});
