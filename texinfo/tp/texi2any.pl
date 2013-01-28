@@ -607,6 +607,7 @@ sub set_format($;$$)
 {
   my $set_format = shift;
   my $previous_format = shift;
+  $previous_format = $format if (!defined($previous_format));
   my $do_not_override_command_line = shift;
 
   my $new_format;
@@ -620,11 +621,9 @@ sub set_format($;$$)
     warn(sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
                  $real_command_name, $new_format));
     $new_format = $previous_format;
-    $new_format = $format if (!defined($new_format));
   } else {
     if ($format_from_command_line and $do_not_override_command_line) {
       $new_format = $previous_format;
-      $new_format = $format if (!defined($new_format));
     } else {
       if ($formats_table{$new_format}->{'texi2dvi_format'}) {
         $call_texi2dvi = 1;
