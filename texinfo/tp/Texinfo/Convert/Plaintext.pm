@@ -2891,7 +2891,7 @@ sub _convert($$)
   return $result;
 }
 
-sub indent_menu_descriptions($$)
+sub indent_one_menu_descriptions($$)
 {
   my $self = shift;
   my $menu = shift;
@@ -2967,7 +2967,7 @@ sub indent_menu_descriptions($;$)
 
   if ($parser->{'info'} and $parser->{'info'}->{'unassociated_menus'}) {
     foreach my $menu (@{$parser->{'info'}->{'unassociated_menus'}}) {
-      $self->indent_menu_descriptions($menu);
+      $self->indent_one_menu_descriptions($menu);
     }
   }
   if ($parser->{'nodes'} and @{$parser->{'nodes'}}) {
