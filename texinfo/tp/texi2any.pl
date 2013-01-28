@@ -603,10 +603,11 @@ my $call_texi2dvi = 0;
 
 # previous_format should be in argument if there is a possibility of error.
 # as a fallback, the $format global variable is used.
-sub set_format($;$)
+sub set_format($;$$)
 {
   my $set_format = shift;
   my $previous_format = shift;
+  my $do_not_override_command_line = shift;
 
   my $new_format;
   if ($format_command_line_names{$set_format}) {
@@ -621,14 +622,20 @@ sub set_format($;$)
     $new_format = $previous_format;
     $new_format = $format if (!defined($new_format));
   } else {
-    if ($formats_table{$new_format}->{'texi2dvi_format'}) {
-      $call_texi2dvi = 1;
-      push @texi2dvi_args, '--'.$new_format; 
-      $expanded_format = 'tex';
+    if ($format_from_command_line and $do_not_override_command_line) {
+      $new_format = $previous_format;
+      $new_format = $format if (!defined($new_format));
+    } else {
+      if ($formats_table{$new_format}->{'texi2dvi_format'}) {
+        $call_texi2dvi = 1;
+        push @texi2dvi_args, '--'.$new_format; 
+        $expanded_format = 'tex';
+      }
+      $default_expanded_format = [$expanded_format] 
+        if ($Texinfo::Common::texinfo_output_formats{$expanded_format});
+      $format_from_command_line = 1
+        unless ($do_not_override_command_line);
     }
-    $default_expanded_format = [$expanded_format] 
-      if ($Texinfo::Common::texinfo_output_formats{$expanded_format});
-    $format_from_command_line = 1;
   }
   return $new_format;
 }
@@ -907,12 +914,12 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      }
      # special case, this is a pseudo format for debug
      if ($var eq 'TEXINFO_OUTPUT_FORMAT') {
-       $format = set_format($value, $format);
+       $format = set_format($value, $format, 1);
      } elsif ($var eq 'TEXI2HTML') {
        $format = set_format('html');
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      }
-     set_from_cmdline ($var, $value);
+     set_from_cmdline($var, $value);
      # FIXME do that here or when all command line options are processed?
      if ($var eq 'L2H' and get_conf('L2H')) {
        locate_and_load_init_file($latex2html_file, 
@@ -923,7 +930,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
  'css-include=s' => \@css_files,
  'css-ref=s' => \@css_refs,
  'transliterate-file-names!' => 
-     sub {set_from_cmdline ('TRANSLITERATE_FILE_NAMES', $_[1]);},
+     sub {set_from_cmdline('TRANSLITERATE_FILE_NAMES', $_[1]);},
  'error-limit|e=i' => sub { set_from_cmdline('ERROR_LIMIT', $_[1]); },
  'split-size=s' => sub {set_from_cmdline('SPLIT_SIZE', $_[1])},
  'paragraph-indent|p=s' => sub {
@@ -1001,9 +1008,9 @@ sub format_name($)
 }
 
 
-if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 
+if (defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) 
     and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '') {
-  $format = set_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, $format);
+  $format = set_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, $format, 1);
 }
 
 if ($call_texi2dvi) {

@@ -51,7 +51,7 @@ use Locale::Messages;
 use Texinfo::Parser;
 
 # return the errors and warnings
-sub errors ($)
+sub errors($)
 {
   my $self = shift;
   #print STDERR "REPORT ERRORS $self $self->{'errors_warnings'}\n";
@@ -137,7 +137,7 @@ sub line_error($$$;$)
   $self->{'error_nrs'}++ unless ($continuation);
 }
 
-sub document_warn ($$)
+sub document_warn($$)
 {
   my $self = shift;
   my $text = shift;
@@ -148,7 +148,7 @@ sub document_warn ($$)
     { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line};
 }
 
-sub document_error ($$)
+sub document_error($$)
 {
   my $self = shift;
   my $text = shift;
