@@ -1198,7 +1198,7 @@ sub _image_text($$$)
   my $root = shift;
   my $basefile = shift;
 
-  my $txt_file = $self->Texinfo::Common::locate_include_file ($basefile.'.txt');
+  my $txt_file = $self->Texinfo::Common::locate_include_file($basefile.'.txt');
   if (!defined($txt_file)) {
     return undef;
   } else {
@@ -2933,7 +2933,7 @@ sub indent_menu_descriptions($$)
   }
 }
 
-sub indent_menus_descriptions($;$)
+sub indent_menu_descriptions($;$)
 {
   my $self = shift;
   my $parser = shift;
