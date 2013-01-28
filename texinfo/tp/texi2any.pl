@@ -381,10 +381,10 @@ sub set_from_init_file($$) {
   my $var = shift;
   my $value = shift;
   if (!Texinfo::Common::valid_option($var)) {
-    warn (sprintf(main::__("Unknown variable %s\n"), $var));
+    warn(sprintf(main::__("Unknown variable %s\n"), $var));
     return 0;
   } elsif (Texinfo::Common::obsolete_option($var)) {
-    warn (sprintf(main::__("Obsolete variable %s\n"), $var));
+    warn(sprintf(main::__("Obsolete variable %s\n"), $var));
   }
   return 0 if (defined($cmdline_options->{$var}));
   delete $default_options->{$var};
@@ -398,10 +398,10 @@ sub set_from_cmdline($$) {
   delete $options->{$var};
   delete $default_options->{$var};
   if (!Texinfo::Common::valid_option($var)) {
-    warn (sprintf(main::__("Unknown variable %s\n"), $var));
+    warn(sprintf(main::__("Unknown variable %s\n"), $var));
     return 0;
   } elsif (Texinfo::Common::obsolete_option($var)) {
-    warn (sprintf(main::__("Obsolete variable %s\n"), $var));
+    warn(sprintf(main::__("Obsolete variable %s\n"), $var));
   }
   $cmdline_options->{$var} = $value;
   return 1;
@@ -465,7 +465,7 @@ sub locate_and_load_init_file($$)
   if (defined($file)) {
     Texinfo::Config::_load_init_file($file);
   } else {
-    document_warn (sprintf(__("Can't read init file %s"), $filename));
+    document_warn(sprintf(__("Can't read init file %s"), $filename));
   }
 }
 
@@ -616,8 +616,8 @@ sub set_format($;$)
   }
   my $expanded_format = $set_format;
   if (!$formats_table{$new_format}) {
-    warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
-                 $real_command_name, $new_format);
+    warn(sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
+                 $real_command_name, $new_format));
     $new_format = $previous_format;
     $new_format = $format if (!defined($new_format));
   } else {
@@ -643,7 +643,7 @@ sub document_warn($) {
   return if (get_conf('NO_WARN'));
   my $text = shift;
   chomp ($text);
-  warn sprintf(__p("warning: warning_message", "warning: %s\n"), $text);
+  warn(sprintf(__p("warning: warning_message", "warning: %s\n"), $text));
 }
 
 sub _exit($$)
@@ -1008,8 +1008,8 @@ if (!$format_from_command_line and defined($ENV{'TEXINFO_OUTPUT_FORMAT'})
 
 if ($call_texi2dvi) {
   if (defined(get_conf('OUT')) and @ARGV > 1) {
-    die sprintf(__('when generating %s, only one input FILE may be specified with -o'),
-                format_name($format));
+    die sprintf(__('%s: when generating %s, only one input FILE may be specified with -o'."\n"),
+                $real_command_name, format_name($format));
   }
 } elsif($Xopt_arg_nr) {
   document_warn(__('--Xopt option without printed output')); 
@@ -1022,14 +1022,15 @@ if (get_conf('TREE_TRANSFORMATIONS')) {
     if (Texinfo::Common::valid_tree_transformation($transformation)) {
       $tree_transformations{$transformation} = 1;
     } else {
-      document_warn (sprintf(__('Unknown tree transformation %s'), 
+      document_warn(sprintf(__('Unknown tree transformation %s'), 
                      $transformation));
     }
   }
 }
 
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
-  document_warn (sprintf(__('Ignoring splitting for format %s'), format_name($format)));
+  document_warn(sprintf(__('Ignoring splitting for format %s'), 
+                        format_name($format)));
   set_from_cmdline('SPLIT', ''); 
 }
 
@@ -1172,13 +1173,13 @@ while(@input_files) {
     if (defined ($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
       if (!close ($macro_expand_fh)) {
-        warn (sprintf(__("Error on closing macro expand file %s: %s\n"), 
+        warn(sprintf(__("Error on closing macro expand file %s: %s\n"), 
                       $macro_expand_file, $!));
         $error_macro_expand_file = 1;
       }
       $parser->Texinfo::Convert::Converter::register_close_file($macro_expand_file);
     } else {
-      warn (sprintf(__("Could not open %s for writing: %s\n"), 
+      warn(sprintf(__("Could not open %s for writing: %s\n"), 
                     $macro_expand_file, $!));
       $error_macro_expand_file = 1;
     }
@@ -1263,7 +1264,7 @@ while(@input_files) {
           = $converter_unclosed_files->{$unclosed_file};
       } else {
         if (!close($converter_unclosed_files->{$unclosed_file})) {
-          warn (sprintf(__("Error on closing %s: %s\n"), 
+          warn(sprintf(__("Error on closing %s: %s\n"), 
                            $unclosed_file, $!));
           $error_count++;
           _exit($error_count, \@opened_files);
@@ -1286,13 +1287,13 @@ while(@input_files) {
       print $internal_links_fh $internal_links_text;
       
       if (!close ($internal_links_fh)) {
-        warn (sprintf(__("Error on closing internal links file %s: %s\n"), 
+        warn(sprintf(__("Error on closing internal links file %s: %s\n"), 
                       $internal_links_file, $!));
         $error_internal_links_file = 1;
       }
       $converter->register_close_file($internal_links_file);
     } else {
-      warn (sprintf(__("Could not open %s for writing: %s\n"), 
+      warn(sprintf(__("Could not open %s for writing: %s\n"), 
                     $internal_links_file, $!));
       $error_internal_links_file = 1;
     }
@@ -1320,13 +1321,13 @@ while(@input_files) {
       print $sort_element_count_fh $sort_element_count_text;
       
       if (!close ($sort_element_count_fh)) {
-        warn (sprintf(__("Error on closing internal links file %s: %s\n"), 
+        warn(sprintf(__("Error on closing internal links file %s: %s\n"), 
                       $sort_element_count_file, $!));
         $error_sort_element_count_file = 1;
       }
       $converter->register_close_file($sort_element_count_file);
     } else {
-      warn (sprintf(__("Could not open %s for writing: %s\n"), 
+      warn(sprintf(__("Could not open %s for writing: %s\n"), 
                     $sort_element_count_file, $!));
       $error_sort_element_count_file = 1;
     }
@@ -1339,7 +1340,7 @@ while(@input_files) {
 
 foreach my $unclosed_file (keys(%unclosed_files)) {
   if (!close($unclosed_files{$unclosed_file})) {
-    warn (sprintf(__("Error on closing %s: %s\n"), 
+    warn(sprintf(__("Error on closing %s: %s\n"), 
                      $unclosed_file, $!));
     $error_count++;
     _exit($error_count, \@opened_files);
