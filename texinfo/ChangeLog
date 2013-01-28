@@ -1,3 +1,15 @@
+2013-01-28  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.95.
+
+	* README-hacking: .po files might not be literal copies.
+	texinfo_document is new TP domain.
+
+	* build-aux/config.sub: srclist-update.
+
+	* tp/Makefile.am (dist_converters_DATA): add
+	Texinfo/Convert/IXIN.pm Texinfo/Convert/IXINSXML.pm.
+
 2013-01-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (HTML Customization Variables): split node
