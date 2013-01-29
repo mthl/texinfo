@@ -956,7 +956,7 @@ $result_errors{'section_chapter_before_top_nodes'} = [
 
 
 
-$result_converted{'info'}->{'section_chapter_before_top_nodes'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'section_chapter_before_top_nodes'} = 'This is , produced from .
 
 
 File: ,  Node: section node,  Next: chapter node,  Up: chapter node
@@ -987,9 +987,9 @@ top
 
 
 Tag Table:
-Node: section node41
-Node: chapter node133
-Node: Top246
+Node: section node27
+Node: chapter node119
+Node: Top232
 
 End Tag Table
 ';
@@ -1005,7 +1005,6 @@ $result_converted{'html'}->{'section_chapter_before_top_nodes'} = '<!DOCTYPE htm
 <meta name="keywords" content="top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

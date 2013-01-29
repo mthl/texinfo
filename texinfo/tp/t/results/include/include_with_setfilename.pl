@@ -91,7 +91,7 @@ $result_errors{'include_with_setfilename'} = [];
 
 
 
-$result_converted{'info'}->{'include_with_setfilename'} = 'This is main_file.info, produced by tp version from .
+$result_converted{'info'}->{'include_with_setfilename'} = 'This is main_file.info, produced from .
 
 In included file.
 

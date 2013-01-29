@@ -1179,7 +1179,7 @@ $result_floats{'placed_things_before_element'}{''}[0]{'extra'}{'end_command'}{'e
 
 
 
-$result_converted{'info'}->{'placed_things_before_element'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'placed_things_before_element'} = 'This is , produced from .
 
 Ref to the anchor: *note An anchor::
 
@@ -1277,7 +1277,6 @@ $result_converted{'html'}->{'placed_things_before_element'} = '<!DOCTYPE html PU
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--

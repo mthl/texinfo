@@ -685,7 +685,7 @@ part
 ';
 
 
-$result_converted{'info'}->{'chapter_node_before_and_after_part'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'chapter_node_before_and_after_part'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: after,  Up: (dir)
@@ -706,8 +706,8 @@ File: ,  Node: after,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: after130
+Node: Top27
+Node: after116
 
 End Tag Table
 ';
@@ -723,7 +723,6 @@ $result_converted{'html'}->{'chapter_node_before_and_after_part'} = '<!DOCTYPE h
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">

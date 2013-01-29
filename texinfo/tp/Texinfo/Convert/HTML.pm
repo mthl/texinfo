@@ -6099,10 +6099,17 @@ sub _default_contents($$;$$)
 sub _default_program_string($)
 {
   my $self = shift;
-  return $self->convert_tree(
-    $self->gdt('This document was generated on @emph{@today{}} using @uref{{program_homepage}, @emph{{program}}}.',
+  if (defined($self->get_conf('PROGRAM'))
+      and $self->get_conf('PROGRAM') ne ''
+      and defined($self->get_conf('PACKAGE_URL'))) {
+    return $self->convert_tree(
+      $self->gdt('This document was generated on @emph{@today{}} using @uref{{program_homepage}, @emph{{program}}}.',
          { 'program_homepage' => $self->get_conf('PACKAGE_URL'),
            'program' => $self->get_conf('PROGRAM') }));
+  } else {
+    return $self->convert_tree(
+      $self->gdt('This document was generated on @emph{@today{}}.'));
+  }
 }
 
 sub _default_end_file($)
@@ -6192,11 +6199,15 @@ sub _file_header_informations($$)
   my $program_and_version = $self->get_conf('PACKAGE_AND_VERSION');
   my $program_homepage = $self->get_conf('PACKAGE_URL');
   my $program = $self->get_conf('PROGRAM');
+  my $generator = '';
+  if (defined($program) and $program ne '') {
+    $generator = "\n<meta name=\"Generator\" content=\"$program\">";
+  }
 
   return ($title, $description, $encoding, $date, $css_lines, 
           $doctype, $bodytext, $copying_comment, $after_body_open,
           $extra_head, $program_and_version, $program_homepage,
-          $program);
+          $program, $generator);
 }
 
 sub _get_links ($$$)
@@ -6241,7 +6252,7 @@ sub _default_begin_file($$$)
   my ($title, $description, $encoding, $date, $css_lines, 
           $doctype, $bodytext, $copying_comment, $after_body_open,
           $extra_head, $program_and_version, $program_homepage,
-          $program) = $self->_file_header_informations($command);
+          $program, $generator) = $self->_file_header_informations($command);
 
   my $links = $self->_get_links ($filename, $element);
 
@@ -6254,8 +6265,7 @@ $copying_comment<!-- Created by $program_and_version, $program_homepage -->
 $description
 <meta name=\"keywords\" content=\"$title\">
 <meta name=\"resource-type\" content=\"document\">
-<meta name=\"distribution\" content=\"global\">
-<meta name=\"Generator\" content=\"$program\">$date
+<meta name=\"distribution\" content=\"global\">${generator}$date
 $encoding
 ${links}$css_lines
 $extra_head
@@ -6275,7 +6285,7 @@ sub _default_node_redirection_page($$)
   my ($title, $description, $encoding, $date, $css_lines,
           $doctype, $bodytext, $copying_comment, $after_body_open,
           $extra_head, $program_and_version, $program_homepage,
-          $program) = $self->_file_header_informations($command);
+          $program, $generator) = $self->_file_header_informations($command);
 
   my $name = $self->command_text($command);
   my $href = $self->command_href($command);
@@ -6293,8 +6303,7 @@ $copying_comment<!-- Created by $program_and_version, $program_homepage -->
 $description
 <meta name=\"keywords\" content=\"$title\">
 <meta name=\"resource-type\" content=\"document\">
-<meta name=\"distribution\" content=\"global\">
-<meta name=\"Generator\" content=\"$program\">$date
+<meta name=\"distribution\" content=\"global\">${generator}$date
 $encoding
 $css_lines
 <meta http-equiv=\"Refresh\" content=\"0; url=$href\">

@@ -181,7 +181,7 @@ $result_errors{'one_subsection_and_node'} = [];
 
 
 
-$result_converted{'info'}->{'one_subsection_and_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'one_subsection_and_node'} = 'This is , produced from .
 
 
 File: ,  Node: one node
@@ -192,7 +192,7 @@ File: ,  Node: one node
 
 
 Tag Table:
-Node: one node41
+Node: one node27
 
 End Tag Table
 ';
@@ -218,7 +218,6 @@ $result_converted{'html'}->{'one_subsection_and_node'} = '<!DOCTYPE html PUBLIC 
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#one-node" rel="start" title="one node">
 <style type="text/css">

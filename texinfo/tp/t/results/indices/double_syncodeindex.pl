@@ -563,7 +563,7 @@ $result_indices{'double_syncodeindex'} = {
 
 
 
-$result_converted{'info'}->{'double_syncodeindex'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'double_syncodeindex'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -577,7 +577,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

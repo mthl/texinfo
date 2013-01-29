@@ -539,7 +539,7 @@ $result_errors{'top_node_no_menu_direction'} = [
 
 
 
-$result_converted{'info'}->{'top_node_no_menu_direction'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'top_node_no_menu_direction'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: second node,  Up: (dir)
@@ -555,8 +555,8 @@ File: ,  Node: second node,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: second node136
+Node: Top27
+Node: second node122
 
 End Tag Table
 ';
@@ -572,7 +572,6 @@ $result_converted{'html'}->{'top_node_no_menu_direction'} = '<!DOCTYPE html PUBL
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

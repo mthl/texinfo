@@ -744,7 +744,7 @@ $result_floats{'equivalent_labels'}{'truc'}[0]{'extra'}{'end_command'}{'extra'}{
 
 
 
-$result_converted{'info'}->{'equivalent_labels'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'equivalent_labels'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: \'anch\',  Up: (dir)
@@ -762,9 +762,9 @@ truc 1
 
 
 Tag Table:
-Node: Top41
-Ref: \'anch\'90
-Ref: floa93
+Node: Top27
+Ref: \'anch\'76
+Ref: floa79
 
 End Tag Table
 ';
@@ -780,7 +780,6 @@ $result_converted{'html'}->{'equivalent_labels'} = '<!DOCTYPE html PUBLIC "-//W3
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

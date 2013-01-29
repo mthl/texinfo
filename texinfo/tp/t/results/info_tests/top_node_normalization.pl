@@ -456,7 +456,7 @@ $result_errors{'top_node_normalization'} = [
 
 
 
-$result_converted{'info'}->{'top_node_normalization'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'top_node_normalization'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
@@ -469,7 +469,7 @@ File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

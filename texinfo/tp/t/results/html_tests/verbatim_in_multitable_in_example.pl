@@ -512,7 +512,6 @@ $result_converted{'html'}->{'verbatim_in_multitable_in_example'} = '<!DOCTYPE ht
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--

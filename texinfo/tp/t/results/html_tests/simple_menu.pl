@@ -2257,7 +2257,7 @@ $result_errors{'simple_menu'} = [
 
 
 
-$result_converted{'info'}->{'simple_menu'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'simple_menu'} = 'This is , produced from .
 
 * Menu:
 
@@ -2329,7 +2329,6 @@ $result_converted{'html'}->{'simple_menu'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--

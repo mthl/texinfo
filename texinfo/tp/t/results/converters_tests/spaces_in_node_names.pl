@@ -1225,7 +1225,7 @@ $result_converted{'docbook'}->{'spaces_in_node_names'} = '<anchor id="Top"/>
 </para>';
 
 
-$result_converted{'info'}->{'spaces_in_node_names'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'spaces_in_node_names'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Next: a  ,  Up: (dir)
@@ -1253,10 +1253,10 @@ File: ,  Node: c  ,  Prev: b  ,  Up: Top
 
 
 Tag Table:
-Node: Top41
-Node: a  120
-Node: b  176
-Node: c  232
+Node: Top27
+Node: a  106
+Node: b  162
+Node: c  218
 
 End Tag Table
 ';

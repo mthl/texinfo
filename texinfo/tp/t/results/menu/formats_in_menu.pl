@@ -1133,7 +1133,6 @@ $result_converted{'html'}->{'formats_in_menu'} = '<!DOCTYPE html PUBLIC "-//W3C/
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

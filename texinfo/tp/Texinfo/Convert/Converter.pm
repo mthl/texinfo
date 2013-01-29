@@ -95,7 +95,7 @@ our %all_converters_defaults = (
   'PACKAGE_AND_VERSION'  => 'texinfo',
   'PACKAGE_VERSION'      => '',
   'PACKAGE_URL'          => 'http://www.gnu.org/software/texinfo/',
-  'PROGRAM'              => 'tp',
+  'PROGRAM'              => '',
 
   'DEBUG'                => 0,
   'TEST'                 => 0,

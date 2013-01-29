@@ -156,7 +156,7 @@ $result_converted_errors{'docbook'}->{'image_extension'} = [
 
 
 
-$result_converted{'info'}->{'image_extension'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'image_extension'} = 'This is , produced from .
 
 [f---ile]
 

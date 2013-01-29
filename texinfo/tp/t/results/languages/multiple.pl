@@ -1027,7 +1027,7 @@ $result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance de fr :
 ';
 
 
-$result_converted{'info'}->{'multiple'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'multiple'} = 'This is , produced from .
 
  -- Variable d\'instance de copying : a b
 
@@ -1044,7 +1044,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top83
+Node: Top69
 
 End Tag Table
 ';
@@ -1061,7 +1061,6 @@ $result_converted{'html'}->{'multiple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HT
 <meta name="keywords" content="Documento Sem Nome">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

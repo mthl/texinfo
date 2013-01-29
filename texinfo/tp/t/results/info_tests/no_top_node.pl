@@ -101,7 +101,7 @@ $result_errors{'no_top_node'} = [];
 
 
 
-$result_converted{'info'}->{'no_top_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'no_top_node'} = 'This is , produced from .
 
 
 File: ,  Node: node Top not Top node
@@ -109,7 +109,7 @@ File: ,  Node: node Top not Top node
 
 
 Tag Table:
-Node: node Top not Top node41
+Node: node Top not Top node27
 
 End Tag Table
 ';

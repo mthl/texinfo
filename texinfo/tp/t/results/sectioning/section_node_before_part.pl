@@ -293,7 +293,7 @@ $result_errors{'section_node_before_part'} = [
 
 
 
-$result_converted{'info'}->{'section_node_before_part'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'section_node_before_part'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -304,7 +304,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -320,7 +320,6 @@ $result_converted{'html'}->{'section_node_before_part'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

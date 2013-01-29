@@ -275,7 +275,11 @@ sub _info_header($)
   $result .= $paragraph->add_next($self->{'output_filename'});
   my $program = $self->get_conf('PROGRAM');
   my $version = $self->get_conf('PACKAGE_VERSION');
-  $result .= $paragraph->add_text(", produced by $program version $version from ");
+  if (defined($program) and $program ne '') {
+    $result .= $paragraph->add_text(", produced by $program version $version from ");
+  } else {
+    $result .= $paragraph->add_text(", produced from ");
+  }
   $result .= $paragraph->add_next($self->{'input_basename'});
   $result .= $paragraph->add_text('.');
   $result .= $paragraph->end();

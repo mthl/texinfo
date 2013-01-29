@@ -644,7 +644,7 @@ $result_errors{'center_flush'} = [];
 
 
 
-$result_converted{'info'}->{'center_flush'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'center_flush'} = 'This is , produced from .
 
                                centered
 

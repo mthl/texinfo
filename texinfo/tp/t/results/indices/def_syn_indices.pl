@@ -2137,7 +2137,7 @@ $result_indices{'def_syn_indices'} = {
 
 
 
-$result_converted{'info'}->{'def_syn_indices'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'def_syn_indices'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -2179,7 +2179,7 @@ definedx truc after
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

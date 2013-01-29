@@ -162,7 +162,7 @@ $result_errors{'top_no_argument_and_node'} = [];
 
 
 
-$result_converted{'info'}->{'top_no_argument_and_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'top_no_argument_and_node'} = 'This is , produced from .
 
 
 File: ,  Node: start
@@ -170,7 +170,7 @@ File: ,  Node: start
 
 
 Tag Table:
-Node: start41
+Node: start27
 
 End Tag Table
 ';
@@ -196,7 +196,6 @@ $result_converted{'html'}->{'top_no_argument_and_node'} = '<!DOCTYPE html PUBLIC
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#start" rel="start" title="start">
 <style type="text/css">

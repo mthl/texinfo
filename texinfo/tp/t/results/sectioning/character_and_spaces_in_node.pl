@@ -676,7 +676,7 @@ $result_errors{'character_and_spaces_in_node'} = [
 
 
 
-$result_converted{'info'}->{'character_and_spaces_in_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'character_and_spaces_in_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -696,11 +696,11 @@ File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
 
 
 Tag Table:
-Node: Top41
-Node: other nodes75
-Node: !_"#$%&\'()*+-.150
-Node: /;<=>?[\\]^_`|~244
-Node: local node337
+Node: Top27
+Node: other nodes61
+Node: !_"#$%&\'()*+-.136
+Node: /;<=>?[\\]^_`|~230
+Node: local node323
 
 End Tag Table
 ';
@@ -716,7 +716,6 @@ $result_converted{'html'}->{'character_and_spaces_in_node'} = '<!DOCTYPE html PU
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

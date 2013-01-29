@@ -123,7 +123,7 @@ $result_errors{'image_text_encoded'} = [];
 
 
 
-$result_converted{'info'}->{'image_text_encoded'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'image_text_encoded'} = 'This is , produced from .
 
 îmage encodée
 

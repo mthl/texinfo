@@ -168,7 +168,7 @@ $result_errors{'paragraphindent_none_first'} = [];
 
 
 
-$result_converted{'info'}->{'paragraphindent_none_first'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'paragraphindent_none_first'} = 'This is , produced from .
 
 first
 

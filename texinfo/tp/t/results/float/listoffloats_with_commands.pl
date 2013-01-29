@@ -142,7 +142,6 @@ $result_converted{'html'}->{'listoffloats_with_commands'} = '<!DOCTYPE html PUBL
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--

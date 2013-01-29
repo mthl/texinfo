@@ -470,7 +470,7 @@ $result_errors{'anchor_in_copying_in_footnote'} = [];
 
 
 
-$result_converted{'info'}->{'anchor_in_copying_in_footnote'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'anchor_in_copying_in_footnote'} = 'This is , produced from .
 
 Copying(1).
 
@@ -496,10 +496,10 @@ Copying(1).
 
 
 Tag Table:
-Node: Top111
-Ref: Top-Footnote-1240
-Ref: Copying footnote259
-Ref: Top-Footnote-2261
+Node: Top97
+Ref: Top-Footnote-1226
+Ref: Copying footnote245
+Ref: Top-Footnote-2247
 
 End Tag Table
 ';
@@ -531,7 +531,6 @@ Copying.
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">

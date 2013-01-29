@@ -1197,7 +1197,7 @@ $result_errors{'before_node_and_section'} = [
 
 
 
-$result_converted{'info'}->{'before_node_and_section'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'before_node_and_section'} = 'This is , produced from .
 
 Garbage ref to Top *note Top::.  Hey(1).  An anchor .
 
@@ -1238,11 +1238,11 @@ File: ,  Node: node1,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Ref: anchor192
-Node: Top116
-Ref: Top-Footnote-1331
-Ref: Top-Footnote-2350
-Node: node1375
+Ref: anchor178
+Node: Top102
+Ref: Top-Footnote-1317
+Ref: Top-Footnote-2336
+Node: node1361
 
 End Tag Table
 ';

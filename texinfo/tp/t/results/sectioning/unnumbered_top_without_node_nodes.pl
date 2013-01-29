@@ -678,7 +678,7 @@ element: @node second
 ';
 
 
-$result_converted{'info'}->{'unnumbered_top_without_node_nodes'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'unnumbered_top_without_node_nodes'} = 'This is , produced from .
 
 
 File: ,  Node: a node,  Up: (dir)
@@ -703,8 +703,8 @@ Text of chapter
 
 
 Tag Table:
-Node: a node41
-Node: second154
+Node: a node27
+Node: second140
 
 End Tag Table
 ';
@@ -730,7 +730,6 @@ $result_converted{'html'}->{'unnumbered_top_without_node_nodes'} = '<!DOCTYPE ht
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#a-node" rel="start" title="a node">
 <style type="text/css">

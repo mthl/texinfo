@@ -267,7 +267,7 @@ $result_errors{'index_entry_before_first_node'} = [
 
 
 
-$result_converted{'info'}->{'index_entry_before_first_node'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'index_entry_before_first_node'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -280,7 +280,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

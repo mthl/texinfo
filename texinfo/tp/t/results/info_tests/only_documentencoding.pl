@@ -61,7 +61,7 @@ $result_errors{'only_documentencoding'} = [];
 
 
 
-$result_converted{'info'}->{'only_documentencoding'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'only_documentencoding'} = 'This is , produced from .
 
 
 

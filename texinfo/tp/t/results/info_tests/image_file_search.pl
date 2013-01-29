@@ -313,7 +313,7 @@ $result_errors{'image_file_search'} = [];
 
 
 
-$result_converted{'info'}->{'image_file_search'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'image_file_search'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -324,7 +324,7 @@ File: ,  Node: Top,  Up: (dir)
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';

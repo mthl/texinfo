@@ -587,7 +587,7 @@ element: @node second node
 ';
 
 
-$result_converted{'info'}->{'nodes_no_node_top_explicit_directions'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'nodes_no_node_top_explicit_directions'} = 'This is , produced from .
 
 
 File: ,  Node: first,  Up: (dir)
@@ -605,8 +605,8 @@ second node
 
 
 Tag Table:
-Node: first41
-Node: second node115
+Node: first27
+Node: second node101
 
 End Tag Table
 ';
@@ -632,7 +632,6 @@ $result_converted{'html'}->{'nodes_no_node_top_explicit_directions'} = '<!DOCTYP
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#first" rel="start" title="first">
 <style type="text/css">

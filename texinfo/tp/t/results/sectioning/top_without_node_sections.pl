@@ -441,7 +441,7 @@ element: @chapter Chapter
 ';
 
 
-$result_converted{'info'}->{'top_without_node_sections'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'top_without_node_sections'} = 'This is , produced from .
 
 top section
 ***********
@@ -458,7 +458,7 @@ Text of chapter
 
 
 Tag Table:
-Node: second79
+Node: second65
 
 End Tag Table
 ';
@@ -484,7 +484,6 @@ $result_converted{'html'}->{'top_without_node_sections'} = '<!DOCTYPE html PUBLI
 <meta name="keywords" content="top section">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#second" rel="start" title="second">
 <style type="text/css">

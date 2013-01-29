@@ -152,7 +152,6 @@ $result_converted{'html'}->{'empty_lines_at_beginning_no_setfilename_no_element'
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--

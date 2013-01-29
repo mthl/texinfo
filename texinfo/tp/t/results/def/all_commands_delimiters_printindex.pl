@@ -17053,7 +17053,7 @@ $result_errors{'all_commands_delimiters_printindex'} = [];
 
 
 
-$result_converted{'info'}->{'all_commands_delimiters_printindex'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'all_commands_delimiters_printindex'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -17235,7 +17235,7 @@ Variables
 
 
 Tag Table:
-Node: Top41
+Node: Top27
 
 End Tag Table
 ';
@@ -17251,7 +17251,6 @@ $result_converted{'html'}->{'all_commands_delimiters_printindex'} = '<!DOCTYPE h
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="#Top" rel="start" title="Top">
 <link href="#Top" rel="index" title="Top">

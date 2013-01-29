@@ -32,7 +32,7 @@ $result_errors{'no_nodes'} = [];
 
 
 
-$result_converted{'info'}->{'no_nodes'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'no_nodes'} = 'This is , produced from .
 
 Text.
 

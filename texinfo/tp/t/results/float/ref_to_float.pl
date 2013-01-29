@@ -542,7 +542,6 @@ $result_converted{'html'}->{'ref_to_float'} = '<!DOCTYPE html PUBLIC "-//W3C//DT
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--

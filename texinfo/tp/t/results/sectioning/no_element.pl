@@ -1054,7 +1054,7 @@ $result_floats{'no_element'}{''}[0]{'extra'}{'end_command'}{'extra'}{'command'} 
 
 
 
-$result_converted{'info'}->{'no_element'} = 'This is , produced by tp version from .
+$result_converted{'info'}->{'no_element'} = 'This is , produced from .
 
 Ref to the anchor: *note An anchor::
 
@@ -1150,7 +1150,6 @@ $result_converted{'html'}->{'no_element'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD 
 <meta name="keywords" content="no_element test">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">
 <!--

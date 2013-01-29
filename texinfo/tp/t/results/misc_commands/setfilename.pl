@@ -329,7 +329,7 @@ $result_converted{'docbook'}->{'setfilename'} = '
 ';
 
 
-$result_converted{'info'}->{'setfilename'} = 'This is file_comment, produced by tp version from .
+$result_converted{'info'}->{'setfilename'} = 'This is file_comment, produced from .
 
 
 

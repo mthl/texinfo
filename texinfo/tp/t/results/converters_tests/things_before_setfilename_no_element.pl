@@ -1623,7 +1623,6 @@ $result_converted{'html'}->{'things_before_setfilename_no_element'} = '<!DOCTYPE
 <meta name="keywords" content="Untitled Document">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="tp">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -1747,8 +1746,8 @@ $result_converted{'docbook'}->{'things_before_setfilename_no_element'} = '
 ';
 
 
-$result_converted{'info'}->{'things_before_setfilename_no_element'} = 'This is things_before_setfilename_no_element.info, produced by tp
-version from things_before_setfilename_no_element.texi.
+$result_converted{'info'}->{'things_before_setfilename_no_element'} = 'This is things_before_setfilename_no_element.info, produced from
+things_before_setfilename_no_element.texi.
 
 Ref to anchor *note An anchor::
 
