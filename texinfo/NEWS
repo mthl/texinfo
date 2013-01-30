@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.225 2013-01-19 15:54:04 karl Exp $
+$Id: NEWS,v 1.226 2013-01-30 14:02:34 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -115,7 +115,8 @@ one of the relevant sections:
     references; official updates between full package releases available at
     http://ftpmirror.gnu.org/texinfo/htmlxref.cnf.
   . language support for no removed/renamed to nb, per Norwegian translators.
-  . new translations: id it.
+  . new translations: id it,
+    and document translation: eo.
   . texinfo.cat file removed since it is (to our knowledge) unused.
   . documentation license now GFDLv1.3 or later.
   . autoconf 2.69, automake 1.13.1, gettext 0.18.2.
