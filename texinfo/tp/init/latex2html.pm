@@ -196,7 +196,9 @@ sub l2h_process($)
 
   unless ($self->get_conf('L2H_SKIP')) {
     unless (open(L2H_LATEX, ">$l2h_latex_file")) {
-      $self->document_error("l2h: Can't open latex file '$l2h_latex_file' for writing: $!");
+      $self->document_error(sprintf($self->__(
+              "l2h: could not open latex file %s for writing: %s"),
+                                    $l2h_latex_file, $!));
       $status = 0;
       return;
     }
@@ -336,12 +338,12 @@ sub l2h_to_html($)
   # Check for dot in directory where dvips will work
   if ($self->get_conf('L2H_TMP')) {
     if ($self->get_conf('L2H_TMP') =~ /\./) {
-      $self->document_warn ("l2h: l2h_tmp dir contains a dot.");
+      $self->document_warn($self->__("l2h: L2H_TMP directory contains a dot"));
       $dotbug = 1;
     }
   } else {
     if (cwd() =~ /\./) {
-      $self->document_warn ("l2h: current dir contains a dot.");
+      $self->document_warn($self->__("l2h: current directory contains a dot"));
       $dotbug = 1;
     }
   }
@@ -369,7 +371,8 @@ sub l2h_to_html($)
 
   warn "# l2h: executing '$call'\n" if ($verbose);
   if (system($call)) {
-    $self->document_error ("l2h: '${call}' did not succeed");
+    $self->document_error(sprintf($self->__("l2h: command did not succeed: %s"), 
+                                  $call));
     return 0;
   } else  {
      warn "# l2h: latex2html finished successfully\n" if ($verbose);
@@ -415,7 +418,8 @@ sub l2h_change_image_file_names($$)
         # document extension. copying the file could result in 
         # overwriting an output file (almost surely if the default 
         # texi2html file names are used).
-        $self->document_warn ("L2h image $src has invalid extension");
+        $self->document_warn(sprintf($self->__(
+                            "l2h: image has invalid extension: %s"), $src));
         next;
       }
       while (-e File::Spec->catpath($docu_volume, $docu_directories,
@@ -430,8 +434,9 @@ sub l2h_change_image_file_names($$)
       if ($debug) {
         copy($file_src, $file_dest);
       } else {
-        if (!rename ($file_src, $file_dest)) {
-          $self->document_warn ("Error renaming $file_src as $file_dest: $!");
+        if (!rename($file_src, $file_dest)) {
+          $self->document_warn(sprintf($self->__("l2h: rename %s as %s failed: %s"), 
+                                       $file_src, $file_dest, $!));
         }
       }
       $l2h_img{$src} = $dest;
@@ -452,7 +457,8 @@ sub l2h_init_from_html($)
   }
 
   if (! open(L2H_HTML, "<$l2h_html_file")) {
-    $self->document_warn ("l2h: Can't open $l2h_html_file for reading");
+    $self->document_warn(sprintf($self->__("l2h: could not open %s: %s"),
+                                 $l2h_html_file, $!));
     return 0;
   }
   warn "# l2h: use $l2h_html_file as html file\n" if ($verbose);
@@ -605,7 +611,8 @@ sub l2h_init_cache($)
   my $self = shift;
   if (-r $l2h_cache_file) {
     my $rdo = do "$l2h_cache_file";
-    $self->document_error ("l2h: could not load $l2h_cache_file: $@")
+    $self->document_error(sprintf($self->__("l2h: could not load %s: %s"),
+                                  $l2h_cache_file, $@))
       unless ($rdo);
   }
 }
@@ -617,7 +624,8 @@ sub l2h_store_cache($)
   return unless $latex_count;
   my ($key, $value);
   unless (open(FH, ">$l2h_cache_file")) { 
-    $self->document_error ("l2h: could not open $l2h_cache_file for writing: $!");
+    $self->document_error(sprintf($self->__("l2h: could not open %s for writing: %s"),
+                                  $l2h_cache_file, $!));
     return;
   }
   while (($key, $value) = each %l2h_cache) {

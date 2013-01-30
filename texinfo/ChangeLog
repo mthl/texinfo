@@ -1,3 +1,9 @@
+2013-01-29  Patrice Dumas  <pertusus@free.fr>
+
+	* po/POTFILES.in, tp/init/latex2html.pm: mark translations
+	for error messages in latex2html.pm, and add file to 
+	po/POTFILES.in.
+
 2013-01-28  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.13.95.
