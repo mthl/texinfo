@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.535 2013-01-27 19:10:04 karl Exp $
+@c $Id: texinfo.txi,v 1.536 2013-01-30 01:35:41 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -17848,13 +17848,6 @@ For HTML@.  If set, use a simple preformatted style for the menu,
 instead of breaking down the different parts of the menu; default false.
 @xref{Menu Parts}.
 
-@item TOC_FILE
-@vindex INLINE_CONTENTS
-The value is used as the file name for the table of contents, if
-output is split and @code{INLINE_CONTENTS} is not set.  The extension
-is set appropriately, if necessary.  The default is
-@file{@var{docname}_toc.html}.
-
 @item TOC_LINKS
 For HTML@.  If set, links from headings to toc entries are created;
 default false.
@@ -22083,7 +22076,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.535 2013-01-27 19:10:04 karl Exp $
+$Id: texinfo.txi,v 1.536 2013-01-30 01:35:41 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
