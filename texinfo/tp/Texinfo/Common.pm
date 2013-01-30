@@ -1110,12 +1110,13 @@ sub expand_verbatiminclude($$)
                   {'type' => 'raw', 'text' => $_ };
       }
       if (!close (VERBINCLUDE)) {
-        $self->document_warn(sprintf($self->__("Error on closing \@verbatiminclude file %s: %s"),
+        $self->document_warn(sprintf($self->__(
+                      "error on closing \@verbatiminclude file %s: %s"),
                              $file, $!));
       }
     }
   } elsif ($self) {
-    $self->line_error (sprintf($self->__("\@%s: Cannot find %s"), 
+    $self->line_error(sprintf($self->__("\@%s: could not find %s"), 
                     $current->{'cmdname'}, $text), $current->{'line_nr'});
   }
   return $verbatiminclude;
@@ -1413,7 +1414,7 @@ sub parse_htmlxref_files($$)
     print STDERR "html refs config file: $file\n" if ($self->get_conf('DEBUG'));
     unless (open (HTMLXREF, $file)) {
       $self->document_warn(
-        sprintf($self->__("Cannot open html refs config file %s: %s"),
+        sprintf($self->__("could not open html refs config file %s: %s"),
           $file, $!));
       next;
     }
@@ -1441,10 +1442,10 @@ sub parse_htmlxref_files($$)
       my $split_or_mono = shift @htmlxref;
       #print STDERR "$split_or_mono $Texi2HTML::Config::htmlxref_entries{$split_or_mono} $line_nr\n";
       if (!defined($split_or_mono)) {
-        $self->file_line_warn($self->__("Missing type"), $file, $line_nr);
+        $self->file_line_warn($self->__("missing type"), $file, $line_nr);
         next;
       } elsif (!defined($htmlxref_entries{$split_or_mono})) {
-        $self->file_line_warn(sprintf($self->__("Unrecognized type: %s"), 
+        $self->file_line_warn(sprintf($self->__("unrecognized type: %s"), 
                                $split_or_mono), $file, $line_nr);
         next;
       }
@@ -1460,7 +1461,8 @@ sub parse_htmlxref_files($$)
       $htmlxref->{$manual}->{$split_or_mono} = $href;
     }
     if (!close (HTMLXREF)) {
-      $self->document_warn(sprintf($self->__("Error on closing html refs config file %s: %s"),
+      $self->document_warn(sprintf($self->__(
+                       "error on closing html refs config file %s: %s"),
                              $file, $!));
     }
   }
@@ -1512,11 +1514,11 @@ sub parse_renamed_nodes_file($$;$$)
     if (!close(RENAMEDFILE)) {
       $self->document_warn(sprintf($self->__p(
           "see HTML Xref Link Preservation in the Texinfo manual for context",
-          "Error on closing node-renaming configuration file %s: %s"), 
+          "error on closing node-renaming configuration file %s: %s"), 
                             $renamed_nodes_file, $!));
     }
   } else {
-    $self->document_warn(sprintf($self->__("Cannot read %s: %s"), 
+    $self->document_warn(sprintf($self->__("could not open %s: %s"), 
                          $renamed_nodes_file, $!));
   }
   return ($renamed_nodes, $renamed_nodes_lines);

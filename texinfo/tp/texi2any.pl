@@ -465,7 +465,7 @@ sub locate_and_load_init_file($$)
   if (defined($file)) {
     Texinfo::Config::_load_init_file($file);
   } else {
-    document_warn(sprintf(__("Can't read init file %s"), $filename));
+    document_warn(sprintf(__("could not read init file %s"), $filename));
   }
 }
 
@@ -618,8 +618,8 @@ sub set_format($;$$)
   }
   my $expanded_format = $set_format;
   if (!$formats_table{$new_format}) {
-    warn(sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), 
-                 $real_command_name, $new_format));
+    document_warn(sprintf(__("ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"), 
+                 $new_format));
     $new_format = $previous_format;
   } else {
     if ($format_from_command_line and $do_not_override_command_line) {
@@ -649,7 +649,8 @@ sub document_warn($) {
   return if (get_conf('NO_WARN'));
   my $text = shift;
   chomp ($text);
-  warn(sprintf(__p("warning: warning_message", "warning: %s\n"), $text));
+  warn(sprintf(__p("program name: warning: warning_message", 
+                   "%s: warning: %s\n"), $real_command_name,  $text));
 }
 
 sub _exit($$)
@@ -1028,14 +1029,14 @@ if (get_conf('TREE_TRANSFORMATIONS')) {
     if (Texinfo::Common::valid_tree_transformation($transformation)) {
       $tree_transformations{$transformation} = 1;
     } else {
-      document_warn(sprintf(__('Unknown tree transformation %s'), 
+      document_warn(sprintf(__('unknown tree transformation %s'), 
                      $transformation));
     }
   }
 }
 
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
-  document_warn(sprintf(__('Ignoring splitting for format %s'), 
+  document_warn(sprintf(__('ignoring splitting for format %s'), 
                         format_name($format)));
   set_from_cmdline('SPLIT', ''); 
 }
@@ -1157,7 +1158,7 @@ while(@input_files) {
     my ($filled_contents, $added_sections) 
       = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
     if (!defined($filled_contents)) {
-      document_warn (__("fill_gaps_in_sectioning transformation return no result. No section?"));
+      document_warn(__("fill_gaps_in_sectioning transformation return no result. No section?"));
     } else {
       $tree->{'contents'} = $filled_contents;
     }
@@ -1179,14 +1180,14 @@ while(@input_files) {
     if (defined ($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
       if (!close ($macro_expand_fh)) {
-        warn(sprintf(__("Error on closing macro expand file %s: %s\n"), 
-                      $macro_expand_file, $!));
+        document_warn(sprintf(__("error on closing macro expand file %s: %s\n"), 
+                              $macro_expand_file, $!));
         $error_macro_expand_file = 1;
       }
       $parser->Texinfo::Convert::Converter::register_close_file($macro_expand_file);
     } else {
-      warn(sprintf(__("Could not open %s for writing: %s\n"), 
-                    $macro_expand_file, $!));
+      document_warn(sprintf(__("could not open %s for writing: %s\n"), 
+                            $macro_expand_file, $!));
       $error_macro_expand_file = 1;
     }
 
@@ -1209,7 +1210,7 @@ while(@input_files) {
     my ($modified_contents, $added_nodes)
      = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
     if (!defined($modified_contents)) {
-      document_warn (__("insert_nodes_for_sectioning_commands transformation return no result. No section?"));
+      document_warn(__("insert_nodes_for_sectioning_commands transformation return no result. No section?"));
     } else {
       $tree->{'contents'} = $modified_contents;
     }
@@ -1270,8 +1271,8 @@ while(@input_files) {
           = $converter_unclosed_files->{$unclosed_file};
       } else {
         if (!close($converter_unclosed_files->{$unclosed_file})) {
-          warn(sprintf(__("Error on closing %s: %s\n"), 
-                           $unclosed_file, $!));
+          warn(sprintf(__("%s: error on closing %s: %s\n"), 
+                           $real_command_name, $unclosed_file, $!));
           $error_count++;
           _exit($error_count, \@opened_files);
         }
@@ -1293,14 +1294,14 @@ while(@input_files) {
       print $internal_links_fh $internal_links_text;
       
       if (!close ($internal_links_fh)) {
-        warn(sprintf(__("Error on closing internal links file %s: %s\n"), 
-                      $internal_links_file, $!));
+        warn(sprintf(__("%s: error on closing internal links file %s: %s\n"), 
+                      $real_command_name, $internal_links_file, $!));
         $error_internal_links_file = 1;
       }
       $converter->register_close_file($internal_links_file);
     } else {
-      warn(sprintf(__("Could not open %s for writing: %s\n"), 
-                    $internal_links_file, $!));
+      warn(sprintf(__("%s: could not open %s for writing: %s\n"), 
+                      $real_command_name, $internal_links_file, $!));
       $error_internal_links_file = 1;
     }
     if ($error_internal_links_file) {
@@ -1327,14 +1328,14 @@ while(@input_files) {
       print $sort_element_count_fh $sort_element_count_text;
       
       if (!close ($sort_element_count_fh)) {
-        warn(sprintf(__("Error on closing internal links file %s: %s\n"), 
-                      $sort_element_count_file, $!));
+        warn(sprintf(__("%s: error on closing internal links file %s: %s\n"), 
+                      $real_command_name, $sort_element_count_file, $!));
         $error_sort_element_count_file = 1;
       }
       $converter->register_close_file($sort_element_count_file);
     } else {
-      warn(sprintf(__("Could not open %s for writing: %s\n"), 
-                    $sort_element_count_file, $!));
+      warn(sprintf(__("%s: could not open %s for writing: %s\n"), 
+                    $real_command_name, $sort_element_count_file, $!));
       $error_sort_element_count_file = 1;
     }
     if ($error_sort_element_count_file) {
@@ -1346,8 +1347,8 @@ while(@input_files) {
 
 foreach my $unclosed_file (keys(%unclosed_files)) {
   if (!close($unclosed_files{$unclosed_file})) {
-    warn(sprintf(__("Error on closing %s: %s\n"), 
-                     $unclosed_file, $!));
+    warn(sprintf(__("%s: error on closing %s: %s\n"), 
+                     $real_command_name, $unclosed_file, $!));
     $error_count++;
     _exit($error_count, \@opened_files);
   }

@@ -712,9 +712,9 @@ Next: <a href="manual1.html#Top" accesskey="n" rel="next">(manual1)</a>, Previou
 
 $result_converted_errors{'html'}->{'node_up_external_node'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

@@ -1055,9 +1055,9 @@ Previous: <a href="#second-node" accesskey="p" rel="previous">second node</a>, U
 
 $result_converted_errors{'html'}->{'nodes_after_top_before_section_nodes'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

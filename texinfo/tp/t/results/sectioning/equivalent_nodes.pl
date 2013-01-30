@@ -637,9 +637,9 @@ Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 
 $result_converted_errors{'html'}->{'equivalent_nodes'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

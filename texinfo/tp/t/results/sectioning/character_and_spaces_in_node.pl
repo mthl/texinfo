@@ -796,9 +796,9 @@ Previous: <a href="#g_t_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0
 
 $result_converted_errors{'html'}->{'character_and_spaces_in_node'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

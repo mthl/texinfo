@@ -459,7 +459,7 @@ sub output($$)
   if ($outfile ne '') {
     $fh = $self->Texinfo::Common::open_out($outfile);
     if (!$fh) {
-      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
                                     $outfile, $!));
       return undef;
     }
@@ -1214,7 +1214,7 @@ sub _image_text($$$)
       # remove last end of line
       chomp ($result);
       if (!close ($filehandle)) {
-        $self->document_warn(sprintf($self->__("Error on closing image text file %s: %s"),
+        $self->document_warn(sprintf($self->__("error on closing image text file %s: %s"),
                                      $txt_file, $!));
       }
       return $result;

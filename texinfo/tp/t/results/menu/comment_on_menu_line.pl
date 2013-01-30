@@ -572,9 +572,9 @@ Previous: <a href="#Top" accesskey="p" rel="previous">Top</a>, Up: <a href="#Top
 
 $result_converted_errors{'html'}->{'comment_on_menu_line'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

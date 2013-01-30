@@ -431,9 +431,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'detailmenu_in_description'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

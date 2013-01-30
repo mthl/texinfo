@@ -833,8 +833,8 @@ sub parse_texi_file ($$)
   my $file_name = shift;
 
   my $filehandle = do { local *FH };
-  if (!open ($filehandle, $file_name)) { 
-    $self->document_error(sprintf($self->__("Can't read file %s: %s"), 
+  if (! open($filehandle, $file_name)) { 
+    $self->document_error(sprintf($self->__("could not open %s: %s"), 
                                   $file_name, $!));
     return undef;
   }
@@ -1185,6 +1185,9 @@ sub _begin_preformatted($)
   return $current;
 }
 
+# wrapper around line_warn.  Set line_nr to be the line_nr of the command,
+# corresponding to the opening of the command.  Call line_warn with
+# sprintf if needed.
 sub _command_warn($$$$;@)
 {
   my $self = shift;
@@ -1895,7 +1898,7 @@ sub _next_text($$$)
     # Don't close STDIN
     if ($previous_input->{'fh'} and $previous_input->{'name'} ne '-') {
       if (!close($previous_input->{'fh'})) {
-        $self->document_warn(sprintf($self->__("Error on closing %s: %s"),
+        $self->document_warn(sprintf($self->__("error on closing %s: %s"),
                                      $previous_input->{'name'}, $!));
 
       }
@@ -3575,7 +3578,7 @@ sub _mark_and_warn_invalid($$$$$)
   my $marked_as_invalid_command = shift;
 
   if (defined($invalid_parent)) {
-    $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
+    $self->line_warn(sprintf($self->__("\@%s should not appear in \@%s"), 
               $command, $invalid_parent), $line_nr);
     $marked_as_invalid_command->{'extra'}->{'invalid_nesting'} = 1
       if (defined($marked_as_invalid_command));
@@ -3707,12 +3710,12 @@ sub _parse_texi($;$)
           } else {
             push @{$current->{'contents'}}, 
               { 'text' => $1, 'type' => 'raw', 'parent' => $current };
-            $self->line_warn (sprintf($self->__("\@end %s should only appear at a line beginning"), 
+            $self->line_warn(sprintf($self->__("\@end %s should only appear at a line beginning"), 
                                      $end_command), $line_nr);
           }
           # if there is a user defined macro that expandes to spaces, there
           # will be a spurious warning.
-          $self->line_warn (sprintf($self->
+          $self->line_warn(sprintf($self->
                 __("Superfluous argument to \@%s %s: %s"), 'end', $end_command,
                                     $line), $line_nr)
             if ($line =~ /\S/ and $line !~ /^\s*\@c(omment)?\b/);

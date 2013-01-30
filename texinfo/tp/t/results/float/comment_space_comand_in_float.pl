@@ -523,9 +523,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'comment_space_comand_in_float'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

@@ -199,9 +199,9 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'one_subsection_and_node'} = [
   {
-    'error_line' => 'warning: Document without Top node.
+    'error_line' => 'warning: document without Top node
 ',
-    'text' => 'Document without Top node.',
+    'text' => 'document without Top node',
     'type' => 'warning'
   }
 ];
@@ -266,9 +266,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'one_subsection_and_node'} = [
   {
-    'error_line' => 'warning: Must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'text' => 'Must specify a title with a title command or @top',
+    'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
 ];

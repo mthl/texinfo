@@ -116,9 +116,9 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'no_top_node'} = [
   {
-    'error_line' => 'warning: Document without Top node.
+    'error_line' => 'warning: document without Top node
 ',
-    'text' => 'Document without Top node.',
+    'text' => 'document without Top node',
     'type' => 'warning'
   }
 ];

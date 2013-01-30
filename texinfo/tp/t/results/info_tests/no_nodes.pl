@@ -44,9 +44,9 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'no_nodes'} = [
   {
-    'error_line' => 'warning: Document without nodes.
+    'error_line' => 'warning: document without nodes
 ',
-    'text' => 'Document without nodes.',
+    'text' => 'document without nodes',
     'type' => 'warning'
   }
 ];
