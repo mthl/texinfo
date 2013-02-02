@@ -1093,7 +1093,7 @@ sub expand_verbatiminclude($$)
   if (defined($file)) {
     if (!open(VERBINCLUDE, $file)) {
       if ($self) {
-        $self->line_error (sprintf($self->__("Cannot read %s: %s"), $file, $!), 
+        $self->line_error(sprintf($self->__("could not read %s: %s"), $file, $!), 
                             $current->{'line_nr'});
       }
     } else {
@@ -1497,8 +1497,8 @@ sub parse_renamed_nodes_file($$;$$)
           $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
           @old_names = ();
         } else {
-          warn (sprintf($self->__("%s:%d: no node to be renamed\n"), 
-                        $renamed_nodes_file, $renamed_nodes_line_nr));
+          $self->file_line_warn($self->__("no node to be renamed"),
+                        $renamed_nodes_file, $renamed_nodes_line_nr);
         }
       } else {
         chomp;
@@ -1508,8 +1508,8 @@ sub parse_renamed_nodes_file($$;$$)
       }
     }
     if (scalar(@old_names)) {
-      warn (sprintf($self->__("%s:%d: nodes without a new name at the end of file\n"),
-             $renamed_nodes_file, $renamed_nodes_line_nr));
+      $self->file_line_warn($self->__("nodes without a new name at the end of file"),
+             $renamed_nodes_file, $renamed_nodes_line_nr);
     }
     if (!close(RENAMEDFILE)) {
       $self->document_warn(sprintf($self->__p(
@@ -1999,8 +1999,8 @@ sub _protect_hashchar_at_line_beginning($$$)
         while ($parent) {
           if ($parent->{'cmdname'} and $parent->{'line_nr'}) {
             $self->line_warn(sprintf($self->__(
-                  "protect_hashchar_at_line_beginning cannot protect in \@%s"), 
-                                     $parent->{'cmdname'}), $parent->{'line_nr'});
+                  "could not protect hash character in \@%s"), 
+                             $parent->{'cmdname'}), $parent->{'line_nr'});
             last;
           }
           $parent = $parent->{'parent'};
