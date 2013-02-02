@@ -189,12 +189,12 @@ $result_menus{'known_encoding'} = {
 
 $result_errors{'known_encoding'} = [
   {
-    'error_line' => ':2: warning: Encoding `latin1\' is not a canonical texinfo encoding
+    'error_line' => ':2: warning: encoding `latin1\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Encoding `latin1\' is not a canonical texinfo encoding',
+    'text' => 'encoding `latin1\' is not a canonical texinfo encoding',
     'type' => 'warning'
   }
 ];

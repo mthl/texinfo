@@ -354,12 +354,12 @@ $result_menus{'empty_index_entry'} = {
 
 $result_errors{'empty_index_entry'} = [
   {
-    'error_line' => ':3: warning: Missing name for @deffn
+    'error_line' => ':3: warning: missing name for @deffn
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Missing name for @deffn',
+    'text' => 'missing name for @deffn',
     'type' => 'warning'
   }
 ];

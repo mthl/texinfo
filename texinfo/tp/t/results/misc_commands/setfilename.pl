@@ -279,30 +279,30 @@ $result_texts{'setfilename'} = '
 
 $result_errors{'setfilename'} = [
   {
-    'error_line' => ':2: warning: Multiple @setfilename
+    'error_line' => ':2: warning: multiple @setfilename
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Multiple @setfilename',
+    'text' => 'multiple @setfilename',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: Multiple @setfilename
+    'error_line' => ':3: warning: multiple @setfilename
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Multiple @setfilename',
+    'text' => 'multiple @setfilename',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Multiple @setfilename
+    'error_line' => ':4: warning: multiple @setfilename
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Multiple @setfilename',
+    'text' => 'multiple @setfilename',
     'type' => 'warning'
   },
   {

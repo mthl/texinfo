@@ -1106,7 +1106,7 @@ sub _printindex_formatted($$;$)
       # done by the Parser.
       # Warn, only once.
       if (!$self->{'index_entries_no_node'}->{$entry}) {
-        $self->line_warn (sprintf($self->__("Entry for index `%s' outside of any node"),
+        $self->line_warn(sprintf($self->__("entry for index `%s' outside of any node"),
                                  $index_name), $entry->{'command'}->{'line_nr'});
         $self->{'index_entries_no_node'}->{$entry} = 1;
       }
@@ -1247,8 +1247,9 @@ sub _image_formatted_text($$$$$)
       $result = $alt;
     }
   } else {
-    $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt' nor alternate text"),
-                       $basefile), $root->{'line_nr'});
+    $self->line_warn(sprintf($self->__(
+                    "could not find \@image file `%s.txt' nor alternate text"),
+                             $basefile), $root->{'line_nr'});
     $result = '['.$basefile.']';
   }
   return $result;
@@ -1612,7 +1613,9 @@ sub _convert($$)
              and $root->{'args'}->[0]->{'contents'}->[0]->{'text'} =~ /^Note\s/i
              and $self->{'output_format'}
              and $self->{'output_format'} eq 'info') {
-          $self->line_warn($self->__("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"), $root->{'line_nr'});
+          $self->line_warn($self->__(
+    "\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"), 
+                           $root->{'line_nr'});
         }
       }
       $result .= $self->_count_added($formatter->{'container'},
@@ -1842,9 +1845,12 @@ sub _convert($$)
                 my $text = $next->{'text'};
                 $text =~ s/^\s*//;
                 my $char = substr($text, 0, 1);
-                $self->line_warn(sprintf($self->__("`.' or `,' must follow \@xref, not %s"), $char), $root->{'line_nr'});
+                $self->line_warn(sprintf($self->__(
+                            "`.' or `,' must follow \@xref, not %s"), 
+                                         $char), $root->{'line_nr'});
               } else {
-                $self->line_warn($self->__("`.' or `,' must follow \@xref"), $root->{'line_nr'});
+                $self->line_warn($self->__("`.' or `,' must follow \@xref"), 
+                                 $root->{'line_nr'});
               }
             }
             my @added = ({'text' => '.'});

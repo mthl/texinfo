@@ -1294,21 +1294,21 @@ $result_menus{'next_in_menu_is_below'}{'menu_child'}{'menu_up'} = $result_menus{
 
 $result_errors{'next_in_menu_is_below'} = [
   {
-    'error_line' => ':16: warning: Node `subsection\' is next for `section\' in menu but not in sectioning
+    'error_line' => ':16: warning: node `subsection\' is next for `section\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => 'Node `subsection\' is next for `section\' in menu but not in sectioning',
+    'text' => 'node `subsection\' is next for `section\' in menu but not in sectioning',
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: Node `section\' is prev for `subsection\' in menu but not in sectioning
+    'error_line' => ':23: warning: node `section\' is prev for `subsection\' in menu but not in sectioning
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
-    'text' => 'Node `section\' is prev for `subsection\' in menu but not in sectioning',
+    'text' => 'node `section\' is prev for `subsection\' in menu but not in sectioning',
     'type' => 'warning'
   }
 ];

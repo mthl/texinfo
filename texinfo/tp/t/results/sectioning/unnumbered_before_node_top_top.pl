@@ -326,12 +326,12 @@ $result_menus{'unnumbered_before_node_top_top'} = {
 
 $result_errors{'unnumbered_before_node_top_top'} = [
   {
-    'error_line' => ':6: Lowering the section level of @top appearing after a lower element
+    'error_line' => ':6: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Lowering the section level of @top appearing after a lower element',
+    'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'error'
   }
 ];

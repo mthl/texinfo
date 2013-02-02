@@ -502,12 +502,12 @@ $result_menus{'node_up_external_node'}{'menu_child'}{'menu_up'} = $result_menus{
 
 $result_errors{'node_up_external_node'} = [
   {
-    'error_line' => ':7: warning: For `first\', up in menu `Top\' and up `(manual3)\' don\'t match
+    'error_line' => ':7: warning: for `first\', up in menu `Top\' and up `(manual3)\' don\'t match
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'For `first\', up in menu `Top\' and up `(manual3)\' don\'t match',
+    'text' => 'for `first\', up in menu `Top\' and up `(manual3)\' don\'t match',
     'type' => 'warning'
   }
 ];

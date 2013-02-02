@@ -319,12 +319,12 @@ $result_errors{'setfilename_on_top_and_after_node'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Multiple @setfilename
+    'error_line' => ':4: warning: multiple @setfilename
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Multiple @setfilename',
+    'text' => 'multiple @setfilename',
     'type' => 'warning'
   },
   {

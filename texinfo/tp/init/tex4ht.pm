@@ -297,8 +297,9 @@ sub tex4ht_process_command($$) {
   }
   if ($got_count != $commands{$command}->{'counter'}) {
     $self->document_warn(sprintf($self->__(
-       "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"), 
-                                  $got_count, $commands{$command}->{'counter'}));
+       "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document for \@%s"), 
+                                 $got_count, $commands{$command}->{'counter'},
+                                 $command));
   }
   close (TEX4HT_HTMLFILE);
   return 0;
@@ -312,8 +313,8 @@ sub tex4ht_do_tex($$$$)
   # return the resulting html 
   if (exists ($commands{$cmdname}->{'results'}->{$command})
       and defined($commands{$cmdname}->{'results'}->{$command})) {
-     $commands{$cmdname}->{'output_counter'}++;
-     return $commands{$cmdname}->{'results'}->{$command};
+    $commands{$cmdname}->{'output_counter'}++;
+    return $commands{$cmdname}->{'results'}->{$command};
   } else {
     $self->document_warn(sprintf($self->__(
                        "tex4ht.pm: output has no HTML item for \@%s %s"),
@@ -325,11 +326,15 @@ sub tex4ht_do_tex($$$$)
 sub tex4ht_finish($)
 {
   my $self = shift;
-  my $tex4ht_in_counter = 0;
+  # this is different from the warning in tex4ht_process_command as, here,
+  # this is the number of retrieved fragment, not processed fragment.
   if ($self->get_conf('VERBOSE')) {
     foreach my $command (keys(%commands)) {
       if ($commands{$command}->{'output_counter'} != $commands{$command}->{'counter'}) {
-        $self->document_warn("tex4ht_finish: \@$command output counter $commands{$command}->{'output_counter'}, counter $commands{$command}->{'counter'}");
+        $self->document_warn(sprintf($self->__(
+           "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of items found in the document for \@%s"), 
+                                  $commands{$command}->{'output_counter'}, 
+                                  $commands{$command}->{'counter'}, $command));
       }
     }
   }

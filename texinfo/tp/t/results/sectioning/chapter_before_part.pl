@@ -185,12 +185,12 @@ $result_sectioning{'chapter_before_part'}{'section_childs'}[1]{'section_up'} = $
 
 $result_errors{'chapter_before_part'} = [
   {
-    'error_line' => ':3: warning: No sectioning command associated with @part
+    'error_line' => ':3: warning: no sectioning command associated with @part
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No sectioning command associated with @part',
+    'text' => 'no sectioning command associated with @part',
     'type' => 'warning'
   }
 ];

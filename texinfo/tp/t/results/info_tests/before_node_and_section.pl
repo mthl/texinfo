@@ -1167,12 +1167,12 @@ $result_menus{'before_node_and_section'}{'menu_child'}{'menu_up'} = $result_menu
 
 $result_errors{'before_node_and_section'} = [
   {
-    'error_line' => ':3: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':3: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
@@ -1268,9 +1268,9 @@ $result_converted_errors{'info'}->{'before_node_and_section'} = [
   },
   {
     'file_name' => '',
-    'error_line' => ':3: warning: Entry for index `cp\' outside of any node
+    'error_line' => ':3: warning: entry for index `cp\' outside of any node
 ',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 3

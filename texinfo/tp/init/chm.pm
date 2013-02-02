@@ -344,7 +344,7 @@ sub chm_init($)
   my $hhp_fh = Texinfo::Common::open_out($self, $hhp_file);
   # Not sure $! is still valid
   if (!defined($hhp_fh)) {
-    $self->document_error(sprintf($self->__("chm.pm:%s: could not open %s for writing: %s\n"), 
+    $self->document_error(sprintf($self->__("chm.pm: could not open %s for writing: %s\n"), 
                   $hhp_file, $!));
     return 0;
   }

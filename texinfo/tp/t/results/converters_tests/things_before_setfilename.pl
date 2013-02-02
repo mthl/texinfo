@@ -1704,21 +1704,21 @@ $result_errors{'things_before_setfilename'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => 'things_before_setfilename.texi:38: warning: Entry for index `cp\' outside of any node
+    'error_line' => 'things_before_setfilename.texi:38: warning: entry for index `cp\' outside of any node
 ',
     'file_name' => 'things_before_setfilename.texi',
     'line_nr' => 38,
     'macro' => '',
-    'text' => 'Entry for index `cp\' outside of any node',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
-    'error_line' => 'things_before_setfilename.texi:40: warning: Printindex before document beginning: @printindex cp
+    'error_line' => 'things_before_setfilename.texi:40: warning: printindex before document beginning: @printindex cp
 ',
     'file_name' => 'things_before_setfilename.texi',
     'line_nr' => 40,
     'macro' => '',
-    'text' => 'Printindex before document beginning: @printindex cp',
+    'text' => 'printindex before document beginning: @printindex cp',
     'type' => 'warning'
   }
 ];

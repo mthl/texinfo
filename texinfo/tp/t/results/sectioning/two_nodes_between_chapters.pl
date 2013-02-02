@@ -1049,12 +1049,12 @@ $result_menus{'two_nodes_between_chapters'}{'menu_child'}{'menu_up'} = $result_m
 
 $result_errors{'two_nodes_between_chapters'} = [
   {
-    'error_line' => ':15: warning: Node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ
+    'error_line' => ':15: warning: node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'Node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ',
+    'text' => 'node prev `chapter 2\' in menu `node between chapters\' and in sectioning `chapter 1\' differ',
     'type' => 'warning'
   }
 ];

@@ -388,7 +388,7 @@ sub set_conf($$$)
     warn "BUG: unknown option $conf\n";
     return undef;
   } elsif (Texinfo::Common::obsolete_option($conf)) {
-    warn (sprintf(main::__("Obsolete variable %s\n"), $conf));
+    warn(sprintf(main::__("Obsolete variable %s\n"), $conf));
   }
   if ($self->{'set'}->{$conf}) {
     return 0;
@@ -407,7 +407,7 @@ sub force_conf($$$)
     warn "BUG: unknown option $conf\n";
     return undef;
   } elsif (Texinfo::Common::obsolete_option($conf)) {
-    warn (sprintf(main::__("Obsolete variable %s\n"), $conf));
+    warn(sprintf(main::__("Obsolete variable %s\n"), $conf));
   }
   $self->{'conf'}->{$conf} = $value;
   return 1;

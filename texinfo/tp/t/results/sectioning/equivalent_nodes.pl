@@ -517,12 +517,12 @@ $result_errors{'equivalent_nodes'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: Menu entry node name `@strong{node}\' different from node name `@samp{node}\'
+    'error_line' => ':4: warning: menu entry node name `@strong{node}\' different from node name `@samp{node}\'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'Menu entry node name `@strong{node}\' different from node name `@samp{node}\'',
+    'text' => 'menu entry node name `@strong{node}\' different from node name `@samp{node}\'',
     'type' => 'warning'
   },
   {

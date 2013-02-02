@@ -895,7 +895,9 @@ sub _convert($$;$)
                .'</literallayout></textobject>';
           }
           if (!defined($image_text) and !$image_file_found) {
-            $self->line_warn(sprintf($self->__("\@image file `%s' not found, using `%s'"), $basefile, "$basefile.jpg"), $root->{'line_nr'});
+            $self->line_warn(sprintf(
+                     $self->__("\@image file `%s' not found, using `%s'"), 
+                       $basefile, "$basefile.jpg"), $root->{'line_nr'});
           }
 
           if ($is_inline) {

@@ -489,8 +489,9 @@ sub l2h_init_from_html($)
         $h_content = $h_content.$h_line;
       }
       unless ($h_end_found) { 
-        # couldn't found the closing comment. Certainly  a bug.
-        warn ("l2h: l2h_end $l2h_name $count not found\n");
+        # couldn't found the closing comment. Should be a bug.
+        $self->document_warn(sprintf(__("latex2html.pm: end of \@%s item %d not found"),
+                                      $l2h_name, $count));
         close(L2H_HTML);
         return 0;
       }
@@ -499,7 +500,9 @@ sub l2h_init_from_html($)
 
   # Not the same number of converted elements and retrieved elements
   if ($latex_converted_count != $html_converted_count) {
-    warn ("l2h: waiting for $latex_converted_count elements found $html_converted_count\n");
+    $self->document_warn(sprintf($self->__(
+      "latex2html.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"),       
+                          $html_converted_count, $latex_converted_count));
   }
 
   warn "# l2h: Got $html_converted_count of $latex_count html contents\n"
@@ -527,14 +530,16 @@ sub l2h_do_tex($$)
   if (!defined($count)) {
     # counter is undefined
     $invalid_counter_count++;
-    warn ("l2h: undefined count for ${cmdname}_$counter\n");
+    $self->document_warn(
+           sprintf($self->__("l2h: could not determine the fragment %d for \@%s",
+                   $counter, $cmdname)));
     return ("<!-- l2h: ". __LINE__ . " undef count for ${cmdname}_$counter -->")
       if ($debug);
     return '';
   } elsif(($count <= 0) or ($count > $latex_count)) {
     # counter out of range
     $invalid_counter_count++;
-    warn ("l2h: Request of $count content which is out of valide range [0,$latex_count)\n");
+    $self->_bug_message("l2h: request of $count out of range [0,$latex_count]");
     return ("<!-- l2h: ". __LINE__ . " out of range count $count -->") 
       if ($debug);
     return '';
@@ -551,7 +556,9 @@ sub l2h_do_tex($$)
   } else {
     # if the result is not in @l2h_from_html, there is an error somewhere.
     $extract_error_count++;
-    warn ("l2h: can't extract content $count from html\n");
+    $self->document_warn(sprintf($self->__(
+       "l2h: could not extract the fragment %d for \@%s with output counter %d from HTML"), 
+                   $counter, $cmdname, $count));
     # try simple (ordinary) substitution (without l2h)
     $result .= "<!-- l2h: ". __LINE__ . " use default -->" if ($debug);
     $result .= &{$self->default_commands_conversion($cmdname)}($self, 

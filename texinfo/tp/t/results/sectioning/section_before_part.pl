@@ -194,21 +194,21 @@ $result_sectioning{'section_before_part'}{'section_childs'}[1]{'section_up'} = $
 
 $result_errors{'section_before_part'} = [
   {
-    'error_line' => ':3: warning: No chapter-level command before @part
+    'error_line' => ':3: warning: no chapter-level command before @part
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No chapter-level command before @part',
+    'text' => 'no chapter-level command before @part',
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: No sectioning command associated with @part
+    'error_line' => ':3: warning: no sectioning command associated with @part
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'No sectioning command associated with @part',
+    'text' => 'no sectioning command associated with @part',
     'type' => 'warning'
   }
 ];

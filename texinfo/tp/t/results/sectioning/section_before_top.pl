@@ -568,12 +568,12 @@ $result_menus{'section_before_top'}{'menu_child'}{'menu_up'} = $result_menus{'se
 
 $result_errors{'section_before_top'} = [
   {
-    'error_line' => ':5: Lowering the section level of @top appearing after a lower element
+    'error_line' => ':5: lowering the section level of @top appearing after a lower element
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Lowering the section level of @top appearing after a lower element',
+    'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'error'
   }
 ];

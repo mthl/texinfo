@@ -627,12 +627,12 @@ $result_menus{'non_automatic_top_node_up_url'}{'menu_child'}{'menu_up'} = $resul
 
 $result_errors{'non_automatic_top_node_up_url'} = [
   {
-    'error_line' => ':8: warning: For `first\', up in menu `Top\' and up `(dir)\' don\'t match
+    'error_line' => ':8: warning: for `first\', up in menu `Top\' and up `(dir)\' don\'t match
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'For `first\', up in menu `Top\' and up `(dir)\' don\'t match',
+    'text' => 'for `first\', up in menu `Top\' and up `(dir)\' don\'t match',
     'type' => 'warning'
   }
 ];

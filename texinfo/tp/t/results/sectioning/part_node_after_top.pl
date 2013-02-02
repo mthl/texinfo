@@ -549,12 +549,12 @@ $result_errors{'part_node_after_top'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: No sectioning command associated with @part
+    'error_line' => ':9: warning: no sectioning command associated with @part
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'No sectioning command associated with @part',
+    'text' => 'no sectioning command associated with @part',
     'type' => 'warning'
   }
 ];

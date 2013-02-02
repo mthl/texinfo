@@ -107,9 +107,9 @@ $result_converted{'plaintext'}->{'image_extension'} = '[f---ile]';
 $result_converted_errors{'plaintext'}->{'image_extension'} = [
   {
     'file_name' => '',
-    'error_line' => ':1: warning: Cannot find @image file `f---ile.txt\' nor alternate text
+    'error_line' => ':1: warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f---ile.txt\' nor alternate text',
+    'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 1
@@ -174,9 +174,9 @@ $result_converted_errors{'info'}->{'image_extension'} = [
   },
   {
     'file_name' => '',
-    'error_line' => ':1: warning: Cannot find @image file `f---ile.txt\' nor alternate text
+    'error_line' => ':1: warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
-    'text' => 'Cannot find @image file `f---ile.txt\' nor alternate text',
+    'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 1

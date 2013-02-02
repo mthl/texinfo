@@ -1674,7 +1674,9 @@ sub _convert_image_command($$$$)
         $image_file = "$basefile.jpg";
       }
       #cluck "err ($self->{'ignore_notice'})";
-      $self->line_warn(sprintf($self->__("\@image file `%s' (for HTML) not found, using `%s'"), $basefile, $image_file), $command->{'line_nr'});
+      $self->line_warn(sprintf(
+              $self->__("\@image file `%s' (for HTML) not found, using `%s'"), 
+                               $basefile, $image_file), $command->{'line_nr'});
     }
     if (defined($self->get_conf('IMAGE_LINK_PREFIX'))) {
       $image_file = $self->get_conf('IMAGE_LINK_PREFIX') . $image_file;
@@ -2342,8 +2344,8 @@ sub _convert_raw_command($$$$)
     chomp ($content);
     return $content;
   }
-  $self->line_warn(sprintf($self->__("Raw format %s is not converted"), $cmdname),
-                   $command->{'line_nr'});
+  $self->line_warn(sprintf($self->__("raw format %s is not converted"), 
+                           $cmdname), $command->{'line_nr'});
   return $self->protect_text($content);
 }
 
@@ -4811,12 +4813,12 @@ sub _process_css_file($$$)
   #file_line_warn (__("string not closed in css file"), $file) if ($in_string);
   #file_line_warn (__("--css-file ended in comment"), $file) if ($in_comment);
   #file_line_warn (__("\@import not finished in css file"), $file)  if ($in_import and !$in_comment and !$in_string);
-  warn(sprintf($self->__("%s:%d: string not closed in css file"), 
-                $file, $line_nr)) if ($in_string);
-  warn(sprintf($self->__("%s:%d: --css-include ended in comment"), 
-                $file, $line_nr)) if ($in_comment);
-  warn(sprintf($self->__("%s:%d: \@import not finished in css file"), 
-        $file, $line_nr)) 
+  $self->file_line_warn(sprintf($self->__("string not closed in css file"), 
+                        $file, $line_nr)) if ($in_string);
+  $self->file_line_warn(sprintf($self->__("--css-include ended in comment"), 
+                        $file, $line_nr)) if ($in_comment);
+  $self->file_line_warn(sprintf($self->__("\@import not finished in css file"), 
+                        $file, $line_nr)) 
     if ($in_import and !$in_comment and !$in_string);
   return ($imports, $rules);
 }
@@ -7165,9 +7167,9 @@ sub _parse_node_and_warn_external($$$$$)
           $node_tree);
     my $line_nr = {'line_nr' => $line_number, 'file_name' => $file };
     if (!$node_normalized_result) {
-      $self->line_warn($self->__('Empty node name'), $line_nr);
+      $self->line_warn($self->__('empty node name'), $line_nr);
     } elsif ($node_normalized_result->{'manual_content'}) {
-      $self->line_error (sprintf($self->__("Syntax for an external node used for `%s'"),
+      $self->line_error(sprintf($self->__("syntax for an external node used for `%s'"),
          $node_texi), $line_nr);
 
     } else {
