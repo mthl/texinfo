@@ -33,6 +33,8 @@ use Config;
 use File::Basename;
 #use Cwd;
 use Getopt::Long qw(GetOptions);
+# for carp
+#use Carp;
 
 Getopt::Long::Configure("gnu_getopt");
 
@@ -355,6 +357,8 @@ foreach my $texinfo_config_dir (@language_config_dirs) {
 {
 package Texinfo::Config;
 
+#use Carp;
+
 # passed from main program
 my $cmdline_options;
 my $default_options;
@@ -377,14 +381,20 @@ sub _load_init_file($) {
   }
 }
 
+# FIXME: maybe use an opaque return status that can be used to retrieve
+# an error message?
 sub set_from_init_file($$) {
   my $var = shift;
   my $value = shift;
   if (!Texinfo::Common::valid_option($var)) {
-    warn(sprintf(main::__("Unknown variable %s\n"), $var));
+    # carp may be better, but infortunately, it points to the routine that 
+    # loads the file, and not to the init file.
+    main::document_warn(sprintf(main::__("%s: unknown variable %s"), 
+                                'set_from_init_file', $var));
     return 0;
   } elsif (Texinfo::Common::obsolete_option($var)) {
-    warn(sprintf(main::__("Obsolete variable %s\n"), $var));
+    main::document_warn(sprintf(main::__("%s: obsolete variable %s\n"), 
+                                  'set_from_init_file', $var));
   }
   return 0 if (defined($cmdline_options->{$var}));
   delete $default_options->{$var};
@@ -398,10 +408,12 @@ sub set_from_cmdline($$) {
   delete $options->{$var};
   delete $default_options->{$var};
   if (!Texinfo::Common::valid_option($var)) {
-    warn(sprintf(main::__("Unknown variable %s\n"), $var));
+    main::document_warn(sprintf(main::__("%s: unknown variable %s\n"), 
+                                'set_from_cmdline', $var));
     return 0;
   } elsif (Texinfo::Common::obsolete_option($var)) {
-    warn(sprintf(main::__("Obsolete variable %s\n"), $var));
+    main::document_warn(sprintf(main::__("obsolete variable %s\n"), 
+                                'set_from_cmdline', $var));
   }
   $cmdline_options->{$var} = $value;
   return 1;
@@ -1210,7 +1222,8 @@ while(@input_files) {
     my ($modified_contents, $added_nodes)
      = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
     if (!defined($modified_contents)) {
-      document_warn(__("insert_nodes_for_sectioning_commands transformation return no result. No section?"));
+      document_warn(__(
+       "insert_nodes_for_sectioning_commands transformation return no result. No section?"));
     } else {
       $tree->{'contents'} = $modified_contents;
     }
