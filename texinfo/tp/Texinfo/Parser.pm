@@ -1587,7 +1587,7 @@ sub _close_command_cleanup($$$) {
               }
             }
             if ($empty_format) {
-              $self->line_warn (sprintf($self->__("\@%s has text but no \@item"),
+              $self->line_warn(sprintf($self->__("\@%s has text but no \@item"),
                                         $current->{'cmdname'}), $current->{'line_nr'});                       
             }
           }
@@ -1742,7 +1742,7 @@ sub _close_commands($$$;$$)
     #$self->_close_command_cleanup($current);
     $current = $current->{'parent'};
   } elsif ($closed_command) {
-    $self->line_error (sprintf($self->__("Unmatched `%c%s'"), 
+    $self->line_error(sprintf($self->__("Unmatched `%c%s'"), 
                        ord('@'), "end $closed_command"), $line_nr);
   }
   return ($closed_element, $current);
@@ -1972,8 +1972,9 @@ sub _expand_macro_arguments($$$$)
           } else {
             # implicit quoting when there is one argument.
             if ($args_total != 1) {
-              $self->line_error (sprintf($self->__("Macro `%s' called with too many args"), 
-                                $name), $line_nr);
+              $self->line_error(sprintf($self->__(
+                                     "Macro `%s' called with too many args"), 
+                                        $name), $line_nr);
             }
             $arguments->[-1] .= ',';
           }
@@ -1994,14 +1995,14 @@ sub _expand_macro_arguments($$$$)
 
       ($line, $line_nr) = _new_line($self, $line_nr, $macro);
       if (!defined($line)) {
-        $self->line_error (sprintf($self->__("\@%s missing close brace"), 
+        $self->line_error(sprintf($self->__("\@%s missing close brace"), 
            $name), $line_nr_orig);
         return ($arguments, "\n", $line_nr);
       }
     }
   }
   if ($args_total == 0 and $arguments->[0] =~ /\S/) {
-    $self->line_error (sprintf($self->__("Macro `%s' declared without argument called with an argument"), 
+    $self->line_error(sprintf($self->__("Macro `%s' declared without argument called with an argument"), 
                                 $name), $line_nr);
   }
   print STDERR "END MACRO ARGS EXPANSION(".scalar(@$arguments)."): ".
@@ -2035,7 +2036,8 @@ sub _expand_macro_body($$$$) {
         if (defined($args_index->{$arg})) {
           $result .= $args->[$args_index->{$arg}];
         } else {
-          $self->line_error (sprintf($self->__("\\ in \@%s expansion followed `%s' instead of parameter name or \\"), 
+          $self->line_error(sprintf($self->__(
+         "\\ in \@%s expansion followed `%s' instead of parameter name or \\"), 
                              $macro->{'args'}->[0]->{'text'}, $arg), $line_nr);
           $result .= '\\' . $arg;
         }
@@ -2502,8 +2504,8 @@ sub _enter_index_entry($$$$$$$)
   } elsif ($self->{'current_node'}) {
     $index_entry->{'node'} = $self->{'current_node'};
   } elsif (!$self->{'current_section'}) {
-    $self->line_warn (sprintf($self->__("Entry for index `%s' outside of any node"), 
-                               $index_name), $line_nr);
+    $self->line_warn(sprintf($self->__("Entry for index `%s' outside of any node"), 
+                             $index_name), $line_nr);
   }
   #print STDERR "INDEX ENTRY \@$command->{'cmdname'} $index_name($number)\n";
   unless (_ignore_global_commands($self)) {
