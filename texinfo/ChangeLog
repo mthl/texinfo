@@ -1,12 +1,14 @@
+2013-02-03  Karl Berry  <karl@gnu.org>
+
+	* po_document/pl.po: new translation.
+	* po_document/LINGUAS: add it.
+
 2013-02-01  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (@normalturnoffactive): also reset -, so
 	@code{@xref{-}} works.
 	(\normaldash): rename from \realdash, for consistency.
 	Change all uses.
-
-	* Pod-Simple-Texinfo/pod2texi.pl (preamble): null if making
-	@include files.  More doc.
 
 2013-01-29  Karl Berry  <karl@gnu.org>
 
