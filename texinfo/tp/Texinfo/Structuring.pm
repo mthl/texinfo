@@ -1626,9 +1626,27 @@ sub complete_node_menu($$)
   my $node = shift;
 
   my @node_childs;
-  foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'section_childs'}}) {
-    if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
-      push @node_childs, $child->{'extra'}->{'associated_node'};
+  if ($node->{'extra'}->{'associated_section'}->{'section_childs'}) {
+    foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'section_childs'}}) {
+      if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
+        push @node_childs, $child->{'extra'}->{'associated_node'};
+      }
+    }
+  }
+  # Special case for @top.  Gather all the children of the @part following
+  # @top.
+  if ($node->{'extra'}->{'associated_section'}->{'cmdname'} eq 'top') {
+    my $current = $node->{'extra'}->{'associated_section'};
+    while ($current->{'section_next'}) {
+      $current = $current->{'section_next'};
+      if ($current->{'cmdname'} and $current->{'cmdname'} eq 'part'
+          and $current->{'section_childs'}) {
+        foreach my $child (@{$current->{'section_childs'}}) {
+          if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
+            push @node_childs, $child->{'extra'}->{'associated_node'};
+          }
+        }
+      }
     }
   }
   if (scalar(@node_childs)) {
@@ -1711,9 +1729,7 @@ sub complete_tree_nodes_menus($$)
     if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node'
         and (scalar(@{$content->{'extra'}->{'nodes_manuals'}}) == 1)
         and $content->{'extra'} 
-        and $content->{'extra'}->{'associated_section'}
-        and $content->{'extra'}->{'associated_section'}->{'section_childs'}
-        and scalar(@{$content->{'extra'}->{'associated_section'}->{'section_childs'}})) {
+        and $content->{'extra'}->{'associated_section'}) {
       complete_node_menu($self, $content);
     }
   }
