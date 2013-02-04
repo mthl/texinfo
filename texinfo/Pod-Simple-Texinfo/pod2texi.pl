@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: pod2texi.pl,v 1.27 2013-02-04 10:36:15 pertusus Exp $
+# $Id: pod2texi.pl,v 1.28 2013-02-04 12:48:59 pertusus Exp $
 # pod2texi -- convert Pod to Texinfo.
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -312,6 +312,8 @@ sub _do_top_node_menu($)
   my $top_node_menu = $labels->{'Top'}->{'menus'}->[0];
   if ($top_node_menu) {
     return Texinfo::Convert::Texinfo::convert($top_node_menu);
+  } else {
+    return '';
   }
 }
 
@@ -462,6 +464,7 @@ if ($base_level > 0) {
   
   print $fh $preamble;
   if ($section_nodes) {
+    #print STDERR "\@node Top\n\@top top\n".$full_manual;
     my $menu = _do_top_node_menu("\@node Top\n\@top top\n".$full_manual);
     print $fh $menu."\n";
   }
