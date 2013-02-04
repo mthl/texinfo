@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.536 2013-01-30 01:35:41 karl Exp $
+@c $Id: texinfo.txi,v 1.537 2013-02-04 01:34:48 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -61,11 +61,12 @@ developing GNU and promoting software freedom.''
 @direntry
 * Texinfo: (texinfo).           The GNU documentation format.
 * install-info: (texinfo)Invoking install-info. Update info/dir entries.
+* makeinfo: (texinfo)Invoking makeinfo.         Translate Texinfo source.
+* pod2texi: (pod2texi)Invoking pod2texi.        Translate Perl POD to Texinfo.
 * texi2dvi: (texinfo)Format with texi2dvi.      Print Texinfo documents.
 * texi2pdf: (texinfo)PDF Output.                PDF output for Texinfo.
 * pdftexi2dvi: (texinfo)PDF Output.             PDF output for Texinfo.
 * texindex: (texinfo)Format with tex/texindex.  Sort Texinfo index files.
-* makeinfo: (texinfo)Invoking makeinfo.         Translate Texinfo source.
 @end direntry
 
 @c Before release, run C-u C-c C-u C-a (texinfo-all-menus-update with a
@@ -600,6 +601,7 @@ Formatting and Printing Hardcopy
 * Pointer Validation::          How to check that pointers point somewhere.
 * Customization Variables::     Configuring @command{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
+* Invoking @t{pod2texi}::           Translating Perl pod to Texinfo.
 * @t{texi2html}::                   An ancestor of @command{texi2any}.
 
 Customization Variables
@@ -16742,12 +16744,13 @@ The rest of this chapter goes into the details.
 * Pointer Validation::          How to check that pointers point somewhere.
 * Customization Variables::     Configuring @command{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
+* Invoking @t{pod2texi}::           Translating Perl pod to Texinfo.
 * @t{texi2html}::                   An ancestor of @command{texi2any}.
 @end menu
 
 
 @node Reference Implementation
-@section @command{texi2any}: A Reference Implementation
+@section @command{texi2any}: A Texinfo Reference Implementation
 
 @cindex @command{texi2any}, as reference implementation
 @cindex Reference implementation
@@ -18364,6 +18367,28 @@ format, while nevertheless with rich formatting it may be translated
 appropriately in many languages.
 
 
+@node Invoking @t{pod2texi}
+@section Invoking @t{pod2texi}: 
+
+@pindex pod2texi
+@cindex Invoking @code{pod2texi}
+@cindex POD, converting to Texinfo
+@cindex Perl POD, converting to Texinfo
+
+The @code{pod2texi} program translates Perl pod documentation file(s)
+to Texinfo.  There are two basic modes of operation: generating a
+standalone manual from each input pod, or generating Texinfo subfiles
+suitable for use @code{@@include}.
+turn within a hand-written top-level file.
+
+Although ordinarily this documentation in the Texinfo manual would be
+the best place to look, in this case we have documented all the
+options and examples in the @code{pod2texi} program itself, since it
+may be useful outside of the rest of Texinfo.  Thus, please see the
+output of @code{pod2texi --help}, the version on the web at
+@url{http://www.gnu.org/software/texinfo/manual/pod2texi.html}, etc.
+
+
 @node @t{texi2html}
 @section @code{texi2html}: Ancestor of @code{texi2any}
 
@@ -18377,9 +18402,9 @@ independently, originally by Lionel Cons in 1998; at the time,
 contributed to @command{texi2html} over the years.
 
 The present @command{texi2any} uses little of the actual code of
-@command{texi2html}, and has quite a different general approach to the
-implementation (parsing the Texinfo document into a tree), but still,
-there is a family resemblance.
+@command{texi2html}, and has quite a different basic approach to the
+implementation (namely, parsing the Texinfo document into a tree), but
+still, there is a family resemblance.
 
 By design, @command{texi2any} supports nearly all the features of
 @command{texi2html} in some way.  However, we did not attempt to
@@ -22076,7 +22101,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.536 2013-01-30 01:35:41 karl Exp $
+$Id: texinfo.txi,v 1.537 2013-02-04 01:34:48 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,

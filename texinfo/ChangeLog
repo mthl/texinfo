@@ -1,5 +1,18 @@
 2013-02-03  Karl Berry  <karl@gnu.org>
 
+	* contrib/perldoc-all: example making Texinfo from Perl's *.pod.
+	* util/dir-example (Perl): add it.
+	* util/gendocs.sh: add --source, --common, --split --no-ascii.
+	Prettify output.
+	* doc/Makefile.am (gendocs): use the version from our
+	source hierarchy, since it's maintained here.
+
+	* Pod-Simple-Texinfo/pod2texi.pl (preamble): null if making
+	@include files.  More doc.
+	* doc/texinfo.txi (Invoking pod2texi): new node.
+
+2013-02-03  Karl Berry  <karl@gnu.org>
+
 	* tp/Makefile.am: doc fix.
 	* tp/maintain/regenerate_docstr.sh: do not depend on directories
 	with their unpredictable timestamps.
