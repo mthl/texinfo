@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: pod2texi.pl,v 1.26 2013-02-04 09:35:19 pertusus Exp $
+# $Id: pod2texi.pl,v 1.27 2013-02-04 10:36:15 pertusus Exp $
 # pod2texi -- convert Pod to Texinfo.
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -161,7 +161,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      } elsif (defined($Texinfo::Common::command_structuring_level{$_[1]})) {
        $base_level = $Texinfo::Common::command_structuring_level{$_[1]};
      } else {
-       die sprintf(__("%s: wrong argument for --base-level.\n"), 
+       die sprintf(__("%s: wrong argument for --base-level\n"), 
                    $real_command_name);
      }
    },
@@ -180,8 +180,8 @@ exit 1 if (!$result_options);
 if (defined($subdir)) {
   if (! -d $subdir) {
     if (!mkdir($subdir)) {
-      die sprintf(__("%s: Can't create directory %s"), 
-                  $real_command_name, $subdir);
+      die sprintf(__("%s: could not create directory %s: %s"), 
+                  $real_command_name, $subdir, $!);
     }
   }
 }
@@ -195,8 +195,8 @@ my @input_files = @ARGV;
 
 # use STDIN if not a tty, like makeinfo does
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
-die sprintf(__("%s: missing file argument.\n"), $real_command_name)
-   .sprintf(__("Try `%s --help' for more information.\n"), $real_command_name)
+die sprintf(__("%s: missing file argument;\n"), $real_command_name)
+   .sprintf(__("try `%s --help' for more information\n"), $real_command_name)
      unless (scalar(@input_files) >= 1);
 
 my @processed_files;
@@ -244,6 +244,8 @@ sub _fix_texinfo_tree($$$$;$)
     my ($added_sections, $added_nodes);
     ($tree->{'contents'}, $added_sections)
       = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+    # there should already be nodes associated with other sections.  Therefore
+    # new nodes should only be created for the $added_sections.
     if ($section_nodes) {
       ($tree->{'contents'}, $added_nodes)
         = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
@@ -314,7 +316,7 @@ sub _do_top_node_menu($)
 }
 
 my $file_nr = 0;
-# Full manual is collected to generate the top node menu.
+# Full manual is collected to generate the top node menu, if $section_nodes
 my $full_manual = '';
 my @included;
 foreach my $file (@processed_files) {
@@ -350,7 +352,7 @@ foreach my $file (@processed_files) {
   if ($outfile eq '-') {
     $fh = *STDOUT;
   } else {
-    open (OUT, ">$outfile") or die sprintf(__("%s: Open %s: %s.\n"), 
+    open (OUT, ">$outfile") or die sprintf(__("%s: could not open %s for writing: %s\n"), 
                                           $real_command_name, $outfile, $!);
     $fh = *OUT;
   }
@@ -376,7 +378,7 @@ foreach my $file (@processed_files) {
   if ($section_nodes or $fill_sectioning_gaps) {
     if ($debug > 4) {
       # print to a file
-      open (DBGFILE, ">$outfile-dbg") or die sprintf(__("%s: Open %s: %s.\n"), 
+      open (DBGFILE, ">$outfile-dbg") or die sprintf(__("%s: could not open %s: %s\n"), 
                                       $real_command_name, "$outfile-dbg", $!);
       binmode(DBGFILE, ':encoding(utf8)');
       print DBGFILE $manual_texi;
@@ -389,13 +391,13 @@ foreach my $file (@processed_files) {
   print $fh $manual_texi;
 
   if ($outfile ne '-') {
-    close($fh) or die sprintf (__("%s: Close %s: %s.\n"), 
+    close($fh) or die sprintf(__("%s: error on closing %s: %s\n"), 
                                $real_command_name, $outfile, $!);
   }
 
   if ($base_level > 0) {
     if (!$new->content_seen) {
-      # this should only happen for input coming for pipe or the like
+      # this should only happen for input coming from pipe or the like
       warn sprintf(__("%s: removing %s as input file %s has no content\n"),
                    $real_command_name, $outfile, $file);
       unlink ($outfile);
@@ -413,7 +415,7 @@ foreach my $file (@processed_files) {
            if (defined($subdir));
         if ($new_outfile ne $outfile) {
           unless (rename ($outfile, $new_outfile)) {
-            die sprintf(__("%s: Rename %s failed: %s\n"), 
+            die sprintf(__("%s: rename %s failed: %s\n"), 
                         $real_command_name, $outfile, $!);
           }
         }
@@ -427,7 +429,7 @@ foreach my $file (@processed_files) {
 if ($base_level > 0) {
   my $fh;
   if ($output ne '-') {
-    open (OUT, ">$output") or die sprintf(__("%s: Open %s: %s.\n"), 
+    open (OUT, ">$output") or die sprintf(__("%s: could not open %s for writing: %s\n"), 
                                           $real_command_name, $output, $!);
     $fh = *OUT;
   } else {
@@ -446,7 +448,7 @@ if ($base_level > 0) {
   if (! defined ($preamble)) {
     $preamble = ($base_level > 0) ? ""
                 : '\input texinfo
-@setfilename ' . Pod::Simple::Texinfo::_protect_text ($outfile_name) . "
+@setfilename ' . Pod::Simple::Texinfo::_protect_text($outfile_name) . "
 \@documentencoding utf-8
 \@settitle $top
 
@@ -465,18 +467,18 @@ if ($base_level > 0) {
   }
   foreach my $include (@included) {
     my $file = $include->[1];
-    print $fh "\@include ".Pod::Simple::Texinfo::_protect_text ($file)."\n";
+    print $fh "\@include ".Pod::Simple::Texinfo::_protect_text($file)."\n";
   }
   print $fh "\n\@bye\n";
   
   if ($output ne '-') {
-    close($fh) or die sprintf (__("%s: Close %s: %s.\n"), 
+    close($fh) or die sprintf(__("%s: error on closing %s: %s\n"), 
                                $real_command_name, $output, $!);
   }
 }
 
 if (defined($output) and $output eq '-') {
-  close(STDOUT) or die sprintf (__("%s: Close stdout: %s.\n"), 
+  close(STDOUT) or die sprintf(__("%s: error on closing stdout: %s\n"), 
                                $real_command_name, $!);
 }
 
