@@ -1646,6 +1646,10 @@ sub complete_node_menu($$)
             push @node_childs, $child->{'extra'}->{'associated_node'};
           }
         }
+      } elsif ($current->{'extra'}->{'associated_node'}) {
+        # for @appendix, and what follows, as it stops a @part, but is 
+        # not below @top
+        push @node_childs, $current->{'extra'}->{'associated_node'};
       }
     }
   }
