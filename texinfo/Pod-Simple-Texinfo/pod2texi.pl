@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: pod2texi.pl,v 1.28 2013-02-04 12:48:59 pertusus Exp $
+# $Id: pod2texi.pl,v 1.29 2013-02-04 22:52:25 karl Exp $
 # pod2texi -- convert Pod to Texinfo.
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -568,8 +568,9 @@ an input pod file), then those include files are put in directory I<NAME>.
 
 =item B<--unnumbered-sections>
 
-Use unnumbered sectioning commands (@unnumbered...) instead of the default
-numbered sectioning Texinfo @-commands (@chapter, @section...).
+Use unnumbered sectioning commands (C<@unnumbered>, ...) instead of the
+default numbered sectioning Texinfo @-commands (C<@chapter>,
+C<@section>, ...).
 
 =item B<--top>=I<TOP>
 
