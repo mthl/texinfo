@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: pod2texi.pl,v 1.25 2013-02-04 01:35:13 karl Exp $
+# $Id: pod2texi.pl,v 1.26 2013-02-04 09:35:19 pertusus Exp $
 # pod2texi -- convert Pod to Texinfo.
 # Copyright 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -132,8 +132,8 @@ Options:
   --unnumbered-sections   use unumbered sections.
   --version               display version information and exit.
 
-Email bug reports to bug-texinfo@gnu.org,
-general questions and discussion to help-texinfo@gnu.org.
+Email bug reports to bug-texinfo\@gnu.org,
+general questions and discussion to help-texinfo\@gnu.org.
 Texinfo home page: http://www.gnu.org/software/texinfo/\n");
 }
 
