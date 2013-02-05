@@ -1,5 +1,7 @@
 2013-02-04  Karl Berry  <karl@gnu.org>
 
+	* pretest 4.13.95.
+
 	* contrib/perldoc-all/GNUmakefile (distclean): new target.
 	* Makefile.am (dist-hook): use it.
 
