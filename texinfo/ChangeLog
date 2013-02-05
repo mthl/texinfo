@@ -1,3 +1,8 @@
+2013-02-04  Karl Berry  <karl@gnu.org>
+
+	* contrib/perldoc-all/GNUmakefile (distclean): new target.
+	* Makefile.am (dist-hook): use it.
+
 2013-02-03  Karl Berry  <karl@gnu.org>
 
 	* contrib/perldoc-all: example making Texinfo from Perl's *.pod.

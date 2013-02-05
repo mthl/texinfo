@@ -1,4 +1,4 @@
-# $Id: GNUmakefile,v 1.1 2013-02-04 01:35:11 karl Exp $
+# $Id: GNUmakefile,v 1.2 2013-02-05 00:23:49 karl Exp $
 # Sample Makefile to build Texinfo from the Perl POD documentation,
 # using pod2texi.
 #
@@ -44,3 +44,9 @@ $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 	&& mv $(texi_pod_subdir) $@ ../..
 
 force:
+
+# when running make dist, ensure we have none of the build files.
+# (Since the whole contrib/ directory is included in its entirety.)
+distclean:
+	rm -rf manual perl-5.16.2 $(texi_pod_doc) $(texi_pod_doc_incl)
+	rm -rf *.?? *.??? *.info *~ \#*
