@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "POD2TEXI 1"
-.TH POD2TEXI 1 "2013-02-03" "perl v5.16.2" "User Contributed Perl Documentation"
+.TH POD2TEXI 1 "2013-02-04" "perl v5.16.2" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -144,8 +144,8 @@ Texinfo manual.
 .PP
 Second, if \f(CW\*(C`\-\-base\-level\*(C'\fR is set higher than 0, each pod is translated
 to a file suitable for \f(CW@include\fR, and one more file with all the
-\&\f(CW@include\fRs is generated, which is intended to be \f(CW@include\fR in turn
-within a hand-written top-level file.
+\&\f(CW@include\fRs is generated, intended to be \f(CW@include\fRd in turn within a
+hand-written top-level file.
 .SH "OPTIONS"
 .IX Header "OPTIONS"
 .IP "\fB\-\-base\-level\fR=\fINUM|NAME\fR" 4
@@ -196,8 +196,9 @@ If there is a main manual with include files (each corresponding to
 an input pod file), then those include files are put in directory \fI\s-1NAME\s0\fR.
 .IP "\fB\-\-unnumbered\-sections\fR" 4
 .IX Item "--unnumbered-sections"
-Use unnumbered sectioning commands (@unnumbered...) instead of the default
-numbered sectioning Texinfo @\-commands (@chapter, \f(CW@section\fR...).
+Use unnumbered sectioning commands (\f(CW@unnumbered\fR, ...) instead of the
+default numbered sectioning Texinfo @\-commands (\f(CW@chapter\fR,
+\&\f(CW@section\fR, ...).
 .IP "\fB\-\-top\fR=\fI\s-1TOP\s0\fR" 4
 .IX Item "--top=TOP"
 Name of the \f(CW@top\fR element for the main manual.  May contain Texinfo code.
@@ -207,6 +208,7 @@ Display version information and exit.
 .SH "SEE ALSO"
 .IX Header "SEE ALSO"
 Pod::Simple::Texinfo.  perlpod.  The Texinfo manual.
+Texinfo home page: <http://www.gnu.org/software/texinfo/>
 .SH "COPYRIGHT"
 .IX Header "COPYRIGHT"
 Copyright (C) 2013 Free Software Foundation, Inc.
@@ -219,4 +221,4 @@ or (at your option) any later version.
 There is \s-1NO\s0 \s-1WARRANTY\s0, to the extent permitted by law.
 .SH "AUTHOR"
 .IX Header "AUTHOR"
-Patrice Dumas <pertusus@free.fr>.
+Patrice Dumas <bug\-texinfo@gnu.org>.
