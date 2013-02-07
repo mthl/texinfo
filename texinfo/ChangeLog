@@ -1,5 +1,7 @@
 2013-02-07  Karl Berry  <karl@gnu.org>
 
+	* contrib/booklet.mak: new contribution from John Darrington.
+
 	* Pod-Simple-Texinfo/pod2texi.pl (preamble): back to inserting
 	the default.
 	* contrib/perldoc-all/GNUmakefile (pod2texi_args): omit it.
