@@ -148,8 +148,8 @@ sub output($)
                                   $self->{'output_file'}, $close_error));
             return undef;
           }
-          unless (rename ($self->{'output_file'}, 
-                          $self->{'output_file'}.'-'.$out_file_nr)) {
+          unless (rename($self->{'output_file'}, 
+                         $self->{'output_file'}.'-'.$out_file_nr)) {
             $self->document_error(sprintf($self->__("rename %s failed: %s"),
                                          $self->{'output_file'}, $!));
             return undef;
@@ -437,7 +437,7 @@ sub _image($$)
         last; 
       }
     }
-    my $text = $self->_image_text($root, $basefile);
+    my ($text, $width) = $self->_image_text($root, $basefile);
     my $text_result;
     if (defined($text)) {
       if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
@@ -471,10 +471,13 @@ sub _image($$)
       if ($self->{'formatters'}->[-1]->{'_top_formatter'}) {
         $result .= "\n";
       }
+      my $image_lines_count = ($result =~ tr/\n/\n/) +1;
+      $self->_add_image($root, $image_lines_count, $width, 1);
     } else {
       $result = $self->_image_formatted_text($root, $basefile, $text,
                                                 $text_result);
       $lines_count = ($result =~ tr/\n/\n/);
+      $self->_add_image($root, $lines_count+1, $width);
     }
     return ($result, $lines_count);
   }

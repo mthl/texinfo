@@ -593,6 +593,27 @@ T
 @item in item
 @end example
 '],
+# if this test is modified, the corresponding test in t/info_tests.t should
+# be changed too
+['multiline_image_and_align',
+'@center @image{figure}
+
+@center CCCC @image{figure} 
+
+@center fffffffffffffffffffffffffffffffffffffff @image{figure}
+
+@center dddd @image{figure} iiiii
+
+@flushright
+AAA
+@image{figure}
+
+BBB @image{figure} gggg @image{figure}
+
+HHH
+@image{figure} JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+@end flushright
+'],
 );
 
 my $insert_copying_and_paragraph = 
