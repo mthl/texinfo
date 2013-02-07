@@ -1,3 +1,9 @@
+2013-02-07  Karl Berry  <karl@gnu.org>
+
+	* Pod-Simple-Texinfo/pod2texi.pl (preamble): back to inserting
+	the default.
+	* contrib/perldoc-all/GNUmakefile (pod2texi_args): omit it.
+
 2013-02-04  Karl Berry  <karl@gnu.org>
 
 	* pretest 4.13.96.
