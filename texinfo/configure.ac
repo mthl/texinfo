@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.141 2013-02-05 00:49:28 karl Exp $
+# $Id: configure.ac,v 1.142 2013-02-09 21:24:21 pertusus Exp $
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 # 2012, 2013 Free Software Foundation, Inc.
@@ -69,6 +69,9 @@ AC_MSG_RESULT($perl_version_requirement)
 if test z"$perl_version_requirement" = 'zno' ; then
   AC_MSG_ERROR([perl >= 5.7.3 with Encode required by Texinfo.])
 fi
+
+AC_REQUIRE_AUX_FILE([tap-driver.sh])
+AC_PROG_AWK
 
 # Checks for programs.
 AC_PROG_CC
