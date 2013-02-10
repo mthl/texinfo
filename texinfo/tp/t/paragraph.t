@@ -1,7 +1,10 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 129 };
+use File::Spec;
+BEGIN { plan tests => 129;
+        if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} };
+
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;

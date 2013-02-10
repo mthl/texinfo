@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.60 2013-02-10 15:23:26 pertusus Exp $
+# $Id: Makefile.am,v 1.61 2013-02-10 16:45:05 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -172,6 +172,7 @@ T_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
                        $(top_srcdir)/build-aux/tap-driver.sh
 T_LOG_COMPILER = $(PERL)
 AM_T_LOG_FLAGS = -w
+AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir;
 
 maintenance_files = \
   maintain/all_tests.sh \

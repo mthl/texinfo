@@ -1,7 +1,9 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 25 };
+use File::Spec;
+BEGIN { plan tests => 25;
+        if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
