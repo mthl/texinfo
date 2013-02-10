@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.59 2013-02-10 15:14:11 pertusus Exp $
+# $Id: Makefile.am,v 1.60 2013-02-10 15:23:26 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -180,6 +180,7 @@ maintenance_files = \
   maintain/Makefile_perl_po \
   maintain/MANIFEST_generated_files \
   maintain/prepare_perl_module.sh \
+  maintain/regenerate_cmd_tests.sh \
   maintain/regenerate_converters_documentation.sh \
   maintain/regenerate_docstr.sh \
   maintain/regenerate_documentlanguages.pl \
