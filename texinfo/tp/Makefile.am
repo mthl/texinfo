@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.58 2013-02-09 21:24:21 pertusus Exp $
+# $Id: Makefile.am,v 1.59 2013-02-10 15:14:11 pertusus Exp $
 # Makefile.am for texinfo/tp.
 #
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
@@ -163,8 +163,8 @@ all-local: maintain/catalog.xml $(document_strings_mo_files) \
 tp_tests = prove.sh
 
 if TP_TESTS
-TESTS = $(tp_tests)
-#TESTS = $(test_tap_files_generated_list)
+#TESTS = $(tp_tests)
+TESTS = $(test_tap_files_generated_list)
 endif
 
 TEST_EXTENSIONS = .t

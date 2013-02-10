@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autogen.sh,v 1.12 2013-01-15 01:23:49 pertusus Exp $
+# $Id: autogen.sh,v 1.13 2013-02-10 15:14:11 pertusus Exp $
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then
@@ -18,6 +18,11 @@ $chicken eval $cmd || exit 1
 
 # Generates another include file for tp/Makefile.am.
 cmd="(cd tp && ./maintain/regenerate_docstr.sh Makefile.docstr)"
+echo "  $cmd"
+$chicken eval $cmd || exit 1
+
+# Generates an include file for tp/tests/Makefile.am.
+cmd="(cd tp/tests && ../maintain/regenerate_cmd_tests.sh Makefile.onetst -base 'formatting htmlxref htmlxref-only_mono htmlxref-only_split' -long 'sectioning coverage indices nested_formats contents layout' -tex_html 'tex_html')"
 echo "  $cmd"
 $chicken eval $cmd || exit 1
 
