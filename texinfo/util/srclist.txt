@@ -43,6 +43,7 @@ $GNULIBSRC/doc/INSTALL			./INSTALL.generic
 $GNULIBSRC/doc/fdl.texi			doc
 #
 # Should only update at releases.  
+$AUTOMAKE/tap-driver.sh			build-aux
 $AUTOMAKE/test-driver			build-aux
 $AUTOMAKE/missing			build-aux
 #
