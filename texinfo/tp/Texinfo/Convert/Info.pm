@@ -438,34 +438,29 @@ sub _image($$)
       }
     }
     my ($text, $width) = $self->_image_text($root, $basefile);
-    my $text_result;
-    if (defined($text)) {
-      if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-        $text_result = '['.$text.']';
-      } else {
-        $text_result = $text;
-      }
+    my $alt;
+    if (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
+     $alt = Texinfo::Convert::Text::convert(
+       {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]},
+       {Texinfo::Common::_convert_text_options($self)});
     }
 
     my $result;
 
-    if (defined($image_file)) {
+    if (defined($image_file) or (defined($text) and defined($alt))) {
       $image_file =~ s/\\/\\\\/g;
       $image_file =~ s/\"/\\\"/g;
       $result = "\x{00}\x{08}[image src=\"$image_file\"";
 
       if (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
-        my $alt = Texinfo::Convert::Text::convert(
-         {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]},
-         {Texinfo::Common::_convert_text_options($self)});
         $alt =~ s/\\/\\\\/g;
         $alt =~ s/\"/\\\"/g;
         $result .= " alt=\"$alt\"";
       }
-      if (defined($text_result)) {
-        $text_result =~ s/\\/\\\\/g;
-        $text_result =~ s/\"/\\\"/g;
-        $result .= " text=\"$text_result\"";
+      if (defined($text)) {
+        $text =~ s/\\/\\\\/g;
+        $text =~ s/\"/\\\"/g;
+        $result .= " text=\"$text\"";
       }
       $result .= "\x{00}\x{08}]";
       if ($self->{'formatters'}->[-1]->{'_top_formatter'}) {
@@ -474,8 +469,7 @@ sub _image($$)
       my $image_lines_count = ($result =~ tr/\n/\n/) +1;
       $self->_add_image($root, $image_lines_count, $width, 1);
     } else {
-      $result = $self->_image_formatted_text($root, $basefile, $text,
-                                                $text_result);
+      $result = $self->_image_formatted_text($root, $basefile, $text);
       $lines_count = ($result =~ tr/\n/\n/);
       $self->_add_image($root, $lines_count+1, $width);
     }

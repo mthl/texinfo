@@ -1322,26 +1322,20 @@ sub _image_text($$$)
   return undef;
 }
 
-sub _image_formatted_text($$$$$)
+sub _image_formatted_text($$$$)
 {
   my $self = shift;
   my $root = shift;
   my $basefile = shift;
   my $text = shift;
-  my $text_result = shift;
 
   my $result;
   if (defined($text)) {
-    $result = $text_result;
+    $result = $text;
   } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
-    my $alt = Texinfo::Convert::Text::convert(
+    $result = '[' .Texinfo::Convert::Text::convert(
       {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]},
-      {Texinfo::Common::_convert_text_options($self)});
-    if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-      $result = '['.$alt.']';
-    } else {
-      $result = $alt;
-    }
+      {Texinfo::Common::_convert_text_options($self)}) .']';
   } else {
     $self->line_warn(sprintf($self->__(
                     "could not find \@image file `%s.txt' nor alternate text"),
@@ -1361,16 +1355,7 @@ sub _image($$)
      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
      {'code' => 1, Texinfo::Common::_convert_text_options($self)});
     my ($text, $width) = $self->_image_text($root, $basefile);
-    my $text_result;
-    if (defined($text)) {
-      if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-        $text_result = '['.$text.']';
-      } else {
-        $text_result = $text;
-      }
-    }
-    my $result = $self->_image_formatted_text($root, $basefile, $text,
-                                              $text_result);
+    my $result = $self->_image_formatted_text($root, $basefile, $text);
     my $lines_count = ($result =~ tr/\n/\n/);
     if (!defined($width)) {
       $width = Texinfo::Convert::Unicode::string_width($result);
