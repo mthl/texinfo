@@ -1,3 +1,7 @@
+2013-02-12  Karl Berry  <karl@gnu.org>
+
+	* pretest 4.13.97.
+
 2013-02-10  Karl Berry  <karl@gnu.org>
 
 	* info/tag.c (tag_found_keyword): new fn, including a check
