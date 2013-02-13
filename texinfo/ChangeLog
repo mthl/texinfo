@@ -5,6 +5,8 @@
 	* info/window.c (window_make_window): Initialize allocated
 	memory.
 	(string_to_node): Likewise.
+	* info/filesys.c (filesys_read_info_file): Always terminate
+	the contents with 0.
 
 2013-02-12  Karl Berry  <karl@gnu.org>
 
