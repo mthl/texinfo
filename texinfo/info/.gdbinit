@@ -13,4 +13,8 @@ set env TERM xterm
 
 #set args --restore $ttests/drib.isearch
 #set env INFOPATH /usr/share/info
-set args ./imagetxt
+#set args ./imagetxt
+
+set env LINES 64
+set env COLUMNS 208
+set args make --restore $ttests/drib.iptab
