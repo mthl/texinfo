@@ -177,6 +177,15 @@ Chap 2
 @node unnumberedsec
 @unnumberedsec unnumberedsec
 '],
+['detailmenu_unknown_node',
+'@node Top
+
+@menu
+@detailmenu
+* unknown::
+@end detailmenu
+@end menu
+'],
 ['reference_to_external_manual',
 '
 @node Top
