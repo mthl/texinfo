@@ -1,12 +1,15 @@
-2013-02-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+2013-02-16  Karl Berry  <karl@gnu.org>
 
-	Fix Bug#700354.
+	* Version 5.0.
+
+2013-02-13  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/window.c (window_make_window): Initialize allocated
 	memory.
 	(string_to_node): Likewise.
 	* info/filesys.c (filesys_read_info_file): Always terminate
 	the contents with 0.
+	Fix 700354@bugs.debian.org.
 
 2013-02-12  Karl Berry  <karl@gnu.org>
 
