@@ -1,6 +1,8 @@
 2013-02-16  Karl Berry  <karl@gnu.org>
 
 	* Version 5.0.
+	
+	* doc/texinfo.txi: remove zyx placeholder.
 
 2013-02-13  Sergey Poznyakoff  <gray@gnu.org.ua>
 

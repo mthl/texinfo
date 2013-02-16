@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.538 2013-02-04 23:51:50 karl Exp $
+@c $Id: texinfo.txi,v 1.539 2013-02-16 23:59:29 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2994,7 +2994,7 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 @node @t{@@setfilename}
 @subsection @code{@@setfilename}: Set the Output File Name
 
-@anchor{setfilenamezyx}@c old name
+@anchor{setfilename}@c old name
 @findex setfilename
 @cindex Texinfo requires @code{@@setfilename}
 @cindex Output file name, required
@@ -3071,7 +3071,7 @@ See also the @option{--output} option in @ref{Invoking @t{texi2any}}.
 @node @t{@@settitle}
 @subsection @code{@@settitle}: Set the Document Title
 
-@anchor{settitlezyx}@c old name
+@anchor{settitle}@c old name
 @findex settitle
 @cindex Document title, specifying
 
@@ -3149,7 +3149,7 @@ software license is not necessarily required.
 @node @t{@@copying}
 @subsection @code{@@copying}: Declare Copying Permissions
 
-@anchor{copyingzyx}@c old name
+@anchor{copying}@c old name
 @findex copying
 
 The @code{@@copying} command should be given very early in the document;
@@ -3227,7 +3227,7 @@ distributed.
 @node @t{@@insertcopying}
 @subsection @code{@@insertcopying}: Include Permissions Text
 
-@anchor{insertcopyingzyx}@c old name
+@anchor{insertcopying}@c old name
 @findex insertcopying
 @cindex Copying text, including
 @cindex Permissions text, including
@@ -3290,7 +3290,7 @@ in the printed manual.
 @node @t{@@titlepage}
 @subsection @code{@@titlepage}
 
-@anchor{titlepagezyx}@c old name
+@anchor{titlepage}@c old name
 @cindex Title page
 @findex titlepage
 
@@ -3353,7 +3353,7 @@ page.
 @node @t{@@titlefont @@center @@sp}
 @subsection @code{@@titlefont}, @code{@@center}, and @code{@@sp}
 
-@anchor{titlefont center spzyx}@c old name
+@anchor{titlefont center sp}@c old name
 @findex titlefont
 @findex center
 @findex sp @r{(titlepage line spacing)}
@@ -3425,7 +3425,7 @@ them.
 @node @t{@@title @@subtitle @@author}
 @subsection @code{@@title}, @code{@@subtitle}, and @code{@@author}
 
-@anchor{title subtitle authorzyx}@c old name
+@anchor{title subtitle author}@c old name
 @findex title
 @findex subtitle
 @findex author
@@ -3578,7 +3578,7 @@ output in the same place.
 @node Heading Generation
 @subsection Heading Generation
 
-@anchor{end titlepagezyx}@c old name
+@anchor{end titlepage}@c old name
 @cindex Headings, page, begin to appear
 @cindex Titlepage end starts headings
 @cindex End titlepage starts headings
@@ -3870,7 +3870,7 @@ generally all given before the Top node, if they are given at all.
 
 @node @t{@@documentdescription}
 @subsection @code{@@documentdescription}: Summary Text
-@anchor{documentdescriptionzyx}@c old name
+@anchor{documentdescription}@c old name
 
 @cindex Document description
 @cindex Description of document
@@ -3906,7 +3906,7 @@ the document.
 @node @t{@@setchapternewpage}
 @subsection @code{@@setchapternewpage}: Blank Pages Before Chapters
 
-@anchor{setchapternewpagezyx}@c old name
+@anchor{setchapternewpage}@c old name
 @findex setchapternewpage
 @cindex Starting chapters
 @cindex Pages, starting odd
@@ -3981,7 +3981,7 @@ specify the output you want.
 @node @t{@@headings}
 @subsection The @code{@@headings} Command
 
-@anchor{headings on offzyx}@c old name
+@anchor{headings on off}@c old name
 @findex headings
 
 The @code{@@headings} command is rarely used.  It specifies what kind of
@@ -4041,7 +4041,7 @@ You can also specify your own style of page heading and footing.
 @node @t{@@paragraphindent}
 @subsection @code{@@paragraphindent}: Controlling Paragraph Indentation
 
-@anchor{paragraphindentzyx}@c old name
+@anchor{paragraphindent}@c old name
 @findex paragraphindent
 @cindex Indenting paragraphs, control of
 @cindex Paragraph indentation control
@@ -4088,7 +4088,7 @@ fill) paragraphs that contain @code{@@w} or @code{@@*} commands.
 @node @t{@@firstparagraphindent}
 @subsection @code{@@firstparagraphindent}: Indenting After Headings
 
-@anchor{firstparagraphindentzyx}@c old name
+@anchor{firstparagraphindent}@c old name
 @findex firstparagraphindent
 @cindex First paragraph, suppressing indentation of
 @cindex Suppressing first paragraph indentation
@@ -4132,7 +4132,7 @@ Header}.
 @node @t{@@exampleindent}
 @subsection @code{@@exampleindent}: Environment Indenting
 
-@anchor{exampleindentzyx}@c old name
+@anchor{exampleindent}@c old name
 @findex exampleindent
 @cindex Indenting environments
 @cindex Environment indentation
@@ -4309,7 +4309,7 @@ variables list for Emacs, most typically a @samp{compile-command}
 
 @node Chapter Structuring
 @chapter Chapter Structuring
-@anchor{Structuringzyx}@c old name
+@anchor{Structuring}@c old name
 @cindex Chapter structuring
 @cindex Structuring of chapters
 @cindex Sectioning
@@ -4467,7 +4467,7 @@ Here is a summary:
 @node @t{@@chapter}
 @section @code{@@chapter}: Chapter Structuring
 
-@anchor{chapterzyx}@c old name
+@anchor{chapter}@c old name
 @findex chapter
 
 @code{@@chapter} identifies a chapter in the document--the highest
@@ -4509,7 +4509,7 @@ that includes all the following sections, up to the next chapter.
 @node @t{@@unnumbered @@appendix}
 @section @code{@@unnumbered}, @code{@@appendix}: Chapters with Other Labeling
 
-@anchor{unnumbered & appendixzyx}@c old name
+@anchor{unnumbered & appendix}@c old name
 @findex unnumbered
 @findex appendix
 
@@ -4534,7 +4534,7 @@ Texinfo.
 @node @t{@@majorheading @@chapheading}
 @section @code{@@majorheading}, @code{@@chapheading}: Chapter-level Headings
 
-@anchor{majorheading & chapheadingzyx}@c old name
+@anchor{majorheading & chapheading}@c old name
 @findex majorheading
 @findex chapheading
 
@@ -4560,7 +4560,7 @@ the lack of numbering and the lack of any association with nodes.
 @node @t{@@section}
 @section @code{@@section}: Sections Below Chapters
 
-@anchor{sectionzyx}@c old name
+@anchor{section}@c old name
 @findex section
 
 An @code{@@section} command identifies a section within a chapter
@@ -4599,7 +4599,7 @@ chapter-level output, just ``one level down''; @pxref{@t{@@chapter}}.
 @node @t{@@unnumberedsec @@appendixsec @@heading}
 @section @code{@@unnumberedsec}, @code{@@appendixsec}, @code{@@heading}
 
-@anchor{unnumberedsec appendixsec headingzyx}@c old name
+@anchor{unnumberedsec appendixsec heading}@c old name
 @findex unnumberedsec
 @findex appendixsec
 @findex heading
@@ -4639,7 +4639,7 @@ section-style heading that will not appear in the table of contents.
 @node @t{@@subsection}
 @section @code{@@subsection}: Subsections Below Sections
 
-@anchor{subsectionzyx}@c old name
+@anchor{subsection}@c old name
 @findex subsection
 
 Subsections are to sections as sections are to chapters;
@@ -4670,7 +4670,7 @@ chapter-level output, just ``two levels down'';
 @node @t{@@unnumberedsubsec @@appendixsubsec @@subheading}
 @section The @code{@@subsection}-like Commands
 
-@anchor{unnumberedsubsec appendixsubsec subheadingzyx}@c old name
+@anchor{unnumberedsubsec appendixsubsec subheading}@c old name
 @findex unnumberedsubsec
 @findex appendixsubsec
 @findex subheading
@@ -4700,7 +4700,7 @@ underlined with hyphens.
 @node @t{@@subsubsection}
 @section @code{@@subsection} and Other Subsub Commands
 
-@anchor{subsubsectionzyx}@c old name
+@anchor{subsubsection}@c old name
 @findex subsubsection
 @findex unnumberedsubsubsec
 @findex appendixsubsubsec
@@ -5244,7 +5244,7 @@ tools implicitly define them, with this simple result:
 @node @t{@@top} Command
 @subsection The @code{@@top} Sectioning Command
 
-@anchor{top commandzyx}@c old name
+@anchor{top command}@c old name
 @anchor{makeinfo top}@c another old name
 @anchor{makeinfo top command}@c yet another name
 @findex top
@@ -5334,7 +5334,7 @@ pointers may still be specified explicitly, in full generality.
 @node @t{@@anchor}
 @section @code{@@anchor}: Defining Arbitrary Cross Reference Targets
 
-@anchor{anchorzyx}@c old name
+@anchor{anchor}@c old name
 @findex anchor
 @cindex Anchors
 @cindex Cross reference targets, arbitrary
@@ -6029,7 +6029,7 @@ formatters may not find the reference.
 @node @t{@@xref}
 @section @code{@@xref}
 
-@anchor{xrefzyx}@c old name
+@anchor{xref}@c old name
 @findex xref
 @cindex Cross references using @code{@@xref}
 @cindex References using @code{@@xref}
@@ -6558,7 +6558,7 @@ third argument in whole-manual cross references is preferable.
 @node @t{@@ref}
 @section @code{@@ref}
 
-@anchor{refzyx}@c old name
+@anchor{ref}@c old name
 @findex ref
 @cindex Cross references using @code{@@ref}
 @cindex References using @code{@@ref}
@@ -6627,7 +6627,7 @@ word other than ``see'' to precede the reference.  When ``see'' (or
 @node @t{@@pxref}
 @section @code{@@pxref}
 
-@anchor{pxrefzyx}@c old name
+@anchor{pxref}@c old name
 @findex pxref
 @cindex Cross references using @code{@@pxref}
 @cindex References using @code{@@pxref}
@@ -6742,7 +6742,7 @@ that location breaks up the flow of reading.
 @node @t{@@inforef}
 @section @code{@@inforef}: Cross References to Info-only Material
 
-@anchor{inforefzyx}@c old name
+@anchor{inforef}@c old name
 @findex inforef
 @cindex Cross references using @code{@@inforef}
 @cindex References using @code{@@inforef}
@@ -6822,7 +6822,7 @@ refer to printed works for which no Info form exists.
 @node @t{@@url}
 @section @code{@@url}, @code{@@uref@{@var{url}[, @var{text}][, @var{replacement}]@}}
 
-@anchor{urefzyx}@c old name
+@anchor{uref}@c old name
 @findex uref
 @cindex Uniform resource locator, referring to
 @cindex URL, referring to
@@ -6955,7 +6955,7 @@ use @code{@@indicateurl} (@pxref{@t{@@indicateurl}}).
 @node @t{@@cite}
 @section @code{@@cite}@{@var{reference}@}
 
-@anchor{citezyx}@c old name
+@anchor{cite}@c old name
 @findex cite
 
 Use the @code{@@cite} command for the name of a book that lacks a
@@ -7101,7 +7101,7 @@ Indicate an electronic mail address.  @xref{@t{@@email}}.
 @node @t{@@code}
 @subsection @code{@@code}@{@var{sample-code}@}
 
-@anchor{codezyx}@c old name
+@anchor{code}@c old name
 @findex code
 
 @cindex Syntactic tokens, indicating
@@ -7200,7 +7200,7 @@ in typewriter-like contexts such as the @code{@@example} environment
 @node @t{@@kbd}
 @subsection @code{@@kbd}@{@var{keyboard-characters}@}
 
-@anchor{kbdzyx}@c old name
+@anchor{kbd}@c old name
 @findex kbd
 @cindex Keyboard input
 
@@ -7282,7 +7282,7 @@ input, write @kbd{@@key@{SPC@}} for it.)
 @node @t{@@key}
 @subsection @code{@@key}@{@var{key-name}@}
 
-@anchor{keyzyx}@c old name
+@anchor{key}@c old name
 @findex key
 
 Use the @code{@@key} command for the conventional name for a key on a
@@ -7352,7 +7352,7 @@ index entries.
 @node @t{@@samp}
 @subsection @code{@@samp}@{@var{text}@}
 
-@anchor{sampzyx}@c old name
+@anchor{samp}@c old name
 @findex samp
 
 Use the @code{@@samp} command to indicate text that is a literal example
@@ -7409,7 +7409,7 @@ In English, the vowels are @samp{a}, @samp{e},
 @node @t{@@verb}
 @subsection @code{@@verb}@{@var{char}@var{text}@var{char}@}
 
-@anchor{verbzyx}@c old name
+@anchor{verb}@c old name
 @findex verb
 @cindex Verbatim in-line text
 
@@ -7453,7 +7453,7 @@ figure captions.
 @node @t{@@var}
 @subsection @code{@@var}@{@var{metasyntactic-variable}@}
 
-@anchor{varzyx}@c old name
+@anchor{var}@c old name
 @findex var
 
 Use the @code{@@var} command to indicate metasyntactic variables.  A
@@ -7538,7 +7538,7 @@ However, that is not the style that Texinfo uses.
 @node @t{@@env}
 @subsection @code{@@env}@{@var{environment-variable}@}
 
-@anchor{envzyx}@c old name
+@anchor{env}@c old name
 @findex env
 
 Use the @code{@@env} command to indicate environment variables, as
@@ -7561,7 +7561,7 @@ The @env{PATH} environment variable @dots{}
 @node @t{@@file}
 @subsection @code{@@file}@{@var{file-name}@}
 
-@anchor{filezyx}@c old name
+@anchor{file}@c old name
 @findex file
 
 Use the @code{@@file} command to indicate text that is the name of a
@@ -7589,7 +7589,7 @@ the @file{/usr/local/emacs/lisp} directory.
 @node @t{@@command}
 @subsection @code{@@command}@{@var{command-name}@}
 
-@anchor{commandzyx}@c old name
+@anchor{command}@c old name
 @findex command
 @cindex Command names, indicating
 @cindex Program names, indicating
@@ -7619,7 +7619,7 @@ you should use either @code{@@samp} or @code{@@code} at your discretion.
 @node @t{@@option}
 @subsection @code{@@option}@{@var{option-name}@}
 
-@anchor{optionzyx}@c old name
+@anchor{option}@c old name
 @findex option
 
 Use the @code{@@option} command to indicate a command-line option; for
@@ -7641,7 +7641,7 @@ The option @option{-l} produces a long listing.
 @node @t{@@dfn}
 @subsection @code{@@dfn}@{@var{term}@}
 
-@anchor{dfnzyx}@c old name
+@anchor{dfn}@c old name
 @findex dfn
 
 Use the @code{@@dfn} command to identify the introductory or defining
@@ -7672,7 +7672,7 @@ information of a definition---it should make the meaning clear.
 @node @t{@@abbr}
 @subsection @code{@@abbr}@{@var{abbreviation}[, @var{meaning}]@}
 
-@anchor{abbrzyx}@c old name
+@anchor{abbr}@c old name
 @findex abbr
 
 @cindex Abbreviations, tagging
@@ -7716,7 +7716,7 @@ more on the usage of these two commands.
 @node @t{@@acronym}
 @subsection @code{@@acronym}@{@var{acronym}[, @var{meaning}]@}
 
-@anchor{acronymzyx}@c old name
+@anchor{acronym}@c old name
 @findex acronym
 
 @cindex NASA, as acronym
@@ -7803,7 +7803,7 @@ them.
 @node @t{@@indicateurl}
 @subsection @code{@@indicateurl}@{@var{uniform-resource-locator}@}
 
-@anchor{indicateurlzyx}@c old name
+@anchor{indicateurl}@c old name
 @findex indicateurl
 @cindex Uniform resource locator, indicating
 @cindex URL, indicating
@@ -7832,7 +7832,7 @@ The output from @code{@@indicateurl} is more or less like that of
 @node @t{@@email}
 @subsection @code{@@email}@{@var{email-address}[, @var{displayed-text}]@}
 
-@anchor{emailzyx}@c old name
+@anchor{email}@c old name
 @findex email
 
 Use the @code{@@email} command to indicate an electronic mail address.
@@ -8182,7 +8182,7 @@ indented as a new paragraph.
 
 @node @t{@@quotation}
 @section @code{@@quotation}: Block Quotations
-@anchor{quotationzyx}@c old name
+@anchor{quotation}@c old name
 
 @cindex Quotations
 @findex quotation
@@ -8314,7 +8314,7 @@ possible.  @xref{@t{@@small@dots{}}}.
 @node @t{@@example}
 @section @code{@@example}: Example Text
 
-@anchor{examplezyx}@c old name
+@anchor{example}@c old name
 @findex example
 @cindex Examples, formatting them
 @cindex Formatting examples
@@ -8386,7 +8386,7 @@ normal roman font, you can use the @code{@@r} command (@pxref{Fonts}).
 @node @t{@@verbatim}
 @section @code{@@verbatim}: Literal Text
 
-@anchor{verbatimzyx}@c old name
+@anchor{verbatim}@c old name
 @findex verbatim
 @cindex Verbatim environment
 
@@ -8456,7 +8456,7 @@ Finally, a word of warning: it is not reliable to use
 @node @t{@@verbatiminclude}
 @section @code{@@verbatiminclude} @var{file}: Include a File Verbatim
 
-@anchor{verbatimincludezyx}@c old name
+@anchor{verbatiminclude}@c old name
 @findex verbatiminclude
 @cindex Verbatim, include file
 @cindex Including a file verbatim
@@ -8494,7 +8494,7 @@ the end of the previous section on @code{@@verbatim}.
 @node @t{@@lisp}
 @section @code{@@lisp}: Marking a Lisp Example
 
-@anchor{lispzyx}@c old name
+@anchor{lisp}@c old name
 @findex lisp
 @cindex Lisp example
 
@@ -8520,7 +8520,7 @@ itself.
 @node @t{@@small@dots{}}
 @section @code{@@small@dots{}} Block Commands
 
-@anchor{smallzyx}@c old name
+@anchor{small}@c old name
 @findex smallexample
 @findex smallformat
 @findex smalllisp
@@ -8577,7 +8577,7 @@ consistently within a chapter.
 @node @t{@@display}
 @section @code{@@display}: Examples Using the Text Font
 
-@anchor{displayzyx}@c old name
+@anchor{display}@c old name
 @findex display
 @cindex Display formatting
 
@@ -8607,7 +8607,7 @@ table, try @code{@@quotation} (@pxref{@t{@@quotation}}) or
 @node @t{@@format}
 @section @code{@@format}: Examples Using the Full Line Width
 
-@anchor{formatzyx}@c old name
+@anchor{format}@c old name
 @findex format
 
 The @code{@@format} command is similar to @code{@@display}, except it
@@ -8630,7 +8630,7 @@ like @code{@@format} but uses a smaller font size.
 @node @t{@@exdent}
 @section @code{@@exdent}: Undoing a Line's Indentation
 
-@anchor{exdentzyx}@c old name
+@anchor{exdent}@c old name
 @findex exdent
 @cindex Indentation undoing
 
@@ -8675,7 +8675,7 @@ normal width.
 @node @t{@@flushleft @@flushright}
 @section @code{@@flushleft} and @code{@@flushright}
 
-@anchor{flushleft & flushrightzyx}@c old name
+@anchor{flushleft & flushright}@c old name
 @findex flushleft
 @findex flushright
 @cindex Ragged right, without filling
@@ -8739,7 +8739,7 @@ left end ragged.
 @node @t{@@raggedright}
 @section @code{@@raggedright}: Ragged Right Text
 
-@anchor{raggedrightzyx}@c old name
+@anchor{raggedright}@c old name
 @findex raggedright
 @cindex Ragged right, with filling
 
@@ -8782,7 +8782,7 @@ Commands for double and single angle quotation marks:
 @node @t{@@noindent}
 @section @code{@@noindent}: Omitting Indentation
 
-@anchor{noindentzyx}@c old name
+@anchor{noindent}@c old name
 @findex noindent
 @cindex Omitting indentation
 @cindex Suppressing indentation
@@ -8848,7 +8848,7 @@ paragraphs (@pxref{Command Syntax}).
 @node @t{@@indent}
 @section @code{@@indent}: Forcing Indentation
 
-@anchor{indentzyx}@c old name
+@anchor{indent}@c old name
 @findex indent
 @cindex Forcing indentation
 @cindex Inserting indentation
@@ -8878,7 +8878,7 @@ paragraphs (@pxref{Command Syntax}).
 @node @t{@@cartouche}
 @section @code{@@cartouche}: Rounded Rectangles
 
-@anchor{cartouchezyx}@c old name
+@anchor{cartouche}@c old name
 @findex cartouche
 @cindex Box with rounded corners
 @cindex Rounded rectangles, around text
@@ -9012,7 +9012,7 @@ Two-column tables, optionally with indexing.
 @node @t{@@itemize}
 @section @code{@@itemize}: Making an Itemized List
 
-@anchor{itemizezyx}@c old name
+@anchor{itemize}@c old name
 @findex itemize
 @cindex Itemization
 
@@ -9125,7 +9125,7 @@ Second outer item.
 @node @t{@@enumerate}
 @section @code{@@enumerate}: Making a Numbered or Lettered List
 
-@anchor{enumeratezyx}@c old name
+@anchor{enumerate}@c old name
 @findex enumerate
 @cindex Enumeration
 
@@ -9262,7 +9262,7 @@ explanatory exhibits, and command-line option summaries.
 @node @t{@@table}
 @subsection Using the @code{@@table} Command
 
-@anchor{tablezyx}@c old name
+@anchor{table}@c old name
 
 @cindex Definition lists, typesetting
 Use the @code{@@table} command to produce two-column tables.  It is
@@ -9347,7 +9347,7 @@ text, use the @code{@@itemx} command.  (@xref{@t{@@itemx}}.)
 @node @t{@@ftable @@vtable}
 @subsection @code{@@ftable} and @code{@@vtable}
 
-@anchor{ftable vtablezyx}@c old name
+@anchor{ftable vtable}@c old name
 @findex ftable
 @findex vtable
 @cindex Tables with indexing
@@ -9376,7 +9376,7 @@ See the example for @code{@@table} in the previous section.
 @node @t{@@itemx}
 @subsection @code{@@itemx}: Second and Subsequent Items
 
-@anchor{itemxzyx}@c old name
+@anchor{itemx}@c old name
 @cindex Two named items for @code{@@table}
 @findex itemx
 
@@ -9612,7 +9612,7 @@ an @code{@@group} (@pxref{@t{@@group}}).
 @node @t{@@float}
 @subsection @code{@@float} [@var{type}][,@var{label}]: Floating Material
 
-@anchor{floatzyx}@c old name
+@anchor{float}@c old name
 @findex float
 @cindex Float environment
 
@@ -9678,7 +9678,7 @@ These numbering conventions are not, at present, changeable.
 @node @t{@@caption @@shortcaption}
 @subsection @code{@@caption} & @code{@@shortcaption}
 
-@anchor{caption shortcaptionzyx}@c old name
+@anchor{caption shortcaption}@c old name
 @findex caption
 @findex shortcaption
 @cindex Captions, for floats
@@ -9735,7 +9735,7 @@ there is an @code{@@shortcaption}.
 @node @t{@@listoffloats}
 @subsection @code{@@listoffloats}: Tables of Contents for Floats
 
-@anchor{listoffloatszyx}@c old name
+@anchor{listoffloats}@c old name
 @findex listoffloats
 @cindex List of floats
 @cindex Floats, list of
@@ -10998,7 +10998,7 @@ ends the sentence; there is no need to use @code{@@.}.
 @node @t{@@frenchspacing}
 @subsection @code{@@frenchspacing} @var{val}: Control Sentence Spacing
 
-@anchor{frenchspacingzyx}@c old name
+@anchor{frenchspacing}@c old name
 @findex frenchspacing
 @cindex French spacing
 @cindex Sentences, spacing after
@@ -11043,7 +11043,7 @@ Formats}).
 @node @t{@@dmn}
 @subsection @code{@@dmn}@{@var{dimension}@}: Format a Dimension
 
-@anchor{dmnzyx}@c old name
+@anchor{dmn}@c old name
 @cindex Thin space between number, dimension
 @cindex Dimension formatting
 @cindex Format a dimension
@@ -11387,7 +11387,7 @@ convenient:
 @node Inserting Math
 @section @code{@@math}: Inserting Mathematical Expressions
 
-@anchor{mathzyx}@c old name
+@anchor{math}@c old name
 @findex math
 @cindex Mathematical expressions, inserting
 @cindex Formulas, mathematical
@@ -11500,7 +11500,7 @@ as @code{makeinfo} is concerned, but @TeX{} is not so lucky.
 @node @t{@@TeX @@LaTeX}
 @subsection @code{@@TeX}@{@} (@TeX{}) and @code{@@LaTeX}@{@} (@LaTeX{})
 
-@anchor{texzyx}@c old name
+@anchor{tex}@c old name
 @findex TeX
 @findex LaTeX
 @cindex Logos, @TeX{}
@@ -11525,7 +11525,7 @@ use both uppercase and lowercase letters.
 @node @t{@@copyright}
 @subsection @code{@@copyright@{@}} (@copyright{})
 
-@anchor{copyright symbolzyx}@c old name
+@anchor{copyright symbol}@c old name
 @findex copyright
 @cindex Copyright symbol
 
@@ -11540,7 +11540,7 @@ word `Copyright' suffices, according to international treaty.
 @node @t{@@registeredsymbol}
 @subsection @code{@@registeredsymbol@{@}} (@registeredsymbol{})
 
-@anchor{registered symbolzyx}@c old name
+@anchor{registered symbol}@c old name
 @findex registeredsymbol
 @cindex Registered symbol
 
@@ -11552,7 +11552,7 @@ registered symbol, `@registeredsymbol{}'.  Where possible, this is an
 @node @t{@@dots}
 @subsection @code{@@dots} (@dots{}) and @code{@@enddots} (@enddots{})
 
-@anchor{dotszyx}@c old name
+@anchor{dots}@c old name
 @findex dots
 @findex enddots
 @cindex Inserting dots
@@ -11560,7 +11560,7 @@ registered symbol, `@registeredsymbol{}'.  Where possible, this is an
 @cindex Dots, inserting
 @cindex Ellipsis, inserting
 
-@anchor{Dots Bulletszyx}@c old name
+@anchor{Dots Bullets}@c old name
 
 An @dfn{ellipsis} (a sequence of dots) would be spaced wrong when
 typeset as a string of periods, so a special command is used in
@@ -11584,7 +11584,7 @@ much closer together than the dots in the ellipsis.
 @node @t{@@bullet}
 @subsection @code{@@bullet} (@bullet{})
 
-@anchor{bulletzyx}@c old name
+@anchor{bullet}@c old name
 @findex bullet
 
 Use the @code{@@bullet@{@}} command to generate a large round dot, or
@@ -11599,7 +11599,7 @@ type the braces, because @code{@@itemize} supplies them.
 @node @t{@@euro}
 @subsection @code{@@euro} (@euro{}): Euro Currency Symbol
 
-@anchor{eurozyx}@c old name
+@anchor{euro}@c old name
 @findex euro
 @cindex Euro symbol
 
@@ -11634,7 +11634,7 @@ instructions.
 @node @t{@@pounds}
 @subsection @code{@@pounds} (@pounds{}): Pounds Sterling
 
-@anchor{poundszyx}@c old name
+@anchor{pounds}@c old name
 @findex pounds
 @cindex Pounds symbol
 
@@ -11646,7 +11646,7 @@ Otherwise, it is @samp{#}.
 @node @t{@@textdegree}
 @subsection @code{@@textdegree} (@textdegree{}): Degrees Symbol
 
-@anchor{textdegreezyx}@c old name
+@anchor{textdegree}@c old name
 @findex textdegree
 @cindex Degree symbol
 
@@ -11658,7 +11658,7 @@ it is an @samp{o}.
 @node @t{@@minus}
 @subsection @code{@@minus} (@minus{}): Inserting a Minus Sign
 
-@anchor{minuszyx}@c old name
+@anchor{minus}@c old name
 @findex minus
 @cindex Minus sign
 
@@ -11698,7 +11698,7 @@ Math}).
 @node @t{@@geq @@leq}
 @subsection @code{@@geq} (@geq{}) and @code{@@leq} (@leq{}): Inserting Relations
 
-@anchor{geq leqzyx}@c old name
+@anchor{geq leq}@c old name
 @findex geq
 @findex leq
 
@@ -11773,7 +11773,7 @@ otherwise selecting it.
 @node @t{@@result}
 @subsection @code{@@result@{@}} (@result{}): Result of an Expression
 
-@anchor{resultzyx}@c old name
+@anchor{result}@c old name
 @findex result
 @cindex Result of an expression
 @cindex Indicating evaluation
@@ -11801,7 +11801,7 @@ may be read as ``@code{(cdr '(1 2 3))} evaluates to @code{(2 3)}''.
 @node @t{@@expansion}
 @subsection @code{@@expansion@{@}} (@expansion{}): Indicating an Expansion
 
-@anchor{expansionzyx}@c old name
+@anchor{expansion}@c old name
 @cindex Expansion, indicating
 @cindex Macro expansion, indicating
 @findex expansion
@@ -11854,7 +11854,7 @@ Often, as in this case, an example looks better if the
 @node @t{@@print}
 @subsection @code{@@print@{@}} (@print{}): Indicating Generated Output
 
-@anchor{Print Glyphzyx}@c old name
+@anchor{Print Glyph}@c old name
 @findex print
 @cindex Printed output, indicating
 
@@ -11897,7 +11897,7 @@ In a Texinfo source file, this example is written as follows:
 @node @t{@@error}
 @subsection @code{@@error@{@}} (@error{}): Indicating an Error Message
 
-@anchor{Error Glyphzyx}@c old name
+@anchor{Error Glyph}@c old name
 @cindex Error message, indicating
 @findex error
 
@@ -11975,7 +11975,7 @@ identical results to evaluating @code{(list 'keymap)}.
 @node @t{@@point}
 @subsection @code{@@point@{@}} (@point{}): Indicating Point in a Buffer
 
-@anchor{Point Glyphzyx}@c old name
+@anchor{Point Glyph}@c old name
 @cindex Point, indicating in a buffer
 @findex point
 
@@ -12216,7 +12216,7 @@ break the url.  @code{@@/} has no effect in other output formats.
 @node @t{@@- @@hyphenation}
 @section @code{@@-} and @code{@@hyphenation}: Helping @TeX{} Hyphenate
 
-@anchor{- and hyphenationzyx}@c old name
+@anchor{- and hyphenation}@c old name
 @findex - @r{(discretionary hyphen)}
 @findex hyphenation
 @cindex Hyphenation, helping @TeX{} do
@@ -12253,7 +12253,7 @@ these commands have any effect there.
 @node @t{@@allowcodebreaks}
 @section @code{@@allowcodebreaks}: Control Line Breaks in @code{@@code}
 
-@anchor{allowcodebreakszyx}@c old name
+@anchor{allowcodebreaks}@c old name
 @findex allowcodebreaks
 @cindex Breaks, within @code{@@code}
 @cindex -, breakpoint within @code{@@code}
@@ -12294,7 +12294,7 @@ This command has no effect except in HTML and @TeX{} output.
 @node @t{@@w}
 @section @code{@@w}@{@var{text}@}: Prevent Line Breaks
 
-@anchor{wzyx}@c old name
+@anchor{w}@c old name
 @findex w @r{(prevent line break)}
 @cindex Line breaks, preventing
 
@@ -12340,7 +12340,7 @@ in Info or plain text output, though.
 @node @t{@@tie}
 @section @code{@@tie@{@}}: Inserting an Unbreakable Space
 
-@anchor{tiezyx}@c old name
+@anchor{tie}@c old name
 @findex tie @r{(unbreakable interword space)}
 @cindex Tied space
 @cindex Non-breakable space, variable
@@ -12381,7 +12381,7 @@ reasons, namely that it produces an @samp{\hbox}).
 @node @t{@@sp}
 @section @code{@@sp} @var{n}: Insert Blank Lines
 
-@anchor{spzyx}@c old name
+@anchor{sp}@c old name
 @findex sp @r{(line spacing)}
 @cindex Space, inserting vertical
 @cindex Blank lines
@@ -12405,7 +12405,7 @@ The @code{@@sp} command is most often used in the title page.
 @node @t{@@page}
 @section @code{@@page}: Start a New Page
 
-@anchor{pagezyx}@c old name
+@anchor{page}@c old name
 @findex page
 @cindex Page breaks, forcing
 
@@ -12419,7 +12419,7 @@ page.
 @node @t{@@group}
 @section @code{@@group}: Prevent Page Breaks
 
-@anchor{groupzyx}@c old name
+@anchor{group}@c old name
 @findex group
 @cindex Group (hold text together vertically)
 @cindex Holding text together vertically
@@ -12478,7 +12478,7 @@ considerable text.  It is a good rule of thumb to look for a missing
 @node @t{@@need}
 @section @code{@@need @var{mils}}: Prevent Page Breaks
 
-@anchor{needzyx}@c old name
+@anchor{need}@c old name
 @findex need
 @cindex Need space at page bottom
 @cindex Mils, argument to @code{@@need}
@@ -13687,7 +13687,7 @@ the official web site for ISO@tie{}3166 can be found via
 @node @t{@@documentencoding}
 @section @code{@@documentencoding @var{enc}}: Set Input Encoding
 
-@anchor{documentencodingzyx}@c old name
+@anchor{documentencoding}@c old name
 @findex documentencoding
 @cindex Encoding, declaring
 @cindex Input encoding, declaring
@@ -14167,7 +14167,7 @@ argument separator.)
 @node @t{@@set @@clear @@value}
 @section @code{@@set}, @code{@@clear}, and @code{@@value}
 
-@anchor{set clear valuezyx}@c old name
+@anchor{set clear value}@c old name
 You can direct the Texinfo formatting commands to format or ignore parts
 of a Texinfo file with the @code{@@set}, @code{@@clear}, @code{@@ifset},
 and @code{@@ifclear} commands.
@@ -14203,7 +14203,7 @@ is ignored.  If @var{flag} is clear, text through the following
 @node @t{@@set @@value}
 @subsection @code{@@set} and @code{@@value}
 
-@anchor{set valuezyx}@c old name
+@anchor{set value}@c old name
 @findex set
 @findex value
 @findex clear
@@ -14301,7 +14301,7 @@ command (@pxref{Inserting Accents}).  For example, this fails:
 @node @t{@@ifset @@ifclear}
 @subsection @code{@@ifset} and @code{@@ifclear}
 
-@anchor{ifset ifclearzyx}@c old name
+@anchor{ifset ifclear}@c old name
 @findex ifset
 
 When a @var{flag} is set, the Texinfo formatting commands format text
@@ -14374,7 +14374,7 @@ command looks like this:
 @node @t{@@value} Example
 @subsection @code{@@value} Example
 
-@anchor{value Examplezyx}@c old name
+@anchor{value Example}@c old name
 
 You can use the @code{@@value} command to minimize the number of
 places you need to change when you record an update to a manual.
@@ -15093,7 +15093,7 @@ within a macro, and then end that nested definition outside the macro.
 @node @t{@@alias}
 @section @samp{@@alias @var{new}=@var{existing}}
 
-@anchor{aliaszyx}@c old name
+@anchor{alias}@c old name
 @cindex Aliases, command
 @cindex Command aliases
 @findex alias
@@ -15144,7 +15144,7 @@ character) @samp{-}.
 @node @t{@@definfoenclose}
 @section @code{@@definfoenclose}: Customized Highlighting
 
-@anchor{definfoenclosezyx}@c old name
+@anchor{definfoenclose}@c old name
 @cindex Highlighting, customized
 @cindex Customized highlighting
 @findex definfoenclose
@@ -16469,7 +16469,7 @@ before the @code{@@titlepage} command:
 @node @t{@@smallbook}
 @section @code{@@smallbook}: Printing ``Small'' Books
 
-@anchor{smallbookzyx}@c old name
+@anchor{smallbook}@c old name
 @findex smallbook
 @cindex Small book size
 @cindex Book, printing small
@@ -18531,7 +18531,7 @@ For information on installing the Info file in the Info system,
 @node @t{makeinfo} Advantages
 @subsection @code{makeinfo} Advantages
 
-@anchor{makeinfo advantageszyx}@c old name
+@anchor{makeinfo advantages}@c old name
 
 The @code{makeinfo} utility creates an Info file from a Texinfo source
 providing better error messages than either of the Emacs formatting
@@ -22107,7 +22107,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.538 2013-02-04 23:51:50 karl Exp $
+$Id: texinfo.txi,v 1.539 2013-02-16 23:59:29 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
@@ -23074,7 +23074,7 @@ for more information.
 @node Running @t{Info-validate}
 @section Finding Badly Referenced Nodes
 
-@anchor{Running Info-Validatezyx}@c old name
+@anchor{Running Info-Validate}@c old name
 @findex Info-validate
 @cindex Nodes, checking for badly referenced
 @cindex Checking for badly referenced nodes

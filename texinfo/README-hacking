@@ -1,4 +1,4 @@
-$Id: README-hacking,v 1.6 2013-02-12 17:29:47 karl Exp $
+$Id: README-hacking,v 1.7 2013-02-16 23:59:29 karl Exp $
 This file describes the development environment for Texinfo.
 
   Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013
@@ -107,8 +107,7 @@ make -C po update-po      # but don't commit yet, dist updates po_document
 make -C doc wwwdoc-build  # and eventually -install, for official.
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 cvs commit                # when clean, then distcheck to be sure.
-make diff                 # for official
-rwtar *.tar.*             # consistent permissions in tarball?
+#create diff  for official, see below 
 
 - To do the actual upload:
 pkg=texinfo
@@ -152,4 +151,4 @@ relink texinfo $ver
 
   ... announcements:
 news item at savannah.
-send announcement to info-gnu.
+send announcement to info-gnu, cc bug-texinfo.
