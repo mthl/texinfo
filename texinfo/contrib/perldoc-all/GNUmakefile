@@ -1,4 +1,4 @@
-# $Id: GNUmakefile,v 1.3 2013-02-07 18:14:46 karl Exp $
+# $Id: GNUmakefile,v 1.4 2013-02-16 16:49:49 karl Exp $
 # Sample Makefile to build Texinfo from the Perl POD documentation,
 # using pod2texi.
 #
@@ -33,7 +33,7 @@ gendocs_args += --source $(texi_pod_subdir)
 gendocs_title = "Perl documentation in Texinfo"
 
 all: $(texi_pod_doc_incl)
-	rm -rf manual
+	rm -rf manual *.aux *.toc *.??
 	gendocs.sh $(gendocs_args) $(texi_pod_doc) $(gendocs_title)
 
 $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
