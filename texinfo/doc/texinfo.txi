@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.539 2013-02-16 23:59:29 karl Exp $
+@c $Id: texinfo.txi,v 1.540 2013-02-17 00:19:12 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10397,6 +10397,8 @@ would need to enclose every one of them between the braces of
 
 @node @t{@@syncodeindex}
 @subsection @code{@@syncodeindex}: Combining indices using @code{@@code}
+
+@anchor{syncodeindex}@c old name
 @findex syncodeindex
 
 When you want to combine functions and concepts into one index, you
@@ -10467,6 +10469,8 @@ index into a concept index, all the function names are printed in the
 
 @node @t{@@synindex}
 @subsection @code{@@synindex}: Combining indices
+
+@anchor{synindex}@c old name
 @findex synindex
 
 The @code{@@synindex} command is nearly the same as the
@@ -11475,6 +11479,8 @@ For displayed equations, you must at present use @TeX{} directly
 @node Glyphs for Text
 @section Glyphs for Text
 
+@anchor{Glyphs}@c old name
+@anchor{TeX and copyright}@c another old node, now split into two
 @cindex Glyphs for text
 @cindex Textual glyphs
 
@@ -16827,7 +16833,7 @@ You can specify more than one input file name; each is processed in
 turn.  If an input file name is @samp{-}, standard input is read.
 
 @anchor{@t{makeinfo} Options}
-@c anchor{makeinfo options}@c prev name
+@c anchor{makeinfo options}@c prev name, but case-insensitive clash
 @cindex @code{makeinfo} options
 @cindex Options for @code{makeinfo}
 @anchor{texi2any Options}
@@ -22107,7 +22113,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.539 2013-02-16 23:59:29 karl Exp $
+$Id: texinfo.txi,v 1.540 2013-02-17 00:19:12 karl Exp $
 @end example
 
 (This is potentially useful in all sources that use version control,
