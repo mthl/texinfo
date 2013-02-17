@@ -1,3 +1,8 @@
+2013-02-17  Karl Berry  <karl@gnu.org>
+
+	* doc/refcard/txirefcard.tex: reduce to four pages again
+	(by regretfully removing the Emacs section).
+
 2013-02-16  Karl Berry  <karl@gnu.org>
 
 	* Version 5.0.
