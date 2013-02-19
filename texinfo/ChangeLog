@@ -1,3 +1,9 @@
+2013-02-18  Karl Berry  <karl@gnu.org>  (tiny change)
+
+	* info/info-utils (va_copy) [__hpux]: define for HP-UX,
+	From Richard Lloyd, 18 Feb 2013 11:52:10.
+	* system.h (TEXINFO_PRINTFLIKE) [! __GNUC__]: define to nothing.
+
 2013-02-17  Karl Berry  <karl@gnu.org>
 
 	* doc/refcard/txirefcard.tex: reduce to four pages again
