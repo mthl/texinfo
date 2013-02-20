@@ -252,7 +252,7 @@ install-exec-hook:
 	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
 
 dist-hook:
-	rm -rf `find $(distdir)/maintain/lib -name CVS`
+	rm -rf `find $(distdir)/maintain/lib -name .svn`
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/

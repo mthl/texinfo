@@ -1,3 +1,11 @@
+2013-02-20  Patrice Dumas  <pertusus@free.fr>
+
+	* Makeinfo.am, texi2html/test/*/Makefile.am, tp/tests/*/Makefile.am,
+	tp/maintain/regenerate_file_lists.pl, tp/tests/many_input_files/*.sh,
+	tp/tests/run_parser_all.sh, texi2html/test/run_*.sh, 
+	texi2html/test/many_input_files/*.sh: adapt for SVN.
+	* tp/MANIFEST: regenerate.
+
 2013-02-18  Karl Berry  <karl@gnu.org>  (tiny change)
 
 	* info/info-utils (va_copy) [__hpux]: define for HP-UX,

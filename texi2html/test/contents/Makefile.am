@@ -11,4 +11,4 @@ distclean-local:
 	rm -rf out out_all out_info diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all -name CVS`
+	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all -name .svn`

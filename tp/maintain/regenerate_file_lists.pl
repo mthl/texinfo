@@ -33,7 +33,8 @@ find (\&wanted, ('t'));
 sub wanted 
 {
   if ((/\.pl$/ and $File::Find::dir =~ m:^t/results/[^/]+:)
-      or (!/^CVS$/ and $File::Find::dir =~ m:^t/results/[^/]+/[^/]+/res_[^/]+$:)) {
+      or (!/^CVS$/ and !/^\.svn$/ 
+          and $File::Find::dir =~ m:^t/results/[^/]+/[^/]+/res_[^/]+$:)) {
     $files{$File::Find::name} = 1;
   }
 }
@@ -51,7 +52,8 @@ my %include_files;
 find (\&wanted_include_files, ('t'));
 sub wanted_include_files
 {
-  if (/\.[a-z]+$/ and $File::Find::dir =~ m:^t/include_reference:) {
+  if (/\.[a-z]+$/ and !/^\.svn$/ 
+      and $File::Find::dir =~ m:^t/include_reference:) {
     $include_files{$File::Find::name} = 1;
   }
 }

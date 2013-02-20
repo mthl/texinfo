@@ -37,4 +37,4 @@ distclean-local:
 	rm -rf out out_all out_info out_docbook out_xml out_html diffs
 
 dist-hook:
-	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all $(distdir)/res_docbook $(distdir)/res_xml $(distdir)/res_html -name CVS`
+	rm -rf `find $(distdir)/res $(distdir)/res_info $(distdir)/res_all $(distdir)/res_docbook $(distdir)/res_xml $(distdir)/res_html -name .svn`

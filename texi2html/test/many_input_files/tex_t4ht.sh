@@ -41,7 +41,7 @@ else
 
   for dir in ${basename}; do
     if [ -d $srcdir/${dir}_res ]; then
-      diff -u --exclude=CVS --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"
+      diff -u --exclude=CVS --exclude=.svn --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
       if [ $dif_ret != 0 ]; then
         echo "D: $diffs_dir/$dir.diff"

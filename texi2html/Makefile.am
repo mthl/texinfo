@@ -285,7 +285,7 @@ install-exec-hook:
 	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
 
 dist-hook:
-	rm -rf `find $(distdir)/lib $(distdir)/i18n_ref -name CVS`
+	rm -rf `find $(distdir)/lib $(distdir)/i18n_ref -name .svn`
 
 ACLOCAL_AMFLAGS = -I m4
 

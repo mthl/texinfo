@@ -114,8 +114,8 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         resdir="${res_dir}${dir_suffix}/"
         if [ -d "${outdir}$dir" ]; then
           if [ -d "${resdir}$dir" ]; then
-          # ugly hack to avoid CVS
-            rm -f "${resdir}$dir/"*.*
+          # ugly hack to avoid CVS and .svn
+            rm -f "${resdir}$dir/"?*.*
           else
              mkdir "${resdir}$dir/"
           fi
@@ -278,7 +278,7 @@ do
         rm -f "${outdir}$dir/$basename.1"
       fi
       if [ -d "$results_dir/$dir" ]; then
-        diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
+        diff -a -u --exclude=CVS --exclude=.svn --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
           echo "D: $diffs_dir/$diff_base.diff"

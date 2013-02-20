@@ -23,7 +23,7 @@ EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
 
 dist-hook:
 	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
-	rm -rf `find $(distdir) -type d -name CVS`
+	rm -rf `find $(distdir) -type d -name .svn`
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.
@@ -59,9 +59,6 @@ distclean-local:
 dist-local:
 	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
 	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
-
-#dist-hook:
-#	tar -C $(srcdir) -c -f - --exclude CVS tp | tar -C $(distdir) -x -f -
 
 # Don't install native tools for cross compile.
 if TOOLS_ONLY

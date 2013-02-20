@@ -28,5 +28,5 @@ distclean-local:
 
 dist-hook:
 	for dir in $(test_dirs); do \
-		rm -rf `find "$(distdir)/$${dir}_res" -name CVS` ;\
+		rm -rf `find "$(distdir)/$${dir}_res" -name .svn` ;\
 	done

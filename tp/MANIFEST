@@ -896,6 +896,7 @@ t/results/menu/dash_in_menu.pl
 t/results/menu/detailmenu.pl
 t/results/menu/detailmenu_in_description.pl
 t/results/menu/detailmenu_on_subnodes.pl
+t/results/menu/detailmenu_unknown_node.pl
 t/results/menu/direntry_dircategory_after_first_node.pl
 t/results/menu/empty_menu_entry_name.pl
 t/results/menu/entry_after_detailmenu.pl
