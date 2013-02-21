@@ -73,6 +73,18 @@ one of the relevant sections:
   the C program was.  We hope all the many improvements make the new
   version worthwhile for users nevertheless.
 
+* Intentional incompatibilities:
+  . The previous makeinfo implementation accepted text inside @itemize,
+    @enumerate, etc., not within the scope of an @item.  This is
+    semantically inconsistent, leading to problems with some backends,
+    and thusnow produces a warning.
+    
+  . The previous makeinfo accepted ``irregular'' sectioning trees, for
+    example, when @top is not associated with the first node,
+    subsections are written directly under chapters (skipping levels),
+    and so on.  This produces an error in 5.0 and will be a warning in
+    the next release.
+  
 * pod2texi is a new (Perl) program that uses the capabilities of
   texi2any to translate Perl pod documentation to Texinfo.
   
