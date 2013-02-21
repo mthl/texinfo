@@ -5,6 +5,8 @@
 	tp/tests/run_parser_all.sh, texi2html/test/run_*.sh, 
 	texi2html/test/many_input_files/*.sh: adapt for SVN.
 	* tp/MANIFEST: regenerate.
+	* tp/Texinfo/Structuring.pm: lowering a section level is only a 
+	warning.
 
 2013-02-18  Karl Berry  <karl@gnu.org>  (tiny change)
 

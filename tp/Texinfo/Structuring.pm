@@ -264,7 +264,7 @@ sub sectioning_structure($$)
                           $content->{'cmdname'}), $content->{'line_nr'});
                 }
               } else {
-                $self->line_error(sprintf($self->__(
+                $self->line_warn(sprintf($self->__(
          "lowering the section level of \@%s appearing after a lower element"), 
                   $content->{'cmdname'}), $content->{'line_nr'});
                 $content->{'level'} = $up->{'level'} + 1;
