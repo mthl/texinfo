@@ -140,6 +140,17 @@ open {
 @bye
 @end ifset
 '],
+['ifset_in_command',
+'
+@file{
+@ifset x
+xset
+@end ifset
+@ifclear x
+xclear
+@end ifclear
+}
+'],
 ['ignored_in_ifset',
 '
 @ifset notset

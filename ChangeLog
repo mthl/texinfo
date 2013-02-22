@@ -3,6 +3,9 @@
 	* tp/Texinfo/Parser.pm: better handling of comments in @-commands
 	with line specially handled (@set, @ifset, @unmacro...).
 	Accept @set and @clear almost everywhere.
+	Accept that @set and @clear are not at the beginning of a line.
+	Do not warn for @end in style command, as it may be the @end of
+	a conditional that is correct in that context.
 
 2013-02-21  Karl Berry  <karl@gnu.org>
 

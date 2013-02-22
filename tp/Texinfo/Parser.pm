@@ -329,6 +329,7 @@ foreach my $no_paragraph_command (keys(%misc_commands)) {
 foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'refill', 
                                 'noindent', 'indent', 'columnfractions',
                                 'tab', 'item', 'headitem', 'verbatiminclude',
+                                'set', 'clear',
                                 'vskip', keys(%in_heading_commands)) {
   delete $begin_line_commands{$misc_not_begin_line};
 }
@@ -368,7 +369,7 @@ foreach my $command (keys(%brace_commands), keys(%no_brace_commands)) {
   $in_full_text_commands{$command} = 1;
 }
 foreach my $misc_command_in_full_text('c', 'comment', 'refill', 'noindent',
-                               'indent', 'columnfractions', 'set', 'clear') {
+                         'indent', 'columnfractions', 'set', 'clear', 'end') {
   $in_full_text_commands{$misc_command_in_full_text} = 1;
 }
 
