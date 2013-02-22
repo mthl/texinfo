@@ -15,6 +15,10 @@ my @test_cases = (
 @set 
 @set ?
 @set :-/ hey!
+@set a#b
+
+@clear aaa ggg
+@clear and&other
 
 @value{gurgl
 
@@ -24,6 +28,14 @@ my @test_cases = (
 '@set var val
 
 @value  {var}
+'],
+['comment_on_set_line',
+'@set x@c
+@set y @c
+@set z g@c
+@set t a vv @comment@ggg
+
+!@value{x}!, !@value{y}!, !@value{z}!, !@value{t}!
 '],
 ['value_zero',
 '@set zero 0

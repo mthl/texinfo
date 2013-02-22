@@ -305,7 +305,9 @@ foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
   $forbidden_index_name{$other_forbidden_index_name} = 1;
 }
 
+# @-commands that do not start a paragraph
 my %default_no_paragraph_commands;
+# @-commands that should be at a line beginning
 my %begin_line_commands;
 
 foreach my $command ('node', 'end') {
@@ -366,7 +368,7 @@ foreach my $command (keys(%brace_commands), keys(%no_brace_commands)) {
   $in_full_text_commands{$command} = 1;
 }
 foreach my $misc_command_in_full_text('c', 'comment', 'refill', 'noindent',
-                                       'indent', 'columnfractions') {
+                               'indent', 'columnfractions', 'set', 'clear') {
   $in_full_text_commands{$misc_command_in_full_text} = 1;
 }
 
@@ -383,7 +385,7 @@ foreach my $block_command (keys(%block_commands)) {
 # commands that may happen on lines where everything is
 # permitted
 my %in_full_line_commands = %in_full_text_commands;
-foreach my $not_in_full_line_commands('noindent', 'indent') {
+foreach my $not_in_full_line_commands('noindent', 'indent', 'set', 'clear') {
   delete $in_full_line_commands{$not_in_full_line_commands};
 }
 
@@ -1096,6 +1098,8 @@ sub _parse_macro_command_line($$$$$;$)
       @args = split(/\s*,\s*/, $1);
     }
  
+    # accept an @-command after the arguments in case there is a @c or
+    # @comment
     if ($args_def =~ /^\s*[^\@]/) {
       $self->line_error(sprintf($self->__("bad syntax for \@%s argument: %s"), 
                                  $command, $args_def),
@@ -1120,9 +1124,13 @@ sub _parse_macro_command_line($$$$$;$)
       $macro->{'extra'}->{'args_index'}->{$formal_arg} = $index;
       $index++;
     }
-  } else {
+  } elsif ($line !~ /\S/) {
     $self->line_error(sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
+    $macro->{'extra'}->{'invalid_syntax'} = 1;
+  } else {
+    $self->line_error(sprintf($self->
+                    __("bad name for \@%s"), $command), $line_nr);
     $macro->{'extra'}->{'invalid_syntax'} = 1;
   }
   return $macro;
@@ -4578,7 +4586,7 @@ sub _parse_texi($;$)
             my $ifvalue_true = 0;
             if ($command eq 'ifclear' or $command eq 'ifset') {
               # REVALUE
-              if ($line =~ /^\s+([\w\-]+)/) {
+              if ($line =~ /^\s+([\w\-]+)\s*(\@(c|comment)((\@|\s+).*)?)?$/) {
                 my $name = $1;
                 if ((exists($self->{'values'}->{$name}) and $command eq 'ifset')
                     or (!exists($self->{'values'}->{$name}) 
@@ -4586,14 +4594,17 @@ sub _parse_texi($;$)
                   $ifvalue_true = 1;
                 }
                 print STDERR "CONDITIONAL \@$command $name: $ifvalue_true\n" if ($self->{'DEBUG'});
+              } elsif ($line !~ /\S/) {
+                  $self->line_error(sprintf($self->
+                    __("%c%s requires a name"), ord('@'), $command), $line_nr);
               } else {
-                $self->line_error(sprintf($self->__("%c%s requires a name"), 
-                                           ord('@'), $command), $line_nr);
+                $self->line_error(sprintf($self->
+                    __("bad name for \@%s"), $command), $line_nr);
               }
             } elsif ($command eq 'ifcommanddefined' 
                      or $command eq 'ifcommandnotdefined') {
               # REMACRO
-              if ($line =~ /^\s+([[:alnum:]][[:alnum:]\-]*)/) {
+              if ($line =~ /^\s+([[:alnum:]][[:alnum:]\-]*)\s*(\@(c|comment)((\@|\s+).*)?)?$/) {
                 my $name = $1;
                 my $command_is_defined = (
                   exists($Texinfo::Common::all_commands{$name})
@@ -4609,9 +4620,12 @@ sub _parse_texi($;$)
                   $ifvalue_true = 1;
                 }
                 print STDERR "CONDITIONAL \@$command $name: $ifvalue_true\n" if ($self->{'DEBUG'});
+              } elsif ($line !~ /\S/) {
+                  $self->line_error(sprintf($self->
+                    __("%c%s requires a name"), ord('@'), $command), $line_nr);
               } else {
-                $self->line_error(sprintf($self->__("%c%s requires a name"), 
-                                           ord('@'), $command), $line_nr);
+                $self->line_error(sprintf($self->
+                    __("bad name for \@%s"), $command), $line_nr);
               }
             } elsif ($command =~ /^ifnot(.*)/) {
               $ifvalue_true = 1 if !($self->{'expanded_formats_hash'}->{$1}
@@ -5264,38 +5278,54 @@ sub _parse_special_misc_command($$$$)
   my $line_nr = shift;
   my $args = [];
 
+  my $remaining;
   if ($command eq 'set') {
     # REVALUE
-    if ($line =~ /^\s+([\w\-]+)\s*(.*?)\s*$/) {
+    #if ($line =~ s/^\s+([\w\-]+)(\s+(.*?))\s*$//) {
+    if ($line =~ /^\s+([\w\-]+)(\@(c|comment)((\@|\s+).*)?|\s+(.*?))?\s*$/) {
+      $line =~ s/\@(c|comment)((\@|\s+).*)?$//;
+      $line =~ /^\s+([\w\-]+)(\s+(.*?))?\s*$/;
       my $name = $1;
-      my $arg = $2;
+      my $arg = $3;
+      $arg = '' if (!defined($arg));
       $args = [$name, $arg];
       $self->{'values'}->{$name} = $arg
         unless(_ignore_global_commands($self));
-    } else {
+    } elsif ($line !~ /\S/) {
       $self->line_error(sprintf($self->
                   __("%c%s requires a name"), ord('@'), $command), $line_nr);
+    } else {
+      $self->line_error(sprintf($self->
+                    __("bad name for \@%s"), $command), $line_nr);
     }
   } elsif ($command eq 'clear') {
     # REVALUE
-    if ($line =~ /^\s+([\w\-]+)/) {
+    if ($line =~ /^\s+([\w\-]+)\s*(\@(c|comment)((\@|\s+).*)?)?$/) {
       $args = [$1];
       delete $self->{'values'}->{$1}
         unless(_ignore_global_commands($self));
-    } else {
+      #$remaining = $line;
+      #$remaining =~ s/^\s+([\w\-]+)\s*(\@(c|comment)((\@|\s+).*)?)?//;
+    } elsif ($line !~ /\S/) {
       $self->line_error(sprintf($self->
                   __("%c%s requires a name"), ord('@'), $command), $line_nr);
+    } else {
+      $self->line_error(sprintf($self->
+                    __("bad name for \@%s"), $command), $line_nr);
     }
   } elsif ($command eq 'unmacro') {
     # REMACRO
-    if ($line =~ /^\s+([[:alnum:]][[:alnum:]\-]*)/) {
+    if ($line =~ /^\s+([[:alnum:]][[:alnum:]\-]*)\s*(\@(c|comment)((\@|\s+).*)?)?$/) {
       $args = [$1];
       delete $self->{'macros'}->{$1}
         unless(_ignore_global_commands($self));
       print STDERR "UNMACRO $1\n" if ($self->{'DEBUG'});
+    } elsif ($line !~ /\S/) {
+      $self->line_error(sprintf($self->
+                  __("%c%s requires a name"), ord('@'), $command), $line_nr);
     } else {
       $self->line_error(sprintf($self->
-                 __("%c%s requires a name"), ord('@'), $command), $line_nr);
+                    __("bad name for \@%s"), $command), $line_nr);
     }
   } elsif ($command eq 'clickstyle') {
     # REMACRO
@@ -5303,11 +5333,8 @@ sub _parse_special_misc_command($$$$)
       $args = ['@'.$1];
       $self->{'clickstyle'} = $1
         unless(_ignore_global_commands($self));
-      my $remaining = $line;
-      $remaining =~ s/^\s+@([[:alnum:]][[:alnum:]\-]*)({})?\s*//;
-      $self->line_warn(sprintf($self->__(
-                           "remaining argument on \@%s line: %s"), 
-                             $command, $remaining), $line_nr) if ($remaining);
+      $remaining = $line;
+      $remaining =~ s/^\s+@([[:alnum:]][[:alnum:]\-]*)({})?\s*(\@(c|comment)((\@|\s+).*)?)?//;
     } else {
       $self->line_error (sprintf($self->__(
                  "\@%s should only accept a \@-command as argument, not `%s'"),
@@ -5315,6 +5342,14 @@ sub _parse_special_misc_command($$$$)
     }
   } else {
     die $self->_bug_message("Unknown special command $command", $line_nr);
+  }
+  if (defined($remaining)) {
+    chomp($remaining);
+    if ($remaining ne '') {
+      $self->line_warn(sprintf($self->__(
+                         "remaining argument on \@%s line: %s"), 
+                           $command, $remaining), $line_nr);
+    }
   }
   return ($args);
 }
