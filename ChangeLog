@@ -1,3 +1,9 @@
+2013-02-22  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/pcterm.c (pc_initialize_terminal): Move prototype outside
+	of w32_info_init to the file level.
+	bug-texinfo, 19 Feb 2013 19:40:48.
+
 2013-02-22  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Parser.pm: better handling of comments in @-commands

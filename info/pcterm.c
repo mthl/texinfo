@@ -123,12 +123,11 @@ w32_cleanup (void)
 }
 
 static void w32_info_init (void) __attribute__((constructor));
+static void pc_initialize_terminal (char *);
 
 static void
 w32_info_init (void)
 {
-  static void pc_initialize_terminal (char *);
-
   /* We need to set this single hook here; the rest
      will be set by pc_initialize_terminal when it is called.  */
   terminal_initialize_terminal_hook = pc_initialize_terminal;
