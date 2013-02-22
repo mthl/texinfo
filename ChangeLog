@@ -1,5 +1,9 @@
 2013-02-22  Eli Zaretskii  <eliz@gnu.org>
 
+	* install-info/ginstall-info.exe.manifest: new file.
+	* install-info/Makefile.am (dist_bin_SCRIPTS) [HOST_IS_WINDOWS]:
+	add it.  bug-texinfo, 19 Feb 2013 19:39:51.
+
 	* info/pcterm.c (pc_initialize_terminal): Move prototype outside
 	of w32_info_init to the file level.
 	bug-texinfo, 19 Feb 2013 19:40:48.
