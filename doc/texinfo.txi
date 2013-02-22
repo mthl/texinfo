@@ -19159,6 +19159,7 @@ If @var{dir-file} (however specified) does not exist,
 @cindex Compressed dir files, reading
 @cindex XZ-compressed dir files, reading
 @cindex Bzipped dir files, reading
+@cindex Lzip-compressed dir files, reading
 @cindex LZMA-compressed dir files, reading
 @cindex Dir files, compressed
 If any input file is compressed with @code{gzip} (@pxref{Top,,, gzip,
@@ -19167,8 +19168,8 @@ And if @var{dir-file} is compressed, @code{install-info} also
 automatically leaves it compressed after writing any changes.  If
 @var{dir-file} itself does not exist, @code{install-info} tries to
 open @file{@var{dir-file}.gz}, @file{@var{dir-file}.xz},
-@file{@var{dir-file}.bz2}, and @file{@var{dir-file}.lzma}, in that
-order.
+@file{@var{dir-file}.bz2}, @file{@var{dir-file}.lz}, and
+@file{@var{dir-file}.lzma}, in that order.
 
 Options:
 

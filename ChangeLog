@@ -1,3 +1,11 @@
+2013-02-22  Antonio Diaz Diaz  <ant_diaz@teleline.es>  (tiny change)
+
+	* info/filesys.c (compress_suffixes): Add .lz/lzip.
+	* install-info/install-info.c (open_possibly_compressed_file):
+	Add lzip support.
+	* doc/info-stnd.texi,
+	* doc/texinfo.txi: mention it.
+
 2013-02-22  Eli Zaretskii  <eliz@gnu.org>
 
 	* install-info/ginstall-info.exe.manifest: new file.

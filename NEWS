@@ -22,7 +22,14 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+5.1
+* info:
+  . lzip (.lz) compression supported.
+  
+* install-info:
+  . lzip (.lz) compression supported.
 
+
 5.0 (16 February 2013)
 * Language:
   . Texinfo commands are supported in node names.

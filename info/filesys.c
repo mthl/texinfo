@@ -57,8 +57,10 @@ static char *info_suffixes[] = {
 static COMPRESSION_ALIST compress_suffixes[] = {
 #if STRIP_DOT_EXE
   { ".gz", "gunzip" },
+  { ".lz", "lunzip" },
 #else
   { ".gz", "gzip -d" },
+  { ".lz", "lzip -d" },
 #endif
   { ".xz", "unxz" },
   { ".bz2", "bunzip2" },
