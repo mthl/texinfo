@@ -307,7 +307,7 @@ Something
 @end ifset
 '],
 ['bad_ifset_argument',
-'@ifset a&b
+'@ifset a|b
 Ra&b
 @end ifset
 '],

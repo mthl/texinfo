@@ -15,10 +15,12 @@ my @test_cases = (
 @set 
 @set ?
 @set :-/ hey!
-@set a#b
+@set a@b
+@set :-" bad
+@set } no
 
 @clear aaa ggg
-@clear and&other
+@clear and{other
 
 @value{gurgl
 

@@ -48,7 +48,23 @@ $result_trees{'bad_syntax'} = {
     {
       'cmdname' => 'set',
       'extra' => {
-        'arg_line' => ' a#b
+        'arg_line' => ' a@b
+'
+      },
+      'parent' => {}
+    },
+    {
+      'cmdname' => 'set',
+      'extra' => {
+        'arg_line' => ' :-" bad
+'
+      },
+      'parent' => {}
+    },
+    {
+      'cmdname' => 'set',
+      'extra' => {
+        'arg_line' => ' } no
 '
       },
       'parent' => {}
@@ -70,7 +86,7 @@ $result_trees{'bad_syntax'} = {
     {
       'cmdname' => 'clear',
       'extra' => {
-        'arg_line' => ' and&other
+        'arg_line' => ' and{other
 '
       },
       'parent' => {}
@@ -125,21 +141,25 @@ $result_trees{'bad_syntax'}{'contents'}[6]{'parent'} = $result_trees{'bad_syntax
 $result_trees{'bad_syntax'}{'contents'}[7]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[8]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[9]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'}{'contents'}[10];
 $result_trees{'bad_syntax'}{'contents'}[10]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[11]{'parent'} = $result_trees{'bad_syntax'};
+$result_trees{'bad_syntax'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'}{'contents'}[12];
 $result_trees{'bad_syntax'}{'contents'}[12]{'parent'} = $result_trees{'bad_syntax'};
+$result_trees{'bad_syntax'}{'contents'}[13]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[14]{'parent'} = $result_trees{'bad_syntax'};
+$result_trees{'bad_syntax'}{'contents'}[16]{'parent'} = $result_trees{'bad_syntax'};
 
 $result_texis{'bad_syntax'} = '
 @set
 @set 
 @set ?
 @set :-/ hey!
-@set a#b
+@set a@b
+@set :-" bad
+@set } no
 
 @clear aaa ggg
-@clear and&other
+@clear and{other
 
 gurgl
 
@@ -201,46 +221,64 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':8: bad name for @clear
+    'error_line' => ':7: bad name for @set
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'bad name for @set',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':8: bad name for @set
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'bad name for @clear',
+    'text' => 'bad name for @set',
     'type' => 'error'
   },
   {
-    'error_line' => ':9: bad name for @clear
+    'error_line' => ':10: bad name for @clear
 ',
     'file_name' => '',
-    'line_nr' => 9,
+    'line_nr' => 10,
     'macro' => '',
     'text' => 'bad name for @clear',
     'type' => 'error'
   },
   {
-    'error_line' => ':11: bad syntax for @value
+    'error_line' => ':11: bad name for @clear
 ',
     'file_name' => '',
     'line_nr' => 11,
+    'macro' => '',
+    'text' => 'bad name for @clear',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':13: bad syntax for @value
+',
+    'file_name' => '',
+    'line_nr' => 13,
     'macro' => '',
     'text' => 'bad syntax for @value',
     'type' => 'error'
   },
   {
-    'error_line' => ':11: misplaced {
+    'error_line' => ':13: misplaced {
 ',
     'file_name' => '',
-    'line_nr' => 11,
+    'line_nr' => 13,
     'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':13: warning: undefined flag: unknown
+    'error_line' => ':15: warning: undefined flag: unknown
 ',
     'file_name' => '',
-    'line_nr' => 13,
+    'line_nr' => 15,
     'macro' => '',
     'text' => 'undefined flag: unknown',
     'type' => 'warning'

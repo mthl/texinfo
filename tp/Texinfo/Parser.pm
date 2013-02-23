@@ -4612,7 +4612,7 @@ sub _parse_texi($;$)
             my $ifvalue_true = 0;
             if ($command eq 'ifclear' or $command eq 'ifset') {
               # REVALUE
-              if ($line =~ /^\s+([\w\-]+)\s*(\@(c|comment)((\@|\s+).*)?)?$/) {
+              if ($line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)\s*(\@(c|comment)((\@|\s+).*)?)?$/) {
                 my $name = $1;
                 if ((exists($self->{'values'}->{$name}) and $command eq 'ifset')
                     or (!exists($self->{'values'}->{$name}) 
@@ -5308,9 +5308,9 @@ sub _parse_special_misc_command($$$$)
   if ($command eq 'set') {
     # REVALUE
     #if ($line =~ s/^\s+([\w\-]+)(\s+(.*?))\s*$//) {
-    if ($line =~ /^\s+([\w\-]+)(\@(c|comment)((\@|\s+).*)?|\s+(.*?))?\s*$/) {
+    if ($line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\@(c|comment)((\@|\s+).*)?|\s+(.*?))?\s*$/) {
       $line =~ s/\@(c|comment)((\@|\s+).*)?$//;
-      $line =~ /^\s+([\w\-]+)(\s+(.*?))?\s*$/;
+      $line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\s+(.*?))?\s*$/;
       my $name = $1;
       my $arg = $3;
       $arg = '' if (!defined($arg));
@@ -5326,7 +5326,7 @@ sub _parse_special_misc_command($$$$)
     }
   } elsif ($command eq 'clear') {
     # REVALUE
-    if ($line =~ /^\s+([\w\-]+)\s*(\@(c|comment)((\@|\s+).*)?)?$/) {
+    if ($line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)\s*(\@(c|comment)((\@|\s+).*)?)?$/) {
       $args = [$1];
       delete $self->{'values'}->{$1}
         unless(_ignore_global_commands($self));
