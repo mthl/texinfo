@@ -3,6 +3,8 @@
 	* tp/t/input_files/sample_utf8.texi: avoid having two nodes differing
 	only in case, for case-sensitve filesystems.
 	Report in http://savannah.gnu.org/bugs/?38380.
+	* tp/Makefile.am, tp/maintain/*: modularize and rename scripts
+	associated to standalone modules handling.
 
 2013-02-22  Karl Berry  <karl@gnu.org>
 

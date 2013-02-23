@@ -77,14 +77,15 @@ maintain/Makefile_perl_po
 maintain/all_tests.sh
 maintain/catalog.xml.in
 maintain/change_perl_modules_version.sh
+maintain/clean_perl_module_files.sh
 maintain/language-subtag-registry
-maintain/prepare_perl_module.sh
+maintain/prepare_perl_module_files.sh
+maintain/prepare_perl_standalone_module_archive.sh
 maintain/regenerate_cmd_tests.sh
 maintain/regenerate_converters_documentation.sh
 maintain/regenerate_docstr.sh
 maintain/regenerate_documentlanguages.pl
 maintain/regenerate_file_lists.pl
-maintain/regenerate_perl_module_files.sh
 maintain/template.pod
 po/Makefile
 po/PACKAGE
@@ -280,6 +281,7 @@ t/results/conditionals/ifclear_in_ifset.pl
 t/results/conditionals/ifclear_in_ifset_set.pl
 t/results/conditionals/ifnot_format_conditional.pl
 t/results/conditionals/ifnotinfo_exception.pl
+t/results/conditionals/ifset_in_command.pl
 t/results/conditionals/ignore_not_closed.pl
 t/results/conditionals/ignored_in_ifset.pl
 t/results/conditionals/info_ifinfo_ifnotplaintext.pl
@@ -410,7 +412,7 @@ t/results/converters_tests/ref_in_sectioning.pl
 t/results/converters_tests/refs_formatting.pl
 t/results/converters_tests/sample_utf8.pl
 t/results/converters_tests/sample_utf8/res_html/DiYiZhang_0028First-Chapter_0029.html
-t/results/converters_tests/sample_utf8/res_html/Index.html
+t/results/converters_tests/sample_utf8/res_html/Index-node.html
 t/results/converters_tests/sample_utf8/res_html/Second-Chapter-AE-AE-ae-ae.html
 t/results/converters_tests/sample_utf8/res_html/index.html
 t/results/converters_tests/sample_utf8/res_info/sample_utf8.info

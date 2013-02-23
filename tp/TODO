@@ -102,6 +102,10 @@ anchor in flushright, on an empty line, with a current byte offset.
 Future features
 ===============
 
+Update Unicode-EastAsianWidth.  The new version has improved tests
+and a new license, but no functional change.  So maybe wait a
+bit to update.
+
 Add some elements of texinfo that are not of interest in the
 tree, like beginning and end of included file, @ protecting
 end of line in @def*, begin and end of user defined macro

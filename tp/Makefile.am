@@ -177,16 +177,17 @@ AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcd
 maintenance_files = \
   maintain/all_tests.sh \
   maintain/change_perl_modules_version.sh \
+  maintain/clean_perl_module_files.sh \
   maintain/language-subtag-registry \
   maintain/Makefile_perl_po \
   maintain/MANIFEST_generated_files \
-  maintain/prepare_perl_module.sh \
+  maintain/prepare_perl_module_files.sh \
+  maintain/prepare_perl_standalone_module_archive.sh \
   maintain/regenerate_cmd_tests.sh \
   maintain/regenerate_converters_documentation.sh \
   maintain/regenerate_docstr.sh \
   maintain/regenerate_documentlanguages.pl \
   maintain/regenerate_file_lists.pl \
-  maintain/regenerate_perl_module_files.sh \
   maintain/template.pod \
   maintain/catalog.xml.in
 
