@@ -82,6 +82,10 @@ clear that there should be, though.
 Missing tests
 =============
 
+Test node files that differ only in case.  This may be rather complicated,
+however, as http://savannah.gnu.org/bugs/?38380 shows.  This may be linked
+to a possible test of CASE_INSENSITIVE_FILENAMES.
+
 Unit test of end_line_count for Texinfo/Convert/Paragraph.pm .... containers.
 
 In html test empty @top for title, with different cases for 
@@ -92,8 +96,6 @@ enable encoding and entities.
 
 in html test footnotestyle separate.  There are such tests in tp/tests,
 maybe they are sufficient, but they are only done for long checks.
-
-Test of CASE_INSENSITIVE_FILENAMES.
 
 anchor in flushright, on an empty line, with a current byte offset.
 
