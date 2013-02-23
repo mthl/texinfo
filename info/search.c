@@ -1,5 +1,5 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.14 2012-04-12 10:38:29 gray Exp $
+   $Id$
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011
    Free Software Foundation, Inc.

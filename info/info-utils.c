@@ -1,5 +1,5 @@
 /* info-utils.c -- miscellanous.
-   $Id: info-utils.c,v 1.21 2013-02-19 00:34:35 karl Exp $
+   $Id$
 
    Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013 Free Software Foundation, Inc.

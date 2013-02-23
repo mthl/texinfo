@@ -1,5 +1,5 @@
 /* install-info -- merge Info directory entries from an Info file.
-   $Id: install-info.c,v 1.23 2013-01-06 23:18:56 karl Exp $
+   $Id$
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: srclist-txi,v 1.1 2013-01-19 15:54:04 karl Exp $
+# $Id$
 # Texinfo's wrapper for the Gnulib script config/srclist-update,
 # to define particular variables our srclist.txt uses.
 # 

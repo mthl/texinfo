@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: regenerate_docstr.sh,v 1.3 2013-02-10 15:14:12 pertusus Exp $
+# $Id$
 # Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives

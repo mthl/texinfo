@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.540 2013-02-17 00:19:12 karl Exp $
+@c $Id$
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -22114,7 +22114,7 @@ and other version control systems, which expand it into a string such
 as:
 
 @example
-$Id: texinfo.txi,v 1.540 2013-02-17 00:19:12 karl Exp $
+$Id$
 @end example
 
 (This is potentially useful in all sources that use version control,

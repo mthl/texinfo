@@ -1,5 +1,5 @@
 /* terminal.h -- The external interface to terminal I/O.
-   $Id: terminal.h,v 1.6 2007-07-01 21:20:31 karl Exp $
+   $Id$
 
    Copyright (C) 1993, 1996, 1997, 2001, 2002, 2004, 2007
    Free Software Foundation, Inc.

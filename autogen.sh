@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autogen.sh,v 1.13 2013-02-10 15:14:11 pertusus Exp $
+# $Id$
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then

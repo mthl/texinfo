@@ -13,7 +13,7 @@
 # Taken from texi2html.pm in 2009.
 # Originally written by Olaf Bachmann.
 #
-# $Id: html.pm,v 1.4 2011-05-29 15:04:51 pertusus Exp $
+# $Id$
 
 use strict;
 

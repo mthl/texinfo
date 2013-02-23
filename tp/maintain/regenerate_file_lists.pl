@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# $Id: regenerate_file_lists.pl,v 1.14 2013-02-09 21:24:21 pertusus Exp $
+# $Id$
 # Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives

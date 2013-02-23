@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.pm,v 1.3 2011-05-01 09:42:22 pertusus Exp $
+# $Id$
 
 
 ##################################################################

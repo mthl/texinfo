@@ -20,7 +20,7 @@ package Getopt::MySimple;
 
 # --------------------------------------------------------------------------
 # Locally modified by obachman (Display type instead of env, order by cmp)
-# $Id: MySimple.pm,v 1.8 2009-08-23 21:50:15 pertusus Exp $
+# $Id$
 
 # use strict;
 # no strict 'refs';

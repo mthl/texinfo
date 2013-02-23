@@ -1,5 +1,5 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h,v 1.10 2012-11-17 17:16:19 gray Exp $
+   $Id$
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2011, 2012
    Free Software Foundation, Inc.

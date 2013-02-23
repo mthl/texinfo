@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.42 2013-02-05 00:23:49 karl Exp $
+# $Id$
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
