@@ -1236,15 +1236,28 @@ sub _command_error($$$$;@)
 
 # currently doesn't do much more than
 # return $_[1]->{'parent'}
-sub _close_brace_command($$$)
+sub _close_brace_command($$$;$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
+  my $closed_command = shift;
+  my $interrupting_command = shift;
 
   if ($current->{'cmdname'} ne 'verb' or $current->{'type'} eq '') {
-    $self->_command_error($current, $line_nr, 
-       $self->__("%c%s missing close brace"), ord('@'), $current->{'cmdname'});
+    if (defined($closed_command)) {
+      $self->_command_error($current, $line_nr,
+        $self->__("\@end %s seen before \@%s closing brace"), 
+                  $closed_command, $current->{'cmdname'});
+    } elsif (defined($interrupting_command)) {
+      $self->_command_error($current, $line_nr,
+        $self->__("\@%s seen before \@%s closing brace"), 
+                  $interrupting_command, $current->{'cmdname'});
+                                                       
+    } else {
+      $self->_command_error($current, $line_nr, 
+        $self->__("%c%s missing close brace"), ord('@'), $current->{'cmdname'});
+    }
   } else {
     $self->_command_error($current, $line_nr,
        $self->__("\@%s missing closing delimiter sequence: %s}"),
@@ -1269,28 +1282,34 @@ sub _in_code($$)
 }
 
 # close brace commands, that don't set a new context (ie @caption, @footnote)
-sub _close_all_style_commands($$$)
+sub _close_all_style_commands($$$;$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
+  my $closed_command = shift;
+  my $interrupting_command = shift;
 
   while ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
           and exists $brace_commands{$current->{'parent'}->{'cmdname'}}
           and !exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
-    $current = _close_brace_command($self, $current->{'parent'}, $line_nr);
+    $current = _close_brace_command($self, $current->{'parent'}, $line_nr,
+                                    $closed_command, $interrupting_command);
   }
   return $current;
 }
 
 # close brace commands except for @caption, @footnote then the paragraph
-sub _end_paragraph($$$)
+sub _end_paragraph($$$;$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
+  my $closed_command = shift;
+  my $interrupting_command = shift;
 
-  $current = _close_all_style_commands($self, $current, $line_nr);
+  $current = _close_all_style_commands($self, $current, $line_nr, 
+                                       $closed_command, $interrupting_command);
   if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
     print STDERR "CLOSE PARA\n" if ($self->{'DEBUG'});
     $current = $current->{'parent'};
@@ -1299,13 +1318,16 @@ sub _end_paragraph($$$)
 }
 
 # close brace commands except for @caption, @footnote then the preformatted
-sub _end_preformatted($$$)
+sub _end_preformatted($$$;$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
+  my $closed_command = shift;
+  my $interrupting_command = shift;
 
-  $current = _close_all_style_commands($self, $current, $line_nr);
+  $current = _close_all_style_commands($self, $current, $line_nr,
+                                       $closed_command, $interrupting_command);
   if ($current->{'type'} and $preformatted_contexts{$current->{'type'}}) {
     print STDERR "CLOSE PREFORMATTED $current->{'type'}\n" if ($self->{'DEBUG'});
     # completly remove void preformatted contexts
@@ -1623,7 +1645,8 @@ sub _close_current($$$;$$)
     if (exists($brace_commands{$current->{'cmdname'}})) {
       pop @{$self->{'context_stack'}}
          if (exists $context_brace_commands{$current->{'cmdname'}});
-      $current = _close_brace_command($self, $current, $line_nr);
+      $current = _close_brace_command($self, $current, $line_nr, 
+                                      $closed_command, $interrupting_command);
     } elsif (exists($block_commands{$current->{'cmdname'}})) {
       if (defined($closed_command)) {
         $self->line_error(sprintf($self->__("`\@end' expected `%s', but saw `%s'"),
@@ -1696,8 +1719,10 @@ sub _close_commands($$$;$$)
   my $closed_command = shift;
   my $interrupting_command = shift;;
 
-  $current = _end_paragraph($self, $current, $line_nr);
-  $current = _end_preformatted($self, $current, $line_nr);
+  $current = _end_paragraph($self, $current, $line_nr, $closed_command, 
+                            $interrupting_command);
+  $current = _end_preformatted($self, $current, $line_nr, $closed_command,
+                               $interrupting_command);
 
         # stop if the command is found
   while (!($closed_command and $current->{'cmdname'}

@@ -24,6 +24,8 @@
 	Accept that @set and @clear are not at the beginning of a line.
 	Do not warn for @end in style command, as it may be the @end of
 	a conditional that is correct in that context.
+	Improve error messages of @-commands with braces closed because
+	of seeing a command before the closing brace.
 
 2013-02-21  Karl Berry  <karl@gnu.org>
 
