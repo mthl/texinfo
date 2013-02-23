@@ -95,11 +95,6 @@ one of the relevant sections:
     when @node pointers are implicitly determined, the consistency of
     @menu and the sectioning tree is checked.  (If node pointers are
     explicitly specified in the document, the tree can still be irregular.)
-
-    example, when @top is not associated with the first node,
-    subsections are written directly under chapters (skipping levels),
-    and so on.  This produces an error in 5.0 and will be a warning in
-    the next release.
   
 * pod2texi is a new (Perl) program that uses the capabilities of
   texi2any to translate Perl pod documentation to Texinfo.
