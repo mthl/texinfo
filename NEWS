@@ -23,6 +23,11 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 5.1
+* texi2any:
+  . irregular sectioning trees (see 5.0 news item) produce a warning
+    rather than an error.
+  . @set in the middle of the line no longer produces a warning.
+  
 * info:
   . lzip (.lz) compression supported.
   
@@ -84,9 +89,13 @@ one of the relevant sections:
   . The previous makeinfo implementation accepted text inside @itemize,
     @enumerate, etc., not within the scope of an @item.  This is
     semantically inconsistent, leading to problems with some backends,
-    and thusnow produces a warning.
+    and thus now produces a warning.
     
-  . The previous makeinfo accepted ``irregular'' sectioning trees, for
+  . The previous makeinfo accepted ``irregular'' sectioning trees.  Now
+    when @node pointers are implicitly determined, the consistency of
+    @menu and the sectioning tree is checked.  (If node pointers are
+    explicitly specified in the document, the tree can still be irregular.)
+
     example, when @top is not associated with the first node,
     subsections are written directly under chapters (skipping levels),
     and so on.  This produces an error in 5.0 and will be a warning in

@@ -152,3 +152,5 @@ relink texinfo $ver
   ... announcements:
 news item at savannah.
 send announcement to info-gnu, cc bug-texinfo.
+
+  ... update on CPAN.

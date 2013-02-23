@@ -1,3 +1,12 @@
+2013-02-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (@t{@@set @@value}): mention that @set
+	need not appear at the beginning of a line.
+	(@t{@@enumerate}, @t{@@itemize}): clarify that normal text cannot
+	appear before the first @item (any more).
+	
+	* README-hacking: include CPAN update in release procedure.
+
 2013-02-22  Antonio Diaz Diaz  <ant_diaz@teleline.es>  (tiny change)
 
 	* info/filesys.c (compress_suffixes): Add .lz/lzip.

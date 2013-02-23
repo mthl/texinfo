@@ -9016,9 +9016,9 @@ Two-column tables, optionally with indexing.
 @findex itemize
 @cindex Itemization
 
-The @code{@@itemize} command produces sequences of indented
-paragraphs, with a bullet or other mark inside the left margin
-at the beginning of each paragraph for which such a mark is desired.
+The @code{@@itemize} command produces a sequence of ``items'', each
+starting with a bullet or other mark inside the left margin, and
+generally indented.
 
 @cindex @code{@@w}, for blank items
 Begin an itemized list by writing @code{@@itemize} at the beginning of
@@ -9029,22 +9029,32 @@ Texinfo command that generates a mark.  Usually, you will write
 character in the Info file.  (When you write the mark command such as
 @code{@@bullet} after an @code{@@itemize} command, you may omit the
 @samp{@{@}}.)  If you don't specify a mark command, the default is
-@code{@@bullet}.  If you don't want any mark at all, use
-@code{@@w@{@}} (in this case the braces are required).
+@code{@@bullet}.
 
-Write the text of the indented paragraphs themselves after the
-@code{@@itemize}, up to another line that says @code{@@end
-itemize}.
+If you don't want any mark at all, but still want items, use
+@code{@@w@{@}} (in this case the braces are required).  If you just
+want indented text and not a list of items, use
+@code{@@indentedblock}; @pxref{@t{@@indentedblock}}.
 
 @findex item
-At the beginning of each paragraph for which a mark in the margin is
-desired, write a line that starts with @code{@@item}.  It is ok to
-have text following the @code{@@item}.
+After the @code{@@itemize}, write your items, each starting with
+@code{@@item}.  Text can follow on the same line as the @code{@@item}.
+The text of an item can continue for more than one paragraph.
+
+On the other hand, normal text before the first @code{@@item}
+(``outside'' of any item) produces a warning, since some output
+formats (e.g., HTML, Docbook) strictly require all text inside an
+itemized list to be associated with an item.
+
+Index entries and comments are allowed before @code{@@item}, though,
+including the first, since historically this has been a common
+practice.  They automatically moved (internally) to after the
+@code{@@item}, so the output is as expected.
 
 Usually, you should put a blank line before an @code{@@item}.  This
 puts a blank line in the Info file. (@TeX{} inserts the proper
-interline whitespace in either case.)  Except when the entries are
-very brief, these blank lines make the list look better.
+vertical space in any case.)  Except when the entries are very brief,
+these blank lines make the list look better.
 
 Here is an example of the use of @code{@@itemize}, followed by the
 output it produces.  @code{@@bullet} produces an @samp{*} in Info and
@@ -9129,9 +9139,9 @@ Second outer item.
 @findex enumerate
 @cindex Enumeration
 
-@code{@@enumerate} is like @code{@@itemize}
-(@pxref{@t{@@itemize}}), except that the labels on the items are
-successive integers or letters instead of bullets.
+@code{@@enumerate} is like @code{@@itemize} (@pxref{@t{@@itemize}}),
+except that the labels on the items are successive integers or letters
+instead of bullets.
 
 Write the @code{@@enumerate} command at the beginning of a line.  The
 command does not require an argument, but accepts either a number or a
@@ -9143,8 +9153,9 @@ the list with that letter.
 
 Write the text of the enumerated list in the same way as an itemized
 list: write a line starting with @code{@@item} at the beginning of
-each paragraph that you want enumerated.  It is ok to have text
-following the @code{@@item}.
+each item in the enumeration.  It is ok to have text following the
+@code{@@item}, and the text for an item can continue for several
+paragraphs.
 
 You should put a blank line between entries in the list.
 This generally makes it easier to read the Info file.
@@ -14224,6 +14235,8 @@ only letters and numerals in a flag name, not @samp{-} or
 limitations in @TeX{}.
 
 The value is the remainder of the input line, and can contain anything.
+However, unlike most other commands which take the rest of the line as
+a value, @code{@@set} need not appear at the beginning of a line.
 
 Write the @code{@@set} command like this:
 
