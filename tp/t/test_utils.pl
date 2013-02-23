@@ -75,8 +75,12 @@ my $input_files_dir = $srcdir."t/input_files/";
 
 our $output_files_dir = 't/output_files/';
 foreach my $dir ('t', 't/results', $output_files_dir) {
+  my $error;
+  # to avoid a race conditon, first create the dir then test that it
+  # exists
+  mkdir $dir or $error = $!;
   if (! -d $dir) {
-    mkdir $dir or die "mkdir $dir: $!\n";
+    die "mkdir $dir: $error\n";
   }
 }
 

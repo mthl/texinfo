@@ -87,7 +87,7 @@ foreach my $file (sort(keys(%files)), sort(keys(%include_files))) {
 print INCLUDE "\n\n";
 
 print INCLUDE "t/include_dir:\n".
-   "\t".'$(mkdir_p) $@'."\n\n";
+   "\t".'$(MKDIR_P) $@'."\n\n";
 my $test_copied_include_files = 'test_copied_include_files =';
 foreach my $include_file (keys(%include_files)) {
   my $bfile = basename($include_file);

@@ -47,7 +47,7 @@ $(srcdir)/../po_document/'"$lingua.gmo"': $(srcdir)/../po_document/'"$lingua.po"
 	cd $(srcdir)/../po_document/ && $(MAKE) $(AM_MAKEFLAGS) '"$lingua.gmo"'
 
 LocaleData/'"$lingua"'/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/'"$lingua"'.gmo
-	$(mkdir_p) `dirname $@`
+	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/'"$lingua"'.gmo $@
 
 ' >>$outfile
