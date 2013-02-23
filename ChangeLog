@@ -5,6 +5,8 @@
 	Report in http://savannah.gnu.org/bugs/?38380.
 	* tp/Makefile.am, tp/maintain/*: modularize and rename scripts
 	associated to standalone modules handling.
+	* tp/Convert/Plaintext.pm: use OPEN_QUOTE_SYMBOL and 
+	CLOSE_QUOTE_SYMBOL.
 
 2013-02-22  Karl Berry  <karl@gnu.org>
 

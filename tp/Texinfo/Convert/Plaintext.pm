@@ -371,6 +371,18 @@ sub converter_initialize($)
       $self->{'style_map'}->{$quoted_command} = ["\x{2018}", "\x{2019}"];
     }
   }
+  if (defined($self->get_conf('OPEN_QUOTE_SYMBOL'))) {
+    foreach my $quoted_command (@quoted_commands) {
+      $self->{'style_map'}->{$quoted_command}->[0] 
+       = $self->get_conf('OPEN_QUOTE_SYMBOL');
+    }
+  }
+  if (defined($self->get_conf('CLOSE_QUOTE_SYMBOL'))) {
+    foreach my $quoted_command (@quoted_commands) {
+      $self->{'style_map'}->{$quoted_command}->[1] 
+       = $self->get_conf('CLOSE_QUOTE_SYMBOL');
+    }
+  }
 
   return $self;
 }
