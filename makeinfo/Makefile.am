@@ -28,7 +28,8 @@ makeinfo_SOURCES = \
   files.c files.h float.c float.h footnote.c footnote.h \
   html.c html.h index.c index.h insertion.c insertion.h lang.c lang.h \
   macro.c macro.h makeinfo.c makeinfo.h multi.c multi.h node.c node.h \
-  sectioning.c sectioning.h toc.c toc.h xml.c xml.h xref.c xref.h
+  sectioning.c sectioning.h toc.c toc.h xml.c xml.h xref.c xref.h \
+  substring.c xexit.c xsetenv.c xsetenv.h
 
 EXTRA_DIST = README
 
