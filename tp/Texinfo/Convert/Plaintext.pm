@@ -457,6 +457,9 @@ sub output($$)
   
   my $fh;
   if ($outfile ne '') {
+    if ($self->get_conf('VERBOSE')) {
+      print STDERR "Output file $outfile\n";
+    }
     $fh = $self->Texinfo::Common::open_out($outfile);
     if (!$fh) {
       $self->document_error(sprintf($self->__("could not open %s for writing: %s"),

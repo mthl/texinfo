@@ -85,6 +85,9 @@ sub output($)
 
   my $fh;
   if (! $self->{'output_file'} eq '') {
+    if ($self->get_conf('VERBOSE')) {
+      print STDERR "Output file $self->{'output_file'}\n";
+    }
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
@@ -148,6 +151,10 @@ sub output($)
                                   $self->{'output_file'}, $close_error));
             return undef;
           }
+          if ($self->get_conf('VERBOSE')) {
+            print STDERR "Renaming first output file as ".
+                  $self->{'output_file'}.'-'.$out_file_nr."\n";
+          }
           unless (rename($self->{'output_file'}, 
                          $self->{'output_file'}.'-'.$out_file_nr)) {
             $self->document_error(sprintf($self->__("rename %s failed: %s"),
@@ -173,6 +180,10 @@ sub output($)
           }
         }
         $out_file_nr++;
+        if ($self->get_conf('VERBOSE')) {
+          print STDERR "New output file ".
+                $self->{'output_file'}.'-'.$out_file_nr."\n";
+        }
         $fh = $self->Texinfo::Common::open_out (
                                $self->{'output_file'}.'-'.$out_file_nr); 
         if (!$fh) {
@@ -196,6 +207,9 @@ sub output($)
       $self->document_error(sprintf($self->__("error on closing %s: %s"),
                             $self->{'output_file'}.'-'.$out_file_nr, $!));
       return undef;
+    }
+    if ($self->get_conf('VERBOSE')) {
+      print STDERR "Outputing the split manual file $self->{'output_file'}\n";
     }
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
