@@ -250,6 +250,7 @@ install-data-local:
 	fi
 
 install-exec-hook:
+	rm -f $(DESTDIR)$(bindir)/makeinfo
 	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
 
 dist-hook:

@@ -1,5 +1,9 @@
 2013-02-24  Karl Berry  <karl@gnu.org>
 
+	* tp/Makefile.am (install-exec-hook): rm old makeinfo,
+	possibly a binary, before making the link.
+	Report from Ken Moffat, 23 Feb 2013 21:31:33.
+
 	* doc/texinfo.txi (Other Customization Variables): OPEN_ and
 	CLOSE_QUOTE_SYMBOL now apply to Info too.
 	(@t{@@code}): mention this.
