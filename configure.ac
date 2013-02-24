@@ -97,6 +97,25 @@ dnl gettext Makefiles may need MKINSTALLDIRS
 MKINSTALLDIRS="\$(top_srcdir)/build-aux/install-sh -d"
 AC_SUBST([MKINSTALLDIRS])
 
+dnl check whether diff accepts the -u option (not on HP-UX)
+AC_MSG_CHECKING(whether diff accepts -u)
+diff_accepts_u_option=no
+echo foo >conftest.dtx
+echo foo | diff -u - conftest.dtx >/dev/null 2>&1
+error_status_diff_u=$?
+if test $error_status_diff_u = 0; then
+  diff_accepts_u_option=yes
+fi
+AC_MSG_RESULT($diff_accepts_u_option)
+rm -f conftest.dtx
+
+DIFF_U_OPTION=
+if test "z$diff_accepts_u_option" = 'zyes' ; then
+  DIFF_U_OPTION=-u
+fi
+AC_SUBST([DIFF_U_OPTION])
+
+
 # Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
 AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
 

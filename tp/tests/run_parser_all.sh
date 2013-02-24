@@ -355,7 +355,7 @@ do
                 ${outdir}$dir/*_l2h.css
         fi
 
-        diff -a -u -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
+        diff -a $DIFF_U_OPTION -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
           echo "D: ${mydir}$diffs_dir/$diff_base.diff"

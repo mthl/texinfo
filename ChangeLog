@@ -1,3 +1,10 @@
+2013-02-24  Patrice Dumas  <pertusus@free.fr>
+
+	* configure.ac, tp/defs.in, tp/tests/*/*.sh, tp/tests/run_parser_all.sh:
+	determine whether diff accepts -u and sets DIFF_U_OPTION to -u if so.
+	Report that HP-UX diff do not accept -u from Richard Lloyd
+	bug-texinfo, 19 Feb 2013 15:56:41.
+
 2013-02-23  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/t/input_files/sample_utf8.texi: avoid having two nodes differing
