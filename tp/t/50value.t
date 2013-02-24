@@ -297,6 +297,22 @@ After page on it\'s own line.
 @value{txicodequoteundirected}.
 
 @clear txicodequoteundirected
+'],
+['set_on_item_line',
+'@table @code
+@item @set a b
+item text
+in item
+@item jj @set j
+line
+@item vvv @set g@c
+@end table
+'],
+['set_in_item_missing_line',
+'@table @code
+@item xx @set n
+@item jj
+@end table
 ']
 );
 

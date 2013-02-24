@@ -386,7 +386,7 @@ foreach my $block_command (keys(%block_commands)) {
 # commands that may happen on lines where everything is
 # permitted
 my %in_full_line_commands = %in_full_text_commands;
-foreach my $not_in_full_line_commands('noindent', 'indent', 'set', 'clear') {
+foreach my $not_in_full_line_commands('noindent', 'indent') {
   delete $in_full_line_commands{$not_in_full_line_commands};
 }
 
@@ -3938,7 +3938,7 @@ sub _parse_texi($;$)
         chomp ($expanded_lines->[-1]);
         pop @$expanded_lines if ($expanded_lines->[-1] eq '');
         print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
-                                     ."|\nEND LINES\n" if ($self->{'DEBUG'});
+                                     ."|\nEND LINES MACRO EXPANSION\n" if ($self->{'DEBUG'});
         next if (!@$expanded_lines);
         my $new_lines = _complete_line_nr($expanded_lines, 
                             $line_nr->{'line_nr'}, $line_nr->{'file_name'},
@@ -4395,10 +4395,14 @@ sub _parse_texi($;$)
             $self->_mark_and_warn_invalid($command, $invalid_parent,
                                               $line_nr, $misc);
             $self->_register_global_command($command, $misc, $line_nr);
-            $current = _end_line($self, $current, $line_nr);
+            # the end of line is ignored for special commands
+            if ($arg_spec ne 'special') {
+              $current = _end_line($self, $current, $line_nr);
+            }
 
             last NEXT_LINE if ($command eq 'bye');
-            # This is not done in _end_line as there is no misc_line_arg
+            # Even if _end_line is called, it is not done since there is 
+            # no misc_line_arg
             $current = $self->_begin_preformatted($current)
               if ($close_preformatted_commands{$command});
             last;

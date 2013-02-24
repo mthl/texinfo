@@ -8,6 +8,7 @@
 	* tp/Texinfo/Convert/Plaintext.pm: use OPEN_QUOTE_SYMBOL and 
 	CLOSE_QUOTE_SYMBOL.
 	* tp/Texinfo/Parser.pm: allow more characters in flags.
+	do not close a line after a special command @set...
 
 2013-02-22  Karl Berry  <karl@gnu.org>
 
