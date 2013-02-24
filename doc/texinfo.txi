@@ -7196,6 +7196,13 @@ command and related commands (e.g., @code{@@kbd}, @code{@@command}),
 in typewriter-like contexts such as the @code{@@example} environment
 (@pxref{@t{@@example}}) and @code{@@code} itself, etc.
 
+To control which quoting characters are implicitly inserted by Texinfo
+processors in the output of @samp{@@code}, etc., see the
+@code{OPEN_QUOTE_SYMBOL} and @code{CLOSE_QUOTE_SYMBOL} customization
+variables (@pxref{Other Customization Variables}).  This is separate
+from how actual quotation characters in the input document are handled
+(@pxref{Inserting Quote Characters}).
+
 
 @node @t{@@kbd}
 @subsection @code{@@kbd}@{@var{keyboard-characters}@}
@@ -9023,38 +9030,35 @@ generally indented.
 @cindex @code{@@w}, for blank items
 Begin an itemized list by writing @code{@@itemize} at the beginning of
 a line.  Follow the command, on the same line, with a character or a
-Texinfo command that generates a mark.  Usually, you will write
+Texinfo command that generates a mark.  Usually, you will use
 @code{@@bullet} after @code{@@itemize}, but you can use
 @code{@@minus}, or any command or character that results in a single
 character in the Info file.  (When you write the mark command such as
 @code{@@bullet} after an @code{@@itemize} command, you may omit the
 @samp{@{@}}.)  If you don't specify a mark command, the default is
-@code{@@bullet}.
-
-If you don't want any mark at all, but still want items, use
-@code{@@w@{@}} (in this case the braces are required).  If you just
-want indented text and not a list of items, use
-@code{@@indentedblock}; @pxref{@t{@@indentedblock}}.
+@code{@@bullet}.  If you don't want any mark at all, but still want
+logical items, use @code{@@w@{@}} (in this case the braces are
+required).
 
 @findex item
 After the @code{@@itemize}, write your items, each starting with
 @code{@@item}.  Text can follow on the same line as the @code{@@item}.
 The text of an item can continue for more than one paragraph.
 
-On the other hand, normal text before the first @code{@@item}
-(``outside'' of any item) produces a warning, since some output
-formats (e.g., HTML, Docbook) strictly require all text inside an
-itemized list to be associated with an item.
+There should be at least one @code{@@item} inside the @code{@@itemize}
+environment.  If none are present, @code{makeinfo} gives a warning.
+If you just want indented text and not a list of items, use
+@code{@@indentedblock}; @pxref{@t{@@indentedblock}}.
 
-Index entries and comments are allowed before @code{@@item}, though,
-including the first, since historically this has been a common
-practice.  They automatically moved (internally) to after the
-@code{@@item}, so the output is as expected.
+Index entries and comments that are given before an @code{@@item}
+including the first, are automatically moved (internally) to after the
+@code{@@item}, so the output is as expected.  Historically this has
+been a common practice.
 
-Usually, you should put a blank line before an @code{@@item}.  This
-puts a blank line in the Info file. (@TeX{} inserts the proper
-vertical space in any case.)  Except when the entries are very brief,
-these blank lines make the list look better.
+Usually, you should put a blank line between items.  This puts a blank
+line in the Info file. (@TeX{} inserts the proper vertical space in
+any case.)  Except when the entries are very brief, these blank lines
+make the list look better.
 
 Here is an example of the use of @code{@@itemize}, followed by the
 output it produces.  @code{@@bullet} produces an @samp{*} in Info and
@@ -13728,8 +13732,6 @@ This has no particular effect, but it's included for completeness.
 
 @item UTF-8
 The vast global character encoding, expressed in 8-bit bytes.
-The Texinfo processors have no deep knowledge of Unicode; for the most
-part, they just pass along the input they are given to the output.
 
 @item ISO-8859-2
 @itemx ISO-8859-1
@@ -13787,7 +13789,7 @@ this:
 @end example
 
 In XML and Docbook output, UTF-8 is always used for the output file,
-since all the XML processors are supposed to be able to process that
+since all XML processors are supposed to be able to process that
 encoding.
 
 @cindex Computer Modern fonts
@@ -14228,11 +14230,13 @@ is ignored.  If @var{flag} is clear, text through the following
 You use the @code{@@set} command to specify a value for a flag, which
 is later expanded by the @code{@@value} command.
 
-A @dfn{flag} (aka @dfn{variable}) is an identifier consisting of
-alphanumerics, @samp{-}, and @samp{_}.  However, it is best to use
-only letters and numerals in a flag name, not @samp{-} or
-@samp{_}---they will work in some contexts, but not all, due to
-limitations in @TeX{}.
+A @dfn{flag} (aka @dfn{variable}) name is an identifier starting with
+an alphanumeric, @samp{-}, or @samp{_}.  Subsequent characters, if
+any, may not be whitespace, @samp{@@}, braces, angle brackets, or any
+of @samp{~`^+|}; other characters, such as @samp{%}, may work.
+However, it is best to use only letters and numerals in a flag name,
+not @samp{-} or @samp{_} or others---they will work in some contexts,
+but not all, due to limitations in @TeX{}.
 
 The value is the remainder of the input line, and can contain anything.
 However, unlike most other commands which take the rest of the line as
@@ -17949,7 +17953,8 @@ into the categories of the previous sections.
 @vtable @code
 @item CLOSE_QUOTE_SYMBOL
 When a closing quote is needed, use this character; default @code{&rsquo;}
-in HTML, @code{&#8217;} in Docbook.
+in HTML, @code{&#8217;} in Docbook.  The default for Info is the same
+as @code{OPEN_QUOTE_SYMBOL} (see below).
 
 @c @item COMPLETE_IMAGE_PATHS
 @c If set, the image files are computed to be relative from the document
@@ -18080,8 +18085,14 @@ If set, use node names in menu entries, otherwise prefer section names;
 default true.
 
 @item OPEN_QUOTE_SYMBOL
-When an opening quote is needed, use the corresponding character; default
-@code{&lsquo;} for HTML, @code{&#8216;} for Docbook.
+When an opening quote is needed, e.g., for @samp{@@samp} output, use
+the specified character; default @code{&lsquo;} for HTML,
+@code{&#8216;} for Docbook.  For Info, the default depends on the
+enabled document encoding (@pxref{@t{@@documentencoding}}); if no
+document encoding is set, or the encoding is US-ASCII, etc., @samp{'}
+is used.  This character usually appears as an undirected single quote
+on modern systems.  If the document encoding is Unicode, the Info
+output uses a Unicode left quote.
 
 @item OUTPUT_ENCODING_NAME
 Normalized encoding name used for output files.  Should be a usable
