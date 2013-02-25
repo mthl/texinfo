@@ -830,7 +830,7 @@ sub _check_contents_location($$)
 }
 
 # parse a texi file
-sub parse_texi_file ($$)
+sub parse_texi_file($$)
 {
   my $self = shift;
   my $file_name = shift;
@@ -844,15 +844,17 @@ sub parse_texi_file ($$)
   my $line_nr = 0;
   my $line;
   my @first_lines;
+  # FIXME this won't work on pipes
+  my $line_beginning_position = tell $filehandle;
   while ($line = <$filehandle>) {
     if ($line =~ /^ *\\input/ or $line =~ /^\s*$/) {
       $line =~ s/\x{7F}.*\s*//;
       push @first_lines, $line;
       $line_nr++;
+      $line_beginning_position = tell $filehandle;
     } else {
-      # put the line back in the filehandle
-      seek($filehandle, -Texinfo::Common::count_bytes($self, 
-                       $line, $self->{'INPUT_PERL_ENCODING'}), 1);
+      # go back to the beginning of the line
+      seek($filehandle, $line_beginning_position, 0);
       last;
     }
   }
@@ -1784,7 +1786,7 @@ sub _close_commands($$$;$$)
 
 # begin paragraph if needed.  If not try to merge with the previous
 # content if it is also some text.
-sub _merge_text ($$$)
+sub _merge_text($$$)
 {
   my $self = shift;
   my $current = shift;
@@ -1943,7 +1945,7 @@ sub _next_text($$$)
 }
 
 # collect text and line numbers until an end of line is found.
-sub _new_line ($$$)
+sub _new_line($$$)
 {
   my $self = shift;
   my $line_nr = shift;
@@ -3501,7 +3503,7 @@ sub _check_empty_node($$$$)
   }
 }
 
-sub _check_internal_node ($$$)
+sub _check_internal_node($$$)
 {
   my $self = shift;
   my $parsed_node = shift;
