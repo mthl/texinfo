@@ -4331,10 +4331,11 @@ sub _parse_texi($;$)
             $misc = {'cmdname' => $command,
                      'parent' => $current};
             my $args = [];
+            my $has_comment;
             if ($arg_spec eq 'lineraw' or $arg_spec eq 'skipline') {
               $args = [ $line ];
             } elsif ($arg_spec eq 'special') {
-              $args 
+              ($args, $has_comment) 
                 = $self->_parse_special_misc_command($line, $command, $line_nr);
               $misc->{'extra'}->{'arg_line'} = $line;
             }
@@ -4398,7 +4399,7 @@ sub _parse_texi($;$)
                                               $line_nr, $misc);
             $self->_register_global_command($command, $misc, $line_nr);
             # the end of line is ignored for special commands
-            if ($arg_spec ne 'special') {
+            if ($arg_spec ne 'special' or !$has_comment) {
               $current = _end_line($self, $current, $line_nr);
             }
 
@@ -5310,12 +5311,15 @@ sub _parse_special_misc_command($$$$)
   my $line_nr = shift;
   my $args = [];
 
+  my $has_comment = 0;
   my $remaining;
   if ($command eq 'set') {
     # REVALUE
     #if ($line =~ s/^\s+([\w\-]+)(\s+(.*?))\s*$//) {
     if ($line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\@(c|comment)((\@|\s+).*)?|\s+(.*?))?\s*$/) {
-      $line =~ s/\@(c|comment)((\@|\s+).*)?$//;
+      if ($line =~ s/\@(c|comment)((\@|\s+).*)?$//) {
+        $has_comment = 1;
+      }
       $line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\s+(.*?))?\s*$/;
       my $name = $1;
       my $arg = $3;
@@ -5336,6 +5340,7 @@ sub _parse_special_misc_command($$$$)
       $args = [$1];
       delete $self->{'values'}->{$1}
         unless(_ignore_global_commands($self));
+      $has_comment = 1 if (defined($3));
       #$remaining = $line;
       #$remaining =~ s/^\s+([\w\-]+)\s*(\@(c|comment)((\@|\s+).*)?)?//;
     } elsif ($line !~ /\S/) {
@@ -5351,6 +5356,7 @@ sub _parse_special_misc_command($$$$)
       $args = [$1];
       delete $self->{'macros'}->{$1}
         unless(_ignore_global_commands($self));
+      $has_comment = 1 if (defined($3));
       print STDERR "UNMACRO $1\n" if ($self->{'DEBUG'});
     } elsif ($line !~ /\S/) {
       $self->line_error(sprintf($self->
@@ -5367,6 +5373,7 @@ sub _parse_special_misc_command($$$$)
         unless(_ignore_global_commands($self));
       $remaining = $line;
       $remaining =~ s/^\s+@([[:alnum:]][[:alnum:]\-]*)({})?\s*(\@(c|comment)((\@|\s+).*)?)?//;
+      $has_comment = 1 if (defined($4));
     } else {
       $self->line_error (sprintf($self->__(
                  "\@%s should only accept a \@-command as argument, not `%s'"),
@@ -5383,7 +5390,7 @@ sub _parse_special_misc_command($$$$)
                            $command, $remaining), $line_nr);
     }
   }
-  return ($args);
+  return ($args, $has_comment);
 }
 
 sub _trim_spaces_comment_from_content($)

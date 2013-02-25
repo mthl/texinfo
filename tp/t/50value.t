@@ -300,17 +300,31 @@ After page on it\'s own line.
 '],
 ['set_on_item_line',
 '@table @code
+@item @set a b@c
+item text
+in item
+@item jj @set j@c
+line
+@item vvv @set g@c
+@end table
+
+@table @code
 @item @set a b
 item text
 in item
 @item jj @set j
 line
-@item vvv @set g@c
+@item vvv @set g
 @end table
 '],
 ['set_in_item_missing_line',
 '@table @code
 @item xx @set n
+@item jj
+@end table
+
+@table @code
+@item xx @set n@c
 @item jj
 @end table
 ']
