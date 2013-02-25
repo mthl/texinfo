@@ -115,6 +115,23 @@ if test "z$diff_accepts_u_option" = 'zyes' ; then
 fi
 AC_SUBST([DIFF_U_OPTION])
 
+dnl check whether diff accepts the -a option (specific of GNU diff)
+AC_MSG_CHECKING(whether diff accepts -a)
+diff_accepts_a_option=no
+echo foo >conftest.dtx
+echo foo | diff -a - conftest.dtx >/dev/null 2>&1
+error_status_diff_a=$?
+if test $error_status_diff_a = 0; then
+  diff_accepts_a_option=yes
+fi
+AC_MSG_RESULT($diff_accepts_a_option)
+rm -f conftest.dtx
+
+DIFF_A_OPTION=
+if test "z$diff_accepts_a_option" = 'zyes' ; then
+  DIFF_U_OPTION=-a
+fi
+AC_SUBST([DIFF_A_OPTION])
 
 # Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
 AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])

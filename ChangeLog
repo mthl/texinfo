@@ -2,6 +2,8 @@
 
 	* tp/Texinfo/Parser.pm: use tell to find the position of the 
 	beginning of the line.
+	* configure.ac, tp/defs.in, tp/tests/run_parser_all.sh:
+	determine whether diff accepts -a and sets DIFF_A_OPTION to -a if so.
 
 2013-02-24  Karl Berry  <karl@gnu.org>
 
