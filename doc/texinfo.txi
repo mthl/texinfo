@@ -1445,7 +1445,7 @@ tells @TeX{} to open auxiliary files.  @strong{All text before
 @item
 The @code{@@settitle} line specifies a title for the page headers (or
 footers) of the printed manual, and the default title and document
-description for the @samp{<head>} in HTML.  Strictly speaking,
+description for the @samp{<head>} in HTML@.  Strictly speaking,
 @code{@@settitle} is optional---if you don't mind your document being
 titled `Untitled'.
 
@@ -4552,7 +4552,7 @@ is otherwise the same.
 In Info and plain text, the @code{@@majorheading} and
 @code{@@chapheading} commands produce the same output as
 @code{@@chapter}: the title is printed on a line by itself with a line
-of asterisks underneath.  Similarly for HTML.  The only difference is
+of asterisks underneath.  Similarly for HTML@.  The only difference is
 the lack of numbering and the lack of any association with nodes.
 @xref{@t{@@chapter}}.
 
@@ -11500,9 +11500,9 @@ For displayed equations, you must at present use @TeX{} directly
 @cindex Textual glyphs
 
 Texinfo has support for a few additional glyphs that are commonly used
-in printed text but not available in ASCII.  Of course, there are many
-thousands more.  It is possible to use Unicode characters as-is as far
-as @code{makeinfo} is concerned, but @TeX{} is not so lucky.
+in printed text but not available in ASCII@.  Of course, there are
+many thousands more.  It is possible to use Unicode characters as-is
+as far as @code{makeinfo} is concerned, but @TeX{} is not so lucky.
 
 @menu
 * @t{@@TeX @@LaTeX}::                 The @TeX{} logos.
@@ -19392,15 +19392,19 @@ Display version information and exit successfully.
 @option{--html} option, it will generate HTML, for web browsers and
 other programs.  This chapter gives some details on such HTML output.
 
+@command{makeinfo} has many user-definable customization variables
+with which you can influence the HTML output.  @xref{Customization
+Variables}.
+
 @command{makeinfo} can also produce output in XML and Docbook formats,
 but we do not as yet describe these in detail.  @xref{Output Formats},
 for a brief overview of all the output formats.
 
 @menu
-* HTML Translation::            Details of the HTML output.
-* HTML Splitting::              How HTML output is split.
-* HTML CSS::                    Influencing HTML output with Cascading Style Sheets.
-* HTML Xref::                   Cross references in HTML output.
+* HTML Translation::       Details of the HTML output.
+* HTML Splitting::         How HTML output is split.
+* HTML CSS::               Influencing HTML output with Cascading Style Sheets.
+* HTML Xref::              Cross references in HTML output.
 @end menu
 
 
@@ -19523,8 +19527,8 @@ influencing the display of HTML documents: see
 @uref{http://www.w3.org/Style/CSS/}.
 
 By default, @command{makeinfo} includes a few simple CSS commands to
-better implement the appearance of some of the environments.  Here are
-two of them, as an example:
+better implement the appearance of some Texinfo environments.  Here
+are two of them, as an example:
 
 @example
 pre.display @{ font-family:inherit @}
@@ -19545,7 +19549,7 @@ You can influence the CSS in the HTML output with two
 @pindex texinfo-bright-colors.css
 @cindex Visualizing Texinfo CSS
 The option @option{--css-ref=@var{url}} adds to each output HTML file
-a @samp{<link>} tag referencing a CSS at the given @var{url}. This
+a @samp{<link>} tag referencing a CSS at the given @var{url}.  This
 allows using external style sheets.  You may find the file
 @file{texi2html/examples/texinfo-bright-colors.css} useful for
 visualizing the CSS elements in Texinfo output.
@@ -19569,7 +19573,7 @@ normal definitions.  (Technical exception: an @samp{@@charset}
 directive may precede the @samp{@@import}'s.  This does not alter
 @command{makeinfo}'s behavior, it just copies the @samp{@@charset} if
 present.)  Comments in CSS files are delimited by @samp{/* ... */}, as
-in C.  An @samp{@@import} directive must be in one of these two forms:
+in C@.  An @samp{@@import} directive must be in one of these two forms:
 
 @example
 @@import url(http://example.org/foo.css);
@@ -19611,6 +19615,10 @@ meaning of the CSS file in any way; it just looks for the special
 @samp{@@} and @samp{;} characters and blindly copies the text into the
 output.  Comments in the CSS file may or may not be included in the
 output.
+
+In addition to the possibilities offered by CSS, @command{makeinfo}
+has many user-definable customization variables with which you can
+influence the HTML output.  @xref{Customization Variables}.
 
 
 @node HTML Xref
@@ -19946,7 +19954,7 @@ the first two would nearly always be zeros.)
 This method works fine if the node name consists mostly of ASCII
 characters and contains only few 8-bit ones. If the document is
 written in a language whose script is not based on the Latin alphabet
-(such as, e.g. Ukrainian), it will create file names consisting
+(for example, Ukrainian), it will create file names consisting
 entirely of @samp{_@var{xxxx}} notations, which is inconvenient and
 all but unreadable.
 
@@ -20406,7 +20414,7 @@ Represent a single ``click'' in a GUI@.  Used within
 @code{@@clicksequence}.  @xref{Click Sequences}.
 
 @item @@clicksequence@{@var{action} @@click@{@} @var{action}@}
-Represent a sequence of clicks in a GUI.  @xref{Click Sequences}.
+Represent a sequence of clicks in a GUI@.  @xref{Click Sequences}.
 
 @item @@clickstyle @@@var{cmd}
 Execute @@@var{cmd} for each @code{@@click}; the default is
@@ -22200,9 +22208,10 @@ pages, you should include the standard FSF cover texts (@pxref{License
 Notices for Documentation,,, maintain, GNU Maintainer Information}).
 
 @item
-For documents that express your personal views, feelings or experiences,
-it is more appropriate to use a license permitting only verbatim
-copying, rather than the FDL.  @xref{Verbatim Copying License}.
+For documents that express your personal views, feelings or
+experiences, it is more appropriate to use a license permitting only
+verbatim copying, rather than the FDL@.  @xref{Verbatim Copying
+License}.
 
 @end itemize
 

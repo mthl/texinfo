@@ -1,3 +1,8 @@
+2013-02-26  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Generating HTML, HTML CSS): xref to
+	Customization Variables.  Suggestion from Vincent Belaiche.
+
 2013-02-25  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Parser.pm: use tell to find the position of the 
