@@ -3,6 +3,9 @@
 	* tp/t/test_utils.pl: close generated files before doing the comparison.
 	* tp/Texinfo/Convert/Plaintext.pm, tp/Texinfo/Convert/Info.pm:
 	cache get_conf() results.  Convert node names only once.
+	* tp/texi2any.pl, doc/texinfo.txi (Customization Variables and Options):
+	two new formats, parse and structure that respectively do the parsing 
+	phase, and the parsing and structuring phase, and no conversion.
 
 2013-02-26  Karl Berry  <karl@gnu.org>
 

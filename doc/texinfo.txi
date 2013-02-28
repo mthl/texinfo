@@ -17613,6 +17613,9 @@ bytes and lines obtained when converting to Info, and other information.
 Instead of generating a regular output format, output a text representation
 of the tree obtained by parsing the input texinfo document.
 
+@item parse
+Do only the Texinfo source parsing phase.  There is no output in that case.
+
 @item plaintexinfo
 Output the Texinfo source with all the macros, @code{@@include} and
 @code{@@value@{@}} expanded.  This is similar to setting
@@ -17624,6 +17627,10 @@ the normal conversion, output of Texinfo is the main output.
 Output raw text, with minimal formatting.  For example, footnotes are
 ignored and there is no paragraph filling.  This is used by the parser
 for file names and copyright text in HTML comments, for example.
+
+@item structure
+Do the Texinfo source parsing and determination of the document structure.
+There is no output in that case.
 
 @item texinfosxml
 @cindex SXML output
