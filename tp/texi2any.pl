@@ -1189,9 +1189,9 @@ while(@input_files) {
                         $macro_expand_file, $parser->{'INPUT_PERL_ENCODING'});
 
     my $error_macro_expand_file;
-    if (defined ($macro_expand_fh)) {
+    if (defined($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
-      if (!close ($macro_expand_fh)) {
+      if (!close($macro_expand_fh)) {
         document_warn(sprintf(__("error on closing macro expand file %s: %s\n"), 
                               $macro_expand_file, $!));
         $error_macro_expand_file = 1;

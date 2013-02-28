@@ -33,7 +33,7 @@ elif [ "$command" = 'diff' ]; then
     done
     for result in t/results/$test_name/*/res*/; do
       out=`echo $result | sed 's;res\([^/]*/\)$;out\1;'`
-      diff -a -u --exclude=CVS -r $result $out
+      diff -a -u --exclude=CVS --exclude=.svn -r $result $out
     done
   fi 
 else

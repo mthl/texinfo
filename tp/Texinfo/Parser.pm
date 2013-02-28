@@ -1807,7 +1807,7 @@ sub _merge_text($$$)
          or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
       $no_merge_with_following_text = 1;
     }
-    if (_abort_empty_line ($self, $current, $leading_spaces)) {
+    if (_abort_empty_line($self, $current, $leading_spaces)) {
       $text =~ s/^(\s+)//;
     } 
 
@@ -4037,7 +4037,7 @@ sub _parse_texi($;$)
                 and $current->{'contents'}->[-1]->{'type'} eq 'empty_line'
                 and $current->{'contents'}->[-1]->{'text'} eq '') {
         print STDERR "MENU STAR\n" if ($self->{'DEBUG'});
-        _abort_empty_line ($self, $current);
+        _abort_empty_line($self, $current);
         $line =~ s/^\*//;
         push @{$current->{'contents'}}, { 'type' => 'menu_star',
                                           'text' => '*' };

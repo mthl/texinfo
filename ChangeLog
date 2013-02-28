@@ -1,3 +1,9 @@
+2013-02-28  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/t/test_utils.pl: close generated files before doing the comparison.
+	* tp/Texinfo/Convert/Plaintext.pm, tp/Texinfo/Convert/Info.pm:
+	cache get_conf() results.  Convert node names only once.
+
 2013-02-26  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Generating HTML, HTML CSS): xref to

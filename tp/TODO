@@ -18,6 +18,17 @@ Bugs
 ====
 
 
+Profiling
+=========
+
+profiling: package on debian:
+libdevel-nytprof-perl
+In doc:
+perl -d:NYTProf ../tp/texi2any.pl texinfo.txi
+nytprofhtml --open
+# firefox nytprof/index.html
+
+
 Delayed bugs
 ============
 
