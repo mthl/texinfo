@@ -89,6 +89,10 @@ converters_tests/things_before_setfilename there is no error
 for anchor and footnote before setfilename.  It is not completly
 clear that there should be, though.
 
+Recursive expansion of @value may lead to an infinite loop.  Wait for
+marksource to proceed.
+ https://bugzilla.redhat.com/show_bug.cgi?id=744878
+
 
 Missing tests
 =============
