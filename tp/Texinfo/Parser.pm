@@ -844,17 +844,17 @@ sub parse_texi_file($$)
   my $line_nr = 0;
   my $line;
   my @first_lines;
-  # FIXME this won't work on pipes
-  my $line_beginning_position = tell $filehandle;
+
+  my $pending_first_texi_line;
+  # the first line not empty and not with \input is kept in 
+  # $pending_first_texi_line and put in the pending lines just below
   while ($line = <$filehandle>) {
+    $line_nr++;
     if ($line =~ /^ *\\input/ or $line =~ /^\s*$/) {
       $line =~ s/\x{7F}.*\s*//;
       push @first_lines, $line;
-      $line_nr++;
-      $line_beginning_position = tell $filehandle;
     } else {
-      # go back to the beginning of the line
-      seek($filehandle, $line_beginning_position, 0);
+      $pending_first_texi_line = $line;
       last;
     }
   }
@@ -872,7 +872,8 @@ sub parse_texi_file($$)
             if ($self->{'TEST'});
   $self = parser() if (!defined($self));
   $self->{'input'} = [{
-       'pending' => [],
+       'pending' => [[$pending_first_texi_line, {'line_nr' => $line_nr,
+                                'macro' => '', 'file_name' => $file_name}]],
        'name' => $file_name,
        'line_nr' => $line_nr,
        'fh' => $filehandle

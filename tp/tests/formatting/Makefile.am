@@ -7,6 +7,7 @@ EXTRA_DIST = \
  float_copying.texi         my-bib-macros.texi \
  documentlanguage_set.texi  japanese_long_name.texi \
  simple_with_menu.texi      unknown_nodes_renamed.texi \
+ one_line_no_content.texi one_line.texi empty.texi \
  unknown_nodes_renamed-noderename.cnf-ref \
  file.css tests-parser.txt  res_parser
 

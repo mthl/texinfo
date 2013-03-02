@@ -1,3 +1,8 @@
+2013-03-02  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm: put the first line in 'pending' instead of 
+	seeking back in the input stream.
+
 2013-02-28  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/t/test_utils.pl: close generated files before doing the comparison.

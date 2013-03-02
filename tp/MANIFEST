@@ -1277,6 +1277,8 @@ t/results/value/comment_on_set_line.pl
 t/results/value/empty_set.pl
 t/results/value/empty_value_in_line.pl
 t/results/value/set_flag_command_equivalent.pl
+t/results/value/set_in_item_missing_line.pl
+t/results/value/set_on_item_line.pl
 t/results/value/simple.pl
 t/results/value/spaces_before_value.pl
 t/results/value/value_after_accent.pl

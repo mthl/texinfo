@@ -296,6 +296,7 @@ do
     fi
     if test $ret = 0 ; then
       diff_base="${dir}${dir_suffix}"
+      res_dir_used=
       if [ -d "$results_dir/$dir" ]; then
         res_dir_used="$results_dir/$dir"
       fi
