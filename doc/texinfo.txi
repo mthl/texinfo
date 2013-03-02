@@ -14854,8 +14854,8 @@ example, with a recursive macro:
 @noindent
 will produce the string @samp{foobarbaz}.
 
-@item Otherwise, a comma should be explicitly quoted, as above, to be
-treated as a part of an argument.
+@item Otherwise, a comma should be explicitly quoted, as above, for it
+to be treated as a part of an argument.
 @end enumerate
 
 @cindex Braces, in macro arguments
@@ -14942,13 +14942,13 @@ By design, macro expansion does not happen in the following contexts
 in @command{makeinfo}:
 
 @itemize @bullet
-@item @code{@@macro} and @code{@@unmacro} lines.
+@item @code{@@macro} and @code{@@unmacro} lines;
 
-@item @code{@@if...} lines, including @code{@@ifset} and similar,
+@item @code{@@if...} lines, including @code{@@ifset} and similar;
 
-@item @code{@@set}, @code{@@clear}, @code{@@value}.
+@item @code{@@set}, @code{@@clear}, @code{@@value};
 
-@item @code{@@clickstyle} lines.
+@item @code{@@clickstyle} lines;
 
 @item @code{@@end} lines.
 @end itemize
@@ -14956,14 +14956,14 @@ in @command{makeinfo}:
 @noindent Unfortunately, @TeX{} may do some expansion in these situations,
 possibly yielding errors.
 
-Also, due to unavoidable limitations, quite a few macro-related
-constructs cause problems with @TeX{}, as follows.  If you get
-macro-related errors when producing the printed version of a manual,
-you might try expanding the macros with @command{makeinfo} by invoking
+Also, quite a few macro-related constructs cause problems with @TeX{};
+some of the caveats are listed below.  Thus, if you get macro-related
+errors when producing the printed version of a manual, you might try
+expanding the macros with @command{makeinfo} by invoking
 @command{texi2dvi} with the @samp{-E} option (@pxref{Format with
-@t{texi2dvi}}).  Or eschew Texinfo macros altogether and use a
-language designed for macro processing, such as M4 (@pxref{External
-Macro Processors}).
+@t{texi2dvi}}).  Or, more reliably, eschew Texinfo macros altogether
+and use a language designed for macro processing, such as M4
+(@pxref{External Macro Processors}).
 
 @itemize @bullet
 @item
@@ -14979,12 +14979,28 @@ unpredictable.
 All macros are expanded inside at least one @TeX{} group.
 
 @item
+Macro arguments cannot cross lines.
+
+@item
+Macros containing a command which must be on a line by itself, such as
+a conditional, cannot be invoked in the middle of a line.  Similarly,
+macros containing line-oriented commands or text, such as
+@code{@@example} environments, may behave unpredictably in @TeX{}.
+
+@item
+White space is ignored at the beginnings of lines.
+
+@item
+Macros can't be reliably used in the argument to accent commands
+(@pxref{Inserting Accents}).
+
+@item
 The backslash escape for commas in macro arguments does not work;
 @code{@@comma@{@}} must be used.
 
 @item
 As a consequence, if a macro takes two or more arguments, and you want
-to pass an argument with the Texinfo command @code{@@,} (for a
+to pass an argument with the Texinfo command @code{@@,} (to produce a
 cedilla, @pxref{Inserting Accents}), you have to use @code{@@value} or
 another work-around.  Otherwise, @TeX{} takes the comma as separating
 the arguments.  Example:
@@ -15008,22 +15024,6 @@ arguments @samp{Fran@@} and @samp{cois} to the macro, and nothing good
 results.  And, as just mentioned, although the comma can be escaped
 with a backslash for @code{makeinfo} (@samp{@@\,}), that doesn't work
 in @TeX{}, so there is no other solution.
-
-@item
-Macro arguments cannot cross lines.
-
-@item
-Macros can't be reliably used in the argument to accent commands
-(@pxref{Inserting Accents}).
-
-@item
-Macros containing a command which must be on a line by itself, such as
-a conditional, cannot be invoked in the middle of a line.  Similarly,
-macros containing line-oriented commands or text, such as
-@code{@@example} environments, may behave unpredictably in @TeX{}.
-
-@item
-White space is ignored at the beginnings of lines.
 
 @item
 It is usually best to avoid comments inside macro definitions, but
@@ -15109,8 +15109,34 @@ have incompletely nested macro definitions.  That is, @code{@@macro}
 and @code{@@end macro} (likewise for @code{@@rmacro}) must be
 correctly paired.  For example, you cannot start a macro definition
 within a macro, and then end that nested definition outside the macro.
-
 @end itemize
+
+In the @code{makeinfo} implementation before Texinfo 5.0, ends of
+lines from expansion of an @code{@@macro} definition did not end an
+@@-command line-delimited argument (@code{@@chapter}, @code{@@center},
+etc.).  This is no longer the case.  For example:
+
+@example
+@@macro twolines@{@}
+aaa
+bbb
+@@end macro
+@@center @@twolines@{@}
+@end example
+
+In the current @code{makeinfo}, this is equivalent to:
+
+@example
+@@center aaa
+bbb
+@end example
+
+@noindent with just @samp{aaa} as the argument to @code{@@center}.  In
+the earlier implementation, it would have been parsed as this:
+
+@example
+@@center aaa bbb
+@end example
 
 
 @node @t{@@alias}
@@ -17614,7 +17640,7 @@ Instead of generating a regular output format, output a text representation
 of the tree obtained by parsing the input texinfo document.
 
 @item parse
-Do only the Texinfo source parsing phase.  There is no output in that case.
+Do only Texinfo source parsing; there is no output.
 
 @item plaintexinfo
 Output the Texinfo source with all the macros, @code{@@include} and
@@ -17629,8 +17655,8 @@ ignored and there is no paragraph filling.  This is used by the parser
 for file names and copyright text in HTML comments, for example.
 
 @item structure
-Do the Texinfo source parsing and determination of the document structure.
-There is no output in that case.
+Do only Texinfo source parsing and determination of the document
+structure; there is no output.
 
 @item texinfosxml
 @cindex SXML output

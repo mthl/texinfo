@@ -86,16 +86,24 @@ one of the relevant sections:
   version worthwhile for users nevertheless.
 
 * Intentional incompatibilities:
-  . The previous makeinfo implementation accepted text inside @itemize,
-    @enumerate, etc., not within the scope of an @item.  This is
-    semantically inconsistent, leading to problems with some backends,
-    and thus now produces a warning.
+  . The previous makeinfo implementation accepted a block of text inside
+    @itemize, @enumerate, etc., without any @item.  This is semantically
+    inconsistent, leading to problems with some backends, and thus now
+    produces a warning.
     
-  . The previous makeinfo accepted ``irregular'' sectioning trees.  Now
+  . The previous makeinfo accepted ``irregular'' sectioning trees.  Now,
     when @node pointers are implicitly determined, the consistency of
     @menu and the sectioning tree is checked.  (If node pointers are
     explicitly specified in the document, the tree can still be irregular.)
   
+  . The previous makeinfo always added blank lines between function
+    definitions if they weren't already there.  Now blank lines are not
+    added.
+    
+  . The previous makeinfo did not consider ends of lines from expansion
+    of an @macro definition to end an @-command line-delimited argument
+    (@chapter, @center, etc.).  This is no longer the case.
+
 * pod2texi is a new (Perl) program that uses the capabilities of
   texi2any to translate Perl pod documentation to Texinfo.
   

@@ -1,3 +1,9 @@
+2013-03-02  Karl Berry  <karl@gnu.org>
+
+	* NEWS,
+	* doc/texinfo.txi (Macro Details): behavior of newlines in macro
+	definitions and line-delimited commands has changed.
+
 2013-03-02  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Parser.pm: put the first line in 'pending' instead of 
