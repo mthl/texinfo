@@ -2,13 +2,15 @@
 # Copyright (C) 2013 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo_document package.
 #
+# To Lillian and her handkerchief.
+#
 # Benno Schulenberg <benno@vertaalt.nl>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document-4.13.93\n"
+"Project-Id-Version: texinfo_document-5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2013-02-16 06:56-0800\n"
-"PO-Revision-Date: 2013-01-30 10:57+0100\n"
+"PO-Revision-Date: 2013-02-27 20:31+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -763,16 +765,13 @@ msgstr "{category} over {class}: @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4050
 #, perl-brace-format
-msgid ""
-"{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} over {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgid "{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgstr "{category} over {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4054
 #, perl-brace-format
 msgid "{category} on {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} over {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+msgstr "{category} over {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4065
 #, perl-brace-format
@@ -786,16 +785,13 @@ msgstr "{category} over {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4083
 #, perl-brace-format
-msgid ""
-"{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} van {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgid "{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgstr "{category} van {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4087
 #, perl-brace-format
 msgid "{category} of {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} van {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+msgstr "{category} van {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4098
 #, perl-brace-format
@@ -809,19 +805,12 @@ msgstr "{category} van {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:6108
 #, perl-brace-format
-msgid ""
-"This document was generated on @emph{@today{}} using "
-"@uref{{program_homepage}, @emph{{program}}}."
-msgstr ""
-"Dit document is gegenereerd op @emph{@today{}} met behulp van "
-"@uref{{program_homepage}, @emph{{program}}}."
+msgid "This document was generated on @emph{@today{}} using @uref{{program_homepage}, @emph{{program}}}."
+msgstr "Dit document werd gegenereerd op @emph{@today{}} met behulp van @uref{{program_homepage}, @emph{{program}}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6113
-#, fuzzy
 msgid "This document was generated on @emph{@today{}}."
-msgstr ""
-"Dit document is gegenereerd op @emph{@today{}} met behulp van "
-"@uref{{program_homepage}, @emph{{program}}}."
+msgstr "Dit document werd gegenereerd op @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6152
 #, perl-brace-format
@@ -854,14 +843,8 @@ msgid "From 1.2.3 go to"
 msgstr "Gaat van 1.2.3 naar"
 
 #: tp/Texinfo/Convert/HTML.pm:6400
-msgid ""
-"  where the @strong{ Example } assumes that the current position is at "
-"@strong{ Subsubsection One-Two-Three } of a document of the following "
-"structure:"
-msgstr ""
-"  waar het @strong{ Voorbeeld } aanneemt dat de huidige positie "
-"@strong{ subsubsectie één-twee-drie } is in een document met de volgende "
-"structuur:"
+msgid "  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:"
+msgstr "  waar het @strong{ Voorbeeld } aanneemt dat de huidige positie @strong{ subsubsectie één-twee-drie } is in een document met de volgende structuur:"
 
 #: tp/Texinfo/Convert/HTML.pm:6410
 msgid "Section One"
@@ -906,15 +889,3 @@ msgstr "Subsectie één-vier"
 #: tp/Texinfo/Convert/HTML.pm:6840
 msgid "Untitled Document"
 msgstr "Naamloos document"
-
-#~ msgid "* {float_type} {float_number}: {float_label}."
-#~ msgstr "* {float_type} {float_number}: {float_label}."
-
-#~ msgid "* {float_type}: {float_label}."
-#~ msgstr "* {float_type}: {float_label}."
-
-#~ msgid "*  {float_number}: {float_label}."
-#~ msgstr "*  {float_number}: {float_label}."
-
-#~ msgid "* : {float_label}."
-#~ msgstr "* : {float_label}."

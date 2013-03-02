@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 4.13.93\n"
+"Project-Id-Version: texinfo_document 5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2013-02-16 06:56-0800\n"
-"PO-Revision-Date: 2013-01-30 18:11+0100\n"
+"PO-Revision-Date: 2013-02-28 21:35+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -760,18 +760,13 @@ msgstr "{category} dla klasy {class}: @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4050
 #, perl-brace-format
-msgid ""
-"{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} dla klasy {class}:@* @emph{{type}}@* @strong{{name}} "
-"@emph{{arguments}}"
+msgid "{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgstr "{category} dla klasy {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4054
 #, perl-brace-format
 msgid "{category} on {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} dla klasy {class}: @emph{{type}} @strong{{name}} "
-"@emph{{arguments}}"
+msgstr "{category} dla klasy {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4065
 #, perl-brace-format
@@ -785,17 +780,13 @@ msgstr "{category} dla klasy {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4083
 #, perl-brace-format
-msgid ""
-"{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} klasy {class}:@* @emph{{type}}@* @strong{{name}} "
-"@emph{{arguments}}"
+msgid "{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgstr "{category} klasy {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4087
 #, perl-brace-format
 msgid "{category} of {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} klasy {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+msgstr "{category} klasy {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4098
 #, perl-brace-format
@@ -809,19 +800,12 @@ msgstr "{category} klasy {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:6108
 #, perl-brace-format
-msgid ""
-"This document was generated on @emph{@today{}} using "
-"@uref{{program_homepage}, @emph{{program}}}."
-msgstr ""
-"Ten dokument został wygenerowany @emph{@today{}} przy użyciu programu "
-"@uref{{program_homepage}, @emph{{program}}}."
+msgid "This document was generated on @emph{@today{}} using @uref{{program_homepage}, @emph{{program}}}."
+msgstr "Ten dokument został wygenerowany @emph{@today{}} przy użyciu programu @uref{{program_homepage}, @emph{{program}}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6113
-#, fuzzy
 msgid "This document was generated on @emph{@today{}}."
-msgstr ""
-"Ten dokument został wygenerowany @emph{@today{}} przy użyciu programu "
-"@uref{{program_homepage}, @emph{{program}}}."
+msgstr "Ten dokument został wygenerowany @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6152
 #, perl-brace-format
@@ -854,14 +838,8 @@ msgid "From 1.2.3 go to"
 msgstr "Z 1.2.3 przechodzi do"
 
 #: tp/Texinfo/Convert/HTML.pm:6400
-msgid ""
-"  where the @strong{ Example } assumes that the current position is at "
-"@strong{ Subsubsection One-Two-Three } of a document of the following "
-"structure:"
-msgstr ""
-" gdzie @strong{ Przykład } zakłada, że bieżąca pozycja to "
-"@strong{ Podpodsekcja Jeden-Dwa-Trzy } w dokumencie o następującej "
-"strukturze:"
+msgid "  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:"
+msgstr " gdzie @strong{ Przykład } zakłada, że bieżąca pozycja to @strong{ Podpodsekcja Jeden-Dwa-Trzy } w dokumencie o następującej strukturze:"
 
 #: tp/Texinfo/Convert/HTML.pm:6410
 msgid "Section One"
@@ -906,15 +884,3 @@ msgstr "Podsekcja Jeden-Cztery"
 #: tp/Texinfo/Convert/HTML.pm:6840
 msgid "Untitled Document"
 msgstr "Dokument bez tytułu"
-
-#~ msgid "* {float_type} {float_number}: {float_label}."
-#~ msgstr "* {float_type} {float_number}: {float_label}."
-
-#~ msgid "* {float_type}: {float_label}."
-#~ msgstr "* {float_type}: {float_label}."
-
-#~ msgid "*  {float_number}: {float_label}."
-#~ msgstr "*  {float_number}: {float_label}."
-
-#~ msgid "* : {float_label}."
-#~ msgstr "* : {float_label}."

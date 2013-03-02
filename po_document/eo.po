@@ -5,13 +5,13 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 4.13.93\n"
+"Project-Id-Version: texinfo_document 5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2013-02-16 06:56-0800\n"
-"PO-Revision-Date: 2013-01-30 10:05-0300\n"
+"PO-Revision-Date: 2013-02-27 09:07-0300\n"
 "Last-Translator: Felipe Castro <fefcas@gmail.com>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
-"Language: eo\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -533,19 +533,19 @@ msgstr "NodSupren"
 
 #: tp/Texinfo/Convert/HTML.pm:796
 msgid "NodeNext"
-msgstr ""
+msgstr "SekvaNodo"
 
 #: tp/Texinfo/Convert/HTML.pm:797
 msgid "NodePrev"
-msgstr ""
+msgstr "AntauaNodo"
 
 #: tp/Texinfo/Convert/HTML.pm:798
 msgid "NodeForward"
-msgstr ""
+msgstr "NodAntaueniro"
 
 #: tp/Texinfo/Convert/HTML.pm:799
 msgid "NodeBack"
-msgstr ""
+msgstr "NodRetroiro"
 
 #: tp/Texinfo/Convert/HTML.pm:800
 msgid "Forward"
@@ -569,11 +569,11 @@ msgstr "Lasta"
 
 #: tp/Texinfo/Convert/HTML.pm:805
 msgid "NextFile"
-msgstr ""
+msgstr "SekvaDosiero"
 
 #: tp/Texinfo/Convert/HTML.pm:806
 msgid "PrevFile"
-msgstr ""
+msgstr "AntauaDosiero"
 
 #: tp/Texinfo/Convert/HTML.pm:810
 msgid "About This Document"
@@ -760,16 +760,13 @@ msgstr "{category} en {class}: @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4050
 #, perl-brace-format
-msgid ""
-"{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} en {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgid "{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgstr "{category} en {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4054
 #, perl-brace-format
 msgid "{category} on {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} en {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+msgstr "{category} en {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4065
 #, perl-brace-format
@@ -783,16 +780,13 @@ msgstr "{category} en {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4083
 #, perl-brace-format
-msgid ""
-"{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} de {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgid "{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgstr "{category} de {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4087
 #, perl-brace-format
 msgid "{category} of {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} de {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+msgstr "{category} de {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4098
 #, perl-brace-format
@@ -806,19 +800,12 @@ msgstr "{category} de {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:6108
 #, perl-brace-format
-msgid ""
-"This document was generated on @emph{@today{}} using "
-"@uref{{program_homepage}, @emph{{program}}}."
-msgstr ""
-"Tiu @^{c}i dokumento estis generata en @emph{@today{}} uzante "
-"@uref{{program_homepage}, @emph{{program}}}."
+msgid "This document was generated on @emph{@today{}} using @uref{{program_homepage}, @emph{{program}}}."
+msgstr "Tiu @^{c}i dokumento estis generata en @emph{@today{}} uzante @uref{{program_homepage}, @emph{{program}}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6113
-#, fuzzy
 msgid "This document was generated on @emph{@today{}}."
-msgstr ""
-"Tiu @^{c}i dokumento estis generata en @emph{@today{}} uzante "
-"@uref{{program_homepage}, @emph{{program}}}."
+msgstr "Tiu @^{c}i dokumento estis generata en @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6152
 #, perl-brace-format
@@ -851,13 +838,8 @@ msgid "From 1.2.3 go to"
 msgstr "De 1.2.3 iru al"
 
 #: tp/Texinfo/Convert/HTML.pm:6400
-msgid ""
-"  where the @strong{ Example } assumes that the current position is at "
-"@strong{ Subsubsection One-Two-Three } of a document of the following "
-"structure:"
-msgstr ""
-"  kie la @strong{ Ekzemplo } agnoskas ke la nuna pozicio estas @^{c}e "
-"@strong{ Subsubsekcio Unu-Du-Tri } de dokumento kun la jena strukturo:"
+msgid "  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:"
+msgstr "  kie la @strong{ Ekzemplo } agnoskas ke la nuna pozicio estas @^{c}e @strong{ Subsubsekcio Unu-Du-Tri } de dokumento kun la jena strukturo:"
 
 #: tp/Texinfo/Convert/HTML.pm:6410
 msgid "Section One"
