@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-02-16 06:55-0800\n"
+"POT-Creation-Date: 2013-03-02 16:04-0800\n"
 "PO-Revision-Date: 2013-03-01 08:17+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -282,7 +282,8 @@ msgstr "Không thể hiển thị cước chú"
 
 #: info/footnotes.c:237
 msgid "Show the footnotes associated with this node in another window"
-msgstr "Hiển thị các cước chú liên quan đến nút thông tin này trong cửa sổ khác"
+msgstr ""
+"Hiển thị các cước chú liên quan đến nút thông tin này trong cửa sổ khác"
 
 #: info/footnotes.h:26
 msgid "---------- Footnotes ----------"
@@ -312,8 +313,11 @@ msgid "Search string too short"
 msgstr "Chuỗi tìm kiếm quá ngắn"
 
 #: info/indices.c:366
-msgid "Go to the next matching index item from the last `\\[index-search]' command"
-msgstr "Tới mục chỉ mục khớp kế tiếp từ lệnh “[index-search]” (tìm kiếm chỉ mục) cuối cùng."
+msgid ""
+"Go to the next matching index item from the last `\\[index-search]' command"
+msgstr ""
+"Tới mục chỉ mục khớp kế tiếp từ lệnh “[index-search]” (tìm kiếm chỉ mục) "
+"cuối cùng."
 
 #: info/indices.c:377
 #, c-format
@@ -358,7 +362,9 @@ msgstr "Không có tập tin thông tin sẵn sàng chứa “%s” trong chỉ 
 
 #: info/indices.c:692
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr "Grovel mọi chỉ mục của tập tin thông tin (info) tìm chuỗi và xây dựng trình đơn"
+msgstr ""
+"Grovel mọi chỉ mục của tập tin thông tin (info) tìm chuỗi và xây dựng trình "
+"đơn"
 
 #: info/indices.c:696
 msgid "Index apropos: "
@@ -396,12 +402,13 @@ msgstr "Mục lục cho “%s”"
 msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “--help” để xem thông tin thêm.\n"
 
-#: info/info.c:299 info/infokey.c:144 install-info/install-info.c:2144
-#: tp/texi2any.pl:848 util/texindex.c:295
+#: info/info.c:299 info/infokey.c:144 install-info/install-info.c:2163
+#: tp/texi2any.pl:856 util/texindex.c:295
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
@@ -430,13 +437,15 @@ msgstr ""
 #: info/info.c:632
 msgid ""
 "Options:\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all "
+"manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
 "  -f, --file=FILENAME          specify Info file to visit."
 msgstr ""
 "Tùy chọn:\n"
-"  -k, --apropos=CHUỖI          tra cứu chuỗi này trong mọi chỉ mục của mọi sổ tay.\n"
+"  -k, --apropos=CHUỖI          tra cứu chuỗi này trong mọi chỉ mục của mọi "
+"sổ tay.\n"
 "  -d, --directory=THƯ_MỤC      thêm thư mục này vào đường dẫn INFOPATH.\n"
 "      --dribble=TẬP_TIN        lưu các cú bấm phím vào tập tin này.\n"
 "  -f, --file=TẬP_TIN           ghi rõ tập tin Info cần duyệt."
@@ -450,7 +459,8 @@ msgid ""
 msgstr ""
 "  -h, --help                   hiển thị trợ giúp này rồi thoát.\n"
 "      --index-search=CHUỖI     đi tới nút được ngụ ý bởi chuỗi chỉ mục này.\n"
-"  -n, --node=TÊN_NÚT           ghi rõ nút trong tập tin Info được thăm đầu tiên.\n"
+"  -n, --node=TÊN_NÚT           ghi rõ nút trong tập tin Info được thăm đầu "
+"tiên.\n"
 "  -o, --output=TẬP_TIN         xuất các nút đã chọn vào tập tin này."
 
 #: info/info.c:645
@@ -467,17 +477,20 @@ msgstr ""
 
 #: info/info.c:652
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
-msgstr "  -b, --speech-friendly        thân thiện với thiết bị tổng hợp tiếng nói"
+msgstr ""
+"  -b, --speech-friendly        thân thiện với thiết bị tổng hợp tiếng nói"
 
 #: info/info.c:656
 msgid ""
-"      --strict-node-location   (for debugging) use Info file pointers as-is.\n"
+"      --strict-node-location   (for debugging) use Info file pointers as-"
+"is.\n"
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
 "      --version                display version information and exit.\n"
 "  -w, --where, --location      print physical location of Info file."
 msgstr ""
-"      --strict-node-location   (dành để gỡ lỗi) dùng như là các con trỏ tập tin Info.\n"
+"      --strict-node-location   (dành để gỡ lỗi) dùng như là các con trỏ tập "
+"tin Info.\n"
 "      --subnodes               kết xuất đệ quy các mục trình đơn.\n"
 "      --vi-keys                dùng các tổ hợp phím kiểu Vi và Less.\n"
 "      --version                hiển thị thông tin phiên bản rồi thoát\n"
@@ -493,7 +506,8 @@ msgid ""
 "items relative to the initial node visited."
 msgstr ""
 "\n"
-"Đối số đầu tiên không phải tùy chọn, nếu có, là mục trình đơn từ đó cần bắt đầu ;\n"
+"Đối số đầu tiên không phải tùy chọn, nếu có, là mục trình đơn từ đó cần bắt "
+"đầu ;\n"
 "có tìm nó trong mọi tập tin “dir” (thư mục) trên đường dẫn INFOPATH.\n"
 "Không có thì Info trộn tất cả các tập tin “dir” rồi hiển thị kết quả.\n"
 "Bất cứ đối số còn lại nào được xử lý như tên của mục trình đơn\n"
@@ -527,9 +541,11 @@ msgstr ""
 "  info info-stnd             hiển thị sổ tay đặc trưng cho trình Info này\n"
 "  info emacs                 bắt đầu ở nút emacs từ thư mục cấp đầu\n"
 "  info emacs buffers         bắt đầu ở nút bộ đệm bên trong sổ tay emacs\n"
-"  info --show-options emacs  bắt đầu ở nút chứa các tùy chọn dòng lệnh của emacs\n"
+"  info --show-options emacs  bắt đầu ở nút chứa các tùy chọn dòng lệnh của "
+"emacs\n"
 "  info --subnodes -o out.txt emacs  đổ toàn bộ sổ tay vào tập tin “out.txt”\n"
-"  info -f ./foo.info         hiển thị tập tin “./foo.info”, không tìm kiếm thư mục"
+"  info -f ./foo.info         hiển thị tập tin “./foo.info”, không tìm kiếm "
+"thư mục"
 
 #: info/info.c:684 info/infokey.c:911 util/texindex.c:259
 msgid ""
@@ -659,12 +675,16 @@ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr "\\%-10[move-to-next-xref]  Nhảy tới siêu liên kết kế tiếp.\n"
 
 #: info/infodoc.c:60
-msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"
-msgstr "\\%-10[select-reference-this-line]  Theo siêu liên kết nằm dưới con trỏ.\n"
+msgid ""
+"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+"cursor.\n"
+msgstr ""
+"\\%-10[select-reference-this-line]  Theo siêu liên kết nằm dưới con trỏ.\n"
 
 #: info/infodoc.c:61
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
-msgstr "\\%-10[history-node]  Trở về nút cuối cùng được xem trong cửa sổ này.\n"
+msgstr ""
+"\\%-10[history-node]  Trở về nút cuối cùng được xem trong cửa sổ này.\n"
 
 #: info/infodoc.c:63
 msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
@@ -696,7 +716,8 @@ msgstr "\\%-10[dir-node]  Đi tới nút “directory” (thư mục) chính.\n"
 
 #: info/infodoc.c:71
 msgid "1...9       Pick the first...ninth item in this node's menu.\n"
-msgstr "1...9       Chọn cả mục thứ nhất đến thứ chín trong trình đơn của nút này.\n"
+msgstr ""
+"1...9       Chọn cả mục thứ nhất đến thứ chín trong trình đơn của nút này.\n"
 
 #: info/infodoc.c:72
 msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
@@ -879,7 +900,8 @@ msgstr "  %-10s  Chọn mục cuối trong trình đơn của nút.\n"
 #, c-format
 msgid ""
 "  %-10s  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry found.\n"
+"              file, and select the node referenced by the first entry "
+"found.\n"
 msgstr ""
 "  %-10s  Tìm kiếm chuỗi đã xác định trong các mục chỉ mục\n"
 "\tcủa nút Info này, cũng chọn nút tới đó mục đầu đã tìm có chỉ.\n"
@@ -900,7 +922,8 @@ msgid ""
 "              and select the node in which the next occurrence is found.\n"
 msgstr ""
 "  %-10s  Tìm kiếm tới chuỗi đã xác định trong các mục chỉ mục\n"
-"         của nút Info này, cũng chọn nút trong đó tìm mục tương ứng kế tiếp.\n"
+"         của nút Info này, cũng chọn nút trong đó tìm mục tương ứng kế "
+"tiếp.\n"
 
 #: info/infodoc.c:134
 #, c-format
@@ -1128,7 +1151,8 @@ msgid ""
 msgstr ""
 "Cách dùng: %s [TÙY_CHỌN]... [TẬP-TIN=-ĐẦU-VÀO]\n"
 "\n"
-"Biên dịch tập tin mã nguồn infokey vào tập tin infokey.  Đọc tập tin nhập vào\n"
+"Biên dịch tập tin mã nguồn infokey vào tập tin infokey.  Đọc tập tin nhập "
+"vào\n"
 " (mặc định là “$HOME/.infokey”) và ghi tập tin khoá đã biên dịch ra\n"
 " (theo mặc định) “$HOME/.info”.\n"
 "\n"
@@ -1154,8 +1178,11 @@ msgstr "Gặp lỗi khi đọc tập tin infokey “%s”: đọc ngắn"
 
 #: info/infomap.c:991
 #, c-format
-msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr "Tập tin infokey “%s” không hợp lệ (số ma thuật sai): hãy chạy infokey để cập nhật nó"
+msgid ""
+"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+msgstr ""
+"Tập tin infokey “%s” không hợp lệ (số ma thuật sai): hãy chạy infokey để cập "
+"nhật nó"
 
 #: info/infomap.c:1000
 #, c-format
@@ -1164,13 +1191,19 @@ msgstr "Tập tin infokey “%s” của bạn quá cũ : hãy chạy infokey đ
 
 #: info/infomap.c:1016
 #, c-format
-msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr "Tập tin infokey “%s” không hợp lệ (độ dài phần sai): hãy chạy infokey để cập nhật nó"
+msgid ""
+"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+msgstr ""
+"Tập tin infokey “%s” không hợp lệ (độ dài phần sai): hãy chạy infokey để cập "
+"nhật nó"
 
 #: info/infomap.c:1037
 #, c-format
-msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr "Tập tin infokey “%s” không hợp lệ (mã phần sai): hãy chạy infokey để cập nhật nó"
+msgid ""
+"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+msgstr ""
+"Tập tin infokey “%s” không hợp lệ (mã phần sai): hãy chạy infokey để cập "
+"nhật nó"
 
 #: info/infomap.c:1172
 msgid "Bad data in infokey file -- some key bindings ignored"
@@ -1263,7 +1296,7 @@ msgstr "Chọn nút đã xem: "
 msgid "The reference disappeared! (%s)."
 msgstr "Tham chiếu đã biến mật. (%s)"
 
-#: info/pcterm.c:180
+#: info/pcterm.c:179
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Thiết bị cuối không thể được khởi tạo: %s\n"
@@ -1275,7 +1308,9 @@ msgstr "Lỗi biểu thức chính quy: %s"
 
 #: info/session.c:162
 #, c-format
-msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."
+msgid ""
+"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
+"for menu item."
 msgstr ""
 "Chúc mừng bạn dùng trình Info phiên bản %s. Hãy gõ :\n"
 "\t \\[get-help-window]\t\tđể xem trợ giúp,\n"
@@ -1334,8 +1369,11 @@ msgid "Scroll forward in this window staying within node"
 msgstr "Cuộn tới trong cửa sổ này mà còn lại trong nút này"
 
 #: info/session.c:1548
-msgid "Scroll forward in this window staying within node and set default window size"
-msgstr "Cuộn tới trong cửa sổ này, mà còn lại trong nút này và đặt kích cỡ cửa sổ mặc định"
+msgid ""
+"Scroll forward in this window staying within node and set default window size"
+msgstr ""
+"Cuộn tới trong cửa sổ này, mà còn lại trong nút này và đặt kích cỡ cửa sổ "
+"mặc định"
 
 #: info/session.c:1556
 msgid "Scroll backward in this window"
@@ -1350,8 +1388,12 @@ msgid "Scroll backward in this window staying within node"
 msgstr "Cuộn lùi trong cửa sổ này, mà còn lại trong nút này"
 
 #: info/session.c:1581
-msgid "Scroll backward in this window staying within node and set default window size"
-msgstr "Cuộn lùi trong cửa sổ này, mà còn lại trong nút này và đặt kích cỡ cửa sổ mặc định"
+msgid ""
+"Scroll backward in this window staying within node and set default window "
+"size"
+msgstr ""
+"Cuộn lùi trong cửa sổ này, mà còn lại trong nút này và đặt kích cỡ cửa sổ "
+"mặc định"
 
 #: info/session.c:1589
 msgid "Move to the start of this node"
@@ -1614,7 +1656,9 @@ msgstr "Đang ghi nút %s..."
 
 #: info/session.c:3629
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
-msgstr "Gửi nội dung của nút nay qua ống dẫn kiểu “INFO_PRINT_COMMAND” (Info in ra lệnh)"
+msgstr ""
+"Gửi nội dung của nút nay qua ống dẫn kiểu “INFO_PRINT_COMMAND” (Info in ra "
+"lệnh)"
 
 #: info/session.c:3664
 #, c-format
@@ -1825,7 +1869,8 @@ msgid "When \"On\", Info accepts and displays ISO Latin characters"
 msgstr "Bật thì Info chấp nhận và hiển thị ký tự La-tinh ISO"
 
 #: info/variables.c:81
-msgid "What to do when a scrolling command is issued at the end of the last node"
+msgid ""
+"What to do when a scrolling command is issued at the end of the last node"
 msgstr "Điều khiển ứng xử khi cuộn được yêu cầu tại kết thúc của nút cuối cùng"
 
 #: info/variables.c:86
@@ -1886,29 +1931,31 @@ msgstr " Tập tin phụ: %s"
 msgid "%s for %s"
 msgstr "%s cho %s"
 
-#: install-info/install-info.c:520
+#: install-info/install-info.c:525
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
-msgstr "\tHãy thử lệnh trợ giúp “%s --help” để xem toàn bộ danh sách tùy chọn.\n"
+msgstr ""
+"\tHãy thử lệnh trợ giúp “%s --help” để xem toàn bộ danh sách tùy chọn.\n"
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:533
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Cách dùng: %s [TÙY_CHỌN]... [TẬP_TIN_INFO [TẬP_TIN_THƯ_MỤC]]\n"
 
-#: install-info/install-info.c:530
+#: install-info/install-info.c:535
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr "Thêm hoặc gỡ bỏ mục nhập trong TẬP_TIN_INFO vào/khỏi TẬP_TIN_THƯ_MỤC."
 
-#: install-info/install-info.c:531
+#: install-info/install-info.c:536
 msgid "INFO-FILE and DIR-FILE are required unless the --info-file or"
 msgstr "INFO-FILE và DIR-FILE được yêu cầu trừ phi --info-file hoặc"
 
-#: install-info/install-info.c:532
+#: install-info/install-info.c:537
 msgid "--dir-file (or --info-dir) options are given, respectively."
-msgstr "các tùy chọn --dir-file (hay --info-dir) được chỉ ra thì áp dụng lần lượt."
+msgstr ""
+"các tùy chọn --dir-file (hay --info-dir) được chỉ ra thì áp dụng lần lượt."
 
-#: install-info/install-info.c:535
+#: install-info/install-info.c:540
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1922,7 +1969,7 @@ msgstr ""
 " --calign=CỘT        định dạng các dòng mô tả thứ hai và tiếp sau thành\n"
 "                       bắt đầu tại CỘT."
 
-#: install-info/install-info.c:542
+#: install-info/install-info.c:547
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1943,25 +1990,27 @@ msgstr ""
 "                      có cùng kết quả với đối số TẬP_TIN_THƯ_MỤC.\n"
 " --dry-run          có cùng kết quả với tùy chọn “--test”."
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:558
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
 "                      TEXT is written as an Info menu item line followed\n"
-"                       by zero or more extra lines starting with whitespace.\n"
+"                       by zero or more extra lines starting with "
+"whitespace.\n"
 "                      If you specify more than one entry, all are added.\n"
 "                      If you don't specify any entries, they are determined\n"
 "                       from information in the Info file itself."
 msgstr ""
 " --entry=VĂN_BẢN      chèn văn bản này dạng mục nhập tập tin Info,\n"
 "                      ghi dè lên mọi mục tương ứng từ DIR-FILE.\n"
-"                      Văn bản này được ghi dưới dạng một dòng mục trình đơn info,\n"
+"                      Văn bản này được ghi dưới dạng một dòng mục trình đơn "
+"info,\n"
 "                      đằng trước ≥0 dòng thêm bắt đầu với khoảng trắng.\n"
 "                      Nếu chỉ ra nhiều mục nhập thì tất cả được thêm.\n"
 "                      Không ghi rõ mục nhập thì các mục nhập được xác định\n"
 "                      từ thông tin trong tập tin Info chính nó."
 
-#: install-info/install-info.c:562
+#: install-info/install-info.c:567
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1977,7 +2026,7 @@ msgstr ""
 " --item=VĂN_BẢN      giống “--entry=VĂN_BẢN”.\n"
 " --keep-old          đừng thay thế mục nhập hay gỡ bỏ phần rỗng."
 
-#: install-info/install-info.c:570
+#: install-info/install-info.c:575
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -1994,7 +2043,7 @@ msgstr ""
 " --no-indent         đừng định dạng mục nhập mới trong tập tin THƯ_MỤC\n"
 " --quiet             thu hồi cảnh báo."
 
-#: install-info/install-info.c:578
+#: install-info/install-info.c:583
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -2004,7 +2053,8 @@ msgid ""
 " --section=SEC       put entries in section SEC of the directory.\n"
 "                      If you specify more than one section, all the entries\n"
 "                       are added in each of the sections.\n"
-"                      If you don't specify any sections, they are determined\n"
+"                      If you don't specify any sections, they are "
+"determined\n"
 "                       from information in the Info file itself.\n"
 " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
@@ -2021,7 +2071,7 @@ msgstr ""
 "                      từ thông tin trong tập tin Info chính nó.\n"
 " --section R PHẦN    tương đương “--regex=R --section=PHẦN --add-once”."
 
-#: install-info/install-info.c:591
+#: install-info/install-info.c:596
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -2031,7 +2081,7 @@ msgstr ""
 " --test              thu hồi nâng cấp TẬP_TIN_THƯ_MỤC.\n"
 " --version           hiển thị thông tin phiên bản rồi thoát."
 
-#: install-info/install-info.c:598 tp/texi2any.pl:836
+#: install-info/install-info.c:603 tp/texi2any.pl:844
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2041,7 +2091,7 @@ msgstr ""
 "và gửi câu hỏi chung, thảo luận v.v. cho help-texinfo@gnu.org.\n"
 "Trang chủ texinfo: http://www.gnu.org/software/texinfo/"
 
-#: install-info/install-info.c:625
+#: install-info/install-info.c:630
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2079,67 +2129,75 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:649
+#: install-info/install-info.c:654
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: không thể đọc (%s) và không thể tạo (%s)"
 
-#: install-info/install-info.c:747
+#: install-info/install-info.c:758
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: tập tin rỗng"
 
-#: install-info/install-info.c:1090 install-info/install-info.c:1130
+#: install-info/install-info.c:1109 install-info/install-info.c:1149
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
-msgstr "Có “START-INFO-DIR-ENTRY” (mục nhập thư mục Info đầu) mà không có “END-INFO-DIR-ENTRY” (mục nhập thư mục Info kết thúc) tương ứng"
+msgstr ""
+"Có “START-INFO-DIR-ENTRY” (mục nhập thư mục Info đầu) mà không có “END-INFO-"
+"DIR-ENTRY” (mục nhập thư mục Info kết thúc) tương ứng"
 
-#: install-info/install-info.c:1125
+#: install-info/install-info.c:1144
 #, c-format
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
-msgstr "Có “END-INFO-DIR-ENTRY” (mục nhập thư mục Info kết thúc) mà không có “START-INFO-DIR-ENTRY” (mục nhập thư mục Info đầu) tương ứng"
+msgstr ""
+"Có “END-INFO-DIR-ENTRY” (mục nhập thư mục Info kết thúc) mà không có “START-"
+"INFO-DIR-ENTRY” (mục nhập thư mục Info đầu) tương ứng"
 
-#: install-info/install-info.c:1989 install-info/install-info.c:1999
+#: install-info/install-info.c:2008 install-info/install-info.c:2018
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: đã có tập tin thư mục: %s\n"
 
-#: install-info/install-info.c:2079
+#: install-info/install-info.c:2098
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: hãy ghi rõ tập tin Info chỉ một lần.\n"
 
-#: install-info/install-info.c:2112
+#: install-info/install-info.c:2131
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Biểu thức chính quy thêm được ghi rõ nên bỏ qua “%s”"
 
-#: install-info/install-info.c:2124
+#: install-info/install-info.c:2143
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Gặp lỗi trong biểu thức chính quy “%s”: %s"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2201
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "đối số dòng lệnh thừa “%s”"
 
-#: install-info/install-info.c:2186
+#: install-info/install-info.c:2205
 #, c-format
 msgid "No input file specified; try --help for more information."
-msgstr "Chưa ghi rõ tập tin nhập vào; Hãy chạy dùng tùy chọn “--help” để xem thông tin thêm."
+msgstr ""
+"Chưa ghi rõ tập tin nhập vào; Hãy chạy dùng tùy chọn “--help” để xem thông "
+"tin thêm."
 
-#: install-info/install-info.c:2188
+#: install-info/install-info.c:2207
 #, c-format
 msgid "No dir file specified; try --help for more information."
-msgstr "Chưa ghi rõ tập tin thư mục. Hãy chạy lệnh trợ giúp “--help” để xem thông tin thêm."
+msgstr ""
+"Chưa ghi rõ tập tin thư mục. Hãy chạy lệnh trợ giúp “--help” để xem thông "
+"tin thêm."
 
-#: install-info/install-info.c:2330
+#: install-info/install-info.c:2349
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "không có mục nhập thư mục Info trong “%s”"
 
-#: install-info/install-info.c:2578
+#: install-info/install-info.c:2597
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "không tìm thấy mục nhập cho “%s” nên không xóa gì"
@@ -2149,8 +2207,8 @@ msgstr "không tìm thấy mục nhập cho “%s” nên không xóa gì"
 #: tp/Texinfo/Convert/HTML.pm:6535 tp/Texinfo/Convert/HTML.pm:6912
 #: tp/Texinfo/Convert/HTML.pm:6970 tp/Texinfo/Convert/HTML.pm:7048
 #: tp/Texinfo/Convert/HTML.pm:7125 tp/Texinfo/Convert/IXIN.pm:293
-#: tp/Texinfo/Convert/Info.pm:90 tp/Texinfo/Convert/Info.pm:180
-#: tp/Texinfo/Convert/Info.pm:203 tp/Texinfo/Convert/Plaintext.pm:462
+#: tp/Texinfo/Convert/Info.pm:93 tp/Texinfo/Convert/Info.pm:191
+#: tp/Texinfo/Convert/Info.pm:217 tp/Texinfo/Convert/Plaintext.pm:490
 #: tp/Texinfo/Convert/TexinfoXML.pm:429
 #, perl-format
 msgid "could not open %s for writing: %s"
@@ -2189,7 +2247,7 @@ msgstr "không thể đọc %s: %s"
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "gặp lỗi khi đóng tập tin @verbatiminclude %s: %s"
 
-#: tp/Texinfo/Common.pm:1119 tp/Texinfo/Parser.pm:3129
+#: tp/Texinfo/Common.pm:1119 tp/Texinfo/Parser.pm:3166
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%s: không tìm thấy %s"
@@ -2221,12 +2279,12 @@ msgstr "không có nút nào được đổi tên"
 msgid "nodes without a new name at the end of file"
 msgstr "các nút không có tên mới tại cuối tập tin"
 
-#: tp/Texinfo/Common.pm:1521 tp/Texinfo/Parser.pm:837
+#: tp/Texinfo/Common.pm:1521 tp/Texinfo/Parser.pm:840
 #, perl-format
 msgid "could not open %s: %s"
 msgstr "không thể mở %s: %s"
 
-#: tp/Texinfo/Common.pm:2002
+#: tp/Texinfo/Common.pm:2008
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "không thể bảo vệ ký tự băm trong @%s"
@@ -2248,9 +2306,9 @@ msgstr "không thể tạo thư mục “%s”: %s"
 
 #: tp/Texinfo/Convert/DocBook.pm:347 tp/Texinfo/Convert/HTML.pm:6938
 #: tp/Texinfo/Convert/HTML.pm:6996 tp/Texinfo/Convert/IXIN.pm:915
-#: tp/Texinfo/Convert/Info.pm:147 tp/Texinfo/Convert/Info.pm:169
-#: tp/Texinfo/Convert/Info.pm:196 tp/Texinfo/Convert/Info.pm:259
-#: tp/Texinfo/Convert/TexinfoXML.pm:448 tp/Texinfo/Parser.pm:1901
+#: tp/Texinfo/Convert/Info.pm:150 tp/Texinfo/Convert/Info.pm:176
+#: tp/Texinfo/Convert/Info.pm:207 tp/Texinfo/Convert/Info.pm:270
+#: tp/Texinfo/Convert/TexinfoXML.pm:448 tp/Texinfo/Parser.pm:1938
 #, perl-format
 msgid "error on closing %s: %s"
 msgstr "lỗi đóng %s: %s"
@@ -2350,594 +2408,629 @@ msgstr "gặp lỗi khi đóng tập tin nút chuyển hướng được đổi 
 msgid "empty node name"
 msgstr "tên nút rỗng"
 
-#: tp/Texinfo/Convert/HTML.pm:7172 tp/Texinfo/Parser.pm:3476
+#: tp/Texinfo/Convert/HTML.pm:7172 tp/Texinfo/Parser.pm:3513
 #, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr "cú pháp cho nút mở rộng được dùng cho “%s”"
 
-#: tp/Texinfo/Convert/Info.pm:99
+#: tp/Texinfo/Convert/Info.pm:102
 msgid "document without nodes"
 msgstr "tài liệu chẳng có nút nào cả"
 
-#: tp/Texinfo/Convert/Info.pm:116
+#: tp/Texinfo/Convert/Info.pm:119
 msgid "document without Top node"
 msgstr "tài liệu không có nút “Top'."
 
-#: tp/Texinfo/Convert/Info.pm:153
+#: tp/Texinfo/Convert/Info.pm:160
 #, perl-format
 msgid "rename %s failed: %s"
 msgstr "đổi tên %s gặp lỗi: %s"
 
-#: tp/Texinfo/Convert/Info.pm:228
+#: tp/Texinfo/Convert/Info.pm:242
 #, perl-format
 msgid "@%s output more than once: %s"
 msgstr "@%s kết xuất nhiều hơn một: %s"
 
-#: tp/Texinfo/Convert/Info.pm:346
+#: tp/Texinfo/Convert/Info.pm:357
 #, perl-format
 msgid "@%s outside of any node"
 msgstr "@%s nằm ngoài mọi nút"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1200 tp/Texinfo/Parser.pm:2508
+#: tp/Texinfo/Convert/Plaintext.pm:1265 tp/Texinfo/Parser.pm:2545
 #, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "mục nhập cho chỉ mục “%s” nằm ở ngoài mọi nút"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1313
+#: tp/Texinfo/Convert/Plaintext.pm:1378
 #, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "gặp lỗi khi đóng tập tin ảnh dạng text %s: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1318
+#: tp/Texinfo/Convert/Plaintext.pm:1383
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "Không thể đọc tập tin @image “%s”: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1341
+#: tp/Texinfo/Convert/Plaintext.pm:1406
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
-msgstr "không thể tìm thấy tập tin @image “%s.txt” mà cũng không có chữ thay thế"
+msgstr ""
+"không thể tìm thấy tập tin @image “%s.txt” mà cũng không có chữ thay thế"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1705
-msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
-msgstr "“@strong{Note...}” tạo một tham chiếu chéo giả trong Info; hãy sửa đổi để tránh nó"
+#: tp/Texinfo/Convert/Plaintext.pm:1768
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+"“@strong{Note...}” tạo một tham chiếu chéo giả trong Info; hãy sửa đổi để "
+"tránh nó"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1937
+#: tp/Texinfo/Convert/Plaintext.pm:2000
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "“.” hay “,” phải theo sau @xref, không phải %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1940
+#: tp/Texinfo/Convert/Plaintext.pm:2003
 msgid "`.' or `,' must follow @xref"
 msgstr "“.” hay “,” phải theo sau @xref"
 
-#: tp/Texinfo/Parser.pm:821
+#: tp/Texinfo/Parser.pm:824
 #, perl-format
 msgid "@%s should only appear at beginning or end of document"
 msgstr "@%s chỉ được phép xuất hiện ở đầu hoặc cuối của tài liệu"
 
-#: tp/Texinfo/Parser.pm:1068 tp/Texinfo/Structuring.pm:588
+#: tp/Texinfo/Parser.pm:1074 tp/Texinfo/Structuring.pm:588
 #, perl-format
 msgid "multiple @%s"
 msgstr "nhiều @%s"
 
-#: tp/Texinfo/Parser.pm:1100
+#: tp/Texinfo/Parser.pm:1108
 #, perl-format
 msgid "bad syntax for @%s argument: %s"
 msgstr "cú pháp sai cho đối số @%s: %s"
 
-#: tp/Texinfo/Parser.pm:1116
+#: tp/Texinfo/Parser.pm:1124
 #, perl-format
 msgid "bad or empty @%s formal argument: %s"
 msgstr "đối số có dạng thức sai hoặc trống rỗng @%s: %s"
 
-#: tp/Texinfo/Parser.pm:1125 tp/Texinfo/Parser.pm:4590
-#: tp/Texinfo/Parser.pm:4613 tp/Texinfo/Parser.pm:5277
-#: tp/Texinfo/Parser.pm:5287 tp/Texinfo/Parser.pm:5298
+#: tp/Texinfo/Parser.pm:1133 tp/Texinfo/Parser.pm:4633
+#: tp/Texinfo/Parser.pm:4659 tp/Texinfo/Parser.pm:5333
+#: tp/Texinfo/Parser.pm:5349 tp/Texinfo/Parser.pm:5364
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s cần đến tên"
 
-#: tp/Texinfo/Parser.pm:1238
+#: tp/Texinfo/Parser.pm:1137 tp/Texinfo/Parser.pm:4636
+#: tp/Texinfo/Parser.pm:4662 tp/Texinfo/Parser.pm:5336
+#: tp/Texinfo/Parser.pm:5352 tp/Texinfo/Parser.pm:5367
+#, fuzzy, perl-format
+msgid "bad name for @%s"
+msgstr "đối số sai cho @%s"
+
+#: tp/Texinfo/Parser.pm:1253
+#, fuzzy, perl-format
+msgid "@end %s seen before @%s closing brace"
+msgstr "@%s có vẻ trước @end %s"
+
+#: tp/Texinfo/Parser.pm:1257
+#, fuzzy, perl-format
+msgid "@%s seen before @%s closing brace"
+msgstr "@%s có vẻ trước @end %s"
+
+#: tp/Texinfo/Parser.pm:1262
 #, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%s: thiếu dấu ngoặc móc đóng “}”"
 
-#: tp/Texinfo/Parser.pm:1241
+#: tp/Texinfo/Parser.pm:1266
 #, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
 msgstr "@%s thiếu dãy giới hạn đóng: %s}"
 
-#: tp/Texinfo/Parser.pm:1354
+#: tp/Texinfo/Parser.pm:1388
 #, perl-format
 msgid "@itemx should not begin @%s"
 msgstr "@itemx không được bắt đầu bằng @%s"
 
-#: tp/Texinfo/Parser.pm:1422
+#: tp/Texinfo/Parser.pm:1456
 msgid "@itemx must follow @item"
 msgstr "@itemx phải theo sau @item"
 
-#: tp/Texinfo/Parser.pm:1590
+#: tp/Texinfo/Parser.pm:1624
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr "@%s có nội dung nhưng không có @item"
 
-#: tp/Texinfo/Parser.pm:1620
+#: tp/Texinfo/Parser.pm:1655
 #, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "“@end” cần “%s”, nhưng lại nhận được “%s”"
 
-#: tp/Texinfo/Parser.pm:1623
+#: tp/Texinfo/Parser.pm:1658
 #, perl-format
 msgid "@%s seen before @end %s"
 msgstr "@%s có vẻ trước @end %s"
 
-#: tp/Texinfo/Parser.pm:1627
+#: tp/Texinfo/Parser.pm:1662
 #, perl-format
 msgid "no matching `%cend %s'"
 msgstr "“%cend %s” không đủ cặp"
 
-#: tp/Texinfo/Parser.pm:1649 tp/Texinfo/Parser.pm:4930
-#: tp/Texinfo/Parser.pm:5150
+#: tp/Texinfo/Parser.pm:1684 tp/Texinfo/Parser.pm:4978
+#: tp/Texinfo/Parser.pm:5198
 #, perl-format
 msgid "misplaced %c"
 msgstr "%c không đúng chỗ"
 
-#: tp/Texinfo/Parser.pm:1745 tp/Texinfo/Parser.pm:3088
+#: tp/Texinfo/Parser.pm:1782 tp/Texinfo/Parser.pm:3125
 #, perl-format
 msgid "unmatched `%c%s'"
 msgstr "“%c%s” chưa khớp cặp"
 
-#: tp/Texinfo/Parser.pm:1976
+#: tp/Texinfo/Parser.pm:2013
 #, perl-format
 msgid "macro `%s' called with too many args"
 msgstr "vĩ lệnh “%s” được gọi với quá nhiều đối số"
 
-#: tp/Texinfo/Parser.pm:1998
+#: tp/Texinfo/Parser.pm:2035
 #, perl-format
 msgid "@%s missing close brace"
 msgstr "@%s thiếu dấu ngoặc móc đóng “}”"
 
-#: tp/Texinfo/Parser.pm:2006
+#: tp/Texinfo/Parser.pm:2043
 #, perl-format
 msgid "macro `%s' declared without argument called with an argument"
-msgstr "vĩ lệnh “%s” được khai báo không có đối số nhưng lại được gọi cùng với đối số"
+msgstr ""
+"vĩ lệnh “%s” được khai báo không có đối số nhưng lại được gọi cùng với đối số"
 
-#: tp/Texinfo/Parser.pm:2041
+#: tp/Texinfo/Parser.pm:2078
 #, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "“\\” trong phần mở rộng @%s theo sau “%s” thay vì tên tham số hay “\\”"
 
-#: tp/Texinfo/Parser.pm:2436
+#: tp/Texinfo/Parser.pm:2473
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s “%s” đã định nghĩa từ trước"
 
-#: tp/Texinfo/Parser.pm:2441
+#: tp/Texinfo/Parser.pm:2478
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "ở đây có định nghĩa trước như là @%s"
 
-#: tp/Texinfo/Parser.pm:2802
+#: tp/Texinfo/Parser.pm:2839
 #, perl-format
 msgid "missing name for @%s"
 msgstr "thiếu tên cho @%s"
 
-#: tp/Texinfo/Parser.pm:2807
+#: tp/Texinfo/Parser.pm:2844
 #, perl-format
 msgid "missing category for @%s"
 msgstr "thiếu category cho @%s"
 
-#: tp/Texinfo/Parser.pm:2859
+#: tp/Texinfo/Parser.pm:2896
 #, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "gặp đối số bất thường trên dòng @%s: %s"
 
-#: tp/Texinfo/Parser.pm:2875
+#: tp/Texinfo/Parser.pm:2912
 msgid "empty multitable"
 msgstr "multitable rỗng"
 
-#: tp/Texinfo/Parser.pm:2931 tp/Texinfo/Parser.pm:5371
+#: tp/Texinfo/Parser.pm:2968 tp/Texinfo/Parser.pm:5446
 #, perl-format
 msgid "superfluous argument to @%s"
 msgstr "đối số không cần thiết cho @%s"
 
-#: tp/Texinfo/Parser.pm:2937 tp/Texinfo/Parser.pm:5393
-#: tp/Texinfo/Parser.pm:5405
+#: tp/Texinfo/Parser.pm:2974 tp/Texinfo/Parser.pm:5468
+#: tp/Texinfo/Parser.pm:5480
 #, perl-format
 msgid "bad argument to @%s"
 msgstr "đối số sai cho @%s"
 
-#: tp/Texinfo/Parser.pm:2948
+#: tp/Texinfo/Parser.pm:2985
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s cần thiết một đối số: bộ định dạng cho %citem"
 
-#: tp/Texinfo/Parser.pm:2953
+#: tp/Texinfo/Parser.pm:2990
 #, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr "lệnh @%s không chấp nhận đối số trong dấu ngoặc ôm không thể ở dòng @%s"
+msgstr ""
+"lệnh @%s không chấp nhận đối số trong dấu ngoặc ôm không thể ở dòng @%s"
 
-#: tp/Texinfo/Parser.pm:2988
+#: tp/Texinfo/Parser.pm:3025
 #, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "lệnh nhấn mạnh accen “@%s” không cho phép đối số @%s"
 
-#: tp/Texinfo/Parser.pm:3066 tp/Texinfo/Parser.pm:3205
-#: tp/Texinfo/Parser.pm:5364
+#: tp/Texinfo/Parser.pm:3103 tp/Texinfo/Parser.pm:3242
+#: tp/Texinfo/Parser.pm:5439
 #, perl-format
 msgid "@%s missing argument"
 msgstr "@%s thiếu đối số"
 
-#: tp/Texinfo/Parser.pm:3078
+#: tp/Texinfo/Parser.pm:3115
 #, perl-format
 msgid "unknown @end %s"
 msgstr "không hiểu @end %s"
 
-#: tp/Texinfo/Parser.pm:3100 tp/Texinfo/Parser.pm:3722
+#: tp/Texinfo/Parser.pm:3137 tp/Texinfo/Parser.pm:3759
 #, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "đối số không cần thiết cho @%s %s: %s"
 
-#: tp/Texinfo/Parser.pm:3105 tp/Texinfo/Parser.pm:5448
-#: tp/Texinfo/Parser.pm:5493 tp/Texinfo/Parser.pm:5522
-#: tp/Texinfo/Parser.pm:5563 tp/Texinfo/Parser.pm:5641
+#: tp/Texinfo/Parser.pm:3142 tp/Texinfo/Parser.pm:5523
+#: tp/Texinfo/Parser.pm:5568 tp/Texinfo/Parser.pm:5597
+#: tp/Texinfo/Parser.pm:5638 tp/Texinfo/Parser.pm:5716
 #, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "đối số sai cho @%s: %s"
 
-#: tp/Texinfo/Parser.pm:3124
+#: tp/Texinfo/Parser.pm:3161
 #, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "@%s: không thể mở %s: %s"
 
-#: tp/Texinfo/Parser.pm:3136
+#: tp/Texinfo/Parser.pm:3173
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr "bảng mã “%s” không phải là bảng mã “canonical texinfo”"
 
-#: tp/Texinfo/Parser.pm:3145
+#: tp/Texinfo/Parser.pm:3182
 #, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "không nhận ra tên bảng mã “%s”"
 
-#: tp/Texinfo/Parser.pm:3295
+#: tp/Texinfo/Parser.pm:3332
 #, perl-format
 msgid "@%s after the first element"
 msgstr "@%s sau phần tử thứ nhất"
 
-#: tp/Texinfo/Parser.pm:3302
+#: tp/Texinfo/Parser.pm:3339
 #, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s chỉ có nghĩa khi ở dòng @multitable"
 
-#: tp/Texinfo/Parser.pm:3342
+#: tp/Texinfo/Parser.pm:3379
 #, perl-format
 msgid "@%s should not be associated with @top"
 msgstr "@%s không được tổ hợp cùng với @top"
 
-#: tp/Texinfo/Parser.pm:3354
+#: tp/Texinfo/Parser.pm:3391
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
-msgstr "@node đứng trước @%s, nhưng bộ phận của nó không được tổ hợp cùng với các nút"
+msgstr ""
+"@node đứng trước @%s, nhưng bộ phận của nó không được tổ hợp cùng với các nút"
 
-#: tp/Texinfo/Parser.pm:3456
+#: tp/Texinfo/Parser.pm:3493
 #, perl-format
 msgid "empty argument in @%s"
 msgstr "đối số trống rỗng trong @%s"
 
-#: tp/Texinfo/Parser.pm:3460
+#: tp/Texinfo/Parser.pm:3497
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "tên nút trống rỗng sau phần mở rộng “%s”"
 
-#: tp/Texinfo/Parser.pm:3503
+#: tp/Texinfo/Parser.pm:3540
 #, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "tên mục trình đơn trống rỗng trong “%s”"
 
-#: tp/Texinfo/Parser.pm:3511
+#: tp/Texinfo/Parser.pm:3548
 msgid "empty node name in menu entry"
 msgstr "tên nút trống trong mục trình đơn"
 
-#: tp/Texinfo/Parser.pm:3584
+#: tp/Texinfo/Parser.pm:3621
 #, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "@%s không được xuất hiện trong @%s"
 
-#: tp/Texinfo/Parser.pm:3716
+#: tp/Texinfo/Parser.pm:3753
 #, perl-format
 msgid "@end %s should only appear at a line beginning"
 msgstr "@end %s chỉ được phép xuất hiện ở đầu một dòng"
 
-#: tp/Texinfo/Parser.pm:3739
+#: tp/Texinfo/Parser.pm:3776
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "vĩ lệnh “%s” được xác định trước"
 
-#: tp/Texinfo/Parser.pm:3742
+#: tp/Texinfo/Parser.pm:3779
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "đây là lời định nghĩa trước của “%s”"
 
-#: tp/Texinfo/Parser.pm:3747
+#: tp/Texinfo/Parser.pm:3784
 #, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr "định nghĩa lại lệnh ngôn ngữ Texinfo: @%s"
 
-#: tp/Texinfo/Parser.pm:3796
+#: tp/Texinfo/Parser.pm:3833
 #, perl-format
 msgid "@%s without associated character"
 msgstr "@%s mà không tổ hợp cùng ký tự"
 
-#: tp/Texinfo/Parser.pm:3858
+#: tp/Texinfo/Parser.pm:3895
 #, perl-format
-msgid "@%s defined with zero or more than one argument should be invoked with {}"
-msgstr "@%s được định nghĩa với không hay nhiều hơn một đối số mà nó được gọi với {}"
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr ""
+"@%s được định nghĩa với không hay nhiều hơn một đối số mà nó được gọi với {}"
 
-#: tp/Texinfo/Parser.pm:3882
+#: tp/Texinfo/Parser.pm:3919
 #, perl-format
-msgid "macro call nested too deeply (set MAX_NESTED_MACROS to override; current value %d)"
-msgstr "vĩ lệnh gọi lồng nhau quá sâu (đặt MAX_NESTED_MACROS để đè lên giá trị này; giá trị hiện tại %d)"
+msgid ""
+"macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
+"value %d)"
+msgstr ""
+"vĩ lệnh gọi lồng nhau quá sâu (đặt MAX_NESTED_MACROS để đè lên giá trị này; "
+"giá trị hiện tại %d)"
 
-#: tp/Texinfo/Parser.pm:3891
+#: tp/Texinfo/Parser.pm:3928
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr "gọi đệ qui macro %s là không được phép; dùng @rmacro nếu thấy cần"
 
-#: tp/Texinfo/Parser.pm:3947
+#: tp/Texinfo/Parser.pm:3984
 #, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "lệnh nhấn mạnh “@%s” không cho phép có khoảng trắng đi theo"
 
-#: tp/Texinfo/Parser.pm:3953
+#: tp/Texinfo/Parser.pm:3990
 #, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "dùng dấu ngoặc móc {} để đưa ra lệnh dạng đối số tới @%s"
 
-#: tp/Texinfo/Parser.pm:3966 tp/Texinfo/Parser.pm:5051
+#: tp/Texinfo/Parser.pm:4003 tp/Texinfo/Parser.pm:5099
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s cần “i” hay “j” làm đối số, không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:3978
+#: tp/Texinfo/Parser.pm:4015
 #, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "lệnh nhấn mạnh “@%s” không cho phép có dòng mới đi theo sau"
 
-#: tp/Texinfo/Parser.pm:3989
+#: tp/Texinfo/Parser.pm:4026
 #, perl-format
 msgid "@%s expected braces"
 msgstr "@%s cần dấu ngoặc móc {}"
 
-#: tp/Texinfo/Parser.pm:4148
+#: tp/Texinfo/Parser.pm:4185
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "chưa xác định cờ : %s"
 
-#: tp/Texinfo/Parser.pm:4151
+#: tp/Texinfo/Parser.pm:4188
 msgid "bad syntax for @value"
 msgstr "cú pháp sai đối với @value"
 
-#: tp/Texinfo/Parser.pm:4158
+#: tp/Texinfo/Parser.pm:4195
 #, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s quá cũ."
 
-#: tp/Texinfo/Parser.pm:4161
+#: tp/Texinfo/Parser.pm:4198
 #, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s quá cũ; %s"
 
-#: tp/Texinfo/Parser.pm:4170
+#: tp/Texinfo/Parser.pm:4207
 #, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr "@%s chỉ được phép xuất hiện đầu tại đầu dòng"
 
-#: tp/Texinfo/Parser.pm:4261
+#: tp/Texinfo/Parser.pm:4298
 #, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s không được phép nằm bên trong khối “@%s”"
 
-#: tp/Texinfo/Parser.pm:4270
+#: tp/Texinfo/Parser.pm:4307
 #, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "@%s chỉ được phép xuất hiện tại phần đầu hoặc chân"
 
-#: tp/Texinfo/Parser.pm:4391 tp/Texinfo/Parser.pm:4408
-#: tp/Texinfo/Parser.pm:4458
+#: tp/Texinfo/Parser.pm:4433 tp/Texinfo/Parser.pm:4450
+#: tp/Texinfo/Parser.pm:4500
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s không có nghĩa bên trong khối “@%s”"
 
-#: tp/Texinfo/Parser.pm:4418
+#: tp/Texinfo/Parser.pm:4460
 #, perl-format
 msgid "@%s in empty multitable"
 msgstr "@%s trong multitable trống rỗng"
 
-#: tp/Texinfo/Parser.pm:4424
+#: tp/Texinfo/Parser.pm:4466
 msgid "@tab before @item"
 msgstr "@tab trước @item"
 
-#: tp/Texinfo/Parser.pm:4427
+#: tp/Texinfo/Parser.pm:4469
 #, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "quá nhiều cột trong mục đa bảng (tối đa là %d)"
 
-#: tp/Texinfo/Parser.pm:4464
+#: tp/Texinfo/Parser.pm:4506
 msgid "ignoring @tab outside of multitable"
 msgstr "đang bỏ qua @tab bên ngoài đa bảng"
 
-#: tp/Texinfo/Parser.pm:4468
+#: tp/Texinfo/Parser.pm:4510
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr "@%s nằm ngoài bảng hay danh sách"
 
-#: tp/Texinfo/Parser.pm:4503
+#: tp/Texinfo/Parser.pm:4545
 #, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "phải sau “@%s” để dùng “@%s”"
 
-#: tp/Texinfo/Parser.pm:4545
+#: tp/Texinfo/Parser.pm:4587
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s không có nghĩa bên ngoài môi trường  “@titlepage” và “@quotation”"
 
-#: tp/Texinfo/Parser.pm:4549
+#: tp/Texinfo/Parser.pm:4591
 msgid "@dircategory after first node"
 msgstr "@dircategory sau nút đầu tiên"
 
-#: tp/Texinfo/Parser.pm:4708
+#: tp/Texinfo/Parser.pm:4756
 #, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "vùng %s nằm trong vùng %s là không hợp lệ"
 
-#: tp/Texinfo/Parser.pm:4726
+#: tp/Texinfo/Parser.pm:4774
 msgid "@direntry after first node"
 msgstr "@direntry sau nút đầu tiên"
 
-#: tp/Texinfo/Parser.pm:4734
+#: tp/Texinfo/Parser.pm:4782
 #, perl-format
 msgid "@%s seen before first @node"
 msgstr "@%s có vẻ trước @node"
 
-#: tp/Texinfo/Parser.pm:4737
-msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr "có lẽ nút “@top” (trên) của bạn nên được bao bọc bằng @ifnottex thay cho @ifinfo ?"
+#: tp/Texinfo/Parser.pm:4785
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+"có lẽ nút “@top” (trên) của bạn nên được bao bọc bằng @ifnottex thay cho "
+"@ifinfo ?"
 
-#: tp/Texinfo/Parser.pm:4799
+#: tp/Texinfo/Parser.pm:4847
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr "@%s chỉ được phép xuất hiện trong ngữ cảnh toán học"
 
-#: tp/Texinfo/Parser.pm:4807
+#: tp/Texinfo/Parser.pm:4855
 #, perl-format
 msgid "unknown command `%s'"
 msgstr "không hiểu lệnh “%s”"
 
-#: tp/Texinfo/Parser.pm:4817
+#: tp/Texinfo/Parser.pm:4865
 msgid "unexpected @"
 msgstr "gặp @ bất thường"
 
-#: tp/Texinfo/Parser.pm:4846
+#: tp/Texinfo/Parser.pm:4894
 #, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s không có nghĩa nếu ở bên ngoài môi trường “@float” (dấu chấm động)"
 
-#: tp/Texinfo/Parser.pm:4851
+#: tp/Texinfo/Parser.pm:4899
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr "@%s phải dưới “@float”"
 
-#: tp/Texinfo/Parser.pm:4859
+#: tp/Texinfo/Parser.pm:4907
 #, perl-format
 msgid "ignoring multiple @%s"
 msgstr "bỏ qua nhiều @%s"
 
-#: tp/Texinfo/Parser.pm:4975
+#: tp/Texinfo/Parser.pm:5023
 #, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "lệnh @%s không chấp nhận đối số"
 
-#: tp/Texinfo/Parser.pm:4999
+#: tp/Texinfo/Parser.pm:5047
 #, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "lệnh @%s thiếu một nút hay tham số thủ công mở rộng"
 
-#: tp/Texinfo/Parser.pm:5018
+#: tp/Texinfo/Parser.pm:5066
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "trong @%s tên tham chiếu chéo sau phần mở rộng “%s”"
 
-#: tp/Texinfo/Parser.pm:5029
+#: tp/Texinfo/Parser.pm:5077
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "trong @%s tiêu đề tham chiếu chéo trống rỗng sau “%s” mở rộng"
 
-#: tp/Texinfo/Parser.pm:5042
+#: tp/Texinfo/Parser.pm:5090
 msgid "@image missing filename argument"
 msgstr "@image thiếu đối số tên tập tin"
 
-#: tp/Texinfo/Parser.pm:5072
+#: tp/Texinfo/Parser.pm:5120
 #, perl-format
 msgid "@%s missing first argument"
 msgstr "@%s thiếu đối số đầu tiên"
 
-#: tp/Texinfo/Parser.pm:5194
+#: tp/Texinfo/Parser.pm:5242
 msgid "superfluous arguments for node"
 msgstr "các đối số thừa cho nút"
 
-#: tp/Texinfo/Parser.pm:5233
+#: tp/Texinfo/Parser.pm:5281
 #, perl-format
 msgid "expected @end %s"
 msgstr "cần @end %s"
 
-#: tp/Texinfo/Parser.pm:5309
-#, perl-format
-msgid "remaining argument on @%s line: %s"
-msgstr "đối số còn lại trên dòng @%s: %s"
-
-#: tp/Texinfo/Parser.pm:5313
+#: tp/Texinfo/Parser.pm:5380
 #, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "@%s chỉ có thể cấp nhận @-command là đối số, không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5388
+#: tp/Texinfo/Parser.pm:5390
+#, perl-format
+msgid "remaining argument on @%s line: %s"
+msgstr "đối số còn lại trên dòng @%s: %s"
+
+#: tp/Texinfo/Parser.pm:5463
 #, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "lệnh môi trường %s như là tham số cho @%s"
 
-#: tp/Texinfo/Parser.pm:5410
+#: tp/Texinfo/Parser.pm:5485
 #, perl-format
 msgid "empty @%s"
 msgstr "@%s rỗng"
 
-#: tp/Texinfo/Parser.pm:5418
+#: tp/Texinfo/Parser.pm:5493
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr "số lượng cột không phải là một con số: %s"
 
-#: tp/Texinfo/Parser.pm:5427
+#: tp/Texinfo/Parser.pm:5502
 #, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "đối số @sp phải là một con số, không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5436
+#: tp/Texinfo/Parser.pm:5511
 #, perl-format
 msgid "reserved index name %s"
 msgstr "đã đảo ngược tên chỉ mục %s"
 
-#: tp/Texinfo/Parser.pm:5455
+#: tp/Texinfo/Parser.pm:5530
 #, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "không hiểu chỉ mục nguồn trong @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5458
+#: tp/Texinfo/Parser.pm:5533
 #, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "không hiểu chỉ mục đích trong @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5488
+#: tp/Texinfo/Parser.pm:5563
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
-msgstr "@%s dẫn đường đến một hòa trộn của %s trong chính bản thân nó, đang bỏ qua"
+msgstr ""
+"@%s dẫn đường đến một hòa trộn của %s trong chính bản thân nó, đang bỏ qua"
 
-#: tp/Texinfo/Parser.pm:5501
+#: tp/Texinfo/Parser.pm:5576
 #, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "không hiểu chỉ mục “%s” trong @printindex"
 
-#: tp/Texinfo/Parser.pm:5507
+#: tp/Texinfo/Parser.pm:5582
 #, perl-format
 msgid "printing an index `%s' merged in another one `%s'"
 msgstr "đang in bảng mục lục “%s” đã hòa trộn với một cái khác “%s”"
 
-#: tp/Texinfo/Parser.pm:5515
+#: tp/Texinfo/Parser.pm:5590
 #, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr "in mục lục trước khi tài liệu bắt đầu: @printindex %s"
 
-#: tp/Texinfo/Parser.pm:5531
+#: tp/Texinfo/Parser.pm:5606
 #, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr ""
@@ -2946,12 +3039,12 @@ msgstr ""
 " • bottom    đáy\n"
 "chứ không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5539
+#: tp/Texinfo/Parser.pm:5614
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Chỉ hỗ trợ @%s 10 hay 11, không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5547
+#: tp/Texinfo/Parser.pm:5622
 #, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
@@ -2960,12 +3053,12 @@ msgstr ""
 " • end\t\tcuối\n"
 "không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5555
+#: tp/Texinfo/Parser.pm:5630
 #, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "@%s đ.số phải là “on”, “off” hoặc “odd”, không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5573 tp/Texinfo/Parser.pm:5578
+#: tp/Texinfo/Parser.pm:5648 tp/Texinfo/Parser.pm:5653
 #, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
@@ -2975,7 +3068,7 @@ msgstr ""
 " • asis     như thế\n"
 "chứ không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5586
+#: tp/Texinfo/Parser.pm:5661
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
@@ -2984,7 +3077,7 @@ msgstr ""
 " • insert    chèn\n"
 "chứ không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5596
+#: tp/Texinfo/Parser.pm:5671
 #, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
@@ -2994,17 +3087,18 @@ msgstr ""
 " • asis       như thế\n"
 "chứ không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5607
+#: tp/Texinfo/Parser.pm:5682
 #, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "cần @%s bật hay tắt, không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5617
+#: tp/Texinfo/Parser.pm:5692
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr "đ.số @kbdinputstyle phải là “code”/“example”/“distinct”, không phải “%s”"
+msgstr ""
+"đ.số @kbdinputstyle phải là “code”/“example”/“distinct”, không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5625
+#: tp/Texinfo/Parser.pm:5700
 #, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
@@ -3013,7 +3107,7 @@ msgstr ""
 " • false   sai\n"
 "chứ không phải “%s”"
 
-#: tp/Texinfo/Parser.pm:5633
+#: tp/Texinfo/Parser.pm:5708
 #, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
@@ -3061,7 +3155,8 @@ msgstr "nút chưa được tham chiếu “%s”"
 #: tp/Texinfo/Structuring.pm:702
 #, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
-msgstr "nút “%s” là %s dành cho “%s” trong phần chương nhưng không có trong trình đơn"
+msgstr ""
+"nút “%s” là %s dành cho “%s” trong phần chương nhưng không có trong trình đơn"
 
 #: tp/Texinfo/Structuring.pm:709
 #, perl-format
@@ -3086,7 +3181,8 @@ msgstr "%s tham chiếu đến nơi mà chưa có “%s”"
 #: tp/Texinfo/Structuring.pm:827
 #, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr "nút “%s” không có mục trình đơn cho “%s”, không kể nút này là đích Lên của nó"
+msgstr ""
+"nút “%s” không có mục trình đơn cho “%s”, không kể nút này là đích Lên của nó"
 
 #: tp/Texinfo/Structuring.pm:835
 #, perl-format
@@ -3098,7 +3194,7 @@ msgstr "cho “%s”, nhảy lên trong trình đơn “%s” và lên “%s” 
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr "@%s thành “%s”, khác với %s tên “%s”"
 
-#: tp/Texinfo/Structuring.pm:1996
+#: tp/Texinfo/Structuring.pm:1997
 #, perl-format
 msgid "empty index key in @%s"
 msgstr "khóa chỉ mục trống rỗng trong @%s"
@@ -3153,8 +3249,12 @@ msgstr "latex2html.pm: không tìm thấy kết của @%s mục %d"
 
 #: tp/init/latex2html.pm:504
 #, perl-format
-msgid "latex2html.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"
-msgstr "latex2html.pm: xử lý thủ tục %d mục trong HTML; cần %d, ; là số mục được tìm thấy trong tài liệu"
+msgid ""
+"latex2html.pm: processing produced %d items in HTML; expected %d, the number "
+"of items found in the document"
+msgstr ""
+"latex2html.pm: xử lý thủ tục %d mục trong HTML; cần %d, ; là số mục được tìm "
+"thấy trong tài liệu"
 
 #: tp/init/latex2html.pm:534
 #, perl-format
@@ -3163,8 +3263,11 @@ msgstr "l2h: không thể xác định mảnh %d cho @%s"
 
 #: tp/init/latex2html.pm:560
 #, perl-format
-msgid "l2h: could not extract the fragment %d for @%s with output counter %d from HTML"
-msgstr "l2h: không thể trích xuất mảnh %d cho @%s với con đếm kết xuất %d từ HTML"
+msgid ""
+"l2h: could not extract the fragment %d for @%s with output counter %d from "
+"HTML"
+msgstr ""
+"l2h: không thể trích xuất mảnh %d cho @%s với con đếm kết xuất %d từ HTML"
 
 #: tp/init/latex2html.pm:621
 #, perl-format
@@ -3213,8 +3316,12 @@ msgstr "tex4ht.pm: không tìm thấy cuối của @%s mục %d"
 
 #: tp/init/tex4ht.pm:301
 #, perl-format
-msgid "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document for @%s"
-msgstr "tex4ht.pm: xử lý thủ tục %d mục trong HTML; cần %d, con số được tìm thấy trong tài liệu dành cho @%s"
+msgid ""
+"tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
+"items found in the document for @%s"
+msgstr ""
+"tex4ht.pm: xử lý thủ tục %d mục trong HTML; cần %d, con số được tìm thấy "
+"trong tài liệu dành cho @%s"
 
 #: tp/init/tex4ht.pm:321
 #, perl-format
@@ -3223,8 +3330,12 @@ msgstr "tex4ht.pm: kết xuất không có mục HTML cho @%s %s"
 
 #: tp/init/tex4ht.pm:336
 #, perl-format
-msgid "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of items found in the document for @%s"
-msgstr "tex4ht.pm: xử lý tìm lại %d mục trong HTML; cần %d, con số được tìm thấy trong tài liệu dành cho @%s"
+msgid ""
+"tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
+"items found in the document for @%s"
+msgstr ""
+"tex4ht.pm: xử lý tìm lại %d mục trong HTML; cần %d, con số được tìm thấy "
+"trong tài liệu dành cho @%s"
 
 #: tp/texi2any.pl:379
 #, perl-format
@@ -3256,26 +3367,30 @@ msgstr "biến đã cổ %s\n"
 msgid "could not read init file %s"
 msgstr "không thể đọc tập tin khởi tạo %s"
 
-#: tp/texi2any.pl:633
+#: tp/texi2any.pl:640
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
-msgstr "bỏ qua giá trị không chấp nhận được “TEXINFO_OUTPUT_FORMAT” (định dạng xuất Texinfo) “%s”\n"
+msgstr ""
+"bỏ qua giá trị không chấp nhận được “TEXINFO_OUTPUT_FORMAT” (định dạng xuất "
+"Texinfo) “%s”\n"
 
-#: tp/texi2any.pl:710
+#: tp/texi2any.pl:718
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 msgstr "Cách dùng: makeinfo [TÙY-CHỌN]... TẬP-TIN-TEXINFO...\n"
 
-#: tp/texi2any.pl:711
+#: tp/texi2any.pl:719
 msgid "  or:  texi2any [OPTION]... TEXINFO-FILE...\n"
 msgstr "  hoặc:  texi2any [TÙY-CHỌN]... TẬP-TIN-TEXINFO...\n"
 
-#: tp/texi2any.pl:713
+#: tp/texi2any.pl:721
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
-msgstr "Dịch tài liệu nguồn Texinfo sang nhiều định dạng khác nhau, mặc định là tập tin Info thích hợp để đọc trực tuyến bằng Emacs hoặc Info GNU độc nhất.\n"
+msgstr ""
+"Dịch tài liệu nguồn Texinfo sang nhiều định dạng khác nhau, mặc định là tập "
+"tin Info thích hợp để đọc trực tuyến bằng Emacs hoặc Info GNU độc nhất.\n"
 
-#: tp/texi2any.pl:716
+#: tp/texi2any.pl:724
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3298,9 +3413,11 @@ msgstr ""
 "                              để dịch các từ khoá Texinfo cho tài liệu xuất\n"
 "                              (mặc định là C).\n"
 "        (ngôn ngữ tài liệu)\n"
-"      --error-limit=SỐ        thoát sau khi gặp số lỗi này (mặc định là %d).\n"
+"      --error-limit=SỐ        thoát sau khi gặp số lỗi này (mặc định là "
+"%d).\n"
 "        (hạn chế lỗi)\n"
-"      --force                 bảo tồn kết xuất thậm chí nếu có lỗi (_ép buộc_).\n"
+"      --force                 bảo tồn kết xuất thậm chí nếu có lỗi (_ép "
+"buộc_).\n"
 "      --help                  hiển thị trợ giúp này rồi thoát (_trợ giúp_)\n"
 "      --no-validate           thu hồi khả năng thầm tra tham chiếu chéo.\n"
 "        (không thẩm tra)\n"
@@ -3311,9 +3428,10 @@ msgstr ""
 "  -c, --set-customization-variable VAR=VAL đặt biến VAR tùy chỉnh\n"
 "                               thành VAL.\n"
 "  -v, --verbose               diễn tả việc đang được làm (_chi tiết_)\n"
-"      --version               hiển thị thông tin phiên bản rồi thoát (_phiên bản_)\n"
+"      --version               hiển thị thông tin phiên bản rồi thoát (_phiên "
+"bản_)\n"
 
-#: tp/texi2any.pl:731
+#: tp/texi2any.pl:739
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3329,14 +3447,17 @@ msgstr ""
 "      --xml                   xuất XML Texinfo thay cho Info.\n"
 "      --dvi, --dvipdf, --ps, --pdf  gọi texi2dvi để tạo kết xuất đã đưa ra.\n"
 
-#: tp/texi2any.pl:739
+#: tp/texi2any.pl:747
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
 "                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and menus\n"
-"                                from Info output (thus producing plain text)\n"
-"                                or from HTML (thus producing shorter output).\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output).\n"
 "                                Also, if producing Info, write to\n"
 "                                standard output by default \n"
 "      --no-split              suppress any splitting of the output;\n"
@@ -3344,7 +3465,8 @@ msgid ""
 "      --[no-]number-sections  output chapter and sectioning numbers;\n"
 "                                default is on.\n"
 "  -o, --output=DEST           output to DEST.\n"
-"                                With split output, create DEST as a directory\n"
+"                                With split output, create DEST as a "
+"directory\n"
 "                                 and put the output files there.\n"
 "                                With non-split output, if DEST is already\n"
 "                                 a directory or ends with a /,\n"
@@ -3356,47 +3478,59 @@ msgstr ""
 "                               bằng vĩ lệnh, bỏ qua @setfilename bất kỳ.\n"
 "        (_vĩ lệnh mở rộng_)\n"
 "      --no-headers            thu hồi các bộ phân cách nút, Node: dòng\n"
-"                                và trình đơn từ kết xuất Info (do vậy tạo văn bản thô),\n"
-"                                hoặc từ HTML (thế thì tạo kết xuất ngắn hơn).\n"
+"                                và trình đơn từ kết xuất Info (do vậy tạo "
+"văn bản thô),\n"
+"                                hoặc từ HTML (thế thì tạo kết xuất ngắn "
+"hơn).\n"
 "                                Đồng thời nếu tạo Info thì cũng ghi\n"
 "                                vào đầu ra tiêu chuẩn theo mặc định.\n"
 "        (_không có dòng đầu_)\n"
-"      --no-split              thu hồi khả năng chia tách kết xuất kiểu Info hoặc HTML,\n"
+"      --no-split              thu hồi khả năng chia tách kết xuất kiểu Info "
+"hoặc HTML,\n"
 "                               tạo ra chỉ một tập tin xuất\n"
 "        (_không chia tách_).\n"
-"      --[no-]number-sections  xuất các số thứ tự chương và phần. (mặc định là bật)\n"
+"      --[no-]number-sections  xuất các số thứ tự chương và phần. (mặc định "
+"là bật)\n"
 "        (_[không] đánh số các phần_)\n"
 "  -o, --output=ĐÍCH           xuất ra ĐÍCH.\n"
-"                               Với kết xuất chia tách, tạo ĐÍCH là một thư mục\n"
-"                               Với kết xuất không chia tách, và ĐÍCH đã sẵn có\n"
+"                               Với kết xuất chia tách, tạo ĐÍCH là một thư "
+"mục\n"
+"                               Với kết xuất không chia tách, và ĐÍCH đã sẵn "
+"có\n"
 "                                một thư mục hoặc kết thúc bằng /,\n"
 "                                đặt tập tin kết xuất ở đây.\n"
 "                               Nếu không, tên ĐÍCH là tập tin kết xuất.\n"
 
-#: tp/texi2any.pl:759
+#: tp/texi2any.pl:767
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, in\n"
-"                                which they are defined (this is the default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Tùy chọn đối với Info và nhập thô :\n"
 "      --disable-encoding      đừng xuất các ký tự có dấu phụ và các ký tự\n"
-"\t\tđặc biệt trong kết xuất Info dựa vào bảng mã tài liệu @documentencoding.\n"
+"\t\tđặc biệt trong kết xuất Info dựa vào bảng mã tài liệu "
+"@documentencoding.\n"
 "      --enable-encoding       xuất các ký tự có dấu phụ và ký tự đặc biệt\n"
 "\t\ttrong kết xuất Info dựa vào @documentencoding.\n"
 "\t\t(_bật bảng mã_)\n"
-"      --fill-column=SỐ       ngắt các dòng Info ở số ký tự này (mặc định là %d).\n"
+"      --fill-column=SỐ       ngắt các dòng Info ở số ký tự này (mặc định là "
+"%d).\n"
 "\t\t(_tô đầy cột_)\n"
 "      --footnote-style=KIỂU_DÁNG\txuất các cước chú trong Info\n"
 "\t\ttùy theo kiểu dáng này:\n"
@@ -3406,10 +3540,12 @@ msgstr ""
 "      --paragraph-indent=GIÁ_TRỊ\t\tthụt lề các đoạn văn Info\n"
 "\t\ttheo số dấu cách này (mặc định là %d).\n"
 "\t\t\tGIÁ TRỊ là “none” (không có) thì đừng thụt lề;\n"
-"\t\t\tGIÁ TRỊ là “asis” (như thế) thì bảo tồn sự thụt lề đã có.\t\t(_đoạn văn thụt lề_)\n"
-"      --split-size=SỐ        chia tách các tập tin Info ở kích cỡ SỐ (mặc định là %d).\n"
+"\t\t\tGIÁ TRỊ là “asis” (như thế) thì bảo tồn sự thụt lề đã có.\t\t(_đoạn "
+"văn thụt lề_)\n"
+"      --split-size=SỐ        chia tách các tập tin Info ở kích cỡ SỐ (mặc "
+"định là %d).\n"
 
-#: tp/texi2any.pl:776
+#: tp/texi2any.pl:784
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3429,13 +3565,16 @@ msgstr ""
 "      --css-ref=URL           tạo ra tham chiếu đến tập tin CSS.\n"
 "      --internal-links=TẬP_TIN tạo danh sách các liên kết nội bộ\n"
 "                                trong tập tin này\n"
-"      --split=SPLIT           chia cắt tại SPLIT, với SPLIT có thể là “chapter”,\n"
+"      --split=SPLIT           chia cắt tại SPLIT, với SPLIT có thể là "
+"“chapter”,\n"
 "                                “section” hoặc “node”.\n"
 "      --transliterate-file-names\ttạo các tên tập tin đã chuyển chữ ASCII.\n"
-"      --node-files            tạo ra các tập tin chuyển hướng cho các nút và \n"
-"                                điểm neo; mặc định chỉ được đặt nếu chia tách.\n"
+"      --node-files            tạo ra các tập tin chuyển hướng cho các nút "
+"và \n"
+"                                điểm neo; mặc định chỉ được đặt nếu chia "
+"tách.\n"
 
-#: tp/texi2any.pl:787
+#: tp/texi2any.pl:795
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3443,7 +3582,7 @@ msgstr ""
 "Các tùy chọn cho XML và Docbook:\n"
 "      --output-indent=VAL     chẳng làm gì, giữ lại để tương thích.\n"
 
-#: tp/texi2any.pl:790
+#: tp/texi2any.pl:798
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3451,7 +3590,7 @@ msgstr ""
 "Tùy chọn cho DVI/PS/PDF:\n"
 "      --Xopt=OPT              chuyển OPT cho texi2dvi; có thể lặp lại.\n"
 
-#: tp/texi2any.pl:793
+#: tp/texi2any.pl:801
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3464,11 +3603,13 @@ msgstr ""
 "      --commands-in-node-names  không làm gì cả, với mục đích tương thích.\n"
 "\t\t(_các lệnh trong tên nút_)\n"
 "  -D BIẾN                       định nghĩa biến này, giống như @set.\n"
-"  -I THƯ_MỤC                    phụ thêm thư mục này vào đường dẫn tìm kiếm @include.\n"
-"  -P THƯ_MỤC                    thêm thư mục này vào đầu của đường dẫn tìm kiếm @include.\n"
+"  -I THƯ_MỤC                    phụ thêm thư mục này vào đường dẫn tìm kiếm "
+"@include.\n"
+"  -P THƯ_MỤC                    thêm thư mục này vào đầu của đường dẫn tìm "
+"kiếm @include.\n"
 "  -U BIẾN                       hủy định nghĩa biến này, giống như @clear.\n"
 
-#: tp/texi2any.pl:800
+#: tp/texi2any.pl:808
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3492,7 +3633,8 @@ msgstr ""
 "                     không tạo ra Docbook.\n"
 "  --ifhtml          xử lý @ifhtml và @html thậm chí nếu không tạo ra HTML.\n"
 "  --ifinfo          xử lý @ifinfo thậm chí nếu không tạo ra Info.\n"
-"  --ifplaintext     xử lý @ifplaintext thậm chí nếu không tạo ra chữ thường.\n"
+"  --ifplaintext     xử lý @ifplaintext thậm chí nếu không tạo ra chữ "
+"thường.\n"
 "  --iftex           xử lý @iftex và @tex.\n"
 "  --ifxml           xử lý @ifxml và @xml.\n"
 "  --no-ifdocbook    không xử lý văn bản @ifdocbook và @docbook.\n"
@@ -3502,9 +3644,10 @@ msgstr ""
 "  --no-iftex        không xử lý văn bản @iftex và @tex.\n"
 "  --no-ifxml        không xử lý văn bản @ifxml và @xml.\n"
 "\n"
-"  Đồng thời, đối với các tùy chọn “--no-ifĐỊNH_DẠNG”, phải xử lý văn bản @ifnotĐỊNH_DẠNG.\n"
+"  Đồng thời, đối với các tùy chọn “--no-ifĐỊNH_DẠNG”, phải xử lý văn bản "
+"@ifnotĐỊNH_DẠNG.\n"
 
-#: tp/texi2any.pl:817
+#: tp/texi2any.pl:825
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3513,24 +3656,27 @@ msgid ""
 "  if generating plain text, --ifplaintext is on and the others are off;\n"
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
-"  Giá trị mặc định cho các điều kiện @if... thì phụ thuộc vào định dạng xuất:\n"
+"  Giá trị mặc định cho các điều kiện @if... thì phụ thuộc vào định dạng "
+"xuất:\n"
 "  nếu tạo Docbook, “--ifdocbook” được bật và các cái khác bị tắt;\n"
 "  nếu tạo HTML thì bật “--ifhtml” và các cái khác bị tắt;\n"
 "  nếu tạo Info thì bật “--ifinfo” và các cái khác bị tắt;\n"
 "  nếu tạo chữ dạng thô thì bật “--ifplaintext” và các cái khác bị tắt;\n"
 "  nếu tạo XML thì bật “--ifxml” và các cái khác bị tắt;\n"
 
-#: tp/texi2any.pl:824
+#: tp/texi2any.pl:832
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
-"  makeinfo --plaintext foo.texi          write plain text to standard output\n"
+"  makeinfo --plaintext foo.texi          write plain text to standard "
+"output\n"
 "  makeinfo --pdf foo.texi                write PDF using texi2dvi\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
@@ -3539,15 +3685,18 @@ msgstr ""
 "  makeinfo --html foo.texi               ghi HTML vào @setfilename\n"
 "  makeinfo --xml foo.texi                ghi Texinfo XML vào @setfilename\n"
 "  makeinfo --docbook foo.texi            ghi DocBook XML vào @setfilename\n"
-"  makeinfo --plaintext foo.texi          ghi dữ liệu dạng chữ thường ra đầu ra tiêu chuẩn\n"
+"  makeinfo --plaintext foo.texi          ghi dữ liệu dạng chữ thường ra đầu "
+"ra tiêu chuẩn\n"
 "  makeinfo --pdf foo.texi                ghi PDF dùng texi2dvi\n"
 "\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  ghi HTML không có dòng nút hay trình đơn\n"
+"  makeinfo --html --no-headers foo.texi  ghi HTML không có dòng nút hay "
+"trình đơn\n"
 "  makeinfo --number-sections foo.texi    ghi Info có các phần đã đánh số\n"
-"  makeinfo --no-split phu.texi           ghi một tập tin Info, bất chấp kích cỡ tối đa\n"
+"  makeinfo --no-split phu.texi           ghi một tập tin Info, bất chấp kích "
+"cỡ tối đa\n"
 
-#: tp/texi2any.pl:871
+#: tp/texi2any.pl:879
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
@@ -3556,7 +3705,7 @@ msgstr ""
 " • end        cuối\n"
 "không phải “%s”.\n"
 
-#: tp/texi2any.pl:953
+#: tp/texi2any.pl:961
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
@@ -3566,64 +3715,72 @@ msgstr ""
 " • asis       như thế\n"
 "không phải “%s”.\n"
 
-#: tp/texi2any.pl:1030
+#: tp/texi2any.pl:1038
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
-msgstr "%s: khi đang tạo %s, chỉ một TẬP-TIN đầu vào có thể được chỉ ra cùng với tùy chọn -o\n"
+msgstr ""
+"%s: khi đang tạo %s, chỉ một TẬP-TIN đầu vào có thể được chỉ ra cùng với tùy "
+"chọn -o\n"
 
-#: tp/texi2any.pl:1034
+#: tp/texi2any.pl:1042
 msgid "--Xopt option without printed output"
 msgstr "tùy chọn --Xopt không in ra kết xuất"
 
-#: tp/texi2any.pl:1044
+#: tp/texi2any.pl:1052
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "không hiểu sự biến đổi cây %s"
 
-#: tp/texi2any.pl:1051
+#: tp/texi2any.pl:1059
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "bỏ qua việc chia cắt cho định dạng %s"
 
-#: tp/texi2any.pl:1101
+#: tp/texi2any.pl:1109
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: thiếu đối số tập tin.\n"
 
-#: tp/texi2any.pl:1102
+#: tp/texi2any.pl:1110
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “%s --help” để xem thông tin thêm.\n"
 
-#: tp/texi2any.pl:1173
+#: tp/texi2any.pl:1181
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
-msgstr "chuyển đổi dạng fill_gaps_in_sectioning không trả về kết quả nào. Không có chương nào à?"
+msgstr ""
+"chuyển đổi dạng fill_gaps_in_sectioning không trả về kết quả nào. Không có "
+"chương nào à?"
 
-#: tp/texi2any.pl:1195
+#: tp/texi2any.pl:1203
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "gặp lỗi khi đóng tập tin vĩ lệnh mở rộng %s: %s\n"
 
-#: tp/texi2any.pl:1201
+#: tp/texi2any.pl:1209
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "không thể mở “%s” để ghi: %s\n"
 
-#: tp/texi2any.pl:1226
-msgid "insert_nodes_for_sectioning_commands transformation return no result. No section?"
-msgstr "sự biến đổi insert_nodes_for_sectioning_commands không trả về kết quả. Không có chương nào à?"
+#: tp/texi2any.pl:1234
+msgid ""
+"insert_nodes_for_sectioning_commands transformation return no result. No "
+"section?"
+msgstr ""
+"sự biến đổi insert_nodes_for_sectioning_commands không trả về kết quả. Không "
+"có chương nào à?"
 
-#: tp/texi2any.pl:1287 tp/texi2any.pl:1363
+#: tp/texi2any.pl:1299 tp/texi2any.pl:1375
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: lỗi đóng tệp tin %s: %s\n"
 
-#: tp/texi2any.pl:1310 tp/texi2any.pl:1344
+#: tp/texi2any.pl:1322 tp/texi2any.pl:1356
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: gặp lỗi khi đóng tập tin liên kết nội tại %s: %s\n"
 
-#: tp/texi2any.pl:1316 tp/texi2any.pl:1350
+#: tp/texi2any.pl:1328 tp/texi2any.pl:1362
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: không thể mở “%s” để ghi: %s\n"
@@ -3653,7 +3810,8 @@ msgstr "Tạo ra chỉ mục đã sắp xếp cho mỗi TẬP_TIN xuất TeX.\n"
 #: util/texindex.c:241
 #, c-format
 msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-msgstr "Thường TẬP_TIN... được ghi rõ dạng “phu.%c%c” cho tài liệu dạng “phu.texi”.\n"
+msgstr ""
+"Thường TẬP_TIN... được ghi rõ dạng “phu.%c%c” cho tài liệu dạng “phu.texi”.\n"
 
 #: util/texindex.c:243
 #, c-format

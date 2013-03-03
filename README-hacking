@@ -107,12 +107,12 @@ make po-check             # update po/POTFILES.in as needed
 make -C po update-po      # but don't commit yet, dist updates po_document
 make -C doc wwwdoc-build  # and eventually -install, for official.
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
-cvs commit                # when clean, then distcheck to be sure.
+svn commit                # when clean, then distcheck to be sure.
 #create diff  for official, see below 
 
 - To do the actual upload:
 pkg=texinfo
-ver=4.13.97
+ver=5.0.90
 
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest

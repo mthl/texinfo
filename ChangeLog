@@ -1,5 +1,7 @@
 2013-03-02  Karl Berry  <karl@gnu.org>
 
+	* pretest 5.0.90.
+
 	* NEWS,
 	* doc/texinfo.txi (Macro Details): behavior of newlines in macro
 	definitions and line-delimited commands has changed.
