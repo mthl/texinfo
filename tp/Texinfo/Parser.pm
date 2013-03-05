@@ -1666,9 +1666,13 @@ sub _close_current($$$;$$)
           my $conditional = pop @{$current->{'parent'}->{'contents'}};
         }
       }
-      my $context = pop @{$self->{'context_stack'}} if
-         ($preformatted_commands{$current->{'cmdname'}}
-           or $menu_commands{$current->{'cmdname'}});
+      if ($preformatted_commands{$current->{'cmdname'}}
+          or $menu_commands{$current->{'cmdname'}}
+          or $format_raw_commands{$current->{'cmdname'}}) {
+        my $context = pop @{$self->{'context_stack'}};
+        pop @{$self->{'raw_formats_stack'}} 
+          if ($format_raw_commands{$current->{'cmdname'}});
+      }
       pop @{$self->{'regions_stack'}} 
          if ($region_commands{$current->{'cmdname'}});
       $current = $current->{'parent'};
