@@ -40,6 +40,10 @@ Other -W options can be useful too, and patches are welcome to resolve
 diagnostics; however, removing all possible warning messages, or
 warnings with nonfree compilers, is explicitly not a goal.
 
+If you want to delve into making a new backend for the Perl makeinfo,
+the documentation in tp/Texinfo/Convert/Converter.pm is a good starting
+point, as it describes the existing backends and other places to look.
+
 Translations are handled through the Translation Project.  When a new
 .po is posted in
   http://translationproject.org/latest/texinfo 
