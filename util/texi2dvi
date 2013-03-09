@@ -1775,9 +1775,8 @@ this script, you'll need to install TeX (if you don't have it) or change
 your PATH or TEX environment variable (if you do).  See the --help
 output for more details.
 
-For information about obtaining TeX, please see http://www.tug.org.  If
-you happen to be using Debian, you can get it with this command:
-  apt-get install tetex-bin
+For information about obtaining TeX, please see http://tug.org/texlive,
+or do a web search for TeX and your operating system or distro.
 EOM
   exit 1
 fi
