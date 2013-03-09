@@ -533,8 +533,8 @@ print_help (void)
   printf (_("Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"), progname);
   puts ("");
   puts (_("Add or remove entries in INFO-FILE from the Info directory DIR-FILE."));
-  puts (_("INFO-FILE and DIR-FILE are required unless the --info-file or"));
-  puts (_("--dir-file (or --info-dir) options are given, respectively."));
+  puts (_("INFO-FILE and DIR-FILE are required unless the --info-file\n\
+or --dir-file (or --info-dir) options are given, respectively."));
   puts ("");
 
   puts (_("\

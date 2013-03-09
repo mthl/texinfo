@@ -1,5 +1,11 @@
 2013-03-08  Karl Berry  <karl@gnu.org>
 
+	* install-info/install-info.c (print_help): combine
+	sentence for better translation.
+	* tp/init/tex4ht.pm (tex4ht_process_command): omit :
+	for consistency.
+	Report from Benno Schulenberg, 08 Mar 2013 22:07:31.
+
 	* util/texi2dvi: don't mention Debian specifically;
 	I don't think tetex-bin has been the name for a while.
 
