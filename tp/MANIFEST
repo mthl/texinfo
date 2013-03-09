@@ -773,6 +773,7 @@ t/results/invalid_nestings/on_section_line.pl
 t/results/invalid_nestings/on_subheading_line.pl
 t/results/invalid_nestings/quotation_in_ref.pl
 t/results/invalid_nestings/quotation_in_style_command.pl
+t/results/invalid_nestings/raw_block_on_line.pl
 t/results/invalid_nestings/recursive_copying.pl
 t/results/invalid_nestings/ref_in_anchor.pl
 t/results/invalid_nestings/ref_in_ref.pl

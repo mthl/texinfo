@@ -1,5 +1,7 @@
 2013-03-08  Karl Berry  <karl@gnu.org>
 
+	* pretest 5.0.91.
+
 	* install-info/install-info.c (print_help): combine
 	sentence for better translation.
 	* tp/init/tex4ht.pm (tex4ht_process_command): omit :
