@@ -43,11 +43,11 @@ Basics
 Text creation and manipulation
 * Diffutils: (diffutils).       Comparing and merging files.
 * Gawk: (gawk).                 A text scanning and processing language.
+* Word differences: (wdiff).    GNU wdiff and diff related tools.
 * grep: (grep).                 Print lines matching a pattern.
 * M4: (m4).                     A powerful macro processor.
 * Perl: (perldoc-all).          Practical Extraction and Report Language.
 * sed: (sed).                   Stream EDitor.  
-* Wdiff: (wdiff).               Word difference finder and related tools.
 
 Texinfo documentation system
 * Info: (info).                 How to use the documentation browsing system.
