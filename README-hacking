@@ -157,3 +157,15 @@ relink texinfo $ver
   ... announcements:
 news item at savannah.
 send announcement to info-gnu, cc bug-texinfo.
+
+  ... make diffs at official release:
+  prev=4.13
+  ver=5.0
+  cd $xarchive/../prod
+  tar xf texinfo-$ver.tar.gz
+  tar xf texinfo-$prev.tar.gz
+  diff -Nrc2 texinfo-$prev texinfo-$ver | xz >texinfo-$prev-$ver.diff.xz
+  gnupload --to ftp.gnu.org:texinfo !$
+  rm -rf texinfo-$ver texinfo-$prev
+  ro texinfo-*$ver*
+  

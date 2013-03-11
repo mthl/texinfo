@@ -17384,7 +17384,7 @@ of executing the @command{texi2dvi} program when those outputs are
 requested.
 
 The output format options for this are @option{--dvi},
-@option{--dvipdf}, @option{--pdf}, and @option{--pdf}.  @xref{Format
+@option{--dvipdf}, @option{--pdf}, and @option{--ps}.  @xref{Format
 with @t{texi2dvi}}, for more details on these options and general
 @command{texi2dvi} operation.  In addition, the @option{--verbose},
 @option{--silent}, and @option{--quiet} options are passed on if
