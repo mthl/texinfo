@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2008-03-09 20:35+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -3311,7 +3311,7 @@ msgstr "%s: kunde inte öppna --css-fil: %s"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s: kunde inte öppna --css-fil: %s"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "Kan inte hitta \"%s\"."
@@ -3334,11 +3334,6 @@ msgstr "kan inte skapa utdatafilen \"%s\""
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "Kan inte hitta \"%s\"."
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "Kan inte hitta \"%s\"."
 
 #: tp/init/tex4ht.pm:294
@@ -3818,6 +3813,10 @@ msgstr "Inget sidnummer i %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "posten %s följer på en post med ett sekundärt namn"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "Kan inte hitta \"%s\"."
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

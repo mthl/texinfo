@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2000-10-31 15:17+01:00\n"
 "Last-Translator: Vladimir Michl <Vladimir.Michl@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -3155,7 +3155,7 @@ msgstr "Výstup %s pro expanzi makra nelze otevøít"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "Výstup %s pro expanzi makra nelze otevøít"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "Nelze najít `%s'."
@@ -3178,11 +3178,6 @@ msgstr "Výstupní soubor `%s' nelze vytvoøit."
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "Nelze najít `%s'."
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "Nelze najít `%s'."
 
 #: tp/init/tex4ht.pm:294
@@ -3575,6 +3570,10 @@ msgstr "Na %s není èíslo stránky"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "polo¾ka %s následuje za polo¾kou se sekundárním jménem"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "Nelze najít `%s'."
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

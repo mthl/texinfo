@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: info\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Mate LABADI <labadimate@freemail.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -3309,7 +3309,7 @@ msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
 # található / találom
 # a mondatszerkezet miatt itt jó a nem található - sas
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "„%s“ nem található."
@@ -3336,13 +3336,6 @@ msgstr "a(z) „%s“ output fájl nem hozható létre."
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "„%s“ nem található."
-
-# található / találom
-# a mondatszerkezet miatt itt jó a nem található - sas
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "„%s“ nem található."
 
 #: tp/init/tex4ht.pm:294
@@ -3722,6 +3715,12 @@ msgstr "Nem található oldalszám ebben: %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "a(z) %s bejegyzés egy másodlagos névvel rendelkező bejegyzést követ"
+
+# található / találom
+# a mondatszerkezet miatt itt jó a nem található - sas
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "„%s“ nem található."
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

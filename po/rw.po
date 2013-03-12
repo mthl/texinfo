@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -3270,7 +3270,7 @@ msgstr "%s:OYA Gufungura IDOSIYE"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s:OYA Gufungura IDOSIYE"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "Gushaka"
@@ -3293,11 +3293,6 @@ msgstr "Kurema Ibisohoka IDOSIYE"
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "Gushaka"
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "Gushaka"
 
 #: tp/init/tex4ht.pm:294
@@ -3712,6 +3707,10 @@ msgstr "Ipaji Umubare in"
 #, fuzzy, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "Icyinjijwe Icyinjijwe Na: a Izina:"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "Gushaka"
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

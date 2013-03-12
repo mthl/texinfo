@@ -428,7 +428,7 @@ verbose ()
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 5.0) $rcs_version
+texi2dvi (GNU Texinfo 5.1) $rcs_version
 
 Copyright (C) 2013 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>

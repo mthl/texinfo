@@ -116,7 +116,7 @@ svn commit                # when clean, then distcheck to be sure.
 
 - To do the actual upload:
 pkg=texinfo
-ver=5.0.90
+ver=5.0.91
 
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest

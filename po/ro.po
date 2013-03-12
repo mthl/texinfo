@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -3205,7 +3205,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "Nu pot gãsi `%s'."
@@ -3228,11 +3228,6 @@ msgstr "nu pot crea fiºierul de ieºire `%s'"
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "Nu pot gãsi `%s'."
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "Nu pot gãsi `%s'."
 
 #: tp/init/tex4ht.pm:294
@@ -3708,6 +3703,10 @@ msgstr "Nici un numãr de paginã în %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "intrarea %s urmeazã o intrare cu nume secundar"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "Nu pot gãsi `%s'."
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

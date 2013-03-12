@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -3219,7 +3219,7 @@ msgstr "%s: 无法打开 --css-file: %s"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "无法寻找“%s”。"
@@ -3242,11 +3242,6 @@ msgstr "无法创建输出文件“%s”"
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "无法寻找“%s”。"
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "无法寻找“%s”。"
 
 #: tp/init/tex4ht.pm:294
@@ -3700,6 +3695,10 @@ msgstr "%s 中没有页码"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "条目 %s 出现在具有次要名称的条目之后"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "无法寻找“%s”。"
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

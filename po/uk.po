@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2010-06-01 14:53+0300\n"
 "Last-Translator: Maxim V. Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -3297,7 +3297,7 @@ msgstr "%s: не вдається відкрити --css-file: %s"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s: не вдається відкрити --css-file: %s"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "Не вдається знайти `%s'."
@@ -3320,11 +3320,6 @@ msgstr "не вдається створити файл виводу `%s'"
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "Не вдається знайти `%s'."
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "Не вдається знайти `%s'."
 
 #: tp/init/tex4ht.pm:294
@@ -3816,6 +3811,10 @@ msgstr "Нема номеру сторінки у %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "пункт %s йде за пунктом, що має вторинну назву"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "Не вдається знайти `%s'."
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

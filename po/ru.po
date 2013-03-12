@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2005-02-07 09:27+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -3193,7 +3193,7 @@ msgstr "%s: невозможно открыть css-файл: %s"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s: невозможно открыть css-файл: %s"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "Невозможно найти `%s'."
@@ -3216,11 +3216,6 @@ msgstr "невозможно создать выходной файл `%s'"
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "Невозможно найти `%s'."
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "Невозможно найти `%s'."
 
 #: tp/init/tex4ht.pm:294
@@ -3705,6 +3700,10 @@ msgstr "В %s нет номера страницы"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "за вхождением %s следует вхождение с вторичным именем"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "Невозможно найти `%s'."
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

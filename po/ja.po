@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2012-11-29 07:15+0900\n"
 "Last-Translator: Takeshi Hamasaki <hmatrjp@users.sourceforge.jp>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -3279,7 +3279,7 @@ msgstr "%s: --css-file %s を開くことができません"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s: --css-file %s を開くことができません"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "@%s: %s を開くことができません: %s"
@@ -3303,11 +3303,6 @@ msgstr "設定ファイルの欠落。"
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
 msgstr "%s: `%s' のアンマウントに失敗\n"
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
-msgstr "@%s: %s を開くことができません: %s"
 
 #: tp/init/tex4ht.pm:294
 #, perl-format
@@ -3801,6 +3796,10 @@ msgstr "%s にページ番号がありません"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "%s 項目に二つ目の項目名が続いています"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "@%s: %s を開くことができません: %s"
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

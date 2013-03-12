@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -3119,7 +3119,7 @@ msgstr "無法建立輸出檔案 `%s'."
 msgid "l2h: could not open %s for writing: %s"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "無法找到 `%s'."
@@ -3142,11 +3142,6 @@ msgstr "無法建立輸出檔案 `%s'."
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "無法找到 `%s'."
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "無法找到 `%s'."
 
 #: tp/init/tex4ht.pm:294
@@ -3529,6 +3524,10 @@ msgstr "在 %s 中沒有頁碼"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr ""
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "無法找到 `%s'."
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

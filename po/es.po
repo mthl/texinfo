@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2008-09-04 23:50+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -3374,7 +3374,7 @@ msgstr "%s: no se pudo abrir --css-file: %s"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "%s: no se pudo abrir --css-file: %s"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "No se encontró `%s'."
@@ -3397,11 +3397,6 @@ msgstr "no se pudo crear el fichero `%s'"
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "No se encontró `%s'."
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr "No se encontró `%s'."
 
 #: tp/init/tex4ht.pm:294
@@ -3977,6 +3972,10 @@ msgstr "No hay constancia de número de página en %s"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "la entrada %s sigue un elemento con nombre secundario"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr "No se encontró `%s'."
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"

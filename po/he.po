@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-03-08 18:25-0800\n"
+"POT-Creation-Date: 2013-03-12 15:50-0700\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -3165,7 +3165,7 @@ msgstr "`%s' ורקאמ תובחרה טלפ תחיתפב הלקת"
 msgid "l2h: could not open %s for writing: %s"
 msgstr "`%s' ורקאמ תובחרה טלפ תחיתפב הלקת"
 
-#: tp/init/tex4ht.pm:123
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
 #, fuzzy, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr ".אצמנ אל `%s' ץבוק"
@@ -3188,11 +3188,6 @@ msgstr "`%s' טלפ ץבוק תריציב הלקת"
 #: tp/init/tex4ht.pm:260
 #, fuzzy, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr ".אצמנ אל `%s' ץבוק"
-
-#: tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
-msgid "tex4ht.pm: could not open %s"
 msgstr ".אצמנ אל `%s' ץבוק"
 
 #: tp/init/tex4ht.pm:294
@@ -3634,6 +3629,10 @@ msgstr "דומע רפסמ ןיא %s-ב"
 #, c-format
 msgid "entry %s follows an entry with a secondary name"
 msgstr "ינשמ םש לעב טירפ תובקעב אב %s טירפ"
+
+#, fuzzy
+#~ msgid "tex4ht.pm: could not open %s"
+#~ msgstr ".אצמנ אל `%s' ץבוק"
 
 #, fuzzy
 #~ msgid "menu reference to nonexistent node `%s'"
