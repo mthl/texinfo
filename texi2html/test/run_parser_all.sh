@@ -133,7 +133,16 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
   exit 0
 fi
 
-. ../path_separator || exit 1
+for command_location_dir in "$testdir/$srcdir_test/../../../tp" ../../../tp; do
+  if test -f "$command_location_dir/defs"; then
+    . "$command_location_dir/defs"
+  fi
+done
+
+if test "z$PATH_SEPARATOR" = 'z'; then
+  echo "No defs file found for PATH_SEPARATOR definition" 1>&2
+  exit 1
+fi
 
 [ -d "$diffs_dir" ] || mkdir "$diffs_dir"
 for command_dir in $commands; do
