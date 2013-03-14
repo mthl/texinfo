@@ -1,5 +1,9 @@
 2013-03-14  Karl Berry  <karl@gnu.org>
 
+	* maintain/regenerate_cmd_tests.sh,
+	* tests/run_parser_all.sh,
+	* tests/many_input_files/tex_l2h.sh: use $0 in some diagnostics.
+
 	* NEWS: mention switch from cvs to svn.
 	* doc/texinfo.txi (Invoking @t{pod2texi}): svn url instead of cvs
 	for Perl manual in Texinfo.
