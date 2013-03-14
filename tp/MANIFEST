@@ -11,8 +11,8 @@ LocaleData/eo/LC_MESSAGES/texinfo.mo
 LocaleData/eo/LC_MESSAGES/texinfo_document.mo
 LocaleData/es.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/es/LC_MESSAGES/texinfo.mo
-LocaleData/fr.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/fr/LC_MESSAGES/texinfo.mo
+LocaleData/fr/LC_MESSAGES/texinfo_document.mo
 LocaleData/he/LC_MESSAGES/texinfo.mo
 LocaleData/hr/LC_MESSAGES/texinfo.mo
 LocaleData/hu/LC_MESSAGES/texinfo.mo
@@ -123,7 +123,7 @@ po_document/POTFILES.in
 po_document/de.us-ascii.po
 po_document/eo.po
 po_document/es.us-ascii.po
-po_document/fr.us-ascii.po
+po_document/fr.po
 po_document/hu.po
 po_document/it.po
 po_document/nl.po
