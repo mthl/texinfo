@@ -34,6 +34,9 @@ one of the relevant sections:
 * install-info:
   . lzip (.lz) compression supported.
 
+* Development: switch from CVS to Subversion.
+  https://savannah.gnu.org/svn/?group=texinfo
+
 
 5.0 (16 February 2013)
 * Language:

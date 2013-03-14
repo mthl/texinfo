@@ -11,7 +11,8 @@ This stuff is about making Texinfo out of the standard Perl *.pod files.
 The results are at http://www.gnu.org/software/perl/manual.
 
 The idea is to download the perl distribution here, as in,
-  wget http://www.cpan.org/src/5.0/perl-5.16.2.tar.gz
+  wget http://www.cpan.org/src/5.0/perl-5.16.3.tar.gz
 and run (GNU) make.  Aside from the result hopefully being useful in
-itself, it also serves as a nontrivial example of using pod2texi.
+itself (just copy the .info file to an Info directory), it also serves
+as a nontrivial example of using pod2texi.
 

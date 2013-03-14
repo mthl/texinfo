@@ -1,3 +1,19 @@
+2013-03-14  Karl Berry  <karl@gnu.org>
+
+	* NEWS: mention switch from cvs to svn.
+	* doc/texinfo.txi (Invoking @t{pod2texi}): svn url instead of cvs
+	for Perl manual in Texinfo.
+	* contrib/perldoc-all/perldoc-all.texi: likewise, and turn off
+	all underfull/overfull messages since we can't do anything about them.
+	* contrib/perldoc-all/README: 5.16.3.
+	* contrib/perldoc-all/GNUmakefile (all): set save_size in
+	environment to avoid TeX overflow.
+	(install): new target.
+	* doc/texinfo.tex (\nonfillstart): only reset to \hfuzz=12pt
+	if it's less than that.
+
+	* README-hacking: tweaks to release wording.
+
 2013-03-12  Karl Berry  <karl@gnu.org>
 
 	* Version 5.1.

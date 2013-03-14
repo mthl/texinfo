@@ -18455,7 +18455,7 @@ output of @code{pod2texi --help}, the version on the web at
 
 For an example of using @code{pod2texi} to make Texinfo out of the
 Perl documentation itself, see
-@url{http://cvs.savannah.gnu.org/viewvc/texinfo/contrib/perldoc-all/?root=texinfo,
+@url{http://svn.savannah.gnu.org/viewvc/trunk/contrib/perldoc-all/?root=texinfo,
 @file{contrib/perldoc-all}} in the Texinfo source distribution (the
 output is available at @url{http://www.gnu.org/software/perl/manual}).
 

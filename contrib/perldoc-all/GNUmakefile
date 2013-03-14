@@ -34,7 +34,9 @@ gendocs_title = "Perl documentation in Texinfo"
 
 all: $(texi_pod_doc_incl)
 	rm -rf manual *.aux *.toc *.??
-	gendocs.sh $(gendocs_args) $(texi_pod_doc) $(gendocs_title)
+# turns out the combined docs overflow one of TeX's arrays; increase it.
+	env save_size=100000 \
+	  gendocs.sh $(gendocs_args) $(texi_pod_doc) $(gendocs_title)
 
 $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 	rm -rf $(texi_pod_subdir)
@@ -45,10 +47,14 @@ $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 	  `ls *.pod | fgrep -v delta` \
 	&& mv $(texi_pod_subdir) $@ ../..
 
-force:
+www_target = $(HOME)/gnu/www/www/software/perl/manual
+install:
+	cp -arf manual/. $(www_target)/.
+	ls -ltu $(www_target)/html_chapter | tail  # cvs rm -f obsolete files
+                                                   # and cvs add new.
 
 # when running make dist, ensure we have none of the build files.
 # (Since the whole contrib/ directory is included in its entirety.)
 distclean:
-	rm -rf manual perl-5.16.2 $(texi_pod_doc) $(texi_pod_doc_incl)
+	rm -rf manual perl-5.*.* $(texi_pod_doc) $(texi_pod_doc_incl)
 	rm -rf *.?? *.??? *.info *~ \#*
