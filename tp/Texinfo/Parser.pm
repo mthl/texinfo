@@ -4155,7 +4155,8 @@ sub _parse_texi($;$)
         if ($command eq 'value') {
           $line =~ s/^\s*// 
              if ($self->{'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME'});
-          if ($line =~ s/^{([\w\-]+)}//) {
+          # REVALUE
+          if ($line =~ s/^{([\w\-][^\s{\\}~`\^+"<>|@]*)}//) {
             my $value = $1;
             if (exists($self->{'values'}->{$value})) {
               if (!defined($self->{'values'}->{$value})) {

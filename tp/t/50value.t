@@ -10,6 +10,11 @@ my @test_cases = (
 
 @value{a-_5b} After value.
 '],
+['not_only_characters',
+'@set -e_\'::; hh
+
+Say @value{-e_\'::;}.
+'],
 ['bad_syntax','
 @set
 @set 
