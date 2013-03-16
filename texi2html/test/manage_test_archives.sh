@@ -1,11 +1,15 @@
 #! /bin/sh
 
+set -e
+
 user=pertusus
 
 command=$1
 
+commands_list="(pack/packt2h/sign/signt2h/unpack/get/clean/upload)"
+
 if [ "z$command" = 'z' ]; then
-  echo "Need something to do (pack/packt2h/unpack/get/clean/upload)"
+  echo "Need something to do $commands_list"
   exit 1
 fi
 shift;
@@ -36,7 +40,7 @@ if [ $command = 'packt2h' ]; then
   rm -f $texi2html_tests_name.tar.gz #$manuals.tar.gz
   (
   cd ..
-  tar c --exclude-vcs -z -f test/$texi2html_tests_name.tar.gz test/*/res/ test/*/res_all/ test/*/res_info/ test/*/res_html/ test/*/res_docbook/ test/*/res_xml/ test/many_input_files/*_res/
+  tar c --exclude-vcs -z -f test/$texi2html_tests_name.tar.gz test/*/res/ test/*/res_all/ test/*/res_info/ test/*/res_html/ test/*/res_docbook/ test/*/res_xml/ test/many_input_files/*_res/ test/info_coverage/f--ile*
   #tar c --exclude-vcs -z -f test/$manuals.tar.gz test/manuals/*.texi test/tar_manual/*.texi test/singular_manual/*.tex* test/singular_manual/d2t_singular/
   )
 elif [ $command = 'pack' ]; then
@@ -81,15 +85,18 @@ elif [ $command = 'unpack' ]; then
     fi
   done
   cp -p sectioning/renamednodes.cnf-ref sectioning/equivalent_nodes-noderename.cnf
-elif [ $command = 'upload' ]; then
+elif [ $command = 'sign' ]; then
   mkdir -p ../upload
-  #cp -a $texi2html_tests_name.tar.gz upload
-  #gpg -b --use-agent upload/$texi2html_tests_name.tar.gz
   cp -a $tp_tests_name.tar.gz ../upload
   gpg -b --use-agent ../upload/$tp_tests_name.tar.gz
+elif [ $command = 'signt2h' ]; then
+  mkdir -p ../upload
+  cp -a $texi2html_tests_name.tar.gz ../upload
+  gpg -b --use-agent ../upload/$texi2html_tests_name.tar.gz
+elif [ $command = 'upload' ]; then
   rsync -a -essh ../upload/ $user@dl.sv.gnu.org:/releases/texinfo/
 else
-  echo "Unknown command (pack/packt2h/unpack/get/clean/upload)"
+  echo "Unknown command $commands_list"
   exit 1
 fi
 
