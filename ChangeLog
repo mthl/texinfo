@@ -1,3 +1,11 @@
+2013-03-20  Karl Berry  <karl@gnu.org>
+
+	Minor doc tweaks.
+	* NEWS: more technalities about the macro-expansion incompatibility.
+	* README-hacking: call change_perl_modules_version.sh for release.
+	* doc/texinfo.txi: wording around PDF items.
+	* doc/texinfo.tex: typos in comment.
+
 2013-03-20  Eli Zaretskii  <eliz@gnu.org>
 
 	* Makefile.am (SUBDIRS): If HOST_IS_WINDOWS, add 'info' to SUBDIRS

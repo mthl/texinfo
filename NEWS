@@ -106,10 +106,13 @@ one of the relevant sections:
     added.  (Both old and new implementations preserve blank lines that
     are present.)
     
-  . The old implementation did not consider ends of lines from expansion
-    of an @macro definition to end an @-command line-delimited argument
-    (@chapter, @center, etc.).  This is no longer the case.  (A detailed
-    example is in the manual, node Macro Details.)
+  . The old implementation processed macros in place, formatting the
+    replacement text with the output.  Now the replacement text is
+    textually substituted as Texinfo source.  A consequence of the old
+    behavior is that ends of lines from expansion of an @macro
+    definition did not end an @-command line-delimited argument
+    (@chapter, @center, etc.).  Now they do.  (A detailed example is in
+    the manual, node Macro Details.)
 
 * pod2texi is a new (Perl) program that uses the capabilities of
   texi2any to translate Perl pod documentation to Texinfo.

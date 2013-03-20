@@ -95,6 +95,7 @@ ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
+(cd tp && ./maintain/change_perl_modules_version.sh auto)
 sync texi2html/test/ results with tp/.
 ensure building standalone modules for CPAN still works.
 make dvi and fix underfull/overfull boxes.

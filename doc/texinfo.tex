@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2013-03-14.08}
+\def\texinfoversion{2013-03-19.11}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4211,8 +4211,9 @@ end
 
 % @ifset VAR ... @end ifset reads the `...' iff VAR has been defined
 % with @set.
-%
-% To get special treatment of `@end ifset,' call \makeond and the redefine.
+% 
+% To get the special treatment we need for `@end ifset,' we call
+% \makecond and then redefine.
 %
 \makecond{ifset}
 \def\ifset{\parsearg{\doifset{\let\next=\ifsetfail}}}

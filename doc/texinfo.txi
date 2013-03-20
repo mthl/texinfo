@@ -972,8 +972,8 @@ graphics, and supporting arbitrary scaling.  It is intended to be
 platform-independent and easily viewable, among other design goals;
 @uref{http://en.wikipedia.org/wiki/Portable_Document_Format} and
 @uref{http://tug.org/TUGboat/tb22-3/tb72beebe-pdf.pdf} have some
-background.  By default, Texinfo uses the @command{pdftex} program, a
-variant of @TeX{}, to output PDF; see
+background.  By default, Texinfo uses the @command{pdftex} program, an
+extension of @TeX{}, to output PDF; see
 @uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
 
 @item Docbook
@@ -6837,8 +6837,8 @@ produces a link you can follow.
 
 @anchor{url} @code{@@url} is a synonym for @code{@@uref}.
 (Originally, @code{@@url} had the meaning of @code{@@indicateurl}
-(@pxref{@t{@@indicateurl}}), but in actual practice it was almost
-always misused.  So we've changed the meaning.)
+(@pxref{@t{@@indicateurl}}), but in practice it was almost always
+misused.  So we've changed the meaning.)
 
 The second argument, if specified, is the text to display (the default
 is the url itself); in Info and DVI output, but not in HTML output, the
@@ -13684,11 +13684,11 @@ language support is welcome.
 @code{@@documentlanguage} also changes @TeX{}'s current hyphenation
 patterns, if the @TeX{} program being run has the necessary support
 included.  This will generally not be the case for @command{tex}
-itself, but will often be the case for recent distributions of
-extended @TeX{} programs @command{etex} (DVI output) and
-@command{pdftex} (PDF output), such as @TeX{} Live 2008.
-@command{texi2dvi} will use the extended @TeX{}s if they are available
-(@pxref{Format with @t{texi2dvi}}).
+itself, but will usually be the case for up-to-date distributions of
+the extended @TeX{} programs @command{etex} (DVI output) and
+@command{pdftex} (PDF output).  @command{texi2dvi} will use the
+extended @TeX{}s if they are available (@pxref{Format with
+@t{texi2dvi}}).
 
 In September 2006, the W3C Internationalization Activity released a
 new recommendation for specifying languages:
@@ -16721,8 +16721,9 @@ GNU GV, a @uref{http://www.gnu.org/software/gv/, Ghostscript-based PDF
 reader}.  (It can also preview PostScript documents.)
 
 @item
-A freely available standalone @uref{http://www.foolabs.com/xpdf/,
-PDF reader} for the X window system.
+@code{xpdf}, a freely available standalone
+@uref{http://www.foolabs.com/xpdf/, PDF reader} for the X window
+system.
 
 @item
 @uref{http://partners.adobe.com/asn/acrobat/sdk/public/docs/, PDF definition}.
@@ -16731,10 +16732,10 @@ PDF reader} for the X window system.
 
 At present, Texinfo does not provide @samp{@@ifpdf} or @samp{@@pdf}
 commands as for the other output formats, since PDF documents contain
-many internal links that would be hard or impossible to get right at
-the Texinfo source level.
+many internal low-level offsets and references that would be hard or
+impossible to get right at the Texinfo source level.
 
-PDF files require special software to be displayed, unlike the plain
+PDF files require dedicated software to be displayed, unlike the plain
 ASCII formats (Info, HTML) that Texinfo supports.  They also tend to
 be much larger than the DVI files output by @TeX{} by default.
 Nevertheless, a PDF file does define an actual typeset document in a
