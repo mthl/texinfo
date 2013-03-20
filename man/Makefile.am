@@ -42,13 +42,15 @@ tpdir = $(top_srcdir)/tp
 MAKEINFO = $(PERL) -I "$(tpdir)" "$(tpdir)"/texi2any.pl
 #
 tplibdir = $(tpdir)/maintain/lib
-mi_perl5lib = "$(tpdir):$(tplibdir)/libintl-perl/lib:$(tplibdir)/Unicode-EastAsianWidth/lib:$(tplibdir)/Text-Unidecode/lib"
+mi_perl5lib_path = "$(tpdir):$(tplibdir)/libintl-perl/lib:$(tplibdir)/Unicode-EastAsianWidth/lib:$(tplibdir)/Text-Unidecode/lib"
+mi_perl5lib = PERL5LIB=$(mi_perl5lib_path); export PERL5LIB
 
-# Set up the variables:
+# Set up the variables.  makeinfo is no longer a .exe(cutable).
 man_rule_0 = \
-  program=`expr '/$@' : '.*/\(.*\)\.1'` \
+  exe_ext="$(EXEEXT)" \
+  && program=`expr '/$@' : '.*/\(.*\)\.1'` \
   && case $$program in \
-         makeinfo) dir=tp; PERL5LIB=$(mi_perl5lib); export PERL5LIB;; \
+         makeinfo) dir=tp; $(mi_perl5lib); exe_ext="";; \
             info*) dir=info; test $$program != info || program=g$$program;; \
     *install-info) dir=install-info; program=g$$program;; \
                 *) dir=util;; esac \
@@ -59,8 +61,8 @@ man_rule_0 = \
 # make sure the binary is up-to-date and then generate the man page.
 man_rule_bin = echo "Updating man page $@" \
   && $(man_rule_0) \
-  && echo cd "$$dir" '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT) \
-  &&     (cd "$$dir"  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT)) \
+  && echo cd "$$dir" '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$$exe_ext \
+  &&     (cd "$$dir"  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$$exe_ext) \
   && echo $(HELP2MAN) --name=\""$$name"\" -I "$$h2m" "$$dir/$$program" -o '$@'\
   &&      $(HELP2MAN) --name="$$name"     -I "$$h2m" "$$dir/$$program" -o '$@'
 

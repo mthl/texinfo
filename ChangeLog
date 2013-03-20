@@ -1,3 +1,9 @@
+2013-03-20  Karl Berry  <karl@gnu.org>
+
+	* man/Makefile.am (man_rule_0): set EXEEXT="" since it's
+	no longer an executable.  Report from Eli, 20 Mar 2013 20:47:52.
+	(mi_perl5lib): set up another variable to shorten source lines.
+
 2013-03-16  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Parser.pm (_parse_texi): accept the same 
