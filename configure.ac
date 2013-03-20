@@ -223,9 +223,10 @@ for termlib in ${TERMLIB_VARIANTS}; do
      [TERMLIBS="${TERMLIBS} -l${termlib}"; break])
 done
 have_termlib=yes
-# don't bother warning on djgpp, it doesn't have a term library, it
-# ports each termcap-needing program separately according to its needs.
-if test -z "$TERMLIBS" && echo "$build" | grep -v djgpp >/dev/null; then
+# don't bother warning on djgpp and MinGW, they don't have a term library,
+# and port each termcap-needing program separately according to the needs.
+if test -z "$TERMLIBS" \
+   && echo "$build" | grep -v djgpp | grep -v mingw >/dev/null; then
   AC_MSG_WARN([info needs a terminal library, one of: ${TERMLIB_VARIANTS}])
   have_termlib=no
 fi

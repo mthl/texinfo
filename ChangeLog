@@ -1,3 +1,10 @@
+2013-03-20  Eli Zaretskii  <eliz@gnu.org>
+
+	* Makefile.am (SUBDIRS): If HOST_IS_WINDOWS, add 'info' to SUBDIRS
+	even if HAVE_TERMLIBS is false.
+	* configure.ac <have_termlib>: Don't bother warning on MinGW as
+	well.
+
 2013-03-20  Karl Berry  <karl@gnu.org>
 
 	* man/Makefile.am (man_rule_0): set EXEEXT="" since it's
