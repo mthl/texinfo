@@ -416,14 +416,14 @@ DECLARE_INFO_COMMAND (info_next_index_match,
       /* When looking for substrings, take care not to return previous exact
 	 matches. */
       for (i = index_offset + dir; (i > -1) && (index_index[i]); i += dir)
-        if (!index_entry_matches (index_index[i], index_search, search_len) &&
-	    string_in_line (index_search, index_index[i]->label) != -1)
+        if (!index_entry_matches (index_index[i], index_search, search_len))
 	  {
-	    partial = 1;
-	    break;
+	    partial = string_in_line (index_search, index_index[i]->label);
+	    if (partial != -1)
+	      break;
 	  }
+      index_partial = partial > 0;
     }
-  index_partial = partial;
   
   /* If that failed, print an error. */
   if ((i < 0) || (!index_index[i]))
@@ -459,7 +459,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
        string matched. */
     match = xstrdup (index_index[i]->label);
 
-    if (partial && show_index_match)
+    if (partial > 0 && show_index_match)
       {
         int k, ls, start, upper;
 

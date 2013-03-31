@@ -1,5 +1,10 @@
 2013-03-31  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* info/indices.c (info_next_index_match): Fix improper string
+	indexing. Based on report from Eli Zaretskii.
+
+2013-03-31  Sergey Poznyakoff  <gray@gnu.org.ua>
+
 	Fix \b[...\b] tag processing.
 
 	* info/nodes.h (TAG) <content_cache>: New member.
