@@ -90,6 +90,9 @@ typedef struct {
   char *nodename;               /* The node pointed to by this tag. */
   long nodestart;               /* The offset of the start of this node. */
   long nodelen;                 /* The length of this node. */
+  char *content_cache;          /* Cache of the node contents; used if the
+				   node contents must be preprocessed before
+				   displaying it. */
 } TAG;
 
 /* The following structure is used to remember information about the contents

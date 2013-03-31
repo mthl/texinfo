@@ -563,6 +563,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
       /* Okay, we have isolated the node name, and we know where the
          node starts.  Remember this information. */
       entry = xmalloc (sizeof (TAG));
+      entry->content_cache = NULL;
       entry->nodename = xmalloc (1 + (end - start));
       strncpy (entry->nodename, nodeline + start, end - start);
       entry->nodename[end - start] = 0;
@@ -667,6 +668,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
         break;
 
       entry = xmalloc (sizeof (TAG));
+      entry->content_cache = NULL;
 
       /* Find the beginning of the node definition. */
       tmp_search->start += name_offset;
@@ -981,7 +983,12 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
 	node->filename    = subfile->fullpath;
 	node->parent      = NULL;
 	node->nodename    = tag->nodename;
-	node->contents    = subfile->contents + tag->nodestart;
+	
+	if (tag->content_cache)
+	  node->contents = tag->content_cache;
+	else
+	  node->contents    = subfile->contents + tag->nodestart;
+
 	node->display_pos = 0;
 	node->flags       = 0;
 	node_set_body_start (node);
@@ -1049,6 +1056,12 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
 	    node_body.end = buff_end - node_body.buffer;
 	    node_body.flags = 0;
 	    tag->nodelen = get_node_length (&node_body);
+	    /* Expand eventual \b[...\b] constructs in the contents.
+	       If found, update node->contents to point to the resulting
+	       buffer. */
+	    if (tags_expand (node->contents, tag->nodelen,
+			     &tag->content_cache, &tag->nodelen))
+	      node->contents = tag->content_cache;
 	    node->nodelen = tag->nodelen;
 	  }
 	else if (tag->nodelen == 0) /* anchor, return containing node */
@@ -1173,7 +1186,8 @@ static void
 free_info_tag (TAG *tag)
 {
   free (tag->nodename);
-
+  free (tag->content_cache);
+  
   /* We don't free tag->filename, because that filename is part of the
      subfiles list for the containing FILE_BUFFER.  free_info_tags ()
      will free the subfiles when it is appropriate. */

@@ -645,8 +645,6 @@ filesys_read_info_file (char *pathname, size_t *filesize,
      files are coming from some Windows system across a network.  */
   fsize = convert_eols (contents, fsize);
 
-  tags_expand (&contents, &fsize);
-
   /* EOL conversion can shrink the text quite a bit.  We don't
      want to waste storage.  */
   contents = xrealloc (contents, 1 + fsize);

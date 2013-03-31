@@ -1,3 +1,22 @@
+2013-03-31  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix \b[...\b] tag processing.
+
+	* info/nodes.h (TAG) <content_cache>: New member.
+	* info/nodes.c (get_nodes_of_info_file)
+	(get_nodes_of_tags_table): Initialize TAG->content_cache.
+	(info_node_of_file_buffer_tags): Use cached contents if
+	available. Call tags_expand upon the first access to that
+	node.
+	(free_info_tag): Free content_cache.
+	* info/tag.c (tag_image): Fix state machine.  Ignore '='s,
+	unless in state_kw.
+	(tags_expand): Change return value and signature. Allocate
+	memory only if at least one tag is actually expanded.
+	* info/tag.h (tags_expand): Change prototype.
+	* info/filesys.c (filesys_read_info_file): Do not call
+	tags_expand on the entire buffer.
+
 2013-03-20  Karl Berry  <karl@gnu.org>
 
 	Minor doc tweaks.
