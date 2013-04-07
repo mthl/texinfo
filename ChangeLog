@@ -1,6 +1,10 @@
 2013-04-07  Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac: set DIFF_A_OPTION to -a, and not DIFF_U_OPTION.
+	* tp/Texinfo/Convert/Plaintext.pm: do not consider an empty line
+	at the end of a preformatted format as counting as an empty line
+	in order to output an empty line following the preformatted format 
+	too.  Karl report.
 
 2013-03-31  Sergey Poznyakoff  <gray@gnu.org.ua>
 

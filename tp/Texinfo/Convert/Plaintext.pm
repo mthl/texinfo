@@ -3021,6 +3021,9 @@ sub _convert($$)
       die "Not a preformatted context: $old_context"
         if (!$self->{'preformatted_context_commands'}->{$old_context}
             and $old_context ne 'float');
+      if ($old_context ne 'float' and !$menu_commands{$old_context}) {
+        $self->{'empty_lines_count'} = 0;
+      }
       delete ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}})
        unless ($default_preformatted_context_commands{$root->{'cmdname'}});
     } elsif ($flush_commands{$root->{'cmdname'}}) {
