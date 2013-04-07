@@ -129,7 +129,7 @@ rm -f conftest.dtx
 
 DIFF_A_OPTION=
 if test "z$diff_accepts_a_option" = 'zyes' ; then
-  DIFF_U_OPTION=-a
+  DIFF_A_OPTION=-a
 fi
 AC_SUBST([DIFF_A_OPTION])
 
