@@ -368,6 +368,12 @@ my %docbook_sections = (
   4 => 'sect3'
 );
 
+my %docbook_special_unnumbered;
+foreach my $special_unnumbered ('acknowledgements', 'colophon', 
+                                'dedication', 'preface') {
+  $docbook_special_unnumbered{$special_unnumbered} = 1;
+}
+
 sub _docbook_section_element($$)
 {
   my $self = shift;
@@ -377,6 +383,13 @@ sub _docbook_section_element($$)
     return $docbook_sections{$heading_level};
   }
   my $command = $self->_level_corrected_section($root);
+  if ($command eq 'unnumbered'
+      and $root->{'extra'}->{'associated_node'} 
+      and $root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'}
+      and $docbook_special_unnumbered{lc($root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'})}) {
+    return lc($root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'});
+  }
+
   return $docbook_sections{$command};
 }
 
@@ -581,7 +594,7 @@ sub _convert($$;$)
             $result .= "<anchor id=\"$root->{'extra'}->{'normalized'}\"/>\n";
           }
         } elsif ($Texinfo::Common::root_commands{$root->{'cmdname'}}) {
-          my $attribute;
+          my $attribute = '';
           # FIXME it is not clear that a label should be set for
           # @appendix* or @chapter/@*section as the formatter should be
           # able to figure it out.  For @unnumbered or if ! NUMBER_SECTIONS
@@ -594,11 +607,13 @@ sub _convert($$;$)
             # section title, so only the letter is used.
             $label = $root->{'number'};
           }
-          $attribute = " label=\"$label\"";
+          $command = $self->_docbook_section_element($root);
+          if (! $docbook_special_unnumbered{$command}) {
+            $attribute = " label=\"$label\"";
+          }
           if ($root->{'extra'} and $root->{'extra'}->{'associated_node'}) {
             $attribute .= " id=\"$root->{'extra'}->{'associated_node'}->{'extra'}->{'normalized'}\"";
           }
-          $command = $self->_docbook_section_element($root);
           $result .= "<$command${attribute}>\n";
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)

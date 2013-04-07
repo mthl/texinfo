@@ -5,6 +5,9 @@
 	at the end of a preformatted format as counting as an empty line
 	in order to output an empty line following the preformatted format 
 	too.  Karl report.
+	* tp/Texinfo/Convert/DocBook.pm: add support for special docbook
+	sectioning elements with special node names and @unnumbered. 
+	Feature asked for by Aharon Robbins, syntax by Karl.
 
 2013-03-31  Sergey Poznyakoff  <gray@gnu.org.ua>
 
