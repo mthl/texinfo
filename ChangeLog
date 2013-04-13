@@ -1,3 +1,26 @@
+2013-04-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Implement new options for standalone info.
+
+	* info/info.c (debug_level): New variable.
+	(long_options): New options: -x (--debug) and -v (--variable).
+	(short_options): Update accordingly.
+	(main): Handle the new options.
+	(vinfo_debug, info_debug): New functions.
+	* info/info.h (info/info.h): New exern.
+	(debug): New macros.
+	(vinfo_debug, info_debug): New prototypes.
+	(set_variable_to_value): Change the return type.
+	* info/variables.c (set_variable_to_value): Compile
+	unconditionally.  Return 0/-1 depending on the success/failure of
+	the operation.
+	* info/filesys.c: Print additional debugging info.
+	* info/infomap.c: Check the return from set_variable_to_value.
+	* doc/info-stnd.texi: Document new options.
+	* doc/version.texi: Update.
+	* doc/version-stnd.texi: Update.
+	* NEWS: Update.
+
 2013-04-07  Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac: set DIFF_A_OPTION to -a, and not DIFF_U_OPTION.
