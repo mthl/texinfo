@@ -1211,7 +1211,23 @@ section_to_vars(unsigned char *table, unsigned int len)
               case gotval:
                 if (!*p)
                   {
-                    set_variable_to_value((char *) var, (char *) val);
+                    if (set_variable_to_value((char *) var, (char *) val))
+		      {
+			switch (errno)
+			  {
+			  case ENOENT:
+			    info_error (_("%s: no such variable"), var);
+			    break;
+			    
+			  case EINVAL:
+			    info_error (_("value %s is not valid for variable %s"),
+					val, var);
+			    break;
+
+			  default:
+			    abort ();
+			  }
+		      }	
                     state = getvar;
                   }
                 break;

@@ -287,37 +287,46 @@ make_variable_completions_array (void)
   return array;
 }
 
-#if defined(INFOKEY)
-
-void
+int
 set_variable_to_value(char *name, char *value)
 {
-	register int i;
+  register int i;
 
-	/* Find the variable in our list of variables. */
-	for (i = 0; info_variables[i].name; i++)
-		if (strcmp(info_variables[i].name, name) == 0)
-			break;
+  /* Find the variable in our list of variables. */
+  for (i = 0; info_variables[i].name; i++)
+    if (strcmp(info_variables[i].name, name) == 0)
+      break;
 
-	if (!info_variables[i].name)
-		return;
-
-	if (info_variables[i].choices)
+  if (!info_variables[i].name)
+    {
+      errno = ENOENT;
+      return -1;
+    }
+  
+  if (info_variables[i].choices)
+    {
+      register int j;
+      
+      /* Find the choice in our list of choices. */
+      for (j = 0; info_variables[i].choices[j]; j++)
+	if (strcmp (info_variables[i].choices[j], value) == 0)
+	  {
+	    *info_variables[i].value = j;
+	    return 0;
+	  }
+    }
+  else
+    {
+      char *p;
+      long n = strtol (value, &p, 10);
+      if (*p == 0 && INT_MIN <= n && n <= INT_MAX)
 	{
-		register int j;
-
-		/* Find the choice in our list of choices. */
-		for (j = 0; info_variables[i].choices[j]; j++)
-			if (strcmp (info_variables[i].choices[j], value) == 0)
-				break;
-
-		if (info_variables[i].choices[j])
-			*info_variables[i].value = j;
+	  *info_variables[i].value = n;
+	  return 0;
 	}
-	else
-	{
-		*info_variables[i].value = atoi(value);
-	}
+    }
+
+  errno = EINVAL;
+  return -1;
 }
 
-#endif /* INFOKEY */

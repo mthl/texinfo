@@ -158,6 +158,16 @@ installed, searching all of them might take some time!)
 You can invoke the apropos command from inside Info; see
 @ref{Searching Commands}.
 
+@cindex debugging
+@item -x
+@itemx --debug
+Print additional debugging information.  Each subsequent occurrence of
+this option increases the debugging output verbosity.
+
+Unless the window system is initialized, debugging output goes to the
+standard error.  When it is initialized, it is diverted to the file
+@file{infodebug} in the current working directory.
+
 @cindex directory path
 @item --directory @var{directory-path}
 @itemx -d @var{directory-path}
@@ -338,6 +348,13 @@ This option only has meaning when given in conjunction with
 the menus of each node being output.  Menu items which resolve to
 external Info files are not output, and neither are menu items which are
 members of an index.  Each node is only output once.
+
+@anchor{variable-assignment}
+@cindex variable assignment
+@item -v @var{name}=@var{value}
+@itemx --variable=@var{name}=@var{value}
+Assign @var{value} to the @command{info} variable @var{name}.
+@xref{Variables}, for a detailed description of this feature.
 
 @item --version
 @cindex version information
@@ -1870,9 +1887,18 @@ various Info commands.  You can change the values of these variables,
 and thus change the behavior of Info to more closely match your
 environment and Info file reading manner.
 
-There are two ways to set the value of a variable: interactively, using
-the @code{set-variable} command described below, or in the @code{#var}
-section of the @code{.infokey} file.  @xref{Custom Key Bindings}.
+There are three ways to set the value of a variable:
+
+@enumerate 1
+@item
+in the command line, using the @option{-v} (@option{--variable})
+command line option (@pxref{variable-assignment});
+@item
+interactively, using the @code{set-variable} command described below;
+@item
+in the @code{#var} section of the @code{.infokey} file.  @xref{Custom
+Key Bindings}.
+@end enumerate
 
 @table @asis
 @item @kbd{M-x set-variable}

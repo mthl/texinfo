@@ -129,6 +129,19 @@ extern int raw_escapes_p;
 /* Non-zero means don't try to be smart when searching for nodes.  */
 extern int strict_node_location_p;
 
+extern int debug_level;
+
+#define debug(n,c)							\
+  do									\
+    {									\
+      if (debug_level >= (n))						\
+	info_debug c;							\
+    }									\
+  while (0)
+
+extern void vinfo_debug (const char *format, va_list ap);
+extern void info_debug (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
+
 /* Print args as per FORMAT.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is
    output to stderr. */
@@ -157,10 +170,8 @@ extern const char *msg_win_too_small;
 extern const char *msg_cant_make_help;
 
 
-#if defined(INFOKEY)
 /* Found in variables.c. */
-extern void set_variable_to_value (char *name, char *value);
-#endif /* INFOKEY */
+extern int set_variable_to_value (char *name, char *value);
 
 /* Found in m-x.c.  */
 extern char *read_function_name (const char *prompt, WINDOW *window);

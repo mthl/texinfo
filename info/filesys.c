@@ -94,6 +94,8 @@ info_find_fullpath (char *partial)
   int initial_character;
   char *temp;
 
+  debug(1, (_("looking for file \"%s\""), partial));
+
   filesys_error_number = 0;
 
   maybe_initialize_infopath ();
@@ -186,6 +188,7 @@ info_file_in_path (char *filename, char *path)
       register int i, pre_suffix_length;
       char *temp;
 
+      debug(1, (_("looking for file %s in %s"), filename, temp_dirname));
       /* Expand a leading tilde if one is present. */
       if (*temp_dirname == '~')
         {
@@ -218,6 +221,7 @@ info_file_in_path (char *filename, char *path)
             {
               if (S_ISREG (finfo.st_mode))
                 {
+		  debug(1, (_("found %s"), temp));
                   return temp;
                 }
               else if (S_ISDIR (finfo.st_mode))
@@ -232,6 +236,7 @@ info_file_in_path (char *filename, char *path)
                   if (newtemp)
                     {
                       free (temp);
+		      debug(1, (_("found %s"), newtemp));
                       return newtemp;
                     }
                 }
@@ -251,7 +256,10 @@ info_file_in_path (char *filename, char *path)
 
                   statable = (stat (temp, &finfo) == 0);
                   if (statable && (S_ISREG (finfo.st_mode)))
-                    return temp;
+		    {
+		      debug(1, (_("found %s"), temp));
+		      return temp;
+		    }
                 }
             }
         }
@@ -368,7 +376,7 @@ maybe_initialize_infopath (void)
     {
       infopath = (char *)
         xmalloc (infopath_size = (1 + strlen (DEFAULT_INFOPATH)));
-
+      debug(2, ("INFOPATH=%s", DEFAULT_INFOPATH));
       strcpy (infopath, DEFAULT_INFOPATH);
     }
 }
@@ -543,7 +551,7 @@ info_add_path (char *path, int where)
       strcat (infopath, temp);
       free (temp);
     }
-
+  debug(2, ("INFOPATH=%s", infopath));
   if (found)
     free (path);
 }
@@ -554,9 +562,10 @@ zap_infopath (void)
 {
   if (infopath)
     free (infopath);
-
+  
   infopath = NULL;
   infopath_size = 0;
+  debug(2, ("INFOPATH cleared"));
 }
 
 /* Given a chunk of text and its length, convert all CRLF pairs at every

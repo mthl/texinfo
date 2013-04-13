@@ -83,6 +83,9 @@ int raw_escapes_p = 1;
 /* Non-zero means print the absolute location of the file to be loaded.  */
 static int print_where_p = 0;
 
+/* Debugging level */
+int debug_level;
+
 /* Non-zero means don't try to be smart when searching for nodes.  */
 int strict_node_location_p = 0;
 
@@ -103,6 +106,7 @@ int speech_friendly = 0;
 #define IDXSRCH_OPTION 4
 static struct option long_options[] = {
   { "apropos", 1, 0, 'k' },
+  { "debug", 0, 0, 'x' },
   { "directory", 1, 0, 'd' },
   { "dribble", 1, 0, DRIBBLE_OPTION },
   { "file", 1, 0, 'f' },
@@ -120,6 +124,7 @@ static struct option long_options[] = {
   { "strict-node-location", 0, &strict_node_location_p, 1 },
   { "subnodes", 0, &dump_subnodes, 1 },
   { "usage", 0, 0, 'O' },
+  { "variable", 0, 0, 'v' },
   { "version", 0, &print_version_p, 1 },
   { "vi-keys", 0, &vi_keys_p, 1 },
   { "where", 0, &print_where_p, 1 },
@@ -131,9 +136,9 @@ static struct option long_options[] = {
 
 /* String describing the shorthand versions of the long options found above. */
 #if defined(__MSDOS__) || defined(__MINGW32__)
-static char *short_options = "k:d:n:f:ho:ORswb";
+static char *short_options = "k:d:n:f:ho:ORsv:wbx";
 #else
-static char *short_options = "k:d:n:f:ho:ORws";
+static char *short_options = "k:d:n:f:ho:ORv:wsx";
 #endif
 
 /* When non-zero, the Info window system has been initialized. */
@@ -276,6 +281,41 @@ main (int argc, char *argv[])
           index_search_string = xstrdup (optarg);
           break;
 
+	case 'v':
+	  {
+	    char *p;
+	    p = strchr (optarg, '=');
+	    if (!p)
+	      {
+		info_error (_("malformed variable assignment: %s"), optarg);
+		exit (EXIT_FAILURE);
+	      }
+	    *p++ = 0;
+	    if (set_variable_to_value (optarg, p))
+	      {
+		switch (errno)
+		  {
+		  case ENOENT:
+		    info_error (_("%s: no such variable"), optarg);
+		    break;
+			    
+		  case EINVAL:
+		    info_error (_("value %s is not valid for variable %s"),
+				p, optarg);
+		    break;
+		    
+		  default:
+		    abort ();
+		  }
+		exit (EXIT_FAILURE);
+	      }	
+	  }
+	  break;
+	  
+	case 'x':
+	  debug_level++;
+	  break;
+	  
         default:
           fprintf (stderr, _("Try --help for more information.\n"));
           exit (EXIT_FAILURE);
@@ -558,6 +598,58 @@ int info_error_was_printed = 0;
 
 /* Non-zero means ring terminal bell on errors. */
 int info_error_rings_bell_p = 1;
+
+static FILE *debug_file;
+
+static void
+close_debugfile (void)
+{
+  fclose (debug_file);
+}
+
+#define INFODEBUG_FILE "infodebug"
+
+void
+vinfo_debug (const char *format, va_list ap)
+{
+  FILE *fp;
+
+  if (!debug_file)
+    {
+      if (!info_windows_initialized_p || display_inhibited)
+	fp = stderr;
+      else
+	{
+	  debug_file = fopen (INFODEBUG_FILE, "w");
+	  if (!debug_file)
+	    {
+	      info_error (_("can't open %s: %s"), INFODEBUG_FILE,
+			  strerror (errno));
+	      exit (EXIT_FAILURE);
+	    }
+	  atexit (close_debugfile);
+	  fp = debug_file;
+	  info_error (_("debugging output diverted to \"%s\""),
+		      INFODEBUG_FILE);
+	}
+    }
+  else
+    fp = debug_file;
+  
+  fprintf (fp, "%s: ", program_name);
+  vfprintf (fp, format, ap);
+  fprintf (fp, "\n");
+  fflush (stderr);
+}
+
+void
+info_debug (const char *format, ...)
+{
+  va_list ap;
+  va_start (ap, format);
+  vinfo_debug (format, ap);
+  va_end (ap);
+}
 
 /* Print AP according to FORMAT.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is

@@ -22,6 +22,18 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+5.1.90 (SVN)
+
+* info
+
+New option -x (--debug) enables additional debugging output.
+
+New option -v (--variable) assigns a value to an info variable.  The
+syntax is the same as for many other GNU utilities:
+
+  -v VARIABLE=VALUE
+  
+
 5.1 (12 March 2013)
 * texi2any:
   . irregular sectioning trees (see 5.0 news item) produce a warning
