@@ -1,5 +1,9 @@
 2013-04-13  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	* info/infomap.c: Fix indentation and style.
+
+2013-04-13  Sergey Poznyakoff  <gray@gnu.org.ua>
+
 	Implement new options for standalone info.
 
 	* info/info.c (debug_level): New variable.
