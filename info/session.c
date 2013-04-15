@@ -2106,6 +2106,22 @@ info_parse_and_select (char *line, WINDOW *window)
   info_select_reference (window, &entry);
 }
 
+static int
+info_win_find_node (INFO_WINDOW *win, NODE *node)
+{
+  int i;
+
+  for (i = win->nodes_index - 1; i >= 0; i--)
+    {
+      NODE *p = win->nodes[i];
+
+      if (strcmp (p->filename, node->filename) == 0 &&
+	  strcmp (p->nodename, node->nodename) == 0)
+	break;
+    }
+  return i;
+}	  
+
 /* Given that the values of INFO_PARSED_FILENAME and INFO_PARSED_NODENAME
    are previously filled, try to get the node represented by them into
    WINDOW.  The node should have been pointed to by the LABEL pointer of
@@ -2144,7 +2160,13 @@ info_handle_pointer (char *label, WINDOW *window)
           info_win = get_info_window_of_window (window);
           if (info_win)
             {
-              info_win->pagetops[info_win->current] = window->pagetop;
+	      if (strcmp (label, "Up") == 0)
+		{
+		  int i = info_win_find_node (info_win, node);
+		  if (i >= 0)
+		    node->display_pos = info_win->points[i];
+		}
+	      info_win->pagetops[info_win->current] = window->pagetop;
               info_win->points[info_win->current] = window->point;
             }
           info_set_node_of_window (1, window, node);

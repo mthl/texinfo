@@ -1,5 +1,13 @@
 2013-04-16  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	Restore the cursor position when going to the Up node.
+
+	* info/session.c (info_win_find_node): New static.
+	(info_handle_pointer): When handling Up pointer,
+	restore the point (cursor position) as well.
+
+2013-04-16  Sergey Poznyakoff  <gray@gnu.org.ua>
+
 	Implement the --all (-a) option as per bug #38168.
 
 	* info/infopath.c: New file.
