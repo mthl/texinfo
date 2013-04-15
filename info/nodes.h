@@ -161,4 +161,6 @@ extern char *info_recent_file_error;
 /* Create a new, empty file buffer. */
 extern FILE_BUFFER *make_file_buffer (void);
 
+void forget_info_file (char *filename);
+
 #endif /* not NODES_H */

@@ -1,3 +1,43 @@
+2013-04-16  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Implement the --all (-a) option as per bug #38168.
+
+	* info/infopath.c: New file.
+	* info/Makefile.am (ginfo_SOURCES): Add new file.
+	* info/tilde.c (tilde_expand_word): Argument is const char *.
+	All uses changed.
+	* info/info.c (all_matches_p): New variable.
+	(long_options, short_options): New option --all (-a).
+	(single_file, all_files): New functions.
+	(main): Handle new option.
+	* info/nodes.c (forget_info_file): Now extern.
+	* info/nodes.h (forget_info_file): New proto.
+	* info/indices.c (create_virtindex_file_buffer): Allow for
+	NULL as the filename.
+	(allfiles_create_node, info_all_files): New functions.
+	* info/dir.c (maybe_build_dir_node): Use infopath_first and
+	infopath_next to iterate over the INFOPATH.
+	* info/filesys.c: Remove infopath functions. See infopath.c
+	(info_file_in_path, info_file_find_next_in_path): New functions.
+	* info/indices.h (allfiles_create_node): New prototype.
+	* info/filesys.h (infopath): Remove extern.
+	(infopath): New prototype.
+	(zap_infopath): Rename to infopath_clear.
+	(info_add_path): Rename to infopath_add.
+	(infopath_init,infopath_first,infopath_next)
+	(info_file_find_next_in_path): New prototypes.
+	(INFOPATH_INIT): New constant.
+	* info/session.c (info_read_and_dispatch): Do not set
+	quit_info_immediately, it is done by info_quit.
+	(info_follow_menus): Take an additional argument.
+	(info_quit): Set quit_info_immediately.
+	* info/session.h (quit_info_immediately): Extern.
+	(info_follow_menus): Change signature.
+	* info/infomap.c: Bind `C-x f' in Emacs mode, and `:a' in Vi mode
+	to info_all_files.
+
+	* doc/info-stnd.texi: Document the --all option.
+
 2013-04-13  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/infomap.c: Fix indentation and style.

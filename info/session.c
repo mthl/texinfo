@@ -188,10 +188,8 @@ void
 info_read_and_dispatch (void)
 {
   unsigned char key;
-  int done;
-  done = 0;
 
-  while (!done && !quit_info_immediately)
+  for (quit_info_immediately = 0; !quit_info_immediately; )
     {
       int lk = 0;
 
@@ -239,14 +237,9 @@ info_read_and_dispatch (void)
               info_aborted_echo_area)
             {
               ea_last_executed_command = NULL;
-              done = 1;
+              break;
             }
-
-          if (info_last_executed_command == (VFunction *) info_quit)
-            quit_info_immediately = 1;
         }
-      else if (info_last_executed_command == (VFunction *) info_quit)
-        done = 1;
     }
 }
 
@@ -2796,7 +2789,8 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
    will be NULL.  */
 
 NODE *
-info_follow_menus (NODE *initial_node, char **menus, NODE **err_node)
+info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
+		   int strict)
 {
   NODE *node = NULL;
 
@@ -2826,7 +2820,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node)
          realize it. */
       if (!menu)
         {
-          if (arg == first_arg)
+          if (arg == first_arg && !strict)
             {
               node = make_manpage_node (first_arg);
               if (node)
@@ -2866,6 +2860,8 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node)
          node anyway.  It is probably a misspelling. */
       if (!entry)
         {
+	  if (strict)
+	    return NULL;
           if (arg == first_arg)
             {
               /* Maybe they typed "info foo" instead of "info -f foo".  */
@@ -2999,7 +2995,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       if (!dir_node)
         info_error (msg_cant_find_node, "Top");
       else
-        node = info_follow_menus (dir_node, nodes, &err_node);
+        node = info_follow_menus (dir_node, nodes, &err_node, 0);
 
       free (nodes);
       if (err_node)
@@ -4944,10 +4940,12 @@ DECLARE_INFO_COMMAND (info_redraw_display, _("Redraw the display"))
       set_window_pagetop (window, new_pagetop);
     }
 }
-/* This command does nothing.  It is the fact that a key is bound to it
-   that has meaning.  See the code at the top of info_session (). */
+
+/* Exit from info */
 DECLARE_INFO_COMMAND (info_quit, _("Quit using Info"))
-{}
+{
+  quit_info_immediately = 1;
+}
 
 
 /* **************************************************************** */

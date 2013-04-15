@@ -810,8 +810,8 @@ create_virtindex_file_buffer (const char *filename, char *contents, size_t size)
   FILE_BUFFER *file_buffer;
 
   file_buffer = make_file_buffer ();
-  file_buffer->filename = xstrdup (filename);
-  file_buffer->fullpath = xstrdup (filename);
+  file_buffer->filename = filename ? xstrdup (filename) : NULL;
+  file_buffer->fullpath = filename ? xstrdup (filename) : NULL;
   file_buffer->finfo.st_size = 0;
   file_buffer->flags = (N_IsInternal | N_CannotGC);
 
@@ -957,6 +957,62 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   
   info_set_node_of_window (1, window, node);
   
+  if (!info_error_was_printed)
+    window_clear_echo_area ();
+}
+
+static NODE *allfiles_node;
+
+NODE *
+allfiles_create_node (char *term, REFERENCE *fref)
+{
+  int i;
+  struct text_buffer text;
+  size_t off;
+  FILE_BUFFER *fb;
+  NODE *node;
+  
+  text_buffer_init (&text);
+  text_buffer_printf (&text, _("File names matching `%s'"), term);
+  text_buffer_add_char (&text, 0);
+  off = text.off;
+
+  text_buffer_printf (&text,
+		      "\n\n%c\n%s %s\n\n"
+		      "Info File Index\n"
+		      "***************\n\n"
+		      "File names that match `%s':\n\n"
+		      "* Menu:\n\n",
+		      INFO_COOKIE,
+		      INFO_NODE_LABEL, text.base, term);
+
+  memmove (text.base, text.base + off, text.off - off);
+  text.off -= off;
+
+  for (i = 0; fref[i].filename; i++)
+    {
+      text_buffer_printf (&text, "* %4i: (%s)", i+1, fref[i].filename);
+      if (fref[i].nodename)
+	text_buffer_printf (&text, "%s", fref[i].nodename);
+      text_buffer_printf (&text, ".\n");
+    }
+
+  fb = create_virtindex_file_buffer (NULL, text.base, text.off);
+  allfiles_node = create_virtindex_node (fb);
+
+  return allfiles_node;
+}
+
+DECLARE_INFO_COMMAND (info_all_files, _("Show all matching files"))
+{
+  if (!allfiles_node)
+    {
+      info_error (_("No file index"));
+      return;
+    }
+
+  info_set_node_of_window (1, window, allfiles_node);
+
   if (!info_error_was_printed)
     window_clear_echo_area ();
 }

@@ -310,7 +310,7 @@ create_internal_info_help_node (int help_is_only_window_p)
 
       printf_to_message_buffer ("---------------------\n");
       printf_to_message_buffer (_("The current search path is:\n"));
-      printf_to_message_buffer ("%s\n", infopath);
+      printf_to_message_buffer ("%s\n", infopath ());
       printf_to_message_buffer ("---------------------\n\n");
       printf_to_message_buffer (_("Commands available in Info windows:\n\n"));
       dump_map_to_message_buffer ("", info_keymap);

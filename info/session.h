@@ -25,6 +25,8 @@
 #include "info.h"
 #include "dribble.h"
 
+extern int quit_info_immediately;
+
 /* All commands that can be invoked from within info_session () receive
    arguments in the same way.  This simple define declares the header
    of a function named NAME, with associated documentation DOC.  The
@@ -197,7 +199,7 @@ extern void info_kill_node (WINDOW *window, int count, unsigned char key);
 extern void info_view_file (WINDOW *window, int count, unsigned char key);
 extern void info_menu_sequence (WINDOW *window, int count, unsigned char key);
 extern NODE *info_follow_menus (NODE *initial_node, char **menus,
-				NODE **err_node);
+				NODE **err_node, int strict);
 extern void info_man (WINDOW *window, int count, unsigned char key);
 extern void list_visited_nodes (WINDOW *window, int count, unsigned char key);
 extern void select_visited_node (WINDOW *window, int count, unsigned char key);

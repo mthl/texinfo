@@ -174,7 +174,7 @@ tilde_expand (char *string)
 /* Do the work of tilde expansion on FILENAME.  FILENAME starts with a
    tilde.  If there is no expansion, call tilde_expansion_failure_hook. */
 char *
-tilde_expand_word (char *filename)
+tilde_expand_word (const char *filename)
 {
   char *dirname = filename ? xstrdup (filename) : NULL;
 

@@ -95,14 +95,15 @@ maybe_build_dir_node (char *dirname)
      with the dir file just found.  */
   new_dir_file_p (&dir_buffer->finfo);
   
-  path_index = update_tags = 0;
+  update_tags = 0;
 
   /* Using each element of the path, check for one of the files in
      DIRS_TO_ADD.  Do not check for "localdir.info.Z" or anything else.
      Only files explictly named are eligible.  This is a design decision.
      There can be an info file name "localdir.info" which contains
      information on the setting up of "localdir" files. */
-  while ((this_dir = extract_colon_unit (infopath, &path_index)))
+  for (this_dir = infopath_first (&path_index); this_dir; 
+       this_dir = infopath_next (&path_index))
     {
       register int da_index;
       char *from_file;

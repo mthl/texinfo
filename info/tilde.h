@@ -48,6 +48,6 @@ extern char *tilde_expand (char *string);
 
 /* Do the work of tilde expansion on FILENAME.  FILENAME starts with a
    tilde.  If there is no expansion, call tilde_expansion_failure_hook. */
-extern char *tilde_expand_word (char *filename);
+extern char *tilde_expand_word (const char *filename);
 
 #endif /* not TILDE_H */

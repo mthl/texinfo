@@ -30,7 +30,6 @@
 #  include "man.h"
 #endif /* HANDLE_MAN_PAGES */
 
-static void forget_info_file (char *filename);
 static void remember_info_file (FILE_BUFFER *file_buffer);
 static void free_file_buffer_tags (FILE_BUFFER *file_buffer);
 static void free_info_tag (TAG *tag);
@@ -1118,7 +1117,7 @@ remember_info_file (FILE_BUFFER *file_buffer)
 }
 
 /* Forget the contents, tags table, nodes list, and names of FILENAME. */
-static void
+void
 forget_info_file (char *filename)
 {
   int i;

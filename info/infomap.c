@@ -297,7 +297,6 @@ static unsigned char default_emacs_like_info_keys[] =
   CONTROL('f'), NUL,              A_info_forward_char,
   CONTROL('h'), NUL,              A_info_get_help_window,
   CONTROL('l'), NUL,              A_info_redraw_display,
-  CONTROL('n'), NUL,              A_info_next_line,
   CONTROL('p'), NUL,              A_info_prev_line,
   CONTROL('r'), NUL,              A_isearch_backward,
   CONTROL('s'), NUL,              A_isearch_forward,
@@ -398,13 +397,14 @@ static unsigned char default_emacs_like_info_keys[] =
   CONTROL('x'), '2', NUL,         A_info_split_window,
   CONTROL('x'), '^', NUL,         A_info_grow_window,
   CONTROL('x'), 'b', NUL,         A_select_visited_node,
+  CONTROL('x'), 'f', NUL,         A_info_all_files,
   CONTROL('x'), 'k', NUL,         A_info_kill_node,
   CONTROL('x'), 'n', NUL,         A_info_search_next,
   CONTROL('x'), 'N', NUL,         A_info_search_previous,
   CONTROL('x'), 'o', NUL,         A_info_next_window,
   CONTROL('x'), 't', NUL,         A_info_tile_windows,
   CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
-
+  
 /*      Arrow key bindings for info keymaps.  It seems that some
         terminals do not match their termcap entries, so it's best to just
         define everything with both of the usual prefixes.  */
@@ -634,6 +634,7 @@ static unsigned char default_vi_like_info_keys[] =
   'l', NUL,                       A_info_history_node,
   'm', NUL,                       A_info_menu_item,
   'n', NUL,                       A_info_search_next,
+  ':', 'a', NUL,                  A_info_all_files,
   'N', NUL,                       A_info_search_previous,
   'O', NUL,                       A_info_goto_invocation_node,
   'p', NUL,                       A_info_prev_node,
