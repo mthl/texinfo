@@ -78,7 +78,7 @@ htmlxref-only_split/.texinfo/htmlxref.cnf: \
 	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-texinfo $@
 
 htmlxref-only_split/.texinfo:
-	$(mkdir_p) $@
+	$(MKDIR_P) $@
 
 sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@

@@ -1,3 +1,8 @@
+2013-04-29  Stefano Lattarini  <stefano.lattarini@gmail.com>  (tiny change)
+
+	* tp/Makefile.am,
+	* tp/tests/Makefile.am: prefer $(MKDIR_P) to $(mkdir_p).
+
 2013-04-16  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Restore the cursor position when going to the Up node.
@@ -110,7 +115,7 @@
 
 2013-03-20  Karl Berry  <karl@gnu.org>
 
-	Minor doc tweaks.
+	Doc tweaks.
 	* NEWS: more technalities about the macro-expansion incompatibility.
 	* README-hacking: call change_perl_modules_version.sh for release.
 	* doc/texinfo.txi: wording around PDF items.

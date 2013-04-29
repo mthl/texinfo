@@ -217,7 +217,7 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	 | sort >$@
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
-	$(mkdir_p) maintain
+	$(MKDIR_P) maintain
 	sed -e 's|[@]abs_top_srcdir[@]|$(abs_top_srcdir)|' \
 	    -e 's|[@]TEXINFO_DTD_VERSION[@]|$(TEXINFO_DTD_VERSION)|' \
 	  $(srcdir)/maintain/catalog.xml.in >$@
@@ -227,7 +227,7 @@ libsrcdir = $(srcdir)/maintain/lib
 
 install-data-local:
 	if test $(USE_EXTERNAL_LIBINTL) != 'yes' ; then \
-	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
+	  $(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
 	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData; \
 	  $(INSTALL_DATA) $(libsrcdir)/libintl-perl/lib/Locale/*.pm \
 	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale; \
@@ -237,12 +237,12 @@ install-data-local:
 	    $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData; \
 	fi
 	if test $(USE_EXTERNAL_EASTASIANWIDTH) != 'yes' ; then \
-	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode; \
+	  $(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode; \
 	  $(INSTALL_DATA) $(libsrcdir)/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
 	   $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode; \
 	fi
 	if test $(USE_EXTERNAL_UNIDECODE) != 'yes' ; then \
-	  $(mkdir_p) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode; \
+	  $(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode; \
 	  $(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode.pm \
 	    $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text; \
 	  $(INSTALL_DATA) $(libsrcdir)/Text-Unidecode/lib/Text/Unidecode/*.pm \
